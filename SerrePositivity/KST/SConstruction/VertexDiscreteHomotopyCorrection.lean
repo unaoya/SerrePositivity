@@ -20,7 +20,7 @@ open scoped Simplicial
 /-- 離散部分への制限辺の座標評価は、元の全体の円柱の頂点での辺。 -/
 lemma vertexDiscrete_restriction_edge_evaluate {A X : SSet.{u}} {F G : A ⟶ X}
     (H : SSet.Homotopy F G) (a : A _⦋0⦌) :
-    (vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌)
       (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H (vertexDiscreteι A))).edge =
         (simplicialHomotopyVertexEdge H a).edge := by
   have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
@@ -40,10 +40,10 @@ lemma exists_vertexDiscrete_homotopy_correction {A X : SSet.{u}} [Quasicategory 
       ((vertexDiscreteι A ≫ G).app (Opposite.op ⦋0⦌) a))
     (h : ∀ a : A _⦋0⦌, SSet.Truncated.HomotopyCategory.homMk
       ((functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H (vertexDiscreteι A))).map
-        ((truncation 2).map (vertexDiscreteEvaluate a))) =
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a))) =
       SSet.Truncated.HomotopyCategory.homMk
         ((vertexDiscreteSpecifiedEdge (vertexDiscreteι A ≫ F) (vertexDiscreteι A ≫ G) e).map
-          ((truncation 2).map (vertexDiscreteEvaluate a)))) :
+          ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a)))) :
     ∃ H' : SSet.Homotopy F G,
       (∀ a : A _⦋0⦌, (simplicialHomotopyVertexEdge H' a).edge = (e a).edge) ∧
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H') =
@@ -63,9 +63,9 @@ lemma exists_vertexDiscrete_homotopy_correction {A X : SSet.{u}} [Quasicategory 
     change SSet.yonedaEquiv (curry ((vertexDiscreteι A ▷ (Δ[1] : SSet.{u})) ≫ H'.h)) = k.edge
     rw [hr]
     exact congrArg SSet.Truncated.Edge.edge hk
-  have hv := congrArg ((vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌))
+  have hv := congrArg ((_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌))
     (congrArg SSet.Truncated.Edge.edge he)
-  have hk0 : (vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌) k.edge = (e a).edge :=
+  have hk0 : (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋1⦌) k.edge = (e a).edge :=
     vertexDiscreteSpecifiedEdge_evaluate _ _ e a
   exact (vertexDiscrete_restriction_edge_evaluate H' a).symm.trans (hv.trans hk0)
 

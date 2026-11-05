@@ -72,7 +72,7 @@ local instance : IsDGPretriangulated R (DGOdotGluing R d) :=
   dgGluingMilnor_isDGPretriangulated R d
 
 variable (h : DGGluingMilnorSquare R d)
-  (c : ExactMap (dgGluingMilnorNativeResolvedQuotient R d)
+  (c : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeResolvedQuotient R d)
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)))
   (hc : IsIdempotentCompletion c.hom)
 

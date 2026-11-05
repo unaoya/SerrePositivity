@@ -24,16 +24,16 @@ namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 namespace SerrePositivity.InfinityCategories.Derived.Lax
 open SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj) (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 lemma laxQuotientVerdierSequence_reflective :
-    laxQuotientVerdierSequence p q (pullbackInclusion p q) (exactLaxDifference p q)
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q (pullbackInclusion p q) (exactLaxDifference p q)
       (laxDifference_isVerdier p q v a hv) = tammeVerdierSequence p q v a hv := rfl
 
 namespace IsLocalizingInvariant
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientFiberTriangle_reflective :
     hΦ.laxQuotientFiberTriangle p q (pullbackInclusion p q) (exactLaxDifference p q)

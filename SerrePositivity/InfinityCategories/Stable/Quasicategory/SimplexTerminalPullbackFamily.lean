@@ -67,7 +67,7 @@ include hs in
 lemma simplexTerminalCospan_comm :
     (SSet.const (functorVertex s) : (Δ[n] : SSet.{u}) ⟶ _) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-    simplexTerminalArrowFamily D ≫ evaluateFunctorAt
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D ≫ evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   rw [SSet.const_comp, evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_target, hs]
 
@@ -75,20 +75,20 @@ lemma simplexTerminalCospan_comm :
 def simplexTerminalCospanFamily :
     (Δ[n] : SSet.{u}) ⟶ (ihom (horn 2 2 : SSet.{u})).obj X :=
   stable_cospanFamilyOfArrows (SSet.const (functorVertex s))
-    (simplexTerminalArrowFamily D) (simplexTerminalCospan_comm D s hs)
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospan_comm D s hs)
 
 /-- cospan の右辺は指定した同じ終端辺で一定。 -/
 @[reassoc]
 lemma simplexTerminalCospanFamily_right :
-    simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₀₂).app X =
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₀₂).app X =
       SSet.const (functorVertex s) :=
   stable_cospanFamilyOfArrows_left _ _ _
 
 /-- cospan の上辺は元の全図式の同じ終端辺族。 -/
 @[reassoc]
 lemma simplexTerminalCospanFamily_top :
-    simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₁₂).app X =
-      simplexTerminalArrowFamily D :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₁₂).app X =
+      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D :=
   stable_cospanFamilyOfArrows_right _ _ _
 
 private lemma columnCospan_right :
@@ -107,15 +107,15 @@ private lemma columnCospan_top :
 /-- 最後の頂点では、元の同じ列四角形の cospan を厳密に回収する。 -/
 lemma simplexTerminalCospanFamily_last :
     (SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last n)) :
-      (Δ[0] : SSet.{u}) ⟶ Δ[n]) ≫ simplexTerminalCospanFamily D s hs =
+      (Δ[0] : SSet.{u}) ⟶ Δ[n]) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs =
       SSet.const (functorVertex (pullbackCospan (squareColumnDiagram s))) := by
   apply stable_cospanFamily_hom_ext
-  · rw [Category.assoc, simplexTerminalCospanFamily_right, SSet.comp_const, SSet.const_comp]
+  · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_right, SSet.comp_const, SSet.const_comp]
     change SSet.const (functorVertex s) =
       SSet.const (functorVertex (horn₂₂.ι₀₂ ≫ pullbackCospan (squareColumnDiagram s)))
     rw [columnCospan_right]
-  · rw [Category.assoc, simplexTerminalCospanFamily_top, SSet.const_comp, SSet.const_comp]
-    change SSet.const ((simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
+  · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_top, SSet.const_comp, SSet.const_comp]
+    change SSet.const ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (Fin.last n))) =
       SSet.const (functorVertex (horn₂₂.ι₁₂ ≫ pullbackCospan (squareColumnDiagram s)))
     rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_last, columnCospan_top, hs]

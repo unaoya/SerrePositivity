@@ -14,7 +14,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace StrictTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : StrictTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p)
 
 /-- 相対三角の元の全空間への像。元の二脚と同じ比較射を使う。 -/
 def representationTriangle :
@@ -44,25 +44,25 @@ def representationPointedPointIso (z : s.total _⦋0⦌) : VertexIso
 
 /-- 同じ指定点比較の底への作用は、元の点の射を保持する。 -/
 theorem representationPointedPointIso_pointHom (z : s.total _⦋0⦌) :
-    pointedVertexPointHom ((s.coherentSource ≫ s.representation.pointedMap).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((s.coherentSource ≫ s.representation.pointedMap).app
       (Opposite.op ⦋0⦌) (ULift.up z)) ≫
       (hoFunctor.map pointedSpaceProjection).toFunctor.map
         (s.representationPointedPointIso z).hom =
-    pointedVertexPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom
       ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)) := by
-  have h := cosliceFiberPointHom_comp_projection
-    (pointedVertexFiberPoint ((s.coherentSource ≫ s.representation.pointedMap).app
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_comp_projection
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint ((s.coherentSource ≫ s.representation.pointedMap).app
       (Opposite.op ⦋0⦌) (ULift.up z)))
-    (pointedVertexFiberPoint
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint
       ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)))
     (s.representationPointedPointIso z).hom
-  change pointedVertexPointHom ((s.coherentSource ≫ s.representation.pointedMap).app
+  change _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((s.coherentSource ≫ s.representation.pointedMap).app
     (Opposite.op ⦋0⦌) (ULift.up z)) ≫
       (𝟙 _ ≫ (hoFunctor.map pointedSpaceProjection).toFunctor.map
         (s.representationPointedPointIso z).hom ≫ 𝟙 _) =
-    pointedVertexPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom
       ((s.coherentTarget ≫ pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
         (Opposite.op ⦋0⦌) (ULift.up z)) at h
   simpa only [Category.id_comp, Category.comp_id] using h

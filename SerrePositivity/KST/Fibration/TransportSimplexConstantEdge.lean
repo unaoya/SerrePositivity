@@ -25,7 +25,7 @@ theorem transportSimplexFirstVertexMap_target_of_preservesFirst {B : SSet.{u}}
     exact ComposableArrows.ext₀ rfl
   have he := congrArg (fun m : (Δ[1] : SSet.{u}) ⟶ B =>
     m.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-      (transportSimplexFirstVertexMap_interval_constant f hf)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.transportSimplexFirstVertexMap_interval_constant f hf)
   have he' : (transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
       ((yonedaEquiv.symm (nerve.edgeMk f).edge).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =

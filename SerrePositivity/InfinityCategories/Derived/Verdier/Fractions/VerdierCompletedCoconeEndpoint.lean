@@ -44,7 +44,7 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 variable {b : VerdierRecoveredBoundaryComparison r U}
 namespace VerdierCompletedCoconeComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison
 variable (w : VerdierCompletedCoconeComparison b)
 
 /-- 同じ完成 K 円柱の実終端。 -/

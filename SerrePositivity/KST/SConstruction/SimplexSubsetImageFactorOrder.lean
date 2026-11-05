@@ -17,18 +17,18 @@ def simplexSubsetImageFactorOrder {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1)
     Fin (I.card - 1 + 1) →o Fin ((I.image α).card - 1 + 1) where
   toFun v := ((I.image α).orderIsoOfFin
     (show (I.image α).card = (I.image α).card - 1 + 1 by omega)).symm
-      ⟨α (simplexSubsetOrder I hI v),
-        Finset.mem_image.mpr ⟨_, simplexSubsetOrder_mem I hI v, rfl⟩⟩
+      ⟨α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v),
+        Finset.mem_image.mpr ⟨_, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI v, rfl⟩⟩
   monotone' v w h := ((I.image α).orderIsoOfFin
     (show (I.image α).card = (I.image α).card - 1 + 1 by omega)).symm.monotone
-      (α.monotone ((simplexSubsetOrder I hI).monotone h))
+      (α.monotone ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI).monotone h))
 
 /-- 元の像番号を元の像部分集合で評価すると、同じ元の頂点像を回収する。 -/
 lemma simplexSubsetImageFactorOrder_recovery {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card)
     (v : Fin (I.card - 1 + 1)) :
-    simplexSubsetOrder (I.image α) hJ (simplexSubsetImageFactorOrder α I hI hJ v) =
-      α (simplexSubsetOrder I hI v) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (I.image α) hJ (simplexSubsetImageFactorOrder α I hI hJ v) =
+      α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v) :=
   congrArg Subtype.val (((I.image α).orderIsoOfFin
     (show (I.image α).card = (I.image α).card - 1 + 1 by omega)).apply_symm_apply _)
 
@@ -36,21 +36,21 @@ lemma simplexSubsetImageFactorOrder_recovery {M N : ℕ} (α : Fin (M + 1) →o 
 lemma simplexSubsetImageFactorOrder_first {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
     simplexSubsetImageFactorOrder α I hI hJ 0 = 0 := by
-  apply simplexSubsetOrder_injective (I.image α) hJ
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_injective (I.image α) hJ
   exact (simplexSubsetImageFactorOrder_recovery α I hI hJ 0).trans
-    ((congrArg α (simplexSubsetOrder_first I hI)).trans
-      ((DGNerve.Index.image_min α.monotone (I.isLeast_min' (simplexSubsetNonempty I hI))
-        (simplexSubsetNonempty (I.image α) hJ)).trans (simplexSubsetOrder_first _ hJ).symm))
+    ((congrArg α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_first I hI)).trans
+      ((DGNerve.Index.image_min α.monotone (I.isLeast_min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_first _ hJ).symm))
 
 /-- 元の像番号の因子は、元の終頂点番号を保つ。 -/
 lemma simplexSubsetImageFactorOrder_last {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
     simplexSubsetImageFactorOrder α I hI hJ (Fin.last (I.card - 1)) =
       Fin.last ((I.image α).card - 1) := by
-  apply simplexSubsetOrder_injective (I.image α) hJ
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_injective (I.image α) hJ
   exact (simplexSubsetImageFactorOrder_recovery α I hI hJ _).trans
-    ((congrArg α (simplexSubsetOrder_last I hI)).trans
-      ((DGNerve.Index.image_max α.monotone (I.isGreatest_max' (simplexSubsetNonempty I hI))
-        (simplexSubsetNonempty (I.image α) hJ)).trans (simplexSubsetOrder_last _ hJ).symm))
+    ((congrArg α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_last I hI)).trans
+      ((DGNerve.Index.image_max α.monotone (I.isGreatest_max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_last _ hJ).symm))
 
 end SerrePositivity.KST.SConstruction

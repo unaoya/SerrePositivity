@@ -25,35 +25,35 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem alternating_loopPositive (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (s : Y.right.PtSimplex 2
       ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint))
-    (a : Fin 3 → (loopSpace Y).right.PtSimplex 1 (loopSpace Y).basepoint)
+    (a : Fin 3 → (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right.PtSimplex 1 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
     (T : (Δ[2] : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hT : T ≫ (pathEndpoint Y).right = s.map)
     (hface : ∀ j, stdSimplex.δ j ≫ T = (a j).map ≫
-      (loopBasedPathFiberIso Y).hom ≫ fiberι (pathEndpoint Y).right
+      (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
         ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint)) :
     (∑ j : Fin 3, (-1 : ℤ) ^ j.val • Additive.ofMul
-      (loopPositiveHomotopyEquiv Y 0 (KanHomotopyGroup.mk (a j)))) =
-      Additive.ofMul (KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right)
-        (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s)) := by
-  let e := KanHomotopyGroup.equivOfIso 0 (loopBasedPathFiberIso Y)
+      (loopPositiveHomotopyEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a j)))) =
+      Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right)
+        (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (loopBasedPathFiberIso Y)
     (loopBasedPathFiberIso_basepoint Y)
   let φ := (loopPositiveHomotopyEquiv Y 0).toMonoidHom.comp e.symm.toMonoidHom
-  let L : SphericalFiberLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s
-      (fun j ↦ mapSimplex (loopBasedPathFiberIso Y).hom
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s
+      (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom
         (loopBasedPathFiberIso_basepoint Y) (a j)) :=
-    { map := T
-      map_comp := hT
-      face_eq j := hface j }
-  have h := FiberTriangle.alternating_connecting L φ
-  have hm (j : Fin 3) : φ (KanHomotopyGroup.mk
-      (mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) (a j))) =
-      loopPositiveHomotopyEquiv Y 0 (KanHomotopyGroup.mk (a j)) := by
-    change loopPositiveHomotopyEquiv Y 0 (e.symm (e (KanHomotopyGroup.mk (a j)))) = _
+    { _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map := T
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map_comp := hT
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.face_eq j := hface j }
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.alternating_connecting L φ
+  have hm (j : Fin 3) : φ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) (a j))) =
+      loopPositiveHomotopyEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a j)) := by
+    change loopPositiveHomotopyEquiv Y 0 (e.symm (e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a j)))) = _
     rw [MulEquiv.symm_apply_apply]
   have hc := connecting_loopPositiveHomotopyEquiv Y 0
     ((loopPositiveHomotopyEquiv Y 0).symm
-      (KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right)
-        (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s)))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 1 (Iso.refl Y.right)
+        (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)))
   rw [MulEquiv.apply_symm_apply, MulEquiv.symm_apply_apply] at hc
   simp only [hm] at h
   rw [hc] at h

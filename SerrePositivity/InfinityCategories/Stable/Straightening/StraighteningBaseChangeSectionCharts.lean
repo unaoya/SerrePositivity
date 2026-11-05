@@ -102,12 +102,12 @@ def straighteningJointBaseChangeRightIso :=
 
 /-- 同じ指定制限同型を、元の左右の比較と元の逆切断比較へ厳密に分解する。 -/
 theorem straighteningJointBaseChangeRestrictionIso_factor :
-    straighteningJointBaseChangeRestrictionIso k =
-      straighteningJointBaseChangeLeftIso k ≪≫
+    _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k =
+      _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k ≪≫
         (transportSimplexSectionInfinity_baseChangeIso k).symm ≪≫
-          (straighteningJointBaseChangeRightIso k).symm := by
-  simp only [straighteningJointBaseChangeRestrictionIso, straighteningJointBaseChangeLeftIso,
-    straighteningJointBaseChangeRightIso, Iso.trans_assoc]
+          (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso k).symm := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso, _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso,
+    _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso, Iso.trans_assoc]
 
 end SerrePositivity.InfinityCategories.Stable.Straightening
 

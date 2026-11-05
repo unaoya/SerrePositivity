@@ -75,18 +75,18 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
 /-- 元の普遍四角形の左上の零角を与える全関手。 -/
-def zeroCorner : A ⟶ X := squares X a ≫ evaluateFunctorAt
+def zeroCorner : A ⟶ X := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a ≫ evaluateFunctorAt
   (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
 
-lemma zeroCorner_zero (x : A _⦋0⦌) : IsZeroVertex ((zeroCorner X a).app (Opposite.op ⦋0⦌) x) := by
-  have hs : functorVertex (squareAt X a x) = (squares X a).app (Opposite.op ⦋0⦌) x :=
+lemma zeroCorner_zero (x : A _⦋0⦌) : IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner X a).app (Opposite.op ⦋0⦌) x) := by
+  have hs : functorVertex (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt X a x) = (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a).app (Opposite.op ⦋0⦌) x :=
     (functorVertexEquiv _ _).apply_symm_apply _
-  change IsZeroVertex ((evaluateFunctorAt _).app (Opposite.op ⦋0⦌) ((squares X a).app _ x))
+  change IsZeroVertex ((evaluateFunctorAt _).app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a).app _ x))
   rw [← hs, evaluateFunctorAt_functorVertex]
-  exact squareAt_zero X a x
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_zero X a x
 
 local instance cofiberFamilyFunctorZero : HasZeroVertex ((ihom A).obj X) :=
-  functorHasZeroVertex A X
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.functorHasZeroVertex A X
 
 end CofiberFamily
 end SerrePositivity.InfinityCategories.Stable.Exact

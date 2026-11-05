@@ -45,8 +45,8 @@ theorem signedLoopRawComparison_post {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n 
       KanSequence.Hom X.toKanSequence Y.toKanSequence))
   have hg : ∀ k, r.app k ≫ g.app k = g.app k ≫ s.app k := by
     intro k
-    change PointedMapping.prePointed _ _ ≫ (ihom CirclePower.space.{u}).map (f.app (k + 1)) =
-      (ihom CirclePower.space.{u}).map (f.app (k + 1)) ≫ PointedMapping.prePointed _ _
+    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _ _ ≫ (ihom CirclePower.space.{u}).map (f.app (k + 1)) =
+      (ihom CirclePower.space.{u}).map (f.app (k + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _ _
     simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact MonoidalClosed.pre_comm_ihom_map _ _
   have hi := KanSequence.iterateHom_natural r s g hg n n

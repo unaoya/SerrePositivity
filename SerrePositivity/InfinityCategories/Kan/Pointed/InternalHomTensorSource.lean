@@ -35,9 +35,9 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 使われ方：HA §1.4.2。loop の次数射と反復 curry の可換式。 -/
 @[reassoc]
 theorem natural_pre_left {A' A : C} (i : A' ⟶ A) (B Y : C) :
-    (MonoidalClosed.pre (i ▷ B)).app Y ≫ (iso A' B Y).hom =
-      (iso A B Y).hom ≫ (ihom B).map ((MonoidalClosed.pre i).app Y) := by
-  rw [iso_eq_ihomCurryIso, iso_eq_ihomCurryIso]
+    (MonoidalClosed.pre (i ▷ B)).app Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A' B Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom ≫ (ihom B).map ((MonoidalClosed.pre i).app Y) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
   apply uncurry_injective
   apply uncurry_injective
   simp only [ihomCurryIso_hom]
@@ -53,9 +53,9 @@ theorem natural_pre_left {A' A : C} (i : A' ⟶ A) (B Y : C) :
 使われ方：Goerss–Jardine I §7。パラメータの移動と二つの円の制限の整合性。 -/
 @[reassoc]
 theorem natural_pre_right (A : C) {B' B : C} (j : B' ⟶ B) (Y : C) :
-    (MonoidalClosed.pre (A ◁ j)).app Y ≫ (iso A B' Y).hom =
-      (iso A B Y).hom ≫ (MonoidalClosed.pre j).app ((ihom A).obj Y) := by
-  rw [iso_eq_ihomCurryIso, iso_eq_ihomCurryIso]
+    (MonoidalClosed.pre (A ◁ j)).app Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B' Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom ≫ (MonoidalClosed.pre j).app ((ihom A).obj Y) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
   apply uncurry_injective
   apply uncurry_injective
   simp only [ihomCurryIso_hom]

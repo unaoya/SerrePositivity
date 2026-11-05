@@ -25,13 +25,13 @@ open SerrePositivity.InfinityCategories
 /-- nerve 値写像を戻す操作はホモトピー圏の射と余単位の合成そのもの。 -/
 lemma fundamentalNerveUntranspose_eq {A : SSet.{u}} {C : Type u} [Category.{u} C]
     (f : A ⟶ nerve C) :
-    fundamentalNerveUntranspose f =
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose f =
       (hoFunctor.map f).toFunctor ⋙ (nerveAdjunction.counit.app (Cat.of C)).toFunctor := rfl
 
 /-- 亜群 nerve 値ホモトピーは転置した通常の関手の自然同型を与える。 -/
 def fundamentalNerveUntransposeHomotopy {A : SSet.{u}} {C : Type u}
     [Category.{u} C] [IsGroupoid C] {f g : A ⟶ nerve C} (H : SSet.Homotopy f g) :
-    fundamentalNerveUntranspose f ≅ fundamentalNerveUntranspose g := by
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose f ≅ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose g := by
   let α := homotopyNatTransOfEndpoints H.h H.h₀ H.h₁
   have : IsIso α := (NatTrans.isIso_iff_isIso_app α).mpr (fun _ => inferInstance)
   exact Functor.isoWhiskerRight (asIso α) (nerveAdjunction.counit.app (Cat.of C)).toFunctor

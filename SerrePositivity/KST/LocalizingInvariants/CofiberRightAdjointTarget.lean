@@ -27,6 +27,6 @@ lemma cofiberRightAdjoint_target (X : SSet.{u}) [Quasicategory X] [IsStable X] :
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_bottom_target_eq_right_source]
   rw [← Category.assoc (CofiberRotation.rightSection X), CofiberRotation.rightSection_right,
     Category.id_comp]
-  exact identityArrow_source X
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.identityArrow_source X
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -24,13 +24,13 @@ set_option backward.isDefEq.respectTransparency.types false
 variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌} {n : ℕ}
   {s : X.PtSimplex (n + 1) x}
   (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
-  (K : PtSimplex.RelStruct .const (simplex R S) (Fin.last (n + 2)))
+  (K : PtSimplex.RelStruct .const (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S) (Fin.last (n + 2)))
 
 /-- 差の零ホモトピー、元の差の充填、退化単体を貼るホーン。 -/
 def zeroFace (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
   if j.val = n + 1 then K.map else
     if j.val = n + 2 then stdSimplex.σ (Fin.last (n + 2)) ≫ R.map else
-      if j.val = n + 4 then (compatible R S).liftOfKanComplex else SSet.const x
+      if j.val = n + 4 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex else SSet.const x
 
 /-- 差の零ホモトピーの終面が、元の充填の差の面と一致する。 -/
 lemma zeroCompatible :
@@ -53,7 +53,7 @@ lemma zeroCompatible :
 /-- 欠ける面は、元の二つの零ホモトピーと定数面だけを持つ。 -/
 lemma zero_output_face (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 3)).castSucc ≫
-      (zeroCompatible R S K).liftOfKanComplex = face R S j := by
+      (zeroCompatible R S K).liftOfKanComplex = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j := by
   by_cases hj : j ≤ (Fin.last (n + 2)).castSucc
   · have he : (Fin.last (n + 3)).castSucc = ((Fin.last (n + 2)).castSucc).succ := by
       apply Fin.ext; rfl
@@ -90,15 +90,15 @@ lemma zero_output_face (j : Fin (n + 4)) :
 
 /-- 零である差には、定数の差の面を持つ充填がある。 -/
 theorem exists_zero_filler (he : difference R S = 1) :
-    ∃ φ : (Δ[n + 3] : SSet.{u}) ⟶ X, ∀ j, stdSimplex.δ j ≫ φ = face R S j := by
-  obtain ⟨K⟩ := (simplexRel_iff_relStruct (Fin.last (n + 2))).1
-    ((KanHomotopyGroup.mk_eq_iff .const (simplex R S)).1 he.symm)
+    ∃ φ : (Δ[n + 3] : SSet.{u}) ⟶ X, ∀ j, stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j := by
+  obtain ⟨K⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 2))).1
+    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff .const (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S)).1 he.symm)
   exact ⟨stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ (zeroCompatible R S K).liftOfKanComplex,
     zero_output_face R S K⟩
 
 /-- 定数の差の面を持つ充填は零の差を表す。 -/
 theorem difference_eq_one_of_zero_filler (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
-    (hφ : ∀ j, stdSimplex.δ j ≫ φ = face R S j) : difference R S = 1 := by
+    (hφ : ∀ j, stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j) : difference R S = 1 := by
   let hh j (_ : j ≠ (Fin.last (n + 1)).castSucc.castSucc) := hφ j
   rw [difference_eq_ofFiller R S φ hh]
   have he : ofFiller R S φ hh = .const := by
@@ -112,7 +112,7 @@ theorem difference_eq_one_of_zero_filler (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
 /-- 差の零性は、固定した二つの零ホモトピーと定数面の充填の存在と同値。 -/
 theorem difference_eq_one_iff_zero_filler :
     difference R S = 1 ↔
-      ∃ φ : (Δ[n + 3] : SSet.{u}) ⟶ X, ∀ j, stdSimplex.δ j ≫ φ = face R S j :=
+      ∃ φ : (Δ[n + 3] : SSet.{u}) ⟶ X, ∀ j, stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j :=
   ⟨exists_zero_filler R S, fun ⟨φ, hφ⟩ ↦ difference_eq_one_of_zero_filler R S φ hφ⟩
 
 end

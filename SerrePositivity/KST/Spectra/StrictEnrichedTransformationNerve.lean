@@ -27,9 +27,9 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
   (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
 
 /-- 厳密な豊穣自然変換の二段の円柱上の関手。 -/
-def cylinder : EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin 2) C) D :=
+def cylinder : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2) C) D :=
   (EnrichedOrderedCylinder.bridge (𝟙 (𝟙_ SSet.{u}))).comp SSet
-    (EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G η)
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G η)
 
 /-- 円柱の左端は元の関手。 -/
 lemma cylinder_source :

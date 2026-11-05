@@ -17,16 +17,16 @@ namespace SerrePositivity.KST.Fibration
 
 /-- Kan 値図式の元の各値を、同じ関手的 Kan 置換へ自然に含める。 -/
 def kanDiagramCompletionUnit {I : Type u} [Category.{u} I] (F : I ⥤ KanObject.{u}) :
-    F ⋙ kanObjectForget ⟶ F ⋙ kanObjectForget ⋙ strictKanCompletion ⋙ kanObjectForget where
+    F ⋙ kanObjectForget ⟶ F ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion ⋙ kanObjectForget where
   app c := F2.continuousKanReplacementUnit.app (F.obj c).obj
   naturality {_c _d} f := F2.continuousKanReplacementUnit.naturality (F.map f)
 
 /-- 元の図式とその同じ Kan 置換は、全 coherent 図式として自然同型。 -/
 def kanDiagramCompletionIso {I : Type u} [Category.{u} I] (F : I ⥤ KanObject.{u}) :
     FunctorIso (kanDiagramCoherentNerve F)
-      (kanDiagramCoherentNerve (F ⋙ kanObjectForget ⋙ strictKanCompletion)) := by
+      (kanDiagramCoherentNerve (F ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion)) := by
   apply kanDiagramFunctorIsoOfPointwise
-    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ strictKanCompletion, trivial⟩)
+    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, trivial⟩)
     (kanDiagramCompletionUnit F)
   intro c
   apply isQCatEquivalence_of_anodyneQ_isIso
@@ -36,8 +36,8 @@ def kanDiagramCompletionIso {I : Type u} [Category.{u} I] (F : I ⥤ KanObject.{
 def leftCocartesianKanComparison {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] :
     cocartesianKanDiagram p ⟶ leftStrictTransportFunctor p ⋙ kanObjectForget ⋙
-      strictKanCompletion :=
-  Functor.whiskerRight (cocartesianStrictTransportInclusion p) strictKanCompletion
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion :=
+  Functor.whiskerRight (cocartesianStrictTransportInclusion p) _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion
 
 /-- 同じ left fibration の全 cocartesian section と全 section の coherent 図式は同型。 -/
 def leftCocartesianKanComparisonIso {I : Type u} [Category.{u} I] {E : SSet.{u}}
@@ -45,10 +45,10 @@ def leftCocartesianKanComparisonIso {I : Type u} [Category.{u} I] {E : SSet.{u}}
     FunctorIso (cocartesianKanCoherentDiagram p) (leftStraighteningCandidate p) := by
   have e := kanDiagramFunctorIsoOfPointwise
     (F := ⟨cocartesianKanDiagram p, trivial⟩)
-    (G := ⟨leftStrictTransportFunctor p ⋙ kanObjectForget ⋙ strictKanCompletion, trivial⟩)
+    (G := ⟨leftStrictTransportFunctor p ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, trivial⟩)
     (Functor.whiskerRight (leftCocartesianKanComparison p) kanObjectForget) (fun c => by
       have := kanCocartesianSectionsι_isIso_of_leftFibration p (nerveMap (Under.forget c))
-      apply strictKanCompletion_map_isQCatEquivalence
+      apply _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence
       change IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (SerrePositivity.InfinityCategories.cocartesianSectionsι p (nerveMap (Under.forget c))))
       infer_instance)

@@ -34,9 +34,9 @@ set_option backward.isDefEq.respectTransparency.types false
 @[reassoc (attr := simp)]
 theorem cell_attachingMap_ι (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
-    c.ιSigmaBoundary ≫ attachingMap K d ≫ (K.skeleton d).ι =
+    c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K d ≫ (K.skeleton d).ι =
       (boundary d).ι ≫ yonedaEquiv.symm c.simplex := by
-  simp [attachingMap, Subcomplex.eqToIso]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap, Subcomplex.eqToIso]
 
 /-- 概要：各セルの特徴射を全体へ含めると元の単体の Yoneda 射になる。
 方針：余積と骨格の同型と部分複体の lift の標準射を計算する。
@@ -45,9 +45,9 @@ theorem cell_attachingMap_ι (K : SSet.{u}) (d : ℕ)
 @[reassoc (attr := simp)]
 theorem cell_characteristicMap_ι (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
-    c.ιSigmaStdSimplex ≫ characteristicMap K d ≫ (K.skeleton (d + 1)).ι =
+    c.ιSigmaStdSimplex ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d ≫ (K.skeleton (d + 1)).ι =
       yonedaEquiv.symm c.simplex := by
-  simp [characteristicMap, Subcomplex.eqToIso]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap, Subcomplex.eqToIso]
 
 end
 

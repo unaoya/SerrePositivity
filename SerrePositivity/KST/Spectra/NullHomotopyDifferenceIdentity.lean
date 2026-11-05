@@ -26,7 +26,7 @@ variable {X : SSet.{u}} {x : X _⦋0⦌} {n : ℕ}
 /-- 最後の退化は同じ零ホモトピーを二面に持つ差のホーンを充填する。 -/
 lemma diagonal_filler_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (j : Fin (n + 4)) :
-    stdSimplex.δ j ≫ stdSimplex.σ (Fin.last (n + 2)) ≫ R.map = face R R j := by
+    stdSimplex.δ j ≫ stdSimplex.σ (Fin.last (n + 2)) ≫ R.map = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R R j := by
   by_cases h₀ : j.val = n + 2
   · have he : j = (Fin.last (n + 2)).castSucc := Fin.ext h₀
     subst j

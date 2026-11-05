@@ -30,8 +30,8 @@ structure DGBarCompactHomologyCharts (R : Type u) [CommRing R]
   zero_transition : ∀ {i j} (h : i ≤ j) y,
     zeroStage j (SSet.π₀.mk ((τ h).app _ y)) =
       (diagram 0).map (homOfLE h) (zeroStage i (SSet.π₀.mk y))
-  positiveStage : ∀ n i y, KanHomotopyGroup (X i).obj n y ≃ (diagram (n + 1)).obj i
-  positiveApex : ∀ n z, KanHomotopyGroup A.obj n z ≃ (cocone (n + 1)).pt
+  positiveStage : ∀ n i y, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y ≃ (diagram (n + 1)).obj i
+  positiveApex : ∀ n z, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup A.obj n z ≃ (cocone (n + 1)).pt
   positive_leg : ∀ n i y a,
     positiveApex n ((l i).app _ y) (dgBarCompactPiMap n (l i) y a) =
       (cocone (n + 1)).ι.app i (positiveStage n i y a)

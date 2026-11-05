@@ -31,16 +31,16 @@ def additiveGroupToMultiplicativeEquiv {A : Type v} {B : Type w}
 規約：K-L9 の次数 n+1。使われ方：実際の pinched 空間とその線形化の比較。 -/
 def kanHomotopyGroupIsoEquiv {X Y : SSet.{v}} [SSet.KanComplex X] [SSet.KanComplex Y]
     (e : X ≅ Y) (n : ℕ) (x : X _⦋0⦌) :
-    KanHomotopyGroup X n x ≃* KanHomotopyGroup Y n (e.hom.app _ x) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n (e.hom.app _ x) := by
   have hi : e.inv.app _ (e.hom.app _ x) = x := by
     change (e.hom ≫ e.inv).app _ x = x
     rw [Iso.hom_inv_id]
     rfl
-  let F := KanHomotopyGroup.map (n := n) (x := x) e.hom rfl
-  let G := KanHomotopyGroup.map (n := n) e.inv hi
+  let F := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (x := x) e.hom rfl
+  let G := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) e.inv hi
   refine { toFun := F, invFun := G, left_inv := ?_, right_inv := ?_, map_mul' := F.map_mul }
   · intro a
-    have h := KanHomotopyGroup.map_comp (n := n) (x := x) (y := e.hom.app _ x) (z := x)
+    have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n) (x := x) (y := e.hom.app _ x) (z := x)
       e.hom rfl e.inv hi
       (show (e.hom ≫ e.inv).app _ x = x by rw [Iso.hom_inv_id]; rfl)
     have hh : G.comp F = MonoidHom.id _ := by
@@ -48,7 +48,7 @@ def kanHomotopyGroupIsoEquiv {X Y : SSet.{v}} [SSet.KanComplex X] [SSet.KanCompl
       simp only [Iso.hom_inv_id, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id]
     exact DFunLike.congr_fun hh a
   · intro a
-    have h := KanHomotopyGroup.map_comp (n := n) (x := e.hom.app _ x) (y := x)
+    have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n) (x := e.hom.app _ x) (y := x)
       (z := e.hom.app _ x) e.inv hi e.hom rfl
       (show (e.inv ≫ e.hom).app _ (e.hom.app _ x) = e.hom.app _ x by rw [Iso.inv_hom_id]; rfl)
     have hh : F.comp G = MonoidHom.id _ := by
@@ -100,7 +100,7 @@ def pinchedHomPiCohomologyEquiv (x y : D) (n : ℕ) :
 方針：任意 dg 圏の群同型を Semifree(S) に適用する。
 規約：任意の可換環、非有界複体を含む。使われ方：導来 Ext 計算への入力。 -/
 def derivedInfinityPiCohomologyEquiv (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
-    KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
       (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
         Multiplicative ((homObject S (Semifree S) (x.obj 0) (y.obj 0)).homology
           (-((n + 1 : ℕ) : ℤ))) :=

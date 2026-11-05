@@ -15,11 +15,11 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の完全関手の Kan Hom のうち、零値関手を頂点とする実全部分複体。 -/
-def zeroStableHomSpace (A B : StableQCat.{u}) : SSet.{u} :=
+def zeroStableHomSpace (A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) : SSet.{u} :=
   fullSubcomplexOnVertices (A ⟶[SSet.{u}] B) (StableHomZeroVertex A B)
 
 /-- 零値条件を保つ充填を用い、元の Kan Hom の同じ零値部分空間を可縮と判定する。 -/
-theorem zeroStableHomSpace_isContractibleKan (A B : StableQCat.{u}) :
+theorem zeroStableHomSpace_isContractibleKan (A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     IsContractibleKan (zeroStableHomSpace A B) := by
   intro n b
   let j := (fullSubcomplexOnVertices (A ⟶[SSet.{u}] B) (StableHomZeroVertex A B)).ι
@@ -33,7 +33,7 @@ theorem zeroStableHomSpace_isContractibleKan (A B : StableQCat.{u}) :
   rw [Category.assoc, hG, hF]
 
 /-- 任意の指定部分族を厳密に保ち、元の全 Kan Hom 内で零値関手族を延長できる。 -/
-theorem zeroStableHomFamily_extend {A B : StableQCat.{u}} {T U : SSet.{u}}
+theorem zeroStableHomFamily_extend {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {T U : SSet.{u}}
     (i : T ⟶ U) [Mono i] (H : T ⟶ (A ⟶[SSet.{u}] B))
     (hH : ∀ v, StableHomZeroVertex A B (H.app (Opposite.op ⦋0⦌) v)) :
     ∃ F : U ⟶ (A ⟶[SSet.{u}] B), i ≫ F = H ∧

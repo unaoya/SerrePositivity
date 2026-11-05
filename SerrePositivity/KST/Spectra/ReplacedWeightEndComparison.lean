@@ -30,7 +30,7 @@ lemma kanWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
     letI := WeightedEndReedyKan.kanComplex
       (CosimplicialKanReplacement.functor.obj BousfieldKanWeightLatching.weight.{u}) X
       ReedyWeightCofibrancy.kanBousfieldKan hX
-    KanPiIsomorphism (weightedSectionsPre
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsPre
       (Functor.whiskerLeft AsSmall.down kanWeightMap.{u}) (AsSmall.down ⋙ X)) := by
   let := WeightedEndReedyKan.kanComplex
     (CosimplicialKanReplacement.functor.obj stdSimplex.{u}) X

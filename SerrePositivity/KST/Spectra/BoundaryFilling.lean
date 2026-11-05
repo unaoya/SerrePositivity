@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.Spectra
 使われ方：Goerss–Jardine I §7、Kerodon §3.1.3。三角形の全境界充填。 -/
 theorem basedPathSpace_terminal_rlp (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (basedPathSpace Y).right) :=
-  basedHom_terminal_rlp_monomorphisms pointedInterval Y pointedInterval_basepoint_anodyne
+  basedHom_terminal_rlp_monomorphisms _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y pointedInterval_basepoint_anodyne
 
 namespace BoundaryFaces
 
@@ -36,14 +36,14 @@ namespace BoundaryFaces
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。零次数の連結射の単射性。 -/
 theorem exists_filler {X : SSet.{u}}
     (hX : (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from X))
-    {n : ℕ} {f : Fin (n + 3) → ((Δ[n + 1] : SSet.{u}) ⟶ X)} (hf : IsCompatible f) :
+    {n : ℕ} {f : Fin (n + 3) → ((Δ[n + 1] : SSet.{u}) ⟶ X)} (hf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible f) :
     ∃ q : (Δ[n + 2] : SSet.{u}) ⟶ X, ∀ j, stdSimplex.δ j ≫ q = f j := by
   let : HasLiftingProperty (boundary.{u} (n + 2)).ι (terminal.from X) := hX _ inferInstance
-  let sq : CommSq (desc hf) (boundary.{u} (n + 2)).ι (terminal.from X)
+  let sq : CommSq (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc hf) (boundary.{u} (n + 2)).ι (terminal.from X)
       (terminal.from (Δ[n + 2] : SSet.{u})) := ⟨Subsingleton.elim _ _⟩
   refine ⟨sq.lift, fun j ↦ ?_⟩
   rw [← boundary.ι_ι_assoc, sq.fac_left]
-  exact ι_desc hf j
+  exact _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.ι_desc hf j
 
 end BoundaryFaces
 

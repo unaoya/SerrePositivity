@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 一点上の全図式を元の安定圏へ戻す、厳密な完全同型。 -/
-def ambientPointExactIso (B : StableCategory.{u}) :
+def ambientPointExactIso (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     ambientDiagramModel (Δ[0] : SSet.{u}) B ≅ sInputModel B where
   hom := ⟨(SConstruction.pointFunctorEvaluationIso B.obj).hom,
     IsExactFunctor.preservesZero, IsExactFunctor.preservesCofiber⟩
@@ -29,17 +29,17 @@ def ambientPointExactIso (B : StableCategory.{u}) :
   inv_hom_id := Subtype.ext (SConstruction.pointFunctorEvaluationIso B.obj).inv_hom_id
 
 /-- W 辺の元の始点を取る完全関手。 -/
-def weakArrowSourceExact {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakArrowSourceExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakArrowModel q ⟶ sInputModel B :=
   weakArrowSourceDiagram q ≫ (ambientPointExactIso B).hom
 
 /-- W 辺の元の終点を取る完全関手。 -/
-def weakArrowTargetExact {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakArrowTargetExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakArrowModel q ⟶ sInputModel B :=
   weakArrowTargetDiagram q ≫ (ambientPointExactIso B).hom
 
 /-- 始点射は元の全矢図式の始点評価そのもの。 -/
-lemma weakArrowSourceExact_val {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakArrowSourceExact_val {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakArrowSourceExact q).val = (fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   change ((fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι ≫
@@ -49,7 +49,7 @@ lemma weakArrowSourceExact_val {B C : StableCategory.{u}} (q : ExactMap B C) :
   rfl
 
 /-- 終点射も元の全矢図式の終点評価そのもの。 -/
-lemma weakArrowTargetExact_val {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakArrowTargetExact_val {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakArrowTargetExact q).val = (fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   change ((fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι ≫
@@ -59,7 +59,7 @@ lemma weakArrowTargetExact_val {B C : StableCategory.{u}} (q : ExactMap B C) :
   rfl
 
 /-- 全相対 cofiber 補完から元の W 辺の始点を取ると、同じ subobject 評価を回収する。 -/
-lemma weakCofiberProjection_source {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakCofiberProjection_source {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakArrowCofiberEquivalence q).hom ≫ weakArrowSourceExact q =
       relativeCofiberSubobject (ClosedStablePredicate.top (sInputModel B))
         (kernelClosedPredicate q) ≫ closedStableInclusion (ClosedStablePredicate.top

@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
-  (U : E.PtSimplex (n + 1) e) (V : BoundaryLift p e s)
+  (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
 
 /-- 概要：二つの持ち上げを最後の面の手前へ置く比較ホーンの面。
 方針：残る面は全空間の基点で定数とする。
@@ -103,8 +103,8 @@ lemma last_comp (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
 使われ方：Goerss–Jardine I §8。fiber 内の path の族。 -/
 def output (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
-    (Δ[n + 1] : SSet.{u}) ⟶ KanFiber p (p.app _ e) :=
-  fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) (last_comp φ hφ)
+    (Δ[n + 1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) (last_comp φ hφ)
 
 /-- 概要：出力を fiber から全空間へ戻すと比較単体の最後の面。
 方針：pullback の第一射影を計算する。
@@ -113,8 +113,8 @@ def output (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
 @[reassoc (attr := simp)]
 lemma output_ι (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
-    output φ hφ ≫ fiberι p (p.app _ e) = stdSimplex.δ (Fin.last (n + 2)) ≫ φ :=
-  fiberLift_ι ..
+    output φ hφ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) = stdSimplex.δ (Fin.last (n + 2)) ≫ φ :=
+  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι ..
 
 /-- 概要：比較出力の非定数面は最後から二番目にだけ現れる。
 方針：二面交換で既知の面へ移し、V の最後の面と U の定数面を計算する。
@@ -125,8 +125,8 @@ lemma output_face (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j)
     (j : Fin (n + 2)) :
     stdSimplex.δ j ≫ output φ hφ =
-      if j.val = n then V.boundary.map else SSet.const (fiberPoint p e) := by
-  apply fiber_hom_ext p (p.app _ e)
+      if j.val = n then V.boundary.map else SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
   rw [Category.assoc, output_ι,
     stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
     hface _ (Fin.castSucc_ne_last j)]

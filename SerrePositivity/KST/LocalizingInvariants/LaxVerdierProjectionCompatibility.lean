@@ -17,8 +17,8 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeProjectionCorrection : SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) ≅
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
@@ -42,17 +42,17 @@ lemma tammeProjectionCorrection_fst : (hΦ.tammeProjectionCorrection p q).hom �
   rw [tammeProjectionCorrection, Iso.trans_hom, Category.assoc,
     tammeProjectionEquivalence_fst, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_projection]
 
-lemma laxQuotientProjectionCorrection_right (r : ExactMap (laxCategory p q) Q) :
+lemma laxQuotientProjectionCorrection_right (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q) :
     (hΦ.tammeProjectionCorrection p q).hom ≫ hΦ.laxQuotientProjectionDifferenceHom p q r =
       hΦ.laxQuotientDifferenceHom p q r := by
   rw [tammeProjectionCorrection, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom,
     _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom, Category.assoc, Iso.hom_inv_id_assoc]
 
-lemma laxQuotientProjectionCorrection_middle (i : ExactMap A (laxCategory p q))
-    (r : ExactMap (laxCategory p q) Q) (h : IsVerdierSequence i r) :
+lemma laxQuotientProjectionCorrection_middle (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q))
+    (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q) (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r) :
     (hΦ.laxQuotientFiberMiddleIso p q i r h).hom ≫ (hΦ.tammeProjectionCorrection p q).hom =
       (hΦ.laxQuotientProjectionMiddleIso p q i r h).hom := by
-  change ((hΦ.fiberMiddleIso (laxQuotientVerdierSequence p q i r h)).hom ≫
+  change ((hΦ.fiberMiddleIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).hom ≫
     (hΦ.tammeSplitComparison p q).inv) ≫
       ((hΦ.tammeSplitComparison p q).hom ≫ (hΦ.tammeProjectionEquivalence p q).hom) = _
   rw [Category.assoc, Iso.inv_hom_id_assoc]

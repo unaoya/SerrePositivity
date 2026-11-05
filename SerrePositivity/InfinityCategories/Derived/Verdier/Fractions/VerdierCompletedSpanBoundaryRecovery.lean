@@ -66,7 +66,7 @@ lemma exists_verdierCompletedSpanBoundaryRecovery (h : IsVerdierSequence i q)
   exact ⟨⟨d, g, G⟩⟩
 
 namespace VerdierCompletedSpanBoundaryRecovery
-open SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanBoundaryRecovery
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery
 variable {h : IsVerdierSequence i q} {x y : B.obj _⦋0⦌} {S K : SSet.{u}} {j : S ⟶ K}
   {f : K ⟶ groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y)}
   {a : S ⟶ groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y)}

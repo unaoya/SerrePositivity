@@ -292,7 +292,7 @@ def simplexToComponents (n : ℕ) : A.obj (op ⦋n⦌) →+* π₀ (ringSpace A)
 theorem simplexToComponents_natural {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌)
     (s : A.obj (op ⦋n⦌)) :
     simplexToComponents A m ((A.map f.op).hom s) = simplexToComponents A n s :=
-  simplexClass_map (ringSpace A) f s
+  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map (ringSpace A) f s
 
 end SimplicialRing
 

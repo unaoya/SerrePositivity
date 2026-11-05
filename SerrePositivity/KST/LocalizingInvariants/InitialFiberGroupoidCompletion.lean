@@ -22,24 +22,24 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def initialFiberGroupoidCompletionEquivalence (n : ℕ) {E : SSet.{u}}
     (p : E ⟶ (Δ[n] : SSet.{u})) [CartesianFibration p] :
     QCatEquivalence
-      (groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))))
-      (groupoidCompletion E) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion E) := by
   let R := Classical.choose (exists_initialFiberRetraction n p)
   let H := Classical.choose (Classical.choose_spec (exists_initialFiberRetraction n p))
   have h := Classical.choose_spec
     (Classical.choose_spec (exists_initialFiberRetraction n p))
-  exact groupoidCompletionEquivalenceOfReversePrismRetraction
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfReversePrismRetraction
     (vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) R h.1 H h.2.1 h.2.2.1
 
 lemma initialFiberGroupoidCompletionEquivalence_hom (n : ℕ) {E : SSet.{u}}
     (p : E ⟶ (Δ[n] : SSet.{u})) [CartesianFibration p] :
     (initialFiberGroupoidCompletionEquivalence n p).hom =
-      groupoidCompletionMapOf (vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) := rfl
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) := rfl
 
 lemma initialFiberInclusion_groupoidCompletion_isEquivalence (n : ℕ) {E : SSet.{u}}
     (p : E ⟶ (Δ[n] : SSet.{u})) [CartesianFibration p] :
     IsSimplicialHomotopyEquivalence
-      (groupoidCompletionMapOf (vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))) :=
   (initialFiberGroupoidCompletionEquivalence n p).isQCatEquivalence
     |>.isSimplicialHomotopyEquivalence
 

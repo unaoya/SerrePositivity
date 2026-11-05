@@ -44,9 +44,9 @@ lemma relativeDiagramCoreInclusion_naturality {B C X Y : SSet.{u}}
 
 /-- 同じ包含の二つの実 Verdier 商は全高次単体を含めて同じ相対図式を与える。 -/
 lemma relativeDiagram_eq_of_verdier
-    {A B C D : StableCategory.{u}} {i : ExactMap A B}
-    {q : ExactMap B C} {p : ExactMap B D}
-    (hq : IsVerdierSequence i q) (hp : IsVerdierSequence i p)
+    {A B C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
+    {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B D}
+    (hq : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (hp : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i p)
     {X : SSet.{u}} {J : Type v} (ev : J → (X ⟶ B.obj)) :
     relativeDiagram q.hom ev = relativeDiagram p.hom ev := by
   ext n s

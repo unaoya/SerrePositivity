@@ -18,29 +18,29 @@ open SerrePositivity.KST.SConstruction
 abbrev CubeJoinTerm (n : ℕ) := Option (Finset (Fin n))
 
 /-- 元の立方体の頂点における有限 max 表示の値。 -/
-def cubeJoinTermEval {n : ℕ} (s : CubeJoinTerm n) (x : CubeVertex n) : Bool :=
+def cubeJoinTermEval {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm n) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : Bool :=
   match s with
   | none => true
   | some t => t.sup x
 
 /-- 零頂点での値は、元の表示が定数一であるかを検出する。 -/
-lemma cubeJoinTermEval_bot {n : ℕ} (s : CubeJoinTerm n) :
-    cubeJoinTermEval s ⊥ = s.isNone := by
+lemma cubeJoinTermEval_bot {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm n) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval s ⊥ = s.isNone := by
   cases s with
   | none => rfl
   | some t => exact Finset.sup_bot t
 
 /-- 有限集合における一座標頂点の max は、その座標の所属を検出する。 -/
 lemma cubeVertexAtom_sup_finset {n : ℕ} (s : Finset (Fin n)) (i : Fin n) :
-    s.sup (cubeVertexAtom n i) = decide (i ∈ s) := by
+    s.sup (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) = decide (i ∈ s) := by
   apply Bool.eq_iff_iff.mpr
-  change s.sup (cubeVertexAtom n i) = ⊤ ↔ decide (i ∈ s) = ⊤
+  change s.sup (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) = ⊤ ↔ decide (i ∈ s) = ⊤
   rw [Finset.sup_eq_top_iff]
-  simp [cubeVertexAtom]
+  simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom]
 
 /-- 出力一座標の有限 max 表示は、その元の全頂点での関数から一意に回収される。 -/
 lemma cubeJoinTermEval_injective (n : ℕ) :
-    Function.Injective (cubeJoinTermEval (n := n)) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval (n := n)) := by
   intro s t h
   cases s with
   | none =>
@@ -48,22 +48,22 @@ lemma cubeJoinTermEval_injective (n : ℕ) :
     | none => rfl
     | some t =>
       have hzero : (true : Bool) = false := by
-        simpa only [cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
-          congrFun h (⊥ : CubeVertex n)
+        simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
+          congrFun h (⊥ : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
       cases hzero
   | some s =>
     cases t with
     | none =>
       have hzero : (false : Bool) = true := by
-        simpa only [cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
-          congrFun h (⊥ : CubeVertex n)
+        simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
+          congrFun h (⊥ : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
       cases hzero
     | some t =>
       have hst : s = t := by
         apply Finset.ext
         intro i
-        have hi := congrFun h (cubeVertexAtom n i)
-        simp only [cubeJoinTermEval, cubeVertexAtom_sup_finset] at hi
+        have hi := congrFun h (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)
+        simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom_sup_finset] at hi
         simpa using (Iff.of_eq (congrArg (fun b : Bool => b = true) hi))
       exact congrArg Option.some hst
 

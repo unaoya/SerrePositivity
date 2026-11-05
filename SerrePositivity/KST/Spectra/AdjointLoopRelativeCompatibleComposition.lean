@@ -119,7 +119,7 @@ lemma compatible_composition_condition (X Y Z : OmegaSpectrum.{u}) :
         RawSpectrumMapping.pointedComposition X Y Z.toKanSequence ≫ inclusionPost X Z := by
   rw [← Category.assoc, ← Category.assoc]
   apply (compatible_condition_iff X Z _ _).mpr
-  exact enriched_parameter_square_comp PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (inclusionPoint X) (inclusionPoint Y) (inclusionPoint Z)
     (replacedMap X Y) (originalMap X Y) (replacedMap Y Z) (originalMap Y Z)
     ((compatible_condition_iff X Y _ _).mp (compatible_condition X Y))

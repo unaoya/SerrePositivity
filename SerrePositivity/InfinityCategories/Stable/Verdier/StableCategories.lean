@@ -26,19 +26,19 @@ open SerrePositivity.KST.LocalizingInvariants
 /-- 小さい安定 quasicategory。冪等完備性は別条件であり、ここには含めない。 -/
 structure StableCategory where
   obj : SSet.{u}
-  isQuasicategory : Quasicategory obj
-  isStable : @IsStable obj isQuasicategory
+  isQuasicategory : Quasicategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj
+  isStable : @IsStable _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory
 
-attribute [instance] StableCategory.isQuasicategory StableCategory.isStable
+attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable
 
 /-- 完全関手は F3 の零対象・cofiber 保存条件を満たす実際の単体的射。 -/
-structure ExactMap (A B : StableCategory.{u}) where
+structure ExactMap (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) where
   hom : A.obj ⟶ B.obj
-  isExact : IsExactFunctor hom
+  isExact : IsExactFunctor _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
 
-attribute [instance] ExactMap.isExact
+attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact
 
-@[ext] lemma ExactMap.ext {A B : StableCategory.{u}} {F G : ExactMap A B}
+@[ext] lemma ExactMap.ext {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
     (h : F.hom = G.hom) : F = G := by
   cases F
   cases G
@@ -46,31 +46,31 @@ attribute [instance] ExactMap.isExact
   rfl
 
 /-- 恒等・合成は F3 の完全関手の恒等・合成を継承する。 -/
-instance stableCategory_category : Category.{u} StableCategory.{u} where
-  Hom := ExactMap
+instance stableCategory_category : Category.{u} _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
+  Hom := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
   id A := ⟨𝟙 A.obj, inferInstance⟩
   comp F G := ⟨F.hom ≫ G.hom, inferInstance⟩
-  id_comp F := ExactMap.ext (Category.id_comp F.hom)
-  comp_id F := ExactMap.ext (Category.comp_id F.hom)
-  assoc F G H := ExactMap.ext (Category.assoc F.hom G.hom H.hom)
+  id_comp F := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (Category.id_comp F.hom)
+  comp_id F := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (Category.comp_id F.hom)
+  assoc F G H := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (Category.assoc F.hom G.hom H.hom)
 
 /-- 関手 ∞ 圏の頂点が表す実関手の完全性。 -/
-def IsExactVertex (A B : StableCategory.{u})
+def IsExactVertex (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
     (v : ((ihom A.obj).obj B.obj) _⦋0⦌) : Prop :=
   IsExactFunctor ((functorVertexEquiv A.obj B.obj).symm v)
 
 /-- 完全関手と全ての自然変換からなる充満部分 ∞ 圏。 -/
-def exactFunctors (A B : StableCategory.{u}) : ((ihom A.obj).obj B.obj).Subcomplex :=
-  fullSubcomplexOnVertices _ (IsExactVertex A B)
+def exactFunctors (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : ((ihom A.obj).obj B.obj).Subcomplex :=
+  fullSubcomplexOnVertices _ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex A B)
 
-instance exactFunctors_quasicategory (A B : StableCategory.{u}) :
-    Quasicategory (exactFunctors A B : SSet.{u}) :=
+instance exactFunctors_quasicategory (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    Quasicategory (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) :=
   inferInstanceAs (Quasicategory
-    (fullSubcomplexOnVertices _ (IsExactVertex A B) : SSet.{u}))
+    (fullSubcomplexOnVertices _ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex A B) : SSet.{u}))
 
 /-- 完全関手 ∞ 圏の対象は、束ねた完全関手と一対一に対応する。 -/
-def exactFunctorVertexEquiv (A B : StableCategory.{u}) :
-    ExactMap A B ≃ (exactFunctors A B : SSet.{u}) _⦋0⦌ where
+def exactFunctorVertexEquiv (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B ≃ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) _⦋0⦌ where
   toFun F := ⟨functorVertex F.hom, by
     intro v
     have hv : v = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
@@ -81,15 +81,15 @@ def exactFunctorVertexEquiv (A B : StableCategory.{u}) :
     exact F.isExact⟩
   invFun v := ⟨(functorVertexEquiv A.obj B.obj).symm v.val,
     fullSubcomplexOnVertices_vertex v⟩
-  left_inv F := ExactMap.ext ((functorVertexEquiv A.obj B.obj).symm_apply_apply F.hom)
+  left_inv F := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext ((functorVertexEquiv A.obj B.obj).symm_apply_apply F.hom)
   right_inv v := Subtype.ext ((functorVertexEquiv A.obj B.obj).apply_symm_apply v.val)
 
 /-- 包含を後合成すると元の関手の頂点表示になる。 -/
-lemma exactFunctorVertexEquiv_val {A B : StableCategory.{u}} (F : ExactMap A B) :
-    (exactFunctorVertexEquiv A B F).val = functorVertex F.hom := rfl
+lemma exactFunctorVertexEquiv_val {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B F).val = functorVertex F.hom := rfl
 
 /-- 完全性は関手 ∞ 圏の同型で移送される。 -/
-lemma isExact_of_functorIso {A B : StableCategory.{u}} (F : ExactMap A B)
+lemma isExact_of_functorIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     {G : A.obj ⟶ B.obj} (e : FunctorIso F.hom G) : IsExactFunctor G :=
   isExactFunctor_of_functorIso e
 

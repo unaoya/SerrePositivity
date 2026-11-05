@@ -26,7 +26,7 @@ variable {C : Type v} {E : Type w} [EnrichedCategory SSet.{u} C]
 
 /-- 混合 Hom の実恒等入力は、同じ自然変換成分そのもの。 -/
 lemma d3Mixed_identity (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
-    (X : C) : eId SSet X ≫ EnrichedUnitTransformation.hom η X X = η.app X := by
+    (X : C) : eId SSet X ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom η X X = η.app X := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -53,19 +53,19 @@ variable {J : Type v} [Preorder J] (D : Jᵒᵖ ⥤ PointedSimplicialSet.{u})
 /-- 同じ実パラメータ射を一つの Kan 入力で評価した通常の図式。 -/
 def d3ParameterEvaluation (X : PointedKanObject.{u}) : J ⥤ PointedKanObject.{u} where
   obj i := (d3PointedKanIhom (D.obj (Opposite.op i))).obj X
-  map {i j} f := ObjectProperty.homMk (PointedMapping.prePointed (D.map f.op) X.obj)
+  map {i j} f := ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map f.op) X.obj)
   map_id i := by
     apply ObjectProperty.hom_ext
-    change PointedMapping.prePointed (D.map (𝟙 (Opposite.op i))) X.obj = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map (𝟙 (Opposite.op i))) X.obj = 𝟙 _
     rw [D.map_id, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact (internalHom.flip.obj X.obj).map_id (Opposite.op (D.obj (Opposite.op i)))
   map_comp {i j k} f g := by
     apply ObjectProperty.hom_ext
-    change PointedMapping.prePointed (D.map (g.op ≫ f.op)) X.obj =
-      PointedMapping.prePointed (D.map f.op) X.obj ≫
-        PointedMapping.prePointed (D.map g.op) X.obj
+    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map (g.op ≫ f.op)) X.obj =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map f.op) X.obj ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map g.op) X.obj
     rw [D.map_comp]
-    exact (PointedMapping.prePointed_comp (D.map g.op) (D.map f.op) X.obj).symm
+    exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (D.map g.op) (D.map f.op) X.obj).symm
 
 /-- 同じ実パラメータ射の混合 Hom は、恒等入力で元の制限射を回収する。 -/
 lemma d3ParameterMixed_identity (i j : J) (h : i ≤ j) (X : PointedKanObject.{u}) :
@@ -104,7 +104,7 @@ lemma d3PointedKanParameterSquare_vertex
     intro P
     change (D3EnrichedOrderedDiagram.map (d3ParameterStage D) (d3ParameterMixed D)
       (⟨d3ParameterSquareOrder t k.as.down, X⟩ :
-        EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u})
+        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u})
       ⟨d3ParameterSquareOrder t l.as.down, X⟩).app _
       ((EnrichedOrderedCylinder.pathOrderMap (d3ParameterSquareOrder t) k l).app _ P,
         (eId SSet X).app _ PUnit.unit) = _

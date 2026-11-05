@@ -32,18 +32,18 @@ def TransformationIsoVertex (x : X _⦋0⦌) : Prop :=
   IsIso ((exactFunctorNatTrans H).app (HomotopyCategory.mk x))
 
 /-- 三角形の成分の二つから三つ目の同型性を元の頂点条件へ戻す。 -/
-lemma transformationIsoVertex_stable : StableVertexCondition (TransformationIsoVertex H) where
-  zero x hx := by
+lemma transformationIsoVertex_stable : _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition (_root_.SerrePositivity.InfinityCategories.Stable.Exact.TransformationIsoVertex H) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.zero x hx := by
     exact (IsExactFunctor.preservesZero (F := F) x hx).isZeroHo.isIso
       (IsExactFunctor.preservesZero (F := G) x hx).isZeroHo _
-  cofiber t ht h₀ h₁ := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.cofiber t ht h₀ h₁ := by
     let T := cofiberTriangle t ht
     let a := (exactFunctorNatTransTriangle H).app T
     have hT := cofiberTriangle_mem_cofiberDistinguishedTriangles t ht
     exact Pretriangulated.isIso₃_of_isIso₁₂ a
       ((hoFunctor.map F).toFunctor.map_distinguished T hT)
       ((hoFunctor.map G).toFunctor.map_distinguished T hT) h₀ h₁
-  fiber t ht h₁ h₂ := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.fiber t ht h₁ h₂ := by
     have hc := IsStable.pushout_of_pullback t ht
     let T := cofiberTriangle t hc
     let a := (exactFunctorNatTransTriangle H).app T

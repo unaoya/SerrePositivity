@@ -25,8 +25,8 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 単射に沿う骨格間の包含の正方形は、単体次数ごとに pullback。 -/
 lemma transition_app_isPullback {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f]
     {n m : ℕ} (h : n ≤ m) (k : SimplexCategoryᵒᵖ) :
-    IsPullback (((transition h).app X).app k) ((map f n).app k)
-      ((map f m).app k) (((transition h).app Y).app k) := by
+    IsPullback (((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition h).app X).app k) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f n).app k)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f m).app k) (((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition h).app Y).app k) := by
   apply (Types.isPullback_iff _ _ _ _).mpr
   refine ⟨?_, ?_, ?_⟩
   · ext x
@@ -42,7 +42,7 @@ lemma transition_app_isPullback {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f]
       rw [he]
       exact y.property
     have hn : x.val ∈ (X.skeleton n).obj k := by
-      rw [← preimage_skeleton f n]
+      rw [← _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.preimage_skeleton f n]
       exact hx
     refine ⟨⟨x.val, hn⟩, ?_, ?_⟩
     · exact Subtype.ext rfl

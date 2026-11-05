@@ -10,27 +10,27 @@ public import SerrePositivity.KST.SConstruction.CubeNormalEndpoints
 namespace SerrePositivity.KST.SConstruction
 
 /-- 元の各入力を保持するかを表す真偽列。 -/
-def cubeDeletionNormalUsed : {n m : ℕ} → CubeDeletionNormal n m → CubeVertex n
+def cubeDeletionNormalUsed : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n
   | _, _, .nil => Fin.elim0
   | _, _, .drop d => Fin.cons false (cubeDeletionNormalUsed d)
   | _, _, .keep d => Fin.cons true (cubeDeletionNormalUsed d)
 
 /-- 元の保持入力の列は、保持添字の像そのもの。 -/
-lemma cubeDeletionNormalUsed_true_iff {n m : ℕ} (d : CubeDeletionNormal n m) (i : Fin n) :
-    cubeDeletionNormalUsed d i = true ↔ ∃ j, cubeDeletionNormalEmbedding d j = i := by
+lemma cubeDeletionNormalUsed_true_iff {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) (i : Fin n) :
+    cubeDeletionNormalUsed d i = true ↔ ∃ j, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d j = i := by
   induction d with
-  | nil => exact Fin.elim0 i
-  | drop d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => exact Fin.elim0 i
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · simp [cubeDeletionNormalUsed, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
     · simpa only [cubeDeletionNormalUsed, Fin.cons_succ, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding,
         Fin.succ_inj] using ih i
-  | keep d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · exact ⟨fun _ => ⟨0, rfl⟩, fun _ => rfl⟩
     · change cubeDeletionNormalUsed d i = true ↔
         ∃ j, Fin.cons (α := fun _ => Fin _) 0
-          (fun k => (cubeDeletionNormalEmbedding d k).succ) j = i.succ
+          (fun k => (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d k).succ) j = i.succ
       rw [ih i]
       constructor
       · rintro ⟨j, hj⟩
@@ -42,55 +42,55 @@ lemma cubeDeletionNormalUsed_true_iff {n m : ℕ} (d : CubeDeletionNormal n m) (
 
 /-- 使用入力の真偽列は、残す入力の次元を検出する。 -/
 lemma cubeDeletionNormal_dimension_of_used {n a b : ℕ}
-    (d : CubeDeletionNormal n a) (e : CubeDeletionNormal n b)
+    (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a) (e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n b)
     (h : cubeDeletionNormalUsed d = cubeDeletionNormalUsed e) : a = b := by
   induction d generalizing b with
-  | nil => cases e; rfl
-  | drop d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; rfl
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
     cases e with
-    | drop e => exact ih e (funext fun j => congrFun h j.succ)
-    | keep e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e => exact ih e (funext fun j => congrFun h j.succ)
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-  | keep d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
     cases e with
-    | drop e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-    | keep e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
 
 /-- 同じ残余次元の削除表示は、使用入力の真偽列から一意に回収される。 -/
-lemma cubeDeletionNormal_eq_of_used {n m : ℕ} (d e : CubeDeletionNormal n m)
+lemma cubeDeletionNormal_eq_of_used {n m : ℕ} (d e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m)
     (h : cubeDeletionNormalUsed d = cubeDeletionNormalUsed e) : d = e := by
   induction d with
-  | nil => cases e; rfl
-  | drop d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; rfl
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
     cases e with
-    | drop e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
-    | keep e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-  | keep d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
     cases e with
-    | drop e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-    | keep e =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
 
 /-- 削除と max の元の合成で、一入力がどこかの出力を真にする条件。 -/
 lemma cubeDeletionConnectionNormal_atom_true_iff {n m : ℕ}
     (r : CubeDeletionConnectionNormal n m) (i : Fin n) :
-    (∃ j, cubeDeletionConnectionNormalVertex r (cubeVertexAtom n i) j = true) ↔
+    (∃ j, cubeDeletionConnectionNormalVertex r (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) j = true) ↔
       cubeDeletionNormalUsed r.deletion i = true := by
   rw [cubeDeletionNormalUsed_true_iff]
-  change (∃ j, cubeFiberMax (cubeConnectionNormalBlock r.connection)
-    (cubeDeletionNormalVertex r.deletion (cubeVertexAtom n i)) j = true) ↔ _
+  change (∃ j, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (cubeConnectionNormalBlock r.connection)
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex r.deletion (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) j = true) ↔ _
   simp only [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
   constructor
   · rintro ⟨j, k, _, hk⟩

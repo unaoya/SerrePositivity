@@ -24,10 +24,10 @@ end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct
 open SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct
 local instance instSimplicialCategoryOmegaSpectrum : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def cornerIso (a b : Fin 2) : Σ x : Sp.{u} _⦋0⦌,
     VertexIso (squareVertex (LaxUniversalValue.square Φ p q i r h) a b) x := by
@@ -61,22 +61,22 @@ def vertexIsos (v : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) _⦋0⦌) : Σ x : Sp.{u} _
         stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.2))
     rw [Equiv.symm_apply_apply, Equiv.symm_apply_apply]
     rfl
-  exact ⟨(cornerIso hΦ p q i r h a b).1,
-    eqToIso (congrArg HomotopyCategory.mk he) ≪≫ (cornerIso hΦ p q i r h a b).2⟩
+  exact ⟨(_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.cornerIso hΦ p q i r h a b).1,
+    eqToIso (congrArg HomotopyCategory.mk he) ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.cornerIso hΦ p q i r h a b).2⟩
 
 def vertexPaths : DiagramVertexPaths (LaxUniversalValue.square Φ p q i r h) :=
-  DiagramVertexPaths.ofIso (vertexIsos hΦ p q i r h)
+  DiagramVertexPaths.ofIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexIsos hΦ p q i r h)
 
-def extension : (vertexPaths hΦ p q i r h).Extension := (vertexPaths hΦ p q i r h).extension
+def extension : (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexPaths hΦ p q i r h).Extension := (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexPaths hΦ p q i r h).extension
 
-def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (extension hΦ p q i r h).target
+def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).target
 
-def comparison : FunctorIso (LaxUniversalValue.square Φ p q i r h) (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).comparison
+def comparison : FunctorIso (LaxUniversalValue.square Φ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).comparison
 
-lemma square_isPullback : IsPullbackSquare (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).target_isPullback
-    (LaxUniversalDifference.comparisonSquare_value_isPullback p q i r h hΦ)
+lemma square_isPullback : IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).target_isPullback
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_value_isPullback p q i r h hΦ)
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct
 

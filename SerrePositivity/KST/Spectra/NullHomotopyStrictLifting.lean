@@ -40,7 +40,7 @@ lemma compatible (R : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [face]
-  split_ifs <;> try simp only [null_face, comp_const]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -84,7 +84,7 @@ lemma output_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 /-- 指定した射影へ零ホモトピーを調整し、upstairs の差の零性を保つ。 -/
 theorem exists_adjust (p : E ⟶ B) [Fibration p] [KanComplex E] [KanComplex B]
     (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
-    (T : PtSimplex.RelStruct .const (mapSimplex p rfl s) (Fin.last (n + 1)))
+    (T : PtSimplex.RelStruct .const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) (Fin.last (n + 1)))
     (he : difference T (mapNull p rfl R) = 1) :
     ∃ U : PtSimplex.RelStruct .const s (Fin.last (n + 1)),
       U.map ≫ p = T.map ∧ difference U R = 1 := by

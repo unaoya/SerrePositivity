@@ -52,15 +52,15 @@ def homotopy : SSet.Homotopy (curry F) (curry G) where
 
 def sliceMap (b : B _⦋0⦌) : A ⟶ A ⊗ B := lift (𝟙 A) (SSet.const b)
 
-def slice (b : B _⦋0⦌) := stableHomotopyPrecomp (sliceMap (A := A) b) H
+def slice (b : B _⦋0⦌) := stableHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) b) H
 
 def hom : FunctorHom (curry F) (curry G) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (homotopy H))
+  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy H))
 
-lemma component_arrow (b : B _⦋0⦌) : Arrow.mk (functorHomEvaluate (hom H) b) =
+lemma component_arrow (b : B _⦋0⦌) : Arrow.mk (functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom H) b) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (slice H b))) := by
-  rw [hom, functorHomEvaluate_homotopy]
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice H b))) := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom, functorHomEvaluate_homotopy]
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   apply CategoryTheory.Functor.functorHom_ext
   intro n α
@@ -85,7 +85,7 @@ lemma component_arrow (b : B _⦋0⦌) : Arrow.mk (functorHomEvaluate (hom H) b)
 
 lemma naturality [Quasicategory X] {b₀ b₁ : B _⦋0⦌} (e : B.Edge b₀ b₁) :
     (hoFunctor.map (curry F)).toFunctor.map (Truncated.HomotopyCategory.homMk e.toTruncated) ≫
-      functorHomEvaluate (hom H) b₁ = functorHomEvaluate (hom H) b₀ ≫
+      functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom H) b₁ = functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom H) b₀ ≫
         (hoFunctor.map (curry G)).toFunctor.map
           (Truncated.HomotopyCategory.homMk e.toTruncated) :=
   functorHomEvaluate_naturality _ _

@@ -19,42 +19,42 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
-lemma vertex_at (a b : Fin 2) : squareVertex (square hΦ p q i r h) a b =
-    (cornerIso hΦ p q i r h a b).1 := by
-  have hv := DiagramVertexPaths.Extension.target_vertex_ofIso (vertexIsos hΦ p q i r h)
-    (extension hΦ p q i r h) (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b)
+lemma vertex_at (a b : Fin 2) : squareVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) a b =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.cornerIso hΦ p q i r h a b).1 := by
+  have hv := DiagramVertexPaths.Extension.target_vertex_ofIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexIsos hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h) (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b)
   refine hv.trans ?_
-  change (cornerIso hΦ p q i r h
+  change (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.cornerIso hΦ p q i r h
     (stdSimplex.obj₀Equiv.{u + 1} (stdSimplex.obj₀Equiv.symm a))
     (stdSimplex.obj₀Equiv.{u + 1} (stdSimplex.obj₀Equiv.symm b))).1 = _
   rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply]
 
-lemma vertex00 : squareVertex (square hΦ p q i r h) 0 0 =
+lemma vertex00 : squareVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) 0 0 =
     coherentNerveVertex (value Φ A) := vertex_at hΦ p q i r h 0 0
 
-lemma vertex01 : squareVertex (square hΦ p q i r h) 0 1 =
+lemma vertex01 : squareVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) 0 1 =
     coherentNerveVertex (value Φ Q) := vertex_at hΦ p q i r h 0 1
 
-lemma vertex10 : squareVertex (square hΦ p q i r h) 1 0 =
+lemma vertex10 : squareVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) 1 0 =
     coherentNerveVertex (Binary.obj (value Φ C) (value Φ D)) := vertex_at hΦ p q i r h 1 0
 
-lemma vertex11 : squareVertex (square hΦ p q i r h) 1 1 =
+lemma vertex11 : squareVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) 1 1 =
     coherentNerveVertex (Binary.obj (value Φ Q) (value Φ Q)) := vertex_at hΦ p q i r h 1 1
 
 def component (a b : Fin 2) : squareHoVertex (LaxUniversalValue.square Φ p q i r h) a b ⟶
-    squareHoVertex (square hΦ p q i r h) a b :=
-  (extension hΦ p q i r h).naturalTransformation.app
+    squareHoVertex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) a b :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).naturalTransformation.app
     (HomotopyCategory.mk (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b))
 
 lemma component_arrow (a b : Fin 2) : Arrow.mk (component hΦ p q i r h a b) =
-    Arrow.mk (cornerIso hΦ p q i r h a b).2.hom := by
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.cornerIso hΦ p q i r h a b).2.hom := by
   have he := DiagramVertexPaths.Extension.naturalTransformation_component_ofIso
-    (vertexIsos hΦ p q i r h) (extension hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexIsos hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h)
     (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b)
   change Arrow.mk (component hΦ p q i r h a b) = _ at he
   refine he.trans ?_
@@ -63,26 +63,26 @@ lemma component_arrow (a b : Fin 2) : Arrow.mk (component hΦ p q i r h a b) =
 
 lemma bottom_naturality : squareHoBottom (LaxUniversalValue.square Φ p q i r h) ≫
     component hΦ p q i r h 1 0 = component hΦ p q i r h 0 0 ≫
-      squareHoBottom (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).naturalTransformation.naturality
+      squareHoBottom (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).naturalTransformation.naturality
     (squareHoBottom (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 lemma top_naturality : squareHoTop (LaxUniversalValue.square Φ p q i r h) ≫
     component hΦ p q i r h 1 1 = component hΦ p q i r h 0 1 ≫
-      squareHoTop (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).naturalTransformation.naturality
+      squareHoTop (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).naturalTransformation.naturality
     (squareHoTop (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 lemma left_naturality : squareHoLeft (LaxUniversalValue.square Φ p q i r h) ≫
     component hΦ p q i r h 0 1 = component hΦ p q i r h 0 0 ≫
-      squareHoLeft (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).naturalTransformation.naturality
+      squareHoLeft (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).naturalTransformation.naturality
     (squareHoLeft (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 lemma right_naturality : squareHoRight (LaxUniversalValue.square Φ p q i r h) ≫
     component hΦ p q i r h 1 1 = component hΦ p q i r h 1 0 ≫
-      squareHoRight (square hΦ p q i r h) :=
-  (extension hΦ p q i r h).naturalTransformation.naturality
+      squareHoRight (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.extension hΦ p q i r h).naturalTransformation.naturality
     (squareHoRight (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])))
 
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct

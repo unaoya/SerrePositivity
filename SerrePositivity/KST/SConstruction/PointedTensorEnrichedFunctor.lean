@@ -19,18 +19,18 @@ open scoped _root_.Simplicial
 def pointedTensorEnrichedFunctor (K : PointedSimplicialSet.{u}) :
     EnrichedFunctor SSet.{u} PointedSSetObject.{u} PointedSSetObject.{u} where
   obj X := ⟨K ⊗ X.obj⟩
-  map X Y := (Spectra.TensorMapping.map K X.obj Y.obj).right
+  map X Y := (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X.obj Y.obj).right
   map_id X := by
     change (PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id X.obj).right) ≫
-      (Spectra.TensorMapping.map K X.obj X.obj).right =
+      (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X.obj X.obj).right =
       PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id (K ⊗ X.obj)).right
     erw [Category.assoc, ← Under.comp_right, closedTensorMapping_id]
   map_comp X Y Z := by
     change PointedSimplicialSet.productToSmash _ _ ≫
       (MonoidalClosed.comp X.obj Y.obj Z.obj).right ≫
-        (Spectra.TensorMapping.map K X.obj Z.obj).right =
-      ((Spectra.TensorMapping.map K X.obj Y.obj).right ⊗ₘ
-        (Spectra.TensorMapping.map K Y.obj Z.obj).right) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X.obj Z.obj).right =
+      ((_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X.obj Y.obj).right ⊗ₘ
+        (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K Y.obj Z.obj).right) ≫
         PointedSimplicialSet.productToSmash _ _ ≫
         (MonoidalClosed.comp (K ⊗ X.obj) (K ⊗ Y.obj) (K ⊗ Z.obj)).right
     erw [← Under.comp_right, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.comp, Under.comp_right, ← Category.assoc,
@@ -39,10 +39,10 @@ def pointedTensorEnrichedFunctor (K : PointedSimplicialSet.{u}) :
 /-- 元の全 tensor Hom の頂点作用は、元の同じ通常射の左 tensor を回収する。 -/
 lemma pointedTensorMapping_vertex (K : PointedSimplicialSet.{u})
     {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
-    (Spectra.TensorMapping.map K X Y).right.app _ (Spectra.pointedHomVertexEquiv X Y f) =
+    (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X Y).right.app _ (Spectra.pointedHomVertexEquiv X Y f) =
       Spectra.pointedHomVertexEquiv (K ⊗ X) (K ⊗ Y) (K ◁ f) := by
   dsimp only [Spectra.pointedHomVertexEquiv, Equiv.trans_apply, curryHomEquiv']
-  change (Spectra.TensorMapping.map K X Y).right.app _
+  change (_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map K X Y).right.app _
     (PointedSimplicialSet.unitVertexEquiv _ (curry' f)) = _
   rw [← PointedSimplicialSet.unitVertexEquiv_naturality, closedTensorMapping_curry']
   rfl

@@ -22,7 +22,7 @@ open scoped Simplicial
 規約：パラメーター A は任意。使われ方：点ごとの押し出し判定の存在条件。 -/
 lemma functor_span_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
     (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C) : HasPointwiseColimits p :=
-  fun a => stable_hasColimit_span (evaluateFunctorDiagram p a)
+  fun a => _root_.SerrePositivity.InfinityCategories.Stable.stable_hasColimit_span (evaluateFunctorDiagram p a)
 
 /-- 概要：安定な標的の関手圏の全押し出しは点ごとに判定できる。
 方針：任意 span の点ごとの余極限の存在を既存の判定へ渡す。

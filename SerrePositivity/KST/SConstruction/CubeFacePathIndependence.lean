@@ -14,15 +14,15 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 
 /-- 元の生成語が二端点の面だけからなる条件。 -/
-inductive CubeFacePath : {X Y : CubeWordObject} → Quiver.Path X Y → Prop
-  | nil (X : CubeWordObject) : CubeFacePath (.nil : Quiver.Path X X)
-  | step {X : CubeWordObject} {m : ℕ} (p : Quiver.Path X (CubeWordObject.mk m))
+inductive CubeFacePath : {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} → Quiver.Path X Y → Prop
+  | nil (X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject) : CubeFacePath (.nil : Quiver.Path X X)
+  | step {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m))
       (hp : CubeFacePath p) (b : Bool) (i : Fin (m + 1)) : CubeFacePath
-        (p.cons (show CubeWordObject.mk m ⟶ CubeWordObject.mk (m + 1) from
-          CubeGenerator.face b m i))
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) from
+          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b m i))
 
 /-- 元の面の path は、その同じ構文の面の式から厳密に回収される。 -/
-lemma cubeFacePath_exists_expression {X Y : CubeWordObject} {p : Quiver.Path X Y}
+lemma cubeFacePath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {p : Quiver.Path X Y}
     (h : CubeFacePath p) : ∃ e : CubeFaceExpression X.dimension Y.dimension,
       cubeFaceExpressionPath e = p := by
   induction h with
@@ -35,8 +35,8 @@ lemma cubeFacePath_exists_expression {X Y : CubeWordObject} {p : Quiver.Path X Y
 
 /-- 同じ具体射を表す元の面の語は、元の Serre 余モノイド射として一致する。 -/
 lemma serreCubeWordFunctor_face_independent (A : Type u) [CommRing A]
-    {X Y : CubeWords} (p q : X ⟶ Y) (hp : CubeFacePath p) (hq : CubeFacePath q)
-    (h : cubeWordConcreteFunctor.map p = cubeWordConcreteFunctor.map q) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p q : X ⟶ Y) (hp : CubeFacePath p) (hq : CubeFacePath q)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q) :
     (serreCubeWordFunctor A).map p = (serreCubeWordFunctor A).map q := by
   obtain ⟨e, he⟩ := cubeFacePath_exists_expression hp
   obtain ⟨f, hf⟩ := cubeFacePath_exists_expression hq

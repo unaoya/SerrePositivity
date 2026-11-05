@@ -42,7 +42,7 @@ def simplexRel (f g : X.PtSimplex (n + 1) x) : Prop :=
 使われ方：Kerodon §3.2.3。正次数のホモトピー群の商。 -/
 def simplexSetoid (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) :
     Setoid (X.PtSimplex (n + 1) x) where
-  r := simplexRel
+  r := _root_.SerrePositivity.InfinityCategories.Kan.simplexRel
   iseqv := ⟨fun f ↦ ⟨.oneMul f _⟩,
     fun ⟨h⟩ ↦ ⟨h.oneMulEqSymm⟩,
     fun ⟨h⟩ ⟨h'⟩ ↦ ⟨h.oneMulEqTrans h'⟩⟩
@@ -79,30 +79,30 @@ theorem nonempty_relStruct_iff_zero [KanComplex X]
   | succ i ih =>
     exact (show Nonempty (PtSimplex.RelStruct f g i.succ) ↔
       Nonempty (PtSimplex.RelStruct f g i.castSucc) from
-        ⟨fun ⟨r⟩ ↦ ⟨unshiftRelStruct r⟩, fun ⟨r⟩ ↦ ⟨shiftRelStruct r⟩⟩).trans ih
+        ⟨fun ⟨r⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Kan.unshiftRelStruct r⟩, fun ⟨r⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Kan.shiftRelStruct r⟩⟩).trans ih
 
 /-- 概要：商に用いる関係は任意の面添字の RelStruct と同値。
 方針：最後から二番目の面では定義上の単位積となり、面添字を移す。
 規約：正次数 n + 1。
 使われ方：Kerodon §§3.2.2–3.2.3。標準的なホモトピー関係との比較。 -/
 theorem simplexRel_iff_relStruct [KanComplex X] {f g : X.PtSimplex (n + 1) x}
-    (i : Fin (n + 2)) : simplexRel f g ↔ Nonempty (PtSimplex.RelStruct f g i) := by
-  have h : simplexRel f g ↔
+    (i : Fin (n + 2)) : _root_.SerrePositivity.InfinityCategories.Kan.simplexRel f g ↔ Nonempty (PtSimplex.RelStruct f g i) := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.simplexRel f g ↔
       Nonempty (PtSimplex.RelStruct f g (Fin.last n).castSucc) :=
     ⟨fun ⟨r⟩ ↦ ⟨PtSimplex.relStructCastSuccEquivMulStruct.symm r⟩,
       fun ⟨r⟩ ↦ ⟨PtSimplex.relStructCastSuccEquivMulStruct r⟩⟩
-  exact h.trans ((nonempty_relStruct_iff_zero _).trans
-    (nonempty_relStruct_iff_zero i).symm)
+  exact h.trans ((_root_.SerrePositivity.InfinityCategories.Kan.nonempty_relStruct_iff_zero _).trans
+    (_root_.SerrePositivity.InfinityCategories.Kan.nonempty_relStruct_iff_zero i).symm)
 
 /-- 概要：Kan 複体の次数 n + 1 のホモトピー類。
 方針：境界が基点に定数の単体を充填関係で割る。
 規約：零次数は含めず、本レーン固有の名前を使う。
 使われ方：Kerodon §§3.2.2–3.2.3、Goerss–Jardine I §7。 -/
 def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u :=
-  Quotient (simplexSetoid X n x)
+  Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)
 
 namespace KanHomotopyGroup
-open SerrePositivity.KST.Spectra.KanHomotopyGroup
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
 
 variable [KanComplex X]
 
@@ -110,22 +110,22 @@ variable [KanComplex X]
 方針：商への標準射を使う。
 規約：正の次数 n + 1。
 使われ方：Kerodon §3.2.2。群演算の計算。 -/
-def mk (f : X.PtSimplex (n + 1) x) : KanHomotopyGroup X n x := Quotient.mk _ f
+def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f
 
 /-- 概要：ホモトピー類の等式は充填関係と同値。
 方針：商の実効性を使う。
 規約：充填の証人の存在だけを主張する。
 使われ方：Kerodon §3.2.3。代表独立性の検証。 -/
 theorem mk_eq_iff (f g : X.PtSimplex (n + 1) x) :
-    mk f = mk g ↔ simplexRel f g := Quotient.eq
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g ↔ _root_.SerrePositivity.InfinityCategories.Kan.simplexRel f g := Quotient.eq
 
 /-- 概要：任意の RelStruct の充填は同じホモトピー類を与える。
 方針：面添字に依存しない充填関係を商に送る。
 規約：充填の面添字は任意。
 使われ方：Kerodon §3.2.3。ホモトピー類の計算。 -/
 theorem sound {f g : X.PtSimplex (n + 1) x} {i : Fin (n + 2)}
-    (r : PtSimplex.RelStruct f g i) : mk f = mk g :=
-  Quotient.sound ((simplexRel_iff_relStruct i).2 ⟨r⟩)
+    (r : PtSimplex.RelStruct f g i) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g :=
+  Quotient.sound ((_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct i).2 ⟨r⟩)
 
 /-- 概要：同じ二因子の積の充填は商上で同じ値を持つ。
 方針：単位充填と結合則の逆向きを使う。
@@ -133,7 +133,7 @@ theorem sound {f g : X.PtSimplex (n + 1) x} {i : Fin (n + 2)}
 使われ方：Kerodon §3.2.3。積の選択の消去。 -/
 theorem mul_unique {f g a b : X.PtSimplex (n + 1) x}
     (h : PtSimplex.MulStruct f g a (Fin.last n))
-    (h' : PtSimplex.MulStruct f g b (Fin.last n)) : mk a = mk b :=
+    (h' : PtSimplex.MulStruct f g b (Fin.last n)) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b :=
   Quotient.sound ⟨PtSimplex.MulStruct.assoc' (.oneMul f _) h h'⟩
 
 /-- 概要：積の左因子を関係で置き換えられる。
@@ -141,9 +141,9 @@ theorem mul_unique {f g a b : X.PtSimplex (n + 1) x}
 規約：積の面添字は最後の面。
 使われ方：Kerodon §3.2.3。商上の積。 -/
 theorem mul_congr_left {f f' g a b : X.PtSimplex (n + 1) x}
-    (r : simplexRel f f')
+    (r : _root_.SerrePositivity.InfinityCategories.Kan.simplexRel f f')
     (h : PtSimplex.MulStruct f g a (Fin.last n))
-    (h' : PtSimplex.MulStruct f' g b (Fin.last n)) : mk a = mk b := by
+    (h' : PtSimplex.MulStruct f' g b (Fin.last n)) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := by
   obtain ⟨r⟩ := r
   exact Quotient.sound ⟨PtSimplex.MulStruct.assoc' r h h'⟩
 
@@ -152,9 +152,9 @@ theorem mul_congr_left {f f' g a b : X.PtSimplex (n + 1) x}
 規約：Kan 性は Mathlib の充填定理で使用する。
 使われ方：Kerodon §3.2.3。商上の積。 -/
 theorem mul_congr_right {f g g' a b : X.PtSimplex (n + 1) x}
-    (r : simplexRel g g')
+    (r : _root_.SerrePositivity.InfinityCategories.Kan.simplexRel g g')
     (h : PtSimplex.MulStruct f g a (Fin.last n))
-    (h' : PtSimplex.MulStruct f g' b (Fin.last n)) : mk a = mk b := by
+    (h' : PtSimplex.MulStruct f g' b (Fin.last n)) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := by
   obtain ⟨r⟩ := r
   exact Quotient.sound
     ⟨(PtSimplex.MulStruct.assoc h r.mulOneEqOfOneMulEq h').oneMulEqOfMulOneEq⟩
@@ -171,78 +171,78 @@ noncomputable def productSimplex (f g : X.PtSimplex (n + 1) x) :
 規約：証人の選択は不要。
 使われ方：Kerodon §3.2.3。積の群法則。 -/
 theorem productSimplex_spec (f g : X.PtSimplex (n + 1) x) :
-    Nonempty (PtSimplex.MulStruct f g (productSimplex f g) (Fin.last n)) :=
+    Nonempty (PtSimplex.MulStruct f g (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex f g) (Fin.last n)) :=
   (PtSimplex.MulStruct.nonempty f g (Fin.last n)).choose_spec
 
 /-- 概要：定数単体の類を単位元とする。
 方針：境界定数の代表を商へ送る。
 規約：正次数。
 使われ方：Kerodon §3.2.3。群の単位元。 -/
-instance instOne : One (KanHomotopyGroup X n x) := ⟨mk .const⟩
+instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩
 
 /-- 概要：ホモトピー類の積。
 方針：選んだ充填の代表を、両因子の代表独立性により商へ降ろす。
 規約：最後の面を積の面とする。
 使われ方：Kerodon §3.2.3。ホモトピー群。 -/
-noncomputable instance instMul : Mul (KanHomotopyGroup X n x) where
-  mul a b := Quotient.liftOn₂ a b (fun f g ↦ mk (productSimplex f g)) (by
+noncomputable instance instMul : Mul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) where
+  mul a b := Quotient.liftOn₂ a b (fun f g ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex f g)) (by
     intro f g f' g' hf hg
-    obtain ⟨h⟩ := productSimplex_spec f g
-    obtain ⟨h'⟩ := productSimplex_spec f' g
-    obtain ⟨h''⟩ := productSimplex_spec f' g'
-    exact (mul_congr_left hf h h').trans (mul_congr_right hg h' h''))
+    obtain ⟨h⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f g
+    obtain ⟨h'⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f' g
+    obtain ⟨h''⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f' g'
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_congr_left hf h h').trans (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_congr_right hg h' h''))
 
 /-- 概要：充填で指定された積は商上の積と一致する。
 方針：選択した積の充填と比較する。
 規約：因子と積は正次数の境界定数単体。
 使われ方：Kerodon §3.2.3。群法則と自然性。 -/
 theorem mul_eq {f g a : X.PtSimplex (n + 1) x}
-    (h : PtSimplex.MulStruct f g a (Fin.last n)) : mk f * mk g = mk a := by
-  obtain ⟨h'⟩ := productSimplex_spec f g
-  exact mul_unique h' h
+    (h : PtSimplex.MulStruct f g a (Fin.last n)) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a := by
+  obtain ⟨h'⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f g
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_unique h' h
 
 /-- 概要：ホモトピー類の積は単位的かつ結合的。
 方針：Mathlib の単位充填と三因子の充填を商へ送る。
 規約：充填の選択に依存しない。
 使われ方：Kerodon §3.2.3。群構造の前段。 -/
-noncomputable instance instMonoid : Monoid (KanHomotopyGroup X n x) where
+noncomputable instance instMonoid : Monoid (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) where
   one_mul a := by
-    induction a using Quotient.inductionOn with | h f => exact mul_eq (.oneMul f _)
+    induction a using Quotient.inductionOn with | h f => exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (.oneMul f _)
   mul_one a := by
-    induction a using Quotient.inductionOn with | h f => exact mul_eq (.mulOne f _)
+    induction a using Quotient.inductionOn with | h f => exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (.mulOne f _)
   mul_assoc a b c := by
     induction a using Quotient.inductionOn with | h f => ?_
     induction b using Quotient.inductionOn with | h g => ?_
     induction c using Quotient.inductionOn with | h h => ?_
-    obtain ⟨hfg⟩ := productSimplex_spec f g
-    obtain ⟨hgh⟩ := productSimplex_spec g h
-    obtain ⟨hfgh⟩ := productSimplex_spec f (productSimplex g h)
-    change mk (productSimplex f g) * mk h = mk (productSimplex f (productSimplex g h))
-    exact mul_eq (PtSimplex.MulStruct.assoc hfg hgh hfgh)
+    obtain ⟨hfg⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f g
+    obtain ⟨hgh⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec g h
+    obtain ⟨hfgh⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex g h)
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex f g) * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk h = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex f (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex g h))
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (PtSimplex.MulStruct.assoc hfg hgh hfgh)
 
 /-- 概要：各ホモトピー類は左逆元を持つ。
 方針：代表の外側ホーンを充填して左逆元を作る。
 規約：正次数のみ。
 使われ方：Kerodon §3.2.3。群構造の構成。 -/
-theorem exists_left_inverse (a : KanHomotopyGroup X n x) : ∃ b, b * a = 1 := by
+theorem exists_left_inverse (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) : ∃ b, b * a = 1 := by
   induction a using Quotient.inductionOn with | h f => ?_
   obtain ⟨g, ⟨h⟩⟩ := PtSimplex.MulStruct.exists_left_inverse f (Fin.last n)
-  exact ⟨mk g, mul_eq h⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq h⟩
 
 /-- 概要：各類の左逆元を選ぶ。
 方針：外側ホーンの充填で得た左逆元の存在を用いる。
 規約：群法則により選択の結果は一意になる。
 使われ方：Kerodon §3.2.3。逆元演算。 -/
-noncomputable instance instInv : Inv (KanHomotopyGroup X n x) :=
-  ⟨fun a ↦ (exists_left_inverse a).choose⟩
+noncomputable instance instInv : Inv (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :=
+  ⟨fun a ↦ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.exists_left_inverse a).choose⟩
 
 /-- 概要：正次数のホモトピー類は群をなす。
 方針：結合的な単位付き積と全要素の左逆元から構成する。
 規約：可換性はこの段階では主張しない。
 使われ方：Kerodon Theorem 3.2.2.10、§3.2.3。 -/
-noncomputable instance instGroup : Group (KanHomotopyGroup X n x) where
-  __ := (inferInstance : Monoid (KanHomotopyGroup X n x))
-  inv_mul_cancel a := (exists_left_inverse a).choose_spec
+noncomputable instance instGroup : Group (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) where
+  __ := (inferInstance : Monoid (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x))
+  inv_mul_cancel a := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.exists_left_inverse a).choose_spec
 
 end KanHomotopyGroup
 
@@ -266,9 +266,9 @@ def mapSimplex {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
 @[simp]
 theorem mapSimplex_const {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
     (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
-    mapSimplex (m := m) φ hφ .const = .const := by
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (m := m) φ hφ .const = .const := by
   ext : 1
-  simp [mapSimplex, hφ]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, hφ]
 
 /-- 概要：基点を保つ射で RelStruct の充填を後合成する。
 方針：各面の等式を後合成し、定数面の像を計算する。
@@ -277,10 +277,10 @@ theorem mapSimplex_const {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
 def mapRelStruct {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
     (φ : X ⟶ Y) (hφ : φ.app _ x = y)
     {f g : X.PtSimplex m x} {i : Fin (m + 1)} (r : PtSimplex.RelStruct f g i) :
-    PtSimplex.RelStruct (mapSimplex φ hφ f) (mapSimplex φ hφ g) i where
+    PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f) (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ g) i where
   map := r.map ≫ φ
-  δ_castSucc_map := by simp [mapSimplex]
-  δ_succ_map := by simp [mapSimplex]
+  δ_castSucc_map := by simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
+  δ_succ_map := by simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
   δ_map_of_lt j hj := by rw [← Category.assoc, r.δ_map_of_lt j hj, const_comp, hφ]
   δ_map_of_gt j hj := by rw [← Category.assoc, r.δ_map_of_gt j hj, const_comp, hφ]
 
@@ -291,17 +291,17 @@ def mapRelStruct {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
 def mapMulStruct {Y : SSet.{u}} {m : ℕ} {y : Y _⦋0⦌}
     (φ : X ⟶ Y) (hφ : φ.app _ x = y)
     {f g a : X.PtSimplex m x} {i : Fin m} (r : PtSimplex.MulStruct f g a i) :
-    PtSimplex.MulStruct (mapSimplex φ hφ f) (mapSimplex φ hφ g)
-      (mapSimplex φ hφ a) i where
+    PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f) (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ g)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ a) i where
   map := r.map ≫ φ
-  δ_castSucc_castSucc_map := by simp [mapSimplex]
-  δ_succ_castSucc_map := by simp [mapSimplex]
-  δ_succ_succ_map := by simp [mapSimplex]
+  δ_castSucc_castSucc_map := by simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
+  δ_succ_castSucc_map := by simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
+  δ_succ_succ_map := by simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
   δ_map_of_lt j hj := by rw [← Category.assoc, r.δ_map_of_lt j hj, const_comp, hφ]
   δ_map_of_gt j hj := by rw [← Category.assoc, r.δ_map_of_gt j hj, const_comp, hφ]
 
 namespace KanHomotopyGroup
-open SerrePositivity.KST.Spectra.KanHomotopyGroup
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
 
 variable [KanComplex X] {Y Z : SSet.{u}} [KanComplex Y] [KanComplex Z]
   {y : Y _⦋0⦌} {z : Z _⦋0⦌}
@@ -311,16 +311,16 @@ variable [KanComplex X] {Y Z : SSet.{u}} [KanComplex Y] [KanComplex Z]
 規約：像の基点の等式を明示的に渡す。
 使われ方：Kerodon §3.2.2。π_* 同型の界面。 -/
 noncomputable def map (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
-    KanHomotopyGroup X n x →* KanHomotopyGroup Y n y where
-  toFun := Quotient.map (mapSimplex φ hφ) (by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x →* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n y where
+  toFun := Quotient.map (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ) (by
     rintro f g ⟨r⟩
-    exact ⟨by simpa using mapMulStruct φ hφ r⟩)
-  map_one' := by change mk (mapSimplex φ hφ .const) = mk .const; rw [mapSimplex_const]
+    exact ⟨by simpa using _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct φ hφ r⟩)
+  map_one' := by change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ .const) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const; rw [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const]
   map_mul' a b := by
     induction a using Quotient.inductionOn with | h f => ?_
     induction b using Quotient.inductionOn with | h g => ?_
-    obtain ⟨r⟩ := productSimplex_spec f g
-    exact (mul_eq (mapMulStruct φ hφ r)).symm
+    obtain ⟨r⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f g
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (_root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct φ hφ r)).symm
 
 /-- 概要：誘導準同型を代表単体上で計算する。
 方針：商への写像の定義を展開する。
@@ -328,17 +328,17 @@ noncomputable def map (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
 使われ方：Kerodon §3.2.2。自然性の計算。 -/
 @[simp]
 theorem map_mk (φ : X ⟶ Y) (hφ : φ.app _ x = y) (f : X.PtSimplex (n + 1) x) :
-    map (n := n) φ hφ (mk f) = mk (mapSimplex φ hφ f) := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) φ hφ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f) := rfl
 
 /-- 概要：恒等射の誘導準同型は恒等準同型。
 方針：商の代表で恒等射の後合成を計算する。
 規約：同じ基点と次数。
 使われ方：Kerodon §3.2.2。関手の恒等法則。 -/
 @[simp]
-theorem map_id : map (n := n) (𝟙 X) (x := x) rfl = MonoidHom.id _ := by
+theorem map_id : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (𝟙 X) (x := x) rfl = MonoidHom.id _ := by
   ext a
   induction a using Quotient.inductionOn with | h f => ?_
-  change mk (mapSimplex (𝟙 X) rfl f) = mk f
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 X) rfl f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f
   congr 1
 
 /-- 概要：合成射の誘導準同型は誘導準同型の合成。
@@ -347,11 +347,11 @@ theorem map_id : map (n := n) (𝟙 X) (x := x) rfl = MonoidHom.id _ := by
 使われ方：Kerodon §3.2.2。関手の合成法則。 -/
 theorem map_comp (φ : X ⟶ Y) (hφ : φ.app _ x = y)
     (ψ : Y ⟶ Z) (hψ : ψ.app _ y = z) (hcomp : (φ ≫ ψ).app _ x = z) :
-    map (n := n) (φ ≫ ψ) hcomp = (map ψ hψ).comp (map φ hφ) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (φ ≫ ψ) hcomp = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map ψ hψ).comp (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map φ hφ) := by
   ext a
   induction a using Quotient.inductionOn with | h f => ?_
-  change mk (mapSimplex (φ ≫ ψ) hcomp f) =
-    mk (mapSimplex ψ hψ (mapSimplex φ hφ f))
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (φ ≫ ψ) hcomp f) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex ψ hψ (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f))
   congr 1
 
 end KanHomotopyGroup

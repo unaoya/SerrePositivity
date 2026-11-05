@@ -21,12 +21,12 @@ lemma simplexHABeadTail_value {n : ℕ} (s : DGNerve.SimplexData A D n)
     (hI : 2 ≤ (insert a T).card)
     (hmin : a = (insert a T).min' (Finset.card_pos.mp (by omega)))
     (hmax : T.max' hT = (insert a T).max' (Finset.card_pos.mp (by omega))) :
-    simplexHABeadWordValue A s (simplexHABeadTail T hT a ha) =
+    simplexHABeadWordValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a ha) =
       s.hom (insert a T) a (T.max' hT) (-((T.card - 1 : ℕ) : ℤ)) hI hmin hmax (by
-        have hc := Finset.card_insert_of_notMem (simplexHABeadTail_not_mem T a ha)
+        have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha)
         have _hp := Finset.card_pos.mpr hT
         omega) := by
-  have hc := Finset.card_insert_of_notMem (simplexHABeadTail_not_mem T a ha)
+  have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha)
   have _hp := Finset.card_pos.mpr hT
   have hd : T.card - 1 = (insert a T).card - 2 := by omega
   unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail

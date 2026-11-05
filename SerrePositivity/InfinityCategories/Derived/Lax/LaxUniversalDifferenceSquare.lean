@@ -26,63 +26,63 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def kernelMap : A ⟶ Q := ⟨i.hom ≫ first p q r, inferInstance⟩
 
 def inclusionComposite : A ⟶ laxCategory (𝟙 Q) (𝟙 Q) := i ≫ exactLift p q r
 
 def diagonalComposite : A ⟶ laxCategory (𝟙 Q) (𝟙 Q) :=
-  kernelMap p q i r ≫ IdentityLax.exactDiagonal Q
+  _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r ≫ IdentityLax.exactDiagonal Q
 
 def quotientComposite : laxCategory p q ⟶ Q :=
   exactLift p q r ≫ exactLaxDifference (𝟙 Q) (𝟙 Q)
 
-def lower : SSet.Edge.CompStruct (stableArrow i) (stableArrow (exactLift p q r))
-    (stableArrow (inclusionComposite p q i r)) :=
-  coherentNerveCompStruct (C := StableQCat.{u}) i (exactLift p q r)
+def lower : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLift p q r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite p q i r)) :=
+  coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) i (exactLift p q r)
 
-def upper : SSet.Edge.CompStruct (stableArrow (kernelMap p q i r))
-    (stableArrow (IdentityLax.exactDiagonal Q))
-    (stableArrow (diagonalComposite p q i r)) :=
-  coherentNerveCompStruct (C := StableQCat.{u}) (kernelMap p q i r) (IdentityLax.exactDiagonal Q)
+def upper : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (IdentityLax.exactDiagonal Q))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite p q i r)) :=
+  coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r) (IdentityLax.exactDiagonal Q)
 
-def diagonalComparisonTriangle : SSet.Edge.CompStruct (SSet.Edge.id (stableVertex A))
-    (stableArrow (inclusionComposite p q i r))
-    (stableArrow (diagonalComposite p q i r)) :=
-  exactMapComparisonTriangle (F := diagonalComposite p q i r)
-    (G := inclusionComposite p q i r) (inclusionDiagonalIso p q i r h).symm
+def diagonalComparisonTriangle : SSet.Edge.CompStruct (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite p q i r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite p q i r)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle (F := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite p q i r)
+    (G := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite p q i r) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionDiagonalIso p q i r h).symm
 
-def comparisonSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u} :=
-  PathComparisonSquare.square (lower p q i r) (upper p q i r)
-    (diagonalComparisonTriangle p q i r h)
+def comparisonSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
+  PathComparisonSquare.square (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.lower p q i r) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.upper p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComparisonTriangle p q i r h)
 
-lemma comparisonSquare_bottom : squareBottomEdge ≫ comparisonSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow i).edge :=
+lemma comparisonSquare_bottom : squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).edge :=
   PathComparisonSquare.square_bottom _ _ _
 
-lemma comparisonSquare_right : squareRightEdge ≫ comparisonSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow (exactLift p q r)).edge :=
+lemma comparisonSquare_right : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLift p q r)).edge :=
   PathComparisonSquare.square_right _ _ _
 
-lemma comparisonSquare_left : squareLeftEdge ≫ comparisonSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow (kernelMap p q i r)).edge :=
+lemma comparisonSquare_left : squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r)).edge :=
   PathComparisonSquare.square_left _ _ _
 
-lemma comparisonSquare_top : squareTopEdge ≫ comparisonSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow (IdentityLax.exactDiagonal Q)).edge :=
+lemma comparisonSquare_top : squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (IdentityLax.exactDiagonal Q)).edge :=
   PathComparisonSquare.square_top _ _ _
 
-def quotientCompositionTriangle : SSet.Edge.CompStruct (stableArrow (exactLift p q r))
-    (stableArrow (exactLaxDifference (𝟙 Q) (𝟙 Q))) (stableArrow r) := by
-  let s := coherentNerveCompStruct (C := StableQCat.{u})
+def quotientCompositionTriangle : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLift p q r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLaxDifference (𝟙 Q) (𝟙 Q))) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow r) := by
+  let s := coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
     (exactLift p q r) (exactLaxDifference (𝟙 Q) (𝟙 Q))
-  have e : FunctorIso (quotientComposite p q r).hom r.hom :=
+  have e : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientComposite p q r).hom r.hom :=
     differenceIso p q r
-  exact (compositionDiagonalTransport s (exactMapComparisonTriangle (F := r)
-    (G := quotientComposite p q r) e.symm)).triangle
+  exact (compositionDiagonalTransport s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle (F := r)
+    (G := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientComposite p q r) e.symm)).triangle
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 

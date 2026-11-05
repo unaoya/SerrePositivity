@@ -33,7 +33,7 @@ lemma dgBarCompactPiChart_cast_naturality {X X' Y Y' : SSet.{u}}
     (c : DGBarCompactPiChart X n A) (c' : DGBarCompactPiChart Y n B)
     (f : X ⟶ Y) (φ : A → B)
     (hf : ∀ z a, c'.equiv (f.app _ z) (dgBarCompactPiMap n f z a) = φ (c.equiv z a))
-    (z : X' _⦋0⦌) (a : KanHomotopyGroup X' n z) :
+    (z : X' _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X' n z) :
     (c'.cast hy).equiv ((dgBarCompactSpaceMapCast hx hy f).app _ z)
       (dgBarCompactPiMap n (dgBarCompactSpaceMapCast hx hy f) z a) =
       φ ((c.cast hx).equiv z a) := by

@@ -17,11 +17,11 @@ namespace SerrePositivity.KST.Fibration
 theorem doubleFunctorEvaluation_precomp_vertex_of_eq {K L A Y : SSet.{u}}
     (F : K ⟶ (ihom A).obj Y) (q : L ⟶ K) (l : L _⦋0⦌) (a : A _⦋0⦌)
     (x : K _⦋0⦌) (hx : q.app (Opposite.op ⦋0⦌) l = x) :
-    (doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
         (functorVertex (q ≫ F)) =
-      (doubleFunctorEvaluation (Y := Y) x a).app (Opposite.op ⦋0⦌) (functorVertex F) := by
-  exact (doubleFunctorEvaluation_precomp_vertex F q l a).symm.trans
-    (congrArg (fun z : K _⦋0⦌ => (doubleFunctorEvaluation (Y := Y) z a).app
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a).app (Opposite.op ⦋0⦌) (functorVertex F) := by
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.doubleFunctorEvaluation_precomp_vertex F q l a).symm.trans
+    (congrArg (fun z : K _⦋0⦌ => (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) z a).app
       (Opposite.op ⦋0⦌) (functorVertex F)) hx)
 
 /-- 同じ指定頂点像を保つ前合成同型は、同じ二重成分を保持する。 -/
@@ -29,10 +29,10 @@ theorem functorIso_pre_doubleMap_of_vertex {K L A Y : SSet.{u}}
     {F G : K ⟶ (ihom A).obj Y} (e : FunctorIso F G) (q : L ⟶ K)
     (l : L _⦋0⦌) (a : A _⦋0⦌) (x : K _⦋0⦌)
     (hx : q.app (Opposite.op ⦋0⦌) l = x) :
-    HEq (VertexIso.map (e.precomp q) (doubleFunctorEvaluation (Y := Y) l a))
-      (VertexIso.map e (doubleFunctorEvaluation (Y := Y) x a)) := by
+    HEq (VertexIso.map (e.precomp q) (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) l a))
+      (VertexIso.map e (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a)) := by
   exact (functorIso_pre_doubleMap e q l a).trans
     (F2.vertexIso_map_heq e (congrArg (fun z : K _⦋0⦌ =>
-      doubleFunctorEvaluation (Y := Y) z a) hx))
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) z a) hx))
 
 end SerrePositivity.KST.Fibration

@@ -51,13 +51,13 @@ def splitCocone : Cocone F := by
 
 /-- 代表を分離する余錐の余極限への降下。 -/
 def split : colimit F ⟶ Option (colimit A.toFunctor) :=
-  colimit.desc F (splitCocone A hA)
+  colimit.desc F (_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone A hA)
 
 /-- 部分図式の代表には、元の余極限の類を some として返す。 -/
 lemma split_ι (i : J) (x : A.toFunctor.obj i) :
-    split A hA (colimit.ι F i x.val) = some (colimit.ι A.toFunctor i x) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA (colimit.ι F i x.val) = some (colimit.ι A.toFunctor i x) := by
   classical
-  dsimp only [split]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split]
   erw [colimit.ι_desc_apply]
   change (if hx : x.val ∈ A.obj i then
     some (colimit.ι A.toFunctor i ⟨x.val, hx⟩) else none) = _
@@ -66,18 +66,18 @@ lemma split_ι (i : J) (x : A.toFunctor.obj i) :
 
 /-- 部分図式の余極限の包含の後では、分離射は some そのもの。 -/
 lemma split_map (x : colimit A.toFunctor) :
-    split A hA (colim.map A.ι x) = some x := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA (colim.map A.ι x) = some x := by
   obtain ⟨i, y, rfl⟩ := Types.jointly_surjective_of_isColimit (colimit.isColimit A.toFunctor) x
   erw [colimit.ι_map_apply]
-  exact split_ι A hA i y
+  exact _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_ι A hA i y
 
 include hA in
 /-- 全ての射で所属を反映する部分図式では、余極限の包含は単射。 -/
 lemma mono : Mono (colim.map A.ι) := by
   apply (mono_iff_injective _).mpr
   intro x y h
-  have he := congrArg (split A hA) h
-  rw [split_map, split_map] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA) h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map, _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map] at he
   exact Option.some.inj he
 
 end

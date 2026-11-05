@@ -94,7 +94,7 @@ def circleCompanionEdgewiseInitialVertex (z : Sp.{u} _⦋0⦌) :=
 lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : WalkingPair)
     (i : Fin 4) :
     (circleCompanionEdgewiseTetrahedron z k).app (Opposite.op ⦋0⦌)
-      (stdSimplex.obj₀Equiv.symm i) = FramedTetrahedron.vertex
+      (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex
         (circleCompanionEdgewiseInitialVertex z) (circleEvaluationPointedHom z).basepoint i := by
   have h1 := congrArg (fun h : (Δ[1] : SSet.{u}) ⟶
       (circleEvaluationPointedHom z).right ↦
@@ -140,7 +140,7 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
 /-- 元の共通解像三単体の同じ辺を、指定した共通初頂点と零頂点へ表示する。 -/
 def circleCompanionEdgewiseFramedEdge (z : Sp.{u} _⦋0⦌) (k : WalkingPair)
     (i j : Fin 4) (hij : i ≤ j) :=
-  FramedTetrahedron.edge (circleCompanionEdgewiseTetrahedron z k)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge (circleCompanionEdgewiseTetrahedron z k)
     (circleCompanionEdgewiseInitialVertex z) (circleEvaluationPointedHom z).basepoint
     (circleCompanionEdgewiseTetrahedron_vertices z k) i j hij
 
@@ -202,7 +202,7 @@ lemma circleCompanionEdgewise_difference_inverse (z : Sp.{u} _⦋0⦌) :
   have hrs : (circleCompanionEdgewiseTetrahedron z .right).app (Opposite.op ⦋1⦌)
       (stdSimplex.edge 3 2 3 (by decide)) =
       ((circleEvaluationPointedHom z).right.σ 0) (circleEvaluationPointedHom z).basepoint := hr
-  exact FramedTetrahedron.difference_inverse _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.difference_inverse _ _ _ _
     (circleCompanionEdgewiseTetrahedron_vertices z .left)
     (circleCompanionEdgewiseTetrahedron_vertices z .right) (his .left) (his .right) hrs ho
 

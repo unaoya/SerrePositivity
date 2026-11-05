@@ -50,7 +50,7 @@ structure VerdierTwoArrowRoofComparison {A B C : StableCategory.{u}}
     weakEquivalences i
 
 namespace VerdierTwoArrowRoofComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowRoofComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {D L : (Δ[1] : SSet.{u}) ⟶ B.obj}
   {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj}

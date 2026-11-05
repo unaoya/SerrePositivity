@@ -40,7 +40,7 @@ theorem baseChangeImageSectionFiberPoint_val (c : TransportSimplexCategory D)
     (v : (relativeFunctorSpace (pullback.snd p k)
       ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom) _⦋0⦌) :
     (firstVertexSectionFiberPoint p ((transportSimplexFunctor k).obj c)
-      (straighteningBaseChangeImageSectionPoint p k c
+      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c
         ((relativeFunctorBaseChangeForward p k
           ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
             (Opposite.op ⦋0⦌) v))).val =
@@ -57,7 +57,7 @@ theorem baseChangeImageSectionFiberPoint_eq (c : TransportSimplexCategory D)
       ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom) _⦋0⦌) :
     Eq.mp (congrArg (fun b => (vertexFiber p b) _⦋0⦌) (baseChangeImageFirstVertex k c))
       (firstVertexSectionFiberPoint p ((transportSimplexFunctor k).obj c)
-        (straighteningBaseChangeImageSectionPoint p k c
+        (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c
           ((relativeFunctorBaseChangeForward p k
             ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
               (Opposite.op ⦋0⦌) v))) =

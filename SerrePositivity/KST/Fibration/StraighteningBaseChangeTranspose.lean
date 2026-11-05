@@ -19,10 +19,10 @@ variable {B D : SSet.{u}} (k : D ⟶ B)
 theorem leftStraighteningInfinityMap_baseChangeIso_doubleMap
     (X : LeftFibrationObject B) (d : D _⦋0⦌) :
     HEq (VertexIso.map (leftStraighteningInfinityMap_baseChangeIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (coherentNerveVertex X) (ULift.up d)))
       (VertexIso.map (leftStraighteningSectionJointDiagram_baseChangeIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up d) (coherentNerveVertex X))) := by
   let e := leftStraighteningSectionJointDiagram_baseChangeIso k
   let U := SSet.uliftFunctor.{u + 1, u}
@@ -33,17 +33,17 @@ theorem leftStraighteningInfinityMap_baseChangeIso_doubleMap
     (congrArg functorVertex
       (transposeFunctorFamily_pre (leftStraighteningSectionJointDiagram D)
         (leftFibrationInfinityBaseChange k)).symm)
-    (leftStraighteningInfinityMap_baseChangeIso_heq k)
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u}) (coherentNerveVertex X) (ULift.up d))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityMap_baseChangeIso_heq k)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) (coherentNerveVertex X) (ULift.up d))
   exact hm.trans (functorIso_transpose_doubleMap e (ULift.up d) (coherentNerveVertex X))
 
 /-- 大域共同同型の初頂点成分は、同じ全単体上の指定制限同型の成分と一致する。 -/
 theorem leftStraighteningJointBaseChangeValueIso [Quasicategory D]
     (c : TransportSimplexCategory D) :
-    functorIsoValue (leftStraighteningSectionJointDiagram_baseChangeIso k)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningSectionJointDiagram_baseChangeIso k)
       (ULift.up ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
         (nerveVertex c))) =
-      functorIsoValue (straighteningJointBaseChangeRestrictionIso k)
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
         (ULift.up (nerveVertex c)) := by
   apply Iso.ext
   exact leftStraighteningSectionJointDiagram_baseChangeIso_value k c
@@ -52,21 +52,21 @@ theorem leftStraighteningJointBaseChangeValueIso [Quasicategory D]
 theorem leftStraighteningJointBaseChangeDoubleMap [Quasicategory D]
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
     HEq (VertexIso.map (leftStraighteningSectionJointDiagram_baseChangeIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
           (nerveVertex c))) (coherentNerveVertex X)))
-      (VertexIso.map (straighteningJointBaseChangeRestrictionIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   let e := leftStraighteningSectionJointDiagram_baseChangeIso k
   let a := ULift.up.{u + 1} ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
     (nerveVertex c))
-  let r := straighteningJointBaseChangeRestrictionIso k
+  let r := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k
   let b := ULift.up.{u + 1} (nerveVertex c)
   let x := coherentNerveVertex X
   have h := congrArg (fun i => VertexIso.map i (evaluateFunctorAt x))
     (leftStraighteningJointBaseChangeValueIso k c)
-  exact (functorIsoDoubleValue_heq_map e a x).symm.trans
-    ((heq_of_eq h).trans (functorIsoDoubleValue_heq_map r b x))
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoDoubleValue_heq_map e a x).symm.trans
+    ((heq_of_eq h).trans (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoDoubleValue_heq_map r b x))
 
 end SerrePositivity.KST.Fibration

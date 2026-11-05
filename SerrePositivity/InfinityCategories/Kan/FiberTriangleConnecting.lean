@@ -32,51 +32,51 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem connecting_product {E B : SSet.{u}} {p : E ⟶ B}
     [Fibration p] [KanComplex E] [KanComplex B] {e : E _⦋0⦌}
     {s : B.PtSimplex 2 (p.app _ e)}
-    {a : Fin 3 → (KanFiber p (p.app _ e)).PtSimplex 1 (fiberPoint p e)}
-    (T : SphericalFiberLift p e s a) :
-    connectingHom p e 0 (KanHomotopyGroup.mk s) =
-      (KanHomotopyGroup.mk (a 1))⁻¹ * KanHomotopyGroup.mk (a 2) *
-        KanHomotopyGroup.mk (a 0) := by
+    {a : Fin 3 → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex 1 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 1))⁻¹ * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 2) *
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 0) := by
   obtain ⟨ia, ⟨hi⟩⟩ := PtSimplex.MulStruct.exists_left_inverse (a 0) (0 : Fin 1)
-  obtain ⟨b, ⟨hb⟩⟩ := exists_left_factor ia (a 2) (0 : Fin 1)
-  let T' := reduce hi hb T
+  obtain ⟨b, ⟨hb⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_left_factor ia (a 2) (0 : Fin 1)
+  let T' := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce hi hb T
   obtain ⟨ia₁, ⟨hi₁⟩⟩ := PtSimplex.MulStruct.exists_left_inverse
-    (reduced a b (1 : Fin 3)) (0 : Fin 1)
+    (_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced a b (1 : Fin 3)) (0 : Fin 1)
   obtain ⟨c, ⟨hc⟩⟩ := PtSimplex.MulStruct.nonempty ia₁
-    (reduced a b (2 : Fin 3)) (0 : Fin 1)
-  have hlower : ∀ j : Fin 3, j.val < 1 → reduced a b j = .const := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced a b (2 : Fin 3)) (0 : Fin 1)
+  have hlower : ∀ j : Fin 3, j.val < 1 → _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced a b j = .const := by
     intro j hj
     have hj' : j = 0 := Fin.ext (by omega)
     subst j
-    simp [reduced]
-  have hconn : connectingHom p e 0 (KanHomotopyGroup.mk s) = KanHomotopyGroup.mk c := by
-    change connecting p e 1 (KanHomotopyGroup.mk s) = _
-    rw [connecting_eq p e (SphericalFiberLift.terminalLift hi₁ hc T' hlower),
-      SphericalFiberLift.terminalLift_boundary]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced]
+  have hconn : _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk c := by
+    change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e 1 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift hi₁ hc T' hlower),
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift_boundary]
     rfl
-  have hi' : KanHomotopyGroup.mk ia = (KanHomotopyGroup.mk (a 0))⁻¹ :=
-    eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq hi)
-  have hb' : KanHomotopyGroup.mk b = KanHomotopyGroup.mk (a 2) *
-      KanHomotopyGroup.mk (a 0) := by
-    have h := eq_mul_inv_of_mul_eq (KanHomotopyGroup.mul_eq hb)
+  have hi' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ia = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 0))⁻¹ :=
+    eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hi)
+  have hb' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 2) *
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 0) := by
+    have h := eq_mul_inv_of_mul_eq (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hb)
     simpa only [hi', inv_inv] using h
-  have hi₁' : KanHomotopyGroup.mk ia₁ = (KanHomotopyGroup.mk (a 1))⁻¹ := by
-    have h := eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq hi₁)
-    simpa only [reduced, Fin.reduceEq, ite_false] using h
-  rw [hconn, ← KanHomotopyGroup.mul_eq hc]
-  simp only [reduced, Fin.reduceEq, ite_false, ite_true]
+  have hi₁' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ia₁ = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a 1))⁻¹ := by
+    have h := eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hi₁)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced, Fin.reduceEq, ite_false] using h
+  rw [hconn, ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced, Fin.reduceEq, ite_false, ite_true]
   rw [hi₁', hb', mul_assoc]
 
 /-- 可換群へ移した三辺の交代和は、底の二単体の連結像。 -/
 theorem alternating_connecting {E B : SSet.{u}} {p : E ⟶ B}
     [Fibration p] [KanComplex E] [KanComplex B] {e : E _⦋0⦌}
     {s : B.PtSimplex 2 (p.app _ e)}
-    {a : Fin 3 → (KanFiber p (p.app _ e)).PtSimplex 1 (fiberPoint p e)}
-    (T : SphericalFiberLift p e s a) {G : Type v} [CommGroup G]
-    (φ : KanHomotopyGroup (KanFiber p (p.app _ e)) 0 (fiberPoint p e) →* G) :
-    (∑ j : Fin 3, (-1 : ℤ) ^ j.val • Additive.ofMul (φ (KanHomotopyGroup.mk (a j)))) =
-      Additive.ofMul (φ (connectingHom p e 0 (KanHomotopyGroup.mk s))) := by
-  rw [connecting_product T, φ.map_mul, φ.map_mul, φ.map_inv]
+    {a : Fin 3 → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex 1 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) {G : Type v} [CommGroup G]
+    (φ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) →* G) :
+    (∑ j : Fin 3, (-1 : ℤ) ^ j.val • Additive.ofMul (φ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a j)))) =
+      Additive.ofMul (φ (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.connecting_product T, φ.map_mul, φ.map_mul, φ.map_inv]
   simp only [ofMul_mul, ofMul_inv, Fin.sum_univ_succ, Fin.val_zero, pow_zero,
     one_zsmul, Fin.val_succ, Fin.sum_univ_zero, add_zero]
   norm_num

@@ -28,7 +28,7 @@ open scoped _root_.Simplicial
 使われ方：余分な退化の最初の面の恒等式。
 -/
 theorem simplexPrepend_δ_zero {m n : SimplexCategory} (θ : m ⟶ n) :
-    SimplexCategory.δ (0 : Fin (m.len + 2)) ≫ simplexPrepend θ =
+    SimplexCategory.δ (0 : Fin (m.len + 2)) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ =
       θ ≫ SimplexCategory.δ (0 : Fin (n.len + 2)) := by
   ext i : 3
   rfl
@@ -40,11 +40,11 @@ theorem simplexPrepend_δ_zero {m n : SimplexCategory} (θ : m ⟶ n) :
 使われ方：余分な退化と通常の面の交換。
 -/
 @[simp] theorem simplexPrepend_δ {n : ℕ} (i : Fin (n + 2)) :
-    simplexPrepend (SimplexCategory.δ i) = SimplexCategory.δ i.succ := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (SimplexCategory.δ i) = SimplexCategory.δ i.succ := by
   ext j : 3
   cases j using Fin.cases with
-  | zero => simp [simplexPrepend, SimplexCategory.δ]
-  | succ j => simp [simplexPrepend, SimplexCategory.δ]
+  | zero => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend, SimplexCategory.δ]
+  | succ j => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend, SimplexCategory.δ]
 
 /--
 概要：退化の先頭追加は番号を一つずらした退化である。
@@ -53,11 +53,11 @@ theorem simplexPrepend_δ_zero {m n : SimplexCategory} (θ : m ⟶ n) :
 使われ方：余分な退化と通常の退化の交換。
 -/
 @[simp] theorem simplexPrepend_σ {n : ℕ} (i : Fin (n + 1)) :
-    simplexPrepend (SimplexCategory.σ i) = SimplexCategory.σ i.succ := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (SimplexCategory.σ i) = SimplexCategory.σ i.succ := by
   ext j : 3
   cases j using Fin.cases with
-  | zero => simp [simplexPrepend, SimplexCategory.σ]
-  | succ j => simp [simplexPrepend, SimplexCategory.σ]
+  | zero => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend, SimplexCategory.σ]
+  | succ j => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend, SimplexCategory.σ]
 
 end SerrePositivity.InfinityCategories.Simplicial
 

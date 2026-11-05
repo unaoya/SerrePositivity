@@ -46,17 +46,17 @@ open EInfinity.Hammock.DoubleSimplicial
 
 /-- 転置の前後の対角は、恒等な次数成分で自然に同型。 -/
 def diagonalTransposeIso (C : SSet.{u}) :
-    diagonalFunctor.obj (transposeResolution C) ≅ diagonal C :=
+    diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeResolution C) ≅ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal C :=
   NatIso.ofComponents (fun n ↦ Iso.refl _) (by
     intro n m f
-    change (((resolution C).obj n).map f ≫ ((resolution C).map f).app m) ≫ 𝟙 _ =
-      𝟙 _ ≫ (((resolution C).map f).app n ≫ ((resolution C).obj m).map f)
-    simpa only [Category.comp_id, Category.id_comp] using ((resolution C).map f).naturality f)
+    change (((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).obj n).map f ≫ ((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).map f).app m) ≫ 𝟙 _ =
+      𝟙 _ ≫ (((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).map f).app n ≫ ((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).obj m).map f)
+    simpa only [Category.comp_id, Category.id_comp] using ((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).map f).naturality f)
 
 /-- 対角上の行定数包含は、元の同じ定数包含。 -/
 lemma diagonal_bisimplicialInclusion (C : SSet.{u}) :
-    (diagonalConstantIso C).inv ≫ diagonalFunctor.map (bisimplicialInclusion C) ≫
-      (diagonalTransposeIso C).hom = inclusion C := by
+    (diagonalConstantIso C).inv ≫ diagonalFunctor.map (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion C) ≫
+      (_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso C).hom = _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

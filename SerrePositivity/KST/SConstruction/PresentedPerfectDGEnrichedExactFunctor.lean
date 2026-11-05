@@ -17,13 +17,13 @@ variable (A : Type u) [CommRing A]
 
 /-- 同じ実安定値を、完全関手空間の core で豊穣化した圏の対象として使う。 -/
 def presentedPerfectDGStableQCat (C : PerfDGInput.{u, v} A) :
-    LocalizingInvariants.StableQCat.{max (u + 1) v} :=
-  show LocalizingInvariants.StableCategory from presentedPerfectDGStableCategory A C
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} :=
+  show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory from presentedPerfectDGStableCategory A C
 
 /-- 元の全 native Kan 関手族を保持する、安定 ∞ 圏への厳密単体的豊穣 Perf 関手。 -/
 def presentedPerfectDGEnrichedExactFunctor :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
-      LocalizingInvariants.StableQCat.{max (u + 1) v} where
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} where
   obj := presentedPerfectDGStableQCat A
   map C D := presentedPerfectDGExactCoreFamilyMap A C D
   map_id C := by
@@ -40,9 +40,9 @@ def presentedPerfectDGEnrichedExactFunctor :
 /-- 完全性を忘れる二つの包含の後で、元の全単体的 Perf 関手族を回収する。 -/
 lemma presentedPerfectDGEnrichedExactFunctor_family (C D : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGEnrichedExactFunctor A).map C D ≫ (quasicategoryCore
-      (LocalizingInvariants.exactFunctors
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-          SSet.{max (u + 1) v})).ι) ≫ (LocalizingInvariants.exactFunctors
+          SSet.{max (u + 1) v})).ι) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
             (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι =
       presentedPerfectDGNativeFamilyMap A C D :=
   presentedPerfectDGExactCoreFamilyMap_inclusion A C D

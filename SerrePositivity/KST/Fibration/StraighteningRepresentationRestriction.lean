@@ -56,10 +56,10 @@ theorem leftStraighteningRepresentationIso_value (c : TransportSimplexCategory B
 
 /-- 順方向成分だけでなく、同じ指定した成分同型そのものを回収する。 -/
 theorem leftStraighteningRepresentationIso_valueIso (c : TransportSimplexCategory B) :
-    functorIsoValue (leftStraighteningInfinityDiagram_representationIso p R)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_representationIso p R)
       (ULift.up ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
         (nerveVertex c))) =
-      functorIsoValue (straighteningRepresentationRestrictionIso p R)
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (straighteningRepresentationRestrictionIso p R)
         (ULift.up (nerveVertex c)) := by
   apply Iso.ext
   exact leftStraighteningRepresentationIso_value p R c

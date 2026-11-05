@@ -22,11 +22,11 @@ def relativeSectionDomainComponentIso (X : LeftFibrationObject B) (j : J) :
     VertexIso (spaceInfinityVertex (((relativeSectionEnrichedDiagram D).obj j).obj X))
       (spaceInfinityVertex (((relativeSectionEnrichedDiagram A).obj j).obj X)) :=
   (eqToIso (congrArg HomotopyCategory.mk
-    (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j))).symm ≪≫
-      functorIsoValue (relativeSectionJointComparisonIso η hη)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j))).symm ≪≫
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (relativeSectionJointComparisonIso η hη)
         (ULift.up (nerveVertex j), coherentNerveVertex X) ≪≫
       eqToIso (congrArg HomotopyCategory.mk
-        (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j))
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j))
 
 /-- 同じ成分の射は、元の切断制限射の coherent な辺の類。 -/
 theorem relativeSectionDomainComponentIso_hom (X : LeftFibrationObject B) (j : J) :
@@ -44,22 +44,22 @@ theorem relativeSectionDomainComponentIso_hom (X : LeftFibrationObject B) (j : J
     (relativeSectionJointComparisonEdge η).toTruncated from rfl,
     _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
   exact homMk_transport
-    (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j)
-    (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j)
     _ _ (relativeSectionJointComparisonEdge_at η j X)
 
 /-- 指定制限成分は、元の切断の点を同じ実制限射の像へ送る。 -/
 theorem relativeSectionDomainComponentIso_pointHom (X : LeftFibrationObject B) (j : J)
     (v : (((relativeSectionEnrichedDiagram D).obj j).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram D).obj j).obj X)).symm v) ≫
       (relativeSectionDomainComponentIso η hη X j).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram A).obj j).obj X)).symm
         ((relativeFunctorOverPre X.val.hom (η.app (Opposite.op j))).app
           (Opposite.op ⦋0⦌) v)) := by
   rw [relativeSectionDomainComponentIso_hom]
-  exact kanPointHom_comp_of_edge
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge
     ((relativeFunctorOverPreComparison (η.app (Opposite.op j))).val X) _ rfl v
 
 end SerrePositivity.KST.Fibration

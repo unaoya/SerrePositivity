@@ -22,17 +22,17 @@ namespace SerrePositivity.KST.Spectra.KanSequence
 /-- 元の内部 Hom の段交換を持つ、二重 mapping 列の厳密な射。 -/
 def mappingExchange (A K : PointedSimplicialSet.{u}) (X : KanSequence.{u}) :
     Hom (mapping A (mapping K X)) (mapping K (mapping A X)) where
-  app n := (InternalHomExchange.iso A K (X.level n).space).hom
+  app n := (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom
   comm n := by
     change PointedSimplicialSet.circle.{u} ◁
-        (InternalHomExchange.iso A K (X.level n).space).hom ≫
-      (HomTensorStrength.map PointedSimplicialSet.circle.{u} K ((ihom A).obj (X.level n).space) ≫
-        (ihom K).map (HomTensorStrength.map PointedSimplicialSet.circle.{u} A (X.level n).space ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} K ((ihom A).obj (X.level n).space) ≫
+        (ihom K).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} A (X.level n).space ≫
           (ihom A).map (X.sigma n))) =
-    (HomTensorStrength.map PointedSimplicialSet.circle.{u} A ((ihom K).obj (X.level n).space) ≫
-      (ihom A).map (HomTensorStrength.map PointedSimplicialSet.circle.{u} K (X.level n).space ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} A ((ihom K).obj (X.level n).space) ≫
+      (ihom A).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} K (X.level n).space ≫
         (ihom K).map (X.sigma n))) ≫
-      (InternalHomExchange.iso A K (X.level (n + 1)).space).hom
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level (n + 1)).space).hom
     simp only [Functor.map_comp, Category.assoc]
     rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.mapping_strength_assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post]
 
@@ -43,7 +43,7 @@ lemma mappingExchange_natural (A K : PointedSimplicialSet.{u})
       (mappingExchange A K X).comp (mappingPost K (mappingPost A p)) := by
   apply Hom.ext_app
   intro n
-  exact InternalHomExchange.natural_post A K (p.app n)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post A K (p.app n)
 
 /-- 逆順の同じ交換を逆射に持つ、二重 mapping 列の厳密な同型。 -/
 def mappingExchangeIso (A K : PointedSimplicialSet.{u}) (X : KanSequence.{u}) :
@@ -53,14 +53,14 @@ def mappingExchangeIso (A K : PointedSimplicialSet.{u}) (X : KanSequence.{u}) :
   hom_inv_id := by
     apply Hom.ext_app
     intro n
-    change (InternalHomExchange.iso A K (X.level n).space).hom ≫
-      (InternalHomExchange.iso K A (X.level n).space).hom = 𝟙 _
+    change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A (X.level n).space).hom = 𝟙 _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv K A, Iso.hom_inv_id]
   inv_hom_id := by
     apply Hom.ext_app
     intro n
-    change (InternalHomExchange.iso K A (X.level n).space).hom ≫
-      (InternalHomExchange.iso A K (X.level n).space).hom = 𝟙 _
+    change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A (X.level n).space).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom = 𝟙 _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A K, Iso.hom_inv_id]
 
 /-- 外側の元のパラメータへの制限も、列全体の同じ交換と厳密に可換。 -/
@@ -70,13 +70,13 @@ lemma mappingExchange_pre_left {A' A : PointedSimplicialSet.{u}} (i : A' ⟶ A)
       (mappingExchange A K X).comp (mappingPost K (mappingPre i X)) := by
   apply Hom.ext_app
   intro n
-  change PointedMapping.prePointed i (PointedObject.basedHom K (X.level n).space) ≫
-      (InternalHomExchange.iso A' K (X.level n).space).hom =
-    (InternalHomExchange.iso A K (X.level n).space).hom ≫
-      (ihom K).map (PointedMapping.prePointed i (X.level n).space)
+  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (PointedObject.basedHom K (X.level n).space) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A' K (X.level n).space).hom =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom ≫
+      (ihom K).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space)
   simpa only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     PointedObject.ihom_obj_eq_basedHom] using
-    InternalHomExchange.natural_pre_left i K (X.level n).space
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left i K (X.level n).space
 
 /-- 内側の元のパラメータへの制限も、列全体の同じ交換と厳密に可換。 -/
 lemma mappingExchange_pre_right (A : PointedSimplicialSet.{u})
@@ -85,12 +85,12 @@ lemma mappingExchange_pre_right (A : PointedSimplicialSet.{u})
       (mappingExchange A K X).comp (mappingPre i (mapping A X)) := by
   apply Hom.ext_app
   intro n
-  change (ihom A).map (PointedMapping.prePointed i (X.level n).space) ≫
-      (InternalHomExchange.iso A K' (X.level n).space).hom =
-    (InternalHomExchange.iso A K (X.level n).space).hom ≫
-      PointedMapping.prePointed i (PointedObject.basedHom A (X.level n).space)
+  change (ihom A).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K' (X.level n).space).hom =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (X.level n).space).hom ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (PointedObject.basedHom A (X.level n).space)
   simpa only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     PointedObject.ihom_obj_eq_basedHom] using
-    InternalHomExchange.natural_pre_right A i (X.level n).space
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right A i (X.level n).space
 
 end SerrePositivity.KST.Spectra.KanSequence

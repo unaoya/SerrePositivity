@@ -53,7 +53,7 @@ lemma condition (A : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :
 /-- 可換な組の空間の元の射への射影は実際の自明 Kan fibration。 -/
 lemma sourceMap_trivialKanFibration (A : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) : TrivialKanFibration (sourceMap A X Y).right := by
-  exact ⟨pointedPullback_snd_rlp _ _
+  exact ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_rlp _ _
     (cotensorEvaluationPrecomposition_trivialKanFibration (cotensor A X) Y A).mem⟩
 
 /-- 可換な組の全空間は Kan。 -/
@@ -66,7 +66,7 @@ instance pointedSpace_kanComplex (A : PointedSimplicialSet.{u})
       (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
     (modelCategoryQuillen.fibration_iff _).2 (fun _ _ j hj ↦
       compatibleComparisonTrivial.mem j (modelCategoryQuillen.J_le_monomorphisms j hj))
-  exact @pointedPullback_kanComplex _ _ _
+  exact @_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex _ _ _
     (cotensorEvaluationPrecomposition (cotensor A X) Y A) (evaluationPost A X Y)
     compatibleComparisonFibration (RawSpectrumMapping.pointedSpace_kanComplex X Y.toKanSequence)
 

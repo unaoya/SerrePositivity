@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromD_laxArrow_source_zero (x : D.obj _⦋0⦌) :
     IsZeroSourceArrow (((LaxInclusion.fromD p q) ≫ F2.laxPullbackArrow p.hom q.hom).app
@@ -29,11 +29,11 @@ lemma fromD_laxArrow_source_zero (x : D.obj _⦋0⦌) :
   rw [Category.assoc, F2.laxPullbackArrow_source, ← Category.assoc]
   change IsZeroVertex (((LaxInclusion.fromD p q ≫ (laxFst p q).hom) ≫ p.hom).app _ x)
   rw [LaxInclusion.fromD_fst]
-  exact LaxInclusion.zeroC_post p x
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC_post p x
 
 lemma fromD_laxArrow_target :
     ((LaxInclusion.fromD p q) ≫ F2.laxPullbackArrow p.hom q.hom) ≫
-      ArrowTarget.target E.obj = q.hom := by
+      _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target E.obj = q.hom := by
   rw [Category.assoc]
   change LaxInclusion.fromD p q ≫
     (F2.laxPullbackArrow p.hom q.hom ≫ evaluateFunctorAt _) = q.hom
@@ -45,7 +45,7 @@ lemma fromD_laxArrow_target :
 def fromD_differenceIso : FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q) q.hom := by
   let a := F2.laxPullbackArrow p.hom q.hom
   have h : FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q)
-      ((LaxInclusion.fromD p q ≫ a) ≫ CofiberFamily.cofiber E.obj (𝟙 _)) := by
+      ((LaxInclusion.fromD p q ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj (𝟙 _)) := by
     simpa only [laxDifference, Category.assoc] using
       FunctorIso.precomp (CofiberFamily.compositionIso E.obj a) (LaxInclusion.fromD p q)
   exact h ≪≫ universalCofiberZeroSourceIso E.obj _ (fromD_laxArrow_source_zero p q) ≪≫

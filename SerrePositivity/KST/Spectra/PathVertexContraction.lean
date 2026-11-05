@@ -64,16 +64,16 @@ lemma pathVertexContraction_face_one (Y : PointedSimplicialSet.{u})
 lemma pathVertexContraction_endpoint (Y : PointedSimplicialSet.{u})
     (v : (basedPathSpace Y).right _⦋0⦌) :
     pathVertexContraction Y v ≫ (pathEndpoint Y).right =
-      (PointedMapping.familyMap pointedInterval Y v).right := by
+      (PointedMapping.familyMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y v).right := by
   rw [pathVertexContraction, Category.assoc, pathContraction_endpoint]
   change lift (SSet.const v) (𝟙 (Δ[1] : SSet.{u})) ≫
     (β_ (basedPathSpace Y).right (Δ[1] : SSet.{u})).hom ≫ pathEvaluation Y =
-    PointedMapping.zeroSection pointedInterval.right ≫
+    PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ≫
       MonoidalClosed.uncurry (SSet.yonedaEquiv.symm v ≫
-        PointedObject.basedHomι pointedInterval Y)
+        PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)
   rw [MonoidalClosed.uncurry_natural_left, ← Category.assoc]
-  have h : PointedMapping.zeroSection pointedInterval.right ≫
-      pointedInterval.right ◁ SSet.yonedaEquiv.symm v =
+  have h : PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ◁ SSet.yonedaEquiv.symm v =
       lift (SSet.const v) (𝟙 (Δ[1] : SSet.{u})) ≫
         (β_ (basedPathSpace Y).right (Δ[1] : SSet.{u})).hom := by
     rw [SSet.yonedaEquiv_symm_zero]

@@ -22,27 +22,27 @@ open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 下側の全精密化の Path は、元の終点の直後の縦辺との切断点を通る。 -/
-lemma coherentLowerPrismRefinementPath_cut {s t : CoherentArrowString f} (a : s ⟶ t) :
+lemma coherentLowerPrismRefinementPath_cut {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
     (ULift.up (Fin.last t.length).castSucc : ULift.{u} (Fin (t.length + 2))) ∈
-      (coherentStringRefinementPath (coherentLowerPrismStringMap a)).I := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap a)).I := by
   refine ⟨(Fin.last s.length).castSucc, ?_⟩
-  change ULift.up ((coherentLowerStringExtend a.map).toOrderHom
+  change ULift.up ((_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend a.map).toOrderHom
     (Fin.last s.length).castSucc) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_castSucc, a.last]
 
 /-- 上側の全精密化の Path は、元の始点の縦辺の直後の切断点を通る。 -/
-lemma coherentUpperPrismRefinementPath_cut {s t : CoherentArrowString f} (a : s ⟶ t) :
+lemma coherentUpperPrismRefinementPath_cut {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
     (ULift.up ((0 : Fin (t.length + 1)).succ) : ULift.{u} (Fin (t.length + 2))) ∈
-      (coherentStringRefinementPath (coherentUpperPrismStringMap a)).I := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap a)).I := by
   refine ⟨(0 : Fin (s.length + 1)).succ, ?_⟩
-  change ULift.up ((coherentUpperStringExtend a.map).toOrderHom
+  change ULift.up ((_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend a.map).toOrderHom
     (0 : Fin (s.length + 1)).succ) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_succ, a.first]
 
 /-- 下側の全高次精密化の単体は、元の合成面に厳密に属する。 -/
 lemma coherentLowerPrismPathFlag_through {d : ℕ}
-    (F : (nerve (CoherentArrowString f)) _⦋d⦌) :
-    coherentStringPathFlag (F ⋙ coherentLowerPrismStringFunctor f) ∈
+    (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋d⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f) ∈
       (Coherent.pathThrough (ULift.up (Fin.last (F.obj (Fin.last d)).length).castSucc)).obj
         (Opposite.op ⦋d⦌) := by
   intro k
@@ -50,8 +50,8 @@ lemma coherentLowerPrismPathFlag_through {d : ℕ}
 
 /-- 上側の全高次精密化の単体も、元の合成面に厳密に属する。 -/
 lemma coherentUpperPrismPathFlag_through {d : ℕ}
-    (F : (nerve (CoherentArrowString f)) _⦋d⦌) :
-    coherentStringPathFlag (F ⋙ coherentUpperPrismStringFunctor f) ∈
+    (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋d⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f) ∈
       (Coherent.pathThrough
         (ULift.up ((0 : Fin ((F.obj (Fin.last d)).length + 1)).succ))).obj
           (Opposite.op ⦋d⦌) := by
@@ -85,48 +85,48 @@ lemma coherentPathFlag_mapping_comp {J : Type u} [LinearOrder J] {a b c : J}
 lemma coherentLowerPrismPathFlag_mapping_comp
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {d : ℕ} (F : (nerve (CoherentArrowString f)) _⦋d⦌) :
+    {d : ℕ} (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋d⦌) :
     let t := F.obj (Fin.last d)
-    let s := coherentStringDiagramCell Q (coherentLowerPrismString t).chain
+    let s := coherentStringDiagramCell Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString t).chain
     let a : ULift.{u} (Fin (t.length + 2)) := ULift.up 0
     let b : ULift.{u} (Fin (t.length + 2)) := ULift.up (Fin.last t.length).castSucc
     let c : ULift.{u} (Fin (t.length + 2)) := ULift.up (Fin.last (t.length + 1))
-    let P := coherentStringPathFlag (F ⋙ coherentLowerPrismStringFunctor f)
+    let P := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f)
     (s.map (.mk a) (.mk c)).app (Opposite.op ⦋d⦌) P =
       (coherentPathCutSplit (show a ≤ b from Fin.zero_le _) (show b ≤ c from Fin.le_last _) ≫
         (s.map (.mk a) (.mk b) ⊗ₘ s.map (.mk b) (.mk c)) ≫
           eComp SSet (s.obj (.mk a)) (s.obj (.mk b)) (s.obj (.mk c))).app
             (Opposite.op ⦋d⦌) P := by
   exact coherentPathFlag_mapping_comp
-    (coherentStringDiagramCell Q (coherentLowerPrismString (F.obj (Fin.last d))).chain)
+    (coherentStringDiagramCell Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (F.obj (Fin.last d))).chain)
     (show (ULift.up 0 : ULift.{u} (Fin ((F.obj (Fin.last d)).length + 2))) ≤ _ from Fin.zero_le _)
     (show _ ≤ (ULift.up (Fin.last ((F.obj (Fin.last d)).length + 1)) :
       ULift.{u} (Fin ((F.obj (Fin.last d)).length + 2))) from Fin.le_last _)
-    (coherentStringPathFlag (F ⋙ coherentLowerPrismStringFunctor f))
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f))
     (coherentLowerPrismPathFlag_through F)
 
 /-- 元の図式の上側の全パラメータの評価を、同じ元の豊穣作用の実合成へ分割する。 -/
 lemma coherentUpperPrismPathFlag_mapping_comp
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {d : ℕ} (F : (nerve (CoherentArrowString f)) _⦋d⦌) :
+    {d : ℕ} (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋d⦌) :
     let t := F.obj (Fin.last d)
-    let s := coherentStringDiagramCell Q (coherentUpperPrismString t).chain
+    let s := coherentStringDiagramCell Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString t).chain
     let a : ULift.{u} (Fin (t.length + 2)) := ULift.up 0
     let b : ULift.{u} (Fin (t.length + 2)) := ULift.up ((0 : Fin (t.length + 1)).succ)
     let c : ULift.{u} (Fin (t.length + 2)) := ULift.up (Fin.last (t.length + 1))
-    let P := coherentStringPathFlag (F ⋙ coherentUpperPrismStringFunctor f)
+    let P := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f)
     (s.map (.mk a) (.mk c)).app (Opposite.op ⦋d⦌) P =
       (coherentPathCutSplit (show a ≤ b from Fin.zero_le _) (show b ≤ c from Fin.le_last _) ≫
         (s.map (.mk a) (.mk b) ⊗ₘ s.map (.mk b) (.mk c)) ≫
           eComp SSet (s.obj (.mk a)) (s.obj (.mk b)) (s.obj (.mk c))).app
             (Opposite.op ⦋d⦌) P := by
   exact coherentPathFlag_mapping_comp
-    (coherentStringDiagramCell Q (coherentUpperPrismString (F.obj (Fin.last d))).chain)
+    (coherentStringDiagramCell Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (F.obj (Fin.last d))).chain)
     (show (ULift.up 0 : ULift.{u} (Fin ((F.obj (Fin.last d)).length + 2))) ≤ _ from Fin.zero_le _)
     (show _ ≤ (ULift.up (Fin.last ((F.obj (Fin.last d)).length + 1)) :
       ULift.{u} (Fin ((F.obj (Fin.last d)).length + 2))) from Fin.le_last _)
-    (coherentStringPathFlag (F ⋙ coherentUpperPrismStringFunctor f))
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (F ⋙ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f))
     (coherentUpperPrismPathFlag_through F)
 
 end SerrePositivity.KST.SConstruction

@@ -38,19 +38,19 @@ theorem connectingZeroOver_natural {E B E' B' : SSet.{u}}
     (p : E ⟶ B) (q : E' ⟶ B') [Fibration p] [Fibration q]
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ q)
     (e : E _⦋0⦌) (e' : E' _⦋0⦌) (he : f.app _ e = e')
-    (φ : KanFiber p (p.app _ e) ⟶ KanFiber q (q.app _ e'))
-    (hφ : φ ≫ fiberι q (q.app _ e') = fiberι p (p.app _ e) ≫ f)
-    (hpoint : φ.app _ (fiberPoint p e) = fiberPoint q e')
+    (φ : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber q (q.app _ e'))
+    (hφ : φ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι q (q.app _ e') = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) ≫ f)
+    (hpoint : φ.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint q e')
     (hb : g.app _ (p.app _ e) = q.app _ e')
-    (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    KanHomotopy.map 0 φ hpoint (connecting p e 0 a) =
-      connecting q e' 0 (KanHomotopyGroup.map g hb a) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 φ hpoint (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.connecting q e' 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g hb a) := by
   subst e'
-  have hφeq : φ = fiberMap p q f g comm e := by
-    apply fiber_hom_ext q (q.app _ (f.app _ e))
-    exact hφ.trans (fiberMap_ι p q f g comm e).symm
+  have hφeq : φ = _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p q f g comm e := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext q (q.app _ (f.app _ e))
+    exact hφ.trans (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p q f g comm e).symm
   subst φ
-  exact connecting_natural p q f g comm e 0 a
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural p q f g comm e 0 a
 
 end FibrationSquare
 
@@ -62,64 +62,64 @@ theorem pointedConnectingZero_natural {E B E' B' : PointedSimplicialSet.{u}}
     [KanComplex E.right] [KanComplex B.right] [KanComplex E'.right] [KanComplex B'.right]
     (p : E ⟶ B) (q : E' ⟶ B') [Fibration p.right] [Fibration q.right]
     (f : E ⟶ E') (g : B ⟶ B') (h : p ≫ g = f ≫ q)
-    (a : KanHomotopyGroup B.right 0 B.basepoint) :
-    KanHomotopy.map 0 (PointedFiberComparison.map p q f g h).right
-      (OmegaSpectrum.pointedMap_basepoint (PointedFiberComparison.map p q f g h))
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right 0 B.basepoint) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (PointedFiberComparison.map p q f g h).right
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (PointedFiberComparison.map p q f g h))
       (pointedConnectingZero p a) =
       pointedConnectingZero q (pointedGroupMap 0 g a) := by
   let Φ := PointedFiberComparison.map p q f g h
-  let φ : KanFiber p.right (p.right.app _ E.basepoint) ⟶
-      KanFiber q.right (q.right.app _ E'.basepoint) := Φ.right
-  have hφ : φ ≫ fiberι q.right (q.right.app _ E'.basepoint) =
-      fiberι p.right (p.right.app _ E.basepoint) ≫ f.right := by
+  let φ : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kan.KanFiber q.right (q.right.app _ E'.basepoint) := Φ.right
+  have hφ : φ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι q.right (q.right.app _ E'.basepoint) =
+      _root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _ E.basepoint) ≫ f.right := by
     have hv := congrArg Under.Hom.right (PointedFiberComparison.map_ι p q f g h)
     exact hv
-  have hfpoint : φ.app _ (fiberPoint p.right E.basepoint) =
-      fiberPoint q.right E'.basepoint := by
-    apply fiber_vertex_ext q.right (q.right.app _ E'.basepoint)
+  have hfpoint : φ.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint) =
+      _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint q.right E'.basepoint := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_ext q.right (q.right.app _ E'.basepoint)
     rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
-    have hv := congrArg (fun k : KanFiber p.right (p.right.app _ E.basepoint) ⟶ E'.right ↦
-      k.app _ (fiberPoint p.right E.basepoint)) hφ
-    change (fiberι q.right _).app _ (φ.app _ (fiberPoint p.right E.basepoint)) =
-      f.right.app _ ((fiberι p.right _).app _ (fiberPoint p.right E.basepoint)) at hv
+    have hv := congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint) ⟶ E'.right ↦
+      k.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint)) hφ
+    change (_root_.SerrePositivity.InfinityCategories.Kan.fiberι q.right _).app _ (φ.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint)) =
+      f.right.app _ ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right _).app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint)) at hv
     rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] at hv
-    exact hv.trans (OmegaSpectrum.pointedMap_basepoint f)
+    exact hv.trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
   have hc : p.right ≫ g.right = f.right ≫ q.right := congrArg Under.Hom.right h
   have hb : g.right.app _ (p.right.app _ E.basepoint) = q.right.app _ E'.basepoint :=
-    (FibrationSquare.base_eq p.right q.right f.right g.right hc E.basepoint).trans
-      (congrArg (q.right.app _) (OmegaSpectrum.pointedMap_basepoint f))
-  let bP := KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
-    (OmegaSpectrum.pointedMap_basepoint p)
-  let bQ := KanHomotopyGroup.equivOfIso 0 (Iso.refl B'.right)
-    (OmegaSpectrum.pointedMap_basepoint q)
-  have hF (t : KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint) :
-      pointedFiberZeroEquiv q (KanHomotopy.map 0 Φ.right (OmegaSpectrum.pointedMap_basepoint Φ) t) =
-        KanHomotopy.map 0 φ hfpoint (pointedFiberZeroEquiv p t) := by
-    exact (KanHomotopy.map_square (𝟙 (pointedFiber p).right)
+    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p.right q.right f.right g.right hc E.basepoint).trans
+      (congrArg (q.right.app _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f))
+  let bP := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
+  let bQ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B'.right)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint q)
+  have hF (t : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint) :
+      pointedFiberZeroEquiv q (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 Φ.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint Φ) t) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 φ hfpoint (pointedFiberZeroEquiv p t) := by
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_square (𝟙 (pointedFiber p).right)
       (𝟙 (pointedFiber q).right) Φ.right φ (by
         simp only [Category.id_comp, Category.comp_id]
         rfl)
       (PointedSimplicialSet.basepoint_ofVertex _ _)
       (PointedSimplicialSet.basepoint_ofVertex _ _)
-      (OmegaSpectrum.pointedMap_basepoint Φ) hfpoint 0 t).symm
-  have hB (t : KanHomotopyGroup B.right 0 (p.right.app _ E.basepoint)) :
-      pointedGroupMap 0 g (bP t) = bQ (KanHomotopyGroup.map g.right hb t) :=
-    KanHomotopyGroup.map_square (𝟙 B.right) (𝟙 B'.right) g.right g.right (by simp)
-      (OmegaSpectrum.pointedMap_basepoint p) (OmegaSpectrum.pointedMap_basepoint q)
-      hb (OmegaSpectrum.pointedMap_basepoint g) 0 t
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint Φ) hfpoint 0 t).symm
+  have hB (t : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right 0 (p.right.app _ E.basepoint)) :
+      pointedGroupMap 0 g (bP t) = bQ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g.right hb t) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (𝟙 B.right) (𝟙 B'.right) g.right g.right (by simp)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint q)
+      hb (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint g) 0 t
   have hBinv : bQ.symm (pointedGroupMap 0 g a) =
-      KanHomotopyGroup.map g.right hb (bP.symm a) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g.right hb (bP.symm a) := by
     apply bQ.injective
     rw [MulEquiv.apply_symm_apply, ← hB, MulEquiv.apply_symm_apply]
   apply (pointedFiberZeroEquiv q).injective
   rw [hF]
   dsimp only [pointedConnectingZero]
   rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply]
-  change KanHomotopy.map 0 φ hfpoint (connecting p.right E.basepoint 0 (bP.symm a)) =
-    connecting q.right E'.basepoint 0 (bQ.symm (pointedGroupMap 0 g a))
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 φ hfpoint (_root_.SerrePositivity.InfinityCategories.Kan.connecting p.right E.basepoint 0 (bP.symm a)) =
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting q.right E'.basepoint 0 (bQ.symm (pointedGroupMap 0 g a))
   rw [hBinv]
   exact FibrationSquare.connectingZeroOver_natural p.right q.right f.right g.right hc
-    E.basepoint E'.basepoint (OmegaSpectrum.pointedMap_basepoint f) φ hφ hfpoint hb (bP.symm a)
+    E.basepoint E'.basepoint (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) φ hφ hfpoint hb (bP.symm a)
 
 end
 end SerrePositivity.KST.Spectra

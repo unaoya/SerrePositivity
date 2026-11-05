@@ -23,7 +23,7 @@ open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable (A : SSet.{u}) {C : Type v} [EnrichedCategory SSet.{u} C]
 
 /-- 元の圏から円柱の左端への包含。 -/
-def leftInclusion : EnrichedFunctor SSet.{u} C (Object A C) where
+def leftInclusion : EnrichedFunctor SSet.{u} C (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
   obj X := ⟨false, X⟩
   map X Y := 𝟙 (X ⟶[SSet] Y)
   map_id X := Category.comp_id _
@@ -32,7 +32,7 @@ def leftInclusion : EnrichedFunctor SSet.{u} C (Object A C) where
     simp
 
 /-- 元の圏から円柱の右端への包含。 -/
-def rightInclusion : EnrichedFunctor SSet.{u} C (Object A C) where
+def rightInclusion : EnrichedFunctor SSet.{u} C (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
   obj X := ⟨true, X⟩
   map X Y := 𝟙 (X ⟶[SSet] Y)
   map_id X := Category.comp_id _
@@ -46,7 +46,7 @@ variable {D : Type w} [EnrichedCategory SSet.{u} D]
 
 /-- 評価の円柱の左端は、元の左の豊穣関手。 -/
 lemma evaluationFunctor_left :
-    (leftInclusion A).comp SSet (evaluationFunctor A F G η) = F := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.leftInclusion A).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G η) = F := by
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
   change (𝟙 _ ≫ F.map X Y) ≫ 𝟙 _ = F.map X Y
@@ -54,7 +54,7 @@ lemma evaluationFunctor_left :
 
 /-- 評価の円柱の右端は、元の右の豊穣関手。 -/
 lemma evaluationFunctor_right :
-    (rightInclusion A).comp SSet (evaluationFunctor A F G η) = G := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.rightInclusion A).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G η) = G := by
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
   change (𝟙 _ ≫ G.map X Y) ≫ 𝟙 _ = G.map X Y
@@ -62,13 +62,13 @@ lemma evaluationFunctor_right :
 
 /-- 同じ対象の二つの端を結ぶ、恒等射を持つパラメータ族。 -/
 def crossIdentity (X : C) :
-    A ⟶ hom A ((leftInclusion A).obj X) ((rightInclusion A).obj X) :=
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A ((_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.leftInclusion A).obj X) ((_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.rightInclusion A).obj X) :=
   (ρ_ A).inv ≫ A ◁ eId SSet X
 
 /-- 円柱の関手は、恒等族の上で元のパラメータ付き評価を厳密に回収する。 -/
 lemma crossIdentity_evaluation (X : C) :
-    crossIdentity A X ≫
-      (evaluationFunctor A F G η).map ((leftInclusion A).obj X) ((rightInclusion A).obj X) =
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.crossIdentity A X ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G η).map ((_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.leftInclusion A).obj X) ((_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.rightInclusion A).obj X) =
       η.app X := by
   change (ρ_ A).inv ≫ A ◁ eId SSet X ≫
     (η.app X ⊗ₘ G.map X X) ≫ eComp SSet (F.obj X) (G.obj X) (G.obj X) = _

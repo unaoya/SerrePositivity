@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma laxArrow_isExact : IsExactFunctor (F2.laxPullbackArrow p.hom q.hom) := by
   have : IsExactFunctor (F2.laxPullbackArrow p.hom q.hom ≫
@@ -37,10 +37,10 @@ instance laxDifference_isExact : IsExactFunctor (laxDifference p q) := by
   exact CofiberFamily.cofiber_isExact E.obj (F2.laxPullbackArrow p.hom q.hom)
 
 /-- 元の差の関手を完全関手に束ねる。 -/
-def exactLaxDifference : ExactMap (laxCategory p q) E := ⟨laxDifference p q, inferInstance⟩
+def exactLaxDifference : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) E := ⟨laxDifference p q, inferInstance⟩
 
 lemma exactLaxDifference_kernel (x : (laxCategory p q).obj _⦋0⦌) :
     IsZeroVertex ((exactLaxDifference p q).hom.app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage (pullbackInclusion p q) := laxDifference_kernel p q x
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q) := laxDifference_kernel p q x
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -34,7 +34,7 @@ def edgePathVertex {x y : X _⦋0⦌} (e : X.Edge x y) : (KanPath.object X) _⦋
 /-- 定数な path の族は同じ指定辺の単位族を前合成したもの。 -/
 lemma edgePathUnit_constant {x y : X _⦋0⦌} (e : X.Edge x y) (K : SSet.{u}) :
     toUnit K ≫ edgePathUnit e = (SSet.const (edgePathVertex e) : K ⟶ _) :=
-  pointedConstant_eq_const (Under.mk (edgePathUnit e)) K
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (Under.mk (edgePathUnit e)) K
 
 /-- D の指定辺をたどる球面円柱の転置は、境界上でその同じ path 頂点に定数。 -/
 lemma bridge_transport_transpose_boundary {x y : X _⦋0⦌}
@@ -53,13 +53,13 @@ lemma bridge_transport_transpose_boundary {x y : X _⦋0⦌}
 
 /-- D の基点移送は、指定辺を表す固定した path 頂点における一つの群の類から来る。 -/
 lemma bridge_transport_path_witness [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
-    (e : X.Edge x y) (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y)
+    (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y)
     (h : dgBarCompactPiTransport n e a b) :
     ∃ h₀ : (KanPath.evaluation X 0).app _ (edgePathVertex e) = x,
       ∃ h₁ : (KanPath.evaluation X 1).app _ (edgePathVertex e) = y,
-      ∃ γ : KanHomotopyGroup (KanPath.object X) n (edgePathVertex e),
-        KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
-        KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b := by
+      ∃ γ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n (edgePathVertex e),
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b := by
   obtain ⟨f, g, hf, hg, H, hH⟩ := h
   let t : (KanPath.object X).PtSimplex (n + 1) (edgePathVertex e) :=
     { map := KanPath.transpose H
@@ -80,34 +80,34 @@ lemma bridge_transport_path_witness [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
     have hv := congrArg (fun k ↦ k.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) hh
     simpa [SSet.const] using hv.symm
-  refine ⟨h₀, h₁, KanHomotopyGroup.mk t, ?_, ?_⟩
-  · rw [KanHomotopyGroup.map_mk]
-    have ht : mapSimplex (KanPath.evaluation X 0) h₀ t = f := RelativeMorphism.ext hm₀
+  refine ⟨h₀, h₁, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t, ?_, ?_⟩
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    have ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (KanPath.evaluation X 0) h₀ t = f := RelativeMorphism.ext hm₀
     rw [ht, hf]
-  · rw [KanHomotopyGroup.map_mk]
-    have ht : mapSimplex (KanPath.evaluation X 1) h₁ t = g := RelativeMorphism.ext hm₁
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    have ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (KanPath.evaluation X 1) h₁ t = g := RelativeMorphism.ext hm₁
     rw [ht, hg]
 
 /-- 指定した同じ辺に沿う D の基点移送は、始点の類から終点の類を一意に定める。 -/
 lemma bridge_transport_right_unique [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
-    (e : X.Edge x y) {a : KanHomotopyGroup X n x} {b c : KanHomotopyGroup X n y}
+    (e : X.Edge x y) {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : dgBarCompactPiTransport n e a b) (h' : dgBarCompactPiTransport n e a c) : b = c := by
   obtain ⟨h₀, h₁, γ, ha, hb⟩ := bridge_transport_path_witness n e a b h
   obtain ⟨h₀', h₁', γ', ha', hc⟩ := bridge_transport_path_witness n e a c h'
   have he : γ = γ' :=
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation X 0)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation X 0)
       (KanPath.evaluation_piIsomorphism X 0) h₀).injective (ha.trans ha'.symm)
-  exact hb.symm.trans ((congrArg (KanHomotopyGroup.map (KanPath.evaluation X 1) h₁) he).trans hc)
+  exact hb.symm.trans ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁) he).trans hc)
 
 /-- 指定した同じ辺に沿う D の基点移送は、終点の類から始点の類も一意に定める。 -/
 lemma bridge_transport_left_unique [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
-    (e : X.Edge x y) {a b : KanHomotopyGroup X n x} {c : KanHomotopyGroup X n y}
+    (e : X.Edge x y) {a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : dgBarCompactPiTransport n e a c) (h' : dgBarCompactPiTransport n e b c) : a = b := by
   obtain ⟨h₀, h₁, γ, ha, hc⟩ := bridge_transport_path_witness n e a c h
   obtain ⟨h₀', h₁', γ', hb, hc'⟩ := bridge_transport_path_witness n e b c h'
   have he : γ = γ' :=
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation X 1)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation X 1)
       (KanPath.evaluation_piIsomorphism X 1) h₁).injective (hc.trans hc'.symm)
-  exact ha.symm.trans ((congrArg (KanHomotopyGroup.map (KanPath.evaluation X 0) h₀) he).trans hb)
+  exact ha.symm.trans ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀) he).trans hb)
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

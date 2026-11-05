@@ -38,7 +38,7 @@ lemma cubicalSerreDayInverse_leftUnit (K : CubicalSet.{u}) :
   have h := Functor.LaxMonoidal.left_unitality (serreConcreteCubeComplexFunctor A) c
   change (λ_ ((serreConcreteCubeComplexFunctor A).obj c)).hom =
     (𝟙 (𝟙_ (Complex A))) ▷ (serreConcreteCubeComplexFunctor A).obj c ≫
-      Functor.LaxMonoidal.μ (serreConcreteCubeComplexFunctor A) (ConcreteCube.mk 0) c ≫
+      Functor.LaxMonoidal.μ (serreConcreteCubeComplexFunctor A) (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c ≫
         (serreConcreteCubeComplexFunctor A).map (concreteCubeLeftUnitor c).hom at h
   rw [id_whiskerRight, Category.id_comp] at h
   erw [← h, leftUnitor_naturality]
@@ -65,7 +65,7 @@ lemma cubicalSerreDayInverse_rightUnit (K : CubicalSet.{u}) :
   have h := Functor.LaxMonoidal.right_unitality (serreConcreteCubeComplexFunctor A) c
   change (ρ_ ((serreConcreteCubeComplexFunctor A).obj c)).hom =
     (serreConcreteCubeComplexFunctor A).obj c ◁ (𝟙 (𝟙_ (Complex A))) ≫
-      Functor.LaxMonoidal.μ (serreConcreteCubeComplexFunctor A) c (ConcreteCube.mk 0) ≫
+      Functor.LaxMonoidal.μ (serreConcreteCubeComplexFunctor A) c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) ≫
         (serreConcreteCubeComplexFunctor A).map (concreteCubeRightUnitor c).hom at h
   rw [whiskerLeft_id, Category.id_comp] at h
   erw [← h, rightUnitor_naturality]

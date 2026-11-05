@@ -35,14 +35,14 @@ local instance circleComparisonDifferenceEdgeIso (z : Sp.{u} _⦋0⦌)
 def circleCompanionComparisonRightEdge (z : Sp.{u} _⦋0⦌) (k : Limits.WalkingPair) :
     (circleEvaluationPointedHom z).right.Edge
       (circleCompanionComparisonMiddleVertex z) (circleEvaluationPointedHom z).basepoint :=
-  FramedSquare.right (circleCompanionComparisonRawHomSquare z k)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.right (circleCompanionComparisonRawHomSquare z k)
     (circleEvaluationPointedHom z).basepoint (circleCompanionComparisonMiddleVertex z)
     (circleCompanionComparisonRawHomSquare_middle_corner z k)
     (circleCompanionComparisonRawHomSquare_top_corner z k 1)
 
 /-- 元の比較正方形の左辺は、元の companion の境界定数一単体の辺そのもの。 -/
 lemma circleCompanionComparisonLeftEdge (z : Sp.{u} _⦋0⦌) :
-    FramedSquare.left (circleCompanionComparisonRawHomSquare z .left)
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left (circleCompanionComparisonRawHomSquare z .left)
       (circleEvaluationPointedHom z).basepoint
       (circleCompanionComparisonRawHomSquare_left_corner z .left 0)
       (circleCompanionComparisonRawHomSquare_left_corner z .left 1) =
@@ -57,8 +57,8 @@ lemma circleCompanionComparisonLeftEdge (z : Sp.{u} _⦋0⦌) :
 lemma circleCompanionComparisonBoundary_difference (z : Sp.{u} _⦋0⦌) :
     inv (SSet.HomotopyCategory.homMk (circleCompanionComparisonRightEdge z .right)) ≫
       SSet.HomotopyCategory.homMk (circleCompanionComparisonRightEdge z .left) =
-    FundamentalLoop.toHom (KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
-  have h := FramedSquare.difference
+    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.difference
     (circleCompanionComparisonRawHomSquare z .left)
     (circleCompanionComparisonRawHomSquare z .right)
     (circleEvaluationPointedHom z).basepoint (circleCompanionComparisonMiddleVertex z)

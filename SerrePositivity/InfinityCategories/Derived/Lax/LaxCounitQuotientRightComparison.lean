@@ -28,81 +28,81 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
 open SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 def quotientRightSourceComparison :=
-  homPost (CofiberDiagrams.right Q.obj ≫
+  homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-      (quotientDiagramComparison p q i r).hom
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientDiagramComparison p q i r).hom
 
 def quotientRightTargetComparison :=
-  homPost (CofiberDiagrams.right Q.obj ≫
+  homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-      (quotientDiagramComparison p q i r).hom
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientDiagramComparison p q i r).hom
 
 lemma quotientRightComparison_naturality :
-    quotientRightSourceComparison p q i r ≫ arrowFamilyHom
-      (CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ CofiberDiagrams.right Q.obj) =
-        arrowFamilyHom (quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.right Q.obj) ≫
-          quotientRightTargetComparison p q i r :=
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom
+      (CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj) =
+        _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj) ≫
+          _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightTargetComparison p q i r :=
   CofiberDiagrams.relativeComparison_right_naturality Q.obj _ _
-    (quotientOriginalDiagrams_sameBottom p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_sameBottom p q i r)
 
 lemma quotientRightSourceComparison_arrow :
-    Arrow.mk (quotientRightSourceComparison p q i r) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison p q i r) =
       Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-        (CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ (CofiberDiagrams.right Q.obj ≫
+        (CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
           evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) :
             hoFunctor.obj ((ihom A.obj).obj Q.obj))) :=
   CofiberDiagrams.relativeComparison_rightSource_arrow Q.obj _ _
-    (quotientOriginalDiagrams_sameBottom p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_sameBottom p q i r)
 
 lemma quotientOriginalDiagrams_right :
-    quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.right Q.obj =
-      (i.hom ≫ CofiberFamily.rightArrow (laxCategory p q).obj (arrow p q)) ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj =
+      (i.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow (laxCategory p q).obj (arrow p q)) ≫
         (ihom (Δ[1] : SSet.{u})).map r.hom := by
-  rw [quotientOriginalDiagrams, Category.assoc, CofiberDiagrams.postcomp_right]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_right]
   change (i.hom ≫ CofiberDiagrams.lift (laxCategory p q).obj (arrow p q)) ≫
-    ((CofiberDiagrams.inclusion (laxCategory p q).obj ≫ (pre squareRightEdge).app _) ≫ _) = _
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (laxCategory p q).obj ≫ (pre squareRightEdge).app _) ≫ _) = _
   rw [← Category.assoc, ← Category.assoc,
     Category.assoc i.hom, CofiberDiagrams.lift_inclusion]
   rfl
 
 lemma quotientOriginalDiagrams_cofiber :
-    quotientOriginalDiagrams p q i r ≫ (CofiberDiagrams.right Q.obj ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
         (i.hom ≫ cofiber p q) ≫ r.hom := by
-  rw [quotientOriginalDiagrams, Category.assoc, CofiberDiagrams.postcomp_cofiber,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_cofiber,
     ← Category.assoc, ← Category.assoc]
   have he := CofiberDiagrams.lift_right_target (laxCategory p q).obj (arrow p q)
   calc
     _ = (i.hom ≫ ((CofiberDiagrams.lift (laxCategory p q).obj (arrow p q) ≫
-        CofiberDiagrams.right (laxCategory p q).obj) ≫
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right (laxCategory p q).obj) ≫
           evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) ≫ r.hom := by
       simp only [Category.assoc]
     _ = _ := by rw [he]; rfl
 
 lemma quotientSelectedDiagrams_cofiber :
-    CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ (CofiberDiagrams.right Q.obj ≫
+    CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
-        CofiberFamily.cofiber Q.obj (quotientArrow p q i r) := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) := by
   rw [← Category.assoc, CofiberDiagrams.lift_right_target]
 
 def quotientCofiberRelativeIso : FunctorIso ((i.hom ≫ cofiber p q) ≫ r.hom)
-    (CofiberFamily.cofiber Q.obj (quotientArrow p q i r)) :=
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)) :=
   (eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
-    (quotientOriginalDiagrams_cofiber p q i r))).symm ≪≫
-  FunctorIso.postcomp (quotientDiagramComparison p q i r)
-    (CofiberDiagrams.right Q.obj ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_cofiber p q i r))).symm ≪≫
+  FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientDiagramComparison p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Q.obj ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≪≫
   eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
-    (quotientSelectedDiagrams_cofiber p q i r))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedDiagrams_cofiber p q i r))
 
 lemma quotientCofiberRelativeIso_arrow :
-    Arrow.mk (quotientCofiberRelativeIso p q i r).hom =
-      Arrow.mk (quotientRightTargetComparison p q i r) := by
-  unfold quotientCofiberRelativeIso
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso p q i r).hom =
+      Arrow.mk (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightTargetComparison p q i r) := by
+  unfold _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso
   simp only [Iso.trans_hom, Iso.symm_hom, eqToIso.hom, eqToIso.inv]
   rw [← Category.assoc, arrow_mk_comp_eqToHom, arrow_mk_eqToHom_comp,
     HomotopyLimits.functorIso_postcomp_hom]

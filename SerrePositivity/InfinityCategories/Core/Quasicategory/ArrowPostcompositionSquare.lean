@@ -31,20 +31,20 @@ def arrowPostcompositionFoldOrder : Fin 2 × Fin 2 →o Fin 3 where
   monotone' := by decide
 
 def arrowPostcompositionFold : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] :=
-  stdSimplexProductMap arrowPostcompositionFoldOrder
+  stdSimplexProductMap _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFoldOrder
 
 lemma arrowPostcompositionFold_zero : (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
-    arrowPostcompositionFold = stdSimplex.δ (2 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold = stdSimplex.δ (2 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPostcompositionFold_target : prismEndpoint 1 (Δ[1] : SSet.{u}) ≫
-    arrowPostcompositionFold = stdSimplex.δ (0 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold = stdSimplex.δ (0 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPostcompositionFold_source : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫
-    arrowPostcompositionFold = stdSimplex.isTerminalObj₀.from Δ[1] ≫
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold = stdSimplex.isTerminalObj₀.from Δ[1] ≫
       stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
@@ -72,12 +72,12 @@ lemma exists_arrowPostcompositionSquare {X : SSet.{u}} [Quasicategory X]
     change X.δ 1 f.edge = PinchedHom.constant a 0
     rw [pinchedConstant_zero]
     exact f.src_eq
-  refine ⟨arrowPostcompositionFold ≫ T, ?_, ?_, ?_⟩
-  · rw [← Category.assoc, arrowPostcompositionFold_zero, ht₂]
-  · rw [← Category.assoc, arrowPostcompositionFold_source, Category.assoc, Category.assoc, ht₂]
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold ≫ T, ?_, ?_, ?_⟩
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold_zero, ht₂]
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold_source, Category.assoc, Category.assoc, ht₂]
     exact (congrArg (fun k : (Δ[0] : SSet.{u}) ⟶ X =>
       stdSimplex.isTerminalObj₀.from Δ[1] ≫ k) hf₀).trans (SSet.comp_const _ _)
-  · rw [← Category.assoc, arrowPostcompositionFold_target, ht₀]
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPostcompositionFold_target, ht₀]
 
 end SerrePositivity.InfinityCategories.Core.Quasicategory
 

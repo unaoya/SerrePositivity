@@ -28,7 +28,7 @@ lemma map_zero (X Y : OmegaSpectrum.{u}) (j : ℤ) : homotopyMap (0 : X ⟶ Y) j
   ext a
   rw [homotopyMap_apply, zero_app]
   simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const, MonoidHom.one_apply]
-  exact (KanHomotopy.map_const (X := (X.level (canonicalLevel j)).space.right)
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const (X := (X.level (canonicalLevel j)).space.right)
     (Y := (Y.level (canonicalLevel j)).space.right) _ _ a).trans (levelPoint_eq_one Y _ _)
 
 def groupProjection (X Y : OmegaSpectrum.{u}) (j : ℤ) :

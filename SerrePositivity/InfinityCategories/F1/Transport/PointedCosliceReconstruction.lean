@@ -37,7 +37,7 @@ theorem coslicePointEvaluation_fiberMap_identity {E B : SSet.{u}}
     (vertexFiberMap_ι (sliceUnderProjection (yonedaEquiv.symm b)) p f hf b)
   change _ = f.app (Opposite.op ⦋0⦌) (edgeToCosliceFiberVertex (SSet.Edge.id b)).val at hm
   rw [hi] at hm
-  exact (coslicePointEvaluation_vertex_val p b hf).trans hm.symm
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p b hf).trans hm.symm
 
 variable {B : SSet.{u}} [Quasicategory B] (b : B _⦋0⦌)
 
@@ -46,24 +46,24 @@ def pointedCosliceReconstructionPoint :
     (vertexFiber (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
       (sliceUnderProjection (yonedaEquiv.symm b)))) b) _⦋0⦌ :=
   (leftFibrationCoslicePointEvaluate _ b).app (Opposite.op ⦋0⦌)
-    (relativeFunctorVertex _ _ (pointedLeftStraighteningReconstruction
+    (relativeFunctorVertex _ _ (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction
       (sliceUnderProjection (yonedaEquiv.symm b)))
-      (pointedLeftStraighteningReconstruction_projection _))
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_projection _))
 
 /-- 復元写像の同じ指定点は、元の coslice 恒等点の実 fiber 写像による像。 -/
 theorem pointedCosliceReconstructionPoint_fiberMap :
-    pointedCosliceReconstructionPoint b =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint b =
       (vertexFiberMap (sliceUnderProjection (yonedaEquiv.symm b))
         (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
           (sliceUnderProjection (yonedaEquiv.symm b))))
-        (pointedLeftStraighteningReconstruction (sliceUnderProjection (yonedaEquiv.symm b)))
-        (pointedLeftStraighteningReconstruction_projection _) b).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction (sliceUnderProjection (yonedaEquiv.symm b)))
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_projection _) b).app (Opposite.op ⦋0⦌)
           (edgeToCosliceFiberVertex (SSet.Edge.id b)) :=
-  coslicePointEvaluation_fiberMap_identity _ b _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_fiberMap_identity _ b _ _
 
 /-- 指定復元点の射は、native 表現による恒等点の像と、同じ分類同型の逆成分との合成。 -/
 theorem pointedCosliceReconstructionPoint_pointHom :
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))).diagram b
       ((vertexFiberMap (sliceUnderProjection (yonedaEquiv.symm b))
         (smallLeftUnstraighteningProjection
@@ -75,11 +75,11 @@ theorem pointedCosliceReconstructionPoint_pointHom :
         (sliceUnderProjection (yonedaEquiv.symm b))
         (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b)))).inv
           (ULift.up b) =
-      cosliceFiberPointHom (smallUnstraighteningPointedImage
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
         (leftStraighteningInfinityDiagram (sliceUnderProjection (yonedaEquiv.symm b))) b
-        (pointedCosliceReconstructionPoint b)) := by
-  rw [pointedCosliceReconstructionPoint_fiberMap]
-  exact pointedLeftStraighteningReconstruction_pointHom _ b _
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint b)) := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint_fiberMap]
+  exact _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_pointHom _ b _
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

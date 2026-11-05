@@ -17,60 +17,60 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 各ブロックの fiber max は、元の同じ空でない出力の評価。 -/
-lemma cubeSupportBlockMap_eval {n m : ℕ} {s : CubeJoinNormalForm n m}
-    (h : CubeSupportPartition s) (x : CubeVertex n)
-    (a : Fin (cubeSupportNonemptyOutputs s).card) :
-    cubeFiberMax (cubeSupportBlockMap h) x a =
-      cubeJoinNormalFormEval s x (cubeSupportOutputEmbedding s a) := by
-  have ha : (cubeJoinNormalFormSupport s (cubeSupportOutputEmbedding s a)).Nonempty :=
-    (mem_cubeSupportNonemptyOutputs s _).mp (Finset.orderEmbOfFin_mem _ rfl a)
-  cases hs : s (cubeSupportOutputEmbedding s a) with
-  | none => simp [cubeJoinNormalFormSupport, hs] at ha
+lemma cubeSupportBlockMap_eval {n m : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m}
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition s) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
+    (a : Fin (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s).card) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap h) x a =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a) := by
+  have ha : (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a)).Nonempty :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeSupportNonemptyOutputs s _).mp (Finset.orderEmbOfFin_mem _ rfl a)
+  cases hs : s (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a) with
+  | none => simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs] at ha
   | some t =>
     apply Bool.eq_iff_iff.mpr
-    rw [cubeFiberMax_true_iff]
-    simp only [cubeSupportBlockMap_fiber, cubeJoinNormalFormSupport, hs, Option.getD_some,
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_fiber, _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs, Option.getD_some,
       _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
     change (∃ i, i ∈ t ∧ x i = ⊤) ↔ t.sup x = ⊤
     exact Finset.sup_eq_top_iff.symm
 
 /-- 元の空でない出力の昇順列挙による、実際の座標選択。 -/
-def cubeSupportOutputSelection {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    ConcreteCube.mk m ⟶ ConcreteCube.mk (cubeSupportNonemptyOutputs s).card :=
-  ⟨cubeCoordinateSelect (cubeSupportOutputEmbedding s),
-    cubeCoordinateSelect_generated _ (cubeSupportOutputEmbedding s).strictMono⟩
+def cubeSupportOutputSelection {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s).card :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s),
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_generated _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s).strictMono⟩
 
 /-- 元の support ブロックの max を取る実際の具体的な射。 -/
-def cubeSupportMax {n m : ℕ} {s : CubeJoinNormalForm n m} (h : CubeSupportPartition s) :
-    ConcreteCube.mk n ⟶ ConcreteCube.mk (cubeSupportNonemptyOutputs s).card :=
-  ⟨cubeFiberMax (cubeSupportBlockMap h),
-    cubeConnectionGenerated_generated (cubeSupportBlockMap_connectionGenerated h)⟩
+def cubeSupportMax {n m : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m} (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition s) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s).card :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap h),
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeConnectionGenerated_generated (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_connectionGenerated h)⟩
 
 /-- 元の具体射の空でない出力への射影は、同じ support ブロックの max そのもの。 -/
-lemma cubeSupportMax_eq_projection {X Y : ConcreteCube} (f : X ⟶ Y)
-    (h : CubeSupportPartition (concreteCubeNormalForm f)) :
-    cubeSupportMax h = f ≫ cubeSupportOutputSelection (concreteCubeNormalForm f) := by
+lemma cubeSupportMax_eq_projection {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax h = f ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSelection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) := by
   apply Subtype.ext
   funext x a
-  exact (cubeSupportBlockMap_eval h x a).trans
-    (congrFun (concreteCubeNormalForm_eval f x) _)
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_eval h x a).trans
+    (congrFun (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval f x) _)
 
 /-- 入力削除後の元の残余射の support は、順序つきで全入力を尽くす。 -/
-lemma concreteCubeInputCompressedSupportPartition {X Y : ConcreteCube} (f : X ⟶ Y) :
-    CubeSupportPartition (concreteCubeNormalForm (concreteCubeInputCompressed f)) where
-  ordered := by
+lemma concreteCubeInputCompressedSupportPartition {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f)) where
+  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.ordered := by
     intro j k hjk i l hi hl
-    exact concreteCubeNormalForm_support_ordered (concreteCubeInputCompressed f) hjk hi hl
-  covers := concreteCubeInputCompressed_no_unused f
+    exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_ordered (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f) hjk hi hl
+  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.covers := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_no_unused f
 
 /-- 入力削除後の残余射の空でない出力は、隣接 connection のみで実現される。 -/
-lemma concreteCubeInputCompressed_projection_connectionGenerated {X Y : ConcreteCube}
-    (f : X ⟶ Y) : CubeConnectionGenerated
-      ((concreteCubeInputCompressed f ≫ cubeSupportOutputSelection
-        (concreteCubeNormalForm (concreteCubeInputCompressed f))).val) := by
-  rw [← cubeSupportMax_eq_projection (concreteCubeInputCompressed f)
-    (concreteCubeInputCompressedSupportPartition f)]
-  exact cubeSupportBlockMap_connectionGenerated _
+lemma concreteCubeInputCompressed_projection_connectionGenerated {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+    (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated
+      ((_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSelection
+        (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f))).val) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax_eq_projection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f)
+    (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressedSupportPartition f)]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_connectionGenerated _
 
 end SerrePositivity.InfinityCategories.Kan
 

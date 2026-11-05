@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 概要：正段の同じ第一行図式を標準単体の座標で読む。
 方針：K-S• 正本の第一行と標準単体の同型に内部 Hom を適用する。
@@ -82,7 +82,7 @@ theorem relativeSQuotientKanMap_isQCatEquivalence_of_firstRows
 規約：有限第一行比較は Sp 正本の未放電の供給入力。
 使われ方：同じ未完備 dg 実列の K-6 c5 から K-7 c5・d3 への受け渡し。 -/
 theorem quotientSKernelInfinitySquare_isPullback_of_firstRows
-    (i : ExactMap A B) (h : IsVerdierSequence i q)
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeFirstRowQuotient q (n + 1)))) :
     IsPullbackSquare (quotientSKernelInfinitySquare i q) :=

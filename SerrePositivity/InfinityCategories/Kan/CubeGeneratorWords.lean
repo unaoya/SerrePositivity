@@ -18,51 +18,51 @@ open CategoryTheory
 
 /-- 次元を指定した三種の cubical 生成射。 -/
 inductive CubeGenerator : ℕ → ℕ → Type
-  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : CubeGenerator n (n + 1)
-  | degeneracy (n : ℕ) (i : Fin (n + 1)) : CubeGenerator (n + 1) n
-  | connection (n : ℕ) (i : Fin (n + 1)) : CubeGenerator (n + 2) (n + 1)
+  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator n (n + 1)
+  | degeneracy (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (n + 1) n
+  | connection (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (n + 2) (n + 1)
 
 /-- 自由な生成語の端点。具体的な立方体圏の quiver と区別する。 -/
 structure CubeWordObject where
   dimension : ℕ
 
 /-- 端点間の辺は元の cubical 生成射。 -/
-instance cubeGeneratorQuiver : Quiver CubeWordObject where
-  Hom X Y := CubeGenerator X.dimension Y.dimension
+instance cubeGeneratorQuiver : Quiver _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject where
+  Hom X Y := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator X.dimension Y.dimension
 
 /-- 生成射を有限回合成した自由な語の圏。 -/
-abbrev CubeWords := Paths CubeWordObject
+abbrev CubeWords := Paths _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject
 
 /-- 元の三種の生成射を、同じ座標の具体的な関数へ送る。 -/
-def cubeGeneratorConcretePrefunctor : CubeWordObject ⥤q ConcreteCube where
+def cubeGeneratorConcretePrefunctor : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject ⥤q _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where
   obj X := ⟨X.dimension⟩
   map {X Y} f := by
     cases X
     cases Y
     cases f with
-    | face b n i => exact concreteCubeFace b _ i
-    | degeneracy n i => exact concreteCubeDegeneracy _ i
-    | connection n i => exact concreteCubeConnection _ i
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b _ i
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy _ i
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection _ i
 
 /-- 生成語を、元の合成関数を持つ具体的な立方体の射へ評価する関手。 -/
-def cubeWordConcreteFunctor : CubeWords ⥤ ConcreteCube :=
-  Paths.lift cubeGeneratorConcretePrefunctor
+def cubeWordConcreteFunctor : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube :=
+  Paths.lift _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor
 
 /-- 一文字の語の具体的な評価は元の生成射。 -/
-lemma cubeWordConcreteFunctor_generator {X Y : CubeWordObject} (f : X ⟶ Y) :
-    cubeWordConcreteFunctor.map f.toPath = cubeGeneratorConcretePrefunctor.map f :=
+lemma cubeWordConcreteFunctor_generator {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map f.toPath = _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor.map f :=
   Paths.lift_toPath _ f
 
 /-- 語の具体的な評価は恒等を厳密に保存する。 -/
-lemma cubeWordConcreteFunctor_id (X : CubeWords) :
-    cubeWordConcreteFunctor.map (𝟙 X) = 𝟙 (cubeWordConcreteFunctor.obj X) :=
-  cubeWordConcreteFunctor.map_id X
+lemma cubeWordConcreteFunctor_id (X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (𝟙 X) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.obj X) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map_id X
 
 /-- 語の具体的な評価は元の関数の合成を保存する。 -/
-lemma cubeWordConcreteFunctor_comp {X Y Z : CubeWords} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    cubeWordConcreteFunctor.map (f ≫ g) =
-      cubeWordConcreteFunctor.map f ≫ cubeWordConcreteFunctor.map g :=
-  cubeWordConcreteFunctor.map_comp f g
+lemma cubeWordConcreteFunctor_comp {X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (f ≫ g) =
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map f ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map g :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map_comp f g
 
 end SerrePositivity.InfinityCategories.Kan
 

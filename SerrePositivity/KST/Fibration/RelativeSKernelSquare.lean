@@ -20,7 +20,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- K-5 の完全関手による、元の各段の core S• の射。 -/
-def coreSExactMap {A B : StableCategory.{u}} (f : ExactMap A B) :
+def coreSExactMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor ⟶
       simplicialSConstruction B.obj ⋙ quasicategoryCoreFunctor where
   app n := quasicategoryCoreMap (sPostcomp n.unop.len f.hom (exactMap_preservesSData f))
@@ -34,8 +34,8 @@ def coreSExactMap {A B : StableCategory.{u}} (f : ExactMap A B) :
     rw [← Functor.map_comp, ← Functor.map_comp, exactSPostcomp_reindex]
 
 /-- 元の core 包含と相対包含は、全段・全単体作用素で可換な四角形をなす。 -/
-theorem relativeSimplicialKernelSquare {A B : StableCategory.{u}} {C : SSet.{u}}
-    (f : ExactMap A B) (q : B.obj ⟶ C) :
+theorem relativeSimplicialKernelSquare {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {C : SSet.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : B.obj ⟶ C) :
     CommSq (relativeSimplicialSConstructionCoreInclusion (f.hom ≫ q))
       (coreSExactMap f) (relativeSimplicialFunctorMap f q)
       (relativeSimplicialSConstructionCoreInclusion q) := by

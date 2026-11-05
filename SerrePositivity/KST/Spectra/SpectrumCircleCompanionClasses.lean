@@ -55,7 +55,7 @@ lemma circleEvaluationDiagonal_vertex (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
 /-- 元の生成 loop を、そのまま境界定数一単体として読む。 -/
 def circleEvaluationLoopSimplex (z : Sp.{u} _⦋0⦌) :
     (circleEvaluationPointedHom z).right.PtSimplex 1 (circleEvaluationPointedHom z).basepoint :=
-  BasedInterval.simplex
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex
     (SSet.yonedaEquiv.symm
       (circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val).edge)
     (circleEvaluationLoop_vertex z)
@@ -63,24 +63,24 @@ def circleEvaluationLoopSimplex (z : Sp.{u} _⦋0⦌) :
 /-- 元の companion 経路を、そのまま境界定数一単体として読む。 -/
 def circleEvaluationCompanionSimplex (z : Sp.{u} _⦋0⦌) :
     (circleEvaluationPointedHom z).right.PtSimplex 1 (circleEvaluationPointedHom z).basepoint :=
-  BasedInterval.simplex (circleEvaluationCompanionHomPath z) (circleEvaluationCompanion_vertex z)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex (circleEvaluationCompanionHomPath z) (circleEvaluationCompanion_vertex z)
 
 /-- 元の対角経路を、そのまま境界定数一単体として読む。 -/
 def circleEvaluationDiagonalSimplex (z : Sp.{u} _⦋0⦌) :
     (circleEvaluationPointedHom z).right.PtSimplex 1 (circleEvaluationPointedHom z).basepoint :=
-  BasedInterval.simplex (circleEvaluationHomDiagonal z) (circleEvaluationDiagonal_vertex z)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex (circleEvaluationHomDiagonal z) (circleEvaluationDiagonal_vertex z)
 
 /-- 元の生成 loop から元の対角への境界固定ホモトピー。 -/
 def circleEvaluationLoopDiagonalRelativeHomotopy (z : Sp.{u} _⦋0⦌) :
     (circleEvaluationLoopSimplex z).Homotopy (circleEvaluationDiagonalSimplex z) :=
-  BasedInterval.relativeHomotopy (circleEvaluationLoop_vertex z)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy (circleEvaluationLoop_vertex z)
     (circleEvaluationDiagonal_vertex z) (circleEvaluationLoopDiagonalHomotopy z)
     (circleEvaluationLoopDiagonalHomotopy_source z) (circleEvaluationLoopDiagonalHomotopy_target z)
 
 /-- 元の companion から同じ元の対角への境界固定ホモトピー。 -/
 def circleEvaluationCompanionDiagonalRelativeHomotopy (z : Sp.{u} _⦋0⦌) :
     (circleEvaluationCompanionSimplex z).Homotopy (circleEvaluationDiagonalSimplex z) :=
-  BasedInterval.relativeHomotopy (circleEvaluationCompanion_vertex z)
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy (circleEvaluationCompanion_vertex z)
     (circleEvaluationDiagonal_vertex z) (circleEvaluationCompanionDiagonalHomotopy z)
     (circleEvaluationCompanionDiagonalHomotopy_source z)
     (circleEvaluationCompanionDiagonalHomotopy_target z)
@@ -94,11 +94,11 @@ local instance circleComparisonPointedHomKan (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の companion の経路は、元の普遍評価の生成 loop と同じ基本群の元を表す。 -/
 lemma circleEvaluationCompanion_loop_class (z : Sp.{u} _⦋0⦌) :
-    KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) =
-      KanHomotopyGroup.mk (circleEvaluationLoopSimplex z) :=
-  (KanHomotopyGroup.eq_of_relativeHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z) :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy
     (circleEvaluationCompanionDiagonalRelativeHomotopy z)).trans
-      (KanHomotopyGroup.eq_of_relativeHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy
         (circleEvaluationLoopDiagonalRelativeHomotopy z)).symm
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

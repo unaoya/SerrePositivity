@@ -39,7 +39,7 @@ theorem cotensorIso_π (A : PointedSimplicialSet.{u}) (W : I ⥤ SSet.{u})
     (D : I ⥤ PointedSimplicialSet.{u}) (i : I) :
     (cotensorIso A W D).hom ≫ end_.π (diagram W (D ⋙ ihom A)) i =
       (ihom A).map (end_.π (diagram W D) i) ≫
-        (InternalHomExchange.iso A (PointedObject.adjoin (W.obj i)) (D.obj i)).hom := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i)) (D.obj i)).hom := by
   change (EndInternalHom.homToEnd A (diagram W D) ≫
     end_.map (cotensorDiagramIso A W D).hom) ≫ end_.π _ i = _
   rw [Category.assoc, end_.map_π, ← Category.assoc, EndInternalHom.homToEnd_π]
@@ -53,7 +53,7 @@ theorem cotensorIso_π (A : PointedSimplicialSet.{u}) (W : I ⥤ SSet.{u})
 theorem constantFamily_exchange (A : PointedSimplicialSet.{u}) (B : SSet.{u})
     (Y : PointedSimplicialSet.{u}) :
     (ihom A).map (constantFamily B Y) ≫
-      (InternalHomExchange.iso A (PointedObject.adjoin B) Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin B) Y).hom =
         constantFamily B ((ihom A).obj Y) := by
   rw [constantFamily, constantFamily, CategoryTheory.Functor.map_comp, Category.assoc,
     _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right, ← Category.assoc,

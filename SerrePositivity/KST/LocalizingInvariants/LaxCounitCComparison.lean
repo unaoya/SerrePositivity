@@ -20,7 +20,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromC_unit_component_isIso (x : (laxCategory p q).obj _⦋0⦌)
     (hz : IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x)) :
@@ -32,7 +32,7 @@ lemma fromC_unit_component_isIso (x : (laxCategory p q).obj _⦋0⦌)
     exact (LaxInclusion.fromCAdjunction p q).unit_postcompLeft_isIso
   have hm := homotopy_component_isInvertible_of_isIso J x
   have he : IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated := by
-    apply isInvertibleEdge_of_terminalBoundaries (laxFst p q).hom
+    apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.isInvertibleEdge_of_terminalBoundaries (laxFst p q).hom
       (simplicialHomotopyVertexEdge H x).toTruncated
     · exact lax_fst_terminalBoundary p.hom q.hom x hz.2
         (IsExactFunctor.preservesZero (F := q.hom) _ hz).2

@@ -117,7 +117,7 @@ noncomputable def trans (r : PtSimplex.RelStruct₀ f g) (r' : PtSimplex.RelStru
 theorem equivalence : Equivalence (fun f g : X.PtSimplex 0 x ↦
     Nonempty (PtSimplex.RelStruct₀ f g)) :=
   ⟨fun f ↦ ⟨PtSimplex.RelStruct.refl f 0⟩,
-    fun ⟨r⟩ ↦ ⟨symm r⟩, fun ⟨r⟩ ⟨r'⟩ ↦ ⟨trans r r'⟩⟩
+    fun ⟨r⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm r⟩, fun ⟨r⟩ ⟨r'⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans r r'⟩⟩
 
 end ZeroRelations
 
@@ -127,9 +127,9 @@ end ZeroRelations
 使われ方：Kerodon Example 3.2.2.6、Theorem 3.2.6.1。低次数の完全性。 -/
 theorem KanHomotopyZero.mk_eq_iff {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
     (f g : X.PtSimplex 0 x) :
-    KanHomotopyZero.mk f = KanHomotopyZero.mk g ↔ Nonempty (PtSimplex.RelStruct₀ f g) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk g ↔ Nonempty (PtSimplex.RelStruct₀ f g) := by
   change Quot.mk _ f = Quot.mk _ g ↔ _
-  exact Quot.eq.trans ZeroRelations.equivalence.eqvGen_iff
+  exact Quot.eq.trans _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.equivalence.eqvGen_iff
 
 /-- 概要：全自然数次数で類の等式は任意の面添字の RelStruct の存在と同値。
 方針：正次数の面添字独立性と零次数のホーンによる同値関係を使う。
@@ -137,20 +137,20 @@ theorem KanHomotopyZero.mk_eq_iff {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
 使われ方：Kerodon §3.2.2、Theorem 3.2.6.1。全次数の長完全列の計算。 -/
 theorem KanHomotopy.mk_eq_iff_relStruct {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
     (n : ℕ) (f g : X.PtSimplex n x) (i : Fin (n + 1)) :
-    KanHomotopy.mk n f = KanHomotopy.mk n g ↔ Nonempty (PtSimplex.RelStruct f g i) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n g ↔ Nonempty (PtSimplex.RelStruct f g i) := by
   cases n with
   | zero =>
     have hi : i = 0 := by apply Fin.ext; omega
     subst i
-    exact KanHomotopyZero.mk_eq_iff f g
-  | succ n => exact (KanHomotopyGroup.mk_eq_iff f g).trans (simplexRel_iff_relStruct i)
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk_eq_iff f g
+  | succ n => exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff f g).trans (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct i)
 
 /-- 概要：全次数のホモトピー類は境界定数単体の代表を持つ。
 方針：零次数と正次数の商への標準射の全射性を使う。
 規約：n は実際の次数。
 使われ方：Kerodon Construction 3.2.2.4。零次数を含む完全性の代表への還元。 -/
 theorem KanHomotopy.mk_surjective {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌} (n : ℕ) :
-    Function.Surjective (KanHomotopy.mk (X := X) (x := x) n) := by
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk (X := X) (x := x) n) := by
   cases n with
   | zero => exact Quot.mk_surjective
   | succ n => exact Quotient.mk_surjective

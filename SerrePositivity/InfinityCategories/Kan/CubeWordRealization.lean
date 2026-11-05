@@ -16,55 +16,55 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の生成関数を同じ頂点関数として実現する語が存在する。 -/
-lemma cubeMapGenerated_exists_word {n m : ℕ} {f : CubeVertex n → CubeVertex m}
-    (h : CubeMapGenerated f) :
-    ∃ w : Quiver.Path (CubeWordObject.mk n) (CubeWordObject.mk m),
-      (cubeWordConcreteFunctor.map w).val = f := by
+lemma cubeMapGenerated_exists_word {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
+    (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) :
+    ∃ w : Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m),
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map w).val = f := by
   induction h with
-  | id n => exact ⟨Quiver.Path.nil, rfl⟩
-  | face b n i =>
-    exact ⟨(show CubeWordObject.mk n ⟶ CubeWordObject.mk (n + 1) from
-      CubeGenerator.face b n i).toPath, rfl⟩
-  | degeneracy n i =>
-    exact ⟨(show CubeWordObject.mk (n + 1) ⟶ CubeWordObject.mk n from
-      CubeGenerator.degeneracy n i).toPath, rfl⟩
-  | connection n i =>
-    exact ⟨(show CubeWordObject.mk (n + 2) ⟶ CubeWordObject.mk (n + 1) from
-      CubeGenerator.connection n i).toPath, rfl⟩
-  | comp hf hg ihf ihg =>
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id n => exact ⟨Quiver.Path.nil, rfl⟩
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i =>
+    exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) from
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b n i).toPath, rfl⟩
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i =>
+    exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n from
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy n i).toPath, rfl⟩
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i =>
+    exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) from
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection n i).toPath, rfl⟩
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp hf hg ihf ihg =>
     obtain ⟨p, hp⟩ := ihf
     obtain ⟨q, hq⟩ := ihg
     refine ⟨p.comp q, ?_⟩
-    erw [cubeWordConcreteFunctor_comp]
-    change (cubeWordConcreteFunctor.map q).val ∘
-      (cubeWordConcreteFunctor.map p).val = _
+    erw [_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_comp]
+    change (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q).val ∘
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p).val = _
     rw [hp, hq]
     rfl
 
 /-- 語の評価は具体的な立方体圏の全ての射を実現する。 -/
-instance cubeWordConcreteFunctor_full : cubeWordConcreteFunctor.Full where
+instance cubeWordConcreteFunctor_full : _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.Full where
   map_surjective f := by
-    obtain ⟨w, hw⟩ := cubeMapGenerated_exists_word f.property
+    obtain ⟨w, hw⟩ := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_exists_word f.property
     exact ⟨w, Subtype.ext hw⟩
 
 /-- 具体的な立方体は元の同じ次元の語の端点から回収される。 -/
-lemma cubeWordConcreteFunctor_obj_surjective : Function.Surjective cubeWordConcreteFunctor.obj := by
+lemma cubeWordConcreteFunctor_obj_surjective : Function.Surjective _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.obj := by
   intro X
   exact ⟨⟨X.dimension⟩, rfl⟩
 
 /-- 語の具体的な意味が一致することは、同じ有限 signature の等号と同値。 -/
-lemma cubeWordConcreteFunctor_map_eq_iff_signature {X Y : CubeWords} (p q : X ⟶ Y) :
-    cubeWordConcreteFunctor.map p = cubeWordConcreteFunctor.map q ↔
-      concreteCubeSignature (cubeWordConcreteFunctor.map p) =
-        concreteCubeSignature (cubeWordConcreteFunctor.map q) :=
-  (concreteCubeSignature_eq_iff _ _).symm
+lemma cubeWordConcreteFunctor_map_eq_iff_signature {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p q : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q ↔
+      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p) =
+        _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q) :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature_eq_iff _ _).symm
 
 /-- 語の具体的な意味が一致することは、同じ一意な有限 max 表示の等号と同値。 -/
-lemma cubeWordConcreteFunctor_map_eq_iff_normalForm {X Y : CubeWords} (p q : X ⟶ Y) :
-    cubeWordConcreteFunctor.map p = cubeWordConcreteFunctor.map q ↔
-      concreteCubeNormalForm (cubeWordConcreteFunctor.map p) =
-        concreteCubeNormalForm (cubeWordConcreteFunctor.map q) :=
-  (concreteCubeNormalForm_eq_iff _ _).symm
+lemma cubeWordConcreteFunctor_map_eq_iff_normalForm {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p q : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q ↔
+      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p) =
+        _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q) :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eq_iff _ _).symm
 
 end SerrePositivity.InfinityCategories.Kan
 

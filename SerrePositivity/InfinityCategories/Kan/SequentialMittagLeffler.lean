@@ -30,22 +30,22 @@ variable (F : ℕᵒᵖ ⥤ Type u) [∀ j, Nonempty (F.obj j)] (hF : F.IsMittag
 def eventualSection : ∀ n, F.toEventualRanges.obj (op n)
   | 0 => Classical.choice (F.toEventualRanges_nonempty hF (op 0))
   | n + 1 => Classical.choose (F.surjective_toEventualRanges hF
-      (homOfLE (Nat.le_succ n)).op (eventualSection n))
+      (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection n))
 
 /-- 選んだ次段の像は前段そのもの。 -/
 lemma eventualSection_comp (n : ℕ) :
-    F.toEventualRanges.map (homOfLE (Nat.le_succ n)).op (eventualSection F hF (n + 1)) =
-      eventualSection F hF n :=
+    F.toEventualRanges.map (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF (n + 1)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n :=
   Classical.choose_spec (F.surjective_toEventualRanges hF
-    (homOfLE (Nat.le_succ n)).op (eventualSection F hF n))
+    (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n))
 
 include hF in
 /-- 非空な Mittag–Leffler 逐次逆系には隣接射で整合する族がある。 -/
 theorem exists_compatible_family :
     ∃ a : ∀ n, F.obj (op n),
       ∀ n, F.map (homOfLE (Nat.le_succ n)).op (a (n + 1)) = a n := by
-  refine ⟨fun n ↦ (eventualSection F hF n).val, fun n ↦ ?_⟩
-  exact congrArg Subtype.val (eventualSection_comp F hF n)
+  refine ⟨fun n ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n).val, fun n ↦ ?_⟩
+  exact congrArg Subtype.val (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection_comp F hF n)
 
 end
 end SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler

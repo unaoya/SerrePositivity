@@ -49,7 +49,7 @@ def circleBKEdgewiseEndFamily (X Y : OmegaSpectrum.{u}) :
     edgewiseSubdivision (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X ⋙
         edgewiseSubdivisionFunctor) :=
-  ParameterPoint.family (circleBKEdgewiseEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKEdgewiseEndPointMap Y)
     (edgewiseSubdivision (mappingSpace X (cotensor PointedSimplicialSet.circle Y))) ≫
       edgewiseHomEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 
@@ -57,7 +57,7 @@ def circleBKEdgewiseEndFamily (X Y : OmegaSpectrum.{u}) :
 def circleBKReflectedEndFamily (X Y : OmegaSpectrum.{u}) :
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X ⋙ SSet.opFunctor) :=
-  ParameterPoint.family (circleBKReflectedEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKReflectedEndPointMap Y)
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op ≫
       weightedConeEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 

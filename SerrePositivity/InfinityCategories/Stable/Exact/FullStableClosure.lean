@@ -81,7 +81,7 @@ def vertex (x : X _⦋0⦌) (hx : P x) :
   ⟨x, by intro v; have hv : v = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
          subst v; simpa only [op_id, CategoryTheory.Functor.map_id_apply] using hx⟩
 
-variable [Quasicategory X] [IsStable X] (hP : StableVertexCondition P)
+variable [Quasicategory X] [IsStable X] (hP : _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition P)
 
 include hP
 

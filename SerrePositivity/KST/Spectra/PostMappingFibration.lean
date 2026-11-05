@@ -81,7 +81,7 @@ theorem post_hasLiftingProperty (A : PointedSimplicialSet.{u})
     simp only [prescribed, Category.assoc, Under.w]
   obtain ⟨f, hf, hfixed, hbase⟩ := relative_product_lift p.right A.hom j h
     earlier prescribed base hc he ha
-  let l := paramCurry A E f hfixed
+  let l := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι A E)).mp
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
@@ -99,7 +99,7 @@ instance post_fibration (A : PointedSimplicialSet.{u}) {E B : PointedSimplicialS
     (p : E ⟶ B) [Fibration p.right] : Fibration (PointedObject.basedHomMap A p).right := by
   rw [fibration_iff]
   intro T U j hj
-  let : Mono A.hom := basepoint_mono A
+  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) A.hom j
   have hj' : anodyneExtensions j := by
     rw [anodyneExtensions_eq_llp_rlp]

@@ -55,7 +55,7 @@ lemma dgGluingCanonicalLaxPullback_cofiber_iff
   exact F2.isPushoutSquare_laxPullback_iff_of_zero_corner _ _ t
 
 def dgGluingCanonicalNativeSemiorthogonal :
-    SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
       (dgGluingStableInput.{u, v, w} R C hC) (dgGluingStableObject R C D M hC hD) :=
   dgGluingNativeSemiorthogonal R C D M hC hD
     (dgGluingUniverseDerivedYoneda_isExactFunctor.{u, v, w} R C hC)
@@ -68,7 +68,7 @@ lemma dgGluingCanonicalNativeSemiorthogonal_retraction :
     (dgGluingCanonicalNativeSemiorthogonal R C D M hC hD).retraction =
       dgGluingStableRightProjection R C D M hC hD :=
   dgGluingNativeSemiorthogonal_retraction R C D M hC hD _ _
-variable (Φ : StableInfinity.{max (u + 1) v w} ⟶ Sp.{max (u + 1) v w})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v w} ⟶ Sp.{max (u + 1) v w})
   (hΦ : IsLocalizingInvariant Φ)
 def dgGluingCanonicalTammeProjectionEquivalence :
     SpectrumHo.obj (value Φ (dgGluingStableObject R C D M hC hD)) ≅

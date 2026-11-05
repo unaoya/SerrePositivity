@@ -24,7 +24,7 @@ open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 
 /-- 小さい円柱の Hom のパラメータを、指定した Hom の族と組み合わせる。 -/
 def pairBySide (A : SSet.{u}) : (s t : Bool) → {U H : SSet.{u}} →
-    (U ⟶ homBySide A s t (𝟙_ SSet.{u})) → (U ⟶ H) → (U ⟶ homBySide A s t H)
+    (U ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s t (𝟙_ SSet.{u})) → (U ⟶ H) → (U ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s t H)
   | false, false, _, _, _, f => f
   | false, true, _, _, k, f => lift (k ≫ fst A (𝟙_ SSet.{u})) f
   | true, false, _, _, k, _ => k
@@ -32,14 +32,14 @@ def pairBySide (A : SSet.{u}) : (s t : Bool) → {U H : SSet.{u}} →
 
 /-- 同じ端での恒等族の pairing は元の恒等族そのもの。 -/
 lemma pairBySide_identity (A H : SSet.{u}) (s : Bool)
-    (k : 𝟙_ SSet.{u} ⟶ homBySide A s s (𝟙_ SSet.{u})) (f : 𝟙_ SSet.{u} ⟶ H) :
-    pairBySide A s s k f = identityBySide A H f s := by
+    (k : 𝟙_ SSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s s (𝟙_ SSet.{u})) (f : 𝟙_ SSet.{u} ⟶ H) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A s s k f = _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identityBySide A H f s := by
   cases s <;> rfl
 
 /-- pairing はパラメータ族の源の前合成と厳密に可換。 -/
 lemma pairBySide_precomp (A : SSet.{u}) (s t : Bool) {U V H : SSet.{u}}
-    (i : V ⟶ U) (k : U ⟶ homBySide A s t (𝟙_ SSet.{u})) (f : U ⟶ H) :
-    i ≫ pairBySide A s t k f = pairBySide A s t (i ≫ k) (i ≫ f) := by
+    (i : V ⟶ U) (k : U ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s t (𝟙_ SSet.{u})) (f : U ⟶ H) :
+    i ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A s t k f = _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A s t (i ≫ k) (i ≫ f) := by
   cases s <;> cases t
   all_goals
     apply SSet.hom_ext
@@ -49,14 +49,14 @@ lemma pairBySide_precomp (A : SSet.{u}) (s t : Bool) {U V H : SSet.{u}}
 /-- 合成と整合する二つの写像族の pairing も合成と整合する。 -/
 lemma pairBySide_comp (A : SSet.{u}) (s t r : Bool) {U V W H K L : SSet.{u}}
     (m : U ⊗ V ⟶ W) (n : H ⊗ K ⟶ L)
-    (a : U ⟶ homBySide A s t (𝟙_ SSet.{u}))
-    (b : V ⟶ homBySide A t r (𝟙_ SSet.{u}))
-    (c : W ⟶ homBySide A s r (𝟙_ SSet.{u}))
+    (a : U ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s t (𝟙_ SSet.{u}))
+    (b : V ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A t r (𝟙_ SSet.{u}))
+    (c : W ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s r (𝟙_ SSet.{u}))
     (f : U ⟶ H) (g : V ⟶ K) (h : W ⟶ L)
-    (hp : m ≫ c = (a ⊗ₘ b) ≫ compositionBySide A (fst _ _) s t r)
+    (hp : m ≫ c = (a ⊗ₘ b) ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.compositionBySide A (fst _ _) s t r)
     (hh : m ≫ h = (f ⊗ₘ g) ≫ n) :
-    m ≫ pairBySide A s r c h =
-      (pairBySide A s t a f ⊗ₘ pairBySide A t r b g) ≫ compositionBySide A n s t r := by
+    m ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A s r c h =
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A s t a f ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide A t r b g) ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.compositionBySide A n s t r := by
   cases s <;> cases t <;> cases r
   all_goals
     apply SSet.hom_ext

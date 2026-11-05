@@ -68,7 +68,7 @@ lemma circleCompanionComparisonRawHomSquare_skipFirst_right (z : Sp.{u} _⦋0⦌
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
       circleCompanionComparisonRawHomSquare z .right =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply IntervalSquare.constant_of_vertex
+  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex
     (circleCompanionComparisonRawHomSquare_skipFirst_right_constant z)
   have h := congrArg (fun f : (Δ[1] : SSet.{u}) ⟶ (circleEvaluationPointedHom z).right ↦
     f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
@@ -103,7 +103,7 @@ lemma circleCompanionComparisonRawHomSquare_includeSecond (z : Sp.{u} _⦋0⦌)
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
       circleCompanionComparisonRawHomSquare z k =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply IntervalSquare.constant_of_vertex
+  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex
     (circleCompanionComparisonRawHomSquare_includeSecond_constant z k)
   have h := circleCompanionComparisonRawHomSquare_left_vertex z k (1 : Fin 2)
   change (circleCompanionComparisonRawHomSquare z k).app _

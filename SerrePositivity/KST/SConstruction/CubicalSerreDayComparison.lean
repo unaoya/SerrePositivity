@@ -46,7 +46,7 @@ def cubicalSerreDayComparison (K L : CubicalSet.{u}) :
 
 /-- 全体の鎖比較は、元の二つの連結 cell の比較射そのものを回収する。 -/
 lemma cubicalSerreDayComparison_cell {K L : CubicalSet.{u}}
-    (c d : ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y) ≫
         cubicalSerreDayComparison A K L = cubicalSerreDayPair A c d x y := by
   have ha := cubicalSerreAdjunction_inverse_cell A (cubicalSerreDayTensorAdjoint A K L)

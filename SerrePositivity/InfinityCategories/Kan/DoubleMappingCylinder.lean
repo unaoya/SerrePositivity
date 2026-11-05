@@ -44,7 +44,7 @@ def cylinderEndpoints (C : SSet.{u}) : C ⨿ C ⟶ C ⊗ Δ[1] :=
 使われ方：Segal Lemma 1.7 の貼り合わせ先の実対象。
 -/
 def doubleMappingCylinder {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) : SSet.{u} :=
-  pushout (cylinderEndpoints C) (coprod.map f g)
+  pushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への中央の円筒の包含。
@@ -53,8 +53,8 @@ def doubleMappingCylinder {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) : SSet.
 使われ方：端点の貼り付けの式と span の射の誘導写像。
 -/
 def doubleMappingCylinder_middle {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    C ⊗ Δ[1] ⟶ doubleMappingCylinder f g :=
-  pushout.inl (cylinderEndpoints C) (coprod.map f g)
+    C ⊗ Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  pushout.inl (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への左の対象の包含。
@@ -63,8 +63,8 @@ def doubleMappingCylinder_middle {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) 
 使われ方：左の頂点から貼り合わせ先への比較正方形。
 -/
 def doubleMappingCylinder_left {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    A ⟶ doubleMappingCylinder f g :=
-  coprod.inl ≫ pushout.inr (cylinderEndpoints C) (coprod.map f g)
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  coprod.inl ≫ pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への右の対象の包含。
@@ -73,8 +73,8 @@ def doubleMappingCylinder_left {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：右の頂点から貼り合わせ先への比較正方形。
 -/
 def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    B ⟶ doubleMappingCylinder f g :=
-  coprod.inr ≫ pushout.inr (cylinderEndpoints C) (coprod.map f g)
+    B ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  coprod.inr ≫ pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：円筒の零端点は span の左の射で貼り付けられる。
@@ -83,11 +83,11 @@ def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：span の射からの誘導写像の定義。
 -/
 @[reassoc] theorem doubleMappingCylinder_zero {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    SSet.ι₀ ≫ doubleMappingCylinder_middle f g = f ≫ doubleMappingCylinder_left f g := by
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g = f ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g := by
   have h := congrArg (fun q => coprod.inl ≫ q)
-    (pushout.condition (f := cylinderEndpoints C) (g := coprod.map f g))
-  simpa only [cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
-    doubleMappingCylinder_middle, doubleMappingCylinder_left, Category.assoc] using h
+    (pushout.condition (f := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (g := coprod.map f g))
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc] using h
 
 /--
 概要：円筒の一端点は span の右の射で貼り付けられる。
@@ -96,11 +96,11 @@ def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：span の射からの誘導写像の定義。
 -/
 @[reassoc] theorem doubleMappingCylinder_one {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    SSet.ι₁ ≫ doubleMappingCylinder_middle f g = g ≫ doubleMappingCylinder_right f g := by
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g = g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g := by
   have h := congrArg (fun q => coprod.inr ≫ q)
-    (pushout.condition (f := cylinderEndpoints C) (g := coprod.map f g))
-  simpa only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
-    doubleMappingCylinder_middle, doubleMappingCylinder_right, Category.assoc] using h
+    (pushout.condition (f := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (g := coprod.map f g))
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc] using h
 
 end SerrePositivity.InfinityCategories.Kan
 

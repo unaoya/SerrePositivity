@@ -32,7 +32,7 @@ def strictKanCompletion : SSet.{u} ⥤ KanObject.{u} where
 /-- 元の anodyne 局所化同型は、同じ厳密 Kan 置換の実写像を同値にする。 -/
 theorem strictKanCompletion_map_isQCatEquivalence {X Y : SSet.{u}} (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) :
-    IsQCatEquivalence (strictKanCompletion.map f) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map f) := by
   change IsQCatEquivalence (F2.continuousKanReplacement.map f)
   let Q := AnodyneHomotopy.anodyneQ
   have : IsIso (Q.map (F2.continuousKanReplacementUnit.app X)) :=

@@ -41,7 +41,7 @@ variable [BraidedCategory V]
 lemma enriched_parameter_square_id {A : V} {X Y : C} (e : A ⟶ (X ⟶[V] Y)) :
     (e ⊗ₘ eId V Y) ≫ eComp V X Y Y =
       (β_ A (𝟙_ V)).hom ≫ (eId V X ⊗ₘ e) ≫ eComp V X X Y := by
-  rw [enriched_parameter_comp_id, enriched_parameter_id_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_comp_id, _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_id_comp,
     ← Category.assoc, braiding_leftUnitor]
 
 end SerrePositivity.InfinityCategories.Kan

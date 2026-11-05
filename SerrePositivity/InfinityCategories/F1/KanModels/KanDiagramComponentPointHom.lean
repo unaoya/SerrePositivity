@@ -32,12 +32,12 @@ def kanDiagramComponentValueIso (i : I) :
 
 /-- 同じ指定成分の順方向射は、元の係数射の coherent な辺の類。 -/
 theorem kanDiagramComponentValueIso_hom (i : I) :
-    (kanDiagramComponentValueIso η hη i).hom =
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso η hη i).hom =
       Truncated.HomotopyCategory.homMk
         (((coherentNerveEdge (show F.val.obj i ⟶ G.val.obj i from η.app i)).ofEq
           (spaceInfinityVertex_eq_coherent (F.val.obj i)).symm
           (spaceInfinityVertex_eq_coherent (G.val.obj i)).symm).toTruncated) := by
-  simp only [kanDiagramComponentValueIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
     eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate]
   change eqToHom (congrArg HomotopyCategory.mk
       (kanDiagramCoherentNerve_vertex F.val i)).symm ≫
@@ -51,12 +51,12 @@ theorem kanDiagramComponentValueIso_hom (i : I) :
 
 /-- 元の係数点の射は、同じ図式同型の指定成分で元の像の点の射へ移る。 -/
 theorem kanDiagramComponentValueIso_pointHom (i : I) (v : (F.val.obj i).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.val.obj i)).symm v) ≫
-      (kanDiagramComponentValueIso η hη i).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (G.val.obj i)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.val.obj i)).symm v) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso η hη i).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (G.val.obj i)).symm
       ((η.app i).app (Opposite.op ⦋0⦌) v)) := by
-  rw [kanDiagramComponentValueIso_hom]
-  exact kanPointHom_comp_of_edge (show F.val.obj i ⟶ G.val.obj i from η.app i) _ rfl v
+  rw [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso_hom]
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge (show F.val.obj i ⟶ G.val.obj i from η.app i) _ rfl v
 
 end SerrePositivity.InfinityCategories.F1.KanModels
 

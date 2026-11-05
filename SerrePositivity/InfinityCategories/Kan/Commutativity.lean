@@ -103,7 +103,7 @@ def face (h : PtSimplex.MulStruct f g fg i.succ) (j : Fin (n + 5)) :
 規約：i + 3 の面を除く全ての面。
 使われ方：Kerodon Lemma 3.2.3.9。Kan 充填の適用条件。 -/
 theorem compatible (h : PtSimplex.MulStruct f g fg i.succ) :
-    horn.IsCompatible (i := i.castSucc.succ.succ.succ) (fun j _ ↦ face h j) := by
+    horn.IsCompatible (i := i.castSucc.succ.succ.succ) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face h j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ i.val + 3 := by
@@ -116,9 +116,9 @@ theorem compatible (h : PtSimplex.MulStruct f g fg i.succ) :
     apply hk
     apply Fin.ext
     simpa using he
-  simp only [face]
-  split_ifs <;> simp only [SimplexFaces.degenerate_face,
-    SimplexFaces.mul_face, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face]
+  split_ifs <;> simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face,
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -133,15 +133,15 @@ theorem compatible (h : PtSimplex.MulStruct f g fg i.succ) :
 theorem output_face (h : PtSimplex.MulStruct f g fg i.succ)
     (φ : (Δ[n + 4] : SSet.{u}) ⟶ X)
     (hφ : ∀ (j : Fin (n + 5)) (_ : j ≠ i.castSucc.succ.succ.succ),
-      stdSimplex.δ j ≫ φ = face h j) (j : Fin (n + 4)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face h j) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ i.castSucc.succ.succ.succ ≫ φ =
       if j = i.castSucc.castSucc.castSucc then f.map else
       if j = i.castSucc.castSucc.succ then fg.map else
       if j = i.castSucc.succ.succ then g.map else SSet.const x := by
   by_cases hj : j ≤ i.castSucc.succ.succ
   · rw [stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -151,8 +151,8 @@ theorem output_face (h : PtSimplex.MulStruct f g fg i.succ)
     have he : i.castSucc.succ.succ.succ = i.succ.succ.succ.castSucc := by
       apply Fin.ext; rfl
     rw [he, ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -165,29 +165,29 @@ theorem output_face (h : PtSimplex.MulStruct f g fg i.succ)
 使われ方：Kerodon Lemma 3.2.3.9。高次群の可換性の前段。 -/
 noncomputable def flip [KanComplex X] (h : PtSimplex.MulStruct f g fg i.succ) :
     PtSimplex.MulStruct g f fg i.castSucc where
-  map := stdSimplex.δ i.castSucc.succ.succ.succ ≫ (compatible h).liftOfKanComplex
+  map := stdSimplex.δ i.castSucc.succ.succ.succ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).liftOfKanComplex
   δ_castSucc_castSucc_map := by
-    rw [output_face h _ (fun j hj ↦ (compatible h).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face h _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).δ_liftOfKanComplex j hj)]
     exact ite_eq_left rfl
   δ_succ_castSucc_map := by
-    rw [output_face h _ (fun j hj ↦ (compatible h).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face h _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).δ_liftOfKanComplex j hj)]
     split_ifs <;> first
       | rfl
       | (exfalso
          simp only [Fin.ext_iff, Fin.val_castSucc, Fin.val_succ] at *
          first | tauto | omega)
   δ_succ_succ_map := by
-    rw [output_face h _ (fun j hj ↦ (compatible h).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face h _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).δ_liftOfKanComplex j hj)]
     split_ifs <;> first
       | rfl
       | (exfalso
          simp only [Fin.ext_iff, Fin.val_castSucc, Fin.val_succ] at *
          first | tauto | omega)
   δ_map_of_lt j hj := by
-    rw [output_face h _ (fun j hj ↦ (compatible h).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face h _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).δ_liftOfKanComplex j hj)]
     split_ifs <;> first | rfl | (exfalso; grind)
   δ_map_of_gt j hj := by
-    rw [output_face h _ (fun j hj ↦ (compatible h).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face h _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible h).δ_liftOfKanComplex j hj)]
     split_ifs <;> first | rfl | (exfalso; grind)
 
 end AdjacentProduct
@@ -218,10 +218,10 @@ structure FourStruct {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   方針：四つの面以外を定数にする。
   規約：面添字は零から n + 3。
   使われ方：Kerodon Notation 3.2.3.1。充填の照合。 -/
-  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = fourFaces a b c d j
+  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map = _root_.SerrePositivity.InfinityCategories.Kan.fourFaces a b c d j
 
 namespace FourStruct
-open SerrePositivity.KST.Spectra.FourStruct
+open _root_.SerrePositivity.InfinityCategories.Kan.FourStruct
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 
@@ -230,7 +230,7 @@ variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 規約：最後の四面は a、定数、c、d。
 使われ方：Kerodon Theorem 3.2.2.10 の可換性の証明。 -/
 theorem exists_fill [KanComplex X] (a c : X.PtSimplex (n + 2) x) :
-    ∃ d : X.PtSimplex (n + 2) x, Nonempty (FourStruct a .const c d) := by
+    ∃ d : X.PtSimplex (n + 2) x, Nonempty (_root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) := by
   let α (j : Fin (n + 4)) (_ : j ≠ Fin.last (n + 3)) : (Δ[n + 2] : SSet.{u}) ⟶ X :=
     if j.val = n then a.map else if j.val = n + 2 then c.map else SSet.const x
   have hαface (j) (hj) (k : Fin (n + 3)) : stdSimplex.δ k ≫ α j hj = SSet.const x := by
@@ -245,15 +245,15 @@ theorem exists_fill [KanComplex X] (a c : X.PtSimplex (n + 2) x) :
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
           hα.δ_liftOfKanComplex _ (by simp)]
         exact hαface _ (Fin.castSucc_ne_last j) _ }
-  refine ⟨d, ⟨{ map := hα.liftOfKanComplex, face_eq := ?_ }⟩⟩
+  refine ⟨d, ⟨{ _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map := hα.liftOfKanComplex, _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.face_eq := ?_ }⟩⟩
   intro j
   induction j using Fin.lastCases with
   | last =>
-    change d.map = fourFaces a .const c d (Fin.last (n + 3))
-    simp [fourFaces]
+    change d.map = _root_.SerrePositivity.InfinityCategories.Kan.fourFaces a .const c d (Fin.last (n + 3))
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.fourFaces]
   | cast j =>
     rw [hα.δ_liftOfKanComplex _ (by simp)]
-    dsimp [α, fourFaces]
+    dsimp [α, _root_.SerrePositivity.InfinityCategories.Kan.fourFaces]
     split_ifs <;> first | rfl | (exfalso; omega)
 
 end FourStruct
@@ -269,7 +269,7 @@ variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 規約：欠ける面は n + 2。
 使われ方：Kerodon Lemma 3.2.3.7 の最後の四面への特殊化。 -/
 def face (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
-    (T : FourStruct a .const c d) (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
   if j.val = n then h.map else
   if j.val = n + 1 then stdSimplex.σ (Fin.last n).castSucc.castSucc ≫ ia.map else
   if j.val = n + 3 then T.map else
@@ -282,18 +282,18 @@ set_option maxHeartbeats 800000 in
 規約：n + 2 の面を除く。
 使われ方：Kerodon Lemma 3.2.3.7。消去の充填。 -/
 theorem compatible (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
-    (T : FourStruct a .const c d) :
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) :
     horn.IsCompatible (i := (Fin.last n).castSucc.castSucc.succ.succ)
-      (fun j _ ↦ face h T j) := by
+      (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face h T j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 2 := by
     intro he; apply hj; apply Fin.ext; simpa using he
   have hk' : k.val ≠ n + 2 := by
     intro he; apply hk; apply Fin.ext; simpa using he
-  simp only [face]
-  split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face,
-    T.face_eq, fourFaces, RelativeMorphism.const_map, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face,
+    T.face_eq, _root_.SerrePositivity.InfinityCategories.Kan.fourFaces, RelativeMorphism.const_map, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -306,17 +306,17 @@ theorem compatible (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
 規約：φ は消去ホーンの充填。
 使われ方：Kerodon Lemma 3.2.3.7。四面から積の等式への変換。 -/
 theorem output_face (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
-    (T : FourStruct a .const c d) (φ : (Δ[n + 4] : SSet.{u}) ⟶ X)
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (φ : (Δ[n + 4] : SSet.{u}) ⟶ X)
     (hφ : ∀ (j : Fin (n + 5)) (_ : j ≠ (Fin.last n).castSucc.castSucc.succ.succ),
-      stdSimplex.δ j ≫ φ = face h T j) (j : Fin (n + 4)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face h T j) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last n).castSucc.castSucc.succ.succ ≫ φ =
       if j.val = n + 1 then ia.map else
       if j.val = n + 2 then c.map else
       if j.val = n + 3 then d.map else SSet.const x := by
   by_cases hj : j ≤ (Fin.last n).castSucc.castSucc.succ
   · rw [stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face,
       RelativeMorphism.const_map, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -328,9 +328,9 @@ theorem output_face (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
     have he : (Fin.last n).castSucc.castSucc.succ.succ =
         (Fin.last n).castSucc.succ.succ.castSucc := by apply Fin.ext; rfl
     rw [he, ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [T.face_eq, fourFaces,
-      SimplexFaces.degenerate_face, RelativeMorphism.const_map, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face]
+    split_ifs <;> try simp only [T.face_eq, _root_.SerrePositivity.InfinityCategories.Kan.fourFaces,
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, RelativeMorphism.const_map, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -344,20 +344,20 @@ theorem output_face (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
 使われ方：Kerodon Lemma 3.2.3.7。四面の積の計算。 -/
 noncomputable def mulStruct [KanComplex X]
     (h : PtSimplex.MulStruct a ia .const (Fin.last n).castSucc)
-    (T : FourStruct a .const c d) : PtSimplex.MulStruct d ia c (Fin.last (n + 1)) where
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) : PtSimplex.MulStruct d ia c (Fin.last (n + 1)) where
   map := stdSimplex.δ (Fin.last n).castSucc.castSucc.succ.succ ≫
-    (compatible h T).liftOfKanComplex
+    (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible h T).liftOfKanComplex
   δ_castSucc_castSucc_map := by
-    rw [output_face h T _ (fun j hj ↦ (compatible h T).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.output_face h T _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible h T).δ_liftOfKanComplex j hj)]
     simp
   δ_succ_castSucc_map := by
-    rw [output_face h T _ (fun j hj ↦ (compatible h T).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.output_face h T _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible h T).δ_liftOfKanComplex j hj)]
     simp
   δ_succ_succ_map := by
-    rw [output_face h T _ (fun j hj ↦ (compatible h T).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.output_face h T _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible h T).δ_liftOfKanComplex j hj)]
     simp
   δ_map_of_lt j hj := by
-    rw [output_face h T _ (fun j hj ↦ (compatible h T).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.output_face h T _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible h T).δ_liftOfKanComplex j hj)]
     split_ifs <;> first
       | rfl
       | (exfalso
@@ -369,13 +369,13 @@ noncomputable def mulStruct [KanComplex X]
 方針：a の左逆元で最初の二面を消去し、群の逆元消去を使う。
 規約：商の積は最後の面で定義された積。
 使われ方：Kerodon Theorem 3.2.2.10 の可換性の証明。 -/
-theorem class_eq [KanComplex X] (T : FourStruct a .const c d) :
-    KanHomotopyGroup.mk d = KanHomotopyGroup.mk c * KanHomotopyGroup.mk a := by
+theorem class_eq [KanComplex X] (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk d = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk c * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a := by
   obtain ⟨ia, ⟨hinv⟩⟩ := PtSimplex.MulStruct.exists_left_inverse a (Fin.last (n + 1))
-  have hi : KanHomotopyGroup.mk ia * KanHomotopyGroup.mk a = 1 :=
-    KanHomotopyGroup.mul_eq hinv
-  have hc : KanHomotopyGroup.mk d * KanHomotopyGroup.mk ia = KanHomotopyGroup.mk c :=
-    KanHomotopyGroup.mul_eq (mulStruct (AdjacentProduct.flip hinv) T)
+  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ia * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = 1 :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hinv
+  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk d * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ia = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk c :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (_root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip hinv) T)
   rw [← hc, mul_assoc, hi, mul_one]
 
 end FourReduction
@@ -390,7 +390,7 @@ variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 方針：二つの充填の間に同じ単体の二つの退化を置く。
 規約：最後の面を欠くホーン。
 使われ方：Kerodon Theorem 3.2.2.10 の可換性の最後のホーン。 -/
-def face (T : FourStruct a .const c d) (T' : FourStruct c .const a d')
+def face (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (T' : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct c .const a d')
     (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
   if j.val = n then T.map else
   if j.val = n + 1 then stdSimplex.σ (Fin.last n).castSucc.castSucc ≫ a.map else
@@ -403,15 +403,15 @@ set_option maxHeartbeats 800000 in
 方針：二つの充填の四面と退化の二面を直接照合する。
 規約：最後の面以外を指定する。
 使われ方：Kerodon Theorem 3.2.2.10。可換性の充填。 -/
-theorem compatible (T : FourStruct a .const c d) (T' : FourStruct c .const a d') :
-    horn.IsCompatible (i := Fin.last (n + 4)) (fun j _ ↦ face T T' j) := by
+theorem compatible (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (T' : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct c .const a d') :
+    horn.IsCompatible (i := Fin.last (n + 4)) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face T T' j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 4 := fun he ↦ hj (Fin.ext he)
   have hk' : k.val ≠ n + 4 := fun he ↦ hk (Fin.ext he)
-  simp only [face]
-  split_ifs <;> try simp only [SimplexFaces.degenerate_face, T.face_eq, T'.face_eq,
-    fourFaces, RelativeMorphism.const_map, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, T.face_eq, T'.face_eq,
+    _root_.SerrePositivity.InfinityCategories.Kan.fourFaces, RelativeMorphism.const_map, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -424,15 +424,15 @@ theorem compatible (T : FourStruct a .const c d) (T' : FourStruct c .const a d')
 規約：正順と逆順の充填に同じ a、c を用いる。
 使われ方：Kerodon Theorem 3.2.2.10。積の交換の比較。 -/
 noncomputable def compare [KanComplex X]
-    (T : FourStruct a .const c d) (T' : FourStruct c .const a d') :
-    FourStruct d .const .const d' where
-  map := stdSimplex.δ (Fin.last (n + 4)) ≫ (compatible T T').liftOfKanComplex
-  face_eq j := by
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (T' : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct c .const a d') :
+    _root_.SerrePositivity.InfinityCategories.Kan.FourStruct d .const .const d' where
+  _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map := stdSimplex.δ (Fin.last (n + 4)) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible T T').liftOfKanComplex
+  _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.face_eq j := by
     rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
-      (compatible T T').δ_liftOfKanComplex _ (by simp)]
-    simp only [face, fourFaces]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, T.face_eq, T'.face_eq,
-      fourFaces, RelativeMorphism.const_map, comp_const]
+      (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible T T').δ_liftOfKanComplex _ (by simp)]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face, _root_.SerrePositivity.InfinityCategories.Kan.fourFaces]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, T.face_eq, T'.face_eq,
+      _root_.SerrePositivity.InfinityCategories.Kan.fourFaces, RelativeMorphism.const_map, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -447,26 +447,26 @@ end FourComparison
 規約：KanHomotopyGroup の添字 n + 1 は実際の次数 n + 2 を表す。
 使われ方：Kerodon Theorem 3.2.2.10、Goerss–Jardine I §7。L9a の可換性。 -/
 theorem KanHomotopyGroup.mul_comm {X : SSet.{u}} [KanComplex X]
-    {n : ℕ} {x : X _⦋0⦌} (a c : KanHomotopyGroup X (n + 1) x) : a * c = c * a := by
+    {n : ℕ} {x : X _⦋0⦌} (a c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) : a * c = c * a := by
   induction a using Quotient.inductionOn with | h a => ?_
   induction c using Quotient.inductionOn with | h c => ?_
-  obtain ⟨d, ⟨T⟩⟩ := FourStruct.exists_fill a c
-  obtain ⟨d', ⟨T'⟩⟩ := FourStruct.exists_fill c a
-  have he := FourReduction.class_eq (FourComparison.compare T T')
-  have h₁ := FourReduction.class_eq T
-  have h₂ := FourReduction.class_eq T'
-  change mk a * mk c = mk c * mk a
-  simpa only [h₁, h₂, show mk (RelativeMorphism.const : X.PtSimplex (n + 2) x) =
-    (1 : KanHomotopyGroup X (n + 1) x) from rfl, one_mul] using he
+  obtain ⟨d, ⟨T⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.exists_fill a c
+  obtain ⟨d', ⟨T'⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.exists_fill c a
+  have he := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.class_eq (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compare T T')
+  have h₁ := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.class_eq T
+  have h₂ := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.class_eq T'
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk c = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk c * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a
+  simpa only [h₁, h₂, show _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (RelativeMorphism.const : X.PtSimplex (n + 2) x) =
+    (1 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) from rfl, one_mul] using he
 
 /-- 概要：二以上の次数のホモトピー類は可換群をなす。
 方針：既存の群構造にホーンで証明した可換性を加える。
 規約：正次数群の添字 n + 1 に対応する実際の次数は n + 2。
 使われ方：Kerodon Theorem 3.2.2.10。スペクトルの π_* のアーベル群。 -/
 noncomputable instance instCommGroupKanHomotopyGroupHAddNatOfNat {X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌} :
-    CommGroup (KanHomotopyGroup X (n + 1) x) where
-  __ := (inferInstance : Group (KanHomotopyGroup X (n + 1) x))
-  mul_comm := KanHomotopyGroup.mul_comm
+    CommGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) where
+  __ := (inferInstance : Group (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))
+  mul_comm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_comm
 
 end SerrePositivity.InfinityCategories.Kan
 

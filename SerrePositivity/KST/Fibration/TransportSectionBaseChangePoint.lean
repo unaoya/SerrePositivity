@@ -19,7 +19,7 @@ theorem relativeSectionBaseChangeComponentIso_heq_transportMap
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
     HEq (relativeSectionBaseChangeComponentIso k (transportSimplexDomainFunctor D) X c)
       (VertexIso.map (transportSimplexSectionInfinity_baseChangeIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   let A := transportSimplexDomainFunctor D
   have ht : (SSet.uliftFunctor.{u + 1, u}).map
@@ -29,8 +29,8 @@ theorem relativeSectionBaseChangeComponentIso_heq_transportMap
       (congrArg relativeSectionDiagramInfinity (transportSimplexDomainFunctor_baseChange k))
   have hm := F2.vertexIso_map_heq_of_heq (transportSimplexSectionInfinity_baseChangeIso k)
     (relativeSectionDiagramInfinityBaseChangeIso k A) rfl (congrArg functorVertex ht)
-    (transportSimplexSectionInfinity_baseChangeIso_heq k)
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.transportSimplexSectionInfinity_baseChangeIso_heq k)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex c)) (coherentNerveVertex X))
   exact (relativeSectionBaseChangeComponentIso_heq_jointMap k A X c).trans hm.symm
 
@@ -38,9 +38,9 @@ theorem relativeSectionBaseChangeComponentIso_heq_transportMap
 theorem relativeSectionBaseChangeComponentIso_heq_transportValueMap
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
     HEq (relativeSectionBaseChangeComponentIso k (transportSimplexDomainFunctor D) X c)
-      (VertexIso.map (functorIsoValue (transportSimplexSectionInfinity_baseChangeIso k)
+      (VertexIso.map (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (transportSimplexSectionInfinity_baseChangeIso k)
         (ULift.up (nerveVertex c))) (evaluateFunctorAt (coherentNerveVertex X))) := by
-  have h := functorIsoDoubleValue_heq_map (transportSimplexSectionInfinity_baseChangeIso k)
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoDoubleValue_heq_map (transportSimplexSectionInfinity_baseChangeIso k)
     (ULift.up (nerveVertex c)) (coherentNerveVertex X)
   exact (relativeSectionBaseChangeComponentIso_heq_transportMap k X c).trans h.symm
 

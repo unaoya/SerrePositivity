@@ -36,21 +36,21 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 使われ方：HA §1.4.2、BF 1978 §2。loop を値とする写像の成分のパラメータ変数の自然性。 -/
 @[reassoc]
 theorem natural_pre_left {A B : C} (i : A ⟶ B) (K Y : C) :
-    (MonoidalClosed.pre i).app ((ihom K).obj Y) ≫ (iso A K Y).hom =
-      (iso B K Y).hom ≫ (ihom K).map ((MonoidalClosed.pre i).app Y) := by
+    (MonoidalClosed.pre i).app ((ihom K).obj Y) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B K Y).hom ≫ (ihom K).map ((MonoidalClosed.pre i).app Y) := by
   apply MonoidalClosed.uncurry_injective
   apply MonoidalClosed.uncurry_injective
   rw [MonoidalClosed.uncurry_natural_left, MonoidalClosed.uncurry_natural_left,
-    uncurry_uncurry_hom, HomTensorStrength.exchange_natural_right_assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   rw [MonoidalClosed.uncurry_natural_right, MonoidalClosed.uncurry_pre_app,
-    uncurry_uncurry_hom]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
   have he : A ◁ (MonoidalClosed.pre i).app ((ihom K).obj Y) ≫
       (ihom.ev A).app ((ihom K).obj Y) =
       i ▷ ((ihom B).obj ((ihom K).obj Y)) ≫ (ihom.ev B).app ((ihom K).obj Y) :=
     MonoidalClosed.id_tensor_pre_app_comp_ev _ _
   rw [← whiskerLeft_comp_assoc, he, whiskerLeft_comp]
   simp only [Category.assoc]
-  rw [← HomTensorStrength.exchange_natural_left_assoc]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left_assoc]
 
 end
 

@@ -31,9 +31,9 @@ lemma spanFunctorEdgeUnflip_invertsAllEdges {K L X : SSet.{u}} [Quasicategory X]
       (functorVertex (internalHomFlipHomEquiv K L X G)))
     (hl : IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj X)) l)
     (hG : InvertsEdges G Set.univ) : InvertsEdges F Set.univ := by
-  have := spanFunctorEdgeUnflip_isInvertible l hl
+  have := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_isInvertible l hl
   let e : FunctorIso F G := asIso
-    (Truncated.HomotopyCategory.homMk (spanFunctorEdgeUnflip l).toTruncated)
+    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated)
   exact (invertsEdges_functorIso_iff e Set.univ).mpr hG
 
 /-- 元の指定比較辺を転置した同じ prism を、商図式の core 内へ厳密に戻す。 -/
@@ -47,8 +47,8 @@ def spanFunctorEdgeUnflipCoreHomotopy {K L X : SSet.{u}} [Quasicategory X]
     (hG : InvertsEdges G Set.univ) :
     SSet.Homotopy (allEdgesCoreLift F (spanFunctorEdgeUnflip_invertsAllEdges l hl hG))
       (allEdgesCoreLift G hG) :=
-  allEdgesCoreComparisonHomotopy (spanFunctorEdgeUnflip l).toTruncated
-    (spanFunctorEdgeUnflip_isInvertible l hl)
+  allEdgesCoreComparisonHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_isInvertible l hl)
     (spanFunctorEdgeUnflip_invertsAllEdges l hl hG) hG
 
 lemma spanFunctorEdgeUnflipCoreHomotopy_ι {K L X : SSet.{u}} [Quasicategory X]
@@ -62,7 +62,7 @@ lemma spanFunctorEdgeUnflipCoreHomotopy_ι {K L X : SSet.{u}} [Quasicategory X]
     (spanFunctorEdgeUnflipCoreHomotopy l hl hG).h ≫ (quasicategoryCore ((ihom L).obj X)).ι =
       uncurry (SSet.yonedaEquiv.symm l.edge ≫ (internalHomSwapIso L K X).hom) := by
   rw [spanFunctorEdgeUnflipCoreHomotopy, allEdgesCoreComparisonHomotopy_ι]
-  change uncurry (SSet.yonedaEquiv.symm (spanFunctorEdgeUnflip l).edge) = _
+  change uncurry (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).edge) = _
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
   rfl
 

@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 /-- 元の lax pullback に値を持つ関手 ρ = fromD ∘ v。 -/
@@ -39,7 +39,7 @@ lemma laxDifferenceRho_postcomp_fullyFaithful (hv : IsFullyFaithful v) (A : SSet
 /-- ρ に差の関手を続けた合成は恒等関手と実関手同型になる。 -/
 def laxDifferenceRho_sectionIso (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v) :
     FunctorIso (laxDifferenceRho p q v ≫ laxDifference p q) (𝟙 E.obj) := by
-  have := fullyFaithfulRightAdjunction_counitHom_isIso q v a hv
+  have := _root_.SerrePositivity.InfinityCategories.Stable.Lax.fullyFaithfulRightAdjunction_counitHom_isIso q v a hv
   have h := FunctorIso.precomp (fromD_differenceIso p q) v
   exact (by simpa only [laxDifferenceRho, Category.assoc] using h) ≪≫ asIso a.counitHom
 

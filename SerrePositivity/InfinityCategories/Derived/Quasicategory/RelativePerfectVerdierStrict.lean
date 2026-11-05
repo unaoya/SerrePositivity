@@ -32,7 +32,7 @@ namespace SerrePositivity.InfinityCategories.Derived.Quasicategory
 open SerrePositivity.KST.LocalizingInvariants
 
 namespace RelativePerfectVerdierDiagram
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierDiagram
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 
 /-- 既存の厳密商の相対証明書を、同じ四角形・恒等完備化で受ける。 -/
@@ -75,7 +75,7 @@ def ofStrict (d : RelativeVerdierDiagram (ν ≫ perfectStableInfinityInclusion)
 end RelativePerfectVerdierDiagram
 
 namespace RelativePerfectVerdierRectangle
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 
 /-- 既存の厳密長方形を、同じ全図式と恒等完備化を持つ特殊化として受ける。 -/

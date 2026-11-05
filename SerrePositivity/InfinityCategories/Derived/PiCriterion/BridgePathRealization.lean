@@ -35,13 +35,13 @@ lemma bridge_transport_path_realization [KanComplex X] (n : ℕ) {x y : X _⦋0�
     (e : X.Edge x y)
     (h₀ : (KanPath.evaluation X 0).app _ (edgePathVertex e) = x)
     (h₁ : (KanPath.evaluation X 1).app _ (edgePathVertex e) = y)
-    (γ : KanHomotopyGroup (KanPath.object X) n (edgePathVertex e)) :
+    (γ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n (edgePathVertex e)) :
     dgBarCompactPiTransport n e
-      (KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ)
-      (KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ) := by
   obtain ⟨t, rfl⟩ := Quotient.mk_surjective γ
-  let f := mapSimplex (KanPath.evaluation X 0) h₀ t
-  let g := mapSimplex (KanPath.evaluation X 1) h₁ t
+  let f := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (KanPath.evaluation X 0) h₀ t
+  let g := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (KanPath.evaluation X 1) h₁ t
   let H : SSet.Homotopy f.map g.map := pathFamilyHomotopy t.map
   refine ⟨f, g, rfl, rfl, H, ?_⟩
   change (boundary (n + 1)).ι ▷ (Δ[1] : SSet.{u}) ≫ (pathFamilyHomotopy t.map).h = _
@@ -50,13 +50,13 @@ lemma bridge_transport_path_realization [KanComplex X] (n : ℕ) {x y : X _⦋0�
 
 /-- D の指定辺付き移送は、その同じ辺の固定 path 頂点の群の表示と同値。 -/
 lemma bridge_transport_iff_path_witness [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
-    (e : X.Edge x y) (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y) :
+    (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) :
     dgBarCompactPiTransport n e a b ↔
       ∃ h₀ : (KanPath.evaluation X 0).app _ (edgePathVertex e) = x,
       ∃ h₁ : (KanPath.evaluation X 1).app _ (edgePathVertex e) = y,
-      ∃ γ : KanHomotopyGroup (KanPath.object X) n (edgePathVertex e),
-        KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
-        KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b := by
+      ∃ γ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n (edgePathVertex e),
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b := by
   constructor
   · exact bridge_transport_path_witness n e a b
   · rintro ⟨h₀, h₁, γ, ha, hb⟩
@@ -99,36 +99,36 @@ lemma edgePathVertex_one {x y : X _⦋0⦌} (e : X.Edge x y) :
 
 /-- D の指定辺に沿う基点移送を、実際の正次数の群同型として表す。 -/
 def bridgePiTransportEquiv [KanComplex X] (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y) :
-    KanHomotopyGroup X n x ≃* KanHomotopyGroup X n y :=
-  (KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 0)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 0)
     (KanPath.evaluation_piIsomorphism X 0) (edgePathVertex_zero e)).symm.trans
-  (KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 1)
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 1)
     (KanPath.evaluation_piIsomorphism X 1) (edgePathVertex_one e))
 
 /-- D の球面円柱の関係は、同じ指定辺による群同型の値の等式に一致。 -/
 lemma bridge_transport_iff_equiv [KanComplex X] (n : ℕ) {x y : X _⦋0⦌}
-    (e : X.Edge x y) (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y) :
+    (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) :
     dgBarCompactPiTransport n e a b ↔ bridgePiTransportEquiv n e a = b := by
-  let E₀ := KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 0)
+  let E₀ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 0)
     (KanPath.evaluation_piIsomorphism X 0) (edgePathVertex_zero e)
-  let E₁ := KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 1)
+  let E₁ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (KanPath.evaluation X 1)
     (KanPath.evaluation_piIsomorphism X 1) (edgePathVertex_one e)
   change dgBarCompactPiTransport n e a b ↔ E₁ (E₀.symm a) = b
   constructor
   · intro h
     obtain ⟨h₀, h₁, γ, ha, hb⟩ := bridge_transport_path_witness n e a b h
     have hzero : E₀ γ = a := by
-      simpa only [E₀, KanHomotopyGroup.equivOfPiIsomorphism_apply] using ha
+      simpa only [E₀, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using ha
     have hone : E₁ γ = b := by
-      simpa only [E₁, KanHomotopyGroup.equivOfPiIsomorphism_apply] using hb
+      simpa only [E₁, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using hb
     rw [← hzero, E₀.symm_apply_apply, hone]
   · intro h
-    have ha : KanHomotopyGroup.map (KanPath.evaluation X 0) (edgePathVertex_zero e)
+    have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) (edgePathVertex_zero e)
         (E₀.symm a) = a := by
-      simpa only [E₀, KanHomotopyGroup.equivOfPiIsomorphism_apply] using E₀.apply_symm_apply a
-    have hb : KanHomotopyGroup.map (KanPath.evaluation X 1) (edgePathVertex_one e)
+      simpa only [E₀, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using E₀.apply_symm_apply a
+    have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) (edgePathVertex_one e)
         (E₀.symm a) = b := by
-      simpa only [E₁, KanHomotopyGroup.equivOfPiIsomorphism_apply] using h
+      simpa only [E₁, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using h
     have ht := bridge_transport_path_realization n e (edgePathVertex_zero e)
       (edgePathVertex_one e) (E₀.symm a)
     simpa only [ha, hb] using ht

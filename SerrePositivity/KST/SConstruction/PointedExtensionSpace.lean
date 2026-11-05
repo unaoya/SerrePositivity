@@ -22,7 +22,7 @@ open scoped Simplicial
 方針：点つき写像空間の源の制限を指定した頂点で引き戻す。
 規約：等号で固定した厳密な fiber。使われ方：延長の存在と高次の選択。 -/
 def pointedExtensionSpace {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) : SSet.{u} :=
-  pullback (Spectra.PointedMapping.prePointed i Z).right
+  pullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))
 
 /-- 概要：延長の空間から一点への射影は trivial Kan fibration。
@@ -30,10 +30,10 @@ def pointedExtensionSpace {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : 
 規約：標的のみ Kan を要求する。使われ方：選択空間の可縮性。 -/
 lemma pointedExtensionSpace_projection_trivialKanFibration {A B Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
-    TrivialKanFibration (pullback.snd (Spectra.PointedMapping.prePointed i Z).right
+    TrivialKanFibration (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))) := by
-  have hp : TrivialKanFibration (Spectra.PointedMapping.prePointed i Z).right :=
-    ⟨Spectra.PointedMapping.anodyne_prePointed_rlp i hi Z⟩
+  have hp : TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right :=
+    ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp i hi Z⟩
   exact ⟨trivialKanFibrations.pullback_snd _ _ hp.mem⟩
 
 /-- 概要：点つき延長の選択空間は可縮 Kan。
@@ -46,7 +46,7 @@ lemma pointedExtensionSpace_isContractibleKan {A B Z : PointedSimplicialSet.{u}}
   intro n b
   have := hp.mem (boundary n).ι inferInstance
   have sq : CommSq b (boundary n).ι
-      (pullback.snd (Spectra.PointedMapping.prePointed i Z).right
+      (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h)))
       (stdSimplex.isTerminalObj₀.from (Δ[n] : SSet.{u})) :=
     ⟨stdSimplex.isTerminalObj₀.hom_ext _ _⟩
@@ -58,7 +58,7 @@ lemma pointedExtensionSpace_isContractibleKan {A B Z : PointedSimplicialSet.{u}}
 def pointedExtensionMap {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (v : (pointedExtensionSpace i h) _⦋0⦌) : B ⟶ Z :=
   Spectra.PointedMapping.familyMap B Z
-    ((pullback.fst (Spectra.PointedMapping.prePointed i Z).right
+    ((pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v)
 
 /-- 概要：選択空間から取り出した射は指定した射を厳密に延長する。
@@ -73,18 +73,18 @@ lemma pointedExtensionMap_fac {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (
   unfold pointedExtensionMap
   rw [Spectra.PointedMapping.familyVertex_familyMap]
   have hc := ConcreteCategory.congr_hom (NatTrans.congr_app
-    (pullback.condition (f := (Spectra.PointedMapping.prePointed i Z).right)
+    (pullback.condition (f := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right)
       (g := SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))) (Opposite.op ⦋0⦌)) v
-  have hv : (pullback.snd (Spectra.PointedMapping.prePointed i Z).right
+  have hv : (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v =
         SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by
     apply stdSimplex.objEquiv.injective
     exact Subsingleton.elim _ _
-  change (Spectra.PointedMapping.prePointed i Z).right.app (Opposite.op ⦋0⦌)
-      ((pullback.fst (Spectra.PointedMapping.prePointed i Z).right
+  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right.app (Opposite.op ⦋0⦌)
+      ((pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v) =
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h)).app (Opposite.op ⦋0⦌)
-      ((pullback.snd (Spectra.PointedMapping.prePointed i Z).right
+      ((pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v) at hc
   rw [hv, SSet.yonedaEquiv_symm_app_id] at hc
   exact hc

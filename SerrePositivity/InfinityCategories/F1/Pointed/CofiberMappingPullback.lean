@@ -84,8 +84,8 @@ def cofiberMappingFunctor (Z : PointedSimplicialSet.{u}) :
 規約：任意の添字圏 J。
 使われ方：HTT A.3.3。cofiber の pushout を Hom の pullback へ移す。 -/
 instance cofiberMappingFunctor_preservesLimitsOfShape (Z : PointedSimplicialSet.{u})
-    (J : Type v) [Category.{w} J] : PreservesLimitsOfShape J (cofiberMappingFunctor Z) := by
-  dsimp only [cofiberMappingFunctor]
+    (J : Type v) [Category.{w} J] : PreservesLimitsOfShape J (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor]
   infer_instance
 
 /-- 概要：反変写像空間関手の射の作用は既存の源の制限。
@@ -95,9 +95,9 @@ instance cofiberMappingFunctor_preservesLimitsOfShape (Z : PointedSimplicialSet.
 @[simp]
 theorem cofiberMappingFunctor_map (Z : PointedSimplicialSet.{u})
     {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y) :
-    (cofiberMappingFunctor Z).map i.op = PointedMapping.pre i Z := by
-  change ((MonoidalClosed.pre i).app Z).right = PointedMapping.pre i Z
-  rw [← PointedMapping.prePointed_eq_closedPre]
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z).map i.op = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z := by
+  change ((MonoidalClosed.pre i).app Z).right = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   rfl
 
 end

@@ -23,56 +23,56 @@ private theorem cancelIsoConjugation {D : Type v} [Category.{w} D]
     e.inv ≫ (e.hom ≫ α ≫ f.inv) ≫ f.hom = α := by
   simp only [Category.assoc, Iso.inv_hom_id_assoc, Iso.inv_hom_id, Category.comp_id]
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 元の底上の同じ比較を、商からの二つの実制限同型で正規化する。 -/
 def weakQuotientMappingComparison_restricted :
     FunctorHom
-      ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ weakSpanKanQuotientDiagram h x)
+      ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
       ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ fractionKanQuotientDiagram h x) :=
-  (weakSpanKanQuotientDiagram_restrictionIso h x).hom ≫ weakSpanSpaceMappingComparison h x ≫
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSpaceMappingComparison h x ≫
     (fractionKanQuotientDiagram_restrictionIso h x).inv
 
 /-- 同じ比較を、宇宙を揃えた全関手 ∞ 圏の普遍性で元の商上に降下する。 -/
 def weakQuotientMappingComparison :
-    FunctorHom (weakSpanKanQuotientDiagram h x) (fractionKanQuotientDiagram h x) :=
-  spaceLocalizationFactorizationHom q.hom (weakEquivalences i) h.quotient
-    (weakQuotientMappingComparison_restricted h x)
+    FunctorHom (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) (fractionKanQuotientDiagram h x) :=
+  spaceLocalizationFactorizationHom q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.quotient
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_restricted h x)
 
 /-- 元の商関手で制限すれば、二つの実制限同型を含めた元の比較を厳密に回収する。 -/
 theorem weakQuotientMappingComparison_pre :
     (hoFunctor.map ((pre ((SSet.uliftFunctor.{u + 1, u}).map q.hom)).app
-      SpaceInfinity)).toFunctor.map (weakQuotientMappingComparison h x) =
-        weakQuotientMappingComparison_restricted h x :=
+      SpaceInfinity)).toFunctor.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x) =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_restricted h x :=
   spaceLocalizationFactorizationHom_map _ _ _ _
 
 /-- 元の実制限同型で正規化すると、底上の元の同じ比較二胞体を厳密に回収する。 -/
 theorem weakQuotientMappingComparison_pre_normalized :
-    (weakSpanKanQuotientDiagram_restrictionIso h x).inv ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x).inv ≫
       (hoFunctor.map ((pre ((SSet.uliftFunctor.{u + 1, u}).map q.hom)).app
-        SpaceInfinity)).toFunctor.map (weakQuotientMappingComparison h x) ≫
+        SpaceInfinity)).toFunctor.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x) ≫
           (fractionKanQuotientDiagram_restrictionIso h x).hom =
-            weakSpanSpaceMappingComparison h x := by
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSpaceMappingComparison h x := by
   have hc := congrArg (fun a : FunctorHom
-      ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ weakSpanKanQuotientDiagram h x)
+      ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
       ((SSet.uliftFunctor.{u + 1, u}).map q.hom ≫ fractionKanQuotientDiagram h x) =>
-        (weakSpanKanQuotientDiagram_restrictionIso h x).inv ≫ a ≫
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x).inv ≫ a ≫
           (fractionKanQuotientDiagram_restrictionIso h x).hom)
-    (weakQuotientMappingComparison_pre h x)
-  exact hc.trans (cancelIsoConjugation (weakSpanKanQuotientDiagram_restrictionIso h x)
-    (fractionKanQuotientDiagram_restrictionIso h x) (weakSpanSpaceMappingComparison h x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_pre h x)
+  exact hc.trans (cancelIsoConjugation (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x)
+    (fractionKanQuotientDiagram_restrictionIso h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSpaceMappingComparison h x))
 
 /-- 元の商上の比較は、全単体の整合性を保持した実際のホモトピーとして表示できる。 -/
 def weakQuotientMappingComparisonHomotopy :
-    SSet.Homotopy (weakSpanKanQuotientDiagram h x) (fractionKanQuotientDiagram h x) :=
-  functorHomHomotopy (weakQuotientMappingComparison h x)
+    SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) (fractionKanQuotientDiagram h x) :=
+  functorHomHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x)
 
 /-- 選んだ実ホモトピーの類は、商へ降下した同じ比較二胞体と厳密に一致する。 -/
 theorem weakQuotientMappingComparisonHomotopy_hom :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (weakQuotientMappingComparisonHomotopy h x)) =
-        weakQuotientMappingComparison h x := functorHomHomotopy_hom _
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparisonHomotopy h x)) =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x := functorHomHomotopy_hom _
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

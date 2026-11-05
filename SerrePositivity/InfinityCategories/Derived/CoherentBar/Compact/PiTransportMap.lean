@@ -19,17 +19,17 @@ open scoped _root_.Simplicial
 
 lemma dgBarCompactPiTransport_map {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (q : X ⟶ Y) {x y : X _⦋0⦌} (e : X.Edge x y)
-    {a : KanHomotopyGroup X n x} {b : KanHomotopyGroup X n y}
+    {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : dgBarCompactPiTransport n e a b) :
     dgBarCompactPiTransport n (e.map q)
       (dgBarCompactPiMap n q x a) (dgBarCompactPiMap n q y b) := by
   obtain ⟨f, g, hf, hg, H, hH⟩ := h
-  refine ⟨mapSimplex q rfl f, mapSimplex q rfl g, ?_, ?_,
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex q rfl f, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex q rfl g, ?_, ?_,
     functorHomotopyPostcomp H q, ?_⟩
-  · change KanHomotopyGroup.map q rfl (KanHomotopyGroup.mk f) = _
+  · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f) = _
     rw [hf]
     rfl
-  · change KanHomotopyGroup.map q rfl (KanHomotopyGroup.mk g) = _
+  · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g) = _
     rw [hg]
     rfl
   · change ((SSet.boundary (n + 1)).ι ▷ Δ[1]) ≫ (H.h ≫ q) = _

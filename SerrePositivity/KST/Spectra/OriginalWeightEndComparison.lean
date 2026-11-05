@@ -27,7 +27,7 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
     letI := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
     letI := WeightedEndReedyKan.kanComplex BousfieldKanWeightLatching.weight.{u} X
       BousfieldKanWeightLatching.reedyCofibrant hX
-    KanPiIsomorphism (weightedSectionsPre
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsPre
       (Functor.whiskerLeft AsSmall.down cosimplicialMap.{u}) (AsSmall.down ⋙ X)) := by
   let := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
   let := WeightedEndReedyKan.kanComplex BousfieldKanWeightLatching.weight.{u} X
@@ -58,9 +58,9 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
   have hb : (MorphismProperty.monomorphisms SSet.{u}).rlp b :=
     ReedyWeightRestrictionLifting.rlp_monomorphisms _
       (CosimplicialKanReplacement.unit_reedy_anodyne _) X hX
-  have haπ : KanPiIsomorphism a := kanPiIsomorphism_of_monoRight a ha
-  have hbπ : KanPiIsomorphism b := kanPiIsomorphism_of_monoRight b hb
-  have hfπ : KanPiIsomorphism f := kanWeightPre_piIsomorphism X hX
+  have haπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight a ha
+  have hbπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism b := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight b hb
+  have hfπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := kanWeightPre_piIsomorphism X hX
   have hw : Functor.whiskerLeft AsSmall.down
         (CosimplicialKanReplacement.unit.app BousfieldKanWeightLatching.weight.{u}) ≫
         Functor.whiskerLeft AsSmall.down kanWeightMap.{u} =
@@ -75,8 +75,8 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
     rw [← weightedSectionsPre_comp, ← weightedSectionsPre_comp, hw]
   let : TrivialKanFibration a := ⟨ha⟩
   obtain ⟨s, hs⟩ := trivialKanFibration_exists_section a
-  have hsπ : KanPiIsomorphism s := KanPiIsomorphism.of_comp
-    (by rw [hs]; exact KanPiIsomorphism.id _) haπ
+  have hsπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism s := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
+    (by rw [hs]; exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _) haπ
   have hπ := hsπ.comp (hfπ.comp hbπ)
   have he' : s ≫ (f ≫ b) = g := by rw [he, ← Category.assoc, hs, Category.id_comp]
   rw [he'] at hπ

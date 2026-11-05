@@ -20,10 +20,10 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace SemiorthogonalDecomposition
-variable {A B T : StableCategory.{u}} (d : SemiorthogonalDecomposition A B T)
+variable {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
 
 /-- 元の右因子の包含の値は、元の射影の値の h Sp での切断。 -/
-lemma value_section (E : StableInfinity.{u} ⟶ Sp.{u}) :
+lemma value_section (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) :
     SpectrumHo.hom (valueMap E d.rightInclusion) ≫ SpectrumHo.hom (valueMap E d.projection) =
       𝟙 (SpectrumHo.obj (value E B)) := by
   let c : B ⟶ B := (d.rightInclusion : B ⟶ T) ≫ (d.projection : T ⟶ B)
@@ -39,8 +39,8 @@ lemma value_section (E : StableInfinity.{u} ⟶ Sp.{u}) :
 end SemiorthogonalDecomposition
 
 namespace IsLocalizingInvariant
-variable {E : StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  {A B T : StableCategory.{u}} (d : SemiorthogonalDecomposition A B T)
+variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
 
 /-- 半直交分解の元の値に適用する、実 Sp 積の頂点からの同値。 -/
 def semiorthogonalSplitEquivalence : SpectrumHo.obj

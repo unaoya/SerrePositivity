@@ -42,24 +42,24 @@ lemma circleConeComparisonParameter_target_common :
 
 /-- 元の評価錐の同じ底の区間上の、実際の三角形。 -/
 def circleNativeComparisonTriangle (z : Sp.{u} _⦋0⦌) (k : WalkingPair) : Sp.{u} _⦋2⦌ :=
-  SSet.yonedaEquiv (ConeEdgeInterval.triangleMap
+  SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.triangleMap
     (nativeCircleStrictCone z) (circleConeComparisonParameter k))
 
 /-- 元の比較辺の左右の底の区間上の、実際の三単体。 -/
 def circleCompanionComparisonTetrahedron (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :
     Sp.{u} _⦋3⦌ :=
-  SSet.yonedaEquiv (ConeEdgeInterval.simplexMap
+  SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap
     (circleCompanionConeComparison z) (circleConeComparisonParameter k))
 
 /-- 元の比較辺の中央の対象上の、両三単体に共通する三角形。 -/
 def circleCompanionComparisonCentralTriangle (z : Sp.{u} _⦋0⦌) : Sp.{u} _⦋2⦌ :=
-  SSet.yonedaEquiv (ConeEdgeInterval.vertexFaceMap (circleCompanionConeComparison z)
+  SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.vertexFaceMap (circleCompanionConeComparison z)
     (stdSimplex.δ (0 : Fin 2) ≫ circleConeComparisonParameter .left))
 
 /-- 元の比較辺の二つの一点の対象上の、同じ比較三角形。 -/
 def circleCompanionComparisonBranchTriangle (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :
     Sp.{u} _⦋2⦌ :=
-  SSet.yonedaEquiv (ConeEdgeInterval.vertexFaceMap (circleCompanionConeComparison z)
+  SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.vertexFaceMap (circleCompanionConeComparison z)
     (stdSimplex.δ (1 : Fin 2) ≫ circleConeComparisonParameter k))
 
 /-- 零面は、元の companion 錐の前工程の同じ反転三角形そのもの。 -/

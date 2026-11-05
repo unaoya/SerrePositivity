@@ -97,8 +97,8 @@ theorem connecting_zero_injective {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
   let Ls := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e s
   let Lt := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e t
   rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Ls, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Lt] at h
-  change KanHomotopyZero.mk Ls.boundary = KanHomotopyZero.mk Lt.boundary at h
-  obtain ⟨r⟩ := (KanHomotopyZero.mk_eq_iff Ls.boundary Lt.boundary).1 h
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk Ls.boundary = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk Lt.boundary at h
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk_eq_iff Ls.boundary Lt.boundary).1 h
   exact ZeroConnectingTriangle.class_eq Ls Lt r hE
 
 end

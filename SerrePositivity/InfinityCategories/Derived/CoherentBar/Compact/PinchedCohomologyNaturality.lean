@@ -39,7 +39,7 @@ lemma dgBarCompactPinchedHomMooreHomologyIso_naturality
 lemma dgBarCompactPinchedModulePiCohomologyEquiv_naturality
     (φ : homObject R D x y ⟶ homObject R E a b)
     (n : ℕ) (z : (pinchedHomModule (S := R) x y).obj (Opposite.op ⦋0⦌))
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
     dgBarCompactPinchedModulePiCohomologyEquiv a b n
         ((dgBarCompactPinchedModuleMap φ).app _ z)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap (dgBarCompactPinchedModuleMap φ)) z α) =

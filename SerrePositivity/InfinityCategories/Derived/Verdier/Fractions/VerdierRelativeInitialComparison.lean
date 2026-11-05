@@ -94,7 +94,7 @@ lemma VerdierRecoveredBoundaryComparison.initialAmbientHomotopy_h
   rw [b.ambientHomotopy_h]
 
 namespace VerdierRecoveredInitialComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
 variable (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U)
 
 lemma initialAmbient_prefix : b.initialAmbientHomotopy.h ≫
@@ -186,7 +186,7 @@ lemma exists_verdierRelativeInitialComparison
   exact ⟨⟨H, hS, hA, hP, hN, hi⟩⟩
 
 namespace VerdierRelativeInitialComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRelativeInitialComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison
 variable {c : VerdierRecoveredInitialComparison r U} {b : VerdierRecoveredBoundaryComparison r U}
   (d : VerdierRelativeInitialComparison c b)
 

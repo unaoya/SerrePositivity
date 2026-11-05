@@ -17,41 +17,41 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 def legMap : Binary.obj (value Φ C) (value Φ D) ⟶ Binary.obj (value Φ Q) (value Φ Q) :=
-  Binary.lift (Binary.fst _ _ ≫ valueMap Φ (laxQuotientCLeg p q r))
-    (Binary.snd _ _ ≫ valueMap Φ (laxQuotientDLeg p q r))
+  Binary.lift (Binary.fst _ _ ≫ valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r))
+    (Binary.snd _ _ ≫ valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r))
 
 lemma legMap_fst : legMap (Φ := Φ) p q r ≫ Binary.fst _ _ =
-    Binary.fst _ _ ≫ valueMap Φ (laxQuotientCLeg p q r) := Binary.lift_fst _ _
+    Binary.fst _ _ ≫ valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) := Binary.lift_fst _ _
 
 lemma legMap_snd : legMap (Φ := Φ) p q r ≫ Binary.snd _ _ =
-    Binary.snd _ _ ≫ valueMap Φ (laxQuotientDLeg p q r) := Binary.lift_snd _ _
+    Binary.snd _ _ ≫ valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r) := Binary.lift_snd _ _
 
 lemma lift_value_fst : SpectrumHo.hom (valueMap Φ (LaxUniversalDifference.exactLift p q r)) ≫
     SpectrumHo.hom (valueMap Φ (laxFst (𝟙 Q) (𝟙 Q))) =
       SpectrumHo.hom (valueMap Φ (laxFst p q)) ≫
-        SpectrumHo.hom (valueMap Φ (laxQuotientCLeg p q r)) := by
+        SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)) := by
   let f : laxCategory p q ⟶ Q := LaxUniversalDifference.exactLift p q r ≫ laxFst (𝟙 Q) (𝟙 Q)
-  let g : laxCategory p q ⟶ Q := laxFst p q ≫ laxQuotientCLeg p q r
-  have e : FunctorIso f.hom g.hom := LaxUniversalDifference.firstCLegIso p q r
+  let g : laxCategory p q ⟶ Q := laxFst p q ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r
+  have e : FunctorIso f.hom g.hom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso p q r
   have he := valueMap_hom_eq_of_functorIso Φ e
   change (stableValueFunctor Φ).map f = (stableValueFunctor Φ).map g at he
   change (stableValueFunctor Φ).map (LaxUniversalDifference.exactLift p q r) ≫
     (stableValueFunctor Φ).map (laxFst (𝟙 Q) (𝟙 Q)) =
       (stableValueFunctor Φ).map (laxFst p q) ≫
-        (stableValueFunctor Φ).map (laxQuotientCLeg p q r)
+        (stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)
   simpa only [f, g, CategoryTheory.Functor.map_comp] using he
 
 lemma lift_value_snd : SpectrumHo.hom (valueMap Φ (LaxUniversalDifference.exactLift p q r)) ≫
     SpectrumHo.hom (valueMap Φ (laxSnd (𝟙 Q) (𝟙 Q))) =
       SpectrumHo.hom (valueMap Φ (laxSnd p q)) ≫
-        SpectrumHo.hom (valueMap Φ (laxQuotientDLeg p q r)) := by
+        SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)) := by
   let f : laxCategory p q ⟶ Q := LaxUniversalDifference.exactLift p q r ≫ laxSnd (𝟙 Q) (𝟙 Q)
-  let g : laxCategory p q ⟶ Q := laxSnd p q ≫ laxQuotientDLeg p q r
+  let g : laxCategory p q ⟶ Q := laxSnd p q ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r
   have hfg : f.hom = g.hom := by
     change LaxUniversalDifference.lift p q r ≫ (laxSnd (𝟙 Q) (𝟙 Q)).hom =
       (laxSnd p q).hom ≫ (LaxInclusion.fromD p q ≫ r.hom)
@@ -63,17 +63,17 @@ lemma lift_value_snd : SpectrumHo.hom (valueMap Φ (LaxUniversalDifference.exact
   change (stableValueFunctor Φ).map (LaxUniversalDifference.exactLift p q r) ≫
     (stableValueFunctor Φ).map (laxSnd (𝟙 Q) (𝟙 Q)) =
       (stableValueFunctor Φ).map (laxSnd p q) ≫
-        (stableValueFunctor Φ).map (laxQuotientDLeg p q r)
+        (stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)
   simpa only [f, g, CategoryTheory.Functor.map_comp] using he
 
 lemma legMap_ho_fst : SpectrumHo.hom (legMap (Φ := Φ) p q r) ≫
     SpectrumHo.hom (Binary.fst _ _) = SpectrumHo.hom (Binary.fst _ _) ≫
-      SpectrumHo.hom (valueMap Φ (laxQuotientCLeg p q r)) := by
+      SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)) := by
   rw [← SpectrumHo.hom_comp, legMap_fst, SpectrumHo.hom_comp]
 
 lemma legMap_ho_snd : SpectrumHo.hom (legMap (Φ := Φ) p q r) ≫
     SpectrumHo.hom (Binary.snd _ _) = SpectrumHo.hom (Binary.snd _ _) ≫
-      SpectrumHo.hom (valueMap Φ (laxQuotientDLeg p q r)) := by
+      SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)) := by
   rw [← SpectrumHo.hom_comp, legMap_snd, SpectrumHo.hom_comp]
 
 lemma value_projection_comm :

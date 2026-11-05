@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C]
     [SymmetricCategory C] [MonoidalClosed C] {A K E V : C} (a : A ⟶ (ihom E).obj V) :
     (ihom K).map (curry ((β_ A E).hom ≫ uncurry a)) ≫
-      (InternalHomExchange.iso K A V).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A V).hom =
     curry ((β_ A ((ihom K).obj E)).hom ≫ uncurry (a ≫ curry (comp K E V))) := by
   apply uncurry_injective
   apply uncurry_injective
@@ -41,7 +41,7 @@ private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C
   simp only [Functor.id_obj]
   rw [← uncurry_eq a]
   erw [BraidedCategory.braiding_naturality_right_assoc A ((ihom.ev K).app E)]
-  have hs (T : C) : (HomTensorStrength.exchange K A T).hom ≫ (β_ A (K ⊗ T)).hom =
+  have hs (T : C) : (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange K A T).hom ≫ (β_ A (K ⊗ T)).hom =
       K ◁ (β_ A T).hom ≫ (α_ K T A).inv := by
     simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
       tensorRight, Functor.flip, curriedTensor, BraidedCategory.braiding_tensor_right_hom,
@@ -55,9 +55,9 @@ private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C
 /-- 元の入力族への作用は、その族の転置を mapping して同じパラメータを交換したもの。 -/
 lemma transpose_ihomParameterAction {A K E V W : PointedSimplicialSet.{u}}
     (a : A ⟶ PointedObject.basedHom E V) (q : W ⟶ PointedObject.basedHom K E) :
-    transpose (q ≫ (ihom K).map (transpose a) ≫ (InternalHomExchange.iso K A V).hom) =
-      a ≫ ihomAction K E V ≫ prePointed q (PointedObject.basedHom K V) := by
-  have h : (ihom K).map (transpose a) ≫ (InternalHomExchange.iso K A V).hom =
+    transpose (q ≫ (ihom K).map (transpose a) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A V).hom) =
+      a ≫ ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q (PointedObject.basedHom K V) := by
+  have h : (ihom K).map (transpose a) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K A V).hom =
       transpose (a ≫ ihomAction K E V) := by
     rw [ihomAction_eq_curry_comp]
     exact closedParameterAction a

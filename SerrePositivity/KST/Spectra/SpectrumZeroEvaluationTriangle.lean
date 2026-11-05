@@ -24,9 +24,9 @@ local instance zeroTriangleSpectrumSimplicialCategory : SimplicialCategory Omega
 
 /-- 元の零評価の因子分解を保持する、三段の円柱の実際の豊穣関手。 -/
 def zeroEvaluationTriangleEnriched (A : PointedSimplicialSet.{u}) :
-    EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin 3) (Object A))
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) (Object A))
       OmegaSpectrum.{u} :=
-  EnrichedTransformationTriangle.functor (cotensorEnriched A) (zeroEnriched A) (sourceEnriched A)
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor (cotensorEnriched A) (zeroEnriched A) (sourceEnriched A)
     (toZeroEvaluation A) (fromZeroEvaluation A) (parameterEvaluation A A.hom)
     (fun X ↦ (zeroEvaluation_factorization A X).symm)
 

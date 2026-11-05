@@ -26,7 +26,7 @@ def strictSimplicialOrdinaryFunctor (F : EnrichedFunctor SSet.{u} C D) : C ⥤ D
 /-- 基礎圏へ取り出した通常射は、元の全 Hom 作用からの射そのもの。 -/
 lemma strictSimplicialOrdinaryFunctor_map (F : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) :
-    (strictSimplicialOrdinaryFunctor F).map f = strictSimplicialOrdinaryMap F f := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor F).map f = _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f := rfl
 
 end SerrePositivity.InfinityCategories.Kan
 

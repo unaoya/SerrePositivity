@@ -51,7 +51,7 @@ lemma adjunctionOfFunctorHomTriangles_counit (η : FunctorHom (𝟙 X) (F ≫ G)
     (hR : (hoFunctor.map ((pre G).app X)).toFunctor.map η ≫
       (hoFunctor.map ((ihom Y).map G)).toFunctor.map ε =
         𝟙 (HomotopyCategory.mk (functorVertex G))) :
-    (adjunctionOfFunctorHomTriangles η ε hL hR).counitHom = ε :=
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles η ε hL hR).counitHom = ε :=
   (qcatCellEquiv (G ≫ F) (𝟙 Y)).apply_symm_apply ε
 
 end SerrePositivity.InfinityCategories.F1B.Quasicategory

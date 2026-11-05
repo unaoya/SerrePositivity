@@ -25,34 +25,34 @@ abbrev IsDGKRelativeLocalizingInvariant (E : dgKInputInfinity.{u, v} A ⟶ Sp) :
   IsRelativeLocalizingInvariant (dgKInputNu A) E
 
 /-- 元の dg 入力の四角形と、その ν 像の実 Verdier 提示。 -/
-abbrev DGKRelativeVerdierDiagram := RelativeVerdierDiagram (dgKInputNu.{u, v} A)
+abbrev DGKRelativeVerdierDiagram := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)
 
 /-- K-10：同じ S の長方形の ν 像を固定すれば、相対 E は比較四角形を pullback に送る。 -/
 lemma dgKRelativeTammeComparison_isPullback
-    {C D B X Q : StableCategory.{max (u + 1) v}}
-    (p : ExactMap C B) (q : ExactMap D B)
-    (i : ExactMap X (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-    (h : IsVerdierSequence i r)
+    {C D B X Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v}}
+    (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap X (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
     (F : (Δ[2] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ dgKInputInfinity.{u, v} A)
     (hF : F ≫ dgKInputNu A = (LaxUniversalDifference.rectangle p q i r h).diagram)
     {E : dgKInputInfinity.{u, v} A ⟶ Sp.{max (u + 1) v}}
     (hE : IsDGKRelativeLocalizingInvariant A E) :
-    IsPullbackSquare ((LaxUniversalDifference.relativeRectangle
+    IsPullbackSquare ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle
       (dgKInputNu A) p q i r h F hF).comparisonSquare ≫ E) :=
-  LaxUniversalDifference.relative_comparison_isPullback
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_isPullback
     (dgKInputNu A) p q i r h F hF hE
 
 /-- 元の比較四角形の ν 像は、元の Tamme 比較四角形そのもの。 -/
 lemma dgKRelativeTammeComparison_image
-    {C D B X Q : StableCategory.{max (u + 1) v}}
-    (p : ExactMap C B) (q : ExactMap D B)
-    (i : ExactMap X (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-    (h : IsVerdierSequence i r)
+    {C D B X Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v}}
+    (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap X (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
     (F : (Δ[2] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ dgKInputInfinity.{u, v} A)
     (hF : F ≫ dgKInputNu A = (LaxUniversalDifference.rectangle p q i r h).diagram) :
-    (LaxUniversalDifference.relativeRectangle
+    (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle
       (dgKInputNu A) p q i r h F hF).comparisonSquare ≫ dgKInputNu A =
-        LaxUniversalDifference.comparisonSquare p q i r h :=
-  LaxUniversalDifference.relative_comparison_image (dgKInputNu A) p q i r h F hF
+        _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_image (dgKInputNu A) p q i r h F hF
 
 end SerrePositivity.KST.SConstruction

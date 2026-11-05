@@ -27,14 +27,14 @@ private lemma classifyTransport {D : Type*} [Category D] {a b c d : D}
   simp only [Iso.trans_hom, ← Category.assoc]
   exact (congrArg (fun m => m ≫ t.hom) he).trans ht
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 元の native 比較像と指定分類成分は、同じ新復元恒等点の分類射を与える。 -/
 theorem weakIdentityNativeComparisonImage_scaffold_pointHom :
-    weakIdentityNativeComparisonImageHom h x ≫
-      (fractionIdentityNativeClassificationIso (q := q) x).hom =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativeComparisonImageHom h x ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso (q := q) x).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram
         (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
       (q.hom.app (Opposite.op ⦋0⦌) x)
@@ -44,25 +44,25 @@ theorem weakIdentityNativeComparisonImage_scaffold_pointHom :
   let c := transportSimplexIndex (n := ⦋0⦌) x
   let w := (cofinalVertexFiberBaseChangeIso p
     (transportSimplexFirstVertexMap B.obj ≫ q.hom) (nerveVertex c)).hom.app (Opposite.op ⦋0⦌)
-    ((fractionCosliceFiberMap q.hom (weakEquivalences i) h.inverts x
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
       (transportSimplexFirstVertexMap B.obj) (nerveVertex c)).app (Opposite.op ⦋0⦌)
-        (weakIdentitySimplexFiberPoint h x))
-  have hr := weakIdentityNativeComparisonImage_scaffold_raw_pointHom h x
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint h x))
+  have hr := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativeComparisonImage_scaffold_raw_pointHom h x
   have ht := scaffoldReconstructionFiberPoint_eqToHom_transport p
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex x)) w
-  have hn : weakIdentityNativeComparisonImageHom h x ≫
-      (fractionIdentityNativeClassificationIso (q := q) x).hom =
-      cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b
-        (weakIdentityScaffoldFiberImage h x)) :=
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x)) w
+  have hn : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativeComparisonImageHom h x ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso (q := q) x).hom =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage h x)) :=
     classifyTransport _ _ _ _ _ hr ht
   have he := scaffoldReconstructionFiberPoint_pointHom_eq_of_vertexIso p b
-    (weakIdentityScaffoldFiberImage_identityIso h x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_identityIso h x)
   have hi : scaffoldReconstructionFiberPoint p b (edgeToCosliceFiberVertex (SSet.Edge.id b)) =
-      smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b
+      _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b
         (scaffoldCosliceReconstructionPoint b) :=
-    congrArg (smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b)
+    congrArg (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b)
       (scaffoldCosliceReconstructionPoint_fiberMap b).symm
-  exact hn.trans (he.trans (congrArg cosliceFiberPointHom hi))
+  exact hn.trans (he.trans (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom hi))
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

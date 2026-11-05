@@ -19,8 +19,8 @@ variable {X Y : SSet.{u}}
 
 lemma dgBarCompactPointedSimplexUp_naturality (φ : X ⟶ Y) {n : ℕ} {x : X _⦋0⦌}
     (f : X.PtSimplex n x) :
-    dgBarCompactPointedSimplexUp.{u, v} (mapSimplex φ rfl f) =
-      mapSimplex (x := ULift.up x) (y := ULift.up (φ.app _ x))
+    dgBarCompactPointedSimplexUp.{u, v} (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ rfl f) =
+      _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (x := ULift.up x) (y := ULift.up (φ.app _ x))
         ((SSet.uliftFunctor.{v, u}).map φ) rfl (dgBarCompactPointedSimplexUp.{u, v} f) := by
   apply RelativeMorphism.ext
   change (uliftStdSimplexIso.{u, v} n).inv ≫ (SSet.uliftFunctor.{v, u}).map (f.map ≫ φ) =
@@ -29,14 +29,14 @@ lemma dgBarCompactPointedSimplexUp_naturality (φ : X ⟶ Y) {n : ℕ} {x : X _�
   rw [Functor.map_comp, Category.assoc]
 
 lemma dgBarCompactUliftPiEquiv_naturality [KanComplex X] [KanComplex Y]
-    (φ : X ⟶ Y) (n : ℕ) (x : X _⦋0⦌) (a : KanHomotopyGroup X n x) :
-    dgBarCompactUliftPiEquiv.{u, v} Y n (φ.app _ x) (KanHomotopyGroup.map φ rfl a) =
-      KanHomotopyGroup.map (x := ULift.up x) (y := ULift.up (φ.app _ x))
+    (φ : X ⟶ Y) (n : ℕ) (x : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    dgBarCompactUliftPiEquiv.{u, v} Y n (φ.app _ x) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map φ rfl a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := ULift.up x) (y := ULift.up (φ.app _ x))
         ((SSet.uliftFunctor.{v, u}).map φ) rfl (dgBarCompactUliftPiEquiv.{u, v} X n x a) := by
   induction a using Quotient.inductionOn with | h f => ?_
-  change KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp.{u, v} (mapSimplex φ rfl f)) =
-    KanHomotopyGroup.mk (mapSimplex (x := ULift.up x) (y := ULift.up (φ.app _ x))
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp.{u, v} (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ rfl f)) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (x := ULift.up x) (y := ULift.up (φ.app _ x))
       ((SSet.uliftFunctor.{v, u}).map φ) rfl (dgBarCompactPointedSimplexUp.{u, v} f))
-  exact congrArg KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp_naturality φ f)
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp_naturality φ f)
 
 end SerrePositivity.InfinityCategories

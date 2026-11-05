@@ -26,24 +26,24 @@ abbrev vertex {X : SSet.{u}} (p x : X _⦋0⦌) (i : Fin 4) : X _⦋0⦌ := if i
 
 /-- 元の三単体の同じ辺を、指定した二点の表示へ移送したもの。 -/
 def edge {X : SSet.{u}} (f : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _⦋0⦌)
-    (hv : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
-    (i j : Fin 4) (hij : i ≤ j) : X.Edge (vertex p x i) (vertex p x j) :=
-  ((SimplexEdges.edge i j hij).map f).ofEq (hv i) (hv j)
+    (hv : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x i)
+    (i j : Fin 4) (hij : i ≤ j) : X.Edge (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x i) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x j) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge i j hij).map f).ofEq (hv i) (hv j)
 
 /-- 元の内辺が定値なら、元の左辺と右辺の合成は元の外辺に等しい。 -/
 lemma left_comp_right {X : SSet.{u}} (f : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _⦋0⦌)
-    (hv : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
+    (hv : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x i)
     (hi : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (by decide)) = (X.σ 0) x) :
-    SSet.HomotopyCategory.homMk (edge f p x hv 0 1 (by decide)) ≫
-      SSet.HomotopyCategory.homMk (edge f p x hv 2 3 (by decide)) =
-      SSet.HomotopyCategory.homMk (edge f p x hv 0 3 (by decide)) := by
-  have h₀₁₂ : SSet.Edge.CompStruct (edge f p x hv 0 1 (by decide))
-      (SSet.Edge.id x) (edge f p x hv 0 2 (by decide)) :=
-    ((SimplexEdges.compStruct (0 : Fin 4) 1 2 (by decide) (by decide)).map f).ofEq
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 1 (by decide)) ≫
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 2 3 (by decide)) =
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 3 (by decide)) := by
+  have h₀₁₂ : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 1 (by decide))
+      (SSet.Edge.id x) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 2 (by decide)) :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 4) 1 2 (by decide) (by decide)).map f).ofEq
       rfl hi rfl
-  have h₀₂₃ : SSet.Edge.CompStruct (edge f p x hv 0 2 (by decide))
-      (edge f p x hv 2 3 (by decide)) (edge f p x hv 0 3 (by decide)) :=
-    ((SimplexEdges.compStruct (0 : Fin 4) 2 3 (by decide) (by decide)).map f).ofEq
+  have h₀₂₃ : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 2 (by decide))
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 2 3 (by decide)) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hv 0 3 (by decide)) :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 4) 2 3 (by decide) (by decide)).map f).ofEq
       rfl rfl rfl
   have hl := SSet.HomotopyCategory.homMk_comp_homMk h₀₁₂
   erw [SSet.HomotopyCategory.homMk_id, Category.comp_id] at hl

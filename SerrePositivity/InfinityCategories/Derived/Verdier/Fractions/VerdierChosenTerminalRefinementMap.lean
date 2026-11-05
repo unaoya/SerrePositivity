@@ -36,7 +36,7 @@ def terminalRefinementSourceDiagram {X : SSet.{u}} {n : ℕ}
 lemma terminalRefinementSourceDiagram_vertex {X : SSet.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) :
     squareVertex (terminalRefinementSquare F) 0 0 =
-      functorVertex (terminalRefinementSourceDiagram F) := by
+      functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram F) := by
   change (internalHomFlipHomEquiv Δ[n] (Δ[1] ⊗ Δ[1]) X
     (F ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι)).app (Opposite.op ⦋0⦌)
       ((stdSimplex.obj₀Equiv.symm (0 : Fin 2)), (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = _
@@ -45,17 +45,17 @@ lemma terminalRefinementSourceDiagram_vertex {X : SSet.{u}} {n : ℕ}
 
 /-- 同じ実補完から、同じ一様前段・実終端分母の一次単体を保つ全前段分母を回収する。 -/
 lemma exists_verdierChosenTerminalRefinementMap_with_edge
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (d : (verdierDenominatorOver i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) : SSet.{u}) _⦋0⦌)
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj)
-    (hF : F ≫ pullbackProjection B.obj = simplexTerminalCospanFamily D
-      ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (verdierDenominatorDiagram_target i _ d))
+    (hF : F ≫ pullbackProjection B.obj = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D
+      ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d))
     (hlast : F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       terminalPullbackColumnVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val)) :
     ∃ t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-        (functorVertex (terminalRefinementSourceDiagram F)) (functorVertex D),
+        (functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram F)) (functorVertex D),
       t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
       (evaluateFunctorAt (Y := B.obj) (stdSimplex.obj₀Equiv.symm (Fin.last n))).app
         (Opposite.op ⦋1⦌) t.edge =
@@ -65,9 +65,9 @@ lemma exists_verdierChosenTerminalRefinementMap_with_edge
   let s := (joinStdSimplexIso 0 0).inv ≫ d.val.val
   let Q := terminalRefinementSquare F
   have hOrig : squareVertex Q 0 1 = functorVertex D :=
-    terminalRefinementSquare_original D s (verdierDenominatorDiagram_target i _ d) F hF
+    terminalRefinementSquare_original D s (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d) F hF
   let t := ((SSet.Edge.ofTruncated (squareLeftArrow Q)).ofEq
-    (terminalRefinementSourceDiagram_vertex F) hOrig).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram_vertex F) hOrig).toTruncated
   have hQ : IsPullbackSquare Q := terminalRefinementSquare_isPullback F
   have hW : (squareLeftArrow Q).edge ∈
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
@@ -76,7 +76,7 @@ lemma exists_verdierChosenTerminalRefinementMap_with_edge
     intro k
     rw [squareRightArrow_edge, ← SSet.yonedaEquiv_comp]
     have hr := terminalRefinementSquare_right_evaluate D s
-      (verdierDenominatorDiagram_target i _ d) F hF k
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d) F hF k
     rw [hr]
     exact fullSubcomplexOnVertices_vertex d
   have hQlast : Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
@@ -95,23 +95,23 @@ lemma exists_verdierChosenTerminalRefinementMap_with_edge
 
 /-- 従来の回収入口。元の型を保ち、実辺を保持する強い入口から供給する。 -/
 lemma exists_verdierChosenTerminalRefinementMap
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (d : (verdierDenominatorOver i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) : SSet.{u}) _⦋0⦌)
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj)
-    (hF : F ≫ pullbackProjection B.obj = simplexTerminalCospanFamily D
-      ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (verdierDenominatorDiagram_target i _ d))
+    (hF : F ≫ pullbackProjection B.obj = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D
+      ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d))
     (hlast : F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       terminalPullbackColumnVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val)) :
     ∃ t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-        (functorVertex (terminalRefinementSourceDiagram F)) (functorVertex D),
+        (functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram F)) (functorVertex D),
       t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
       (evaluateFunctorAt (Y := B.obj) (stdSimplex.obj₀Equiv.symm (Fin.last n))).app
         (Opposite.op ⦋1⦌) t.edge =
         (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))) d.val).edge := by
-  obtain ⟨t, ht, hlast, _⟩ := exists_verdierChosenTerminalRefinementMap_with_edge h D d F hF hlast
+  obtain ⟨t, ht, hlast, _⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierChosenTerminalRefinementMap_with_edge h D d F hF hlast
   exact ⟨t, ht, hlast⟩
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

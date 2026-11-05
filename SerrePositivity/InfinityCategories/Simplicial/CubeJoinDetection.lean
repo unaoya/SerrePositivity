@@ -17,9 +17,9 @@ namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
 
 /-- join 射の有限 join での値は、零頂点の像と各一座標頂点の像の join。 -/
-lemma cubeJoinMap_sup_atoms {n m : ℕ} {f : CubeVertex n → CubeVertex m}
+lemma cubeJoinMap_sup_atoms {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (s : Finset (Fin n)) :
-    f (s.sup (cubeVertexAtom n)) = f ⊥ ⊔ s.sup (fun i => f (cubeVertexAtom n i)) := by
+    f (s.sup (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n)) = f ⊥ ⊔ s.sup (fun i => f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) := by
   induction s using Finset.induction_on with
   | empty => simp
   | @insert i s hi ih =>
@@ -27,27 +27,27 @@ lemma cubeJoinMap_sup_atoms {n m : ℕ} {f : CubeVertex n → CubeVertex m}
     ac_rfl
 
 /-- 元の全頂点での join 射の値は、その有限 support と指定した有限データから回収される。 -/
-lemma cubeJoinMap_eval {n m : ℕ} {f : CubeVertex n → CubeVertex m}
-    (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (x : CubeVertex n) :
-    f x = f ⊥ ⊔ (cubeVertexSupport x).sup (fun i => f (cubeVertexAtom n i)) := by
-  rw [← cubeJoinMap_sup_atoms hf]
-  exact congrArg f (cubeVertexSupport_sup_atoms x).symm
+lemma cubeJoinMap_eval {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
+    (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    f x = f ⊥ ⊔ (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x).sup (fun i => f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_sup_atoms hf]
+  exact congrArg f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport_sup_atoms x).symm
 
 /-- join 射は、元の零頂点と全ての一座標頂点での値だけで判定できる。 -/
-lemma cubeJoinMap_ext {n m : ℕ} {f g : CubeVertex n → CubeVertex m}
+lemma cubeJoinMap_ext {n m : ℕ} {f g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (hg : ∀ x y, g (x ⊔ y) = g x ⊔ g y)
-    (hzero : f ⊥ = g ⊥) (hatom : ∀ i, f (cubeVertexAtom n i) = g (cubeVertexAtom n i)) :
+    (hzero : f ⊥ = g ⊥) (hatom : ∀ i, f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) = g (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) :
     f = g := by
   funext x
-  rw [cubeJoinMap_eval hf x, cubeJoinMap_eval hg x, hzero]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval hf x, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval hg x, hzero]
   simp only [hatom]
 
 /-- 具体的な生成関数は、元の零頂点と全ての一座標頂点での値で判定される。 -/
-lemma cubeMapGenerated_ext {n m : ℕ} {f g : CubeVertex n → CubeVertex m}
-    (hf : CubeMapGenerated f) (hg : CubeMapGenerated g)
-    (hzero : f ⊥ = g ⊥) (hatom : ∀ i, f (cubeVertexAtom n i) = g (cubeVertexAtom n i)) :
+lemma cubeMapGenerated_ext {n m : ℕ} {f g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
+    (hf : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g)
+    (hzero : f ⊥ = g ⊥) (hatom : ∀ i, f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) = g (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) :
     f = g :=
-  cubeJoinMap_ext (cubeMapGenerated_sup hf) (cubeMapGenerated_sup hg) hzero hatom
+  _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_ext (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup hf) (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup hg) hzero hatom
 
 end SerrePositivity.InfinityCategories.Simplicial
 

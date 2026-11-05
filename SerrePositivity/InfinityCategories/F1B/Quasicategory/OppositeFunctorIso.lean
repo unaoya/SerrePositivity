@@ -30,12 +30,12 @@ def restoredFunctorIso (e : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.ma
   inv := (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G F).symm e.inv
   hom_inv_id := by
     apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F).injective
-    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, oppositeFunctorHom_id]
+    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
     simp only [Equiv.apply_symm_apply]
     exact e.inv_hom_id
   inv_hom_id := by
     apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G).injective
-    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, oppositeFunctorHom_id]
+    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
     simp only [Equiv.apply_symm_apply]
     exact e.hom_inv_id
 

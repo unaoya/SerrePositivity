@@ -31,7 +31,7 @@ lemma partialEnd_kanComplex (X : CosimplicialObject PointedSimplicialSet.{u})
   let : KanComplex (weightedSections
       (SkeletalWeightedEnd.weight (AsSmall.down ⋙ stdSimplex.{u}) n)
       ((AsSmall.down ⋙ X) ⋙ PointedSimplicialSet.forget)) :=
-    WeightedEndReedyKan.kanComplex (stdSimplex.{u} ⋙ SkeletonFiltration.functor (n + 1))
+    WeightedEndReedyKan.kanComplex (stdSimplex.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor (n + 1))
       (X ⋙ PointedSimplicialSet.forget) (SkeletalStandardLatching.reedyCofibrant (n + 1)) hX
   exact kanComplex_of_iso (PointedWeightedEnd.underlyingIso
     (SkeletalWeightedEnd.weight (AsSmall.down ⋙ stdSimplex.{u}) n) (AsSmall.down ⋙ X)).symm

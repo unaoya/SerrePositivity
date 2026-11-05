@@ -33,24 +33,24 @@ namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ指定商錐への実 slice 可逆辺と、その頂点辺を与える元の実分母。 -/
-structure VerdierQuotientConeRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+structure VerdierQuotientConeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} (p : K ⟶ B.obj) (x : B.obj _⦋0⦌) (t : JoinCone (p ≫ q.hom)) where
   cone : JoinCone p
-  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) cone.vertex x
-  denominator_mem : denominator.edge ∈ weakEquivalences i
+  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone.vertex x
+  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   comparison : Truncated.Edge (X := (truncation 2).obj (sliceOver (p ≫ q.hom)))
-    (mapJoinCone q.hom cone) t
-  comparison_edge : (comparison.map ((truncation 2).map
-    (sliceOverProjection (p ≫ q.hom)))).edge = (denominator.map ((truncation 2).map q.hom)).edge
-  isInvertible : IsInvertibleEdge (X := sliceOver (p ≫ q.hom)) comparison
+    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone) t
+  comparison_edge : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison.map ((truncation 2).map
+    (sliceOverProjection (p ≫ q.hom)))).edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator.map ((truncation 2).map q.hom)).edge
+  isInvertible : IsInvertibleEdge (X := sliceOver (p ≫ q.hom)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison
 
 /-- 元の有限図式上の指定商錐を、一つの元の実分母と同じ全比較辺で回収する。 -/
-lemma exists_verdierQuotientConeRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierQuotientConeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} [K.Finite] (p : K ⟶ B.obj) (x : B.obj _⦋0⦌)
     (t : JoinCone (p ≫ q.hom)) (hx : t.vertex = q.hom.app (Opposite.op ⦋0⦌) x) :
-    Nonempty (VerdierQuotientConeRefinement h p x t) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement h p x t) := by
   let : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj
   obtain ⟨c, hc⟩ := HasFiniteLimits.hasLimit p
   have hqc := exactMap_map_isLimit_finite q c hc
@@ -97,21 +97,21 @@ lemma exists_verdierQuotientConeRefinement {A B C : StableCategory.{u}}
         r.naturality_apply (SimplexCategory.δ (2 : Fin 3)).op Tv.simplex
       _ = C.obj.δ 2 Tb.simplex := congrArg (fun z => C.obj.δ 2 z) hv₂
       _ = _ := hb₂
-  have hsd : sd.edge ∈ weakEquivalences i := hs
+  have hsd : sd.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := hs
   have hb : IsInvertibleEdge b :=
     (isInvertibleEdge_congr (e := b) (f := sd.map ((truncation 2).map q.hom)) rfl).mpr
-      ((mem_weakEquivalences_iff_invertible h sd).mp hsd)
+      ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h sd).mp hsd)
   have hvInv := derived_rightFibration_reflects_invertibleEdge r v
     ((isInvertibleEdge_congr hv).mpr hb)
   exact ⟨⟨d, sd, hsd, v, hv, hvInv⟩⟩
 
 /-- 任意の商頂点を持つ同じ有限錐を、元の実錐へ slice 全体の同型を保って回収する。 -/
-lemma exists_verdierQuotientConeIsoRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierQuotientConeIsoRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} [K.Finite] (p : K ⟶ B.obj) (t : JoinCone (p ≫ q.hom)) :
     ∃ c : JoinCone p, Nonempty (VertexIso (X := sliceOver (p ≫ q.hom))
       (mapJoinCone q.hom c) t) := by
-  obtain ⟨x, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (weakEquivalences i)
+  obtain ⟨x, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     h.quotient t.vertex
   obtain ⟨b, hb⟩ := homotopyCategory_homMk_surjective
     (q.hom.app (Opposite.op ⦋0⦌) x) t.vertex e.hom
@@ -137,16 +137,16 @@ lemma exists_verdierQuotientConeIsoRefinement {A B C : StableCategory.{u}}
     exact hn.trans (hg.trans b.src_eq)
   have hwi : IsIso (Truncated.HomotopyCategory.homMk w) :=
     derived_rightFibration_reflects_invertibleEdge π w ((isInvertibleEdge_congr hw).mpr hbi)
-  obtain ⟨d⟩ := exists_verdierQuotientConeRefinement h p x u hu
+  obtain ⟨d⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeRefinement h p x u hu
   have hdi : IsIso (Truncated.HomotopyCategory.homMk d.comparison) := d.isInvertible
   exact ⟨d.cone, ⟨asIso (Truncated.HomotopyCategory.homMk d.comparison) ≪≫
     asIso (Truncated.HomotopyCategory.homMk w)⟩⟩
 
 namespace VerdierQuotientConeRefinement
-open SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {K : SSet.{u}} {p : K ⟶ B.obj} {x : B.obj _⦋0⦌}
-  {t : JoinCone (p ≫ q.hom)} (d : VerdierQuotientConeRefinement h p x t)
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {K : SSet.{u}} {p : K ⟶ B.obj} {x : B.obj _⦋0⦌}
+  {t : JoinCone (p ≫ q.hom)} (d : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement h p x t)
 
 /-- 同じ可逆な slice 比較辺から得る、指定した商錐全体への全関手同型。 -/
 def iso : FunctorIso (d.cone.val ≫ q.hom) t.val := by

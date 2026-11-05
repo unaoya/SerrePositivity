@@ -17,44 +17,44 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory _root_.Simplicial SSet
 
 /-- 宇宙を固定した、有限 necklace の全ての形。 -/
-abbrev Necklace := ULift.{u} NecklaceShape
+abbrev Necklace := ULift.{u} _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の両端点を保つ実単体的写像。 -/
-@[ext] structure NecklaceHom (T U : Necklace.{u}) where
+@[ext] structure NecklaceHom (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) where
   map : T.down.carrier.{u} ⟶ U.down.carrier.{u}
-  map_first : map.app _ T.down.firstVertex = U.down.firstVertex
-  map_last : map.app _ T.down.lastVertex = U.down.lastVertex
+  map_first : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map.app _ T.down.firstVertex = U.down.firstVertex
+  map_last : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map.app _ T.down.lastVertex = U.down.lastVertex
 
 /-- 元のすべての端点保存写像を持つ necklace 圏。 -/
-instance necklaceCategory : Category.{u} Necklace.{u} where
-  Hom := NecklaceHom
+instance necklaceCategory : Category.{u} _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u} where
+  Hom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom
   id T := ⟨𝟙 _, rfl, rfl⟩
   comp f g :=
-    { map := f.map ≫ g.map
-      map_first := by
+    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := f.map ≫ g.map
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := by
         change g.map.app _ (f.map.app _ _) = _
         rw [f.map_first, g.map_first]
-      map_last := by
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := by
         change g.map.app _ (f.map.app _ _) = _
         rw [f.map_last, g.map_last] }
-  id_comp f := NecklaceHom.ext (Category.id_comp f.map)
-  comp_id f := NecklaceHom.ext (Category.comp_id f.map)
-  assoc f g h := NecklaceHom.ext (Category.assoc f.map g.map h.map)
+  id_comp f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext (Category.id_comp f.map)
+  comp_id f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext (Category.comp_id f.map)
+  assoc f g h := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext (Category.assoc f.map g.map h.map)
 
 /-- 元の necklace の実単体集合と元の全射への忠実な関手。 -/
-def necklaceSimplicialSet : Necklace.{u} ⥤ SSet.{u} where
+def necklaceSimplicialSet : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u} ⥤ SSet.{u} where
   obj T := T.down.carrier
   map f := f.map
 
 /-- 元の necklace 射の等号は実単体的写像の等号で判定される。 -/
-instance necklaceSimplicialSet_faithful : necklaceSimplicialSet.{u}.Faithful where
-  map_injective h := NecklaceHom.ext h
+instance necklaceSimplicialSet_faithful : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet.{u}.Faithful where
+  map_injective h := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext h
 
 /-- 恒等写像は元の単体集合の恒等写像。 -/
-lemma necklace_id_map (T : Necklace.{u}) : (𝟙 T : T ⟶ T).map = 𝟙 T.down.carrier := rfl
+lemma necklace_id_map (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) : (𝟙 T : T ⟶ T).map = 𝟙 T.down.carrier := rfl
 
 /-- 合成写像は元の単体的写像の合成。 -/
-lemma necklace_comp_map {T U V : Necklace.{u}} (f : T ⟶ U) (g : U ⟶ V) :
+lemma necklace_comp_map {T U V : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) (g : U ⟶ V) :
     (f ≫ g).map = f.map ≫ g.map := rfl
 
 end SerrePositivity.InfinityCategories.Simplicial

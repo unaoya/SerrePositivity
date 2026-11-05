@@ -22,8 +22,8 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 lemma lift_fst : lift p q r ≫ (laxFst (𝟙 Q) (𝟙 Q)).hom =
     connectingArrow p q r ≫
@@ -47,7 +47,7 @@ lemma fromD_first_zero (d : D.obj _⦋0⦌) :
     infer_instance
   have hj : IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J)) := by
     rw [functorHomotopyPrecomp_hom, functorHomHomotopy_hom]
-    exact counit_precompLeft_isIso (LaxInclusion.fromDAdjunction p q)
+    exact _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counit_precompLeft_isIso (LaxInclusion.fromDAdjunction p q)
   have hk : IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy K)) := by
     rw [functorHomotopyPostcomp_hom]
     infer_instance

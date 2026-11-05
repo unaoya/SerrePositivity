@@ -52,7 +52,7 @@ open SerrePositivity.KST.LocalizingInvariants
 def arrowFamilyHom {A X : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     FunctorHom (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
       (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (arrowFamilyHomotopy a))
+  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a))
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory
 

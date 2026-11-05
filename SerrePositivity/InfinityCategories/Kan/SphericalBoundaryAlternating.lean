@@ -22,7 +22,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SphericalBoundary
 end SerrePositivity.KST.Spectra.SphericalBoundary
 namespace SerrePositivity.InfinityCategories.Kan.SphericalBoundary
-open SerrePositivity.KST.Spectra.SphericalBoundary
+open _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary
 
 noncomputable section
 
@@ -33,22 +33,22 @@ variable {X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌}
 規約：実際の次数は n + 2。
 使われ方：Goerss–Jardine I §7。交代境界の各項。 -/
 def additiveClass (a : X.PtSimplex (n + 2) x) :
-    Additive (KanHomotopyGroup X (n + 1) x) := Additive.ofMul (KanHomotopyGroup.mk a)
+    Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) := Additive.ofMul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a)
 
 /-- 概要：定数単体の加法的な類は零。
 方針：定数単体が乗法表示の単位元であることを使う。
 規約：正次数の群の標準基点。
 使われ方：Goerss–Jardine I §7。境界簡約の零の項。 -/
 @[simp] theorem additiveClass_const :
-    additiveClass (RelativeMorphism.const : X.PtSimplex (n + 2) x) = 0 := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (RelativeMorphism.const : X.PtSimplex (n + 2) x) = 0 := rfl
 
 /-- 概要：球面的な面の族のホモトピー類の交代和。
 方針：各面の類に零から始まる交代符号を掛ける。
 規約：和は可換群の中の有限和。
 使われ方：Goerss–Jardine I §7、VIII §1。境界の向きの関係。 -/
 def alternatingClass (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
-    Additive (KanHomotopyGroup X (n + 1) x) :=
-  ∑ j, (-1 : ℤ) ^ j.val • additiveClass (a j)
+    Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) :=
+  ∑ j, (-1 : ℤ) ^ j.val • _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a j)
 
 /-- 概要：二箇所以外が同じ有限和は、その二項の和の比較に帰着する。
 方針：指定した二点を有限集合から順に除く。
@@ -80,20 +80,20 @@ theorem alternatingClass_reduce
     (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const p)
     (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p)
     (hlower : ∀ j, j.val < p.val → a j = .const) :
-    alternatingClass (SphericalBoundaryReduction.reduced a p b) = alternatingClass a := by
-  have hinv := KanHomotopyGroup.mul_eq_at hi
-  have hmul := KanHomotopyGroup.mul_eq_at hb
-  have he : KanHomotopyGroup.mk b =
-      KanHomotopyGroup.mk (a p.succ.succ) * KanHomotopyGroup.mk (a p.castSucc.castSucc) := by
-    rw [← hmul, mul_assoc, hinv, show KanHomotopyGroup.mk
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced a p b) = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a := by
+  have hinv := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq_at hi
+  have hmul := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq_at hb
+  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a p.succ.succ) * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a p.castSucc.castSucc) := by
+    rw [← hmul, mul_assoc, hinv, show _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
       (RelativeMorphism.const : X.PtSimplex (n + 2) x) = 1 from rfl, mul_one]
-  have hadd : additiveClass b = additiveClass (a p.succ.succ) +
-      additiveClass (a p.castSucc.castSucc) := congrArg Additive.ofMul he
-  unfold alternatingClass
+  have hadd : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass b = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a p.succ.succ) +
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a p.castSucc.castSucc) := congrArg Additive.ofMul he
+  unfold _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass
   apply sum_pair _ _ p.castSucc.castSucc p.succ.succ
     (by intro h; have := congrArg Fin.val h; simp at this; omega)
-  · simp only [SphericalBoundaryReduction.reduced, Fin.val_castSucc, Fin.val_succ,
-      le_refl, ↓reduceIte, additiveClass_const, smul_zero, zero_add]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced, Fin.val_castSucc, Fin.val_succ,
+      le_refl, ↓reduceIte, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass_const, smul_zero, zero_add]
     have hp : ¬p.val + 1 + 1 ≤ p.val := by omega
     simp only [hp, ↓reduceIte, hadd, smul_add]
     rw [show (-1 : ℤ) ^ (p.val + 1 + 1) = (-1 : ℤ) ^ p.val by
@@ -104,8 +104,8 @@ theorem alternatingClass_reduce
     have h2 : j.val ≠ p.val + 2 := fun h ↦ hj' (Fin.ext (by simpa using h))
     by_cases hlow : j.val ≤ p.val
     · rw [hlower j (by omega)]
-      simp [SphericalBoundaryReduction.reduced, hlow]
-    · simp [SphericalBoundaryReduction.reduced, hlow, h2]
+      simp [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced, hlow]
+    · simp [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced, hlow, h2]
 
 end
 

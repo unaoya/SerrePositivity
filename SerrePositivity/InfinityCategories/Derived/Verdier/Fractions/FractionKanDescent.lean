@@ -25,28 +25,28 @@ def fractionKanSpaceDiagram : (SSet.uliftFunctor.{u + 1, u}).obj X ⟶ SpaceInfi
   localizationDescend
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap X))
     (transportSimplexInitialEdgesLifted X) (transportSimplexFirstVertexMap_ulift_isLocalization X)
-    (kanDiagramCoherentNerve (fractionSimplexKanMappingDiagram F x))
+    (kanDiagramCoherentNerve (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x))
     (fractionSimplexKanMappingDiagram_inverts_initial F x)
 
 /-- 制限は、元の同じ coherent coslice 図式と全関手圏内で自然同型。 -/
 def fractionKanSpaceDiagram_restrictionIso :
     FunctorIso
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap X) ≫
-        fractionKanSpaceDiagram F x)
-      (kanDiagramCoherentNerve (fractionSimplexKanMappingDiagram F x)) :=
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram F x)
+      (kanDiagramCoherentNerve (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x)) :=
   localizationDescendIso
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap X))
     (transportSimplexInitialEdgesLifted X) (transportSimplexFirstVertexMap_ulift_isLocalization X)
-    (kanDiagramCoherentNerve (fractionSimplexKanMappingDiagram F x))
+    (kanDiagramCoherentNerve (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x))
     (fractionSimplexKanMappingDiagram_inverts_initial F x)
 
 /-- 降下した図式の初頂点の値は、元の同じ strict Kan coslice 値を表す。 -/
 def fractionKanSpaceDiagram_initialVertexIso (c : TransportSimplexCategory X) :
-    VertexIso ((fractionKanSpaceDiagram F x).app (Opposite.op ⦋0⦌)
+    VertexIso ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram F x).app (Opposite.op ⦋0⦌)
       (ULift.up ((transportSimplexFirstVertexMap X).app (Opposite.op ⦋0⦌) (nerveVertex c))))
-      (spaceInfinityVertex ((fractionSimplexKanMappingDiagram F x).obj c)) := by
-  have e := (fractionKanSpaceDiagram_restrictionIso F x).app (ULift.up (nerveVertex c))
-  have hv := kanDiagramCoherentNerve_vertex (fractionSimplexKanMappingDiagram F x) c
+      (spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x).obj c)) := by
+  have e := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_restrictionIso F x).app (ULift.up (nerveVertex c))
+  have hv := kanDiagramCoherentNerve_vertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x) c
   exact e ≪≫ eqToIso (congrArg HomotopyCategory.mk hv)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

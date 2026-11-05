@@ -35,7 +35,7 @@ lemma whiskerLeft_eq_of_anodyneQ_eq {X Y : SSet.{u}} {f g : X ⟶ Y}
     (h : AnodyneHomotopy.anodyneQ.map f = AnodyneHomotopy.anodyneQ.map g)
     (A : SSet.{u}) :
     AnodyneHomotopy.anodyneQ.map (A ◁ f) = AnodyneHomotopy.anodyneQ.map (A ◁ g) := by
-  apply map_eq_of_anodyneQ_eq (tensorLeft A ⋙ AnodyneHomotopy.anodyneQ) _ h
+  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.map_eq_of_anodyneQ_eq (tensorLeft A ⋙ AnodyneHomotopy.anodyneQ) _ h
   intro U V i hi
   exact Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions _
     (hi.whiskerLeft A)
@@ -50,7 +50,7 @@ lemma pair_right_eq_of_anodyneQ_eq {X Y Z : SSet.{u}} (f : X ⟶ Y) {g h : X ⟶
   have hh : lift f (𝟙 X) ≫ (Y ◁ h) = lift f h := by
     rw [lift_whiskerLeft, Category.id_comp]
   rw [← hg, ← hh, Functor.map_comp, Functor.map_comp,
-    whiskerLeft_eq_of_anodyneQ_eq he Y]
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.whiskerLeft_eq_of_anodyneQ_eq he Y]
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

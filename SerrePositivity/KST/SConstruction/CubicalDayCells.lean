@@ -14,13 +14,13 @@ open CategoryTheory MonoidalCategory Opposite
 open scoped MonoidalCategory.ExternalProduct
 
 /-- 元の二つの cell が Day tensor の連結立方体に定める元。 -/
-def cubicalDayTensorCell {K L : CubicalSet.{u}} (c d : ConcreteCube)
+def cubicalDayTensorCell {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalDayTensor K L).obj (op (concreteCubeTensorObj c d)) :=
   (cubicalDayTensorUnit K L).app (op c, op d) (x, y)
 
 /-- 元の両立方体の射による制限は、Day tensor の同じ連結 cell の関係式を与える。 -/
-lemma cubicalDayTensorCell_restrict {K L : CubicalSet.{u}} {c c' d d' : ConcreteCube}
+lemma cubicalDayTensorCell_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
     (f : c ⟶ c') (g : d ⟶ d') (x : K.obj (op c')) (y : L.obj (op d')) :
     (cubicalDayTensor K L).map (concreteCubeTensorMap f g).op
         (cubicalDayTensorCell c' d' x y) =
@@ -32,7 +32,7 @@ lemma cubicalDayTensorCell_restrict {K L : CubicalSet.{u}} {c c' d d' : Concrete
 /-- 元の全ての連結 cell の像は、Day tensor からの射を決定する。 -/
 lemma cubicalDayTensor_cell_hom_ext {K L M : CubicalSet.{u}}
     {f g : cubicalDayTensor K L ⟶ M}
-    (h : ∀ (c d : ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
+    (h : ∀ (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
       f.app (op (concreteCubeTensorObj c d)) (cubicalDayTensorCell c d x y) =
         g.app (op (concreteCubeTensorObj c d)) (cubicalDayTensorCell c d x y)) : f = g := by
   apply cubicalDayTensor_hom_ext
@@ -47,7 +47,7 @@ def cubicalDayTensorDesc {K L M : CubicalSet.{u}}
 /-- 元の延長は、指定した全ての連結 cell の作用を厳密に回収する。 -/
 lemma cubicalDayTensorDesc_cell {K L M : CubicalSet.{u}}
     (a : K ⊠ L ⟶ tensor ConcreteCubeᵒᵖ ⋙ M)
-    (c d : ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalDayTensorDesc a).app (op (concreteCubeTensorObj c d))
         (cubicalDayTensorCell c d x y) = a.app (op c, op d) (x, y) :=
   congrArg (fun t => t (x, y))

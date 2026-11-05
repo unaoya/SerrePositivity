@@ -73,7 +73,7 @@ variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
 def kanEnrichedEdgewiseRightComponent (X : EdgewiseEnrichedObject C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.edgewise.obj j).obj X))
       (spaceInfinityVertex ((D.obj j).obj X.val)) :=
-  kanEnrichedRealizationComponentIso D.edgewiseRightComparison
+  _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso D.edgewiseRightComparison
     (fun k Y => isQCatEquivalence_of_trivialKanFibration
       (edgewiseRight ((D.obj k).obj Y.val).obj)) X j
 
@@ -81,7 +81,7 @@ def kanEnrichedEdgewiseRightComponent (X : EdgewiseEnrichedObject C) (j : J) :
 def kanEnrichedEdgewiseLeftComponent (X : EdgewiseEnrichedObject C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.edgewise.obj j).obj X))
       (spaceInfinityVertex (kanObjectOpFunctor.obj ((D.obj j).obj X.val))) :=
-  kanEnrichedRealizationComponentIso D.edgewiseLeftComparison
+  _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso D.edgewiseLeftComparison
     (fun k Y => isQCatEquivalence_of_trivialKanFibration
       (edgewiseLeft ((D.obj k).obj Y.val).obj)) X j
 
@@ -89,37 +89,37 @@ def kanEnrichedEdgewiseLeftComponent (X : EdgewiseEnrichedObject C) (j : J) :
 def kanEnrichedEdgewisePointIso (X : EdgewiseEnrichedObject C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.obj j).obj X.val))
       (spaceInfinityVertex (kanObjectOpFunctor.obj ((D.obj j).obj X.val))) :=
-  (kanEnrichedEdgewiseRightComponent D X j).symm ≪≫
-    kanEnrichedEdgewiseLeftComponent D X j
+  (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent D X j).symm ≪≫
+    _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent D X j
 
 /-- 元の共通係数点の右端と左端は、同じ二つの指定成分の合成で対応する。 -/
 theorem kanEnrichedEdgewisePointIso_endpoints (X : EdgewiseEnrichedObject C) (j : J)
     (w : (edgewiseSubdivision ((D.obj j).obj X.val).obj) _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X.val)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X.val)).symm
       ((edgewiseRight ((D.obj j).obj X.val).obj).app (Opposite.op ⦋0⦌) w)) ≫
-        (kanEnrichedEdgewisePointIso D X j).hom =
-    cosliceFiberPointHom
+        (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso D X j).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv (kanObjectOpFunctor.obj ((D.obj j).obj X.val))).symm
         ((edgewiseLeft ((D.obj j).obj X.val).obj).app (Opposite.op ⦋0⦌) w)) := by
-  have hr := kanEnrichedRealizationComponentIso_pointHom D.edgewiseRightComparison
+  have hr := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_pointHom D.edgewiseRightComparison
     (fun k Y => isQCatEquivalence_of_trivialKanFibration
       (edgewiseRight ((D.obj k).obj Y.val).obj)) X j w
-  have hl := kanEnrichedRealizationComponentIso_pointHom D.edgewiseLeftComparison
+  have hl := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_pointHom D.edgewiseLeftComparison
     (fun k Y => isQCatEquivalence_of_trivialKanFibration
       (edgewiseLeft ((D.obj k).obj Y.val).obj)) X j w
-  change cosliceFiberPointHom
+  change _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((D.edgewise.obj j).obj X)).symm w) ≫
-        (kanEnrichedEdgewiseRightComponent D X j).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X.val)).symm
+        (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent D X j).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X.val)).symm
       ((edgewiseRight ((D.obj j).obj X.val).obj).app (Opposite.op ⦋0⦌) w)) at hr
-  change cosliceFiberPointHom
+  change _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((D.edgewise.obj j).obj X)).symm w) ≫
-        (kanEnrichedEdgewiseLeftComponent D X j).hom =
-    cosliceFiberPointHom
+        (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent D X j).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv (kanObjectOpFunctor.obj ((D.obj j).obj X.val))).symm
         ((edgewiseLeft ((D.obj j).obj X.val).obj).app (Opposite.op ⦋0⦌) w)) at hl
-  change _ ≫ (kanEnrichedEdgewiseRightComponent D X j).inv ≫
-    (kanEnrichedEdgewiseLeftComponent D X j).hom = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent D X j).inv ≫
+    (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent D X j).hom = _
   rw [← hr, Category.assoc, Iso.hom_inv_id_assoc]
   exact hl
 

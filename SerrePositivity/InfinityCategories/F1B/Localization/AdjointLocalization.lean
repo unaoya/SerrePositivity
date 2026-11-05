@@ -63,7 +63,7 @@ def invertingUnitPrecompositionIso (E : SSet.{u}) [Quasicategory E] :
     change IsInvertingFunctorVertex X E (invertedEdges F) v.val at hv
     unfold IsInvertingFunctorVertex at hv
     rw [show v.val = (functorVertexEquiv X E) u from hu, Equiv.symm_apply_apply] at hv
-    have hi := hv (unitComponent_mem_invertedEdges a x)
+    have hi := hv (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.unitComponent_mem_invertedEdges a x)
     exact (isInvertibleEdge_congr (e := (edgeOfSimplex
       (simplicialHomotopyVertexEdge (functorHomHomotopy a.unitHom) x).edge).map
         ((truncation 2).map u))
@@ -88,18 +88,18 @@ def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] :
     QCatEquivalence ((ihom Y).obj E)
       (invertingFunctors X E (invertedEdges F) : SSet.{u}) where
   hom := localizationPrecomposition F (invertedEdges F) (fun _ h => h) E
-  inv := localizationRestriction a E
+  inv := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction a E
   homInvIso := by
-    simpa only [localizationRestriction, ← Category.assoc, localizationPrecomposition_ι,
-      pre_map, NatTrans.comp_app, pre_id, NatTrans.id_app] using (counitIso a).map_pre E
+    simpa only [_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction, ← Category.assoc, localizationPrecomposition_ι,
+      pre_map, NatTrans.comp_app, pre_id, NatTrans.id_app] using (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitIso a).map_pre E
   invHomIso := by
     let K := invertingFunctors X E (invertedEdges F)
     let U := localizationPrecomposition F (invertedEdges F) (fun _ h => h) E
-    let V := localizationRestriction a E
+    let V := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction a E
     have h : FunctorIso ((𝟙 (K : SSet.{u})) ≫ K.ι) ((V ≫ U) ≫ K.ι) := by
-      simpa only [V, U, K, localizationRestriction, Category.assoc, localizationPrecomposition_ι,
+      simpa only [V, U, K, _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction, Category.assoc, localizationPrecomposition_ι,
         pre_map, NatTrans.comp_app, Category.id_comp] using
-        invertingUnitPrecompositionIso a E
+        _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso a E
     let hf := fullSubcomplexFunctorInclusionHoFullyFaithful (K : SSet.{u}) ((ihom X).obj E)
       (IsInvertingFunctorVertex X E (invertedEdges F))
     exact (hf.preimageIso (X := HomotopyCategory.mk (functorVertex (𝟙 (K : SSet.{u}))))
@@ -113,7 +113,7 @@ include a
 使われ方：Kerodon §6.3.3 の左随伴的局所化の普遍性。 -/
 lemma isLocalization : IsLocalization F (invertedEdges F) := by
   refine ⟨fun _ h => h, fun E _ => ?_⟩
-  exact (localizationPrecompositionEquivalence a E).isQCatEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence a E).isQCatEquivalence
 
 end SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
 

@@ -25,61 +25,61 @@ namespace SerrePositivity.KST.LocalizingInvariants
 end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
   (x y : B.obj _⦋0⦌) (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌)
-  {K : SSet.{u}} (g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d)
+  {K : SSet.{u}} (g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d)
 
 /-- 同じ実次辺の全族を商後合成した実辺族。 -/
 def verdierSpanMappedNumeratorFamily : K ⟶ (ihom (Δ[1] : SSet.{u})).obj C.obj :=
-  g ≫ verdierDenominatorSpanFiberArrow i x y d ≫ (ihom (Δ[1] : SSet.{u})).map q.hom
+  g ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow i x y d ≫ (ihom (Δ[1] : SSet.{u})).map q.hom
 
-lemma verdierSpanMappedNumeratorFamily_source : verdierSpanMappedNumeratorFamily i q x y d g ≫
+lemma verdierSpanMappedNumeratorFamily_source : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily i q x y d g ≫
     evaluateFunctorAt (Y := C.obj) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
     SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-      ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) := by
   have hn : (ihom (Δ[1] : SSet.{u})).map q.hom ≫
       evaluateFunctorAt (Y := C.obj) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       evaluateFunctorAt (Y := B.obj) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ q.hom := rfl
-  rw [verdierSpanMappedNumeratorFamily, Category.assoc, Category.assoc, hn,
-    ← Category.assoc (verdierDenominatorSpanFiberArrow i x y d),
-    verdierDenominatorSpanFiberArrow_source, SSet.const_comp, SSet.comp_const]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily, Category.assoc, Category.assoc, hn,
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow i x y d),
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow_source, SSet.const_comp, SSet.comp_const]
 
-lemma verdierSpanMappedNumeratorFamily_target : verdierSpanMappedNumeratorFamily i q x y d g ≫
+lemma verdierSpanMappedNumeratorFamily_target : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily i q x y d g ≫
     evaluateFunctorAt (Y := C.obj) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.const (q.hom.app (Opposite.op ⦋0⦌) y) := by
   have hn : (ihom (Δ[1] : SSet.{u})).map q.hom ≫
       evaluateFunctorAt (Y := C.obj) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       evaluateFunctorAt (Y := B.obj) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ q.hom := rfl
-  rw [verdierSpanMappedNumeratorFamily, Category.assoc, Category.assoc, hn,
-    ← Category.assoc (verdierDenominatorSpanFiberArrow i x y d),
-    verdierDenominatorSpanFiberArrow_target, SSet.const_comp, SSet.comp_const]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily, Category.assoc, Category.assoc, hn,
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow i x y d),
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow_target, SSet.const_comp, SSet.comp_const]
 
 /-- 元の実次辺族の商像を、同じ固定端点を持つパラメータ関手圏の実辺として回収する。 -/
 def verdierSpanMappedNumeratorEdge :
     SSet.Edge (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-      ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) : K ⟶ C.obj))
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) : K ⟶ C.obj))
       (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌) y) : K ⟶ C.obj)) :=
-  spanArrowFamilyEdge (verdierSpanMappedNumeratorFamily i q x y d g)
-    (verdierSpanMappedNumeratorFamily_source i q x y d g)
-    (verdierSpanMappedNumeratorFamily_target i q x y d g)
+  spanArrowFamilyEdge (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily i q x y d g)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily_source i q x y d g)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily_target i q x y d g)
 
-lemma verdierSpanMappedNumeratorEdge_edge : (verdierSpanMappedNumeratorEdge i q x y d g).edge =
+lemma verdierSpanMappedNumeratorEdge_edge : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorEdge i q x y d g).edge =
     SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] C.obj
-      (verdierSpanMappedNumeratorFamily i q x y d g)) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedNumeratorFamily i q x y d g)) :=
   spanArrowFamilyEdge_edge _ _ _
 
 /-- 同じ元の実分母の辺を商後合成し、元の両端点を持つ実辺として回収する。 -/
 def verdierSpanMappedDenominator : Truncated.Edge (X := (truncation 2).obj C.obj)
     (q.hom.app (Opposite.op ⦋0⦌)
-      ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d))
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d))
     (q.hom.app (Opposite.op ⦋0⦌) x) :=
   (((SSet.Edge.ofTruncated (X := B.obj)
     (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) d.val)).ofEq rfl
       (Equiv.apply_symm_apply SSet.yonedaEquiv x)).map q.hom).toTruncated
 
 lemma verdierSpanMappedDenominator_diagram :
-    SSet.yonedaEquiv.symm (verdierSpanMappedDenominator i q x d).edge =
-      verdierSpanDenominatorDiagram i q x d := by
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d := by
   change SSet.yonedaEquiv.symm (q.hom.app (Opposite.op ⦋1⦌)
     (SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫ d.val.val))) = _
   rw [← SSet.yonedaEquiv_comp, Equiv.symm_apply_apply]
@@ -88,51 +88,51 @@ lemma verdierSpanMappedDenominator_diagram :
 /-- 同じ実分母を全パラメータで定値にした、固定端点を持つ実関手辺。 -/
 def verdierSpanMappedDenominatorEdge (K : SSet.{u}) :
     SSet.Edge (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-      ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) : K ⟶ C.obj))
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d)) : K ⟶ C.obj))
       (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x) : K ⟶ C.obj)) :=
   spanArrowFamilyEdge (SSet.const (functorVertex
-    (SSet.yonedaEquiv.symm (verdierSpanMappedDenominator i q x d).edge)))
-      (spanConstantArrowFamily_source _) (spanConstantArrowFamily_target _)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge)))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_source _) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_target _)
 
 lemma verdierSpanMappedDenominatorEdge_edge (K : SSet.{u}) :
-    (verdierSpanMappedDenominatorEdge i q x d K).edge =
-      SSet.yonedaEquiv (verdierSpanDenominatorDiagram i q x d ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominatorEdge i q x d K).edge =
+      SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d ≫
         curry (CartesianMonoidalCategory.snd K C.obj)) := by
   have he := spanArrowFamilyEdge_edge
     (SSet.const (functorVertex (SSet.yonedaEquiv.symm
-      (verdierSpanMappedDenominator i q x d).edge)) :
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge)) :
       K ⟶ (ihom (Δ[1] : SSet.{u})).obj C.obj)
-    (spanConstantArrowFamily_source _) (spanConstantArrowFamily_target _)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_source _) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_target _)
   have hf : internalHomFlipHomEquiv K Δ[1] C.obj
       (SSet.const (functorVertex (SSet.yonedaEquiv.symm
-        (verdierSpanMappedDenominator i q x d).edge))) =
-      verdierSpanDenominatorDiagram i q x d ≫ curry (CartesianMonoidalCategory.snd K C.obj) :=
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge))) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d ≫ curry (CartesianMonoidalCategory.snd K C.obj) :=
     (spanInternalHomFlip_const _).trans
       (congrArg (fun f => f ≫ curry (CartesianMonoidalCategory.snd K C.obj))
-        (verdierSpanMappedDenominator_diagram i q x d))
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator_diagram i q x d))
   exact he.trans (congrArg SSet.yonedaEquiv hf)
 
 /-- 同じ元の実分母は、全パラメータ関手圏でも実際に可逆な指定辺。 -/
-lemma verdierSpanMappedDenominatorEdge_isInvertible (h : IsVerdierSequence i q)
+lemma verdierSpanMappedDenominatorEdge_isInvertible (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (K : SSet.{u}) : IsInvertibleEdge
-      (verdierSpanMappedDenominatorEdge i q x d K).toTruncated := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominatorEdge i q x d K).toTruncated := by
   have hi := h.inverts (fullSubcomplexOnVertices_vertex d)
-  have hd : IsInvertibleEdge (verdierSpanMappedDenominator i q x d) := by
+  have hd : IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d) := by
     exact (isInvertibleEdge_congr
       (e := (edgeOfSimplex (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) d.val).edge).map
-        ((truncation 2).map q.hom)) (f := verdierSpanMappedDenominator i q x d) rfl).mp hi
+        ((truncation 2).map q.hom)) (f := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d) rfl).mp hi
   let c := curry (CartesianMonoidalCategory.snd K C.obj)
-  have hdiag : SSet.yonedaEquiv (verdierSpanDenominatorDiagram i q x d) =
-      (verdierSpanMappedDenominator i q x d).edge :=
-    (congrArg SSet.yonedaEquiv (verdierSpanMappedDenominator_diagram i q x d)).symm.trans
+  have hdiag : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d) =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge :=
+    (congrArg SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator_diagram i q x d)).symm.trans
       (Equiv.apply_symm_apply _ _)
-  have he : ((verdierSpanMappedDenominator i q x d).map ((truncation 2).map c)).edge =
-      (verdierSpanMappedDenominatorEdge i q x d K).edge := by
+  have he : ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).map ((truncation 2).map c)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominatorEdge i q x d K).edge := by
     calc
-      _ = c.app (Opposite.op ⦋1⦌) (verdierSpanMappedDenominator i q x d).edge := rfl
-      _ = SSet.yonedaEquiv (verdierSpanDenominatorDiagram i q x d ≫ c) := by
+      _ = c.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominator i q x d).edge := rfl
+      _ = SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d ≫ c) := by
         rw [SSet.yonedaEquiv_comp, hdiag]
-      _ = _ := (verdierSpanMappedDenominatorEdge_edge i q x d K).symm
+      _ = _ := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanMappedDenominatorEdge_edge i q x d K).symm
   exact (isInvertibleEdge_congr he).mp (hd.map c)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

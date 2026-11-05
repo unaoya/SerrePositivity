@@ -43,21 +43,21 @@ lemma intervalPullbackFiberInclusion_snd {E B : SSet.{u}} (p : E ⟶ B)
 lemma intervalPullbackFiberInclusion_zero_groupoidCompletion_isEquivalence
     {E B : SSet.{u}} (p : E ⟶ B) (b : (Δ[1] : SSet.{u}) ⟶ B)
     [CartesianFibration (pullback.snd p b)] :
-    IsQCatEquivalence (groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 0)) := by
-  let e := groupoidCompletionEquivalenceOfIso
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 0)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso
     (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (initialFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
-  exact h.ofFunctorIso (groupoidCompletionMapOf_compIso _ _)
+  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso _ _)
 
 lemma intervalPullbackFiberInclusion_one_groupoidCompletion_isEquivalence
     {E B : SSet.{u}} (p : E ⟶ B) (b : (Δ[1] : SSet.{u}) ⟶ B)
     [CocartesianFibration (pullback.snd p b)] :
-    IsQCatEquivalence (groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 1)) := by
-  let e := groupoidCompletionEquivalenceOfIso
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 1)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso
     (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (finalFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
-  exact h.ofFunctorIso (groupoidCompletionMapOf_compIso _ _)
+  exact h.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso _ _)
 
 end SerrePositivity.KST.LocalizingInvariants

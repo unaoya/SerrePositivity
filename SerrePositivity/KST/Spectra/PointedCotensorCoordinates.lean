@@ -24,16 +24,16 @@ def iso (K : SSet.{u}) (T E : PointedSimplicialSet.{u}) :
     (PointedObject.basedHom T
       (PointedObject.basedHom (PointedObject.adjoin K) E)).right ≅
     (ihom K).obj (PointedObject.basedHom T E).right :=
-  PointedSimplicialSet.forget.mapIso (InternalHomExchange.iso T (PointedObject.adjoin K) E) ≪≫
+  PointedSimplicialSet.forget.mapIso (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E) ≪≫
     FreePointedHomRestriction.iso K (PointedObject.basedHom T E)
 
 /-- 座標表示は点つき源の制限について自然。 -/
 lemma natural_source (K : SSet.{u}) {T U : PointedSimplicialSet.{u}}
     (i : T ⟶ U) (E : PointedSimplicialSet.{u}) :
-    (PointedMapping.prePointed i
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i
       (PointedObject.basedHom (PointedObject.adjoin K) E)).right ≫ (iso K T E).hom =
-    (iso K U E).hom ≫ (ihom K).map (PointedMapping.prePointed i E).right := by
-  have h := InternalHomExchange.natural_pre_left i (PointedObject.adjoin K) E
+    (iso K U E).hom ≫ (ihom K).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E).right := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left i (PointedObject.adjoin K) E
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   have hh := congrArg Under.Hom.right h
   simp only [Under.comp_right] at hh
@@ -51,7 +51,7 @@ lemma natural_target (K : SSet.{u}) (T : PointedSimplicialSet.{u})
       (iso K T V).hom =
     (iso K T E).hom ≫ (ihom K).map (PointedObject.basedHomMap T f).right := by
   have hh := congrArg Under.Hom.right
-    (InternalHomExchange.natural_post T (PointedObject.adjoin K) f)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post T (PointedObject.adjoin K) f)
   simp only [Under.comp_right] at hh
   simp only [iso, Iso.trans_hom, Functor.mapIso_hom, FreePointedHomRestriction.iso]
   rw [← Category.assoc]
@@ -64,10 +64,10 @@ lemma natural_target (K : SSet.{u}) (T : PointedSimplicialSet.{u})
 lemma natural_parameter {K L : SSet.{u}} (j : L ⟶ K)
     (T E : PointedSimplicialSet.{u}) :
     (PointedObject.basedHomMap T
-      (PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E)).right ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E)).right ≫
         (iso L T E).hom =
     (iso K T E).hom ≫ (MonoidalClosed.pre j).app (PointedObject.basedHom T E).right := by
-  have h := InternalHomExchange.natural_pre_right T (PointedObject.adjoinFunctor.map j) E
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right T (PointedObject.adjoinFunctor.map j) E
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   have hh := congrArg Under.Hom.right h
   simp only [Under.comp_right] at hh

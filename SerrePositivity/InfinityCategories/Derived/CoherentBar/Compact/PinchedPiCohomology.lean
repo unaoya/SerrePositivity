@@ -22,7 +22,7 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 /-- 任意の実 pinched 頂点を基点とする、同じ Hom の負次数コホモロジー表示。 -/
 def dgBarCompactPinchedPiCohomologyEquiv (x y : D) (n : ℕ)
     (z : (DGNerve.pinchedHom R D x y) _⦋0⦌) :
-    KanHomotopyGroup (DGNerve.pinchedHom R D x y) n z ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (DGNerve.pinchedHom R D x y) n z ≃*
       Multiplicative ((homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
   (kanHomotopyGroupIsoEquiv (pinchedHomModuleForgetIso (S := R) x y).symm n z).trans
     ((dgBarCompactModulePiHomologyEquiv (pinchedHomModule (S := R) x y) n
@@ -34,7 +34,7 @@ def dgBarCompactPinchedPiCohomologyEquiv (x y : D) (n : ℕ)
 /-- 任意複体の実単位 Hom 模型の全基点を、元の複体の H^{-n-1} へ同定する。 -/
 def dgBarCompactComplexPinchedPiCohomologyEquiv (K : Complex R) (n : ℕ)
     (z : (complexPinchedSpace.{u, v} K) _⦋0⦌) :
-    KanHomotopyGroup (complexPinchedSpace.{u, v} K) n z ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (complexPinchedSpace.{u, v} K) n z ≃*
       Multiplicative (K.homology (-((n + 1 : ℕ) : ℤ))) :=
   (dgBarCompactPinchedPiCohomologyEquiv (complexPinchedSource K)
     (complexPinchedTarget K) n z).trans

@@ -67,7 +67,7 @@ lemma sCofiberComparison_inverse (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsS
     (internalHomSwapIso (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sCofiberComparison_double_ι n C)
   · exact (Category.assoc _ _ _).symm.trans (sCofiberInverse_double_ι n C)
-  · exact internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
 
 /-- S_n 内の全 cofiber 四角形も二回の転置で厳密に回収される。 -/
 lemma sCofiberInverse_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
@@ -85,7 +85,7 @@ lemma sCofiberInverse_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsS
     (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sCofiberInverse_double_ι n C)
   · exact (Category.assoc _ _ _).symm.trans (sCofiberComparison_double_ι n C)
-  · exact internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
 
 /-- 全 gapped 図式の S_n は全 cofiber 四角形の構成と厳密に交換する。 -/
 def sCofiberIso (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :

@@ -45,9 +45,9 @@ theorem missingFace_class_eq {X : SSet.{u}} [KanComplex X]
     (s t : X.PtSimplex (n + 1) x) (f g : (Δ[n + 2] : SSet.{u}) ⟶ X)
     (hs : stdSimplex.δ i ≫ f = s.map) (ht : stdSimplex.δ i ≫ g = t.map)
     (hfg : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) :
-    KanHomotopyGroup.mk s = KanHomotopyGroup.mk t := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t := by
   obtain ⟨H⟩ := missingFace_relativeHomotopy i s t f g hs ht hfg
-  exact KanHomotopyGroup.eq_of_relativeHomotopy H
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy H
 
 end
 end SerrePositivity.KST.Spectra

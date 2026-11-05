@@ -21,7 +21,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.KanHomotopyGroup
 end SerrePositivity.KST.Spectra.KanHomotopyGroup
 namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
-open SerrePositivity.KST.Spectra.KanHomotopyGroup
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
 
 noncomputable section
 
@@ -51,19 +51,19 @@ instance prod_kanComplex [KanComplex X] [KanComplex Y] : KanComplex (X ⊗ Y) :=
 規約：両方の充填の面添字は同じ i。
 使われ方：Goerss–Jardine I §7。直積上のホモトピー類の識別。 -/
 def prodRelStruct {f g : (X ⊗ Y).PtSimplex n (x, y)} {i : Fin (n + 1)}
-    (r : PtSimplex.RelStruct (mapSimplex (fst X Y) rfl f)
-      (mapSimplex (fst X Y) rfl g) i)
-    (s : PtSimplex.RelStruct (mapSimplex (snd X Y) rfl f)
-      (mapSimplex (snd X Y) rfl g) i) : PtSimplex.RelStruct f g i where
+    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (fst X Y) rfl f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (fst X Y) rfl g) i)
+    (s : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (snd X Y) rfl f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (snd X Y) rfl g) i) : PtSimplex.RelStruct f g i where
   map := lift r.map s.map
   δ_castSucc_map := by
     apply CartesianMonoidalCategory.hom_ext <;>
       simp only [Category.assoc, lift_fst, lift_snd,
-        PtSimplex.RelStruct.δ_castSucc_map, mapSimplex_map]
+        PtSimplex.RelStruct.δ_castSucc_map, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_map]
   δ_succ_map := by
     apply CartesianMonoidalCategory.hom_ext <;>
       simp only [Category.assoc, lift_fst, lift_snd,
-        PtSimplex.RelStruct.δ_succ_map, mapSimplex_map]
+        PtSimplex.RelStruct.δ_succ_map, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_map]
   δ_map_of_lt j hj := by
     apply CartesianMonoidalCategory.hom_ext <;>
       simp only [Category.assoc, lift_fst, lift_snd,
@@ -80,18 +80,18 @@ def prodRelStruct {f g : (X ⊗ Y).PtSimplex n (x, y)} {i : Fin (n + 1)}
 theorem prod_map_injective [KanComplex X] [KanComplex Y] (n : ℕ)
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     Function.Injective
-      ((map (n := n) (fst X Y) (x := (x, y)) rfl).prod
-        (map (n := n) (snd X Y) (x := (x, y)) rfl)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (fst X Y) (x := (x, y)) rfl).prod
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (snd X Y) (x := (x, y)) rfl)) := by
   intro a b h
   induction a using Quotient.inductionOn with | h f => ?_
   induction b using Quotient.inductionOn with | h g => ?_
-  have hx : mk (mapSimplex (fst X Y) rfl f) = mk (mapSimplex (fst X Y) rfl g) :=
+  have hx : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (fst X Y) rfl f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (fst X Y) rfl g) :=
     congrArg Prod.fst h
-  have hy : mk (mapSimplex (snd X Y) rfl f) = mk (mapSimplex (snd X Y) rfl g) :=
+  have hy : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (snd X Y) rfl f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (snd X Y) rfl g) :=
     congrArg Prod.snd h
-  obtain ⟨r⟩ := (simplexRel_iff_relStruct 0).mp ((mk_eq_iff _ _).mp hx)
-  obtain ⟨s⟩ := (simplexRel_iff_relStruct 0).mp ((mk_eq_iff _ _).mp hy)
-  exact sound (prodRelStruct r s)
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct 0).mp ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).mp hx)
+  obtain ⟨s⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct 0).mp ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).mp hy)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.prodRelStruct r s)
 
 end
 

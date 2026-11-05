@@ -45,14 +45,14 @@ def obj (S : Type u) (X : S → SSet.{u}) : SSet.{u} where
 方針：各単体次数で関数を評価する。
 規約：通常の単体集合の射。
 使われ方：Goerss–Jardine I §7。積のホモトピー群への各射影。 -/
-def eval (S : Type u) (X : S → SSet.{u}) (s : S) : obj S X ⟶ X s where
+def eval (S : Type u) (X : S → SSet.{u}) (s : S) : _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X ⟶ X s where
   app _ := ↾fun x ↦ x s
 
 /-- 概要：座標ごとの射の族を関数複体への射に束ねる。
 方針：各単体次数で座標ごとの値を取る。
 規約：任意の始域単体集合を許す。
 使われ方：Goerss–Jardine I §7。関係充填とホーン充填の座標ごとの貼り合わせ。 -/
-def lift {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} (f : ∀ s, A ⟶ X s) : A ⟶ obj S X where
+def lift {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} (f : ∀ s, A ⟶ X s) : A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X where
   app n := ↾fun a s ↦ (f s).app n a
   naturality n m g := by
     apply ConcreteCategory.hom_ext
@@ -63,10 +63,10 @@ def lift {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} (f : ∀ s, A ⟶ X s)
 
 @[reassoc (attr := simp)]
 lemma lift_eval {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} (f : ∀ s, A ⟶ X s) (s : S) :
-    lift f ≫ eval S X s = f s := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift f ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s = f s := rfl
 
-lemma hom_ext {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} {f g : A ⟶ obj S X}
-    (h : ∀ s, f ≫ eval S X s = g ≫ eval S X s) : f = g := by
+lemma hom_ext {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X}
+    (h : ∀ s, f ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s = g ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) : f = g := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -79,16 +79,16 @@ lemma hom_ext {S : Type u} {X : S → SSet.{u}} {A : SSet.{u}} {f g : A ⟶ obj 
 規約：添字集合の有限性は不要。
 使われ方：Goerss–Jardine I §7、VIII §2。群 cochain の関数空間の Kan 模型。 -/
 instance kanComplex (S : Type u) (X : S → SSet.{u}) [∀ s, KanComplex (X s)] :
-    KanComplex (obj S X) := by
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X) := by
   rw [KanComplex.iff]
   intro n i fs hf
-  choose a ha using fun s ↦ KanComplex.hornFilling (hf.desc ≫ eval S X s)
-  have h : (horn (n + 1) i).ι ≫ lift a = hf.desc := by
-    apply hom_ext
+  choose a ha using fun s ↦ KanComplex.hornFilling (hf.desc ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s)
+  have h : (horn (n + 1) i).ι ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift a = hf.desc := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext
     intro s
-    rw [Category.assoc, lift_eval]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval]
     exact (ha s).symm
-  refine ⟨lift a, fun j hj ↦ ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift a, fun j hj ↦ ?_⟩
   rw [← horn.ι_ι_assoc i j hj, h]
   exact hf.ι_desc j hj
 

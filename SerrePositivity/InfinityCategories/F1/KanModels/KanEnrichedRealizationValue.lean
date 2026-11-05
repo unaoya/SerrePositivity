@@ -34,7 +34,7 @@ theorem kanEnrichedJointEvaluation_restrict (D : KanEnrichedDiagram C J) (X : C)
         (SSet.const (coherentNerveVertex X)) ≫ D.jointEvaluation =
       kanDiagramCoherentNerve (D.evaluate X) := by
   apply functorVertex_injective
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Transport.curry_vertex_functorVertex, kanEnrichedJointEvaluation_curry]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Transport.curry_vertex_functorVertex, _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry]
   exact D.realization_vertex X
 
 variable {D E : KanEnrichedDiagram C J} (η : KanEnrichedDiagramComparison D E)
@@ -56,25 +56,25 @@ def kanEnrichedRealizationValueIso (X : C) :
     FunctorIso (kanDiagramCoherentNerve (D.evaluate X))
       (kanDiagramCoherentNerve (E.evaluate X)) :=
   (eqToIso (congrArg HomotopyCategory.mk (D.realization_vertex X))).symm ≪≫
-    functorIsoValue (η.realizationIso hη) (coherentNerveVertex X) ≪≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (η.realizationIso hη) (coherentNerveVertex X) ≪≫
       eqToIso (congrArg HomotopyCategory.mk (E.realization_vertex X))
 
 /-- 同じ実現値同型は、元の共同比較を同じ対象に制限したものと HEq。 -/
 theorem kanEnrichedRealizationValueIso_heq_precomp (X : C) :
-    HEq (kanEnrichedRealizationValueIso η hη X)
+    HEq (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso η hη X)
       ((η.jointComparisonIso hη).precomp
         (lift (𝟙 ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J)))
           (SSet.const (coherentNerveVertex X)))) := by
   have h₁ := F2.iso_endpoints_heq
-    (functorIsoValue (η.realizationIso hη) (coherentNerveVertex X))
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (η.realizationIso hη) (coherentNerveVertex X))
     (congrArg HomotopyCategory.mk (D.realization_vertex X))
     (congrArg HomotopyCategory.mk (E.realization_vertex X))
-  have h₂ := functorIsoValue_heq_of_heq (η.realizationIso hη)
-    (η.jointComparisonIso hη).curry (kanEnrichedJointEvaluation_curry D).symm
-    (kanEnrichedJointEvaluation_curry E).symm (kanEnrichedRealizationIso_heq_curry η hη)
+  have h₂ := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_of_heq (η.realizationIso hη)
+    (η.jointComparisonIso hη).curry (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry D).symm
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry E).symm (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationIso_heq_curry η hη)
     (coherentNerveVertex X)
   exact h₁.trans (h₂.trans
-    (functorIsoValue_curry_heq_precomp (η.jointComparisonIso hη) (coherentNerveVertex X)))
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_curry_heq_precomp (η.jointComparisonIso hη) (coherentNerveVertex X)))
 
 end SerrePositivity.InfinityCategories.F1.KanModels
 

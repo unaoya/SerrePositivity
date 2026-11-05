@@ -65,7 +65,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 def reflectiveOppositeUnit (e : FunctorIso (G ≫ F) (𝟙 Y)) :
     FunctorIso (𝟙 Y.op) (SSet.opFunctor.map G ≫ SSet.opFunctor.map F) := by
   simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using
-    oppositeFunctorIso e
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeFunctorIso e
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory
 

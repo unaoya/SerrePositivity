@@ -29,70 +29,70 @@ open SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 def squares : X ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
-  arrow X ≫ CofiberFamily.squares X (𝟙 _)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X (𝟙 _)
 
-lemma squares_bottom : squares X ≫ (pre squareBottomEdge).app X = arrow X := by
-  rw [squares, Category.assoc, CofiberFamily.squares_bottom, Category.comp_id]
+lemma squares_bottom : _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X ≫ (pre squareBottomEdge).app X = _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares, Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom, Category.comp_id]
 
 lemma squares_corner (x : X _⦋0⦌) (i j : Fin 2) :
-    (squares X ≫ evaluateFunctorAt
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X ≫ evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)).app (Opposite.op ⦋0⦌) x =
-      squareVertex (squareDiagram ((squares X).app (Opposite.op ⦋0⦌) x)) i j := by
-  have hs : functorVertex (squareDiagram ((squares X).app (Opposite.op ⦋0⦌) x)) =
-      (squares X).app (Opposite.op ⦋0⦌) x := (functorVertexEquiv _ _).apply_symm_apply _
-  change (evaluateFunctorAt _).app _ ((squares X).app _ x) = _
+      squareVertex (squareDiagram ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X).app (Opposite.op ⦋0⦌) x)) i j := by
+  have hs : functorVertex (squareDiagram ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X).app (Opposite.op ⦋0⦌) x)) =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X).app (Opposite.op ⦋0⦌) x := (functorVertexEquiv _ _).apply_symm_apply _
+  change (evaluateFunctorAt _).app _ ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X).app _ x) = _
   rw [← hs, evaluateFunctorAt_functorVertex]
   rfl
 
 lemma squares_isSuspension (x : X _⦋0⦌) :
-    IsSuspensionDiagramVertex ((squares X).app (Opposite.op ⦋0⦌) x) := by
+    IsSuspensionDiagramVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X).app (Opposite.op ⦋0⦌) x) := by
   have h := congrArg (fun f => f ≫ evaluateFunctorAt
-    (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (squares_bottom X)
+    (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_bottom X)
   rw [Category.assoc, stable_pre_evaluateFunctorAt] at h
   have hv : squareBottomEdge.{u}.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i <;> fin_cases i <;> rfl
   rw [hv] at h
-  have hz := arrow_zero_target X x
-  change IsZeroVertex ((arrow X ≫ evaluateFunctorAt _).app (Opposite.op ⦋0⦌) x) at hz
-  rw [← h, squares_corner] at hz
-  exact ⟨CofiberFamily.squareAt_zero X (𝟙 _) ((arrow X).app _ x), hz,
-    CofiberFamily.squareAt_isPushout X (𝟙 _) ((arrow X).app _ x)⟩
+  have hz := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_zero_target X x
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ evaluateFunctorAt _).app (Opposite.op ⦋0⦌) x) at hz
+  rw [← h, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_corner] at hz
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_zero X (𝟙 _) ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X).app _ x), hz,
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isPushout X (𝟙 _) ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X).app _ x)⟩
 
 def diagrams : X ⟶ suspensionDiagrams X :=
-  fullSubcomplexLift IsSuspensionDiagramVertex (squares X) (squares_isSuspension X)
+  fullSubcomplexLift IsSuspensionDiagramVertex (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares X) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_isSuspension X)
 
-lemma diagrams_source : diagrams X ≫ suspensionDiagramEvaluation X 0 0 = 𝟙 X := by
+lemma diagrams_source : _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams X ≫ suspensionDiagramEvaluation X 0 0 = 𝟙 X := by
   have h := congrArg (fun f => f ≫ evaluateFunctorAt
-    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (squares_bottom X)
-  rw [Category.assoc, stable_pre_evaluateFunctorAt, arrow_source] at h
-  rw [suspensionDiagramEvaluation, ← Category.assoc, diagrams, fullSubcomplexLift_ι]
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_bottom X)
+  rw [Category.assoc, stable_pre_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source] at h
+  rw [suspensionDiagramEvaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams, fullSubcomplexLift_ι]
   exact h
 
-lemma diagrams_target : diagrams X ≫ suspensionDiagramEvaluation X 1 1 = map X := by
-  rw [suspensionDiagramEvaluation, ← Category.assoc, diagrams, fullSubcomplexLift_ι]
+lemma diagrams_target : _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams X ≫ suspensionDiagramEvaluation X 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X := by
+  rw [suspensionDiagramEvaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams, fullSubcomplexLift_ι]
   rfl
 
-def canonicalIso : FunctorIso (map X) (suspensionQCatEquivalence X).hom := by
+def canonicalIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X) (suspensionQCatEquivalence X).hom := by
   have e := FunctorIso.postcomp
-    (suspensionDiagramFamilyIso (diagrams X) (suspensionDiagramSourceEquivalence X).inv
-      (by rw [diagrams_source, suspensionDiagramSourceEquivalence_inv_source]))
+    (suspensionDiagramFamilyIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams X) (suspensionDiagramSourceEquivalence X).inv
+      (by rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_source, suspensionDiagramSourceEquivalence_inv_source]))
     (suspensionDiagramEvaluation X 1 1)
-  rw [diagrams_target, ← suspensionQCatEquivalence_hom] at e
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_target, ← suspensionQCatEquivalence_hom] at e
   exact e
 
 def equivalence : QCatEquivalence X X where
-  hom := map X
+  hom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X
   inv := (suspensionQCatEquivalence X).inv
-  homInvIso := (FunctorIso.postcomp (canonicalIso X) (suspensionQCatEquivalence X).inv) ≪≫
+  homInvIso := (FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso X) (suspensionQCatEquivalence X).inv) ≪≫
     (suspensionQCatEquivalence X).homInvIso
-  invHomIso := (FunctorIso.precomp (canonicalIso X) (suspensionQCatEquivalence X).inv) ≪≫
+  invHomIso := (FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso X) (suspensionQCatEquivalence X).inv) ≪≫
     (suspensionQCatEquivalence X).invHomIso
 
 def inverseExactMap (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A A :=
-  ⟨(equivalence A.obj).inv,
-    isExactFunctor_of_isQCatEquivalence (equivalence A.obj).symm.isQCatEquivalence⟩
+  ⟨(_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence A.obj).inv,
+    isExactFunctor_of_isQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence A.obj).symm.isQCatEquivalence⟩
 
 end SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
 

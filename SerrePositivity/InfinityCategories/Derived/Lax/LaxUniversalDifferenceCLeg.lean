@@ -30,24 +30,24 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 lemma arrow_source : arrow p q r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       ((laxSnd p q).hom ≫ LaxInclusion.fromD p q) ≫ r.hom := by
-  rw [arrow, Category.assoc, arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
+  rw [arrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
 
 lemma connectingArrow_target : connectingArrow p q r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       ((laxSnd p q).hom ≫ LaxInclusion.fromD p q) ≫ r.hom := by
-  rw [connectingArrow, Category.assoc, CofiberRotation.inverseRotation_target, arrow_source]
+  rw [connectingArrow, Category.assoc, CofiberRotation.inverseRotation_target, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.arrow_source]
 
 lemma fromC_connectingArrow_zeroTarget (c : C.obj _⦋0⦌) : IsZeroTargetArrow
     ((LaxInclusion.fromC p q ≫ connectingArrow p q r).app (Opposite.op ⦋0⦌) c) := by
   change IsZeroVertex ((LaxInclusion.fromC p q ≫ connectingArrow p q r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) c)
-  rw [connectingArrow_target]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.connectingArrow_target]
   change IsZeroVertex (r.hom.app _ ((LaxInclusion.fromD p q).app _
     ((laxSnd p q).hom.app _ ((LaxInclusion.fromC p q).app _ c))))
   have hs : (laxSnd p q).hom.app (Opposite.op ⦋0⦌)
@@ -59,33 +59,33 @@ lemma fromC_connectingArrow_zeroTarget (c : C.obj _⦋0⦌) : IsZeroTargetArrow
       (chosenZeroVertex D.obj).isZero)
 
 def fromCFirstSuspensionIso : FunctorIso
-    ((LaxInclusion.fromC p q ≫ first p q r) ≫ SuspensionExact.map Q.obj)
+    ((LaxInclusion.fromC p q ≫ first p q r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj)
     (LaxInclusion.fromC p q ≫ r.hom) := by
   have es := CofiberFamily.zeroTargetRelativeIso Q.obj
     (LaxInclusion.fromC p q ≫ connectingArrow p q r)
-    (fromC_connectingArrow_zeroTarget p q r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromC_connectingArrow_zeroTarget p q r)
   have he := CofiberRotation.inverseRotationFamilyCofiberIso Q.obj
     (LaxInclusion.fromC p q ≫ arrow p q r)
   simp only [Category.assoc, arrow_target] at he
   have hc : FunctorIso
-      (CofiberFamily.cofiber Q.obj (LaxInclusion.fromC p q ≫ connectingArrow p q r))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (LaxInclusion.fromC p q ≫ connectingArrow p q r))
       (LaxInclusion.fromC p q ≫ r.hom) := by
     simpa only [connectingArrow, Category.assoc] using he
   have hs : FunctorIso
-      (CofiberFamily.cofiber Q.obj (LaxInclusion.fromC p q ≫ connectingArrow p q r))
-      ((LaxInclusion.fromC p q ≫ first p q r) ≫ SuspensionExact.map Q.obj) := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (LaxInclusion.fromC p q ≫ connectingArrow p q r))
+      ((LaxInclusion.fromC p q ≫ first p q r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj) := by
     simpa only [first, Category.assoc, lift_fst] using es
   exact hs.symm ≪≫ hc
 
 def fromCFirstIso : FunctorIso (LaxInclusion.fromC p q ≫ first p q r)
-    (laxQuotientCLeg p q r).hom := by
-  apply ((SuspensionExact.equivalence Q.obj).isQCatEquivalence.postcompose C.obj
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom := by
+  apply ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence Q.obj).isQCatEquivalence.postcompose C.obj
     ).isFullyFaithful.preimageVertexIso
-  exact fromCFirstSuspensionIso p q r ≪≫ (laxQuotientCLeg_suspensionIso p q r).symm
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso p q r ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso p q r).symm
 
 def firstCLegIso : FunctorIso (first p q r)
-    ((laxFst p q).hom ≫ (laxQuotientCLeg p q r).hom) := by
-  have e := FunctorIso.precomp (fromCFirstIso p q r) (laxFst p q).hom
+    ((laxFst p q).hom ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom) := by
+  have e := FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstIso p q r) (laxFst p q).hom
   have ef : FunctorIso (first p q r)
       ((laxFst p q).hom ≫ (LaxInclusion.fromC p q ≫ first p q r)) := by
     simpa only [Category.assoc] using firstFactorIso p q r

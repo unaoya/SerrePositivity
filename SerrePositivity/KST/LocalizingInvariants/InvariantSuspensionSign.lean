@@ -19,7 +19,7 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (A : StableCategory.{u})
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
   (hΦ : IsLocalizingInvariant Φ)
 
 def difference : Binary.obj (value Φ A) (value Φ A) ⟶ value Φ A :=
@@ -62,8 +62,8 @@ lemma difference_diagonal (j : ℤ) (a : valueHomotopyGroup Φ A j) :
 end IdentityLax
 
 namespace IsLocalizingInvariant
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  (A : StableCategory.{u})
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 include hΦ in
 lemma suspension_pi_inv (j : ℤ) (a : valueHomotopyGroup Φ A j) :

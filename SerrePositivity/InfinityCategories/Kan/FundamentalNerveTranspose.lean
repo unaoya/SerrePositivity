@@ -35,41 +35,41 @@ def fundamentalNerveUntranspose {A : SSet.{u}} {C : Type u} [Category.{u} C]
 /-- nerve の転置を戻すと元の関手を厳密に回収する。 -/
 lemma fundamentalNerveUntranspose_transpose {A : SSet.{u}} {C : Type u} [Category.{u} C]
     (F : hoFunctor.obj A ⥤ C) :
-    fundamentalNerveUntranspose (fundamentalNerveTranspose F) = F :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose F) = F :=
   congrArg Cat.Hom.toFunctor ((nerveAdjunction.homEquiv A (Cat.of C)).symm_apply_apply _)
 
 /-- 戻した関手を転置すると元の nerve 値写像を厳密に回収する。 -/
 lemma fundamentalNerveTranspose_untranspose {A : SSet.{u}} {C : Type u} [Category.{u} C]
     (f : A ⟶ nerve C) :
-    fundamentalNerveTranspose (fundamentalNerveUntranspose f) = f :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose f) = f :=
   (nerveAdjunction.homEquiv A (Cat.of C)).apply_symm_apply _
 
 /-- 転置は単体集合側の前合成を保つ。 -/
 lemma fundamentalNerveTranspose_pre {A B : SSet.{u}} {C : Type u} [Category.{u} C]
     (i : A ⟶ B) (F : hoFunctor.obj B ⥤ C) :
-    fundamentalNerveTranspose ((hoFunctor.map i).toFunctor ⋙ F) =
-      i ≫ fundamentalNerveTranspose F :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose ((hoFunctor.map i).toFunctor ⋙ F) =
+      i ≫ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose F :=
   nerveAdjunction.homEquiv_naturality_left i (F.toCatHom)
 
 /-- 戻す操作は単体集合側の前合成を保つ。 -/
 lemma fundamentalNerveUntranspose_pre {A B : SSet.{u}} {C : Type u} [Category.{u} C]
     (i : A ⟶ B) (f : B ⟶ nerve C) :
-    fundamentalNerveUntranspose (i ≫ f) =
-      (hoFunctor.map i).toFunctor ⋙ fundamentalNerveUntranspose f :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (i ≫ f) =
+      (hoFunctor.map i).toFunctor ⋙ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose f :=
   congrArg Cat.Hom.toFunctor (nerveAdjunction.homEquiv_naturality_left_symm (Y := Cat.of C) i f)
 
 /-- 転置は圏側の後合成を保つ。 -/
 lemma fundamentalNerveTranspose_post {A : SSet.{u}} {C D : Type u}
     [Category.{u} C] [Category.{u} D] (F : hoFunctor.obj A ⥤ C) (G : C ⥤ D) :
-    fundamentalNerveTranspose (F ⋙ G) =
-      fundamentalNerveTranspose F ≫ nerveFunctor.map (G.toCatHom) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose (F ⋙ G) =
+      _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose F ≫ nerveFunctor.map (G.toCatHom) :=
   nerveAdjunction.homEquiv_naturality_right (F.toCatHom) (G.toCatHom)
 
 /-- 戻す操作は圏側の後合成を保つ。 -/
 lemma fundamentalNerveUntranspose_post {A : SSet.{u}} {C D : Type u}
     [Category.{u} C] [Category.{u} D] (f : A ⟶ nerve C) (G : C ⥤ D) :
-    fundamentalNerveUntranspose (f ≫ nerveFunctor.map (G.toCatHom)) =
-      fundamentalNerveUntranspose f ⋙ G :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (f ≫ nerveFunctor.map (G.toCatHom)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose f ⋙ G :=
   congrArg Cat.Hom.toFunctor
     (nerveAdjunction.homEquiv_naturality_right_symm (Y := Cat.of C) (Y' := Cat.of D) f (G.toCatHom))
 

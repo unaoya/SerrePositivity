@@ -25,63 +25,63 @@ noncomputable section
 使われ方：mapping path の標的射影の相対比較の fibration 性。 -/
 lemma relativeFreePath_boundaryHornLift {Y Z : PointedSimplicialSet.{u}}
     (p : Y ⟶ Z) [Fibration p.right] {T U : SSet.{u}} (j : T ⟶ U) (hj : J j)
-    (a : T ⟶ (freePathSpace Y).right) (b₀ b₁ : U ⟶ Y.right)
-    (c : U ⟶ (freePathSpace Z).right)
-    (hc₀ : j ≫ b₀ = a ≫ (freePathEndpoint Y 0).right)
-    (hc₁ : j ≫ b₁ = a ≫ (freePathEndpoint Y 1).right)
-    (he : a ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = j ≫ c)
-    (ha₀ : b₀ ≫ p.right = c ≫ (freePathEndpoint Z 0).right)
-    (ha₁ : b₁ ≫ p.right = c ≫ (freePathEndpoint Z 1).right) :
-    ∃ l : U ⟶ (freePathSpace Y).right,
-      j ≫ l = a ∧ l ≫ (freePathEndpoint Y 0).right = b₀ ∧
-        l ≫ (freePathEndpoint Y 1).right = b₁ ∧
-          l ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = c := by
-  let eY := freeBoundaryEvaluationIso Y
-  let eZ := freeBoundaryEvaluationIso Z
+    (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right) (b₀ b₁ : U ⟶ Y.right)
+    (c : U ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Z).right)
+    (hc₀ : j ≫ b₀ = a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0).right)
+    (hc₁ : j ≫ b₁ = a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right)
+    (he : a ≫ (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} p).right = j ≫ c)
+    (ha₀ : b₀ ≫ p.right = c ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Z 0).right)
+    (ha₁ : b₁ ≫ p.right = c ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Z 1).right) :
+    ∃ l : U ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right,
+      j ≫ l = a ∧ l ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0).right = b₀ ∧
+        l ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right = b₁ ∧
+          l ≫ (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} p).right = c := by
+  let eY := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y
+  let eZ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Z
   let b := prod.lift b₀ b₁ ≫ eY.inv
-  have hnEnd : (PointedObject.basedHomMap freeIntervalBoundary.{u} p).right ≫
-      (freeBoundaryHomEnd Z).right = (freeBoundaryHomEnd Y).right ≫ p.right := by
-    have h : PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomEnd Z =
-        freeBoundaryHomEnd Y ≫ p := by
+  have hnEnd : (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p).right ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Z).right = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y).right ≫ p.right := by
+    have h : PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Z =
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y ≫ p := by
       simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
-      change (ihom freeIntervalBoundary.{u}).map p ≫
-        (MonoidalClosed.pre freeBoundaryEnd.{u}).app Z ≫
+      change (ihom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u}).map p ≫
+        (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u}).app Z ≫
           (unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z = _
       rw [← Category.assoc, (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u}).naturality p,
         Category.assoc, (unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality p,
         ← Category.assoc]
       rfl
     exact congrArg Under.Hom.right h
-  have hnStart : (PointedObject.basedHomMap freeIntervalBoundary.{u} p).right ≫
-      (freeBoundaryHomStart Z).right = (freeBoundaryHomStart Y).right ≫ p.right := by
-    have h : PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomStart Z =
-        freeBoundaryHomStart Y ≫ p := by
+  have hnStart : (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p).right ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Z).right = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y).right ≫ p.right := by
+    have h : PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Z =
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y ≫ p := by
       simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
-      change (ihom freeIntervalBoundary.{u}).map p ≫
-        (MonoidalClosed.pre freeBoundaryStart.{u}).app Z ≫
+      change (ihom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u}).map p ≫
+        (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u}).app Z ≫
           (unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z = _
       rw [← Category.assoc, (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u}).naturality p,
         Category.assoc, (unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality p,
         ← Category.assoc]
       rfl
     exact congrArg Under.Hom.right h
-  have hb₀ : b ≫ (freeBoundaryHomEnd Y).right = b₀ := by
+  have hb₀ : b ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y).right = b₀ := by
     rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst, ← Category.assoc]
     simp only [b, eY, Category.assoc, Iso.inv_hom_id_assoc, prod.lift_fst]
-  have hb₁ : b ≫ (freeBoundaryHomStart Y).right = b₁ := by
+  have hb₁ : b ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y).right = b₁ := by
     rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd, ← Category.assoc]
     simp only [b, eY, Category.assoc, Iso.inv_hom_id_assoc, prod.lift_snd]
   have hrEnd (V : PointedSimplicialSet.{u}) :
-      PointedMapping.pre freeBoundaryInclusion.{u} V ≫ (freeBoundaryHomEnd V).right =
-        (freePathEndpoint V 0).right := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} V ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd V).right =
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint V 0).right := by
     simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst] using
-      freePathEndpoints_fst V
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fst V
   have hrStart (V : PointedSimplicialSet.{u}) :
-      PointedMapping.pre freeBoundaryInclusion.{u} V ≫ (freeBoundaryHomStart V).right =
-        (freePathEndpoint V 1).right := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} V ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart V).right =
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint V 1).right := by
     simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd] using
-      freePathEndpoints_snd V
-  have hc : j ≫ b = a ≫ PointedMapping.pre freeBoundaryInclusion.{u} Y := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_snd V
+  have hc : j ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y := by
     apply (cancel_mono eY.hom).mp
     apply prod.hom_ext
     · simp only [eY, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst, hrEnd]
@@ -90,8 +90,8 @@ lemma relativeFreePath_boundaryHornLift {Y Z : PointedSimplicialSet.{u}}
     · simp only [eY, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd, hrStart]
       rw [hb₁]
       exact hc₁
-  have ha : b ≫ (PointedObject.basedHomMap freeIntervalBoundary.{u} p).right =
-      c ≫ PointedMapping.pre freeBoundaryInclusion.{u} Z := by
+  have ha : b ≫ (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p).right =
+      c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Z := by
     apply (cancel_mono eZ.hom).mp
     apply prod.hom_ext
     · simp only [eZ, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst, hnEnd, hrEnd]
@@ -101,7 +101,7 @@ lemma relativeFreePath_boundaryHornLift {Y Z : PointedSimplicialSet.{u}}
       rw [← Category.assoc, hb₁]
       exact ha₁
   obtain ⟨l, hl, hpre, hp⟩ := relativePointedHom_hornLift
-    freeBoundaryInclusion.{u} p j hj a b c hc he ha
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} p j hj a b c hc he ha
   refine ⟨l, hl, ?_, ?_, hp⟩
   · rw [← hrEnd Y, ← Category.assoc, hpre]
     exact hb₀

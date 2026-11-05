@@ -19,7 +19,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromC_laxArrow_target_zero (x : C.obj _⦋0⦌) :
     IsZeroTargetArrow (((LaxInclusion.fromC p q) ≫ F2.laxPullbackArrow p.hom q.hom).app
@@ -29,7 +29,7 @@ lemma fromC_laxArrow_target_zero (x : C.obj _⦋0⦌) :
   rw [Category.assoc, F2.laxPullbackArrow_target, ← Category.assoc]
   change IsZeroVertex (((LaxInclusion.fromC p q ≫ (laxSnd p q).hom) ≫ q.hom).app _ x)
   rw [LaxInclusion.fromC_snd]
-  exact LaxInclusion.zeroD_post q x
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD_post q x
 
 lemma fromC_laxArrow_source :
     ((LaxInclusion.fromC p q) ≫ F2.laxPullbackArrow p.hom q.hom) ≫
@@ -39,10 +39,10 @@ lemma fromC_laxArrow_source :
   rw [LaxInclusion.fromC_fst, Category.id_comp]
 
 def fromC_differenceIso : FunctorIso (LaxInclusion.fromC p q ≫ laxDifference p q)
-    (p.hom ≫ SuspensionExact.map E.obj) := by
+    (p.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map E.obj) := by
   let a := F2.laxPullbackArrow p.hom q.hom
   have h : FunctorIso (LaxInclusion.fromC p q ≫ laxDifference p q)
-      ((LaxInclusion.fromC p q ≫ a) ≫ CofiberFamily.cofiber E.obj (𝟙 _)) := by
+      ((LaxInclusion.fromC p q ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj (𝟙 _)) := by
     simpa only [laxDifference, Category.assoc] using
       FunctorIso.precomp (CofiberFamily.compositionIso E.obj a) (LaxInclusion.fromC p q)
   have e := (CofiberFamily.compositionIso E.obj (LaxInclusion.fromC p q ≫ a)).symm ≪≫

@@ -125,7 +125,7 @@ lemma exists_verdierCompletedSpanCoconeRecovery
     whole_apex := hz }⟩
 
 namespace VerdierCompletedSpanCoconeRecovery
-open SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeRecovery
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery
 variable {D} {d : VerdierCompletedSpanBoundaryRecovery h
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
         z j f H}

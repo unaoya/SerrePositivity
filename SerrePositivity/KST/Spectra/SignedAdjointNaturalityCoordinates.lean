@@ -36,7 +36,7 @@ lemma secondPath_path {A Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     (secondPath f g).path = ((reversalTwice Z).path ≫
-      (PointedMapping.prePointed (input f g) (doubleLoop Z)).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (doubleLoop Z)).right) ≫
         (PointedObject.basedHomMap A (projection Z)).right := rfl
 
 /-- 第二辺の後合成は、同じ標的二重反転区間への移した入力の制限そのもの。 -/
@@ -48,7 +48,7 @@ lemma secondPath_post_path {A Y Z Z' : PointedSimplicialSet.{u}}
       (((reversalTwice Z').pre (input f g ≫ doublePost v)).basedPost (projection Z')).path := by
   change (secondPath f g).path ≫ (PointedObject.basedHomMap A (targetPost v)).right =
     ((reversalTwice Z').path ≫
-      (PointedMapping.prePointed (input f g ≫ doublePost v) (doubleLoop Z')).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g ≫ doublePost v) (doubleLoop Z')).right) ≫
         (PointedObject.basedHomMap A (projection Z')).right
   rw [secondPath_path]
   exact PointedMapping.VerticalPath.projectedNaturality_map (reversalTwice Z).path
@@ -61,25 +61,25 @@ lemma secondPath_pre_path {A A' Y Z : PointedSimplicialSet.{u}} [KanComplex Z.ri
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) (j : A ⟶ A') :
     ((secondPath f g).pre j).path =
       (((reversalTwice Z).pre (j ≫ input f g)).basedPost (projection Z)).path := by
-  change (secondPath f g).path ≫ (PointedMapping.prePointed j (target Z)).right =
+  change (secondPath f g).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (target Z)).right =
     ((reversalTwice Z).path ≫
-      (PointedMapping.prePointed (j ≫ input f g) (doubleLoop Z)).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (j ≫ input f g) (doubleLoop Z)).right) ≫
         (PointedObject.basedHomMap A (projection Z)).right
   rw [secondPath_path]
   have hn := (MonoidalClosed.pre j).naturality (projection Z)
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change PointedObject.basedHomMap A' (projection Z) ≫
-    PointedMapping.prePointed j (target Z) =
-      PointedMapping.prePointed j (doubleLoop Z) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (target Z) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (doubleLoop Z) ≫
         PointedObject.basedHomMap A (projection Z) at hn
   have ht := congrArg (fun q => (reversalTwice Z).path ≫
-    (PointedMapping.prePointed (input f g) (doubleLoop Z)).right ≫ q.right) hn
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (doubleLoop Z)).right ≫ q.right) hn
   simp only [Under.comp_right] at ht
   simp only [Category.assoc]
   rw [ht]
   have hc := congrArg (fun q => (reversalTwice Z).path ≫ q.right ≫
     (PointedObject.basedHomMap A (projection Z)).right)
-    (PointedMapping.prePointed_comp j (input f g) (doubleLoop Z))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp j (input f g) (doubleLoop Z))
   simpa only [Under.comp_right, Category.assoc] using hc
 
 end SerrePositivity.KST.Spectra.SignedAdjointPaths

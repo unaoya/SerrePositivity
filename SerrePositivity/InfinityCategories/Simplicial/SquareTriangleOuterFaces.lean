@@ -31,7 +31,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：頂点の組は (t,1)。
 使われ方：Goerss–Jardine I §7。正方形の境界固定条件。 -/
 @[reassoc (attr := simp)]
-theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ upper.{u} =
+theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (0 : Fin 2).castSucc ≫ stdSimplex.σ (0 : Fin 2) = 𝟙 _
@@ -45,7 +45,7 @@ theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ upper.{u} =
 規約：頂点の組は (0,t)。
 使われ方：Goerss–Jardine I §7。正方形の境界固定条件。 -/
 @[reassoc (attr := simp)]
-theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ upper.{u} =
+theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (1 : Fin 2).succ ≫ stdSimplex.σ (0 : Fin 1).castSucc = _
@@ -59,9 +59,9 @@ theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ upper.{u} =
 規約：頂点の組は (1,t)。
 使われ方：Goerss–Jardine I §7。正方形のもう二つの境界の固定条件。 -/
 @[reassoc (attr := simp)]
-theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ lower.{u} =
+theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
-  rw [← upper_swap, ← Category.assoc, upper_face_zero]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero]
   rfl
 
 /-- 概要：下側の三角形の最後の面は正方形の下辺。
@@ -69,9 +69,9 @@ theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ lower.{u} =
 規約：頂点の組は (t,0)。
 使われ方：Goerss–Jardine I §7。対角辺以外の全ての辺の固定条件。 -/
 @[reassoc (attr := simp)]
-theorem lower_face_last : stdSimplex.δ (2 : Fin 3) ≫ lower.{u} =
+theorem lower_face_last : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [← upper_swap, ← Category.assoc, upper_face_last]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last]
   rfl
 
 end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles

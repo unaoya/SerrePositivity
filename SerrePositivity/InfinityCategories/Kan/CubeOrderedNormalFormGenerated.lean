@@ -17,45 +17,45 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 任意の順序分離した表示を圧縮すると、全入力を尽くす support 分割となる。 -/
-theorem cubeOrderedNormalFormCompressedPartition {n m : ℕ} (s : CubeJoinNormalForm n m)
+theorem cubeOrderedNormalFormCompressedPartition {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (h : ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
-      i ∈ cubeJoinNormalFormSupport s j → l ∈ cubeJoinNormalFormSupport s k → i < l) :
-    CubeSupportPartition (cubeNormalFormCompressed s) where
-  ordered := by
+      i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s k → i < l) :
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed s) where
+  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.ordered := by
     intro j k hjk i l hi hl
-    apply (cubeNormalFormInputEmbedding s).strictMono.lt_iff_lt.mp
-    exact h hjk ((mem_cubeJoinNormalFormRestrict_support s _ i j).mp hi)
-      ((mem_cubeJoinNormalFormRestrict_support s _ l k).mp hl)
-  covers := cubeNormalFormCompressed_no_unused s
+    apply (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).strictMono.lt_iff_lt.mp
+    exact h hjk ((_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormRestrict_support s _ i j).mp hi)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormRestrict_support s _ l k).mp hl)
+  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.covers := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_no_unused s
 
 /-- 任意の順序分離した有限 max 表示を持つ元の具体的な cubical 射。 -/
-def cubeOrderedNormalFormHom {n m : ℕ} (s : CubeJoinNormalForm n m)
+def cubeOrderedNormalFormHom {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (h : ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
-      i ∈ cubeJoinNormalFormSupport s j → l ∈ cubeJoinNormalFormSupport s k → i < l) :
-    ConcreteCube.mk n ⟶ ConcreteCube.mk m :=
-  cubeNormalFormInputSelection s ≫ cubeSupportMax (cubeOrderedNormalFormCompressedPartition s h) ≫
-    cubeSupportOutputCompletion (cubeNormalFormCompressed s)
+      i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s k → i < l) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSelection s ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormCompressedPartition s h) ≫
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed s)
 
 /-- 元の削除・ブロック max・定数面の合成は同じ表示の全頂点評価を回収する。 -/
-lemma cubeOrderedNormalFormHom_eval {n m : ℕ} (s : CubeJoinNormalForm n m)
+lemma cubeOrderedNormalFormHom_eval {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (h : ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
-      i ∈ cubeJoinNormalFormSupport s j → l ∈ cubeJoinNormalFormSupport s k → i < l)
-    (x : CubeVertex n) : (cubeOrderedNormalFormHom s h).val x = cubeJoinNormalFormEval s x := by
-  change (cubeSupportOutputCompletion (cubeNormalFormCompressed s)).val
-    ((cubeSupportMax (cubeOrderedNormalFormCompressedPartition s h)).val
-      (cubeCoordinateSelect (cubeNormalFormInputEmbedding s) x)) = _
-  rw [cubeSupportMax_completion_eval]
-  exact cubeNormalFormCompressed_eval s x
+      i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s k → i < l)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom s h).val x = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x := by
+  change (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed s)).val
+    ((_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormCompressedPartition s h)).val
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s) x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax_completion_eval]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_eval s x
 
 /-- 順序分離した有限 max 表示の評価は、元の cubical 生成射から生成される。 -/
-lemma cubeOrderedNormalForm_generated {n m : ℕ} (s : CubeJoinNormalForm n m)
+lemma cubeOrderedNormalForm_generated {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (h : ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
-      i ∈ cubeJoinNormalFormSupport s j → l ∈ cubeJoinNormalFormSupport s k → i < l) :
-    CubeMapGenerated (cubeJoinNormalFormEval s) := by
-  have he : (cubeOrderedNormalFormHom s h).val = cubeJoinNormalFormEval s :=
-    funext (cubeOrderedNormalFormHom_eval s h)
+      i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s k → i < l) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s) := by
+  have he : (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom s h).val = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s :=
+    funext (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom_eval s h)
   rw [← he]
-  exact (cubeOrderedNormalFormHom s h).property
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom s h).property
 
 end SerrePositivity.InfinityCategories.Kan
 

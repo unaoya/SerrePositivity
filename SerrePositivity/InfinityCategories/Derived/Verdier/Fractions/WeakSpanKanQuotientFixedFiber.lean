@@ -24,57 +24,57 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
 
 /-- 概要：元の実全族写像の、元の両端固定 span 全体への実 fiber 制限。
 方針：厳密な q 保存と元の終点計算で同じ商 fiber へ持ち上げる。
 規約：底の終点は文字通り q(y)。零単体の端点表示に依存しない。
 使われ方：K-B-S の元の全族写像に要求する全 fiber 比較の左辺。 -/
 def weakSpanKanQuotientFamilyFixedFiber :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
-      vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
+      vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
   vertexFiberLift _ _
-    (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫ weakSpanKanQuotientFamilyMap h x)
+    (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫ weakSpanKanQuotientFamilyMap h x)
     (by rw [Category.assoc, weakSpanKanQuotientFamilyMap_projection,
-      ← Category.assoc, weakSpanFixedFamily_projection, SSet.const_comp])
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection, SSet.const_comp])
 
 /-- 概要：同じ元の単位の零単体上の制限を、同じ商の実 fiber へ送る。
 方針：元の零単体持ち上げ・実単位・指定商比較を合成する。
 規約：同じ Ind-S の単位を使い、対象別に選び直さない。
 使われ方：降下した全族写像の固定 fiber と比較する指定単位。 -/
 def weakSpanKanQuotientZeroSimplexFixedFiber :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
-      vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
+      vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
   vertexFiberLift _ _
-    (weakSpanFixedZeroSimplexLift i x y ≫
-      weakSpanKanQuotientSimplexFamilyMap h x (weakSpanKanUnstraighteningUnit i x)) (by
-      rw [Category.assoc, weakSpanKanQuotientSimplexFamilyMap_projection h x _
-        (weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc]
-      change (weakSpanFixedZeroSimplexLift i x y ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift i x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap h x (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)) (by
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap_projection h x _
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc]
+      change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift i x y ≫
         pullback.snd _ _) ≫ _ = _
-      rw [weakSpanFixedZeroSimplexLift, pullback.lift_snd, ← Category.assoc, SSet.const_comp,
-        transportSimplexFirstVertexMap_zeroIndex, SSet.const_comp])
+      rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift, pullback.lift_snd, ← Category.assoc, SSet.const_comp,
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex, SSet.const_comp])
 
 /-- 概要：元の固定 span の比較 prism を、同じ商の元の fiber 内へ送る。
 方針：全時刻で底に定値な元の prism を実単位と指定商比較に合成する。
 規約：全パラメータで q(y) を固定する。
 使われ方：全 fiber 関手同型の元になる同じ実 prism。 -/
 def weakSpanKanQuotientFixedFiberPrism :
-    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (weakEquivalences i) x y)) ⊗
+    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ⊗
       Δ[1] ⟶
-      vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+      vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
   vertexFiberLift _ _
-    (weakSpanFixedSimplexFamilyPrism i x y ≫
-      weakSpanKanQuotientSimplexFamilyMap h x (weakSpanKanUnstraighteningUnit i x)) (by
-      rw [Category.assoc, weakSpanKanQuotientSimplexFamilyMap_projection h x _
-        (weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc]
-      change (weakSpanFixedSimplexFamilyPrism i x y ≫ pullback.snd _ _) ≫ _ = _
-      rw [weakSpanFixedSimplexFamilyPrism, pullback.lift_snd, ← Category.assoc,
-        weakSpanFixedSimplexCollapse_base, SSet.const_comp])
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism i x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap h x (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)) (by
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap_projection h x _
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc]
+      change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism i x y ≫ pullback.snd _ _) ≫ _ = _
+      rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism, pullback.lift_snd, ← Category.assoc,
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse_base, SSet.const_comp])
 
 
 /-- 概要：元の固定 span の単体圏で、指定相対降下が回収する制限を同じ商 fiber に読む。
@@ -82,19 +82,19 @@ def weakSpanKanQuotientFixedFiberPrism :
 規約：元の全族の初頂点自然性で底を厳密に固定する。
 使われ方：実 prism の終端と相対制限同型の共通の標的。 -/
 def weakSpanKanQuotientResolutionFixedFiber :
-    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (weakEquivalences i) x y)) ⟶
-      vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ⟶
+      vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
   vertexFiberLift _ _
-    (nerveMap (transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)) ≫
-      weakSpanKanQuotientTotalSimplexMap h x (weakSpanKanUnstraighteningUnit i x)) (by
-        rw [Category.assoc, weakSpanKanQuotientTotalSimplexMap_projection h x _
-          (weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc,
+    (nerveMap (transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)) (by
+        rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x _
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc,
           ← Category.assoc, transportSimplexFirstVertexMap_naturality,
           Category.assoc, Category.assoc,
           ← Category.assoc (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
-            (markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
-          weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const])
+            (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const])
 
 /-- 概要：元の固定 span の全単体上で、同じ実単位と相対降下の指定制限を比較する。
 方針：元の底を全時刻固定した実 prism の両端を回収する。
@@ -102,23 +102,23 @@ def weakSpanKanQuotientResolutionFixedFiber :
 使われ方：元の全 fiber 制限へ戻すための同じ関手同型。 -/
 def weakSpanKanQuotientFixedFiberHomotopy :
     SSet.Homotopy
-      (transportSimplexFirstVertexMap _ ≫ weakSpanKanQuotientZeroSimplexFixedFiber h x y)
-      (weakSpanKanQuotientResolutionFixedFiber h x y) where
-  h := weakSpanKanQuotientFixedFiberPrism h x y
+      (transportSimplexFirstVertexMap _ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroSimplexFixedFiber h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientResolutionFixedFiber h x y) where
+  h := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberPrism h x y
   h₀ := by
-    change SSet.ι₀ ≫ weakSpanKanQuotientFixedFiberPrism h x y =
-      transportSimplexFirstVertexMap _ ≫ weakSpanKanQuotientZeroSimplexFixedFiber h x y
+    change SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberPrism h x y =
+      transportSimplexFirstVertexMap _ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroSimplexFixedFiber h x y
     apply vertexFiber_hom_ext
-    simp only [Category.assoc, weakSpanKanQuotientFixedFiberPrism,
-      weakSpanKanQuotientZeroSimplexFixedFiber, vertexFiberLift_ι]
-    rw [← Category.assoc, weakSpanFixedSimplexFamilyPrism_zero, Category.assoc]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroSimplexFixedFiber, vertexFiberLift_ι]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_zero, Category.assoc]
   h₁ := by
-    change SSet.ι₁ ≫ weakSpanKanQuotientFixedFiberPrism h x y =
-      weakSpanKanQuotientResolutionFixedFiber h x y
+    change SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberPrism h x y =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientResolutionFixedFiber h x y
     apply vertexFiber_hom_ext
-    simp only [Category.assoc, weakSpanKanQuotientFixedFiberPrism,
-      weakSpanKanQuotientResolutionFixedFiber, vertexFiberLift_ι]
-    rw [← Category.assoc, weakSpanFixedSimplexFamilyPrism_one, Category.assoc]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientResolutionFixedFiber, vertexFiberLift_ι]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_one, Category.assoc]
     rfl
   rel := by
     apply SSet.hom_ext
@@ -134,48 +134,48 @@ def weakSpanKanQuotientFixedFiberHomotopy :
 使われ方：元の全 fiber に同じ実単位を戻す比較。 -/
 def weakSpanKanQuotientFamilyFixedFiberRestrictionIso :
     FunctorIso
-      (transportSimplexFirstVertexMap _ ≫ weakSpanKanQuotientFamilyFixedFiber h x y)
-      (weakSpanKanQuotientResolutionFixedFiber h x y) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
-  let r := transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x)
-  let rS := transportSimplexFirstVertexMap (fixedMarkedSpans B.obj (weakEquivalences i) x y)
-  let j := fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y
+      (transportSimplexFirstVertexMap _ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientResolutionFixedFiber h x y) := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
+  let r := transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
+  let rS := transportSimplexFirstVertexMap (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+  let j := fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y
   let J := nerveMap (transportSimplexFunctor j)
-  let b := r ≫ markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+  let b := r ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom
   let z := q.hom.app (Opposite.op ⦋0⦌) y
   have hJ : J ≫ r = rS ≫ j := transportSimplexFirstVertexMap_naturality j
   have hb : J ≫ b = SSet.const z := by
-    change J ≫ r ≫ markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
+    change J ≫ r ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom = _
     rw [← Category.assoc, ← Category.assoc, hJ, Category.assoc, Category.assoc,
-      ← Category.assoc j (markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
-      weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const]
+      ← Category.assoc j (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const]
   let jOver : Over.mk (SSet.const z : nerve (TransportSimplexCategory
-      (fixedMarkedSpans B.obj (weakEquivalences i) x y)) ⟶ C.obj) ⟶ Over.mk b :=
+      (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ⟶ C.obj) ⟶ Over.mk b :=
     Over.homMk J hb
   let vL := relativeFunctorVertex p b (r ≫ weakSpanKanQuotientFamilyMap h x)
     (by dsimp only [p, b]; rw [Category.assoc, weakSpanKanQuotientFamilyMap_projection])
   let vR := relativeFunctorVertex p b
-    (weakSpanKanQuotientTotalSimplexMap h x (weakSpanKanUnstraighteningUnit i x))
-    (weakSpanKanQuotientTotalSimplexMap_projection h x _
-      (weakSpanKanUnstraighteningUnit_projection i x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x _
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x))
   have e : VertexIso vL vR := weakSpanKanQuotientFamilyMapRestrictionIso h x
   have e' := e.map (relativeFunctorOverPre p jOver)
   have hL : (relativeFunctorOverPre p jOver).app (Opposite.op ⦋0⦌) vL =
       relativeFunctorVertex p (SSet.const z)
-        ((rS ≫ weakSpanKanQuotientFamilyFixedFiber h x y) ≫ vertexFiberι p z)
+        ((rS ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber h x y) ≫ vertexFiberι p z)
         (by rw [Category.assoc, vertexFiberι_comp, SSet.comp_const]) := by
     dsimp only [vL]
     erw [relativeFunctorOverPre_vertex]
     apply Subtype.ext
     change functorVertex (J ≫ r ≫ weakSpanKanQuotientFamilyMap h x) = _
     apply congrArg functorVertex
-    simp only [Category.assoc, weakSpanKanQuotientFamilyFixedFiber, vertexFiberLift_ι]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber, vertexFiberLift_ι]
     rw [← Category.assoc, hJ, Category.assoc]
     dsimp only [p, z, j]
     rw [vertexFiberLift_ι]
   have hR : (relativeFunctorOverPre p jOver).app (Opposite.op ⦋0⦌) vR =
       relativeFunctorVertex p (SSet.const z)
-        (weakSpanKanQuotientResolutionFixedFiber h x y ≫ vertexFiberι p z)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientResolutionFixedFiber h x y ≫ vertexFiberι p z)
         (by rw [Category.assoc, vertexFiberι_comp, SSet.comp_const]) := by
     dsimp only [vR]
     erw [relativeFunctorOverPre_vertex]
@@ -192,16 +192,16 @@ def weakSpanKanQuotientFamilyFixedFiberRestrictionIso :
 規約：元の全 fiber を一度に回収し、各点別の比較に弱めない。
 使われ方：K-B-S の元の Kan 単位と既存指定恒等点への正規化。 -/
 def weakSpanKanQuotientFamilyFixedFiberIso :
-    FunctorIso (weakSpanKanQuotientFamilyFixedFiber h x y)
-      (weakSpanKanQuotientZeroSimplexFixedFiber h x y) := by
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroSimplexFixedFiber h x y) := by
   letI := vertexFiber_kanComplex_of_leftFibration
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
     (q.hom.app (Opposite.op ⦋0⦌) y)
-  have e := weakSpanKanQuotientFamilyFixedFiberRestrictionIso h x y ≪≫
-    (functorIsoOfSimplicialHomotopy (weakSpanKanQuotientFixedFiberHomotopy h x y)).symm
+  have e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiberRestrictionIso h x y ≪≫
+    (functorIsoOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFixedFiberHomotopy h x y)).symm
   exact (localization_pre_isFullyFaithful
     (transportSimplexFirstVertexMap_isLocalization
-      (fixedMarkedSpans B.obj (weakEquivalences i) x y)) _).preimageVertexIso e
+      (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) _).preimageVertexIso e
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

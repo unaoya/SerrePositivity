@@ -39,14 +39,14 @@ lemma markedSpan_target_of_boundary_diagram {A X : SSet.{u}} (W : Set (X _⦋1�
   simpa only [Category.assoc, markedSpanBoundary_target, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_target] using hh
 
 def markedSpanFamilyApex (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) :
-    markedSpanFamily X W x ⟶ X := vertexFiberι (markedSpanSource X W) x ≫ markedSpanApex X W
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ X := vertexFiberι (markedSpanSource X W) x ≫ markedSpanApex X W
 
 lemma hasCocartesianHornLifting_markedSpanFamilyProjection_of_apex
     {X : SSet.{u}} [Quasicategory X] (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
-    {f g : (markedSpanFamily X W x) _⦋0⦌}
-    (e : Truncated.Edge (X := (truncation 2).obj (markedSpanFamily X W x)) f g)
+    {f g : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) _⦋0⦌}
+    (e : Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x)) f g)
     (he : IsInvertibleEdge (e.map ((truncation 2).map (markedSpanFamilyApex X W x)))) :
-    HasCocartesianHornLifting (markedSpanFamilyProjection X W x) e := by
+    HasCocartesianHornLifting (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) e := by
   let r := vertexFiberι (markedSpanSource X W) x
   let e' := e.map ((truncation 2).map r)
   have he' : IsInvertibleEdge (e'.map ((truncation 2).map (markedSpanApex X W))) :=
@@ -76,10 +76,10 @@ lemma hasCocartesianHornLifting_markedSpanFamilyProjection_of_apex
 
 lemma isCocartesianEdge_markedSpanFamilyProjection_of_apex
     {X : SSet.{u}} [Quasicategory X] (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
-    (e : (markedSpanFamily X W x) _⦋1⦌)
+    (e : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) _⦋1⦌)
     (he : IsInvertibleEdge ((edgeOfSimplex e).map
       ((truncation 2).map (markedSpanFamilyApex X W x)))) :
-    IsCocartesianEdge (markedSpanFamilyProjection X W x) e := by
+    IsCocartesianEdge (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) e := by
   intro n a b ha sq
   obtain ⟨F, hF, hFp⟩ := hasCocartesianHornLifting_markedSpanFamilyProjection_of_apex W x
     (edgeOfSimplex e) he n a b ha sq.w

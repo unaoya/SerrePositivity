@@ -99,7 +99,7 @@ lemma intervalHomBoundaryEvaluationIso_hom_snd (Y : SSet.{u}) :
 規約：第一成分は頂点一、第二成分は頂点零。
 使われ方：任意の Kan 複体間の比較射の path 置換のホーン充填。 -/
 def intervalHomEndpoints (Y : SSet.{u}) : (ihom (Δ[1] : SSet.{u})).obj Y ⟶ Y ⨯ Y :=
-  (MonoidalClosed.pre intervalEndpoint.{u}.right).app Y ≫ (intervalHomBoundaryEvaluationIso Y).hom
+  (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right).app Y ≫ (intervalHomBoundaryEvaluationIso Y).hom
 
 /-- 概要：Kan 複体を標的とする両端点評価は Kan fibration。
 方針：単射な二端点包含への内部 Hom の制限と同型を合成する。

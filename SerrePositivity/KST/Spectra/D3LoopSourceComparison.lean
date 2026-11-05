@@ -121,7 +121,7 @@ lemma loopSourceComparisonFiber_isContractibleKan (X : OmegaSpectrum.{u}) :
 
 /-- 実比較 c_X は各段で元の全基点 π 同型。 -/
 lemma loopSourceComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((loopSourceComparison X).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceComparison X).app n).right := by
   apply (loopSourceInclusion_levelwise X n).cancel_left_atVertex
     (x := PointedSimplicialSet.basepoint (X.level n).space)
   rw [← Under.comp_right, loopSourceComparison_left]

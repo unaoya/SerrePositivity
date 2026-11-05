@@ -12,10 +12,10 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeShape
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の長さと joints の等号から、証明成分を含む形の等号を得る。 -/
-@[ext] theorem shape_ext {T U : NecklaceShape} (hn : T.vertexMax = U.vertexMax)
+@[ext] theorem shape_ext {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} (hn : T.vertexMax = U.vertexMax)
     (hj : T.joints = U.joints) : T = U := by
   cases T
   cases U
@@ -24,11 +24,11 @@ open SerrePositivity.KST.SConstruction.NecklaceShape
   rfl
 
 /-- 長さ零の元の necklace は一点の形そのもの。 -/
-lemma eq_single_zero (T : NecklaceShape) (h : T.vertexMax = 0) : T = single 0 := by
-  apply shape_ext h
+lemma eq_single_zero (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (h : T.vertexMax = 0) : T = _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0 := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.shape_ext h
   apply Finset.ext
   intro j
-  simp only [single, Finset.mem_insert, Finset.mem_singleton, or_self]
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, or_self]
   constructor
   · intro hj
     have := T.mem_le j hj
@@ -37,11 +37,11 @@ lemma eq_single_zero (T : NecklaceShape) (h : T.vertexMax = 0) : T = single 0 :=
     exact T.zero_mem
 
 /-- 元の一点を左に貼っても、同じ全頂点と joints の形を回収する。 -/
-lemma single_zero_wedge (T : NecklaceShape) : (single 0).wedge T = T := by
-  apply shape_ext (Nat.zero_add _)
+lemma single_zero_wedge (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0).wedge T = T := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.shape_ext (Nat.zero_add _)
   apply Finset.ext
   intro j
-  simp only [wedge, single, Finset.mem_union, Finset.mem_insert, Finset.mem_singleton,
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_union, Finset.mem_insert, Finset.mem_singleton,
     Nat.zero_add, Finset.mem_image, or_self]
   constructor
   · rintro (rfl | ⟨k, hk, rfl⟩)
@@ -51,11 +51,11 @@ lemma single_zero_wedge (T : NecklaceShape) : (single 0).wedge T = T := by
     exact Or.inr ⟨j, hj, rfl⟩
 
 /-- 元の一点を右に貼っても、同じ全頂点と joints の形を回収する。 -/
-lemma wedge_single_zero (T : NecklaceShape) : T.wedge (single 0) = T := by
-  apply shape_ext (T := T.wedge (single 0)) (U := T) (Nat.add_zero _)
+lemma wedge_single_zero (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.wedge (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0) = T := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.shape_ext (T := T.wedge (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0)) (U := T) (Nat.add_zero _)
   apply Finset.ext
   intro j
-  simp only [wedge, single, Finset.mem_union, Finset.mem_insert, Finset.mem_singleton,
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_union, Finset.mem_insert, Finset.mem_singleton,
     Nat.add_zero, Finset.mem_image, or_self]
   constructor
   · rintro (hj | ⟨k, rfl, rfl⟩)
@@ -64,8 +64,8 @@ lemma wedge_single_zero (T : NecklaceShape) : T.wedge (single 0) = T := by
   · exact Or.inl
 
 /-- 三つの元の necklace の連結は、長さと全 joints を保って結合する。 -/
-lemma wedge_assoc (T U V : NecklaceShape) : (T.wedge U).wedge V = T.wedge (U.wedge V) := by
-  apply shape_ext (T := (T.wedge U).wedge V) (U := T.wedge (U.wedge V))
+lemma wedge_assoc (T U V : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : (T.wedge U).wedge V = T.wedge (U.wedge V) := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.shape_ext (T := (T.wedge U).wedge V) (U := T.wedge (U.wedge V))
     (Nat.add_assoc _ _ _)
   change (T.joints ∪ U.joints.image (T.vertexMax + ·)) ∪
       V.joints.image (T.vertexMax + U.vertexMax + ·) =

@@ -71,7 +71,7 @@ lemma loopSourceProjection_fac (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 構成した右脚自身も全段の全基点 π 同型。元の単位と左因子から消去する。 -/
 lemma loopSourceProjection_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((loopSourceProjection X).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceProjection X).app n).right := by
   apply (loopSourceInclusion_levelwise X n).cancel_left_atVertex
     (x := PointedSimplicialSet.basepoint (X.level n).space)
   rw [← Under.comp_right, loopSourceProjection_fac]

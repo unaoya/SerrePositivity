@@ -16,7 +16,7 @@ variable {B D : SSet.{u}} {J : Type u} [Category.{u} J]
 /-- 共同切断図式の同じ二重評価は、指定係数の実 Kan 値。 -/
 theorem relativeSectionDiagramInfinity_double_vertex (A : Jᵒᵖ ⥤ Over B)
     (X : LeftFibrationObject B) (j : J) :
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex j)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex (relativeSectionDiagramInfinity A)) =
       spaceInfinityVertex (((relativeSectionEnrichedDiagram A).obj j).obj X) := by
@@ -31,7 +31,7 @@ theorem relativeSectionDiagramInfinity_double_vertex (A : Jᵒᵖ ⥤ Over B)
 /-- 底変換した共同切断図式の同じ評価は、元の pullback 切断空間。 -/
 theorem relativeSectionDiagramInfinity_double_precomp_vertex (k : D ⟶ B)
     (A : Jᵒᵖ ⥤ Over D) (X : LeftFibrationObject B) (j : J) :
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex j)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex (relativeSectionDiagramInfinity A ≫
           (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})) =
@@ -59,7 +59,7 @@ def relativeSectionJointBaseChangeValueIso (k : D ⟶ B) (A : Jᵒᵖ ⥤ Over D
     (X : LeftFibrationObject B) (j : J) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (relativeSectionDiagramInfinityBaseChangeIso k A)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex j)) (coherentNerveVertex X)))
     (congrArg HomotopyCategory.mk
       (relativeSectionDiagramInfinity_double_precomp_vertex k A X j))
@@ -79,12 +79,12 @@ theorem relativeSectionJointBaseChangeValueIso_inv_pointHom
     (k : D ⟶ B) (A : Jᵒᵖ ⥤ Over D) (X : LeftFibrationObject B) (j : J)
     (v : ((((relativeSectionEnrichedDiagram A).precompose
       (leftFibrationBaseChangeEnriched k)).obj j).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X)).symm
         ((relativeFunctorBaseChangeForward X.val.hom k (A.obj (Opposite.op j)).hom).app
           (Opposite.op ⦋0⦌) v)) ≫
       (relativeSectionJointBaseChangeValueIso k A X j).inv =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram A).precompose
         (leftFibrationBaseChangeEnriched k)).obj j).obj X)).symm v) := by
   rw [relativeSectionJointBaseChangeValueIso_eq]

@@ -18,8 +18,8 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 同じ恒等 span の strict 評価像を、元の商像を底とする実 fiber 点で表示する。 -/
 def weakIdentityScaffoldFiberImage :
@@ -28,53 +28,53 @@ def weakIdentityScaffoldFiberImage :
   (eqToHom (congrArg (vertexFiber
     (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
     (congrArg (q.hom.app (Opposite.op ⦋0⦌))
-      (transportSimplexFirstVertexMap_zeroIndex x)))).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x)))).app (Opposite.op ⦋0⦌)
     ((cofinalVertexFiberBaseChangeIso
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))
       (transportSimplexFirstVertexMap B.obj ≫ q.hom)
       (nerveVertex (transportSimplexIndex (n := ⦋0⦌) x))).hom.app (Opposite.op ⦋0⦌)
-      ((fractionCosliceFiberMap q.hom (weakEquivalences i) h.inverts x
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
         (transportSimplexFirstVertexMap B.obj)
         (nerveVertex (transportSimplexIndex (n := ⦋0⦌) x))).app (Opposite.op ⦋0⦌)
-          (weakIdentitySimplexFiberPoint h x)))
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint h x)))
 
 /-- この同じ fiber 点は、既存の元の固定分数評価による恒等 span の像そのもの。 -/
 theorem weakIdentityScaffoldFiberImage_eq_evaluation :
-    weakIdentityScaffoldFiberImage h x =
-      (fixedFractionCosliceEvaluation q.hom (weakEquivalences i) h.inverts x x).app
-        (Opposite.op ⦋0⦌) (weakIdentityFixedSpan h x) := by
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage h x =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x x).app
+        (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan h x) := by
   let c := transportSimplexIndex (n := ⦋0⦌) x
   let T := eqToHom (congrArg (vertexFiber
     (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex x)))
-  have he := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (weakIdentitySimplexFiberPoint h x))
-    (fractionCosliceFiberMap_unfixed q.hom (weakEquivalences i) h.inverts x
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x)))
+  have he := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint h x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap_unfixed q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
       (transportSimplexFirstVertexMap B.obj) (nerveVertex c))
-  have hs : (fractionSourceFiberIso (weakEquivalences i) x
+  have hs : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
       (transportSimplexFirstVertexMap B.obj) (nerveVertex c)).inv.app (Opposite.op ⦋0⦌)
-        (weakIdentitySimplexFiberPoint h x) = weakIdentityFixedSpanAtZeroIndex h x :=
-    congrArg (fun m => m.app (Opposite.op ⦋0⦌) (weakIdentityFixedSpanAtZeroIndex h x))
-      (weakSpanSimplexFiberIso i x c).hom_inv_id
-  change _ = (fixedFractionCosliceEvaluation q.hom (weakEquivalences i) h.inverts x
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint h x) = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpanAtZeroIndex h x :=
+    congrArg (fun m => m.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpanAtZeroIndex h x))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso i x c).hom_inv_id
+  change _ = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
     ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
       (Opposite.op ⦋0⦌) _ at he
-  have hv := congrArg ((fixedFractionCosliceEvaluation q.hom (weakEquivalences i) h.inverts x
+  have hv := congrArg ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
     ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
       (Opposite.op ⦋0⦌)) hs
   have hn := congrArg (T.app (Opposite.op ⦋0⦌)) (he.trans hv)
-  have ht := fixedFractionCosliceEvaluation_transport_vertex q.hom (weakEquivalences i)
-    h.inverts x (transportSimplexFirstVertexMap_zeroIndex x) (weakIdentityFixedSpan h x)
-  unfold weakIdentityScaffoldFiberImage
+  have ht := fixedFractionCosliceEvaluation_transport_vertex q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
+    h.inverts x (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan h x)
+  unfold _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage
   rw [cofinalVertexFiberBaseChangeIso_hom_eq]
   exact hn.trans ht
 
 /-- 元の恒等 span の新分類で用いる実 fiber 点は、同じ coslice の恒等点と同型。 -/
 def weakIdentityScaffoldFiberImage_identityIso :
-    VertexIso (weakIdentityScaffoldFiberImage h x)
+    VertexIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage h x)
       (edgeToCosliceFiberVertex (SSet.Edge.id (q.hom.app (Opposite.op ⦋0⦌) x))) :=
-  eqToIso (congrArg HomotopyCategory.mk (weakIdentityScaffoldFiberImage_eq_evaluation h x)) ≪≫
-    identityFixedFractionCosliceEvaluationIso q.hom (weakEquivalences i) h.inverts x
-      (weakIdentitySpan_mem h x)
+  eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_eq_evaluation h x)) ≪≫
+    identityFixedFractionCosliceEvaluationIso q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySpan_mem h x)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

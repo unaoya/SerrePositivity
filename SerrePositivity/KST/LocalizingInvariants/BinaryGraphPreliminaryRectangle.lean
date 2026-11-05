@@ -26,12 +26,12 @@ def productComposition : SSet.Edge.CompStruct (coherentNerveEdge (Binary.map f (
   (coherentNerveCompStruct (Binary.map f (𝟙 Y)) (Binary.map (𝟙 Z) g)).ofEq rfl rfl
     (by rw [← Binary.map_factor])
 
-def rectangle : SquarePastingRectangle (square a b f g hc)
+def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle (square a b f g hc)
     ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ BinaryGraph.square g)
     (SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).simplex)
     (SSet.yonedaEquiv.symm (productComposition f g).simplex) := by
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
   · rw [square_right, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, BinaryGraph.square_bottom]
   · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₂.symm

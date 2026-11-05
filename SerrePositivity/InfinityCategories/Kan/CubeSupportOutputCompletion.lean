@@ -17,80 +17,80 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 空でない support を持つ出力では、元の零頂点の値は零。 -/
-lemma cubeSupportOutputEmbedding_zero {n m : ℕ} (s : CubeJoinNormalForm n m)
-    (a : Fin (cubeSupportNonemptyOutputs s).card) :
-    cubeJoinNormalFormEval s ⊥ (cubeSupportOutputEmbedding s a) = false := by
-  have ha : (cubeJoinNormalFormSupport s (cubeSupportOutputEmbedding s a)).Nonempty :=
-    (mem_cubeSupportNonemptyOutputs s _).mp (Finset.orderEmbOfFin_mem _ rfl a)
-  cases hs : s (cubeSupportOutputEmbedding s a) with
-  | none => simp [cubeJoinNormalFormSupport, hs] at ha
+lemma cubeSupportOutputEmbedding_zero {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
+    (a : Fin (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s).card) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s ⊥ (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a) = false := by
+  have ha : (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a)).Nonempty :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeSupportNonemptyOutputs s _).mp (Finset.orderEmbOfFin_mem _ rfl a)
+  cases hs : s (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s a) with
+  | none => simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs] at ha
   | some t => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_bot]
 
 /-- 空の support の出力は、元の零頂点と同じ定数値。 -/
-lemma cubeJoinNormalFormEval_outside {n m : ℕ} (s : CubeJoinNormalForm n m)
-    (x : CubeVertex n) (j : Fin m) (hj : j ∉ cubeSupportNonemptyOutputs s) :
-    cubeJoinNormalFormEval s x j = cubeJoinNormalFormEval s ⊥ j := by
-  have ht : cubeJoinNormalFormSupport s j = ∅ := by
+lemma cubeJoinNormalFormEval_outside {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (j : Fin m) (hj : j ∉ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x j = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s ⊥ j := by
+  have ht : _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j = ∅ := by
     apply Finset.not_nonempty_iff_eq_empty.mp
     intro hn
-    exact hj ((mem_cubeSupportNonemptyOutputs s j).mpr hn)
+    exact hj ((_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeSupportNonemptyOutputs s j).mpr hn)
   cases hs : s j with
   | none => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
   | some t =>
-    have htempty : t = ∅ := by simpa only [cubeJoinNormalFormSupport, hs, Option.getD_some] using ht
+    have htempty : t = ∅ := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs, Option.getD_some] using ht
     simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, htempty, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
 
 /-- 元の表示の空の support に指定した零・一を挿入する実際の面の合成。 -/
-def cubeSupportOutputCompletion {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    ConcreteCube.mk (cubeSupportNonemptyOutputs s).card ⟶ ConcreteCube.mk m :=
-  ⟨cubeCoordinateComplete (cubeSupportOutputEmbedding s) (cubeJoinNormalFormEval s ⊥),
-    cubeCoordinateComplete_generated _ (cubeSupportOutputEmbedding s).strictMono _
-      (cubeSupportOutputEmbedding_zero s)⟩
+def cubeSupportOutputCompletion {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s).card ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s) (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s ⊥),
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_generated _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s).strictMono _
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding_zero s)⟩
 
 /-- 元の表示の非定数出力を選択して補完すると、元の全評価を回収する。 -/
-lemma cubeSupportOutputCompletion_recover {n m : ℕ} (s : CubeJoinNormalForm n m)
-    (x : CubeVertex n) :
-    (cubeSupportOutputCompletion s).val
-      (cubeCoordinateSelect (cubeSupportOutputEmbedding s) (cubeJoinNormalFormEval s x)) =
-        cubeJoinNormalFormEval s x := by
+lemma cubeSupportOutputCompletion_recover {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion s).val
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s) (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x)) =
+        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x := by
   funext j
-  by_cases hj : j ∈ Set.range (cubeSupportOutputEmbedding s)
+  by_cases hj : j ∈ Set.range (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s)
   · obtain ⟨a, rfl⟩ := hj
-    exact cubeCoordinateComplete_image _ (cubeSupportOutputEmbedding s).injective _
-      (cubeSupportOutputEmbedding_zero s) _ a
-  · change cubeCoordinateComplete _ _ _ j = _
-    rw [cubeCoordinateComplete_outside _ _ _ j hj]
-    have hnot : j ∉ cubeSupportNonemptyOutputs s := by
-      simpa only [cubeSupportOutputEmbedding, Finset.range_orderEmbOfFin, Finset.mem_coe] using hj
-    exact (cubeJoinNormalFormEval_outside s x j hnot).symm
+    exact _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_image _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s).injective _
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding_zero s) _ a
+  · change _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete _ _ _ j = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_outside _ _ _ j hj]
+    have hnot : j ∉ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs s := by
+      simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding, Finset.range_orderEmbOfFin, Finset.mem_coe] using hj
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormEval_outside s x j hnot).symm
 
 /-- 元のブロック max の後で定数出力を補完すると、元の表示を全て回収する。 -/
-lemma cubeSupportMax_completion_eval {n m : ℕ} {s : CubeJoinNormalForm n m}
-    (h : CubeSupportPartition s) (x : CubeVertex n) :
-    (cubeSupportOutputCompletion s).val ((cubeSupportMax h).val x) =
-      cubeJoinNormalFormEval s x := by
-  have hmax : (cubeSupportMax h).val x =
-      cubeCoordinateSelect (cubeSupportOutputEmbedding s) (cubeJoinNormalFormEval s x) := by
+lemma cubeSupportMax_completion_eval {n m : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m}
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition s) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion s).val ((_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax h).val x) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x := by
+  have hmax : (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax h).val x =
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s) (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x) := by
     funext a
-    exact cubeSupportBlockMap_eval h x a
+    exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_eval h x a
   rw [hmax]
-  exact cubeSupportOutputCompletion_recover s x
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion_recover s x
 
 /-- 全入力を使う元の具体射は、隣接 max の射と定数面の補完との元の合成。 -/
-lemma cubeSupportMax_completion {X Y : ConcreteCube} (f : X ⟶ Y)
-    (h : CubeSupportPartition (concreteCubeNormalForm f)) :
-    cubeSupportMax h ≫ cubeSupportOutputCompletion (concreteCubeNormalForm f) = f := by
+lemma cubeSupportMax_completion {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax h ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) = f := by
   apply Subtype.ext
   funext x
-  exact (cubeSupportMax_completion_eval h x).trans (concreteCubeNormalForm_eval f x)
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax_completion_eval h x).trans (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval f x)
 
 /-- 元の任意の具体射の、入力削除・隣接 max・定数面による厳密な因数分解。 -/
-lemma concreteCube_deletion_max_face_factorization {X Y : ConcreteCube} (f : X ⟶ Y) :
-    cubeNormalFormInputSelection (concreteCubeNormalForm f) ≫
-      cubeSupportMax (concreteCubeInputCompressedSupportPartition f) ≫
-        cubeSupportOutputCompletion (concreteCubeNormalForm (concreteCubeInputCompressed f)) =
+lemma concreteCube_deletion_max_face_factorization {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSelection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) ≫
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressedSupportPartition f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f)) =
           f := by
-  rw [cubeSupportMax_completion, concreteCubeInputSelection_compressed]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax_completion, _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputSelection_compressed]
 
 end SerrePositivity.InfinityCategories.Kan
 

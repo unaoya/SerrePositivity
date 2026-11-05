@@ -38,7 +38,7 @@ lemma edgeMap_vertex {n : ℕ} (i j : Fin (n + 1)) (hij : i ≤ j) (t : Fin 2) :
 
 /-- 三つの順序付き頂点の標準三角形は、元の三辺の合成を与える。 -/
 def compStruct {n : ℕ} (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    SSet.Edge.CompStruct (edge.{u} i j hij) (edge j k hjk) (edge i k (hij.trans hjk)) :=
+    SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge.{u} i j hij) (_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge j k hjk) (_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge i k (hij.trans hjk)) :=
   SSet.Edge.CompStruct.mk (stdSimplex.triangle i j k hij hjk)
     (by apply stdSimplex.ext; intro r; fin_cases r <;> rfl)
     (by apply stdSimplex.ext; intro r; fin_cases r <;> rfl)
@@ -46,18 +46,18 @@ def compStruct {n : ℕ} (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
 
 /-- 元の三単体の四つの順序辺は、同じホモトピー圏内で三段の合成式を満たす。 -/
 lemma tetrahedron_relation {X : SSet.{u}} (a : X _⦋3⦌) :
-    SSet.HomotopyCategory.homMk ((edge (0 : Fin 4) 1 (by decide)).map
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 4) 1 (by decide)).map
         (SSet.yonedaEquiv.symm a)) ≫
-      SSet.HomotopyCategory.homMk ((edge (1 : Fin 4) 2 (by decide)).map
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (1 : Fin 4) 2 (by decide)).map
         (SSet.yonedaEquiv.symm a)) ≫
-      SSet.HomotopyCategory.homMk ((edge (2 : Fin 4) 3 (by decide)).map
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (2 : Fin 4) 3 (by decide)).map
         (SSet.yonedaEquiv.symm a)) =
-      SSet.HomotopyCategory.homMk ((edge (0 : Fin 4) 3 (by decide)).map
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 4) 3 (by decide)).map
         (SSet.yonedaEquiv.symm a)) := by
   rw [← Category.assoc, SSet.HomotopyCategory.homMk_comp_homMk
-    ((compStruct (0 : Fin 4) 1 2 (by decide) (by decide)).map (SSet.yonedaEquiv.symm a))]
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 4) 1 2 (by decide) (by decide)).map (SSet.yonedaEquiv.symm a))]
   exact SSet.HomotopyCategory.homMk_comp_homMk
-    ((compStruct (0 : Fin 4) 2 3 (by decide) (by decide)).map (SSet.yonedaEquiv.symm a))
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 4) 2 3 (by decide) (by decide)).map (SSet.yonedaEquiv.symm a))
 
 end SerrePositivity.InfinityCategories.Kan.SimplexEdges
 

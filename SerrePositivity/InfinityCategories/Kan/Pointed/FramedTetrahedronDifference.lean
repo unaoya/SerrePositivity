@@ -22,8 +22,8 @@ end SerrePositivity.KST.Spectra.FramedTetrahedron
 namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
 open SerrePositivity.KST.Spectra.FramedTetrahedron
 variable {X : SSet.{u}} (f g : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _⦋0⦌)
-    (hf : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
-    (hg : ∀ i : Fin 4, g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
+    (hf : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x i)
+    (hg : ∀ i : Fin 4, g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex p x i)
     (hiF : f.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (of_decide_eq_true rfl)) = (X.σ 0) x)
     (hiG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 1 2 (of_decide_eq_true rfl)) = (X.σ 0) x)
     (hrG : g.app (Opposite.op ⦋1⦌) (stdSimplex.edge 3 2 3 (of_decide_eq_true rfl)) = (X.σ 0) x)
@@ -34,27 +34,27 @@ include hiF hiG hrG ho
 
 /-- 二つの内辺と参照の右辺が定値なら、元の左辺と右辺の合成は参照の左辺。 -/
 lemma comparison :
-    SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (of_decide_eq_true rfl)) ≫
-        SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)) =
-      SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl)) := by
-  have hF := left_comp_right f p x hf hiF
-  have hG := left_comp_right g p x hg hiG
-  have hr : edge g p x hg 2 3 (of_decide_eq_true rfl) = SSet.Edge.id x := SSet.Edge.ext hrG
-  have houter : edge f p x hf 0 3 (of_decide_eq_true rfl) =
-      edge g p x hg 0 3 (of_decide_eq_true rfl) :=
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 0 1 (of_decide_eq_true rfl)) ≫
+        SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 2 3 (of_decide_eq_true rfl)) =
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge g p x hg 0 1 (of_decide_eq_true rfl)) := by
+  have hF := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right f p x hf hiF
+  have hG := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right g p x hg hiG
+  have hr : _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge g p x hg 2 3 (of_decide_eq_true rfl) = SSet.Edge.id x := SSet.Edge.ext hrG
+  have houter : _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 0 3 (of_decide_eq_true rfl) =
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge g p x hg 0 3 (of_decide_eq_true rfl) :=
     SSet.Edge.ext ho
   erw [hr, SSet.HomotopyCategory.homMk_id, Category.comp_id] at hG
   exact hF.trans ((congrArg SSet.HomotopyCategory.homMk houter).trans hG.symm)
 
 /-- 参照経路に対する差は、元の右辺の逆の類である。 -/
 lemma difference_inverse
-    [IsIso (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl)))]
-    [IsIso (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)))] :
-    inv (SSet.HomotopyCategory.homMk (edge g p x hg 0 1 (of_decide_eq_true rfl))) ≫
-        SSet.HomotopyCategory.homMk (edge f p x hf 0 1 (of_decide_eq_true rfl)) =
-      inv (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl))) := by
-  apply (cancel_mono (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)))).mp
-  simp only [Category.assoc, comparison f g p x hf hg hiF hiG hrG ho, IsIso.inv_hom_id]
+    [IsIso (SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge g p x hg 0 1 (of_decide_eq_true rfl)))]
+    [IsIso (SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 2 3 (of_decide_eq_true rfl)))] :
+    inv (SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge g p x hg 0 1 (of_decide_eq_true rfl))) ≫
+        SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 0 1 (of_decide_eq_true rfl)) =
+      inv (SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 2 3 (of_decide_eq_true rfl))) := by
+  apply (cancel_mono (SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge f p x hf 2 3 (of_decide_eq_true rfl)))).mp
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.comparison f g p x hf hg hiF hiG hrG ho, IsIso.inv_hom_id]
 
 end SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
 

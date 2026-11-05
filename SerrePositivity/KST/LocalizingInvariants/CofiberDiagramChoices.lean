@@ -20,23 +20,23 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
-def lift {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) : A ⟶ space X :=
-  fullSubcomplexLift Predicate (CofiberFamily.squares X a) (by
+def lift {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a) (by
     intro x
-    exact ⟨CofiberFamily.squareAt_zero X a x, CofiberFamily.squareAt_isPushout X a x⟩)
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_zero X a x, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isPushout X a x⟩)
 
 lemma lift_inclusion {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    lift X a ≫ inclusion X = CofiberFamily.squares X a := fullSubcomplexLift_ι _ _ _
+    lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X = _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a := fullSubcomplexLift_ι _ _ _
 
 lemma lift_bottom {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    lift X a ≫ bottom X = a := by
-  change lift X a ≫ (inclusion X ≫ (pre squareBottomEdge).app X) = _
+    lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X = a := by
+  change lift X a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre squareBottomEdge).app X) = _
   rw [← Category.assoc, lift_inclusion, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom]
 
-lemma bottom_surjective : Function.Surjective ((bottom X).app (Opposite.op ⦋0⦌)) := by
+lemma bottom_surjective : Function.Surjective ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X).app (Opposite.op ⦋0⦌)) := by
   intro x
   let s := chosenCofiberSquare (edgeOfSimplex (intervalFunctorVertexEdge x))
-  let v : (space X) _⦋0⦌ := ⟨functorVertex s.square, by
+  let v : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌ := ⟨functorVertex s.square, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
@@ -51,10 +51,10 @@ lemma bottom_surjective : Function.Surjective ((bottom X).app (Opposite.op ⦋0�
   rw [Equiv.symm_apply_apply]
   exact (functorVertexEquiv Δ[1] X).apply_symm_apply x
 
-lemma right_surjective : Function.Surjective ((right X).app (Opposite.op ⦋0⦌)) := by
+lemma right_surjective : Function.Surjective ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X).app (Opposite.op ⦋0⦌)) := by
   intro x
   let s := chosenFiberSquare (edgeOfSimplex (intervalFunctorVertexEdge x))
-  let v : (space X) _⦋0⦌ := ⟨functorVertex s.square, by
+  let v : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌ := ⟨functorVertex s.square, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]

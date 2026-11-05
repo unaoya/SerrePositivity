@@ -42,27 +42,27 @@ def tensorAdjunction (A B : C) : tensorLeft (A ⊗ B) ⊣ ihom A ⋙ ihom B :=
 規約：A と B の対象に追加条件は不要。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。二つの円の smash からの写像の curry。 -/
 def natIso (A B : C) : ihom (A ⊗ B) ≅ ihom A ⋙ ihom B :=
-  (ihom.adjunction (A ⊗ B)).rightAdjointUniq (tensorAdjunction A B)
+  (ihom.adjunction (A ⊗ B)).rightAdjointUniq (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction A B)
 
 /-- 概要：標的を固定した反復 curry の同型。
 方針：自然同型の成分を取る。
 規約：B が外側、A が内側の内部 Hom。
 使われ方：HA §1.4.2。二重 loop の単体集合の比較。 -/
 def iso (A B Y : C) : (ihom (A ⊗ B)).obj Y ≅ (ihom B).obj ((ihom A).obj Y) :=
-  (natIso A B).app Y
+  (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natIso A B).app Y
 
 /-- 概要：反復 curry の同型の順写像は評価射を二度 curry したもの。
 方針：右随伴の一意性の homEquiv の式を、合成随伴と結合子で展開する。
 規約：結合子の逆で A と B の評価の括弧を合わせる。
 使われ方：HA §1.4.2。源の変数の交換と同型の整合性。 -/
-theorem hom_eq (A B Y : C) : (iso A B Y).hom =
+theorem hom_eq (A B Y : C) : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom =
     curry (curry ((α_ A B ((ihom (A ⊗ B)).obj Y)).inv ≫
       (ihom.ev (A ⊗ B)).app Y)) := by
   have h := Adjunction.homEquiv_symm_rightAdjointUniq_hom_app
-    (ihom.adjunction (A ⊗ B)) (tensorAdjunction A B) Y
-  have h' := congrArg ((tensorAdjunction A B).homEquiv _ Y) h
+    (ihom.adjunction (A ⊗ B)) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction A B) Y
+  have h' := congrArg ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction A B).homEquiv _ Y) h
   simp only [Equiv.apply_symm_apply] at h'
-  rw [tensorAdjunction, Adjunction.homEquiv_ofNatIsoLeft_apply,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction, Adjunction.homEquiv_ofNatIsoLeft_apply,
     Adjunction.comp_homEquiv] at h'
   exact h'
 
@@ -70,9 +70,9 @@ theorem hom_eq (A B Y : C) : (iso A B Y).hom =
 方針：順写像の明示式を比較する。
 規約：逆写像の等式は同型の外延性から従う。
 使われ方：HA §1.4.2。既存の内部 Hom の交換同型との接続。 -/
-theorem iso_eq_ihomCurryIso (A B Y : C) : iso A B Y = ihomCurryIso A B Y := by
+theorem iso_eq_ihomCurryIso (A B Y : C) : _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y = ihomCurryIso A B Y := by
   apply Iso.ext
-  rw [hom_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq]
   rfl
 
 /-- 概要：反復 curry の同型は標的の写像について自然。
@@ -81,9 +81,9 @@ theorem iso_eq_ihomCurryIso (A B Y : C) : iso A B Y = ihomCurryIso A B Y := by
 使われ方：Goerss–Jardine I §7。標的の loop の符号反転の移送。 -/
 @[reassoc]
 theorem natural_post (A B : C) {Y Z : C} (f : Y ⟶ Z) :
-    (ihom (A ⊗ B)).map f ≫ (iso A B Z).hom =
-      (iso A B Y).hom ≫ (ihom B).map ((ihom A).map f) :=
-  (natIso A B).hom.naturality f
+    (ihom (A ⊗ B)).map f ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom ≫ (ihom B).map ((ihom A).map f) :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natIso A B).hom.naturality f
 
 /-- 概要：テンソルの変数交換は反復内部 Hom の交換と一致する。
 方針：Mathlib の curry 同型との一致を使い、交換同型の定義で中間の逆同型を打ち消す。
@@ -91,10 +91,10 @@ theorem natural_post (A B : C) {Y Z : C} (f : Y ⟶ Z) :
 使われ方：Goerss–Jardine I §7、HA §1.4.2。二つの円の smash の交換を反復 loop へ移す。 -/
 @[reassoc]
 theorem natural_swap [BraidedCategory C] (A B Y : C) :
-    (MonoidalClosed.pre (β_ A B).hom).app Y ≫ (iso A B Y).hom =
-      (iso B A Y).hom ≫ (InternalHomExchange.iso A B Y).hom := by
-  rw [iso_eq_ihomCurryIso, iso_eq_ihomCurryIso]
-  simp only [InternalHomExchange.iso, Iso.trans_hom, Iso.symm_hom,
+    (MonoidalClosed.pre (β_ A B).hom).app Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso B A Y).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A B Y).hom := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso, Iso.trans_hom, Iso.symm_hom,
     Iso.hom_inv_id_assoc]
   rfl
 

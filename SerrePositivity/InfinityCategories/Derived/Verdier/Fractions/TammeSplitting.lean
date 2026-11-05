@@ -26,8 +26,8 @@ end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeFactorComparison : SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) ≅
     SpectrumHo.obj (NativeSplit.product (hΦ.abstractFiberTriangle (laxVerdierSequence p q))) :=
@@ -44,10 +44,10 @@ def tammeSplitEquivalence : SpectrumHo.obj (value Φ (laxCategory p q)) ≅
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) := (hΦ.tammeSplitComparison p q).symm
 
 /-- 積因子は元の値であり、積は実際の ∞ 極限錐。 -/
-def tammeProductCone (Φ : StableInfinity.{u} ⟶ Sp.{u}) (C D : StableCategory.{u}) :=
+def tammeProductCone (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :=
   spectrumBinaryProductInfinityCone (value Φ C) (value Φ D)
 
-lemma tammeProductCone_isLimit : IsLimitCone (tammeProductCone Φ C D) :=
+lemma tammeProductCone_isLimit : IsLimitCone (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeProductCone Φ C D) :=
   spectrumBinaryProductInfinityCone_isLimit _ _
 
 lemma tammeFactorComparison_inl : SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
@@ -67,7 +67,7 @@ lemma tammeSplitComparison_C : SpectrumHo.hom (Binary.inl (value Φ C) (value Φ
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) := by
   change SpectrumHo.hom (Binary.inl _ _) ≫ ((hΦ.tammeFactorComparison p q).hom ≫
     (hΦ.semiorthogonalSplitEquivalence (laxSemiorthogonal p q)).hom) = _
-  rw [← Category.assoc, tammeFactorComparison_inl, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison_inl, Category.assoc]
   erw [hΦ.semiorthogonalSplitEquivalence_section (laxSemiorthogonal p q),
     Iso.hom_inv_id_assoc]
   rfl
@@ -77,7 +77,7 @@ lemma tammeSplitComparison_D : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) := by
   change SpectrumHo.hom (Binary.inr _ _) ≫ ((hΦ.tammeFactorComparison p q).hom ≫
     (hΦ.semiorthogonalSplitEquivalence (laxSemiorthogonal p q)).hom) = _
-  rw [← Category.assoc, tammeFactorComparison_inr, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison_inr, Category.assoc]
   erw [hΦ.semiorthogonalSplitEquivalence_inclusion (laxSemiorthogonal p q),
     Iso.hom_inv_id_assoc]
   rfl

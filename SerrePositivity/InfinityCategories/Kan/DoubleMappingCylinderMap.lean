@@ -36,17 +36,17 @@ def doubleMappingCylinderMap {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b) :
-    doubleMappingCylinder f g ⟶ doubleMappingCylinder f' g' :=
-  pushout.desc ((c ▷ Δ[1]) ≫ doubleMappingCylinder_middle f' g')
-    (coprod.desc (a ≫ doubleMappingCylinder_left f' g') (b ≫ doubleMappingCylinder_right f' g'))
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f' g' :=
+  pushout.desc ((c ▷ Δ[1]) ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f' g')
+    (coprod.desc (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f' g') (b ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f' g'))
     (by
       apply coprod.hom_ext
-      · simp only [cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
+      · simp only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
           coprod.inl_desc]
-        rw [SSet.ι₀_comp_assoc, doubleMappingCylinder_zero, ← Category.assoc, hf, Category.assoc]
-      · simp only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
+        rw [SSet.ι₀_comp_assoc, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero, ← Category.assoc, hf, Category.assoc]
+      · simp only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
           coprod.inr_desc]
-        rw [SSet.ι₁_comp_assoc, doubleMappingCylinder_one, ← Category.assoc, hg, Category.assoc])
+        rw [SSet.ι₁_comp_assoc, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one, ← Category.assoc, hg, Category.assoc])
 
 /--
 概要：比較写像と中央の円筒の包含との合成則。
@@ -58,8 +58,8 @@ def doubleMappingCylinderMap {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b) :
-    doubleMappingCylinder_middle f g ≫ doubleMappingCylinderMap f g f' g' c a b hf hg =
-      (c ▷ Δ[1]) ≫ doubleMappingCylinder_middle f' g' := by
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg =
+      (c ▷ Δ[1]) ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f' g' := by
   exact pushout.inl_desc _ _ _
 
 /--
@@ -72,9 +72,9 @@ def doubleMappingCylinderMap {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b) :
-    doubleMappingCylinder_left f g ≫ doubleMappingCylinderMap f g f' g' c a b hf hg =
-      a ≫ doubleMappingCylinder_left f' g' := by
-  simp only [doubleMappingCylinder_left, doubleMappingCylinderMap, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg =
+      a ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f' g' := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap, Category.assoc,
     pushout.inr_desc, coprod.inl_desc]
 
 /--
@@ -87,9 +87,9 @@ def doubleMappingCylinderMap {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b) :
-    doubleMappingCylinder_right f g ≫ doubleMappingCylinderMap f g f' g' c a b hf hg =
-      b ≫ doubleMappingCylinder_right f' g' := by
-  simp only [doubleMappingCylinder_right, doubleMappingCylinderMap, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg =
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f' g' := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap, Category.assoc,
     pushout.inr_desc, coprod.inr_desc]
 
 /--
@@ -99,15 +99,15 @@ def doubleMappingCylinderMap {C A B C' A' B' : SSet.{u}}
 使われ方：誘導写像の恒等射・合成の保存。
 -/
 theorem _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext {C A B Z : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
-    {u v : doubleMappingCylinder f g ⟶ Z}
-    (hm : doubleMappingCylinder_middle f g ≫ u = doubleMappingCylinder_middle f g ≫ v)
-    (hl : doubleMappingCylinder_left f g ≫ u = doubleMappingCylinder_left f g ≫ v)
-    (hr : doubleMappingCylinder_right f g ≫ u = doubleMappingCylinder_right f g ≫ v) : u = v := by
+    {u v : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g ⟶ Z}
+    (hm : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ v)
+    (hl : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ v)
+    (hr : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ v) : u = v := by
   apply pushout.hom_ext
   · exact hm
   · apply coprod.hom_ext
-    · simpa only [doubleMappingCylinder_left, Category.assoc] using hl
-    · simpa only [doubleMappingCylinder_right, Category.assoc] using hr
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc] using hl
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc] using hr
 
 /--
 概要：span の恒等射が誘導する二重写像円筒の射は恒等射である。
@@ -116,14 +116,14 @@ theorem _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.d
 使われ方：貼り合わせの図式とその模型の比較。
 -/
 @[simp] theorem doubleMappingCylinderMap_id {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    doubleMappingCylinderMap f g f g (𝟙 C) (𝟙 A) (𝟙 B)
-      (by simp) (by simp) = 𝟙 (doubleMappingCylinder f g) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f g (𝟙 C) (𝟙 A) (𝟙 B)
+      (by simp) (by simp) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g) := by
   apply _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext f g
-  · rw [doubleMappingCylinder_middle_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map]
     simp only [id_whiskerRight, Category.id_comp, Category.comp_id]
-  · rw [doubleMappingCylinder_left_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map]
     simp only [Category.id_comp, Category.comp_id]
-  · rw [doubleMappingCylinder_right_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map]
     simp only [Category.id_comp, Category.comp_id]
 
 /--
@@ -139,20 +139,20 @@ theorem doubleMappingCylinderMap_comp {C A B C' A' B' C'' A'' B'' : SSet.{u}}
     (c' : C' ⟶ C'') (a' : A' ⟶ A'') (b' : B' ⟶ B'')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b)
     (hf' : c' ≫ f'' = f' ≫ a') (hg' : c' ≫ g'' = g' ≫ b') :
-    doubleMappingCylinderMap f g f' g' c a b hf hg ≫
-      doubleMappingCylinderMap f' g' f'' g'' c' a' b' hf' hg' =
-    doubleMappingCylinderMap f g f'' g'' (c ≫ c') (a ≫ a') (b ≫ b')
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg ≫
+      _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f' g' f'' g'' c' a' b' hf' hg' =
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f'' g'' (c ≫ c') (a ≫ a') (b ≫ b')
       (by rw [Category.assoc, hf', ← Category.assoc, hf, Category.assoc])
       (by rw [Category.assoc, hg', ← Category.assoc, hg, Category.assoc]) := by
   apply _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext f g
-  · rw [doubleMappingCylinder_middle_map_assoc, doubleMappingCylinder_middle_map,
-      doubleMappingCylinder_middle_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map_assoc, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map]
     simp only [comp_whiskerRight, Category.assoc]
-  · rw [doubleMappingCylinder_left_map_assoc, doubleMappingCylinder_left_map,
-      doubleMappingCylinder_left_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map_assoc, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map]
     exact (Category.assoc _ _ _).symm
-  · rw [doubleMappingCylinder_right_map_assoc, doubleMappingCylinder_right_map,
-      doubleMappingCylinder_right_map]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map_assoc, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map]
     exact (Category.assoc _ _ _).symm
 
 end SerrePositivity.InfinityCategories.Kan

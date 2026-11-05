@@ -23,15 +23,15 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- cofiber からの Hom の族は、元の商射への制限で決まる。 -/
 lemma cofiber_pre_hom_ext {A B E : PointedSimplicialSet.{u}} (j : B ⟶ A)
     {T : SSet.{u}} {f g : T ⟶ (PointedObject.basedHom (pointedCofiber j) E).right}
-    (h : f ≫ pre (pointedCofiberProjection j) E =
-      g ≫ pre (pointedCofiberProjection j) E) : f = g := by
+    (h : f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection j) E =
+      g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection j) E) : f = g := by
   apply (cancel_mono (cofiberMappingFiberIso j E).hom).1
-  apply fiber_hom_ext (pre j E) (PointedSimplicialSet.basepoint (PointedObject.basedHom B E))
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E) (PointedSimplicialSet.basepoint (PointedObject.basedHom B E))
   simpa only [Category.assoc, cofiberMappingFiberIso_hom_ι] using h
 
 /-- 点の族への前合成は元の点つき射への前合成に一致する。 -/
 lemma pointFamily_pre {A B E : PointedSimplicialSet.{u}} (j : B ⟶ A) (f : A ⟶ E) :
-    pointFamily f ≫ pre j E = pointFamily (j ≫ f) := by
+    pointFamily f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E = pointFamily (j ≫ f) := by
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
   exact familyVertex_pre j f
@@ -46,7 +46,7 @@ variable {A B E : PointedSimplicialSet.{u}} (j : B ⟶ A) {f g : A ⟶ E}
 include hrel in
 /-- 相対零ホモトピーの区間族は制限射の厳密な基点上にある。 -/
 lemma paramCurry_restriction_zero :
-    paramCurry A E H.h hbase ≫ pre j E =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E H.h hbase ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E =
       SSet.const (PointedSimplicialSet.basepoint (PointedObject.basedHom B E)) := by
   rw [← familyVertex_zero B E]
   apply (cancel_mono (PointedObject.basedHomι B E)).1
@@ -59,14 +59,14 @@ lemma paramCurry_restriction_zero :
 /-- 元の区間族を cofiber からの Hom へ降ろす。 -/
 def cofiberInterval : (Δ[1] : SSet.{u}) ⟶
     (PointedObject.basedHom (pointedCofiber j) E).right :=
-  fiberLift (pre j E) (PointedSimplicialSet.basepoint (PointedObject.basedHom B E))
-    (paramCurry A E H.h hbase) (paramCurry_restriction_zero j H hbase hrel) ≫
+  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E) (PointedSimplicialSet.basepoint (PointedObject.basedHom B E))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E H.h hbase) (paramCurry_restriction_zero j H hbase hrel) ≫
       (cofiberMappingFiberIso j E).inv
 
 /-- cofiber 区間の制限は、入力した元の区間族そのもの。 -/
 lemma cofiberInterval_restriction :
-    cofiberInterval j H hbase hrel ≫ pre (pointedCofiberProjection j) E =
-      paramCurry A E H.h hbase := by
+    cofiberInterval j H hbase hrel ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection j) E =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E H.h hbase := by
   dsimp only [cofiberInterval]
   rw [Category.assoc, ← cofiberMappingFiberIso_hom_ι,
     Iso.inv_hom_id_assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]

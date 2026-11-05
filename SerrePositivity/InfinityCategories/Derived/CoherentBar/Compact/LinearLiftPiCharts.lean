@@ -52,26 +52,26 @@ def dgBarCompactLiftModuleMap {W V : SimplicialObject (ModuleCat.{v} R)} (f : W 
 /-- 零基点を保持する反転比較。 -/
 def dgBarCompactOppositeModulePiZeroBaseEquiv
     (W : SimplicialObject (ModuleCat.{v} R)) [KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactOppositeModule W)) n 0 ≃*
-      KanHomotopyGroup (moduleUnderlyingSSet W) n 0 :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactOppositeModule W)) n 0 ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 :=
   dgBarCompactOppositePiEquiv (moduleUnderlyingSSet W) n 0
 
 /-- 零基点を保持する宇宙比較。 -/
 def dgBarCompactLiftModulePiZeroBaseEquiv
     (W : SimplicialObject (ModuleCat.{v} R)) [KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLiftModule.{u, v, w} W)) n 0 ≃*
-      KanHomotopyGroup (moduleUnderlyingSSet W) n 0 :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLiftModule.{u, v, w} W)) n 0 ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 :=
   (dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet W) n 0).symm
 
 lemma dgBarCompactOppositePiEquiv_naturality_of_eq
     {X Y : SSet.{v}} [KanComplex X] [KanComplex Y] (φ : X ⟶ Y) (n : ℕ)
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (hy : φ.app _ x = y)
-    (a : KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x)) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x)) :
     dgBarCompactOppositePiEquiv Y n y
-      (KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm y) (SSet.opFunctor.map φ)
         (congrArg SSet.opObjEquiv.symm hy) a) =
-      KanHomotopyGroup.map φ hy (dgBarCompactOppositePiEquiv X n x a) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map φ hy (dgBarCompactOppositePiEquiv X n x a) := by
   subst y
   exact dgBarCompactOppositePiEquiv_naturality φ n x a
 
@@ -79,11 +79,11 @@ lemma dgBarCompactOppositeModulePiZeroBaseEquiv_naturality
     {W V : SimplicialObject (ModuleCat.{v} R)}
     [KanComplex (moduleUnderlyingSSet W)] [KanComplex (moduleUnderlyingSSet V)]
     (f : W ⟶ V) (n : ℕ)
-    (a : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactOppositeModule W)) n 0) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactOppositeModule W)) n 0) :
     dgBarCompactOppositeModulePiZeroBaseEquiv V n
-      (KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactOppositeModuleMap f))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactOppositeModuleMap f))
         (moduleUnderlyingSSetMap_zero (dgBarCompactOppositeModuleMap f)) a) =
-      KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f)
         (dgBarCompactOppositeModulePiZeroBaseEquiv W n a) :=
   dgBarCompactOppositePiEquiv_naturality_of_eq (moduleUnderlyingSSetMap f) n
     (moduleUnderlyingSSetMap_zero f) a
@@ -91,13 +91,13 @@ lemma dgBarCompactOppositeModulePiZeroBaseEquiv_naturality
 lemma dgBarCompactUliftPiEquiv_naturality_of_eq
     {X Y : SSet.{v}} [KanComplex X] [KanComplex Y] (φ : X ⟶ Y) (n : ℕ)
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (hy : φ.app _ x = y)
-    (a : KanHomotopyGroup X n x) :
-    dgBarCompactUliftPiEquiv.{v, w} Y n y (KanHomotopyGroup.map φ hy a) =
-      KanHomotopyGroup.map (x := ULift.up x) (y := ULift.up y)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    dgBarCompactUliftPiEquiv.{v, w} Y n y (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map φ hy a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := ULift.up x) (y := ULift.up y)
         ((SSet.uliftFunctor.{w, v}).map φ) (congrArg ULift.up hy)
         (dgBarCompactUliftPiEquiv.{v, w} X n x a) := by
   induction a using Quotient.inductionOn with | h f => ?_
-  apply congrArg KanHomotopyGroup.mk
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
   apply RelativeMorphism.ext
   change (uliftStdSimplexIso.{v, w} (n + 1)).inv ≫
     (SSet.uliftFunctor.{w, v}).map (f.map ≫ φ) =
@@ -109,28 +109,28 @@ lemma dgBarCompactLiftModulePiZeroBaseEquiv_naturality
     {W V : SimplicialObject (ModuleCat.{v} R)}
     [KanComplex (moduleUnderlyingSSet W)] [KanComplex (moduleUnderlyingSSet V)]
     (f : W ⟶ V) (n : ℕ)
-    (a : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLiftModule.{u, v, w} W)) n 0) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLiftModule.{u, v, w} W)) n 0) :
     dgBarCompactLiftModulePiZeroBaseEquiv V n
-      (KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLiftModuleMap f))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLiftModuleMap f))
         (moduleUnderlyingSSetMap_zero (dgBarCompactLiftModuleMap f)) a) =
-      KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f)
         (dgBarCompactLiftModulePiZeroBaseEquiv W n a) := by
   obtain ⟨a₀, rfl⟩ :=
     (dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet W) n 0).surjective a
   have h := dgBarCompactUliftPiEquiv_naturality_of_eq.{v, w}
     (moduleUnderlyingSSetMap f) n (moduleUnderlyingSSetMap_zero f) a₀
   change (dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet V) n 0).symm
-    (KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLiftModuleMap f))
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLiftModuleMap f))
       (moduleUnderlyingSSetMap_zero (dgBarCompactLiftModuleMap f))
       ((dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet W) n 0) a₀)) = _
   have h' := congrArg (dgBarCompactUliftPiEquiv.{v, w}
     (moduleUnderlyingSSet V) n 0).symm h.symm
   calc
-    _ = KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
+    _ = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
         (moduleUnderlyingSSetMap_zero f) a₀ :=
       h'.trans ((dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet V) n 0).symm_apply_apply _)
     _ = _ := congrArg
-      (KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f))
       ((dgBarCompactUliftPiEquiv.{v, w} (moduleUnderlyingSSet W) n 0).symm_apply_apply a₀).symm
 
 end SerrePositivity.InfinityCategories

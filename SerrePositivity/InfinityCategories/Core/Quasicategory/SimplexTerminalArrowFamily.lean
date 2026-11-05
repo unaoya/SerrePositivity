@@ -40,7 +40,7 @@ def simplexTerminalContractionOrder (n : ℕ) : Fin (n + 1) × Fin 2 →o Fin (n
 def simplexTerminalContraction (n : ℕ) :
     SSet.Homotopy (𝟙 (Δ[n] : SSet.{u}))
       (SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last n))) where
-  h := stdSimplexProductMap (simplexTerminalContractionOrder n)
+  h := stdSimplexProductMap (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContractionOrder n)
   h₀ := by
     apply SSet.hom_ext
     rintro ⟨⟨m⟩⟩
@@ -67,34 +67,34 @@ def simplexTerminalContraction (n : ℕ) :
 /-- 元の全図式の各頂点から同じ最後の頂点へ向かう全単体上の辺族。 -/
 def simplexTerminalArrowFamily {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X) :
     (Δ[n] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  curry ((β_ (Δ[1] : SSet.{u}) Δ[n]).hom ≫ (simplexTerminalContraction n).h ≫ D)
+  curry ((β_ (Δ[1] : SSet.{u}) Δ[n]).hom ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction n).h ≫ D)
 
 /-- 辺族の始点は元の同じ全図式。 -/
 lemma simplexTerminalArrowFamily_source {X : SSet.{u}} {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X) :
-    simplexTerminalArrowFamily D ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       D := by
-  rw [simplexTerminalArrowFamily, curry_evaluateFunctorAt_interval]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily, curry_evaluateFunctorAt_interval]
   have hp : prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ (β_ Δ[1] Δ[n]).hom =
       (SSet.ι₀ : (Δ[n] : SSet.{u}) ⟶ Δ[n] ⊗ Δ[1]) := rfl
-  rw [← Category.assoc, ← Category.assoc, hp, (simplexTerminalContraction n).h₀,
+  rw [← Category.assoc, ← Category.assoc, hp, (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction n).h₀,
     Category.id_comp]
 
 /-- 辺族の終点は元の最後の頂点に厳密に定値。 -/
 lemma simplexTerminalArrowFamily_target {X : SSet.{u}} {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X) :
-    simplexTerminalArrowFamily D ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.const (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) := by
-  rw [simplexTerminalArrowFamily, curry_evaluateFunctorAt_interval]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily, curry_evaluateFunctorAt_interval]
   have hp : prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ (β_ Δ[1] Δ[n]).hom =
       (SSet.ι₁ : (Δ[n] : SSet.{u}) ⟶ Δ[n] ⊗ Δ[1]) := rfl
-  rw [← Category.assoc, ← Category.assoc, hp, (simplexTerminalContraction n).h₁,
+  rw [← Category.assoc, ← Category.assoc, hp, (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction n).h₁,
     SSet.const_comp]
 
 /-- 最後の頂点での辺は、同じ元の値の恒等辺に厳密に一致する。 -/
 lemma simplexTerminalArrowFamily_last {X : SSet.{u}} {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X) :
-    (simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       functorVertex (SSet.const
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) :

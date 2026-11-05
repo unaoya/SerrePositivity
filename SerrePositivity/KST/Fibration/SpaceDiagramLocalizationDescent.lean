@@ -21,8 +21,8 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (q : X ⟶ Q) (W : Set (X _⦋1⦌))
 def spaceDiagramLocalizationDescend :
     (SSet.uliftFunctor.{u + 1, u}).obj Q ⟶ SpaceInfinity.{u} :=
   (SSet.uliftFunctor.{u + 1, u}).map
-    (localizationDescend q W hq (smallSpaceDiagram F) (smallSpaceDiagram_inverts F W hF)) ≫
-      smallSpaceDiagramInclusion F
+    (localizationDescend q W hq (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram F) (smallSpaceDiagram_inverts F W hF)) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion F
 
 /-- 宇宙を跨ぐ商への降下でも、元の図式との全関手 ∞ 圏内の自然同型を保持する。 -/
 def spaceDiagramLocalizationDescendIso :
@@ -30,8 +30,8 @@ def spaceDiagramLocalizationDescendIso :
       spaceDiagramLocalizationDescend q W hq F hF) F := by
   have e := FunctorIso.postcomp
     (FunctorIso.ulift.{u, u + 1}
-      (localizationDescendIso q W hq (smallSpaceDiagram F) (smallSpaceDiagram_inverts F W hF)))
-    (smallSpaceDiagramInclusion F)
+      (localizationDescendIso q W hq (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram F) (smallSpaceDiagram_inverts F W hF)))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion F)
   rw [Functor.map_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion] at e
   exact e
 

@@ -65,7 +65,7 @@ lemma realization_output_face (j : Fin (n + 3)) :
 /-- 指定した球面の類を右側の零ホモトピーの選択で実現する。 -/
 theorem exists_difference_simplex :
     ∃ S : PtSimplex.RelStruct .const s (Fin.last (n + 1)),
-      difference R S = KanHomotopyGroup.mk D := by
+      difference R S = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk D := by
   let φ := (realizationCompatible R D).liftOfKanComplex
   let S : PtSimplex.RelStruct .const s (Fin.last (n + 1)) := {
     map := stdSimplex.δ (Fin.last (n + 3)) ≫ φ
@@ -77,7 +77,7 @@ theorem exists_difference_simplex :
         omega)]
     δ_map_of_gt j hj := (not_lt_of_ge (Fin.le_last j) hj).elim }
   have hφ (j : Fin (n + 4)) (hj : j ≠ (Fin.last (n + 1)).castSucc.castSucc) :
-      stdSimplex.δ j ≫ φ = face R S j := by
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j := by
     by_cases hlast : j = Fin.last (n + 3)
     · subst j
       simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, S]
@@ -88,7 +88,7 @@ theorem exists_difference_simplex :
       rw [ite_eq_right hlast']
   refine ⟨S, ?_⟩
   rw [difference_eq_ofFiller R S φ hφ]
-  apply congrArg KanHomotopyGroup.mk
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
   apply RelativeMorphism.ext
   change stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ = D.map
   rw [(realizationCompatible R D).δ_liftOfKanComplex _ (by
@@ -99,13 +99,13 @@ theorem exists_difference_simplex :
   simp [realizationFace]
 
 /-- 任意の高次の類は、固定した左端との差になる。 -/
-theorem exists_difference (a : KanHomotopyGroup X (n + 1) x) :
+theorem exists_difference (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) :
     ∃ S : PtSimplex.RelStruct .const s (Fin.last (n + 1)), difference R S = a := by
   obtain ⟨D, rfl⟩ := Quotient.exists_rep a
   exact exists_difference_simplex R D
 
 /-- 任意の高次の類は、固定した右端との差になる。 -/
-theorem exists_left_difference (a : KanHomotopyGroup X (n + 1) x) :
+theorem exists_left_difference (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) :
     ∃ S : PtSimplex.RelStruct .const s (Fin.last (n + 1)), difference S R = a := by
   obtain ⟨S, hS⟩ := exists_difference R a⁻¹
   exact ⟨S, by rw [difference_inv, hS, inv_inv]⟩

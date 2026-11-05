@@ -56,7 +56,7 @@ def simplexContractionAt (n : ℕ) {d : SimplexCategoryᵒᵖ}
 -/
 def simplexContractionMap (n : ℕ) :
     (Δ[n] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Δ[n] where
-  app _ := TypeCat.ofHom (fun p => simplexContractionAt n p.1 p.2)
+  app _ := TypeCat.ofHom (fun p => _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt n p.1 p.2)
   naturality _ _ _ := rfl
 
 /--
@@ -68,7 +68,7 @@ def simplexContractionMap (n : ℕ) :
 noncomputable def simplexContraction (n : ℕ) :
     SSet.Homotopy (SSet.const (X := (Δ[n] : SSet.{u})) (SSet.stdSimplex.obj₀Equiv.symm 0))
       (𝟙 (Δ[n] : SSet.{u})) where
-  h := simplexContractionMap n
+  h := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap n
   h₀ := by
     apply NatTrans.ext
     funext d
@@ -108,12 +108,12 @@ noncomputable def simplexContraction (n : ℕ) :
 noncomputable def simplexMapContraction {n : ℕ} {X : SSet.{u}} (f : (Δ[n] : SSet.{u}) ⟶ X) :
     SSet.Homotopy (SSet.const (X := (Δ[n] : SSet.{u}))
       (f.app (op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm 0))) f where
-  h := (simplexContraction n).h ≫ f
+  h := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction n).h ≫ f
   h₀ := by
-    rw [← Category.assoc, (simplexContraction n).h₀, SSet.const_comp]
+    rw [← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction n).h₀, SSet.const_comp]
     rfl
   h₁ := by
-    rw [← Category.assoc, (simplexContraction n).h₁, Category.id_comp]
+    rw [← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction n).h₁, Category.id_comp]
     rfl
   rel := by
     apply NatTrans.ext

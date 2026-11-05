@@ -55,7 +55,7 @@ def relativeFunctorCore {B C : SSet.{u}} (q : B ⟶ C) (K : SSet.{u}) :
 
 /-- 同じ core 逆像から商図式の core への元の射影。 -/
 def relativeFunctorCoreQuotient {B C : SSet.{u}} (q : B ⟶ C) (K : SSet.{u}) :
-    (relativeFunctorCore q K : SSet.{u}) ⟶
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q K : SSet.{u}) ⟶
       (quasicategoryCore ((ihom K).obj C) : SSet.{u}) :=
   (quasicategoryCore ((ihom K).obj C)).fromPreimage ((ihom K).map q)
 

@@ -41,7 +41,7 @@ def d3GradedPrecomp (K : EnrichedFunctor SSet.{u} C D)
     intro d
     apply ConcreteCategory.hom_ext
     rintro ⟨a, f⟩
-    exact naturality_app _ F G η (K.obj X) (K.obj Y) d a ((K.map X Y).app d f)
+    exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app _ F G η (K.obj X) (K.obj Y) d a ((K.map X Y).app d f)
 
 /-- 同じ豊穣関手の全 Hom 作用で、元の厳密変換を後合成する。 -/
 def d3GradedPostcomp {F G : EnrichedFunctor SSet.{u} C D}

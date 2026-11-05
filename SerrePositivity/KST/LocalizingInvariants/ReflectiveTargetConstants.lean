@@ -26,7 +26,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 include a hG in
 lemma reflectiveConstantPostMap_bijective (A : SSet.{u}) [Quasicategory A]
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
-    Function.Bijective (constantFunctorPostMap F A x (G.app (Opposite.op ⦋0⦌) y)) := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x (G.app (Opposite.op ⦋0⦌) y)) := by
   have h := reflectiveTargetHom_bijective a hG (SSet.const x : A ⟶ X) (SSet.const y : A ⟶ Y)
   have h' : Function.Bijective (fun α : ConstantFunctorHom A X x
       (G.app (Opposite.op ⦋0⦌) y) =>

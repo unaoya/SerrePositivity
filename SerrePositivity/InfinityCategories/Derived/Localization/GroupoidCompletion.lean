@@ -42,23 +42,23 @@ lemma localization_all_isKan {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
     (hF : IsLocalization F Set.univ) : KanComplex Q := by
   have : (hoFunctor.map F).toFunctor.IsLocalization (⊤ : MorphismProperty (hoFunctor.obj X)) :=
     localizationHo_isLocalization_of_inverts F Set.univ hF ⊤
-      (ho_inverts_all_of_inverts_all F hF.choose) (fun _ _ => trivial)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.ho_inverts_all_of_inverts_all F hF.choose) (fun _ _ => trivial)
   have : IsGroupoid (hoFunctor.obj Q) := Localization.isGroupoid (hoFunctor.map F).toFunctor
   exact kanComplex_of_isGroupoid Q
 
 def groupoidCompletion (X : SSet.{u}) : SSet.{u} := edgeLocalization X Set.univ
 
-instance groupoidCompletion_quasicategory (X : SSet.{u}) : Quasicategory (groupoidCompletion X) :=
+instance groupoidCompletion_quasicategory (X : SSet.{u}) : Quasicategory (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) :=
   edgeLocalization_quasicategory X Set.univ
 
-def groupoidCompletionMap (X : SSet.{u}) : X ⟶ groupoidCompletion X :=
+def groupoidCompletionMap (X : SSet.{u}) : X ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X :=
   edgeLocalizationMap X Set.univ
 
 lemma groupoidCompletion_isLocalization (X : SSet.{u}) :
-    IsLocalization (groupoidCompletionMap X) Set.univ := edgeLocalization_isLocalization X Set.univ
+    IsLocalization (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X) Set.univ := edgeLocalization_isLocalization X Set.univ
 
-instance groupoidCompletion_kanComplex (X : SSet.{u}) : KanComplex (groupoidCompletion X) :=
-  localization_all_isKan (groupoidCompletionMap X) (groupoidCompletion_isLocalization X)
+instance groupoidCompletion_kanComplex (X : SSet.{u}) : KanComplex (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Localization.localization_all_isKan (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X)
 
 lemma invertsAllEdges_toKan {X Y : SSet.{u}} [KanComplex Y] (F : X ⟶ Y) :
     InvertsEdges F Set.univ := by

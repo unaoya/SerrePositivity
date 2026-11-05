@@ -21,7 +21,7 @@ variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
 /-- 指定 scaffold の nerve 比較の同じ成分を、元の strict Kan 値で表示する。 -/
 def scaffoldRestrictionNerveChart (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
-    (functorIsoValue (scaffoldNerveRepresentationIso
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldNerveRepresentationIso
       (pullback.snd p (transportSimplexFirstVertexMap B))
       (R.nativeRestrict (transportSimplexFirstVertexMap B))) (ULift.up (nerveVertex c)))
     (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex
@@ -30,7 +30,7 @@ def scaffoldRestrictionNerveChart (c : TransportSimplexCategory B) :=
 /-- 指定した全制限比較の同じ成分を、元の共同分類値で表示する。 -/
 def scaffoldStraighteningRestrictionChart (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
-    (functorIsoValue (scaffoldStraighteningRestrictionIso p R) (ULift.up (nerveVertex c)))
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldStraighteningRestrictionIso p R) (ULift.up (nerveVertex c)))
     (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c)) rfl
 
 /-- 元の全制限成分は、元の初頂点成分と指定 scaffold の同じ nerve 成分の合成。 -/
@@ -38,7 +38,7 @@ theorem scaffoldStraighteningRestrictionChart_factor (c : TransportSimplexCatego
     scaffoldStraighteningRestrictionChart p R c =
       firstVertexRestrictionChart (leftFibrationObjectOf p) c ≪≫
         scaffoldRestrictionNerveChart p R c := by
-  have hf := normalizeValueComposition (leftStraighteningInfinityDiagram_firstVertexIso p)
+  have hf := _root_.SerrePositivity.InfinityCategories.Stable.Transport.normalizeValueComposition (leftStraighteningInfinityDiagram_firstVertexIso p)
     (scaffoldNerveRepresentationIso (pullback.snd p (transportSimplexFirstVertexMap B))
       (R.nativeRestrict (transportSimplexFirstVertexMap B))) (ULift.up (nerveVertex c))
     (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c))
@@ -50,10 +50,10 @@ theorem scaffoldStraighteningRestrictionChart_factor (c : TransportSimplexCatego
 /-- 同じ nerve 成分は、元の strict 切断点の同じ恒等射評価を pointedMap へ送る。 -/
 theorem scaffoldRestrictionNerveChart_pointHom (c : TransportSimplexCategory B)
     (v : (leftStrictTransport (pullback.snd p (transportSimplexFirstVertexMap B)) c) _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor
       (pullback.snd p (transportSimplexFirstVertexMap B))).obj c)).symm v) ≫
       (scaffoldRestrictionNerveChart p R c).hom =
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap
       (R.nativeRestrict (transportSimplexFirstVertexMap B)) (ULift.up (nerveVertex c))).app
       (Opposite.op ⦋0⦌) ((uliftVertexFiberIso
         (pullback.snd p (transportSimplexFirstVertexMap B)) (nerveVertex c)).hom.app
@@ -70,12 +70,12 @@ theorem scaffoldRestrictionNerveChart_pointHom (c : TransportSimplexCategory B)
 theorem scaffoldStraighteningRestrictionChart_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (scaffoldStraighteningRestrictionChart p R c).hom =
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap
       (R.nativeRestrict (transportSimplexFirstVertexMap B)) (ULift.up (nerveVertex c))).app
       (Opposite.op ⦋0⦌) ((uliftVertexFiberIso
         (pullback.snd p (transportSimplexFirstVertexMap B)) (nerveVertex c)).hom.app

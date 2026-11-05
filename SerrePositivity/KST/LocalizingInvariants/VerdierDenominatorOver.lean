@@ -27,28 +27,28 @@ namespace SerrePositivity.KST.LocalizingInvariants
 attribute [local instance] Cardinal.fact_isRegular_aleph0
 
 /-- 固定した元の終点へ入る実分母の、実 slice 内の全部分複体。 -/
-def verdierDenominatorOver {A B : StableCategory.{u}} (i : ExactMap A B)
+def verdierDenominatorOver {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x : B.obj _⦋0⦌) : (sliceOver (SSet.yonedaEquiv.symm x)).Subcomplex :=
   fullSubcomplexOnVertices _ (fun v =>
-    (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) v).edge ∈ weakEquivalences i)
+    (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) v).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
 
-instance verdierDenominatorOver_quasicategory {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
+instance verdierDenominatorOver_quasicategory {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
     Quasicategory (verdierDenominatorOver i x : SSet.{u}) := by
   dsimp only [verdierDenominatorOver]
   infer_instance
 
 /-- 任意の有限な実分母図式は、同じ実 slice 部分圏の中で全錐を持つ。 -/
 lemma exists_verdierDenominatorOver_finiteCone
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
     {K : SSet.{u}} [K.Finite] (D : K ⟶ (verdierDenominatorOver i x : SSet.{u})) :
     Nonempty (JoinCone D) := by
   let f := D ≫ (verdierDenominatorOver i x).ι
   let t : JoinCocone (f ≫ sliceOverProjection (SSet.yonedaEquiv.symm x)) :=
     ⟨sliceOverUncurry f, sliceOverUncurry_projection f⟩
   have ht : ∀ a : K _⦋0⦌,
-      (t.leg (SSet.yonedaEquiv.symm a)).edge ∈ weakEquivalences i := by
+      (t.leg (SSet.yonedaEquiv.symm a)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
     intro a
     have ha := fullSubcomplexOnVertices_vertex (D.app (Opposite.op ⦋0⦌) a)
     have hy : SSet.yonedaEquiv.symm a ≫ f =
@@ -59,7 +59,7 @@ lemma exists_verdierDenominatorOver_finiteCone
       joinMap (SSet.yonedaEquiv.symm a) (𝟙 Δ[0]) ≫ sliceOverUncurry f) ∈ _
     rw [← sliceOverUncurry_precomp, hy, sliceOverUncurry_yoneda]
     exact ha
-  obtain ⟨c, _, hc, _⟩ := exists_verdierFiniteDenominatorRefinement h t ht
+  obtain ⟨c, _, hc, _⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteDenominatorRefinement h t ht
   let L := (joinAssociator (Δ[0] : SSet.{u}) K (Δ[0] : SSet.{u})).hom ≫ c.val
   have hL : joinInr (join (Δ[0] : SSet.{u}) K) Δ[0] ≫ L =
       SSet.yonedaEquiv.symm x := by
@@ -79,7 +79,7 @@ lemma exists_verdierDenominatorOver_finiteCone
     exact invertsAllEdges_precomp _ _ hc
   have hv : ∀ v : (join (Δ[0] : SSet.{u}) K) _⦋0⦌,
       (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x)
-        (G.app (Opposite.op ⦋0⦌) v)).edge ∈ weakEquivalences i := by
+        (G.app (Opposite.op ⦋0⦌) v)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
     intro v
     let u : (Δ[1] : SSet.{u}) ⟶ join (join (Δ[0] : SSet.{u}) K) Δ[0] :=
       (joinStdSimplexIso 0 0).inv ≫ joinMap (SSet.yonedaEquiv.symm v) (𝟙 Δ[0])
@@ -91,7 +91,7 @@ lemma exists_verdierDenominatorOver_finiteCone
         joinMap (SSet.yonedaEquiv.symm v) (𝟙 Δ[0]) ≫ L := by
       rw [← sliceOverUncurry_yoneda, ← hy, sliceOverUncurry_precomp,
         sliceOverUncurry_curry]
-    apply (mem_weakEquivalences_iff_invertible h
+    apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h
       (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) (G.app _ v))).mpr
     apply (isInvertibleEdge_congr (e :=
       (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) (G.app _ v)).map
@@ -105,7 +105,7 @@ lemma exists_verdierDenominatorOver_finiteCone
       rfl
   let R : join (Δ[0] : SSet.{u}) K ⟶ (verdierDenominatorOver i x : SSet.{u}) :=
     fullSubcomplexLift (fun v =>
-    (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) v).edge ∈ weakEquivalences i) G hv
+    (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x) v).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) G hv
   have hRi : R ≫ (verdierDenominatorOver i x).ι = G := fullSubcomplexLift_ι _ _ _
   refine ⟨⟨R, ?_⟩⟩
   apply (cancel_mono (verdierDenominatorOver i x).ι).mp
@@ -114,15 +114,15 @@ lemma exists_verdierDenominatorOver_finiteCone
 
 /-- 実分母 over の反対 ∞ 圏は、全有限単体集合を試験する filtered ∞ 圏。 -/
 lemma verdierDenominatorOver_op_isFilteredInfinity
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) :
     F2.IsFilteredInfinity (verdierDenominatorOver i x : SSet.{u}).op :=
   isFilteredInfinity_op_of_finiteCones _ (exists_verdierDenominatorOver_finiteCone h x)
 
 /-- 実分母添字には、小さい通常の filtered poset からの実 cofinal 表示がある。 -/
 lemma exists_verdierDenominatorOver_cofinal_filteredPoset
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) :
     ∃ (I : Type u) (o : PartialOrder I),
       letI := o
       ∃ f : nerve I ⟶ (verdierDenominatorOver i x : SSet.{u}).op,

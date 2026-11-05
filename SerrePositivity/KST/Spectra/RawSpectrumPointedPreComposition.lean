@@ -42,6 +42,6 @@ lemma pointedComposition_pre {W V : OmegaSpectrum.{u}} (f : W ⟶ V)
   exact congrArg (· ≫ MonoidalClosed.comp
     (W.level n).space (X.level n).space (Z.level n).space)
     (tensorHom_comp_whiskerRight (pointedEvaluation V X.toKanSequence n)
-      (PointedMapping.prePointed (f.app n) (X.level n).space) (pointedEvaluation X Z n))
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f.app n) (X.level n).space) (pointedEvaluation X Z n))
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

@@ -22,25 +22,25 @@ def cubeSurjectionLower {n m : ℕ} (q : Fin (n + 2) → Fin m)
 /-- 隣接二入力が同じ値なら、元の写像を縮約と同一視の合成から回収する。 -/
 lemma cubeSurjectionLower_factor {n m : ℕ} (q : Fin (n + 2) → Fin m)
     (p : Fin (n + 1)) (hp : q p.castSucc = q p.succ) :
-    q = cubeSurjectionLower q p ∘ p.predAbove := by
+    q = _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower q p ∘ p.predAbove := by
   funext i
   by_cases hi : i = p.castSucc
   · subst i
-    simp [cubeSurjectionLower, hp]
-  · simp [cubeSurjectionLower, Fin.succAbove_predAbove hi]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower, hp]
+  · simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower, Fin.succAbove_predAbove hi]
 
 /-- 縮約した元の座標写像も単調。 -/
 lemma cubeSurjectionLower_monotone {n m : ℕ} (q : Fin (n + 2) → Fin m)
-    (p : Fin (n + 1)) (hq : Monotone q) : Monotone (cubeSurjectionLower q p) :=
+    (p : Fin (n + 1)) (hq : Monotone q) : Monotone (_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower q p) :=
   hq.comp (Fin.strictMono_succAbove p.castSucc).monotone
 
 /-- 隣接二入力が同じ値なら、縮約した元の写像も全射。 -/
 lemma cubeSurjectionLower_surjective {n m : ℕ} (q : Fin (n + 2) → Fin m)
     (p : Fin (n + 1)) (hp : q p.castSucc = q p.succ) (hq : Function.Surjective q) :
-    Function.Surjective (cubeSurjectionLower q p) := by
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower q p) := by
   intro j
   obtain ⟨i, hi⟩ := hq j
-  exact ⟨p.predAbove i, (congrFun (cubeSurjectionLower_factor q p hp) i).symm.trans hi⟩
+  exact ⟨p.predAbove i, (congrFun (_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower_factor q p hp) i).symm.trans hi⟩
 
 /-- 厳密単調でない単調写像には、同じ値を持つ隣接二入力がある。 -/
 lemma cubeMonotone_exists_adjacent_eq {n m : ℕ} (q : Fin (n + 2) → Fin m)
@@ -54,9 +54,9 @@ lemma cubeMonotone_exists_adjacent_eq {n m : ℕ} (q : Fin (n + 2) → Fin m)
 /-- 同じ隣接入力を縮約した fiber max は、元の connection の後で評価できる。 -/
 lemma cubeFiberMax_lower {n m : ℕ} (q : Fin (n + 2) → Fin m)
     (p : Fin (n + 1)) (hp : q p.castSucc = q p.succ) :
-    cubeFiberMax q = cubeFiberMax (cubeSurjectionLower q p) ∘ cubeVertexConnection n p := by
-  conv_lhs => rw [cubeSurjectionLower_factor q p hp]
-  rw [cubeFiberMax_comp, cubeFiberMax_predAbove]
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax q = _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower q p) ∘ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p := by
+  conv_lhs => rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower_factor q p hp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_comp, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_predAbove]
 
 end SerrePositivity.InfinityCategories.Kan
 

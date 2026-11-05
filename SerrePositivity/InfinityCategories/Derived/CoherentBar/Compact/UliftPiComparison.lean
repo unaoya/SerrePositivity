@@ -17,43 +17,43 @@ open SerrePositivity.KST.Spectra
 open scoped _root_.Simplicial
 variable (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌)
 
-def dgBarCompactPiUliftUp : KanHomotopyGroup X n x →
-    KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) :=
+def dgBarCompactPiUliftUp : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x →
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) :=
   Quotient.map dgBarCompactPointedSimplexUp (by
     intro f g h
-    obtain ⟨r⟩ := (simplexRel_iff_relStruct (X := X) 0).mp h
-    exact (simplexRel_iff_relStruct (X := (SSet.uliftFunctor.{v, u}).obj X) 0).mpr
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (X := X) 0).mp h
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (X := (SSet.uliftFunctor.{v, u}).obj X) 0).mpr
       ⟨dgBarCompactPointedRelUp r⟩)
 
 def dgBarCompactPiUliftDown :
-    KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) →
-      KanHomotopyGroup X n x :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) →
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x :=
   Quotient.map dgBarCompactPointedSimplexDown (by
     intro f g h
-    obtain ⟨r⟩ := (simplexRel_iff_relStruct (X := (SSet.uliftFunctor.{v, u}).obj X) 0).mp h
-    exact (simplexRel_iff_relStruct (X := X) 0).mpr ⟨dgBarCompactPointedRelDown r⟩)
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (X := (SSet.uliftFunctor.{v, u}).obj X) 0).mp h
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (X := X) 0).mpr ⟨dgBarCompactPointedRelDown r⟩)
 
 /-- 元の代表を保つ、任意追加宇宙での全基点 π 群同型。 -/
-def dgBarCompactUliftPiEquiv : KanHomotopyGroup X n x ≃*
-    KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) where
+def dgBarCompactUliftPiEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((SSet.uliftFunctor.{v, u}).obj X) n (ULift.up x) where
   toFun := dgBarCompactPiUliftUp X n x
   invFun := dgBarCompactPiUliftDown X n x
   left_inv a := by
     induction a using Quotient.inductionOn with | h f => ?_
-    change KanHomotopyGroup.mk (dgBarCompactPointedSimplexDown
-      (dgBarCompactPointedSimplexUp.{u, v} f)) = KanHomotopyGroup.mk f
-    exact congrArg KanHomotopyGroup.mk
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (dgBarCompactPointedSimplexDown
+      (dgBarCompactPointedSimplexUp.{u, v} f)) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
       ((dgBarCompactUliftPointedSimplexEquiv X (n + 1) x).left_inv f)
   right_inv a := by
     induction a using Quotient.inductionOn with | h f => ?_
-    change KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp.{u, v}
-      (dgBarCompactPointedSimplexDown f)) = KanHomotopyGroup.mk f
-    exact congrArg KanHomotopyGroup.mk
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (dgBarCompactPointedSimplexUp.{u, v}
+      (dgBarCompactPointedSimplexDown f)) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
       ((dgBarCompactUliftPointedSimplexEquiv X (n + 1) x).right_inv f)
   map_mul' a b := by
     induction a using Quotient.inductionOn with | h f => ?_
     induction b using Quotient.inductionOn with | h g => ?_
-    obtain ⟨r⟩ := KanHomotopyGroup.productSimplex_spec f g
-    exact (KanHomotopyGroup.mul_eq (dgBarCompactPointedMulUp.{u, v} r)).symm
+    obtain ⟨r⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec f g
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (dgBarCompactPointedMulUp.{u, v} r)).symm
 
 end SerrePositivity.InfinityCategories

@@ -29,25 +29,25 @@ def arrowPrecompositionFoldOrder : Fin 2 × Fin 2 →o Fin 3 where
   monotone' := by decide
 
 def arrowPrecompositionFold : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] :=
-  stdSimplexProductMap arrowPrecompositionFoldOrder
+  stdSimplexProductMap _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder
 
 lemma arrowPrecompositionFold_one : (SSet.ι₁ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
-    arrowPrecompositionFold = stdSimplex.δ (0 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (0 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_zero : (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
-    arrowPrecompositionFold = stdSimplex.δ (1 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (1 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_source : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫
-    arrowPrecompositionFold = stdSimplex.δ (2 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (2 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_target : prismEndpoint 1 (Δ[1] : SSet.{u}) ≫
-    arrowPrecompositionFold = SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) := by
   apply SSet.yonedaEquiv.injective
   decide
 
@@ -58,7 +58,7 @@ lemma exists_arrowPrecompositionSquare {X : SSet.{u}} [Quasicategory X]
     ∃ T : (Δ[2] : SSet.{u}) ⟶ X,
       stdSimplex.δ (2 : Fin 3) ≫ T = SSet.yonedaEquiv.symm f.edge ∧
       stdSimplex.δ (0 : Fin 3) ≫ T = SSet.yonedaEquiv.symm g.edge ∧
-      prismEndpoint 1 Δ[1] ≫ arrowPrecompositionFold ≫ T = SSet.const c := by
+      prismEndpoint 1 Δ[1] ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold ≫ T = SSet.const c := by
   obtain ⟨⟨k, t⟩⟩ := Truncated.Quasicategory₂.fill21 f g
   let T : (Δ[2] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm t.simplex
   have ht₂ : stdSimplex.δ (2 : Fin 3) ≫ T = SSet.yonedaEquiv.symm f.edge := by
@@ -89,7 +89,7 @@ lemma exists_arrowPrecompositionSquare {X : SSet.{u}} [Quasicategory X]
     rw [pinchedConstant_zero] at h
     exact h
   refine ⟨T, ht₂, ht₀, ?_⟩
-  rw [← Category.assoc, arrowPrecompositionFold_target, SSet.const_comp]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_target, SSet.const_comp]
   exact congrArg SSet.const hc
 
 end SerrePositivity.InfinityCategories.Core.Quasicategory

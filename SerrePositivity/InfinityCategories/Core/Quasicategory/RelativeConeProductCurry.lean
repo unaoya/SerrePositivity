@@ -29,12 +29,12 @@ def relativeConeProductCurryIso (T S X : SSet.{u}) :
   (internalHom.mapIso (β_ S T).op).app X ≪≫ ihomCurryIso S T X
 
 lemma relativeConeProductCurryIso_vertex (T S X : SSet.{u}) (F : T ⊗ S ⟶ X) :
-    (relativeConeProductCurryIso T S X).hom.app (Opposite.op ⦋0⦌) (functorVertex F) =
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso T S X).hom.app (Opposite.op ⦋0⦌) (functorVertex F) =
       functorVertex (curry ((β_ S T).hom ≫ F)) := rfl
 
 lemma relativeConeProductCurryIso_pre {K T S X : SSet.{u}} (j : K ⟶ T) :
-    (pre (j ▷ S)).app X ≫ (relativeConeProductCurryIso K S X).hom =
-      (relativeConeProductCurryIso T S X).hom ≫ (pre j).app ((ihom S).obj X) := by
+    (pre (j ▷ S)).app X ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso K S X).hom =
+      (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso T S X).hom ≫ (pre j).app ((ihom S).obj X) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

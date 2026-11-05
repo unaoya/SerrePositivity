@@ -21,7 +21,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SphericalBoundary
 end SerrePositivity.KST.Spectra.SphericalBoundary
 namespace SerrePositivity.InfinityCategories.Kan.SphericalBoundary
-open SerrePositivity.KST.Spectra.SphericalBoundary
+open _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary
 
 noncomputable section
 
@@ -33,7 +33,7 @@ variable {X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌}
 使われ方：Goerss–Jardine I §7。最後の面に集約した充填の障害。 -/
 theorem exists_horn_boundary (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
     ∃ b : X.PtSimplex (n + 2) x,
-      Nonempty (SphericalBoundary (Function.update a (Fin.last (n + 3)) b)) := by
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (Function.update a (Fin.last (n + 3)) b)) := by
   let α (j : Fin (n + 4)) (_ : j ≠ Fin.last (n + 3)) : (Δ[n + 2] : SSet.{u}) ⟶ X :=
     (a j).map
   have hα : horn.IsCompatible α := fun _ _ _ _ _ ↦ by simp [α]
@@ -45,7 +45,7 @@ theorem exists_horn_boundary (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
           hα.δ_liftOfKanComplex _ (Fin.castSucc_ne_last j)]
         exact PtSimplex.δ_map _ _ }
-  refine ⟨b, ⟨{map := hα.liftOfKanComplex, face_eq := ?_}⟩⟩
+  refine ⟨b, ⟨{_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := hα.liftOfKanComplex, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq := ?_}⟩⟩
   intro j
   by_cases hj : j = Fin.last (n + 3)
   · subst j; simp only [Function.update_self]; rfl
@@ -57,17 +57,17 @@ theorem exists_horn_boundary (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
 使われ方：Goerss–Jardine I §7。ホーンの最後の面の障害の同定。 -/
 theorem additiveClass_last_of_update (a : Fin (n + 4) → X.PtSimplex (n + 2) x)
     (b : X.PtSimplex (n + 2) x)
-    (h : alternatingClass (Function.update a (Fin.last (n + 3)) b) = alternatingClass a) :
-    additiveClass b = additiveClass (a (Fin.last (n + 3))) := by
-  have hu : alternatingClass (Function.update a (Fin.last (n + 3)) b) =
-      (∑ j : Fin (n + 3), (-1 : ℤ) ^ j.val • additiveClass (a j.castSucc)) +
-        (-1 : ℤ) ^ (n + 3) • additiveClass b := by
-    unfold alternatingClass
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass (Function.update a (Fin.last (n + 3)) b) = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a) :
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass b = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a (Fin.last (n + 3))) := by
+  have hu : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass (Function.update a (Fin.last (n + 3)) b) =
+      (∑ j : Fin (n + 3), (-1 : ℤ) ^ j.val • _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a j.castSucc)) +
+        (-1 : ℤ) ^ (n + 3) • _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass b := by
+    unfold _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass
     rw [Fin.sum_univ_castSucc]
     simp
-  have ha : alternatingClass a =
-      (∑ j : Fin (n + 3), (-1 : ℤ) ^ j.val • additiveClass (a j.castSucc)) +
-        (-1 : ℤ) ^ (n + 3) • additiveClass (a (Fin.last (n + 3))) :=
+  have ha : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a =
+      (∑ j : Fin (n + 3), (-1 : ℤ) ^ j.val • _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a j.castSucc)) +
+        (-1 : ℤ) ^ (n + 3) • _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a (Fin.last (n + 3))) :=
     Fin.sum_univ_castSucc _
   rw [hu, ha] at h
   exact ((isUnit_neg_one : IsUnit (-1 : ℤ)).pow (n + 3)).smul_left_cancel.mp
@@ -78,18 +78,18 @@ theorem additiveClass_last_of_update (a : Fin (n + 4) → X.PtSimplex (n + 2) x)
 規約：標的の Kan 性と実際の次数が二以上であることだけを使う。
 使われ方：Goerss–Jardine I §7、VIII §1。cochain の障害の消滅からの実充填。 -/
 theorem exists_of_alternatingClass_eq_zero
-    (a : Fin (n + 4) → X.PtSimplex (n + 2) x) (h : alternatingClass a = 0) :
-    Nonempty (SphericalBoundary a) := by
-  obtain ⟨b, ⟨T⟩⟩ := exists_horn_boundary a
-  have hb : additiveClass b = additiveClass (a (Fin.last (n + 3))) :=
-    additiveClass_last_of_update a b ((alternatingClass_eq_zero T).trans h.symm)
-  have he : KanHomotopyGroup.mk b = KanHomotopyGroup.mk (a (Fin.last (n + 3))) :=
+    (a : Fin (n + 4) → X.PtSimplex (n + 2) x) (h : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a = 0) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a) := by
+  obtain ⟨b, ⟨T⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.exists_horn_boundary a
+  have hb : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass b = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (a (Fin.last (n + 3))) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass_last_of_update a b ((_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass_eq_zero T).trans h.symm)
+  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a (Fin.last (n + 3))) :=
     congrArg Additive.toMul hb
-  have he' : KanHomotopyGroup.mk ((Function.update a (Fin.last (n + 3)) b)
-      (Fin.last (n + 3))) = KanHomotopyGroup.mk (a (Fin.last (n + 3))) := by
+  have he' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ((Function.update a (Fin.last (n + 3)) b)
+      (Fin.last (n + 3))) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a (Fin.last (n + 3))) := by
     simpa only [Function.update_self] using he
   simpa only [Function.update_idem, Function.update_eq_self] using
-    (SphericalBoundaryLastFace.exists_replace T he')
+    (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.exists_replace T he')
 
 /-- 概要：球面的境界が充填できることと、そのホモトピー類の交代和の零性は同値。
 方針：充填からは交代境界関係、逆向きは最後の面を直す Kan 充填を使う。
@@ -97,8 +97,8 @@ theorem exists_of_alternatingClass_eq_zero
 使われ方：Goerss–Jardine I §7、VIII §1。幾何的な障害の厳密な判定。 -/
 theorem nonempty_iff_alternatingClass_eq_zero
     (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
-    Nonempty (SphericalBoundary a) ↔ alternatingClass a = 0 :=
-  ⟨fun ⟨T⟩ ↦ alternatingClass_eq_zero T, exists_of_alternatingClass_eq_zero a⟩
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a) ↔ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a = 0 :=
+  ⟨fun ⟨T⟩ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass_eq_zero T, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.exists_of_alternatingClass_eq_zero a⟩
 
 end
 

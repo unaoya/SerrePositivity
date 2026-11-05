@@ -18,22 +18,22 @@ open CategoryTheory
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 /-- F2 の lax pullback そのものを対象とする小さい安定 ∞ 圏。 -/
-def laxCategory : StableCategory.{u} where
-  obj := F2.laxPullback p.hom q.hom
-  isQuasicategory := inferInstance
-  isStable := inferInstance
+def laxCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := F2.laxPullback p.hom q.hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := inferInstance
 
 /-- 元の第一射影。完全性の証明は F2 から読み取り専用で使う。 -/
-def laxFst : ExactMap (laxCategory p q) C where
-  hom := F2.laxPullbackFst p.hom q.hom
-  isExact := F2.laxPullbackFst_isExactFunctor p.hom q.hom
+def laxFst : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) C where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := F2.laxPullbackFst p.hom q.hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := F2.laxPullbackFst_isExactFunctor p.hom q.hom
 
 /-- 元の第二射影。 -/
-def laxSnd : ExactMap (laxCategory p q) D where
-  hom := F2.laxPullbackSnd p.hom q.hom
-  isExact := F2.laxPullbackSnd_isExactFunctor p.hom q.hom
+def laxSnd : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) D where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := F2.laxPullbackSnd p.hom q.hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := F2.laxPullbackSnd_isExactFunctor p.hom q.hom
 
 end SerrePositivity.KST.LocalizingInvariants

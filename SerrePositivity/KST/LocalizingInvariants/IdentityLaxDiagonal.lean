@@ -21,10 +21,10 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
 
-variable (A : StableCategory.{u})
+variable (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 def diagonal : A.obj ⟶ (laxCategory (𝟙 A) (𝟙 A)).obj :=
-  constantFunctorMap (Δ[1] : SSet.{u}) A.obj ≫ arrowLaxInverse A.obj
+  constantFunctorMap (Δ[1] : SSet.{u}) A.obj ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse A.obj
 
 lemma diagonal_fst : diagonal A ≫ (laxFst (𝟙 A) (𝟙 A)).hom = 𝟙 A.obj := by
   change diagonal A ≫ F2.laxPullbackFst (𝟙 A.obj) (𝟙 A.obj) = _
@@ -41,7 +41,7 @@ instance diagonal_isExact : IsExactFunctor (diagonal A) := by
     rw [diagonal_snd]; infer_instance
   exact LaxInclusion.exact_of_components (𝟙 A) (𝟙 A) _
 
-def exactDiagonal : ExactMap A (laxCategory (𝟙 A) (𝟙 A)) := ⟨diagonal A, inferInstance⟩
+def exactDiagonal : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory (𝟙 A) (𝟙 A)) := ⟨diagonal A, inferInstance⟩
 
 lemma difference_diagonal_zero (x : A.obj _⦋0⦌) :
     IsZeroVertex ((diagonal A ≫ laxDifference (𝟙 A) (𝟙 A)).app (Opposite.op ⦋0⦌) x) := by

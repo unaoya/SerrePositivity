@@ -103,14 +103,14 @@ structure LeftFractionTriangleLift {X Y : SSet.{u}} (q : X ⟶ Y)
       (q.app (Opposite.op ⦋0⦌) x₂))
     (t : Truncated.Edge.CompStruct f (g.map ((truncation 2).map q)) h) where
   source : X _⦋0⦌
-  source_eq : q.app (Opposite.op ⦋0⦌) source = b₀
-  first : Truncated.Edge (X := (truncation 2).obj X) source x₁
-  diagonal : Truncated.Edge (X := (truncation 2).obj X) source x₂
-  first_image : (first.map ((truncation 2).map q)).edge = f.edge
-  diagonal_image : (diagonal.map ((truncation 2).map q)).edge = h.edge
-  triangle : Truncated.Edge.CompStruct first g diagonal
-  triangle_image : q.app (Opposite.op ⦋2⦌) triangle.simplex = t.simplex
-  first_isInvertible : IsInvertibleEdge (X := X) first
+  source_eq : q.app (Opposite.op ⦋0⦌) _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source = b₀
+  first : Truncated.Edge (X := (truncation 2).obj X) _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source x₁
+  diagonal : Truncated.Edge (X := (truncation 2).obj X) _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source x₂
+  first_image : (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first.map ((truncation 2).map q)).edge = f.edge
+  diagonal_image : (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.diagonal.map ((truncation 2).map q)).edge = h.edge
+  triangle : Truncated.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first g _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.diagonal
+  triangle_image : q.app (Opposite.op ⦋2⦌) _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.triangle.simplex = t.simplex
+  first_isInvertible : IsInvertibleEdge (X := X) _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first
 
 /-- 可逆な最初の辺を持つ指定三角形は、同じ指定後辺を保って全三角形として持ち上がる。 -/
 lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
@@ -121,7 +121,7 @@ lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasic
     (h : Truncated.Edge (X := (truncation 2).obj Y) b₀
       (q.app (Opposite.op ⦋0⦌) x₂))
     (t : Truncated.Edge.CompStruct f (g.map ((truncation 2).map q)) h)
-    (hf : IsInvertibleEdge (X := Y) f) : Nonempty (LeftFractionTriangleLift q g f h t) := by
+    (hf : IsInvertibleEdge (X := Y) f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift q g f h t) := by
   obtain ⟨F, hF₁, hFq⟩ := leftFibration_liftInvertibleEdge_target q x₁ f hf
   let σ := SSet.yonedaEquiv F
   let x₀ := X.δ 1 σ
@@ -142,7 +142,7 @@ lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasic
   let T : Truncated.Edge.CompStruct (u.map ((truncation 2).map q))
       (g.map ((truncation 2).map q)) v :=
     ⟨t.simplex, t.d₂.trans hu.symm, t.d₀, t.d₁⟩
-  obtain ⟨w, Tw, hw⟩ := innerFibration_liftCompStruct q u g v T
+  obtain ⟨w, Tw, hw⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.innerFibration_liftCompStruct q u g v T
   have hw₁ : (w.map ((truncation 2).map q)).edge = h.edge := by
     calc
       _ = q.app (Opposite.op ⦋1⦌) (X.δ 1 Tw.simplex) :=

@@ -21,42 +21,42 @@ structure ConcreteCube where
   dimension : ℕ
 
 /-- 元の生成関数だけを射に持つ具体的な立方体圏。 -/
-instance concreteCubeCategory : Category ConcreteCube where
-  Hom X Y := {f : CubeVertex X.dimension → CubeVertex Y.dimension // CubeMapGenerated f}
-  id X := ⟨_root_.id, CubeMapGenerated.id X.dimension⟩
-  comp f g := ⟨g.val ∘ f.val, CubeMapGenerated.comp f.property g.property⟩
+instance concreteCubeCategory : Category _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where
+  Hom X Y := {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex X.dimension → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex Y.dimension // _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f}
+  id X := ⟨_root_.id, _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id X.dimension⟩
+  comp f g := ⟨g.val ∘ f.val, _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp f.property g.property⟩
   id_comp _ := Subtype.ext rfl
   comp_id _ := Subtype.ext rfl
   assoc _ _ _ := Subtype.ext rfl
 
 /-- 元の二端点の挿入を持つ、具体的な立方体圏の面。 -/
 def concreteCubeFace (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
-    ConcreteCube.mk n ⟶ ConcreteCube.mk (n + 1) :=
-  ⟨cubeVertexFace b n i, CubeMapGenerated.face b n i⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + 1) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i, _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i⟩
 
 /-- 元の座標削除を持つ、具体的な立方体圏の退化。 -/
 def concreteCubeDegeneracy (n : ℕ) (i : Fin (n + 1)) :
-    ConcreteCube.mk (n + 1) ⟶ ConcreteCube.mk n :=
-  ⟨cubeVertexDegeneracy n i, CubeMapGenerated.degeneracy n i⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i, _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i⟩
 
 /-- 元の隣接 max を持つ、具体的な立方体圏の connection。 -/
 def concreteCubeConnection (n : ℕ) (i : Fin (n + 1)) :
-    ConcreteCube.mk (n + 2) ⟶ ConcreteCube.mk (n + 1) :=
-  ⟨cubeVertexConnection n i, CubeMapGenerated.connection n i⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + 1) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i, _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i⟩
 
 /-- 具体的な立方体圏を元の頂点集合と関数へ送る関手。 -/
-def concreteCubeVertexFunctor : ConcreteCube ⥤ Type where
-  obj X := CubeVertex X.dimension
+def concreteCubeVertexFunctor : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ Type where
+  obj X := _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex X.dimension
   map f := TypeCat.ofHom f.val
 
 /-- 具体的な立方体圏の射の等号は、元の頂点関数の等号で検出される。 -/
-instance concreteCubeVertexFunctor_faithful : concreteCubeVertexFunctor.Faithful where
+instance concreteCubeVertexFunctor_faithful : _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor.Faithful where
   map_injective h := Subtype.ext (congrArg TypeCat.homEquiv h)
 
 /-- 全ての具体的な立方体の射は、元の頂点の順序を保つ。 -/
-lemma concreteCubeMap_monotone {X Y : ConcreteCube} (f : X ⟶ Y) :
+lemma concreteCubeMap_monotone {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
     Monotone f.val :=
-  cubeMapGenerated_monotone f.property
+  _root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_monotone f.property
 
 end SerrePositivity.InfinityCategories.Kan
 

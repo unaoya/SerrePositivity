@@ -13,7 +13,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の scaffold 比較と native 表現の指定分類成分を用いる実分類比較。 -/
 def candidateClassificationIso :
@@ -25,22 +25,22 @@ def candidateClassificationIso :
 /-- 指定分類比較は、元の係数点を同じ実評価点の pointed 復元像へ送る。 -/
 theorem candidateClassificationIso_pointHom (c : I)
     (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate s.candidateClassificationIso.hom (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) (nerveVertex c)
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
-        (pointedLeftStraighteningReconstruction p)
-        (pointedLeftStraighteningReconstruction_projection p) (nerveVertex c)).app
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction p)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_projection p) (nerveVertex c)).app
           (Opposite.op ⦋0⦌) ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) := by
   let a := (leftStraighteningInfinityDiagram_representationIso p
     (nativeLeftTransportRepresentation p)).inv
   let z := ULift.up.{u + 1} (nerveVertex c)
   have hs := congrArg (fun m => m ≫ functorHomEvaluate a z)
     (s.candidateNativeIso_pointHom c v)
-  have hr := pointedLeftStraighteningReconstruction_pointHom p (nerveVertex c)
+  have hr := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_pointHom p (nerveVertex c)
     ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)
   rw [nativeLeftTransportComparison_pointedImage] at hr
   have h := hs.trans hr
@@ -54,24 +54,24 @@ def leftStraighteningCandidate_classificationIso
     {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] :
     FunctorIso (leftStraighteningCandidate p) (leftStraighteningInfinityDiagram p) :=
-  (scaffoldTransportComparisonSpan p).candidateClassificationIso
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateClassificationIso
 
 /-- 指定分類比較は、元の係数点を同じ実評価点の pointed 復元像へ送る。 -/
 theorem leftStraighteningCandidate_classificationIso_pointHom
     {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] (c : I)
     (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate (leftStraighteningCandidate_classificationIso p).hom
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) (nerveVertex c)
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
-        (pointedLeftStraighteningReconstruction p)
-        (pointedLeftStraighteningReconstruction_projection p) (nerveVertex c)).app
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction p)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_projection p) (nerveVertex c)).app
           (Opposite.op ⦋0⦌) ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) :=
-  (scaffoldTransportComparisonSpan p).candidateClassificationIso_pointHom c v
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateClassificationIso_pointHom c v
 
 end SerrePositivity.KST.Fibration

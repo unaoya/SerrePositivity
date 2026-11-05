@@ -35,9 +35,9 @@ def d3PointedKanPointIso (X : PointedKanObject.{u})
     (e : X.obj ≅ PointedObject.point) :
     VertexIso (coherentNerveVertex X) (coherentNerveVertex d3PointedKanPoint.{u}) := by
   let f : X ⟶ d3PointedKanPoint := ObjectProperty.homMk e.hom
-  have h : KanPiIsomorphism f.hom.right := by
-    change KanPiIsomorphism e.hom.right
-    exact kanPiIsomorphism_of_monoRight _
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.hom.right := by
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom.right
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
       ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso _)
   haveI := pointedKanObject_edge_isInvertible_of_piIsomorphism f h
   exact asIso (Truncated.HomotopyCategory.homMk (coherentNerveEdge f))
@@ -51,18 +51,18 @@ lemma d3PointedKanHomPoint_isZero (X : PointedKanObject.{u}) :
 
 /-- 通常の based path から一点への同じ全単射 RLP 射による頂点同型。 -/
 def d3PointedKanPathPointIso (X : PointedKanObject.{u}) :
-    VertexIso (coherentNerveVertex ((d3PointedKanIhom pointedInterval).obj X))
+    VertexIso (coherentNerveVertex ((d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval).obj X))
       (coherentNerveVertex d3PointedKanPoint.{u}) := by
-  let f : (d3PointedKanIhom pointedInterval).obj X ⟶ d3PointedKanPoint :=
+  let f : (d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval).obj X ⟶ d3PointedKanPoint :=
     ObjectProperty.homMk (PointedObject.toPoint (basedPathSpace X.obj))
-  have h : KanPiIsomorphism f.hom.right :=
-    kanPiIsomorphism_of_monoRight _ (basedPathSpace_toPoint_rlp X.obj)
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.hom.right :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (basedPathSpace_toPoint_rlp X.obj)
   haveI := pointedKanObject_edge_isInvertible_of_piIsomorphism f h
   exact asIso (Truncated.HomotopyCategory.homMk (coherentNerveEdge f))
 
 /-- 同じ通常 based path は、BF 置換を介さず実零頂点。 -/
 lemma d3PointedKanPath_isZero (X : PointedKanObject.{u}) :
-    IsZeroVertex (coherentNerveVertex ((d3PointedKanIhom pointedInterval).obj X)) :=
+    IsZeroVertex (coherentNerveVertex ((d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval).obj X)) :=
   d3PointedKanPoint_isZero.of_vertexIso (d3PointedKanPathPointIso X).symm
 
 /-- 実端点パラメータ全四角形族の、各角の実頂点。 -/

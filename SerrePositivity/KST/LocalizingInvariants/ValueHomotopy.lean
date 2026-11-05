@@ -23,45 +23,45 @@ local instance valueSimplicialCategory : SimplicialCategory Spectra.OmegaSpectru
   Spectra.OmegaSpectrum.simplicialCategory
 
 /-- Sp 値 ∞ 関手の指定された安定圏での実 BF 対象。 -/
-def value (E : StableInfinity.{u} ⟶ Spectra.Sp.{u}) (A : StableCategory.{u}) :
+def value (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     Spectra.OmegaSpectrum.{u} :=
   coherentNerveObject (C := Spectra.OmegaSpectrum.{u})
-    (E.app (Opposite.op ⦋0⦌) (stableVertex A))
+    (E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A))
 
 /-- 値の BF 対象を戻すと、元の Sp の同じ頂点である。 -/
-lemma value_vertex (E : StableInfinity.{u} ⟶ Spectra.Sp.{u}) (A : StableCategory.{u}) :
-    coherentNerveVertex (value E A) = E.app (Opposite.op ⦋0⦌) (stableVertex A) :=
+lemma value_vertex (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    coherentNerveVertex (value E A) = E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) :=
   coherentNerveVertex_object _
 
 /-- 完全関手の像を端点付きの BF 射として読む。 -/
-def valueMap (E : StableInfinity.{u} ⟶ Spectra.Sp.{u})
-    {A B : StableCategory.{u}} (F : ExactMap A B) : value E A ⟶ value E B :=
+def valueMap (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u})
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) : value E A ⟶ value E B :=
   coherentNerveEdgeToHom (C := Spectra.OmegaSpectrum.{u})
-    (((stableArrow F).map E).ofEq (value_vertex E A).symm (value_vertex E B).symm)
+    (((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).map E).ofEq (value_vertex E A).symm (value_vertex E B).symm)
 
 /-- 戻した BF 射の辺は、元の関手が写した Sp の同じ一単体。 -/
-lemma valueMap_edge (E : StableInfinity.{u} ⟶ Spectra.Sp.{u})
-    {A B : StableCategory.{u}} (F : ExactMap A B) :
+lemma valueMap_edge (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u})
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     (coherentNerveEdge (valueMap E F)).edge =
-      E.app (Opposite.op ⦋1⦌) (stableArrow F).edge :=
+      E.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).edge :=
   congrArg SSet.Edge.edge (coherentNerveEdge_hom
-    (((stableArrow F).map E).ofEq (value_vertex E A).symm (value_vertex E B).symm))
+    (((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).map E).ofEq (value_vertex E A).symm (value_vertex E B).symm))
 
 /-- 指定された安定圏での全整数次数の群。 -/
-abbrev valueHomotopyGroup (E : StableInfinity.{u} ⟶ Spectra.Sp.{u})
-    (A : StableCategory.{u}) (j : ℤ) := Spectra.OmegaSpectrum.homotopyGroup (value E A) j
+abbrev valueHomotopyGroup (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u})
+    (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (j : ℤ) := Spectra.OmegaSpectrum.homotopyGroup (value E A) j
 
 /-- 誘導された群準同型は元の Sp の辺から復元した BF 射のもの。 -/
-def valueHomotopyMap (E : StableInfinity.{u} ⟶ Spectra.Sp.{u})
-    {A B : StableCategory.{u}} (F : ExactMap A B) (j : ℤ) :
+def valueHomotopyMap (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u})
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (j : ℤ) :
     valueHomotopyGroup E A j →* valueHomotopyGroup E B j :=
   Spectra.OmegaSpectrum.homotopyMap (valueMap E F) j
 
 /-- 全整数 π の同型性は局所化不変量の元の像の辺の同値性を検出する。 -/
-theorem value_isInvertible_of_piIsomorphism (E : StableInfinity.{u} ⟶ Spectra.Sp.{u})
-    {A B : StableCategory.{u}} (F : ExactMap A B)
+theorem value_isInvertible_of_piIsomorphism (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u})
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hF : ∀ j : ℤ, Function.Bijective (valueHomotopyMap E F j)) :
-    IsInvertibleEdge ((stableArrow F).map E).toTruncated := by
+    IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).map E).toTruncated := by
   have h := Spectra.OmegaSpectrum.isInvertible_of_piIsomorphism (valueMap E F) hF
   exact (isInvertibleEdge_congr (valueMap_edge E F)).mp h
 

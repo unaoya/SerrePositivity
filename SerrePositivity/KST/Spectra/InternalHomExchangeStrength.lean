@@ -20,9 +20,9 @@ namespace SerrePositivity.KST.Spectra.InternalHomExchange
 @[reassoc]
 lemma suspension_strength (X A Y : PointedSimplicialSet.{u}) :
     suspensionHom X ((ihom A).obj Y) ≫
-        (ihom (suspension X)).map (HomTensorStrength.map PointedSimplicialSet.circle.{u} A Y) ≫
-        (iso (suspension X) A (suspension Y)).hom =
-      (iso X A Y).hom ≫ (ihom A).map (suspensionHom X Y) :=
-  tensorHom_strength PointedSimplicialSet.circle.{u} X A Y
+        (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} A Y) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso X A Y).hom ≫ (ihom A).map (suspensionHom X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_strength PointedSimplicialSet.circle.{u} X A Y
 
 end SerrePositivity.KST.Spectra.InternalHomExchange

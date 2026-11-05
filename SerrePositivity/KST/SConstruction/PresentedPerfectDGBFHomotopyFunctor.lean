@@ -22,7 +22,7 @@ local instance presentedPerfectDGBFOrdinaryTarget_simplicialCategory :
 /-- 同じ実 BF 厳密豊穣関手から取り出した通常のスペクトル値関手。 -/
 def presentedPerfectDGBFOrdinaryFunctor :
     PerfDGInput.{u, v} A ⥤ OmegaSpectrum.{max (u + 1) v} :=
-  strictSimplicialOrdinaryFunctor (presentedPerfectDGBFEnrichedFunctor A)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor (presentedPerfectDGBFEnrichedFunctor A)
 
 /-- 通常射の像は同じ元の厳密 dg 関手による実 BF 射。 -/
 lemma presentedPerfectDGBFOrdinaryFunctor_map

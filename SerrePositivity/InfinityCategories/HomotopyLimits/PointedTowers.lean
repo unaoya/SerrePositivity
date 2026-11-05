@@ -26,7 +26,7 @@ noncomputable section
 使われ方：スペクトルの極限の各段。 -/
 def pointedTowerLimit (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) : PointedSimplicialSet.{u} :=
-  Under.mk (FibrationTower.lift (fun n ↦ (X n).right) (fun n ↦ (d n).right)
+  Under.mk (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift (fun n ↦ (X n).right) (fun n ↦ (d n).right)
     (fun n ↦ (X n).hom) (fun n ↦ Under.w (d n)))
 
 /-- 概要：Kan な初段と fibration の遷移を持つ点つき塔の極限は Kan。
@@ -35,7 +35,7 @@ def pointedTowerLimit (X : ℕ → PointedSimplicialSet.{u})
 使われ方：Sp の塔の各段と随伴比較の全基点 π_* 同型性。 -/
 instance pointedTowerLimit_kanComplex (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n, Fibration (d n).right] [KanComplex (X 0).right] :
-    KanComplex (pointedTowerLimit X d).right := FibrationTower.limit_kanComplex _ _
+    KanComplex (pointedTowerLimit X d).right := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex _ _
 
 /-- 概要：点つき塔の極限から各段への射影。
 方針：整合族の評価を基点保存付きで束ねる。
@@ -43,7 +43,7 @@ instance pointedTowerLimit_kanComplex (X : ℕ → PointedSimplicialSet.{u})
 使われ方：極限の構造射と錐の脚。 -/
 def pointedTowerProjection (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) (n : ℕ) : pointedTowerLimit X d ⟶ X n :=
-  Under.homMk (FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (d n).right) n)
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (d n).right) n)
     (by rfl)
 
 /-- 概要：点つき極限の射影は隣接遷移と可換。
@@ -54,7 +54,7 @@ lemma pointedTowerProjection_comp (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) (n : ℕ) :
     pointedTowerProjection X d (n + 1) ≫ d n = pointedTowerProjection X d n := by
   apply Under.UnderMorphism.ext
-  exact FibrationTower.projection_comp (fun n ↦ (X n).right) (fun n ↦ (d n).right) n
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp (fun n ↦ (X n).right) (fun n ↦ (d n).right) n
 
 /-- 概要：整合する点つき射の族を点つき塔の極限へ持ち上げる。
 方針：基礎射を持ち上げ、全射影の後で基点保存を確認する。
@@ -63,9 +63,9 @@ lemma pointedTowerProjection_comp (X : ℕ → PointedSimplicialSet.{u})
 def pointedTowerLift {A : PointedSimplicialSet.{u}} (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) (f : ∀ n, A ⟶ X n)
     (hf : ∀ n, f (n + 1) ≫ d n = f n) : A ⟶ pointedTowerLimit X d :=
-  Under.homMk (FibrationTower.lift (fun n ↦ (X n).right) (fun n ↦ (d n).right)
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift (fun n ↦ (X n).right) (fun n ↦ (d n).right)
     (fun n ↦ (f n).right) (fun n ↦ congrArg Under.Hom.right (hf n))) (by
-      apply FibrationTower.hom_ext
+      apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
       intro n
       rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection, Under.w]
       rfl)
@@ -79,7 +79,7 @@ lemma pointedTowerLift_projection {A : PointedSimplicialSet.{u}}
     (f : ∀ n, A ⟶ X n) (hf : ∀ n, f (n + 1) ≫ d n = f n) (n : ℕ) :
     pointedTowerLift X d f hf ≫ pointedTowerProjection X d n = f n := by
   apply Under.UnderMorphism.ext
-  exact FibrationTower.lift_projection (fun n ↦ (X n).right) (fun n ↦ (d n).right)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection (fun n ↦ (X n).right) (fun n ↦ (d n).right)
     (fun n ↦ (f n).right) (fun n ↦ congrArg Under.Hom.right (hf n)) n
 
 /-- 概要：点つき塔の極限への射は全射影で決まる。
@@ -91,7 +91,7 @@ lemma pointedTowerLimit_hom_ext {A : PointedSimplicialSet.{u}}
     {f g : A ⟶ pointedTowerLimit X d}
     (h : ∀ n, f ≫ pointedTowerProjection X d n = g ≫ pointedTowerProjection X d n) : f = g := by
   apply Under.UnderMorphism.ext
-  apply FibrationTower.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
   intro n
   exact congrArg Under.Hom.right (h n)
 

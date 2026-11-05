@@ -24,7 +24,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の全 S• 実現の同じ一点への実射は、零対象による各段の収縮から可逆。 -/
-theorem fullSRealization_toPoint_localized_isIso (A : StableCategory.{u}) :
+theorem fullSRealization_toPoint_localized_isIso (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from
       (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)))) := by
   let F := simplicialSConstruction A.obj
@@ -41,14 +41,14 @@ theorem fullSRealization_toPoint_localized_isIso (A : StableCategory.{u}) :
   infer_instance
 
 /-- 全 S• の元の実 Ex∞ Kan 頂点は、同じ一点射により終対象。 -/
-theorem fullSRealizationKanObject_isTerminal (A : StableCategory.{u}) :
+theorem fullSRealizationKanObject_isTerminal (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     IsTerminalVertex (coherentNerveVertex (fullSRealizationKanObject A)) :=
   exInfinityVertex_isTerminal_of_localized_toPoint _
     (fullSRealization_toPoint_localized_isIso A)
 
 /-- 指定した零圏への全 S• 実射そのものが局所化可逆。 -/
-theorem zeroFunctorFullSMap_localized_isIso {A Z : StableCategory.{u}} (F : ExactMap A Z)
-    (hF : IsZeroVertex (functorVertex F.hom)) (hZ : IsZeroCategory Z) :
+theorem zeroFunctorFullSMap_localized_isIso {A Z : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A Z)
+    (hF : IsZeroVertex (functorVertex F.hom)) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
   let Q := AnodyneHomotopy.anodyneQ.{u}
@@ -62,14 +62,14 @@ theorem zeroFunctorFullSMap_localized_isIso {A Z : StableCategory.{u}} (F : Exac
   exact (isIso_comp_right_iff _ _).mp hc
 
 /-- 元の指定左辺を全 S• に作用させた同じ実 Kan 射。 -/
-def verdierFullSZeroCornerKanMap (d : VerdierDiagram.{u}) :
+def verdierFullSZeroCornerKanMap (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     fullSRealizationKanObject d.left ⟶
-      stableCoreSingleKanObject (show StableQCat from stableObject (squareVertex d.square 0 1)) :=
+      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) :=
   exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (verdierLeftExactMap d) (verdierLeftExactMap_zero d)))
 
 /-- 同じ元の全 S• 零角比較の coherent 辺は可逆。 -/
-theorem verdierFullSZeroCornerKanMap_isInvertible (d : VerdierDiagram.{u}) :
+theorem verdierFullSZeroCornerKanMap_isInvertible (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     IsInvertibleEdge (coherentNerveEdge (verdierFullSZeroCornerKanMap d)) := by
   apply coherentKanEdge_isInvertible_of_isQCatEquivalence
   apply isQCatEquivalence_of_anodyneQ_isIso
@@ -77,8 +77,8 @@ theorem verdierFullSZeroCornerKanMap_isInvertible (d : VerdierDiagram.{u}) :
     (zeroFunctorFullSMap_localized_isIso _ _ d.zero_corner)
 
 /-- 元の実左辺は、元の core 包含と同じ実可逆零角比較の厳密合成。 -/
-theorem verdierFullSZeroCornerKanMap_left (d : VerdierDiagram.{u}) :
-    exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)) ≫
+theorem verdierFullSZeroCornerKanMap_left (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)) ≫
         verdierFullSZeroCornerKanMap d =
       exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierLeftExactMap d))) := by
   change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
@@ -88,14 +88,14 @@ theorem verdierFullSZeroCornerKanMap_left (d : VerdierDiagram.{u}) :
       zeroFunctorFullSMap_core (𝟙 d.left.obj) (verdierLeftExactMap d) (verdierLeftExactMap_zero d))
 
 /-- 零角比較と元の指定上辺の合成も、同じ上側合成の実全 S• 射に厳密一致する。 -/
-theorem verdierFullSZeroCornerKanMap_top (d : VerdierDiagram.{u}) :
+theorem verdierFullSZeroCornerKanMap_top (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     verdierFullSZeroCornerKanMap d ≫
         (show stableCoreSingleKanObject
-          (show StableQCat from stableObject (squareVertex d.square 0 1)) ⟶
-            stableCoreSingleKanObject (show StableQCat from d.right) from
+          (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) ⟶
+            stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
           exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierTopExactMap d)))) =
       (show fullSRealizationKanObject d.left ⟶
-        stableCoreSingleKanObject (show StableQCat from d.right) from
+        stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
           exInfinity.map (simplicialDiagonalFunctor.map
             (zeroFunctorFullSMap (verdierNullCompositeOriginalMap d 0) (verdierUpperComposite_zero d)))) := by
   change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _

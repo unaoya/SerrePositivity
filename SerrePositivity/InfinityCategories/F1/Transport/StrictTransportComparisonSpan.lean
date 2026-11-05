@@ -23,30 +23,30 @@ open SerrePositivity.KST.Fibration
 structure StrictTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] where
   total : SSet.{u}
-  projection : total ⟶ nerve I
-  source : total ⟶ E
-  weighted : total ⟶ leftStrictTransportWeightedNerve p
-  inner : InnerFibration projection
-  source_over : source ≫ p = projection
-  weighted_over : weighted ≫ leftStrictTransportWeightedProjection p = projection
-  source_equivalence : IsPrecompositionEquivalence source
-  weighted_equivalence : IsPrecompositionEquivalence weighted
+  projection : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ nerve I
+  source : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ E
+  weighted : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ leftStrictTransportWeightedNerve p
+  inner : InnerFibration _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
+  source_over : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.source ≫ p = _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
+  weighted_over : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.weighted ≫ leftStrictTransportWeightedProjection p = _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
+  source_equivalence : IsPrecompositionEquivalence _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.source
+  weighted_equivalence : IsPrecompositionEquivalence _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.weighted
 
 /-- 構成済みの strict 復元 span を、元の二脚を保持するデータとして受け取る。 -/
 theorem nonempty_strictTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}
-    (p : E ⟶ nerve I) [LeftFibration p] : Nonempty (StrictTransportComparisonSpan p) := by
+    (p : E ⟶ nerve I) [LeftFibration p] : Nonempty (_root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p) := by
   obtain ⟨Z, t, a, b, ht, ha, hb, ea, eb⟩ := exists_leftStrictTransport_reconstruction_span p
   exact ⟨⟨Z, t, a, b, ht, ha, hb, ea, eb⟩⟩
 
 /-- 選択する対象に元の全空間・二脚・底上の条件をすべて含める。 -/
 def strictTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}
-    (p : E ⟶ nerve I) [LeftFibration p] : StrictTransportComparisonSpan p :=
-  Classical.choice (nonempty_strictTransportComparisonSpan p)
+    (p : E ⟶ nerve I) [LeftFibration p] : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p :=
+  Classical.choice (_root_.SerrePositivity.InfinityCategories.F1.Transport.nonempty_strictTransportComparisonSpan p)
 
 namespace StrictTransportComparisonSpan
-open SerrePositivity.KST.Fibration.StrictTransportComparisonSpan
+open _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : StrictTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p)
 
 /-- coherent な復元の元の共通底。 -/
 def coherentBase : (SSet.uliftFunctor.{u + 1, u}).obj s.total ⟶
@@ -66,13 +66,13 @@ def coherentTarget : (SSet.uliftFunctor.{u + 1, u}).obj s.total ⟶
 /-- 持ち上げた同じ source 脚は、元の共通底を厳密に保つ。 -/
 theorem coherentSource_over :
     s.coherentSource ≫ (SSet.uliftFunctor.{u + 1, u}).map p = s.coherentBase := by
-  rw [coherentSource, coherentBase, ← Functor.map_comp, s.source_over]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentSource, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentBase, ← Functor.map_comp, s.source_over]
 
 /-- 同じ weighted 比較を通る target 脚も、元の共通底を厳密に保つ。 -/
 theorem coherentTarget_over :
     s.coherentTarget ≫ leftUnstraighteningProjection (leftCoherentTransport p) =
       s.coherentBase := by
-  rw [coherentTarget, Category.assoc, leftCoherentTransportComparison_projection,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentTarget, Category.assoc, leftCoherentTransportComparison_projection,
     ← Functor.map_comp, s.weighted_over]
   rfl
 

@@ -51,7 +51,7 @@ def simplexPrepend {m n : SimplexCategory} (θ : m ⟶ n) : ⦋m.len + 1⦌ ⟶ 
 使われ方：収縮の新しい頂点の計算。
 -/
 @[simp] theorem simplexPrepend_zero {m n : SimplexCategory} (θ : m ⟶ n) :
-    (simplexPrepend θ).toOrderHom 0 = 0 := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).toOrderHom 0 = 0 := rfl
 
 /--
 概要：既存の頂点の後続点は元の像の後続点へ写る。
@@ -60,7 +60,7 @@ def simplexPrepend {m n : SimplexCategory} (θ : m ⟶ n) : ⦋m.len + 1⦌ ⟶ 
 使われ方：面・退化との等式を各頂点で計算する。
 -/
 @[simp] theorem simplexPrepend_succ {m n : SimplexCategory} (θ : m ⟶ n) (i : Fin (m.len + 1)) :
-    (simplexPrepend θ).toOrderHom i.succ = (θ.toOrderHom i).succ := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).toOrderHom i.succ = (θ.toOrderHom i).succ := rfl
 
 /--
 概要：先頭追加は射の合成を保つ。
@@ -69,7 +69,7 @@ def simplexPrepend {m n : SimplexCategory} (θ : m ⟶ n) : ⦋m.len + 1⦌ ⟶ 
 使われ方：像の全射・単射分解を拡張する。
 -/
 @[simp] theorem simplexPrepend_comp {l m n : SimplexCategory} (θ : l ⟶ m) (φ : m ⟶ n) :
-    simplexPrepend (θ ≫ φ) = simplexPrepend θ ≫ simplexPrepend φ := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (θ ≫ φ) = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend φ := by
   ext i : 3
   cases i using Fin.cases <;> rfl
 
@@ -79,7 +79,7 @@ def simplexPrepend {m n : SimplexCategory} (θ : m ⟶ n) : ⦋m.len + 1⦌ ⟶ 
 規約：拡張後の次元の恒等射となる。
 使われ方：全射が恒等射の標準形。
 -/
-@[simp] theorem simplexPrepend_id (n : ℕ) : simplexPrepend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
+@[simp] theorem simplexPrepend_id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
   ext i : 3
   cases i using Fin.cases <;> rfl
 
@@ -90,7 +90,7 @@ def simplexPrepend {m n : SimplexCategory} (θ : m ⟶ n) : ⦋m.len + 1⦌ ⟶ 
 使われ方：拡張した標準形の全射性。
 -/
 instance simplexPrepend_epi {m n : SimplexCategory} (θ : m ⟶ n) [Epi θ] :
-    Epi (simplexPrepend θ) := by
+    Epi (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ) := by
   apply SimplexCategory.epi_iff_surjective.mpr
   intro j
   cases j using Fin.cases with
@@ -106,7 +106,7 @@ instance simplexPrepend_epi {m n : SimplexCategory} (θ : m ⟶ n) [Epi θ] :
 使われ方：像の単射部分を拡張して正規化を計算する。
 -/
 instance simplexPrepend_mono {m n : SimplexCategory} (θ : m ⟶ n) [Mono θ] :
-    Mono (simplexPrepend θ) := by
+    Mono (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ) := by
   apply SimplexCategory.mono_iff_injective.mpr
   intro i j h
   cases i using Fin.cases <;> cases j using Fin.cases

@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 /-- 元の積上の相対回収は、同じ関手図式の slice 内の全錐同型付き回収を与える。 -/
 lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (q : X ⟶ Y)
-    (S : SSet.{u}) (hs : HasVerdierRelativeConeRecovery q S)
+    (S : SSet.{u}) (hs : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q S)
     (K : SSet.{u}) [K.Finite] (p : K ⟶ (ihom S).obj X)
     (t : JoinCone (p ≫ (ihom S).map q)) :
     ∃ c : JoinCone p, Nonempty (VertexIso (X := sliceOver (p ≫ (ihom S).map q))
@@ -52,11 +52,11 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
   have : Mono (j ▷ S) := (tensorRight S).map_mono j
   have hd : (j ▷ S) ≫ (d.diagram ≫ q) = P ≫ q := by
     rw [← Category.assoc, d.boundary]
-  obtain ⟨E⟩ := fixedDiagramVertexIso_of_relativeHomotopy (j ▷ S) (P ≫ q)
+  obtain ⟨E⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy (j ▷ S) (P ≫ q)
     (d.diagram ≫ q) H hd hb d.comparison d.fixed d.invertible
   let r := (pre (j ▷ S)).app Y
-  let U := relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y
-  have hbase : (relativeConeProductCurryIso K S Y).hom.app (Opposite.op ⦋0⦌)
+  let U := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y
+  have hbase : (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso K S Y).hom.app (Opposite.op ⦋0⦌)
       (functorVertex (P ≫ q)) = functorVertex (p ≫ (ihom S).map q) := by
     rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_vertex]
     apply congrArg functorVertex
@@ -68,11 +68,11 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
       (functorVertex (p ≫ (ihom S).map q))
       (vertexFiberι r (functorVertex (P ≫ q)) ≫ U.hom) (by
         change vertexFiberι r (functorVertex (P ≫ q)) ≫
-          ((relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y).hom ≫
+          ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y).hom ≫
             (pre j).app ((ihom S).obj Y)) = _
         rw [← _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_pre j]
         change vertexFiberι r (functorVertex (P ≫ q)) ≫
-          (r ≫ (relativeConeProductCurryIso K S Y).hom) = _
+          (r ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso K S Y).hom) = _
         rw [← Category.assoc, vertexFiberι_comp, SSet.const_comp, hbase])
   have hmc : m.app (Opposite.op ⦋0⦌) (fixedDiagramVertex (j ▷ S) (P ≫ q)
       (d.diagram ≫ q) hd) = (sliceConeFamilyMap (p ≫ (ihom S).map q)).app

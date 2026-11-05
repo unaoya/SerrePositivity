@@ -82,7 +82,7 @@ def ofHomotopy (H : SSet.Homotopy f.right g.right)
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom)
     (hvertical : H.h ≫ p.right = fst T.right (Δ[1] : SSet.{u}) ≫ f.right ≫ p.right) :
     VerticalPath p f g where
-  path := paramCurry T E H.h hbase
+  path := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry T E H.h hbase
   zero := paramCurry_homotopy_zero H hbase
   one := paramCurry_homotopy_one H hbase
   over := by

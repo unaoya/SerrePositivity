@@ -34,24 +34,24 @@ def squareFrameEdgesHomotopy {X : SSet.{u}} [Quasicategory X] {x y x' z : X _⦋
       Truncated.HomotopyCategory.homMk l'.toTruncated)
     (hr : Truncated.HomotopyCategory.homMk r.toTruncated =
       Truncated.HomotopyCategory.homMk r'.toTruncated) :
-    SquareFrameHomotopy (squareFrameOfEdges b t l r) (squareFrameOfEdges b' t' l' r') := by
-  let B := fixedEndpointHomotopy b b' hb
-  let T := fixedEndpointHomotopy t t' ht
-  let L := fixedEndpointHomotopy l l' hl
-  let R := fixedEndpointHomotopy r r' hr
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges b t l r) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges b' t' l' r') := by
+  let B := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedEndpointHomotopy b b' hb
+  let T := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedEndpointHomotopy t t' ht
+  let L := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedEndpointHomotopy l l' hl
+  let R := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedEndpointHomotopy r r' hr
   exact {
-    bottom := B.homotopy
-    top := T.homotopy
-    left := L.homotopy
-    right := R.homotopy
-    lower_left := B.source.trans L.source.symm
-    lower_right := B.target.trans R.source.symm
-    upper_left := T.source.trans L.target.symm
-    upper_right := T.target.trans R.target.symm
-    bottom_invertible := B.invertible
-    top_invertible := T.invertible
-    left_invertible := L.invertible
-    right_invertible := R.invertible }
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom := B.homotopy
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top := T.homotopy
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left := L.homotopy
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right := R.homotopy
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_left := B.source.trans L.source.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_right := B.target.trans R.source.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_left := T.source.trans L.target.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_right := T.target.trans R.target.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom_invertible := B.invertible
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top_invertible := T.invertible
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left_invertible := L.invertible
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right_invertible := R.invertible }
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory
 

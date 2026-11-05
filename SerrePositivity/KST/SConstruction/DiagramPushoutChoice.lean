@@ -39,7 +39,7 @@ lemma flipFamily_evaluate {K A C : SSet.{u}} (F : K ⟶ (ihom A).obj C) (k : K _
 規約：全 span の内部 Hom 上の一つの単体的射。使われ方：任意の図式圏で共通に使う選択。 -/
 def normalizedPushoutSquareChoice (C : SSet.{u}) [Quasicategory C] [IsStable C] :
     (ihom (horn 2 0 : SSet.{u})).obj C ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C :=
-  jointNormalizedPushoutSection C ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι
+  jointNormalizedPushoutSection C ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι
 
 /-- 概要：選んだ四角形の族は入力 span を厳密に回収する。
 方針：正規化した切断の射影の式。

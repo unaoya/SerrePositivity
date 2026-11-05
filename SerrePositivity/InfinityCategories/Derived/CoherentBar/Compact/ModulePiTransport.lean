@@ -98,16 +98,16 @@ lemma dgBarCompactModulePathHomotopy_boundary (n : ℕ)
 
 lemma dgBarCompactModulePiTransport [KanComplex (moduleUnderlyingSSet W)]
     (n : ℕ) {x y : W.obj (op ⦋0⦌)} (e : (moduleUnderlyingSSet W).Edge x y)
-    (a : KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
     dgBarCompactPiTransport n e
-      (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
         (moduleTranslationIso_zero W x) a)
-      (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W y)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W y)
         (moduleTranslationIso_zero W y) a) := by
   induction a using Quotient.inductionOn with
   | h f =>
-    refine ⟨mapSimplex _ (moduleTranslationIso_zero W x) f,
-      mapSimplex _ (moduleTranslationIso_zero W y) f, rfl, rfl,
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex _ (moduleTranslationIso_zero W x) f,
+      _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex _ (moduleTranslationIso_zero W y) f, rfl, rfl,
       dgBarCompactModulePathHomotopy W f.map e, ?_⟩
     exact dgBarCompactModulePathHomotopy_boundary W n f e
 

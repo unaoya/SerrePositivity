@@ -19,16 +19,16 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u})
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
-  LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ
+  _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ
 
 lemma vertex00 : squareVertex (square Φ p q i r h) 0 0 = coherentNerveVertex (value Φ A) := by
-  have ht := squareBottomEdge_source (LaxUniversalDifference.comparisonSquare p q i r h)
+  have ht := squareBottomEdge_source (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h)
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
     (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).src_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
@@ -36,14 +36,14 @@ lemma vertex00 : squareVertex (square Φ p q i r h) 0 0 = coherentNerveVertex (v
 
 lemma vertex10 : squareVertex (square Φ p q i r h) 1 0 =
     coherentNerveVertex (value Φ (laxCategory p q)) := by
-  have ht := squareBottomEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
+  have ht := squareBottomEdge_target (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h)
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
     (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
     (value_vertex Φ (laxCategory p q)).symm
 
 lemma vertex01 : squareVertex (square Φ p q i r h) 0 1 = coherentNerveVertex (value Φ Q) := by
-  have ht := squareLeftEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
+  have ht := squareLeftEdge_target (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h)
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left, Equiv.apply_symm_apply,
     (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r)).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
@@ -51,7 +51,7 @@ lemma vertex01 : squareVertex (square Φ p q i r h) 0 1 = coherentNerveVertex (v
 
 lemma vertex11 : squareVertex (square Φ p q i r h) 1 1 =
     coherentNerveVertex (value Φ (laxCategory (𝟙 Q) (𝟙 Q))) := by
-  have ht := squareRightEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
+  have ht := squareRightEdge_target (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h)
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right, Equiv.apply_symm_apply,
     (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (LaxUniversalDifference.exactLift p q r)).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans

@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma exists_tammeOreSpanLift
     (S : (horn 2 0 : SSet.{u}) ⟶ (laxCategory p q).obj)
@@ -30,11 +30,11 @@ lemma exists_tammeOreSpanLift
     let X := (laxCategory p q).obj
     let W := tammeLocalizingEdges p q
     let x := (horn₂₀.ι₀₁ ≫ S).app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
-    ∃ (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (G : (Δ[1] : SSet.{u}) ⟶ markedSpanFamily X W x),
+    ∃ (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (G : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x),
       IsPullbackSquare R ∧ squareTopEdge ≫ R = SSet.yonedaEquiv.symm s.edge ∧
       stdSimplex.δ (0 : Fin 2) ≫ G ≫ vertexFiberι (markedSpanSource X W) x ≫
         markedSpanInclusion X W = SSet.const (functorVertex S) ∧
-      G ≫ markedSpanFamilyProjection X W x = SSet.yonedaEquiv.symm s.edge ∧
+      G ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x = SSet.yonedaEquiv.symm s.edge ∧
       G ≫ vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
         (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R := by
   dsimp only

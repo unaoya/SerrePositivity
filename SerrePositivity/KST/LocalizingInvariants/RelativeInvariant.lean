@@ -19,45 +19,45 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- ν で零となる提示頂点を同じ E の零頂点へ送る。 -/
 def PreservesRelativeZeroCategories {S : SSet.{u + 1}}
-    (ν : S ⟶ StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop :=
-  ∀ a : S _⦋0⦌, IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) a)) →
+    (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop :=
+  ∀ a : S _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app (Opposite.op ⦋0⦌) a)) →
     IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)
 
 /-- ν の像が Verdier である S 内の四角形を、E が実 fiber 四角形へ送る条件。 -/
 structure IsRelativeLocalizingInvariant {S : SSet.{u + 1}}
-    (ν : S ⟶ StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop where
+    (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop where
   preservesZero : PreservesRelativeZeroCategories ν E
-  preservesVerdier (d : RelativeVerdierDiagram ν) : IsPullbackSquare (d.square ≫ E)
+  preservesVerdier (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν) : IsPullbackSquare (d.square ≫ E)
 
 /-- 提示源と値関手を保つ局所化不変量。 -/
 structure RelativeLocalizingInvariant {S : SSet.{u + 1}}
-    (ν : S ⟶ StableInfinity.{u}) where
+    (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) where
   hom : S ⟶ Spectra.Sp.{u}
   isLocalizing : IsRelativeLocalizingInvariant ν hom
 
 namespace IsRelativeLocalizingInvariant
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}} {E : S ⟶ Spectra.Sp.{u}}
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} {E : S ⟶ Spectra.Sp.{u}}
   (hE : IsRelativeLocalizingInvariant ν E)
 
 /-- 元の S 内の四角形の値を、その零角を保って Sp の三角形とする。 -/
-def fiberTriangle (d : RelativeVerdierDiagram ν) : ZeroTriangle Spectra.Sp.{u} where
+def fiberTriangle (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν) : ZeroTriangle Spectra.Sp.{u} where
   square := d.square ≫ E
   zero_corner := hE.preservesZero _ d.zero_corner
 
-lemma fiberTriangle_isFiber (d : RelativeVerdierDiagram ν) :
+lemma fiberTriangle_isFiber (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν) :
     IsFiberSequence (hE.fiberTriangle d) := hE.preservesVerdier d
 
 end IsRelativeLocalizingInvariant
 
 /-- 既存の絶対条件は恒等提示での相対条件と同値。 -/
-lemma isRelativeLocalizingInvariant_id_iff (E : StableInfinity.{u} ⟶ Spectra.Sp.{u}) :
-    IsRelativeLocalizingInvariant (𝟙 StableInfinity.{u}) E ↔ IsLocalizingInvariant E := by
+lemma isRelativeLocalizingInvariant_id_iff (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    IsRelativeLocalizingInvariant (𝟙 _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) E ↔ IsLocalizingInvariant E := by
   constructor
   · intro h
-    refine ⟨?_, fun d => h.preservesVerdier (RelativeVerdierDiagram.ofAbsolute d)⟩
+    refine ⟨?_, fun d => h.preservesVerdier (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofAbsolute d)⟩
     intro A hA
-    apply h.preservesZero (stableVertex A)
-    change IsZeroCategory (stableObject (stableVertex A))
+    apply h.preservesZero (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A)
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A))
     exact hA
   · intro h
     refine ⟨fun a ha => h.zero_vertex a ha, ?_⟩
@@ -67,8 +67,8 @@ lemma isRelativeLocalizingInvariant_id_iff (E : StableInfinity.{u} ⟶ Spectra.S
     exact h.preservesVerdier d.image
 
 /-- 絶対不変量の制限は相対不変量。ただし逆向きの延長は要求しない。 -/
-lemma IsLocalizingInvariant.relative {E : StableInfinity.{u} ⟶ Spectra.Sp.{u}}
-    (hE : IsLocalizingInvariant E) {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u}) :
+lemma IsLocalizingInvariant.relative {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}}
+    (hE : IsLocalizingInvariant E) {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) :
     IsRelativeLocalizingInvariant ν (ν ≫ E) := by
   refine ⟨fun a ha => hE.zero_vertex _ ha, ?_⟩
   intro d
@@ -77,12 +77,12 @@ lemma IsLocalizingInvariant.relative {E : StableInfinity.{u} ⟶ Spectra.Sp.{u}}
 
 /-- 相対条件は提示源の変更に沿って制限できる。 -/
 lemma IsRelativeLocalizingInvariant.precomp {S T : SSet.{u + 1}}
-    {ν : S ⟶ StableInfinity.{u}} {E : S ⟶ Spectra.Sp.{u}}
+    {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} {E : S ⟶ Spectra.Sp.{u}}
     (hE : IsRelativeLocalizingInvariant ν E) (ρ : T ⟶ S) :
     IsRelativeLocalizingInvariant (ρ ≫ ν) (ρ ≫ E) := by
   refine ⟨fun a ha => hE.preservesZero _ ha, ?_⟩
   intro d
-  let d' : RelativeVerdierDiagram ν :=
+  let d' : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν :=
     ⟨d.square ≫ ρ, d.image, (Category.assoc _ _ _).trans d.image_eq⟩
   exact hE.preservesVerdier d'
 

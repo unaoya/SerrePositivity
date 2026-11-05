@@ -17,33 +17,33 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の射の零頂点と全ての一座標頂点での値。 -/
-def concreteCubeSignature {X Y : ConcreteCube} (f : X ⟶ Y) :
-    CubeVertex Y.dimension × (Fin X.dimension → CubeVertex Y.dimension) :=
-  (f.val ⊥, fun i => f.val (cubeVertexAtom X.dimension i))
+def concreteCubeSignature {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex Y.dimension × (Fin X.dimension → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex Y.dimension) :=
+  (f.val ⊥, fun i => f.val (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom X.dimension i))
 
 /-- 元の具体的な射は、その有限 signature から全頂点で回収される。 -/
-lemma concreteCubeMap_eval {X Y : ConcreteCube} (f : X ⟶ Y) (x : CubeVertex X.dimension) :
-    f.val x = (concreteCubeSignature f).1 ⊔
-      (cubeVertexSupport x).sup (concreteCubeSignature f).2 :=
-  cubeJoinMap_eval (cubeMapGenerated_sup f.property) x
+lemma concreteCubeMap_eval {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex X.dimension) :
+    f.val x = (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature f).1 ⊔
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x).sup (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature f).2 :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup f.property) x
 
 /-- 具体的な射の signature は単射で、語の表示を持ち込まずに射の等号を検出する。 -/
-lemma concreteCubeSignature_injective (X Y : ConcreteCube) :
-    Function.Injective (concreteCubeSignature (X := X) (Y := Y)) := by
+lemma concreteCubeSignature_injective (X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature (X := X) (Y := Y)) := by
   intro f g h
   apply Subtype.ext
-  exact cubeMapGenerated_ext f.property g.property (congrArg Prod.fst h)
+  exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_ext f.property g.property (congrArg Prod.fst h)
     (fun i => congrFun (congrArg Prod.snd h) i)
 
 /-- 元の射の等号は、有限 signature の等号と同値。 -/
-lemma concreteCubeSignature_eq_iff {X Y : ConcreteCube} (f g : X ⟶ Y) :
-    concreteCubeSignature f = concreteCubeSignature g ↔ f = g :=
-  (concreteCubeSignature_injective X Y).eq_iff
+lemma concreteCubeSignature_eq_iff {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f g : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature f = _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature g ↔ f = g :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature_injective X Y).eq_iff
 
 /-- 元の合成の signature は、前段の同じ有限個の値への後段の作用。 -/
-lemma concreteCubeSignature_comp {X Y Z : ConcreteCube} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    concreteCubeSignature (f ≫ g) =
-      (g.val (concreteCubeSignature f).1, fun i => g.val ((concreteCubeSignature f).2 i)) :=
+lemma concreteCubeSignature_comp {X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature (f ≫ g) =
+      (g.val (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature f).1, fun i => g.val ((_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature f).2 i)) :=
   rfl
 
 end SerrePositivity.InfinityCategories.Kan

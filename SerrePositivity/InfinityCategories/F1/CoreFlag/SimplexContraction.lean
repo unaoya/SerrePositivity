@@ -43,7 +43,7 @@ def initialContractionOrder (m : ℕ) : Fin (m + 1) × Fin 2 →o Fin (m + 1) wh
 def initialContraction (m : ℕ) :
     SSet.Homotopy (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (m + 1))) :
       (Δ[m] : SSet.{u}) ⟶ Δ[m]) (𝟙 _) where
-  h := stdSimplexProductMap (initialContractionOrder m)
+  h := stdSimplexProductMap (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder m)
   h₀ := by
     apply SSet.hom_ext
     rintro ⟨⟨n⟩⟩

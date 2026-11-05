@@ -92,7 +92,7 @@ lemma exists_verdierUniformCoconeImage
 
 
 namespace VerdierUniformCoconeImage
-open SerrePositivity.KST.LocalizingInvariants.VerdierUniformCoconeImage
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage
 variable {L : SSet.Homotopy
     (g ≫ vertexFiberι (verdierDenominatorSpanProjection i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) d ≫

@@ -34,12 +34,12 @@ open scoped _root_.Simplicial
 def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
     (h : C ⊗ Δ[1] ⟶ T) (a : A ⟶ T) (b : B ⟶ T)
     (h₀ : SSet.ι₀ ≫ h = f ≫ a) (h₁ : SSet.ι₁ ≫ h = g ≫ b) :
-    doubleMappingCylinder f g ⟶ T :=
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g ⟶ T :=
   pushout.desc h (coprod.desc a b) (by
     apply coprod.hom_ext
-    · simpa only [cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
         coprod.inl_desc] using h₀
-    · simpa only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
         coprod.inr_desc] using h₁)
 
 /--
@@ -51,7 +51,7 @@ def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 @[reassoc] theorem doubleMappingCylinder_middle_desc {C A B T : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (h : C ⊗ Δ[1] ⟶ T) (a : A ⟶ T) (b : B ⟶ T)
     (h₀ : SSet.ι₀ ≫ h = f ≫ a) (h₁ : SSet.ι₁ ≫ h = g ≫ b) :
-    doubleMappingCylinder_middle f g ≫ doubleMappingCylinderDesc f g h a b h₀ h₁ = h :=
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc f g h a b h₀ h₁ = h :=
   pushout.inl_desc ..
 
 /--
@@ -63,8 +63,8 @@ def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 @[reassoc] theorem doubleMappingCylinder_left_desc {C A B T : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (h : C ⊗ Δ[1] ⟶ T) (a : A ⟶ T) (b : B ⟶ T)
     (h₀ : SSet.ι₀ ≫ h = f ≫ a) (h₁ : SSet.ι₁ ≫ h = g ≫ b) :
-    doubleMappingCylinder_left f g ≫ doubleMappingCylinderDesc f g h a b h₀ h₁ = a := by
-  rw [doubleMappingCylinder_left, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc f g h a b h₀ h₁ = a := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc]
   change coprod.inl ≫ (pushout.inr _ _ ≫ pushout.desc _ _ _) = a
   rw [pushout.inr_desc, coprod.inl_desc]
 
@@ -77,8 +77,8 @@ def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 @[reassoc] theorem doubleMappingCylinder_right_desc {C A B T : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (h : C ⊗ Δ[1] ⟶ T) (a : A ⟶ T) (b : B ⟶ T)
     (h₀ : SSet.ι₀ ≫ h = f ≫ a) (h₁ : SSet.ι₁ ≫ h = g ≫ b) :
-    doubleMappingCylinder_right f g ≫ doubleMappingCylinderDesc f g h a b h₀ h₁ = b := by
-  rw [doubleMappingCylinder_right, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc f g h a b h₀ h₁ = b := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc]
   change coprod.inr ≫ (pushout.inr _ _ ≫ pushout.desc _ _ _) = b
   rw [pushout.inr_desc, coprod.inr_desc]
 
@@ -89,10 +89,10 @@ def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 使われ方：二段階の pushout の普遍性の一意性。
 -/
 theorem _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
-    {u v : doubleMappingCylinder f g ⟶ T}
-    (hm : doubleMappingCylinder_middle f g ≫ u = doubleMappingCylinder_middle f g ≫ v)
-    (hl : doubleMappingCylinder_left f g ≫ u = doubleMappingCylinder_left f g ≫ v)
-    (hr : doubleMappingCylinder_right f g ≫ u = doubleMappingCylinder_right f g ≫ v) : u = v := by
+    {u v : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g ⟶ T}
+    (hm : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g ≫ v)
+    (hl : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g ≫ v)
+    (hr : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ u = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g ≫ v) : u = v := by
   apply pushout.hom_ext
   · exact hm
   · apply coprod.hom_ext

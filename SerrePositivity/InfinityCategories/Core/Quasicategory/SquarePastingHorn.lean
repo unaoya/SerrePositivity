@@ -32,10 +32,10 @@ def transposed (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
   curry ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ S)
 
 include h in
-lemma compatible : stdSimplex.δ (0 : Fin 2) ≫ transposed L =
-    stdSimplex.δ (1 : Fin 2) ≫ transposed R := by
+lemma compatible : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed L =
+    stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed R := by
   apply uncurry_injective
-  rw [uncurry_natural_left, uncurry_natural_left, transposed, transposed,
+  rw [uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed,
     uncurry_curry, uncurry_curry]
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -53,24 +53,24 @@ lemma compatible : stdSimplex.δ (0 : Fin 2) ≫ transposed L =
   exact he
 
 def diagram : (horn 2 1 : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  horn₂₁.isPushout.desc (transposed L) (transposed R) (compatible L R h)
+  horn₂₁.isPushout.desc (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed L) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed R) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.compatible L R h)
 
-lemma diagram_left : horn₂₁.ι₀₁ ≫ diagram L R h = transposed L :=
+lemma diagram_left : horn₂₁.ι₀₁ ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram L R h = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed L :=
   horn₂₁.isPushout.inl_desc _ _ _
 
-lemma diagram_right : horn₂₁.ι₁₂ ≫ diagram L R h = transposed R :=
+lemma diagram_right : horn₂₁.ι₁₂ ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram L R h = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed R :=
   horn₂₁.isPushout.inr_desc _ _ _
 
 lemma transposed_bottom (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
-    transposed S ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed S ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       squareBottomEdge ≫ S := by
-  rw [transposed, curry_evaluateFunctorAt_interval]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed, curry_evaluateFunctorAt_interval]
   rfl
 
 lemma transposed_top (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
-    transposed S ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed S ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       squareTopEdge ≫ S := by
-  rw [transposed, curry_evaluateFunctorAt_interval]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed, curry_evaluateFunctorAt_interval]
   rfl
 
 end SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn

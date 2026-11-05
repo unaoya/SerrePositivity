@@ -19,7 +19,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj) (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 /-- 元の差の関手の右随伴は、元の D 包含と v の合成。 -/
@@ -35,38 +35,38 @@ lemma laxDifferenceAdjunction_counitHom_isIso :
 lemma laxDifferenceAdjunction_counit_isIso :
     IsIso (laxDifferenceAdjunction p q v a hv).counit := by
   have := laxDifferenceAdjunction_counitHom_isIso p q v a hv
-  exact counit_isIso_of_counitHom _
+  exact _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counit_isIso_of_counitHom _
 
 include a hv in
 lemma laxDifference_isLocalization :
     IsLocalization (laxDifference p q) (invertedEdges (laxDifference p q)) := by
   have := laxDifferenceAdjunction_counit_isIso p q v a hv
-  exact AdjointLocalization.isLocalization (laxDifferenceAdjunction p q v a hv)
+  exact _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization (laxDifferenceAdjunction p q v a hv)
 
 include a hv in
 /-- 通常 pullback から元の lax pullback、差の項 E への実 Verdier 列。 -/
 lemma laxDifference_isVerdier :
-    IsVerdierSequence (pullbackInclusion p q) (exactLaxDifference p q) where
-  fullyFaithful := pullbackInclusion_fullyFaithful p q
-  kernel := exactLaxDifference_kernel p q
-  quotient := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (pullbackInclusion p q) (exactLaxDifference p q) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := pullbackInclusion_fullyFaithful p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := exactLaxDifference_kernel p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
     rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q)
       (exactLaxDifference p q) (exactLaxDifference_kernel p q)]
     exact laxDifference_isLocalization p q v a hv
 
-def tammeVerdierSequence : VerdierSequence.{u} where
-  left := pullbackCategory p q
-  middle := laxCategory p q
-  right := E
-  inclusion := pullbackInclusion p q
-  projection := exactLaxDifference p q
-  isVerdier := laxDifference_isVerdier p q v a hv
+def tammeVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := pullbackCategory p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := laxCategory p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := E
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := pullbackInclusion p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := exactLaxDifference p q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := laxDifference_isVerdier p q v a hv
 
 include a hv in
 /-- 任意の標的の実関手 ∞ 圏での商の普遍性。 -/
 lemma laxDifference_quotient_universal (T : SSet.{u}) [Quasicategory T] :
     IsQCatEquivalence (localizationPrecomposition (laxDifference p q)
-      (cofiberLocalizingEdges (essentialImage (pullbackInclusion p q)))
+      (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)))
       (laxDifference_isVerdier p q v a hv).inverts T) :=
   (laxDifference_isVerdier p q v a hv).universal T
 

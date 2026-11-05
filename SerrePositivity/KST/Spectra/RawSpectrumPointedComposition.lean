@@ -24,7 +24,7 @@ local instance rawPointedCompositionSelfEnrichment :
 /-- suspension の内部 Hom への作用を、点つき自己豊穣関手へまとめる。 -/
 def suspensionPointedEnrichedFunctor :
     EnrichedFunctor PointedSimplicialSet.{u} PointedSimplicialSet.{u} PointedSimplicialSet.{u} where
-  obj := suspension
+  obj := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension
   map := suspensionHom
   map_id := suspensionHom_id
   map_comp := suspensionHom_comp
@@ -39,19 +39,19 @@ def pointedCompositionFamily (X Y : OmegaSpectrum.{u}) (Z : KanSequence.{u}) (n 
 /-- smash パラメータの合成族も厳密な構造条件を保つ。 -/
 lemma pointedCompositionFamily_condition (X Y : OmegaSpectrum.{u}) (Z : KanSequence.{u}) (n : ℕ) :
     pointedCompositionFamily X Y Z (n + 1) ≫
-        PointedMapping.prePointed (X.sigma n) (Z.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Z.level (n + 1)).space =
       pointedCompositionFamily X Y Z n ≫ pointedStep X Z n := by
   have ha := pointedEvaluation_condition X Y.toKanSequence n
   have hb := pointedEvaluation_condition Y Z n
   change pointedEvaluation X Y.toKanSequence (n + 1) ≫
-      PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
     pointedEvaluation X Y.toKanSequence n ≫
       (suspensionHom (X.level n).space (Y.level n).space ≫
-        PointedObject.basedHomMap (suspension (X.level n).space) (Y.sigma n)) at ha
+        PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.sigma n)) at ha
   have hm (A B C : PointedSimplicialSet.{u}) (f : B ⟶ C) :
       PointedObject.basedHomMap A f = (ihom A).map f := rfl
   simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, pointedStep, hm] at ha hb
-  have h := enriched_compatible_comp PointedSimplicialSet.{u} suspensionPointedEnrichedFunctor
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_compatible_comp PointedSimplicialSet.{u} suspensionPointedEnrichedFunctor
     (X.sigma n) (Y.sigma n) (Z.sigma n)
     (pointedEvaluation X Y.toKanSequence n) (pointedEvaluation X Y.toKanSequence (n + 1))
     (pointedEvaluation Y Z n) (pointedEvaluation Y Z (n + 1))

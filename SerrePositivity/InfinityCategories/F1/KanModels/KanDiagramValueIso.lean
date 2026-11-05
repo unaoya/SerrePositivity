@@ -31,24 +31,24 @@ def kanDiagramValueIso (e : FunctorIso (kanDiagramCoherentNerve F)
 theorem kanDiagramValueIso_trans
     (e : FunctorIso (kanDiagramCoherentNerve F) (kanDiagramCoherentNerve G))
     (f : FunctorIso (kanDiagramCoherentNerve G) (kanDiagramCoherentNerve H)) (i : I) :
-    kanDiagramValueIso (e ≪≫ f) i = kanDiagramValueIso e i ≪≫ kanDiagramValueIso f i := by
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso (e ≪≫ f) i = _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso e i ≪≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso f i := by
   apply Iso.ext
-  simp [kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_trans, Category.assoc]
+  simp [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_trans, Category.assoc]
 
 /-- 元の標準値への正規化は、同じ指定同型の逆を保つ。 -/
 theorem kanDiagramValueIso_symm
     (e : FunctorIso (kanDiagramCoherentNerve F) (kanDiagramCoherentNerve G)) (i : I) :
-    kanDiagramValueIso e.symm i = (kanDiagramValueIso e i).symm := by
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso e.symm i = (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso e i).symm := by
   apply Iso.ext
-  simp [kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_symm, Category.assoc]
+  simp [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_symm, Category.assoc]
 
 /-- 元の点ごとの変換では、同じ指定成分の標準値表示そのものを回収する。 -/
 theorem kanDiagramValueIso_pointwise {F G : KanDiagramObject I}
     (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
     (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj)
       (Y := (G.val.obj c).obj) (η.app c)) (i : I) :
-    kanDiagramValueIso (kanDiagramFunctorIsoOfPointwise η hη) i =
-      kanDiagramComponentValueIso η hη i := rfl
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso (kanDiagramFunctorIsoOfPointwise η hη) i =
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso η hη i := rfl
 
 end SerrePositivity.InfinityCategories.F1.KanModels
 

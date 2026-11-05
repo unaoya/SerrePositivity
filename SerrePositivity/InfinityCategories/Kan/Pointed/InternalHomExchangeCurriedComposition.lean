@@ -26,12 +26,12 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
 /-- 同じ豊穣合成の curry は、源交換とパラメータ内部 Hom に厳密に両立する。 -/
 lemma curriedComposition (W D P Z : C) :
     curry (MonoidalClosed.comp W D ((ihom P).obj Z)) ≫
-        (ihom ((ihom W).obj D)).map (iso W P Z).hom =
-      (iso D P Z).hom ≫ (ihom P).map (curry (MonoidalClosed.comp W D Z)) ≫
-        (iso P ((ihom W).obj D) ((ihom W).obj Z)).hom := by
-  have h := congrArg (fun f => curry f) (composition W D P Z)
+        (ihom ((ihom W).obj D)).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W P Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso D P Z).hom ≫ (ihom P).map (curry (MonoidalClosed.comp W D Z)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso P ((ihom W).obj D) ((ihom W).obj Z)).hom := by
+  have h := congrArg (fun f => curry f) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.composition W D P Z)
   simp only [id_tensorHom] at h
-  rw [curry_natural_right, curry_natural_left, curry_strength] at h
+  rw [curry_natural_right, curry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength] at h
   simpa only [Category.assoc] using h
 
 end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange

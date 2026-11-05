@@ -36,15 +36,15 @@ lemma simplexHABeadTail_max {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempt
 def simplexHABeadWordAt {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (a b : Fin (n + 1)) (ha : a = I.min' (Finset.card_pos.mp (by omega)))
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) :
-    SimplexHABeadWord n a b (I.card - 2) := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b (I.card - 2) := by
   subst a b
   exact .bead I hI
 
 /-- 元の非空な右側頂点集合に、元の左端点を加えた同じ部分集合 bead の語。 -/
 def simplexHABeadTail {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (a : Fin (n + 1)) (ha : ∀ t ∈ T, a < t) :
-    SimplexHABeadWord n a (T.max' hT) (T.card - 1) := by
-  have hn := simplexHABeadTail_not_mem T a ha
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a (T.max' hT) (T.card - 1) := by
+  have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha
   have hc : (insert a T).card = T.card + 1 := Finset.card_insert_of_notMem hn
   have hp : 0 < T.card := Finset.card_pos.mpr hT
   have hI : 2 ≤ (insert a T).card := by omega
@@ -59,8 +59,8 @@ def simplexHABeadTail {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
       · exact (ha b hb).le
   have hd : (insert a T).card - 2 = T.card - 1 := by omega
   rw [← hd]
-  exact simplexHABeadWordAt (insert a T) hI a (T.max' hT) hmin
-    (simplexHABeadTail_max T hT a ha).symm
+  exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt (insert a T) hI a (T.max' hT) hmin
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT a ha).symm
 
 end SerrePositivity.InfinityCategories.Simplicial
 

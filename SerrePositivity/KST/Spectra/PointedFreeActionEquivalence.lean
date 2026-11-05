@@ -44,8 +44,8 @@ def pointedCoefficientsMap {G : Type u} [Group G]
 使われ方：Goerss–Jardine VIII §2、HA §1.4.2。cochain の各次数の同型保存。 -/
 lemma pointedEndMap_piIsomorphism {G : Type u} [Group G] (S : Type u)
     {B C : Action PointedSimplicialSet.{u} G} [KanComplex B.V.right] [KanComplex C.V.right]
-    (τ : B ⟶ C) (hτ : KanPiIsomorphism τ.hom.right) :
-    KanPiIsomorphism
+    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism τ.hom.right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (X := (PointedWeightedEnd.obj (weight S) (pointedCoefficients B)).right)
       (Y := (PointedWeightedEnd.obj (weight S) (pointedCoefficients C)).right)
       (PointedWeightedEnd.map (weight S) (pointedCoefficientsMap τ)).right := by
@@ -59,13 +59,13 @@ lemma pointedEndMap_piIsomorphism {G : Type u} [Group G] (S : Type u)
       (pointedCoefficients C ⋙ PointedSimplicialSet.forget)) := end_kanComplex S C₀
   have hn := endMap_piIsomorphism S ((PointedSimplicialSet.forget.mapAction G).map τ) hτ
     (PointedSimplicialSet.basepoint B.V)
-  have hc : KanPiIsomorphism
+  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       ((PointedWeightedEnd.map (weight S) (pointedCoefficientsMap τ)).right ≫
         (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients C)).hom) := by
     rw [PointedWeightedEnd.underlyingIso_natural]
-    exact (KanPiIsomorphism.of_iso
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
       (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients B))).comp hn
-  exact KanPiIsomorphism.of_comp hc (KanPiIsomorphism.of_iso
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hc (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
     (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients C)))
 
 end

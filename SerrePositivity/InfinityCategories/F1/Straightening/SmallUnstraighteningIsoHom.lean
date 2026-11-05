@@ -23,78 +23,78 @@ variable {B : SSet.{u}}
 
 /-- 元の全写像空間で選んだ大きい射。指定二胞体の代表パラメーターを保持する。 -/
 def unstraighteningFunctorHom : leftUnstraightening F ⟶ leftUnstraightening G :=
-  (leftUnstraighteningMappingVertexMap F G (smallUnstraighteningHomParameter a)).val
+  (leftUnstraighteningMappingVertexMap F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a)).val
 
 /-- 同じ大きい写像は底を厳密に保持する。 -/
-theorem unstraighteningFunctorHom_projection : unstraighteningFunctorHom a ≫
+theorem unstraighteningFunctorHom_projection : _root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a ≫
     leftUnstraighteningProjection G = leftUnstraighteningProjection F :=
-  (leftUnstraighteningMappingVertexMap F G (smallUnstraighteningHomParameter a)).property
+  (leftUnstraighteningMappingVertexMap F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a)).property
 
 /-- 小さい相対写像空間からの回収式は、全空間の縮小同型による同じ共役式を与える。 -/
 theorem smallUnstraighteningFunctorHom_naturality :
-    (SSet.uliftFunctor.{u + 1, u}).map (smallUnstraighteningFunctorHom a) ≫
+    (SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a) ≫
       (smallLeftUnstraighteningIso G).hom =
-      (smallLeftUnstraighteningIso F).hom ≫ unstraighteningFunctorHom a := by
-  have he := smallUnstraighteningFunctorHom_recover a
+      (smallLeftUnstraighteningIso F).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a := by
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_recover a
   change (relativeFunctorOverIso (smallLeftUnstraighteningOverIso F)
       (smallLeftUnstraighteningOverIso G)).hom.app (Opposite.op ⦋0⦌)
     ((uliftRelativeFunctorMap (smallLeftUnstraighteningProjection G)
       (smallLeftUnstraighteningProjection F)).app (Opposite.op ⦋0⦌)
-        (ULift.up (relativeFunctorVertex _ _ (smallUnstraighteningFunctorHom a)
-          (smallUnstraighteningFunctorHom_projection a)))) = _ at he
+        (ULift.up (relativeFunctorVertex _ _ (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+          (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a)))) = _ at he
   rw [uliftRelativeFunctorMap_vertex] at he
   have ht := relativeFunctorOverIso_vertex (smallLeftUnstraighteningOverIso F)
     (smallLeftUnstraighteningOverIso G)
-    ((SSet.uliftFunctor.{u + 1, u}).map (smallUnstraighteningFunctorHom a))
+    ((SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a))
     (by
-      change (SSet.uliftFunctor.{u + 1, u}).map (smallUnstraighteningFunctorHom a) ≫
+      change (SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a) ≫
         (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningProjection G) =
           (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningProjection F)
-      rw [← Functor.map_comp, smallUnstraighteningFunctorHom_projection])
-  have hb := leftUnstraighteningMappingVertexMap_vertex F G (smallUnstraighteningHomParameter a)
+      rw [← Functor.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection])
+  have hb := leftUnstraighteningMappingVertexMap_vertex F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a)
   have hv := ht.symm.trans (he.trans hb.symm)
   have hm : (smallLeftUnstraighteningIso F).inv ≫
-      (SSet.uliftFunctor.{u + 1, u}).map (smallUnstraighteningFunctorHom a) ≫
-      (smallLeftUnstraighteningIso G).hom = unstraighteningFunctorHom a := by
+      (SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a) ≫
+      (smallLeftUnstraighteningIso G).hom = _root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a := by
     have hh := functorVertex_injective (congrArg Subtype.val hv)
     change ((smallLeftUnstraighteningIso F).inv ≫
-      (SSet.uliftFunctor.{u + 1, u}).map (smallUnstraighteningFunctorHom a)) ≫
-      (smallLeftUnstraighteningIso G).hom = unstraighteningFunctorHom a at hh
+      (SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)) ≫
+      (smallLeftUnstraighteningIso G).hom = _root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a at hh
     simpa only [Category.assoc] using hh
   have hc := congrArg (fun f => (smallLeftUnstraighteningIso F).hom ≫ f) hm
   simpa only [Category.assoc, Iso.hom_inv_id_assoc] using hc
 
 /-- 指定二胞体から作った小さい実写像は、同じ大きい実写像の縮小そのもの。 -/
 theorem smallUnstraighteningFunctorHom_eq_overMap :
-    smallUnstraighteningFunctorHom a =
-      smallLeftUnstraighteningOverMap F G (unstraighteningFunctorHom a) := by
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a =
+      smallLeftUnstraighteningOverMap F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a) := by
   apply (SSet.uliftFunctor.{u + 1, u}).map_injective
   apply (cancel_mono (smallLeftUnstraighteningIso G).hom).1
-  exact (smallUnstraighteningFunctorHom_naturality a).trans
-    (smallLeftUnstraighteningOverMap_naturality F G (unstraighteningFunctorHom a)).symm
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_naturality a).trans
+    (smallLeftUnstraighteningOverMap_naturality F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a)).symm
 
 /-- 可逆な指定二胞体の同じ代表辺は、全関手空間内でも可逆。 -/
 theorem smallUnstraighteningHomEdge_isInvertible [IsIso a] :
-    IsInvertibleEdge (smallUnstraighteningHomEdge a) := by
-  change IsIso (Truncated.HomotopyCategory.homMk (smallUnstraighteningHomEdge a).toTruncated)
-  rw [smallUnstraighteningHomEdge_hom]
+    IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge a) := by
+  change IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge a).toTruncated)
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge_hom]
   infer_instance
 
 variable [Quasicategory B]
 
 /-- 可逆な指定二胞体の同じ大きい実写像は前合成同値。 -/
 theorem unstraighteningFunctorHom_isPrecompositionEquivalence [IsIso a] :
-    IsPrecompositionEquivalence (unstraighteningFunctorHom a) := by
+    IsPrecompositionEquivalence (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a) := by
   exact leftUnstraighteningMappingVertexMap_isPrecompositionEquivalence_of_isInvertibleEdge
-    F G (smallUnstraighteningHomEdge a) (smallUnstraighteningHomEdge_isInvertible a)
+    F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge a) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge_isInvertible a)
 
 /-- 可逆な指定二胞体の同じ小さい実写像も前合成同値。点の作用の回収式と同じ射を使う。 -/
 theorem smallUnstraighteningFunctorHom_isPrecompositionEquivalence [IsIso a] :
-    IsPrecompositionEquivalence (smallUnstraighteningFunctorHom a) := by
-  rw [smallUnstraighteningFunctorHom_eq_overMap]
+    IsPrecompositionEquivalence (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a) := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_eq_overMap]
   exact smallLeftUnstraighteningOverMap_isPrecompositionEquivalence F G
-    (unstraighteningFunctorHom a) (unstraighteningFunctorHom_projection a)
-    (unstraighteningFunctorHom_isPrecompositionEquivalence a)
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom_projection a)
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom_isPrecompositionEquivalence a)
 
 end SerrePositivity.InfinityCategories.F1.Straightening
 

@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.BasedLoop
 /-- native loop の各段から、置換前の path の引き戻しへの実際の比較。 -/
 def rawComparison (Y : OmegaSpectrum.{u}) (n : ℕ) : ((obj Y).level n).space ⟶
     pullback (pathEndpoint (Y.level n).space) (PointedObject.fromPoint (Y.level n).space) :=
-  PointedPullbackChange.map ((cotensorProjection pointedInterval Y).app n)
+  PointedPullbackChange.map ((cotensorProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y).app n)
     (pathEndpoint (Y.level n).space) (PointedObject.fromPoint (Y.level n).space)
 
 @[reassoc]
@@ -30,14 +30,14 @@ lemma rawComparison_fst (Y : OmegaSpectrum.{u}) (n : ℕ) :
     rawComparison Y n ≫ pullback.fst (pathEndpoint (Y.level n).space)
         (PointedObject.fromPoint (Y.level n).space) =
       (spectrumPullbackFst (basedPathProjection Y) (fromPoint Y)).app n ≫
-        (cotensorProjection pointedInterval Y).app n :=
+        (cotensorProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y).app n :=
   PointedPullbackChange.map_fst _ _ _
 
 lemma rawComparison_rlp (Y : OmegaSpectrum.{u}) (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (rawComparison Y n).right :=
   PointedPullbackChange.map_rlp _ _ _
     (KanSequence.replacementStage
-      (KanSequence.mapping pointedInterval.{u} Y.toKanSequence) n).projection_rlp
+      (KanSequence.mapping _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u} Y.toKanSequence) n).projection_rlp
 
 /-- 実際の BF loop 比較を置換前へ戻すと、元の円の射影と pullback 同型の合成となる。 -/
 lemma comparison_raw (Y : OmegaSpectrum.{u}) (n : ℕ) :
@@ -55,14 +55,14 @@ lemma comparison_raw (Y : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 比較射の各段は全基点・全次数で π 同型。 -/
 lemma comparison_levelwise (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((comparison Y).app n).right := by
-  apply KanPiIsomorphism.of_comp (g := (rawComparison Y n).right) _
-    (kanPiIsomorphism_of_monoRight _ (rawComparison_rlp Y n))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((comparison Y).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (rawComparison Y n).right) _
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (rawComparison_rlp Y n))
   have h := congrArg Under.Hom.right (comparison_raw Y n)
   simp only [Under.comp_right] at h
   rw [h]
   exact (cotensorProjection_piIsomorphism endpointCircle Y n).comp
-    (KanPiIsomorphism.of_iso
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
       (X := (PointedObject.basedHom endpointCircle (Y.level n).space).right)
       (Y := (pullback (pathEndpoint (Y.level n).space)
         (PointedObject.fromPoint (Y.level n).space)).right)

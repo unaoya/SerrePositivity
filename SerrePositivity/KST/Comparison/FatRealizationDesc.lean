@@ -33,14 +33,14 @@ def fatRealizationDesc (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) {Z : SSet.{u}}
       (F.map θ.hom.op ▷ Δ[θ.source]) ≫ ι θ.source =
         (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫ ι θ.target) :
     fatRealization F ⟶ Z :=
-  coequalizer.desc (simplicialSumDesc ι) (by
-    apply simplicialSum_hom_ext
+  coequalizer.desc (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc ι) (by
+    apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
     intro θ
     change ((F.map θ.hom.op ▷ Δ[θ.source]) ≫
-      simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source) ≫
-        simplicialSumDesc ι =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.source) ≫
+        _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc ι =
       ((F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
-        simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target) ≫ simplicialSumDesc ι
+        _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc ι
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc,
       Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc]
     exact hι θ)
@@ -70,7 +70,7 @@ theorem fatRealization_hom_ext (F : SimplexCategoryᵒᵖ ⥤ SSet.{u})
     {Z : SSet.{u}} {f g : fatRealization F ⟶ Z}
     (h : ∀ n, fatRealizationInclusion F n ≫ f = fatRealizationInclusion F n ≫ g) : f = g := by
   apply coequalizer.hom_ext
-  apply simplicialSum_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
   intro n
   exact h n
 

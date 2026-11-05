@@ -21,8 +21,8 @@ namespace SerrePositivity.KST.Fibration
 theorem kanCommSqCone_isLimit {P X Y Z : KanObject.{u}}
     {a : P.obj ⟶ X.obj} {b : P.obj ⟶ Y.obj} {f : X.obj ⟶ Z.obj} {g : Y.obj ⟶ Z.obj}
     (sq : CommSq a b f g) (hsq : IsHomotopyPullback sq) :
-    IsLimitCone (strictCoherentCone (kanCommSqCone sq)) := by
-  let R := kanCommSqReplacementTarget g
+    IsLimitCone (strictCoherentCone (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq)) := by
+  let R := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqReplacementTarget g
   let p : R ⟶ Z := AnodyneKanReplacement.factorization.p.app (Arrow.mk g)
   let i : Y ⟶ R := AnodyneKanReplacement.factorization.i.app (Arrow.mk g)
   have fac : (show Y.obj ⟶ R.obj from i) ≫ p = g :=
@@ -56,12 +56,12 @@ theorem kanCommSqCone_isLimit {P X Y Z : KanObject.{u}}
   have hα : ∀ j, IsInvertibleEdge (coherentNerveEdge (α.app j)) := by
     intro j
     rcases j with ⟨_ | (_ | _)⟩
-    · exact kanIdentityEdge_isInvertible Z
+    · exact _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible Z
     · exact hi
-    · exact kanIdentityEdge_isInvertible X
-  have hid : IsInvertibleEdge (coherentNerveEdge (𝟙 P)) := kanIdentityEdge_isInvertible P
+    · exact _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible X
+  have hid : IsInvertibleEdge (coherentNerveEdge (𝟙 P)) := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible P
   apply (strictCoherentCone_isLimit_iff_of_transformation α
-    (kanCommSqCone sq) (kanCommSqCone (P := P) (X := X) (Y := R) (Z := Z) sq')
+    (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq) (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone (P := P) (X := X) (Y := R) (Z := Z) sq')
     (𝟙 P) ?_ hα hid).mpr
   · exact kanCommSqCone_isLimit_of_fibration sq' hsq'
   · intro j

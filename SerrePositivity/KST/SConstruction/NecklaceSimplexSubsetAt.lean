@@ -16,13 +16,13 @@ open CategoryTheory Simplicial SSet
 def necklaceInSimplexSubsetAt {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
     (hI : 2 ≤ I.card) (ha : a = I.min' (Finset.card_pos.mp (by omega)))
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) :
-    NecklaceIn (Δ[n] : SSet.{u}) (standardSimplexVertex a) (standardSimplexVertex b) where
-  necklace := (necklaceInSimplexSubset I hI).necklace
-  map := (necklaceInSimplexSubset I hI).map
-  map_first := (necklaceInSimplexSubset I hI).map_first.trans
-    (congrArg standardSimplexVertex ha.symm)
-  map_last := (necklaceInSimplexSubset I hI).map_last.trans
-    (congrArg standardSimplexVertex hb.symm)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) where
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := (necklaceInSimplexSubset I hI).necklace
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := (necklaceInSimplexSubset I hI).map
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := (necklaceInSimplexSubset I hI).map_first.trans
+    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex ha.symm)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := (necklaceInSimplexSubset I hI).map_last.trans
+    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex hb.symm)
 
 /-- 元の標準の最小・最大端点で読むと、元の同じ部分集合 bead そのもの。 -/
 lemma necklaceInSimplexSubsetAt_canonical {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
@@ -44,9 +44,9 @@ def necklaceInSimplexSubsetAtInclusion {n : ℕ} (I J : Finset (Fin (n + 1)))
     (hbJ : b = J.max' (Finset.card_pos.mp (by omega))) :
     necklaceInSimplexSubsetAt.{u} I a b hI haI hbI ⟶
       necklaceInSimplexSubsetAt J a b hJ haJ hbJ where
-  necklaceHom := necklaceSimplexSubsetInclusion I J hI hJ hIJ
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := necklaceSimplexSubsetInclusion I J hI hJ hIJ
     (haI.symm.trans haJ) (hbI.symm.trans hbJ)
-  w := necklaceSimplexSubsetInclusion_triangle I J hI hJ hIJ
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := necklaceSimplexSubsetInclusion_triangle I J hI hJ hIJ
     (haI.symm.trans haJ) (hbI.symm.trans hbJ)
 
 /-- 元の部分集合包含の全単体的可換三角形は、元の cubical 余極限の同じ表示関係を与える。 -/

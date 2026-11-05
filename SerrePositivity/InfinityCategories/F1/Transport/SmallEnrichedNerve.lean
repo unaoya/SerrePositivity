@@ -31,7 +31,7 @@ theorem small_enrichedFunctor {D : Type v} {E : Type w}
 /-- Hom の宇宙と対象の小ささが揃えば、coherent nerve の全次数も同じ宇宙で小さい。 -/
 theorem small_simplicialNerve_obj {D : Type v} [Category.{u} D] [SimplicialCategory D]
     [Small.{u} D] (n : SimplexCategoryᵒᵖ) : Small.{u} ((SimplicialNerve D).obj n) :=
-  small_enrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.small_enrichedFunctor
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

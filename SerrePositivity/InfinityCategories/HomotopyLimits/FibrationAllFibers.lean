@@ -28,14 +28,14 @@ lemma fibrationFiberMapBase_piIsomorphism_of_vertex {E B E' B' : SSet.{u}}
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
     (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
-    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g)
-    (b : B _⦋0⦌) (v : (KanFiber p b) _⦋0⦌) :
-    KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b) := by
-  let e := (fiberι p b).app _ v
-  have hb : p.app _ e = b := fiber_vertex_base p b v
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g)
+    (b : B _⦋0⦌) (v : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b) := by
+  let e := (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ v
+  have hb : p.app _ e = b := _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base p b v
   have hb' : p'.app _ (f.app _ e) = g.app _ b :=
-    (base_eq p p' f g comm e).symm.trans (congrArg (g.app _) hb)
-  exact fiberMapOver_piIsomorphism p p' f g comm hf hg e b hb (g.app _ b) hb'
+    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e).symm.trans (congrArg (g.app _) hb)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapOver_piIsomorphism p p' f g comm hf hg e b hb (g.app _ b) hb'
     (fibrationFiberMapBase p p' f g comm b) (fibrationFiberMapBase_ι p p' f g comm b)
 
 /-- 概要：全空間と底の π_* 同型は任意の底の頂点上で fiber の成分の全射性を導く。
@@ -46,12 +46,12 @@ lemma fibrationFiberMapBase_piZero_surjective {E B E' B' : SSet.{u}}
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
     (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
-    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) (e₀ : E _⦋0⦌) (b : B _⦋0⦌) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g) (e₀ : E _⦋0⦌) (b : B _⦋0⦌) :
     Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b)) := by
   intro c'
   obtain ⟨v', rfl⟩ := π₀.mk_surjective c'
   obtain ⟨a, ha⟩ := (hf.piZero_bijective_at e₀).surjective
-    (π₀.mk ((fiberι p' (g.app _ b)).app _ v'))
+    (π₀.mk ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p' (g.app _ b)).app _ v'))
   have hp : mapπ₀ p a = π₀.mk b := by
     apply (hg.piZero_bijective_at (p.app _ e₀)).injective
     rw [_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square p p' f g comm a, ha]

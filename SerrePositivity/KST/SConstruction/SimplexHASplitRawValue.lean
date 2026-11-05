@@ -37,9 +37,9 @@ lemma simplexHABeadWordDecode_zero_rawTail {N : ℕ} (s : DGNerve.SimplexData A 
     (i : SerreCubeGeneratorIndex 0) (v : Fin 1 ↪o Fin (N + 1))
     (T : Finset (Fin (N + 1))) (hT : T.Nonempty) (hb : ∀ r ∈ T, v 0 < r) :
     HEq (simplexHABeadWordRawValue A s (simplexHABeadWordDecode 0 i v T hT hb))
-      (simplexHABeadWordRawValue A s (simplexHABeadTail T hT (v 0) hb)) :=
+      (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)) :=
   simplexHABeadWordRawValue_reindex A s rfl
     (show T.card - 1 = serreCubeGeneratorFreeDimension 0 i + T.card - 1 by
-      simp only [serreCubeGeneratorFreeDimension, zero_add]) (simplexHABeadTail T hT (v 0) hb)
+      simp only [serreCubeGeneratorFreeDimension, zero_add]) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)
 
 end SerrePositivity.KST.SConstruction

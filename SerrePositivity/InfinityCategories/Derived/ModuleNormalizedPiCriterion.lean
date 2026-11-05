@@ -22,7 +22,7 @@ lemma moduleNormalizedMap_quasiIso_iff_zeroBasepointPi
     QuasiIso ((normalizedMooreComplex (ModuleCat.{v} S)).map f) ↔
       Function.Bijective (SSet.mapπ₀ (moduleUnderlyingSSetMap f)) ∧
         ∀ n : ℕ, Function.Bijective
-          (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
             (moduleUnderlyingSSetMap_zero f)) := by
   rw [quasiIso_iff]
   simp only [quasiIsoAt_iff_isIso_homologyMap, ConcreteCategory.isIso_iff_bijective]

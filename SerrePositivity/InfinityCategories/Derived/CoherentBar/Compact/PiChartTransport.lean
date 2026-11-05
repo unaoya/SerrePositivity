@@ -21,16 +21,16 @@ open scoped _root_.Simplicial
 
 /-- 全基点のチャートと、同じ指定道で比較された元の不変性。 -/
 structure DGBarCompactPiChart (X : SSet.{u}) [KanComplex X] (n : ℕ) (A : Type v) where
-  equiv : ∀ x : X _⦋0⦌, KanHomotopyGroup X n x ≃ A
-  of_transport : ∀ {x y} (e : X.Edge x y) (a : KanHomotopyGroup X n x)
-    (b : KanHomotopyGroup X n y), dgBarCompactPiTransport n e a b → equiv x a = equiv y b
+  equiv : ∀ x : X _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃ A
+  of_transport : ∀ {x y} (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x)
+    (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y), dgBarCompactPiTransport n e a b → equiv x a = equiv y b
 
 variable {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
   {n : ℕ} {A : Type v}
 
 lemma DGBarCompactPiChart.transport_iff (c : DGBarCompactPiChart X n A)
-    {x y : X _⦋0⦌} (e : X.Edge x y) (a : KanHomotopyGroup X n x)
-    (b : KanHomotopyGroup X n y) :
+    {x y : X _⦋0⦌} (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x)
+    (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) :
     dgBarCompactPiTransport n e a b ↔ c.equiv x a = c.equiv y b := by
   constructor
   · exact c.of_transport e a b
@@ -41,7 +41,7 @@ lemma DGBarCompactPiChart.transport_iff (c : DGBarCompactPiChart X n A)
 
 lemma DGBarCompactPiChart.homotopy (c : DGBarCompactPiChart Y n A)
     {f g : X ⟶ Y} (H : SSet.Homotopy f g) (x : X _⦋0⦌)
-    (a : KanHomotopyGroup X n x) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     c.equiv (f.app _ x) (dgBarCompactPiMap n f x a) =
       c.equiv (g.app _ x) (dgBarCompactPiMap n g x a) := by
   obtain ⟨e, he⟩ := (piPathRelated_iff_exists_transport n _ _).mp
@@ -50,7 +50,7 @@ lemma DGBarCompactPiChart.homotopy (c : DGBarCompactPiChart Y n A)
 
 lemma DGBarCompactPiChart.functorIso (c : DGBarCompactPiChart Y n A)
     {f g : X ⟶ Y} (H : FunctorIso f g) (x : X _⦋0⦌)
-    (a : KanHomotopyGroup X n x) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     c.equiv (f.app _ x) (dgBarCompactPiMap n f x a) =
       c.equiv (g.app _ x) (dgBarCompactPiMap n g x a) :=
   c.homotopy (FunctorIso.simplicialHomotopy H) x a
@@ -58,7 +58,7 @@ lemma DGBarCompactPiChart.functorIso (c : DGBarCompactPiChart Y n A)
 /-- 単体的加群の零チャートを、道に不変な全基点チャートへ延長する。 -/
 def dgBarCompactModuleZeroPiChart {R : Type w} [CommRing R]
     (W : SimplicialObject (ModuleCat.{u} R)) [KanComplex (moduleUnderlyingSSet W)]
-    (n : ℕ) (α : KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A) :
+    (n : ℕ) (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A) :
     DGBarCompactPiChart (moduleUnderlyingSSet W) n A where
   equiv := dgBarCompactModuleZeroChartExtension n α
   of_transport {x y} e a b h := by

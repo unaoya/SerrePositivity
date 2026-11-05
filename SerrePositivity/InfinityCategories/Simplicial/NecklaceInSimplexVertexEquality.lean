@@ -19,10 +19,10 @@ open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の形の等号移送で全頂点作用が一致する augmentation は、元の同じ対象。 -/
 lemma necklaceInSimplex_eq_of_vertices {N : ℕ} {x y : (Δ[N] : SSet.{u}) _⦋0⦌}
-    {T U : NecklaceIn (Δ[N] : SSet.{u}) x y} (h : T.necklace = U.necklace)
+    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[N] : SSet.{u}) x y} (h : T.necklace = U.necklace)
     (hv : ∀ v : T.necklace.down.Vertex,
-      necklaceSimplexVertexMap T.necklace.down T.map v =
-        necklaceSimplexVertexMap U.necklace.down U.map (necklaceVertexMap (eqToHom h) v)) :
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap T.necklace.down T.map v =
+        _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap U.necklace.down U.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (eqToHom h) v)) :
     T = U := by
   obtain ⟨t, a, ha, hb⟩ := T
   obtain ⟨s, b, hc, hd⟩ := U
@@ -36,9 +36,9 @@ lemma necklaceInSimplex_eq_of_vertices {N : ℕ} {x y : (Δ[N] : SSet.{u}) _⦋0
     intro z
     apply stdSimplex.ext
     intro i
-    rw [necklaceSimplexVertexMap_simplex, necklaceSimplexVertexMap_simplex]
-    exact (hv (z.val i)).trans (congrArg (necklaceSimplexVertexMap t.down b)
-      (congrFun (necklaceVertexMap_id t) (z.val i)))
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex]
+    exact (hv (z.val i)).trans (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap t.down b)
+      (congrFun (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_id t) (z.val i)))
   cases hmap
   rfl
 

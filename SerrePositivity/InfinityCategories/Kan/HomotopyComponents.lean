@@ -38,7 +38,7 @@ theorem mapPiZero_square {A B C D : SSet.{u}} (i : A ⟶ B) (j : C ⟶ D)
 使われ方：Goerss–Jardine I §7。基点を変えて使う零次数完全列。 -/
 @[simp]
 theorem KanHomotopyZero.equivPiZero_point {X : SSet.{u}} [KanComplex X] (x : X _⦋0⦌) :
-    equivPiZero (KanHomotopy.point 0 : KanHomotopy X 0 x) = π₀.mk x := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X 0 x) = π₀.mk x := by
   change π₀.mk ((PtSimplex.equiv₀ x) ((PtSimplex.equiv₀ x).symm x)) = π₀.mk x
   rw [Equiv.apply_symm_apply]
 
@@ -48,14 +48,14 @@ theorem KanHomotopyZero.equivPiZero_point {X : SSet.{u}} [KanComplex X] (x : X _
 使われ方：Goerss–Jardine I §7。fiber の零次数比較を基点付き界面へ戻す。 -/
 theorem KanHomotopyZero.map_bijective_iff_piZero {X Y : SSet.{u}}
     (f : X ⟶ Y) {x : X _⦋0⦌} {y : Y _⦋0⦌} (hf : f.app _ x = y) :
-    Function.Bijective (map f hf) ↔ Function.Bijective (mapπ₀ f) := by
-  let eX := equivPiZero (X := X) (x := x)
-  let eY := equivPiZero (X := Y) (x := y)
-  have h : eY ∘ map f hf = mapπ₀ f ∘ eX := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map f hf) ↔ Function.Bijective (mapπ₀ f) := by
+  let eX := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := X) (x := x)
+  let eY := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := Y) (x := y)
+  have h : eY ∘ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map f hf = mapπ₀ f ∘ eX := by
     funext a
-    exact equivPiZero_map f hf a
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map f hf a
   calc
-    Function.Bijective (map f hf) ↔ Function.Bijective (eY ∘ map f hf) :=
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map f hf) ↔ Function.Bijective (eY ∘ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map f hf) :=
       (Function.Bijective.of_comp_iff' eY.bijective _).symm
     _ ↔ Function.Bijective (mapπ₀ f ∘ eX) := by rw [h]
     _ ↔ Function.Bijective (mapπ₀ f) := Function.Bijective.of_comp_iff _ eX.bijective
@@ -65,12 +65,12 @@ theorem KanHomotopyZero.map_bijective_iff_piZero {X Y : SSet.{u}}
 規約：源が空のときに全基点条件から全射性を推論しない。
 使われ方：Goerss–Jardine I §§7–8。fiber の零次数比較の全空間と底。 -/
 theorem KanPiIsomorphism.piZero_bijective_at {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
-    {f : X ⟶ Y} (hf : KanPiIsomorphism f) (x : X _⦋0⦌) : Function.Bijective (mapπ₀ f) := by
-  let eX := KanHomotopyZero.equivPiZero (X := X) (x := x)
-  let eY := KanHomotopyZero.equivPiZero (X := Y) (x := f.app _ x)
-  have h : eY ∘ KanHomotopy.map 0 f (x := x) rfl = mapπ₀ f ∘ eX := by
+    {f : X ⟶ Y} (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (x : X _⦋0⦌) : Function.Bijective (mapπ₀ f) := by
+  let eX := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := X) (x := x)
+  let eY := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := Y) (x := f.app _ x)
+  have h : eY ∘ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 f (x := x) rfl = mapπ₀ f ∘ eX := by
     funext a
-    exact KanHomotopyZero.equivPiZero_map f rfl a
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map f rfl a
   have hb : Function.Bijective (mapπ₀ f ∘ eX) := by
     rw [← h]
     exact eY.bijective.comp (hf x 0)

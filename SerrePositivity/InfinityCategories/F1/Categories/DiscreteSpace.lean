@@ -245,7 +245,7 @@ private lemma enriched_last_injective (T U : Type u) (n : ℕ) :
     ← _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_reconstruct (A := D) (X := Y) t.down]
   congr 1
   funext a
-  let ev := KST.SConstruction.vertexDiscreteEvaluate (A := D) (X := Y) a
+  let ev := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := D) (X := Y) a
   have e := congrArg (fun w => ev.app (Opposite.op ⦋0⦌) w.down) h
   exact ((ConcreteCategory.congr_hom (ev.naturality v) s.down).symm.trans
     (e.trans (ConcreteCategory.congr_hom (ev.naturality v) t.down)))

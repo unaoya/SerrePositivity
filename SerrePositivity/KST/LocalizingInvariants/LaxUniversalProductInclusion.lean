@@ -17,10 +17,10 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma inclusion_projection : SpectrumHo.hom (valueMap Φ i) ≫
     (hΦ.tammeProjectionEquivalence p q).hom =
@@ -35,7 +35,7 @@ lemma inclusion_projection : SpectrumHo.hom (valueMap Φ i) ≫
     rw [← SpectrumHo.hom_comp, IsLocalizingInvariant.laxQuotientProductInclusion,
       Binary.lift_snd, SpectrumHo.hom_comp]
 
-lemma bottom_native_arrow : Arrow.mk (squareHoBottom (square hΦ p q i r h)) =
+lemma bottom_native_arrow : Arrow.mk (squareHoBottom (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h)) =
     Arrow.mk (SpectrumHo.hom
       (IsLocalizingInvariant.laxQuotientProductInclusion (Φ := Φ) p q i)) :=
   (bottom_arrow hΦ p q i r h).trans (congrArg Arrow.mk (inclusion_projection hΦ p q i))

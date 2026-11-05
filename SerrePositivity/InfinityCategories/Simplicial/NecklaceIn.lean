@@ -18,45 +18,45 @@ open CategoryTheory _root_.Simplicial SSet
 
 /-- K 内の x から y への元の全単体的 necklace。 -/
 structure NecklaceIn (K : SSet.{u}) (x y : K _⦋0⦌) where
-  necklace : Necklace.{u}
-  map : necklace.down.carrier ⟶ K
-  map_first : map.app _ necklace.down.firstVertex = x
-  map_last : map.app _ necklace.down.lastVertex = y
+  necklace : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}
+  map : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.carrier ⟶ K
+  map_first : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map.app _ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.firstVertex = x
+  map_last : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map.app _ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.lastVertex = y
 
 /-- 元の necklace 射による、K 内での実可換三角形。 -/
-@[ext] structure NecklaceInHom {K : SSet.{u}} {x y : K _⦋0⦌} (T U : NecklaceIn K x y) where
+@[ext] structure NecklaceInHom {K : SSet.{u}} {x y : K _⦋0⦌} (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) where
   necklaceHom : T.necklace ⟶ U.necklace
-  w : necklaceHom.map ≫ U.map = T.map
+  w : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom.map ≫ U.map = T.map
 
 /-- 固定した両端点を持つ K 内の全 necklace の圏。 -/
-instance necklaceInCategory (K : SSet.{u}) (x y : K _⦋0⦌) : Category (NecklaceIn K x y) where
-  Hom := NecklaceInHom
+instance necklaceInCategory (K : SSet.{u}) (x y : K _⦋0⦌) : Category (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) where
+  Hom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom
   id T := ⟨𝟙 _, Category.id_comp _⟩
   comp f g :=
-    { necklaceHom := f.necklaceHom ≫ g.necklaceHom
-      w := by
-        rw [necklace_comp_map, Category.assoc, g.w, f.w] }
-  id_comp f := NecklaceInHom.ext (Category.id_comp f.necklaceHom)
-  comp_id f := NecklaceInHom.ext (Category.comp_id f.necklaceHom)
-  assoc f g h := NecklaceInHom.ext (Category.assoc f.necklaceHom g.necklaceHom h.necklaceHom)
+    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := f.necklaceHom ≫ g.necklaceHom
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+        rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklace_comp_map, Category.assoc, g.w, f.w] }
+  id_comp f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (Category.id_comp f.necklaceHom)
+  comp_id f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (Category.comp_id f.necklaceHom)
+  assoc f g h := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (Category.assoc f.necklaceHom g.necklaceHom h.necklaceHom)
 
 /-- K 内の necklace から元の necklace を取り出す忠実な関手。 -/
-def necklaceInForget (K : SSet.{u}) (x y : K _⦋0⦌) : NecklaceIn K x y ⥤ Necklace.{u} where
+def necklaceInForget (K : SSet.{u}) (x y : K _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y ⥤ _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u} where
   obj T := T.necklace
   map f := f.necklaceHom
 
 /-- 可換三角形は元の necklace 射の等号で判定できる。 -/
 instance necklaceInForget_faithful (K : SSet.{u}) (x y : K _⦋0⦌) :
-    (necklaceInForget K x y).Faithful where
-  map_injective h := NecklaceInHom.ext h
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget K x y).Faithful where
+  map_injective h := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext h
 
 /-- 元の全 necklace の実単体集合への図式。 -/
-def necklaceInDiagram (K : SSet.{u}) (x y : K _⦋0⦌) : NecklaceIn K x y ⥤ SSet.{u} :=
-  necklaceInForget K x y ⋙ necklaceSimplicialSet
+def necklaceInDiagram (K : SSet.{u}) (x y : K _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y ⥤ SSet.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget K x y ⋙ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet
 
 /-- 元の全 necklace の K への写像は、同じ可換三角形の自然な族をなす。 -/
 def necklaceInAugmentation (K : SSet.{u}) (x y : K _⦋0⦌) :
-    necklaceInDiagram K x y ⟶ (Functor.const (NecklaceIn K x y)).obj K where
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInDiagram K x y ⟶ (Functor.const (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y)).obj K where
   app T := T.map
   naturality T U f := by
     change f.necklaceHom.map ≫ U.map = T.map ≫ 𝟙 K

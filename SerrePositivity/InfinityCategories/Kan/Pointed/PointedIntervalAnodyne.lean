@@ -83,7 +83,7 @@ theorem horn_one_zero_eq_face : (horn.{u} 1 0) = stdSimplex.face {(1 : Fin 2)}�
 使われ方：Goerss–Jardine I §7、Kerodon §3.1.1。path space の充填。 -/
 theorem interval_zeroFace_anodyne : anodyneExtensions (stdSimplex.δ.{u} (1 : Fin 2)) := by
   have hh : anodyneExtensions (stdSimplex.face.{u} {(1 : Fin 2)}ᶜ).ι := by
-    rw [← horn_one_zero_eq_face]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.horn_one_zero_eq_face]
     exact anodyneExtensions.horn_ι 0
   rw [← stdSimplex.faceSingletonComplIso_hom_ι (1 : Fin 2)]
   exact anodyneExtensions.comp_mem _ _ (anodyneExtensions.of_isIso _) hh

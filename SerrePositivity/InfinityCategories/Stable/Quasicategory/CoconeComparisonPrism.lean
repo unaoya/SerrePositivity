@@ -71,9 +71,9 @@ def spanComparisonPrism {K L X : SSet.{u}}
 
 lemma spanComparisonPrism_pre_parameter {K K' L X : SSet.{u}} (j : K' ⟶ K)
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
-    (j ▷ (Δ[1] : SSet.{u})) ≫ spanComparisonPrism s =
-      spanComparisonPrism (((ihom L).map ((pre j).app X)).app (Opposite.op ⦋1⦌) s) := by
-  simp only [spanComparisonPrism]
+    (j ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism s =
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (((ihom L).map ((pre j).app X)).app (Opposite.op ⦋1⦌) s) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism]
   rw [← uncurry_pre_app, Category.assoc,
     ← internalHomSwapIso_pre, ← SSet.yonedaEquiv_symm_comp]
   rfl
@@ -83,16 +83,16 @@ def spanFunctorEdgeUnflipHomotopy {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X
     (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) : SSet.Homotopy F G :=
-  simplicialHomotopyOfFunctorEdge (spanFunctorEdgeUnflip l).toTruncated
+  simplicialHomotopyOfFunctorEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated
 
 lemma spanFunctorEdgeUnflipHomotopy_h {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
     (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflipHomotopy l).h = spanComparisonPrism l.edge := by
-  change uncurry (SSet.yonedaEquiv.symm (spanFunctorEdgeUnflip l).edge) =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy l).h = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism l.edge := by
+  change uncurry (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).edge) =
     uncurry (SSet.yonedaEquiv.symm l.edge ≫ (internalHomSwapIso L K X).hom)
-  rw [spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
   rfl
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory

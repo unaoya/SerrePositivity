@@ -18,14 +18,14 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 /-- 元の普遍 cofiber 四角形の右辺 q(d) → difference(c,d,g) の実ホモトピー。 -/
 def laxDifferenceProjectionHomotopy :
     SSet.Homotopy ((laxSnd p q).hom ≫ q.hom) (laxDifference p q) where
   h := (β_ (laxCategory p q).obj (Δ[1] : SSet.{u})).hom ≫
     uncurry (CofiberDiagrams.lift E.obj (F2.laxPullbackArrow p.hom q.hom) ≫
-      CofiberDiagrams.right E.obj)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right E.obj)
   h₀ := by
     rw [← Category.assoc]
     change prismEndpoint 0 (laxCategory p q).obj ≫ uncurry _ = _

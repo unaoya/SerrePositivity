@@ -71,7 +71,7 @@ lemma exists_relativeComparisonInverse
     ∃ J : SSet.Homotopy g f,
       (j ▷ (Δ[1] : SSet.{u})) ≫ J.h = fst K Δ[1] ≫ p ∧
       ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge J x).toTruncated := by
-  obtain ⟨e⟩ := fixedDiagramVertexIso_of_relativeHomotopy j p f g hf hg H hfixed hi
+  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy j p f g hf hg H hfixed hi
   exact exists_relative_homotopy_of_fixedDiagram_vertexIso j p g f hg hf e.symm
 
 end SerrePositivity.InfinityCategories.F1B.Quasicategory

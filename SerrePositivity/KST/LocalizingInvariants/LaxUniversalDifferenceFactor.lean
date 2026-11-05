@@ -19,14 +19,14 @@ open CategoryTheory SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 lemma first_inverts : InvertsEdges (first p q r) (invertedEdges (laxFst p q).hom) := by
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (LaxInclusion.exactFromD p q) (laxFst p q)
     (laxSemiorthogonal p q).kernel]
-  exact (inverts_iff_kills_inclusion (LaxInclusion.exactFromD p q)
-    (⟨first p q r, inferInstance⟩ : ExactMap (laxCategory p q) Q)).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.inverts_iff_kills_inclusion (LaxInclusion.exactFromD p q)
+    (⟨first p q r, inferInstance⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)).mpr
       (fromD_first_zero p q r)
 
 def firstFactorIso : FunctorIso (first p q r)

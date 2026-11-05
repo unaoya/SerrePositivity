@@ -49,7 +49,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 使われ方：収縮先の頂点の計算。
 -/
 @[simp] theorem simplexConeZero_zero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) :
-    (simplexConeZero x).toOrderHom 0 = 0 := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x).toOrderHom 0 = 0 := rfl
 
 /--
 概要：既存の後続点は元の頂点写像の値に写る。
@@ -59,7 +59,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 -/
 @[simp] theorem simplexConeZero_succ {k : SimplexCategory} {n : ℕ}
     (x : k ⟶ ⦋n⦌) (i : Fin (k.len + 1)) :
-    (simplexConeZero x).toOrderHom i.succ = x.toOrderHom i := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x).toOrderHom i.succ = x.toOrderHom i := rfl
 
 /--
 概要：拡張した射の前合成は、元の前合成への零点の追加と一致する。
@@ -69,7 +69,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 -/
 theorem simplexConeZero_comp {k l : SimplexCategory} {n : ℕ}
     (θ : k ⟶ l) (x : l ⟶ ⦋n⦌) :
-    simplexPrepend θ ≫ simplexConeZero x = simplexConeZero (θ ≫ x) := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (θ ≫ x) := by
   ext i : 3
   cases i using Fin.cases <;> rfl
 
@@ -80,7 +80,7 @@ theorem simplexConeZero_comp {k l : SimplexCategory} {n : ℕ}
 使われ方：余分な退化の最初の面の恒等式。
 -/
 theorem simplexConeZero_δ_zero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) :
-    SimplexCategory.δ (0 : Fin (k.len + 2)) ≫ simplexConeZero x = x := by
+    SimplexCategory.δ (0 : Fin (k.len + 2)) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x = x := by
   ext i : 3
   rfl
 

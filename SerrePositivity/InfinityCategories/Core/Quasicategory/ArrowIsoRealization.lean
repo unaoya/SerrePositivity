@@ -51,7 +51,7 @@ lemma arrowFunctorIso_of_vertexIso_comm {X : SSet.{u}} [Quasicategory X]
   obtain ⟨t, ht⟩ := homotopyCategory_homMk_surjective y y' b.hom
   have hs' : IsInvertibleEdge s := by rw [IsInvertibleEdge, hs]; infer_instance
   have ht' : IsInvertibleEdge t := by rw [IsInvertibleEdge, ht]; infer_instance
-  exact arrowFunctorIso_of_homMk_comm f g s t hs' ht' (by simpa only [hs, ht] using h)
+  exact _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm f g s t hs' ht' (by simpa only [hs, ht] using h)
 
 end SerrePositivity.InfinityCategories.Core.Quasicategory
 

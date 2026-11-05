@@ -21,13 +21,13 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 /-- 同じ実 Morita 全族から構成した、元の P/Yoneda 比較の全入力族。 -/
 def dgKappaNativePComparisonFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
     equivalencePath ((ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj
-      StableInfinity.{max (u + 1) v}) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) :=
   (dgKappaNativePFamily_exists R s (dgKappaNativeMoritaArrowFamily R s)
     (dgKappaNativeMoritaArrowFamily_at R s)).choose
 
 lemma dgKappaNativePComparisonFamily_boundary :
     dgKappaNativePComparisonFamily R s ≫
-        equivalencePathMap ((pre (boundary 1).ι).app StableInfinity.{max (u + 1) v}) =
+        equivalencePathMap ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) =
       (dgKappaNativeMoritaArrowFamily R s ≫ (pre (boundary 1).ι).app _) ≫
         equivalencePathRefl _ :=
   (dgKappaNativePFamily_exists R s (dgKappaNativeMoritaArrowFamily R s)
@@ -47,13 +47,13 @@ lemma dgKappaNativePComparisonFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
 
 /-- 各対象で元の P と Yoneda の同じ全合成を回収する全入力 arrow 族。 -/
 def dgKappaNativePArrowFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj StableInfinity.{max (u + 1) v} :=
+    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   dgKappaNativePComparisonFamily R s ≫ equivalencePathEndpoint _ 0
 
 lemma dgKappaNativePArrowFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaNativePArrowFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
       functorVertex (SSet.yonedaEquiv.symm
-        (stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge) :=
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge) :=
   (dgKappaNativePFamily_exists R s (dgKappaNativeMoritaArrowFamily R s)
     (dgKappaNativeMoritaArrowFamily_at R s)).choose_spec.2.2.2 A
 

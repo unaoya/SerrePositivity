@@ -22,14 +22,14 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
 
 /-- 最初の三因子の交換は Yang–Baxter 等式を満たし、右側の因子は同じまま保つ。 -/
 lemma exchange_braid (A K S T : C) :
-    (exchange A K (S ⊗ T)).hom ≫ K ◁ (exchange A S T).hom ≫
-      (exchange K S (A ⊗ T)).hom =
-    A ◁ (exchange K S T).hom ≫ (exchange A S (K ⊗ T)).hom ≫
-      S ◁ (exchange A K T).hom := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K (S ⊗ T)).hom ≫ K ◁ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A S T).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange K S (A ⊗ T)).hom =
+    A ◁ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange K S T).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A S (K ⊗ T)).hom ≫
+      S ◁ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K T).hom := by
   have h := congrArg (fun f =>
     (A ◁ (α_ K S T).inv ≫ (α_ A (K ⊗ S) T).inv) ≫ f ▷ T ≫
       ((α_ S (K ⊗ A) T).hom ≫ S ◁ (α_ K A T).hom)) (BraidedCategory.yang_baxter A K S)
-  simp only [exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
     Functor.flip, curriedTensor] at ⊢
   convert h using 1 <;> monoidal
 

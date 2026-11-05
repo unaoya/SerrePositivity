@@ -18,34 +18,34 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 lemma laxQuotientProductMap_pi_C (j : ℤ) (a : valueHomotopyGroup Φ C j) :
     homotopyMap (hΦ.laxQuotientProductMap p q r) j
         (homotopyMap (Binary.inl (value Φ C) (value Φ D)) j a) =
-      (valueHomotopyMap Φ (laxQuotientCLeg p q r) j a)⁻¹ := by
+      (valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) j a)⁻¹ := by
   have he : SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D) ≫
       hΦ.laxQuotientProductMap p q r) =
-    SpectrumHo.hom (valueMap Φ (laxQuotientCLeg p q r) ≫
+    SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) ≫
       valueMap Φ (SuspensionExact.exactMap Q)) := by
     rw [SpectrumHo.hom_comp, SpectrumHo.hom_comp, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
       _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_C]
   have hp := DFunLike.congr_fun (SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j) a
   simp only [homotopyMap_comp, MonoidHom.comp_apply] at hp
-  have hs := hΦ.suspension_pi_inv Q j (valueHomotopyMap Φ (laxQuotientCLeg p q r) j a)
+  have hs := hΦ.suspension_pi_inv Q j (valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) j a)
   change homotopyMap (valueMap Φ (SuspensionExact.exactMap Q)) j
-    (homotopyMap (valueMap Φ (laxQuotientCLeg p q r)) j a) =
-      (valueHomotopyMap Φ (laxQuotientCLeg p q r) j a)⁻¹ at hs
+    (homotopyMap (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)) j a) =
+      (valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) j a)⁻¹ at hs
   exact hp.trans hs
 
 lemma laxQuotientProductMap_pi_D (j : ℤ) (a : valueHomotopyGroup Φ D j) :
     homotopyMap (hΦ.laxQuotientProductMap p q r) j
         (homotopyMap (Binary.inr (value Φ C) (value Φ D)) j a) =
-      valueHomotopyMap Φ (laxQuotientDLeg p q r) j a := by
+      valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r) j a := by
   have he : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D) ≫
-      hΦ.laxQuotientProductMap p q r) = SpectrumHo.hom (valueMap Φ (laxQuotientDLeg p q r)) := by
+      hΦ.laxQuotientProductMap p q r) = SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)) := by
     rw [SpectrumHo.hom_comp, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
       _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_D]
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, valueHomotopyMap] using
@@ -54,9 +54,9 @@ lemma laxQuotientProductMap_pi_D (j : ℤ) (a : valueHomotopyGroup Φ D j) :
 lemma laxQuotientProductMap_pi_formula (j : ℤ)
     (a : homotopyGroup (Binary.obj (value Φ C) (value Φ D)) j) :
     homotopyMap (hΦ.laxQuotientProductMap p q r) j a =
-      (valueHomotopyMap Φ (laxQuotientCLeg p q r) j
+      (valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r) j
         (homotopyMap (Binary.fst (value Φ C) (value Φ D)) j a))⁻¹ *
-      valueHomotopyMap Φ (laxQuotientDLeg p q r) j
+      valueHomotopyMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r) j
         (homotopyMap (Binary.snd (value Φ C) (value Φ D)) j a) := by
   have h := congrArg (homotopyMap (hΦ.laxQuotientProductMap p q r) j)
     (Binary.axes (value Φ C) (value Φ D) j a)

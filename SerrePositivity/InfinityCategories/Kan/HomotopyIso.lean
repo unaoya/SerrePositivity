@@ -32,7 +32,7 @@ variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 theorem KanHomotopy.map_bijective_congr (n : ℕ) (f : X ⟶ Y)
     {x x' : X _⦋0⦌} {y y' : Y _⦋0⦌} (hx : x = x') (hy : y = y')
     (h : f.app _ x = y) (h' : f.app _ x' = y')
-    (hf : Function.Bijective (map n f h)) : Function.Bijective (map n f h') := by
+    (hf : Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f h)) : Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f h') := by
   subst x'
   subst y'
   exact hf
@@ -55,17 +55,17 @@ theorem iso_inverse_basepoint (e : X ≅ Y) {x : X _⦋0⦌} {y : Y _⦋0⦌}
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。fiber 表示の比較。 -/
 noncomputable def KanHomotopy.equivOfIso (n : ℕ) (e : X ≅ Y)
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : e.hom.app _ x = y) :
-    KanHomotopy X n x ≃ KanHomotopy Y n y := by
-  let hi := iso_inverse_basepoint e h
-  refine ⟨map n e.hom h, map n e.inv hi, ?_, ?_⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y n y := by
+  let hi := _root_.SerrePositivity.InfinityCategories.Kan.iso_inverse_basepoint e h
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n e.hom h, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n e.inv hi, ?_, ?_⟩
   · intro a
     have hc := congrArg (fun k : X ⟶ X ↦ k.app _ x) e.hom_inv_id
-    have hm := map_comp n e.hom h e.inv hi hc a
-    simpa only [e.hom_inv_id, map_id] using hm.symm
+    have hm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n e.hom h e.inv hi hc a
+    simpa only [e.hom_inv_id, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] using hm.symm
   · intro a
     have hc := congrArg (fun k : Y ⟶ Y ↦ k.app _ y) e.inv_hom_id
-    have hm := map_comp n e.inv hi e.hom h hc a
-    simpa only [e.inv_hom_id, map_id] using hm.symm
+    have hm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n e.inv hi e.hom h hc a
+    simpa only [e.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] using hm.symm
 
 /-- 概要：単体集合の同型は正次数のホモトピー群の同型を誘導する。
 方針：誘導準同型の全単射性を全次数の同値から得る。
@@ -73,18 +73,18 @@ noncomputable def KanHomotopy.equivOfIso (n : ℕ) (e : X ≅ Y)
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。loop の正次数の比較。 -/
 noncomputable def KanHomotopyGroup.equivOfIso (n : ℕ) (e : X ≅ Y)
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : e.hom.app _ x = y) :
-    KanHomotopyGroup X n x ≃* KanHomotopyGroup Y n y :=
-  MulEquiv.ofBijective (map e.hom h) (KanHomotopy.equivOfIso (n + 1) e h).bijective
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n y :=
+  MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map e.hom h) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso (n + 1) e h).bijective
 
 /-- 概要：全基点 π_* 同型の射は指定した正次数の群同型を誘導する。
 方針：誘導準同型の全単射性を群同型へ束ねる。
 規約：像の基点の等式を明示する。
 使われ方：BF 1978 §2、HA §1.4.2。Ω 条件からの段の比較。 -/
 noncomputable def KanHomotopyGroup.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
-    KanHomotopyGroup X n x ≃* KanHomotopyGroup Y n y := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n y := by
   subst y
-  exact MulEquiv.ofBijective (map f rfl) (hf x (n + 1))
+  exact MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl) (hf x (n + 1))
 
 /-- 概要：全基点 π_* 同型による群同型の順写像は元の誘導準同型。
 方針：像の基点の等式で帰納して全単射からの群同型を展開する。
@@ -92,8 +92,8 @@ noncomputable def KanHomotopyGroup.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
 使われ方：Goerss–Jardine I §7、BF 1978 §2。段の比較の自然性。 -/
 @[simp]
 theorem KanHomotopyGroup.equivOfPiIsomorphism_apply (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y)
-    (a : KanHomotopyGroup X n x) : equivOfPiIsomorphism n f hf h a = map f h a := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n f hf h a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f h a := by
   subst y
   rfl
 
@@ -102,8 +102,8 @@ theorem KanHomotopyGroup.equivOfPiIsomorphism_apply (n : ℕ) (f : X ⟶ Y)
 規約：添字 n は実際の次数 n+1。
 使われ方：Goerss–Jardine I §7。fiber 比較の五項補題。 -/
 theorem KanHomotopyGroup.map_bijective_of_piIsomorphism (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
-    Function.Bijective (map (n := n) f h) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) f h) := by
   subst y
   exact hf x (n + 1)
 
@@ -112,10 +112,10 @@ theorem KanHomotopyGroup.map_bijective_of_piIsomorphism (n : ℕ) (f : X ⟶ Y)
 規約：零次数を含む。
 使われ方：BF 1978 §2、HA §1.4.2。Ω スペクトルの零段の比較。 -/
 noncomputable def KanHomotopy.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
-    KanHomotopy X n x ≃ KanHomotopy Y n y := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y n y := by
   subst y
-  exact Equiv.ofBijective (map n f rfl) (hf x n)
+  exact Equiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl) (hf x n)
 
 /-- 概要：全基点 π_* 同型の同値の順写像は元の誘導写像。
 方針：基点の等式で場合分けして全単射からの同値を展開する。
@@ -123,8 +123,8 @@ noncomputable def KanHomotopy.equivOfPiIsomorphism (n : ℕ) (f : X ⟶ Y)
 使われ方：BF 1978 §2。置換射の全単射性の照合。 -/
 @[simp]
 theorem KanHomotopy.equivOfPiIsomorphism_apply (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y)
-    (a : KanHomotopy X n x) : equivOfPiIsomorphism n f hf h a = map n f h a := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism n f hf h a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f h a := by
   subst y
   rfl
 
@@ -135,7 +135,7 @@ theorem KanHomotopy.equivOfPiIsomorphism_apply (n : ℕ) (f : X ⟶ Y)
 @[simp]
 theorem KanHomotopy.equivOfIso_point (n : ℕ) (e : X ≅ Y)
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : e.hom.app _ x = y) :
-    equivOfIso n e h (point n) = point n := map_point n e.hom h
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n e h (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_point n e.hom h
 
 /-- 概要：全基点 π_* 同型による類の同値は基点を保つ。
 方針：基点の像で場合分けして誘導写像の基点保存を使う。
@@ -143,18 +143,18 @@ theorem KanHomotopy.equivOfIso_point (n : ℕ) (e : X ≅ Y)
 使われ方：BF 1978 §2。Ω スペクトルの零次数の単位。 -/
 @[simp]
 theorem KanHomotopy.equivOfPiIsomorphism_point (n : ℕ) (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
-    equivOfPiIsomorphism n f hf h (point n) = point n := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) {x : X _⦋0⦌} {y : Y _⦋0⦌} (h : f.app _ x = y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism n f hf h (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := by
   subst y
-  exact map_point n f rfl
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_point n f rfl
 
 /-- 概要：単体集合の同型の順射は全基点 π_* 同型。
 方針：任意の源の基点で構成済みのホモトピー類の同値を使う。
 規約：零次数も含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。loop と fiber の厳密同型の移送。 -/
-theorem KanPiIsomorphism.of_iso (e : X ≅ Y) : KanPiIsomorphism e.hom := by
+theorem KanPiIsomorphism.of_iso (e : X ≅ Y) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom := by
   intro x n
-  exact (KanHomotopy.equivOfIso n e rfl).bijective
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n e rfl).bijective
 
 end SerrePositivity.InfinityCategories.Kan
 

@@ -21,13 +21,13 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberRotation
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
-lemma inverseRotation_source_zero (a : (arrows X) _⦋0⦌)
+lemma inverseRotation_source_zero (a : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation.arrows X) _⦋0⦌)
     (ha : IsEquivalencePathVertex a) :
     IsZeroVertex ((inverseRotation X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) a) := by
   let z := (rightSection X).app (Opposite.op ⦋0⦌) a
-  have hz : (CofiberDiagrams.right X).app (Opposite.op ⦋0⦌) z = a := by
-    exact congrArg (fun f : arrows X ⟶ arrows X => f.app (Opposite.op ⦋0⦌) a)
+  have hz : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X).app (Opposite.op ⦋0⦌) z = a := by
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation.arrows X ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation.arrows X => f.app (Opposite.op ⦋0⦌) a)
       (rightSection_right X)
   have he : intervalFunctorVertexEdge a =
       (squareRightArrow (squareDiagram z.val)).edge := by
@@ -35,9 +35,9 @@ lemma inverseRotation_source_zero (a : (arrows X) _⦋0⦌)
       squareRightArrow_edge]
   have hi : IsInvertibleEdge (squareRightArrow (squareDiagram z.val)) :=
     (isInvertibleEdge_congr he).mp ha
-  change IsZeroVertex ((CofiberDiagrams.bottom X ≫
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) z)
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_bottom_source]
-  exact CofiberDiagrams.zero_source_of_right_invertible X z hi
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.zero_source_of_right_invertible X z hi
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberRotation

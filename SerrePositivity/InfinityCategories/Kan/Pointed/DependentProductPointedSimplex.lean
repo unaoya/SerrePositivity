@@ -45,7 +45,7 @@ def simplex (f : ∀ s, (X s).PtSimplex n (b s)) : (_root_.SerrePositivity.Infin
     simp
 
 lemma eval_simplex (f : ∀ s, (X s).PtSimplex n (b s)) (s : S) :
-    mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl (simplex f) = f s := by
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex f) = f s := by
   apply RelativeMorphism.ext
   exact _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval _ s
 
@@ -54,8 +54,8 @@ lemma eval_simplex (f : ∀ s, (X s).PtSimplex n (b s)) (s : S) :
 規約：全ての座標で同じ面添字を使う。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。関数複体のホモトピー類の識別。 -/
 def relStruct {f g : (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X).PtSimplex n b} {i : Fin (n + 1)}
-    (r : ∀ s, PtSimplex.RelStruct (mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl f)
-      (mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl g) i) : PtSimplex.RelStruct f g i where
+    (r : ∀ s, PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl g) i) : PtSimplex.RelStruct f g i where
   map := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ (r s).map)
   δ_castSucc_map := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext

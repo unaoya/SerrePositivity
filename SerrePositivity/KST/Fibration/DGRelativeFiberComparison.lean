@@ -22,7 +22,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 元の K 四角形の右辺と上辺をそのまま底とする、Sp の構成済み極限錐。 -/
 def dgRelativeKLimitCone : JoinCone (pullbackCospan (d.square ≫ dgKInputK A)) :=

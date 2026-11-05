@@ -23,32 +23,32 @@ def simplexSubsetOrder {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) 
 
 /-- 元の昇順単体の全頂点は、元の同じ部分集合に属する。 -/
 lemma simplexSubsetOrder_mem {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
-    (v : Fin (I.card - 1 + 1)) : simplexSubsetOrder I hI v ∈ I :=
+    (v : Fin (I.card - 1 + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v ∈ I :=
   I.orderEmbOfFin_mem (show I.card = I.card - 1 + 1 by omega) v
 
 /-- 元の昇順単体は全頂点で単射。 -/
 lemma simplexSubsetOrder_injective {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    Function.Injective (simplexSubsetOrder I hI) :=
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI) :=
   (I.orderEmbOfFin (show I.card = I.card - 1 + 1 by omega)).injective
 
 /-- 元の昇順単体の始頂点は、元の部分集合の最小元。 -/
 lemma simplexSubsetOrder_first {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    simplexSubsetOrder I hI 0 = I.min' (Finset.card_pos.mp (by omega)) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI 0 = I.min' (Finset.card_pos.mp (by omega)) :=
   Finset.orderEmbOfFin_zero (show I.card = I.card - 1 + 1 by omega) (by omega)
 
 /-- 元の昇順単体の終頂点は、元の部分集合の最大元。 -/
 lemma simplexSubsetOrder_last {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    simplexSubsetOrder I hI (Fin.last (I.card - 1)) = I.max' (Finset.card_pos.mp (by omega)) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI (Fin.last (I.card - 1)) = I.max' (Finset.card_pos.mp (by omega)) :=
   Finset.orderEmbOfFin_last (show I.card = I.card - 1 + 1 by omega) (by omega)
 
 /-- 元の昇順単体の頂点の像は、元の部分集合全体そのもの。 -/
 lemma simplexSubsetOrder_range {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    Set.range (simplexSubsetOrder I hI) = I :=
+    Set.range (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI) = I :=
   I.range_orderEmbOfFin (show I.card = I.card - 1 + 1 by omega)
 
 /-- 元の有限部分集合の昇順列挙を、元の標準単体圏の射として読む。 -/
 def simplexSubsetHom {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    ⦋I.card - 1⦌ ⟶ ⦋n⦌ := SimplexCategory.Hom.mk (simplexSubsetOrder I hI)
+    ⦋I.card - 1⦌ ⟶ ⦋n⦌ := SimplexCategory.Hom.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI)
 
 end SerrePositivity.InfinityCategories.Simplicial
 

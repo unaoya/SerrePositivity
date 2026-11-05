@@ -27,8 +27,8 @@ lemma cotensorIso_inv_π {I : Type u} [SmallCategory I] (A : PointedSimplicialSe
     (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u}) (i : I) :
     (cotensorIso A W D).inv ≫ (ihom A).map (end_.π (diagram W D) i) =
       end_.π (diagram W (D ⋙ ihom A)) i ≫
-        (InternalHomExchange.iso A (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
-  apply (cancel_mono (InternalHomExchange.iso A (PointedObject.adjoin (W.obj i))
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i))
     (D.obj i)).hom).mp
   rw [Category.assoc, ← cotensorIso_π, Iso.inv_hom_id_assoc,
     Category.assoc, Iso.inv_hom_id, Category.comp_id]
@@ -47,7 +47,7 @@ def homotopyLimitEvaluationApp (D : I ⥤ KanSequence.{u}) (i : I) (n : ℕ) :
 /-- 各段の end の射影は実際の随伴構造射と可換。 -/
 lemma homotopyLimitEvaluationApp_adjoint (D : I ⥤ KanSequence.{u}) (i : I) (n : ℕ) :
     homotopyLimitEvaluationApp D i n ≫
-        suspensionLoopEquiv _ _
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _
           ((mapping (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (D.obj i)).sigma n) =
       homotopyLimitAdjoint D n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (homotopyLimitEvaluationApp D i (n + 1)) := by
@@ -64,7 +64,7 @@ def homotopyLimitEvaluation (D : I ⥤ KanSequence.{u}) (i : I) :
       (mapping (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (D.obj i)) where
   app := homotopyLimitEvaluationApp D i
   comm n := by
-    apply (suspensionLoopEquiv _ _).injective
+    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).injective
     change curry (PointedSimplicialSet.circle.{u} ◁ homotopyLimitEvaluationApp D i n ≫
         (mapping (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (D.obj i)).sigma n) =
       curry ((homotopyLimit D).sigma n ≫ homotopyLimitEvaluationApp D i (n + 1))

@@ -18,37 +18,37 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の具体的な cubical 射から回収した有限 max 表示。 -/
-def concreteCubeNormalForm {X Y : ConcreteCube} (f : X ⟶ Y) :
-    CubeJoinNormalForm X.dimension Y.dimension :=
-  cubeJoinNormalFormOfMap f.val
+def concreteCubeNormalForm {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm X.dimension Y.dimension :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap f.val
 
 /-- 元の cubical 射は、同じ射の有限 max 表示を評価して回収される。 -/
-lemma concreteCubeNormalForm_eval {X Y : ConcreteCube} (f : X ⟶ Y)
-    (x : CubeVertex X.dimension) :
-    cubeJoinNormalFormEval (concreteCubeNormalForm f) x = f.val x :=
-  cubeJoinNormalFormOfMap_eval (cubeMapGenerated_sup f.property) x
+lemma concreteCubeNormalForm_eval {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex X.dimension) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) x = f.val x :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap_eval (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup f.property) x
 
 /-- 有限 max 表示は具体的な cubical 射の等号を検出する。 -/
-lemma concreteCubeNormalForm_injective (X Y : ConcreteCube) :
-    Function.Injective (concreteCubeNormalForm (X := X) (Y := Y)) := by
+lemma concreteCubeNormalForm_injective (X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (X := X) (Y := Y)) := by
   intro f g h
   apply Subtype.ext
   funext x
-  rw [← concreteCubeNormalForm_eval f x, ← concreteCubeNormalForm_eval g x, h]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval f x, ← _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval g x, h]
 
 /-- 具体的な cubical 射の等号と、同じ有限 max 表示の等号の同値。 -/
-lemma concreteCubeNormalForm_eq_iff {X Y : ConcreteCube} (f g : X ⟶ Y) :
-    concreteCubeNormalForm f = concreteCubeNormalForm g ↔ f = g :=
-  (concreteCubeNormalForm_injective X Y).eq_iff
+lemma concreteCubeNormalForm_eq_iff {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f g : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f = _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm g ↔ f = g :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_injective X Y).eq_iff
 
 /-- 元の合成の有限 max 表示は、同じ二つの表示の評価の合成から回収される。 -/
-lemma concreteCubeNormalForm_comp {X Y Z : ConcreteCube} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    concreteCubeNormalForm (f ≫ g) = cubeJoinNormalFormOfMap
-      (fun x => cubeJoinNormalFormEval (concreteCubeNormalForm g)
-        (cubeJoinNormalFormEval (concreteCubeNormalForm f) x)) := by
-  apply congrArg cubeJoinNormalFormOfMap
+lemma concreteCubeNormalForm_comp {X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (f ≫ g) = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap
+      (fun x => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm g)
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) x)) := by
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap
   funext x
-  rw [concreteCubeNormalForm_eval, concreteCubeNormalForm_eval]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval, _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval]
   rfl
 
 end SerrePositivity.InfinityCategories.Kan

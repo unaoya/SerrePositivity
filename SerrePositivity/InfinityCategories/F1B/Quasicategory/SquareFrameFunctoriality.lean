@@ -25,18 +25,18 @@ namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
 end SerrePositivity.KST.LocalizingInvariants.SquareFrame
 namespace SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.LocalizingInvariants.SquareFrame
+open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
 variable {X Y : SSet.{u}} (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X)
 
 def postcomp (F : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Y where
-  bottom := f.bottom ≫ F
-  top := f.top ≫ F
-  left := f.left ≫ F
-  right := f.right ≫ F
-  lower_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_left
-  lower_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_right
-  upper_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_left
-  upper_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_right
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := f.bottom ≫ F
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := f.top ≫ F
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := f.left ≫ F
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := f.right ≫ F
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_left
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_right
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_left
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_right
 
 lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = ((postcomp f) F).diagram := by
   apply (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).hom_ext
@@ -47,33 +47,33 @@ lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = ((postcomp f) F).diagra
     exact F2.intervalBoundaryDiagram_postcomp f.left f.right F
 
 def ofSquare (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X where
-  bottom := squareBottomEdge ≫ Q
-  top := squareTopEdge ≫ Q
-  left := squareLeftEdge ≫ Q
-  right := squareRightEdge ≫ Q
-  lower_left := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := squareBottomEdge ≫ Q
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := squareTopEdge ≫ Q
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := squareLeftEdge ≫ Q
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := squareRightEdge ≫ Q
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  lower_right := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  upper_left := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  upper_right := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
 
 lemma diagram_ofSquare (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
-    (ofSquare Q).diagram = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q := by
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare Q).diagram = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q := by
   apply (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).hom_ext
   · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Subcomplex.unionProd.ι₁_ι]
     have he := F2.intervalBoundaryDiagram_eta
@@ -116,68 +116,68 @@ def verticalEndpoint (i : Fin 2) : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity
   intervalBoundaryEndpoint i Δ[1] ≫
     Subcomplex.unionProd.ι₂ (SSet.boundary 1) (SSet.boundary 1)
 
-lemma diagram_bottom : horizontalEndpoint 0 ≫ f.diagram = f.bottom := by
-  rw [horizontalEndpoint, Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal]
+lemma diagram_bottom : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 0 ≫ f.diagram = f.bottom := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint, Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal]
   change intervalBoundaryEndpoint 0 _ ≫ intervalBoundaryDiagram f.bottom f.top = _
   exact intervalBoundaryDiagram_zero _ _
 
-lemma diagram_top : horizontalEndpoint 1 ≫ f.diagram = f.top := by
-  rw [horizontalEndpoint, Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal]
+lemma diagram_top : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 1 ≫ f.diagram = f.top := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint, Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal]
   change intervalBoundaryEndpoint 1 _ ≫ intervalBoundaryDiagram f.bottom f.top = _
   exact intervalBoundaryDiagram_one _ _
 
-lemma diagram_left : verticalEndpoint 0 ≫ f.diagram = f.left := by
-  rw [verticalEndpoint, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical]
+lemma diagram_left : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 0 ≫ f.diagram = f.left := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical]
   exact intervalBoundaryDiagram_zero _ _
 
-lemma diagram_right : verticalEndpoint 1 ≫ f.diagram = f.right := by
-  rw [verticalEndpoint, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical]
+lemma diagram_right : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 1 ≫ f.diagram = f.right := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint, Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical]
   exact intervalBoundaryDiagram_one _ _
 
-lemma horizontalEndpoint_zero_ι : horizontalEndpoint 0 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareBottomEdge := by
-  rw [horizontalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Category.assoc,
+lemma horizontalEndpoint_zero_ι : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 0 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareBottomEdge := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Category.assoc,
     Subcomplex.unionProd.ι₁_ι]
   apply SSet.yonedaEquiv.injective
   apply Prod.ext <;> decide
 
-lemma horizontalEndpoint_one_ι : horizontalEndpoint 1 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareTopEdge := by
-  rw [horizontalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Category.assoc,
+lemma horizontalEndpoint_one_ι : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 1 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareTopEdge := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Category.assoc,
     Subcomplex.unionProd.ι₁_ι]
   apply SSet.yonedaEquiv.injective
   apply Prod.ext <;> decide
 
-lemma verticalEndpoint_zero_ι : verticalEndpoint 0 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareLeftEdge := by
-  rw [verticalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Subcomplex.unionProd.ι₂_ι]
+lemma verticalEndpoint_zero_ι : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 0 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareLeftEdge := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Subcomplex.unionProd.ι₂_ι]
   apply SSet.yonedaEquiv.injective
   apply Prod.ext <;> decide
 
-lemma verticalEndpoint_one_ι : verticalEndpoint 1 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareRightEdge := by
-  rw [verticalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Subcomplex.unionProd.ι₂_ι]
+lemma verticalEndpoint_one_ι : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 1 ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} = squareRightEdge := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι, Category.assoc, Subcomplex.unionProd.ι₂_ι]
   apply SSet.yonedaEquiv.injective
   apply Prod.ext <;> decide
 
 lemma square_bottom_of_boundary {Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (h : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q = f.diagram) : squareBottomEdge ≫ Q = f.bottom := by
-  have he := congrArg (horizontalEndpoint 0 ≫ ·) h
-  rw [← Category.assoc, horizontalEndpoint_zero_ι, diagram_bottom] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 0 ≫ ·) h
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint_zero_ι, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_bottom] at he
   exact he
 
 lemma square_top_of_boundary {Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (h : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q = f.diagram) : squareTopEdge ≫ Q = f.top := by
-  have he := congrArg (horizontalEndpoint 1 ≫ ·) h
-  rw [← Category.assoc, horizontalEndpoint_one_ι, diagram_top] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint 1 ≫ ·) h
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint_one_ι, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_top] at he
   exact he
 
 lemma square_left_of_boundary {Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (h : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q = f.diagram) : squareLeftEdge ≫ Q = f.left := by
-  have he := congrArg (verticalEndpoint 0 ≫ ·) h
-  rw [← Category.assoc, verticalEndpoint_zero_ι, diagram_left] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 0 ≫ ·) h
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint_zero_ι, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_left] at he
   exact he
 
 lemma square_right_of_boundary {Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (h : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q = f.diagram) : squareRightEdge ≫ Q = f.right := by
-  have he := congrArg (verticalEndpoint 1 ≫ ·) h
-  rw [← Category.assoc, verticalEndpoint_one_ι, diagram_right] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint 1 ≫ ·) h
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint_one_ι, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_right] at he
   exact he
 
 end SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame

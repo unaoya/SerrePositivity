@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 標準 bead の有限列を、元の有限 joints の反復 wedge として読む。 -/
 def ofBeads : List ℕ → NecklaceShape

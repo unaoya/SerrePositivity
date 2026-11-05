@@ -31,13 +31,13 @@ open SerrePositivity.KST.Spectra
 使われ方：Goerss–Jardine I §8。相対的な交代境界関係の入力。 -/
 structure SphericalFiberLift {E B : SSet.{u}} (p : E ⟶ B) (e : E _⦋0⦌) {n : ℕ}
     (s : B.PtSimplex (n + 2) (p.app _ e))
-    (a : Fin (n + 3) → (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e)) where
+    (a : Fin (n + 3) → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) where
   map : (Δ[n + 2] : SSet.{u}) ⟶ E
-  map_comp : map ≫ p = s.map
-  face_eq (j : Fin (n + 3)) : stdSimplex.δ j ≫ map = (a j).map ≫ fiberι p (p.app _ e)
+  map_comp : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map ≫ p = s.map
+  face_eq (j : Fin (n + 3)) : stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map = (a j).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
 
 namespace SphericalFiberLift
-open SerrePositivity.KST.Spectra.SphericalFiberLift
+open _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -45,70 +45,70 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 3) (p.app _ e)}
-  {a : Fin (n + 4) → (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)}
+  {a : Fin (n + 4) → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
 
 /-- fiber の境界定数単体を全空間へ含める。 -/
-def totalSimplex (t : (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)) :
-    E.PtSimplex (n + 2) e := mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) t
+def totalSimplex (t : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
+    E.PtSimplex (n + 2) e := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) t
 
 @[simp]
-lemma totalSimplex_const : totalSimplex (p := p) (e := e)
-    (RelativeMorphism.const : (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)) =
-      .const := mapSimplex_const _ _
+lemma totalSimplex_const : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex (p := p) (e := e)
+    (RelativeMorphism.const : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) =
+      .const := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const _ _
 
 /-- fiber 内の積の充填を全空間へ含める。 -/
-def totalMulStruct {f g h : (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)}
+def totalMulStruct {f g h : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
     {i : Fin (n + 2)} (r : PtSimplex.MulStruct f g h i) :
-    PtSimplex.MulStruct (totalSimplex f) (totalSimplex g) (totalSimplex h) i :=
-  mapMulStruct (fiberι p (p.app _ e)) (fiberι_point p e) r
+    PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex f) (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex g) (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex h) i :=
+  _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) r
 
 /-- 相対的な境界を全空間での球面的境界として読む。 -/
-def totalBoundary (T : SphericalFiberLift p e s a) : SphericalBoundary (fun j ↦ totalSimplex (a j))
+def totalBoundary (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex (a j))
     where
-  map := T.map
-  face_eq := T.face_eq
+  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := T.map
+  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq := T.face_eq
 
 variable {i : Fin (n + 2)}
-  {ia b : (KanFiber p (p.app _ e)).PtSimplex (n + 2) (fiberPoint p e)}
+  {ia b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
 
 /-- 単位元を厳密な定数として持つ、全空間での逆元の積の充填。 -/
 def totalInverse (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .const i) :
-    PtSimplex.MulStruct (totalSimplex ia) (totalSimplex (a i.castSucc.castSucc)) .const i where
-  map := hi.map ≫ fiberι p (p.app _ e)
-  δ_castSucc_castSucc_map := (totalMulStruct hi).δ_castSucc_castSucc_map
+    PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex ia) (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex (a i.castSucc.castSucc)) .const i where
+  map := hi.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
+  δ_castSucc_castSucc_map := (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hi).δ_castSucc_castSucc_map
   δ_succ_castSucc_map := by
-    simpa only [totalSimplex_const, totalMulStruct, mapMulStruct] using
-      (totalMulStruct hi).δ_succ_castSucc_map
-  δ_succ_succ_map := (totalMulStruct hi).δ_succ_succ_map
-  δ_map_of_lt j hj := (totalMulStruct hi).δ_map_of_lt j hj
-  δ_map_of_gt j hj := (totalMulStruct hi).δ_map_of_gt j hj
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex_const, _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct, _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct] using
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hi).δ_succ_castSucc_map
+  δ_succ_succ_map := (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hi).δ_succ_succ_map
+  δ_map_of_lt j hj := (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hi).δ_map_of_lt j hj
+  δ_map_of_gt j hj := (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hi).δ_map_of_gt j hj
 
 /-- 相対簡約ホーンの面。基礎となる球面的簡約の面を使う。 -/
 def reductionFace (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .const i)
-    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : SphericalFiberLift p e s a)
+    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ E :=
-  SphericalBoundaryReduction.face
-    (totalInverse hi)
-    (totalMulStruct hb) (totalBoundary T) j
+  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face
+    (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalInverse hi)
+    (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hb) (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalBoundary T) j
 
 /-- fiber の先頭面が定数なら、全空間での簡約ホーンは互換。 -/
 lemma reductionCompatible (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .const i)
-    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : SphericalFiberLift p e s a)
+    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (hlower : ∀ j, j.val < i.val → a j = .const) :
-    horn.IsCompatible (i := i.castSucc.succ.succ) (fun j _ ↦ reductionFace hi hb T j) := by
-  apply SphericalBoundaryReduction.compatible
+    horn.IsCompatible (i := i.castSucc.succ.succ) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionFace hi hb T j) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible
   intro j hj
-  rw [hlower j hj, totalSimplex_const]
+  rw [hlower j hj, _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex_const]
 
 /-- 元の単体を置く面以外の射影は定数。 -/
 lemma reductionFace_comp (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .const i)
-    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : SphericalFiberLift p e s a)
+    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (j : Fin (n + 5)) :
-    reductionFace hi hb T j ≫ p = if j.val = i.val + 1 then s.map else SSet.const (p.app _ e) := by
-  simp only [reductionFace, SphericalBoundaryReduction.face]
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionFace hi hb T j ≫ p = if j.val = i.val + 1 then s.map else SSet.const (p.app _ e) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionFace, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face]
   split_ifs <;> try (exfalso; omega)
-  all_goals simp only [totalInverse, totalMulStruct, mapMulStruct, totalBoundary,
-    totalSimplex, mapSimplex, Category.assoc, fiberι_comp, comp_const, const_comp,
+  all_goals simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalInverse, _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct, _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct, _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalBoundary,
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, comp_const, const_comp,
     T.map_comp]
 
 /-- 概要：球面的な一面の簡約を、底の単体を固定した相対充填で実現する。
@@ -117,14 +117,14 @@ lemma reductionFace_comp (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .c
 使われ方：Goerss–Jardine I §8。相対境界関係の面の逐次消去。 -/
 def reduce [Fibration p]
     (hi : PtSimplex.MulStruct ia (a i.castSucc.castSucc) .const i)
-    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : SphericalFiberLift p e s a)
+    (hb : PtSimplex.MulStruct b ia (a i.succ.succ) i) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (hlower : ∀ j, j.val < i.val → a j = .const) :
-    SphericalFiberLift p e s (SphericalBoundaryReduction.reduced a i b) := by
-  have hc := reductionCompatible hi hb T hlower
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced a i b) := by
+  have hc := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionCompatible hi hb T hlower
   have hp (j : Fin (n + 5)) (hj : j ≠ i.castSucc.succ.succ) :
-      reductionFace hi hb T j ≫ p =
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionFace hi hb T j ≫ p =
         stdSimplex.δ j ≫ stdSimplex.σ i.castSucc.succ ≫ s.map := by
-    rw [reductionFace_comp, SimplexFaces.degenerate_face]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.reductionFace_comp, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
     have hj' : j ≠ i.castSucc.succ.succ := hj
     congr 1
     simp only [Fin.ext_iff, Fin.val_castSucc, Fin.val_succ] at *
@@ -136,14 +136,14 @@ def reduce [Fibration p]
   have hφ := (Classical.choose_spec hex).1
   have hcomp := (Classical.choose_spec hex).2
   refine ⟨stdSimplex.δ i.castSucc.succ.succ ≫ φ, ?_, ?_⟩
-  · rw [Category.assoc, hcomp, SimplexFaces.degenerate_face, ite_eq_left (Or.inr rfl)]
+  · rw [Category.assoc, hcomp, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, ite_eq_left (Or.inr rfl)]
   · intro j
-    have he := SphericalBoundaryReduction.output_face
-      (totalInverse hi)
-      (totalMulStruct hb) (totalBoundary T) φ hφ j
-    simp only [SphericalBoundaryReduction.reduced] at he ⊢
-    split_ifs at he ⊢ <;> simpa only [totalSimplex, mapSimplex,
-      RelativeMorphism.const_map, const_comp, fiberι_point] using he
+    have he := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalInverse hi)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalMulStruct hb) (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalBoundary T) φ hφ j
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced] at he ⊢
+    split_ifs at he ⊢ <;> simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex,
+      RelativeMorphism.const_map, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] using he
 
 
 end

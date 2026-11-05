@@ -29,36 +29,36 @@ variable {C : Type u} [Category.{v} C] [Preadditive C] [MonoidalCategory C]
 
 abbrev obj : C := A.X ⊞ M.X
 
-def one : 𝟙_ C ⟶ obj A M := η[A.X] ≫ biprod.inl
+def one : 𝟙_ C ⟶ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M := η[A.X] ≫ biprod.inl
 
-def mul : obj A M ⊗ obj A M ⟶ obj A M :=
+def mul : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ⊗ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ⟶ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M :=
   (biprod.fst ⊗ₘ biprod.fst) ≫ μ[A.X] ≫ biprod.inl +
     ((biprod.fst ⊗ₘ biprod.snd) ≫ M.actLeft +
       (biprod.snd ⊗ₘ biprod.fst) ≫ M.actRight) ≫ biprod.inr
 
 @[reassoc (attr := simp)]
-lemma mul_ll : (biprod.inl ⊗ₘ biprod.inl) ≫ mul A M = μ[A.X] ≫ biprod.inl := by
-  simp [mul, tensorHom_comp_tensorHom_assoc]
+lemma mul_ll : (biprod.inl ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = μ[A.X] ≫ biprod.inl := by
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul, tensorHom_comp_tensorHom_assoc]
 
 @[reassoc (attr := simp)]
-lemma mul_lr : (biprod.inl ⊗ₘ biprod.inr) ≫ mul A M = M.actLeft ≫ biprod.inr := by
-  simp [mul, tensorHom_comp_tensorHom_assoc]
+lemma mul_lr : (biprod.inl ⊗ₘ biprod.inr) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = M.actLeft ≫ biprod.inr := by
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul, tensorHom_comp_tensorHom_assoc]
 
 @[reassoc (attr := simp)]
-lemma mul_rl : (biprod.inr ⊗ₘ biprod.inl) ≫ mul A M = M.actRight ≫ biprod.inr := by
-  simp [mul, tensorHom_comp_tensorHom_assoc]
+lemma mul_rl : (biprod.inr ⊗ₘ biprod.inl) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = M.actRight ≫ biprod.inr := by
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul, tensorHom_comp_tensorHom_assoc]
 
 @[reassoc (attr := simp)]
-lemma mul_rr : (biprod.inr ⊗ₘ biprod.inr) ≫ mul A M = 0 := by
-  simp [mul, tensorHom_comp_tensorHom_assoc]
+lemma mul_rr : (biprod.inr ⊗ₘ biprod.inr) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul, tensorHom_comp_tensorHom_assoc]
 
-lemma mul_fst : mul A M ≫ biprod.fst = (biprod.fst ⊗ₘ biprod.fst) ≫ μ[A.X] := by
-  simp [mul]
+lemma mul_fst : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ biprod.fst = (biprod.fst ⊗ₘ biprod.fst) ≫ μ[A.X] := by
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul]
 
-lemma mul_snd : mul A M ≫ biprod.snd =
+lemma mul_snd : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ biprod.snd =
     (biprod.fst ⊗ₘ biprod.snd) ≫ M.actLeft +
       (biprod.snd ⊗ₘ biprod.fst) ≫ M.actRight := by
-  simp [mul]
+  simp [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul]
 
 end SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero
 

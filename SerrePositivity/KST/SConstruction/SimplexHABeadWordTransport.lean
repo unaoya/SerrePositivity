@@ -17,8 +17,8 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の語の逆向き次元移送は、値の同じ逆向き次数移送を回収する。 -/
 lemma simplexHABeadWordValue_mpr {n : ℕ} (s : DGNerve.SimplexData A D n)
-    {a b : Fin (n + 1)} {p q : ℕ} (h : p = q) (word : SimplexHABeadWord n a b q) :
-    simplexHABeadWordValue A s (Eq.mpr (congrArg (SimplexHABeadWord n a b) h) word) =
+    {a b : Fin (n + 1)} {p q : ℕ} (h : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b q) :
+    simplexHABeadWordValue A s (Eq.mpr (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b) h) word) =
       eqToHom (congrArg (fun k => (homObject A D (s.obj a) (s.obj b)).X k)
         (congrArg (fun d : ℕ => -(d : ℤ)) h.symm)) (simplexHABeadWordValue A s word) := by
   cases h
@@ -29,7 +29,7 @@ lemma simplexHABeadWordAt_value {n : ℕ} (s : DGNerve.SimplexData A D n)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (a b : Fin (n + 1))
     (ha : a = I.min' (Finset.card_pos.mp (by omega)))
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) :
-    simplexHABeadWordValue A s (simplexHABeadWordAt I hI a b ha hb) =
+    simplexHABeadWordValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt I hI a b ha hb) =
       s.hom I a b (-((I.card - 2 : ℕ) : ℤ)) hI ha hb (by omega) := by
   subst a b
   rfl

@@ -12,15 +12,15 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 両端を一つの joint で貼った、元の有限 necklace の形。 -/
-def wedge (T U : NecklaceShape) : NecklaceShape where
-  vertexMax := T.vertexMax + U.vertexMax
-  joints := T.joints ∪ U.joints.image (fun j => T.vertexMax + j)
-  zero_mem := Finset.mem_union_left _ T.zero_mem
-  last_mem := Finset.mem_union_right _ (Finset.mem_image.mpr ⟨_, U.last_mem, rfl⟩)
-  mem_le j hj := by
+def wedge (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape where
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax := T.vertexMax + U.vertexMax
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints := T.joints ∪ U.joints.image (fun j => T.vertexMax + j)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.zero_mem := Finset.mem_union_left _ T.zero_mem
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.last_mem := Finset.mem_union_right _ (Finset.mem_image.mpr ⟨_, U.last_mem, rfl⟩)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mem_le j hj := by
     rcases Finset.mem_union.mp hj with hj | hj
     · have := T.mem_le j hj; omega
     · obtain ⟨k, hk, rfl⟩ := Finset.mem_image.mp hj
@@ -28,37 +28,37 @@ def wedge (T U : NecklaceShape) : NecklaceShape where
       omega
 
 /-- 左側の全 joint は連結後も joint。 -/
-lemma wedge_joint_left (T U : NecklaceShape) {j : ℕ} (hj : j ∈ T.joints) :
+lemma wedge_joint_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {j : ℕ} (hj : j ∈ T.joints) :
     j ∈ (T.wedge U).joints := Finset.mem_union_left _ hj
 
 /-- 右側の全 joint は同じ番号移動で連結後の joint。 -/
-lemma wedge_joint_right (T U : NecklaceShape) {j : ℕ} (hj : j ∈ U.joints) :
+lemma wedge_joint_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {j : ℕ} (hj : j ∈ U.joints) :
     T.vertexMax + j ∈ (T.wedge U).joints :=
   Finset.mem_union_right _ (Finset.mem_image.mpr ⟨_, hj, rfl⟩)
 
 /-- 共有する元の終始点は連結後の joint。 -/
-lemma wedge_joint_seam (T U : NecklaceShape) : T.vertexMax ∈ (T.wedge U).joints :=
-  wedge_joint_left T U T.last_mem
+lemma wedge_joint_seam (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.vertexMax ∈ (T.wedge U).joints :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_left T U T.last_mem
 
 /-- 左頂点の元の番号を保持する単調な包含。 -/
-def wedgeLeftVertex (T U : NecklaceShape) : T.Vertex →o (T.wedge U).Vertex where
+def wedgeLeftVertex (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.Vertex →o (T.wedge U).Vertex where
   toFun v := ⟨v.val, by have := v.isLt; change _ < T.vertexMax + U.vertexMax + 1; omega⟩
   monotone' _ _ h := h
 
 /-- 右頂点を共有頂点から番号付けする単調な包含。 -/
-def wedgeRightVertex (T U : NecklaceShape) : U.Vertex →o (T.wedge U).Vertex where
+def wedgeRightVertex (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : U.Vertex →o (T.wedge U).Vertex where
   toFun v := ⟨T.vertexMax + v.val, by have := v.isLt; exact Nat.add_lt_add_left this _⟩
   monotone' _ _ h := Nat.add_le_add_left h _
 
 /-- 右側を共有終点へ潰す単調な射影。 -/
-def wedgeLeftClamp (T U : NecklaceShape) : (T.wedge U).Vertex →o T.Vertex where
+def wedgeLeftClamp (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : (T.wedge U).Vertex →o T.Vertex where
   toFun v := ⟨min v.val T.vertexMax, by omega⟩
   monotone' a b h := by
     change min a.val T.vertexMax ≤ min b.val T.vertexMax
     exact min_le_min_right _ h
 
 /-- 左側を共有始点へ潰す単調な射影。 -/
-def wedgeRightClamp (T U : NecklaceShape) : (T.wedge U).Vertex →o U.Vertex where
+def wedgeRightClamp (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : (T.wedge U).Vertex →o U.Vertex where
   toFun v := ⟨v.val - T.vertexMax, by
     have := v.isLt
     change v.val < T.vertexMax + U.vertexMax + 1 at this
@@ -66,7 +66,7 @@ def wedgeRightClamp (T U : NecklaceShape) : (T.wedge U).Vertex →o U.Vertex whe
   monotone' _ _ h := Nat.sub_le_sub_right h _
 
 /-- 左側の bead 条件は連結後にも成立する。 -/
-lemma wedge_allows_left (T U : NecklaceShape) {n : ℕ} {s : Fin (n + 1) → T.Vertex}
+lemma wedge_allows_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ} {s : Fin (n + 1) → T.Vertex}
     (hs : T.Allows s) : (T.wedge U).Allows (T.wedgeLeftVertex U ∘ s) := by
   intro i j k hk h
   change (s i).val < k ∧ k < (s j).val at h
@@ -77,7 +77,7 @@ lemma wedge_allows_left (T U : NecklaceShape) {n : ℕ} {s : Fin (n + 1) → T.V
     omega
 
 /-- 右側の bead 条件は連結後にも成立する。 -/
-lemma wedge_allows_right (T U : NecklaceShape) {n : ℕ} {s : Fin (n + 1) → U.Vertex}
+lemma wedge_allows_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ} {s : Fin (n + 1) → U.Vertex}
     (hs : U.Allows s) : (T.wedge U).Allows (T.wedgeRightVertex U ∘ s) := by
   intro i j k hk h
   change T.vertexMax + (s i).val < k ∧ k < T.vertexMax + (s j).val at h
@@ -88,26 +88,26 @@ lemma wedge_allows_right (T U : NecklaceShape) {n : ℕ} {s : Fin (n + 1) → U.
     omega
 
 /-- 左への射影はすべての bead 条件を保つ。 -/
-lemma wedge_allows_leftClamp (T U : NecklaceShape) {n : ℕ}
+lemma wedge_allows_leftClamp (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
     {s : Fin (n + 1) → (T.wedge U).Vertex} (hs : (T.wedge U).Allows s) :
     T.Allows (T.wedgeLeftClamp U ∘ s) := by
   intro i j k hk h
   change min (s i).val T.vertexMax < k ∧ k < min (s j).val T.vertexMax at h
   have := T.mem_le k hk
-  apply hs i j k (wedge_joint_left T U hk)
+  apply hs i j k (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_left T U hk)
   omega
 
 /-- 右への射影はすべての bead 条件を保つ。 -/
-lemma wedge_allows_rightClamp (T U : NecklaceShape) {n : ℕ}
+lemma wedge_allows_rightClamp (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
     {s : Fin (n + 1) → (T.wedge U).Vertex} (hs : (T.wedge U).Allows s) :
     U.Allows (T.wedgeRightClamp U ∘ s) := by
   intro i j k hk h
   change (s i).val - T.vertexMax < k ∧ k < (s j).val - T.vertexMax at h
-  apply hs i j (T.vertexMax + k) (wedge_joint_right T U hk)
+  apply hs i j (T.vertexMax + k) (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_right T U hk)
   omega
 
 /-- 連結後の各単体は、左側か右側の一方に全体が入る。 -/
-lemma wedge_allows_split (T U : NecklaceShape) {n : ℕ}
+lemma wedge_allows_split (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
     {s : Fin (n + 1) → (T.wedge U).Vertex} (hs : (T.wedge U).Allows s) :
     (∀ i, (s i).val ≤ T.vertexMax) ∨ (∀ i, T.vertexMax ≤ (s i).val) := by
   classical
@@ -116,7 +116,7 @@ lemma wedge_allows_split (T U : NecklaceShape) {n : ℕ}
   · right
     obtain ⟨j, hj⟩ := not_forall.mp h
     intro i
-    have := hs i j T.vertexMax (wedge_joint_seam T U)
+    have := hs i j T.vertexMax (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_seam T U)
     omega
 
 end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape

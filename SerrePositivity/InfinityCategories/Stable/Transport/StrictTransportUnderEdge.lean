@@ -51,10 +51,10 @@ def strictTransportUnderEdge {I : Type u} [Category.{u} I] {c d : I} (f : c ⟶ 
 /-- 底の射は、元の入力射そのもの。 -/
 theorem strictTransportUnderEdge_projection {I : Type u} [Category.{u} I]
     {c d : I} (f : c ⟶ d) :
-    strictTransportUnderEdge f ≫ nerveMap (Under.forget c) =
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge f ≫ nerveMap (Under.forget c) =
       yonedaEquiv.symm (nerve.edgeMk f).edge := by
   apply yonedaEquiv.injective
-  rw [yonedaEquiv_comp, strictTransportUnderEdge, Equiv.apply_symm_apply,
+  rw [yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge, Equiv.apply_symm_apply,
     Equiv.apply_symm_apply]
   rw [nerve.edgeMk_edge, nerve.edgeMk_edge, nerveMap_app_mk₁]
   rfl

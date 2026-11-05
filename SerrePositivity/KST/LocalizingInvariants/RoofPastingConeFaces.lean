@@ -217,6 +217,6 @@ lemma roofPastingCosliceDiagram_triangle : _root_.SerrePositivity.InfinityCatego
   simp only [Category.assoc]
   rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),
     ← SSet.opFunctor.map_comp, pastingCornerGlue_bottom]
-  exact roofReverseSimplex_double (X := sliceUnder a) σ
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseSimplex_double (X := sliceUnder a) σ
 
 end SerrePositivity.KST.LocalizingInvariants

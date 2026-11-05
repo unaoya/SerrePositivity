@@ -16,16 +16,16 @@ open SerrePositivity.KST.SConstruction
 
 /-- 元の語を、右端点と自由次元の等号だけで同じ語へ移送する。 -/
 def simplexHABeadWordReindex {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
-    (hb : b = c) (hd : p = q) (word : SimplexHABeadWord n a b p) :
-    SimplexHABeadWord n a c q := by
+    (hb : b = c) (hd : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a c q := by
   cases hb
   cases hd
   exact word
 
 /-- 元の右端点・自由次元の移送前後で、語そのものは異種等号で一致する。 -/
 lemma simplexHABeadWordReindex_heq {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
-    (hb : b = c) (hd : p = q) (word : SimplexHABeadWord n a b p) :
-    HEq (simplexHABeadWordReindex hb hd word) word := by
+    (hb : b = c) (hd : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex hb hd word) word := by
   cases hb
   cases hd
   rfl

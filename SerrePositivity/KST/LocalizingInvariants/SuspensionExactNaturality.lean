@@ -22,13 +22,13 @@ namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
 
-def exactNaturality : FunctorIso (map X ≫ F) (F ≫ map Y) := by
-  let b := arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F
-  have h : FunctorIso (map X ≫ F) (b ≫ CofiberFamily.cofiber Y (𝟙 _)) := by
+def exactNaturality : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X ≫ F) (F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Y) := by
+  let b := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F
+  have h : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X ≫ F) (b ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _)) := by
     simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map, b, Category.assoc] using
-      FunctorIso.precomp (CofiberFamily.exactNaturality F) (arrow X)
+      FunctorIso.precomp (CofiberFamily.exactNaturality F) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X)
   have e := (CofiberFamily.compositionIso Y b).symm ≪≫
-    cofiberZeroTargetIso Y b (post_arrow_zero_target F)
+    cofiberZeroTargetIso Y b (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact.post_arrow_zero_target F)
   rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact.post_arrow_source] at e
   exact h ≪≫ e
 

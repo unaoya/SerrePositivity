@@ -26,63 +26,63 @@ namespace SerrePositivity.InfinityCategories.Stable.Verdier
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 包含の実頂点の像を同型で閉じた本質像。 -/
-def essentialImage {A B : StableCategory.{u}} (i : ExactMap A B) : Set (B.obj _⦋0⦌) :=
+def essentialImage {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) : Set (B.obj _⦋0⦌) :=
   {b | ∃ a : A.obj _⦋0⦌, Nonempty (VertexIso (i.hom.app (Opposite.op ⦋0⦌) a) b)}
 
-lemma image_mem_essentialImage {A B : StableCategory.{u}} (i : ExactMap A B)
-    (a : A.obj _⦋0⦌) : i.hom.app (Opposite.op ⦋0⦌) a ∈ essentialImage i :=
+lemma image_mem_essentialImage {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (a : A.obj _⦋0⦌) : i.hom.app (Opposite.op ⦋0⦌) a ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i :=
   ⟨a, ⟨Iso.refl _⟩⟩
 
 /-- Verdier 列の条件。核の一致と商の普遍性の双方を含む。 -/
-structure IsVerdierSequence {A B C : StableCategory.{u}}
-    (i : ExactMap A B) (q : ExactMap B C) : Prop where
+structure IsVerdierSequence {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) : Prop where
   fullyFaithful : IsFullyFaithful i.hom
   kernel (b : B.obj _⦋0⦌) :
-    IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) b) ↔ b ∈ essentialImage i
-  quotient : IsLocalization q.hom (cofiberLocalizingEdges (essentialImage i))
+    IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) b) ↔ b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i
+  quotient : IsLocalization q.hom (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i))
 
 /-- 抽象 Verdier 列の対象と二つの完全関手。 -/
 structure VerdierSequence where
-  left : StableCategory.{u}
-  middle : StableCategory.{u}
-  right : StableCategory.{u}
-  inclusion : ExactMap left middle
-  projection : ExactMap middle right
-  isVerdier : IsVerdierSequence inclusion projection
+  left : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
+  middle : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
+  right : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
+  inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle
+  projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right
+  isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection
 
 namespace IsVerdierSequence
-open SerrePositivity.KST.LocalizingInvariants.IsVerdierSequence
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+open _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 商は包含の全対象を零化する。 -/
-lemma kills_inclusion (h : IsVerdierSequence i q) (a : A.obj _⦋0⦌) :
+lemma kills_inclusion (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (a : A.obj _⦋0⦌) :
     IsZeroVertex ((i.hom ≫ q.hom).app (Opposite.op ⦋0⦌) a) :=
-  (h.kernel _).2 (image_mem_essentialImage i a)
+  (h.kernel _).2 (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.image_mem_essentialImage i a)
 
 /-- 核の条件だけからも指定 cofiber 辺の反転が従う。 -/
-lemma inverts (h : IsVerdierSequence i q) :
-    InvertsEdges q.hom (cofiberLocalizingEdges (essentialImage i)) :=
+lemma inverts (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    InvertsEdges q.hom (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)) :=
   inverts_cofiberLocalizingEdges_of_kills q.hom _ (fun b hb ↦ (h.kernel b).2 hb)
 
 /-- 各 quasicategory を標的とする実際の関手 ∞ 圏での商の普遍性。 -/
-lemma universal (h : IsVerdierSequence i q) (E : SSet.{u}) [Quasicategory E] :
+lemma universal (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (E : SSet.{u}) [Quasicategory E] :
     IsQCatEquivalence (localizationPrecomposition q.hom
-      (cofiberLocalizingEdges (essentialImage i)) h.inverts E) := by
+      (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)) h.inverts E) := by
   obtain ⟨hq, hE⟩ := h.quotient
   exact hE E
 
 end IsVerdierSequence
 
 /-- 完全関手が包含を零化することと、指定 cofiber 辺の反転は同値。 -/
-theorem inverts_iff_kills_inclusion {A B E : StableCategory.{u}}
-    (i : ExactMap A B) (F : ExactMap B E) :
-    InvertsEdges F.hom (cofiberLocalizingEdges (essentialImage i)) ↔
+theorem inverts_iff_kills_inclusion {A B E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B E) :
+    InvertsEdges F.hom (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)) ↔
       ∀ a : A.obj _⦋0⦌,
         IsZeroVertex ((i.hom ≫ F.hom).app (Opposite.op ⦋0⦌) a) := by
   rw [inverts_cofiberLocalizingEdges_iff_kills]
   constructor
   · intro h a
-    exact h _ (image_mem_essentialImage i a)
+    exact h _ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.image_mem_essentialImage i a)
   · intro h b hb
     obtain ⟨a, ⟨e⟩⟩ := hb
     exact (h a).of_vertexIso (e.map F.hom)

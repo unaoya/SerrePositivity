@@ -37,13 +37,13 @@ lemma dgOdotMilnorDiagonal_fullyFaithful (h : DGGluingMilnorSquare R d) :
 /-- 概要：元小 Perf 対角と同じ cell 平坦商を持つ実列。
 方針：D2 の Milnor 列をそのまま束ねる。規約：旧未分解商へ戻さない。
 使われ方：具体的 thick 核と局所化を備えた d③ の入力。 -/
-def dgOdotMilnorNativeSequence (h : DGGluingMilnorSquare R d) : VerdierSequence.{u + 1} where
-  left := dgGluingMilnorNativeDiagonalSource R d
-  middle := dgGluingMilnorNativeMiddle R d
-  right := dgGluingMilnorNativeResolvedQuotient R d
-  inclusion := dgGluingMilnorNativeDiagonal R d
-  projection := dgGluingMilnorResolvedProjection R d
-  isVerdier := dgGluingMilnor_isResolvedVerdierSequence_of_milnor R d h
+def dgOdotMilnorNativeSequence (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgGluingMilnorNativeDiagonalSource R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgGluingMilnorNativeMiddle R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgGluingMilnorNativeDiagonal R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgGluingMilnorResolvedProjection R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := dgGluingMilnor_isResolvedVerdierSequence_of_milnor R d h
 
 /-- 概要：resolved 射影の零対象核は元対角の本質像そのもの。
 方針：D-16 の retract を含む thick 核を使った D2 の列条件を回収する。
@@ -51,7 +51,7 @@ def dgOdotMilnorNativeSequence (h : DGGluingMilnorSquare R d) : VerdierSequence.
 lemma dgOdotMilnorNativeKernel (h : DGGluingMilnorSquare R d)
     (b : (dgGluingMilnorNativeMiddle R d).obj _⦋0⦌) :
     IsZeroVertex ((dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
-      b ∈ essentialImage (dgGluingMilnorNativeDiagonal R d) :=
+      b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d) :=
   (dgOdotMilnorNativeSequence R d h).isVerdier.kernel b
 
 /-- 概要：同じ実商射影は元対角像の cofiber 辺に関する局所化。
@@ -59,14 +59,14 @@ lemma dgOdotMilnorNativeKernel (h : DGGluingMilnorSquare R d)
 規約：H⁰ の商だけで済ませない。使われ方：Sp の quotient 欄。 -/
 lemma dgOdotMilnorNativeLocalization (h : DGGluingMilnorSquare R d) :
     IsLocalization (dgGluingMilnorResolvedProjection R d).hom
-      (cofiberLocalizingEdges (essentialImage (dgGluingMilnorNativeDiagonal R d))) :=
+      (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d))) :=
   (dgOdotMilnorNativeSequence R d h).isVerdier.quotient
 
 /-- 概要：元対角像に cofiber を持つ辺は同じ射影が反転する辺と一致する。
 方針：D2 の実核を Sp 正本の完全関手の辺判定へ渡す。
 規約：局所化・分数の一般補題を複製しない。使われ方：thick 核と反転辺の照合。 -/
 lemma dgOdotMilnorNativeEdges (h : DGGluingMilnorSquare R d) :
-    cofiberLocalizingEdges (essentialImage (dgGluingMilnorNativeDiagonal R d)) =
+    cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d)) =
       invertedEdges (dgGluingMilnorResolvedProjection R d).hom := by
   let := (dgGluingMilnorResolvedProjection R d).isExact
   exact cofiberLocalizingEdges_eq_invertedEdges_of_kernel

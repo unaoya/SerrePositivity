@@ -13,7 +13,7 @@ public import Mathlib.Data.Finset.Max
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の正の joints の有限集合。 -/
 def positiveJoints (T : NecklaceShape) : Finset ℕ := T.joints.filter (0 < ·)

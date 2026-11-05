@@ -29,16 +29,16 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
     [Fibration p] [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (s : B.PtSimplex (n + 2) (p.app _ e))
-    (a : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e))
+    (a : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))
     (T : (Δ[n + 2] : SSet.{u}) ⟶ E) (hT : T ≫ p = s.map)
     (hface : ∀ j, stdSimplex.δ j ≫ T =
-      if j.val = n + 1 then a.map ≫ fiberι p (p.app _ e) else SSet.const e) :
-    connectingHom p e n (KanHomotopyGroup.mk s) = (KanHomotopyGroup.mk a)⁻¹ := by
+      if j.val = n + 1 then a.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a)⁻¹ := by
   let b (j : Fin (n + 3)) := if j.val = n + 1 then a else RelativeMorphism.const
-  let L : SphericalFiberLift p e s b :=
-    { map := T
-      map_comp := hT
-      face_eq j := by
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s b :=
+    { _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map := T
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map_comp := hT
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.face_eq j := by
         rw [hface]
         dsimp only [b]
         split_ifs <;> simp only [RelativeMorphism.const_map, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] }
@@ -51,10 +51,10 @@ theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
   have hlower : ∀ j, j.val < n + 1 → b j = .const := by
     intro j hj
     simp only [b, ite_eq_right (show j.val ≠ n + 1 by omega)]
-  have hboundary := SphericalFiberLift.terminalLift_boundary hi' hc L hlower
-  change connecting p e (n + 1) (KanHomotopyGroup.mk s) = _
+  have hboundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift_boundary hi' hc L hlower
+  change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift hi' hc L hlower), hboundary]
-  exact eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq hi)
+  exact eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hi)
 
 /-- 概要：path の最後から二番目の loop 面を高次群へ戻すと、終点単体の逆元になる。
 方針：相対終端の逆元公式と、既存 loop 同型の連結同型による定義を照合する。
@@ -63,31 +63,31 @@ theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
 theorem loopPositive_penultimate (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (n : ℕ) (s : Y.right.PtSimplex (n + 2)
       ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint))
-    (a : (loopSpace Y).right.PtSimplex (n + 1) (loopSpace Y).basepoint)
+    (a : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right.PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
     (T : (Δ[n + 2] : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hT : T ≫ (pathEndpoint Y).right = s.map)
     (hface : ∀ j, stdSimplex.δ j ≫ T = if j.val = n + 1 then
-      a.map ≫ (loopBasedPathFiberIso Y).hom ≫ fiberι (pathEndpoint Y).right
+      a.map ≫ (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
         ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint)
       else SSet.const (basedPathSpace Y).basepoint) :
-    loopPositiveHomotopyEquiv Y n (KanHomotopyGroup.mk a) =
-      (KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right)
-        (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s))⁻¹ := by
-  let c := connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint n
-  let e := KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
+    loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right)
+        (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))⁻¹ := by
+  let c := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint n
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
     (loopBasedPathFiberIso_basepoint Y)
-  let b := KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+  let b := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
   have hc := connectingHom_penultimate (pathEndpoint Y).right (basedPathSpace Y).basepoint n s
-    (mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) a) T hT hface
-  have hc' : e (KanHomotopyGroup.mk a) = (c (KanHomotopyGroup.mk s))⁻¹ := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) a) T hT hface
+  have hc' : e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a) = (c (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))⁻¹ := by
     have hi := congrArg Inv.inv hc
-    change KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom
-      (loopBasedPathFiberIso_basepoint Y) (KanHomotopyGroup.mk a) = _
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom
+      (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
     simpa only [inv_inv, c] using hi.symm
-  have hr : b.symm (loopPositiveHomotopyEquiv Y n (KanHomotopyGroup.mk a)) =
-      (KanHomotopyGroup.mk s)⁻¹ := by
-    apply (connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
+  have hr : b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a)) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹ := by
+    apply (_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
       (basedPathSpace Y).basepoint n).injective
     change c _ = c _
     rw [show c (b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a))) =

@@ -26,7 +26,7 @@ variable (X Y : ℕ → PointedSimplicialSet.{u})
 方針：元の塔の隣接する可換正方形に mappingPathMap を適用する。
 規約：遷移は次段から前段への向き。
 使われ方：mapping path の塔の実際の極限の構成。 -/
-def mappingPathTowerStep (n : ℕ) : mappingPath (f (n + 1)) ⟶ mappingPath (f n) :=
+def mappingPathTowerStep (n : ℕ) : _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (f (n + 1)) ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (f n) :=
   mappingPathMap (f (n + 1)) (f n) (dX n) (dY n) (hf n).symm
 
 /-- 概要：mapping path の塔の遷移は元の源への射影と可換。
@@ -34,24 +34,24 @@ def mappingPathTowerStep (n : ℕ) : mappingPath (f (n + 1)) ⟶ mappingPath (f 
 規約：点つき射の厳密な等式。
 使われ方：極限から元の源の極限への射の整合条件。 -/
 lemma mappingPathTower_source_comm (n : ℕ) :
-    mappingPathTowerStep X Y dX dY f hf n ≫ mappingPathRetraction (f n) =
-      mappingPathRetraction (f (n + 1)) ≫ dX n := mappingPathMap_source ..
+    mappingPathTowerStep X Y dX dY f hf n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction (f n) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction (f (n + 1)) ≫ dX n := mappingPathMap_source ..
 
 /-- 概要：mapping path の塔の遷移は元の標的への終点射と可換。
 方針：可換正方形に対する終点射の自然性を使う。
 規約：元の標的の塔の遷移を保つ。
 使われ方：極限から元の標的の極限への射の整合条件。 -/
 lemma mappingPathTower_target_comm (n : ℕ) :
-    mappingPathTowerStep X Y dX dY f hf n ≫ mappingPathProjection (f n) =
-      mappingPathProjection (f (n + 1)) ≫ dY n := mappingPathMap_target ..
+    mappingPathTowerStep X Y dX dY f hf n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (f n) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (f (n + 1)) ≫ dY n := mappingPathMap_target ..
 
 /-- 概要：定数 path の各段の比較は元の源の塔の遷移と可換。
 方針：定数 path の自然性を隣接正方形で使う。
 規約：source から mapping path への向きの塔の射。
 使われ方：元の極限から中間の極限への比較射。 -/
 lemma mappingPathTower_unit_comm (n : ℕ) :
-    dX n ≫ mappingPathUnit (f n) =
-      mappingPathUnit (f (n + 1)) ≫ mappingPathTowerStep X Y dX dY f hf n :=
+    dX n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (f n) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (f (n + 1)) ≫ mappingPathTowerStep X Y dX dY f hf n :=
   (mappingPathMap_unit ..).symm
 
 /-- 概要：mapping path の塔の極限から元の源の塔の極限への射。
@@ -59,10 +59,10 @@ lemma mappingPathTower_unit_comm (n : ℕ) :
 規約：基礎単体集合の実際の極限を使い、Kan 性は要求しない。
 使われ方：塔の比較を二つの全ての単射への RLP 射へ因子分解する準備。 -/
 def mappingPathTowerLimitSource :
-    FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (f n)).right)
         (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right) ⟶
-      FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right) :=
-  towerMap (fun n ↦ (mappingPathRetraction (f n)).right) (by
+      _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right) :=
+  towerMap (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction (f n)).right) (by
     intro n
     simpa only [Under.comp_right] using
       congrArg Under.Hom.right (mappingPathTower_source_comm X Y dX dY f hf n))
@@ -72,10 +72,10 @@ def mappingPathTowerLimitSource :
 規約：基礎単体集合の射として定義する。
 使われ方：塔の元の比較射の因子分解の右因子。 -/
 def mappingPathTowerLimitTarget :
-    FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (f n)).right)
         (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right) ⟶
-      FibrationTower.limit (fun n ↦ (Y n).right) (fun n ↦ (dY n).right) :=
-  towerMap (fun n ↦ (mappingPathProjection (f n)).right) (by
+      _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (Y n).right) (fun n ↦ (dY n).right) :=
+  towerMap (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (f n)).right) (by
     intro n
     simpa only [Under.comp_right] using
       congrArg Under.Hom.right (mappingPathTower_target_comm X Y dX dY f hf n))
@@ -85,10 +85,10 @@ def mappingPathTowerLimitTarget :
 規約：元の源の基礎単体集合の極限を使う。
 使われ方：二つの極限の射による元の比較の因子分解。 -/
 def mappingPathTowerLimitUnit :
-    FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right) ⟶
-      FibrationTower.limit (fun n ↦ (mappingPath (f n)).right)
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (f n)).right)
         (fun n ↦ (mappingPathTowerStep X Y dX dY f hf n).right) :=
-  towerMap (fun n ↦ (mappingPathUnit (f n)).right) (by
+  towerMap (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (f n)).right) (by
     intro n
     simpa only [Under.comp_right] using
       congrArg Under.Hom.right (mappingPathTower_unit_comm X Y dX dY f hf n))
@@ -99,12 +99,12 @@ def mappingPathTowerLimitUnit :
 使われ方：全ての単射への RLP 射との合成から比較射の π_* 同型性を得る。 -/
 lemma mappingPathTowerLimitUnit_source :
     mappingPathTowerLimitUnit X Y dX dY f hf ≫ mappingPathTowerLimitSource X Y dX dY f hf =
-      𝟙 (FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right)) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (dX n).right)) := by
   unfold mappingPathTowerLimitUnit mappingPathTowerLimitSource
-  apply FibrationTower.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
   intro n
   rw [Category.assoc, towerMap_projection, ← Category.assoc, towerMap_projection, Category.assoc]
-  have h := congrArg Under.Hom.right (mappingPathUnit_retraction (f n))
+  have h := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction (f n))
   simp only [Under.comp_right, Under.id_right] at h
   rw [h, Category.comp_id, Category.id_comp]
 
@@ -118,13 +118,13 @@ lemma mappingPathTowerLimitUnit_target :
         intro n
         simpa only [Under.comp_right] using congrArg Under.Hom.right (hf n)) := by
   unfold mappingPathTowerLimitUnit mappingPathTowerLimitTarget
-  apply FibrationTower.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
   intro n
   rw [Category.assoc, towerMap_projection, ← Category.assoc,
     towerMap_projection, towerMap_projection, Category.assoc]
-  exact congrArg (FibrationTower.projection (fun n ↦ (X n).right)
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ (X n).right)
     (fun n ↦ (dX n).right) n ≫ ·)
-      (congrArg Under.Hom.right (mappingPathUnit_projection (f n)))
+      (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection (f n)))
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

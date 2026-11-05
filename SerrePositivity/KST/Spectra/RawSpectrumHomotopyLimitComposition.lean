@@ -31,7 +31,7 @@ lemma homotopyLimitIso_composition_component {I : Type u} [SmallCategory I]
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ
         ((homotopyLimitIso Y D).hom ≫
           end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (D ⋙ pointedFunctor Y)) i)) ≫
-        HomTensorStrength.map (pointedSpace X Y.toKanSequence)
+        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
           (PointedObject.adjoin ((bousfieldKanWeight I).obj i)) (pointedSpace Y (D.obj i)) ≫
           (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map
             (pointedComposition X Y (D.obj i)) := by

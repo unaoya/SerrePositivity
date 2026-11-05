@@ -36,16 +36,16 @@ lemma relativeDiagram_vertex {B C X : SSet.{u}} {J : Type v}
 
 /-- 相対図式の辺は、指定評価の全てで W に属する実辺と一致する。 -/
 lemma relativeDiagram_mem_edge_iff
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
     (ev : J → (X ⟶ B.obj)) (s : X _⦋1⦌) :
     s ∈ (relativeDiagram q.hom ev).obj (Opposite.op ⦋1⦌) ↔
-      ∀ j, (ev j).app (Opposite.op ⦋1⦌) s ∈ weakEquivalences i := by
+      ∀ j, (ev j).app (Opposite.op ⦋1⦌) s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   change (∀ j, (ev j ≫ q.hom).app _ s ∈ (quasicategoryCore C.obj).obj _) ↔ _
   simp only [quasicategoryCore_mem_edge_iff]
   apply forall_congr'
   intro j
-  have he := mem_weakEquivalences_iff_invertible h
+  have he := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h
     (edgeOfSimplex ((ev j).app (Opposite.op ⦋1⦌) s))
   exact (isInvertibleEdge_congr
     (e := (edgeOfSimplex ((ev j).app _ s)).map ((truncation 2).map q.hom))
@@ -53,12 +53,12 @@ lemma relativeDiagram_mem_edge_iff
 
 /-- 一般単体も全ての一次制限の成分ごとの W 所属で判定する。 -/
 lemma relativeDiagram_mem_iff
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
     (ev : J → (X ⟶ B.obj)) {n : SimplexCategoryᵒᵖ} (s : X.obj n) :
     s ∈ (relativeDiagram q.hom ev).obj n ↔
       ∀ j, ∀ f : ⦋1⦌ ⟶ n.unop,
-        (ev j).app (Opposite.op ⦋1⦌) (X.map f.op s) ∈ weakEquivalences i := by
+        (ev j).app (Opposite.op ⦋1⦌) (X.map f.op s) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   change (∀ j, ∀ f : ⦋1⦌ ⟶ n.unop,
     IsInvertibleEdge (edgeOfSimplex (C.obj.map f.op ((ev j ≫ q.hom).app n s)))) ↔ _
   apply forall_congr'
@@ -66,7 +66,7 @@ lemma relativeDiagram_mem_iff
   apply forall_congr'
   intro f
   rw [← NatTrans.naturality_apply]
-  have he := mem_weakEquivalences_iff_invertible h
+  have he := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h
     (edgeOfSimplex ((ev j).app _ (X.map f.op s)))
   exact (isInvertibleEdge_congr
     (e := (edgeOfSimplex ((ev j).app _ (X.map f.op s))).map ((truncation 2).map q.hom))

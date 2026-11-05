@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace StrictTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : StrictTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p)
 
 /-- 同じ指定 span の二脚を結ぶ相対三角も含めて選んだ、coherent な実比較。 -/
 def coherentComparison : SpanCompatibleComparison

@@ -160,19 +160,19 @@ private lemma augmentedCoconeHomotopy_invertible {K X : SSet.{u}} [Quasicategory
 
 /-- 可逆な有限分母余錐を終点まで含めて極限にすると、同じ全脚が再び実分母になる。 -/
 lemma exists_verdierFiniteDenominatorRefinement
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {K : SSet.{u}} [K.Finite]
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {K : SSet.{u}} [K.Finite]
     {p : K ⟶ B.obj} (t : JoinCocone p)
-    (ht : ∀ a : K _⦋0⦌, (t.leg (SSet.yonedaEquiv.symm a)).edge ∈ weakEquivalences i) :
+    (ht : ∀ a : K _⦋0⦌, (t.leg (SSet.yonedaEquiv.symm a)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ c : JoinCone t.val, IsLimitCone c ∧ InvertsEdges (c.val ≫ q.hom) Set.univ ∧
       ∀ k : (join K (Δ[0] : SSet.{u})) _⦋0⦌,
-        (F2.nativeConeLeg c k).edge ∈ weakEquivalences i := by
+        (F2.nativeConeLeg c k).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   let : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj
   obtain ⟨c, hc⟩ := HasFiniteLimits.hasLimit t.val
   let tq := F1B.kanPostcomposeCocone q.hom t
   have hq : ∀ a : K _⦋0⦌, IsInvertibleEdge (tq.leg (SSet.yonedaEquiv.symm a)) := by
     intro a
-    have hi := (mem_weakEquivalences_iff_invertible h
+    have hi := (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h
       (t.leg (SSet.yonedaEquiv.symm a))).mp (ht a)
     apply (isInvertibleEdge_congr (e := (t.leg (SSet.yonedaEquiv.symm a)).map
       ((truncation 2).map q.hom)) (f := tq.leg (SSet.yonedaEquiv.symm a)) ?_).mp hi
@@ -189,7 +189,7 @@ lemma exists_verdierFiniteDenominatorRefinement
   refine ⟨c, hc, (invertsEdges_functorIso_iff e Set.univ).mpr
     (invertsEdges_const _ _ _ Set.univ), ?_⟩
   intro k
-  apply (mem_weakEquivalences_iff_invertible h (F2.nativeConeLeg c k)).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (F2.nativeConeLeg c k)).mpr
   exact (isInvertibleEdge_congr (e := (F2.nativeConeLeg c k).map
     ((truncation 2).map q.hom)) (f := (F2.coneDomainLeg k).map
       ((truncation 2).map (mapJoinCone q.hom c).val)) rfl).mpr

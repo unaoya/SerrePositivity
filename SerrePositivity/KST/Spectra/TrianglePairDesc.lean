@@ -33,7 +33,7 @@ variable {Y : PointedSimplicialSet.{u}} (a b : triangleDisk.{u} ⟶ Y)
 規約：上側が a、下側が b。
 使われ方：Goerss–Jardine I §7。相対三角形の貼り合わせからの写像。 -/
 def trianglePairSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right :=
-  SquareTriangles.isPushout.desc (triangleDiskQuotient ≫ a.right)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.desc (triangleDiskQuotient ≫ a.right)
     (triangleDiskQuotient ≫ b.right) (by
       rw [← triangleDiskDiagonal_quotient_assoc, ← triangleDiskDiagonal_quotient_assoc]
       exact congrArg (fun k : PointedSimplicialSet.circle.{u} ⟶ Y =>
@@ -45,8 +45,8 @@ def trianglePairSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right :
 使われ方：Kerodon §3.2.3。貼り合わせの復元。 -/
 @[reassoc (attr := simp)]
 theorem upper_trianglePairSquare :
-    SquareTriangles.upper ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ a.right :=
-  SquareTriangles.isPushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ a.right :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inl_desc _ _ _
 
 /-- 概要：貼った写像の下側への制限は元の第二の写像。
 方針：pushout の第二の脚で計算する。
@@ -54,8 +54,8 @@ theorem upper_trianglePairSquare :
 使われ方：Kerodon §3.2.3。貼り合わせの復元。 -/
 @[reassoc (attr := simp)]
 theorem lower_trianglePairSquare :
-    SquareTriangles.lower ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ b.right :=
-  SquareTriangles.isPushout.inr_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ trianglePairSquare a b h = triangleDiskQuotient ≫ b.right :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inr_desc _ _ _
 
 /-- 概要：貼った正方形の縦の二辺は基点へ写る。
 方針：境界との積を各端点で検査し、相対三角形の外側の辺を潰す。
@@ -113,7 +113,7 @@ def trianglePairSmash : PointedObject.smash PointedSimplicialSet.circle.{u}
 theorem trianglePairSquare_swap :
     (β_ (Δ[1] : SSet.{u}) (Δ[1] : SSet.{u})).hom ≫ trianglePairSquare a b h =
       trianglePairSquare b a h.symm := by
-  apply SquareTriangles.isPushout.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
   · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap]
     simp
   · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap]

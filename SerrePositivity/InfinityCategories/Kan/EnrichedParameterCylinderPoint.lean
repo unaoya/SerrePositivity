@@ -25,7 +25,7 @@ structure Point where
   val : PUnit.{v + 1}
 
 /-- 全 Hom が単位である一点の豊穣構造。 -/
-instance pointEnrichedCategory : EnrichedCategory SSet.{u} Point.{v} where
+instance pointEnrichedCategory : EnrichedCategory SSet.{u} _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v} where
   Hom _ _ := 𝟙_ SSet.{u}
   id _ := 𝟙 _
   comp _ _ _ := fst _ _

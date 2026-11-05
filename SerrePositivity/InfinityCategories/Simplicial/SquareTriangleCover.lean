@@ -37,7 +37,7 @@ def sumIndex (a b : Fin 2) : Fin 3 := ⟨a.val + b.val, by omega⟩
 規約：第一座標は σ₀。
 使われ方：Goerss–Jardine I §7。三角形の代表の第一座標の検査。 -/
 theorem sigma_zero_sumIndex {a b : Fin 2} (h : a ≤ b) :
-    (SimplexCategory.σ (0 : Fin 2)) (sumIndex a b) = a := by
+    (SimplexCategory.σ (0 : Fin 2)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex a b) = a := by
   fin_cases a <;> fin_cases b <;> norm_num [Fin.le_def] at h
   all_goals rfl
 
@@ -46,7 +46,7 @@ theorem sigma_zero_sumIndex {a b : Fin 2} (h : a ≤ b) :
 規約：第二座標は σ₁。
 使われ方：Goerss–Jardine I §7。三角形の代表の第二座標の検査。 -/
 theorem sigma_one_sumIndex {a b : Fin 2} (h : a ≤ b) :
-    (SimplexCategory.σ (1 : Fin 2)) (sumIndex a b) = b := by
+    (SimplexCategory.σ (1 : Fin 2)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex a b) = b := by
   fin_cases a <;> fin_cases b <;> norm_num [Fin.le_def] at h
   all_goals rfl
 
@@ -56,7 +56,7 @@ theorem sigma_one_sumIndex {a b : Fin 2} (h : a ≤ b) :
 使われ方：Goerss–Jardine I §7。正方形の単体の実際の三角形の代表。 -/
 def sumSimplex {d : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋d⦌) : (Δ[2] : SSet.{u}) _⦋d⦌ :=
   stdSimplex.objEquiv.symm (SimplexCategory.Hom.mk {
-    toFun r := sumIndex (s r) (t r)
+    toFun r := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (s r) (t r)
     monotone' r q hrq := by
       have hs := (stdSimplex.asOrderHom s).monotone hrq
       have ht := (stdSimplex.asOrderHom t).monotone hrq
@@ -67,32 +67,32 @@ def sumSimplex {d : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋d⦌) : (Δ[2] : SSet.{u}
 規約：代表は頂点の値の和で与える。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つの三角形の被覆。 -/
 theorem upper_sumSimplex {d : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋d⦌)
-    (h : ∀ r, s r ≤ t r) : upper.app _ (sumSimplex s t) = (s, t) := by
+    (h : ∀ r, s r ≤ t r) : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.app _ (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex s t) = (s, t) := by
   apply Prod.ext
   · apply stdSimplex.ext
     intro r
-    exact sigma_zero_sumIndex (h r)
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_zero_sumIndex (h r)
   · apply stdSimplex.ext
     intro r
-    exact sigma_one_sumIndex (h r)
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_one_sumIndex (h r)
 
 /-- 概要：逆順に並ぶ正方形の単体は下側の三角形から得られる。
 方針：座標を逆順にした上側の式を使う。
 規約：代表の値は二つの頂点の和。
 使われ方：Goerss–Jardine I §7。下側の三角形による被覆。 -/
 theorem lower_sumSimplex {d : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋d⦌)
-    (h : ∀ r, t r ≤ s r) : lower.app _ (sumSimplex s t) = (s, t) := by
+    (h : ∀ r, t r ≤ s r) : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.app _ (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex s t) = (s, t) := by
   apply Prod.ext
   · apply stdSimplex.ext
     intro r
-    change (SimplexCategory.σ (1 : Fin 2)) (sumIndex (s r) (t r)) = s r
-    rw [show sumIndex (s r) (t r) = sumIndex (t r) (s r) from Fin.ext (Nat.add_comm _ _)]
-    exact sigma_one_sumIndex (h r)
+    change (SimplexCategory.σ (1 : Fin 2)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (s r) (t r)) = s r
+    rw [show _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (s r) (t r) = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (t r) (s r) from Fin.ext (Nat.add_comm _ _)]
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_one_sumIndex (h r)
   · apply stdSimplex.ext
     intro r
-    change (SimplexCategory.σ (0 : Fin 2)) (sumIndex (s r) (t r)) = t r
-    rw [show sumIndex (s r) (t r) = sumIndex (t r) (s r) from Fin.ext (Nat.add_comm _ _)]
-    exact sigma_zero_sumIndex (h r)
+    change (SimplexCategory.σ (0 : Fin 2)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (s r) (t r)) = t r
+    rw [show _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (s r) (t r) = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (t r) (s r) from Fin.ext (Nat.add_comm _ _)]
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_zero_sumIndex (h r)
 
 /-- 概要：二つの区間の単体は点ごとの順序で必ず比較できる。
 方針：交差する二つの頂点の値は、どちらの頂点の順序でも単調性に反する。
@@ -120,13 +120,13 @@ theorem interval_simplices_comparable {d : ℕ} (s t : (Δ[1] : SSet.{u}) _⦋d�
 規約：射影を含む全ての退化単体も扱う。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。二つの三角形の pushout の全射性。 -/
 theorem upper_lower_cover (d : ℕ) :
-    Set.range (upper.{u}.app (Opposite.op ⦋d⦌)) ∪
-      Set.range (lower.{u}.app (Opposite.op ⦋d⦌)) = Set.univ := by
+    Set.range (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u}.app (Opposite.op ⦋d⦌)) ∪
+      Set.range (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u}.app (Opposite.op ⦋d⦌)) = Set.univ := by
   apply Set.eq_univ_iff_forall.mpr
   intro p
-  rcases interval_simplices_comparable p.1 p.2 with h | h
-  · exact Or.inl ⟨sumSimplex p.1 p.2, upper_sumSimplex _ _ h⟩
-  · exact Or.inr ⟨sumSimplex p.1 p.2, lower_sumSimplex _ _ h⟩
+  rcases _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.interval_simplices_comparable p.1 p.2 with h | h
+  · exact Or.inl ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex p.1 p.2, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_sumSimplex _ _ h⟩
+  · exact Or.inr ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex p.1 p.2, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_sumSimplex _ _ h⟩
 
 end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
 

@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 lemma circleCompanionComparisonRawHomSquare_left_corner (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) (i : Fin 2) :
     (circleCompanionComparisonRawHomSquare z k).app (Opposite.op ⦋0⦌)
-      (SquareBoundary.corner 0 i) = (circleEvaluationPointedHom z).basepoint := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 i) = (circleEvaluationPointedHom z).basepoint := by
   have h := circleCompanionComparisonRawHomSquare_left_vertex z k i
   change (circleCompanionComparisonRawHomSquare z k).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
@@ -34,7 +34,7 @@ lemma circleCompanionComparisonRawHomSquare_left_corner (z : Sp.{u} _⦋0⦌)
 lemma circleCompanionComparisonRawHomSquare_top_corner (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) (i : Fin 2) :
     (circleCompanionComparisonRawHomSquare z k).app (Opposite.op ⦋0⦌)
-      (SquareBoundary.corner i 1) = (circleEvaluationPointedHom z).basepoint := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner i 1) = (circleEvaluationPointedHom z).basepoint := by
   have h := congrArg (fun f : (Δ[1] : SSet.{u}) ⟶ (circleEvaluationPointedHom z).right ↦
     f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i))
       (circleCompanionComparisonRawHomSquare_includeSecond z k)
@@ -49,9 +49,9 @@ lemma circleCompanionComparisonRawHomSquare_top_corner (z : Sp.{u} _⦋0⦌)
 lemma circleCompanionComparisonRawHomSquare_bottom_corner_common (z : Sp.{u} _⦋0⦌)
     (i : Fin 2) :
     (circleCompanionComparisonRawHomSquare z .left).app (Opposite.op ⦋0⦌)
-      (SquareBoundary.corner i 0) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner i 0) =
     (circleCompanionComparisonRawHomSquare z .right).app (Opposite.op ⦋0⦌)
-      (SquareBoundary.corner i 0) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner i 0) := by
   have h := congrArg (fun f : (Δ[1] : SSet.{u}) ⟶ (circleEvaluationPointedHom z).right ↦
     f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i))
       (circleCompanionComparisonRawHomSquare_skipSecond_common z)
@@ -69,13 +69,13 @@ lemma circleCompanionComparisonRawHomSquare_bottom_corner_common (z : Sp.{u} _�
 /-- 元の二つの正方形の共通下辺の終点。 -/
 def circleCompanionComparisonMiddleVertex (z : Sp.{u} _⦋0⦌) :=
   (circleCompanionComparisonRawHomSquare z .left).app (Opposite.op ⦋0⦌)
-    (SquareBoundary.corner 1 0)
+    (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 0)
 
 /-- 右下の隅は、左右とも元の同じ共通頂点。 -/
 lemma circleCompanionComparisonRawHomSquare_middle_corner (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) :
     (circleCompanionComparisonRawHomSquare z k).app (Opposite.op ⦋0⦌)
-      (SquareBoundary.corner 1 0) = circleCompanionComparisonMiddleVertex z := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 0) = circleCompanionComparisonMiddleVertex z := by
   cases k
   · rfl
   · exact (circleCompanionComparisonRawHomSquare_bottom_corner_common z 1).symm

@@ -27,7 +27,7 @@ def simplexHAIntervalChainLift {N : ℕ} (s : DGNerve.Simplex A D N)
 def simplexHAIntervalHomMap {N : ℕ} (s : DGNerve.Simplex A D N)
     (a b : Fin (N + 1)) (hab : a < b) :
     homObject A (CubicalLambda A (Δ[N] : SSet.{u}))
-      (standardSimplexVertex a) (standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
   (simplexIntervalLambdaHomIso A a b hab.le).inv ≫ simplexHAIntervalChainLift A s a b hab
 
 /-- 元の厳密区間の Hom 同型への制限は、元の同じ HA 実鎖射を厳密に回収する。 -/

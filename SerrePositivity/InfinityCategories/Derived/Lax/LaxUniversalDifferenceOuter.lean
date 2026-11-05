@@ -23,58 +23,58 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
-def outerSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u} :=
+def outerSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
   (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare (rectangle p q i r h).diagram 1
 
-lemma outerSquare_bottom : squareBottomEdge ≫ outerSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow i).edge := by
-  rw [outerSquare, square_transpose_bottom, pastingSquare_outer_leftEdge,
-    (rectangle p q i r h).left_eq, square_transpose_left, comparisonSquare_bottom]
+lemma outerSquare_bottom : squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, pastingSquare_outer_leftEdge,
+    (rectangle p q i r h).left_eq, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom]
 
-lemma outerSquare_right : squareRightEdge ≫ outerSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow r).edge := by
-  rw [outerSquare, square_transpose_right, pastingSquare_topEdge,
+lemma outerSquare_right : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow r).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, pastingSquare_topEdge,
     (rectangle p q i r h).top_eq,
-    stdSimplex.δ_comp_yonedaEquiv_symm, (quotientCompositionTriangle p q r).d₁]
+    stdSimplex.δ_comp_yonedaEquiv_symm, (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).d₁]
 
-lemma outerSquare_left : squareLeftEdge ≫ outerSquare p q i r h =
-    SSet.yonedaEquiv.symm (stableArrow (toZeroCategory A)).edge := by
-  rw [outerSquare, square_transpose_left, pastingSquare_bottomEdge,
+lemma outerSquare_left : squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare p q i r h =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, pastingSquare_bottomEdge,
     (rectangle p q i r h).bottom_eq,
     stdSimplex.δ_comp_yonedaEquiv_symm, (zeroCompositionTriangle p q i r).d₁]
 
-def outerDiagram : VerdierDiagram.{u} := by
-  let S := outerSquare p q i r h
-  have ha : squareVertex S 0 0 = stableVertex A := by
+def outerDiagram : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} := by
+  let S := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare p q i r h
+  have ha : squareVertex S 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A := by
     have ht := squareBottomEdge_source S
-    rw [outerSquare_bottom, Equiv.apply_symm_apply, (stableArrow i).src_eq] at ht
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).src_eq] at ht
     exact ht.symm
-  have hp : squareVertex S 1 0 = stableVertex (laxCategory p q) := by
+  have hp : squareVertex S 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (laxCategory p q) := by
     have ht := squareBottomEdge_target S
-    rw [outerSquare_bottom, Equiv.apply_symm_apply, (stableArrow i).tgt_eq] at ht
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).tgt_eq] at ht
     exact ht.symm
-  have hq : squareVertex S 1 1 = stableVertex Q := by
+  have hq : squareVertex S 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex Q := by
     have ht := squareRightEdge_target S
-    rw [outerSquare_right, Equiv.apply_symm_apply, (stableArrow r).tgt_eq] at ht
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_right, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow r).tgt_eq] at ht
     exact ht.symm
-  have hz : squareVertex S 0 1 = stableVertex zeroCategory.{u} := by
+  have hz : squareVertex S 0 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := by
     have ht := squareLeftEdge_target S
-    rw [outerSquare_left, Equiv.apply_symm_apply,
-      (stableArrow (toZeroCategory A)).tgt_eq] at ht
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_left, Equiv.apply_symm_apply,
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)).tgt_eq] at ht
     exact ht.symm
   exact {
-    toVerdierSequence := laxQuotientVerdierSequence p q i r h
-    square := S
-    left_eq := ha
-    middle_eq := hp
-    right_eq := hq
-    bottom_edge := outerSquare_bottom p q i r h
-    right_edge := outerSquare_right p q i r h
-    zero_corner := by rw [hz, stableObject_vertex]; exact zeroCategory_isZero }
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.toVerdierSequence := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square := S
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.left_eq := ha
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.middle_eq := hp
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_eq := hq
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.bottom_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom p q i r h
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_right p q i r h
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 

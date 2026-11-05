@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 元の相対 S の零合成の全単体を、同じ商の core S へ送った四角形。 -/
 theorem quotientSKernelSquare :
@@ -39,7 +39,7 @@ theorem quotientSKernelRealizationSquare :
 
 /-- 同じ商実現比較が可逆なら、元の商核四角形そのものが homotopy pullback。 -/
 theorem quotientSKernelRealizationSquare_homotopyPullback
-    (h : IsVerdierSequence i q)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q)))) :
     IsHomotopyPullback (quotientSKernelRealizationSquare i q) := by
@@ -57,7 +57,7 @@ theorem quotientSKernelRealizationSquare_homotopyPullback
 
 /-- 同じ元の四角形は、Ex∞ による四頂点の Kan 化の後にも homotopy pullback。 -/
 theorem quotientSKernelRealizationSquare_exInfinity_homotopyPullback
-    (h : IsVerdierSequence i q)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q)))) :
     IsHomotopyPullback (exInfinity.map_commSq (quotientSKernelRealizationSquare i q)) :=
@@ -66,7 +66,7 @@ theorem quotientSKernelRealizationSquare_exInfinity_homotopyPullback
 
 /-- 元の段ごとの商比較を入力すれば、元の商核四角形は同じ射のまま引き戻しとなる。 -/
 theorem quotientSKernelRealizationSquare_homotopyPullback_of_stages
-    (h : IsVerdierSequence i q)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q n))) :
     IsHomotopyPullback (quotientSKernelRealizationSquare i q) :=
   quotientSKernelRealizationSquare_homotopyPullback i q h

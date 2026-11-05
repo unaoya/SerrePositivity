@@ -60,10 +60,10 @@ def kanEnrichedOppositeComponentIso (X : EdgewiseEnrichedObject C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.obj j).obj X.val))
       (spaceInfinityVertex (kanObjectOpFunctor.obj ((D.obj j).obj X.val))) :=
   F2.isoNormalizeEndpoints
-    (VertexIso.map D.oppositeRealizationIso (kanEnrichedDoubleEvaluation X j))
+    (VertexIso.map D.oppositeRealizationIso (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j))
     (congrArg HomotopyCategory.mk
-      (kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex D.opposite X j))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex D.opposite X j))
 
 end SerrePositivity.InfinityCategories.Stable.KanModels
 

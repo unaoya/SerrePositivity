@@ -17,25 +17,25 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の空の support の出力補完は、面だけの合成で生成される。 -/
-lemma cubeSupportOutputCompletion_faceGenerated {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    CubeFaceGenerated (cubeSupportOutputCompletion s).val :=
-  cubeCoordinateComplete_faceGenerated _ (cubeSupportOutputEmbedding s).strictMono _
-    (cubeSupportOutputEmbedding_zero s)
+lemma cubeSupportOutputCompletion_faceGenerated {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion s).val :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_faceGenerated _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding s).strictMono _
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding_zero s)
 
 /-- 元の全具体射は、削除・隣接 max・定数面のみの三段階の元の関数合成で実現される。 -/
-lemma concreteCube_exists_deletion_max_face {X Y : ConcreteCube} (f : X ⟶ Y) :
-    ∃ (a b : ℕ) (d : CubeVertex X.dimension → CubeVertex a)
-      (c : CubeVertex a → CubeVertex b) (δ : CubeVertex b → CubeVertex Y.dimension),
-      CubeDeletionGenerated d ∧ CubeConnectionGenerated c ∧ CubeFaceGenerated δ ∧
+lemma concreteCube_exists_deletion_max_face {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    ∃ (a b : ℕ) (d : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex X.dimension → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex a)
+      (c : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex a → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex b) (δ : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex b → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex Y.dimension),
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated d ∧ _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated c ∧ _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated δ ∧
         δ ∘ c ∘ d = f.val := by
-  refine ⟨_, _, (cubeNormalFormInputSelection (concreteCubeNormalForm f)).val,
-    (cubeSupportMax (concreteCubeInputCompressedSupportPartition f)).val,
-    (cubeSupportOutputCompletion
-      (concreteCubeNormalForm (concreteCubeInputCompressed f))).val, ?_, ?_, ?_, ?_⟩
-  · exact cubeNormalFormInputEmbedding_deletionGenerated _
-  · exact cubeSupportBlockMap_connectionGenerated _
-  · exact cubeSupportOutputCompletion_faceGenerated _
-  · exact congrArg Subtype.val (concreteCube_deletion_max_face_factorization f)
+  refine ⟨_, _, (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSelection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)).val,
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressedSupportPartition f)).val,
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion
+      (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f))).val, ?_, ?_, ?_, ?_⟩
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding_deletionGenerated _
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_connectionGenerated _
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion_faceGenerated _
+  · exact congrArg Subtype.val (_root_.SerrePositivity.InfinityCategories.Kan.concreteCube_deletion_max_face_factorization f)
 
 end SerrePositivity.InfinityCategories.Kan
 

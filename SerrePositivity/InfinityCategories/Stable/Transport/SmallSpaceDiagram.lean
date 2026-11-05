@@ -53,32 +53,32 @@ open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj X ⟶ SpaceInfinity.{u})
 
 /-- 元の全充満像の全単体を同じ小さい宇宙へ縮小した標的。 -/
-def smallSpaceDiagramTarget : SSet.{u} := smallSimplicialSet.{u, u + 1} (spaceDiagramImage F)
+def smallSpaceDiagramTarget : SSet.{u} := smallSimplicialSet.{u, u + 1} (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage F)
 
 /-- 小さい像の宇宙を戻し、元の空間の ∞ 圏へ含める。 -/
 def smallSpaceDiagramInclusion :
-    (SSet.uliftFunctor.{u + 1, u}).obj (smallSpaceDiagramTarget F) ⟶ SpaceInfinity.{u} :=
-  (smallSimplicialSetIso.{u, u + 1} (spaceDiagramImage F)).hom ≫ spaceDiagramImageInclusion F
+    (SSet.uliftFunctor.{u + 1, u}).obj (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget F) ⟶ SpaceInfinity.{u} :=
+  (smallSimplicialSetIso.{u, u + 1} (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage F)).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion F
 
 /-- 元の全図式の小さい標的での表示。 -/
-def smallSpaceDiagram : X ⟶ smallSpaceDiagramTarget F :=
+def smallSpaceDiagram : X ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget F :=
   uliftMorphismDown
-    (spaceDiagramImageLift F ≫ (smallSimplicialSetIso.{u, u + 1} (spaceDiagramImage F)).inv)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift F ≫ (smallSimplicialSetIso.{u, u + 1} (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage F)).inv)
 
 /-- 持ち上げた小さい図式の実包含との合成は、元の図式と厳密に一致する。 -/
 theorem smallSpaceDiagram_inclusion :
-    (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagram F) ≫
-      smallSpaceDiagramInclusion F = F := by
-  let e : (SSet.uliftFunctor.{u + 1, u}).obj (smallSpaceDiagramTarget F) ≅
-      spaceDiagramImage F := smallSimplicialSetIso.{u, u + 1} (spaceDiagramImage F)
+    (SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram F) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion F = F := by
+  let e : (SSet.uliftFunctor.{u + 1, u}).obj (_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget F) ≅
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage F := smallSimplicialSetIso.{u, u + 1} (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage F)
   change (SSet.uliftFunctor.{u + 1, u}).map
-      (uliftMorphismDown (spaceDiagramImageLift F ≫ e.inv)) ≫
-        (e.hom ≫ spaceDiagramImageInclusion F) = F
+      (uliftMorphismDown (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift F ≫ e.inv)) ≫
+        (e.hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion F) = F
   rw [uliftMorphismDown_lift]
   exact (Category.assoc _ _ _).trans
-    ((congrArg (fun m => spaceDiagramImageLift F ≫ m)
-      (Iso.inv_hom_id_assoc e (spaceDiagramImageInclusion F))).trans
-        (spaceDiagramImageLift_inclusion F))
+    ((congrArg (fun m => _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift F ≫ m)
+      (Iso.inv_hom_id_assoc e (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion F))).trans
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift_inclusion F))
 
 /-- 持ち上げと充満忠実な後合成を通じた反転は、元の全辺の反転を反映する。 -/
 theorem invertsEdges_of_ulift_post {Y Z : SSet.{u}} [Quasicategory Z]

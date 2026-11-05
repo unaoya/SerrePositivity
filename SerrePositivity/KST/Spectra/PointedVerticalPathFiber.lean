@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 指定した点つき射と同じ射影を持つ、元の内部 Hom の実際の fiber。 -/
 abbrev verticalFiber {T E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (r : T ⟶ E) : SSet.{u} :=
-  KanFiber (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
+  _root_.SerrePositivity.InfinityCategories.Kan.KanFiber (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
 
 /-- 元の点つき射の零次パラメータ族の後合成は、元の合成の同じパラメータ族。 -/
 lemma pointFamily_post {T E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (s : T ⟶ E) :
@@ -38,13 +38,13 @@ lemma pointFamily_eq_const {T E : PointedSimplicialSet.{u}} (s : T ⟶ E) :
 /-- 同じ射影を持つ元の段射を、指定した Hom fiber の頂点として読む。 -/
 def verticalFiberVertex {T E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (r s : T ⟶ E)
     (hs : s ≫ p = r ≫ p) : (verticalFiber p r) _⦋0⦌ :=
-  SSet.yonedaEquiv (fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
+  SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kan.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
     (pointFamily s) (by rw [pointFamily_post, hs, pointFamily_eq_const]))
 
 /-- fiber の頂点を元の Hom へ含めると、元の段射の同じ頂点になる。 -/
 lemma verticalFiberVertex_ι {T E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (r s : T ⟶ E)
     (hs : s ≫ p = r ≫ p) :
-    (fiberι (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))).app _
+    (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))).app _
       (verticalFiberVertex p r s hs) = familyVertex s := by
   rw [verticalFiberVertex, ← SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   rfl
@@ -56,17 +56,17 @@ variable {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B} {f g : T ⟶ E}
 def fiberEdge (H : VerticalPath p f g) (r : T ⟶ E) (hf : f ≫ p = r ≫ p) :
     (verticalFiber p r).Edge (verticalFiberVertex p r f hf)
       (verticalFiberVertex p r g (H.endpoint_over.trans hf)) := by
-  let l := fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) H.path
+  let l := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) H.path
     (H.over.trans (congrArg (fun s ↦ SSet.const (familyVertex s)) hf))
   have h0 : stdSimplex.δ (1 : Fin 2) ≫ l =
-      fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily f)
+      _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily f)
         (by rw [pointFamily_post, hf, pointFamily_eq_const]) := by
-    apply fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, H.zero, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   have h1 : stdSimplex.δ (0 : Fin 2) ≫ l =
-      fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily g)
+      _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily g)
         (by rw [pointFamily_post, H.endpoint_over, hf, pointFamily_eq_const]) := by
-    apply fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, H.one, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   exact SSet.Edge.mk (SSet.yonedaEquiv l)
     (by rw [← stdSimplex.yonedaEquiv_δ_comp, h0]; rfl)
@@ -78,7 +78,7 @@ def ofFiberEdge (p : E ⟶ B) (r f g : T ⟶ E)
     (e : (verticalFiber p r).Edge (verticalFiberVertex p r f hf) (verticalFiberVertex p r g hg)) :
     VerticalPath p f g where
   path := SSet.yonedaEquiv.symm e.edge ≫
-    fiberι (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
+    _root_.SerrePositivity.InfinityCategories.Kan.fiberι (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
   zero := by
     rw [← Category.assoc, SSet.Edge.δ_one_yonedaEquiv_symm]
     apply SSet.yonedaEquiv.injective

@@ -43,12 +43,12 @@ lemma boundaryFace_range_le_horn (n : ℕ) (i : Fin (n + 3)) :
 /-- 欠ける面の境界をホーンへ含める標準の因子分解。 -/
 def boundaryToHorn (n : ℕ) (i : Fin (n + 3)) :
     (boundary.{u} (n + 1) : SSet.{u}) ⟶ (horn.{u} (n + 2) i : SSet.{u}) :=
-  Subcomplex.lift ((boundary (n + 1)).ι ≫ stdSimplex.δ i) (boundaryFace_range_le_horn n i)
+  Subcomplex.lift ((boundary (n + 1)).ι ≫ stdSimplex.δ i) (_root_.SerrePositivity.InfinityCategories.Simplicial.boundaryFace_range_le_horn n i)
 
 /-- ホーンの包含を合成すると、欠ける面の境界の通常の包含。 -/
 @[reassoc (attr := simp)]
 lemma boundaryToHorn_ι (n : ℕ) (i : Fin (n + 3)) :
-    boundaryToHorn.{u} n i ≫ (horn (n + 2) i).ι =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn.{u} n i ≫ (horn (n + 2) i).ι =
       (boundary (n + 1)).ι ≫ stdSimplex.δ i := rfl
 
 end SerrePositivity.InfinityCategories.Simplicial

@@ -34,7 +34,7 @@ lemma dgBarCompactPiChart_naturality_of_ulift
     (f : X ⟶ Y) (φ : A → B)
     (h : ∀ z a, c'.equiv (((SSet.uliftFunctor.{v, u}).map f).app _ z)
       (dgBarCompactPiMap n ((SSet.uliftFunctor.{v, u}).map f) z a) = φ (c.equiv z a))
-    (x : X _⦋0⦌) (a : KanHomotopyGroup X n x) :
+    (x : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     c'.ofUlift.equiv (f.app _ x) (dgBarCompactPiMap n f x a) = φ (c.ofUlift.equiv x a) := by
   exact (congrArg (c'.equiv (ULift.up (f.app _ x)))
     (dgBarCompactUliftPiEquiv_naturality.{u, v} f n x a)).trans

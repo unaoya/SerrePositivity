@@ -24,22 +24,22 @@ open EInfinity.Hammock.DoubleSimplicial
 
 /-- 一般の quasicategory の定数 core 旗包含は弱ホモトピー同値。 -/
 lemma inclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
-    IsWeakHomotopyEquivalence (inclusion C) := by
+    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion C) := by
   have hconst := (isPrecompositionEquivalence_of_iso
     (diagonalConstantIso C).symm).isWeakHomotopyEquivalence
-  have hrow := diagonalFunctor_map_weak (bisimplicialInclusion C)
-    (rowInclusion_isWeakHomotopyEquivalence C)
+  have hrow := diagonalFunctor_map_weak (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion C)
+    (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_isWeakHomotopyEquivalence C)
   have htranspose := (isPrecompositionEquivalence_of_iso
-    (diagonalTransposeIso C)).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso C)).isWeakHomotopyEquivalence
   have h := hconst.comp (hrow.comp htranspose)
   change IsWeakHomotopyEquivalence ((diagonalConstantIso C).inv ≫
-    diagonalFunctor.map (bisimplicialInclusion C) ≫ (diagonalTransposeIso C).hom) at h
+    diagonalFunctor.map (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion C) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso C).hom) at h
   rw [_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonal_bisimplicialInclusion] at h
   exact h
 
 /-- 一般の quasicategory の core 旗の対角評価は弱ホモトピー同値。 -/
 lemma counit_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
-    IsWeakHomotopyEquivalence (counit C) := by
+    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit C) := by
   apply (inclusion_isWeakHomotopyEquivalence C).cancel_left
   rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit]
   exact isWeakHomotopyEquivalence_id C

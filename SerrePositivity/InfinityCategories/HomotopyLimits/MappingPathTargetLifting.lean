@@ -39,8 +39,8 @@ noncomputable section
 def mappingPathTargetMatchingMap {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
     (h : f ≫ b = a ≫ f') :
-    (mappingPath f).right ⟶ pullback b.right (mappingPathProjection f').right :=
-  pullback.lift (mappingPathProjection f).right (mappingPathMap f f' a b h).right (by
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f).right ⟶ pullback b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right :=
+  pullback.lift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f).right (mappingPathMap f f' a b h).right (by
     simpa only [Under.comp_right] using
       congrArg Under.Hom.right (mappingPathMap_target f f' a b h).symm)
 
@@ -58,66 +58,66 @@ lemma mappingPathTargetMatchingMap_fibration {X Y X' Y' : PointedSimplicialSet.{
     (SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance j hj
   constructor
   intro t u sq
-  let uY := u ≫ pullback.fst b.right (mappingPathProjection f').right
-  let uM := u ≫ pullback.snd b.right (mappingPathProjection f').right
-  have ht : t ≫ (mappingPathProjection f).right = j ≫ uY := by
-    have he := congrArg (fun k : T ⟶ pullback b.right (mappingPathProjection f').right ↦
-      k ≫ pullback.fst b.right (mappingPathProjection f').right) sq.w
+  let uY := u ≫ pullback.fst b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right
+  let uM := u ≫ pullback.snd b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right
+  have ht : t ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f).right = j ≫ uY := by
+    have he := congrArg (fun k : T ⟶ pullback b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right ↦
+      k ≫ pullback.fst b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right) sq.w
     simpa only [Category.assoc, mappingPathTargetMatchingMap, pullback.lift_fst, uY] using he
   have hm : t ≫ (mappingPathMap f f' a b h).right = j ≫ uM := by
-    have he := congrArg (fun k : T ⟶ pullback b.right (mappingPathProjection f').right ↦
-      k ≫ pullback.snd b.right (mappingPathProjection f').right) sq.w
+    have he := congrArg (fun k : T ⟶ pullback b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right ↦
+      k ≫ pullback.snd b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right) sq.w
     simpa only [Category.assoc, mappingPathTargetMatchingMap, pullback.lift_snd, uM] using he
-  let pb := pointedPullback_isPullback (freePathEndpoint Y 1) f
-  let pb' := pointedPullback_isPullback (freePathEndpoint Y' 1) f'
-  have hpb : (pullback.fst (freePathEndpoint Y 1) f).right ≫
-      (freePathEndpoint Y 1).right = (mappingPathRetraction f).right ≫ f.right := pb.w
-  have hpb' : (pullback.fst (freePathEndpoint Y' 1) f').right ≫
-      (freePathEndpoint Y' 1).right = (mappingPathRetraction f').right ≫ f'.right := pb'.w
+  let pb := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f
+  let pb' := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f'
+  have hpb : (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right ≫ f.right := pb.w
+  have hpb' : (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f').right ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1).right = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f').right ≫ f'.right := pb'.w
   have hpath := congrArg Under.Hom.right (mappingPathMap_path f f' a b h)
   have hsource := congrArg Under.Hom.right (mappingPathMap_source f f' a b h)
   have hv := congrArg Under.Hom.right h
   simp only [Under.comp_right] at hpath hsource hv
-  let sqX : CommSq (t ≫ (mappingPathRetraction f).right) j a.right
-      (uM ≫ (mappingPathRetraction f').right) := ⟨by
+  let sqX : CommSq (t ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right) j a.right
+      (uM ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f').right) := ⟨by
     rw [Category.assoc, ← hsource, ← Category.assoc, hm, Category.assoc]⟩
-  have hu : uY ≫ b.right = uM ≫ (mappingPathProjection f').right := by
+  have hu : uY ≫ b.right = uM ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right := by
     exact (Category.assoc _ _ _).trans
       ((congrArg (u ≫ ·) pullback.condition).trans (Category.assoc _ _ _).symm)
-  have hc₀ : j ≫ uY = (t ≫ (pullback.fst (freePathEndpoint Y 1) f).right) ≫
-      (freePathEndpoint Y 0).right := ht.symm
+  have hc₀ : j ≫ uY = (t ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0).right := ht.symm
   have hc₁ : j ≫ (sqX.lift ≫ f.right) =
-      (t ≫ (pullback.fst (freePathEndpoint Y 1) f).right) ≫
-        (freePathEndpoint Y 1).right := by
+      (t ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right) ≫
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right := by
     rw [← Category.assoc, sqX.fac_left, Category.assoc, ← hpb, ← Category.assoc]
-  have he : (t ≫ (pullback.fst (freePathEndpoint Y 1) f).right) ≫
-      (PointedObject.basedHomMap freeInterval.{u} b).right =
-        j ≫ (uM ≫ (pullback.fst (freePathEndpoint Y' 1) f').right) := by
+  have he : (t ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right) ≫
+      (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} b).right =
+        j ≫ (uM ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f').right) := by
     rw [Category.assoc, ← hpath, ← Category.assoc, hm, Category.assoc]
-  have ha₀ : uY ≫ b.right = (uM ≫ (pullback.fst (freePathEndpoint Y' 1) f').right) ≫
-      (freePathEndpoint Y' 0).right := hu
+  have ha₀ : uY ≫ b.right = (uM ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f').right) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 0).right := hu
   have ha₁ : (sqX.lift ≫ f.right) ≫ b.right =
-      (uM ≫ (pullback.fst (freePathEndpoint Y' 1) f').right) ≫
-        (freePathEndpoint Y' 1).right := by
+      (uM ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f').right) ≫
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1).right := by
     rw [Category.assoc, hv, ← Category.assoc, sqX.fac_right,
       Category.assoc, ← hpb', ← Category.assoc]
   obtain ⟨v, hjv, hend₀, hend₁, hbase⟩ := relativeFreePath_boundaryHornLift b j hj
-    (t ≫ (pullback.fst (freePathEndpoint Y 1) f).right) uY (sqX.lift ≫ f.right)
-    (uM ≫ (pullback.fst (freePathEndpoint Y' 1) f').right) hc₀ hc₁ he ha₀ ha₁
+    (t ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right) uY (sqX.lift ≫ f.right)
+    (uM ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f').right) hc₀ hc₁ he ha₀ ha₁
   let l := pb.lift v sqX.lift hend₁
-  have hls : l ≫ (mappingPathRetraction f).right = sqX.lift := pb.lift_snd _ _ _
-  have hlp : l ≫ (pullback.fst (freePathEndpoint Y 1) f).right = v := pb.lift_fst _ _ _
+  have hls : l ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right = sqX.lift := pb.lift_snd _ _ _
+  have hlp : l ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right = v := pb.lift_fst _ _ _
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply pb.hom_ext
     · rw [Category.assoc, hlp]
       exact hjv
-    · change (j ≫ l) ≫ (mappingPathRetraction f).right = _
+    · change (j ≫ l) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right = _
       rw [Category.assoc, hls]
       exact sqX.fac_left
   · apply pullback.hom_ext
     · simp only [Category.assoc, mappingPathTargetMatchingMap, pullback.lift_fst]
-      change l ≫ (pullback.fst (freePathEndpoint Y 1) f).right ≫
-        (freePathEndpoint Y 0).right = uY
+      change l ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right ≫
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0).right = uY
       rw [← Category.assoc, hlp]
       exact hend₀
     · simp only [Category.assoc, mappingPathTargetMatchingMap, pullback.lift_snd]
@@ -126,7 +126,7 @@ lemma mappingPathTargetMatchingMap_fibration {X Y X' Y' : PointedSimplicialSet.{
       · rw [Category.assoc, hpath, ← Category.assoc, hlp]
         exact hbase
       · change (l ≫ (mappingPathMap f f' a b h).right) ≫
-          (mappingPathRetraction f').right = uM ≫ (mappingPathRetraction f').right
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f').right = uM ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f').right
         rw [Category.assoc, hsource, ← Category.assoc, hls]
         exact sqX.fac_right
 
@@ -138,25 +138,25 @@ lemma mappingPathTargetMatchingMap_rlp {X Y X' Y' : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] [KanComplex X'.right] [KanComplex Y'.right]
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
     (h : f ≫ b = a ≫ f') [Fibration a.right] [Fibration b.right]
-    (hf : KanPiIsomorphism f.right) (hf' : KanPiIsomorphism f'.right) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) (hf' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f'.right) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathTargetMatchingMap f f' a b h) := by
   have : Fibration (mappingPathTargetMatchingMap f f' a b h) :=
     mappingPathTargetMatchingMap_fibration f f' a b h
-  have : KanComplex (pullback b.right (mappingPathProjection f').right) :=
-    pullback_kanComplex_of_fibration b.right (mappingPathProjection f').right
+  have : KanComplex (pullback b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right) :=
+    pullback_kanComplex_of_fibration b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right
   have hp : (MorphismProperty.monomorphisms SSet.{u}).rlp
-      (pullback.fst b.right (mappingPathProjection f').right) :=
+      (pullback.fst b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right) :=
     (MorphismProperty.rlp _).pullback_fst _ _
-      (mappingPathProjection_rlp_of_piIsomorphism f' hf')
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism f' hf')
   have he : mappingPathTargetMatchingMap f f' a b h ≫
-      pullback.fst b.right (mappingPathProjection f').right = (mappingPathProjection f).right :=
+      pullback.fst b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f).right :=
     pullback.lift_fst ..
-  have hm : KanPiIsomorphism (mappingPathTargetMatchingMap f f' a b h) := by
-    apply KanPiIsomorphism.of_comp (g := pullback.fst b.right (mappingPathProjection f').right)
-      _ (kanPiIsomorphism_of_monoRight _ hp)
+  have hm : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (mappingPathTargetMatchingMap f f' a b h) := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := pullback.fst b.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f').right)
+      _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ hp)
     rw [he]
-    exact mappingPathProjection_piIsomorphism f hf
-  exact fibration_rlp_of_piIsomorphism _ hm (mappingPath f).basepoint
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_piIsomorphism f hf
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism _ hm (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f).basepoint
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

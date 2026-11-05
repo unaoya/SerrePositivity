@@ -29,29 +29,29 @@ def fractionSimplexCosliceProjection :
   pullback.snd _ _
 
 instance fractionSimplexCosliceProjection_leftFibration :
-    LeftFibration (fractionSimplexCosliceProjection F x) :=
+    LeftFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection F x) :=
   inferInstanceAs (LeftFibration (pullback.snd _ _))
 
 /-- 商の元の coslice fiber を表す、同じ strict Kan 図式。 -/
 def fractionSimplexKanMappingDiagram : TransportSimplexCategory X ⥤ KanObject.{u} :=
-  cocartesianKanDiagram (fractionSimplexCosliceProjection F x)
+  cocartesianKanDiagram (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection F x)
 
 /-- 元の全 span 族の評価は、同じ全単体上の Kan 図式を一つの自然変換で結ぶ。 -/
 def fractionSimplexKanComparison :
-    cocartesianKanDiagram (pullback.snd (markedSpanFamilyProjection X W x)
-      (transportSimplexFirstVertexMap X)) ⟶ fractionSimplexKanMappingDiagram F x :=
+    cocartesianKanDiagram (pullback.snd (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x)
+      (transportSimplexFirstVertexMap X)) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x :=
   strictKanTransportPostToLeftFibration _ _
-    (fractionCosliceBaseChange F W hF x (transportSimplexFirstVertexMap X))
-    (fractionCosliceBaseChange_snd F W hF x (transportSimplexFirstVertexMap X))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange F W hF x (transportSimplexFirstVertexMap X))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange_snd F W hF x (transportSimplexFirstVertexMap X))
 
 /-- 同じ自然変換の全高次の整合性を、元の coherent な図式間の実辺として保持する。 -/
 def fractionSimplexKanComparisonEdge :
     Edge (functorVertex (cocartesianKanCoherentDiagram
-      (pullback.snd (markedSpanFamilyProjection X W x) (transportSimplexFirstVertexMap X))))
-      (functorVertex (kanDiagramCoherentNerve (fractionSimplexKanMappingDiagram F x))) :=
+      (pullback.snd (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) (transportSimplexFirstVertexMap X))))
+      (functorVertex (kanDiagramCoherentNerve (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram F x))) :=
   strictKanTransportPostToLeftFibrationEdge _ _
-    (fractionCosliceBaseChange F W hF x (transportSimplexFirstVertexMap X))
-    (fractionCosliceBaseChange_snd F W hF x (transportSimplexFirstVertexMap X))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange F W hF x (transportSimplexFirstVertexMap X))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange_snd F W hF x (transportSimplexFirstVertexMap X))
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

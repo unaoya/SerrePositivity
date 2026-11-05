@@ -42,10 +42,10 @@ theorem strictKanUnstraighteningIso_fst {I : Type u} [Category.{u} I]
       pullback.fst pointedSpaceProjection (kanDiagramCoherentNerve F) =
     pullback.fst
       (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-      (HomotopyLimits.strictCoherentDiagram F) ≫ strictKanPointedApexIso.hom := by
+      (HomotopyLimits.strictCoherentDiagram F) ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   let hd := (kanDiagramCoherentNerve_eq_strictCoherentDiagram F).symm
   let hx := (spaceInfinityVertex_eq_coherent pointKanObject).symm
-  exact coherentConeTotal_transport_fst hd hx (congrArg₂ HomotopyLimits.coherentConeTotal hd hx)
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.coherentConeTotal_transport_fst hd hx (congrArg₂ HomotopyLimits.coherentConeTotal hd hx)
 
 /-- 同じ strict Kan 実比較の pointed map は、元の weighted coslice 比較そのもの。 -/
 theorem strictKanUnstraighteningComparison_pointed {I : Type u} [Category.{u} I]
@@ -53,8 +53,8 @@ theorem strictKanUnstraighteningComparison_pointed {I : Type u} [Category.{u} I]
     strictKanUnstraighteningComparison F ≫
       pullback.fst pointedSpaceProjection (kanDiagramCoherentNerve F) =
     HomotopyLimits.weightedCosliceComparison F pointKanObject ≫
-      strictKanPointedApexIso.hom := by
-  rw [strictKanUnstraighteningComparison, Category.assoc, strictKanUnstraighteningIso_fst,
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
+  rw [strictKanUnstraighteningComparison, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningIso_fst,
     ← Category.assoc]
   rw [HomotopyLimits.weightedCoherentConeComparison, pullback.lift_fst]
 

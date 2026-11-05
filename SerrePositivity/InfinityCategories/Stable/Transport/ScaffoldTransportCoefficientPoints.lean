@@ -54,7 +54,7 @@ end SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 namespace SerrePositivity.InfinityCategories.Stable.Transport
 open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
-open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+open _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 

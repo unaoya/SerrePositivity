@@ -40,12 +40,12 @@ def reversalTwicePath :
 /-- 同じ円区間を移した、一重 loop の二重反転を恒等へ戻す実区間。 -/
 def reversalTwicePre (Y : PointedSimplicialSet.{u}) :
     PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom space Y))
-      (PointedMapping.prePointed (integerPowerMap (-1)) Y ≫
-        PointedMapping.prePointed (integerPowerMap (-1)) Y)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap (-1)) Y ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap (-1)) Y)
       (𝟙 (PointedObject.basedHom space Y)) := by
-  have hs := PointedMapping.prePointed_comp (integerPowerMap.{u} (-1))
+  have hs := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (integerPowerMap.{u} (-1))
     (integerPowerMap (-1)) Y
-  have ht : PointedMapping.prePointed (𝟙 space.{u}) Y = 𝟙 _ := by
+  have ht : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 space.{u}) Y = 𝟙 _ := by
     rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app Y) (MonoidalClosed.pre_id space.{u})
   exact (reversalTwicePath.basedPre Y).changeEndpoints hs ht.symm
@@ -61,7 +61,7 @@ lemma reversalTwicePre_natural {Y Z : PointedSimplicialSet.{u}} (v : Y ⟶ Z) :
         (Y := PointedObject.basedHom space.{u} Y) (Z := PointedObject.basedHom space.{u} Z)
         (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) v)).right =
     (reversalTwicePre Z).path ≫
-      (PointedMapping.prePointed
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
         (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) v)
         (PointedObject.basedHom space.{u} Z)).right := by
   rw [reversalTwicePre_path, reversalTwicePre_path]

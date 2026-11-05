@@ -21,7 +21,7 @@ def SimplexHAInverseCellRecovery {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) : Prop :=
   simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
       (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-    (simplexHAInverseFunctor A s).map (standardSimplexVertex (v 0)) (standardSimplexVertex b) =
+    (simplexHAInverseFunctor A s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
       simplexHAChainLift A s m v b hb
 
 /-- 元の同じ終点と同じ部分集合を持つ列の間では、元の cell 回収式を移せる。 -/

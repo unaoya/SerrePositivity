@@ -17,7 +17,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 内 anodyne 制限後に core を通る元の単体図式は、制限前から core を通る。 -/
-lemma coreFactor_of_innerAnodyne {K : SSet.{u}} {C : StableCategory.{u}}
+lemma coreFactor_of_innerAnodyne {K : SSet.{u}} {C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (n : SimplexCategory) (i : K ⟶ stdSimplex.obj n) (hi : innerAnodyneExtensions i)
     (f : stdSimplex.obj n ⟶ C.obj)
     (hf : ∃ g : K ⟶ (quasicategoryCore C.obj : SSet.{u}),

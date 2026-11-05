@@ -25,9 +25,9 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 include h in
 lemma inclusion_difference_zero (x : A.obj _⦋0⦌) :
@@ -40,7 +40,7 @@ lemma inclusion_difference_zero (x : A.obj _⦋0⦌) :
 include h in
 lemma inclusion_connectingArrow_invertible (x : A.obj _⦋0⦌) : IsEquivalencePathVertex
     ((i.hom ≫ connectingArrow p q r).app (Opposite.op ⦋0⦌) x) := by
-  have hz := inclusion_difference_zero p q i r h x
+  have hz := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusion_difference_zero p q i r h x
   have hi := (laxDifference_zero_iff (𝟙 Q) (𝟙 Q) _).mp hz
   change IsEquivalencePathVertex (((i.hom ≫ lift p q r) ≫
     F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj)).app (Opposite.op ⦋0⦌) x) at hi
@@ -50,24 +50,24 @@ lemma inclusion_connectingArrow_invertible (x : A.obj _⦋0⦌) : IsEquivalenceP
 def inclusionArrowComparison : FunctorIso (i.hom ≫ connectingArrow p q r)
     ((i.hom ≫ first p q r) ≫ constantFunctorMap (Δ[1] : SSet.{u}) Q.obj) := by
   have e := EquivalenceArrowFamily.comparison (i.hom ≫ connectingArrow p q r)
-    (inclusion_connectingArrow_invertible p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusion_connectingArrow_invertible p q i r h)
   simpa only [first, Category.assoc, lift_fst] using e
 
 def inclusionDiagonalIso : FunctorIso (i.hom ≫ lift p q r)
     ((i.hom ≫ first p q r) ≫ IdentityLax.diagonal Q) := by
-  have e := FunctorIso.postcomp (inclusionArrowComparison p q i r h) (arrowLaxInverse Q.obj)
+  have e := FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionArrowComparison p q i r h) (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj)
   simpa only [lift, IdentityLax.diagonal, Category.assoc] using e
 
 def inclusionCLegDiagonalIso : FunctorIso (i.hom ≫ lift p q r)
-    (((i.hom ≫ (laxFst p q).hom) ≫ (laxQuotientCLeg p q r).hom) ≫
+    (((i.hom ≫ (laxFst p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom) ≫
       IdentityLax.diagonal Q) := by
-  have e := FunctorIso.postcomp (FunctorIso.precomp (firstCLegIso p q r) i.hom)
+  have e := FunctorIso.postcomp (FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso p q r) i.hom)
     (IdentityLax.diagonal Q)
   have ec : FunctorIso ((i.hom ≫ first p q r) ≫ IdentityLax.diagonal Q)
-      (((i.hom ≫ (laxFst p q).hom) ≫ (laxQuotientCLeg p q r).hom) ≫
+      (((i.hom ≫ (laxFst p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom) ≫
         IdentityLax.diagonal Q) := by
     simpa only [Category.assoc] using e
-  exact inclusionDiagonalIso p q i r h ≪≫ ec
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionDiagonalIso p q i r h ≪≫ ec
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 

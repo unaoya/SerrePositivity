@@ -18,17 +18,17 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def rightHom : FunctorHom (𝟙 (laxCategory p q).obj) (cofiber p q) :=
   eqToHom (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
-    (arrow_target p q).symm) ≫ CofiberFamily.rightHom (laxCategory p q).obj (arrow p q)
+    (arrow_target p q).symm) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHom (laxCategory p q).obj (arrow p q)
 
 lemma rightHom_fst_isIso : IsIso (homPost (laxFst p q).hom (rightHom p q)) := by
   have h := CofiberFamily.rightHom_post_isIso_of_zeroSource
     (laxCategory p q).obj (arrow p q) (laxFst p q).hom (by
       intro x
-      let s := CofiberFamily.cofiberSquareAt (laxCategory p q).obj (arrow p q) x
+      let s := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt (laxCategory p q).obj (arrow p q) x
       rw [show _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt (laxCategory p q).obj (arrow p q) x = s.square from rfl,
         s.source_vertex]
       have hs := (intervalFunctorVertexTypedEdge

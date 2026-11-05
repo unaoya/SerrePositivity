@@ -35,23 +35,23 @@ def verdierSquareQuotientCone {B C : SSet.{u}} (q : B ⟶ C)
     simpa only [cospanSquareBoundary, Category.assoc] using hT⟩
 
 /-- 同じ実 cospan を保持する錐と、指定商四角形への実 slice 比較辺。 -/
-structure VerdierSquareRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (_h : IsVerdierSequence i q)
+structure VerdierSquareRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (_h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (R : (horn 2 2 : SSet.{u}) ⟶ B.obj)
     (T : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj)
     (hT : cospanSquareBoundary ≫ T = R ≫ q.hom) where
   cone : JoinCone R
   comparison : Truncated.Edge (X := (truncation 2).obj (sliceOver (R ≫ q.hom)))
-    (mapJoinCone q.hom cone) (verdierSquareQuotientCone q.hom R T hT)
-  isInvertible : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) comparison
+    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.cone) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT)
+  isInvertible : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.comparison
 
 namespace VerdierSquareRefinement
-open SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {R : (horn 2 2 : SSet.{u}) ⟶ B.obj}
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {R : (horn 2 2 : SSet.{u}) ⟶ B.obj}
   {T : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj}
   {hT : cospanSquareBoundary ≫ T = R ≫ q.hom}
-  (d : VerdierSquareRefinement h R T hT)
+  (d : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement h R T hT)
 
 /-- 回収した実四角形。 -/
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ B.obj :=
@@ -59,7 +59,7 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ B.obj :=
 
 /-- 右辺・上辺を合わせた元の実 cospan は厳密に保存される。 -/
 lemma cospan_eq : cospanSquareBoundary ≫ d.square = R := by
-  simp only [square, cospanSquareBoundary, Category.assoc, Iso.hom_inv_id_assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.square, cospanSquareBoundary, Category.assoc, Iso.hom_inv_id_assoc]
   exact d.cone.property
 
 /-- 元の右辺は同じ一次単体族として保存される。 -/
@@ -74,7 +74,7 @@ lemma top_eq : squareTopEdge ≫ d.square = horn₂₂.ι₁₂ ≫ R := by
 def legTriangle (k : (horn 2 2 : SSet.{u}) _⦋0⦌) :
     Truncated.Edge.CompStruct
       (d.comparison.map ((truncation 2).map (sliceOverProjection (R ≫ q.hom))))
-      (F2.nativeConeLeg (verdierSquareQuotientCone q.hom R T hT) k)
+      (F2.nativeConeLeg (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT) k)
       (F2.nativeConeLeg (mapJoinCone q.hom d.cone) k) :=
   coneLegComparisonTriangle d.comparison k
 
@@ -82,14 +82,14 @@ def legTriangle (k : (horn 2 2 : SSet.{u}) _⦋0⦌) :
 def iso : FunctorIso (d.square ≫ q.hom) T := by
   have hv : IsIso (Truncated.HomotopyCategory.homMk d.comparison) := d.isInvertible
   have e := coneFunctorIsoOfVertexIso (mapJoinCone q.hom d.cone)
-    (verdierSquareQuotientCone q.hom R T hT)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT)
     (asIso (Truncated.HomotopyCategory.homMk d.comparison))
-  simpa only [square, verdierSquareQuotientCone, mapJoinCone, Category.assoc,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.square, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone, mapJoinCone, Category.assoc,
     Iso.inv_hom_id_assoc] using e.precomp cospanConeSquareIso.inv
 
 /-- 指定商四角形の下辺が可逆なら、回収した同じ実下辺は元の弱同値。 -/
 lemma bottom_mem (hbottom : IsInvertibleEdge (X := C.obj) (squareBottomArrow T)) :
-    (squareBottomArrow d.square).edge ∈ weakEquivalences i := by
+    (squareBottomArrow d.square).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   let a := squareBottomArrow (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u}))
   have hraw (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj) :
       (a.map ((truncation 2).map F)).edge = (squareBottomArrow F).edge := by
@@ -103,24 +103,24 @@ lemma bottom_mem (hbottom : IsInvertibleEdge (X := C.obj) (squareBottomArrow T))
       (a.map ((truncation 2).map (d.square ≫ q.hom))) :=
     (NatIso.isIso_map_iff d.iso.toNatIso
       (Truncated.HomotopyCategory.homMk a)).mpr ht
-  apply (mem_weakEquivalences_iff_invertible h (squareBottomArrow d.square)).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (squareBottomArrow d.square)).mpr
   exact (isInvertibleEdge_congr (e :=
     (squareBottomArrow d.square).map ((truncation 2).map q.hom)) rfl).mpr hs
 
 end VerdierSquareRefinement
 
 /-- 任意の指定商四角形を、同じ元の cospan と全 slice 比較辺を持つ実四角形へ回収する。 -/
-lemma exists_verdierSquareRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSquareRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (R : (horn 2 2 : SSet.{u}) ⟶ B.obj)
     (T : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj)
     (hT : cospanSquareBoundary ≫ T = R ≫ q.hom) :
-    Nonempty (VerdierSquareRefinement h R T hT) := by
-  obtain ⟨c, ⟨e⟩⟩ := exists_verdierQuotientConeIsoRefinement h R
-    (verdierSquareQuotientCone q.hom R T hT)
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement h R T hT) := by
+  obtain ⟨c, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h R
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT)
   obtain ⟨v, hv⟩ := homotopyCategory_homMk_surjective
     (X := sliceOver (R ≫ q.hom))
-    (mapJoinCone q.hom c) (verdierSquareQuotientCone q.hom R T hT) e.hom
+    (mapJoinCone q.hom c) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT) e.hom
   have hi : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) v := by
     change IsIso (Truncated.HomotopyCategory.homMk v)
     rw [hv]

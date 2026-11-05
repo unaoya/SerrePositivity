@@ -27,14 +27,14 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
 
 /-- 内部 Hom の合成は、源の交換と strength を通して厳密に可換。 -/
 lemma composition (X Y A Z : C) :
-    MonoidalClosed.comp X Y ((ihom A).obj Z) ≫ (iso X A Z).hom =
-      (𝟙 ((ihom X).obj Y) ⊗ₘ (iso Y A Z).hom) ≫
-        HomTensorStrength.map ((ihom X).obj Y) A ((ihom Y).obj Z) ≫
+    MonoidalClosed.comp X Y ((ihom A).obj Z) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso X A Z).hom =
+      (𝟙 ((ihom X).obj Y) ⊗ₘ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso Y A Z).hom) ≫
+        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map ((ihom X).obj Y) A ((ihom Y).obj Z) ≫
           (ihom A).map (MonoidalClosed.comp X Y Z) := by
   apply uncurry_injective
   apply uncurry_injective
-  simp only [uncurry_natural_left, uncurry_ihom_map, InternalHomExchange.uncurry_uncurry_hom]
-  rw [HomTensorStrength.exchange_natural_right_assoc]
+  simp only [uncurry_natural_left, uncurry_ihom_map, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   rw [← whiskerLeft_comp_assoc A
     (X ◁ MonoidalClosed.comp X Y ((ihom A).obj Z))
     ((ihom.ev X).app ((ihom A).obj Z)) ((ihom.ev A).app Z)]
@@ -42,12 +42,12 @@ lemma composition (X Y A Z : C) :
     comp_eq, uncurry_curry, compTranspose_eq]
   simp only [whiskerLeft_comp, Category.assoc]
   rw [← whiskerLeft_comp_assoc X
-    (A ◁ HomTensorStrength.map ((ihom X).obj Y) A ((ihom Y).obj Z))
+    (A ◁ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map ((ihom X).obj Y) A ((ihom Y).obj Z))
     ((ihom.ev A).app (((ihom X).obj Y) ⊗ ((ihom Y).obj Z)))
-    (uncurry (comp X Y Z)), HomTensorStrength.evaluation]
+    (uncurry (comp X Y Z)), _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation]
   simp only [whiskerLeft_comp, Category.assoc]
   conv_rhs =>
-    rw [← whiskerLeft_comp_assoc, id_tensorHom, HomTensorStrength.exchange_natural_right]
+    rw [← whiskerLeft_comp_assoc, id_tensorHom, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right]
   simp only [whiskerLeft_comp, Category.assoc]
   rw [comp_eq, uncurry_curry, compTranspose_eq]
   conv_rhs =>
@@ -56,16 +56,16 @@ lemma composition (X Y A Z : C) :
   erw [associator_inv_naturality_right_assoc]
   erw [whisker_exchange_assoc]
   simp only [whiskerLeft_comp, Category.assoc]
-  have hr := InternalHomExchange.uncurry_uncurry_hom Y A Z
-  change Y ◁ (A ◁ (iso Y A Z).hom ≫
+  have hr := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom Y A Z
+  change Y ◁ (A ◁ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso Y A Z).hom ≫
     (ihom.ev A).app ((ihom Y).obj Z)) ≫ (ihom.ev Y).app Z = _ at hr
   simp only [whiskerLeft_comp, Category.assoc] at hr
   erw [hr]
-  erw [HomTensorStrength.exchange_natural_left_assoc]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left_assoc]
   have hc := congrArg (fun k ↦ k ≫
       A ◁ ((ihom.ev X).app Y ▷ (ihom Y).obj ((ihom A).obj Z)) ≫
       A ◁ (ihom.ev Y).app ((ihom A).obj Z) ≫ (ihom.ev A).app Z)
-    (HomTensorStrength.exchange_tensor_left_reordered X ((ihom X).obj Y) A
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_tensor_left_reordered X ((ihom X).obj Y) A
       ((ihom Y).obj ((ihom A).obj Z)))
   simp only [Category.assoc] at hc
   exact hc.symm

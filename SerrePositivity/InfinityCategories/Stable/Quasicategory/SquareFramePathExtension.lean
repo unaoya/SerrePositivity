@@ -49,18 +49,18 @@ namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
 end SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
 namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.LocalizingInvariants.SquareFrame
+open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
 variable {X : SSet.{u}} [Quasicategory X] (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame (equivalencePath X))
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
   (hf : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp f) (equivalencePathEndpoint X 0) = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare Q)
 
 structure PathExtension where
   family : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ equivalencePath X
-  source : family ≫ equivalencePathEndpoint X 0 = Q
-  boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ family = f.diagram
+  source : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family ≫ equivalencePathEndpoint X 0 = Q
+  boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family = f.diagram
 
 include hf in
-lemma pathExtension_nonempty : Nonempty (PathExtension f Q) := by
+lemma pathExtension_nonempty : Nonempty (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension f Q) := by
   have he : f.diagram ≫ equivalencePathEndpoint X 0 = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ Q := by
     rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp, hf, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_ofSquare]
   let sq : CommSq f.diagram _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι (equivalencePathEndpoint X 0) Q := ⟨he⟩
@@ -68,19 +68,19 @@ lemma pathExtension_nonempty : Nonempty (PathExtension f Q) := by
     TrivialKanFibration.mem (p := equivalencePathEndpoint X 0) _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι inferInstance
   exact ⟨⟨sq.lift, sq.fac_right, sq.fac_left⟩⟩
 
-def pathExtension : PathExtension f Q := (pathExtension_nonempty f Q hf).some
+def pathExtension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension f Q := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension_nonempty f Q hf).some
 
 namespace PathExtension
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
-variable {f Q} (w : PathExtension f Q)
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension
+variable {f Q} (w : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension f Q)
 
 def target : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X := w.family ≫ equivalencePathEndpoint X 1
 
 omit [Quasicategory X] in
 lemma target_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ w.target =
     ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp f) (equivalencePathEndpoint X 1)).diagram := by
-  rw [target, ← Category.assoc, w.boundary, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target, ← Category.assoc, w.boundary, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp]
 
 end PathExtension
 end SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame

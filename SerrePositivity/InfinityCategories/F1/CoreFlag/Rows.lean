@@ -28,13 +28,13 @@ open InfinityCategories
 
 /-- 標準単体の全辺を反転する図式への定数包含は圏同値。 -/
 lemma simplexConstant_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (m : ℕ) :
-    IsQCatEquivalence (constant (Δ[m] : SSet.{u}) C) :=
-  constant_isQCatEquivalence _ (initialContraction m)
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant (Δ[m] : SSet.{u}) C) :=
+  _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_isQCatEquivalence _ (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction m)
 
 /-- 同じ元の定数包含は弱ホモトピー同値。 -/
 lemma simplexConstant_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] (m : ℕ) :
-    IsWeakHomotopyEquivalence (constant (Δ[m] : SSet.{u}) C) :=
-  (simplexConstant_isQCatEquivalence C m).isWeakHomotopyEquivalence
+    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant (Δ[m] : SSet.{u}) C) :=
+  (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.simplexConstant_isQCatEquivalence C m).isWeakHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
 

@@ -19,8 +19,8 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] [IsStable X] [IsSt
 
 def identityLaxArrowBaseCofiberComparison (e : QCatEquivalence X Y) : FunctorIso
     ((identityLaxArrowBaseEquivalence e).hom ≫
-      CofiberFamily.cofiber Y (F2.laxPullbackArrow (𝟙 Y) (𝟙 Y)))
-    (CofiberFamily.cofiber X (F2.laxPullbackArrow (𝟙 X) (𝟙 X)) ≫ e.hom) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (F2.laxPullbackArrow (𝟙 Y) (𝟙 Y)))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (F2.laxPullbackArrow (𝟙 X) (𝟙 X)) ≫ e.hom) := by
   letI : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
   have h := CofiberFamily.precompositionIso (F2.laxPullbackArrow (𝟙 Y) (𝟙 Y))
     (identityLaxArrowBaseEquivalence e).hom

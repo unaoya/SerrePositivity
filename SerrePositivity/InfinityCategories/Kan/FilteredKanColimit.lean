@@ -62,7 +62,7 @@ theorem finite_equations_factorization {A B : SSet.{u}} [A.Finite] [B.Finite]
     apply Sigma.hom_ext
     intro t
     simpa only [Sigma.ι_comp_desc_assoc] using h t
-  obtain ⟨k, v, q, hq, hb⟩ := finite_relative_factorization hc (Sigma.desc i) j
+  obtain ⟨k, v, q, hq, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization hc (Sigma.desc i) j
     (Sigma.desc a) b hc'
   refine ⟨k, v, q, ?_, hb⟩
   intro t
@@ -90,7 +90,7 @@ theorem kanComplex_of_filtered_isColimit [∀ j, KanComplex (F.obj j)] : KanComp
 規約：通常の圏論的余極限の Kan 性。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。telescope の比較対象。 -/
 instance filteredColimit_kanComplex (D : J ⥤ SSet.{u}) [∀ j, KanComplex (D.obj j)] :
-    KanComplex (colimit D) := kanComplex_of_filtered_isColimit (colimit.isColimit D)
+    KanComplex (colimit D) := _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit (colimit.isColimit D)
 
 end
 

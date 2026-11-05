@@ -25,25 +25,25 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
 /-- 同じ全族の fat join 比較データを、証明済みの存在から選ぶ。 -/
 def fractionFamilyCosliceData :
     PointSourceCosliceData (F.app (Opposite.op ⦋0⦌) x)
-      (markedSpanFamilyProjection X W x ≫ F) (fractionFamilyFatDiagram F W hF x) :=
-  Classical.choice (fractionFamilyCosliceData_nonempty F W hF x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x ≫ F) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyFatDiagram F W hF x) :=
+  Classical.choice (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData_nonempty F W hF x)
 
 /-- 元の全 span 族から、固定した第一終点の商像の coslice への実関手。 -/
 def fractionFamilyCosliceEvaluation :
-    markedSpanFamily X W x ⟶ sliceUnder (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)) :=
-  (fractionFamilyCosliceData F W hF x).toCoslice
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ sliceUnder (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData F W hF x).toCoslice
 
 /-- 元の同じ可変第二終点の商像を、全単体で厳密に被覆する。 -/
 theorem fractionFamilyCosliceEvaluation_projection :
-    fractionFamilyCosliceEvaluation F W hF x ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation F W hF x ≫
       sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)) =
-        markedSpanFamilyProjection X W x ≫ F :=
-  (fractionFamilyCosliceData F W hF x).toCoslice_projection
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x ≫ F :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData F W hF x).toCoslice_projection
 
 omit [Quasicategory Q] in
 /-- 両端固定の元の span 全体は、同じ可変終点射影に対して厳密に定値。 -/
 theorem fixedMarkedSpanToFamily_target (y : X _⦋0⦌) :
-    fixedMarkedSpanToFamily X W x y ≫ (markedSpanFamilyProjection X W x ≫ F) =
+    fixedMarkedSpanToFamily X W x y ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x ≫ F) =
       SSet.const (F.app (Opposite.op ⦋0⦌) y) := by
   change fixedMarkedSpanToFamily X W x y ≫
     (vertexFiberι (markedSpanSource X W) x ≫ markedSpanTarget X W ≫ F) = _
@@ -54,16 +54,16 @@ theorem fixedMarkedSpanToFamily_target (y : X _⦋0⦌) :
 def fixedFractionCosliceEvaluation (y : X _⦋0⦌) : fixedMarkedSpans X W x y ⟶
     vertexFiber (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
       (F.app (Opposite.op ⦋0⦌) y) :=
-  (fractionFamilyCosliceData F W hF x).toFiber (fixedMarkedSpanToFamily X W x y)
-    (fixedMarkedSpanToFamily_target F W x y)
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData F W hF x).toFiber (fixedMarkedSpanToFamily X W x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target F W x y)
 
 /-- fiber 包含との合成は、元の同じ全族の coslice 関手への制限そのもの。 -/
 theorem fixedFractionCosliceEvaluation_inclusion (y : X _⦋0⦌) :
-    fixedFractionCosliceEvaluation F W hF x y ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y ≫
       vertexFiberι (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
         (F.app (Opposite.op ⦋0⦌) y) =
-      fixedMarkedSpanToFamily X W x y ≫ fractionFamilyCosliceEvaluation F W hF x := by
-  rw [fixedFractionCosliceEvaluation, PointSourceCosliceData.toFiber, vertexFiberLift_ι]
+      fixedMarkedSpanToFamily X W x y ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation F W hF x := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation, PointSourceCosliceData.toFiber, vertexFiberLift_ι]
   rfl
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

@@ -20,9 +20,9 @@ open SerrePositivity.KST.Fibration
 /-- 任意の底で、同じ指定した逆二胞体の評価を回収する。 -/
 theorem functorIsoValue_inv {K Y : SSet.{u}} {F G : K ⟶ Y}
     (e : FunctorIso F G) (x : K _⦋0⦌) :
-    (functorIsoValue e x).inv = functorHomEvaluate e.inv x := by
-  apply (cancel_epi (functorIsoValue e x).hom).mp
-  rw [Iso.hom_inv_id, functorIsoValue_hom, ← functorHomEvaluate_comp,
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x).inv = functorHomEvaluate e.inv x := by
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x).hom).mp
+  rw [Iso.hom_inv_id, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom, ← functorHomEvaluate_comp,
     e.hom_inv_id, functorHomEvaluate_id]
 
 end SerrePositivity.InfinityCategories.F1.Transport

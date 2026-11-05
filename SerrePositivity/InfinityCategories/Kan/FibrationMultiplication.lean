@@ -32,8 +32,8 @@ open SerrePositivity.KST.Spectra
 theorem KanHomotopyGroup.mul_unique_at {X : SSet.{u}} [KanComplex X]
     {n : ℕ} {x : X _⦋0⦌} {f g a b : X.PtSimplex (n + 1) x} {i : Fin (n + 1)}
     (h : PtSimplex.MulStruct f g a i) (h' : PtSimplex.MulStruct f g b i) :
-    KanHomotopyGroup.mk a = KanHomotopyGroup.mk b :=
-  KanHomotopyGroup.sound (PtSimplex.relStructCastSuccEquivMulStruct.symm
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (PtSimplex.relStructCastSuccEquivMulStruct.symm
     (PtSimplex.MulStruct.assoc' (.oneMul f i) h h'))
 
 namespace ConnectingProduct
@@ -41,34 +41,34 @@ open SerrePositivity.KST.Spectra.ConnectingProduct
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {f g : B.PtSimplex (n + 2) (p.app _ e)}
-  {d : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e)}
+  {d : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
 
 /-- 概要：連結写像の積の比較に使うホーンの面。
 方針：二つの持ち上げと fiber の積の充填を、n、n + 2、n + 3 の面に置く。
 規約：欠ける面は n + 1。fiber の積の因子の順序は f の境界、g の境界。
 使われ方：Kerodon §3.2.5。連結準同型の積保存。 -/
-noncomputable def face (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
+noncomputable def face (Lf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e f) (Lg : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e g)
     (h : PtSimplex.MulStruct Lf.boundary Lg.boundary d (Fin.last n)) (j : Fin (n + 4)) :
     (Δ[n + 2] : SSet.{u}) ⟶ E :=
   if j.val = n then Lg.map else
   if j.val = n + 2 then Lf.map else
-  if j.val = n + 3 then h.map ≫ fiberι p (p.app _ e) else SSet.const e
+  if j.val = n + 3 then h.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e
 
 /-- 概要：二つの持ち上げと fiber の積から成るホーンは互換である。
 方針：持ち上げの最後の面を、積の充填の第一面と第三面にそれぞれ合わせる。
 規約：n + 1 の面は指定しない。
 使われ方：Kerodon §3.2.5。積の比較ホーンの充填。 -/
-theorem compatible (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
+theorem compatible (Lf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e f) (Lg : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e g)
     (h : PtSimplex.MulStruct Lf.boundary Lg.boundary d (Fin.last n)) :
-    horn.IsCompatible (i := (Fin.last n).castSucc.castSucc.succ) (fun j _ ↦ face Lf Lg h j) := by
+    horn.IsCompatible (i := (Fin.last n).castSucc.castSucc.succ) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face Lf Lg h j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
   have hk' : k.val ≠ n + 1 := fun he ↦ hk (Fin.ext he)
-  simp only [face]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face]
   split_ifs <;> try simp only [← Category.assoc, Lf.face_formula, Lg.face_formula,
-    SimplexFaces.mul_face, comp_const]
-  all_goals (try split_ifs) <;> (try simp only [const_comp, fiberι_point]) <;> first
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, comp_const]
+  all_goals (try split_ifs) <;> (try simp only [const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]) <;> first
     | rfl
     | (exfalso
        simp only [Fin.ext_iff, Fin.val_last, Fin.val_castSucc, Fin.val_succ,
@@ -79,16 +79,16 @@ theorem compatible (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
 方針：二面の交換により、持ち上げの定数面または積の中央面へ移す。
 規約：φ は比較ホーンの充填。
 使われ方：Kerodon §3.2.5。積を代表する相対持ち上げの境界。 -/
-theorem output_face (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
+theorem output_face (Lf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e f) (Lg : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e g)
     (h : PtSimplex.MulStruct Lf.boundary Lg.boundary d (Fin.last n))
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ E)
     (hφ : ∀ (j : Fin (n + 4)) (_ : j ≠ (Fin.last n).castSucc.castSucc.succ),
-      stdSimplex.δ j ≫ φ = face Lf Lg h j) (j : Fin (n + 3)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face Lf Lg h j) (j : Fin (n + 3)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ =
-      if j.val = n + 2 then d.map ≫ fiberι p (p.app _ e) else SSet.const e := by
+      if j.val = n + 2 then d.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e := by
   by_cases hj : j ≤ (Fin.last n).castSucc.castSucc
   · rw [stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face]
     split_ifs <;> try simp only [Lf.face_formula, Lg.face_formula, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -100,9 +100,9 @@ theorem output_face (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
     have he : (Fin.last n).castSucc.castSucc.succ =
         (Fin.last n).castSucc.succ.castSucc := by apply Fin.ext; rfl
     rw [he, ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face]
     split_ifs <;> try simp only [← Category.assoc, Lf.face_formula, Lg.face_formula,
-      SimplexFaces.mul_face, comp_const]
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -115,32 +115,32 @@ theorem output_face (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
 規約：底の積の添字は最後の一つ前。後で隣接積の比較を用いる。
 使われ方：Kerodon §3.2.5。連結射の積保存の幾何的構成。 -/
 theorem exists_product_lift [KanComplex E]
-    (Lf : BoundaryLift p e f) (Lg : BoundaryLift p e g)
+    (Lf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e f) (Lg : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e g)
     (h : PtSimplex.MulStruct Lf.boundary Lg.boundary d (Fin.last n)) :
-    ∃ (s : B.PtSimplex (n + 2) (p.app _ e)) (L : BoundaryLift p e s),
+    ∃ (s : B.PtSimplex (n + 2) (p.app _ e)) (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s),
       L.boundary = d ∧ Nonempty (PtSimplex.MulStruct f g s (Fin.last n).castSucc) := by
-  obtain ⟨φ, hφ⟩ := (compatible Lf Lg h).exists_lift_of_kanComplex
+  obtain ⟨φ, hφ⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.compatible Lf Lg h).exists_lift_of_kanComplex
   let s : B.PtSimplex (n + 2) (p.app _ e) :=
     { map := (stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ) ≫ p
       comm := by
         ext j : 1
         simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
-        rw [← Category.assoc, output_face Lf Lg h φ hφ]
+        rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face Lf Lg h φ hφ]
         split_ifs <;> simp }
-  let L : BoundaryLift p e s :=
-    { map := stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ
-      map_comp := rfl
-      face_eq j hj := by
-        rw [output_face Lf Lg h φ hφ]
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s :=
+    { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ
+      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := rfl
+      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+        rw [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face Lf Lg h φ hφ]
         apply ite_eq_right
         exact fun he ↦ hj (Fin.ext he) }
   have hb : L.boundary = d := by
     ext : 1
-    apply fiber_hom_ext p (p.app _ e)
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
     rw [L.boundary_ι]
     change stdSimplex.δ (Fin.last (n + 2)) ≫
       stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ = _
-    rw [output_face Lf Lg h φ hφ]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face Lf Lg h φ hφ]
     exact ite_eq_left rfl
   refine ⟨s, L, hb, ⟨{
     map := φ ≫ p
@@ -150,14 +150,14 @@ theorem exists_product_lift [KanComplex E]
     δ_map_of_lt := ?_
     δ_map_of_gt := ?_ }⟩⟩
   · rw [← Category.assoc, hφ _ (by grind)]
-    simp [face, Lg.map_comp]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face, Lg.map_comp]
   · rw [← Category.assoc, hφ _ (by grind)]
-    simp only [face, Fin.val_succ, Fin.val_castSucc, Fin.val_last]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face, Fin.val_succ, Fin.val_castSucc, Fin.val_last]
     rw [ite_eq_right (by omega)]
     simp [Lf.map_comp]
   · intro j hj
     rw [← Category.assoc, hφ _ (by grind)]
-    simp only [face]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face]
     split_ifs <;> first
       | exact const_comp _ _
       | (exfalso
@@ -165,7 +165,7 @@ theorem exists_product_lift [KanComplex E]
          omega)
   · intro j hj
     rw [← Category.assoc, hφ _ (by grind)]
-    simp only [face]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face]
     split_ifs <;> first
       | (simp [Category.assoc])
       | (exfalso
@@ -180,24 +180,24 @@ end ConnectingProduct
 使われ方：Kerodon §3.2.5。長完全列の連結準同型。 -/
 theorem connecting_mul {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
-    (a b : KanHomotopyGroup B (n + 1) (p.app _ e)) :
-    connecting p e (n + 1) (a * b) = connecting p e (n + 1) a * connecting p e (n + 1) b := by
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (a * b) = _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) a * _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) b := by
   induction a using Quotient.inductionOn with | h f => ?_
   induction b using Quotient.inductionOn with | h g => ?_
-  change connecting p e (n + 1) (KanHomotopyGroup.mk f * KanHomotopyGroup.mk g) =
-    connecting p e (n + 1) (KanHomotopyGroup.mk f) *
-      connecting p e (n + 1) (KanHomotopyGroup.mk g)
-  let Lf := chooseBoundaryLift p e f
-  let Lg := chooseBoundaryLift p e g
+  change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g) =
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f) *
+      _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g)
+  let Lf := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e f
+  let Lg := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e g
   obtain ⟨d, ⟨hd⟩⟩ := PtSimplex.MulStruct.nonempty Lf.boundary Lg.boundary (Fin.last n)
-  obtain ⟨s, L, hboundary, ⟨hs⟩⟩ := ConnectingProduct.exists_product_lift Lf Lg hd
+  obtain ⟨s, L, hboundary, ⟨hs⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.exists_product_lift Lf Lg hd
   obtain ⟨s', ⟨hs'⟩⟩ := PtSimplex.MulStruct.nonempty g f (Fin.last (n + 1))
-  have he : KanHomotopyGroup.mk s = KanHomotopyGroup.mk s' :=
-    KanHomotopyGroup.mul_unique_at hs (AdjacentProduct.flip hs')
-  have hprod : KanHomotopyGroup.mk s = KanHomotopyGroup.mk f * KanHomotopyGroup.mk g := by
-    rw [he, ← KanHomotopyGroup.mul_eq hs', KanHomotopyGroup.mul_comm]
-  rw [← hprod, connecting_eq p e L, hboundary, connecting_eq p e Lf, connecting_eq p e Lg]
-  exact (KanHomotopyGroup.mul_eq hd).symm
+  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s' :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_unique_at hs (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip hs')
+  have hprod : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g := by
+    rw [he, ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hs', _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_comm]
+  rw [← hprod, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e L, hboundary, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Lf, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Lg]
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hd).symm
 
 /-- 概要：Kan fibration の正次数の連結準同型。
 方針：商へ降ろした連結写像に単位保存と積保存を付ける。
@@ -205,11 +205,11 @@ theorem connecting_mul {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Kerodon §§3.2.5–3.2.6、Theorem 3.2.6.1。長完全列の群の部分。 -/
 noncomputable def connectingHom {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) :
-    KanHomotopyGroup B (n + 1) (p.app _ e) →*
-      KanHomotopyGroup (KanFiber p (p.app _ e)) n (fiberPoint p e) where
-  toFun := connecting p e (n + 1)
-  map_one' := connecting_one p e (n + 1)
-  map_mul' := connecting_mul p e n
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e) →*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) where
+  toFun := _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1)
+  map_one' := _root_.SerrePositivity.InfinityCategories.Kan.connecting_one p e (n + 1)
+  map_mul' := _root_.SerrePositivity.InfinityCategories.Kan.connecting_mul p e n
 
 end SerrePositivity.InfinityCategories.Kan
 

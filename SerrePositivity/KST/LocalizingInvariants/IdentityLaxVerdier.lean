@@ -18,24 +18,24 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 lemma difference_isVerdier :
-    IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
-  fullyFaithful := diagonal_fullyFaithful Q
-  kernel := difference_kernel Q
-  quotient := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := diagonal_fullyFaithful Q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := difference_kernel Q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
     rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
       (exactLaxDifference (𝟙 Q) (𝟙 Q)) (difference_kernel Q)]
-    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (identityAdjunction Q)
+    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (_root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.identityAdjunction Q)
       (QCatEquivalence.refl Q.obj).isFullyFaithful
 
-def verdierSequence : VerdierSequence.{u} where
-  left := Q
-  middle := laxCategory (𝟙 Q) (𝟙 Q)
-  right := Q
-  inclusion := exactDiagonal Q
-  projection := exactLaxDifference (𝟙 Q) (𝟙 Q)
-  isVerdier := difference_isVerdier Q
+def verdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := Q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := laxCategory (𝟙 Q) (𝟙 Q)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := Q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := exactDiagonal Q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := exactLaxDifference (𝟙 Q) (𝟙 Q)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := difference_isVerdier Q
 
 end SerrePositivity.KST.LocalizingInvariants.IdentityLax

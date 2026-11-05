@@ -95,8 +95,8 @@ def monoidNerveLoopMulStruct (T : MonCat.{u}) (a b : T) :
 -/
 def monoidNerveFundamentalClass {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) (a : T) :
-    Spectra.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)) :=
-  Spectra.KanHomotopyGroup.mk (Spectra.mapSimplex f rfl (monoidNerveLoop T a))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f rfl (monoidNerveLoop T a))
 
 /--
 概要：nerve の辺の基本群の類は反乗法的である。
@@ -108,8 +108,8 @@ theorem monoidNerveFundamentalClass_mul {X : SSet.{u}} [KanComplex X] (T : MonCa
     (f : nerve (SingleObj T) ⟶ X) (a b : T) :
     monoidNerveFundamentalClass T f (b * a) =
       monoidNerveFundamentalClass T f a * monoidNerveFundamentalClass T f b :=
-  (Spectra.KanHomotopyGroup.mul_eq
-    (Spectra.mapMulStruct f rfl (monoidNerveLoopMulStruct T a b))).symm
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq
+    (_root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct f rfl (monoidNerveLoopMulStruct T a b))).symm
 
 /--
 概要：単位の nerve の辺は境界定数単体としても定数である。
@@ -145,7 +145,7 @@ theorem monoidNerveFundamentalClass_one {X : SSet.{u}} [KanComplex X] (T : MonCa
 -/
 def monoidNerveFundamentalOppositeHom {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) :
-    T →* (Spectra.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)))ᵐᵒᵖ where
+    T →* (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)))ᵐᵒᵖ where
   toFun a := MulOpposite.op (monoidNerveFundamentalClass T f a)
   map_one' := congrArg MulOpposite.op (monoidNerveFundamentalClass_one T f)
   map_mul' a b := congrArg MulOpposite.op (monoidNerveFundamentalClass_mul T f b a)
@@ -158,7 +158,7 @@ def monoidNerveFundamentalOppositeHom {X : SSet.{u}} [KanComplex X] (T : MonCat.
 -/
 def groupNerveFundamentalHom {X : SSet.{u}} [KanComplex X]
     (G : Type u) [Group G] (f : nerve (SingleObj G) ⟶ X) :
-    G →* Spectra.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint (MonCat.of G))) where
+    G →* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint (MonCat.of G))) where
   toFun a := monoidNerveFundamentalClass (MonCat.of G) f a⁻¹
   map_one' := by rw [inv_one]; exact monoidNerveFundamentalClass_one (MonCat.of G) f
   map_mul' a b := by

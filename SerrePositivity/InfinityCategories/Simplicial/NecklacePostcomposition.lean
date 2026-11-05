@@ -18,38 +18,38 @@ open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の単体集合の射による、すべての necklace の後合成関手。 -/
 def necklaceInPostcompose {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌) :
-    NecklaceIn K x y ⥤ NecklaceIn L (f.app _ x) (f.app _ y) where
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y ⥤ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn L (f.app _ x) (f.app _ y) where
   obj T :=
-    { necklace := T.necklace
-      map := T.map ≫ f
-      map_first := by
+    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := T.necklace
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := T.map ≫ f
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := by
         change f.app _ (T.map.app _ T.necklace.down.firstVertex) = _
         rw [T.map_first]
-      map_last := by
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := by
         change f.app _ (T.map.app _ T.necklace.down.lastVertex) = _
         rw [T.map_last] }
   map g :=
-    { necklaceHom := g.necklaceHom
-      w := by
+    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := g.necklaceHom
+      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
         change g.necklaceHom.map ≫ _ ≫ f = _ ≫ f
         rw [← Category.assoc, g.w] }
-  map_id _ := NecklaceInHom.ext rfl
-  map_comp _ _ := NecklaceInHom.ext rfl
+  map_id _ := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext rfl
+  map_comp _ _ := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext rfl
 
 /-- 後合成しても、元のすべての necklace の形と射の図式を厳密に回収する。 -/
 lemma necklaceInPostcompose_forget {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌) :
-    necklaceInPostcompose f x y ⋙ necklaceInForget L (f.app _ x) (f.app _ y) =
-      necklaceInForget K x y := rfl
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x y ⋙ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget L (f.app _ x) (f.app _ y) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget K x y := rfl
 
 /-- 後合成先の元の単体的 necklace 写像は、元の写像と同じ射の合成。 -/
 lemma necklaceInPostcompose_obj_map {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌)
-    (T : NecklaceIn K x y) :
-    ((necklaceInPostcompose f x y).obj T).map = T.map ≫ f := rfl
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x y).obj T).map = T.map ≫ f := rfl
 
 /-- 後合成先の全可換三角形は、元の necklace 射を厳密に保持する。 -/
 lemma necklaceInPostcompose_map {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌)
-    {T U : NecklaceIn K x y} (g : T ⟶ U) :
-    ((necklaceInPostcompose f x y).map g).necklaceHom = g.necklaceHom := rfl
+    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} (g : T ⟶ U) :
+    ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x y).map g).necklaceHom = g.necklaceHom := rfl
 
 end SerrePositivity.InfinityCategories.Simplicial
 

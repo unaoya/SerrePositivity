@@ -27,13 +27,13 @@ lemma transpose_step (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
         (KanSequence.mapping A Y).sigma n := by
   apply curry'_injective
   apply (cancel_mono
-    (InternalHomExchange.iso (suspension (X.level n).space) A
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
       (Y.level (n + 1)).space).hom).1
   rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (PointedMapping.transpose
       (PointedMapping.transpose (a ≫ pointedStep X Y n))) = _
   rw [PointedMapping.transpose_transpose]
-  have hs := homPoint_step (𝟙 (suspension (X.level n).space))
+  have hs := homPoint_step (𝟙 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space))
     ((KanSequence.mapping A Y).sigma n) (PointedMapping.transpose a)
     (PointedSimplicialSet.circle.{u} ◁ PointedMapping.transpose a ≫
       (KanSequence.mapping A Y).sigma n) (by simp)
@@ -56,15 +56,15 @@ lemma transpose_restriction (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (a : A ⟶ PointedObject.basedHom (X.level (n + 1)).space
       (Y.level (n + 1)).space) :
     PointedMapping.transpose (a ≫
-      PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space) =
       X.sigma n ≫ PointedMapping.transpose a := by
   apply curry'_injective
   apply (cancel_mono
-    (InternalHomExchange.iso (suspension (X.level n).space) A
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
       (Y.level (n + 1)).space).hom).1
   rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (PointedMapping.transpose (PointedMapping.transpose
-    (a ≫ PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space))) = _
+    (a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space))) = _
   rw [PointedMapping.transpose_transpose]
   conv_rhs => rw [← PointedMapping.curry'_pre (X.sigma n) (PointedMapping.transpose a)]
   rw [Category.assoc]

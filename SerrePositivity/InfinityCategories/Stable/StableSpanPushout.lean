@@ -86,7 +86,7 @@ lemma exists_stable_pushoutPresentation_of_span {X : SSet.{u}} [Quasicategory X]
 lemma exists_stable_pushoutSquare_of_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
     (p : (horn 2 0 : SSet.{u}) ⟶ X) :
     ∃ R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X, pushoutSpan R = p ∧ IsPushoutSquare R := by
-  obtain ⟨F, hp, _hz, _hl, hr, _ho⟩ := exists_stable_pushoutPresentation_of_span p
+  obtain ⟨F, hp, _hz, _hl, hr, _ho⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutPresentation_of_span p
   exact ⟨pastingSquare F 0, hp, hr⟩
 
 /-- 概要：安定な quasicategory の全ての span は余極限を持つ。
@@ -94,7 +94,7 @@ lemma exists_stable_pushoutSquare_of_span {X : SSet.{u}} [Quasicategory X] [IsSt
 規約：入力 span の二辺を保持する。使われ方：押し出しの相対族の補完。 -/
 lemma stable_hasColimit_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
     (p : (horn 2 0 : SSet.{u}) ⟶ X) : HasColimit p := by
-  obtain ⟨R, hp, hR⟩ := exists_stable_pushoutSquare_of_span p
+  obtain ⟨R, hp, hR⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span p
   rw [← hp]
   exact ⟨pushoutCocone R, hR⟩
 

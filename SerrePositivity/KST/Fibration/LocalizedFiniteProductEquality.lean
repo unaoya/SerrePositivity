@@ -41,6 +41,6 @@ lemma finProduct_eq_of_anodyneQ_eq {P X : SSet.{u}} (n : ℕ)
         simpa only [Category.assoc, Pi.lift_comp_π] using h i.castSucc)
     apply (cancel_mono (AnodyneHomotopy.anodyneQ.map (finSnocProductIso X n).hom)).1
     rw [← Functor.map_comp, ← Functor.map_comp, finProduct_comp_snoc, finProduct_comp_snoc]
-    exact pair_eq_of_anodyneQ_eq hp (h (Fin.last n))
+    exact _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq hp (h (Fin.last n))
 
 end SerrePositivity.KST.Fibration

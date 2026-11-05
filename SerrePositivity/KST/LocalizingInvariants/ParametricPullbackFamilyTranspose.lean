@@ -207,22 +207,22 @@ lemma exists_relative_parametricPullbackDiagramFamily
     (hab : a ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
       j ≫ parametricPullbackDiagramFamily Q hQ ≫
         (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
-    (hac : a ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+    (hac : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
       j ≫ parametricPullbackDiagramFamily Q hQ ≫
-        (pre (simplexLastPoint n)).app (pullbackDiagrams X)) :
+        (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) :
     ∃ F : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X),
       j ≫ F = a ∧
       F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
         parametricPullbackDiagramFamily Q hQ ≫
           (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) ∧
-      F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+      F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
         parametricPullbackDiagramFamily Q hQ ≫
-          (pre (simplexLastPoint n)).app (pullbackDiagrams X) := by
+          (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) := by
   apply exists_relative_terminalPullbackFamily n j a
     (parametricPullbackDiagramFamily Q hQ ≫
       (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
     (parametricPullbackDiagramFamily Q hQ ≫
-      (pre (simplexLastPoint n)).app (pullbackDiagrams X))
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))
     hab hac
   rw [Category.assoc, Category.assoc, ← (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).naturality]
 

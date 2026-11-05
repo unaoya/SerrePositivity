@@ -18,12 +18,12 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 theorem scaffoldPointedReconstruction_coefficient_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (eqToIso (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c))).inv =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p)
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
@@ -32,14 +32,14 @@ theorem scaffoldPointedReconstruction_coefficient_pointHom (c : TransportSimplex
           (Opposite.op ⦋0⦌) (firstVertexSectionFiberPoint p c v))) := by
   let b := (transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c)
   let w := firstVertexSectionFiberPoint p c v
-  let e := functorIsoValue
+  let e := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue
     (scaffoldStraighteningRepresentationIso p (nativeLeftTransportRepresentation p)) (ULift.up b)
   let C := eqToIso (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c))
-  let x := cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+  let x := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
     (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p))).symm v) ≫
         (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫ C.inv
-  let n := cosliceFiberPointHom ((nativeTransportPointedFiberMap p b).app
+  let n := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p b).app
     (Opposite.op ⦋0⦌) (ULift.up w))
   have hf : x ≫ e.hom = n := by
     have h := scaffoldStraighteningGlobalChart_native_pointHom p c v
@@ -52,7 +52,7 @@ theorem scaffoldPointedReconstruction_coefficient_pointHom (c : TransportSimplex
   have hr := scaffoldPointedReconstruction_pointHom p b w
   rw [nativeLeftTransportComparison_pointedImage p b w] at hr
   have he := congrArg (fun m => n ≫ m)
-    (functorIsoValue_inv (scaffoldStraighteningRepresentationIso p
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv (scaffoldStraighteningRepresentationIso p
       (nativeLeftTransportRepresentation p)) (ULift.up b))
   exact hi.trans (he.trans hr)
 

@@ -21,30 +21,30 @@ inductive CubeDeletionExpression : ℕ → ℕ → Type
 
 /-- 元の削除式を具体的な頂点関数へ評価する。 -/
 def cubeDeletionExpressionVertex {n : ℕ} : {m : ℕ} → CubeDeletionExpression n m →
-    (CubeVertex n → CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .erase p i => cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
+  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の削除式を保持・削除標準表示へ移す。 -/
 def cubeDeletionExpressionNormal {n : ℕ} : {m : ℕ} → CubeDeletionExpression n m →
-    CubeDeletionNormal n m
-  | _, .id _ => cubeDeletionNormalId n
-  | _, .erase p i => cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m
+  | _, .id _ => _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n
+  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i
 termination_by structural _m p => p
 
 /-- 削除式の標準化は、元の全頂点での関数を厳密に保存する。 -/
 lemma cubeDeletionExpressionNormal_vertex {n m : ℕ} (p : CubeDeletionExpression n m) :
-    cubeDeletionNormalVertex (cubeDeletionExpressionNormal p) =
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (cubeDeletionExpressionNormal p) =
       cubeDeletionExpressionVertex p := by
   induction p with
   | id =>
-    change cubeCoordinateSelect (cubeDeletionNormalEmbedding (cubeDeletionNormalId n)) = _root_.id
+    change _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n)) = _root_.id
     rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId_embedding]
     rfl
   | erase p i ih =>
-    change cubeDeletionNormalVertex (cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i) =
-      cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
     rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase, ih]
 
 open SerrePositivity.DifferentialGraded
@@ -63,11 +63,11 @@ lemma serreCubeDeletionExpressionNormal {n m : ℕ} (p : CubeDeletionExpression 
       serreCubeDeletionExpression A p := by
   induction p with
   | id =>
-    change serreCubeDeletionNormal A (cubeDeletionNormalId n) = 𝟙 _
+    change serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n) = 𝟙 _
     exact serreCubeDeletionNormal_id A n
   | erase p i ih =>
     change serreCubeDeletionNormal A
-      (cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i) =
         serreCubeDeletionExpression A p ≫ serreCubeDegeneracy A _ i
     rw [serreCubeDeletionNormal_erase, ih]
 
@@ -77,7 +77,7 @@ lemma serreCubeDeletionExpression_eq_of_vertex_eq {n m : ℕ}
     (h : cubeDeletionExpressionVertex p = cubeDeletionExpressionVertex q) :
     serreCubeDeletionExpression A p = serreCubeDeletionExpression A q := by
   have hn : cubeDeletionExpressionNormal p = cubeDeletionExpressionNormal q :=
-    cubeDeletionNormalVertex_injective n m
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_injective n m
       ((cubeDeletionExpressionNormal_vertex p).trans
         (h.trans (cubeDeletionExpressionNormal_vertex q).symm))
   rw [← serreCubeDeletionExpressionNormal, ← serreCubeDeletionExpressionNormal, hn]

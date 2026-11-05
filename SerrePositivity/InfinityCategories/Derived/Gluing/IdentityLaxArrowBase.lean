@@ -18,17 +18,17 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
 def identityLaxArrowBaseEquivalence (e : QCatEquivalence X Y) :
     QCatEquivalence (F2.laxPullback (𝟙 X) (𝟙 X)) (F2.laxPullback (𝟙 Y) (𝟙 Y)) :=
-  (qCatEquivalenceOfIso (arrowLaxIso X)).trans
+  (qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso X)).trans
     ((e.isQCatEquivalence.postcompose (Δ[1] : SSet.{u})).choose.trans
-      (qCatEquivalenceOfIso (arrowLaxIso Y).symm))
+      (qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Y).symm))
 
 lemma identityLaxArrowBaseEquivalence_diagonal (e : QCatEquivalence X Y) :
-    (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫
+    (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫
       (identityLaxArrowBaseEquivalence e).hom =
-    e.hom ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ arrowLaxInverse Y) := by
-  change (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫
+    e.hom ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Y) := by
+  change (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫
     (F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom ≫
-      arrowLaxInverse Y) = _
+      _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Y) = _
   rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X), _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow,
     Category.id_comp, ← Category.assoc, constantFunctorMap_postcomp, Category.assoc]
 
@@ -36,7 +36,7 @@ lemma identityLaxArrowBaseEquivalence_arrow (e : QCatEquivalence X Y) :
     (identityLaxArrowBaseEquivalence e).hom ≫ F2.laxPullbackArrow (𝟙 Y) (𝟙 Y) =
       F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom := by
   change (F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom ≫
-    arrowLaxInverse Y) ≫ _ = _
+    _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Y) ≫ _ = _
   rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
 end SerrePositivity.InfinityCategories

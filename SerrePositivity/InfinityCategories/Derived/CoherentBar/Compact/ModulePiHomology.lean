@@ -22,45 +22,45 @@ variable {R : Type u} [CommRing R]
 
 /-- 全基点での π_{n+1} と、同じ正規化 Moore 複体の H_{n+1}。 -/
 def dgBarCompactModulePiHomologyEquiv (n : ℕ) (x : W.obj (op ⦋0⦌)) :
-    KanHomotopyGroup (moduleUnderlyingSSet W) n x ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x ≃*
       Multiplicative (((normalizedMooreComplex (ModuleCat.{v} R)).obj W).homology (n + 1)) :=
-  (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)).symm.trans (modulePiMooreGroupEquiv W n)
 
 variable {W} {V : SimplicialObject (ModuleCat.{v} R)} [KanComplex (moduleUnderlyingSSet V)]
 
 lemma dgBarCompactModulePiHomologyEquiv_naturality
     (f : W ⟶ V) (n : ℕ) (x : W.obj (op ⦋0⦌))
-    (a : KanHomotopyGroup (moduleUnderlyingSSet W) n x) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x) :
     dgBarCompactModulePiHomologyEquiv V n ((f.app (op ⦋0⦌)).hom x)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap f) x a) =
       (HomologicalComplex.homologyMap ((normalizedMooreComplex (ModuleCat.{v} R)).map f)
         (n + 1)).hom (dgBarCompactModulePiHomologyEquiv W n x a) := by
-  obtain ⟨a₀, rfl⟩ := (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+  obtain ⟨a₀, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)).surjective a
   change dgBarCompactModulePiHomologyEquiv V n _
-    (KanHomotopyGroup.map (moduleUnderlyingSSetMap f) rfl _) = _
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f) rfl _) = _
   rw [moduleTranslationIso_pi_naturality]
   simp only [dgBarCompactModulePiHomologyEquiv, MulEquiv.trans_apply,
     MulEquiv.symm_apply_apply]
-  let e := KanHomotopyGroup.equivOfIso n
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n
     (moduleTranslationIso V ((f.app (op ⦋0⦌)).hom x))
     (moduleTranslationIso_zero V ((f.app (op ⦋0⦌)).hom x))
   change (modulePiMooreGroupEquiv V n)
-    (e.symm (e (KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
+    (e.symm (e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
       (moduleUnderlyingSSetMap_zero f) a₀))) = _
   rw [MulEquiv.symm_apply_apply]
   exact modulePiMooreGroupEquiv_naturality f n a₀
 
 lemma dgBarCompactModulePiTransport_of_homology_eq (n : ℕ)
     {x y : W.obj (op ⦋0⦌)} (e : (moduleUnderlyingSSet W).Edge x y)
-    (a : KanHomotopyGroup (moduleUnderlyingSSet W) n x)
-    (b : KanHomotopyGroup (moduleUnderlyingSSet W) n y)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x)
+    (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n y)
     (h : dgBarCompactModulePiHomologyEquiv W n x a =
       dgBarCompactModulePiHomologyEquiv W n y b) : dgBarCompactPiTransport n e a b := by
-  let ex := KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+  let ex := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)
-  let ey := KanHomotopyGroup.equivOfIso n (moduleTranslationIso W y)
+  let ey := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W y)
     (moduleTranslationIso_zero W y)
   have h₀ : ex.symm a = ey.symm b := (modulePiMooreGroupEquiv W n).injective h
   have hb : ey (ex.symm a) = b := by

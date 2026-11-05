@@ -33,7 +33,7 @@ lemma weightedComposition_underlying_evaluation {I : Type u} [SmallCategory I]
       (weightedComposition X Y W D).right ≫
         (end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor X)) i).right ≫
           FreePointedHomRestriction.restrict (W.obj i) (pointedSpace X (D.obj i))) =
-      (HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
         (PointedWeightedEnd.obj W (D ⋙ pointedFunctor Y)).right).hom ≫
         space X Y.toKanSequence ◁
           uncurry ((end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i).right ≫
@@ -56,7 +56,7 @@ lemma unpointedWeightedComposition_underlyingIso_evaluation {I : Type u} [SmallC
         (PointedWeightedEnd.underlyingIso W (D ⋙ pointedFunctor Y)).hom) ≫
       unpointedWeightedComposition X Y W D ≫
         weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
-      (HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
         (PointedWeightedEnd.obj W (D ⋙ pointedFunctor Y)).right).hom ≫
         space X Y.toKanSequence ◁
           uncurry ((end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i).right ≫

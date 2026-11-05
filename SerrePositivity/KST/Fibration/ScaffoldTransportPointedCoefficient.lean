@@ -14,7 +14,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 同じ相対三角の source 点を、対応する pointed-space fiber で読む。 -/
 def coefficientSourcePointedFiberPoint (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
@@ -49,9 +49,9 @@ theorem coefficientWeightedPointedFiberPoint_val
 
 /-- 底を固定した同じ相対三角により、元の点の射は厳密に一致する。 -/
 theorem coefficientPointHom_eq (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom (s.coefficientSourcePointedFiberPoint c v) =
-      cosliceFiberPointHom (s.coefficientWeightedPointedFiberPoint c v) :=
-  cosliceFiberPointHom_eq_of_vertexIso (VertexIso.map (s.coefficientFiberPointIso c v)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (s.coefficientSourcePointedFiberPoint c v) =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (s.coefficientWeightedPointedFiberPoint c v) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_vertexIso (VertexIso.map (s.coefficientFiberPointIso c v)
     (leftUnstraighteningFiberIso (leftCoherentTransport p) (ULift.up (nerveVertex c))).hom)
 
 /-- source 点は、元の恒等射評価の同じ実点を表現の pointed map に送ったもの。 -/
@@ -72,17 +72,17 @@ theorem coefficientSourcePointedFiberPoint_eq (c : I) (v : (leftStrictTransport 
 
 /-- native 像の同じ指定分類成分は、元の係数点の weighted 像を回収する。 -/
 theorem nativeCoefficientPointHom (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
       (Opposite.op ⦋0⦌)
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) ≫
       functorHomEvaluate (nativeRepresentationComparisonIso p
         (nativeLeftTransportRepresentation p)
         s.toStrictTransportComparisonSpan.representation).hom (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (s.coefficientWeightedPointedFiberPoint c v) := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (s.coefficientWeightedPointedFiberPoint c v) := by
   have h := nativeRepresentationComparisonIso_pointHom p
     s.toStrictTransportComparisonSpan.representation (nerveVertex c)
     ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)
-  exact h.trans ((congrArg cosliceFiberPointHom
+  exact h.trans ((congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
     (s.coefficientSourcePointedFiberPoint_eq c v)).symm.trans (s.coefficientPointHom_eq c v))
 
 end ScaffoldTransportComparisonSpan

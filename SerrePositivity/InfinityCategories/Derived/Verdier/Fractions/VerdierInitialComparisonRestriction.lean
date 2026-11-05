@@ -53,7 +53,7 @@ lemma VerdierFiniteMappingCoconeRecovery.initialPrefixSquareRestriction
     constantFunctorMap_postcomp]
 
 namespace VerdierRecoveredInitialComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
 variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
   (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U)

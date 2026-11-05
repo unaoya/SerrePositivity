@@ -29,7 +29,7 @@ def pointedSpaceFiberPointOfHom {s : SpaceInfinity.{u} _⦋0⦌}
 theorem pointedSpaceFiberPointOfHom_hom {s : SpaceInfinity.{u} _⦋0⦌}
     (a : HomotopyCategory.mk pointSpaceVertex ⟶ HomotopyCategory.mk s) :
     Truncated.HomotopyCategory.homMk
-      (cosliceFiberVertexToEdge (pointedSpaceFiberPointOfHom a)).toTruncated = a := by
+      (cosliceFiberVertexToEdge (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom a)).toTruncated = a := by
   have he := (cosliceFiberVertexEquiv pointSpaceVertex s).apply_symm_apply
     (SSet.Edge.ofTruncated (Classical.choose (homotopyCategory_homMk_surjective _ _ a)))
   have hh := congrArg (fun e => Truncated.HomotopyCategory.homMk e.toTruncated) he
@@ -51,7 +51,7 @@ theorem smallUnstraighteningFiberPoint_recover {B : SSet.{u}}
       (F.app (Opposite.op ⦋0⦌) (ULift.up b))) _⦋0⦌) :
     (leftUnstraighteningFiberIso F (ULift.up b)).hom.app (Opposite.op ⦋0⦌)
       ((smallLeftUnstraighteningFiberIso F b).hom.app (Opposite.op ⦋0⦌)
-        (ULift.up (smallUnstraighteningFiberPoint F b s))) = s := by
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint F b s))) = s := by
   have hsmall := congrArg (fun m => m.app (Opposite.op ⦋0⦌)
     ((leftUnstraighteningFiberIso F (ULift.up b)).inv.app (Opposite.op ⦋0⦌) s))
     (smallLeftUnstraighteningFiberIso F b).inv_hom_id

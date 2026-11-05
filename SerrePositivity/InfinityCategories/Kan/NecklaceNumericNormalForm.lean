@@ -19,55 +19,55 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の出力座標が始域の joint の像に入るという条件。 -/
-def necklaceJointHits {T U : Necklace.{u}} (f : T ⟶ U) (j : Fin U.down.dimension) : Prop :=
+def necklaceJointHits {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) (j : Fin U.down.dimension) : Prop :=
   ∃ a : T.down.Vertex, a.val ∈ T.down.joints ∧
-    necklaceVertexMap f a = (U.down.nonjointCoordinate j).val
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f a = (U.down.nonjointCoordinate j).val
 
 /-- 元の necklace 射の右端からの数値座標の有限 max 表示。 -/
-def necklaceNumericNormalForm {T U : Necklace.{u}} (f : T ⟶ U) :
-    CubeJoinNormalForm T.down.dimension U.down.dimension := by
+def necklaceNumericNormalForm {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm T.down.dimension U.down.dimension := by
   classical
-  exact fun j => if necklaceJointHits f j then none else
-    some (Finset.univ.filter (fun i => necklaceVertexMap f (T.down.nonjointCoordinate i).val =
+  exact fun j => if _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits f j then none else
+    some (Finset.univ.filter (fun i => _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate i).val =
       (U.down.nonjointCoordinate j).val))
 
 /-- 元の表示の support は、joint 像でない出力の同じ数値ファイバー。 -/
-lemma mem_necklaceNumericNormalForm_support {T U : Necklace.{u}} (f : T ⟶ U)
+lemma mem_necklaceNumericNormalForm_support {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U)
     (i : Fin T.down.dimension) (j : Fin U.down.dimension) :
-    i ∈ cubeJoinNormalFormSupport (necklaceNumericNormalForm f) j ↔
-      ¬ necklaceJointHits f j ∧ necklaceVertexMap f (T.down.nonjointCoordinate i).val =
+    i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm f) j ↔
+      ¬ _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits f j ∧ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate i).val =
         (U.down.nonjointCoordinate j).val := by
   classical
-  by_cases h : necklaceJointHits f j <;>
-    simp [necklaceNumericNormalForm, cubeJoinNormalFormSupport, h]
+  by_cases h : _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits f j <;>
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm, _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, h]
 
 /-- 元の全出力の有限 max 表示は、入力 support が出力順に厳密に並ぶ。 -/
-lemma necklaceNumericNormalForm_ordered {T U : Necklace.{u}} (f : T ⟶ U)
+lemma necklaceNumericNormalForm_ordered {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U)
     {j k : Fin U.down.dimension} (hjk : j < k) {i l : Fin T.down.dimension}
-    (hi : i ∈ cubeJoinNormalFormSupport (necklaceNumericNormalForm f) j)
-    (hl : l ∈ cubeJoinNormalFormSupport (necklaceNumericNormalForm f) k) : i < l := by
-  have hi' := (mem_necklaceNumericNormalForm_support f i j).1 hi
-  have hl' := (mem_necklaceNumericNormalForm_support f l k).1 hl
+    (hi : i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm f) j)
+    (hl : l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm f) k) : i < l := by
+  have hi' := (_root_.SerrePositivity.InfinityCategories.Kan.mem_necklaceNumericNormalForm_support f i j).1 hi
+  have hl' := (_root_.SerrePositivity.InfinityCategories.Kan.mem_necklaceNumericNormalForm_support f l k).1 hl
   have hu := (U.down.nonjointCoordinate_lt k j).2 hjk
-  have hh : necklaceVertexMap f (T.down.nonjointCoordinate l).val <
-      necklaceVertexMap f (T.down.nonjointCoordinate i).val := by
+  have hh : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate l).val <
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate i).val := by
     rw [hl'.2, hi'.2]
     exact hu
   exact (T.down.nonjointCoordinate_lt l i).1
-    (necklaceVertexMap_orderedFibers f _ _ hh)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_orderedFibers f _ _ hh)
 
 /-- 元の有限 max 表示は、同じ necklace 射の全数値頂点作用を厳密に回収する。 -/
-lemma necklaceNumericNormalForm_eval {T U : Necklace.{u}} (f : T ⟶ U) :
-    cubeJoinNormalFormEval (necklaceNumericNormalForm f) = necklaceNumericMap f := by
+lemma necklaceNumericNormalForm_eval {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm f) = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f := by
   classical
   funext x j
   apply Bool.eq_iff_iff.mpr
   rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap_coordinate]
-  change _ ↔ necklaceJointHits f j ∨ ∃ i, x i = true ∧
-    necklaceVertexMap f (T.down.nonjointCoordinate i).val = (U.down.nonjointCoordinate j).val
-  by_cases h : necklaceJointHits f j
-  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, necklaceNumericNormalForm, h, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
-  · simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, necklaceNumericNormalForm,
+  change _ ↔ _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits f j ∨ ∃ i, x i = true ∧
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate i).val = (U.down.nonjointCoordinate j).val
+  by_cases h : _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits f j
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm, h, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm,
       h, ite_false, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval, false_or]
     change _ = (⊤ : Bool) ↔ _
     rw [Finset.sup_eq_top_iff]
@@ -75,13 +75,13 @@ lemma necklaceNumericNormalForm_eval {T U : Necklace.{u}} (f : T ⟶ U) :
     exact exists_congr (fun i => and_comm)
 
 /-- 元の全 necklace 射の数値頂点作用は、既存の cubical 生成射の合成。 -/
-lemma necklaceNumericMap_generated {T U : Necklace.{u}} (f : T ⟶ U) :
-    CubeMapGenerated (necklaceNumericMap f) := by
-  rw [← necklaceNumericNormalForm_eval f]
-  exact cubeOrderedNormalForm_generated (necklaceNumericNormalForm f)
+lemma necklaceNumericMap_generated {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm_eval f]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalForm_generated (_root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm f)
     (by
       intro j k hjk i l hi hl
-      exact necklaceNumericNormalForm_ordered f hjk hi hl)
+      exact _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm_ordered f hjk hi hl)
 
 end SerrePositivity.InfinityCategories.Kan
 

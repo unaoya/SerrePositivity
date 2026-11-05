@@ -37,14 +37,14 @@ theorem transportSimplexFirstVertexMap_edge_surjective (B : SSet.{u}) :
     Function.Surjective ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋1⦌)) := by
   intro s
   exact ⟨(nerve.edgeMk (transportSimplexRestriction (SimplexCategory.δ (0 : Fin 2)) s)).edge,
-    transportSimplexFirstVertexMap_lastFace_edge s⟩
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_lastFace_edge s⟩
 
 /-- 初頂点写像の元の指定辺の全逆像は、その像が元の指定辺集合に厳密に一致する。 -/
 theorem transportSimplexFirstVertexMap_edge_preimage_image (B : SSet.{u})
     (W : Set (B _⦋1⦌)) :
     (transportSimplexFirstVertexMap B).app (Opposite.op ⦋1⦌) ''
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋1⦌) ⁻¹' W) = W :=
-  Set.image_preimage_eq W (transportSimplexFirstVertexMap_edge_surjective B)
+  Set.image_preimage_eq W (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_edge_surjective B)
 
 /-- 宇宙を揃えた初頂点写像でも、指定辺の同じ逆像と像の等式を保持する。 -/
 theorem transportSimplexFirstVertexMap_ulift_edge_image (B : SSet.{u})
@@ -58,7 +58,7 @@ theorem transportSimplexFirstVertexMap_ulift_edge_image (B : SSet.{u})
   · rintro ⟨t, ⟨s, hs, rfl⟩, rfl⟩
     exact ⟨_, hs, rfl⟩
   · rintro ⟨s, hs, rfl⟩
-    obtain ⟨t, ht⟩ := transportSimplexFirstVertexMap_edge_surjective B s
+    obtain ⟨t, ht⟩ := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_edge_surjective B s
     refine ⟨ULift.up t, ⟨t, ?_, rfl⟩, congrArg ULift.up ht⟩
     change (transportSimplexFirstVertexMap B).app (Opposite.op ⦋1⦌) t ∈ W
     rw [ht]

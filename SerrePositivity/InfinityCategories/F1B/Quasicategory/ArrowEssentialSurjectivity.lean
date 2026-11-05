@@ -45,7 +45,7 @@ lemma arrowMap_isEssentiallySurjective {X Q : SSet.{u}} [Quasicategory Q]
       a.hom ≫ SSet.Truncated.HomotopyCategory.homMk e := by
     rw [ht]
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  obtain ⟨c⟩ := arrowFunctorIso_of_vertexIso_comm t e a b hc
+  obtain ⟨c⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_vertexIso_comm t e a b hc
   obtain ⟨g, ⟨d⟩⟩ := hA t
   refine ⟨functorVertex g, ⟨?_⟩⟩
   change FunctorIso (g ≫ F) f

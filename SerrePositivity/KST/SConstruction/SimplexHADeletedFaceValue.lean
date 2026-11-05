@@ -72,11 +72,11 @@ lemma simplexHABeadWordDecode_face_zero_value {n : ℕ} (s : DGNerve.SimplexData
           (v (simplexHAFaceVertex (m + 1) j.succ)) := by
       rw [simplexHADecodeSubset_insert_tail, simplexHAFaceVertex_succ]
       rfl
-    have hc := Finset.card_insert_of_notMem (simplexHABeadTail_not_mem T r hb)
+    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T r hb)
     exact (simplexHABeadWordDecode_edge_value A s (m + 1)
       (serreCubeFaceGeneratorIndex false m j) v T hT hb).trans
       ((ih (Fin.castSuccOrderEmb.trans v) (insert r T) (Finset.insert_nonempty r T)
         (simplexHADecodePrefix_insert (m + 1) v T hb) j).trans
-          (s.hom_heq_of_indices_degree he rfl (simplexHABeadTail_max T hT r hb) (by omega)))
+          (s.hom_heq_of_indices_degree he rfl (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT r hb) (by omega)))
 
 end SerrePositivity.KST.SConstruction

@@ -29,7 +29,7 @@ lemma simplicialEqualityTransport_app_heq {E D : SSet.{u}} (e : E = D) (n : ℕ)
 lemma simplicialEqualityTransport_app_of_heq {E D : SSet.{u}} (e : E = D) (n : ℕ)
     (x : E _⦋n⦌) (y : D _⦋n⦌) (h : HEq x y) :
     (eqToHom e).app (Opposite.op ⦋n⦌) x = y :=
-  eq_of_heq ((simplicialEqualityTransport_app_heq e n x).trans h)
+  eq_of_heq ((_root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_app_heq e n x).trans h)
 
 /-- 全単体の表示移送は、その全ての面と厳密に可換。 -/
 lemma simplicialEqualityTransport_face {E D : SSet.{u}} (e : E = D) {n : ℕ}
@@ -42,15 +42,15 @@ lemma simplicialEqualityTransport_face {E D : SSet.{u}} (e : E = D) {n : ℕ}
 lemma simplicialEqualityTransport_face_of_heq {E D : SSet.{u}} (e : E = D) {n : ℕ}
     (i : Fin (n + 2)) (x : E _⦋n + 1⦌) (y : D _⦋n⦌) (h : HEq (E.δ i x) y) :
     D.δ i ((eqToHom e).app (Opposite.op ⦋n + 1⦌) x) = y :=
-  (simplicialEqualityTransport_face e i x).trans
-    (simplicialEqualityTransport_app_of_heq e n _ y h)
+  (_root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face e i x).trans
+    (_root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_app_of_heq e n _ y h)
 
 /-- 元の二単体が共有する面は、同じ表示移送後にも全体として共有される。 -/
 lemma simplicialEqualityTransport_common_face {E D : SSet.{u}} (e : E = D) {n : ℕ}
     (i : Fin (n + 2)) (x y : E _⦋n + 1⦌) (h : E.δ i x = E.δ i y) :
     D.δ i ((eqToHom e).app (Opposite.op ⦋n + 1⦌) x) =
       D.δ i ((eqToHom e).app (Opposite.op ⦋n + 1⦌) y) := by
-  rw [simplicialEqualityTransport_face, simplicialEqualityTransport_face, h]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face, _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face, h]
 
 end SerrePositivity.InfinityCategories.Kan
 

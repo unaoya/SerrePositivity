@@ -21,19 +21,19 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 /-- 恒等矢印を右辺として持つ、元の逆回転で選んだ cofiber 四角形。 -/
-def cofiberRightAdjointDiagram (x : X _⦋0⦌) : (CofiberDiagrams.space X) _⦋0⦌ :=
+def cofiberRightAdjointDiagram (x : X _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌ :=
   (CofiberRotation.rightSection X).app (Opposite.op ⦋0⦌)
-    ((ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x)
+    ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x)
 
 lemma cofiberRightAdjointDiagram_right (x : X _⦋0⦌) :
     squareRightEdge ≫ squareDiagram (cofiberRightAdjointDiagram X x).val = SSet.const x := by
   apply functorVertex_injective
   rw [← _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_right_vertex]
   have h := congrArg (fun f : (ihom (Δ[1] : SSet.{u})).obj X ⟶ _ =>
-    f.app (Opposite.op ⦋0⦌) ((ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x))
+    f.app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x))
     (CofiberRotation.rightSection_right X)
-  change (CofiberDiagrams.right X).app (Opposite.op ⦋0⦌)
-    (cofiberRightAdjointDiagram X x) = (ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x at h
+  change (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X).app (Opposite.op ⦋0⦌)
+    (cofiberRightAdjointDiagram X x) = (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x at h
   exact h.trans (constantFunctorMap_vertex Δ[1] x)
 
 lemma cofiberRightAdjointDiagram_right_invertible (x : X _⦋0⦌) :
@@ -54,11 +54,11 @@ lemma cofiberRightAdjointDiagram_right_invertible (x : X _⦋0⦌) :
 lemma cofiberRightAdjoint_source_zero (x : X _⦋0⦌) :
     IsZeroVertex ((cofiberRightAdjoint X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex ((CofiberDiagrams.bottom X ≫
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌)
       (cofiberRightAdjointDiagram X x))
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_bottom_source]
-  exact CofiberDiagrams.zero_source_of_right_invertible X (cofiberRightAdjointDiagram X x)
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.zero_source_of_right_invertible X (cofiberRightAdjointDiagram X x)
     (cofiberRightAdjointDiagram_right_invertible X x)
 
 end SerrePositivity.KST.LocalizingInvariants

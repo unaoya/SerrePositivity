@@ -24,12 +24,12 @@ def simplexSubsetSplitMappedTopImage {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     (homObject A D
-      (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-      (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X
         ((2 - (I.card : ℤ)) + 1) :=
   eqToHom (congrArg (fun k => (homObject A D
-    (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-    (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X k)
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
       (simplexSubsetSplit_degree.{u} I hI j hj hL hR))
     (serreCubeTopCellImage A _
       ((necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL).necklace.down.dimension +
@@ -40,8 +40,8 @@ def simplexSubsetSplitMappedTopImage {n : ℕ}
         (serreConcreteCubeComplexFunctor A).map
           (necklaceConcreteCubeMap (simplexSubsetSplitRefinement I j hj hL hR)) ≫
             necklaceLambdaCell A (necklaceInSimplexSubset I hI)) ≫
-        F.map (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-          (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI)))))
+        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))))
 
 /-- 元の native HA 合成項は、元の実分割射の同じ最高生成元像そのもの。 -/
 lemma cubicalLambdaNativeSimplexData_cutCompose {n : ℕ}
@@ -49,19 +49,19 @@ lemma cubicalLambdaNativeSimplexData_cutCompose {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     (cubicalLambdaNativeSimplexData A F).cutCompose I
-        (I.min' (simplexSubsetNonempty I hI)) (I.max' (simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) j = simplexSubsetSplitMappedTopImage A F I hI j hj hL hR := by
   have hl := necklaceInSimplexSubsetSplitLeft_dimension.{u} I hI j hj hL
   have hr := necklaceInSimplexSubsetSplitRight_dimension.{u} I hI j hj hR
   have hc := DGNerve.Index.split_card hj
   have hs : (2 - ((I.filter (· ≤ j)).card : ℤ)) +
       (2 - ((I.filter (j ≤ ·)).card : ℤ)) = (2 - (I.card : ℤ)) + 1 := by omega
-  have hla := DGNerve.Index.left_min (I.isLeast_min' (simplexSubsetNonempty I hI))
-    (I.min'_le j hj) (simplexSubsetNonempty _ hL)
-  have hlb := DGNerve.Index.left_max hj (simplexSubsetNonempty _ hL)
-  have hra := DGNerve.Index.right_min hj (simplexSubsetNonempty _ hR)
-  have hrb := DGNerve.Index.right_max (I.isGreatest_max' (simplexSubsetNonempty I hI))
-    (I.le_max' j hj) (simplexSubsetNonempty _ hR)
+  have hla := DGNerve.Index.left_min (I.isLeast_min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (I.min'_le j hj) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hL)
+  have hlb := DGNerve.Index.left_max hj (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hL)
+  have hra := DGNerve.Index.right_min hj (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hR)
+  have hrb := DGNerve.Index.right_max (I.isGreatest_max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (I.le_max' j hj) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hR)
   unfold DGNerve.SimplexData.cutCompose
   rw [dite_eq_left hs]
   rw [DGNerve.SimplexData.homOrZero_eq _ _ _ _ _ hR hra hrb rfl,
@@ -69,8 +69,8 @@ lemma cubicalLambdaNativeSimplexData_cutCompose {n : ℕ}
   rw [cubicalLambdaNativeSimplexData_hom_necklace,
     cubicalLambdaNativeSimplexData_hom_necklace]
   exact ((congrArg (fun w => eqToHom (congrArg (fun k => (homObject A D
-      (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-      (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X k)
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
       (simplexSubsetSplit_degree.{u} I hI j hj hL hR)) w)
     (simplexSubsetSplit_top_composition_post A F I hI j hj hL hR)).trans
       (dgCompose_degree_transport A (by omega) (by omega)

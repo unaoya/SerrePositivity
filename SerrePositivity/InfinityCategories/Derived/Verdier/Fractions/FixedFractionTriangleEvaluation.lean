@@ -28,20 +28,20 @@ open SerrePositivity.KST.LocalizingInvariants
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
   (hF : InvertsEdges F W) (x y : X _⦋0⦌)
 
-def fixedFractionTriangleEdge : fixedFractionTriangles F W hF x y ⟶
+def fixedFractionTriangleEdge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles F W hF x y ⟶
     (ihom (Δ[1] : SSet.{u})).obj Q :=
-  fixedFractionTriangleFamily F W hF x y ≫ (pre (stdSimplex.δ (0 : Fin 3))).app Q
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleFamily F W hF x y ≫ (pre (stdSimplex.δ (0 : Fin 3))).app Q
 
-lemma fixedFractionTriangleEdge_boundary : fixedFractionTriangleEdge F W hF x y ≫
+lemma fixedFractionTriangleEdge_boundary : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEdge F W hF x y ≫
     (pre (boundary 1).ι).app Q = SSet.const (functorVertex
       (intervalMappingBoundary (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))) := by
-  have hs : fixedFractionTriangleFamily F W hF x y ≫ (pre (horn 2 0).ι).app Q =
-      (fixedFractionTriangleProjection F W hF x y ≫ fixedMarkedSpanInclusion X W x y ≫
+  have hs : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleFamily F W hF x y ≫ (pre (horn 2 0).ι).app Q =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y ≫ fixedMarkedSpanInclusion X W x y ≫
         fractionEvaluationTriangle F W hF) ≫ (pre (horn 2 0).ι).app Q := by
-    rw [fixedFractionTriangleFamily_span]
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleFamily_span]
     simp only [Category.assoc, fractionEvaluationTriangle_span]
-  rw [fixedFractionTriangleEdge, triangleThirdEdge_boundary_eq hs]
-  change (fixedFractionTriangleProjection F W hF x y ≫ fixedMarkedSpanInclusion X W x y ≫
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEdge, triangleThirdEdge_boundary_eq hs]
+  change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y ≫ fixedMarkedSpanInclusion X W x y ≫
     fractionSpanEvaluation F W hF) ≫ (pre (boundary 1).ι).app Q = _
   rw [Category.assoc, Category.assoc, fractionSpanEvaluation_boundary,
     ← Category.assoc (fixedMarkedSpanInclusion X W x y), fixedMarkedSpanInclusion,
@@ -49,51 +49,51 @@ lemma fixedFractionTriangleEdge_boundary : fixedFractionTriangleEdge F W hF x y 
   change SSet.const (functorVertex (intervalMappingBoundary x y ≫ F)) = _
   rw [intervalMappingBoundary_postcomp]
 
-def fixedFractionTriangleEvaluation : fixedFractionTriangles F W hF x y ⟶
+def fixedFractionTriangleEvaluation : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles F W hF x y ⟶
     intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) :=
-  vertexFiberLift _ _ (fixedFractionTriangleEdge F W hF x y)
-    (fixedFractionTriangleEdge_boundary F W hF x y)
+  vertexFiberLift _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEdge F W hF x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEdge_boundary F W hF x y)
 
-lemma fixedFractionTriangleSection_evaluation : fixedFractionTriangleSection F W hF x y ≫
-    fixedFractionTriangleEvaluation F W hF x y = fixedFractionEvaluation F W hF x y := by
+lemma fixedFractionTriangleSection_evaluation : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleSection F W hF x y ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x y = fixedFractionEvaluation F W hF x y := by
   apply vertexFiber_hom_ext ((pre (boundary 1).ι).app Q)
     (functorVertex (intervalMappingBoundary (F.app (Opposite.op ⦋0⦌) x)
       (F.app (Opposite.op ⦋0⦌) y)))
-  rw [Category.assoc, fixedFractionTriangleEvaluation, vertexFiberLift_ι,
-    fixedFractionTriangleEdge, ← Category.assoc, fixedFractionTriangleSection_family,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation, vertexFiberLift_ι,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEdge, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleSection_family,
     fixedFractionEvaluation_inclusion]
   rfl
 
 def fixedFractionTriangleEvaluationIso : FunctorIso
-    (fixedFractionTriangleProjection F W hF x y ≫ fixedFractionEvaluation F W hF x y)
-    (fixedFractionTriangleEvaluation F W hF x y) := by
-  have h := functorIsoOfTrivialKanFibration (fixedFractionTriangleProjection F W hF x y)
-    (fixedFractionTriangleProjection F W hF x y ≫ fixedFractionTriangleSection F W hF x y)
-    (𝟙 _) (by rw [Category.assoc, fixedFractionTriangleSection_projection,
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y ≫ fixedFractionEvaluation F W hF x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x y) := by
+  have h := functorIsoOfTrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleSection F W hF x y)
+    (𝟙 _) (by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleSection_projection,
       Category.comp_id, Category.id_comp])
-  have e := FunctorIso.postcomp h (fixedFractionTriangleEvaluation F W hF x y)
-  simpa only [Category.assoc, fixedFractionTriangleSection_evaluation, Category.id_comp] using e
+  have e := FunctorIso.postcomp h (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x y)
+  simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleSection_evaluation, Category.id_comp] using e
 
 lemma fixedFractionTriangleEvaluation_equivalence_iff :
     IsSimplicialHomotopyEquivalence
-      (groupoidCompletionEvaluation (fixedFractionTriangleEvaluation F W hF x y)) ↔
-    IsSimplicialHomotopyEquivalence (fractionMappingComparison F W hF x y) := by
-  have e := groupoidCompletionEvaluation_functorIso (fixedFractionTriangleEvaluationIso F W hF x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x y)) ↔
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison F W hF x y) := by
+  have e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_functorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluationIso F W hF x y)
   constructor
   · intro h
     have hp := (h.isQCatEquivalence.ofFunctorIso e.symm).isSimplicialHomotopyEquivalence
-    exact (groupoidCompletionEvaluation_trivialKanFibration_iff _ _).mp hp
+    exact (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_trivialKanFibration_iff _ _).mp hp
   · intro h
-    have hp := (groupoidCompletionEvaluation_trivialKanFibration_iff
-      (fixedFractionTriangleProjection F W hF x y) (fixedFractionEvaluation F W hF x y)).mpr h
+    have hp := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_trivialKanFibration_iff
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y) (fixedFractionEvaluation F W hF x y)).mpr h
     exact (hp.isQCatEquivalence.ofFunctorIso e).isSimplicialHomotopyEquivalence
 
 lemma fractionMappingComparison_equivalence_iff_pinched :
-    IsSimplicialHomotopyEquivalence (fractionMappingComparison F W hF x y) ↔
-    IsSimplicialHomotopyEquivalence (fractionPinchedMappingComparison F W hF x y) := by
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison F W hF x y) ↔
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionPinchedMappingComparison F W hF x y) := by
   have hm := pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y)
-  have e := fractionMappingModelComparisonIso F W hF x y
+  have e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingModelComparisonIso F W hF x y
   constructor
   · intro h
     have hh := hm.cancel_right (h.isQCatEquivalence.ofFunctorIso e.symm)
@@ -103,10 +103,10 @@ lemma fractionMappingComparison_equivalence_iff_pinched :
 
 lemma fixedFractionTriangleEvaluation_equivalence_iff_pinched :
     IsSimplicialHomotopyEquivalence
-      (groupoidCompletionEvaluation (fixedFractionTriangleEvaluation F W hF x y)) ↔
-    IsSimplicialHomotopyEquivalence (fractionPinchedMappingComparison F W hF x y) :=
-  (fixedFractionTriangleEvaluation_equivalence_iff F W hF x y).trans
-    (fractionMappingComparison_equivalence_iff_pinched F W hF x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x y)) ↔
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionPinchedMappingComparison F W hF x y) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation_equivalence_iff F W hF x y).trans
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison_equivalence_iff_pinched F W hF x y)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

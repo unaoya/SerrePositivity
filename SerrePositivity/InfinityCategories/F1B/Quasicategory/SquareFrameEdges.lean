@@ -32,38 +32,38 @@ namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
 open SerrePositivity.KST.LocalizingInvariants
 
 def squareFrameOfEdges {X : SSet.{u}} {x y x' z : X _⦋0⦌}
-    (b : X.Edge x y) (t : X.Edge x' z) (l : X.Edge x x') (r : X.Edge y z) : SquareFrame X where
-  bottom := SSet.yonedaEquiv.symm b.edge
-  top := SSet.yonedaEquiv.symm t.edge
-  left := SSet.yonedaEquiv.symm l.edge
-  right := SSet.yonedaEquiv.symm r.edge
-  lower_left := by
+    (b : X.Edge x y) (t : X.Edge x' z) (l : X.Edge x x') (r : X.Edge y z) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X where
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := SSet.yonedaEquiv.symm b.edge
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := SSet.yonedaEquiv.symm t.edge
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := SSet.yonedaEquiv.symm l.edge
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := SSet.yonedaEquiv.symm r.edge
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, b.src_eq, l.src_eq]
-  lower_right := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, b.tgt_eq, r.src_eq]
-  upper_left := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, t.src_eq, l.tgt_eq]
-  upper_right := by
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, t.tgt_eq, r.tgt_eq]
 
 structure FixedEndpointHomotopy {X : SSet.{u}} {x y : X _⦋0⦌} (f g : X.Edge x y) where
   homotopy : SSet.Homotopy (SSet.yonedaEquiv.symm f.edge) (SSet.yonedaEquiv.symm g.edge)
-  source : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
+  source : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy.homotopy.h =
     snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (SSet.Edge.id x).edge
-  target : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
+  target : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy.homotopy.h =
     snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (SSet.Edge.id y).edge
 
 lemma fixedEndpointHomotopy_nonempty {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
     (f g : X.Edge x y) (h : Truncated.HomotopyCategory.homMk f.toTruncated =
-      Truncated.HomotopyCategory.homMk g.toTruncated) : Nonempty (FixedEndpointHomotopy f g) := by
+      Truncated.HomotopyCategory.homMk g.toTruncated) : Nonempty (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy f g) := by
   obtain ⟨H, h₀, h₁⟩ := exists_arrowHomotopy_of_homMk_comm f.toTruncated g.toTruncated
     (SSet.Edge.id x).toTruncated (SSet.Edge.id y).toTruncated (by
       simpa only [SSet.Edge.toTruncated_id, SSet.Truncated.HomotopyCategory.homMk_id,
@@ -72,11 +72,11 @@ lemma fixedEndpointHomotopy_nonempty {X : SSet.{u}} [Quasicategory X] {x y : X _
 
 def fixedEndpointHomotopy {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
     (f g : X.Edge x y) (h : Truncated.HomotopyCategory.homMk f.toTruncated =
-      Truncated.HomotopyCategory.homMk g.toTruncated) : FixedEndpointHomotopy f g :=
-  (fixedEndpointHomotopy_nonempty f g h).some
+      Truncated.HomotopyCategory.homMk g.toTruncated) : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy f g :=
+  (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedEndpointHomotopy_nonempty f g h).some
 
 lemma FixedEndpointHomotopy.invertible {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} {f g : X.Edge x y} (H : FixedEndpointHomotopy f g)
+    {x y : X _⦋0⦌} {f g : X.Edge x y} (H : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy f g)
     (v : (Δ[1] : SSet.{u}) _⦋0⦌) :
     IsInvertibleEdge (simplicialHomotopyVertexEdge H.homotopy v).toTruncated := by
   have hi : IsInvertibleEdge (functorEdgeOfSimplicialHomotopy H.homotopy) :=

@@ -27,7 +27,7 @@ include hd in
 lemma coefficient_left : M.actLeft ≫ coefficient M N r =
     ((base M N r).hom ⊗ₘ coefficient M N r) ≫ N.actLeft := by
   have h := IsMonHom.mul_hom r.hom
-  change mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ mul B N at h
+  change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul B N at h
   rw [hom_diagonal M N r d hd] at h
   have hl := congrArg (fun t =>
     (((biprod.inl : A.X ⟶ (algebra A M).X) ⊗ₘ
@@ -43,7 +43,7 @@ include hd in
 lemma coefficient_right : M.actRight ≫ coefficient M N r =
     (coefficient M N r ⊗ₘ (base M N r).hom) ≫ N.actRight := by
   have h := IsMonHom.mul_hom r.hom
-  change mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ mul B N at h
+  change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul B N at h
   rw [hom_diagonal M N r d hd] at h
   have hl := congrArg (fun t =>
     (((biprod.inr : M.X ⟶ (algebra A M).X) ⊗ₘ

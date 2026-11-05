@@ -33,12 +33,12 @@ lemma bousfieldKanComparison_piIsomorphism (X : CosimplicialObject SSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp (terminal.from X)) :
     letI := kanComplex X ((CosimplicialHornFibration.terminal_iff X).mp hX)
     letI := bousfieldKan_kanComplex X hX
-    KanPiIsomorphism (bousfieldKanComparison X) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (bousfieldKanComparison X) := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff X).mp hX)
   let := bousfieldKan_kanComplex X hX
   let := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
   rw [bousfieldKanComparison_eq_weightedPre]
-  exact (KanPiIsomorphism.of_iso (smallEndIso X)).comp
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (smallEndIso X)).comp
     (CosimplicialLastVertex.originalWeightPre_piIsomorphism X hX)
 
 end

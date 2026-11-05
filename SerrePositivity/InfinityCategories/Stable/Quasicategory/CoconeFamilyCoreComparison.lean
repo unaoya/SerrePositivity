@@ -77,7 +77,7 @@ lemma spanFunctorEdgeUnflip_edge {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
       (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflip l).edge =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).edge =
       (internalHomSwapIso L K X).hom.app (Opposite.op ⦋1⦌) l.edge := rfl
 
 lemma spanFunctorEdgeUnflip_isInvertible {K L X : SSet.{u}} [Quasicategory X]
@@ -88,10 +88,10 @@ lemma spanFunctorEdgeUnflip_isInvertible {K L X : SSet.{u}} [Quasicategory X]
       (functorVertex (internalHomFlipHomEquiv K L X G)))
     (hl : IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj X)) l) :
     IsInvertibleEdge (X := (ihom K).obj ((ihom L).obj X))
-      (spanFunctorEdgeUnflip l).toTruncated := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated := by
   exact (isInvertibleEdge_congr
     (e := l.map ((truncation 2).map (internalHomSwapIso L K X).hom))
-    (f := (spanFunctorEdgeUnflip l).toTruncated) rfl).mp
+    (f := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated) rfl).mp
       (hl.map (internalHomSwapIso L K X).hom)
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory

@@ -36,7 +36,7 @@ structure RelativePerfectVerdierDiagram {S : SSet.{u + 1}}
   image_eq : square ≫ ν = image.square
 
 namespace RelativePerfectVerdierDiagram
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierDiagram
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram
 variable {S : SSet.{u + 1}} (ν : S ⟶ perfectStableInfinity.{u})
 
 /-- 元の二辺と零角を、完備化後の右射を持つ実 ν 像へ束ねる。 -/

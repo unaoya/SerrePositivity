@@ -24,11 +24,11 @@ variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C] [Simplicia
 def coherentArrowNativeFamily
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
     {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
       SimplicialCategory.sHom (coherentStringVertexObject Q x)
         (coherentStringVertexObject Q y) where
   app n := ↾fun F => (coherentStringNativeMap Q (F.obj (Fin.last n.unop.len))).app n
-    (coherentStringPathFlag F)
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag F)
   naturality := by
     rintro ⟨⟨n⟩⟩ ⟨⟨m⟩⟩ θ
     apply ConcreteCategory.hom_ext
@@ -36,11 +36,11 @@ def coherentArrowNativeFamily
     let a := F.map (homOfLE (Fin.le_last (θ.unop.toOrderHom (Fin.last m))))
     have h₁ := ConcreteCategory.congr_hom
       (NatTrans.congr_app (coherentStringNativeMap_naturality Q a) (Opposite.op ⦋m⦌))
-      (coherentStringPathFlag ((nerve (CoherentArrowString f)).map θ F))
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag ((nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)).map θ F))
     have h₂ := congrArg ((coherentStringNativeMap Q (F.obj (Fin.last n))).app (Opposite.op ⦋m⦌))
-      (coherentStringPathFlag_naturality F θ.unop)
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag_naturality F θ.unop)
     have h₃ := NatTrans.naturality_apply (coherentStringNativeMap Q (F.obj (Fin.last n))) θ
-      (coherentStringPathFlag F)
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag F)
     exact h₁.symm.trans (h₂.trans h₃)
 
 /-- 全合成列の実族の元の射の頂点での値。 -/
@@ -70,11 +70,11 @@ def coherentArrowNativeContraction
 /-- 全合成列族の元の頂点では、同じ元の合成列の全頂点 Path の評価を回収する。 -/
 lemma coherentArrowNativeFamily_vertex
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    {x y : I} (f : x ⟶ y) (s : CoherentArrowString f) :
+    {x y : I} (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (coherentArrowNativeFamily Q f).app (Opposite.op ⦋0⦌) (nerveVertex s) =
       (coherentStringNativeMap Q s).app (Opposite.op ⦋0⦌)
         (nerveVertex (coherentStringFullPath s)) := by
-  change (coherentStringNativeMap Q s).app _ (coherentStringPathFlag (nerveVertex s)) = _
+  change (coherentStringNativeMap Q s).app _ (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (nerveVertex s)) = _
   rw [coherentStringPathFlag_vertex]
 
 /-- 初点は、元の図式の同じ射の二端点だけの Path の豊穣評価そのもの。 -/

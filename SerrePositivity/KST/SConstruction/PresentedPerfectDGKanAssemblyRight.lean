@@ -33,7 +33,7 @@ def presentedPerfectDGKanAssemblyRightTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblySourceFunctor A r)
       (presentedPerfectDGKanAssemblyTargetFunctor A r) :=
-  strictSimplicialTransformationComp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp _ _ _
     (presentedPerfectDGOneDirectionSuspensionComparison A r)
     (presentedPerfectDGAssemblyExInfinityTransformation A r)
 
@@ -47,7 +47,7 @@ lemma presentedPerfectDGKanAssemblyRightTransformation_app (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGKanAssemblyRightTransformation A r).app C =
       eHomEquiv SSet (presentedPerfectDGKanAssemblyRightMap A r C) :=
-  strictSimplicialTransformationComp_hom _ _ _ _ _ C
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom _ _ _ _ _ C
     (presentedPerfectDGKanAssemblySigmaMap A r C) (presentedPerfectDGAssemblyExInfinityMap A r C)
     (presentedPerfectDGKanAssemblySigmaMap_app A r C)
     (presentedPerfectDGAssemblyExInfinityTransformation_app A r C)

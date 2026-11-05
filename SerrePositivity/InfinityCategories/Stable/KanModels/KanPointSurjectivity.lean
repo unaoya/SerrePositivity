@@ -60,7 +60,7 @@ def kanPointFiberComparison (K : KanObject.{u}) :
 
 /-- 座標変更後も、同じ比較は全写像空間で充満忠実。 -/
 theorem kanPointFiberComparison_isFullyFaithful (K : KanObject.{u}) :
-    IsFullyFaithful (kanPointFiberComparison K) :=
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison K) :=
   ((qCatEquivalenceOfIso (SSet.opFunctor.mapIso
     ((SSet.uliftFunctor.{u + 1, u}).mapIso (pointKanObjectHomIso K))).symm).isQCatEquivalence.comp
       (pointedReverseKanFiberComparison_isQCatEquivalence K)).isFullyFaithful

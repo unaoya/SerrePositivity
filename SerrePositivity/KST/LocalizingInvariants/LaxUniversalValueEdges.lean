@@ -19,17 +19,17 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u})
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma bottom_arrow : Arrow.mk (squareHoBottom (square Φ p q i r h)) =
     Arrow.mk (SpectrumHo.hom (valueMap Φ i)) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [squareBottomArrow_edge]
   change SSet.yonedaEquiv (squareBottomEdge ≫
-    (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
@@ -39,17 +39,17 @@ lemma top_arrow : Arrow.mk (squareHoTop (square Φ p q i r h)) =
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [squareTopArrow_edge]
   change SSet.yonedaEquiv (squareTopEdge ≫
-    (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_top,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
 lemma left_arrow : Arrow.mk (squareHoLeft (square Φ p q i r h)) =
-    Arrow.mk (SpectrumHo.hom (valueMap Φ (LaxUniversalDifference.kernelMap p q i r))) := by
+    Arrow.mk (SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [squareLeftArrow_edge]
   change SSet.yonedaEquiv (squareLeftEdge ≫
-    (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
@@ -59,7 +59,7 @@ lemma right_arrow : Arrow.mk (squareHoRight (square Φ p q i r h)) =
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   rw [squareRightArrow_edge]
   change SSet.yonedaEquiv (squareRightEdge ≫
-    (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl

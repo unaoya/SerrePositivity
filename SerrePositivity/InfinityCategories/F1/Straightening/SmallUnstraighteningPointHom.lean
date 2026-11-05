@@ -23,14 +23,14 @@ theorem smallUnstraighteningFunctorHom_pointHom {B : SSet.{u}}
     {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
     (a : FunctorHom F G) (b : B _⦋0⦌)
     (v : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌) :
-    cosliceFiberPointHom (smallUnstraighteningPointedImage F b v) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b v) ≫
       functorHomEvaluate a (ULift.up b) =
-      cosliceFiberPointHom (smallUnstraighteningPointedImage G b
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage G b
         ((vertexFiberMap (smallLeftUnstraighteningProjection F)
-          (smallLeftUnstraighteningProjection G) (smallUnstraighteningFunctorHom a)
-          (smallUnstraighteningFunctorHom_projection a) b).app (Opposite.op ⦋0⦌) v)) :=
-  (pointedFunctorHomPointHom a b (smallUnstraighteningPointedImage F b v)).trans
-    (congrArg cosliceFiberPointHom (smallUnstraighteningFunctorHom_pointAction F G b a v))
+          (smallLeftUnstraighteningProjection G) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+          (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b).app (Opposite.op ⦋0⦌) v)) :=
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFunctorHomPointHom a b (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b v)).trans
+    (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_pointAction F G b a v))
 
 end SerrePositivity.InfinityCategories.F1.Straightening
 

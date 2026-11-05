@@ -26,10 +26,10 @@ local instance productLegsSimplicialCategory : SimplicialCategory OmegaSpectrum.
   OmegaSpectrum.simplicialCategory
 local instance productLegsSquareQuasicategory :
     Quasicategory (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) := F2.quasicategory_tensor _ _
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma laxQuotientProductFiberComparison_bottom :
     squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
@@ -58,9 +58,9 @@ lemma laxQuotientProductFiber_bottom_fst :
           SpectrumHo.hom (Binary.fst (value Φ C) (value Φ D)) =
       (hΦ.laxQuotientProductFiberLeftIso p q i r h).hom ≫
         SpectrumHo.hom (valueMap Φ i) ≫ SpectrumHo.hom (valueMap Φ (laxFst p q)) := by
-  rw [← Category.assoc, laxQuotientProductFiberComparison_bottom, Category.assoc,
-    Category.assoc, laxQuotientProjectionMiddleIso_bottom_fst]
-  simp only [laxQuotientProductFiberLeftIso, Iso.trans_hom, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberComparison_bottom, Category.assoc,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso_bottom_fst]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso, Iso.trans_hom, Category.assoc]
 
 lemma laxQuotientProductFiber_bottom_snd :
     squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
@@ -68,9 +68,9 @@ lemma laxQuotientProductFiber_bottom_snd :
           SpectrumHo.hom (Binary.snd (value Φ C) (value Φ D)) =
       (hΦ.laxQuotientProductFiberLeftIso p q i r h).hom ≫
         SpectrumHo.hom (valueMap Φ i) ≫ SpectrumHo.hom (valueMap Φ (laxSnd p q)) := by
-  rw [← Category.assoc, laxQuotientProductFiberComparison_bottom, Category.assoc,
-    Category.assoc, laxQuotientProjectionMiddleIso_bottom_snd]
-  simp only [laxQuotientProductFiberLeftIso, Iso.trans_hom, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberComparison_bottom, Category.assoc,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso_bottom_snd]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso, Iso.trans_hom, Category.assoc]
 
 end SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
 

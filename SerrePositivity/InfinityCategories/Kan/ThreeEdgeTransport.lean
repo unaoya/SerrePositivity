@@ -30,16 +30,16 @@ structure ThreeEdgeTransport {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
     (left : Z.Edge x a) (middle : Z.Edge x y) (right : Z.Edge y b) where
   diagonal : Z.Edge x b
   transported : Z.Edge a b
-  first : SSet.Edge.CompStruct middle right diagonal
-  second : SSet.Edge.CompStruct left transported diagonal
+  first : SSet.Edge.CompStruct middle right _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal
+  second : SSet.Edge.CompStruct left _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal
 
 namespace ThreeEdgeTransport
-open SerrePositivity.KST.Spectra.ThreeEdgeTransport
+open _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 variable {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
   (left : Z.Edge x a) (middle : Z.Edge x y) (right : Z.Edge y b)
 
 /-- Kan 充填により二つの三角形を持つ輸送辺を構成する。 -/
-def choose [KanComplex Z] : ThreeEdgeTransport left middle right := by
+def choose [KanComplex Z] : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right := by
   let leftIso : IsIso (SSet.Truncated.HomotopyCategory.homMk left.toTruncated) :=
     isInvertibleEdge_of_hasFinalHornFillers left.toTruncated
       (hasFinalHornFillers_of_kanComplex left.toTruncated)
@@ -60,22 +60,22 @@ def choose [KanComplex Z] : ThreeEdgeTransport left middle right := by
 variable {left middle right}
 
 /-- 保持した二つの実三角形による、元の辺の類の厳密な合成式。 -/
-lemma trace (D : ThreeEdgeTransport left middle right) :
+lemma trace (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) :
     SSet.HomotopyCategory.homMk left ≫ SSet.HomotopyCategory.homMk D.transported =
       SSet.HomotopyCategory.homMk middle ≫ SSet.HomotopyCategory.homMk right :=
   (SSet.HomotopyCategory.homMk_comp_homMk D.second).trans
     (SSet.HomotopyCategory.homMk_comp_homMk D.first).symm
 
 /-- 輸送後の辺だけを選び直さず、二つの三角形全体を同じ射で写す。 -/
-def map {W : SSet.{u}} (D : ThreeEdgeTransport left middle right) (p : Z ⟶ W) :
-    ThreeEdgeTransport (left.map p) (middle.map p) (right.map p) where
-  diagonal := D.diagonal.map p
-  transported := D.transported.map p
-  first := D.first.map p
-  second := D.second.map p
+def map {W : SSet.{u}} (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) (p : Z ⟶ W) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport (left.map p) (middle.map p) (right.map p) where
+  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal := D.diagonal.map p
+  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported := D.transported.map p
+  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.first := D.first.map p
+  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.second := D.second.map p
 
 /-- 射影後のトレースも、元の三つの区間と同じ二つの三角形で計算する。 -/
-lemma map_trace {W : SSet.{u}} (D : ThreeEdgeTransport left middle right) (p : Z ⟶ W) :
+lemma map_trace {W : SSet.{u}} (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) (p : Z ⟶ W) :
     SSet.HomotopyCategory.homMk (left.map p) ≫
         SSet.HomotopyCategory.homMk (D.transported.map p) =
       SSet.HomotopyCategory.homMk (middle.map p) ≫

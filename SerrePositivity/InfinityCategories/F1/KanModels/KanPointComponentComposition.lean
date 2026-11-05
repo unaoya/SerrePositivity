@@ -41,9 +41,9 @@ theorem pointedKanPointEdge_eq (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
 theorem kanPointHom_comp_of_edge {K L : KanObject.{u}} (f : K ⟶ L)
     (e : SpaceInfinity.Edge (spaceInfinityVertex K) (spaceInfinityVertex L))
     (he : e.edge = (coherentNerveEdge f).edge) (v : K.obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) ≫
       Truncated.HomotopyCategory.homMk e.toTruncated =
-      cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm
         (f.app (Opposite.op ⦋0⦌) v)) := by
   let p : pointKanObject ⟶ K := SSet.yonedaEquiv.symm v
   let t := coherentNerveCompStruct p f
@@ -55,13 +55,13 @@ theorem kanPointHom_comp_of_edge {K L : KanObject.{u}} (f : K ⟶ L)
       (cosliceFiberVertexToEdge ((pointedSpaceFiberVertexEquiv L).symm
         (f.app (Opposite.op ⦋0⦌) v))) := by
     refine ⟨t.simplex, ?_, ?_, ?_⟩
-    · exact t.d₂.trans (pointedKanPointEdge_eq K v)
+    · exact t.d₂.trans (_root_.SerrePositivity.InfinityCategories.F1.KanModels.pointedKanPointEdge_eq K v)
     · exact t.d₀.trans he.symm
     · have ht : (coherentNerveEdge (p ≫ f)).edge =
           (coherentNerveEdge (show pointKanObject ⟶ L from
             SSet.yonedaEquiv.symm (f.app (Opposite.op ⦋0⦌) v))).edge :=
         congrArg (fun m : pointKanObject ⟶ L => (coherentNerveEdge m).edge) hp
-      exact t.d₁.trans (ht.trans (pointedKanPointEdge_eq L _))
+      exact t.d₁.trans (ht.trans (_root_.SerrePositivity.InfinityCategories.F1.KanModels.pointedKanPointEdge_eq L _))
   exact Truncated.HomotopyCategory.homMk_comp_homMk T.toTruncated
 
 end SerrePositivity.InfinityCategories.F1.KanModels

@@ -30,7 +30,7 @@ lemma circleEvaluationHomSquare_corner (z : Sp.{u} _⦋0⦌) (i j : Fin 2) :
     (circleEvaluationHomSquare z).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) =
         (circleEvaluationPointedHom z).basepoint :=
-  IntervalSquare.corners_of_bottom_loop
+  _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.corners_of_bottom_loop
     (circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val)
     (circleEvaluationHomSquare z) (circleEvaluationHomSquare_skipSecond z)
     (circleEvaluationHomSquare_includeFirst_constant z)
@@ -40,7 +40,7 @@ lemma circleEvaluationHomSquare_corner (z : Sp.{u} _⦋0⦌) (i j : Fin 2) :
 lemma circleEvaluationHomSquare_right_zero (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
         circleEvaluationHomSquare z = SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply IntervalSquare.constant_of_vertex (circleEvaluationHomSquare_includeFirst_constant z)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex (circleEvaluationHomSquare_includeFirst_constant z)
   change (circleEvaluationHomSquare z).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 1)).app _
       (stdSimplex.obj₀Equiv.symm 0), stdSimplex.obj₀Equiv.symm 0) = _
@@ -51,7 +51,7 @@ lemma circleEvaluationHomSquare_right_zero (z : Sp.{u} _⦋0⦌) :
 lemma circleEvaluationHomSquare_top_zero (z : Sp.{u} _⦋0⦌) :
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
         circleEvaluationHomSquare z = SSet.const (circleEvaluationPointedHom z).basepoint := by
-  apply IntervalSquare.constant_of_vertex (circleEvaluationHomSquare_includeSecond_constant z)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex (circleEvaluationHomSquare_includeSecond_constant z)
   change (circleEvaluationHomSquare z).app _ (stdSimplex.obj₀Equiv.symm 0,
     (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 1)).app _
       (stdSimplex.obj₀Equiv.symm 0)) = _
@@ -69,12 +69,12 @@ def circleEvaluationLoopDiagonalHomotopy (z : Sp.{u} _⦋0⦌) :
       (SSet.yonedaEquiv.symm
         (circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val).edge)
       (circleEvaluationHomDiagonal z) where
-  h := (IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h
+  h := (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h
   h₀ := by
     rw [(_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h₀,
       circleEvaluationHomSquare_skipSecond]
     rfl
-  h₁ := (IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h₁
+  h₁ := (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h₁
   rel := by
     apply SSet.hom_ext
     intro n
@@ -85,12 +85,12 @@ def circleEvaluationLoopDiagonalHomotopy (z : Sp.{u} _⦋0⦌) :
 /-- 元の companion 経路から、同じ対角への実際のホモトピー。 -/
 def circleEvaluationCompanionDiagonalHomotopy (z : Sp.{u} _⦋0⦌) :
     SSet.Homotopy (circleEvaluationCompanionHomPath z) (circleEvaluationHomDiagonal z) where
-  h := (IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h
+  h := (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h
   h₀ := by
     rw [(_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h₀,
       circleEvaluationHomSquare_skipFirst]
     rfl
-  h₁ := (IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h₁
+  h₁ := (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h₁
   rel := by
     apply SSet.hom_ext
     intro n
@@ -103,7 +103,7 @@ lemma circleEvaluationLoopDiagonalHomotopy_source (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
         (circleEvaluationLoopDiagonalHomotopy z).h =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  change _ ≫ (IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy_source, circleEvaluationHomSquare_corner]
 
 /-- 生成 loop の対角へのホモトピーは、終点の同じ零 Hom 頂点も固定する。 -/
@@ -111,7 +111,7 @@ lemma circleEvaluationLoopDiagonalHomotopy_target (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
         (circleEvaluationLoopDiagonalHomotopy z).h =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  change _ ≫ (IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (circleEvaluationHomSquare z)).h = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy_target, circleEvaluationHomSquare_right_zero]
 
 /-- companion の対角へのホモトピーも、始点の零 Hom 頂点を固定する。 -/
@@ -119,7 +119,7 @@ lemma circleEvaluationCompanionDiagonalHomotopy_source (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
         (circleEvaluationCompanionDiagonalHomotopy z).h =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  change _ ≫ (IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy_source, circleEvaluationHomSquare_corner]
 
 /-- companion の対角へのホモトピーも、終点の同じ零 Hom 頂点を固定する。 -/
@@ -127,7 +127,7 @@ lemma circleEvaluationCompanionDiagonalHomotopy_target (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
         (circleEvaluationCompanionDiagonalHomotopy z).h =
       SSet.const (circleEvaluationPointedHom z).basepoint := by
-  change _ ≫ (IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h = _
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (circleEvaluationHomSquare z)).h = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy_target, circleEvaluationHomSquare_top_zero]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

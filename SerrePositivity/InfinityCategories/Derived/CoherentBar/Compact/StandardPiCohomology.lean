@@ -57,7 +57,7 @@ lemma dgBarCompactStandardMooreCohomologyIso_naturality
 /-- 元の全基点を保持する正次数チャート。 -/
 def dgBarCompactStandardPiCohomologyEquiv (x y : D) (n : ℕ)
     (z : (standardModule (R := R) x y).obj (Opposite.op ⦋0⦌)) :
-    KanHomotopyGroup (moduleUnderlyingSSet (standardModule (R := R) x y)) n z ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (standardModule (R := R) x y)) n z ≃*
       Multiplicative ((homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
   (dgBarCompactModulePiHomologyEquiv (standardModule (R := R) x y) n z).trans
     (additiveGroupToMultiplicativeEquiv
@@ -66,7 +66,7 @@ def dgBarCompactStandardPiCohomologyEquiv (x y : D) (n : ℕ)
 lemma dgBarCompactStandardPiCohomologyEquiv_naturality
     (φ : homObject R D x y ⟶ homObject R E a b) (n : ℕ)
     (z : (standardModule (R := R) x y).obj (Opposite.op ⦋0⦌))
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (standardModule (R := R) x y)) n z) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (standardModule (R := R) x y)) n z) :
     dgBarCompactStandardPiCohomologyEquiv a b n
         ((dgBarCompactStandardModuleMap φ).app _ z)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap (dgBarCompactStandardModuleMap φ)) z α) =

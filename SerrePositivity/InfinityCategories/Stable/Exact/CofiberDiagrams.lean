@@ -79,22 +79,22 @@ def Predicate {X : SSet.{u}} (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _�
   IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧ IsPushoutSquare (squareDiagram v)
 
 def space (X : SSet.{u}) : SSet.{u} :=
-  (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) Predicate : SSet.{u})
+  (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate : SSet.{u})
 
-instance instQuasicategorySpace (X : SSet.{u}) [Quasicategory X] : Quasicategory (space X) :=
+instance instQuasicategorySpace (X : SSet.{u}) [Quasicategory X] : Quasicategory (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) :=
   fullSubcomplexOnVertices_quasicategory _ _
 
-def inclusion (X : SSet.{u}) : space X ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
-  (fullSubcomplexOnVertices _ Predicate).ι
+def inclusion (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
+  (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate).ι
 
-def bottom (X : SSet.{u}) : space X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  inclusion X ≫ (pre squareBottomEdge).app X
+def bottom (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre squareBottomEdge).app X
 
-def right (X : SSet.{u}) : space X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  inclusion X ≫ (pre squareRightEdge).app X
+def right (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre squareRightEdge).app X
 
-def left (X : SSet.{u}) : space X ⟶ zeroTargetArrows X :=
-  fullSubcomplexLift IsZeroTargetArrow (inclusion X ≫ (pre squareLeftEdge).app X) (by
+def left (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ zeroTargetArrows X :=
+  fullSubcomplexLift IsZeroTargetArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre squareLeftEdge).app X) (by
     intro v
     have hv := (fullSubcomplexOnVertices_vertex v).1
     have he : functorVertex (squareDiagram v.val) = v.val :=
@@ -106,8 +106,8 @@ def left (X : SSet.{u}) : space X ⟶ zeroTargetArrows X :=
     rw [evaluateFunctorAt_functorVertex]
     exact hv)
 
-def top (X : SSet.{u}) : space X ⟶ zeroSourceArrows X :=
-  fullSubcomplexLift IsZeroSourceArrow (inclusion X ≫ (pre squareTopEdge).app X) (by
+def top (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ zeroSourceArrows X :=
+  fullSubcomplexLift IsZeroSourceArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre squareTopEdge).app X) (by
     intro v
     have hv := (fullSubcomplexOnVertices_vertex v).1
     have he : functorVertex (squareDiagram v.val) = v.val :=
@@ -119,9 +119,9 @@ def top (X : SSet.{u}) : space X ⟶ zeroSourceArrows X :=
     rw [evaluateFunctorAt_functorVertex]
     exact hv)
 
-def cocones (X : SSet.{u}) [Quasicategory X] : space X ⟶ colimitCocones (horn 2 0 : SSet.{u}) X :=
+def cocones (X : SSet.{u}) [Quasicategory X] : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ colimitCocones (horn 2 0 : SSet.{u}) X :=
   fullSubcomplexLift (InitialBoundaryLifting (coconeRestriction (horn 2 0 : SSet.{u}) X))
-    (inclusion X ≫ (pre spanCoconeSquareIso.hom).app X) (by
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre spanCoconeSquareIso.hom).app X) (by
     intro v
     have hp := (fullSubcomplexOnVertices_vertex v).2
     have he : functorVertex (squareDiagram v.val) = v.val :=
@@ -130,22 +130,22 @@ def cocones (X : SSet.{u}) [Quasicategory X] : space X ⟶ colimitCocones (horn 
     rw [← he]
     exact hp.initialBoundaryLifting)
 
-lemma cocones_inclusion (X : SSet.{u}) [Quasicategory X] : cocones X ≫
+lemma cocones_inclusion (X : SSet.{u}) [Quasicategory X] : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X ≫
     (relativeInitialVertices (coconeRestriction (horn 2 0 : SSet.{u}) X)).ι =
-      inclusion X ≫ (pre spanCoconeSquareIso.hom).app X := rfl
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre spanCoconeSquareIso.hom).app X := rfl
 
-lemma cocones_projection (X : SSet.{u}) [Quasicategory X] : cocones X ≫
+lemma cocones_projection (X : SSet.{u}) [Quasicategory X] : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X ≫
     colimitCoconeProjection (horn 2 0 : SSet.{u}) X =
-      inclusion X ≫ (pre spanSquareBoundary).app X := by
-  change (cocones X ≫ (relativeInitialVertices (coconeRestriction _ X)).ι) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre spanSquareBoundary).app X := by
+  change (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X ≫ (relativeInitialVertices (coconeRestriction _ X)).ι) ≫
     (pre (joinInl _ Δ[0])).app X = _
-  rw [cocones_inclusion, Category.assoc, ← NatTrans.comp_app, ← pre_map]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_inclusion, Category.assoc, ← NatTrans.comp_app, ← pre_map]
   rfl
 
 def cones (X : SSet.{u}) [Quasicategory X] [IsStable X] :
-    space X ⟶ limitCones (horn 2 2 : SSet.{u}) X :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ limitCones (horn 2 2 : SSet.{u}) X :=
   fullSubcomplexLift (TerminalBoundaryLifting (coneRestriction (horn 2 2 : SSet.{u}) X))
-    (inclusion X ≫ (pre cospanConeSquareIso.hom).app X) (by
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre cospanConeSquareIso.hom).app X) (by
     intro v
     have hv := fullSubcomplexOnVertices_vertex v
     have hp := IsStable.pullback_of_pushout (⟨squareDiagram v.val, hv.1⟩ : ZeroTriangle X) hv.2
@@ -156,16 +156,16 @@ def cones (X : SSet.{u}) [Quasicategory X] [IsStable X] :
     exact terminalBoundaryLifting_coneRestriction_of_isLimitCone
       (pullbackCone (squareDiagram v.val)) hp)
 
-lemma cones_inclusion (X : SSet.{u}) [Quasicategory X] [IsStable X] : cones X ≫
+lemma cones_inclusion (X : SSet.{u}) [Quasicategory X] [IsStable X] : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones X ≫
     (relativeTerminalVertices (coneRestriction (horn 2 2 : SSet.{u}) X)).ι =
-      inclusion X ≫ (pre cospanConeSquareIso.hom).app X := rfl
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre cospanConeSquareIso.hom).app X := rfl
 
-lemma cones_projection (X : SSet.{u}) [Quasicategory X] [IsStable X] : cones X ≫
+lemma cones_projection (X : SSet.{u}) [Quasicategory X] [IsStable X] : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones X ≫
     limitConeProjection (horn 2 2 : SSet.{u}) X =
-      inclusion X ≫ (pre cospanSquareBoundary).app X := by
-  change (cones X ≫ (relativeTerminalVertices (coneRestriction _ X)).ι) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (pre cospanSquareBoundary).app X := by
+  change (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones X ≫ (relativeTerminalVertices (coneRestriction _ X)).ι) ≫
     (pre (joinInr Δ[0] _)).app X = _
-  rw [cones_inclusion, Category.assoc, ← NatTrans.comp_app, ← pre_map]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_inclusion, Category.assoc, ← NatTrans.comp_app, ← pre_map]
   rfl
 
 end SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams

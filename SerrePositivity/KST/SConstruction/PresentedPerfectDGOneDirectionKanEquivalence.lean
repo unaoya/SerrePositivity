@@ -22,7 +22,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の同じ S₁ 商比較の Ex∞ 像は全基点・全次数で π 同型。 -/
 lemma presentedPerfectDGOneDirectionKanComparisonMap_piIsomorphism (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
-    Spectra.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (presentedPerfectDGOneDirectionKanComparisonMap A r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
   change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map

@@ -46,7 +46,7 @@ structure RelativePerfectVerdierSourceRoof {S : SSet.{u + 1}}
     (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk comparison)
 
 namespace RelativePerfectVerdierSourceRoof
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
   {original actual : S _⦋0⦌}
 
@@ -128,7 +128,7 @@ lemma rectangleValueIso_of_imageIso_triangle
 end RelativePerfectVerdierSourceRoof
 
 namespace RelativePerfectVerdierRectangle
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
   (d : RelativePerfectVerdierRectangle ν)
 

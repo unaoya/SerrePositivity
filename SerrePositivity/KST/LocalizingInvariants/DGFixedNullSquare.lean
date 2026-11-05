@@ -58,38 +58,38 @@ lemma exists_dgFixedNullSquare :
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullLeft R (A := A))).edge ∧
       squareTopEdge ≫ F =
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullTop R C)).edge := by
-  exact RelativeVerdierDiagram.exists_coherentSquare_of_comm i q
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_coherentSquare_of_comm i q
     (dgFixedNullLeft R (A := A)) (dgFixedNullTop R C) (dgFixedNull_comm R i q C hC).symm
 
 include hC in
 /-- 元の二射の Verdier 条件と零角の Perf 値の零性から、固定 ν の相対提示を得る。
 実核・Verdier 条件の供給と零角の Perf 値の零性は、この構成の存在とは区別する。 -/
 lemma exists_dgFixedNullRelativeDiagram
-    (hV : IsVerdierSequence (dgKInputNuMap R i) (dgKInputNuMap R q))
-    (hz : IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
-    ∃ t : RelativeVerdierDiagram (dgKInputNu.{u, v} R),
+    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R i) (dgKInputNuMap R q))
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
+    ∃ t : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} R),
       squareBottomEdge ≫ t.square = SSet.yonedaEquiv.symm (coherentNerveEdge i).edge ∧
       squareRightEdge ≫ t.square = SSet.yonedaEquiv.symm (coherentNerveEdge q).edge ∧
       squareLeftEdge ≫ t.square =
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullLeft R (A := A))).edge ∧
       squareTopEdge ≫ t.square =
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullTop R C)).edge := by
-  let d : VerdierSequence.{max (u + 1) v} := {
-    left := dgKInputStableValue R A
-    middle := dgKInputStableValue R B
-    right := dgKInputStableValue R Q
-    inclusion := dgKInputNuMap R i
-    projection := dgKInputNuMap R q
-    isVerdier := hV }
+  let d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{max (u + 1) v} := {
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgKInputStableValue R A
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgKInputStableValue R B
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgKInputStableValue R Q
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgKInputNuMap R i
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgKInputNuMap R q
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := hV }
   have hi : SSet.yonedaEquiv.symm (coherentNerveEdge i).edge ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     rw [SSet.yonedaEquiv_symm_comp]
-    exact congrArg (fun e : StableInfinity.{max (u + 1) v} _⦋1⦌ =>
+    exact congrArg (fun e : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} _⦋1⦌ =>
       SSet.yonedaEquiv.symm e) (dgKInputNu_edge R i)
   have hq : SSet.yonedaEquiv.symm (coherentNerveEdge q).edge ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
     rw [SSet.yonedaEquiv_symm_comp]
-    exact congrArg (fun e : StableInfinity.{max (u + 1) v} _⦋1⦌ =>
+    exact congrArg (fun e : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} _⦋1⦌ =>
       SSet.yonedaEquiv.symm e) (dgKInputNu_edge R q)
   obtain ⟨F, hb, hr, hl, ht⟩ := exists_dgFixedNullSquare R i q C hC
   have hFz : squareVertex F 0 1 = coherentNerveVertex (dgFixedNullInput R A) := by
@@ -100,25 +100,25 @@ lemma exists_dgFixedNullRelativeDiagram
     have hle : squareLeftEdge ≫ F = SSet.yonedaEquiv.symm le.edge := hl
     rw [hle, Equiv.apply_symm_apply, le.tgt_eq] at he
     exact he.symm
-  have hz' : IsZeroCategory (stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
-    change IsZeroCategory (stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
+  have hz' : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
     rw [hFz]
     rw [dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact hz
   have hbi : squareBottomEdge ≫ F ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     rw [← Category.assoc, hb, hi]
   have hqr : squareRightEdge ≫ F ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
     rw [← Category.assoc, hr, hq]
-  exact ⟨RelativeVerdierDiagram.ofSquare (dgKInputNu R) d F hbi hqr hz', hb, hr, hl, ht⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare (dgKInputNu R) d F hbi hqr hz', hb, hr, hl, ht⟩
 
 include hC in
 /-- 同じ相対提示の三頂点と商の全一単体を回収する。K-B の相対屋根の供給境界。 -/
 lemma exists_dgFixedNullRelativeRoof
-    (hV : IsVerdierSequence (dgKInputNuMap R i) (dgKInputNuMap R q))
-    (hz : IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
-    ∃ t : RelativeVerdierDiagram (dgKInputNu.{u, v} R),
+    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R i) (dgKInputNuMap R q))
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
+    ∃ t : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} R),
       squareVertex t.square 0 0 = coherentNerveVertex A ∧
       squareVertex t.square 1 0 = coherentNerveVertex B ∧
       squareVertex t.square 1 1 = coherentNerveVertex Q ∧

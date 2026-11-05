@@ -24,7 +24,7 @@ def circleComparison (Y : OmegaSpectrum.{u}) :
 
 /-- 通常の円の比較は各段で全基点 π 同型。 -/
 lemma circleComparison_levelwise (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((circleComparison Y).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((circleComparison Y).app n).right :=
   (cotensorPre_levelwise_of_isIso endpointCircleIso.hom Y n).comp (comparison_levelwise Y n)
 
 local instance nativeLoopSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=

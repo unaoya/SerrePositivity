@@ -19,33 +19,33 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 元の商上の coslice 合成の恒等点と、同じ scaffold 復元恒等点を実 fiber 内で比較する。 -/
 def weakCosliceComposite_scaffold_pointIso :
-    VertexIso (weakQuotientCosliceCompositePoint h x)
+    VertexIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceCompositePoint h x)
       (scaffoldCosliceReconstructionPoint (q.hom.app (Opposite.op ⦋0⦌) x)) :=
-  smallUnstraighteningFiberIsoOfPointHomEq _ _
-    ((weakQuotientCosliceCompositePoint_section_image_hom h x).symm.trans
-      (weakIdentityNativeComparisonImage_scaffold_pointHom h x))
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq _ _
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceCompositePoint_section_image_hom h x).symm.trans
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativeComparisonImage_scaffold_pointHom h x))
 
 /-- 同じ恒等点の照合は、元の全相対関手空間内の同じ二つの写像の同型へ戻る。 -/
 def weakCosliceComposite_scaffold_relativeIso :
     VertexIso
-      (relativeFunctorVertex _ _ (weakQuotientCosliceComposite h x)
-        (weakQuotientCosliceComposite_projection h x))
+      (relativeFunctorVertex _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite h x)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite_projection h x))
       (relativeFunctorVertex _ _ (scaffoldPointedReconstruction
         (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
         (scaffoldPointedReconstruction_projection _)) :=
-  coslicePointEvaluation_relativeIso _ _ _ _ (weakCosliceComposite_scaffold_pointIso h x)
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_pointIso h x)
 
 /-- 元の coslice 合成は、同じ底上の scaffold 復元と自然同型。 -/
 def weakCosliceComposite_scaffold_functorIso :
-    FunctorIso (weakQuotientCosliceComposite h x)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite h x)
       (scaffoldPointedReconstruction
         (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))) :=
-  VertexIso.map (weakCosliceComposite_scaffold_relativeIso h x)
+  VertexIso.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso h x)
     (vertexFiberι ((ihom (sliceUnder (yonedaEquiv.symm
       (q.hom.app (Opposite.op ⦋0⦌) x)))).map
       (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
@@ -55,11 +55,11 @@ def weakCosliceComposite_scaffold_functorIso :
 
 /-- 元の単位と分数比較の coslice 側の合成は、無条件に全関手空間で前合成同値。 -/
 theorem weakCosliceComposite_isPrecompositionEquivalence :
-    IsPrecompositionEquivalence (weakQuotientCosliceComposite h x) := by
+    IsPrecompositionEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite h x) := by
   apply (isPrecompositionEquivalence_iff_isQCatEquivalence _).mpr
   have he := (scaffoldPointedReconstruction_isPrecompositionEquivalence
     (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))).isQCatEquivalence
-  exact he.ofFunctorIso (weakCosliceComposite_scaffold_functorIso h x).symm
+  exact he.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_functorIso h x).symm
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

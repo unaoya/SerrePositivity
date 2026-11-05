@@ -26,12 +26,12 @@ theorem nativeRepresentationComparisonIso_pointHom {E B : SSet.{u}} [Quasicatego
     (p : E ⟶ B) [LeftFibration p]
     (S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
     (b : B _⦋0⦌) (v : (vertexFiber p b) _⦋0⦌) :
-    cosliceFiberPointHom ((nativeTransportPointedFiberMap p b).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p b).app
       (Opposite.op ⦋0⦌) (ULift.up v)) ≫
       functorHomEvaluate
         (nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p) S).hom
         (ULift.up b) =
-      cosliceFiberPointHom ((transportRepresentationPointedFiberMap S (ULift.up b)).app
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap S (ULift.up b)).app
         (Opposite.op ⦋0⦌) ((uliftVertexFiberIso p b).hom.app (Opposite.op ⦋0⦌) (ULift.up v))) := by
   have (n : SimplexCategoryᵒᵖ) : Small.{u} ((SSet.uliftFunctor.{u + 1, u}).obj E |>.obj n) :=
     inferInstanceAs (Small.{u} (ULift.{u + 1} (E.obj n)))
@@ -46,12 +46,12 @@ theorem nativeCosliceIdentityPoint_comparison {B : SSet.{u}} [Quasicategory B]
     (b : B _⦋0⦌)
     (S : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map
       (sliceUnderProjection (yonedaEquiv.symm b)))) :
-    cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
       functorHomEvaluate
         (nativeRepresentationComparisonIso (sliceUnderProjection (yonedaEquiv.symm b))
           (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))) S).hom
         (ULift.up b) =
-      cosliceFiberPointHom ((transportRepresentationPointedFiberMap S (ULift.up b)).app
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap S (ULift.up b)).app
         (Opposite.op ⦋0⦌) ((uliftVertexFiberIso
           (sliceUnderProjection (yonedaEquiv.symm b)) b).hom.app (Opposite.op ⦋0⦌)
             (ULift.up (edgeToCosliceFiberVertex (SSet.Edge.id b))))) :=

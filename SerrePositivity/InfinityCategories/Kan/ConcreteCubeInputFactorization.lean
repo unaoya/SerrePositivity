@@ -18,73 +18,73 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の表示の使用入力だけを選ぶ実際の立方体の射。 -/
-def cubeNormalFormInputSelection {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    ConcreteCube.mk n ⟶ ConcreteCube.mk (cubeNormalFormUsedInputs s).card :=
-  ⟨cubeCoordinateSelect (cubeNormalFormInputEmbedding s),
-    cubeCoordinateSelect_generated _ (cubeNormalFormInputEmbedding s).strictMono⟩
+def cubeNormalFormInputSelection {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs s).card :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s),
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_generated _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).strictMono⟩
 
 /-- 選択した入力を零面で元の座標へ戻す実際の切断。 -/
-def cubeNormalFormInputSection {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    ConcreteCube.mk (cubeNormalFormUsedInputs s).card ⟶ ConcreteCube.mk n :=
-  ⟨cubeCoordinateInsert (cubeNormalFormInputEmbedding s),
-    cubeCoordinateInsert_generated _ (cubeNormalFormInputEmbedding s).strictMono⟩
+def cubeNormalFormInputSection {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs s).card ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s),
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert_generated _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).strictMono⟩
 
 /-- 零面の切断と入力選択の合成は、実際の立方体圏で恒等。 -/
-lemma cubeNormalFormInputSection_selection {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    cubeNormalFormInputSection s ≫ cubeNormalFormInputSelection s = 𝟙 _ := by
+lemma cubeNormalFormInputSection_selection {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSection s ≫ _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSelection s = 𝟙 _ := by
   apply Subtype.ext
   funext x
-  exact cubeCoordinateSelect_insert _ (cubeNormalFormInputEmbedding s).injective x
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_insert _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).injective x
 
 /-- 圧縮した表示の評価は、元の零埋め切断を通した元の表示の評価。 -/
-lemma cubeNormalFormCompressed_eval_insert {n m : ℕ} (s : CubeJoinNormalForm n m)
-    (x : CubeVertex (cubeNormalFormUsedInputs s).card) :
-    cubeJoinNormalFormEval (cubeNormalFormCompressed s) x =
-      cubeJoinNormalFormEval s (cubeCoordinateInsert (cubeNormalFormInputEmbedding s) x) := by
-  have h := cubeNormalFormCompressed_eval s
-    (cubeCoordinateInsert (cubeNormalFormInputEmbedding s) x)
-  rw [cubeCoordinateSelect_insert _ (cubeNormalFormInputEmbedding s).injective] at h
+lemma cubeNormalFormCompressed_eval_insert {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs s).card) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed s) x =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s) x) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_eval s
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s) x)
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_insert _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).injective] at h
   exact h
 
 /-- 零面の切断から構成した、元の具体的な射の残余射。 -/
-def concreteCubeInputCompressed {X Y : ConcreteCube} (f : X ⟶ Y) :
-    ConcreteCube.mk (cubeNormalFormUsedInputs (concreteCubeNormalForm f)).card ⟶ Y :=
-  cubeNormalFormInputSection (concreteCubeNormalForm f) ≫ f
+def concreteCubeInputCompressed {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)).card ⟶ Y :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) ≫ f
 
 /-- 残余射の元の頂点関数は、同じ圧縮した有限 max 表示の評価。 -/
-lemma concreteCubeInputCompressed_val {X Y : ConcreteCube} (f : X ⟶ Y)
-    (x : CubeVertex (cubeNormalFormUsedInputs (concreteCubeNormalForm f)).card) :
-    (concreteCubeInputCompressed f).val x =
-      cubeJoinNormalFormEval (cubeNormalFormCompressed (concreteCubeNormalForm f)) x := by
-  exact ((cubeNormalFormCompressed_eval_insert (concreteCubeNormalForm f) x).trans
-    (concreteCubeNormalForm_eval f _)).symm
+lemma concreteCubeInputCompressed_val {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)).card) :
+    (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f).val x =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)) x := by
+  exact ((_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_eval_insert (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) x).trans
+    (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval f _)).symm
 
 /-- 元の具体射は、入力選択と同じ残余射の合成として厳密に回収される。 -/
-lemma concreteCubeInputSelection_compressed {X Y : ConcreteCube} (f : X ⟶ Y) :
-    cubeNormalFormInputSelection (concreteCubeNormalForm f) ≫ concreteCubeInputCompressed f =
+lemma concreteCubeInputSelection_compressed {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputSelection (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) ≫ _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f =
       f := by
   apply Subtype.ext
   funext x
-  change (concreteCubeInputCompressed f).val
-    (cubeCoordinateSelect (cubeNormalFormInputEmbedding (concreteCubeNormalForm f)) x) = _
-  rw [concreteCubeInputCompressed_val]
-  exact concreteCubeNormalForm_compressed_eval f x
+  change (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f).val
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)) x) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_val]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_compressed_eval f x
 
 /-- 元の残余射から回収する一意な表示は、元の表示を圧縮したデータそのもの。 -/
-lemma concreteCubeInputCompressed_normalForm {X Y : ConcreteCube} (f : X ⟶ Y) :
-    concreteCubeNormalForm (concreteCubeInputCompressed f) =
-      cubeNormalFormCompressed (concreteCubeNormalForm f) := by
-  apply cubeJoinNormalFormEval_injective
+lemma concreteCubeInputCompressed_normalForm {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f) =
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval_injective
   funext x
-  rw [concreteCubeNormalForm_eval, concreteCubeInputCompressed_val]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval, _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_val]
 
 /-- 元の残余射に未使用の入力が残らないことを、その実際の正規形で回収する。 -/
-lemma concreteCubeInputCompressed_no_unused {X Y : ConcreteCube} (f : X ⟶ Y)
-    (i : Fin (cubeNormalFormUsedInputs (concreteCubeNormalForm f)).card) :
-    ∃ j, i ∈ cubeJoinNormalFormSupport (concreteCubeNormalForm (concreteCubeInputCompressed f))
+lemma concreteCubeInputCompressed_no_unused {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y)
+    (i : Fin (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f)).card) :
+    ∃ j, i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f))
       j := by
-  rw [concreteCubeInputCompressed_normalForm]
-  exact cubeNormalFormCompressed_no_unused _ i
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_normalForm]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_no_unused _ i
 
 end SerrePositivity.InfinityCategories.Kan
 

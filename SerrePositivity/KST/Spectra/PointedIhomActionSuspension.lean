@@ -32,15 +32,15 @@ private lemma parameterAction_map {C : Type*} [Category C] [MonoidalCategory C]
 private lemma closedAction_post {C : Type*} [Category C] [MonoidalCategory C]
     [MonoidalClosed C] (A E : C) {V W : C} (f : V ⟶ W) :
     (ihom E).map f ≫ ((MonoidalClosed.pre ((ihom.ev A).app E)).app W ≫
-      (InternalHomTensor.iso A ((ihom A).obj E) W).hom) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A ((ihom A).obj E) W).hom) =
     ((MonoidalClosed.pre ((ihom.ev A).app E)).app V ≫
-      (InternalHomTensor.iso A ((ihom A).obj E) V).hom) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A ((ihom A).obj E) V).hom) ≫
       (ihom ((ihom A).obj E)).map ((ihom A).map f) := by
   rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post A ((ihom A).obj E) f,
     ← Category.assoc]
   simpa only [Category.assoc, Functor.id_obj, Functor.comp_obj, tensorLeft,
     curriedTensor_obj_obj] using
-    congrArg (fun k => k ≫ (InternalHomTensor.iso A ((ihom A).obj E) W).hom)
+    congrArg (fun k => k ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A ((ihom A).obj E) W).hom)
       ((MonoidalClosed.pre ((ihom.ev A).app E)).naturality f)
 
 /-- 内部 Hom の作用は標的への後合成について自然。 -/
@@ -51,9 +51,9 @@ lemma ihomAction_post (A E : PointedSimplicialSet.{u})
         (ihom (PointedObject.basedHom A E)).map ((ihom A).map f) := by
   rw [ihomAction, ihomAction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (ihom E).map f ≫ ((MonoidalClosed.pre ((ihom.ev A).app E)).app W ≫
-    (InternalHomTensor.iso A ((ihom A).obj E) W).hom) =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A ((ihom A).obj E) W).hom) =
     ((MonoidalClosed.pre ((ihom.ev A).app E)).app V ≫
-    (InternalHomTensor.iso A ((ihom A).obj E) V).hom) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A ((ihom A).obj E) V).hom) ≫
       (ihom ((ihom A).obj E)).map ((ihom A).map f)
   exact closedAction_post A E f
 
@@ -61,8 +61,8 @@ lemma ihomAction_post (A E : PointedSimplicialSet.{u})
 lemma ihomParameterAction_post {A E V W T : PointedSimplicialSet.{u}}
     (e : T ⟶ PointedObject.basedHom A E) (f : V ⟶ W) :
     (ihom E).map f ≫ (ihomAction A E W ≫
-      prePointed e (PointedObject.basedHom A W)) =
-    (ihomAction A E V ≫ prePointed e (PointedObject.basedHom A V)) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A W)) =
+    (ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V)) ≫
       (ihom T).map ((ihom A).map f) := by
   have hn := (MonoidalClosed.pre e).naturality ((ihom A).map f)
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
@@ -73,15 +73,15 @@ lemma ihomParameterAction_post {A E V W T : PointedSimplicialSet.{u}}
 /-- 懸垂をパラメータ作用の前後で施しても、同じ全 Hom の射を得る。 -/
 lemma ihomParameterAction_suspension {A E V T : PointedSimplicialSet.{u}}
     (e : T ⟶ PointedObject.basedHom A E) :
-    suspensionHom E V ≫ (ihomAction (suspension A) (suspension E) (suspension V) ≫
-      prePointed (e ≫ suspensionHom A E)
-        (PointedObject.basedHom (suspension A) (suspension V))) =
-    (ihomAction A E V ≫ prePointed e (PointedObject.basedHom A V)) ≫
+    suspensionHom E V ≫ (ihomAction (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension E) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension V) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (e ≫ suspensionHom A E)
+        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension V))) =
+    (ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V)) ≫
       (ihom T).map (suspensionHom A V) := by
   rw [ihomParameterAction_eq_curry, ihomParameterAction_eq_curry]
   exact parameterAction_map e (suspensionHom A E) (suspensionHom E V)
     (suspensionHom A V) (MonoidalClosed.comp A E V)
-    (MonoidalClosed.comp (suspension A) (suspension E) (suspension V))
+    (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension E) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension V))
     (suspensionHom_comp A E V)
 
 end SerrePositivity.KST.Spectra.PointedMapping

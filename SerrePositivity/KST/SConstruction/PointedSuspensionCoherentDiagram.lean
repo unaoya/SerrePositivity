@@ -24,7 +24,7 @@ local instance suspensionCoherentDiagram_pointed_simplicialCategory :
 /-- suspension の写像空間の頂点作用は、元の円との smash の射そのもの。 -/
 lemma suspensionHom_vertex {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (suspensionHom X Y).right.app _ (pointedHomVertexEquiv X Y f) =
-      pointedHomVertexEquiv (suspension X) (suspension Y)
+      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)
         (PointedSimplicialSet.circle.{u} ◁ f) := by
   dsimp only [pointedHomVertexEquiv, Equiv.trans_apply, curryHomEquiv']
   change (suspensionHom X Y).right.app _
@@ -36,9 +36,9 @@ lemma suspensionHom_vertex {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
 lemma suspensionEnrichedUnderlying_map {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (coherentEnrichedUnderlyingFunctor suspensionEnrichedFunctor).map f =
       PointedSimplicialSet.circle.{u} ◁ f := by
-  apply (pointedHomVertexEquiv (suspension X) (suspension Y)).injective
+  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)).injective
   have h := coherentEnrichedUnderlyingFunctor_vertex suspensionEnrichedFunctor f
-  change pointedHomVertexEquiv (suspension X) (suspension Y)
+  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)
       ((coherentEnrichedUnderlyingFunctor suspensionEnrichedFunctor).map f) =
     (suspensionHom X Y).right.app _ (pointedHomVertexEquiv X Y f) at h
   exact h.trans (suspensionHom_vertex f)

@@ -29,75 +29,75 @@ private lemma unitVertex_comp {X Y : SSet.{u}} (f : (𝟙_ SSet.{u}) ⟶ X) (g :
       g.app (Opposite.op ⦋0⦌) (SSet.unitHomEquiv X f) := rfl
 
 /-- 完全関手の通常射と豊穣 Hom の単位からの射の同値。 -/
-def exactHomEquiv {A B : StableCategory.{u}} :
-    (A ⟶ B) ≃ ((𝟙_ SSet.{u}) ⟶ (exactFunctors A B : SSet.{u})) :=
-  (exactFunctorVertexEquiv A B).trans (SSet.unitHomEquiv _).symm
+def exactHomEquiv {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} :
+    (A ⟶ B) ≃ ((𝟙_ SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})) :=
+  (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B).trans (SSet.unitHomEquiv _).symm
 
 /-- 豊穣射の包含は元の関手の curry に一致する。 -/
-lemma exactHomEquiv_ι {A B : StableCategory.{u}} (F : A ⟶ B) :
-    exactHomEquiv F ≫ (exactFunctors A B).ι = curry' F.hom := by
+lemma exactHomEquiv_ι {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : A ⟶ B) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv F ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι = curry' F.hom := by
   apply (SSet.unitHomEquiv _).injective
   rw [unitVertex_comp]
-  simp only [exactHomEquiv, Equiv.trans_apply, Equiv.apply_symm_apply]
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv, Equiv.trans_apply, Equiv.apply_symm_apply]
   rfl
 
 /-- 完全関手の通常の恒等・合成と単体的合成の整合性。 -/
-instance stableCategory_simplicialCategory : SimplicialCategory StableCategory.{u} where
-  homEquiv := exactHomEquiv
+instance stableCategory_simplicialCategory : SimplicialCategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
+  homEquiv := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv
   homEquiv_id A := by
-    apply (cancel_mono (exactFunctors A A).ι).1
-    change exactHomEquiv (𝟙 A) ≫ (exactFunctors A A).ι =
-      exactIdentity A ≫ (exactFunctors A A).ι
-    rw [exactHomEquiv_ι (𝟙 A)]
-    exact (curry'_id A.obj).trans (exactIdentity_ι A).symm
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A A).ι).1
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv (𝟙 A) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A A).ι =
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity A ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A A).ι
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι (𝟙 A)]
+    exact (curry'_id A.obj).trans (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity_ι A).symm
   homEquiv_comp {A B C} F G := by
-    apply (cancel_mono (exactFunctors A C).ι).1
-    change exactHomEquiv (F ≫ G) ≫ (exactFunctors A C).ι =
-      ((λ_ (𝟙_ SSet.{u})).inv ≫ (exactHomEquiv F ⊗ₘ exactHomEquiv G) ≫
-        exactComposition A B C) ≫ (exactFunctors A C).ι
-    rw [exactHomEquiv_ι]
-    simp only [Category.assoc, exactComposition_ι]
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A C).ι).1
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv (F ≫ G) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A C).ι =
+      ((λ_ (𝟙_ SSet.{u})).inv ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv F ⊗ₘ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv G) ≫
+        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition A B C) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A C).ι
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition_ι]
     have h := curry'_comp (C := SSet.{u}) F.hom G.hom
     change curry' (F.hom ≫ G.hom) = _
     rw [h]
-    simp only [← exactHomEquiv_ι F, ← exactHomEquiv_ι G,
+    simp only [← _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι F, ← _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι G,
       ← tensorHom_comp_tensorHom, Category.assoc]
 
 /-- core によって自然同値だけを残した単体的圏。 -/
 def StableQCat : Type (u + 1) :=
-  TransportEnrichment quasicategoryCoreFunctor.{u} StableCategory.{u}
+  TransportEnrichment quasicategoryCoreFunctor.{u} _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
 
-instance stableQCat_category : Category.{u} StableQCat.{u} :=
+instance stableQCat_category : Category.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} :=
   inferInstanceAs (Category.{u}
-    (TransportEnrichment quasicategoryCoreFunctor.{u} StableCategory.{u}))
+    (TransportEnrichment quasicategoryCoreFunctor.{u} _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}))
 
-instance stableQCat_simplicialCategory : SimplicialCategory StableQCat.{u} :=
-  TransportEnrichment.enrichedOrdinaryCategory StableCategory.{u} quasicategoryCoreFunctor.{u}
+instance stableQCat_simplicialCategory : SimplicialCategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} :=
+  TransportEnrichment.enrichedOrdinaryCategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} quasicategoryCoreFunctor.{u}
     quasicategoryCoreUnitHomEquiv quasicategoryCoreUnitHomEquiv_eq
 
-instance stableQCat_sHom_kanComplex (A B : StableQCat.{u}) :
+instance stableQCat_sHom_kanComplex (A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     KanComplex (SimplicialCategory.sHom A B) :=
   inferInstanceAs (KanComplex
-    (quasicategoryCore (exactFunctors A B : SSet.{u}) : SSet.{u}))
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) : SSet.{u}))
 
 /-- 小さい安定 ∞ 圏と完全関手の ∞ 圏。 -/
-def StableInfinity : SSet.{u + 1} := SimplicialNerve StableQCat.{u}
+def StableInfinity : SSet.{u + 1} := SimplicialNerve _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}
 
-instance stableInfinity_quasicategory : Quasicategory StableInfinity.{u} :=
-  Coherent.simplicialNerve_quasicategory StableQCat.{u}
+instance stableInfinity_quasicategory : Quasicategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
+  Coherent.simplicialNerve_quasicategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}
 
 /-- 元の安定対象に対応する実際の頂点。 -/
-def stableVertex (A : StableCategory.{u}) : StableInfinity.{u} _⦋0⦌ :=
-  coherentNerveVertex (C := StableQCat.{u}) A
+def stableVertex (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋0⦌ :=
+  coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A
 
 /-- 任意の頂点から束ねた安定対象を復元する。 -/
-def stableObject (a : StableInfinity.{u} _⦋0⦌) : StableCategory.{u} :=
-  coherentNerveObject (C := StableQCat.{u}) a
+def stableObject (a : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
+  coherentNerveObject (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) a
 
-lemma stableObject_vertex (A : StableCategory.{u}) : stableObject (stableVertex A) = A := rfl
+lemma stableObject_vertex (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) = A := rfl
 
-lemma stableVertex_object (a : StableInfinity.{u} _⦋0⦌) : stableVertex (stableObject a) = a :=
-  coherentNerveVertex_object (C := StableQCat.{u}) a
+lemma stableVertex_object (a : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject a) = a :=
+  coherentNerveVertex_object (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) a
 
 end SerrePositivity.InfinityCategories.Stable.Infinity
 

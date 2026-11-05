@@ -19,7 +19,7 @@ instance simplicialRingIntegerModuleUnderlyingKan (A : SimplicialObject RingCat.
   change SSet.KanComplex (ringSpace A)
   infer_instance
 def simplicialRingPiMooreGroupEquiv (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    KanHomotopyGroup (ringSpace A) n (0 : A.obj (Opposite.op ⦋0⦌)) ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (Opposite.op ⦋0⦌)) ≃*
       Multiplicative ((simplicialRingNormalizedChains A).homology (n + 1)) :=
   modulePiMooreGroupEquiv (simplicialRingIntegerModule A) n
 end SerrePositivity.InfinityCategories

@@ -22,16 +22,16 @@ variable {R : Type u} [CommRing R]
 
 /-- 零基点のチャートから同じ加群の全基点への延長。 -/
 def dgBarCompactModuleZeroChartExtension (n : ℕ)
-    (e : KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
-    (x : W.obj (op ⦋0⦌)) : KanHomotopyGroup (moduleUnderlyingSSet W) n x ≃ A :=
-  (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+    (e : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
+    (x : W.obj (op ⦋0⦌)) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x ≃ A :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)).symm.toEquiv.trans e
 
 lemma dgBarCompactModuleZeroChartExtension_transport (n : ℕ)
-    (α : KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
     {x y : W.obj (op ⦋0⦌)} (e : (moduleUnderlyingSSet W).Edge x y)
-    (a : KanHomotopyGroup (moduleUnderlyingSSet W) n x)
-    (b : KanHomotopyGroup (moduleUnderlyingSSet W) n y)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x)
+    (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n y)
     (h : dgBarCompactModuleZeroChartExtension n α x a =
       dgBarCompactModuleZeroChartExtension n α y b) :
     dgBarCompactPiTransport n e a b := by
@@ -39,31 +39,31 @@ lemma dgBarCompactModuleZeroChartExtension_transport (n : ℕ)
   exact congrArg (modulePiMooreGroupEquiv W n) (α.injective h)
 
 lemma dgBarCompactModuleZeroChartExtension_naturality (f : W ⟶ V) (n : ℕ)
-    (α : KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
-    (β : KanHomotopyGroup (moduleUnderlyingSSet V) n 0 ≃ B) (g : A → B)
-    (h : ∀ a, β (KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ A)
+    (β : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet V) n 0 ≃ B) (g : A → B)
+    (h : ∀ a, β (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f)
       (moduleUnderlyingSSetMap_zero f) a) = g (α a))
-    (x : W.obj (op ⦋0⦌)) (a : KanHomotopyGroup (moduleUnderlyingSSet W) n x) :
+    (x : W.obj (op ⦋0⦌)) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n x) :
     dgBarCompactModuleZeroChartExtension n β ((f.app _).hom x)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap f) x a) =
       g (dgBarCompactModuleZeroChartExtension n α x a) := by
-  let ex := KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+  let ex := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)
   obtain ⟨a₀, rfl⟩ := ex.surjective a
   change dgBarCompactModuleZeroChartExtension n β _
-    (KanHomotopyGroup.map (moduleUnderlyingSSetMap f) rfl _) = _
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap f) rfl _) = _
   rw [moduleTranslationIso_pi_naturality]
   have he (U : SimplicialObject (ModuleCat.{v} R))
       [KanComplex (moduleUnderlyingSSet U)]
-      (e₀ : KanHomotopyGroup (moduleUnderlyingSSet U) n 0 ≃ B)
-      (z : U.obj (op ⦋0⦌)) (b : KanHomotopyGroup (moduleUnderlyingSSet U) n 0) :
+      (e₀ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet U) n 0 ≃ B)
+      (z : U.obj (op ⦋0⦌)) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet U) n 0) :
       dgBarCompactModuleZeroChartExtension n e₀ z
-        (KanHomotopyGroup.equivOfIso n (moduleTranslationIso U z)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso U z)
           (moduleTranslationIso_zero U z) b) = e₀ b := by
     simp only [dgBarCompactModuleZeroChartExtension, Equiv.trans_apply,
       MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv, MulEquiv.symm_apply_apply]
   change dgBarCompactModuleZeroChartExtension n β ((f.app _).hom x)
-    (KanHomotopyGroup.equivOfIso n (moduleTranslationIso V ((f.app _).hom x))
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso V ((f.app _).hom x))
       (moduleTranslationIso_zero V ((f.app _).hom x)) _) = _
   rw [he]
   have hW : dgBarCompactModuleZeroChartExtension n α x (ex a₀) = α a₀ := by

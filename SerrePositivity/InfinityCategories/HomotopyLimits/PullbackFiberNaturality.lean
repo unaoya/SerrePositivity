@@ -35,7 +35,7 @@ lemma pullbackFiberIso_naturality
     fibrationFiberMapBase j j' aP aX hj x ≫
         (pullbackFiberIso hP' (aX.app _ x) (aB.app _ b) hxb').hom =
       (pullbackFiberIso hP x b hxb).hom ≫ fibrationFiberMapBase p p' aE aB hp b := by
-  apply fiber_hom_ext p' (aB.app _ b)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p' (aB.app _ b)
   change (fibrationFiberMapBase j j' aP aX hj x ≫
       pullbackFiberToOriginal hP' (aX.app _ x) (aB.app _ b) hxb') ≫ _ =
     (pullbackFiberToOriginal hP x b hxb ≫ fibrationFiberMapBase p p' aE aB hp b) ≫ _
@@ -51,10 +51,10 @@ lemma pullbackFiberIso_naturality
 lemma kanPiIsomorphism_of_iso_square {A B C D : SSet.{u}}
     [KanComplex A] [KanComplex B] [KanComplex C] [KanComplex D]
     (e : A ≅ B) (e' : C ≅ D) (f : A ⟶ C) (g : B ⟶ D)
-    (h : f ≫ e'.hom = e.hom ≫ g) (hg : KanPiIsomorphism g) : KanPiIsomorphism f := by
-  have hs : KanPiIsomorphism e.hom := KanPiIsomorphism.of_iso e
-  have ht : KanPiIsomorphism e'.hom := KanPiIsomorphism.of_iso e'
-  apply KanPiIsomorphism.of_comp (g := e'.hom) _ ht
+    (h : f ≫ e'.hom = e.hom ≫ g) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e
+  have ht : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e'.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e'
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := e'.hom) _ ht
   rw [h]
   exact hs.comp hg
 

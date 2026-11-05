@@ -26,7 +26,7 @@ def doubleFunctorEvaluation {K A Y : SSet.{u}} (x : K _⦋0⦌) (a : A _⦋0⦌)
 /-- 同じ二段階評価の頂点は、元の対象値を指定添字で評価した値。 -/
 theorem doubleFunctorEvaluation_vertex {K A Y : SSet.{u}} (F : K ⟶ (ihom A).obj Y)
     (x : K _⦋0⦌) (a : A _⦋0⦌) :
-    (doubleFunctorEvaluation (Y := Y) x a).app (Opposite.op ⦋0⦌) (functorVertex F) =
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a).app (Opposite.op ⦋0⦌) (functorVertex F) =
       (evaluateFunctorAt a).app (Opposite.op ⦋0⦌) (F.app (Opposite.op ⦋0⦌) x) := by
   change (evaluateFunctorAt a).app (Opposite.op ⦋0⦌)
     ((evaluateFunctorAt x).app (Opposite.op ⦋0⦌) (functorVertex F)) = _
@@ -35,12 +35,12 @@ theorem doubleFunctorEvaluation_vertex {K A Y : SSet.{u}} (F : K ⟶ (ihom A).ob
 /-- 元の同じ同型を二段階評価した値は、一つの評価写像による同じ像と HEq。 -/
 theorem functorIsoDoubleValue_heq_map {K A Y : SSet.{u}}
     {F G : K ⟶ (ihom A).obj Y} (e : FunctorIso F G) (x : K _⦋0⦌) (a : A _⦋0⦌) :
-    HEq (VertexIso.map (functorIsoValue e x) (evaluateFunctorAt a))
-      (VertexIso.map e (doubleFunctorEvaluation (Y := Y) x a)) := by
-  have h := F2.vertexIso_map_heq_of_heq (functorIsoValue e x)
+    HEq (VertexIso.map (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x) (evaluateFunctorAt a))
+      (VertexIso.map e (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a)) := by
+  have h := F2.vertexIso_map_heq_of_heq (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x)
     (VertexIso.map e (evaluateFunctorAt x))
     (evaluateFunctorAt_functorVertex x F).symm (evaluateFunctorAt_functorVertex x G).symm
-    (functorIsoValue_heq_map e x) (evaluateFunctorAt a)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map e x) (evaluateFunctorAt a)
   exact h.trans (heq_of_eq (F2.vertexIso_map_comp e (evaluateFunctorAt x) (evaluateFunctorAt a)))
 
 end SerrePositivity.InfinityCategories.F1.Transport

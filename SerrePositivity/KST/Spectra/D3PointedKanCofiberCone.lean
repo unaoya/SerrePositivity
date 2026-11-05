@@ -28,15 +28,15 @@ variable {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) (Y : PointedKanObject.{u
 /-- 元の cofiber 正方形を同じ Kan Hom 対象の通常引き戻し錐にする。 -/
 def d3PointedKanCofiberOrdinaryCone :
     PullbackCone
-      (ObjectProperty.homMk (PointedMapping.prePointed i Y.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y.obj) :
         (d3PointedKanIhom B).obj Y ⟶ (d3PointedKanIhom A).obj Y)
-      (ObjectProperty.homMk (PointedMapping.prePointed (PointedObject.toPoint A) Y.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint A) Y.obj) :
         (d3PointedKanIhom PointedObject.point).obj Y ⟶ (d3PointedKanIhom A).obj Y) :=
   PullbackCone.mk
-    (ObjectProperty.homMk (PointedMapping.prePointed (pointedCofiberProjection i) Y.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection i) Y.obj) :
       (d3PointedKanIhom (pointedCofiber i)).obj Y ⟶ (d3PointedKanIhom B).obj Y)
     (ObjectProperty.homMk
-      (PointedMapping.prePointed (PointedObject.fromPoint (pointedCofiber i)) Y.obj)) (by
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.fromPoint (pointedCofiber i)) Y.obj)) (by
         apply ObjectProperty.hom_ext
         exact (pointedCofiberMapping_isPullback i Y.obj).w)
 
@@ -70,10 +70,10 @@ def d3PointedKanCofiberCone_hom_isLimit (Z : PointedKanObject.{u}) :
 lemma d3PointedKanCofiberCone_isLimit [Mono i.right] :
     IsLimitCone (strictCoherentCone (d3PointedKanCofiberCone i Y)) := by
   let f : (d3PointedKanIhom B).obj Y ⟶ (d3PointedKanIhom A).obj Y :=
-    ObjectProperty.homMk (PointedMapping.prePointed i Y.obj)
+    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y.obj)
   let g : (d3PointedKanIhom PointedObject.point).obj Y ⟶ (d3PointedKanIhom A).obj Y :=
-    ObjectProperty.homMk (PointedMapping.prePointed (PointedObject.toPoint A) Y.obj)
-  have : Fibration f.hom.right := PointedMapping.pre_fibration i Y.obj
+    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint A) Y.obj)
+  have : Fibration f.hom.right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y.obj
   have (Z : PointedKanObject.{u}) : Fibration
       ((simplicialHomDiagram (AsSmall.down ⋙ cospan f g) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := by
@@ -85,7 +85,7 @@ lemma d3PointedKanCofiberCone_isLimit [Mono i.right] :
 
 /-- 実端点図式に、元の端点包含の単射性を供給した ∞ 極限錐。 -/
 lemma d3PointedKanEndpointCone_isLimit (Y : PointedKanObject.{u}) :
-    IsLimitCone (strictCoherentCone (d3PointedKanCofiberCone intervalEndpoint Y)) :=
-  d3PointedKanCofiberCone_isLimit intervalEndpoint Y
+    IsLimitCone (strictCoherentCone (d3PointedKanCofiberCone _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y)) :=
+  d3PointedKanCofiberCone_isLimit _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

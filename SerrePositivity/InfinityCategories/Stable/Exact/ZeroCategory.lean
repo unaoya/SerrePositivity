@@ -47,37 +47,37 @@ lemma hom_ext {A : SSet.{u}} (f g : A ⟶ X) : f = g := by
 
 /-- 唯一の標的では全ての境界が充填される。 -/
 lemma contractible : IsContractibleKan X :=
-  fun _n _b ↦ ⟨map _, hom_ext _ _⟩
+  fun _n _b ↦ ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _⟩
 
 /-- 全ての実頂点は零対象。 -/
 lemma zero (x : X _⦋0⦌) : IsZeroVertex x :=
-  ⟨contractible.isInitialVertex x, contractible.isTerminalVertex x⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.isInitialVertex x, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.isTerminalVertex x⟩
 
 /-- slice の各次数にも唯一の錐がある。 -/
 @[instance_reducible] def sliceUnique {K : SSet.{u}} (p : K ⟶ X) (n : SimplexCategoryᵒᵖ) :
     Unique ((sliceOver p).obj n) where
-  default := ⟨map _, hom_ext _ _⟩
-  uniq _a := Subtype.ext (hom_ext _ _)
+  default := ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _⟩
+  uniq _a := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _)
 
 /-- coslice の各次数にも唯一の余錐がある。 -/
 @[instance_reducible] def cosliceUnique {K : SSet.{u}} (p : K ⟶ X) (n : SimplexCategoryᵒᵖ) :
     Unique ((sliceUnder p).obj n) where
-  default := ⟨map _, hom_ext _ _⟩
-  uniq _a := Subtype.ext (hom_ext _ _)
+  default := ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _⟩
+  uniq _a := Subtype.ext (_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _)
 
 lemma limit {K : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c := by
-  let : ∀ n, Unique ((sliceOver p).obj n) := sliceUnique p
-  exact (contractible (X := sliceOver p)).isTerminalVertex c
+  let : ∀ n, Unique ((sliceOver p).obj n) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.sliceUnique p
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible (X := sliceOver p)).isTerminalVertex c
 
 lemma colimit {K : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) : IsColimitCone c := by
-  let : ∀ n, Unique ((sliceUnder p).obj n) := cosliceUnique p
-  exact (contractible (X := sliceUnder p)).isInitialVertex c
+  let : ∀ n, Unique ((sliceUnder p).obj n) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.cosliceUnique p
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible (X := sliceUnder p)).isInitialVertex c
 
 lemma pullback (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) : IsPullbackSquare F :=
-  limit (pullbackCone F)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.limit (pullbackCone F)
 
 lemma pushout (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) : IsPushoutSquare F :=
-  colimit (pushoutCocone F)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.colimit (pushoutCocone F)
 
 end UniqueTarget
 
@@ -85,36 +85,36 @@ private instance unitSimplexUnique (n : SimplexCategoryᵒᵖ) :
     Unique ((𝟙_ SSet.{u}).obj n) := inferInstanceAs (Unique PUnit)
 
 /-- 一点の単体集合は零安定 ∞ 圏を与える。 -/
-def zeroCategory : StableCategory.{u} where
-  obj := 𝟙_ SSet.{u}
-  isQuasicategory := by
-    let : KanComplex (𝟙_ SSet.{u}) := UniqueTarget.contractible.kanComplex
+def zeroCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := 𝟙_ SSet.{u}
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := by
+    let : KanComplex (𝟙_ SSet.{u}) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.kanComplex
     infer_instance
-  isStable := by
-    let : KanComplex (𝟙_ SSet.{u}) := UniqueTarget.contractible.kanComplex
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := by
+    let : KanComplex (𝟙_ SSet.{u}) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.kanComplex
     let : HasZeroVertex (𝟙_ SSet.{u}) :=
-      ⟨⟨PUnit.unit, UniqueTarget.zero _⟩⟩
+      ⟨⟨PUnit.unit, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero _⟩⟩
     let : HasFiniteLimits (𝟙_ SSet.{u}) :=
-      ⟨fun _p ↦ ⟨⟨UniqueTarget.map _, UniqueTarget.hom_ext _ _⟩, UniqueTarget.limit _⟩⟩
+      ⟨fun _p ↦ ⟨⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _⟩, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.limit _⟩⟩
     let : HasFiniteColimits (𝟙_ SSet.{u}) :=
-      ⟨fun _p ↦ ⟨⟨UniqueTarget.map _, UniqueTarget.hom_ext _ _⟩, UniqueTarget.colimit _⟩⟩
+      ⟨fun _p ↦ ⟨⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map _, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext _ _⟩, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.colimit _⟩⟩
     exact isStable_of_finite_limits_colimits
-      (fun F ↦ ⟨fun _ ↦ UniqueTarget.pushout F, fun _ ↦ UniqueTarget.pullback F⟩)
+      (fun F ↦ ⟨fun _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pushout F, fun _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pullback F⟩)
 
 private instance zeroSimplexUnique : ∀ n : SimplexCategoryᵒᵖ,
-    Unique (zeroCategory.{u}.obj.obj n) := fun n ↦ unitSimplexUnique n
+    Unique (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u}.obj.obj n) := fun n ↦ unitSimplexUnique n
 
-lemma zeroCategory_isZero : IsZeroCategory zeroCategory.{u} := UniqueTarget.zero
+lemma zeroCategory_isZero : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero
 
 /-- 任意の安定圏から零安定圏への実際の完全関手。 -/
-def toZeroCategory (A : StableCategory.{u}) : ExactMap A zeroCategory.{u} := by
+def toZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := by
   let : ∀ n : SimplexCategoryᵒᵖ, Unique ((𝟙_ SSet.{u}).obj n) :=
     fun _ ↦ inferInstanceAs (Unique PUnit)
   exact {
-    hom := UniqueTarget.map (X := (𝟙_ SSet.{u})) A.obj
-    isExact := {
-      preservesZero := fun _x _ ↦ UniqueTarget.zero (X := (𝟙_ SSet.{u})) _
-      preservesCofiber := fun _t _ ↦ UniqueTarget.pushout (X := (𝟙_ SSet.{u})) _ } }
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map (X := (𝟙_ SSet.{u})) A.obj
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := {
+      preservesZero := fun _x _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero (X := (𝟙_ SSet.{u})) _
+      preservesCofiber := fun _t _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pushout (X := (𝟙_ SSet.{u})) _ } }
 
 end SerrePositivity.InfinityCategories.Stable.Exact
 

@@ -36,7 +36,7 @@ lemma pointedTensor_parameter_whisker {K L : PointedSimplicialSet.{u}} (a : K �
 def pointedTensorParameterTransformation {K L : PointedSimplicialSet.{u}} (a : K ⟶ L) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (pointedTensorEnrichedFunctor K) (pointedTensorEnrichedFunctor L) :=
-  strictSimplicialTransformationOfWhisker _ _ (fun X => a ▷ X.obj)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (fun X => a ▷ X.obj)
     (pointedTensor_parameter_whisker a)
 
 /-- 元の左単位同型の全 Hom 自然性。 -/
@@ -74,7 +74,7 @@ def pointedTensorLeftUnitorTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (pointedTensorEnrichedFunctor (𝟙_ PointedSimplicialSet.{u}))
       (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u}) :=
-  strictSimplicialTransformationOfWhisker _ _ (fun X => (λ_ X.obj).hom)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (fun X => (λ_ X.obj).hom)
     (by
       intro X Y
       change _ ≫ _ = 𝟙 (X ⟶[SSet.{u}] Y) ≫ _
@@ -86,7 +86,7 @@ def pointedTensorLeftUnitorInvTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u})
       (pointedTensorEnrichedFunctor (𝟙_ PointedSimplicialSet.{u})) :=
-  strictSimplicialTransformationOfWhisker _ _ (fun X => (λ_ X.obj).inv)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (fun X => (λ_ X.obj).inv)
     (by
       intro X Y
       change 𝟙 (X ⟶[SSet.{u}] Y) ≫ _ = _ ≫ _

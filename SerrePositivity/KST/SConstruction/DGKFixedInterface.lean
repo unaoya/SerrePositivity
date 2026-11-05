@@ -18,25 +18,25 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 private lemma stableHom_inclusion
-    {C D : LocalizingInvariants.StableQCat.{w}} (f : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{w}} (f : C ⟶ D) :
     (eHomEquiv SSet f ≫ (quasicategoryCore
-      (LocalizingInvariants.exactFunctors C D : SSet.{w})).ι) ≫
-        (LocalizingInvariants.exactFunctors C D).ι =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{w})).ι) ≫
+        (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι =
           MonoidalClosed.curry' f.hom := by
   have h : eHomEquiv SSet f ≫ (quasicategoryCore
-      (LocalizingInvariants.exactFunctors C D : SSet.{w})).ι =
-        LocalizingInvariants.exactHomEquiv f := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{w})).ι =
+        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv f := by
     apply (SSet.unitHomEquiv _).injective
     rfl
   rw [h]
-  exact LocalizingInvariants.exactHomEquiv_ι f
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι f
 
 /-- 固定始域 S は、全 native Hom を持つ厳密 dg 入力の ∞ 圏。 -/
 abbrev dgKInputInfinity : SSet.{max (u + 1) v + 1} := perfDGInputInfinity.{u, v} A
 
 /-- 同じ S 上で既に構成した安定 ∞ 圏値関手 ν。 -/
 def dgKInputNu :
-    dgKInputInfinity.{u, v} A ⟶ LocalizingInvariants.StableInfinity.{max (u + 1) v} :=
+    dgKInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   presentedPerfectDGExactInfinityFunctor A
 
 /-- 同じ S 上で既に構成したスペクトル値関手 K。 -/
@@ -50,24 +50,24 @@ abbrev dgKInputStableValue (P : PerfDGInput.{u, v} A) :=
 /-- ν の各頂点は元の実安定値の頂点そのもの。 -/
 lemma dgKInputNu_vertex (P : PerfDGInput.{u, v} A) :
     (dgKInputNu A).app (Opposite.op ⦋0⦌) (coherentNerveVertex P) =
-      LocalizingInvariants.stableVertex (dgKInputStableValue A P) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue A P) :=
   presentedPerfectDGExactInfinityFunctor_vertex A P
 
 /-- ν の同じ辺を、元の全 Hom 作用から通常射として回収する。 -/
 def dgKInputNuMap {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
     presentedPerfectDGStableQCat A P ⟶ presentedPerfectDGStableQCat A Q :=
-  strictSimplicialOrdinaryMap (presentedPerfectDGEnrichedExactFunctor A) f
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (presentedPerfectDGEnrichedExactFunctor A) f
 
 /-- ν の元の全 Hom 作用は、同じ厳密 dg 延長の完全射を回収する。 -/
 lemma dgKInputNuMap_eq {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
     dgKInputNuMap A f = presentedPerfectDGExactMap A f := by
   apply (eHomEquiv SSet).injective
-  refine (strictSimplicialOrdinaryMap_hom
+  refine (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom
     (presentedPerfectDGEnrichedExactFunctor A) f).trans ?_
   apply (cancel_mono ((quasicategoryCore
-    (LocalizingInvariants.exactFunctors
+    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
       (presentedPerfectDGStableCategory A P) (presentedPerfectDGStableCategory A Q) :
-        SSet.{max (u + 1) v})).ι ≫ (LocalizingInvariants.exactFunctors
+        SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
           (presentedPerfectDGStableCategory A P) (presentedPerfectDGStableCategory A Q)).ι)).1
   have h := presentedPerfectDGExactCoreFamilyMap_inclusion A P Q
   have hr := stableHom_inclusion
@@ -82,7 +82,7 @@ lemma dgKInputNu_edge {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
     (dgKInputNu A).app (Opposite.op ⦋1⦌) (coherentNerveEdge f).edge =
       (coherentNerveEdge (dgKInputNuMap A f)).edge :=
   coherentNerveMap_edge_of_homEquiv _ f _
-    (strictSimplicialOrdinaryMap_hom _ f).symm
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom _ f).symm
 
 /-- 固定 K の実対象は、元の S• 境界商から構成した同じ BF Ω スペクトル。 -/
 abbrev dgKInputSpectrum (P : PerfDGInput.{u, v} A) := presentedPerfectDGBFOmegaSpectrum A P

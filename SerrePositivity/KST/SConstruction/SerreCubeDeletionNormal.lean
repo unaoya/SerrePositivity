@@ -42,12 +42,12 @@ lemma serreCubeDeletionNormal_erase {n m : ℕ} (d : _root_.SerrePositivity.Infi
   | zero => cases d
   | succ n ih =>
     cases d with
-    | drop d =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d =>
       change serreCubeDegeneracy A n 0 ≫
         serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) = _
       rw [ih d i]
       exact (Category.assoc _ _ _).symm
-    | keep d =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d =>
       cases m with
       | zero =>
         have hi : i = 0 := Fin.ext (by omega)

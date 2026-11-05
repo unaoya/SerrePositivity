@@ -17,18 +17,18 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の通常完全射の全 Hom の頂点表示は、同じ元の関手頂点を回収する。 -/
-theorem stableHomAmbient_homEquiv' {A B : StableQCat.{u}} (f : A ⟶ B) :
+theorem stableHomAmbient_homEquiv' {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : A ⟶ B) :
     (stableHomAmbient A B).app (Opposite.op ⦋0⦌)
       (SimplicialCategory.homEquiv' A B f) = functorVertex f.hom := by
-  have he := (congrArg (fun h => h ≫ (exactFunctors A B).ι)
-    (stableExactCoreHomEquiv_inclusion f)).trans (exactHomEquiv_ι f)
+  have he := (congrArg (fun h => h ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι)
+    (stableExactCoreHomEquiv_inclusion f)).trans (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι f)
   exact congrArg (SSet.unitHomEquiv _)
     ((Category.assoc (eHomEquiv SSet f)
-      (quasicategoryCore (exactFunctors A B : SSet.{u})).ι (exactFunctors A B).ι).symm.trans he)
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι).symm.trans he)
 
 /-- 零圏を通る元の二つの完全関手の全 Hom の合成頂点は零値関手である。 -/
-theorem stableHomZeroVertex_comp_throughZero {A Z B : StableQCat.{u}}
-    (hZ : IsZeroCategory Z) (v : (A ⟶[SSet.{u}] Z) _⦋0⦌)
+theorem stableHomZeroVertex_comp_throughZero {A Z B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
+    (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) (v : (A ⟶[SSet.{u}] Z) _⦋0⦌)
     (w : (Z ⟶[SSet.{u}] B) _⦋0⦌) :
     StableHomZeroVertex A B ((eComp SSet A Z B).app (Opposite.op ⦋0⦌) (v, w)) := by
   obtain ⟨f, rfl⟩ := (SimplicialCategory.homEquiv' A Z).surjective v

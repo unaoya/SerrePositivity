@@ -55,7 +55,7 @@ theorem horn_face_mem_iff {n d : ℕ} (i : Fin (n + 2)) (s : (Δ[n] : SSet.{u}) 
 theorem preimage_horn_face (n : ℕ) (i : Fin (n + 2)) :
     (horn.{u} (n + 1) i).preimage (stdSimplex.δ i) = boundary.{u} n := by
   ext ⟨⟨d⟩⟩ s
-  exact horn_face_mem_iff i s
+  exact _root_.SerrePositivity.InfinityCategories.Simplicial.horn_face_mem_iff i s
 
 end SerrePositivity.InfinityCategories.Simplicial
 

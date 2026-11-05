@@ -47,7 +47,7 @@ end SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 namespace SerrePositivity.InfinityCategories.Stable.Transport
 open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
-open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+open _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
@@ -67,8 +67,8 @@ def coefficientBase (c : I) :
 /-- 同じ係数値上では共通底は元の指定頂点に厳密に定値。 -/
 theorem coefficientEmbedding_over (c : I) :
     (coefficientEmbedding s) c ≫ s.toStrictTransportComparisonSpan.coherentBase =
-      coefficientBase (p := p) c := by
-  rw [coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentBase,
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientBase (p := p) c := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentBase,
     ← Functor.map_comp, Category.assoc, s.embedding_over,
     simplicialReplacementConstantLift_projection]
   rfl
@@ -80,11 +80,11 @@ def coefficientRelativeEvaluation (c : I) (v : (leftStrictTransport p c) _⦋0�
         vertexFiber (leftUnstraighteningProjection (leftCoherentTransport p))
           (ULift.up (nerveVertex c)) :=
   relativeFunctorOverPre (leftUnstraighteningProjection (leftCoherentTransport p))
-    (Over.homMk (U := Over.mk (coefficientBase (p := p) c))
+    (Over.homMk (U := Over.mk (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientBase (p := p) c))
       (V := Over.mk s.toStrictTransportComparisonSpan.coherentBase)
       ((coefficientEmbedding s) c) ((coefficientEmbedding_over s) c)) ≫
     relativeFunctorEvaluate (leftUnstraighteningProjection (leftCoherentTransport p))
-      (coefficientBase (p := p) c) (ULift.up v)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientBase (p := p) c) (ULift.up v)
 
 end ScaffoldTransportComparisonSpan
 end SerrePositivity.InfinityCategories.Stable.Transport

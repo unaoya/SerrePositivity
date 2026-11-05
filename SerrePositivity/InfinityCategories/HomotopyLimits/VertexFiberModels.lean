@@ -23,14 +23,14 @@ noncomputable section
 規約：同じ射 p と同じ頂点 b を使う。
 使われ方：長完全列の fiber 比較の同値性を導来 fiber の部分型模型へ移す。 -/
 def vertexFiberKanFiberIso {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
-    vertexFiber p b ≅ KanFiber p b where
-  hom := fiberLift p b (vertexFiberι p b) (vertexFiberι_comp p b)
-  inv := vertexFiberLift p b (fiberι p b) (fiberι_comp p b)
+    vertexFiber p b ≅ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b where
+  hom := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p b (vertexFiberι p b) (vertexFiberι_comp p b)
+  inv := vertexFiberLift p b (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp p b)
   hom_inv_id := by
     apply vertexFiber_hom_ext p b
     rw [Category.assoc, vertexFiberLift_ι, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, Category.id_comp]
   inv_hom_id := by
-    apply fiber_hom_ext p b
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p b
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, vertexFiberLift_ι, Category.id_comp]
 
 /-- 概要：fiber 模型の同型の順射は全空間への包含と可換。
@@ -38,16 +38,16 @@ def vertexFiberKanFiberIso {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
 規約：全空間の射の厳密な等式。
 使われ方：fiber 間の実際の比較射の座標の追跡。 -/
 lemma vertexFiberKanFiberIso_hom_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
-    (vertexFiberKanFiberIso p b).hom ≫ fiberι p b = vertexFiberι p b :=
-  fiberLift_ι p b (vertexFiberι p b) (vertexFiberι_comp p b)
+    (vertexFiberKanFiberIso p b).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b = vertexFiberι p b :=
+  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p b (vertexFiberι p b) (vertexFiberι_comp p b)
 
 /-- 概要：fiber 模型の同型の逆射は全空間への包含と可換。
 方針：部分型の fiber への持ち上げの包含を計算する。
 規約：固定条件の証明の選択に依存しない。
 使われ方：引き戻し模型から部分型模型へ比較射を戻す。 -/
 lemma vertexFiberKanFiberIso_inv_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
-    (vertexFiberKanFiberIso p b).inv ≫ vertexFiberι p b = fiberι p b :=
-  vertexFiberLift_ι p b (fiberι p b) (fiberι_comp p b)
+    (vertexFiberKanFiberIso p b).inv ≫ vertexFiberι p b = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b :=
+  vertexFiberLift_ι p b (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp p b)
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

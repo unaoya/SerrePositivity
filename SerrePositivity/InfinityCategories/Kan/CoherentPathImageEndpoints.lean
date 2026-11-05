@@ -42,7 +42,7 @@ def coherentPathImageFunctor {J K : Type u} [LinearOrder J] [LinearOrder K]
 /-- 端点の表示だけを移した像の nerve は、元の豊穣再添字の Hom 作用と同じ。 -/
 lemma coherentPathImageFunctor_nerve_heq {J K : Type u} [LinearOrder J] [LinearOrder K]
     (θ : J →o K) {a b : J} {c d : K} (ha : θ a = c) (hb : θ b = d) :
-    HEq (nerveMap (coherentPathImageFunctor θ ha hb))
+    HEq (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor θ ha hb))
       ((SimplicialThickening.functor θ).map (.mk a) (.mk b)) := by
   cases ha
   cases hb
@@ -50,11 +50,11 @@ lemma coherentPathImageFunctor_nerve_heq {J K : Type u} [LinearOrder J] [LinearO
 
 /-- 合成列の精密化による元の Path の像も、同じ native な豊穣再添字である。 -/
 lemma coherentStringPathReindexFunctor_native_heq {I : Type u} [SmallCategory I]
-    {x y : I} {f : x ⟶ y} {s t : CoherentArrowString f} (a : s ⟶ t) :
-    HEq (nerveMap (coherentStringPathReindexFunctor a))
+    {x y : I} {f : x ⟶ y} {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
+    HEq (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor a))
       ((SimplicialThickening.functor a.map.toOrderHom.uliftMap).map
         (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last s.length)))) :=
-  coherentPathImageFunctor_nerve_heq a.map.toOrderHom.uliftMap
+  _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor_nerve_heq a.map.toOrderHom.uliftMap
     (congrArg ULift.up a.first) (congrArg ULift.up a.last)
 
 end SerrePositivity.InfinityCategories.Kan

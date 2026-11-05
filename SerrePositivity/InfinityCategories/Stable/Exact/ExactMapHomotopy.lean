@@ -28,51 +28,51 @@ namespace SerrePositivity.InfinityCategories.Stable.Exact
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- core による豊穣移送の頂点は元の完全関手の頂点を保つ。 -/
-lemma stableHomVertex_val {A B : StableCategory.{u}} (F : ExactMap A B) :
-    (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F).val =
-      exactFunctorVertexEquiv A B F := by
+lemma stableHomVertex_val {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F).val =
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B F := by
   apply Subtype.ext
   simp only [SimplicialCategory.homEquiv', Equiv.trans_apply]
   rfl
 
 /-- 完全関手の関手同型は、core を取った実際の豊穣 Hom の頂点同型になる。 -/
-def exactMapCoreVertexIso {A B : StableCategory.{u}} {F G : ExactMap A B}
+def exactMapCoreVertexIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
     (h : FunctorIso F.hom G.hom) :
-    VertexIso (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F)
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B G) := by
-  let a := exactFunctorVertexEquiv A B F
-  let b := exactFunctorVertexEquiv A B G
+    VertexIso (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F)
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B G) := by
+  let a := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B F
+  let b := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B G
   let l := Classical.choose
-    (exists_fullSubcomplexEdgeLift (IsExactVertex A B) a b (FunctorIso.edge h))
+    (exists_fullSubcomplexEdgeLift (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex A B) a b (FunctorIso.edge h))
   have hl := Classical.choose_spec
-    (exists_fullSubcomplexEdgeLift (IsExactVertex A B) a b (FunctorIso.edge h))
+    (exists_fullSubcomplexEdgeLift (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex A B) a b (FunctorIso.edge h))
   have hi : IsInvertibleEdge l := by
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isInvertibleEdge l
     rw [hl]
     exact FunctorIso.edge_isInvertible h
-  let e : SSet.Edge (X := SimplicialCategory.sHom (C := StableQCat.{u}) A B)
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F)
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B G) := {
+  let e : SSet.Edge (X := SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B)
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F)
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B G) := {
     edge := ⟨l.edge, (quasicategoryCore_mem_edge_iff _).2
       ((isInvertibleEdge_congr (by rfl)).2 hi)⟩
     src_eq := by
       apply Subtype.ext
-      exact l.src_eq.trans (stableHomVertex_val F).symm
+      exact l.src_eq.trans (_root_.SerrePositivity.InfinityCategories.Stable.Exact.stableHomVertex_val F).symm
     tgt_eq := by
       apply Subtype.ext
-      exact l.tgt_eq.trans (stableHomVertex_val G).symm }
+      exact l.tgt_eq.trans (_root_.SerrePositivity.InfinityCategories.Stable.Exact.stableHomVertex_val G).symm }
   have : IsIso (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj (SimplicialCategory.sHom
-      (C := StableQCat.{u}) A B)) _
+      (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B)) _
   exact asIso (SSet.Truncated.HomotopyCategory.homMk e.toTruncated)
 
 /-- 関手同型で結ばれた完全関手は StableInfinity の同じ射を表す。 -/
-lemma stableArrow_homMk_eq_of_functorIso {A B : StableCategory.{u}}
-    {F G : ExactMap A B} (h : FunctorIso F.hom G.hom) :
-    SSet.Truncated.HomotopyCategory.homMk (stableArrow F).toTruncated =
-      SSet.Truncated.HomotopyCategory.homMk (stableArrow G).toTruncated :=
-  coherentNerveEdge_homMk_eq_of_enrichedVertexIso (C := StableQCat.{u})
-    (exactMapCoreVertexIso h)
+lemma stableArrow_homMk_eq_of_functorIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} (h : FunctorIso F.hom G.hom) :
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow G).toTruncated :=
+  coherentNerveEdge_homMk_eq_of_enrichedVertexIso (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso h)
 
 end SerrePositivity.InfinityCategories.Stable.Exact
 

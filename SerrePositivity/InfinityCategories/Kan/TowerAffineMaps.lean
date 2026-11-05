@@ -34,12 +34,12 @@ abbrev groupTower : ℕᵒᵖ ⥤ GrpCat.{u} :=
 
 /-- 群の塔の遷移を元の型上の準同型として取り出す。 -/
 def transition {i j : ℕᵒᵖ} (f : i ⟶ j) : G i.unop →* G j.unop :=
-  ((groupTower G q).map f).hom
+  ((_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower G q).map f).hom
 
 /-- 群の遷移の合成の値。 -/
 lemma transition_comp {i j k : ℕᵒᵖ} (f : i ⟶ j) (g : j ⟶ k) (a : G i.unop) :
-    transition G q (f ≫ g) a = transition G q g (transition G q f a) := by
-  dsimp only [transition]
+    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q (f ≫ g) a = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q g (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q f a) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition]
   rw [Functor.map_comp]
   rfl
 
@@ -49,40 +49,40 @@ abbrev affineTower (x : ∀ n, G n) : ℕᵒᵖ ⥤ Type u :=
 
 /-- 群の塔の隣接射は指定した準同型。 -/
 lemma groupTower_step (n : ℕ) :
-    (groupTower G q).map (homOfLE (Nat.le_succ n)).op = GrpCat.ofHom (q n) :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower G q).map (homOfLE (Nat.le_succ n)).op = GrpCat.ofHom (q n) :=
   Functor.ofOpSequence_map_homOfLE_succ _ _
 
 /-- アフィンな塔の隣接射は twisted 方程式の右平行移動。 -/
 lemma affineTower_step (x : ∀ n, G n) (n : ℕ) (a : G (n + 1)) :
-    (affineTower G q x).map (homOfLE (Nat.le_succ n)).op a = q n a * (x n)⁻¹ := by
-  dsimp only [affineTower]
+    (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower G q x).map (homOfLE (Nat.le_succ n)).op a = q n a * (x n)⁻¹ := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower]
   rw [Functor.ofOpSequence_map_homOfLE_succ]
   rfl
 
 /-- 合成したアフィンな遷移も元の合成した準同型の右平行移動。 -/
 lemma affineTower_map (x : ∀ n, G n) (i j : ℕ) (hij : i ≤ j) :
     ∃ c : G i, ∀ a : G j,
-      (affineTower G q x).map (homOfLE hij).op a =
-        transition G q (homOfLE hij).op a * c := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower G q x).map (homOfLE hij).op a =
+        _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q (homOfLE hij).op a * c := by
   induction j, hij using Nat.le_induction with
   | base =>
     refine ⟨1, fun a ↦ ?_⟩
-    simp [transition]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition]
     rfl
   | succ j hij ih =>
     obtain ⟨c, hc⟩ := ih
     let h : op j ⟶ op i := (homOfLE hij).op
     let g : op (j + 1) ⟶ op j := (homOfLE (Nat.le_succ j)).op
     have he : (homOfLE (hij.trans (Nat.le_succ j))).op = g ≫ h := Subsingleton.elim _ _
-    refine ⟨(transition G q h) ((x j)⁻¹) * c, fun a ↦ ?_⟩
-    rw [he, Functor.map_comp, transition_comp]
-    change (affineTower G q x).map h ((affineTower G q x).map g a) =
-      (transition G q h) ((transition G q g) a) *
-        ((transition G q h) ((x j)⁻¹) * c)
-    rw [affineTower_step, hc, map_mul, ← mul_assoc]
-    have hg (a : G (j + 1)) : transition G q g a = q j a := by
-      dsimp only [transition]
-      rw [groupTower_step]
+    refine ⟨(_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q h) ((x j)⁻¹) * c, fun a ↦ ?_⟩
+    rw [he, Functor.map_comp, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition_comp]
+    change (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower G q x).map h ((_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower G q x).map g a) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q h) ((_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q g) a) *
+        ((_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q h) ((x j)⁻¹) * c)
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower_step, hc, map_mul, ← mul_assoc]
+    have hg (a : G (j + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q g a = q j a := by
+      dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition]
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower_step]
       rfl
     rw [hg]
 

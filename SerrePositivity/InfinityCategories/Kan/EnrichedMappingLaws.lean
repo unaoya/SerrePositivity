@@ -53,7 +53,7 @@ theorem enriched_compatible_comp (F : EnrichedFunctor V C C)
   rw [eComp_eHomWhiskerRight, ← Category.assoc, tensorHom_comp_whiskerRight, ha]
   rw [← Category.assoc a (F.map X Y)]
   rw [← tensorHom_comp_whiskerRight (a ≫ F.map X Y)
-    (eHomWhiskerLeft V (F.obj X) sy) b', Category.assoc, enriched_comp_middle]
+    (eHomWhiskerLeft V (F.obj X) sy) b', Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle]
   rw [← Category.assoc, tensorHom_comp_whiskerLeft, hb]
   rw [← Category.assoc b (F.map Y Z)]
   rw [← tensorHom_comp_whiskerLeft (a ≫ F.map X Y) (b ≫ F.map Y Z)

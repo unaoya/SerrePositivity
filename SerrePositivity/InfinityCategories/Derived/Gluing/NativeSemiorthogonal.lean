@@ -21,11 +21,11 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
   (hY : IsExactFunctor (dgGluingUniverseDerivedYoneda.{u, v, w} R C))
   (hM : IsExactFunctor (dgGluingUniverseDerivedCoefficient R C D M))
-def dgGluingNativeDInclusion : ExactMap (dgGluingStableInput.{u, w, v} R D hD)
+def dgGluingNativeDInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableInput.{u, w, v} R D hD)
     (dgGluingStableObject R C D M hC hD) :=
   ⟨(dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion.hom ≫
     (dgGluingStableComparisonInverse R C D M hC hD).hom, inferInstance⟩
-def dgGluingNativeCInclusion : ExactMap (dgGluingStableInput.{u, v, w} R C hC)
+def dgGluingNativeCInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableInput.{u, v, w} R C hC)
     (dgGluingStableObject R C D M hC hD) :=
   ⟨(dgGluingLaxSemiorthogonal R C D M hC hD hY hM).rightInclusion.hom ≫
     (dgGluingStableComparisonInverse R C D M hC hD).hom, inferInstance⟩
@@ -80,7 +80,7 @@ lemma dgGluingNativeDInclusion_killed (d : (dgGluingStableInput.{u, w, v} R D hD
 lemma dgGluingNativeDInclusion_generates_kernel
     (x : (dgGluingStableObject R C D M hC hD).obj _⦋0⦌)
     (hx : IsZeroVertex ((dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) x)) :
-    x ∈ essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
+    x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
   have hz : IsZeroVertex ((F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
       (dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌)
         ((dgGluingUniverseDerivedNerveLaxComparison R C D M).app (Opposite.op ⦋0⦌) x)) := by
@@ -93,24 +93,24 @@ lemma dgGluingNativeDInclusion_generates_kernel
     (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).homInvIso.app x
 
 def dgGluingNativeSemiorthogonal :
-    SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
       (dgGluingStableInput.{u, v, w} R C hC) (dgGluingStableObject R C D M hC hD) := by
   let s := dgGluingLaxSemiorthogonal R C D M hC hD hY hM
   let e := dgGluingUniverseDerivedNerveLaxEquivalence R C D M
   let : IsExactFunctor e.hom :=
     dgGluingUniverseDerivedNerveLaxComparison_isExactFunctor R C D M
   refine {
-    inclusion := dgGluingNativeDInclusion R C D M hC hD hY hM
-    rightInclusion := dgGluingNativeCInclusion R C D M hC hD hY hM
-    retraction := ⟨e.hom ≫ s.retraction.hom, inferInstance⟩
-    projection := ⟨e.hom ≫ s.projection.hom, inferInstance⟩
-    leftAdjunction := s.leftAdjunction.comp e.symm.toAdjunction
-    rightAdjunction := e.toAdjunction.comp s.rightAdjunction
-    inclusion_fullyFaithful := dgGluingNativeDInclusion_isFullyFaithful R C D M hC hD hY hM
-    rightInclusion_fullyFaithful := dgGluingNativeCInclusion_isFullyFaithful R C D M hC hD hY hM
-    counit_isIso := ?_
-    kills_inclusion := ?_
-    generates_kernel := ?_ }
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion := dgGluingNativeDInclusion R C D M hC hD hY hM
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion := dgGluingNativeCInclusion R C D M hC hD hY hM
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.retraction := ⟨e.hom ≫ s.retraction.hom, inferInstance⟩
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection := ⟨e.hom ≫ s.projection.hom, inferInstance⟩
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.leftAdjunction := s.leftAdjunction.comp e.symm.toAdjunction
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightAdjunction := e.toAdjunction.comp s.rightAdjunction
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion_fullyFaithful := dgGluingNativeDInclusion_isFullyFaithful R C D M hC hD hY hM
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion_fullyFaithful := dgGluingNativeCInclusion_isFullyFaithful R C D M hC hD hY hM
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso := ?_
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.kills_inclusion := ?_
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.generates_kernel := ?_ }
   · have : IsIso e.toAdjunction.counit := by
       change IsIso e.adjointEquivalence.counit.hom
       infer_instance
@@ -135,14 +135,14 @@ def dgGluingNativeSemiorthogonal :
 lemma dgGluingNativeSemiorthogonal_projection :
     (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).projection =
       dgGluingStableLeftProjection R C D M hC hD :=
-  ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_fst R C D M)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_fst R C D M)
 lemma dgGluingNativeSemiorthogonal_retraction :
     (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).retraction =
       dgGluingStableRightProjection R C D M hC hD :=
-  ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_snd R C D M)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_snd R C D M)
 
 lemma dgGluingNativeSemiorthogonal_isVerdier :
-    IsVerdierSequence (dgGluingNativeDInclusion R C D M hC hD hY hM)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingNativeDInclusion R C D M hC hD hY hM)
       (dgGluingStableLeftProjection R C D M hC hD) := by
   have h := (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).isVerdier
   rw [dgGluingNativeSemiorthogonal_projection] at h
@@ -151,7 +151,7 @@ lemma dgGluingNativeSemiorthogonal_isVerdier :
 lemma dgGluingDFactor_iff_nativeSemiorthogonal_image (X : DGGluingObject R C D M) :
     dgGluingFactorIsZero R C X.left ↔
       ULift.up (Simplex.vertex X) ∈
-        essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
   rw [dgGluingDFactor_iff_stableLeftKernel]
   have h := (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).kernel
     (ULift.up (Simplex.vertex X))

@@ -12,26 +12,26 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 include h in
 lemma exists_weakMarkedSpanCartesianLift (x : B.obj _⦋0⦌)
-    (v : (markedSpanFamily B.obj (weakEquivalences i) x) _⦋0⦌)
+    (v : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) _⦋0⦌)
     {y : B.obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) y
-      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
-        (Opposite.op ⦋0⦌) v)) (hs : s.edge ∈ weakEquivalences i) :
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app
+        (Opposite.op ⦋0⦌) v)) (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ F : (Δ[1] : SSet.{u}) ⟶
-        markedSpanFamily B.obj (weakEquivalences i) x,
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x,
       stdSimplex.δ (0 : Fin 2) ≫ F = SSet.yonedaEquiv.symm v ∧
-      F ≫ markedSpanFamilyProjection B.obj (weakEquivalences i) x =
+      F ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x =
         SSet.yonedaEquiv.symm s.edge ∧
       IsCartesianEdge
-        (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (SSet.yonedaEquiv F) := by
   let X := B.obj
-  let W := weakEquivalences i
+  let W := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   let S := (functorVertexEquiv (horn 2 0 : SSet.{u}) X).symm v.val.val
   have hS : functorVertex S = v.val.val := (functorVertexEquiv _ _).apply_symm_apply v.val.val
   have hSW : SSet.yonedaEquiv (horn₂₀.ι₀₁ ≫ S) ∈ W := by
@@ -50,7 +50,7 @@ lemma exists_weakMarkedSpanCartesianLift (x : B.obj _⦋0⦌)
       rw [← hS]
       rfl
   have htarget : X.δ 0 (SSet.yonedaEquiv (horn₂₀.ι₀₂ ≫ S)) =
-      (markedSpanFamilyProjection X W x).app (Opposite.op ⦋0⦌) v := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x).app (Opposite.op ⦋0⦌) v := by
     rw [intervalMap_target]
     change (horn₂₀.ι₀₂ ≫ S).app _ _ =
       (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
@@ -66,10 +66,10 @@ lemma exists_weakMarkedSpanCartesianLift (x : B.obj _⦋0⦌)
   have hMs : M ≫ markedSpanSource X W = SSet.const x := by
     dsimp only [M]
     rw [Category.assoc, vertexFiberι_comp, SSet.comp_const, ht]
-  let F : (Δ[1] : SSet.{u}) ⟶ markedSpanFamily X W x :=
+  let F : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x :=
     vertexFiberLift (markedSpanSource X W) x M hMs
   have hF : F ≫ vertexFiberι (markedSpanSource X W) x = M := vertexFiberLift_ι _ _ _ _
-  let r : markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
+  let r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
     vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
   have hFr : F ≫ r = M ≫ markedSpanInclusion X W := by
     dsimp only [r]
@@ -87,7 +87,7 @@ lemma exists_weakMarkedSpanCartesianLift (x : B.obj _⦋0⦌)
     exact hGt
   · apply isCartesianEdge_markedSpanFamilyProjection_of_pullback
     rw [SSet.yonedaEquiv.symm_apply_apply]
-    have hr : F ≫ r ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R := by
+    have hr : F ≫ r ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R := by
       rw [← Category.assoc, hFr]
       exact hGr
     change IsPullbackSquare (uncurry (F ≫ r ≫ (pre horn₂₀.ι₀₂).app X))

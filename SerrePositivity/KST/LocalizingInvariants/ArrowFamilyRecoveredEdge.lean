@@ -28,7 +28,7 @@ variable {K X : SSet.{u}} {x y : X _⦋0⦌}
 /-- 元の全辺族から、同じ固定両端点を持つパラメータ関手圏の実辺を回収する。 -/
 def spanArrowFamilyEdge : SSet.Edge (functorVertex (SSet.const x : K ⟶ X))
     (functorVertex (SSet.const y : K ⟶ X)) :=
-  intervalMappingFamilyEdge (spanArrowFamilyMapping f h₀ h₁)
+  intervalMappingFamilyEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁)
 
 lemma spanArrowFamilyEdge_edge : (spanArrowFamilyEdge f h₀ h₁).edge =
     SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] X f) := by
@@ -39,7 +39,7 @@ lemma spanArrowFamilyEdge_homMk_eq [Quasicategory X]
     (g : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
     (hg₀ : g ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
     (hg₁ : g ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const y)
-    (e : FunctorIso (spanArrowFamilyMapping f h₀ h₁) (spanArrowFamilyMapping g hg₀ hg₁)) :
+    (e : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping g hg₀ hg₁)) :
     Truncated.HomotopyCategory.homMk (spanArrowFamilyEdge f h₀ h₁).toTruncated =
       Truncated.HomotopyCategory.homMk (spanArrowFamilyEdge g hg₀ hg₁).toTruncated :=
   intervalMappingFamilyEdge_homMk_eq e

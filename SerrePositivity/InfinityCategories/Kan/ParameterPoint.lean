@@ -27,8 +27,8 @@ def family {E : C} (p : 𝟙_ C ⟶ E) (A : C) : A ⟶ E ⊗ A :=
 /-- 点と自由パラメータの射による同時の移送は、点を固定した族と可換。 -/
 @[reassoc]
 lemma naturality {E E' A A' : C} (p : 𝟙_ C ⟶ E) (e : E ⟶ E') (a : A ⟶ A') :
-    family p A ≫ (e ⊗ₘ a) = a ≫ family (p ≫ e) A' := by
-  simp only [family, tensorHom_def, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A ≫ (e ⊗ₘ a) = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (p ≫ e) A' := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family, tensorHom_def, Category.assoc]
   rw [← comp_whiskerRight_assoc, ← whisker_exchange, leftUnitor_inv_naturality_assoc]
 
 end SerrePositivity.InfinityCategories.Kan.ParameterPoint

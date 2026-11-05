@@ -36,9 +36,9 @@ lemma signedEvaluationParameter_succ (n : ℕ) :
 
 /-- 同じ補正の漸化式を、任意の標的の実際の内部 Hom の制限へ移す。 -/
 lemma signedEvaluationParameter_pre_succ (V : PointedSimplicialSet.{u}) (n : ℕ) :
-    PointedMapping.prePointed (reversalIterate n) V ≫
-      PointedMapping.prePointed (unit.{u} ≫ integerPowerMap.{u} (-1)) V =
-    PointedMapping.prePointed (signedEvaluationParameter (n + 1)) V := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (reversalIterate n) V ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (unit.{u} ≫ integerPowerMap.{u} (-1)) V =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (signedEvaluationParameter (n + 1)) V := by
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, signedEvaluationParameter, reversalIterate,
     ← Category.assoc]
 

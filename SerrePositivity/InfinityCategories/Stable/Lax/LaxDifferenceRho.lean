@@ -47,7 +47,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Stable.Lax
 open SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 /-- q の可逆余単位を、頂点ごとの可逆性を仮定せず実関手圏で得る。 -/

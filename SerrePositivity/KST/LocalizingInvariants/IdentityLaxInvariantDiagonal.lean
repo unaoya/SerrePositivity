@@ -18,13 +18,13 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u}) (A : StableCategory.{u})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 lemma valueDiagonal_fst :
     SpectrumHo.hom (valueMap Φ (exactDiagonal A)) ≫
       SpectrumHo.hom (valueMap Φ (laxFst (𝟙 A) (𝟙 A))) = 𝟙 _ := by
   have h : (exactDiagonal A : A ⟶ laxCategory (𝟙 A) (𝟙 A)) ≫
-      laxFst (𝟙 A) (𝟙 A) = 𝟙 A := ExactMap.ext (diagonal_fst A)
+      laxFst (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (diagonal_fst A)
   change (stableValueFunctor Φ).map (exactDiagonal A) ≫
     (stableValueFunctor Φ).map (laxFst (𝟙 A) (𝟙 A)) = _
   rw [← CategoryTheory.Functor.map_comp, h, CategoryTheory.Functor.map_id]
@@ -34,7 +34,7 @@ lemma valueDiagonal_snd :
     SpectrumHo.hom (valueMap Φ (exactDiagonal A)) ≫
       SpectrumHo.hom (valueMap Φ (laxSnd (𝟙 A) (𝟙 A))) = 𝟙 _ := by
   have h : (exactDiagonal A : A ⟶ laxCategory (𝟙 A) (𝟙 A)) ≫
-      laxSnd (𝟙 A) (𝟙 A) = 𝟙 A := ExactMap.ext (diagonal_snd A)
+      laxSnd (𝟙 A) (𝟙 A) = 𝟙 A := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (diagonal_snd A)
   change (stableValueFunctor Φ).map (exactDiagonal A) ≫
     (stableValueFunctor Φ).map (laxSnd (𝟙 A) (𝟙 A)) = _
   rw [← CategoryTheory.Functor.map_comp, h, CategoryTheory.Functor.map_id]

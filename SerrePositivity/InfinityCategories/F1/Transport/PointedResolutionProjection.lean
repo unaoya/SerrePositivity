@@ -24,7 +24,7 @@ theorem pointedSpaceCoherentFiberIso_hom_ι (K : KanObject.{u}) :
       vertexFiberι pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K)) =
     vertexFiberι (sliceUnderProjection
       (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-        (coherentNerveVertex (kanObjectOpFunctor.obj K)) ≫ strictKanPointedApexIso.hom := by
+        (coherentNerveVertex (kanObjectOpFunctor.obj K)) ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -33,7 +33,7 @@ theorem pointedSpaceCoherentFiberIso_hom_ι (K : KanObject.{u}) :
   change ((cosliceFiberVerticesIso
     (spaceInfinityVertex_eq_coherent pointKanObject).symm
     (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj K)).symm).hom.app
-      (Opposite.op ⦋n⦌) v).val.val = (strictKanPointedApexIso.hom.app _ v.val).val
+      (Opposite.op ⦋n⦌) v).val.val = (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom.app _ v.val).val
   rw [cosliceFiberVerticesIso_app_val]
   exact (sliceUnder_eqToHom_app_val
     (congrArg SSet.yonedaEquiv.symm (spaceInfinityVertex_eq_coherent pointKanObject).symm)
@@ -46,10 +46,10 @@ theorem pointedSpaceLeftResolutionComparison_ι (K : KanObject.{u}) :
     coherentPointedFiberComparison K ≫
       vertexFiberι (sliceUnderProjection
         (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-          (coherentNerveVertex (kanObjectOpFunctor.obj K)) ≫ strictKanPointedApexIso.hom := by
+          (coherentNerveVertex (kanObjectOpFunctor.obj K)) ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   rw [← pointedSpaceLeftCoherentComparison_eq_resolution,
     ← coherentPointedFiberComparison_coordinates, Category.assoc,
-    pointedSpaceCoherentFiberIso_hom_ι]
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceCoherentFiberIso_hom_ι]
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

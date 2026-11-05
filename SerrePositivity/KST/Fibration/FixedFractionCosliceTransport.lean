@@ -17,8 +17,8 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
 /-- 終点の等式による輸送は、同じ分数評価の実 fiber 写像と厳密に可換。 -/
 theorem fixedFractionCosliceEvaluation_transport {y z : X _⦋0⦌} (e : y = z) :
     eqToHom (congrArg (fun a => fixedMarkedSpans X W x a) e) ≫
-      fixedFractionCosliceEvaluation F W hF x z =
-      fixedFractionCosliceEvaluation F W hF x y ≫ eqToHom
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x z =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y ≫ eqToHom
         (congrArg (vertexFiber
           (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x))))
           (congrArg (F.app (Opposite.op ⦋0⦌)) e)) := by
@@ -31,10 +31,10 @@ theorem fixedFractionCosliceEvaluation_transport_vertex {y z : X _⦋0⦌} (e : 
     (eqToHom (congrArg (vertexFiber
       (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x))))
       (congrArg (F.app (Opposite.op ⦋0⦌)) e))).app (Opposite.op ⦋0⦌)
-        ((fixedFractionCosliceEvaluation F W hF x y).app (Opposite.op ⦋0⦌)
+        ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y).app (Opposite.op ⦋0⦌)
           ((eqToHom (congrArg (fun a => fixedMarkedSpans X W x a) e.symm)).app
             (Opposite.op ⦋0⦌) s)) =
-      (fixedFractionCosliceEvaluation F W hF x z).app (Opposite.op ⦋0⦌) s := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x z).app (Opposite.op ⦋0⦌) s := by
   cases e
   rfl
 

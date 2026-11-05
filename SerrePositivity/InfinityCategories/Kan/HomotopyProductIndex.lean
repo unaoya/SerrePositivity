@@ -28,13 +28,13 @@ open SerrePositivity.KST.Spectra
 使われ方：Kerodon Lemma 3.2.3.9、Theorem 3.2.2.10。境界の面の消去。 -/
 theorem KanHomotopyGroup.mul_eq_at {X : SSet.{u}} [KanComplex X]
     {n : ℕ} {x : X _⦋0⦌} {f g a : X.PtSimplex (n + 2) x} {i : Fin (n + 2)}
-    (h : PtSimplex.MulStruct f g a i) : mk f * mk g = mk a := by
+    (h : PtSimplex.MulStruct f g a i) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a := by
   induction i using Fin.reverseInduction generalizing f g a with
-  | last => exact mul_eq h
+  | last => exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq h
   | cast i ih =>
     obtain ⟨b, ⟨hb⟩⟩ := PtSimplex.MulStruct.nonempty g f i.succ
-    have he := mul_unique_at h (AdjacentProduct.flip hb)
-    rw [he, ← ih hb, mul_comm]
+    have he := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_unique_at h (_root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip hb)
+    rw [he, ← ih hb, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_comm]
 
 /-- 概要：第二因子と積を指定した積の充填は存在する。
 方針：第一因子の面を欠くホーンを Kan 性で埋め、その面を取る。

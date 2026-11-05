@@ -46,8 +46,8 @@ theorem diagram (n : ℕ) :
 規約：面の添字の線形順序を使う。
 使われ方：Goerss–Jardine I §7。互換な面族からの境界射。 -/
 noncomputable def isColimit (n : ℕ) :
-    IsColimit ((diagram.{u} n).multicofork.toLinearOrder.map Subcomplex.toSSetFunctor) :=
-  (diagram n).isColimit'
+    IsColimit ((_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.diagram.{u} n).multicofork.toLinearOrder.map Subcomplex.toSSetFunctor) :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.diagram n).isColimit'
 
 /-- 概要：全ての面の族の互換性条件。
 方針：二つの面の共通の余次元二の面への制限を比較する。
@@ -66,8 +66,8 @@ set_option backward.defeqAttrib.useBackward true in
 方針：各面を標準単体との同型で移し、互換条件を交叉上の等式にする。
 規約：二面の交叉の標準同型を使う。
 使われ方：Goerss–Jardine I §7。境界の貼り合わせの普遍性。 -/
-def multicofork (hf : IsCompatible f) :
-    Multicofork ((diagram.{u} n).multispanIndex.toLinearOrder.map Subcomplex.toSSetFunctor) :=
+def multicofork (hf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible f) :
+    Multicofork ((_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.diagram.{u} n).multispanIndex.toLinearOrder.map Subcomplex.toSSetFunctor) :=
   Multicofork.ofπ _ X (fun j ↦ (stdSimplex.faceSingletonComplIso j).inv ≫ f j) (by
     rintro ⟨⟨a, b⟩, hab⟩
     dsimp
@@ -79,18 +79,18 @@ def multicofork (hf : IsCompatible f) :
 方針：面の貼り合わせの余極限からの射を取る。
 規約：n + 2 次元単体の境界。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。全境界充填の入力。 -/
-noncomputable def desc (hf : IsCompatible f) : (∂Δ[n + 2] : SSet.{u}) ⟶ X :=
-  (isColimit n).desc (multicofork hf)
+noncomputable def desc (hf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible f) : (∂Δ[n + 2] : SSet.{u}) ⟶ X :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.isColimit n).desc (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.multicofork hf)
 
 /-- 概要：貼り合わせた境界射を面に制限すると元の面になる。
 方針：余極限の降下の計算則を面の標準同型で移す。
 規約：任意の面 j。
 使われ方：Goerss–Jardine I §7。充填の境界の検査。 -/
 @[reassoc (attr := simp)]
-theorem ι_desc (hf : IsCompatible f) (j : Fin (n + 3)) : boundary.ι j ≫ desc hf = f j := by
+theorem ι_desc (hf : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible f) (j : Fin (n + 3)) : boundary.ι j ≫ _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc hf = f j := by
   rw [← cancel_epi (stdSimplex.faceSingletonComplIso j).inv]
   simpa only [boundary.faceSingletonComplIso_inv_ι_assoc] using!
-    (isColimit.{u} n).fac (multicofork hf) (.right j)
+    (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.isColimit.{u} n).fac (_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.multicofork hf) (.right j)
 
 end SerrePositivity.InfinityCategories.Kan.BoundaryFaces
 

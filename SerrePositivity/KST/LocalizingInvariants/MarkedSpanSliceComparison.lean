@@ -24,27 +24,27 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の実区間の分母条件は、同じ区間の商像の可逆性と同値。 -/
-lemma weakIntervalVertex_iff {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma weakIntervalVertex_iff {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (v : ((ihom (Δ[1] : SSet.{u})).obj B.obj) _⦋0⦌) :
-    intervalFunctorVertexEdge v ∈ weakEquivalences i ↔
+    intervalFunctorVertexEdge v ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ↔
       IsEquivalencePathVertex (((ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌) v) := by
-  change intervalFunctorVertexEdge v ∈ weakEquivalences i ↔ IsInvertibleEdge
+  change intervalFunctorVertexEdge v ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ↔ IsInvertibleEdge
     (edgeOfSimplex (intervalFunctorVertexEdge
       (((ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌) v)))
   rw [intervalFunctorVertexEdge_postcomp]
-  exact (mem_weakEquivalences_iff_invertible h
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h
     (edgeOfSimplex (intervalFunctorVertexEdge v))).trans (isInvertibleEdge_congr rfl)
 
 /-- 元の左脚の分母条件は、全錐族の同型で保存される。 -/
-lemma markedSpanConeVertex_iff_of_vertexIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma markedSpanConeVertex_iff_of_vertexIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌)
     {a b : (coneFamily (intervalMappingBoundary x y)) _⦋0⦌} (e : VertexIso a b) :
     (intervalFunctorVertexEdge ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌) a) ∈
-      weakEquivalences i) ↔
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ↔
     (intervalFunctorVertexEdge ((spanConeDenominatorFamily x y).app (Opposite.op ⦋0⦌) b) ∈
-      weakEquivalences i) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := by
   rw [weakIntervalVertex_iff h, weakIntervalVertex_iff h]
   exact isEquivalencePathVertex_iff_of_vertexIso (VertexIso.map e
     (spanConeDenominatorFamily x y ≫ (ihom (Δ[1] : SSet.{u})).map q.hom))
@@ -76,14 +76,14 @@ lemma markedSpanSliceConeComparison_ι {X : SSet.{u}} (W : Set (X _⦋1⦌))
 
 /-- 元の実分母条件への制限も、全写像空間で元の slice 比較の同値性を保持する。 -/
 lemma markedSpanSliceConeComparison_isQCatEquivalence
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
-    IsQCatEquivalence (markedSpanSliceConeComparison (weakEquivalences i) x y) := by
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
+    IsQCatEquivalence (markedSpanSliceConeComparison (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) := by
   exact isQCatEquivalence_fullSubcomplexRestriction _ _
     (fun e => markedSpanConeVertex_iff_of_vertexIso h x y e)
     (sliceConeFamilyMap (intervalMappingBoundary x y))
     (isQCatEquivalence_sliceConeFamilyMap _) _
-    (markedSpanSliceConeComparison_ι (weakEquivalences i) x y) (fun _ hv => hv)
+    (markedSpanSliceConeComparison_ι (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) (fun _ hv => hv)
 
 /-- 元の実分母条件を持つ二終点上の実 slice から、元の固定端点 span への比較。 -/
 def markedSpanSliceToFixed {X : SSet.{u}} (W : Set (X _⦋1⦌)) (x y : X _⦋0⦌) :
@@ -92,11 +92,11 @@ def markedSpanSliceToFixed {X : SSet.{u}} (W : Set (X _⦋1⦌)) (x y : X _⦋0�
 
 /-- 元の Verdier 分母について、実 slice と元の固定端点 span の全関手比較は同値。 -/
 lemma markedSpanSliceToFixed_isQCatEquivalence
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
-    IsQCatEquivalence (markedSpanSliceToFixed (weakEquivalences i) x y) :=
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
+    IsQCatEquivalence (markedSpanSliceToFixed (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) :=
   (markedSpanSliceConeComparison_isQCatEquivalence h x y).comp
     ((qCatEquivalenceOfIso
-      (fixedMarkedSpanConeFamilyIso B.obj (weakEquivalences i) x y).symm).isQCatEquivalence)
+      (fixedMarkedSpanConeFamilyIso B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y).symm).isQCatEquivalence)
 
 end SerrePositivity.KST.LocalizingInvariants

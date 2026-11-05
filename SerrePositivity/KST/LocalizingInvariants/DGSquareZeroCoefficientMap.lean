@@ -23,8 +23,8 @@ def coefficientMap : algebra A M ⟶ algebra A N := by
   refine Mon.Hom.mk' (biprod.map (𝟙 A.X) f.hom) ?_ ?_
   · change (η[A.X] ≫ biprod.inl) ≫ biprod.map (𝟙 A.X) f.hom = η[A.X] ≫ biprod.inl
     rw [Category.assoc, biprod.inl_map, Category.id_comp]
-  · change mul A M ≫ biprod.map (𝟙 A.X) f.hom =
-      (biprod.map (𝟙 A.X) f.hom ⊗ₘ biprod.map (𝟙 A.X) f.hom) ≫ mul A N
+  · change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ biprod.map (𝟙 A.X) f.hom =
+      (biprod.map (𝟙 A.X) f.hom ⊗ₘ biprod.map (𝟙 A.X) f.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A N
     apply biprodTensor_hom_ext
     all_goals
       simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr, Category.assoc,

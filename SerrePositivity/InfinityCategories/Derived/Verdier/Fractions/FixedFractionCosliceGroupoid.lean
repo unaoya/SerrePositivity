@@ -23,32 +23,32 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
   (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (x y : X _⦋0⦌)
 
 /-- 元の同じ coslice 評価を、元の固定分数の亜群化からの実写像として保持する。 -/
-def fixedFractionCosliceGroupoidComparison : groupoidCompletion (fixedMarkedSpans X W x y) ⟶
+def fixedFractionCosliceGroupoidComparison : _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans X W x y) ⟶
     vertexFiber (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
       (F.app (Opposite.op ⦋0⦌) y) :=
-  groupoidCompletionEvaluation (fixedFractionCosliceEvaluation F W hF x y)
+  _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y)
 
 /-- 同じ亜群化後の coslice 比較は、区間模型へ移すと既存の分数比較そのものに自然同型。 -/
 def fixedFractionCosliceGroupoidComparisonIso :
     FunctorIso
-      (fixedFractionCosliceGroupoidComparison F W hF x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparison F W hF x y ≫
         cosliceFiberToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x)
-          (F.app (Opposite.op ⦋0⦌) y)) (fractionMappingComparison F W hF x y) := by
-  apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization _)
+          (F.app (Opposite.op ⦋0⦌) y)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison F W hF x y) := by
+  apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization _)
   have e := FunctorIso.postcomp
-    (groupoidCompletionEvaluationIso (fixedFractionCosliceEvaluation F W hF x y))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y))
     (cosliceFiberToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x)
-      (F.app (Opposite.op ⦋0⦌) y)) ≪≫ fixedFractionCosliceComparisonIso F W hF x y ≪≫
-        (fractionMappingComparisonIso F W hF x y).symm
-  simpa only [Category.assoc, fixedFractionCosliceGroupoidComparison] using e
+      (F.app (Opposite.op ⦋0⦌) y)) ≪≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceComparisonIso F W hF x y ≪≫
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparisonIso F W hF x y).symm
+  simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparison] using e
 
 /-- 同値性を仮定して結論せず、元の全 coslice 評価と既存の分数比較の同じ未完条件を同定する。 -/
 theorem fixedFractionCosliceGroupoidComparison_isQCatEquivalence_iff :
-    IsQCatEquivalence (fixedFractionCosliceGroupoidComparison F W hF x y) ↔
-      IsQCatEquivalence (fractionMappingComparison F W hF x y) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparison F W hF x y) ↔
+      IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison F W hF x y) := by
   have hc := cosliceFiberToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y)
-  have e := fixedFractionCosliceGroupoidComparisonIso F W hF x y
+  have e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparisonIso F W hF x y
   constructor
   · intro h
     exact (h.comp hc).ofFunctorIso e

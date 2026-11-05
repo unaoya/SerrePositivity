@@ -29,12 +29,12 @@ lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     (w : SSet.Edge c.vertex d.vertex)
     (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
     (hc : Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk w.toTruncated =
       Truncated.HomotopyCategory.homMk
-          (functorEdgeAt a (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+          (functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated) :
+          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated) :
     ∃ l : Truncated.Edge
         (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X))
         (functorVertex c.val) (functorVertex d.val),
@@ -43,23 +43,23 @@ lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
         (Opposite.op ⦋1⦌) l.edge = a.edge ∧
       SSet.yonedaEquiv.symm l.edge ≫ (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app X =
         curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm w.edge) := by
-  let k := SSet.yonedaEquiv (simplexLastPoint.{u} n)
+  let k := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint.{u} n)
   let f := HomotopyLimits.coconeVertexLeg c k
   let g := HomotopyLimits.coconeVertexLeg d k
-  obtain ⟨b, hbi, hbs, hbt⟩ := exists_arrowComparison_preservingEndpointPaths a
-    (simplexLastPoint n) f g w ha hw hc
+  obtain ⟨b, hbi, hbs, hbt⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowComparison_preservingEndpointPaths a
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) f g w ha hw hc
   have hf : (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm f.edge =
-      joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ c.val := by
+      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ c.val := by
     change (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
       ((joinStdSimplexIso 0 0).inv ≫
-        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (simplexLastPoint n)))
+        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)))
           (𝟙 Δ[0]) ≫ c.val)) = _
     rw [Equiv.symm_apply_apply, Equiv.symm_apply_apply, Iso.hom_inv_id_assoc]
   have hg : (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm g.edge =
-      joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ d.val := by
+      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ d.val := by
     change (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
       ((joinStdSimplexIso 0 0).inv ≫
-        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (simplexLastPoint n)))
+        joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)))
           (𝟙 Δ[0]) ≫ d.val)) = _
     rw [Equiv.symm_apply_apply, Equiv.symm_apply_apply, Iso.hom_inv_id_assoc]
   let a' := a.ofEq (congrArg functorVertex c.property).symm
@@ -73,7 +73,7 @@ lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
   have hb' : IsInvertibleEdge b'.toTruncated :=
     (isInvertibleEdge_congr (e := b₀.toTruncated) (f := b'.toTruncated) rfl).mp
       (hbi.map ((pre (joinStdSimplexIso 0 0).hom).app X))
-  have hs : SSet.yonedaEquiv.symm a'.edge ≫ (pre (simplexLastPoint n)).app X =
+  have hs : SSet.yonedaEquiv.symm a'.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       SSet.yonedaEquiv.symm b'.edge ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X := by
     have haraw : a'.edge = a.edge := rfl
     have hbraw : b'.edge = ((pre (joinStdSimplexIso 0 0).hom).app X).app
@@ -86,22 +86,22 @@ lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     rw [← hbraw, hm, Category.assoc, ← NatTrans.comp_app, ← pre_map,
       joinStdSimplexIso_zero_inl]
     exact hbs.symm
-  obtain ⟨l, hl, hr⟩ := exists_simplexAttachmentComparison n c.val d.val
+  obtain ⟨l, hl, hr⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentComparison n c.val d.val
     a'.toTruncated b'.toTruncated hs
   have hla : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X)
       (l.map ((truncation 2).map ((pre (joinInl Δ[n] Δ[0])).app X))) :=
     (isInvertibleEdge_congr hl).mpr ha'
   have hlb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
       (l.map ((truncation 2).map
-        ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
+        ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
     (isInvertibleEdge_congr hr).mpr hb'
-  refine ⟨l, simplexAttachmentComparison_isInvertible n l hla hlb, hl, ?_⟩
+  refine ⟨l, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible n l hla hlb, hl, ?_⟩
   have hj : joinInr (Δ[0] : SSet.{u}) Δ[0] ≫
-      joinMap (simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
+      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
     simpa only [Category.id_comp] using
-      joinInr_joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
+      joinInr_joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
   have hr' : SSet.yonedaEquiv.symm l.edge ≫
-      (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
         SSet.yonedaEquiv.symm b'.edge := by
     rw [SSet.yonedaEquiv_symm_comp]
     exact congrArg SSet.yonedaEquiv.symm hr
@@ -119,12 +119,12 @@ lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     (w : SSet.Edge c.vertex d.vertex)
     (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
     (hc : Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk w.toTruncated =
       Truncated.HomotopyCategory.homMk
-          (functorEdgeAt a (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+          (functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk
-          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated) :
+          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated) :
     ∃ e : FunctorIso c.val d.val,
       Arrow.mk ((hoFunctor.map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
         e.hom) = Arrow.mk (Truncated.HomotopyCategory.homMk a.toTruncated) := by

@@ -78,7 +78,7 @@ abbrev loopSpace (X : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
 規約：通常の点つき射の同値。
 使われ方：HA §1.4.2、BF 1978 §2。構造写像の随伴。 -/
 def suspensionLoopEquiv (X Y : PointedSimplicialSet.{u}) :
-    (suspension X ⟶ Y) ≃ (X ⟶ loopSpace Y) :=
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ⟶ Y) ≃ (X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
   (PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle).homEquiv X Y
 
 end

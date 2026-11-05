@@ -16,31 +16,31 @@ variable {I : Type u} [Category.{u} I] {E : SSet.{u}} (p : E ⟶ nerve I) [LeftF
 
 /-- 元の scaffold の係数点を保持する比較を、同じ相対表現への指定比較と合成する。 -/
 def scaffoldNerveRepresentationIso : FunctorIso (leftStraighteningCandidate p) R.diagram :=
-  (scaffoldTransportComparisonSpan p).candidateNativeIso ≪≫
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso ≪≫
     nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p) R
 
 /-- 元の係数点は、同じ恒等射評価の実 fiber 点を表現の pointedMap へ送った点に移る。 -/
 theorem scaffoldNerveRepresentationIso_pointHom (c : I)
     (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate (scaffoldNerveRepresentationIso p R).hom
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap R (ULift.up (nerveVertex c))).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap R (ULift.up (nerveVertex c))).app
       (Opposite.op ⦋0⦌) ((uliftVertexFiberIso p (nerveVertex c)).hom.app
         (Opposite.op ⦋0⦌)
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)))) := by
   let a := ULift.up.{u + 1} (nerveVertex c)
   let φ := nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p) R
-  have hs := (scaffoldTransportComparisonSpan p).candidateNativeIso_pointHom c v
+  have hs := (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso_pointHom c v
   have he := congrArg (fun m => m ≫ functorHomEvaluate φ.hom a) hs
   have hr := nativeRepresentationComparisonIso_pointHom p R (nerveVertex c)
     ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)
   have h := he.trans hr
   simp only [Category.assoc] at h
   change _ ≫ _ ≫ functorHomEvaluate
-    ((scaffoldTransportComparisonSpan p).candidateNativeIso.hom ≫ φ.hom) a = _
+    ((_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso.hom ≫ φ.hom) a = _
   rw [functorHomEvaluate_comp]
   exact h
 

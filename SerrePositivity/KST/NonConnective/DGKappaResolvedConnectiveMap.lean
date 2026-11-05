@@ -46,7 +46,7 @@ theorem dgKappaResolvedKernelKComparison_piIsomorphism :
       (presentedPerfectDGBFSOASpectrumComparison_piIsomorphism R (dgKappaResolvedKernelKInput R D I)))
 
 variable (Z : DGKappaZeroInput R D I)
-  (hz : IsZeroCategory (dgKInputStableValue R
+  (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
     (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))))
 
 /-- 指定 Perf 同値・零所属・実零角に条件付きの、同じ実核からの構造射。 -/

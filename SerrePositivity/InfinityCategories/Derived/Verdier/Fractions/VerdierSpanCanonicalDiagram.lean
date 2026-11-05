@@ -51,35 +51,35 @@ lemma fixedMarkedSpanConeFamilyIso_inv_ambient (X : SSet.{u})
           (functorVertex (intervalMappingBoundary x y)) := by
   apply (cancel_epi (fixedMarkedSpanConeFamilyIso X W x y).hom).mp
   simp only [← Category.assoc, Iso.hom_inv_id, Category.id_comp]
-  exact fixedMarkedSpanConeFamilyIso_hom_ambient X W x y
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanConeFamilyIso_hom_ambient X W x y
 
 /-- 元の標準 span 比較の全錐図式は、実境界 slice の同じ標準比較そのもの。 -/
 lemma verdierDenominatorSpanCanonicalComparison_diagram
-    {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    verdierDenominatorSpanCanonicalComparison i x y ≫
-      fixedMarkedSpanInclusion B.obj (weakEquivalences i) x y ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
+      fixedMarkedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
       (pre spanBoundaryConeIso.hom).app B.obj =
-    (verdierDenominatorSpanBoundaryIso i x y).hom ≫
-      (markedSpanSlice (weakEquivalences i) x y).ι ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundaryIso i x y).hom ≫
+      (markedSpanSlice (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y).ι ≫
       sliceConeDiagramMap (intervalMappingBoundary x y) := by
-  rw [verdierDenominatorSpanCanonicalComparison, markedSpanSliceToFixed]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison, markedSpanSliceToFixed]
   simp only [Category.assoc]
-  rw [fixedMarkedSpanConeFamilyIso_inv_ambient]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanConeFamilyIso_inv_ambient]
   rw [← Category.assoc (markedSpanSliceConeComparison (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y),
     markedSpanSliceConeComparison_ι]
   rfl
 
 /-- 同じ二点表示から境界表示への輸送は、任意の実錐族の展開を保持する。 -/
 lemma spanBoundarySliceIso_uncurry {X T : SSet.{u}} (x y : X _⦋0⦌)
-    (F : T ⟶ sliceOver (spanTwoPointDiagram x y)) :
-    sliceOverUncurry (F ≫ (spanBoundarySliceIso x y).hom) =
+    (F : T ⟶ sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)) :
+    sliceOverUncurry (F ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso x y).hom) =
       joinMap (𝟙 T) spanEndpointCoproductIso.inv ≫ sliceOverUncurry F := by
-  dsimp only [spanBoundarySliceIso, F1B.sliceDiagramIso, Iso.trans_hom, asIso_hom, eqToIso]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso, F1B.sliceDiagramIso, Iso.trans_hom, asIso_hom, eqToIso]
   simp only [← Category.assoc]
   rw [sliceOverUncurry_eqToHom, sliceOverUncurry_restrict, sliceOverUncurry_postcomp]
   · simp only [Iso.refl_hom, Category.comp_id]
-  · rw [spanEndpointCoproductDiagram_eq, ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
+  · rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanEndpointCoproductDiagram_eq, ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
 
 /-- 区間境界の始点への実 slice 制限。 -/
 def spanBoundarySliceLeft {X : SSet.{u}} (x y : X _⦋0⦌) :
@@ -94,30 +94,30 @@ def spanBoundarySliceRight {X : SSet.{u}} (x y : X _⦋0⦌) :
     eqToHom (congrArg sliceOver (intervalMappingBoundary_face_zero x y))
 
 lemma spanBoundarySliceIso_left {X : SSet.{u}} (x y : X _⦋0⦌) :
-    (spanBoundarySliceIso x y).hom ≫ spanBoundarySliceLeft x y =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceLeft x y =
       sliceOverCoproductLeft (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y) := by
   apply sliceOverUncurry_injective (SSet.yonedaEquiv.symm x)
-  have hb := spanBoundarySliceIso_uncurry x y (𝟙 (sliceOver (spanTwoPointDiagram x y)))
+  have hb := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso_uncurry x y (𝟙 (sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)))
   simp only [Category.id_comp] at hb
   have hc := sliceOverCoproductLeft_uncurry (SSet.yonedaEquiv.symm x)
-    (SSet.yonedaEquiv.symm y) (𝟙 (sliceOver (spanTwoPointDiagram x y)))
+    (SSet.yonedaEquiv.symm y) (𝟙 (sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)))
   simp only [Category.id_comp] at hc
-  rw [spanBoundarySliceLeft, ← Category.assoc, sliceOverUncurry_eqToHom,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceLeft, ← Category.assoc, sliceOverUncurry_eqToHom,
     sliceOverUncurry_restrict, hb, hc, ← Category.assoc, ← joinMap_comp,
     Category.id_comp, ← spanEndpointCoproductIso_left, Category.assoc,
     Iso.hom_inv_id, Category.comp_id]
   exact intervalMappingBoundary_face_one x y
 
 lemma spanBoundarySliceIso_right {X : SSet.{u}} (x y : X _⦋0⦌) :
-    (spanBoundarySliceIso x y).hom ≫ spanBoundarySliceRight x y =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceRight x y =
       sliceOverCoproductRight (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y) := by
   apply sliceOverUncurry_injective (SSet.yonedaEquiv.symm y)
-  have hb := spanBoundarySliceIso_uncurry x y (𝟙 (sliceOver (spanTwoPointDiagram x y)))
+  have hb := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso_uncurry x y (𝟙 (sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)))
   simp only [Category.id_comp] at hb
   have hc := sliceOverCoproductRight_uncurry (SSet.yonedaEquiv.symm x)
-    (SSet.yonedaEquiv.symm y) (𝟙 (sliceOver (spanTwoPointDiagram x y)))
+    (SSet.yonedaEquiv.symm y) (𝟙 (sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)))
   simp only [Category.id_comp] at hc
-  rw [spanBoundarySliceRight, ← Category.assoc, sliceOverUncurry_eqToHom,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceRight, ← Category.assoc, sliceOverUncurry_eqToHom,
     sliceOverUncurry_restrict, hb, hc, ← Category.assoc, ← joinMap_comp,
     Category.id_comp, ← spanEndpointCoproductIso_right, Category.assoc,
     Iso.hom_inv_id, Category.comp_id]

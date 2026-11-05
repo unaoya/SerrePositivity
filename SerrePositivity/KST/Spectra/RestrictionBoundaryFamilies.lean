@@ -31,12 +31,12 @@ def relativeProjection : B ⟶ (relativeSource i).right :=
 
 @[reassoc]
 lemma relativeProjection_restriction :
-    (PointedMapping.prePointed
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
         (pointedCofiberProjection (PointedObject.adjoinFunctor.map i)) Y).right ≫
         (freeHomIso B Y).hom.right =
       PointedObject.basedHomι (relativeSource i) Y ≫
         (MonoidalClosed.pre (relativeProjection i)).app Y.right := by
-  change PointedMapping.pre _ Y ≫
+  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _ Y ≫
     (PointedObject.basedHomι (PointedObject.adjoin B) Y ≫
       (MonoidalClosed.pre coprod.inl).app Y.right) = _
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc,
@@ -52,7 +52,7 @@ lemma uncurry_constant_basepoint (B T : SSet.{u}) (Y : PointedSimplicialSet.{u})
 
 variable {n : ℕ}
   {s : (obj A Y).right.PtSimplex (n + 1) ((pre i Y).right.app _ (obj B Y).basepoint)}
-  (L : BoundaryLift (pre i Y).right (obj B Y).basepoint s)
+  (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pre i Y).right (obj B Y).basepoint s)
 
 /-- 概要：相対ホーン充填が表す元の源上のパラメータ族。
 方針：通常の内部 Hom の充填射を uncurry する。

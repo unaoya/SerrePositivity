@@ -21,7 +21,7 @@ open scoped Simplicial
 /-- Cat^perf の零安定対象を、同じ実 Sp 頂点の零対象へ送る条件。 -/
 def PreservesPerfectZeroCategories (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop :=
   ∀ a : perfectStableInfinity.{u} _⦋0⦌,
-    IsZeroCategory (perfectStableObject a) → IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject a) → IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)
 
 /-- 全ての小さい filtered ∞ 添字の実余極限余錐を保存する条件。 -/
 def PreservesPerfectFilteredColimits (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop :=

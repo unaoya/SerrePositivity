@@ -33,21 +33,21 @@ lemma flipFamily_evaluate {A K Y : SSet.{u}} (f : A ⟶ (ihom K).obj Y) (a : A _
   exact he.symm
 
 /-- 全 cofiber 四角形の族を、同じ全パラメーターを持つ関手圏の四角形へ移す。 -/
-def cofiberFamilySquare {A : SSet.{u}} {B : StableCategory.{u}}
+def cofiberFamilySquare {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) :
     Δ[1] ⊗ Δ[1] ⟶ (ihom A).obj B.obj :=
   internalHomFlipHomEquiv A (Δ[1] ⊗ Δ[1]) B.obj
     (p ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)
 
 /-- 転置した族を各点で評価すると、元の同じ実四角形を回収する。 -/
-lemma cofiberFamilySquare_evaluate {A : SSet.{u}} {B : StableCategory.{u}}
+lemma cofiberFamilySquare_evaluate {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) (a : A _⦋0⦌) :
     cofiberFamilySquare p ≫ evaluateFunctorAt a =
       squareDiagram (p.app (Opposite.op ⦋0⦌) a).val :=
   flipFamily_evaluate _ a
 
 /-- 転置した族の底辺は、元の底辺の族の転置そのもの。 -/
-lemma cofiberFamilySquare_bottom {A : SSet.{u}} {B : StableCategory.{u}}
+lemma cofiberFamilySquare_bottom {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) :
     squareBottomEdge ≫ cofiberFamilySquare p =
       internalHomFlipHomEquiv A Δ[1] B.obj (p ≫ cofiberProjection B.obj) := by
@@ -56,7 +56,7 @@ lemma cofiberFamilySquare_bottom {A : SSet.{u}} {B : StableCategory.{u}}
   exact congrArg (internalHomFlipHomEquiv A Δ[1] B.obj) (Category.assoc _ _ _)
 
 /-- 族の零角は、関手圏でも実際に零対象である。 -/
-lemma cofiberFamilySquare_zero {A : SSet.{u}} {B : StableCategory.{u}}
+lemma cofiberFamilySquare_zero {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) :
     IsZeroVertex (squareVertex (cofiberFamilySquare p) 0 1) := by
   change IsZeroVertex ((cofiberFamilySquare p).app (Opposite.op ⦋0⦌)
@@ -70,12 +70,12 @@ lemma cofiberFamilySquare_zero {A : SSet.{u}} {B : StableCategory.{u}}
   exact (congrArg IsZeroVertex he).mpr hz
 
 /-- パラメーター付き cofiber を関手圏の零角を持つ三角形として保持する。 -/
-def cofiberFamilyZeroTriangle {A : SSet.{u}} {B : StableCategory.{u}}
+def cofiberFamilyZeroTriangle {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) : ZeroTriangle ((ihom A).obj B.obj) :=
   ⟨cofiberFamilySquare p, cofiberFamilySquare_zero p⟩
 
 /-- 転置した族は点ごとの普遍性から関手圏の実 cofiber 列である。 -/
-lemma cofiberFamily_isCofiber {A : SSet.{u}} {B : StableCategory.{u}}
+lemma cofiberFamily_isCofiber {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (p : A ⟶ cofiberDiagrams B.obj) : IsCofiberSequence (cofiberFamilyZeroTriangle p) := by
   apply (functor_zeroTriangle_pushout_iff (cofiberFamilyZeroTriangle p)).2
   intro a

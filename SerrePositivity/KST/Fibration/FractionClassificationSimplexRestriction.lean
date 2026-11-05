@@ -17,12 +17,12 @@ theorem fractionKanSpaceDiagram_classificationIso_pre {X Q : SSet.{u}}
     [Quasicategory X] [Quasicategory Q] (F : X ⟶ Q) (x : X _⦋0⦌) :
     (hoFunctor.map ((pre ((SSet.uliftFunctor.{u + 1, u}).map
       (transportSimplexFirstVertexMap X))).app SpaceInfinity)).toFunctor.map
-        (fractionKanSpaceDiagram_classificationIso F x).hom =
-      (fractionKanSpaceDiagram_classificationRestrictionIso F x).hom := by
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso F x).hom =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationRestrictionIso F x).hom := by
   exact (localization_pre_isFullyFaithful
     (transportSimplexFirstVertexMap_ulift_isLocalization.{u, u + 1} X)
     SpaceInfinity.{u}).toHoFullyFaithful.map_preimage
-      (X := HomotopyCategory.mk (functorVertex (fractionKanSpaceDiagram F x)))
+      (X := HomotopyCategory.mk (functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram F x)))
       (Y := HomotopyCategory.mk (functorVertex
         ((SSet.uliftFunctor.{u + 1, u}).map F ≫ leftStraighteningInfinityDiagram
           (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))))) _
@@ -31,18 +31,18 @@ theorem fractionKanSpaceDiagram_classificationIso_pre {X Q : SSet.{u}}
 theorem fractionKanSpaceDiagram_classificationIso_component {X Q : SSet.{u}}
     [Quasicategory X] [Quasicategory Q] (F : X ⟶ Q) (x : X _⦋0⦌)
     (c : TransportSimplexCategory X) :
-    functorHomEvaluate (fractionKanSpaceDiagram_classificationIso F x).hom
+    functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso F x).hom
       (ULift.up ((transportSimplexFirstVertexMap X).app (Opposite.op ⦋0⦌) (nerveVertex c))) =
-      functorHomEvaluate (fractionKanSpaceDiagram_classificationRestrictionIso F x).hom
+      functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationRestrictionIso F x).hom
         (ULift.up (nerveVertex c)) := by
   let k := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap X)
-  let S := fractionKanSpaceDiagram F x
+  let S := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram F x
   let T := (SSet.uliftFunctor.{u + 1, u}).map F ≫ leftStraighteningInfinityDiagram
     (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
   have he := congrArg (fun m : FunctorHom (k ≫ S) (k ≫ T) =>
     functorHomEvaluate m (ULift.up (nerveVertex c)))
     (fractionKanSpaceDiagram_classificationIso_pre F x)
-  exact (functorHomEvaluate_precomp (fractionKanSpaceDiagram_classificationIso F x).hom
+  exact (functorHomEvaluate_precomp (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso F x).hom
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap X))
     (ULift.up (nerveVertex c))).symm.trans he
 

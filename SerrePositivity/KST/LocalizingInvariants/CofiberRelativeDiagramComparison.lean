@@ -19,18 +19,18 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X] {A : SSet.{u}}
-  (f g : A ⟶ space X) (h : f ≫ bottom X = g ≫ bottom X)
+  (f g : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) (h : f ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X = g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)
 
 def relativeComparison : FunctorIso f g :=
-  functorIsoOfTrivialKanFibration (bottom X) f g h
+  functorIsoOfTrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) f g h
 
 lemma relativeComparison_bottom_arrow :
-    Arrow.mk (FunctorIso.postcomp (relativeComparison X f g h) (bottom X)).hom =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ bottom X)) :
+    Arrow.mk (FunctorIso.postcomp (relativeComparison X f g h) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)).hom =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)) :
         hoFunctor.obj ((ihom A).obj ((ihom (Δ[1] : SSet.{u})).obj X)))) :=
-  functorIsoOfTrivialKanFibration_projection_arrow (bottom X) f g h
+  functorIsoOfTrivialKanFibration_projection_arrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) f g h
 
-def relativeSquareComparison : FunctorIso (f ≫ inclusion X) (g ≫ inclusion X) :=
-  FunctorIso.postcomp (relativeComparison X f g h) (inclusion X)
+def relativeSquareComparison : FunctorIso (f ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X) (g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X) :=
+  FunctorIso.postcomp (relativeComparison X f g h) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X)
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams

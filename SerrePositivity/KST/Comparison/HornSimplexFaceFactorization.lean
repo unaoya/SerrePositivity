@@ -63,7 +63,7 @@ theorem hornSubdivisionFaceCover (n : ℕ) (k : Fin (n + 2))
     ∃ (j : Fin (n + 2)) (hj : j ≠ k)
       (t : (SSet.sd.obj (Δ[n] : SSet.{u})).obj d),
       (SSet.sd.map (SSet.horn.ι k j hj)).app d t = s := by
-  obtain ⟨m, f, t, ht⟩ := subdivisionSimplexCover (SSet.horn (n + 1) k) d s
+  obtain ⟨m, f, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover (SSet.horn (n + 1) k) d s
   obtain ⟨j, hj, g, hg⟩ := hornSimplexFaceFactorization n k m f
   refine ⟨j, hj, (SSet.sd.map g).app d t, ?_⟩
   rw [← hg, SSet.sd.map_comp] at ht

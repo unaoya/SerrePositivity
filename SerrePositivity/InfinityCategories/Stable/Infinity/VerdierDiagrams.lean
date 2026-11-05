@@ -26,32 +26,32 @@ namespace SerrePositivity.InfinityCategories.Stable.Infinity
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 完全関手が定める元の coherent nerve の辺。 -/
-def stableArrow {A B : StableCategory.{u}} (F : ExactMap A B) :
-    StableInfinity.{u}.Edge (stableVertex A) (stableVertex B) :=
-  coherentNerveEdge (C := StableQCat.{u}) F
+def stableArrow {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex B) :=
+  coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) F
 
 /-- 安定対象間の辺は、元の完全関手と一対一に対応する。 -/
-def stableArrowEquiv (A B : StableCategory.{u}) :
-    StableInfinity.{u}.Edge (stableVertex A) (stableVertex B) ≃ ExactMap A B :=
-  coherentNerveEdgeEquiv (C := StableQCat.{u}) A B
+def stableArrowEquiv (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}.Edge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex B) ≃ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B :=
+  coherentNerveEdgeEquiv (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B
 
-lemma stableArrowEquiv_arrow {A B : StableCategory.{u}} (F : ExactMap A B) :
-    stableArrowEquiv A B (stableArrow F) = F :=
-  coherentNerveEdgeToHom_edge (C := StableQCat.{u}) F
+lemma stableArrowEquiv_arrow {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrowEquiv A B (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F) = F :=
+  coherentNerveEdgeToHom_edge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) F
 
 /-- 零の安定圏では全ての実頂点が零対象。 -/
-def IsZeroCategory (A : StableCategory.{u}) : Prop :=
+def IsZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : Prop :=
   ∀ a : A.obj _⦋0⦌, IsZeroVertex a
 
 /-- A → B → C の零合成を保持した coherent 四角形の提示。 -/
-structure VerdierDiagram extends VerdierSequence.{u} where
-  square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}
-  left_eq : squareVertex square 0 0 = stableVertex left
-  middle_eq : squareVertex square 1 0 = stableVertex middle
-  right_eq : squareVertex square 1 1 = stableVertex right
-  bottom_edge : squareBottomEdge ≫ square = SSet.yonedaEquiv.symm (stableArrow inclusion).edge
-  right_edge : squareRightEdge ≫ square = SSet.yonedaEquiv.symm (stableArrow projection).edge
-  zero_corner : IsZeroCategory (stableObject (squareVertex square 0 1))
+structure VerdierDiagram extends _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
+  square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}
+  left_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex left
+  middle_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex middle
+  right_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex right
+  bottom_edge : squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow inclusion).edge
+  right_edge : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow projection).edge
+  zero_corner : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 0 1))
 
 end SerrePositivity.InfinityCategories.Stable.Infinity
 

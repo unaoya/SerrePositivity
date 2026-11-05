@@ -29,11 +29,11 @@ variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z)
   (hl : Truncated.HomotopyCategory.homMk (NativeSquareRows.left a g S hb ht).toTruncated =
     SpectrumHo.hom b)
 
-def oldFrame : SquareFrame Sp.{u} := squareFrameOfEdges (coherentNerveEdge a)
+def oldFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges (coherentNerveEdge a)
   (coherentNerveEdge g) (NativeSquareRows.left a g S hb ht) (NativeSquareRows.right a g S hb ht)
 
-lemma oldFrame_eq : oldFrame a g S hb ht = SquareFrame.ofSquare S := by
-  apply SquareFrame.ext
+lemma oldFrame_eq : oldFrame a g S hb ht = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare S := by
+  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
   · exact hb.symm
   · exact ht.symm
   · change (SSet.yonedaEquiv (X := Sp.{u}) (n := ⦋1⦌)).symm (squareLeftArrow S).edge = _
@@ -43,16 +43,16 @@ lemma oldFrame_eq : oldFrame a g S hb ht = SquareFrame.ofSquare S := by
     rw [squareRightArrow_edge, Equiv.symm_apply_apply]
     rfl
 
-def newFrame : SquareFrame Sp.{u} := squareFrameOfEdges (coherentNerveEdge a)
+def newFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges (coherentNerveEdge a)
   (coherentNerveEdge g) (coherentNerveEdge b) (coherentNerveEdge f)
 
-def boundaryHomotopy : SquareFrameHomotopy (oldFrame a g S hb ht) (newFrame a b f g) :=
-  squareFrameEdgesHomotopy (X := Sp.{u}) (coherentNerveEdge a) (coherentNerveEdge a)
+def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (oldFrame a g S hb ht) (newFrame a b f g) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.squareFrameEdgesHomotopy (X := Sp.{u}) (coherentNerveEdge a) (coherentNerveEdge a)
     (coherentNerveEdge g) (coherentNerveEdge g) (NativeSquareRows.left a g S hb ht)
     (coherentNerveEdge b) (NativeSquareRows.right a g S hb ht) (coherentNerveEdge f)
     rfl rfl hl (NativeSquareRows.right_class a g S hb ht f hr)
 
-def extension : SquareFrame.PathExtension (boundaryHomotopy a b f g S hb ht hr hl).pathFrame S :=
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (boundaryHomotopy a b f g S hb ht hr hl).pathFrame S :=
   (boundaryHomotopy a b f g S hb ht hr hl).extension S (oldFrame_eq a g S hb ht)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
@@ -61,7 +61,7 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
 def comparison : FunctorIso S (square a b f g S hb ht hr hl) :=
   (extension a b f g S hb ht hr hl).comparison
 
-lemma square_boundary : SquareFrame.boundaryι ≫ square a b f g S hb ht hr hl =
+lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ square a b f g S hb ht hr hl =
     (newFrame a b f g).diagram :=
   (boundaryHomotopy a b f g S hb ht hr hl).extension_target_boundary S (oldFrame_eq a g S hb ht)
 
@@ -71,18 +71,18 @@ lemma square_isPullback (hS : IsPullbackSquare S) :
 
 lemma square_bottom : squareBottomEdge ≫ square a b f g S hb ht hr hl =
     SSet.yonedaEquiv.symm (coherentNerveEdge a).edge :=
-  SquareFrame.square_bottom_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_bottom_of_boundary _ (square_boundary a b f g S hb ht hr hl)
 
 lemma square_top : squareTopEdge ≫ square a b f g S hb ht hr hl =
     SSet.yonedaEquiv.symm (coherentNerveEdge g).edge :=
-  SquareFrame.square_top_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_top_of_boundary _ (square_boundary a b f g S hb ht hr hl)
 
 lemma square_left : squareLeftEdge ≫ square a b f g S hb ht hr hl =
     SSet.yonedaEquiv.symm (coherentNerveEdge b).edge :=
-  SquareFrame.square_left_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_left_of_boundary _ (square_boundary a b f g S hb ht hr hl)
 
 lemma square_right : squareRightEdge ≫ square a b f g S hb ht hr hl =
     SSet.yonedaEquiv.symm (coherentNerveEdge f).edge :=
-  SquareFrame.square_right_of_boundary _ (square_boundary a b f g S hb ht hr hl)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_right_of_boundary _ (square_boundary a b f g S hb ht hr hl)
 
 end SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization

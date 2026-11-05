@@ -23,24 +23,24 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
 
 /-- 任意の底図式上の分数族を、同じ商像の coslice 族へ送る実関手。 -/
 def fractionCosliceBaseChange {A : SSet.{u}} (k : A ⟶ X) :
-    pullback (markedSpanFamilyProjection X W x) k ⟶
+    pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) k ⟶
       pullback (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
         (k ≫ F) :=
-  pullback.lift (pullback.fst _ k ≫ fractionFamilyCosliceEvaluation F W hF x)
+  pullback.lift (pullback.fst _ k ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation F W hF x)
     (pullback.snd _ k) (by
-      rw [Category.assoc, fractionFamilyCosliceEvaluation_projection,
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation_projection,
         ← Category.assoc, pullback.condition, Category.assoc])
 
 /-- coslice への元の評価を、第一射影が厳密に回収する。 -/
 theorem fractionCosliceBaseChange_fst {A : SSet.{u}} (k : A ⟶ X) :
-    fractionCosliceBaseChange F W hF x k ≫ pullback.fst _ (k ≫ F) =
-      pullback.fst (markedSpanFamilyProjection X W x) k ≫
-        fractionFamilyCosliceEvaluation F W hF x := pullback.lift_fst _ _ _
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange F W hF x k ≫ pullback.fst _ (k ≫ F) =
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) k ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation F W hF x := pullback.lift_fst _ _ _
 
 /-- 元の底図式の射影は、同じ分数比較によって全単体で厳密に保持される。 -/
 theorem fractionCosliceBaseChange_snd {A : SSet.{u}} (k : A ⟶ X) :
-    fractionCosliceBaseChange F W hF x k ≫ pullback.snd _ (k ≫ F) =
-      pullback.snd (markedSpanFamilyProjection X W x) k := pullback.lift_snd _ _ _
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange F W hF x k ≫ pullback.snd _ (k ≫ F) =
+      pullback.snd (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) k := pullback.lift_snd _ _ _
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

@@ -29,11 +29,11 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。正規化された cochain の群の入力。 -/
 def stageFiberCoefficientEquiv (K : SSet.{u}) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (n r : ℕ) :
-    KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
         (UnbasedPointedMapping.stageFiber K X n).basepoint ≃*
-      (K.nonDegenerate (n + 1) → KanHomotopyGroup X.right (n + 1 + r) X.basepoint) :=
+      (K.nonDegenerate (n + 1) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right (n + 1 + r) X.basepoint) :=
   (stageFiberFunctionHomotopyEquiv K X n r).trans
-    (MulEquiv.arrowCongr (cellEquiv K (n + 1)) (SimplexCell.positiveHomotopyEquiv X n r))
+    (MulEquiv.arrowCongr (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)) (SimplexCell.positiveHomotopyEquiv X n r))
 
 end
 

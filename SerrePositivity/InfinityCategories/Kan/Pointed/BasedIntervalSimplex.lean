@@ -59,7 +59,7 @@ def relativeHomotopy {f g : (Δ[1] : SSet.{u}) ⟶ Y}
     (hs : lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
       H.h = SSet.const x)
     (ht : lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
-      H.h = SSet.const x) : (simplex f hf).Homotopy (simplex g hg) where
+      H.h = SSet.const x) : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex f hf).Homotopy (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex g hg) where
   h := H.h
   h₀ := H.h₀
   h₁ := H.h₁
@@ -74,7 +74,7 @@ def relativeHomotopy {f g : (Δ[1] : SSet.{u}) ⟶ Y}
     obtain ⟨j, ⟨v, rfl⟩⟩ := hs'
     exact congrArg (fun k : (Δ[0] : SSet.{u}) ⊗ Δ[1] ⟶ Y ↦
       k.app (Opposite.op ⦋d⦌) (stdSimplex.objEquiv.{u}.symm v, t))
-        (homotopy_face H hs ht j)
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.homotopy_face H hs ht j)
 
 end SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval
 

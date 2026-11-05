@@ -19,23 +19,23 @@ open scoped _root_.Simplicial
 
 /-- 共通解像から反転空間への、同じ定値基点を保つ π 同型。 -/
 def dgBarCompactEdgewiseLeftPiEquiv (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) :=
-  KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseLeft X)
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseLeft X)
     (HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence (edgewiseLeft X)
       (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft X)).isSimplicialHomotopyEquivalence)
     (dgBarCompactEdgewiseVertex_left x)
 
 /-- 共通解像から元の空間への、同じ定値基点を保つ π 同型。 -/
 def dgBarCompactEdgewiseRightPiEquiv (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) :=
-  KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseRight X)
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseRight X)
     (HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence (edgewiseRight X)
       (isQCatEquivalence_of_trivialKanFibration (edgewiseRight X)).isSimplicialHomotopyEquivalence)
     (dgBarCompactEdgewiseVertex_right x)
 
 lemma dgBarCompactOppositePiEquiv_naturality {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (f : X ⟶ Y) (n : ℕ) (x : X _⦋0⦌)
-    (a : KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x)) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x)) :
     dgBarCompactOppositePiEquiv Y n (f.app _ x)
-      (KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm (f.app _ x)) (SSet.opFunctor.map f) rfl a) =
     dgBarCompactPiMap n f x (dgBarCompactOppositePiEquiv X n x a) := by
   let LX := dgBarCompactEdgewiseLeftPiEquiv X n x
@@ -43,29 +43,29 @@ lemma dgBarCompactOppositePiEquiv_naturality {X Y : SSet.{u}} [KanComplex X] [Ka
   let RX := dgBarCompactEdgewiseRightPiEquiv X n x
   let RY := dgBarCompactEdgewiseRightPiEquiv Y n (f.app _ x)
   obtain ⟨a₀, rfl⟩ := LX.surjective a
-  have hL := KanHomotopyGroup.map_square (d := SSet.opObjEquiv.symm (f.app _ x))
+  have hL := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (d := SSet.opObjEquiv.symm (f.app _ x))
     (edgewiseSubdivisionMap f) (SSet.opFunctor.map f)
     (edgewiseLeft X) (edgewiseLeft Y) (edgewiseLeft_naturality f)
     (dgBarCompactEdgewiseVertex_map f x) rfl (dgBarCompactEdgewiseVertex_left x)
     (dgBarCompactEdgewiseVertex_left (f.app _ x)) n a₀
-  have hL' : LY (KanHomotopyGroup.map (edgewiseSubdivisionMap f)
+  have hL' : LY (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (edgewiseSubdivisionMap f)
       (dgBarCompactEdgewiseVertex_map f x) a₀) =
-        KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm (f.app _ x)) (SSet.opFunctor.map f) rfl (LX a₀) := by
     dsimp only [LY, LX, dgBarCompactEdgewiseLeftPiEquiv]
     simp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact hL
-  have hR := KanHomotopyGroup.map_square (edgewiseSubdivisionMap f) f
+  have hR := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (edgewiseSubdivisionMap f) f
     (edgewiseRight X) (edgewiseRight Y) (edgewiseRight_naturality f)
     (dgBarCompactEdgewiseVertex_map f x) rfl (dgBarCompactEdgewiseVertex_right x)
     (dgBarCompactEdgewiseVertex_right (f.app _ x)) n a₀
-  have hR' : RY (KanHomotopyGroup.map (edgewiseSubdivisionMap f)
-      (dgBarCompactEdgewiseVertex_map f x) a₀) = KanHomotopyGroup.map f rfl (RX a₀) := by
+  have hR' : RY (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (edgewiseSubdivisionMap f)
+      (dgBarCompactEdgewiseVertex_map f x) a₀) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (RX a₀) := by
     simpa only [RY, RX, dgBarCompactEdgewiseRightPiEquiv,
       _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using hR
-  change RY (LY.symm (KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
+  change RY (LY.symm (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm (f.app _ x)) (SSet.opFunctor.map f) rfl (LX a₀))) =
-    KanHomotopyGroup.map f rfl (RX (LX.symm (LX a₀)))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (RX (LX.symm (LX a₀)))
   rw [← hL', MulEquiv.symm_apply_apply, MulEquiv.symm_apply_apply]
   exact hR'
 

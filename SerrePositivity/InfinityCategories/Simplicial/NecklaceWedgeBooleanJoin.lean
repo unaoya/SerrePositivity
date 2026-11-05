@@ -12,15 +12,15 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeNonjoin
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 左右の元の Bool 座標を、元の全非 joint 頂点の上で連結する。 -/
-def wedgeBooleanJoin (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
+def wedgeBooleanJoin (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (b : T.NonjointVertex → Bool)
     (c : U.NonjointVertex → Bool) : (T.wedge U).NonjointVertex → Bool :=
   fun v => Sum.elim b c ((T.wedgeNonjointEquiv U).symm v)
 
 /-- 左包含への制限は元の左の Bool 座標。 -/
-lemma wedgeBooleanJoin_left (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
+lemma wedgeBooleanJoin_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (b : T.NonjointVertex → Bool)
     (c : U.NonjointVertex → Bool) (v : T.NonjointVertex) :
     T.wedgeBooleanJoin U b c (T.wedgeNonjointLeft U v) = b v := by
   change Sum.elim b c ((T.wedgeNonjointEquiv U).symm
@@ -29,7 +29,7 @@ lemma wedgeBooleanJoin_left (T U : NecklaceShape) (b : T.NonjointVertex → Bool
   rfl
 
 /-- 右包含への制限は元の右の Bool 座標。 -/
-lemma wedgeBooleanJoin_right (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
+lemma wedgeBooleanJoin_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (b : T.NonjointVertex → Bool)
     (c : U.NonjointVertex → Bool) (v : U.NonjointVertex) :
     T.wedgeBooleanJoin U b c (T.wedgeNonjointRight U v) = c v := by
   change Sum.elim b c ((T.wedgeNonjointEquiv U).symm
@@ -38,35 +38,35 @@ lemma wedgeBooleanJoin_right (T U : NecklaceShape) (b : T.NonjointVertex → Boo
   rfl
 
 /-- joint を真に固定した全頂点の値も、元の左包含で厳密に回収する。 -/
-lemma cubeFullBits_wedge_left (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
+lemma cubeFullBits_wedge_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (b : T.NonjointVertex → Bool)
     (c : U.NonjointVertex → Bool) (v : T.Vertex) :
     (T.wedge U).cubeFullBits (T.wedgeBooleanJoin U b c) (T.wedgeLeftVertex U v) =
       T.cubeFullBits b v := by
   by_cases h : v.val ∈ T.joints
   · have hw : (T.wedgeLeftVertex U v).val ∈ (T.wedge U).joints :=
       T.wedge_joint_left U h
-    simp only [cubeFullBits, dite_eq_left h, dite_eq_left hw]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_left h, dite_eq_left hw]
   · have hw : (T.wedgeLeftVertex U v).val ∉ (T.wedge U).joints :=
       fun hv => h ((T.wedge_joint_iff_left U v).mp hv)
-    simp only [cubeFullBits, dite_eq_right h, dite_eq_right hw]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_right h, dite_eq_right hw]
     exact T.wedgeBooleanJoin_left U b c ⟨v, h⟩
 
 /-- joint を真に固定した全頂点の値も、元の右包含で厳密に回収する。 -/
-lemma cubeFullBits_wedge_right (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
+lemma cubeFullBits_wedge_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (b : T.NonjointVertex → Bool)
     (c : U.NonjointVertex → Bool) (v : U.Vertex) :
     (T.wedge U).cubeFullBits (T.wedgeBooleanJoin U b c) (T.wedgeRightVertex U v) =
       U.cubeFullBits c v := by
   by_cases h : v.val ∈ U.joints
   · have hw : (T.wedgeRightVertex U v).val ∈ (T.wedge U).joints :=
       T.wedge_joint_right U h
-    simp only [cubeFullBits, dite_eq_left h, dite_eq_left hw]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_left h, dite_eq_left hw]
   · have hw : (T.wedgeRightVertex U v).val ∉ (T.wedge U).joints :=
       fun hv => h ((T.wedge_joint_iff_right U v).mp hv)
-    simp only [cubeFullBits, dite_eq_right h, dite_eq_right hw]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_right h, dite_eq_right hw]
     exact T.wedgeBooleanJoin_right U b c ⟨v, h⟩
 
 /-- 元の連結後の全頂点は左右のどちらかの元の頂点から来る。 -/
-lemma wedgeVertex_cases (T U : NecklaceShape) (v : (T.wedge U).Vertex) :
+lemma wedgeVertex_cases (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : (T.wedge U).Vertex) :
     (∃ a, T.wedgeLeftVertex U a = v) ∨ (∃ b, T.wedgeRightVertex U b = v) := by
   by_cases h : v.val ≤ T.vertexMax
   · exact Or.inl ⟨⟨v.val, by omega⟩, Fin.ext rfl⟩

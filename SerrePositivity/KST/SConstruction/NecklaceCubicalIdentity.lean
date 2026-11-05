@@ -19,31 +19,31 @@ open CategoryTheory Simplicial SSet
 def necklaceCubicalIdentity (K : SSet.{u}) (x : K _⦋0⦌) :
     cubicalDayUnit ⟶ necklaceCubicalMapping K x x :=
   cubicalDayUnitProjection ≫ cubicalYoneda.map necklaceCubeUnitIso.{u}.hom ≫
-    necklaceCubicalCell (necklaceInPoint K x)
+    necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)
 
 /-- 元の cubical 単位射は、元の強モノイダル単位と一点の生成射の合成。 -/
 lemma necklaceCubicalIdentity_unit (K : SSet.{u}) (x : K _⦋0⦌) :
     necklaceCubicalIdentity K x =
       (Functor.LaxMonoidal.ε necklaceCubicalDay.{u}).natTrans ≫
-        necklaceCubicalCell (necklaceInPoint K x) :=
+        necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) :=
   (Category.assoc _ _ _).symm
 
 /-- 元の入力写像は、一点の元の生成射から来る cubical 単位射を厳密に保つ。 -/
 lemma necklaceCubicalIdentity_naturality {K L : SSet.{u}} (f : K ⟶ L) (x : K _⦋0⦌) :
     necklaceCubicalIdentity K x ≫ necklaceCubicalMap f x x =
       necklaceCubicalIdentity L (f.app _ x) := by
-  have h := necklaceCubicalCell_relation (necklaceInPointPostcomposeHom f x)
-  change cubicalYoneda.map (necklaceConcreteCubeMap (𝟙 necklacePoint.{u})) ≫
-    necklaceCubicalCell (necklaceInPoint L (f.app _ x)) =
-      necklaceCubicalCell ((necklaceInPostcompose f x x).obj (necklaceInPoint K x)) at h
-  have hi : necklaceConcreteCubeMap (𝟙 necklacePoint.{u}) =
-      𝟙 (ConcreteCube.mk necklacePoint.{u}.down.dimension) :=
-    necklaceConcreteCube.map_id necklacePoint
+  have h := necklaceCubicalCell_relation (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPointPostcomposeHom f x)
+  change cubicalYoneda.map (necklaceConcreteCubeMap (𝟙 _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.{u})) ≫
+    necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint L (f.app _ x)) =
+      necklaceCubicalCell ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x x).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)) at h
+  have hi : necklaceConcreteCubeMap (𝟙 _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.{u}) =
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.{u}.down.dimension) :=
+    necklaceConcreteCube.map_id _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint
   rw [hi, cubicalYoneda.map_id] at h
-  have ht : necklaceCubicalCell ((necklaceInPostcompose f x x).obj (necklaceInPoint K x)) =
-      necklaceCubicalCell (necklaceInPoint L (f.app _ x)) :=
+  have ht : necklaceCubicalCell ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x x).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)) =
+      necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint L (f.app _ x)) :=
     h.symm.trans (Category.id_comp _)
-  have hc := (necklaceCubicalCell_map f (necklaceInPoint K x)).trans ht
+  have hc := (necklaceCubicalCell_map f (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)).trans ht
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun e => cubicalDayUnitProjection ≫ e) (Category.assoc _ _ _)).trans
       (congrArg (fun e => cubicalDayUnitProjection ≫

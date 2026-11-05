@@ -36,26 +36,26 @@ lemma cubeConnectionNormalVertex_top {n m : ℕ} (d : CubeConnectionNormal n m) 
     cubeConnectionNormalVertex d ⊤ = ⊤ := by
   funext j
   obtain ⟨i, hi⟩ := cubeConnectionNormalBlock_surjective d j
-  exact (cubeFiberMax_true_iff _ _ _).mpr ⟨i, hi, rfl⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff _ _ _).mpr ⟨i, hi, rfl⟩
 
 /-- 元の削除評価は零頂点を保つ。 -/
-lemma cubeDeletionNormalVertex_bot {n m : ℕ} (d : CubeDeletionNormal n m) :
-    cubeDeletionNormalVertex d ⊥ = ⊥ := rfl
+lemma cubeDeletionNormalVertex_bot {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d ⊥ = ⊥ := rfl
 
 /-- 元の削除評価は一頂点を保つ。 -/
-lemma cubeDeletionNormalVertex_top {n m : ℕ} (d : CubeDeletionNormal n m) :
-    cubeDeletionNormalVertex d ⊤ = ⊤ := rfl
+lemma cubeDeletionNormalVertex_top {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d ⊤ = ⊤ := rfl
 
 /-- 元の削除評価は全ての残余頂点を回収する。 -/
-lemma cubeDeletionNormalVertex_surjective {n m : ℕ} (d : CubeDeletionNormal n m) :
-    Function.Surjective (cubeDeletionNormalVertex d) := by
+lemma cubeDeletionNormalVertex_surjective {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d) := by
   induction d with
-  | nil => intro y; exact ⟨y, Subsingleton.elim _ _⟩
-  | drop d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => intro y; exact ⟨y, Subsingleton.elim _ _⟩
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
     intro y
     obtain ⟨x, hx⟩ := ih y
     exact ⟨Fin.cons false x, hx⟩
-  | keep d ih =>
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
     intro y
     obtain ⟨x, hx⟩ := ih (fun j => y j.succ)
     refine ⟨Fin.cons (y 0) x, ?_⟩

@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 def kanCommSqHornCone {P X Y Z : KanObject.{u}}
     {a : P.obj ⟶ X.obj} {b : P.obj ⟶ Y.obj} {f : X.obj ⟶ Z.obj} {g : Y.obj ⟶ Z.obj}
     (sq : CommSq a b f g) :=
-  coherentConeRestrict (strictCoherentCone (kanCommSqCone sq))
+  coherentConeRestrict (strictCoherentCone (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq))
     CospanShape.strictCospanHornIso.{u, u + 1}.inv
 
 /-- 元の全 Kan 錐から作る coherent 四角形。 -/
@@ -40,7 +40,7 @@ theorem kanCommSqInfinitySquare_apex {P X Y Z : KanObject.{u}}
     (sq : CommSq a b f g) :
     squareVertex (kanCommSqInfinitySquare sq) 0 0 = coherentNerveVertex P := by
   rw [kanCommSqInfinitySquare, FiberModel.coneSquare_apex]
-  change (Spectra.DiagramLimitTransport.restrict (strictCoherentCone (kanCommSqCone sq))
+  change (Spectra.DiagramLimitTransport.restrict (strictCoherentCone (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq))
     CospanShape.strictCospanHornIso.inv).vertex = _
   rw [Spectra.DiagramLimitTransport.vertex_restrict, strictCoherentCone_vertex]
   rfl

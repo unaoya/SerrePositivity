@@ -44,7 +44,7 @@ def coslicePointEvaluation_relativeIso
       ((leftFibrationCoslicePointEvaluate p b).app (Opposite.op ⦋0⦌)
         (relativeFunctorVertex p _ g hg))) :
     VertexIso (relativeFunctorVertex p _ f hf) (relativeFunctorVertex p _ g hg) :=
-  (coslicePointEvaluation_fullyFaithful p b).preimageVertexIso e
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_fullyFaithful p b).preimageVertexIso e
 
 /-- 恒等錐での同じ実比較は、元の二つの全 coslice 写像の自然同型を与える。 -/
 def coslicePointEvaluation_functorIso
@@ -56,7 +56,7 @@ def coslicePointEvaluation_functorIso
         (relativeFunctorVertex p _ f hf))
       ((leftFibrationCoslicePointEvaluate p b).app (Opposite.op ⦋0⦌)
         (relativeFunctorVertex p _ g hg))) : FunctorIso f g :=
-  VertexIso.map (coslicePointEvaluation_relativeIso p b hf hg e)
+  VertexIso.map (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso p b hf hg e)
     (vertexFiberι ((ihom (sliceUnder (yonedaEquiv.symm b))).map p)
       (functorVertex (sliceUnderProjection (yonedaEquiv.symm b))))
 

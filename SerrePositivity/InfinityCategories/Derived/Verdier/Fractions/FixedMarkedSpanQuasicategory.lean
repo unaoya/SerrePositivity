@@ -43,8 +43,8 @@ instance fixedMarkedSpans_quasicategory (X : SSet.{u}) [Quasicategory X]
 
 instance fixedFractionTriangles_quasicategory {X Q : SSet.{u}}
     [Quasicategory X] [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
-    (hF : InvertsEdges F W) (x y : X _⦋0⦌) : Quasicategory (fixedFractionTriangles F W hF x y) :=
-  quasicategory_of_innerFibration (fixedFractionTriangleProjection F W hF x y)
+    (hF : InvertsEdges F W) (x y : X _⦋0⦌) : Quasicategory (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles F W hF x y) :=
+  quasicategory_of_innerFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

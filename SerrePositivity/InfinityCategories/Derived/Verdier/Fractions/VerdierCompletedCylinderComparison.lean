@@ -47,7 +47,7 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 variable {c : VerdierRecoveredInitialComparison r U} {b : VerdierRecoveredBoundaryComparison r U}
 namespace VerdierRelativeInitialComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRelativeInitialComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison
 variable (d : VerdierRelativeInitialComparison c b)
 
 def simplexQuotientHomotopy : SSet.Homotopy

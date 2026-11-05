@@ -56,7 +56,7 @@ theorem straighteningBaseChangeLeftChart_heq_firstVertex
     rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
   have hl : HEq (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k) (e.precomp t) := by
     unfold _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso
-    exact prependEq_heq _ _
+    exact _root_.SerrePositivity.InfinityCategories.Stable.Straightening.prependEq_heq _ _
   have hm := F2.vertexIso_map_heq_of_heq (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k)
     (e.precomp t) (congrArg functorVertex hleft) rfl hl
     (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)

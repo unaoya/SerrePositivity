@@ -17,7 +17,7 @@ namespace SerrePositivity.InfinityCategories.Kan
 open SerrePositivity.KST.SConstruction
 
 /-- 元の指定した入力座標を元の順で選択する頂点関数。 -/
-def cubeCoordinateSelect {n m : ℕ} (e : Fin m → Fin n) : CubeVertex n → CubeVertex m :=
+def cubeCoordinateSelect {n m : ℕ} (e : Fin m → Fin n) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m :=
   fun x j => x (e j)
 
 /-- 元の選択に使わない一座標を飛ばした、低次元の選択添字。 -/
@@ -28,25 +28,25 @@ def cubeCoordinateLower {n m : ℕ} (e : Fin m → Fin (n + 1))
 /-- 低次元の選択添字を元の一座標削除の埋め込みで回収する。 -/
 lemma cubeCoordinateLower_spec {n m : ℕ} (e : Fin m → Fin (n + 1))
     (p : Fin (n + 1)) (hp : ∀ j, e j ≠ p) (j : Fin m) :
-    p.succAbove (cubeCoordinateLower e p hp j) = e j :=
+    p.succAbove (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower e p hp j) = e j :=
   Classical.choose_spec (Fin.exists_succAbove_eq (hp j))
 
 /-- 元の選択添字の厳密な順序は、未使用座標を飛ばしても保たれる。 -/
 lemma cubeCoordinateLower_strictMono {n m : ℕ} (e : Fin m → Fin (n + 1))
     (p : Fin (n + 1)) (hp : ∀ j, e j ≠ p) (he : StrictMono e) :
-    StrictMono (cubeCoordinateLower e p hp) := by
+    StrictMono (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower e p hp) := by
   intro i j hij
   apply (Fin.strictMono_succAbove p).lt_iff_lt.mp
-  rw [cubeCoordinateLower_spec, cubeCoordinateLower_spec]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_spec, _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_spec]
   exact he hij
 
 /-- 元の選択関数は、一座標削除と低次元の選択との元の関数としての合成。 -/
 lemma cubeCoordinateSelect_lower {n m : ℕ} (e : Fin m → Fin (n + 1))
     (p : Fin (n + 1)) (hp : ∀ j, e j ≠ p) :
-    cubeCoordinateSelect e =
-      cubeCoordinateSelect (cubeCoordinateLower e p hp) ∘ cubeVertexDegeneracy n p := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect e =
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower e p hp) ∘ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n p := by
   funext x j
-  exact congrArg x (cubeCoordinateLower_spec e p hp j).symm
+  exact congrArg x (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_spec e p hp j).symm
 
 end SerrePositivity.InfinityCategories.Kan
 

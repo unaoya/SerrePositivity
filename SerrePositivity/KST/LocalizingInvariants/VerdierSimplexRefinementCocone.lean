@@ -32,7 +32,7 @@ private lemma edgeWithEndpoints_edge {X : SSet.{u}} {a b c d : X _⦋0⦌}
   rfl
 
 /-- 元の strict core 逆像の分母を、商後の全関手圏における同じ辺の同型へ戻す。 -/
-def simplexDenominatorImageIso {B C : StableCategory.{u}} (q : ExactMap B C)
+def simplexDenominatorImageIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : ℕ} {D E : (Δ[n] : SSet.{u}) ⟶ B.obj}
     (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
       (functorVertex D) (functorVertex E))
@@ -47,7 +47,7 @@ def simplexDenominatorImageIso {B C : StableCategory.{u}} (q : ExactMap B C)
   exact asIso (Truncated.HomotopyCategory.homMk e)
 
 /-- 比較同型の順方向は、元の同じ分母を商後合成した実辺の類。 -/
-lemma simplexDenominatorImageIso_hom {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma simplexDenominatorImageIso_hom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : ℕ} {D E : (Δ[n] : SSet.{u}) ⟶ B.obj}
     (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
       (functorVertex D) (functorVertex E))
@@ -56,7 +56,7 @@ lemma simplexDenominatorImageIso_hom {B C : StableCategory.{u}} (q : ExactMap B 
       (t.map ((truncation 2).map ((ihom (Δ[n] : SSet.{u})).map q.hom))) := rfl
 
 /-- 比較の指定成分は、同じ元の分母成分の商像として厳密に回収される。 -/
-lemma simplexDenominatorImageIso_evaluation_hom {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma simplexDenominatorImageIso_evaluation_hom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : ℕ} {D E : (Δ[n] : SSet.{u}) ⟶ B.obj}
     (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
       (functorVertex D) (functorVertex E))
@@ -75,13 +75,13 @@ lemma simplexDenominatorImageIso_evaluation_hom {B C : StableCategory.{u}} (q : 
   exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ _ he
 
 /-- 元の全図式を精密化し、終端で元の指定分母の一次単体そのものを回収する。 -/
-lemma exists_verdierSimplexTerminalRefinementMap {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexTerminalRefinementMap {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     {y : B.obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) y
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
-    (hs : s.edge ∈ weakEquivalences i) :
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
       (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
         (functorVertex D') (functorVertex D)),
@@ -100,8 +100,8 @@ lemma exists_verdierSimplexTerminalRefinementMap {A B C : StableCategory.{u}}
     rw [← hv, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
       Equiv.apply_symm_apply] at he
     exact he
-  have hs' : SSet.yonedaEquiv sm ∈ weakEquivalences i := by
-    change SSet.yonedaEquiv (SSet.yonedaEquiv.symm s.edge) ∈ weakEquivalences i
+  have hs' : SSet.yonedaEquiv sm ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
+    change SSet.yonedaEquiv (SSet.yonedaEquiv.symm s.edge) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
     rw [Equiv.apply_symm_apply]
     exact hs
   obtain ⟨Q, _, horig, hlast, hW⟩ :=
@@ -136,14 +136,14 @@ lemma exists_verdierSimplexTerminalRefinementMap {A B C : StableCategory.{u}}
     exact Equiv.apply_symm_apply _ _
 
 /-- 元の全図式への分母と、指定した次の全辺を保つ実余錐を同時に構成する。 -/
-lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexRefinementCocone {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     {y z : B.obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) y
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
     (g : Truncated.Edge (X := (truncation 2).obj B.obj) y z)
-    (hs : s.edge ∈ weakEquivalences i) :
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
       (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
         (functorVertex D') (functorVertex D)) (c : JoinCocone D'),
@@ -151,16 +151,16 @@ lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
       D'.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) = y ∧
       c.vertex = z ∧
       (joinStdSimplexIso 0 0).inv ≫
-        joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
+        joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
           SSet.yonedaEquiv.symm g.edge := by
   obtain ⟨D', t, ht, hv, _⟩ := exists_verdierSimplexTerminalRefinementMap h D s hs
-  have hpoint : SSet.yonedaEquiv (simplexLastPoint n ≫ D') = y := by
+  have hpoint : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D') = y := by
     rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint, Equiv.apply_symm_apply]
     exact hv
   let g' : Truncated.Edge (X := (truncation 2).obj B.obj)
-      (SSet.yonedaEquiv (simplexLastPoint n ≫ D')) z :=
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D')) z :=
     edgeWithEndpoints g hpoint.symm rfl
-  obtain ⟨c, hc, hedge⟩ := exists_simplexCocone_of_last_edge D' g'
+  obtain ⟨c, hc, hedge⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_simplexCocone_of_last_edge D' g'
   refine ⟨D', t, c, ht, hv, hc, ?_⟩
   · simpa only [g', edgeWithEndpoints_edge] using hedge
 

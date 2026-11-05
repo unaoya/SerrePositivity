@@ -65,7 +65,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 def sectionUnit (h : F ≫ G = 𝟙 X) : FunctorHom (𝟙 X) (F ≫ G) :=
   eqToHom (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f)) h.symm)
 
-instance sectionUnit_isIso (h : F ≫ G = 𝟙 X) : IsIso (sectionUnit h) :=
+instance sectionUnit_isIso (h : F ≫ G = 𝟙 X) : IsIso (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.sectionUnit h) :=
   inferInstanceAs (IsIso (eqToHom _))
 
 /-- 相対始点境界を充填する厳密切断は、全写像空間の意味で充満忠実。 -/

@@ -25,27 +25,27 @@ variable (D : ℕᵒᵖ ⥤ SSet.{u})
 
 /-- 具体的な整合族の極限を頂点とする錐。 -/
 def sequentialCone : Cone D where
-  pt := limit (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op)
+  pt := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op)
   π := NatTrans.ofOpSequence
-    (fun n ↦ projection (fun n ↦ D.obj (op n))
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ D.obj (op n))
       (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op) n)
     (fun n ↦ by
       change 𝟙 _ ≫ _ = _
-      rw [Category.id_comp, projection_comp])
+      rw [Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp])
 
 /-- 錐の射影は整合族の座標評価そのもの。 -/
-lemma sequentialCone_π (n : ℕ) : (sequentialCone D).π.app (op n) =
-    projection (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op) n := rfl
+lemma sequentialCone_π (n : ℕ) : (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone D).π.app (op n) =
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op) n := rfl
 
 /-- 具体的な整合族の錐は通常の極限錐。 -/
-def sequentialConeIsLimit : IsLimit (sequentialCone D) where
-  lift s := lift _ _ (fun n ↦ s.π.app (op n)) (fun n ↦ s.w _)
+def sequentialConeIsLimit : IsLimit (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone D) where
+  lift s := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift _ _ (fun n ↦ s.π.app (op n)) (fun n ↦ s.w _)
   fac s n := by
-    exact lift_projection _ _ _ _ n.unop
+    exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection _ _ _ _ n.unop
   uniq s m hm := by
-    apply hom_ext (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op)
+    apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext (fun n ↦ D.obj (op n)) (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op)
     intro n
-    rw [lift_projection]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact hm (op n)
 
 end SerrePositivity.InfinityCategories.Kan.FibrationTower

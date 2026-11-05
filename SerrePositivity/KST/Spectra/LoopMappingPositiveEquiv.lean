@@ -26,23 +26,23 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：係数の Kan 性はこの厳密な同型には不要。
 使われ方：Goerss–Jardine I §7。写像空間の高次数の比較。 -/
 def loopSwap (A Y : PointedSimplicialSet.{u}) :
-    loopSpace (PointedObject.basedHom A Y) ≅ PointedObject.basedHom A (loopSpace Y) :=
-  InternalHomExchange.iso PointedSimplicialSet.circle.{u} A Y
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.basedHom A Y) ≅ PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A Y
 
 @[reassoc]
 lemma loopSwap_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     (Y : PointedSimplicialSet.{u}) :
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)
-        (prePointed i Y) ≫ (loopSwap A Y).hom =
-      (loopSwap B Y).hom ≫ prePointed i (loopSpace Y) := by
-  have h := InternalHomExchange.natural_pre_right (C := PointedSimplicialSet.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) ≫ (loopSwap A Y).hom =
+      (loopSwap B Y).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right (C := PointedSimplicialSet.{u})
     PointedSimplicialSet.circle.{u} i Y
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)
-      (prePointed i Y) ≫ (loopSwap A Y).hom =
-    (loopSwap B Y).hom ≫ prePointed i (loopSpace Y) at h
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) ≫ (loopSwap A Y).hom =
+    (loopSwap B Y).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) at h
   exact h
 
 /-- 概要：loop 値の写像空間の π_(r+1) を元の写像空間の π_(r+2) へ移す。
@@ -50,20 +50,20 @@ lemma loopSwap_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
 規約：全ての正次数で群同型。
 使われ方：Goerss–Jardine I §7、VIII §1。係数の次数移動の反復。 -/
 def loopPositiveEquiv (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ) :
-    KanHomotopyGroup (PointedObject.basedHom A (loopSpace Y)).right r
-        (PointedSimplicialSet.basepoint (PointedObject.basedHom A (loopSpace Y))) ≃*
-      KanHomotopyGroup (PointedObject.basedHom A Y).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right r
+        (PointedSimplicialSet.basepoint (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))) ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom A Y).right (r + 1)
         (PointedSimplicialSet.basepoint (PointedObject.basedHom A Y)) := by
-  let e : (PointedObject.basedHom A (loopSpace Y)).right ≅
-      (loopSpace (PointedObject.basedHom A Y)).right :=
+  let e : (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right ≅
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.basedHom A Y)).right :=
     PointedSimplicialSet.forget.mapIso (loopSwap A Y).symm
-  exact (KanHomotopyGroup.equivOfIso r e
-    (OmegaSpectrum.pointedMap_basepoint (loopSwap A Y).inv)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r e
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopSwap A Y).inv)).trans
       (loopPositiveHomotopyEquiv (PointedObject.basedHom A Y) r)
 
 lemma loopPositiveEquiv_apply (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (r : ℕ) (a : KanHomotopyGroup (PointedObject.basedHom A (loopSpace Y)).right r
-      (PointedSimplicialSet.basepoint (PointedObject.basedHom A (loopSpace Y)))) :
+    (r : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right r
+      (PointedSimplicialSet.basepoint (PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)))) :
     loopPositiveEquiv A Y r a = loopPositiveHomotopyEquiv (PointedObject.basedHom A Y) r
       (pointedGroupMap r (loopSwap A Y).inv a) := rfl
 
@@ -73,19 +73,19 @@ lemma loopPositiveEquiv_apply (A Y : PointedSimplicialSet.{u}) [KanComplex Y.rig
 使われ方：Goerss–Jardine VIII §1。セル球面への制限と高次数比較の交換。 -/
 theorem loopPositiveEquiv_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ)
-    (a : KanHomotopyGroup (PointedObject.basedHom B (loopSpace Y)).right r
-      (PointedSimplicialSet.basepoint (PointedObject.basedHom B (loopSpace Y)))) :
-    loopPositiveEquiv A Y r (pointedGroupMap r (prePointed i (loopSpace Y)) a) =
-      pointedGroupMap (r + 1) (prePointed i Y) (loopPositiveEquiv B Y r a) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right r
+      (PointedSimplicialSet.basepoint (PointedObject.basedHom B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)))) :
+    loopPositiveEquiv A Y r (pointedGroupMap r (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) a) =
+      pointedGroupMap (r + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) (loopPositiveEquiv B Y r a) := by
   have hs := congrArg (fun t ↦ (loopSwap B Y).inv ≫ t ≫ (loopSwap A Y).inv)
     (loopSwap_pre i Y)
   simp only [Category.assoc, Iso.inv_hom_id_assoc, Iso.hom_inv_id, Category.comp_id] at hs
-  have hg := congrArg (fun f : PointedObject.basedHom B (loopSpace Y) ⟶
-      loopSpace (PointedObject.basedHom A Y) ↦
+  have hg := congrArg (fun f : PointedObject.basedHom B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) ⟶
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.basedHom A Y) ↦
       pointedGroupMap r f a) hs
   simp only [pointedGroupMap_comp] at hg
   rw [loopPositiveEquiv_apply, loopPositiveEquiv_apply, ← hg]
-  exact loopPositiveHomotopyEquiv_natural (prePointed i Y) r _
+  exact loopPositiveHomotopyEquiv_natural (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y) r _
 
 end
 end SerrePositivity.KST.Spectra.PointedMapping

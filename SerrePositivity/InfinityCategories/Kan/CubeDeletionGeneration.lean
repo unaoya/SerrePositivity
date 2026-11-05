@@ -15,30 +15,30 @@ namespace SerrePositivity.InfinityCategories.Kan
 open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が、座標削除だけから生成される条件。 -/
-inductive CubeDeletionGenerated : {n m : ℕ} → (CubeVertex n → CubeVertex m) → Prop
-  | id (n : ℕ) : CubeDeletionGenerated (_root_.id : CubeVertex n → CubeVertex n)
+inductive CubeDeletionGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) → Prop
+  | id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
   | degeneracy (n : ℕ) (i : Fin (n + 1)) :
-      CubeDeletionGenerated (cubeVertexDegeneracy n i)
-  | comp {n m k : ℕ} {f : CubeVertex n → CubeVertex m} {g : CubeVertex m → CubeVertex k}
-      (hf : CubeDeletionGenerated f) (hg : CubeDeletionGenerated g) :
-      CubeDeletionGenerated (g ∘ f)
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i)
+  | comp {n m k : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
+      (hf : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated g) :
+      _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (g ∘ f)
 
 /-- 削除だけで生成された元の関数は、元の具体的立方体圏の射。 -/
-lemma cubeDeletionGenerated_generated {n m : ℕ} {f : CubeVertex n → CubeVertex m}
-    (h : CubeDeletionGenerated f) : CubeMapGenerated f := by
+lemma cubeDeletionGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f := by
   induction h with
-  | id n => exact .id n
-  | degeneracy n i => exact .degeneracy n i
-  | comp hf hg ihf ihg => exact .comp ihf ihg
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.id n => exact .id n
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.degeneracy n i => exact .degeneracy n i
+  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.comp hf hg ihf ihg => exact .comp ihf ihg
 
 /-- 順序を保つ入力座標の選択は、削除だけの合成で実現される。 -/
 lemma cubeCoordinateSelect_deletionGenerated {n m : ℕ} (e : Fin m → Fin n)
-    (he : StrictMono e) : CubeDeletionGenerated (cubeCoordinateSelect e) := by
+    (he : StrictMono e) : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect e) := by
   induction n generalizing m with
   | zero =>
     cases m with
     | zero =>
-      have h : cubeCoordinateSelect e = (_root_.id : CubeVertex 0 → CubeVertex 0) := by
+      have h : _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect e = (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex 0 → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex 0) := by
         funext x j
         exact Fin.elim0 j
       rw [h]
@@ -53,14 +53,14 @@ lemma cubeCoordinateSelect_deletionGenerated {n m : ℕ} (e : Fin m → Fin n)
       exact .id (n + 1)
     · simp only [Function.Surjective, not_forall, not_exists] at hs
       obtain ⟨p, hp⟩ := hs
-      rw [cubeCoordinateSelect_lower e p hp]
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_lower e p hp]
       exact .comp (.degeneracy n p)
-        (ih _ (cubeCoordinateLower_strictMono e p hp he))
+        (ih _ (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_strictMono e p hp he))
 
 /-- 順序を保つ入力座標の選択は、元の具体的な cubical 生成関数。 -/
 lemma cubeCoordinateSelect_generated {n m : ℕ} (e : Fin m → Fin n) (he : StrictMono e) :
-    CubeMapGenerated (cubeCoordinateSelect e) :=
-  cubeDeletionGenerated_generated (cubeCoordinateSelect_deletionGenerated e he)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect e) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionGenerated_generated (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_deletionGenerated e he)
 
 end SerrePositivity.InfinityCategories.Kan
 

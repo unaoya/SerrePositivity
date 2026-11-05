@@ -43,9 +43,9 @@ lemma path_restriction_eq_of_homotopy {A B E : PointedSimplicialSet.{u}}
     (P : VerticalPath (PointedObject.toPoint E) f g)
     (Q : VerticalPath (PointedObject.toPoint E) f' g') (j : B ⟶ A)
     (h : j.right ▷ (Δ[1] : SSet.{u}) ≫ P.homotopy.h = Q.homotopy.h) :
-    P.path ≫ (prePointed j E).right = Q.path := by
+    P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j E).right = Q.path := by
   apply (cancel_mono (PointedObject.basedHomι B E)).1
-  change P.path ≫ PointedMapping.pre j E ≫ _ = _
+  change P.path ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E ≫ _ = _
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
   apply uncurry_injective
   rw [uncurry_pre_app, ← homotopy_h, ← homotopy_h]
@@ -56,10 +56,10 @@ lemma homotopy_restriction_eq_of_path {A B E : PointedSimplicialSet.{u}}
     {f g : A ⟶ E} {f' g' : B ⟶ E}
     (P : VerticalPath (PointedObject.toPoint E) f g)
     (Q : VerticalPath (PointedObject.toPoint E) f' g') (j : B ⟶ A)
-    (h : P.path ≫ (prePointed j E).right = Q.path) :
+    (h : P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j E).right = Q.path) :
     j.right ▷ (Δ[1] : SSet.{u}) ≫ P.homotopy.h = Q.homotopy.h := by
   rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
-  change uncurry ((P.path ≫ (prePointed j E).right) ≫ PointedObject.basedHomι B E) = _
+  change uncurry ((P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j E).right) ≫ PointedObject.basedHomι B E) = _
   rw [h, ← homotopy_h]
 
 /-- 二度転置した同じ区間族は、元の区間族そのものに戻る。 -/
@@ -67,12 +67,12 @@ lemma basedTranspose_twice_path {A U V : PointedSimplicialSet.{u}}
     {f g : A ⟶ (ihom U).obj V}
     (P : VerticalPath (PointedObject.toPoint ((ihom U).obj V)) f g) :
     P.basedTranspose.basedTranspose.path = P.path := by
-  change (P.path ≫ (InternalHomExchange.iso A U V).hom.right) ≫
-    (InternalHomExchange.iso U A V).hom.right = P.path
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U A V).hom.right = P.path
   rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv U A V]
-  have h : (InternalHomExchange.iso A U V).hom.right ≫
-      (InternalHomExchange.iso A U V).inv.right = 𝟙 _ :=
-    congrArg Under.Hom.right (InternalHomExchange.iso A U V).hom_inv_id
+  have h : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).inv.right = 𝟙 _ :=
+    congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom_inv_id
   rw [Category.assoc, h]
   exact Category.comp_id P.path
 
@@ -81,18 +81,18 @@ lemma basedTranspose_restriction_path {A B U V : PointedSimplicialSet.{u}}
     {f g : A ⟶ (ihom U).obj V} {f' g' : B ⟶ (ihom U).obj V}
     (P : VerticalPath (PointedObject.toPoint ((ihom U).obj V)) f g)
     (Q : VerticalPath (PointedObject.toPoint ((ihom U).obj V)) f' g') (j : B ⟶ A)
-    (h : P.path ≫ (prePointed j ((ihom U).obj V)).right = Q.path) :
-    P.basedTranspose.path ≫ (PointedObject.basedHomMap U (prePointed j V)).right =
+    (h : P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j ((ihom U).obj V)).right = Q.path) :
+    P.basedTranspose.path ≫ (PointedObject.basedHomMap U (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j V)).right =
       Q.basedTranspose.path := by
-  have hs := InternalHomExchange.natural_pre_left j U V
+  have hs := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left j U V
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   have he := congrArg Under.Hom.right hs.symm
-  change (InternalHomExchange.iso A U V).hom.right ≫
-      (PointedObject.basedHomMap U (prePointed j V)).right =
-    (prePointed j ((ihom U).obj V)).right ≫
-      (InternalHomExchange.iso B U V).hom.right at he
-  change (P.path ≫ (InternalHomExchange.iso A U V).hom.right) ≫ _ =
-    Q.path ≫ (InternalHomExchange.iso B U V).hom.right
+  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right ≫
+      (PointedObject.basedHomMap U (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j V)).right =
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j ((ihom U).obj V)).right ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B U V).hom.right at he
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A U V).hom.right) ≫ _ =
+    Q.path ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B U V).hom.right
   rw [Category.assoc, he, ← Category.assoc, h]
 
 end SerrePositivity.KST.Spectra.PointedMapping.VerticalPath

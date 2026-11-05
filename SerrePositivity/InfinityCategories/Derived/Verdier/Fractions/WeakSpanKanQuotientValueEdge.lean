@@ -31,8 +31,8 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
 
 /-- 概要：同じ実商比較の fiber 作用を与える、元の指定成分の実辺。
 方針：同じ全変換のパラメータを元の単体の頂点で評価する。
@@ -40,7 +40,7 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 使われ方：元の商値比較辺との合成の正規化。 -/
 def weakSpanKanQuotientForwardValueEdge :=
   functorEdgeAt (intervalMappingEdgeOfVertex
-    (smallUnstraighteningHomParameter (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom))
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom))
     (ULift.up (nerveVertex c))
 
 /-- 概要：同じ実比較辺は元の全降下同型の逆の指定成分を表す。
@@ -48,25 +48,25 @@ def weakSpanKanQuotientForwardValueEdge :=
 規約：全一単体の構成と同じ成分を使う。
 使われ方：指定値比較による全 fiber の正規化。 -/
 theorem weakSpanKanQuotientForwardValueEdge_hom :
-    Truncated.HomotopyCategory.homMk (weakSpanKanQuotientForwardValueEdge h x c).toTruncated =
-      (FunctorIso.app (weakSpanKanQuotientDiagram_simplexIso h x).symm
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdge h x c).toTruncated =
+      (FunctorIso.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm
         (ULift.up (nerveVertex c))).hom := by
-  let e := (weakSpanKanQuotientDiagram_simplexIso h x).symm
+  let e := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm
   let v : ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve (TransportSimplexCategory B.obj))) _⦋0⦌ := ULift.up (nerveVertex c)
   let ev := (hoFunctor.map (evaluateFunctorAt (Y := SpaceInfinity.{u}) v)).toFunctor
-  have he := smallUnstraighteningHomEdge_hom e.hom
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge_hom e.hom
   apply Arrow.mk_injective _ _
   calc
     _ = Arrow.mk (ev.map (Truncated.HomotopyCategory.homMk
-        (smallUnstraighteningHomEdge e.hom).toTruncated)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge e.hom).toTruncated)) := by
       apply Truncated.HomotopyCategory.congr_arrowMk_homMk
       change (functorEdgeAt (intervalMappingEdgeOfVertex
-        (intervalMappingVertexOfEdge (smallUnstraighteningHomEdge e.hom))) v).edge =
-        ((smallUnstraighteningHomEdge e.hom).map (evaluateFunctorAt v)).edge
-      have h := (intervalMappingEdgeVertexEquiv _ _).left_inv (smallUnstraighteningHomEdge e.hom)
+        (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge e.hom))) v).edge =
+        ((_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge e.hom).map (evaluateFunctorAt v)).edge
+      have h := (intervalMappingEdgeVertexEquiv _ _).left_inv (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge e.hom)
       change intervalMappingEdgeOfVertex
-        (intervalMappingVertexOfEdge (smallUnstraighteningHomEdge e.hom)) = _ at h
+        (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge e.hom)) = _ at h
       rw [h]
       rfl
     _ = Arrow.mk (ev.map e.hom) := congrArg (fun a => Arrow.mk (ev.map a)) he
@@ -79,20 +79,20 @@ theorem weakSpanKanQuotientForwardValueEdge_hom :
 規約：元の値座標への厳密な等式輸送だけを追加する。
 使われ方：同じ実比較辺と既存の商値正規化との接続。 -/
 theorem weakSpanKanQuotientSimplexIso_app_value :
-    FunctorIso.app (weakSpanKanQuotientDiagram_simplexIso h x)
+    FunctorIso.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x)
         (ULift.up (nerveVertex c)) ≪≫
       eqToIso (congrArg HomotopyCategory.mk
-        (kanDiagramCoherentNerve_vertex (weakSpanKanDiagram i x) c)) =
-      weakSpanKanQuotientDiagram_initialVertexIso h x c := by
-  have hp := F2.functorIso_app_precomp_heq (weakSpanKanQuotientDiagram_restrictionIso h x)
+        (kanDiagramCoherentNerve_vertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x) c)) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_initialVertexIso h x c := by
+  have hp := F2.functorIso_app_precomp_heq (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x)
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj))
     (ULift.up (nerveVertex c))
   have hp' := eq_of_heq hp
-  simp only [weakSpanKanQuotientDiagram_simplexIso, FunctorIso.app_trans,
-    weakSpanKanQuotientDiagram_initialVertexIso, weakSpanKanSpaceDiagram_initialVertexIso,
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso, FunctorIso.app_trans,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_initialVertexIso, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso,
     Iso.trans_assoc]
   have hd := F2.functorIsoOfEq_app_heq
-    ((weakSpanKanQuotientDiagram_restrictionIso h x).precomp
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_restrictionIso h x).precomp
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj)))
     (by rw [← Category.assoc, ← Functor.map_comp]) rfl (ULift.up (nerveVertex c))
   have hd' := eq_of_heq hd
@@ -105,12 +105,12 @@ theorem weakSpanKanQuotientSimplexIso_app_value :
 規約：元の全一単体を変更しない。
 使われ方：既存指定値比較の逆辺との合成。 -/
 def weakSpanKanQuotientForwardValueEdgeAtValue :
-    SpaceInfinity.{u}.Edge (spaceInfinityVertex ((weakSpanKanDiagram i x).obj c))
-      ((weakSpanKanQuotientDiagram h x).app (Opposite.op ⦋0⦌)
+    SpaceInfinity.{u}.Edge (spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c))
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x).app (Opposite.op ⦋0⦌)
         (ULift.up (q.hom.app (Opposite.op ⦋0⦌)
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))))) :=
-  (weakSpanKanQuotientForwardValueEdge h x c).ofEq
-    (kanDiagramCoherentNerve_vertex (weakSpanKanDiagram i x) c) rfl
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdge h x c).ofEq
+    (kanDiagramCoherentNerve_vertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x) c) rfl
 
 /-- 概要：元の Kan 値へ座標を揃えた同じ実辺は既存指定値同型の逆を表す。
 方針：同じ実辺の類と元の全降下成分の照合を使う。
@@ -118,12 +118,12 @@ def weakSpanKanQuotientForwardValueEdgeAtValue :
 使われ方：全 fiber 単位の元の値比較による正規化。 -/
 theorem weakSpanKanQuotientForwardValueEdgeAtValue_hom :
     Truncated.HomotopyCategory.homMk
-      (weakSpanKanQuotientForwardValueEdgeAtValue h x c).toTruncated =
-        (weakSpanKanQuotientDiagram_initialVertexIso h x c).inv := by
-  rw [weakSpanKanQuotientForwardValueEdgeAtValue, homMk_edge_ofEq,
-    weakSpanKanQuotientForwardValueEdge_hom, FunctorIso.app_symm]
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue h x c).toTruncated =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_initialVertexIso h x c).inv := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue, homMk_edge_ofEq,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdge_hom, FunctorIso.app_symm]
   simp only [eqToHom_refl, Category.comp_id, Iso.symm_hom]
-  exact congrArg Iso.inv (weakSpanKanQuotientSimplexIso_app_value h x c)
+  exact congrArg Iso.inv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexIso_app_value h x c)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

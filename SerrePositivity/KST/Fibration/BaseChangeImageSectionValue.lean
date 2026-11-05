@@ -32,9 +32,9 @@ theorem straighteningBaseChangeImageSectionPoint_val (c : TransportSimplexCatego
     (v : (((relativeSectionEnrichedDiagram
       (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj
         (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    (straighteningBaseChangeImageSectionPoint p k c v).val = v.val := by
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c v).val = v.val := by
   exact sectionPoint_eq_mp_val p
     (SSet.yonedaEquiv_symm_comp c.objDown.val k)
-    (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c) v
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c) v
 
 end SerrePositivity.KST.Fibration

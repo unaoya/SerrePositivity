@@ -47,12 +47,12 @@ def selfPullbackMap : pullback p p ⟶ pullback p' p' :=
 規約：標的の参照頂点は f(e)。
 使われ方：Goerss–Jardine I §7。連結射の自然性を自己 pullback へ移す。 -/
 theorem selfPullbackFiberInclusion_natural (e : E _⦋0⦌) :
-    selfPullbackFiberInclusion p e ≫ selfPullbackMap p p' f g comm =
-      FibrationSquare.fiberMap p p' f g comm e ≫ selfPullbackFiberInclusion p' (f.app _ e) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e ≫ _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap p p' f g comm =
+      _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e ≫ _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p' (f.app _ e) := by
   apply pullback.hom_ext
-  · simp only [selfPullbackMap, selfPullbackFiberInclusion, Category.assoc,
-      pullback.lift_fst, pullback.lift_fst_assoc, FibrationSquare.fiberMap_ι]
-  · simp only [selfPullbackMap, selfPullbackFiberInclusion, Category.assoc,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion, Category.assoc,
+      pullback.lift_fst, pullback.lift_fst_assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion, Category.assoc,
       pullback.lift_snd, pullback.lift_snd_assoc, SSet.const_comp, SSet.comp_const]
 
 /-- 概要：自己 pullback へ向かう連結写像は fibration の可換四角形に関して自然。
@@ -61,17 +61,17 @@ theorem selfPullbackFiberInclusion_natural (e : E _⦋0⦌) :
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。交換と loop の逆元の射の比較。 -/
 theorem selfPullbackConnecting_natural [Fibration p] [Fibration p']
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
-    (e : E _⦋0⦌) (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    mapπ₀ (selfPullbackMap p p' f g comm) (selfPullbackConnecting p e a) =
-      selfPullbackConnecting p' (f.app _ e)
-        (KanHomotopyGroup.map g (FibrationSquare.base_eq p p' f g comm e) a) := by
-  change mapπ₀ (selfPullbackMap p p' f g comm)
-    (mapπ₀ (selfPullbackFiberInclusion p e) (componentConnecting p e (p.app _ e) rfl a)) = _
-  rw [← mapπ₀_comp_apply, selfPullbackFiberInclusion_natural p p' f g comm e,
+    (e : E _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap p p' f g comm) (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p' (f.app _ e)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) a) := by
+  change mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap p p' f g comm)
+    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e) (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e (p.app _ e) rfl a)) = _
+  rw [← mapπ₀_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion_natural p p' f g comm e,
     mapπ₀_comp_apply]
-  rw [FibrationSquare.componentConnecting_natural p p' f g comm e (p.app _ e) rfl
-    (p'.app _ (f.app _ e)) rfl (FibrationSquare.fiberMap p p' f g comm e)
-    (FibrationSquare.fiberMap_ι p p' f g comm e)]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.componentConnecting_natural p p' f g comm e (p.app _ e) rfl
+    (p'.app _ (f.app _ e)) rfl (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e)
+    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p p' f g comm e)]
   rfl
 
 end

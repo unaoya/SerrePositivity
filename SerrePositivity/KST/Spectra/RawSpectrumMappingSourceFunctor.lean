@@ -24,7 +24,7 @@ lemma pointedPre_id (X : OmegaSpectrum.{u}) (Z : KanSequence.{u}) :
   intro n
   rw [pointedPre_evaluation, Category.id_comp]
   change pointedEvaluation X Z n ≫
-    PointedMapping.prePointed (𝟙 (X.level n).space) (Z.level n).space = _
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 (X.level n).space) (Z.level n).space = _
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id,
     NatTrans.id_app]
   exact Category.comp_id (pointedEvaluation X Z n)

@@ -66,15 +66,15 @@ structure VerdierSquareBoundaryIso {X : SSet.{u}}
     (F G : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) where
   inclusion : FunctorIso (squareBottomEdge ≫ F) (squareBottomEdge ≫ G)
   quotient : FunctorIso (squareRightEdge ≫ F) (squareRightEdge ≫ G)
-  zero : FunctorIso (verdierZeroCorner ≫ F) (verdierZeroCorner ≫ G)
+  zero : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ F) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ G)
 
 /-- 全図式比較は、三つの指定境界比較そのものを制限として持つ。 -/
 structure VerdierSquareDiagramIso {X : SSet.{u}}
-    (F G : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b : VerdierSquareBoundaryIso F G) where
+    (F G : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso F G) where
   comparison : FunctorIso F G
-  inclusion_eq : comparison.precomp squareBottomEdge = b.inclusion
-  quotient_eq : comparison.precomp squareRightEdge = b.quotient
-  zero_eq : comparison.precomp verdierZeroCorner = b.zero
+  inclusion_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison.precomp squareBottomEdge = b.inclusion
+  quotient_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison.precomp squareRightEdge = b.quotient
+  zero_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison.precomp _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner = b.zero
 
 /-- 右面・外周の転置 Verdier 面。j=0 は右面、j=1 は外周。 -/
 def verdierRectangleFace (j : Fin 2) :
@@ -84,39 +84,39 @@ def verdierRectangleFace (j : Fin 2) :
 /-- 二つの Verdier 面の境界と、上下の指定合成三角形の比較。 -/
 structure VerdierRectangleBoundaryIso {X : SSet.{u}}
     (F G : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X) where
-  faces (j : Fin 2) : VerdierSquareBoundaryIso
-    (verdierRectangleFace j ≫ F) (verdierRectangleFace j ≫ G)
+  faces (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j ≫ F) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j ≫ G)
   bottom : FunctorIso (pastingBottomTriangle F) (pastingBottomTriangle G)
   top : FunctorIso (pastingTopTriangle F) (pastingTopTriangle G)
 
 /-- 全長方形の同型。二面の指定三境界と上下の二単体を同時に保持する。 -/
 structure VerdierRectangleDiagramIso {X : SSet.{u}}
-    (F G : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b : VerdierRectangleBoundaryIso F G) where
+    (F G : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso F G) where
   comparison : FunctorIso F G
-  faces (j : Fin 2) : VerdierSquareDiagramIso
-    (verdierRectangleFace j ≫ F) (verdierRectangleFace j ≫ G) (b.faces j)
-  faces_eq (j : Fin 2) : comparison.precomp (verdierRectangleFace j) = (faces j).comparison
-  bottom_eq : comparison.precomp (pastingBottomTriangle (𝟙 _)) = b.bottom
-  top_eq : comparison.precomp (pastingTopTriangle (𝟙 _)) = b.top
+  faces (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j ≫ F) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j ≫ G) (b.faces j)
+  faces_eq (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso.comparison.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j) = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso.faces j).comparison
+  bottom_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso.comparison.precomp (pastingBottomTriangle (𝟙 _)) = b.bottom
+  top_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso.comparison.precomp (pastingTopTriangle (𝟙 _)) = b.top
 
 namespace RelativeVerdierRectangle
-open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}}
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
 
 /-- 実 ν 像の二つの ofSquare 認証を、その同じ源長方形に貼る。 -/
 def ofActualFaces (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (r o : RelativeVerdierDiagram ν)
-    (hr : r.square = verdierRectangleFace 0 ≫ F)
-    (ho : o.square = verdierRectangleFace 1 ≫ F) : RelativeVerdierRectangle ν where
-  diagram := F
-  right := r
-  outer := o
-  right_eq := by
+    (r o : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν)
+    (hr : r.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F)
+    (ho : o.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν where
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram := F
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right := r
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer := o
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right_eq := by
     rw [hr]
     change _ = (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
       (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare F 0
     rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  outer_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer_eq := by
     rw [ho]
     change _ = (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
       (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare F 1

@@ -23,13 +23,13 @@ namespace SerrePositivity.InfinityCategories.Derived.Localization
 open SerrePositivity.KST.LocalizingInvariants
 
 def groupoidCompletionEquivalenceOfIso {X Y : SSet.{u}} (e : X ≅ Y) :
-    QCatEquivalence (groupoidCompletion X) (groupoidCompletion Y) where
-  hom := groupoidCompletionMapOf e.hom
-  inv := groupoidCompletionMapOf e.inv
-  homInvIso := groupoidCompletionMapOf_compIso e.hom e.inv ≪≫
-    (by rw [e.hom_inv_id]; exact groupoidCompletionMapOf_idIso X)
-  invHomIso := groupoidCompletionMapOf_compIso e.inv e.hom ≪≫
-    (by rw [e.inv_hom_id]; exact groupoidCompletionMapOf_idIso Y)
+    QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion Y) where
+  hom := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf e.hom
+  inv := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf e.inv
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso e.hom e.inv ≪≫
+    (by rw [e.hom_inv_id]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso X)
+  invHomIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso e.inv e.hom ≪≫
+    (by rw [e.inv_hom_id]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso Y)
 
 end SerrePositivity.InfinityCategories.Derived.Localization
 

@@ -70,11 +70,11 @@ def spanArrowFamilyMapping : K ⟶ intervalMappingSpace x y :=
     (by rw [← curry_evaluateFunctorAt_interval, curry_uncurry]; exact h₁)
 
 /-- 区間 Hom 表示を包含しても、元の全辺族は変わらない。 -/
-lemma spanArrowFamilyMapping_inclusion : spanArrowFamilyMapping f h₀ h₁ ≫
+lemma spanArrowFamilyMapping_inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁ ≫
     vertexFiberι ((pre (boundary 1).ι).app X)
       (functorVertex (intervalMappingBoundary x y)) = f := by
   apply uncurry_injective
-  change intervalMappingUncurry (spanArrowFamilyMapping f h₀ h₁) = _
+  change intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁) = _
   exact intervalMappingUncurry_curryOfEndpoints _ _ _
 
 /-- 定値な実辺の族の始点は、元の同じ始点に厳密に定値。 -/

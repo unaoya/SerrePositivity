@@ -22,8 +22,8 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
 open SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 def quotientOriginalRightImage := homPost r.hom (homPre i.hom (rightHom p q))
 
@@ -34,22 +34,22 @@ def quotientCUnitImage :=
   homPost r.hom (homPre i.hom (LaxInclusion.fromCAdjunction p q).unitHom)
 
 lemma quotientOriginalRightImage_unit :
-    quotientOriginalRightImage p q i r ≫ quotientOriginalCImage p q i r =
-      quotientCUnitImage p q i r := by
-  unfold quotientOriginalRightImage quotientOriginalCImage quotientCUnitImage
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalRightImage p q i r ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImage p q i r =
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCUnitImage p q i r := by
+  unfold _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalRightImage _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImage _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCUnitImage
   rw [← homPost_homComp, ← homPre_homComp, rightCompatibleFromCIso_right]
 
 def quotientOriginalCImageIso : FunctorIso ((i.hom ≫ cofiber p q) ≫ r.hom)
     ((i.hom ≫ ((laxFst p q).hom ≫ LaxInclusion.fromC p q)) ≫ r.hom) := by
-  have hi : IsIso (quotientOriginalCImage p q i r) := by
-    unfold quotientOriginalCImage homPost homPre
+  have hi : IsIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImage p q i r) := by
+    unfold _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImage homPost homPre
     infer_instance
-  exact asIso (quotientOriginalCImage p q i r)
+  exact asIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImage p q i r)
 
 def quotientSelectedCIso : FunctorIso
-    (CofiberFamily.cofiber Q.obj (quotientArrow p q i r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r))
     ((i.hom ≫ ((laxFst p q).hom ≫ LaxInclusion.fromC p q)) ≫ r.hom) :=
-  (quotientCofiberRelativeIso p q i r).symm ≪≫ quotientOriginalCImageIso p q i r
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso p q i r).symm ≪≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalCImageIso p q i r
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
 

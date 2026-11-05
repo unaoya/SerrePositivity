@@ -96,15 +96,15 @@ lemma dgGluingIdentityDiagonal_arrow_vertex (x : (dgNerve R C) _⦋0⦌) :
 def dgGluingIdentityNativeDiagonalIso : FunctorIso
     (dgNerve.map (dgGluingIdentityNativeDiagonal R C) ≫
       (dgGluingIdentityHomTargetLaxEquivalence.{u, v} R C).hom)
-    (constantFunctorMap (Δ[1] : SSet) (dgNerve R C) ≫ arrowLaxInverse (dgNerve R C)) := by
+    (constantFunctorMap (Δ[1] : SSet) (dgNerve R C) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C)) := by
   let f := dgNerve.map (dgGluingIdentityNativeDiagonal R C) ≫
     (dgGluingIdentityHomTargetLaxEquivalence.{u, v} R C).hom
   let a := f ≫ F2.laxPullbackArrow (𝟙 (dgNerve R C)) (𝟙 (dgNerve R C))
   have ha : ∀ x, IsEquivalencePathVertex (a.app (Opposite.op ⦋0⦌) x) :=
     dgGluingIdentityDiagonal_arrow_vertex R C
-  have e := (EquivalenceArrowFamily.comparison a ha).postcomp (arrowLaxInverse (dgNerve R C))
-  have hs : a ≫ arrowLaxInverse (dgNerve R C) = f := by
-    change (f ≫ (arrowLaxIso (dgNerve R C)).hom) ≫ (arrowLaxIso (dgNerve R C)).inv = f
+  have e := (EquivalenceArrowFamily.comparison a ha).postcomp (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C))
+  have hs : a ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C) = f := by
+    change (f ≫ (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (dgNerve R C)).hom) ≫ (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (dgNerve R C)).inv = f
     rw [Category.assoc, Iso.hom_inv_id, Category.comp_id]
   have ht : a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = 𝟙 _ := by
     rw [show a = f ≫ F2.laxPullbackArrow (𝟙 (dgNerve R C)) (𝟙 (dgNerve R C)) from rfl,

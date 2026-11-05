@@ -72,14 +72,14 @@ lemma nativeTotalComparison_leg_components
 lemma nativeTotalComparison_leg_equality_iff
     (b : ((SSet.uliftFunctor.{u + 1, u}).obj B) _⦋0⦌) (n : ℕ)
     (y : (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) b)).obj _⦋0⦌)
-    (a a' : KanHomotopyGroup
+    (a a' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) b)).obj n y) :
-    KanHomotopyGroup.map (spaceInfinityEdgeValue (Compact.coconeTransportLeg c b)) rfl a =
-        KanHomotopyGroup.map (spaceInfinityEdgeValue (Compact.coconeTransportLeg c b)) rfl a' ↔
-      KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (spaceInfinityEdgeValue (Compact.coconeTransportLeg c b)) rfl a =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (spaceInfinityEdgeValue (Compact.coconeTransportLeg c b)) rfl a' ↔
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
           (spaceInfinityEdgeValue (Compact.coconeTransportLeg (coherentDiagramTotalCocone F) b) ≫
             nativeTotalValueComparison F c) rfl a =
-        KanHomotopyGroup.map
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
           (spaceInfinityEdgeValue (Compact.coconeTransportLeg (coherentDiagramTotalCocone F) b) ≫
             nativeTotalValueComparison F c) rfl a' :=
   homotopy_map_equality_iff (nativeTotalComparison_leg_homotopy F c b) n y a a'

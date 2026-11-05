@@ -12,47 +12,47 @@ open CategoryTheory
 
 /-- 次元を固定した元の右ブロック作用の射。 -/
 def concreteCubeRightBlockHom (n : ℕ) {m k : ℕ}
-    (f : ConcreteCube.mk m ⟶ ConcreteCube.mk k) :
-    ConcreteCube.mk (n + m) ⟶ ConcreteCube.mk (n + k) :=
-  concreteCubeTensorMap (𝟙 (ConcreteCube.mk n)) f
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) :
+    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + m) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + k) :=
+  concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n)) f
 
 /-- 次元を固定した射は元の具体的 tensor 射そのもの。 -/
 lemma concreteCubeRightBlockHom_tensorMap (n : ℕ) {m k : ℕ}
-    (f : ConcreteCube.mk m ⟶ ConcreteCube.mk k) :
-    concreteCubeRightBlockHom n f = concreteCubeTensorMap (𝟙 (ConcreteCube.mk n)) f := rfl
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) :
+    concreteCubeRightBlockHom n f = concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n)) f := rfl
 
 /-- 次元を固定した右ブロック作用は元の恒等射を保持する。 -/
 lemma concreteCubeRightBlockHom_id (n m : ℕ) :
-    concreteCubeRightBlockHom n (𝟙 (ConcreteCube.mk m)) = 𝟙 (ConcreteCube.mk (n + m)) :=
+    concreteCubeRightBlockHom n (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m)) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + m)) :=
   concreteCubeTensorMap_id _ _
 
 /-- 次元を固定した右ブロック作用は元の合成を保持する。 -/
 lemma concreteCubeRightBlockHom_comp (n : ℕ) {m k l : ℕ}
-    (f : ConcreteCube.mk m ⟶ ConcreteCube.mk k) (g : ConcreteCube.mk k ⟶ ConcreteCube.mk l) :
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) (g : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk l) :
     concreteCubeRightBlockHom n (f ≫ g) =
       concreteCubeRightBlockHom n f ≫ concreteCubeRightBlockHom n g :=
   concreteCubeTensorMap_right_comp n f g
 
 /-- 次元を固定した右ブロック作用は元の右端保持を保持する。 -/
 lemma concreteCubeRightBlockHom_keep (n : ℕ) {m k : ℕ}
-    (f : ConcreteCube.mk m ⟶ ConcreteCube.mk k) :
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) :
     concreteCubeRightBlockHom n (concreteCubeRightKeepHom f) =
       concreteCubeRightKeepHom (concreteCubeRightBlockHom n f) :=
   concreteCubeTensorMap_rightKeep n f
 
 /-- 元の右ブロックの零面を、同じ全体の零面として回収する。 -/
 lemma concreteCubeRightBlockHom_face_zero (n m : ℕ) (b : Bool) :
-    concreteCubeRightBlockHom n (concreteCubeFace b m 0) =
-      concreteCubeFace b (n + m) 0 := concreteCubeTensorMap_face_zero n m b
+    concreteCubeRightBlockHom n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b m 0) =
+      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b (n + m) 0 := concreteCubeTensorMap_face_zero n m b
 
 /-- 元の右ブロックの零削除を、同じ全体の零削除として回収する。 -/
 lemma concreteCubeRightBlockHom_degeneracy_zero (n m : ℕ) :
-    concreteCubeRightBlockHom n (concreteCubeDegeneracy m 0) =
-      concreteCubeDegeneracy (n + m) 0 := concreteCubeTensorMap_degeneracy_zero n m
+    concreteCubeRightBlockHom n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy m 0) =
+      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy (n + m) 0 := concreteCubeTensorMap_degeneracy_zero n m
 
 /-- 元の右ブロックの零 max を、同じ全体の零 max として回収する。 -/
 lemma concreteCubeRightBlockHom_connection_zero (n m : ℕ) :
-    concreteCubeRightBlockHom n (concreteCubeConnection m 0) =
-      concreteCubeConnection (n + m) 0 := concreteCubeTensorMap_connection_zero n m
+    concreteCubeRightBlockHom n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m 0) =
+      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection (n + m) 0 := concreteCubeTensorMap_connection_zero n m
 
 end SerrePositivity.KST.SConstruction

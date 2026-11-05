@@ -26,7 +26,7 @@ theorem exists_lift {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (T : PtSimplex.RelStruct .const t (Fin.last (n + 1))) :
     ∃ s : E.PtSimplex (n + 1) e,
       ∃ R : PtSimplex.RelStruct .const s (Fin.last (n + 1)),
-        mapSimplex p hb s = t ∧ R.map ≫ p = T.map := by
+        _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hb s = t ∧ R.map ≫ p = T.map := by
   have hc : horn.IsCompatible (i := Fin.last (n + 2))
       (fun _ _ ↦ (SSet.const e : (Δ[n + 1] : SSet.{u}) ⟶ E)) := by
     rw [horn.isCompatible_iff]

@@ -23,9 +23,9 @@ open SerrePositivity.KST.Fibration
 /-- Kan 対象の等式で移した点は、同じ等式同型による分類射の後合成。 -/
 theorem pointedSpaceFiberPointHom_eq_transport {K L : KanObject.{u}} (h : K = L)
     (v : K.obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (congrArg spaceInfinityVertex h))).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm
       (Eq.mp (congrArg (fun T : KanObject.{u} => T.obj _⦋0⦌) h) v)) := by
   subst L
   simp only [eqToIso_refl, Iso.refl_hom, Category.comp_id]

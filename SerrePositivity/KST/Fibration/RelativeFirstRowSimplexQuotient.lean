@@ -18,7 +18,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
 
 /-- 概要：同じ商の標準単体相対図式から商図式の core への元の射影。
 方針：同じ core 逆像の指定射影を使う。

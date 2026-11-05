@@ -43,13 +43,13 @@ lemma family_eq_transpose {K : SSet.{u}} {T E : PointedSimplicialSet.{u}}
   apply ext
   rw [family_vertex, PointedMapping.familyVertex_transpose]
   symm
-  have hh : (InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
-      (InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
+  have hh : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
     rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
   have h := congrArg Under.Hom.right hh
   simp only [Under.comp_right, Under.id_right] at h
-  change ((InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
-    (InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
+  change ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
     FreePointedHomRestriction.restrict K (PointedObject.basedHom T E)).app _
       (PointedMapping.familyVertex _) = _
   rw [← Category.assoc, h, Category.id_comp]

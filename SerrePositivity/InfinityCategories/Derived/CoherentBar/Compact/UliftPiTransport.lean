@@ -20,7 +20,7 @@ open scoped _root_.Simplicial
 variable {X : SSet.{u}} [KanComplex X]
 
 lemma dgBarCompactPiTransport_ulift (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y)
-    {a : KanHomotopyGroup X n x} {b : KanHomotopyGroup X n y}
+    {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : dgBarCompactPiTransport n e a b) :
     dgBarCompactPiTransport n
       (SSet.Edge.ofTruncated (X := (SSet.uliftFunctor.{v, u}).obj X)

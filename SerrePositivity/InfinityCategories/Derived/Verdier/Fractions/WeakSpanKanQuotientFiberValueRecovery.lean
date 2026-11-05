@@ -26,8 +26,8 @@ end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
 
 /-- 概要：同じ商比較の全 fiber 作用は既存指定値同型で元の fiber 値比較へ戻る。
 方針：同じ実 transport と既存値比較の自然性・指定二辺の打ち消しを使う。
@@ -35,18 +35,18 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 使われ方：元の全族単位と既存指定恒等点の正規化。 -/
 def weakSpanKanQuotientSimplexFiberValueRecovery :
     FunctorIso
-      (weakSpanKanQuotientSimplexFiberMap h x c ≫
-        (weakSpanKanQuotientFiberValueEquivalence h x c).hom)
-      (smallLeftUnstraighteningFiberValueEquivalence (weakSpanKanCoherentDiagram i x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c ≫
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFiberValueEquivalence h x c).hom)
+      (smallLeftUnstraighteningFiberValueEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x)
         (nerveVertex c)).hom := by
-  let F := weakSpanKanCoherentDiagram i x
-  let Q := weakSpanKanQuotientDiagram h x
+  let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x
+  let Q := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
   let b := nerveVertex c
   let y := (transportSimplexFirstVertexMap B.obj ≫ q.hom).app (Opposite.op ⦋0⦌) b
   let a := F.app (Opposite.op ⦋0⦌) (ULift.up b)
   let z := Q.app (Opposite.op ⦋0⦌) (ULift.up y)
-  let e := weakSpanKanQuotientForwardValueEdge h x c
-  let d := weakSpanKanQuotientValueEdge h x c
+  let e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdge h x c
+  let d := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueEdge h x c
   let fe := F2.spaceInfinityEdgeValue e
   let fd := F2.spaceInfinityEdgeValue d
   let sF := (smallLeftUnstraighteningFiberIso F b).hom ≫
@@ -55,11 +55,11 @@ def weakSpanKanQuotientSimplexFiberValueRecovery :
     (leftUnstraighteningFiberIso Q (ULift.up y)).hom
   let vF := (pointedSpaceFiberValueEquivalence a).hom
   let vQ := (pointedSpaceFiberValueEquivalence z).hom
-  have hT := (weakSpanKanQuotientSimplexFiberTransportIso h x c).postcomp
+  have hT := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberTransportIso h x c).postcomp
     (vQ ≫ (SSet.uliftFunctor.{u + 1, u}).map fd)
   have hV := (FunctorIso.precomp (F2.spaceInfinityEdgeTransportValueIso e).symm sF).postcomp
     ((SSet.uliftFunctor.{u + 1, u}).map fd)
-  have hc := weakSpanKanQuotientValueCancellationHomotopy h x c
+  have hc := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueCancellationHomotopy h x c
   change SSet.Homotopy (𝟙 (spaceInfinityObject a).obj)
     (fe ≫ fd) at hc
   have hC := FunctorIso.precomp
@@ -77,13 +77,13 @@ def weakSpanKanQuotientSimplexFiberValueRecovery :
     (smallLeftUnstraighteningFiberValueEquivalence Q y).hom = sQ ≫ vQ at hQ
   have h' : FunctorIso
       ((SSet.uliftFunctor.{u + 1, u}).map
-        (weakSpanKanQuotientSimplexFiberMap h x c ≫
-          (weakSpanKanQuotientFiberValueEquivalence h x c).hom))
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c ≫
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFiberValueEquivalence h x c).hom))
       ((SSet.uliftFunctor.{u + 1, u}).map
         (smallLeftUnstraighteningFiberValueEquivalence F b).hom) := by
     change FunctorIso
       ((SSet.uliftFunctor.{u + 1, u}).map
-        (weakSpanKanQuotientSimplexFiberMap h x c ≫
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c ≫
           (smallLeftUnstraighteningFiberValueEquivalence Q y).hom ≫
             fd)) _
     rw [Functor.map_comp, Functor.map_comp, hF, hQ]

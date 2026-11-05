@@ -62,11 +62,11 @@ def dgOdotMilnorResolvedPerfectValueEquivalence : QCatEquivalence
 /-- 概要：元 native resolved 商から同じ固定 ν 値への実完備化射。
 方針：D-21 の同じ Yoneda 射を始域・終域の指定同値で輸送する。
 規約：完備化の存在を追加仮定にしない。使われ方：Cat^perf Milnor 列の c。 -/
-def dgOdotMilnorCompletion : ExactMap (dgGluingMilnorNativeResolvedQuotient R d)
+def dgOdotMilnorCompletion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeResolvedQuotient R d)
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) where
-  hom := (dgOdotMilnorResolvedLiftEquivalence R d).hom ≫
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorResolvedLiftEquivalence R d).hom ≫
     (dgPerfectYonedaInfinity R (Q) ≫ (dgOdotMilnorResolvedPerfectValueEquivalence R d).hom)
-  isExact := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
     letI := isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorResolvedLiftEquivalence R d).isQCatEquivalence
     letI := dgPerfectYonedaInfinity_isExactFunctor R (Q)

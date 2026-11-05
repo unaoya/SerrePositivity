@@ -30,7 +30,7 @@ lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
       stdSimplex.δ (0 : Fin 3) ≫ T = horn₂₀.ι₀₁ ≫ p ∧
       stdSimplex.δ (0 : Fin 2) ≫ F = SSet.const (functorVertex p) ∧
       F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T ∧
-      F ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R ∧
+      F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ∧
       F ≫ (pre horn₂₀.ι₀₁).app X ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
           SSet.const ((horn₂₀.ι₀₁ ≫ p).app (Opposite.op ⦋0⦌)
@@ -54,12 +54,12 @@ lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
     exists_intervalPrecompositionFamily (horn₂₀.ι₀₁ ≫ p) (squareBottomEdge ≫ R) hc
   have hLR : intervalPrecompositionFamily T ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     rw [hLs, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_source]
-  let F := stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (squareArrowFamily R) hLR
+  let F := stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R) hLR
   have hFl : F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T :=
     stable_spanFamilyOfArrows_left _ _ _
-  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R :=
+  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R :=
     stable_spanFamilyOfArrows_right _ _ _
   refine ⟨T, F, hT₂, hT₀, ?_, hFl, hFr, ?_, ?_⟩
   · apply stable_spanFamily_hom_ext

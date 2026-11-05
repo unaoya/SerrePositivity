@@ -20,64 +20,64 @@ open scoped _root_.Simplicial
 
 /-- 下側の水平面の入力射影は元の恒等再添字。 -/
 lemma coherentLowerStringFace_index (n : ℕ) :
-    SimplexCategory.δ (Fin.last (n + 1)) ≫ coherentLowerStringIndex n = 𝟙 ⦋n⦌ := by
+    SimplexCategory.δ (Fin.last (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex n = 𝟙 ⦋n⦌ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  change (coherentLowerStringIndex n).toOrderHom ((Fin.last (n + 1)).succAbove i) = i
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex n).toOrderHom ((Fin.last (n + 1)).succAbove i) = i
   simp [Fin.succAbove_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex]
 
 /-- 下側の水平面の時刻は元の定数零。 -/
 lemma coherentLowerStringFace_time (n : ℕ) :
-    SimplexCategory.δ (Fin.last (n + 1)) ≫ coherentLowerStringTime n =
+    SimplexCategory.δ (Fin.last (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime n =
       SimplexCategory.const ⦋n⦌ ⦋1⦌ 0 := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  change (coherentLowerStringTime n).toOrderHom ((Fin.last (n + 1)).succAbove i) = 0
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime n).toOrderHom ((Fin.last (n + 1)).succAbove i) = 0
   simp [Fin.succAbove_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime]
 
 /-- 上側の水平面の入力射影は元の恒等再添字。 -/
 lemma coherentUpperStringFace_index (n : ℕ) :
-    SimplexCategory.δ (0 : Fin (n + 2)) ≫ coherentUpperStringIndex n = 𝟙 ⦋n⦌ := by
+    SimplexCategory.δ (0 : Fin (n + 2)) ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex n = 𝟙 ⦋n⦌ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  change (coherentUpperStringIndex n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = i
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = i
   simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex]
 
 /-- 上側の水平面の時刻は元の定数一。 -/
 lemma coherentUpperStringFace_time (n : ℕ) :
-    SimplexCategory.δ (0 : Fin (n + 2)) ≫ coherentUpperStringTime n =
+    SimplexCategory.δ (0 : Fin (n + 2)) ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime n =
       SimplexCategory.const ⦋n⦌ ⦋1⦌ 1 := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  change (coherentUpperStringTime n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = 1
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = 1
   simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime]
 
 /-- 下側の水平面は、時刻零に含めた元の全入力列そのもの。 -/
 lemma coherentLowerPrismString_horizontalFace {I : Type u} [SmallCategory I]
-    {x y : I} {f : x ⟶ y} (s : CoherentArrowString f) :
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (nerve (I × ULift.{u} (Fin 2))).map (SimplexCategory.δ (Fin.last (s.length + 1))).op
-      (coherentLowerPrismString s).chain =
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain =
       (nerveMap (coherentPrismSliceFunctor I (ULift.up 0))).app (Opposite.op ⦋s.length⦌)
         s.chain := by
   change (nerve (I × ULift.{u} (Fin 2))).map _
-    (coherentStringPrismChain s (coherentLowerStringIndex _) (coherentLowerStringTime _)) = _
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime _)) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, coherentLowerStringFace_index,
     coherentLowerStringFace_time]
   rfl
 
 /-- 上側の水平面は、時刻一に含めた元の全入力列そのもの。 -/
 lemma coherentUpperPrismString_horizontalFace {I : Type u} [SmallCategory I]
-    {x y : I} {f : x ⟶ y} (s : CoherentArrowString f) :
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (nerve (I × ULift.{u} (Fin 2))).map (SimplexCategory.δ (0 : Fin (s.length + 2))).op
-      (coherentUpperPrismString s).chain =
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain =
       (nerveMap (coherentPrismSliceFunctor I (ULift.up 1))).app (Opposite.op ⦋s.length⦌)
         s.chain := by
   change (nerve (I × ULift.{u} (Fin 2))).map _
-    (coherentStringPrismChain s (coherentUpperStringIndex _) (coherentUpperStringTime _)) = _
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime _)) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, coherentUpperStringFace_index,
     coherentUpperStringFace_time]
   rfl
@@ -86,17 +86,17 @@ lemma coherentUpperPrismString_horizontalFace {I : Type u} [SmallCategory I]
 lemma coherentLowerPrismString_rawHorizontalCell {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {x y : I} {f : x ⟶ y} (s : CoherentArrowString f) :
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (SimplicialThickening.functor (SimplexCategory.δ (Fin.last (s.length + 1))).toOrderHom.uliftMap).comp SSet
-      (Q.app _ (ULift.up (coherentLowerPrismString s).chain)) =
+      (Q.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)) =
       ((SSet.uliftFunctor.{v, u}).map
         (nerveMap (coherentPrismSliceFunctor I (ULift.up 0))) ≫ Q).app
           (Opposite.op ⦋s.length⦌) (ULift.up s.chain) := by
-  have h := congrArg (fun a => a (ULift.up (coherentLowerPrismString s).chain))
+  have h := congrArg (fun a => a (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain))
     (Q.naturality (SimplexCategory.δ (Fin.last (s.length + 1))).op)
   change Q.app _ (ULift.up ((nerve (I × ULift.{u} (Fin 2))).map
-    (SimplexCategory.δ (Fin.last (s.length + 1))).op (coherentLowerPrismString s).chain)) =
-    (SimplicialNerve C).map _ (Q.app _ (ULift.up (coherentLowerPrismString s).chain)) at h
+    (SimplexCategory.δ (Fin.last (s.length + 1))).op (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)) =
+    (SimplicialNerve C).map _ (Q.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s).chain)) at h
   rw [coherentLowerPrismString_horizontalFace] at h
   exact h.symm
 
@@ -104,17 +104,17 @@ lemma coherentLowerPrismString_rawHorizontalCell {I : Type u} [SmallCategory I]
 lemma coherentUpperPrismString_rawHorizontalCell {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {x y : I} {f : x ⟶ y} (s : CoherentArrowString f) :
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (SimplicialThickening.functor (SimplexCategory.δ (0 : Fin (s.length + 2))).toOrderHom.uliftMap).comp SSet
-      (Q.app _ (ULift.up (coherentUpperPrismString s).chain)) =
+      (Q.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)) =
       ((SSet.uliftFunctor.{v, u}).map
         (nerveMap (coherentPrismSliceFunctor I (ULift.up 1))) ≫ Q).app
           (Opposite.op ⦋s.length⦌) (ULift.up s.chain) := by
-  have h := congrArg (fun a => a (ULift.up (coherentUpperPrismString s).chain))
+  have h := congrArg (fun a => a (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain))
     (Q.naturality (SimplexCategory.δ (0 : Fin (s.length + 2))).op)
   change Q.app _ (ULift.up ((nerve (I × ULift.{u} (Fin 2))).map
-    (SimplexCategory.δ (0 : Fin (s.length + 2))).op (coherentUpperPrismString s).chain)) =
-    (SimplicialNerve C).map _ (Q.app _ (ULift.up (coherentUpperPrismString s).chain)) at h
+    (SimplexCategory.δ (0 : Fin (s.length + 2))).op (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)) =
+    (SimplicialNerve C).map _ (Q.app _ (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s).chain)) at h
   rw [coherentUpperPrismString_horizontalFace] at h
   exact h.symm
 

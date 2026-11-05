@@ -48,33 +48,33 @@ variable {D E : KanEnrichedDiagram C J} (η : KanEnrichedDiagramComparison D E)
 def kanEnrichedJointComponentIso (X : C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.obj j).obj X))
       (spaceInfinityVertex ((E.obj j).obj X)) :=
-  (eqToIso (congrArg HomotopyCategory.mk (kanEnrichedJointEvaluation_vertex D X j))).symm ≪≫
-    functorIsoValue (η.jointComparisonIso hη) (ULift.up (nerveVertex j), coherentNerveVertex X) ≪≫
-      eqToIso (congrArg HomotopyCategory.mk (kanEnrichedJointEvaluation_vertex E X j))
+  (eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex D X j))).symm ≪≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (η.jointComparisonIso hη) (ULift.up (nerveVertex j), coherentNerveVertex X) ≪≫
+      eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex E X j))
 
 /-- 同じ共同比較の指定成分の順方向射は、元の係数射の coherent な辺の類。 -/
 theorem kanEnrichedJointComponentIso_hom (X : C) (j : J) :
-    (kanEnrichedJointComponentIso η hη X j).hom =
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso η hη X j).hom =
     Truncated.HomotopyCategory.homMk
       (((coherentNerveEdge ((η.component j).val X)).ofEq
         (spaceInfinityVertex_eq_coherent ((D.obj j).obj X)).symm
         (spaceInfinityVertex_eq_coherent ((E.obj j).obj X)).symm).toTruncated) := by
-  simp only [kanEnrichedJointComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
     eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom]
   rw [show (η.jointComparisonIso hη).hom = Truncated.HomotopyCategory.homMk
     (η.jointComparisonEdge).toTruncated from rfl, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
-  exact homMk_transport (kanEnrichedJointEvaluation_vertex D X j)
-    (kanEnrichedJointEvaluation_vertex E X j) _ _ (η.jointComparisonEdge_at j X)
+  exact homMk_transport (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex D X j)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex E X j) _ _ (η.jointComparisonEdge_at j X)
 
 /-- 元の係数点は、同じ共同比較の指定成分で元の像の点へ移る。 -/
 theorem kanEnrichedJointComponentIso_pointHom (X : C) (j : J)
     (v : ((D.obj j).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X)).symm v) ≫
-      (kanEnrichedJointComponentIso η hη X j).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((E.obj j).obj X)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X)).symm v) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso η hη X j).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((E.obj j).obj X)).symm
       (((η.component j).val X).app (Opposite.op ⦋0⦌) v)) := by
-  rw [kanEnrichedJointComponentIso_hom]
-  exact kanPointHom_comp_of_edge ((η.component j).val X) _ rfl v
+  rw [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso_hom]
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge ((η.component j).val X) _ rfl v
 
 end SerrePositivity.InfinityCategories.F1.KanModels
 

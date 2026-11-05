@@ -13,26 +13,26 @@ noncomputable section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 左の元の数値座標を、右ブロックの後へ置く。 -/
-def wedgeCoordinateLeft (T U : NecklaceShape) (i : Fin T.dimension) :
+def wedgeCoordinateLeft (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin T.dimension) :
     Fin (T.wedge U).dimension :=
   ⟨U.dimension + i.val, by rw [T.wedge_dimension U]; have := i.isLt; omega⟩
 
 /-- 右の元の数値座標は、連結後の最初のブロックに置く。 -/
-def wedgeCoordinateRight (T U : NecklaceShape) (i : Fin U.dimension) :
+def wedgeCoordinateRight (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin U.dimension) :
     Fin (T.wedge U).dimension :=
   ⟨i.val, by rw [T.wedge_dimension U]; have := i.isLt; omega⟩
 
 /-- 左の数値ブロックは、元の左の非 joint 頂点の包含と厳密に一致する。 -/
-lemma nonjointCoordinate_wedge_left (T U : NecklaceShape) (i : Fin T.dimension) :
+lemma nonjointCoordinate_wedge_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin T.dimension) :
     (T.wedge U).nonjointCoordinate (T.wedgeCoordinateLeft U i) =
       T.wedgeNonjointLeft U (T.nonjointCoordinate i) := by
   have hi := T.wedgeAscendingIso_index U (Fin.castAdd U.dimension i.rev)
   change ((T.wedge U).nonjointAscending.symm
     (T.wedgeAscendingEquiv U (Fin.castAdd U.dimension i.rev))).val = i.rev.val at hi
-  rw [wedgeAscendingEquiv_left] at hi
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_left] at hi
   change (T.wedge U).nonjointAscending (T.wedgeCoordinateLeft U i).rev =
     T.wedgeNonjointLeft U (T.nonjointAscending i.rev)
   apply (T.wedge U).nonjointAscending.symm.injective
@@ -40,17 +40,17 @@ lemma nonjointCoordinate_wedge_left (T U : NecklaceShape) (i : Fin T.dimension) 
   apply Fin.ext
   have hn := T.wedge_dimension U
   have hb := i.isLt
-  simp only [Fin.val_rev, wedgeCoordinateLeft] at hi ⊢
+  simp only [Fin.val_rev, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateLeft] at hi ⊢
   omega
 
 /-- 右の数値ブロックは、元の右の非 joint 頂点の番号移動と厳密に一致する。 -/
-lemma nonjointCoordinate_wedge_right (T U : NecklaceShape) (i : Fin U.dimension) :
+lemma nonjointCoordinate_wedge_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin U.dimension) :
     (T.wedge U).nonjointCoordinate (T.wedgeCoordinateRight U i) =
       T.wedgeNonjointRight U (U.nonjointCoordinate i) := by
   have hi := T.wedgeAscendingIso_index U (Fin.natAdd T.dimension i.rev)
   change ((T.wedge U).nonjointAscending.symm
     (T.wedgeAscendingEquiv U (Fin.natAdd T.dimension i.rev))).val = T.dimension + i.rev.val at hi
-  rw [wedgeAscendingEquiv_right] at hi
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_right] at hi
   change (T.wedge U).nonjointAscending (T.wedgeCoordinateRight U i).rev =
     T.wedgeNonjointRight U (U.nonjointAscending i.rev)
   apply (T.wedge U).nonjointAscending.symm.injective
@@ -58,11 +58,11 @@ lemma nonjointCoordinate_wedge_right (T U : NecklaceShape) (i : Fin U.dimension)
   apply Fin.ext
   have hn := T.wedge_dimension U
   have hb := i.isLt
-  simp only [Fin.val_rev, wedgeCoordinateRight] at hi ⊢
+  simp only [Fin.val_rev, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateRight] at hi ⊢
   omega
 
 /-- 元の連結後の全数値座標は、左右の元のどちらかのブロックに入る。 -/
-lemma wedgeCoordinate_cases (T U : NecklaceShape) (i : Fin (T.wedge U).dimension) :
+lemma wedgeCoordinate_cases (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin (T.wedge U).dimension) :
     (∃ j, T.wedgeCoordinateLeft U j = i) ∨ (∃ j, T.wedgeCoordinateRight U j = i) := by
   by_cases h : i.val < U.dimension
   · exact Or.inr ⟨⟨i.val, h⟩, Fin.ext rfl⟩

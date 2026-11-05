@@ -50,17 +50,17 @@ instance kanEquivalencePathReplacement_kanComplex {X Y : SSet.{u}}
 使われ方：実際の同値性を既存の Kan fibration の fiber の全次数比較へ渡す。 -/
 lemma kanPiIsomorphism_of_homotopyEquivalence {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (he : IsSimplicialHomotopyEquivalence f) :
-    KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   have : TrivialKanFibration (equivalencePathReplacementMap f) :=
     he.isQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration
-  have hr : KanPiIsomorphism (equivalencePathReplacementProjection f) :=
-    kanPiIsomorphism_of_monoRight _ (TrivialKanFibration.mem (p := _))
-  have hp : KanPiIsomorphism (equivalencePathReplacementMap f) :=
-    kanPiIsomorphism_of_monoRight _ (TrivialKanFibration.mem (p := _))
-  have hu : KanPiIsomorphism (equivalencePathReplacementSection f) := by
-    apply KanPiIsomorphism.of_comp (g := equivalencePathReplacementProjection f) _ hr
+  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (equivalencePathReplacementProjection f) :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (TrivialKanFibration.mem (p := _))
+  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (equivalencePathReplacementMap f) :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (TrivialKanFibration.mem (p := _))
+  have hu : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (equivalencePathReplacementSection f) := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := equivalencePathReplacementProjection f) _ hr
     rw [equivalencePathReplacementSection_projection]
-    exact KanPiIsomorphism.id X
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id X
   have h := hu.comp hp
   rw [equivalencePathReplacementSection_map] at h
   exact h
@@ -70,7 +70,7 @@ lemma kanPiIsomorphism_of_homotopyEquivalence {X Y : SSet.{u}}
 規約：元の射の fibration 性は要求しない。
 使われ方：非空な fiber の全基点 π_* 比較を実際の同値へ移す。 -/
 lemma homotopyEquivalence_of_kanPiIsomorphism_of_vertex {X Y : SSet.{u}}
-    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : KanPiIsomorphism f) (x : X _⦋0⦌) :
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (x : X _⦋0⦌) :
     IsSimplicialHomotopyEquivalence f := by
   let A := PointedSimplicialSet.ofVertex X x
   let B := PointedSimplicialSet.ofVertex Y (f.app _ x)
@@ -79,7 +79,7 @@ lemma homotopyEquivalence_of_kanPiIsomorphism_of_vertex {X Y : SSet.{u}}
     rw [SSet.const_comp])
   have : KanComplex A.right := inferInstanceAs (KanComplex X)
   have : KanComplex B.right := inferInstanceAs (KanComplex Y)
-  obtain ⟨g, ⟨H, _⟩, ⟨K, _⟩⟩ := exists_pointedHomotopyInverse fp hf
+  obtain ⟨g, ⟨H, _⟩, ⟨K, _⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse fp hf
   change SSet.Homotopy (𝟙 X) (f ≫ g.right) at H
   change SSet.Homotopy (𝟙 Y) (g.right ≫ f) at K
   have he : IsQCatEquivalence f := ⟨g.right,
@@ -91,7 +91,7 @@ lemma homotopyEquivalence_of_kanPiIsomorphism_of_vertex {X Y : SSet.{u}}
 規約：空の fiber の全基点条件だけで同値と結論しない。
 使われ方：任意の底頂点上の fiber の比較で空の fiber を含める。 -/
 lemma homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective {X Y : SSet.{u}}
-    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : KanPiIsomorphism f)
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f)
     (h₀ : Function.Surjective (mapπ₀ f)) : IsSimplicialHomotopyEquivalence f := by
   classical
   by_cases hx : Nonempty (X _⦋0⦌)

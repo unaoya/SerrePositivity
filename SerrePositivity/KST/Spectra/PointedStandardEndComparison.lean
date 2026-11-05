@@ -39,7 +39,7 @@ lemma standardEnd_preMap_piIsomorphism
       (terminal.from (X ⋙ PointedSimplicialSet.forget))) :
     letI := standardEnd_kanComplex X hX
     letI := weightedEnd_kanComplex X hX
-    KanPiIsomorphism (PointedWeightedEnd.preMap
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedWeightedEnd.preMap
       CosimplicialLastVertex.weightMap (AsSmall.down ⋙ X)).right := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let := standardEnd_kanComplex X hX
@@ -50,9 +50,9 @@ lemma standardEnd_preMap_piIsomorphism
   let e : (PointedWeightedEnd.obj
       (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)).right ≅ (obj X).right :=
     PointedSimplicialSet.forget.mapIso (standardEndIso X).symm
-  have h := (KanPiIsomorphism.of_iso e).comp
+  have h := (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e).comp
       (weightedEndComparison_piIsomorphism X hX)
-  change KanPiIsomorphism ((standardEndIso X).inv ≫ weightedEndComparison X).right at h
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((standardEndIso X).inv ≫ weightedEndComparison X).right at h
   rw [he] at h
   exact h
 

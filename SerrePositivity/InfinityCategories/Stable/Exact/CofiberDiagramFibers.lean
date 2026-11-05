@@ -31,7 +31,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
 open SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X] (z : (space X) _⦋0⦌)
+variable (X : SSet.{u}) [Quasicategory X] [IsStable X] (z : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌)
 
 /-- 元の cofiber 四角形は同じ右辺の fiber 四角形でもある。 -/
 def fiberSquareAt : FiberSquare (squareRightArrow (squareDiagram z.val)) where
@@ -48,7 +48,7 @@ def fiberSquareAt : FiberSquare (squareRightArrow (squareDiagram z.val)) where
 lemma zero_source_of_right_invertible
     (h : IsInvertibleEdge (squareRightArrow (squareDiagram z.val))) :
     IsZeroVertex (squareVertex (squareDiagram z.val) 0 0) :=
-  (fiberSquareAt X z).zero_of_homMk_isIso h
+  (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt X z).zero_of_homMk_isIso h
 
 end SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
 

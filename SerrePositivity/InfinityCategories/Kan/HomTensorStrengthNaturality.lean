@@ -24,9 +24,9 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 /-- 三因子の最初の二因子の交換は、中央の因子の射について自然。 -/
 @[reassoc]
 lemma exchange_natural_middle (A : C) {P Q : C} (f : P ⟶ Q) (Z : C) :
-    A ◁ (f ▷ Z) ≫ (HomTensorStrength.exchange A Q Z).hom =
-      (HomTensorStrength.exchange A P Z).hom ≫ f ▷ (A ⊗ Z) := by
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+    A ◁ (f ▷ Z) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A Q Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A P Z).hom ≫ f ▷ (A ⊗ Z) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, Category.assoc]
   rw [associator_inv_naturality_middle_assoc, ← comp_whiskerRight_assoc,
     BraidedCategory.braiding_naturality_right, comp_whiskerRight_assoc,
@@ -36,20 +36,20 @@ variable [MonoidalClosed C]
 /-- strength はテンソルするパラメータの任意の射について自然。 -/
 @[reassoc]
 lemma natural_parameter {P Q : C} (f : P ⟶ Q) (A Y : C) :
-    f ▷ (ihom A).obj Y ≫ HomTensorStrength.map Q A Y =
-      HomTensorStrength.map P A Y ≫ (ihom A).map (f ▷ Y) := by
+    f ▷ (ihom A).obj Y ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map Q A Y =
+      _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map P A Y ≫ (ihom A).map (f ▷ Y) := by
   apply uncurry_injective
   rw [uncurry_natural_left, uncurry_natural_right]
-  simp only [HomTensorStrength.map, uncurry_curry]
-  rw [exchange_natural_middle_assoc, ← whisker_exchange, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_middle_assoc, ← whisker_exchange, Category.assoc]
 
 /-- strength はパラメータと標的を同時に動かしても自然。 -/
 @[reassoc]
 lemma natural {P Q Y Z : C} (f : P ⟶ Q) (g : Y ⟶ Z) (A : C) :
-    (f ⊗ₘ (ihom A).map g) ≫ map Q A Z =
-      map P A Y ≫ (ihom A).map (f ⊗ₘ g) := by
-  rw [tensorHom_def, Category.assoc, ← natural_post,
-    ← Category.assoc, natural_parameter, Category.assoc,
+    (f ⊗ₘ (ihom A).map g) ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map Q A Z =
+      _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map P A Y ≫ (ihom A).map (f ⊗ₘ g) := by
+  rw [tensorHom_def, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post,
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_parameter, Category.assoc,
     ← Functor.map_comp, ← tensorHom_def]
 
 end SerrePositivity.InfinityCategories.Kan.HomTensorStrength

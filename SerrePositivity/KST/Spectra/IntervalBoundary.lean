@@ -53,7 +53,7 @@ def intervalBoundaryMap : (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u}) ⟶ (∂Δ[1] : 
 使われ方：Goerss–Jardine I §7。円の商の比較。 -/
 @[reassoc (attr := simp)]
 theorem intervalBoundaryMap_ι : intervalBoundaryMap.{u} ≫ (boundary 1).ι =
-    intervalEndpoint.{u}.right := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right := by
   apply coprod.hom_ext <;>
     simp [intervalBoundaryMap, intervalBoundaryVertex]
 

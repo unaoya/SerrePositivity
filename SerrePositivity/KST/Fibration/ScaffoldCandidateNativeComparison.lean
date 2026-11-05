@@ -15,7 +15,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の反転比較と、同じ scaffold 表現との指定比較の逆を用いる分類候補・native 比較。 -/
 def candidateNativeIso :
@@ -26,11 +26,11 @@ def candidateNativeIso :
 
 /-- 元の係数点は、同じ指定比較で元の恒等射評価の native 実像へ送られる。 -/
 theorem candidateNativeIso_pointHom (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate s.candidateNativeIso.hom (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
       (Opposite.op ⦋0⦌)
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) := by
   let z := ULift.up.{u + 1} (nerveVertex c)
@@ -39,10 +39,10 @@ theorem candidateNativeIso_pointHom (c : I) (v : (leftStrictTransport p c) _⦋0
     s.toStrictTransportComparisonSpan.representation
   let C := eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))
   let O := eqToIso (congrArg HomotopyCategory.mk
-    (coefficientResolutionVertexEq (p := p) c))
-  let x := cosliceFiberPointHom
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c))
+  let x := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
     ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v)
-  let n := cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
+  let n := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
     (Opposite.op ⦋0⦌) (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)))
   have hs := strictTransportOppositeComponentIso_pointHom p c v
   change x ≫ C.inv ≫ functorHomEvaluate μ.hom z ≫ O.hom = _ at hs

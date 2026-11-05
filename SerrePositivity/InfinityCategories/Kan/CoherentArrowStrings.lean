@@ -27,64 +27,64 @@ structure CoherentArrowString (f : x ⟶ y) : Type u where
   /-- 元の合成列の長さ。 -/
   length : ℕ
   /-- 元の高次 nerve 単体としての全合成列。 -/
-  chain : (nerve I) _⦋length⦌
+  chain : (nerve I) _⦋_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.length⦌
   /-- 長辺は指定した元の射そのもの。 -/
-  long_edge : (nerve I).map (coherentStringEndpointMap length).op chain = (nerve.edgeMk f).edge
+  long_edge : (nerve I).map (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.length).op _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.chain = (nerve.edgeMk f).edge
 
 /-- 両端と元の合成列そのものを保つ精密化。 -/
-structure CoherentArrowStringHom {f : x ⟶ y} (s t : CoherentArrowString f) : Type u where
+structure CoherentArrowStringHom {f : x ⟶ y} (s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) : Type u where
   /-- 元の単体圏の再添字。 -/
   map : ⦋s.length⦌ ⟶ ⦋t.length⦌
   /-- 元の始点を保持する。 -/
-  first : map.toOrderHom 0 = 0
+  first : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map.toOrderHom 0 = 0
   /-- 元の終点を保持する。 -/
-  last : map.toOrderHom (Fin.last s.length) = Fin.last t.length
+  last : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map.toOrderHom (Fin.last s.length) = Fin.last t.length
   /-- 元の全合成列を高次単体として保持する。 -/
-  comm : (nerve I).map map.op t.chain = s.chain
+  comm : (nerve I).map _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map.op t.chain = s.chain
 
 /-- 再添字が同じなら、元の合成列の精密化は同じ。 -/
 @[ext]
-lemma CoherentArrowStringHom.ext {f : x ⟶ y} {s t : CoherentArrowString f}
-    {a b : CoherentArrowStringHom s t} (h : a.map = b.map) : a = b := by
+lemma CoherentArrowStringHom.ext {f : x ⟶ y} {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f}
+    {a b : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom s t} (h : a.map = b.map) : a = b := by
   cases a
   cases b
   cases h
   rfl
 
 /-- 元の射の有限合成列と全ての両端固定の精密化の圏。 -/
-instance coherentArrowString_category (f : x ⟶ y) : SmallCategory (CoherentArrowString f) where
-  Hom := CoherentArrowStringHom
+instance coherentArrowString_category (f : x ⟶ y) : SmallCategory (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) where
+  Hom := _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom
   id s :=
-    { map := 𝟙 _
-      first := rfl
-      last := rfl
-      comm := by simp }
+    { _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map := 𝟙 _
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.first := rfl
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.last := rfl
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.comm := by simp }
   comp a b :=
-    { map := a.map ≫ b.map
-      first := by change b.map.toOrderHom (a.map.toOrderHom 0) = 0; rw [a.first, b.first]
-      last := by
+    { _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map := a.map ≫ b.map
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.first := by change b.map.toOrderHom (a.map.toOrderHom 0) = 0; rw [a.first, b.first]
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.last := by
         change b.map.toOrderHom (a.map.toOrderHom (Fin.last _)) = _
         rw [a.last, b.last]
-      comm := by
+      _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.comm := by
         rw [op_comp, CategoryTheory.Functor.map_comp_apply, b.comm, a.comm] }
-  id_comp a := CoherentArrowStringHom.ext (Category.id_comp _)
-  comp_id a := CoherentArrowStringHom.ext (Category.comp_id _)
-  assoc a b c := CoherentArrowStringHom.ext (Category.assoc _ _ _)
+  id_comp a := _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.ext (Category.id_comp _)
+  comp_id a := _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.ext (Category.comp_id _)
+  assoc a b c := _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.ext (Category.assoc _ _ _)
 
 /-- 元の長辺の等式から、合成列の始点を厳密に回収する。 -/
-lemma coherentArrowString_first {f : x ⟶ y} (s : CoherentArrowString f) :
+lemma coherentArrowString_first {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     s.chain.obj 0 = x := by
   have h := congrArg (fun z : (nerve I) _⦋1⦌ => z.obj 0) s.long_edge
-  change s.chain.obj ((coherentStringEndpointMap s.length).toOrderHom 0) = x at h
-  rw [coherentStringEndpointMap_first] at h
+  change s.chain.obj ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap s.length).toOrderHom 0) = x at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first] at h
   exact h
 
 /-- 元の長辺の等式から、合成列の終点を厳密に回収する。 -/
-lemma coherentArrowString_last {f : x ⟶ y} (s : CoherentArrowString f) :
+lemma coherentArrowString_last {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     s.chain.obj (Fin.last s.length) = y := by
   have h := congrArg (fun z : (nerve I) _⦋1⦌ => z.obj 1) s.long_edge
-  change s.chain.obj ((coherentStringEndpointMap s.length).toOrderHom 1) = y at h
-  rw [coherentStringEndpointMap_last] at h
+  change s.chain.obj ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap s.length).toOrderHom 1) = y at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last] at h
   exact h
 
 end SerrePositivity.InfinityCategories.Kan

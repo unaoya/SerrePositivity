@@ -18,16 +18,16 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の実 dg 関手の HA 連結語値は、同じ実鎖射の向き付き最高生成元像を回収する。 -/
 lemma simplexHABeadWordValue_recovery {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
-    {a b : Fin (n + 1)} {d : ℕ} (word : SimplexHABeadWord n a b d) :
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
     simplexHABeadWordValue A (cubicalLambdaNativeSimplexData A F) word =
       serreCubeTopCellImage A _ d (simplexHABeadWordCell A word ≫ F.map _ _) := by
   induction word with
-  | bead I hI =>
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI =>
     dsimp only [simplexHABeadWordValue, simplexHABeadWordCell]
     have h := cubicalLambdaNativeSimplexData_hom_cell A F I _ _
       (-((I.card - 2 : ℕ) : ℤ)) hI rfl rfl (by omega)
     simpa only [eqToHom_refl, CategoryTheory.id_apply] using h
-  | join left right ihL ihR =>
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join left right ihL ihR =>
     dsimp only [simplexHABeadWordValue, simplexHABeadWordCell]
     rw [ihL, ihR]
     exact (serreCubeTopCellImage_composition_post A F _ _ _ _).symm

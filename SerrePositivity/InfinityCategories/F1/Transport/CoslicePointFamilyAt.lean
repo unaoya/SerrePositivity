@@ -26,13 +26,13 @@ def coslicePointFamilyAt (v : (vertexFiber p b) _⦋0⦌) :
 
 /-- 同じ点族の値は元の底を厳密に固定する。 -/
 theorem coslicePointFamilyAt_projection (v : (vertexFiber p b) _⦋0⦌) :
-    coslicePointFamilyAt p b v ≫ p = sliceUnderProjection (yonedaEquiv.symm b) := by
-  rw [coslicePointFamilyAt, Category.assoc, leftFibrationCoslicePointFamily_projection,
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p b v ≫ p = sliceUnderProjection (yonedaEquiv.symm b) := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt, Category.assoc, leftFibrationCoslicePointFamily_projection,
     ← Category.assoc, lift_fst, Category.id_comp]
 
 /-- 恒等錐での同じ実評価は、元の指定 fiber 点そのもの。 -/
 theorem coslicePointFamilyAt_identity (v : (vertexFiber p b) _⦋0⦌) :
-    (coslicePointFamilyAt p b v).app (Opposite.op ⦋0⦌) (cosliceIdentityCone b) = v.val := by
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p b v).app (Opposite.op ⦋0⦌) (cosliceIdentityCone b) = v.val := by
   have he : (SSet.const (cosliceIdentityCone b) : (Δ[0] : SSet.{u}) ⟶ _) ≫
       lift (𝟙 _) (SSet.const v) =
       (SSet.const v : (Δ[0] : SSet.{u}) ⟶ _) ≫
@@ -41,7 +41,7 @@ theorem coslicePointFamilyAt_identity (v : (vertexFiber p b) _⦋0⦌) :
     · simp only [Category.assoc, lift_fst, Category.comp_id, SSet.comp_const]
     · simp only [Category.assoc, lift_snd, Category.comp_id, SSet.comp_const]
   have hf : (SSet.const (cosliceIdentityCone b) : (Δ[0] : SSet.{u}) ⟶ _) ≫
-      coslicePointFamilyAt p b v = SSet.const v.val := by
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p b v = SSet.const v.val := by
     change (SSet.const (cosliceIdentityCone b) ≫ lift (𝟙 _) (SSet.const v)) ≫
       leftFibrationCoslicePointFamily p b = _
     rw [he, Category.assoc, leftFibrationCoslicePointFamily_identity, SSet.const_comp]
@@ -53,15 +53,15 @@ theorem coslicePointFamilyAt_identity (v : (vertexFiber p b) _⦋0⦌) :
 def coslicePointFamilyAt_recoveryIso
     (f : sliceUnder (yonedaEquiv.symm b) ⟶ E)
     (hf : f ≫ p = sliceUnderProjection (yonedaEquiv.symm b)) :
-    FunctorIso (coslicePointFamilyAt p b
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p b
       ((leftFibrationCoslicePointEvaluate p b).app (Opposite.op ⦋0⦌)
         (relativeFunctorVertex p _ f hf))) f := by
-  apply coslicePointEvaluation_functorIso p b (coslicePointFamilyAt_projection p b _) hf
+  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_functorIso p b (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p b _) hf
   apply eqToIso
   apply congrArg HomotopyCategory.mk
   apply Subtype.ext
-  exact (coslicePointEvaluation_vertex_val p b (coslicePointFamilyAt_projection p b _)).trans
-    (coslicePointFamilyAt_identity p b _)
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p b (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p b _)).trans
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity p b _)
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

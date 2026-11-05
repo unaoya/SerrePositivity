@@ -34,18 +34,18 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem app_isPullback (d : ℕ) :
     IsPullback ((stdSimplex.δ (1 : Fin 3)).app (Opposite.op ⦋d⦌))
       ((stdSimplex.δ (1 : Fin 3)).app (Opposite.op ⦋d⦌))
-      (upper.{u}.app (Opposite.op ⦋d⦌)) (lower.{u}.app (Opposite.op ⦋d⦌)) := by
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u}.app (Opposite.op ⦋d⦌)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u}.app (Opposite.op ⦋d⦌)) := by
   apply (Types.isPullback_iff _ _ _ _).mpr
   refine ⟨?_, ?_, ?_⟩
   · exact congrArg (fun f : (Δ[1] : SSet.{u}) ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[1] =>
-      f.app (Opposite.op ⦋d⦌)) (upper_diagonal.trans lower_diagonal.symm)
+      f.app (Opposite.op ⦋d⦌)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal.trans _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal.symm)
   · intro x y hxy
     apply stdSimplex.ext
     intro r
     have hr := congrArg (fun s => s r) hxy.1
     exact Fin.succAbove_right_injective hr
   · intro s t h
-    exact upper_lower_intersection d s t h
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_lower_intersection d s t h
 
 /-- 概要：各単体次数で二つの三角形を対角辺で貼ると正方形になる。
 方針：pullback 条件、二つの三角形の被覆、各包含の単射性を使う。
@@ -54,21 +54,21 @@ theorem app_isPullback (d : ℕ) :
 theorem app_isPushout (d : ℕ) :
     IsPushout ((stdSimplex.δ (1 : Fin 3)).app (Opposite.op ⦋d⦌))
       ((stdSimplex.δ (1 : Fin 3)).app (Opposite.op ⦋d⦌))
-      (upper.{u}.app (Opposite.op ⦋d⦌)) (lower.{u}.app (Opposite.op ⦋d⦌)) := by
-  have : Mono (upper.{u}.app (Opposite.op ⦋d⦌)) :=
-    (mono_iff_injective _).mpr (upper_app_injective d)
-  exact Types.isPushout_of_isPullback_of_mono' (app_isPullback d) (upper_lower_cover d)
-    (fun s t _ _ h => lower_app_injective d h)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u}.app (Opposite.op ⦋d⦌)) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u}.app (Opposite.op ⦋d⦌)) := by
+  have : Mono (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u}.app (Opposite.op ⦋d⦌)) :=
+    (mono_iff_injective _).mpr (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_app_injective d)
+  exact Types.isPushout_of_isPullback_of_mono' (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.app_isPullback d) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_lower_cover d)
+    (fun s t _ _ h => _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_app_injective d h)
 
 /-- 概要：正方形は二つの標準三角形を対角辺で貼り合わせた厳密な pushout。
 方針：各単体次数の pushout を評価関手の余極限反映で戻す。
 規約：座標の交換は二つの pushout の脚を交換する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。二つの円の交換を二つの三角形の交換へ移す。 -/
 theorem isPushout : IsPushout (stdSimplex.δ (1 : Fin 3)) (stdSimplex.δ (1 : Fin 3))
-    upper.{u} lower.{u} where
-  w := upper_diagonal.trans lower_diagonal.symm
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} where
+  w := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal.trans _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal.symm
   isColimit' := ⟨evaluationJointlyReflectsColimits _ (fun ⟨⟨d⟩⟩ =>
-    (PushoutCocone.isColimitMapCoconeEquiv _ _).2 (app_isPushout.{u} d).isColimit)⟩
+    (PushoutCocone.isColimitMapCoconeEquiv _ _).2 (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.app_isPushout.{u} d).isColimit)⟩
 
 end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
 

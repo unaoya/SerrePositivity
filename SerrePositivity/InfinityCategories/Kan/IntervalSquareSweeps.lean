@@ -38,15 +38,15 @@ def meet : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] where
 
 /-- 下辺から対角への変形。 -/
 def bottomSweep : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
-  lift (fst _ _) meet
+  lift (fst _ _) _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet
 
 /-- 左辺から対角への変形。 -/
 def leftSweep : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
-  lift meet (fst _ _)
+  lift _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet (fst _ _)
 
 /-- 最小値の時間零での制限は零。 -/
 lemma meet_zero :
-    SSet.ι₀ ≫ meet.{u} = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet.{u} = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -57,7 +57,7 @@ lemma meet_zero :
   exact min_eq_right (Fin.zero_le _)
 
 /-- 最小値の時間一での制限は元の経路座標。 -/
-lemma meet_one : SSet.ι₁ ≫ meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
+lemma meet_one : SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -70,7 +70,7 @@ lemma meet_one : SSet.ι₁ ≫ meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
 /-- 最小値の経路零での制限は零。 -/
 lemma meet_source :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
-        meet = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -83,7 +83,7 @@ lemma meet_source :
 /-- 最小値の経路一での制限は時間座標。 -/
 lemma meet_target :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
-        meet = 𝟙 (Δ[1] : SSet.{u}) := by
+        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet = 𝟙 (Δ[1] : SSet.{u}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -95,28 +95,28 @@ lemma meet_target :
 
 /-- 下辺変形の時間零は元の下辺。 -/
 lemma bottomSweep_zero :
-    SSet.ι₀ ≫ bottomSweep.{u} =
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep.{u} =
       lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [bottomSweep, comp_lift, meet_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_zero]
   rfl
 
 /-- 下辺変形の時間一は共通の対角。 -/
 lemma bottomSweep_one :
-    SSet.ι₁ ≫ bottomSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
-  rw [bottomSweep, comp_lift, meet_one]
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_one]
   rfl
 
 /-- 左辺変形の時間零は元の左辺。 -/
 lemma leftSweep_zero :
-    SSet.ι₀ ≫ leftSweep.{u} =
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep.{u} =
       lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
-  rw [leftSweep, comp_lift, meet_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_zero]
   rfl
 
 /-- 左辺変形の時間一も共通の対角。 -/
 lemma leftSweep_one :
-    SSet.ι₁ ≫ leftSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
-  rw [leftSweep, comp_lift, meet_one]
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_one]
   rfl
 
 end SerrePositivity.InfinityCategories.Kan.IntervalSquare

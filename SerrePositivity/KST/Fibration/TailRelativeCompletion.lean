@@ -18,12 +18,12 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 最後の W 辺の補完を忘れて元の先行列を取る完全関手。 -/
-def tailCompletionPrefix {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+def tailCompletionPrefix {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     weakCofiberCompletionModel q (tailWeakEdgeExact q n) ⟶ weakStringModel q ⦋n + 1⦌ :=
   weakCofiberCompletionForget q (tailWeakEdgeExact q n) ≫ tailWeakPrefixExact q n
 
 /-- 最後の辺の全補完と先行列は、元の共有端点上の実引き戻しをなす。 -/
-lemma tailCompletion_isPullback {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+lemma tailCompletion_isPullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     IsPullback (weakCofiberCompletionCofiber q (tailWeakEdgeExact q n)).val
       (tailCompletionPrefix q n).val (relativeCofiberSubobject
         (ClosedStablePredicate.top (sInputModel B)) (kernelClosedPredicate q)).val
@@ -39,7 +39,7 @@ lemma tailCompletion_isPullback {B C : StableCategory.{u}} (q : ExactMap B C) (n
   exact ht
 
 /-- 最後の補完と先行列の両実成分は、零対象と押し出しを共同で反映する。 -/
-lemma tailCompletion_jointReflection {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+lemma tailCompletion_jointReflection {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     JointlyReflectsSData (weakCofiberCompletionCofiber q (tailWeakEdgeExact q n)).val
       (tailCompletionPrefix q n).val where
   zero v hc hp := by
@@ -63,7 +63,7 @@ lemma tailCompletion_jointReflection {B C : StableCategory.{u}} (q : ExactMap B 
       (weakCofiberCompletionForget q (tailWeakEdgeExact q n)).val F).2 hz
 
 /-- 元の先行列と最後の cofiber の全反復比較に使う、証明済みの実引き戻しデータ。 -/
-def tailRelativePullback {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+def tailRelativePullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     RelativePullback (sInputModel B) (ClosedStablePredicate.top (sInputModel B))
       (kernelClosedPredicate q) where
   total := weakCofiberCompletionModel q (tailWeakEdgeExact q n)

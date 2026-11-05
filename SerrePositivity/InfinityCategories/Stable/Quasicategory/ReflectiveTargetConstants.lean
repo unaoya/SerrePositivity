@@ -65,7 +65,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 lemma intervalFunctorMap_familyHom_post {A X Y : SSet.{u}} {x y : X _⦋0⦌}
     (f : A ⟶ intervalMappingSpace x y) (F : X ⟶ Y) :
     intervalFamilyHom (f ≫ intervalFunctorMap F x y) =
-      constantFunctorPostMap F A x y (intervalFamilyHom f) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x y (intervalFamilyHom f) :=
   intervalFunctorMap_familyHom f F
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory

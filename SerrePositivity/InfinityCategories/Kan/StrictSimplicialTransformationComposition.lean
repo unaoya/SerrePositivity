@@ -52,8 +52,8 @@ def strictSimplicialTransformationComp
       (eComp SSet (F.obj X) (H.obj X) (H.obj Y)).app n
         ((eComp SSet (F.obj X) (G.obj X) (H.obj X)).app n
           ((η.app X).app n t.1, (θ.app X).app n t.1), (H.map X Y).app n t.2)
-    rw [← simplicialComposition_assoc_app, hη, simplicialComposition_assoc_app, hθ,
-      ← simplicialComposition_assoc_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app, hη, _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app, hθ,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app]
 
 /-- 成分が元の通常射を回収する二つの比較の合成は、同じ通常の合成射を回収する。 -/
 lemma strictSimplicialTransformationComp_hom
@@ -63,7 +63,7 @@ lemma strictSimplicialTransformationComp_hom
     (θ : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) G H)
     (X : C) (f : F.obj X ⟶ G.obj X) (g : G.obj X ⟶ H.obj X)
     (hf : η.app X = eHomEquiv SSet f) (hg : θ.app X = eHomEquiv SSet g) :
-    (strictSimplicialTransformationComp F G H η θ).app X = eHomEquiv SSet (f ≫ g) := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp F G H η θ).app X = eHomEquiv SSet (f ≫ g) := by
   change (λ_ (𝟙_ SSet.{u})).inv ≫ (η.app X ⊗ₘ θ.app X) ≫ eComp SSet _ _ _ = _
   rw [hf, hg]
   exact (eHomEquiv_comp SSet f g).symm

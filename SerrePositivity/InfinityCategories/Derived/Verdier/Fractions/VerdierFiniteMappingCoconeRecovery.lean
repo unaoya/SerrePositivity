@@ -33,10 +33,10 @@ local instance mappingCoconeParameterFiniteLimits {X P : SSet.{u}}
 
 /-- 元の有限商 Hom 族の実回収と、同じ境界・同じ商比較を保つ全余錐円柱の証人。 -/
 structure VerdierFiniteMappingCoconeRecovery
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (z : B.obj _⦋0⦌) {K : SSet.{u}} (S : K.Subcomplex)
-    (a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+    (a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
     (f : K ⟶ intervalMappingSpace
       (q.hom.app (Opposite.op ⦋0⦌)
@@ -44,72 +44,72 @@ structure VerdierFiniteMappingCoconeRecovery
       (q.hom.app (Opposite.op ⦋0⦌) z)) where
   denominator : (verdierDenominatorOver i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) : SSet.{u}) _⦋0⦌
-  numerator : K ⟶ vertexFiber (verdierDenominatorSpanProjection i
-    (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) denominator
+  numerator : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
+    (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.denominator
   boundary : SSet.Homotopy
-    (S.ι ≫ numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
-      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) denominator) a
+    (S.ι ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.numerator ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
+      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.denominator) a
   comparison : SSet.Homotopy
-    (numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
-        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) denominator ≫
-      verdierDenominatorSpanCanonicalComparison i
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.numerator ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.denominator ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
-      fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts
+      fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) f
-  comparison_boundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ comparison.h = boundary.h ≫
-    verdierDenominatorSpanCanonicalComparison i
+  comparison_boundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.comparison.h = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.boundary.h ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
-    fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts
+    fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z
   square : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
     (ihom (Δ[n] : SSet.{u})).obj ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
-  square_pullback : IsPullbackSquare square
-  square_original : squareVertex square 0 1 =
+  square_pullback : IsPullbackSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square
+  square_original : squareVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square 0 1 =
     functorVertex (D ≫ constantFunctorMap (S.toSSet ⊗ Δ[1]) B.obj)
-  square_right : squareRightEdge ≫ square = internalHomFlipHomEquiv Δ[n] Δ[1]
+  square_right : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square = internalHomFlipHomEquiv Δ[n] Δ[1]
     ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
     (SSet.const (functorVertex (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-      (verdierSpanFamilyDenominatorArrow i
-        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z boundary.h))))
-  square_top : squareTopEdge ≫ square = internalHomFlipHomEquiv Δ[n] Δ[1]
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.boundary.h))))
+  square_top : squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square = internalHomFlipHomEquiv Δ[n] Δ[1]
     ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
-    (simplexTerminalArrowFamily (D ≫ constantFunctorMap (S.toSSet ⊗ Δ[1]) B.obj))
-  square_terminal : square ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily (D ≫ constantFunctorMap (S.toSSet ⊗ Δ[1]) B.obj))
+  square_terminal : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
     squareColumnDiagram (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-      (verdierSpanFamilyDenominatorArrow i
-        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z boundary.h))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.boundary.h))
   square_denominators : ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌)
       (p : (S.toSSet ⊗ (Δ[1] : SSet.{u})) _⦋0⦌),
-    (squareLeftArrow (square ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
-      weakEquivalences i
-  cylinder : VerdierRecoveredCoconeCylinder i D z denominator S.ι numerator a boundary
-    square square_pullback
+    (squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
+  cylinder : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder i D z _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.denominator S.ι _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.numerator a _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.boundary
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_pullback
 
 /-- 有限商 Hom 族と元の実境界から、両端族を実代入した全余錐円柱まで回収する。 -/
 lemma exists_verdierFiniteMappingCoconeRecovery
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (z : B.obj _⦋0⦌) {K : SSet.{u}} [K.Finite] (S : K.Subcomplex) [S.toSSet.Finite]
-    (a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+    (a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
     (f : K ⟶ intervalMappingSpace
       (q.hom.app (Opposite.op ⦋0⦌)
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
       (q.hom.app (Opposite.op ⦋0⦌) z))
-    (ha : a ≫ verdierDenominatorSpanCanonicalComparison i
+    (ha : a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
-      fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts
+      fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z = S.ι ≫ f) :
-    Nonempty (VerdierFiniteMappingCoconeRecovery h D z S a f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) := by
   obtain ⟨d, g, L, G, hG, Q, hQ, hD, hl, _, hr, ht, hW⟩ :=
-    exists_verdierRelativeMappingBoundaryRefinement h D z S a f ha
-  rw [verdierDenominatorFamilyEdge_span] at hr hl
-  obtain ⟨U⟩ := exists_verdierRecoveredCoconeCylinder h D z d S.ι g a L Q hQ hr ht hl
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRelativeMappingBoundaryRefinement h D z S a f ha
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge_span] at hr hl
+  obtain ⟨U⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRecoveredCoconeCylinder h D z d S.ι g a L Q hQ hr ht hl
   exact ⟨{
-    denominator := d, numerator := g, boundary := L, comparison := G,
-    comparison_boundary := hG, square := Q, square_pullback := hQ,
-    square_original := hD, square_right := hr, square_top := ht,
-    square_terminal := hl, square_denominators := hW, cylinder := U }⟩
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.denominator := d, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.numerator := g, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.boundary := L, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.comparison := G,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.comparison_boundary := hG, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square := Q, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_pullback := hQ,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_original := hD, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_right := hr, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_top := ht,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_terminal := hl, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.square_denominators := hW, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.cylinder := U }⟩
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

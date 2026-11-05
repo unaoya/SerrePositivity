@@ -34,19 +34,19 @@ theorem dgInputArrowData_nu_edge (s : (dgKInputInfinity.{u, v} A) _⦋1⦌) :
     (congrArg ((dgKInputNu A).app (Opposite.op ⦋1⦌)) (dgInputArrowData_edge A s))
 
 private theorem essentialSurjectivity_of_same_edge
-    {B C D E : StableCategory.{u}} (q : ExactMap B C) (r : ExactMap D E)
-    (he : (stableArrow q).edge = (stableArrow r).edge)
+    {B C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+    (he : (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow q).edge = (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow r).edge)
     (hr : IsEssentiallySurjective r.hom) : IsEssentiallySurjective q.hom := by
-  have h := congrArg (fun e : StableInfinity.{u} _⦋1⦌ =>
-    IsEssentiallySurjective (coherentNerveArrowData (C := StableQCat.{u}) e).2.2.hom) he
+  have h := congrArg (fun e : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋1⦌ =>
+    IsEssentiallySurjective (coherentNerveArrowData (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) e).2.2.hom) he
   simp only [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow, coherentNerveEdge_edge] at h
   exact h.mpr hr
 
 /-- 同じ ν 辺が本質的全射な完全関手の辺なら、復元した同じ dg 射の ν 作用も本質的全射。 -/
 theorem dgInputArrowData_nu_essentiallySurjective
     (s : (dgKInputInfinity.{u, v} A) _⦋1⦌)
-    {B C : StableCategory.{max (u + 1) v}} (q : ExactMap B C)
-    (he : (dgKInputNu A).app (Opposite.op ⦋1⦌) s = (stableArrow q).edge)
+    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+    (he : (dgKInputNu A).app (Opposite.op ⦋1⦌) s = (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow q).edge)
     (hq : IsEssentiallySurjective q.hom) :
     IsEssentiallySurjective (dgKInputNuMap A (dgInputArrowData A s).2.2).hom :=
   essentialSurjectivity_of_same_edge _ q ((dgInputArrowData_nu_edge A s).trans he) hq

@@ -24,8 +24,8 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
 /-- 反復内部 Hom の同型は、元の射の curry の単位頂点を厳密に表す。 -/
 lemma curry'_hom {K A V : C} (f : K ⊗ A ⟶ V) :
-    curry' f ≫ (iso K A V).hom = curry' (curry f) := by
-  rw [hom_eq]
+    curry' f ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K A V).hom = curry' (curry f) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq]
   apply uncurry_injective
   apply uncurry_injective
   simp only [uncurry_natural_left, uncurry_curry]

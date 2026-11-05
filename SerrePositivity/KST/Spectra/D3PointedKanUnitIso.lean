@@ -71,7 +71,7 @@ def d3PointedKanUnitTransformation :
       (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u}))
       (EnrichedFunctor.id SSet PointedKanObject.{u}) where
   app X := eHomEquiv SSet (ObjectProperty.homMk (unitIsoSelf (X := X.obj)).hom)
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     (unitIsoSelf (X := X.obj)).hom (unitIsoSelf (X := Y.obj)).hom
     ((EnrichedFunctor.id SSet PointedKanObject.{u}).map X Y)
     ((d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})).map X Y)).mp
@@ -105,7 +105,7 @@ def d3PointedKanUnitFunctorIso :
             have : IsIso f.hom.right := by
               change IsIso (unitIsoSelf (X := X.obj)).hom.right
               infer_instance
-            exact kanPiIsomorphism_of_monoRight f.hom.right
+            exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight f.hom.right
               ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso _)))
   change FunctorIso (coherentNerveMap (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})))
     (𝟙 (SimplicialNerve PointedKanObject.{u}))

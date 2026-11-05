@@ -16,14 +16,14 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の相対 S の単体作用素は、包含の後に元の gapped 制限を回収する。 -/
 @[reassoc]
-lemma relativeSMap_inclusion {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma relativeSMap_inclusion {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {l n : ℕ} (θ : ⦋l⦌ ⟶ ⦋n⦌) :
     (relativeSimplicialSConstruction q.hom).map θ.op ≫ (relativeSConstruction q.hom l).ι =
       (relativeSConstruction q.hom n).ι ≫ sMap B.obj θ.toOrderHom :=
   (relativeSimplicialSConstructionInclusion q.hom).naturality θ.op
 
 /-- 元の交換は、全ての Ar の面・退化の制限と厳密に可換。 -/
-lemma weakStringGappedRelativeMap_sMap {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringGappedRelativeMap_sMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {l n m : ℕ} (θ : ⦋l⦌ ⟶ ⦋n⦌)
     (v : (sConstruction n (weakStringCategory q ⦋m⦌)) _⦋0⦌) :
     weakStringGappedRelativeMap q
@@ -41,7 +41,7 @@ lemma weakStringGappedRelativeMap_sMap {B C : StableCategory.{u}} (q : ExactMap 
   rfl
 
 /-- 元の交換は、W 列の全ての面・退化の制限とも厳密に可換。 -/
-lemma weakStringGappedRelativeMap_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringGappedRelativeMap_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n l m : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌)
     (v : (sConstruction n (weakStringCategory q ⦋m⦌)) _⦋0⦌) :
     weakStringGappedRelativeMap q

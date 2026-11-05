@@ -27,29 +27,29 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
 theorem fractionFamilyFatDiagram_fixed_recover :
     leftIntervalFatPrism (fixedMarkedSpans X W x y) ≫
       (fatJoinMap (𝟙 (Δ[0] : SSet.{u})) (fixedMarkedSpanToFamily X W x y) ≫
-        fractionFamilyFatDiagram F W hF x) = intervalMappingUncurry
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyFatDiagram F W hF x) = intervalMappingUncurry
           (fixedFractionEvaluation F W hF x y) := by
-  rw [fractionFamilyFatDiagram, pointSourceFatDiagram_restrict_recover,
-    fractionFamilyArrow, ← Category.assoc, fixedMarkedSpanToFamily_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyFatDiagram, pointSourceFatDiagram_restrict_recover,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyArrow, ← Category.assoc, fixedMarkedSpanToFamily_inclusion]
   exact (congrArg uncurry (fixedFractionEvaluation_inclusion F W hF x y)).symm
 
 /-- 同じ全 coslice 関手の固定終点 fiber での評価は、既存の分数評価と実ホモトピーで一致する。 -/
 def fixedFractionCosliceComparisonHomotopy :
     SSet.Homotopy
-      (fixedFractionCosliceEvaluation F W hF x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y ≫
         cosliceFiberToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x)
           (F.app (Opposite.op ⦋0⦌) y)) (fixedFractionEvaluation F W hF x y) :=
-  (fractionFamilyCosliceData F W hF x).toFiberIntervalHomotopy
-    (fixedMarkedSpanToFamily X W x y) (fixedMarkedSpanToFamily_target F W x y)
-    (fixedFractionEvaluation F W hF x y) (fractionFamilyFatDiagram_fixed_recover F W hF x y)
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData F W hF x).toFiberIntervalHomotopy
+    (fixedMarkedSpanToFamily X W x y) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target F W x y)
+    (fixedFractionEvaluation F W hF x y) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyFatDiagram_fixed_recover F W hF x y)
 
 /-- 比較は同じ写像空間への全関手 ∞ 圏内の同型としても保持する。 -/
 def fixedFractionCosliceComparisonIso :
     FunctorIso
-      (fixedFractionCosliceEvaluation F W hF x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x y ≫
         cosliceFiberToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x)
           (F.app (Opposite.op ⦋0⦌) y)) (fixedFractionEvaluation F W hF x y) :=
-  functorIsoOfSimplicialHomotopy (fixedFractionCosliceComparisonHomotopy F W hF x y)
+  functorIsoOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceComparisonHomotopy F W hF x y)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

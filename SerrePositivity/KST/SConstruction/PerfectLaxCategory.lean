@@ -16,7 +16,7 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open F2.Idempotent
 open scoped Simplicial
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
 
 include hC hD in

@@ -23,11 +23,11 @@ lemma shared_path_map_equality_iff {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
     {x₀ x₁ : X _⦋0⦌}
     (h₀ : (KanPath.evaluation X 0).app _ z = x₀)
     (h₁ : (KanPath.evaluation X 1).app _ z = x₁)
-    (a b : KanHomotopyGroup (KanPath.object X) n z) :
-    KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ a) =
-        KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ b) ↔
-      KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ a) =
-        KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ b) := by
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n z) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ a) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ b) ↔
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ a) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ b) := by
   let p := (ihom (Δ[1] : SSet.{u})).map f
   let w := p.app (Opposite.op ⦋0⦌) z
   have hw (t : Fin 2) {x : X _⦋0⦌}
@@ -40,43 +40,43 @@ lemma shared_path_map_equality_iff {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
     simpa only [hx] using h
   have hs (t : Fin 2) {x : X _⦋0⦌}
       (hx : (KanPath.evaluation X t).app _ z = x)
-      (c : KanHomotopyGroup (KanPath.object X) n z) :
-      KanHomotopyGroup.map (KanPath.evaluation Y t) (hw t hx)
-          (KanHomotopyGroup.map p rfl c) =
-        KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X t) hx c) :=
-    KanHomotopyGroup.map_square p f (KanPath.evaluation X t) (KanPath.evaluation Y t)
+      (c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n z) :
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation Y t) (hw t hx)
+          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl c) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X t) hx c) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p f (KanPath.evaluation X t) (KanPath.evaluation Y t)
       (path_evaluation_natural f t) rfl rfl hx (hw t hx) n c
   have he (t : Fin 2) {x : X _⦋0⦌}
       (hx : (KanPath.evaluation X t).app _ z = x) :
-      (KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X t) hx a) =
-        KanHomotopyGroup.map f rfl (KanHomotopyGroup.map (KanPath.evaluation X t) hx b)) ↔
-        KanHomotopyGroup.map p rfl a = KanHomotopyGroup.map p rfl b := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X t) hx a) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X t) hx b)) ↔
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl b := by
     rw [← hs t hx a, ← hs t hx b]
-    exact (KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation Y t)
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation Y t)
       (KanPath.evaluation_piIsomorphism Y t) (hw t hx)).injective.eq_iff
   exact (he 0 h₀).trans (he 1 h₁).symm
 
 /-- 基点を固定しないホモトピーでも、同じ基点の二つの類を同一視する条件は不変。 -/
 lemma homotopy_map_equality_iff {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     {f g : X ⟶ Y} (H : Homotopy f g) (n : ℕ) (x : X _⦋0⦌)
-    (a b : KanHomotopyGroup X n x) :
-    KanHomotopyGroup.map f rfl a = KanHomotopyGroup.map f rfl b ↔
-      KanHomotopyGroup.map g rfl a = KanHomotopyGroup.map g rfl b := by
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl b ↔
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g rfl b := by
   let t := KanPath.transpose H
   let z := t.app (Opposite.op ⦋0⦌) x
   have he (i : Fin 2) (r : X ⟶ Y) (hr : t ≫ KanPath.evaluation Y i = r) :
-      (KanHomotopyGroup.map r (x := x) rfl a = KanHomotopyGroup.map r rfl b) ↔
-        KanHomotopyGroup.map t rfl a = KanHomotopyGroup.map t rfl b := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map r (x := x) rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map r rfl b) ↔
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map t rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map t rfl b := by
     have hx : (KanPath.evaluation Y i).app _ z = r.app _ x :=
       congrArg (fun q ↦ q.app (Opposite.op ⦋0⦌) x) hr
-    have hs (c : KanHomotopyGroup X n x) :
-        KanHomotopyGroup.map (KanPath.evaluation Y i) hx
-          (KanHomotopyGroup.map t rfl c) = KanHomotopyGroup.map r rfl c := by
-      simpa only [KanHomotopyGroup.map_id, MonoidHom.id_apply] using
-        KanHomotopyGroup.map_square t (𝟙 Y) r (KanPath.evaluation Y i)
+    have hs (c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation Y i) hx
+          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map t rfl c) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map r rfl c := by
+      simpa only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id, MonoidHom.id_apply] using
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square t (𝟙 Y) r (KanPath.evaluation Y i)
           (by simpa using hr) rfl rfl rfl hx n c
     rw [← hs a, ← hs b]
-    exact (KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation Y i)
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation Y i)
       (KanPath.evaluation_piIsomorphism Y i) hx).injective.eq_iff
   exact (he 0 f (KanPath.transpose_zero H)).trans
     (he 1 g (KanPath.transpose_one H)).symm

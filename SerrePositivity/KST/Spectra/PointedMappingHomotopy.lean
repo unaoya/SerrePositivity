@@ -33,7 +33,7 @@ variable {X Y : PointedSimplicialSet.{u}} {f g : X ⟶ Y}
 規約：区間の始点は面添字一。
 使われ方：Goerss–Jardine I §7。内部 Hom の辺の始点。 -/
 theorem paramCurry_homotopy_zero :
-    stdSimplex.δ (1 : Fin 2) ≫ paramCurry X Y H.h hH = pointFamily f := by
+    stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y H.h hH = pointFamily f := by
   have h₀ : SSet.ι₀ ≫ H.h = f.right := H.h₀
   have hface : X.right ◁ stdSimplex.δ (1 : Fin 2) ≫ H.h =
       fst X.right (Δ[0] : SSet.{u}) ≫ f.right := by
@@ -49,7 +49,7 @@ theorem paramCurry_homotopy_zero :
 規約：区間の終点は面添字零。
 使われ方：Goerss–Jardine I §7。内部 Hom の辺の終点。 -/
 theorem paramCurry_homotopy_one :
-    stdSimplex.δ (0 : Fin 2) ≫ paramCurry X Y H.h hH = pointFamily g := by
+    stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y H.h hH = pointFamily g := by
   have h₁ : SSet.ι₁ ≫ H.h = g.right := H.h₁
   have hface : X.right ◁ stdSimplex.δ (0 : Fin 2) ≫ H.h =
       fst X.right (Δ[0] : SSet.{u}) ≫ g.right := by
@@ -65,7 +65,7 @@ theorem paramCurry_homotopy_one :
 規約：始点と終点は familyVertex で表した射。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。点つきホモトピーを π₀ の等式へ移す。 -/
 def edgeOfHomotopy : (PointedObject.basedHom X Y).right.Edge (familyVertex f) (familyVertex g) :=
-  SSet.Edge.mk (SSet.yonedaEquiv (paramCurry X Y H.h hH))
+  SSet.Edge.mk (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y H.h hH))
     (by
       rw [← stdSimplex.yonedaEquiv_δ_comp, paramCurry_homotopy_zero]
       rfl)
@@ -106,7 +106,7 @@ theorem homotopyOfEdge_base
     (e : (PointedObject.basedHom X Y).right.Edge (familyVertex f) (familyVertex g)) :
     X.hom ▷ (Δ[1] : SSet.{u}) ≫ (homotopyOfEdge e).h =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ Y.hom :=
-  uncurry_basepoint X Y (SSet.yonedaEquiv.symm e.edge)
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint X Y (SSet.yonedaEquiv.symm e.edge)
 
 end
 

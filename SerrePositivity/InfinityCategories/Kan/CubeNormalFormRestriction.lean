@@ -15,40 +15,40 @@ namespace SerrePositivity.InfinityCategories.Kan
 open SerrePositivity.KST.SConstruction
 
 /-- 元の有限 max 表示を指定した入力座標へ制限したデータ。 -/
-def cubeJoinNormalFormRestrict {n m k : ℕ} (s : CubeJoinNormalForm n m)
-    (e : Fin k → Fin n) : CubeJoinNormalForm k m :=
+def cubeJoinNormalFormRestrict {n m k : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
+    (e : Fin k → Fin n) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm k m :=
   fun j => (s j).map (fun t => Finset.univ.filter (fun i => e i ∈ t))
 
 /-- 制限した表示の support は、元の support の同じ添字による逆像。 -/
-lemma mem_cubeJoinNormalFormRestrict_support {n m k : ℕ} (s : CubeJoinNormalForm n m)
+lemma mem_cubeJoinNormalFormRestrict_support {n m k : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (e : Fin k → Fin n) (i : Fin k) (j : Fin m) :
-    i ∈ cubeJoinNormalFormSupport (cubeJoinNormalFormRestrict s e) j ↔
-      e i ∈ cubeJoinNormalFormSupport s j := by
-  cases hs : s j <;> simp [cubeJoinNormalFormRestrict, cubeJoinNormalFormSupport, hs]
+    i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict s e) j ↔
+      e i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j := by
+  cases hs : s j <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict, _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs]
 
 /-- 元の使用入力を全て含む選択なら、制限した表示の評価は元の評価を回収する。 -/
-lemma cubeJoinNormalFormRestrict_eval {n m k : ℕ} (s : CubeJoinNormalForm n m)
+lemma cubeJoinNormalFormRestrict_eval {n m k : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)
     (e : Fin k → Fin n)
-    (he : ∀ j i, i ∈ cubeJoinNormalFormSupport s j → i ∈ Set.range e)
-    (x : CubeVertex n) :
-    cubeJoinNormalFormEval (cubeJoinNormalFormRestrict s e) (cubeCoordinateSelect e x) =
-      cubeJoinNormalFormEval s x := by
+    (he : ∀ j i, i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → i ∈ Set.range e)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict s e) (_root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect e x) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval s x := by
   funext j
   cases hs : s j with
-  | none => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
+  | none => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
   | some t =>
-    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, Option.map_some,
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict, hs, Option.map_some,
       _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
     apply Bool.eq_iff_iff.mpr
     change _ = ⊤ ↔ _ = ⊤
     rw [Finset.sup_eq_top_iff, Finset.sup_eq_top_iff]
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, cubeCoordinateSelect]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect]
     constructor
     · rintro ⟨i, hi, hx⟩
       exact ⟨e i, hi, hx⟩
     · rintro ⟨i, hi, hx⟩
-      have himem : i ∈ cubeJoinNormalFormSupport s j := by
-        simpa only [cubeJoinNormalFormSupport, hs, Option.getD_some] using hi
+      have himem : i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j := by
+        simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport, hs, Option.getD_some] using hi
       obtain ⟨a, ha⟩ := he j i himem
       exact ⟨a, ha ▸ hi, ha ▸ hx⟩
 

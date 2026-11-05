@@ -66,7 +66,7 @@ variable {B C : StableCategory.{u}} {q : ExactMap B C} {K : SSet.{u}} {n : ℕ}
   {G : K ⟶ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) : SSet.{u})}
 
 namespace VerdierFiniteCoreCoconeFamilyLift
-open SerrePositivity.KST.LocalizingInvariants.VerdierFiniteCoreCoconeFamilyLift
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift
 variable (r : VerdierFiniteCoreCoconeFamilyLift q D z G)
 
 lemma target_inverts (_r : VerdierFiniteCoreCoconeFamilyLift q D z G) : InvertsEdges

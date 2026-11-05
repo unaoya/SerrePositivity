@@ -13,44 +13,44 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 variable {n : ℕ} (I J : Finset (Fin (n + 1)))
   (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card) (hIJ : I ⊆ J)
-  (hmin : I.min' (simplexSubsetNonempty I hI) = J.min' (simplexSubsetNonempty J hJ))
-  (hmax : I.max' (simplexSubsetNonempty I hI) = J.max' (simplexSubsetNonempty J hJ))
+  (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) = J.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
+  (hmax : I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) = J.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
 
 /-- 元の同じ両端を持つ部分集合の包含が定める、元の全単体的 necklace 射。 -/
 def necklaceSimplexSubsetInclusion : necklaceBead.{u} (I.card - 1) ⟶
     necklaceBead (J.card - 1) where
-  map := (NecklaceShape.singleSimplexIso _).hom ≫
-    simplexSubsetInclusionMap I J hI hJ hIJ ≫ (NecklaceShape.singleSimplexIso _).inv
-  map_first := (congrArg ((simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
-    (NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadFirstVertex_eq_standard _)).trans
-      ((congrArg ((NecklaceShape.singleSimplexIso _).inv.app _)
-        (simplexSubsetInclusionMap_first I J hI hJ hIJ hmin)).trans (simplexBeadIso_inv_first _))
-  map_last := (congrArg ((simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
-    (NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadLastVertex_eq_standard _)).trans
-      ((congrArg ((NecklaceShape.singleSimplexIso _).inv.app _)
-        (simplexSubsetInclusionMap_last I J hI hJ hIJ hmax)).trans (simplexBeadIso_inv_last _))
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap I J hI hJ hIJ ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadFirstVertex_eq_standard _)).trans
+      ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_first I J hI hJ hIJ hmin)).trans (simplexBeadIso_inv_first _))
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadLastVertex_eq_standard _)).trans
+      ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_last I J hI hJ hIJ hmax)).trans (simplexBeadIso_inv_last _))
 
 /-- 元の部分集合 bead の実包含は、元の標準単体への augmentation と厳密に可換。 -/
 lemma necklaceSimplexSubsetInclusion_triangle :
     (necklaceSimplexSubsetInclusion.{u} I J hI hJ hIJ hmin hmax).map ≫
         (necklaceInSimplexSubset J hJ).map = (necklaceInSimplexSubset I hI).map := by
-  change ((NecklaceShape.singleSimplexIso _).hom ≫
-    simplexSubsetInclusionMap I J hI hJ hIJ ≫ (NecklaceShape.singleSimplexIso _).inv) ≫
-      ((NecklaceShape.singleSimplexIso _).hom ≫ simplexSubsetMap J hJ) =
-        (NecklaceShape.singleSimplexIso _).hom ≫ simplexSubsetMap I hI
+  change ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap I J hI hJ hIJ ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap J hJ) =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
-  exact congrArg (fun f => (NecklaceShape.singleSimplexIso _).hom ≫ f)
-    (simplexSubsetInclusionMap_triangle I J hI hJ hIJ)
+  exact congrArg (fun f => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ f)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle I J hI hJ hIJ)
 
 /-- 元の部分集合 bead の実包含の頂点作用は、同じ元の局所番号の包含。 -/
-lemma necklaceSimplexSubsetInclusion_vertex (v : (NecklaceShape.single (I.card - 1)).Vertex) :
-    necklaceVertexMap (necklaceSimplexSubsetInclusion.{u} I J hI hJ hIJ hmin hmax) v =
-      simplexSubsetInclusionOrder I J hI hJ hIJ v := rfl
+lemma necklaceSimplexSubsetInclusion_vertex (v : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).Vertex) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (necklaceSimplexSubsetInclusion.{u} I J hI hJ hIJ hmin hmax) v =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder I J hI hJ hIJ v := rfl
 
 /-- 元の部分集合 bead の実包含は、元の全頂点作用で単射。 -/
 lemma necklaceSimplexSubsetInclusion_vertex_injective :
     Function.Injective
-      (necklaceVertexMap (necklaceSimplexSubsetInclusion.{u} I J hI hJ hIJ hmin hmax)) :=
-  simplexSubsetInclusionOrder_injective I J hI hJ hIJ
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (necklaceSimplexSubsetInclusion.{u} I J hI hJ hIJ hmin hmax)) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_injective I J hI hJ hIJ
 
 end SerrePositivity.KST.SConstruction

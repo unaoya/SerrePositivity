@@ -58,10 +58,10 @@ lemma nonempty_functorIso {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
     {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
     (s t : FiberSquare f) : Nonempty (FunctorIso s.square t.square) := by
   obtain ⟨e⟩ := nonempty_cofiberSquareFunctorIso s.opCofiber t.opCofiber
-  have h := (dualFunctorIso e).postcomp (SSet.opFunctorCompOpFunctorIso.app X).hom
+  have h := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso e).postcomp (SSet.opFunctorCompOpFunctorIso.app X).hom
   change FunctorIso (dualSquare (dualSquare s.square) ≫ _)
     (dualSquare (dualSquare t.square) ≫ _) at h
-  rw [dualSquare_double, dualSquare_double] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualSquare_double, _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualSquare_double] at h
   exact ⟨h⟩
 
 end SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison

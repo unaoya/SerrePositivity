@@ -30,8 +30,8 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem exists_transport {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (e : E _⦋0⦌) {n : ℕ} (a : E.PtSimplex (n + 1) e)
     (s : B.PtSimplex (n + 1) (p.app _ e))
-    (r : PtSimplex.RelStruct (mapSimplex p rfl a) s (Fin.last (n + 1))) :
-    ∃ b : E.PtSimplex (n + 1) e, mapSimplex p rfl b = s ∧
+    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl a) s (Fin.last (n + 1))) :
+    ∃ b : E.PtSimplex (n + 1) e, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl b = s ∧
       Nonempty (PtSimplex.RelStruct a b (Fin.last (n + 1))) := by
   let α (j : Fin (n + 3)) (_ : j ≠ Fin.last (n + 2)) : (Δ[n + 1] : SSet.{u}) ⟶ E :=
     if j.val = n + 1 then a.map else SSet.const e
@@ -85,25 +85,25 @@ theorem exists_transport {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 /-- 指定した downstairs の代表を厳密に射影する、指定した upstairs の類の代表がある。 -/
 theorem exists_representative {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) {n : ℕ}
-    (a : KanHomotopyGroup E n e) (s : B.PtSimplex (n + 1) (p.app _ e))
-    (h : KanHomotopyGroup.map p rfl a = KanHomotopyGroup.mk s) :
-    ∃ b : E.PtSimplex (n + 1) e, KanHomotopyGroup.mk b = a ∧ mapSimplex p rfl b = s := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E n e) (s : B.PtSimplex (n + 1) (p.app _ e))
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) :
+    ∃ b : E.PtSimplex (n + 1) e, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b = a ∧ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl b = s := by
   obtain ⟨t, rfl⟩ := Quotient.exists_rep a
-  change KanHomotopyGroup.map p rfl (KanHomotopyGroup.mk t) = KanHomotopyGroup.mk s at h
-  rw [KanHomotopyGroup.map_mk] at h
-  obtain ⟨r⟩ := (simplexRel_iff_relStruct (Fin.last (n + 1))).1
-    ((KanHomotopyGroup.mk_eq_iff _ _).1 h)
-  obtain ⟨b, hb, ⟨hr⟩⟩ := exists_transport p e t s r
-  exact ⟨b, (KanHomotopyGroup.sound hr).symm, hb⟩
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk] at h
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 1))).1
+    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1 h)
+  obtain ⟨b, hb, ⟨hr⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives.exists_transport p e t s r
+  exact ⟨b, (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound hr).symm, hb⟩
 
 /-- 基点の像の標準同定を指定した形での、厳密な射影を持つ代表。 -/
 theorem exists_representative_at {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) {b : B _⦋0⦌}
-    (hpoint : p.app _ e = b) {n : ℕ} (a : KanHomotopyGroup E n e)
-    (s : B.PtSimplex (n + 1) b) (h : KanHomotopyGroup.map p hpoint a = KanHomotopyGroup.mk s) :
-    ∃ t : E.PtSimplex (n + 1) e, KanHomotopyGroup.mk t = a ∧ mapSimplex p hpoint t = s := by
+    (hpoint : p.app _ e = b) {n : ℕ} (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E n e)
+    (s : B.PtSimplex (n + 1) b) (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p hpoint a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) :
+    ∃ t : E.PtSimplex (n + 1) e, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t = a ∧ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hpoint t = s := by
   subst b
-  exact exists_representative p e a s h
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives.exists_representative p e a s h
 
 end
 end SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives

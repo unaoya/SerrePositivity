@@ -29,27 +29,27 @@ local notation "j" b => coherentDiagramValueToTotalKan F b
 
 /-- 元の指定基点での正次数の類に、一つの元の値の類と実際の path を取る。 -/
 lemma total_positive_vertex_representative (n : ℕ) (x : T _⦋0⦌)
-    (a : KanHomotopyGroup T n x) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup T n x) :
     ∃ b : B _⦋0⦌, ∃ y : (V b) _⦋0⦌,
-      ∃ β : KanHomotopyGroup (V b) n y,
-        PiPathRelated n a (KanHomotopyGroup.map (j b) rfl β) := by
+      ∃ β : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (V b) n y,
+        PiPathRelated n a (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) rfl β) := by
   let hx := PointedSimplicialSet.basepoint_ofVertex T x
-  let e := KanHomotopyGroup.equivOfIso n (Iso.refl T) (x := _)
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (Iso.refl T) (x := _)
     (y := x) hx
   obtain ⟨b, y, β, z, h₀, h₁, hⱼ, γ, ha, hb⟩ :=
     total_positiveClass_value_representative F n x (e.symm a)
-  have h : PiPathRelated n (e.symm a) (KanHomotopyGroup.map (j b) hⱼ β) :=
+  have h : PiPathRelated n (e.symm a) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) hⱼ β) :=
     ⟨z, h₀, h₁, γ, ha, hb⟩
   let hy := PointedSimplicialSet.basepoint_ofVertex (V b) y
   let ht := hⱼ.symm.trans (congrArg ((j b).app (Opposite.op ⦋0⦌)) hy)
   have h' := h.rebase hx ht
-  have hsource : KanHomotopyGroup.map (𝟙 T) hx (e.symm a) = a := by
+  have hsource : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 T) hx (e.symm a) = a := by
     change e (e.symm a) = a
     exact e.apply_symm_apply a
-  have hs := KanHomotopyGroup.map_square (𝟙 (V b)) (𝟙 T) (j b) (j b)
+  have hs := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (𝟙 (V b)) (𝟙 T) (j b) (j b)
     (by simp) hy ht hⱼ rfl n β
   obtain ⟨w, hw₀, hw₁, δ, hδ₀, hδ₁⟩ := h'
-  exact ⟨b, y, KanHomotopyGroup.map (𝟙 (V b)) hy β,
+  exact ⟨b, y, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 (V b)) hy β,
     w, hw₀, hw₁, δ, hδ₀.trans hsource, hδ₁.trans hs.symm⟩
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

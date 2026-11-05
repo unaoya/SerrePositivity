@@ -57,7 +57,7 @@ lemma exists_closedSubcategory_pushoutSquare {X : StableModel.{u}} (P : ClosedSt
       pushoutSpan D = pushoutSpan F ∧ IsPushoutSquare D ∧
         IsPushoutSquare (D ≫ (fullSubcomplexOnVertices _ P.predicate).ι) := by
   let i := (fullSubcomplexOnVertices _ P.predicate).ι
-  obtain ⟨R, hR, hRp⟩ := exists_stable_pushoutSquare_of_span (pushoutSpan (F ≫ i))
+  obtain ⟨R, hR, hRp⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span (pushoutSpan (F ≫ i))
   have hc := square_initial_corners_of_span P F R hR
   have hv := square_vertices_of_corners P.predicate R hc.1 hc.2.1 hc.2.2
     (P.pushout_mem R hRp hc.1 hc.2.1 hc.2.2)

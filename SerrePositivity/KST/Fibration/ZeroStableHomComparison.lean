@@ -15,7 +15,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 二つの元の零値完全関手族は、全パラメータを保つ関手同型で比較される。 -/
-def zeroStableHomFamilyIso {T : SSet.{u}} {A B : StableQCat.{u}}
+def zeroStableHomFamilyIso {T : SSet.{u}} {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (H G : T ⟶ (A ⟶[SSet.{u}] B))
     (hH : ∀ v, StableHomZeroVertex A B (H.app (Opposite.op ⦋0⦌) v))
     (hG : ∀ v, StableHomZeroVertex A B (G.app (Opposite.op ⦋0⦌) v)) : FunctorIso H G := by
@@ -33,7 +33,7 @@ def zeroStableHomFamilyIso {T : SSet.{u}} {A B : StableQCat.{u}}
   exact FunctorIso.postcomp e j
 
 /-- 元の正反復 S• の全 Hom へ後合成しても、同じ零値関手族の全図式比較を保つ。 -/
-def zeroStableHomMultiFamilyIso (r : ℕ) {T : SSet.{u}} {A B : StableQCat.{u}}
+def zeroStableHomMultiFamilyIso (r : ℕ) {T : SSet.{u}} {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (H G : T ⟶ (A ⟶[SSet.{u}] B))
     (hH : ∀ v, StableHomZeroVertex A B (H.app (Opposite.op ⦋0⦌) v))
     (hG : ∀ v, StableHomZeroVertex A B (G.app (Opposite.op ⦋0⦌) v)) :

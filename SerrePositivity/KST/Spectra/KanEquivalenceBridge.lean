@@ -32,8 +32,8 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、Kerodon 4.8.4.1。end の係数の比較への入力。 -/
 theorem pointed_piIsomorphism_homotopyEquivalence
     {X Y : PointedSimplicialSet.{u}} [KanComplex X.right] [KanComplex Y.right]
-    (f : X ⟶ Y) (hf : KanPiIsomorphism f.right) : IsSimplicialHomotopyEquivalence f.right := by
-  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := exists_pointedHomotopyInverse f hf
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) : IsSimplicialHomotopyEquivalence f.right := by
+  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f hf
   have hCX : PointedMapping.componentOf (𝟙 X) = PointedMapping.componentOf (f ≫ g) :=
     (PointedMapping.piZero_eq_iff_pointedHomotopy (𝟙 X) (f ≫ g)).mpr ⟨HX, hX⟩
   have hCY : PointedMapping.componentOf (𝟙 Y) = PointedMapping.componentOf (g ≫ f) :=
@@ -48,7 +48,7 @@ theorem pointed_piIsomorphism_homotopyEquivalence
 使われ方：Goerss–Jardine I §7、Kerodon 4.8.4.1。end の比較の結論を L9 の Ω 条件に戻す。 -/
 theorem kanPiIsomorphism_of_qCatEquivalence {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : IsQCatEquivalence f) :
-    KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   let r := equivalencePathReplacementProjection f
   let q := equivalencePathReplacementMap f
   let s := equivalencePathReplacementSection f
@@ -58,12 +58,12 @@ theorem kanPiIsomorphism_of_qCatEquivalence {X Y : SSet.{u}}
   let : KanComplex (equivalencePathReplacement f) := isFibrant_of_fibration r
   have hq : (MorphismProperty.monomorphisms SSet.{u}).rlp q :=
     hf.equivalencePathReplacementMap_trivialKanFibration.mem
-  have hri := kanPiIsomorphism_of_monoRight r hr
-  have hqi := kanPiIsomorphism_of_monoRight q hq
-  have hs : KanPiIsomorphism s := by
-    apply KanPiIsomorphism.of_comp (g := r) _ hri
+  have hri := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight r hr
+  have hqi := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight q hq
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism s := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := r) _ hri
     rw [equivalencePathReplacementSection_projection]
-    exact KanPiIsomorphism.id X
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id X
   have h := hs.comp hqi
   rw [equivalencePathReplacementSection_map] at h
   exact h

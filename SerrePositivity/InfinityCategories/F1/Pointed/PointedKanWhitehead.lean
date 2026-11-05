@@ -90,18 +90,18 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §§7–8。Whitehead の fibration 置換。 -/
 theorem mappingPathProjection_piIsomorphism {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f.right) : KanPiIsomorphism (mappingPathProjection f).right := by
-  have hr : KanPiIsomorphism (mappingPathRetraction f).right :=
-    kanPiIsomorphism_of_monoRight _ (mappingPathRetraction_rlp f)
-  have hsq : (pullback.fst (freePathEndpoint Y 1) f).right ≫ (freePathEndpoint Y 1).right =
-      (mappingPathRetraction f).right ≫ f.right :=
-    congrArg Under.Hom.right (pullback.condition (f := freePathEndpoint Y 1) (g := f))
-  have hfst : KanPiIsomorphism (pullback.fst (freePathEndpoint Y 1) f).right := by
-    apply KanPiIsomorphism.of_comp (g := (freePathEndpoint Y 1).right) _
-      (kanPiIsomorphism_of_monoRight _ (freePathEndpoint_rlp Y 1))
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f).right := by
+  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction_rlp f)
+  have hsq : (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right =
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f).right ≫ f.right :=
+    congrArg Under.Hom.right (pullback.condition (f := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) (g := f))
+  have hfst : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f).right := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right) _
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_rlp Y 1))
     rw [hsq]
     exact hr.comp hf
-  exact hfst.comp (kanPiIsomorphism_of_monoRight _ (freePathEndpoint_rlp Y 0))
+  exact hfst.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_rlp Y 0))
 
 /-- 概要：上の mapping path の終点射は全ての単射への RLP を持つ。
 方針：相対 Whitehead の充填へ mapping path の基点を渡す。
@@ -109,10 +109,10 @@ theorem mappingPathProjection_piIsomorphism {X Y : PointedSimplicialSet.{u}}
 使われ方：Goerss–Jardine I §§7–8、BF 1978 §2。逆射のための切断。 -/
 theorem mappingPathProjection_rlp_of_piIsomorphism {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f.right) :
-    (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathProjection f).right :=
-  fibration_rlp_of_piIsomorphism _ (mappingPathProjection_piIsomorphism f hf)
-    (mappingPath f).basepoint
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f).right :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_piIsomorphism f hf)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f).basepoint
 
 /-- 概要：全単射 RLP の射で等しい二つの点つき射は基点固定でホモトピック。
 方針：源の基点包含を固定する垂直ホモトピーを相対充填する。
@@ -124,7 +124,7 @@ theorem exists_pointedHomotopy_of_comp_eq {A E B : PointedSimplicialSet.{u}}
     ∃ H : SSet.Homotopy a.right b.right,
       A.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom := by
-  let : Mono A.hom := PointedMapping.basepoint_mono A
+  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
   have hbase : A.hom ≫ a.right = A.hom ≫ b.right := by rw [Under.w a, Under.w b]
   obtain ⟨H, _hHp, hH⟩ := MonoRightLiftingRelativeHomotopy.exists_relative_vertical_homotopy
     p.right hp A.hom a.right b.right (congrArg Under.Hom.right hab) hbase
@@ -138,7 +138,7 @@ theorem exists_pointedHomotopy_of_comp_eq {A E B : PointedSimplicialSet.{u}}
 使われ方：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2。一般の Kan Whitehead。 -/
 theorem exists_pointedHomotopyInverse {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
-    (hf : KanPiIsomorphism f.right) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
     ∃ g : Y ⟶ X,
       (∃ H : SSet.Homotopy (𝟙 X.right) (f ≫ g).right,
         X.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
@@ -146,19 +146,19 @@ theorem exists_pointedHomotopyInverse {X Y : PointedSimplicialSet.{u}}
       (∃ H : SSet.Homotopy (𝟙 Y.right) (g ≫ f).right,
         Y.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
           toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ Y.hom) := by
-  let p := mappingPathProjection f
-  let r := mappingPathRetraction f
-  let u := mappingPathUnit f
-  have hp := mappingPathProjection_rlp_of_piIsomorphism f hf
-  have hr := mappingPathRetraction_rlp f
-  obtain ⟨s, hs⟩ := exists_pointedSection p hp
+  let p := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f
+  let r := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f
+  let u := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit f
+  have hp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism f hf
+  have hr := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction_rlp f
+  obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedSection p hp
   let g := s ≫ r
-  have hup : u ≫ p = f := mappingPathUnit_projection f
-  have hur : u ≫ r = 𝟙 X := mappingPathUnit_retraction f
+  have hup : u ≫ p = f := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection f
+  have hur : u ≫ r = 𝟙 X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction f
   have hX : u ≫ p = (f ≫ s) ≫ p := by rw [Category.assoc, hs, Category.comp_id, hup]
   have hY : s ≫ r = (g ≫ u) ≫ r := by rw [Category.assoc, hur, Category.comp_id]
-  obtain ⟨HX, hHX⟩ := exists_pointedHomotopy_of_comp_eq p hp u (f ≫ s) hX
-  obtain ⟨HY, hHY⟩ := exists_pointedHomotopy_of_comp_eq r hr s (g ≫ u) hY
+  obtain ⟨HX, hHX⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopy_of_comp_eq p hp u (f ≫ s) hX
+  obtain ⟨HY, hHY⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopy_of_comp_eq r hr s (g ≫ u) hY
   refine ⟨g, ?_, ?_⟩
   · let H : SSet.Homotopy (𝟙 X.right) (f ≫ g).right := {
       h := HX.h ≫ r.right

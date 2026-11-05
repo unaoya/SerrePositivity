@@ -58,8 +58,8 @@ end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Stable.Exact
 open SerrePositivity.KST.LocalizingInvariants
 
-lemma cofiber_diagram_right_vertex (X : SSet.{u}) (z : (CofiberDiagrams.space X) _⦋0⦌) :
-    (CofiberDiagrams.right X).app (Opposite.op ⦋0⦌) z =
+lemma cofiber_diagram_right_vertex (X : SSet.{u}) (z : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X).app (Opposite.op ⦋0⦌) z =
       functorVertex (squareRightEdge ≫ squareDiagram z.val) := by
   have hz : functorVertex (squareDiagram z.val) = z.val :=
     (functorVertexEquiv _ _).apply_symm_apply _
@@ -67,8 +67,8 @@ lemma cofiber_diagram_right_vertex (X : SSet.{u}) (z : (CofiberDiagrams.space X)
   rw [← hz]
   rfl
 
-lemma cofiber_diagram_bottom_source (X : SSet.{u}) (z : (CofiberDiagrams.space X) _⦋0⦌) :
-    (CofiberDiagrams.bottom X ≫
+lemma cofiber_diagram_bottom_source (X : SSet.{u}) (z : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) z =
         squareVertex (squareDiagram z.val) 0 0 := by
   have hz : functorVertex (squareDiagram z.val) = z.val :=
@@ -79,14 +79,14 @@ lemma cofiber_diagram_bottom_source (X : SSet.{u}) (z : (CofiberDiagrams.space X
   rfl
 
 lemma cofiber_bottom_target_eq_right_source (X : SSet.{u}) :
-    CofiberDiagrams.bottom X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      CofiberDiagrams.right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  simp only [CofiberDiagrams.bottom, CofiberDiagrams.right, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, Category.assoc,
     stable_pre_evaluateFunctorAt]
   rfl
 
 lemma identityArrow_source (X : SSet.{u}) :
-    ArrowTarget.identityArrow X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       𝟙 X := by
   apply SSet.hom_ext
   intro n

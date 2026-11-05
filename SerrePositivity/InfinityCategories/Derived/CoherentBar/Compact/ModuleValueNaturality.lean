@@ -65,7 +65,7 @@ lemma dgBarCompactModuleValueHomology_naturality
 lemma dgBarCompactModuleRawValuePiChart_naturality
     {M N : ModuleCategory R PUnit.{1}} (f : M ⟶ N) (n : ℕ)
     (z : (dgBarCompactModuleRawValueSpace R D M) _⦋0⦌)
-    (a : KanHomotopyGroup (dgBarCompactModuleRawValueSpace R D M) n z) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (dgBarCompactModuleRawValueSpace R D M) n z) :
     (dgBarCompactModuleRawValuePiChart R D N n).equiv
       ((dgBarCompactModuleRawValueEdge R D f).app _ z)
       (dgBarCompactPiMap n (dgBarCompactModuleRawValueEdge R D f) z a) =

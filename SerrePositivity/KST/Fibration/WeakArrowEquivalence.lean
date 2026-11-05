@@ -21,18 +21,18 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- W 辺図式の安定性は、元の全相対 cofiber 補完の射影から従う。 -/
-instance weakArrowCategory_isStable {B C : StableCategory.{u}} (q : ExactMap B C) :
+instance weakArrowCategory_isStable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     IsStable (weakArrowCategory q) :=
   isStable_target_of_trivialKanFibration (weakCofiberProjection q)
 
 /-- W 辺図式を K-1 の安定な入力として保持する。 -/
-def weakArrowModel {B C : StableCategory.{u}} (q : ExactMap B C) : StableModel.{u} where
+def weakArrowModel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) : StableModel.{u} where
   carrier := weakArrowCategory q
   quasicategory := inferInstance
   stable := inferInstance
 
 /-- 元の cofiber 射影を順方向に持つ、完全な順逆と coherent な二つの逆同型。 -/
-def weakArrowCofiberEquivalence {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakArrowCofiberEquivalence {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     StableModelEquivalence (weakCofiberModel q) (weakArrowModel q) := by
   let e := qCatEquivalenceOfTrivialKanFibration (weakCofiberProjection q)
   have hh : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
@@ -45,12 +45,12 @@ def weakArrowCofiberEquivalence {B C : StableCategory.{u}} (q : ExactMap B C) :
     invHomIso := e.invHomIso }
 
 /-- 同値の順射は、元の底辺を取る相対 cofiber 射影そのもの。 -/
-lemma weakArrowCofiberEquivalence_hom {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakArrowCofiberEquivalence_hom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakArrowCofiberEquivalence q).hom.val = weakCofiberProjection q := rfl
 
 /-- 元の W 底辺への比較は、全正有限反復 S• 実現で局所化同型となる。 -/
 lemma weakArrowCofiber_multiRealization_localized_isIso
-    {B C : StableCategory.{u}} (q : ExactMap B C) (r : ℕ) :
+    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (weakArrowCofiberEquivalence q).hom)) :=
   multiRealization_map_localized_isIso_of_equivalence r (weakArrowCofiberEquivalence q)

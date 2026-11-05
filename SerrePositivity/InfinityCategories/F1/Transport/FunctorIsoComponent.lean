@@ -36,7 +36,7 @@ theorem functorIso_app_hom_evaluate : (e.app x).hom = functorHomEvaluate e.hom x
 /-- 逆成分も、元の同じ逆二胞体の成分と厳密に一致する。 -/
 theorem functorIso_app_inv_evaluate : (e.app x).inv = functorHomEvaluate e.inv x := by
   apply (cancel_epi (e.app x).hom).mp
-  rw [Iso.hom_inv_id, functorIso_app_hom_evaluate,
+  rw [Iso.hom_inv_id, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate,
     ← functorHomEvaluate_comp, e.hom_inv_id, functorHomEvaluate_id]
 
 end SerrePositivity.InfinityCategories.F1.Transport

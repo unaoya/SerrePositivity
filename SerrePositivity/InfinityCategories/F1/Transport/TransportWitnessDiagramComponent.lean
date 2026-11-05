@@ -26,18 +26,18 @@ def transportWitnessDiagramValueIso :
     VertexIso (R.diagram.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) e))
       (S.diagram.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) e)) :=
   (eqToIso (congrArg HomotopyCategory.mk
-    (transportWitnessDiagramEvaluation_vertex p e R))).symm ≪≫
-      VertexIso.map h (transportWitnessDiagramEvaluation p e) ≪≫
-      eqToIso (congrArg HomotopyCategory.mk (transportWitnessDiagramEvaluation_vertex p e S))
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation_vertex p e R))).symm ≪≫
+      VertexIso.map h (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e) ≪≫
+      eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation_vertex p e S))
 
 variable [Quasicategory B]
 
 /-- 同時評価は、同じ元の diagramIso の指定成分を厳密に回収する。 -/
 theorem transportWitnessDiagramValueIso_eq :
     (R.diagramIso S h).app (p.app (Opposite.op ⦋0⦌) e) =
-      transportWitnessDiagramValueIso p e R S h := by
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso p e R S h := by
   let D := transportWitnessDiagram p
-  let J := transportWitnessDiagramEvaluation p e
+  let J := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e
   let V := evaluateFunctorAt (Y := SpaceInfinity.{u}) (p.app (Opposite.op ⦋0⦌) e)
   let a := R.diagramIso S h
   let b := VertexIso.map h D
@@ -54,18 +54,18 @@ theorem transportWitnessDiagramValueIso_eq :
     rw [← Cat.Hom.comp_toFunctor, ← Functor.map_comp]
     rfl
   have hc : HEq (VertexIso.map b V) c := F2.mapIso_heq_of_functor_eq hf h
-  have hd : HEq (transportWitnessDiagramValueIso p e R S h) c :=
+  have hd : HEq (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso p e R S h) c :=
     F2.iso_endpoints_heq c
-      (congrArg HomotopyCategory.mk (transportWitnessDiagramEvaluation_vertex p e R))
-      (congrArg HomotopyCategory.mk (transportWitnessDiagramEvaluation_vertex p e S))
+      (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation_vertex p e R))
+      (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation_vertex p e S))
   exact eq_of_heq ((F2.functorIso_app_heq_evaluate a
     (p.app (Opposite.op ⦋0⦌) e)).trans (hb.trans (hc.trans hd.symm)))
 
 /-- 同じ同時評価の順方向射は、元の diagramIso の同じ二胞体の評価成分。 -/
 theorem transportWitnessDiagramValueIso_hom :
-    (transportWitnessDiagramValueIso p e R S h).hom =
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso p e R S h).hom =
       functorHomEvaluate (R.diagramIso S h).hom (p.app (Opposite.op ⦋0⦌) e) := by
-  rw [← transportWitnessDiagramValueIso_eq, functorIso_app_hom_evaluate]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso_eq, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate]
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

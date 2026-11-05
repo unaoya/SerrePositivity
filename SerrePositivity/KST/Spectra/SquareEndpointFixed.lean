@@ -31,9 +31,9 @@ private lemma endpoint_fixed (c : 𝟙_ SSet.{u} ⟶ (Δ[1] : SSet.{u})) (v : E 
 /-- 二つの終点の定数性は、二端点境界全体を固定する実相対ホモトピーを与える。 -/
 lemma fixed_endpoints (x y : E _⦋0⦌)
     (hx : leftSide ≫ H.h = SSet.const x) (hy : rightSide ≫ H.h = SSet.const y) :
-    intervalEndpoint.{u}.right ▷ (Δ[1] : SSet.{u}) ≫ H.h =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ▷ (Δ[1] : SSet.{u}) ≫ H.h =
       fst ((𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u})) (Δ[1] : SSet.{u}) ≫
-        intervalEndpoint.right ≫ a := by
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right ≫ a := by
   have h₀ := (intervalFamily_endpoint_unit_iff H.h x (1 : Fin 2)).1
     (by rw [face_left, Category.assoc, hx, SSet.comp_const])
   have h₁ := (intervalFamily_endpoint_unit_iff H.h y (0 : Fin 2)).1

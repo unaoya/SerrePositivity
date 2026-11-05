@@ -20,23 +20,23 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
-def tammeArrowKernel : Set ((stableArrowCategory (laxCategory p q)).obj _⦋0⦌) :=
+def tammeArrowKernel : Set ((_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌) :=
   {v | ∀ i : Fin 2, (evaluateFunctorAt (Y := (laxCategory p q).obj)
     (stdSimplex.obj₀Equiv.symm i)).app (Opposite.op ⦋0⦌) v ∈
-      essentialImage (pullbackInclusion p q)}
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)}
 
 lemma tammeArrowKernel_eq_exactKernel :
-    tammeArrowKernel p q = exactKernel (exactArrowMap (exactLaxDifference p q)) := by
+    tammeArrowKernel p q = _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel (exactArrowMap (exactLaxDifference p q)) := by
   ext v
-  change (∀ i : Fin 2, _ ∈ essentialImage (pullbackInclusion p q)) ↔
+  change (∀ i : Fin 2, _ ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) ↔
     IsZeroVertex (((ihom (Δ[1] : SSet.{u})).map (laxDifference p q)).app (Opposite.op ⦋0⦌) v)
   rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowVertex_isZero_iff]
   apply forall_congr'
   intro i
   have h := congrArg (fun a => a.app (Opposite.op ⦋0⦌) v)
-    (arrowMap_evaluation (laxDifference p q) i)
+    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation (laxDifference p q) i)
   change (evaluateFunctorAt (Y := E.obj) (stdSimplex.obj₀Equiv.symm i)).app
       (Opposite.op ⦋0⦌) (((ihom (Δ[1] : SSet.{u})).map (laxDifference p q)).app
         (Opposite.op ⦋0⦌) v) = _ at h
@@ -46,9 +46,9 @@ lemma tammeArrowKernel_eq_exactKernel :
 lemma tammeArrowKernel_stableClosure :
     {v | StableVertexClosure (tammeArrowKernel p q) v} = tammeArrowKernel p q := by
   rw [tammeArrowKernel_eq_exactKernel]
-  exact exactKernel_stableClosure _
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel_stableClosure _
 
-def tammeArrowLocalizingEdges : Set ((stableArrowCategory (laxCategory p q)).obj _⦋1⦌) :=
+def tammeArrowLocalizingEdges : Set ((_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋1⦌) :=
   pointwiseLocalizingEdges (Δ[1] : SSet.{u}) (laxCategory p q).obj (tammeLocalizingEdges p q)
 
 lemma tammeArrowLocalizingEdges_eq_invertedDifference :
@@ -67,7 +67,7 @@ lemma tammeArrowLocalizingEdges_eq_invertedQuotient :
 lemma tammeArrowLocalizingEdges_eq_cofiber :
     tammeArrowLocalizingEdges p q = cofiberLocalizingEdges (tammeArrowKernel p q) := by
   rw [tammeArrowLocalizingEdges_eq_invertedDifference, tammeArrowKernel_eq_exactKernel]
-  exact invertedEdges_eq_cofiber_exactKernel (exactArrowMap (exactLaxDifference p q))
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.invertedEdges_eq_cofiber_exactKernel (exactArrowMap (exactLaxDifference p q))
 
 lemma tammeArrowLocalizingEdges_stableClosure :
     cofiberLocalizingEdges {v | StableVertexClosure (tammeArrowKernel p q) v} =

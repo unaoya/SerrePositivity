@@ -32,15 +32,15 @@ def transportWitnessDiagramEvaluation : transportWitnessSpace p ⟶ SpaceInfinit
 
 /-- 二つの同時評価は、元の全表現空間上で厳密に可換。 -/
 theorem transportWitnessPointedEvaluation_projection :
-    transportWitnessPointedEvaluation p e ≫ pointedSpaceProjection =
-      transportWitnessDiagramEvaluation p e := by
-  unfold transportWitnessPointedEvaluation transportWitnessDiagramEvaluation
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e ≫ pointedSpaceProjection =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e := by
+  unfold _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation
   rw [Category.assoc, ← evaluateFunctorAt_post, ← Category.assoc,
     transportWitnessDiagram_condition, Category.assoc, evaluateFunctorAt_precomp]
 
 /-- 元の表現を同じ評価族へ入れると、その同じ pointedMap の実際の値を回収する。 -/
 theorem transportWitnessPointedEvaluation_vertex (R : LeftTransportRepresentation p) :
-    (transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) (transportWitnessVertex R) =
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) (transportWitnessVertex R) =
       R.pointedMap.app (Opposite.op ⦋0⦌) e := by
   change (evaluateFunctorAt e).app (Opposite.op ⦋0⦌)
     ((transportWitnessPointed p).app (Opposite.op ⦋0⦌) (transportWitnessVertex R)) = _
@@ -48,7 +48,7 @@ theorem transportWitnessPointedEvaluation_vertex (R : LeftTransportRepresentatio
 
 /-- 同じ表現の分類図式の値も、同じ指定点の射影で厳密に回収する。 -/
 theorem transportWitnessDiagramEvaluation_vertex (R : LeftTransportRepresentation p) :
-    (transportWitnessDiagramEvaluation p e).app (Opposite.op ⦋0⦌) (transportWitnessVertex R) =
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e).app (Opposite.op ⦋0⦌) (transportWitnessVertex R) =
       R.diagram.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) e) := by
   change (evaluateFunctorAt (p.app (Opposite.op ⦋0⦌) e)).app (Opposite.op ⦋0⦌)
     ((transportWitnessDiagram p).app (Opposite.op ⦋0⦌) (transportWitnessVertex R)) = _
@@ -57,17 +57,17 @@ theorem transportWitnessDiagramEvaluation_vertex (R : LeftTransportRepresentatio
 /-- 同じ表現空間内の元の射は、同時評価した点の射と分類側の射との自然性を保つ。 -/
 theorem transportWitnessPointHom_naturality {v w : (transportWitnessSpace p) _⦋0⦌}
     (m : HomotopyCategory.mk v ⟶ HomotopyCategory.mk w) :
-    pointedVertexPointHom ((transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) v) ≫
-      (pointedFamilyProjectionValueIso (transportWitnessPointedEvaluation p e)
-        (transportWitnessDiagramEvaluation p e)
-        (transportWitnessPointedEvaluation_projection p e) v).hom ≫
-      (hoFunctor.map (transportWitnessDiagramEvaluation p e)).toFunctor.map m ≫
-      (pointedFamilyProjectionValueIso (transportWitnessPointedEvaluation p e)
-        (transportWitnessDiagramEvaluation p e)
-        (transportWitnessPointedEvaluation_projection p e) w).inv =
-      pointedVertexPointHom ((transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) w) :=
-  pointedFamilyPointHom_naturality_over (transportWitnessPointedEvaluation p e)
-    (transportWitnessDiagramEvaluation p e) (transportWitnessPointedEvaluation_projection p e) m
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) v) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation_projection p e) v).hom ≫
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e)).toFunctor.map m ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation_projection p e) w).inv =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom ((_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e).app (Opposite.op ⦋0⦌) w) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyPointHom_naturality_over (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation p e)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation p e) (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation_projection p e) m
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

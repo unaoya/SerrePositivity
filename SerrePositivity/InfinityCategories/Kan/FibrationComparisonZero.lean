@@ -38,77 +38,77 @@ theorem fiberMap_piZero_bijective {E B E' B' : SSet.{u}}
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
     (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
-    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) (e₀ : E _⦋0⦌) :
-    Function.Bijective (mapπ₀ (fiberMap p p' f g comm e₀)) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g) (e₀ : E _⦋0⦌) :
+    Function.Bijective (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e₀)) := by
   let b := p.app _ e₀
   let b' := p'.app _ (f.app _ e₀)
-  let ι := fiberι p b
-  let ι' := fiberι p' b'
-  let φ := fiberMap p p' f g comm e₀
-  have hφ : φ ≫ ι' = ι ≫ f := fiberMap_ι p p' f g comm e₀
+  let ι := _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b
+  let ι' := _root_.SerrePositivity.InfinityCategories.Kan.fiberι p' b'
+  let φ := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e₀
+  have hφ : φ ≫ ι' = ι ≫ f := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p p' f g comm e₀
   have hπ : ∀ a, mapπ₀ f (mapπ₀ ι a) = mapπ₀ ι' (mapπ₀ φ a) :=
-    mapPiZero_square ι ι' φ f hφ.symm
+    _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square ι ι' φ f hφ.symm
   have hf₀ := hf.piZero_bijective_at e₀
   have hg₀ := hg.piZero_bijective_at (p.app _ e₀)
   constructor
   · intro a c hac
     obtain ⟨v, rfl⟩ := π₀.mk_surjective a
     let e := ι.app _ v
-    have hb : p.app _ e = b := fiber_vertex_base p b v
+    have hb : p.app _ e = b := _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base p b v
     have hb' : p'.app _ (f.app _ e) = b' :=
-      (base_eq p p' f g comm e).symm.trans
-        ((congrArg (g.app _) hb).trans (base_eq p p' f g comm e₀))
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e).symm.trans
+        ((congrArg (g.app _) hb).trans (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e₀))
     have hφv : ι'.app _ (φ.app _ v) = f.app _ e :=
-      congrArg (fun k : KanFiber p b ⟶ E' ↦ k.app _ v) hφ
+      congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b ⟶ E' ↦ k.app _ v) hφ
     have hE : mapπ₀ ι c = π₀.mk e := by
       apply hf₀.injective
       rw [hπ c, ← hac, ← hπ (π₀.mk v), mapπ₀_mk]
-    obtain ⟨β, hβ⟩ := (componentConnecting_exact p e b hb c).1 hE
-    have hnat := componentConnecting_natural p p' f g comm e b hb b' hb' φ hφ β
-    have hker' : componentConnecting p' (f.app _ e) b' hb'
-        (KanHomotopyGroup.map g (base_eq p p' f g comm e) β) =
-          componentConnecting p' (f.app _ e) b' hb' 1 := by
+    obtain ⟨β, hβ⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact p e b hb c).1 hE
+    have hnat := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.componentConnecting_natural p p' f g comm e b hb b' hb' φ hφ β
+    have hker' : _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p' (f.app _ e) b' hb'
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) β) =
+          _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p' (f.app _ e) b' hb' 1 := by
       calc
-        _ = mapπ₀ φ (componentConnecting p e b hb β) := hnat.symm
+        _ = mapπ₀ φ (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb β) := hnat.symm
         _ = mapπ₀ φ c := congrArg (mapπ₀ φ) hβ
         _ = mapπ₀ φ (π₀.mk v) := hac.symm
         _ = π₀.mk (φ.app _ v) := mapπ₀_mk φ v
-        _ = _ := (componentConnecting_one_at p' (f.app _ e) b' hb' (φ.app _ v) hφv).symm
-    obtain ⟨α', hα'⟩ := (componentConnecting_kernel p' (f.app _ e) b' hb' _).1 hker'
+        _ = _ := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_one_at p' (f.app _ e) b' hb' (φ.app _ v) hφv).symm
+    obtain ⟨α', hα'⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_kernel p' (f.app _ e) b' hb' _).1 hker'
     obtain ⟨α, hα⟩ :=
-      (KanHomotopyGroup.map_bijective_of_piIsomorphism 0 f hf (x := e) rfl).surjective α'
-    have hpα : KanHomotopyGroup.map p rfl α = β := by
-      apply (KanHomotopyGroup.map_bijective_of_piIsomorphism 0 g hg
-        (base_eq p p' f g comm e)).injective
-      rw [KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl
-        (base_eq p p' f g comm e) 0 α, hα, hα']
-    have hker := (componentConnecting_kernel p e b hb β).2 ⟨α, hpα⟩
-    exact (hβ.symm.trans (hker.trans (componentConnecting_one_at p e b hb v rfl))).symm
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism 0 f hf (x := e) rfl).surjective α'
+    have hpα : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl α = β := by
+      apply (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism 0 g hg
+        (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e)).injective
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl
+        (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) 0 α, hα, hα']
+    have hker := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_kernel p e b hb β).2 ⟨α, hpα⟩
+    exact (hβ.symm.trans (hker.trans (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_one_at p e b hb v rfl))).symm
   · intro a'
     obtain ⟨aE, haE⟩ := hf₀.surjective (mapπ₀ ι' a')
     have hpE : mapπ₀ p aE = π₀.mk b := by
       apply hg₀.injective
-      rw [mapPiZero_square p p' f g comm aE, haE]
-      have ht := (componentFiber_exact p' (f.app _ e₀) (mapπ₀ ι' a')).2 ⟨a', rfl⟩
-      exact ht.trans ((mapπ₀_mk g b).trans (congrArg π₀.mk (base_eq p p' f g comm e₀))).symm
-    obtain ⟨s, hs⟩ := (componentFiber_exact p e₀ aE).1 hpE
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square p p' f g comm aE, haE]
+      have ht := (_root_.SerrePositivity.InfinityCategories.Kan.componentFiber_exact p' (f.app _ e₀) (mapπ₀ ι' a')).2 ⟨a', rfl⟩
+      exact ht.trans ((mapπ₀_mk g b).trans (congrArg π₀.mk (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e₀))).symm
+    obtain ⟨s, hs⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.componentFiber_exact p e₀ aE).1 hpE
     obtain ⟨v, rfl⟩ := π₀.mk_surjective s
     let e := ι.app _ v
-    have hb : p.app _ e = b := fiber_vertex_base p b v
+    have hb : p.app _ e = b := _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base p b v
     have hb' : p'.app _ (f.app _ e) = b' :=
-      (base_eq p p' f g comm e).symm.trans
-        ((congrArg (g.app _) hb).trans (base_eq p p' f g comm e₀))
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e).symm.trans
+        ((congrArg (g.app _) hb).trans (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e₀))
     have hE' : mapπ₀ ι' a' = π₀.mk (f.app _ e) := by
       calc
         _ = mapπ₀ f aE := haE.symm
         _ = mapπ₀ f (mapπ₀ ι (π₀.mk v)) := congrArg (mapπ₀ f) hs.symm
         _ = _ := by rw [mapπ₀_mk, mapπ₀_mk]
-    obtain ⟨β', hβ'⟩ := (componentConnecting_exact p' (f.app _ e) b' hb' a').1 hE'
-    obtain ⟨β, hβ⟩ := (KanHomotopyGroup.map_bijective_of_piIsomorphism 0 g hg
-      (base_eq p p' f g comm e)).surjective β'
-    refine ⟨componentConnecting p e b hb β, ?_⟩
-    exact (componentConnecting_natural p p' f g comm e b hb b' hb' φ hφ β).trans
-      ((congrArg (componentConnecting p' (f.app _ e) b' hb') hβ).trans hβ')
+    obtain ⟨β', hβ'⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact p' (f.app _ e) b' hb' a').1 hE'
+    obtain ⟨β, hβ⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism 0 g hg
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e)).surjective β'
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb β, ?_⟩
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.componentConnecting_natural p p' f g comm e b hb b' hb' φ hφ β).trans
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p' (f.app _ e) b' hb') hβ).trans hβ')
 
 end
 

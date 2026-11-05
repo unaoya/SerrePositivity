@@ -18,12 +18,12 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma simplexHAHomMap_comp_of_strict {N : ℕ} (s : DGNerve.Simplex A D N)
     (hstrict : ∀ (a b c : Fin (N + 1)), a < b → b < c →
       eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-        (standardSimplexVertex a) (standardSimplexVertex b) (standardSimplexVertex c) ≫
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
           simplexHAHomMap A s a c =
         (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
           eComp (Complex A) (s.obj a) (s.obj b) (s.obj c)) (a b c : Fin (N + 1)) :
     eComp (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-      (standardSimplexVertex a) (standardSimplexVertex b) (standardSimplexVertex c) ≫
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫
         simplexHAHomMap A s a c =
       (simplexHAHomMap A s a b ⊗ₘ simplexHAHomMap A s b c) ≫
         eComp (Complex A) (s.obj a) (s.obj b) (s.obj c) := by

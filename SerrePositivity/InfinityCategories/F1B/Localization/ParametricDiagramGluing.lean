@@ -30,10 +30,10 @@ def coproductFamilyGlue {I : Type u} {K : I → SSet.{u}} {B X : SSet.{u}}
 
 lemma coproductFamilyGlue_restrict {I : Type u} {K : I → SSet.{u}} {B X : SSet.{u}}
     (f : ∀ i, B ⟶ (ihom (K i)).obj X) (i : I) :
-    coproductFamilyGlue f ≫ (pre (Sigma.ι K i)).app X = f i := by
+    _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue f ≫ (pre (Sigma.ι K i)).app X = f i := by
   apply (internalHomFlipHomEquiv B (K i) X).injective
   rw [internalHomFlipHomEquiv_pre_app]
-  simp only [coproductFamilyGlue, Equiv.apply_symm_apply, Sigma.ι_comp_desc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue, Equiv.apply_symm_apply, Sigma.ι_comp_desc]
 
 lemma coproductFamily_hom_ext {I : Type u} {K : I → SSet.{u}} {B X : SSet.{u}}
     {f g : B ⟶ (ihom (∐ K)).obj X}
@@ -56,18 +56,18 @@ def pushoutFamilyGlue {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D)
 lemma pushoutFamilyGlue_inl {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D)
     (f : B ⟶ (ihom C).obj X) (g : B ⟶ (ihom D).obj X)
     (h : f ≫ (pre i).app X = g ≫ (pre j).app X) :
-    pushoutFamilyGlue i j f g h ≫ (pre (pushout.inl i j)).app X = f := by
+    _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue i j f g h ≫ (pre (pushout.inl i j)).app X = f := by
   apply (internalHomFlipHomEquiv B C X).injective
   rw [internalHomFlipHomEquiv_pre_app]
-  simp only [pushoutFamilyGlue, Equiv.apply_symm_apply, pushout.inl_desc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue, Equiv.apply_symm_apply, pushout.inl_desc]
 
 lemma pushoutFamilyGlue_inr {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D)
     (f : B ⟶ (ihom C).obj X) (g : B ⟶ (ihom D).obj X)
     (h : f ≫ (pre i).app X = g ≫ (pre j).app X) :
-    pushoutFamilyGlue i j f g h ≫ (pre (pushout.inr i j)).app X = g := by
+    _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue i j f g h ≫ (pre (pushout.inr i j)).app X = g := by
   apply (internalHomFlipHomEquiv B D X).injective
   rw [internalHomFlipHomEquiv_pre_app]
-  simp only [pushoutFamilyGlue, Equiv.apply_symm_apply, pushout.inr_desc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue, Equiv.apply_symm_apply, pushout.inr_desc]
 
 lemma pushoutFamily_hom_ext {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D)
     {f g : B ⟶ (ihom (pushout i j)).obj X}

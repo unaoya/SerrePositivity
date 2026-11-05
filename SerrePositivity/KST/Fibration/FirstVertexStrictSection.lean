@@ -87,11 +87,11 @@ theorem firstVertexRestrictionChart_pointHom_strictSection (X : LeftFibrationObj
     (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X)).symm v) ≫
       (straighteningFirstVertexSectionChart X c).inv ≫
         (firstVertexRestrictionChart X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (strictTransportDomains
         (TransportSimplexCategory B))).precompose
           (leftFibrationBaseChangeEnriched (transportSimplexFirstVertexMap B))).obj c).obj X)).symm

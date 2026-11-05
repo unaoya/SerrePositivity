@@ -19,43 +19,43 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の necklace 射が同じ数値立方体の全頂点に作用する関数。 -/
-def necklaceNumericMap {T U : Necklace.{u}} (f : T ⟶ U) :
-    CubeVertex T.down.dimension → CubeVertex U.down.dimension :=
-  fun x j => necklaceBooleanMap f
+def necklaceNumericMap {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.down.dimension → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.down.dimension :=
+  fun x j => _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap f
     (fun v => x (T.down.nonjointCoordinate.symm v)) (U.down.nonjointCoordinate j)
 
 /-- 元の数値頂点作用は恒等写像を保つ。 -/
-lemma necklaceNumericMap_id (T : Necklace.{u}) : necklaceNumericMap (𝟙 T) = _root_.id := by
+lemma necklaceNumericMap_id (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap (𝟙 T) = _root_.id := by
   funext x j
-  change necklaceBooleanMap (𝟙 T)
+  change _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap (𝟙 T)
     (fun v => x (T.down.nonjointCoordinate.symm v)) (T.down.nonjointCoordinate j) = x j
-  rw [necklaceBooleanMap_id]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_id]
   exact congrArg x (T.down.nonjointCoordinate.symm_apply_apply j)
 
 /-- 元の数値頂点作用は同じ necklace 射の合成を厳密に保つ。 -/
-lemma necklaceNumericMap_comp {T U V : Necklace.{u}} (f : T ⟶ U) (g : U ⟶ V) :
-    necklaceNumericMap (f ≫ g) = necklaceNumericMap g ∘ necklaceNumericMap f := by
+lemma necklaceNumericMap_comp {T U V : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U) (g : U ⟶ V) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap (f ≫ g) = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap g ∘ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f := by
   funext x j
-  change necklaceBooleanMap (f ≫ g)
+  change _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap (f ≫ g)
       (fun v => x (T.down.nonjointCoordinate.symm v)) (V.down.nonjointCoordinate j) =
-    necklaceBooleanMap g
-      (fun v => necklaceBooleanMap f (fun a => x (T.down.nonjointCoordinate.symm a))
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap g
+      (fun v => _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap f (fun a => x (T.down.nonjointCoordinate.symm a))
         (U.down.nonjointCoordinate (U.down.nonjointCoordinate.symm v)))
       (V.down.nonjointCoordinate j)
   simp only [Equiv.apply_symm_apply]
-  rw [necklaceBooleanMap_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_comp]
   rfl
 
 /-- 元の数値出力座標の真偽を、同じ元の joint 像と数値ファイバーで回収する。 -/
-lemma necklaceNumericMap_coordinate {T U : Necklace.{u}} (f : T ⟶ U)
-    (x : CubeVertex T.down.dimension) (j : Fin U.down.dimension) :
-    necklaceNumericMap f x j = true ↔
+lemma necklaceNumericMap_coordinate {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U)
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.down.dimension) (j : Fin U.down.dimension) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f x j = true ↔
       (∃ a : T.down.Vertex, a.val ∈ T.down.joints ∧
-        necklaceVertexMap f a = (U.down.nonjointCoordinate j).val) ∨
+        _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f a = (U.down.nonjointCoordinate j).val) ∨
       ∃ i : Fin T.down.dimension, x i = true ∧
-        necklaceVertexMap f (T.down.nonjointCoordinate i).val =
+        _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f (T.down.nonjointCoordinate i).val =
           (U.down.nonjointCoordinate j).val := by
-  rw [necklaceNumericMap, necklaceBooleanMap_coordinate]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_coordinate]
   apply or_congr_right
   constructor
   · rintro ⟨a, ha, hfa⟩

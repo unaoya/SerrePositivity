@@ -26,10 +26,10 @@ open SerrePositivity.KST.LocalizingInvariants
 structure SquarePastingRectangle {X : SSet.{u}}
     (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b t : (Δ[2] : SSet.{u}) ⟶ X) where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X
-  left_eq : pastingSquare diagram 2 = L
-  right_eq : pastingSquare diagram 0 = R
-  bottom_eq : pastingBottomTriangle diagram = b
-  top_eq : pastingTopTriangle diagram = t
+  left_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram 2 = L
+  right_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram 0 = R
+  bottom_eq : pastingBottomTriangle _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram = b
+  top_eq : pastingTopTriangle _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram = t
 
 lemma nonempty_squarePastingRectangle {X : SSet.{u}} [Quasicategory X]
     (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
@@ -39,7 +39,7 @@ lemma nonempty_squarePastingRectangle {X : SSet.{u}} [Quasicategory X]
     (hbR : squareBottomEdge ≫ R = stdSimplex.δ (0 : Fin 3) ≫ b)
     (htL : squareTopEdge ≫ L = stdSimplex.δ (2 : Fin 3) ≫ t)
     (htR : squareTopEdge ≫ R = stdSimplex.δ (0 : Fin 3) ≫ t) :
-    Nonempty (SquarePastingRectangle L R b t) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle L R b t) := by
   let a := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram L R h
   have hend (i : Fin 2) (τ : (Δ[2] : SSet.{u}) ⟶ X)
       (hL : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed L ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i) =

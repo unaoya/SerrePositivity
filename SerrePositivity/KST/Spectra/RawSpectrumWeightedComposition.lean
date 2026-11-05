@@ -42,7 +42,7 @@ lemma weightedCotensor_inv_π {I : Type u} [SmallCategory I]
     (PointedWeightedEnd.cotensorIso K W D).inv ≫
         (ihom K).map (end_.π (PointedWeightedEnd.diagram W D) i) =
       end_.π (PointedWeightedEnd.diagram W (D ⋙ ihom K)) i ≫
-        (InternalHomExchange.iso K (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K (PointedObject.adjoin (W.obj i)) (D.obj i)).inv := by
   apply (cancel_epi (PointedWeightedEnd.cotensorIso K W D).hom).mp
   rw [Iso.hom_inv_id_assoc, ← Category.assoc, PointedWeightedEnd.cotensorIso_π,
     Category.assoc, Iso.hom_inv_id, Category.comp_id]
@@ -63,7 +63,7 @@ lemma weightedComposition_π {I : Type u} [SmallCategory I] (X Y : OmegaSpectrum
     weightedComposition X Y W D ≫ end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor X)) i =
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ
         end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i) ≫
-        HomTensorStrength.map (pointedSpace X Y.toKanSequence)
+        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (pointedSpace X Y.toKanSequence)
           (PointedObject.adjoin (W.obj i)) (pointedSpace Y (D.obj i)) ≫
           (ihom (PointedObject.adjoin (W.obj i))).map
             (pointedComposition X Y (D.obj i)) := by
@@ -73,7 +73,7 @@ lemma weightedComposition_π {I : Type u} [SmallCategory I] (X Y : OmegaSpectrum
   rw [Category.assoc]
   change uncurry (end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i ≫
     (ihom (PointedObject.adjoin (W.obj i))).map (curry (pointedComposition X Y (D.obj i))) ≫
-    (InternalHomExchange.iso (pointedSpace X Y.toKanSequence)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (pointedSpace X Y.toKanSequence)
       (PointedObject.adjoin (W.obj i)) (pointedSpace X (D.obj i))).inv) = _
   rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength,
     uncurry_natural_left, uncurry_curry, id_tensorHom]

@@ -24,29 +24,29 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B) (x : B.obj _⦋0⦌)
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌)
 
 /-- 概要：同じ元の span 全族の引き戻しから、同じ Kan unstraightening への実単位。
 方針：Ind-S (5) の元の cocartesian 射影への存在定理から選ぶ。
 規約：η の anodyne 性を追加仮定にせず、元の全空間を保持する。
 使われ方：K-B-S の単体圏上の全族単位。 -/
 def weakSpanKanUnstraighteningUnit :
-    pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
       (transportSimplexFirstVertexMap B.obj) ⟶
-        smallLeftUnstraightening (weakSpanKanCoherentDiagram i x) :=
-  (exists_cocartesianKanUnstraighteningUnit (weakSpanSimplexProjection i x)
-    strictKanCompletion F2.continuousKanReplacementUnit).choose
+        smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) :=
+  (exists_cocartesianKanUnstraighteningUnit (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion F2.continuousKanReplacementUnit).choose
 
 /-- 概要：同じ実単位は元の単体圏射影を厳密に保持する。
 方針：全 fiber 回収も保持する同じ存在証拠から底条件を取り出す。
 規約：全族写像を別に選び直さない。
 使われ方：同じ商上の全族射へ後合成する底条件。 -/
 theorem weakSpanKanUnstraighteningUnit_projection :
-    weakSpanKanUnstraighteningUnit i x ≫
-      smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x) =
-        weakSpanSimplexProjection i x :=
-  (exists_cocartesianKanUnstraighteningUnit (weakSpanSimplexProjection i x)
-    strictKanCompletion F2.continuousKanReplacementUnit).choose_spec.choose
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x ≫
+      smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x :=
+  (exists_cocartesianKanUnstraighteningUnit (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion F2.continuousKanReplacementUnit).choose_spec.choose
 
 /-- 概要：同じ実単位の全 fiber 写像は元の Kan 置換単位を回収する。
 方針：Ind-S (5) が実全族と同時に供給した全関手同型を読む。
@@ -54,17 +54,17 @@ theorem weakSpanKanUnstraighteningUnit_projection :
 使われ方：元の固定 span fiber への単位回収の入力。 -/
 def weakSpanKanUnstraighteningUnit_fiberRecovery (c : TransportSimplexCategory B.obj) :
     FunctorIso
-      (vertexFiberMap (weakSpanSimplexProjection i x)
-        (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
-        (weakSpanKanUnstraighteningUnit i x)
-        (weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
-      (smallLeftUnstraighteningFiberValueEquivalence (weakSpanKanCoherentDiagram i x)
+      (vertexFiberMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
+      (smallLeftUnstraighteningFiberValueEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x)
         (nerveVertex c)).hom ≫
-      strictKanCompletion.map (cocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x) c))
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map (cocartesianStrictTransportEvaluate (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) c))
       (F2.continuousKanReplacementUnit.app
-        (vertexFiber (weakSpanSimplexProjection i x) (nerveVertex c))) :=
-  Classical.choice ((exists_cocartesianKanUnstraighteningUnit (weakSpanSimplexProjection i x)
-    strictKanCompletion F2.continuousKanReplacementUnit).choose_spec.choose_spec c)
+        (vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) (nerveVertex c))) :=
+  Classical.choice ((exists_cocartesianKanUnstraighteningUnit (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion F2.continuousKanReplacementUnit).choose_spec.choose_spec c)
 
 /-- 概要：元の両端固定 span 全体の同じ単位は、元の Kan 置換単位を全体として回収する。
 方針：同じ実 fiber 回収を元の fiber 同型で前合成し、元の逆同型の Kan 像で後合成する。
@@ -72,29 +72,29 @@ def weakSpanKanUnstraighteningUnit_fiberRecovery (c : TransportSimplexCategory B
 使われ方：K-B-S の全 fiber 条件を元の固定 span 座標へ戻す。 -/
 def weakSpanKanUnstraighteningUnit_fixedFiberRecovery (c : TransportSimplexCategory B.obj) :
     FunctorIso
-      ((weakSpanSimplexFiberIso i x c).hom ≫
-        vertexFiberMap (weakSpanSimplexProjection i x)
-          (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
-          (weakSpanKanUnstraighteningUnit i x)
-          (weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
-        (smallLeftUnstraighteningFiberValueEquivalence (weakSpanKanCoherentDiagram i x)
-          (nerveVertex c)).hom ≫ weakSpanKanValueComparison i x c)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso i x c).hom ≫
+        vertexFiberMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+          (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
+        (smallLeftUnstraighteningFiberValueEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x)
+          (nerveVertex c)).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison i x c)
       (F2.continuousKanReplacementUnit.app _) := by
-  let s := weakSpanSimplexFiberIso i x c
-  have e := ((weakSpanKanUnstraighteningUnit_fiberRecovery i x c).precomp s.hom).postcomp
-    (strictKanCompletion.map s.inv)
+  let s := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso i x c
+  have e := ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_fiberRecovery i x c).precomp s.hom).postcomp
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map s.inv)
   have hn := F2.continuousKanReplacementUnit.naturality s.inv
   have hr : s.hom ≫ F2.continuousKanReplacementUnit.app
-      (vertexFiber (weakSpanSimplexProjection i x) (nerveVertex c)) ≫
-      strictKanCompletion.map s.inv =
+      (vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) (nerveVertex c)) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map s.inv =
       F2.continuousKanReplacementUnit.app
-        (fixedMarkedSpans B.obj (weakEquivalences i) x
+        (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))) := by
     have hh := congrArg (fun f => s.hom ≫ f) hn.symm
     simp only [Functor.id_map, ← Category.assoc, s.hom_inv_id, Category.id_comp] at hh
     simpa only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, Category.assoc] using! hh
   have e' := e ≪≫ eqToIso (congrArg HomotopyCategory.mk (congrArg functorVertex hr))
-  simpa only [weakSpanKanValueComparison, cocartesianKanDiagramFiberComparison,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison, cocartesianKanDiagramFiberComparison,
     s, Category.assoc] using! e'
 
 
@@ -104,18 +104,18 @@ def weakSpanKanUnstraighteningUnit_fixedFiberRecovery (c : TransportSimplexCateg
 使われ方：商比較の指定 transport と既存の恒等 span 値への接続。 -/
 def weakSpanKanUnstraighteningUnit_fixedFiberIso (c : TransportSimplexCategory B.obj) :
     FunctorIso
-      ((weakSpanSimplexFiberIso i x c).hom ≫
-        vertexFiberMap (weakSpanSimplexProjection i x)
-          (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
-          (weakSpanKanUnstraighteningUnit i x)
-          (weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
-        (smallLeftUnstraighteningFiberValueEquivalence (weakSpanKanCoherentDiagram i x)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso i x c).hom ≫
+        vertexFiberMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
+          (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit i x)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_projection i x) (nerveVertex c) ≫
+        (smallLeftUnstraighteningFiberValueEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x)
           (nerveVertex c)).hom)
-      (weakSpanKanFiberUnit i x c) := by
-  have e := weakSpanKanUnstraighteningUnit_fixedFiberRecovery i x c
-  rw [← weakSpanKanFiberUnit_valueComparison i x c] at e
-  apply ((weakSpanKanValueComparison_isQCatEquivalence i x c).postcompose
-    (fixedMarkedSpans B.obj (weakEquivalences i) x
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanFiberUnit i x c) := by
+  have e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanUnstraighteningUnit_fixedFiberRecovery i x c
+  rw [← _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanFiberUnit_valueComparison i x c] at e
+  apply ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison_isQCatEquivalence i x c).postcompose
+    (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
       ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌)
         (nerveVertex c)))).isFullyFaithful.preimageVertexIso
   simpa only [Category.assoc] using! e

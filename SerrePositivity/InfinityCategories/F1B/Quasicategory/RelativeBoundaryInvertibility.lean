@@ -51,7 +51,7 @@ lemma isInvertibleEdge_of_terminalBoundaries {X Y : SSet.{u}}
     (hx : TerminalBoundaryLifting p x) (hy : TerminalBoundaryLifting p y)
     (he : IsInvertibleEdge (e.map ((truncation 2).map p))) : IsInvertibleEdge e := by
   apply (isInvertibleEdge_op_iff e).mp
-  apply isInvertibleEdge_of_initialBoundaries (SSet.opFunctor.map p) (edgeOp e)
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.isInvertibleEdge_of_initialBoundaries (SSet.opFunctor.map p) (edgeOp e)
     hy.op_initial hx.op_initial
   exact (isInvertibleEdge_congr (X := Y.op) (e := (edgeOp e).map ((truncation 2).map
     (SSet.opFunctor.map p))) (f := edgeOp (e.map ((truncation 2).map p))) rfl).mpr he.op

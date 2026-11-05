@@ -78,7 +78,7 @@ def paramCurry (f : X.right ⊗ A ⟶ Y.right)
 @[reassoc (attr := simp)]
 theorem paramCurry_ι (f : X.right ⊗ A ⟶ Y.right)
     (hf : X.hom ▷ A ≫ f = toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom) :
-    paramCurry X Y f hf ≫ PointedObject.basedHomι X Y = MonoidalClosed.curry f :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y f hf ≫ PointedObject.basedHomι X Y = MonoidalClosed.curry f :=
   equalizer.lift_ι ..
 
 /-- 概要：点つき Hom への任意のパラメータ付き射の uncurry は源の基点で定数。

@@ -51,9 +51,9 @@ variable {B D : SSet.{u}} (k : D ⟶ B)
 /-- 二重評価は底の前合成の同じ頂点を厳密に回収する。 -/
 theorem doubleFunctorEvaluation_precomp_vertex {K L A Y : SSet.{u}}
     (F : K ⟶ (ihom A).obj Y) (q : L ⟶ K) (l : L _⦋0⦌) (a : A _⦋0⦌) :
-    (doubleFunctorEvaluation (Y := Y) (q.app (Opposite.op ⦋0⦌) l) a).app
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) (q.app (Opposite.op ⦋0⦌) l) a).app
         (Opposite.op ⦋0⦌) (functorVertex F) =
-      (doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
         (functorVertex (q ≫ F)) := by
   rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex, _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex]
   rfl

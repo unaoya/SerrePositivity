@@ -25,14 +25,14 @@ noncomputable section
 規約：Kan 性は不要。
 使われ方：fiber 射の二つの標的の表示を合わせる。 -/
 def fiberBaseIso {E B : SSet.{u}} (p : E ⟶ B) (b b' : B _⦋0⦌) (h : b = b') :
-    KanFiber p b ≅ KanFiber p b' := eqToIso (congrArg (KanFiber p) h)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b ≅ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b' := eqToIso (congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p) h)
 
 /-- 概要：底の等号による fiber の同型は包含を変えない。
 方針：等式で帰納して恒等同型を計算する。
 規約：射として厳密に一致する。
 使われ方：fiber の標的の移送の一意性。 -/
 lemma fiberBaseIso_hom_ι {E B : SSet.{u}} (p : E ⟶ B) (b b' : B _⦋0⦌) (h : b = b') :
-    (fiberBaseIso p b b' h).hom ≫ fiberι p b' = fiberι p b := by
+    (fiberBaseIso p b b' h).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b' = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b := by
   subst b'
   simp [fiberBaseIso]
 
@@ -44,8 +44,8 @@ lemma fibrationFiberMapBase_to_fiberMap {E B E' B' : SSet.{u}}
     (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
     (comm : p ≫ g = f ≫ p') (e : E _⦋0⦌) :
     fibrationFiberMapBase p p' f g comm (p.app _ e) ≫
-        (fiberBaseIso p' _ _ (base_eq p p' f g comm e)).hom = fiberMap p p' f g comm e := by
-  apply fiber_hom_ext p' (p'.app _ (f.app _ e))
+        (fiberBaseIso p' _ _ (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e)).hom = _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p' (p'.app _ (f.app _ e))
   rw [Category.assoc, fiberBaseIso_hom_ι, fibrationFiberMapBase_ι, _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι]
 
 /-- 概要：任意の底上の fiber 射の条件から全空間の全基点 π_* 同型性を得る。
@@ -56,14 +56,14 @@ lemma fibrationTotal_piIsomorphism_of_base {E B E' B' : SSet.{u}}
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
     (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
-    (hg : KanPiIsomorphism g)
-    (hF : ∀ b, KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b))
+    (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g)
+    (hF : ∀ b, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b))
     (hF₀ : ∀ b, Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b))) :
-    KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   apply fibrationTotal_piIsomorphism p p' f g comm hg _ hF₀
   intro e
-  have hi : KanPiIsomorphism (fiberBaseIso p' _ _ (base_eq p p' f g comm e)).hom :=
-    KanPiIsomorphism.of_iso _
+  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (fiberBaseIso p' _ _ (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e)).hom :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso _
   have h := (hF (p.app _ e)).comp hi
   rw [fibrationFiberMapBase_to_fiberMap] at h
   exact h

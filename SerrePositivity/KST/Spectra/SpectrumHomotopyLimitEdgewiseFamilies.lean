@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I]
 def homotopyLimitEdgewiseEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
     edgewiseSubdivision (mappingSpace X (homotopyLimit D)) ⟶
       bousfieldKanHolim (simplicialHomDiagram D X ⋙ edgewiseSubdivisionFunctor) :=
-  ParameterPoint.family (homotopyLimitEdgewiseEndPointMap D)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitEdgewiseEndPointMap D)
     (edgewiseSubdivision (mappingSpace X (homotopyLimit D))) ≫
       edgewiseHomEndPrecomposition D X (homotopyLimit D)
 
@@ -32,7 +32,7 @@ def homotopyLimitEdgewiseEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpect
 def homotopyLimitReflectedEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
     (mappingSpace X (homotopyLimit D)).op ⟶
       bousfieldKanHolim (simplicialHomDiagram D X ⋙ SSet.opFunctor) :=
-  ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
     (mappingSpace X (homotopyLimit D)).op ≫
       weightedConeEndPrecomposition D X (homotopyLimit D)
 

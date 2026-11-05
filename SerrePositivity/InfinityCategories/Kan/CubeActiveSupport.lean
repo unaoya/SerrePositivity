@@ -32,7 +32,7 @@ lemma cubeVertexAtom_le {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories
 lemma cubeJoinMap_exists_active {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (j : Fin m)
     (hzero : f ⊥ j = false) (htrue : f x j = true) :
-    ∃ i, x i = true ∧ CubeActive f i j := by
+    ∃ i, x i = true ∧ _root_.SerrePositivity.InfinityCategories.Kan.CubeActive f i j := by
   have hx := congrFun (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval hf x) j
   simp only [Pi.sup_apply, Finset.sup_apply] at hx
   change f x j = f ⊥ j ⊔ (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x).sup
@@ -48,19 +48,19 @@ lemma cubeJoinMap_exists_active {n m : ℕ} {f : _root_.SerrePositivity.Infinity
 lemma cubeMapGenerated_active_comp {n m k : ℕ}
     {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
     (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) {i : Fin n} {j : Fin k}
-    (h : CubeActive (g ∘ f) i j) :
-    ∃ a, CubeActive f i a ∧ CubeActive g a j := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeActive (g ∘ f) i j) :
+    ∃ a, _root_.SerrePositivity.InfinityCategories.Kan.CubeActive f i a ∧ _root_.SerrePositivity.InfinityCategories.Kan.CubeActive g a j := by
   change g (f ⊥) j = false ∧ g (f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) j = true at h
   have hmono := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_monotone hg
   have hgzero : g ⊥ j = false := by
     exact Bool.eq_false_of_le_false (h.1 ▸ (hmono bot_le j))
-  obtain ⟨a, ha, hga⟩ := cubeJoinMap_exists_active (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup hg)
+  obtain ⟨a, ha, hga⟩ := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinMap_exists_active (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup hg)
     (f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) j hgzero h.2
   have hfzero : f ⊥ a = false := by
     cases hv : f ⊥ a with
     | false => rfl
     | true =>
-      have hle := hmono (cubeVertexAtom_le (f ⊥) a hv) j
+      have hle := hmono (_root_.SerrePositivity.InfinityCategories.Kan.cubeVertexAtom_le (f ⊥) a hv) j
       rw [hga.2, h.1] at hle
       exact Bool.noConfusion (Bool.eq_true_of_true_le hle)
   exact ⟨a, ⟨hfzero, ha⟩, hga⟩
@@ -68,16 +68,16 @@ lemma cubeMapGenerated_active_comp {n m k : ℕ}
 /-- 異なる出力の有効入力が、出力順に厳密に並ぶ条件。 -/
 def CubeSupportOrdered {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) : Prop :=
   ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
-    CubeActive f i j → CubeActive f l k → i < l
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeActive f i j → _root_.SerrePositivity.InfinityCategories.Kan.CubeActive f l k → i < l
 
 /-- 有効入力の順序条件は、元の生成関数の合成で閉じる。 -/
 lemma cubeSupportOrdered_comp {n m k : ℕ}
     {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
-    (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) (hfOrder : CubeSupportOrdered f)
-    (hgOrder : CubeSupportOrdered g) : CubeSupportOrdered (g ∘ f) := by
+    (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) (hfOrder : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered f)
+    (hgOrder : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered g) : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered (g ∘ f) := by
   intro j k hjk i l hi hl
-  obtain ⟨a, hia, haj⟩ := cubeMapGenerated_active_comp hg hi
-  obtain ⟨b, hlb, hbk⟩ := cubeMapGenerated_active_comp hg hl
+  obtain ⟨a, hia, haj⟩ := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp hg hi
+  obtain ⟨b, hlb, hbk⟩ := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp hg hl
   exact hfOrder (hgOrder hjk haj hbk) hia hlb
 
 end SerrePositivity.InfinityCategories.Kan

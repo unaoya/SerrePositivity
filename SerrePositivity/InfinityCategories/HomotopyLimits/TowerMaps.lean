@@ -25,8 +25,8 @@ noncomputable section
 def towerMap {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
     {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
     (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) :
-    FibrationTower.limit X dX ⟶ FibrationTower.limit Y dY :=
-  FibrationTower.lift Y dY (fun n ↦ FibrationTower.projection X dX n ≫ f n) (by
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X dX ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit Y dY :=
+  _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift Y dY (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX n ≫ f n) (by
     intro n
     rw [Category.assoc, ← hf n, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp])
 
@@ -37,16 +37,16 @@ def towerMap {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
 lemma towerMap_projection {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
     {dY : ∀ n, Y (n + 1) ⟶ Y n} (f : ∀ n, X n ⟶ Y n)
     (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n) (n : ℕ) :
-    towerMap f hf ≫ FibrationTower.projection Y dY n =
-      FibrationTower.projection X dX n ≫ f n := FibrationTower.lift_projection ..
+    towerMap f hf ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY n =
+      _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX n ≫ f n := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection ..
 
 /-- 概要：恒等射の族による塔の極限の射は恒等射。
 方針：全ての段の射影の後で検査する。
 規約：可換条件には圏の恒等射の法則を使う。
 使われ方：塔の因子分解の合成の打ち消し。 -/
 lemma towerMap_id (X : ℕ → SSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n) :
-    towerMap (fun n ↦ 𝟙 (X n)) (fun n ↦ by simp) = 𝟙 (FibrationTower.limit X d) := by
-  apply FibrationTower.hom_ext
+    towerMap (fun n ↦ 𝟙 (X n)) (fun n ↦ by simp) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
   intro n
   rw [towerMap_projection, Category.comp_id, Category.id_comp]
 
@@ -63,7 +63,7 @@ lemma towerMap_comp {X Y Z : ℕ → SSet.{u}}
     towerMap f hf ≫ towerMap g hg =
       towerMap (fun n ↦ f n ≫ g n) (fun n ↦ by
         rw [← Category.assoc, hf n, Category.assoc, hg n, ← Category.assoc]) := by
-  apply FibrationTower.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
   intro n
   rw [Category.assoc, towerMap_projection, ← Category.assoc,
     towerMap_projection, towerMap_projection, Category.assoc]

@@ -57,7 +57,7 @@ def face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 /-- 零ホモトピーの終面と相対ホモトピーの始面が一致する移送ホーン。 -/
 lemma compatible (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (A : PtSimplex.RelStruct s t (Fin.last (n + 1))) :
-    horn.IsCompatible (i := (Fin.last (n + 2)).castSucc) (fun j _ ↦ face R A j) := by
+    horn.IsCompatible (i := (Fin.last (n + 2)).castSucc) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face R A j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 2 := fun he ↦ hj (Fin.ext he)
@@ -65,8 +65,8 @@ lemma compatible (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
   have hjb := j.isLt
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
-  simp only [face]
-  split_ifs <;> try simp only [NullHomotopyDifference.null_face, relation_face, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.relation_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -77,7 +77,7 @@ lemma compatible (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 lemma output_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (A : PtSimplex.RelStruct s t (Fin.last (n + 1)))
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
-    (hφ : ∀ j, j ≠ (Fin.last (n + 2)).castSucc → stdSimplex.δ j ≫ φ = face R A j)
+    (hφ : ∀ j, j ≠ (Fin.last (n + 2)).castSucc → stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face R A j)
     (j : Fin (n + 3)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 2)).castSucc ≫ φ =
       if j.val = n + 2 then t.map else SSet.const x := by
@@ -90,8 +90,8 @@ lemma output_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
       simp only [Fin.val_castSucc, Fin.val_last] at hh
       have hjv : j.val ≤ n + 1 := hj
       omega)]
-    simp only [face]
-    split_ifs <;> try simp only [NullHomotopyDifference.null_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -109,7 +109,7 @@ lemma output_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
         have hh := congrArg Fin.val he
         simp only [Fin.val_last, Fin.val_castSucc, Fin.val_succ] at hh
         omega)]
-    simp only [face, Fin.val_succ, Fin.val_last]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face, Fin.val_succ, Fin.val_last]
     rw [ite_eq_right (by omega)]
     simp only [ite_true]
     simpa only [Fin.succ_last] using A.δ_succ_map
@@ -118,15 +118,15 @@ lemma output_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 def transport [KanComplex X] (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (A : PtSimplex.RelStruct s t (Fin.last (n + 1))) :
     PtSimplex.RelStruct .const t (Fin.last (n + 1)) where
-  map := stdSimplex.δ (Fin.last (n + 2)).castSucc ≫ (compatible R A).liftOfKanComplex
+  map := stdSimplex.δ (Fin.last (n + 2)).castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).liftOfKanComplex
   δ_castSucc_map := by
-    rw [output_face R A _ (fun j hj ↦ (compatible R A).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.output_face R A _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).δ_liftOfKanComplex j hj)]
     simp
   δ_succ_map := by
-    rw [output_face R A _ (fun j hj ↦ (compatible R A).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.output_face R A _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).δ_liftOfKanComplex j hj)]
     simp
   δ_map_of_lt j hj := by
-    rw [output_face R A _ (fun j hj ↦ (compatible R A).δ_liftOfKanComplex j hj)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.output_face R A _ (fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).δ_liftOfKanComplex j hj)]
     rw [ite_eq_right (by
       have hjv : j.val < n + 1 := hj
       omega)]
@@ -135,16 +135,16 @@ def transport [KanComplex X] (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)
 /-- 移送の充填の三つの非定数面を含む全ての面の式。 -/
 lemma filler_face [KanComplex X] (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (A : PtSimplex.RelStruct s t (Fin.last (n + 1))) (j : Fin (n + 4)) :
-    stdSimplex.δ j ≫ (compatible R A).liftOfKanComplex =
-      if j.val = n + 1 then R.map else if j.val = n + 2 then (transport R A).map else
+    stdSimplex.δ j ≫ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).liftOfKanComplex =
+      if j.val = n + 1 then R.map else if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport R A).map else
         if j.val = n + 3 then A.map else SSet.const x := by
   by_cases hj : j.val = n + 2
   · have he : j = (Fin.last (n + 2)).castSucc := Fin.ext hj
     subst j
     rw [ite_eq_right (by omega), ite_eq_left hj]
     rfl
-  · rw [(compatible R A).δ_liftOfKanComplex j (fun he ↦ hj (congrArg Fin.val he))]
-    dsimp only [face]
+  · rw [(_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).δ_liftOfKanComplex j (fun he ↦ hj (congrArg Fin.val he))]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face]
     split_ifs <;> rfl
 
 end

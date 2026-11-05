@@ -41,9 +41,9 @@ theorem simplexImage_comp_mono {X Y Z : SimplexCategory} (f : X ⟶ Y) (i : Y �
 使われ方：fat realization の面に沿う行の作用の一致。
 -/
 theorem simplexImage_comp_mono_ι {X Y Z : SimplexCategory} (f : X ⟶ Y) (i : Y ⟶ Z) [Mono i] :
-    image.ι (f ≫ i) = eqToHom (simplexImage_comp_mono f i) ≫ image.ι f ≫ i := by
+    image.ι (f ≫ i) = eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono f i) ≫ image.ι f ≫ i := by
   apply SimplexCategory.image_ι_eq
-    (e := factorThruImage f ≫ eqToHom (simplexImage_comp_mono f i).symm)
+    (e := factorThruImage f ≫ eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono f i).symm)
   simp only [Category.assoc, eqToHom_trans_assoc, eqToHom_refl, Category.id_comp]
   rw [← Category.assoc, image.fac]
 
@@ -56,9 +56,9 @@ theorem simplexImage_comp_mono_ι {X Y Z : SimplexCategory} (f : X ⟶ Y) (i : Y
 theorem simplexFactorThruImage_comp_mono {X Y Z : SimplexCategory}
     (f : X ⟶ Y) (i : Y ⟶ Z) [Mono i] :
     factorThruImage (f ≫ i) =
-      factorThruImage f ≫ eqToHom (simplexImage_comp_mono f i).symm := by
+      factorThruImage f ≫ eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono f i).symm := by
   apply SimplexCategory.factorThruImage_eq
-    (i := eqToHom (simplexImage_comp_mono f i) ≫ image.ι f ≫ i)
+    (i := eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono f i) ≫ image.ι f ≫ i)
   simp only [Category.assoc, eqToHom_trans_assoc, eqToHom_refl, Category.id_comp]
   rw [← Category.assoc, image.fac]
 
@@ -79,8 +79,8 @@ theorem simplexImage_of_epi {X Y : SimplexCategory} (f : X ⟶ Y) [Epi f] : imag
 使われ方：全射の正規化で行の作用が恒等となること。
 -/
 theorem simplexImage_ι_of_epi {X Y : SimplexCategory} (f : X ⟶ Y) [Epi f] :
-    image.ι f = eqToHom (simplexImage_of_epi f) := by
-  apply SimplexCategory.image_ι_eq (e := f ≫ eqToHom (simplexImage_of_epi f).symm)
+    image.ι f = eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi f) := by
+  apply SimplexCategory.image_ι_eq (e := f ≫ eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi f).symm)
   simp
 
 /--
@@ -90,8 +90,8 @@ theorem simplexImage_ι_of_epi {X Y : SimplexCategory} (f : X ⟶ Y) [Epi f] :
 使われ方：全射な標準形の添字の復元。
 -/
 theorem simplexFactorThruImage_of_epi {X Y : SimplexCategory} (f : X ⟶ Y) [Epi f] :
-    factorThruImage f = f ≫ eqToHom (simplexImage_of_epi f).symm := by
-  apply SimplexCategory.factorThruImage_eq (i := eqToHom (simplexImage_of_epi f))
+    factorThruImage f = f ≫ eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi f).symm := by
+  apply SimplexCategory.factorThruImage_eq (i := eqToHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi f))
   simp
 
 end SerrePositivity.InfinityCategories.Simplicial

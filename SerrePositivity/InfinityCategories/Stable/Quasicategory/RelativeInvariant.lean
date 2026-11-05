@@ -45,23 +45,23 @@ namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の S 内の四角形と、その ν 像の Verdier 提示。 -/
-structure RelativeVerdierDiagram {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u}) where
+structure RelativeVerdierDiagram {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
-  image : VerdierDiagram.{u}
-  image_eq : square ≫ ν = image.square
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}
+  image_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.square ≫ ν = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image.square
 
 namespace RelativeVerdierDiagram
-open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}} (d : RelativeVerdierDiagram ν)
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν)
 
 lemma zero_corner :
-    IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) (squareVertex d.square 0 1))) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app (Opposite.op ⦋0⦌) (squareVertex d.square 0 1))) := by
   have h := d.image.zero_corner
   rw [← d.image_eq] at h
   exact h
 
 /-- 絶対 Verdier 図式を恒等提示源の相対図式と見る。 -/
-def ofAbsolute (d : VerdierDiagram.{u}) : RelativeVerdierDiagram (𝟙 StableInfinity.{u}) :=
+def ofAbsolute (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (𝟙 _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) :=
   ⟨d.square, d, Category.comp_id _⟩
 
 end RelativeVerdierDiagram

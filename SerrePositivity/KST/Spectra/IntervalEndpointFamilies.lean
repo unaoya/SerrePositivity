@@ -45,7 +45,7 @@ lemma intervalFamily_endpoint_unit_iff {P Y : SSet.{u}}
 /-- 両端の面上の定数性は、二端点の境界全体での定数性と同値。 -/
 lemma intervalFamily_boundary_iff {P Y : SSet.{u}}
     (a : (Δ[1] : SSet.{u}) ⊗ P ⟶ Y) (y : Y _⦋0⦌) :
-    (intervalEndpoint.{u}.right ▷ P) ≫ a = SSet.const y ↔
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ▷ P) ≫ a = SSet.const y ↔
       (stdSimplex.δ (1 : Fin 2) ▷ P) ≫ a = SSet.const y ∧
         (stdSimplex.δ (0 : Fin 2) ▷ P) ≫ a = SSet.const y := by
   rw [intervalFamily_endpoint_unit_iff a y 1, intervalFamily_endpoint_unit_iff a y 0]

@@ -42,14 +42,14 @@ lemma dgBarCompactEdgewiseVertex_map (f : X ⟶ Y) (x : X _⦋0⦌) :
 
 /-- 同じ定値解像基点での、反転した空間と元の空間の正次数 π の比較。 -/
 def dgBarCompactOppositePiEquiv (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) :
-    KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x) ≃* KanHomotopyGroup X n x := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.op n (SSet.opObjEquiv.symm x) ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := by
   have hL := HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence (edgewiseLeft X)
     (isQCatEquivalence_of_trivialKanFibration (edgewiseLeft X)).isSimplicialHomotopyEquivalence
   have hR := HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence (edgewiseRight X)
     (isQCatEquivalence_of_trivialKanFibration (edgewiseRight X)).isSimplicialHomotopyEquivalence
-  exact (KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseLeft X) hL
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseLeft X) hL
     (dgBarCompactEdgewiseVertex_left x)).symm.trans
-      (KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseRight X) hR
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (edgewiseRight X) hR
         (dgBarCompactEdgewiseVertex_right x))
 
 end SerrePositivity.InfinityCategories

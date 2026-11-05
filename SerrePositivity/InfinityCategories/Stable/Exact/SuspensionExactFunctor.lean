@@ -56,21 +56,21 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 def arrowSection : X ⟶ zeroTargetArrows X :=
   Classical.choose (trivialKanFibration_exists_section (zeroTargetArrowSource X))
 
-lemma arrowSection_source : arrowSection X ≫ zeroTargetArrowSource X = 𝟙 X :=
+lemma arrowSection_source : _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection X ≫ zeroTargetArrowSource X = 𝟙 X :=
   Classical.choose_spec (trivialKanFibration_exists_section (zeroTargetArrowSource X))
 
 def arrow : X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  arrowSection X ≫ (fullSubcomplexOnVertices _ IsZeroTargetArrow).ι
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection X ≫ (fullSubcomplexOnVertices _ IsZeroTargetArrow).ι
 
-lemma arrow_source : arrow X ≫
+lemma arrow_source : _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = 𝟙 X :=
-  arrowSection_source X
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection_source X
 
 lemma arrow_zero_target (x : X _⦋0⦌) :
-    IsZeroTargetArrow ((arrow X).app (Opposite.op ⦋0⦌) x) :=
-  fullSubcomplexOnVertices_vertex ((arrowSection X).app (Opposite.op ⦋0⦌) x)
+    IsZeroTargetArrow ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X).app (Opposite.op ⦋0⦌) x) :=
+  fullSubcomplexOnVertices_vertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection X).app (Opposite.op ⦋0⦌) x)
 
-def map : X ⟶ X := arrow X ≫ CofiberFamily.cofiber X (𝟙 _)
+def map : X ⟶ X := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)
 
 end SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
 

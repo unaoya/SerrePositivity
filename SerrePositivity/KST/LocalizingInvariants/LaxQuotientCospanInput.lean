@@ -20,28 +20,28 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def cSource : value Φ A ⟶ value Φ C := LaxQuotientSquare.cSource Φ p q i
 def dSource : value Φ A ⟶ value Φ D := LaxQuotientSquare.dSource Φ p q i
-def cLeg : value Φ C ⟶ value Φ Q := valueMap Φ (laxQuotientCLeg p q r)
-def dLeg : value Φ D ⟶ value Φ Q := valueMap Φ (laxQuotientDLeg p q r)
+def cLeg : value Φ C ⟶ value Φ Q := valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)
+def dLeg : value Φ D ⟶ value Φ Q := valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)
 
 include h in
 lemma legs_comm : SpectrumHo.hom (cSource (Φ := Φ) p q i) ≫
     SpectrumHo.hom (cLeg (Φ := Φ) p q r) =
       SpectrumHo.hom (dSource (Φ := Φ) p q i) ≫ SpectrumHo.hom (dLeg (Φ := Φ) p q r) :=
-  valueMap_laxQuotientLegs_comm p q i r h Φ
+  _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientLegs_comm p q i r h Φ
 
 def productSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
-  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ LaxUniversalProductNormalization.square hΦ p q i r h
+  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square hΦ p q i r h
 
 lemma productSquare_isPullback : IsPullbackSquare (productSquare hΦ p q i r h) :=
   (isPullbackSquare_iff_transpose _).1
-    (LaxUniversalProductNormalization.square_isPullback hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_isPullback hΦ p q i r h)
 
 lemma productSquare_top : squareTopEdge ≫ productSquare hΦ p q i r h =
     SSet.yonedaEquiv.symm

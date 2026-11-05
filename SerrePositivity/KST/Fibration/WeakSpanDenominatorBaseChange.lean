@@ -14,16 +14,16 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 include h in
 lemma weakSpanDenominatorBaseChange_cartesianFibration
     (x : B.obj _⦋0⦌) {T : SSet.{u}} (f : T ⟶ B.obj)
-    (hW : ∀ e : T _⦋1⦌, f.app (Opposite.op ⦋1⦌) e ∈ weakEquivalences i) :
+    (hW : ∀ e : T _⦋1⦌, f.app (Opposite.op ⦋1⦌) e ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     CartesianFibration (pullback.snd
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x) f) := by
-  let π := markedSpanFamilyProjection B.obj (weakEquivalences i) x
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) f) := by
+  let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
   refine ⟨innerFibrations.pullback_snd π f (InnerFibration.mem (q := π)), ?_⟩
   intro v e he
   change stdSimplex.δ (0 : Fin 2) ≫ e =
@@ -43,7 +43,7 @@ lemma weakSpanDenominatorBaseChange_cartesianFibration
   let s : Truncated.Edge (X := (truncation 2).obj B.obj)
       (B.obj.δ 1 (SSet.yonedaEquiv (e ≫ f)))
       (π.app (Opposite.op ⦋0⦌) w) := ⟨SSet.yonedaEquiv (e ≫ f), rfl, ht⟩
-  have hs : s.edge ∈ weakEquivalences i := by
+  have hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
     dsimp only [s]
     rw [SSet.yonedaEquiv_comp]
     exact hW _
@@ -60,7 +60,7 @@ lemma weakSpanDenominatorBaseChange_cartesianFibration
 lemma weakSpanBaseChange_cocartesianFibration
     (x : B.obj _⦋0⦌) {T : SSet.{u}} (f : T ⟶ B.obj) :
     CocartesianFibration (pullback.snd
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x) f) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) f) :=
   inferInstance
 
 end SerrePositivity.KST.Fibration

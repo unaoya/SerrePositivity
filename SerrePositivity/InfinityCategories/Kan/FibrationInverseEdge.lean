@@ -34,7 +34,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：元の持ち上げは始点から基点へ向かう。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。pullback の二因子の交換の成分の計算。 -/
 theorem exists_inverse_edge {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
-    (e : E _⦋0⦌) {s t : B.PtSimplex 1 (p.app _ e)} (L : BoundaryLift p e s)
+    (e : E _⦋0⦌) {s t : B.PtSimplex 1 (p.app _ e)} (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (m : PtSimplex.MulStruct t s .const (0 : Fin 1)) :
     ∃ K : (Δ[1] : SSet.{u}) ⟶ E,
       K ≫ p = t.map ∧

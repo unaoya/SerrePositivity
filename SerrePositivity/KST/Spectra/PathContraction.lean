@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。path space のホモトピー群。 -/
 def pathContraction (Y : PointedSimplicialSet.{u}) :
     (basedPathSpace Y).right ⊗ (Δ[1] : SSet.{u}) ⟶ (basedPathSpace Y).right :=
-  PointedMapping.paramCurry pointedInterval Y (pathContractionBody Y)
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y (pathContractionBody Y)
     (pathContractionBody_basepoint Y)
 
 /-- 概要：path space の収縮の時刻零は定数 path への定数射。
@@ -39,7 +39,7 @@ def pathContraction (Y : PointedSimplicialSet.{u}) :
 theorem pathContraction_zero (Y : PointedSimplicialSet.{u}) :
     (SSet.ι₀ : (basedPathSpace Y).right ⟶ _) ≫ pathContraction Y =
       toUnit (basedPathSpace Y).right ≫ (basedPathSpace Y).hom := by
-  apply (cancel_mono (PointedObject.basedHomι pointedInterval Y)).mp
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
   rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_zero, Category.assoc,
     PointedObject.basedHom_basepoint_ι, PointedObject.curry_constant]
@@ -51,7 +51,7 @@ theorem pathContraction_zero (Y : PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine I §7。収縮の終端。 -/
 theorem pathContraction_one (Y : PointedSimplicialSet.{u}) :
     (SSet.ι₁ : (basedPathSpace Y).right ⟶ _) ≫ pathContraction Y = 𝟙 _ := by
-  apply (cancel_mono (PointedObject.basedHomι pointedInterval Y)).mp
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
   rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_one, pathEvaluation,
     MonoidalClosed.curry_uncurry, Category.id_comp]
@@ -63,7 +63,7 @@ theorem pathContraction_one (Y : PointedSimplicialSet.{u}) :
 theorem pathContraction_constant (Y : PointedSimplicialSet.{u}) :
     (basedPathSpace Y).hom ▷ (Δ[1] : SSet.{u}) ≫ pathContraction Y =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ (basedPathSpace Y).hom := by
-  apply (cancel_mono (PointedObject.basedHomι pointedInterval Y)).mp
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
   rw [Category.assoc, pathContraction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, pathContractionBody_constant, Category.assoc,
     PointedObject.basedHom_basepoint_ι, PointedObject.curry_constant]

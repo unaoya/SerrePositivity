@@ -36,7 +36,7 @@ lemma simplexHAChainLift_map_recovery {N : ℕ}
     simplexHAChainLift A (cubicalLambdaNativeSimplex A F) m v b hb =
       simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-          F.map (standardSimplexVertex (v 0)) (standardSimplexVertex b) := by
+          F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
   apply HomologicalComplex.Hom.ext
   funext k
   exact simplexHADegreeLift_map_recovery A F m v b hb k

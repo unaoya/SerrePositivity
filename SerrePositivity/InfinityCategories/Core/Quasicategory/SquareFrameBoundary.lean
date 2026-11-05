@@ -31,22 +31,22 @@ open SerrePositivity.KST.LocalizingInvariants
   top : (Δ[1] : SSet.{u}) ⟶ X
   left : (Δ[1] : SSet.{u}) ⟶ X
   right : (Δ[1] : SSet.{u}) ⟶ X
-  lower_left : stdSimplex.δ (1 : Fin 2) ≫ bottom = stdSimplex.δ (1 : Fin 2) ≫ left
-  lower_right : stdSimplex.δ (0 : Fin 2) ≫ bottom = stdSimplex.δ (1 : Fin 2) ≫ right
-  upper_left : stdSimplex.δ (1 : Fin 2) ≫ top = stdSimplex.δ (0 : Fin 2) ≫ left
-  upper_right : stdSimplex.δ (0 : Fin 2) ≫ top = stdSimplex.δ (0 : Fin 2) ≫ right
+  lower_left : stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom = stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left
+  lower_right : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom = stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right
+  upper_left : stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top = stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left
+  upper_right : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top = stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right
 
 namespace SquareFrame
-open SerrePositivity.KST.LocalizingInvariants.SquareFrame
-variable {X : SSet.{u}} (f : SquareFrame X)
+open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
+variable {X : SSet.{u}} (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X)
 
 abbrev boundary : SSet.{u} := Subcomplex.unionProd (SSet.boundary 1)
   (SSet.boundary 1)
 
-def boundaryι : boundary.{u} ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u}) :=
+def boundaryι : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary.{u} ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u}) :=
   (Subcomplex.unionProd (SSet.boundary 1) (SSet.boundary 1)).ι
 
-instance instMonoSSetBoundaryι : Mono boundaryι.{u} := inferInstanceAs
+instance instMonoSSetBoundaryι : Mono _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} := inferInstanceAs
   (Mono (Subcomplex.unionProd (SSet.boundary 1) (SSet.boundary 1)).ι)
 
 def horizontal : (Δ[1] : SSet.{u}) ⊗ (SSet.boundary 1 : SSet.{u}) ⟶ X :=
@@ -83,7 +83,7 @@ lemma compatible : ((SSet.boundary 1).ι ▷ (SSet.boundary 1 : SSet.{u})) ≫ f
   · simpa [hv s 1 hi, hv t 1 hj] using
       ConcreteCategory.congr_hom (NatTrans.congr_app f.upper_right (Opposite.op ⦋n⦌)) c
 
-def diagram : boundary.{u} ⟶ X :=
+def diagram : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary.{u} ⟶ X :=
   (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).desc
     f.horizontal f.vertical f.compatible
 

@@ -25,75 +25,75 @@ namespace SerrePositivity.KST.LocalizingInvariants
 end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 実分母・次辺族と元の実 span の全比較経路を記憶する。 -/
-def verdierSpanCanonicalResolution (i : ExactMap A B) (x y : B.obj _⦋0⦌) : SSet.{u} :=
-  equivalencePathReplacement (verdierDenominatorSpanCanonicalComparison i x y)
+def verdierSpanCanonicalResolution (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) : SSet.{u} :=
+  equivalencePathReplacement (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y)
 
-def verdierSpanCanonicalResolutionRoof (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    verdierSpanCanonicalResolution i x y ⟶ verdierDenominatorSpanFamily i x y :=
+def verdierSpanCanonicalResolutionRoof (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolution i x y ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y :=
   equivalencePathReplacementProjection _
 
-def verdierSpanCanonicalResolutionMap (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    verdierSpanCanonicalResolution i x y ⟶
-      fixedMarkedSpans B.obj (weakEquivalences i) x y :=
+def verdierSpanCanonicalResolutionMap (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolution i x y ⟶
+      fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y :=
   equivalencePathReplacementMap _
 
 instance verdierSpanCanonicalResolutionRoof_trivialKanFibration
-    (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    TrivialKanFibration (verdierSpanCanonicalResolutionRoof i x y) :=
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionRoof i x y) :=
   equivalencePathReplacementProjection_trivialKanFibration _
 
 lemma verdierSpanCanonicalResolutionMap_trivialKanFibration
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
-    TrivialKanFibration (verdierSpanCanonicalResolutionMap i x y) := by
-  have he := verdierDenominatorSpanCanonicalComparison_isQCatEquivalence h x y
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
+    TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y) := by
+  have he := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_isQCatEquivalence h x y
   exact he.choose.isFullyFaithful.equivalencePathReplacementMap.trivialKanFibration_of_surjective
     he.choose.isEssentiallySurjective.equivalencePathReplacementMap_surjective
 
 /-- 同じ実分母・次辺族と実 span 族を結ぶ全関手同型。 -/
-def verdierSpanCanonicalResolutionIso (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    FunctorIso (verdierSpanCanonicalResolutionRoof i x y ≫
-      verdierDenominatorSpanCanonicalComparison i x y)
-      (verdierSpanCanonicalResolutionMap i x y) :=
+def verdierSpanCanonicalResolutionIso (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionRoof i x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y) :=
   equivalencePathReplacementFunctorIso _
 
 /-- 指定部分族を保ち、元の実 span 全族を実分母・次辺族へ回収する。 -/
-lemma exists_relative_verdierSpanCanonicalFamily (h : IsVerdierSequence i q)
+lemma exists_relative_verdierSpanCanonicalFamily (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {S T : SSet.{u}} (j : S ⟶ T) [Mono j]
-    (a : S ⟶ verdierSpanCanonicalResolution i x y)
-    (b : T ⟶ fixedMarkedSpans B.obj (weakEquivalences i) x y)
-    (ha : a ≫ verdierSpanCanonicalResolutionMap i x y = j ≫ b) :
-    ∃ F : T ⟶ verdierSpanCanonicalResolution i x y,
-      j ≫ F = a ∧ F ≫ verdierSpanCanonicalResolutionMap i x y = b := by
-  let := verdierSpanCanonicalResolutionMap_trivialKanFibration h x y
-  have := TrivialKanFibration.mem (p := verdierSpanCanonicalResolutionMap i x y)
+    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolution i x y)
+    (b : T ⟶ fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+    (ha : a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y = j ≫ b) :
+    ∃ F : T ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolution i x y,
+      j ≫ F = a ∧ F ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y = b := by
+  let := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap_trivialKanFibration h x y
+  have := TrivialKanFibration.mem (p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y)
     j inferInstance
-  have sq : CommSq a j (verdierSpanCanonicalResolutionMap i x y) b := ⟨ha⟩
+  have sq : CommSq a j (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalResolutionMap i x y) b := ⟨ha⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 /-- 実族の標準比較を亜群化しても、元の全関手同値を保つ。 -/
 lemma verdierSpanCanonicalCompletionMap_isQCatEquivalence
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
     IsQCatEquivalence
-      (groupoidCompletionMapOf (verdierDenominatorSpanCanonicalComparison i x y)) :=
-  groupoidCompletionMapOf_isQCatEquivalence
-    (verdierDenominatorSpanCanonicalComparison_isQCatEquivalence h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y)) :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_isQCatEquivalence h x y)
 
 /-- 実族の亜群化を、同じ商の写像空間へ元の完成分数比較で評価する。 -/
-def verdierSpanCanonicalCompletionComparison (h : IsVerdierSequence i q)
-    (x y : B.obj _⦋0⦌) : groupoidCompletion (verdierDenominatorSpanFamily i x y) ⟶
+def verdierSpanCanonicalCompletionComparison (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) ⟶
       intervalMappingSpace (q.hom.app (Opposite.op ⦋0⦌) x)
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
-  groupoidCompletionMapOf (verdierDenominatorSpanCanonicalComparison i x y) ≫
-    fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y
+  _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y) ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y
 
 lemma verdierSpanCanonicalCompletionComparison_isQCatEquivalence
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
-    IsQCatEquivalence (verdierSpanCanonicalCompletionComparison h x y) :=
-  (verdierSpanCanonicalCompletionMap_isQCatEquivalence h x y).comp
-    (weakFractionMappingComparison_isQCatEquivalence h x y)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌) :
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalCompletionComparison h x y) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalCompletionMap_isQCatEquivalence h x y).comp
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakFractionMappingComparison_isQCatEquivalence h x y)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

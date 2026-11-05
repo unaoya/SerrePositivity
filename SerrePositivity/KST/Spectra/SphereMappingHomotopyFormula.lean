@@ -28,13 +28,13 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：この厳密な同型に Kan 性は不要。
 使われ方：Goerss–Jardine I §7。球面の次数移動の帰納的な構造。 -/
 def loopSwap (Y : PointedSimplicialSet.{u}) (n : ℕ) :
-    loopSpace (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y) ≅
-      PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (loopSpace Y) :=
-  InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y) ≅
+      PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
     (PointedSimplicialSet.sphere.{u} (n + 1)) Y
 
 lemma positiveHomotopyEquiv_zero (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n : ℕ) (a : KanHomotopyGroup
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right 0
       (PointedSimplicialSet.basepoint
         (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))) :
@@ -45,18 +45,18 @@ lemma positiveHomotopyEquiv_zero (Y : PointedSimplicialSet.{u}) [KanComplex Y.ri
 規約：構成済みの群同型そのものの等式。
 使われ方：Goerss–Jardine I §7、VIII §1。自然性の帰納法で使う計算式。 -/
 lemma positiveHomotopyEquiv_succ (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n r : ℕ) (a : KanHomotopyGroup
+    (n r : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right (r + 1)
       (PointedSimplicialSet.basepoint
         (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))) :
     positiveHomotopyEquiv Y n (r + 1) a =
       loopPositiveHomotopyEquiv Y (n + 1 + r)
-        (positiveHomotopyEquiv (loopSpace Y) n r
+        (positiveHomotopyEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r
           (pointedGroupMap
-            (X := loopSpace
+            (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
               (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))
             (Y := PointedObject.basedHom
-              (PointedSimplicialSet.sphere.{u} (n + 1)) (loopSpace Y))
+              (PointedSimplicialSet.sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))
             r (loopSwap Y n).hom
             ((loopPositiveHomotopyEquiv
               (PointedObject.basedHom

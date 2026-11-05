@@ -38,14 +38,14 @@ lemma evaluation_innerFibration {K X : SSet.{u}} [Quasicategory X] (v : K _⦋0�
   let c := SSet.const (X := 𝟙_ SSet.{u}) v
   have : Mono c := Limits.IsTerminal.mono_from
     CartesianMonoidalCategory.isTerminalTensorUnit c
-  rw [← evaluation_restriction_unit]
+  rw [← _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.evaluation_restriction_unit]
   exact ⟨innerFibrations.comp_mem _ _ (mem_innerFibrations _)
     (MorphismProperty.rlp_of_isIso _ _)⟩
 
 instance markedSpanSource_innerFibration (X : SSet.{u}) [Quasicategory X]
     (W : Set (X _⦋1⦌)) : InnerFibration (markedSpanSource X W) := by
   rw [← markedSpanBoundary_source]
-  have := evaluation_innerFibration (K := (boundary 1 : SSet.{u})) (X := X)
+  have := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.evaluation_innerFibration (K := (boundary 1 : SSet.{u})) (X := X)
     (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 2), vertex_mem_boundary 0 0⟩ :
       (boundary 1 : SSet.{u}) _⦋0⦌)
   exact ⟨innerFibrations.comp_mem _ _ (mem_innerFibrations _) (mem_innerFibrations _)⟩
@@ -54,11 +54,11 @@ def markedSpanFamily (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : SS
   vertexFiber (markedSpanSource X W) x
 
 instance markedSpanFamily_quasicategory (X : SSet.{u}) [Quasicategory X]
-    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : Quasicategory (markedSpanFamily X W x) :=
+    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : Quasicategory (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) :=
   innerFibration_vertexFiber_quasicategory _ _
 
 def markedSpanFamilyProjection (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) :
-    markedSpanFamily X W x ⟶ X := vertexFiberι (markedSpanSource X W) x ≫ markedSpanTarget X W
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ X := vertexFiberι (markedSpanSource X W) x ≫ markedSpanTarget X W
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

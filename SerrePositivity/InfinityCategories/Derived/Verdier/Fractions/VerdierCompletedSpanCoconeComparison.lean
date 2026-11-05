@@ -117,7 +117,7 @@ lemma exists_verdierFiniteCompletedSpanCoconeComparison [S.Finite] [K.Finite]
   exact ⟨d₀, c₀, exists_verdierCompletedSpanCoconeComparison c₀ G hG hGe⟩
 
 namespace VerdierCompletedSpanCoconeComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison
 variable {c G} (w : VerdierCompletedSpanCoconeComparison c G)
 
 /-- 同じ指定比較辺から、実回収全余錐と元の商全余錐の全関手同型を得る。 -/

@@ -15,7 +15,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 同じ実比較を元の universal・taut scaffold に制限した三角。 -/
 def scaffoldTriangle : FunctorIso
@@ -23,8 +23,8 @@ def scaffoldTriangle : FunctorIso
       s.toStrictTransportComparisonSpan.coherentComparison.hom)
     ((SSet.uliftFunctor.{u + 1, u}).map (tautScaffold (leftStrictTransportDiagram p)) ≫
       leftCoherentTransportComparison p) := by
-  have h := s.toStrictTransportComparisonSpan.representationTriangle.precomp s.coherentEmbedding
-  rw [← Category.assoc, s.coherentEmbedding_source, s.coherentEmbedding_target] at h
+  have h := s.toStrictTransportComparisonSpan.representationTriangle.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding s)
+  rw [← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_source s), (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_target s)] at h
   exact h
 
 end ScaffoldTransportComparisonSpan

@@ -29,7 +29,7 @@ def cosliceFiberBaseEdge : SSet.Edge a b :=
 
 /-- 元の coslice 辺を点と辺の join で展開すると、同じ三辺の実合成三角形になる。 -/
 def cosliceFiberEdgeCompStruct : SSet.Edge.CompStruct (cosliceFiberVertexToEdge s)
-    (cosliceFiberBaseEdge s t l) (cosliceFiberVertexToEdge t) := by
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge s t l) (cosliceFiberVertexToEdge t) := by
   let c := SSet.yonedaEquiv.symm l.edge
   let L := sliceUnderUncurry c
   let H := (joinStdSimplexIso 0 1).inv ≫ L

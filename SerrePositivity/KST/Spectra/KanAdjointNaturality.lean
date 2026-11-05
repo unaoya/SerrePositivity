@@ -32,12 +32,12 @@ theorem KanSequence.kanAdjoint_natural {X Y : KanSequence.{u}} (f : Hom X Y) (n 
       PointedMapping.componentOf (kanAdjoint X n ≫
         PointedObject.basedHomMap CirclePower.space.{u} (f.app (n + 1))) := by
   apply PointedMapping.componentOf_eq_of_comp_eq_rlp
-    (PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
-    (PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
       (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) _)
   rw [Category.assoc, kanAdjoint_comparison]
   change _ = kanAdjoint X n ≫ ((ihom CirclePower.space.{u}).map (f.app (n + 1)) ≫
-    PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     ← MonoidalClosed.pre_comm_ihom_map, ← Category.assoc]
   have hc := kanAdjoint_comparison X n

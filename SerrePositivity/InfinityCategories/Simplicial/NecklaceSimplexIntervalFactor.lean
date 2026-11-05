@@ -16,68 +16,68 @@ namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite _root_.Simplicial SSet
 variable {n : ℕ} {a b : Fin (n + 1)}
-  (T : NecklaceIn (Δ[n] : SSet.{u}) (standardSimplexVertex a) (standardSimplexVertex b))
+  (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
 
 /-- 元の局所番号を、元の有限順序の間の単体圏の射として読む。 -/
 def necklaceSimplexIntervalHom : ⦋T.necklace.down.vertexMax⦌ ⟶ ⦋b.val - a.val⦌ :=
-  SimplexCategory.Hom.mk (necklaceSimplexIntervalOrder T)
+  SimplexCategory.Hom.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder T)
 
 /-- 元の全 necklace の augmentation を、元の区間標準単体へ送る因子。 -/
 def necklaceSimplexIntervalFactor : T.necklace.down.carrier ⟶ Δ[b.val - a.val] :=
-  T.necklace.down.inclusion ≫ stdSimplex.map (necklaceSimplexIntervalHom T)
+  T.necklace.down.inclusion ≫ stdSimplex.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalHom T)
 
 /-- 元の因子は、全ての高次単体で元の局所頂点番号を回収する。 -/
 lemma necklaceSimplexIntervalFactor_apply {m : ℕ} (s : T.necklace.down.carrier _⦋m⦌)
     (i : Fin (m + 1)) :
-    (necklaceSimplexIntervalFactor T).app _ s i = necklaceSimplexIntervalOrder T (s.val i) := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T).app _ s i = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder T (s.val i) := rfl
 
 /-- 元の因子は、元の始頂点を区間の始零単体へ送る。 -/
 lemma necklaceSimplexIntervalFactor_first :
-    (necklaceSimplexIntervalFactor T).app _ T.necklace.down.firstVertex =
-      standardSimplexVertex 0 :=
-  standardSimplexVertex_ext (necklaceSimplexIntervalOrder_first T)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T).app _ T.necklace.down.firstVertex =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0 :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_first T)
 
 /-- 元の因子は、元の終頂点を区間の終零単体へ送る。 -/
 lemma necklaceSimplexIntervalFactor_last :
-    (necklaceSimplexIntervalFactor T).app _ T.necklace.down.lastVertex =
-      standardSimplexVertex (Fin.last (b.val - a.val)) :=
-  standardSimplexVertex_ext (necklaceSimplexIntervalOrder_last T)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T).app _ T.necklace.down.lastVertex =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (Fin.last (b.val - a.val)) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_last T)
 
 /-- 元の局所番号の単体圏の射は、区間包含との合成で元の全頂点作用を回収する。 -/
 lemma necklaceSimplexIntervalHom_comp (hab : a ≤ b) :
-    necklaceSimplexIntervalHom T ≫ simplexIntervalHom a b hab =
-      SimplexCategory.Hom.mk (necklaceSimplexVertexOrderHom T.necklace.down T.map) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalHom T ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalHom a b hab =
+      SimplexCategory.Hom.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexOrderHom T.necklace.down T.map) :=
   congrArg (fun q : T.necklace.down.Vertex →o Fin (n + 1) =>
     (SimplexCategory.Hom.mk q : ⦋T.necklace.down.vertexMax⦌ ⟶ ⦋n⦌))
-    (necklaceSimplexIntervalOrder_comp T hab)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_comp T hab)
 
 /-- 元の区間因子を元の包含に合成すると、元の全 augmentation が厳密に戻る。 -/
 lemma necklaceSimplexIntervalFactor_comp (hab : a ≤ b) :
-    necklaceSimplexIntervalFactor T ≫ simplexIntervalMap a b hab = T.map := by
-  have h := ((stdSimplex.{u}).map_comp (necklaceSimplexIntervalHom T)
-    (simplexIntervalHom a b hab)).symm.trans
-      (congrArg (fun q => stdSimplex.map q) (necklaceSimplexIntervalHom_comp T hab))
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab = T.map := by
+  have h := ((stdSimplex.{u}).map_comp (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalHom T)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalHom a b hab)).symm.trans
+      (congrArg (fun q => stdSimplex.map q) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalHom_comp T hab))
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun f => T.necklace.down.inclusion ≫ f) h).trans
-      (necklaceSimplexMap_eq_extension T.necklace.down T.map))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexMap_eq_extension T.necklace.down T.map))
 
 /-- 元の区間の単射性から、同じ augmentation の区間因子は一意。 -/
 lemma necklaceSimplexIntervalFactor_unique (hab : a ≤ b)
     (f : T.necklace.down.carrier ⟶ Δ[b.val - a.val])
-    (h : f ≫ simplexIntervalMap a b hab = T.map) : f = necklaceSimplexIntervalFactor T :=
-  (cancel_mono (simplexIntervalMap a b hab)).1
-    (h.trans (necklaceSimplexIntervalFactor_comp T hab).symm)
+    (h : f ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab = T.map) : f = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T :=
+  (cancel_mono (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab)).1
+    (h.trans (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor_comp T hab).symm)
 
 /-- 元の全可換三角形は、同じ区間因子の間の可換三角形を定める。 -/
 lemma necklaceSimplexIntervalFactor_naturality (hab : a ≤ b)
-    {U : NecklaceIn (Δ[n] : SSet.{u}) (standardSimplexVertex a) (standardSimplexVertex b)}
+    {U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)}
     (f : T ⟶ U) :
-    f.necklaceHom.map ≫ necklaceSimplexIntervalFactor U = necklaceSimplexIntervalFactor T := by
-  apply (cancel_mono (simplexIntervalMap a b hab)).1
+    f.necklaceHom.map ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor U = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab)).1
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun g => f.necklaceHom.map ≫ g)
-      (necklaceSimplexIntervalFactor_comp U hab)).trans
-      (f.w.trans (necklaceSimplexIntervalFactor_comp T hab).symm))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor_comp U hab)).trans
+      (f.w.trans (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor_comp T hab).symm))
 
 end SerrePositivity.InfinityCategories.Simplicial
 

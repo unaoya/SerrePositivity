@@ -28,24 +28,24 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 include h
 
 private lemma fraction_denominator_iff {x y : B.obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj B.obj) x y) :
-    (stableHoClosure (essentialImage i)).trW (Truncated.HomotopyCategory.homMk f) ↔
-      f.edge ∈ weakEquivalences i := by
-  have hd := cofiberStableEdges_iff_trW (essentialImage i) f
+    (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW (Truncated.HomotopyCategory.homMk f) ↔
+      f.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
+  have hd := cofiberStableEdges_iff_trW (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) f
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.stableClosure_essentialImage h] at hd
   exact hd.symm
 
 private lemma fraction_ho_localization :
     (hoFunctor.map q.hom).toFunctor.IsLocalization
-      (stableHoClosure (essentialImage i)).trW :=
-  localizationHo_isLocalization q.hom (weakEquivalences i) h.quotient
-    (stableHoClosure (essentialImage i)).trW (fraction_denominator_iff h)
+      (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW :=
+  localizationHo_isLocalization q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.quotient
+    (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW (fraction_denominator_iff h)
 
 /-- 商で一致する元の二辺を、一つの実分母と共有合成二単体で均等化する。
 全次数の写像空間の比較を、この h 圏の判定だけで完了とはしない。 -/
@@ -55,11 +55,11 @@ private lemma fraction_equal_images_refine {x y : B.obj _⦋0⦌}
       (hoFunctor.map q.hom).toFunctor.map (Truncated.HomotopyCategory.homMk g)) :
     ∃ (a : B.obj _⦋0⦌)
       (t : Truncated.Edge (X := (truncation 2).obj B.obj) a x),
-      t.edge ∈ weakEquivalences i ∧
+      t.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ∧
       ∃ k : Truncated.Edge (X := (truncation 2).obj B.obj) a y,
         Nonempty (Truncated.Edge.CompStruct t f k) ∧
         Nonempty (Truncated.Edge.CompStruct t g k) := by
-  let W := (stableHoClosure (essentialImage i)).trW
+  let W := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW
   let L := (hoFunctor.map q.hom).toFunctor
   letI : L.IsLocalization W := fraction_ho_localization h
   obtain ⟨a, t, ht, heq⟩ := (MorphismProperty.map_eq_iff_precomp L W
@@ -76,10 +76,10 @@ private lemma fraction_equal_images_refine {x y : B.obj _⦋0⦌}
 private def fractionClass {a x y : B.obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
     (f : Truncated.Edge (X := (truncation 2).obj B.obj) a y)
-    (hs : s.edge ∈ weakEquivalences i) :
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     (hoFunctor.map q.hom).toFunctor.obj (HomotopyCategory.mk x) ⟶
       (hoFunctor.map q.hom).toFunctor.obj (HomotopyCategory.mk y) := by
-  let W := (stableHoClosure (essentialImage i)).trW
+  let W := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW
   let L := (hoFunctor.map q.hom).toFunctor
   letI : L.IsLocalization W := fraction_ho_localization h
   let φ : W.RightFraction (HomotopyCategory.mk x) (HomotopyCategory.mk y) :=
@@ -93,19 +93,19 @@ private lemma equal_fractionClasses_refine {a₁ a₂ x y : B.obj _⦋0⦌}
     (s₂ : Truncated.Edge (X := (truncation 2).obj B.obj) a₂ x)
     (f₁ : Truncated.Edge (X := (truncation 2).obj B.obj) a₁ y)
     (f₂ : Truncated.Edge (X := (truncation 2).obj B.obj) a₂ y)
-    (hs₁ : s₁.edge ∈ weakEquivalences i) (hs₂ : s₂.edge ∈ weakEquivalences i)
+    (hs₁ : s₁.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) (hs₂ : s₂.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     (he : fractionClass h s₁ f₁ hs₁ = fractionClass h s₂ f₂ hs₂) :
     ∃ (a : B.obj _⦋0⦌)
       (t₁ : Truncated.Edge (X := (truncation 2).obj B.obj) a a₁)
       (t₂ : Truncated.Edge (X := (truncation 2).obj B.obj) a a₂)
       (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
       (f : Truncated.Edge (X := (truncation 2).obj B.obj) a y),
-      s.edge ∈ weakEquivalences i ∧
+      s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ∧
       Nonempty (Truncated.Edge.CompStruct t₁ s₁ s) ∧
       Nonempty (Truncated.Edge.CompStruct t₂ s₂ s) ∧
       Nonempty (Truncated.Edge.CompStruct t₁ f₁ f) ∧
       Nonempty (Truncated.Edge.CompStruct t₂ f₂ f) := by
-  let W := (stableHoClosure (essentialImage i)).trW
+  let W := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW
   let L := (hoFunctor.map q.hom).toFunctor
   letI : L.IsLocalization W := fraction_ho_localization h
   let φ : W.RightFraction (HomotopyCategory.mk x) (HomotopyCategory.mk y) :=
@@ -123,7 +123,7 @@ private lemma equal_fractionClasses_refine {a₁ a₂ x y : B.obj _⦋0⦌}
     (Truncated.HomotopyCategory.homMk t₁ ≫ Truncated.HomotopyCategory.homMk s₁)
   obtain ⟨f, hf⟩ := homotopyCategory_homMk_surjective a y
     (Truncated.HomotopyCategory.homMk t₁ ≫ Truncated.HomotopyCategory.homMk f₁)
-  have hsW : s.edge ∈ weakEquivalences i := by
+  have hsW : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
     apply (fraction_denominator_iff h s).mp
     rw [hs]
     exact ht
@@ -197,13 +197,13 @@ private lemma fraction_refinement_fixedFamily
     (s' : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
     (f' : Truncated.Edge (X := (truncation 2).obj B.obj) a y)
     (cs : Truncated.Edge.CompStruct t s s') (cf : Truncated.Edge.CompStruct t f f')
-    (hs : s.edge ∈ weakEquivalences i) (hs' : s'.edge ∈ weakEquivalences i) :
-    ∃ G : (Δ[1] : SSet.{u}) ⟶ fixedMarkedSpans B.obj (weakEquivalences i) x y,
-      G ≫ fixedMarkedSpanInclusion B.obj (weakEquivalences i) x y ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj =
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) (hs' : s'.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
+    ∃ G : (Δ[1] : SSet.{u}) ⟶ fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y,
+      G ≫ fixedMarkedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj =
         intervalPrecompositionFamily (SSet.yonedaEquiv.symm cs.simplex) ∧
-      G ≫ fixedMarkedSpanInclusion B.obj (weakEquivalences i) x y ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj =
+      G ≫ fixedMarkedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj =
         intervalPrecompositionFamily (SSet.yonedaEquiv.symm cf.simplex) := by
   let T : (Δ[2] : SSet.{u}) ⟶ B.obj := SSet.yonedaEquiv.symm cs.simplex
   let U : (Δ[2] : SSet.{u}) ⟶ B.obj := SSet.yonedaEquiv.symm cf.simplex
@@ -221,7 +221,7 @@ private lemma fraction_refinement_fixedFamily
     exact congrArg SSet.yonedaEquiv.symm cf.d₀
   obtain ⟨F, hl, hr, hx, hy⟩ := fraction_refinement_family t s f T U hT₂ hU₂ hT₀ hU₀
   have hv : ∀ v : (Δ[1] : SSet.{u}) _⦋0⦌,
-      spanLeftEdge (F.app (Opposite.op ⦋0⦌) v) ∈ weakEquivalences i := by
+      spanLeftEdge (F.app (Opposite.op ⦋0⦌) v) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
     intro v
     obtain ⟨j, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective v
     have he := congrArg (fun k => k.app (Opposite.op ⦋0⦌)
@@ -237,32 +237,32 @@ private lemma fraction_refinement_fixedFamily
         rw [stdSimplex.yonedaEquiv_δ_comp]
         exact (congrArg (B.obj.δ (1 : Fin 3))
           (SSet.yonedaEquiv.apply_symm_apply cs.simplex)).trans cs.d₁
-      exact (congrArg (fun z : B.obj _⦋1⦌ => z ∈ weakEquivalences i)
+      exact (congrArg (fun z : B.obj _⦋1⦌ => z ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
         ((intervalPrecompositionFamily_edge_zero T).trans he₁)).mpr hs'
     · have he₀ : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ T) = s.edge := by
         rw [stdSimplex.yonedaEquiv_δ_comp]
         exact (congrArg (B.obj.δ (0 : Fin 3))
           (SSet.yonedaEquiv.apply_symm_apply cs.simplex)).trans cs.d₀
-      exact (congrArg (fun z : B.obj _⦋1⦌ => z ∈ weakEquivalences i)
+      exact (congrArg (fun z : B.obj _⦋1⦌ => z ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
         ((intervalPrecompositionFamily_edge_one T).trans he₀)).mpr hs
-  let L : (Δ[1] : SSet.{u}) ⟶ markedSpans B.obj (weakEquivalences i) :=
-    fullSubcomplexLift (fun z => spanLeftEdge z ∈ weakEquivalences i) F hv
-  have hL : L ≫ markedSpanInclusion B.obj (weakEquivalences i) = F :=
+  let L : (Δ[1] : SSet.{u}) ⟶ markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :=
+    fullSubcomplexLift (fun z => spanLeftEdge z ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) F hv
+  have hL : L ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) = F :=
     fullSubcomplexLift_ι _ _ _
-  have hxs : L ≫ markedSpanSource B.obj (weakEquivalences i) = SSet.const x := by
-    change (L ≫ markedSpanInclusion B.obj (weakEquivalences i)) ≫
+  have hxs : L ≫ markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) = SSet.const x := by
+    change (L ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) ≫
       (pre horn₂₀.ι₀₁).app B.obj ≫ evaluateFunctorAt _ = _
     rw [hL]
     exact hx
-  have hys : L ≫ markedSpanTarget B.obj (weakEquivalences i) = SSet.const y := by
-    change (L ≫ markedSpanInclusion B.obj (weakEquivalences i)) ≫
+  have hys : L ≫ markedSpanTarget B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) = SSet.const y := by
+    change (L ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) ≫
       (pre horn₂₀.ι₀₂).app B.obj ≫ evaluateFunctorAt _ = _
     rw [hL]
     exact hy
-  let G := vertexFiberLift (markedSpanBoundary B.obj (weakEquivalences i))
+  let G := vertexFiberLift (markedSpanBoundary B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))
     (functorVertex (intervalMappingBoundary x y)) L
-      (markedSpanBoundary_of_endpoints (weakEquivalences i) L x y hxs hys)
-  have hG : G ≫ fixedMarkedSpanInclusion B.obj (weakEquivalences i) x y = L :=
+      (markedSpanBoundary_of_endpoints (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) L x y hxs hys)
+  have hG : G ≫ fixedMarkedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y = L :=
     vertexFiberLift_ι _ _ _ _
   refine ⟨G, ?_, ?_⟩
   · rw [← Category.assoc, ← Category.assoc, hG, hL]
@@ -346,12 +346,12 @@ private lemma fraction_refinement_component
     (s' : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
     (f' : Truncated.Edge (X := (truncation 2).obj B.obj) a y)
     (cs : Truncated.Edge.CompStruct t s s') (cf : Truncated.Edge.CompStruct t f f')
-    (hs : s.edge ∈ weakEquivalences i) (hs' : s'.edge ∈ weakEquivalences i)
-    (v : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌)
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) (hs' : s'.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
+    (v : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌)
     (hvs : spanLeftEdge v.val.val = s.edge)
     (hvf : intervalFunctorVertexEdge (((pre horn₂₀.ι₀₂).app B.obj).app
       (Opposite.op ⦋0⦌) v.val.val) = f.edge) :
-    ∃ w : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌,
+    ∃ w : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌,
       SSet.π₀.mk w = SSet.π₀.mk v ∧ spanLeftEdge w.val.val = s'.edge ∧
       intervalFunctorVertexEdge (((pre horn₂₀.ι₀₂).app B.obj).app
         (Opposite.op ⦋0⦌) w.val.val) = f'.edge := by
@@ -363,7 +363,7 @@ private lemma fraction_refinement_component
   have hv' : v' = v := fraction_fixedVertex_ext
     ((hLs 1).trans ((fraction_precomposition_edges cs).2.trans hvs.symm))
     ((hRs 1).trans ((fraction_precomposition_edges cf).2.trans hvf.symm))
-  have he : (fixedMarkedSpans B.obj (weakEquivalences i) x y).Edge w v' :=
+  have he : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y).Edge w v' :=
     ⟨SSet.yonedaEquiv G, intervalMap_source G, intervalMap_target G⟩
   exact ⟨w, (SSet.π₀.sound he).trans (congrArg SSet.π₀.mk hv'),
     (hLs 0).trans (fraction_precomposition_edges cs).1,
@@ -375,9 +375,9 @@ private lemma equal_fractionClasses_component {a₁ a₂ x y : B.obj _⦋0⦌}
     (s₂ : Truncated.Edge (X := (truncation 2).obj B.obj) a₂ x)
     (f₁ : Truncated.Edge (X := (truncation 2).obj B.obj) a₁ y)
     (f₂ : Truncated.Edge (X := (truncation 2).obj B.obj) a₂ y)
-    (hs₁ : s₁.edge ∈ weakEquivalences i) (hs₂ : s₂.edge ∈ weakEquivalences i)
+    (hs₁ : s₁.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) (hs₂ : s₂.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     (he : fractionClass h s₁ f₁ hs₁ = fractionClass h s₂ f₂ hs₂)
-    (v₁ v₂ : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌)
+    (v₁ v₂ : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌)
     (hv₁s : spanLeftEdge v₁.val.val = s₁.edge)
     (hv₂s : spanLeftEdge v₂.val.val = s₂.edge)
     (hv₁f : intervalFunctorVertexEdge (((pre horn₂₀.ι₀₂).app B.obj).app
@@ -412,11 +412,11 @@ private lemma fraction_vertexEdge_endpoints {X : SSet.{u}}
 
 /-- 両端固定の実 span の二辺を、元の一次単体を変えずに型付きで回収する。 -/
 private lemma fraction_fixedVertex_edges {x y : B.obj _⦋0⦌}
-    (v : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌) :
+    (v : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌) :
     ∃ (a : B.obj _⦋0⦌)
       (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
       (f : Truncated.Edge (X := (truncation 2).obj B.obj) a y),
-      s.edge ∈ weakEquivalences i ∧ spanLeftEdge v.val.val = s.edge ∧
+      s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ∧ spanLeftEdge v.val.val = s.edge ∧
       intervalFunctorVertexEdge (((pre horn₂₀.ι₀₂).app B.obj).app
         (Opposite.op ⦋0⦌) v.val.val) = f.edge := by
   let l := ((pre horn₂₀.ι₀₁).app B.obj).app (Opposite.op ⦋0⦌) v.val.val
@@ -424,12 +424,12 @@ private lemma fraction_fixedVertex_edges {x y : B.obj _⦋0⦌}
   let a := (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
     (Opposite.op ⦋0⦌) l
   have hl := congrArg (fun F => F.app (Opposite.op ⦋0⦌) v)
-    (fixedMarkedSpan_source B.obj (weakEquivalences i) x y)
+    (fixedMarkedSpan_source B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
   change (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
     (Opposite.op ⦋0⦌) l = PinchedHom.constant x 0 at hl
   rw [pinchedConstant_zero] at hl
   have hr := congrArg (fun F => F.app (Opposite.op ⦋0⦌) v)
-    (fixedMarkedSpan_target B.obj (weakEquivalences i) x y)
+    (fixedMarkedSpan_target B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
   change (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
     (Opposite.op ⦋0⦌) r = PinchedHom.constant y 0 at hr
   rw [pinchedConstant_zero] at hr
@@ -454,7 +454,7 @@ private lemma fraction_triangle_faceEdge {X : SSet.{u}}
 
 /-- 選択済みの評価三角形は、元の分母・分子の商像と回収した評価辺を三辺に持つ。 -/
 private lemma fraction_evaluation_compStruct {a x y : B.obj _⦋0⦌}
-    (v : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌)
+    (v : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌)
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
     (f : Truncated.Edge (X := (truncation 2).obj B.obj) a y)
     (hvs : spanLeftEdge v.val.val = s.edge)
@@ -462,21 +462,21 @@ private lemma fraction_evaluation_compStruct {a x y : B.obj _⦋0⦌}
       (Opposite.op ⦋0⦌) v.val.val) = f.edge) :
     Nonempty (Truncated.Edge.CompStruct (s.map ((truncation 2).map q.hom))
       (intervalMappingEdgeOfVertex
-        ((fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y).app
+        ((fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y).app
           (Opposite.op ⦋0⦌) v)).toTruncated (f.map ((truncation 2).map q.hom))) := by
-  let z := (fractionEvaluationTriangle q.hom (weakEquivalences i) h.inverts).app
+  let z := (fractionEvaluationTriangle q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts).app
     (Opposite.op ⦋0⦌) v.val
   let T := (functorVertexEquiv (Δ[2] : SSet.{u}) C.obj).symm z
   have hT : functorVertex T = z := (functorVertexEquiv _ _).apply_symm_apply z
   have he := congrArg (fun F => F.app (Opposite.op ⦋0⦌) v)
-    (fixedFractionEvaluation_inclusion q.hom (weakEquivalences i) h.inverts x y)
-  change ((fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y).app
+    (fixedFractionEvaluation_inclusion q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)
+  change ((fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y).app
     (Opposite.op ⦋0⦌) v).val =
       ((pre (stdSimplex.δ (0 : Fin 3))).app C.obj).app (Opposite.op ⦋0⦌) z at he
   have h₀ := congrArg intervalFunctorVertexEdge he
   rw [← hT, fraction_triangle_faceEdge] at h₀
   have hp := congrArg (fun F => F.app (Opposite.op ⦋0⦌) v.val)
-    (fractionEvaluationTriangle_span q.hom (weakEquivalences i) h.inverts)
+    (fractionEvaluationTriangle_span q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts)
   change ((pre (horn 2 0).ι).app C.obj).app (Opposite.op ⦋0⦌) z =
     ((ihom (horn 2 0 : SSet.{u})).map q.hom).app
       (Opposite.op ⦋0⦌) v.val.val at hp
@@ -497,18 +497,18 @@ private lemma fraction_evaluation_compStruct {a x y : B.obj _⦋0⦌}
 
 /-- 実評価辺の h 類は、元の二辺から計算する同じ roof の類。 -/
 private lemma fraction_evaluation_class {a x y : B.obj _⦋0⦌}
-    (v : (fixedMarkedSpans B.obj (weakEquivalences i) x y) _⦋0⦌)
+    (v : (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) _⦋0⦌)
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
     (f : Truncated.Edge (X := (truncation 2).obj B.obj) a y)
-    (hs : s.edge ∈ weakEquivalences i)
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     (hvs : spanLeftEdge v.val.val = s.edge)
     (hvf : intervalFunctorVertexEdge (((pre horn₂₀.ι₀₂).app B.obj).app
       (Opposite.op ⦋0⦌) v.val.val) = f.edge) :
     Truncated.HomotopyCategory.homMk (intervalMappingEdgeOfVertex
-      ((fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y).app
+      ((fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y).app
         (Opposite.op ⦋0⦌) v)).toTruncated = fractionClass h s f hs := by
   obtain ⟨τ⟩ := fraction_evaluation_compStruct h v s f hvs hvf
-  let W := (stableHoClosure (essentialImage i)).trW
+  let W := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW
   let L := (hoFunctor.map q.hom).toFunctor
   letI : L.IsLocalization W := fraction_ho_localization h
   let φ : W.RightFraction (HomotopyCategory.mk x) (HomotopyCategory.mk y) :=
@@ -543,7 +543,7 @@ private lemma fraction_evaluation_component_class {x y : B.obj _⦋0⦌}
 /-- 実評価によって同じ成分へ送られる元の roof は、元の span 空間でも同じ成分。 -/
 private lemma fraction_evaluation_mapPiZero_injective (x y : B.obj _⦋0⦌) :
     Function.Injective (SSet.mapπ₀
-      (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y)) := by
+      (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)) := by
   intro a b he
   obtain ⟨v₁, rfl⟩ := SSet.π₀.mk_surjective a
   obtain ⟨v₂, rfl⟩ := SSet.π₀.mk_surjective b

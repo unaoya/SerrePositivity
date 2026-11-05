@@ -50,10 +50,10 @@ def presentedPerfectDGAssemblyExInfinityTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyMiddleFunctor A r)
       (presentedPerfectDGKanAssemblyTargetFunctor A r) :=
-  strictSimplicialTransformationReassociateSource
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource
     (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r)
     pointedSSetSuspensionEnrichedFunctor exInfinityPointedEnrichedFunctor _
-    (strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
       (presentedPerfectDGAssemblyTransformation A r))
 
 /-- 厳密自然変換の成分は、元の同じ組み立ての Ex∞ 像そのもの。 -/

@@ -23,19 +23,19 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 零次数と成分の同値の逆は点つき射に自然。 -/
 lemma pointedHomotopyZero_symm_natural {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (a : π₀ X.right) :
-    KanHomotopyZero.equivPiZero.symm (mapπ₀ f.right a) =
-      pointedHomotopyMap 0 f (KanHomotopyZero.equivPiZero.symm a) := by
-  apply KanHomotopyZero.equivPiZero.injective
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm (mapπ₀ f.right a) =
+      pointedHomotopyMap 0 f (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm a) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.injective
   rw [Equiv.apply_symm_apply]
-  have h := KanHomotopyZero.equivPiZero_map f.right (OmegaSpectrum.pointedMap_basepoint f)
-    (KanHomotopyZero.equivPiZero.symm a)
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm a)
   rw [Equiv.apply_symm_apply] at h
   exact h.symm
 
 /-- 零 loop 同値は任意の点つき Kan 射と可換。 -/
 lemma loopZeroHomotopyEquiv_pointed_natural {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
-    (a : KanHomotopy (loopSpace X).right 0 (loopSpace X).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X).basepoint) :
     loopZeroHomotopyEquiv Y (pointedHomotopyMap 0
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} f) a) =
       pointedGroupMap 0 f (loopZeroHomotopyEquiv X a) :=
@@ -49,17 +49,17 @@ namespace SkeletalCellAttachment
 使われ方：Goerss–Jardine VIII §1。セル係数による零 loop 比較。 -/
 lemma stageFiberLoopZeroEquiv_cell (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ)
-    (a : KanHomotopy (UnbasedPointedMapping.stageFiber K (loopSpace Y) n).right 0
-      (UnbasedPointedMapping.stageFiber K (loopSpace Y) n).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right 0
+      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint) :
     stageFiberLoopZeroEquiv K Y n a =
       pointedGroupMap 0 (stageFiberCellIso K Y n).hom
         (PointedMapping.loopZeroComponentEquiv (cellCofiber K (n + 1)) Y
-          (mapπ₀ (stageFiberCellIso K (loopSpace Y) n).inv.right
-            (KanHomotopyZero.equivPiZero a))) := by
+          (mapπ₀ (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).inv.right
+            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a))) := by
   rw [PointedMapping.loopZeroComponentEquiv_apply,
     pointedHomotopyZero_symm_natural, pointedHomotopyZero_symm_natural,
     Equiv.symm_apply_apply]
-  have hm : (stageFiberCellIso K (loopSpace Y) n).inv ≫
+  have hm : (stageFiberCellIso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).inv ≫
       (PointedMapping.loopSwap (cellCofiber K (n + 1)) Y).inv ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (stageFiberCellIso K Y n).hom =
       (stageFiberLoopIso K Y n).inv := by
@@ -74,12 +74,12 @@ lemma stageFiberLoopZeroEquiv_cell (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
 使われ方：Goerss–Jardine VIII §1。成分微分と係数微分の符号の照合。 -/
 theorem stageFiberCoefficientEquiv_loopZero (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ)
-    (a : π₀ (UnbasedPointedMapping.stageFiber K (loopSpace Y) n).right)
+    (a : π₀ (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right)
     (s : K.nonDegenerate (n + 1)) :
     stageFiberCoefficientEquiv K Y n 0 (stageFiberOrdinaryLoopComponentEquiv K Y n a) s =
-      (loopPositiveHomotopyEquiv Y n (stageFiberComponentEquiv K (loopSpace Y) n a s))⁻¹ := by
+      (loopPositiveHomotopyEquiv Y n (stageFiberComponentEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n a s))⁻¹ := by
   change stageFiberCoefficientEquiv K Y n 0
-    (stageFiberLoopZeroEquiv K Y n (KanHomotopyZero.equivPiZero.symm a)) s = _
+    (stageFiberLoopZeroEquiv K Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm a)) s = _
   rw [stageFiberLoopZeroEquiv_cell, Equiv.apply_symm_apply,
     stageFiberCoefficientEquiv_restriction,
     ← pointedGroupMap_comp 0 (stageFiberCellIso K Y n).hom (stageFiberCellIso K Y n).inv,

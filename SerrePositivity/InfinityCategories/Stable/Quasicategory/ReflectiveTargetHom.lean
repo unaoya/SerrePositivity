@@ -64,7 +64,7 @@ lemma reflectiveCounitHom_isIso : IsIso a.counitHom :=
 def reflectiveTargetHomEquiv {A : SSet.{u}} [Quasicategory A]
     (U : A ⟶ X) (V : A ⟶ Y) :
     FunctorHom U (V ≫ G) ≃ FunctorHom (U ≫ F) ((V ≫ G) ≫ F) := by
-  have := reflectiveCounitHom_isIso a hG
+  have := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveCounitHom_isIso a hG
   let ε := (hoFunctor.map ((pre V).app Y)).toFunctor.map a.counitHom
   have : IsIso ε := inferInstance
   exact (a.homEquiv U V).symm.trans ((Iso.refl _).homCongr (asIso ε).symm)

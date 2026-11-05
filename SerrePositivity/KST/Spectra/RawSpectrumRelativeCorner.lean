@@ -68,7 +68,7 @@ lemma relativeCorner_snd {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
 @[reassoc] lemma relativeCorner_fst_evaluation {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
     {E Z : KanSequence.{u}} (q : KanSequence.Hom E Z) (n : ℕ) :
     relativeCorner i q ≫ pullback.fst _ _ ≫ evaluation X E n =
-      evaluation R E n ≫ PointedMapping.pre (i.app n) (E.level n).space := by
+      evaluation R E n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (E.level n).space := by
   rw [← Category.assoc, relativeCorner_fst, pre_evaluation]
 
 /-- 概要：corner の標的側の射影の全段評価は元の段射への後合成。

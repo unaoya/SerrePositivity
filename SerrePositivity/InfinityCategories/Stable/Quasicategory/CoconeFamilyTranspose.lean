@@ -73,7 +73,7 @@ def spanFunctorIsoUnflip {K L X : SSet.{u}} [Quasicategory X]
     {F G : K ⟶ (ihom L).obj X}
     (e : FunctorIso (internalHomFlipHomEquiv K L X F) (internalHomFlipHomEquiv K L X G)) :
     FunctorIso F G := by
-  have h := spanFunctorIsoFlip e
+  have h := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoFlip e
   change FunctorIso
     ((internalHomFlipHomEquiv K L X).symm ((internalHomFlipHomEquiv K L X) F))
     ((internalHomFlipHomEquiv K L X).symm ((internalHomFlipHomEquiv K L X) G)) at h
@@ -93,7 +93,7 @@ lemma spanConstantPrefixEdge_component {L X Y : SSet.{u}} (K : SSet.{u}) (q : X 
     {D E : L ⟶ X}
     (t : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj X))
       (functorVertex D) (functorVertex E)) (k : L _⦋0⦌) :
-    (functorEdgeAt (spanConstantPrefixEdge K q t) k).edge =
+    (functorEdgeAt (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q t) k).edge =
       (curry (snd K Y)).app (Opposite.op ⦋1⦌)
         (q.app (Opposite.op ⦋1⦌)
           ((evaluateFunctorAt (Y := X) k).app (Opposite.op ⦋1⦌) t.edge)) := by
@@ -110,12 +110,12 @@ lemma spanConstantPrefixEdge_isInvertible {L X Y : SSet.{u}} [Quasicategory Y]
     (ht : IsInvertibleEdge (X := (ihom L).obj Y)
       (t.map ((truncation 2).map ((ihom L).map q)))) :
     IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj Y))
-      (spanConstantPrefixEdge K q t).toTruncated := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q t).toTruncated := by
   have hi := ht.map ((ihom L).map (curry (snd K Y)))
   exact (isInvertibleEdge_congr
     (e := (t.map ((truncation 2).map ((ihom L).map q))).map
       ((truncation 2).map ((ihom L).map (curry (snd K Y)))))
-    (f := (spanConstantPrefixEdge K q t).toTruncated) rfl).mp hi
+    (f := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q t).toTruncated) rfl).mp hi
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory
 

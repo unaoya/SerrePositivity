@@ -30,33 +30,33 @@ lemma bridge_positive_injective {I : Type u} [PartialOrder I]
     (hfinite : ∀ {K : SSet.{w}} [K.Finite] (f : K ⟶ T.obj),
       ∃ i : I, ∃ g : K ⟶ (X i).obj, Nonempty (Homotopy f (g ≫ s i)))
     (n : ℕ) (x : T.obj _⦋0⦌) :
-    Function.Injective (KanHomotopyGroup.map (n := n) q (x := x) rfl) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) q (x := x) rfl) := by
   intro a b hab
   obtain ⟨i, y, β, z, h₀, h₁, γ, hγ⟩ :=
     finite_positive_pair_representative X T.obj s hfinite n x ![a, b]
-  have hl : KanHomotopyGroup.map q rfl
-        (KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀ (γ 0)) =
-      KanHomotopyGroup.map q rfl
-        (KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀ (γ 1)) := by
+  have hl : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀ (γ 0)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀ (γ 1)) := by
     simpa only [(hγ 0).1, (hγ 1).1, Matrix.cons_val_zero, Matrix.cons_val_one] using hab
   have hr := (shared_path_map_equality_iff q n z h₀ h₁ (γ 0) (γ 1)).mp hl
   rw [(hγ 0).2, (hγ 1).2] at hr
   obtain ⟨H⟩ := hcomm i
-  have hm (c : KanHomotopyGroup (X i).obj n y) :
-      KanHomotopyGroup.map (s i ≫ q) rfl c =
-        KanHomotopyGroup.map q rfl (KanHomotopyGroup.map (s i) rfl c) :=
-    DFunLike.congr_fun (KanHomotopyGroup.map_comp (s i) rfl q rfl rfl) c
+  have hm (c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y) :
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s i ≫ q) rfl c =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s i) rfl c) :=
+    DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (s i) rfl q rfl rfl) c
   have he : dgBarCompactPiMap n (l i) y (β 0) = dgBarCompactPiMap n (l i) y (β 1) :=
     (homotopy_map_equality_iff H n y (β 0) (β 1)).mpr
       ((hm (β 0)).trans (hr.trans (hm (β 1)).symm))
   have hs := bridge_stage_positive_kernel X A T τ l h s hstage n i y (β 0) (β 1) he
   have hγeq : γ 0 = γ 1 :=
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation T.obj 1)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n (KanPath.evaluation T.obj 1)
       (KanPath.evaluation_piIsomorphism T.obj 1) h₁).injective
         ((hγ 0).2.trans (hs.trans (hγ 1).2.symm))
   have ha := (hγ 0).1
   have hb := (hγ 1).1
   exact ha.symm.trans ((congrArg
-    (KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀) hγeq).trans hb)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T.obj 0) h₀) hγeq).trans hb)
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

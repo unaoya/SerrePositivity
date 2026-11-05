@@ -33,7 +33,7 @@ def strictTransportPostToLeftFibration :
 
 /-- 関手的な同じ Kan 置換は、元の図式全体の自然変換を保つ。 -/
 def strictKanTransportPostToLeftFibration : cocartesianKanDiagram p ⟶ cocartesianKanDiagram q :=
-  Functor.whiskerRight (strictTransportPostToLeftFibration p q f hf) strictKanCompletion
+  Functor.whiskerRight (strictTransportPostToLeftFibration p q f hf) _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion
 
 /-- 同じ自然変換を全単体の coherent 図式間の辺として保持する。 -/
 def strictKanTransportPostToLeftFibrationEdge :

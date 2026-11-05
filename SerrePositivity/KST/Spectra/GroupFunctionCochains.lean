@@ -30,7 +30,7 @@ variable {G : Type u} [Group G]
 
 lemma functionPre_id (S : Type u) (B : Action SSet.{u} G) :
     functionPre (𝟙 (Action.leftRegular G ⊗ Action.trivial G S)) B =
-      𝟙 (SimplicialFunctionComplex.obj S B.V) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S B.V) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -68,7 +68,7 @@ namespace GroupActionCochains
 使われ方：Goerss–Jardine VIII §2。cochain の顔・退化を座標で記述する図式。 -/
 def functionCochains {G : Type u} [Group G] (B : Action SSet.{u} G) :
     CosimplicialObject SSet.{u} where
-  obj n := SimplicialFunctionComplex.obj (Fin n.len → G) B.V
+  obj n := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj (Fin n.len → G) B.V
   map f := FreeActionFamily.functionPre ((freeUniversalCover G).map f.op) B
   map_id n := by
     rw [op_id, CategoryTheory.Functor.map_id]

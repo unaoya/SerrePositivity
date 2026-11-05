@@ -36,19 +36,19 @@ def squareArrowFamily {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
   curry ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ R)
 
 lemma squareArrowFamily_source {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       squareBottomEdge ≫ R := by
-  rw [squareArrowFamily, curry_evaluateFunctorAt_interval, ← Category.assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily, curry_evaluateFunctorAt_interval, ← Category.assoc]
   rfl
 
 lemma squareArrowFamily_target {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       squareTopEdge ≫ R := by
-  rw [squareArrowFamily, curry_evaluateFunctorAt_interval, ← Category.assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily, curry_evaluateFunctorAt_interval, ← Category.assoc]
   rfl
 
 lemma squareArrowFamily_one {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    stdSimplex.δ (0 : Fin 2) ≫ squareArrowFamily R =
+    stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R =
       SSet.const (functorVertex (squareRightEdge ≫ R)) := by
   apply SSet.yonedaEquiv.injective
   rw [stdSimplex.yonedaEquiv_δ_comp]
@@ -59,7 +59,7 @@ lemma squareArrowFamily_one {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
   rfl
 
 lemma squareArrowFamily_zero {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    stdSimplex.δ (1 : Fin 2) ≫ squareArrowFamily R =
+    stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R =
       SSet.const (functorVertex (squareLeftEdge ≫ R)) := by
   apply SSet.yonedaEquiv.injective
   rw [stdSimplex.yonedaEquiv_δ_comp]

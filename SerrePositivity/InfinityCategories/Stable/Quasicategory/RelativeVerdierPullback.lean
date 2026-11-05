@@ -45,37 +45,37 @@ namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- D2・β3 の S 内の持ち上げが供給する、右面と外周の Verdier 比較。 -/
-structure RelativeVerdierRectangle {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u}) where
+structure RelativeVerdierRectangle {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
-  right : RelativeVerdierDiagram ν
-  outer : RelativeVerdierDiagram ν
-  right_eq : pastingSquare diagram 0 = (β_ _ _).hom ≫ right.square
-  outer_eq : pastingSquare diagram 1 = (β_ _ _).hom ≫ outer.square
+  right : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν
+  outer : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν
+  right_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram 0 = (β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right.square
+  outer_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram 1 = (β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer.square
 
 namespace RelativeVerdierRectangle
-open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}}
-  (d : RelativeVerdierRectangle ν)
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+  (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν)
 
 /-- ν 像の二つの Verdier 提示から、S 内の実長方形の相対証明書を作る。 -/
 def ofImage (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (r o : VerdierDiagram.{u})
+    (r o : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (hR : pastingSquare (F ≫ ν) 0 = (β_ _ _).hom ≫ r.square)
     (hO : pastingSquare (F ≫ ν) 1 = (β_ _ _).hom ≫ o.square) :
-    RelativeVerdierRectangle ν where
-  diagram := F
-  right := ⟨(β_ _ _).hom ≫ pastingSquare F 0, r, by
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν where
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram := F
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right := ⟨(β_ _ _).hom ≫ pastingSquare F 0, r, by
     rw [Category.assoc]
     change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 0 = r.square
     rw [hR, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  outer := ⟨(β_ _ _).hom ≫ pastingSquare F 1, o, by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer := ⟨(β_ _ _).hom ≫ pastingSquare F 1, o, by
     rw [Category.assoc]
     change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 1 = o.square
     rw [hO, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  right_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right_eq := by
     change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
     rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  outer_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer_eq := by
     change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
     rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 

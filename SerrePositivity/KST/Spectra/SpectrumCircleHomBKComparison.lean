@@ -62,7 +62,7 @@ lemma pointLoopHomBKEndIso_central (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の Hom の円の写像空間から、固定図式の元の Hom–BK end への指定した射。 -/
 def pointLoopCircleHomComparison (X Y : OmegaSpectrum.{u}) :
-    (loopSpace (RawSpectrumMapping.pointedSpace X Y.toKanSequence)).right ⟶
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (RawSpectrumMapping.pointedSpace X Y.toKanSequence)).right ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X) :=
   loopCircleBKComparison _ ≫ (pointLoopHomBKEndIso X Y).hom
 

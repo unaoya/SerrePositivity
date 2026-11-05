@@ -34,7 +34,7 @@ theorem post_rlp_monomorphisms (A : PointedSimplicialSet.{u})
     (MorphismProperty.monomorphisms SSet.{u}).rlp (PointedObject.basedHomMap A p).right := by
   intro T U j hj
   let : Mono j := hj
-  let : Mono A.hom := basepoint_mono A
+  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
   constructor
   intro a b sq
   let earlier := MonoidalClosed.uncurry (a ≫ PointedObject.basedHomι A E)
@@ -54,7 +54,7 @@ theorem post_rlp_monomorphisms (A : PointedSimplicialSet.{u})
     simp only [prescribed, Category.assoc, Under.w]
   obtain ⟨f, hf, hfixed, hbase⟩ := RelativeProductLifting.exists_lift
     p.right hp A.hom j earlier prescribed base hc he ha
-  let l := paramCurry A E f hfixed
+  let l := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι A E)).mp
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,

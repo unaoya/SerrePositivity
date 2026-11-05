@@ -31,31 +31,31 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：全自然数次数と全ての基点を扱う。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。ホモトピー対合の π_* 同型性。 -/
 theorem KanPiIsomorphism.of_self_comp {X : SSet.{u}} [KanComplex X] (f : X ⟶ X)
-    (hf : KanPiIsomorphism (f ≫ f)) : KanPiIsomorphism f := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f ≫ f)) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   intro x n
-  have h0 : Function.Bijective (fun a : KanHomotopy X n x =>
-      KanHomotopy.map n f rfl (KanHomotopy.map n f rfl a)) := by
-    have he : (fun a : KanHomotopy X n x =>
-        KanHomotopy.map n f rfl (KanHomotopy.map n f rfl a)) =
-          KanHomotopy.map n (f ≫ f) rfl :=
-      funext (fun a => (KanHomotopy.map_comp n f rfl f rfl rfl a).symm)
+  have h0 : Function.Bijective (fun a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x =>
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl a)) := by
+    have he : (fun a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x =>
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl a)) =
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ≫ f) rfl :=
+      funext (fun a => (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n f rfl f rfl rfl a).symm)
     exact he.symm ▸ hf x n
-  have h1 : Function.Bijective (fun a : KanHomotopy X n (f.app _ x) =>
-      KanHomotopy.map n f rfl (KanHomotopy.map n f rfl a)) := by
-    have he : (fun a : KanHomotopy X n (f.app _ x) =>
-        KanHomotopy.map n f rfl (KanHomotopy.map n f rfl a)) =
-          KanHomotopy.map n (f ≫ f) rfl :=
-      funext (fun a => (KanHomotopy.map_comp n f rfl f rfl rfl a).symm)
+  have h1 : Function.Bijective (fun a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n (f.app _ x) =>
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl a)) := by
+    have he : (fun a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n (f.app _ x) =>
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl a)) =
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ≫ f) rfl :=
+      funext (fun a => (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n f rfl f rfl rfl a).symm)
     exact he.symm ▸ hf (f.app _ x) n
   refine ⟨?_, ?_⟩
   · intro a b hab
     apply h0.injective
-    exact congrArg (KanHomotopy.map n f (x := f.app _ x) rfl) hab
+    exact congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := f.app _ x) rfl) hab
   · intro y
-    obtain ⟨a, ha⟩ := h0.surjective (KanHomotopy.map n f (x := f.app _ x) rfl y)
+    obtain ⟨a, ha⟩ := h0.surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := f.app _ x) rfl y)
     refine ⟨a, ?_⟩
     apply h1.injective
-    exact congrArg (KanHomotopy.map n f (x := f.app _ (f.app _ x)) rfl) ha
+    exact congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := f.app _ (f.app _ x)) rfl) ha
 
 end SerrePositivity.InfinityCategories.Kan
 

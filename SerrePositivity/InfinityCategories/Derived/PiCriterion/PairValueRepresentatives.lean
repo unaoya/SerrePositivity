@@ -25,11 +25,11 @@ open KST.Spectra
 private lemma groupMap_target_rebase {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (f : X ⟶ Y) {x : X _⦋0⦌} {y z : Y _⦋0⦌}
     (hf : f.app _ x = y) (hy : y = z) (hc : f.app _ x = z)
-    (a : KanHomotopyGroup X n x) :
-    KanHomotopyGroup.map f hc a =
-      KanHomotopyGroup.map (𝟙 Y) hy (KanHomotopyGroup.map f hf a) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f hc a =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 Y) hy (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f hf a) := by
   simpa only [Category.comp_id, MonoidHom.comp_apply] using
-    DFunLike.congr_fun (KanHomotopyGroup.map_comp f hf (𝟙 Y) hy hc) a
+    DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp f hf (𝟙 Y) hy hc) a
 
 section FiniteDetection
 variable {J : Type v} (X : J → KanObject.{u}) (T : SSet.{u}) [KanComplex T]
@@ -42,20 +42,20 @@ lemma finite_positive_pair_representative
     (hdetect : ∀ {K : SSet.{u}} [K.Finite] (f : K ⟶ T),
       ∃ b : J, ∃ g : K ⟶ (X b).obj, Nonempty (Homotopy f (g ≫ s b)))
     (n : ℕ) (x : T _⦋0⦌)
-    (a : Fin 2 → KanHomotopyGroup T n x) :
+    (a : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup T n x) :
     ∃ b : J, ∃ y : (V b) _⦋0⦌,
-      ∃ β : Fin 2 → KanHomotopyGroup (V b) n y,
+      ∃ β : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (V b) n y,
       ∃ z : (KanPath.object T) _⦋0⦌,
       ∃ h₀ : (KanPath.evaluation T 0).app _ z = x,
       ∃ h₁ : (KanPath.evaluation T 1).app _ z = (j b).app _ y,
-      ∃ γ : Fin 2 → KanHomotopyGroup (KanPath.object T) n z,
-        ∀ k, KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) = a k ∧
-          KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
-            KanHomotopyGroup.map (j b) rfl (β k) := by
+      ∃ γ : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object T) n z,
+        ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) = a k ∧
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
+            _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) rfl (β k) := by
   let S := PointedSimplicialSet.sphere.{u} (n + 1)
   let A := PointedSimplicialSet.ofVertex T x
   let hx := PointedSimplicialSet.basepoint_ofVertex T x
-  let ex := KanHomotopyGroup.equivOfIso n (Iso.refl T) (x := A.basepoint) (y := x) hx
+  let ex := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (Iso.refl T) (x := A.basepoint) (y := x) hx
   choose f hf using fun k : Fin 2 ↦ sphereClass_surjective A n (ex.symm (a k))
   let K := pushout S.hom S.hom
   let Q : PointedSimplicialSet.{u} := Under.mk (S.hom ≫ pushout.inl S.hom S.hom)
@@ -97,31 +97,31 @@ lemma finite_positive_pair_representative
     rfl)
   have he₀ : hp ≫ e₀ = rp := Under.UnderMorphism.ext (KanPath.transpose_zero H)
   have he₁ : hp ≫ e₁ = gp ≫ ip := Under.UnderMorphism.ext (KanPath.transpose_one H)
-  let h₀ := OmegaSpectrum.pointedMap_basepoint e₀
-  let h₁ := OmegaSpectrum.pointedMap_basepoint e₁
-  let hi := OmegaSpectrum.pointedMap_basepoint ip
+  let h₀ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₀
+  let h₁ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₁
+  let hi := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint ip
   let γ (k : Fin 2) := sphereClass n (u k ≫ hp)
   let β (k : Fin 2) := sphereClass n (u k ≫ gp)
-  have hs (k : Fin 2) : KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) =
+  have hs (k : Fin 2) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) =
       ex.symm (a k) := by
     have h := sphereClass_post n (u k ≫ hp) e₀
     rw [Category.assoc, he₀, hur] at h
     exact h.trans (hf k)
-  have ht (k : Fin 2) : KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
-      KanHomotopyGroup.map (j b) hi (β k) := by
+  have ht (k : Fin 2) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) hi (β k) := by
     have h := sphereClass_post n (u k ≫ hp) e₁
     rw [Category.assoc, he₁, ← Category.assoc] at h
     exact h.trans (sphereClass_post n (u k ≫ gp) ip).symm
   refine ⟨b, Y.basepoint, β, P.basepoint, h₀.trans hx, h₁.trans hi.symm, γ, ?_⟩
   intro k
   constructor
-  · have ha : KanHomotopyGroup.map (𝟙 T) hx (ex.symm (a k)) = a k := by
+  · have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 T) hx (ex.symm (a k)) = a k := by
       change ex (ex.symm (a k)) = a k
       exact ex.apply_symm_apply _
     exact (groupMap_target_rebase n _ h₀ hx _ (γ k)).trans
-      ((congrArg (KanHomotopyGroup.map (𝟙 T) hx) (hs k)).trans ha)
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 T) hx) (hs k)).trans ha)
   · exact (groupMap_target_rebase n _ h₁ hi.symm _ (γ k)).trans
-      ((congrArg (KanHomotopyGroup.map (𝟙 T) hi.symm) (ht k)).trans
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 T) hi.symm) (ht k)).trans
         (groupMap_target_rebase n (j b) hi hi.symm rfl (β k)).symm)
 
 end FiniteDetection
@@ -136,16 +136,16 @@ local notation "j" b => coherentDiagramValueToTotalKan F b
 
 /-- 二つの類に共通の stage・基点・path と、その path 空間の二つの類を取れる。 -/
 lemma total_positive_pair_representative (n : ℕ) (x : T _⦋0⦌)
-    (a : Fin 2 → KanHomotopyGroup T n x) :
+    (a : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup T n x) :
     ∃ b : B _⦋0⦌, ∃ y : (V b) _⦋0⦌,
-      ∃ β : Fin 2 → KanHomotopyGroup (V b) n y,
+      ∃ β : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (V b) n y,
       ∃ z : (KanPath.object T) _⦋0⦌,
       ∃ h₀ : (KanPath.evaluation T 0).app _ z = x,
       ∃ h₁ : (KanPath.evaluation T 1).app _ z = (j b).app _ y,
-      ∃ γ : Fin 2 → KanHomotopyGroup (KanPath.object T) n z,
-        ∀ k, KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) = a k ∧
-          KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
-            KanHomotopyGroup.map (j b) rfl (β k) := by
+      ∃ γ : Fin 2 → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object T) n z,
+        ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) = a k ∧
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
+            _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) rfl (β k) := by
   exact finite_positive_pair_representative
     (fun b ↦ spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b)))
     (coherentDiagramTotalKan F) (coherentDiagramValueToTotalKan F)

@@ -17,11 +17,11 @@ open SerrePositivity.KST.SConstruction
 /-- 元の端点と自由次元を保持する、正長の部分集合 bead の連結語。 -/
 inductive SimplexHABeadWord (n : ℕ) : Fin (n + 1) → Fin (n + 1) → ℕ → Type
   | bead (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-      SimplexHABeadWord n (I.min' (Finset.card_pos.mp (by omega)))
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (I.min' (Finset.card_pos.mp (by omega)))
         (I.max' (Finset.card_pos.mp (by omega))) (I.card - 2)
   | join {a b c : Fin (n + 1)} {p q : ℕ}
-      (left : SimplexHABeadWord n a b p) (right : SimplexHABeadWord n b c q) :
-      SimplexHABeadWord n a c (p + q)
+      (left : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) (right : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n b c q) :
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a c (p + q)
 
 end SerrePositivity.InfinityCategories.Simplicial
 

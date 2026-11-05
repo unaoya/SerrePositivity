@@ -67,15 +67,15 @@ def d3ParameterPullbackCone_forget_isLimit :
         (show ((0, 1) : Fin 2 × Fin 2) ≤ (1, 1) by decide))).hom) := by
     apply IsPullback.of_map PointedSimplicialSet.forget
     · exact congrArg (fun f ↦ f.hom) (d3ParameterPullbackCone D Y).condition
-    · have h := (hD.op.flip).map (cofiberMappingFunctor Y.obj)
+    · have h := (hD.op.flip).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y.obj)
       change IsPullback
-        (PointedMapping.pre
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (d3ParameterArrow D (show ((0, 0) : Fin 2 × Fin 2) ≤ (1, 0) by decide)) Y.obj)
-        (PointedMapping.pre
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (d3ParameterArrow D (show ((0, 0) : Fin 2 × Fin 2) ≤ (0, 1) by decide)) Y.obj)
-        (PointedMapping.pre
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (d3ParameterArrow D (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)) Y.obj)
-        (PointedMapping.pre
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (d3ParameterArrow D (show ((0, 1) : Fin 2 × Fin 2) ≤ (1, 1) by decide)) Y.obj)
       simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
   exact hp.isLimit
@@ -112,8 +112,8 @@ lemma d3ParameterPullbackSmallCone_isLimit
   let a := d3ParameterArrow D (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)
   have : Mono a.right := inferInstance
   have : Fibration f.hom.right := by
-    change Fibration (PointedMapping.prePointed a Y.obj).right
-    exact PointedMapping.pre_fibration a Y.obj
+    change Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y.obj).right
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration a Y.obj
   have (Z : PointedKanObject.{u}) : Fibration
       ((simplicialHomDiagram (AsSmall.down ⋙ cospan f g) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := by

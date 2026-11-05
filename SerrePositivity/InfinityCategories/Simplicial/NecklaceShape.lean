@@ -23,64 +23,64 @@ open SerrePositivity.KST.SConstruction
 structure NecklaceShape where
   vertexMax : ℕ
   joints : Finset ℕ
-  zero_mem : 0 ∈ joints
-  last_mem : vertexMax ∈ joints
-  mem_le : ∀ j ∈ joints, j ≤ vertexMax
+  zero_mem : 0 ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints
+  last_mem : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints
+  mem_le : ∀ j ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints, j ≤ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax
 
 namespace NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の全頂点。 -/
-abbrev Vertex (T : NecklaceShape) := Fin (T.vertexMax + 1)
+abbrev Vertex (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) := Fin (T.vertexMax + 1)
 
 /-- 原典の立方体の次元は、joint ではない頂点の個数。 -/
-def dimension (T : NecklaceShape) : ℕ :=
+def dimension (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : ℕ :=
   ((Finset.range (T.vertexMax + 1)).filter (fun j => j ∉ T.joints)).card
 
 /-- 元の標準 n 単体一つからなる necklace。n=0 は点。 -/
-def single (n : ℕ) : NecklaceShape where
-  vertexMax := n
-  joints := {0, n}
-  zero_mem := by simp
-  last_mem := by simp
-  mem_le j hj := by
+def single (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape where
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax := n
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints := {0, n}
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.zero_mem := by simp
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.last_mem := by simp
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mem_le j hj := by
     simp only [Finset.mem_insert, Finset.mem_singleton] at hj
     rcases hj with rfl | rfl <;> omega
 
 /-- 元の始頂点。 -/
-def first (T : NecklaceShape) : T.Vertex := 0
+def first (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.Vertex := 0
 
 /-- 元の終頂点。 -/
-def last (T : NecklaceShape) : T.Vertex := Fin.last T.vertexMax
+def last (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.Vertex := Fin.last T.vertexMax
 
 /-- 単体のどの二頂点の間にも joint が厳密に内部にはないという bead 条件。 -/
-def Allows (T : NecklaceShape) {n : ℕ} (s : Fin (n + 1) → T.Vertex) : Prop :=
+def Allows (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ} (s : Fin (n + 1) → T.Vertex) : Prop :=
   ∀ (i j : Fin (n + 1)) (k : ℕ), k ∈ T.joints → ¬ ((s i).val < k ∧ k < (s j).val)
 
 /-- bead 条件は任意の頂点再添字付けに沿う制限で保存される。 -/
-lemma allows_precomp (T : NecklaceShape) {m n : ℕ} {s : Fin (n + 1) → T.Vertex}
+lemma allows_precomp (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {m n : ℕ} {s : Fin (n + 1) → T.Vertex}
     (hs : T.Allows s) (f : Fin (m + 1) → Fin (n + 1)) : T.Allows (s ∘ f) := by
   intro i j k hk
   exact hs (f i) (f j) k hk
 
 /-- 定値な単体は元の necklace 内にある。 -/
-lemma allows_const (T : NecklaceShape) (v : T.Vertex) (n : ℕ) :
+lemma allows_const (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) (n : ℕ) :
     T.Allows (fun _ : Fin (n + 1) => v) := by
   intro i j k hk
   change ¬ (v.val < k ∧ k < v.val)
   omega
 
 /-- 標準単体一つでは、すべての頂点列が bead 条件を満たす。 -/
-lemma single_allows (n m : ℕ) (s : Fin (m + 1) → (single n).Vertex) :
-    (single n).Allows s := by
+lemma single_allows (n m : ℕ) (s : Fin (m + 1) → (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).Vertex) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).Allows s := by
   intro i j k hk h
-  simp only [single, Finset.mem_insert, Finset.mem_singleton] at hk
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at hk
   change (s i).val < k ∧ k < (s j).val at h
   have hj : (s j).val < n + 1 := (s j).isLt
   rcases hk with hk | hk <;> omega
 
 /-- 単調な単体の bead 条件は、元の最初と最後の頂点だけで判定できる。 -/
-lemma allows_iff_endpoints (T : NecklaceShape) {n : ℕ}
+lemma allows_iff_endpoints (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
     (s : Fin (n + 1) →o T.Vertex) :
     T.Allows s ↔ ∀ k ∈ T.joints, ¬ ((s 0).val < k ∧ k < (s (Fin.last n)).val) := by
   constructor

@@ -37,9 +37,9 @@ omit [MonoidalClosed C] in
 使われ方：HA §1.4.2、BF 1978 §2。二重評価の源の制限の比較。 -/
 @[reassoc]
 theorem exchange_natural_middle (A : C) {K L : C} (i : K ⟶ L) (Z : C) :
-    A ◁ (i ▷ Z) ≫ (HomTensorStrength.exchange A L Z).hom =
-      (HomTensorStrength.exchange A K Z).hom ≫ i ▷ (A ⊗ Z) := by
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
+    A ◁ (i ▷ Z) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A L Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K Z).hom ≫ i ▷ (A ⊗ Z) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
     Functor.mapIso_hom, tensorRight, Functor.flip, curriedTensor, Category.assoc]
   rw [associator_inv_naturality_middle_assoc, ← comp_whiskerRight_assoc,
     BraidedCategory.braiding_naturality_right, comp_whiskerRight_assoc,
@@ -51,14 +51,14 @@ theorem exchange_natural_middle (A : C) {K L : C} (i : K ⟶ L) (Z : C) :
 使われ方：Goerss–Jardine I §7、HA §1.4.2。円の自己射と全パラメータの交換。 -/
 @[reassoc]
 theorem natural_pre_right (A : C) {K L : C} (i : K ⟶ L) (Y : C) :
-    (ihom A).map ((MonoidalClosed.pre i).app Y) ≫ (iso A K Y).hom =
-      (iso A L Y).hom ≫ (MonoidalClosed.pre i).app ((ihom A).obj Y) := by
+    (ihom A).map ((MonoidalClosed.pre i).app Y) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A L Y).hom ≫ (MonoidalClosed.pre i).app ((ihom A).obj Y) := by
   apply MonoidalClosed.uncurry_injective
   apply MonoidalClosed.uncurry_injective
   rw [MonoidalClosed.uncurry_natural_left, MonoidalClosed.uncurry_natural_left,
-    uncurry_uncurry_hom, HomTensorStrength.exchange_natural_right_assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   rw [MonoidalClosed.uncurry_pre_app, MonoidalClosed.uncurry_natural_left,
-    uncurry_uncurry_hom]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
   have he : A ◁ (ihom A).map ((MonoidalClosed.pre i).app Y) ≫
       (ihom.ev A).app ((ihom K).obj Y) =
       (ihom.ev A).app ((ihom L).obj Y) ≫ (MonoidalClosed.pre i).app Y :=
@@ -67,15 +67,15 @@ theorem natural_pre_right (A : C) {K L : C} (i : K ⟶ L) (Y : C) :
     MonoidalClosed.id_tensor_pre_app_comp_ev]
   have hw := whisker_exchange i ((ihom.ev A).app ((ihom L).obj Y))
   have hc := congrArg (fun f =>
-    (HomTensorStrength.exchange A K ((ihom A).obj ((ihom L).obj Y))).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K ((ihom A).obj ((ihom L).obj Y))).hom ≫
       f ≫ (ihom.ev L).app Y) hw
   calc
-    _ = (HomTensorStrength.exchange A K ((ihom A).obj ((ihom L).obj Y))).hom ≫
+    _ = (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K ((ihom A).obj ((ihom L).obj Y))).hom ≫
         i ▷ (A ⊗ (ihom A).obj ((ihom L).obj Y)) ≫
           L ◁ (ihom.ev A).app ((ihom L).obj Y) ≫ (ihom.ev L).app Y := by
       simpa only [Category.assoc, Functor.comp_obj, Functor.id_obj, tensorLeft, Functor.flip,
         curriedTensor] using hc
-    _ = _ := by rw [← exchange_natural_middle_assoc]
+    _ = _ := by rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_natural_middle_assoc]
 
 end
 

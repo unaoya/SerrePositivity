@@ -16,63 +16,63 @@ open SerrePositivity.KST.SConstruction
 
 /-- 各入力を右端から保持または削除する標準表示。 -/
 inductive CubeDeletionNormal : ℕ → ℕ → Type
-  | nil : CubeDeletionNormal 0 0
-  | drop {n m : ℕ} (d : CubeDeletionNormal n m) : CubeDeletionNormal (n + 1) m
-  | keep {n m : ℕ} (d : CubeDeletionNormal n m) : CubeDeletionNormal (n + 1) (m + 1)
+  | nil : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal 0 0
+  | drop {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal (n + 1) m
+  | keep {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal (n + 1) (m + 1)
 
 /-- 標準表示が保持する元の入力座標。 -/
-def cubeDeletionNormalEmbedding : {n m : ℕ} → CubeDeletionNormal n m → (Fin m → Fin n)
+def cubeDeletionNormalEmbedding : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m → (Fin m → Fin n)
   | _, _, .nil => Fin.elim0
-  | _, _, .drop d => fun i => (cubeDeletionNormalEmbedding d i).succ
-  | _, _, .keep d => Fin.cons 0 (fun i => (cubeDeletionNormalEmbedding d i).succ)
+  | _, _, .drop d => fun i => (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d i).succ
+  | _, _, .keep d => Fin.cons 0 (fun i => (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d i).succ)
 
 /-- 全入力を保持する標準表示。 -/
-def cubeDeletionNormalId : (n : ℕ) → CubeDeletionNormal n n
+def cubeDeletionNormalId : (n : ℕ) → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n n
   | 0 => .nil
-  | n + 1 => .keep (cubeDeletionNormalId n)
+  | n + 1 => .keep (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n)
 
 /-- 全入力を保持する標準表示の添字は恒等。 -/
 lemma cubeDeletionNormalId_embedding (n : ℕ) :
-    cubeDeletionNormalEmbedding (cubeDeletionNormalId n) = _root_.id := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n) = _root_.id := by
   induction n with
   | zero => funext i; exact Fin.elim0 i
   | succ n ih =>
     funext i
     refine Fin.cases ?_ (fun j => ?_) i
-    · simp [cubeDeletionNormalId, cubeDeletionNormalEmbedding]
-    · simp [cubeDeletionNormalId, cubeDeletionNormalEmbedding, ih]
+    · simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
+    · simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding, ih]
 
 /-- 一つの出力を削除して同じ保持・削除表示へ戻す。 -/
-def cubeDeletionNormalErase : {n m : ℕ} → CubeDeletionNormal n (m + 1) →
-    Fin (m + 1) → CubeDeletionNormal n m
-  | _, _, .drop d, i => .drop (cubeDeletionNormalErase d i)
+def cubeDeletionNormalErase : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n (m + 1) →
+    Fin (m + 1) → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m
+  | _, _, .drop d, i => .drop (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i)
   | _, 0, .keep d, _ => .drop d
   | _, _ + 1, .keep d, i =>
-      Fin.cases (.drop d) (fun j => .keep (cubeDeletionNormalErase d j)) i
+      Fin.cases (.drop d) (fun j => .keep (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d j)) i
 
 /-- 標準表示からの一出力削除は、元の選択添字から同じ座標を飛ばすこと。 -/
-lemma cubeDeletionNormalErase_embedding {n m : ℕ} (d : CubeDeletionNormal n (m + 1))
+lemma cubeDeletionNormalErase_embedding {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n (m + 1))
     (i : Fin (m + 1)) :
-    cubeDeletionNormalEmbedding (cubeDeletionNormalErase d i) =
-      cubeDeletionNormalEmbedding d ∘ i.succAbove := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) =
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d ∘ i.succAbove := by
   induction n generalizing m with
   | zero => cases d
   | succ n ih =>
     cases d with
-    | drop d =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d =>
       funext j
       exact congrArg Fin.succ (congrFun (ih d i) j)
-    | keep d =>
+    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d =>
       cases m with
       | zero => funext j; exact Fin.elim0 j
       | succ m =>
         refine Fin.cases ?_ (fun i => ?_) i
         · funext j
-          simp [cubeDeletionNormalErase, cubeDeletionNormalEmbedding]
+          simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
         · funext j
           refine Fin.cases ?_ (fun j => ?_) j
-          · simp [cubeDeletionNormalErase, cubeDeletionNormalEmbedding]
-          · simpa [cubeDeletionNormalErase, cubeDeletionNormalEmbedding] using
+          · simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
+          · simpa [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
               congrArg Fin.succ (congrFun (ih d i) j)
 
 end SerrePositivity.InfinityCategories.Kan

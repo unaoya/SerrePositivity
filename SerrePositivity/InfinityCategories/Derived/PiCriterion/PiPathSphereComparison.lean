@@ -47,9 +47,9 @@ lemma piPathRelated_sphere_free_homotopy
   obtain ⟨z, h₀, h₁, γ, ha, hb⟩ := h
   let P := PointedSimplicialSet.ofVertex (KanPath.object Y.right) z
   let hp := PointedSimplicialSet.basepoint_ofVertex (KanPath.object Y.right) z
-  let e := KanHomotopyGroup.equivOfIso n (Iso.refl (KanPath.object Y.right)) hp
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (Iso.refl (KanPath.object Y.right)) hp
   obtain ⟨t, ht⟩ := sphereClass_surjective P n (e.symm γ)
-  have htγ : KanHomotopyGroup.map (𝟙 (KanPath.object Y.right)) hp (sphereClass n t) = γ := by
+  have htγ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 (KanPath.object Y.right)) hp (sphereClass n t) = γ := by
     change e (sphereClass n t) = γ
     rw [ht, e.apply_symm_apply]
   let e₀ : P ⟶ Y := Under.homMk (KanPath.evaluation Y.right 0) (by
@@ -61,16 +61,16 @@ lemma piPathRelated_sphere_free_homotopy
     change (KanPath.evaluation Y.right 1).app _ P.basepoint = Z.basepoint
     exact (congrArg ((KanPath.evaluation Y.right 1).app _) hp).trans h₁)
   have he₀ : sphereClass n (t ≫ e₀) = sphereClass n f := by
-    have hs := KanHomotopyGroup.map_square (𝟙 (KanPath.object Y.right)) (𝟙 Y.right)
+    have hs := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (𝟙 (KanPath.object Y.right)) (𝟙 Y.right)
       (KanPath.evaluation Y.right 0) (KanPath.evaluation Y.right 0) (by simp)
-      hp rfl (OmegaSpectrum.pointedMap_basepoint e₀) h₀ n (sphereClass n t)
-    simp only [htγ, KanHomotopyGroup.map_id] at hs
+      hp rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₀) h₀ n (sphereClass n t)
+    simp only [htγ, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id] at hs
     exact (sphereClass_post n t e₀).symm.trans (hs.symm.trans ha)
   have he₁ : sphereClass n (t ≫ e₁) = sphereClass n g := by
-    have hs := KanHomotopyGroup.map_square (𝟙 (KanPath.object Y.right)) (𝟙 Y.right)
+    have hs := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (𝟙 (KanPath.object Y.right)) (𝟙 Y.right)
       (KanPath.evaluation Y.right 1) (KanPath.evaluation Y.right 1) (by simp)
-      hp rfl (OmegaSpectrum.pointedMap_basepoint e₁) h₁ n (sphereClass n t)
-    simp only [htγ, KanHomotopyGroup.map_id] at hs
+      hp rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₁) h₁ n (sphereClass n t)
+    simp only [htγ, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id] at hs
     exact (sphereClass_post n t e₁).symm.trans (hs.symm.trans hb)
   have hf := (functorVertex_piZero_eq_iff_homotopy _ _).mpr
     (sphereClass_eq_free_homotopy Y n (t ≫ e₀) f he₀)
@@ -99,42 +99,42 @@ lemma piPathRelated_sphere_iff_free_homotopy
     exact ⟨z, h₀, h₁, γ, ha, hb⟩
 
 private lemma groupMap_id_rebase_cancel {X : SSet.{u}} [KanComplex X] (n : ℕ)
-    {x y : X _⦋0⦌} (h : x = y) (a : KanHomotopyGroup X n x) :
-    KanHomotopyGroup.map (𝟙 X) h.symm (KanHomotopyGroup.map (𝟙 X) h a) = a := by
+    {x y : X _⦋0⦌} (h : x = y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) h.symm (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) h a) = a := by
   subst y
-  simp only [KanHomotopyGroup.map_id, MonoidHom.id_apply]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id, MonoidHom.id_apply]
 
 /-- 任意の元の基点の類を、同じ頂点を指定した球面射で表す。 -/
 lemma vertex_sphere_representative {X : SSet.{u}} [KanComplex X] (n : ℕ)
-    (x : X _⦋0⦌) (a : KanHomotopyGroup X n x) :
+    (x : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     ∃ f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ PointedSimplicialSet.ofVertex X x,
-      KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X x)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X x)
         (sphereClass n f) = a := by
   let hx := PointedSimplicialSet.basepoint_ofVertex X x
   obtain ⟨f, hf⟩ := sphereClass_surjective (PointedSimplicialSet.ofVertex X x) n
-    (KanHomotopyGroup.map (𝟙 X) hx.symm a)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) hx.symm a)
   refine ⟨f, ?_⟩
   rw [hf]
   exact groupMap_id_rebase_cancel n hx.symm a
 
 /-- 元の基点に戻した球面代表を固定すると、path 比較はその自由ホモトピーと同値。 -/
 lemma piPathRelated_iff_representative_homotopy {X : SSet.{u}} [KanComplex X]
-    (n : ℕ) (x y : X _⦋0⦌) (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y)
+    (n : ℕ) (x y : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y)
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ PointedSimplicialSet.ofVertex X x)
     (g : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ PointedSimplicialSet.ofVertex X y)
-    (hf : KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X x)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X x)
       (sphereClass n f) = a)
-    (hg : KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X y)
+    (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) (PointedSimplicialSet.basepoint_ofVertex X y)
       (sphereClass n g) = b) :
     PiPathRelated n a b ↔ Nonempty (Homotopy f.right g.right) := by
   let hx := PointedSimplicialSet.basepoint_ofVertex X x
   let hy := PointedSimplicialSet.basepoint_ofVertex X y
   constructor
   · intro hab
-    have hf' : KanHomotopyGroup.map (𝟙 X) hx.symm a = sphereClass n f := by
+    have hf' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) hx.symm a = sphereClass n f := by
       rw [← hf]
       exact groupMap_id_rebase_cancel n hx _
-    have hg' : KanHomotopyGroup.map (𝟙 X) hy.symm b = sphereClass n g := by
+    have hg' : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) hy.symm b = sphereClass n g := by
       rw [← hg]
       exact groupMap_id_rebase_cancel n hy _
     have hfg := hab.rebase hx.symm hy.symm
@@ -146,8 +146,8 @@ lemma piPathRelated_iff_representative_homotopy {X : SSet.{u}} [KanComplex X]
 
 /-- 実際の path による類の比較を合成できる。閉路の作用は等式として潰さない。 -/
 lemma PiPathRelated.trans {X : SSet.{u}} [KanComplex X] {n : ℕ}
-    {x y z : X _⦋0⦌} {a : KanHomotopyGroup X n x}
-    {b : KanHomotopyGroup X n y} {c : KanHomotopyGroup X n z}
+    {x y z : X _⦋0⦌} {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x}
+    {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y} {c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n z}
     (hab : PiPathRelated n a b) (hbc : PiPathRelated n b c) : PiPathRelated n a c := by
   obtain ⟨f, hf⟩ := vertex_sphere_representative n x a
   obtain ⟨g, hg⟩ := vertex_sphere_representative n y b
@@ -161,7 +161,7 @@ lemma PiPathRelated.trans {X : SSet.{u}} [KanComplex X] {n : ℕ}
 
 /-- 同じ基点経路を逆向きの自由ホモトピーで戻した比較が存在する。 -/
 lemma PiPathRelated.symm {X : SSet.{u}} [KanComplex X] {n : ℕ}
-    {x y : X _⦋0⦌} {a : KanHomotopyGroup X n x} {b : KanHomotopyGroup X n y}
+    {x y : X _⦋0⦌} {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (hab : PiPathRelated n a b) : PiPathRelated n b a := by
   obtain ⟨f, hf⟩ := vertex_sphere_representative n x a
   obtain ⟨g, hg⟩ := vertex_sphere_representative n y b
@@ -173,22 +173,22 @@ lemma PiPathRelated.symm {X : SSet.{u}} [KanComplex X] {n : ℕ}
 /-- 元の射のホモトピーは、任意の類の両像を実際の基点経路で比較する。 -/
 lemma piPathRelated_of_homotopy {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     {f g : X ⟶ Y} (H : Homotopy f g) (n : ℕ) (x : X _⦋0⦌)
-    (a : KanHomotopyGroup X n x) :
-    PiPathRelated n (KanHomotopyGroup.map f rfl a) (KanHomotopyGroup.map g rfl a) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
+    PiPathRelated n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl a) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g rfl a) := by
   let t := KanPath.transpose H
   let z := t.app (Opposite.op ⦋0⦌) x
   have h₀ : (KanPath.evaluation Y 0).app _ z = f.app _ x :=
     congrArg (fun q ↦ q.app (Opposite.op ⦋0⦌) x) (KanPath.transpose_zero H)
   have h₁ : (KanPath.evaluation Y 1).app _ z = g.app _ x :=
     congrArg (fun q ↦ q.app (Opposite.op ⦋0⦌) x) (KanPath.transpose_one H)
-  refine ⟨z, h₀, h₁, KanHomotopyGroup.map t rfl a, ?_, ?_⟩
-  · have hs := KanHomotopyGroup.map_square t (𝟙 Y) f (KanPath.evaluation Y 0)
+  refine ⟨z, h₀, h₁, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map t rfl a, ?_, ?_⟩
+  · have hs := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square t (𝟙 Y) f (KanPath.evaluation Y 0)
       (by simpa only [t, Category.comp_id] using KanPath.transpose_zero H) rfl rfl rfl h₀ n a
-    rw [KanHomotopyGroup.map_id] at hs
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id] at hs
     exact hs
-  · have hs := KanHomotopyGroup.map_square t (𝟙 Y) g (KanPath.evaluation Y 1)
+  · have hs := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square t (𝟙 Y) g (KanPath.evaluation Y 1)
       (by simpa only [t, Category.comp_id] using KanPath.transpose_one H) rfl rfl rfl h₁ n a
-    rw [KanHomotopyGroup.map_id] at hs
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id] at hs
     exact hs
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

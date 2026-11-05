@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の列の指定頂点への完全な評価。 -/
-def weakStringVertexExact {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringVertexExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) : weakStringModel q n ⟶ sInputModel B :=
   ⟨(fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j),
@@ -27,7 +27,7 @@ def weakStringVertexExact {B C : StableCategory.{u}} (q : ExactMap B C)
       (evaluateFunctorAt_preservesSConstructionData (stdSimplex.obj₀Equiv.symm j)).toCofiberData⟩
 
 /-- 頂点評価は元の全ての再添字と厳密に可換する。 -/
-lemma weakStringVertexExact_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringVertexExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (j : Fin (m.len + 1)) :
     weakStringExactMap q θ ≫ weakStringVertexExact q m j =
       weakStringVertexExact q n (θ.toOrderHom j) := by
@@ -38,20 +38,20 @@ lemma weakStringVertexExact_reindex {B C : StableCategory.{u}} (q : ExactMap B C
   rfl
 
 /-- 同じ頂点評価を、全頂点を持つ閉じた部分圏に値を持つ射として保持する。 -/
-def weakStringVertexTopMap {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringVertexTopMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     (weakStringModel q n).carrier ⟶ closedSubcategory (ClosedStablePredicate.top (sInputModel B)) :=
   fullSubcomplexLift _ (weakStringVertexExact q n j).val (fun _ => trivial)
 
 /-- 全頂点部分圏の包含は、元の評価を回収する。 -/
-lemma weakStringVertexTopMap_ι {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringVertexTopMap_ι {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     weakStringVertexTopMap q n j ≫
       (closedStableInclusion (ClosedStablePredicate.top (sInputModel B))).val =
         (weakStringVertexExact q n j).val := rfl
 
 /-- K-1 の全頂点部分圏に値を持つ同じ完全な頂点評価。 -/
-def weakStringVertexTopExact {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringVertexTopExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     weakStringModel q n ⟶ closedStableModel (ClosedStablePredicate.top (sInputModel B)) :=
   ⟨weakStringVertexTopMap q n j, by
@@ -63,7 +63,7 @@ def weakStringVertexTopExact {B C : StableCategory.{u}} (q : ExactMap B C)
     exact (weakStringVertexExact q n j).property⟩
 
 /-- 全頂点部分圏に値を持つ評価も、元の全ての再添字と厳密に可換する。 -/
-lemma weakStringVertexTopExact_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringVertexTopExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (j : Fin (m.len + 1)) :
     weakStringExactMap q θ ≫ weakStringVertexTopExact q m j =
       weakStringVertexTopExact q n (θ.toOrderHom j) := by

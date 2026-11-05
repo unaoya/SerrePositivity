@@ -21,7 +21,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 instance equivalenceSubcomplex_isStable :
     IsStable (F2.laxPullbackEquivalenceSubcomplex p.hom q.hom : SSet.{u}) :=
@@ -45,23 +45,23 @@ instance pullbackComparison_isExact : IsExactFunctor (F2.catPullbackToLax p.hom 
         (F2.IsLaxEquivalenceVertex p.hom q.hom)).ι))
 
 /-- F2 の元の通常 pullback を K-5 の安定対象へ束ねる。 -/
-def pullbackCategory : StableCategory.{u} :=
+def pullbackCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
   ⟨F2.catPullback p.hom q.hom, inferInstance, inferInstance⟩
 
 /-- 元の通常 pullback の全単体上の比較包含。 -/
-def pullbackInclusion : ExactMap (pullbackCategory p q) (laxCategory p q) :=
+def pullbackInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (pullbackCategory p q) (laxCategory p q) :=
   ⟨F2.catPullbackToLax p.hom q.hom, inferInstance⟩
 
 lemma pullbackInclusion_fullyFaithful : IsFullyFaithful (pullbackInclusion p q).hom :=
   pullbackComparison_fullyFaithful p q
 
-def pullbackFst : ExactMap (pullbackCategory p q) C where
-  hom := (pullbackInclusion p q).hom ≫ (laxFst p q).hom
-  isExact := inferInstance
+def pullbackFst : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (pullbackCategory p q) C where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (pullbackInclusion p q).hom ≫ (laxFst p q).hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := inferInstance
 
-def pullbackSnd : ExactMap (pullbackCategory p q) D where
-  hom := (pullbackInclusion p q).hom ≫ (laxSnd p q).hom
-  isExact := inferInstance
+def pullbackSnd : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (pullbackCategory p q) D where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (pullbackInclusion p q).hom ≫ (laxSnd p q).hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := inferInstance
 
 lemma pullbackFst_hom : (pullbackFst p q).hom = F2.catPullbackFst p.hom q.hom :=
   F2.catPullbackToLax_fst p.hom q.hom

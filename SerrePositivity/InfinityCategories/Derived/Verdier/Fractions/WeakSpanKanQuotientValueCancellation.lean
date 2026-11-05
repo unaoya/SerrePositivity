@@ -25,8 +25,8 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
 
 /-- 概要：元の実比較辺と既存指定値比較辺の合成は、同じ Kan 値の恒等とホモトピック。
 方針：指定値同型の両逆を実三角形へ読み戻し、その同じ三辺の Kan 射を評価する。
@@ -34,19 +34,19 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 使われ方：全固定 fiber 回収の元の値座標での正規化。 -/
 def weakSpanKanQuotientValueCancellationHomotopy :
     SSet.Homotopy
-      (𝟙 (spaceInfinityObject (spaceInfinityVertex ((weakSpanKanDiagram i x).obj c))).obj)
-      (F2.spaceInfinityEdgeValue (weakSpanKanQuotientForwardValueEdgeAtValue h x c) ≫
-        F2.spaceInfinityEdgeValue (weakSpanKanQuotientValueEdge h x c)) := by
-  let e := weakSpanKanQuotientForwardValueEdgeAtValue h x c
-  let d := weakSpanKanQuotientValueEdge h x c
-  let z := spaceInfinityVertex ((weakSpanKanDiagram i x).obj c)
+      (𝟙 (spaceInfinityObject (spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c))).obj)
+      (F2.spaceInfinityEdgeValue (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue h x c) ≫
+        F2.spaceInfinityEdgeValue (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueEdge h x c)) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue h x c
+  let d := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueEdge h x c
+  let z := spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c)
   have hc : Truncated.HomotopyCategory.homMk e.toTruncated ≫
       Truncated.HomotopyCategory.homMk d.toTruncated =
       Truncated.HomotopyCategory.homMk (SSet.Edge.id z).toTruncated := by
     change Truncated.HomotopyCategory.homMk
-      (weakSpanKanQuotientForwardValueEdgeAtValue h x c).toTruncated ≫
-      Truncated.HomotopyCategory.homMk (weakSpanKanQuotientValueEdge h x c).toTruncated = _
-    rw [weakSpanKanQuotientForwardValueEdgeAtValue_hom, weakSpanKanQuotientValueEdge_hom,
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue h x c).toTruncated ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueEdge h x c).toTruncated = _
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientForwardValueEdgeAtValue_hom, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientValueEdge_hom,
       SSet.Edge.toTruncated_id, Truncated.HomotopyCategory.homMk_id]
     exact Iso.inv_hom_id _
   let t := Classical.choice (compStruct_nonempty_of_homMk_fac hc)

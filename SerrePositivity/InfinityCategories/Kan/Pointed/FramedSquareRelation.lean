@@ -22,36 +22,36 @@ namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
 open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.FramedSquare
 variable {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (x y : X _⦋0⦌)
-    (h00 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 0 0) = x)
-    (h10 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 1 0) = y)
-    (h01 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 0 1) = x)
-    (h11 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 1 1) = x)
+    (h00 : q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0) = x)
+    (h10 : q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 0) = y)
+    (h01 : q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 1) = x)
+    (h11 : q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1) = x)
 
 /-- 元の下辺を、指定された二つの隅に表示する。 -/
-def bottom : X.Edge x y := (SquareBoundary.bottom.map q).ofEq h00 h10
+def bottom : X.Edge x y := (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom.map q).ofEq h00 h10
 
 /-- 元の右辺を、指定された二つの隅に表示する。 -/
-def right : X.Edge y x := (SquareBoundary.right.map q).ofEq h10 h11
+def right : X.Edge y x := (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right.map q).ofEq h10 h11
 
 /-- 元の左辺を、元の基点の loop として表示する。 -/
-def left : X.Edge x x := (SquareBoundary.left.map q).ofEq h00 h01
+def left : X.Edge x x := (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left.map q).ofEq h00 h01
 
 /-- 元の上辺が定値なら、下辺と右辺の合成は元の左辺。 -/
 lemma bottom_comp_right
-    (ht : (SquareBoundary.top.map q).edge = (X.σ 0) x) :
-    SSet.HomotopyCategory.homMk (bottom q x y h00 h10) ≫
-      SSet.HomotopyCategory.homMk (right q x y h10 h11) =
-    SSet.HomotopyCategory.homMk (left q x h00 h01) := by
+    (ht : (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top.map q).edge = (X.σ 0) x) :
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom q x y h00 h10) ≫
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.right q x y h10 h11) =
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left q x h00 h01) := by
   let d : X.Edge x x :=
-    ((((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).map q).ofEq
+    ((((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).map q).ofEq
       h00 h11)
-  have hu : SSet.Edge.CompStruct (left q x h00 h01) (SSet.Edge.id x) d :=
-    (((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
+  have hu : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left q x h00 h01) (SSet.Edge.id x) d :=
+    (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
       _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).map q).ofEq rfl ht rfl
-  have hl : SSet.Edge.CompStruct (bottom q x y h00 h10) (right q x y h10 h11) d :=
-    (((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
-      SquareTriangles.lower).map q).ofEq rfl rfl
-        (congrArg (fun e ↦ q.app (Opposite.op ⦋1⦌) e.edge) SquareBoundary.diagonal_edge.symm)
+  have hl : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom q x y h00 h10) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.right q x y h10 h11) d :=
+    (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).map q).ofEq rfl rfl
+        (congrArg (fun e ↦ q.app (Opposite.op ⦋1⦌) e.edge) _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.diagonal_edge.symm)
   have h := SSet.HomotopyCategory.homMk_comp_homMk hu
   erw [SSet.HomotopyCategory.homMk_id, Category.comp_id] at h
   exact (SSet.HomotopyCategory.homMk_comp_homMk hl).trans h.symm
@@ -60,9 +60,9 @@ lemma bottom_comp_right
 lemma top_constant_edge
     (ht : lift (𝟙 (Δ[1] : SSet.{u}))
       (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ q = SSet.const x) :
-    (SquareBoundary.top.map q).edge = (X.σ 0) x := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top.map q).edge = (X.σ 0) x := by
   have h := congrArg SSet.yonedaEquiv ht
-  rw [← SquareBoundary.top_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
   have hc := stdSimplex.yonedaEquiv_σ_comp
     (SSet.const x : (Δ[0] : SSet.{u}) ⟶ X) (0 : Fin 1)
   rw [SSet.comp_const, SSet.yonedaEquiv_const] at hc

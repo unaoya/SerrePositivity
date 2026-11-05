@@ -18,8 +18,8 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 元の比較は、同じ商の底を厳密に保つ実右逆と全相対写像空間内の余単位を持つ。 -/
 theorem exists_weakCosliceComparison_rightSection :
@@ -27,33 +27,33 @@ theorem exists_weakCosliceComparison_rightSection :
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
     ∃ (r : smallLeftUnstraightening (leftStraighteningInfinityDiagram
         (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))) ⟶
-          smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-      (hr : r ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+          smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+      (hr : r ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
         smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
           (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))),
       Nonempty (VertexIso
-        (relativeFunctorVertex pF pF (r ≫ weakQuotientCosliceComparison h x)
-          (by rw [Category.assoc, weakQuotientCosliceComparison_projection, hr]))
+        (relativeFunctorVertex pF pF (r ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x)
+          (by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection, hr]))
         (relativeFunctorVertex pF pF (𝟙 _) (Category.id_comp _))) :=
   exists_relativeRightSection_of_compositeIso _ _ _
-    (weakQuotientCosliceUnit h x) (weakQuotientCosliceComparison h x)
+    (weakQuotientCosliceUnit h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x)
     (scaffoldPointedReconstruction
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
-    (weakQuotientCosliceUnit_projection h x) (weakQuotientCosliceComparison_projection h x)
+    (weakQuotientCosliceUnit_projection h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection h x)
     (scaffoldPointedReconstruction_projection _)
     (scaffoldPointedReconstruction_isPrecompositionEquivalence _)
-    (weakCosliceComposite_scaffold_relativeIso h x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso h x)
 
 /-- 同じ相対三角形から得る、元の実 coslice 比較の右逆。 -/
-def weakCosliceComparisonRightSection := (exists_weakCosliceComparison_rightSection h x).choose
+def weakCosliceComparisonRightSection := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakCosliceComparison_rightSection h x).choose
 
 /-- 選んだ同じ実右逆は、元の Verdier 商への射影を厳密に保つ。 -/
 theorem weakCosliceComparisonRightSection_projection :
-    weakCosliceComparisonRightSection h x ≫
-      smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection h x ≫
+      smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
     smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))) :=
-  (exists_weakCosliceComparison_rightSection h x).choose_spec.choose
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakCosliceComparison_rightSection h x).choose_spec.choose
 
 /-- 右逆と元の比較の合成は、同じ底上の全相対写像空間内で恒等写像と同型。 -/
 def weakCosliceComparisonRightSection_relativeCounit :
@@ -61,11 +61,11 @@ def weakCosliceComparisonRightSection_relativeCounit :
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
     VertexIso
       (relativeFunctorVertex pF pF
-        (weakCosliceComparisonRightSection h x ≫ weakQuotientCosliceComparison h x)
-        (by rw [Category.assoc, weakQuotientCosliceComparison_projection,
-          weakCosliceComparisonRightSection_projection]))
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection h x ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x)
+        (by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection,
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_projection]))
       (relativeFunctorVertex pF pF (𝟙 _) (Category.id_comp _)) :=
-  (exists_weakCosliceComparison_rightSection h x).choose_spec.choose_spec.some
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakCosliceComparison_rightSection h x).choose_spec.choose_spec.some
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

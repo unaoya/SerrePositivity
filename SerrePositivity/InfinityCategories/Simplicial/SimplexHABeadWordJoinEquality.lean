@@ -17,8 +17,8 @@ open SerrePositivity.KST.SConstruction
 /-- 元の端点・自由次元と両因子が一致すれば、同じ順序の連結語も一致する。 -/
 lemma simplexHABeadWordJoin_heq {n : ℕ} {a b c a' b' c' : Fin (n + 1)}
     {p q p' q' : ℕ} (ha : a = a') (hb : b = b') (hc : c = c') (hp : p = p') (hq : q = q')
-    (l : SimplexHABeadWord n a b p) (l' : SimplexHABeadWord n a' b' p')
-    (r : SimplexHABeadWord n b c q) (r' : SimplexHABeadWord n b' c' q')
+    (l : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) (l' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a' b' p')
+    (r : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n b c q) (r' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n b' c' q')
     (hl : HEq l l') (hr : HEq r r') : HEq (l.join r) (l'.join r') := by
   cases ha
   cases hb

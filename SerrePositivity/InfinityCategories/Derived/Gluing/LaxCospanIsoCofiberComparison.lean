@@ -28,8 +28,8 @@ local notation "Q" => F2.cospanPathLeg q q' b c hq
 
 def laxCospanIsoCofiberComparison : FunctorIso
     ((F2.laxPullbackCospanIsoEquivalence p q p' q' a b c hp hq ha hb hc).hom ≫
-      CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q'))
-    (CofiberFamily.cofiber C (F2.laxPullbackArrow p q) ≫ c) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q'))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C (F2.laxPullbackArrow p q) ≫ c) := by
   let π := equivalencePathReplacementProjection c
   let γ := equivalencePathReplacementMap c
   have hπ : IsQCatEquivalence π := isQCatEquivalence_of_trivialKanFibration π
@@ -39,9 +39,9 @@ def laxCospanIsoCofiberComparison : FunctorIso
   letI : IsExactFunctor γ := isExactFunctor_of_isQCatEquivalence hγ
   let e := F2.cospanPathLaxProjectionEquivalence p q p' q' a b c hp hq
   let t := F2.cospanPathLaxTarget p q p' q' a b c hp hq
-  let dm := CofiberFamily.cofiber (equivalencePathReplacement c) (F2.laxPullbackArrow P Q)
-  let d₀ := CofiberFamily.cofiber C (F2.laxPullbackArrow p q)
-  let d₁ := CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q')
+  let dm := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (equivalencePathReplacement c) (F2.laxPullbackArrow P Q)
+  let d₀ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C (F2.laxPullbackArrow p q)
+  let d₁ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q')
   have h₀ : FunctorIso (e.hom ≫ d₀) (dm ≫ π) :=
     laxCospanCofiberComparison P Q p q (equivalencePathReplacementProjection a)
       (equivalencePathReplacementProjection b) π

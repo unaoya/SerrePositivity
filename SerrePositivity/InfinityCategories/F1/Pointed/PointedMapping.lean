@@ -91,7 +91,7 @@ theorem basepoint_mono (X : PointedSimplicialSet.{u}) : Mono X.hom := by
 使われ方：Kerodon Corollary 3.1.3.3、HTT A.3.3。点つき写像空間の充填。 -/
 theorem restriction_fibration (X Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
     Fibration (PointedObject.homRestriction X Y) := by
-  let : Mono X.hom := basepoint_mono X
+  let : Mono X.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono X
   change Fibration ((MonoidalClosed.pre X.hom).app Y.right)
   infer_instance
 
@@ -101,7 +101,7 @@ theorem restriction_fibration (X Y : PointedSimplicialSet.{u}) [KanComplex Y.rig
 使われ方：Kerodon Corollary 3.1.3.3、Bousfield–Friedlander 1978 §2。L9c の始段 Hom。 -/
 instance basedHom_kanComplex (X Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
     KanComplex (PointedObject.basedHom X Y).right := by
-  let : Fibration (PointedObject.homRestriction X Y) := restriction_fibration X Y
+  let : Fibration (PointedObject.homRestriction X Y) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.restriction_fibration X Y
   rw [KanComplex.iff]
   intro n i fs hf
   let t := hf.desc
@@ -155,7 +155,7 @@ def pre {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
   equalizer.lift (f := PointedObject.homRestriction X Z)
     (g := PointedObject.homConstant X Z)
     (PointedObject.basedHomι Y Z ≫ (MonoidalClosed.pre i.right).app Z.right) (by
-      rw [Category.assoc, pre_restriction, PointedObject.basedHomι_condition]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_restriction, PointedObject.basedHomι_condition]
       dsimp only [PointedObject.homConstant]
       simp only [Category.assoc]
       rfl)
@@ -167,7 +167,7 @@ def pre {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 @[reassoc (attr := simp)]
 theorem pre_ι {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
-    pre i Z ≫ PointedObject.basedHomι X Z =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z ≫ PointedObject.basedHomι X Z =
       PointedObject.basedHomι Y Z ≫ (MonoidalClosed.pre i.right).app Z.right :=
   equalizer.lift_ι ..
 
@@ -178,15 +178,15 @@ theorem pre_ι {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 theorem pre_hasLiftingProperty {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) {A B : SSet.{u}} (j : A ⟶ B)
     [HasLiftingProperty j ((MonoidalClosed.pre i.right).app Z.right)] :
-    HasLiftingProperty j (pre i Z) := by
+    HasLiftingProperty j (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z) := by
   constructor
   intro a b sq
   let sq' : CommSq (a ≫ PointedObject.basedHomι Y Z) j
       ((MonoidalClosed.pre i.right).app Z.right) (b ≫ PointedObject.basedHomι X Z) :=
-    ⟨by rw [Category.assoc, ← pre_ι, ← Category.assoc, sq.w]; rfl⟩
+    ⟨by rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, sq.w]; rfl⟩
   have heq : sq'.lift ≫ PointedObject.homRestriction Y Z =
       sq'.lift ≫ PointedObject.homConstant Y Z := by
-    rw [← pre_restriction i Z, ← Category.assoc, sq'.fac_right,
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_restriction i Z, ← Category.assoc, sq'.fac_right,
       Category.assoc, PointedObject.basedHomι_condition]
     dsimp only [PointedObject.homConstant]
     rfl
@@ -199,7 +199,7 @@ theorem pre_hasLiftingProperty {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     rw [Category.assoc, hl]
     exact sq'.fac_left
   · apply (cancel_mono (PointedObject.basedHomι X Z)).mp
-    rw [Category.assoc, pre_ι, ← Category.assoc, hl]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, hl]
     exact sq'.fac_right
 
 /-- 概要：単射に沿う点つき写像空間の制限は Kan fibration。
@@ -208,14 +208,14 @@ theorem pre_hasLiftingProperty {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 使われ方：BF 1978 §2、HTT A.3.3。Hom の塔の遷移。 -/
 theorem pre_fibration {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     [Mono i.right] (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    Fibration (pre i Z) := by
+    Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z) := by
   rw [fibration_iff]
   intro A B j hj
   have : HasLiftingProperty j ((MonoidalClosed.pre i.right).app Z.right) := by
     have h := (SSet.modelCategoryQuillen.fibration_iff
       ((MonoidalClosed.pre i.right).app Z.right)).mp inferInstance
     exact h j hj
-  exact pre_hasLiftingProperty i Z j
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_hasLiftingProperty i Z j
 
 end
 

@@ -19,36 +19,36 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (y : C.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (y : C.obj _⦋0⦌)
 
 /-- 元の同じ商上の coslice 比較の、指定した実 fiber での作用。 -/
 def weakCosliceComparisonFiber :=
-  vertexFiberMap (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+  vertexFiberMap (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
     (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))))
-    (weakQuotientCosliceComparison h x) (weakQuotientCosliceComparison_projection h x) y
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection h x) y
 
 /-- 同じ商上の一つの右逆を、指定した元の fiber に制限した実右逆。 -/
 def weakCosliceComparisonFiberRightSection :=
   vertexFiberMap
     (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
       (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))))
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-    (weakCosliceComparisonRightSection h x) (weakCosliceComparisonRightSection_projection h x) y
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_projection h x) y
 
 /-- 相対余単位は、全ての元の実 fiber の同じ二つの写像間の関手同型へ制限される。 -/
 def weakCosliceComparisonFiberRightSection_counit :
-    FunctorIso (weakCosliceComparisonFiberRightSection h x y ≫ weakCosliceComparisonFiber h x y)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection h x y ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber h x y)
       (𝟙 _) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
   let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
     (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x))))
-  let f := weakCosliceComparisonRightSection h x
-  let g := weakQuotientCosliceComparison h x
-  have hf : f ≫ p = r := weakCosliceComparisonRightSection_projection h x
-  have hg : g ≫ r = p := weakQuotientCosliceComparison_projection h x
-  have he := VertexIso.map (weakCosliceComparisonRightSection_relativeCounit h x)
+  let f := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection h x
+  let g := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x
+  have hf : f ≫ p = r := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_projection h x
+  have hg : g ≫ r = p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection h x
+  have he := VertexIso.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit h x)
     (relativeFunctorFiberHom r r y)
   rw [relativeFunctorFiberHom_vertex r r y (f ≫ g) (by rw [Category.assoc, hg, hf]),
     relativeFunctorFiberHom_vertex r r y (𝟙 _) (Category.id_comp r)] at he
@@ -58,10 +58,10 @@ def weakCosliceComparisonFiberRightSection_counit :
 
 /-- 元の比較は全ての元の実 fiber で本質的全射。充満忠実性はここからは結論しない。 -/
 theorem weakCosliceComparisonFiber_isEssentiallySurjective :
-    IsEssentiallySurjective (weakCosliceComparisonFiber h x y) := by
+    IsEssentiallySurjective (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber h x y) := by
   intro z
-  refine ⟨(weakCosliceComparisonFiberRightSection h x y).app (Opposite.op ⦋0⦌) z, ⟨?_⟩⟩
-  exact functorIsoValue (weakCosliceComparisonFiberRightSection_counit h x y) z
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection h x y).app (Opposite.op ⦋0⦌) z, ⟨?_⟩⟩
+  exact _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit h x y) z
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

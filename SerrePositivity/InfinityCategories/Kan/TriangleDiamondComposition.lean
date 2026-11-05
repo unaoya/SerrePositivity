@@ -26,15 +26,15 @@ structure CompositionDiamond {E : SSet.{u}} {x m n z : E _⦋0⦌}
   /-- 元の二経路が共有する同じ実対角辺。 -/
   diagonal : E.Edge x z
   /-- 第一経路の元の実合成三角形。 -/
-  first : SSet.Edge.CompStruct a b diagonal
+  first : SSet.Edge.CompStruct a b _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal
   /-- 第二経路の元の実合成三角形。 -/
-  second : SSet.Edge.CompStruct c d diagonal
+  second : SSet.Edge.CompStruct c d _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal
 
 /-- 元の二単体そのものから、元の四辺と共通対角辺の実三角形対を回収する。 -/
 def triangleDiamondCompositionData {E : SSet.{u}} {x m n z : E _⦋0⦌}
     (a : E.Edge x m) (b : E.Edge m z) (c : E.Edge x n) (d : E.Edge n z)
-    (T : TriangleDiamondData E a.edge c.edge b.edge d.edge) :
-    {D : CompositionDiamond a b c d //
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData E a.edge c.edge b.edge d.edge) :
+    {D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a b c d //
       D.first.simplex = T.first ∧ D.second.simplex = T.second} := by
   have hs : E.δ 1 (E.δ 1 T.first) = x := by
     have hi := ConcreteCategory.congr_hom
@@ -50,15 +50,15 @@ def triangleDiamondCompositionData {E : SSet.{u}} {x m n z : E _⦋0⦌}
 
 /-- 四辺の表示を移しても、元の全二単体と共通対角辺を変更しない。 -/
 def TriangleDiamondData.ofEq {E : SSet.{u}} {a b c d a' b' c' d' : E _⦋1⦌}
-    (T : TriangleDiamondData E a b c d) (ha : a = a') (hb : b = b') (hc : c = c') (hd : d = d') :
-    TriangleDiamondData E a' b' c' d' where
-  first := T.first
-  second := T.second
-  first_lower := T.first_lower.trans ha
-  second_lower := T.second_lower.trans hb
-  first_upper := T.first_upper.trans hc
-  second_upper := T.second_upper.trans hd
-  diagonal := T.diagonal
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData E a b c d) (ha : a = a') (hb : b = b') (hc : c = c') (hd : d = d') :
+    _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData E a' b' c' d' where
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first := T.first
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second := T.second
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first_lower := T.first_lower.trans ha
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second_lower := T.second_lower.trans hb
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first_upper := T.first_upper.trans hc
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second_upper := T.second_upper.trans hd
+  _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.diagonal := T.diagonal
 
 end SerrePositivity.InfinityCategories.Kan
 

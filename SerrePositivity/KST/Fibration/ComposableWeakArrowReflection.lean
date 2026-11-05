@@ -21,8 +21,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 両 W 辺射影が零対象なら元の接続図式も零対象。 -/
-lemma composableWeakArrow_isZeroVertex_of_components {B C : StableCategory.{u}}
-    (q : ExactMap B C) (v : (composableWeakArrowModel q).carrier _⦋0⦌)
+lemma composableWeakArrow_isZeroVertex_of_components {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (v : (composableWeakArrowModel q).carrier _⦋0⦌)
     (h₀ : IsZeroVertex ((composableWeakFirstMap q).app (Opposite.op ⦋0⦌) v))
     (h₁ : IsZeroVertex ((composableWeakNextMap q).app (Opposite.op ⦋0⦌) v)) :
     IsZeroVertex v := by
@@ -39,8 +39,8 @@ lemma composableWeakArrow_isZeroVertex_of_components {B C : StableCategory.{u}}
     isTerminalVertex_fullSubcomplex_of_ambient _ v hz.2⟩
 
 /-- 両 W 辺射影が実押し出しを持つなら元の接続図式の正方形も押し出し。 -/
-lemma composableWeakArrow_isPushoutSquare_of_components {B C : StableCategory.{u}}
-    (q : ExactMap B C)
+lemma composableWeakArrow_isPushoutSquare_of_components {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (composableWeakArrowModel q).carrier)
     (h₀ : IsPushoutSquare (F ≫ composableWeakFirstMap q))
     (h₁ : IsPushoutSquare (F ≫ composableWeakNextMap q)) : IsPushoutSquare F := by
@@ -58,7 +58,7 @@ lemma composableWeakArrow_isPushoutSquare_of_components {B C : StableCategory.{u
     exact h
 
 /-- 元の Ar 図式の gapped 条件は両短辺への射影から正確に判定できる。 -/
-lemma composableWeakArrow_isGapped_iff {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma composableWeakArrow_isGapped_iff {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : ℕ} (F : arNerve n ⟶ (composableWeakArrowModel q).carrier) :
     IsGapped F ↔ IsGapped (F ≫ composableWeakFirstMap q) ∧
       IsGapped (F ≫ composableWeakNextMap q) := by

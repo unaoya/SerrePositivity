@@ -24,7 +24,7 @@ theorem leftStraighteningSectionJointDiagram_baseChangeIso_pre [Quasicategory D]
       (transportSimplexFirstVertexMap D))).app
         ((ihom (LeftFibrationInfinity B)).obj SpaceInfinity.{u}))).toFunctor.map
           (leftStraighteningSectionJointDiagram_baseChangeIso k).hom =
-      (straighteningJointBaseChangeRestrictionIso k).hom := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k).hom := by
   exact (localizationPre_fullyFaithful
     (Y := (ihom (LeftFibrationInfinity B)).obj SpaceInfinity.{u}) _ _
     (transportSimplexFirstVertexMap_ulift_isLocalization.{u, u + 1} D)
@@ -35,7 +35,7 @@ theorem leftStraighteningSectionJointDiagram_baseChangeIso_value [Quasicategory 
     (c : TransportSimplexCategory D) :
     functorHomEvaluate (leftStraighteningSectionJointDiagram_baseChangeIso k).hom
       (ULift.up ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌) (nerveVertex c))) =
-    functorHomEvaluate (straighteningJointBaseChangeRestrictionIso k).hom
+    functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k).hom
       (ULift.up (nerveVertex c)) := by
   let l := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D)
   let a := ULift.up.{u + 1} (nerveVertex c)

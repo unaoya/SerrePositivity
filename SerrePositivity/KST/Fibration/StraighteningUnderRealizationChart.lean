@@ -18,18 +18,18 @@ variable {B : SSet.{u}}
 /-- 実現側の元の分類値は、同じ共同制限の分類値と一致する。 -/
 theorem straighteningRestrict_source_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
-    (kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
         (functorVertex (leftStraighteningInfinityMap B ≫
           (pre ((SSet.uliftFunctor.{u + 1, u}).map
             (transportSimplexFirstVertexMap B))).app SpaceInfinity.{u})) =
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
           (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
             (transportSimplexFirstVertexMap B) ≫ leftStraighteningSectionJointDiagram B)) := by
   let l := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B)
   have hv := congrArg functorVertex
     (transposeFunctorFamily_comp l (leftStraighteningSectionJointDiagram B)).symm
-  have he := congrArg ((kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)) hv
+  have he := congrArg ((_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)) hv
   exact he.trans (doubleFunctorEvaluation_transpose_vertex
     (l ≫ leftStraighteningSectionJointDiagram B) (ULift.up (nerveVertex c))
     (coherentNerveVertex X))
@@ -37,7 +37,7 @@ theorem straighteningRestrict_source_vertex
 /-- 制限実現側の中間値は、元の単体切断空間の標準頂点。 -/
 theorem straighteningRestrict_target_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
-    (kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
         (functorVertex (internalHomFlipHomEquiv
           ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory B)))
           (LeftFibrationInfinity B) SpaceInfinity.{u} (transportSimplexSectionInfinity B))) =
@@ -52,9 +52,9 @@ def straighteningUnderRealizationChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningInfinityMap_underRealizationIso B)
-      (kanEnrichedDoubleEvaluation X c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c))
     (congrArg HomotopyCategory.mk (straighteningRestrict_source_vertex X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)) X c))
 
 /-- 元の under 実現比較全体は、元の初頂点切断比較と同じ実制限成分の合成。 -/
@@ -62,27 +62,27 @@ theorem straighteningUnderRealizationChart_factor
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     straighteningUnderRealizationChart X c =
       straighteningFirstVertexSectionChart X c ≪≫ transportUnderJointComponentIso X c := by
-  let T := kanEnrichedDoubleEvaluation X c
+  let T := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c
   let h := congrArg (fun f => HomotopyCategory.mk (functorVertex f))
     (internalHomFlipHomEquiv_transposeFunctorFamily
       (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).realization)
-  have hf := mapNormalizeCompositionWithEq (hoFunctor.map T).toFunctor
+  have hf := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.mapNormalizeCompositionWithEq (hoFunctor.map T).toFunctor
     (leftStraighteningInfinityMap_restrictIso B) (transportSimplexUnderRealizationIso B) h
     (leftStraighteningInfinityMap_underRealizationIso B) rfl
     (congrArg HomotopyCategory.mk (straighteningRestrict_source_vertex X c))
     (congrArg HomotopyCategory.mk (straighteningRestrict_target_vertex X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)) X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)) X c))
   have hr := F2.isoNormalizeEndpoints_eq_of_heq _ _
     (congrArg HomotopyCategory.mk (straighteningRestrict_source_vertex X c))
     (congrArg HomotopyCategory.mk (straighteningRestrict_target_vertex X c))
     (leftStraighteningInfinityMap_restrictIso_heq_sectionChart X c)
   have hu := F2.isoNormalizeEndpoints_eq_of_heq _ _
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)) X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)) X c))
     (transportUnderJointComponentIso_heq_realizationMap X c).symm
   exact hf.trans (congrArg₂ (fun e f => e ≪≫ f) hr hu)
@@ -99,11 +99,11 @@ theorem straighteningUnderRealizationChart_pointHom
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X)).symm v) ≫
       (straighteningFirstVertexSectionChart X c).inv ≫
         (straighteningUnderRealizationChart X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).obj c).obj X)).symm
         ((relativeFunctorOverPre X.val.hom
           ((transportSimplexUnderDomainTransformation B).app (Opposite.op c))).app

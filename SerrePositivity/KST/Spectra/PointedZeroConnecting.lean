@@ -23,10 +23,10 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- 標準 fiber の連結成分を、既存の fiberPoint の連結成分へ移す。 -/
 def pointedFiberZeroEquiv {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) [Fibration p.right] :
-    KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint ≃
-      KanHomotopy (KanFiber p.right (p.right.app _ E.basepoint)) 0
-        (fiberPoint p.right E.basepoint) :=
-  KanHomotopy.equivOfIso 0 (Iso.refl _) (PointedSimplicialSet.basepoint_ofVertex _ _)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint ≃
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint)) 0
+        (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso 0 (Iso.refl _) (PointedSimplicialSet.basepoint_ofVertex _ _)
 
 /-- 概要：標準基点での基本群から fiber の連結成分への連結写像。
 方針：底の基点を像へ戻し、元の連結写像を適用して標準 fiber 基点へ戻す。
@@ -34,19 +34,19 @@ def pointedFiberZeroEquiv {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) [Fibrat
 使われ方：Goerss–Jardine I §8。loop の零次数と連結射の比較。 -/
 def pointedConnectingZero {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     [Fibration p.right] [KanComplex B.right] :
-    KanHomotopyGroup B.right 0 B.basepoint →
-      KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint := fun a ↦
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right 0 B.basepoint →
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (pointedFiber p).right 0 (pointedFiber p).basepoint := fun a ↦
   (pointedFiberZeroEquiv p).symm
-    (connecting p.right E.basepoint 0
-      ((KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
-        (OmegaSpectrum.pointedMap_basepoint p)).symm a))
+    (_root_.SerrePositivity.InfinityCategories.Kan.connecting p.right E.basepoint 0
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)).symm a))
 
 /-- 基点を標準化した fiber の境界頂点は、元の境界頂点へ移る。 -/
 lemma BoundaryLift.pointedFiberZeroEquiv_mk {E B : PointedSimplicialSet.{u}} {p : E ⟶ B}
     [Fibration p.right] {s : B.right.PtSimplex 1 (p.right.app _ E.basepoint)}
-    (L : BoundaryLift p.right E.basepoint s) :
-    pointedFiberZeroEquiv p (KanHomotopy.mk 0 L.pointedBoundary) = KanHomotopy.mk 0 L.boundary := by
-  change KanHomotopy.map 0 (𝟙 _) _ (KanHomotopy.mk 0 L.pointedBoundary) = _
+    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
+    pointedFiberZeroEquiv p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.boundary := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   congr 1
 
@@ -57,11 +57,11 @@ lemma BoundaryLift.pointedFiberZeroEquiv_mk {E B : PointedSimplicialSet.{u}} {p 
 lemma pointedConnectingZero_boundaryLift {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     [Fibration p.right] [KanComplex B.right]
     {s : B.right.PtSimplex 1 (p.right.app _ E.basepoint)}
-    (L : BoundaryLift p.right E.basepoint s) :
+    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
     pointedConnectingZero p
-        (KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
-          (OmegaSpectrum.pointedMap_basepoint p) (KanHomotopyGroup.mk s)) =
-      KanHomotopy.mk 0 L.pointedBoundary := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary := by
   apply (pointedFiberZeroEquiv p).injective
   dsimp only [pointedConnectingZero]
   rw [Equiv.apply_symm_apply, MulEquiv.symm_apply_apply, BoundaryLift.pointedFiberZeroEquiv_mk,

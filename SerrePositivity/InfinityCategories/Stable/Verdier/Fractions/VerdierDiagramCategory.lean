@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 end SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
+open _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram
 
 instance instCategory : Category _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} where
   Hom D E := FunctorHom D.square E.square

@@ -45,7 +45,7 @@ def pointedStrictTransformationOfAction
       uncurry (F.map X Y ≫ PointedObject.basedHomι (F.obj X).obj (F.obj Y).obj) ≫
         (show (F.obj Y).obj ⟶ (G.obj Y).obj from τ Y).right) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G :=
-  strictSimplicialTransformationOfWhisker F G τ
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker F G τ
     (pointedStrictTransformationOfAction_whisker F G τ h)
 
 end SerrePositivity.KST.SConstruction

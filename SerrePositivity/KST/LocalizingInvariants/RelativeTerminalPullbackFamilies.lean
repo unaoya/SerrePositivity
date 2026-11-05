@@ -23,8 +23,8 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ pullback 射影と終端制限を同時に記憶する実 corner。 -/
 def terminalPullbackFamilyCorner (X : SSet.{u}) (n : ℕ) :
-    internalHom.PullbackObjObj (simplexLastPoint.{u} n) (pullbackProjection X) :=
-  Functor.PullbackObjObj.ofHasPullback internalHom (simplexLastPoint n) (pullbackProjection X)
+    internalHom.PullbackObjObj (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint.{u} n) (pullbackProjection X) :=
+  Functor.PullbackObjObj.ofHasPullback internalHom (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (pullbackProjection X)
 
 instance terminalPullbackFamilyCorner_trivialKanFibration (X : SSet.{u})
     [Quasicategory X] [IsStable X] (n : ℕ) :
@@ -38,12 +38,12 @@ lemma exists_relative_terminalPullbackFamily {S P X : SSet.{u}}
     (b : P ⟶ (ihom (Δ[n] : SSet.{u})).obj ((ihom (horn 2 2 : SSet.{u})).obj X))
     (c : P ⟶ (ihom (Δ[0] : SSet.{u})).obj (pullbackDiagrams X))
     (hab : a ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) = j ≫ b)
-    (hac : a ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) = j ≫ c)
+    (hac : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) = j ≫ c)
     (hbc : c ≫ (ihom (Δ[0] : SSet.{u})).map (pullbackProjection X) =
-      b ≫ (pre (simplexLastPoint n)).app ((ihom (horn 2 2 : SSet.{u})).obj X)) :
+      b ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app ((ihom (horn 2 2 : SSet.{u})).obj X)) :
     ∃ F : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X),
       j ≫ F = a ∧ F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) = b ∧
-      F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) = c := by
+      F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) = c := by
   let sq := terminalPullbackFamilyCorner X n
   let t : P ⟶ sq.pt := sq.isPullback.lift c b hbc
   have ht₁ : t ≫ sq.fst = c := sq.isPullback.lift_fst _ _ _

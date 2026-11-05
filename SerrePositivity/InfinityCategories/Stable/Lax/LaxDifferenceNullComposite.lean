@@ -61,9 +61,9 @@ lemma comp_zero_of_arrowMk_eq {T : Type*} [Category T] [HasZeroMorphisms T]
   rw [← hf, ← hg]
   exact h
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 local instance laxDifferenceFunctorZero (A X : SSet.{u}) [Quasicategory X] [HasZeroVertex X] :
-    HasZeroVertex ((ihom A).obj X) := functorHasZeroVertex A X
+    HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.functorHasZeroVertex A X
 
 local instance laxDifferenceFunctorZeroMorphisms (A X : SSet.{u})
     [Quasicategory X] [HasZeroVertex X] :

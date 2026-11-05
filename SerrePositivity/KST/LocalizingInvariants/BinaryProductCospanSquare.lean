@@ -37,12 +37,12 @@ def topComposition : SSet.Edge.CompStruct (coherentNerveEdge (BinaryGraph.graph 
   (coherentNerveCompStruct (BinaryGraph.graph g) (Binary.fst Z Y)).ofEq rfl rfl
     (by rw [BinaryGraph.graph, Binary.lift_fst])
 
-def rectangle : SquarePastingRectangle
+def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
     (BinaryProductDiagonal.square a b f g hc S hS ht hr) (BinaryProjection.square f Y)
     (SSet.yonedaEquiv.symm (bottomComposition a b).simplex)
     (SSet.yonedaEquiv.symm (topComposition g).simplex) := by
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
   · rw [BinaryProductDiagonal.square_right, BinaryProjection.square_left]
   · rw [BinaryProductDiagonal.square_bottom a b f g hc S hS ht hr hl,
       stdSimplex.δ_comp_yonedaEquiv_symm]

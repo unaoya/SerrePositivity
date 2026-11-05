@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
 
 variable {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
 
@@ -33,36 +33,36 @@ def ofSquare (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Verdi
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (hb : squareBottomEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
     (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
-    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1))) :
-    RelativeVerdierDiagram ν where
-  square := F
-  image := {
-    toVerdierSequence := d
-    square := F ≫ ν
-    left_eq := by
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ ν) 0 1))) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν where
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.square := F
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image := {
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.toVerdierSequence := d
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square := F ≫ ν
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.left_eq := by
       have h := squareBottomEdge_source (F ≫ ν)
       rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
       exact h.symm
-    middle_eq := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.middle_eq := by
       have h := squareBottomEdge_target (F ≫ ν)
       rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
       exact h.symm
-    right_eq := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_eq := by
       have h := squareRightEdge_target (F ≫ ν)
       rw [hr, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).tgt_eq] at h
       exact h.symm
-    bottom_edge := hb
-    right_edge := hr
-    zero_corner := hz }
-  image_eq := rfl
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.bottom_edge := hb
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_edge := hr
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.zero_corner := hz }
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image_eq := rfl
 
 @[simp] lemma ofSquare_square (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
-    (ofSquare ν d F hb hr hz).square = F := rfl
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hb hr hz).square = F := rfl
 
 @[simp] lemma ofSquare_sequence (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
-    (ofSquare ν d F hb hr hz).image.toVerdierSequence = d := rfl
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hb hr hz).image.toVerdierSequence = d := rfl
 
 /-- 源内の可換性から、指定四辺を保つ零化四角形を実現する。
 ν の像だけで可換性を仮定することはしない。 -/
@@ -116,18 +116,18 @@ lemma exists_of_source_comm [Quasicategory S] (d : _root_.SerrePositivity.Infini
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
     (hq : SSet.yonedaEquiv.symm q.edge ≫ ν =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
-    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
-    ∃ t : RelativeVerdierDiagram ν, t.image.toVerdierSequence = d ∧
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
+    ∃ t : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν, t.image.toVerdierSequence = d ∧
       squareBottomEdge ≫ t.square = SSet.yonedaEquiv.symm i.edge ∧
       squareRightEdge ≫ t.square = SSet.yonedaEquiv.symm q.edge ∧
       squareLeftEdge ≫ t.square = SSet.yonedaEquiv.symm l.edge ∧
       squareTopEdge ≫ t.square = SSet.yonedaEquiv.symm r.edge := by
-  obtain ⟨F, hb, hr, hl, ht⟩ := exists_square_of_source_comm i q l r h
+  obtain ⟨F, hb, hr, hl, ht⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_square_of_source_comm i q l r h
   have hbi : squareBottomEdge ≫ F ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     rw [← Category.assoc, hb, hi]
   have hqr : squareRightEdge ≫ F ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
     rw [← Category.assoc, hr, hq]
   have hFz : squareVertex F 0 1 = z := by
     have he := squareLeftEdge_target F
@@ -137,11 +137,11 @@ lemma exists_of_source_comm [Quasicategory S] (d : _root_.SerrePositivity.Infini
       rw [hle, Equiv.apply_symm_apply]
       exact le.tgt_eq
     exact he.symm.trans hez
-  have hz' : IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1)) := by
-    change IsZeroCategory (stableObject (ν.app _ (squareVertex F 0 1)))
+  have hz' : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ ν) 0 1)) := by
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app _ (squareVertex F 0 1)))
     rw [hFz]
     exact hz
-  exact ⟨ofSquare ν d F hbi hqr hz', rfl, hb, hr, hl, ht⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hbi hqr hz', rfl, hb, hr, hl, ht⟩
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
 

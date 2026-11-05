@@ -64,14 +64,14 @@ def VerdierSequence.presentation (d : _root_.SerrePositivity.InfinityCategories.
     rw [hQ.2.2.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.left)).tgt_eq] at h
     exact h.symm
   exact {
-    toVerdierSequence := d
-    square := Q
-    left_eq := h₀
-    middle_eq := h₁
-    right_eq := h₂
-    bottom_edge := hQ.1
-    right_edge := hQ.2.2.2
-    zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.toVerdierSequence := d
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square := Q
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.left_eq := h₀
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.middle_eq := h₁
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_eq := h₂
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.bottom_edge := hQ.1
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_edge := hQ.2.2.2
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
 
 lemma VerdierSequence.presentation_sequence (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}) :
     (VerdierSequence.presentation d).toVerdierSequence = d := rfl

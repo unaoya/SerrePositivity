@@ -25,32 +25,32 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 概要：指定された商降下同型を使う、同じ小さい unstraightening の全空間比較。
 方針：降下同型の逆を元の全変換空間で作用させ、同じ底 q へ写す。
 規約：値ごとの同値を独立に選び直さない。
 使われ方：K-B-S の元の全族単位に後合成する実比較射。 -/
 def weakSpanKanQuotientSimplexUnstraighteningMap :
-    smallLeftUnstraightening (weakSpanKanCoherentDiagram i x) ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x) :=
-  smallUnstraighteningFunctorHom (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom ≫
+    smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom ≫
     smallLeftUnstraighteningMap
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫
-        weakSpanKanQuotientDiagram h x)
-      (weakSpanKanQuotientDiagram h x) (transportSimplexFirstVertexMap B.obj ≫ q.hom) rfl
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) (transportSimplexFirstVertexMap B.obj ≫ q.hom) rfl
 
 /-- 概要：同じ全空間比較は元の初頂点写像と商 q を厳密に被覆する。
 方針：指定全変換の底保存と既存の小さい底変換の射影式を使う。
 規約：底の可換性を自然同型だけに弱めない。
 使われ方：K-B-S の厳密な底条件を同じ実全空間射について保持する。 -/
 theorem weakSpanKanQuotientSimplexUnstraighteningMap_projection :
-    weakSpanKanQuotientSimplexUnstraighteningMap h x ≫
-        smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x) ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x ≫
+        smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) ≫
         transportSimplexFirstVertexMap B.obj ≫ q.hom := by
-  rw [weakSpanKanQuotientSimplexUnstraighteningMap, Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap, Category.assoc,
     smallLeftUnstraighteningMap_projection, ← Category.assoc,
     _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection]
 
@@ -59,26 +59,26 @@ theorem weakSpanKanQuotientSimplexUnstraighteningMap_projection :
 規約：単位に条件付き。元の marked span 全族への降下や恒等点比較はまだ主張しない。
 使われ方：Ind-S (5) の供給を K-B-S の次の段へ接続する。 -/
 def weakSpanKanQuotientSimplexFamilyMap
-    (f : pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    (f : pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) ⟶
-      smallLeftUnstraightening (weakSpanKanCoherentDiagram i x)) :=
-  f ≫ weakSpanKanQuotientSimplexUnstraighteningMap h x
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x)) :=
+  f ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x
 
 /-- 概要：供給された単位の厳密な底保存を同じ商上の全族射へ移す。
 方針：元の単位の射影式へ指定降下比較の射影式を合成する。
 規約：単体圏引き戻し上での条件付き結果。元の全族の供給完了とは数えない。
 使われ方：Ind-S (5) の後の K-B-S の厳密な底条件。 -/
 theorem weakSpanKanQuotientSimplexFamilyMap_projection
-    (f : pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    (f : pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) ⟶
-      smallLeftUnstraightening (weakSpanKanCoherentDiagram i x))
-    (hf : f ≫ smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x) =
-      weakSpanSimplexProjection i x) :
-    weakSpanKanQuotientSimplexFamilyMap h x f ≫
-        smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      weakSpanSimplexProjection i x ≫ transportSimplexFirstVertexMap B.obj ≫ q.hom := by
-  rw [weakSpanKanQuotientSimplexFamilyMap, Category.assoc,
-    weakSpanKanQuotientSimplexUnstraighteningMap_projection, ← Category.assoc, hf]
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+    (hf : f ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap h x f ≫
+        smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x ≫ transportSimplexFirstVertexMap B.obj ≫ q.hom := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap_projection, ← Category.assoc, hf]
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

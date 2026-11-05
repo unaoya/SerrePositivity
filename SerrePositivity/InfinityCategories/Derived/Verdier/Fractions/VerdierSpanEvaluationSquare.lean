@@ -24,63 +24,63 @@ namespace SerrePositivity.KST.LocalizingInvariants
 end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
 
 /-- 元の実分母族の上の、同じ次辺から分数評価への比較四角形。 -/
-def verdierSpanEvaluationSquare : verdierDenominatorSpanFamily i x y ⟶
+def verdierSpanEvaluationSquare : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y ⟶
     (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj C.obj :=
-  verdierDenominatorSpanCanonicalComparison i x y ≫
-    fixedMarkedSpanInclusion B.obj (weakEquivalences i) x y ≫
-      fractionEvaluationSquare q.hom (weakEquivalences i) h.inverts
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
+    fixedMarkedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+      fractionEvaluationSquare q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
 
 /-- 比較の下辺は、回収した同じ実次辺の全族の商像。 -/
-lemma verdierSpanEvaluationSquare_bottom : verdierSpanEvaluationSquare h x y ≫
+lemma verdierSpanEvaluationSquare_bottom : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h x y ≫
     (pre squareBottomEdge).app C.obj =
-      verdierDenominatorSpanNumerator i x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanNumerator i x y ≫
         F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm y) ≫
           (ihom (Δ[1] : SSet.{u})).map q.hom := by
-  rw [verdierSpanEvaluationSquare]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare]
   simp only [Category.assoc]
   rw [fractionEvaluationSquare_bottom, (pre horn₂₀.ι₀₂).naturality q.hom]
   have he := congrArg (fun f => f ≫ (ihom (Δ[1] : SSet.{u})).map q.hom)
-    (verdierDenominatorSpanCanonicalComparison_numerator i x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_numerator i x y)
   simpa only [Category.assoc] using he
 
 /-- 比較の上辺は、同じ元の実分数評価。 -/
-lemma verdierSpanEvaluationSquare_top : verdierSpanEvaluationSquare h x y ≫
+lemma verdierSpanEvaluationSquare_top : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h x y ≫
     (pre squareTopEdge).app C.obj =
-      verdierDenominatorSpanCanonicalComparison i x y ≫
-        fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
+        fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
           vertexFiberι ((pre (boundary 1).ι).app C.obj)
             (functorVertex (intervalMappingBoundary
               (q.hom.app (Opposite.op ⦋0⦌) x) (q.hom.app (Opposite.op ⦋0⦌) y))) := by
-  rw [verdierSpanEvaluationSquare]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare]
   simp only [Category.assoc]
   rw [fractionEvaluationSquare_top, fixedFractionEvaluation_inclusion]
 
 /-- 比較の左辺は、前段へ渡す同じ元の実分母の商像。 -/
-lemma verdierSpanEvaluationSquare_left : verdierSpanEvaluationSquare h x y ≫
+lemma verdierSpanEvaluationSquare_left : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h x y ≫
     (pre squareLeftEdge).app C.obj =
-      verdierDenominatorSpanProjection i x y ≫ (verdierDenominatorOver i x).ι ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y ≫ (verdierDenominatorOver i x).ι ≫
         F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x) ≫
           (ihom (Δ[1] : SSet.{u})).map q.hom := by
-  rw [verdierSpanEvaluationSquare]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare]
   simp only [Category.assoc]
   rw [fractionEvaluationSquare_left, (pre horn₂₀.ι₀₁).naturality q.hom]
   have he := congrArg (fun f => f ≫ (ihom (Δ[1] : SSet.{u})).map q.hom)
-    (verdierDenominatorSpanCanonicalComparison_denominator i x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_denominator i x y)
   simpa only [Category.assoc] using he
 
 /-- 共通実分母の fiber 上で、比較の左辺は同じ一つの実分母の商像に定値。 -/
 lemma verdierSpanEvaluationSquare_fiber_left
     (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) :
-    vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-      verdierSpanEvaluationSquare h x y ≫ (pre squareLeftEdge).app C.obj =
+    vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h x y ≫ (pre squareLeftEdge).app C.obj =
     SSet.const (((verdierDenominatorOver i x).ι ≫
       F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x) ≫
       (ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌) d) := by
-  rw [verdierSpanEvaluationSquare_left, ← Category.assoc, vertexFiberι_comp, SSet.const_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_left, ← Category.assoc, vertexFiberι_comp, SSet.const_comp]
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

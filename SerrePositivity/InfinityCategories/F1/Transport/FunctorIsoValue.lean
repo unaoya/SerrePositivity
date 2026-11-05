@@ -27,14 +27,14 @@ def functorIsoValue {K Y : SSet.{u}} {F G : K ⟶ Y} (e : FunctorIso F G) (x : K
 /-- 同じ評価同型の順方向射は、同じ二胞体の指定点での評価。 -/
 theorem functorIsoValue_hom {K Y : SSet.{u}} {F G : K ⟶ Y}
     (e : FunctorIso F G) (x : K _⦋0⦌) :
-    (functorIsoValue e x).hom = functorHomEvaluate e.hom x := rfl
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x).hom = functorHomEvaluate e.hom x := rfl
 
 /-- 通常の成分が定義されるとき、同じ評価は元の指定成分に厳密に一致する。 -/
 theorem functorIsoValue_eq_app {K Y : SSet.{u}} [Quasicategory K] [Quasicategory Y]
     {F G : K ⟶ Y} (e : FunctorIso F G) (x : K _⦋0⦌) :
-    functorIsoValue e x = e.app x := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x = e.app x := by
   apply Iso.ext
-  rw [functorIsoValue_hom, functorIso_app_hom_evaluate]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate]
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

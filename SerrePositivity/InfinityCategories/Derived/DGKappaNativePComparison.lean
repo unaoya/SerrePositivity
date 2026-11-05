@@ -25,13 +25,13 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (P : DGKappaPerfectInput R D I)
 
 /-- 元の P と元の Yoneda の全合成を、同じ固定 ν 値間の完全関手として保持する。 -/
-def dgKappaNativePExactMap : ExactMap (dgKInputStableValue R D)
+def dgKappaNativePExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R D)
     (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I)) where
-  hom := (presentedPerfectDGQCatEvaluationEquivalence R D).hom ≫
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (presentedPerfectDGQCatEvaluationEquivalence R D).hom ≫
     dgKappaPerfectResolvedComparison R D I P ≫
     dgNerve.map (dgPerfectYoneda R (dgKappaResolvedKernelKInput R D I)) ≫
     (presentedPerfectDGQCatEvaluationEquivalence R (dgKappaResolvedKernelKInput R D I)).inv
-  isExact := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
     let : IsExactFunctor (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val :=
       isExactFunctor_of_isQCatEquivalence
         (dgKappaResolvedKernelPerfQCatEquivalence R D I P).isQCatEquivalence
@@ -39,41 +39,41 @@ def dgKappaNativePExactMap : ExactMap (dgKInputStableValue R D)
       (dgKappaResolvedYonedaFixedPerfComparison R D I P).symm
 
 /-- 元の同じ実評価 Morita 逆作用の完全関手。 -/
-def dgKappaNativeMoritaExactMap : ExactMap (dgKInputStableValue R D)
+def dgKappaNativeMoritaExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R D)
     (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I)) where
-  hom := (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val
-  isExact := isExactFunctor_of_isQCatEquivalence
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := isExactFunctor_of_isQCatEquivalence
     (dgKappaResolvedKernelPerfQCatEquivalence R D I P).isQCatEquivalence
 
 /-- 元の実評価 Morita 比較の辺は、固定 ν の源内でも可逆。 -/
 lemma dgKappaNativeMoritaExactMap_isInvertible :
-    IsInvertibleEdge (stableArrow (dgKappaNativeMoritaExactMap R D I P)) := by
+    IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R D I P)) := by
   let e := dgKappaResolvedKernelPerfQCatEquivalence R D I P
-  let g : ExactMap (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))
+  let g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))
       (dgKInputStableValue R D) :=
     ⟨e.inv, isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence⟩
   apply coherentNerveEdge_isInvertible_of_enrichedInverse
-    (C := StableQCat.{max (u + 1) v}) (dgKappaNativeMoritaExactMap R D I P) g
-  · exact exactMapCoreVertexIso e.homInvIso
-  · exact exactMapCoreVertexIso e.invHomIso
+    (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v}) (dgKappaNativeMoritaExactMap R D I P) g
+  · exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso e.homInvIso
+  · exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso e.invHomIso
 
 /-- 元の指定 P 比較に対応する、同じ ν 両端を固定した写像空間内の実辺。 -/
 def dgKappaNativePComparisonEdge : SSet.Edge
-    (intervalMappingVertexOfEdge (stableArrow (dgKappaNativePExactMap R D I P)))
-    (intervalMappingVertexOfEdge (stableArrow (dgKappaNativeMoritaExactMap R D I P))) := by
+    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativePExactMap R D I P)))
+    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R D I P))) := by
   let h : FunctorIso (dgKappaNativePExactMap R D I P).hom
       (dgKappaNativeMoritaExactMap R D I P).hom :=
     dgKappaResolvedYonedaFixedPerfComparison R D I P
-  let e := (exactMapPinchedPath
+  let e := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapPinchedPath
     (F := dgKappaNativePExactMap R D I P)
     (G := dgKappaNativeMoritaExactMap R D I P) h).map
     (pinchedHomToIntervalMappingSpace
-      (stableVertex (dgKInputStableValue R D))
-      (stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))))
-  have hv (F : ExactMap (dgKInputStableValue R D)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R D))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))))
+  have hv (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R D)
       (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))) :
       (pinchedHomToIntervalMappingSpace _ _).app (Opposite.op ⦋0⦌)
-          (stableArrowPinchedVertex F) = intervalMappingVertexOfEdge (stableArrow F) := by
+          (_root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrowPinchedVertex F) = intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F) := by
     rw [pinchedHomToIntervalMappingSpace_vertex]
     congr 1
   exact e.ofEq (hv _) (hv _)
@@ -81,30 +81,30 @@ def dgKappaNativePComparisonEdge : SSet.Edge
 /-- 元の P 比較を境界固定の相対延長へ渡す、同じ実比較 path。 -/
 def dgKappaNativePComparisonPath :
     (equivalencePath ((ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj
-      StableInfinity.{max (u + 1) v})) _⦋0⦌ :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v})) _⦋0⦌ :=
   nativeArrowRelativePath (dgKappaNativePComparisonEdge R D I P)
 
 lemma dgKappaNativePComparisonPath_zero :
     (equivalencePathEndpoint _ 0).app (Opposite.op ⦋0⦌)
         (dgKappaNativePComparisonPath R D I P) =
-      functorVertex (SSet.yonedaEquiv.symm (stableArrow (dgKappaNativePExactMap R D I P)).edge) :=
+      functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativePExactMap R D I P)).edge) :=
   nativeArrowRelativePath_zero _
 
 lemma dgKappaNativePComparisonPath_one :
     (equivalencePathEndpoint _ 1).app (Opposite.op ⦋0⦌)
         (dgKappaNativePComparisonPath R D I P) =
       functorVertex
-        (SSet.yonedaEquiv.symm (stableArrow (dgKappaNativeMoritaExactMap R D I P)).edge) :=
+        (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R D I P)).edge) :=
   nativeArrowRelativePath_one _
 
 lemma dgKappaNativePComparisonPath_boundary :
     (equivalencePathMap ((pre (boundary 1).ι).app
-      StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌)
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌)
         (dgKappaNativePComparisonPath R D I P) =
       (equivalencePathRefl _).app (Opposite.op ⦋0⦌)
         (functorVertex (intervalMappingBoundary
-          (stableVertex (dgKInputStableValue R D))
-          (stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))))) :=
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R D))
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I))))) :=
   nativeArrowRelativePath_boundary _
 
 /-- 先行する同じ実 Morita 全族から、元の P の包含と指定比較の全族を実構成する。
@@ -112,15 +112,15 @@ lemma dgKappaNativePComparisonPath_boundary :
 lemma dgKappaNativePFamily_exists
     (s : DGSuspensionStageProvider.{u, v} R κ)
     (M : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-      (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj StableInfinity.{max (u + 1) v})
+      (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v})
     (hM : ∀ A : PerfDGInput.{u, max (u + 1) v} R,
       M.app (Opposite.op ⦋0⦌) (coherentNerveVertex A) = functorVertex
         (SSet.yonedaEquiv.symm
-          (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)) :
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)) :
     ∃ L : dgKInputInfinity.{u, max (u + 1) v} R ⟶
         equivalencePath ((ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj
-          StableInfinity.{max (u + 1) v}),
-      L ≫ equivalencePathMap ((pre (boundary 1).ι).app StableInfinity.{max (u + 1) v}) =
+          _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}),
+      L ≫ equivalencePathMap ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) =
         (M ≫ (pre (boundary 1).ι).app _) ≫ equivalencePathRefl _ ∧
       L ≫ equivalencePathEndpoint _ 1 = M ∧
       (∀ A : PerfDGInput.{u, max (u + 1) v} R,
@@ -129,7 +129,7 @@ lemma dgKappaNativePFamily_exists
       (∀ A : PerfDGInput.{u, max (u + 1) v} R,
         (L ≫ equivalencePathEndpoint _ 0).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
           functorVertex (SSet.yonedaEquiv.symm
-            (stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge)) := by
+            (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge)) := by
   let a := fun k : (dgKInputInfinity.{u, max (u + 1) v} R) _⦋0⦌ =>
     dgKappaNativePComparisonPath R (coherentNerveObject k)
       (s (coherentNerveObject k)).cone (s (coherentNerveObject k)).perfect
@@ -138,14 +138,14 @@ lemma dgKappaNativePFamily_exists
     dsimp only [a]
     rw [coherentNerveObject_vertex]
   have ha : ∀ k, (equivalencePathMap ((pre (boundary 1).ι).app
-      StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌) (a k) =
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌) (a k) =
       ((M ≫ (pre (boundary 1).ι).app _) ≫ equivalencePathRefl _).app
         (Opposite.op ⦋0⦌) k := by
     intro k
     obtain ⟨A, rfl⟩ := (coherentNerveVertexEquiv
       (PerfDGInput.{u, max (u + 1) v} R)).surjective k
     change (equivalencePathMap ((pre (boundary 1).ι).app
-      StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌)
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v})).app (Opposite.op ⦋0⦌)
         (a (coherentNerveVertex A)) =
       ((M ≫ (pre (boundary 1).ι).app _) ≫ equivalencePathRefl _).app
         (Opposite.op ⦋0⦌) (coherentNerveVertex A)
@@ -156,10 +156,10 @@ lemma dgKappaNativePFamily_exists
     rw [hM]
     congr 1
     have hv := (intervalMappingVertexOfEdge
-      (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))).property
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))).property
     change ((pre (boundary 1).ι).app _).app (Opposite.op ⦋0⦌)
       (functorVertex (SSet.yonedaEquiv.symm
-        (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)) =
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)) =
         PinchedHom.constant _ 0 at hv
     rw [pinchedConstant_zero] at hv
     exact hv.symm

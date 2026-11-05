@@ -58,7 +58,7 @@ lemma zeroCofiberSquare_evaluation {C : SSet.{u}} (z : ZeroVertex C) (b : Bool)
 規約：C は quasicategory、安定性は不要。使われ方：cofiber 図式への持ち上げ。 -/
 lemma zeroCofiberSquare_vertex_isPushout {C : SSet.{u}} [Quasicategory C]
     (z : ZeroVertex C) (b : Bool) (c : C _⦋0⦌) :
-    IsPushoutDiagramVertex ((zeroCofiberSquare z b).app (Opposite.op ⦋0⦌) c) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex ((zeroCofiberSquare z b).app (Opposite.op ⦋0⦌) c) := by
   let g : (Δ[1] : SSet.{u}) ⟶ C :=
     lift (𝟙 _) (SSet.const c) ≫ zeroNaturalTransformation z (!b)
   have he : (zeroCofiberSquare z b).app (Opposite.op ⦋0⦌) c =

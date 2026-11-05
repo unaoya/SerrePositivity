@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 lemma circleCotensorComponentClass_identity (Y : OmegaSpectrum.{u}) :
     circleCotensorComponentClass (cotensor PointedSimplicialSet.circle Y) Y
       (SpectrumMappingAcyclic.component (𝟙 (cotensor PointedSimplicialSet.circle Y))) =
-    KanHomotopyGroup.mk (SphereSimplex.equiv
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv
       (RawSpectrumMapping.pointedSpace (cotensor PointedSimplicialSet.circle Y) Y.toKanSequence)
       1 (cotensorEvaluation PointedSimplicialSet.circle Y)) := by
   have h := congrArg (SSet.unitHomEquiv _) (circleEvaluationLoopPointMap_eq Y)
@@ -38,14 +38,14 @@ lemma circleCotensorComponentClass_identity (Y : OmegaSpectrum.{u}) :
 
 /-- 元の符号反転の前合成は、元の普遍評価の基本群の類をその逆元へ送る。 -/
 lemma circleCotensorReversal_evaluation (Y : OmegaSpectrum.{u}) :
-    KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre (circleCotensorReversal Y) Y.toKanSequence).right
-      (pointedMap_basepoint
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
         (RawSpectrumMapping.pointedPre (circleCotensorReversal Y) Y.toKanSequence))
-      (KanHomotopyGroup.mk (SphereSimplex.equiv
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv
         (RawSpectrumMapping.pointedSpace (cotensor PointedSimplicialSet.circle Y) Y.toKanSequence)
         1 (cotensorEvaluation PointedSimplicialSet.circle Y))) =
-      (KanHomotopyGroup.mk (SphereSimplex.equiv
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv
         (RawSpectrumMapping.pointedSpace (cotensor PointedSimplicialSet.circle Y) Y.toKanSequence)
         1 (cotensorEvaluation PointedSimplicialSet.circle Y)))⁻¹ := by
   have h := circleCotensorComponentClass_pre (circleCotensorReversal Y) Y
@@ -63,15 +63,15 @@ local instance circleCotensorReversalEvaluationHomKan (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の評価四角形で指定済みの loop も、同じ BF 自己射の前合成で逆元に移る。 -/
 lemma circleCotensorReversal_native_loop (z : Sp.{u} _⦋0⦌) :
-    KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre
         (circleCotensorReversal (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (pointedMap_basepoint (RawSpectrumMapping.pointedPre
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre
         (circleCotensorReversal (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      (KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
-      (KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
   have h := circleCotensorReversal_evaluation
     (nativeCotensorInput PointedSimplicialSet.circle z).val
   erw [circleEvaluationLoopSimplex_evaluation] at h
@@ -79,15 +79,15 @@ lemma circleCotensorReversal_native_loop (z : Sp.{u} _⦋0⦌) :
 
 /-- 反転した companion の差の逆元は、同じ前合成で元の評価 loop の正符号の類へ戻る。 -/
 lemma circleCotensorReversal_native_companion_difference (z : Sp.{u} _⦋0⦌) :
-    KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre
         (circleCotensorReversal (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (pointedMap_basepoint (RawSpectrumMapping.pointedPre
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre
         (circleCotensorReversal (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      ((KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
-      KanHomotopyGroup.mk (circleEvaluationLoopSimplex z) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z) := by
   rw [map_inv, circleEvaluationCompanion_loop_class, circleCotensorReversal_native_loop, inv_inv]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

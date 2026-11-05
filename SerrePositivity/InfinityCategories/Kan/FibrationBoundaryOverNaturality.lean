@@ -38,19 +38,19 @@ theorem connectingHomOver_natural {E B E' B' : SSet.{u}}
     (p : E ⟶ B) (q : E' ⟶ B') [Fibration p] [Fibration q]
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ q)
     (e : E _⦋0⦌) (e' : E' _⦋0⦌) (he : f.app _ e = e')
-    (φ : KanFiber p (p.app _ e) ⟶ KanFiber q (q.app _ e'))
-    (hφ : φ ≫ fiberι q (q.app _ e') = fiberι p (p.app _ e) ≫ f)
-    (hpoint : φ.app _ (fiberPoint p e) = fiberPoint q e')
+    (φ : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber q (q.app _ e'))
+    (hφ : φ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι q (q.app _ e') = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) ≫ f)
+    (hpoint : φ.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint q e')
     (hb : g.app _ (p.app _ e) = q.app _ e') (r : ℕ)
-    (a : KanHomotopyGroup B (r + 1) (p.app _ e)) :
-    KanHomotopyGroup.map φ hpoint (connectingHom p e r a) =
-      connectingHom q e' r (KanHomotopyGroup.map g hb a) := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (r + 1) (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map φ hpoint (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e r a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.connectingHom q e' r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g hb a) := by
   subst e'
-  have hφeq : φ = fiberMap p q f g comm e := by
-    apply fiber_hom_ext q (q.app _ (f.app _ e))
-    exact hφ.trans (fiberMap_ι p q f g comm e).symm
+  have hφeq : φ = _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p q f g comm e := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext q (q.app _ (f.app _ e))
+    exact hφ.trans (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p q f g comm e).symm
   subst φ
-  exact connecting_natural p q f g comm e (r + 1) a
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural p q f g comm e (r + 1) a
 
 end
 

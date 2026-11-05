@@ -35,7 +35,7 @@ def toSimplex (X : PointedSimplicialSet.{u}) (n : ℕ)
     have hf : (PointedObject.cofiber (boundary.{u} n).ι).hom ≫ f.right = X.hom := Under.w f
     rw [← Category.assoc, PointedObject.cofiberQuotient_condition, Category.assoc, hf,
       Subcomplex.ofSimplex_ι, SSet.comp_const]
-    exact pointedConstant_eq_const X _
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const X _
 
 /-- 概要：境界定数単体を球面からの点つき射へ降ろす。
 方針：境界の定数条件を cofiber の降下条件へ移す。
@@ -45,7 +45,7 @@ def toMap (X : PointedSimplicialSet.{u}) (n : ℕ) (s : X.right.PtSimplex n X.ba
     PointedSimplicialSet.sphere.{u} n ⟶ X :=
   PointedObject.cofiberDesc (boundary.{u} n).ι X s.map (by
     rw [s.comm, Subcomplex.ofSimplex_ι, SSet.comp_const]
-    exact (pointedConstant_eq_const X _).symm)
+    exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const X _).symm)
 
 /-- 概要：球面の点つき射と境界定数単体の標準同値。
 方針：cofiber の引き戻しと降下が互いに逆であることを使う。
@@ -69,7 +69,7 @@ def equiv (X : PointedSimplicialSet.{u}) (n : ℕ) :
 theorem equiv_comp {X Y : PointedSimplicialSet.{u}} (n : ℕ)
     (s : PointedSimplicialSet.sphere.{u} n ⟶ X) (f : X ⟶ Y) :
     equiv Y n (s ≫ f) =
-      mapSimplex f.right (OmegaSpectrum.pointedMap_basepoint f) (equiv X n s) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) (equiv X n s) := by
   apply RelativeMorphism.ext
   rfl
 

@@ -56,17 +56,17 @@ variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
 
 omit [Quasicategory Y] [IsStable Y] in
 lemma post_arrow_zero_target (x : X _⦋0⦌) : IsZeroTargetArrow
-    ((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) x) := by
+  change IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc]
-  exact IsExactFunctor.preservesZero (F := F) _ (arrow_zero_target X x)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc]
+  exact IsExactFunctor.preservesZero (F := F) _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_zero_target X x)
 
 omit [Quasicategory Y] [IsStable Y] [IsExactFunctor F] in
 lemma post_arrow_source :
-    (arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = F := by
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source, Category.id_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact
 

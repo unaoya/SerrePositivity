@@ -33,8 +33,8 @@ instance arrowMap_isExact {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
     infer_instance
   exact arrow_exact_of_endpoints Y _
 
-def exactArrowMap {A B : StableCategory.{u}} (F : ExactMap A B) :
-    ExactMap (stableArrowCategory A) (stableArrowCategory B) :=
+def exactArrowMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory A) (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory B) :=
   ⟨(ihom (Δ[1] : SSet.{u})).map F.hom, inferInstance⟩
 
 end SerrePositivity.KST.LocalizingInvariants

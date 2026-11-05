@@ -16,18 +16,18 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ元の core S 実現の Ex∞ Kan 値。 -/
-def stableCoreSingleKanObject (C : StableQCat.{u}) : KanObject.{u} :=
+def stableCoreSingleKanObject (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) : KanObject.{u} :=
   exInfinityClosedKanEnrichedFunctor.obj ⟨coreSRealizationFunctor.obj (stableCategoryModel C)⟩
 
 /-- 一回の反復実現と元の core S 実現は、同じ Ex∞ Kan 対象として等しい。 -/
-theorem stableCoreSingleKan_object_eq (C : StableQCat.{u}) :
+theorem stableCoreSingleKan_object_eq (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableMultiKanEnrichedFunctor 0).obj C = stableCoreSingleKanObject C :=
   congrArg (fun V : SSet.{u} => exInfinityClosedKanEnrichedFunctor.obj ⟨V⟩)
     (coreSingleRealization_obj_eq (stableCategoryModel C)).symm
 
 /-- 元の core S 実現を対象表示に使い、同じ全 Hom 作用を保持する。 -/
 def stableCoreSingleKanEnrichedFunctor :
-    EnrichedFunctor SSet.{u} StableQCat.{u} KanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} KanObject.{u} :=
   relabelEnrichedObjects (stableMultiKanEnrichedFunctor 0) stableCoreSingleKanObject
     (funext stableCoreSingleKan_object_eq)
 

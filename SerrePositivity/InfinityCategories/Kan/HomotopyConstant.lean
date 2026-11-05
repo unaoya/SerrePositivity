@@ -21,7 +21,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.KanHomotopy
 end SerrePositivity.KST.Spectra.KanHomotopy
 namespace SerrePositivity.InfinityCategories.Kan.KanHomotopy
-open SerrePositivity.KST.Spectra.KanHomotopy
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
 
 /-- 概要：定数射は全てのホモトピー類を基点へ送る。
 方針：代表単体を取り、定数射との合成を計算する。
@@ -29,14 +29,14 @@ open SerrePositivity.KST.Spectra.KanHomotopy
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。path space の収縮。 -/
 theorem map_const {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) {x : X _⦋0⦌} {y : Y _⦋0⦌}
-    (hc : (SSet.const (X := X) y).app _ x = y) (a : KanHomotopy X n x) :
-    map n (SSet.const y) hc a = point n := by
-  obtain ⟨s, rfl⟩ := mk_surjective n a
-  rw [map_mk]
-  have hs : mapSimplex (SSet.const y) hc s = .const := by
+    (hc : (SSet.const (X := X) y).app _ x = y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (SSet.const y) hc a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := by
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (SSet.const y) hc s = .const := by
     ext : 1
     exact SSet.comp_const _ _
-  rw [hs, mk_const]
+  rw [hs, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const]
 
 end SerrePositivity.InfinityCategories.Kan.KanHomotopy
 

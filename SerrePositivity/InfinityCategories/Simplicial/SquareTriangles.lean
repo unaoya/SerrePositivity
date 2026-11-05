@@ -52,7 +52,7 @@ def diagonal : (Δ[1] : SSet.{u}) ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[1] := lift (𝟙
 規約：面の添字は 1。
 使われ方：Goerss–Jardine I §7。相対三角形の共通辺の整合。 -/
 @[reassoc (attr := simp)]
-theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ upper.{u} = diagonal.{u} := by
+theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal.{u} := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (0 : Fin 2).succ ≫ stdSimplex.σ (0 : Fin 2) = 𝟙 _
     exact CosimplicialObject.δ_comp_σ_succ SSet.stdSimplex
@@ -64,7 +64,7 @@ theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ upper.{u} = diagonal.{u} 
 規約：共通の辺の向きは上側と同じ。
 使われ方：Goerss–Jardine I §7。二つの充填の同じ底での比較。 -/
 @[reassoc (attr := simp)]
-theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ lower.{u} = diagonal.{u} := by
+theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal.{u} := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (1 : Fin 2).castSucc ≫ stdSimplex.σ (1 : Fin 2) = 𝟙 _
     exact CosimplicialObject.δ_comp_σ_self SSet.stdSimplex
@@ -76,14 +76,14 @@ theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ lower.{u} = diagonal.{u} 
 規約：通常の単体集合の braiding を使う。
 使われ方：Goerss–Jardine I §7。円の二変数の交換を三角形の交換へ移す。 -/
 @[reassoc (attr := simp)]
-theorem upper_swap : upper.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = lower.{u} := rfl
+theorem upper_swap : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} := rfl
 
 /-- 概要：正方形の変数の交換は下側の三角形を上側へ戻す。
 方針：直積の交換の二つの射影を計算する。
 規約：厳密な射の等式。
 使われ方：Goerss–Jardine I §7。符号反転の比較の二方向の制限。 -/
 @[reassoc (attr := simp)]
-theorem lower_swap : lower.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = upper.{u} := rfl
+theorem lower_swap : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} := rfl
 
 end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
 

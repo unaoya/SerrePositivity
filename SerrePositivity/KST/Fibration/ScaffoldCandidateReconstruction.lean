@@ -13,7 +13,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の scaffold 比較と native 表現の指定分類成分を用いる実分類比較。 -/
 def scaffoldCandidateClassificationIso :
@@ -25,11 +25,11 @@ def scaffoldCandidateClassificationIso :
 /-- 指定分類比較は、元の係数点を同じ実評価点の scaffold 復元像へ送る。 -/
 theorem scaffoldCandidateClassificationIso_pointHom (c : I)
     (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate s.scaffoldCandidateClassificationIso.hom (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) (nerveVertex c)
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
         (scaffoldPointedReconstruction p)
@@ -54,24 +54,24 @@ def scaffoldLeftStraighteningCandidate_classificationIso
     {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] :
     FunctorIso (leftStraighteningCandidate p) (leftStraighteningInfinityDiagram p) :=
-  (scaffoldTransportComparisonSpan p).scaffoldCandidateClassificationIso
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).scaffoldCandidateClassificationIso
 
 /-- 指定分類比較は、元の係数点を同じ実評価点の scaffold 復元像へ送る。 -/
 theorem scaffoldLeftStraighteningCandidate_classificationIso_pointHom
     {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] (c : I)
     (v : (leftStrictTransport p c) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
       functorHomEvaluate (scaffoldLeftStraighteningCandidate_classificationIso p).hom
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) (nerveVertex c)
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
         (scaffoldPointedReconstruction p)
         (scaffoldPointedReconstruction_projection p) (nerveVertex c)).app
           (Opposite.op ⦋0⦌) ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) :=
-  (scaffoldTransportComparisonSpan p).scaffoldCandidateClassificationIso_pointHom c v
+  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).scaffoldCandidateClassificationIso_pointHom c v
 
 end SerrePositivity.KST.Fibration

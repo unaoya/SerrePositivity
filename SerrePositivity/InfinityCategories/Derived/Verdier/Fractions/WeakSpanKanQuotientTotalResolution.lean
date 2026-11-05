@@ -27,48 +27,48 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 概要：元の marked span 全族の単体圏を、同じ底の単体圏上の引き戻しへ写す。
 方針：初頂点写像の元の射影に対する自然性を引き戻しへ組み込む。
 規約：元の全族・射影・各単体を保持する。
 使われ方：Ind-S (5) の単体圏上の単位を元の全族の単体圏へ制限する。 -/
 def weakSpanKanTotalSimplexLift :
-    nerve (TransportSimplexCategory (markedSpanFamily B.obj (weakEquivalences i) x)) ⟶
-      pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    nerve (TransportSimplexCategory (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)) ⟶
+      pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) :=
   pullback.lift
-    (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x))
+    (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x))
     (nerveMap (transportSimplexFunctor
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x)))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)))
     (transportSimplexFirstVertexMap_naturality
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x)).symm
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).symm
 
 /-- 概要：同じ単体圏比較は元の全族への初頂点と底射影を厳密に保持する。
 方針：引き戻しの第二射影と初頂点の自然性を使う。
 規約：底の可換性を自然同型に弱めない。
 使われ方：商上の全空間射の底を元の marked span 射影と比較する。 -/
 theorem weakSpanKanTotalSimplexLift_base :
-    weakSpanKanTotalSimplexLift (i := i) x ≫ weakSpanSimplexProjection i x ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift (i := i) x ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x ≫
       transportSimplexFirstVertexMap B.obj =
-    transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x := by
-  rw [weakSpanKanTotalSimplexLift, weakSpanSimplexProjection, ← Category.assoc,
+    transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection, ← Category.assoc,
     pullback.lift_snd, transportSimplexFirstVertexMap_naturality]
 
-variable (f : pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+variable (f : pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
     (transportSimplexFirstVertexMap B.obj) ⟶
-      smallLeftUnstraightening (weakSpanKanCoherentDiagram i x))
-  (hf : f ≫ smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x) =
-    weakSpanSimplexProjection i x)
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+  (hf : f ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
 
 /-- 概要：供給された単体圏上の単位から、元の全族の単体圏上の実商比較を作る。
 方針：同じ全族の単体圏比較と指定商比較を合成する。
 規約：単位の供給に条件付き。元の全族からの写像とはまだ同定しない。
 使われ方：既存の局所化による元の全族への降下の入力。 -/
 def weakSpanKanQuotientTotalSimplexMap :=
-  weakSpanKanTotalSimplexLift (i := i) x ≫ weakSpanKanQuotientSimplexFamilyMap h x f
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift (i := i) x ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap h x f
 
 include hf in
 /-- 概要：同じ実商比較は元の全族の初頂点・底射影・商 q を厳密に被覆する。
@@ -76,14 +76,14 @@ include hf in
 規約：元の全単体圏上の全空間射についての厳密な等式。
 使われ方：初頂点辺の反転と、降下後の底の比較。 -/
 theorem weakSpanKanQuotientTotalSimplexMap_projection :
-    weakSpanKanQuotientTotalSimplexMap h x f ≫
-        smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom := by
-  rw [weakSpanKanQuotientTotalSimplexMap, Category.assoc,
-    weakSpanKanQuotientSimplexFamilyMap_projection h x f hf]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f ≫
+        smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFamilyMap_projection h x f hf]
   simpa only [Category.assoc] using congrArg (fun g => g ≫ q.hom)
-    (weakSpanKanTotalSimplexLift_base (i := i) x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift_base (i := i) x)
 
 include hf in
 /-- 概要：供給単位から作る同じ実商比較は、元の全族の初頂点辺を反転する。
@@ -91,16 +91,16 @@ include hf in
 規約：単位と厳密な底条件に条件付き。新たな局所化 API は追加しない。
 使われ方：Sp 正本の既存の局所化因子化へ渡す。 -/
 theorem weakSpanKanQuotientTotalSimplexMap_inverts :
-    InvertsEdges (weakSpanKanQuotientTotalSimplexMap h x f)
-      (transportSimplexInitialEdges (markedSpanFamily B.obj (weakEquivalences i) x)) := by
+    InvertsEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+      (transportSimplexInitialEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)) := by
   intro σ hσ
   apply leftFibration_reflects_invertibleEdge
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) _
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) _
   have hv := ((transportSimplexFirstVertexMap_inverts
-    (markedSpanFamily B.obj (weakEquivalences i) x)).comp
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)) hσ
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).comp
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)) hσ
   have he := congrArg (fun g => ((edgeOfSimplex σ).map ((truncation 2).map g)).edge)
-    (weakSpanKanQuotientTotalSimplexMap_projection h x f hf)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x f hf)
   exact (isInvertibleEdge_congr he).mpr hv
 
 /-- 概要：供給された単体圏単位から、元の marked span 全族上の実商比較を降下する。
@@ -108,14 +108,14 @@ theorem weakSpanKanQuotientTotalSimplexMap_inverts :
 規約：単位と厳密な底条件に条件付き。降下後の底の厳密化はまだ主張しない。
 使われ方：K-B-S の元の全族からの写像の候補。 -/
 def weakSpanKanQuotientTotalDescend :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x) :=
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) :=
   localizationDescend
-    (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x))
-    (transportSimplexInitialEdges (markedSpanFamily B.obj (weakEquivalences i) x))
+    (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x))
+    (transportSimplexInitialEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x))
     (transportSimplexFirstVertexMap_isLocalization _)
-    (weakSpanKanQuotientTotalSimplexMap h x f)
-    (weakSpanKanQuotientTotalSimplexMap_inverts h x f hf)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_inverts h x f hf)
 
 /-- 概要：降下した同じ全族比較の制限は、元の同じ単体圏上の実比較と自然同型。
 方針：Sp 正本の局所化因子化が保持する指定自然同型を使う。
@@ -123,15 +123,15 @@ def weakSpanKanQuotientTotalDescend :
 使われ方：降下後の底の厳密化と指定全族単位の追跡。 -/
 def weakSpanKanQuotientTotalDescendIso :
     FunctorIso
-      (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-        weakSpanKanQuotientTotalDescend h x f hf)
-      (weakSpanKanQuotientTotalSimplexMap h x f) :=
+      (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalDescend h x f hf)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f) :=
   localizationDescendIso
-    (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x))
-    (transportSimplexInitialEdges (markedSpanFamily B.obj (weakEquivalences i) x))
+    (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x))
+    (transportSimplexInitialEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x))
     (transportSimplexFirstVertexMap_isLocalization _)
-    (weakSpanKanQuotientTotalSimplexMap h x f)
-    (weakSpanKanQuotientTotalSimplexMap_inverts h x f hf)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_inverts h x f hf)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

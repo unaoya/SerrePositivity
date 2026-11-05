@@ -32,18 +32,18 @@ def cosliceFiberHomProjection (m : HomotopyCategory.mk s.val ⟶ HomotopyCategor
 /-- 同じ coslice 内の実射の類は、元の点の射と底の射との合成式を保つ。 -/
 theorem cosliceFiberPointHom_comp_projection [Quasicategory X]
     (m : HomotopyCategory.mk s.val ⟶ HomotopyCategory.mk t.val) :
-    cosliceFiberPointHom s ≫ cosliceFiberHomProjection s t m = cosliceFiberPointHom t := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom s ≫ _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberHomProjection s t m = _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom t := by
   obtain ⟨l, rfl⟩ := homotopyCategory_homMk_surjective s.val t.val m
   let e := SSet.Edge.ofTruncated l
   have ht := homMk_transport (s.property.trans (pinchedConstant_zero a))
     (t.property.trans (pinchedConstant_zero b))
     (l.map ((truncation 2).map (sliceUnderProjection (yonedaEquiv.symm x))))
-    (cosliceFiberBaseEdge s t e).toTruncated rfl
-  have hp : cosliceFiberHomProjection s t (Truncated.HomotopyCategory.homMk l) =
-      Truncated.HomotopyCategory.homMk (cosliceFiberBaseEdge s t e).toTruncated := ht
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge s t e).toTruncated rfl
+  have hp : _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberHomProjection s t (Truncated.HomotopyCategory.homMk l) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge s t e).toTruncated := ht
   rw [hp]
   exact Truncated.HomotopyCategory.homMk_comp_homMk
-    (cosliceFiberEdgeCompStruct s t e).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct s t e).toTruncated
 
 end SerrePositivity.InfinityCategories.F1.Transport
 

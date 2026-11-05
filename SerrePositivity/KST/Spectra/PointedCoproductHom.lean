@@ -32,30 +32,30 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。セルの Hom の積表示。 -/
 def pointedCoproductHomUnderlyingIso (S : Type u) (P X : PointedSimplicialSet.{u}) :
     (PointedObject.basedHom (∐ fun (_ : S) ↦ P) X).right ≅
-      SimplicialFunctionComplex.obj S (PointedObject.basedHom P X).right := by
-  change (cofiberMappingFunctor X).obj (op (∐ fun (_ : S) ↦ P)) ≅
-    SimplicialFunctionComplex.obj S ((cofiberMappingFunctor X).obj (op P))
-  exact (cofiberMappingFunctor X).mapIso (opCoproductIsoProduct (fun (_ : S) ↦ P)) ≪≫
-    PreservesProduct.iso (cofiberMappingFunctor X) (fun (_ : S) ↦ op P) ≪≫
-      SimplicialFunctionComplex.productIso S ((cofiberMappingFunctor X).obj (op P))
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S (PointedObject.basedHom P X).right := by
+  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).obj (op (∐ fun (_ : S) ↦ P)) ≅
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).obj (op P))
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).mapIso (opCoproductIsoProduct (fun (_ : S) ↦ P)) ≪≫
+    PreservesProduct.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X) (fun (_ : S) ↦ op P) ≪≫
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso S ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).obj (op P))
 
 @[reassoc]
 lemma pointedCoproductHomUnderlyingIso_eval (S : Type u) (P X : PointedSimplicialSet.{u})
     (s : S) :
     (pointedCoproductHomUnderlyingIso S P X).hom ≫
-        SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s =
-      PointedMapping.pre (Limits.Sigma.ι (fun (_ : S) ↦ P) s) X := by
-  have h : ((cofiberMappingFunctor X).mapIso
+        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (Limits.Sigma.ι (fun (_ : S) ↦ P) s) X := by
+  have h : ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).mapIso
         (opCoproductIsoProduct (fun (_ : S) ↦ P)) ≪≫
-      PreservesProduct.iso (cofiberMappingFunctor X) (fun (_ : S) ↦ op P) ≪≫
-        SimplicialFunctionComplex.productIso S ((cofiberMappingFunctor X).obj (op P))).hom ≫
-      SimplicialFunctionComplex.eval S ((cofiberMappingFunctor X).obj (op P)) s =
-        (cofiberMappingFunctor X).map (Limits.Sigma.ι (fun (_ : S) ↦ P) s).op := by
+      PreservesProduct.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X) (fun (_ : S) ↦ op P) ≪≫
+        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso S ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).obj (op P))).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).obj (op P)) s =
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor X).map (Limits.Sigma.ι (fun (_ : S) ↦ P) s).op := by
     simp only [Iso.trans_hom, Functor.mapIso_hom, Category.assoc,
       _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso_hom_eval, PreservesProduct.iso_hom,
       piComparison_comp_π]
     rw [← CategoryTheory.Functor.map_comp, opCoproductIsoProduct_hom_comp_π]
-  exact h.trans (cofiberMappingFunctor_map X _)
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map X _)
 
 /-- 概要：同じ源の点つき余積の Hom と Hom の関数複体の点つき同型。
 方針：各座標への制限は点つきなので基点が座標ごとに一致する。
@@ -65,15 +65,15 @@ def pointedCoproductHomIso (S : Type u) (P X : PointedSimplicialSet.{u}) :
     PointedObject.basedHom (∐ fun (_ : S) ↦ P) X ≅
       SimplicialFunctionComplex.pointedObj S (PointedObject.basedHom P X) :=
   Under.isoMk (pointedCoproductHomUnderlyingIso S P X) (by
-    apply SimplicialFunctionComplex.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
     change (_ ≫ (pointedCoproductHomUnderlyingIso S P X).hom) ≫
-        SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s =
-      SimplicialFunctionComplex.lift (fun (_ : S) ↦ (PointedObject.basedHom P X).hom) ≫
-        SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s
+        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s =
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : S) ↦ (PointedObject.basedHom P X).hom) ≫
+        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s
     rw [Category.assoc, pointedCoproductHomUnderlyingIso_eval,
       _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
-    exact Under.w (PointedMapping.prePointed (Limits.Sigma.ι (fun (_ : S) ↦ P) s) X))
+    exact Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (Limits.Sigma.ι (fun (_ : S) ↦ P) s) X))
 
 end
 

@@ -27,7 +27,7 @@ theorem oppositeKanUnstraighteningComparison_constant_pointed
         vertexFiberι (sliceUnderProjection
           (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
             (coherentNerveVertex ((F ⋙ kanObjectOpFunctor).obj i)) ≫
-              strictKanPointedApexIso.hom := by
+              _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   have h := congrArg
     (fun m => m ≫ pullback.fst pointedSpaceProjection
       (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)))

@@ -29,12 +29,12 @@ lemma simplexHAInverseFunctor_cell_strictInterval {N : ℕ} (s : DGNerve.Simplex
     simplexHADecodeSubsetCell A (b.val - a.val - 1) (simplexHAStrictIntervalOrder a b hab)
         {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ simplexHAStrictIntervalOrder_last_lt a b hab) ≫
-      (simplexHAInverseFunctor A s).map (standardSimplexVertex a) (standardSimplexVertex b) =
+      (simplexHAInverseFunctor A s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
         simplexHAIntervalChainLift A s a b hab := by
   have h := (simplexHAInverseFunctor_map_vertices A s a b).trans
     (simplexHAHomMap_of_lt A s a b hab)
   exact (congrArg (fun f => f ≫ (simplexHAInverseFunctor A s).map
-    (standardSimplexVertex a) (standardSimplexVertex b))
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
       (simplexHADecodeSubsetCell_strictInterval A a b hab)).trans
         ((congrArg (fun f => (simplexIntervalLambdaHomIso A a b hab.le).hom ≫ f) h).trans
           (simplexHAIntervalHomMap_restrict A s a b hab))
@@ -45,24 +45,24 @@ lemma simplexHAInverseFunctor_cell_delete {N : ℕ} (s : DGNerve.Simplex A D N)
     (hb : v (Fin.last (m + 1)) < b)
     (hfull : simplexHADecodeSubsetCell A (m + 1) v {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-        (simplexHAInverseFunctor A s).map (standardSimplexVertex (v 0)) (standardSimplexVertex b) =
+        (simplexHAInverseFunctor A s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
       simplexHAChainLift A s (m + 1) v b hb) :
     simplexHADecodeSubsetCell A m (simplexHADeleteVertexOrder m q v) {b}
         (Finset.singleton_nonempty b) (simplexHADeleteVertexOrder_bound m q v {b}
           (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb)) ≫
       (simplexHAInverseFunctor A s).map
-        (standardSimplexVertex (simplexHADeleteVertexOrder m q v 0)) (standardSimplexVertex b) =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (simplexHADeleteVertexOrder m q v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
       simplexHAChainLift A s m (simplexHADeleteVertexOrder m q v) b
         ((v.monotone (Fin.le_last _)).trans_lt hb) := by
   let F := simplexHAInverseFunctor A s
   let w := simplexHADeleteVertexOrder m q v
   have hx := simplexHADeleteVertexOrder_first m q v
   have hc := simplexHADecodeSubsetCell_delete_zero_face_heq A m q v b hb
-  have hmap := map_heq A F (congrArg (standardSimplexVertex.{u}) hx.symm)
-    (rfl : standardSimplexVertex.{u} b = standardSimplexVertex b)
+  have hmap := map_heq A F (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex.{u}) hx.symm)
+    (rfl : _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex.{u} b = _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)
   have hcomp := heq_comp (rfl : serreCubeComplex A m = serreCubeComplex A m)
     (congrArg (fun a : Fin (N + 1) => homObject A
-      (CubicalLambda A (Δ[N] : SSet.{u})) (standardSimplexVertex a) (standardSimplexVertex b))
+      (CubicalLambda A (Δ[N] : SSet.{u})) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
         hx.symm)
     (congrArg (fun a => homObject A D (s.obj a) (s.obj b)) hx.symm) hc hmap
   have hp := congrArg (fun f => (serreCubeFace A false m q).hom ≫ f) hfull

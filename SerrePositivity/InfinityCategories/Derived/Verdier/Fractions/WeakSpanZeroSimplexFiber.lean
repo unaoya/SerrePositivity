@@ -24,31 +24,31 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌)
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌)
 
 /-- 概要：同じ元の終点を持つ span は、その零単体上の元の引き戻し fiber と実同型。
 方針：元の零単体の初頂点等式で既存の同じ fiber 同型を輸送する。
 規約：終点の値だけを等式で読み替え、span は変更しない。
 使われ方：同じ元の Kan 単位の固定終点での回収。 -/
 def weakSpanZeroSimplexFiberIso :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ≅
-      vertexFiber (weakSpanSimplexProjection i x)
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≅
+      vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
         (nerveVertex (transportSimplexIndex (n := ⦋0⦌) y)) :=
-  eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (weakEquivalences i) x z)
-    (transportSimplexFirstVertexMap_zeroIndex y).symm) ≪≫
-      weakSpanSimplexFiberIso i x (transportSimplexIndex (n := ⦋0⦌) y)
+  eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x z)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y).symm) ≪≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso i x (transportSimplexIndex (n := ⦋0⦌) y)
 
 /-- 概要：同じ fiber 同型の包含後の射は、元の span を零単体上へ入れる実射そのもの。
 方針：両引き戻し射影を計算し、元の fiber 輸送の包含式を使う。
 規約：元の全単体上で厳密に一致する。
 使われ方：元の全族の実 fiber 制限と単体圏単位の照合。 -/
 theorem weakSpanZeroSimplexFiberIso_inclusion :
-    (weakSpanZeroSimplexFiberIso i x y).hom ≫
-      vertexFiberι (weakSpanSimplexProjection i x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso i x y).hom ≫
+      vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
         (nerveVertex (transportSimplexIndex (n := ⦋0⦌) y)) =
-      weakSpanFixedZeroSimplexLift i x y := by
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift i x y := by
   let b := nerveVertex (transportSimplexIndex (n := ⦋0⦌) y)
-  let π := markedSpanFamilyProjection B.obj (weakEquivalences i) x
+  let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
   let r := transportSimplexFirstVertexMap B.obj
   let s := vertexFiberPullbackIso π r b
   have hs := congrArg (fun f => s.inv ≫ f) (vertexFiberPullbackIso_hom_ι π r b)
@@ -56,26 +56,26 @@ theorem weakSpanZeroSimplexFiberIso_inclusion :
     (s.inv ≫ vertexFiberι (pullback.snd π r) b) ≫ pullback.fst π r at hs
   rw [s.inv_hom_id, Category.id_comp] at hs
   apply pullback.hom_ext
-  · dsimp only [weakSpanZeroSimplexFiberIso, Iso.trans_hom, eqToIso.hom,
-      weakSpanSimplexFiberIso, Iso.symm_hom]
+  · dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso, Iso.trans_hom, eqToIso.hom,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexFiberIso, Iso.symm_hom]
     simp only [Category.assoc]
     rw [show (vertexFiberPullbackIso π r b).inv ≫
-      vertexFiberι (weakSpanSimplexProjection i x) b ≫ pullback.fst π r =
+      vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) b ≫ pullback.fst π r =
         vertexFiberι π (r.app (Opposite.op ⦋0⦌) b) from (by simpa only [Category.assoc] using! hs.symm)]
     rw [show (markedSpanFamilyFiberIso B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
       (r.app (Opposite.op ⦋0⦌) b)).hom ≫ vertexFiberι π _ =
         fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x _ from vertexFiberLift_ι _ _ _
-          (weakSpanFixedFamily_projection i x (r.app (Opposite.op ⦋0⦌) b))]
-    rw [weakSpanFixedZeroSimplexLift, pullback.lift_fst]
-    apply (cancel_mono (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x)).1
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection i x (r.app (Opposite.op ⦋0⦌) b))]
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift, pullback.lift_fst]
+    apply (cancel_mono (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x)).1
     simp only [Category.assoc, fixedMarkedSpanToFamily_inclusion]
-    exact vertexFiberTransport_ι (markedSpanBoundary B.obj (weakEquivalences i))
+    exact vertexFiberTransport_ι (markedSpanBoundary B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))
       (congrArg (fun z => functorVertex (intervalMappingBoundary x z))
-        (transportSimplexFirstVertexMap_zeroIndex y).symm)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y).symm)
   · simp only [Category.assoc, vertexFiberι_comp, SSet.comp_const,
-      weakSpanFixedZeroSimplexLift, pullback.lift_snd]
-    change (weakSpanZeroSimplexFiberIso i x y).hom ≫
-      vertexFiberι (weakSpanSimplexProjection i x) b ≫ weakSpanSimplexProjection i x = _
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift, pullback.lift_snd]
+    change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso i x y).hom ≫
+      vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x) b ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x = _
     rw [vertexFiberι_comp, SSet.comp_const]
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

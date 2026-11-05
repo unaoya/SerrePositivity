@@ -27,7 +27,7 @@ def mappingBifunctor : PointedSimplicialSet.{u}ᵒᵖ ⥤ (KanSequence.{u} ⥤ K
     funext X
     apply Hom.ext_app
     intro n
-    change PointedMapping.prePointed (𝟙 A.unop) (X.level n).space = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 A.unop) (X.level n).space = 𝟙 _
     rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id, NatTrans.id_app]
     rfl
   map_comp f g := by
@@ -35,7 +35,7 @@ def mappingBifunctor : PointedSimplicialSet.{u}ᵒᵖ ⥤ (KanSequence.{u} ⥤ K
     funext X
     apply Hom.ext_app
     intro n
-    exact (PointedMapping.prePointed_comp g.unop f.unop (X.level n).space).symm
+    exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp g.unop f.unop (X.level n).space).symm
 
 /-- Kan 列の重み付き end の二変数図式。 -/
 def weightedDiagram {I : Type u} [SmallCategory I] (W : I ⥤ SSet.{u})

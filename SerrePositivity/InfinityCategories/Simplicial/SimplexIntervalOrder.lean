@@ -25,17 +25,17 @@ def simplexIntervalOrder {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
 
 /-- 元の区間包含は、元の a に局所番号を加えた番号を回収する。 -/
 lemma simplexIntervalOrder_val {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
-    (i : Fin (b.val - a.val + 1)) : (simplexIntervalOrder a b hab i).val = a.val + i.val := rfl
+    (i : Fin (b.val - a.val + 1)) : (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab i).val = a.val + i.val := rfl
 
 /-- 元の区間包含は、元の始頂点 a を回収する。 -/
 lemma simplexIntervalOrder_first {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    simplexIntervalOrder a b hab 0 = a := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab 0 = a := by
   apply Fin.ext
   exact Nat.add_zero _
 
 /-- 元の区間包含は、元の終頂点 b を回収する。 -/
 lemma simplexIntervalOrder_last {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    simplexIntervalOrder a b hab (Fin.last (b.val - a.val)) = b := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab (Fin.last (b.val - a.val)) = b := by
   apply Fin.ext
   change a.val + (b.val - a.val) = b.val
   have h : a.val ≤ b.val := hab
@@ -43,7 +43,7 @@ lemma simplexIntervalOrder_last {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
 
 /-- 元の区間の頂点包含は単射。 -/
 lemma simplexIntervalOrder_injective {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    Function.Injective (simplexIntervalOrder a b hab) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab) := by
   intro i j h
   apply Fin.ext
   have hv := congrArg Fin.val h
@@ -53,7 +53,7 @@ lemma simplexIntervalOrder_injective {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ 
 /-- 元の区間の順序包含を、元の有限順序の間の単体圏の射として読む。 -/
 def simplexIntervalHom {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     ⦋b.val - a.val⦌ ⟶ ⦋n⦌ :=
-  SimplexCategory.Hom.mk (simplexIntervalOrder a b hab)
+  SimplexCategory.Hom.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab)
 
 end SerrePositivity.InfinityCategories.Simplicial
 

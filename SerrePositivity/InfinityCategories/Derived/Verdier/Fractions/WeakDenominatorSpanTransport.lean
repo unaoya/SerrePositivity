@@ -18,41 +18,41 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 include h
 
 /-- 元の全一単体上で、W は同じ商関手が反転する辺のクラスに一致する。 -/
-theorem weakEquivalences_eq_invertedEdges : weakEquivalences i = invertedEdges q.hom := by
+theorem weakEquivalences_eq_invertedEdges : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i = invertedEdges q.hom := by
   ext s
-  exact mem_weakEquivalences_iff_invertible h (edgeOfSimplex s)
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (edgeOfSimplex s)
 
 /-- 指定した W 辺の区間図式は、両端の恒等も含む全辺を W に送る。 -/
-theorem weakDenominatorInterval_edges_mem (s : B.obj _⦋1⦌) (hs : s ∈ weakEquivalences i)
+theorem weakDenominatorInterval_edges_mem (s : B.obj _⦋1⦌) (hs : s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     (e : (Δ[1] : SSet.{u}) _⦋1⦌) :
-    (SSet.yonedaEquiv.symm s).app (Opposite.op ⦋1⦌) e ∈ weakEquivalences i := by
+    (SSet.yonedaEquiv.symm s).app (Opposite.op ⦋1⦌) e ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   apply intervalMap_edges_mem _ _ s hs e
   intro x
-  rw [weakEquivalences_eq_invertedEdges h]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakEquivalences_eq_invertedEdges h]
   exact invertedEdges_constant q.hom x
 
 lemma weakDenominatorSpanTransport_groupoidCompletion_isEquivalence
     (x : B.obj _⦋0⦌)
-    (s : B.obj _⦋1⦌) (hs : s ∈ weakEquivalences i) :
-    let π := markedSpanFamilyProjection B.obj (weakEquivalences i) x
+    (s : B.obj _⦋1⦌) (hs : s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
+    let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
     ∀ (f : vertexFiber π (B.obj.δ 1 s) ⟶
         vertexFiber π (B.obj.δ 0 s))
       (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber π (B.obj.δ 1 s) ⟶
-        markedSpanFamily B.obj (weakEquivalences i) x),
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x),
       prismEndpoint 0 _ ≫ H = vertexFiberι π (B.obj.δ 1 s) →
       prismEndpoint 1 _ ≫ H = f ≫ vertexFiberι π (B.obj.δ 0 s) →
       H ≫ π = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm s →
-      IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
+      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
   have h₀ := intervalMap_source (SSet.yonedaEquiv.symm s)
   have h₁ := intervalMap_target (SSet.yonedaEquiv.symm s)
   rw [Equiv.apply_symm_apply] at h₀ h₁
   exact h₀.symm ▸ h₁.symm ▸ weakSpanTransport_groupoidCompletion_isEquivalence h x
-    (SSet.yonedaEquiv.symm s) (weakDenominatorInterval_edges_mem h s hs)
+    (SSet.yonedaEquiv.symm s) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakDenominatorInterval_edges_mem h s hs)
 
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

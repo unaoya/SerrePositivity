@@ -24,42 +24,42 @@ namespace SerrePositivity.InfinityCategories.Derived.Localization
 open SerrePositivity.KST.LocalizingInvariants
 variable {X A Y : SSet.{u}} [KanComplex Y]
 
-def groupoidCompletionEvaluation (f : X ⟶ Y) : groupoidCompletion X ⟶ Y :=
-  localizationDescend _ _ (groupoidCompletion_isLocalization X) f (invertsAllEdges_toKan f)
+def groupoidCompletionEvaluation (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X ⟶ Y :=
+  localizationDescend _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X) f (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan f)
 
 def groupoidCompletionEvaluationIso (f : X ⟶ Y) :
-    FunctorIso (groupoidCompletionMap X ≫ groupoidCompletionEvaluation f) f :=
-  localizationDescendIso _ _ (groupoidCompletion_isLocalization X) f (invertsAllEdges_toKan f)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation f) f :=
+  localizationDescendIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X) f (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan f)
 
 def groupoidCompletionEvaluation_precompIso (p : A ⟶ X) (f : X ⟶ Y) :
-    FunctorIso (groupoidCompletionMapOf p ≫ groupoidCompletionEvaluation f)
-      (groupoidCompletionEvaluation (p ≫ f)) := by
-  apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization A)
-  have h := FunctorIso.postcomp (groupoidCompletionMapOfIso p)
-      (groupoidCompletionEvaluation f) ≪≫
-    FunctorIso.precomp (groupoidCompletionEvaluationIso f) p ≪≫
-    (groupoidCompletionEvaluationIso (p ≫ f)).symm
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf p ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation f)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (p ≫ f)) := by
+  apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization A)
+  have h := FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOfIso p)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation f) ≪≫
+    FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso f) p ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (p ≫ f)).symm
   simpa only [Category.assoc] using h
 
 def groupoidCompletionEvaluation_functorIso {f g : X ⟶ Y} (e : FunctorIso f g) :
-    FunctorIso (groupoidCompletionEvaluation f) (groupoidCompletionEvaluation g) := by
-  apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization X)
-  exact groupoidCompletionEvaluationIso f ≪≫ e ≪≫ (groupoidCompletionEvaluationIso g).symm
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation f) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation g) := by
+  apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X)
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso f ≪≫ e ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso g).symm
 
 lemma groupoidCompletionEvaluation_trivialKanFibration_iff (p : A ⟶ X)
     [TrivialKanFibration p] (f : X ⟶ Y) :
-    IsSimplicialHomotopyEquivalence (groupoidCompletionEvaluation (p ≫ f)) ↔
-      IsSimplicialHomotopyEquivalence (groupoidCompletionEvaluation f) := by
-  have hp := (groupoidCompletionEquivalenceOfTrivialKanFibration p).isQCatEquivalence
-  change IsQCatEquivalence (groupoidCompletionMapOf p) at hp
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (p ≫ f)) ↔
+      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation f) := by
+  have hp := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfTrivialKanFibration p).isQCatEquivalence
+  change IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf p) at hp
   constructor
   · intro h
     have hcomp := h.isQCatEquivalence.ofFunctorIso
-      (groupoidCompletionEvaluation_precompIso p f).symm
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_precompIso p f).symm
     exact (hp.cancel_left hcomp).isSimplicialHomotopyEquivalence
   · intro h
     exact ((hp.comp h.isQCatEquivalence).ofFunctorIso
-      (groupoidCompletionEvaluation_precompIso p f)).isSimplicialHomotopyEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_precompIso p f)).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.InfinityCategories.Derived.Localization
 

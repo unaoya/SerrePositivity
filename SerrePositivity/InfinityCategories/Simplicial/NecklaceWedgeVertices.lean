@@ -19,22 +19,22 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory _root_.Simplicial SSet
 
 /-- 任意の連結射の左側の頂点作用は、元の左射の頂点作用と同じ番号の包含。 -/
-lemma necklaceVertexMap_wedge_left {T T' U U' : Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')
+lemma necklaceVertexMap_wedge_left {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')
     (v : T.down.Vertex) :
-    necklaceVertexMap (necklaceWedgeMap f g) (T.down.wedgeLeftVertex U.down v) =
-      T'.down.wedgeLeftVertex U'.down (necklaceVertexMap f v) := by
-  have e := ConcreteCategory.congr_hom (NatTrans.congr_app (necklaceWedgeMap_inl f g) _)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f g) (T.down.wedgeLeftVertex U.down v) =
+      T'.down.wedgeLeftVertex U'.down (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f v) := by
+  have e := ConcreteCategory.congr_hom (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_inl f g) _)
     (T.down.vertexEquiv.symm v)
-  exact congrArg (necklaceWedge T' U').down.vertexEquiv e
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T' U').down.vertexEquiv e
 
 /-- 任意の連結射の右側の頂点作用は、元の右射の頂点作用と同じ番号移動。 -/
-lemma necklaceVertexMap_wedge_right {T T' U U' : Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')
+lemma necklaceVertexMap_wedge_right {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')
     (v : U.down.Vertex) :
-    necklaceVertexMap (necklaceWedgeMap f g) (T.down.wedgeRightVertex U.down v) =
-      T'.down.wedgeRightVertex U'.down (necklaceVertexMap g v) := by
-  have e := ConcreteCategory.congr_hom (NatTrans.congr_app (necklaceWedgeMap_inr f g) _)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f g) (T.down.wedgeRightVertex U.down v) =
+      T'.down.wedgeRightVertex U'.down (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap g v) := by
+  have e := ConcreteCategory.congr_hom (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_inr f g) _)
     (U.down.vertexEquiv.symm v)
-  exact congrArg (necklaceWedge T' U').down.vertexEquiv e
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T' U').down.vertexEquiv e
 
 end SerrePositivity.InfinityCategories.Simplicial
 

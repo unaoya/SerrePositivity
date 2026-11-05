@@ -63,7 +63,7 @@ lemma retractionHomotopy_rightTriangle :
 
 /-- 指定された厳密な恒等とホモトピーを単位・余単位に持つ実随伴。 -/
 def adjunctionOfRetractionHomotopy : QCatAdjunction F G :=
-  adjunctionOfFunctorHomTriangles (retractionHomotopyUnit H) (retractionCounit h)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (retractionHomotopyUnit H) (retractionCounit h)
     (retractionHomotopy_leftTriangle h H hF) (retractionHomotopy_rightTriangle h H hG)
 
 end SerrePositivity.KST.LocalizingInvariants

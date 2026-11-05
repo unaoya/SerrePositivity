@@ -23,20 +23,20 @@ variable {S : Type u}
 
 /-- 基点を各座標の基点の族とする具体的な小積。 -/
 def obj (X : S → PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
-  Under.mk (SimplicialDependentProduct.lift (fun s ↦ (X s).hom))
+  Under.mk (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ (X s).hom))
 
 /-- 指定した座標への点つき射影。 -/
 def projection (X : S → PointedSimplicialSet.{u}) (s : S) : obj X ⟶ X s :=
-  Under.homMk (SimplicialDependentProduct.eval S (fun s ↦ (X s).right) s)
-    (SimplicialDependentProduct.lift_eval _ s)
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S (fun s ↦ (X s).right) s)
+    (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval _ s)
 
 /-- 点つき射の族を積へ束ねる。 -/
 def lift {X : S → PointedSimplicialSet.{u}} {A : PointedSimplicialSet.{u}}
     (f : ∀ s, A ⟶ X s) : A ⟶ obj X :=
-  Under.homMk (SimplicialDependentProduct.lift (fun s ↦ (f s).right)) (by
-    change A.hom ≫ SimplicialDependentProduct.lift (fun s ↦ (f s).right) =
-      SimplicialDependentProduct.lift (fun s ↦ (X s).hom)
-    apply SimplicialDependentProduct.hom_ext
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ (f s).right)) (by
+    change A.hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ (f s).right) =
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ (X s).hom)
+    apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext
     intro s
     rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval,
       _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval]
@@ -51,7 +51,7 @@ lemma lift_projection {X : S → PointedSimplicialSet.{u}} {A : PointedSimplicia
 lemma hom_ext {X : S → PointedSimplicialSet.{u}} {A : PointedSimplicialSet.{u}}
     {f g : A ⟶ obj X} (h : ∀ s, f ≫ projection X s = g ≫ projection X s) : f = g := by
   apply Under.UnderMorphism.ext
-  apply SimplicialDependentProduct.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext
   intro s
   exact congrArg Under.Hom.right (h s)
 
@@ -66,7 +66,7 @@ def isLimit (X : S → PointedSimplicialSet.{u}) : IsLimit (fan X) :=
 /-- 小積の各値の Kan 性は座標ごとの充填から得られる。 -/
 instance kanComplex (X : S → PointedSimplicialSet.{u}) [∀ s, KanComplex (X s).right] :
     KanComplex (obj X).right :=
-  SimplicialDependentProduct.kanComplex S (fun s ↦ (X s).right)
+  _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.kanComplex S (fun s ↦ (X s).right)
 
 /-- 族の点つき射の積。 -/
 def map {X Y : S → PointedSimplicialSet.{u}} (f : ∀ s, X s ⟶ Y s) : obj X ⟶ obj Y :=
@@ -79,9 +79,9 @@ lemma map_projection {X Y : S → PointedSimplicialSet.{u}} (f : ∀ s, X s ⟶ 
 /-- 全基点 π 同型は任意の点つき小積で保存される。 -/
 lemma map_piIsomorphism {X Y : S → PointedSimplicialSet.{u}}
     [∀ s, KanComplex (X s).right] [∀ s, KanComplex (Y s).right]
-    (f : ∀ s, X s ⟶ Y s) (hf : ∀ s, KanPiIsomorphism (f s).right) :
-    KanPiIsomorphism (map f).right :=
-  SimplicialDependentProduct.map_piIsomorphism (fun s ↦ (X s).right)
+    (f : ∀ s, X s ⟶ Y s) (hf : ∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f s).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map f).right :=
+  _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_piIsomorphism (fun s ↦ (X s).right)
     (fun s ↦ (f s).right) hf
 
 end

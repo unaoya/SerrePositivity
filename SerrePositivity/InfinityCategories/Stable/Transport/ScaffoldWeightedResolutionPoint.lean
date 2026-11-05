@@ -57,15 +57,15 @@ def vertexFiberPointReindex {E B : SSet.{u}} (q : E ⟶ B)
 /-- 値を保つ表示は、同じ等号による標準の fiber 移送と一致する。 -/
 theorem vertexFiberPointReindex_eq_transport {E B : SSet.{u}} (q : E ⟶ B)
     {b b' : B _⦋0⦌} (h : b = b') (v : (vertexFiber q b) _⦋0⦌) :
-    vertexFiberPointReindex q h v =
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex q h v =
       (eqToHom (congrArg (vertexFiber q) h)).app (Opposite.op ⦋0⦌) v := by
   subst b'
   rfl
 
 namespace ScaffoldTransportComparisonSpan
-open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+open _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 分類値の表示変更を、元の表現と元の Kan 値を明記して固定する。 -/
 theorem coefficientResolutionVertexEq (c : I) :

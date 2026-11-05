@@ -36,14 +36,14 @@ lemma pointedSOAExInfinityComparison_unit (X : PointedSSetObject.{u}) :
 
 /-- 元の単位の厳密延長で得た同じ比較は全基点 π 同型。 -/
 lemma pointedSOAExInfinityComparison_piIsomorphism (X : PointedSSetObject.{u}) :
-    KanPiIsomorphism (pointedSOAExInfinityComparison X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedSOAExInfinityComparison X).right :=
   pointedKanStrictExtension_piIsomorphism _
     ((Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) _
       (exInfinityPointedUnit_anodyne X))
 
 /-- 同じ二つの Kan 模型の loop 比較も全基点 π 同型。 -/
 lemma pointedSOAExInfinityComparison_loop_piIsomorphism (X : PointedSSetObject.{u}) :
-    KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       ((PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
         (pointedSOAExInfinityComparison X)).right :=
   PointedMapping.post_piIsomorphism PointedSimplicialSet.circle _

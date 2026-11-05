@@ -21,11 +21,11 @@ variable {X Y A : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
   (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
-def familyExactComparison : FunctorIso (cofiber X a ≫ F)
-    (cofiber Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)) := by
+def familyExactComparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a ≫ F)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)) := by
   have h := FunctorIso.postcomp (compositionIso X a) F
-  have e : FunctorIso ((a ≫ cofiber X (𝟙 _)) ≫ F)
-      ((a ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫ cofiber Y (𝟙 _)) := by
+  have e : FunctorIso ((a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) ≫ F)
+      ((a ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _)) := by
     simpa only [Category.assoc] using FunctorIso.precomp (exactNaturality F) a
   exact h ≪≫ e ≪≫ (compositionIso Y (a ≫ (ihom (Δ[1] : SSet.{u})).map F)).symm
 

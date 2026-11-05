@@ -197,7 +197,7 @@ def VerdierRecoveredBoundaryComparison.iso
   exact spanFunctorIsoUnflip (asIso (Truncated.HomotopyCategory.homMk c.edge))
 
 namespace VerdierRecoveredBoundaryComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison
 variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
   (c : VerdierRecoveredBoundaryComparison r U)

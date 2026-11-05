@@ -36,7 +36,7 @@ lemma constant_of_vertex {Y : SSet.{u}} {x : Y _⦋0⦌} {f : (Δ[1] : SSet.{u})
     (hx : f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0) = x) :
     f = SSet.const x := by
   obtain ⟨y, rfl⟩ := h
-  rw [const_vertex] at hx
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at hx
   subst x
   rfl
 
@@ -62,7 +62,7 @@ lemma corners_of_bottom_loop {Y : SSet.{u}} {x : Y _⦋0⦌} (e : Y.Edge x x)
   change Q.app _ (stdSimplex.obj₀Equiv.symm 1,
     (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 0)).app _
       (stdSimplex.obj₀Equiv.symm 1)) = _ at h10
-  rw [const_vertex] at h00 h10
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h00 h10
   have hv0 : stdSimplex.objEquiv.{u} (stdSimplex.obj₀Equiv.{u}.symm (0 : Fin 2)) =
       SimplexCategory.δ (1 : Fin 2) := by decide
   have hv1 : stdSimplex.objEquiv.{u} (stdSimplex.obj₀Equiv.{u}.symm (1 : Fin 2)) =
@@ -83,14 +83,14 @@ lemma corners_of_bottom_loop {Y : SSet.{u}} {x : Y _⦋0⦌} (e : Y.Edge x x)
     change Q.app _ ((SSet.const (X := (Δ[1] : SSet.{u}))
       (stdSimplex.obj₀Equiv.symm 1)).app _ (stdSimplex.obj₀Equiv.symm k),
       stdSimplex.obj₀Equiv.symm k) = _ at h
-    simpa only [const_vertex] using h
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] using h
   have ht' (k : Fin 2) : Q.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm 1) = t := by
     have h := tcorner k
     change Q.app _ (stdSimplex.obj₀Equiv.symm k,
       (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 1)).app _
         (stdSimplex.obj₀Equiv.symm k)) = _ at h
-    simpa only [const_vertex] using h
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] using h
   have h11 : Q.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1) = x :=
     (hr' 1).trans ((hr' 0).symm.trans h10)

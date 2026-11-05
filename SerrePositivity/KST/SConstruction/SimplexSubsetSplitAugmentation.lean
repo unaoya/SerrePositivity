@@ -18,9 +18,9 @@ open SerrePositivity.InfinityCategories
 /-- 元の左部分集合を、元の最小頂点から切断頂点への bead として読む。 -/
 def necklaceInSimplexSubsetSplitLeft {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card) :
-    NecklaceIn (Δ[n] : SSet.{u})
-      (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-      (standardSimplexVertex j) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j) :=
   necklaceInSimplexSubsetAt (I.filter (· ≤ j)) _ j hL
     (DGNerve.Index.left_min (I.isLeast_min' _) (I.min'_le _ hj) _)
     (DGNerve.Index.left_max hj _)
@@ -28,8 +28,8 @@ def necklaceInSimplexSubsetSplitLeft {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 
 /-- 元の右部分集合を、元の切断頂点から最大頂点への bead として読む。 -/
 def necklaceInSimplexSubsetSplitRight {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    NecklaceIn (Δ[n] : SSet.{u}) (standardSimplexVertex j)
-      (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))) :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))) :=
   necklaceInSimplexSubsetAt (I.filter (j ≤ ·)) j _ hR
     (DGNerve.Index.right_min hj _)
     (DGNerve.Index.right_max (I.isGreatest_max' _) (I.le_max' _ hj) _)
@@ -38,27 +38,27 @@ def necklaceInSimplexSubsetSplitRight {n : ℕ} (I : Finset (Fin (n + 1))) (hI :
 def necklaceInSimplexSubsetSplit {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    NecklaceIn (Δ[n] : SSet.{u})
-      (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-      (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))) :=
-  necklaceInWedge (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
     (necklaceInSimplexSubsetSplitRight I hI j hj hR)
 
 /-- 元の分割射と全体の部分集合 augmentation の合成は、元の貼り合わせを回収する。 -/
 lemma simplexSubsetSplitMap_augmentation {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    simplexSubsetSplitMap.{u} I j hj hL hR ≫ simplexSubsetMap I hI =
+    simplexSubsetSplitMap.{u} I j hj hL hR ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI =
       (necklaceInSimplexSubsetSplit I hI j hj hL hR).map := by
-  apply (NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_hom_ext
-    (NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))
+  apply (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_hom_ext
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))
   · rw [← Category.assoc, simplexSubsetSplitMap_inl I hI, Category.assoc,
       _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle]
-    exact (necklaceInWedge_inl (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
+    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_inl (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
       (necklaceInSimplexSubsetSplitRight I hI j hj hR)).symm
   · rw [← Category.assoc, simplexSubsetSplitMap_inr I hI, Category.assoc,
       _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle]
-    exact (necklaceInWedge_inr (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
+    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_inr (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
       (necklaceInSimplexSubsetSplitRight I hI j hj hR)).symm
 
 /-- 元の貼り合わせと全体の部分集合 bead の間の、元の実可換三角形。 -/
@@ -66,9 +66,9 @@ def necklaceInSimplexSubsetSplitInclusion {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     necklaceInSimplexSubsetSplit.{u} I hI j hj hL hR ⟶ necklaceInSimplexSubset I hI where
-  necklaceHom := simplexSubsetSplitRefinement I j hj hL hR
-  w := (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun f => f ≫ simplexSubsetMap I hI)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := simplexSubsetSplitRefinement I j hj hL hR
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := (Category.assoc _ _ _).symm.trans
+    ((congrArg (fun f => f ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI)
       (simplexSubsetSplitRefinement_triangle I j hj hL hR)).trans
       (simplexSubsetSplitMap_augmentation I hI j hj hL hR))
 

@@ -28,52 +28,52 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
 open SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def quotientArrow : A.obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
   (i.hom ≫ arrow p q) ≫ (ihom (Δ[1] : SSet.{u})).map r.hom
 
-lemma quotientArrow_source : quotientArrow p q i r ≫
+lemma quotientArrow_source : _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      (i.hom ≫ (laxSnd p q).hom) ≫ (laxQuotientDLeg p q r).hom := by
+      (i.hom ≫ (laxSnd p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r).hom := by
   change ((i.hom ≫ arrow p q) ≫ (ihom (Δ[1] : SSet.{u})).map r.hom) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       (i.hom ≫ (laxSnd p q).hom) ≫ (LaxInclusion.fromD p q ≫ r.hom)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc,
     Category.assoc i.hom (arrow p q), arrow_source]
   simp only [Category.assoc]
 
-lemma quotientArrow_target : quotientArrow p q i r ≫
+lemma quotientArrow_target : _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = i.hom ≫ r.hom := by
-  rw [quotientArrow, Category.assoc, arrowMap_evaluation, ← Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc,
     Category.assoc i.hom (arrow p q), arrow_target, Category.comp_id]
 
 include h in
 lemma quotientArrow_zero_target (x : A.obj _⦋0⦌) :
-    IsZeroTargetArrow ((quotientArrow p q i r).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex ((quotientArrow p q i r ≫ evaluateFunctorAt _).app _ x)
-  rw [quotientArrow_target]
+    IsZeroTargetArrow ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r).app (Opposite.op ⦋0⦌) x) := by
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r ≫ evaluateFunctorAt _).app _ x)
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_target]
   exact h.kills_inclusion x
 
 def quotientCofiberComparison : FunctorIso
-    ((i.hom ≫ cofiber p q) ≫ r.hom) (CofiberFamily.cofiber Q.obj (quotientArrow p q i r)) :=
+    ((i.hom ≫ cofiber p q) ≫ r.hom) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)) :=
   FunctorIso.postcomp (CofiberFamily.precompositionIso (arrow p q) i.hom) r.hom ≪≫
     CofiberFamily.familyExactComparison r.hom (i.hom ≫ arrow p q)
 
-def quotientCofiber_CIso : FunctorIso (CofiberFamily.cofiber Q.obj (quotientArrow p q i r))
+def quotientCofiber_CIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r))
     ((i.hom ≫ (laxFst p q).hom) ≫ (LaxInclusion.fromC p q ≫ r.hom)) := by
   have e := FunctorIso.postcomp (FunctorIso.precomp (cofiber_fromCIso p q) i.hom) r.hom
-  have he := (quotientCofiberComparison p q i r).symm ≪≫ e
+  have he := (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberComparison p q i r).symm ≪≫ e
   simpa only [Category.assoc] using he
 
-def quotientCofiber_DSuspIso : FunctorIso (CofiberFamily.cofiber Q.obj (quotientArrow p q i r))
-    (((i.hom ≫ (laxSnd p q).hom) ≫ (laxQuotientDLeg p q r).hom) ≫
-      SuspensionExact.map Q.obj) := by
-  have e := cofiberZeroTargetIso Q.obj (quotientArrow p q i r)
-    (quotientArrow_zero_target p q i r h)
-  rw [quotientArrow_source] at e
+def quotientCofiber_DSuspIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r))
+    (((i.hom ≫ (laxSnd p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r).hom) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj) := by
+  have e := cofiberZeroTargetIso Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_zero_target p q i r h)
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_source] at e
   exact e
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit

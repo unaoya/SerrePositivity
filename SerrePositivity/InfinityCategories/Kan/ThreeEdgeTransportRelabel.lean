@@ -21,36 +21,36 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
 end SerrePositivity.KST.Spectra.ThreeEdgeTransport
 namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
-open SerrePositivity.KST.Spectra.ThreeEdgeTransport
+open _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 variable {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
   {left : Z.Edge x a} {middle : Z.Edge x y} {right : Z.Edge y b}
 
 /-- 元の単体を持つ辺へ端点表示を直しても、対角辺と二つの三角形の単体は変更しない。 -/
-def relabel (D : ThreeEdgeTransport left middle right) {x' a' y' b' : Z _⦋0⦌}
+def relabel (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) {x' a' y' b' : Z _⦋0⦌}
     (left' : Z.Edge x' a') (middle' : Z.Edge x' y') (right' : Z.Edge y' b')
     (hl : left.edge = left'.edge) (hm : middle.edge = middle'.edge)
-    (hr : right.edge = right'.edge) : ThreeEdgeTransport left' middle' right' := by
+    (hr : right.edge = right'.edge) : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left' middle' right' := by
   have hx : x = x' := left.src_eq.symm.trans ((congrArg (Z.δ 1) hl).trans left'.src_eq)
   have ha : a = a' := left.tgt_eq.symm.trans ((congrArg (Z.δ 0) hl).trans left'.tgt_eq)
   have hb : b = b' := right.tgt_eq.symm.trans ((congrArg (Z.δ 0) hr).trans right'.tgt_eq)
   exact {
-    diagonal := SSet.Edge.mk D.diagonal.edge
+    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal := SSet.Edge.mk D.diagonal.edge
       (D.diagonal.src_eq.trans hx) (D.diagonal.tgt_eq.trans hb)
-    transported := SSet.Edge.mk D.transported.edge
+    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported := SSet.Edge.mk D.transported.edge
       (D.transported.src_eq.trans ha) (D.transported.tgt_eq.trans hb)
-    first := {
+    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.first := {
       simplex := D.first.simplex
       d₀ := D.first.d₀.trans hr
       d₁ := D.first.d₁
       d₂ := D.first.d₂.trans hm }
-    second := {
+    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.second := {
       simplex := D.second.simplex
       d₀ := D.second.d₀
       d₁ := D.second.d₁
       d₂ := D.second.d₂.trans hl } }
 
 /-- 端点表示を直しても、元の輸送辺の一次単体は厳密に同じ。 -/
-lemma relabel_transported_edge (D : ThreeEdgeTransport left middle right)
+lemma relabel_transported_edge (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right)
     {x' a' y' b' : Z _⦋0⦌} (left' : Z.Edge x' a') (middle' : Z.Edge x' y')
     (right' : Z.Edge y' b') (hl : left.edge = left'.edge) (hm : middle.edge = middle'.edge)
     (hr : right.edge = right'.edge) :
@@ -59,7 +59,7 @@ lemma relabel_transported_edge (D : ThreeEdgeTransport left middle right)
 /-- 三辺自身が同じ対角辺を持つ実三角形をなすなら、閉じた輸送辺の類は恒等射。 -/
 lemma transported_homMk_eq_id [KanComplex Z] {x y b : Z _⦋0⦌}
     {left : Z.Edge x b} {middle : Z.Edge x y} {right : Z.Edge y b}
-    (D : ThreeEdgeTransport left middle right) (t : SSet.Edge.CompStruct middle right left) :
+    (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) (t : SSet.Edge.CompStruct middle right left) :
     SSet.HomotopyCategory.homMk D.transported = 𝟙 (SSet.HomotopyCategory.mk b) := by
   let leftIso : IsIso (SSet.HomotopyCategory.homMk left) :=
     isInvertibleEdge_of_hasFinalHornFillers left.toTruncated

@@ -28,31 +28,31 @@ namespace SerrePositivity.InfinityCategories.Stable.Semiorthogonal
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 選ばれた随伴を持つ二項半直交分解。核の生成は零化の逆向きのみを要求する。 -/
-structure SemiorthogonalDecomposition (A B T : StableCategory.{u}) where
-  inclusion : ExactMap A T
-  rightInclusion : ExactMap B T
-  retraction : ExactMap T A
-  projection : ExactMap T B
-  leftAdjunction : QCatAdjunction inclusion.hom retraction.hom
-  rightAdjunction : QCatAdjunction projection.hom rightInclusion.hom
-  inclusion_fullyFaithful : IsFullyFaithful inclusion.hom
-  rightInclusion_fullyFaithful : IsFullyFaithful rightInclusion.hom
-  counit_isIso : IsIso rightAdjunction.counit
+structure SemiorthogonalDecomposition (A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) where
+  inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A T
+  rightInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B T
+  retraction : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T A
+  projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T B
+  leftAdjunction : QCatAdjunction _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.retraction.hom
+  rightAdjunction : QCatAdjunction _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion.hom
+  inclusion_fullyFaithful : IsFullyFaithful _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom
+  rightInclusion_fullyFaithful : IsFullyFaithful _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion.hom
+  counit_isIso : IsIso _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightAdjunction.counit
   kills_inclusion (a : A.obj _⦋0⦌) :
-    IsZeroVertex ((inclusion.hom ≫ projection.hom).app (Opposite.op ⦋0⦌) a)
+    IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom).app (Opposite.op ⦋0⦌) a)
   generates_kernel (x : T.obj _⦋0⦌) :
-    IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ essentialImage inclusion
+    IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion
 
-attribute [instance] SemiorthogonalDecomposition.counit_isIso
+attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso
 
 namespace SemiorthogonalDecomposition
-open SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition
-variable {A B T : StableCategory.{u}} (d : SemiorthogonalDecomposition A B T)
+open _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
+variable {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
 
 /-- 零化は包含の本質像全体に広がる。 -/
 lemma kernel (x : T.obj _⦋0⦌) :
     IsZeroVertex (d.projection.hom.app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage d.inclusion := by
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage d.inclusion := by
   constructor
   · exact d.generates_kernel x
   · rintro ⟨a, ⟨e⟩⟩
@@ -60,21 +60,21 @@ lemma kernel (x : T.obj _⦋0⦌) :
 
 /-- 射影と右因子の包含の合成は、元の余単位を順射とする関手同型。 -/
 def sectionIso : FunctorIso (d.rightInclusion.hom ≫ d.projection.hom) (𝟙 B.obj) :=
-  AdjointLocalization.counitIso d.rightAdjunction
+  _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitIso d.rightAdjunction
 
 /-- 商の普遍性は随伴から導出し、半直交分解の入力にしない。 -/
-lemma isVerdier : IsVerdierSequence d.inclusion d.projection :=
-  isVerdierSequence_of_adjoint d.inclusion d.projection d.rightInclusion
+lemma isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence d.inclusion d.projection :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.isVerdierSequence_of_adjoint d.inclusion d.projection d.rightInclusion
     d.inclusion_fullyFaithful d.kernel d.rightAdjunction
 
 /-- 半直交分解が誘導する、元の包含・射影を持つ抽象 Verdier 列。 -/
-def verdierSequence : VerdierSequence.{u} where
-  left := A
-  middle := T
-  right := B
-  inclusion := d.inclusion
-  projection := d.projection
-  isVerdier := d.isVerdier
+def verdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := A
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := T
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := B
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := d.inclusion
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := d.projection
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := d.isVerdier
 
 /-- 左因子から右因子への写像空間は可縮。 -/
 lemma semiorthogonal (a : A.obj _⦋0⦌) (b : B.obj _⦋0⦌) :

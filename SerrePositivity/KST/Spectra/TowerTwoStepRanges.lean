@@ -36,7 +36,7 @@ lemma transitionLE_step_comp (n m : ℕ) (h : n ≤ m) (a : G (m + 1)) :
       (homOfLE (Nat.le_succ m)).op ≫ (homOfLE h).op := Subsingleton.elim _ _
   dsimp only [transitionLE]
   rw [he, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition_comp]
-  have hs : transition G q (homOfLE (Nat.le_succ m)).op a = q m a :=
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition G q (homOfLE (Nat.le_succ m)).op a = q m a :=
     transitionLE_step G q m a
   rw [hs]
 
@@ -72,7 +72,7 @@ lemma stable_ranges_of_two_step_lifting
 /-- 二段の持ち上げ条件を持つ群の塔は Mittag–Leffler。 -/
 theorem isMittagLeffler_of_two_step_lifting
     (hlift : ∀ m, ∀ a : G (m + 1), ∃ b : G (m + 2), q m (q (m + 1) b) = q m a) :
-    IsMittagLeffler G q := by
+    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler G q := by
   apply isMittagLeffler_of_stable_ranges
   intro n
   exact ⟨n + 1, Nat.le_succ n, fun k h ↦ stable_ranges_of_two_step_lifting G q hlift n k h⟩

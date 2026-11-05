@@ -18,8 +18,8 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u})
-  {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma valueMap_fromC_difference :
     SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
@@ -33,7 +33,7 @@ lemma valueMap_fromC_difference :
   let g : C ⟶ E := p ≫ SuspensionExact.exactMap E
   have e : FunctorIso f.hom g.hom := by
     change FunctorIso (LaxInclusion.fromC p q ≫ laxDifference p q)
-      (p.hom ≫ SuspensionExact.map E.obj)
+      (p.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map E.obj)
     exact fromC_differenceIso p q
   have h := valueMap_hom_eq_of_functorIso Φ e
   change (stableValueFunctor Φ).map f = (stableValueFunctor Φ).map g at h

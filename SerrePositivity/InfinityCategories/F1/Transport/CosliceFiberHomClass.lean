@@ -69,16 +69,16 @@ def cosliceFiberEdgeOfHomotopy (t : SSet.Edge.CompStruct (cosliceFiberVertexToEd
 
 /-- 元の矢印の類の等式から、同じ実 coslice fiber 内で元の二点を結ぶ同型を回収する。 -/
 def cosliceFiberVertexIsoOfHomEq [Quasicategory X]
-    (h : cosliceFiberPointHom v = cosliceFiberPointHom w) : VertexIso v w := by
+    (h : _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom v = _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom w) : VertexIso v w := by
   have h₂ : Truncated.HomotopyCategory₂.homMk (cosliceFiberVertexToEdge v).toTruncated =
       Truncated.HomotopyCategory₂.homMk (cosliceFiberVertexToEdge w).toTruncated := by
     have hh := congrArg (fun m => (pathToEdgeHomotopyCategory ((truncation 2).obj X)).map m) h
-    simpa only [pathToEdgeHomotopyCategory, cosliceFiberPointHom,
+    simpa only [pathToEdgeHomotopyCategory, _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom,
       Truncated.HomotopyCategory.lift_map_homMk] using hh
   have hL : Truncated.HomotopicL (cosliceFiberVertexToEdge v).toTruncated
       (cosliceFiberVertexToEdge w).toTruncated := Quotient.exact h₂
   let t := Classical.choice hL
-  let e := cosliceFiberEdgeOfHomotopy t
+  let e := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy t
   have := vertexFiber_kanComplex_of_leftFibration
     (sliceUnderProjection (SSet.yonedaEquiv.symm x)) a
   have : IsIso (Truncated.HomotopyCategory.homMk e.toTruncated) :=

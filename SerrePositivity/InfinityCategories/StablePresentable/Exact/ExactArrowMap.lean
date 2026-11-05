@@ -66,7 +66,7 @@ lemma arrowMap_evaluation {X Y : SSet.{u}} (F : X ⟶ Y) (i : Fin 2) :
         evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm i) =
       evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm i) ≫ F := rfl
 
-def stableArrowCategory (A : StableCategory.{u}) : StableCategory.{u} :=
+def stableArrowCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
   ⟨(ihom (Δ[1] : SSet.{u})).obj A.obj, inferInstance, inferInstance⟩
 
 lemma arrowVertex_isZero_iff {X : SSet.{u}} [Quasicategory X] [IsStable X]

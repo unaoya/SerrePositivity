@@ -32,13 +32,13 @@ open SerrePositivity.KST.LocalizingInvariants
 def simplexLastPoint (n : ℕ) : (Δ[0] : SSet.{u}) ⟶ Δ[n] :=
   SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last n))
 
-instance simplexLastPoint_mono (n : ℕ) : Mono (simplexLastPoint.{u} n) :=
+instance simplexLastPoint_mono (n : ℕ) : Mono (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint.{u} n) :=
   cofinalPointInclusion_mono _
 
 /-- 最後の頂点への制限は、全余錐族上の自明 Kan ファイブレーション。 -/
 instance simplexTerminalCoconeRestriction_trivialKanFibration
     {X : SSet.{u}} [Quasicategory X] {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X) :
-    TrivialKanFibration (sliceUnderRestrict D (simplexLastPoint n)) :=
+    TrivialKanFibration (sliceUnderRestrict D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)) :=
   sliceUnderRestrict_trivialKanFibration D _
     (F1B.terminalPoint_rightAnodyne (stdSimplex_last_isTerminalVertex n))
 
@@ -46,37 +46,37 @@ instance simplexTerminalCoconeRestriction_trivialKanFibration
 lemma exists_relative_simplexTerminalCoconeFamily {X A B : SSet.{u}}
     [Quasicategory X] {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
     (i : A ⟶ B) [Mono i] (a : A ⟶ sliceUnder D)
-    (b : B ⟶ sliceUnder (simplexLastPoint n ≫ D))
-    (hab : a ≫ sliceUnderRestrict D (simplexLastPoint n) = i ≫ b) :
+    (b : B ⟶ sliceUnder (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D))
+    (hab : a ≫ sliceUnderRestrict D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) = i ≫ b) :
     ∃ F : B ⟶ sliceUnder D, i ≫ F = a ∧
-      F ≫ sliceUnderRestrict D (simplexLastPoint n) = b := by
-  have := TrivialKanFibration.mem (p := sliceUnderRestrict D (simplexLastPoint n))
+      F ≫ sliceUnderRestrict D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) = b := by
+  have := TrivialKanFibration.mem (p := sliceUnderRestrict D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))
     i inferInstance
-  let sq : CommSq a i (sliceUnderRestrict D (simplexLastPoint n)) b := ⟨hab⟩
+  let sq : CommSq a i (sliceUnderRestrict D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)) b := ⟨hab⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 /-- 元の終端余錐は、頂点も全終端辺も保ったまま全線型図式へ延長する。 -/
 lemma exists_simplexTerminalCocone {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X)
-    (d : JoinCocone (simplexLastPoint n ≫ D)) :
+    (d : JoinCocone (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D)) :
     ∃ c : JoinCocone D,
-      joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val = d.val ∧
+      joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val = d.val ∧
       c.vertex = d.vertex := by
   obtain ⟨c, hc, hv⟩ := exists_cocone_extension_of_trivialRestriction
-    D (simplexLastPoint n) d
+    D (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) d
   exact ⟨c, congrArg Subtype.val hc, hv⟩
 
 /-- 指定した次の辺を全一次単体として保ち、全図式の余錐へ貼る。 -/
 lemma exists_simplexCocone_of_last_edge {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X) {z : X _⦋0⦌}
     (g : SSet.Truncated.Edge (X := (truncation 2).obj X)
-      (SSet.yonedaEquiv (simplexLastPoint n ≫ D)) z) :
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D)) z) :
     ∃ c : JoinCocone D, c.vertex = z ∧
       (joinStdSimplexIso 0 0).inv ≫
-        joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
+        joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
           SSet.yonedaEquiv.symm g.edge := by
-  let d := pointCosliceVertexOfEdge (simplexLastPoint n ≫ D) g
-  obtain ⟨c, hc, hv⟩ := exists_simplexTerminalCocone D d
+  let d := pointCosliceVertexOfEdge (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ D) g
+  obtain ⟨c, hc, hv⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_simplexTerminalCocone D d
   refine ⟨c, hv.trans ?_, ?_⟩
   · change SSet.yonedaEquiv (joinInr _ _ ≫
       ((joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm g.edge)) = z

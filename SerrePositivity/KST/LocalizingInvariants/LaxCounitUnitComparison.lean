@@ -19,7 +19,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def rightCompatibleFromCIso : FunctorIso (cofiber p q)
     ((laxFst p q).hom ≫ LaxInclusion.fromC p q) :=

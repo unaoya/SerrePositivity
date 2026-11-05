@@ -29,10 +29,10 @@ theorem strictKanUnstraighteningComparison_constant_pointed {I : Type u} [Catego
     HomotopyLimits.coherentCosliceFiberComparison pointKanObject (F.obj i) ≫
       vertexFiberι (sliceUnderProjection
         (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-          (coherentNerveVertex (F.obj i)) ≫ strictKanPointedApexIso.hom := by
-  rw [strictKanUnstraighteningComparison_pointed, ← Category.assoc]
+          (coherentNerveVertex (F.obj i)) ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningComparison_pointed, ← Category.assoc]
   change HomotopyLimits.weightedConstantCosliceMap F pointKanObject i ≫
-    strictKanPointedApexIso.hom = _
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom = _
   rw [← HomotopyLimits.weightedConstantCosliceFiberMap_eq F pointKanObject i]
   rfl
 

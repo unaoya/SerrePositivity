@@ -36,7 +36,7 @@ local instance homEndFamilyEndKan (X : OmegaSpectrum.{u}) (D : I ⥤ OmegaSpectr
 /-- 元の恒等射の像で end の前合成作用を固定した、全 Hom パラメータの族。 -/
 def homotopyLimitHomEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
     mappingSpace X (homotopyLimit D) ⟶ bousfieldKanHolim (simplicialHomDiagram D X) :=
-  ParameterPoint.family (homotopyLimitHomEndPointMap D) (mappingSpace X (homotopyLimit D)) ≫
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitHomEndPointMap D) (mappingSpace X (homotopyLimit D)) ≫
     homEndPrecomposition D X (homotopyLimit D)
 
 /-- 恒等射の像の前合成族は、既存の BF Hom–end 同値の順射そのもの。 -/

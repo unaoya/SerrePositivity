@@ -50,7 +50,7 @@ lemma cotensorEvaluation_evaluation (A : PointedSimplicialSet.{u})
   dsimp only [RawSpectrumMapping.exchangeFamily]
   have hp := congrArg (fun f ↦
     (RawSpectrumMapping.pointedIdentity (cotensor A Y) ≫ f) ≫
-      (InternalHomExchange.iso ((cotensor A Y).level n).space A
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor A Y).level n).space A
         (Y.level n).space).hom)
     (RawSpectrumMapping.pointedPost_evaluation (cotensor A Y) (cotensorProjection A Y) n)
   apply hp.trans
@@ -58,7 +58,7 @@ lemma cotensorEvaluation_evaluation (A : PointedSimplicialSet.{u})
   let U := ((cotensor A Y).level n).space
   let V := (Y.level n).space
   let p : U ⟶ (ihom A).obj V := (cotensorProjection A Y).app n
-  change (curry' (𝟙 U) ≫ (ihom U).map p) ≫ (InternalHomExchange.iso U A V).hom =
+  change (curry' (𝟙 U) ≫ (ihom U).map p) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U A V).hom =
     curry' (curry ((β_ U A).hom ≫ uncurry p))
   rw [curry'_ihom_map, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
 

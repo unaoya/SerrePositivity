@@ -19,15 +19,15 @@ variable {W V : SimplicialObject (ModuleCat.{v} S)}
 lemma modulePiMooreGroupEquiv_homologySphere
     (W : SimplicialObject (ModuleCat.{v} S))
     [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ)
-    (s : KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
     (mooreHomologySphereIso W n).hom.hom (modulePiMooreGroupEquiv W n s) =
       modulePiSphereGroupEquiv W n s := by
   exact (mooreHomologySphereIso W n).inv_hom_id_apply _
 lemma modulePiMooreGroupEquiv_naturality
     [SSet.KanComplex (moduleUnderlyingSSet W)] [SSet.KanComplex (moduleUnderlyingSSet V)]
-    (f : W ⟶ V) (n : ℕ) (s : KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
+    (f : W ⟶ V) (n : ℕ) (s : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
     modulePiMooreGroupEquiv V n
-      (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
         (moduleUnderlyingSSetMap_zero f) s) =
       (HomologicalComplex.homologyMap ((normalizedMooreComplex (ModuleCat.{v} S)).map f)
         (n + 1)).hom (modulePiMooreGroupEquiv W n s) := by
@@ -45,7 +45,7 @@ lemma modulePiMooreGroupEquiv_naturality
 lemma modulePiMap_bijective_iff_homologyMap
     [SSet.KanComplex (moduleUnderlyingSSet W)] [SSet.KanComplex (moduleUnderlyingSSet V)]
     (f : W ⟶ V) (n : ℕ) :
-    Function.Bijective (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
       (moduleUnderlyingSSetMap_zero f)) ↔
     Function.Bijective
       (HomologicalComplex.homologyMap ((normalizedMooreComplex (ModuleCat.{v} S)).map f)

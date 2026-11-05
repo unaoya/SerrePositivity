@@ -52,7 +52,7 @@ lemma counit_postcompRight_isIso
   have : (qcatHomFunctor X X).Full := ⟨fun f => ⟨CatEnrichedOrdinary.Hom.mk f, rfl⟩⟩
   have : IsIso ((qcatHomFunctor X X).map a.unit) := inferInstanceAs (IsIso a.unitHom)
   have : IsIso a.unit := isIso_of_reflects_iso a.unit (qcatHomFunctor X X)
-  have : IsIso (a.counit ▷ qcatMap G) := whiskerRight_counit_isIso_of_unit a
+  have : IsIso (a.counit ▷ qcatMap G) := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.whiskerRight_counit_isIso_of_unit a
   have h : IsIso (qcatCellEquiv _ _ (a.counit ▷ qcatMap G)) := by
     change IsIso ((qcatHomFunctor Y X).map (a.counit ▷ qcatMap G))
     infer_instance
@@ -65,7 +65,7 @@ lemma counit_precompLeft_isIso
   have : (qcatHomFunctor X X).Full := ⟨fun f => ⟨CatEnrichedOrdinary.Hom.mk f, rfl⟩⟩
   have : IsIso ((qcatHomFunctor X X).map a.unit) := inferInstanceAs (IsIso a.unitHom)
   have : IsIso a.unit := isIso_of_reflects_iso a.unit (qcatHomFunctor X X)
-  have : IsIso (qcatMap F ◁ a.counit) := whiskerLeft_counit_isIso_of_unit a
+  have : IsIso (qcatMap F ◁ a.counit) := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.whiskerLeft_counit_isIso_of_unit a
   have h : IsIso (qcatCellEquiv _ _ (qcatMap F ◁ a.counit)) := by
     change IsIso ((qcatHomFunctor X Y).map (qcatMap F ◁ a.counit))
     infer_instance

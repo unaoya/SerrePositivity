@@ -48,17 +48,17 @@ def zeroC : D.obj ⟶ C.obj := SSet.const (chosenZeroVertex C.obj).vertex
 def zeroD : C.obj ⟶ D.obj := SSet.const (chosenZeroVertex D.obj).vertex
 
 lemma zeroC_post (x : D.obj _⦋0⦌) :
-    IsZeroVertex ((zeroC (D := D) ≫ p.hom).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (p.hom.app _ ((zeroC (D := D)).app _ x))
+    IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (D := D) ≫ p.hom).app (Opposite.op ⦋0⦌) x) := by
+  change IsZeroVertex (p.hom.app _ ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (D := D)).app _ x))
   apply IsExactFunctor.preservesZero
-  rw [zeroC, zeroDiagram_const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
   exact (chosenZeroVertex C.obj).isZero
 
 lemma zeroD_post (x : C.obj _⦋0⦌) :
-    IsZeroVertex ((zeroD (C := C) ≫ q.hom).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (q.hom.app _ ((zeroD (C := C)).app _ x))
+    IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD (C := C) ≫ q.hom).app (Opposite.op ⦋0⦌) x) := by
+  change IsZeroVertex (q.hom.app _ ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD (C := C)).app _ x))
   apply IsExactFunctor.preservesZero
-  rw [zeroD, zeroDiagram_const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
   exact (chosenZeroVertex D.obj).isZero
 
 end SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion

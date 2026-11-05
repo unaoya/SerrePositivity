@@ -23,7 +23,7 @@ open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 精密化の再添字の像を、元の合成列内の端点を保つ native な Path とする。 -/
-def coherentStringRefinementPath {s t : CoherentArrowString f} (a : s ⟶ t) :
+def coherentStringRefinementPath {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
     Path (ULift.up 0 : ULift.{u} (Fin (t.length + 1))) (ULift.up (Fin.last t.length)) where
   I := Set.range (fun i => ULift.up (a.map.toOrderHom i))
   left := ⟨0, congrArg ULift.up a.first⟩
@@ -32,7 +32,7 @@ def coherentStringRefinementPath {s t : CoherentArrowString f} (a : s ⟶ t) :
   le_right _ _ := Fin.le_last _
 
 /-- 同じ精密化に沿って、元の全端点 Path を像の Path へ写す。 -/
-def coherentStringPathReindex {s t : CoherentArrowString f} (a : s ⟶ t)
+def coherentStringPathReindex {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t)
     (p : Path (ULift.up 0 : ULift.{u} (Fin (s.length + 1))) (ULift.up (Fin.last s.length))) :
     Path (ULift.up 0 : ULift.{u} (Fin (t.length + 1))) (ULift.up (Fin.last t.length)) where
   I := a.map.toOrderHom.uliftMap '' p.I
@@ -42,17 +42,17 @@ def coherentStringPathReindex {s t : CoherentArrowString f} (a : s ⟶ t)
   le_right _ _ := Fin.le_last _
 
 /-- 元の Path の全包含も同時に再添字する関手。 -/
-def coherentStringPathReindexFunctor {s t : CoherentArrowString f} (a : s ⟶ t) :
+def coherentStringPathReindexFunctor {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
     Path (ULift.up 0 : ULift.{u} (Fin (s.length + 1))) (ULift.up (Fin.last s.length)) ⥤
     Path (ULift.up 0 : ULift.{u} (Fin (t.length + 1))) (ULift.up (Fin.last t.length)) where
-  obj := coherentStringPathReindex a
+  obj := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex a
   map b := ⟨⟨⟨Set.image_mono b.1.1.1⟩⟩⟩
 
 /-- 精密化の合成の Path は、元の前半の Path を後半で再添字したもの。 -/
-lemma coherentStringRefinementPath_comp {s t r : CoherentArrowString f}
+lemma coherentStringRefinementPath_comp {s t r : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f}
     (a : s ⟶ t) (b : t ⟶ r) :
-    coherentStringRefinementPath (a ≫ b) =
-      coherentStringPathReindex b (coherentStringRefinementPath a) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (a ≫ b) =
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex b (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath a) := by
   apply SimplicialThickening.Path.ext
   ext q
   change (∃ i, ULift.up (b.map.toOrderHom (a.map.toOrderHom i)) = q) ↔
@@ -65,25 +65,25 @@ lemma coherentStringRefinementPath_comp {s t r : CoherentArrowString f}
     exact ⟨i, hi⟩
 
 /-- 二つの連続した精密化から得る、元の最後の合成列内の Path の包含。 -/
-def coherentStringRefinementPathInclusion {s t r : CoherentArrowString f}
+def coherentStringRefinementPathInclusion {s t r : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f}
     (a : s ⟶ t) (b : t ⟶ r) :
-    coherentStringRefinementPath (a ≫ b) ⟶ coherentStringRefinementPath b := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (a ≫ b) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath b := by
   refine ⟨⟨⟨?_⟩⟩⟩
   rintro q ⟨i, hi⟩
   exact ⟨a.map.toOrderHom i, hi⟩
 
 /-- 精密化の高次単体から、最後の元の合成列内の全 Path の単体を直接作る。 -/
-def coherentStringPathFlag {n : ℕ} (F : (nerve (CoherentArrowString f)) _⦋n⦌) :
+def coherentStringPathFlag {n : ℕ} (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋n⦌) :
     (nerve (Path (ULift.up 0 : ULift.{u} (Fin ((F.obj (Fin.last n)).length + 1)))
       (ULift.up (Fin.last (F.obj (Fin.last n)).length)))) _⦋n⦌ where
-  obj i := coherentStringRefinementPath (F.map (homOfLE (Fin.le_last i)))
+  obj i := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (F.map (homOfLE (Fin.le_last i)))
   map {i j} a := by
     have hc : F.map a ≫ F.map (homOfLE (Fin.le_last j)) =
         F.map (homOfLE (Fin.le_last i)) := by
       rw [← CategoryTheory.Functor.map_comp]
       congr 1
-    exact eqToHom (congrArg coherentStringRefinementPath hc).symm ≫
-      coherentStringRefinementPathInclusion (F.map a) (F.map (homOfLE (Fin.le_last j)))
+    exact eqToHom (congrArg _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath hc).symm ≫
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPathInclusion (F.map a) (F.map (homOfLE (Fin.le_last j)))
   map_id _ := by
     apply InducedCategory.hom_ext
     exact Subsingleton.elim _ _
@@ -93,21 +93,21 @@ def coherentStringPathFlag {n : ℕ} (F : (nerve (CoherentArrowString f)) _⦋n�
 
 /-- 全単体作用による最後の合成列の変化も、同じ元の精密化による Path の像として一致。 -/
 lemma coherentStringPathFlag_naturality {m n : ℕ}
-    (F : (nerve (CoherentArrowString f)) _⦋n⦌) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (nerveMap (coherentStringPathReindexFunctor
+    (F : (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) _⦋n⦌) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor
       (F.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).app (Opposite.op ⦋m⦌)
-      (coherentStringPathFlag ((nerve (CoherentArrowString f)).map θ.op F)) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag ((nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)).map θ.op F)) =
     (nerve (Path (ULift.up 0 : ULift.{u} (Fin ((F.obj (Fin.last n)).length + 1)))
       (ULift.up (Fin.last (F.obj (Fin.last n)).length)))).map θ.op
-      (coherentStringPathFlag F) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag F) := by
   refine CategoryTheory.Functor.ext (fun i => ?_) ?_
-  · change coherentStringPathReindex
+  · change _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex
       (F.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))
-      (coherentStringRefinementPath
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath
         (F.map (θ.toOrderHom.monotone.functor.map (homOfLE (Fin.le_last i))))) =
-      coherentStringRefinementPath (F.map (homOfLE (Fin.le_last (θ.toOrderHom i))))
-    rw [← coherentStringRefinementPath_comp]
-    apply congrArg coherentStringRefinementPath
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (F.map (homOfLE (Fin.le_last (θ.toOrderHom i))))
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath_comp]
+    apply congrArg _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath
     rw [← CategoryTheory.Functor.map_comp]
     congr 1
   · intro i j a

@@ -38,7 +38,7 @@ lemma ihomAction_eq_curry_comp (A E V : PointedSimplicialSet.{u}) :
 /-- パラメータ評価と内部 Hom の作用を一つの豊穣合成として表示する。 -/
 lemma ihomParameterAction_eq_curry {A E V T : PointedSimplicialSet.{u}}
     (e : T ⟶ PointedObject.basedHom A E) :
-    ihomAction A E V ≫ prePointed e (PointedObject.basedHom A V) =
+    ihomAction A E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed e (PointedObject.basedHom A V) =
       curry (e ▷ PointedObject.basedHom E V ≫ MonoidalClosed.comp A E V) := by
   rw [ihomAction_eq_curry_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   exact curry_pre_app e (MonoidalClosed.comp A E V)

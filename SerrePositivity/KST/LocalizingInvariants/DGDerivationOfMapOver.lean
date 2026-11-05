@@ -25,12 +25,12 @@ def derivationOfMapOver : Derivation A (bimoduleRestrict q N) where
   hom := s.hom ≫ biprod.snd
   unit := by
     rw [← Category.assoc, IsMonHom.one_hom]
-    change one B N ≫ biprod.snd = 0
+    change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one B N ≫ biprod.snd = 0
     rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, Category.assoc, biprod.inl_snd, comp_zero]
   leibniz := by
     have hf : s.hom ≫ biprod.fst = q.hom := congrArg Mon.Hom.hom hs
     rw [← Category.assoc, IsMonHom.mul_hom, Category.assoc]
-    change (s.hom ⊗ₘ s.hom) ≫ mul B N ≫ biprod.snd = _
+    change (s.hom ⊗ₘ s.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul B N ≫ biprod.snd = _
     rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_snd, comp_add, ← Category.assoc, ← Category.assoc,
       tensorHom_comp_tensorHom, tensorHom_comp_tensorHom, hf]
     change (q.hom ⊗ₘ (s.hom ≫ biprod.snd)) ≫ N.actLeft +

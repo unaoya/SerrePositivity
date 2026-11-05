@@ -44,7 +44,7 @@ local notation "P" => S.toSSet ⊗ (Δ[1] : SSet)
 local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 namespace VerdierRecoveredInitialComparison
-open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
 variable (c : VerdierRecoveredInitialComparison r U)
 
 /-- 同じ保存済み K 実全族を元の第一行単体へ移す。 -/

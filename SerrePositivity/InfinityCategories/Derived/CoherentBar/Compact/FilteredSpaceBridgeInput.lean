@@ -20,9 +20,9 @@ open scoped _root_.Simplicial
 /-- 球面の境界が指定した道をたどる、正次数 π の基点移送関係。 -/
 def dgBarCompactPiTransport {X : SSet.{w}} [KanComplex X]
     (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y)
-    (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y) : Prop :=
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) : Prop :=
   ∃ (f : X.PtSimplex (n + 1) x) (g : X.PtSimplex (n + 1) y),
-    KanHomotopyGroup.mk f = a ∧ KanHomotopyGroup.mk g = b ∧
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f = a ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g = b ∧
       ∃ H : SSet.Homotopy f.map g.map,
         ((SSet.boundary (n + 1)).ι ▷ (Δ[1] : SSet.{w})) ≫ H.h =
           CartesianMonoidalCategory.snd _ _ ≫ SSet.yonedaEquiv.symm e.edge
@@ -30,8 +30,8 @@ def dgBarCompactPiTransport {X : SSet.{w}} [KanComplex X]
 /-- 次数と基点を明示した正次数 π の写像。 -/
 def dgBarCompactPiMap {X Y : SSet.{w}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (f : X ⟶ Y) (x : X _⦋0⦌) :
-    KanHomotopyGroup X n x → KanHomotopyGroup Y n (f.app _ x) :=
-  KanHomotopyGroup.map (n := n) (x := x) f rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n (f.app _ x) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (x := x) f rfl
 
 variable {I : Type u} [PartialOrder I]
   (F : (SSet.uliftFunctor.{max (u + 1) v + 1, u}).obj (nerve I) ⟶
@@ -83,10 +83,10 @@ structure DGBarCompactSpacePiData (X : I → KanObject.{w}) (A : KanObject.{w})
   positive_surjective :
     ∀ (n : ℕ) (i : I)
     (y : (X i).obj _⦋0⦌)
-    (a : KanHomotopyGroup A.obj n
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup A.obj n
       ((l i).app _ y)),
     ∃ (j : I) (hij : i ≤ j)
-      (b : KanHomotopyGroup (X j).obj n
+      (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X j).obj n
         ((τ hij).app _ y)),
       ∀ e : (A.obj).Edge
         ((l j).app _ ((τ hij).app _ y))
@@ -98,7 +98,7 @@ structure DGBarCompactSpacePiData (X : I → KanObject.{w}) (A : KanObject.{w})
   positive_equal_at_stage :
     ∀ (n : ℕ) (i : I)
     (y : (X i).obj _⦋0⦌)
-    (a b : KanHomotopyGroup (X i).obj n y),
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y),
     dgBarCompactPiMap.{w} (X := (X i).obj)
       (Y := A.obj) n (l i) y a =
       dgBarCompactPiMap.{w} (X := (X i).obj)
@@ -111,9 +111,9 @@ structure DGBarCompactSpacePiData (X : I → KanObject.{w}) (A : KanObject.{w})
   positive_surjective_all_basepoints :
     ∀ (n : ℕ)
     (z : A.obj _⦋0⦌)
-    (a : KanHomotopyGroup A.obj n z),
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup A.obj n z),
     ∃ (i : I) (y : (X i).obj _⦋0⦌)
-      (b : KanHomotopyGroup (X i).obj n y)
+      (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y)
       (e : (A.obj).Edge
         ((l i).app _ y) z),
       dgBarCompactPiTransport.{w} (X := A.obj) n e

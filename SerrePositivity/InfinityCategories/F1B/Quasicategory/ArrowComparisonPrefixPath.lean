@@ -99,7 +99,7 @@ lemma exists_arrowComparison_preservingPrefixPath {K X : SSet.{u}} [Quasicategor
       IsInvertibleEdge (X := (ihom (Δ[1] : SSet.{u})).obj X) b ∧
       SSet.yonedaEquiv.symm b.edge ≫ (pre (stdSimplex.δ (1 : Fin 2))).app X =
         SSet.yonedaEquiv.symm a.edge ≫ (pre j).app X := by
-  obtain ⟨b, hi, hp, _⟩ := exists_arrowComparison_preservingEndpointPaths a j f g w ha hw hc
+  obtain ⟨b, hi, hp, _⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowComparison_preservingEndpointPaths a j f g w ha hw hc
   exact ⟨b, hi, hp⟩
 
 end SerrePositivity.InfinityCategories.F1B.Quasicategory

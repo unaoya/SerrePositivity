@@ -43,7 +43,7 @@ def simplexInitialOrder (n : ℕ) : Fin 2 × Fin (n + 1) →o Fin (n + 1) where
 規約：区間は第一因子。使われ方：全同値図式の評価の比較。 -/
 def simplexInitialContraction (n : ℕ) : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Δ[n] where
   app d := ↾fun s => stdSimplex.objEquiv.symm (SimplexCategory.mkHom
-    ((simplexInitialOrder n).comp
+    ((_root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder n).comp
       ((stdSimplex.objEquiv s.1).toOrderHom.prod (stdSimplex.objEquiv s.2).toOrderHom)))
   naturality {d e} α := by
     obtain ⟨⟨d⟩⟩ := d
@@ -58,7 +58,7 @@ def simplexInitialContraction (n : ℕ) : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Δ[n]
 方針：零時刻の分岐を各単体で計算する。
 規約：全次数での厳密等号。使われ方：定数図式への評価の合成。 -/
 lemma simplexInitialContraction_zero (n : ℕ) :
-    prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n =
+    prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n =
       SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -72,7 +72,7 @@ lemma simplexInitialContraction_zero (n : ℕ) :
 方針：一時刻の分岐を各単体で計算する。
 規約：全次数での厳密等号。使われ方：評価の比較の恒等射側。 -/
 lemma simplexInitialContraction_one (n : ℕ) :
-    prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n = 𝟙 _ := by
+    prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = 𝟙 _ := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -86,7 +86,7 @@ lemma simplexInitialContraction_one (n : ℕ) :
 規約：頂点は Δ[0] からの実際の射。使われ方：評価の比較で零頂点を固定する式。 -/
 lemma simplexInitialContraction_firstVertex (n : ℕ) :
     (Δ[1] ◁ SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1)))) ≫
-      simplexInitialContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext

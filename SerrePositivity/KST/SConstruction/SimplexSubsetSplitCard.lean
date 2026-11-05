@@ -14,7 +14,7 @@ lemma simplexSubsetSplitLeft_card {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 �
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card) :
     (I.filter (· ≤ j)).card = (simplexSubsetVertexIndex I hI j hj).val + 1 := by
   have he : Finset.image
-      (simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _))
       Finset.univ = Finset.Iic (simplexSubsetVertexIndex I hI j hj) := by
     apply Finset.coe_injective
     simpa only [Finset.coe_image, Finset.coe_univ, Set.image_univ, Finset.coe_Iic] using
@@ -30,7 +30,7 @@ lemma simplexSubsetSplitRight_card {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 
     (j : Fin (n + 1)) (hj : j ∈ I) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     (I.filter (j ≤ ·)).card = I.card - (simplexSubsetVertexIndex I hI j hj).val := by
   have he : Finset.image
-      (simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _))
       Finset.univ = Finset.Ici (simplexSubsetVertexIndex I hI j hj) := by
     apply Finset.coe_injective
     simpa only [Finset.coe_image, Finset.coe_univ, Set.image_univ, Finset.coe_Ici] using

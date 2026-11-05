@@ -30,7 +30,7 @@ def factorIso : FunctorIso T ((F ≫ G) ≫ T) := by
       (simplicialHomotopyVertexEdge (functorHomHomotopy a.unitHom) x).edge).map
         ((truncation 2).map T))
       (f := (simplicialHomotopyVertexEdge H x).toTruncated) rfl).mp
-        (hT (unitComponent_mem_invertedEdges a x))
+        (hT (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.unitComponent_mem_invertedEdges a x))
   have hm : IsIso ((hoFunctor.map ((ihom X).map T)).toFunctor.map a.unitHom) := by
     have h := functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise H hi
     change IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) at h

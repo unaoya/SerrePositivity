@@ -32,20 +32,20 @@ def IsEquivalenceDiagramVertex (A C : SSet.{u})
 
 /-- 全辺可逆な図式と、それらの間の全ての自然変換。 -/
 def equivalenceDiagrams (A C : SSet.{u}) : SSet.{u} :=
-  fullSubcomplexOnVertices ((ihom A).obj C) (IsEquivalenceDiagramVertex A C)
+  fullSubcomplexOnVertices ((ihom A).obj C) (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex A C)
 
 /-- 全辺可逆な図式の全関手圏への包含。 -/
-def equivalenceDiagramsι (A C : SSet.{u}) : equivalenceDiagrams A C ⟶ (ihom A).obj C :=
-  (fullSubcomplexOnVertices _ (IsEquivalenceDiagramVertex A C)).ι
+def equivalenceDiagramsι (A C : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C ⟶ (ihom A).obj C :=
+  (fullSubcomplexOnVertices _ (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex A C)).ι
 
 instance equivalenceDiagrams_quasicategory (A C : SSet.{u}) [Quasicategory C] :
-    Quasicategory (equivalenceDiagrams A C) := by
-  unfold equivalenceDiagrams
+    Quasicategory (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C) := by
+  unfold _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams
   infer_instance
 
 /-- 定値関手は全ての辺を可逆な退化辺に送る。 -/
 lemma constant_vertex_mem (A C : SSet.{u}) (c : C _⦋0⦌) :
-    IsEquivalenceDiagramVertex A C ((constantFunctorMap A C).app _ c) := by
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex A C ((constantFunctorMap A C).app _ c) := by
   rw [constantFunctorMap_vertex]
   change ∀ e : A _⦋1⦌, IsInvertibleEdge
     (edgeOfSimplex (((functorVertexEquiv A C).symm (functorVertexEquiv A C (SSet.const c))).app _ e))
@@ -58,22 +58,22 @@ lemma constant_vertex_mem (A C : SSet.{u}) (c : C _⦋0⦌) :
     infer_instance)
 
 /-- 定値図式の包含。 -/
-def constant (A C : SSet.{u}) : C ⟶ equivalenceDiagrams A C :=
-  fullSubcomplexLift _ (constantFunctorMap A C) (constant_vertex_mem A C)
+def constant (A C : SSet.{u}) : C ⟶ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C :=
+  fullSubcomplexLift _ (constantFunctorMap A C) (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_vertex_mem A C)
 
 @[reassoc (attr := simp)]
 lemma constant_ι (A C : SSet.{u}) :
-    constant A C ≫ equivalenceDiagramsι A C = constantFunctorMap A C :=
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant A C ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι A C = constantFunctorMap A C :=
   fullSubcomplexLift_ι _ _ _
 
 /-- 指定された始域の頂点で評価する。転置後の行の中でのみ使う。 -/
-def evaluation (A C : SSet.{u}) (a : A _⦋0⦌) : equivalenceDiagrams A C ⟶ C :=
-  equivalenceDiagramsι A C ≫ evaluateFunctorAt a
+def evaluation (A C : SSet.{u}) (a : A _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C ⟶ C :=
+  _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι A C ≫ evaluateFunctorAt a
 
 @[reassoc (attr := simp)]
 lemma constant_evaluation (A C : SSet.{u}) (a : A _⦋0⦌) :
-    constant A C ≫ evaluation A C a = 𝟙 C := by
-  rw [evaluation, ← Category.assoc, constant_ι]
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant A C ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation A C a = 𝟙 C := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_ι]
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -84,13 +84,13 @@ lemma constant_evaluation (A C : SSet.{u}) (a : A _⦋0⦌) :
 /-- 始域の指定された収縮は全辺可逆な図式の上で自然同型を与える。 -/
 def evaluation_constant_iso {A C : SSet.{u}} [Quasicategory C]
     (a : A _⦋0⦌) (H : SSet.Homotopy (SSet.const a : A ⟶ A) (𝟙 A)) :
-    FunctorIso (evaluation A C a ≫ constant A C) (𝟙 (equivalenceDiagrams A C)) := by
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation A C a ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant A C) (𝟙 (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C)) := by
   apply (isFullyFaithful_fullSubcomplexOnVertices_ι
-    ((ihom A).obj C) (IsEquivalenceDiagramVertex A C)).preimageFunctorIso
-  have h := functorIsoRestrictedPrecompositionOfHomotopy H (equivalenceDiagramsι A C) (by
+    ((ihom A).obj C) (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex A C)).preimageFunctorIso
+  have h := functorIsoRestrictedPrecompositionOfHomotopy H (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι A C) (by
     intro v f hf x
     have hv := fullSubcomplexOnVertices_vertex v
-    change IsEquivalenceDiagramVertex A C v.val at hv
+    change _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex A C v.val at hv
     change v.val = functorVertex f at hf
     rw [hf] at hv
     have he := hv (simplicialHomotopyVertexEdge H x).edge
@@ -100,18 +100,18 @@ def evaluation_constant_iso {A C : SSet.{u}} [Quasicategory C]
     exact (isInvertibleEdge_congr (e :=
       (simplicialHomotopyVertexEdge H x).toTruncated.map ((truncation 2).map f))
       (f := edgeOfSimplex (f.app _ (simplicialHomotopyVertexEdge H x).edge)) rfl).mpr he)
-  change FunctorIso ((evaluation A C a ≫ constant A C) ≫ equivalenceDiagramsι A C)
-    (𝟙 (equivalenceDiagrams A C) ≫ equivalenceDiagramsι A C)
-  simpa only [Category.assoc, constant_ι, evaluation,
+  change FunctorIso ((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation A C a ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant A C) ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι A C)
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams A C) ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι A C)
+  simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_ι, _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation,
     evaluateFunctorAt_constantFunctorMap, pre_id, NatTrans.id_app,
     Category.comp_id, Category.id_comp] using h
 
 /-- 収縮を持つ始域への定値図式は圏同値。 -/
 lemma constant_isQCatEquivalence {A C : SSet.{u}} [Quasicategory C]
     (a : A _⦋0⦌) (H : SSet.Homotopy (SSet.const a : A ⟶ A) (𝟙 A)) :
-    IsQCatEquivalence (constant A C) := by
-  refine ⟨evaluation A C a, ⟨?_⟩, ⟨evaluation_constant_iso a H⟩⟩
-  rw [constant_evaluation]
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant A C) := by
+  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation A C a, ⟨?_⟩, ⟨_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso a H⟩⟩
+  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_evaluation]
 
 end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
 

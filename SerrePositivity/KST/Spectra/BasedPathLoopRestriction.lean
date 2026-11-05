@@ -21,17 +21,17 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 内部 Hom の源の零射による制限は零射。 -/
 lemma PointedMapping.prePointed_zero (A B Y : PointedSimplicialSet.{u}) :
-    PointedMapping.prePointed (0 : A ⟶ B) Y = 0 := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (0 : A ⟶ B) Y = 0 := by
   let T := PointedObject.basedHom (PointedObject.point : PointedSimplicialSet.{u}) Y
   have : IsIso T.hom := isIso_of_isTerminal isTerminalTensorUnit (homPointIsTerminal Y) _
-  have hz : PointedMapping.prePointed (PointedObject.toPoint A) Y = 0 :=
+  have hz : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint A) Y = 0 :=
     PointedZeroMapping.hom_eq_zero T _ _
   rw [← PointedObject.toPoint_comp_fromPoint A B, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, hz,
     comp_zero]
 
 /-- 円への商による制限は終点で零となる。 -/
 lemma endpointLoop_pathEndpoint_zero (Y : PointedSimplicialSet.{u}) :
-    PointedMapping.prePointed (pointedCofiberProjection intervalEndpoint.{u}) Y ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) Y ≫
       pathEndpoint Y = 0 := by
   unfold pathEndpoint
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, pointedCofiberProjection_zero,

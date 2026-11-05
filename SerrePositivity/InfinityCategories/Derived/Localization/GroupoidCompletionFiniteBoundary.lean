@@ -68,7 +68,7 @@ lemma exists_groupoidCompletionFiniteBoundary [L.Finite] [K.Finite] :
   exact ⟨⟨A, b, e⟩⟩
 
 namespace GroupoidCompletionFiniteBoundary
-open SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary
+open _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary
 variable {j f H} (d : GroupoidCompletionFiniteBoundary j f H)
 
 def family : K ⟶ groupoidCompletion d.support.val :=

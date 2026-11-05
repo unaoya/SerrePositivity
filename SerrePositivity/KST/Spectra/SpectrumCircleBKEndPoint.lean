@@ -32,7 +32,7 @@ lemma rawPointedIdentity_underlying (X : OmegaSpectrum.{u}) :
 
 /-- 元の円の普遍評価が表す、円の基点付き写像空間の点の射。 -/
 def circleEvaluationLoopPointMap (Y : OmegaSpectrum.{u}) :
-    𝟙_ SSet.{u} ⟶ (loopSpace (RawSpectrumMapping.pointedSpace
+    𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (RawSpectrumMapping.pointedSpace
       (cotensor PointedSimplicialSet.circle Y) Y.toKanSequence)).right :=
   PointedSimplicialSet.unitUnderlyingHom _
     (curry' (cotensorEvaluation PointedSimplicialSet.circle Y))

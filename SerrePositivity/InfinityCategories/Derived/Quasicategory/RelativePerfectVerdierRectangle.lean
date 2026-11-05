@@ -35,7 +35,7 @@ structure RelativePerfectVerdierRectangle {S : SSet.{u + 1}}
   outer_eq : outer.square = verdierRectangleFace 1 ≫ diagram
 
 namespace RelativePerfectVerdierRectangle
-open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 
 /-- 同じ ν 像の ofSquare 認証を、元の源長方形へ貼る。 -/

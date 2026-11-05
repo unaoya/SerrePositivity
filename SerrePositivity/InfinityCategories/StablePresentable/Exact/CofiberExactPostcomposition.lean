@@ -53,30 +53,30 @@ def postcomp : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDia
     have hv := fullSubcomplexOnVertices_vertex v
     change IsZeroVertex (squareVertex (squareDiagram
       (((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) v.val)) 0 1) ∧ _
-    rw [squareDiagram_postcomp]
+    rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.squareDiagram_postcomp]
     exact ⟨IsExactFunctor.preservesZero (F := F) _ hv.1,
       IsExactFunctor.preservesPushoutSquare F _ hv.2⟩)
 
-lemma postcomp_inclusion : postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Y =
+lemma postcomp_inclusion : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Y =
     _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F :=
   fullSubcomplexLift_ι _ _ _
 
-lemma postcomp_bottom : postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y =
+lemma postcomp_bottom : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y =
     _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, ← Category.assoc, postcomp_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion]
   rw [Category.assoc, (pre squareBottomEdge).naturality F]
   rfl
 
-lemma postcomp_right : postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y =
+lemma postcomp_right : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y =
     _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, ← Category.assoc, postcomp_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion]
   rw [Category.assoc, (pre squareRightEdge).naturality F]
   rfl
 
-lemma postcomp_cofiber : postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫
+lemma postcomp_cofiber : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫
       evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
     (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ F := by
-  rw [← Category.assoc, postcomp_right, Category.assoc, arrowMap_evaluation]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_right, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation]
   exact (Category.assoc _ _ _).symm
 
 end SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams

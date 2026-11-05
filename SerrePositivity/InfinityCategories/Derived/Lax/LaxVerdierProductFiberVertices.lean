@@ -27,27 +27,27 @@ local instance productVerticesSimplicialCategory : SimplicialCategory OmegaSpect
   OmegaSpectrum.simplicialCategory
 local instance productVerticesSquareQuasicategory :
     Quasicategory (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) := F2.quasicategory_tensor _ _
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma laxQuotientProductFiber_middle_vertex :
     squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 =
       coherentNerveVertex (Binary.obj (value Φ C) (value Φ D)) :=
-  fiberSquare_source_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.fiberSquare_source_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
 
 lemma laxQuotientProductFiber_right_vertex :
     squareVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 =
       coherentNerveVertex (value Φ Q) :=
-  fiberSquare_target_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.fiberSquare_target_vertex (hΦ.laxQuotientProductFiberSquare p q i r h)
 
 def laxQuotientProductFiberLeftIso :
     squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 0 0 ≅
       SpectrumHo.obj (value Φ A) :=
   FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≪≫
-      hΦ.fiberLeftIso (laxQuotientVerdierSequence p q i r h)
+      hΦ.fiberLeftIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
 def laxQuotientProductFiberMiddleIso :
     squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 ≅

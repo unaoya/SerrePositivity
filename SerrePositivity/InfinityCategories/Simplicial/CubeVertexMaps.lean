@@ -19,41 +19,41 @@ open SerrePositivity.KST.SConstruction
 abbrev CubeVertex (n : ℕ) := Fin n → Bool
 
 /-- 指定座標への元の端点の挿入。 -/
-def cubeVertexFace (b : Bool) (n : ℕ) (i : Fin (n + 1)) : CubeVertex n → CubeVertex (n + 1) :=
+def cubeVertexFace (b : Bool) (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1) :=
   Fin.insertNth (α := fun _ => Bool) i b
 
 /-- 指定座標を削除する元の射。 -/
-def cubeVertexDegeneracy (n : ℕ) (i : Fin (n + 1)) : CubeVertex (n + 1) → CubeVertex n :=
+def cubeVertexDegeneracy (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1) → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n :=
   fun x j => x (i.succAbove j)
 
 /-- 指定した隣接二座標を max で結合する元の射。 -/
-def cubeVertexConnection (n : ℕ) (i : Fin (n + 1)) : CubeVertex (n + 2) → CubeVertex (n + 1) :=
-  fun x => Function.update (cubeVertexDegeneracy (n + 1) i.succ x) i
+def cubeVertexConnection (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 2) → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1) :=
+  fun x => Function.update (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (n + 1) i.succ x) i
     (x i.castSucc ⊔ x i.succ)
 
 /-- 端点挿入は元の全頂点の pointwise join を保つ。 -/
-lemma cubeVertexFace_sup (b : Bool) (n : ℕ) (i : Fin (n + 1)) (x y : CubeVertex n) :
-    cubeVertexFace b n i (x ⊔ y) = cubeVertexFace b n i x ⊔ cubeVertexFace b n i y := by
+lemma cubeVertexFace_sup (b : Bool) (n : ℕ) (i : Fin (n + 1)) (x y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i (x ⊔ y) = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i x ⊔ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i y := by
   funext k
   refine Fin.succAboveCases i ?_ (fun j => ?_) k
-  · simp [cubeVertexFace]
-  · simp [cubeVertexFace]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace]
 
 /-- 座標削除は元の全頂点の pointwise join を保つ。 -/
-lemma cubeVertexDegeneracy_sup (n : ℕ) (i : Fin (n + 1)) (x y : CubeVertex (n + 1)) :
-    cubeVertexDegeneracy n i (x ⊔ y) = cubeVertexDegeneracy n i x ⊔ cubeVertexDegeneracy n i y :=
+lemma cubeVertexDegeneracy_sup (n : ℕ) (i : Fin (n + 1)) (x y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 1)) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i (x ⊔ y) = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i x ⊔ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i y :=
   rfl
 
 /-- 隣接 max は元の全頂点の pointwise join を保つ。 -/
-lemma cubeVertexConnection_sup (n : ℕ) (i : Fin (n + 1)) (x y : CubeVertex (n + 2)) :
-    cubeVertexConnection n i (x ⊔ y) =
-      cubeVertexConnection n i x ⊔ cubeVertexConnection n i y := by
+lemma cubeVertexConnection_sup (n : ℕ) (i : Fin (n + 1)) (x y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 2)) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i (x ⊔ y) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i x ⊔ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i y := by
   funext k
   by_cases h : k = i
   · subst k
-    simp only [cubeVertexConnection, Function.update_self, Pi.sup_apply]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, Function.update_self, Pi.sup_apply]
     exact sup_sup_sup_comm _ _ _ _
-  · simp [cubeVertexConnection, h, cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, h, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 end SerrePositivity.InfinityCategories.Simplicial
 

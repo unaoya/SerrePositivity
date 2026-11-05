@@ -30,7 +30,7 @@ def terminalSuffixFamily {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right)
     (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) :
     A ⊗ (Δ[1] : SSet.{u}) ⟶ (terminalPathSpace B).right :=
-  Spectra.PointedMapping.paramCurry terminalPointedInterval B
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry terminalPointedInterval B
     (terminalSuffixReparametrization A ≫ h) (terminalSuffixFamily_basepoint B h h₁)
 
 /-- suffix の各始点は元の区間族を厳密に回収する。 -/

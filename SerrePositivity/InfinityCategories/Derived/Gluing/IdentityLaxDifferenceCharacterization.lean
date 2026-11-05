@@ -14,18 +14,18 @@ namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open scoped _root_.Simplicial
 open SerrePositivity.KST.LocalizingInvariants
-variable (C : StableCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 def identityLaxDifferenceCharacterization
-    (r : ExactMap (laxCategory (𝟙 C) (𝟙 C)) C)
+    (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory (𝟙 C) (𝟙 C)) C)
     (hz : ∀ x, IsZeroVertex (((IdentityLax.exactDiagonal C).hom ≫ r.hom).app
       (Opposite.op ⦋0⦌) x))
     (hr : FunctorIso (LaxInclusion.fromD (𝟙 C) (𝟙 C) ≫ r.hom) (𝟙 C.obj)) :
     FunctorIso r.hom (exactLaxDifference (𝟙 C) (𝟙 C)).hom :=
   localizationProjectionComparison (exactLaxDifference (𝟙 C) (𝟙 C)).hom
-    (cofiberLocalizingEdges (essentialImage (IdentityLax.exactDiagonal C)))
+    (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (IdentityLax.exactDiagonal C)))
     (IdentityLax.difference_isVerdier C).quotient
     (LaxInclusion.fromD (𝟙 C) (𝟙 C)) (fromD_differenceIso (𝟙 C) (𝟙 C))
-    r.hom ((inverts_iff_kills_inclusion (IdentityLax.exactDiagonal C) r).mpr hz) hr
+    r.hom ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.inverts_iff_kills_inclusion (IdentityLax.exactDiagonal C) r).mpr hz) hr
 
 end SerrePositivity.InfinityCategories

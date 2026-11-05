@@ -18,49 +18,49 @@ end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の joints を、同じ有限頂点集合の部分集合として読む。 -/
-def jointVertices (T : NecklaceShape) : Finset T.Vertex :=
+def jointVertices (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : Finset T.Vertex :=
   Finset.univ.filter (fun j => j.val ∈ T.joints)
 
 /-- 有限頂点としての joint 所属は元の joints の所属そのもの。 -/
-lemma mem_jointVertices (T : NecklaceShape) (j : T.Vertex) :
+lemma mem_jointVertices (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (j : T.Vertex) :
     j ∈ T.jointVertices ↔ j.val ∈ T.joints := by
-  simp only [jointVertices, Finset.mem_filter, Finset.mem_univ, true_and]
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.jointVertices, Finset.mem_filter, Finset.mem_univ, true_and]
 
 /-- 元の始頂点は joint。 -/
-lemma first_mem_jointVertices (T : NecklaceShape) : T.first ∈ T.jointVertices :=
+lemma first_mem_jointVertices (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.first ∈ T.jointVertices :=
   (T.mem_jointVertices T.first).2 T.zero_mem
 
 /-- 元の終頂点は joint。 -/
-lemma last_mem_jointVertices (T : NecklaceShape) : T.last ∈ T.jointVertices :=
+lemma last_mem_jointVertices (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.last ∈ T.jointVertices :=
   (T.mem_jointVertices T.last).2 T.last_mem
 
 /-- 元の頂点 v 以下の joint 全体。 -/
-def lowerJoints (T : NecklaceShape) (v : T.Vertex) : Finset T.Vertex :=
+def lowerJoints (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) : Finset T.Vertex :=
   T.jointVertices.filter (fun j => j ≤ v)
 
 /-- 零 joint により、各頂点以下に joint が存在する。 -/
-lemma lowerJoints_nonempty (T : NecklaceShape) (v : T.Vertex) :
+lemma lowerJoints_nonempty (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) :
     (T.lowerJoints v).Nonempty :=
   ⟨T.first, Finset.mem_filter.mpr ⟨T.first_mem_jointVertices, Fin.zero_le v⟩⟩
 
 /-- 元の頂点 v 以下の最後の joint。 -/
-def lowerJoint (T : NecklaceShape) (v : T.Vertex) : T.Vertex :=
+def lowerJoint (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) : T.Vertex :=
   (T.lowerJoints v).max' (T.lowerJoints_nonempty v)
 
 /-- 直前の joint は元の joint。 -/
-lemma lowerJoint_mem (T : NecklaceShape) (v : T.Vertex) : (T.lowerJoint v).val ∈ T.joints :=
+lemma lowerJoint_mem (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) : (T.lowerJoint v).val ∈ T.joints :=
   (T.mem_jointVertices _).1
     (Finset.mem_filter.mp ((T.lowerJoints v).max'_mem (T.lowerJoints_nonempty v))).1
 
 /-- 直前の joint は元の頂点以下。 -/
-lemma lowerJoint_le (T : NecklaceShape) (v : T.Vertex) : T.lowerJoint v ≤ v :=
+lemma lowerJoint_le (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) : T.lowerJoint v ≤ v :=
   (Finset.mem_filter.mp ((T.lowerJoints v).max'_mem (T.lowerJoints_nonempty v))).2
 
 /-- v 以下のすべての元の joints は、同じ直前の joint 以下。 -/
-lemma le_lowerJoint (T : NecklaceShape) (v j : T.Vertex) (hj : j.val ∈ T.joints)
+lemma le_lowerJoint (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v j : T.Vertex) (hj : j.val ∈ T.joints)
     (hjv : j ≤ v) : j ≤ T.lowerJoint v :=
   (T.lowerJoints v).le_max' j (Finset.mem_filter.mpr ⟨(T.mem_jointVertices j).2 hj, hjv⟩)
 

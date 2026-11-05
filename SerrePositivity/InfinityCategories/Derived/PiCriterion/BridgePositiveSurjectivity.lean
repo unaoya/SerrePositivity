@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.PiCriterion
 open KST.Spectra
 
 private lemma transport_symm_piPathRelated {X : SSet.{w}} [KanComplex X]
-    (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y) (a : KanHomotopyGroup X n y) :
+    (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) :
     PiPathRelated n ((bridgePiTransportEquiv n e).symm a) a := by
   apply (piPathRelated_iff_exists_transport n _ _).mpr
   exact ⟨e, (bridge_transport_iff_equiv n e _ _).mpr
@@ -37,7 +37,7 @@ lemma bridge_positive_surjective_at_stage {I : Type u} [PartialOrder I]
     (hcomm : ∀ i : I, Nonempty (Homotopy (l i) (s i ≫ q)))
     (hstage : ∀ (i j : I) (hij : i ≤ j), Nonempty (Homotopy (s i) (τ hij ≫ s j)))
     (n : ℕ) (i : I) (y : (X i).obj _⦋0⦌) :
-    Function.Surjective (KanHomotopyGroup.map (n := n) q (x := (s i).app _ y) rfl) := by
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) q (x := (s i).app _ y) rfl) := by
   intro a
   obtain ⟨Hi⟩ := hcomm i
   let ei := simplicialHomotopyVertexEdge Hi y
@@ -46,25 +46,25 @@ lemma bridge_positive_surjective_at_stage {I : Type u} [PartialOrder I]
   obtain ⟨j, hij, b, hall⟩ := h.positive_surjective n i y ai
   obtain ⟨Hs⟩ := hstage i j hij
   let d := simplicialHomotopyVertexEdge Hs y
-  let bT := KanHomotopyGroup.map (s j) rfl b
+  let bT := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s j) rfl b
   let α := (bridgePiTransportEquiv n d).symm bT
-  let ai' := E.symm (KanHomotopyGroup.map q rfl α)
+  let ai' := E.symm (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl α)
   have hsrel : PiPathRelated n α bT := transport_symm_piPathRelated n d bT
   obtain ⟨Hj⟩ := hcomm j
   have hjrel : PiPathRelated n (dgBarCompactPiMap n (l j) ((τ hij).app _ y) b)
-      (KanHomotopyGroup.map q rfl bT) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl bT) := by
     have hr := piPathRelated_of_homotopy Hj n ((τ hij).app _ y) b
     have hm := DFunLike.congr_fun
-      (KanHomotopyGroup.map_comp (s j) rfl q rfl rfl) b
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (s j) rfl q rfl rfl) b
     exact (congrArg (fun c ↦ PiPathRelated n
       (dgBarCompactPiMap n (l j) ((τ hij).app _ y) b) c) hm).mp hr
-  have hirel : PiPathRelated n ai' (KanHomotopyGroup.map q rfl α) :=
-    transport_symm_piPathRelated n ei (KanHomotopyGroup.map q rfl α)
+  have hirel : PiPathRelated n ai' (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl α) :=
+    transport_symm_piPathRelated n ei (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl α)
   have hr := (hjrel.trans (hsrel.map q).symm).trans hirel.symm
   obtain ⟨e, he⟩ := (piPathRelated_iff_exists_transport n _ _).mp hr
   have hai : ai' = ai := bridge_transport_right_unique n e he (hall e)
   have heq := congrArg E hai
-  change E (E.symm (KanHomotopyGroup.map q rfl α)) = E (E.symm a) at heq
+  change E (E.symm (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map q rfl α)) = E (E.symm a) at heq
   rw [E.apply_symm_apply, E.apply_symm_apply] at heq
   exact ⟨α, heq⟩
 
@@ -80,7 +80,7 @@ lemma bridge_positive_surjective {I : Type u} [PartialOrder I]
     (hfinite : ∀ {K : SSet.{w}} [K.Finite] (f : K ⟶ T.obj),
       ∃ i : I, ∃ g : K ⟶ (X i).obj, Nonempty (Homotopy f (g ≫ s i)))
     (n : ℕ) (x : T.obj _⦋0⦌) :
-    Function.Surjective (KanHomotopyGroup.map (n := n) q (x := x) rfl) := by
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) q (x := x) rfl) := by
   obtain ⟨i, y, _, z, h₀, h₁, _, _⟩ :=
     finite_positive_pair_representative X T.obj s hfinite n x ![1, 1]
   exact (path_map_surjective_iff q n z h₀ h₁).mpr

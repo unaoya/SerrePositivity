@@ -23,7 +23,7 @@ open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 def empty : SSet.{u} := (Functor.const SimplexCategoryᵒᵖ).obj PEmpty.{u + 1}
 
 /-- 空な第一因子からの射。 -/
-def emptyLeft (X Y : SSet.{u}) : empty ⊗ X ⟶ Y where
+def emptyLeft (X Y : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.empty ⊗ X ⟶ Y where
   app _ := ↾fun x ↦ PEmpty.elim x.1
   naturality {d e} f := by
     apply ConcreteCategory.hom_ext
@@ -31,7 +31,7 @@ def emptyLeft (X Y : SSet.{u}) : empty ⊗ X ⟶ Y where
     exact e.elim
 
 /-- 空な第二因子からの射。 -/
-def emptyRight (X Y : SSet.{u}) : X ⊗ empty ⟶ Y where
+def emptyRight (X Y : SSet.{u}) : X ⊗ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.empty ⟶ Y where
   app _ := ↾fun x ↦ PEmpty.elim x.2
   naturality {d e} f := by
     apply ConcreteCategory.hom_ext
@@ -42,27 +42,27 @@ def emptyRight (X Y : SSet.{u}) : X ⊗ empty ⟶ Y where
 def homBySide (A : SSet.{u}) : Bool → Bool → SSet.{u} → SSet.{u}
   | false, false, H => H
   | false, true, H => A ⊗ H
-  | true, false, _ => empty
+  | true, false, _ => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.empty
   | true, true, H => H
 
 /-- 同じ端の恒等射。 -/
 def identityBySide (A H : SSet.{u}) (i : 𝟙_ SSet.{u} ⟶ H) :
-    (s : Bool) → 𝟙_ SSet.{u} ⟶ homBySide A s s H
+    (s : Bool) → 𝟙_ SSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s s H
   | false => i
   | true => i
 
 /-- 元の合成を、パラメータを一つだけ保持して延長する。 -/
 def compositionBySide (A : SSet.{u}) {H K L : SSet.{u}} (m : H ⊗ K ⟶ L) :
-    (s t r : Bool) → homBySide A s t H ⊗ homBySide A t r K ⟶ homBySide A s r L
+    (s t r : Bool) → _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s t H ⊗ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A t r K ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A s r L
   | false, false, false => m
   | false, false, true =>
       lift (snd H (A ⊗ K) ≫ fst A K) ((𝟙 H ⊗ₘ snd A K) ≫ m)
-  | false, true, false => emptyRight _ _
+  | false, true, false => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyRight _ _
   | false, true, true =>
       lift (fst (A ⊗ H) K ≫ fst A H) ((snd A H ⊗ₘ 𝟙 K) ≫ m)
-  | true, false, false => emptyLeft _ _
-  | true, false, true => emptyLeft _ _
-  | true, true, false => emptyRight _ _
+  | true, false, false => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyLeft _ _
+  | true, false, true => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyLeft _ _
+  | true, true, false => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyRight _ _
   | true, true, true => m
 
 /-- 円柱の対象は端と元の対象の組。 -/
@@ -75,15 +75,15 @@ structure Object (A : SSet.{u}) (C : Type v) where
 variable (A : SSet.{u}) {C : Type v} [EnrichedCategory SSet.{u} C]
 
 /-- 円柱の実際の豊穣 Hom。 -/
-def hom (X Y : Object A C) : SSet.{u} := homBySide A X.side Y.side (X.val ⟶[SSet] Y.val)
+def hom (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) : SSet.{u} := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.homBySide A X.side Y.side (X.val ⟶[SSet] Y.val)
 
 /-- 円柱の実際の恒等射。 -/
-def identity (X : Object A C) : 𝟙_ SSet.{u} ⟶ hom A X X :=
-  identityBySide A (X.val ⟶[SSet] X.val) (eId SSet X.val) X.side
+def identity (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) : 𝟙_ SSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X X :=
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identityBySide A (X.val ⟶[SSet] X.val) (eId SSet X.val) X.side
 
 /-- 円柱の実際の合成。 -/
-def composition (X Y Z : Object A C) : hom A X Y ⊗ hom A Y Z ⟶ hom A X Z :=
-  compositionBySide A (eComp SSet X.val Y.val Z.val) X.side Y.side Z.side
+def composition (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y ⊗ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A Y Z ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Z :=
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.compositionBySide A (eComp SSet X.val Y.val Z.val) X.side Y.side Z.side
 
 end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
 

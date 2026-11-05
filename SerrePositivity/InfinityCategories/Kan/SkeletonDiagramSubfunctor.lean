@@ -28,16 +28,16 @@ variable {J : Type v} [SmallCategory J] (D : J ⥤ SSet.{u}) (n : ℕ)
 /-- 有限骨格の各次数での部分図式。 -/
 def subfunctor : Subfunctor (D ⋙ (evaluation _ (Type u)).obj k) where
   obj j := ((D.obj j).skeleton n).obj k
-  map f := (Subcomplex.image_le_iff _ (D.map f) _).1 (SkeletonFiltration.image_le (D.map f) n) k
+  map f := (Subcomplex.image_le_iff _ (D.map f) _).1 (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.image_le (D.map f) n) k
 
 /-- 部分図式としての表示と実際の骨格の評価は同じ。 -/
-def iso : (D ⋙ SkeletonFiltration.functor n) ⋙ (evaluation _ (Type u)).obj k ≅
-    (subfunctor D n k).toFunctor :=
+def iso : (D ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor n) ⋙ (evaluation _ (Type u)).obj k ≅
+    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k).toFunctor :=
   NatIso.ofComponents (fun _ ↦ Iso.refl _) (fun _ ↦ by ext x; rfl)
 
 /-- 上の同型は実際の骨格の包含を保つ。 -/
-lemma iso_inclusion : (iso D n k).hom ≫ (subfunctor D n k).ι =
-    Functor.whiskerRight (Functor.whiskerLeft D (SkeletonFiltration.inclusion n))
+lemma iso_inclusion : (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso D n k).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k).ι =
+    Functor.whiskerRight (Functor.whiskerLeft D (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion n))
       ((evaluation _ (Type u)).obj k) := by
   apply NatTrans.ext
   funext j
@@ -46,21 +46,21 @@ lemma iso_inclusion : (iso D n k).hom ≫ (subfunctor D n k).ι =
 /-- 図式の射が単射なら、各次数の部分図式の所属を保存・反映する。 -/
 lemma membership_iff (hD : ∀ {i j : J} (f : i ⟶ j), Mono (D.map f))
     {i j : J} (f : i ⟶ j) (x : (D.obj i).obj k) :
-    (D.map f).app k x ∈ (subfunctor D n k).obj j ↔ x ∈ (subfunctor D n k).obj i := by
+    (D.map f).app k x ∈ (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k).obj j ↔ x ∈ (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k).obj i := by
   let : Mono (D.map f) := hD f
   change x ∈ (((D.obj j).skeleton n).preimage (D.map f)).obj k ↔
     x ∈ ((D.obj i).skeleton n).obj k
-  rw [SkeletonFiltration.preimage_skeleton]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.preimage_skeleton]
 
 /-- 全ての図式の射が単射なら、各次数での骨格の余極限の包含も単射。 -/
 lemma colimit_mono [HasColimitsOfShape J (Type u)]
     (hD : ∀ {i j : J} (f : i ⟶ j), Mono (D.map f)) :
     Mono (colim.map (Functor.whiskerRight
-      (Functor.whiskerLeft D (SkeletonFiltration.inclusion n))
+      (Functor.whiskerLeft D (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion n))
       ((evaluation _ (Type u)).obj k))) := by
-  rw [← iso_inclusion D n k, Functor.map_comp]
-  let : Mono (colim.map (subfunctor D n k).ι) :=
-    CartesianSubfunctorColimit.mono (subfunctor D n k) (membership_iff D n k hD)
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso_inclusion D n k, Functor.map_comp]
+  let : Mono (colim.map (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k).ι) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.mono (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor D n k) (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.membership_iff D n k hD)
   infer_instance
 
 end SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor

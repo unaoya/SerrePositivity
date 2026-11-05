@@ -33,12 +33,12 @@ lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :
         kanBasedEdgeValue c (SSet.ι₀ ≫ Q) =
       kanBasedEdgeValue c (SSet.ι₁ ≫ Q) *
         kanBasedEdgeValue c (pastingSquareVertical 0 ≫ Q) := by
-  have hl := kanBasedEdgeValue_triangle c (SquareTriangles.lower ≫ Q)
-  have hu := kanBasedEdgeValue_triangle c (SquareTriangles.upper ≫ Q)
-  simp only [← Category.assoc, SquareTriangles.lower_diagonal,
-    SquareTriangles.lower_face_zero, SquareTriangles.lower_face_last] at hl
-  simp only [← Category.assoc, SquareTriangles.upper_diagonal,
-    SquareTriangles.upper_face_zero, SquareTriangles.upper_face_last] at hu
+  have hl := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ Q)
+  have hu := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ Q)
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last] at hu
   exact hl.symm.trans hu
 
 /-- 両縦辺が元の同じ定数辺なら、正方形の全横辺の値は等しい。 -/

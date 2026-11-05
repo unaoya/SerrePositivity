@@ -16,7 +16,7 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の各 bead の HA 成分と通常順合成による、元の同じ連結語の斉次値。 -/
 def simplexHABeadWordValue {n : ℕ} (s : DGNerve.SimplexData A D n) :
-    {a b : Fin (n + 1)} → {d : ℕ} → SimplexHABeadWord n a b d →
+    {a b : Fin (n + 1)} → {d : ℕ} → _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d →
       GradedHom A (s.obj a) (s.obj b) (-(d : ℤ))
   | _, _, _, .bead I hI => s.hom I _ _ _ hI rfl rfl (by omega)
   | _, _, _, .join left right =>
@@ -25,12 +25,12 @@ def simplexHABeadWordValue {n : ℕ} (s : DGNerve.SimplexData A D n) :
 /-- 元の連結語の評価は、元の厳密 dg 関手による HA 成分の後合成と厳密に可換。 -/
 lemma simplexHABeadWordValue_post {n : ℕ} (s : DGNerve.SimplexData A D n)
     {E : Type w} [DGCategory A E] (F : DGFunctor A D E)
-    {a b : Fin (n + 1)} {d : ℕ} (word : SimplexHABeadWord n a b d) :
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
     simplexHABeadWordValue A (s.map F) word =
       (F.map (s.obj a) (s.obj b)).f (-(d : ℤ)) (simplexHABeadWordValue A s word) := by
   induction word with
-  | bead I hI => rfl
-  | join left right ihL ihR =>
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI => rfl
+  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join left right ihL ihR =>
     dsimp only [simplexHABeadWordValue]
     rw [ihL, ihR]
     exact (DGNerve.map_compose F _ _ _).symm

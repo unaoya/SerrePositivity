@@ -34,7 +34,7 @@ namespace KanSequence
 /-- twist の反復の各段は、Kan 円の同じ反転の反復による前合成そのもの。 -/
 lemma iterateHom_tail_mappingPre_app (Y : KanSequence.{u}) (m n : ℕ) :
     (iterateHom (tailHom (mappingPre (CirclePower.integerPowerMap.{u} (-1)) Y)) m).app n =
-      PointedMapping.prePointed (CirclePower.reversalIterate m) (Y.level (n + 1)).space := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.reversalIterate m) (Y.level (n + 1)).space := by
   induction m with
   | zero =>
     simp only [iterateHom, CirclePower.reversalIterate,
@@ -42,7 +42,7 @@ lemma iterateHom_tail_mappingPre_app (Y : KanSequence.{u}) (m n : ℕ) :
     rfl
   | succ m ih =>
     change (iterateHom (tailHom (mappingPre (CirclePower.integerPowerMap.{u} (-1)) Y)) m).app n ≫
-      PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) (Y.level (n + 1)).space = _
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) (Y.level (n + 1)).space = _
     rw [ih, CirclePower.reversalIterate, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
 
 end KanSequence
@@ -52,7 +52,7 @@ namespace OmegaSpectrum
 lemma signedLoopRawComparison_app (X : OmegaSpectrum.{u}) (n : ℕ) :
     (signedLoopRawComparison X).app n =
       (cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-        PointedMapping.prePointed (CirclePower.reversalIterate n) (X.level (n + 1)).space := by
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.reversalIterate n) (X.level (n + 1)).space := by
   change (cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
     (KanSequence.iterateHom
       (KanSequence.tailHom (KanSequence.mappingPre (CirclePower.integerPowerMap.{u} (-1))
@@ -63,9 +63,9 @@ lemma signedLoopRawComparison_app (X : OmegaSpectrum.{u}) (n : ℕ) :
 /-- 元の比較の通常円への制限は、同じ BF 射影を補正済みパラメータへ制限したもの。 -/
 lemma signedLoopRawComparison_restriction (X : OmegaSpectrum.{u}) (n : ℕ) :
     (signedLoopRawComparison X).app n ≫
-      PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
       (cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-        PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
           (X.level (n + 1)).space := by
   rw [signedLoopRawComparison_app, Category.assoc, CirclePower.signedEvaluationParameter,
     _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
@@ -73,9 +73,9 @@ lemma signedLoopRawComparison_restriction (X : OmegaSpectrum.{u}) (n : ℕ) :
 /-- BF 持ち上げ後の同じ比較射でも、射影・通常円制限の座標は変わらない。 -/
 lemma signedLoopComparison_restriction (X : OmegaSpectrum.{u}) (n : ℕ) :
     ((signedLoopComparison X).app n ≫ (signedLoopProjection X).app n) ≫
-      PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
       (cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-        PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
           (X.level (n + 1)).space := by
   rw [signedLoopComparison_projection, signedLoopRawComparison_restriction]
 

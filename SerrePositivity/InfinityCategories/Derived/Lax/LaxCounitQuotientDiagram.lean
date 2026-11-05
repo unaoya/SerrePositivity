@@ -25,50 +25,50 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
 open SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
-def quotientOriginalDiagrams : A.obj ⟶ CofiberDiagrams.space Q.obj :=
+def quotientOriginalDiagrams : A.obj ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space Q.obj :=
   (i.hom ≫ CofiberDiagrams.lift (laxCategory p q).obj (arrow p q)) ≫
-    CofiberDiagrams.postcomp r.hom
+    _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp r.hom
 
 lemma quotientOriginalDiagrams_bottom :
-    quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.bottom Q.obj =
-      quotientArrow p q i r := by
-  rw [quotientOriginalDiagrams, Category.assoc, CofiberDiagrams.postcomp_bottom,
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Q.obj =
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_bottom,
     ← Category.assoc, Category.assoc i.hom, CofiberDiagrams.lift_bottom]
   rfl
 
 lemma quotientOriginalDiagrams_squares :
-    quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.inclusion Q.obj =
-      (i.hom ≫ CofiberFamily.squares (laxCategory p q).obj (arrow p q)) ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Q.obj =
+      (i.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares (laxCategory p q).obj (arrow p q)) ≫
         (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map r.hom := by
-  rw [quotientOriginalDiagrams, Category.assoc, CofiberDiagrams.postcomp_inclusion,
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion,
     ← Category.assoc, Category.assoc i.hom, CofiberDiagrams.lift_inclusion]
 
 lemma quotientOriginalDiagrams_sameBottom :
-    quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.bottom Q.obj =
-      CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ CofiberDiagrams.bottom Q.obj := by
-  rw [quotientOriginalDiagrams_bottom, CofiberDiagrams.lift_bottom]
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Q.obj =
+      CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Q.obj := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_bottom, CofiberDiagrams.lift_bottom]
 
-def quotientDiagramComparison : FunctorIso (quotientOriginalDiagrams p q i r)
-    (CofiberDiagrams.lift Q.obj (quotientArrow p q i r)) :=
-  CofiberDiagrams.relativeComparison Q.obj _ _ (quotientOriginalDiagrams_sameBottom p q i r)
+def quotientDiagramComparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r)
+    (CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)) :=
+  CofiberDiagrams.relativeComparison Q.obj _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_sameBottom p q i r)
 
 lemma quotientDiagramComparison_bottom_arrow :
-    Arrow.mk (FunctorIso.postcomp (quotientDiagramComparison p q i r)
-      (CofiberDiagrams.bottom Q.obj)).hom =
+    Arrow.mk (FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientDiagramComparison p q i r)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Q.obj)).hom =
         Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-          (CofiberDiagrams.lift Q.obj (quotientArrow p q i r) ≫ CofiberDiagrams.bottom Q.obj)) :
+          (CofiberDiagrams.lift Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Q.obj)) :
             hoFunctor.obj ((ihom A.obj).obj ((ihom (Δ[1] : SSet.{u})).obj Q.obj)))) :=
   CofiberDiagrams.relativeComparison_bottom_arrow Q.obj _ _
-    (quotientOriginalDiagrams_sameBottom p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_sameBottom p q i r)
 
 def quotientSquareComparison : FunctorIso
-    (quotientOriginalDiagrams p q i r ≫ CofiberDiagrams.inclusion Q.obj)
-    (CofiberFamily.squares Q.obj (quotientArrow p q i r)) := by
-  have e := FunctorIso.postcomp (quotientDiagramComparison p q i r)
-    (CofiberDiagrams.inclusion Q.obj)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Q.obj)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)) := by
+  have e := FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientDiagramComparison p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Q.obj)
   rw [CofiberDiagrams.lift_inclusion] at e
   exact e
 

@@ -39,7 +39,7 @@ def pointedKanDiagramHomotopy {I : Type u} [SmallCategory I]
 def pointedKanDiagramFunctorIso {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     FunctorIso (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG) :=
   StrictDiagramTransformation.functorIso (pointedKanDiagramNatTrans hF hG η)
     (fun i => pointedKanObject_edge_isInvertible_of_piIsomorphism _ (hη i))
@@ -48,7 +48,7 @@ def pointedKanDiagramFunctorIso {I : Type u} [SmallCategory I]
 def pointedKanDiagramInverseHomotopy {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     SSet.Homotopy (pointedKanCoherentDiagram G hG) (pointedKanCoherentDiagram F hF) :=
   simplicialHomotopyOfFunctorEdge (FunctorIso.edge (pointedKanDiagramFunctorIso hF hG η hη).symm)
 

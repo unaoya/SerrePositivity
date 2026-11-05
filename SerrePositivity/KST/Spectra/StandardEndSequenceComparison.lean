@@ -48,7 +48,7 @@ def totalizationComparison (D : CosimplicialObject KanSequence.{u})
 /-- 構造射と可換な比較は各段で全基点 π 同型。 -/
 lemma totalizationComparison_levelwise (D : CosimplicialObject KanSequence.{u})
     (hD : TotalizationReedy D) (n : ℕ) :
-    KanPiIsomorphism ((totalizationComparison D hD).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationComparison D hD).app n).right := by
   exact PointedTotalization.standardEnd_preMap_piIsomorphism
     (D ⋙ levelEvaluation n) (hD n)
 

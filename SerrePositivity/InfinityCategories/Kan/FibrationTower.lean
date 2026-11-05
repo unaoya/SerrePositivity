@@ -53,7 +53,7 @@ def limit : SSet.{u} where
 方針：各次数で成分を評価する。
 規約：段の添字は自然数。
 使われ方：Kerodon Corollary 11.9.7.2。初段への fibration。 -/
-def projection (n : ℕ) : limit X d ⟶ X n where
+def projection (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d ⟶ X n where
   app _ := ↾fun s ↦ s.val n
 
 /-- 概要：極限の射影は塔の遷移と可換。
@@ -61,7 +61,7 @@ def projection (n : ℕ) : limit X d ⟶ X n where
 規約：厳密な等式。
 使われ方：HTT A.3.3。極限の普遍性。 -/
 @[reassoc (attr := simp)]
-theorem projection_comp (n : ℕ) : projection X d (n + 1) ≫ d n = projection X d n := by
+theorem projection_comp (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d (n + 1) ≫ d n = _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n := by
   ext m s
   exact s.property n
 
@@ -70,7 +70,7 @@ theorem projection_comp (n : ℕ) : projection X d (n + 1) ≫ d n = projection 
 規約：任意の始域 A。
 使われ方：Kerodon Corollary 11.9.7.2。段ごとの充填の組み立て。 -/
 def lift {A : SSet.{u}} (f : ∀ n, A ⟶ X n) (hf : ∀ n, f (n + 1) ≫ d n = f n) :
-    A ⟶ limit X d where
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d where
   app m := ↾fun a ↦ ⟨fun n ↦ (f n).app m a, fun n ↦ by
     exact congrArg (fun k : A ⟶ X n ↦ k.app m a) (hf n)⟩
   naturality a b g := by
@@ -87,14 +87,14 @@ def lift {A : SSet.{u}} (f : ∀ n, A ⟶ X n) (hf : ∀ n, f (n + 1) ≫ d n = 
 @[reassoc (attr := simp)]
 theorem lift_projection {A : SSet.{u}} (f : ∀ n, A ⟶ X n)
     (hf : ∀ n, f (n + 1) ≫ d n = f n) (n : ℕ) :
-    lift X d f hf ≫ projection X d n = f n := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift X d f hf ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n = f n := rfl
 
 /-- 概要：極限への射は全ての成分で決まる。
 方針：整合族の外延性を使う。
 規約：任意の始域 A。
 使われ方：Kerodon Corollary 11.9.7.2。充填の境界等式。 -/
-theorem hom_ext {A : SSet.{u}} {f g : A ⟶ limit X d}
-    (h : ∀ n, f ≫ projection X d n = g ≫ projection X d n) : f = g := by
+theorem hom_ext {A : SSet.{u}} {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d}
+    (h : ∀ n, f ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n = g ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n) : f = g := by
   ext m a
   apply Subtype.ext
   funext n
@@ -103,18 +103,18 @@ theorem hom_ext {A : SSet.{u}} {f g : A ⟶ limit X d}
 section Lifting
 
 variable {A B : SSet.{u}} (j : A ⟶ B) [∀ n, HasLiftingProperty j (d n)]
-  (a : A ⟶ limit X d) (b : B ⟶ X 0) (sq : CommSq a j (projection X d 0) b)
+  (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) (b : B ⟶ X 0) (sq : CommSq a j (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) b)
 
 /-- 概要：初段の指定充填から各段への拡張を帰納的に選ぶ。
 方針：一つ前の拡張を底として遷移の右持ち上げ性を使う。
 規約：全ての段で同じ左射 j を用いる。
 使われ方：Kerodon Corollary 11.9.7.2。塔の相対充填の構成。 -/
-noncomputable def stages : ∀ n, {f : B ⟶ X n // j ≫ f = a ≫ projection X d n}
+noncomputable def stages : ∀ n, {f : B ⟶ X n // j ≫ f = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n}
   | 0 => ⟨b, sq.w.symm⟩
   | n + 1 =>
-    let prev := stages n
-    let s : CommSq (a ≫ projection X d (n + 1)) j (d n) prev.val :=
-      ⟨by rw [Category.assoc, projection_comp, prev.property]⟩
+    let prev := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages n
+    let s : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d (n + 1)) j (d n) prev.val :=
+      ⟨by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property]⟩
     ⟨s.lift, s.fac_left⟩
 
 /-- 概要：帰納的に選んだ拡張は隣接段の遷移と整合する。
@@ -122,8 +122,8 @@ noncomputable def stages : ∀ n, {f : B ⟶ X n // j ≫ f = a ≫ projection X
 規約：証明の選択は stages に固定する。
 使われ方：Kerodon Corollary 11.9.7.2。拡張を極限へ組み立てる。 -/
 theorem stages_comp (n : ℕ) :
-    (stages X d j a b sq (n + 1)).val ≫ d n = (stages X d j a b sq n).val := by
-  dsimp only [stages]
+    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages X d j a b sq (n + 1)).val ≫ d n = (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages X d j a b sq n).val := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages]
   exact CommSq.fac_right _
 
 end Lifting
@@ -133,39 +133,39 @@ end Lifting
 規約：任意の左射 j。モデル構造は不要。
 使われ方：Kerodon Corollary 11.9.7.2、HTT A.3.3。Hom の塔の fibration。 -/
 theorem projection_zero_hasLiftingProperty {A B : SSet.{u}} (j : A ⟶ B)
-    [∀ n, HasLiftingProperty j (d n)] : HasLiftingProperty j (projection X d 0) := by
+    [∀ n, HasLiftingProperty j (d n)] : HasLiftingProperty j (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := by
   constructor
   intro a b sq
-  let f := stages X d j a b sq
-  let l := lift X d (fun n ↦ (f n).val) (stages_comp X d j a b sq)
+  let f := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages X d j a b sq
+  let l := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift X d (fun n ↦ (f n).val) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages_comp X d j a b sq)
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
-  · apply hom_ext X d
+  · apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext X d
     intro n
-    rw [Category.assoc, lift_projection]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact (f n).property
-  · exact lift_projection X d _ _ 0
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection X d _ _ 0
 
 /-- 概要：Kan fibration の塔の初段射影は Kan fibration。
 方針：全てのホーンに対する右持ち上げ性を移す。
 規約：遷移の fibration 性だけを使う。
 使われ方：Kerodon Corollary 11.9.7.2、BF 1978 §2。写像空間の塔。 -/
 theorem projection_zero_fibration [∀ n, Fibration (d n)] :
-    Fibration (projection X d 0) := by
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := by
   rw [SSet.modelCategoryQuillen.fibration_iff]
   intro A B j hj
   let : ∀ n, HasLiftingProperty j (d n) := fun n ↦
     ((SSet.modelCategoryQuillen.fibration_iff (d n)).mp inferInstance) j hj
-  exact projection_zero_hasLiftingProperty X d j
+  exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_hasLiftingProperty X d j
 
 /-- 概要：Kan な初段と fibration の遷移を持つ塔の極限は Kan。
 方針：初段射影と終対象への fibration を合成する。
 規約：任意の厳密極限に対する主張ではない。
 使われ方：Kerodon Corollary 11.9.7.2、HTT A.3.3。スペクトルの Hom の Kan 性。 -/
 instance limit_kanComplex [∀ n, Fibration (d n)] [KanComplex (X 0)] :
-    KanComplex (limit X d) := by
-  let : Fibration (projection X d 0) := projection_zero_fibration X d
-  change Fibration (terminal.from (limit X d))
-  rw [show terminal.from (limit X d) = projection X d 0 ≫ terminal.from (X 0) from
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) := by
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration X d
+  change Fibration (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d))
+  rw [show terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) = _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0 ≫ terminal.from (X 0) from
     Subsingleton.elim _ _]
   infer_instance
 

@@ -16,21 +16,21 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の下側二胞体の第一短辺は、指定した元の包含の同じ一単体である。 -/
-theorem verdierLowerTriangle_first_arrow (d : VerdierDiagram.{u}) :
-    StableInfinity.δ 2 (verdierLowerTriangle d) = (stableArrow d.inclusion).edge := by
-  change StableInfinity.δ 2 (SSet.yonedaEquiv (squareTriangle 1 ≫ d.square)) = _
+theorem verdierLowerTriangle_first_arrow (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d) = (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (SSet.yonedaEquiv (squareTriangle 1 ≫ d.square)) = _
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, stableSquareTriangle_bottomEdge,
     d.bottom_edge, Equiv.apply_symm_apply]
 
 /-- 元の下側二胞体の第二短辺は、指定した元の商の同じ一単体である。 -/
-theorem verdierLowerTriangle_last_arrow (d : VerdierDiagram.{u}) :
-    StableInfinity.δ 0 (verdierLowerTriangle d) = (stableArrow d.projection).edge := by
-  change StableInfinity.δ 0 (SSet.yonedaEquiv (squareTriangle 1 ≫ d.square)) = _
+theorem verdierLowerTriangle_last_arrow (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d) = (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (SSet.yonedaEquiv (squareTriangle 1 ≫ d.square)) = _
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, squareTriangle_rightEdge,
     d.right_edge, Equiv.apply_symm_apply]
 
 /-- 元の下側二胞体の同じ合成 path は、指定した包含・商の元の実合成を回収する。 -/
-theorem verdierLowerTriangleCompositeMap_heq (d : VerdierDiagram.{u}) :
+theorem verdierLowerTriangleCompositeMap_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     HEq (stableTriangleCompositeMap (verdierLowerTriangle d))
       (show d.left ⟶ d.right from (show d.left ⟶ d.middle from d.inclusion) ≫
         (show d.middle ⟶ d.right from d.projection)) :=

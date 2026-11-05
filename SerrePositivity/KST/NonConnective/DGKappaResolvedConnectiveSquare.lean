@@ -99,7 +99,7 @@ theorem dgKappaResolvedConnectiveSquare_vertices :
 
 /-- 実全対象商の Perf 零性に条件付きで、同じ元の固定 K 四角形の零角を得る。 -/
 theorem dgKappaResolvedConnectiveSquare_zero_corner
-    (hz : IsZeroCategory (dgKInputStableValue R
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))) :
     IsZeroVertex (squareVertex (dgKappaResolvedConnectiveSquare R D I ≫ dgKInputK R) 0 1) := by
   change IsZeroVertex ((dgKInputK R).app (Opposite.op ⦋0⦌)

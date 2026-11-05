@@ -28,15 +28,15 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：成分集合に群演算を置かない。
 使われ方：Goerss–Jardine I §7–8。零 loop の代表計算。 -/
 lemma connecting_loopZeroHomotopyEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (a : KanHomotopy (loopSpace Y).right 0 (loopSpace Y).basepoint) :
-    connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0
-        ((KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)).symm
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)).symm
           (loopZeroHomotopyEquiv Y a)) =
-      KanHomotopy.equivOfIso 0 (loopBasedPathFiberIso Y) (loopBasedPathFiberIso_basepoint Y) a := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso 0 (loopBasedPathFiberIso Y) (loopBasedPathFiberIso_basepoint Y) a := by
   change (connectingZeroEquiv (pathEndpoint Y).right (basedPathSpace Y).basepoint
     (basedPathSpace_terminal_rlp Y))
-      ((KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)).symm
-        ((KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y))
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)).symm
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y))
           ((connectingZeroEquiv (pathEndpoint Y).right (basedPathSpace Y).basepoint
             (basedPathSpace_terminal_rlp Y)).symm _))) = _
   rw [MulEquiv.symm_apply_apply, Equiv.apply_symm_apply]
@@ -47,40 +47,40 @@ lemma connecting_loopZeroHomotopyEquiv (Y : PointedSimplicialSet.{u}) [KanComple
 使われ方：Goerss–Jardine I §8。零 loop 成分の反可換性の向き。 -/
 theorem loopZero_penultimate (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (s : Y.right.PtSimplex 1 ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint))
-    (a : (loopSpace Y).right.PtSimplex 0 (loopSpace Y).basepoint)
+    (a : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right.PtSimplex 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
     (T : (Δ[1] : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hT : T ≫ (pathEndpoint Y).right = s.map)
     (h₀ : stdSimplex.δ (0 : Fin 2) ≫ T = a.map ≫ (PointedMapping.loopToPath Y).right)
     (h₁ : stdSimplex.δ (1 : Fin 2) ≫ T = SSet.const (basedPathSpace Y).basepoint) :
-    loopZeroHomotopyEquiv Y (KanHomotopy.mk 0 a) =
-      (KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-        (KanHomotopyGroup.mk s))⁻¹ := by
+    loopZeroHomotopyEquiv Y (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 a) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))⁻¹ := by
   obtain ⟨t, ⟨m⟩⟩ := PtSimplex.MulStruct.exists_left_inverse s (0 : Fin 1)
-  let af := mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) a
-  have ha : stdSimplex.δ (0 : Fin 2) ≫ T = af.map ≫ fiberι (pathEndpoint Y).right
+  let af := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) a
+  have ha : stdSimplex.δ (0 : Fin 2) ≫ T = af.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
       ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) := by
     rw [h₀]
     change a.map ≫ (PointedMapping.loopToPath Y).right =
       (a.map ≫ (loopBasedPathFiberIso Y).hom) ≫ _
     rw [Category.assoc, PointedMapping.loopToPath_fiber]
-  obtain ⟨R, hR⟩ := exists_reverse_boundary_edge (pathEndpoint Y).right
+  obtain ⟨R, hR⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_reverse_boundary_edge (pathEndpoint Y).right
     (basedPathSpace Y).basepoint af T hT ha h₁ m
-  let b := KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-  have hc : connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0
-      (KanHomotopyGroup.mk t) =
-      KanHomotopy.equivOfIso 0 (loopBasedPathFiberIso Y)
-        (loopBasedPathFiberIso_basepoint Y) (KanHomotopy.mk 0 a) := by
+  let b := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+  have hc : _root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso 0 (loopBasedPathFiberIso Y)
+        (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 a) := by
     rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq _ _ R, hR]
     rfl
-  have he : loopZeroHomotopyEquiv Y (KanHomotopy.mk 0 a) = b (KanHomotopyGroup.mk t) := by
+  have he : loopZeroHomotopyEquiv Y (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 a) = b (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) := by
     apply b.symm.injective
     apply (connectingZeroEquiv (pathEndpoint Y).right (basedPathSpace Y).basepoint
       (basedPathSpace_terminal_rlp Y)).injective
-    change connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0 _ = _
+    change _root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint 0 _ = _
     rw [MulEquiv.symm_apply_apply, connecting_loopZeroHomotopyEquiv]
     exact hc.symm
-  have hi : KanHomotopyGroup.mk t = (KanHomotopyGroup.mk s)⁻¹ :=
-    eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq m)
+  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹ :=
+    eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq m)
   rw [he, hi, map_inv]
 
 end

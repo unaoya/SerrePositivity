@@ -33,7 +33,7 @@ lemma homotopyLimitWedgeFamily_condition (n : ℕ) {i j : I} (f : i ⟶ j) :
   have h := congrArg (fun p ↦ p.app n) (Wedge.condition s f)
   change (s.ι i).app n ≫
       (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map ((D.map f).app n) =
-    (s.ι j).app n ≫ PointedMapping.prePointed
+    (s.ι j).app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
       (PointedObject.adjoinFunctor.map ((bousfieldKanWeight I).map f)) _ at h
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   dsimp only [PointedWeightedEnd.diagram, Enriched.FunctorCategory.diagram,
@@ -56,7 +56,7 @@ lemma homotopyLimitWedgeLiftApp_π (n : ℕ) (i : I) :
 /-- 段ごとの普遍射は homotopy end の実際の Ω 随伴と可換。 -/
 lemma homotopyLimitWedgeLiftApp_adjoint (n : ℕ) :
     homotopyLimitWedgeLiftApp D s n ≫ homotopyLimitAdjoint D n =
-      suspensionLoopEquiv _ _ (s.pt.sigma n) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (s.pt.sigma n) ≫
         (ihom PointedSimplicialSet.circle.{u}).map (homotopyLimitWedgeLiftApp D s (n + 1)) := by
   let A := PointedSimplicialSet.circle.{u}
   let W := bousfieldKanWeight I
@@ -76,14 +76,14 @@ lemma homotopyLimitWedgeLiftApp_adjoint (n : ℕ) :
     rw [← Category.assoc ((ihom A).map (homotopyLimitWedgeLiftApp D s (n + 1)))
       ((ihom A).map (end_.π (PointedWeightedEnd.diagram W (levelDiagram D (n + 1))) i))]
     rw [← CategoryTheory.Functor.map_comp, homotopyLimitWedgeLiftApp_π]
-  have hs : (s.ι i).app n ≫ suspensionLoopEquiv
+  have hs : (s.ι i).app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
       ((mapping (PointedObject.adjoin (W.obj i)) (D.obj i)).level n).space
       ((mapping (PointedObject.adjoin (W.obj i)) (D.obj i)).level (n + 1)).space
       ((mapping (PointedObject.adjoin (W.obj i)) (D.obj i)).sigma n) =
-        suspensionLoopEquiv _ _ (s.pt.sigma n) ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (s.pt.sigma n) ≫
           (ihom A).map ((s.ι i).app (n + 1)) := (s.ι i).adjoint_comm n
   have h := congrArg (fun p ↦ p ≫
-      (InternalHomExchange.iso A (PointedObject.adjoin (W.obj i))
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i))
         ((D.obj i).level (n + 1)).space).hom) hs
   rw [mapping_adjoint] at h
   simp only [Category.assoc] at h
@@ -96,7 +96,7 @@ lemma homotopyLimitWedgeLiftApp_adjoint (n : ℕ) :
 def homotopyLimitWedgeLift : s.pt ⟶ homotopyLimit D where
   app := homotopyLimitWedgeLiftApp D s
   comm n := by
-    apply (suspensionLoopEquiv _ _).injective
+    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).injective
     change curry (PointedSimplicialSet.circle.{u} ◁ homotopyLimitWedgeLiftApp D s n ≫
         (homotopyLimit D).sigma n) =
       curry (s.pt.sigma n ≫ homotopyLimitWedgeLiftApp D s (n + 1))

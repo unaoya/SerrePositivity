@@ -21,7 +21,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def laxArrowHomotopy : SSet.Homotopy ((laxFst p q).hom ≫ p.hom)
     ((laxSnd p q).hom ≫ q.hom) where
@@ -68,18 +68,18 @@ lemma laxArrowTransformation_component (x : (laxCategory p q).obj _⦋0⦌) :
 
 lemma laxEquivalenceVertex_iff_transformationIso (x : (laxCategory p q).obj _⦋0⦌) :
     F2.IsLaxEquivalenceVertex p.hom q.hom x ↔
-      TransformationIsoVertex (laxArrowHomotopy p q) x := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.TransformationIsoVertex (laxArrowHomotopy p q) x := by
   exact (congrArg (fun a : Arrow (hoFunctor.obj E.obj) ↦ IsIso a.hom)
     (laxArrowTransformation_component p q x)).symm.to_iff
 
 /-- 同値矢印の頂点条件は元の lax pullback の零・fiber・cofiber に閉じる。 -/
 lemma laxEquivalenceVertex_stable :
-    StableVertexCondition (F2.IsLaxEquivalenceVertex p.hom q.hom) := by
-  let h := transformationIsoVertex_stable (laxArrowHomotopy p q)
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition (F2.IsLaxEquivalenceVertex p.hom q.hom) := by
+  let h := _root_.SerrePositivity.InfinityCategories.Stable.Exact.transformationIsoVertex_stable (laxArrowHomotopy p q)
   let e := laxEquivalenceVertex_iff_transformationIso p q
   exact {
-    zero := fun x hx ↦ (e x).2 (h.zero x hx)
-    cofiber := fun t ht ha hb ↦ (e _).2 (h.cofiber t ht ((e _).1 ha) ((e _).1 hb))
-    fiber := fun t ht hb hc ↦ (e _).2 (h.fiber t ht ((e _).1 hb) ((e _).1 hc)) }
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.zero := fun x hx ↦ (e x).2 (h.zero x hx)
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.cofiber := fun t ht ha hb ↦ (e _).2 (h.cofiber t ht ((e _).1 ha) ((e _).1 hb))
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.fiber := fun t ht hb hc ↦ (e _).2 (h.fiber t ht ((e _).1 hb) ((e _).1 hc)) }
 
 end SerrePositivity.KST.LocalizingInvariants

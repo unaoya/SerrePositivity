@@ -24,8 +24,8 @@ namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance invariantPiSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
-variable {E : StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  (d : VerdierSequence.{u})
+variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
 
 lemma fiber_left_vertex : squareVertex (hE.abstractFiberTriangle d).square 0 0 =
     coherentNerveVertex (value E d.left) := by

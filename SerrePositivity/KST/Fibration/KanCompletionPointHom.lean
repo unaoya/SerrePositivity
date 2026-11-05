@@ -16,32 +16,32 @@ variable {I : Type u} [Category.{u} I] (F : I ⥤ KanObject.{u})
 
 /-- 元の Kan 置換同型の同じ標準成分は、元の置換単位による点の像を回収する。 -/
 theorem kanDiagramCompletionValueIso_pointHom (i : I) (v : (F.obj i).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.obj i)).symm v) ≫
-      (kanDiagramValueIso (kanDiagramCompletionIso F) i).hom =
-    cosliceFiberPointHom
-      ((pointedSpaceFiberVertexEquiv (strictKanCompletion.obj (F.obj i).obj)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.obj i)).symm v) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso (kanDiagramCompletionIso F) i).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
+      ((pointedSpaceFiberVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.obj (F.obj i).obj)).symm
         ((F2.continuousKanReplacementUnit.app (F.obj i).obj).app (Opposite.op ⦋0⦌) v)) := by
   have hη : ∀ c, IsQCatEquivalence (X := (F.obj c).obj)
-      (Y := (strictKanCompletion.obj (F.obj c).obj).obj)
+      (Y := (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.obj (F.obj c).obj).obj)
         ((kanDiagramCompletionUnit F).app c) := by
     intro c
     apply isQCatEquivalence_of_anodyneQ_isIso
     exact SSet.anodyneExtensions.Q_inverts _ (F2.continuousKanReplacementUnit_anodyne _)
-  have h := kanDiagramComponentValueIso_pointHom
-    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ strictKanCompletion, trivial⟩)
+  have h := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso_pointHom
+    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, trivial⟩)
     (kanDiagramCompletionUnit F) hη i v
-  change _ ≫ (kanDiagramComponentValueIso
-    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ strictKanCompletion, trivial⟩)
+  change _ ≫ (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso
+    (F := ⟨F, trivial⟩) (G := ⟨F ⋙ kanObjectForget ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, trivial⟩)
     (kanDiagramCompletionUnit F) hη i).hom = _
   exact h
 
 /-- 同じ置換単位の点を指定逆成分へ送ると、元の点を回収する。 -/
 theorem kanDiagramCompletionValueIso_inv_pointHom (i : I) (v : (F.obj i).obj _⦋0⦌) :
-    cosliceFiberPointHom
-      ((pointedSpaceFiberVertexEquiv (strictKanCompletion.obj (F.obj i).obj)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
+      ((pointedSpaceFiberVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.obj (F.obj i).obj)).symm
         ((F2.continuousKanReplacementUnit.app (F.obj i).obj).app (Opposite.op ⦋0⦌) v)) ≫
-      (kanDiagramValueIso (kanDiagramCompletionIso F) i).inv =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.obj i)).symm v) :=
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso (kanDiagramCompletionIso F) i).inv =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv (F.obj i)).symm v) :=
   (Iso.comp_inv_eq _).2 (kanDiagramCompletionValueIso_pointHom F i v).symm
 
 end SerrePositivity.KST.Fibration

@@ -24,10 +24,10 @@ end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Stable.Verdier
 open SerrePositivity.KST.LocalizingInvariants
 
-lemma invertedEdges_eq_cofiber_kernel {A T B : StableCategory.{u}}
-    (i : ExactMap A T) (q : ExactMap T B)
-    (hk : ∀ x, IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ essentialImage i) :
-    invertedEdges q.hom = cofiberLocalizingEdges (essentialImage i) := by
+lemma invertedEdges_eq_cofiber_kernel {A T B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A T) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T B)
+    (hk : ∀ x, IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) :
+    invertedEdges q.hom = cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) := by
   ext e
   constructor
   · intro he
@@ -38,16 +38,16 @@ lemma invertedEdges_eq_cofiber_kernel {A T B : StableCategory.{u}}
     exact inverts_cofiberLocalizingEdges_of_kills q.hom _ (fun x hx => (hk x).2 hx) he
 
 /-- 可逆余単位の随伴と核の同定から、実関手圏上の商の普遍性を導く。 -/
-theorem isVerdierSequence_of_adjoint {A T B : StableCategory.{u}}
-    (i : ExactMap A T) (q : ExactMap T B) (j : ExactMap B T)
+theorem isVerdierSequence_of_adjoint {A T B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A T) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T B) (j : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B T)
     (hi : IsFullyFaithful i.hom)
-    (hk : ∀ x, IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ essentialImage i)
-    (a : QCatAdjunction q.hom j.hom) [IsIso a.counit] : IsVerdierSequence i q where
-  fullyFaithful := hi
-  kernel := hk
-  quotient := by
-    rw [← invertedEdges_eq_cofiber_kernel i q hk]
-    exact AdjointLocalization.isLocalization a
+    (hk : ∀ x, IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)
+    (a : QCatAdjunction q.hom j.hom) [IsIso a.counit] : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := hi
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := hk
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel i q hk]
+    exact _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization a
 
 end SerrePositivity.InfinityCategories.Stable.Verdier
 

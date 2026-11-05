@@ -52,7 +52,7 @@ lemma circleCompanionComparisonDifference_action (z : Sp.{u} _⦋0⦌) :
       (circleCompanionConeComparisonHom z)
       (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence)
         (circleCompanionEdgewiseDifferenceHom z) =
-    FundamentalLoop.toHom (KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
+    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
   let sourceReferenceIso : IsIso (SSet.HomotopyCategory.homMk
       (circleCompanionEdgewiseFramedEdge z .right 0 1 (of_decide_eq_true rfl))) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj (circleEvaluationPointedHom z).right) _

@@ -31,21 +31,21 @@ lemma transpose_post {A U V Z : PointedSimplicialSet.{u}}
 lemma preAction_post {W D C C' : PointedSimplicialSet.{u}} (v : C ⟶ C') :
     preAction W D C ≫ PointedObject.basedHomMap (PointedObject.basedHom D C)
         (PointedObject.basedHomMap W v) =
-      preAction W D C' ≫ prePointed (PointedObject.basedHomMap D v)
+      preAction W D C' ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap D v)
         (PointedObject.basedHom W C') := by
-  have he := InternalHomExchange.natural_post W (PointedObject.basedHom D C) v
-  have hr := InternalHomExchange.natural_pre_right W (PointedObject.basedHomMap D v) C'
+  have he := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post W (PointedObject.basedHom D C) v
+  have hr := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right W (PointedObject.basedHomMap D v) C'
   simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at he hr
   change PointedObject.basedHomMap W
       (PointedObject.basedHomMap (PointedObject.basedHom D C) v) ≫
-        (InternalHomExchange.iso W (PointedObject.basedHom D C) C').hom =
-    (InternalHomExchange.iso W (PointedObject.basedHom D C) C).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W (PointedObject.basedHom D C) C').hom =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W (PointedObject.basedHom D C) C).hom ≫
       PointedObject.basedHomMap (PointedObject.basedHom D C)
         (PointedObject.basedHomMap W v) at he
   have ht : transpose (𝟙 (PointedObject.basedHom D C)) ≫
       PointedObject.basedHomMap (PointedObject.basedHom D C) v =
       transpose (𝟙 (PointedObject.basedHom D C')) ≫
-        prePointed (PointedObject.basedHomMap D v) C' := by
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap D v) C' := by
     rw [← transpose_post, Category.id_comp, ← transpose_pre_outer, Category.comp_id]
   unfold preAction
   rw [Category.assoc, ← he, ← Category.assoc]

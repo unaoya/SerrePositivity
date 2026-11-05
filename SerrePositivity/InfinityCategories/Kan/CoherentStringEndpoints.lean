@@ -28,29 +28,29 @@ def coherentStringEndpointMap (n : ℕ) : ⦋1⦌ ⟶ ⦋n⦌ :=
 
 /-- 標準射の始点は元の合成列の始点。 -/
 lemma coherentStringEndpointMap_first (n : ℕ) :
-    (coherentStringEndpointMap n).toOrderHom 0 = 0 := by
-  simp [coherentStringEndpointMap]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n).toOrderHom 0 = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap]
 
 /-- 標準射の終点は元の合成列の終点。 -/
 lemma coherentStringEndpointMap_last (n : ℕ) :
-    (coherentStringEndpointMap n).toOrderHom 1 = Fin.last n := by
-  simp [coherentStringEndpointMap]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n).toOrderHom 1 = Fin.last n := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap]
 
 /-- 長さ一では、元の射の二端点を選ぶ射は恒等。 -/
-lemma coherentStringEndpointMap_one : coherentStringEndpointMap 1 = 𝟙 ⦋1⦌ := by
+lemma coherentStringEndpointMap_one : _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap 1 = 𝟙 ⦋1⦌ := by
   ext i
   fin_cases i <;> rfl
 
 /-- 両端を保つ全再添字は、元の長辺を厳密に保つ。 -/
 lemma coherentStringEndpointMap_comp {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (h₀ : θ.toOrderHom 0 = 0) (h₁ : θ.toOrderHom (Fin.last m) = Fin.last n) :
-    coherentStringEndpointMap m ≫ θ = coherentStringEndpointMap n := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m ≫ θ = _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n := by
   apply SimplexCategory.Hom.ext_one_left
-  · change θ.toOrderHom ((coherentStringEndpointMap m).toOrderHom 0) = _
-    rw [coherentStringEndpointMap_first, coherentStringEndpointMap_first]
+  · change θ.toOrderHom ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m).toOrderHom 0) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first]
     exact h₀
-  · change θ.toOrderHom ((coherentStringEndpointMap m).toOrderHom 1) = _
-    rw [coherentStringEndpointMap_last, coherentStringEndpointMap_last]
+  · change θ.toOrderHom ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m).toOrderHom 1) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last]
     exact h₁
 
 end SerrePositivity.InfinityCategories.Kan

@@ -34,7 +34,7 @@ lemma presentedPerfectDGNativeFamilyMap_vertex
 /-- 元の全 native 関手族の全ての頂点は完全関手である。 -/
 lemma presentedPerfectDGNativeFamilyMap_isExactVertex (C D : PerfDGInput.{u, v} A)
     (v : (presentedPerfectDGNativeParameter A C D) _⦋0⦌) :
-    LocalizingInvariants.IsExactVertex
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)
       ((presentedPerfectDGNativeFamilyMap A C D).app (Opposite.op ⦋0⦌) v) := by
   obtain ⟨F, rfl⟩ := (perfDGInputVertexEquiv A C D).surjective v
@@ -47,17 +47,17 @@ lemma presentedPerfectDGNativeFamilyMap_isExactVertex (C D : PerfDGInput.{u, v} 
 /-- 元の全 native dg 入力族を、全自然変換を持つ完全関手空間へ持ち上げる。 -/
 def presentedPerfectDGExactFamilyMap (C D : PerfDGInput.{u, v} A) :
     presentedPerfectDGNativeParameter A C D ⟶
-      (LocalizingInvariants.exactFunctors
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
           SSet.{max (u + 1) v}) :=
-  fullSubcomplexLift (LocalizingInvariants.IsExactVertex
+  fullSubcomplexLift (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex
     (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D))
       (presentedPerfectDGNativeFamilyMap A C D)
       (presentedPerfectDGNativeFamilyMap_isExactVertex A C D)
 
 /-- 完全関手空間の包含後には、元の関手族の全単体を回収する。 -/
 lemma presentedPerfectDGExactFamilyMap_inclusion (C D : PerfDGInput.{u, v} A) :
-    presentedPerfectDGExactFamilyMap A C D ≫ (LocalizingInvariants.exactFunctors
+    presentedPerfectDGExactFamilyMap A C D ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι =
         presentedPerfectDGNativeFamilyMap A C D :=
   fullSubcomplexLift_ι _ _ _
@@ -65,7 +65,7 @@ lemma presentedPerfectDGExactFamilyMap_inclusion (C D : PerfDGInput.{u, v} A) :
 /-- 元の Kan 入力族の全単体を、完全関手空間の実 core へ持ち上げる。 -/
 def presentedPerfectDGExactCoreFamilyMap (C D : PerfDGInput.{u, v} A) :
     presentedPerfectDGNativeParameter A C D ⟶
-      (quasicategoryCore (LocalizingInvariants.exactFunctors
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
           SSet.{max (u + 1) v}) : SSet.{max (u + 1) v}) :=
   kanSourceCoreMap (presentedPerfectDGExactFamilyMap A C D)
@@ -73,9 +73,9 @@ def presentedPerfectDGExactCoreFamilyMap (C D : PerfDGInput.{u, v} A) :
 /-- 二つの実包含の後で、元の native Perf 関手族を全単体で保持する。 -/
 lemma presentedPerfectDGExactCoreFamilyMap_inclusion (C D : PerfDGInput.{u, v} A) :
     (presentedPerfectDGExactCoreFamilyMap A C D ≫ (quasicategoryCore
-      (LocalizingInvariants.exactFunctors
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-          SSet.{max (u + 1) v})).ι) ≫ (LocalizingInvariants.exactFunctors
+          SSet.{max (u + 1) v})).ι) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
             (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι =
       presentedPerfectDGNativeFamilyMap A C D :=
   presentedPerfectDGExactFamilyMap_inclusion A C D

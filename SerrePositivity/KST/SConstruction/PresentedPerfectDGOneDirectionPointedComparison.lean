@@ -43,7 +43,7 @@ def presentedPerfectDGOneDirectionPointedComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r)
       (presentedPerfectDGBoundaryPointedEnrichedFunctor A r) :=
-  strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGOneDirectionPointedComparisonMap A r)
     (presentedPerfectDGOneDirectionPointedComparison_whisker A r)
 

@@ -26,7 +26,7 @@ local instance (X : PointedSimplicialSet.{u}) :
 
 /-- 同じ一つの点の Kan 置換の正次数群は自明。 -/
 lemma kanReplacementPoint_group_subsingleton (n : ℕ) :
-    Subsingleton (KanHomotopyGroup
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (PointedKanReplacement.obj (PointedObject.point : PointedSimplicialSet.{u})).right n
       (PointedKanReplacement.obj (PointedObject.point : PointedSimplicialSet.{u})).basepoint) := by
   let P : PointedSimplicialSet.{u} := PointedObject.point
@@ -39,17 +39,17 @@ lemma kanReplacementPoint_group_subsingleton (n : ℕ) :
     intro a b
     apply RelativeMorphism.ext
     exact isTerminalTensorUnit.hom_ext _ _⟩
-  have : Subsingleton (KanHomotopyGroup P.right n P.basepoint) := by
+  have : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup P.right n P.basepoint) := by
     unfold _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
     infer_instance
   let i : P ⟶ PointedKanReplacement.obj P := PointedKanReplacement.unit.app P
-  exact (KanHomotopyGroup.equivOfPiIsomorphism n i.right
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n i.right
     (PointedKanReplacement.unit_piIsomorphism P)
-    (OmegaSpectrum.pointedMap_basepoint i)).symm.injective.subsingleton
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint i)).symm.injective.subsingleton
 
 /-- 零射の実 Kan 置換は、全ての正次数の群で零準同型として作用する。 -/
 theorem pointedKanReplacement_zero_group (X Y : PointedSimplicialSet.{u}) (n : ℕ)
-    (a : KanHomotopyGroup (PointedKanReplacement.obj X).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedKanReplacement.obj X).right n
       (PointedKanReplacement.obj X).basepoint) :
     pointedGroupMap n (PointedKanReplacement.map (0 : X ⟶ Y)) a = 1 := by
   have := kanReplacementPoint_group_subsingleton.{u} n

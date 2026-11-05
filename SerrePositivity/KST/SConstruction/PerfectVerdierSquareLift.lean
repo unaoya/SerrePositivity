@@ -17,45 +17,45 @@ open scoped Simplicial
 
 /-- 元の実四角形の四角は、左・中央・右端と元の零安定圏の同じ頂点。 -/
 lemma perfectVerdierRawSquare_vertices (d : PerfectVerdierSequence.{u}) :
-    squareVertex (perfectVerdierRawSquare d) 0 0 = stableVertex d.verdier.left ∧
-      squareVertex (perfectVerdierRawSquare d) 1 0 = stableVertex d.verdier.middle ∧
-      squareVertex (perfectVerdierRawSquare d) 1 1 = stableVertex d.right ∧
-      squareVertex (perfectVerdierRawSquare d) 0 1 = stableVertex zeroCategory.{u} := by
+    squareVertex (perfectVerdierRawSquare d) 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.verdier.left ∧
+      squareVertex (perfectVerdierRawSquare d) 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.verdier.middle ∧
+      squareVertex (perfectVerdierRawSquare d) 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.right ∧
+      squareVertex (perfectVerdierRawSquare d) 0 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := by
   have hQ := perfectVerdierRawSquare_edges d
   constructor
   · have h := squareBottomEdge_source (perfectVerdierRawSquare d)
-    rw [hQ.1, Equiv.apply_symm_apply, (stableArrow d.verdier.inclusion).src_eq] at h
+    rw [hQ.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.verdier.inclusion).src_eq] at h
     exact h.symm
   constructor
   · have h := squareBottomEdge_target (perfectVerdierRawSquare d)
-    rw [hQ.1, Equiv.apply_symm_apply, (stableArrow d.verdier.inclusion).tgt_eq] at h
+    rw [hQ.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.verdier.inclusion).tgt_eq] at h
     exact h.symm
   constructor
   · have h := squareRightEdge_target (perfectVerdierRawSquare d)
-    rw [hQ.2.2.2, Equiv.apply_symm_apply, (stableArrow d.projection).tgt_eq] at h
+    rw [hQ.2.2.2, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).tgt_eq] at h
     exact h.symm
   · have h := squareLeftEdge_target (perfectVerdierRawSquare d)
     rw [hQ.2.2.1, Equiv.apply_symm_apply,
-      (stableArrow (toZeroCategory d.verdier.left)).tgt_eq] at h
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.verdier.left)).tgt_eq] at h
     exact h.symm
 
 /-- 同じ実四角形の全ての角は、coherent な冪等完備性を持つ。 -/
 lemma perfectVerdierRawSquare_corner_complete (d : PerfectVerdierSequence.{u}) (i j : Fin 2) :
     perfectStableVertexPredicate (squareVertex (perfectVerdierRawSquare d) i j) := by
   have h := perfectVerdierRawSquare_vertices d
-  change IsIdempotentComplete (stableObject _).obj
+  change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject _).obj
   fin_cases i <;> fin_cases j
-  · change IsIdempotentComplete (stableObject (squareVertex (perfectVerdierRawSquare d) 0 0)).obj
-    rw [h.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (perfectVerdierRawSquare d) 0 0)).obj
+    rw [h.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.left_complete
-  · change IsIdempotentComplete (stableObject (squareVertex (perfectVerdierRawSquare d) 0 1)).obj
-    rw [h.2.2.2, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (perfectVerdierRawSquare d) 0 1)).obj
+    rw [h.2.2.2, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact perfectZeroCategory_isIdempotentComplete
-  · change IsIdempotentComplete (stableObject (squareVertex (perfectVerdierRawSquare d) 1 0)).obj
-    rw [h.2.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (perfectVerdierRawSquare d) 1 0)).obj
+    rw [h.2.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.middle_complete
-  · change IsIdempotentComplete (stableObject (squareVertex (perfectVerdierRawSquare d) 1 1)).obj
-    rw [h.2.2.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (perfectVerdierRawSquare d) 1 1)).obj
+    rw [h.2.2.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.right_complete
 
 /-- 四角形の元の任意の零単体は、同じ完備安定対象を表す。 -/

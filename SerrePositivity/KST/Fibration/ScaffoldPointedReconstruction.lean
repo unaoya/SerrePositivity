@@ -21,7 +21,7 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 /-- 指定 scaffold 三角形を保持する分類比較の同じ逆成分を使う実復元射。 -/
 def scaffoldPointedReconstruction :
     E ⟶ smallLeftUnstraightening (leftStraighteningInfinityDiagram p) :=
-  nativeLeftTransportComparison p ≫ smallUnstraighteningFunctorHom
+  nativeLeftTransportComparison p ≫ _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom
     (scaffoldStraighteningRepresentationIso p (nativeLeftTransportRepresentation p)).inv
 
 /-- 元の底への射影は厳密に回収する。 -/
@@ -35,12 +35,12 @@ theorem scaffoldPointedReconstruction_projection :
 theorem scaffoldPointedReconstruction_isPrecompositionEquivalence :
     IsPrecompositionEquivalence (scaffoldPointedReconstruction p) :=
   (nativeLeftTransportComparison_isPrecompositionEquivalence p).comp
-    (smallUnstraighteningFunctorHom_isPrecompositionEquivalence _)
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_isPrecompositionEquivalence _)
 
 /-- 元の実 fiber 点の像は、指定した同じ分類逆成分の作用で計算できる。 -/
 theorem scaffoldPointedReconstruction_pointHom (b : B _⦋0⦌)
     (v : (vertexFiber p b) _⦋0⦌) :
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (nativeLeftTransportRepresentation p).diagram b
       ((vertexFiberMap p
         (smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram)
@@ -49,7 +49,7 @@ theorem scaffoldPointedReconstruction_pointHom (b : B _⦋0⦌)
       functorHomEvaluate
         (scaffoldStraighteningRepresentationIso p (nativeLeftTransportRepresentation p)).inv
         (ULift.up b) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) b
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
         (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p) b).app
@@ -59,14 +59,14 @@ theorem scaffoldPointedReconstruction_pointHom (b : B _⦋0⦌)
     (smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram)
     (nativeLeftTransportComparison p) (nativeLeftTransportComparison_projection p) b).app
       (Opposite.op ⦋0⦌) v
-  have he := smallUnstraighteningFunctorHom_pointHom a b w
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_pointHom a b w
   have hf := vertexFiberMap_comp p
     (smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram)
     (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
-    (nativeLeftTransportComparison p) (smallUnstraighteningFunctorHom a)
-    (nativeLeftTransportComparison_projection p) (smallUnstraighteningFunctorHom_projection a) b
+    (nativeLeftTransportComparison p) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+    (nativeLeftTransportComparison_projection p) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b
   have hv := congrArg (fun f => f.app (Opposite.op ⦋0⦌) v) hf
-  exact he.trans (congrArg (fun z => cosliceFiberPointHom
-    (smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b z)) hv)
+  exact he.trans (congrArg (fun z => _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b z)) hv)
 
 end SerrePositivity.KST.Fibration

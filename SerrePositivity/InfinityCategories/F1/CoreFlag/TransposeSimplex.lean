@@ -43,12 +43,12 @@ def transposeSimplex {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
 @[simp]
 lemma transposeSimplex_transposeSimplex {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
     (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m) :
-    transposeSimplex (transposeSimplex s) = s := by
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex s) = s := by
   apply Functor.functorHom_ext
   intro d g
   apply ConcreteCategory.hom_ext
   intro x
-  dsimp [transposeSimplex]
+  dsimp [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex]
   simp only [Equiv.symm_apply_apply, Equiv.apply_symm_apply, Quiver.Hom.op_unop]
 
 /-- 任意の内部 Hom の辺の可逆性を全頂点評価で判定する。 -/
@@ -83,10 +83,10 @@ lemma transpose_vertex_edge {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
     (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m)
     (v : ⦋0⦌ ⟶ n.unop) (e : (stdSimplex.obj m.unop) _⦋1⦌) :
     ((functorVertexEquiv (stdSimplex.obj m.unop) C).symm
-      (((ihom (stdSimplex.obj m.unop)).obj C).map v.op (transposeSimplex s))).app _ e =
+      (((ihom (stdSimplex.obj m.unop)).obj C).map v.op (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex s))).app _ e =
     (evaluateFunctorAt (Y := C) (stdSimplex.objEquiv.symm v)).app _
       (((ihom (stdSimplex.obj n.unop)).obj C).map (stdSimplex.objEquiv e).op s) := by
-  rw [functorVertexEquiv_symm_app]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorVertexEquiv_symm_app]
   change s.app (Opposite.op ⦋1⦌) (stdSimplex.objEquiv e).op
       (stdSimplex.objEquiv.symm ((SimplexCategory.const ⦋1⦌ ⦋0⦌ 0) ≫ v)) =
     s.app (Opposite.op ⦋1⦌) ((stdSimplex.objEquiv e).op ≫ 𝟙 _)
@@ -99,19 +99,19 @@ lemma transpose_vertex_edge {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
 lemma transpose_mem_iff {C : SSet.{u}} [Quasicategory C] {n m : SimplexCategoryᵒᵖ}
     (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m) :
     s ∈ (quasicategoryCore ((ihom (stdSimplex.obj n.unop)).obj C)).obj m ↔
-    transposeSimplex s ∈ (fullSubcomplexOnVertices
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex s ∈ (fullSubcomplexOnVertices
       ((ihom (stdSimplex.obj m.unop)).obj C)
-      (IsEquivalenceDiagramVertex (stdSimplex.obj m.unop) C)).obj n := by
+      (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex (stdSimplex.obj m.unop) C)).obj n := by
   constructor
   · intro hs v e
-    rw [transpose_vertex_edge]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_vertex_edge]
     have h := hs (stdSimplex.objEquiv e)
-    exact (functorSimplex_isInvertible_iff _).mp h (stdSimplex.objEquiv.symm v)
+    exact (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorSimplex_isInvertible_iff _).mp h (stdSimplex.objEquiv.symm v)
   · intro hs f
-    apply (functorSimplex_isInvertible_iff _).mpr
+    apply (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorSimplex_isInvertible_iff _).mpr
     intro a
     have h := hs (stdSimplex.objEquiv a) (stdSimplex.objEquiv.symm f)
-    rw [transpose_vertex_edge] at h
+    rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_vertex_edge] at h
     have ha : stdSimplex.objEquiv.symm (stdSimplex.objEquiv a) = a :=
       stdSimplex.objEquiv.symm_apply_apply a
     have hf : stdSimplex.objEquiv.{u} (stdSimplex.objEquiv.{u}.symm f) = f :=

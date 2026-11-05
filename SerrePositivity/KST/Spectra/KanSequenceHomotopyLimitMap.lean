@@ -89,7 +89,7 @@ theorem homotopyLimitMapApp_adjoint (τ : D ⟶ E) (n : ℕ) :
 def homotopyLimitMap (τ : D ⟶ E) : Hom (homotopyLimit D) (homotopyLimit E) where
   app n := PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n)
   comm n := by
-    apply (suspensionLoopEquiv ((homotopyLimit D).level n).space
+    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
       ((homotopyLimit E).level (n + 1)).space).injective
     change curry (PointedSimplicialSet.circle.{u} ◁
       PointedWeightedEnd.map (bousfieldKanWeight I) (homotopyLimitLevelTransformation τ n) ≫
@@ -104,8 +104,8 @@ def homotopyLimitMap (τ : D ⟶ E) : Hom (homotopyLimit D) (homotopyLimit E) wh
 規約：零次数を含み全ての基点で述べる。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。hG・Tot の係数の置換不変性。 -/
 theorem homotopyLimitMap_levelwise (τ : D ⟶ E)
-    (hτ : ∀ i n, KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
-    KanPiIsomorphism ((homotopyLimitMap τ).app n).right :=
+    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyLimitMap τ).app n).right :=
   PointedWeightedEnd.map_piIsomorphism (homotopyLimitLevelTransformation τ n) (fun i ↦ hτ i n)
 
 /-- 概要：Kan 列の homotopy end の射への作用は恒等射を保つ。

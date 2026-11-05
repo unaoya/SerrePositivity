@@ -67,7 +67,7 @@ def straighteningBaseChangeImageSectionPoint (c : TransportSimplexCategory D)
       (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj
         (leftFibrationObjectOf p)).obj _⦋0⦌) :=
   Eq.mp (congrArg (fun T : KanObject.{u} => T.obj _⦋0⦌)
-    (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)) v
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)) v
 
 end SerrePositivity.InfinityCategories.Stable.Transport
 

@@ -66,25 +66,25 @@ lemma exchangeMap_ι {A K Y : PointedSimplicialSet.{u}}
 /-- パラメータ族の頂点への交換同型の作用は射の転置で計算される。 -/
 lemma exchange_familyVertex {A K Y : PointedSimplicialSet.{u}}
     (f : A ⟶ PointedObject.basedHom K Y) :
-    (InternalHomExchange.iso A K Y).hom.right.app _ (familyVertex f) =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom.right.app _ (familyVertex f) =
       familyVertex (exchangeMap f) := by
-  change (InternalHomExchange.iso A K Y).hom.right.app _ (yonedaEquiv (pointFamily f)) =
+  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom.right.app _ (yonedaEquiv (pointFamily f)) =
     yonedaEquiv (pointFamily (exchangeMap f))
   erw [← yonedaEquiv_comp]
   apply congrArg yonedaEquiv
   rw [pointFamily_closed, pointFamily_closed, Category.assoc]
-  have hc := InternalHomExchange.curry'_hom f
+  have hc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom f
   have hn := unitUnderlyingHom_post
     (X := (ihom A).obj ((ihom K).obj Y)) (Z := (ihom K).obj ((ihom A).obj Y))
-    (curry' f) (InternalHomExchange.iso A K Y).hom
+    (curry' f) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom
   exact congrArg (fun g ↦ PointedSimplicialSet.deltaZeroUnitIso.hom ≫ g)
     (hn.symm.trans (congrArg (PointedSimplicialSet.unitUnderlyingHom _) hc))
 
 /-- 逆向きの loop 交換は loop 値の射を円からの射へ転置する。 -/
 lemma loopSwap_inv_familyVertex {A Y : PointedSimplicialSet.{u}}
-    (f : A ⟶ loopSpace Y) :
+    (f : A ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :
     (loopSwap A Y).inv.right.app _ (familyVertex f) = familyVertex (exchangeMap f) := by
-  change (InternalHomExchange.iso PointedSimplicialSet.circle A Y).inv.right.app _ _ = _
+  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle A Y).inv.right.app _ _ = _
   rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv]
   exact exchange_familyVertex f
 

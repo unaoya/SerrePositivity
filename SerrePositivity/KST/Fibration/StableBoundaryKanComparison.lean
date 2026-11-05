@@ -26,23 +26,23 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の正反復実現を、全 Hom を保って同じ Ex∞ Kan 値へ送る。 -/
 def stableMultiKanEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} KanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} KanObject.{u} :=
   (stableMultiRealizationEnrichedFunctor (r + 1)).comp SSet exInfinityClosedKanEnrichedFunctor
 
 /-- 元の境界商の基点を忘れ、同じ Ex∞ Kan 値と全 Hom を保持する。 -/
 def stableBoundaryClosedKanEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} KanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} KanObject.{u} :=
   (stableBoundaryClosedEnrichedFunctor r).comp SSet exInfinityClosedKanEnrichedFunctor
 
 /-- 元の全境界商の自然変換を、同じ Ex∞ の全 Hom 作用で写す。 -/
 def stableBoundaryQuotientKanTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableMultiKanEnrichedFunctor r) (stableBoundaryClosedKanEnrichedFunctor r) :=
-  strictSimplicialTransformationPostcompose _ _ exInfinityClosedKanEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityClosedKanEnrichedFunctor
     (stableBoundaryQuotientTransformation r)
 
 /-- Ex∞ 後の比較成分は、元の同じ境界商射の Ex∞ 像である。 -/
-theorem stableBoundaryQuotientKanTransformation_app (r : ℕ) (C : StableQCat.{u}) :
+theorem stableBoundaryQuotientKanTransformation_app (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableBoundaryQuotientKanTransformation r).app C =
       eHomEquiv SSet (show (stableMultiKanEnrichedFunctor r).obj C ⟶
         (stableBoundaryClosedKanEnrichedFunctor r).obj C from
@@ -57,7 +57,7 @@ def stableBoundaryQuotientKanHomotopy (r : ℕ) :
   Spectra.StrictEnrichedTransformation.homotopy _ _ (stableBoundaryQuotientKanTransformation r)
 
 /-- 元の全比較を各頂点で評価すると、同じ Ex∞ 商射の辺になる。 -/
-theorem stableBoundaryQuotientKanHomotopy_component (r : ℕ) (C : StableQCat.{u}) :
+theorem stableBoundaryQuotientKanHomotopy_component (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (simplicialHomotopyVertexEdge (stableBoundaryQuotientKanHomotopy r)
       (coherentNerveVertex C)).edge =
       (coherentNerveEdge (show (stableMultiKanEnrichedFunctor r).obj C ⟶
@@ -68,7 +68,7 @@ theorem stableBoundaryQuotientKanHomotopy_component (r : ℕ) (C : StableQCat.{u
     (stableBoundaryQuotientKanTransformation_app r C)]
 
 /-- 同じ元の Ex∞ 境界商射は Kan 複体間の実ホモトピー同値である。 -/
-theorem stableBoundaryQuotientKan_isHomotopyEquivalence (r : ℕ) (C : StableQCat.{u}) :
+theorem stableBoundaryQuotientKan_isHomotopyEquivalence (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     IsSimplicialHomotopyEquivalence
       (exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C))) := by
   have hq := boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
@@ -88,7 +88,7 @@ def stableBoundaryQuotientKanIso (r : ℕ) :
       (coherentNerveMap (stableBoundaryClosedKanEnrichedFunctor r)) :=
   functorIsoOfPointwiseInvertibleHomotopy (stableBoundaryQuotientKanHomotopy r) (by
     intro c
-    obtain ⟨C, rfl⟩ := (coherentNerveVertexEquiv StableQCat.{u}).surjective c
+    obtain ⟨C, rfl⟩ := (coherentNerveVertexEquiv _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}).surjective c
     apply (isInvertibleEdge_congr (stableBoundaryQuotientKanHomotopy_component r C)).mpr
     exact coherentKanEdge_isInvertible_of_isQCatEquivalence
       (stableBoundaryQuotientKan_isHomotopyEquivalence r C).isQCatEquivalence)
@@ -112,14 +112,14 @@ def stableMultiBoundaryForgetIso (r : ℕ) :
   exact stableBoundaryQuotientKanIso r
 
 /-- 元の Verdier 四角形全体を保つ、反復実現と境界商の基点忘却の比較。 -/
-def verdierMultiBoundaryForgetSquareIso (r : ℕ) (d : VerdierDiagram.{u}) :
+def verdierMultiBoundaryForgetSquareIso (r : ℕ) (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor r))
       (d.square ≫ stableSBoundaryKanInfinityFunctor r ≫
         coherentNerveMap pointedKanForgetEnriched) :=
   (stableMultiBoundaryForgetIso r).precomp d.square
 
 /-- 元の全反復実現四角形と、同じ境界商を基点忘却した四角形の引き戻し性は同値。 -/
-theorem verdierMultiBoundaryForget_isPullback_iff (r : ℕ) (d : VerdierDiagram.{u}) :
+theorem verdierMultiBoundaryForget_isPullback_iff (r : ℕ) (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     IsPullbackSquare (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor r)) ↔
       IsPullbackSquare (d.square ≫ stableSBoundaryKanInfinityFunctor r ≫
         coherentNerveMap pointedKanForgetEnriched) :=

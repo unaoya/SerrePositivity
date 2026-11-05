@@ -21,8 +21,8 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.LocalizingInvariants.SquareZero
 variable {R : Type u} [CommRing R] (A : Mon (Complex R)) (M : Bimod A A)
 
-lemma mul_assoc : (mul A M ▷ obj A M) ≫ mul A M =
-    (α_ (obj A M) (obj A M) (obj A M)).hom ≫ (obj A M ◁ mul A M) ≫ mul A M := by
+lemma mul_assoc : (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ▷ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M =
+    (α_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
   apply cochainBiprodTensorPairLeft_hom_ext <;> apply biprodTensorRight_hom_ext
   all_goals
     simp only [← tensorHom_def'_assoc, tensorTriple_mul_left, tensorTriple_mul_right,
@@ -34,10 +34,10 @@ lemma mul_assoc : (mul A M ▷ obj A M) ≫ mul A M =
 
 /-- 分裂平方零拡大の実非可換 dg 代数。 -/
 def algebra : Mon (Complex R) where
-  X := obj A M
+  X := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M
   mon := {
-    one := one A M
-    mul := mul A M
+    one := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M
+    mul := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M
     one_mul := one_mul A M
     mul_one := mul_one A M
     mul_assoc := mul_assoc A M }

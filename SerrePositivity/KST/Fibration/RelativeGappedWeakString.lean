@@ -16,7 +16,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の相対族を交換した各 Ar 頂点は、実際の W 列を表す。 -/
-lemma relativeGappedWeakString_vertex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma relativeGappedWeakString_vertex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n m : ℕ} (F : (Δ[m] : SSet.{u}) ⟶ (relativeSConstruction q.hom n : SSet.{u}))
     (a : (arNerve n) _⦋0⦌) :
     weakStringPredicate q ⦋m⦌
@@ -33,7 +33,7 @@ lemma relativeGappedWeakString_vertex {B C : StableCategory.{u}} (q : ExactMap B
   exact (SSet.yonedaEquiv F).property a
 
 /-- 元の相対 S_n 族を、同じ全 W 列図式圏に値を持つ Ar 図式に交換する。 -/
-def relativeGappedWeakStringDiagram {B C : StableCategory.{u}} (q : ExactMap B C)
+def relativeGappedWeakStringDiagram {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n m : ℕ} (F : (Δ[m] : SSet.{u}) ⟶ (relativeSConstruction q.hom n : SSet.{u})) :
     arNerve n ⟶ weakStringCategory q ⦋m⦌ :=
   fullSubcomplexLift (weakStringPredicate q ⦋m⦌)
@@ -42,7 +42,7 @@ def relativeGappedWeakStringDiagram {B C : StableCategory.{u}} (q : ExactMap B C
     (relativeGappedWeakString_vertex q F)
 
 /-- 逆向きの交換を元の全関手圏へ含めると、同じ内部 Hom の交換を回収する。 -/
-lemma relativeGappedWeakStringDiagram_ι {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma relativeGappedWeakStringDiagram_ι {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n m : ℕ} (F : (Δ[m] : SSet.{u}) ⟶ (relativeSConstruction q.hom n : SSet.{u})) :
     relativeGappedWeakStringDiagram q F ≫
       (fullSubcomplexOnVertices _ (weakStringPredicate q ⦋m⦌)).ι =
@@ -50,7 +50,7 @@ lemma relativeGappedWeakStringDiagram_ι {B C : StableCategory.{u}} (q : ExactMa
           (F ≫ (relativeSConstruction q.hom n).ι ≫ (gappedSubcomplex n B.obj).ι) := rfl
 
 /-- 逆向きに交換した元の Ar 図式は、全零対角と実押し出しを持つ。 -/
-lemma relativeGappedWeakStringDiagram_isGapped {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma relativeGappedWeakStringDiagram_isGapped {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n m : ℕ} (F : (Δ[m] : SSet.{u}) ⟶ (relativeSConstruction q.hom n : SSet.{u})) :
     IsGapped (relativeGappedWeakStringDiagram q F) := by
   apply IsGapped.of_fullSubcomplex (weakStringPredicate q ⦋m⦌)
@@ -61,7 +61,7 @@ lemma relativeGappedWeakStringDiagram_isGapped {B C : StableCategory.{u}} (q : E
   exact gappedDiagram_isGapped (F.app (Opposite.op ⦋0⦌) k).val
 
 /-- 元の相対族を元の S_n(W 列) の頂点へ戻す、選択を加えない逆向きの写像。 -/
-def relativeGappedWeakStringVertex {B C : StableCategory.{u}} (q : ExactMap B C)
+def relativeGappedWeakStringVertex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n m : ℕ} (F : (Δ[m] : SSet.{u}) ⟶ (relativeSConstruction q.hom n : SSet.{u})) :
     (sConstruction n (weakStringCategory q ⦋m⦌)) _⦋0⦌ :=
   gappedObjectVertex (relativeGappedWeakStringDiagram q F)

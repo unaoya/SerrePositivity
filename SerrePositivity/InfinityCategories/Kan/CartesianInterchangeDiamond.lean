@@ -24,51 +24,51 @@ variable {K L M : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
 
 /-- 第一因子を先に動かす経路の元の全下辺。 -/
 def cartesianInterchangeFirstLower (e : K.Edge x₀ x₁)
-    (_f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (cartesianEdgePair e (SSet.Edge.id y₀)).map p
+    (_f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (SSet.Edge.id y₀)).map p
 
 /-- 第一因子を先に動かす経路の元の全上辺。 -/
 def cartesianInterchangeFirstUpper (_e : K.Edge x₀ x₁)
-    (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (cartesianEdgePair (SSet.Edge.id x₁) f).map p
+    (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (SSet.Edge.id x₁) f).map p
 
 /-- 第二因子を先に動かす経路の元の全下辺。 -/
 def cartesianInterchangeSecondLower (_e : K.Edge x₀ x₁)
-    (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (cartesianEdgePair (SSet.Edge.id x₀) f).map p
+    (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (SSet.Edge.id x₀) f).map p
 
 /-- 第二因子を先に動かす経路の元の全上辺。 -/
 def cartesianInterchangeSecondUpper (e : K.Edge x₀ x₁)
-    (_f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (cartesianEdgePair e (SSet.Edge.id y₁)).map p
+    (_f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M) := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (SSet.Edge.id y₁)).map p
 
 /-- 元の二辺を二順序で辿り、同じ全対角辺へ至る実交換三角形対。 -/
-def cartesianInterchangeDiamond : CompositionDiamond
-    (cartesianInterchangeFirstLower e f p) (cartesianInterchangeFirstUpper e f p)
-    (cartesianInterchangeSecondLower e f p) (cartesianInterchangeSecondUpper e f p) where
-  diagonal := (cartesianEdgePair e f).map p
-  first := (cartesianEdgeLowerTriangle e f).map p
-  second := (cartesianEdgeUpperTriangle e f).map p
+def cartesianInterchangeDiamond : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower e f p) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper e f p)
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower e f p) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper e f p) where
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f).map p
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle e f).map p
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle e f).map p
 
 /-- 第一全二単体は、元の二辺の同じ退化三角形の積の像そのもの。 -/
 lemma cartesianInterchangeDiamond_first :
-    (cartesianInterchangeDiamond e f p).first.simplex =
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond e f p).first.simplex =
       p.app (Opposite.op ⦋2⦌) (K.σ 1 e.edge, L.σ 0 f.edge) := rfl
 
 /-- 第二全二単体も、元の同じ二辺の退化三角形の積の像そのもの。 -/
 lemma cartesianInterchangeDiamond_second :
-    (cartesianInterchangeDiamond e f p).second.simplex =
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond e f p).second.simplex =
       p.app (Opposite.op ⦋2⦌) (K.σ 0 e.edge, L.σ 1 f.edge) := rfl
 
 /-- 共通対角辺も、元の両全辺の同時合成の像そのもの。 -/
 lemma cartesianInterchangeDiamond_diagonal :
-    (cartesianInterchangeDiamond e f p).diagonal.edge =
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond e f p).diagonal.edge =
       p.app (Opposite.op ⦋1⦌) (e.edge, f.edge) := rfl
 
 /-- 同じ元の二実三角形から、両経路の同じ合成を回収する。 -/
 lemma cartesianInterchangeDiamond_comp :
-    SSet.HomotopyCategory.homMk (cartesianInterchangeFirstLower e f p) ≫
-        SSet.HomotopyCategory.homMk (cartesianInterchangeFirstUpper e f p) =
-      SSet.HomotopyCategory.homMk (cartesianInterchangeSecondLower e f p) ≫
-        SSet.HomotopyCategory.homMk (cartesianInterchangeSecondUpper e f p) :=
-  (SSet.HomotopyCategory.homMk_comp_homMk (cartesianInterchangeDiamond e f p).first).trans
-    (SSet.HomotopyCategory.homMk_comp_homMk (cartesianInterchangeDiamond e f p).second).symm
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower e f p) ≫
+        SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper e f p) =
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower e f p) ≫
+        SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper e f p) :=
+  (SSet.HomotopyCategory.homMk_comp_homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond e f p).first).trans
+    (SSet.HomotopyCategory.homMk_comp_homMk (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond e f p).second).symm
 
 end SerrePositivity.InfinityCategories.Kan
 

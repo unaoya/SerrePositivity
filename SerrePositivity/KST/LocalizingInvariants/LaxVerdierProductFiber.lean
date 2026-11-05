@@ -22,10 +22,10 @@ local instance productFiberSimplicialCategory : SimplicialCategory OmegaSpectrum
   OmegaSpectrum.simplicialCategory
 local instance productFiberNerveQuasicategory : Quasicategory (SimplicialNerve OmegaSpectrum.{u}) :=
   sp_quasicategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma exists_laxQuotientProductFiber :
     ∃ s : FiberSquare (X := Sp.{u})
@@ -37,7 +37,7 @@ lemma exists_laxQuotientProductFiber :
           (hΦ.laxQuotientProductArrowIso p q i r h).edge.edge := by
   let g : (Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
     SSet.yonedaEquiv.symm (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).edge
-  obtain ⟨s, l, hi, hl⟩ := exists_fiberSquare_right_transport (X := Sp.{u})
+  obtain ⟨s, l, hi, hl⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exists_fiberSquare_right_transport (X := Sp.{u})
     (hΦ.laxQuotientFiberTriangle p q i r h) (hΦ.laxQuotientFiberTriangle_isFiber p q i r h)
     g (hΦ.laxQuotientProductArrowIso p q i r h)
   let s' : FiberSquare (X := Sp.{u})

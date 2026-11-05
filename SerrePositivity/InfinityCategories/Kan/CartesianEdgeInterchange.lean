@@ -35,8 +35,8 @@ def cartesianEdgeCompStruct {K L : SSet.{u}}
     {e₀₁ : K.Edge x₀ x₁} {e₁₂ : K.Edge x₁ x₂} {e₀₂ : K.Edge x₀ x₂}
     {f₀₁ : L.Edge y₀ y₁} {f₁₂ : L.Edge y₁ y₂} {f₀₂ : L.Edge y₀ y₂}
     (h : SSet.Edge.CompStruct e₀₁ e₁₂ e₀₂) (k : SSet.Edge.CompStruct f₀₁ f₁₂ f₀₂) :
-    SSet.Edge.CompStruct (cartesianEdgePair e₀₁ f₀₁) (cartesianEdgePair e₁₂ f₁₂)
-      (cartesianEdgePair e₀₂ f₀₂) where
+    SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e₀₁ f₀₁) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e₁₂ f₁₂)
+      (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e₀₂ f₀₂) where
   simplex := (h.simplex, k.simplex)
   d₂ := congrArg₂ Prod.mk h.d₂ k.d₂
   d₀ := congrArg₂ Prod.mk h.d₀ k.d₀
@@ -45,26 +45,26 @@ def cartesianEdgeCompStruct {K L : SSet.{u}}
 /-- 第一因子の後で第二因子を動かす三角形は同じ直積対角辺を回収する。 -/
 def cartesianEdgeLowerTriangle {K L : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
     (e : K.Edge x₀ x₁) (f : L.Edge y₀ y₁) :
-    SSet.Edge.CompStruct (cartesianEdgePair e (.id y₀))
-      (cartesianEdgePair (.id x₁) f) (cartesianEdgePair e f) :=
-  cartesianEdgeCompStruct (SSet.Edge.CompStruct.compId e) (SSet.Edge.CompStruct.idComp f)
+    SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id y₀))
+      (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id x₁) f) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct (SSet.Edge.CompStruct.compId e) (SSet.Edge.CompStruct.idComp f)
 
 /-- 第二因子の後で第一因子を動かす三角形も同じ直積対角辺を回収する。 -/
 def cartesianEdgeUpperTriangle {K L : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
     (e : K.Edge x₀ x₁) (f : L.Edge y₀ y₁) :
-    SSet.Edge.CompStruct (cartesianEdgePair (.id x₀) f)
-      (cartesianEdgePair e (.id y₁)) (cartesianEdgePair e f) :=
-  cartesianEdgeCompStruct (SSet.Edge.CompStruct.idComp e) (SSet.Edge.CompStruct.compId f)
+    SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id x₀) f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id y₁)) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct (SSet.Edge.CompStruct.idComp e) (SSet.Edge.CompStruct.compId f)
 
 /-- 任意の写像で直積を評価した二つの辿る順序はホモトピー圏で一致する。 -/
 lemma cartesianEdgeInterchange {K L M : SSet.{u}} (F : K ⊗ L ⟶ M)
     {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌} (e : K.Edge x₀ x₁) (f : L.Edge y₀ y₁) :
-    SSet.HomotopyCategory.homMk ((cartesianEdgePair e (.id y₀)).map F) ≫
-        SSet.HomotopyCategory.homMk ((cartesianEdgePair (.id x₁) f).map F) =
-      SSet.HomotopyCategory.homMk ((cartesianEdgePair (.id x₀) f).map F) ≫
-        SSet.HomotopyCategory.homMk ((cartesianEdgePair e (.id y₁)).map F) :=
-  (SSet.HomotopyCategory.homMk_comp_homMk ((cartesianEdgeLowerTriangle e f).map F)).trans
-    (SSet.HomotopyCategory.homMk_comp_homMk ((cartesianEdgeUpperTriangle e f).map F)).symm
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id y₀)).map F) ≫
+        SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id x₁) f).map F) =
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id x₀) f).map F) ≫
+        SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id y₁)).map F) :=
+  (SSet.HomotopyCategory.homMk_comp_homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle e f).map F)).trans
+    (SSet.HomotopyCategory.homMk_comp_homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle e f).map F)).symm
 
 /-- 左因子を固定した指定辺を、左右のパラメーター包含と二段の評価へ送る。 -/
 def cartesianLeftParameterEdge {K A B L M N : SSet.{u}}
@@ -73,7 +73,7 @@ def cartesianLeftParameterEdge {K A B L M N : SSet.{u}}
     (e : L.Edge (s.app _ v.2) (t.app _ w)) :
     N.Edge ((((𝟙 K ⊗ₘ s) ≫ F) ≫ G).app _ v)
       (((𝟙 K ⊗ₘ t) ≫ F ≫ G).app _ (v.1, w)) := by
-  refine ((cartesianEdgePair (.id v.1) e).map (F ≫ G)).ofEq ?_ ?_
+  refine ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id v.1) e).map (F ≫ G)).ofEq ?_ ?_
   · rfl
   · rfl
 
@@ -84,7 +84,7 @@ def cartesianRightParameterEdge {K A B L M N : SSet.{u}}
     (e : L.Edge (s.app _ v) (t.app _ w.1)) :
     N.Edge (((s ⊗ₘ 𝟙 K) ≫ F ≫ G).app _ (v, w.2))
       ((((t ⊗ₘ 𝟙 K) ≫ F) ≫ G).app _ w) := by
-  refine ((cartesianEdgePair e (.id w.2)).map (F ≫ G)).ofEq ?_ ?_
+  refine ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id w.2)).map (F ≫ G)).ofEq ?_ ?_
   · rfl
   · rfl
 
@@ -94,10 +94,10 @@ lemma cartesianLeftParameterEdge_evaluation {K A B L M N Q : SSet.{u}}
     (H : N ⟶ Q) (T : K ⊗ L ⟶ Q) (h : F ≫ (G ≫ H) = T)
     (v : (K ⊗ A) _⦋0⦌) (w : B _⦋0⦌)
     (e : L.Edge (s.app _ v.2) (t.app _ w)) :
-    ((cartesianLeftParameterEdge s t F G v w e).map H).edge =
-      ((cartesianEdgePair (.id v.1) e).map T).edge :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge s t F G v w e).map H).edge =
+      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id v.1) e).map T).edge :=
   ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋1⦌))
-    (cartesianEdgePair (.id v.1) e).edge
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id v.1) e).edge
 
 /-- 右の指定辺の評価は、合成された評価族の同じ辺の評価。 -/
 lemma cartesianRightParameterEdge_evaluation {K A B L M N Q : SSet.{u}}
@@ -105,10 +105,10 @@ lemma cartesianRightParameterEdge_evaluation {K A B L M N Q : SSet.{u}}
     (H : N ⟶ Q) (T : L ⊗ K ⟶ Q) (h : F ≫ (G ≫ H) = T)
     (v : A _⦋0⦌) (w : (B ⊗ K) _⦋0⦌)
     (e : L.Edge (s.app _ v) (t.app _ w.1)) :
-    ((cartesianRightParameterEdge s t F G v w e).map H).edge =
-      ((cartesianEdgePair e (.id w.2)).map T).edge :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge s t F G v w e).map H).edge =
+      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id w.2)).map T).edge :=
   ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋1⦌))
-    (cartesianEdgePair e (.id w.2)).edge
+    (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e (.id w.2)).edge
 
 end SerrePositivity.InfinityCategories.Kan
 

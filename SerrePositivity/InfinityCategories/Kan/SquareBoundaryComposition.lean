@@ -28,23 +28,23 @@ abbrev corner (i j : Fin 2) : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌ :=
   (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 
 /-- 上側の三角形の元の左辺。 -/
-def left : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 0) (corner 0 1) :=
-  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
+def left : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 1) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
 
 /-- 上側の三角形の元の上辺。 -/
-def top : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 1) (corner 1 1) :=
-  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
+def top : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 1) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
 
 /-- 下側の三角形の元の下辺。 -/
-def bottom : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 0) (corner 1 0) :=
-  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
+def bottom : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 0) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
 
 /-- 下側の三角形の元の右辺。 -/
-def right : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 1 0) (corner 1 1) :=
-  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
+def right : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 0) (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
 
 /-- 元の left 辺の Yoneda 射は、同じ座標辺の包含。 -/
-lemma left_yoneda : SSet.yonedaEquiv.symm left.edge =
+lemma left_yoneda : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left.edge =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
@@ -54,7 +54,7 @@ lemma left_yoneda : SSet.yonedaEquiv.symm left.edge =
     fin_cases i <;> rfl
 
 /-- 元の right 辺の Yoneda 射は、同じ座標辺の包含。 -/
-lemma right_yoneda : SSet.yonedaEquiv.symm right.edge =
+lemma right_yoneda : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right.edge =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
@@ -64,7 +64,7 @@ lemma right_yoneda : SSet.yonedaEquiv.symm right.edge =
     fin_cases i <;> rfl
 
 /-- 元の bottom 辺の Yoneda 射は、同じ座標辺の包含。 -/
-lemma bottom_yoneda : SSet.yonedaEquiv.symm bottom.edge =
+lemma bottom_yoneda : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom.edge =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
@@ -74,7 +74,7 @@ lemma bottom_yoneda : SSet.yonedaEquiv.symm bottom.edge =
     fin_cases i <;> rfl
 
 /-- 元の top 辺の Yoneda 射は、同じ座標辺の包含。 -/
-lemma top_yoneda : SSet.yonedaEquiv.symm top.edge =
+lemma top_yoneda : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top.edge =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
@@ -85,10 +85,10 @@ lemma top_yoneda : SSet.yonedaEquiv.symm top.edge =
 
 /-- 二つの三角形の対角辺は、同じ元の一単体。 -/
 lemma diagonal_edge :
-    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
-      (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) =
-    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq
-      (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) := by
+    (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
+      (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0 from rfl) (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1 from rfl)) =
+    (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq
+      (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0 from rfl) (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1 from rfl)) := by
   apply SSet.Edge.ext
   apply Prod.ext
   all_goals
@@ -98,20 +98,20 @@ lemma diagonal_edge :
 
 /-- 元の二つの三角形により、下辺・右辺の合成は左辺・上辺の合成に等しい。 -/
 lemma composition {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    SSet.HomotopyCategory.homMk (bottom.map q) ≫
-      SSet.HomotopyCategory.homMk (right.map q) =
-    SSet.HomotopyCategory.homMk (left.map q) ≫
-      SSet.HomotopyCategory.homMk (top.map q) := by
-  have hu : SSet.Edge.CompStruct left top
-      (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
-        (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) :=
-    ((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom.map q) ≫
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right.map q) =
+    SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left.map q) ≫
+      SSet.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top.map q) := by
+  have hu : SSet.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top
+      (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
+        (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0 from rfl) (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1 from rfl)) :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
       _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl rfl
-  have hl : SSet.Edge.CompStruct bottom right
-      (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.upper).ofEq
-        (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) :=
-    ((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
-      SquareTriangles.lower).ofEq rfl rfl (congrArg SSet.Edge.edge diagonal_edge.symm)
+  have hl : SSet.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right
+      (((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
+        (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 0 0 from rfl) (show _ = _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner 1 1 from rfl)) :=
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl (congrArg SSet.Edge.edge _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.diagonal_edge.symm)
   rw [SSet.HomotopyCategory.homMk_comp_homMk (hl.map q),
     SSet.HomotopyCategory.homMk_comp_homMk (hu.map q)]
 

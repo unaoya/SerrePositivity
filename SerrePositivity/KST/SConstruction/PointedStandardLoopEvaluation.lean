@@ -28,9 +28,9 @@ def pointedStandardLoopEvaluation (X : PointedSSetObject.{u}) :
 
 /-- 元の全 loop・tensor Hom 作用は、同じ評価への前後合成と可換。 -/
 lemma pointedStandardLoopEvaluation_closed (X Y : PointedSimplicialSet.{u}) :
-    (pointedLoopHom X Y ≫ TensorMapping.map PointedSimplicialSet.circle
-        (loopSpace X) (loopSpace Y)) ≫
-        (ihom (suspension (loopSpace X))).map
+    (pointedLoopHom X Y ≫ _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map PointedSimplicialSet.circle
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)) ≫
+        (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X))).map
           ((ihom.ev PointedSimplicialSet.circle.{u}).app Y) =
       (MonoidalClosed.pre ((ihom.ev PointedSimplicialSet.circle.{u}).app X)).app Y := by
   have h := pointedLoopHom_uncurry X Y
@@ -46,7 +46,7 @@ lemma pointedStandardLoopEvaluation_whisker (X Y : PointedSSetObject.{u}) :
   rw [pointedSSetObject_whiskerLeft, pointedSSetObject_whiskerRight]
   have h := congrArg Under.Hom.right (pointedStandardLoopEvaluation_closed X.obj Y.obj)
   exact h.trans (congrArg Under.Hom.right
-    (Spectra.PointedMapping.prePointed_eq_closedPre
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre
       ((ihom.ev PointedSimplicialSet.circle.{u}).app X.obj) Y.obj)).symm
 
 end SerrePositivity.KST.SConstruction

@@ -48,7 +48,7 @@ lemma terminalRefinementSquare_evaluate {X : SSet.{u}} {n : ℕ}
   terminalFlip_evaluate _ k
 
 /-- 元の安定圏の有限極限から、転置した全図式の四角形の普遍性を証明する。 -/
-lemma terminalRefinementSquare_isPullback {B : StableCategory.{u}} {n : ℕ}
+lemma terminalRefinementSquare_isPullback {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj) :
     IsPullbackSquare (terminalRefinementSquare F) := by
   have : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj
@@ -63,7 +63,7 @@ variable {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
   (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
     D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
   (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X)
-  (hF : F ≫ pullbackProjection X = simplexTerminalCospanFamily D s hs)
+  (hF : F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs)
 
 include hF
 
@@ -82,7 +82,7 @@ lemma terminalRefinementSquare_right :
 /-- 全図式の上辺は元の図式の指定終端辺族を厳密に回収する。 -/
 lemma terminalRefinementSquare_top :
     squareTopEdge ≫ terminalRefinementSquare F =
-      internalHomFlipHomEquiv Δ[n] Δ[1] X (simplexTerminalArrowFamily D) := by
+      internalHomFlipHomEquiv Δ[n] Δ[1] X (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D) := by
   unfold terminalRefinementSquare
   rw [← internalHomFlipHomEquiv_pre_app]
   apply congrArg (internalHomFlipHomEquiv Δ[n] Δ[1] X)
@@ -110,12 +110,12 @@ end
 
 /-- 元の全図式を同時に精密化し、共有終端の四角形と元の分母条件を保つ。
 終端は指定辺の源に厳密に戻るので、次の辺との貼合せに使える。 -/
-lemma exists_verdierSimplexTerminalRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexTerminalRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (s : (Δ[1] : SSet.{u}) ⟶ B.obj)
     (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
-    (hW : SSet.yonedaEquiv s ∈ weakEquivalences i) :
+    (hW : SSet.yonedaEquiv s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj,
       IsPullbackSquare Q ∧ squareVertex Q 0 1 = functorVertex D ∧
         Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =

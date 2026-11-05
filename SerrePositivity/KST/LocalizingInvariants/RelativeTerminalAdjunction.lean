@@ -28,18 +28,18 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
 def adjunctionOfRelativeTerminalSection (h : G ≫ F = 𝟙 Y)
     (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : QCatAdjunction F G :=
-  adjunctionOfOpposite (adjunctionOfRelativeInitialSection (oppositeSectionEquality h)
-    (oppositeSection_initialBoundary hG))
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite (adjunctionOfRelativeInitialSection (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSectionEquality h)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSection_initialBoundary hG))
 
 lemma relativeTerminalSection_counitHom_isIso (h : G ≫ F = 𝟙 Y)
     (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) :
     IsIso (adjunctionOfRelativeTerminalSection h hG).counitHom := by
-  let b := adjunctionOfRelativeInitialSection (oppositeSectionEquality h)
-    (oppositeSection_initialBoundary hG)
+  let b := adjunctionOfRelativeInitialSection (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSectionEquality h)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSection_initialBoundary hG)
   have : IsIso b.unitHom := by
     rw [adjunctionOfRelativeInitialSection_unit]
     infer_instance
-  change IsIso (adjunctionOfOpposite b).counitHom
+  change IsIso (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite b).counitHom
   rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite_counit]
   infer_instance
 
@@ -47,6 +47,6 @@ lemma relativeTerminalSection_counit_isIso (h : G ≫ F = 𝟙 Y)
     (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) :
     IsIso (adjunctionOfRelativeTerminalSection h hG).counit := by
   have := relativeTerminalSection_counitHom_isIso h hG
-  exact counit_isIso_of_counitHom _
+  exact _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counit_isIso_of_counitHom _
 
 end SerrePositivity.KST.LocalizingInvariants

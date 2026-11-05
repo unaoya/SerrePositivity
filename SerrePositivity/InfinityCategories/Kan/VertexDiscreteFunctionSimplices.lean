@@ -47,13 +47,13 @@ def vertexDiscreteEvaluate {A X : SSet.{u}} (a : A _⦋0⦌) :
 /-- 座標から作った単体の評価は元の座標。 -/
 lemma vertexDiscreteFunctionSimplex_evaluate {A X : SSet.{u}} {n : ℕ}
     (s : A _⦋0⦌ → X _⦋n⦌) (a : A _⦋0⦌) :
-    (vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) (vertexDiscreteFunctionSimplex s) = s a :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex s) = s a :=
   X.map_id_apply (Opposite.op ⦋n⦌) (s a)
 
 /-- 任意の内部 Hom 単体は、全ての離散頂点での評価から厳密に復元できる。 -/
 lemma vertexDiscreteFunctionSimplex_reconstruct {A X : SSet.{u}} {n : ℕ}
     (s : ((ihom (vertexDiscrete A)).obj X) _⦋n⦌) :
-    vertexDiscreteFunctionSimplex (fun a => (vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) s) = s := by
+    _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (fun a => (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) s) = s := by
   apply CategoryTheory.Functor.functorHom_ext
   intro d α
   apply ConcreteCategory.hom_ext
@@ -67,8 +67,8 @@ lemma vertexDiscreteFunctionSimplex_reconstruct {A X : SSet.{u}} {n : ℕ}
 /-- 座標表示は全ての面・退化を保持する。 -/
 lemma vertexDiscreteFunctionSimplex_map {A X : SSet.{u}} {m n : ℕ}
     (α : ⦋m⦌ ⟶ ⦋n⦌) (s : A _⦋0⦌ → X _⦋n⦌) :
-    ((ihom (vertexDiscrete A)).obj X).map α.op (vertexDiscreteFunctionSimplex s) =
-      vertexDiscreteFunctionSimplex (fun a => X.map α.op (s a)) := by
+    ((ihom (vertexDiscrete A)).obj X).map α.op (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex s) =
+      _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (fun a => X.map α.op (s a)) := by
   apply CategoryTheory.Functor.functorHom_ext
   intro d β
   apply ConcreteCategory.hom_ext
@@ -78,7 +78,7 @@ lemma vertexDiscreteFunctionSimplex_map {A X : SSet.{u}} {m n : ℕ}
 /-- 離散図式の頂点表示の評価は元の図式の頂点の像。 -/
 lemma vertexDiscreteEvaluate_functorVertex {A X : SSet.{u}} (F : vertexDiscrete A ⟶ X)
     (a : A _⦋0⦌) :
-    (vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) (functorVertex F) = F.app (Opposite.op ⦋0⦌) a := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) (functorVertex F) = F.app (Opposite.op ⦋0⦌) a := rfl
 
 end SerrePositivity.InfinityCategories.Kan
 

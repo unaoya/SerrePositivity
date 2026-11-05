@@ -37,10 +37,10 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem selfPullbackConnecting_map_point_eq {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     (x y : E _⦋0⦌) (h : x = y) (b : B _⦋0⦌) (g : B ⟶ B)
-    (hg : g.app _ b = p.app _ x) (a : KanHomotopyGroup B 0 b) :
-    selfPullbackConnecting p x (KanHomotopyGroup.map g hg a) =
-      selfPullbackConnecting p y
-        (KanHomotopyGroup.map g (hg.trans (congrArg (p.app _) h)) a) := by
+    (hg : g.app _ b = p.app _ x) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 b) :
+    _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p x (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g hg a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p y
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g (hg.trans (congrArg (p.app _) h)) a) := by
   subst y
   rfl
 
@@ -51,14 +51,14 @@ theorem selfPullbackConnecting_map_point_eq {E B : SSet.{u}}
 theorem selfPullbackConnecting_natural_fixed {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     (f : E ⟶ E) (g : B ⟶ B) (comm : p ≫ g = f ≫ p)
-    (e : E _⦋0⦌) (hf : f.app _ e = e) (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    mapπ₀ (selfPullbackMap p p f g comm) (selfPullbackConnecting p e a) =
-      selfPullbackConnecting p e
-        (KanHomotopyGroup.map g
-          ((FibrationSquare.base_eq p p f g comm e).trans (congrArg (p.app _) hf)) a) := by
-  have h := selfPullbackConnecting_natural p p f g comm e a
-  exact h.trans (selfPullbackConnecting_map_point_eq p (f.app _ e) e hf
-    (p.app _ e) g (FibrationSquare.base_eq p p f g comm e) a)
+    (e : E _⦋0⦌) (hf : f.app _ e = e) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap p p f g comm) (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g
+          ((_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p f g comm e).trans (congrArg (p.app _) hf)) a) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_natural p p f g comm e a
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_map_point_eq p (f.app _ e) e hf
+    (p.app _ e) g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p f g comm e) a)
 
 /-- 概要：底の基本群に逆元として作用する射は、連結な自己 pullback の成分で二因子の交換と一致。
 方針：全成分を連結射で表し、その自然性と交換の逆元の式を使う。
@@ -68,14 +68,14 @@ theorem selfPullbackMap_eq_swap_on_components {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     [Subsingleton (π₀ E)] (f : E ⟶ E) (g : B ⟶ B) (comm : p ≫ g = f ≫ p)
     (e : E _⦋0⦌) (hf : f.app _ e = e)
-    (hg : ∀ a : KanHomotopyGroup B 0 (p.app _ e),
-      KanHomotopyGroup.map g
-        ((FibrationSquare.base_eq p p f g comm e).trans (congrArg (p.app _) hf)) a = a⁻¹) :
-    mapπ₀ (selfPullbackMap p p f g comm) = mapπ₀ (selfPullbackSwap p) := by
+    (hg : ∀ a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e),
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g
+        ((_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p f g comm e).trans (congrArg (p.app _) hf)) a = a⁻¹) :
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap p p f g comm) = mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap p) := by
   funext a
-  obtain ⟨b, rfl⟩ := selfPullbackConnecting_surjective p e a
-  rw [selfPullbackConnecting_natural_fixed p f g comm e hf, hg,
-    selfPullbackConnecting_swap]
+  obtain ⟨b, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_surjective p e a
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_natural_fixed p f g comm e hf, hg,
+    _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_swap]
 
 end
 

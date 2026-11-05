@@ -12,17 +12,17 @@ namespace SerrePositivity.KST.SConstruction
 /-- 元の入力削除と定数面の二段標準表示。 -/
 structure CubeDeletionFaceNormal (n m : ℕ) where
   middle : ℕ
-  deletion : CubeDeletionNormal n middle
+  deletion : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n middle
   face : CubeFaceNormal middle m
 
 /-- 二段標準表示の元の全頂点での評価。 -/
 def cubeDeletionFaceNormalVertex {n m : ℕ} (r : CubeDeletionFaceNormal n m) :
-    CubeVertex n → CubeVertex m :=
-  cubeFaceNormalVertex r.face ∘ cubeDeletionNormalVertex r.deletion
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m :=
+  cubeFaceNormalVertex r.face ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex r.deletion
 
 /-- 元の恒等射の二段標準表示。 -/
 def cubeDeletionFaceNormalId (n : ℕ) : CubeDeletionFaceNormal n n :=
-  ⟨n, cubeDeletionNormalId n, cubeFaceNormalId n⟩
+  ⟨n, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n, cubeFaceNormalId n⟩
 
 /-- 元の恒等射の二段表示は、全頂点で恒等。 -/
 lemma cubeDeletionFaceNormalId_vertex (n : ℕ) :
@@ -40,27 +40,27 @@ def cubeDeletionFaceNormalPoint {n m : ℕ} (r : CubeDeletionFaceNormal n m)
 lemma cubeDeletionFaceNormalPoint_vertex {n m : ℕ} (r : CubeDeletionFaceNormal n m)
     (b : Bool) (i : Fin (m + 1)) :
     cubeDeletionFaceNormalVertex (cubeDeletionFaceNormalPoint r b i) =
-      cubeVertexFace b m i ∘ cubeDeletionFaceNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b m i ∘ cubeDeletionFaceNormalVertex r := by
   dsimp only [cubeDeletionFaceNormalVertex, cubeDeletionFaceNormalPoint]
   rw [cubeFaceNormalInsert_vertex]
   rfl
 
 /-- 高々一つの入力削除を、元の削除の標準表示へ吸収する。 -/
-def cubeDeletionFaceNormalAfterResult {n : ℕ} : {a m : ℕ} → CubeDeletionNormal n a →
+def cubeDeletionFaceNormalAfterResult {n : ℕ} : {a m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a →
     CubeFaceDeletionResult a m → CubeDeletionFaceNormal n m
   | _, _, d, .pure f => ⟨_, d, f⟩
-  | _, _, d, .input i f => ⟨_, cubeDeletionNormalErase d i, f⟩
+  | _, _, d, .input i f => ⟨_, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i, f⟩
 
 /-- 入力削除の吸収は、元の全頂点で同じ計算結果との合成を回収する。 -/
-lemma cubeDeletionFaceNormalAfterResult_vertex {n a m : ℕ} (d : CubeDeletionNormal n a)
+lemma cubeDeletionFaceNormalAfterResult_vertex {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
     (r : CubeFaceDeletionResult a m) :
     cubeDeletionFaceNormalVertex (cubeDeletionFaceNormalAfterResult d r) =
-      cubeFaceDeletionResultVertex r ∘ cubeDeletionNormalVertex d := by
+      cubeFaceDeletionResultVertex r ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d := by
   cases r with
   | pure f => rfl
   | input i f =>
     change cubeFaceNormalVertex f ∘
-      cubeDeletionNormalVertex (cubeDeletionNormalErase d i) = _
+      _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase]
     rfl
 
@@ -73,7 +73,7 @@ def cubeDeletionFaceNormalDelete {n m : ℕ} (r : CubeDeletionFaceNormal n (m + 
 lemma cubeDeletionFaceNormalDelete_vertex {n m : ℕ} (r : CubeDeletionFaceNormal n (m + 1))
     (i : Fin (m + 1)) :
     cubeDeletionFaceNormalVertex (cubeDeletionFaceNormalDelete r i) =
-      cubeVertexDegeneracy m i ∘ cubeDeletionFaceNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i ∘ cubeDeletionFaceNormalVertex r := by
   dsimp only [cubeDeletionFaceNormalDelete]
   rw [cubeDeletionFaceNormalAfterResult_vertex, cubeFaceNormalDelete_vertex]
   rfl

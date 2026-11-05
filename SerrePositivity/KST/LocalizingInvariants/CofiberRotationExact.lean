@@ -24,18 +24,18 @@ namespace SerrePositivity.KST.LocalizingInvariants
 namespace CofiberDiagrams
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
-instance space_isStable : IsStable (space X) := isStable_of_trivialKanFibration (bottom X)
+instance space_isStable : IsStable (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) := isStable_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)
 
 lemma lift_isExact {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
     [IsExactFunctor a] : IsExactFunctor (lift X a) := by
-  have : IsExactFunctor (lift X a ≫ bottom X) := (lift_bottom X a).symm ▸ inferInstance
-  exact exact_of_postcomp_trivialKanFibration (bottom X) (lift X a)
+  have : IsExactFunctor (lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) := (lift_bottom X a).symm ▸ inferInstance
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.exact_of_postcomp_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) (lift X a)
 
 lemma lift_right_target {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    (lift X a ≫ right X) ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      CofiberFamily.cofiber X a := by
+    (lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a := by
   simp only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, Category.assoc, stable_pre_evaluateFunctorAt]
-  change (lift X a ≫ inclusion X) ≫ evaluateFunctorAt _ = _
+  change (lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X) ≫ evaluateFunctorAt _ = _
   rw [lift_inclusion]
   rfl
 
@@ -45,9 +45,9 @@ namespace CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 lemma cofiber_isExact {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-    [IsExactFunctor a] : IsExactFunctor (cofiber X a) := by
+    [IsExactFunctor a] : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) := by
   have := CofiberDiagrams.lift_isExact X a
-  have h : IsExactFunctor ((CofiberDiagrams.lift X a ≫ CofiberDiagrams.right X) ≫
+  have h : IsExactFunctor ((CofiberDiagrams.lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := inferInstance
   rw [CofiberDiagrams.lift_right_target] at h
   exact h

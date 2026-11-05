@@ -13,11 +13,11 @@ universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
-open SerrePositivity.KST.SConstruction.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 全高次の定値単体への作用は、同じ零単体の像の退化である。 -/
-lemma map_constantSimplex {T : NecklaceShape} {K : SSet.{u}}
+lemma map_constantSimplex {T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} {K : SSet.{u}}
     (f : T.carrier.{u} ⟶ K) (v : T.Vertex) (n : ℕ) :
     f.app _ (T.constantSimplex v n) =
       K.map (show ⦋n⦌ ⟶ ⦋0⦌ from
@@ -29,7 +29,7 @@ lemma map_constantSimplex {T : NecklaceShape} {K : SSet.{u}}
     (T.constantSimplex v 0)
 
 /-- 一点からの二つの後合成は、元の零単体の像が等しければ全単体で等しい。 -/
-lemma pointMap_comp_eq {T U : NecklaceShape} {K : SSet.{u}}
+lemma pointMap_comp_eq {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} {K : SSet.{u}}
     (v : T.Vertex) (w : U.Vertex) (f : T.carrier.{u} ⟶ K) (g : U.carrier.{u} ⟶ K)
     (h : f.app _ (T.constantSimplex v 0) = g.app _ (U.constantSimplex w 0)) :
     T.pointMap v ≫ f = U.pointMap w ≫ g := by
@@ -39,17 +39,17 @@ lemma pointMap_comp_eq {T U : NecklaceShape} {K : SSet.{u}}
   apply ConcreteCategory.hom_ext
   intro s
   change f.app _ ((T.pointMap v).app _ s) = g.app _ ((U.pointMap w).app _ s)
-  rw [pointMap_app, pointMap_app, map_constantSimplex f v n, map_constantSimplex g w n, h]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_app, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_app, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.map_constantSimplex f v n, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.map_constantSimplex g w n, h]
 
 /-- 任意の元の necklace 写像に関する一点の像の自然性。 -/
-lemma pointMap_naturality {T U : NecklaceShape} (f : T.carrier.{u} ⟶ U.carrier.{u})
+lemma pointMap_naturality {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} (f : T.carrier.{u} ⟶ U.carrier.{u})
     (v : T.Vertex) (w : U.Vertex)
     (h : f.app _ (T.constantSimplex v 0) = U.constantSimplex w 0) :
     T.pointMap v ≫ f = U.pointMap w := by
-  simpa only [Category.comp_id] using pointMap_comp_eq v w f (𝟙 _) h
+  simpa only [Category.comp_id] using _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_comp_eq v w f (𝟙 _) h
 
 /-- 左包含は元の連結の始頂点を回収する。 -/
-lemma wedgeInl_first (T U : NecklaceShape) :
+lemma wedgeInl_first (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     (T.wedgeInl.{u} U).app _ T.firstVertex = (T.wedge U).firstVertex := by
   apply Subtype.ext
   apply stdSimplex.ext
@@ -57,7 +57,7 @@ lemma wedgeInl_first (T U : NecklaceShape) :
   rfl
 
 /-- 右包含は元の連結の終頂点を回収する。 -/
-lemma wedgeInr_last (T U : NecklaceShape) :
+lemma wedgeInr_last (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     (T.wedgeInr.{u} U).app _ U.lastVertex = (T.wedge U).lastVertex := by
   apply Subtype.ext
   apply stdSimplex.ext

@@ -26,7 +26,7 @@ variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌} {n : ℕ}
   (U V : PtSimplex.RelStruct .const t (Fin.last (n + 1)))
   (φ ψ : (Δ[n + 3] : SSet.{u}) ⟶ X)
   (hφ : ∀ j, stdSimplex.δ j ≫ φ = NullHomotopyTransport.triangleFace R A U j)
-  (hψ : ∀ j, stdSimplex.δ j ≫ ψ = NullHomotopyDifference.face U V j)
+  (hψ : ∀ j, stdSimplex.δ j ≫ ψ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face U V j)
 
 /-- 退化した左辺、零の差、元の三角形を置くホーン。 -/
 def adjustmentFace (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
@@ -74,13 +74,13 @@ lemma adjustment_output_face (j : Fin (n + 4)) :
 
 /-- 移送した零ホモトピーとの差の零性は、指定した三辺の三角形の充填を与える。 -/
 theorem exists_triangle_of_zero
-    (he : NullHomotopyDifference.difference (NullHomotopyTransport.transport R A) V = 1) :
+    (he : NullHomotopyDifference.difference (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport R A) V = 1) :
     ∃ θ : (Δ[n + 3] : SSet.{u}) ⟶ X,
       ∀ j, stdSimplex.δ j ≫ θ = NullHomotopyTransport.triangleFace R A V j := by
   obtain ⟨ψ, hψ⟩ := NullHomotopyDifference.exists_zero_filler
-    (NullHomotopyTransport.transport R A) V he
-  let φ := (NullHomotopyTransport.compatible R A).liftOfKanComplex
-  have hφ := NullHomotopyTransport.filler_face R A
+    (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport R A) V he
+  let φ := (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible R A).liftOfKanComplex
+  have hφ := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.filler_face R A
   exact ⟨stdSimplex.δ (Fin.last (n + 4)) ≫
     (adjustmentCompatible R A _ V φ ψ hφ hψ).liftOfKanComplex,
     adjustment_output_face R A _ V φ ψ hφ hψ⟩

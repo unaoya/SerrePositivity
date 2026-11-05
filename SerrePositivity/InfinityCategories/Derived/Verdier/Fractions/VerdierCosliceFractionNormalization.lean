@@ -29,36 +29,36 @@ namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ元の実右分数と、指定 coslice 後辺を保持する全三角形。 -/
-structure VerdierCosliceFractionNormalization {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (_h : IsVerdierSequence i q)
+structure VerdierCosliceFractionNormalization {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (_h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (a : (Δ[0] : SSet.{u}) ⟶ C.obj) {u v : (sliceUnder a) _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj (sliceUnder a)) u v)
     (x y : B.obj _⦋0⦌) where
   nativeSource : B.obj _⦋0⦌
-  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) nativeSource x
-  numerator : Truncated.Edge (X := (truncation 2).obj B.obj) nativeSource y
-  denominator_mem : denominator.edge ∈ weakEquivalences i
+  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource x
+  numerator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource y
+  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   firstBase : Truncated.Edge (X := (truncation 2).obj C.obj)
-    (q.hom.app (Opposite.op ⦋0⦌) nativeSource)
+    (q.hom.app (Opposite.op ⦋0⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource)
     ((sliceUnderProjection a).app (Opposite.op ⦋0⦌) u)
   diagonalBase : Truncated.Edge (X := (truncation 2).obj C.obj)
-    (q.hom.app (Opposite.op ⦋0⦌) nativeSource)
+    (q.hom.app (Opposite.op ⦋0⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource)
     ((sliceUnderProjection a).app (Opposite.op ⦋0⦌) v)
-  firstBase_edge : firstBase.edge = (denominator.map ((truncation 2).map q.hom)).edge
-  diagonalBase_edge : diagonalBase.edge = (numerator.map ((truncation 2).map q.hom)).edge
-  triangle : Truncated.Edge.CompStruct firstBase
-    (e.map ((truncation 2).map (sliceUnderProjection a))) diagonalBase
-  lift : LeftFractionTriangleLift (sliceUnderProjection a) e firstBase diagonalBase triangle
+  firstBase_edge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase.edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.denominator.map ((truncation 2).map q.hom)).edge
+  diagonalBase_edge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase.edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.numerator.map ((truncation 2).map q.hom)).edge
+  triangle : Truncated.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase
+    (e.map ((truncation 2).map (sliceUnderProjection a))) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase
+  lift : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift (sliceUnderProjection a) e _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.triangle
 
 /-- 指定商 coslice 辺から、実右分数と同じ指定二単体の coslice 持ち上げを一括構成する。 -/
-lemma exists_verdierCosliceFractionNormalization {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierCosliceFractionNormalization {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (a : (Δ[0] : SSet.{u}) ⟶ C.obj) {u v : (sliceUnder a) _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj (sliceUnder a)) u v)
     (x y : B.obj _⦋0⦌)
     (hu : (sliceUnderProjection a).app (Opposite.op ⦋0⦌) u = q.hom.app (Opposite.op ⦋0⦌) x)
     (hv : (sliceUnderProjection a).app (Opposite.op ⦋0⦌) v = q.hom.app (Opposite.op ⦋0⦌) y) :
-    Nonempty (VerdierCosliceFractionNormalization h a e x y) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h a e x y) := by
   let π := sliceUnderProjection a
   let ep := e.map ((truncation 2).map π)
   let f : Truncated.Edge (X := (truncation 2).obj C.obj)
@@ -78,17 +78,17 @@ lemma exists_verdierCosliceFractionNormalization {A B C : StableCategory.{u}}
   let t : Truncated.Edge.CompStruct b ep d := ⟨T.simplex, T.d₂, T.d₀, T.d₁⟩
   have hb : IsInvertibleEdge (X := C.obj) b :=
     (isInvertibleEdge_congr (e := b) (f := s.map ((truncation 2).map q.hom)) rfl).mpr
-      ((mem_weakEquivalences_iff_invertible h s).mp hs)
-  obtain ⟨r⟩ := exists_leftFractionTriangleLift π e b d t hb
+      ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h s).mp hs)
+  obtain ⟨r⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.exists_leftFractionTriangleLift π e b d t hb
   exact ⟨⟨z, s, g, hs, b, d, rfl, rfl, t, r⟩⟩
 
 namespace VerdierCosliceFractionNormalization
-open SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {a : (Δ[0] : SSet.{u}) ⟶ C.obj}
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {a : (Δ[0] : SSet.{u}) ⟶ C.obj}
   {u v : (sliceUnder a) _⦋0⦌}
   {e : Truncated.Edge (X := (truncation 2).obj (sliceUnder a)) u v}
-  {x y : B.obj _⦋0⦌} (r : VerdierCosliceFractionNormalization h a e x y)
+  {x y : B.obj _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h a e x y)
 
 lemma first_native_image :
     (r.lift.first.map ((truncation 2).map (sliceUnderProjection a))).edge =
@@ -119,11 +119,11 @@ def spanLift : (horn 2 0 : SSet.{u}) ⟶ sliceUnder a :=
 /-- 全有限図式の商像は、同じ実分母・分子の商像に厳密に一致する。 -/
 lemma spanLift_projection : r.spanLift ≫ sliceUnderProjection a = r.nativeSpan ≫ q.hom := by
   apply horn₂₀.isPushout.hom_ext
-  · simp only [← Category.assoc, spanLift, nativeSpan, horn₂₀.isPushout.inl_desc]
+  · simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.spanLift, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSpan, horn₂₀.isPushout.inl_desc]
     apply SSet.yonedaEquiv.injective
     simp only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
     exact r.first_native_image
-  · simp only [← Category.assoc, spanLift, nativeSpan, horn₂₀.isPushout.inr_desc]
+  · simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.spanLift, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSpan, horn₂₀.isPushout.inr_desc]
     apply SSet.yonedaEquiv.injective
     simp only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
     exact r.diagonal_native_image
@@ -143,7 +143,7 @@ lemma quotientCone_vertex : r.quotientCone.vertex = SSet.yonedaEquiv a := by
 lemma exists_nativeCone : ∃ c : JoinCone r.nativeSpan,
     Nonempty (VertexIso (X := sliceOver (r.nativeSpan ≫ q.hom))
       (mapJoinCone q.hom c) r.quotientCone) :=
-  exists_verdierQuotientConeIsoRefinement h r.nativeSpan r.quotientCone
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h r.nativeSpan r.quotientCone
 
 end VerdierCosliceFractionNormalization
 

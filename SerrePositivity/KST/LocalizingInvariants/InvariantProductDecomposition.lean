@@ -22,8 +22,8 @@ namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance invariantSplitSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
-variable {E : StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
-  (d : VerdierSequence.{u})
+variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hE : IsLocalizingInvariant E)
+  (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
   (s : SpectrumHo.obj (value E d.right) ⟶ SpectrumHo.obj (value E d.middle))
   (hs : s ≫ SpectrumHo.hom (valueMap E d.projection) = 𝟙 _)
 

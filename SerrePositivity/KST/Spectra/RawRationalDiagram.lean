@@ -59,8 +59,8 @@ def rawRationalSequenceMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
       rw [Functor.ofSequence_map_homOfLE_succ, Functor.ofSequence_map_homOfLE_succ]
       apply KanSequence.Hom.ext_app
       intro k
-      change PointedMapping.prePointed _ _ ≫ (ihom CirclePower.space.{u}).map (f.app k) =
-        (ihom CirclePower.space.{u}).map (f.app k) ≫ PointedMapping.prePointed _ _
+      change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _ _ ≫ (ihom CirclePower.space.{u}).map (f.app k) =
+        (ihom CirclePower.space.{u}).map (f.app k) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _ _
       simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
       exact MonoidalClosed.pre_comm_ihom_map _ _)
 
@@ -104,7 +104,7 @@ def rationalDiagramProjection (X : OmegaSpectrum.{u}) :
 使われ方：Goerss–Jardine I §7、BF 1978 §2。filtered 比較の同型性。 -/
 theorem rationalDiagramProjection_levelwise (X : OmegaSpectrum.{u})
     (a : AsSmall.{u} ℕ) (k : ℕ) :
-    KanPiIsomorphism (((rationalDiagramProjection X).app a).app k).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (((rationalDiagramProjection X).app a).app k).right :=
   cotensorProjection_piIsomorphism CirclePower.space.{u} X k
 
 end

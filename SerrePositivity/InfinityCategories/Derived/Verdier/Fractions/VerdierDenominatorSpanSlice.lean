@@ -32,68 +32,68 @@ def spanTwoPointDiagram {X : SSet.{u}} (x y : X _⦋0⦌) :
   coprod.desc (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y)
 
 /-- 二終点上の実 slice の、左脚が元の分母である全部分複体。 -/
-def verdierDenominatorSpanSlice {A B : StableCategory.{u}} (i : ExactMap A B)
-    (x y : B.obj _⦋0⦌) : (sliceOver (spanTwoPointDiagram x y)).Subcomplex :=
+def verdierDenominatorSpanSlice {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (x y : B.obj _⦋0⦌) : (sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTwoPointDiagram x y)).Subcomplex :=
   fullSubcomplexOnVertices _ (fun v =>
     (roofPointSliceVertexEdge (SSet.yonedaEquiv.symm x)
       ((sliceOverCoproductLeft (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y)).app
-        (Opposite.op ⦋0⦌) v)).edge ∈ weakEquivalences i)
+        (Opposite.op ⦋0⦌) v)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
 
-instance verdierDenominatorSpanSlice_quasicategory {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    Quasicategory (verdierDenominatorSpanSlice i x y : SSet.{u}) := by
-  dsimp only [verdierDenominatorSpanSlice]
+instance verdierDenominatorSpanSlice_quasicategory {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    Quasicategory (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y : SSet.{u}) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice]
   infer_instance
 
 /-- 同じ単一の実錐から、元の実分母を回収する。 -/
-def verdierDenominatorSpanSliceLeft {A B : StableCategory.{u}} (i : ExactMap A B)
-    (x y : B.obj _⦋0⦌) : (verdierDenominatorSpanSlice i x y : SSet.{u}) ⟶
+def verdierDenominatorSpanSliceLeft {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (x y : B.obj _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y : SSet.{u}) ⟶
       (verdierDenominatorOver i x : SSet.{u}) :=
-  fullSubcomplexLift _ ((verdierDenominatorSpanSlice i x y).ι ≫
+  fullSubcomplexLift _ ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y).ι ≫
     sliceOverCoproductLeft (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y))
       (fun v => fullSubcomplexOnVertices_vertex v)
 
 /-- 同じ単一の実錐から、元の実次辺を回収する。 -/
-def verdierDenominatorSpanSliceRight {A B : StableCategory.{u}} (i : ExactMap A B)
-    (x y : B.obj _⦋0⦌) : (verdierDenominatorSpanSlice i x y : SSet.{u}) ⟶
+def verdierDenominatorSpanSliceRight {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (x y : B.obj _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y : SSet.{u}) ⟶
       sliceOver (SSet.yonedaEquiv.symm y) :=
-  (verdierDenominatorSpanSlice i x y).ι ≫
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y).ι ≫
     sliceOverCoproductRight (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y)
 
-lemma verdierDenominatorSpanSliceLeft_ι {A B : StableCategory.{u}} (i : ExactMap A B)
-    (x y : B.obj _⦋0⦌) : verdierDenominatorSpanSliceLeft i x y ≫
-      (verdierDenominatorOver i x).ι = (verdierDenominatorSpanSlice i x y).ι ≫
+lemma verdierDenominatorSpanSliceLeft_ι {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (x y : B.obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceLeft i x y ≫
+      (verdierDenominatorOver i x).ι = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y).ι ≫
         sliceOverCoproductLeft (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y) :=
   fullSubcomplexLift_ι _ _ _
 
 /-- 分母条件へ制限しても、元の二つの実始域上の引き戻しを保持する。 -/
-lemma isPullback_verdierDenominatorSpanSlice {A B : StableCategory.{u}} (i : ExactMap A B)
+lemma isPullback_verdierDenominatorSpanSlice {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x y : B.obj _⦋0⦌) :
-    IsPullback (verdierDenominatorSpanSliceRight i x y) (verdierDenominatorSpanSliceLeft i x y)
-      (sliceOverProjection (SSet.yonedaEquiv.symm y)) (verdierDenominatorOverSource i x) := by
-  have h := fullRestriction_isPullback _ _ (verdierDenominatorSpanSliceLeft i x y)
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceRight i x y) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceLeft i x y)
+      (sliceOverProjection (SSet.yonedaEquiv.symm y)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x) := by
+  have h := fullRestriction_isPullback _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceLeft i x y)
     (sliceOverCoproductLeft (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y))
-      (verdierDenominatorSpanSliceLeft_ι i x y) (fun _ hv => hv)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceLeft_ι i x y) (fun _ hv => hv)
   exact h.paste_horiz (isPullback_sliceOverCoproduct
     (SSet.yonedaEquiv.symm x) (SSet.yonedaEquiv.symm y))
 
 /-- 実分母・次辺の全空間は、二終点上の同じ実 marked slice と厳密に同型。 -/
-def verdierDenominatorSpanSliceIso {A B : StableCategory.{u}} (i : ExactMap A B)
-    (x y : B.obj _⦋0⦌) : (verdierDenominatorSpanSlice i x y : SSet.{u}) ≅
-      verdierDenominatorSpanFamily i x y :=
-  (isPullback_verdierDenominatorSpanSlice i x y).isoPullback
+def verdierDenominatorSpanSliceIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (x y : B.obj _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSlice i x y : SSet.{u}) ≅
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.isPullback_verdierDenominatorSpanSlice i x y).isoPullback
 
-lemma verdierDenominatorSpanSliceIso_denominator {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    (verdierDenominatorSpanSliceIso i x y).hom ≫ verdierDenominatorSpanProjection i x y =
-      verdierDenominatorSpanSliceLeft i x y :=
-  (isPullback_verdierDenominatorSpanSlice i x y).isoPullback_hom_snd
+lemma verdierDenominatorSpanSliceIso_denominator {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceIso i x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceLeft i x y :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.isPullback_verdierDenominatorSpanSlice i x y).isoPullback_hom_snd
 
-lemma verdierDenominatorSpanSliceIso_numerator {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    (verdierDenominatorSpanSliceIso i x y).hom ≫ verdierDenominatorSpanNumerator i x y =
-      verdierDenominatorSpanSliceRight i x y :=
-  (isPullback_verdierDenominatorSpanSlice i x y).isoPullback_hom_fst
+lemma verdierDenominatorSpanSliceIso_numerator {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceIso i x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanNumerator i x y =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanSliceRight i x y :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.isPullback_verdierDenominatorSpanSlice i x y).isoPullback_hom_fst
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

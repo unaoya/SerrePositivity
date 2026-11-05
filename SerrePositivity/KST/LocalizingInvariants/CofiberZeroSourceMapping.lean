@@ -24,7 +24,7 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 def cofiberZeroSourceVertexIso (z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌)
     (hz : IsZeroSourceArrow z) :
     VertexIso z ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌)
-      ((ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)) := by
+      ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)) := by
   let a : (Δ[0] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X := SSet.const z
   have ha : ∀ w, IsZeroSourceArrow (a.app (Opposite.op ⦋0⦌) w) := by
     intro w
@@ -34,7 +34,7 @@ def cofiberZeroSourceVertexIso (z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌)
   have e := FunctorIso.app (zeroSourceArrowComparison X a ha)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   change VertexIso ((SSet.const z : (Δ[0] : SSet.{u}) ⟶ _).app (Opposite.op ⦋0⦌) _)
-    ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌) ((ArrowTarget.target X).app
+    ((cofiberRightAdjoint X).app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app
       (Opposite.op ⦋0⦌) ((SSet.const z : (Δ[0] : SSet.{u}) ⟶ _).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 1))))) at e
   rw [zeroDiagram_const_vertex] at e
@@ -43,9 +43,9 @@ def cofiberZeroSourceVertexIso (z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌)
 lemma cofiberZeroSourceMapping_equivalence
     (x z : ((ihom (Δ[1] : SSet.{u})).obj X) _⦋0⦌) (hz : IsZeroSourceArrow z) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap
-      (CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X))) x z) :=
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X))) x z) :=
   reflectiveIsoTargetPinchedHomMap_equivalence (cofiberAdjunction X)
-    (cofiberRightAdjoint_fullyFaithful X) x z ((ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)
+    (cofiberRightAdjoint_fullyFaithful X) x z ((_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app (Opposite.op ⦋0⦌) z)
     (cofiberZeroSourceVertexIso X z hz)
 
 end SerrePositivity.KST.LocalizingInvariants

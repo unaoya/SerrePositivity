@@ -19,9 +19,9 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
 
-private theorem firstRowCore_preimage (C : StableCategory.{u}) (n : ℕ) :
+private theorem firstRowCore_preimage (C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (n : ℕ) :
     quasicategoryCore (sConstruction n C.obj) =
       (quasicategoryCore ((ihom (firstRowNerve n)).obj C.obj)).preimage
         (firstRowRestriction n C.obj) := by

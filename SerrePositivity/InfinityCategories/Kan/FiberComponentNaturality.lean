@@ -38,26 +38,26 @@ theorem componentConnecting_natural {E B E' B' : SSet.{u}} [KanComplex B] [KanCo
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
     (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app _ e = b)
     (b' : B' _⦋0⦌) (hb' : p'.app _ (f.app _ e) = b')
-    (φ : KanFiber p b ⟶ KanFiber p' b') (hφ : φ ≫ fiberι p' b' = fiberι p b ≫ f)
-    (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    mapπ₀ φ (componentConnecting p e b hb a) = componentConnecting p' (f.app _ e) b' hb'
-      (KanHomotopyGroup.map g (base_eq p p' f g comm e) a) := by
+    (φ : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p' b') (hφ : φ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p' b' = _root_.SerrePositivity.InfinityCategories.Kan.fiberι p b ≫ f)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    mapπ₀ φ (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb a) = _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p' (f.app _ e) b' hb'
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) a) := by
   subst b
   subst b'
-  have heq : φ = fiberMap p p' f g comm e := by
-    apply fiber_hom_ext p' (p'.app _ (f.app _ e))
-    exact hφ.trans (fiberMap_ι p p' f g comm e).symm
+  have heq : φ = _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p' (p'.app _ (f.app _ e))
+    exact hφ.trans (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p p' f g comm e).symm
   subst φ
-  change mapπ₀ (fiberMap p p' f g comm e) (KanHomotopyZero.equivPiZero (connecting p e 0 a)) =
-    KanHomotopyZero.equivPiZero (connecting p' (f.app _ e) 0
-      (KanHomotopyGroup.map g (base_eq p p' f g comm e) a))
+  change mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a)) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p' (f.app _ e) 0
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) a))
   have h := congrArg
-    (KanHomotopyZero.equivPiZero (X := KanFiber p' (p'.app _ (f.app _ e)))
-      (x := fiberPoint p' (f.app _ e))) (connecting_natural p p' f g comm e 0 a)
-  change KanHomotopyZero.equivPiZero
-    (KanHomotopyZero.map (fiberMap p p' f g comm e) (fiberMap_point p p' f g comm e)
-      (connecting p e 0 a)) = _ at h
-  rw [KanHomotopyZero.equivPiZero_map] at h
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p' (p'.app _ (f.app _ e)))
+      (x := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p' (f.app _ e))) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural p p' f g comm e 0 a)
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_point p p' f g comm e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a)) = _ at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map] at h
   exact h
 
 end
