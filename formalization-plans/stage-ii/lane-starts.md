@@ -1,16 +1,17 @@
 # 段階 II の各レーンの開始文（11-05 夜）
 
 作成：段階 II の調整役。ユーザーが新しいチャットの最初に貼る文面。どれも「F-2 の改名表」「main を取り込んでから始める」「coordination.md §2 の規則」を含む。
-⑤ BS 実装の Codex は、BS 設計が W11 を改名表で追従してから開始文を書いて渡す（調整役は書かない）。
+BS 設計のチャットは置かない（11-05 夜、ユーザー）。BS の設計・検収も調整役が行う。
 
-## BS 設計（Claude Code、新しいチャット）
+## ⑤ BS 実装（Codex、新しいチャット）
 
 ```
-あなたは SerrePositivity の Bhatt–Scholze 側（段階 II の目標 A：E3 を消す）の設計役です。
-入口は formalization-plans/bhatt-scholze/design-status.md §0 です（0.1 規則、0.2 読む順、0.3 現在地、0.4 ∞ への依頼）。
-段階 II の正本は formalization-plans/stage-ii-plan-draft.md（11-05 夜に確定）で、目標 A の進め方は §1.0：drafts（formalization-plans/bhatt-scholze/drafts/、51 本・sorry 893）を BS 実装の Codex が本体の決まった置き場所へ新規ファイルとして移しながら sorry を証明に置き換え、sorry 0 のものから調整役が main に取り込みます。置き場所と順序は drafts/README.md。進み具合は drafts の残り本数と sorry の数で design-status に記録してください。
-最初の仕事：F-2 の改名表（scripts/refactor/targets/f-namespace-map.json）で BS-W11 の指示書（bhatt-scholze-codex-w11.md）と drafts の名前を追従し（11-05 時点で drafts の旧名の使用は 0）、BS 実装の Codex への開始文を書いてください。Codex には main（f3fcefe8e 以降）から worktree を一つ切らせ、coordination.md §2 の規則（小さなビルドだけ、main の作業木では作業しない、取り込みは調整役）を守らせます。
-∞ への依頼は調整役を通します。G8 の四角形（S4 の生成辺）は ∞ 供給レーン（③）の最初の仕事で、main に入ったら調整役が知らせます。main への直接コミットは git commit --only -- <paths> とし、その後 git show --stat HEAD で確かめてください。
+SerrePositivity の段階 II、Bhatt–Scholze 実装レーンの Codex として作業してください（目標 A：E3 を消す）。
+指示書は formalization-plans/bhatt-scholze/bhatt-scholze-codex-w11.md です。まず §6 の追記（段階 II の規則、11-05 夜）を読み、次に §0〜§5 を読んでください。前提の規則は BS-W10（bhatt-scholze-codex-w10.md）§0・§3 で、完了例は report-codex-w10.md です。
+§6 の 1 のとおり、main（9f591b5a5 以降）から worktree ../SerrePositivity-bs-impl と枝 math/bs-impl を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
+drafts（formalization-plans/bhatt-scholze/drafts/）を新規ファイルとして本体へ移しながら、sorry を証明に置き換えます。置き場所は drafts/README.md です。本体に sorry は残さず、閉じられない宣言は drafts に残します。
+規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
+停止点ごとに report-codex-w11.md に書いて報告してください。
 ```
 
 ## ③ ∞ 供給（Codex、新しいチャット）

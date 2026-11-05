@@ -50,3 +50,15 @@ BS-W10 §4 と同じ形で `report-codex-w11.md` に追記。各停止点で `gi
 - worktree は一度に一つ。作業 B が main に入ったら `bs-w10` の worktree は `git worktree remove` で消す（ブランチは残す）。
 - 新しい worktree は `/private/tmp/` ではなく `/Users/sugakubunka/Documents/LEAN_Projects.nosync/` の下に作る（例：`../SerrePositivity-bs-w11`）。/tmp は再起動で消える。
 - 停止点の間もこまめにブランチへコミットする。
+
+## 6. 追記（2026-11-05 夜、段階 II の調整役）：開始の確定と段階 II の規則
+
+段階 II では BS 設計のチャットを置かず、**指示・検収・取り込みはすべて段階 II の調整役**が行う。本指示書はこの追記で確定する（表題の「下書き」は読み替え）。正本は [段階 II の計画](../stage-ii-plan-draft.md) §1.0 と [coordination.md](../coordination.md) §2。
+
+1. **開始**：基準は main `9f591b5a5` 以降（F-2 と片付けを含む）。worktree `../SerrePositivity-bs-impl`（`LEAN_Projects.nosync/` の下）、枝 `math/bs-impl`。`source ~/.zshenv` の後に `lake env | grep LAKE_ARTIFACT_CACHE` で確かめ、`lake build SerrePositivity.BhattScholze` で温める。BS-W10 の worktree は残っていない（11-05 確認、worktree は main だけ）。
+2. **名前の確認（11-05、調整役）**：本指示書の名前は main に実在する。`PrincipalCompletionH0`（`HomologicalAlgebra/DerivedCompletion/`）、`CompatibleRootPerfectoid`（`BhattScholze/PerfectoidIdeal/Cover`・`Semiperfectoid/`）、`isIntegralPerfectoid_of_compatible_p_roots`（`CommutativeAlgebra/RootTower/Perfectoid`）。`valuationRing_milnorSquare` は新しく作る名前。F-2 の改名表 `scripts/refactor/targets/f-namespace-map.json` で名前空間が変わった宣言は新しい名前を使う（deprecated alias は使わない）。drafts の旧名の使用は 0。
+3. **drafts の移し方（計画 §1.0）**：drafts のファイル（`drafts/A5/RootAdjunction.lean` 18 か所、`A6/ArcSite.lean` 25、`A6/ArcSheafProperty.lean` 68、`A8/IntegralDiscreteness.lean` 21 の sorry）を、決まった置き場所（`drafts/README.md` の表）へ**新規ファイルとして**移しながら sorry を証明に置き換える。**本体のファイルに sorry を残さない**。§1・§4 の「理由付き sorry」は段階 II では使わない：濃度評価や S1 の生成系を待つ `isSheaf_arc_iff_cech` のように今は閉じられない宣言は、drafts に残す（本体に移すのは sorry 0 で閉じた宣言だけ）。ファイルを分ける必要があれば、drafts 側を「移したもの」と「残るもの」に分けてよい。移し終えた drafts のファイルは消す。
+4. **E3 非依存**：新しいファイルとその import から `BhattScholze/Inputs/PerfectoidizationInterface` に届かないこと（drafts/README「ファイル順序」の規則。BS-W10 作業 A で解消済み）。監査で `sorryAx` が出たら E3 への依存を疑う。
+5. **停止点**：§1〜§4 の停止点で報告する（`report-codex-w11.md` に追記し、`math/bs-impl` にコミット）。**取り込み**は調整役が A-2・B-2・B-3・C-2・D-2 の各停止点で行う（sorry 0 のファイルだけ）。新規モジュールは入口（`BhattScholze.lean`・`CommutativeAlgebra.lean` など）と監査（`scripts/audit_bhatt_scholze*.lean`）に登録し、監査を単独で流す。
+6. **条件付きの事前承認**：型の停止点（A-1・B-1・C-1・D-1）は、主張が drafts の型と同じなら報告して待たずに証明へ進んでよい。型を変える必要があれば止める（原典どおりの定義を変えない。避けられない差は D 番号でユーザーに相談するので、報告に書く）。証明の停止点は「対象のビルドと監査が通り、sorry・公理 0、既存の宣言を変えていない」なら次の作業へ進んでよい。
+7. **ビルド**：小さなビルドだけ（`ps -axo command= | grep '[l]ake build'` が空で、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` で鍵が取れること）。main の作業木では作業しない。

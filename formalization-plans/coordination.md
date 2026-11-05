@@ -9,11 +9,10 @@
 
 | レーン | 道具 | 担当 | worktree・枝 | 入口 | 検収 |
 | --- | --- | --- | --- | --- | --- |
-| 調整役 | Claude Code | 暦・合図・取り込み、∞ と K の検収 | main | 計画・本書 | — |
-| BS 設計 | Claude Code | 目標 A の設計・drafts・BS 実装の指示書 | main に直接（`--only`） | `bhatt-scholze/design-status.md` §0 | ユーザー |
+| 調整役 | Claude Code | 暦・合図・取り込み、∞・K・BS の検収、BS の設計（drafts・指示書・design-status。BS 設計のチャットは置かない、11-05 夜） | main | 計画・本書・`bhatt-scholze/design-status.md` §0 | — |
 | ① ∞ 中核 | Codex | M1・M2・M7・M8、L4 | `SerrePositivity-inf-core`・`math/inf-core` | [stage-ii/inf-core-w1.md](stage-ii/inf-core-w1.md) | 調整役 |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10・G8 の一般形 | `SerrePositivity-inf-supply`・`math/inf-supply` | [stage-ii/inf-supply-w1.md](stage-ii/inf-supply-w1.md) | 調整役 |
-| ⑤ BS 実装 | Codex | BS-W11 → drafts の移植 | 一度に一つ（BS 設計が決める） | `bhatt-scholze/bhatt-scholze-codex-w11.md` | BS 設計 |
+| ⑤ BS 実装 | Codex | BS-W11 → drafts の移植 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） | `bhatt-scholze/bhatt-scholze-codex-w11.md` | 調整役 |
 | ⑥ K の準備 | Codex | 公理 (3) の再確認 → KST §5 のスキーム補題 | `SerrePositivity-k-prep`・`math/k-prep` | [stage-ii/k-prep-w1.md](stage-ii/k-prep-w1.md) | 調整役 |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
@@ -39,7 +38,7 @@
 
 | 時期 | 内容 |
 | --- | --- |
-| 11-06〜 | ①③⑤⑥と BS 設計の開始。小さなビルドは §2-4a |
+| 11-06〜 | ①③⑤⑥の開始。小さなビルドは §2-4a |
 | ③の G8 の四角形の取り込み | BS に知らせる（S4 の生成辺）。④を開く |
 | 段 G の最初の区切り（目安 12 月上旬） | 保守の束：L1（F-2 の deprecated alias の一括削除）・L2（旧 G8 の削除）。BS・③・KST が新しい名前へ移ったのを確かめてから。担当は①か② |
 | ①の M1・M2・M7 の取り込み | L4（分数の一般版）を①の中で。K 理論レーン（B-3〜）を開く |
@@ -54,9 +53,9 @@
 | --- | --- |
 | ∞ 整理（Codex） | 閉じた（C1〜C3 は 05c33bfc0） |
 | ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
-| BS 設計・BS 実装 | 閉じた。新しいチャットで始める（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
+| BS 設計・BS 実装（段階 I） | 閉じた。段階 II では BS 実装は新しい Codex チャット、設計は調整役が持つ（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
-| 段階 II の新しいレーン（①③⑤⑥・BS 設計） | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥KP-W1）。⑤は BS 設計が W11 を出す |
+| 段階 II の新しいレーン（①③⑤⑥） | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥KP-W1）。⑤は W11（§6 の追記）|
 
 ## 5. 段階 I から引き継ぐ要点
 

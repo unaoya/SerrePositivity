@@ -25,8 +25,8 @@
 **目標 A は drafts を本体へ移しながら sorry を証明に置き換える作業である**：
 1. BS 実装（Codex）が、drafts のファイルを決まった置き場所（`InfinityCategories/Sheaves/`・`Derived/`・`EInfinity/`・`BhattScholze/`・`CommutativeAlgebra/` など、`drafts/README.md` と計画の M12〜M15）へ**新規ファイルとして**移し、sorry を証明に置き換える。sorry が 0 になったものから main に入れる（調整役が取り込む）。移したら drafts 側のファイルは消す。
 2. 順序は `drafts/README.md` の DAG と下の A-1〜A-6。∞ に頼んでいる一般論（G8 の四角形、G14、G9、G10、G12、M14、M15）が main に入ったところから、それを待つ drafts の sorry が閉じられる。
-3. drafts の型は基盤の実際の名前で書かれている（F-2 の改名表の旧名の使用は 0、11-05 確認）。基盤の名前が変わったら BS 設計が drafts を追従する。
-4. 進み具合は「drafts の残り本数と sorry の数」で測る（BS 設計が design-status.md に記録）。
+3. drafts の型は基盤の実際の名前で書かれている（F-2 の改名表の旧名の使用は 0、11-05 確認）。基盤の名前が変わったら調整役が drafts を追従する。
+4. 進み具合は「drafts の残り本数と sorry の数」で測る（調整役が design-status.md に記録）。
 
 | 段 | 内容 | 前提 |
 | --- | --- | --- |
@@ -79,14 +79,14 @@
 2. 最初に開く Codex レーンは 4 本：**① ∞ 中核（Verdier）、③ ∞ 供給（層の一般論）、⑤ BS 実装、⑥ K の古典的な準備**。
 3. ⑥は Codex だけで、調整役が検収する（公理 (3) の再確認の設計判断も調整役が受け、ユーザーと決める）。
 4. ∞ の Codex レーン（①③、のちの②④）の検収は調整役。
+5. **BS 設計のチャットは置かない（11-05 夜、ユーザー）**。目標 A の設計・drafts の追従・BS 実装の指示書と検収・design-status の記録も調整役が行う。管理はすべて調整役のチャットに集める。
 
 | レーン | 道具 | 担当 | 最初の仕事 | 検収 | worktree・枝 |
 | --- | --- | --- | --- | --- | --- |
-| 調整役 | Claude Code | 暦・合図・取り込み・レーン間の窓口・計画の正本、∞ と K の検収 | 本書の確定、各レーンの開始文 | — | main（編集とビルドはしない） |
-| BS 設計 | Claude Code | 目標 A の設計、drafts の追従、BS 実装の指示書と検収、∞ への依頼 | `bhatt-scholze/design-status.md` §0 から。BS-W11 を F-2 の改名表で追従して出す | ユーザー | main に直接（`git commit --only`） |
+| 調整役 | Claude Code | 暦・合図・取り込み・計画の正本、∞ と K の検収、BS の設計と検収（drafts・指示書・design-status） | 本書の確定、各レーンの開始文 | — | main（編集とビルドはしない） |
 | ① ∞ 中核 | Codex | B-1 の Verdier 部分（M1・M2・M7・M8）、L4（分数の一般版） | M1・M2・M7（Verdier 商、K 基盤の入口） | 調整役 | `SerrePositivity-inf-core`・`math/inf-core` |
-| ③ ∞ 供給 | Codex | 目標 A の基盤：G8 の四角形、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形、G10 | G8 の四角形（IF-G2-finish の②の完成 → ① → 四角形、`infinity-g2-progress.md` の末尾） | 調整役（型は BS 設計が使う側として確認） | `SerrePositivity-inf-supply`・`math/inf-supply` |
-| ⑤ BS 実装 | Codex | A-1〜A-6 の Lean（drafts を本体へ移しながら sorry を証明に置き換える、§1.0） | BS-W11（A-3）→ A-1 の S1・S2・S6、A-2 | BS 設計 | 一度に一つ、`LEAN_Projects.nosync/` の下（名前は BS 設計が指示書で決める） |
+| ③ ∞ 供給 | Codex | 目標 A の基盤：G8 の四角形、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形、G10 | G8 の四角形（IF-G2-finish の②の完成 → ① → 四角形、`infinity-g2-progress.md` の末尾） | 調整役（使う側の drafts の型と照らす） | `SerrePositivity-inf-supply`・`math/inf-supply` |
+| ⑤ BS 実装 | Codex | A-1〜A-6 の Lean（drafts を本体へ移しながら sorry を証明に置き換える、§1.0） | BS-W11（A-3）→ A-1 の S1・S2・S6、A-2 | 調整役 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） |
 | ⑥ K の準備 | Codex | B-5 の古典的な部分：KST §5 のスキーム補題、可換環論 | **公理 (3)（冪零不変性、経路の D9）の供給経路の再確認の報告**（Lean は書かない）→ 結論が出てから補題へ | 調整役 | `SerrePositivity-k-prep`・`math/k-prep` |
 
 後から足すレーン：
@@ -114,7 +114,7 @@
 | ⑥ K の古典的な準備 | KST §5 のスキーム補題、可換環論、公理 (3) の再確認 | `CommutativeAlgebra/`・`KST/` |
 | ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り（11-05 の調査：β4・β5 は完了済み、残りは K-10 d と β6 f・h。§5.1 で直した） | `DifferentialGraded/`・`Derived/` |
 
-上限は 7 本。律速は検収（BS 設計一本、調整役一本）。前の調整役の推奨は 5 本（①③④⑤⑥）だったが、④は A-4・A-5 まで要らないので、③の最初の区切りの後に回した（§5.1）。
+上限は 7 本。律速は検収（前の調整役の想定は BS 設計一本・調整役一本。11-05 夜に調整役一本に集めた）。前の調整役の推奨は 5 本（①③④⑤⑥）だったが、④は A-4・A-5 まで要らないので、③の最初の区切りの後に回した（§5.1）。
 
 ## 6. 暦の目安
 
@@ -122,7 +122,7 @@
 | --- | --- |
 | 11-05 夕 | F-2 の取り込み、整理（段階 I）の完了 |
 | 11-05 夜 | 片付け（`cleanup-list-2026-11.md` §1）の完了、本書の確定 |
-| 11-06〜 | ①③⑤⑥と BS 設計の開始（開始文は調整役） |
+| 11-06〜 | ①③⑤⑥の開始（開始文は調整役） |
 | ③の G8 の四角形の取り込み | ④の開始、BS の S4 の生成辺 |
 | 段 G の最初の区切り（〜12 月上旬） | 保守 L1・L2（alias・旧 G8 の削除） |
 | B-1 の目処 | K 理論レーンの開始 |

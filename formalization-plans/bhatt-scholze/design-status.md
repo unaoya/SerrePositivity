@@ -15,7 +15,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 
 - **目標**：E3（`SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean` の `exists_perfectoidizationInterfaceE3`）を、Bhatt–Scholze の原典の経路 A0〜A9 で消す（stage2 の A 案）。
 - **ユーザーの規則**：「adhoc にやらないで、基本は論文通りに形式化したい。特に定義は変えないで、定理は特別な場合だけ証明する」。避けられない差は D 番号を付け、先に相談する（D 番号はユーザーが付ける）。設計判断は推奨を添えて出す。
-- **役割**：Claude は設計・drafts・Codex 指示書・検収。Lean の本体のコーディングは Codex（指示書 `bhatt-scholze-codex-wN.md`、停止点で報告、経緯を書いて自己完結にする。ユーザーは Codex のチャットを替えるので）。
+- **役割**：Claude は設計・drafts・Codex 指示書・検収。**段階 II では BS 設計のチャットを置かず、段階 II の調整役のチャットがこの役を持つ（11-05 夜、ユーザー）**。Lean の本体のコーディングは Codex（指示書 `bhatt-scholze-codex-wN.md`、停止点で報告、経緯を書いて自己完結にする。ユーザーは Codex のチャットを替えるので）。
 - **コミット**：main に直接、自分の範囲だけを **`git commit --only -- <paths>`**、その後 `git show --stat HEAD` で確認（11-04 に `git add && git commit` で他セッションの staged 削除を巻き込んだ。memory「main では commit --only」）。帰属行は `Co-Authored-By`。
 - **ビルド**：drafts（`formalization-plans/bhatt-scholze/drafts/`、`SerrePositivity/` の外）はビルドしない。本体の単体ビルドは coordination.md §2-4a（`ps -axo command=` で他のビルド・verify がないこと、`scripts/refactor/with_build_lock.sh --wait 0`）。全ビルドは調整役の暦。
 - **worktree**：BS の Codex の worktree は**一度に一つ**、`/Users/sugakubunka/Documents/LEAN_Projects.nosync/` の下（/tmp は再起動で消える）。こまめにブランチへコミット。CA の新規ディレクトリなど監査対象は sorry 0 になってから、調整役が取り込む。
