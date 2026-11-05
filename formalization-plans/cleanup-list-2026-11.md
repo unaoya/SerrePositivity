@@ -11,9 +11,9 @@
 | C1 | ∞ 整理（段 F） | F-2 の取り込み後の後始末：停止点 4 の指摘の処理、改名表の確定版を `scripts/refactor/targets/` に置く、`InfinityCategories/README.md` の層ごとの中身の表（F1・F1B・F2 は改名しない代わり、IF-F §5） | 小 | README の表が main に入る |
 | C2 | ∞ 整理 | 台帳 R60 の小さな処置：診断・archive の候補のうち、利用者 0 で移動だけで済むもの（ビルドは小さい範囲に限る）。大きな処置（未被覆の監査登録候補 145 本、HA/Simplicial の孤立入口 121 本など）は記録のまま段階 II の保守へ | 小〜中 | 台帳の処置済みの行に印 |
 | C3 | ∞ 整理 | 既存の G8（`tensorSpaceFunctor_setWeightHom` 系）に deprecated を付け、G2 の別版 `tensorSpaceFunctor_setWeightHomNatural` を正本とする（BS が別版へ移った後。BS の確認を取ってから） | 小 | deprecated が付く |
-| C4 | ∞ 数学（G2） | **G8 の四角形（篩包含の場合）と G14 を仕上げる**（BS の S4 が待つ。文脈を持つ G2 が仕上げる方が速い） | 中 | main に入り、BS が S4 の生成辺を閉じる |
-| C5 | ∞ 数学（G2） | `infinity-g2-progress.md` に、IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）の引き継ぎを書く（新しいレーンへ渡すため） | 小 | 引き継ぎの節がある |
-| C6 | DG | worktree `SerrePositivity-dgw1` と枝 `infra/dg-w3` の削除（main に入っている）。D6〜D8 の調査結果（`targets/dg-survey-d6d7-2026-11-01.md`）は残す | 小 | worktree なし |
+| C4 | ∞ 数学（G2） | **G2 は 11-05 に閉じた。段階 II の新しいレーンへ移す**（WIP は `math/g2` b60279c26）。G8 の四角形（篩包含の場合）と G14 を仕上げる（BS の S4 が待つ。文脈を持つ G2 が仕上げる方が速い） | 中 | main に入り、BS が S4 の生成辺を閉じる |
+| C5 | ∞ 数学（G2） | **G2 は閉じた。進捗は枝 `math/g2` の `infinity-g2-progress.md` にある（main には未反映）**。`infinity-g2-progress.md` に、IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）の引き継ぎを書く（新しいレーンへ渡すため） | 小 | 引き継ぎの節がある |
+| C6 | DG | **完了（11-05、worktree・枝とも削除、レーンを閉じた）**。worktree `SerrePositivity-dgw1` と枝 `infra/dg-w3` の削除（main に入っている）。D6〜D8 の調査結果（`targets/dg-survey-d6d7-2026-11-01.md`）は残す | 小 | worktree なし |
 | C7 | 論文の層 | **完了（11-05、8310a7fa7。レーンを閉じた）**。worktree `SerrePositivity-refactor-2b` の削除。段階 3 の残り 3 項目（テンソル冪、Asymptotic の商、PC の K₀）を、段階 II の計画の保守・K 理論の節へ移す | 小 | worktree なし |
 | C8 | 調整役 | 終わった枝の整理（main に入った `refactor/*`・`infra/*`・`math/g1`・`codex/bs-w10-b` などを消すか残すかの一覧）、`/private/tmp` に worktree がないことの確認、Lake キャッシュの状態（`~/.cache/lake` の大きさと空き） | 小 | 一覧を本書に追記 |
 | C9 | 調整役 | 文書の整理：整理用の指示書（`infinity-codex-w*`・`infinity-codex-f`・`dg-codex-w*`・`infinity-codex-g1/g2`）、`refactor-plan.md`・`dg-cleanup-plan.md` の「状態」節を最終にし、`formalization-plans/archive/` へ移すものを決める。`coordination.md` を段階 II 用に書き直す（規則だけ残す） | 中 | 段階 II の計画が正本になる |
