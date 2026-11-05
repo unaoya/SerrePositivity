@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.SkeletalCellBoundaryRestriction
 universe u
 open CategoryTheory SSet
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalPathCoboundary
 

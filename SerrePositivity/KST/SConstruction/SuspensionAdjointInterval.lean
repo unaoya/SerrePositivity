@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の suspension 随伴の通常の Hom 同値は、構成済みの smash curry に一致する。 -/
 lemma suspensionLoopEquiv_eq_smashCurry (Q B : PointedSimplicialSet.{u})

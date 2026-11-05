@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の有限部分集合の標準単体から、同じ頂点の像を持つ標準単体への包含。 -/
 def simplexSubsetMap {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :

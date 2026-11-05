@@ -16,7 +16,7 @@ public import Mathlib.Algebra.Group.TransferInstance
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 

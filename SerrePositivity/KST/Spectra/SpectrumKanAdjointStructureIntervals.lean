@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- 元の構造比較の係数区間へ入力する、元の懸垂評価族。 -/

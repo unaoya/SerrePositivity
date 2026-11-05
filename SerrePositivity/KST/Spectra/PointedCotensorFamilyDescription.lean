@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra
 
 /-- 自由基点からの点つき族の頂点を制限すると、元の通常の族の指数頂点になる。 -/

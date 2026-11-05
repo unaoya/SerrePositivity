@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 同じ成分の二つの点つき射を、元の内部 Hom の基点固定区間で結ぶ。 -/

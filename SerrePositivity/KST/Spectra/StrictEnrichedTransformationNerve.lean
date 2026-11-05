@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.StrictEnrichedTransformation
 

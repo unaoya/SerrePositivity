@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.NullDifferenceZeroFiller
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.NullHomotopyTriangle
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

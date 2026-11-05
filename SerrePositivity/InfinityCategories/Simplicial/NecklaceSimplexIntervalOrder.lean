@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の全 augmentation は、全頂点の単調写像の標準単体への拡張を回収する。 -/
 lemma necklaceSimplexMap_eq_extension (T : NecklaceShape) {n : ℕ}

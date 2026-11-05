@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 open SerrePositivity.InfinityCategories
 
 /-- 元の左部分集合を、元の最小頂点から切断頂点への bead として読む。 -/

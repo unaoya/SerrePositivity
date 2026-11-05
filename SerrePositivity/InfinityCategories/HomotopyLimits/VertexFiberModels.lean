@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 noncomputable section
 

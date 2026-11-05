@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 左の一点を貼る元の右包含は、全単体を保つ同型。 -/
 instance necklacePointInr_isIso (T : Necklace.{u}) :

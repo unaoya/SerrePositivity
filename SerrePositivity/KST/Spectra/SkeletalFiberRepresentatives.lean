@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.UnbasedRestrictionFiberNaturality
 @[expose] public section
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
 

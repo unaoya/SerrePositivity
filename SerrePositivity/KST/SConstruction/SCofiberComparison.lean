@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 各頂点の転置した四角形を gapped 包含へ送ると元の族の転置となる。 -/
 lemma sCofiberTransposeSquare_vertex_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C]

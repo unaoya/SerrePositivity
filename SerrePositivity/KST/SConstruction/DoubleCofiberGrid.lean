@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- cofiber 四角形の下辺の指定端点での評価。 -/
 def cofiberBottomEvaluationMap (C : SSet.{u}) (j : Fin 2) : cofiberDiagrams C ⟶ C :=

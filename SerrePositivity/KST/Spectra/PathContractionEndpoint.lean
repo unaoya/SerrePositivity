@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Comparison.BasedPathEndpoint
 @[expose] public section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

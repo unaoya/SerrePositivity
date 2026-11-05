@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyConstant
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

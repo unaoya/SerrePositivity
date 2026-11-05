@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleConeComparisonCellsSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=

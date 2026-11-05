@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.SquareReducedDesc
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

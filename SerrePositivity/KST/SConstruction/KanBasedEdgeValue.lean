@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E : SSet.{u}} [KanComplex E]
 local instance kanBasedEdgeValueGroupoid : Groupoid (hoFunctor.obj E) :=
   Groupoid.ofIsGroupoid

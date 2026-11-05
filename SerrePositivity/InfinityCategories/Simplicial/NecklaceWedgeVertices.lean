@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 任意の連結射の左側の頂点作用は、元の左射の頂点作用と同じ番号の包含。 -/
 lemma necklaceVertexMap_wedge_left {T T' U U' : Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')

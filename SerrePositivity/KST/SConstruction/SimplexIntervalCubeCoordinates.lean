@@ -9,7 +9,7 @@ public import SerrePositivity.KST.SConstruction.SimplexIntervalCubicalOperators
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の一 bead 間の全端点保存射は、元の joint を同じ出力の joint に送る。 -/
 lemma necklaceBeadMap_joint {d e : ℕ} (f : necklaceBead.{u} d ⟶ necklaceBead e)

@@ -21,6 +21,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SimplicialDependentProduct
 end SerrePositivity.KST.Spectra.SimplicialDependentProduct
 namespace SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.SimplicialDependentProduct
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -44,10 +45,10 @@ lemma homotopyMap_bijective (n : ℕ) (b : ∀ s, (X s) _⦋0⦌) :
         (mapSimplex (eval S X s) rfl f) (mapSimplex (eval S X s) rfl g) 0) := by
       apply (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp
       simpa only [homotopyMap, KanHomotopy.map_mk] using congrFun h s
-    exact KanHomotopy.sound (relStruct (fun s ↦ Classical.choice (hs s)))
+    exact KanHomotopy.sound (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct (fun s ↦ Classical.choice (hs s)))
   · intro a
     choose f hf using fun s ↦ KanHomotopy.mk_surjective n (a s)
-    refine ⟨KanHomotopy.mk n (simplex f), ?_⟩
+    refine ⟨KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex f), ?_⟩
     funext s
     change KanHomotopy.map n (eval S X s) rfl _ = a s
     rw [KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.eval_simplex, hf]

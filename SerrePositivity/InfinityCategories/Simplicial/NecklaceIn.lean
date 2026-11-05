@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- K 内の x から y への元の全単体的 necklace。 -/
 structure NecklaceIn (K : SSet.{u}) (x y : K _⦋0⦌) where

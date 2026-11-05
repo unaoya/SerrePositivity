@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：拡張した単体作用の後の標準形は、元の作用の後の標準形への零点追加である。

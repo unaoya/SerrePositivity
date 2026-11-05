@@ -17,7 +17,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison AlgebraicTopology
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：加法群の同型を乗法表記の群の同型にする。
 方針：AddMonoidHom の標準変換と全単射性を使う。
@@ -63,7 +63,7 @@ variable {S : Type u} [CommRing S]
 規約：Kan 性を明示する。使われ方：写像空間の線形計算の一般定理。 -/
 def modulePiMooreGroupEquiv (W : SimplicialObject (ModuleCat.{v} S))
     [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
       Multiplicative (((normalizedMooreComplex (ModuleCat.{v} S)).obj W).homology (n + 1)) :=
   (modulePiSphereGroupEquiv W n).trans
     (additiveGroupToMultiplicativeEquiv (mooreHomologySphereIso W n).symm.toLinearEquiv.toAddEquiv)
@@ -88,9 +88,9 @@ def pinchedHomZeroVertex (x y : D) : (DGNerve.pinchedHom S D x y) _⦋0⦌ :=
 方針：線形化の π、Moore ホモロジー、Hom コホモロジー、ULift の除去を合成する。
 規約：零写像を基点とする。使われ方：D10 の正次数の導来写像空間の計算。 -/
 def pinchedHomPiCohomologyEquiv (x y : D) (n : ℕ) :
-    KanHomotopyGroup (DGNerve.pinchedHom S D x y) n (pinchedHomZeroVertex x y) ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (DGNerve.pinchedHom S D x y) n (pinchedHomZeroVertex x y) ≃*
       Multiplicative ((homObject S D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
-  (kanHomotopyGroupIsoEquiv (pinchedHomModuleForgetIso x y) n 0).symm.trans
+  (_root_.SerrePositivity.InfinityCategories.kanHomotopyGroupIsoEquiv (pinchedHomModuleForgetIso x y) n 0).symm.trans
     ((modulePiMooreGroupEquiv (pinchedHomModule x y) n).trans
       ((additiveGroupToMultiplicativeEquiv
         (pinchedHomMooreHomologyIso x y (n + 1)).toLinearEquiv.toAddEquiv).trans

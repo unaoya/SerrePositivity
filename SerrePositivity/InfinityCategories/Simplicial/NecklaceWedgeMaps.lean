@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 連結後の実単体集合への左包含。 -/
 def wedgeInl (T U : NecklaceShape) : T.carrier.{u} ⟶ (T.wedge U).carrier.{u} :=

@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の bead 内の二頂点の像は、標的の内部 joint を跨がない。 -/
 lemma necklaceVertexMap_noInterior {T U : Necklace.{u}} (f : T ⟶ U)

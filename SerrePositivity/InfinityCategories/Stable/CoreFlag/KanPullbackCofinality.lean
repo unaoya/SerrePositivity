@@ -44,19 +44,20 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag
 namespace SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.CoreFlag
-open Spectra
+open SerrePositivity.KST.Spectra
 
 /-- 厳密引き戻しの fiber の正次数は、右列の消滅から一意となる。 -/
 lemma pullback_positive_fiber_subsingleton
     {P X E B : SSet.{u}} [KanComplex P] [KanComplex X] [KanComplex E] [KanComplex B]
     (q : P ⟶ X) (s : P ⟶ E) (g : X ⟶ B) (p : E ⟶ B)
     (h : IsPullback q s g p) [Fibration q] [Fibration p]
-    (hE : ∀ n (e : E _⦋0⦌), Subsingleton (KanHomotopy E n e))
-    (hB : ∀ n, 1 < n → ∀ b : B _⦋0⦌, Subsingleton (KanHomotopy B n b))
+    (hE : ∀ n (e : E _⦋0⦌), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e))
+    (hB : ∀ n, 1 < n → ∀ b : B _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n b))
     (a : P _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (KanFiber q (q.app _ a)) n (fiberPoint q a)) := by
-  have := fibration_positive_fiber_subsingleton p hE hB (s.app _ a) n hn
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber q (q.app _ a)) n (fiberPoint q a)) := by
+  have := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_positive_fiber_subsingleton p hE hB (s.app _ a) n hn
   exact Function.Injective.subsingleton
     (KanHomotopy.equivOfIso n (pullbackFiberIso h a) (pullbackFiberIso_point h a)).injective
 

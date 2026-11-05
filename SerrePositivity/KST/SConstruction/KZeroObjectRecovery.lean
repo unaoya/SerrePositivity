@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 閉じた元の S₁ 辺の Kan 境界上の評価は負の対象類。 -/
 lemma boundaryKanTriangulatedMap_closed_edge (X : StableModel.{u})

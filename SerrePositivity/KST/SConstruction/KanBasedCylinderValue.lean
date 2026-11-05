@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E : SSet.{u}} [KanComplex E]
 local instance kanBasedCylinderValueGroupoid : Groupoid (hoFunctor.obj E) :=
   Groupoid.ofIsGroupoid

@@ -18,7 +18,7 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 下側の全精密化の Path は、元の終点の直後の縦辺との切断点を通る。 -/

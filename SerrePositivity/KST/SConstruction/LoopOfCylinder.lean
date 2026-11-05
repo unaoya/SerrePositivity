@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 両端が基点の区間族を、元の円と元のパラメータの通常の積へ降ろす。 -/
 def circleCylinderDesc {A : SSet.{u}} (B : PointedSimplicialSet.{u})

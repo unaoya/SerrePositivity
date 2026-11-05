@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 離散頂点ごとの固定端点の単体を、関手空間の固定端点の単体へ束ねる。 -/
 def vertexDiscretePinchedSimplex {A X : SSet.{u}}

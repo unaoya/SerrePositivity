@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SquareAdjustment
 variable {E : SSet.{u}} {a b : (Δ[1] : SSet.{u}) ⟶ E} (H : SSet.Homotopy a b)
 

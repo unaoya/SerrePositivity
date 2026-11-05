@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra
 
 /-- 元の両端を結ぶ実ホモトピーと、指定した downstairs 二次元射への相対トレース。 -/

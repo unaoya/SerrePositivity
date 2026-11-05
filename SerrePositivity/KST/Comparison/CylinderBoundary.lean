@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：零次標準単体との直積を元の対象に同定する。

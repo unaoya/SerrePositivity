@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 下側の水平面の入力射影は元の恒等再添字。 -/
 lemma coherentLowerStringFace_index (n : ℕ) :

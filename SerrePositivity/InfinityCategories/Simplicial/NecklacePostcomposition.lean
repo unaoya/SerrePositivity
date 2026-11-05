@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の単体集合の射による、すべての necklace の後合成関手。 -/
 def necklaceInPostcompose {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌) :

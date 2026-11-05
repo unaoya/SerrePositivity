@@ -17,12 +17,12 @@ open SerrePositivity.KST.SConstruction
 
 /-- 恒等射の有効入力は同じ座標。 -/
 lemma cubeActive_id {n : ℕ} {i j : Fin n}
-    (h : CubeActive (_root_.id : CubeVertex n → CubeVertex n) i j) : j = i := by
+    (h : CubeActive (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) i j) : j = i := by
   simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using h.2
 
 /-- 面の有効入力は、挿入した座標を飛ばす元の座標。 -/
 lemma cubeActive_face {n : ℕ} {b : Bool} {p j : Fin (n + 1)} {i : Fin n}
-    (h : CubeActive (cubeVertexFace b n p) i j) : j = p.succAbove i := by
+    (h : CubeActive (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n p) i j) : j = p.succAbove i := by
   refine Fin.succAboveCases p ?_ (fun k => ?_) j h
   · intro hp
     have hzero : b = false := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace] using hp.1
@@ -34,12 +34,12 @@ lemma cubeActive_face {n : ℕ} {b : Bool} {p j : Fin (n + 1)} {i : Fin n}
 
 /-- 退化の有効入力は、削除した座標を飛ばす元の座標。 -/
 lemma cubeActive_degeneracy {n : ℕ} {p i : Fin (n + 1)} {j : Fin n}
-    (h : CubeActive (cubeVertexDegeneracy n p) i j) : p.succAbove j = i := by
+    (h : CubeActive (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n p) i j) : p.succAbove j = i := by
   simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using h.2
 
 /-- max の有効入力は、結合座標では二座標、他では元の一座標。 -/
 lemma cubeActive_connection {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2)}
-    (h : CubeActive (cubeVertexConnection n p) i j) :
+    (h : CubeActive (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p) i j) :
     (j = p ∧ (p.castSucc = i ∨ p.succ = i)) ∨
       (j ≠ p ∧ p.succ.succAbove j = i) := by
   by_cases hj : j = p
@@ -59,27 +59,27 @@ lemma cubeActive_connection {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2)}
 
 /-- 恒等射の有効入力は出力順に並ぶ。 -/
 lemma cubeSupportOrdered_id (n : ℕ) :
-    CubeSupportOrdered (_root_.id : CubeVertex n → CubeVertex n) := by
+    CubeSupportOrdered (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) := by
   intro j k hjk i l hi hl
   rwa [cubeActive_id hi, cubeActive_id hl] at hjk
 
 /-- 面の有効入力は出力順に並ぶ。 -/
 lemma cubeSupportOrdered_face (b : Bool) (n : ℕ) (p : Fin (n + 1)) :
-    CubeSupportOrdered (cubeVertexFace b n p) := by
+    CubeSupportOrdered (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n p) := by
   intro j k hjk i l hi hl
   rw [cubeActive_face hi, cubeActive_face hl] at hjk
   exact (Fin.strictMono_succAbove p).lt_iff_lt.mp hjk
 
 /-- 退化の有効入力は出力順に並ぶ。 -/
 lemma cubeSupportOrdered_degeneracy (n : ℕ) (p : Fin (n + 1)) :
-    CubeSupportOrdered (cubeVertexDegeneracy n p) := by
+    CubeSupportOrdered (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n p) := by
   intro j k hjk i l hi hl
   rw [← cubeActive_degeneracy hi, ← cubeActive_degeneracy hl]
   exact Fin.strictMono_succAbove p hjk
 
 /-- max の有効入力の番号は、元の出力の番号またはその次の番号。 -/
 lemma cubeActive_connection_bounds {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2)}
-    (h : CubeActive (cubeVertexConnection n p) i j) :
+    (h : CubeActive (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p) i j) :
     j.val + (if p.val < j.val then 1 else 0) ≤ i.val ∧
       i.val ≤ j.val + (if p.val ≤ j.val then 1 else 0) := by
   obtain ⟨rfl, h | h⟩ | ⟨hjp, h⟩ := cubeActive_connection h
@@ -95,7 +95,7 @@ lemma cubeActive_connection_bounds {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2
 
 /-- max の有効入力は、隣接二座標の範囲も含めて出力順に並ぶ。 -/
 lemma cubeSupportOrdered_connection (n : ℕ) (p : Fin (n + 1)) :
-    CubeSupportOrdered (cubeVertexConnection n p) := by
+    CubeSupportOrdered (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p) := by
   intro j k hjk i l hi hl
   obtain ⟨_, hi⟩ := cubeActive_connection_bounds hi
   obtain ⟨hl, _⟩ := cubeActive_connection_bounds hl

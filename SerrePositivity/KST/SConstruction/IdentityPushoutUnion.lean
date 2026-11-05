@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] Classical.propDecidable
 
 /-- 概要：二つの部分複体で一致する二つの射を、その和で貼り合わせる。

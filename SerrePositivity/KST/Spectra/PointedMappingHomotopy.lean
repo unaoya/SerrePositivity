@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedMappingFamilyVertices
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.PointedMapping
 

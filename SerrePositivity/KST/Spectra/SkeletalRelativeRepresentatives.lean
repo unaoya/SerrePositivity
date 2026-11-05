@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.SkeletalSphericalComponents
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
 

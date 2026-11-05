@@ -15,7 +15,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 universe u
 
 open CategoryTheory Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

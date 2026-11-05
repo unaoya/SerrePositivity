@@ -13,7 +13,7 @@ public import Mathlib.Order.Interval.Finset.Nat
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Limits Simplicial SSet
+open CategoryTheory Limits _root_.Simplicial SSet
 
 /-- 元の標準 n 単体全体を一つの bead として持つ necklace。 -/
 abbrev necklaceBead (n : ℕ) : Necklace.{u} := ⟨NecklaceShape.single n⟩

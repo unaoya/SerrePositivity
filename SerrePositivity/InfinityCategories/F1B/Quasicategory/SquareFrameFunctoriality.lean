@@ -38,7 +38,7 @@ def postcomp (F : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Core.Quas
   upper_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_left
   upper_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_right
 
-lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = (f.postcomp F).diagram := by
+lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = ((postcomp f) F).diagram := by
   apply (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).hom_ext
   · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal]
     exact congrArg ((β_ _ _).hom ≫ ·)

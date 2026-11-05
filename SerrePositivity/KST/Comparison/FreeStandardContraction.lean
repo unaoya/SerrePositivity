@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.SimplicialModel
 
 /--

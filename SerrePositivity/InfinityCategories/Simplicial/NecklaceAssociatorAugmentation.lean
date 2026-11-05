@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 三つの元のブロックで一致する augmentation は、元の結合同型で一致する。 -/
 lemma necklaceAssociator_desc (T U V : Necklace.{u}) {K : SSet.{u}}

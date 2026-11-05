@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Limits Simplicial SSet
+open CategoryTheory Limits _root_.Simplicial SSet
 
 variable (T U : NecklaceShape) {K : SSet.{u}}
   (f : T.carrier.{u} ⟶ K) (g : U.carrier.{u} ⟶ K)

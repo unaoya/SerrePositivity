@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の区間族の suffix は全時刻で終点を基点へ送る。 -/
 lemma terminalSuffixFamily_basepoint {A : SSet.{u}} (B : PointedSimplicialSet.{u})

@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration

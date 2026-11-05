@@ -17,7 +17,7 @@ public import Mathlib.CategoryTheory.Filtered.Connected
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

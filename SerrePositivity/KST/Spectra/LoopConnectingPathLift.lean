@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PenultimateConnecting
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.LoopConnectingComparison
 

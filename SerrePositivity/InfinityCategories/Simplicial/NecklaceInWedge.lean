@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 固定された中間頂点で、元の一点からの二つの射が全単体的に一致する。 -/
 lemma necklaceInWedge_seam {K : SSet.{u}} {x y z : K _⦋0⦌}

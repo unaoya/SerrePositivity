@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の区間の頂点一を基点にした点つき区間。 -/
 def terminalPointedInterval : PointedSimplicialSet.{u} :=

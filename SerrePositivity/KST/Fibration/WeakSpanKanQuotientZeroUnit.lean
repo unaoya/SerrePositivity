@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 set_option maxHeartbeats 800000
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration

@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の番号 a の頂点を標準単体の零単体として読む。 -/
 def standardSimplexVertex {n : ℕ} (a : Fin (n + 1)) : (Δ[n] : SSet.{u}) _⦋0⦌ :=

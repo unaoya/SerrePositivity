@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 離散部分上の射の零次族から元の関手頂点を復元する。 -/
 lemma vertexDiscreteFunctionSimplex_vertex {A X : SSet.{u}} (F : vertexDiscrete A ⟶ X) :

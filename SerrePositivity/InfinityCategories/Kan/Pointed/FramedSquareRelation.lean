@@ -19,6 +19,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FramedSquare
 end SerrePositivity.KST.Spectra.FramedSquare
 namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.FramedSquare
 variable {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (x y : X _⦋0⦌)
     (h00 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 0 0) = x)
@@ -42,11 +43,11 @@ lemma bottom_comp_right
       SSet.HomotopyCategory.homMk (right q x y h10 h11) =
     SSet.HomotopyCategory.homMk (left q x h00 h01) := by
   let d : X.Edge x x :=
-    ((((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.upper).map q).ofEq
+    ((((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).map q).ofEq
       h00 h11)
   have hu : SSet.Edge.CompStruct (left q x h00 h01) (SSet.Edge.id x) d :=
     (((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
-      SquareTriangles.upper).map q).ofEq rfl ht rfl
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).map q).ofEq rfl ht rfl
   have hl : SSet.Edge.CompStruct (bottom q x y h00 h10) (right q x y h10 h11) d :=
     (((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
       SquareTriangles.lower).map q).ofEq rfl rfl

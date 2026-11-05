@@ -18,7 +18,7 @@ namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の二頂点 a≤b を結ぶ標準一単体の頂点列。 -/
 def edgeOrderHom (T : NecklaceShape) (a b : T.Vertex) (hab : a ≤ b) :

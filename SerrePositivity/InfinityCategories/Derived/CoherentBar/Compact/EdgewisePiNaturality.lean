@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 共通解像から反転空間への、同じ定値基点を保つ π 同型。 -/
 def dgBarCompactEdgewiseLeftPiEquiv (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) :=

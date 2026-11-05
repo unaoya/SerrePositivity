@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.SphereMappingComponents
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

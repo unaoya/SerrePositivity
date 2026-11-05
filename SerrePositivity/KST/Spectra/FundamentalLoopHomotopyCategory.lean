@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.FundamentalLoop
 variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}

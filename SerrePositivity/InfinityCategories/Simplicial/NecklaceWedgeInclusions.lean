@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 対象等号による necklace 射は、全単体の元の全頂点番号を保つ。 -/
 lemma necklaceEqToHom_simplex_val {T U : Necklace.{u}} (h : T = U) {n : ℕ}

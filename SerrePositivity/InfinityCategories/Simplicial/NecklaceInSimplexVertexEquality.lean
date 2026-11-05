@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の形の等号移送で全頂点作用が一致する augmentation は、元の同じ対象。 -/
 lemma necklaceInSimplex_eq_of_vertices {N : ℕ} {x y : (Δ[N] : SSet.{u}) _⦋0⦌}

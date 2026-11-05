@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Limits Simplicial SSet
+open CategoryTheory Limits _root_.Simplicial SSet
 
 /-- 同じ形の元の実単体集合の、全単体を保つ移送同型。 -/
 def carrierCongr {T U : NecklaceShape} (h : T = U) : T.carrier.{u} ≅ U.carrier.{u} :=

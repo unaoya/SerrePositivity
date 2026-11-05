@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Opposite SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：選ばれた成分に属する単体を表す写像を部分単体集合へ持ち上げる。

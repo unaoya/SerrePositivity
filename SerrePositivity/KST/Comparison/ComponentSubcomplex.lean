@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory Opposite SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：指定した連結成分の全単体からなる部分単体集合。

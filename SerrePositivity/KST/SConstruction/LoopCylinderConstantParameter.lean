@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 区間全体で基点に写るパラメータ部分は、円への降下後も厳密に基点に定数。 -/
 lemma circleCylinderDesc_constant_parameter {A P : SSet.{u}} (B : PointedSimplicialSet.{u})

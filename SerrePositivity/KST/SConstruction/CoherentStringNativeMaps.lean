@@ -17,7 +17,7 @@ universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C] [SimplicialCategory C]
   {x y : I} {f : x ⟶ y}
 

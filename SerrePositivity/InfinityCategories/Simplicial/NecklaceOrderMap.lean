@@ -13,8 +13,9 @@ universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 全単体の bead 条件を保つ順序写像の、元の実単体集合への作用。 -/
 def orderMap {T U : NecklaceShape} (f : T.Vertex →o U.Vertex)

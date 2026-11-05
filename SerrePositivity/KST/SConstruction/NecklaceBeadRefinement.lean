@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の necklace を、全頂点を共有する元の一 bead に含める実端点保存射。 -/
 def necklaceBeadRefinement (T : Necklace.{u}) : T ⟶ necklaceBead T.down.vertexMax where

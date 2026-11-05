@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SSet.modelCategoryQuillen
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.Spectra

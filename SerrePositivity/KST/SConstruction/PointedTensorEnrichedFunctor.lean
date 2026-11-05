@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 任意の固定点つき左因子との smash は、標準点つきの厳密単体的豊穣関手。 -/
 def pointedTensorEnrichedFunctor (K : PointedSimplicialSet.{u}) :

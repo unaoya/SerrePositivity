@@ -43,6 +43,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
 end SerrePositivity.KST.Spectra.BoundaryNormalization
 namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
@@ -87,11 +88,11 @@ def lastSimplex {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
 theorem exists_filler_of_lastSimplex {X : SSet.{u}} [KanComplex X]
     (n : ℕ) (x : X _⦋0⦌) (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X)
     (hg : inclusion n ≫ g = SSet.const x)
-    (h : KanHomotopy.mk n (lastSimplex n x g hg) = KanHomotopy.point n) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (lastSimplex n x g hg) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n) :
     ∃ s : (Δ[n + 1] : SSet.{u}) ⟶ X, (boundary (n + 1)).ι ≫ s = g := by
-  have hrel : KanHomotopy.mk n (RelativeMorphism.const : X.PtSimplex n x) =
-      KanHomotopy.mk n (lastSimplex n x g hg) :=
-    (KanHomotopy.mk_const n).trans h.symm
+  have hrel : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (RelativeMorphism.const : X.PtSimplex n x) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (lastSimplex n x g hg) :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const n).trans h.symm
   obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 hrel
   refine ⟨r.map, ?_⟩
   apply boundary.hom_ext

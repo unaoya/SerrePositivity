@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open BraidedCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FreePathEvaluation
 
 /-- 自由基点を除いた元の成分で評価する、通常の二変数の射。 -/

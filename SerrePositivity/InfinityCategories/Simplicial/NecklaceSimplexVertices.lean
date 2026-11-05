@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 namespace NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
 

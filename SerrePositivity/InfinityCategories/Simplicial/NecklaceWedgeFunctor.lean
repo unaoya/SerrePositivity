@@ -18,7 +18,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 二つの元の necklace を、終始点で連結する。 -/
 abbrev necklaceWedge (T U : Necklace.{u}) : Necklace.{u} := ⟨T.down.wedge U.down⟩

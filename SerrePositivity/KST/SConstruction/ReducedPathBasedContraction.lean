@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の点つき経路商の収縮は、基点生成部分複体に相対な実際のホモトピー。 -/
 def reducedPathDiagonalBasedContraction (D : SimplicialObject SSet.{u}) :

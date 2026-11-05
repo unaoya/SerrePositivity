@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
   (φ : A ⟶ pointedSpace X Y.toKanSequence) (j : B ⟶ A)

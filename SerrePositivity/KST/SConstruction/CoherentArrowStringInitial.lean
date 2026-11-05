@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I}
 
 /-- 元の射そのものを長さ一の合成列とする。 -/

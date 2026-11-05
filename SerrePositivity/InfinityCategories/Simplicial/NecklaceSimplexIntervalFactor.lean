@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 variable {n : ℕ} {a b : Fin (n + 1)}
   (T : NecklaceIn (Δ[n] : SSet.{u}) (standardSimplexVertex a) (standardSimplexVertex b))
 

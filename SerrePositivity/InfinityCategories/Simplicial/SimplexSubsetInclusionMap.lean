@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の始端が一致する部分集合包含は、元の局所始頂点を保つ。 -/
 lemma simplexSubsetInclusionOrder_first {n : ℕ} (I J : Finset (Fin (n + 1)))

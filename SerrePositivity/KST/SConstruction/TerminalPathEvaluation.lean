@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 終点固定 path の始点評価は通常の指数の頂点零での評価。 -/
 lemma terminalPathStart_evaluation (B : PointedSimplicialSet.{u}) :

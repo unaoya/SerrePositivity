@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Limits Simplicial SSet
+open CategoryTheory Limits _root_.Simplicial SSet
 
 /-- 元の necklace と同型な入力内の、同じ全体を覆う necklace。 -/
 def necklaceInOfIso (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :

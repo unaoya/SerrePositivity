@@ -21,6 +21,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 namespace SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 
 noncomputable section
@@ -53,14 +54,14 @@ lemma homotopyMap_injective : Function.Injective (homotopyMap S X n b) := by
   have hr (s : S) : Nonempty (PtSimplex.RelStruct
       (mapSimplex (eval S X s) rfl f) (mapSimplex (eval S X s) rfl g) 0) :=
     (simplexRel_iff_relStruct 0).mp ((KanHomotopyGroup.mk_eq_iff _ _).mp (hs s))
-  exact KanHomotopyGroup.sound (relStruct (fun s ↦ Classical.choice (hr s)))
+  exact KanHomotopyGroup.sound (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct (fun s ↦ Classical.choice (hr s)))
 
 lemma homotopyMap_surjective : Function.Surjective (homotopyMap S X n b) := by
   intro a
   choose f hf using fun s ↦ Quotient.exists_rep (a s)
-  refine ⟨KanHomotopyGroup.mk (simplex f), ?_⟩
+  refine ⟨KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.simplex f), ?_⟩
   funext s
-  change KanHomotopyGroup.mk (mapSimplex (eval S X s) rfl (simplex f)) = a s
+  change KanHomotopyGroup.mk (mapSimplex (eval S X s) rfl (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.simplex f)) = a s
   rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.eval_simplex]
   exact hf s
 

@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
 def identityLaxArrowBaseEquivalence (e : QCatEquivalence X Y) :

@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PathContractibility
 universe u
 
 open CategoryTheory SSet CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

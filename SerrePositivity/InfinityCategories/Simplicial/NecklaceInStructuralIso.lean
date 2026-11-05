@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の necklace 同型と augmentation の可換性から、K 内の実同型を得る。 -/
 def necklaceInIso {K : SSet.{u}} {x y : K _⦋0⦌} {T U : NecklaceIn K x y}

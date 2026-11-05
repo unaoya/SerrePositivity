@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の定値単体的写像は、零次数で指定した点を回収する。 -/
 lemma simplicialConst_zero_apply {K L : SSet.{u}} (x : L _⦋0⦌) (s : K _⦋0⦌) :

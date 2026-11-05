@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.SimplexHAStrictIntervalOrder
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 

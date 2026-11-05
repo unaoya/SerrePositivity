@@ -11,7 +11,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 

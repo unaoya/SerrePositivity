@@ -11,7 +11,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (x : X _⦋0⦌)

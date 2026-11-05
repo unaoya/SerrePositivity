@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の標準単体への augmentation の、元の全頂点への作用。 -/
 def necklaceSimplexVertexMap (T : NecklaceShape) {n : ℕ} (f : T.carrier.{u} ⟶ Δ[n]) :

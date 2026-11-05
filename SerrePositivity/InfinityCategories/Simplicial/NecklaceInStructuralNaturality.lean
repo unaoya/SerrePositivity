@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- K 内の元の三重連結の結合同型は、全ての元の可換三角形について自然。 -/
 lemma necklaceInAssociator_naturality {K : SSet.{u}} {w x y z : K _⦋0⦌}

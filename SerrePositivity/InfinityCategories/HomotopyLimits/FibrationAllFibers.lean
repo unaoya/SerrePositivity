@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.FibrationSquare
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 noncomputable section

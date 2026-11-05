@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.SpectrumMorphisms
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.PointedMapping
 

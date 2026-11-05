@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeRefinement
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の necklace の等号移送を持つ可換三角形は、同じ augmentation の対象等号を与える。 -/
 lemma necklaceIn_eq_of_hom_eqToHom {K : SSet.{u}} {x y : K _⦋0⦌}

@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory MonoidalClosed
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：K-L9 の基点始点 path の終点は、通常の区間の指数の終点評価である。

@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Opposite SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：定数写像が表す単体の成分はその定数の頂点の成分である。

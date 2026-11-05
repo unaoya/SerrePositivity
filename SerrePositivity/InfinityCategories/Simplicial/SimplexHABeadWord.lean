@@ -47,7 +47,7 @@ deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.bead
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.below := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.below
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.brecOn := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.brecOn := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.casesOn (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.casesOn := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.casesOn
@@ -89,7 +89,7 @@ deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.bead
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.brecOn.eq := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn.eq
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn.go (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.brecOn.go := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn.go
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.brecOn.go := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn.go
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join.elim (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.SimplexHABeadWord.join.elim := _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join.elim

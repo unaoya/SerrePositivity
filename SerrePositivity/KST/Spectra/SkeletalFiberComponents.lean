@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.SimplexCellSphereIso
 
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 

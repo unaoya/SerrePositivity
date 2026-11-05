@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 全高次の定値単体への作用は、同じ零単体の像の退化である。 -/
 lemma map_constantSimplex {T : NecklaceShape} {K : SSet.{u}}

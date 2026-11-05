@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory MonoidalClosed
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：基点を始点に取った区間から標準単体的円への商写像。
