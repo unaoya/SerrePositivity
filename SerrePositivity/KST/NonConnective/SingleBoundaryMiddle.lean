@@ -25,7 +25,7 @@ def singleBoundaryGroupMap {X Y : StableModel.{u}} (f : X ⟶ Y) (n : ℕ) :=
 
 /-- 同じ元の群作用の恒等法則。 -/
 lemma singleBoundaryGroupMap_id (X : StableModel.{u}) (n : ℕ)
-    (a : KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
       ((boundaryKanRealizationFunctor 0).obj X).basepoint) :
     singleBoundaryGroupMap (𝟙 X) n a = a := by
   unfold singleBoundaryGroupMap
@@ -34,7 +34,7 @@ lemma singleBoundaryGroupMap_id (X : StableModel.{u}) (n : ℕ)
 
 /-- 同じ元の群作用の合成法則。 -/
 lemma singleBoundaryGroupMap_comp {X Y Z : StableModel.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
-    (n : ℕ) (a : KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
       ((boundaryKanRealizationFunctor 0).obj X).basepoint) :
     singleBoundaryGroupMap (f ≫ g) n a =
       singleBoundaryGroupMap g n (singleBoundaryGroupMap f n a) := by
@@ -43,7 +43,7 @@ lemma singleBoundaryGroupMap_comp {X Y Z : StableModel.{u}} (f : X ⟶ Y) (g : Y
 
 /-- 元の中央項の群作用は、同じ subobject・quotient の群作用の積である。 -/
 theorem singleBoundaryMiddle_additivity (X : StableModel.{u}) (n : ℕ)
-    (a : KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj
       (cofiberStableModel X)).right n
       ((boundaryKanRealizationFunctor 0).obj (cofiberStableModel X)).basepoint) :
     singleBoundaryGroupMap (cofiberStableMiddle X) n a =

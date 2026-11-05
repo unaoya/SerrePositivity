@@ -24,11 +24,11 @@ namespace SerrePositivity.KST.LocalizingInvariants
 namespace FullSubcomplex
 variable {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 
-variable [Quasicategory X] [IsStable X] (hP : StableVertexCondition P)
+variable [Quasicategory X] [IsStable X] (hP : _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition P)
 
 /-- 部分圏は周囲の選んだ零対象を含む。 -/
 def zeroVertex : ZeroVertex (fullSubcomplexOnVertices X P : SSet.{u}) where
-  vertex := vertex P (chosenZeroVertex X).vertex (hP.zero _ (chosenZeroVertex X).isZero)
+  vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.vertex P (chosenZeroVertex X).vertex (hP.zero _ (chosenZeroVertex X).isZero)
   isInitial := (reflects_zero P _ (chosenZeroVertex X).isZero).1
   isTerminal := (reflects_zero P _ (chosenZeroVertex X).isZero).2
 
@@ -52,14 +52,14 @@ theorem isStable : IsStable (fullSubcomplexOnVertices X P : SSet.{u}) := by
   apply isStable_of_bicartesian_choices
   · intro x y f
     let s := chosenFiberSquare (f.map ((truncation 2).map (fullSubcomplexOnVertices X P).ι))
-    refine ⟨fiberLift P f s (fiber_vertices P hP f s), reflects_pushout P _ ?_⟩
-    change IsPushoutSquare (squareLift P s.square (fiber_vertices P hP f s) ≫ _)
+    refine ⟨fiberLift P f s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices P hP f s), reflects_pushout P _ ?_⟩
+    change IsPushoutSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices P hP f s) ≫ _)
     rw [squareLift_ι]
     exact IsStable.pushout_of_pullback s.toZeroTriangle s.isPullback
   · intro x y f
     let s := chosenCofiberSquare (f.map ((truncation 2).map (fullSubcomplexOnVertices X P).ι))
-    refine ⟨cofiberLift P f s (cofiber_vertices P hP f s), reflects_pullback P _ ?_⟩
-    change IsPullbackSquare (squareLift P s.square (cofiber_vertices P hP f s) ≫ _)
+    refine ⟨cofiberLift P f s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s), reflects_pullback P _ ?_⟩
+    change IsPullbackSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s) ≫ _)
     rw [squareLift_ι]
     exact IsStable.pullback_of_pushout s.toZeroTriangle s.isPushout
 

@@ -25,16 +25,16 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 lemma DiscreteInternalHom.iso_hom (S : Type u) (X : SSet.{u}) :
-    (iso S X).hom = homEquiv S X _ (𝟙 _) := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S X).hom = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv S X _ (𝟙 _) := rfl
 
 lemma DiscreteInternalHom.homEquiv_apply (S : Type u) (X : SSet.{u}) {A : SSet.{u}}
     (t : A ⟶ (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X) :
-    homEquiv S X A t = t ≫ (iso S X).hom := by
-  rw [iso_hom, ← homEquiv_pre, Category.comp_id]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv S X A t = t ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S X).hom := by
+  rw [iso_hom, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv_pre, Category.comp_id]
 
 lemma DiscreteInternalHom.comp_iso (S : Type u) (X : SSet.{u}) {A : SSet.{u}}
     (t : A ⟶ (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X) :
-    t ≫ (iso S X).hom = toFunctions S X (uncurry t) :=
+    t ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S X).hom = _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X (uncurry t) :=
   (homEquiv_apply S X t).symm
 
 lemma FreeActionFamily.comp_endIso {G : Type u} [Group G] (S : Type u) (B : Action SSet.{u} G)

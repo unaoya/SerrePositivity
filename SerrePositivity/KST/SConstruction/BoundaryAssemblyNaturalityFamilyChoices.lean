@@ -67,7 +67,7 @@ lemma boundaryAssemblyNaturalityFamilyAt_target (r : ℕ) {X Y : StableModel.{u}
     (v : (boundaryAssemblyNaturalityFamilyChoices r f) _⦋0⦌) :
     boundaryAssemblyNaturalityTarget r f ≫ boundaryAssemblyNaturalityFamilyAt r f v =
       boundaryKanAssemblyAdjointFamily r Y ≫
-        (prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   rw [boundaryAssemblyNaturalityTarget, Category.assoc, boundaryAssemblyNaturalityFamilyAt_unit]
   exact boundaryAssemblyNaturalityCylinderFamily_target r f

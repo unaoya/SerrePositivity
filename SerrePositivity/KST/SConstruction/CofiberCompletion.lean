@@ -15,14 +15,14 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：関手の四角形が零角を持つ押し出しである条件。
 方針：零角と α-S の押し出し性を組にする。
 規約：零角は (0,1)。使われ方：cofiber 図式の全部分圏。 -/
 def IsCofiberDiagramVertex {C : SSet.{u}}
     (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) _⦋0⦌) : Prop :=
-  IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧ IsPushoutDiagramVertex v
+  IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex v
 
 /-- 概要：cofiber 四角形全体の単体集合。
 方針：実際の四角形の関手単体集合の全部分複体を取る。
@@ -40,7 +40,7 @@ def cofiberProjection (C : SSet.{u}) : cofiberDiagrams C ⟶ (ihom (Δ[1] : SSet
 /-- 概要：cofiber 四角形の零角の条件を忘れて押し出し四角形にする。
 方針：同じ関手頂点の押し出し条件を使う。
 規約：四角形自体は変えない。使われ方：押し出しの境界充填への比較。 -/
-def cofiberForgetZero (C : SSet.{u}) : cofiberDiagrams C ⟶ pushoutDiagrams C :=
+def cofiberForgetZero (C : SSet.{u}) : cofiberDiagrams C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
   fullSubcomplexLift _ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
     (fun v ↦ (fullSubcomplexOnVertices_vertex v).2)
 
@@ -48,7 +48,7 @@ def cofiberForgetZero (C : SSet.{u}) : cofiberDiagrams C ⟶ pushoutDiagrams C :
 方針：全部分複体の持ち上げの式。
 規約：厳密等号。使われ方：族の境界の照合。 -/
 lemma cofiberForgetZero_ι (C : SSet.{u}) :
-    cofiberForgetZero C ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι =
+    cofiberForgetZero C ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι =
       (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι := rfl
 
 /-- 概要：cofiber 四角形の左辺は零対象へ向かう辺。
@@ -92,9 +92,9 @@ lemma cofiberZeroArrow_source (C : SSet.{u}) :
 方針：span の包含と前合成の合成則を使う。
 規約：0→1 の辺。使われ方：補完した四角形の入力の回収。 -/
 lemma pushoutProjection_bottom (C : SSet.{u}) :
-    pushoutProjection C ≫ (pre horn₂₀.ι₀₁).app C =
-      (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι ≫ (pre squareBottomEdge).app C := by
-  rw [pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
+    _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C ≫ (pre horn₂₀.ι₀₁).app C =
+      (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι ≫ (pre squareBottomEdge).app C := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     spanSquareBoundary_bottomEdge]
 
 end SerrePositivity.KST.SConstruction

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorIso
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
@@ -29,37 +34,67 @@ def restoredUnit : FunctorHom (𝟙 X) (F ≫ G) :=
 def restoredCounit : FunctorHom (G ≫ F) (𝟙 Y) :=
   (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y)).symm a.unitHom
 
-lemma restored_leftTriangle : unitLeftZigzag (restoredUnit a) (restoredCounit a) =
+lemma restored_leftTriangle : unitLeftZigzag (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit a) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a) =
     𝟙 (HomotopyCategory.mk (functorVertex F)) := by
   apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F).injective
   unfold unitLeftZigzag
   erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := F) (G := F ≫ G ≫ F) (H := F),
-    oppositeFunctorHom_postcomp F (F := 𝟙 X) (G := F ≫ G) (restoredUnit a),
-    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) (restoredCounit a),
-    oppositeFunctorHom_id]
-  simp only [restoredUnit, restoredCounit, Equiv.apply_symm_apply]
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_postcomp F (F := 𝟙 X) (G := F ≫ G) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit a),
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a),
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit, Equiv.apply_symm_apply]
   exact SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a
 
 lemma restored_rightTriangle :
-    (hoFunctor.map ((pre G).app X)).toFunctor.map (restoredUnit a) ≫
-      (hoFunctor.map ((ihom Y).map G)).toFunctor.map (restoredCounit a) =
+    (hoFunctor.map ((pre G).app X)).toFunctor.map (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit a) ≫
+      (hoFunctor.map ((ihom Y).map G)).toFunctor.map (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a) =
         𝟙 (HomotopyCategory.mk (functorVertex G)) := by
   apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G).injective
   erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := G) (G := G ≫ F ≫ G) (H := G),
-    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) (restoredUnit a),
-    oppositeFunctorHom_postcomp G (F := G ≫ F) (G := 𝟙 Y) (restoredCounit a),
-    oppositeFunctorHom_id]
-  simp only [restoredUnit, restoredCounit, Equiv.apply_symm_apply]
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit a),
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_postcomp G (F := G ≫ F) (G := 𝟙 Y) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a),
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit, Equiv.apply_symm_apply]
   exact SerrePositivity.InfinityCategories.F1B.adjunction_leftTriangleHom a
 
 def adjunctionOfOpposite : QCatAdjunction F G :=
-  adjunctionOfFunctorHomTriangles (restoredUnit a) (restoredCounit a)
-    (restored_leftTriangle a) (restored_rightTriangle a)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit a) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a)
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_leftTriangle a) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_rightTriangle a)
 
-lemma adjunctionOfOpposite_counit : (adjunctionOfOpposite a).counitHom = restoredCounit a :=
-  adjunctionOfFunctorHomTriangles_counit _ _ _ _
+lemma adjunctionOfOpposite_counit : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite a).counitHom = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a :=
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles_counit _ _ _ _
 
-instance restoredCounit_isIso [IsIso a.unitHom] : IsIso (restoredCounit a) :=
-  inferInstanceAs (IsIso (restoredFunctorIso (F := G ≫ F) (G := 𝟙 Y) (asIso a.unitHom)).hom)
+instance restoredCounit_isIso [IsIso a.unitHom] : IsIso (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit a) :=
+  inferInstanceAs (IsIso (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredFunctorIso (F := G ≫ F) (G := 𝟙 Y) (asIso a.unitHom)).hom)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfOpposite := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfOpposite_counit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite_counit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit_isIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit_isIso := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredUnit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restored_leftTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_leftTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restored_rightTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_rightTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredUnit.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit.eq_1

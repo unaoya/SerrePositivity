@@ -22,17 +22,17 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 
 /-- 元の二つの輸送三角形から、同じ段調整区間の間の実正方形を構成する。 -/
 def kanAdjointCanonicalTransportSquare (n : ℕ) :=
-  (kanAdjointCanonicalStageTransport X Y φ j n).square
+  (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalStageTransport X Y φ j n))
 
 /-- 保存した第一の二単体は、正方形の上側の同じ二単体。 -/
 lemma kanAdjointCanonicalTransportSquare_upper (n : ℕ) :
-    SquareTriangles.upper ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
       SSet.yonedaEquiv.symm (kanAdjointCanonicalStageTransport X Y φ j n).first.simplex :=
   ThreeEdgeTransport.square_upper _
 
 /-- 保存した第二の二単体も、正方形の下側の同じ二単体。 -/
 lemma kanAdjointCanonicalTransportSquare_lower (n : ℕ) :
-    SquareTriangles.lower ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
       SSet.yonedaEquiv.symm (kanAdjointCanonicalStageTransport X Y φ j n).second.simplex :=
   ThreeEdgeTransport.square_lower _
 
@@ -56,10 +56,10 @@ lemma kanAdjointCanonicalTransportSquare_finish (n : ℕ) :
 /-- 正方形全体の非零境界への射影は、同じ二つの境界輸送三角形から作った正方形。 -/
 lemma kanAdjointCanonicalTransportSquare_projection (n : ℕ) :
     kanAdjointCanonicalTransportSquare X Y φ j n ≫
-      (PointedObject.basedHomMap (suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
-      (kanAdjointCanonicalBoundaryTransport X Y φ j n).square := by
+      (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalBoundaryTransport X Y φ j n)) := by
   rw [kanAdjointCanonicalTransportSquare, ThreeEdgeTransport.square_map]
   exact ThreeEdgeTransport.square_eq_of_simplex_eq _ _ rfl rfl
 

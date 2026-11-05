@@ -23,10 +23,10 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 規約：各欄の実構成は別工程であり、この型の定義を完成に数えない。
 使われ方：Sp の新しい完備化付き相対接続に渡す残入力。 -/
 structure DGOdotMilnorRelativeRectangleInput where
-  rectangle : RelativePerfectVerdierRectangle (dgKInputPerfectNu.{u, u + 1} R)
-  boundary : VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputPerfectNu R)
+  rectangle : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle (dgKInputPerfectNu.{u, u + 1} R)
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram
-  image : VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary
   source_vertex : squareVertex (((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom) ≫
     pastingSquare rectangle.diagram 2) 0 0 =
@@ -53,7 +53,7 @@ theorem comparison_isPullback {F : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 方針：全長方形の既存の比較制限を回収する。規約：面ごとに同型を選び直さない。
 使われ方：元の商境界の実比較との照合。 -/
 lemma comparison_faces (j : Fin 2) :
-    v.image.comparison.precomp (verdierRectangleFace j) = (v.image.faces j).comparison :=
+    v.image.comparison.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace j) = (v.image.faces j).comparison :=
   v.image.faces_eq j
 
 /-- 概要：上下の合成三角形の比較も指定された同じもの。

@@ -12,7 +12,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 空間の等式による実射の輸送。 -/
 def dgBarCompactSpaceMapCast {X X' Y Y' : SSet.{u}}
@@ -33,7 +33,7 @@ lemma dgBarCompactPiChart_cast_naturality {X X' Y Y' : SSet.{u}}
     (c : DGBarCompactPiChart X n A) (c' : DGBarCompactPiChart Y n B)
     (f : X ⟶ Y) (φ : A → B)
     (hf : ∀ z a, c'.equiv (f.app _ z) (dgBarCompactPiMap n f z a) = φ (c.equiv z a))
-    (z : X' _⦋0⦌) (a : KanHomotopyGroup X' n z) :
+    (z : X' _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X' n z) :
     (c'.cast hy).equiv ((dgBarCompactSpaceMapCast hx hy f).app _ z)
       (dgBarCompactPiMap n (dgBarCompactSpaceMapCast hx hy f) z a) =
       φ ((c.cast hx).equiv z a) := by

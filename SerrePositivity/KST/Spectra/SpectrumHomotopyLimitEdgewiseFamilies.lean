@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I]
 def homotopyLimitEdgewiseEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
     edgewiseSubdivision (mappingSpace X (homotopyLimit D)) ⟶
       bousfieldKanHolim (simplicialHomDiagram D X ⋙ edgewiseSubdivisionFunctor) :=
-  ParameterPoint.family (homotopyLimitEdgewiseEndPointMap D)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitEdgewiseEndPointMap D)
     (edgewiseSubdivision (mappingSpace X (homotopyLimit D))) ≫
       edgewiseHomEndPrecomposition D X (homotopyLimit D)
 
@@ -32,7 +32,7 @@ def homotopyLimitEdgewiseEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpect
 def homotopyLimitReflectedEndFamily (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
     (mappingSpace X (homotopyLimit D)).op ⟶
       bousfieldKanHolim (simplicialHomDiagram D X ⋙ SSet.opFunctor) :=
-  ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
     (mappingSpace X (homotopyLimit D)).op ≫
       weightedConeEndPrecomposition D X (homotopyLimit D)
 
@@ -43,7 +43,7 @@ lemma homotopyLimitEdgewiseEndFamily_right (D : I ⥤ OmegaSpectrum.{u}) (X : Om
       edgewiseRight (mappingSpace X (homotopyLimit D)) ≫ homotopyLimitHomEndFamily D X := by
   dsimp only [homotopyLimitEdgewiseEndFamily, homotopyLimitHomEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_right, ← Category.assoc,
-    ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_right, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_right, Category.assoc]
   rfl
 
 /-- 共通解像の比較族を左射影すると、元の反転 end の点の比較族になる。 -/
@@ -53,7 +53,7 @@ lemma homotopyLimitEdgewiseEndFamily_left (D : I ⥤ OmegaSpectrum.{u}) (X : Ome
       edgewiseLeft (mappingSpace X (homotopyLimit D)) ≫ homotopyLimitReflectedEndFamily D X := by
   dsimp only [homotopyLimitEdgewiseEndFamily, homotopyLimitReflectedEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_left, ← Category.assoc,
-    ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_left, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_left, Category.assoc]
   rfl
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

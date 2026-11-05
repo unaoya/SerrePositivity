@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -74,9 +76,13 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.KST.Spectra.BoundaryNormalization
+namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
 
@@ -97,22 +103,22 @@ theorem horn_le_boundary (n : ℕ) (j : Fin (n + 1)) : horn.{u} n j ≤ boundary
 使われ方：Goerss–Jardine I §7。ホモトピー延長の左辺。 -/
 def inclusion (n : ℕ) : (horn.{u} (n + 1) (Fin.last (n + 1)) : SSet.{u}) ⟶
     (boundary.{u} (n + 1) : SSet.{u}) :=
-  Subcomplex.homOfLE (horn_le_boundary (n + 1) (Fin.last (n + 1)))
+  Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.horn_le_boundary (n + 1) (Fin.last (n + 1)))
 
 /-- 概要：ホーンから境界への包含は単射。
 方針：部分複体の包含の単射性を使う。
 規約：基礎単体集合の Mono。
 使われ方：Goerss–Jardine I §7。区間の端点の相対充填。 -/
-instance inclusion_mono (n : ℕ) : Mono (inclusion.{u} n) :=
+instance inclusion_mono (n : ℕ) : Mono (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion.{u} n) :=
   inferInstanceAs (Mono (Subcomplex.homOfLE
-    (horn_le_boundary (n + 1) (Fin.last (n + 1)))))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.horn_le_boundary (n + 1) (Fin.last (n + 1)))))
 
 /-- 概要：ホーンから境界への包含を標準単体へ含めると元のホーン包含。
 方針：部分複体の包含の定義を比較する。
 規約：点つき条件は不要。
 使われ方：Goerss–Jardine I §7。面の包含の比較。 -/
 @[reassoc (attr := simp)]
-theorem inclusion_ι (n : ℕ) : inclusion.{u} n ≫ (boundary (n + 1)).ι =
+theorem inclusion_ι (n : ℕ) : _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion.{u} n ≫ (boundary (n + 1)).ι =
     (horn (n + 1) (Fin.last (n + 1))).ι := rfl
 
 /-- 概要：最後以外の面はホーンから境界への包含を通る。
@@ -121,9 +127,9 @@ theorem inclusion_ι (n : ℕ) : inclusion.{u} n ≫ (boundary (n + 1)).ι =
 使われ方：Goerss–Jardine I §7。正規化した境界の各面の値。 -/
 @[reassoc]
 theorem hornFace_inclusion (n : ℕ) (j : Fin (n + 2)) (hj : j ≠ Fin.last (n + 1)) :
-    horn.ι (Fin.last (n + 1)) j hj ≫ inclusion.{u} n = boundary.ι j := by
+    horn.ι (Fin.last (n + 1)) j hj ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion.{u} n = boundary.ι j := by
   apply (cancel_mono (boundary (n + 1)).ι).1
-  rw [Category.assoc, inclusion_ι, horn.ι_ι, boundary.ι_ι]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_ι, horn.ι_ι, boundary.ι_ι]
 
 /-- 概要：ホーン上で定数の境界射は最後以外の全ての面で同じ定数値。
 方針：ホーンを通る各面の表示へ正規化条件を適用する。
@@ -131,9 +137,9 @@ theorem hornFace_inclusion (n : ℕ) (j : Fin (n + 2)) (hj : j ≠ Fin.last (n +
 使われ方：Goerss–Jardine I §7。PtSimplex の境界条件の検証。 -/
 theorem normalized_face {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
     (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X)
-    (hg : inclusion n ≫ g = SSet.const x) (j : Fin (n + 2))
+    (hg : _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion n ≫ g = SSet.const x) (j : Fin (n + 2))
     (hj : j ≠ Fin.last (n + 1)) : boundary.ι j ≫ g = SSet.const x := by
-  rw [← hornFace_inclusion n j hj, Category.assoc, hg, SSet.comp_const]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.hornFace_inclusion n j hj, Category.assoc, hg, SSet.comp_const]
 
 /-- 概要：任意の Kan 値の境界射は最後のホーン上で定数となる境界射へホモトピック。
 方針：ホーンの収縮を後合成し、区間の始点を保つ延長を境界全体へ行う。
@@ -142,12 +148,12 @@ theorem normalized_face {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
 theorem exists_normalization {X : SSet.{u}} [KanComplex X] (n : ℕ)
     (f : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X) :
     ∃ (x : X _⦋0⦌) (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X),
-      inclusion n ≫ g = SSet.const x ∧ Nonempty (SSet.Homotopy f g) := by
-  let i := inclusion.{u} n
-  let x := (i ≫ f).app _ (LastHornContraction.vertex n)
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion n ≫ g = SSet.const x ∧ Nonempty (SSet.Homotopy f g) := by
+  let i := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion.{u} n
+  let x := (i ≫ f).app _ (_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex n)
   let H : SSet.Homotopy (i ≫ f) (SSet.const x) := by
     simpa only [Category.id_comp, SSet.const_comp] using
-      HomotopyClasses.postHomotopy (i ≫ f) (LastHornContraction.homotopy n)
+      HomotopyClasses.postHomotopy (i ≫ f) (_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy n)
   have hX : J.rlp (terminal.from X) := (fibration_iff _).1 inferInstance
   obtain ⟨g, hg, V, _hV, _hVp⟩ := KanFibrationEndpointExtension.exists_from_zero
     (terminal.from X) hX i f (SSet.const x) H (terminal.from _)
@@ -173,4 +179,40 @@ theorem exists_filler_of_homotopy {X : SSet.{u}} [KanComplex X] (n : ℕ)
 
 end
 
-end SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_homotopy := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_homotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_normalization := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_normalization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.hornFace_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.hornFace_inclusion_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.horn_le_boundary := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.horn_le_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_mono := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.normalized_face := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.normalized_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion._proof_1

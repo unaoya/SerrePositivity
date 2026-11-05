@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet DifferentialGraded DGNerve
 open F2.Idempotent
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (u + 1)) [DGCategory R C] [Small.{u} C]
   [IsDGPretriangulated R C]
 

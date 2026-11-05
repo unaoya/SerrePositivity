@@ -9,7 +9,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
@@ -23,7 +23,7 @@ def scaffoldCocartesianKanClassificationIso :
 /-- 置換単位上の同じ係数点を、同じ恒等射評価点の pointed 復元像へ送る。 -/
 theorem scaffoldCocartesianKanClassificationIso_pointHom (i : I)
     (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
-    cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
         ((F2.continuousKanReplacementUnit.app
           ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
@@ -31,7 +31,7 @@ theorem scaffoldCocartesianKanClassificationIso_pointHom (i : I)
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram p) i))).inv ≫
       functorHomEvaluate (scaffoldCocartesianKanClassificationIso p).hom
         (ULift.up (nerveVertex i)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p) (nerveVertex i)
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
         (scaffoldPointedReconstruction p)
@@ -43,16 +43,16 @@ theorem scaffoldCocartesianKanClassificationIso_pointHom (i : I)
   let C := eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p i))
   let A := eqToIso (congrArg HomotopyCategory.mk
     (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram p) i))
-  let x := cosliceFiberPointHom
+  let x := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
     ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
       ((F2.continuousKanReplacementUnit.app
         ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
   let a := x ≫ A.inv ≫ functorHomEvaluate (leftCocartesianKanComparisonIso p).hom z
   have hl := leftCocartesianKanComparisonValueIso_pointHom p i v
-  simp only [leftCocartesianKanComparisonValueIso, kanDiagramValueIso, Iso.trans_hom,
-    Iso.symm_hom, functorIso_app_hom_evaluate] at hl
+  simp only [leftCocartesianKanComparisonValueIso, _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso, Iso.trans_hom,
+    Iso.symm_hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] at hl
   have he : a ≫ C.hom =
-      cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
         ((leftStrictTransportFunctor p).obj i)).symm w) := by
     simpa only [a, x, A, C, w, z, Category.assoc] using hl
   have hc := (Iso.comp_inv_eq C).2 he.symm

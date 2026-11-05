@@ -22,10 +22,10 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 元の商核上辺は、全相対核包含後の同じ零値完全関手の全 S• 作用である。 -/
-theorem quotientSKernelTop_zeroFunctorFullSMap (h : IsVerdierSequence i q) :
+theorem quotientSKernelTop_zeroFunctorFullSMap (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     relativeSimplicialFunctorMap i q.hom ≫ relativeSimplicialQuotientMap q =
       (relativeSKernelSimplicialIso h).hom ≫
         zeroFunctorFullSMap (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
@@ -42,7 +42,7 @@ theorem quotientSKernelTop_zeroFunctorFullSMap (h : IsVerdierSequence i q) :
   exact (Category.assoc _ _ _).symm.trans (quotientSKernelTop_fullS h n.unop.len)
 
 /-- 元の全核円柱を読む同じ零値関手パラメータ。 -/
-def quotientSKernelZeroFunctorParameter (h : IsVerdierSequence i q) :
+def quotientSKernelZeroFunctorParameter (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     (Δ[1] : SSet.{u}) ⟶ zeroFunctorLocus A C :=
   zeroStableHomFamilyLift
     (zeroEndPostcompFamily (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
@@ -50,13 +50,13 @@ def quotientSKernelZeroFunctorParameter (h : IsVerdierSequence i q) :
     (zeroEndPostcompFamily_zero_vertices _ _)
 
 /-- 完全関手空間で、元の円柱の同じ全単体を回収する。 -/
-theorem quotientSKernelZeroFunctorParameter_toExact (h : IsVerdierSequence i q) :
+theorem quotientSKernelZeroFunctorParameter_toExact (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     quotientSKernelZeroFunctorParameter h ≫ zeroFunctorLocusToExact A C =
       zeroEndPostcompFamily
         (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
           (verdierSequenceComposite_zero h) ≫
-            (quasicategoryCore (exactFunctors A C : SSet.{u})).ι := by
-  have he := congrArg (fun f => f ≫ (quasicategoryCore (exactFunctors A C : SSet.{u})).ι)
+            (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A C : SSet.{u})).ι := by
+  have he := congrArg (fun f => f ≫ (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A C : SSet.{u})).ι)
     (zeroStableHomFamilyLift_recovery
       (zeroEndPostcompFamily
         (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
@@ -66,7 +66,7 @@ theorem quotientSKernelZeroFunctorParameter_toExact (h : IsVerdierSequence i q) 
   exact he
 
 /-- 元の相対核円柱は、全 S• の豊穣 Hom 族の同じ全パラメータ評価。 -/
-theorem quotientSKernelContractionImage_diagramFamily (h : IsVerdierSequence i q)
+theorem quotientSKernelContractionImage_diagramFamily (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (n : SimplexCategoryᵒᵖ) :
     (quotientSKernelContractionImage h).app n =
       ((relativeSKernelTopIso h n.unop.len).hom ▷ (Δ[1] : SSet.{u})) ≫

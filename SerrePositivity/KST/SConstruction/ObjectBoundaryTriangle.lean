@@ -84,9 +84,9 @@ def objectBoundaryTriangle (X : StableModel.{u})
 /-- 元の S₂ の三辺は、一重 S の実際の基本群で三角形の積の関係を満たす。 -/
 lemma objectBoundaryTriangle_mul (X : StableModel.{u})
     (q : (objectSConstruction X.carrier) _⦋2⦌) :
-    KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 2 q)) *
-      KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 0 q)) =
-        KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 1 q)) :=
-  KanHomotopyGroup.mul_eq (objectBoundaryTriangle X q)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 2 q)) *
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 0 q)) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 1 q)) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (objectBoundaryTriangle X q)
 
 end SerrePositivity.KST.SConstruction

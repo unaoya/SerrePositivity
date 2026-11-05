@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元のラベル付き Perf の実 native nerve を、同じ小さい安定 ∞ 圏として保持する。 -/
 def presentedPerfectDGStableCategory (C : PerfDGInput.{u, v} A) :
-    LocalizingInvariants.StableCategory.{max (u + 1) v} :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
   ⟨(presentedPerfectDGQCat A C).obj, inferInstance, presentedPerfectDGQCat_isStable A C⟩
 
 /-- 安定値の底は、元の豊穣 Perf 関手と同じ全 native 単体集合。 -/
@@ -26,7 +26,7 @@ lemma presentedPerfectDGStableCategory_obj (C : PerfDGInput.{u, v} A) :
 
 /-- 元の厳密 dg 入力射による同じラベル作用を、完全射として束ねる。 -/
 def presentedPerfectDGExactMap {C D : PerfDGInput.{u, v} A} (F : C ⟶ D) :
-    LocalizingInvariants.ExactMap
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :=
   ⟨dgNerve.map (presentedPerfectDGAction A C D F.down),
     presentedPerfectDGActionNerve_isExactFunctor A C D F.down⟩
@@ -39,14 +39,14 @@ lemma presentedPerfectDGQCatFunctor_map_isExactFunctor
 
 /-- 元の厳密 dg 射の恒等・合成を保つ、安定 ∞ 圏と完全射への通常の Perf 関手。 -/
 def presentedPerfectDGStableCategoryFunctor :
-    PerfDGInput.{u, v} A ⥤ LocalizingInvariants.StableCategory.{max (u + 1) v} where
+    PerfDGInput.{u, v} A ⥤ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} where
   obj := presentedPerfectDGStableCategory A
   map := presentedPerfectDGExactMap A
   map_id C := by
-    apply LocalizingInvariants.ExactMap.ext
+    apply _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext
     exact (presentedPerfectDGQCatFunctor A).map_id C
   map_comp F G := by
-    apply LocalizingInvariants.ExactMap.ext
+    apply _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext
     exact (presentedPerfectDGQCatFunctor A).map_comp F G
 
 end SerrePositivity.KST.SConstruction

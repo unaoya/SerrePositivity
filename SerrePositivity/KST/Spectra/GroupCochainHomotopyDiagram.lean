@@ -27,7 +27,7 @@ set_option backward.isDefEq.respectTransparency.types false
 instance SimplicialFunctionComplex.pointedObj_kanComplex (S : Type u)
     (X : PointedSimplicialSet.{u}) [KanComplex X.right] :
     KanComplex (pointedObj S X).right :=
-  inferInstanceAs (KanComplex (obj S X.right))
+  inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X.right))
 
 instance GroupActionCochains.pointedFunctionCochains_kanComplex {G : Type u} [Group G]
     (B : Action PointedSimplicialSet.{u} G) [KanComplex B.V.right] (n : SimplexCategory) :
@@ -50,9 +50,9 @@ def PointedActionCochains.homotopyDiagramIso {G : Type u} [Group G]
 使われ方：Goerss–Jardine I §7、VIII §2。余単体群の各対象の具体的な表示。 -/
 def SimplicialFunctionComplex.pointedHomotopyEquiv (S : Type u)
     (X : PointedSimplicialSet.{u}) [KanComplex X.right] (k : ℕ) :
-    KanHomotopyGroup (pointedObj S X).right k (pointedObj S X).basepoint ≃*
-      (S → KanHomotopyGroup X.right k X.basepoint) :=
-  homotopyEquiv S X.right k (fun _ ↦ X.basepoint)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedObj S X).right k (pointedObj S X).basepoint ≃*
+      (S → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right k X.basepoint) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv S X.right k (fun _ ↦ X.basepoint)
 
 end
 

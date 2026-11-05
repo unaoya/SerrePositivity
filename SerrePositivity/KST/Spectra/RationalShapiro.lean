@@ -31,12 +31,12 @@ theorem rational_homotopyFixedPointsUnit_level_groupMap_surjective
   let e : ((homotopyFixedPointsKan (Action.trivial G Y)).level k).space.right ≅
       (UnbasedPointedMapping.obj (nerve (AsSmall.{u} (SingleObj G))) (Y.level k).space).right :=
     PointedSimplicialSet.forget.mapIso (trivialFixedPointLevelIso G Y k)
-  have hmp : KanPiIsomorphism m.right :=
+  have hmp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism m.right :=
     (homotopyFixedPointsProjection_levelwise (Action.trivial G Y) k).comp
-      (KanPiIsomorphism.of_iso e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e)
   have hm : Function.Injective (pointedGroupMap (r + 1) m) :=
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism (r + 1) m.right hmp
-      (OmegaSpectrum.pointedMap_basepoint m)).injective
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism (r + 1) m.right hmp
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint m)).injective
   have he : (homotopyFixedPointsUnit G Y).app k ≫ m =
       UnbasedPointedMapping.constant (nerve (AsSmall.{u} (SingleObj G))) (Y.level k).space :=
     homotopyFixedPointsUnit_mapping G Y k

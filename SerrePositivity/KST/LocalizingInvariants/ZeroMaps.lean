@@ -43,21 +43,21 @@ lemma isExact_of_zero_values {K X : SSet.{u}} [Quasicategory X] [HasZeroVertex X
     exact (constantSquare_isPushout z.vertex).of_functorIso e
 
 /-- 零安定圏から指定安定圏への、選ばれた零対象を値とする完全関手。 -/
-def fromZeroCategory (A : StableCategory.{u}) : ExactMap zeroCategory.{u} A where
+def fromZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} A where
   hom := SSet.const (chosenZeroVertex A.obj).vertex
   isExact := isExact_of_zero_values _ (fun k ↦ by
     rw [zeroDiagram_const_vertex]
     exact (chosenZeroVertex A.obj).isZero)
 
 /-- 零角を経由した合成は、選ばれた零対象の定値関手そのもの。 -/
-lemma throughZero_hom (A B : StableCategory.{u}) :
-    (toZeroCategory A).hom ≫ (fromZeroCategory B).hom =
+lemma throughZero_hom (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom =
       SSet.const (chosenZeroVertex B.obj).vertex := SSet.comp_const _ _
 
 /-- 商による包含の零化は、零角を経由する関手との整合的な関手同型を与える。 -/
-def verdierZeroCompositeIso (d : VerdierSequence.{u}) :
+def verdierZeroCompositeIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}) :
     FunctorIso (d.inclusion.hom ≫ d.projection.hom)
-      ((toZeroCategory d.left).hom ≫ (fromZeroCategory d.right).hom) :=
+      ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.left).hom ≫ (fromZeroCategory d.right).hom) :=
   zeroDiagramFunctorIso _ _ d.isVerdier.kills_inclusion (fun k ↦ by
     rw [throughZero_hom, zeroDiagram_const_vertex]
     exact (chosenZeroVertex d.right.obj).isZero)

@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded KST.NonConnective KST.SConstruction
 open DGCategoryCellResolution
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] [Nontrivial R]
   (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ)
   (A B : PerfDGInput.{u, max (u + 1) v} R)

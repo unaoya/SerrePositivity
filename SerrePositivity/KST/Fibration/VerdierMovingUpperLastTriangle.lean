@@ -24,21 +24,21 @@ namespace SerrePositivity.KST.Fibration
 /-- 概要：元の全 S• 合成実射の core 制限は元の同じ完全射の core 作用。
 方針：同じ全 path 族の core 回収を合成 path 頂点で評価する。
 規約：全射そのものの等式。使われ方：上側終端の標準合成 native Hom の照合。 -/
-theorem verdierOriginalFullSCompositeMap_core (d : VerdierDiagram.{u}) (j : Fin 2) :
-    (show stableCoreSingleKanObject (show StableQCat from d.left) ⟶
+theorem verdierOriginalFullSCompositeMap_core (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
+    (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
       fullSRealizationKanObject d.left from
-        exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left))) ≫
+        exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))) ≫
       verdierOriginalFullSCompositeMap d j =
-      (show stableCoreSingleKanObject (show StableQCat from d.left) ⟶
-        stableCoreSingleKanObject (show StableQCat from d.right) from
+      (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
+        stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
           stableCoreSingleKanMap (verdierNullCompositeOriginalMap d j)) := by
   let p := (pre (exInfinity.map (coreSFullRealizationInclusion
-    (show StableQCat from d.left)))).app
-      (stableCoreSingleKanObject (show StableQCat from d.right)).obj
-  apply (SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show StableQCat from d.left))
-    (stableCoreSingleKanObject (show StableQCat from d.right))).injective
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj
+  apply (SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))).injective
   change p.app (Opposite.op ⦋0⦌) (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-    (stableCoreSingleKanObject (show StableQCat from d.right)).obj from
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
       verdierOriginalFullSCompositeMap d j)) = _
   calc
     _ = p.app (Opposite.op ⦋0⦌) ((verdierOriginalFullSHomFamily d j).app (Opposite.op ⦋0⦌)
@@ -53,32 +53,32 @@ theorem verdierOriginalFullSCompositeMap_core (d : VerdierDiagram.{u}) (j : Fin 
 /-- 概要：元の core 包含と終端の全 S• 合成実射の標準合成二胞体。
 方針：同じ二つの実 Kan 射へ正本の coherent 合成を適用する。
 規約：元の二短辺を保持。使われ方：動く上側終端と同定する指定有限二胞体。 -/
-def verdierMovingUpperLastTriangle (d : VerdierDiagram.{u}) :=
+def verdierMovingUpperLastTriangle (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
   coherentNerveCompStruct (C := KanObject.{u})
-    (show stableCoreSingleKanObject (show StableQCat from d.left) ⟶
+    (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
       fullSRealizationKanObject d.left from
-        exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))
+        exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))
     (verdierOriginalFullSCompositeMap d 1)
 
 /-- 概要：同じ標準終端二胞体の全 native Hom は元の実合成端の定値全族。
 方針：標準合成の native 定値回収と同じ実 core 制限を使う。
 規約：元の全 path を保持。使われ方：再構成終端との full native Hom の照合。 -/
-theorem verdierMovingUpperLastTriangle_native (d : VerdierDiagram.{u}) :
+theorem verdierMovingUpperLastTriangle_native (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     (SSet.uliftFunctor.{u + 1, u}).map
       ((verdierMovingUpperLastTriangle d).simplex.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) =
       SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
         (verdierNativeCompositePoint d 1) := by
-  let f : stableCoreSingleKanObject (show StableQCat from d.left) ⟶
+  let f : stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
       fullSRealizationKanObject d.left :=
-    exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left))
+    exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
   let g := verdierOriginalFullSCompositeMap d 1
   have hn : (verdierMovingUpperLastTriangle d).simplex.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩ =
-      SSet.const (SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show StableQCat from d.left))
-        (stableCoreSingleKanObject (show StableQCat from d.right)) (f ≫ g)) :=
+      SSet.const (SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) (f ≫ g)) :=
     coherentNerveCompStruct_native_const f g
   have hp := congrArg (SimplicialCategory.homEquiv'
-    (stableCoreSingleKanObject (show StableQCat from d.left))
-    (stableCoreSingleKanObject (show StableQCat from d.right)))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)))
     (verdierOriginalFullSCompositeMap_core d 1)
   have hc := congrArg (fun x => (SSet.uliftFunctor.{u + 1, u}).map
     (SSet.const (X := nerve TriangleNativePath.{u}) x)) hp

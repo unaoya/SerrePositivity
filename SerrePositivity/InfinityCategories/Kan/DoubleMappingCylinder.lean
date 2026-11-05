@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.ProdComparison
@@ -20,8 +22,11 @@ set_option backward.isDefEq.respectTransparency.types false
 
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：円筒の両端の包含を一つの射へまとめる。
@@ -39,7 +44,7 @@ def cylinderEndpoints (C : SSet.{u}) : C ⨿ C ⟶ C ⊗ Δ[1] :=
 使われ方：Segal Lemma 1.7 の貼り合わせ先の実対象。
 -/
 def doubleMappingCylinder {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) : SSet.{u} :=
-  pushout (cylinderEndpoints C) (coprod.map f g)
+  pushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への中央の円筒の包含。
@@ -48,8 +53,8 @@ def doubleMappingCylinder {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) : SSet.
 使われ方：端点の貼り付けの式と span の射の誘導写像。
 -/
 def doubleMappingCylinder_middle {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    C ⊗ Δ[1] ⟶ doubleMappingCylinder f g :=
-  pushout.inl (cylinderEndpoints C) (coprod.map f g)
+    C ⊗ Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  pushout.inl (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への左の対象の包含。
@@ -58,8 +63,8 @@ def doubleMappingCylinder_middle {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) 
 使われ方：左の頂点から貼り合わせ先への比較正方形。
 -/
 def doubleMappingCylinder_left {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    A ⟶ doubleMappingCylinder f g :=
-  coprod.inl ≫ pushout.inr (cylinderEndpoints C) (coprod.map f g)
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  coprod.inl ≫ pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：二重写像円筒への右の対象の包含。
@@ -68,8 +73,8 @@ def doubleMappingCylinder_left {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：右の頂点から貼り合わせ先への比較正方形。
 -/
 def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    B ⟶ doubleMappingCylinder f g :=
-  coprod.inr ≫ pushout.inr (cylinderEndpoints C) (coprod.map f g)
+    B ⟶ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder f g :=
+  coprod.inr ≫ pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
 
 /--
 概要：円筒の零端点は span の左の射で貼り付けられる。
@@ -78,11 +83,11 @@ def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：span の射からの誘導写像の定義。
 -/
 @[reassoc] theorem doubleMappingCylinder_zero {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    SSet.ι₀ ≫ doubleMappingCylinder_middle f g = f ≫ doubleMappingCylinder_left f g := by
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g = f ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left f g := by
   have h := congrArg (fun q => coprod.inl ≫ q)
-    (pushout.condition (f := cylinderEndpoints C) (g := coprod.map f g))
-  simpa only [cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
-    doubleMappingCylinder_middle, doubleMappingCylinder_left, Category.assoc] using h
+    (pushout.condition (f := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (g := coprod.map f g))
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc] using h
 
 /--
 概要：円筒の一端点は span の右の射で貼り付けられる。
@@ -91,10 +96,61 @@ def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
 使われ方：span の射からの誘導写像の定義。
 -/
 @[reassoc] theorem doubleMappingCylinder_one {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
-    SSet.ι₁ ≫ doubleMappingCylinder_middle f g = g ≫ doubleMappingCylinder_right f g := by
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g = g ≫ _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right f g := by
   have h := congrArg (fun q => coprod.inr ≫ q)
-    (pushout.condition (f := cylinderEndpoints C) (g := coprod.map f g))
-  simpa only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
-    doubleMappingCylinder_middle, doubleMappingCylinder_right, Category.assoc] using h
+    (pushout.condition (f := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (g := coprod.map f g))
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc] using h
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_one := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_zero := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right.eq_1

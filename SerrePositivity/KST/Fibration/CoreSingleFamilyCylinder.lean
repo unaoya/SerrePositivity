@@ -22,13 +22,13 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 一回の全 native 図式から元の core S• への、恒等成分を持つ同じ座標同型。 -/
-def coreSingleSimplicialIso (A : StableQCat.{u}) :
+def coreSingleSimplicialIso (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     ((stableMultiSCoreObjectEnrichedFunctor 1).obj A).diagram ≅
       simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by intros; rfl)
 
 /-- 同じ図式座標同型の対角は、元の単回実現座標同型の逆射そのもの。 -/
-theorem coreSingleSimplicialIso_diagonal_hom (A : StableQCat.{u}) :
+theorem coreSingleSimplicialIso_diagonal_hom (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     simplicialDiagonalFunctor.map (coreSingleSimplicialIso A).hom =
       (coreSingleRealizationIso (stableCategoryModel A)).inv := by
   apply NatTrans.ext
@@ -36,7 +36,7 @@ theorem coreSingleSimplicialIso_diagonal_hom (A : StableQCat.{u}) :
   rfl
 
 /-- 逆向きの図式座標の対角も、元の単回実現座標同型の順射と一致する。 -/
-theorem coreSingleSimplicialIso_diagonal_inv (A : StableQCat.{u}) :
+theorem coreSingleSimplicialIso_diagonal_inv (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     simplicialDiagonalFunctor.map (coreSingleSimplicialIso A).inv =
       (coreSingleRealizationIso (stableCategoryModel A)).hom := by
   apply NatTrans.ext
@@ -44,7 +44,7 @@ theorem coreSingleSimplicialIso_diagonal_inv (A : StableQCat.{u}) :
   rfl
 
 /-- 同じ全入力族の各段を回収する元の円柱は、同じ native 全図式円柱に等しい。 -/
-theorem singleCoreFamilyCylinder_coordinates {A C : StableQCat.{u}} {P : SSet.{u}}
+theorem singleCoreFamilyCylinder_coordinates {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C))
     (K : (simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor) ⋙ tensorRight P ⟶
       simplicialSConstruction C.obj ⋙ quasicategoryCoreFunctor)
@@ -59,7 +59,7 @@ theorem singleCoreFamilyCylinder_coordinates {A C : StableQCat.{u}} {P : SSet.{u
   exact (hK n).trans (stableMultiCoreFamilyCylinder_app 1 H n).symm
 
 /-- 同じ元の円柱の対角は、同じ全豊穣実現族の評価を座標同型で厳密に回収する。 -/
-theorem singleCoreFamilyCylinder_diagonal {A C : StableQCat.{u}} {P : SSet.{u}}
+theorem singleCoreFamilyCylinder_diagonal {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C))
     (K : (simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor) ⋙ tensorRight P ⟶
       simplicialSConstruction C.obj ⋙ quasicategoryCoreFunctor)
@@ -77,15 +77,15 @@ theorem singleCoreFamilyCylinder_diagonal {A C : StableQCat.{u}} {P : SSet.{u}}
 
 /-- 商核から来る元の零化円柱は、同じ実合成の全豊穣実現族の評価そのもの。 -/
 theorem quotientSKernelNullCylinder_native
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     (simplicialDiagonalFunctor.map (coreSingleSimplicialIso A).hom ▷ (Δ[1] : SSet.{u})) ≫
         quotientSKernelNullCylinder h =
       uncurry (zeroEndPostcompFamily
         (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
           (verdierSequenceComposite_zero h) ≫
             (stableMultiRealizationEnrichedFunctor 1).map
-              (show StableQCat from A) (show StableQCat from C)) ≫
+              (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) ≫
         simplicialDiagonalFunctor.map (coreSingleSimplicialIso C).hom := by
   have he := singleCoreFamilyCylinder_diagonal _ (quotientSKernelNullNatTrans h)
     (quotientSKernelNullNatTrans_app h)
@@ -94,17 +94,17 @@ theorem quotientSKernelNullCylinder_native
 
 /-- 元の core S 対象で読んだ商核円柱は、同じ全 Hom 評価の座標輸送である。 -/
 theorem quotientSKernelNullCylinder_realization
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     quotientSKernelNullCylinder h =
-      ((coreSingleRealizationIso (stableCategoryModel (show StableQCat from A))).hom ▷
+      ((coreSingleRealizationIso (stableCategoryModel (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))).hom ▷
           (Δ[1] : SSet.{u})) ≫
         uncurry (zeroEndPostcompFamily
           (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
             (verdierSequenceComposite_zero h) ≫
               (stableMultiRealizationEnrichedFunctor 1).map
-                (show StableQCat from A) (show StableQCat from C)) ≫
-          (coreSingleRealizationIso (stableCategoryModel (show StableQCat from C))).inv := by
+                (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) ≫
+          (coreSingleRealizationIso (stableCategoryModel (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))).inv := by
   have he := quotientSKernelNullCylinder_native h
   rw [coreSingleSimplicialIso_diagonal_hom, coreSingleSimplicialIso_diagonal_hom] at he
   rw [← he, ← Category.assoc, ← comp_whiskerRight, Iso.hom_inv_id,

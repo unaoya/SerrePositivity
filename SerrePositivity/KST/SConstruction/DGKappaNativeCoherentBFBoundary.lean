@@ -34,7 +34,7 @@ lemma dgKappaNativeBFNativeSquare_boundary (e : Fin 4) :
     dgKappaNativeBFSquareEdge.{u, v} e ≫
       (dgKappaNativeVerdierDiagram.{u, v} R D I).square =
         SSet.yonedaEquiv.symm
-          (stableArrow (dgKappaNativeBFNativeArrow.{u, v} R D I e).hom).edge := by
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeBFNativeArrow.{u, v} R D I e).hom).edge := by
   fin_cases e
   · exact (dgKappaNativeVerdierDiagram.{u, v} R D I).bottom_edge
   · exact (dgKappaNativeVerdierDiagram.{u, v} R D I).right_edge
@@ -48,7 +48,7 @@ lemma dgKappaNativeBFFiniteNativeArrow_inclusion (e : Fin 4) :
     (coherentNerveMap (dgKappaNativeBFFiniteInclusion.{u, v} R D I)).app
       (Opposite.op ⦋1⦌)
       (coherentNerveEdge (dgKappaNativeBFFiniteNativeArrow.{u, v} R D I e).hom).edge =
-        (stableArrow (dgKappaNativeBFNativeArrow.{u, v} R D I e).hom).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeBFNativeArrow.{u, v} R D I e).hom).edge := by
   fin_cases e <;>
     exact coherentNerveMap_edge_of_homEquiv
       (dgKappaNativeBFFiniteInclusion.{u, v} R D I) _ _ (Category.comp_id _)
@@ -85,7 +85,7 @@ lemma dgKappaNativeCoherentBFSquare_boundary (e : Fin 4) :
     (dgKappaNativeBFEnrichedFunctor.{u, v} R D I)
     (dgKappaNativeBFFiniteNativeArrow.{u, v} R D I e).hom
     (dgKappaNativeCoherentBFArrow.{u, v} R D I e).hom
-    (strictSimplicialOrdinaryMap_hom _ _).symm
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom _ _).symm
   exact (Category.assoc (dgKappaNativeBFSquareEdge.{u, v} e)
     (dgKappaNativeBFFiniteSquare.{u, v} R D I)
     (coherentNerveMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I))).symm.trans

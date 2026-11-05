@@ -32,9 +32,9 @@ lemma homotopyLimitLevelFamily_condition
         (levelDiagram D n)).map f.op).app j := by
   have h := Multifork.condition s (Arrow.mk f)
   change s.ι i ≫ (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map
-      ((D.map f).app n) = s.ι j ≫ PointedMapping.prePointed
+      ((D.map f).app n) = s.ι j ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
       (PointedObject.adjoinFunctor.map ((bousfieldKanWeight I).map f)) _ at h
-  rw [PointedMapping.prePointed_eq_closedPre] at h
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   dsimp only [PointedWeightedEnd.diagram, Enriched.FunctorCategory.diagram,
     eHomFunctor, Functor.comp, Functor.op, Functor.whiskeringLeft, Functor.whiskeringRight]
   simp only [enrichedOrdinaryCategorySelf_eHomWhiskerLeft,

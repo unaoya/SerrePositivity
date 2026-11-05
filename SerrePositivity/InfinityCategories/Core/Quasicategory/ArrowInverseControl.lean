@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
 
 /-!
@@ -12,6 +14,9 @@ public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowComposi
 universe u v
 open CategoryTheory
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {B : Type u} [Category.{v} B]
 
 lemma arrow_mk_cancel_comp_right {a b c a' b' c' : B}
@@ -45,4 +50,16 @@ lemma arrow_mk_comp_right_of_any_identity {a b c d : B} (f : a ⟶ b) (g : b ⟶
   simp only [eqToHom_refl, Category.comp_id] at hg
   rw [hg, Category.comp_id]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_right := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_right_of_any_identity := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_right_of_any_identity
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_mk_inv_congr := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr

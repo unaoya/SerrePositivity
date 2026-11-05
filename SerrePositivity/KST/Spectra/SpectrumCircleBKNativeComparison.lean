@@ -37,7 +37,7 @@ def circleBKReflectedPointParameter (X Y : OmegaSpectrum.{u}) :
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y)
         (cotensor PointedSimplicialSet.circle Y) ⋙ SSet.opFunctor) ⊗
           (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op :=
-  ParameterPoint.family (circleBKReflectedEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKReflectedEndPointMap Y)
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op
 
 /-- 元の反転 Hom 全体から、元の固定図式上の coherent な切断への実際の比較族。 -/

@@ -34,7 +34,7 @@ def dgKappaNativeBFPositiveLevelComparison
 規約：全正段で証明。使われ方：全整数の指定群同型。 -/
 lemma dgKappaNativeBFPositiveLevelComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) (r : ℕ) :
-    KanPiIsomorphism (dgKappaNativeBFPositiveLevelComparison.{u, v} R D I C r).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFPositiveLevelComparison.{u, v} R D I C r).right :=
   (monicKKanSequenceProjection_piIsomorphism (sInputModel C.obj) (r + 1)).comp
     ((pointedSOAExInfinityComparison_piIsomorphism (stableBoundaryPointedObject r C.obj)).comp
       (dgKappaNativeBFFiniteStageComparison_piIsomorphism.{u, v} R D I r
@@ -59,13 +59,13 @@ lemma dgKappaNativeBFIntegerComparison_bijective
     Function.Bijective (dgKappaNativeBFIntegerComparison.{u, v} R D I C j) := by
   let c := dgKappaNativeBFPositiveLevelComparison.{u, v} R D I C j.natAbs
   have h : (fun a => dgKappaNativeBFIntegerComparison.{u, v} R D I C j a) =
-      KanHomotopy.equivOfPiIsomorphism
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism
         (OmegaSpectrum.degree j (OmegaSpectrum.canonicalLevel j)) c.right
         (dgKappaNativeBFPositiveLevelComparison_piIsomorphism.{u, v} R D I C j.natAbs)
-        (OmegaSpectrum.pointedMap_basepoint c) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint c) := by
     funext a
     exact (OmegaSpectrum.positiveLevelMap_apply _ _ _ _ _ c a).trans
-      (KanHomotopy.equivOfPiIsomorphism_apply _ _ _ _ a).symm
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply _ _ _ _ a).symm
   change Function.Bijective (fun a => dgKappaNativeBFIntegerComparison.{u, v} R D I C j a)
   rw [h]
   exact Equiv.bijective _

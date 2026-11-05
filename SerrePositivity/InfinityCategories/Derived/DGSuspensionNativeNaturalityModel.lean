@@ -26,7 +26,7 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 structure DGSuspensionNativeNaturalityModel extends DGSuspensionNativeSquareModel R s where
   /-- 元の同じ実評価 Morita 逆作用を全 native 入力上で保持する族。 -/
   morita : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj StableInfinity.{max (u + 1) v}
+    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}
   /-- 始点は元の固定 ν の全作用そのもの。 -/
   morita_source : morita ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
     dgKInputNu R
@@ -37,7 +37,7 @@ structure DGSuspensionNativeNaturalityModel extends DGSuspensionNativeSquareMode
   morita_at : ∀ A : PerfDGInput.{u, max (u + 1) v} R,
     morita.app (Opposite.op ⦋0⦌) (coherentNerveVertex A) = functorVertex
       (SSet.yonedaEquiv.symm
-        (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge)
 
 variable (m : DGSuspensionNativeNaturalityModel R s)
 
@@ -79,13 +79,13 @@ def DGSuspensionNativeNaturalityModel.moritaIso :
 def DGSuspensionNativeNaturalityModel.perfectComparison :
     dgKInputInfinity.{u, max (u + 1) v} R ⟶
       equivalencePath ((ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj
-        StableInfinity.{max (u + 1) v}) :=
+        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) :=
   (dgKappaNativePFamily_exists R s m.morita m.morita_at).choose
 
 /-- 元の P と元の Yoneda の合成による包含の全 native 入力族。 -/
 def DGSuspensionNativeNaturalityModel.perfectFamily :
     dgKInputInfinity.{u, max (u + 1) v} R ⟶
-      (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj StableInfinity.{max (u + 1) v} :=
+      (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   m.perfectComparison R s ≫ equivalencePathEndpoint _ 0
 
 /-- P の全比較は元の同じ全 Morita 族へ終わる。 -/
@@ -96,7 +96,7 @@ theorem DGSuspensionNativeNaturalityModel.perfectComparison_one :
 /-- P の比較は、両端の全入力作用上で恒等 path そのもの。 -/
 theorem DGSuspensionNativeNaturalityModel.perfectComparison_boundary :
     m.perfectComparison R s ≫
-      equivalencePathMap ((pre (boundary 1).ι).app StableInfinity.{max (u + 1) v}) =
+      equivalencePathMap ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) =
         (m.morita ≫ (pre (boundary 1).ι).app _) ≫ equivalencePathRefl _ :=
   (dgKappaNativePFamily_exists R s m.morita m.morita_at).choose_spec.1
 
@@ -112,7 +112,7 @@ theorem DGSuspensionNativeNaturalityModel.perfectFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (m.perfectFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
       functorVertex (SSet.yonedaEquiv.symm
-        (stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge) :=
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativePExactMap R A (s A).cone (s A).perfect)).edge) :=
   (dgKappaNativePFamily_exists R s m.morita m.morita_at).choose_spec.2.2.2 A
 
 /-- 元の P の包含は両 ν 端を、全単体で元の Morita 族と厳密に共有する。 -/

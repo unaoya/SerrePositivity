@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -30,9 +35,9 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：底の Kan 性は不要。
 使われ方：Goerss–Jardine I §7。fiber 内での参照基点の選び直し。 -/
 theorem fiber_vertex_base {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
-    (v : (KanFiber p b) _⦋0⦌) : p.app _ ((fiberι p b).app _ v) = b := by
-  have h := congrArg (fun k : KanFiber p b ⟶ B ↦ k.app _ v) (fiberι_comp p b)
-  change p.app _ ((fiberι p b).app _ v) = (SSet.const b).app _ v at h
+    (v : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) _⦋0⦌) : p.app _ ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ v) = b := by
+  have h := congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b ⟶ B ↦ k.app _ v) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp p b)
+  change p.app _ ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ v) = (SSet.const b).app _ v at h
   have hc : (SSet.const b).app _ v = b := by simp [SSet.const]
   exact h.trans hc
 
@@ -43,18 +48,18 @@ variable {E B : SSet.{u}} [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration
 規約：始域の基本群の基点は p(e)。
 使われ方：Goerss–Jardine I §§7–8。参照頂点を変えた零次数の完全性。 -/
 def componentConnecting (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app _ e = b) :
-    KanHomotopyGroup B 0 (p.app _ e) → π₀ (KanFiber p b) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e) → π₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) := by
   subst b
-  exact fun a ↦ KanHomotopyZero.equivPiZero (connecting p e 0 a)
+  exact fun a ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a)
 
 omit [KanComplex E] in
 /-- 概要：底の像をそのまま使う componentConnecting は連結写像の連結成分である。
 方針：等式の移送の定義を読む。
 規約：基点の等式は反射律。
 使われ方：Goerss–Jardine I §7。零次数の移送の計算。 -/
-theorem componentConnecting_rfl (e : E _⦋0⦌) (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    componentConnecting p e (p.app _ e) rfl a =
-      KanHomotopyZero.equivPiZero (connecting p e 0 a) := rfl
+theorem componentConnecting_rfl (e : E _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e (p.app _ e) rfl a =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a) := rfl
 
 omit [KanComplex E] in
 /-- 概要：連結写像は単位を、参照頂点の fiber 内の連結成分へ送る。
@@ -62,68 +67,68 @@ omit [KanComplex E] in
 規約：参照頂点の全空間への像が e であることを明示する。
 使われ方：Goerss–Jardine I §7。零次数の核の参照成分。 -/
 theorem componentConnecting_one_at (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app _ e = b)
-    (v : (KanFiber p b) _⦋0⦌) (hv : (fiberι p b).app _ v = e) :
-    componentConnecting p e b hb 1 = π₀.mk v := by
+    (v : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) _⦋0⦌) (hv : (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ v = e) :
+    _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb 1 = π₀.mk v := by
   subst b
-  have hpoint : v = fiberPoint p e := by
-    apply fiber_vertex_ext p (p.app _ e)
-    exact hv.trans (fiberι_point p e).symm
+  have hpoint : v = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_ext p (p.app _ e)
+    exact hv.trans (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e).symm
   subst v
-  change KanHomotopyZero.equivPiZero (connecting p e 0 1) = π₀.mk (fiberPoint p e)
-  rw [connecting_one, KanHomotopyZero.equivPiZero_point]
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 1) = π₀.mk (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_one, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point]
 
 /-- 概要：fiber の連結成分の全空間での像が参照成分なら連結写像の像に属する。
 方針：元の零次数の完全性を二つの equivPiZero で移す。
 規約：参照頂点 e を任意に選べる。
 使われ方：Goerss–Jardine I §§7–8。fiber の零次数比較の核と像。 -/
 theorem componentConnecting_exact (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app _ e = b)
-    (a : π₀ (KanFiber p b)) :
-    mapπ₀ (fiberι p b) a = π₀.mk e ↔
-      ∃ c : KanHomotopyGroup B 0 (p.app _ e), componentConnecting p e b hb c = a := by
+    (a : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b)) :
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b) a = π₀.mk e ↔
+      ∃ c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb c = a := by
   subst b
-  let eF := KanHomotopyZero.equivPiZero (X := KanFiber p (p.app _ e)) (x := fiberPoint p e)
-  let eE := KanHomotopyZero.equivPiZero (X := E) (x := e)
+  let eF := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) (x := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
+  let eE := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := E) (x := e)
   constructor
   · intro ha
-    have hn : KanHomotopy.map 0 (fiberι p (p.app _ e)) (fiberι_point p e) (eF.symm a) =
-        KanHomotopy.point 0 := by
+    have hn : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (eF.symm a) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 := by
       apply eE.injective
-      change KanHomotopyZero.equivPiZero
-        (KanHomotopyZero.map (fiberι p (p.app _ e)) (fiberι_point p e) (eF.symm a)) =
-          KanHomotopyZero.equivPiZero (KanHomotopy.point 0 : KanHomotopyZero E e)
-      rw [KanHomotopyZero.equivPiZero_map, KanHomotopyZero.equivPiZero_point]
-      exact (congrArg (mapπ₀ (fiberι p (p.app _ e))) (eF.apply_symm_apply a)).trans ha
-    obtain ⟨c, hc⟩ := (exact_connecting_fiber_all p e 0 (eF.symm a)).1 hn
+      change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (eF.symm a)) =
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero E e)
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point]
+      exact (congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e))) (eF.apply_symm_apply a)).trans ha
+    obtain ⟨c, hc⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber_all p e 0 (eF.symm a)).1 hn
     refine ⟨c, ?_⟩
-    change eF (connecting p e 0 c) = a
+    change eF (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 c) = a
     rw [hc, eF.apply_symm_apply]
   · rintro ⟨c, hc⟩
-    have hn := (exact_connecting_fiber_all p e 0 (connecting p e 0 c)).2 ⟨c, rfl⟩
+    have hn := (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber_all p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 c)).2 ⟨c, rfl⟩
     have h := congrArg eE hn
-    change KanHomotopyZero.equivPiZero
-      (KanHomotopyZero.map (fiberι p (p.app _ e)) (fiberι_point p e) (connecting p e 0 c)) =
-        KanHomotopyZero.equivPiZero (KanHomotopy.point 0 : KanHomotopyZero E e) at h
-    rw [KanHomotopyZero.equivPiZero_map, KanHomotopyZero.equivPiZero_point] at h
-    change eF (connecting p e 0 c) = a at hc
-    exact (congrArg (mapπ₀ (fiberι p (p.app _ e))) hc.symm).trans h
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 c)) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero E e) at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point] at h
+    change eF (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 c) = a at hc
+    exact (congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e))) hc.symm).trans h
 
 /-- 概要：連結成分の連結写像の参照成分の逆像は全空間の基本群の像。
 方針：equivPiZero の単射性と元の零次数の完全性を使う。
 規約：参照成分は単位の像として表す。
 使われ方：Goerss–Jardine I §§7–8。fiber の零次数比較の単射性。 -/
 theorem componentConnecting_kernel (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app _ e = b)
-    (c : KanHomotopyGroup B 0 (p.app _ e)) :
-    componentConnecting p e b hb c = componentConnecting p e b hb 1 ↔
-      ∃ d : KanHomotopyGroup E 0 e, KanHomotopyGroup.map p rfl d = c := by
+    (c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb c = _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting p e b hb 1 ↔
+      ∃ d : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E 0 e, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl d = c := by
   subst b
-  change KanHomotopyZero.equivPiZero (connecting p e 0 c) =
-    KanHomotopyZero.equivPiZero (connecting p e 0 1) ↔ _
-  rw [connecting_one]
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 c) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 1) ↔ _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_one]
   constructor
   · intro h
-    exact (exact_total_base_all p e 0 c).1 (KanHomotopyZero.equivPiZero.injective h)
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all p e 0 c).1 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.injective h)
   · intro h
-    exact congrArg KanHomotopyZero.equivPiZero ((exact_total_base_all p e 0 c).2 h)
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero ((_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all p e 0 c).2 h)
 
 /-- 概要：全空間の連結成分の底での像が参照成分なら fiber の像に属する。
 方針：全空間の零次数の完全性を equivPiZero で移す。
@@ -131,43 +136,67 @@ theorem componentConnecting_kernel (e : E _⦋0⦌) (b : B _⦋0⦌) (hb : p.app
 使われ方：Goerss–Jardine I §§7–8。fiber の零次数比較の全射性。 -/
 theorem componentFiber_exact (e : E _⦋0⦌) (a : π₀ E) :
     mapπ₀ p a = π₀.mk (p.app _ e) ↔
-      ∃ b : π₀ (KanFiber p (p.app _ e)), mapπ₀ (fiberι p (p.app _ e)) b = a := by
-  let eE := KanHomotopyZero.equivPiZero (X := E) (x := e)
-  let eB := KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
-  let eF := KanHomotopyZero.equivPiZero (X := KanFiber p (p.app _ e)) (x := fiberPoint p e)
+      ∃ b : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)), mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) b = a := by
+  let eE := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := E) (x := e)
+  let eB := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
+  let eF := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) (x := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
   constructor
   · intro ha
-    have hn : KanHomotopy.map 0 p rfl (eE.symm a) = KanHomotopy.point 0 := by
+    have hn : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 p rfl (eE.symm a) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 := by
       apply eB.injective
-      change KanHomotopyZero.equivPiZero (KanHomotopyZero.map p rfl (eE.symm a)) =
-        KanHomotopyZero.equivPiZero
-          (KanHomotopy.point 0 : KanHomotopyZero B (p.app _ e))
-      rw [KanHomotopyZero.equivPiZero_map, KanHomotopyZero.equivPiZero_point]
+      change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map p rfl (eE.symm a)) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero B (p.app _ e))
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point]
       exact (congrArg (mapπ₀ p) (eE.apply_symm_apply a)).trans ha
-    obtain ⟨b, hb⟩ := (exact_fiber_total_all p e 0 (eE.symm a)).1 hn
-    change KanHomotopyZero (KanFiber p (p.app _ e)) (fiberPoint p e) at b
+    obtain ⟨b, hb⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_all p e 0 (eE.symm a)).1 hn
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) at b
     refine ⟨eF b, ?_⟩
     have h := congrArg eE hb
-    change KanHomotopyZero.equivPiZero
-      (KanHomotopyZero.map (fiberι p (p.app _ e)) (fiberι_point p e) b) = eE (eE.symm a) at h
-    rw [KanHomotopyZero.equivPiZero_map] at h
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) = eE (eE.symm a) at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map] at h
     exact h.trans (eE.apply_symm_apply a)
   · rintro ⟨b, hb⟩
-    have hn := (exact_fiber_total_all p e 0
-      (KanHomotopy.map 0 (fiberι p (p.app _ e)) (fiberι_point p e) (eF.symm b))).2
+    have hn := (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_all p e 0
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (eF.symm b))).2
         ⟨eF.symm b, rfl⟩
     have h := congrArg eB hn
-    change KanHomotopyZero.equivPiZero
-      (KanHomotopyZero.map p rfl
-        (KanHomotopyZero.map (fiberι p (p.app _ e)) (fiberι_point p e) (eF.symm b))) =
-          KanHomotopyZero.equivPiZero
-            (KanHomotopy.point 0 : KanHomotopyZero B (p.app _ e)) at h
-    rw [KanHomotopyZero.equivPiZero_map, KanHomotopyZero.equivPiZero_map,
-      KanHomotopyZero.equivPiZero_point] at h
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map p rfl
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (eF.symm b))) =
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero B (p.app _ e)) at h
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point] at h
     exact (congrArg (mapπ₀ p) hb).symm.trans
-      ((congrArg (fun t ↦ mapπ₀ p (mapπ₀ (fiberι p (p.app _ e)) t))
+      ((congrArg (fun t ↦ mapπ₀ p (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) t))
         (eF.apply_symm_apply b).symm).trans h)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_exact := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_kernel := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_kernel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_one_at := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_one_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_rfl := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_rfl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentFiber_exact := _root_.SerrePositivity.InfinityCategories.Kan.componentFiber_exact
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_vertex_base := _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base

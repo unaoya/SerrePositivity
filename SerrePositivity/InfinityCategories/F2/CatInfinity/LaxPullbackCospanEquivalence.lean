@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.F2
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] quasicategory_tensor
 lemma tensorHom_isQCatEquivalence {A B X Y : SSet.{u}}
     [Quasicategory A] [Quasicategory B] [Quasicategory X] [Quasicategory Y]

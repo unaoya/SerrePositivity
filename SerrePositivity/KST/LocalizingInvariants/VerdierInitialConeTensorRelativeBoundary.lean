@@ -22,8 +22,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の図式側で定値な実境界比較は、その側を固定した実延長と全比較を与える。 -/
-lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) [A.Finite] [L.Finite]
     (p : initialConeTensorCorner A L ⟶ B.obj)
     (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)
@@ -66,10 +66,10 @@ lemma exists_verdierInitialConeTensorRelativeBoundary {A₀ B C : StableCategory
       a.toTruncated hk
   have hiN : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge n.homotopy x).toTruncated :=
     simplicialHomotopyOfFunctorEdge_vertex_isInvertible n.edge.toTruncated n.isInvertible
-  obtain ⟨eU⟩ := fixedDiagramVertexIso_of_relativeHomotopy
+  obtain ⟨eU⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
     (k ≫ initialConeTensorCornerInclusion A L) (k ≫ p ≫ q.hom)
     (d.diagram ≫ q.hom) n.diagram hD hN U hUfixed hiU
-  obtain ⟨eN⟩ := fixedDiagramVertexIso_of_relativeHomotopy
+  obtain ⟨eN⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy
     (k ≫ initialConeTensorCornerInclusion A L) (k ≫ p ≫ q.hom)
     H n.diagram hH hN n.homotopy hNfixed hiN
   obtain ⟨J, hJ, hiJ⟩ := exists_relative_homotopy_of_fixedDiagram_vertexIso

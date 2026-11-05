@@ -25,9 +25,9 @@ theorem dgNuMultiSCore_map (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ)
         (presentedPerfectDGStableQCat A P) (presentedPerfectDGStableQCat A Q) =
       ((presentedPerfectDGMultiSCoreEnrichedDiagram A r).obj d).map P Q := by
   let E := presentedPerfectDGEnrichedExactFunctor A
-  let I := coreEnrichedInclusion StableCategory.{max (u + 1) v}
+  let I := coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v}
   let F : EnrichedFunctor SSet.{max (u + 1) v}
-      StableCategory.{max (u + 1) v} QuasicategoryObject.{max (u + 1) v} :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} QuasicategoryObject.{max (u + 1) v} :=
     (multiSQuasicategoryEnrichedDiagram r).obj d
   change E.map P Q ≫ ((quasicategoryEnrichedCoreFunctor (I.comp SSet F)).map
     (E.obj P) (E.obj Q) ≫ 𝟙 _) =

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
@@ -15,19 +17,24 @@ public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u})
-  {C D B A Q : StableCategory.{u}} (p : ExactMap C B) (q : ExactMap D B)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference
+open SerrePositivity.KST
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+variable {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
+  {C D B A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
   (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
   (hF : F ≫ ν = (rectangle p q i r h).diagram)
 
 /-- 指定した同じ S 長方形を、ν 像の元の二つの Verdier 列で認証する。 -/
-def relativeRectangle : RelativeVerdierRectangle ν :=
-  RelativeVerdierRectangle.ofImage F (identityDiagram Q) (outerDiagram p q i r h)
+def relativeRectangle : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.ofImage F (identityDiagram Q) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram p q i r h)
     (by rw [hF]; exact (rectangle p q i r h).right_eq)
     (by
       rw [hF]
@@ -37,13 +44,13 @@ def relativeRectangle : RelativeVerdierRectangle ν :=
 /-- S 内の比較正方形の E 像は実 pullback。ν 像だけで E を定義し直さない。 -/
 lemma relative_comparison_isPullback {E : S ⟶ Spectra.Sp.{u}}
     (hE : IsRelativeLocalizingInvariant ν E) :
-    IsPullbackSquare ((relativeRectangle ν p q i r h F hF).comparisonSquare ≫ E) :=
+    IsPullbackSquare ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle ν p q i r h F hF).comparisonSquare ≫ E) :=
   RelativeVerdierRectangle.comparisonSquare_isPullback _ hE
 
 /-- 同じ相対比較は元の絶対比較正方形を ν 像として持つ。 -/
 lemma relative_comparison_image :
-    (relativeRectangle ν p q i r h F hF).comparisonSquare ≫ ν =
-      comparisonSquare p q i r h := by
+    (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle ν p q i r h F hF).comparisonSquare ≫ ν =
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h := by
   change ((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν = _
   rw [Category.assoc]
   change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 2 = _
@@ -52,11 +59,35 @@ lemma relative_comparison_image :
 
 /-- 恒等提示源では同じ元の絶対 Tamme 比較正方形に戻る。 -/
 lemma relative_id_comparison :
-    (relativeRectangle (𝟙 StableInfinity.{u}) p q i r h
+    (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle (𝟙 _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) p q i r h
       (rectangle p q i r h).diagram (Category.comp_id _)).comparisonSquare =
-        comparisonSquare p q i r h := by
+        _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h := by
   simpa only [Category.comp_id] using
-    relative_comparison_image (𝟙 StableInfinity.{u}) p q i r h
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_image (𝟙 _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) p q i r h
       (rectangle p q i r h).diagram (Category.comp_id _)
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_image := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_image
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_isPullback := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_isPullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_id_comparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_id_comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle.congr_simp

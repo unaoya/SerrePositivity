@@ -13,7 +13,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
-variable {B C : StableCategory.{u}} (q : ExactMap B C) {T : StableModel.{u}}
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {T : StableModel.{u}}
   (e : T ⟶ weakArrowModel q)
 
 /-- 元の指定辺と既存の cofiber 選択を使う厳密な切断。 -/

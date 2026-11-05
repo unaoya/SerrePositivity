@@ -16,7 +16,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ指定部分を持つ元の零値関手族を、部分上で厳密に恒等の全可逆辺で結ぶ。 -/
-def zeroStableHomFamilyRelativeComparison {C D : StableQCat.{u}} {T U : SSet.{u}}
+def zeroStableHomFamilyRelativeComparison {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {T U : SSet.{u}}
     (i : T ⟶ U) [Mono i] (H G : U ⟶ (C ⟶[SSet.{u}] D))
     (hH : ∀ v, StableHomZeroVertex C D (H.app (Opposite.op ⦋0⦌) v))
     (hG : ∀ v, StableHomZeroVertex C D (G.app (Opposite.op ⦋0⦌) v))

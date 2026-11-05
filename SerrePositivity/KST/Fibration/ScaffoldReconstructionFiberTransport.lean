@@ -19,10 +19,10 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 /-- 底頂点を等式で揃えた同じ実点の分類射は、元の値の等式同型による後合成。 -/
 theorem scaffoldReconstructionFiberPoint_eqToHom_transport {b b' : B _⦋0⦌}
     (h : b = b') (w : (vertexFiber p b) _⦋0⦌) :
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) ≫
       (eqToIso (congrArg (fun z => HomotopyCategory.mk
         ((leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up z))) h)).hom =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b'
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b'
       ((eqToHom (congrArg (vertexFiber p) h)).app (Opposite.op ⦋0⦌) w)) := by
   cases h
   simp only [eqToIso_refl, Iso.refl_hom, Category.comp_id, eqToHom_refl]
@@ -31,13 +31,13 @@ theorem scaffoldReconstructionFiberPoint_eqToHom_transport {b b' : B _⦋0⦌}
 /-- 同じ実 fiber 内の頂点同型は、同じ復元像の点の分類射の等式を与える。 -/
 theorem scaffoldReconstructionFiberPoint_pointHom_eq_of_vertexIso (b : B _⦋0⦌)
     {v w : (vertexFiber p b) _⦋0⦌} (e : VertexIso v w) :
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b v) =
-      cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b v) =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) := by
   let F := leftStraighteningInfinityDiagram p
   let M := vertexFiberMap p (smallLeftUnstraighteningProjection F)
     (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p) b
   let h := uliftVertexIso.{u, u + 1} (VertexIso.map e M)
-  exact cosliceFiberPointHom_eq_of_vertexIso (VertexIso.map h
+  exact _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_vertexIso (VertexIso.map h
     ((smallLeftUnstraighteningFiberIso F b).hom ≫
       (leftUnstraighteningFiberIso F (ULift.up b)).hom))
 

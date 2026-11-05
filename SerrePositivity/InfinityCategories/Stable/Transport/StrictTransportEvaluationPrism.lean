@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -40,9 +42,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 元の恒等射評価を全空間へ含めると、同じ全 section の恒等射頂点での評価になる。 -/
 theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.{u}}
@@ -60,4 +65,10 @@ theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.
   exact he.trans (congrArg (cocartesianSectionEvaluate p a) hv)
 
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportEvaluate_ambient := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportEvaluate_ambient

@@ -58,7 +58,7 @@ include hl in
 規約：零次元のパラメータを除く。
 使われ方：Kerodon §3.2.3。下側のホーンの消滅。 -/
 theorem square_lower_face_zero :
-    stdSimplex.δ (0 : Fin 3) ≫ SquareTriangles.lower ≫ f =
+    stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f =
       toUnit (Δ[1] : SSet.{u}) ≫ Y.hom := by
   have h := square_boundary_first Y f hl (0 : Fin 2)
   rw [SquareTriangles.first_endpoint_zero, Category.assoc] at h
@@ -72,7 +72,7 @@ include hl in
 規約：最後の面の添字は 2。
 使われ方：Kerodon §3.2.3。上側のホーンの消滅。 -/
 theorem square_upper_face_last :
-    stdSimplex.δ (2 : Fin 3) ≫ SquareTriangles.upper ≫ f =
+    stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f =
       toUnit (Δ[1] : SSet.{u}) ≫ Y.hom := by
   have h := square_boundary_first Y f hl (1 : Fin 2)
   rw [SquareTriangles.first_endpoint_one, Category.assoc] at h
@@ -86,7 +86,7 @@ include hr in
 規約：第一変数の区間は保つ。
 使われ方：Kerodon §3.2.3。上側のホーンの消滅。 -/
 theorem square_upper_face_zero :
-    stdSimplex.δ (0 : Fin 3) ≫ SquareTriangles.upper ≫ f =
+    stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f =
       toUnit (Δ[1] : SSet.{u}) ≫ Y.hom := by
   have h := square_boundary_second Y f hr (0 : Fin 2)
   rw [SquareTriangles.second_endpoint_zero, Category.assoc] at h
@@ -100,7 +100,7 @@ include hr in
 規約：最後の面の添字は 2。
 使われ方：Kerodon §3.2.3。下側のホーンの消滅。 -/
 theorem square_lower_face_last :
-    stdSimplex.δ (2 : Fin 3) ≫ SquareTriangles.lower ≫ f =
+    stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f =
       toUnit (Δ[1] : SSet.{u}) ≫ Y.hom := by
   have h := square_boundary_second Y f hr (1 : Fin 2)
   rw [SquareTriangles.second_endpoint_one, Category.assoc] at h

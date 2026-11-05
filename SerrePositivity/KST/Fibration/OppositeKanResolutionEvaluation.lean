@@ -9,7 +9,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
@@ -31,7 +31,7 @@ theorem oppositeKanUnstraighteningComparison_constant_resolution
       vertexFiberι pointedSpaceProjection
         (spaceInfinityVertex (kanObjectOpFunctor.obj (F.obj i))) := by
   rw [oppositeKanUnstraighteningComparison_constant_pointed,
-    oppositePointHomDiagramIso_inv_app, pointedSpaceLeftResolutionComparison_ι,
+    oppositePointHomDiagramIso_inv_app, _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceLeftResolutionComparison_ι,
     coherentPointedFiberComparison]
   simp only [Functor.comp_obj, Category.assoc]
 

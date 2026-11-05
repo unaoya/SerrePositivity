@@ -20,12 +20,12 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 theorem scaffoldStraighteningGlobalChart_original_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (scaffoldStraighteningGlobalChart p R c).hom =
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap R
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap R
       (ULift.up ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
         (nerveVertex c)))).app (Opposite.op ⦋0⦌)
         ((uliftVertexFiberIso p ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
@@ -35,18 +35,18 @@ theorem scaffoldStraighteningGlobalChart_original_pointHom (c : TransportSimplex
   have hf := nativeRestrict_firstVertex_point p c R
     ((leftStrictTransportEvaluate (pullback.snd p (transportSimplexFirstVertexMap B)) c).app
       (Opposite.op ⦋0⦌) ((firstVertexStrictSectionMap p c).app (Opposite.op ⦋0⦌) v))
-  exact hp.trans (congrArg cosliceFiberPointHom hf)
+  exact hp.trans (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom hf)
 
 /-- native 表現では、元の同じ native fiber 写像の点を回収する。 -/
 theorem scaffoldStraighteningGlobalChart_native_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (scaffoldStraighteningGlobalChart p (nativeLeftTransportRepresentation p) c).hom =
-    cosliceFiberPointHom ((nativeTransportPointedFiberMap p
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
         (Opposite.op ⦋0⦌) (ULift.up (firstVertexSectionFiberPoint p c v))) :=
   scaffoldStraighteningGlobalChart_original_pointHom p (nativeLeftTransportRepresentation p) c v

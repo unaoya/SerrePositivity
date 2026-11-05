@@ -14,7 +14,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories Loca
 open scoped Simplicial
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
 
 /-- 概要：元上下比較を同じ元共有対角に制限した全ホモトピー。
 方針：元全三角形比較を同じ対角面で制限する。

@@ -17,25 +17,25 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の普遍 pullback の上辺と下辺の W 所属は同値。 -/
 theorem weakEquivalences_pullback_bottom_top
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ B.obj)
     (hR : IsPullbackSquare R) :
-    (squareBottomArrow R).edge ∈ weakEquivalences i ↔
-      (squareTopArrow R).edge ∈ weakEquivalences i :=
-  weakEquivalences_pullback_iff h ((β_ Δ[1] Δ[1]).hom ≫ R)
+    (squareBottomArrow R).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ↔
+      (squareTopArrow R).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h ((β_ Δ[1] Δ[1]).hom ≫ R)
     ((isPullbackSquare_iff_transpose R).mp hR)
 
 /-- 任意の辺と指定した W 辺は、両入力を保つ普遍 Ore pullback に補完できる。 -/
 theorem weakEquivalences_rightOre_pullback
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {x y z : B.obj _⦋0⦌}
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {x y z : B.obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj B.obj) x z)
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) y z)
-    (hs : s.edge ∈ weakEquivalences i) :
+    (hs : s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     ∃ R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ B.obj,
       IsPullbackSquare R ∧ squareRightEdge ≫ R = yonedaEquiv.symm f.edge ∧
         squareTopEdge ≫ R = yonedaEquiv.symm s.edge ∧
-        (squareBottomArrow R).edge ∈ weakEquivalences i := by
+        (squareBottomArrow R).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   obtain ⟨R, hR, hr, ht⟩ := exists_stable_pullbackSquare_of_edges f s
   refine ⟨R, hR, hr, ht, (weakEquivalences_pullback_bottom_top h R hR).mpr ?_⟩
   have he : (squareTopArrow R).edge = s.edge :=

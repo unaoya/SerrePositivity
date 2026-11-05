@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 全対象を零化する実完全関手の核は、元の安定圏と包含そのもので厳密に同型。 -/
-def killedKernelIso {A C : StableCategory.{u}} (r : ExactMap A C)
+def killedKernelIso {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hr : ∀ a : A.obj _⦋0⦌, IsZeroVertex (r.hom.app (Opposite.op ⦋0⦌) a)) :
     closedStableModel (kernelClosedPredicate r) ≅ sInputModel A where
   hom := closedStableInclusion (kernelClosedPredicate r)
@@ -38,8 +38,8 @@ def killedKernelIso {A C : StableCategory.{u}} (r : ExactMap A C)
 
 /-- Verdier 列の包含を通る合成の核は、元の包含側の安定圏そのものである。 -/
 def verdierCompositeKernelIso
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     closedStableModel (kernelClosedPredicate (i ≫ q : A ⟶ C)) ≅ sInputModel A :=
   killedKernelIso (i ≫ q : A ⟶ C) h.kills_inclusion
 

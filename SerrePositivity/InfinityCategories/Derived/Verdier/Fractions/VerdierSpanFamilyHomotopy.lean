@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingFamilyTranspose
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ全四角形族を、パラメータ関手圏の下辺から上辺への元の円柱として読む。 -/
 def spanSquareFamilyHomotopy {K X : SSet.{u}}
@@ -43,7 +48,7 @@ def spanSquareFamilyHomotopy {K X : SSet.{u}}
 lemma spanSquareFamilyHomotopy_source {K X : SSet.{u}}
     (F : K ⟶ (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
-      (spanSquareFamilyHomotopy F).h = snd Δ[0] Δ[1] ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy F).h = snd Δ[0] Δ[1] ≫
         internalHomFlipHomEquiv K Δ[1] X (F ≫ (pre squareLeftEdge).app X) := by
   change (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
     internalHomFlipHomEquiv K (Δ[1] ⊗ Δ[1]) X F = _
@@ -60,7 +65,7 @@ lemma spanSquareFamilyHomotopy_source {K X : SSet.{u}}
 lemma spanSquareFamilyHomotopy_target {K X : SSet.{u}}
     (F : K ⟶ (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :
     (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
-      (spanSquareFamilyHomotopy F).h = snd Δ[0] Δ[1] ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy F).h = snd Δ[0] Δ[1] ≫
         internalHomFlipHomEquiv K Δ[1] X (F ≫ (pre squareRightEdge).app X) := by
   change (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
     internalHomFlipHomEquiv K (Δ[1] ⊗ Δ[1]) X F = _
@@ -77,11 +82,11 @@ lemma spanSquareFamilyHomotopy_target {K X : SSet.{u}}
 /-- 元の全正方形から作った比較辺は、パラメータ制限でも同じ一次単体を保持する。 -/
 lemma spanSquareFamilyComparisonEdge_pre_parameter {P P' X : SSet.{u}} (j : P' ⟶ P)
     (F : P ⟶ (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :
-    (((functorEdgeOfSimplicialHomotopy (spanSquareFamilyHomotopy F)).map ((truncation 2).map
+    (((functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy F)).map ((truncation 2).map
       ((ihom (Δ[1] : SSet.{u})).map ((pre j).app X)))).edge) =
-      (functorEdgeOfSimplicialHomotopy (spanSquareFamilyHomotopy (j ≫ F))).edge := by
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (j ≫ F))).edge := by
   change ((ihom (Δ[1] : SSet.{u})).map ((pre j).app X)).app (Opposite.op ⦋1⦌)
-      (SSet.yonedaEquiv (curry (spanSquareFamilyHomotopy F).h)) = _
+      (SSet.yonedaEquiv (curry (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy F).h)) = _
   rw [← SSet.yonedaEquiv_comp]
   apply congrArg SSet.yonedaEquiv
   rw [← curry_natural_right]
@@ -89,34 +94,64 @@ lemma spanSquareFamilyComparisonEdge_pre_parameter {P P' X : SSet.{u}} (j : P' �
   exact (internalHomFlipHomEquiv_pre j F).symm
 
 /-- 実分母の元の辺図式を、商後合成した同じ一単体。 -/
-def verdierSpanDenominatorDiagram {A B C : StableCategory.{u}}
-    (i : ExactMap A B) (q : ExactMap B C) (x : B.obj _⦋0⦌)
+def verdierSpanDenominatorDiagram {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (x : B.obj _⦋0⦌)
     (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) : (Δ[1] : SSet.{u}) ⟶ C.obj :=
   (joinStdSimplexIso 0 0).inv ≫ d.val.val ≫ q.hom
 
 /-- 次辺の商比較の始点経路は、同じ共通実分母を定値関手へ写した経路そのもの。 -/
 lemma verdierSpanFamilyHomotopy_source
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) {K : SSet.{u}}
-    (g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d) :
+    (g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d) :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
-      (spanSquareFamilyHomotopy (g ≫ vertexFiberι
-        (verdierDenominatorSpanProjection i x y) d ≫ verdierSpanEvaluationSquare h x y)).h =
-    snd Δ[0] Δ[1] ≫ verdierSpanDenominatorDiagram i q x d ≫ curry (snd K C.obj) := by
-  rw [spanSquareFamilyHomotopy_source]
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (g ≫ vertexFiberι
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h x y)).h =
+    snd Δ[0] Δ[1] ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d ≫ curry (snd K C.obj) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy_source]
   have hc : ((verdierDenominatorOver i x).ι ≫
       F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x) ≫
       (ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌) d =
-      functorVertex (verdierSpanDenominatorDiagram i q x d) := by
+      functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram i q x d) := by
     change ((ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌)
       ((F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x)).app
         (Opposite.op ⦋0⦌) d.val) = _
     rw [F2.Idempotent.pointSliceArrowMap_vertex]
     rfl
-  have he := congrArg (fun f => g ≫ f) (verdierSpanEvaluationSquare_fiber_left h x y d)
+  have he := congrArg (fun f => g ≫ f) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_fiber_left h x y d)
   simp only [SSet.comp_const, hc] at he
   simp only [Category.assoc]
   rw [he, spanInternalHomFlip_const]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyComparisonEdge_pre_parameter := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyComparisonEdge_pre_parameter
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanDenominatorDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanDenominatorDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyHomotopy_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyHomotopy_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanSquareFamilyHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy._proof_3

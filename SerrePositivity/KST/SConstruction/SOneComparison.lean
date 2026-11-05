@@ -95,7 +95,7 @@ instance coreSOneComparison_trivialKanFibration (C : SSet.{u})
 方針：trivial Kan fibration の局所化可逆性を L9 の実際の π_* に移す。
 規約：零次数も含む。使われ方：S₁ と元の圏の Kan 模型の同値。 -/
 lemma coreSOneComparison_piIsomorphism (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    Spectra.KanPiIsomorphism (coreSOneComparison C) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (coreSOneComparison C) := by
   apply kanPiIsomorphism_of_localized_isIso
   exact map_isIso_of_trivialKanFibration AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) (coreSOneComparison C)

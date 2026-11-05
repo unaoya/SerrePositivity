@@ -18,22 +18,22 @@ open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
-def dgGluingNativeStableObject : StableCategory.{max u v w} where
+def dgGluingNativeStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
   obj := dgNerve R (DGGluingObject R C D M)
   isQuasicategory := inferInstance
   isStable := by
     let := dgGluing_isDGPretriangulated R C D M hC hD
     exact dgNerve_isStable_of_pretriangulated R _
-def dgGluingPullbackNativeStableObject : StableCategory.{max u v w} where
+def dgGluingPullbackNativeStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
   obj := dgNerve R (DGGluingPullbackObject R C D M)
   isQuasicategory := inferInstance
   isStable := dgGluingPullbackNerve_isStable R C D M hC hD
-def dgGluingPullbackNativeStableQuotient : StableCategory.{max u v w} where
+def dgGluingPullbackNativeStableQuotient : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
   obj := dgGluingPullbackFlatQuotientNerve R C D M
   isQuasicategory := inferInstance
   isStable := dgGluingPullbackFlatQuotient_isStable R C D M hC hD
 def dgGluingPullbackNativeStableInclusion :
-    ExactMap (dgGluingPullbackNativeStableObject R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackNativeStableObject R C D M hC hD)
       (dgGluingNativeStableObject R C D M hC hD) where
   hom := dgNerve.map (dgGluingPullbackInclusion R C D M)
   isExact := by
@@ -46,7 +46,7 @@ def dgGluingPullbackNativeStableInclusion :
       dgGluingPullbackFlatQuotient_isStable R C D M hC hD
     exact (dgGluingPullback_isStableVerdierSequence R C D M hC hD).inclusionExact
 def dgGluingPullbackNativeStableProjection :
-    ExactMap (dgGluingNativeStableObject R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingNativeStableObject R C D M hC hD)
       (dgGluingPullbackNativeStableQuotient R C D M hC hD) where
   hom := dgGluingPullbackFlatQuotientFunctor R C D M
   isExact := by
@@ -59,7 +59,7 @@ def dgGluingPullbackNativeStableProjection :
       dgGluingPullbackFlatQuotient_isStable R C D M hC hD
     exact (dgGluingPullback_isStableVerdierSequence R C D M hC hD).quotientExact
 theorem dgGluingPullback_isNativeVerdierSequence :
-    IsVerdierSequence (dgGluingPullbackNativeStableInclusion R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingPullbackNativeStableInclusion R C D M hC hD)
       (dgGluingPullbackNativeStableProjection R C D M hC hD) where
   fullyFaithful := by
     let := dgGluing_isDGPretriangulated R C D M hC hD

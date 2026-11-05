@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+open SerrePositivity.KST.Spectra.SkeletalCellAttachment
 
 noncomputable section
 
@@ -30,7 +35,7 @@ open SSet.relativeCellComplexOfMono
 使われ方：Goerss–Jardine VIII §1。セルの境界の構造写像。 -/
 def attachingMap (K : SSet.{u}) (d : ℕ) :
     sigmaBoundary (K.skeleton d).ι d ⟶ (K.skeleton d : SSet.{u}) :=
-  t (K.skeleton d).ι d ≫ (Subcomplex.eqToIso (lower_eq K d)).hom
+  t (K.skeleton d).ι d ≫ (Subcomplex.eqToIso (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.lower_eq K d)).hom
 
 /-- 概要：d 単体の余積から一段高い骨格への特徴射。
 方針：相対セル分解の単体の特徴射を骨格の同型で移す。
@@ -38,24 +43,42 @@ def attachingMap (K : SSet.{u}) (d : ℕ) :
 使われ方：Goerss–Jardine VIII §1。新しいセルの具体的な射。 -/
 def characteristicMap (K : SSet.{u}) (d : ℕ) :
     sigmaStdSimplex (K.skeleton d).ι d ⟶ (K.skeleton (d + 1) : SSet.{u}) :=
-  b (K.skeleton d).ι d ≫ (Subcomplex.eqToIso (upper_eq K d)).hom
+  b (K.skeleton d).ι d ≫ (Subcomplex.eqToIso (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.upper_eq K d)).hom
 
 /-- 概要：d 次元の非退化単体を境界で貼ると一段高い骨格を得る。
 方針：単射の相対セル分解の pushout を通常の二つの骨格へ同型で移す。
 規約：左辺は d 単体の境界包含の余積。
 使われ方：Goerss–Jardine VIII §1。骨格の tower fiber のセル分解。 -/
 theorem isPushout (K : SSet.{u}) (d : ℕ) :
-    IsPushout (attachingMap K d) (l (K.skeleton d).ι d)
+    IsPushout (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K d) (l (K.skeleton d).ι d)
       (Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)))
-      (characteristicMap K d) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d) := by
   refine (SSet.relativeCellComplexOfMono.isPushout (K.skeleton d).ι d).of_iso
-    (Iso.refl _) (Subcomplex.eqToIso (lower_eq K d))
-      (Iso.refl _) (Subcomplex.eqToIso (upper_eq K d)) ?_ ?_ ?_ ?_
-  · simp [attachingMap]
+    (Iso.refl _) (Subcomplex.eqToIso (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.lower_eq K d))
+      (Iso.refl _) (Subcomplex.eqToIso (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.upper_eq K d)) ?_ ?_ ?_ ?_
+  · simp [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap]
   · simp
   · rfl
-  · simp [characteristicMap]
+  · simp [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap]
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.attachingMap := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.characteristicMap := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.isPushout := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.attachingMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.characteristicMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap.eq_1

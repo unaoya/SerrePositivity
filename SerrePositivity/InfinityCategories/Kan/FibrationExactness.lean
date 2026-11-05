@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
@@ -16,11 +18,21 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.FiberExactness
+end SerrePositivity.KST.Spectra.FiberExactness
+namespace SerrePositivity.KST.Spectra.TotalExactness
+end SerrePositivity.KST.Spectra.TotalExactness
+namespace SerrePositivity.KST.Spectra.BaseExactness
+end SerrePositivity.KST.Spectra.BaseExactness
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 namespace FiberExactness
+open SerrePositivity.KST.Spectra.FiberExactness
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
   (e : E _⦋0⦌) {n : ℕ}
@@ -30,13 +42,13 @@ variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
 規約：fiber の代表の次数は n、底の原像の次数は n + 1。
 使われ方：Kerodon Theorem 3.2.6.1。零次数も含む fiber の核が連結射の像に含まれること。 -/
 theorem exists_connecting_of_nullRel_all
-    (b : (KanFiber p (p.app _ e)).PtSimplex n (fiberPoint p e))
+    (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))
     (r : PtSimplex.RelStruct RelativeMorphism.const
-      (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last n)) :
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) :
     ∃ s : B.PtSimplex (n + 1) (p.app _ e),
-      connecting p e n (KanHomotopyGroup.mk s) = KanHomotopy.mk n b := by
-  have hlast : stdSimplex.δ (Fin.last (n + 1)) ≫ r.map = b.map ≫ fiberι p (p.app _ e) := by
-    simpa only [Fin.succ_last, mapSimplex_map] using r.δ_succ_map
+      _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b := by
+  have hlast : stdSimplex.δ (Fin.last (n + 1)) ≫ r.map = b.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) := by
+    simpa only [Fin.succ_last, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_map] using r.δ_succ_map
   have hr (j : Fin (n + 2)) (hj : j ≠ Fin.last (n + 1)) :
       stdSimplex.δ j ≫ r.map = SSet.const e := by
     by_cases he : j = (Fin.last n).castSucc
@@ -53,32 +65,33 @@ theorem exists_connecting_of_nullRel_all
         simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
         by_cases hj : j = Fin.last (n + 1)
         · subst j
-          rw [← Category.assoc, hlast, Category.assoc, fiberι_comp, comp_const]
+          rw [← Category.assoc, hlast, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, comp_const]
         · rw [← Category.assoc, hr j hj, const_comp] }
-  let L : BoundaryLift p e s := { map := r.map, map_comp := rfl, face_eq := hr }
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s := { map := r.map, map_comp := rfl, face_eq := hr }
   have hb : L.boundary = b := by
     ext : 1
-    apply fiber_hom_ext p (p.app _ e)
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
     rw [L.boundary_ι]
     exact hlast
   refine ⟨s, ?_⟩
-  rw [connecting_eq p e L, hb]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e L, hb]
 
 /-- 概要：fiber の正次数の零ホモトピーから底の原像を得る。
 方針：零次数を含む一般の構成を正次数に適用する。
 規約：fiber の次数は n + 1、底の原像の次数は n + 2。
 使われ方：Kerodon Theorem 3.2.6.1。正次数の完全性の界面。 -/
 theorem exists_connecting_of_nullRel
-    (b : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e))
+    (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))
     (r : PtSimplex.RelStruct RelativeMorphism.const
-      (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last (n + 1))) :
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) :
     ∃ s : B.PtSimplex (n + 2) (p.app _ e),
-      connecting p e (n + 1) (KanHomotopyGroup.mk s) = KanHomotopyGroup.mk b :=
-  exists_connecting_of_nullRel_all p e b r
+      _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b :=
+  _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r
 
 end FiberExactness
 
 namespace TotalExactness
+open SerrePositivity.KST.Spectra.TotalExactness
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌) {n : ℕ}
 
@@ -87,10 +100,10 @@ variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌) {n : ℕ}
 規約：代表単体の次数は n + 1。Kan 性は fibration の RLP にのみ使う。
 使われ方：Kerodon Theorem 3.2.6.1。全空間の位置の核が fiber の像に含まれること。 -/
 theorem exists_fiber_of_baseNullRel (a : E.PtSimplex (n + 1) e)
-    (r : PtSimplex.RelStruct (mapSimplex p rfl a) RelativeMorphism.const (Fin.last (n + 1))) :
-    ∃ b : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e),
+    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl a) RelativeMorphism.const (Fin.last (n + 1))) :
+    ∃ b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e),
       Nonempty (PtSimplex.RelStruct a
-        (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last (n + 1))) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) := by
   let α (j : Fin (n + 3)) (_ : j ≠ Fin.last (n + 2)) : (Δ[n + 1] : SSet.{u}) ⟶ E :=
     if j.val = n + 1 then a.map else SSet.const e
   have hαface (j) (hj) (k : Fin (n + 2)) : stdSimplex.δ k ≫ α j hj = SSet.const e := by
@@ -113,12 +126,12 @@ theorem exists_fiber_of_baseNullRel (a : E.PtSimplex (n + 1) e)
   have ht : (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ≫ p = SSet.const (p.app _ e) := by
     rw [Category.assoc, hp]
     simpa only [Fin.succ_last, RelativeMorphism.const_map] using r.δ_succ_map
-  let b : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e) :=
-    { map := fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ht
+  let b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) :=
+    { map := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ht
       comm := by
-        apply fiber_hom_ext p (p.app _ e)
-        simp only [Category.assoc, fiberLift_ι, Subcomplex.ofSimplex_ι, comp_const,
-          const_comp, fiberι_point]
+        apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+        simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, Subcomplex.ofSimplex_ι, comp_const,
+          const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
         ext j : 1
         simp only [boundary.ι_ι_assoc, comp_const]
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
@@ -132,7 +145,7 @@ theorem exists_fiber_of_baseNullRel (a : E.PtSimplex (n + 1) e)
     δ_map_of_gt := ?_ }⟩⟩
   · simpa [α] using hφ (Fin.last (n + 1)).castSucc (Fin.castSucc_ne_last _)
   · rw [Fin.succ_last]
-    exact (fiberLift_ι p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ht).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ht).symm
   · intro j hj
     rw [hφ j (Fin.ne_last_of_lt (hj.trans (Fin.castSucc_lt_last _)))]
     dsimp [α]
@@ -147,10 +160,10 @@ theorem exists_fiber_of_baseNullRel (a : E.PtSimplex (n + 1) e)
 規約：零次数の関係の向きに合わせ、終点を与えた外ホーンを使う。
 使われ方：Kerodon Theorem 3.2.6.1。π₀(全空間) の位置の完全性。 -/
 theorem exists_fiber_of_baseNullRel_zero (a : E.PtSimplex 0 e)
-    (r : PtSimplex.RelStruct₀ (mapSimplex p rfl a) RelativeMorphism.const) :
-    ∃ b : (KanFiber p (p.app _ e)).PtSimplex 0 (fiberPoint p e),
+    (r : PtSimplex.RelStruct₀ (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl a) RelativeMorphism.const) :
+    ∃ b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e),
       Nonempty (PtSimplex.RelStruct₀ a
-        (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b)) := by
   let α (j : Fin 2) (_ : j ≠ (1 : Fin 2)) : (Δ[0] : SSet.{u}) ⟶ E := a.map
   have hα : horn.IsCompatible α := by simp
   have hcomm (j : Fin 2) (hj : j ≠ 1) : α j hj ≫ p = stdSimplex.δ j ≫ r.map := by
@@ -164,8 +177,8 @@ theorem exists_fiber_of_baseNullRel_zero (a : E.PtSimplex 0 e)
   have ht : (stdSimplex.δ (1 : Fin 2) ≫ φ) ≫ p = SSet.const (p.app _ e) := by
     rw [Category.assoc, hp]
     exact r.δ_succ_map
-  let b : (KanFiber p (p.app _ e)).PtSimplex 0 (fiberPoint p e) :=
-    { map := fiberLift p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht
+  let b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) :=
+    { map := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht
       comm := by ext }
   refine ⟨b, ⟨{
     map := φ
@@ -174,13 +187,14 @@ theorem exists_fiber_of_baseNullRel_zero (a : E.PtSimplex 0 e)
     δ_map_of_lt := ?_
     δ_map_of_gt := ?_ }⟩⟩
   · exact hφ 0 (by decide)
-  · exact (fiberLift_ι p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht).symm
+  · exact (_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht).symm
   · intro j hj; exact (Fin.not_lt_zero j hj).elim
   · intro j hj; exact (not_lt_of_ge (Fin.le_last j) hj).elim
 
 end TotalExactness
 
 namespace BaseExactness
+open SerrePositivity.KST.Spectra.BaseExactness
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
@@ -189,11 +203,11 @@ variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
 方針：最後から二番目の面だけが元の代表で、それ以外は基点に定数となる。
 規約：r は境界代表から定数代表への RelStruct。
 使われ方：Kerodon Theorem 3.2.6.1。底の位置の完全性の貼り合わせ。 -/
-theorem rel_face (L : BoundaryLift p e s)
+theorem rel_face (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (r : PtSimplex.RelStruct L.boundary RelativeMorphism.const (Fin.last n))
     (j : Fin (n + 2)) :
-    stdSimplex.δ j ≫ r.map ≫ fiberι p (p.app _ e) =
-      if j.val = n then L.boundary.map ≫ fiberι p (p.app _ e) else SSet.const e := by
+    stdSimplex.δ j ≫ r.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) =
+      if j.val = n then L.boundary.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e := by
   by_cases hj : j.val = n
   · have he : j = (Fin.last n).castSucc := Fin.ext hj
     rw [ite_eq_left hj, he, r.δ_castSucc_map_assoc]
@@ -208,31 +222,31 @@ theorem rel_face (L : BoundaryLift p e s)
         simp only [Fin.lt_def, Fin.val_castSucc, Fin.val_last]
         have hk : j.val ≠ n + 1 := fun h ↦ hj' (Fin.ext h)
         omega
-      rw [r.δ_map_of_lt_assoc j hlt, const_comp, fiberι_point]
+      rw [r.δ_map_of_lt_assoc j hlt, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
 
 /-- 概要：底の代表の持ち上げと fiber 内の零ホモトピーを貼るホーンの面。
 方針：n 番目に持ち上げ、n + 2 番目に零ホモトピーを置く。
 規約：欠ける面は n + 1。
 使われ方：Kerodon Theorem 3.2.6.1。底の核の元の全空間への持ち上げ。 -/
-noncomputable def face (L : BoundaryLift p e s)
+noncomputable def face (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (r : PtSimplex.RelStruct L.boundary RelativeMorphism.const (Fin.last n))
     (j : Fin (n + 3)) : (Δ[n + 1] : SSet.{u}) ⟶ E :=
   if j.val = n then L.map else
-  if j.val = n + 2 then r.map ≫ fiberι p (p.app _ e) else SSet.const e
+  if j.val = n + 2 then r.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e
 
 /-- 概要：底の完全性のホーンの面は互換である。
 方針：持ち上げの最後の面と fiber の零ホモトピーの最初の面が一致することを使う。
 規約：n + 1 番目の面を除く。
 使われ方：Kerodon Theorem 3.2.6.1。全空間での Kan 充填。 -/
-theorem compatible (L : BoundaryLift p e s)
+theorem compatible (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (r : PtSimplex.RelStruct L.boundary RelativeMorphism.const (Fin.last n)) :
-    horn.IsCompatible (i := (Fin.last n).castSucc.succ) (fun j _ ↦ face L r j) := by
+    horn.IsCompatible (i := (Fin.last n).castSucc.succ) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face L r j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
   have hk' : k.val ≠ n + 1 := fun he ↦ hk (Fin.ext he)
-  simp only [face]
-  split_ifs <;> try simp only [L.face_formula, rel_face, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face]
+  split_ifs <;> try simp only [L.face_formula, _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.rel_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -243,15 +257,15 @@ theorem compatible (L : BoundaryLift p e s)
 方針：二面を交換して、持ち上げの定数面か零ホモトピーの定数面へ移す。
 規約：φ は貼り合わせホーンの実際の充填。
 使われ方：Kerodon Theorem 3.2.6.1。全空間のホモトピー群の代表の構成。 -/
-theorem output_face (L : BoundaryLift p e s)
+theorem output_face (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (r : PtSimplex.RelStruct L.boundary RelativeMorphism.const (Fin.last n))
     (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : ∀ (j : Fin (n + 3)) (_ : j ≠ (Fin.last n).castSucc.succ),
-      stdSimplex.δ j ≫ φ = face L r j) (j : Fin (n + 2)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face L r j) (j : Fin (n + 2)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last n).castSucc.succ ≫ φ = SSet.const e := by
   by_cases hj : j ≤ (Fin.last n).castSucc
   · rw [stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face]
     split_ifs <;> try simp only [L.face_formula, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -263,8 +277,8 @@ theorem output_face (L : BoundaryLift p e s)
     have he : (Fin.last n).castSucc.succ = (Fin.last n).succ.castSucc := by
       apply Fin.ext; rfl
     rw [he, ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [rel_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.rel_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -277,33 +291,33 @@ theorem output_face (L : BoundaryLift p e s)
 規約：底の代表の次数は n + 1。fiber の零次数も幾何的には許す。
 使われ方：Kerodon Theorem 3.2.6.1。底の位置の完全性。 -/
 theorem exists_total_of_boundaryNullRel [Fibration p] [KanComplex E] [KanComplex B]
-    (L : BoundaryLift p e s)
+    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
     (r : PtSimplex.RelStruct L.boundary RelativeMorphism.const (Fin.last n)) :
     ∃ a : E.PtSimplex (n + 1) e,
-      KanHomotopyGroup.map p rfl (KanHomotopyGroup.mk a) = KanHomotopyGroup.mk s := by
-  let φ := (compatible L r).liftOfKanComplex
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s := by
+  let φ := (_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.compatible L r).liftOfKanComplex
   have hφ : ∀ (j : Fin (n + 3)) (_ : j ≠ (Fin.last n).castSucc.succ),
-      stdSimplex.δ j ≫ φ = face L r j := fun j hj ↦ (compatible L r).δ_liftOfKanComplex j hj
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face L r j := fun j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.compatible L r).δ_liftOfKanComplex j hj
   let a : E.PtSimplex (n + 1) e :=
     { map := stdSimplex.δ (Fin.last n).castSucc.succ ≫ φ
       comm := by
         ext j : 1
         simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
-        exact output_face L r φ hφ j }
-  have hmul : PtSimplex.MulStruct RelativeMorphism.const s (mapSimplex p rfl a) (Fin.last n) :=
+        exact _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.output_face L r φ hφ j }
+  have hmul : PtSimplex.MulStruct RelativeMorphism.const s (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl a) (Fin.last n) :=
     { map := φ ≫ p
       δ_castSucc_castSucc_map := by
         rw [← Category.assoc, hφ _ (by grind)]
-        simp [face, L.map_comp]
+        simp [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face, L.map_comp]
       δ_succ_castSucc_map := rfl
       δ_succ_succ_map := by
         rw [← Category.assoc, hφ _ (by grind)]
-        simp only [face, Fin.val_succ, Fin.val_last]
+        simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face, Fin.val_succ, Fin.val_last]
         rw [ite_eq_right (by omega)]
         simp
       δ_map_of_lt j hj := by
         rw [← Category.assoc, hφ _ (by grind)]
-        simp only [face]
+        simp only [_root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face]
         split_ifs <;> first
           | exact const_comp _ _
           | (exfalso
@@ -311,10 +325,10 @@ theorem exists_total_of_boundaryNullRel [Fibration p] [KanComplex E] [KanComplex
              omega)
       δ_map_of_gt j hj := (not_lt_of_ge (Fin.le_last j) hj).elim }
   refine ⟨a, ?_⟩
-  rw [KanHomotopyGroup.map_mk]
-  have hm := KanHomotopyGroup.mul_eq hmul
-  change (1 : KanHomotopyGroup B n (p.app _ e)) * KanHomotopyGroup.mk s =
-    KanHomotopyGroup.mk (mapSimplex p rfl a) at hm
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+  have hm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq hmul
+  change (1 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e)) * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl a) at hm
   simpa only [one_mul] using hm.symm
 
 end BaseExactness
@@ -325,27 +339,27 @@ end BaseExactness
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の fiber の正次数での完全性。 -/
 theorem exact_connecting_fiber {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
-    (a : KanHomotopyGroup (KanFiber p (p.app _ e)) n (fiberPoint p e)) :
-    KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e) a = 1 ↔
-      ∃ b : KanHomotopyGroup B (n + 1) (p.app _ e), connecting p e (n + 1) b = a := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) a = 1 ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) b = a := by
   induction a using Quotient.inductionOn with | h b => ?_
-  change KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e)
-      (KanHomotopyGroup.mk b) = 1 ↔
-    ∃ c : KanHomotopyGroup B (n + 1) (p.app _ e), connecting p e (n + 1) c =
-      KanHomotopyGroup.mk b
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b) = 1 ↔
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) c =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b
   constructor
   · intro h
-    rw [KanHomotopyGroup.map_mk] at h
-    have he : KanHomotopyGroup.mk (RelativeMorphism.const : E.PtSimplex (n + 1) e) =
-        KanHomotopyGroup.mk (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) := h.symm
-    have hr := (KanHomotopyGroup.mk_eq_iff _ _).1 he
-    obtain ⟨r⟩ := (simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
-    obtain ⟨s, hs⟩ := FiberExactness.exists_connecting_of_nullRel p e b r
-    exact ⟨KanHomotopyGroup.mk s, hs⟩
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk] at h
+    have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (RelativeMorphism.const : E.PtSimplex (n + 1) e) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) := h.symm
+    have hr := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1 he
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
+    obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel p e b r
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s, hs⟩
   · rintro ⟨c, hc⟩
-    have hz := fiber_map_connecting p e (n + 1) c
-    change KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e)
-      (connecting p e (n + 1) c) = 1 at hz
+    have hz := _root_.SerrePositivity.InfinityCategories.Kan.fiber_map_connecting p e (n + 1) c
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) c) = 1 at hz
     rw [hc] at hz
     exact hz
 
@@ -354,33 +368,33 @@ theorem exact_connecting_fiber {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 規約：全空間と fiber の実際の次数は n + 1。
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の全空間の位置の完全性。 -/
 theorem exact_fiber_total {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
-    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : KanHomotopyGroup E n e) :
-    KanHomotopyGroup.map p rfl a = 1 ↔
-      ∃ b : KanHomotopyGroup (KanFiber p (p.app _ e)) n (fiberPoint p e),
-        KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e) b = a := by
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E n e) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl a = 1 ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e),
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b = a := by
   constructor
   · intro ha
     induction a using Quotient.inductionOn with | h s => ?_
-    change KanHomotopyGroup.map p rfl (KanHomotopyGroup.mk s) = 1 at ha
-    rw [KanHomotopyGroup.map_mk] at ha
-    have hr := (KanHomotopyGroup.mk_eq_iff (mapSimplex p rfl s) .const).1 ha
-    obtain ⟨r⟩ := (simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
-    obtain ⟨b, ⟨hb⟩⟩ := TotalExactness.exists_fiber_of_baseNullRel p e s r
-    refine ⟨KanHomotopyGroup.mk b, ?_⟩
-    change KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e)
-      (KanHomotopyGroup.mk b) = KanHomotopyGroup.mk s
-    rw [KanHomotopyGroup.map_mk]
-    exact (KanHomotopyGroup.sound hb).symm
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1 at ha
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk] at ha
+    have hr := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) .const).1 ha
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
+    obtain ⟨b, ⟨hb⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel p e s r
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b, ?_⟩
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound hb).symm
   · rintro ⟨b, rfl⟩
     induction b using Quotient.inductionOn with | h s => ?_
-    change KanHomotopyGroup.map p rfl
-      (KanHomotopyGroup.map (fiberι p (p.app _ e)) (fiberι_point p e)
-        (KanHomotopyGroup.mk s)) = 1
-    rw [KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk]
-    have hc : mapSimplex p rfl (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) s) =
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) = 1
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
+    have hc : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) s) =
         RelativeMorphism.const := by
       ext : 1
-      simp [mapSimplex]
+      simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
     rw [hc]
     rfl
 
@@ -390,22 +404,22 @@ theorem exact_fiber_total {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の底の位置の完全性。 -/
 theorem exact_total_base {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
-    (a : KanHomotopyGroup B (n + 1) (p.app _ e)) :
-    connecting p e (n + 1) a = 1 ↔
-      ∃ b : KanHomotopyGroup E (n + 1) e, KanHomotopyGroup.map p rfl b = a := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) a = 1 ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E (n + 1) e, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl b = a := by
   constructor
   · intro ha
     induction a using Quotient.inductionOn with | h s => ?_
-    change connecting p e (n + 1) (KanHomotopyGroup.mk s) = 1 at ha
-    let L := chooseBoundaryLift p e s
-    rw [connecting_eq p e L] at ha
-    change KanHomotopyGroup.mk L.boundary = 1 at ha
-    have hr := (KanHomotopyGroup.mk_eq_iff L.boundary .const).1 ha
-    obtain ⟨r⟩ := (simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
-    obtain ⟨b, hb⟩ := BaseExactness.exists_total_of_boundaryNullRel L r
-    exact ⟨KanHomotopyGroup.mk b, hb⟩
+    change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1 at ha
+    let L := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e s
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e L] at ha
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.boundary = 1 at ha
+    have hr := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff L.boundary .const).1 ha
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 1))).1 hr
+    obtain ⟨b, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.exists_total_of_boundaryNullRel L r
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b, hb⟩
   · rintro ⟨b, rfl⟩
-    exact connecting_map p e (n + 1) b
+    exact _root_.SerrePositivity.InfinityCategories.Kan.connecting_map p e (n + 1) b
 
 /-- 概要：fiber の零次数を含む全次数で、包含の基点の逆像は連結写像の像。
 方針：全空間での零ホモトピーから底の原像を構成し、逆向きは複体条件を使う。
@@ -413,21 +427,21 @@ theorem exact_total_base {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Kerodon Theorem 3.2.6.1。π₀(fiber) を含む長完全列の端。 -/
 theorem exact_connecting_fiber_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
-    (a : KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e)) :
-    KanHomotopy.map n (fiberι p (p.app _ e)) (fiberι_point p e) a = KanHomotopy.point n ↔
-      ∃ b : KanHomotopyGroup B n (p.app _ e), connecting p e n b = a := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n b = a := by
   constructor
   · intro ha
-    obtain ⟨b, rfl⟩ := KanHomotopy.mk_surjective n a
-    rw [KanHomotopy.map_mk] at ha
-    have he : KanHomotopy.mk n (RelativeMorphism.const : E.PtSimplex n e) =
-        KanHomotopy.mk n (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) :=
-      (KanHomotopy.mk_const n).trans ha.symm
-    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
-    obtain ⟨s, hs⟩ := FiberExactness.exists_connecting_of_nullRel_all p e b r
-    exact ⟨KanHomotopyGroup.mk s, hs⟩
+    obtain ⟨b, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] at ha
+    have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (RelativeMorphism.const : E.PtSimplex n e) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) :=
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const n).trans ha.symm
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
+    obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s, hs⟩
   · rintro ⟨b, rfl⟩
-    exact fiber_map_connecting p e n b
+    exact _root_.SerrePositivity.InfinityCategories.Kan.fiber_map_connecting p e n b
 
 /-- 概要：底の π₁ を含む全正次数で、連結像が基点となる元は全空間から来る。
 方針：零次数でも単一の RelStruct に戻せることを使い、境界の零ホモトピーを貼る。
@@ -435,63 +449,120 @@ theorem exact_connecting_fiber_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Kerodon Theorem 3.2.6.1。π₁(B) → π₀(fiber) の位置の完全性。 -/
 theorem exact_total_base_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
-    (a : KanHomotopyGroup B n (p.app _ e)) :
-    connecting p e n a = KanHomotopy.point n ↔
-      ∃ b : KanHomotopyGroup E n e, KanHomotopyGroup.map p rfl b = a := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E n e, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl b = a := by
   constructor
   · intro ha
     induction a using Quotient.inductionOn with | h s => ?_
-    change connecting p e n (KanHomotopyGroup.mk s) = KanHomotopy.point n at ha
-    let L := chooseBoundaryLift p e s
-    rw [connecting_eq p e L] at ha
-    have he : KanHomotopy.mk n L.boundary = KanHomotopy.mk n RelativeMorphism.const :=
-      ha.trans (KanHomotopy.mk_const n).symm
-    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
-    obtain ⟨b, hb⟩ := BaseExactness.exists_total_of_boundaryNullRel L r
-    exact ⟨KanHomotopyGroup.mk b, hb⟩
+    change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n at ha
+    let L := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e s
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e L] at ha
+    have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n L.boundary = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n RelativeMorphism.const :=
+      ha.trans (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const n).symm
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
+    obtain ⟨b, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.exists_total_of_boundaryNullRel L r
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b, hb⟩
   · rintro ⟨b, rfl⟩
-    exact connecting_map p e n b
+    exact _root_.SerrePositivity.InfinityCategories.Kan.connecting_map p e n b
 
 /-- 概要：π₀(全空間) で、底の基点の成分の逆像は fiber からの像。
 方針：底の成分の等式を一本の辺へ戻し、終点を指定して持ち上げる。
 規約：群の核ではなく基点付き集合の完全性として述べる。
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の零次数の端。 -/
 theorem exact_fiber_total_zero {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
-    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (a : KanHomotopy E 0 e) :
-    KanHomotopy.map 0 p rfl a = KanHomotopy.point 0 ↔
-      ∃ b : KanHomotopy (KanFiber p (p.app _ e)) 0 (fiberPoint p e),
-        KanHomotopy.map 0 (fiberι p (p.app _ e)) (fiberι_point p e) b = a := by
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E 0 e) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 p rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0 ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e),
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b = a := by
   constructor
   · intro ha
-    obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective 0 a
-    rw [KanHomotopy.map_mk] at ha
-    have he : KanHomotopy.mk 0 (mapSimplex p rfl s) = KanHomotopy.mk 0 RelativeMorphism.const :=
-      ha.trans (KanHomotopy.mk_const 0).symm
-    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct 0 _ _ 0).1 he
-    obtain ⟨b, ⟨hb⟩⟩ := TotalExactness.exists_fiber_of_baseNullRel_zero p e s r
-    refine ⟨KanHomotopy.mk 0 b, ?_⟩
-    rw [KanHomotopy.map_mk]
-    exact (KanHomotopy.sound hb).symm
+    obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective 0 a
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] at ha
+    have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 RelativeMorphism.const :=
+      ha.trans (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const 0).symm
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct 0 _ _ 0).1 he
+    obtain ⟨b, ⟨hb⟩⟩ := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel_zero p e s r
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 b, ?_⟩
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.sound hb).symm
   · rintro ⟨b, rfl⟩
-    obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective 0 b
-    rw [KanHomotopy.map_mk, KanHomotopy.map_mk]
-    have hc : mapSimplex p rfl (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) s) =
+    obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective 0 b
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
+    have hc : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) s) =
         RelativeMorphism.const := by
       ext : 1
-      simp [mapSimplex]
-    rw [hc, KanHomotopy.mk_const]
+      simp [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
+    rw [hc, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const]
 
 /-- 概要：全空間の全自然数次数で、射影の基点の逆像は fiber の包含の像。
 方針：正次数の群の完全性と零次数の辺の持ち上げをまとめる。
 規約：零次数には群構造を要求しない。
 使われ方：Kerodon Theorem 3.2.6.1。全次数のホモトピー長完全列。 -/
 theorem exact_fiber_total_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
-    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : KanHomotopy E n e) :
-    KanHomotopy.map n p rfl a = KanHomotopy.point n ↔
-      ∃ b : KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e),
-        KanHomotopy.map n (fiberι p (p.app _ e)) (fiberι_point p e) b = a := by
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n p rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n ↔
+      ∃ b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e),
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b = a := by
   cases n with
-  | zero => exact exact_fiber_total_zero p e a
-  | succ n => exact exact_fiber_total p e n a
+  | zero => exact _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_zero p e a
+  | succ n => exact _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total p e n a
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_connecting_fiber := _root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_connecting_fiber_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total_zero := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_total_base := _root_.SerrePositivity.InfinityCategories.Kan.exact_total_base
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_total_base_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.compatible := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.compatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.exists_total_of_boundaryNullRel := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.exists_total_of_boundaryNullRel
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.output_face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.output_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.rel_face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.rel_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberExactness.exists_connecting_of_nullRel := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberExactness.exists_connecting_of_nullRel_all := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TotalExactness.exists_fiber_of_baseNullRel := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TotalExactness.exists_fiber_of_baseNullRel_zero := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face.eq_1

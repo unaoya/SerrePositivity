@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
 
 /-- 概要：同じ上側族の第一短辺は元の固定 core 包含の全区間族。
 方針：同じ全ホーン回収を元の第一ホーン面へ制限する。
@@ -29,7 +29,7 @@ theorem verdierMovingUpperFamily_first :
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
       (Δ[1] ◁ verdierMovingUpperFirstFamily d) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
-          (stableCoreSingleKanObject (show StableQCat from d.left))
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
           (fullSRealizationKanObject d.left)) := by
   have h := congrArg (fun F => (horn₂₁.ι₀₁ ▷ (Δ[1] : SSet.{u + 1})) ≫ F)
     (verdierMovingUpperFamily_horn d ℓ)
@@ -44,7 +44,7 @@ theorem verdierMovingUpperFamily_last :
       (Δ[1] ◁ verdierMovingUpperLastFamily d) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
           (fullSRealizationKanObject d.left)
-          (stableCoreSingleKanObject (show StableQCat from d.right))) := by
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))) := by
   have h := congrArg (fun F => (horn₂₁.ι₁₂ ▷ (Δ[1] : SSet.{u + 1})) ≫ F)
     (verdierMovingUpperFamily_horn d ℓ)
   rw [← Category.assoc, ← comp_whiskerRight, horn.ι_ι] at h
@@ -56,12 +56,12 @@ theorem verdierMovingUpperFamily_last :
 theorem verdierMovingUpperFirstFamily_point (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
     (verdierMovingUpperFirstFamily d).app (Opposite.op ⦋0⦌) k =
       ULift.up (SimplicialCategory.homEquiv' _ _
-        (exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))) := by
+        (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))) := by
   change PinchedHom.constant (X := (SSet.uliftFunctor.{u + 1, u}).obj
-    (SimplicialCategory.sHom (stableCoreSingleKanObject (show StableQCat from d.left))
+    (SimplicialCategory.sHom (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
       (fullSRealizationKanObject d.left)))
     (ULift.up (SimplicialCategory.homEquiv' _ _
-      (exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left))))) 0 = _
+      (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))))) 0 = _
   exact pinchedConstant_zero _
 
 /-- 概要：同じ上側族の全有限パラメータで第一短辺は元の実 core 包含の標準区間像。
@@ -71,9 +71,9 @@ theorem verdierMovingUpperFamily_atVertex_firstFace (k : (Δ[1] : SSet.{u + 1}) 
     stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierMovingUpperFamily d ℓ) k =
       lift (𝟙 (Δ[1] : SSet.{u + 1}))
         (SSet.const (ULift.up (SimplicialCategory.homEquiv' _ _
-          (exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))))) ≫
+          (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
-          (stableCoreSingleKanObject (show StableQCat from d.left))
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
           (fullSRealizationKanObject d.left)) := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_first]
   unfold familyAtVertex
@@ -87,11 +87,11 @@ theorem verdierMovingUpperFamily_first_lastFace :
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       lift (𝟙 (Δ[1] : SSet.{u + 1}))
         (SSet.const (ULift.up (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-          (stableCoreSingleKanObject (show StableQCat from d.right)).obj from
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
             verdierOriginalFullSCompositeMap d 0)))) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
           (fullSRealizationKanObject d.left)
-          (stableCoreSingleKanObject (show StableQCat from d.right))) := by
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))) := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_last]
   unfold familyAtVertex
   rw [← Category.assoc, lift_whiskerLeft, SSet.const_comp, verdierMovingUpperLastFamily_first]
@@ -104,11 +104,11 @@ theorem verdierMovingUpperFamily_last_lastFace :
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       lift (𝟙 (Δ[1] : SSet.{u + 1}))
         (SSet.const (ULift.up (functorVertex (show (fullSRealizationKanObject d.left).obj ⟶
-          (stableCoreSingleKanObject (show StableQCat from d.right)).obj from
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj from
             verdierOriginalFullSCompositeMap d 1)))) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
           (fullSRealizationKanObject d.left)
-          (stableCoreSingleKanObject (show StableQCat from d.right))) := by
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))) := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_last]
   unfold familyAtVertex
   rw [← Category.assoc, lift_whiskerLeft, SSet.const_comp, verdierMovingUpperLastFamily_last]

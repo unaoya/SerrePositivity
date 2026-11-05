@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FilteredKanColimit
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
@@ -15,9 +17,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -40,7 +45,7 @@ theorem ptSimplex_filtered_factorization (j : J) (x : (F.obj j) _⦋0⦌) (n : �
     exact s.comp_map_eq_const (boundary n).ι
   have h : SSet.const (X := (∂Δ[n] : SSet.{u})) x ≫ c.ι.app j =
       (boundary n).ι ≫ s.map := by rw [SSet.const_comp, hs]
-  obtain ⟨k, v, q, hq, heq⟩ := finite_relative_factorization hc (boundary n).ι j
+  obtain ⟨k, v, q, hq, heq⟩ := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization hc (boundary n).ι j
     (SSet.const x) s.map h
   refine ⟨k, v, { map := q, comm := ?_ }, heq⟩
   rw [SSet.const_comp]
@@ -55,7 +60,7 @@ include hc in
 theorem ptSimplex_filtered_eq (j : J) {x : (F.obj j) _⦋0⦌} {n : ℕ}
     (s t : (F.obj j).PtSimplex n x) (h : s.map ≫ c.ι.app j = t.map ≫ c.ι.app j) :
     ∃ (k : J) (v : j ⟶ k),
-      mapSimplex (F.map v) rfl s = mapSimplex (F.map v) rfl t := by
+      _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (F.map v) rfl s = _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (F.map v) rfl t := by
   obtain ⟨k, v, hv⟩ := Limits.exists_eq_of_preservesColimit_coyoneda_self hc s.map t.map h
   refine ⟨k, v, ?_⟩
   apply RelativeMorphism.ext
@@ -68,11 +73,11 @@ include hc in
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_n の余極限比較の単射性。 -/
 theorem relStruct_filtered_factorization (j : J) {x : (F.obj j) _⦋0⦌} {n : ℕ}
     (s t : (F.obj j).PtSimplex n x) (i : Fin (n + 1))
-    (r : PtSimplex.RelStruct (mapSimplex (c.ι.app j) rfl s)
-      (mapSimplex (c.ι.app j) rfl t) i) :
+    (r : PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (c.ι.app j) rfl s)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (c.ι.app j) rfl t) i) :
     ∃ (k : J) (v : j ⟶ k),
-      Nonempty (PtSimplex.RelStruct (mapSimplex (F.map v) rfl s)
-        (mapSimplex (F.map v) rfl t) i) := by
+      Nonempty (PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (F.map v) rfl s)
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (F.map v) rfl t) i) := by
   have hcast : i.castSucc.val = i.val := rfl
   have hsucc : i.succ.val = i.val + 1 := rfl
   let faces (a : Fin (n + 2)) : (Δ[n] : SSet.{u}) ⟶ F.obj j :=
@@ -80,15 +85,15 @@ theorem relStruct_filtered_factorization (j : J) {x : (F.obj j) _⦋0⦌} {n : �
   have hfaces (a : Fin (n + 2)) : faces a ≫ c.ι.app j = stdSimplex.δ a ≫ r.map := by
     by_cases ha : a = i.castSucc
     · subst a
-      simp [faces, mapSimplex]
+      simp [faces, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
     · by_cases hb : a = i.succ
       · subst a
-        simp [faces, ha, mapSimplex]
+        simp [faces, ha, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
       · have hlt : a < i.castSucc ∨ i.succ < a := by omega
         rcases hlt with hlt | hgt
         · simp [faces, ha, hb, r.δ_map_of_lt a hlt]
         · simp [faces, ha, hb, r.δ_map_of_gt a hgt]
-  obtain ⟨k, v, q, hq, _⟩ := finite_equations_factorization hc
+  obtain ⟨k, v, q, hq, _⟩ := _root_.SerrePositivity.InfinityCategories.Kan.finite_equations_factorization hc
     (fun a : Fin (n + 2) ↦ stdSimplex.δ a) j faces r.map hfaces
   refine ⟨k, v, ⟨{
     map := q
@@ -96,9 +101,9 @@ theorem relStruct_filtered_factorization (j : J) {x : (F.obj j) _⦋0⦌} {n : �
     δ_succ_map := ?_
     δ_map_of_lt := ?_
     δ_map_of_gt := ?_ }⟩⟩
-  · simpa [faces, mapSimplex] using hq i.castSucc
+  · simpa [faces, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex] using hq i.castSucc
   · have hi : i.succ ≠ i.castSucc := by omega
-    simpa [faces, hi, mapSimplex] using hq i.succ
+    simpa [faces, hi, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex] using hq i.succ
   · intro a ha
     have h₁ : a ≠ i.castSucc := by omega
     have h₂ : a ≠ i.succ := by omega
@@ -116,17 +121,17 @@ include hc in
 規約：全自然数次数で有効。基点保存式も存在の出力に含める。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_* と余極限の比較の全射性。 -/
 theorem homotopy_filtered_surjective (j : J) (x : (F.obj j) _⦋0⦌) (n : ℕ)
-    (a : KanHomotopy c.pt n ((c.ι.app j).app _ x)) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy c.pt n ((c.ι.app j).app _ x)) :
     ∃ (k : J) (v : j ⟶ k)
       (hb : (c.ι.app k).app _ ((F.map v).app _ x) = (c.ι.app j).app _ x)
-      (b : KanHomotopy (F.obj k) n ((F.map v).app _ x)),
-      KanHomotopy.map (Y := c.pt) n (c.ι.app k) hb b = a := by
-  obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective n a
-  obtain ⟨k, v, t, ht⟩ := ptSimplex_filtered_factorization hc j x n s
+      (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F.obj k) n ((F.map v).app _ x)),
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (Y := c.pt) n (c.ι.app k) hb b = a := by
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+  obtain ⟨k, v, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_factorization hc j x n s
   have hb : (c.ι.app k).app _ ((F.map v).app _ x) = (c.ι.app j).app _ x :=
     congrArg (fun z : F.obj j ⟶ c.pt ↦ z.app _ x) (c.w v)
-  refine ⟨k, v, hb, KanHomotopy.mk n t, ?_⟩
-  rw [KanHomotopy.map_mk]
+  refine ⟨k, v, hb, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n t, ?_⟩
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   congr 1
   apply RelativeMorphism.ext
   exact ht
@@ -137,20 +142,38 @@ include hc in
 規約：零次数を含む。単射な遷移射は不要。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_* と余極限の比較の単射性。 -/
 theorem homotopy_filtered_eq_eventually (j : J) {x : (F.obj j) _⦋0⦌} (n : ℕ)
-    (a b : KanHomotopy (F.obj j) n x)
-    (h : KanHomotopy.map (Y := c.pt) n (c.ι.app j) rfl a =
-      KanHomotopy.map (Y := c.pt) n (c.ι.app j) rfl b) :
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F.obj j) n x)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (Y := c.pt) n (c.ι.app j) rfl a =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (Y := c.pt) n (c.ι.app j) rfl b) :
     ∃ (k : J) (v : j ⟶ k),
-      KanHomotopy.map n (F.map v) rfl a = KanHomotopy.map n (F.map v) rfl b := by
-  obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective n a
-  obtain ⟨t, rfl⟩ := KanHomotopy.mk_surjective n b
-  rw [KanHomotopy.map_mk, KanHomotopy.map_mk] at h
-  obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).1 h
-  obtain ⟨k, v, hr⟩ := relStruct_filtered_factorization hc j s t 0 r
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (F.map v) rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (F.map v) rfl b := by
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+  obtain ⟨t, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n b
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] at h
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ 0).1 h
+  obtain ⟨k, v, hr⟩ := _root_.SerrePositivity.InfinityCategories.Kan.relStruct_filtered_factorization hc j s t 0 r
   refine ⟨k, v, ?_⟩
-  rw [KanHomotopy.map_mk, KanHomotopy.map_mk]
-  exact (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).2 hr
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ 0).2 hr
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_eq_eventually := _root_.SerrePositivity.InfinityCategories.Kan.homotopy_filtered_eq_eventually
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_surjective := _root_.SerrePositivity.InfinityCategories.Kan.homotopy_filtered_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_eq := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.relStruct_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Kan.relStruct_filtered_factorization

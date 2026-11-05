@@ -36,7 +36,7 @@ def d3BiParameterSquareOrder {n : ℕ}
 /-- 元の全 Kan 入力と四つの区間を、同じ実順序円柱の nerve へ組み合わせる。 -/
 def d3PointedKanBiSquarePair :
     PointedKanInfinity.{u} ⊗ (((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⊗ (Δ[1] ⊗ Δ[1])) ⟶
-      SimplicialNerve (Object ((Fin 2 × Fin 2) × (Fin 2 × Fin 2)) PointedKanObject.{u}) where
+      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object ((Fin 2 × Fin 2) × (Fin 2 × Fin 2)) PointedKanObject.{u}) where
   app _ := ↾fun ⟨F, t⟩ ↦ simplexPair (d3BiParameterSquareOrder t) F
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext

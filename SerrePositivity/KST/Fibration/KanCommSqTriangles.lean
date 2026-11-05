@@ -35,7 +35,7 @@ def kanCommSqLowerChain : ComposableArrows KanObject.{u} 2 :=
   ComposableArrows.precomp
     ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down ⋙
       kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
-    ((kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.obj 0))
+    ((_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqLowerBaseEdge).down.obj 0))
 
 /-- 元の coherent 四角形の下側全二胞体は、同じ元の通常の錐の二射列の実像。 -/
 theorem kanCommSqInfinitySquare_lower :
@@ -47,7 +47,7 @@ theorem kanCommSqInfinitySquare_lower :
     rw [← cospanConeSquareIso_left, Category.assoc, Iso.hom_inv_id, Category.comp_id]
   change (squareTriangle 1 ≫ cospanConeSquareIso.inv) ≫
     (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (kanCommSqCone sq)) = _
+      strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq)) = _
   rw [ht]
   change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₀₂) ≫ _ = _
   rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp]
@@ -96,7 +96,7 @@ def kanCommSqUpperChain : ComposableArrows KanObject.{u} 2 :=
   ComposableArrows.precomp
     ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down ⋙
       kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f))
-    ((kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.obj 0))
+    ((_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq).π.app ((SSet.yonedaEquiv kanCommSqUpperBaseEdge).down.obj 0))
 
 /-- 元の coherent 四角形の上側全二胞体は、同じ元の通常の錐の二射列の実像。 -/
 theorem kanCommSqInfinitySquare_upper :
@@ -108,7 +108,7 @@ theorem kanCommSqInfinitySquare_upper :
     rw [← cospanConeSquareIso_right, Category.assoc, Iso.hom_inv_id, Category.comp_id]
   change (squareTriangle 0 ≫ cospanConeSquareIso.inv) ≫
     (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (kanCommSqCone sq)) = _
+      strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq)) = _
   rw [ht]
   change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₁₂) ≫ _ = _
   rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp]

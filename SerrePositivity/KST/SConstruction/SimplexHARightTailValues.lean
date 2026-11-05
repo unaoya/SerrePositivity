@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の両端点・自由次元と語が一致すれば、元の生の HA 値も同じ元。 -/
 lemma simplexHABeadWordRawValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
     {a b a' b' : Fin (n + 1)} {d d' : ℕ} (ha : a = a') (hb : b = b') (hd : d = d')
-    (w : SimplexHABeadWord n a b d) (w' : SimplexHABeadWord n a' b' d') (hw : HEq w w') :
+    (w : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
     HEq (simplexHABeadWordRawValue A s w) (simplexHABeadWordRawValue A s w') := by
   cases ha
   cases hb
@@ -28,7 +28,7 @@ lemma simplexHABeadWordRawValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
 /-- 元の両端点・自由次元と語が一致すれば、元の独立な HA 境界値も同じ元。 -/
 lemma simplexHABeadWordBoundaryValue_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
     {a b a' b' : Fin (n + 1)} {d d' : ℕ} (ha : a = a') (hb : b = b') (hd : d = d')
-    (w : SimplexHABeadWord n a b d) (w' : SimplexHABeadWord n a' b' d') (hw : HEq w w') :
+    (w : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) (w' : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a' b' d') (hw : HEq w w') :
     HEq (simplexHABeadWordBoundaryValue A s w)
       (simplexHABeadWordBoundaryValue A s w') := by
   cases ha

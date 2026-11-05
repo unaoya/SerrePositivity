@@ -13,7 +13,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q) (F : perfectStableInfinity.{u} ⟶ Sp.{u})
 
 /-- 元の左端から C への、同じ値の実 BF 射。 -/
@@ -64,7 +64,7 @@ lemma valueCospan_comm : SpectrumHo.hom (d.valueCSource F) ≫
 
 /-- 元の普遍差の核の射の同じ BF 値。 -/
 def valueKernelMap := perfectInvariantSpectrumMap F
-  (LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)
     d.left_complete d.sequence.right_complete
 
 variable {F} (hF : IsPerfectLocalizingInvariant F)
@@ -101,7 +101,7 @@ lemma productSquare_left_native_arrow : Arrow.mk (squareHoLeft (d.productSquare 
     Arrow.mk (SpectrumHo.hom (d.valueKernelMap F)) :=
   (d.productSquare_left_arrow hF).trans (congrArg Arrow.mk
     (perfectInvariantSpectrumMap_hom F
-      (LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)
         d.left_complete d.sequence.right_complete).symm)
 
 end PerfectLaxQuotient

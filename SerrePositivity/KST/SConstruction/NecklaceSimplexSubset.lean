@@ -14,20 +14,20 @@ open CategoryTheory Simplicial SSet
 
 /-- 元の有限部分集合の最小頂点から最大頂点への、同じ頂点像を持つ一 bead。 -/
 def necklaceInSimplexSubset {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
-    NecklaceIn (Δ[n] : SSet.{u})
-      (standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-      (standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) where
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) where
   necklace := necklaceBead.{u} (I.card - 1)
-  map := (NecklaceShape.singleSimplexIso _).hom ≫ simplexSubsetMap I hI
-  map_first := (congrArg ((simplexSubsetMap.{u} I hI).app _)
-    (simplexBeadFirstVertex_eq_standard _)).trans (simplexSubsetMap_first I hI)
-  map_last := (congrArg ((simplexSubsetMap.{u} I hI).app _)
-    (simplexBeadLastVertex_eq_standard _)).trans (simplexSubsetMap_last I hI)
+  map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI
+  map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
+    (simplexBeadFirstVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_first I hI)
+  map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
+    (simplexBeadLastVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_last I hI)
 
 /-- 元の部分集合 bead の augmentation は全高次単体で単射。 -/
 instance necklaceInSimplexSubset_map_mono {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) : Mono (necklaceInSimplexSubset.{u} I hI).map :=
-  inferInstanceAs (Mono ((NecklaceShape.singleSimplexIso _).hom ≫ simplexSubsetMap I hI))
+  inferInstanceAs (Mono ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI))
 
 /-- 元の部分集合 bead の次元は、同じ濃度から両端を除いた値。 -/
 lemma necklaceInSimplexSubset_dimension {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
@@ -36,8 +36,8 @@ lemma necklaceInSimplexSubset_dimension {n : ℕ} (I : Finset (Fin (n + 1))) (hI
 
 /-- 元の部分集合 bead の全頂点作用は、同じ元の昇順列挙。 -/
 lemma necklaceInSimplexSubset_vertex {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
-    (v : (NecklaceShape.single (I.card - 1)).Vertex) :
-    necklaceSimplexVertexMap (necklaceInSimplexSubset.{u} I hI).necklace.down
-      (necklaceInSimplexSubset I hI).map v = simplexSubsetOrder I hI v := rfl
+    (v : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).Vertex) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap (necklaceInSimplexSubset.{u} I hI).necklace.down
+      (necklaceInSimplexSubset I hI).map v = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v := rfl
 
 end SerrePositivity.KST.SConstruction

@@ -16,7 +16,7 @@ universe u v w w'
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
   {n : ℕ} {A : Type w} {B : Type w'}
 
@@ -34,7 +34,7 @@ lemma dgBarCompactPiChart_naturality_of_ulift
     (f : X ⟶ Y) (φ : A → B)
     (h : ∀ z a, c'.equiv (((SSet.uliftFunctor.{v, u}).map f).app _ z)
       (dgBarCompactPiMap n ((SSet.uliftFunctor.{v, u}).map f) z a) = φ (c.equiv z a))
-    (x : X _⦋0⦌) (a : KanHomotopyGroup X n x) :
+    (x : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     c'.ofUlift.equiv (f.app _ x) (dgBarCompactPiMap n f x a) = φ (c.ofUlift.equiv x a) := by
   exact (congrArg (c'.equiv (ULift.up (f.app _ x)))
     (dgBarCompactUliftPiEquiv_naturality.{u, v} f n x a)).trans

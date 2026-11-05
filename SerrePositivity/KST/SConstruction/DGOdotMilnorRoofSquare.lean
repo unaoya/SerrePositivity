@@ -28,11 +28,11 @@ local notation "q" => dgOdotMilnorCellProjectionExactMap R d
 方針：増大同値の単位二胞体を写像空間で実現する。規約：射の類だけに落とさない。
 使われ方：元 cell 商包含を固定する対角の移送。 -/
 def dgOdotMilnorRoofComparisonTriangle : SSet.Edge.CompStruct
-    (SSet.Edge.id (stableVertex (dgKInputStableValue R (dgOdotMilnorCellInput R d))))
-    (stableArrow (show ExactMap (dgKInputStableValue R (dgOdotMilnorCellInput R d))
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgOdotMilnorCellInput R d))))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgOdotMilnorCellInput R d))
       (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) from
-        ⟨(a).hom ≫ (r).hom, isExactFunctor_comp (a).hom (r).hom⟩)) (stableArrow (q)) :=
-  exactMapComparisonTriangle (F := q)
+        ⟨(a).hom ≫ (r).hom, isExactFunctor_comp (a).hom (r).hom⟩)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (q)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle (F := q)
     (G := ⟨(a).hom ≫ (r).hom, isExactFunctor_comp (a).hom (r).hom⟩)
     (dgOdotMilnorResolvedProjectionNu_roof R d).symm
 
@@ -40,23 +40,23 @@ def dgOdotMilnorRoofComparisonTriangle : SSet.Edge.CompStruct
 方針：指定比較三角形を同じ恒等左辺の三角形へ貼る。規約：四辺を保持する。
 使われ方：元 gluing の値へ戻した resolved 商射影の実境界。 -/
 def dgOdotMilnorRoofRawSquare :
-    (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} :=
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
   PathComparisonSquare.square
-    (coherentNerveCompStruct (C := StableQCat.{u + 1}) (a) (r))
-    (SSet.Edge.CompStruct.idComp (stableArrow (q))) (dgOdotMilnorRoofComparisonTriangle R d)
+    (coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (a) (r))
+    (SSet.Edge.CompStruct.idComp (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (q))) (dgOdotMilnorRoofComparisonTriangle R d)
 
 /-- 概要：同じ実全四角形の四辺は元増大・cell 商包含・恒等・屋根。
 方針：指定三角形を保持した構成の四辺を回収する。規約：全一単体の等号。
 使われ方：固定 ν の二辺の指定比較。 -/
 lemma dgOdotMilnorRoofRawSquare_edges :
     squareBottomEdge ≫ dgOdotMilnorRoofRawSquare R d =
-        SSet.yonedaEquiv.symm (stableArrow (a)).edge ∧
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (a)).edge ∧
       squareTopEdge ≫ dgOdotMilnorRoofRawSquare R d =
-        SSet.yonedaEquiv.symm (stableArrow (q)).edge ∧
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (q)).edge ∧
       squareLeftEdge ≫ dgOdotMilnorRoofRawSquare R d = SSet.yonedaEquiv.symm
-        (SSet.Edge.id (stableVertex (dgKInputStableValue R (dgOdotMilnorCellInput R d)))).edge ∧
+        (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgOdotMilnorCellInput R d)))).edge ∧
       squareRightEdge ≫ dgOdotMilnorRoofRawSquare R d =
-        SSet.yonedaEquiv.symm (stableArrow (r)).edge :=
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (r)).edge :=
   ⟨PathComparisonSquare.square_bottom _ _ _, PathComparisonSquare.square_top _ _ _,
     PathComparisonSquare.square_left _ _ _, PathComparisonSquare.square_right _ _ _⟩
 
@@ -67,30 +67,30 @@ lemma dgOdotMilnorRoofRawSquare_corner_complete (i j : Fin 2) :
     perfectStableVertexPredicate (squareVertex (dgOdotMilnorRoofRawSquare R d) i j) := by
   have he := dgOdotMilnorRoofRawSquare_edges R d
   have h00 := squareBottomEdge_source (dgOdotMilnorRoofRawSquare R d)
-  rw [he.1, Equiv.apply_symm_apply, (stableArrow (a)).src_eq] at h00
+  rw [he.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (a)).src_eq] at h00
   have h10 := squareBottomEdge_target (dgOdotMilnorRoofRawSquare R d)
-  rw [he.1, Equiv.apply_symm_apply, (stableArrow (a)).tgt_eq] at h10
+  rw [he.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (a)).tgt_eq] at h10
   have h01 := squareTopEdge_source (dgOdotMilnorRoofRawSquare R d)
-  rw [he.2.1, Equiv.apply_symm_apply, (stableArrow (q)).src_eq] at h01
+  rw [he.2.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (q)).src_eq] at h01
   have h11 := squareRightEdge_target (dgOdotMilnorRoofRawSquare R d)
-  rw [he.2.2.2, Equiv.apply_symm_apply, (stableArrow (r)).tgt_eq] at h11
-  change IsIdempotentComplete (stableObject _).obj
+  rw [he.2.2.2, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (r)).tgt_eq] at h11
+  change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject _).obj
   fin_cases i <;> fin_cases j
-  · change IsIdempotentComplete (stableObject (squareVertex
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex
       (dgOdotMilnorRoofRawSquare R d) 0 0)).obj
-    rw [← h00, stableObject_vertex]
+    rw [← h00, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact dgKInputStableValue_isIdempotentComplete R _
-  · change IsIdempotentComplete (stableObject (squareVertex
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex
       (dgOdotMilnorRoofRawSquare R d) 0 1)).obj
-    rw [← h01, stableObject_vertex]
+    rw [← h01, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact dgKInputStableValue_isIdempotentComplete R _
-  · change IsIdempotentComplete (stableObject (squareVertex
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex
       (dgOdotMilnorRoofRawSquare R d) 1 0)).obj
-    rw [← h10, stableObject_vertex]
+    rw [← h10, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact dgKInputStableValue_isIdempotentComplete R _
-  · change IsIdempotentComplete (stableObject (squareVertex
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex
       (dgOdotMilnorRoofRawSquare R d) 1 1)).obj
-    rw [← h11, stableObject_vertex]
+    rw [← h11, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact dgKInputStableValue_isIdempotentComplete R _
 
 /-- 概要：同じ全四角形の全頂点が Cat^perf の頂点条件を満たす。

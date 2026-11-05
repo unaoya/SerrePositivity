@@ -20,13 +20,13 @@ open scoped Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 元の精密化の像の Path から、同じ最終列の全頂点 Path への指定包含。 -/
-def coherentStringRefinementPathToFull {s t : CoherentArrowString f} (a : s ⟶ t) :
-    coherentStringRefinementPath a ⟶ coherentStringFullPath t :=
+def coherentStringRefinementPathToFull {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath a ⟶ coherentStringFullPath t :=
   ⟨⟨⟨fun _ _ => Set.mem_univ _⟩⟩⟩
 
 /-- 元の精密化の辺の Path flag は、元の像の Path から全頂点 Path への包含辺。 -/
-lemma coherentStringPathFlag_arrow {s t : CoherentArrowString f} (a : s ⟶ t) :
-    coherentStringPathFlag (nerve.edgeMk a).edge =
+lemma coherentStringPathFlag_arrow {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (nerve.edgeMk a).edge =
       (nerve.edgeMk (coherentStringRefinementPathToFull a)).edge := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_
   · rfl
@@ -38,7 +38,7 @@ lemma coherentStringPathFlag_arrow {s t : CoherentArrowString f} (a : s ⟶ t) :
 lemma coherentArrowNativeContraction_vertex_edge
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (f : x ⟶ y) (s : CoherentArrowString f) :
+    (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (simplicialHomotopyVertexEdge (coherentArrowNativeContraction Q f) (nerveVertex s)).edge =
       (coherentStringNativeMap Q s).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge := by
@@ -65,10 +65,10 @@ lemma coherentHomotopyVertexEdge_precomp {A B X : SSet.{u}} {f g : B ⟶ X}
 lemma coherentArrowNativeContraction_prepost_vertex_edge
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (f : x ⟶ y) {U E : SSet.{u}} (i : U ⟶ nerve (CoherentArrowString f))
+    (f : x ⟶ y) {U E : SSet.{u}} (i : U ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f))
     (q : SimplicialCategory.sHom (coherentStringVertexObject Q x)
       (coherentStringVertexObject Q y) ⟶ E)
-    (a : U _⦋0⦌) (s : CoherentArrowString f) (hv : i.app (Opposite.op ⦋0⦌) a = nerveVertex s) :
+    (a : U _⦋0⦌) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (hv : i.app (Opposite.op ⦋0⦌) a = nerveVertex s) :
     (simplicialHomotopyVertexEdge (functorHomotopyPostcomp
       (functorHomotopyPrecomp (coherentArrowNativeContraction Q f) i) q) a).edge =
       q.app (Opposite.op ⦋1⦌) ((coherentStringNativeMap Q s).app (Opposite.op ⦋1⦌)

@@ -68,7 +68,7 @@ theorem post_hasLiftingProperty (A : PointedSimplicialSet.{u})
   let prescribed := toUnit (𝟙_ SSet.{u} ⊗ U) ≫ E.hom
   let base := MonoidalClosed.uncurry (b ≫ PointedObject.basedHomι A B)
   have hc : A.hom ▷ T ≫ earlier = 𝟙_ SSet.{u} ◁ j ≫ prescribed := by
-    rw [uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
     simp only [prescribed, comp_toUnit_assoc]
   have he : earlier ≫ p.right = A.right ◁ j ≫ base := by
     dsimp only [earlier, base]
@@ -77,18 +77,18 @@ theorem post_hasLiftingProperty (A : PointedSimplicialSet.{u})
       MonoidalClosed.uncurry_natural_left]
     rfl
   have ha : prescribed ≫ p.right = A.hom ▷ U ≫ base := by
-    rw [uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
     simp only [prescribed, Category.assoc, Under.w]
   obtain ⟨f, hf, hfixed, hbase⟩ := relative_product_lift p.right A.hom j h
     earlier prescribed base hc he ha
-  let l := paramCurry A E f hfixed
+  let l := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι A E)).mp
-    rw [Category.assoc, paramCurry_ι, ← MonoidalClosed.curry_natural_left,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
       hf, MonoidalClosed.curry_uncurry]
   · apply (cancel_mono (PointedObject.basedHomι A B)).mp
     rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc,
-      paramCurry_ι, ← MonoidalClosed.curry_natural_right, hbase,
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_right, hbase,
       MonoidalClosed.curry_uncurry]
 
 /-- 概要：点つき内部 Hom の後合成は Kan fibration を保つ。
@@ -99,7 +99,7 @@ instance post_fibration (A : PointedSimplicialSet.{u}) {E B : PointedSimplicialS
     (p : E ⟶ B) [Fibration p.right] : Fibration (PointedObject.basedHomMap A p).right := by
   rw [fibration_iff]
   intro T U j hj
-  let : Mono A.hom := basepoint_mono A
+  let : Mono A.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono A
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) A.hom j
   have hj' : anodyneExtensions j := by
     rw [anodyneExtensions_eq_llp_rlp]

@@ -49,7 +49,7 @@ def circleBKEdgewiseEndFamily (X Y : OmegaSpectrum.{u}) :
     edgewiseSubdivision (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X ⋙
         edgewiseSubdivisionFunctor) :=
-  ParameterPoint.family (circleBKEdgewiseEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKEdgewiseEndPointMap Y)
     (edgewiseSubdivision (mappingSpace X (cotensor PointedSimplicialSet.circle Y))) ≫
       edgewiseHomEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 
@@ -57,7 +57,7 @@ def circleBKEdgewiseEndFamily (X Y : OmegaSpectrum.{u}) :
 def circleBKReflectedEndFamily (X Y : OmegaSpectrum.{u}) :
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X ⋙ SSet.opFunctor) :=
-  ParameterPoint.family (circleBKReflectedEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKReflectedEndPointMap Y)
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)).op ≫
       weightedConeEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 
@@ -69,7 +69,7 @@ lemma circleBKEdgewiseEndFamily_right (X Y : OmegaSpectrum.{u}) :
         circleBKHomEndFamily X Y := by
   dsimp only [circleBKEdgewiseEndFamily, circleBKHomEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_right, ← Category.assoc,
-    ParameterPoint.naturality, circleBKEdgewiseEndPointMap_right, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, circleBKEdgewiseEndPointMap_right, Category.assoc]
   rfl
 
 /-- 共通解像の比較族の左射影は、同じ反転切断点の比較族へ厳密に可換。 -/
@@ -80,7 +80,7 @@ lemma circleBKEdgewiseEndFamily_left (X Y : OmegaSpectrum.{u}) :
         circleBKReflectedEndFamily X Y := by
   dsimp only [circleBKEdgewiseEndFamily, circleBKReflectedEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_left, ← Category.assoc,
-    ParameterPoint.naturality, circleBKEdgewiseEndPointMap_left, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, circleBKEdgewiseEndPointMap_left, Category.assoc]
   rfl
 
 /-- 元の切断点から得た共通解像の全 Hom 比較族は、実際のホモトピー同値。 -/

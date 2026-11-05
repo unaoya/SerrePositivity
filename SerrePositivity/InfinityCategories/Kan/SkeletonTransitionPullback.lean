@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltrationMono
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
@@ -14,14 +16,17 @@ public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 namespace SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.KST.Spectra.SkeletonFiltration
+namespace SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+open SerrePositivity.KST.Spectra.SkeletonFiltration
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 /-- 単射に沿う骨格間の包含の正方形は、単体次数ごとに pullback。 -/
 lemma transition_app_isPullback {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f]
     {n m : ℕ} (h : n ≤ m) (k : SimplexCategoryᵒᵖ) :
-    IsPullback (((transition h).app X).app k) ((map f n).app k)
-      ((map f m).app k) (((transition h).app Y).app k) := by
+    IsPullback (((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition h).app X).app k) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f n).app k)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f m).app k) (((_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition h).app Y).app k) := by
   apply (Types.isPullback_iff _ _ _ _).mpr
   refine ⟨?_, ?_, ?_⟩
   · ext x
@@ -37,10 +42,16 @@ lemma transition_app_isPullback {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f]
       rw [he]
       exact y.property
     have hn : x.val ∈ (X.skeleton n).obj k := by
-      rw [← preimage_skeleton f n]
+      rw [← _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.preimage_skeleton f n]
       exact hx
     refine ⟨⟨x.val, hn⟩, ?_, ?_⟩
     · exact Subtype.ext rfl
     · exact Subtype.ext he
 
-end SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition_app_isPullback := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition_app_isPullback

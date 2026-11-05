@@ -21,9 +21,9 @@ lemma simplexSubsetSplitCubicalTensor_composition {n : ℕ} (I : Finset (Fin (n 
         (necklaceCubicalCell (necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL))
         (necklaceCubicalCell (necklaceInSimplexSubsetSplitRight I hI j hj hR)) ≫
       necklaceCubicalCompose Δ[n]
-        (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-        (standardSimplexVertex j)
-        (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))) =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))) =
       (necklaceCubicalTensorIso (necklaceBead ((I.filter (· ≤ j)).card - 1))
         (necklaceBead ((I.filter (j ≤ ·)).card - 1))).hom ≫
       necklaceCubicalSet.map (simplexSubsetSplitRefinement I j hj hL hR) ≫

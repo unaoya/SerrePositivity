@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.Pullback
@@ -23,10 +25,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
-variable (X : SSet.{u}) [Quasicategory X] [IsStable X] (z : (space X) _⦋0⦌)
+end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+open SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+variable (X : SSet.{u}) [Quasicategory X] [IsStable X] (z : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X) _⦋0⦌)
 
 /-- 元の cofiber 四角形は同じ右辺の fiber 四角形でもある。 -/
 def fiberSquareAt : FiberSquare (squareRightArrow (squareDiagram z.val)) where
@@ -43,6 +48,27 @@ def fiberSquareAt : FiberSquare (squareRightArrow (squareDiagram z.val)) where
 lemma zero_source_of_right_invertible
     (h : IsInvertibleEdge (squareRightArrow (squareDiagram z.val))) :
     IsZeroVertex (squareVertex (squareDiagram z.val) 0 0) :=
-  (fiberSquareAt X z).zero_of_homMk_isIso h
+  (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt X z).zero_of_homMk_isIso h
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.zero_source_of_right_invertible := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.zero_source_of_right_invertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.fiberSquareAt._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.fiberSquareAt._proof_4

@@ -27,14 +27,14 @@ lemma kKanOriginalPrism_bottom_object {I : Type u} [SmallCategory I]
     (a : (Δ[n] : SSet.{u + 1}) _⦋0⦌) :
     coherentNerveObject ((kKanOriginalSuspensionPrism r F s).app (Opposite.op ⦋0⦌)
       (a, SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2))) =
-      suspension ((kKanSequence (F.obj (s.obj (a 0)))).level r).space := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj (s.obj (a 0)))).level r).space := by
   have h := congrArg (fun q => coherentNerveObject
       (q.app (Opposite.op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
     (kKanOriginalSuspensionPrism_vertex r F s a)
   have he : (SSet.yonedaEquiv.symm
       (coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).edge).app
       (Opposite.op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      coherentNerveVertex (suspension ((kKanSequence (F.obj (s.obj (a 0)))).level r).space) := by
+      coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj (s.obj (a 0)))).level r).space) := by
     have ht : SSet.stdSimplex.objEquiv
         (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2) :
           (Δ[1] : SSet.{u + 1}) _⦋0⦌) = SimplexCategory.δ (1 : Fin 2) := by
@@ -60,7 +60,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の合成 prism の共通始点は、元の始域の段の suspension。 -/
 lemma kKanOriginalCompositionPrism_source :
     trianglePrismSource (kKanOriginalCompositionPrism r F f g) =
-      suspension ((kKanSequence (F.obj x)).level r).space :=
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space :=
   kKanOriginalPrism_bottom_object r F (ComposableArrows.mk₂ f g) (stdSimplex.obj₀Equiv.symm 0)
 
 /-- 元の合成 prism の共通終点は、元の終域の次段。 -/
@@ -73,14 +73,14 @@ lemma kKanOriginalCompositionPrism_target :
 lemma kKanOriginalCompositionPrism_hom :
     SimplicialCategory.sHom (trianglePrismSource (kKanOriginalCompositionPrism r F f g))
       (trianglePrismTarget (kKanOriginalCompositionPrism r F f g)) =
-      (PointedObject.basedHom (suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right := by
   rw [kKanOriginalCompositionPrism_source, kKanOriginalCompositionPrism_target]
   rfl
 
 /-- 元の合成二単体 prism の三つの正方形を、同じ元の suspension Hom に表示する。 -/
 def kKanOriginalCompositionMappingSquare (q : Fin 3) : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
-    (PointedObject.basedHom (suspension ((kKanSequence (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   trianglePrismMappingSquare (kKanOriginalCompositionPrism r F f g) q ≫
     eqToHom (kKanOriginalCompositionPrism_hom r F f g)

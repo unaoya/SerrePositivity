@@ -37,7 +37,7 @@ lemma post_rlp (A : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z)
   intro a b sq
   obtain ⟨f, ha, hb, hf⟩ := monoFamily A p hp j a b sq.w
   let l := TruncatedMapping.familyLift (fun n ↦ (A.level n).space)
-    (fun n ↦ (Y.level n).space) (fun n ↦ suspension (A.level n).space)
+    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (A.level n).space)
     A.sigma (OmegaSpectrum.mappingStep A Y) f hf
   have hl (n : ℕ) : l ≫ OmegaSpectrum.evaluation A Y n = f n :=
     TruncatedMapping.familyLift_evaluation _ _ _ _ _ f hf n
@@ -54,8 +54,8 @@ lemma post_rlp (A : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z)
 /-- 全単射 RLP を持つ後合成は全基点・全次数で π 同型。 -/
 lemma post_piIsomorphism (A : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z)
     (hp : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app n).right) :
-    KanPiIsomorphism (post A p) :=
-  kanPiIsomorphism_of_monoRight _ (post_rlp A p hp)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post A p) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (post_rlp A p hp)
 
 end
 end SerrePositivity.KST.Spectra.SpectrumMappingAcyclic

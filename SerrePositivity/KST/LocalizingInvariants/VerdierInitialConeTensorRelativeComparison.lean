@@ -22,8 +22,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace VerdierInitialConeTensorRefinement
-variable {A₀ B C : StableCategory.{u}} {i : ExactMap A₀ B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {A L : SSet.{u}}
+variable {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {A L : SSet.{u}}
   {p : initialConeTensorCorner A L ⟶ B.obj}
   {H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj}
   {hH : initialConeTensorCornerInclusion A L ≫ H = p ≫ q.hom}
@@ -35,7 +35,7 @@ lemma exists_relativeComparison :
       (initialConeTensorCornerInclusion A L ▷ (Δ[1] : SSet.{u})) ≫ J.h =
         fst (initialConeTensorCorner A L) Δ[1] ≫ (p ≫ q.hom) ∧
       ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge J x).toTruncated := by
-  obtain ⟨J, hJ, hi⟩ := exists_coneRelativeComparison (mapJoinCone q.hom d.cone)
+  obtain ⟨J, hJ, hi⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_coneRelativeComparison (mapJoinCone q.hom d.cone)
     (initialConeTensorQuotientCone q.hom A L p H hH) d.comparison
   let J' : SSet.Homotopy (d.diagram ≫ q.hom) H := {
     h := ((initialConeTensorIso A L).inv ▷ (Δ[1] : SSet.{u})) ≫ J.h

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushou
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -26,7 +31,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：頂点の組は (t,1)。
 使われ方：Goerss–Jardine I §7。正方形の境界固定条件。 -/
 @[reassoc (attr := simp)]
-theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ upper.{u} =
+theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (0 : Fin 2).castSucc ≫ stdSimplex.σ (0 : Fin 2) = 𝟙 _
@@ -40,7 +45,7 @@ theorem upper_face_zero : stdSimplex.δ (0 : Fin 3) ≫ upper.{u} =
 規約：頂点の組は (0,t)。
 使われ方：Goerss–Jardine I §7。正方形の境界固定条件。 -/
 @[reassoc (attr := simp)]
-theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ upper.{u} =
+theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (1 : Fin 2).succ ≫ stdSimplex.σ (0 : Fin 1).castSucc = _
@@ -54,9 +59,9 @@ theorem upper_face_last : stdSimplex.δ (2 : Fin 3) ≫ upper.{u} =
 規約：頂点の組は (1,t)。
 使われ方：Goerss–Jardine I §7。正方形のもう二つの境界の固定条件。 -/
 @[reassoc (attr := simp)]
-theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ lower.{u} =
+theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} =
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
-  rw [← upper_swap, ← Category.assoc, upper_face_zero]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero]
   rfl
 
 /-- 概要：下側の三角形の最後の面は正方形の下辺。
@@ -64,9 +69,36 @@ theorem lower_face_zero : stdSimplex.δ (0 : Fin 3) ≫ lower.{u} =
 規約：頂点の組は (t,0)。
 使われ方：Goerss–Jardine I §7。対角辺以外の全ての辺の固定条件。 -/
 @[reassoc (attr := simp)]
-theorem lower_face_last : stdSimplex.δ (2 : Fin 3) ≫ lower.{u} =
+theorem lower_face_last : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} =
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [← upper_swap, ← Category.assoc, upper_face_last]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last]
   rfl
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_last := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_last_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_zero_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_last := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_last_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_zero_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero_assoc

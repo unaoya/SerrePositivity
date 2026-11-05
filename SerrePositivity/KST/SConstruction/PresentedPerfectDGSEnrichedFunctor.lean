@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の全 native dg 入力族を保つ、同じ実 S_n Perf の厳密豊穣関手。 -/
 def presentedPerfectDGSEnrichedFunctor (n : ℕ) :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
-      LocalizingInvariants.StableQCat.{max (u + 1) v} :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} :=
   (presentedPerfectDGEnrichedExactFunctor A).comp SSet (sExactCoreEnrichedEndofunctor n)
 
 /-- 実値は、元のラベル付き Perf の全 gapped S_n と同じ安定模型。 -/

@@ -1,0 +1,35 @@
+{
+  "status": "APPLIED",
+  "authorization": "IF-F §6 duplicate resolution and §9 audit sweep",
+  "file": "scripts/audit_kst_comparison.lean",
+  "replacements": 4,
+  "before": {
+    "check": 1499,
+    "axioms": 1499
+  },
+  "after": {
+    "check": 1499,
+    "axioms": 1499
+  },
+  "before_sha256": "cf67f3bcbf8753237c98618bc765a65071666c6080825e701e1ca4de6e376f68",
+  "after_sha256": "b5e6f92b81973ebc467a1e2874498354f83a1bf78ca4b1cea9ecbad74d4dc5fa",
+  "mapping": [
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext"
+    }
+  ],
+  "note": "Desc and Map audit blocks retain their respective declaration coverage; old alias exists only on Desc."
+}

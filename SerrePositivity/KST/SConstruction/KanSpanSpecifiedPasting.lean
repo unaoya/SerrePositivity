@@ -58,7 +58,7 @@ lemma kanSpanPastedTriangle_vertex_simplex {K : SSet.{u}} {z x y : K _⦋0⦌}
 
 /-- 既存の逆・合成証人の同じ合成辺を保つ、元の二脚の外側三角形。 -/
 def kanMappingSpanOuterTriangle {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
     SSet.Edge.CompStruct a t.edge b := by
   have hc : SSet.HomotopyCategory.homMk a ≫ SSet.HomotopyCategory.homMk t.edge =
       SSet.HomotopyCategory.homMk b := by
@@ -69,13 +69,13 @@ def kanMappingSpanOuterTriangle {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0�
 
 /-- 元の選んだ合成辺を保ったまま、可縮な全貼り合わせ空間へ入れる。 -/
 def kanMappingSpanPastingVertex {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
     (kanSpanPastingChoices a b) _⦋0⦌ :=
   kanSpanPastingVertex (kanMappingSpanOuterTriangle t)
 
 /-- 以前の逆・合成による指定辺は、全貼り合わせ空間の評価で厳密に保たれる。 -/
 lemma kanSpanPastedEdge_mappingSpanVertex {K : SSet.{u}} [KanComplex K] {z x y : K _⦋0⦌}
-    {a : K.Edge z x} {b : K.Edge z y} (t : KanMappingSpanComposition a b) :
+    {a : K.Edge z x} {b : K.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
     kanSpanPastedEdge a b (kanMappingSpanPastingVertex t) = t.edge :=
   kanSpanPastedEdge_vertex (kanMappingSpanOuterTriangle t)
 

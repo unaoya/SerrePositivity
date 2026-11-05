@@ -19,7 +19,7 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の native HA 単体から、元の標準単体の全頂点間の Λ Hom の実鎖射を得る。 -/
 def simplexHAHomMap {N : ℕ} (s : DGNerve.Simplex A D N) (a b : Fin (N + 1)) :
     homObject A (CubicalLambda A (Δ[N] : SSet.{u}))
-      (standardSimplexVertex a) (standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) ⟶ homObject A D (s.obj a) (s.obj b) :=
   if h : a = b then by
     subst b
     exact simplexLambdaDiagonalMap A a (s.obj a)
@@ -43,7 +43,7 @@ lemma simplexHAHomMap_of_gt {N : ℕ} (s : DGNerve.Simplex A D N)
 
 /-- 元の全 Hom 族は、元の各頂点の実単位を保持する。 -/
 lemma simplexHAHomMap_id {N : ℕ} (s : DGNerve.Simplex A D N) (a : Fin (N + 1)) :
-    eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (standardSimplexVertex a) ≫
+    eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) ≫
       simplexHAHomMap A s a a = eId (Complex A) (s.obj a) := by
   rw [simplexHAHomMap_self]
   exact simplexLambdaDiagonalMap_id A a (s.obj a)

@@ -40,7 +40,7 @@ def pointedMapAtVertex {X Y : SSet.{u}} (f : X ⟶ Y) (x : X _⦋0⦌) :
 使われ方：Goerss–Jardine I §7、Kerodon 4.8.4.1。合成の前側の消去。 -/
 lemma kanPiIsomorphism_homotopyEquivalence_atVertex
     {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
-    (f : X ⟶ Y) (hf : KanPiIsomorphism f) (x : X _⦋0⦌) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (x : X _⦋0⦌) :
     IsSimplicialHomotopyEquivalence f := by
   let : KanComplex (PointedSimplicialSet.ofVertex X x).right :=
     inferInstanceAs (KanComplex X)
@@ -55,8 +55,8 @@ lemma kanPiIsomorphism_homotopyEquivalence_atVertex
 lemma KanPiIsomorphism.cancel_left_atVertex
     {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
     {f : X ⟶ Y} {g : Y ⟶ Z}
-    (hf : KanPiIsomorphism f) (hfg : KanPiIsomorphism (f ≫ g)) (x : X _⦋0⦌) :
-    KanPiIsomorphism g :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hfg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f ≫ g)) (x : X _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g :=
   kanPiIsomorphism_of_qCatEquivalence g
     ((kanPiIsomorphism_homotopyEquivalence_atVertex f hf x).isQCatEquivalence.cancel_left
       (kanPiIsomorphism_homotopyEquivalence_atVertex (f ≫ g) hfg x).isQCatEquivalence)

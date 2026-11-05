@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma exists_arrowFunctorIso_with_endpoints {X : SSet.{u}} [Quasicategory X]
     {x y x' y' : X _⦋0⦌}
@@ -53,4 +58,10 @@ lemma exists_arrowFunctorIso_with_endpoints {X : SSet.{u}} [Quasicategory X]
         (homotopyNatTransOfEndpoints_vertexPath_arrow H (stdSimplex.δ (0 : Fin 2)) t h₁)
     exact he.trans (congrArg Arrow.mk ht)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_arrowFunctorIso_with_endpoints := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowFunctorIso_with_endpoints

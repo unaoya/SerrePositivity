@@ -32,7 +32,7 @@ theorem trianglePairSquare_restrictions (Y : PointedSimplicialSet.{u})
     (f : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ Y.right) (hl hr) :
     trianglePairSquare (squareUpperRestriction Y f hl hr) (squareLowerRestriction Y f hl hr)
       (squareRestrictions_diagonal Y f hl hr) = f := by
-  apply SquareTriangles.isPushout.hom_ext <;> simp
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext <;> simp
 
 /-- 概要：貼った正方形を上側の相対三角形へ制限すると第一の写像に戻る。
 方針：相対三角形の cofiber の商射上で検査する。

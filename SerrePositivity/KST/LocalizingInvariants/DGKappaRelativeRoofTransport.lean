@@ -28,10 +28,10 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v)) [DGCategory R D] [
 /-- 指定された三境界の全 ν 比較を持つ実相対屋根。全フィールドは未供給入力。 -/
 structure DGKappaRelativeRoofComparisonInput where
   kernel : PerfDGInput.{u, max (u + 1) v} R
-  diagram : RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
-  target : VerdierDiagram.{max (u + 1) v}
-  boundary : VerdierSquareBoundaryIso (diagram.square ≫ dgKInputNu R) target.square
-  image : VerdierSquareDiagramIso (diagram.square ≫ dgKInputNu R) target.square boundary
+  diagram : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
+  target : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{max (u + 1) v}
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (diagram.square ≫ dgKInputNu R) target.square
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (diagram.square ≫ dgKInputNu R) target.square boundary
   left_eq : squareVertex diagram.square 0 0 = coherentNerveVertex kernel
   middle_eq : squareVertex diagram.square 1 0 =
     coherentNerveVertex (dgKappaResolvedConeKInput R D I)
@@ -68,9 +68,9 @@ lemma exists_dgKappaRelativeRoof_of_fixedNull
     (i : A ⟶ dgKappaResolvedConeKInput R D I)
     (C : DGQuotient.ContractedFunctor R A Set.univ (dgKappaSuspensionKInput R D I))
     (hC : C.toDGFunctor = i.down.comp (dgKappaResolvedSuspensionInputMap R D I).down)
-    (hV : IsVerdierSequence (dgKInputNuMap R i)
+    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R i)
       (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I)))
-    (hz : IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A))) :
     ∃ t : DGKappaSuspensionRelativeRoofInput R D I, t.kernel = A ∧
       squareBottomEdge ≫ t.diagram.square = SSet.yonedaEquiv.symm (coherentNerveEdge i).edge := by
   obtain ⟨t, ha, hb, hq, hi, hr⟩ := exists_dgFixedNullRelativeRoof R i

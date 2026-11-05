@@ -43,12 +43,12 @@ lemma completionRelativeKanInclusion_groupConditions_of_inputs
     (a : (exInfinity.obj (coreSRealizationFunctor.obj
       (closedStableModel (completionImageClosedPredicate r ι f hf)))) _⦋0⦌) :
     Function.Injective
-      (Spectra.KanHomotopy.map 1 (completionRelativeKanInclusion r ι f hf) (x := a) rfl) ∧
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (completionRelativeKanInclusion r ι f hf) (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (Spectra.KanHomotopy.map n (completionRelativeKanInclusion r ι f hf) (x := a) rfl) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (completionRelativeKanInclusion r ι f hf) (x := a) rfl) := by
   let j := completionRelativeKanComparison r ι f hf
   let q := completionRelativeKanProjection r ι f hf
-  have hj : Spectra.KanPiIsomorphism
+  have hj : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (j : exInfinity.obj (coreSRealizationFunctor.obj
         (closedStableModel (completionImageClosedPredicate r ι f hf))) ⟶
           completionRelativeKanPullback r ι f hf) :=
@@ -58,10 +58,10 @@ lemma completionRelativeKanInclusion_groupConditions_of_inputs
   have he : j ≫ q = completionRelativeKanInclusion r ι f hf :=
     completionRelativeKanComparison_projection r ι f hf
   rw [← he]
-  have hm (n : ℕ) : Spectra.KanHomotopy.map n (j ≫ q) (x := a) rfl =
-      (Spectra.KanHomotopy.map n q rfl) ∘ (Spectra.KanHomotopy.map n j (x := a) rfl) := by
+  have hm (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (j ≫ q) (x := a) rfl =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n q rfl) ∘ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n j (x := a) rfl) := by
     funext b
-    exact Spectra.KanHomotopy.map_comp n j rfl q rfl rfl b
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n j rfl q rfl rfl b
   constructor
   · rw [hm 1]
     exact hq.1.comp (hj a 1).1

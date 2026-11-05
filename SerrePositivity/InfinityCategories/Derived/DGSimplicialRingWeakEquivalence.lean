@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite
 open KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 abbrev simplicialRingUnderlyingMap {A B : SimplicialObject RingCat.{u}} (f : A ⟶ B) :
     KST.Comparison.ringSpace A ⟶ KST.Comparison.ringSpace B :=
   Functor.whiskerRight f (forget RingCat)

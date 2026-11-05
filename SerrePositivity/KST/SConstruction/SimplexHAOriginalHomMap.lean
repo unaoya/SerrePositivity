@@ -16,10 +16,10 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の標準単体の頂点番号と、元の Λ の全対象との実逆対応。 -/
 def simplexLambdaVertexEquiv (N : ℕ) : Fin (N + 1) ≃ CubicalLambda A (Δ[N] : SSet.{u}) where
-  toFun := standardSimplexVertex
+  toFun := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex
   invFun x := (cubicalLambdaVertexEquiv A (Δ[N] : SSet.{u}) x) 0
   left_inv _ := rfl
-  right_inv x := standardSimplexVertex_eta x
+  right_inv x := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_eta x
 
 /-- 元の Λ の各対象に、元の同じ頂点の HA 対象を対応させる。 -/
 def simplexHAInverseObj {N : ℕ} (s : DGNerve.Simplex A D N)
@@ -39,12 +39,12 @@ def simplexHAOriginalHomMap {N : ℕ} (s : DGNerve.Simplex A D N)
 
 /-- 元の番号の頂点での対象復元は、元の HA 対象そのもの。 -/
 lemma simplexHAInverseObj_vertex {N : ℕ} (s : DGNerve.Simplex A D N) (a : Fin (N + 1)) :
-    simplexHAInverseObj A s (standardSimplexVertex a) = s.obj a := rfl
+    simplexHAInverseObj A s (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) = s.obj a := rfl
 
 /-- 元の番号の頂点での Hom 復元は、元の同じ全 Hom 鎖射族そのもの。 -/
 lemma simplexHAOriginalHomMap_vertices {N : ℕ} (s : DGNerve.Simplex A D N)
     (a b : Fin (N + 1)) :
-    simplexHAOriginalHomMap A s (standardSimplexVertex a) (standardSimplexVertex b) =
+    simplexHAOriginalHomMap A s (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
       simplexHAHomMap A s a b := Category.id_comp _
 
 /-- 元の Λ の全対象の実単位は、同じ HA 対象の実単位へ写る。 -/
@@ -54,7 +54,7 @@ lemma simplexHAOriginalHomMap_id {N : ℕ} (s : DGNerve.Simplex A D N)
       eId (Complex A) (simplexHAInverseObj A s x) := by
   obtain ⟨a, rfl⟩ := (simplexLambdaVertexEquiv A N).surjective x
   exact (congrArg (fun f => eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-    (standardSimplexVertex a) ≫ f) (simplexHAOriginalHomMap_vertices A s a a)).trans
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) ≫ f) (simplexHAOriginalHomMap_vertices A s a a)).trans
       (simplexHAHomMap_id A s a)
 
 /-- 元の Λ の全対象・全 Hom の復元族は、厳密 dg 関手による後合成と可換。 -/

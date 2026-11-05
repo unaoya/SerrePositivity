@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：零点を追加した頂点写像の引き戻しは、元の引き戻しへの零点追加になる。
@@ -28,12 +28,12 @@ open scoped Simplicial
 -/
 theorem simplexConeZero_simplexMap {k l : SimplexCategory} {n : ℕ}
     (θ : k ⟶ l) (x : l ⟶ ⦋n⦌) :
-    (Δ[n] : SSet.{u}).map (simplexPrepend θ).op
-      (SSet.stdSimplex.objEquiv.symm (simplexConeZero x)) =
-        SSet.stdSimplex.objEquiv.symm (simplexConeZero (θ ≫ x)) := by
+    (Δ[n] : SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).op
+      (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x)) =
+        SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (θ ≫ x)) := by
   rw [SSet.stdSimplex.map_objEquiv_symm]
-  change SSet.stdSimplex.objEquiv.{u}.symm (simplexPrepend θ ≫ simplexConeZero x) = _
-  rw [simplexConeZero_comp]
+  change SSet.stdSimplex.objEquiv.{u}.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp]
 
 /--
 概要：単体写像の正規化と標準単体の零点追加は交換する。
@@ -44,19 +44,19 @@ theorem simplexConeZero_simplexMap {k l : SimplexCategory} {n : ℕ}
 theorem freeStandardPrepend_normalize {n d : ℕ} {k : SimplexCategory}
     (x : (Δ[n] : SSet.{u}).obj (op k)) (t : ⦋d⦌ ⟶ k) :
     fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d + 1⦌)
-      (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv x)))
-      (simplexPrepend t) =
+      (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv x)))
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend t) =
       freeStandardPrependNormalForm
         (fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌) x t) := by
-  have hfac : simplexPrepend (factorThruImage t) ≫ simplexPrepend (image.ι t) =
-      simplexPrepend t := by rw [← simplexPrepend_comp, image.fac]
+  have hfac : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (factorThruImage t) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (image.ι t) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend t := by rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp, image.fac]
   rw [fatNormalize_eq_of_factorization _ _ _ _ _ _ hfac]
-  change (⟨⦋(image t).len + 1⦌, simplexPrepend (factorThruImage t), _,
-    (Δ[n] : SSet.{u}).map (simplexPrepend (image.ι t)).op
-      (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv x)))⟩ :
+  change (⟨⦋(image t).len + 1⦌, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (factorThruImage t), _,
+    (Δ[n] : SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (image.ι t)).op
+      (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv x)))⟩ :
       FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d + 1⦌)) =
-    ⟨⦋(image t).len + 1⦌, simplexPrepend (factorThruImage t), _,
-      SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv
+    ⟨⦋(image t).len + 1⦌, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (factorThruImage t), _,
+      SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv
         ((Δ[n] : SSet.{u}).map (image.ι t).op x)))⟩
   rw [simplexConeZero_simplexMap]
   congr 2

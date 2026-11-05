@@ -19,8 +19,8 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma cubicalLambdaNativeSimplexData_equation {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (simplexSubsetNonempty I hI))
-    (hb : b = I.max' (simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
     differential A ((cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk) =
       (cubicalLambdaNativeSimplexData A F).rhs I a b k hI ha hb hk := by
   by_cases h2 : I.card = 2

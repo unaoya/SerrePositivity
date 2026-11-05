@@ -37,15 +37,15 @@ lemma spanCoconeFamilyTranspose_last_edge {K X : SSet.{u}} {n : ℕ}
     (hF : F ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
       SSet.const (functorVertex D))
     (a : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-    (ha : F ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+    (ha : F ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
       a ≫ (pre (joinStdSimplexIso 0 0).hom).app X) :
     (SerrePositivity.InfinityCategories.HomotopyLimits.coconeVertexLeg
-      (spanCoconeFamilyTranspose D F hF) (SSet.yonedaEquiv (simplexLastPoint n))).edge =
+      (spanCoconeFamilyTranspose D F hF) (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).edge =
       SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] X a) := by
   have he := congrArg (internalHomFlipHomEquiv K (join (Δ[0] : SSet.{u}) Δ[0]) X) ha
   rw [internalHomFlipHomEquiv_pre_app, internalHomFlipHomEquiv_pre_app] at he
   change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-    joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (simplexLastPoint n))) (𝟙 Δ[0]) ≫
+    joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))) (𝟙 Δ[0]) ≫
       internalHomFlipHomEquiv K (join (Δ[n] : SSet.{u}) Δ[0]) X F) = _
   rw [Equiv.symm_apply_apply, he,
     ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
@@ -57,12 +57,12 @@ lemma spanCoconeFamilyTranspose_last_interval_edge {K X : SSet.{u}} {n : ℕ}
     (hF : F ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
       SSet.const (functorVertex D)) {x y : X _⦋0⦌}
     (f : K ⟶ intervalMappingSpace x y)
-    (hf : F ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+    (hf : F ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
       f ≫ vertexFiberι ((pre (boundary 1).ι).app X)
         (functorVertex (intervalMappingBoundary x y)) ≫
         (pre (joinStdSimplexIso 0 0).hom).app X) :
     (HomotopyLimits.coconeVertexLeg (spanCoconeFamilyTranspose D F hF)
-      (SSet.yonedaEquiv (simplexLastPoint n))).edge = (intervalMappingFamilyEdge f).edge := by
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).edge = (intervalMappingFamilyEdge f).edge := by
   have he := spanCoconeFamilyTranspose_last_edge D F hF
     (f ≫ vertexFiberι ((pre (boundary 1).ι).app X)
       (functorVertex (intervalMappingBoundary x y))) hf

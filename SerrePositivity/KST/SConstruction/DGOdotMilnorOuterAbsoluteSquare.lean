@@ -30,9 +30,9 @@ local notation "Q" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 規約：元全外周を保持。使われ方：絶対上辺の全区間照合。 -/
 lemma dgOdotMilnorOuterRawSquare_top :
     squareTopEdge ≫ (L).rawOuterSquare =
-      SSet.yonedaEquiv.symm (stableArrow (fromZeroCategory (Q))).edge := by
-  rw [PerfectLaxQuotient.rawOuterSquare, square_transpose_top, pastingSquare_outer_rightEdge,
-    (L).rawRectangle.right_eq, square_transpose_right]
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (fromZeroCategory (Q))).edge := by
+  rw [PerfectLaxQuotient.rawOuterSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, pastingSquare_outer_rightEdge,
+    (L).rawRectangle.right_eq, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right]
   exact (perfectIdentityLaxRawSquare_edges (Q) (hQ)).2.1
 
 /-- 概要：元絶対 LT 外周の下辺は元の同じ包含。
@@ -61,7 +61,7 @@ lemma dgOdotMilnorOuterAbsoluteSquare_projection :
 規約：元始域を保持。使われ方：外周零左側面の終端。 -/
 lemma dgOdotMilnorOuterAbsoluteSquare_left :
     squareLeftEdge ≫ (dgOdotMilnorActualOuterDiagram R d h).square =
-      SSet.yonedaEquiv.symm (perfectStableArrow (toZeroCategory (A))
+      SSet.yonedaEquiv.symm (perfectStableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (A))
         (hA) perfectZeroCategory_isIdempotentComplete).edge := by
   apply (cancel_mono perfectStableInfinityInclusion).mp
   change (squareLeftEdge ≫ (L).outerSquare) ≫ _ = _

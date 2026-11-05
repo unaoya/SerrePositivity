@@ -64,11 +64,11 @@ lemma relativePointedHom_lift {A X E B : PointedSimplicialSet.{u}}
     (a : T ⟶ (PointedObject.basedHom X E).right)
     (b : U ⟶ (PointedObject.basedHom A E).right)
     (c : U ⟶ (PointedObject.basedHom X B).right)
-    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (hc : j ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E)
     (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
-    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i B) :
     ∃ l : U ⟶ (PointedObject.basedHom X E).right,
-      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+      j ≫ l = a ∧ l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = b ∧
         l ≫ (PointedObject.basedHomMap X p).right = c := by
   let earlier := MonoidalClosed.uncurry (a ≫ PointedObject.basedHomι X E)
   let prescribed := MonoidalClosed.uncurry (b ≫ PointedObject.basedHomι A E)
@@ -76,7 +76,7 @@ lemma relativePointedHom_lift {A X E B : PointedSimplicialSet.{u}}
   have hcompat : i.right ▷ T ≫ earlier = A.right ◁ j ≫ prescribed := by
     have h := congrArg (fun k : T ⟶ (PointedObject.basedHom A E).right ↦
       MonoidalClosed.uncurry (k ≫ PointedObject.basedHomι A E)) hc
-    simp only [Category.assoc, PointedMapping.pre_ι, MonoidalClosed.uncurry_natural_left] at h
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, MonoidalClosed.uncurry_natural_left] at h
     exact h.symm
   have hearlier : earlier ≫ p.right = X.right ◁ j ≫ base := by
     dsimp only [earlier, base]
@@ -88,23 +88,23 @@ lemma relativePointedHom_lift {A X E B : PointedSimplicialSet.{u}}
     dsimp only [prescribed, base]
     rw [← MonoidalClosed.uncurry_natural_right, Category.assoc,
       ← PointedObject.basedHomMap_ι, ← Category.assoc, ha, Category.assoc,
-      PointedMapping.pre_ι, ← Category.assoc, MonoidalClosed.uncurry_pre_app]
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, MonoidalClosed.uncurry_pre_app]
   obtain ⟨l, hl, hi, hp⟩ := relativeTensorLift p.right i.right j hpp
     earlier prescribed base hcompat hearlier hprescribed
   have hfixed : X.hom ▷ U ≫ l = toUnit (𝟙_ SSet.{u} ⊗ U) ≫ E.hom := by
     rw [← Under.w i, comp_whiskerRight, Category.assoc, hi]
-    exact PointedMapping.uncurry_basepoint A E b
-  refine ⟨PointedMapping.paramCurry X E l hfixed, ?_, ?_, ?_⟩
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint A E b
+  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X E l hfixed, ?_, ?_, ?_⟩
   · apply (cancel_mono (PointedObject.basedHomι X E)).mp
-    rw [Category.assoc, PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
       hl, MonoidalClosed.curry_uncurry]
   · apply (cancel_mono (PointedObject.basedHomι A E)).mp
-    rw [Category.assoc, PointedMapping.pre_ι, ← Category.assoc,
-      PointedMapping.paramCurry_ι, MonoidalClosed.curry_pre_app, hi,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc,
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.curry_pre_app, hi,
       MonoidalClosed.curry_uncurry]
   · apply (cancel_mono (PointedObject.basedHomι X B)).mp
     rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc,
-      PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_right, hp,
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_right, hp,
       MonoidalClosed.curry_uncurry]
 
 /-- 概要：単射に沿う制限と Kan fibration への後合成を同時に保ってホーンを充填する。
@@ -117,11 +117,11 @@ lemma relativePointedHom_hornLift {A X E B : PointedSimplicialSet.{u}}
     (a : T ⟶ (PointedObject.basedHom X E).right)
     (b : U ⟶ (PointedObject.basedHom A E).right)
     (c : U ⟶ (PointedObject.basedHom X B).right)
-    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (hc : j ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E)
     (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
-    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i B) :
     ∃ l : U ⟶ (PointedObject.basedHom X E).right,
-      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+      j ≫ l = a ∧ l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = b ∧
         l ≫ (PointedObject.basedHomMap X p).right = c := by
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) i.right j
   have hj' : anodyneExtensions j := by
@@ -142,11 +142,11 @@ lemma relativePointedHom_anodyneLift {A X E B : PointedSimplicialSet.{u}}
     (a : T ⟶ (PointedObject.basedHom X E).right)
     (b : U ⟶ (PointedObject.basedHom A E).right)
     (c : U ⟶ (PointedObject.basedHom X B).right)
-    (hc : j ≫ b = a ≫ PointedMapping.pre i E)
+    (hc : j ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E)
     (he : a ≫ (PointedObject.basedHomMap X p).right = j ≫ c)
-    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ PointedMapping.pre i B) :
+    (ha : b ≫ (PointedObject.basedHomMap A p).right = c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i B) :
     ∃ l : U ⟶ (PointedObject.basedHom X E).right,
-      j ≫ l = a ∧ l ≫ PointedMapping.pre i E = b ∧
+      j ≫ l = a ∧ l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = b ∧
         l ≫ (PointedObject.basedHomMap X p).right = c := by
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) i.right j
   have hpp : HasLiftingProperty pp.ι p.right :=

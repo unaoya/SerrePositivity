@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposition
 
@@ -11,28 +13,40 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposit
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 入力の後合成と連結は、元の全単体的写像について厳密に一致する。 -/
 lemma necklaceInWedge_postcompose_map {K L : SSet.{u}} (a : K ⟶ L)
-    {x y z : K _⦋0⦌} (T : NecklaceIn K x y) (U : NecklaceIn K y z) :
-    (necklaceInWedge ((necklaceInPostcompose a x y).obj T)
-      ((necklaceInPostcompose a y z).obj U)).map = (necklaceInWedge T U).map ≫ a := by
+    {x y z : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U)).map = (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U).map ≫ a := by
   have h : T.necklace.down.pointMap T.necklace.down.last ≫ (T.map ≫ a) =
       U.necklace.down.pointMap U.necklace.down.first ≫ (U.map ≫ a) := by
-    rw [← Category.assoc, ← Category.assoc, necklaceInWedge_seam T U]
+    rw [← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U]
   change T.necklace.down.wedgeDesc U.necklace.down (T.map ≫ a) (U.map ≫ a) h =
-        T.necklace.down.wedgeDesc U.necklace.down T.map U.map (necklaceInWedge_seam T U) ≫ a
+        T.necklace.down.wedgeDesc U.necklace.down T.map U.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U) ≫ a
   apply T.necklace.down.wedge_hom_ext U.necklace.down
-  · rw [NecklaceShape.wedgeInl_desc, ← Category.assoc, NecklaceShape.wedgeInl_desc]
-  · rw [NecklaceShape.wedgeInr_desc, ← Category.assoc, NecklaceShape.wedgeInr_desc]
+  · rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_desc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_desc]
+  · rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_desc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_desc]
 
 /-- 後合成した可換三角形の連結は、元の連結 necklace 射を保持する。 -/
 lemma necklaceInWedge_postcompose_hom {K L : SSet.{u}} (a : K ⟶ L)
-    {x y z : K _⦋0⦌} {T T' : NecklaceIn K x y} {U U' : NecklaceIn K y z}
+    {x y z : K _⦋0⦌} {T T' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} {U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z}
     (f : T ⟶ T') (g : U ⟶ U') :
-    (necklaceInWedgeMap ((necklaceInPostcompose a x y).map f)
-      ((necklaceInPostcompose a y z).map g)).necklaceHom =
-        (necklaceInWedgeMap f g).necklaceHom := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).map f)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).map g)).necklaceHom =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap f g).necklaceHom := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_hom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_map

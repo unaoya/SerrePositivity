@@ -44,7 +44,7 @@ lemma fullFaithful_retract_iso_in_image (F : C ⥤ D) [F.Full] [F.Faithful]
 end SerrePositivity.InfinityCategories
 namespace SerrePositivity.InfinityCategories
 open SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open F2.Idempotent
 universe a
 /-- h の冪等完備性から、実充満忠実関手の像の retract を回収する。 -/

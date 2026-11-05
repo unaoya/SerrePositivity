@@ -45,7 +45,7 @@ lemma unitRightIso_arrow : Arrow.mk (homPre squareRightEdge (unitSquareIso q).ho
 lemma unitRightIso_inv_arrow : Arrow.mk (homPre squareRightEdge (unitSquareIso q).inv) =
     Arrow.mk (unitRightIso q).inv := by
   let e := (unitSquareIso q).precomp squareRightEdge
-  have hi := arrow_mk_inv_congr (f := e.hom) (g := (unitRightIso q).hom) (unitRightIso_arrow q)
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (unitRightIso q).hom) (unitRightIso_arrow q)
   simp only [IsIso.Iso.inv_hom] at hi
   exact hi
 

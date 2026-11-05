@@ -23,11 +23,11 @@ namespace SerrePositivity.KST.Fibration
 /-- 概要：元の二短辺の全豊穣合成は、同じ動く全 S• 辺の core 制限。
 方針：元の定値包含の豊穣作用を全次数で計算する。
 規約：全入力の写像の厳密等式。使われ方：長 Hom の全合成端条件。 -/
-theorem verdierMovingUpperCompositeFamily_core (d : VerdierDiagram.{u}) :
+theorem verdierMovingUpperCompositeFamily_core (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
   verdierMovingUpperCompositeFamily d =
     verdierMovingUpperLastFamily d ≫ (SSet.uliftFunctor.{u+1,u}).map
-      ((pre (exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))).app
-        (stableCoreSingleKanObject (show StableQCat from d.right)).obj) := by
+      ((pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -36,7 +36,7 @@ theorem verdierMovingUpperCompositeFamily_core (d : VerdierDiagram.{u}) :
 /-- 概要：元の比較の全 path 成分は同じ動く短辺の実豊穣合成。
 方針：同じ全円柱の合成端回収を宇宙持ち上げの実一単体へ代入する。
 規約：群作用や同型類へ弱めない。使われ方：同じ相対合成の全 path 端の照合。 -/
-theorem verdierMovingUpperCompositeFamily_component (d : VerdierDiagram.{u}) :
+theorem verdierMovingUpperCompositeFamily_component (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
   SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
     (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge =
       verdierMovingUpperCompositeFamily d := by
@@ -59,8 +59,8 @@ theorem verdierMovingUpperCompositeFamily_component (d : VerdierDiagram.{u}) :
   change (verdierOriginalFullSCoreHomotopy d 0 1).h.app (Opposite.op ⦋1⦌)
     ((Truncated.Edge.id (X := (truncation 2).obj (nerve TriangleNativePath.{u}))
       (ComposableArrows.mk₀ triangleFullPath.{u})).edge, homotopyIntervalEdge.edge) =
-      ((pre (exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))).app
-        (stableCoreSingleKanObject (show StableQCat from d.right)).obj).app
+      ((pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj).app
           (Opposite.op ⦋1⦌) ((verdierOriginalFullSCompositePath d 0 1).app
             (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))))
   rw [hi]

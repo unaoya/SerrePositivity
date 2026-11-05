@@ -22,9 +22,9 @@ local notation "Space" => DGOdotMilnorNuNullCoherenceSpace R d
 方針：可縮空間の辺の可逆性を完全関手圏へ写して core へ持ち上げる。
 規約：高次単体も含む射である。使われ方：全境界の Hom 内充填。 -/
 def dgOdotMilnorNuNullCoherenceHom :
-    (Space) ⟶ SimplicialCategory.sHom (C := StableQCat.{u + 1}) (Src) (Tgt) := by
+    (Space) ⟶ SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (Src) (Tgt) := by
   letI : KanComplex (Space) := (dgOdotMilnorNuNullCoherenceSpace_contractible R d h).kanComplex
-  change (Space) ⟶ (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1}) : SSet)
+  change (Space) ⟶ (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1}) : SSet)
   refine quasicategoryCoreLift (terminalVertices _).ι (fun s => ?_)
   have hs : IsInvertibleEdge (edgeOfSimplex s) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj (Space)) _
@@ -35,8 +35,8 @@ def dgOdotMilnorNuNullCoherenceHom :
 規約：頂点の同型類だけに弱めない。使われ方：元の実面の端点 Hom との照合。 -/
 lemma dgOdotMilnorNuNullCoherenceHom_inclusion :
     dgOdotMilnorNuNullCoherenceHom R d h ≫
-      (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι =
-        (terminalVertices (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι := rfl
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι =
+        (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι := rfl
 
 /-- 概要：実商合成の比較空間内の頂点は、元の豊穣 Hom の射そのもの。
 方針：core への頂点持ち上げの定義を使用する。
@@ -44,7 +44,7 @@ lemma dgOdotMilnorNuNullCoherenceHom_inclusion :
 lemma dgOdotMilnorNuNullCoherenceHom_composite :
     (dgOdotMilnorNuNullCoherenceHom R d h).app (Opposite.op ⦋0⦌)
       (dgOdotMilnorNuNullCompositeVertex R d h) =
-        SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (Src) (Tgt)
+        SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (Src) (Tgt)
           (dgOdotMilnorNuNullComposite R d) := by
   apply Subtype.ext
   rfl
@@ -55,7 +55,7 @@ lemma dgOdotMilnorNuNullCoherenceHom_composite :
 lemma dgOdotMilnorNuNullCoherenceHom_top :
     (dgOdotMilnorNuNullCoherenceHom R d h).app (Opposite.op ⦋0⦌)
       (dgOdotMilnorNuNullTopCompositeVertex R d) =
-        SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (Src) (Tgt)
+        SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (Src) (Tgt)
           (dgOdotMilnorNuNullTopComposite R d) := by
   apply Subtype.ext
   rfl
@@ -68,13 +68,13 @@ lemma dgOdotMilnorNuNullTopComposite_eq :
   have map_comp {P Q T : PerfDGInput.{u, u + 1} R} (f : P ⟶ Q) (g : Q ⟶ T) :
       (dgKInputNuMap R (f ≫ g)).hom =
         (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
-    have e := congrArg ExactMap.hom
+    have e := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
       ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
     change (presentedPerfectDGExactMap R (f ≫ g)).hom =
       (presentedPerfectDGExactMap R f).hom ≫ (presentedPerfectDGExactMap R g).hom at e
     rw [← dgKInputNuMap_eq R, ← dgKInputNuMap_eq R, ← dgKInputNuMap_eq R] at e
     exact e
-  apply ExactMap.ext
+  apply _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext
   change (dgKInputNuMap R (dgFixedNullLeft R
     (A := dgOdotMilnorFlatKernelInput R d))).hom ≫
       (dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).hom =

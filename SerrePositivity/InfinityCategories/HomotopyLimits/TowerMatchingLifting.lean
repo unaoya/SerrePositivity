@@ -31,35 +31,35 @@ lemma towerRelative_liftFamily {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) �
     (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
     {T U : SSet.{u}} (j : T ⟶ U) [HasLiftingProperty j (f 0)]
     [∀ n, HasLiftingProperty j (towerMatchingMap f hf n)]
-    (a : T ⟶ FibrationTower.limit X dX) (b : U ⟶ FibrationTower.limit Y dY)
+    (a : T ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X dX) (b : U ⟶ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit Y dY)
     (h : a ≫ towerMap f hf = j ≫ b) :
     ∃ l : ∀ n, U ⟶ X n,
-      (∀ n, j ≫ l n = a ≫ FibrationTower.projection X dX n) ∧
-      (∀ n, l n ≫ f n = b ≫ FibrationTower.projection Y dY n) ∧
+      (∀ n, j ≫ l n = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX n) ∧
+      (∀ n, l n ≫ f n = b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY n) ∧
       (∀ n, l (n + 1) ≫ dX n = l n) := by
-  have hs (n : ℕ) : (a ≫ FibrationTower.projection X dX n) ≫ f n =
-      j ≫ (b ≫ FibrationTower.projection Y dY n) := by
+  have hs (n : ℕ) : (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX n) ≫ f n =
+      j ≫ (b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY n) := by
     rw [Category.assoc, ← towerMap_projection f hf n, ← Category.assoc, h, Category.assoc]
   let LiftAt (n : ℕ) := {l : U ⟶ X n //
-    j ≫ l = a ≫ FibrationTower.projection X dX n ∧
-      l ≫ f n = b ≫ FibrationTower.projection Y dY n}
+    j ≫ l = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX n ∧
+      l ≫ f n = b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY n}
   have h0 : Nonempty (LiftAt 0) := by
-    let sq : CommSq (a ≫ FibrationTower.projection X dX 0) j (f 0)
-      (b ≫ FibrationTower.projection Y dY 0) := ⟨hs 0⟩
+    let sq : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX 0) j (f 0)
+      (b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY 0) := ⟨hs 0⟩
     exact ⟨⟨sq.lift, sq.fac_left, sq.fac_right⟩⟩
   have hn (n : ℕ) (prev : LiftAt n) :
       ∃ next : LiftAt (n + 1), next.val ≫ dX n = prev.val := by
     let v : U ⟶ pullback (dY n) (f n) :=
-      pullback.lift (b ≫ FibrationTower.projection Y dY (n + 1)) prev.val (by
-        rw [Category.assoc, FibrationTower.projection_comp, prev.property.2])
-    let sq : CommSq (a ≫ FibrationTower.projection X dX (n + 1)) j
+      pullback.lift (b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY (n + 1)) prev.val (by
+        rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property.2])
+    let sq : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X dX (n + 1)) j
         (towerMatchingMap f hf n) v := ⟨by
       apply pullback.hom_ext
       · simp only [Category.assoc, towerMatchingMap, pullback.lift_fst, v]
         exact hs (n + 1)
       · simp only [Category.assoc, towerMatchingMap, pullback.lift_snd, v]
-        rw [FibrationTower.projection_comp, prev.property.1]⟩
-    have hb : sq.lift ≫ f (n + 1) = b ≫ FibrationTower.projection Y dY (n + 1) := by
+        rw [_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property.1]⟩
+    have hb : sq.lift ≫ f (n + 1) = b ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection Y dY (n + 1) := by
       have he := congrArg (fun k : U ⟶ pullback (dY n) (f n) ↦
         k ≫ pullback.fst (dY n) (f n)) sq.fac_right
       simpa only [Category.assoc, towerMatchingMap, pullback.lift_fst, v] using he
@@ -85,15 +85,15 @@ lemma towerMap_hasLiftingProperty {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1
   constructor
   intro a b sq
   obtain ⟨l, ha, hb, hd⟩ := towerRelative_liftFamily f hf j a b sq.w
-  let v := FibrationTower.lift X dX l hd
+  let v := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift X dX l hd
   refine ⟨⟨{ l := v, fac_left := ?_, fac_right := ?_ }⟩⟩
-  · apply FibrationTower.hom_ext
+  · apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
     intro n
-    rw [Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact ha n
-  · apply FibrationTower.hom_ext
+  · apply _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
     intro n
-    rw [Category.assoc, towerMap_projection, ← Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, towerMap_projection, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact hb n
 
 /-- 概要：任意の射のクラスへの RLP は初段と相対比較から塔の極限の射へ移る。
@@ -128,12 +128,12 @@ lemma towerMap_fibration {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n
 使われ方：Sp の塔の Ω 条件の比較の因子分解で使う判定。 -/
 lemma towerMap_piIsomorphism_of_matching_rlp {X Y : ℕ → SSet.{u}}
     {dX : ∀ n, X (n + 1) ⟶ X n} {dY : ∀ n, Y (n + 1) ⟶ Y n}
-    [KanComplex (FibrationTower.limit X dX)] [KanComplex (FibrationTower.limit Y dY)]
+    [KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X dX)] [KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit Y dY)]
     (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
     (h0 : (MorphismProperty.monomorphisms SSet.{u}).rlp (f 0))
     (hm : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (towerMatchingMap f hf n)) :
-    KanPiIsomorphism (towerMap f hf) :=
-  kanPiIsomorphism_of_monoRight _ (towerMap_rlp f hf _ h0 hm)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (towerMap f hf) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (towerMap_rlp f hf _ h0 hm)
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

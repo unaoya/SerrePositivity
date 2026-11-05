@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
 
 /-!
@@ -15,8 +17,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 標準単体を始域とする関手単体集合の二重単体集合。 -/
@@ -25,25 +30,25 @@ def functorDiagram (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
 
 /-- `R(C)[m] = core Fun(Δ[m], C)`。構成自体は任意の単体集合に定義する。 -/
 def resolution (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
-  functorDiagram C ⋙ quasicategoryCoreFunctor
+  _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorDiagram C ⋙ quasicategoryCoreFunctor
 
 /-- 各行の対象は指定された関手単体集合の core そのもの。 -/
 lemma resolution_obj (C : SSet.{u}) (n : SimplexCategoryᵒᵖ) :
-    (resolution C).obj n =
+    (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).obj n =
       (quasicategoryCore ((ihom (stdSimplex.obj n.unop)).obj C) : SSet.{u}) := rfl
 
 /-- quasicategory の core 旗の各行は Kan 複体。 -/
 instance resolution_obj_kanComplex (C : SSet.{u}) [Quasicategory C]
-    (n : SimplexCategoryᵒᵖ) : KanComplex ((resolution C).obj n) := by
+    (n : SimplexCategoryᵒᵖ) : KanComplex ((_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C).obj n) := by
   change KanComplex (quasicategoryCore ((ihom (stdSimplex.obj n.unop)).obj C) : SSet.{u})
   infer_instance
 
 /-- 外側・内側の次数を一致させた core 旗の対角。 -/
 def diagonal (C : SSet.{u}) : SSet.{u} :=
-  Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj (resolution C)
+  Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C)
 
 /-- core 旗の n 単体を二つの標準単体の対角で評価する。 -/
-def counit (C : SSet.{u}) : diagonal C ⟶ C where
+def counit (C : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal C ⟶ C where
   app n := ↾fun s ↦ s.val.app n (𝟙 n) (stdSimplex.objEquiv.symm (𝟙 n.unop))
   naturality {n m} f := by
     apply ConcreteCategory.hom_ext
@@ -59,7 +64,7 @@ def counit (C : SSet.{u}) : diagonal C ⟶ C where
     congr 1
 
 /-- 後合成は core 旗の二重単体集合の間の射を与える。 -/
-def map {C D : SSet.{u}} (f : C ⟶ D) : resolution C ⟶ resolution D where
+def map {C D : SSet.{u}} (f : C ⟶ D) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution C ⟶ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution D where
   app n := quasicategoryCoreMap ((ihom (stdSimplex.obj n.unop)).map f)
   naturality {n m} g := by
     change quasicategoryCoreFunctor.map _ ≫ quasicategoryCoreFunctor.map _ =
@@ -68,13 +73,13 @@ def map {C D : SSet.{u}} (f : C ⟶ D) : resolution C ⟶ resolution D where
     exact congrArg quasicategoryCoreFunctor.map (pre_comm_ihom_map _ f)
 
 /-- 後合成による対角上の作用。 -/
-def diagonalMap {C D : SSet.{u}} (f : C ⟶ D) : diagonal C ⟶ diagonal D :=
-  Functor.whiskerLeft (Functor.diag SimplexCategoryᵒᵖ) (Functor.uncurry.map (map f))
+def diagonalMap {C D : SSet.{u}} (f : C ⟶ D) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal C ⟶ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal D :=
+  Functor.whiskerLeft (Functor.diag SimplexCategoryᵒᵖ) (Functor.uncurry.map (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map f))
 
 /-- 対角評価は標的の関手による後合成と可換。 -/
 @[reassoc]
 lemma counit_naturality {C D : SSet.{u}} (f : C ⟶ D) :
-    diagonalMap f ≫ counit D = counit C ≫ f := by
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap f ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit D = _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit C ≫ f := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -88,7 +93,7 @@ def constantSimplex {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ} (s : C.obj n) :
 
 /-- パラメーター方向が定値なら内部 Hom の core に入る。 -/
 lemma constantSimplex_mem {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ} (s : C.obj n) :
-    constantSimplex s ∈
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex s ∈
       (quasicategoryCore ((ihom (stdSimplex.obj n.unop)).obj C)).obj m := by
   intro f
   exact isInvertibleEdge_degenerate
@@ -96,8 +101,8 @@ lemma constantSimplex_mem {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ} (s : C.ob
     (Functor.HomObj.ofNatTrans (SSet.yonedaEquiv.symm s))
 
 /-- 元の旗を保持し、第二の単体方向には定値な対角包含。 -/
-def inclusion (C : SSet.{u}) : C ⟶ diagonal C where
-  app n := ↾fun s ↦ ⟨constantSimplex s, constantSimplex_mem s⟩
+def inclusion (C : SSet.{u}) : C ⟶ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal C where
+  app n := ↾fun s ↦ ⟨_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex s, _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex_mem s⟩
   naturality {n m} f := by
     apply ConcreteCategory.hom_ext
     intro s
@@ -115,7 +120,7 @@ def inclusion (C : SSet.{u}) : C ⟶ diagonal C where
 
 /-- 対角包含の後で対角評価をすると元の単体に戻る。 -/
 @[reassoc (attr := simp)]
-lemma inclusion_counit (C : SSet.{u}) : inclusion C ≫ counit C = 𝟙 C := by
+lemma inclusion_counit (C : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion C ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit C = 𝟙 C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -126,7 +131,7 @@ lemma inclusion_counit (C : SSet.{u}) : inclusion C ≫ counit C = 𝟙 C := by
 /-- 定数包含も標的の関手による後合成と可換。 -/
 @[reassoc]
 lemma inclusion_naturality {C D : SSet.{u}} (f : C ⟶ D) :
-    f ≫ inclusion D = inclusion C ≫ diagonalMap f := by
+    f ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion D = _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion C ≫ _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap f := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -138,4 +143,70 @@ lemma inclusion_naturality {C D : SSet.{u}} (f : C ⟶ D) :
   intro x
   exact (NatTrans.naturality_apply f (stdSimplex.objEquiv x).op s).symm
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constantSimplex := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constantSimplex_mem := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantSimplex_mem
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit_naturality_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.functorDiagram := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_naturality_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.map := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.map._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map._proof_1

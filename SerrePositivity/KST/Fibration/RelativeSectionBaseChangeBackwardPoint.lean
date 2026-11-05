@@ -18,10 +18,10 @@ variable {B D : SSet.{u}} {J : Type u} [Category.{u} J]
 theorem relativeSectionBaseChangeComponentIso_backward_pointHom
     (X : LeftFibrationObject B) (j : J)
     (v : (((relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (A ⋙ Over.map k)).obj j).obj X)).symm v) ≫
       (relativeSectionBaseChangeComponentIso k A X j).inv =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram A).precompose
         (leftFibrationBaseChangeEnriched k)).obj j).obj X)).symm
           ((relativeFunctorBaseChangeBackward X.val.hom k (A.obj (Opposite.op j)).hom).app

@@ -17,8 +17,8 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (n : ℕ)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
   {x y : (sConstruction n B.obj) _⦋0⦌}
   {f : Truncated.Edge (X := (truncation 2).obj (sConstruction n B.obj)) x y}
 include h
@@ -27,9 +27,9 @@ include h
 theorem relativeSConstruction_mem_edge_iff_cofiber_components (s : CofiberSquare f) :
     f.edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∀ a : (arNerve n) _⦋0⦌,
-        (sComponentEvaluation B.obj n a).app (Opposite.op ⦋0⦌) s.cofiber ∈ essentialImage i := by
+        (sComponentEvaluation B.obj n a).app (Opposite.op ⦋0⦌) s.cofiber ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i := by
   rw [relativeSConstruction_mem_edge_iff h]
-  exact forall_congr' (fun a => mem_weakEquivalences_iff h
+  exact forall_congr' (fun a => _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff h
     (s.map (sComponentEvaluation B.obj n a)))
 
 /-- 同じ S 後合成で写した元の cofiber が零であることが、元の相対辺条件と同値。 -/

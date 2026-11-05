@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderHom
 
 /-!
@@ -13,6 +15,9 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {C : Type v} [EnrichedCategory SSet.{u} C]
 
 /-- 元の左単位律を単体で評価した式。 -/
@@ -37,8 +42,8 @@ lemma base_assoc_app (W X Y Z : C) (d : SimplexCategoryᵒᵖ)
 variable (A : SSet.{u})
 
 /-- 円柱の左単位律。 -/
-lemma identity_composition (X Y : Object A C) :
-    (λ_ (hom A X Y)).inv ≫ identity A X ▷ hom A X Y ≫ composition A X X Y = 𝟙 _ := by
+lemma identity_composition (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    (λ_ (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y)).inv ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity A X ▷ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A X X Y = 𝟙 _ := by
   rcases X with ⟨s, x⟩
   rcases Y with ⟨t, y⟩
   cases s <;> cases t
@@ -47,14 +52,14 @@ lemma identity_composition (X Y : Object A C) :
     intro d
     apply ConcreteCategory.hom_ext
     intro a
-  · exact base_id_comp_app x y d a
-  · exact Prod.ext rfl (base_id_comp_app x y d a.2)
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_id_comp_app x y d a
+  · exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_id_comp_app x y d a.2)
   · exact a.elim
-  · exact base_id_comp_app x y d a
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_id_comp_app x y d a
 
 /-- 円柱の右単位律。 -/
-lemma composition_identity (X Y : Object A C) :
-    (ρ_ (hom A X Y)).inv ≫ hom A X Y ◁ identity A Y ≫ composition A X Y Y = 𝟙 _ := by
+lemma composition_identity (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    (ρ_ (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y)).inv ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y ◁ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity A Y ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A X Y Y = 𝟙 _ := by
   rcases X with ⟨s, x⟩
   rcases Y with ⟨t, y⟩
   cases s <;> cases t
@@ -63,16 +68,16 @@ lemma composition_identity (X Y : Object A C) :
     intro d
     apply ConcreteCategory.hom_ext
     intro a
-  · exact base_comp_id_app x y d a
-  · exact Prod.ext rfl (base_comp_id_app x y d a.2)
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app x y d a
+  · exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app x y d a.2)
   · exact a.elim
-  · exact base_comp_id_app x y d a
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app x y d a
 
 /-- 円柱の結合律。 -/
-lemma composition_assoc (W X Y Z : Object A C) :
-    (α_ (hom A W X) (hom A X Y) (hom A Y Z)).inv ≫
-      composition A W X Y ▷ hom A Y Z ≫ composition A W Y Z =
-      hom A W X ◁ composition A X Y Z ≫ composition A W X Z := by
+lemma composition_assoc (W X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    (α_ (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A W X) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A Y Z)).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A W X Y ▷ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A W Y Z =
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A W X ◁ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A W X Z := by
   rcases W with ⟨s, w⟩
   rcases X with ⟨t, x⟩
   rcases Y with ⟨r, y⟩
@@ -83,40 +88,94 @@ lemma composition_assoc (W X Y Z : Object A C) :
     intro d
     apply ConcreteCategory.hom_ext
     rintro ⟨a, b, c⟩
-  · exact base_assoc_app w x y z d a b c
-  · exact Prod.ext rfl (base_assoc_app w x y z d a b c.2)
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app w x y z d a b c
+  · exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app w x y z d a b c.2)
   · exact c.elim
-  · exact Prod.ext rfl (base_assoc_app w x y z d a b.2 c)
-  · exact b.elim
-  · exact b.elim
-  · exact c.elim
-  · exact Prod.ext rfl (base_assoc_app w x y z d a.2 b c)
-  · exact a.elim
-  · exact a.elim
-  · exact a.elim
-  · exact a.elim
+  · exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app w x y z d a b.2 c)
   · exact b.elim
   · exact b.elim
   · exact c.elim
-  · exact base_assoc_app w x y z d a b c
+  · exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app w x y z d a.2 b c)
+  · exact a.elim
+  · exact a.elim
+  · exact a.elim
+  · exact a.elim
+  · exact b.elim
+  · exact b.elim
+  · exact c.elim
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app w x y z d a b c
 
 /-- 円柱の実際の単体集合による豊穣構造。 -/
-instance enrichedCategory : EnrichedCategory SSet.{u} (Object A C) where
-  Hom := hom A
-  id := identity A
-  comp := composition A
-  id_comp := identity_composition A
-  comp_id := composition_identity A
-  assoc := composition_assoc A
+instance enrichedCategory : EnrichedCategory SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
+  Hom := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A
+  id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity A
+  comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A
+  id_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity_composition A
+  comp_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition_identity A
+  assoc := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition_assoc A
 
 /-- 単位からの射を通常の射とする円柱の圏。 -/
-instance category : Category.{u} (Object A C) :=
-  inferInstanceAs (Category (ForgetEnrichment SSet.{u} (Object A C)))
+instance category : Category.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :=
+  inferInstanceAs (Category (ForgetEnrichment SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C)))
 
 /-- 円柱の通常の射と豊穣射は元の単位からの対応を持つ。 -/
-instance simplicialCategory : SimplicialCategory (Object A C) where
+instance simplicialCategory : SimplicialCategory (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) where
   homEquiv := Equiv.refl _
-  homEquiv_id X := ForgetEnrichment.homTo_id (W := SSet.{u}) (C := Object A C) X
-  homEquiv_comp f g := ForgetEnrichment.homTo_comp (W := SSet.{u}) (C := Object A C) f g
+  homEquiv_id X := ForgetEnrichment.homTo_id (W := SSet.{u}) (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) X
+  homEquiv_comp f g := ForgetEnrichment.homTo_comp (W := SSet.{u}) (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) f g
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.base_assoc_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.base_comp_id_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.base_id_comp_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_id_comp_app
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.composition_assoc := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.composition_identity := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition_identity
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.enrichedCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.enrichedCategory := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.enrichedCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.identity_composition := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity_composition
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.simplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.simplicialCategory := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.simplicialCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._aux_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_3 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._aux_3 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_5 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._aux_5 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._aux_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.category._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.category._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.simplicialCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.simplicialCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.simplicialCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.simplicialCategory._proof_2

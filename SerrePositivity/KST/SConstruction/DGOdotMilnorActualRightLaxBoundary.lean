@@ -42,7 +42,7 @@ def dgOdotMilnorActualRightSourceEquivalence : QCatEquivalence
 /-- 概要：実右面の始域比較は同じ指定同値の完全射。
 方針：同じ順方向に同値完全性だけを付ける。
 規約：始域成分を選び直さない。使われ方：包含・零左辺の共有経路。 -/
-def dgOdotMilnorActualRightSourceMap : ExactMap (dgKInputStableValue R (A)) (Q) :=
+def dgOdotMilnorActualRightSourceMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (A)) (Q) :=
   ⟨(dgOdotMilnorActualRightSourceEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorActualRightSourceEquivalence R d).isQCatEquivalence⟩
@@ -50,13 +50,13 @@ def dgOdotMilnorActualRightSourceMap : ExactMap (dgKInputStableValue R (A)) (Q) 
 /-- 概要：実中央頂点の比較は同じ completed gluing 同値の完全射。
 方針：元順方向に同値完全性を付ける。
 規約：包含と商で同じ射を使用。使われ方：四辺 prism の共有中央成分。 -/
-def dgOdotMilnorActualRightMiddleMap : ExactMap (dgKInputStableValue R (B)) (Λ) :=
+def dgOdotMilnorActualRightMiddleMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (B)) (Λ) :=
   ⟨(eL).hom, isExactFunctor_of_isQCatEquivalence (eL).isQCatEquivalence⟩
 
 /-- 概要：実差終域の比較は元 cone 評価と二段評価を保つ完全射。
 方針：同じ指定終域同値に完全性を付ける。
 規約：商と零上辺で同じ射を使用。使われ方：四辺 prism の共有終域成分。 -/
-def dgOdotMilnorActualRightTargetMap : ExactMap (dgKInputStableValue R (D)) (Q) :=
+def dgOdotMilnorActualRightTargetMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (D)) (Q) :=
   ⟨(eT).hom, isExactFunctor_of_isQCatEquivalence (eT).isQCatEquivalence⟩
 
 /-- 概要：元 V 包含辺は同じ指定三頂点の下で絶対恒等対角へ全比較される。

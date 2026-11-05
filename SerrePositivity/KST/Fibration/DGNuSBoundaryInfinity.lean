@@ -25,12 +25,12 @@ local instance nuBoundaryInfinitySpectrumCategory : SimplicialCategory OmegaSpec
 
 /-- 安定側の元の S• 境界商の全作用を、同じ Ex∞ Kan 値に送る。 -/
 def stableSBoundaryKanEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{w} StableQCat.{w} PointedKanObject.{w} :=
+    EnrichedFunctor SSet.{w} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{w} PointedKanObject.{w} :=
   (stableBoundaryPointedEnrichedFunctor r).comp SSet exInfinityPointedKanEnrichedFunctor
 
 /-- 安定側 S• の元の境界商と全高次入力を持つ ∞ 関手。 -/
 def stableSBoundaryKanInfinityFunctor (r : ℕ) :
-    StableInfinity.{w} ⟶ PointedKanInfinity.{w} :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{w} ⟶ PointedKanInfinity.{w} :=
   coherentNerveMap (stableSBoundaryKanEnrichedFunctor r)
 
 variable (A : Type u) [CommRing A]
@@ -68,7 +68,7 @@ theorem dgNuSBoundaryKanInfinity_eq (r : ℕ) :
 
 /-- ν 像の元の Verdier 四角形の S• 境界商を、同じ固定 K の実正段と全体で比較。 -/
 def dgRelativeVerdierSBoundaryFixedKSquareIso (r : ℕ)
-    (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     FunctorIso (d.image.square ≫ stableSBoundaryKanInfinityFunctor r)
       (d.square ≫ dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1))) := by
   have he : d.image.square ≫ stableSBoundaryKanInfinityFunctor r =
@@ -79,7 +79,7 @@ def dgRelativeVerdierSBoundaryFixedKSquareIso (r : ℕ)
 
 /-- 元の ν 像の S• 四角形の引き戻し性と、同じ K 正段四角形の引き戻し性は同値。 -/
 theorem dgRelativeKPositiveSquare_isPullback_iff (r : ℕ)
-    (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     IsPullbackSquare (d.image.square ≫ stableSBoundaryKanInfinityFunctor r) ↔
       IsPullbackSquare
         (d.square ≫ dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1))) :=

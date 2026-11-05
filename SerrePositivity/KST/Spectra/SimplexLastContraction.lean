@@ -27,10 +27,10 @@ set_option backward.isDefEq.respectTransparency.types false
 方針：切り替え写像と二つの端点の計算を束ねる。
 規約：相対条件は空部分複体についてのみ。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。Kan fibration の底の収縮。 -/
-def homotopy (n : ℕ) : SSet.Homotopy (𝟙 (Δ[n] : SSet.{u})) (SSet.const (vertex n)) where
-  h := map n
-  h₀ := zero n
-  h₁ := one n
+def homotopy (n : ℕ) : SSet.Homotopy (𝟙 (Δ[n] : SSet.{u})) (SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex n)) where
+  h := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map n
+  h₀ := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero n
+  h₁ := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one n
   rel := by ext m ⟨⟨x, hx⟩, t⟩; exact hx.elim
 
 end SerrePositivity.KST.Spectra.SimplexLastContraction

@@ -20,7 +20,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S]
 
 /-- 概要：任意 dg 圏の右写像空間の零次 π は Hom 複体の H⁰ と全単射である。
@@ -68,7 +68,7 @@ def semifreeHomCohomologyExtEquiv (P : Semifree S) (Q : Complex S) (i : ℤ) :
 規約：零写像を基点とし、加法群は Multiplicative で表す。
 使われ方：D10 の正次数の Ext の系。 -/
 def derivedInfinityPiExtEquiv (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
-    KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
       (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
         Multiplicative (derivedInfinityExt x y (-((n + 1 : ℕ) : ℤ))) :=
   (derivedInfinityPiCohomologyEquiv x y n).trans

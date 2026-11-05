@@ -68,9 +68,9 @@ theorem dgKappaResolvedKernel_exists_contracted :
 
 /-- 固定 ν の Verdier 証拠と零角の Perf 零性に条件付きで、同じ核・商辺の実屋根を得る。 -/
 theorem exists_dgKappaResolvedRelativeRoof
-    (hV : IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
+    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
       (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I)))
-    (hz : IsZeroCategory (dgKInputStableValue R
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
       (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)))) :
     ∃ t : DGKappaSuspensionRelativeRoofInput R D I,
       t.kernel = dgKappaResolvedKernelKInput R D I ∧
@@ -81,9 +81,9 @@ theorem exists_dgKappaResolvedRelativeRoof
     (dgKappaResolvedKernelKInput R D I) (dgKappaResolvedKernelInputMap R D I) C hC hV hz
 
 variable
-  (hV : IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
+  (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R (dgKappaResolvedKernelInputMap R D I))
     (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I)))
-  (hz : IsZeroCategory (dgKInputStableValue R
+  (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
     (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))))
 
 /-- 固定 ν の Verdier 証拠・零角の Perf 零性に条件付きで選ぶ、元の実核の相対屋根。 -/

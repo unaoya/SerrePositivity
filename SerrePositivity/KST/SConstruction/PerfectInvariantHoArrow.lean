@@ -23,35 +23,35 @@ def perfectInvariantHoObject (a : perfectStableInfinity.{u} _⦋0⦌) : hoFuncto
   HomotopyCategory.mk (E.app (Opposite.op ⦋0⦌) a)
 
 /-- 元の同じ完全関手の Cat^perf 辺を写した、h Sp の実際の射。 -/
-def perfectInvariantHoArrow {A B : StableCategory.{u}} (F : ExactMap A B)
+def perfectInvariantHoArrow {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj) :
     perfectInvariantHoObject E (perfectStableVertex A hA) ⟶
       perfectInvariantHoObject E (perfectStableVertex B hB) :=
   (hoFunctor.map E).toFunctor.map (perfectStableHoArrow F hA hB)
 
 /-- 不変量値の射は、同じ元の Cat^perf 辺の像の類そのもの。 -/
-lemma perfectInvariantHoArrow_edge {A B : StableCategory.{u}} (F : ExactMap A B)
+lemma perfectInvariantHoArrow_edge {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj) :
     perfectInvariantHoArrow E F hA hB =
       Truncated.HomotopyCategory.homMk ((perfectStableArrow F hA hB).map E).toTruncated := rfl
 
 /-- 関手同型を持つ同じ完全関手は、不変量値の同じ射の類を与える。 -/
-lemma perfectInvariantHoArrow_eq_of_functorIso {A B : StableCategory.{u}}
-    {F G : ExactMap A B} (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
+lemma perfectInvariantHoArrow_eq_of_functorIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (e : FunctorIso F.hom G.hom) :
     perfectInvariantHoArrow E F hA hB = perfectInvariantHoArrow E G hA hB :=
   congrArg (hoFunctor.map E).toFunctor.map (perfectStableHoArrow_eq_of_functorIso hA hB e)
 
 /-- 元の恒等完全関手の値の類は、同じ対象値の恒等射。 -/
-lemma perfectInvariantHoArrow_id (A : StableCategory.{u}) (hA : IsIdempotentComplete A.obj) :
+lemma perfectInvariantHoArrow_id (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (hA : IsIdempotentComplete A.obj) :
     perfectInvariantHoArrow E (show A ⟶ A from 𝟙 A) hA hA =
       𝟙 (perfectInvariantHoObject E (perfectStableVertex A hA)) :=
   (congrArg (hoFunctor.map E).toFunctor.map (perfectStableHoArrow_id A hA)).trans
     ((hoFunctor.map E).toFunctor.map_id _)
 
 /-- 同じ元の完全関手の合成は、不変量値の射の類の合成を保持する。 -/
-lemma perfectInvariantHoArrow_comp {A B C : StableCategory.{u}}
-    (F : ExactMap A B) (G : ExactMap B C)
+lemma perfectInvariantHoArrow_comp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (hC : IsIdempotentComplete C.obj) :
     perfectInvariantHoArrow E (show A ⟶ C from (F : A ⟶ B) ≫ (G : B ⟶ C)) hA hC =
@@ -60,8 +60,8 @@ lemma perfectInvariantHoArrow_comp {A B C : StableCategory.{u}}
     ((hoFunctor.map E).toFunctor.map_comp _ _)
 
 /-- 半直交分解の元の右包含の値は、同じ射影の値の切断。 -/
-lemma perfectSemiorthogonal_value_section {A B T : StableCategory.{u}}
-    (d : SemiorthogonalDecomposition A B T)
+lemma perfectSemiorthogonal_value_section {A B T : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition A B T)
     (hB : IsIdempotentComplete B.obj) (hT : IsIdempotentComplete T.obj) :
     perfectInvariantHoArrow E d.rightInclusion hB hT ≫
         perfectInvariantHoArrow E d.projection hT hB =

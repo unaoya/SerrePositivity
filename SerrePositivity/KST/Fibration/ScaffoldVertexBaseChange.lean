@@ -24,7 +24,7 @@ theorem baseChangeZeroSectionFiberPoint_eq (d : D _⦋0⦌)
     Eq.mp (congrArg (fun b => (vertexFiber p b) _⦋0⦌)
       (zeroSimplexFirstVertex (k.app (Opposite.op ⦋0⦌) d)))
       (firstVertexSectionFiberPoint p ((transportSimplexFunctor k).obj (transportSimplexIndex d))
-        (straighteningBaseChangeImageSectionPoint p k (transportSimplexIndex d)
+        (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k (transportSimplexIndex d)
           ((relativeFunctorBaseChangeForward p k (SSet.yonedaEquiv.symm d)).app
             (Opposite.op ⦋0⦌) (vertexFiberZeroSection (pullback.snd p k) d w)))) =
       (cofinalVertexFiberBaseChangeIso p k d).hom.app (Opposite.op ⦋0⦌) w := by
@@ -50,7 +50,7 @@ omit [Quasicategory B] [Quasicategory D] in
 /-- 零単体を通した表示も、元の実図式の同じ指定頂点成分そのもの。 -/
 theorem scaffoldVertexBaseChangeIso_eq_diagramValue (d : D _⦋0⦌) :
     scaffoldVertexBaseChangeIso p k d =
-      functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) (ULift.up d) := by
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) (ULift.up d) := by
   have hn : HEq (scaffoldVertexBaseChangeIso p k d)
       (scaffoldBaseChangeCoefficientIso p k (transportSimplexIndex d)) := by
     unfold scaffoldVertexBaseChangeIso F2.isoNormalizeEndpoints
@@ -61,16 +61,16 @@ theorem scaffoldVertexBaseChangeIso_eq_diagramValue (d : D _⦋0⦌) :
       (zeroSimplexFirstVertex d))
   exact eq_of_heq (hn.trans
     ((scaffoldBaseChangeCoefficientIso_heq_diagramValue p k (transportSimplexIndex d)).trans
-      (hv.trans (functorIsoValue_heq_map
+      (hv.trans (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map
         (leftStraighteningInfinityDiagram_baseChangeIso p k) (ULift.up d)).symm)))
 
 /-- 元の fiber 点の第一射影による復元像は、元の底変換比較で同じ pullback 復元像へ送られる。 -/
 theorem scaffoldVertexBaseChangeIso_pointHom (d : D _⦋0⦌)
     (w : (vertexFiber (pullback.snd p k) d) _⦋0⦌) :
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p (k.app (Opposite.op ⦋0⦌) d)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p (k.app (Opposite.op ⦋0⦌) d)
       ((cofinalVertexFiberBaseChangeIso p k d).hom.app (Opposite.op ⦋0⦌) w)) ≫
         (scaffoldVertexBaseChangeIso p k d).hom =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint (pullback.snd p k) d w) := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint (pullback.snd p k) d w) := by
   let v := vertexFiberZeroSection (pullback.snd p k) d w
   let c := transportSimplexIndex d
   have hs := scaffoldReconstructionFiberPoint_eq_transport p
@@ -79,15 +79,15 @@ theorem scaffoldVertexBaseChangeIso_pointHom (d : D _⦋0⦌)
   have ht := scaffoldReconstructionFiberPoint_eq_transport (pullback.snd p k)
     (zeroSimplexFirstVertex d) _ w (vertexFiberZeroSection_firstVertex (pullback.snd p k) d w)
   have he := scaffoldBaseChangeCoefficientIso_pointHom p k c v
-  exact pointNormalize _ _ _ _ _ _ _ hs ht he
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointNormalize _ _ _ _ _ _ _ hs ht he
 
 /-- 任意の元の fiber 点について、復元の実像は元の図式の底変換成分と両立する。 -/
 theorem scaffoldPointedReconstruction_baseChange_pointHom (d : D _⦋0⦌)
     (w : (vertexFiber (pullback.snd p k) d) _⦋0⦌) :
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p (k.app (Opposite.op ⦋0⦌) d)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p (k.app (Opposite.op ⦋0⦌) d)
       ((cofinalVertexFiberBaseChangeIso p k d).hom.app (Opposite.op ⦋0⦌) w)) ≫
-      (functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) (ULift.up d)).hom =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint (pullback.snd p k) d w) := by
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) (ULift.up d)).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint (pullback.snd p k) d w) := by
   rw [← scaffoldVertexBaseChangeIso_eq_diagramValue p k d]
   exact scaffoldVertexBaseChangeIso_pointHom p k d w
 

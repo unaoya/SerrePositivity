@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
 
 /-- 概要：零番目の隣接面の充填の面を線形座標で評価する。

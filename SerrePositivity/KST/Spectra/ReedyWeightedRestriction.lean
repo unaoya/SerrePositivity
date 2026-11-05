@@ -91,8 +91,8 @@ lemma piIsomorphism_of_reedy {W V H : I ⥤ SSet.{u}} (θ : W ⟶ V)
     [KanComplex (weightedSections W H)] [KanComplex (weightedSections V H)]
     (hθ : ∀ n : ℕ, reedyLeft r anodyneExtensions (weightedCorner θ (boundary n).ι).ι)
     (hH : reedyRight r J.rlp (terminal.from H)) :
-    KanPiIsomorphism (weightedSectionsPre θ H) :=
-  kanPiIsomorphism_of_monoRight _ (trivialKanFibration_of_reedy r θ hθ hH).mem
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsPre θ H) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (trivialKanFibration_of_reedy r θ hθ hH).mem
 
 end
 end SerrePositivity.KST.Spectra.ReedyWeightedRestriction

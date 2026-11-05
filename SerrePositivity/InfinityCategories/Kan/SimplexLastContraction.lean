@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
@@ -43,9 +45,12 @@ public import Mathlib.Tactic.CategoryTheory.Reassoc
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SimplexLastContraction
+end SerrePositivity.KST.Spectra.SimplexLastContraction
+namespace SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+open SerrePositivity.KST.Spectra.SimplexLastContraction
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -84,7 +89,7 @@ def simplex {n d : ℕ} (s : (Δ[n] : SSet.{u}) _⦋d⦌)
 @[simp]
 theorem simplex_apply {n d : ℕ} (s : (Δ[n] : SSet.{u}) _⦋d⦌)
     (t : (Δ[1] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
-    simplex s t i = if t i = 0 then s i else Fin.last n := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex s t i = if t i = 0 then s i else Fin.last n := rfl
 
 /-- 概要：区間の切り替えによる標準単体の単体的な収縮写像。
 方針：各単体次数で simplex を用い、前合成に関する定義上の自然性を使う。
@@ -92,7 +97,7 @@ theorem simplex_apply {n d : ℕ} (s : (Δ[n] : SSet.{u}) _⦋d⦌)
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。境界を正規化するホモトピー。 -/
 def map (n : ℕ) : (Δ[n] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ (Δ[n] : SSet.{u}) where
   app m := ↾(fun p : ((Δ[n] : SSet.{u}).obj m × (Δ[1] : SSet.{u}).obj m) ↦
-    simplex p.1 p.2)
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex p.1 p.2)
   naturality m m' f := by
     ext p
     apply stdSimplex.ext
@@ -104,14 +109,14 @@ def map (n : ℕ) : (Δ[n] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ (Δ[n] : SSet.
 規約：通常の単体集合の射の等式。
 使われ方：Goerss–Jardine I §7。ホモトピーの始点条件。 -/
 @[reassoc (attr := simp)]
-theorem zero (n : ℕ) : SSet.ι₀ ≫ map.{u} n = 𝟙 (Δ[n] : SSet.{u}) := by
+theorem zero (n : ℕ) : SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map.{u} n = 𝟙 (Δ[n] : SSet.{u}) := by
   apply NatTrans.ext
   funext ⟨⟨m⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   apply stdSimplex.ext
   intro i
-  change simplex s (SSet.ι₀.app _ s).2 i = s i
+  change _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex s (SSet.ι₀.app _ s).2 i = s i
   rfl
 
 /-- 概要：標準単体の最後の頂点。
@@ -126,14 +131,14 @@ def vertex (n : ℕ) : (Δ[n] : SSet.{u}) _⦋0⦌ :=
 規約：通常の単体集合の射の等式。
 使われ方：Goerss–Jardine I §7。ホモトピーの終点条件。 -/
 @[reassoc (attr := simp)]
-theorem one (n : ℕ) : SSet.ι₁ ≫ map.{u} n = SSet.const (vertex n) := by
+theorem one (n : ℕ) : SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map.{u} n = SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex n) := by
   apply NatTrans.ext
   funext ⟨⟨m⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   apply stdSimplex.ext
   intro i
-  change simplex s (SSet.ι₁.app _ s).2 i = Fin.last n
+  change _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex s (SSet.ι₁.app _ s).2 i = Fin.last n
   rfl
 
 /-- 概要：最後の頂点への収縮は最後のホーンを保つ。
@@ -142,16 +147,55 @@ theorem one (n : ℕ) : SSet.ι₁ ≫ map.{u} n = SSet.const (vertex n) := by
 使われ方：Goerss–Jardine I §7。境界上の射の正規化。 -/
 theorem simplex_mem_horn {n d : ℕ} (s : (Δ[n] : SSet.{u}) _⦋d⦌)
     (hs : s ∈ (horn n (Fin.last n)).obj _) (t : (Δ[1] : SSet.{u}) _⦋d⦌) :
-    simplex s t ∈ (horn n (Fin.last n)).obj _ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex s t ∈ (horn n (Fin.last n)).obj _ := by
   rw [mem_horn_iff_notMem_range] at hs ⊢
   obtain ⟨j, hj, hjs⟩ := hs
   refine ⟨j, hj, ?_⟩
   rintro ⟨i, hi⟩
-  rw [simplex_apply] at hi
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_apply] at hi
   by_cases ht : t i = 0
   · rw [ite_eq_left ht] at hi
     exact hjs ⟨i, hi⟩
   · rw [ite_eq_right ht] at hi
     exact hj hi.symm
 
-end SerrePositivity.KST.Spectra.SimplexLastContraction
+end SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.map := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.one := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex_apply := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex_mem_horn := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_mem_horn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.vertex := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.zero := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex._proof_2

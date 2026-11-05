@@ -29,7 +29,7 @@ instance sComponentEvaluation_isExactFunctor (B : SSet.{u}) [Quasicategory B] [I
       (gappedInclusion_cofiber_iff_pointwise t).mp ht a
 
 /-- 元の相対商比較が使う同じ S 後合成は完全関手。 -/
-instance exactSPostcomp_isExactFunctor {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+instance exactSPostcomp_isExactFunctor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     IsExactFunctor (sPostcomp n q.hom (exactMap_preservesSData q)) where
   preservesZero _ hv := sPostcomp_isZeroVertex n q.hom (exactMap_preservesSData q) hv
   preservesCofiber t ht := sPostcomp_preserves_cofiber q.hom (exactMap_preservesSData q) t ht

@@ -22,9 +22,9 @@ structure PerfectVerdierDiagram extends PerfectVerdierSequence.{u} where
   middle_eq : squareVertex square 1 0 = toPerfectVerdierSequence.middleVertex
   right_eq : squareVertex square 1 1 = toPerfectVerdierSequence.rightVertex
   bottom_edge : squareBottomEdge ≫ square ≫ perfectStableInfinityInclusion =
-    SSet.yonedaEquiv.symm (stableArrow verdier.inclusion).edge
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow verdier.inclusion).edge
   right_edge : squareRightEdge ≫ square ≫ perfectStableInfinityInclusion =
-    SSet.yonedaEquiv.symm (stableArrow toPerfectVerdierSequence.projection).edge
-  zero_corner : IsZeroCategory (perfectStableObject (squareVertex square 0 1))
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow toPerfectVerdierSequence.projection).edge
+  zero_corner : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex square 0 1))
 
 end SerrePositivity.KST.SConstruction

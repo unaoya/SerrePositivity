@@ -26,7 +26,7 @@ lemma inputParametricFirst_start {P A Y Z Z' : PointedSimplicialSet.{u}}
     (v : P ⟶ PointedObject.basedHom Z Z') :
     (f ≫ PointedObject.basedHomMap CirclePower.space.{u}
       (g ≫ PointedMapping.parametricPost CirclePower.space.{u} v)) ≫
-        (InternalHomExchange.iso CirclePower.space.{u} P
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} P
           (PointedObject.basedHom CirclePower.space.{u} Z')).hom =
       input f g ≫ doubleParametricPost v := by
   let K : PointedSimplicialSet.{u} := CirclePower.space.{u}
@@ -34,7 +34,7 @@ lemma inputParametricFirst_start {P A Y Z Z' : PointedSimplicialSet.{u}}
     (v ≫ PointedMapping.ihomAction K Z Z')
   change doubleParametricPost v =
     PointedObject.basedHomMap K (PointedMapping.parametricPost K v) ≫
-      (InternalHomExchange.iso K P (PointedObject.basedHom K Z')).hom at he
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K P (PointedObject.basedHom K Z')).hom at he
   have hm : PointedObject.basedHomMap K (g ≫ PointedMapping.parametricPost K v) =
       PointedObject.basedHomMap K g ≫
         PointedObject.basedHomMap K (PointedMapping.parametricPost K v) :=
@@ -49,15 +49,15 @@ lemma inputParametricFirst_finish {P A Y Y' Z' : PointedSimplicialSet.{u}}
     (u : P ⟶ PointedObject.basedHom Y Y') :
     (f ≫ PointedObject.basedHomMap CirclePower.space.{u}
       (PointedMapping.transpose u ≫ PointedObject.basedHomMap P g')) ≫
-        (InternalHomExchange.iso CirclePower.space.{u} P
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} P
           (PointedObject.basedHom CirclePower.space.{u} Z')).hom =
       (f ≫ PointedMapping.parametricPost CirclePower.space.{u} u) ≫
         PointedObject.basedHomMap P (PointedObject.basedHomMap CirclePower.space.{u} g') := by
   let K : PointedSimplicialSet.{u} := CirclePower.space.{u}
-  have hn := InternalHomExchange.natural_post K P g'
+  have hn := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post K P g'
   change PointedObject.basedHomMap K (PointedObject.basedHomMap P g') ≫
-      (InternalHomExchange.iso K P (PointedObject.basedHom K Z')).hom =
-    (InternalHomExchange.iso K P Y').hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K P (PointedObject.basedHom K Z')).hom =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K P Y').hom ≫
       PointedObject.basedHomMap P (PointedObject.basedHomMap K g') at hn
   have hm : PointedObject.basedHomMap K
       (PointedMapping.transpose u ≫ PointedObject.basedHomMap P g') =

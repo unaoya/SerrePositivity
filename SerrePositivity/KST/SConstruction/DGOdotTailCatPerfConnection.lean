@@ -43,17 +43,17 @@ def dgOdotTailCatPerfConnection (v : DGOdotMilnorActualRectangleInput R d h) :
 規約：いずれの認証の存在も主張しない。使われ方：③ の認証を段階的に型照合する。 -/
 def dgOdotTailCatPerfConnectionOfCertificates
     (diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R)
-    (rightBoundary : VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
-      (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R))
-    (rightComparison : VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
-      (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary)
-    (outerBoundary : VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R))
-    (outerComparison : VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary)
-    (boundary : VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R)
+    (rightBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R))
+    (rightComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary)
+    (outerBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R))
+    (outerComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary)
+    (boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram)
-    (comparison : VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
+    (comparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary)
     (kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare diagram 2) 0 0 =
       coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :

@@ -41,7 +41,7 @@ lemma pointLoopHomLeg_eq_const (X Y : OmegaSpectrum.{u}) :
       rw [← Category.assoc]
       erw [hu, Category.id_comp]
       exact Under.w (RawSpectrumMapping.pointedPost X p)
-    _ = _ := pointedConstant_eq_const _ _
+    _ = _ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _
 
 /-- 一点への Hom は、標準零単体と厳密に同型。 -/
 def pointLoopHomEndpointIso (X : OmegaSpectrum.{u}) :

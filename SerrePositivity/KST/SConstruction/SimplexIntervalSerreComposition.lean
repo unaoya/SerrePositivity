@@ -20,23 +20,23 @@ lemma simplexIntervalCompose_serre_factor {N : ℕ} (a b c : Fin (N + 1))
     (serreConcreteCubeComplexFunctor A).map
         (necklaceConcreteCubeMap (simplexIntervalComposeBeadHom.{u} a b c hab.le hbc.le)) =
       (serreCubeFace A true
-        (necklaceWedge (necklaceBead.{u} (b.val - a.val))
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
           (necklaceBead (c.val - b.val))).down.dimension
         (simplexIntervalComposeCoordinate.{u} a b c hab hbc)).hom ≫
           eqToHom (congrArg (serreCubeComplex A)
             (simplexIntervalCompose_codimension.{u} a b c hab hbc).symm) := by
-  let T := necklaceWedge (necklaceBead.{u} (b.val - a.val))
+  let T := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
     (necklaceBead (c.val - b.val))
   let e := concreteCubeDimensionIso
-    (X := ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
-    (Y := ConcreteCube.mk (T.down.dimension + 1))
+    (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
+    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1))
     (simplexIntervalCompose_codimension.{u} a b c hab hbc)
   have hf := (Iso.eq_comp_inv e).mpr (simplexIntervalCompose_cube_one_face.{u, u} a b c hab hbc)
   have h := congrArg ((serreConcreteCubeComplexFunctor A).map) hf
   have hd := serreCubeComplexMap_dimension_inv A
     (simplexIntervalCompose_codimension.{u} a b c hab hbc)
   have hface : (serreConcreteCubeComplexFunctor A).map
-      (concreteCubeFace true T.down.dimension
+      (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true T.down.dimension
         (simplexIntervalComposeCoordinate.{u} a b c hab hbc)) =
       (serreCubeFace A true T.down.dimension
         (simplexIntervalComposeCoordinate.{u} a b c hab hbc)).hom :=
@@ -56,7 +56,7 @@ lemma simplexIntervalLambdaCell_composition {N : ℕ} (a b c : Fin (N + 1))
       (necklaceLambdaCell A (necklaceInSimplexInterval.{u} a b hab) ⊗ₘ
         necklaceLambdaCell A (necklaceInSimplexInterval b c hbc)) ≫
       eComp (Complex A) (C := CubicalLambda A (Δ[N] : SSet.{u}))
-        (standardSimplexVertex a) (standardSimplexVertex b) (standardSimplexVertex c) =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) =
       (serreConcreteCubeComplexFunctor A).map
         (necklaceCubeTensorIso (necklaceBead.{u} (b.val - a.val))
           (necklaceBead (c.val - b.val))).hom ≫
@@ -78,12 +78,12 @@ lemma simplexIntervalLambdaCell_composition_one_face {N : ℕ} (a b c : Fin (N +
       (necklaceLambdaCell A (necklaceInSimplexInterval.{u} a b hab.le) ⊗ₘ
         necklaceLambdaCell A (necklaceInSimplexInterval b c hbc.le)) ≫
       eComp (Complex A) (C := CubicalLambda A (Δ[N] : SSet.{u}))
-        (standardSimplexVertex a) (standardSimplexVertex b) (standardSimplexVertex c) =
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) =
       (serreConcreteCubeComplexFunctor A).map
         (necklaceCubeTensorIso (necklaceBead.{u} (b.val - a.val))
           (necklaceBead (c.val - b.val))).hom ≫
         (serreCubeFace A true
-          (necklaceWedge (necklaceBead.{u} (b.val - a.val))
+          (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
             (necklaceBead (c.val - b.val))).down.dimension
           (simplexIntervalComposeCoordinate.{u} a b c hab hbc)).hom ≫
         eqToHom (congrArg (serreCubeComplex A)

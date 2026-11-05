@@ -36,8 +36,8 @@ instance triangleDiskHom_piZero_subsingleton (Y : PointedSimplicialSet.{u})
   intro a b
   obtain ⟨v, rfl⟩ := π₀.mk_surjective a
   obtain ⟨w, rfl⟩ := π₀.mk_surjective b
-  have hv := mapPiZero_eq_of_homotopy H (π₀.mk v)
-  have hw := mapPiZero_eq_of_homotopy H (π₀.mk w)
+  have hv := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_eq_of_homotopy H (π₀.mk v)
+  have hw := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_eq_of_homotopy H (π₀.mk w)
   simp only [mapπ₀_mk] at hv hw
   exact hv.trans hw.symm
 

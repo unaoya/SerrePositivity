@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 標準の基点付き円の写像空間から、元の BK end への指定した比較射。 -/
 def loopCircleBKComparison (Y : PointedSimplicialSet.{u}) :
-    (loopSpace Y).right ⟶ bousfieldKanHolim (loopCoefficient Y) :=
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right ⟶ bousfieldKanHolim (loopCoefficient Y) :=
   (loopIntervalEndCircleIso Y).inv ≫ cospanBKLoopEndComparison (loopCoefficient Y)
 
 /-- 元の円の写像空間から BK end への比較は、実際の単体的ホモトピー同値。 -/

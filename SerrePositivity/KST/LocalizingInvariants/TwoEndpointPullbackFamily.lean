@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -77,35 +77,35 @@ lemma exists_twoEndpoint_terminalPullbackFamily {S X : SSet.{u}}
     (h₁p : F₁ ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
       (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ G ≫
         (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
-    (h₀t : F₀ ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+    (h₀t : F₀ ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
       (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ G ≫
-        (pre (simplexLastPoint n)).app (pullbackDiagrams X))
-    (h₁t : F₁ ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+        (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))
+    (h₁t : F₁ ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
       (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ G ≫
-        (pre (simplexLastPoint n)).app (pullbackDiagrams X)) :
+        (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) :
     ∃ F : S ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X),
       (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ F = F₀ ∧
       (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ F = F₁ ∧
       F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
         G ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) ∧
-      F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
-        G ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) := by
+      F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
+        G ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) := by
   let j := spanIntervalBoundaryMap S
   let a := intervalBoundaryDiagram F₀ F₁
   let b := G ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X)
-  let c := G ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X)
+  let c := G ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)
   have hab : a ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) = j ≫ b := by
     dsimp only [a]
     rw [spanIntervalBoundaryDiagram_post]
     exact spanIntervalBoundaryDiagram_of_endpoints b _ _ h₀p h₁p
-  have hac : a ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) = j ≫ c := by
+  have hac : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) = j ≫ c := by
     dsimp only [a]
     rw [spanIntervalBoundaryDiagram_post]
     exact spanIntervalBoundaryDiagram_of_endpoints c _ _ h₀t h₁t
   have hbc : c ≫ (ihom (Δ[0] : SSet.{u})).map (pullbackProjection X) =
-      b ≫ (pre (simplexLastPoint n)).app ((ihom (horn 2 2 : SSet.{u})).obj X) := by
+      b ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app ((ihom (horn 2 2 : SSet.{u})).obj X) := by
     dsimp only [c, b]
-    rw [Category.assoc, Category.assoc, ← (pre (simplexLastPoint n)).naturality]
+    rw [Category.assoc, Category.assoc, ← (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).naturality]
   obtain ⟨F, hjF, hFp, hFt⟩ := exists_relative_terminalPullbackFamily n j a b c hab hac hbc
   have h₀ := congrArg (fun f => intervalBoundaryEndpoint 0 S ≫ f) hjF
   have h₁ := congrArg (fun f => intervalBoundaryEndpoint 1 S ≫ f) hjF

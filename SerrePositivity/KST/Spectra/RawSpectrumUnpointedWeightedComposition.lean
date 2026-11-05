@@ -51,7 +51,7 @@ lemma unpointedWeightedComposition_evaluation {I : Type u} [SmallCategory I]
     (W : I ⥤ SSet.{u}) (D : I ⥤ KanSequence.{u}) (i : I) :
     W.obj i ◁ unpointedWeightedComposition X Y W D ≫
         uncurry (weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
-      (HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
         (weightedSections W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget))).hom ≫
         space X Y.toKanSequence ◁
           uncurry (weightedSectionsπ W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) i) ≫
@@ -62,7 +62,7 @@ lemma unpointedWeightedComposition_evaluation {I : Type u} [SmallCategory I]
     _ ▷ _ ≫ (β_ (space Y (D.obj i)) (space X Y.toKanSequence)).hom ≫
       composition X Y (D.obj i) = _
   have h := congrArg (fun f ↦ f ≫ composition X Y (D.obj i))
-    (HomTensorStrength.exchange_evaluation (W.obj i) (space X Y.toKanSequence) _ _
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_evaluation (W.obj i) (space X Y.toKanSequence) _ _
       (uncurry (weightedSectionsπ W
         ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) i)))
   simp only [Category.assoc] at h

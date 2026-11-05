@@ -81,7 +81,7 @@ theorem cocartesianKanDiagram_map_bilateralEdge_isQCatEquivalence
     [CartesianFibration (pullback.snd q (yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k))]
     [CocartesianFibration (pullback.snd q (yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k))] :
     IsQCatEquivalence ((cocartesianKanDiagram (pullback.snd q k)).map f) :=
-  strictKanCompletion_map_isQCatEquivalence _
+  _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence _
     (pullbackStrictTransportMap_bilateralEdge_localized_isIso q k f)
 
 end SerrePositivity.KST.Fibration

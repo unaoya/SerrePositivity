@@ -15,13 +15,13 @@ namespace SerrePositivity.KST.SConstruction
 def simplexHABeadWordDecode {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (hb : ∀ t ∈ T, v (Fin.last m) < t) :
-    SimplexHABeadWord n (v 0) (T.max' hT)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) (T.max' hT)
       (serreCubeGeneratorFreeDimension m i + T.card - 1) := by
   induction m generalizing T with
   | zero =>
-    exact simplexHABeadWordReindex rfl
+    exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex rfl
       (by simp only [serreCubeGeneratorFreeDimension, zero_add])
-      (simplexHABeadTail T hT (v 0) hb)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)
   | succ m ih =>
     obtain ⟨i, j⟩ := i
     let vp : Fin (m + 1) ↪o Fin (n + 1) := Fin.castSuccOrderEmb.trans v
@@ -36,26 +36,26 @@ def simplexHABeadWordDecode {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
         intro t ht
         simpa only [Finset.mem_singleton.mp ht] using hr
       have left := ih i vp {r} (Finset.singleton_nonempty r) hbr
-      have hl : SimplexHABeadWord n (v 0) r (serreCubeGeneratorFreeDimension m i) := by
-        change SimplexHABeadWord n (vp 0) r (serreCubeGeneratorFreeDimension m i)
+      have hl : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) r (serreCubeGeneratorFreeDimension m i) := by
+        change _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (vp 0) r (serreCubeGeneratorFreeDimension m i)
         simpa only [Finset.card_singleton, Nat.add_sub_cancel, Finset.max'_singleton] using left
-      change SimplexHABeadWord n (v 0) (T.max' hT)
+      change _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) (T.max' hT)
         (serreCubeGeneratorFreeDimension m i + T.card - 1)
       have he : serreCubeGeneratorFreeDimension m i + (T.card - 1) =
           serreCubeGeneratorFreeDimension m i + T.card - 1 := by
         have hp := Finset.card_pos.mpr hT
         omega
-      exact simplexHABeadWordReindex rfl he (.join hl (simplexHABeadTail T hT r hb))
+      exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex rfl he (.join hl (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT r hb))
     · have hbi : ∀ t ∈ insert r T, vp (Fin.last m) < t := by
         intro t ht
         rcases Finset.mem_insert.mp ht with rfl | ht
         · exact hr
         · exact hbp t ht
       have hi := ih i vp (insert r T) (Finset.insert_nonempty r T) hbi
-      have hn := simplexHABeadTail_not_mem T r hb
-      change SimplexHABeadWord n (vp 0) (T.max' hT)
+      have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T r hb
+      change _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (vp 0) (T.max' hT)
         (serreCubeGeneratorFreeDimension m i + 1 + T.card - 1)
-      exact simplexHABeadWordReindex (simplexHABeadTail_max T hT r hb) (by
+      exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT r hb) (by
         have hc := Finset.card_insert_of_notMem hn
         omega) hi
 

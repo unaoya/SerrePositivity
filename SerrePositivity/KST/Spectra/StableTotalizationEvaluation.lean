@@ -31,7 +31,7 @@ def levelProjection (k : ℕ) :
 lemma levelProjection_piIsomorphism (k : ℕ) :
     letI := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
       ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
-    KanPiIsomorphism (levelProjection D hD hΩ k).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (levelProjection D hD hΩ k).right := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
       ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
   exact KanSequence.replacementProjection_piIsomorphism (KanSequence.totalizationKan D hD) k
@@ -41,7 +41,7 @@ def evaluation (j : ℤ) (k r : ℕ) (hk : j + (k : ℤ) = (r + 1 : ℕ)) :
     letI := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
       ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
     OmegaSpectrum.homotopyGroup (KanSequence.totalizationSpectrum D hD hΩ) j ≃*
-      KanHomotopyGroup (PointedTotalization.obj (D ⋙ KanSequence.levelEvaluation k)).right r
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedTotalization.obj (D ⋙ KanSequence.levelEvaluation k)).right r
         (PointedTotalization.obj (D ⋙ KanSequence.levelEvaluation k)).basepoint := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
       ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
@@ -51,9 +51,9 @@ def evaluation (j : ℤ) (k r : ℕ) (hk : j + (k : ℤ) = (r + 1 : ℕ)) :
     unfold OmegaSpectrum.degree
     omega
   exact ((e.trans (OmegaSpectrum.levelHomotopyCongr S rfl he)).trans
-    (KanHomotopyGroup.equivOfPiIsomorphism r (levelProjection D hD hΩ k).right
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism r (levelProjection D hD hΩ k).right
       (levelProjection_piIsomorphism D hD hΩ k)
-      (OmegaSpectrum.pointedMap_basepoint (levelProjection D hD hΩ k))))
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (levelProjection D hD hΩ k))))
 
 end
 end SerrePositivity.KST.Spectra.TotalizationMilnor

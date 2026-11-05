@@ -56,7 +56,7 @@ def enrichedExInfinityPointedUnitTransformation
     (F : EnrichedFunctor SSet.{u} C PointedSSetObject.{u}) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F
       (F.comp SSet exInfinityPointedEnrichedFunctor) :=
-  strictSimplicialTransformationOfWhisker _ _ (fun X => exInfinityPointedUnit (F.obj X))
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (fun X => exInfinityPointedUnit (F.obj X))
     (enrichedExInfinityPointedUnit_whisker F)
 
 end SerrePositivity.KST.SConstruction

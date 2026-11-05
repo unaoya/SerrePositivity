@@ -15,8 +15,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 同じ核値 cofiber 係数の実写像の全有限積は、全正反復で局所化同型。 -/
 theorem weakStringFiniteKernelPostMap_verdier_localized_isIso
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (n r : ℕ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (Limits.Pi.map (fun _ : Fin n =>
       (multiRealizationFunctor (r + 1)).map (kernelPostExact i q)))) :=
   finProduct_map_anodyneQ_isIso _

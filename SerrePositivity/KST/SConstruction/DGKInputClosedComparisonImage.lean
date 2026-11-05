@@ -69,9 +69,9 @@ lemma dgKInputClosedIsoSquare_nu :
 /-- 完全性と core の包含後に、同じ元の native Perf 関手族の全比較区間を回収する。 -/
 lemma dgKInputClosedIsoNuParameter_ambient :
     dgKInputClosedIsoNuParameter R f g e ≫ (SSet.uliftFunctor).map
-      ((quasicategoryCore (LocalizingInvariants.exactFunctors
+      ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (dgKInputStableValue R P) (dgKInputStableValue R Q) :
-          SSet.{max (u + 1) v})).ι ≫ (LocalizingInvariants.exactFunctors
+          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
             (dgKInputStableValue R P) (dgKInputStableValue R Q)).ι) =
       dgKInputClosedIsoParameter R f g e ≫ (SSet.uliftFunctor).map
         (presentedPerfectDGNativeFamilyMap R P Q) := by

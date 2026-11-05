@@ -27,7 +27,7 @@ lemma simplexHAOriginalHomMap_comp {N : ℕ} (s : DGNerve.Simplex A D N)
   obtain ⟨c, rfl⟩ := (simplexLambdaVertexEquiv A N).surjective z
   have hL := congrArg (fun f => eComp
     (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A)
-      (standardSimplexVertex a) (standardSimplexVertex b) (standardSimplexVertex c) ≫ f)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) ≫ f)
         (simplexHAOriginalHomMap_vertices A s a c)
   have hR := congrArg₂ (fun f g => (f ⊗ₘ g) ≫
     eComp (Complex A) (s.obj a) (s.obj b) (s.obj c))
@@ -44,13 +44,13 @@ def simplexHAInverseFunctor {N : ℕ} (s : DGNerve.Simplex A D N) :
 
 /-- 元の番号の頂点では、実逆 dg 関手の対象は同じ native HA 対象。 -/
 lemma simplexHAInverseFunctor_obj_vertex {N : ℕ} (s : DGNerve.Simplex A D N)
-    (a : Fin (N + 1)) : (simplexHAInverseFunctor A s).obj (standardSimplexVertex a) = s.obj a :=
+    (a : Fin (N + 1)) : (simplexHAInverseFunctor A s).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) = s.obj a :=
   rfl
 
 /-- 元の番号の頂点間では、実逆 dg 関手は同じ native HA Hom 鎖射を回収する。 -/
 lemma simplexHAInverseFunctor_map_vertices {N : ℕ} (s : DGNerve.Simplex A D N)
     (a b : Fin (N + 1)) :
-    (simplexHAInverseFunctor A s).map (standardSimplexVertex a) (standardSimplexVertex b) =
+    (simplexHAInverseFunctor A s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
       simplexHAHomMap A s a b := simplexHAOriginalHomMap_vertices A s a b
 
 /-- 元の実逆 dg 関手は、元の厳密 dg 後合成と厳密に可換。 -/

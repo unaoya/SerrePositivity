@@ -22,14 +22,14 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の零値完全関手の同じ全 S• 実射を、元の native Kan 標的に保持する。 -/
-def zeroFunctorFullSNativeKanMap {A C : StableQCat.{u}} (F : ExactMap A C)
+def zeroFunctorFullSNativeKanMap {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     fullSRealizationKanObject A ⟶ (stableMultiKanEnrichedFunctor 0).obj C :=
   exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
     (coreSingleKanIso C).hom
 
 /-- 全 native 族の指定実点は、同じ完全関手の全 S• 実射を表す。 -/
-theorem zeroFunctorFullSNativeKanFamily_vertex {A C : StableQCat.{u}} (F : ExactMap A C)
+theorem zeroFunctorFullSNativeKanFamily_vertex {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     (zeroFunctorFullSNativeKanFamily A C).app (Opposite.op ⦋0⦌)
         (fullSubcategoryVertex IsZeroVertex (functorVertex F.hom) hF) =
@@ -39,13 +39,13 @@ theorem zeroFunctorFullSNativeKanFamily_vertex {A C : StableQCat.{u}} (F : Exact
   exact h
 
 /-- 元の任意の Kan Hom 頂点の零値条件を、同じ元の完全射の条件として回収する。 -/
-theorem stableHomZeroVertex_functorVertex {A C : StableQCat.{u}}
+theorem stableHomZeroVertex_functorVertex {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (v : (A ⟶[SSet.{u}] C) _⦋0⦌) (hv : StableHomZeroVertex A C v) :
     IsZeroVertex (functorVertex (stableHomExactMap v).hom) :=
   stableHomAmbient_vertex v ▸ hv
 
 /-- 元の全族の任意の実頂点でも、同じ元の完全射による全 S• 実射を回収する。 -/
-theorem zeroStableHomFamilyLift_fullSNativeKan_vertex {P : SSet.{u}} {A C : StableQCat.{u}}
+theorem zeroStableHomFamilyLift_fullSNativeKan_vertex {P : SSet.{u}} {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C))
     (hH : ∀ v, StableHomZeroVertex A C (H.app (Opposite.op ⦋0⦌) v)) (v : P _⦋0⦌) :
     (zeroStableHomFamilyLift H hH ≫ zeroFunctorFullSNativeKanFamily A C).app
@@ -65,7 +65,7 @@ theorem zeroStableHomFamilyLift_fullSNativeKan_vertex {P : SSet.{u}} {A C : Stab
   rw [he, zeroFunctorFullSNativeKanFamily_vertex]
 
 /-- 指定 Verdier 左辺の実射は、同じ元の native 零角比較そのもの。 -/
-theorem zeroFunctorFullSNativeKanMap_verdierLeft (d : VerdierDiagram.{u}) :
+theorem zeroFunctorFullSNativeKanMap_verdierLeft (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     zeroFunctorFullSNativeKanMap (verdierLeftExactMap d) (verdierLeftExactMap_zero d) =
       verdierFullSZeroCornerNativeKanMap d := rfl
 

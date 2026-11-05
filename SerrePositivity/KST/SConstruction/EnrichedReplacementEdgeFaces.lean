@@ -22,7 +22,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y Z : C}
   (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
   (e : (SimplicialCategory.sHom X Z).Edge (SimplicialCategory.homEquiv' _ _ h)
     (SimplicialCategory.homEquiv' _ _ (f ≫ g)))
-  (T : CompositionReplacementTetrahedron (coherentNerveCompStruct f g)
+  (T : _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron (coherentNerveCompStruct f g)
     (enrichedComparisonPinchedTriangle e))
 include f g h e T
 

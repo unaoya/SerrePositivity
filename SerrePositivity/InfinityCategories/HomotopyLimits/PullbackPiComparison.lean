@@ -44,15 +44,15 @@ lemma pullbackComparison_piIsomorphism
     (aP : P ⟶ P') (aE : E ⟶ E') (aX : X ⟶ X') (aB : B ⟶ B')
     (hi : i ≫ aE = aP ≫ i') (hj : j ≫ aX = aP ≫ j')
     (hp : p ≫ aB = aE ≫ p') (hq : q ≫ aB = aX ≫ q')
-    (hE : KanPiIsomorphism aE) (hX : KanPiIsomorphism aX) (hB : KanPiIsomorphism aB)
-    (e₀ : E _⦋0⦌) : KanPiIsomorphism aP := by
+    (hE : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism aE) (hX : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism aX) (hB : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism aB)
+    (e₀ : E _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism aP := by
   have : Fibration j := pullbackSecond_fibration hP
   have : Fibration j' := pullbackSecond_fibration hP'
   apply fibrationTotal_piIsomorphism_of_base j j' aP aX hj hX
   · intro x v n
     let es := pullbackFiberIso hP x (q.app _ x) rfl
     have ht : q'.app _ (aX.app _ x) = aB.app _ (q.app _ x) :=
-      (base_eq q q' aX aB hq x).symm
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq q q' aX aB hq x).symm
     let et := pullbackFiberIso hP' (aX.app _ x) (aB.app _ (q.app _ x)) ht
     have horig := fibrationFiberMapBase_piIsomorphism_of_vertex p p' aE aB hp hE hB
       (q.app _ x) (es.hom.app _ v)
@@ -62,7 +62,7 @@ lemma pullbackComparison_piIsomorphism
   · intro x
     let es := pullbackFiberIso hP x (q.app _ x) rfl
     have ht : q'.app _ (aX.app _ x) = aB.app _ (q.app _ x) :=
-      (base_eq q q' aX aB hq x).symm
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq q q' aX aB hq x).symm
     let et := pullbackFiberIso hP' (aX.app _ x) (aB.app _ (q.app _ x)) ht
     apply piZero_surjective_of_iso_square es et _ _
       (pullbackFiberIso_naturality hP hP' aP aE aX aB hi hj hp x (q.app _ x) rfl ht)

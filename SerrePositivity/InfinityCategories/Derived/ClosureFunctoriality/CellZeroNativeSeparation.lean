@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded KST.SConstruction
 open DGCategoryCellResolution
-open scoped Simplicial ZeroObject
+open scoped _root_.Simplicial ZeroObject
 variable (R : Type u) [CommRing R] [Nontrivial R]
 
 /-- 零入力の唯一の自己関手は恒等関手。 -/

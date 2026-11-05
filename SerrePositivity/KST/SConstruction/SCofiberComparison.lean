@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 各頂点の転置した四角形を gapped 包含へ送ると元の族の転置となる。 -/
 lemma sCofiberTransposeSquare_vertex_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C]
@@ -70,7 +70,7 @@ lemma sCofiberComparison_evaluation (n : ℕ) (C : SSet.{u}) [Quasicategory C] [
   apply (cancel_mono (gappedSubcomplex n C).ι).1
   rw [Category.assoc, ← ihom_postcomp_evaluate, ← Category.assoc,
     sCofiberTransposeSquare_ι, sCofiberRawTranspose, Category.assoc, Category.assoc,
-    internalHomSwap_evaluate_right, ← Functor.map_comp,
+    _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_evaluate_right, ← Functor.map_comp,
     sPostcompCofiber_ι]
   rfl
 

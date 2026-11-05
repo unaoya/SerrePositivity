@@ -39,7 +39,7 @@ lemma dgIdentityHomGluingDiagonalNullFactorInputMap_inclusion : (a) ≫ (g) = (f
 lemma dgIdentityHomGluingDiagonalNullFactorNu_inclusion :
     (ν (a)).hom ≫ (ν (g)).hom = (ν (f)).hom := by
   rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-  exact (congrArg ExactMap.hom
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
     ((presentedPerfectDGStableCategoryFunctor R).map_comp (a) (g))).symm.trans
       (congrArg (fun e => (presentedPerfectDGExactMap R e).hom)
         (dgIdentityHomGluingDiagonalNullFactorInputMap_inclusion R C))

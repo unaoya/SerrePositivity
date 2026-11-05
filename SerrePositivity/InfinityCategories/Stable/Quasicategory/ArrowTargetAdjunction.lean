@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -53,31 +55,35 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.LocalizingInvariants.ArrowTarget
 
 variable (X : SSet.{u})
 
-lemma contraction_target : contraction X ≫ target X =
-    fst (arrows X) (Δ[1] : SSet.{u}) ≫ target X := by
+lemma contraction_target : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction X ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X =
+    fst (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.arrows X) (Δ[1] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   rintro ⟨f, t⟩
   have h := ConcreteCategory.congr_hom
-    (NatTrans.congr_app intervalMax_left_one (Opposite.op ⦋n⦌)) t
-  change intervalMax.app _ (PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n, t) =
+    (NatTrans.congr_app _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax_left_one (Opposite.op ⦋n⦌)) t
+  change _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax.app _ (PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n, t) =
     PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n at h
-  change f.app (Opposite.op ⦋n⦌) (𝟙 _) (intervalMax.app _
+  change f.app (Opposite.op ⦋n⦌) (𝟙 _) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax.app _
     (PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n, t)) =
       f.app _ (𝟙 _) (PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n)
   rw [h]
 
-lemma identityArrow_contraction : (identityArrow X ▷ (Δ[1] : SSet.{u})) ≫ contraction X =
-    fst X (Δ[1] : SSet.{u}) ≫ identityArrow X := by
+lemma identityArrow_contraction : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction X =
+    fst X (Δ[1] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X := by
   apply uncurry_injective
-  rw [uncurry_natural_left, contraction, uncurry_curry, uncurry_natural_left]
+  rw [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction, uncurry_curry, uncurry_natural_left]
   change _ = (Δ[1] ◁ fst X (Δ[1] : SSet.{u})) ≫ uncurry (constantFunctorMap Δ[1] X)
   rw [constantFunctorMap, uncurry_curry]
   apply SSet.hom_ext
@@ -87,10 +93,25 @@ lemma identityArrow_contraction : (identityArrow X ▷ (Δ[1] : SSet.{u})) ≫ c
   change X.map (𝟙 (Opposite.op ⦋n⦌)) x = x
   exact CategoryTheory.Functor.map_id_apply X _ x
 
-def unitHomotopy : SSet.Homotopy (𝟙 (arrows X)) (target X ≫ identityArrow X) where
-  h := contraction X
-  h₀ := contraction_zero X
-  h₁ := contraction_one X
+def unitHomotopy : SSet.Homotopy (𝟙 (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.arrows X)) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X) where
+  h := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction X
+  h₀ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction_zero X
+  h₁ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction_one X
   rel := by ext n ⟨x, y⟩; exact x.property.elim
 
-end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction_target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.contraction_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.identityArrow_contraction := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.identityArrow_contraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy._proof_1

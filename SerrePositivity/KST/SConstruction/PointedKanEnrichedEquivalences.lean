@@ -39,9 +39,9 @@ lemma pointedKanObject_nonempty_vertexIso_of_component {X Y : PointedKanObject.{
 
 /-- 全基点 π_* 同型の点つき射の coherent な辺は可逆。 -/
 lemma pointedKanObject_edge_isInvertible_of_piIsomorphism {X Y : PointedKanObject.{u}}
-    (f : X ⟶ Y) (hf : KanPiIsomorphism f.hom.right) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.hom.right) :
     IsInvertibleEdge (coherentNerveEdge f) := by
-  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := exists_pointedHomotopyInverse f.hom hf
+  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f.hom hf
   let g' : Y ⟶ X := ObjectProperty.homMk g
   have h₀ : componentOf (f ≫ g').hom = componentOf (𝟙 X : X ⟶ X).hom :=
     ((piZero_eq_iff_pointedHomotopy (𝟙 X.obj) (f.hom ≫ g)).mpr ⟨HX, hX⟩).symm

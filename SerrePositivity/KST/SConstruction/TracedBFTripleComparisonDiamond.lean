@@ -23,7 +23,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 同じ BF 写像空間の実二単体と、元の二つの全二単体の像そのものの等号。 -/
 def monicKTracedCoherentTripleDiamondData :=
-  triangleDiamondTransportData (monicKTracedCoherentTripleMappingSpace_eq F f g h)
+  _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondTransportData (monicKTracedCoherentTripleMappingSpace_eq F f g h)
     (monicKTracedCoherentTripleFirstPathTriangle F f g h).simplex
     (monicKTracedCoherentTripleSecondPathTriangle F f g h).simplex _ _ _ _
     (monicKTracedCoherentTripleFirstLower_heq F f g h)

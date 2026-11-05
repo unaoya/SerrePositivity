@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 
 /-!
@@ -12,8 +14,11 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：定値単体集合の正次数の境界定数単体は、同じ定数単体に一致する。
 方針：境界定数の正次数単体は、一つの面の式だけで定数単体と一致する。
@@ -37,16 +42,25 @@ lemma constant_kanHomotopy_subsingleton (T : Type u)
     [KanComplex ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u})]
     (n : ℕ) (hn : 0 < n)
     (x : ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u}) _⦋0⦌) :
-    Subsingleton (KanHomotopy ((Functor.const SimplexCategoryᵒᵖ).obj T) n x) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((Functor.const SimplexCategoryᵒᵖ).obj T) n x) := by
   cases n with
   | zero => omega
   | succ n =>
-    change Subsingleton (KanHomotopyGroup _ n x)
+    change Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup _ n x)
     constructor
     intro a b
     induction a using Quotient.inductionOn with | h a => ?_
     induction b using Quotient.inductionOn with | h b => ?_
-    change KanHomotopyGroup.mk a = KanHomotopyGroup.mk b
-    rw [constant_ptSimplex_eq T n x a, constant_ptSimplex_eq T n x b]
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.constant_ptSimplex_eq T n x a, _root_.SerrePositivity.InfinityCategories.Kan.constant_ptSimplex_eq T n x b]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.constant_kanHomotopy_subsingleton := _root_.SerrePositivity.InfinityCategories.Kan.constant_kanHomotopy_subsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.constant_ptSimplex_eq := _root_.SerrePositivity.InfinityCategories.Kan.constant_ptSimplex_eq

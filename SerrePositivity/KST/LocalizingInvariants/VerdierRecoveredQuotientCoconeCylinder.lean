@@ -22,10 +22,10 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
@@ -34,13 +34,13 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 
 /-- 元の商 Hom 比較円柱と終端の全商余錐を保持する、同じ全余錐円柱。 -/
 structure VerdierRecoveredQuotientCoconeCylinder
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f)
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) where
   whole : K ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj
   endpoint : (SSet.ι₁ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ whole = G
   fixedPrefix : whole ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
     SSet.const (functorVertex (D ≫ q.hom))
-  lastArrow : whole ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+  lastArrow : whole ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
     r.comparison.h ≫ vertexFiberι ((pre (boundary 1).ι).app C.obj)
       (functorVertex (intervalMappingBoundary
         (q.hom.app (Opposite.op ⦋0⦌)
@@ -51,11 +51,11 @@ structure VerdierRecoveredQuotientCoconeCylinder
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const (q.hom.app (Opposite.op ⦋0⦌) z)
 
 lemma exists_verdierRecoveredQuotientCoconeCylinder
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f)
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)
     (hG : G ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
       SSet.const (functorVertex (D ≫ q.hom)))
-    (hGe : G ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+    (hGe : G ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
       f ≫ vertexFiberι ((pre (boundary 1).ι).app C.obj)
         (functorVertex (intervalMappingBoundary
           (q.hom.app (Opposite.op ⦋0⦌)
@@ -72,16 +72,16 @@ lemma exists_verdierRecoveredQuotientCoconeCylinder
   exact ⟨⟨U, he, hp, hn, hz⟩⟩
 
 namespace VerdierRecoveredQuotientCoconeCylinder
-variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+variable {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
   {G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj}
   (U : VerdierRecoveredQuotientCoconeCylinder r G)
 
 /-- 全余錐円柱の境界次辺は、元の同じ実境界円柱の分数評価像に厳密に一致する。 -/
 lemma boundary_next : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ U.whole ≫
-    (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
-    r.boundary.h ≫ verdierDenominatorSpanCanonicalComparison i
+    (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+    r.boundary.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
-    fixedFractionEvaluation q.hom (Fibration.weakEquivalences i) h.inverts
+    fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
     vertexFiberι ((pre (boundary 1).ι).app C.obj)
       (functorVertex (intervalMappingBoundary

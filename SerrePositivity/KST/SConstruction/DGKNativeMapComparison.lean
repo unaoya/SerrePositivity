@@ -67,7 +67,7 @@ omit [DGCategory R T] [Small.{u} T] in
 方針：固定界面をそのまま適用する。規約：型付きの元の安定値を保持する。
 使われ方：native 比較の自然性四角形の右辺。 -/
 abbrev dgKNativeInputExactMap (F : DGFunctor R D E) :
-    ExactMap (dgKInputStableValue R (dgKUniverseInput.{u, u + 1, u + 1} R D))
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgKUniverseInput.{u, u + 1, u + 1} R D))
       (dgKInputStableValue R (dgKUniverseInput.{u, u + 1, u + 1} R E)) :=
   dgKInputNuMap R (dgKNativeInputMap R D E F)
 

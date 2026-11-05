@@ -30,13 +30,13 @@ lemma exists_simplexCoconeComparison_of_square {X : SSet.{u}} [Quasicategory X] 
     (S : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
     (hf : Arrow.mk (Truncated.HomotopyCategory.homMk (squareBottomArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
-        (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated))
+        (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated))
     (hg : Arrow.mk (Truncated.HomotopyCategory.homMk (squareTopArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
-        (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated))
+        (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated))
     (hs : Arrow.mk (Truncated.HomotopyCategory.homMk (squareLeftArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
-        (functorEdgeAt a (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated))
+        (functorEdgeAt a (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n))).toTruncated))
     (ht : Arrow.mk (Truncated.HomotopyCategory.homMk (squareRightArrow S)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk w.toTruncated)) :
     ∃ l : Truncated.Edge
@@ -49,6 +49,6 @@ lemma exists_simplexCoconeComparison_of_square {X : SSet.{u}} [Quasicategory X] 
         curry (CartesianMonoidalCategory.snd (Δ[0] : SSet.{u}) Δ[1] ≫
           SSet.yonedaEquiv.symm w.edge) := by
   apply exists_simplexCoconeComparison c d a w ha hw
-  exact spanSquare_homMk_comm_of_arrowMks S _ _ _ _ hf hg hs ht
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanSquare_homMk_comm_of_arrowMks S _ _ _ _ hf hg hs ht
 
 end SerrePositivity.KST.LocalizingInvariants

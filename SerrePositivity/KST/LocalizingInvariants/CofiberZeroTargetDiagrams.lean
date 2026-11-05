@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
@@ -26,45 +26,45 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
 
 lemma zeroTargetDiagrams_source :
-    zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
       a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   have he := congrArg (fun f => f ≫ evaluateFunctorAt
-    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (squares_bottom X a)
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom X a)
   rw [Category.assoc, stable_pre_evaluateFunctorAt] at he
   rw [suspensionDiagramEvaluation, ← Category.assoc,
-    zeroTargetDiagrams, fullSubcomplexLift_ι]
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams, fullSubcomplexLift_ι]
   exact he
 
 lemma zeroTargetDiagrams_target :
-    zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 1 1 = cofiber X a := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a := by
   rw [suspensionDiagramEvaluation, ← Category.assoc,
-    zeroTargetDiagrams, fullSubcomplexLift_ι]
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams, fullSubcomplexLift_ι]
   rfl
 
 lemma zeroTargetDiagrams_sameSource :
-    zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
-      suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 := by
-  rw [zeroTargetDiagrams_source, suspensionDiagramsAtSource_source]
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 := by
+  rw [zeroTargetDiagrams_source, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource_source]
 
-def zeroTargetDiagramComparison : FunctorIso (zeroTargetDiagrams X a ha)
-    (suspensionDiagramsAtSource X a) :=
+def zeroTargetDiagramComparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams X a ha)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a) :=
   suspensionDiagramFamilyIso _ _ (zeroTargetDiagrams_sameSource X a ha)
 
 lemma zeroTargetDiagramComparison_source_arrow :
     Arrow.mk (FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
       (suspensionDiagramEvaluation X 0 0)).hom =
         Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-          (suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0)) :
+          (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0)) :
             hoFunctor.obj ((ihom A).obj X))) :=
   functorIsoOfTrivialKanFibration_projection_arrow _ _ _ (zeroTargetDiagrams_sameSource X a ha)
 
-def zeroTargetRelativeIso : FunctorIso (cofiber X a)
+def zeroTargetRelativeIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a)
     ((a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-      SuspensionExact.map X) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X) := by
   have e := FunctorIso.postcomp (zeroTargetDiagramComparison X a ha)
     (suspensionDiagramEvaluation X 1 1)
   rw [zeroTargetDiagrams_target] at e
-  simpa only [suspensionDiagramsAtSource, Category.assoc,
-    SuspensionExact.diagrams_target] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_target] using e
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberFamily

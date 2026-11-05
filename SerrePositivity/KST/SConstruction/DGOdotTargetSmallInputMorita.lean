@@ -28,7 +28,7 @@ lemma dgOdotTargetSmallYonedaInputMap_isMorita :
 
 /-- 同じ ν 辺の元の完全射は、実安定 ∞ 圏の同値。 -/
 lemma dgOdotTargetSmallInputNuMap_isQCatEquivalence :
-    IsQCatEquivalence (show LocalizingInvariants.ExactMap
+    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (dgKInputStableValue R (P)) (dgKInputStableValue R (Q)) from
         dgKInputNuMap R (m)).hom := by
   letI := dgOdotTargetSmallYonedaInputMap_isMorita R d

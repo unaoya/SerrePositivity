@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：零単体からの射をその頂点の連結成分へ送る。
 方針：Yoneda の同値を通じて頂点を取り出す。
@@ -31,9 +36,9 @@ def zeroMapComponent {X : SSet.{u}} (f : (Δ[0] : SSet.{u}) ⟶ X) : π₀ X :=
 規約：辺の向きは始点から終点。
 使われ方：Goerss–Jardine I §7。連結写像の逆元の持ち上げの比較。 -/
 theorem zeroMapComponent_edge {X : SSet.{u}} (r : (Δ[1] : SSet.{u}) ⟶ X) :
-    zeroMapComponent (stdSimplex.δ (1 : Fin 2) ≫ r) =
-      zeroMapComponent (stdSimplex.δ (0 : Fin 2) ≫ r) := by
-  simpa only [zeroMapComponent, stdSimplex.yonedaEquiv_δ_comp] using
+    _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (stdSimplex.δ (1 : Fin 2) ≫ r) =
+      _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (stdSimplex.δ (0 : Fin 2) ≫ r) := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent, stdSimplex.yonedaEquiv_δ_comp] using
     π₀.sound (Edge.mk' (yonedaEquiv r))
 
 /-- 概要：零単体の成分は標的の写像に関して自然。
@@ -42,8 +47,23 @@ theorem zeroMapComponent_edge {X : SSet.{u}} (r : (Δ[1] : SSet.{u}) ⟶ X) :
 使われ方：Kerodon §3.2.2。fiber から pullback へ成分を送る。 -/
 theorem zeroMapComponent_comp {X Y : SSet.{u}}
     (f : (Δ[0] : SSet.{u}) ⟶ X) (g : X ⟶ Y) :
-    zeroMapComponent (f ≫ g) = mapπ₀ g (zeroMapComponent f) := by
-  simp only [zeroMapComponent, mapπ₀_mk]
+    _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (f ≫ g) = mapπ₀ g (_root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent f) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent, mapπ₀_mk]
   rfl
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_comp := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_edge := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent.eq_1

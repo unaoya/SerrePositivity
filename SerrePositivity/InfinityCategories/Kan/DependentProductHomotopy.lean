@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
@@ -15,8 +17,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+namespace SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
+open SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra.SimplicialDependentProduct
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -25,61 +31,61 @@ variable {S : Type u} (X : S → SSet.{u}) [∀ s, KanComplex (X s)]
 
 /-- 実際の積の射影が誘導する全次数の π の座標表示。 -/
 def homotopyMap (n : ℕ) (b : ∀ s, (X s) _⦋0⦌) :
-    KanHomotopy (obj S X) n b → ∀ s, KanHomotopy (X s) n (b s) :=
-  fun a s ↦ KanHomotopy.map n (eval S X s) rfl a
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X) n b → ∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X s) n (b s) :=
+  fun a s ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl a
 
 /-- 座標の π の全ての族が積の π と一意に対応する。 -/
 lemma homotopyMap_bijective (n : ℕ) (b : ∀ s, (X s) _⦋0⦌) :
-    Function.Bijective (homotopyMap X n b) := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap X n b) := by
   constructor
   · intro a c h
-    obtain ⟨f, rfl⟩ := KanHomotopy.mk_surjective n a
-    obtain ⟨g, rfl⟩ := KanHomotopy.mk_surjective n c
+    obtain ⟨f, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+    obtain ⟨g, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n c
     have hs (s : S) : Nonempty (PtSimplex.RelStruct
-        (mapSimplex (eval S X s) rfl f) (mapSimplex (eval S X s) rfl g) 0) := by
-      apply (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp
-      simpa only [homotopyMap, KanHomotopy.map_mk] using congrFun h s
-    exact KanHomotopy.sound (relStruct (fun s ↦ Classical.choice (hs s)))
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl f) (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl g) 0) := by
+      apply (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp
+      simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] using congrFun h s
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.sound (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct (fun s ↦ Classical.choice (hs s)))
   · intro a
-    choose f hf using fun s ↦ KanHomotopy.mk_surjective n (a s)
-    refine ⟨KanHomotopy.mk n (simplex f), ?_⟩
+    choose f hf using fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n (a s)
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex f), ?_⟩
     funext s
-    change KanHomotopy.map n (eval S X s) rfl _ = a s
-    rw [KanHomotopy.map_mk, eval_simplex, hf]
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s) rfl _ = a s
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.eval_simplex, hf]
 
 /-- 族の射を積の射へ束ねる。 -/
-def map {Y : S → SSet.{u}} (f : ∀ s, X s ⟶ Y s) : obj S X ⟶ obj S Y :=
-  lift (fun s ↦ eval S X s ≫ f s)
+def map {Y : S → SSet.{u}} (f : ∀ s, X s ⟶ Y s) : _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S Y :=
+  _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift (fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s ≫ f s)
 
 omit [∀ s, KanComplex (X s)] in
 @[reassoc (attr := simp)]
 lemma map_eval {Y : S → SSet.{u}} (f : ∀ s, X s ⟶ Y s) (s : S) :
-    map X f ≫ eval S Y s = eval S X s ≫ f s := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map X f ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S Y s = _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval S X s ≫ f s := rfl
 
 /-- 座標表示は族の射に関して自然。 -/
 lemma homotopyMap_naturality {Y : S → SSet.{u}} [∀ s, KanComplex (Y s)]
     (f : ∀ s, X s ⟶ Y s) (n : ℕ) (b : ∀ s, (X s) _⦋0⦌)
-    (a : KanHomotopy (obj S X) n b) (s : S) :
-    homotopyMap Y n (fun s ↦ (f s).app _ (b s))
-      (KanHomotopy.map n (map X f) rfl a) s =
-    KanHomotopy.map n (f s) rfl (homotopyMap X n b a s) := by
-  obtain ⟨t, rfl⟩ := KanHomotopy.mk_surjective n a
-  simp only [homotopyMap, KanHomotopy.map_mk]
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj S X) n b) (s : S) :
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap Y n (fun s ↦ (f s).app _ (b s))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map X f) rfl a) s =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f s) rfl (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap X n b a s) := by
+  obtain ⟨t, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   rfl
 
 /-- 全基点 π 同型の任意の小積も全基点 π 同型。 -/
 lemma map_piIsomorphism {Y : S → SSet.{u}} [∀ s, KanComplex (Y s)]
-    (f : ∀ s, X s ⟶ Y s) (hf : ∀ s, KanPiIsomorphism (f s)) :
-    KanPiIsomorphism (map X f) := by
+    (f : ∀ s, X s ⟶ Y s) (hf : ∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f s)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map X f) := by
   intro b n
-  have h : homotopyMap Y n (fun s ↦ (f s).app _ (b s)) ∘
-      KanHomotopy.map n (map X f) rfl =
-      (fun a s ↦ KanHomotopy.map n (f s) rfl (a s)) ∘ homotopyMap X n b := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap Y n (fun s ↦ (f s).app _ (b s)) ∘
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map X f) rfl =
+      (fun a s ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f s) rfl (a s)) ∘ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap X n b := by
     funext a s
-    exact homotopyMap_naturality X f n b a s
+    exact _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_naturality X f n b a s
   have hpi : Function.Bijective
-      (fun a : ∀ s, KanHomotopy (X s) n (b s) ↦
-        fun s ↦ KanHomotopy.map n (f s) rfl (a s)) := by
+      (fun a : ∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X s) n (b s) ↦
+        fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f s) rfl (a s)) := by
     constructor
     · intro a c hac
       funext s
@@ -87,9 +93,39 @@ lemma map_piIsomorphism {Y : S → SSet.{u}} [∀ s, KanComplex (Y s)]
     · intro a
       choose c hc using fun s ↦ (hf s (b s) n).surjective (a s)
       exact ⟨c, funext hc⟩
-  have hc := hpi.comp (homotopyMap_bijective X n b)
+  have hc := hpi.comp (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_bijective X n b)
   rw [← h] at hc
-  exact hc.of_comp_left (homotopyMap_bijective Y n _).injective
+  exact hc.of_comp_left (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_bijective Y n _).injective
 
 end
-end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap_bijective := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_bijective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap_naturality := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_eval := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_eval_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_eval_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_piIsomorphism := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap.eq_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
@@ -18,6 +20,9 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.DiscreteInternalHom
+end SerrePositivity.KST.Spectra.DiscreteInternalHom
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+open SerrePositivity.KST.Spectra.DiscreteInternalHom
 
 noncomputable section
 
@@ -32,7 +37,7 @@ variable (S : Type u) (X : SSet.{u})
 使われ方：Goerss–Jardine I §7。内部 Hom の比較の通常の普遍性。 -/
 def toFunctions {A : SSet.{u}}
     (t : (Functor.const (SimplexCategoryᵒᵖ)).obj S ⊗ A ⟶ X) :
-    A ⟶ SimplicialFunctionComplex.obj S X where
+    A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X where
   app n := ↾fun a s ↦ t.app n (s, a)
   naturality n m g := by
     apply ConcreteCategory.hom_ext
@@ -45,7 +50,7 @@ def toFunctions {A : SSet.{u}}
 方針：各単体で関数を離散変数の座標で評価する。
 規約：任意のパラメーターを許す。
 使われ方：Goerss–Jardine I §7。内部 Hom の比較の逆の普遍性。 -/
-def fromFunctions {A : SSet.{u}} (t : A ⟶ SimplicialFunctionComplex.obj S X) :
+def fromFunctions {A : SSet.{u}} (t : A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) :
     (Functor.const (SimplexCategoryᵒᵖ)).obj S ⊗ A ⟶ X where
   app n := ↾fun x ↦ t.app n x.2 x.1
   naturality n m g := by
@@ -55,9 +60,9 @@ def fromFunctions {A : SSet.{u}} (t : A ⟶ SimplicialFunctionComplex.obj S X) :
 
 def familyEquiv (A : SSet.{u}) :
     ((Functor.const (SimplexCategoryᵒᵖ)).obj S ⊗ A ⟶ X) ≃
-      (A ⟶ SimplicialFunctionComplex.obj S X) where
-  toFun := toFunctions S X
-  invFun := fromFunctions S X
+      (A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) where
+  toFun := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X
+  invFun := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions S X
   left_inv t := by
     apply NatTrans.ext
     funext n
@@ -73,8 +78,8 @@ def familyEquiv (A : SSet.{u}) :
 
 lemma toFunctions_pre {A B : SSet.{u}} (f : A ⟶ B)
     (t : (Functor.const (SimplexCategoryᵒᵖ)).obj S ⊗ B ⟶ X) :
-    toFunctions S X (((Functor.const (SimplexCategoryᵒᵖ)).obj S ◁ f) ≫ t) =
-      f ≫ toFunctions S X t := by
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X (((Functor.const (SimplexCategoryᵒᵖ)).obj S ◁ f) ≫ t) =
+      f ≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X t := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -87,27 +92,66 @@ lemma toFunctions_pre {A B : SSet.{u}} (f : A ⟶ B)
 使われ方：Goerss–Jardine I §7。関数複体の表現対象への比較。 -/
 def homEquiv (A : SSet.{u}) :
     (A ⟶ (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X) ≃
-      (A ⟶ SimplicialFunctionComplex.obj S X) :=
+      (A ⟶ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) :=
   ((ihom.adjunction ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).homEquiv A X).symm.trans
-    (familyEquiv S X A)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv S X A)
 
 lemma homEquiv_pre {A B : SSet.{u}} (f : A ⟶ B)
     (t : B ⟶ (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X) :
-    homEquiv S X A (f ≫ t) = f ≫ homEquiv S X B t := by
-  change toFunctions S X (uncurry (f ≫ t)) = f ≫ toFunctions S X (uncurry t)
-  rw [uncurry_natural_left, toFunctions_pre]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv S X A (f ≫ t) = f ≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv S X B t := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X (uncurry (f ≫ t)) = f ≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S X (uncurry t)
+  rw [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions_pre]
 
 /-- 概要：離散集合を源とする内部 Hom は関数複体と同型。
 方針：パラメーターに自然な Hom の同値を Yoneda で戻す。
 規約：単体集合の実際の同型。
 使われ方：Goerss–Jardine I §7、VIII §2。各 cochain 次数の π_* の計算。 -/
 def iso : (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X ≅
-    SimplicialFunctionComplex.obj S X :=
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X :=
   Yoneda.fullyFaithful.preimageIso
-    (NatIso.ofComponents (fun A ↦ (homEquiv S X A.unop).toIso) (fun f ↦ by
+    (NatIso.ofComponents (fun A ↦ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv S X A.unop).toIso) (fun f ↦ by
       ext t
-      exact homEquiv_pre S X f.unop t))
+      exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv_pre S X f.unop t))
 
 end
 
-end SerrePositivity.KST.Spectra.DiscreteInternalHom
+end SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions._proof_1

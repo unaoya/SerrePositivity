@@ -16,7 +16,7 @@ open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 元の core S 包含と商射を持つ核四角形を、同じ全 Ex∞ coherent 四角形へ送る。 -/
 def quotientSKernelInfinitySquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
@@ -31,7 +31,7 @@ theorem quotientSKernelInfinitySquare_apex :
   kanCommSqInfinitySquare_apex _
 
 /-- 未証明の商実現比較を正確に入力したとき、同じ全 coherent 核四角形は引き戻し。 -/
-theorem quotientSKernelInfinitySquare_isPullback (h : IsVerdierSequence i q)
+theorem quotientSKernelInfinitySquare_isPullback (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q)))) :
     IsPullbackSquare (quotientSKernelInfinitySquare i q) :=

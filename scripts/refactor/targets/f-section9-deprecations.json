@@ -1,0 +1,2009 @@
+{
+  "verify_commit": "10437c5de556d5cbfc4408a5ac52c7ba798a8fdc",
+  "contract": "Count warning messages containing deprecated; exclude Hint and ordinary output. Include both Lake-prefixed and direct Lean warning formats. Report raw and unique lines separately for each stage; do not sum replays across stages. Verify logs are exactly those in this run summary, checked against start time.",
+  "groups": {
+    "internal": {
+      "warning_lines": 41,
+      "unique_warning_lines": 41,
+      "moved_alias_warning_lines": 0,
+      "unique_moved_alias_warnings": 0,
+      "names": {
+        "if_pos": 17,
+        "if_neg": 16,
+        "Set.mem_setOf_eq": 1,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 1,
+        "push_neg": 1,
+        "dif_pos": 1,
+        "dif_neg": 4
+      },
+      "unique_names": {
+        "if_pos": 17,
+        "if_neg": 16,
+        "Set.mem_setOf_eq": 1,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 1,
+        "push_neg": 1,
+        "dif_pos": 1,
+        "dif_neg": 4
+      }
+    },
+    "downstream": {
+      "warning_lines": 52,
+      "unique_warning_lines": 52,
+      "moved_alias_warning_lines": 0,
+      "unique_moved_alias_warnings": 0,
+      "names": {
+        "if_pos": 18,
+        "if_neg": 16,
+        "Set.mem_setOf_eq": 5,
+        "TensorProduct.induction_on": 1,
+        "dif_pos": 4,
+        "Fin.coe_castSucc": 1,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 1,
+        "push_neg": 1,
+        "dif_neg": 5
+      },
+      "unique_names": {
+        "if_pos": 18,
+        "if_neg": 16,
+        "Set.mem_setOf_eq": 5,
+        "TensorProduct.induction_on": 1,
+        "dif_pos": 4,
+        "Fin.coe_castSucc": 1,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 1,
+        "push_neg": 1,
+        "dif_neg": 5
+      }
+    },
+    "verify": {
+      "warning_lines": 104,
+      "unique_warning_lines": 52,
+      "moved_alias_warning_lines": 0,
+      "unique_moved_alias_warnings": 0,
+      "names": {
+        "if_pos": 36,
+        "if_neg": 32,
+        "TensorProduct.induction_on": 2,
+        "Set.mem_setOf_eq": 10,
+        "dif_pos": 8,
+        "Fin.coe_castSucc": 2,
+        "push_neg": 2,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 2,
+        "dif_neg": 10
+      },
+      "unique_names": {
+        "if_pos": 18,
+        "if_neg": 16,
+        "TensorProduct.induction_on": 1,
+        "Set.mem_setOf_eq": 5,
+        "dif_pos": 4,
+        "Fin.coe_castSucc": 1,
+        "push_neg": 1,
+        "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts": 1,
+        "dif_neg": 5
+      }
+    }
+  },
+  "logs": [
+    {
+      "group": "internal",
+      "path": ".lake/verify/if-f2/internal/round-09.log",
+      "sha256": "69db05a63472f8efc4a389fe18d00ad5c2c1e210479fc96ba357fdebd946180e"
+    },
+    {
+      "group": "downstream",
+      "path": ".lake/verify/if-f2/downstream/round-01.log",
+      "sha256": "33b4a219e42a0fb7c386aedaa03aef44e4580fce7f682b29709c97dc1f4cb8e3"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/preparation-0.log",
+      "sha256": "5ac630e973c01a27172caa040155c259ba2ad74ab6a47ebbc0f00353c5585fec"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/build-1.log",
+      "sha256": "470bbc536d876777d6d20055f2b2adf8a2e72b5bfe81b4c5c80731465c83a502"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/build-2.log",
+      "sha256": "3e478f726b34de26b234f9e4cdce562f50a3706e05fd1ebb2c791111cef998de"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-4e7833a4ac5316e49e61.log",
+      "sha256": "2e09abb9ca6bcf30a41ad7636fb09d2af783d9a19672c30a38ae14449a53d1ec"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-a10a26db8e411b35d275.log",
+      "sha256": "621276fc9064f4aae79003e1aaa8f8825198440d45a388a70c2a8f3de27ffb7c"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-238460fc68bb6704370e.log",
+      "sha256": "6a87a84b6212ae9c733ac1c768358a351e7abca89ad3846844ebb10056f1267c"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1d9583a302bad9b7ac3f.log",
+      "sha256": "81a1c1b64fde72b4d0da88f6751f2b0f648402f7c3f068c9cbb7a091c4c2d0fb"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e084208ba91321f27961.log",
+      "sha256": "5cf771972b711d2ae173e0ad7339ff84f08191cf681df111f30b60ce0a57cfb8"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5fa053ba7ac380b60c62.log",
+      "sha256": "6e27314631c4a989b5bb20da1da0aa2a57657b0a6f11074de0365ba091ef92a6"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-38745dc81471010f364c.log",
+      "sha256": "39c1ddda5248f33e71e28be86d699c32d7254cf067b93c2076ad18329a7bef1e"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5389d0f0426b4c638faf.log",
+      "sha256": "dbc78ccf64596384924419ede44b9eaf52fff66a654fd8a656a01c8981629f2b"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1b56d83cd10bef3b396a.log",
+      "sha256": "71d16e9abd0b41fc14b3003436f2929e5063fe4f410ae428bf672c53bd878496"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-35325abce130b8b5796e.log",
+      "sha256": "683a306b71bf0befe00bfb0a486aa4dd3d1fa13cab50bb8b639be754bd35d54f"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-2e293faef89dedc61ca7.log",
+      "sha256": "a4cb1b9913d72adbf0f272a0676ab78b21e63e48c0b264fcd357e96c9490682b"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5612aefa7f58d9015f4d.log",
+      "sha256": "d4a017d66b864b61fc1fc7a4742c45e756c15310dbc077d3000fbfa8ee190087"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5e4248023931f9caf65c.log",
+      "sha256": "8ebddec398c3395073a5a12bf992a670bf40108bad52d5aba36f1e54f0b0a661"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-ad91c854bb9528a48ccf.log",
+      "sha256": "d64b524698d884a6fdf02cc706ac376772eda323f1cee14d513396694372b056"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e2baea78b2ec66321b23.log",
+      "sha256": "4433cf8f1ca0b10a75e2e16b34163c6768535e02d83168f3cc1f630e65367df4"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-3e3d64b896f48ee489a5.log",
+      "sha256": "ac53696ce09b0aa7a1bf9ce9324d5e1a90a3a1eb0a670243cbd3fefe353724c2"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-195774f195bdd5fa4f08.log",
+      "sha256": "88220f23bae1bb1e6bb98cbb08a4a1ee95c7f78141ad6e0b3f06a5e1b943b950"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e7b442d1fcd41404b0c3.log",
+      "sha256": "6a3c4f2547101b33255981e6b87d4538f3eaf69abff268016f4ddfc55daeaee3"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-6ecb57c5375b97649f43.log",
+      "sha256": "877a2adda87599b7e4ae8e2e31c0de1e6b49a7c619585ba57cd1143d373e85e6"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1dc49f7159416f000ac0.log",
+      "sha256": "39b064ba3d1498907c96dd3524f899caab8f224ee3d177cfb9172775b13407a8"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-42e7a1edf429f8f9b9c5.log",
+      "sha256": "3f308358464c7f06cdb8ba80516a388b523c2b5a2b0d4eb0feb6c3000a66eac5"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1f88a724d8d20448ec17.log",
+      "sha256": "954290fe0175cf961a88895275222014c6c98f1e35a71f77d13fd99fc4bc6471"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-d938ecebc2bec823ac7a.log",
+      "sha256": "ffc79e5381ee1891216a50d873acf2282c1ac1071dbe96fc5d6d7ced8117c049"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-2d339ff19610b356b4ca.log",
+      "sha256": "bbadefc7483ead2c46c744ffa009c7eaeabf5d0169ea3cb69fe6fd697ddf05cd"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-7d4b389fba9e73d15cd3.log",
+      "sha256": "b62c3ef058f64f6f81bdb4aebbd3f958ae56a83ee28936214cb1a51e5dffad65"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-7f5de06a6f263a24cee2.log",
+      "sha256": "6da061c68bed370503f5e43faf543c617076e9c43c68656e267d77333f4d2726"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-7488ac3e6d793e81b342.log",
+      "sha256": "8a846d56cb5edb0821cda284c751e491e2b1c255a4fa44345ca9ab3b5f64231a"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-4a53322d248972c5c45a.log",
+      "sha256": "4ac770fdd268f377947a34eb414cf7e58fae244ca02898825cde1423c6a42234"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-402174ed1b2246e48a21.log",
+      "sha256": "0e9810cf9d6a7bb40b431c7d673e6e341ada00098be448af1ced965ea262b3d3"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-b160216b984750a2d220.log",
+      "sha256": "ddc9c35860e5cb1a759757b1545782447ee7f539b22af79dfb18d7a35032420b"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-346855165d9b322a89a6.log",
+      "sha256": "bf6d18fc71a40403825985675c108f7412dbb46b415d0e3ffd7b041c9227ac0a"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e8b5fdbba65a9253c49c.log",
+      "sha256": "943bcb1ea438847984a6c803b57427a33cfacce67ce9aeab0c0e5332aabe3e09"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-c21f129b79b725b494f5.log",
+      "sha256": "ff0446e6197b8e01826e53d01ea466bec618762ea817dcf98e9d5ac77a0918da"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-789775609daa82571e39.log",
+      "sha256": "cb13cff559c6b8ccd143b0ab1428bbe42643485077ec7924e6fcfa7690426512"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-4a8d96198f15dbe1c045.log",
+      "sha256": "f0d557937412665c92734ee596f3b54e4f57e53369d05048f7e2109102095217"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-90004a16ff356e42169a.log",
+      "sha256": "ae0db1b74445c1786a3280830fa09c9fb38846dc063cd73ff124101e02abbeab"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-7838de08c37890208749.log",
+      "sha256": "b2a27bc1949edbba0c0348ea600b132011dc39bcb4fe8c0c427c044c3eb46381"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-81d0911ecb4e31e602e5.log",
+      "sha256": "7aa123fb9770973ec285c401426ad744aaf7969bf97bd63ede5fbca4b2933a87"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-d5f1ab061489e36c4474.log",
+      "sha256": "d783d63eb86130adf4c1696ed2bd4cf7f58fab869f35ada6d0f08856bdae6c93"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-4784dff8e27bbe11d37c.log",
+      "sha256": "8b7b0791d9eb0a244b317c77a529332567f754cf8cd807f894976c19229856f8"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-43cec18c31e9fb53b766.log",
+      "sha256": "ffbc0b0519dfa72f7f48807efce2be16b067d2477bae7b65371674625b638b6d"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-a44560a139228819bdcf.log",
+      "sha256": "c492c3609e38b34dedd16d819ab8f8a8c413c063b21b8cc09af929a757036b17"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-6c05b15c380caccf2138.log",
+      "sha256": "5288428e9af092327b5f44522f1247870aef2a3319d9068b44fdb6687b8a53f0"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-89bc17fa2716fb3fc151.log",
+      "sha256": "6017896ea8612b911b5b674106c2e812b1cc6640464f8f7d486f9e17e0994544"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-369445457b0aa6e94d58.log",
+      "sha256": "8650c09401da0f7f3d9b5c3b2f892fb1967c59fb35c2c9a01c5939992dc4b034"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-21372214f47db9858f80.log",
+      "sha256": "dc00c0d364c71188e81de2478b565da1024dba8e3b7c5db8883065eec23bc621"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-56aa96a9c1a29a892e89.log",
+      "sha256": "0c2c9746f7c5f66d61f807830dc7fa8f81cd78f6280f4f58b80087d6af93a041"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-384ae47d2081c83da3a5.log",
+      "sha256": "61512b0d4323265e6538b5247672345702a37e720ca09d20434eb837a7ac8d7c"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-baed6476b79cc15c8528.log",
+      "sha256": "d2363fb7d4dcfb7ad5513802bfd19eb38f3b78d8e238853f0584292840321fb7"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-96cf692f3b165ace2c10.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-f2f7d730459e700c37c1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-f78582ae6898fd1022ad.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-8734d47dc432e3c94961.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-50ac206247f0b5ecee88.log",
+      "sha256": "72ff3c463b37bded75b9a4121401307b477e8186b8ebfe96aae419841b8ef623"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-c64dc3b7f8d8a850726b.log",
+      "sha256": "922ae54b60e50e930a0c4b8945bc77c91cc75076d272e85a38c14d3f88f6f70a"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-9c393d2935cc43e41d33.log",
+      "sha256": "464161238490757dd9580dbb4ccd60b4d488c2743e7eaf248be0299de2392c13"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-495fb185b7933c4e8381.log",
+      "sha256": "906743693eaa3a6e9555f6338d4226a16c6f3c94cba50543201851deb35296c9"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-6e7379ce10bb6b11088a.log",
+      "sha256": "0c5593c5a717eee9b369202505f167a5bc07c31b121435f13018b74b4f9ff7c9"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-407d6bcbb3b2bd5f54d1.log",
+      "sha256": "08f5126b115cb654ba9e4ef60f1540886c114609f47e5d923f7f4273190e24a8"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-4fe2a0f17f8214a836a8.log",
+      "sha256": "74a8bf50e9e10bc1cbd02ad432b88e53c25005a195d04866f7fc661fd5303ae6"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-ae6f9d21b353fc910ecf.log",
+      "sha256": "75aca8c6dc0b15f7ac5edc812c17c44832af2aa69dff23e939cd111be3e01ff4"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1477b1a25a6603a94bc7.log",
+      "sha256": "d1d99dc96e2ea1e9955a5b04ae9cb32ee30a9e3abc1771fe0bfd05c1bd1aafe6"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-6ec6376991576a318fd5.log",
+      "sha256": "dad6bdd9cb393090290b13d1963d18079299e84c524d23b3d3150a15cde70ed4"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-334c1906f225f2b731c9.log",
+      "sha256": "47ea846ec40ef7f7f1593a8b5ffd5e16fc5ef67db09db793668d14a97cacfb6e"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-21698742614d1211e9b8.log",
+      "sha256": "21ac7748a0a04765672ed270ac4ae7e3dee67a38bf869962ce1d4bff62639cdb"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-721bccd9701355bdb4e3.log",
+      "sha256": "949588e4ac9c974abeea29523fb6df8fb175ed1394e85ccef8484e4f144a151f"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e67d0549960e04f0450a.log",
+      "sha256": "3ed0aeec1f6e4844676e6f6356271bebd32aca7e9161f18489e50a99fea77426"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-64daea4486cbbfb468e3.log",
+      "sha256": "cc0beffa1ff2fee9af53c9655f32adc95588501c1bbcd56e977f0f6f4bc0ff97"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-2b272c5e9f0f5d670c3c.log",
+      "sha256": "8ca0114f9c433da75af491ee3b43034c1d976d720b5dd6103eb0408398f5ddd9"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-512a640060fba7d68dec.log",
+      "sha256": "999ceef874b3699e0504cb960da692daed6a63954f625aa210c13a8809abae11"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-82c0ac94c199ee022dcd.log",
+      "sha256": "a4f1d1cf7a4305d7cea4fc2f9f52f98ecbc619af6c68c9827317bba975903029"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-795c1fb1de4ff35c1f0f.log",
+      "sha256": "f0a2014822a59b90472c7201b22e1bc6b1ba62e643c4401851276fd84faa457f"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-b865f400a9aa6d43fa38.log",
+      "sha256": "62950e33891ef6ffe8eb6e2b794d130fb335c48852118d96ff37438dc5bae195"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1377c41444966f8855fc.log",
+      "sha256": "d451cfa851f89f14d3896b37b519961c573fc5670d2720bb7a8d466bbb268973"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-b6a9fd90d2d09bf81641.log",
+      "sha256": "4bb8d67cfd651ce4dcb9aadad3adf52ad2b9a87258ff5c18ca15b1dd29bd19dd"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-07ba22e80652c664b57d.log",
+      "sha256": "ca9f18c06863b08a99d26a59ded66376a0dd4795e0d984f499ae8935c9d3a5fb"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-2bb6aaedb178e97d20a2.log",
+      "sha256": "34c66f113af60ae06fb74a1d9ef5889b46e9ff8fb3af2f005bcd2b1a6d22e27a"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-e4c4e7ced3bc0b83083d.log",
+      "sha256": "ddc2568383262890eae4e0cd7c013fa66624c37e9fb16294bc7c2a181d317ef3"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-d957c1f894a59e47fb0f.log",
+      "sha256": "ffa5f09907190a70c8db6fe2f2a308f3b3c7da3483cf07e97acd232d04d3ab0c"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-ea4147e7643a55972407.log",
+      "sha256": "9363bbe85ed4dc57ccd02ec69e7ea5b48e9d0d741b8317beb4347b7d8a7d79c1"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-da90918f4fd5beed1678.log",
+      "sha256": "82a7ed584439c6631450251dca40813abe857eedcf140d50bbb9b88225e04eca"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-44abbd27de68343232d5.log",
+      "sha256": "aecda994d91d45a2f6e1b0a58485920347f0e00dda6e1843d4a2e0a5b5bb624a"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-da7c2b23cabed5e7950f.log",
+      "sha256": "2468293837370fb95cbd6ee5423a77a6d3ac048f0b912120ac386daaa31a1a32"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-1dd8f817007a650c626c.log",
+      "sha256": "ee5057b1f8deee8ed997f2de8e51e668ebdde606a6e734c1fe1e2e51b138cbec"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5ecbb77e07d2b4d85e6a.log",
+      "sha256": "71ab255c0af4ce5a04fe40702ed1dee889d3f20b8246b6e8509344f6027fcede"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-84595f741bdbf2d2506b.log",
+      "sha256": "c55a8eb66a0d43bcbd27f738250d37804efd1c08d4fd2d1bac1895417930438c"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-97f6396e15fd414affde.log",
+      "sha256": "41725472dcfb527a78fc8bf54b0c3631c2a64d9911df3a84d4cb6a96726a53b5"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-303d0ea3536a3dbf73be.log",
+      "sha256": "522266b7a391e4658051b0e7ee4528adebd9b7cee333fe7f0a2e71c7c2d3bc03"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-206dfedcf4faf1655367.log",
+      "sha256": "b0040f8cbd22500bdccdad08649079c80bed2b84bbd7df215897775b8c7a09dc"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-444c6e28d4b6c4555aaa.log",
+      "sha256": "acc7a9aeb8fbeb55c1336b3f3ecf8c072d3ea67a7cfccb2c43d15ee2b01245d2"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-ade45043c08556f37fa4.log",
+      "sha256": "18119061f0baf1ad1750471b7b80c78e2582db75fad948d75dde17e2e6bcb4ea"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-28bc118e9d1c643ed155.log",
+      "sha256": "1bd77f9da97e671335d551e52169de405bbeca6f189dd28f7f0b2402587218df"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-305ea08a146acf6cd92b.log",
+      "sha256": "9894406a83ac294082921c5e9214fdc024294efdb9551b398654d74ba9614bea"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-90f3dbac96c32b2896ec.log",
+      "sha256": "f8b572afd7e89afae2cd3906f1d92e0f8c9284c3780583c50c044ccdba12be02"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-c52d601f70f1b1fe4035.log",
+      "sha256": "ac0a29a2a8ca73862d35bb6d250b874191a8a56f05d00157b2553f14dc522da4"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-b7050ffaf733b4d870e2.log",
+      "sha256": "766ceb1e12ce60b725b774c965175ad082c27d1b5a8593768d66441ec88d87a7"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-d0bd9fa809275e776a1f.log",
+      "sha256": "d267a9bdd53e1c6bf579962da6d07c3950066e3a7af5d28295d3c04ff12c23d2"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-504eb0abdca42595993d.log",
+      "sha256": "16edeac1003d35b7ba2ce4285a290cb7223753ea1f35e2ede34a2576dfc13e38"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-67364eb48f4176fddaf1.log",
+      "sha256": "e77d8bba4b4e5962e14fed0cbec35ace4e36b9cd4d750e58ddedc589ec8d2af9"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-05c725a6df37e471ee84.log",
+      "sha256": "23dec486adf1c409fe2f7fc2f351c1a54e77447975f24be45c2dcb31e156ff9d"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-6473582663091db0959f.log",
+      "sha256": "fed42a06ae06f7faa7cb0eb20d1947ce37707ad307333fbdb36fc19631eeabab"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/audit-5dc8b3b0ad2ae6aa89db.log",
+      "sha256": "c27a1e964792fb59f23534dbc864d35e466181b96639257fbfdf696e5bb48ef0"
+    },
+    {
+      "group": "verify",
+      "path": ".lake/verify/sorry-2dcaaedabb04f90f7b6d.log",
+      "sha256": "9baa6f976e1426d900c229a96d2b1b13dddacae393e47f5231706e8125faa612"
+    }
+  ],
+  "rows": [
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:82:65: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:91:65: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:32:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:41:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:37:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:41:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:47:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:32:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:44:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:21: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:85:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:99:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:43:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:72:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:83:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:145:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:148:8: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:29: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:18: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:55:46: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:56:57: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:61:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:63:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionFaceUnion.lean:41:44: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/OptionCoproductIso.lean:4:0: 'Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts' has been deprecated: please replace this import by",
+      "name": "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ZeroFrame.lean:62:2: `push_neg` has been deprecated. Prefer using `push Not` instead.",
+      "name": "push_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/FrameCofiberShapes.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:33:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:43:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:50:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:57:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "internal",
+      "log": ".lake/verify/if-f2/internal/round-09.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:59:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:37:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:41:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:47:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:32:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:41:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:82:65: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:91:65: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:32:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:44:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:21: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:85:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:99:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:43:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:72:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:83:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:145:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:148:8: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:29: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:18: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:55:46: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:56:57: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:61:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:63:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionFaceUnion.lean:41:44: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/CommutativeAlgebra/TensorProduct/BaseChange.lean:87:20: `TensorProduct.induction_on` has been deprecated: Use `TensorProduction.inductionOn` instead",
+      "name": "TensorProduct.induction_on",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoproductIndexEmbedding.lean:33:63: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/AppendSimplex.lean:39:21: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead",
+      "name": "Fin.coe_castSucc",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:34:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:36:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:43:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:45:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/OptionCoproductIso.lean:4:0: 'Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts' has been deprecated: please replace this import by",
+      "name": "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ZeroFrame.lean:62:2: `push_neg` has been deprecated. Prefer using `push Not` instead.",
+      "name": "push_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:33:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:43:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:50:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:57:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:59:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/FrameCofiberShapes.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:12: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:24: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/FirstBlockLastColumn.lean:57:30: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "downstream",
+      "log": ".lake/verify/if-f2/downstream/round-01.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/LastColumnBlockInclusion.lean:48:41: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:82:65: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:91:65: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:32:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:44:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:21: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:85:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:99:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:37:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:41:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:47:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:32:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:41:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:43:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:72:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:83:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:145:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:148:8: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:29: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:18: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:55:46: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:56:57: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:61:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:63:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/CommutativeAlgebra/TensorProduct/BaseChange.lean:87:20: `TensorProduct.induction_on` has been deprecated: Use `TensorProduction.inductionOn` instead",
+      "name": "TensorProduct.induction_on",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionFaceUnion.lean:41:44: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoproductIndexEmbedding.lean:33:63: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/AppendSimplex.lean:39:21: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead",
+      "name": "Fin.coe_castSucc",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ZeroFrame.lean:62:2: `push_neg` has been deprecated. Prefer using `push Not` instead.",
+      "name": "push_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:34:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:36:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:43:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:45:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/OptionCoproductIso.lean:4:0: 'Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts' has been deprecated: please replace this import by",
+      "name": "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:33:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:43:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:50:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:57:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:59:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/FrameCofiberShapes.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:12: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:24: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/FirstBlockLastColumn.lean:57:30: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-1.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/LastColumnBlockInclusion.lean:48:41: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:82:65: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:91:65: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:29:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:32:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:44:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:54:21: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:85:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdClamp.lean:99:6: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:37:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:41:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:47:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:32:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/PushoutDisjointPullback.lean:41:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:41:21: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:43:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:72:10: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:83:10: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:145:8: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/FatJoinStdSection.lean:148:8: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:31:29: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:32:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:18: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:35:29: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:55:46: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:56:57: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:61:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionHomotopy.lean:63:30: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+      "name": "if_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F1/Coherent/ResolutionFaceUnion.lean:41:44: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/CommutativeAlgebra/TensorProduct/BaseChange.lean:87:20: `TensorProduct.induction_on` has been deprecated: Use `TensorProduction.inductionOn` instead",
+      "name": "TensorProduct.induction_on",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoproductIndexEmbedding.lean:33:63: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/AppendSimplex.lean:39:21: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead",
+      "name": "Fin.coe_castSucc",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ZeroFrame.lean:62:2: `push_neg` has been deprecated. Prefer using `push Not` instead.",
+      "name": "push_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:34:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:36:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:43:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Derived/DGFullKernelStability.lean:45:21: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead",
+      "name": "Set.mem_setOf_eq",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:33:8: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:43:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:50:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:57:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/ArTwoExtension.lean:59:10: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/SConstruction/FrameCofiberShapes.lean:31:18: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/Core/OptionCoproductIso.lean:4:0: 'Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts' has been deprecated: please replace this import by",
+      "name": "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:12: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/WellFoundedChoice.lean:57:24: `dif_pos` has been deprecated: Use `dite_eq_left` instead",
+      "name": "dif_pos",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/FirstBlockLastColumn.lean:57:30: `dif_neg` has been deprecated: Use `dite_eq_right` instead",
+      "name": "dif_neg",
+      "moved_alias": false
+    },
+    {
+      "group": "verify",
+      "log": ".lake/verify/build-2.log",
+      "warning": "warning: SerrePositivity/KST/ProExcision/LastColumnBlockInclusion.lean:48:41: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+      "name": "if_pos",
+      "moved_alias": false
+    }
+  ]
+}

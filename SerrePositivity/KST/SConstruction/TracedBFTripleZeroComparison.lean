@@ -80,7 +80,7 @@ lemma monicKTracedTripleZeroComparisonRealization_comparison :
 
 /-- 第一の元の全二単体の零段像を、そのまま同じ高次比較の指定面に保持する。 -/
 lemma monicKTracedTripleZeroComparisonRealization_first_triangle :
-    SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
         monicKTracedTripleZeroComparisonRealization F f g h =
       SSet.yonedaEquiv.symm ((monicKTracedTripleZeroEvaluation (w := w) (z := z) F).app
         (Opposite.op ⦋2⦌) (monicKTracedNativeTripleCompositionDiamond F f g h).first.simplex) :=
@@ -88,7 +88,7 @@ lemma monicKTracedTripleZeroComparisonRealization_first_triangle :
 
 /-- 第二の元の全二単体の零段像も、同じ高次比較の指定面に保持する。 -/
 lemma monicKTracedTripleZeroComparisonRealization_second_triangle :
-    SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
         monicKTracedTripleZeroComparisonRealization F f g h =
       SSet.yonedaEquiv.symm ((monicKTracedTripleZeroEvaluation (w := w) (z := z) F).app
         (Opposite.op ⦋2⦌) (monicKTracedNativeTripleCompositionDiamond F f g h).second.simplex) :=

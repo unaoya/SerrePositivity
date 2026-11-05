@@ -24,20 +24,20 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 /-- 同じ底辺を持つ二つの普遍四角形の全族は関手として同型。 -/
 def diagramComparison : FunctorIso (CofiberDiagrams.lift X a)
     (a ≫ CofiberRotation.bottomSection X) := by
-  apply ((isQCatEquivalence_of_trivialKanFibration (CofiberDiagrams.bottom X)).postcompose A
+  apply ((isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)).postcompose A
     ).isFullyFaithful.preimageVertexIso
-  change FunctorIso (CofiberDiagrams.lift X a ≫ CofiberDiagrams.bottom X)
-    ((a ≫ CofiberRotation.bottomSection X) ≫ CofiberDiagrams.bottom X)
+  change FunctorIso (CofiberDiagrams.lift X a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)
+    ((a ≫ CofiberRotation.bottomSection X) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)
   rw [CofiberDiagrams.lift_bottom, Category.assoc,
     CofiberRotation.bottomSection_bottom, Category.comp_id]
 
 /-- 元の選択された cofiber 関手の、矢印族に関する関手全体の比較。 -/
-def compositionIso : FunctorIso (cofiber X a) (a ≫ cofiber X (𝟙 _)) := by
+def compositionIso : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) (a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) := by
   have h := FunctorIso.postcomp (FunctorIso.postcomp (diagramComparison X a)
-    (CofiberDiagrams.right X)) (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X)) (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   rw [CofiberDiagrams.lift_right_target] at h
-  change FunctorIso (cofiber X a)
-    (((a ≫ CofiberDiagrams.lift X (𝟙 _)) ≫ CofiberDiagrams.right X) ≫ _) at h
+  change FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a)
+    (((a ≫ CofiberDiagrams.lift X (𝟙 _)) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫ _) at h
   simpa only [Category.assoc, ← CofiberDiagrams.lift_right_target] using h
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberFamily

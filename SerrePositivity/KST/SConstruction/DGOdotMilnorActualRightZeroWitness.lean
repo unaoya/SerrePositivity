@@ -38,8 +38,8 @@ def dgOdotMilnorActualRightNullTopMap :=
 /-- 概要：元実零角から絶対零角への共有完全射。
 方針：元全対象商からの toZeroCategory を使用する。
 規約：両零側面で同じ辺。使われ方：共有零角の指定経路。 -/
-def dgOdotMilnorActualRightNullZeroMap : ExactMap (Z) zeroCategory.{u + 1} :=
-  toZeroCategory (Z)
+def dgOdotMilnorActualRightNullZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z)
 
 /-- 概要：共有零角成分の Cat^perf 辺は可逆。
 方針：同じ全対象商の指定零頂点同型の逆を回収する。
@@ -54,13 +54,13 @@ lemma dgOdotMilnorActualRightNullZeroMap_isInvertible :
 方針：標準零圏への全自然同型を同じ指定二成分で読む。
 規約：両端点の全経路を保持。使われ方：四境界比較の零左側面。 -/
 def dgOdotMilnorActualRightZeroLeftWitness : PerfectStableArrowSquareWitness
-    (dgOdotMilnorActualRightNullLeftMap R d) (toZeroCategory (Q))
+    (dgOdotMilnorActualRightNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q))
     (dgOdotMilnorActualRightSourceMap R d) (dgOdotMilnorActualRightNullZeroMap R d)
     (dgKInputStableValue_isIdempotentComplete R (VInput)) (hZ) (hQ)
     perfectZeroCategory_isIdempotentComplete :=
   perfectStableArrowSquareWitness _ _ _ _ _ _ _ _
-    (zeroDiagramFunctorIso _ _ (fun _ => zeroCategory_isZero _)
-      (fun _ => zeroCategory_isZero _))
+    (zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
+      (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
 
 /-- 概要：元実零上辺の全比較は共有零角成分・商側と同じ終域成分を持つ。
 方針：元零角の零性を同じ元完全射で運び、全零図式を比較する。
@@ -84,6 +84,6 @@ def dgOdotMilnorActualRightZeroTopWitness : PerfectStableArrowSquareWitness
         (dgFixedNullInput_isZeroCategory R (VInput) z)))
     (fun z => IsExactFunctor.preservesZero (F := g.hom)
       ((dgOdotMilnorActualRightNullZeroMap R d).hom.app (Opposite.op ⦋0⦌) z)
-      (zeroCategory_isZero _))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
 
 end SerrePositivity.KST.SConstruction

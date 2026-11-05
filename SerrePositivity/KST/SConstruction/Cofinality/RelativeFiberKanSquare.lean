@@ -84,7 +84,7 @@ lemma completionRelativeKanComparison_piIsomorphism_of_input (r : ℕ)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate r ι f hf)) :
-    Spectra.KanPiIsomorphism (completionRelativeKanComparison r ι f hf) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (completionRelativeKanComparison r ι f hf) := by
   let P := completionImageClosedPredicate r ι f hf
   let : KanComplex (exInfinity.obj (coreSRealizationFunctor.obj (closedStableModel P))) :=
     exInfinity_kanComplex _

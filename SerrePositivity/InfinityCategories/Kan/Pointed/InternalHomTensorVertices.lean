@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 
 /-!
@@ -15,12 +17,15 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.KST.Spectra.InternalHomTensor
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+open SerrePositivity.KST.Spectra.InternalHomTensor
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
 /-- 反復内部 Hom の同型は、元の射の curry の単位頂点を厳密に表す。 -/
 lemma curry'_hom {K A V : C} (f : K ⊗ A ⟶ V) :
-    curry' f ≫ (iso K A V).hom = curry' (curry f) := by
-  rw [hom_eq]
+    curry' f ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K A V).hom = curry' (curry f) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq]
   apply uncurry_injective
   apply uncurry_injective
   simp only [uncurry_natural_left, uncurry_curry]
@@ -30,4 +35,10 @@ lemma curry'_hom {K A V : C} (f : K ⊗ A ⟶ V) :
   congr 1
   monoidal
 
-end SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.curry'_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.curry'_hom

@@ -25,21 +25,21 @@ namespace SerrePositivity.KST.Fibration
 方針：同じ元の二対象を core single Kan 座標と宇宙持ち上げへ送る。
 規約：元の対象を保持する。
 使われ方：合成端を合わせる長 Hom 全族の標的。 -/
-abbrev verdierNativeLongHomTarget (d : VerdierDiagram.{u}) :=
+abbrev verdierNativeLongHomTarget (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
   (SSet.uliftFunctor.{u + 1, u}).obj
-    (SimplicialCategory.sHom (stableCoreSingleKanObject (show StableQCat from d.left))
-      (stableCoreSingleKanObject (show StableQCat from d.right)))
+    (SimplicialCategory.sHom (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)))
 
 /-- 概要：元の指定合成完全射の同じ native core Kan 頂点。
 方針：同じ実完全射の core S• 作用の豊穣頂点を持ち上げる。
 規約：上下の元の合成端を選び直さない。
 使われ方：長 Hom 全族が保持する実合成端。 -/
-def verdierNativeCompositePoint (d : VerdierDiagram.{u}) (j : Fin 2) :
+def verdierNativeCompositePoint (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
     (verdierNativeLongHomTarget d) _⦋0⦌ :=
   ULift.up (SimplicialCategory.homEquiv' _ _
     (stableCoreSingleKanMap (verdierNullCompositeOriginalMap d j)))
 
-variable (d : VerdierDiagram.{u}) (K : SSet.{u + 1})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
   (q : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))).obj
     (verdierNativeLongHomTarget d))
 

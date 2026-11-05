@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-attribute [local instance] cofiberZeroSourceQuasicategory
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiberZeroSourceQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 /-- 元の右随伴を同じ矢印を保って零始点矢印の全部分圏に入れる。 -/
@@ -40,7 +40,7 @@ lemma cofiberRightAdjointZeroSource_target :
 /-- 元の cofiber の実右随伴は充満忠実である。 -/
 lemma cofiberRightAdjoint_fullyFaithful : IsFullyFaithful (cofiberRightAdjoint X) := by
   have hs : IsFullyFaithful (cofiberRightAdjointZeroSource X) :=
-    fullyFaithful_of_relativeInitialSection (cofiberRightAdjointZeroSource_target X)
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.fullyFaithful_of_relativeInitialSection (cofiberRightAdjointZeroSource_target X)
       (fun x => initialBoundary_of_trivialKanFibration (zeroSourceArrowTarget X)
         ((cofiberRightAdjointZeroSource X).app (Opposite.op ⦋0⦌) x))
   have h := hs.comp (isFullyFaithful_fullSubcomplexOnVertices_ι _ IsZeroSourceArrow)

@@ -15,9 +15,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
-def dgGluingStableModuleCategory : StableCategory.{max (u + 1) v w} where
+def dgGluingStableModuleCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
   obj := (SSet.uliftFunctor.{max (u + 1) v w,max (u + 1) v}).obj
     (dgModuleDerivedInfinityCategory R C)
   isQuasicategory := inferInstance
@@ -28,10 +28,10 @@ variable (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
   (hY : IsExactFunctor (dgGluingUniverseDerivedYoneda.{u, v, w} R C))
   (hM : IsExactFunctor (dgGluingUniverseDerivedCoefficient R C D M))
-def dgGluingStableYonedaMap : ExactMap (dgGluingStableInput.{u, v, w} R C hC)
+def dgGluingStableYonedaMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableInput.{u, v, w} R C hC)
     (dgGluingStableModuleCategory.{u, v, w} R C) :=
   ⟨dgGluingUniverseDerivedYoneda R C, hY⟩
-def dgGluingStableCoefficientMap : ExactMap (dgGluingStableInput.{u, w, v} R D hD)
+def dgGluingStableCoefficientMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableInput.{u, w, v} R D hD)
     (dgGluingStableModuleCategory.{u, v, w} R C) :=
   ⟨dgGluingUniverseDerivedCoefficient R C D M, hM⟩
 lemma dgGluingStableLaxObject_eq_laxCategory :
@@ -39,21 +39,21 @@ lemma dgGluingStableLaxObject_eq_laxCategory :
       laxCategory (dgGluingStableYonedaMap R C hC hY)
         (dgGluingStableCoefficientMap R C D M hD hM) := rfl
 def dgGluingLaxSemiorthogonal :
-    SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
       (dgGluingStableInput.{u, v, w} R C hC) (dgGluingStableLaxObject R C D M hC hD) :=
   laxSemiorthogonal (dgGluingStableYonedaMap R C hC hY)
     (dgGluingStableCoefficientMap R C D M hD hM)
 lemma dgGluingLaxSemiorthogonal_projection :
     (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).projection =
-      dgGluingStableLaxFst R C D M hC hD := ExactMap.ext rfl
+      dgGluingStableLaxFst R C D M hC hD := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext rfl
 lemma dgGluingLaxSemiorthogonal_retraction :
     (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).retraction =
-      dgGluingStableLaxSnd R C D M hC hD := ExactMap.ext rfl
+      dgGluingStableLaxSnd R C D M hC hD := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext rfl
 lemma dgGluingDFactor_iff_laxSemiorthogonal_image (X : DGGluingObject R C D M) :
     dgGluingFactorIsZero R C X.left ↔
       (dgGluingUniverseDerivedNerveLaxComparison R C D M).app (Opposite.op ⦋0⦌)
         (ULift.up (Simplex.vertex X)) ∈
-          essentialImage (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion := by
+          _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion := by
   rw [dgGluingDFactor_iff_stableLeftKernel]
   have h := (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).kernel
     ((dgGluingUniverseDerivedNerveLaxComparison R C D M).app (Opposite.op ⦋0⦌)

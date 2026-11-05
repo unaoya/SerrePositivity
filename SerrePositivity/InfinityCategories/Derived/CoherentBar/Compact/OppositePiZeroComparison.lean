@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の頂点へ戻す π₀ の写像。 -/
 def dgBarCompactPiZeroOppositeDown (X : SSet.{u}) : π₀ X.op → π₀ X :=

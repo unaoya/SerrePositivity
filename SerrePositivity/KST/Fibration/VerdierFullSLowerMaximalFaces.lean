@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大化の第一全短辺は、元の下側二胞体の同じ第一辺。 -/
 theorem verdierFullSLowerMaximalization_first :
@@ -58,7 +58,7 @@ theorem verdierFullSLowerMaximalization_last :
 theorem verdierFullSLowerMaximalization_inclusion :
     stdSimplex.δ (2 : Fin 3) ≫ SSet.yonedaEquiv.symm
         (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge ≫
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge ≫
         coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
   rw [verdierFullSLowerMaximalization_first, verdierFullSLowerSimplex_original,
     ← Category.assoc, ← Category.assoc, stableSquareTriangle_bottomEdge,
@@ -70,7 +70,7 @@ theorem verdierFullSLowerMaximalization_inclusion :
 theorem verdierFullSLowerMaximalization_projection :
     stdSimplex.δ (0 : Fin 3) ≫ SSet.yonedaEquiv.symm
         (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge ≫
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge ≫
         coherentNerveMap (stableMultiKanEnrichedFunctor 0) := by
   rw [verdierFullSLowerMaximalization_last, verdierFullSLowerSimplex_original,
     ← Category.assoc, ← Category.assoc, squareTriangle_rightEdge,

@@ -38,7 +38,7 @@ lemma spectrumHom_hornLift (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       l ≫ ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map p = b := by
   obtain ⟨f, ha, hb, hf⟩ := spectrumHom_hornFamily X p j hj a b h
   let l := TruncatedMapping.familyLift (fun n ↦ (X.level n).space)
-    (fun n ↦ (Y.level n).space) (fun n ↦ suspension (X.level n).space)
+    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
     X.sigma (OmegaSpectrum.mappingStep X Y) f hf
   have hl (n : ℕ) : l ≫ OmegaSpectrum.evaluation X Y n = f n :=
     TruncatedMapping.familyLift_evaluation _ _ _ _ _ f hf n

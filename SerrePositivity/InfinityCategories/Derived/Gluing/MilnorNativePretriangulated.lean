@@ -60,7 +60,7 @@ local instance : IsExactFunctor (dgNerve.map (dgOdotQuotientInput R d).diagonal)
   dgGluingMilnorNativeDiagonal_isExactFunctor R d
 theorem dgGluingMilnor_isResolvedVerdierSequence_of_generation
     (h : DGGluingMilnorSquare R d) (hgen : DGGluingMilnorSmallPerfectGeneration R d) :
-    IsVerdierSequence (dgGluingMilnorNativeDiagonal R d)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingMilnorNativeDiagonal R d)
       (dgGluingMilnorResolvedProjection R d) :=
   dgGluingMilnor_isResolvedVerdierSequence R d h hgen
 end SerrePositivity.InfinityCategories

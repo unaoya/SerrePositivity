@@ -29,15 +29,15 @@ set_option maxHeartbeats 600000 in
 /-- 骨格 fiber の零 loop 比較を含めると、全空間の零 loop 比較になる。 -/
 lemma stageFiberOrdinaryLoopComponentEquiv_ι (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (a : π₀ (stageFiber K (loopSpace Y) n).right) :
+    (a : π₀ (stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right) :
     pointedGroupMap 0 (pointedFiberι (pre (skeletalInclusion K n) Y))
         (stageFiberOrdinaryLoopComponentEquiv K Y n a) =
       loopZeroHomotopyEquiv (obj (K.skeleton (n + 2)) Y)
-        (KanHomotopyZero.equivPiZero.symm
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm
           (mapπ₀ (loopSwap (K.skeleton (n + 2)) Y).inv.right
-            (mapπ₀ (pointedFiberι (pre (skeletalInclusion K n) (loopSpace Y))).right a))) := by
-  let b : KanHomotopy (stageFiber K (loopSpace Y) n).right 0
-    (stageFiber K (loopSpace Y) n).basepoint := KanHomotopyZero.equivPiZero.symm a
+            (mapπ₀ (pointedFiberι (pre (skeletalInclusion K n) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))).right a))) := by
+  let b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right 0
+    (stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm a
   have h := restrictionLoopIso_inv_ι (skeletalInclusion K n) Y
   have hm := congrArg (fun f ↦ pointedHomotopyMap 0 f b) h
   simp only [pointedHomotopyMap_comp] at hm
@@ -46,10 +46,10 @@ lemma stageFiberOrdinaryLoopComponentEquiv_ι (K : SSet.{u})
       (pointedHomotopyMap 0 (stageFiberLoopIso K Y n).inv b)) = _
   rw [← loopZeroHomotopyEquiv_pointed_natural]
   have hi := pointedHomotopyZero_symm_natural
-    (pointedFiberι (pre (skeletalInclusion K n) (loopSpace Y))) a
+    (pointedFiberι (pre (skeletalInclusion K n) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))) a
   have hs := pointedHomotopyZero_symm_natural
     (loopSwap (K.skeleton (n + 2)) Y).inv
-    (mapπ₀ (pointedFiberι (pre (skeletalInclusion K n) (loopSpace Y))).right a)
+    (mapπ₀ (pointedFiberι (pre (skeletalInclusion K n) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))).right a)
   have hz := hs.trans (congrArg
     (pointedHomotopyMap 0 (loopSwap (K.skeleton (n + 2)) Y).inv) hi)
   exact (congrArg (loopZeroHomotopyEquiv (obj (K.skeleton (n + 2)) Y)) hm).trans
@@ -58,35 +58,35 @@ lemma stageFiberOrdinaryLoopComponentEquiv_ι (K : SSet.{u})
 /-- 骨格射から作った fiber 頂点の基本群入力は、明示した loop 族の逆辺。 -/
 lemma stageFiberOrdinaryLoopComponentEquiv_vertex (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (f : (K.skeleton (n + 2) : SSet.{u}) ⟶ (loopSpace Y).right)
-    (hf : skeletalInclusion K n ≫ f = SSet.const (loopSpace Y).basepoint) :
+    (f : (K.skeleton (n + 2) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    (hf : skeletalInclusion K n ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
     pointedGroupMap 0 (pointedFiberι (pre (skeletalInclusion K n) Y))
       (stageFiberOrdinaryLoopComponentEquiv K Y n
-        (π₀.mk (skeletalFiberVertex K (loopSpace Y) n f hf))) =
-      (KanHomotopyGroup.mk (loopFamilySimplex Y f))⁻¹ := by
+        (π₀.mk (skeletalFiberVertex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n f hf))) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (loopFamilySimplex Y f))⁻¹ := by
   rw [stageFiberOrdinaryLoopComponentEquiv_ι, mapπ₀_mk]
-  have hv : (pointedFiberι (pre (skeletalInclusion K n) (loopSpace Y))).right.app _
-      (skeletalFiberVertex K (loopSpace Y) n f hf) = mapVertex (loopSpace Y) f :=
-    (skeletalFiberVertex_ι K (loopSpace Y) n f hf).trans
-      (freeHomIso_familyVertex (loopSpace Y) f)
+  have hv : (pointedFiberι (pre (skeletalInclusion K n) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))).right.app _
+      (skeletalFiberVertex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n f hf) = mapVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) f :=
+    (skeletalFiberVertex_ι K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n f hf).trans
+      (freeHomIso_familyVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) f)
   have hc := congrArg (fun v ↦ loopZeroHomotopyEquiv (obj (K.skeleton (n + 2)) Y)
-    (KanHomotopyZero.equivPiZero.symm
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.symm
       (mapπ₀ (loopSwap (K.skeleton (n + 2)) Y).inv.right (π₀.mk v)))) hv
   exact hc.trans (loopZero_mapVertex Y f)
 
 /-- 通常の loop 成分比較で作った入力の塔の微分を、明示した逆辺で計算する。 -/
 lemma stageComponentDifferential_loop_vertex (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (f : (K.skeleton (n + 2) : SSet.{u}) ⟶ (loopSpace Y).right)
-    (hf : skeletalInclusion K n ≫ f = SSet.const (loopSpace Y).basepoint) :
+    (f : (K.skeleton (n + 2) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    (hf : skeletalInclusion K n ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
     stageComponentDifferential K Y n
       (stageFiberOrdinaryLoopComponentEquiv K Y n
-        (π₀.mk (skeletalFiberVertex K (loopSpace Y) n f hf))) =
-      KanHomotopyZero.equivPiZero
+        (π₀.mk (skeletalFiberVertex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n f hf))) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
         (pointedConnectingZero (pre (skeletalInclusion K (n + 1)) Y)
-          ((KanHomotopyGroup.mk (loopFamilySimplex Y f))⁻¹)) := by
+          ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (loopFamilySimplex Y f))⁻¹)) := by
   rw [stageComponentDifferential_connecting]
-  exact congrArg (fun z ↦ KanHomotopyZero.equivPiZero
+  exact congrArg (fun z ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
     (pointedConnectingZero (pre (skeletalInclusion K (n + 1)) Y) z))
       (stageFiberOrdinaryLoopComponentEquiv_vertex K Y n f hf)
 

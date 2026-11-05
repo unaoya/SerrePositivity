@@ -47,7 +47,7 @@ lemma matching_rlp_of_levelwise
     {X Y : CosimplicialObject SSet.{u}}
     [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex (Y.obj j)]
     (f : X ⟶ Y) (hf : reedyRight simplex J.rlp f)
-    (hπ : ∀ j, KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
+    (hπ : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
     reedyRight simplex (MorphismProperty.monomorphisms SSet.{u}).rlp f := by
   let := boundaryWeakFactorization.{u}
   have aux (n : ℕ) : ∀ j : SimplexCategory, j.len = n →
@@ -69,16 +69,16 @@ lemma matching_rlp_of_levelwise
         (fun _ _ a ha ↦ hp a (J_le_monomorphisms a ha))
       let : KanComplex (pullback ((matchingComparison simplex j).app Y)
           ((matchingEvaluation simplex j).map f)) := isFibrant_of_fibration p
-      have hpπ := kanPiIsomorphism_of_monoRight p hp
+      have hpπ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p hp
       let q := relativeMatchingMap simplex j f
       let : Fibration q := (modelCategoryQuillen.fibration_iff q).mpr (hf j)
-      have hqp : KanPiIsomorphism (q ≫ p) := by
-        change KanPiIsomorphism (relativeMatchingMap simplex j f ≫
+      have hqp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (q ≫ p) := by
+        change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (relativeMatchingMap simplex j f ≫
           pullback.fst ((matchingComparison simplex j).app Y)
             ((matchingEvaluation simplex j).map f))
         rw [relativeMatchingMap_fst]
         exact hπ j
-      exact fibration_rlp_of_piIsomorphism q (KanPiIsomorphism.of_comp hqp hpπ) (e₀ j)
+      exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism q (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hqp hpπ) (e₀ j)
   intro j
   exact aux j.len j rfl
 

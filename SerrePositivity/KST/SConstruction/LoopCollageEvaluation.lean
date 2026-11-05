@@ -39,7 +39,7 @@ def loopCollageEvaluationObj
     (X : EnrichedFunctorCollageCategory pointedKanLoopEnrichedFunctor.{u}) :
     PointedSimplicialSet.{u} :=
   match X with
-  | .inl X => suspension X.obj
+  | .inl X => _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj
   | .inr Y => Y.obj
 
 /-- 交差写像空間には元の suspension–loop 随伴の逆を適用する。 -/
@@ -51,7 +51,7 @@ def loopCollageEvaluationMap
   | .inl X, .inl Y => (suspensionHom X.obj Y.obj).right
   | .inl X, .inr Y => (suspensionLoopMappingIso X.obj Y.obj).inv
   | .inr X, .inl Y =>
-      enrichedCollageEmptyMap (PointedObject.basedHom X.obj (suspension Y.obj)).right
+      enrichedCollageEmptyMap (PointedObject.basedHom X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y.obj)).right
   | .inr X, .inr Y => 𝟙 (SimplicialCategory.sHom X Y)
 
 /-- 全写像パラメータの合成を保つ、loop collage から元の点つき模型への豊穣評価。 -/
@@ -147,34 +147,34 @@ lemma loopCollageEvaluationNerve_top :
   rw [← coherentNerveMap_comp, loopCollageEvaluation_top]
 
 /-- 元の loop 値の点つき射を、collage の実際の下段から上段への射として表す。 -/
-def loopCollageCrossMap (X Y : PointedKanObject.{u}) (f : X.obj ⟶ loopSpace Y.obj) :
+def loopCollageCrossMap (X Y : PointedKanObject.{u}) (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
     (enrichedFunctorCollageBottom pointedKanLoopEnrichedFunctor).obj X ⟶
       (enrichedFunctorCollageTop pointedKanLoopEnrichedFunctor).obj Y :=
   ForgetEnrichment.homOf SSet
     (C := EnrichedFunctorCollage pointedKanLoopEnrichedFunctor)
     (X := (Sum.inl X : EnrichedFunctorCollage pointedKanLoopEnrichedFunctor))
     (Y := Sum.inr Y)
-    ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (loopSpace Y.obj) f))
+    ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f))
 
 /-- Collage の交差射は元の点つき射の写像空間の頂点を厳密に回収する。 -/
 lemma loopCollageCrossMap_vertex (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ loopSpace Y.obj) :
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
     SimplicialCategory.homEquiv' _ _ (loopCollageCrossMap X Y f) =
-      pointedHomVertexEquiv X.obj (loopSpace Y.obj) f := by
+      pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f := by
   change (SSet.unitHomEquiv _)
-      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (loopSpace Y.obj) f)) = _
+      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f)) = _
   exact Equiv.apply_symm_apply _ _
 
 /-- 元の値域への射影は、交差射から元の loop 値の点つき射そのものを回収する。 -/
 lemma loopCollageCrossMap_projection (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ loopSpace Y.obj) :
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
     ((coherentEnrichedUnderlyingFunctor
       (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor)).map
         (loopCollageCrossMap X Y f)).hom = f := by
-  apply (pointedHomVertexEquiv X.obj (loopSpace Y.obj)).injective
+  apply (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)).injective
   have h := coherentEnrichedUnderlyingFunctor_vertex
     (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor) (loopCollageCrossMap X Y f)
-  change pointedHomVertexEquiv X.obj (loopSpace Y.obj)
+  change pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)
       (((coherentEnrichedUnderlyingFunctor
         (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor)).map
           (loopCollageCrossMap X Y f)).hom) =
@@ -183,13 +183,13 @@ lemma loopCollageCrossMap_projection (X Y : PointedKanObject.{u})
 
 /-- Suspension 側の評価は、元の射の元の逆随伴そのものを厳密に回収する。 -/
 lemma loopCollageCrossMap_evaluation (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ loopSpace Y.obj) :
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
     (coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map (loopCollageCrossMap X Y f) =
-      (suspensionLoopEquiv X.obj Y.obj).symm f := by
-  apply (pointedHomVertexEquiv (suspension X.obj) Y.obj).injective
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X.obj Y.obj).symm f := by
+  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).injective
   have h := coherentEnrichedUnderlyingFunctor_vertex loopCollageEvaluation
     (loopCollageCrossMap X Y f)
-  change pointedHomVertexEquiv (suspension X.obj) Y.obj
+  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj
       ((coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map
         (loopCollageCrossMap X Y f)) =
     (suspensionLoopMappingIso X.obj Y.obj).inv.app (Opposite.op ⦋0⦌)

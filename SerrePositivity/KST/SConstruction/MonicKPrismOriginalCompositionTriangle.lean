@@ -24,10 +24,10 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 
 /-- 同じ元の全比較三角形を、単射源の元の suspension Hom に移す。 -/
 def monicKPrismOriginalCompositionTriangle : (Δ[2] : SSet.{u}) ⟶
-    (PointedObject.basedHom (suspension ((kOmegaSpectrum (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityTriangle r F f g).simplex ≫
-    PointedMapping.pre
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
       ((kKanSequence (F.obj z)).level (r + 1)).space
 
@@ -35,9 +35,9 @@ def monicKPrismOriginalCompositionTriangle : (Δ[2] : SSet.{u}) ⟶
 lemma monicKPrismOriginalCompositionTriangle_first :
     stdSimplex.δ 2 ≫ monicKPrismOriginalCompositionTriangle r F f g =
       (SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge ≫
-        (PointedObject.basedHomMap (suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right) ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismOriginalCompositionTriangle, ← Category.assoc,
@@ -47,10 +47,10 @@ lemma monicKPrismOriginalCompositionTriangle_first :
 lemma monicKPrismOriginalCompositionTriangle_second :
     stdSimplex.δ 0 ≫ monicKPrismOriginalCompositionTriangle r F f g =
       (SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F g).edge ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space) ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismOriginalCompositionTriangle, ← Category.assoc,
@@ -60,7 +60,7 @@ lemma monicKPrismOriginalCompositionTriangle_second :
 lemma monicKPrismOriginalCompositionTriangle_composite :
     stdSimplex.δ 1 ≫ monicKPrismOriginalCompositionTriangle r F f g =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F (f ≫ g)).edge ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismOriginalCompositionTriangle, ← Category.assoc,

@@ -33,15 +33,15 @@ def boundaryAssemblyNaturalityParameterUnit (r : ℕ) {X Y : StableModel.{u}} (f
 lemma boundaryAssemblyNaturalityParameters_isContractibleKan (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
     IsContractibleKan (boundaryAssemblyNaturalityParameters r f) := by
-  have hC := contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
+  have hC := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyAdjointChoices_isContractibleKan r Y)
-  have hA := contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
+  have hA := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyMixedChoices_isContractibleKan r f)
-  have hB := contractibleKan_tensor (oneDirectionInverseMixedChoices_isContractibleKan r f)
+  have hB := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionInverseMixedChoices_isContractibleKan r f)
     (kanAssemblyAdjointChoices_isContractibleKan r Y)
   let a := hA.nonempty.some
   exact kanReplacement_contractible_of_localized_toUnit
-    ((doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
+    ((_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
       (boundaryAssemblyInverseMiddle r f)).app (Opposite.op ⦋0⦌) a)
     (doubleCylinder_toUnit_localized_isIso _ _ hC hA hB)
 
@@ -109,7 +109,7 @@ lemma boundaryAssemblyNaturalityFamily_source (r : ℕ) {X Y : StableModel.{u}} 
 lemma boundaryAssemblyNaturalityFamily_target (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityTarget r f ≫ boundaryAssemblyNaturalityFamily r f =
       boundaryKanAssemblyAdjointFamily r Y ≫
-        (prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   rw [boundaryAssemblyNaturalityTarget, Category.assoc, boundaryAssemblyNaturalityFamily_unit]
   exact boundaryAssemblyNaturalityCylinderFamily_target r f

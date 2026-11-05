@@ -156,7 +156,7 @@ def dgKInputCompactNativeMap_adjointIdIso :
     FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : SerrePositivity.KST.LocalizingInvariants.ExactMap
+    exact congrArg (fun f : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   unfold dgKInputCompactNativeMap

@@ -15,31 +15,31 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 閉じた元の S₁ 辺の Kan 境界上の評価は負の対象類。 -/
 lemma boundaryKanTriangulatedMap_closed_edge (X : StableModel.{u})
     (d : (objectSConstruction X.carrier) _⦋1⦌)
     (hd : (objectSConstruction X.carrier).δ 0 d = (objectSConstruction X.carrier).δ 1 d) :
-    ((fundamentalNerveUntranspose (boundaryKanTriangulatedMap X)).map
+    ((_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (boundaryKanTriangulatedMap X)).map
       (SSet.Truncated.HomotopyCategory.homMk
         (fundamentalLoopEdge (objectBoundaryEdge X d)))).down.toAdd =
       -objectTriangulatedClass X d := by
   let e : SSet.Truncated.Edge (X := (truncation 2).obj (objectSConstruction X.carrier))
       ((objectSConstruction X.carrier).δ 1 d) ((objectSConstruction X.carrier).δ 1 d) :=
     ⟨d, rfl, hd⟩
-  let α := fundamentalNerveUntransposeHomotopy (rawBoundaryTriangulatedHomotopy X)
+  let α := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy (rawBoundaryTriangulatedHomotopy X)
   have h := singleObj_loop_naturality α.hom (SSet.Truncated.HomotopyCategory.homMk e)
-  have hf : fundamentalNerveUntranspose
+  have hf : _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose
       (objectRawBoundaryComparison X ≫ rawBoundaryTriangulatedMap X) =
       (hoFunctor.map (objectBoundaryKanComparison X)).toFunctor ⋙
-        fundamentalNerveUntranspose (boundaryKanTriangulatedMap X) := by
-    rw [← fundamentalNerveUntranspose_pre, ← objectRawBoundaryComparison_kan,
+        _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (boundaryKanTriangulatedMap X) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_pre, ← objectRawBoundaryComparison_kan,
       Category.assoc, boundaryKanTriangulatedMap_unit]
-  change (fundamentalNerveUntranspose
+  change (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose
       (objectRawBoundaryComparison X ≫ rawBoundaryTriangulatedMap X) |>.map
         (SSet.Truncated.HomotopyCategory.homMk e)).down.toAdd =
-      (fundamentalNerveUntranspose (objectTriangulatedNerveMap X) |>.map
+      (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (objectTriangulatedNerveMap X) |>.map
         (SSet.Truncated.HomotopyCategory.homMk e)).down.toAdd at h
   rw [hf, objectTriangulatedNerveMap_untranspose] at h
   simp only [CategoryTheory.Functor.comp_map] at h

@@ -16,7 +16,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 共通補完の subobject は、元の指定辺の始点への完全評価そのものである。 -/
-lemma weakStringCofiberSubobject_eq {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberSubobject_eq {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
     weakStringCofiberExact q α ≫
       relativeCofiberSubobject (ClosedStablePredicate.top (sInputModel B))

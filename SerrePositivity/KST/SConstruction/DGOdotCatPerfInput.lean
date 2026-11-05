@@ -30,7 +30,7 @@ def dgOdotQuotientNuEquivalence : QCatEquivalence
 /-- 概要：商から元の実 ⊙ の ν 値への完全射。
 方針：指定 Morita 辺の同じ逆を使う。規約：一般の商完備化を構成しない。
 使われ方：Cat^perf 版 LT の終点を固定する。 -/
-def dgOdotQuotientCompletion : ExactMap
+def dgOdotQuotientCompletion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotQuotientInputVertex R d))
     (dgKInputStableValue R (dgOdotAlgebraInput R d)) :=
   ⟨(dgOdotQuotientNuEquivalence R d).inv,

@@ -1,0 +1,124 @@
+{
+  "status": "APPLIED_CANDIDATE_REGRESSION_PASS",
+  "authorization": "IF-F §7 and §9: deprecated aliases, preserve declaration meaning",
+  "files": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/DeprecatedAlias.lean",
+      "before_sha256": "078b1d6c2041e445199baa0e2c7efeb9867bdca058a315eb6b26e555f072c8c8",
+      "after_sha256": "aee0f22e3f939c89cb3a5108cbba7bff050244320917d7da4d3814c5bb57904d"
+    },
+    {
+      "file": "scripts/refactor/tests/deprecated_alias.lean",
+      "before_sha256": "79f0caae83b521882ff6350fb89f762edadaae0b9ce0b15da84f84353560c7c8",
+      "after_sha256": "742a5660886effd59da37e5c7a5c6e3469bbfa69bdbbc1fa5e83cea192f5549d"
+    }
+  ],
+  "affected_computable_auxiliary_aliases": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
+      "old": "SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding._unsafe_rec"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
+      "old": "SerrePositivity.KST.SConstruction.cubeDeletionNormalErase._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase._unsafe_rec"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
+      "old": "SerrePositivity.KST.SConstruction.cubeDeletionNormalId._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId._unsafe_rec"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler",
+      "old": "SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.TowerLimOne",
+      "old": "SerrePositivity.KST.Spectra.TowerLimOne.nullifier._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec"
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.NecklacePreferredForm",
+      "old": "SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._unsafe_rec",
+      "new": "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec"
+    }
+  ],
+  "canonical_declarations_changed": 0,
+  "alias_types_bodies_safety_computability_changed": 0,
+  "cause": "LCNF normalizes _unsafe_rec to its parent; compiling the plain parent alias and then its auxiliary emits the parent code twice.",
+  "fix": "Reuse compiled parent code only when the alias registry maps the canonical parent to that same legacy parent and its base compiler declaration exists. Do not mark the auxiliary noncomputable.",
+  "cube_diagnostics": {
+    "canonical_without_aliases": {
+      "list": 40,
+      "unique": 40
+    },
+    "old_alias_compiler": {
+      "list": 94,
+      "unique": 84
+    },
+    "fixed_alias_compiler": {
+      "list": 84,
+      "unique": 84
+    }
+  },
+  "cube_probe": {
+    "command": [
+      "lean",
+      "--root=/private/tmp/if-f2",
+      "-M",
+      "9000",
+      "-c",
+      "/tmp/if-f2/CubeReuseProbe.c",
+      "/tmp/if-f2/CubeReuseProbe.lean"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 2.437,
+    "log": "cube-reuse-probe.log",
+    "duplicate_impure_declarations_zero": true,
+    "old_new_evaluation_equal": true,
+    "status": "PASS"
+  },
+  "regression": {
+    "status": "PASS",
+    "old_reproduces_duplicate": true,
+    "new_passes": true,
+    "results": {
+      "Old": {
+        "command": [
+          "lean",
+          "--root=/private/tmp/if-f2",
+          "-M",
+          "9000",
+          "-c",
+          "/tmp/if-f2/AliasRegressionOld.c",
+          "/tmp/if-f2/AliasRegressionOld.lean"
+        ],
+        "exit_code": 1,
+        "errors": [
+          "/tmp/if-f2/AliasRegressionOld.lean:111:0: error: duplicate native declarations for recursive alias"
+        ],
+        "seconds": 6.659,
+        "log": "alias-codegen-regression-old.log"
+      },
+      "New": {
+        "command": [
+          "lean",
+          "--root=/private/tmp/if-f2",
+          "-M",
+          "9000",
+          "-c",
+          "/tmp/if-f2/AliasRegressionNew.c",
+          "/tmp/if-f2/AliasRegressionNew.lean"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 4.157,
+        "log": "alias-codegen-regression-new.log"
+      }
+    }
+  },
+  "production_small_internal_downstream": "PENDING"
+}

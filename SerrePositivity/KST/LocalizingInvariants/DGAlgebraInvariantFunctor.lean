@@ -34,7 +34,7 @@ def perfectMapIdentityIso (B : Mon (Complex R)) :
   rw [dgAlgebraMap_id]
   exact dgPerfectExtensionIdentityIso R _
 
-variable (Φ : StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma invariantMap_id_hom (B : Mon (Complex R)) :
     SpectrumHo.hom (invariantMap R Φ (𝟙 B)) = 𝟙 _ := by

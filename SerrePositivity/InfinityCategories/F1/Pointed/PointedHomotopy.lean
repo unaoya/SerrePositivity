@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -50,9 +52,12 @@ public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -68,18 +73,36 @@ def pointedRelativeHomotopy {X Y : PointedSimplicialSet.{u}} (f g : X ⟶ Y)
     (hbase : X.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ Y.hom) :
     (RelativeMorphism.ofSimplex₀ f.right X.basepoint Y.basepoint
-      (OmegaSpectrum.pointedMap_basepoint f)).Homotopy
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)).Homotopy
       (RelativeMorphism.ofSimplex₀ g.right X.basepoint Y.basepoint
-        (OmegaSpectrum.pointedMap_basepoint g)) where
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint g)) where
   h := H.h
   h₀ := H.h₀
   h₁ := H.h₁
   rel := by
-    rw [Subcomplex.ofSimplex_ι, ← pointedConstant_eq_const X,
+    rw [Subcomplex.ofSimplex_ι, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const X,
       comp_whiskerRight_assoc, hbase, comp_toUnit_assoc]
     rw [SSet.const_comp, SSet.comp_const]
-    exact pointedConstant_eq_const Y _
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const Y _
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_4

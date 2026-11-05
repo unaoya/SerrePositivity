@@ -75,13 +75,13 @@ def relStructHomotopy {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。球面の写像空間の π₀ の計算。 -/
 theorem KanHomotopyGroup.mk_eq_iff_relativeHomotopy {X : SSet.{u}} [KanComplex X]
     {n : ℕ} {x : X _⦋0⦌} (f g : X.PtSimplex (n + 1) x) :
-    KanHomotopyGroup.mk f = KanHomotopyGroup.mk g ↔ Nonempty (f.Homotopy g) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g ↔ Nonempty (f.Homotopy g) := by
   constructor
   · intro h
-    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct (n + 1) g f 0).1 h.symm
+    obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct (n + 1) g f 0).1 h.symm
     exact ⟨relStructHomotopy r⟩
   · rintro ⟨H⟩
-    exact KanHomotopyGroup.eq_of_relativeHomotopy H
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy H
 
 end
 

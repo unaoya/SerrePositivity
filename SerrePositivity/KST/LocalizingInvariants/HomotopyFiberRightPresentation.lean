@@ -86,7 +86,7 @@ lemma squareHom_right_presentation :
     Arrow.mk (homPre squareRightEdge (squareHom p q a b h)) =
       Arrow.mk (rightPresentation p q a b h) := by
   let e := (FiberModel.replacementUnitDiagramIso q).precomp rightShape
-  have hi := arrow_mk_inv_congr (f := e.hom) (g := (rightUnitIso q).hom)
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (rightUnitIso q).hom)
     (rightUnitIso_arrow q)
   simp only [IsIso.Iso.inv_hom] at hi
   refine (squareHom_right_base p q a b h).trans ?_

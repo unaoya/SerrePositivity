@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps
 public import Mathlib.Data.Fintype.Fin
 
@@ -9,37 +11,61 @@ public import Mathlib.Data.Fintype.Fin
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 指定した一座標だけが真である、元の立方体の頂点。 -/
-def cubeVertexAtom (n : ℕ) (i : Fin n) : CubeVertex n :=
+def cubeVertexAtom (n : ℕ) (i : Fin n) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n :=
   fun j => decide (j = i)
 
 /-- 元の頂点の真の座標の有限集合。 -/
-def cubeVertexSupport {n : ℕ} (x : CubeVertex n) : Finset (Fin n) :=
+def cubeVertexSupport {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : Finset (Fin n) :=
   Finset.univ.filter (fun i => x i = true)
 
 /-- 元の頂点の support への所属は、その同じ座標が真であること。 -/
-lemma mem_cubeVertexSupport {n : ℕ} (x : CubeVertex n) (i : Fin n) :
-    i ∈ cubeVertexSupport x ↔ x i = true := by
-  simp only [cubeVertexSupport, Finset.mem_filter, Finset.mem_univ, true_and]
+lemma mem_cubeVertexSupport {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (i : Fin n) :
+    i ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x ↔ x i = true := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport, Finset.mem_filter, Finset.mem_univ, true_and]
 
 /-- 任意の元の頂点は、その真の座標の一座標頂点の有限 join。 -/
-lemma cubeVertexSupport_sup_atoms {n : ℕ} (x : CubeVertex n) :
-    (cubeVertexSupport x).sup (cubeVertexAtom n) = x := by
+lemma cubeVertexSupport_sup_atoms {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x).sup (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n) = x := by
   apply le_antisymm
   · apply Finset.sup_le
     intro i hi j
-    have hxi := (mem_cubeVertexSupport x i).mp hi
+    have hxi := (_root_.SerrePositivity.InfinityCategories.Simplicial.mem_cubeVertexSupport x i).mp hi
     by_cases h : j = i
     · subst j
-      simp [cubeVertexAtom, hxi]
-    · simp [cubeVertexAtom, h]
+      simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom, hxi]
+    · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom, h]
   · intro j
     cases hx : x j with
     | false => exact bot_le
     | true =>
-      have hj := (mem_cubeVertexSupport x j).mpr hx
-      have h := (Finset.le_sup (f := cubeVertexAtom n) hj) j
-      simpa only [cubeVertexAtom, decide_true, hx] using h
+      have hj := (_root_.SerrePositivity.InfinityCategories.Simplicial.mem_cubeVertexSupport x j).mpr hx
+      have h := (Finset.le_sup (f := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n) hj) j
+      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom, decide_true, hx] using h
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexAtom := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexSupport := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexSupport_sup_atoms := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport_sup_atoms
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_cubeVertexSupport := _root_.SerrePositivity.InfinityCategories.Simplicial.mem_cubeVertexSupport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexAtom.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexSupport.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport.eq_1

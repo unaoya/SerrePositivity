@@ -18,20 +18,20 @@ open scoped Simplicial
 private lemma outerBottom {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X) :
     squareBottomEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 1) =
       squareBottomEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 2) :=
-  (square_transpose_bottom _).trans
-    ((pastingSquare_outer_leftEdge D).trans (square_transpose_bottom _).symm)
+  (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom _).trans
+    ((pastingSquare_outer_leftEdge D).trans (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom _).symm)
 private lemma outerTop {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X) :
     squareTopEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 1) =
       squareTopEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 0) :=
-  (square_transpose_top _).trans
-    ((pastingSquare_outer_rightEdge D).trans (square_transpose_top _).symm)
+  (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top _).trans
+    ((pastingSquare_outer_rightEdge D).trans (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top _).symm)
 private lemma outerLeft {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     {x y z : X _⦋0⦌} {a : X.Edge x y} {b : X.Edge y z} {c : X.Edge x z}
     (t : SSet.Edge.CompStruct a b c)
     (h : pastingBottomTriangle D = SSet.yonedaEquiv.symm t.simplex) :
     squareLeftEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 1) =
       SSet.yonedaEquiv.symm c.edge :=
-  (square_transpose_left _).trans ((pastingSquare_bottomEdge D 1).trans
+  (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left _).trans ((pastingSquare_bottomEdge D 1).trans
     ((congrArg (fun f => stdSimplex.δ (1 : Fin 3) ≫ f) h).trans t.δ_one_yonedaEquiv_symm))
 private lemma outerRight {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     {x y z : X _⦋0⦌} {a : X.Edge x y} {b : X.Edge y z} {c : X.Edge x z}
@@ -39,7 +39,7 @@ private lemma outerRight {X : SSet.{v}} (D : (Δ[2] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     (h : pastingTopTriangle D = SSet.yonedaEquiv.symm t.simplex) :
     squareRightEdge ≫ ((β_ (Δ[1] : SSet.{v}) Δ[1]).hom ≫ pastingSquare D 1) =
       SSet.yonedaEquiv.symm c.edge :=
-  (square_transpose_right _).trans ((pastingSquare_topEdge D 1).trans
+  (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right _).trans ((pastingSquare_topEdge D 1).trans
     ((congrArg (fun f => stdSimplex.δ (1 : Fin 3) ≫ f) h).trans t.δ_one_yonedaEquiv_symm))
 private lemma zeroVertex {X : SSet.{v}} (F : (Δ[1] ⊗ Δ[1] : SSet.{v}) ⟶ X)
     {x z : X _⦋0⦌} (a : X.Edge x z)
@@ -50,7 +50,7 @@ private lemma zeroVertex {X : SSet.{v}} (F : (Δ[1] ⊗ Δ[1] : SSet.{v}) ⟶ X)
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "U" => DGOdotMilnorRightAxisBase R d
-local notation "O" => verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "O" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 local notation "VInput" => dgIdentityHomGluingNullInput R (U)
 
 /-- 概要：同じ実外周の四辺は元核包含・元厳密合成・元零辺そのもの。
@@ -93,8 +93,8 @@ lemma dgOdotMilnorActualOuter_zero_vertex :
 方針：元全対象商に Sp 正本の零性を適用する。
 規約：元 V 零角を保持。使われ方：外周の零対角を使う全比較。 -/
 lemma dgOdotMilnorActualOuter_perfect_zero :
-    IsZeroCategory (perfectStableObject (squareVertex ((O) ≫ dgKInputPerfectNu R) 0 1)) := by
-  change IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex ((O) ≫ dgKInputPerfectNu R) 0 1)) := by
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
     (squareVertex (O) 0 1)))
   rw [dgOdotMilnorActualOuter_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R (VInput)

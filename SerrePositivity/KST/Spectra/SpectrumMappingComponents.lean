@@ -70,13 +70,13 @@ lemma pre_component {A X Z : OmegaSpectrum.{u}} (f : A ⟶ X) (g : X ⟶ Z) :
 
 /-- 元の源への参照射があれば、π 同型の後合成は全連結成分で全単射。 -/
 lemma post_piZero_bijective (A : OmegaSpectrum.{u}) {X Y : OmegaSpectrum.{u}}
-    (p : X ⟶ Y) (hp : ∀ n, KanPiIsomorphism (p.app n).right) (a : A ⟶ X) :
+    (p : X ⟶ Y) (hp : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (p.app n).right) (a : A ⟶ X) :
     Function.Bijective (mapπ₀ (post A p)) :=
   (post_piIsomorphism_of_levelwise A p hp).piZero_bijective_at (vertexOfHom a)
 
 /-- 段ごとの π 同型は実際の豊穣 Hom の π₀ で両側の逆を持つ。 -/
 theorem exists_componentInverse {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, KanPiIsomorphism (f.app n).right) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
     ∃ g : Y ⟶ X, component (f ≫ g) = component (𝟙 X) ∧
       component (g ≫ f) = component (𝟙 Y) := by
   obtain ⟨a, ha⟩ := (post_piZero_bijective Y f hf (levelwiseInverse f hf)).surjective

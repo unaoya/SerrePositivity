@@ -31,7 +31,7 @@ def zeroEvaluationTriangleAt (A : PointedSimplicialSet.{u}) (X : Object A) : Sp.
 lemma zeroEvaluationTriangleTrace_factor (A : PointedSimplicialSet.{u}) (X : Object A) :
     triangleTrace (zeroEvaluationTriangleAt A X) =
       toUnit (Δ[1] : SSet.{u}) ≫ eId SSet X ≫
-        EnrichedUnitTransformation.hom (parameterEvaluation A A.hom) X X := by
+        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom (parameterEvaluation A A.hom) X X := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

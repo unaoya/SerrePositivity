@@ -77,7 +77,7 @@ def objectRawBoundaryEdge (X : StableModel.{u})
 /-- 元の辺を Kan 単位で写すと既存の Kan 境界商の辺を厳密に回収する。 -/
 lemma objectRawBoundaryEdge_kan (X : StableModel.{u})
     (e : (objectSConstruction X.carrier) _⦋1⦌) :
-    mapSimplex (PointedKanReplacement.unit.app (boundaryReducedRealization 0 X)).right rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (PointedKanReplacement.unit.app (boundaryReducedRealization 0 X)).right rfl
       (objectRawBoundaryEdge X e) = objectBoundaryEdge X e := by
   apply RelativeMorphism.ext
   change (SSet.yonedaEquiv.symm e ≫ objectRawBoundaryComparison X) ≫ _ = _

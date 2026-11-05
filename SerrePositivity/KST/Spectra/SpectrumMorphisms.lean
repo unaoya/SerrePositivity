@@ -40,10 +40,10 @@ def pointedHomVertexEquiv (X Y : PointedSimplicialSet.{u}) :
 @[simp]
 theorem pointedHomVertexEquiv_pre {X Y Z : PointedSimplicialSet.{u}}
     (i : X ⟶ Y) (f : Y ⟶ Z) :
-    (PointedMapping.pre i Z).app _ (pointedHomVertexEquiv Y Z f) =
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z).app _ (pointedHomVertexEquiv Y Z f) =
       pointedHomVertexEquiv X Z (i ≫ f) := by
   dsimp only [pointedHomVertexEquiv, Equiv.trans_apply, MonoidalClosed.curryHomEquiv']
-  change (PointedMapping.prePointed i Z).right.app _
+  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right.app _
       (PointedSimplicialSet.unitVertexEquiv _ (MonoidalClosed.curry' f)) = _
   rw [← PointedSimplicialSet.unitVertexEquiv_naturality, PointedMapping.curry'_pre]
   rfl
@@ -70,13 +70,13 @@ theorem pointedHomVertexEquiv_post {X Y Z : PointedSimplicialSet.{u}}
 @[simp]
 theorem pointedHomVertexEquiv_suspension {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (suspensionHom X Y).right.app _ (pointedHomVertexEquiv X Y f) =
-      pointedHomVertexEquiv (suspension X) (suspension Y)
+      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)
         (PointedSimplicialSet.circle.{u} ◁ f) := by
   dsimp only [pointedHomVertexEquiv, Equiv.trans_apply, MonoidalClosed.curryHomEquiv']
   change (suspensionHom X Y).right.app _
       (PointedSimplicialSet.unitVertexEquiv (PointedObject.basedHom X Y)
         (MonoidalClosed.curry' f)) =
-    PointedSimplicialSet.unitVertexEquiv (PointedObject.basedHom (suspension X) (suspension Y))
+    PointedSimplicialSet.unitVertexEquiv (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y))
       (MonoidalClosed.curry' (PointedSimplicialSet.circle.{u} ◁ f))
   rw [← PointedSimplicialSet.unitVertexEquiv_naturality, suspensionHom_curry']
 

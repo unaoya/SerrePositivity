@@ -11,7 +11,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
@@ -41,7 +41,7 @@ theorem pointedSpaceLeftResolutionComparison_vertex (K : KanObject.{u})
   have h := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (ULift.up v))
     (pointedReverseKanFiberComparison_resolution K)
   simp only [NatTrans.comp_app_apply] at h
-  rw [uliftMapVertex, uliftOppositeVertex, pointedSpaceLeftCoefficientIso_vertex,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.uliftMapVertex, _root_.SerrePositivity.InfinityCategories.Stable.Transport.uliftOppositeVertex, _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointedSpaceLeftCoefficientIso_vertex,
     Equiv.apply_symm_apply] at h
   have he := congrArg (pointedSpaceFiberVertexEquiv (kanObjectOpFunctor.obj K)) h
   have hp := pointedReverseKanFiberComparison_point

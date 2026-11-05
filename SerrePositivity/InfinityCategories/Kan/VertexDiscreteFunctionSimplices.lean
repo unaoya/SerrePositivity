@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.VertexDiscrete
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 離散頂点ごとの単体を、離散頂点上の内部 Hom の一つの単体にする。 -/
 def vertexDiscreteFunctionSimplex {A X : SSet.{u}} {n : ℕ} (s : A _⦋0⦌ → X _⦋n⦌) :
@@ -42,13 +47,13 @@ def vertexDiscreteEvaluate {A X : SSet.{u}} (a : A _⦋0⦌) :
 /-- 座標から作った単体の評価は元の座標。 -/
 lemma vertexDiscreteFunctionSimplex_evaluate {A X : SSet.{u}} {n : ℕ}
     (s : A _⦋0⦌ → X _⦋n⦌) (a : A _⦋0⦌) :
-    (vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) (vertexDiscreteFunctionSimplex s) = s a :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex s) = s a :=
   X.map_id_apply (Opposite.op ⦋n⦌) (s a)
 
 /-- 任意の内部 Hom 単体は、全ての離散頂点での評価から厳密に復元できる。 -/
 lemma vertexDiscreteFunctionSimplex_reconstruct {A X : SSet.{u}} {n : ℕ}
     (s : ((ihom (vertexDiscrete A)).obj X) _⦋n⦌) :
-    vertexDiscreteFunctionSimplex (fun a => (vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) s) = s := by
+    _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (fun a => (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) s) = s := by
   apply CategoryTheory.Functor.functorHom_ext
   intro d α
   apply ConcreteCategory.hom_ext
@@ -62,8 +67,8 @@ lemma vertexDiscreteFunctionSimplex_reconstruct {A X : SSet.{u}} {n : ℕ}
 /-- 座標表示は全ての面・退化を保持する。 -/
 lemma vertexDiscreteFunctionSimplex_map {A X : SSet.{u}} {m n : ℕ}
     (α : ⦋m⦌ ⟶ ⦋n⦌) (s : A _⦋0⦌ → X _⦋n⦌) :
-    ((ihom (vertexDiscrete A)).obj X).map α.op (vertexDiscreteFunctionSimplex s) =
-      vertexDiscreteFunctionSimplex (fun a => X.map α.op (s a)) := by
+    ((ihom (vertexDiscrete A)).obj X).map α.op (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex s) =
+      _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (fun a => X.map α.op (s a)) := by
   apply CategoryTheory.Functor.functorHom_ext
   intro d β
   apply ConcreteCategory.hom_ext
@@ -73,6 +78,33 @@ lemma vertexDiscreteFunctionSimplex_map {A X : SSet.{u}} {m n : ℕ}
 /-- 離散図式の頂点表示の評価は元の図式の頂点の像。 -/
 lemma vertexDiscreteEvaluate_functorVertex {A X : SSet.{u}} (F : vertexDiscrete A ⟶ X)
     (a : A _⦋0⦌) :
-    (vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) (functorVertex F) = F.app (Opposite.op ⦋0⦌) a := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) (functorVertex F) = F.app (Opposite.op ⦋0⦌) a := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate_functorVertex := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate_functorVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_evaluate := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_map := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_reconstruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex._proof_1

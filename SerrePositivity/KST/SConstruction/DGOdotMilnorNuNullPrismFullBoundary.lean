@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 方針：元境界ホモトピーの因子だけを交換する。
 規約：元の全単体を保持。使われ方：元 prism 全境界の側面。 -/
 def dgOdotMilnorNuNullPrismTimeBoundary (j : Fin 2) :
-    (Δ[1] : SSet.{u + 2}) ⊗ (boundary 2 : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} :=
+    (Δ[1] : SSet.{u + 2}) ⊗ (boundary 2 : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
   (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫
     (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h
 
@@ -53,7 +53,7 @@ lemma dgOdotMilnorNuNullPrismBoundary_compatible (j : Fin 2) :
 規約：元全五面を変更しない。使われ方：指定全境界の内部充填への入口。 -/
 def dgOdotMilnorNuNullPrismFullBoundary (j : Fin 2) :
     (Subcomplex.unionProd (boundary 1) (boundary 2) : SSet.{u + 2}) ⟶
-      StableInfinity.{u + 1} :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
   (Subcomplex.unionProd.isPushout (boundary 1) (boundary 2)).desc
     (dgOdotMilnorNuNullPrismTimeBoundary R d h j)
     (intervalBoundaryDiagram

@@ -1,0 +1,110 @@
+{
+  "status": "PASS_VERIFY_PENDING",
+  "source_head": "eadc9f5c532b01a305e0c58c708eee5e9c11383f",
+  "authorization": "IF-F §9 main ab6b296b4",
+  "internal": {
+    "stage": "internal",
+    "round": 9,
+    "exit_code": 0,
+    "seconds": 6.822,
+    "log": "round-09.log",
+    "errors": []
+  },
+  "downstream": {
+    "stage": "downstream",
+    "round": 1,
+    "exit_code": 0,
+    "seconds": 6129.204,
+    "log": "round-01.log",
+    "errors": []
+  },
+  "preservation": {
+    "status": "PASS",
+    "modules": 4034,
+    "unexplained": 0,
+    "raw_changes": 21,
+    "explained": 21,
+    "aliases_excluded": 7526
+  },
+  "alias_validation": {
+    "checked": 7526,
+    "failed": 0
+  },
+  "layers": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "ratchet": {
+    "status": "PASS",
+    "baseline": "if-f2/before-layers.json",
+    "baseline_commit": "640288f33e3d428c41d9cc0e5a35b85f1a63ea5c",
+    "increases": [],
+    "prior_f1_baseline_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+    "prior_f1_increases": [
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+        "before": 0,
+        "after": 74
+      }
+    ],
+    "explanation": "Both per-root metrics already equal 74 in the merged F-2 before measurement. SetSectionsNaturality was introduced by main f2b665682 before base 640288f33 and is unchanged by F-2. No exception or aggregate bound was added.",
+    "head": "500ed993836a2e20130169d0f3a92be359fe3f32"
+  },
+  "legacy_references": {
+    "count": 0,
+    "missing_ilean": [],
+    "fully_qualified_uses": 0
+  },
+  "changes": {
+    "archive_static_only": {
+      "files": 4,
+      "added_lines": 62,
+      "removed_lines": 62
+    },
+    "renamed_providers": {
+      "files": 730,
+      "added_lines": 42163,
+      "removed_lines": 13457
+    },
+    "consumers_infinity": {
+      "files": 466,
+      "added_lines": 1460,
+      "removed_lines": 1460
+    },
+    "compatibility_helper": {
+      "files": 1,
+      "added_lines": 105,
+      "removed_lines": 0
+    },
+    "consumers_kst": {
+      "files": 2837,
+      "added_lines": 17962,
+      "removed_lines": 17962
+    },
+    "audits": {
+      "files": 5,
+      "added_lines": 1924,
+      "removed_lines": 1924
+    },
+    "tools_tests": {
+      "files": 2,
+      "added_lines": 262,
+      "removed_lines": 0
+    }
+  },
+  "archive": "4 files static only; no Archive build/snapshot claimed",
+  "verify": {
+    "status": "NOT_RUN",
+    "jobs": 6,
+    "memory_gb": 40
+  }
+}

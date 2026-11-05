@@ -22,14 +22,14 @@ variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 /-- π₀ の全単射性と全基点の正次数の全単射性。空の始域にも意味を持つ。 -/
 def KanMapPiCriterion (f : X ⟶ Y) : Prop :=
   Function.Bijective (mapπ₀ f) ∧ ∀ (x : X _⦋0⦌) (n : ℕ),
-    Function.Bijective (KanHomotopyGroup.map (n := n) f (x := x) rfl)
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) f (x := x) rfl)
 
 /-- 明示的な正次数の条件を、既存の零次数を含む条件へ移す。 -/
 lemma KanMapPiCriterion.kanPiIsomorphism {f : X ⟶ Y} (h : KanMapPiCriterion f) :
-    KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   intro x n
   cases n with
-  | zero => exact (KanHomotopyZero.map_bijective_iff_piZero f (x := x) rfl).mpr h.1
+  | zero => exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_bijective_iff_piZero f (x := x) rfl).mpr h.1
   | succ n => exact h.2 x n
 
 /-- Kan 射の同値性と π 判定。π₀ を別に要求することで空の場合も含む。 -/

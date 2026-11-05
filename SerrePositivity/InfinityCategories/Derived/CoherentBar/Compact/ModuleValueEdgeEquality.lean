@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgBarCompactSpaceEdgeValue_heq {x y x' y' : SpaceInfinity.{u} _⦋0⦌}
     (e : SpaceInfinity.{u}.Edge x y) (e' : SpaceInfinity.{u}.Edge x' y')

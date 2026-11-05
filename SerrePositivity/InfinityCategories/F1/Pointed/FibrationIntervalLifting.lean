@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -54,9 +56,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -83,14 +88,14 @@ theorem exists_fibration_interval_lift {A E B : SSet.{u}}
 使われ方：Goerss–Jardine I §§7–8、Kerodon §3.2.6。零次元の境界の充填。 -/
 theorem fibration_surjective_vertices_of_zero {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) [Fibration p] (e₀ : E _⦋0⦌)
-    (hp₀ : Function.Surjective (KanHomotopy.map 0 p (x := e₀) rfl)) :
+    (hp₀ : Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 p (x := e₀) rfl)) :
     Function.Surjective (p.app (Opposite.op ⦋0⦌)) := by
   intro b
   let t : B.PtSimplex 0 (p.app _ e₀) := (PtSimplex.equiv₀ _).symm b
-  obtain ⟨a, ha⟩ := hp₀ (KanHomotopy.mk 0 t)
-  obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective 0 a
-  have heq : KanHomotopy.mk 0 t = KanHomotopy.mk 0 (mapSimplex p rfl s) := ha.symm
-  obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct 0 t (mapSimplex p rfl s) 0).1 heq
+  obtain ⟨a, ha⟩ := hp₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 t)
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective 0 a
+  have heq : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 t = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) := ha.symm
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct 0 t (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) 0).1 heq
   have hp : J.rlp p := (fibration_iff _).1 inferInstance
   let : HasLiftingProperty (stdSimplex.δ.{u} (1 : Fin 2)) p :=
     AnodyneHomotopy.delta_anodyne 1 0 (by decide) p hp
@@ -111,10 +116,22 @@ theorem fibration_surjective_vertices_of_zero {E B : SSet.{u}} [KanComplex E] [K
 使われ方：Goerss–Jardine I §7。acyclic fibration の全ての fiber の非空性。 -/
 theorem fibration_surjective_vertices_of_piIsomorphism {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
-    (hp : KanPiIsomorphism p) (e₀ : E _⦋0⦌) :
+    (hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p) (e₀ : E _⦋0⦌) :
     Function.Surjective (p.app (Opposite.op ⦋0⦌)) :=
-  fibration_surjective_vertices_of_zero p e₀ (hp e₀ 0).surjective
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_zero p e₀ (hp e₀ 0).surjective
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_fibration_interval_lift := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_fibration_interval_lift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_surjective_vertices_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_surjective_vertices_of_zero := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_zero

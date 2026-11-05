@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderEndpoints
 
 /-!
@@ -13,6 +15,9 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 
 /-- パラメータだけを持つ円柱の一点の底。 -/
 structure Point where
@@ -20,7 +25,7 @@ structure Point where
   val : PUnit.{v + 1}
 
 /-- 全 Hom が単位である一点の豊穣構造。 -/
-instance pointEnrichedCategory : EnrichedCategory SSet.{u} Point.{v} where
+instance pointEnrichedCategory : EnrichedCategory SSet.{u} _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v} where
   Hom _ _ := 𝟙_ SSet.{u}
   id _ := 𝟙 _
   comp _ _ _ := fst _ _
@@ -43,4 +48,67 @@ instance pointEnrichedCategory : EnrichedCategory SSet.{u} Point.{v} where
     rintro ⟨⟨⟩, ⟨⟩, ⟨⟩⟩
     rfl
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pointEnrichedCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pointEnrichedCategory := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pointEnrichedCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.rec := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.recOn := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.val (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.val := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pointEnrichedCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pointEnrichedCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pointEnrichedCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pointEnrichedCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pointEnrichedCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pointEnrichedCategory._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.Point.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.mk.sizeOf_spec

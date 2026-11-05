@@ -27,16 +27,16 @@ lemma bridge_stage_positive_kernel {I : Type u} [PartialOrder I]
     (s : ∀ i : I, (X i).obj ⟶ T.obj)
     (hstage : ∀ (i j : I) (hij : i ≤ j), Nonempty (Homotopy (s i) (τ hij ≫ s j)))
     (n : ℕ) (i : I) (y : (X i).obj _⦋0⦌)
-    (a b : KanHomotopyGroup (X i).obj n y)
+    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y)
     (hab : dgBarCompactPiMap n (l i) y a = dgBarCompactPiMap n (l i) y b) :
-    KanHomotopyGroup.map (s i) rfl a = KanHomotopyGroup.map (s i) rfl b := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s i) rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s i) rfl b := by
   obtain ⟨j, hij, hj⟩ := h.positive_equal_at_stage n i y a b hab
   obtain ⟨H⟩ := hstage i j hij
   apply (homotopy_map_equality_iff H n y a b).mpr
-  have hm (c : KanHomotopyGroup (X i).obj n y) :
-      KanHomotopyGroup.map (τ hij ≫ s j) rfl c =
-        KanHomotopyGroup.map (s j) rfl (dgBarCompactPiMap n (τ hij) y c) :=
-    DFunLike.congr_fun (KanHomotopyGroup.map_comp (τ hij) rfl (s j) rfl rfl) c
-  exact (hm a).trans ((congrArg (KanHomotopyGroup.map (s j) rfl) hj).trans (hm b).symm)
+  have hm (c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X i).obj n y) :
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (τ hij ≫ s j) rfl c =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s j) rfl (dgBarCompactPiMap n (τ hij) y c) :=
+    DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (τ hij) rfl (s j) rfl rfl) c
+  exact (hm a).trans ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (s j) rfl) hj).trans (hm b).symm)
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

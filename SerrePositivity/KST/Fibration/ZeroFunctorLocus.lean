@@ -19,34 +19,34 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の関手単体集合の零頂点を全て保持し、全自然変換を含む全部分複体。 -/
-def zeroFunctorLocus (A B : StableCategory.{u}) : SSet.{u} :=
+def zeroFunctorLocus (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : SSet.{u} :=
   fullSubcomplexOnVertices ((ihom A.obj).obj B.obj) IsZeroVertex
 
 /-- 全ての実零値関手は、この同じ全部分複体でも零対象である。 -/
-theorem zeroFunctorLocus_allZero (A B : StableCategory.{u})
+theorem zeroFunctorLocus_allZero (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
     (v : (zeroFunctorLocus A B) _⦋0⦌) : IsZeroVertex v := by
   have hv : IsZeroVertex v.val := fullSubcomplexOnVertices_vertex v
   exact ⟨isInitialVertex_fullSubcomplex_of_ambient IsZeroVertex v hv.1,
     isTerminalVertex_fullSubcomplex_of_ambient IsZeroVertex v hv.2⟩
 
-instance zeroFunctorLocus_hasZeroVertex (A B : StableCategory.{u}) :
+instance zeroFunctorLocus_hasZeroVertex (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     HasZeroVertex (zeroFunctorLocus A B) := by
   let z := chosenZeroVertex ((ihom A.obj).obj B.obj)
   let v := fullSubcategoryVertex IsZeroVertex z.vertex z.isZero
   exact ⟨⟨v, zeroFunctorLocus_allZero A B v⟩⟩
 
 /-- 元の零値関手と自然変換の全部分複体は、全次元の境界を充填する。 -/
-theorem zeroFunctorLocus_isContractibleKan (A B : StableCategory.{u}) :
+theorem zeroFunctorLocus_isContractibleKan (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     IsContractibleKan (zeroFunctorLocus A B) :=
   allZeroVertices_isContractibleKan _ (zeroFunctorLocus_allZero A B)
 
-instance zeroFunctorLocus_kanComplex (A B : StableCategory.{u}) :
+instance zeroFunctorLocus_kanComplex (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     KanComplex (zeroFunctorLocus A B) := (zeroFunctorLocus_isContractibleKan A B).kanComplex
 
 /-- 零値関手は完全なので、同じ全単体を完全関手の部分複体へ含める。 -/
-def zeroFunctorLocusToExact (A B : StableCategory.{u}) :
-    zeroFunctorLocus A B ⟶ (exactFunctors A B : SSet.{u}) :=
-  fullSubcomplexLift (IsExactVertex A B)
+def zeroFunctorLocusToExact (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    zeroFunctorLocus A B ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) :=
+  fullSubcomplexLift (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex A B)
     (fullSubcomplexOnVertices ((ihom A.obj).obj B.obj) IsZeroVertex).ι (by
       intro v
       let F := (functorVertexEquiv A.obj B.obj).symm v.val
@@ -58,19 +58,19 @@ def zeroFunctorLocusToExact (A B : StableCategory.{u}) :
         rwa [evaluateFunctorAt_functorVertex] at h))
 
 /-- 元の関手単体集合への包含は、選び直さず同じ全単体を回収する。 -/
-theorem zeroFunctorLocusToExact_inclusion (A B : StableCategory.{u}) :
-    zeroFunctorLocusToExact A B ≫ (exactFunctors A B).ι =
+theorem zeroFunctorLocusToExact_inclusion (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+    zeroFunctorLocusToExact A B ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B).ι =
       (fullSubcomplexOnVertices ((ihom A.obj).obj B.obj) IsZeroVertex).ι :=
   fullSubcomplexLift_ι _ _ _
 
 /-- 全自然変換が可逆な実零値部分複体を、元の完全関手の Kan Hom へ含める。 -/
-def zeroFunctorLocusToStableHom (A B : StableQCat.{u}) :
+def zeroFunctorLocusToStableHom (A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     zeroFunctorLocus A B ⟶ (A ⟶[SSet.{u}] B) :=
   kanSourceCoreMap (zeroFunctorLocusToExact A B)
 
 /-- Kan Hom の core を忘れると、同じ元の零値完全関手の全単体に戻る。 -/
-theorem zeroFunctorLocusToStableHom_inclusion (A B : StableQCat.{u}) :
-    zeroFunctorLocusToStableHom A B ≫ (quasicategoryCore (exactFunctors A B : SSet.{u})).ι =
+theorem zeroFunctorLocusToStableHom_inclusion (A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    zeroFunctorLocusToStableHom A B ≫ (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι =
       zeroFunctorLocusToExact A B := kanSourceCoreMap_inclusion _
 
 end SerrePositivity.KST.Fibration

@@ -27,12 +27,12 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 前二射・後二射・右結合の元の全合成面を三面に持つ実四面体。 -/
 def monicKTracedCoherentTripleData :=
-  compositionTripleTetrahedron (monicKTracedCoherentComposition F f g)
+  _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedron (monicKTracedCoherentComposition F f g)
     (monicKTracedCoherentComposition F g h) (monicKTracedCoherentComposition F f (g ≫ h))
 
 /-- 元の指定左結合面の全単体を保持して長辺の表示を移した同じデータ。 -/
 def monicKTracedCoherentTriplePrescribedLeftData :=
-  compositionTriangleLongEdgeData (monicKTracedCoherentComposition F (f ≫ g) h)
+  _root_.SerrePositivity.InfinityCategories.Kan.compositionTriangleLongEdgeData (monicKTracedCoherentComposition F (f ≫ g) h)
     (congrArg (fun k => (coherentNerveEdge (monicKTracedSpectrumMap F k)).edge)
       (Category.assoc f g h))
 

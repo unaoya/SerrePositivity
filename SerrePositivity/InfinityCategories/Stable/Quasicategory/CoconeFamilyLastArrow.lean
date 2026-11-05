@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge
@@ -18,26 +20,29 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {K X : SSet.{u}} {n : ℕ}
 
 /-- 元の全余錐族の終端脚を、その全一次単体のまま回収する。 -/
 def spanCoconeLastArrow (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X) :
     K ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
   G ≫ (pre ((joinStdSimplexIso 0 0).inv ≫
-    joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X
+    joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X
 
 lemma spanCoconeLastArrow_source (D : (Δ[n] : SSet.{u}) ⟶ X)
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X)
     (hG : G ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X =
       SSet.const (functorVertex D)) :
-    spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       SSet.const (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) := by
-  let a := (joinStdSimplexIso 0 0).inv ≫ joinMap (simplexLastPoint n) (𝟙 Δ[0])
+  let a := (joinStdSimplexIso 0 0).inv ≫ joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0])
   have he : (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) ≫ a =
-      simplexLastPoint n ≫ joinInl (Δ[n] : SSet.{u}) Δ[0] := by
+      _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n ≫ joinInl (Δ[n] : SSet.{u}) Δ[0] := by
     dsimp only [a]
     rw [← joinStdSimplexIso_zero_inl, Category.assoc, Iso.hom_inv_id_assoc,
       joinInl_joinMap]
@@ -45,9 +50,9 @@ lemma spanCoconeLastArrow_source (D : (Δ[n] : SSet.{u}) ⟶ X)
   rw [SSet.yonedaEquiv_comp, SSet.yonedaEquiv_comp,
     show SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) =
       stdSimplex.obj₀Equiv.symm (0 : Fin 2) from by decide,
-    show SSet.yonedaEquiv (simplexLastPoint n) = stdSimplex.obj₀Equiv.symm (Fin.last n) from
+    show SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) = stdSimplex.obj₀Equiv.symm (Fin.last n) from
       Equiv.apply_symm_apply _ _] at hv
-  rw [spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
   change G ≫ evaluateFunctorAt (a.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = _
   rw [hv, ← stable_pre_evaluateFunctorAt, ← Category.assoc, hG,
@@ -58,36 +63,36 @@ lemma spanCoconeLastArrow_target
     (hG : G ≫ evaluateFunctorAt
       ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z) :
-    spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.const z := by
-  rw [spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
   exact hG
 
 /-- 任意の余錐族の終端脚の終点評価は、元の余錐の頂点評価そのもの。 -/
 lemma spanCoconeLastArrow_target_eq
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X) :
-    spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       G ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) := by
-  rw [spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
   rfl
 
 /-- 指定された同じ全終端辺から、元の余錐族の頂点を厳密に回収する。 -/
 lemma spanCoconeFamily_apex_of_lastArrow
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X)
     (a : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-    (ha : G ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+    (ha : G ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
       a ≫ (pre (joinStdSimplexIso 0 0).hom).app X) :
     G ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) =
       a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   have he := congrArg (fun f => f ≫ (pre (joinStdSimplexIso 0 0).inv).app X) ha
-  have he' : spanCoconeLastArrow G = a := by
-    simpa only [spanCoconeLastArrow, Category.assoc, ← NatTrans.comp_app, ← pre_map,
+  have he' : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow G = a := by
+    simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow, Category.assoc, ← NatTrans.comp_app, ← pre_map,
       Iso.inv_hom_id, pre_id, NatTrans.id_app, Category.comp_id] using he
   have ht := congrArg (fun f => f ≫
     evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) he'
-  rwa [spanCoconeLastArrow_target_eq] at ht
+  rwa [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target_eq] at ht
 
 /-- 元の固定前段と固定終点から、終端脚の固定端点 Hom 表示を構成する。 -/
 def spanCoconeLastMapping (D : (Δ[n] : SSet.{u}) ⟶ X) (z : X _⦋0⦌)
@@ -99,8 +104,8 @@ def spanCoconeLastMapping (D : (Δ[n] : SSet.{u}) ⟶ X) (z : X _⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z) :
     K ⟶ intervalMappingSpace
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z :=
-  spanArrowFamilyMapping (spanCoconeLastArrow G) (spanCoconeLastArrow_source D G hG)
-    (spanCoconeLastArrow_target G z hz)
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow G) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_source D G hG)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target G z hz)
 
 lemma spanCoconeLastMapping_edge (D : (Δ[n] : SSet.{u}) ⟶ X) (z : X _⦋0⦌)
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X)
@@ -109,14 +114,47 @@ lemma spanCoconeLastMapping_edge (D : (Δ[n] : SSet.{u}) ⟶ X) (z : X _⦋0⦌)
     (hz : G ≫ evaluateFunctorAt
       ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z) :
-    G ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
-      spanCoconeLastMapping D z G hG hz ≫
+    G ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping D z G hG hz ≫
         vertexFiberι ((pre (boundary 1).ι).app X)
           (functorVertex (intervalMappingBoundary
             (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)) ≫
         (pre (joinStdSimplexIso 0 0).hom).app X := by
-  rw [← Category.assoc, spanCoconeLastMapping, spanArrowFamilyMapping_inclusion,
-    spanCoconeLastArrow, Category.assoc, ← NatTrans.comp_app, ← pre_map,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping_inclusion,
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     ← Category.assoc, Iso.hom_inv_id, Category.id_comp]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeFamily_apex_of_lastArrow := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeFamily_apex_of_lastArrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_source := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_target_eq := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping_edge := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping.eq_1

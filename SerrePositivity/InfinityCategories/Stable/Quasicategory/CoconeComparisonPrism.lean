@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
@@ -56,9 +58,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def spanComparisonPrism {K L X : SSet.{u}}
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) : K ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom L).obj X :=
@@ -66,9 +71,9 @@ def spanComparisonPrism {K L X : SSet.{u}}
 
 lemma spanComparisonPrism_pre_parameter {K K' L X : SSet.{u}} (j : K' ⟶ K)
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
-    (j ▷ (Δ[1] : SSet.{u})) ≫ spanComparisonPrism s =
-      spanComparisonPrism (((ihom L).map ((pre j).app X)).app (Opposite.op ⦋1⦌) s) := by
-  simp only [spanComparisonPrism]
+    (j ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism s =
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (((ihom L).map ((pre j).app X)).app (Opposite.op ⦋1⦌) s) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism]
   rw [← uncurry_pre_app, Category.assoc,
     ← internalHomSwapIso_pre, ← SSet.yonedaEquiv_symm_comp]
   rfl
@@ -78,16 +83,34 @@ def spanFunctorEdgeUnflipHomotopy {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X
     (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) : SSet.Homotopy F G :=
-  simplicialHomotopyOfFunctorEdge (spanFunctorEdgeUnflip l).toTruncated
+  simplicialHomotopyOfFunctorEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated
 
 lemma spanFunctorEdgeUnflipHomotopy_h {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
     (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflipHomotopy l).h = spanComparisonPrism l.edge := by
-  change uncurry (SSet.yonedaEquiv.symm (spanFunctorEdgeUnflip l).edge) =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy l).h = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism l.edge := by
+  change uncurry (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).edge) =
     uncurry (SSet.yonedaEquiv.symm l.edge ≫ (internalHomSwapIso L K X).hom)
-  rw [spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism_pre_parameter := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism_pre_parameter
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflipHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflipHomotopy_h := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy_h
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanComparisonPrism.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism.eq_1

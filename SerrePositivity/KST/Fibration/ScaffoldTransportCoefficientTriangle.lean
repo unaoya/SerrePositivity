@@ -14,17 +14,17 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の係数値の定値包含を用いて、同じ scaffold 三角を制限する。 -/
 def coefficientTriangle (c : I) : FunctorIso
     ((SSet.uliftFunctor.{u + 1, u}).map
       (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) ≫
-        s.toStrictTransportComparisonSpan.coherentComparison.hom)
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom)
     ((SSet.uliftFunctor.{u + 1, u}).map
       (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
         leftCoherentTransportComparison p) := by
-  have h := (s.scaffoldTriangle).precomp ((SSet.uliftFunctor.{u + 1, u}).map
+  have h := ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.scaffoldTriangle s)).precomp ((SSet.uliftFunctor.{u + 1, u}).map
     (simplicialReplacementConstantLift (leftStrictTransportDiagram p) c))
   rw [← Category.assoc, ← Functor.map_comp,
     simplicialReplacementConstantLift_universalScaffold, ← Category.assoc, ← Functor.map_comp,
@@ -35,25 +35,25 @@ def coefficientTriangle (c : I) : FunctorIso
 def coefficientPointIso (c : I) (v : (leftStrictTransport p c) _⦋0⦌) : VertexIso
     (((SSet.uliftFunctor.{u + 1, u}).map
       (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) ≫
-        s.toStrictTransportComparisonSpan.coherentComparison.hom).app
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom).app
           (Opposite.op ⦋0⦌) (ULift.up v))
     (((SSet.uliftFunctor.{u + 1, u}).map
       (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
         leftCoherentTransportComparison p).app (Opposite.op ⦋0⦌) (ULift.up v)) :=
-  (s.coefficientTriangle c).app (ULift.up v)
+  ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientTriangle s) c).app (ULift.up v)
 
 /-- 元の係数点の同じ三角を pointed-space に送る。 -/
 def coefficientPointedIso (c : I) (v : (leftStrictTransport p c) _⦋0⦌) : VertexIso
     (((SSet.uliftFunctor.{u + 1, u}).map
       (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) ≫
-        s.toStrictTransportComparisonSpan.representation.pointedMap).app
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s.toStrictTransportComparisonSpan).pointedMap).app
           (Opposite.op ⦋0⦌) (ULift.up v))
     (((SSet.uliftFunctor.{u + 1, u}).map
       (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
         leftCoherentTransportComparison p ≫
           pullback.fst pointedSpaceProjection (leftCoherentTransport p)).app
             (Opposite.op ⦋0⦌) (ULift.up v)) :=
-  VertexIso.map (s.coefficientPointIso c v)
+  VertexIso.map ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientPointIso s) c v)
     (pullback.fst pointedSpaceProjection (leftCoherentTransport p))
 
 end ScaffoldTransportComparisonSpan

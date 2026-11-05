@@ -9,7 +9,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Fibration
@@ -34,8 +34,8 @@ theorem strictTransportPostToLeftFibration_evaluate_ambient
     (strictTransportPostToLeftFibration p q f hf).app c ≫
       SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate q c ≫ vertexFiberι q (nerveVertex c) =
       SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) ≫ f := by
-  rw [strictTransportEvaluate_ambient, ← Category.assoc,
-    strictTransportEvaluate_ambient]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportEvaluate_ambient, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportEvaluate_ambient]
   exact sectionPostToLeftFibration_evaluate p q f hf _ _
 
 /-- 同じ評価は fiber 内でも、元の底上の関手から誘導した実 fiber 写像そのもの。 -/

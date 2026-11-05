@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：拡張した単体作用の後の標準形は、元の作用の後の標準形への零点追加である。
@@ -29,19 +29,19 @@ open scoped Simplicial
 theorem freeStandardPrependNormalForm_action {n d r : ℕ} (θ : ⦋r⦌ ⟶ ⦋d⦌)
     (p : FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)) :
     freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r + 1⦌)
-      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (simplexPrepend θ).op
+      ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ).op
         (fatNormalFormRealize _ _ (freeStandardPrependNormalForm p))) =
       freeStandardPrependNormalForm
         (freeDegeneraciesNormalForm (Δ[n] : SSet.{u}) (op ⦋r⦌)
           ((freeDegeneracies.obj (Δ[n] : SSet.{u})).map θ.op (fatNormalFormRealize _ _ p))) := by
   rw [freeDegeneraciesNormalForm_action, freeDegeneraciesNormalForm_action]
   change fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r + 1⦌)
-    (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
-    (simplexPrepend θ ≫ simplexPrepend p.epi) =
+    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend p.epi) =
     freeStandardPrependNormalForm
       (fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r⦌)
         p.simplex (θ ≫ p.epi))
-  rw [← simplexPrepend_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp]
   exact freeStandardPrepend_normalize p.simplex (θ ≫ p.epi)
 
 end SerrePositivity.KST.Comparison

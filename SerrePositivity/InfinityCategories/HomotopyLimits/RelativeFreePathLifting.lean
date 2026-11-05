@@ -26,34 +26,34 @@ noncomputable section
 lemma relativeFreePath_lift {Y Z : PointedSimplicialSet.{u}}
     (p : Y ⟶ Z) [Fibration p.right] (k : Fin 2)
     {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
-    (a : T ⟶ (freePathSpace Y).right) (b : U ⟶ Y.right)
-    (c : U ⟶ (freePathSpace Z).right)
-    (hc : j ≫ b = a ≫ (freePathEndpoint Y k).right)
-    (he : a ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = j ≫ c)
-    (ha : b ≫ p.right = c ≫ (freePathEndpoint Z k).right) :
-    ∃ l : U ⟶ (freePathSpace Y).right, j ≫ l = a ∧
-      l ≫ (freePathEndpoint Y k).right = b ∧
-      l ≫ (PointedObject.basedHomMap freeInterval.{u} p).right = c := by
+    (a : T ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right) (b : U ⟶ Y.right)
+    (c : U ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Z).right)
+    (hc : j ≫ b = a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y k).right)
+    (he : a ≫ (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} p).right = j ≫ c)
+    (ha : b ≫ p.right = c ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Z k).right) :
+    ∃ l : U ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right, j ≫ l = a ∧
+      l ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y k).right = b ∧
+      l ≫ (PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} p).right = c := by
   let eY := PointedSimplicialSet.forget.mapIso (unitIsoSelf (X := Y))
   let eZ := PointedSimplicialSet.forget.mapIso (unitIsoSelf (X := Z))
-  have hendY : PointedMapping.pre (freeIntervalEndpoint.{u} k) Y ≫ eY.hom =
-      (freePathEndpoint Y k).right := rfl
-  have hendZ : PointedMapping.pre (freeIntervalEndpoint.{u} k) Z ≫ eZ.hom =
-      (freePathEndpoint Z k).right := rfl
+  have hendY : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k) Y ≫ eY.hom =
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y k).right := rfl
+  have hendZ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k) Z ≫ eZ.hom =
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Z k).right := rfl
   have hu : (PointedObject.basedHomMap (𝟙_ PointedSimplicialSet.{u}) p).right ≫ eZ.hom =
       eY.hom ≫ p.right := by
     exact congrArg Under.Hom.right ((unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality p)
-  have hc' : j ≫ (b ≫ eY.inv) = a ≫ PointedMapping.pre (freeIntervalEndpoint.{u} k) Y := by
+  have hc' : j ≫ (b ≫ eY.inv) = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k) Y := by
     apply (cancel_mono eY.hom).mp
     simpa only [Category.assoc, Iso.inv_hom_id_assoc, Iso.inv_hom_id,
       Category.comp_id, hendY] using hc
   have ha' : (b ≫ eY.inv) ≫
       (PointedObject.basedHomMap (𝟙_ PointedSimplicialSet.{u}) p).right =
-        c ≫ PointedMapping.pre (freeIntervalEndpoint.{u} k) Z := by
+        c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k) Z := by
     apply (cancel_mono eZ.hom).mp
     simpa only [Category.assoc, hu, Iso.inv_hom_id_assoc, hendZ] using ha
   obtain ⟨l, hl, hpre, hp⟩ := relativePointedHom_anodyneLift
-    (freeIntervalEndpoint.{u} k) (freeIntervalEndpoint_anodyne k) p j a (b ≫ eY.inv) c hc' he ha'
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne k) p j a (b ≫ eY.inv) c hc' he ha'
   refine ⟨l, hl, ?_, hp⟩
   rw [← hendY, ← Category.assoc, hpre, Category.assoc, eY.inv_hom_id]
   change b ≫ 𝟙 Y.right = b

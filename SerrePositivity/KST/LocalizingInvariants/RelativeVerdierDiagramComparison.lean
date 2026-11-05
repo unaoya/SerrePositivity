@@ -20,18 +20,18 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}}
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
 
 /-- 厳密な代表が別途供給された場合、同じ E の値の pullback を全源図式同型で輸送する。 -/
-lemma comparison_isPullback_of_sourceIso (d : RelativeVerdierRectangle ν)
+lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierRectangleBoundaryIso d.diagram F)
-    (e : VerdierRectangleDiagramIso d.diagram F b)
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso d.diagram F)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso d.diagram F b)
     {E : S ⟶ Spectra.Sp.{u}} (hE : IsRelativeLocalizingInvariant ν E) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
-  exact (d.comparisonSquare_isPullback hE).of_functorIso
+  exact ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE).of_functorIso
     ((e.comparison.precomp c).postcomp E)
 
 end RelativeVerdierRectangle

@@ -38,7 +38,7 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorCellInput R d)
 方針：元下辺と元 ν の全一単体の回収を使う。
 規約：元辺の等号。使われ方：元実下境界への厳密復元。 -/
 lemma dgOdotMilnorNuInclusionMap_diagram :
-    SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorFlatKernelExactMap R d)).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorFlatKernelExactMap R d)).edge =
       squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R := by
   symm
   rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).1]
@@ -54,7 +54,7 @@ variable (h : DGGluingMilnorSquare R d)
 規約：同じ包含・同じ四角形。使われ方：元絶対下境界への厳密復元。 -/
 lemma dgOdotMilnorNuAbsoluteInclusionMap_diagram :
     SSet.yonedaEquiv.symm
-        (stableArrow (dgOdotMilnorNuPerfectSequence R d h).verdier.inclusion).edge =
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuPerfectSequence R d h).verdier.inclusion).edge =
       squareBottomEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h) :=
   (perfectVerdierRawSquare_edges (dgOdotMilnorNuPerfectSequence R d h)).1.symm
 
@@ -64,7 +64,7 @@ lemma dgOdotMilnorNuAbsoluteInclusionMap_diagram :
 def dgOdotMilnorNuInclusionDiagramComparison : FunctorIso
     (squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (squareBottomEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} => FunctorIso f g)
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} => FunctorIso f g)
     (dgOdotMilnorNuInclusionMap_diagram R d) (dgOdotMilnorNuAbsoluteInclusionMap_diagram R d h))
       (Iso.refl _)
 
@@ -74,7 +74,7 @@ def dgOdotMilnorNuInclusionDiagramComparison : FunctorIso
 def dgOdotMilnorNuInclusionDiagramHomotopy : SSet.Homotopy
     (squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (squareBottomEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} =>
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} =>
     SSet.Homotopy f g) (dgOdotMilnorNuInclusionMap_diagram R d)
       (dgOdotMilnorNuAbsoluteInclusionMap_diagram R d h))
         (dgOdotMilnorNuInclusionArrowHomotopy R d)
@@ -120,11 +120,11 @@ lemma dgOdotMilnorNuInclusionDiagramHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuInclusionDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (A : StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuInclusionDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (B : StableQCat.{u + 1}))).edge :=
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge :=
   ⟨(congrArg (fun f => (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫ f)
       (dgOdotMilnorNuInclusionDiagramHomotopy_h R d h)).trans
         (dgOdotMilnorNuInclusionArrowHomotopy_paths R d).1,

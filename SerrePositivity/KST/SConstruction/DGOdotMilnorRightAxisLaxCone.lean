@@ -40,7 +40,7 @@ lemma dgOdotMilnorRightAxisNativeStable : IsStable (dgNerve R (U)) :=
 規約：差を選び直さない。使われ方：実 cone 比較の native 側。 -/
 def dgOdotMilnorRightAxisNativeLaxDifference :
     F2.laxPullback (𝟙 (dgNerve R (U))) (𝟙 (dgNerve R (U))) ⟶ dgNerve R (U) :=
-  @CofiberFamily.cofiber (dgNerve R (U)) inferInstance
+  @_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R (U)) inferInstance
     (dgOdotMilnorRightAxisNativeStable R d) _
     (F2.laxPullbackArrow (𝟙 (dgNerve R (U))) (𝟙 (dgNerve R (U))))
 

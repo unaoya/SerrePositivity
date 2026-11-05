@@ -45,8 +45,8 @@ private lemma prefixIsoNormalization {K L X : SSet.{u}} [Quasicategory X]
   have : IsIso (Truncated.HomotopyCategory.homMk l.toTruncated) := hli
   exact ⟨F', functorVertex_injective hp, ⟨asIso (Truncated.HomotopyCategory.homMk l.toTruncated)⟩⟩
 
-private lemma pointDiagram_isEssentiallySurjective {B C : StableCategory.{u}}
-    (q : ExactMap B C) (hq : IsEssentiallySurjective q.hom) :
+private lemma pointDiagram_isEssentiallySurjective {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (hq : IsEssentiallySurjective q.hom) :
     IsEssentiallySurjective ((ihom (Δ[0] : SSet.{u})).map q.hom) := by
   intro v
   obtain ⟨H, rfl⟩ := (functorVertexEquiv (Δ[0] : SSet.{u}) C.obj).surjective v
@@ -67,26 +67,26 @@ private lemma pointDiagram_isEssentiallySurjective {B C : StableCategory.{u}}
   exact hf.toHoFullyFaithful.preimageIso he
 
 /-- 元の商の余錐は、任意の頂点の場合も全余錐図式の同型を保って持ち上がる。 -/
-lemma exists_verdierSimplexCoconeLift_arbitraryVertex {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexCoconeLift_arbitraryVertex {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (d : JoinCocone (D ≫ q.hom)) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj) (c : JoinCocone D'),
       Nonempty (FunctorIso (c.val ≫ q.hom) d.val) := by
-  obtain ⟨z, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (weakEquivalences i)
+  obtain ⟨z, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     h.quotient d.vertex
-  obtain ⟨d', hd', ⟨ed⟩⟩ := exists_cocone_apexIsoNormalization d e
+  obtain ⟨d', hd', ⟨ed⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_cocone_apexIsoNormalization d e
   obtain ⟨D', _, c, _, _, ⟨ec⟩⟩ := exists_verdierSimplexCoconeLift h D z d' hd'
   exact ⟨D', c, ⟨ec ≪≫ ed⟩⟩
 
 /-- 元の Verdier 商の後合成は、全次数の実標準単体図式において本質的に全射。 -/
-lemma verdierProjectionSimplex_isEssentiallySurjective {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
+lemma verdierProjectionSimplex_isEssentiallySurjective {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     ∀ n : ℕ, IsEssentiallySurjective ((ihom (Δ[n] : SSet.{u})).map q.hom) := by
   intro n
   induction n with
   | zero =>
     exact pointDiagram_isEssentiallySurjective q
-      (localization_isEssentiallySurjective q.hom (weakEquivalences i) h.quotient)
+      (localization_isEssentiallySurjective q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.quotient)
   | succ n ih =>
     intro v
     obtain ⟨H, rfl⟩ := (functorVertexEquiv (Δ[n + 1] : SSet.{u}) C.obj).surjective v

@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 /-- 概要：元絶対外周から実外面への包含・商・零角の指定全比較。
 方針：同じ側面証人から得た全比較の逆と、同じ全対象商の指定零角を束ねる。
 規約：元始域屋根と元 resolved 商を保持。使われ方：外周認証の指定三境界。 -/
-def dgOdotMilnorOuterSquareBoundary : VerdierSquareBoundaryIso
+def dgOdotMilnorOuterSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) where
   inclusion := (dgOdotMilnorOuterBottomComparison R d h).symm
@@ -32,7 +32,7 @@ def dgOdotMilnorOuterSquareBoundary : VerdierSquareBoundaryIso
 方針：元全比較の逆と包含・商の回収、零終点の一意性で指定零角を照合する。
 規約：同じ元両二胞体を保持。共通 LT 実長方形の完成とは数えない。
 使われ方：Sp の完備化付き接続口の外周全図式認証。 -/
-def dgOdotMilnorOuterSquareDiagramIso : VerdierSquareDiagramIso
+def dgOdotMilnorOuterSquareDiagramIso : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorOuterSquareBoundary R d h) where
@@ -47,7 +47,7 @@ def dgOdotMilnorOuterSquareDiagramIso : VerdierSquareDiagramIso
       (congrArg Iso.symm (dgOdotMilnorOuterPerfectSquareComparison_right R d h))
   zero_eq := by
     apply perfectZeroPointFunctorIso_ext
-    change IsZeroCategory (perfectStableObject (squareVertex
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1))
     exact dgOdotMilnorSourceNullOuterSquare_perfect_zero R d
 end SerrePositivity.KST.SConstruction

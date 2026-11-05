@@ -80,7 +80,7 @@ def underlyingDiagramIso (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u
       change ((pre (PointedObject.adjoinFunctor.map (W.map f.unop))).app (D.obj j)).right ≫
           FreePointedHomRestriction.restrict _ (D.obj j) =
         FreePointedHomRestriction.restrict _ (D.obj j) ≫ (pre (W.map f.unop)).app (D.obj j).right
-      rw [← PointedMapping.prePointed_eq_closedPre]
+      rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
       exact FreePointedHomRestriction.natural_pre _ _)
 
 /-- 概要：点つき enriched end の基礎単体集合は通常の重み付き end と同型。

@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 /-- 一般の構成は、公開済みの同じ半自由 Hom の空間値全関手そのもの。 -/
 lemma dgHomTargetUnderlyingSpaceInfinity_semifree (P : SemifreeDGModules R D) :

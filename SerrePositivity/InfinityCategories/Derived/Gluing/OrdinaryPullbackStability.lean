@@ -57,13 +57,13 @@ lemma dgGluingPullbackUniverseInclusion_isExactFunctor :
   simp only [e, ← Category.assoc, dgGluingUniverseDerivedNerveLaxEquivalence_hom,
     Category.comp_id] at hi
   exact isExactFunctor_of_functorIso hi
-def dgGluingPullbackStableObject : StableCategory.{max (u + 1) v w} where
+def dgGluingPullbackStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
   obj := (SSet.uliftFunctor.{max (u + 1) v w, max u v w}).obj
     (dgNerve R (DGGluingPullbackObject R C D M))
   isQuasicategory := inferInstance
   isStable := dgGluingPullbackUniverseNerve_isStable R C D M hC hD
 def dgGluingPullbackStableInclusion :
-    ExactMap (dgGluingPullbackStableObject R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackStableObject R C D M hC hD)
       (dgGluingStableObject R C D M hC hD) :=
   ⟨dgGluingPullbackUniverseInclusion R C D M,
     dgGluingPullbackUniverseInclusion_isExactFunctor R C D M hC hD⟩

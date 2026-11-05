@@ -35,7 +35,7 @@ def kanWeightMap : CosimplicialKanReplacement.functor.obj
 
 /-- 置換した終頂点の射は各段で全基点 π 同型。 -/
 lemma kanWeightMap_piIsomorphism (j : SimplexCategory) :
-    KanPiIsomorphism (kanWeightMap.{u}.app j) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kanWeightMap.{u}.app j) := by
   let : IsIso (terminal.from (Δ[0] : SSet.{u})) :=
     isIso_of_isTerminal stdSimplex.isTerminalObj₀ terminalIsTerminal _
   let : KanComplex (Δ[0] : SSet.{u}) :=
@@ -64,7 +64,7 @@ lemma kanWeightMap_piIsomorphism (j : SimplexCategory) :
     rfl
   have hiπ := kanPiIsomorphism_of_anodyne i hi
   have hkπ := kanPiIsomorphism_of_anodyne k hk
-  apply hiπ.cancel_left_atVertex (x := stdSimplex.obj₀Equiv.symm (0 : Fin 1))
+  apply (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex hiπ) (x := stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   rw [he]
   exact hkπ
 

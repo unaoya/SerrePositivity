@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
@@ -16,6 +18,9 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 合成・恒等を厳密に保つ連続 Kan 置換を、小さい Kan 複体値の関手に束ねる。 -/
 def strictKanCompletion : SSet.{u} ⥤ KanObject.{u} where
@@ -27,7 +32,7 @@ def strictKanCompletion : SSet.{u} ⥤ KanObject.{u} where
 /-- 元の anodyne 局所化同型は、同じ厳密 Kan 置換の実写像を同値にする。 -/
 theorem strictKanCompletion_map_isQCatEquivalence {X Y : SSet.{u}} (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) :
-    IsQCatEquivalence (strictKanCompletion.map f) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map f) := by
   change IsQCatEquivalence (F2.continuousKanReplacement.map f)
   let Q := AnodyneHomotopy.anodyneQ
   have : IsIso (Q.map (F2.continuousKanReplacementUnit.app X)) :=
@@ -42,4 +47,22 @@ theorem strictKanCompletion_map_isQCatEquivalence {X Y : SSet.{u}} (f : X ⟶ Y)
       Q.map (F2.continuousKanReplacement.map f)) := hn ▸ inferInstance
   exact isQCatEquivalence_of_anodyneQ_isIso _ ((isIso_comp_left_iff _ _).mp hc)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion_map_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion._proof_3

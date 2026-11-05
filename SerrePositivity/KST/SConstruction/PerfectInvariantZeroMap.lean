@@ -27,38 +27,38 @@ variable {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInv
 include hF in
 /-- 元の全対象を零化する完全関手の Cat^perf 不変量値は、同じ値の間の零射。 -/
 lemma IsPerfectLocalizingInvariant.perfectValue_zero_of_zero_values
-    {A B : StableCategory.{u}} (f : ExactMap A B)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (hf : ∀ a, IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
     perfectInvariantHoArrow F f hA hB = 0 := by
-  let G : A ⟶ B := (toZeroCategory A : A ⟶ zeroCategory) ≫ fromZeroCategory B
+  let G : A ⟶ B := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory) ≫ fromZeroCategory B
   have hG : ∀ a, IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
     intro a
-    change IsZeroVertex (((toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
+    change IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
     rw [throughZero_hom, zeroDiagram_const_vertex]
     exact (chosenZeroVertex B.obj).isZero
   have e : FunctorIso f.hom G.hom := zeroDiagramFunctorIso _ _ hf hG
   have hz : IsZero (perfectInvariantHoObject F
-      (perfectStableVertex zeroCategory.{u} perfectZeroCategory_isIdempotentComplete)) :=
+      (perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} perfectZeroCategory_isIdempotentComplete)) :=
     (hF.preservesZero
-      (perfectStableVertex zeroCategory perfectZeroCategory_isIdempotentComplete)
-      zeroCategory_isZero).isZeroHo
+      (perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory perfectZeroCategory_isIdempotentComplete)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero).isZeroHo
   calc
     perfectInvariantHoArrow F f hA hB = perfectInvariantHoArrow F G hA hB :=
       perfectInvariantHoArrow_eq_of_functorIso F hA hB e
-    _ = perfectInvariantHoArrow F (toZeroCategory A) hA
+    _ = perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A) hA
           perfectZeroCategory_isIdempotentComplete ≫
         perfectInvariantHoArrow F (fromZeroCategory B)
           perfectZeroCategory_isIdempotentComplete hB :=
       perfectInvariantHoArrow_comp F _ _ hA perfectZeroCategory_isIdempotentComplete hB
     _ = 0 := by
-      rw [hz.eq_zero_of_tgt (perfectInvariantHoArrow F (toZeroCategory A) hA
+      rw [hz.eq_zero_of_tgt (perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A) hA
         perfectZeroCategory_isIdempotentComplete), zero_comp]
 
 include hF in
 /-- 元の零関手の同じ BF 表示間の射の類も零である。 -/
 lemma IsPerfectLocalizingInvariant.perfectSpectrum_zero_of_zero_values
-    {A B : StableCategory.{u}} (f : ExactMap A B)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (hf : ∀ a, IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
     perfectInvariantSpectrumHom F f hA hB = 0 := by

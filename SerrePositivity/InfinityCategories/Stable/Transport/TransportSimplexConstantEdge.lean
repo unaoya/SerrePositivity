@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
@@ -39,9 +41,12 @@ public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 初頂点を保つ射の区間は、元の底の同じ初頂点に厳密に定値。 -/
 theorem transportSimplexFirstVertexMap_interval_constant {B : SSet.{u}}
@@ -54,4 +59,10 @@ theorem transportSimplexFirstVertexMap_interval_constant {B : SSet.{u}}
   change B.σ 0 _ = PinchedHom.constant _ 1
   exact (pinchedConstant_one _).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_interval_constant := _root_.SerrePositivity.InfinityCategories.Stable.Transport.transportSimplexFirstVertexMap_interval_constant

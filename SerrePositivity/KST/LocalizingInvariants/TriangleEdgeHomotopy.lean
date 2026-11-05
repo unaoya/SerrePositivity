@@ -65,9 +65,9 @@ end TriangleEdge
 namespace CurryHomotopy
 
 lemma slice_precomp_map {A B C X : SSet.{u}} {F G : C ⟶ X} (H : SSet.Homotopy F G)
-    (r : A ⊗ B ⟶ C) (b : B _⦋0⦌) (k : A ⟶ C) (h : sliceMap (A := A) b ≫ r = k) :
-    (slice (stableHomotopyPrecomp r H) b).h = (stableHomotopyPrecomp k H).h := by
-  change (sliceMap b ▷ (Δ[1] : SSet.{u})) ≫ (r ▷ Δ[1]) ≫ H.h = (k ▷ Δ[1]) ≫ H.h
+    (r : A ⊗ B ⟶ C) (b : B _⦋0⦌) (k : A ⟶ C) (h : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) b ≫ r = k) :
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice (stableHomotopyPrecomp r H) b).h = (stableHomotopyPrecomp k H).h := by
+  change (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap b ▷ (Δ[1] : SSet.{u})) ≫ (r ▷ Δ[1]) ≫ H.h = (k ▷ Δ[1]) ≫ H.h
   rw [← Category.assoc, ← comp_whiskerRight, h]
 
 end CurryHomotopy

@@ -13,7 +13,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite
 open KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S]
 variable {W V : SimplicialObject (ModuleCat.{v} S)}
 def sphericalModuleMap (f : W ⟶ V) (n : ℕ) :
@@ -74,7 +74,7 @@ lemma moduleUnderlyingSSetMap_zero (f : W ⟶ V) :
 lemma pointedModuleSimplexEquiv_naturality (f : W ⟶ V) (n : ℕ)
     (s : (moduleUnderlyingSSet W).PtSimplex (n + 1) 0) :
     pointedModuleSimplexEquiv V n
-      (mapSimplex (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f) s) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f) s) =
       sphericalModuleMap f n (pointedModuleSimplexEquiv W n s) := by
   apply Subtype.ext
   change SSet.yonedaEquiv (s.map ≫ moduleUnderlyingSSetMap f) = _
@@ -82,15 +82,15 @@ lemma pointedModuleSimplexEquiv_naturality (f : W ⟶ V) (n : ℕ)
   rfl
 lemma modulePiSphereGroupEquiv_naturality
     [SSet.KanComplex (moduleUnderlyingSSet W)] [SSet.KanComplex (moduleUnderlyingSSet V)]
-    (f : W ⟶ V) (n : ℕ) (s : KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
+    (f : W ⟶ V) (n : ℕ) (s : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
     modulePiSphereGroupEquiv V n
-      (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
         (moduleUnderlyingSSetMap_zero f) s) =
       sphereHomologyQuotientMap f n (modulePiSphereGroupEquiv W n s) := by
   induction s using Quotient.inductionOn with | h s =>
   change Submodule.Quotient.mk
     (pointedModuleSimplexEquiv V n
-      (mapSimplex (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f) s)) = _
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f) s)) = _
   rw [pointedModuleSimplexEquiv_naturality]
   rfl
 end SerrePositivity.InfinityCategories

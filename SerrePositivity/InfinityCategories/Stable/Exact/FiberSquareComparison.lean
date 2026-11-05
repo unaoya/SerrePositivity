@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
 public import SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero
 public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FiberComparison
+end SerrePositivity.KST.LocalizingInvariants.FiberComparison
+namespace SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison
+open SerrePositivity.KST.LocalizingInvariants.FiberComparison
 
 /-- 四角形全体の双対化は、元の二重反転の標準同型で戻る。 -/
 lemma dualSquare_double {X : SSet.{u}} (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
@@ -53,10 +58,28 @@ lemma nonempty_functorIso {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
     {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
     (s t : FiberSquare f) : Nonempty (FunctorIso s.square t.square) := by
   obtain ⟨e⟩ := nonempty_cofiberSquareFunctorIso s.opCofiber t.opCofiber
-  have h := (dualFunctorIso e).postcomp (SSet.opFunctorCompOpFunctorIso.app X).hom
+  have h := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso e).postcomp (SSet.opFunctorCompOpFunctorIso.app X).hom
   change FunctorIso (dualSquare (dualSquare s.square) ≫ _)
     (dualSquare (dualSquare t.square) ≫ _) at h
-  rw [dualSquare_double, dualSquare_double] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualSquare_double, _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualSquare_double] at h
   exact ⟨h⟩
 
-end SerrePositivity.KST.LocalizingInvariants.FiberComparison
+end SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualSquare_double := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualSquare_double
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.nonempty_functorIso := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.nonempty_functorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.dualFunctorIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.dualFunctorIso._proof_2

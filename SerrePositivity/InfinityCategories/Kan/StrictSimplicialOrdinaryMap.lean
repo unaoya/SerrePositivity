@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
 
 /-! # 全 Hom の作用から通常射と厳密自然性を回収する
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 variable {C : Type v} {D : Type w} [Category.{u} C] [Category.{u} D]
   [SimplicialCategory C] [SimplicialCategory D]
@@ -22,27 +27,27 @@ def strictSimplicialOrdinaryMap (F : EnrichedFunctor SSet.{u} C D)
 /-- 回収した通常射は、同じ豊穣作用の単位パラメータの表示を保つ。 -/
 lemma strictSimplicialOrdinaryMap_hom (F : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) :
-    eHomEquiv SSet (strictSimplicialOrdinaryMap F f) = eHomEquiv SSet f ≫ F.map X Y :=
+    eHomEquiv SSet (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f) = eHomEquiv SSet f ≫ F.map X Y :=
   Equiv.apply_symm_apply _ _
 
 /-- 豊穣作用で指定した同じ通常射を厳密に回収する。 -/
 lemma strictSimplicialOrdinaryMap_of_hom (F : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) (g : F.obj X ⟶ F.obj Y)
     (h : eHomEquiv SSet f ≫ F.map X Y = eHomEquiv SSet g) :
-    strictSimplicialOrdinaryMap F f = g :=
-  (eHomEquiv SSet).injective ((strictSimplicialOrdinaryMap_hom F f).trans h)
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f = g :=
+  (eHomEquiv SSet).injective ((_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom F f).trans h)
 
 /-- 同じ通常射の回収は厳密豊穣関手の後合成と可換。 -/
 lemma strictSimplicialOrdinaryMap_comp
     {E : Type z} [Category.{u} E] [SimplicialCategory E]
     (F : EnrichedFunctor SSet.{u} C D) (G : EnrichedFunctor SSet.{u} D E)
     {X Y : C} (f : X ⟶ Y) :
-    strictSimplicialOrdinaryMap (F.comp SSet G) f =
-      strictSimplicialOrdinaryMap G (strictSimplicialOrdinaryMap F f) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (F.comp SSet G) f =
+      _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap G (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f) := by
   apply (eHomEquiv SSet).injective
-  erw [strictSimplicialOrdinaryMap_hom (F.comp SSet G) f,
-    strictSimplicialOrdinaryMap_hom G (strictSimplicialOrdinaryMap F f),
-    strictSimplicialOrdinaryMap_hom F f]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom (F.comp SSet G) f,
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom G (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f),
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom F f]
   exact (Category.assoc _ _ _).symm
 
 /-- 単位パラメータの後合成は元の通常合成を表す。 -/
@@ -65,10 +70,34 @@ lemma strictSimplicialOrdinaryMap_naturality
     (hτ : ∀ X Y, F.map X Y ≫ eHomWhiskerLeft SSet (F.obj X) (τ Y) =
       G.map X Y ≫ eHomWhiskerRight SSet (τ X) (G.obj Y))
     {X Y : C} (f : X ⟶ Y) :
-    strictSimplicialOrdinaryMap F f ≫ τ Y = τ X ≫ strictSimplicialOrdinaryMap G f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f ≫ τ Y = τ X ≫ _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap G f := by
   apply (eHomEquiv SSet).injective
-  rw [simplicialHomEquiv_comp_post, simplicialHomEquiv_comp_pre,
-    strictSimplicialOrdinaryMap_hom, strictSimplicialOrdinaryMap_hom,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_post, _root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_pre,
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom, _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom,
     Category.assoc, Category.assoc, hτ]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_post := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_pre := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_naturality := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_of_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom

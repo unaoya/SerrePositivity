@@ -62,7 +62,7 @@ lemma pathVertexEdge_exists (z : (KanPath.object X) _⦋0⦌) {x y : X _⦋0⦌}
 
 /-- 実際の path による二類の比較は、ある同じ辺をたどる D の円柱として実現できる。 -/
 lemma piPathRelated_iff_exists_transport [KanComplex X] (n : ℕ)
-    {x y : X _⦋0⦌} (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y) :
+    {x y : X _⦋0⦌} (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) :
     PiPathRelated n a b ↔ ∃ e : X.Edge x y, dgBarCompactPiTransport n e a b := by
   constructor
   · rintro ⟨z, h₀, h₁, γ, ha, hb⟩

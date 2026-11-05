@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeShape
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceNonjointCoordinates
 public import Mathlib.Data.Fintype.Sum
@@ -10,9 +12,12 @@ public import Mathlib.Data.Fintype.Sum
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 左の元の頂点が joint である条件は、連結後にも全く同じ。 -/
-lemma wedge_joint_iff_left (T U : NecklaceShape) (v : T.Vertex) :
+lemma wedge_joint_iff_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.Vertex) :
     v.val ∈ (T.wedge U).joints ↔ v.val ∈ T.joints := by
   constructor
   · intro h
@@ -26,7 +31,7 @@ lemma wedge_joint_iff_left (T U : NecklaceShape) (v : T.Vertex) :
   · exact T.wedge_joint_left U
 
 /-- 右の元の頂点が joint である条件は、同じ番号移動後にも全く同じ。 -/
-lemma wedge_joint_iff_right (T U : NecklaceShape) (v : U.Vertex) :
+lemma wedge_joint_iff_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : U.Vertex) :
     T.vertexMax + v.val ∈ (T.wedge U).joints ↔ v.val ∈ U.joints := by
   constructor
   · intro h
@@ -41,13 +46,13 @@ lemma wedge_joint_iff_right (T U : NecklaceShape) (v : U.Vertex) :
   · exact T.wedge_joint_right U
 
 /-- 元の左の非 joint 頂点の、連結後の同じ番号への単調な包含。 -/
-def wedgeNonjointLeft (T U : NecklaceShape) : T.NonjointVertex →o (T.wedge U).NonjointVertex where
+def wedgeNonjointLeft (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.NonjointVertex →o (T.wedge U).NonjointVertex where
   toFun v := ⟨T.wedgeLeftVertex U v.val,
     fun h => v.property ((T.wedge_joint_iff_left U v.val).mp h)⟩
   monotone' _ _ h := h
 
 /-- 元の右の非 joint 頂点の、共有点から番号をずらした単調な包含。 -/
-def wedgeNonjointRight (T U : NecklaceShape) : U.NonjointVertex →o (T.wedge U).NonjointVertex where
+def wedgeNonjointRight (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : U.NonjointVertex →o (T.wedge U).NonjointVertex where
   toFun v := ⟨T.wedgeRightVertex U v.val,
     fun h => v.property ((T.wedge_joint_iff_right U v.val).mp h)⟩
   monotone' a b h := by
@@ -55,7 +60,7 @@ def wedgeNonjointRight (T U : NecklaceShape) : U.NonjointVertex →o (T.wedge U)
     exact Nat.add_le_add_left h _
 
 /-- 連結後の元の非 joint 頂点を、共有点より左右のどちらにあるかで分ける。 -/
-def wedgeNonjointSplit (T U : NecklaceShape) (v : (T.wedge U).NonjointVertex) :
+def wedgeNonjointSplit (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : (T.wedge U).NonjointVertex) :
     T.NonjointVertex ⊕ U.NonjointVertex :=
   if h : v.val.val ≤ T.vertexMax then
     Sum.inl ⟨⟨v.val.val, by omega⟩, fun hj => v.property (T.wedge_joint_left U hj)⟩
@@ -69,7 +74,7 @@ def wedgeNonjointSplit (T U : NecklaceShape) (v : (T.wedge U).NonjointVertex) :
         exact v.property (he ▸ T.wedge_joint_right U hj)⟩
 
 /-- 左右の元の非 joint 頂点は、連結後の全非 joint 頂点と一対一に対応する。 -/
-def wedgeNonjointEquiv (T U : NecklaceShape) :
+def wedgeNonjointEquiv (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     T.NonjointVertex ⊕ U.NonjointVertex ≃ (T.wedge U).NonjointVertex where
   toFun := Sum.elim (T.wedgeNonjointLeft U) (T.wedgeNonjointRight U)
   invFun := T.wedgeNonjointSplit U
@@ -79,7 +84,7 @@ def wedgeNonjointEquiv (T U : NecklaceShape) :
         have := v.val.isLt
         omega
       change T.wedgeNonjointSplit U (T.wedgeNonjointLeft U v) = Sum.inl v
-      unfold wedgeNonjointSplit
+      unfold _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit
       rw [dite_eq_left (show (T.wedgeNonjointLeft U v).val.val ≤ T.vertexMax from h)]
       apply congrArg Sum.inl
       apply Subtype.ext
@@ -91,7 +96,7 @@ def wedgeNonjointEquiv (T U : NecklaceShape) :
         exact v.property (he ▸ U.zero_mem)
       have hh : ¬ T.vertexMax + v.val.val ≤ T.vertexMax := by omega
       change T.wedgeNonjointSplit U (T.wedgeNonjointRight U v) = Sum.inr v
-      unfold wedgeNonjointSplit
+      unfold _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit
       rw [dite_eq_right (show ¬ (T.wedgeNonjointRight U v).val.val ≤ T.vertexMax from hh)]
       apply congrArg Sum.inr
       apply Subtype.ext
@@ -99,7 +104,7 @@ def wedgeNonjointEquiv (T U : NecklaceShape) :
       change T.vertexMax + v.val.val - T.vertexMax = v.val.val
       omega
   right_inv v := by
-    dsimp only [wedgeNonjointSplit]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit]
     split_ifs with h
     · rfl
     · apply Subtype.ext
@@ -108,7 +113,7 @@ def wedgeNonjointEquiv (T U : NecklaceShape) :
       omega
 
 /-- 左の元の非 joint 頂点は、連結の共有点より厳密に左にある。 -/
-lemma wedgeNonjointLeft_lt_seam (T U : NecklaceShape) (v : T.NonjointVertex) :
+lemma wedgeNonjointLeft_lt_seam (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : T.NonjointVertex) :
     (T.wedgeNonjointLeft U v).val.val < T.vertexMax := by
   have hn := v.val.isLt
   have he : v.val.val ≠ T.vertexMax := by
@@ -120,7 +125,7 @@ lemma wedgeNonjointLeft_lt_seam (T U : NecklaceShape) (v : T.NonjointVertex) :
   omega
 
 /-- 右の元の非 joint 頂点は、連結の共有点より厳密に右にある。 -/
-lemma seam_lt_wedgeNonjointRight (T U : NecklaceShape) (v : U.NonjointVertex) :
+lemma seam_lt_wedgeNonjointRight (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (v : U.NonjointVertex) :
     T.vertexMax < (T.wedgeNonjointRight U v).val.val := by
   have he : v.val.val ≠ 0 := by
     intro h
@@ -129,16 +134,76 @@ lemma seam_lt_wedgeNonjointRight (T U : NecklaceShape) (v : U.NonjointVertex) :
   omega
 
 /-- 左右の元の非 joint ブロックは、元の頂点順序で厳密に分離している。 -/
-lemma wedgeNonjointLeft_lt_right (T U : NecklaceShape)
+lemma wedgeNonjointLeft_lt_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape)
     (v : T.NonjointVertex) (w : U.NonjointVertex) :
     T.wedgeNonjointLeft U v < T.wedgeNonjointRight U w := by
   change (T.wedgeNonjointLeft U v).val.val < (T.wedgeNonjointRight U w).val.val
   exact lt_trans (T.wedgeNonjointLeft_lt_seam U v) (T.seam_lt_wedgeNonjointRight U w)
 
 /-- 連結の立方体の次元は、元の左右の立方体の次元の和。 -/
-lemma wedge_dimension (T U : NecklaceShape) :
+lemma wedge_dimension (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     (T.wedge U).dimension = T.dimension + U.dimension := by
-  rw [← nonjointVertex_card, ← Fintype.card_congr (T.wedgeNonjointEquiv U),
-    Fintype.card_sum, nonjointVertex_card, nonjointVertex_card]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointVertex_card, ← Fintype.card_congr (T.wedgeNonjointEquiv U),
+    Fintype.card_sum, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointVertex_card, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointVertex_card]
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.seam_lt_wedgeNonjointRight := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.seam_lt_wedgeNonjointRight
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointEquiv := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointEquiv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointLeft (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointLeft := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointLeft
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointLeft_lt_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointLeft_lt_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointLeft_lt_seam := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointLeft_lt_seam
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointRight (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointRight := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointRight
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointSplit := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_dimension := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_dimension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_iff_left := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_iff_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_iff_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_joint_iff_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointEquiv._proof_5 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointEquiv._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointEquiv._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointEquiv._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointLeft._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointLeft._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointRight._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointRight._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointRight._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointRight._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointSplit._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointSplit._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointSplit._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNonjointSplit._proof_7 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNonjointSplit._proof_7

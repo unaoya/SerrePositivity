@@ -17,11 +17,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (r : ExactMap (laxCategory p q) Q)
+variable {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
 
 def arrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
   LaxCounit.arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map r.hom
@@ -32,7 +32,7 @@ instance arrow_isExact : IsExactFunctor (arrow p q r) := by
 
 lemma arrow_target : arrow p q r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.hom := by
-  rw [arrow, Category.assoc, arrowMap_evaluation, ← Category.assoc,
+  rw [arrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc,
     LaxCounit.arrow_target, Category.id_comp]
 
 def connectingArrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
@@ -43,27 +43,27 @@ instance connectingArrow_isExact : IsExactFunctor (connectingArrow p q r) := by
   infer_instance
 
 def lift : (laxCategory p q).obj ⟶ (laxCategory (𝟙 Q) (𝟙 Q)).obj :=
-  connectingArrow p q r ≫ arrowLaxInverse Q.obj
+  connectingArrow p q r ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj
 
 instance lift_isExact : IsExactFunctor (lift p q r) := by
-  have he : IsExactFunctor (arrowLaxInverse Q.obj) :=
-    inferInstanceAs (IsExactFunctor (arrowLaxIso Q.obj).inv)
+  have he : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj) :=
+    inferInstanceAs (IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).inv)
   unfold lift
   infer_instance
 
-def exactLift : ExactMap (laxCategory p q) (laxCategory (𝟙 Q) (𝟙 Q)) :=
+def exactLift : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) (laxCategory (𝟙 Q) (𝟙 Q)) :=
   ⟨lift p q r, inferInstance⟩
 
 lemma lift_snd : lift p q r ≫ (laxSnd (𝟙 Q) (𝟙 Q)).hom =
     ((laxSnd p q).hom ≫ LaxInclusion.fromD p q) ≫ r.hom := by
   change lift p q r ≫ F2.laxPullbackSnd (𝟙 Q.obj) (𝟙 Q.obj) = _
-  rw [lift, Category.assoc, arrowLaxInverse_snd, connectingArrow, Category.assoc,
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd, connectingArrow, Category.assoc,
     CofiberRotation.inverseRotation_target, arrow, Category.assoc,
-    arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
+    _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
 
 lemma lift_arrow : lift p q r ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) =
     connectingArrow p q r := by
-  rw [lift, Category.assoc, arrowLaxInverse_arrow, Category.comp_id]
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
 def differenceIso : FunctorIso (lift p q r ≫ laxDifference (𝟙 Q) (𝟙 Q)) r.hom := by
   have e := CofiberFamily.precompositionIso (F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj))

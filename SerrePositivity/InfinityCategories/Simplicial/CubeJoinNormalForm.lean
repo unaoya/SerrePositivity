@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 
@@ -10,25 +12,28 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 全ての出力座標に有限 max 表示を指定したデータ。 -/
-abbrev CubeJoinNormalForm (n m : ℕ) := Fin m → CubeJoinTerm n
+abbrev CubeJoinNormalForm (n m : ℕ) := Fin m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm n
 
 /-- 元の立方体の全頂点での正規形の評価。 -/
-def cubeJoinNormalFormEval {n m : ℕ} (s : CubeJoinNormalForm n m) :
-    CubeVertex n → CubeVertex m :=
-  fun x j => cubeJoinTermEval (s j) x
+def cubeJoinNormalFormEval {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m :=
+  fun x j => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval (s j) x
 
 /-- 頂点関数から元の出力ごとの定数一・有限 max 表示を回収する。 -/
-def cubeJoinNormalFormOfMap {n m : ℕ} (f : CubeVertex n → CubeVertex m) :
-    CubeJoinNormalForm n m :=
+def cubeJoinNormalFormOfMap {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m :=
   fun j => if f ⊥ j = true then none
-    else some (Finset.univ.filter (fun i => f (cubeVertexAtom n i) j = true))
+    else some (Finset.univ.filter (fun i => f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) j = true))
 
 /-- join を保つ元の頂点関数は、その同じ有限 max 正規形の評価に一致する。 -/
-lemma cubeJoinNormalFormOfMap_eval {n m : ℕ} {f : CubeVertex n → CubeVertex m}
-    (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (x : CubeVertex n) :
-    cubeJoinNormalFormEval (cubeJoinNormalFormOfMap f) x = f x := by
+lemma cubeJoinNormalFormOfMap_eval {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
+    (hf : ∀ x y, f (x ⊔ y) = f x ⊔ f y) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap f) x = f x := by
   funext j
   by_cases hz : f ⊥ j = true
   · have hle : f ⊥ ≤ f x := by
@@ -38,31 +43,55 @@ lemma cubeJoinNormalFormOfMap_eval {n m : ℕ} {f : CubeVertex n → CubeVertex 
       have hj := hle j
       rw [hz] at hj
       exact Bool.eq_true_of_true_le hj
-    simp [cubeJoinNormalFormEval, cubeJoinNormalFormOfMap, cubeJoinTermEval, hz, hval]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval, hz, hval]
   · have hzero : f ⊥ j = false := by
       cases hb : f ⊥ j <;> simp_all
-    have hx := congrFun (cubeJoinMap_eval hf x) j
+    have hx := congrFun (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval hf x) j
     simp only [Pi.sup_apply, Finset.sup_apply, hzero] at hx
     change f x j = (⊥ : Bool) ⊔
-      (cubeVertexSupport x).sup (fun i => f (cubeVertexAtom n i) j) at hx
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport x).sup (fun i => f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) j) at hx
     rw [bot_sup_eq] at hx
-    dsimp only [cubeJoinNormalFormEval, cubeJoinNormalFormOfMap]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap]
     rw [ite_eq_right hz]
-    dsimp only [cubeJoinTermEval]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
     rw [hx]
     apply Bool.eq_iff_iff.mpr
     change _ = ⊤ ↔ _ = ⊤
     simp only [Finset.sup_eq_top_iff, Finset.mem_filter, Finset.mem_univ, true_and,
-      mem_cubeVertexSupport]
+      _root_.SerrePositivity.InfinityCategories.Simplicial.mem_cubeVertexSupport]
     exact exists_congr (fun i => and_comm)
 
 /-- 全出力の有限 max 正規形は、元の頂点関数で一意に判定される。 -/
 lemma cubeJoinNormalFormEval_injective (n m : ℕ) :
-    Function.Injective (cubeJoinNormalFormEval (n := n) (m := m)) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (n := n) (m := m)) := by
   intro s t h
   funext j
-  apply cubeJoinTermEval_injective n
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_injective n
   funext x
   exact congrFun (congrFun h x) j
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeJoinNormalForm := _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval_injective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap_eval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap.eq_1

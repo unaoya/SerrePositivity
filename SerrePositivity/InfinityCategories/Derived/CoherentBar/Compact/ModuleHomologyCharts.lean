@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits AlgebraicTopology SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {I : Type u} [PartialOrder I]
   (W : I ⥤ SimplicialObject (ModuleCat.{u} R)) (c : Cocone W)
   [∀ i, KanComplex (moduleUnderlyingSSet (W.obj i))]

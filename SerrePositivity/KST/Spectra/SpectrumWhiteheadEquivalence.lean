@@ -42,7 +42,7 @@ def vertexIsoOfComponentEq {X Y : OmegaSpectrum.{u}} {f g : X ⟶ Y}
 
 /-- BF 射の各段の全基点 π 同型は、Sp の実際の同値を与える。 -/
 theorem isInvertible_of_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, KanPiIsomorphism (f.app n).right) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
     IsInvertibleEdge (coherentNerveEdge f) := by
   obtain ⟨g, hg, hh⟩ := exists_componentInverse f hf
   exact coherentNerveEdge_isInvertible_of_enrichedInverse f g

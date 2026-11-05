@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Category.Grp.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -34,9 +36,12 @@ public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
+end SerrePositivity.KST.Spectra.OmegaSpectrum
+namespace SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum
+open SerrePositivity.KST.Spectra.OmegaSpectrum
 
 noncomputable section
 
@@ -53,4 +58,10 @@ theorem pointedMap_basepoint {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) :
 
 end
 
-end SerrePositivity.KST.Spectra.OmegaSpectrum
+end SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.OmegaSpectrum.pointedMap_basepoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint

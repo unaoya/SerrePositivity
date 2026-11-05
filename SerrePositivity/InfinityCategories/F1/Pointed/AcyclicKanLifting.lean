@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -49,9 +51,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -63,31 +68,31 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：n は充填する標準単体の次元。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。acyclic Kan 複体の境界 RLP。 -/
 theorem exists_boundary_filler_of_homotopySubsingleton {X : SSet.{u}} [KanComplex X]
-    (x₀ : X _⦋0⦌) (hπ : ∀ (x : X _⦋0⦌) (n : ℕ), Subsingleton (KanHomotopy X n x))
+    (x₀ : X _⦋0⦌) (hπ : ∀ (x : X _⦋0⦌) (n : ℕ), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x))
     (n : ℕ) (f : (boundary.{u} n : SSet.{u}) ⟶ X) :
     ∃ s : (Δ[n] : SSet.{u}) ⟶ X, (boundary n).ι ≫ s = f := by
   cases n with
   | zero => exact ⟨SSet.const x₀, boundary.hom_ext₀⟩
   | succ n =>
-    obtain ⟨x, g, hg, ⟨H⟩⟩ := BoundaryNormalization.exists_normalization n f
-    have hlast : KanHomotopy.mk n (BoundaryNormalization.lastSimplex n x g hg) =
-        KanHomotopy.point n := (hπ x n).elim _ _
-    obtain ⟨s, hs⟩ := BoundaryNormalization.exists_filler_of_lastSimplex n x g hg hlast
-    exact BoundaryNormalization.exists_filler_of_homotopy (n + 1) f g H s hs
+    obtain ⟨x, g, hg, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_normalization n f
+    have hlast : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex n x g hg) =
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := (hπ x n).elim _ _
+    obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_lastSimplex n x g hg hlast
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_homotopy (n + 1) f g H s hs
 
 /-- 概要：上の非空な Kan 複体の終対象への射は全ての単射に RLP を持つ。
 方針：境界での充填を、単射の境界 cell 分解に対する RLP の閉性へ移す。
 規約：終対象射の弱同値性やモデル構造の公理を仮定しない。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。任意の源からの実際の収縮と持ち上げ。 -/
 theorem terminal_rlp_of_homotopySubsingleton {X : SSet.{u}} [KanComplex X]
-    (x₀ : X _⦋0⦌) (hπ : ∀ (x : X _⦋0⦌) (n : ℕ), Subsingleton (KanHomotopy X n x)) :
+    (x₀ : X _⦋0⦌) (hπ : ∀ (x : X _⦋0⦌) (n : ℕ), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x)) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from X) := by
   rw [SSet.rlp_monomorphisms]
   intro A B i hi
   rcases hi with ⟨n⟩
   constructor
   intro a b _sq
-  obtain ⟨s, hs⟩ := exists_boundary_filler_of_homotopySubsingleton x₀ hπ n a
+  obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_filler_of_homotopySubsingleton x₀ hπ n a
   exact CommSq.HasLift.mk' { l := s, fac_left := hs, fac_right := Subsingleton.elim _ _ }
 
 /-- 概要：π_* 同型である Kan fibration の非空な fiber の終対象射は全単射 RLP を持つ。
@@ -95,11 +100,23 @@ theorem terminal_rlp_of_homotopySubsingleton {X : SSet.{u}} [KanComplex X]
 規約：fiber の頂点 v を明示する。
 使われ方：Goerss–Jardine I §§7–8、Kerodon §3.2.6。acyclic fibration の相対充填。 -/
 theorem fiber_terminal_rlp_of_piIsomorphism {E B : SSet.{u}} [KanComplex E] [KanComplex B]
-    (p : E ⟶ B) [Fibration p] (hp : KanPiIsomorphism p) (b : B _⦋0⦌)
-    (v : (KanFiber p b) _⦋0⦌) :
-    (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (KanFiber p b)) :=
-  terminal_rlp_of_homotopySubsingleton v (fun w n ↦ fiberHomotopySubsingleton_at p hp b w n)
+    (p : E ⟶ B) [Fibration p] (hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p) (b : B _⦋0⦌)
+    (v : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) _⦋0⦌) :
+    (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b)) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.terminal_rlp_of_homotopySubsingleton v (fun w n ↦ _root_.SerrePositivity.InfinityCategories.Kan.fiberHomotopySubsingleton_at p hp b w n)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_boundary_filler_of_homotopySubsingleton := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_filler_of_homotopySubsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_terminal_rlp_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fiber_terminal_rlp_of_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.terminal_rlp_of_homotopySubsingleton := _root_.SerrePositivity.InfinityCategories.F1.Pointed.terminal_rlp_of_homotopySubsingleton

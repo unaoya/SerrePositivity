@@ -70,13 +70,13 @@ def dgOdotMilnorRightAxisCompletedDiagonalComparison : FunctorIso
       (congrArg (fun k => k ≫ ((eN).hom ≫ t.hom)) (Category.comp_id i))
   have h₃ : FunctorIso (i ≫ (eN).hom ≫ t.hom)
       ((constantFunctorMap (Δ[1] : SSet.{u + 1}) (dgNerve R (U)) ≫
-        arrowLaxInverse (dgNerve R (U))) ≫ t.hom) :=
+        _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R (U))) ≫ t.hom) :=
     F2.functorIsoOfEq
       ((dgGluingIdentityNativeDiagonalIso.{u, 0} R (U)).postcomp t.hom)
       ((Category.assoc _ _ _).trans
         (congrArg (fun k => k ≫ (eN).hom ≫ t.hom) (nativeDiagonalSource (U)))) rfl
   have ht : (constantFunctorMap (Δ[1] : SSet.{u + 1}) (dgNerve R (U)) ≫
-      arrowLaxInverse (dgNerve R (U))) ≫ t.hom =
+      _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R (U))) ≫ t.hom =
       (eU).hom ≫ (eB).hom ≫ (IdentityLax.exactDiagonal (Q)).hom :=
     identityLaxArrowBaseEquivalence_diagonal
       (dgOdotMilnorRightAxisNativeResolvedValueEquivalence R d)

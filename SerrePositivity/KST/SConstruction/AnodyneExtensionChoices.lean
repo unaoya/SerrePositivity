@@ -28,7 +28,7 @@ def anodyneExtensionChoices {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) : SSe
 lemma anodyneExtensionChoices_projection_trivialKanFibration {A B Z : SSet.{u}}
     [KanComplex Z] (i : A ⟶ B) (hi : anodyneExtensions i) (h : A ⟶ Z) :
     TrivialKanFibration (pullback.snd ((pre i).app Z) (SSet.yonedaEquiv.symm (functorVertex h))) := by
-  have hp : TrivialKanFibration ((pre i).app Z) := ⟨anodyne_pre_rlp_monomorphisms i hi Z⟩
+  have hp : TrivialKanFibration ((pre i).app Z) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms i hi Z⟩
   exact ⟨trivialKanFibrations.pullback_snd _ _ hp.mem⟩
 
 /-- anodyne 延長の全選択空間は可縮 Kan。 -/

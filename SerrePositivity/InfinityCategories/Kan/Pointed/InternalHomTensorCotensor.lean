@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeComposition
 
 /-!
@@ -15,59 +17,77 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan.Pointed
+open SerrePositivity.KST.Spectra
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C]
 
 omit [SymmetricCategory C] in
 /-- 同じテンソル curry を二度評価すると、元の結合子と評価そのものへ戻る。 -/
 lemma InternalHomTensor.uncurry_uncurry_hom (A B Z : C) :
-    uncurry (uncurry (InternalHomTensor.iso A B Z).hom) =
+    uncurry (uncurry (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom) =
       (α_ A B ((ihom (A ⊗ B)).obj Z)).inv ≫ (ihom.ev (A ⊗ B)).app Z := by
-  rw [InternalHomTensor.hom_eq, uncurry_curry, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq, uncurry_curry, uncurry_curry]
 
 /-- 同じ交換同型への任意の入力族を二度評価した、元の族と交換の厳密な式。 -/
 lemma InternalHomExchange.uncurry_uncurry_pre (A K Z T : C)
     (r : T ⟶ (ihom A).obj ((ihom K).obj Z)) :
-    uncurry (uncurry (r ≫ (InternalHomExchange.iso A K Z).hom)) =
-      (HomTensorStrength.exchange A K T).hom ≫ K ◁ uncurry r ≫ (ihom.ev K).app Z := by
-  rw [uncurry_natural_left, uncurry_natural_left, InternalHomExchange.uncurry_uncurry_hom,
-    HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp_assoc, ← uncurry_eq r]
+    uncurry (uncurry (r ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Z).hom)) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K T).hom ≫ K ◁ uncurry r ≫ (ihom.ev K).app Z := by
+  rw [uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp_assoc, ← uncurry_eq r]
 
 omit [MonoidalClosed C] in
 /-- 二因子全体をパラメータと交換することは、同じ二因子を順に交換することに一致。 -/
 lemma HomTensorStrength.exchange_tensor_block (A B P T : C) :
-    (α_ A B (P ⊗ T)).inv ≫ (HomTensorStrength.exchange (A ⊗ B) P T).hom =
-      A ◁ (HomTensorStrength.exchange B P T).hom ≫
-        (HomTensorStrength.exchange A P (B ⊗ T)).hom ≫ P ◁ (α_ A B T).inv := by
-  apply (cancel_epi (A ◁ (HomTensorStrength.exchange P B T).hom)).mp
-  rw [HomTensorStrength.exchange_tensor_left_reordered, ← whiskerLeft_comp_assoc,
-    HomTensorStrength.exchange_involution, whiskerLeft_id, Category.id_comp]
+    (α_ A B (P ⊗ T)).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (A ⊗ B) P T).hom =
+      A ◁ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange B P T).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A P (B ⊗ T)).hom ≫ P ◁ (α_ A B T).inv := by
+  apply (cancel_epi (A ◁ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange P B T).hom)).mp
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_tensor_left_reordered, ← whiskerLeft_comp_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_involution, whiskerLeft_id, Category.id_comp]
 
 /-- 同じパラメータを二重 curry の外へ移す二つの操作は、射全体で厳密に一致する。 -/
 lemma InternalHomExchange.tensor_curry (A B P Z : C) :
-    (InternalHomExchange.iso (A ⊗ B) P Z).hom ≫
-        (ihom P).map (InternalHomTensor.iso A B Z).hom =
-      (InternalHomTensor.iso A B ((ihom P).obj Z)).hom ≫
-        (ihom B).map (InternalHomExchange.iso A P Z).hom ≫
-          (InternalHomExchange.iso B P ((ihom A).obj Z)).hom := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (A ⊗ B) P Z).hom ≫
+        (ihom P).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B ((ihom P).obj Z)).hom ≫
+        (ihom B).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z).hom ≫
+          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B P ((ihom A).obj Z)).hom := by
   apply uncurry_injective
   apply uncurry_injective
   apply uncurry_injective
   conv_lhs =>
     rw [uncurry_natural_right, uncurry_natural_left, uncurry_natural_left,
-      InternalHomTensor.uncurry_uncurry_hom, associator_inv_naturality_right_assoc,
-      ← uncurry_eq (uncurry (InternalHomExchange.iso (A ⊗ B) P Z).hom),
-      InternalHomExchange.uncurry_uncurry_hom]
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.uncurry_uncurry_hom, associator_inv_naturality_right_assoc,
+      ← uncurry_eq (uncurry (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (A ⊗ B) P Z).hom),
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
   conv_rhs =>
-    rw [← Category.assoc, InternalHomExchange.uncurry_uncurry_pre, uncurry_natural_right,
-      whiskerLeft_comp, Category.assoc, ← uncurry_eq (InternalHomExchange.iso A P Z).hom,
-      uncurry_natural_left, uncurry_natural_left, InternalHomExchange.uncurry_uncurry_hom,
-      HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp_assoc,
-      ← uncurry_eq (uncurry (InternalHomTensor.iso A B ((ihom P).obj Z)).hom),
-      InternalHomTensor.uncurry_uncurry_hom, whiskerLeft_comp]
-  have h := HomTensorStrength.exchange_tensor_block A B P ((ihom (A ⊗ B)).obj ((ihom P).obj Z))
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_pre, uncurry_natural_right,
+      whiskerLeft_comp, Category.assoc, ← uncurry_eq (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z).hom,
+      uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom,
+      _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp_assoc,
+      ← uncurry_eq (uncurry (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B ((ihom P).obj Z)).hom),
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.uncurry_uncurry_hom, whiskerLeft_comp]
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.HomTensorStrength.exchange_tensor_block A B P ((ihom (A ⊗ B)).obj ((ihom P).obj Z))
   have hc := congrArg (fun m => m ≫ P ◁ (ihom.ev (A ⊗ B)).app ((ihom P).obj Z) ≫
     (ihom.ev P).app Z) h
   simpa only [Category.assoc] using hc
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_tensor_block := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.HomTensorStrength.exchange_tensor_block
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensor_curry := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensor_curry
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.uncurry_uncurry_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.uncurry_uncurry_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.uncurry_uncurry_hom

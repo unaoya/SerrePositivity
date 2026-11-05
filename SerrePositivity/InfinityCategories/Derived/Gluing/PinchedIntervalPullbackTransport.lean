@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y K : SSet.{u}} (p : X ⟶ Y) (x y : X _⦋0⦌)
   (a : K ⟶ pinchedHom (p.app _ x) (p.app _ y))
 

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -31,12 +33,18 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+end SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
+open _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の scaffold の同じ埋め込みを宇宙持ち上げする。 -/
 def coherentEmbedding :
@@ -46,18 +54,33 @@ def coherentEmbedding :
 
 /-- 元の scaffold 上への source 脚の厳密な制限。 -/
 theorem coherentEmbedding_source :
-    s.coherentEmbedding ≫ s.toStrictTransportComparisonSpan.coherentSource =
+    (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentSource =
       (SSet.uliftFunctor.{u + 1, u}).map (universalScaffold p) := by
-  rw [coherentEmbedding, StrictTransportComparisonSpan.coherentSource,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentSource,
     ← Functor.map_comp, s.source_restriction]
 
 /-- weighted 比較への因子分解も、元の taut scaffold 上で厳密に回収する。 -/
 theorem coherentEmbedding_target :
-    s.coherentEmbedding ≫ s.toStrictTransportComparisonSpan.coherentTarget =
+    (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentTarget =
       (SSet.uliftFunctor.{u + 1, u}).map (tautScaffold (leftStrictTransportDiagram p)) ≫
         leftCoherentTransportComparison p := by
-  rw [coherentEmbedding, StrictTransportComparisonSpan.coherentTarget,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentTarget,
     ← Category.assoc, ← Functor.map_comp, s.weighted_restriction]
 
 end ScaffoldTransportComparisonSpan
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coherentEmbedding := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coherentEmbedding_source := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coherentEmbedding_target := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coherentEmbedding.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding.eq_1

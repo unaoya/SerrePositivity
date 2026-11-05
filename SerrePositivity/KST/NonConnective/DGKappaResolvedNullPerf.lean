@@ -67,7 +67,7 @@ theorem dgKappaResolvedNullPerfect_vertex_isZero
 
 /-- 同じ実零角の固定 ν（Perf 値）は零。P との比較や ν 上の Verdier 性は要求しない。 -/
 theorem dgKappaResolvedNullPerf_isZero :
-    IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R (dgKappaResolvedKernelKInput R D I))) := by
   let Q := dgFixedNullInput R (dgKappaResolvedKernelKInput R D I)
   let e := presentedPerfectDGNerveEquivalence R Q
   let := dgModulePerfectInfinityCategory_isStable R Q

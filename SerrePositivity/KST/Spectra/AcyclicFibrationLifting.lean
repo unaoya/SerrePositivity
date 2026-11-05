@@ -33,8 +33,8 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §§7–8、BF 1978 §2。写像空間の π_* 比較と逆射の実現。 -/
 theorem fibration_piIsomorphism_iff_rlp {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) [Fibration p] (e₀ : E _⦋0⦌) :
-    KanPiIsomorphism p ↔ (MorphismProperty.monomorphisms SSet.{u}).rlp p :=
-  ⟨fun hp ↦ fibration_rlp_of_piIsomorphism p hp e₀, kanPiIsomorphism_of_monoRight p⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p ↔ (MorphismProperty.monomorphisms SSet.{u}).rlp p :=
+  ⟨fun hp ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism p hp e₀, _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p⟩
 
 end
 

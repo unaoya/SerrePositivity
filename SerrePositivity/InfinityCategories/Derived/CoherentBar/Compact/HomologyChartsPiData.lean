@@ -15,7 +15,7 @@ universe u w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {I : Type u} [PartialOrder I] [IsFiltered I]
   {X : I → KanObject.{w}} {A : KanObject.{w}}
   {τ : ∀ {i j : I}, i ≤ j → ((X i).obj ⟶ (X j).obj)}

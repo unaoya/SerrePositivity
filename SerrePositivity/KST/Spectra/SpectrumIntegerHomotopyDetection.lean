@@ -24,7 +24,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 local instance integerDetectionLoopKan (P : PointedSimplicialSet.{u}) [KanComplex P.right] :
-    KanComplex (loopSpace P).right := PointedMapping.basedHom_kanComplex _ _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace P).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 全整数次数の群同型は、任意段の零次数を含む標準基点での全単射性を与える。 -/
 lemma PiIsomorphism.levelMap_bijective {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
@@ -47,20 +47,20 @@ lemma piIsomorphism_iff_levelMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
 /-- 整数次数の同型は任意段の連結成分の全単射を与える。連結性は仮定しない。 -/
 lemma PiIsomorphism.level_piZero_bijective {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
     (hf : PiIsomorphism f) (k : ℕ) : Function.Bijective (mapπ₀ (f.app k).right) := by
-  let eX := KanHomotopyZero.equivPiZero (X := (X.level k).space.right)
+  let eX := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := (X.level k).space.right)
     (x := (X.level k).space.basepoint)
-  let eY := KanHomotopyZero.equivPiZero (X := (Y.level k).space.right)
+  let eY := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := (Y.level k).space.right)
     (x := (Y.level k).space.basepoint)
   have he : eY ∘ levelMap f k 0 = mapπ₀ (f.app k).right ∘ eX := by
     funext a
-    exact KanHomotopyZero.equivPiZero_map (f.app k).right (pointedMap_basepoint _) a
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map (f.app k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a
   have hb := eY.bijective.comp (hf.levelMap_bijective k 0)
   rw [he] at hb
   exact (Function.Bijective.of_comp_iff _ eX.bijective).1 hb
 
 /-- 全整数次数の標準群の同型性は、各段の任意の基点での π 同型性を与える。 -/
 lemma PiIsomorphism.levelwise {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
-    (hf : PiIsomorphism f) (k : ℕ) : KanPiIsomorphism (f.app k).right := by
+    (hf : PiIsomorphism f) (k : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app k).right := by
   have hl := loopMap_piIsomorphism_of_positive (f.app (k + 1))
     (fun r => hf.levelMap_bijective (k + 1) (r + 1))
   have hc := (X.omega_condition k).comp hl
@@ -68,14 +68,14 @@ lemma PiIsomorphism.levelwise {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
   change (f.app k).right ≫ (adjointStructure Y k).right =
     (adjointStructure X k).right ≫
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (k + 1))).right at he
-  change KanPiIsomorphism ((adjointStructure X k).right ≫
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((adjointStructure X k).right ≫
     (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (k + 1))).right) at hc
   rw [← he] at hc
-  exact KanPiIsomorphism.of_comp hc (Y.omega_condition k)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hc (Y.omega_condition k)
 
 /-- 整数次数の同型性と、各段の全基点の同型性は同値。連結性は不要。 -/
 lemma piIsomorphism_iff_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
-    PiIsomorphism f ↔ ∀ k, KanPiIsomorphism (f.app k).right :=
+    PiIsomorphism f ↔ ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app k).right :=
   ⟨fun hf => hf.levelwise, piIsomorphism_of_levelwise f⟩
 
 local instance integerDetectionSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=

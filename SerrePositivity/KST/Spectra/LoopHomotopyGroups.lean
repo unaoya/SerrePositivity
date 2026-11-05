@@ -31,22 +31,22 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。連結準同型の全単射性。 -/
 instance basedPathSpace_group_subsingleton (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ) :
-    Subsingleton (KanHomotopyGroup (basedPathSpace Y).right n (basedPathSpace Y).basepoint) :=
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (basedPathSpace Y).right n (basedPathSpace Y).basepoint) :=
   inferInstanceAs (Subsingleton
-    (KanHomotopy (basedPathSpace Y).right (n + 1) (basedPathSpace Y).basepoint))
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (basedPathSpace Y).right (n + 1) (basedPathSpace Y).basepoint))
 
 /-- 概要：loop の正次数のホモトピー群は標的の一つ上の次数と同型。
 方針：loop の fiber 同型、path の連結同型、基点の等式を合成する。
 規約：π_(n+1)(ΩY) と π_(n+2)(Y) の群同型。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5、BF 1978 §2。 -/
 def loopPositiveHomotopyEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
-    KanHomotopyGroup (loopSpace Y).right n (loopSpace Y).basepoint ≃*
-      KanHomotopyGroup Y.right (n + 1) Y.basepoint :=
-  (KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1) Y.basepoint :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
     (loopBasedPathFiberIso_basepoint Y)).trans
-    ((connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
+    ((_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
       (basedPathSpace Y).basepoint n).symm.trans
-        (KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)))
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)))
 
 end
 

@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories.F2
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {A B C A' B' C' : SSet.{u}}
   [Quasicategory A] [Quasicategory B] [Quasicategory C]
   [Quasicategory A'] [Quasicategory B'] [Quasicategory C']

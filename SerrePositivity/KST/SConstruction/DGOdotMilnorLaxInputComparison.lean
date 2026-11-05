@@ -83,7 +83,7 @@ def dgOdotMilnorLaxRightInputEquivalence : QCatEquivalence
 /-- 概要：元左代数との同じ比較は完全射。
 方針：構成した同値の完全性。規約：同値の底の関手は不変。
 使われ方：Cat^perf 内の二因子の比較。 -/
-def dgOdotMilnorLaxLeftInputComparison : ExactMap
+def dgOdotMilnorLaxLeftInputComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotLeftInput R d)) (dgOdotMilnorLaxLeft R d) :=
   ⟨(dgOdotMilnorLaxLeftInputEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence
@@ -92,7 +92,7 @@ def dgOdotMilnorLaxLeftInputComparison : ExactMap
 /-- 概要：元右代数との同じ比較は完全射。
 方針：構成した同値の完全性。規約：同値の底の関手は不変。
 使われ方：Cat^perf 内の二因子の比較。 -/
-def dgOdotMilnorLaxRightInputComparison : ExactMap
+def dgOdotMilnorLaxRightInputComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotRightInput R d)) (dgOdotMilnorLaxRight R d) :=
   ⟨(dgOdotMilnorLaxRightInputEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence

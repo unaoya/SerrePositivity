@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-  (hf : ∀ n, KanPiIsomorphism (f.app n).right)
+  (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right)
 
 include hf
 
@@ -40,7 +40,7 @@ include hf
 theorem inversePathTarget_rlp (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp
       ((KanSequence.mappingPathTarget (sequenceHom f)).app n).right :=
-  mappingPathProjection_rlp_of_piIsomorphism (f.app n) (hf n)
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism (f.app n) (hf n)
 
 /-- 概要：mapping path の終点射へ標的の恒等射を列として厳密に持ち上げる。
 方針：標的 Y の構造射の単射性と各段の全単射 RLP を使う。
@@ -79,17 +79,17 @@ def levelwiseInverse : Y ⟶ X := by
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。比較の逆方向の同型性。 -/
 theorem levelwiseInverse_levelwise (n : ℕ) :
-    KanPiIsomorphism ((levelwiseInverse f hf).app n).right := by
-  have hq := kanPiIsomorphism_of_monoRight _ (inversePathTarget_rlp f hf n)
-  have hs : KanPiIsomorphism ((inversePathSection f hf).app n).right := by
-    apply KanPiIsomorphism.of_comp
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((levelwiseInverse f hf).app n).right := by
+  have hq := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (inversePathTarget_rlp f hf n)
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inversePathSection f hf).app n).right := by
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
       (g := ((KanSequence.mappingPathTarget (sequenceHom f)).app n).right) _ hq
     have h := congrArg Under.Hom.right (inversePathSection_target f hf n)
     change ((inversePathSection f hf).app n).right ≫
       ((KanSequence.mappingPathTarget (sequenceHom f)).app n).right = 𝟙 _ at h
     rw [h]
-    exact KanPiIsomorphism.id _
-  exact hs.comp (kanPiIsomorphism_of_monoRight _
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+  exact hs.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
     (KanSequence.mappingPathSource_rlp (sequenceHom f) n))
 
 /-- 概要：選んだ逆方向の射は各段で左ホモトピー逆となる。

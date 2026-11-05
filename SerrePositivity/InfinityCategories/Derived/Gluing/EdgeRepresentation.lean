@@ -9,7 +9,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgGluingEdgeRepresentation_of_hom_equivalence {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (x y : X _⦋0⦌)

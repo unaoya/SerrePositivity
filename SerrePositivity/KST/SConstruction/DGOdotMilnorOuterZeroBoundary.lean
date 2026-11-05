@@ -29,7 +29,7 @@ def dgOdotMilnorOuterZeroVertexIso : VertexIso
     (squareVertex (dgOdotMilnorActualOuterDiagram R d h).square 0 1)
     (squareVertex (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1) := by
   have hs : squareVertex (dgOdotMilnorActualOuterDiagram R d h).square 0 1 =
-      perfectStableVertex zeroCategory.{u + 1} perfectZeroCategory_isIdempotentComplete := by
+      perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} perfectZeroCategory_isIdempotentComplete := by
     apply Subtype.ext
     change squareVertex ((dgOdotMilnorCompletedLaxQuotient R d h).outerSquare ≫
       perfectStableInfinityInclusion) 0 1 = _
@@ -47,8 +47,8 @@ def dgOdotMilnorOuterZeroVertexIso : VertexIso
 方針：零単体上の関手評価の充満忠実性で指定頂点同型を戻す。
 規約：零角の同型類だけでは代用しない。使われ方：Sp 正本の指定零角境界。 -/
 def dgOdotMilnorOuterZeroBoundary : FunctorIso
-    (verdierZeroCorner ≫ (dgOdotMilnorActualOuterDiagram R d h).square)
-    (verdierZeroCorner ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) := by
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ (dgOdotMilnorActualOuterDiagram R d h).square)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) := by
   apply (qCatEquivalenceOfIso (pointFunctorEvaluationIso
     perfectStableInfinity.{u + 1})).isQCatEquivalence.isFullyFaithful.preimageVertexIso
   change VertexIso (squareVertex (dgOdotMilnorActualOuterDiagram R d h).square 0 1)

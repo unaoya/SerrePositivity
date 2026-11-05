@@ -65,21 +65,21 @@ lemma boundary_equiv (j : ℤ) (a : baseGroup f s (j + 1)) :
 
 lemma exact_fiber (j : ℤ) (a : fiberGroup f s j) :
     bottom f s j a = 1 ↔ ∃ b : baseGroup f s (j + 1), boundary f s j b = a :=
-  group_exact_of_equivalences (boundary f s j) (bottom f s j)
+  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (boundary f s j) (bottom f s j)
     (homotopyFiberBoundary f j) (homotopyMap (homotopyFiberInclusion f) j)
     (baseEquiv f s (j + 1)) (fiberEquiv f s j) (totalEquiv f s j)
     (boundary_equiv f s j) (bottom_equiv f s j) (homotopy_exact_connecting_fiber f j) a
 
 lemma exact_total (j : ℤ) (a : totalGroup f s j) :
     right f s j a = 1 ↔ ∃ b : fiberGroup f s j, bottom f s j b = a :=
-  group_exact_of_equivalences (bottom f s j) (right f s j)
+  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (bottom f s j) (right f s j)
     (homotopyMap (homotopyFiberInclusion f) j) (homotopyMap f j)
     (fiberEquiv f s j) (totalEquiv f s j) (baseEquiv f s j)
     (bottom_equiv f s j) (right_equiv f s j) (homotopy_exact_fiber_total f j) a
 
 lemma exact_base (j : ℤ) (a : baseGroup f s (j + 1)) :
     boundary f s j a = 1 ↔ ∃ b : totalGroup f s (j + 1), right f s (j + 1) b = a :=
-  group_exact_of_equivalences (right f s (j + 1)) (boundary f s j)
+  _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences (right f s (j + 1)) (boundary f s j)
     (homotopyMap f (j + 1)) (homotopyFiberBoundary f j)
     (totalEquiv f s (j + 1)) (baseEquiv f s (j + 1)) (fiberEquiv f s j)
     (right_equiv f s (j + 1)) (boundary_equiv f s j) (homotopy_exact_total_base f j) a

@@ -24,8 +24,8 @@ variable {C D E : Type v} [Category.{u} C] [Category.{u} D] [Category.{u} E]
 
 /-- 順序の証明を固定し、元の豊穣 Hom へ同じ基底関手を作用させる。 -/
 def d3OrderedCylinderMap (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
-    EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin (m + 1)) C)
-      (EnrichedOrderedCylinder.Object (Fin (m + 1)) D) where
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin (m + 1)) C)
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin (m + 1)) D) where
   obj X := ⟨X.position, K.obj X.val⟩
   map X Y := {
     app d := ↾fun ⟨p, f⟩ ↦ (p, (K.map X.val Y.val).app d f)
@@ -50,7 +50,7 @@ def d3OrderedCylinderMap (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
     funext d
     apply ConcreteCategory.hom_ext
     rintro ⟨⟨p, f⟩, ⟨q, g⟩⟩
-    exact Prod.ext rfl (EnrichedParameterCylinder.functor_comp_app K X.val Y.val Z.val d f g)
+    exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app K X.val Y.val Z.val d f g)
 
 /-- 元の nerve と順序単体の pairing は、同じ基底豊穣関手へ厳密に自然。 -/
 lemma d3OrderedCylinderMap_family (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
@@ -107,7 +107,7 @@ lemma d3GradedPostcomp_cylinder {F G : EnrichedFunctor SSet.{u} C D}
     | rfl
     | have hp := p.down.down
       norm_num [Fin.le_def] at hp
-    | exact (EnrichedParameterCylinder.functor_comp_app K _ _ _ d
+    | exact (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app K _ _ _ d
         ((η.app x).app d PUnit.unit) ((G.map x y).app d f)).symm
 
 /-- 前合成は、指定厳密変換の全区間族を保つ。 -/

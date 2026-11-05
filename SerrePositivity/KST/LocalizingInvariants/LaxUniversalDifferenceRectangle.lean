@@ -17,58 +17,58 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
-def identityDiagram (Q : StableCategory.{u}) : VerdierDiagram.{u} :=
-  (IdentityLax.verdierSequence Q).presentation
+def identityDiagram (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation (IdentityLax.verdierSequence Q))
 
-lemma identityDiagram_bottom (Q : StableCategory.{u}) :
+lemma identityDiagram_bottom (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     squareBottomEdge ≫ (identityDiagram Q).square =
-      SSet.yonedaEquiv.symm (stableArrow (IdentityLax.exactDiagonal Q)).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (IdentityLax.exactDiagonal Q)).edge :=
   (identityDiagram Q).bottom_edge
 
-lemma identityDiagram_right (Q : StableCategory.{u}) :
+lemma identityDiagram_right (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     squareRightEdge ≫ (identityDiagram Q).square =
-      SSet.yonedaEquiv.symm (stableArrow (exactLaxDifference (𝟙 Q) (𝟙 Q))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLaxDifference (𝟙 Q) (𝟙 Q))).edge :=
   (identityDiagram Q).right_edge
 
-lemma identityDiagram_left (Q : StableCategory.{u}) :
+lemma identityDiagram_left (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     squareLeftEdge ≫ (identityDiagram Q).square =
-      SSet.yonedaEquiv.symm (stableArrow (toZeroCategory Q)).edge :=
-  (IdentityLax.verdierSequence Q).presentation_left
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q)).edge :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation_left (IdentityLax.verdierSequence Q))
 
-def zeroComposite : A ⟶ zeroCategory.{u} := kernelMap p q i r ≫ toZeroCategory Q
+def zeroComposite : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q
 
-def zeroCompositeIso : FunctorIso (zeroComposite p q i r).hom (toZeroCategory A).hom :=
-  zeroDiagramFunctorIso _ _ (fun _ => zeroCategory_isZero _) (fun _ => zeroCategory_isZero _)
+def zeroCompositeIso : FunctorIso (zeroComposite p q i r).hom (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A).hom :=
+  zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _) (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
 
-def zeroCompositionTriangle : SSet.Edge.CompStruct (stableArrow (kernelMap p q i r))
-    (stableArrow (toZeroCategory Q)) (stableArrow (toZeroCategory A)) := by
-  let s := coherentNerveCompStruct (C := StableQCat.{u}) (kernelMap p q i r) (toZeroCategory Q)
-  exact (compositionDiagonalTransport s (exactMapComparisonTriangle (F := toZeroCategory A)
+def zeroCompositionTriangle : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)) := by
+  let s := coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q)
+  exact (compositionDiagonalTransport s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle (F := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)
     (G := zeroComposite p q i r) (zeroCompositeIso p q i r).symm)).triangle
 
-def rectangle : SquarePastingRectangle
-    ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ comparisonSquare p q i r h)
+def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
+    ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare p q i r h)
     ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ (identityDiagram Q).square)
     (SSet.yonedaEquiv.symm (zeroCompositionTriangle p q i r).simplex)
-    (SSet.yonedaEquiv.symm (quotientCompositionTriangle p q r).simplex) := by
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).simplex) := by
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
-  · rw [square_transpose_right, square_transpose_left,
-      comparisonSquare_top, identityDiagram_bottom]
-  · rw [square_transpose_bottom, comparisonSquare_left, stdSimplex.δ_comp_yonedaEquiv_symm,
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left,
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_top, identityDiagram_bottom]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left, stdSimplex.δ_comp_yonedaEquiv_symm,
       (zeroCompositionTriangle p q i r).d₂]
-  · rw [square_transpose_bottom, identityDiagram_left,
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, identityDiagram_left,
       stdSimplex.δ_comp_yonedaEquiv_symm, (zeroCompositionTriangle p q i r).d₀]
-  · rw [square_transpose_top, comparisonSquare_right, stdSimplex.δ_comp_yonedaEquiv_symm,
-      (quotientCompositionTriangle p q r).d₂]
-  · rw [square_transpose_top, identityDiagram_right, stdSimplex.δ_comp_yonedaEquiv_symm,
-      (quotientCompositionTriangle p q r).d₀]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right, stdSimplex.δ_comp_yonedaEquiv_symm,
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).d₂]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, identityDiagram_right, stdSimplex.δ_comp_yonedaEquiv_symm,
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).d₀]
 
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference

@@ -21,9 +21,9 @@ open scoped Simplicial
 方針：二つの像の和の包含に対して相対切断の延長を適用する。
 規約：別々の切断の選択ではない。使われ方：正規化した単一の pushout の選択。 -/
 lemma exists_jointNormalizedPushoutSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    ∃ s : (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C,
+    ∃ s : (ihom (horn 2 0 : SSet.{u})).obj C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C,
       (identitySpanSubcomplex C).ι ≫ s = identityUnionPushoutFamily C ∧
-        s ≫ pushoutProjection C = 𝟙 _ :=
+        s ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = 𝟙 _ :=
   exists_stablePushoutSection_extending (identitySpanSubcomplex C).ι
     (identityUnionPushoutFamily C) (identityUnionPushoutFamily_projection C)
 
@@ -32,14 +32,14 @@ lemma exists_jointNormalizedPushoutSection (C : SSet.{u}) [Quasicategory C] [IsS
 規約：全パラメーターの族に対する単体的射。使われ方：McCarthy 法の functorial pushout。
 -/
 def jointNormalizedPushoutSection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ pushoutDiagrams C :=
+    (ihom (horn 2 0 : SSet.{u})).obj C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
   Classical.choose (exists_jointNormalizedPushoutSection C)
 
 /-- 概要：同時正規化した選択は入力 span を厳密に回収する。
 方針：選択の仕様の切断の条件。
 規約：ホモトピー等号に弱めない。使われ方：任意の入力での二辺の回収。 -/
 lemma jointNormalizedPushoutSection_projection (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    jointNormalizedPushoutSection C ≫ pushoutProjection C = 𝟙 _ :=
+    jointNormalizedPushoutSection C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = 𝟙 _ :=
   (Classical.choose_spec (exists_jointNormalizedPushoutSection C)).2
 
 /-- 概要：同時正規化した選択は二つの像の和で標準族を回収する。
@@ -72,7 +72,7 @@ private lemma identitySpanIntoUnion_square (b : Bool) (C : SSet.{u}) :
 lemma jointNormalizedPushoutSection_identity (b : Bool) (C : SSet.{u})
     [Quasicategory C] [IsStable C] :
     identitySpanFamily b C ≫ jointNormalizedPushoutSection C = identityPushoutFamily b C := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι).1
+  apply (cancel_mono (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι).1
   rw [Category.assoc, identityPushoutFamily_ι]
   have hi : identitySpanIntoUnion b C ≫ (identitySpanSubcomplex C).ι = identitySpanFamily b C := rfl
   rw [← hi, Category.assoc, ← Category.assoc (identitySpanSubcomplex C).ι,

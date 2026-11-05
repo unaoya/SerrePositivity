@@ -19,52 +19,52 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 最後の全補正を先に動かす実経路の下辺。 -/
 def monicKTracedTripleInterchangeFirstLower (n : ℕ) :=
-  cartesianInterchangeFirstLower (monicKTracedUnaryCorrectionPointEdge F h n)
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower (monicKTracedUnaryCorrectionPointEdge F h n)
     (monicKTracedCompositionBFLevelEdge F f g n)
     (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)
 
 /-- 最後の全補正を先に動かす実経路の上辺。 -/
 def monicKTracedTripleInterchangeFirstUpper (n : ℕ) :=
-  cartesianInterchangeFirstUpper (monicKTracedUnaryCorrectionPointEdge F h n)
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper (monicKTracedUnaryCorrectionPointEdge F h n)
     (monicKTracedCompositionBFLevelEdge F f g n)
     (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)
 
 /-- 前二射の BF 比較を先に動かす実経路の下辺。 -/
 def monicKTracedTripleInterchangeSecondLower (n : ℕ) :=
-  cartesianInterchangeSecondLower (monicKTracedUnaryCorrectionPointEdge F h n)
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower (monicKTracedUnaryCorrectionPointEdge F h n)
     (monicKTracedCompositionBFLevelEdge F f g n)
     (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)
 
 /-- 前二射の BF 比較を先に動かす実経路の上辺。 -/
 def monicKTracedTripleInterchangeSecondUpper (n : ℕ) :=
-  cartesianInterchangeSecondUpper (monicKTracedUnaryCorrectionPointEdge F h n)
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper (monicKTracedUnaryCorrectionPointEdge F h n)
     (monicKTracedCompositionBFLevelEdge F f g n)
     (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)
 
 /-- 元の同じ全補正辺・BF 段比較辺を保持する、実交換三角形対。 -/
 def monicKTracedTripleInterchangeDiamond (n : ℕ) :=
-  cartesianInterchangeDiamond (monicKTracedUnaryCorrectionPointEdge F h n)
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond (monicKTracedUnaryCorrectionPointEdge F h n)
     (monicKTracedCompositionBFLevelEdge F f g n)
     (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)
 
 /-- 第一全二単体は元の同じ二辺の下三角形の像そのもの。 -/
 lemma monicKTracedTripleInterchangeDiamond_first (n : ℕ) :
     (monicKTracedTripleInterchangeDiamond F f g h n).first.simplex =
-      ((cartesianEdgeLowerTriangle (monicKTracedUnaryCorrectionPointEdge F h n)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle (monicKTracedUnaryCorrectionPointEdge F h n)
         (monicKTracedCompositionBFLevelEdge F f g n)).map
           (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)).simplex := rfl
 
 /-- 第二全二単体も元の同じ二辺の上三角形の像そのもの。 -/
 lemma monicKTracedTripleInterchangeDiamond_second (n : ℕ) :
     (monicKTracedTripleInterchangeDiamond F f g h n).second.simplex =
-      ((cartesianEdgeUpperTriangle (monicKTracedUnaryCorrectionPointEdge F h n)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle (monicKTracedUnaryCorrectionPointEdge F h n)
         (monicKTracedCompositionBFLevelEdge F f g n)).map
           (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)).simplex := rfl
 
 /-- 共通対角辺も元の同じ二つの全辺を同時に辿った像そのもの。 -/
 lemma monicKTracedTripleInterchangeDiamond_diagonal (n : ℕ) :
     (monicKTracedTripleInterchangeDiamond F f g h n).diagonal.edge =
-      ((cartesianEdgePair (monicKTracedUnaryCorrectionPointEdge F h n)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (monicKTracedUnaryCorrectionPointEdge F h n)
         (monicKTracedCompositionBFLevelEdge F f g n)).map
           (kStageRawReverseComposition (F.obj w) (F.obj y) (F.obj z) n)).edge := rfl
 
@@ -74,6 +74,6 @@ lemma monicKTracedTripleInterchangeDiamond_comp (n : ℕ) :
         SSet.HomotopyCategory.homMk (monicKTracedTripleInterchangeFirstUpper F f g h n) =
       SSet.HomotopyCategory.homMk (monicKTracedTripleInterchangeSecondLower F f g h n) ≫
         SSet.HomotopyCategory.homMk (monicKTracedTripleInterchangeSecondUpper F f g h n) :=
-  cartesianInterchangeDiamond_comp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond_comp _ _ _
 
 end SerrePositivity.KST.SConstruction

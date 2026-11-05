@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -30,9 +32,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {E T B : SSet.{u}} [Quasicategory B]
   (s : T ⟶ nerve I) (p : E ⟶ B) [LeftFibration p] (k : nerve I ⟶ B)
   (f : T ⟶ pullback p k) (hf : f ≫ pullback.snd p k = s)
@@ -40,4 +45,10 @@ variable {I : Type u} [Category.{u} I] {E T B : SSet.{u}} [Quasicategory B]
 local instance instLeftFibrationSndSSet_5 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.instLeftFibrationSndSSet_5

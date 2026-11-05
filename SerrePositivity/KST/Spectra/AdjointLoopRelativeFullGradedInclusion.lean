@@ -27,7 +27,7 @@ def fullGradedInclusion :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       fullOriginalEnriched fullReplacedEnriched where
   app X := eHomEquiv SSet (inclusion X.val)
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     (inclusion X.val) (inclusion Y.val)
     (fullReplacedMap X.val Y.val) (fullOriginalMap X.val Y.val)).mp
       (full_left_whiskered X.val Y.val)).symm

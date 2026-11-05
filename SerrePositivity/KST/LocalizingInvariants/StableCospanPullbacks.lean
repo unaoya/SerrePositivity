@@ -43,7 +43,7 @@ lemma exists_stable_pullbackSquare_of_edges {X : SSet.{u}} [Quasicategory X] [Is
     ∃ R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X,
       IsPullbackSquare R ∧ squareRightEdge ≫ R = SSet.yonedaEquiv.symm f.edge ∧
         squareTopEdge ≫ R = SSet.yonedaEquiv.symm g.edge := by
-  obtain ⟨S, hS, hP⟩ := SConstruction.exists_stable_pushoutSquare_of_span
+  obtain ⟨S, hS, hP⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span
     (edgeSpan (X := X.op) (edgeOp f) (edgeOp g))
   have hb : squareBottomEdge ≫ S =
       (SSet.yonedaEquiv (X := X.op) (n := ⦋1⦌)).symm (edgeOp f).edge := by

@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 local instance rhoArrowMappingTensorKan (A B : SSet.{u}) [KanComplex A] [KanComplex B] :
     KanComplex (A ⊗ B) := F2.kanComplex_tensor A B
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj) (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 include a hv in

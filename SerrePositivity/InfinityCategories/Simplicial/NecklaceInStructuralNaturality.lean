@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralIso
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeCoherence
 
@@ -11,47 +13,68 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeCoheren
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory _root_.Simplicial SSet
 
 /-- K 内の元の三重連結の結合同型は、全ての元の可換三角形について自然。 -/
 lemma necklaceInAssociator_naturality {K : SSet.{u}} {w x y z : K _⦋0⦌}
-    {T T' : NecklaceIn K w x} {U U' : NecklaceIn K x y} {V V' : NecklaceIn K y z}
+    {T T' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K w x} {U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} {V V' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z}
     (f : T ⟶ T') (g : U ⟶ U') (h : V ⟶ V') :
-    necklaceInWedgeMap (necklaceInWedgeMap f g) h ≫ (necklaceInAssociator T' U' V').hom =
-      (necklaceInAssociator T U V).hom ≫ necklaceInWedgeMap f (necklaceInWedgeMap g h) :=
-  NecklaceInHom.ext (necklaceAssociator_naturality f.necklaceHom g.necklaceHom h.necklaceHom)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap f g) h ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T' U' V').hom =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T U V).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap f (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap g h) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_naturality f.necklaceHom g.necklaceHom h.necklaceHom)
 
 /-- K 内の元の左単位は、全ての元の可換三角形について自然。 -/
 lemma necklaceInLeftUnitor_naturality {K : SSet.{u}} {x y : K _⦋0⦌}
-    {T U : NecklaceIn K x y} (f : T ⟶ U) :
-    necklaceInWedgeMap (𝟙 (necklaceInPoint K x)) f ≫ (necklaceInLeftUnitor U).hom =
-      (necklaceInLeftUnitor T).hom ≫ f :=
-  NecklaceInHom.ext (necklaceLeftUnitor_naturality f.necklaceHom)
+    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)) f ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor U).hom =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor T).hom ≫ f :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_naturality f.necklaceHom)
 
 /-- K 内の元の右単位は、全ての元の可換三角形について自然。 -/
 lemma necklaceInRightUnitor_naturality {K : SSet.{u}} {x y : K _⦋0⦌}
-    {T U : NecklaceIn K x y} (f : T ⟶ U) :
-    necklaceInWedgeMap f (𝟙 (necklaceInPoint K y)) ≫ (necklaceInRightUnitor U).hom =
-      (necklaceInRightUnitor T).hom ≫ f :=
-  NecklaceInHom.ext (necklaceRightUnitor_naturality f.necklaceHom)
+    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} (f : T ⟶ U) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y)) ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor U).hom =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor T).hom ≫ f :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_naturality f.necklaceHom)
 
 /-- K 内の元の全四重連結で、元の結合同型は五角を満たす。 -/
 lemma necklaceInAssociator_pentagon {K : SSet.{u}} {v w x y z : K _⦋0⦌}
-    (T : NecklaceIn K v w) (U : NecklaceIn K w x) (V : NecklaceIn K x y)
-    (W : NecklaceIn K y z) :
-    necklaceInWedgeMap (necklaceInAssociator T U V).hom (𝟙 W) ≫
-        (necklaceInAssociator T (necklaceInWedge U V) W).hom ≫
-          necklaceInWedgeMap (𝟙 T) (necklaceInAssociator U V W).hom =
-      (necklaceInAssociator (necklaceInWedge T U) V W).hom ≫
-        (necklaceInAssociator T U (necklaceInWedge V W)).hom :=
-  NecklaceInHom.ext (necklaceAssociator_pentagon T.necklace U.necklace V.necklace W.necklace)
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K v w) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K w x) (V : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y)
+    (W : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T U V).hom (𝟙 W) ≫
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge U V) W).hom ≫
+          _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (𝟙 T) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator U V W).hom =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) V W).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T U (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge V W)).hom :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_pentagon T.necklace U.necklace V.necklace W.necklace)
 
 /-- K 内の元の結合と一点の左右単位は三角を満たす。 -/
 lemma necklaceInAssociator_triangle {K : SSet.{u}} {x y z : K _⦋0⦌}
-    (T : NecklaceIn K x y) (U : NecklaceIn K y z) :
-    (necklaceInAssociator T (necklaceInPoint K y) U).hom ≫
-        necklaceInWedgeMap (𝟙 T) (necklaceInLeftUnitor U).hom =
-      necklaceInWedgeMap (necklaceInRightUnitor T).hom (𝟙 U) :=
-  NecklaceInHom.ext (necklaceAssociator_triangle T.necklace U.necklace)
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y) U).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (𝟙 T) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor U).hom =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedgeMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor T).hom (𝟙 U) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_triangle T.necklace U.necklace)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_pentagon := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_pentagon
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_triangle := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInRightUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor_naturality

@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet HomotopyLimits
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 
 lemma dgBarCompactUliftSimplexHom_face (F : (Δ[n + 1] : SSet.{u}) ⟶ X)

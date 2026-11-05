@@ -38,12 +38,12 @@ lemma unitCondition_of_relativeInitial (η : FunctorHom (𝟙 X) (F ≫ G)) [IsI
 
 def adjunctionOfRelativeInitialSection (h : F ≫ G = 𝟙 X)
     (hF : ∀ x, InitialBoundaryLifting G (F.app (Opposite.op ⦋0⦌) x)) : QCatAdjunction F G :=
-  qcatAdjunctionOfUnitMappingSpaceCondition (sectionUnit h)
-    (unitCondition_of_relativeInitial (sectionUnit h) hF)
+  qcatAdjunctionOfUnitMappingSpaceCondition (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.sectionUnit h)
+    (unitCondition_of_relativeInitial (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.sectionUnit h) hF)
 
 lemma adjunctionOfRelativeInitialSection_unit (h : F ≫ G = 𝟙 X)
     (hF : ∀ x, InitialBoundaryLifting G (F.app (Opposite.op ⦋0⦌) x)) :
-    (adjunctionOfRelativeInitialSection h hF).unitHom = sectionUnit h :=
+    (adjunctionOfRelativeInitialSection h hF).unitHom = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.sectionUnit h :=
   qcatAdjunctionOfUnitMappingSpaceCondition_unitHom _ _
 
 end SerrePositivity.KST.LocalizingInvariants

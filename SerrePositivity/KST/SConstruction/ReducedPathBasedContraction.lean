@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の点つき経路商の収縮は、基点生成部分複体に相対な実際のホモトピー。 -/
 def reducedPathDiagonalBasedContraction (D : SimplicialObject SSet.{u}) :
@@ -25,10 +25,10 @@ def reducedPathDiagonalBasedContraction (D : SimplicialObject SSet.{u}) :
       (RelativeMorphism.ofSimplex₀ (𝟙 (reducedPathDiagonal D).right)
         (reducedPathDiagonal D).basepoint (reducedPathDiagonal D).basepoint rfl) where
   h := reducedPathDiagonalCylinder D
-  h₀ := (reducedPathDiagonalCylinder_zero D).trans (Spectra.pointedConstant_eq_const _ _)
+  h₀ := (reducedPathDiagonalCylinder_zero D).trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _)
   h₁ := reducedPathDiagonalCylinder_one D
   rel := by
-    rw [Subcomplex.ofSimplex_ι, ← Spectra.pointedConstant_eq_const (reducedPathDiagonal D),
+    rw [Subcomplex.ofSimplex_ι, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (reducedPathDiagonal D),
       comp_whiskerRight_assoc, reducedPathDiagonalCylinder_point, comp_toUnit_assoc]
     simp only [comp_toUnit_assoc]
 

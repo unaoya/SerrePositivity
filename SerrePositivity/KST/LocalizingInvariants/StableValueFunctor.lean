@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
@@ -25,41 +25,41 @@ local instance stableValueSimplicialCategory : SimplicialCategory OmegaSpectrum.
   OmegaSpectrum.simplicialCategory
 
 /-- 完全関手の通常の圏から、元の安定圏の ∞ 圏のホモトピー圏への関手。 -/
-def stableHoFunctor : StableCategory.{u} ⥤ hoFunctor.obj StableInfinity.{u} where
-  obj A := SSet.HomotopyCategory.mk (stableVertex A)
-  map F := SSet.Truncated.HomotopyCategory.homMk (stableArrow F).toTruncated
+def stableHoFunctor : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} ⥤ hoFunctor.obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} where
+  obj A := SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A)
+  map F := SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).toTruncated
   map_id A := by
     change SSet.Truncated.HomotopyCategory.homMk
-      (coherentNerveEdge (C := StableQCat.{u}) (𝟙 A)).toTruncated = _
+      (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (𝟙 A)).toTruncated = _
     rw [coherentNerveEdge_id, SSet.Edge.toTruncated_id]
     exact SSet.Truncated.HomotopyCategory.homMk_id _
   map_comp F G :=
     (SSet.Truncated.HomotopyCategory.homMk_comp_homMk
-      (coherentNerveCompStruct (C := StableQCat.{u}) F G).toTruncated).symm
+      (coherentNerveCompStruct (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) F G).toTruncated).symm
 
-variable (E : StableInfinity.{u} ⟶ Sp.{u})
+variable (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
 
 /-- 元の BF 値の頂点と、元の ∞ 関手の値の頂点との比較。 -/
-def valueObjectIso (A : StableCategory.{u}) : SpectrumHo.obj (value E A) ≅
+def valueObjectIso (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : SpectrumHo.obj (value E A) ≅
     (hoFunctor.map E).toFunctor.obj (stableHoFunctor.obj A) :=
   eqToIso (congrArg SSet.HomotopyCategory.mk (value_vertex E A))
 
-lemma valueMap_naturality {A B : StableCategory.{u}} (F : ExactMap A B) :
+lemma valueMap_naturality {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     SpectrumHo.hom (valueMap E F) ≫ (valueObjectIso E B).hom =
       (valueObjectIso E A).hom ≫
         (hoFunctor.map E).toFunctor.map (stableHoFunctor.map F) :=
   FiberModel.homMk_transport (coherentNerveEdge (valueMap E F)).toTruncated
-    ((stableArrow F).map E).toTruncated (value_vertex E A) (value_vertex E B)
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).map E).toTruncated (value_vertex E A) (value_vertex E B)
     (valueMap_edge E F)
 
-lemma valueMap_hom {A B : StableCategory.{u}} (F : ExactMap A B) :
+lemma valueMap_hom {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     SpectrumHo.hom (valueMap E F) = (valueObjectIso E A).hom ≫
       (hoFunctor.map E).toFunctor.map (stableHoFunctor.map F) ≫ (valueObjectIso E B).inv := by
   have h := congrArg (fun m => m ≫ (valueObjectIso E B).inv) (valueMap_naturality E F)
   simpa only [Category.assoc, Iso.hom_inv_id, Category.comp_id] using h
 
 /-- 元の BF 値と元の BF 射の類を使う実際の関手。 -/
-def stableValueFunctor : StableCategory.{u} ⥤ hoFunctor.obj Sp.{u} where
+def stableValueFunctor : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} ⥤ hoFunctor.obj Sp.{u} where
   obj A := SpectrumHo.obj (value E A)
   map F := SpectrumHo.hom (valueMap E F)
   map_id A := by
@@ -71,11 +71,11 @@ def stableValueFunctor : StableCategory.{u} ⥤ hoFunctor.obj Sp.{u} where
       Iso.inv_hom_id_assoc]
 
 /-- 完全関手の関手同型は、局所化不変量の元の値の射の等式へ移る。 -/
-lemma valueMap_hom_eq_of_functorIso {A B : StableCategory.{u}} {F G : ExactMap A B}
+lemma valueMap_hom_eq_of_functorIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
     (e : FunctorIso F.hom G.hom) :
     SpectrumHo.hom (valueMap E F) = SpectrumHo.hom (valueMap E G) := by
   rw [valueMap_hom, valueMap_hom]
   rw [show stableHoFunctor.map F = stableHoFunctor.map G from
-    stableArrow_homMk_eq_of_functorIso e]
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrow_homMk_eq_of_functorIso e]
 
 end SerrePositivity.KST.LocalizingInvariants

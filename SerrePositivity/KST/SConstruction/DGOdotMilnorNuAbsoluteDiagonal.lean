@@ -18,11 +18,11 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 方針：元の四角形の二つの三角形制限の対角面を照合する。
 規約：ホモトピー類でなく元一単体の等号。使われ方：同じ対角射データの回収。 -/
 lemma dgOdotMilnorNuAbsoluteTriangle_diagonal :
-    StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
       (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) =
-      StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
         (dgOdotMilnorNuAbsoluteNullTriangle R d h 1) := by
-  let F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} :=
+  let F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
     perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)
   have hd : stdSimplex.δ (1 : Fin 3) ≫ squareTriangle.{u + 2} 0 =
       stdSimplex.δ (1 : Fin 3) ≫ squareTriangle.{u + 2} 1 :=
@@ -41,16 +41,16 @@ lemma dgOdotMilnorNuAbsoluteTriangle_diagonal :
 規約：始域・終域・通常射を依存和で同時に保持。使われ方：上下の終関手性の輸送。 -/
 lemma dgOdotMilnorNuAbsoluteTriangle_diagonal_data (j : Fin 2) :
     coherentNerveArrowData
-      (StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.map (SimplexCategory.δ (1 : Fin 3)).op
         (dgOdotMilnorNuAbsoluteNullTriangle R d h j)) =
       (⟨(dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (0 : Fin 3)⟩,
         (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (2 : Fin 3)⟩,
         (coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuAbsoluteNullTriangle R d h j)).map
-          dgOdotMilnorNuNullDiagonalPath.{u}⟩ : Σ X Y : StableQCat.{u + 1}, X ⟶ Y) := by
+          dgOdotMilnorNuNullDiagonalPath.{u}⟩ : Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, X ⟶ Y) := by
   have hv := coherentEnrichedUnderlyingFunctor_vertex (dgOdotMilnorNuAbsoluteNullTriangle R d h j)
     dgOdotMilnorNuNullDiagonalPath.{u}
   have he := (congrArg (SimplicialCategory.homEquiv' _ _).symm hv.symm).trans
     (Equiv.symm_apply_apply _ _)
-  exact congrArg (fun f => (⟨_, _, f⟩ : Σ X Y : StableQCat.{u + 1}, X ⟶ Y)) he
+  exact congrArg (fun f => (⟨_, _, f⟩ : Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, X ⟶ Y)) he
 
 end SerrePositivity.KST.SConstruction

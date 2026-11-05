@@ -13,13 +13,13 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
 open KST.Comparison KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 instance simplicialRingIntegerModuleUnderlyingKan (A : SimplicialObject RingCat.{u}) :
     SSet.KanComplex (moduleUnderlyingSSet (simplicialRingIntegerModule A)) := by
   change SSet.KanComplex (ringSpace A)
   infer_instance
 def simplicialRingPiMooreGroupEquiv (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    KanHomotopyGroup (ringSpace A) n (0 : A.obj (Opposite.op ⦋0⦌)) ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (Opposite.op ⦋0⦌)) ≃*
       Multiplicative ((simplicialRingNormalizedChains A).homology (n + 1)) :=
   modulePiMooreGroupEquiv (simplicialRingIntegerModule A) n
 end SerrePositivity.InfinityCategories

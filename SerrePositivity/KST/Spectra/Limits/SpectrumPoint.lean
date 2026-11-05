@@ -72,14 +72,14 @@ def spectrumPoint : OmegaSpectrum.{u} where
   sigma_mono _ := by
     have := suspensionPoint_isZero.isIso PointedObject.point_isZero (PointedObject.toPoint _)
     change Mono (PointedSimplicialSet.forget.map (PointedObject.toPoint
-      (suspension (PointedObject.point : PointedSimplicialSet.{u}))))
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.point : PointedSimplicialSet.{u}))))
     infer_instance
   omega_condition _ := by
-    let f := suspensionLoopEquiv (PointedObject.point : PointedSimplicialSet.{u}) _
+    let f := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (PointedObject.point : PointedSimplicialSet.{u}) _
       (PointedObject.toPoint _)
     have := PointedObject.point_isZero.isIso loopPoint_isZero f
-    exact KanPiIsomorphism.of_iso (X := (PointedObject.point : PointedSimplicialSet.{u}).right)
-      (Y := (loopSpace (PointedObject.point : PointedSimplicialSet.{u})).right)
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (X := (PointedObject.point : PointedSimplicialSet.{u}).right)
+      (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.point : PointedSimplicialSet.{u})).right)
       (PointedSimplicialSet.forget.mapIso (asIso f))
 
 end

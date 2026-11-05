@@ -30,13 +30,13 @@ local instance circleComparisonApexRawHomKan (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の比較自己射の前合成は、元の companion の差を正符号の類へ送る。 -/
 lemma circleCompanionConeComparison_native_difference (z : Sp.{u} _⦋0⦌) :
-    KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      ((KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
-    KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z) := by
   apply FundamentalLoop.toHom_injective
   erw [FundamentalLoop.toHom_pointed_map]
   rw [← circleCompanionEdgewise_difference_toHom]
@@ -44,13 +44,13 @@ lemma circleCompanionConeComparison_native_difference (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の比較自己射は、元の指定された評価 loop の類を逆元へ送る。 -/
 lemma circleCompanionConeComparison_native_loop (z : Sp.{u} _⦋0⦌) :
-    KanHomotopyGroup.map
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
       (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence).right
-      (pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (RawSpectrumMapping.pointedPre (circleCompanionConeComparisonHom z)
         (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence))
-      (KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
-    (KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z))⁻¹ := by
   have h := congrArg Inv.inv (circleCompanionConeComparison_native_difference z)
   simp only [map_inv, inv_inv] at h
   rw [circleEvaluationCompanion_loop_class] at h

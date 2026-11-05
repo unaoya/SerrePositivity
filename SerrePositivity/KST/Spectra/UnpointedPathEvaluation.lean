@@ -82,7 +82,7 @@ def evaluation (X : SSet.{u}) (t : Fin 2) : object X ⟶ X :=
 theorem evaluation_rlp (X : SSet.{u}) [KanComplex X] (t : Fin 2) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (evaluation X t) :=
   (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
-    (anodyne_pre_rlp_monomorphisms (endpoint t) (endpoint_anodyne t) X)
+    (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms (endpoint t) (endpoint_anodyne t) X)
     ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso
       (MonoidalClosed.unitIsoSelf (X := X)).hom)
 
@@ -91,8 +91,8 @@ theorem evaluation_rlp (X : SSet.{u}) [KanComplex X] (t : Fin 2) :
 規約：基点の位置が二つの端点で異なっていてもよい。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。非基点固定のホモトピー不変性。 -/
 theorem evaluation_piIsomorphism (X : SSet.{u}) [KanComplex X] (t : Fin 2) :
-    KanPiIsomorphism (evaluation X t) :=
-  kanPiIsomorphism_of_monoRight _ (evaluation_rlp X t)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluation X t) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (evaluation_rlp X t)
 
 /-- 概要：単位を源とする内部 Hom の curry の評価式。
 方針：単位の同型を評価射で展開し、随伴の三角恒等式を使う。

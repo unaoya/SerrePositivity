@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.KST.Spectra.InternalHomTensor
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+open SerrePositivity.KST.Spectra.InternalHomTensor
 
 noncomputable section
 
@@ -30,9 +35,9 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 使われ方：HA §1.4.2。loop の次数射と反復 curry の可換式。 -/
 @[reassoc]
 theorem natural_pre_left {A' A : C} (i : A' ⟶ A) (B Y : C) :
-    (MonoidalClosed.pre (i ▷ B)).app Y ≫ (iso A' B Y).hom =
-      (iso A B Y).hom ≫ (ihom B).map ((MonoidalClosed.pre i).app Y) := by
-  rw [iso_eq_ihomCurryIso, iso_eq_ihomCurryIso]
+    (MonoidalClosed.pre (i ▷ B)).app Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A' B Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom ≫ (ihom B).map ((MonoidalClosed.pre i).app Y) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
   apply uncurry_injective
   apply uncurry_injective
   simp only [ihomCurryIso_hom]
@@ -48,9 +53,9 @@ theorem natural_pre_left {A' A : C} (i : A' ⟶ A) (B Y : C) :
 使われ方：Goerss–Jardine I §7。パラメータの移動と二つの円の制限の整合性。 -/
 @[reassoc]
 theorem natural_pre_right (A : C) {B' B : C} (j : B' ⟶ B) (Y : C) :
-    (MonoidalClosed.pre (A ◁ j)).app Y ≫ (iso A B' Y).hom =
-      (iso A B Y).hom ≫ (MonoidalClosed.pre j).app ((ihom A).obj Y) := by
-  rw [iso_eq_ihomCurryIso, iso_eq_ihomCurryIso]
+    (MonoidalClosed.pre (A ◁ j)).app Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B' Y).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Y).hom ≫ (MonoidalClosed.pre j).app ((ihom A).obj Y) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
   apply uncurry_injective
   apply uncurry_injective
   simp only [ihomCurryIso_hom]
@@ -62,4 +67,19 @@ theorem natural_pre_right (A : C) {B' B : C} (j : B' ⟶ B) (Y : C) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_left := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_left_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_right := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_right_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right_assoc

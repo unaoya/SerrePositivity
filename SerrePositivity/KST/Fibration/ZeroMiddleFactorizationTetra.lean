@@ -19,7 +19,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ未変更の三面と元の長 Hom を保持する実因子分解族の条件。
@@ -57,7 +57,7 @@ theorem zeroMiddleFactorizationTetra_exists (h9b : zeroMiddleFactorizationTetraS
       fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) :=
     exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
   let g := zeroMiddleFullSKanComparison s hZ
-  let h := stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 0 s))
+  let h := stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s))
   let T := fst (Δ[2] : SSet.{u + 1}) K ≫
     SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
       (Opposite.op ⦋2⦌) s)

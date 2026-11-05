@@ -1,0 +1,33 @@
+{
+  "status": "APPLIED_STATIC_ONLY_ARCHIVE_NOT_BUILT",
+  "scope": "Frozen Archive/WIP source only; do not build per IF-W2b §1. Resolve references through explicit KST.Spectra.PointedMapping namespace and parents, excluding own declarations and local binders.",
+  "validation": "Mechanical qualification only; raw before sources retained; no v3b build claimed for frozen Archive.",
+  "files": [
+    {
+      "file": "SerrePositivity/Archive/WIP/KST/Spectra/PointedParametricUncurryAction.lean",
+      "references": 32,
+      "before_sha256": "b4047ac4846e5dc5278332469925c864884808c394cf03b49cc62f1ded8965a1",
+      "after_sha256": "6617dded86ff718496f4495881565c681fa5cf89971dc7c3c63cf84094c65897"
+    },
+    {
+      "file": "SerrePositivity/Archive/WIP/KST/Spectra/PointedParametricUncurryPre.lean",
+      "references": 24,
+      "before_sha256": "86da7ee648a9e5200f2478884343280ca9e1c3b9c94468ac354e45fe2a0e2dd1",
+      "after_sha256": "90c23f58304095bef0ccd70ea8826830a88e0131dd5a15cc49e0cd2d0c594222"
+    },
+    {
+      "file": "SerrePositivity/Archive/WIP/KST/Spectra/PointedUncurryActionTensor.lean",
+      "references": 8,
+      "before_sha256": "38b1d3837bd66668af8ae1226cb7d9df5fbcaa38a729d068dc33ac5b2b7bb16d",
+      "after_sha256": "e6a7fa10b663c805f5b60ef81616780032951ad87cd03683b9aba74c0bdb3b4f"
+    },
+    {
+      "file": "SerrePositivity/Archive/WIP/KST/Spectra/PointedUncurryComposition.lean",
+      "references": 15,
+      "before_sha256": "e8cad4676544250db72ab4225f658c9991460a5a992b5d892897274c4cd4920a",
+      "after_sha256": "ee06e287cb6c9afeff07ac5ca9317c66953963e9e0f168aecd9ac74f483da93d"
+    }
+  ],
+  "references": 79,
+  "evidence": ".lake/verify/if-f2/section9-archive-full.json"
+}

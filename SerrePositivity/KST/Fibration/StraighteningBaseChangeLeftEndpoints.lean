@@ -18,12 +18,12 @@ variable {B D : SSet.{u}} (k : D ⟶ B)
 /-- 左側の元の分類値は、同じ像の単体での初頂点分類値。 -/
 theorem straighteningBaseChangeLeft_source_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (transportSimplexFirstVertexMap D) ≫
             ((SSet.uliftFunctor.{u + 1, u}).map k ≫ leftStraighteningSectionJointDiagram B))) =
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex ((transportSimplexFunctor k).obj c)))
         (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
           (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
@@ -36,7 +36,7 @@ theorem straighteningBaseChangeLeft_source_vertex
     rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
   exact (congrArg (fun f : U.obj (nerve (TransportSimplexCategory D)) ⟶
       (ihom (LeftFibrationInfinity B)).obj SpaceInfinity.{u} =>
-      (doubleFunctorEvaluation
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation
         (K := U.obj (nerve (TransportSimplexCategory D)))
         (A := LeftFibrationInfinity B) (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
@@ -51,7 +51,7 @@ theorem straighteningBaseChangeLeftChart_eq_firstVertex
     F2.isoNormalizeEndpoints (straighteningBaseChangeLeftChart k X c)
       (congrArg HomotopyCategory.mk (straighteningBaseChangeLeft_source_vertex k X c))
       (congrArg HomotopyCategory.mk (congrArg spaceInfinityVertex
-        (straighteningBaseChangeLeft_section_eq k X c))) =
+        (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq k X c))) =
       straighteningFirstVertexSectionChart X ((transportSimplexFunctor k).obj c) :=
   F2.isoNormalizeEndpoints_eq_of_heq _ _ _ _
     (straighteningBaseChangeLeftChart_heq_firstVertex k X c)

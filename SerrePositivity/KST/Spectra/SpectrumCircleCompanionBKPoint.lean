@@ -29,7 +29,7 @@ local instance companionBKPointEndKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の companion の円の射が表す、loop 写像空間の元の単位の点の射。 -/
 def circleCompanionLoopPointMap (z : Sp.{u} _⦋0⦌) :
-    𝟙_ SSet.{u} ⟶ (loopSpace (circleEvaluationPointedHom z)).right :=
+    𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (circleEvaluationPointedHom z)).right :=
   PointedSimplicialSet.unitUnderlyingHom _ (curry' (circleEvaluationCompanionCircleMap z))
 
 /-- companion の単位射の頂点は、元の companion の円の射が表す写像族の頂点。 -/

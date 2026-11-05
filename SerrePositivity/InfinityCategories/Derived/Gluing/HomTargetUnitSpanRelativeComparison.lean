@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory
 open DifferentialGraded DGNerve SSet KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 def dgGluingTargetCylinderHomotopy {A B : SSet.{u}} (V : A ⊗ Δ[1] ⟶ B) :
     SSet.Homotopy (ι₀ ≫ V) (ι₁ ≫ V) where
   h := V

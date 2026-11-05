@@ -14,24 +14,24 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma exists_tammeMarkedSpanCartesianLift (x : (laxCategory p q).obj _⦋0⦌)
-    (v : (markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x) _⦋0⦌)
+    (v : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x) _⦋0⦌)
     {y : (laxCategory p q).obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) y
-      ((markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x).app
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x).app
         (Opposite.op ⦋0⦌) v)) (hs : s.edge ∈ tammeLocalizingEdges p q) :
     ∃ F : (Δ[1] : SSet.{u}) ⟶
-        markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x,
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x,
       stdSimplex.δ (0 : Fin 2) ≫ F = SSet.yonedaEquiv.symm v ∧
-      F ≫ markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x =
+      F ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x =
         SSet.yonedaEquiv.symm s.edge ∧
       IsCartesianEdge
-        (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x)
         (SSet.yonedaEquiv F) := by
   let X := (laxCategory p q).obj
   let W := tammeLocalizingEdges p q
@@ -53,7 +53,7 @@ lemma exists_tammeMarkedSpanCartesianLift (x : (laxCategory p q).obj _⦋0⦌)
       rw [← hS]
       rfl
   have htarget : X.δ 0 (SSet.yonedaEquiv (horn₂₀.ι₀₂ ≫ S)) =
-      (markedSpanFamilyProjection X W x).app (Opposite.op ⦋0⦌) v := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x).app (Opposite.op ⦋0⦌) v := by
     rw [intervalMap_target]
     change (horn₂₀.ι₀₂ ≫ S).app _ _ =
       (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app
@@ -69,10 +69,10 @@ lemma exists_tammeMarkedSpanCartesianLift (x : (laxCategory p q).obj _⦋0⦌)
   have hMs : M ≫ markedSpanSource X W = SSet.const x := by
     dsimp only [M]
     rw [Category.assoc, vertexFiberι_comp, SSet.comp_const, ht]
-  let F : (Δ[1] : SSet.{u}) ⟶ markedSpanFamily X W x :=
+  let F : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x :=
     vertexFiberLift (markedSpanSource X W) x M hMs
   have hF : F ≫ vertexFiberι (markedSpanSource X W) x = M := vertexFiberLift_ι _ _ _ _
-  let r : markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
+  let r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
     vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
   have hFr : F ≫ r = M ≫ markedSpanInclusion X W := by
     dsimp only [r]
@@ -90,11 +90,11 @@ lemma exists_tammeMarkedSpanCartesianLift (x : (laxCategory p q).obj _⦋0⦌)
     exact hGt
   · apply isCartesianEdge_markedSpanFamilyProjection_of_pullback
     rw [SSet.yonedaEquiv.symm_apply_apply]
-    have hr : F ≫ r ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R := by
+    have hr : F ≫ r ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R := by
       rw [← Category.assoc, hFr]
       exact hGr
     change IsPullbackSquare (uncurry (F ≫ r ≫ (pre horn₂₀.ι₀₂).app X))
-    rw [hr, squareArrowFamily, uncurry_curry]
+    rw [hr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily, uncurry_curry]
     exact (isPullbackSquare_iff_transpose R).mp hR
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -20,8 +20,8 @@ local notation "F" => dgOdotMilnorNuNullDiagonalMap R d
 local notation "G" => dgOdotMilnorNuAbsoluteDiagonalMap R d h
 
 local instance nuNullDiagonalHom_kanComplex :
-    KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B)) :=
-  stableQCat_sHom_kanComplex (K) (B)
+    KanComplex (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex (K) (B)
 
 /-- 概要：同じ共有対角比較の始点は元実対角完全射の Hom 頂点。
 方針：元全因子分解の回収と元対角完全射の頂点式を合成する。
@@ -29,7 +29,7 @@ local instance nuNullDiagonalHom_kanComplex :
 lemma dgOdotMilnorNuNullDiagonalComparison_source :
     (dgOdotMilnorNuNullCoherenceHom R d h).app (Opposite.op ⦋0⦌)
       (dgOdotMilnorNuNullDiagonalVertex R d) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B) (F) := by
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B) (F) := by
   have he := ConcreteCategory.congr_hom
     (NatTrans.congr_app (dgOdotMilnorNuNullTriangleFactor_hom R d h 0) (Opposite.op ⦋0⦌))
       (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
@@ -41,7 +41,7 @@ lemma dgOdotMilnorNuNullDiagonalComparison_source :
 lemma dgOdotMilnorNuNullDiagonalComparison_target :
     (dgOdotMilnorNuNullCoherenceHom R d h).app (Opposite.op ⦋0⦌)
       (dgOdotMilnorNuAbsoluteDiagonalVertex R d h) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B) (G) := by
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B) (G) := by
   have he := ConcreteCategory.congr_hom
     (NatTrans.congr_app (dgOdotMilnorNuAbsoluteTriangleFactor_hom R d h 0) (Opposite.op ⦋0⦌))
       (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
@@ -51,9 +51,9 @@ lemma dgOdotMilnorNuNullDiagonalComparison_target :
 方針：同じ零 Hom 包含で元の辺を写し、同じ端点回収式を使う。
 規約：元比較辺を選び直さない。使われ方：標準 coherent 全辺比較の入力。 -/
 def dgOdotMilnorNuNullDiagonalCoreEdge :
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B)).Edge
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B) (F))
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B) (G)) :=
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)).Edge
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B) (F))
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B) (G)) :=
   ((dgOdotMilnorNuNullDiagonalComparisonEdge R d h).map
     (dgOdotMilnorNuNullCoherenceHom R d h)).ofEq
       (dgOdotMilnorNuNullDiagonalComparison_source R d h)
@@ -67,7 +67,7 @@ lemma dgOdotMilnorNuNullDiagonalCoreEdge_parameter :
       SSet.yonedaEquiv.symm (dgOdotMilnorNuNullDiagonalComparisonEdge R d h).edge ≫
         dgOdotMilnorNuNullCoherenceHom R d h :=
   (SSet.yonedaEquiv_symm_comp (X := DGOdotMilnorNuNullCoherenceSpace R d)
-    (Y := SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B))
+    (Y := SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B))
     (n := ⦋1⦌) (dgOdotMilnorNuNullDiagonalComparisonEdge R d h).edge
       (dgOdotMilnorNuNullCoherenceHom R d h)).symm
 
@@ -75,16 +75,16 @@ lemma dgOdotMilnorNuNullDiagonalCoreEdge_parameter :
 方針：同じ豊穣 Hom 辺を標準区間比較と fiber 包含で写す。
 規約：元共有対角の全辺を保持。使われ方：上下二胞体を貼る共通関手同型。 -/
 def dgOdotMilnorNuNullDiagonalArrowComparison : FunctorIso
-    (SSet.yonedaEquiv.symm (stableArrow (F)).edge)
-    (SSet.yonedaEquiv.symm (stableArrow (G)).edge) := by
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (F)).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (G)).edge) := by
   let e := dgOdotMilnorNuNullDiagonalCoreEdge R d h
   have hi : IsInvertibleEdge e.toTruncated := IsGroupoid.all_isIso
-    (C := hoFunctor.obj (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B))) _
-  let a := coherentHomIntervalEdgeFromParameter (C := StableQCat.{u + 1}) (F) (G) e
+    (C := hoFunctor.obj (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B))) _
+  let a := coherentHomIntervalEdgeFromParameter (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (F) (G) e
   have ha : IsInvertibleEdge a.toTruncated := by
-    have hh := hi.ulift.map (coherentHomIntervalComparison (C := StableQCat.{u + 1}) (K) (B))
+    have hh := hi.ulift.map (coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B))
     exact (isInvertibleEdge_congr (by rfl)).mp hh
-  let b := a.map (vertexFiberι ((pre (boundary 1).ι).app StableInfinity.{u + 1})
+  let b := a.map (vertexFiberι ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})
     (functorVertex (intervalMappingBoundary (coherentNerveVertex (K))
       (coherentNerveVertex (B)))))
   exact @asIso _ _ _ _ (Truncated.HomotopyCategory.homMk b.toTruncated) (ha.map _)

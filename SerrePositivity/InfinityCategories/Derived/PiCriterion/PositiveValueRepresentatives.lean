@@ -32,9 +32,9 @@ set_option maxHeartbeats 2000000 in
 -- 複数の点つき対象の基点表示を含む存在型の elaboration に既定値以上を要する。
 /-- 正次数の任意の類には、元の値内の代表と、両者を結ぶ実際の基点 path がある。 -/
 lemma total_positiveClass_value_representative (n : ℕ) (x : T _⦋0⦌)
-    (a : KanHomotopyGroup T n (PointedSimplicialSet.ofVertex T x).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup T n (PointedSimplicialSet.ofVertex T x).basepoint) :
     ∃ b : B _⦋0⦌, ∃ y : (V b) _⦋0⦌,
-      ∃ β : KanHomotopyGroup (V b) n (PointedSimplicialSet.ofVertex (V b) y).basepoint,
+      ∃ β : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (V b) n (PointedSimplicialSet.ofVertex (V b) y).basepoint,
       ∃ z : (KanPath.object T) _⦋0⦌,
       ∃ h₀ : (KanPath.evaluation T 0).app _ z =
         (PointedSimplicialSet.ofVertex T x).basepoint,
@@ -44,10 +44,10 @@ lemma total_positiveClass_value_representative (n : ℕ) (x : T _⦋0⦌)
       ∃ hⱼ : (j b).app _ (PointedSimplicialSet.ofVertex (V b) y).basepoint =
         (PointedSimplicialSet.ofVertex T
           ((j b).app _ (PointedSimplicialSet.ofVertex (V b) y).basepoint)).basepoint,
-      ∃ γ : KanHomotopyGroup (KanPath.object T) n z,
-        KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ γ = a ∧
-        KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ γ =
-          KanHomotopyGroup.map (j b) hⱼ β := by
+      ∃ γ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object T) n z,
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ γ = a ∧
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ γ =
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (j b) hⱼ β := by
   let S := PointedSimplicialSet.sphere.{u} (n + 1)
   obtain ⟨f, hf⟩ := sphereClass_surjective (PointedSimplicialSet.ofVertex T x) n a
   obtain ⟨b, g, ⟨H⟩⟩ := coherentFilteredTotalKan_finite_value_detection F f.right
@@ -61,7 +61,7 @@ lemma total_positiveClass_value_representative (n : ℕ) (x : T _⦋0⦌)
   obtain ⟨z, h₀, h₁, γ, hγ₀, hγ₁⟩ := sphereClass_path_witness n x
     ((j b).app _ (PointedSimplicialSet.ofVertex (V b) y).basepoint) f (gp ≫ p) H'
   refine ⟨b, y, sphereClass n gp, z, h₀, h₁,
-    OmegaSpectrum.pointedMap_basepoint p, γ, hγ₀.trans hf, ?_⟩
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p, γ, hγ₀.trans hf, ?_⟩
   exact hγ₁.trans (sphereClass_post n gp p).symm
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

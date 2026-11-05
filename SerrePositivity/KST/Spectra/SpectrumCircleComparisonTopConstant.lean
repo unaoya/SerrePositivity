@@ -38,7 +38,7 @@ lemma composition_through_point_constant (X P Y : OmegaSpectrum.{u}) (hP : P = s
     (RawSpectrumMapping.pointedSpace spectrumPoint Y.toKanSequence).hom ≫
       eComp SSet X spectrumPoint Y = (RawSpectrumMapping.pointedSpace X Y.toKanSequence).hom at hc
   rw [hc]
-  exact pointedConstant_eq_const _ _
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _
 
 /-- 元の比較三単体の Hom 正方形の上辺は、元の一点を経由する同じ合成なので定値。 -/
 lemma circleCompanionComparisonTrace_includeSecond_constant (z : Sp.{u} _⦋0⦌)

@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：円筒の両端点の余積の射は中央の対象の射と可換である。
@@ -33,11 +33,11 @@ open scoped Simplicial
 使われ方：pushout の標準比較射の構成。
 -/
 @[reassoc] theorem cylinderEndpoints_naturality {C C' : SSet.{u}} (c : C ⟶ C') :
-    cylinderEndpoints C ≫ (c ▷ Δ[1]) = coprod.map c c ≫ cylinderEndpoints C' := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C ≫ (c ▷ Δ[1]) = coprod.map c c ≫ _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C' := by
   apply coprod.hom_ext
-  · simp only [cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc_assoc, coprod.inl_map_assoc,
       coprod.inl_desc, SSet.ι₀_comp]
-  · simp only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
       coprod.inr_desc, SSet.ι₁_comp]
 
 /--
@@ -53,29 +53,29 @@ theorem doubleMappingCylinderMap_localized_isIso {C A B C' A' B' : SSet.{u}}
     (hc : IsIso (AnodyneHomotopy.anodyneQ.map c))
     (ha : IsIso (AnodyneHomotopy.anodyneQ.map a))
     (hb : IsIso (AnodyneHomotopy.anodyneQ.map b)) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (doubleMappingCylinderMap f g f' g' c a b hf hg)) := by
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg)) := by
   have e₁ := cylinderEndpoints_naturality c
   have e₂ : coprod.map f g ≫ coprod.map a b = coprod.map c c ≫ coprod.map f' g' := by
     rw [coprod.map_map, coprod.map_map, hf, hg]
-  let q := pushout.map (cylinderEndpoints C) (coprod.map f g)
-    (cylinderEndpoints C') (coprod.map f' g') (c ▷ Δ[1]) (coprod.map a b) (coprod.map c c) e₁ e₂
+  let q := pushout.map (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)
+    (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g') (c ▷ Δ[1]) (coprod.map a b) (coprod.map c c) e₁ e₂
   have hq : IsIso (AnodyneHomotopy.anodyneQ.map q) :=
     pushoutMap_localized_isIso _ _ _ _ _ _ _ (coprodMap_localized_isIso c c hc hc)
       (AnodyneHomotopy.whiskerRight_anodyneQ_isIso c hc _) (coprodMap_localized_isIso a b ha hb) e₁ e₂
-  have he : q = doubleMappingCylinderMap f g f' g' c a b hf hg := by
+  have he : q = _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg := by
     apply pushout.hom_ext
     · exact (pushout.inl_desc _ _ _).trans
-        (doubleMappingCylinder_middle_map f g f' g' c a b hf hg).symm
-    · have hq₂ : pushout.inr (cylinderEndpoints C) (coprod.map f g) ≫ q =
-          coprod.map a b ≫ pushout.inr (cylinderEndpoints C') (coprod.map f' g') :=
+        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map f g f' g' c a b hf hg).symm
+    · have hq₂ : pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g) ≫ q =
+          coprod.map a b ≫ pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g') :=
         pushout.inr_desc _ _ _
       apply coprod.hom_ext
       · rw [hq₂, coprod.inl_map_assoc]
-        simpa only [doubleMappingCylinder_left, Category.assoc] using
-          (doubleMappingCylinder_left_map f g f' g' c a b hf hg).symm
+        simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc] using
+          (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map f g f' g' c a b hf hg).symm
       · rw [hq₂, coprod.inr_map_assoc]
-        simpa only [doubleMappingCylinder_right, Category.assoc] using
-          (doubleMappingCylinder_right_map f g f' g' c a b hf hg).symm
+        simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc] using
+          (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map f g f' g' c a b hf hg).symm
   exact he ▸ hq
 
 end SerrePositivity.KST.Comparison

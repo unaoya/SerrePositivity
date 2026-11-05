@@ -46,8 +46,8 @@ lemma nativeCotensor_fiber_vertex (A : PointedSimplicialSet.{u}) (z : Sp.{u} _�
 lemma nativeCotensorEvaluationFamily_fiber (A : PointedSimplicialSet.{u})
     (z : Sp.{u} _⦋0⦌) :
     lift (SSet.const z)
-        (𝟙 (SimplicialNerve (EnrichedParameterCylinder.Object A.right
-          EnrichedParameterCylinder.Point.{u + 1}))) ≫ nativeCotensorEvaluationFamily A =
+        (𝟙 (SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
+          _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}))) ≫ nativeCotensorEvaluationFamily A =
       coherentNerveMap
         (CotensorCompatible.evaluationFiberEnriched A (nativeCotensorInput A z)) := by
   rw [nativeCotensorEvaluationFamily, ← Category.assoc, lift_map,

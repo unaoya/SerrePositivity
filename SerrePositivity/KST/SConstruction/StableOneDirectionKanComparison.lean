@@ -22,13 +22,13 @@ open Fibration SimplicialModel
 方針：元の点つき段関手を同じ Kan 置換へ後合成する。
 規約：全 Hom を保持。使われ方：隣接段の元の左脚の始域。 -/
 def stableOneDirectionKanEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} PointedKanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedKanObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet exInfinityPointedKanEnrichedFunctor
 
 /-- 概要：同じ元の S₁ 比較の Ex∞ 像。
 方針：同じ点つき比較を Kan 値間の射へ送る。
 規約：元の実比較を保持。使われ方：全族変換の成分。 -/
-def stableOneDirectionKanComparisonMap (r : ℕ) (C : StableQCat.{u}) :
+def stableOneDirectionKanComparisonMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableOneDirectionKanEnrichedFunctor r).obj C ⟶
       (stableSBoundaryKanEnrichedFunctor r).obj C :=
   exInfinityPointedKanMap (stableOneDirectionPointedComparisonMap r C)
@@ -39,13 +39,13 @@ def stableOneDirectionKanComparisonMap (r : ℕ) (C : StableQCat.{u}) :
 def stableOneDirectionKanComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableOneDirectionKanEnrichedFunctor r) (stableSBoundaryKanEnrichedFunctor r) :=
-  strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
     (stableOneDirectionPointedComparison r)
 
 /-- 概要：変換成分は同じ元の比較の Ex∞ 像。
 方針：厳密豊穣後合成の成分を回収する。
 規約：元の射を固定する。使われ方：可逆性の成分判定。 -/
-lemma stableOneDirectionKanComparison_app (r : ℕ) (C : StableQCat.{u}) :
+lemma stableOneDirectionKanComparison_app (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableOneDirectionKanComparison r).app C =
       eHomEquiv SSet (stableOneDirectionKanComparisonMap r C) :=
   exInfinityPointedKanEnrichedFunctor_hom (stableOneDirectionPointedComparisonMap r C)
@@ -53,8 +53,8 @@ lemma stableOneDirectionKanComparison_app (r : ℕ) (C : StableQCat.{u}) :
 /-- 概要：同じ Kan S₁ 比較は全基点・全次数で π 同型。
 方針：元の比較の局所化可逆性を同じ Ex∞ に移す。
 規約：追加の完備性入力なし。使われ方：元の比較辺の可逆性。 -/
-lemma stableOneDirectionKanComparisonMap_piIsomorphism (r : ℕ) (C : StableQCat.{u}) :
-    Spectra.KanPiIsomorphism (stableOneDirectionKanComparisonMap r C).hom.right := by
+lemma stableOneDirectionKanComparisonMap_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (stableOneDirectionKanComparisonMap r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
   change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map
     (oneDirectionReducedComparison r (stableCategoryModel C)).right))

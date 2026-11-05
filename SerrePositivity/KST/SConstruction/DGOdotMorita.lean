@@ -48,7 +48,7 @@ lemma dgOdotInputMap_isMorita :
 
 /-- 元の固定 ν 辺の実完全射が、安定 ∞ 圏の同値を与える。 -/
 lemma dgOdotInputNuMap_isQCatEquivalence :
-    IsQCatEquivalence (show LocalizingInvariants.ExactMap
+    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (dgKInputStableValue R (P)) (dgKInputStableValue R (Q)) from dgKInputNuMap R (m)).hom :=
   dgOdotQuotientInputNuMap_isQCatEquivalence R d (dgOdotGeneratorConditions R d)
 

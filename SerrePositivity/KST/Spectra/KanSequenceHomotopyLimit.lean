@@ -36,7 +36,7 @@ variable {I : Type u} [SmallCategory I]
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の Ω 条件の計算。 -/
 def homotopyLimitAdjoint (D : I ⥤ KanSequence.{u}) (n : ℕ) :
     PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D n) ⟶
-      loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D (n + 1))) :=
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I) (levelDiagram D (n + 1))) :=
   PointedWeightedEnd.map (bousfieldKanWeight I) (adjointTransformation D n) ≫
     (PointedWeightedEnd.cotensorIso PointedSimplicialSet.circle.{u}
       (bousfieldKanWeight I) (levelDiagram D (n + 1))).inv
@@ -56,7 +56,7 @@ def homotopyLimit (D : I ⥤ KanSequence.{u}) : KanSequence.{u} where
 規約：点つき射の厳密な等式。
 使われ方：HA §1.4.2。Ω 条件を全基点の π_* 同型へ還元する。 -/
 theorem homotopyLimit_adjoint (D : I ⥤ KanSequence.{u}) (n : ℕ) :
-    suspensionLoopEquiv ((homotopyLimit D).level n).space
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
       ((homotopyLimit D).level (n + 1)).space ((homotopyLimit D).sigma n) =
         homotopyLimitAdjoint D n :=
   curry_uncurry _
@@ -71,16 +71,16 @@ theorem homotopyLimit_omegaCondition (D : I ⥤ KanSequence.{u})
   let E := levelDiagram D (n + 1) ⋙ ihom PointedSimplicialSet.circle.{u}
   let : ∀ i, KanComplex (E.obj i).right :=
     fun i ↦ loopSpace_kanComplex ((D.obj i).level (n + 1)).space
-  have hm : KanPiIsomorphism
+  have hm : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (PointedWeightedEnd.map (bousfieldKanWeight I) (adjointTransformation D n)).right :=
     PointedWeightedEnd.map_piIsomorphism (adjointTransformation D n) (fun i ↦ hD i n)
   let e := PointedWeightedEnd.cotensorIso PointedSimplicialSet.circle.{u}
     (bousfieldKanWeight I) (levelDiagram D (n + 1))
   let e' : (PointedWeightedEnd.obj (bousfieldKanWeight I) E).right ≅
-      (loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedWeightedEnd.obj (bousfieldKanWeight I)
         (levelDiagram D (n + 1)))).right := PointedSimplicialSet.forget.mapIso e.symm
-  have hc := hm.comp (KanPiIsomorphism.of_iso e')
-  change KanPiIsomorphism (suspensionLoopEquiv ((homotopyLimit D).level n).space
+  have hc := hm.comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e')
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((homotopyLimit D).level n).space
     ((homotopyLimit D).level (n + 1)).space ((homotopyLimit D).sigma n)).right
   rw [homotopyLimit_adjoint]
   exact hc
@@ -107,7 +107,7 @@ def homotopyLimitProjection (D : I ⥤ KanSequence.{u}) (hD : ∀ i, (D.obj i).O
 使われ方：Goerss–Jardine I §7、BF 1978 §2。hG・Tot の置換不変性。 -/
 theorem homotopyLimitProjection_levelwise (D : I ⥤ KanSequence.{u})
     (hD : ∀ i, (D.obj i).OmegaCondition) (n : ℕ) :
-    KanPiIsomorphism ((homotopyLimitProjection D hD).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyLimitProjection D hD).app n).right :=
   replacementProjection_piIsomorphism (homotopyLimit D) n
 
 end KanSequence

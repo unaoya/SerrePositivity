@@ -36,7 +36,7 @@ def d3ParameterSquareOrder {n : ℕ} (t : ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) _�
 /-- 全点つき Kan 入力と四角パラメータの、同じ全単体の順序円柱への pairing。 -/
 def d3PointedKanSquarePair :
     PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⟶
-      SimplicialNerve (Object (Fin 2 × Fin 2) PointedKanObject.{u}) where
+      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u}) where
   app _ := ↾fun ⟨F, t⟩ ↦ simplexPair (d3ParameterSquareOrder t) F
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext

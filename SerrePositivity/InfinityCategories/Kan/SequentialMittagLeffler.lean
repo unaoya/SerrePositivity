@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.CofilteredSystem
 public import Mathlib.CategoryTheory.Functor.OfSequence
 
@@ -15,6 +17,10 @@ universe u
 open CategoryTheory Opposite
 
 namespace SerrePositivity.KST.Spectra.SequentialMittagLeffler
+end SerrePositivity.KST.Spectra.SequentialMittagLeffler
+namespace SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler
+open SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra.SequentialMittagLeffler
 
 noncomputable section
 
@@ -28,18 +34,51 @@ def eventualSection : ∀ n, F.toEventualRanges.obj (op n)
 
 /-- 選んだ次段の像は前段そのもの。 -/
 lemma eventualSection_comp (n : ℕ) :
-    F.toEventualRanges.map (homOfLE (Nat.le_succ n)).op (eventualSection F hF (n + 1)) =
-      eventualSection F hF n :=
+    F.toEventualRanges.map (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF (n + 1)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n :=
   Classical.choose_spec (F.surjective_toEventualRanges hF
-    (homOfLE (Nat.le_succ n)).op (eventualSection F hF n))
+    (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n))
 
 include hF in
 /-- 非空な Mittag–Leffler 逐次逆系には隣接射で整合する族がある。 -/
 theorem exists_compatible_family :
     ∃ a : ∀ n, F.obj (op n),
       ∀ n, F.map (homOfLE (Nat.le_succ n)).op (a (n + 1)) = a n := by
-  refine ⟨fun n ↦ (eventualSection F hF n).val, fun n ↦ ?_⟩
-  exact congrArg Subtype.val (eventualSection_comp F hF n)
+  refine ⟨fun n ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection F hF n).val, fun n ↦ ?_⟩
+  exact congrArg Subtype.val (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection_comp F hF n)
 
 end
-end SerrePositivity.KST.Spectra.SequentialMittagLeffler
+end SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection_comp := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.exists_compatible_family := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.exists_compatible_family
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._f := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection.match_1

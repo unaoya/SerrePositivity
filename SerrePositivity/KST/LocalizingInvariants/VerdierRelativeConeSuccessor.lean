@@ -22,10 +22,10 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 有限パラメータへの左錐の追加は、元の有限境界を固定する商錐回収を保つ。 -/
-lemma hasVerdierRelativeConeRecovery_join {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
-    (L : SSet.{u}) [L.Finite] (ih : HasVerdierRelativeConeRecovery q.hom L) :
-    HasVerdierRelativeConeRecovery q.hom (join (Δ[0] : SSet.{u}) L) := by
+lemma hasVerdierRelativeConeRecovery_join {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (L : SSet.{u}) [L.Finite] (ih : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q.hom L) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q.hom (join (Δ[0] : SSet.{u}) L) := by
   intro K _ p H hb
   let j := joinInr (Δ[0] : SSet.{u}) K
   let l := joinInr (Δ[0] : SSet.{u}) L
@@ -39,7 +39,7 @@ lemma hasVerdierRelativeConeRecovery_join {A B C : StableCategory.{u}}
   have : Mono (j ▷ L) := (tensorRight L).map_mono j
   have hdq : (j ▷ L) ≫ (d.diagram ≫ q.hom) = pL ≫ q.hom := by
     rw [← Category.assoc, d.boundary]
-  obtain ⟨V, hV, hiV⟩ := exists_relativeComparisonInverse (j ▷ L) (pL ≫ q.hom)
+  obtain ⟨V, hV, hiV⟩ := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_relativeComparisonInverse (j ▷ L) (pL ≫ q.hom)
     (d.diagram ≫ q.hom) HL hdq hbL d.comparison d.fixed d.invertible
   let F := (initialConeTensorOldIso K L).hom ≫ p
   let G := (initialConeTensorTailIso K L).hom ≫ d.diagram
@@ -105,7 +105,7 @@ lemma hasVerdierRelativeConeRecovery_join {A B C : StableCategory.{u}}
       hf', Category.assoc]
     rfl
   obtain ⟨D, U, hD, _, hU, hiU⟩ := exists_verdierInitialConeTensorRelativeGluing
-    h K L F G w H J T hw (relativeConeComparison_invertible_of_constant J rfl) hiT rfl
+    h K L F G w H J T hw (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.relativeConeComparison_invertible_of_constant J rfl) hiT rfl
   have hD' : (j ▷ join (Δ[0] : SSet.{u}) L) ≫ D = p := by
     apply (cancel_epi (initialConeTensorOldIso K L).hom).mp
     rw [← Category.assoc, ← initialConeTensorOldInclusion_view]

@@ -22,9 +22,9 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 private def d3EndpointVertexIsoOfIso (X Y : PointedKanObject.{u}) (e : X.obj ≅ Y.obj) :
     VertexIso (coherentNerveVertex X) (coherentNerveVertex Y) := by
   let f : X ⟶ Y := ObjectProperty.homMk e.hom
-  have h : KanPiIsomorphism f.hom.right := by
-    change KanPiIsomorphism e.hom.right
-    exact kanPiIsomorphism_of_monoRight _
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.hom.right := by
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom.right
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
       ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso _)
   haveI := pointedKanObject_edge_isInvertible_of_piIsomorphism f h
   exact asIso (Truncated.HomotopyCategory.homMk (coherentNerveEdge f))
@@ -45,9 +45,9 @@ lemma d3PointedKanTensorPoint_isZero (A : PointedSimplicialSet.{u}) (Y : Pointed
 /-- 任意の左パラメータと実 based interval のテンソルからの Hom も実零頂点。 -/
 lemma d3PointedKanTensorPath_isZero (A : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
     IsZeroVertex (coherentNerveVertex
-      ((d3PointedKanIhom (A ⊗ pointedInterval)).obj Y)) :=
+      ((d3PointedKanIhom (A ⊗ _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval)).obj Y)) :=
   (d3PointedKanPath_isZero ((d3PointedKanIhom A).obj Y)).of_vertexIso
-    (d3TensorEndpointVertexIso A pointedInterval Y).symm
+    (d3TensorEndpointVertexIso A _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y).symm
 
 /-- point が左因子にある場合も、同じテンソルパラメータの Hom は実零頂点。 -/
 lemma d3PointedKanPointTensor_isZero (B : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
@@ -55,16 +55,16 @@ lemma d3PointedKanPointTensor_isZero (B : PointedSimplicialSet.{u}) (Y : Pointed
       ((d3PointedKanIhom (PointedObject.point ⊗ B)).obj Y)) := by
   let e := d3EndpointVertexIsoOfIso ((d3PointedKanIhom (PointedObject.point ⊗ B)).obj Y)
     ((d3PointedKanIhom (B ⊗ PointedObject.point)).obj Y)
-    (InternalHomExchange.preIso (β_ B PointedObject.point) Y.obj)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso (β_ B PointedObject.point) Y.obj)
   exact (d3PointedKanTensorPoint_isZero B Y).of_vertexIso e.symm
 
 /-- based interval が左因子にある場合も、同じ実 path パラメータからの Hom は零頂点。 -/
 lemma d3PointedKanPathTensor_isZero (B : PointedSimplicialSet.{u}) (Y : PointedKanObject.{u}) :
     IsZeroVertex (coherentNerveVertex
-      ((d3PointedKanIhom (pointedInterval ⊗ B)).obj Y)) := by
-  let e := d3EndpointVertexIsoOfIso ((d3PointedKanIhom (pointedInterval ⊗ B)).obj Y)
-    ((d3PointedKanIhom (B ⊗ pointedInterval)).obj Y)
-    (InternalHomExchange.preIso (β_ B pointedInterval) Y.obj)
+      ((d3PointedKanIhom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval ⊗ B)).obj Y)) := by
+  let e := d3EndpointVertexIsoOfIso ((d3PointedKanIhom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval ⊗ B)).obj Y)
+    ((d3PointedKanIhom (B ⊗ _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval)).obj Y)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso (β_ B _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval) Y.obj)
   exact (d3PointedKanTensorPath_isZero B Y).of_vertexIso e.symm
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

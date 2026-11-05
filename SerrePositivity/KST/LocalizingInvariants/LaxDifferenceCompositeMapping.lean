@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 lemma laxDifferenceRho_arrow_zeroSource (y : E.obj _⦋0⦌) :
@@ -35,7 +35,7 @@ lemma laxDifferenceRho_arrow_zeroSource (y : E.obj _⦋0⦌) :
 lemma laxDifferenceCompositeMapping_equivalence (a : QCatAdjunction q.hom v)
     (hv : IsFullyFaithful v) (x : (laxCategory p q).obj _⦋0⦌) (y : E.obj _⦋0⦌) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap
-      (F2.laxPullbackArrow p.hom q.hom ≫ CofiberFamily.cofiber E.obj
+      (F2.laxPullbackArrow p.hom q.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj
         (𝟙 ((ihom (Δ[1] : SSet.{u})).obj E.obj))) x
       ((laxDifferenceRho p q v).app (Opposite.op ⦋0⦌) y)) := by
   rw [pinchedHomMap_comp]

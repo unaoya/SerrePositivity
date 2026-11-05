@@ -22,7 +22,7 @@ local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicia
 
 /-- S の長方形の E 像を、c の分裂で実積に表示するための全図式データ。 -/
 structure RelativeProductPullbackPresentation {S : SSet.{u + 1}}
-    {ν : S ⟶ StableInfinity.{u}} (d : RelativeVerdierRectangle ν) (E : S ⟶ Sp.{u})
+    {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν) (E : S ⟶ Sp.{u})
     {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z) where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u}
   comparison : FunctorIso (d.comparisonSquare ≫ E) square
@@ -34,8 +34,8 @@ structure RelativeProductPullbackPresentation {S : SSet.{u + 1}}
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge
 
 namespace RelativeProductPullbackPresentation
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}} {E : S ⟶ Sp.{u}}
-  {d : RelativeVerdierRectangle ν} (hE : IsRelativeLocalizingInvariant ν E)
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} {E : S ⟶ Sp.{u}}
+  {d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν} (hE : IsRelativeLocalizingInvariant ν E)
   {T X Y Z : OmegaSpectrum.{u}} {a : T ⟶ X} {b : T ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z}
   (v : RelativeProductPullbackPresentation d E a b f g)
   (hc : SpectrumHo.hom a ≫ SpectrumHo.hom f = SpectrumHo.hom b ≫ SpectrumHo.hom g)
@@ -54,7 +54,7 @@ def ofSourceIso (P : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
 
 include hE in
 lemma productSquare_isPullback : IsPullbackSquare v.square :=
-  (d.comparisonSquare_isPullback hE).of_functorIso v.comparison
+  ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE).of_functorIso v.comparison
 
 /-- 元の四辺 a,b,f,g を保つ相対 d8 の実 pullback。 -/
 def normalizedSquare := BinaryProductCospanNormalized.square a b f g hc v.square

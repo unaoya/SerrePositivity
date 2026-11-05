@@ -32,7 +32,7 @@ theorem transportUnderBaseChangeComponent_heq_doubleMap
     HEq (relativeSectionBaseChangeComponentIso (transportSimplexFirstVertexMap B)
       (strictTransportDomains (TransportSimplexCategory B)) X c)
       (VertexIso.map (transportSimplexUnderBaseChangeRealizationIso B)
-        (kanEnrichedDoubleEvaluation X c)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)) := by
   let k := transportSimplexFirstVertexMap B
   let A := strictTransportDomains (TransportSimplexCategory B)
   have hs := congrArg (fun f => leftFibrationInfinityBaseChange k ≫ f)
@@ -42,13 +42,13 @@ theorem transportUnderBaseChangeComponent_heq_doubleMap
   have hm := F2.vertexIso_map_heq_of_heq (transportSimplexUnderBaseChangeRealizationIso B)
     (relativeSectionBaseChangeRealizationIso k A)
     (congrArg functorVertex hs) (congrArg functorVertex ht)
-    (transportUnderBaseChangeRealizationIso_heq (B := B)) (kanEnrichedDoubleEvaluation X c)
+    (transportUnderBaseChangeRealizationIso_heq (B := B)) (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)
   exact (relativeSectionBaseChangeComponentIso_heq_doubleMap k A X c).trans hm.symm
 
 /-- 同じ初頂点底変換の始域値は、元の pullback strict 切断空間。 -/
 theorem transportUnderBaseChange_source_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
-    (kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)
         (functorVertex
           (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
             leftStraighteningCoherentMap (TransportSimplexCategory B))) =
@@ -61,8 +61,8 @@ theorem transportUnderBaseChange_source_vertex
   have hs := congrArg (fun f => leftFibrationInfinityBaseChange k ≫ f)
     (strictTransportDomains_realization (TransportSimplexCategory B)).symm
   have hv := congrArg functorVertex hs
-  have he := congrArg ((kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)) hv
-  exact he.trans (kanEnrichedDoubleEvaluation_precomp_vertex
+  have he := congrArg ((_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c).app (Opposite.op ⦋0⦌)) hv
+  exact he.trans (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex
     (relativeSectionEnrichedDiagram (strictTransportDomains (TransportSimplexCategory B)))
     (leftFibrationBaseChangeEnriched k) X c)
 
@@ -71,9 +71,9 @@ def firstVertexUnderBaseChangeChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (transportSimplexUnderBaseChangeRealizationIso B)
-      (kanEnrichedDoubleEvaluation X c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c))
     (congrArg HomotopyCategory.mk (transportUnderBaseChange_source_vertex X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)) X c))
 
 /-- 元の同じ成分は、元の相対切断底変換の係数成分と厳密一致する。 -/
@@ -90,10 +90,10 @@ theorem firstVertexUnderBaseChangeChart_backward_pointHom
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).obj c).obj X)).symm v) ≫
       (firstVertexUnderBaseChangeChart X c).inv =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (strictTransportDomains
         (TransportSimplexCategory B))).precompose
           (leftFibrationBaseChangeEnriched (transportSimplexFirstVertexMap B))).obj c).obj X)).symm

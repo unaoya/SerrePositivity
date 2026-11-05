@@ -20,68 +20,68 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.TammePullback
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj) (adj : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 def original : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
   LaxQuotientPullback.square hΦ p q (pullbackInclusion p q) (exactLaxDifference p q)
     (laxDifference_isVerdier p q v adj hv)
 
-def oldFrame : SquareFrame Sp.{u} := squareFrameOfEdges
+def oldFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges
   (coherentNerveEdge (LaxQuotientPullback.cSource (Φ := Φ) p q (pullbackInclusion p q)))
   (coherentNerveEdge (LaxQuotientPullback.dLeg (Φ := Φ) p q (exactLaxDifference p q)))
   (coherentNerveEdge (LaxQuotientPullback.dSource (Φ := Φ) p q (pullbackInclusion p q)))
   (coherentNerveEdge (LaxQuotientPullback.cLeg (Φ := Φ) p q (exactLaxDifference p q)))
 
-lemma oldFrame_eq : oldFrame (Φ := Φ) p q = SquareFrame.ofSquare (original hΦ p q v adj hv) := by
-  apply SquareFrame.ext
+lemma oldFrame_eq : oldFrame (Φ := Φ) p q = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (original hΦ p q v adj hv) := by
+  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
   · exact (LaxQuotientPullback.square_bottom hΦ p q _ _ _).symm
   · exact (LaxQuotientPullback.square_top hΦ p q _ _ _).symm
   · exact (LaxQuotientPullback.square_left hΦ p q _ _ _).symm
   · exact (LaxQuotientPullback.square_right hΦ p q _ _ _).symm
 
-def newFrame : SquareFrame Sp.{u} := squareFrameOfEdges
+def newFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges
   (coherentNerveEdge (LaxQuotientPullback.cSource (Φ := Φ) p q (pullbackInclusion p q)))
   (coherentNerveEdge (valueMap Φ q))
   (coherentNerveEdge (LaxQuotientPullback.dSource (Φ := Φ) p q (pullbackInclusion p q)))
   (coherentNerveEdge (valueMap Φ p))
 
-def boundaryHomotopy : SquareFrameHomotopy (oldFrame (Φ := Φ) p q) (newFrame (Φ := Φ) p q) :=
-  squareFrameEdgesHomotopy _ _ _ _ _ _ _ _ rfl
-    (valueMap_laxQuotientDLeg_cofiber p q Φ) rfl (valueMap_laxQuotientCLeg_cofiber p q Φ)
+def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (oldFrame (Φ := Φ) p q) (newFrame (Φ := Φ) p q) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.squareFrameEdgesHomotopy _ _ _ _ _ _ _ _ rfl
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientDLeg_cofiber p q Φ) rfl (_root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientCLeg_cofiber p q Φ)
 
-def extension : SquareFrame.PathExtension (boundaryHomotopy (Φ := Φ) p q).pathFrame
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (boundaryHomotopy (Φ := Φ) p q))
     (original hΦ p q v adj hv) :=
-  (boundaryHomotopy (Φ := Φ) p q).extension _ (oldFrame_eq hΦ p q v adj hv)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (boundaryHomotopy (Φ := Φ) p q)) _ (oldFrame_eq hΦ p q v adj hv)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (extension hΦ p q v adj hv).target
 
 def comparison : FunctorIso (original hΦ p q v adj hv) (square hΦ p q v adj hv) :=
-  (extension hΦ p q v adj hv).comparison
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (extension hΦ p q v adj hv))
 
 lemma square_isPullback : IsPullbackSquare (square hΦ p q v adj hv) :=
   (LaxQuotientPullback.square_isPullback hΦ p q _ _ _).of_functorIso
     (comparison hΦ p q v adj hv)
 
-lemma square_boundary : SquareFrame.boundaryι ≫ square hΦ p q v adj hv =
+lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ square hΦ p q v adj hv =
     (newFrame (Φ := Φ) p q).diagram :=
-  (boundaryHomotopy (Φ := Φ) p q).extension_target_boundary _ (oldFrame_eq hΦ p q v adj hv)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (boundaryHomotopy (Φ := Φ) p q)) _ (oldFrame_eq hΦ p q v adj hv)
 
 lemma square_bottom : squareBottomEdge ≫ square hΦ p q v adj hv = SSet.yonedaEquiv.symm
     (coherentNerveEdge (LaxQuotientPullback.cSource (Φ := Φ) p q (pullbackInclusion p q))).edge :=
-  SquareFrame.square_bottom_of_boundary _ (square_boundary hΦ p q v adj hv)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_bottom_of_boundary _ (square_boundary hΦ p q v adj hv)
 
 lemma square_left : squareLeftEdge ≫ square hΦ p q v adj hv = SSet.yonedaEquiv.symm
     (coherentNerveEdge (LaxQuotientPullback.dSource (Φ := Φ) p q (pullbackInclusion p q))).edge :=
-  SquareFrame.square_left_of_boundary _ (square_boundary hΦ p q v adj hv)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_left_of_boundary _ (square_boundary hΦ p q v adj hv)
 
 lemma square_top : squareTopEdge ≫ square hΦ p q v adj hv =
     SSet.yonedaEquiv.symm (coherentNerveEdge (valueMap Φ q)).edge :=
-  SquareFrame.square_top_of_boundary _ (square_boundary hΦ p q v adj hv)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_top_of_boundary _ (square_boundary hΦ p q v adj hv)
 
 lemma square_right : squareRightEdge ≫ square hΦ p q v adj hv =
     SSet.yonedaEquiv.symm (coherentNerveEdge (valueMap Φ p)).edge :=
-  SquareFrame.square_right_of_boundary _ (square_boundary hΦ p q v adj hv)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_right_of_boundary _ (square_boundary hΦ p q v adj hv)
 
 end SerrePositivity.KST.LocalizingInvariants.TammePullback

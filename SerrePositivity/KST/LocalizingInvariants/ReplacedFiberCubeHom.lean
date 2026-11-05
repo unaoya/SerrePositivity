@@ -47,7 +47,7 @@ lemma cubeHom_apex :
       Arrow.mk (SpectrumHo.hom (FibrationFiberComparison.map p q a b h)) := by
   let : IsIso (SpectrumHo.hom (FiberModel.comparison q hq)) :=
     FiberModel.comparison_isInvertible q hq
-  apply arrow_mk_cancel_comp_right (FiberModel.replacedConeDiagramIso_apex q)
+  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_right (FiberModel.replacedConeDiagramIso_apex q)
   have he := congrArg (fun α ↦ functorHomEvaluate (X := Sp.{u}) α (joinApexVertex _))
     (cubeHom_comparison p q a b h)
   rw [functorHomEvaluate_comp, functorHomEvaluate_comp] at he
@@ -62,11 +62,11 @@ lemma cubeHom_base : Arrow.mk (homPre (joinInr Δ[0] _) (cubeHom p q a b h)) =
   have hp₀ := FiberModel.replacedConeDiagramIso_base p
   have hq₀ := FiberModel.replacedConeDiagramIso_base q
   let e := (FiberModel.replacedConeDiagramIso q).precomp (joinInr Δ[0] _)
-  have hi := arrow_mk_inv_congr (f := e.hom) (g := 𝟙 _) hq₀
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := 𝟙 _) hq₀
   simp only [IsIso.Iso.inv_hom, IsIso.inv_id] at hi
   unfold cubeHom
   rw [homPre_homComp, homPre_homComp]
-  exact (arrow_mk_comp_of_any_identity _ _ hp₀).trans
-    (arrow_mk_comp_right_of_any_identity _ _ hi)
+  exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity _ _ hp₀).trans
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_right_of_any_identity _ _ hi)
 
 end SerrePositivity.KST.LocalizingInvariants.ReplacedFiberComparison

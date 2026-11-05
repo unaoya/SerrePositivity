@@ -18,7 +18,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 同じ元の相対四角形の K 右辺を持つ、構成済み Sp fiber 四角形。 -/
 def dgRelativeFiberSquare : FiberSquare (squareRightArrow (d.square ≫ dgKInputK A)) where

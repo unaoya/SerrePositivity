@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 def tailMapping (X Y : OmegaSpectrum.{u}) : mappingSpace X Y ⟶ mappingSpace (tail X) (tail Y) :=
   TruncatedMapping.familyLift
     (fun n ↦ ((tail X).level n).space) (fun n ↦ ((tail Y).level n).space)
-    (fun n ↦ suspension ((tail X).level n).space) (tail X).sigma
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((tail X).level n).space) (tail X).sigma
     (mappingStep (tail X) (tail Y)) (fun n ↦ evaluation X Y (n + 1))
     (fun n ↦ evaluation_condition X Y (n + 1))
 

@@ -15,13 +15,13 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | --- | --- | --- | --- |
 | PinchedHom | 右 pinched 写像空間 | [PinchedHom/Basic.lean](PinchedHom/Basic.lean) | audit_infinity_core.lean |
 | Core | join・slice、終対象、極限、同値、写像空間、fibration の基礎 | [Core.lean](Core.lean) | audit_infinity_core.lean |
-| F1 | cocartesian fibration、straightening、Yoneda・前層 | [F1.lean](F1.lean)、[fibration の基本](F1/Fibrations.lean) | audit_infinity_f1.lean |
+| F1 | cocartesian fibration、straightening、Yoneda・前層、Ind・compact・冪等完備化、FilteredExchange | [F1.lean](F1.lean)、[fibration の基本](F1/Fibrations.lean) | audit_infinity_f1.lean |
 | F1/Cocartesian | 休止中の Cat∞ 値 straightening（独立入口） | [F1/Cocartesian.lean](F1/Cocartesian.lean) | audit_infinity_f1.lean、audit_infinity_f1_f1b.lean |
-| F1B | Kan 拡張、随伴、cofinality、局所化 | [F1B.lean](F1B.lean)、[役割別の地図](F1B/README.md) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
+| F1B | Kan 拡張、随伴、cofinality、局所化（straightening に依存しない基盤） | [F1B.lean](F1B.lean)、[役割別の地図](F1B/README.md) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
 | Coherent | coherent nerve の quasicategory 性（γ1） | [Coherent.lean](Coherent.lean) | audit_coherent_nerve.lean |
 | DoldKanComparison | coherent nerve と dg nerve の比較（γ1.5） | [DoldKanComparison.lean](DoldKanComparison.lean) | audit_dold_kan_comparison.lean |
 | HomotopyLimits | ホモトピー極限・Quillen 随伴の ∞ 圏比較（γ3・γ4） | [HomotopyLimits.lean](HomotopyLimits.lean) | audit_homotopy_limits.lean |
-| F2 | Cat∞、filtered 余極限、Ind、compact、冪等完備化 | [F2.lean](F2.lean) | audit_infinity_f2.lean |
+| F2 | Cat∞、sifted・PΣ、accessible・presentable の構成 | [F2.lean](F2.lean) | audit_infinity_f2.lean |
 | Presentable | accessible・presentable、局所化 | [F2/Presentable.lean](F2/Presentable.lean) | audit_infinity_presentable.lean |
 | Stable | 安定 ∞ 圏、cofiber、三角構造、完全関手 | [Stable.lean](Stable.lean) | audit_infinity_stable.lean |
 | DGNerve | dg nerve、線形写像空間、h と H⁰ の比較 | [DGNerve.lean](DGNerve.lean) | audit_dg_nerve.lean |
@@ -53,3 +53,11 @@ Cat∞ 値 straightening は F1 主入口から直接は読み込まない。
 コピーせずコーディネータ経由で上流の分割を依頼する。
 重複候補は `python3 scripts/check_duplicates.py --baseline
 formalization-plans/archive/refactor-duplicates-2026-10-23.md` で比較できる。
+
+## 移動した宣言の名前空間（F-2）
+
+KST から移した宣言は現在のディレクトリに対応する名前空間を使う。
+F1・F1B・F2 のディレクトリ名は維持する。旧 KST 名は deprecated alias として
+段 G の最初の区切りまで保持し、BS・G2・KST の移行確認後、別の束で一括削除する。
+対応と alias の種類は [確定改名表](../../scripts/refactor/targets/f-namespace-map.json) を参照。
+instance・simp の登録は新名側のみで、旧名側の型・暗黙引数・宇宙を保つ。

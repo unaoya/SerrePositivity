@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure
 
 /-!
@@ -14,23 +16,26 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
-def exactKernel {A B : StableCategory.{u}} (F : ExactMap A B) : Set (A.obj _⦋0⦌) :=
+def exactKernel {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) : Set (A.obj _⦋0⦌) :=
   {x | IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x)}
 
-lemma exactKernel_stableClosure {A B : StableCategory.{u}} (F : ExactMap A B) :
-    {x | StableVertexClosure (exactKernel F) x} = exactKernel F := by
+lemma exactKernel_stableClosure {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    {x | StableVertexClosure (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel F) x} = _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel F := by
   ext x
   constructor
   · intro hx
-    exact kills_stableVertexClosure F.hom (exactKernel F) (fun _ hy => hy) hx
+    exact kills_stableVertexClosure F.hom (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel F) (fun _ hy => hy) hx
   · exact StableVertexClosure.of_mem
 
-lemma invertedEdges_eq_cofiber_exactKernel {A B : StableCategory.{u}} (F : ExactMap A B) :
-    invertedEdges F.hom = cofiberLocalizingEdges (exactKernel F) := by
+lemma invertedEdges_eq_cofiber_exactKernel {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    invertedEdges F.hom = cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel F) := by
   ext e
   constructor
   · intro he
@@ -38,6 +43,18 @@ lemma invertedEdges_eq_cofiber_exactKernel {A B : StableCategory.{u}} (F : Exact
     have hz := (c.map_isInvertible_iff_zero F.hom).mp he
     exact ⟨c, c.cofiber, hz, ⟨Iso.refl _⟩⟩
   · intro he
-    exact inverts_cofiberLocalizingEdges_of_kills F.hom (exactKernel F) (fun _ hx => hx) he
+    exact inverts_cofiberLocalizingEdges_of_kills F.hom (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel F) (fun _ hx => hx) he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactKernel := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactKernel_stableClosure := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactKernel_stableClosure
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.invertedEdges_eq_cofiber_exactKernel := _root_.SerrePositivity.InfinityCategories.Stable.Exact.invertedEdges_eq_cofiber_exactKernel

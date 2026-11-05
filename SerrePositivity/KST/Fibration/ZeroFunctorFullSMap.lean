@@ -22,20 +22,20 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ零値完全関手の元の S_n 後合成を core S_n へ持ち上げる。 -/
-def zeroFunctorSCoreMap {A C : StableCategory.{u}} (F : ExactMap A C)
+def zeroFunctorSCoreMap {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) (n : ℕ) :
     sConstruction n A.obj ⟶ (quasicategoryCore (sConstruction n C.obj) : SSet.{u}) :=
   quasicategoryCoreLift (sExactMap n F).hom
     (map_edge_invertible_of_zero _ (zeroFunctor_sExactMap_values F hF n))
 
 /-- core 包含後は、同じ元の完全関手による全 S_n 後合成そのもの。 -/
-theorem zeroFunctorSCoreMap_ι {A C : StableCategory.{u}} (F : ExactMap A C)
+theorem zeroFunctorSCoreMap_ι {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) (n : ℕ) :
     zeroFunctorSCoreMap F hF n ≫ (quasicategoryCore (sConstruction n C.obj)).ι =
       (sExactMap n F).hom := quasicategoryCoreLift_ι _ _
 
 /-- 同じ全 S_n の零値作用は全ての面・退化に自然。 -/
-def zeroFunctorFullSMap {A C : StableCategory.{u}} (F : ExactMap A C)
+def zeroFunctorFullSMap {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     simplicialSConstruction A.obj ⟶ simplicialSConstruction C.obj ⋙ quasicategoryCoreFunctor where
   app n := zeroFunctorSCoreMap F hF n.unop.len
@@ -48,8 +48,8 @@ def zeroFunctorFullSMap {A C : StableCategory.{u}} (F : ExactMap A C)
     exact (exactSPostcomp_reindex F θ.unop.toOrderHom).symm
 
 /-- 零圏への指定射では、相対商射影から作った同じ元の零角比較と厳密一致する。 -/
-theorem zeroFunctorFullSMap_eq_zeroTarget {A Z : StableCategory.{u}} (F : ExactMap A Z)
-    (hF : IsZeroVertex (functorVertex F.hom)) (hZ : IsZeroCategory Z) :
+theorem zeroFunctorFullSMap_eq_zeroTarget {A Z : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A Z)
+    (hF : IsZeroVertex (functorVertex F.hom)) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory Z) :
     zeroFunctorFullSMap F hF = zeroTargetFullSMap F hZ := by
   apply NatTrans.ext
   funext n
@@ -61,8 +61,8 @@ theorem zeroFunctorFullSMap_eq_zeroTarget {A Z : StableCategory.{u}} (F : ExactM
   rfl
 
 /-- 元の core 制限では、任意の相対条件を経由しても指定完全関手の core S• 作用に等しい。 -/
-theorem zeroFunctorFullSMap_core {A B C : StableCategory.{u}}
-    (q : A.obj ⟶ B.obj) (F : ExactMap A C) (hF : IsZeroVertex (functorVertex F.hom)) :
+theorem zeroFunctorFullSMap_core {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : A.obj ⟶ B.obj) (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C) (hF : IsZeroVertex (functorVertex F.hom)) :
     relativeSimplicialSConstructionCoreInclusion q ≫
         relativeSimplicialSConstructionInclusion q ≫ zeroFunctorFullSMap F hF = coreSExactMap F := by
   apply NatTrans.ext

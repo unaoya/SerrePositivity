@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
 lemma dgGluingFactorIsZero_iff_isZeroVertex (x : C) :
     dgGluingFactorIsZero R C x ↔ IsZeroVertex (X := dgNerve R C) (Simplex.vertex x) := by

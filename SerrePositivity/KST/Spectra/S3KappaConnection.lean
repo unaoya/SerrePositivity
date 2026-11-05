@@ -28,8 +28,8 @@ def kappaToStrict (t : DGKappaRelativeRoofComparisonInput R D I) :
 
 /-- strict 屋根は同じ四角形と恒等完備化を持つ Perf 版の特殊化。 -/
 def kappaPerfectDiagram (t : DGKappaSuspensionRelativeRoofInput R D I) :
-    RelativePerfectVerdierDiagram (dgKInputPerfectNu.{u, max (u + 1) v} R) :=
-  RelativePerfectVerdierDiagram.ofStrict
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram (dgKInputPerfectNu.{u, max (u + 1) v} R) :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.ofStrict
     (by rw [dgKInputPerfectNu_inclusion]; exact t.diagram)
 
 @[simp] theorem kappaPerfectDiagram_square (t : DGKappaSuspensionRelativeRoofInput R D I) :
@@ -49,7 +49,7 @@ theorem exists_kappaRelativeRoof
     (i : A ⟶ dgKappaResolvedConeKInput R D I)
     (C : DGQuotient.ContractedFunctor R A Set.univ (dgKappaSuspensionKInput R D I))
     (hC : C.toDGFunctor = i.down.comp (dgKappaResolvedSuspensionInputMap R D I).down)
-    (hV : IsVerdierSequence (dgKInputNuMap R i)
+    (hV : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKInputNuMap R i)
       (dgKInputNuMap R (dgKappaResolvedSuspensionInputMap R D I))) :
     ∃ t : DGKappaSuspensionRelativeRoofInput R D I, t.kernel = A ∧
       squareBottomEdge ≫ t.diagram.square = SSet.yonedaEquiv.symm (coherentNerveEdge i).edge :=

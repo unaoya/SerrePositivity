@@ -25,12 +25,12 @@ def strictCoherentConeTransformationIso [Quasicategory (SimplicialNerve C)]
     (hα : ∀ i, IsInvertibleEdge (coherentNerveEdge (α.app i)))
     (hfi : IsInvertibleEdge (coherentNerveEdge f)) :
     FunctorIso (strictCoherentCone c).val (strictCoherentCone d).val := by
-  have he := sizedCoherentNatTransIso (strictConeTransformation α c d f hf) (by
+  have he := sizedCoherentNatTransIso (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation α c d f hf) (by
     intro j
     cases j with
     | star => exact hfi
     | of j => exact hα (AsSmall.down.obj j))
-  exact he.precomp (strictConeShapeMap (I := I))
+  exact he.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeShapeMap (I := I))
 
 /-- 同じ通常の錐比較の全成分の可逆性に沿って、実極限性を移す。 -/
 theorem strictCoherentCone_isLimit_iff_of_transformation [Quasicategory (SimplicialNerve C)]

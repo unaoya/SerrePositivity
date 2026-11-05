@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration
 方針：同じ実読出しの直接端を全族で保ち、両側の正規化対角回収を共通座標へ戻す。
 規約：(9) に条件付き。全ホーンと元の下側との可逆比較を保持する。
 使われ方：K-6 c4 の指定有限端点・縦辺の照合へ渡す共有対角付きの上下全族。 -/
-theorem verdierNormalizedSharedDiagonal_exists (d : VerdierDiagram.{u})
+theorem verdierNormalizedSharedDiagonal_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (h9 : zeroMiddleControlledTriangleSupply.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧

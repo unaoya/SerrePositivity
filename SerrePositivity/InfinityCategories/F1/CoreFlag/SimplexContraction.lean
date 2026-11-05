@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleInitialContraction
 
 /-!
@@ -15,8 +17,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 初頂点から恒等写像へ変形する単調写像。 -/
@@ -38,7 +43,7 @@ def initialContractionOrder (m : ℕ) : Fin (m + 1) × Fin 2 →o Fin (m + 1) wh
 def initialContraction (m : ℕ) :
     SSet.Homotopy (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (m + 1))) :
       (Δ[m] : SSet.{u}) ⟶ Δ[m]) (𝟙 _) where
-  h := stdSimplexProductMap (initialContractionOrder m)
+  h := stdSimplexProductMap (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder m)
   h₀ := by
     apply SSet.hom_ext
     rintro ⟨⟨n⟩⟩
@@ -62,4 +67,31 @@ def initialContraction (m : ℕ) :
     intro s
     exact False.elim s.1.property
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContraction._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContraction._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.initialContractionOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.initialContractionOrder._proof_3

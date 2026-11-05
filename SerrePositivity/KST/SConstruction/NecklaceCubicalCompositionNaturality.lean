@@ -16,35 +16,35 @@ open CategoryTheory MonoidalCategory Simplicial SSet
 
 /-- 後合成した wedge と、後合成した両 necklace の wedge の実可換三角形。 -/
 def necklaceInWedgePostcomposeHom {K L : SSet.{u}} (a : K ⟶ L)
-    {x y z : K _⦋0⦌} (T : NecklaceIn K x y) (U : NecklaceIn K y z) :
-    (necklaceInPostcompose a x z).obj (necklaceInWedge T U) ⟶
-      necklaceInWedge ((necklaceInPostcompose a x y).obj T)
-        ((necklaceInPostcompose a y z).obj U) where
-  necklaceHom := 𝟙 (necklaceWedge T.necklace U.necklace)
-  w := (Category.id_comp _).trans (necklaceInWedge_postcompose_map a T U)
+    {x y z : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x z).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) ⟶
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+        ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U) where
+  necklaceHom := 𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace)
+  w := (Category.id_comp _).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_map a T U)
 
 /-- 元の生成射上で、入力の写像は同じ wedge 合成を保つ。 -/
 lemma necklaceCubicalComposeCell_naturality {K L : SSet.{u}} (a : K ⟶ L)
-    {x y z : K _⦋0⦌} (T : NecklaceIn K x y) (U : NecklaceIn K y z) :
+    {x y z : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
     necklaceCubicalComposeCell T U ≫ necklaceCubicalMap a x z =
-      necklaceCubicalComposeCell ((necklaceInPostcompose a x y).obj T)
-        ((necklaceInPostcompose a y z).obj U) := by
+      necklaceCubicalComposeCell ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+        ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U) := by
   have h := necklaceCubicalCell_relation (necklaceInWedgePostcomposeHom a T U)
-  change necklaceCubicalSet.map (𝟙 (necklaceWedge T.necklace U.necklace)) ≫
-    necklaceCubicalCell (necklaceInWedge ((necklaceInPostcompose a x y).obj T)
-      ((necklaceInPostcompose a y z).obj U)) =
-    necklaceCubicalCell ((necklaceInPostcompose a x z).obj (necklaceInWedge T U)) at h
-  have hc : necklaceCubicalCell (necklaceInWedge ((necklaceInPostcompose a x y).obj T)
-      ((necklaceInPostcompose a y z).obj U)) =
-      necklaceCubicalCell ((necklaceInPostcompose a x z).obj (necklaceInWedge T U)) := by
+  change necklaceCubicalSet.map (𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace)) ≫
+    necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U)) =
+    necklaceCubicalCell ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x z).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)) at h
+  have hc : necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U)) =
+      necklaceCubicalCell ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x z).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)) := by
     exact (Category.id_comp _).symm.trans
       ((congrArg (fun b => b ≫ necklaceCubicalCell
-        (necklaceInWedge ((necklaceInPostcompose a x y).obj T)
-          ((necklaceInPostcompose a y z).obj U)))
-        (necklaceCubicalSet.map_id (necklaceWedge T.necklace U.necklace)).symm).trans h)
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
+          ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U)))
+        (necklaceCubicalSet.map_id (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace)).symm).trans h)
   exact (Category.assoc _ _ _).trans
     (congrArg (fun b => (necklaceCubicalTensorIso T.necklace U.necklace).hom ≫ b)
-      ((necklaceCubicalCell_map a (necklaceInWedge T U)).trans hc.symm))
+      ((necklaceCubicalCell_map a (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)).trans hc.symm))
 
 /-- 全 mapping object の合成は、元の全入力写像について自然。 -/
 lemma necklaceCubicalCompose_naturality {K L : SSet.{u}} (a : K ⟶ L)

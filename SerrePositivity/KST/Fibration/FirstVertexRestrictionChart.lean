@@ -38,7 +38,7 @@ def firstVertexRestrictionChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningInfinityMap_firstVertexRestrictionIso B)
-      (kanEnrichedDoubleEvaluation X c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c))
     (congrArg HomotopyCategory.mk (straighteningRestrict_source_vertex X c))
     (congrArg HomotopyCategory.mk (transportUnderBaseChange_source_vertex X c))
 
@@ -47,7 +47,7 @@ theorem firstVertexRestrictionChart_heq_doubleMap
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     HEq (firstVertexRestrictionChart X c)
       (VertexIso.map (leftStraighteningInfinityMap_firstVertexRestrictionIso B)
-        (kanEnrichedDoubleEvaluation X c)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)) := by
   unfold firstVertexRestrictionChart F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
 
@@ -56,12 +56,12 @@ theorem firstVertexRestrictionChart_factor
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     firstVertexRestrictionChart X c = straighteningUnderRealizationChart X c ≪≫
       (firstVertexUnderBaseChangeChart X c).symm := by
-  exact mapNormalizeSpan (hoFunctor.map (kanEnrichedDoubleEvaluation X c)).toFunctor
+  exact mapNormalizeSpan (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)).toFunctor
     (leftStraighteningInfinityMap_underRealizationIso B)
     (transportSimplexUnderBaseChangeRealizationIso B)
     (leftStraighteningInfinityMap_firstVertexRestrictionIso B) rfl
     (congrArg HomotopyCategory.mk (straighteningRestrict_source_vertex X c))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
       (relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)) X c))
     (congrArg HomotopyCategory.mk (transportUnderBaseChange_source_vertex X c))
 
@@ -70,11 +70,11 @@ theorem firstVertexRestrictionChart_pointHom
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X)).symm v) ≫
       (straighteningFirstVertexSectionChart X c).inv ≫
         (firstVertexRestrictionChart X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (strictTransportDomains
         (TransportSimplexCategory B))).precompose
           (leftFibrationBaseChangeEnriched (transportSimplexFirstVertexMap B))).obj c).obj X)).symm

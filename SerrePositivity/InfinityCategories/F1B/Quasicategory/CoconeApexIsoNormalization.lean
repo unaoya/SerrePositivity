@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 前段全体を固定し、頂点を指定点に厳密に揃えた同型な実余錐を構成する。 -/
 lemma exists_cocone_apexIsoNormalization {K X : SSet.{u}} [Quasicategory X]
@@ -57,4 +62,10 @@ lemma exists_cocone_apexIsoNormalization {K X : SSet.{u}} [Quasicategory X]
   exact ⟨d, hz, ⟨coconeFunctorIsoOfVertexIso d c
     (asIso (Truncated.HomotopyCategory.homMk l))⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_cocone_apexIsoNormalization := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_cocone_apexIsoNormalization

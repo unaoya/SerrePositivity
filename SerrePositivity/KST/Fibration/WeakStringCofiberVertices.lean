@@ -19,13 +19,13 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 完全な補完の各頂点が持つ、元の全 cofiber 四角形。 -/
-def weakStringCofiberVertex {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringCofiberVertex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) (v : (weakStringCategory q n) _⦋0⦌) :
     (cofiberDiagrams B.obj) _⦋0⦌ :=
   ((weakStringCofiberExact q α).val.app (Opposite.op ⦋0⦌) v).val
 
 /-- 各実四角形の底辺の一次単体は、元の列の指定した合成辺そのもの。 -/
-lemma weakStringCofiberVertex_bottom {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberVertex_bottom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) (v : (weakStringCategory q n) _⦋0⦌) :
     (squareBottomArrow (squareDiagram (weakStringCofiberVertex q α v).val)).edge =
       B.obj.map α.op (simplexVertexValue n v.val) := by
@@ -38,7 +38,7 @@ lemma weakStringCofiberVertex_bottom {B C : StableCategory.{u}} (q : ExactMap B 
   exact simplexVertexValue_reindex α v.val
 
 /-- 同じ実四角形の cofiber は商で零である。 -/
-lemma weakCofiberVertex_kernel {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakCofiberVertex_kernel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (w : (cofiberDiagrams B.obj) _⦋0⦌)
     (hw : (relativeCofiberPredicate (ClosedStablePredicate.top (sInputModel B))
       (kernelClosedPredicate q)).predicate w) :
@@ -53,7 +53,7 @@ lemma weakCofiberVertex_kernel {B C : StableCategory.{u}} (q : ExactMap B C)
   exact hk
 
 /-- 選択した全合成辺の同じ実四角形の cofiber は商で零である。 -/
-lemma weakStringCofiberVertex_kernel {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberVertex_kernel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) (v : (weakStringCategory q n) _⦋0⦌) :
     IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌)
       (vertexCofiberSquare (B := B) (weakStringCofiberVertex q α v)).cofiber) := by
@@ -64,7 +64,7 @@ lemma weakStringCofiberVertex_kernel {B C : StableCategory.{u}} (q : ExactMap B 
   exact weakCofiberVertex_kernel q (weakStringCofiberVertex q α v) hw
 
 /-- 再添字は同値な別の四角形に移さず、元の実四角形を厳密に保つ。 -/
-lemma weakStringCofiberVertex_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberVertex_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (α : ⦋1⦌ ⟶ m)
     (v : (weakStringCategory q n) _⦋0⦌) :
     weakStringCofiberVertex q α ((weakStringMap q θ).app (Opposite.op ⦋0⦌) v) =
@@ -73,7 +73,7 @@ lemma weakStringCofiberVertex_reindex {B C : StableCategory.{u}} (q : ExactMap B
     (f.val.app (Opposite.op ⦋0⦌) v).val) (weakStringCofiberExact_reindex q θ α)
 
 /-- 選んだ cofiber の零性は、商を取る前の元の合成辺の可逆性で正確に判定される。 -/
-lemma weakStringCofiberVertex_zero_iff {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberVertex_zero_iff {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) (v : (weakStringCategory q n) _⦋0⦌) :
     IsZeroVertex (vertexCofiberSquare (B := B) (weakStringCofiberVertex q α v)).cofiber ↔
       IsInvertibleEdge (edgeOfSimplex (B.obj.map α.op (simplexVertexValue n v.val))) :=

@@ -56,7 +56,7 @@ theorem strictTransportPost_inclusion_evaluate (c : I)
 /-- 元の全 Kan 後合成と分類比較の実点作用は、同じ評価・fiber 写像・第一射影を保持する。 -/
 theorem scaffoldCocartesianPostBaseChangeClassification_pointHom (c : I)
     (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram s).obj c) _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((cocartesianKanDiagram (pullback.snd p k)).obj c)).symm
       ((((strictKanTransportPostToLeftFibration s (pullback.snd p k) f hf).app c).app
         (Opposite.op ⦋0⦌))
@@ -66,7 +66,7 @@ theorem scaffoldCocartesianPostBaseChangeClassification_pointHom (c : I)
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram (pullback.snd p k)) c))).inv ≫
       functorHomEvaluate (scaffoldCocartesianBaseChangeClassificationIso p k).hom
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
       (k.app (Opposite.op ⦋0⦌) (nerveVertex c))
       ((cofinalVertexFiberBaseChangeIso p k (nerveVertex c)).hom.app (Opposite.op ⦋0⦌)
         ((vertexFiberMap s (pullback.snd p k) f hf (nerveVertex c)).app (Opposite.op ⦋0⦌)
@@ -75,7 +75,7 @@ theorem scaffoldCocartesianPostBaseChangeClassification_pointHom (c : I)
   have h := scaffoldCocartesianBaseChangeClassificationIso_pointHom p k c
     (((strictTransportPostToLeftFibration s (pullback.snd p k) f hf).app c).app
       (Opposite.op ⦋0⦌) v)
-  exact h.trans (congrArg (fun w => cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
+  exact h.trans (congrArg (fun w => _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
     (k.app (Opposite.op ⦋0⦌) (nerveVertex c))
     ((cofinalVertexFiberBaseChangeIso p k (nerveVertex c)).hom.app (Opposite.op ⦋0⦌) w)))
       (strictTransportPost_inclusion_evaluate s p k f hf c v))

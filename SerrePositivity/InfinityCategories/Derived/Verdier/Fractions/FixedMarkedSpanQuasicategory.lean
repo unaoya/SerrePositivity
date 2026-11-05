@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointShape
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 instance markedSpans_quasicategory (X : SSet.{u}) [Quasicategory X]
     (W : Set (X _⦋1⦌)) : Quasicategory (markedSpans X W) :=
@@ -38,7 +43,22 @@ instance fixedMarkedSpans_quasicategory (X : SSet.{u}) [Quasicategory X]
 
 instance fixedFractionTriangles_quasicategory {X Q : SSet.{u}}
     [Quasicategory X] [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
-    (hF : InvertsEdges F W) (x y : X _⦋0⦌) : Quasicategory (fixedFractionTriangles F W hF x y) :=
-  quasicategory_of_innerFibration (fixedFractionTriangleProjection F W hF x y)
+    (hF : InvertsEdges F W) (x y : X _⦋0⦌) : Quasicategory (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles F W hF x y) :=
+  quasicategory_of_innerFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x y)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fixedFractionTriangles_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles_quasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpans_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fixedMarkedSpans_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpans_quasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanBoundary_innerFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.markedSpanBoundary_innerFibration := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanBoundary_innerFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpans_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.markedSpans_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpans_quasicategory

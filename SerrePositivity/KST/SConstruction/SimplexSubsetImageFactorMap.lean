@@ -27,10 +27,10 @@ def simplexSubsetImageFactorMap {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
 /-- 元の像部分集合への因子と元の像包含の合成は、元の入力写像の後合成。 -/
 lemma simplexSubsetImageFactorMap_triangle {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
-    simplexSubsetImageFactorMap.{u} α I hI hJ ≫ simplexSubsetMap (I.image α) hJ =
-      simplexSubsetMap I hI ≫ SSet.stdSimplex.map (SimplexCategory.Hom.mk α) := by
-  have h : simplexSubsetImageFactorHom α I hI hJ ≫ simplexSubsetHom (I.image α) hJ =
-      simplexSubsetHom I hI ≫ SimplexCategory.Hom.mk α := by
+    simplexSubsetImageFactorMap.{u} α I hI hJ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap (I.image α) hJ =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI ≫ SSet.stdSimplex.map (SimplexCategory.Hom.mk α) := by
+  have h : simplexSubsetImageFactorHom α I hI hJ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetHom (I.image α) hJ =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetHom I hI ≫ SimplexCategory.Hom.mk α := by
     ext v
     exact congrArg Fin.val (simplexSubsetImageFactorOrder_recovery α I hI hJ v)
   exact ((SSet.stdSimplex.{u}).map_comp _ _).symm.trans
@@ -39,16 +39,16 @@ lemma simplexSubsetImageFactorMap_triangle {M N : ℕ} (α : Fin (M + 1) →o Fi
 /-- 元の像部分集合への実因子は、元の始零単体を保つ。 -/
 lemma simplexSubsetImageFactorMap_first {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
-    (simplexSubsetImageFactorMap.{u} α I hI hJ).app _ (standardSimplexVertex 0) =
-      standardSimplexVertex 0 :=
-  standardSimplexVertex_ext (simplexSubsetImageFactorOrder_first α I hI hJ)
+    (simplexSubsetImageFactorMap.{u} α I hI hJ).app _ (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0 :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext (simplexSubsetImageFactorOrder_first α I hI hJ)
 
 /-- 元の像部分集合への実因子は、元の終零単体を保つ。 -/
 lemma simplexSubsetImageFactorMap_last {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
     (simplexSubsetImageFactorMap.{u} α I hI hJ).app _
-      (standardSimplexVertex (Fin.last (I.card - 1))) =
-        standardSimplexVertex (Fin.last ((I.image α).card - 1)) :=
-  standardSimplexVertex_ext (simplexSubsetImageFactorOrder_last α I hI hJ)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (Fin.last (I.card - 1))) =
+        _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (Fin.last ((I.image α).card - 1)) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext (simplexSubsetImageFactorOrder_last α I hI hJ)
 
 end SerrePositivity.KST.SConstruction

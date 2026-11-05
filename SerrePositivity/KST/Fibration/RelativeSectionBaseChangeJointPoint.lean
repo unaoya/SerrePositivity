@@ -31,7 +31,7 @@ theorem relativeSectionBaseChangeComponentIso_heq_jointMap
     (X : LeftFibrationObject B) (j : J) :
     HEq (relativeSectionBaseChangeComponentIso k A X j)
       (VertexIso.map (relativeSectionDiagramInfinityBaseChangeIso k A)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex j)) (coherentNerveVertex X))) := by
   let e := relativeSectionBaseChangeRealizationIso k A
   let x := coherentNerveVertex X
@@ -44,19 +44,19 @@ theorem relativeSectionBaseChangeComponentIso_heq_jointMap
       (transposeFunctorFamily_comp (leftFibrationInfinityBaseChange k)
         (relativeSectionEnrichedDiagram A).realization).symm) rfl
     (relativeSectionDiagramInfinityBaseChangeIso_heq k A)
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)
   exact h.trans (ht.symm.trans hm.symm)
 
 /-- 元の係数成分は、元の共同底変換同型そのものを指定した添字・対象で評価した値。 -/
 theorem relativeSectionBaseChangeComponentIso_heq_jointValueMap
     (X : LeftFibrationObject B) (j : J) :
     HEq (relativeSectionBaseChangeComponentIso k A X j)
-      (VertexIso.map (functorIsoValue (relativeSectionDiagramInfinityBaseChangeIso k A)
+      (VertexIso.map (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (relativeSectionDiagramInfinityBaseChangeIso k A)
         (ULift.up (nerveVertex j))) (evaluateFunctorAt (coherentNerveVertex X))) := by
   let e := relativeSectionDiagramInfinityBaseChangeIso k A
   let a := ULift.up.{u + 1} (nerveVertex j)
   let x := coherentNerveVertex X
-  have hv := functorIsoDoubleValue_heq_map e a x
+  have hv := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoDoubleValue_heq_map e a x
   exact (relativeSectionBaseChangeComponentIso_heq_jointMap k A X j).trans hv.symm
 
 end SerrePositivity.KST.Fibration

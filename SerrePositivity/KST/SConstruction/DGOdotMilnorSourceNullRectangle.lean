@@ -86,14 +86,14 @@ def dgOdotMilnorSourceNullTopTriangle : SSet.Edge.CompStruct
 方針：既構成の二つの零化面を同じ二つの合成三角形を保って貼る。
 規約：元対角始域との回収は構成済み増大屋根を併用する。
 使われ方：d④ の始域側の実全図式と指定境界。 -/
-def dgOdotMilnorSourceNullRectangle : SquarePastingRectangle
+def dgOdotMilnorSourceNullRectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
     (dgOdotMilnorSourceKernelNullSquare R d) (dgOdotMilnorPerfectNullSquare R d)
     (SSet.yonedaEquiv.symm (dgOdotMilnorSourceNullBottomTriangle R d).simplex)
     (SSet.yonedaEquiv.symm (dgOdotMilnorSourceNullTopTriangle R d).simplex) := by
   have hL := dgOdotMilnorSourceKernelNullSquare_edges R d
   have hR := dgOdotMilnorPerfectNullSquare_edges R d
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
   · exact hL.2.1.trans hR.2.2.1.symm
   · rw [hL.1, stdSimplex.δ_comp_yonedaEquiv_symm,
       (dgOdotMilnorSourceNullBottomTriangle R d).d₂]

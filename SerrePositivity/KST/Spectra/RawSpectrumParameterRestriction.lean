@@ -22,7 +22,7 @@ lemma PointedMapping.transpose_unit {T V : PointedSimplicialSet.{u}}
     (f : T ⟶ (ihom (𝟙_ PointedSimplicialSet.{u})).obj V) :
     transpose f = curry' (f ≫ (unitIsoSelf (X := V)).hom) := by
   have he : uncurry f = (λ_ T).hom ≫ f ≫ (unitIsoSelf (X := V)).hom := by
-    have h := InternalHomExchange.curry_unit_evaluation (uncurry f)
+    have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation (uncurry f)
     rw [curry_uncurry] at h
     rw [h, Iso.hom_inv_id_assoc]
   unfold transpose curry'

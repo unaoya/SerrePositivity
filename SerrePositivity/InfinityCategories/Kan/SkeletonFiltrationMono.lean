@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
 
 /-!
@@ -13,6 +15,9 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
 universe u
 open CategoryTheory SSet
 namespace SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.KST.Spectra.SkeletonFiltration
+namespace SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+open SerrePositivity.KST.Spectra.SkeletonFiltration
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
@@ -26,12 +31,12 @@ lemma preimage_skeleton {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] (n : ℕ) :
       (SSet.nonDegenerate_iff_of_mono f x.val).2 x.property
     have hd : d < n := (Y.mem_skeleton_obj_iff_of_nonDegenerate ⟨_, hfx⟩ n).1 hx
     exact X.mem_skeleton x.val hd
-  · exact (Subcomplex.image_le_iff _ f _).1 (image_le f n)
+  · exact (Subcomplex.image_le_iff _ f _).1 (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.image_le f n)
 
 /-- 単射の骨格の像は、全体の像と標的の骨格の共通部分。 -/
 lemma image_skeleton {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] (n : ℕ) :
     (X.skeleton n).image f = Subcomplex.range f ⊓ Y.skeleton n := by
-  rw [← preimage_skeleton f n]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.preimage_skeleton f n]
   ext j y
   change (∃ x, f.app j x ∈ (Y.skeleton n).obj j ∧ f.app j x = y) ↔
     (∃ x, f.app j x = y) ∧ y ∈ (Y.skeleton n).obj j
@@ -42,10 +47,22 @@ lemma image_skeleton {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] (n : ℕ) :
     exact ⟨x, hx, rfl⟩
 
 /-- 骨格関手は実際の単射を単射へ送る。 -/
-lemma map_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] (n : ℕ) : Mono (map f n) := by
-  have : Mono (map f n ≫ (Y.skeleton n).ι) := by
-    rw [map_ι]
+lemma map_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] (n : ℕ) : Mono (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f n) := by
+  have : Mono (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f n ≫ (Y.skeleton n).ι) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map_ι]
     infer_instance
-  exact mono_of_mono (map f n) (Y.skeleton n).ι
+  exact mono_of_mono (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map f n) (Y.skeleton n).ι
 
-end SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.image_skeleton := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.image_skeleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.map_mono := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.preimage_skeleton := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.preimage_skeleton

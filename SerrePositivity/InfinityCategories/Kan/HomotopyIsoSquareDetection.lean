@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 
 /-!
@@ -12,29 +14,38 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopy
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
 
 /-- 二つの同型で結ばれる射の全単射性は、対応する任意基点で一致する。 -/
 lemma map_bijective_iff_of_iso_square {A B C D : SSet.{u}}
     [KanComplex A] [KanComplex B] [KanComplex C] [KanComplex D]
     (eA : A ≅ B) (eC : C ≅ D) (f : A ⟶ C) (g : B ⟶ D)
     (hc : eA.hom ≫ g = f ≫ eC.hom) (a : A _⦋0⦌) (n : ℕ) :
-    Function.Bijective (map n f (x := a) rfl) ↔
-      Function.Bijective (map n g (x := eA.hom.app _ a) rfl) := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := a) rfl) ↔
+      Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g (x := eA.hom.app _ a) rfl) := by
   have hp : eC.hom.app _ (f.app _ a) = g.app _ (eA.hom.app _ a) :=
     (ConcreteCategory.congr_hom (NatTrans.congr_app hc _) a).symm
-  let iA := equivOfIso n eA (x := a) rfl
-  let iC := equivOfIso n eC (x := f.app _ a) hp
-  have he : map n g (x := eA.hom.app _ a) rfl ∘ iA = iC ∘ map n f (x := a) rfl := by
+  let iA := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n eA (x := a) rfl
+  let iC := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n eC (x := f.app _ a) hp
+  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g (x := eA.hom.app _ a) rfl ∘ iA = iC ∘ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := a) rfl := by
     funext s
-    exact map_square eA.hom eC.hom f g hc rfl hp rfl rfl n s
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_square eA.hom eC.hom f g hc rfl hp rfl rfl n s
   calc
-    Function.Bijective (map n f (x := a) rfl) ↔
-        Function.Bijective (iC ∘ map n f (x := a) rfl) :=
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := a) rfl) ↔
+        Function.Bijective (iC ∘ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := a) rfl) :=
       (Function.Bijective.of_comp_iff' iC.bijective _).symm
-    _ ↔ Function.Bijective (map n g (x := eA.hom.app _ a) rfl ∘ iA) := by rw [he]
-    _ ↔ Function.Bijective (map n g (x := eA.hom.app _ a) rfl) :=
+    _ ↔ Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g (x := eA.hom.app _ a) rfl ∘ iA) := by rw [he]
+    _ ↔ Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g (x := eA.hom.app _ a) rfl) :=
       Function.Bijective.of_comp_iff _ iA.bijective
 
-end SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.InfinityCategories.Kan.KanHomotopy
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_bijective_iff_of_iso_square := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_iff_of_iso_square

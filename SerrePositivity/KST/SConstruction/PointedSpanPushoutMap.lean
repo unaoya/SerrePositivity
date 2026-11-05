@@ -60,10 +60,10 @@ lemma pointedSpanPushoutEnrichedFunctor_hom {X Y : PointedSpanDiagram.{u}} (t : 
   · rw [Category.assoc, pointedSpanPushoutHom_inl X Y]
     change eHomEquiv SSet t ≫ (pointedSpanProjection X Y .left ≫ _) = _
     rw [← Category.assoc, pointedSpanProjection_hom t .left,
-      simplicialHom_post, simplicialHom_pre, pointedSpanPushoutInl_map t]
+      _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_pre, pointedSpanPushoutInl_map t]
   · rw [Category.assoc, pointedSpanPushoutHom_inr X Y]
     change eHomEquiv SSet t ≫ (pointedSpanProjection X Y .right ≫ _) = _
     rw [← Category.assoc, pointedSpanProjection_hom t .right,
-      simplicialHom_post, simplicialHom_pre, pointedSpanPushoutInr_map t]
+      _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_pre, pointedSpanPushoutInr_map t]
 
 end SerrePositivity.KST.SConstruction

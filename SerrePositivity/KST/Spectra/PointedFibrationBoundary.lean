@@ -34,10 +34,10 @@ variable {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) [Fibration p.right]
 規約：基礎単体集合は同じ pullback。
 使われ方：Goerss–Jardine I §7。点つき連結射の終域の比較。 -/
 def pointedFiberGroupEquiv (r : ℕ) :
-    KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint ≃*
-      KanHomotopyGroup (KanFiber p.right (p.right.app _ E.basepoint)) r
-        (fiberPoint p.right E.basepoint) :=
-  KanHomotopyGroup.equivOfIso r (Iso.refl (KanFiber p.right (p.right.app _ E.basepoint)))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint)) r
+        (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r (Iso.refl (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p.right (p.right.app _ E.basepoint)))
     (PointedSimplicialSet.basepoint_ofVertex _ _)
 
 /-- 概要：標準基点での点つき Kan fibration の連結準同型。
@@ -45,31 +45,31 @@ def pointedFiberGroupEquiv (r : ℕ) :
 規約：π_(r+2)(B) から π_(r+1)(fiber) への準同型。
 使われ方：Goerss–Jardine I §§7–8、VIII §1。塔の微分の構成。 -/
 def pointedConnectingHom (r : ℕ) :
-    KanHomotopyGroup B.right (r + 1) B.basepoint →*
-      KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right (r + 1) B.basepoint →*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint :=
   (pointedFiberGroupEquiv p r).symm.toMonoidHom.comp
-    ((connectingHom p.right E.basepoint r).comp
-      (KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
-        (OmegaSpectrum.pointedMap_basepoint p)).symm.toMonoidHom)
+    ((_root_.SerrePositivity.InfinityCategories.Kan.connectingHom p.right E.basepoint r).comp
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)).symm.toMonoidHom)
 
 lemma pointedConnectingHom_compute (r : ℕ)
-    (a : KanHomotopyGroup B.right (r + 1) B.basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right (r + 1) B.basepoint) :
     pointedFiberGroupEquiv p r (pointedConnectingHom p r a) =
-      connectingHom p.right E.basepoint r
-        ((KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
-          (OmegaSpectrum.pointedMap_basepoint p)).symm a) :=
+      _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p.right E.basepoint r
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)).symm a) :=
   (pointedFiberGroupEquiv p r).apply_symm_apply _
 
 omit [KanComplex B.right] in
 lemma pointedFiberGroupEquiv_inclusion (r : ℕ)
-    (a : KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber p).right r (pointedFiber p).basepoint) :
     pointedGroupMap r (pointedFiberι p) a =
-      KanHomotopyGroup.map (fiberι p.right (p.right.app _ E.basepoint))
-        (fiberι_point p.right E.basepoint) (pointedFiberGroupEquiv p r a) := by
-  change KanHomotopyGroup.map (fiberι p.right (p.right.app _ E.basepoint)) _ a =
-    KanHomotopyGroup.map (fiberι p.right (p.right.app _ E.basepoint)) _
-      (KanHomotopyGroup.map (𝟙 _) _ a)
-  erw [← DFunLike.congr_fun (KanHomotopyGroup.map_comp _ _ _ _ _) a]
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _ E.basepoint))
+        (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p.right E.basepoint) (pointedFiberGroupEquiv p r a) := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _ E.basepoint)) _ a =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p.right (p.right.app _ E.basepoint)) _
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _ a)
+  erw [← DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp _ _ _ _ _) a]
   rfl
 
 /-- 概要：点つき連結準同型と fiber 包含の誘導準同型の合成は自明。
@@ -78,10 +78,10 @@ lemma pointedFiberGroupEquiv_inclusion (r : ℕ)
 使われ方：Goerss–Jardine VIII §1。骨格の塔の微分の二乗の零性。 -/
 @[simp]
 theorem pointedConnectingHom_inclusion (r : ℕ)
-    (a : KanHomotopyGroup B.right (r + 1) B.basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right (r + 1) B.basepoint) :
     pointedGroupMap r (pointedFiberι p) (pointedConnectingHom p r a) = 1 := by
   rw [pointedFiberGroupEquiv_inclusion, pointedConnectingHom_compute]
-  exact fiber_map_connecting p.right E.basepoint (r + 1) _
+  exact _root_.SerrePositivity.InfinityCategories.Kan.fiber_map_connecting p.right E.basepoint (r + 1) _
 
 /-- 概要：元の点つき射の誘導像は連結準同型で自明。
 方針：基点移送の計算で L9b の全空間からの像に対する零合成を使う。
@@ -89,16 +89,16 @@ theorem pointedConnectingHom_inclusion (r : ℕ)
 使われ方：Goerss–Jardine I §8、VIII §1。塔の微分の構造式。 -/
 @[simp]
 theorem pointedConnectingHom_projection (r : ℕ)
-    (a : KanHomotopyGroup E.right (r + 1) E.basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E.right (r + 1) E.basepoint) :
     pointedConnectingHom p r (pointedGroupMap (r + 1) p a) = 1 := by
   apply (pointedFiberGroupEquiv p r).injective
   rw [pointedConnectingHom_compute, map_one]
-  change connectingHom p.right E.basepoint r
-    ((KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
-      (OmegaSpectrum.pointedMap_basepoint p)).symm
-        (KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p) a)) = 1
+  change _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p.right E.basepoint r
+    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)).symm
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) a)) = 1
   rw [KanHomotopyGroup.map_basepoint_transport]
-  exact connecting_map p.right E.basepoint (r + 1) a
+  exact _root_.SerrePositivity.InfinityCategories.Kan.connecting_map p.right E.basepoint (r + 1) a
 
 end
 

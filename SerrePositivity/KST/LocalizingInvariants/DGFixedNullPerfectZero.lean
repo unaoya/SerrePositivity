@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R]
 
 lemma dgFixedNullInput_isZeroCategory (A : PerfDGInput.{u, v} R) :
-    IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A)) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgFixedNullInput R A)) :=
   dgTotalQuotientPerfect_isZero_of_equivalence R A
     (dgKInputStableValue R (dgFixedNullInput R A))
     (presentedPerfectDGQCatEvaluationEquivalence R (dgFixedNullInput R A))

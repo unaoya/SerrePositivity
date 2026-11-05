@@ -27,19 +27,19 @@ def dgKappaNativeBFFiniteArrow
     {C E : DGKappaNativeBFFiniteInput.{u, v} R D I} (f : C ⟶ E) :
     dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I C ⟶
       dgKappaNativeBFFiniteOmegaSpectrum.{u, v} R D I E :=
-  strictSimplicialOrdinaryMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I) f
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (dgKappaNativeBFEnrichedFunctor.{u, v} R D I) f
 
 /-- 概要：同じ実 BF 射の各段は元の全 Hom の段作用を回収する。
 方針：実スペクトル写像空間の評価式を単位パラメータで使う。
 規約：全段の等式。使われ方：正段比較の通常射自然性。 -/
 lemma dgKappaNativeBFFiniteArrow_app
     {C E : DGKappaNativeBFFiniteInput.{u, v} R D I} (f : C ⟶ E) (n : ℕ) :
-    strictSimplicialOrdinaryMap (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I n) f =
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I n) f =
       (dgKappaNativeBFFiniteArrow.{u, v} R D I f).app n := by
-  apply strictSimplicialOrdinaryMap_of_hom
+  apply _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom
   let g := dgKappaNativeBFFiniteArrow.{u, v} R D I f
   have h := congrArg (fun k => k ≫ OmegaSpectrum.evaluation _ _ n)
-    (strictSimplicialOrdinaryMap_hom (dgKappaNativeBFEnrichedFunctor.{u, v} R D I) f)
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom (dgKappaNativeBFEnrichedFunctor.{u, v} R D I) f)
   have hg : eHomEquiv SSet g = OmegaSpectrum.vertexOfHomMap g := by
     change (SSet.unitHomEquiv _).symm
       ((SSet.unitHomEquiv _) (OmegaSpectrum.vertexOfHomMap g)) = _
@@ -60,10 +60,10 @@ lemma dgKappaNativeBFFiniteArrow_app
 規約：同じ元完全射を保持。使われ方：旧 BF 射影比較との照合。 -/
 lemma dgKappaNativeBFFiniteBoundaryFunctor_hom
     {C E : DGKappaNativeBFFiniteInput.{u, v} R D I} (f : C ⟶ E) (r : ℕ) :
-    strictSimplicialOrdinaryMap (dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r) f =
+    _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r) f =
       (exInfinityPointedKanMap
         (boundaryReducedRealizationMap r (stableExactInputMap f.hom))).hom := by
-  apply strictSimplicialOrdinaryMap_of_hom
+  apply _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom
   change eHomEquiv SSet f.hom ≫ (𝟙 _ ≫
     ((stableBoundaryPointedEnrichedFunctor r).map C.obj E.obj ≫
       exInfinityPointedEnrichedFunctor.map _ _)) = _

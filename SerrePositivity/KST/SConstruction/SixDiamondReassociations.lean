@@ -25,29 +25,29 @@ variable {E : SSet.{u}} {v₀ v₁ v₂ v₃ v₄ v₅ v₆ v₇ : E _⦋0⦌}
 
 /-- 元の十二面と全共有面を保持する、連続した六つの実結合替え四面体。 -/
 structure SixDiamondReassociations
-    (DA : CompositionDiamond p₀ q k₁ k₂) (DB : CompositionDiamond a e k₂ k₃)
-    (DI : CompositionDiamond l r q k₃) (DL : CompositionDiamond s leftEdge p₀ l)
-    (DR : CompositionDiamond t b k₁ a) (DF : CompositionDiamond b e generatedEdge r)
+    (DA : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond p₀ q k₁ k₂) (DB : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a e k₂ k₃)
+    (DI : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond l r q k₃) (DL : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond s leftEdge p₀ l)
+    (DR : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond t b k₁ a) (DF : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond b e generatedEdge r)
     (top : SSet.Edge.CompStruct DL.diagonal r topEdge)
     (bottom : SSet.Edge.CompStruct t generatedEdge bottomEdge) where
   /-- 左外側面と交換第一面の結合替え。 -/
-  firstMove : CompositionTripleRightTetrahedron DL.second DI.first top
+  firstMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron DL.second DI.first top
   /-- 前二射段面と交換第二面の結合替え。 -/
-  secondMove : CompositionTripleTetrahedron DA.first DI.second firstMove.right
+  secondMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron DA.first DI.second firstMove.right
   /-- 前後二射二部分面の結合替え。 -/
-  thirdMove : CompositionTripleRightTetrahedron DA.second DB.second secondMove.left
+  thirdMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron DA.second DB.second secondMove.left
   /-- 右外側二部分面と後二射段面の結合替え。 -/
-  fourthMove : CompositionTripleTetrahedron DR.second DB.first thirdMove.right
+  fourthMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron DR.second DB.first thirdMove.right
   /-- 右外側段面と第一 BF 面の結合替え。 -/
-  fifthMove : CompositionTripleRightTetrahedron DR.first DF.first fourthMove.left
+  fifthMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron DR.first DF.first fourthMove.left
   /-- 第二 BF 面と同じ右直接辺・生成辺の合成面の結合替え。 -/
-  sixthMove : CompositionTripleTetrahedron bottom DF.second fifthMove.right
+  sixthMove : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron bottom DF.second fifthMove.right
 
 /-- 元の実消去から、元の全面・全共有面を持つ同じ六結合替えを取り出す。 -/
 def SixDiamondGeometricPasting.reassociations
-    {DA : CompositionDiamond p₀ q k₁ k₂} {DB : CompositionDiamond a e k₂ k₃}
-    {DI : CompositionDiamond l r q k₃} {DL : CompositionDiamond s leftEdge p₀ l}
-    {DR : CompositionDiamond t b k₁ a} {DF : CompositionDiamond b e generatedEdge r}
+    {DA : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond p₀ q k₁ k₂} {DB : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a e k₂ k₃}
+    {DI : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond l r q k₃} {DL : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond s leftEdge p₀ l}
+    {DR : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond t b k₁ a} {DF : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond b e generatedEdge r}
     {H : EndpointFixedEdgeCylinder s t} (D : SixDiamondGeometricPasting DA DB DI DL DR DF H) :
     SixDiamondReassociations DA DB DI DL DR DF D.top.triangle D.bottom.triangle :=
   ⟨D.firstMove, D.secondMove, D.thirdMove, D.fourthMove, D.fifthMove, D.sixthMove⟩

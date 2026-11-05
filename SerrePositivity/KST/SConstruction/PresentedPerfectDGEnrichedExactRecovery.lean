@@ -16,35 +16,35 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 private lemma stableQCat_homEquiv_inclusion
-    {X Y : LocalizingInvariants.StableQCat.{w}} (f : X ⟶ Y) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{w}} (f : X ⟶ Y) :
     eHomEquiv SSet.{w} f ≫ ((quasicategoryCore
-      (LocalizingInvariants.exactFunctors X Y : SSet.{w})).ι ≫
-        (LocalizingInvariants.exactFunctors X Y).ι) = curry' (C := SSet.{w}) f.hom := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w})).ι ≫
+        (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y).ι) = curry' (C := SSet.{w}) f.hom := by
   have h : eHomEquiv SSet.{w} f ≫ (quasicategoryCore
-      (LocalizingInvariants.exactFunctors X Y : SSet.{w})).ι =
-        LocalizingInvariants.exactHomEquiv f := by
-    change quasicategoryCoreUnitHomEquiv _ (LocalizingInvariants.exactHomEquiv f) ≫ _ = _
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w})).ι =
+        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv f := by
+    change quasicategoryCoreUnitHomEquiv _ (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv f) ≫ _ = _
     rw [quasicategoryCoreUnitHomEquiv_eq, Category.assoc, quasicategoryCoreMap_ι]
     have hu : quasicategoryCoreUnit ≫ (quasicategoryCore (𝟙_ SSet.{w})).ι = 𝟙 _ := rfl
     rw [← Category.assoc, hu, Category.id_comp]
   exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun g : 𝟙_ SSet.{w} ⟶ (LocalizingInvariants.exactFunctors X Y : SSet.{w}) =>
-      g ≫ (LocalizingInvariants.exactFunctors X Y).ι) h).trans
-        (LocalizingInvariants.exactHomEquiv_ι f))
+    ((congrArg (fun g : 𝟙_ SSet.{w} ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w}) =>
+      g ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y).ι) h).trans
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι f))
 
 /-- 包含後の豊穣単位射の作用は、同じ元の完全な Perf 射の curry を回収する。 -/
 lemma presentedPerfectDGEnrichedExactFunctor_hom_recovery
     {C D : PerfDGInput.{u, v} A} (F : C ⟶ D) :
     (eHomEquiv SSet.{max (u + 1) v} F ≫ (presentedPerfectDGEnrichedExactFunctor A).map C D) ≫
-      ((quasicategoryCore (LocalizingInvariants.exactFunctors
+      ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-          SSet.{max (u + 1) v})).ι ≫ (LocalizingInvariants.exactFunctors
+          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
             (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι) =
       curry' (C := SSet.{max (u + 1) v}) (presentedPerfectDGExactMap A F).hom := by
   change (perfDGInputUnitHomEquiv A C D F ≫ presentedPerfectDGExactCoreFamilyMap A C D) ≫
-    ((quasicategoryCore (LocalizingInvariants.exactFunctors
+    ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-        SSet.{max (u + 1) v})).ι ≫ (LocalizingInvariants.exactFunctors
+        SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
           (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι) = _
   rw [Category.assoc, ← Category.assoc (presentedPerfectDGExactCoreFamilyMap A C D),
     presentedPerfectDGExactCoreFamilyMap_inclusion]
@@ -59,9 +59,9 @@ lemma presentedPerfectDGEnrichedExactFunctor_hom
       eHomEquiv SSet.{max (u + 1) v}
         (show presentedPerfectDGStableQCat A C ⟶ presentedPerfectDGStableQCat A D from
           presentedPerfectDGExactMap A F) := by
-  apply (cancel_mono ((quasicategoryCore (LocalizingInvariants.exactFunctors
+  apply (cancel_mono ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
     (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-      SSet.{max (u + 1) v})).ι ≫ (LocalizingInvariants.exactFunctors
+      SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι)).mp
   exact (presentedPerfectDGEnrichedExactFunctor_hom_recovery A F).trans
     (stableQCat_homEquiv_inclusion (show presentedPerfectDGStableQCat A C ⟶

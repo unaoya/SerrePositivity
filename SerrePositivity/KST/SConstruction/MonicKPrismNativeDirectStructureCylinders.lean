@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 lemma monicKPrismNativeDirectRaw_condition (n : ℕ) :
     (nerveMap (compositionStringComposite f g) ≫ monicKPrismTracedRawFamily F (f ≫ g) ≫
       RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z))
-        (n + 1)) ≫ PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space =
     (nerveMap (compositionStringComposite f g) ≫ monicKPrismTracedRawFamily F (f ≫ g) ≫
       RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) ≫
@@ -52,13 +52,13 @@ def monicKPrismNativeDirectPreviousStructureCylinder (n : ℕ) :=
 /-- 保存済みの直接厳密化の次段円柱を、同じ源構造射へ制限する。 -/
 def monicKPrismNativeDirectProjectedStructureCylinder (n : ℕ) :=
   functorHomotopyPostcomp (monicKPrismNativeDirectCorrectionData F f g (n + 1)).homotopy
-    (PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
 
 /-- 元の次段全補正の同じ源構造射への制限。 -/
 def monicKPrismNativeDirectProjectedStructureChain (n : ℕ) :=
   familyHomotopyChainMap (monicKPrismNativeDirectCorrectionChain F f g (n + 1))
-    (PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
 
 /-- 元の適合円柱と前段の全構造射像を順に通る実全列。 -/

@@ -68,7 +68,7 @@ theorem verdierNormalizedSquareFamily_vertex_lower (k : (Δ[1] : SSet.{u + 1}) _
 方針：同じ実供給の上下族と厳密共有対角を押し出しで貼る。
 規約：供給命題の追加仮定なし。元の下側との全関手同型も保持する。
 使われ方：K-6 c4 の残る指定有限端点・可逆縦辺の照合の実入力。 -/
-theorem verdierNormalizedSquareFamily_exists (d : VerdierDiagram.{u}) :
+theorem verdierNormalizedSquareFamily_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
       (Q : ((Δ[1] ⊗ Δ[1]) ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧

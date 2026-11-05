@@ -26,12 +26,12 @@ theorem firstVertexComparisonObject_projection_vertex :
 
 /-- 共通解像での制限の始域値は、元の共同分類値。 -/
 theorem firstVertexEdgewiseRestriction_source_vertex (c : TransportSimplexCategory B) :
-    (kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c).app (Opposite.op ⦋0⦌)
         (functorVertex (edgewiseEnrichedInfinityMap (LeftFibrationObject B) ≫
           (leftStraighteningInfinityMap B ≫
             (pre ((SSet.uliftFunctor.{u + 1, u}).map
               (transportSimplexFirstVertexMap B))).app SpaceInfinity.{u}))) =
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (leftFibrationInfinityVertex p)).app (Opposite.op ⦋0⦌)
           (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
             (transportSimplexFirstVertexMap B) ≫ leftStraighteningSectionJointDiagram B)) := by
@@ -46,7 +46,7 @@ theorem firstVertexEdgewiseRestriction_source_vertex (c : TransportSimplexCatego
 
 /-- 共通解像での制限の終域値は、元の pullback strict 切断空間。 -/
 theorem firstVertexEdgewiseRestriction_target_vertex (c : TransportSimplexCategory B) :
-    (kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c).app (Opposite.op ⦋0⦌)
         (functorVertex (edgewiseEnrichedInfinityMap (LeftFibrationObject B) ≫
           (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
             leftStraighteningCoherentMap (TransportSimplexCategory B)))) =
@@ -67,7 +67,7 @@ def firstVertexEdgewiseRestrictionChart (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map ((leftStraighteningInfinityMap_firstVertexRestrictionIso B).precomp
       (edgewiseEnrichedInfinityMap (LeftFibrationObject B)))
-      (kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_source_vertex p c))
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_target_vertex p c))
 

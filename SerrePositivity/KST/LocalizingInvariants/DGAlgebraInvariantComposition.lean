@@ -37,7 +37,7 @@ def perfectMapCompositionIso (f : B ⟶ C) (g : C ⟶ D) :
   rw [dgAlgebraMap_comp] at e
   exact e
 
-variable (Φ : StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma invariantMap_comp_hom (f : B ⟶ C) (g : C ⟶ D) :
     SpectrumHo.hom (invariantMap R Φ (f ≫ g)) =

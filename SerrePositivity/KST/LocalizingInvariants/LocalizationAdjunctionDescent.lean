@@ -56,7 +56,7 @@ lemma localizationAdjunction_rightTriangle (ε : FunctorHom (H ≫ (F ≫ L)) (�
   exact SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a
 
 def localizationAdjunctionDescent : QCatAdjunction (F ≫ L) H :=
-  adjunctionOfFunctorHomTriangles (F := F ≫ L) (G := H) a.unitHom
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (F := F ≫ L) (G := H) a.unitHom
     (localizationAdjunctionCounit F L H W hL a)
     (localizationAdjunction_leftTriangle F L H a _
       (localizationAdjunctionCounit_pre F L H W hL a))

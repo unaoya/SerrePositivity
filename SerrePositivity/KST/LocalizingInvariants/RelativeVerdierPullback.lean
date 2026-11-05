@@ -20,8 +20,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}}
-  (d : RelativeVerdierRectangle ν)
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+  (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν)
 
 /-- fiber 列二つから得る d8 の比較 pullback。E の絶対版への延長は不要。 -/
 lemma comparisonSquare_isPullback {E : S ⟶ Spectra.Sp.{u}}
@@ -44,8 +44,8 @@ lemma comparisonSquare_isPullback {E : S ⟶ Spectra.Sp.{u}}
 def comparisonCone (E : S ⟶ Spectra.Sp.{u}) := pullbackCone (d.comparisonSquare ≫ E)
 
 lemma comparisonCone_isLimit {E : S ⟶ Spectra.Sp.{u}}
-    (hE : IsRelativeLocalizingInvariant ν E) : IsLimitCone (d.comparisonCone E) :=
-  d.comparisonSquare_isPullback hE
+    (hE : IsRelativeLocalizingInvariant ν E) : IsLimitCone ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone d) E) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE
 
 end RelativeVerdierRectangle
 end SerrePositivity.KST.LocalizingInvariants

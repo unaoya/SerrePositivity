@@ -58,7 +58,7 @@ lemma exists_intervalPostcompositionFamily {X : SSet.{u}} [Quasicategory X]
     { edge := SSet.yonedaEquiv b
       src_eq := hb
       tgt_eq := rfl }
-  obtain ⟨H, hH₀, hHs, hHt⟩ := exists_arrowPostcompositionSquare e g
+  obtain ⟨H, hH₀, hHs, hHt⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.exists_arrowPostcompositionSquare e g
   have hH₀' : SSet.ι₀ ≫ H = f := by
     exact hH₀.trans (SSet.yonedaEquiv.symm_apply_apply f)
   have hHt' : prismEndpoint 1 Δ[1] ≫ H = b := by

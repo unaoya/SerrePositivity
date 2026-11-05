@@ -19,7 +19,7 @@ variable {B D : SSet.{u}} (k : D ⟶ B)
 /-- 全単体の元の逆切断比較の標的は、元の底への相対切断空間。 -/
 theorem transportSectionBaseChange_target_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (nerveMap (transportSimplexFunctor k)) ≫ transportSimplexSectionInfinity B)) =
@@ -31,7 +31,7 @@ theorem transportSectionBaseChange_target_vertex
     (transportSimplexSectionInfinity_reindex (transportSimplexFunctor k)).trans
       (congrArg relativeSectionDiagramInfinity (transportSimplexDomainFunctor_baseChange k))
   have hv := congrArg functorVertex ht
-  have he := congrArg ((doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+  have he := congrArg ((_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
     (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)) hv
   exact he.trans (relativeSectionDiagramInfinity_double_vertex _ X c)
 
@@ -39,8 +39,8 @@ theorem transportSectionBaseChange_target_vertex
 def straighteningBaseChangeLeftChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory D) :=
   F2.isoNormalizeEndpoints
-    (VertexIso.map (straighteningJointBaseChangeLeftIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X))) rfl
     (congrArg HomotopyCategory.mk (transportSectionBaseChange_target_vertex k X c))
 
@@ -48,8 +48,8 @@ def straighteningBaseChangeLeftChart (X : LeftFibrationObject B)
 def straighteningBaseChangeRightChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory D) :=
   F2.isoNormalizeEndpoints
-    (VertexIso.map (straighteningJointBaseChangeRightIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso k)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X))) rfl
     (congrArg HomotopyCategory.mk (relativeSectionDiagramInfinity_double_precomp_vertex k
       (transportSimplexDomainFunctor D) X c))
@@ -59,7 +59,7 @@ def transportSectionBaseChangeValueIso (X : LeftFibrationObject B)
     (c : TransportSimplexCategory D) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (transportSimplexSectionInfinity_baseChangeIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X)))
     (congrArg HomotopyCategory.mk (relativeSectionDiagramInfinity_double_precomp_vertex k
       (transportSimplexDomainFunctor D) X c))
@@ -76,22 +76,22 @@ theorem transportSectionBaseChangeValueIso_eq (X : LeftFibrationObject B)
 /-- 同じ元の大域制限成分は、左右の切断比較の間の同じ逆切断比較である。 -/
 theorem straighteningBaseChangeSectionCharts_factor (X : LeftFibrationObject B)
     (c : TransportSimplexCategory D) :
-    VertexIso.map (straighteningJointBaseChangeRestrictionIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X)) =
       straighteningBaseChangeLeftChart k X c ≪≫
         (transportSectionBaseChangeValueIso k X c).symm ≪≫
           (straighteningBaseChangeRightChart k X c).symm := by
-  let T := doubleFunctorEvaluation
+  let T := _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation
     (K := (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory D)))
     (A := LeftFibrationInfinity B) (Y := SpaceInfinity.{u})
     (ULift.up (nerveVertex c)) (coherentNerveVertex X)
-  exact mapNormalizeTriangle (hoFunctor.map T).toFunctor
-    (straighteningJointBaseChangeLeftIso k)
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Straightening.mapNormalizeTriangle (hoFunctor.map T).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k)
     (transportSimplexSectionInfinity_baseChangeIso k)
-    (straighteningJointBaseChangeRightIso k)
-    (straighteningJointBaseChangeRestrictionIso k)
-    (straighteningJointBaseChangeRestrictionIso_factor k)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso k)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso_factor k)
     (congrArg HomotopyCategory.mk (relativeSectionDiagramInfinity_double_precomp_vertex k
       (transportSimplexDomainFunctor D) X c))
     (congrArg HomotopyCategory.mk (transportSectionBaseChange_target_vertex k X c))
@@ -101,30 +101,30 @@ theorem straighteningBaseChangeSectionCharts_pointHom
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D)
     (v : ((((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).precompose
       (leftFibrationBaseChangeEnriched k)).obj c).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram
         (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj X)).symm
           ((relativeFunctorBaseChangeForward X.val.hom k
             ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
               (Opposite.op ⦋0⦌) v)) ≫
       (straighteningBaseChangeLeftChart k X c).inv ≫
-        (VertexIso.map (straighteningJointBaseChangeRestrictionIso k)
-          (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
+          (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
             (ULift.up (nerveVertex c)) (coherentNerveVertex X))).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).precompose
         (leftFibrationBaseChangeEnriched k)).obj c).obj X)).symm v) ≫
       (straighteningBaseChangeRightChart k X c).inv := by
   have hp := relativeSectionJointBaseChangeValueIso_inv_pointHom k
     (transportSimplexDomainFunctor D) X c v
   rw [relativeSectionJointBaseChangeValueIso_eq] at hp
-  have hp' : cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+  have hp' : _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram
         (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj X)).symm
           ((relativeFunctorBaseChangeForward X.val.hom k
             ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
               (Opposite.op ⦋0⦌) v)) ≫ (transportSectionBaseChangeValueIso k X c).inv =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).precompose
         (leftFibrationBaseChangeEnriched k)).obj c).obj X)).symm v) := by
     rw [transportSectionBaseChangeValueIso_eq]

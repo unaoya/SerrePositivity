@@ -46,16 +46,16 @@ lemma terminal_rlp (X : CosimplicialObject SSet.{u}) :
 使われ方：Goerss–Jardine VII §4、VIII §1。置換した Tot の係数のホモトピー不変性。 -/
 lemma map_piIsomorphism {X Y : CosimplicialObject SSet.{u}}
     [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex (Y.obj j)]
-    (f : X ⟶ Y) (hf : ∀ j, KanPiIsomorphism (f.app j))
+    (f : X ⟶ Y) (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j))
     (e₀ : ∀ j, X.obj j _⦋0⦌) (j : SimplexCategory) :
-    KanPiIsomorphism (X := (functor.obj X).obj j) (Y := (functor.obj Y).obj j)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (functor.obj X).obj j) (Y := (functor.obj Y).obj j)
       ((functor.map f).app j) := by
   have hn := congr_app (unit.naturality f) j
   change f.app j ≫ (unit.app Y).app j =
     (unit.app X).app j ≫ (functor.map f).app j at hn
   have hc := (hf j).comp (unit_piIsomorphism Y j)
   rw [hn] at hc
-  exact (unit_piIsomorphism X j).cancel_left_atVertex hc (e₀ j)
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (unit_piIsomorphism X j)) hc (e₀ j)
 
 end
 

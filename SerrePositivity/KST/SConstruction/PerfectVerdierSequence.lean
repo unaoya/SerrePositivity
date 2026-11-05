@@ -19,11 +19,11 @@ open scoped Simplicial
 
 /-- Cat^perf の列を、実商とその元の冪等完備化で提示するデータ。 -/
 structure PerfectVerdierSequence where
-  verdier : VerdierSequence.{u}
+  verdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}
   left_complete : IsIdempotentComplete verdier.left.obj
   middle_complete : IsIdempotentComplete verdier.middle.obj
-  right : StableCategory.{u}
-  completion : ExactMap verdier.right right
+  right : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
+  completion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap verdier.right right
   isCompletion : IsIdempotentCompletion completion.hom
 
 namespace PerfectVerdierSequence
@@ -45,7 +45,7 @@ def rightVertex : perfectStableInfinity.{u} _⦋0⦌ :=
   perfectStableVertex d.right d.right_complete
 
 /-- 同じ実商射と冪等完備化の合成による、列の元の右射。 -/
-def projection : ExactMap d.verdier.middle d.right :=
+def projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap d.verdier.middle d.right :=
   ⟨d.verdier.projection.hom ≫ d.completion.hom, isExactFunctor_comp _ _⟩
 
 /-- 元の包含は全写像空間について充満忠実。 -/

@@ -50,8 +50,8 @@ lemma exists_dgOdotFixedNullSquare :
 
 /-- D の Verdier 証拠と零角の Perf 値の零性を、元の対角商の相対提示へ接続する。 -/
 lemma exists_dgOdotRelativeNullDiagram (h : DGOdotVerdierInput R d)
-    (hz : IsZeroCategory (dgKInputStableValue R (dgOdotNullInput R d))) :
-    ∃ t : RelativeVerdierDiagram (dgKInputNu.{u, u + 1} R),
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgOdotNullInput R d))) :
+    ∃ t : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, u + 1} R),
       squareVertex t.square 0 0 = coherentNerveVertex (dgOdotDiagonalSourceInput R d) ∧
       squareVertex t.square 1 0 = coherentNerveVertex (dgOdotGluingInput R d) ∧
       squareVertex t.square 1 1 = coherentNerveVertex (dgOdotQuotientInputVertex R d) ∧

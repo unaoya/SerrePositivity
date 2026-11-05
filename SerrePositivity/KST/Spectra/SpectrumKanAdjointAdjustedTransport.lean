@@ -22,7 +22,7 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 
 /-- 元の同じ輸送正方形を、段調整の区間の間の実ホモトピーとして読む。 -/
 def kanAdjointCanonicalTransportHomotopy (n : ℕ) :=
-  (kanAdjointCanonicalStageTransport X Y φ j n).homotopy
+  (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.homotopy (kanAdjointCanonicalStageTransport X Y φ j n))
 
 /-- 正規化した右辺への制限も、元の同じ輸送構造区間そのもの。 -/
 lemma kanAdjointCanonicalTransportHomotopy_right (n : ℕ) :
@@ -32,7 +32,7 @@ lemma kanAdjointCanonicalTransportHomotopy_right (n : ℕ) :
       CartesianMonoidalCategory.lift (stdSimplex.isTerminalObj₀.from (Δ[1] : SSet.{u})) (𝟙 _) ≫
         stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u}) := by
     apply CartesianMonoidalCategory.hom_ext <;> rfl
-  change _ ≫ (kanAdjointCanonicalStageTransport X Y φ j n).square = _
+  change _ ≫ (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalStageTransport X Y φ j n)) = _
   rw [hr, Category.assoc, ThreeEdgeTransport.square_finish, ← Category.assoc,
     lift_snd, Category.id_comp]
   rfl

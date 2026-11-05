@@ -32,7 +32,7 @@ lemma rawSequenceStep_familyVertex (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
 /-- 元の単射源の各段の写像を、全精密化の共通パラメータ上の族として表示する。 -/
 def monicKPrismRawLevelFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
       (PointedObject.basedHom ((kOmegaSpectrum (F.obj x)).level r).space
         ((kKanSequence (F.obj y)).level r).space).right :=
   SSet.const (familyVertex (monicKToRawLevelMap (F.map f) r))
@@ -42,18 +42,18 @@ def monicKPrismRawSequenceCompatibility {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     SSet.Homotopy
       (monicKPrismRawLevelFamily (r + 1) F f ≫
-        PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
           ((kKanSequence (F.obj y)).level (r + 1)).space)
       (monicKPrismRawLevelFamily r F f ≫
         RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y)) r) := by
   let H := monicKPrismSpecifiedCompatibilityFamily r F f
   have hs : monicKPrismRawLevelFamily (r + 1) F f ≫
-        PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
           ((kKanSequence (F.obj y)).level (r + 1)).space =
       SSet.const (familyVertex ((monicKKanSequence (F.obj x)).sigma r ≫
         monicKToRawLevelMap (F.map f) (r + 1))) := by
     rw [monicKPrismRawLevelFamily, SSet.const_comp]
-    exact congrArg (SSet.const (X := nerve (CoherentArrowString f)))
+    exact congrArg (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)))
       (familyVertex_pre ((monicKKanSequence (F.obj x)).sigma r)
         (monicKToRawLevelMap (F.map f) (r + 1)))
   have ht : monicKPrismRawLevelFamily r F f ≫

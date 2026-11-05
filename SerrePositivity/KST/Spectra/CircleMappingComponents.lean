@@ -28,12 +28,12 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：標的は点つき Kan 複体。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。円の自己射の作用を基本群で検査する。 -/
 def componentEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    π₀ (PointedObject.basedHom space.{u} Y).right ≃ KanHomotopyGroup Y.right 0 Y.basepoint := by
-  have hpre : KanPiIsomorphism (PointedMapping.prePointed unit.{u} Y).right :=
-    kanPiIsomorphism_of_monoRight _
-      (PointedMapping.anodyne_prePointed_rlp unit
+    π₀ (PointedObject.basedHom space.{u} Y).right ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right 0 Y.basepoint := by
+  have hpre : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit.{u} Y).right :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp unit
         (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Y)
-  exact (Equiv.ofBijective (mapπ₀ (PointedMapping.prePointed unit Y).right)
+  exact (Equiv.ofBijective (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y).right)
     (hpre.piZero_bijective_at
       (PointedSimplicialSet.basepoint (PointedObject.basedHom space Y)))).trans
       (SphereSimplex.componentEquiv Y 0)
@@ -47,7 +47,7 @@ theorem componentEquiv_familyVertex (Y : PointedSimplicialSet.{u}) [KanComplex Y
     (f : space.{u} ⟶ Y) :
     componentEquiv Y (π₀.mk (PointedMapping.familyVertex f)) = evaluateGenerator f := by
   change SphereSimplex.componentClass Y 0
-    (mapπ₀ (PointedMapping.prePointed unit Y).right (π₀.mk (PointedMapping.familyVertex f))) = _
+    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y).right (π₀.mk (PointedMapping.familyVertex f))) = _
   rw [mapπ₀_mk, PointedMapping.familyVertex_pre, SphereSimplex.componentClass_familyVertex,
     SphereSimplex.equiv_comp]
   rfl
@@ -58,11 +58,11 @@ theorem componentEquiv_familyVertex (Y : PointedSimplicialSet.{u}) [KanComplex Y
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2。有理 telescope の冪作用の零次数。 -/
 theorem componentEquiv_pre_power (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (m : ℕ) (a : π₀ (PointedObject.basedHom space.{u} Y).right) :
-    componentEquiv Y (mapπ₀ (PointedMapping.prePointed (powerMap m) Y).right a) =
+    componentEquiv Y (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (powerMap m) Y).right a) =
       componentEquiv Y a ^ m := by
   obtain ⟨v, rfl⟩ := π₀.mk_surjective a
   obtain ⟨f, rfl⟩ := (PointedMapping.familyVertexEquiv space Y).surjective v
-  change componentEquiv Y (mapπ₀ (PointedMapping.prePointed (powerMap m) Y).right
+  change componentEquiv Y (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (powerMap m) Y).right
     (π₀.mk (PointedMapping.familyVertex f))) =
       componentEquiv Y (π₀.mk (PointedMapping.familyVertex f)) ^ m
   rw [mapπ₀_mk, PointedMapping.familyVertex_pre, componentEquiv_familyVertex,
@@ -77,18 +77,18 @@ theorem componentEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z)
     (a : π₀ (PointedObject.basedHom space.{u} Y).right) :
     componentEquiv Z (mapπ₀ (PointedObject.basedHomMap space p).right a) =
-      KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p) (componentEquiv Y a) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (componentEquiv Y a) := by
   obtain ⟨v, rfl⟩ := π₀.mk_surjective a
   obtain ⟨f, rfl⟩ := (PointedMapping.familyVertexEquiv space Y).surjective v
   change componentEquiv Z (mapπ₀ (PointedObject.basedHomMap space p).right
     (π₀.mk (PointedMapping.familyVertex f))) =
-      KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
         (componentEquiv Y (π₀.mk (PointedMapping.familyVertex f)))
   rw [mapπ₀_mk, PointedMapping.familyVertex_post, componentEquiv_familyVertex,
     componentEquiv_familyVertex]
-  exact DFunLike.congr_fun (KanHomotopyGroup.map_comp (n := 0) f.right
-    (OmegaSpectrum.pointedMap_basepoint f) p.right (OmegaSpectrum.pointedMap_basepoint p)
-      (OmegaSpectrum.pointedMap_basepoint (f ≫ p))) generator
+  exact DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := 0) f.right
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (f ≫ p))) generator
 
 end
 

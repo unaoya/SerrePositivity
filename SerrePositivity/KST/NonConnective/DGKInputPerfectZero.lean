@@ -22,7 +22,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hA : IsZeroCategory (dgKInputStableValue R A))
+  (hA : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A))
 include hA
 
 /-- 同じ固定 ν が零なら、元の実 Perf の全頂点も零。 -/

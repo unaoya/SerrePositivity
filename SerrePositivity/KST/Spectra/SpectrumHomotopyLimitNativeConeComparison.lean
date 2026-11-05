@@ -36,7 +36,7 @@ def homotopyLimitReflectedPointParameter (D : I ⥤ OmegaSpectrum.{u}) (X : Omeg
     (mappingSpace X (homotopyLimit D)).op ⟶
       bousfieldKanHolim (simplicialHomDiagram D (homotopyLimit D) ⋙ SSet.opFunctor) ⊗
         (mappingSpace X (homotopyLimit D)).op :=
-  ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (homotopyLimitReflectedEndPointMap D)
     (mappingSpace X (homotopyLimit D)).op
 
 /-- 元の BF Hom の反転から、元の図式上の coherent な錐の切断空間への実際の比較族。 -/

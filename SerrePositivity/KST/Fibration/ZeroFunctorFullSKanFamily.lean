@@ -24,31 +24,31 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の全 S• の対角を、そのまま Ex∞ Kan 値として保持する。 -/
-def fullSRealizationKanObject (A : StableCategory.{u}) : KanObject.{u} :=
+def fullSRealizationKanObject (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : KanObject.{u} :=
   exInfinityClosedKanEnrichedFunctor.obj
     (simplicialSSetDiagramDiagonalEnrichedFunctor.obj ⟨simplicialSConstruction A.obj⟩)
 
 /-- 元の零値関手の全高次族による、同じ全 S• から core S• への Ex∞ Hom 作用。 -/
-def zeroFunctorFullSKanFamily (A C : StableCategory.{u}) :
+def zeroFunctorFullSKanFamily (A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     zeroFunctorLocus A C ⟶
-      (fullSRealizationKanObject A ⟶[SSet.{u}] stableCoreSingleKanObject (show StableQCat from C)) :=
+      (fullSRealizationKanObject A ⟶[SSet.{u}] stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) :=
   zeroFunctorFullSDiagramFamily A C ≫
     simplicialSSetDiagramDiagonalEnrichedFunctor.map _ _ ≫
       exInfinityClosedKanEnrichedFunctor.map _ _
 
 /-- 同じ指定点では、元の全 S• 零値作用の同じ実現射の Ex∞ 表示を回収する。 -/
-theorem zeroFunctorFullSKanFamily_fixed {A C : StableCategory.{u}} (F : ExactMap A C)
+theorem zeroFunctorFullSKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSKanFamily A C =
       eHomEquiv SSet (show fullSRealizationKanObject A ⟶
-        stableCoreSingleKanObject (show StableQCat from C) from
+        stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C) from
           exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
   rw [zeroFunctorFullSKanFamily, ← Category.assoc, ← Category.assoc,
     zeroFunctorFullSDiagramFamily_fixed, simplicialSSetDiagramDiagonalEnrichedFunctor_hom]
   exact exInfinityClosedKanEnrichedFunctor_hom _
 
 /-- 同じ全円柱の Ex∞ 評価は、元の実現円柱の strength による像と厳密一致。 -/
-theorem zeroFunctorFullSKanFamily_action (A C : StableCategory.{u}) :
+theorem zeroFunctorFullSKanFamily_action (A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     uncurry (zeroFunctorFullSKanFamily A C) =
       coaugmentedTensorRightStrength exInfinity exInfinityUnit
           (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)) (zeroFunctorLocus A C) ≫

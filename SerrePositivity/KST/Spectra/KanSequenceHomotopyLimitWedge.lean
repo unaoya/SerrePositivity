@@ -27,9 +27,9 @@ def homotopyLimitWedge {I : Type u} [SmallCategory I] (D : I ⥤ KanSequence.{u}
     change end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (levelDiagram D n)) _ ≫
         (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj _))).map ((D.map f).app n) =
       end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (levelDiagram D n)) _ ≫
-        PointedMapping.prePointed
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
           (PointedObject.adjoinFunctor.map ((bousfieldKanWeight I).map f)) _
-    rw [PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact PointedWeightedEnd.π_condition (bousfieldKanWeight I) (levelDiagram D n) f)
 
 end SerrePositivity.KST.Spectra.KanSequence

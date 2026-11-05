@@ -32,7 +32,7 @@ lemma pointwisePushoutApex_isGapped {n : ℕ} {D : SSet.{u}} [Quasicategory D] [
     inferInstanceAs (Quasicategory ((ihom (arNerve n)).obj D))
   let p := internalHomFlipHomEquiv (arNerve n) (horn 2 0) D (curry F)
   let q : (horn 2 0 : SSet.{u}) ⟶ sConstruction n D := fullSubcomplexLift _ p hg
-  obtain ⟨R, hR, hRp⟩ := exists_stable_pushoutSquare_of_span q
+  obtain ⟨R, hR, hRp⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span q
   let Q := chosenDiagramPushout (curry F)
   have hs : pushoutSpan (R ≫ (gappedSubcomplex n D).ι) = pushoutSpan Q := by
     change (pushoutSpan R) ≫ (gappedSubcomplex n D).ι = _

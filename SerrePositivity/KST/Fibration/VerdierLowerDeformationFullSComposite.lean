@@ -34,7 +34,7 @@ theorem verdierLowerDeformation_compositePath
   change (z ∈ (OrderHom.id : ULift.{u} (Fin 3) →o ULift.{u} (Fin 3)) '' Set.univ ∨ _) ↔ z ∈ Set.univ
   simp
 
-variable (d : VerdierDiagram.{u}) (t : ULift.{u} (Fin 3) →o Fin 2)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (t : ULift.{u} (Fin 3) →o Fin 2)
 
 /-- 概要：元の下側変形の零値持ち上げは、指定合成 path で元の同じ実点へ戻る。
 方針：全体 path の厳密な固定を、元の enriched Hom の評価へ代入する。

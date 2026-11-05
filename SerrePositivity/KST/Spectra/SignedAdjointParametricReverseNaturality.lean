@@ -18,9 +18,9 @@ namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {P A A' Y Y' Z Z' W W' B : PointedSimplicialSet.{u}}
   [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
   (w : P ⟶ PointedObject.basedHom W W')
   (hc : a ≫ PointedMapping.parametricPost PointedSimplicialSet.circle.{u} w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')
@@ -36,15 +36,15 @@ variable {P A A' Y Y' Z Z' W W' B : PointedSimplicialSet.{u}}
 
 local instance reverseParametricNaturalityInnerKan :
     KanComplex (PointedObject.basedHom CirclePower.space.{u} Z').right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 local instance reverseParametricNaturalityTargetKan : KanComplex (target Z').right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 local instance reverseParametricNaturalityParameterKan :
     KanComplex (PointedObject.basedHom P (target Z')).right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 local instance reverseParametricNaturalityHomKan : KanComplex (PointedObject.basedHom A
   (PointedObject.basedHom P (target Z'))).right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の三自然性正方形と保存済み四つの実三角形を保持する、二段の相対ホーン比較。 -/
 def reverseParametricNaturalityComparison :=

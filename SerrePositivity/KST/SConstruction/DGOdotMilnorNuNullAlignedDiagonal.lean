@@ -40,23 +40,23 @@ def dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy : SSet.Homotopy
 lemma dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy_class :
     SSet.Truncated.HomotopyCategory.homMk
         ((functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map
-          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u + 1}))) =
+          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))) =
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy R d h)) := by
   let e := (functorEdgeOfSimplicialHomotopy
     (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map
-      ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u + 1}))
+      ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))
   have hx := congrArg functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_actual R d 1)
   have hy := congrArg functorVertex (dgOdotMilnorNuNullPrismTriangle_diagonal_absolute R d h 1)
   have he : e.edge = (functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h)).edge := by
-    change ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u + 1}).app
+    change ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}).app
       (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h)) = _
     rw [← SSet.yonedaEquiv_comp]
     change SSet.yonedaEquiv (curry
       (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h ≫
-        (pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u + 1}) = _
+        (pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) = _
     rw [curry_pre_app]
     rfl
   have hl := homMk_transport hx hy e

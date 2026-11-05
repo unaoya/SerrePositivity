@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 lemma inclusion_mono {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
     Mono (pointedFiberι p).right := ⟨by
   intro Z a b h
-  exact fiber_hom_ext p.right _ h⟩
+  exact _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p.right _ h⟩
 
 /-- 元の単射な構造射から実 fiber の構造射の単射性を得る。 -/
 lemma sigma_mono {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
@@ -64,7 +64,7 @@ def comparison {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
 
 lemma comparison_levelwise {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
     (hp : ∀ n, Fibration (p.app n).right) (n : ℕ) :
-    KanPiIsomorphism ((comparison p hp).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((comparison p hp).app n).right :=
   fiberLevelProjection_piIsomorphism p hp n
 
 /-- 比較射の後の包含は、長完全列で使う元の包含そのもの。 -/

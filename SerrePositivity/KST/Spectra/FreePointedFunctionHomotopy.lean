@@ -30,29 +30,29 @@ lemma pointedFunctionPre_homotopy_coordinate {G S T : Type u} [Group G]
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S))
     (B : Action PointedSimplicialSet.{u} G) [KanComplex B.V.right] (k : ℕ)
-    (a : KanHomotopyGroup (SimplicialFunctionComplex.pointedObj S B.V).right k
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (SimplicialFunctionComplex.pointedObj S B.V).right k
       (SimplicialFunctionComplex.pointedObj S B.V).basepoint) (t : T) :
     SimplicialFunctionComplex.pointedHomotopyEquiv T B.V k
-        (KanHomotopyGroup.map (pointedFunctionPre θ B).right
-          (OmegaSpectrum.pointedMap_basepoint _) a) t =
-      KanHomotopyGroup.map (B.ρ (θ.hom ((1 : G), t)).1).asHom.right
-        (OmegaSpectrum.pointedMap_basepoint _)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (pointedFunctionPre θ B).right
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a) t =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (B.ρ (θ.hom ((1 : G), t)).1).asHom.right
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
         (SimplicialFunctionComplex.pointedHomotopyEquiv S B.V k a (θ.hom ((1 : G), t)).2) := by
   induction a using Quotient.inductionOn with | h r => ?_
-  change KanHomotopyGroup.mk
-      (mapSimplex (SimplicialFunctionComplex.eval T B.V.right t) rfl
-        (mapSimplex (pointedFunctionPre θ B).right (OmegaSpectrum.pointedMap_basepoint _) r)) =
-    KanHomotopyGroup.mk
-      (mapSimplex (B.ρ (θ.hom ((1 : G), t)).1).asHom.right (OmegaSpectrum.pointedMap_basepoint _)
-        (mapSimplex (SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2) rfl r))
-  apply congrArg KanHomotopyGroup.mk
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T B.V.right t) rfl
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (pointedFunctionPre θ B).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) r)) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (B.ρ (θ.hom ((1 : G), t)).1).asHom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2) rfl r))
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
   apply RelativeMorphism.ext
-  have he : (pointedFunctionPre θ B).right ≫ SimplicialFunctionComplex.eval T B.V.right t =
-      SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2 ≫
+  have he : (pointedFunctionPre θ B).right ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T B.V.right t =
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2 ≫
         (B.ρ (θ.hom ((1 : G), t)).1).asHom.right :=
     functionPre_eval θ ((PointedSimplicialSet.forget.mapAction G).obj B) t
-  change (r.map ≫ (pointedFunctionPre θ B).right) ≫ SimplicialFunctionComplex.eval T B.V.right t =
-    (r.map ≫ SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2) ≫
+  change (r.map ≫ (pointedFunctionPre θ B).right) ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T B.V.right t =
+    (r.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S B.V.right (θ.hom ((1 : G), t)).2) ≫
       (B.ρ (θ.hom ((1 : G), t)).1).asHom.right
   rw [Category.assoc, he, ← Category.assoc]
 

@@ -49,8 +49,8 @@ lemma tailCotensorComparison_projection (A : PointedSimplicialSet.{u})
 /-- 一段移動と cotensor の比較は各段で全基点 π 同型。 -/
 lemma tailCotensorComparison_levelwise (A : PointedSimplicialSet.{u})
     (X : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((tailCotensorComparison A X).app n).right := by
-  apply KanPiIsomorphism.of_comp (g := ((cotensorProjection A (tail X)).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((tailCotensorComparison A X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((cotensorProjection A (tail X)).app n).right) _
     (cotensorProjection_piIsomorphism A (tail X) n)
   have h := congrArg Under.Hom.right (tailCotensorComparison_projection A X n)
   simp only [Under.comp_right] at h

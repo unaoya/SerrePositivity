@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の Λ 標準単体からの実 dg 関手の、元の全 HA 部分集合成分データ。 -/
 def cubicalLambdaNativeSimplexData {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) : DGNerve.SimplexData A D n where
-  obj a := F.obj (standardSimplexVertex a)
+  obj a := F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)
   hom I a b k hI ha hb hk := by
     subst a
     subst b
@@ -28,7 +28,7 @@ def cubicalLambdaNativeSimplexData {n : ℕ}
 /-- 元の成分データの対象は、同じ番号の元の零単体への dg 関手の値。 -/
 lemma cubicalLambdaNativeSimplexData_obj {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D) (a : Fin (n + 1)) :
-    (cubicalLambdaNativeSimplexData A F).obj a = F.obj (standardSimplexVertex a) := rfl
+    (cubicalLambdaNativeSimplexData A F).obj a = F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) := rfl
 
 /-- 元の全部分集合成分は、同じ元の生成元に元の実 dg Hom 射を作用させた像。 -/
 lemma cubicalLambdaNativeSimplexData_hom {n : ℕ}

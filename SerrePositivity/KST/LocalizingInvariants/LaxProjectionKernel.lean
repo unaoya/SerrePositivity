@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromD_snd_vertex (x : D.obj _⦋0⦌) :
     (laxSnd p q).hom.app (Opposite.op ⦋0⦌) ((fromD p q).app (Opposite.op ⦋0⦌) x) = x := by
@@ -30,7 +30,7 @@ lemma fromD_snd_vertex (x : D.obj _⦋0⦌) :
 
 lemma fst_kernel (x : (laxCategory p q).obj _⦋0⦌) :
     IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage (exactFromD p q) := by
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (exactFromD p q) := by
   constructor
   · intro hx
     let d := (laxSnd p q).hom.app (Opposite.op ⦋0⦌) x
@@ -41,7 +41,7 @@ lemma fst_kernel (x : (laxCategory p q).obj _⦋0⦌) :
         ((fromD p q).app (Opposite.op ⦋0⦌) d))
         ((laxSnd p q).hom.app (Opposite.op ⦋0⦌) x) :=
       eqToIso (congrArg SSet.HomotopyCategory.mk (fromD_snd_vertex p q d))
-    exact ⟨d, ⟨relativeInitialVertexIso (laxSnd p q).hom _ _
+    exact ⟨d, ⟨_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso (laxSnd p q).hom _ _
       (fromD_initialBoundary p q d) hi e⟩⟩
   · rintro ⟨d, ⟨e⟩⟩
     have hz : IsZeroVertex ((laxFst p q).hom.app (Opposite.op ⦋0⦌)

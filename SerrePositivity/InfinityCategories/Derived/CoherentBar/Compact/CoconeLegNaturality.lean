@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet HomotopyLimits
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgBarCompactCoconeLeg_map {K X Y : SSet.{u}} {p : K ⟶ X}
     (c : JoinCocone p) (q : X ⟶ Y) (i : (Δ[0] : SSet.{u}) ⟶ K) :

@@ -17,7 +17,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の定数 W 列を gapped 交換すると、元の同じ相対 S 頂点の定値単体を得る。 -/
-lemma weakStringGappedRelativeMap_constant {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringGappedRelativeMap_constant {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n m : ℕ) (v : (sConstruction n B.obj) _⦋0⦌) :
     weakStringGappedRelativeMap q
       ((objectSConstructionFunctor.map (weakStringConstantExact q ⦋m⦌)).app

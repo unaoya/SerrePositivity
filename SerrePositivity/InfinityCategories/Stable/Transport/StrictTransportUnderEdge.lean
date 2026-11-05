@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
@@ -33,9 +35,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 元の undercategory で、恒等射から入力された射へ向かう実辺。 -/
 def strictTransportUnderEdge {I : Type u} [Category.{u} I] {c d : I} (f : c ⟶ d) :
@@ -46,10 +51,10 @@ def strictTransportUnderEdge {I : Type u} [Category.{u} I] {c d : I} (f : c ⟶ 
 /-- 底の射は、元の入力射そのもの。 -/
 theorem strictTransportUnderEdge_projection {I : Type u} [Category.{u} I]
     {c d : I} (f : c ⟶ d) :
-    strictTransportUnderEdge f ≫ nerveMap (Under.forget c) =
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge f ≫ nerveMap (Under.forget c) =
       yonedaEquiv.symm (nerve.edgeMk f).edge := by
   apply yonedaEquiv.injective
-  rw [yonedaEquiv_comp, strictTransportUnderEdge, Equiv.apply_symm_apply,
+  rw [yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge, Equiv.apply_symm_apply,
     Equiv.apply_symm_apply]
   rw [nerve.edgeMk_edge, nerve.edgeMk_edge, nerveMap_app_mk₁]
   rfl
@@ -63,4 +68,22 @@ theorem kanCocartesianUnderMap_identity_vertex {I : Type u} [Category.{u} I]
   change nerveVertex (Under.mk (f ≫ 𝟙 d)) = _
   rw [Category.comp_id]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCocartesianUnderMap_identity_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.kanCocartesianUnderMap_identity_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge_projection := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportUnderEdge.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge.eq_1

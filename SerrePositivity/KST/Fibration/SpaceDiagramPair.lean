@@ -49,25 +49,25 @@ theorem spaceDiagramSum_inr :
   rfl
 
 /-- 二つの図式を共通の小さい全充満標的に含めたときの、第一図式の小さい表示。 -/
-def smallSpaceDiagramPairLeft : X ⟶ smallSpaceDiagramTarget (spaceDiagramSum F G) :=
-  diagramSumInl X Y ≫ smallSpaceDiagram (spaceDiagramSum F G)
+def smallSpaceDiagramPairLeft : X ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget (spaceDiagramSum F G) :=
+  diagramSumInl X Y ≫ _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram (spaceDiagramSum F G)
 
 /-- 同じ共通の小さい全充満標的における第二図式の表示。 -/
-def smallSpaceDiagramPairRight : Y ⟶ smallSpaceDiagramTarget (spaceDiagramSum F G) :=
-  diagramSumInr X Y ≫ smallSpaceDiagram (spaceDiagramSum F G)
+def smallSpaceDiagramPairRight : Y ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget (spaceDiagramSum F G) :=
+  diagramSumInr X Y ≫ _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram (spaceDiagramSum F G)
 
 /-- 共通標的の同じ包含との合成は、第一の元の図式を厳密に回収する。 -/
 theorem smallSpaceDiagramPairLeft_inclusion :
     (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairLeft F G) ≫
-      smallSpaceDiagramInclusion (spaceDiagramSum F G) = F := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion (spaceDiagramSum F G) = F := by
   rw [smallSpaceDiagramPairLeft, Functor.map_comp, Category.assoc,
-    smallSpaceDiagram_inclusion, spaceDiagramSum_inl]
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion, spaceDiagramSum_inl]
 
 /-- 共通標的の同じ包含との合成は、第二の元の図式を厳密に回収する。 -/
 theorem smallSpaceDiagramPairRight_inclusion :
     (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairRight F G) ≫
-      smallSpaceDiagramInclusion (spaceDiagramSum F G) = G := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion (spaceDiagramSum F G) = G := by
   rw [smallSpaceDiagramPairRight, Functor.map_comp, Category.assoc,
-    smallSpaceDiagram_inclusion, spaceDiagramSum_inr]
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion, spaceDiagramSum_inr]
 
 end SerrePositivity.KST.Fibration

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open HomotopyLimits
 
 /-- 実 span の三頂点。対象宇宙 u の有限型として保持する。 -/

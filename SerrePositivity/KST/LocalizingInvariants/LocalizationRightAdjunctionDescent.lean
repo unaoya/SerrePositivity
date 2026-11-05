@@ -48,7 +48,7 @@ lemma localizationRightAdjunction_rightTriangle (η : FunctorHom (𝟙 Z) (H ≫
   exact (congrArg (homPost L) (SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a)).trans (homPost_id L F)
 
 def localizationRightAdjunctionDescent : QCatAdjunction H (F ≫ L) :=
-  adjunctionOfFunctorHomTriangles (F := H) (G := F ≫ L)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (F := H) (G := F ≫ L)
     (localizationRightAdjunctionUnit F L H W hL a) a.counitHom
     (localizationRightAdjunction_leftTriangle F L H W hL a _
       (localizationRightAdjunctionUnit_pre F L H W hL a))

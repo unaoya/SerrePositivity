@@ -28,8 +28,8 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_of_inj {M N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (α : Fin (M + 1) →o Fin (N + 1)) (I : Finset (Fin (M + 1)))
     (a b : Fin (M + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (simplexSubsetNonempty I hI))
-    (hb : b = I.max' (simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
     (hi : Set.InjOn α (I : Set (Fin (M + 1)))) :
     (cubicalLambdaNativeSimplexData A (DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))) F)).hom
@@ -40,10 +40,10 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_of_inj {M N : ℕ}
   have hJ := DGNerve.Index.image_two hi hI
   have haJ := DGNerve.Index.image_min α.monotone
     (show IsLeast (I : Set (Fin (M + 1))) a from by rw [ha]; exact I.isLeast_min' _)
-    (simplexSubsetNonempty (I.image α) hJ)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)
   have hbJ := DGNerve.Index.image_max α.monotone
     (show IsGreatest (I : Set (Fin (M + 1))) b from by rw [hb]; exact I.isGreatest_max' _)
-    (simplexSubsetNonempty (I.image α) hJ)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)
   have hkJ : k = 2 - ((I.image α).card : ℤ) := by
     rw [Finset.card_image_of_injOn hi]
     exact hk
@@ -51,15 +51,15 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_of_inj {M N : ℕ}
     congrArg (fun d => d - 2) (Finset.card_image_of_injOn hi).symm
   have hcell := simplexSubsetLambdaCellAt_image_inj_heq A α I a b hI ha hb hi hJ haJ hbJ
   have hcomp := heq_comp (congrArg (serreCubeComplex A) hdim) rfl rfl hcell
-    (HEq.rfl : HEq (F.map (standardSimplexVertex (α a)) (standardSimplexVertex (α b)))
-      (F.map (standardSimplexVertex (α a)) (standardSimplexVertex (α b))))
+    (HEq.rfl : HEq (F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α b)))
+      (F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α b))))
   have hall : HEq (simplexSubsetLambdaCellAt A I a b hI ha hb ≫
-      G.map (standardSimplexVertex a) (standardSimplexVertex b))
+      G.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
       (simplexSubsetLambdaCellAt A (I.image α) (α a) (α b) hJ haJ hbJ ≫
-        F.map (standardSimplexVertex (α a)) (standardSimplexVertex (α b))) :=
+        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α b))) :=
     (heq_of_eq (Category.assoc _ _ _).symm).trans hcomp
   have htop := top_heq A (homObject A D
-    (F.obj (standardSimplexVertex (α a))) (F.obj (standardSimplexVertex (α b)))) hdim _ _ hall
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α a))) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α b)))) hdim _ _ hall
   have hn := cubicalLambdaNativeSimplexData_hom_normalized A G I a b k hI ha hb hk
   have hm := cubicalLambdaNativeSimplexData_hom_normalized A F (I.image α) (α a) (α b) k
     hJ haJ hbJ hkJ

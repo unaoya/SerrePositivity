@@ -31,11 +31,11 @@ variable {C : Type u} [Category.{v} C] [Preadditive C] [HasCoproducts.{v} C]
 規約：これは通常の複体の厳密な同型。
 使われ方：Goerss–Jardine III §2。生成子による正規化 cochain の表示への接続。 -/
 def homComplexComparison :
-    ContravariantChainHom.obj (K.normalizedChainComplex R) M ≅ homComplex K R M :=
+    ContravariantChainHom.obj (K.normalizedChainComplex R) M ≅ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex K R M :=
   HomologicalComplex.Hom.isoOfComponents (fun _ ↦ Iso.refl _)
     (fun i j hij ↦ by
       obtain rfl : i + 1 = j := hij
-      simp only [homComplex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
       rfl)
@@ -45,9 +45,9 @@ def homComplexComparison :
 規約：鎖のホモトピー同値そのものを使い、Hom の完全性は不要。
 使われ方：Goerss–Jardine III §2、VIII §1。正規化 cochain の計算への入力。 -/
 def normalizationHomotopyEquiv :
-    HomotopyEquiv (ContravariantChainHom.obj (K.chainComplex R) M) (complex K R M) :=
+    HomotopyEquiv (ContravariantChainHom.obj (K.chainComplex R) M) (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K R M) :=
   (ContravariantChainHom.homotopyEquiv (K.homotopyEquivNormalizedChainComplex R) M).trans
-    (HomotopyEquiv.ofIso (homComplexComparison K R M ≪≫ complexIso K R M))
+    (HomotopyEquiv.ofIso (homComplexComparison K R M ≪≫ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso K R M))
 
 end
 

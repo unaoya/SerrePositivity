@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 
@@ -15,9 +17,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 @[ext] structure SquareFrame (X : SSet.{u}) where
   bottom : (Δ[1] : SSet.{u}) ⟶ X
@@ -30,15 +37,16 @@ namespace SerrePositivity.KST.LocalizingInvariants
   upper_right : stdSimplex.δ (0 : Fin 2) ≫ top = stdSimplex.δ (0 : Fin 2) ≫ right
 
 namespace SquareFrame
-variable {X : SSet.{u}} (f : SquareFrame X)
+open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
+variable {X : SSet.{u}} (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X)
 
 abbrev boundary : SSet.{u} := Subcomplex.unionProd (SSet.boundary 1)
   (SSet.boundary 1)
 
-def boundaryι : boundary.{u} ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u}) :=
+def boundaryι : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary.{u} ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u}) :=
   (Subcomplex.unionProd (SSet.boundary 1) (SSet.boundary 1)).ι
 
-instance : Mono boundaryι.{u} := inferInstanceAs
+instance instMonoSSetBoundaryι : Mono _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι.{u} := inferInstanceAs
   (Mono (Subcomplex.unionProd (SSet.boundary 1) (SSet.boundary 1)).ι)
 
 def horizontal : (Δ[1] : SSet.{u}) ⊗ (SSet.boundary 1 : SSet.{u}) ⟶ X :=
@@ -75,7 +83,7 @@ lemma compatible : ((SSet.boundary 1).ι ▷ (SSet.boundary 1 : SSet.{u})) ≫ f
   · simpa [hv s 1 hi, hv t 1 hj] using
       ConcreteCategory.congr_hom (NatTrans.congr_app f.upper_right (Opposite.op ⦋n⦌)) c
 
-def diagram : boundary.{u} ⟶ X :=
+def diagram : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary.{u} ⟶ X :=
   (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).desc
     f.horizontal f.vertical f.compatible
 
@@ -86,4 +94,112 @@ lemma diagram_vertical : Subcomplex.unionProd.ι₂ (SSet.boundary 1) (SSet.boun
     f.diagram = f.vertical := (Subcomplex.unionProd.isPushout _ _).inr_desc _ _ _
 
 end SquareFrame
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.bottom := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.boundary := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.boundaryι := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.casesOn := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.casesOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.compatible := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ctorIdx := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_horizontal := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_vertical := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ext := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ext_iff := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext_iff
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.horizontal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.horizontal := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.horizontal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.instMonoSSetBoundaryι (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.instMonoSSetBoundaryι := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.instMonoSSetBoundaryι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.left := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.lower_left := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.lower_right := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.noConfusion := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.noConfusionType := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.rec := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.recOn := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.right := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.top := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.upper_left := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.upper_right := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.vertical (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.vertical := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.vertical
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk.inj := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk.injEq := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.mk.sizeOf_spec

@@ -54,7 +54,7 @@ theorem pointedUnitIso_evaluation (Y : PointedSimplicialSet.{u}) :
           (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right ≫
           (MonoidalClosed.unitIsoSelf (X := Y.right)).hom := by
   let H := PointedObject.basedHom (𝟙_ PointedSimplicialSet.{u}) Y
-  rw [Spectra.HomTensorStrength.unit_evaluation]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation]
   change (PointedObject.leftUnitInv H).right ≫
     ((ihom.ev (𝟙_ PointedSimplicialSet.{u})).app Y).right = _
   change ((λ_ H.right).inv ≫ (coprod.inl ▷ H.right) ≫

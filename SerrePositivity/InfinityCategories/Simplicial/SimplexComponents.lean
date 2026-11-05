@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 
 open CategoryTheory Opposite SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：単体の i 番目の頂点を取り出す。
@@ -38,7 +43,7 @@ def simplexVertex (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌) (i : Fin (n + 1)) : 
 使われ方：全ての単体作用に沿う連結成分の不変性。
 -/
 theorem simplexVertex_class_eq (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌)
-    (i : Fin (n + 1)) : π₀.mk (simplexVertex X s 0) = π₀.mk (simplexVertex X s i) := by
+    (i : Fin (n + 1)) : π₀.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex X s 0) = π₀.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex X s i) := by
   let e := SimplexCategory.mkOfLe 0 i (Fin.zero_le i)
   have h₀ : SimplexCategory.δ (1 : Fin 2) ≫ e = SimplexCategory.const ⦋0⦌ ⦋n⦌ 0 := by
     apply SimplexCategory.Hom.ext
@@ -55,7 +60,7 @@ theorem simplexVertex_class_eq (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌)
   have h := π₀.sound (Edge.mk' (X.map e.op s))
   change π₀.mk (X.map (SimplexCategory.δ 1).op (X.map e.op s)) =
     π₀.mk (X.map (SimplexCategory.δ 0).op (X.map e.op s)) at h
-  simpa only [simplexVertex, ← Functor.map_comp_apply, ← op_comp, h₀, h₁] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex, ← Functor.map_comp_apply, ← op_comp, h₀, h₁] using h
 
 /--
 概要：任意の単体をその連結成分へ送る。
@@ -64,7 +69,7 @@ theorem simplexVertex_class_eq (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌)
 使われ方：KST 式 (2.2) の単元成分の逆像。
 -/
 def simplexClass (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌) : π₀ X :=
-  π₀.mk (simplexVertex X s 0)
+  π₀.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex X s 0)
 
 /--
 概要：単体的作用は単体の連結成分を変えない。
@@ -73,10 +78,10 @@ def simplexClass (X : SSet.{u}) {n : ℕ} (s : X _⦋n⦌) : π₀ X :=
 使われ方：成分を指定した部分単体集合の構成。
 -/
 theorem simplexClass_map (X : SSet.{u}) {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌)
-    (s : X _⦋n⦌) : simplexClass X (X.map f.op s) = simplexClass X s := by
-  unfold simplexClass simplexVertex
+    (s : X _⦋n⦌) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (X.map f.op s) = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X s := by
+  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
   rw [← Functor.map_comp_apply, ← op_comp, SimplexCategory.const_comp]
-  exact (simplexVertex_class_eq X s (f.toOrderHom 0)).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq X s (f.toOrderHom 0)).symm
 
 /--
 概要：零次単体の成分写像は π₀ の商写像である。
@@ -85,7 +90,34 @@ theorem simplexClass_map (X : SSet.{u}) {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌)
 使われ方：部分モノイドの連結成分の同定。
 -/
 @[simp] theorem simplexClass_zero (X : SSet.{u}) (s : X _⦋0⦌) :
-    simplexClass X s = π₀.mk s := by
-  simp [simplexClass, simplexVertex, SimplexCategory.const_eq_id]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X s = π₀.mk s := by
+  simp [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex, SimplexCategory.const_eq_id]
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_map := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex_class_eq := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex.eq_1

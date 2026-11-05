@@ -69,7 +69,7 @@ lemma presentedPerfectDGBFZeroEvaluation_whisker (C D : PerfDGInput.{u, v} A) :
 def presentedPerfectDGBFZeroEvaluationTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGBFZeroSuspensionFunctor A) (presentedPerfectDGBFBaseFunctor A) :=
-  strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
     (presentedPerfectDGBFZeroEvaluation_whisker A)
 
 /-- 零段の同じ元の値は Kan 複体。 -/

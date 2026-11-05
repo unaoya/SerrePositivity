@@ -49,11 +49,11 @@ instance relativeSConstruction_quasicategory {B C : SSet.{u}} [Quasicategory B]
 
 /-- Verdier 列では、実辺の相対所属は全 Ar 成分の W 所属と同値。 -/
 lemma relativeSConstruction_mem_edge_iff
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (n : ℕ) (s : (sConstruction n B.obj) _⦋1⦌) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ) (s : (sConstruction n B.obj) _⦋1⦌) :
     s ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
       ∀ a, (sComponentEvaluation B.obj n a).app (Opposite.op ⦋1⦌) s ∈
-        weakEquivalences i :=
+        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i :=
   relativeDiagram_mem_edge_iff h (sComponentEvaluation B.obj n) s
 
 /-- 元の全 gapped S• に相対条件を課した単体的対象 wS•B。 -/

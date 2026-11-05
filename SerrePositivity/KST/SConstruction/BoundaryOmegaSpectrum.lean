@@ -21,8 +21,8 @@ open Spectra
 lemma boundaryKanSequence_omegaCondition (X : StableModel.{u}) :
     (boundaryKanSequence X).OmegaCondition := by
   intro r
-  change KanPiIsomorphism
-    ((suspensionLoopEquiv _ _) (boundaryKanAssemblySigma r X)).right
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _) (boundaryKanAssemblySigma r X)).right
   rw [boundaryKanAssemblySigma_adjoint]
   exact boundaryKanAssemblyAdjoint_piIsomorphism r X
 

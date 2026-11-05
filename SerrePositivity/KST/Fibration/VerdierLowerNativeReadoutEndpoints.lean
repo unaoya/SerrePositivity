@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration
 方針：同じホモトピーの始端を回収し、元の対象読み替えを適用する。
 規約：二短辺だけでなく元の全二単体の等号を保持する。
 使われ方：実読出し始端の全 native Hom の照合。 -/
-theorem verdierLowerDeformation_native_first (d : VerdierDiagram.{u}) :
+theorem verdierLowerDeformation_native_first (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     SSet.yonedaEquiv (familyAtVertex (verdierFullSLowerDeformation d).h
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) =
       (coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌)
@@ -37,7 +37,7 @@ theorem verdierLowerDeformation_native_first (d : VerdierDiagram.{u}) :
 方針：同じホモトピーの終端と、最大化の既存の厳密回収を使う。
 規約：元の実包含・実商と全二単体を保持する。
 使われ方：実読出し終端の全 native Hom の照合。 -/
-theorem verdierLowerDeformation_native_last (d : VerdierDiagram.{u}) :
+theorem verdierLowerDeformation_native_last (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     SSet.yonedaEquiv (familyAtVertex (verdierFullSLowerDeformation d).h
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
       (coherentNerveCompStruct (stableCoreSingleKanMap d.inclusion)
@@ -58,7 +58,7 @@ private theorem nativeReadoutPoint_congr (s t : SpaceInfinity.{u} _⦋2⦌) (h :
 方針：入力点の読出し HEq を、実始端の全二胞体回収へ代入する。
 規約：入力は読出し回収式であり、新たな存在仮定を取らない。
 使われ方：同じ元の全長 Hom と実合成端比較の始端照合。 -/
-theorem verdierLowerNativeReadout_first (d : VerdierDiagram.{u})
+theorem verdierLowerNativeReadout_first (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : HEq (L.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
@@ -75,7 +75,7 @@ theorem verdierLowerNativeReadout_first (d : VerdierDiagram.{u})
 方針：入力点の読出し HEq を、実終端の全二胞体回収へ代入する。
 規約：合成端の一点だけの比較へ弱めない。
 使われ方：有限終端で指定する元の全長 Hom の照合。 -/
-theorem verdierLowerNativeReadout_last (d : VerdierDiagram.{u})
+theorem verdierLowerNativeReadout_last (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : HEq (L.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
@@ -92,7 +92,7 @@ theorem verdierLowerNativeReadout_last (d : VerdierDiagram.{u})
 方針：元の厳密二射列の native Hom 作用を全 path・全次数で計算する。
 規約：辺のホモトピー類や一つの path の評価だけに弱めない。
 使われ方：下側読出し終端を指定された定値長 Hom へ戻す。 -/
-theorem verdierLowerKernel_nativeLongHom (d : VerdierDiagram.{u}) :
+theorem verdierLowerKernel_nativeLongHom (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     (coherentNerveCompStruct (stableCoreSingleKanMap d.inclusion)
       (stableCoreSingleKanMap d.projection)).simplex.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩ =
       SSet.const (X := nerve TriangleNativePath.{u})

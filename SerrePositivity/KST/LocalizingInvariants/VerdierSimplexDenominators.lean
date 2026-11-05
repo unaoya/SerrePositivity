@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 元の標準単体上の core 逆像は、同じ全頂点評価による相対図式そのもの。 -/
 lemma relativeFirstRowSimplex_eq_relativeDiagram (n : ℕ) :
@@ -33,21 +33,21 @@ lemma relativeFirstRowSimplex_eq_relativeDiagram (n : ℕ) :
       (𝟙 ((ihom (Δ[n] : SSet.{u})).obj B.obj))).symm
 
 /-- 全高次単体の条件を、元の有限図式の全頂点と全一次制限で判定する。 -/
-lemma relativeFirstRowSimplex_mem_iff (h : IsVerdierSequence i q) (n : ℕ)
+lemma relativeFirstRowSimplex_mem_iff (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
     {m : SimplexCategoryᵒᵖ} (s : ((ihom (Δ[n] : SSet.{u})).obj B.obj).obj m) :
     s ∈ (relativeFirstRowSimplex q n).obj m ↔
       ∀ k : (Δ[n] : SSet.{u}) _⦋0⦌, ∀ α : ⦋1⦌ ⟶ m.unop,
         (evaluateFunctorAt k).app (Opposite.op ⦋1⦌)
-          (((ihom (Δ[n] : SSet.{u})).obj B.obj).map α.op s) ∈ weakEquivalences i := by
+          (((ihom (Δ[n] : SSet.{u})).obj B.obj).map α.op s) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   rw [relativeFirstRowSimplex_eq_relativeDiagram]
   exact relativeDiagram_mem_iff h _ s
 
 /-- 元の標準単体図式の辺の所属は、全頂点での同じ Verdier 分母の所属。 -/
-lemma relativeFirstRowSimplex_mem_edge_iff (h : IsVerdierSequence i q) (n : ℕ)
+lemma relativeFirstRowSimplex_mem_edge_iff (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
     (s : ((ihom (Δ[n] : SSet.{u})).obj B.obj) _⦋1⦌) :
     s ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ↔
       ∀ k : (Δ[n] : SSet.{u}) _⦋0⦌,
-        (evaluateFunctorAt k).app (Opposite.op ⦋1⦌) s ∈ weakEquivalences i := by
+        (evaluateFunctorAt k).app (Opposite.op ⦋1⦌) s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   rw [relativeFirstRowSimplex_eq_relativeDiagram]
   exact relativeDiagram_mem_edge_iff h _ s
 
@@ -58,7 +58,7 @@ instance relativeFirstRowSimplex_quasicategory (n : ℕ) :
   infer_instance
 
 /-- 元の有限図式の実引き戻しの両縦辺は、同じ分母条件を保ち反映する。 -/
-lemma relativeFirstRowSimplex_pullback_iff (h : IsVerdierSequence i q) (n : ℕ)
+lemma relativeFirstRowSimplex_pullback_iff (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj)
     (hQ : IsPullbackSquare Q) :
     (squareLeftArrow Q).edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ↔
@@ -68,11 +68,11 @@ lemma relativeFirstRowSimplex_pullback_iff (h : IsVerdierSequence i q) (n : ℕ)
   apply forall_congr'
   intro k
   have hk := (isPullbackSquare_functor_iff Q).mp hQ k
-  exact weakEquivalences_pullback_iff h (Q ≫ evaluateFunctorAt k) hk
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h (Q ≫ evaluateFunctorAt k) hk
 
 /-- 同じ標準単体上の任意の二辺を、全図式を保つ実引き戻しへ完成する。
 右辺が元の分母なら左辺も元の同じ core 逆像に属する。 -/
-lemma relativeFirstRowSimplex_exists_pullback (h : IsVerdierSequence i q) (n : ℕ)
+lemma relativeFirstRowSimplex_exists_pullback (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
     (d : (horn 2 2 : SSet.{u}) ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj)
     (hd : SSet.yonedaEquiv (horn₂₂.ι₀₂ ≫ d) ∈
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)) :

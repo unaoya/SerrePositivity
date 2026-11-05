@@ -50,15 +50,15 @@ lemma exists_relative_pointed_family_adjustment
     (i : A ⟶ B) [Mono i.right] {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
     (f : U ⟶ (PointedObject.basedHom B Y).right)
     (a : U ⟶ (PointedObject.basedHom A Y).right)
-    (H : SSet.Homotopy (f ≫ PointedMapping.pre i Y) a)
+    (H : SSet.Homotopy (f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) a)
     (hrel : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h =
-      fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ≫ PointedMapping.pre i Y) :
+      fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) :
     ∃ g : U ⟶ (PointedObject.basedHom B Y).right,
-      g ≫ PointedMapping.pre i Y = a ∧ j ≫ g = j ≫ f ∧
+      g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = a ∧ j ≫ g = j ≫ f ∧
       ∃ V : SSet.Homotopy f g,
         (j ▷ (Δ[1] : SSet.{u})) ≫ V.h = fst T (Δ[1] : SSet.{u}) ≫ j ≫ f ∧
-        V.h ≫ PointedMapping.pre i Y = H.h := by
-  let : Fibration (PointedMapping.pre i Y) := PointedMapping.pre_fibration i Y
-  exact exists_relative_fibration_family_transport (PointedMapping.pre i Y) j f H hrel
+        V.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = H.h := by
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y
+  exact exists_relative_fibration_family_transport (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) j f H hrel
 
 end SerrePositivity.KST.SConstruction

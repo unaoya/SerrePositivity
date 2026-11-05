@@ -43,18 +43,18 @@ lemma simplexHABeadWordDecode_top_value {n : ℕ} (s : DGNerve.SimplexData A D n
     have hbase := simplexHABeadWordValue_reindex A s rfl
       (show T.card - 1 = serreCubeGeneratorFreeDimension 0 (serreCubeTopGeneratorIndex 0) +
         T.card - 1 by simp only [serreCubeGeneratorFreeDimension, zero_add])
-      (simplexHABeadTail T hT (v 0) hb)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v 0) hb)
     exact hbase.trans ((heq_of_eq (simplexHABeadTail_value A s T hT (v 0) hb
       hI' hmin hmax)).trans
         (s.hom_heq_of_indices_degree he.symm rfl rfl (by omega)))
   | succ m ih =>
-    have hn := simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
+    have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T (v (Fin.last (m + 1))) hb
     have hc := Finset.card_insert_of_notMem hn
     exact (simplexHABeadWordDecode_edge_value A s m (serreCubeTopGeneratorIndex m)
       v T hT hb).trans
       ((ih (Fin.castSuccOrderEmb.trans v) (insert (v (Fin.last (m + 1))) T)
         (Finset.insert_nonempty _ T) (simplexHADecodePrefix_insert m v T hb)).trans
           (s.hom_heq_of_indices_degree (simplexHADecodeSubset_insert_tail m v T) rfl
-            (simplexHABeadTail_max T hT _ hb) (by omega)))
+            (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT _ hb) (by omega)))
 
 end SerrePositivity.KST.SConstruction

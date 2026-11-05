@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceVertexOrder
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceJointBounds
 
@@ -10,46 +12,49 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceJointBounds
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の bead 内の二頂点の像は、標的の内部 joint を跨がない。 -/
-lemma necklaceVertexMap_noInterior {T U : Necklace.{u}} (f : T ⟶ U)
+lemma necklaceVertexMap_noInterior {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U)
     (a b : T.down.Vertex) (hab : a ≤ b)
     (hj : ∀ k ∈ T.down.joints, ¬ (a.val < k ∧ k < b.val)) :
     ∀ k ∈ U.down.joints,
-      ¬ ((necklaceVertexMap f a).val < k ∧ k < (necklaceVertexMap f b).val) := by
+      ¬ ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f a).val < k ∧ k < (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f b).val) := by
   intro k hk
   let e := T.down.edge.{u} a b hab hj
   have h := (f.map.app _ e).property (0 : Fin 2) (Fin.last 1) k hk
   change ¬ (((f.map.app _ e).val 0).val < k ∧
     k < ((f.map.app _ e).val (Fin.last 1)).val) at h
-  rw [necklaceVertexMap_simplex, necklaceVertexMap_simplex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_simplex, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_simplex] at h
   exact h
 
 /-- 元の標的の全 joints は、元の始域の joints の像で被覆される。 -/
-lemma necklaceVertexMap_joint_covered {T U : Necklace.{u}} (f : T ⟶ U)
+lemma necklaceVertexMap_joint_covered {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ U)
     (v : U.down.Vertex) (hv : v.val ∈ U.down.joints) :
-    ∃ j : T.down.Vertex, j.val ∈ T.down.joints ∧ necklaceVertexMap f j = v := by
-  let s := T.down.jointVertices.filter (fun j => v.val ≤ (necklaceVertexMap f j).val)
+    ∃ j : T.down.Vertex, j.val ∈ T.down.joints ∧ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f j = v := by
+  let s := T.down.jointVertices.filter (fun j => v.val ≤ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f j).val)
   have hs : s.Nonempty := by
     refine ⟨T.down.last, Finset.mem_filter.mpr ⟨T.down.last_mem_jointVertices, ?_⟩⟩
-    rw [necklaceVertexMap_last]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_last]
     exact Nat.le_of_lt_succ v.isLt
   let b := s.min' hs
   have hb := Finset.mem_filter.mp (s.min'_mem hs)
   have hbj : b.val ∈ T.down.joints := (T.down.mem_jointVertices b).1 hb.1
-  have hkb : v.val ≤ (necklaceVertexMap f b).val := hb.2
+  have hkb : v.val ≤ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f b).val := hb.2
   refine ⟨b, hbj, Fin.ext ?_⟩
   by_contra hne
-  have hgt : v.val < (necklaceVertexMap f b).val := by omega
+  have hgt : v.val < (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f b).val := by omega
   have hbpos : 0 < b.val := by
     by_contra h
     have hbf : b = T.down.first := by
       apply Fin.ext
       change b.val = 0
       omega
-    have hbzero : (necklaceVertexMap f b).val = 0 := by
-      rw [hbf, necklaceVertexMap_first]
+    have hbzero : (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f b).val = 0 := by
+      rw [hbf, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_first]
       rfl
     omega
   let p : T.down.Vertex := ⟨b.val - 1, by have h := b.isLt; omega⟩
@@ -60,7 +65,7 @@ lemma necklaceVertexMap_joint_covered {T U : Necklace.{u}} (f : T ⟶ U)
     change a.val ≤ b.val - 1 at h
     change a.val < b.val
     omega
-  have hfa : (necklaceVertexMap f a).val < v.val := by
+  have hfa : (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap f a).val < v.val := by
     by_contra h
     have ha : a ∈ s := Finset.mem_filter.mpr
       ⟨(T.down.mem_jointVertices a).2 haj, by omega⟩
@@ -75,6 +80,15 @@ lemma necklaceVertexMap_joint_covered {T U : Necklace.{u}} (f : T ⟶ U)
     have hja := T.down.le_lowerJoint p jv hj hjp
     change j ≤ a.val at hja
     omega
-  exact necklaceVertexMap_noInterior f a b hab.le hno v.val hv ⟨hfa, hgt⟩
+  exact _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_noInterior f a b hab.le hno v.val hv ⟨hfa, hgt⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_joint_covered := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_joint_covered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_noInterior := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_noInterior

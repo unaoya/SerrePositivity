@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
 private theorem component_reindex_normalize {D X : SSet.{u}} {F G : D ⟶ X}
     (α : FunctorHom F G) {p q : D _⦋0⦌} (hp : p = q)
@@ -27,55 +32,73 @@ private theorem component_reindex_normalize {D X : SSet.{u}} {F G : D ⟶ X}
   cases hp
   simp only [eqToIso_refl, Iso.refl_trans]
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 商の coslice 図式の x の商像における値を、同じ零添字の strict Kan 値へ戻す。 -/
 def fractionIdentityQuotientValueIso :
     VertexIso ((fractionKanQuotientDiagram h x).app (Opposite.op ⦋0⦌)
       (ULift.up (q.hom.app (Opposite.op ⦋0⦌) x)))
-      (spaceInfinityVertex ((fractionSimplexKanMappingDiagram q.hom x).obj
+      (spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram q.hom x).obj
         (transportSimplexIndex (n := ⦋0⦌) x))) := by
   have he : ULift.up.{u + 1} (q.hom.app (Opposite.op ⦋0⦌) x) =
       ULift.up (q.hom.app (Opposite.op ⦋0⦌)
         ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌)
           (nerveVertex (transportSimplexIndex (n := ⦋0⦌) x)))) :=
     congrArg ULift.up (congrArg (q.hom.app (Opposite.op ⦋0⦌))
-      (transportSimplexFirstVertexMap_zeroIndex x).symm)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x).symm)
   exact eqToIso (congrArg HomotopyCategory.mk
     (congrArg ((fractionKanQuotientDiagram h x).app (Opposite.op ⦋0⦌)) he)) ≪≫
-      fractionKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x)
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x)
 
 /-- 同じ商上の比較の x 成分は、元の指定済み値同型で戻すと同じ strict Kan 比較の零添字辺。 -/
 theorem weakQuotientMappingComparison_identity_native :
-    (weakIdentityQuotientValueIso h x).inv ≫
-      functorHomEvaluate (weakQuotientMappingComparison h x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValueIso h x).inv ≫
+      functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x)
         (ULift.up (q.hom.app (Opposite.op ⦋0⦌) x)) ≫
-      (fractionIdentityQuotientValueIso h x).hom =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso h x).hom =
       Truncated.HomotopyCategory.homMk
-        (weakSpanKanComparisonValueEdge h x (transportSimplexIndex (n := ⦋0⦌) x)).toTruncated := by
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge h x (transportSimplexIndex (n := ⦋0⦌) x)).toTruncated := by
   have he : ULift.up.{u + 1} (q.hom.app (Opposite.op ⦋0⦌)
       ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌)
         (nerveVertex (transportSimplexIndex (n := ⦋0⦌) x)))) =
       ULift.up (q.hom.app (Opposite.op ⦋0⦌) x) :=
     congrArg ULift.up (congrArg (q.hom.app (Opposite.op ⦋0⦌))
-      (transportSimplexFirstVertexMap_zeroIndex x))
-  have hc := component_reindex_normalize (weakQuotientMappingComparison h x) he
-    (weakSpanKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x))
-    (fractionKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x))
-  exact hc.trans (weakQuotientMappingComparison_native_component h x
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex x))
+  have hc := component_reindex_normalize (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x) he
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_initialVertexIso h x (transportSimplexIndex (n := ⦋0⦌) x))
+  exact hc.trans (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_native_component h x
     (transportSimplexIndex (n := ⦋0⦌) x))
 
 /-- 元の恒等点の商上の比較像を戻すと、同じ native 恒等点と同じ strict Kan 比較辺との合成。 -/
 theorem weakIdentityQuotientPointHom_native_comparison :
-    weakIdentityQuotientPointHom h x ≫
-      functorHomEvaluate (weakQuotientMappingComparison h x)
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientPointHom h x ≫
+      functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison h x)
         (ULift.up (q.hom.app (Opposite.op ⦋0⦌) x)) ≫
-      (fractionIdentityQuotientValueIso h x).hom =
-      weakIdentityNativePointHom h x ≫ Truncated.HomotopyCategory.homMk
-        (weakSpanKanComparisonValueEdge h x (transportSimplexIndex (n := ⦋0⦌) x)).toTruncated := by
-  have he := congrArg (fun m => weakIdentityNativePointHom h x ≫ m)
-    (weakQuotientMappingComparison_identity_native h x)
-  simpa only [weakIdentityQuotientPointHom, Category.assoc] using he
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso h x).hom =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativePointHom h x ≫ Truncated.HomotopyCategory.homMk
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge h x (transportSimplexIndex (n := ⦋0⦌) x)).toTruncated := by
+  have he := congrArg (fun m => _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityNativePointHom h x ≫ m)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_identity_native h x)
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientPointHom, Category.assoc] using he
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientPointHom_native_comparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientPointHom_native_comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_identity_native := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_identity_native
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso._proof_2

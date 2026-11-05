@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。π₀ から正次数の群への降下。 -/
 theorem class_eq_iff_components (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
     (f g : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ Y) :
-    KanHomotopyGroup.mk (equiv Y (n + 1) f) = KanHomotopyGroup.mk (equiv Y (n + 1) g) ↔
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (equiv Y (n + 1) f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (equiv Y (n + 1) g) ↔
       π₀.mk (PointedMapping.familyVertex f) = π₀.mk (PointedMapping.familyVertex g) := by
   obtain ⟨s, rfl⟩ := (equiv Y (n + 1)).symm.surjective f
   obtain ⟨t, rfl⟩ := (equiv Y (n + 1)).symm.surjective g
@@ -44,7 +44,7 @@ theorem class_eq_iff_components (Y : PointedSimplicialSet.{u}) [KanComplex Y.rig
     have r := pullHomotopy Y (n + 1) ((equiv Y (n + 1)).symm s)
       ((equiv Y (n + 1)).symm t) H hH
     simp only [Equiv.apply_symm_apply] at r
-    exact KanHomotopyGroup.eq_of_relativeHomotopy r
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy r
 
 /-- 概要：球面の写像空間の成分を正次数ホモトピー群へ送る。
 方針：頂点を点つき射へ戻し、その単体の類を取り、辺のホモトピーで π₀ へ降ろす。
@@ -52,8 +52,8 @@ theorem class_eq_iff_components (Y : PointedSimplicialSet.{u}) [KanComplex Y.rig
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。写像空間のホモトピー群の代表計算。 -/
 def componentClass (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     π₀ (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right →
-      KanHomotopyGroup Y.right n Y.basepoint :=
-  π₀.lift (fun v ↦ KanHomotopyGroup.mk
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint :=
+  π₀.lift (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
     (equiv Y (n + 1) (PointedMapping.familyMap _ Y v))) (by
       intro v w e
       apply (class_eq_iff_components Y n _ _).2
@@ -67,8 +67,8 @@ def componentClass (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
 theorem componentClass_familyVertex (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (n : ℕ) (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ Y) :
     componentClass Y n (π₀.mk (PointedMapping.familyVertex f)) =
-      KanHomotopyGroup.mk (equiv Y (n + 1) f) := by
-  change KanHomotopyGroup.mk (equiv Y (n + 1)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (equiv Y (n + 1) f) := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (equiv Y (n + 1)
     (PointedMapping.familyMap _ Y (PointedMapping.familyVertex f))) = _
   rw [PointedMapping.familyMap_familyVertex]
 
@@ -97,7 +97,7 @@ theorem componentClass_bijective (Y : PointedSimplicialSet.{u}) [KanComplex Y.ri
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。有理化の写像空間の計算。 -/
 def componentEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     π₀ (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right ≃
-      KanHomotopyGroup Y.right n Y.basepoint :=
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint :=
   Equiv.ofBijective _ (componentClass_bijective Y n)
 
 /-- 概要：球面の成分から群への比較は標的の点つき Kan 射に関して自然。
@@ -108,14 +108,14 @@ theorem componentClass_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (n : ℕ) (p : Y ⟶ Z)
     (a : π₀ (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right) :
     componentClass Z n (mapπ₀ (PointedObject.basedHomMap _ p).right a) =
-      KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
         (componentClass Y n a) := by
   obtain ⟨v, rfl⟩ := π₀.mk_surjective a
   obtain ⟨f, rfl⟩ := (PointedMapping.familyVertexEquiv
     (PointedSimplicialSet.sphere.{u} (n + 1)) Y).surjective v
   change componentClass Z n (mapπ₀ (PointedObject.basedHomMap _ p).right
     (π₀.mk (PointedMapping.familyVertex f))) =
-      KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
         (componentClass Y n (π₀.mk (PointedMapping.familyVertex f)))
   rw [mapπ₀_mk, PointedMapping.familyVertex_post, componentClass_familyVertex,
     componentClass_familyVertex, equiv_comp]

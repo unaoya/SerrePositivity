@@ -18,7 +18,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 lemma diagonal_fullyFaithful : IsFullyFaithful (diagonal Q) := by
   have hi : IsQCatEquivalence (equivalencePathRefl Q.obj ≫
@@ -31,8 +31,8 @@ lemma diagonal_fullyFaithful : IsFullyFaithful (diagonal Q) := by
     (isFullyFaithful_fullSubcomplexOnVertices_ι _ IsEquivalencePathVertex)
   change IsFullyFaithful (equivalencePathRefl Q.obj ≫ equivalencePathι Q.obj) at hc
   rw [equivalencePathRefl_ι] at hc
-  have he : IsFullyFaithful (arrowLaxInverse Q.obj) :=
-    (isQCatEquivalence_of_trivialKanFibration (arrowLaxIso Q.obj).inv).isFullyFaithful
+  have he : IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj) :=
+    (isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).inv).isFullyFaithful
   exact hc.comp he
 
 def pullbackDiagonalIso : FunctorIso (pullbackInclusion (𝟙 Q) (𝟙 Q)).hom
@@ -44,10 +44,10 @@ def pullbackDiagonalIso : FunctorIso (pullbackInclusion (𝟙 Q) (𝟙 Q)).hom
     intro x
     exact F2.catPullbackToLax_vertex (𝟙 Q.obj) (𝟙 Q.obj) x
   have e := FunctorIso.postcomp (EquivalenceArrowFamily.comparison a ha)
-    (arrowLaxInverse Q.obj)
-  have hinv : F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) ≫ arrowLaxInverse Q.obj = 𝟙 _ :=
-    (arrowLaxIso Q.obj).hom_inv_id
-  have hsrc : a ≫ arrowLaxInverse Q.obj = j := by
+    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj)
+  have hinv : F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj = 𝟙 _ :=
+    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).hom_inv_id
+  have hsrc : a ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj = j := by
     rw [show a = j ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) from rfl,
       Category.assoc, hinv, Category.comp_id]
   have hfst : a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
@@ -59,7 +59,7 @@ def pullbackDiagonalIso : FunctorIso (pullbackInclusion (𝟙 Q) (𝟙 Q)).hom
 
 lemma difference_kernel (x : (laxCategory (𝟙 Q) (𝟙 Q)).obj _⦋0⦌) :
     IsZeroVertex ((laxDifference (𝟙 Q) (𝟙 Q)).app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage (exactDiagonal Q) := by
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (exactDiagonal Q) := by
   constructor
   · intro hx
     obtain ⟨y, ⟨e⟩⟩ := (laxDifference_kernel (𝟙 Q) (𝟙 Q) x).mp hx

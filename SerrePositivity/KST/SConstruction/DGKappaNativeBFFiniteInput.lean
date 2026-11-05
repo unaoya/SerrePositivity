@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 /-- 概要：同じ元の四角形の頂点に現れる安定値の条件。
 方針：元の頂点像をそのまま条件にする。
 規約：完備化を含まない。使われ方：一四角形への入力制限。 -/
-def dgKappaNativeBFVertexProperty : ObjectProperty StableQCat.{max (u + 1) v} :=
+def dgKappaNativeBFVertexProperty : ObjectProperty _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} :=
   fun C => ∃ x, coherentNerveObject
     ((dgKappaNativeVerdierDiagram.{u, v} R D I).square.app (Opposite.op ⦋0⦌) x) = C
 
@@ -35,7 +35,7 @@ abbrev DGKappaNativeBFFiniteInput := (dgKappaNativeBFVertexProperty.{u, v} R D I
 規約：元の安定値へ厳密に戻る。使われ方：正段の全作用の制限。 -/
 def dgKappaNativeBFFiniteInclusion :
     EnrichedFunctor SSet.{max (u + 1) v} (DGKappaNativeBFFiniteInput.{u, v} R D I)
-      StableQCat.{max (u + 1) v} :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} :=
   HomotopyLimits.enrichedFullSubcategoryInclusion (dgKappaNativeBFVertexProperty.{u, v} R D I)
 
 /-- 概要：同じ元の二胞体を有限入力の coherent nerve に保持する。

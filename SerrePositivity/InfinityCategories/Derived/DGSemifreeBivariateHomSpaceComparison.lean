@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve MonoidalCategory CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 /-- 元の二変数 Hom の固定入力制限を F1 の同じ全関手へ比較する。 -/
 def dgSemifreeDerivedHomBivariateSpaceInfinity :

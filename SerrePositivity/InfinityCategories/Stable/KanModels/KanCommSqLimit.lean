@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
@@ -40,10 +42,13 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 元の通常射の anodyne–fibration 分解の中間値は、同じ実 Kan 対象である。 -/
 def kanCommSqReplacementTarget {Y Z : SSet.{u}} [KanComplex Z] (g : Y ⟶ Z) :
@@ -57,4 +62,16 @@ def kanCommSqReplacementTarget {Y Z : SSet.{u}} [KanComplex Z] (g : Y ⟶ Z) :
   rw [show terminal.from W = p ≫ terminal.from Z from terminal.hom_ext _ _]
   infer_instance
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqReplacementTarget (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqReplacementTarget := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqReplacementTarget
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqReplacementTarget._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqReplacementTarget._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqReplacementTarget._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqReplacementTarget._proof_2

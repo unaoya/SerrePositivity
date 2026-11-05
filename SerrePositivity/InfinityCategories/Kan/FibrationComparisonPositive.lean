@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 public import SerrePositivity.InfinityCategories.Kan.GroupFiveLemma
@@ -17,9 +19,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.KST.Spectra.FibrationSquare
+namespace SerrePositivity.InfinityCategories.Kan.FibrationSquare
+open SerrePositivity.KST.Spectra.FibrationSquare
 
 noncomputable section
 
@@ -34,34 +39,40 @@ theorem fiberMap_positive_bijective {E B E' B' : SSet.{u}}
     [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
     (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
     (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
-    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) (e : E _⦋0⦌) (n : ℕ) :
-    Function.Bijective (KanHomotopyGroup.map (n := n) (fiberMap p p' f g comm e)
-      (fiberMap_point p p' f g comm e)) := by
-  let hb := base_eq p p' f g comm e
-  exact group_five_lemma
-    (KanHomotopyGroup.map (n := n + 1) p rfl) (connectingHom p e n)
-    (KanHomotopyGroup.map (n := n) (fiberι p (p.app _ e)) (fiberι_point p e))
-    (KanHomotopyGroup.map (n := n) p rfl)
-    (KanHomotopyGroup.map (n := n + 1) p' rfl) (connectingHom p' (f.app _ e) n)
-    (KanHomotopyGroup.map (n := n) (fiberι p' (p'.app _ (f.app _ e)))
-      (fiberι_point p' (f.app _ e))) (KanHomotopyGroup.map (n := n) p' rfl)
-    (KanHomotopyGroup.map (n := n + 1) f rfl) (KanHomotopyGroup.map (n := n + 1) g hb)
-    (KanHomotopyGroup.map (n := n) (fiberMap p p' f g comm e) (fiberMap_point p p' f g comm e))
-    (KanHomotopyGroup.map (n := n) f rfl) (KanHomotopyGroup.map (n := n) g hb)
-    (KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl hb (n + 1))
-    (fun a ↦ connecting_natural p p' f g comm e (n + 1) a)
-    (KanHomotopyGroup.map_square (fiberι p (p.app _ e)) (fiberι p' (p'.app _ (f.app _ e)))
-      (fiberMap p p' f g comm e) f (fiberMap_ι p p' f g comm e).symm
-        (fiberι_point p e) (fiberι_point p' (f.app _ e)) (fiberMap_point p p' f g comm e) rfl n)
-    (KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl hb n)
-    (exact_total_base p e n) (exact_connecting_fiber p e n) (exact_fiber_total p e n)
-    (exact_total_base p' (f.app _ e) n) (exact_connecting_fiber p' (f.app _ e) n)
-    (exact_fiber_total p' (f.app _ e) n)
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism (n + 1) f hf rfl)
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism (n + 1) g hg hb)
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism n f hf rfl)
-    (KanHomotopyGroup.map_bijective_of_piIsomorphism n g hg hb)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g) (e : E _⦋0⦌) (n : ℕ) :
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e)
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_point p p' f g comm e)) := by
+  let hb := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e
+  exact _root_.SerrePositivity.InfinityCategories.Kan.group_five_lemma
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n + 1) p rfl) (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e))
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) p rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n + 1) p' rfl) (_root_.SerrePositivity.InfinityCategories.Kan.connectingHom p' (f.app _ e) n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p' (p'.app _ (f.app _ e)))
+      (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p' (f.app _ e))) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) p' rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n + 1) f rfl) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n + 1) g hb)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_point p p' f g comm e))
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) f rfl) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) g hb)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl hb (n + 1))
+    (fun a ↦ _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural p p' f g comm e (n + 1) a)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p' (p'.app _ (f.app _ e)))
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap p p' f g comm e) f (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι p p' f g comm e).symm
+        (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p' (f.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_point p p' f g comm e) rfl n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p p' f g comm rfl rfl rfl hb n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base p e n) (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber p e n) (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total p e n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base p' (f.app _ e) n) (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber p' (f.app _ e) n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total p' (f.app _ e) n)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism (n + 1) f hf rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism (n + 1) g hg hb)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n f hf rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n g hg hb)
 
 end
 
-end SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.InfinityCategories.Kan.FibrationSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMap_positive_bijective := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_positive_bijective

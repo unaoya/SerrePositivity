@@ -33,7 +33,7 @@ structure PresentedPerfectDGBFStage (r : ℕ) where
 def presentedPerfectDGBFInitialStage : PresentedPerfectDGBFStage.{u, v} A 0 where
   functor := presentedPerfectDGBFFirstFunctor A
   comparison := presentedPerfectDGBFFirstComparison A
-  naturality := strictSimplicialTransformation_whisker _ _
+  naturality := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGBFFirstComparisonTransformation A)
     (presentedPerfectDGBFFirstComparison A)
     (presentedPerfectDGBFFirstComparisonTransformation_app A)

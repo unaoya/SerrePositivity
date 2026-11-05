@@ -18,8 +18,8 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の任意の native HA 部分集合成分は、実逆 dg 関手から再抽出すると厳密に戻る。 -/
 lemma simplexHAInverseFunctor_native_hom {N : ℕ} (s : DGNerve.Simplex A D N)
     (I : Finset (Fin (N + 1))) (a b : Fin (N + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (simplexSubsetNonempty I hI))
-    (hb : b = I.max' (simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
     (cubicalLambdaNativeSimplex A (simplexHAInverseFunctor A s)).hom I a b k hI ha hb hk =
       s.hom I a b k hI ha hb hk := by
   let m := I.card - 2

@@ -20,7 +20,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の右ブロック保持の評価は、元の連結射の右 tensor。 -/
 lemma serreCubeRightBlock_keep_evaluation (n : ℕ) {m k : ℕ}
-    (f : ConcreteCube.mk m ⟶ ConcreteCube.mk k) :
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) :
     serreConcreteCubeMap A
         (concreteCubeRightBlockHom n (concreteCubeRightKeepHom f)) =
       serreCubeRightTensorMap A (n := n + m) (m := n + k)
@@ -31,7 +31,7 @@ lemma serreCubeRightBlock_keep_evaluation (n : ℕ) {m k : ℕ}
 
 /-- 次元を固定した元の Serre 射は、元の右端保持を回収する。 -/
 lemma serreConcreteCubeMap_keep {n m : ℕ}
-    (f : ConcreteCube.mk n ⟶ ConcreteCube.mk m) :
+    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) :
     serreConcreteCubeMap A (concreteCubeRightKeepHom f) =
       serreCubeRightTensorMap A (n := n) (m := m) (serreConcreteCubeMap A f) :=
   serreConcreteCubeRightKeep_tensor A f

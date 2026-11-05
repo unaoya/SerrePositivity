@@ -16,7 +16,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の Kan Hom の実辺に沿い、同じ関手圏の零対象条件を移送する。 -/
-theorem stableHomZeroVertex_of_edge {A B : StableQCat.{u}}
+theorem stableHomZeroVertex_of_edge {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     {v w : (A ⟶[SSet.{u}] B) _⦋0⦌} (e : SSet.Edge v w)
     (hv : StableHomZeroVertex A B v) : StableHomZeroVertex A B w := by
   have he : IsInvertibleEdge e.toTruncated :=
@@ -26,7 +26,7 @@ theorem stableHomZeroVertex_of_edge {A B : StableQCat.{u}}
     (asIso (Truncated.HomotopyCategory.homMk e.toTruncated)))
 
 /-- 元の Kan Hom の辺の両端で、零値条件は同値である。 -/
-theorem stableHomZeroVertex_iff_of_edge {A B : StableQCat.{u}}
+theorem stableHomZeroVertex_iff_of_edge {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     {v w : (A ⟶[SSet.{u}] B) _⦋0⦌} (e : SSet.Edge v w) :
     StableHomZeroVertex A B v ↔ StableHomZeroVertex A B w := by
   have he : IsInvertibleEdge e.toTruncated :=

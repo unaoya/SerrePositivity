@@ -37,16 +37,16 @@ local notation "o" => dgOdotMilnorActualOuterDiagram R d h
 規約：二面の S 内の別代表は仮定しない。使われ方：d④ の実構成の供給境界。 -/
 structure DGOdotMilnorActualRectangleInput where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R
-  rightBoundary : VerdierSquareBoundaryIso (r).square
-    (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R)
-  rightComparison : VerdierSquareDiagramIso (r).square
-    (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary
-  outerBoundary : VerdierSquareBoundaryIso (o).square
-    (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R)
-  outerComparison : VerdierSquareDiagramIso (o).square
-    (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary
-  boundary : VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R) (L).rectangleDiagram
-  comparison : VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
+  rightBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (r).square
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R)
+  rightComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (r).square
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary
+  outerBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (o).square
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R)
+  outerComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (o).square
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R) (L).rectangleDiagram
+  comparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
     (L).rectangleDiagram boundary
   kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare diagram 2) 0 0 =
     coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)
@@ -78,7 +78,7 @@ theorem completedComparison_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp
 /-- 概要：元対角始域への増大屋根は同じ実長方形の始域に接続する。
 方針：構成済みの実屋根を同じ厚核頂点へ照合する。
 規約：元始域の S 頂点等号は要求しない。使われ方：同じ全比較の始域成分。 -/
-def sourceRoof : RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
+def sourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
     (coherentNerveVertex (dgOdotDiagonalSourceInput R d))
     (squareVertex ((β_ _ _).hom ≫ pastingSquare v.diagram 2) 0 0) := by
   rw [v.kernel_vertex]
@@ -91,7 +91,7 @@ def sourceValueIso (E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}) :
     VertexIso ((dgKInputPerfectNu R ≫ E).app _
       (coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
       (squareVertex (((β_ _ _).hom ≫ pastingSquare (L).rectangleDiagram 2) ≫ E) 0 0) :=
-  RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso
     v.boundary v.comparison v.sourceRoof E
 
 end DGOdotMilnorActualRectangleInput

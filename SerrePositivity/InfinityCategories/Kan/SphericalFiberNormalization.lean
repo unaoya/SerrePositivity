@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
 public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.KST.Spectra.SphericalFiberLift
+namespace SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+open _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -24,8 +29,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 2) (p.app _ e)}
-  {a : Fin (n + 3) → (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e)}
-  {ia c : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e)}
+  {a : Fin (n + 3) → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
+  {ia c : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}
 
 /-- 概要：終端の相対ホーンの既知の面。
 方針：元の単体、逆元の積、二面の差の積を順に置く。
@@ -34,17 +39,17 @@ variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
 def terminalFace
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a) (j : Fin (n + 4)) : (Δ[n + 2] : SSet.{u}) ⟶ E :=
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) (j : Fin (n + 4)) : (Δ[n + 2] : SSet.{u}) ⟶ E :=
   if j.val = n then T.map else
-  if j.val = n + 2 then hi.map ≫ fiberι p (p.app _ e) else
-  if j.val = n + 3 then hc.map ≫ fiberι p (p.app _ e) else SSet.const e
+  if j.val = n + 2 then hi.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else
+  if j.val = n + 3 then hc.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e
 
 /-- fiber の先頭の定数面は全空間でも定数。 -/
 lemma lowerMap (hlower : ∀ j, j.val < n + 1 → a j = .const)
     (j : Fin (n + 3)) (hj : j.val < n + 1) :
-    (a j).map ≫ fiberι p (p.app _ e) = SSet.const e := by
+    (a j).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) = SSet.const e := by
   rw [hlower j hj]
-  simp only [RelativeMorphism.const_map, const_comp, fiberι_point]
+  simp only [RelativeMorphism.const_map, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
 
 set_option maxHeartbeats 1200000 in
 -- 三つの指定面と退化面の全ての交わりを有限分岐で計算する。
@@ -55,10 +60,10 @@ set_option maxHeartbeats 1200000 in
 lemma terminalCompatible
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a)
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (hlower : ∀ j, j.val < n + 1 → a j = .const) :
     horn.IsCompatible (i := (Fin.last (n + 1)).castSucc.castSucc)
-      (fun j _ ↦ terminalFace hi hc T j) := by
+      (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace hi hc T j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 1 := by intro he; exact hj (Fin.ext he)
@@ -66,21 +71,21 @@ lemma terminalCompatible
   have hjb : j.val < n + 4 := j.isLt
   have hkb : k.val < n + 4 := k.isLt
   have hlt : j.val < k.val := hjk
-  simp only [terminalFace]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace]
   split_ifs <;> try simp only [← Category.assoc] <;>
-    try simp only [SimplexFaces.mul_face, RelativeMorphism.const_map, comp_const]
-  all_goals (try split_ifs) <;> try simp only [const_comp, fiberι_point]
+    try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, RelativeMorphism.const_map, comp_const]
+  all_goals (try split_ifs) <;> try simp only [const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
   all_goals try rw [T.face_eq]
   all_goals first
     | rfl
-    | (apply congrArg (fun t ↦ (a t).map ≫ fiberι p (p.app _ e)); apply Fin.ext
+    | (apply congrArg (fun t ↦ (a t).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)); apply Fin.ext
        simp only [Fin.val_last, Fin.val_castSucc, Fin.val_succ,
          Fin.coe_castPred, Fin.val_pred] at *
        omega)
-    | (apply lowerMap hlower
+    | (apply _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.lowerMap hlower
        simp only [Fin.val_pred, Fin.val_last, Fin.val_castSucc, Fin.val_succ] at *
        omega)
-    | (symm; apply lowerMap hlower
+    | (symm; apply _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.lowerMap hlower
        simp only [Fin.coe_castPred, Fin.val_last, Fin.val_castSucc,
          Fin.val_succ] at *
        omega)
@@ -96,15 +101,15 @@ lemma terminalCompatible
 lemma terminalFace_comp
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a) (j : Fin (n + 4))
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) (j : Fin (n + 4))
     (hj : j ≠ (Fin.last (n + 1)).castSucc.castSucc) :
-    terminalFace hi hc T j ≫ p =
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace hi hc T j ≫ p =
       stdSimplex.δ j ≫ stdSimplex.σ (Fin.last n).castSucc.castSucc ≫ s.map := by
-  rw [SimplexFaces.degenerate_face]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
   have hj' : j.val ≠ n + 1 := by intro he; exact hj (Fin.ext he)
-  simp only [terminalFace, Fin.ext_iff, Fin.val_last, Fin.val_castSucc, Fin.val_succ]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace, Fin.ext_iff, Fin.val_last, Fin.val_castSucc, Fin.val_succ]
   split_ifs <;> try (exfalso; omega)
-  all_goals simp only [Category.assoc, fiberι_comp, comp_const, const_comp, T.map_comp]
+  all_goals simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, comp_const, const_comp, T.map_comp]
 
 /-- 概要：終端ホーンの欠ける面は最後の面以外で定数となる。
 方針：二面交換公式で既知の面へ移し、積の三面を計算する。
@@ -113,13 +118,13 @@ lemma terminalFace_comp
 lemma terminalOutput_face
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a)
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (hlower : ∀ j, j.val < n + 1 → a j = .const)
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ E)
     (hφ : ∀ j, j ≠ (Fin.last (n + 1)).castSucc.castSucc →
-      stdSimplex.δ j ≫ φ = terminalFace hi hc T j) (j : Fin (n + 3)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace hi hc T j) (j : Fin (n + 3)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ =
-      if j = Fin.last (n + 2) then c.map ≫ fiberι p (p.app _ e) else SSet.const e := by
+      if j = Fin.last (n + 2) then c.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) else SSet.const e := by
   have hjb : j.val < n + 3 := j.isLt
   let q : Fin (n + 3) := (Fin.last n).castSucc.castSucc
   have hq : (Fin.last (n + 1)).castSucc.castSucc = q.succ := by apply Fin.ext; rfl
@@ -130,14 +135,14 @@ lemma terminalOutput_face
       have := hj
       simp only [Fin.le_def, q, Fin.val_castSucc, Fin.val_last] at this
       omega)]
-    simp only [terminalFace]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace]
     split_ifs <;> try simp only [← Category.assoc] <;>
-      try simp only [SimplexFaces.mul_face, RelativeMorphism.const_map]
-    all_goals (try split_ifs) <;> try simp only [const_comp, fiberι_point]
+      try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, RelativeMorphism.const_map]
+    all_goals (try split_ifs) <;> try simp only [const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
     all_goals try rw [T.face_eq]
     all_goals first
       | rfl
-      | (apply lowerMap hlower
+      | (apply _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.lowerMap hlower
          simp only [Fin.val_last, Fin.val_castSucc, Fin.val_succ, q] at *
          omega)
       | (exfalso
@@ -153,10 +158,10 @@ lemma terminalOutput_face
       have hjv := hm
       simp only [Fin.le_def, Fin.val_last, Fin.val_castSucc] at hjv
       omega)]
-    simp only [terminalFace]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace]
     split_ifs <;> try simp only [← Category.assoc] <;>
-      try simp only [SimplexFaces.mul_face, RelativeMorphism.const_map]
-    all_goals (try split_ifs) <;> try simp only [const_comp, fiberι_point]
+      try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face, RelativeMorphism.const_map]
+    all_goals (try split_ifs) <;> try simp only [const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
     all_goals try rw [T.face_eq]
     all_goals first
       | rfl
@@ -172,19 +177,19 @@ lemma terminalOutput_face
 def terminalLift [Fibration p]
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a)
-    (hlower : ∀ j, j.val < n + 1 → a j = .const) : BoundaryLift p e s := by
-  let hex := (terminalCompatible hi hc T hlower).exists_lift p
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
+    (hlower : ∀ j, j.val < n + 1 → a j = .const) : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s := by
+  let hex := (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalCompatible hi hc T hlower).exists_lift p
     (stdSimplex.σ (Fin.last n).castSucc.castSucc ≫ s.map)
-    (terminalFace_comp hi hc T)
+    (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace_comp hi hc T)
   let φ := Classical.choose hex
   have hφ := (Classical.choose_spec hex).1
   have hcomp := (Classical.choose_spec hex).2
   refine ⟨stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ, ?_, ?_⟩
-  · rw [Category.assoc, hcomp, SimplexFaces.degenerate_face]
+  · rw [Category.assoc, hcomp, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
     exact ite_eq_left (Or.inr (by apply Fin.ext; rfl))
   · intro j hj
-    rw [terminalOutput_face hi hc T hlower φ hφ j, ite_eq_right hj]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalOutput_face hi hc T hlower φ hφ j, ite_eq_right hj]
 
 /-- 概要：正規化した持ち上げの最後の面は指定した差の単体。
 方針：fiber の包含で比較し、終端ホーンの最後の面を計算する。
@@ -193,15 +198,66 @@ def terminalLift [Fibration p]
 lemma terminalLift_boundary [Fibration p]
     (hi : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).castSucc) .const (Fin.last n))
     (hc : PtSimplex.MulStruct ia (a (Fin.last (n + 1)).succ) c (Fin.last n))
-    (T : SphericalFiberLift p e s a)
+    (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a)
     (hlower : ∀ j, j.val < n + 1 → a j = .const) :
-    (terminalLift hi hc T hlower).boundary = c := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift hi hc T hlower).boundary = c := by
   ext : 1
-  apply fiber_hom_ext p (p.app _ e)
-  rw [BoundaryLift.boundary_ι]
-  exact (terminalOutput_face hi hc T hlower _
-    (Classical.choose_spec ((terminalCompatible hi hc T hlower).exists_lift p _
-      (terminalFace_comp hi hc T))).1 (Fin.last (n + 2))).trans (ite_eq_left rfl)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_ι]
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalOutput_face hi hc T hlower _
+    (Classical.choose_spec ((_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalCompatible hi hc T hlower).exists_lift p _
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace_comp hi hc T))).1 (Fin.last (n + 2))).trans (ite_eq_left rfl)
 
 end
-end SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.lowerMap := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.lowerMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalCompatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalCompatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace_comp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift_boundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalOutput_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalOutput_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_7

@@ -19,8 +19,8 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 
 variable {C : Type v} [Category.{w} C]
-  (Φ : StableInfinity.{u} ⟶ Sp.{u}) (U : C ⥤ hoFunctor.obj Sp.{u})
-  (P : C ⥤ StableCategory.{u})
+  (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}) (U : C ⥤ hoFunctor.obj Sp.{u})
+  (P : C ⥤ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 def IsKConnectiveOn (k : ℤ) : Prop :=
   IsLocalizingInvariant Φ ∧ (∀ X : C, SpectrumHo.IsPiConnective (U.obj X) 0) ∧

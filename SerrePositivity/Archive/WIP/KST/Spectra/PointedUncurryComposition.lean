@@ -30,18 +30,18 @@ private lemma closedComp_post {D : Type u} [Category.{v} D] [MonoidalCategory D]
 
 /-- 豊穣合成を uncurry することは、第一入力の懸垂と第二入力の uncurry を合成すること。 -/
 lemma uncurryAction_comp (A B W : PointedSimplicialSet.{u}) :
-    MonoidalClosed.comp A B (loopSpace W) ≫ uncurryAction A W =
+    MonoidalClosed.comp A B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W) ≫ uncurryAction A W =
       (suspensionHom A B ⊗ₘ uncurryAction B W) ≫
-        MonoidalClosed.comp (suspension A) (suspension B) W := by
-  have hc := closedComp_post (suspension A) (suspension B)
+        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W := by
+  have hc := closedComp_post (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B)
     ((ihom.ev PointedSimplicialSet.circle.{u}).app W)
-  change MonoidalClosed.comp (suspension A) (suspension B) (suspension (loopSpace W)) ≫
-      PointedObject.basedHomMap (suspension A)
+  change MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W)) ≫
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A)
         ((ihom.ev PointedSimplicialSet.circle.{u}).app W) =
-    (𝟙 (PointedObject.basedHom (suspension A) (suspension B)) ⊗ₘ
-      PointedObject.basedHomMap (suspension B)
+    (𝟙 (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B)) ⊗ₘ
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B)
         ((ihom.ev PointedSimplicialSet.circle.{u}).app W)) ≫
-      MonoidalClosed.comp (suspension A) (suspension B) W at hc
+      MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W at hc
   dsimp only [uncurryAction]
   rw [← Category.assoc, suspensionHom_comp, Category.assoc, hc]
   rw [← Category.assoc, ← tensorHom_comp]

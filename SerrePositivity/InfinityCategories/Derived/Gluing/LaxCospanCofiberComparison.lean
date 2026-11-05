@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {A B C A' B' C' : SSet.{u}}
   [Quasicategory C] [Quasicategory C'] [IsStable C] [IsStable C']
   (p : A ⟶ C) (q : B ⟶ C) (p' : A' ⟶ C') (q' : B' ⟶ C')
@@ -22,8 +22,8 @@ variable {A B C A' B' C' : SSet.{u}}
 
 def laxCospanCofiberComparison : FunctorIso
     (F2.laxPullbackCospanMap p q p' q' a b c hp hq ≫
-      CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q'))
-    (CofiberFamily.cofiber C (F2.laxPullbackArrow p q) ≫ c) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C' (F2.laxPullbackArrow p' q'))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber C (F2.laxPullbackArrow p q) ≫ c) := by
   have h₁ := CofiberFamily.precompositionIso (F2.laxPullbackArrow p' q')
     (F2.laxPullbackCospanMap p q p' q' a b c hp hq)
   rw [F2.laxPullbackCospanMap_arrow] at h₁

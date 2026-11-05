@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.Fibration
 方針：直接端を共通始点とし、指定二辺とその実合成を記録する。
 規約：同型類だけでなく元の実一単体を保持する。
 使われ方：有限入力点で指定する長 Hom の二単体。 -/
-structure VerdierOriginalNativeComposition (d : VerdierDiagram.{u}) (j k : Fin 2) where
+structure VerdierOriginalNativeComposition (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) where
   bottom : Truncated.Edge (X := (truncation 2).obj (verdierOriginalNativeHomTarget d))
     ((verdierOriginalNativeHomFamily d j).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ coherentTriangleDirectPath))
@@ -50,7 +50,7 @@ set_option maxHeartbeats 800000 in
 方針：元の四角形の四辺を厳密回収し、固定直接端の恒等辺を消去する。
 規約：全長 Hom を選び直さず、既存の実三辺の合成判定を消費する。
 使われ方：K-6 c4 の有限頂点で指定した合成充填を全族へ戻す。 -/
-def verdierOriginalNativeComposition (d : VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierOriginalNativeComposition (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     VerdierOriginalNativeComposition d j k := by
   let Q := verdierOriginalNativeHomSquare d j k
   let a := (verdierOriginalNativeHomFamily d j).app (Opposite.op ⦋0⦌)

@@ -45,11 +45,11 @@ lemma cubeHom_comparison : cubeHom p q a b h ≫
 lemma cubeHom_apex :
     Arrow.mk (functorHomEvaluate (X := Sp.{u}) (cubeHom p q a b h) (joinApexVertex _)) =
       Arrow.mk (SpectrumHo.hom (HomotopyFiberComparison.map p q a b h)) := by
-  apply arrow_mk_cancel_comp_right (FiberModel.homotopyFiberConeTransportIso_apex q)
+  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_right (FiberModel.homotopyFiberConeTransportIso_apex q)
   have he := congrArg (fun α ↦ functorHomEvaluate (X := Sp.{u}) α (joinApexVertex _))
     (cubeHom_comparison p q a b h)
   rw [functorHomEvaluate_comp, functorHomEvaluate_comp] at he
-  have hr := arrow_mk_comp_of_any_identity
+  have hr := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity
     (functorHomEvaluate (X := Sp.{u}) (FiberModel.homotopyFiberConeTransportIso p).hom
       (joinApexVertex _))
     (functorHomEvaluate (X := Sp.{u}) (replacedHom p q a b h) (joinApexVertex _))

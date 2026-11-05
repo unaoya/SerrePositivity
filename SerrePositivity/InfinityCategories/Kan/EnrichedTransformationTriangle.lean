@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
 public import SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformationHom
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+end SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+open SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} D]
   (F G H : EnrichedFunctor SSet.{u} C D)
   (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
@@ -27,30 +32,30 @@ def stage (i : Fin 3) : EnrichedFunctor SSet.{u} C D :=
   if i = 0 then F else if i = 1 then G else H
 
 /-- 三段の円柱の対象の像。 -/
-def obj (X : EnrichedOrderedCylinder.Object (Fin 3) C) : D :=
-  (stage F G H X.position).obj X.val
+def obj (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) : D :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage F G H X.position).obj X.val
 
 /-- 同じ段では元の Hom、段の間では指定した自然変換で送る。 -/
-def map : (X Y : EnrichedOrderedCylinder.Object (Fin 3) C) →
-    EnrichedOrderedCylinder.hom X Y ⟶ (obj F G H X ⟶[SSet] obj F G H Y)
+def map : (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) →
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.hom X Y ⟶ (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H X ⟶[SSet] _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H Y)
   | ⟨⟨0, _⟩, x⟩, ⟨⟨0, _⟩, y⟩ => snd _ _ ≫ F.map x y
-  | ⟨⟨0, _⟩, x⟩, ⟨⟨1, _⟩, y⟩ => snd _ _ ≫ EnrichedUnitTransformation.hom η x y
-  | ⟨⟨0, _⟩, x⟩, ⟨⟨2, _⟩, y⟩ => snd _ _ ≫ EnrichedUnitTransformation.hom ζ x y
+  | ⟨⟨0, _⟩, x⟩, ⟨⟨1, _⟩, y⟩ => snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom η x y
+  | ⟨⟨0, _⟩, x⟩, ⟨⟨2, _⟩, y⟩ => snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom ζ x y
   | ⟨⟨1, _⟩, x⟩, ⟨⟨0, _⟩, y⟩ =>
-      EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (1 : ℕ) ≤ 0 at h; omega) _
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (1 : ℕ) ≤ 0 at h; omega) _
   | ⟨⟨1, _⟩, x⟩, ⟨⟨1, _⟩, y⟩ => snd _ _ ≫ G.map x y
-  | ⟨⟨1, _⟩, x⟩, ⟨⟨2, _⟩, y⟩ => snd _ _ ≫ EnrichedUnitTransformation.hom θ x y
+  | ⟨⟨1, _⟩, x⟩, ⟨⟨2, _⟩, y⟩ => snd _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom θ x y
   | ⟨⟨2, _⟩, x⟩, ⟨⟨0, _⟩, y⟩ =>
-      EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (2 : ℕ) ≤ 0 at h; omega) _
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (2 : ℕ) ≤ 0 at h; omega) _
   | ⟨⟨2, _⟩, x⟩, ⟨⟨1, _⟩, y⟩ =>
-      EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (2 : ℕ) ≤ 1 at h; omega) _
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom _ _ (by intro h; change (2 : ℕ) ≤ 1 at h; omega) _
   | ⟨⟨2, _⟩, x⟩, ⟨⟨2, _⟩, y⟩ => snd _ _ ≫ H.map x y
   | ⟨⟨n + 3, hn⟩, _⟩, _ => False.elim (by omega)
   | _, ⟨⟨n + 3, hn⟩, _⟩ => False.elim (by omega)
 
 /-- 各段の恒等射は元の恒等射へ送られる。 -/
-lemma map_id (X : EnrichedOrderedCylinder.Object (Fin 3) C) :
-    EnrichedOrderedCylinder.identity X ≫ map F G H η θ ζ X X = eId SSet (obj F G H X) := by
+lemma map_id (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity X ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map F G H η θ ζ X X = eId SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H X) := by
   rcases X with ⟨i, x⟩
   fin_cases i
   all_goals
@@ -66,10 +71,10 @@ lemma map_id (X : EnrichedOrderedCylinder.Object (Fin 3) C) :
 lemma map_comp
     (hc : ∀ X, ζ.app X = (λ_ (𝟙_ SSet.{u})).inv ≫
       (η.app X ⊗ₘ θ.app X) ≫ eComp SSet (F.obj X) (G.obj X) (H.obj X))
-    (X Y Z : EnrichedOrderedCylinder.Object (Fin 3) C) :
-    EnrichedOrderedCylinder.composition X Y Z ≫ map F G H η θ ζ X Z =
-      (map F G H η θ ζ X Y ⊗ₘ map F G H η θ ζ Y Z) ≫
-        eComp SSet (obj F G H X) (obj F G H Y) (obj F G H Z) := by
+    (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map F G H η θ ζ X Z =
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map F G H η θ ζ X Y ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map F G H η θ ζ Y Z) ≫
+        eComp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H X) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H Y) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H Z) := by
   rcases X with ⟨i, x⟩
   rcases Y with ⟨j, y⟩
   rcases Z with ⟨k, z⟩
@@ -89,29 +94,68 @@ lemma map_comp
     | exact ConcreteCategory.congr_hom (NatTrans.congr_app (G.map_comp x y z) d) fg
     | exact ConcreteCategory.congr_hom (NatTrans.congr_app (H.map_comp x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_left η x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_left η x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_right η x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_right η x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_left θ x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_left θ x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_right θ x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_right θ x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_left ζ x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_left ζ x y z) d) fg
     | exact ConcreteCategory.congr_hom
-        (NatTrans.congr_app (EnrichedUnitTransformation.hom_comp_right ζ x y z) d) fg
+        (NatTrans.congr_app (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_right ζ x y z) d) fg
     | exact ConcreteCategory.congr_hom
         (NatTrans.congr_app
-          (EnrichedUnitTransformation.hom_comp_factorization η θ ζ hc x y z) d) fg
+          (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_factorization η θ ζ hc x y z) d) fg
 
 /-- 成分での因子分解を、全ての高次の Hom を含む三段の円柱の関手へ実現する。 -/
 def functor
     (hc : ∀ X, ζ.app X = (λ_ (𝟙_ SSet.{u})).inv ≫
       (η.app X ⊗ₘ θ.app X) ≫ eComp SSet (F.obj X) (G.obj X) (H.obj X)) :
-    EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin 3) C) D where
-  obj := obj F G H
-  map := map F G H η θ ζ
-  map_id := map_id F G H η θ ζ
-  map_comp := map_comp F G H η θ ζ hc
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) D where
+  obj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj F G H
+  map := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map F G H η θ ζ
+  map_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_id F G H η θ ζ
+  map_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_comp F G H η θ ζ hc
 
-end SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+end SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.functor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.obj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.stage := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_8
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.stage._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage._proof_1

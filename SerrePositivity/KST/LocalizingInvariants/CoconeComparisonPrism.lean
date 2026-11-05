@@ -17,15 +17,15 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma spanComparisonPrism_pre_diagram {K L L' X : SSet.{u}} (j : L' ⟶ L)
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
-    spanComparisonPrism s ≫ (pre j).app X =
-      spanComparisonPrism (((pre j).app ((ihom K).obj X)).app (Opposite.op ⦋1⦌) s) := by
-  simp only [spanComparisonPrism]
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism s ≫ (pre j).app X =
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (((pre j).app ((ihom K).obj X)).app (Opposite.op ⦋1⦌) s) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism]
   rw [← uncurry_natural_right, Category.assoc,
     ← spanInternalHomSwap_pre_first, ← SSet.yonedaEquiv_symm_comp]
   rfl

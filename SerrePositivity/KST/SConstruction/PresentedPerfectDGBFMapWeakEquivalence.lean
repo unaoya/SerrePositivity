@@ -26,8 +26,8 @@ local instance presentedPerfectDGBFMapBoundary_kanComplex
 /-- 元の全境界 Kan 射の全基点 π 同型性は、同じ実 BF 射の全段へ移る。 -/
 lemma presentedPerfectDGBFMap_levelwise_of_boundary
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y)
-    (hf : ∀ r, KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right)
-    (n : ℕ) : KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
+    (hf : ∀ r, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right)
+    (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
   cases n with
   | zero =>
       rw [presentedPerfectDGBFMap_zero_app]
@@ -40,14 +40,14 @@ lemma presentedPerfectDGBFMap_levelwise_of_boundary
           (S.functor.obj X).obj := S.comparison X
       let d : ((presentedPerfectDGBFBoundaryFunctor A r).obj Y).obj ⟶
           (S.functor.obj Y).obj := S.comparison Y
-      have hc : KanPiIsomorphism c.right :=
+      have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right :=
         kanPiIsomorphism_of_localized_isIso _ (S.weak X)
-      have hd : KanPiIsomorphism d.right :=
+      have hd : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism d.right :=
         kanPiIsomorphism_of_localized_isIso _ (S.weak Y)
       have h := pointedPiIsomorphism_of_weakComparisonSquare
         (presentedPerfectDGBoundaryKanMap A r f).hom c d
         (show (S.functor.obj X).obj ⟶ (S.functor.obj Y).obj from
-          strictSimplicialOrdinaryMap S.functor f) (hf r) hc hd
+          _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap S.functor f) (hf r) hc hd
         (presentedPerfectDGBFStageComparison_naturality A r S f)
       erw [presentedPerfectDGBFMap_positive_app A f r]
       exact h
@@ -55,7 +55,7 @@ lemma presentedPerfectDGBFMap_levelwise_of_boundary
 /-- 元の全境界 Kan 射の弱同値性は、同じ実 BF 射の全整数 π 同型性を与える。 -/
 lemma presentedPerfectDGBFMap_piIsomorphism_of_boundary
     {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y)
-    (hf : ∀ r, KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right) :
+    (hf : ∀ r, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBoundaryKanMap A r f).hom.right) :
     OmegaSpectrum.PiIsomorphism (presentedPerfectDGBFMap A f) :=
   OmegaSpectrum.piIsomorphism_of_levelwise _
     (presentedPerfectDGBFMap_levelwise_of_boundary A f hf)

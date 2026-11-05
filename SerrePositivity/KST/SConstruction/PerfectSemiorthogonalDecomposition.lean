@@ -19,7 +19,7 @@ open scoped Simplicial
 /-- 同じ Cat^perf の実対象の間の、完全射・実随伴・核条件を持つ半直交分解。 -/
 abbrev PerfectSemiorthogonalDecomposition
     (a b t : perfectStableInfinity.{u} _⦋0⦌) :=
-  SemiorthogonalDecomposition (perfectStableObject a) (perfectStableObject b)
+  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition (perfectStableObject a) (perfectStableObject b)
     (perfectStableObject t)
 
 /-- 元の完全な半直交分解は、同じ商と恒等完備化による Cat^perf の列を与える。 -/

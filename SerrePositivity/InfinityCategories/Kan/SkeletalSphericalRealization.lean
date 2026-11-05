@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+end SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+open SerrePositivity.KST.Spectra.SkeletalSphericalRealization
 
 noncomputable section
 
@@ -28,11 +33,11 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。実現した射のセルでの値の検査。 -/
 theorem characteristic_eq_yoneda (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
-    c.ιSigmaStdSimplex ≫ SkeletalCellAttachment.characteristicMap K d =
+    c.ιSigmaStdSimplex ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d =
       SSet.yonedaEquiv.symm
         (⟨c.simplex, K.mem_skeleton _⟩ : (K.skeleton (d + 1) : SSet.{u}) _⦋d⦌) := by
   apply (cancel_mono (K.skeleton (d + 1)).ι).1
-  rw [Category.assoc, SkeletalCellAttachment.cell_characteristicMap_ι, yonedaEquiv_symm_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_characteristicMap_ι, yonedaEquiv_symm_comp]
   rfl
 
 /-- 概要：任意のセルごとの境界定数単体の族は骨格上の射として実現できる。
@@ -48,24 +53,24 @@ theorem exists_map {K X : SSet.{u}} {d : ℕ} {x : X _⦋0⦌}
           (⟨s.val, K.mem_skeleton _⟩ : (K.skeleton (d + 1) : SSet.{u}) _⦋d⦌) ≫ f =
             (a s).map := by
   let φ := fun c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d ↦
-    (a (SkeletalCellAttachment.cellEquiv K d c)).map
-  have hw : SkeletalCellAttachment.attachingMap K d ≫ SSet.const x =
+    (a (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K d c)).map
+  have hw : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K d ≫ SSet.const x =
       relativeCellComplexOfMono.l (K.skeleton d).ι d ≫ Sigma.desc φ := by
     ext c : 1
     simp only [relativeCellComplexOfMono.l, Sigma.ι_map_assoc, Sigma.ι_comp_desc, comp_const]
-    change SSet.const x = (boundary d).ι ≫ (a (SkeletalCellAttachment.cellEquiv K d c)).map
+    change SSet.const x = (boundary d).ι ≫ (a (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K d c)).map
     rw [(a _).comm, Subcomplex.ofSimplex_ι, comp_const]
-  let f := (SkeletalCellAttachment.isPushout K d).desc (SSet.const x) (Sigma.desc φ) hw
-  refine ⟨f, (SkeletalCellAttachment.isPushout K d).inl_desc _ _ _, ?_⟩
+  let f := (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).desc (SSet.const x) (Sigma.desc φ) hw
+  refine ⟨f, (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).inl_desc _ _ _, ?_⟩
   intro s
-  let c := (SkeletalCellAttachment.cellEquiv K d).symm s
-  have hc : SkeletalCellAttachment.cellEquiv K d c = s :=
-    (SkeletalCellAttachment.cellEquiv K d).apply_symm_apply s
+  let c := (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K d).symm s
+  have hc : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K d c = s :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K d).apply_symm_apply s
   have hs : c.simplex = s.val := congrArg Subtype.val hc
   have hv := congrArg (fun k ↦ c.ιSigmaStdSimplex ≫ k)
-    ((SkeletalCellAttachment.isPushout K d).inr_desc (SSet.const x) (Sigma.desc φ) hw)
+    ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).inr_desc (SSet.const x) (Sigma.desc φ) hw)
   simp only [Sigma.ι_comp_desc] at hv
-  rw [← Category.assoc, characteristic_eq_yoneda] at hv
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda] at hv
   simpa only [φ, hc, hs] using hv
 
 /-- 概要：低い骨格で定数の射はその骨格に含まれる低次元単体で定数。
@@ -88,20 +93,20 @@ theorem lower_constant {K X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 規約：実際の次数は n + 2。定数条件の証明も一緒に構成する。
 使われ方：Goerss–Jardine I §7、VIII §1。係数から幾何への写像の存在。 -/
 theorem exists_realization {K X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌}
-    (a : K.nonDegenerate (n + 2) → Additive (KanHomotopyGroup X (n + 1) x)) :
+    (a : K.nonDegenerate (n + 2) → Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x)) :
     ∃ (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ X)
       (h : ∀ s : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
         SSet.yonedaEquiv.symm s ≫ f = SSet.const x),
-      SkeletalSphericalCochain.cochain f h = a := by
+      _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h = a := by
   choose r hr using fun s ↦ Quotient.exists_rep (Additive.toMul (a s))
-  obtain ⟨f, hf, hfr⟩ := exists_map r
-  refine ⟨f, lower_constant f hf, ?_⟩
+  obtain ⟨f, hf, hfr⟩ := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_map r
+  refine ⟨f, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf, ?_⟩
   funext s
-  have hs : SkeletalSphericalCochain.simplexValue f (lower_constant f hf) s.val = r s := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s.val = r s := by
     apply RelativeMorphism.ext
     exact hfr s
-  change SphericalBoundary.additiveClass
-    (SkeletalSphericalCochain.simplexValue f (lower_constant f hf) s.val) = a s
+  change _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass
+    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s.val) = a s
   rw [hs]
   exact congrArg Additive.ofMul (hr s)
 
@@ -110,22 +115,43 @@ theorem exists_realization {K X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋
 規約：最初の骨格の係数が指定した a と厳密に一致する。
 使われ方：Goerss–Jardine I §7、VIII §1。cocycle の幾何的な実現。 -/
 theorem exists_extended_realization {K X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌}
-    (a : K.nonDegenerate (n + 2) → Additive (KanHomotopyGroup X (n + 1) x))
-    (ha : NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2) a = 0) :
+    (a : K.nonDegenerate (n + 2) → Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))
+    (ha : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2) a = 0) :
     ∃ (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ X)
       (h : ∀ s : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
         SSet.yonedaEquiv.symm s ≫ f = SSet.const x)
       (g : (K.skeleton (n + 4) : SSet.{u}) ⟶ X),
-      SkeletalSphericalCochain.cochain f h = a ∧
+      _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h = a ∧
         Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ (n + 3))) ≫ g = f := by
-  obtain ⟨f, h, hf⟩ := exists_realization a
-  have hz : NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-      (SkeletalSphericalCochain.cochain f h) = 0 := by rw [hf]; exact ha
-  obtain ⟨g, hg⟩ := SkeletalSphericalCochain.exists_extension_of_differential_eq_zero f h hz
+  obtain ⟨f, h, hf⟩ := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_realization a
+  have hz : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h) = 0 := by rw [hf]; exact ha
+  obtain ⟨g, hg⟩ := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero f h hz
   exact ⟨f, h, g, hf, hg⟩
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+end SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.characteristic_eq_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_extended_realization := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_extended_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_map := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_realization := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.lower_constant := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.characteristic_eq_yoneda._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda._proof_2

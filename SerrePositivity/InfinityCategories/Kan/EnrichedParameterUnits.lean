@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
 
 /-!
@@ -12,6 +14,9 @@ public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
 universe u v w
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V]
   {C : Type w} [EnrichedCategory V C]
 
@@ -36,7 +41,19 @@ variable [BraidedCategory V]
 lemma enriched_parameter_square_id {A : V} {X Y : C} (e : A ⟶ (X ⟶[V] Y)) :
     (e ⊗ₘ eId V Y) ≫ eComp V X Y Y =
       (β_ A (𝟙_ V)).hom ≫ (eId V X ⊗ₘ e) ≫ eComp V X X Y := by
-  rw [enriched_parameter_comp_id, enriched_parameter_id_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_comp_id, _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_id_comp,
     ← Category.assoc, braiding_leftUnitor]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_comp_id := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_comp_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_id_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_id_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_square_id := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id

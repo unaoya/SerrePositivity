@@ -27,7 +27,7 @@ theorem zeroMiddleFactorizationTetraSupply_of_indS9b : zeroMiddleFactorizationTe
   fun X₀ X₁ X₂ X₃ f g h K T hfirst hlast =>
     controlledFactorizationTetraFamily X₀ X₁ X₂ X₃ f g h K T hfirst hlast
 
-variable (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：元の native 二胞体を厳密保持する、実供給済みの因子分解三単体族。

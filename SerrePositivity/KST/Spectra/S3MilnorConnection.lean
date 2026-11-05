@@ -21,17 +21,17 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 /-- 三認証到着時の一回の代入。始域照合は実平坦核にのみ要求する。 -/
 def milnorActualInput
     (G : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R)
-    (br : VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
-      (verdierRectangleFace 0 ≫ G ≫ dgKInputPerfectNu R))
-    (bo : VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (verdierRectangleFace 1 ≫ G ≫ dgKInputPerfectNu R))
-    (b : VerdierRectangleBoundaryIso (G ≫ dgKInputPerfectNu R)
+    (br : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ dgKInputPerfectNu R))
+    (bo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ dgKInputPerfectNu R))
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (G ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram)
-    (er : VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
-      (verdierRectangleFace 0 ≫ G ≫ dgKInputPerfectNu R) br)
-    (eo : VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (verdierRectangleFace 1 ≫ G ≫ dgKInputPerfectNu R) bo)
-    (e : VerdierRectangleDiagramIso (G ≫ dgKInputPerfectNu R)
+    (er : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ dgKInputPerfectNu R) br)
+    (eo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ dgKInputPerfectNu R) bo)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram b)
     (hk : squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0 =
       coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :
@@ -53,7 +53,7 @@ theorem milnorActual_isPullback
     v.rightComparison v.outerComparison v.comparison hE
 
 /-- 同じ実平坦核の頂点から、構成済みの元対角始域への屋根を回収する。 -/
-def milnorSourceRoof : RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
+def milnorSourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
     (coherentNerveVertex (dgOdotDiagonalSourceInput R d))
     (squareVertex ((β_ _ _).hom ≫ pastingSquare v.diagram 2) 0 0) := v.sourceRoof
 

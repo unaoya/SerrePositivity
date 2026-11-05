@@ -35,11 +35,11 @@ lemma assemblyCrossedFamily_edge_interchange (r : ℕ)
     {e₀ e₁ : (kanAssemblyMixedChoices r g) _⦋0⦌}
     (a : (oneDirectionInverseMixedChoices r f).Edge i₀ i₁)
     (b : (kanAssemblyMixedChoices r g).Edge e₀ e₁) :
-    SSet.HomotopyCategory.homMk ((cartesianEdgePair a (.id e₀)).map (assemblyCrossedFamily r f g)) ≫
-      SSet.HomotopyCategory.homMk ((cartesianEdgePair (.id i₁) b).map (assemblyCrossedFamily r f g)) =
-    SSet.HomotopyCategory.homMk ((cartesianEdgePair (.id i₀) b).map (assemblyCrossedFamily r f g)) ≫
-      SSet.HomotopyCategory.homMk ((cartesianEdgePair a (.id e₁)).map (assemblyCrossedFamily r f g)) :=
-  cartesianEdgeInterchange (assemblyCrossedFamily r f g) a b
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair a (.id e₀)).map (assemblyCrossedFamily r f g)) ≫
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id i₁) b).map (assemblyCrossedFamily r f g)) =
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id i₀) b).map (assemblyCrossedFamily r f g)) ≫
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair a (.id e₁)).map (assemblyCrossedFamily r f g)) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeInterchange (assemblyCrossedFamily r f g) a b
 
 /-- 逆射側の指定した混合選択と延長側の指定した混合選択の合成の頂点。 -/
 lemma assemblyCrossedFamily_vertex (r : ℕ) {X Y Z : StableModel.{u}}

@@ -29,7 +29,7 @@ local instance (X Y : OmegaSpectrum.{w}) :
 
 variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (Z : DGKappaZeroInput R D I)
-  (d : RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R))
+  (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R))
   (hMiddle : squareVertex d.square 1 0 = coherentNerveVertex (dgKappaResolvedConeKInput R D I))
   (hRight : squareVertex d.square 1 1 = coherentNerveVertex (dgKappaSuspensionKInput R D I))
 

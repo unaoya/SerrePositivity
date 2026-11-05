@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
 public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance uniformStableFiniteLimits {X : SSet.{u}} [Quasicategory X] [IsStable X] :
     HasFiniteLimits X := hasFiniteLimits_of_isStable _
@@ -36,7 +41,7 @@ def uniformTerminalRefinementSquare {X : SSet.{u}} (P : SSet.{u}) {n : ℕ}
 
 lemma uniformTerminalRefinementSquare_isPullback {X : SSet.{u}} [Quasicategory X]
     [IsStable X] (P : SSet.{u}) {n : ℕ} (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) :
-    IsPullbackSquare (uniformTerminalRefinementSquare P F) := by
+    IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F) := by
   have hF := terminalRefinementSquare_isPullback (B := ⟨X, inferInstance, inferInstance⟩) F
   apply (isPullbackSquare_functor_iff _).mpr
   intro k
@@ -44,7 +49,7 @@ lemma uniformTerminalRefinementSquare_isPullback {X : SSet.{u}} [Quasicategory X
   intro p
   have hn : (ihom (Δ[n] : SSet.{u})).map (constantFunctorMap P X) ≫ evaluateFunctorAt k =
       evaluateFunctorAt k ≫ constantFunctorMap P X := rfl
-  simp only [uniformTerminalRefinementSquare, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare, Category.assoc]
   rw [← Category.assoc ((ihom (Δ[n] : SSet.{u})).map (constantFunctorMap P X))
     (evaluateFunctorAt k) (evaluateFunctorAt p), hn, Category.assoc,
     spanConstantFunctorMap_evaluate, Category.comp_id]
@@ -53,8 +58,8 @@ lemma uniformTerminalRefinementSquare_isPullback {X : SSet.{u}} [Quasicategory X
 /-- 全パラメータの実補完は、同じ元の一つの補完の定値族として厳密に回収される。 -/
 lemma uniformTerminalRefinementSquare_family {X : SSet.{u}} [Quasicategory X] [IsStable X]
     (P : SSet.{u}) {n : ℕ} (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) :
-    parametricPullbackDiagramFamily (uniformTerminalRefinementSquare P F)
-      (uniformTerminalRefinementSquare_isPullback P F) = SSet.const (functorVertex F) := by
+    parametricPullbackDiagramFamily (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback P F) = SSet.const (functorVertex F) := by
   have : Mono ((ihom (Δ[n] : SSet.{u})).map
       (fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
         IsPullbackDiagramVertex).ι) := (ihom (Δ[n] : SSet.{u})).map_mono _
@@ -62,7 +67,7 @@ lemma uniformTerminalRefinementSquare_family {X : SSet.{u}} [Quasicategory X] [I
     (fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
       IsPullbackDiagramVertex).ι)).mp
   rw [parametricPullbackDiagramFamily_ι, parametricPullbackSquares,
-    uniformTerminalRefinementSquare, spanDiagramFamilyTranspose_post_constant, SSet.const_comp]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare, spanDiagramFamilyTranspose_post_constant, SSet.const_comp]
   change SSet.const (functorVertex (internalHomFlipHomEquiv (Δ[1] ⊗ Δ[1]) Δ[n] X
     (internalHomFlipHomEquiv Δ[n] (Δ[1] ⊗ Δ[1]) X
       (F ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι)))) =
@@ -79,30 +84,30 @@ lemma exists_uniformTerminalRefinement {X : SSet.{u}} [Quasicategory X] [IsStabl
     (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) :
     ∃ F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X,
-      F ≫ pullbackProjection X = simplexTerminalCospanFamily D s hs ∧
+      F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs ∧
       F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
         terminalPullbackColumnVertex s ∧
-      squareRightEdge ≫ uniformTerminalRefinementSquare P F =
+      squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F =
         internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj X)
           (SSet.const (functorVertex (internalHomFlipHomEquiv P Δ[1] X
             (SSet.const (functorVertex s))))) ∧
-      squareTopEdge ≫ uniformTerminalRefinementSquare P F =
+      squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F =
         internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj X)
-          (simplexTerminalArrowFamily (D ≫ constantFunctorMap P X)) ∧
-      uniformTerminalRefinementSquare P F ≫
+          (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily (D ≫ constantFunctorMap P X)) ∧
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
         squareColumnDiagram (internalHomFlipHomEquiv P Δ[1] X
           (SSet.const (functorVertex s))) := by
   obtain ⟨F, hF, hlast⟩ := exists_simplexTerminalPullbackFamily D s hs
   refine ⟨F, hF, hlast, ?_, ?_, ?_⟩
-  · rw [uniformTerminalRefinementSquare, ← Category.assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare, ← Category.assoc,
       terminalRefinementSquare_right D s hs F hF,
       ← spanInternalHomFlip_post (constantFunctorMap P X), SSet.const_comp,
       spanInternalHomFlip_const (K := P) s]
     rfl
-  · rw [uniformTerminalRefinementSquare, ← Category.assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare, ← Category.assoc,
       terminalRefinementSquare_top D s hs F hF,
-      ← spanInternalHomFlip_post (constantFunctorMap P X), ← simplexTerminalArrowFamily_post]
+      ← spanInternalHomFlip_post (constantFunctorMap P X), ← _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.simplexTerminalArrowFamily_post]
   · have ht : terminalRefinementSquare F ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) = squareColumnDiagram s := by
       rw [terminalRefinementSquare_evaluate, hlast]
@@ -110,74 +115,74 @@ lemma exists_uniformTerminalRefinement {X : SSet.{u}} [Quasicategory X] [IsStabl
     have hn : (ihom (Δ[n] : SSet.{u})).map (constantFunctorMap P X) ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) ≫ constantFunctorMap P X := rfl
-    rw [uniformTerminalRefinementSquare, Category.assoc, hn, ← Category.assoc, ht,
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare, Category.assoc, hn, ← Category.assoc, ht,
       spanInternalHomFlip_const]
     exact Category.assoc _ _ _
 
 /-- 完成族側の前段は、元の一つの実前段の定値族であり全パラメータで一様。 -/
 lemma uniformTerminalRefinementSquare_prefix {X : SSet.{u}} [Quasicategory X] [IsStable X]
     (P : SSet.{u}) {n : ℕ} (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) :
-    pullbackSourcePrefixFamily (parametricPullbackDiagramFamily
-      (uniformTerminalRefinementSquare P F) (uniformTerminalRefinementSquare_isPullback P F)) =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare P F) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback P F)) =
       SSet.const (functorVertex (F ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι ≫
         evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (0 : Fin 2)),
           (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) := by
-  rw [uniformTerminalRefinementSquare_family, pullbackSourcePrefixFamily, SSet.const_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_family, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily, SSet.const_comp]
   rfl
 
-lemma verdierSpanFamilyDenominatorArrow_pre {A B : StableCategory.{u}} (i : ExactMap A B)
+lemma verdierSpanFamilyDenominatorArrow_pre {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x z : B.obj _⦋0⦌) {S P : SSet.{u}} (j : S ⟶ P)
-    (g : P ⟶ verdierDenominatorSpanFamily i x z) :
-    verdierSpanFamilyDenominatorArrow i x z (j ≫ g) =
-      j ≫ verdierSpanFamilyDenominatorArrow i x z g := by
-  simp only [verdierSpanFamilyDenominatorArrow, Category.assoc]
+    (g : P ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x z) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z (j ≫ g) =
+      j ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z g := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow, Category.assoc]
 
 /-- 完成族から回収した同じ実 fiber の分母は、元の一つの実分母図式で厳密に一定。 -/
-lemma verdierSpanFamilyDenominatorArrow_fiber {A B : StableCategory.{u}} (i : ExactMap A B)
+lemma verdierSpanFamilyDenominatorArrow_fiber {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x z : B.obj _⦋0⦌) (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌)
-    {K : SSet.{u}} (g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x z) d) :
-    verdierSpanFamilyDenominatorArrow i x z
-        (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x z) d) =
+    {K : SSet.{u}} (g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z
+        (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d) =
       SSet.const (functorVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val)) := by
-  have hp : (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x z) d) ≫
-      verdierDenominatorSpanProjection i x z = SSet.const d := by
+  have hp : (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d) ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z = SSet.const d := by
     rw [Category.assoc, vertexFiberι_comp, SSet.comp_const]
   have he := congrArg (fun f => f ≫ (verdierDenominatorOver i x).ι ≫
     F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x)) hp
   simp only [Category.assoc, SSet.const_comp] at he
-  change verdierSpanFamilyDenominatorArrow i x z
-      (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x z) d) =
+  change _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z
+      (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d) =
     SSet.const ((F2.Idempotent.pointSliceArrowMap (SSet.yonedaEquiv.symm x)).app
       (Opposite.op ⦋0⦌) d.val) at he
   rw [F2.Idempotent.pointSliceArrowMap_vertex] at he
   exact he
 
 /-- 実相対回収円柱の始端分母は、完成族側の一様な同じ実分母へ厳密に戻る。 -/
-lemma verdierRecoveredBoundaryDenominator_start {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x z : B.obj _⦋0⦌)
+lemma verdierRecoveredBoundaryDenominator_start {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x z : B.obj _⦋0⦌)
     (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) {S K : SSet.{u}} (j : S ⟶ K)
-    (g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x z) d)
-    (a : S ⟶ verdierDenominatorSpanFamily i x z)
-    (L : SSet.Homotopy (j ≫ g ≫ vertexFiberι (verdierDenominatorSpanProjection i x z) d) a) :
+    (g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d)
+    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x z)
+    (L : SSet.Homotopy (j ≫ g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d) a) :
     (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫
-        verdierSpanFamilyDenominatorArrow i x z L.h =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z L.h =
       SSet.const (functorVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val)) := by
   have h₀ : (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ L.h =
-      (j ≫ g) ≫ vertexFiberι (verdierDenominatorSpanProjection i x z) d := by
+      (j ≫ g) ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x z) d := by
     simpa only [Category.assoc] using L.h₀
-  rw [← verdierSpanFamilyDenominatorArrow_pre, h₀, verdierSpanFamilyDenominatorArrow_fiber]
+  rw [← _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow_pre, h₀, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow_fiber]
 
 /-- 同じ実円柱の終端は、元の境界分母族の全辺へ厳密に戻る。 -/
-lemma verdierRecoveredBoundaryDenominator_end {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x z : B.obj _⦋0⦌) {S : SSet.{u}}
-    {a b : S ⟶ verdierDenominatorSpanFamily i x z} (L : SSet.Homotopy a b) :
+lemma verdierRecoveredBoundaryDenominator_end {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x z : B.obj _⦋0⦌) {S : SSet.{u}}
+    {a b : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x z} (L : SSet.Homotopy a b) :
     (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫
-      verdierSpanFamilyDenominatorArrow i x z L.h =
-      verdierSpanFamilyDenominatorArrow i x z b := by
-  rw [← verdierSpanFamilyDenominatorArrow_pre, L.h₁]
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z L.h =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z b := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow_pre, L.h₁]
 
 /-- 回収された実分母図式の終点は、元の固定した終端頂点。 -/
-lemma verdierDenominatorDiagram_target {A B : StableCategory.{u}} (i : ExactMap A B)
+lemma verdierDenominatorDiagram_target {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x : B.obj _⦋0⦌) (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) :
     ((joinStdSimplexIso 0 0).inv ≫ d.val.val).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = x := by
@@ -188,16 +193,16 @@ lemma verdierDenominatorDiagram_target {A B : StableCategory.{u}} (i : ExactMap 
 
 /-- 実回収円柱の始端に、一つの前段を共有する補完と相対 corner の同じ二脚を構成する。 -/
 lemma exists_verdierRecoveredStartBoundary
-    {A B : StableCategory.{u}} (i : ExactMap A B) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (z : B.obj _⦋0⦌)
     (d : (verdierDenominatorOver i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) : SSet.{u}) _⦋0⦌)
     {S K : SSet.{u}} (j : S ⟶ K)
-    (g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i
+    (g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) d)
-    (a : S ⟶ verdierDenominatorSpanFamily i
+    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
-    (L : SSet.Homotopy (j ≫ g ≫ vertexFiberι (verdierDenominatorSpanProjection i
+    (L : SSet.Homotopy (j ≫ g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) d) a)
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
       (ihom (Δ[n] : SSet.{u})).obj ((ihom (S ⊗ (Δ[1] : SSet.{u}))).obj B.obj))
@@ -205,55 +210,100 @@ lemma exists_verdierRecoveredStartBoundary
     (hQr : squareRightEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1]
       ((ihom (S ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
       (SSet.const (functorVertex (internalHomFlipHomEquiv (S ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-        (verdierSpanFamilyDenominatorArrow i
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z L.h)))))
     (hQt : squareTopEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1]
       ((ihom (S ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
-      (simplexTerminalArrowFamily (D ≫ constantFunctorMap (S ⊗ Δ[1]) B.obj)))
+      (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily (D ≫ constantFunctorMap (S ⊗ Δ[1]) B.obj)))
     (hQl : Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       squareColumnDiagram (internalHomFlipHomEquiv (S ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-        (verdierSpanFamilyDenominatorArrow i
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z L.h))) :
     ∃ F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj,
-      F ≫ pullbackProjection B.obj = simplexTerminalCospanFamily D
-        ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (verdierDenominatorDiagram_target i _ d) ∧
+      F ≫ pullbackProjection B.obj = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D
+        ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d) ∧
       F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
         terminalPullbackColumnVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val) ∧
-      (parametricPullbackDiagramFamily (uniformTerminalRefinementSquare S F)
-          (uniformTerminalRefinementSquare_isPullback S F) ≫
+      (parametricPullbackDiagramFamily (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback S F) ≫
           (ihom (Δ[n] : SSet.{u})).map (pullbackProjection B.obj) =
         (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ parametricPullbackDiagramFamily Q hQ ≫
           (ihom (Δ[n] : SSet.{u})).map (pullbackProjection B.obj)) ∧
-      (parametricPullbackDiagramFamily (uniformTerminalRefinementSquare S F)
-          (uniformTerminalRefinementSquare_isPullback S F) ≫
-          (pre (simplexLastPoint n)).app (pullbackDiagrams B.obj) =
+      (parametricPullbackDiagramFamily (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback S F) ≫
+          (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams B.obj) =
         (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ parametricPullbackDiagramFamily Q hQ ≫
-          (pre (simplexLastPoint n)).app (pullbackDiagrams B.obj)) ∧
-      parametricPullbackDiagramFamily (uniformTerminalRefinementSquare S F)
-        (uniformTerminalRefinementSquare_isPullback S F) = SSet.const (functorVertex F) := by
+          (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams B.obj)) ∧
+      parametricPullbackDiagramFamily (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback S F) = SSet.const (functorVertex F) := by
   let x := D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))
   let s := (joinStdSimplexIso 0 0).inv ≫ d.val.val
   obtain ⟨F, hF, hlast, hRr, hRt, hRl⟩ :=
-    exists_uniformTerminalRefinement S D s (verdierDenominatorDiagram_target i x d)
-  have h₀ := verdierRecoveredBoundaryDenominator_start i x z d j g a L
-  have hr : squareRightEdge ≫ uniformTerminalRefinementSquare S F =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_uniformTerminalRefinement S D s (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i x d)
+  have h₀ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRecoveredBoundaryDenominator_start i x z d j g a L
+  have hr : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F =
       internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom S).obj B.obj)
         (SSet.const (functorVertex (internalHomFlipHomEquiv S Δ[1] B.obj
           ((SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫
-            verdierSpanFamilyDenominatorArrow i x z L.h)))) := by
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z L.h)))) := by
     rw [h₀]
     exact hRr
-  have hl : uniformTerminalRefinementSquare S F ≫
+  have hl : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       squareColumnDiagram (internalHomFlipHomEquiv S Δ[1] B.obj
         ((SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫
-          verdierSpanFamilyDenominatorArrow i x z L.h)) := by
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z L.h)) := by
     rw [h₀]
     exact hRl
-  obtain ⟨hb, ht⟩ := terminalRefinementBoundary_projections
+  obtain ⟨hb, ht⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementBoundary_projections
     (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) D
-    (verdierSpanFamilyDenominatorArrow i x z L.h) Q (uniformTerminalRefinementSquare S F)
-    hQ (uniformTerminalRefinementSquare_isPullback S F) hQr hr hQt hRt hQl hl
-  exact ⟨F, hF, hlast, hb, ht, uniformTerminalRefinementSquare_family S F⟩
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i x z L.h) Q (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S F)
+    hQ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback S F) hQr hr hQt hRt hQl hl
+  exact ⟨F, hF, hlast, hb, ht, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_family S F⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_uniformTerminalRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_uniformTerminalRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierRecoveredStartBoundary := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRecoveredStartBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformStableFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformStableFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformStableParameterFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformStableParameterFiniteLimits
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformTerminalRefinementSquare := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformTerminalRefinementSquare_family := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_family
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformTerminalRefinementSquare_isPullback := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_isPullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformTerminalRefinementSquare_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_prefix
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorDiagram_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierRecoveredBoundaryDenominator_end := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRecoveredBoundaryDenominator_end
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierRecoveredBoundaryDenominator_start := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRecoveredBoundaryDenominator_start
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyDenominatorArrow_fiber := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow_fiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyDenominatorArrow_pre := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.uniformTerminalRefinementSquare.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare.eq_1

@@ -50,7 +50,7 @@ lemma dgOdotMilnorPerfectNullSquare_target_vertex :
 /-- 概要：元の実零化面に含まれる同じ二つの固定 ν 二単体。
 方針：正方形の標準二三角形で制限し、同じ ν で写す。
 規約：新しい二単体を選ばない。使われ方：実面比較の端点 Hom データ。 -/
-def dgOdotMilnorNuNullTriangle (j : Fin 2) : StableInfinity.{u + 1} _⦋2⦌ :=
+def dgOdotMilnorNuNullTriangle (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋2⦌ :=
   SSet.yonedaEquiv (squareTriangle j ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
 
 /-- 概要：両二単体の始点は同じ元核の固定 ν 値。
@@ -70,14 +70,14 @@ lemma dgOdotMilnorNuNullTriangle_source (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d j).obj ⟨ULift.up (0 : Fin 3)⟩ =
-      stableObject (squareVertex F 0 0) := by
-    have hn' := congrArg stableObject hn
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex F 0 0) := by
+    have hn' := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
-  change stableObject ((dgKInputNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _
     (squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 0)) = _
-  rw [dgOdotMilnorPerfectNullSquare_source_vertex, dgKInputNu_vertex, stableObject_vertex]
+  rw [dgOdotMilnorPerfectNullSquare_source_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
 
 /-- 概要：両二単体の終点は同じ元 resolved 商の固定 ν 値。
 方針：三角形の最後の頂点と実面の終点を照合する。
@@ -96,20 +96,20 @@ lemma dgOdotMilnorNuNullTriangle_target (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d j).obj ⟨ULift.up (2 : Fin 3)⟩ =
-      stableObject (squareVertex F 1 1) := by
-    have hn' := congrArg stableObject hn
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex F 1 1) := by
+    have hn' := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
-  change stableObject ((dgKInputNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _
     (squareVertex (dgOdotMilnorPerfectNullSquare R d) 1 1)) = _
-  rw [dgOdotMilnorPerfectNullSquare_target_vertex, dgKInputNu_vertex, stableObject_vertex]
+  rw [dgOdotMilnorPerfectNullSquare_target_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
 
 /-- 概要：零角経由の元二単体の中間対象は同じ実全対象商の零安定圏。
 方針：元の二単体の中間頂点を実面の零角へ自然性で戻す。
 規約：零圏を選び直さない。使われ方：元二単体の全 Hom の零性。 -/
 lemma dgOdotMilnorNuNullTriangle_middle_zero :
-    IsZeroCategory ((dgOdotMilnorNuNullTriangle R d 0).obj ⟨ULift.up (1 : Fin 3)⟩) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory ((dgOdotMilnorNuNullTriangle R d 0).obj ⟨ULift.up (1 : Fin 3)⟩) := by
   let F := dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R
   let t := SSet.yonedaEquiv (squareTriangle.{u + 2} 0)
   have hn := NatTrans.naturality_apply F
@@ -120,8 +120,8 @@ lemma dgOdotMilnorNuNullTriangle_middle_zero :
           stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
     apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuNullTriangle R d 0).obj ⟨ULift.up (1 : Fin 3)⟩ =
-      stableObject (squareVertex F 0 1) := by
-    have hn' := congrArg stableObject hn
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex F 0 1) := by
+    have hn' := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
@@ -133,12 +133,12 @@ lemma dgOdotMilnorNuNullTriangle_middle_zero :
 def dgOdotMilnorNuNullTriangleHom (j : Fin 2) :
     nerve (CategoryTheory.SimplicialThickening.Path
       (ULift.up.{u + 1} (0 : Fin 3)) (ULift.up.{u + 1} (2 : Fin 3))) ⟶
-        SimplicialCategory.sHom (C := StableQCat.{u + 1})
+        SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
           (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d))
           (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) :=
   (dgOdotMilnorNuNullTriangle R d j).map ⟨ULift.up (0 : Fin 3)⟩
     ⟨ULift.up (2 : Fin 3)⟩ ≫
-      eqToHom (congrArg₂ (fun X Y : StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
+      eqToHom (congrArg₂ (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
         (dgOdotMilnorNuNullTriangle_source R d j) (dgOdotMilnorNuNullTriangle_target R d j))
 
 end SerrePositivity.KST.SConstruction

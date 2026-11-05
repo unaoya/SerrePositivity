@@ -15,14 +15,14 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison AlgebraicTopology HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {a b : E}
 
 /-- 実線形化の任意の基点における、元の Hom コホモロジーへの群同型。 -/
 def dgBarCompactPinchedModulePiCohomologyEquiv (x y : D) (n : ℕ)
     (z : (pinchedHomModule (S := R) x y).obj (Opposite.op ⦋0⦌)) :
-    KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z ≃*
       Multiplicative ((homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
   (dgBarCompactModulePiHomologyEquiv (pinchedHomModule (S := R) x y) n z).trans
     ((additiveGroupToMultiplicativeEquiv
@@ -37,7 +37,7 @@ lemma dgBarCompactPinchedModulePiCohomologyEquiv_naturality_of_truncation
       ((homObject R D x y).truncLEIso (ComplexShape.embeddingUpIntLE 0)).inv ≫
         truncLEMap φ (ComplexShape.embeddingUpIntLE 0))
     (n : ℕ) (z : (pinchedHomModule (S := R) x y).obj (Opposite.op ⦋0⦌))
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
     dgBarCompactPinchedModulePiCohomologyEquiv a b n
         ((dgBarCompactPinchedModuleMap φ).app _ z)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap (dgBarCompactPinchedModuleMap φ)) z α) =

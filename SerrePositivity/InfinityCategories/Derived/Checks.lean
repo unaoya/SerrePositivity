@@ -58,10 +58,10 @@ example (S : Type u) [CommRing S] :
 
 example : (derivedInfinityHomotopyEquivalence ℤ).functor.CommShift ℤ := inferInstance
 
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 example (S : Type u) [CommRing S] (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
-    Nonempty (SerrePositivity.KST.Spectra.KanHomotopyGroup
+    Nonempty (SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (DGNerve.pinchedHom S (Semifree S) (x.obj 0) (y.obj 0)) n
       (pinchedHomZeroVertex (x.obj 0) (y.obj 0)) ≃*
         Multiplicative (derivedInfinityExt x y (-((n + 1 : ℕ) : ℤ)))) :=

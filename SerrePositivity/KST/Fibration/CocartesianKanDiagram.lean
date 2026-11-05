@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.Fibration
 /-- 元の全 cocartesian section による厳密輸送を、関手的な Kan 亜群化へ送る。 -/
 def cocartesianKanDiagram {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) : I ⥤ KanObject.{u} :=
-  SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p ⋙ strictKanCompletion
+  SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p ⋙ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion
 
 /-- 同じ厳密図式を全単体上の coherent な空間値図式として保持する。 -/
 def cocartesianKanCoherentDiagram {I : Type u} [Category.{u} I] {E : SSet.{u}}
@@ -29,15 +29,15 @@ def cocartesianKanCoherentDiagram {I : Type u} [Category.{u} I] {E : SSet.{u}}
 def cocartesianKanDiagramFiberComparison {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) (c : I) :
     ((cocartesianKanDiagram p).obj c).obj ⟶
-      (strictKanCompletion.obj (vertexFiber p (nerveVertex c))).obj :=
-  strictKanCompletion.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c)
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.obj (vertexFiber p (nerveVertex c))).obj :=
+  _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c)
 
 /-- 全 section の恒等射評価の ∞ 圏同値から、同じ Kan 値比較も実際の同値となる。 -/
 theorem cocartesianKanDiagramFiberComparison_isQCatEquivalence
     {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [CocartesianFibration p] (c : I) :
     IsQCatEquivalence (cocartesianKanDiagramFiberComparison p c) := by
-  apply strictKanCompletion_map_isQCatEquivalence
+  apply _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence
   exact weakHomotopyEquivalence_anodyneQ_isIso _
     (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence p c).isWeakHomotopyEquivalence
 

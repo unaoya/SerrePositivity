@@ -47,12 +47,12 @@ lemma trivialKanFibration_of_fibration_of_contractible {X Y : SSet.{u}}
 使われ方：塔の極限の可縮性の相対部分。 -/
 lemma contractibleTower_projection_trivialKanFibration (X : ℕ → SSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n, TrivialKanFibration (d n)] :
-    TrivialKanFibration (SerrePositivity.KST.Spectra.FibrationTower.projection X d 0) := by
+    TrivialKanFibration (SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := by
   apply (trivialKanFibration_iff_boundary _).mpr
   intro n
   have : ∀ k, HasLiftingProperty (boundary n).ι (d k) :=
     fun k ↦ (TrivialKanFibration.mem (p := d k)) (boundary n).ι inferInstance
-  exact SerrePositivity.KST.Spectra.FibrationTower.projection_zero_hasLiftingProperty
+  exact SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_hasLiftingProperty
     X d (boundary n).ι
 
 /-- 概要：可縮な初段と全境界充填を持つ遷移の塔の具体的極限は可縮。
@@ -62,15 +62,15 @@ lemma contractibleTower_projection_trivialKanFibration (X : ℕ → SSet.{u})
 lemma isContractibleKan_fibrationTowerLimit (X : ℕ → SSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n, TrivialKanFibration (d n)]
     (h0 : IsContractibleKan (X 0)) :
-    IsContractibleKan (SerrePositivity.KST.Spectra.FibrationTower.limit X d) := by
+    IsContractibleKan (SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) := by
   have := contractibleTower_projection_trivialKanFibration X d
   intro n b
   obtain ⟨F, hF⟩ := h0 n
-    (b ≫ SerrePositivity.KST.Spectra.FibrationTower.projection X d 0)
+    (b ≫ SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0)
   have sq : CommSq b (boundary n).ι
-      (SerrePositivity.KST.Spectra.FibrationTower.projection X d 0) F := ⟨hF.symm⟩
+      (SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) F := ⟨hF.symm⟩
   have := (TrivialKanFibration.mem
-    (p := SerrePositivity.KST.Spectra.FibrationTower.projection X d 0))
+    (p := SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0))
     (boundary n).ι inferInstance
   exact ⟨sq.lift, sq.fac_left⟩
 
@@ -84,7 +84,7 @@ lemma isContractibleKan_of_fibrationTowerCone {D : ℕᵒᵖ ⥤ SSet.{u}} (c : 
   have : ∀ n, TrivialKanFibration (D.map (homOfLE (Nat.le_succ n)).op) :=
     fun n ↦ trivialKanFibration_of_fibration_of_contractible _ (h (n + 1)) (h n)
   exact isContractibleKan_of_iso
-    ((SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit D).conePointUniqueUpToIso hc)
+    ((SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit D).conePointUniqueUpToIso hc)
     (isContractibleKan_fibrationTowerLimit (fun n ↦ D.obj (Opposite.op n))
       (fun n ↦ D.map (homOfLE (Nat.le_succ n)).op) (h 0))
 

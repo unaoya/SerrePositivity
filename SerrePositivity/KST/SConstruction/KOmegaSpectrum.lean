@@ -50,6 +50,6 @@ def kSpaceSpectrumComparison (X : StableModel.{u}) :
 
 /-- 元の K 空間と BF K スペクトルの零段の比較は全基点 π 同型。 -/
 lemma kSpaceSpectrumComparison_piIsomorphism (X : StableModel.{u}) :
-    KanPiIsomorphism (kSpaceSpectrumComparison X).right := kSpaceBoundaryComparison_piIsomorphism X
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kSpaceSpectrumComparison X).right := kSpaceBoundaryComparison_piIsomorphism X
 
 end SerrePositivity.KST.SConstruction

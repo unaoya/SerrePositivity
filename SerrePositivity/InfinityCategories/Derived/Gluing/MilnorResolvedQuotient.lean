@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.SConstruction KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 abbrev dgGluingMilnorResolvedQuotientNerve :=
   resolvedDGQuotientNerve R (DGOdotGluing R d)
@@ -23,26 +23,26 @@ abbrev dgGluingMilnorResolvedQuotientNerve :=
 def dgGluingMilnorResolvedQuotientFunctor :=
   resolvedDGQuotientFunctor R (DGOdotGluing R d)
     (dgQuotientImage R (dgOdotQuotientInput R d).diagonal)
-def dgGluingMilnorNativeDiagonalSource : StableCategory.{u + 1} where
+def dgGluingMilnorNativeDiagonalSource : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
   obj := dgNerve R (DGSmallPerfectBase R (dgAlgebraCategory R d.source))
   isQuasicategory := inferInstance
   isStable := dgSmallPerfectBaseNerve_isStable R (dgAlgebraCategory R d.source)
 variable [IsDGPretriangulated R (DGOdotGluing R d)]
-def dgGluingMilnorNativeMiddle : StableCategory.{u + 1} where
+def dgGluingMilnorNativeMiddle : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
   obj := dgNerve R (DGOdotGluing R d)
   isQuasicategory := inferInstance
   isStable := dgNerve_isStable_of_pretriangulated R _
-def dgGluingMilnorNativeResolvedQuotient : StableCategory.{u + 1} where
+def dgGluingMilnorNativeResolvedQuotient : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
   obj := dgGluingMilnorResolvedQuotientNerve R d
   isQuasicategory := inferInstance
   isStable := resolvedDGQuotientNerve_isStable R (DGOdotGluing R d) _
 def dgGluingMilnorResolvedProjection :
-    ExactMap (dgGluingMilnorNativeMiddle R d) (dgGluingMilnorNativeResolvedQuotient R d) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeMiddle R d) (dgGluingMilnorNativeResolvedQuotient R d) where
   hom := dgGluingMilnorResolvedQuotientFunctor R d
   isExact := resolvedDGQuotientFunctor_isExactFunctor R (DGOdotGluing R d) _
 variable [IsExactFunctor (dgNerve.map (dgOdotQuotientInput R d).diagonal)]
 def dgGluingMilnorNativeDiagonal :
-    ExactMap (dgGluingMilnorNativeDiagonalSource R d) (dgGluingMilnorNativeMiddle R d) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeDiagonalSource R d) (dgGluingMilnorNativeMiddle R d) where
   hom := dgNerve.map (dgOdotQuotientInput R d).diagonal
   isExact := inferInstance
 omit [IsDGPretriangulated R (DGOdotGluing R d)]

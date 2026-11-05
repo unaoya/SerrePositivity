@@ -21,9 +21,9 @@ open scoped Simplicial
 方針：内部 Hom の後合成を押し出しの全部分複体へ持ち上げる。
 規約：選択した pushout の厳密な保存は要求しない。使われ方：押し出しの族の入力の自然性。 -/
 def pushoutDiagramsPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
-    pushoutDiagrams C ⟶ pushoutDiagrams D :=
-  fullSubcomplexLift IsPushoutDiagramVertex
-    ((fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι ≫ (ihom (Δ[1] ⊗ Δ[1])).map f) (by
+    _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams D :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex
+    ((fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι ≫ (ihom (Δ[1] ⊗ Δ[1])).map f) (by
       intro v
       let F := (functorVertexEquiv (Δ[1] ⊗ Δ[1]) C).symm v.val
       have hv : functorVertex F = v.val := (functorVertexEquiv _ C).apply_symm_apply _
@@ -41,18 +41,18 @@ def pushoutDiagramsPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConst
 規約：全単体での厳密等号。使われ方：span 射影との可換性。 -/
 lemma pushoutDiagramsPostcomp_ι {C D : SSet.{u}} (f : C ⟶ D)
     (hf : PreservesSConstructionData f) :
-    pushoutDiagramsPostcomp f hf ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι =
-      (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι ≫ (ihom (Δ[1] ⊗ Δ[1])).map f := rfl
+    pushoutDiagramsPostcomp f hf ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι =
+      (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι ≫ (ihom (Δ[1] ⊗ Δ[1])).map f := rfl
 
 /-- 概要：pushout 図式の後合成は入力 span への射影と厳密に可換。
 方針：前合成と後合成の自然性を使う。
 規約：追加の選択条件は不要。使われ方：同じ入力 span 上の二つの選択の比較。 -/
 lemma pushoutDiagramsPostcomp_projection {C D : SSet.{u}} (f : C ⟶ D)
     (hf : PreservesSConstructionData f) :
-    pushoutDiagramsPostcomp f hf ≫ pushoutProjection D =
-      pushoutProjection C ≫ (ihom (horn 2 0 : SSet.{u})).map f := by
+    pushoutDiagramsPostcomp f hf ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection D =
+      _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C ≫ (ihom (horn 2 0 : SSet.{u})).map f := by
   change (pushoutDiagramsPostcomp f hf ≫
-      (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι) ≫
+      (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι) ≫
       (pre spanSquareBoundary).app D = _
   rw [pushoutDiagramsPostcomp_ι, Category.assoc,
     (pre spanSquareBoundary).naturality f]

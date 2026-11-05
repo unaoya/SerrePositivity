@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.Opposite
@@ -31,9 +33,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 lemma pointTriangle {C : Type*} [Category C] {a b c d e f g : C}
     (v : a ⟶ b) (l : c ≅ b) (s : c ≅ d) (i : e ≅ d)
@@ -64,4 +69,16 @@ variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
 local instance instLeftFibrationSndSSet_2 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.endpointSpan_heq := _root_.SerrePositivity.InfinityCategories.Stable.Transport.endpointSpan_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.instLeftFibrationSndSSet_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointTriangle := _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointTriangle

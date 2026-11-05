@@ -43,10 +43,10 @@ theorem kanCommSqInfinitySquare_bottom :
   change (joinStdSimplexIso 0 0).inv ≫
     joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (stdSimplex.δ (1 : Fin 2) ≫ horn₂₂.ι₀₂) ≫
       joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-        strictCoherentConeMap (kanCommSqCone sq) = _
+        strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq) = _
   rw [← Category.assoc (joinMap _ _) (joinMap _ _), ← joinMap_comp,
     Category.id_comp, StrictCospanCone.left_point]
-  change strictCoherentConeLeg (kanCommSqCone sq) (AsSmall.up.obj WalkingCospan.left) = _
+  change strictCoherentConeLeg (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq) (AsSmall.up.obj WalkingCospan.left) = _
   rw [strictCoherentConeLeg_eq]
   rfl
 
@@ -58,10 +58,10 @@ theorem kanCommSqInfinitySquare_left :
   change (joinStdSimplexIso 0 0).inv ≫
     joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (stdSimplex.δ (1 : Fin 2) ≫ horn₂₂.ι₁₂) ≫
       joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-        strictCoherentConeMap (kanCommSqCone sq) = _
+        strictCoherentConeMap (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq) = _
   rw [← Category.assoc (joinMap _ _) (joinMap _ _), ← joinMap_comp,
     Category.id_comp, StrictCospanCone.right_point]
-  change strictCoherentConeLeg (kanCommSqCone sq) (AsSmall.up.obj WalkingCospan.right) = _
+  change strictCoherentConeLeg (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone sq) (AsSmall.up.obj WalkingCospan.right) = _
   rw [strictCoherentConeLeg_eq]
   rfl
 

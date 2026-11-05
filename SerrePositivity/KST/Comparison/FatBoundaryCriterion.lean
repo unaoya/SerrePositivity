@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：正次元の単体への射の像の次元が小さいことは、その射が全射でないことと同値。
@@ -32,7 +32,7 @@ theorem simplexImage_len_le_iff_not_epi {X : SimplexCategory} (n : ℕ)
   constructor
   · intro h he
     let : Epi t := he
-    rw [simplexImage_of_epi t] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi t] at h
     change n + 1 ≤ n at h
     omega
   · intro h

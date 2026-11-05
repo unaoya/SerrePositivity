@@ -25,7 +25,7 @@ lemma presentedPerfectDGKanAssemblyLeft_whisker (r : ℕ) (C D : PerfDGInput.{u,
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r).map C D ≫
       eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyLeftMap A r C)
         ((presentedPerfectDGKanAssemblyLeftTargetFunctor A r).obj D) :=
-  strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGKanAssemblyLeftTransformation A r) (presentedPerfectDGKanAssemblyLeftMap A r)
     (presentedPerfectDGKanAssemblyLeftTransformation_app A r) C D
 
@@ -37,7 +37,7 @@ lemma presentedPerfectDGKanAssemblyRight_whisker (r : ℕ) (C D : PerfDGInput.{u
     (presentedPerfectDGKanAssemblyTargetFunctor A r).map C D ≫
       eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyRightMap A r C)
         ((presentedPerfectDGKanAssemblyTargetFunctor A r).obj D) :=
-  strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGKanAssemblyRightTransformation A r)
     (presentedPerfectDGKanAssemblyRightMap A r)
     (presentedPerfectDGKanAssemblyRightTransformation_app A r) C D

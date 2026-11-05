@@ -23,22 +23,22 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の安定対象の等号に沿う移送は、同じ零値完全関手の全 S• native 実射を保つ。 -/
-theorem zeroFunctorFullSNativeKanMap_transport_heq {A C A' C' : StableCategory.{u}}
-    (hA : A = A') (hC : C = C') (F : ExactMap A C)
+theorem zeroFunctorFullSNativeKanMap_transport_heq {A C A' C' : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (hA : A = A') (hC : C = C') (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom))
     (hF' : IsZeroVertex (functorVertex (exactMapTransport hA hC F).hom)) :
-    HEq (zeroFunctorFullSNativeKanMap (A := (show StableQCat from A'))
-        (C := (show StableQCat from C')) (exactMapTransport hA hC F) hF')
-      (zeroFunctorFullSNativeKanMap (A := (show StableQCat from A))
-        (C := (show StableQCat from C)) F hF) := by
+    HEq (zeroFunctorFullSNativeKanMap (A := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A'))
+        (C := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C')) (exactMapTransport hA hC F) hF')
+      (zeroFunctorFullSNativeKanMap (A := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
+        (C := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) F hF) := by
   cases hA
   cases hC
   rfl
 
 /-- 元の合成点の全 S• native 実射は、指定両端に戻しても同じ元の実射である。 -/
-theorem verdierNullCompositeNativeKanMap_original_heq (d : VerdierDiagram.{u}) (j : Fin 2) :
-    HEq (zeroFunctorFullSNativeKanMap (A := (show StableQCat from d.left))
-        (C := (show StableQCat from d.right)) (verdierNullCompositeOriginalMap d j)
+theorem verdierNullCompositeNativeKanMap_original_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
+    HEq (zeroFunctorFullSNativeKanMap (A := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+        (C := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) (verdierNullCompositeOriginalMap d j)
           (isZeroVertex_functorVertex_of_pointwise _ (verdierNullCompositeOriginalMap_zero d j)))
       (zeroFunctorFullSNativeKanMap (verdierNullCompositeMap d j)
         (isZeroVertex_functorVertex_of_pointwise _ (verdierNullCompositeMap_zero d j))) :=
@@ -47,18 +47,18 @@ theorem verdierNullCompositeNativeKanMap_original_heq (d : VerdierDiagram.{u}) (
 
 /-- 元の商核上辺の native 像は、同じ核包含同型後の全 S• 零値実射に厳密一致する。 -/
 theorem quotientSKernelTop_fullSNativeKanMap
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom) ≫
         (show (fullSRealizationKanObject A).obj ⟶
-          ((stableMultiKanEnrichedFunctor 0).obj (show StableQCat from C)).obj from
-          zeroFunctorFullSNativeKanMap (A := (show StableQCat from A))
-            (C := (show StableQCat from C))
+          ((stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)).obj from
+          zeroFunctorFullSNativeKanMap (A := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
+            (C := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
             (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
             (verdierSequenceComposite_zero h)) =
       exInfinity.map (simplicialDiagonalFunctor.map
         (relativeSimplicialFunctorMap i q.hom ≫ relativeSimplicialQuotientMap q)) ≫
-          (coreSingleKanIso (show StableQCat from C)).hom := by
+          (coreSingleKanIso (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)).hom := by
   change exInfinity.map _ ≫ (exInfinity.map _ ≫ _) = _
   rw [← Category.assoc, ← Functor.map_comp, ← Functor.map_comp,
     ← quotientSKernelTop_zeroFunctorFullSMap h]

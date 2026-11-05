@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 /-- 半自由 Hom の同じ実 pointed 表示の各実 fiber 射は同値。 -/
 lemma dgSemifreeHomTargetCoslicePointedFiber_isQCatEquivalence (P Q : SemifreeDGModules R D) :

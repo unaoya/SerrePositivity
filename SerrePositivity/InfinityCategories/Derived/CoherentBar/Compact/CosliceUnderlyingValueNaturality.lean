@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 variable {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌)
 

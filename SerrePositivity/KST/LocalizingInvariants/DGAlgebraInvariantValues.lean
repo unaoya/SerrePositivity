@@ -26,16 +26,16 @@ variable (R : Type u) [CommRing R]
 local instance dgValueSimplicialCategory : SimplicialCategory OmegaSpectrum.{u + 1} :=
   OmegaSpectrum.simplicialCategory
 
-def perfect (B : Mon (Complex R)) : StableCategory.{u + 1} where
+def perfect (B : Mon (Complex R)) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
   obj := dgAlgebraPerfectInfinityCategory R B
   isQuasicategory := inferInstance
   isStable := dgAlgebraPerfectInfinityCategory_isStable R B
 
-def perfectMap {B C : Mon (Complex R)} (f : B ⟶ C) : ExactMap (perfect R B) (perfect R C) where
+def perfectMap {B C : Mon (Complex R)} (f : B ⟶ C) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (perfect R B) (perfect R C) where
   hom := dgAlgebraPerfectExtensionInfinity R f
   isExact := dgAlgebraPerfectExtensionInfinity_isExactFunctor R f
 
-variable (Φ : StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 def invariantValue (B : Mon (Complex R)) : OmegaSpectrum.{u + 1} := value Φ (perfect R B)
 
@@ -44,7 +44,7 @@ def invariantMap {B C : Mon (Complex R)} (f : B ⟶ C) :
 
 lemma invariantMap_edge {B C : Mon (Complex R)} (f : B ⟶ C) :
     (coherentNerveEdge (C := OmegaSpectrum.{u + 1}) (invariantMap R Φ f)).edge =
-      Φ.app (Opposite.op ⦋1⦌) (stableArrow (perfectMap R f)).edge :=
+      Φ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R f)).edge :=
   valueMap_edge Φ (perfectMap R f)
 
 def invariantGroupMap {B C : Mon (Complex R)} (f : B ⟶ C) (j : ℤ) :

@@ -28,13 +28,13 @@ def oneDirectionKanUnitNat (r : ℕ) :
 /-- 一方向比較の mapping path の底への射影の自然変換。 -/
 def oneDirectionMappingPathProjectionNat (r : ℕ) :
     oneDirectionMappingPathFunctor r ⟶ boundaryKanRealizationFunctor r where
-  app X := mappingPathProjection ((oneDirectionKanComparisonNat r).app X)
+  app X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)
   naturality _ _ f := oneDirectionMappingPathMap_projection r f
 
 /-- 一方向比較の mapping path の一方向模型への射影の自然変換。 -/
 def oneDirectionMappingPathRetractionNat (r : ℕ) :
     oneDirectionMappingPathFunctor r ⟶ oneDirectionKanRealizationFunctor r where
-  app X := mappingPathRetraction ((oneDirectionKanComparisonNat r).app X)
+  app X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app X)
   naturality _ _ f := oneDirectionMappingPathMap_retraction r f
 
 /-- 入力図式の全射と両側合成にわたる Kan 延長の混合選択空間。 -/

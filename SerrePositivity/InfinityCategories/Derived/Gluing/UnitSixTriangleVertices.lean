@@ -12,7 +12,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def dgGluingUnitSixTriangleVertexPattern {Z : SSet.{u}} (a b c d e : Z _⦋0⦌) :
     Fin 6 → Fin 3 → Z _⦋0⦌ := ![![a,b,b], ![a,c,b], ![d,d,e], ![d,c,e], ![d,c,b], ![a,c,e]]

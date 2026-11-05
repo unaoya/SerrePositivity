@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 variable (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌)
 /-- 元の quasicategory の Yoneda 関手を指定始点で評価した、全空間値関手。 -/

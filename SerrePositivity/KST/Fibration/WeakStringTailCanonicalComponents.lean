@@ -17,7 +17,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の切断の先行成分は、既存の単体的対象の最後の面射そのもの。 -/
-lemma weakStringTail_prefix_exact {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+lemma weakStringTail_prefix_exact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     (weakStringTailEquivalence q n).hom ≫ tailWeakPrefixExact q n =
       weakStringExactMap q (SimplexCategory.δ (Fin.last (n + 2))) := by
   apply Subtype.ext
@@ -28,7 +28,7 @@ lemma weakStringTail_prefix_exact {B C : StableCategory.{u}} (q : ExactMap B C) 
   exact (weakStringMap_ι q _).symm
 
 /-- 元の切断の辺成分は、既存の最後の連続辺そのもの。 -/
-lemma weakStringTail_edge_exact {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+lemma weakStringTail_edge_exact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     (weakStringTailEquivalence q n).hom ≫ tailWeakEdgeExact q n =
       weakStringEdgeExact q (consecutiveWeakStringEdge (n + 2) (Fin.last (n + 1))) := by
   apply Subtype.ext
@@ -38,15 +38,15 @@ lemma weakStringTail_edge_exact {B C : StableCategory.{u}} (q : ExactMap B C) (n
   exact (weakStringEdgeMap_ι q _).symm
 
 /-- 同じ切断の核値 cofiber は、既存の最後の連続辺の共通 cofiber 補完そのもの。 -/
-lemma weakStringTail_cofiber_exact {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ) :
+lemma weakStringTail_cofiber_exact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
     (weakStringTailEquivalence q n).hom ≫ tailWeakCofiberExact q n =
       weakStringKernelCofiber q (consecutiveWeakStringEdge (n + 2) (Fin.last (n + 1))) := by
   unfold tailWeakCofiberExact weakStringKernelCofiber weakStringCofiberExact
   rw [← Category.assoc, ← Category.assoc, weakStringTail_edge_exact, Category.assoc]
 
 /-- 全反復で元の先行面と最後の連続 cofiber の射対を厳密に回収する。 -/
-lemma weakStringTailMultiStep_canonical {B C : StableCategory.{u}}
-    (q : ExactMap B C) (n r : ℕ) :
+lemma weakStringTailMultiStep_canonical {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
     weakStringTailMultiStep q n r =
       lift ((multiRealizationFunctor r).map
         (weakStringExactMap q (SimplexCategory.δ (Fin.last (n + 2)))))

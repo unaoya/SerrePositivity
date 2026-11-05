@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterF
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 
@@ -40,8 +40,8 @@ namespace SquareTriangles
 規約：零次元のパラメータを第二座標への射影で除く。
 使われ方：Kerodon §3.2.3。境界との積の面での計算。 -/
 theorem first_endpoint_zero : stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u}) =
-    snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ stdSimplex.δ (0 : Fin 3) ≫ lower := by
-  rw [lower_face_zero]
+    snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower := by
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero]
   apply CartesianMonoidalCategory.hom_ext <;>
     simp [stdSimplex.δ_zero_eq_const]
 
@@ -50,8 +50,8 @@ theorem first_endpoint_zero : stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u}) =
 規約：始点の面の添字は 1。
 使われ方：Kerodon §3.2.3。正方形のもう一方の縦辺の計算。 -/
 theorem first_endpoint_one : stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u}) =
-    snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ stdSimplex.δ (2 : Fin 3) ≫ upper := by
-  rw [upper_face_last]
+    snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper := by
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last]
   apply CartesianMonoidalCategory.hom_ext <;>
     simp [stdSimplex.δ_one_eq_const]
 
@@ -60,8 +60,8 @@ theorem first_endpoint_one : stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u}) =
 規約：零次元のパラメータを第一座標への射影で除く。
 使われ方：Kerodon §3.2.3。正方形の上辺の計算。 -/
 theorem second_endpoint_zero : (Δ[1] : SSet.{u}) ◁ stdSimplex.δ (0 : Fin 2) =
-    fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ stdSimplex.δ (0 : Fin 3) ≫ upper := by
-  rw [upper_face_zero]
+    fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper := by
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero]
   apply CartesianMonoidalCategory.hom_ext <;>
     simp [stdSimplex.δ_zero_eq_const]
 
@@ -70,8 +70,8 @@ theorem second_endpoint_zero : (Δ[1] : SSet.{u}) ◁ stdSimplex.δ (0 : Fin 2) 
 規約：始点の面の添字は 1。
 使われ方：Kerodon §3.2.3。正方形の下辺の計算。 -/
 theorem second_endpoint_one : (Δ[1] : SSet.{u}) ◁ stdSimplex.δ (1 : Fin 2) =
-    fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ stdSimplex.δ (2 : Fin 3) ≫ lower := by
-  rw [lower_face_last]
+    fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower := by
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last]
   apply CartesianMonoidalCategory.hom_ext <;>
     simp [stdSimplex.δ_one_eq_const]
 

@@ -1,0 +1,633 @@
+{
+  "status": "APPLIED_CANDIDATE_PROBE_PASS",
+  "files": [
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberLegs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+    "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+    "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean"
+  ],
+  "changes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 4404,
+      "end": 4523,
+      "line": 70,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "r"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 5474,
+      "end": 5593,
+      "line": 79,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "r"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 6040,
+      "end": 6159,
+      "line": 85,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "r"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 2280,
+      "end": 2403,
+      "line": 47,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 2601,
+      "end": 2724,
+      "line": 51,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 3061,
+      "end": 3184,
+      "line": 56,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 3510,
+      "end": 3633,
+      "line": 61,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 4547,
+      "end": 4670,
+      "line": 71,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "start": 4272,
+      "end": 4396,
+      "line": 70,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberMiddleIso",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberLegs.lean",
+      "start": 2309,
+      "end": 2432,
+      "line": 40,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberLegs.lean",
+      "start": 3201,
+      "end": 3324,
+      "line": 50,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 2826,
+      "end": 2949,
+      "line": 44,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 3700,
+      "end": 3823,
+      "line": 52,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 4841,
+      "end": 4964,
+      "line": 62,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 5291,
+      "end": 5414,
+      "line": 66,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 5456,
+      "end": 5579,
+      "line": 67,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 5909,
+      "end": 6032,
+      "line": 73,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "start": 6460,
+      "end": 6583,
+      "line": 78,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "start": 1697,
+      "end": 1820,
+      "line": 32,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "start": 2583,
+      "end": 2706,
+      "line": 43,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "start": 4357,
+      "end": 4480,
+      "line": 66,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "start": 5563,
+      "end": 5686,
+      "line": 80,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+      "start": 2700,
+      "end": 2842,
+      "line": 47,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q (exactLaxDifference p q)",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q (exactLaxDifference p q) hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "(exactLaxDifference p q)"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+      "start": 2299,
+      "end": 2509,
+      "line": 43,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q (pullbackInclusion p q) (exactLaxDifference p q)\n      (laxDifference_isVerdier p q v a hv)",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q (pullbackInclusion p q) (exactLaxDifference p q) (laxDifference_isVerdier p q v a hv) hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberMiddleIso",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "(pullbackInclusion p q)",
+        "(exactLaxDifference p q)",
+        "(laxDifference_isVerdier p q v a hv)"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+      "start": 1905,
+      "end": 2114,
+      "line": 39,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q (pullbackInclusion p q) (exactLaxDifference p q)\n      (laxDifference_isVerdier p q v a hv)",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q (pullbackInclusion p q) (exactLaxDifference p q) (laxDifference_isVerdier p q v a hv) hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "(pullbackInclusion p q)",
+        "(exactLaxDifference p q)",
+        "(laxDifference_isVerdier p q v a hv)"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "start": 2002,
+      "end": 2125,
+      "line": 35,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "start": 2719,
+      "end": 2842,
+      "line": 41,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "start": 3982,
+      "end": 4105,
+      "line": 58,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "start": 4942,
+      "end": 5065,
+      "line": 75,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "start": 2845,
+      "end": 2976,
+      "line": 41,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean",
+      "start": 3672,
+      "end": 3796,
+      "line": 53,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q i r h",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q i r h hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberMiddleIso",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "i",
+        "r",
+        "h"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean",
+      "start": 2916,
+      "end": 3035,
+      "line": 47,
+      "old": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ)",
+      "callee": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom",
+      "preceding_explicit_args": [
+        "p",
+        "q",
+        "r"
+      ],
+      "receiver": "hΦ",
+      "reason": "preserve_original_elaborated_positional_argument_order"
+    }
+  ],
+  "authorization": "IF-F §9 main ab6b296b4",
+  "probe": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-M",
+      "9000",
+      "/tmp/if-f2/positional9/SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 9.883,
+    "log": "section9-positional-probe.log"
+  },
+  "hashes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "before_sha256": "5f98ec1d6858e654aa170a7e89c65ab399d7c321c698c4091f45cba243ff701f",
+      "after_sha256": "750d685ca0f68ec12d9f9e245410a618578dfb30eb12114136e61eec9286d493"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberLegs.lean",
+      "before_sha256": "bad3e142a4bab4d65ba7d478dcd95c4f93d6994196fd802ee2207db56c78c648",
+      "after_sha256": "ee97c6d56e2bac84041b77765413c6bf2691d074f5d392548b22cfe18df15730"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "before_sha256": "e8c752e590f5b228fae07f79acfce0a49a641c2fcc0b4e4408fcb7ef87289217",
+      "after_sha256": "93a913fde0e289ba178b168eb024ca52d971fda0eba0f773e9abd388ac9fd16f"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "before_sha256": "e0dec97bc48649d51b47b13cb7f151a8b753a812eb258b5effca513d389c270b",
+      "after_sha256": "87da40f2ad11f01e93102eeb47ab26a6e3985f939de69fe90e7e847cd1f61fb5"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+      "before_sha256": "3b0745db8cffa72f9613f74c4414f7d9df99d7711f7e7e5a505aea6148c35913",
+      "after_sha256": "c8555f63af40e9ecb22e36562d1082cdc87670a7cd45ddce1484aadd101b7931"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "before_sha256": "152f371605de2fe997f824bfec2287beae51af65bc5dc869c1ffc2525c429765",
+      "after_sha256": "605ad0dd510909bebfea15fa9d02c24ee8fe8f2af2ec58e5fd00eebec048c43d"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean",
+      "before_sha256": "a7bf1b629668bad3fe67e10fe304cc6a24ee545a33c965ab6621bfa7c78a3e81",
+      "after_sha256": "ada93f89d2d2f5e4faca29ce57635cea559d1ff6a5a435bb077f644e13cbb3d3"
+    }
+  ],
+  "explanation": "Avoid named partial application and restore the original positional argument order. The candidate resolves both rw failures; declaration types and proof bodies otherwise unchanged."
+}

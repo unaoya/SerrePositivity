@@ -18,24 +18,24 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeSpanTransport_groupoidCompletion_isEquivalence
     (x : (laxCategory p q).obj _⦋0⦌) (b : (Δ[1] : SSet.{u}) ⟶ (laxCategory p q).obj)
     (hW : ∀ e : (Δ[1] : SSet.{u}) _⦋1⦌,
       b.app (Opposite.op ⦋1⦌) e ∈ tammeLocalizingEdges p q) :
-    let π := markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+    let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
     ∀ (f : vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
       vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
       (H : (Δ[1] : SSet.{u}) ⊗
         vertexFiber π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ⟶
-        markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
       prismEndpoint 0 _ ≫ H =
         vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) →
       prismEndpoint 1 _ ≫ H = f ≫
         vertexFiberι π (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) →
       H ≫ π = fst (Δ[1] : SSet.{u}) _ ≫ b →
-      IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
+      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
   dsimp only
   have := tammeSpanDenominatorBaseChange_cartesianFibration p q x b hW
   have := tammeSpanBaseChange_cocartesianFibration p q x b
@@ -44,19 +44,19 @@ lemma tammeSpanTransport_groupoidCompletion_isEquivalence
 lemma tammeDenominatorSpanTransport_groupoidCompletion_isEquivalence
     (x : (laxCategory p q).obj _⦋0⦌)
     (s : (laxCategory p q).obj _⦋1⦌) (hs : s ∈ tammeLocalizingEdges p q) :
-    let π := markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+    let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
     ∀ (f : vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
         vertexFiber π ((laxCategory p q).obj.δ 0 s))
       (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber π ((laxCategory p q).obj.δ 1 s) ⟶
-        markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily (laxCategory p q).obj (tammeLocalizingEdges p q) x),
       prismEndpoint 0 _ ≫ H = vertexFiberι π ((laxCategory p q).obj.δ 1 s) →
       prismEndpoint 1 _ ≫ H = f ≫ vertexFiberι π ((laxCategory p q).obj.δ 0 s) →
       H ≫ π = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm s →
-      IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
+      IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
   have h₀ := intervalMap_source (SSet.yonedaEquiv.symm s)
   have h₁ := intervalMap_target (SSet.yonedaEquiv.symm s)
   rw [Equiv.apply_symm_apply] at h₀ h₁
   exact h₀.symm ▸ h₁.symm ▸ tammeSpanTransport_groupoidCompletion_isEquivalence p q x
-    (SSet.yonedaEquiv.symm s) (tammeDenominatorInterval_edges_mem p q s hs)
+    (SSet.yonedaEquiv.symm s) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorInterval_edges_mem p q s hs)
 
 end SerrePositivity.KST.LocalizingInvariants

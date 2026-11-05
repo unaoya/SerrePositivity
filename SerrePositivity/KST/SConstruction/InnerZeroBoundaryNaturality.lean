@@ -81,7 +81,7 @@ def innerZeroToFullBoundaryComparisonKanNat (r : ℕ) :
 方針：局所化での可逆性から既存の Kan 比較定理を使う。
 規約：HT-KQ 等の追加仮定は不要。使われ方：反復実現の模型間の比較。 -/
 lemma innerZeroToFullBoundaryComparisonKan_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (Spectra.PointedKanReplacement.map (innerZeroToFullBoundaryComparison r X)).right :=
   pointedKanReplacement_map_piIsomorphism_of_localized_isIso (innerZeroToFullBoundaryComparison r X)
     (innerZeroToFullBoundaryComparison_image_isIso AnodyneHomotopy.anodyneQ

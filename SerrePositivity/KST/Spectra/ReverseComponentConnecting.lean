@@ -37,15 +37,15 @@ theorem pointedConnectingZero_inverse_edge {E B : PointedSimplicialSet.{u}}
     (h₀ : stdSimplex.δ (0 : Fin 2) ≫ T = a.map ≫ (pointedFiberι p).right)
     (h₁ : stdSimplex.δ (1 : Fin 2) ≫ T = SSet.const E.basepoint) :
     pointedConnectingZero p
-        ((KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
-          (OmegaSpectrum.pointedMap_basepoint p) (KanHomotopyGroup.mk s))⁻¹) =
-      KanHomotopy.mk 0 a := by
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))⁻¹) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 a := by
   let af := SimplexBasepoint.rebase (PointedSimplicialSet.basepoint_ofVertex _ _) a
   obtain ⟨t, ⟨m⟩⟩ := PtSimplex.MulStruct.exists_left_inverse s (0 : Fin 1)
-  obtain ⟨R, hR⟩ := exists_reverse_boundary_edge p.right E.basepoint af T hT h₀ h₁ m
-  have ht : KanHomotopyGroup.mk t = (KanHomotopyGroup.mk s)⁻¹ :=
-    eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq m)
-  have hr : R.pointedBoundary = a := by
+  obtain ⟨R, hR⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_reverse_boundary_edge p.right E.basepoint af T hT h₀ h₁ m
+  have ht : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹ :=
+    eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq m)
+  have hr : (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary R) = a := by
     ext : 1
     change R.boundary.map = af.map
     rw [hR]

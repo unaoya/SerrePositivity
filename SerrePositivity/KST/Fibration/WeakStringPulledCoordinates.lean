@@ -16,16 +16,16 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 初期成分を元の包含側に保ち、cofiber 成分だけを実際の後合成に沿って引き戻す。 -/
-def weakStringPulledCoordinates {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) (n r : ℕ) :=
+def weakStringPulledCoordinates {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :=
   lift ((multiRealizationFunctor r).map
     (weakStringVertexTopExact (f ≫ q : A ⟶ C) ⦋n⦌ 0))
     ((multiRealizationFunctor r).map (weakStringPostExact f q ⦋n⦌) ≫
       weakStringConsecutiveCofibers q n r)
 
 /-- 引き戻した実座標の局所化像は、元の有限比較と核係数の後合成の合成に等しい。 -/
-theorem weakStringPulledCoordinates_localized_eq {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) (n r : ℕ) :
+theorem weakStringPulledCoordinates_localized_eq {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
     AnodyneHomotopy.anodyneQ.map (weakStringPulledCoordinates f q n (r + 1)) =
       AnodyneHomotopy.anodyneQ.map
         (weakStringFiniteComparison (f ≫ q : A ⟶ C) n (r + 1) ≫
@@ -33,7 +33,7 @@ theorem weakStringPulledCoordinates_localized_eq {A B C : StableCategory.{u}}
             (multiRealizationFunctor (r + 1)).map (kernelPostExact f q)))) := by
   unfold weakStringPulledCoordinates weakStringFiniteComparison
   rw [lift_whiskerLeft]
-  apply pair_eq_of_anodyneQ_eq rfl
+  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq rfl
   apply finProduct_eq_of_anodyneQ_eq
   intro j
   simpa only [weakStringConsecutiveCofibers, Category.assoc, Limits.Pi.map_π,
@@ -42,8 +42,8 @@ theorem weakStringPulledCoordinates_localized_eq {A B C : StableCategory.{u}}
 
 /-- Verdier 列では、元の引き戻した座標射自体が全長・全正反復で局所化同型。 -/
 theorem weakStringPulledCoordinates_verdier_localized_isIso
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (n r : ℕ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (weakStringPulledCoordinates i q n (r + 1))) := by
   rw [weakStringPulledCoordinates_localized_eq, Functor.map_comp]
   have := weakStringFiniteComparison_localized_isIso (i ≫ q : A ⟶ C) n r

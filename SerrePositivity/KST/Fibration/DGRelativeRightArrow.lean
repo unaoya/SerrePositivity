@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 元の相対四角形の右辺そのものから回収する、同じ dg 入力射のデータ。 -/
 def dgRelativeRightArrowData := dgInputArrowData A (squareRightArrow d.square).edge
@@ -24,7 +24,7 @@ def dgRelativeRightArrowData := dgInputArrowData A (squareRightArrow d.square).e
 /-- 同じ右辺の ν 像は、指定した像の Verdier 提示の元の商辺に厳密に一致する。 -/
 theorem dgRelativeRightArrow_nu_edge :
     (dgKInputNu A).app (Opposite.op ⦋1⦌) (squareRightArrow d.square).edge =
-      (stableArrow d.image.projection).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.image.projection).edge := by
   calc
     _ = (squareRightArrow (d.square ≫ dgKInputNu A)).edge := rfl
     _ = (squareRightArrow d.image.square).edge :=

@@ -50,7 +50,7 @@ lemma dgOdotMilnorSourceKernelNerve_essentiallySurjective (h : DGGluingMilnorSqu
     IsEssentiallySurjective (dgNerve.map (dgOdotMilnorSourceKernelDGMap R d)) := by
   intro y
   let b := (dgNerve.map (I)).app (Opposite.op ⦋0⦌) y
-  have hb : b ∈ essentialImage (dgGluingMilnorNativeDiagonal R d) := by
+  have hb : b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d) := by
     rw [← dgOdotMilnorFlatKernel_image_eq_diagonal R d h]
     exact ⟨y, ⟨Iso.refl _⟩⟩
   obtain ⟨a, ⟨v⟩⟩ := hb

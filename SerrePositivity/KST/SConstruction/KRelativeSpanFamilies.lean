@@ -22,10 +22,10 @@ variable (X Y : StableModel.{u}) {T U : SSet.{u}}
   (j : T ⟶ U) [Mono j]
   (f : ∀ n, U ⟶ (PointedObject.basedHom ((kOmegaSpectrum X).level n).space
     ((kKanSequence Y).level n).space).right)
-  (d : ∀ n, U ⟶ (PointedObject.basedHom (suspension ((kOmegaSpectrum X).level n).space)
+  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum X).level n).space)
     ((kKanSequence Y).level (n + 1)).space).right)
   (a : ∀ n, SSet.Homotopy (d n)
-    (f (n + 1) ≫ PointedMapping.pre ((kOmegaSpectrum X).sigma n)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
       ((kKanSequence Y).level (n + 1)).space))
   (b : ∀ n, SSet.Homotopy (d n)
     (f n ≫ RawSpectrumMapping.step (kOmegaSpectrum X) (kKanSequence Y) n))
@@ -35,10 +35,10 @@ variable (X Y : StableModel.{u}) {T U : SSet.{u}}
 
 variable (ht : ∀ n, (t n).edge.edge = (SSet.Truncated.Edge.id
     (X := (truncation 2).obj ((ihom T).obj
-      (PointedObject.basedHom (suspension ((kOmegaSpectrum X).level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum X).level n).space)
         ((kKanSequence Y).level (n + 1)).space).right))
     (functorVertex (j ≫ f (n + 1) ≫
-      PointedMapping.pre ((kOmegaSpectrum X).sigma n)
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
         ((kKanSequence Y).level (n + 1)).space))).edge)
 
 variable

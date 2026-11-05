@@ -23,17 +23,17 @@ def simplexVertexValue {B : SSet.{u}} (n : SimplexCategory)
   SSet.yonedaEquiv ((functorVertexEquiv (stdSimplex.obj n) B).symm v)
 
 /-- 商に写した実図式の全辺が可逆である条件。 -/
-def weakStringPredicate {B C : StableCategory.{u}} (q : ExactMap B C) (n : SimplexCategory)
+def weakStringPredicate {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : SimplexCategory)
     (v : ((ihom (stdSimplex.obj n)).obj B.obj) _⦋0⦌) : Prop :=
   q.hom.app (Opposite.op n) (simplexVertexValue n v) ∈
     (quasicategoryCore C.obj).obj (Opposite.op n)
 
 /-- W 辺の全有限列と、それらの間の全自然変換を持つ ∞ 圏。 -/
-def weakStringCategory {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringCategory {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) : SSet.{u} :=
   fullSubcomplexOnVertices ((ihom (stdSimplex.obj n)).obj B.obj) (weakStringPredicate q n)
 
-instance weakStringCategory_quasicategory {B C : StableCategory.{u}} (q : ExactMap B C)
+instance weakStringCategory_quasicategory {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) : Quasicategory (weakStringCategory q n) :=
   inferInstanceAs (Quasicategory (fullSubcomplexOnVertices _ (weakStringPredicate q n) : SSet.{u}))
 
@@ -51,7 +51,7 @@ lemma simplexVertexValue_reindex {B : SSet.{u}} {m n : SimplexCategory} (θ : m 
   exact (SSet.yonedaEquiv_naturality θ F).symm
 
 /-- 全合成辺を含む W 条件は、全ての面・退化による制限で保存される。 -/
-lemma weakStringPredicate_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringPredicate_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n)
     (v : ((ihom (stdSimplex.obj n)).obj B.obj) _⦋0⦌) (hv : weakStringPredicate q n v) :
     weakStringPredicate q m
@@ -61,13 +61,13 @@ lemma weakStringPredicate_reindex {B C : StableCategory.{u}} (q : ExactMap B C)
   exact (quasicategoryCore C.obj).map θ.op hv
 
 /-- W 辺の列への、元の標準単体の制限。 -/
-def weakStringMap {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) : weakStringCategory q n ⟶ weakStringCategory q m :=
   fullPredicateMap ((pre (stdSimplex.map θ)).app B.obj)
     (weakStringPredicate q n) (weakStringPredicate q m) (weakStringPredicate_reindex q θ)
 
 /-- 列の制限を含めると、元の関手圏の前合成を回収する。 -/
-lemma weakStringMap_ι {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringMap_ι {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) :
     weakStringMap q θ ≫
       (fullSubcomplexOnVertices _ (weakStringPredicate q m)).ι =

@@ -38,20 +38,20 @@ lemma post_commutation (e : (Δ[1] : SSet.{u}) ⟶ X)
       (functorEdgeOfSimplicialHomotopy (TriangleEdge.post T))) := by
   let J := stableHomotopyPrecomp SquareDiagonal.postShape H
   have hn := CurryInterval.commutation J
-  have hs := HomotopyArrow.congr (CurryInterval.horizontal (SquareDiagonal.postShape ≫ S))
+  have hs := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.postShape ≫ S))
     (TriangleEdge.post S) rfl
-  have ht := HomotopyArrow.congr (CurryInterval.horizontal (SquareDiagonal.postShape ≫ T))
+  have ht := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.postShape ≫ T))
     (TriangleEdge.post T) rfl
-  have hd := HomotopyArrow.congr (CurryHomotopy.slice J b₁) (diagonalFace H)
+  have hd := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₁) (diagonalFace H)
     (CurryHomotopy.slice_precomp_map H SquareDiagonal.postShape b₁ _ SquareDiagonal.postShape_one)
-  have hi := (HomotopyArrow.congr (CurryHomotopy.slice J b₀) (firstFace H)
+  have hi := (HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₀) (firstFace H)
     (CurryHomotopy.slice_precomp_map H SquareDiagonal.postShape b₀ _
       SquareDiagonal.postShape_zero)).trans (HomotopyArrow.identity (firstFace H) e hFirst)
   have hl := arrow_mk_comp_congr hs hd
-  have hr := (arrow_mk_comp_of_any_identity
-    (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (CurryHomotopy.slice J b₀)))
+  have hr := (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity
+    (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₀)))
     (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (CurryInterval.horizontal (SquareDiagonal.postShape ≫ T))))
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.postShape ≫ T))))
     hi).trans ht
   exact hl.symm.trans ((congrArg Arrow.mk hn).trans hr)
 
@@ -63,19 +63,19 @@ lemma pre_commutation (f : (Δ[1] : SSet.{u}) ⟶ X)
       Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (TriangleEdge.pre T))) := by
   let J := stableHomotopyPrecomp SquareDiagonal.preShape H
   have hn := CurryInterval.commutation J
-  have hs := HomotopyArrow.congr (CurryInterval.horizontal (SquareDiagonal.preShape ≫ S))
+  have hs := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.preShape ≫ S))
     (TriangleEdge.pre S) rfl
-  have ht := HomotopyArrow.congr (CurryInterval.horizontal (SquareDiagonal.preShape ≫ T))
+  have ht := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.preShape ≫ T))
     (TriangleEdge.pre T) rfl
-  have hd := HomotopyArrow.congr (CurryHomotopy.slice J b₀) (diagonalFace H)
+  have hd := HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₀) (diagonalFace H)
     (CurryHomotopy.slice_precomp_map H SquareDiagonal.preShape b₀ _ SquareDiagonal.preShape_zero)
-  have hi := (HomotopyArrow.congr (CurryHomotopy.slice J b₁) (lastFace H)
+  have hi := (HomotopyArrow.congr (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₁) (lastFace H)
     (CurryHomotopy.slice_precomp_map H SquareDiagonal.preShape b₁ _
       SquareDiagonal.preShape_one)).trans (HomotopyArrow.identity (lastFace H) f hLast)
-  have hl := (arrow_mk_comp_right_of_any_identity
+  have hl := (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_right_of_any_identity
     (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (CurryInterval.horizontal (SquareDiagonal.preShape ≫ S))))
-    (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (CurryHomotopy.slice J b₁)))
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SquareDiagonal.preShape ≫ S))))
+    (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice J b₁)))
     hi).trans hs
   have hr := arrow_mk_comp_congr hd ht
   exact hl.symm.trans ((congrArg Arrow.mk hn).trans hr)

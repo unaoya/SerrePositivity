@@ -37,14 +37,14 @@ def loopTowerCone (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) :
     Cone (Functor.ofOpSequence d ⋙
       PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}) where
-  pt := pointedTowerLimit (fun n ↦ loopSpace (X n))
+  pt := pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
     (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n))
   π := NatTrans.ofOpSequence
-    (fun n ↦ pointedTowerProjection (fun n ↦ loopSpace (X n))
+    (fun n ↦ pointedTowerProjection (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
       (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n)) n) (fun n ↦ by
-      change 𝟙 _ ≫ pointedTowerProjection (fun n ↦ loopSpace (X n))
+      change 𝟙 _ ≫ pointedTowerProjection (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n)) n =
-        pointedTowerProjection (fun n ↦ loopSpace (X n))
+        pointedTowerProjection (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
           (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n)) (n + 1) ≫
           (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
             ((Functor.ofOpSequence d).map (homOfLE (Nat.le_succ n)).op)
@@ -67,7 +67,7 @@ def loopTowerCone_isLimit (X : ℕ → PointedSimplicialSet.{u})
   fac c j := pointedTowerLift_projection _ _ _ _ j.unop
   uniq c m hm := pointedTowerLimit_hom_ext _ _ (fun n ↦ by
     exact (hm (Opposite.op n)).trans
-      (pointedTowerLift_projection (fun n ↦ loopSpace (X n))
+      (pointedTowerLift_projection (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n))
         (fun n ↦ c.π.app (Opposite.op n)) _ n).symm)
 
@@ -77,8 +77,8 @@ def loopTowerCone_isLimit (X : ℕ → PointedSimplicialSet.{u})
 使われ方：Sp の塔の随伴構造射を塔の π_* 比較へ移す。 -/
 def loopTowerIso (X : ℕ → PointedSimplicialSet.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) :
-    loopSpace (pointedTowerLimit X d) ≅
-      pointedTowerLimit (fun n ↦ loopSpace (X n))
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedTowerLimit X d) ≅
+      pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X n))
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (d n)) :=
   (isLimitOfPreserves (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u})
     (pointedTowerCone_isLimit X d)).conePointUniqueUpToIso (loopTowerCone_isLimit X d)

@@ -45,7 +45,7 @@ lemma pointedKanObject_hom_eq (X Y : PointedKanObject.{u}) :
 /-- 豊穣 Hom は基点固定写像空間の Kan 性によって Kan。 -/
 instance pointedKanObject_sHom_kanComplex (X Y : PointedKanObject.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) :=
-  PointedMapping.basedHom_kanComplex X.obj Y.obj
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex X.obj Y.obj
 
 /-- 点つき Kan 複体の coherent nerve。 -/
 def PointedKanInfinity : SSet.{u + 1} := SimplicialNerve PointedKanObject.{u}

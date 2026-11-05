@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -47,7 +52,7 @@ def diagonal : (Δ[1] : SSet.{u}) ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[1] := lift (𝟙
 規約：面の添字は 1。
 使われ方：Goerss–Jardine I §7。相対三角形の共通辺の整合。 -/
 @[reassoc (attr := simp)]
-theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ upper.{u} = diagonal.{u} := by
+theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal.{u} := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (0 : Fin 2).succ ≫ stdSimplex.σ (0 : Fin 2) = 𝟙 _
     exact CosimplicialObject.δ_comp_σ_succ SSet.stdSimplex
@@ -59,7 +64,7 @@ theorem upper_diagonal : stdSimplex.δ (1 : Fin 3) ≫ upper.{u} = diagonal.{u} 
 規約：共通の辺の向きは上側と同じ。
 使われ方：Goerss–Jardine I §7。二つの充填の同じ底での比較。 -/
 @[reassoc (attr := simp)]
-theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ lower.{u} = diagonal.{u} := by
+theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal.{u} := by
   apply CartesianMonoidalCategory.hom_ext
   · change stdSimplex.δ (1 : Fin 2).castSucc ≫ stdSimplex.σ (1 : Fin 2) = 𝟙 _
     exact CosimplicialObject.δ_comp_σ_self SSet.stdSimplex
@@ -71,13 +76,52 @@ theorem lower_diagonal : stdSimplex.δ (1 : Fin 3) ≫ lower.{u} = diagonal.{u} 
 規約：通常の単体集合の braiding を使う。
 使われ方：Goerss–Jardine I §7。円の二変数の交換を三角形の交換へ移す。 -/
 @[reassoc (attr := simp)]
-theorem upper_swap : upper.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = lower.{u} := rfl
+theorem upper_swap : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} := rfl
 
 /-- 概要：正方形の変数の交換は下側の三角形を上側へ戻す。
 方針：直積の交換の二つの射影を計算する。
 規約：厳密な射の等式。
 使われ方：Goerss–Jardine I §7。符号反転の比較の二方向の制限。 -/
 @[reassoc (attr := simp)]
-theorem lower_swap : lower.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = upper.{u} := rfl
+theorem lower_swap : _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower.{u} ≫ (β_ (Δ[1] : SSet.{u}) Δ[1]).hom = _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper.{u} := rfl
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.diagonal := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.diagonal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_diagonal := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_diagonal_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_swap := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_swap_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_diagonal := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_diagonal_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_swap := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_swap_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper._proof_1

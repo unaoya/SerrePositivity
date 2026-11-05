@@ -25,7 +25,7 @@ open NullHomotopyDifference NullHomotopyTransport
 theorem exists_step {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
     {e : E _⦋0⦌} {b : B _⦋0⦌} (hb : p.app _ e = b) {n : ℕ}
     {s t : E.PtSimplex (n + 1) e} {u v : B.PtSimplex (n + 1) b}
-    (hs : mapSimplex p hb s = u) (ht : mapSimplex p hb t = v)
+    (hs : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hb s = u) (ht : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hb t = v)
     (R : PtSimplex.RelStruct .const u (Fin.last (n + 1)))
     (S : PtSimplex.RelStruct .const v (Fin.last (n + 1)))
     (U : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
@@ -39,11 +39,11 @@ theorem exists_step {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
         A'.map ≫ p = A.map ∧ ∀ j, stdSimplex.δ j ≫ ψ = triangleFace U A' V j := by
   let U' := mapNullTo p hb hs U
   let V' := mapNullTo p hb ht V
-  let T := transport U' A
+  let T := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport U' A
   have hdiff : difference S T = difference S V' := by
     exact (difference_eq_of_transport_fillers R U' A S T φ
-      (NullHomotopyTransport.compatible U' A).liftOfKanComplex hφ
-      (NullHomotopyTransport.filler_face U' A)).symm.trans hd
+      (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible U' A).liftOfKanComplex hφ
+      (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.filler_face U' A)).symm.trans hd
   have hz : difference T V' = 1 := by
     have hprod := difference_comp S T V'
     rw [← hdiff] at hprod

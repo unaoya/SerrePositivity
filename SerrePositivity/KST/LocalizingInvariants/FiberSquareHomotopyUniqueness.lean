@@ -33,7 +33,7 @@ lemma homMk_eq_of_cospan {X : SSet.{u}} [Quasicategory X]
   have hc := FiberCone.homotopy_homMk_eq (pullbackCone F) (pullbackCone G) hF hG
     (stableHomotopyPrecomp cospanConeSquareIso.hom H)
     (stableHomotopyPrecomp cospanConeSquareIso.hom J)
-    ((restriction H).trans (h.trans (restriction J).symm))
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopy.restriction H).trans (h.trans (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopy.restriction J).symm))
   have he := congrArg (fun f ↦
     (hoFunctor.map ((pre cospanConeSquareIso.inv).app X)).toFunctor.map f) hc
   rw [homMk_functorEdge_precomp, homMk_functorEdge_precomp] at he

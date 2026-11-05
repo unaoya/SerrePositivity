@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgGluingInputHomotopy_homMk_eq {A E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p]

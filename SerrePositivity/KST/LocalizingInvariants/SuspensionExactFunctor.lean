@@ -17,27 +17,27 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
-instance arrow_isExact : IsExactFunctor (arrow X) := by
-  have : IsExactFunctor (arrow X ≫
+instance arrow_isExact : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X) := by
+  have : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-    rw [arrow_source]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source]
     infer_instance
-  have : IsExactFunctor (arrow X ≫
+  have : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
-    isExact_of_zero_values _ (arrow_zero_target X)
+    isExact_of_zero_values _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_zero_target X)
   exact arrow_exact_of_endpoints X _
 
-instance map_isExact : IsExactFunctor (map X) := by
-  have : IsExactFunctor (CofiberFamily.cofiber X (𝟙 _)) :=
+instance map_isExact : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map X) := by
+  have : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) :=
     CofiberFamily.cofiber_isExact X (𝟙 _)
-  change IsExactFunctor (arrow X ≫ CofiberFamily.cofiber X (𝟙 _))
+  change IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _))
   infer_instance
 
-def exactMap (A : StableCategory.{u}) : ExactMap A A := ⟨map A.obj, inferInstance⟩
+def exactMap (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A A := ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map A.obj, inferInstance⟩
 
 end SerrePositivity.KST.LocalizingInvariants.SuspensionExact

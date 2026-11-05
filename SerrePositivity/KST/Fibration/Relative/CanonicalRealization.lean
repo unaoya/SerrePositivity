@@ -37,7 +37,7 @@ theorem closedRelativeInfinitySquare_isPullback
   exInfinityCommSqInfinitySquare_isPullback _
     (closedRelativeSquare_homotopyPullback_unconditional P)
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
     (relativeFirstRowSimplexQuotient d.projection n)))
 

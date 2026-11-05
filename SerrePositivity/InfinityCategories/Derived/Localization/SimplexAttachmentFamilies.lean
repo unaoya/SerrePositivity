@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary
 
 /-!
@@ -15,36 +17,39 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 前段と次辺の全族を、元の共有点に沿って一つの境界族へ貼る。 -/
 def simplexAttachmentFamilyGlue {P X : SSet.{u}} (n : ℕ)
     (a : P ⟶ (ihom (Δ[n] : SSet.{u})).obj X)
     (b : P ⟶ (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
-    (hab : a ≫ (pre (simplexLastPoint n)).app X =
+    (hab : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       b ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X) :
-    P ⟶ (ihom (simplexAttachmentBoundary n : SSet.{u})).obj X :=
-  (isPullback_pre_of_isPushout (simplexAttachmentBoundary_isPushout n) X).lift a b hab
+    P ⟶ (ihom (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n : SSet.{u})).obj X :=
+  (isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout n) X).lift a b hab
 
 @[reassoc]
 lemma simplexAttachmentFamilyGlue_prefix {P X : SSet.{u}} (n : ℕ)
     (a : P ⟶ (ihom (Δ[n] : SSet.{u})).obj X)
     (b : P ⟶ (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
-    (hab : a ≫ (pre (simplexLastPoint n)).app X =
+    (hab : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       b ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X) :
-    simplexAttachmentFamilyGlue n a b hab ≫ (pre (simplexAttachmentPrefix n)).app X = a :=
-  (isPullback_pre_of_isPushout (simplexAttachmentBoundary_isPushout n) X).lift_fst a b hab
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue n a b hab ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix n)).app X = a :=
+  (isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout n) X).lift_fst a b hab
 
 @[reassoc]
 lemma simplexAttachmentFamilyGlue_lastEdge {P X : SSet.{u}} (n : ℕ)
     (a : P ⟶ (ihom (Δ[n] : SSet.{u})).obj X)
     (b : P ⟶ (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
-    (hab : a ≫ (pre (simplexLastPoint n)).app X =
+    (hab : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       b ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X) :
-    simplexAttachmentFamilyGlue n a b hab ≫ (pre (simplexAttachmentLastEdge n)).app X = b :=
-  (isPullback_pre_of_isPushout (simplexAttachmentBoundary_isPushout n) X).lift_snd a b hab
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue n a b hab ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge n)).app X = b :=
+  (isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout n) X).lift_snd a b hab
 
 /-- 指定部分族と、前段・次辺・共有点の全族を同時に保持する実全図式の延長。 -/
 lemma exists_relative_simplexAttachmentFamily {P Q X : SSet.{u}} [Quasicategory X]
@@ -52,31 +57,58 @@ lemma exists_relative_simplexAttachmentFamily {P Q X : SSet.{u}} [Quasicategory 
     (f : P ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X)
     (a : Q ⟶ (ihom (Δ[n] : SSet.{u})).obj X)
     (b : Q ⟶ (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
-    (hab : a ≫ (pre (simplexLastPoint n)).app X =
+    (hab : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       b ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X)
     (ha : i ≫ a = f ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)
-    (hb : i ≫ b = f ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X) :
+    (hb : i ≫ b = f ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X) :
     ∃ L : Q ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X,
       i ≫ L = f ∧ L ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X = a ∧
-        L ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X = b := by
-  let T := simplexAttachmentFamilyGlue n a b hab
-  have hT : i ≫ T = f ≫ (pre (simplexAttachmentBoundary n).ι).app X := by
-    apply (isPullback_pre_of_isPushout (simplexAttachmentBoundary_isPushout n) X).hom_ext
-    · rw [Category.assoc, simplexAttachmentFamilyGlue_prefix]
+        L ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X = b := by
+  let T := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue n a b hab
+  have hT : i ≫ T = f ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X := by
+    apply (isPullback_pre_of_isPushout (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout n) X).hom_ext
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix]
       simpa only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
-        simplexAttachmentPrefix_ι] using ha
-    · rw [Category.assoc, simplexAttachmentFamilyGlue_lastEdge]
+        _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι] using ha
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge]
       simpa only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
-        simplexAttachmentLastEdge_ι] using hb
+        _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι] using hb
   have := TrivialKanFibration.mem
-    (p := (pre (simplexAttachmentBoundary n).ι).app X) i inferInstance
-  let sq : CommSq f i ((pre (simplexAttachmentBoundary n).ι).app X) T := ⟨hT.symm⟩
+    (p := (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X) i inferInstance
+  let sq : CommSq f i ((pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app X) T := ⟨hT.symm⟩
   refine ⟨sq.lift, sq.fac_left, ?_, ?_⟩
-  · have he := congrArg (· ≫ (pre (simplexAttachmentPrefix n)).app X) sq.fac_right
-    rw [Category.assoc, simplexAttachmentFamilyGlue_prefix] at he
-    simpa only [← NatTrans.comp_app, ← pre_map, simplexAttachmentPrefix_ι] using he
-  · have he := congrArg (· ≫ (pre (simplexAttachmentLastEdge n)).app X) sq.fac_right
-    rw [Category.assoc, simplexAttachmentFamilyGlue_lastEdge] at he
-    simpa only [← NatTrans.comp_app, ← pre_map, simplexAttachmentLastEdge_ι] using he
+  · have he := congrArg (· ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix n)).app X) sq.fac_right
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix] at he
+    simpa only [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι] using he
+  · have he := congrArg (· ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge n)).app X) sq.fac_right
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge] at he
+    simpa only [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι] using he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_simplexAttachmentFamily := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_relative_simplexAttachmentFamily
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_lastEdge := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_lastEdge_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_prefix_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue.congr_simp

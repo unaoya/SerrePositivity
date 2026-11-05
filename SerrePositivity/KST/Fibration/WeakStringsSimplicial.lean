@@ -18,7 +18,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- W 列の恒等再添字は元の恒等射を保つ。 -/
-lemma weakStringMap_id {B C : StableCategory.{u}} (q : ExactMap B C) (n : SimplexCategory) :
+lemma weakStringMap_id {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : SimplexCategory) :
     weakStringMap q (𝟙 n) = 𝟙 (weakStringCategory q n) := by
   apply (cancel_mono (fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι).1
   dsimp only [weakStringCategory]
@@ -26,7 +26,7 @@ lemma weakStringMap_id {B C : StableCategory.{u}} (q : ExactMap B C) (n : Simple
   simp only [Category.comp_id, Category.id_comp]
 
 /-- W 列の再添字は元の合成を厳密に保つ。 -/
-lemma weakStringMap_comp {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringMap_comp {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {l m n : SimplexCategory} (θ : l ⟶ m) (φ : m ⟶ n) :
     weakStringMap q (θ ≫ φ) = weakStringMap q φ ≫ weakStringMap q θ := by
   apply (cancel_mono (fullSubcomplexOnVertices _ (weakStringPredicate q l)).ι).1
@@ -34,7 +34,7 @@ lemma weakStringMap_comp {B C : StableCategory.{u}} (q : ExactMap B C)
   rw [stdSimplex.map_comp, pre_map, NatTrans.comp_app, Category.assoc]
 
 /-- 全有限 W 列の、全高次自然変換を保持した単体的 ∞ 圏の underlying 図式。 -/
-def weakStringSimplicialCategory {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakStringSimplicialCategory {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     SimplicialObject SSet.{u} where
   obj n := weakStringCategory q n.unop
   map θ := weakStringMap q θ.unop
@@ -42,12 +42,12 @@ def weakStringSimplicialCategory {B C : StableCategory.{u}} (q : ExactMap B C) :
   map_comp θ φ := weakStringMap_comp q φ.unop θ.unop
 
 /-- 零段の W 条件は全ての対象に成立する。 -/
-lemma weakStringPredicate_zero {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringPredicate_zero {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (v : ((ihom (Δ[0] : SSet.{u})).obj B.obj) _⦋0⦌) : weakStringPredicate q ⦋0⦌ v :=
   quasicategoryCore_vertex _
 
 /-- 一辺の列の条件は、元の W 辺図式の条件と同じである。 -/
-lemma weakStringPredicate_one_iff {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringPredicate_one_iff {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (v : ((ihom (Δ[1] : SSet.{u})).obj B.obj) _⦋0⦌) :
     weakStringPredicate q ⦋1⦌ v ↔ weakArrowPredicate q v := by
   change q.hom.app _ (arrowVertexSimplex v) ∈ (quasicategoryCore C.obj).obj _ ↔ _
@@ -57,7 +57,7 @@ lemma weakStringPredicate_one_iff {B C : StableCategory.{u}} (q : ExactMap B C)
     (f := edgeOfSimplex (q.hom.app _ (arrowVertexSimplex v))) rfl).symm
 
 /-- 一辺の段は、選択や同値な別模型を導入せず既存の W 辺図式圏と一致する。 -/
-lemma weakStringCategory_one {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakStringCategory_one {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakStringCategory q ⦋1⦌ = weakArrowCategory q := by
   have hp : weakStringPredicate q ⦋1⦌ = weakArrowPredicate q :=
     funext (fun v => propext (weakStringPredicate_one_iff q v))
@@ -66,11 +66,11 @@ lemma weakStringCategory_one {B C : StableCategory.{u}} (q : ExactMap B C) :
 
 /-- 列の条件は、全ての実合成辺の W 所属で正確に判定できる。 -/
 lemma weakStringPredicate_iff_allEdges
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (n : SimplexCategory)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : SimplexCategory)
     (v : ((ihom (stdSimplex.obj n)).obj B.obj) _⦋0⦌) :
     weakStringPredicate q n v ↔
-      ∀ α : ⦋1⦌ ⟶ n, B.obj.map α.op (simplexVertexValue n v) ∈ weakEquivalences i := by
+      ∀ α : ⦋1⦌ ⟶ n, B.obj.map α.op (simplexVertexValue n v) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   change (∀ α : ⦋1⦌ ⟶ n, IsInvertibleEdge
     (edgeOfSimplex (C.obj.map α.op (q.hom.app _ (simplexVertexValue n v))))) ↔ _
   apply forall_congr'
@@ -80,6 +80,6 @@ lemma weakStringPredicate_iff_allEdges
     (e := (edgeOfSimplex (B.obj.map α.op (simplexVertexValue n v))).map
       ((truncation 2).map q.hom))
     (f := edgeOfSimplex (q.hom.app _ (B.obj.map α.op (simplexVertexValue n v)))) rfl).symm.trans
-      (mem_weakEquivalences_iff_invertible h _).symm
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).symm
 
 end SerrePositivity.KST.Fibration

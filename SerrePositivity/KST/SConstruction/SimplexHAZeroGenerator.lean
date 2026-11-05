@@ -22,7 +22,7 @@ lemma simplexHAGeneratorWord_zero_value {n : ℕ} (s : DGNerve.Simplex A D n)
     simplexHABeadWordValue A s.toSimplexData (simplexHAGeneratorWord 0 i v b hb) =
       s.edgeHom (v 0) b hb := by
   change simplexHABeadWordValue A s.toSimplexData
-    (simplexHABeadTail {b} (Finset.singleton_nonempty b) (v 0) (by
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail {b} (Finset.singleton_nonempty b) (v 0) (by
       intro t ht
       simpa only [Finset.mem_singleton.mp ht] using hb)) = _
   have hI : 2 ≤ ({v 0, b} : Finset (Fin (n + 1))).card := by simp [ne_of_lt hb]

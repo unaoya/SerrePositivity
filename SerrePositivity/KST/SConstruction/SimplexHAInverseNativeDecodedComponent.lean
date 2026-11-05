@@ -20,16 +20,16 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma cubicalLambdaNativeSimplexData_hom_atDimension {N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (I : Finset (Fin (N + 1))) (a b : Fin (N + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (simplexSubsetNonempty I hI))
-    (hb : b = I.max' (simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
     (d : ℕ) (hd : d = I.card - 2) :
     (cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk =
       eqToHom (congrArg (fun l => (homObject A D
-        (F.obj (standardSimplexVertex a)) (F.obj (standardSimplexVertex b))).X l)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X l)
         (show -(d : ℤ) = k by rw [hd]; omega))
         (serreCubeTopCellImage A _ d
           (simplexSubsetLambdaCellAtDimension A I a b hI ha hb d hd ≫
-            F.map (standardSimplexVertex a) (standardSimplexVertex b))) := by
+            F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))) := by
   subst d
   simpa only [simplexSubsetLambdaCellAtDimension, eqToHom_refl, Category.id_comp] using
     cubicalLambdaNativeSimplexData_hom_normalized A F I a b k hI ha hb hk

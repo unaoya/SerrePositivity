@@ -110,29 +110,29 @@ private lemma fixedEndpointLoop_lift {X : SSet.{u}} {x y : X _⦋0⦌}
 /-- 概要：零完全関手の両端で恒等な区間自己比較は恒等の類となる。
 方針：同じ類の両端固定代表を区間 Hom に戻し、零成分の一意性を使う。
 規約：元の全自己比較の類。使われ方：上下全比較の共有対角の一致。 -/
-lemma stableZeroArrowLoop_homMk_eq_id (A B : StableCategory.{u}) (F : ExactMap A B)
+lemma stableZeroArrowLoop_homMk_eq_id (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hF : ∀ x, IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
     (e : SSet.Truncated.Edge
-      (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj StableInfinity.{u}))
-      (functorVertex (SSet.yonedaEquiv.symm (stableArrow F).edge))
-      (functorVertex (SSet.yonedaEquiv.symm (stableArrow F).edge)))
+      (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))
+      (functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).edge))
+      (functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F).edge)))
     (h₀ : SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
+      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _))
     (h₁ : SSet.Truncated.HomotopyCategory.homMk (e.map ((truncation 2).map
-      (evaluateFunctorAt (Y := StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
+      (evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) =
         SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _)) :
     SSet.Truncated.HomotopyCategory.homMk e =
       SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _) := by
   obtain ⟨e', hp, hc⟩ := stableArrowLoop_endpointRepresentative_exists _ e h₀ h₁
-  obtain ⟨w, hw⟩ := fixedEndpointLoop_lift (stableArrow F) e' hp
+  obtain ⟨w, hw⟩ := fixedEndpointLoop_lift (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F) e' hp
   have he := stableZeroInterval_hom_ext A B F hF
     (SSet.Truncated.HomotopyCategory.homMk w)
     (SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _))
-  let j : intervalMappingSpace (stableVertex A) (stableVertex B) ⟶
-      (ihom (Δ[1] : SSet.{u + 1})).obj StableInfinity.{u} :=
-    vertexFiberι ((pre (boundary 1).ι).app StableInfinity.{u})
-    (functorVertex (intervalMappingBoundary (stableVertex A) (stableVertex B)))
+  let j : intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex B) ⟶
+      (ihom (Δ[1] : SSet.{u + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
+    vertexFiberι ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
+    (functorVertex (intervalMappingBoundary (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex B)))
   have hm := congrArg ((hoFunctor.map j).toFunctor.map) he
   change SSet.Truncated.HomotopyCategory.homMk (w.map ((truncation 2).map j)) =
     SSet.Truncated.HomotopyCategory.homMk
@@ -141,7 +141,7 @@ lemma stableZeroArrowLoop_homMk_eq_id (A B : StableCategory.{u}) (F : ExactMap A
     apply SSet.Truncated.Edge.ext
     exact hw
   have hm' := hm.trans (congrArg SSet.Truncated.HomotopyCategory.homMk
-    (SSet.Truncated.Edge.map_id (intervalMappingVertexOfEdge (stableArrow F))
+    (SSet.Truncated.Edge.map_id (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F))
       ((truncation 2).map j)))
   have hh : SSet.Truncated.HomotopyCategory.homMk e' =
       SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _) := by

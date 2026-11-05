@@ -23,7 +23,7 @@ open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariant
 方針：同じ Ex∞ の後に元の suspension を取る。
 規約：全 Hom を保つ。使われ方：隣接段 span の源。 -/
 def stableKanAssemblySourceFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} PointedSSetObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet
     (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
 
@@ -31,7 +31,7 @@ def stableKanAssemblySourceFunctor (r : ℕ) :
 方針：同じ元の境界商関手へ同じ Ex∞ と suspension を合成する。
 規約：比較の逆は選ばない。使われ方：span の左標的。 -/
 def stableKanAssemblyLeftTargetFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} PointedSSetObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableBoundaryPointedEnrichedFunctor r).comp SSet
     (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
 
@@ -39,7 +39,7 @@ def stableKanAssemblyLeftTargetFunctor (r : ℕ) :
 方針：元の順の二関手を合成する。
 規約：同じ円と単位を保つ。使われ方：span 右脚の中間値。 -/
 def stableKanAssemblyMiddleFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} PointedSSetObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet
     (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit)
 
@@ -47,7 +47,7 @@ def stableKanAssemblyMiddleFunctor (r : ℕ) :
 方針：同じ元の境界商へ Ex∞ を後合成する。
 規約：元の正段を保持。使われ方：span の右標的。 -/
 def stableKanAssemblyTargetFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} StableQCat.{u} PointedSSetObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableBoundaryPointedEnrichedFunctor (r + 1)).comp SSet exInfinityPointedEnrichedFunctor
 
 /-- 概要：同じ Kan S₁ 比較の suspension による全族左脚。
@@ -56,7 +56,7 @@ def stableKanAssemblyTargetFunctor (r : ℕ) :
 def stableKanAssemblyLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableKanAssemblySourceFunctor r) (stableKanAssemblyLeftTargetFunctor r) :=
-  strictSimplicialTransformationPostcompose _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _
     (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
     (stableOneDirectionPointedComparison r)
 
@@ -66,7 +66,7 @@ def stableKanAssemblyLeftTransformation (r : ℕ) :
 def stableKanAssemblySigmaTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableKanAssemblySourceFunctor r) (stableKanAssemblyMiddleFunctor r) :=
-  strictSimplicialTransformationPrecompose (stableOneDirectionPointedEnrichedFunctor r)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose (stableOneDirectionPointedEnrichedFunctor r)
     _ _ exInfinitySuspensionTransformation
 
 /-- 概要：同じ元の組み立ての Ex∞ 全族変換。
@@ -75,9 +75,9 @@ def stableKanAssemblySigmaTransformation (r : ℕ) :
 def stableKanAssemblyExTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableKanAssemblyMiddleFunctor r) (stableKanAssemblyTargetFunctor r) :=
-  strictSimplicialTransformationReassociateSource (stableOneDirectionPointedEnrichedFunctor r)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource (stableOneDirectionPointedEnrichedFunctor r)
     pointedSSetSuspensionEnrichedFunctor exInfinityPointedEnrichedFunctor _
-    (strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedEnrichedFunctor
       (stableSuspensionAssemblyTransformation r))
 
 /-- 概要：同じ比較と元の組み立ての像からなる全族右脚。
@@ -86,13 +86,13 @@ def stableKanAssemblyExTransformation (r : ℕ) :
 def stableKanAssemblyRightTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableKanAssemblySourceFunctor r) (stableKanAssemblyTargetFunctor r) :=
-  strictSimplicialTransformationComp _ _ _ (stableKanAssemblySigmaTransformation r)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp _ _ _ (stableKanAssemblySigmaTransformation r)
     (stableKanAssemblyExTransformation r)
 
 /-- 概要：同じ全族左脚の実点つき成分。
 方針：厳密豊穣変換の同じ Hom 成分を回収する。
 規約：元の実成分を固定。使われ方：有限 BF 次段の左脚。 -/
-def stableKanAssemblyLeftMap (r : ℕ) (C : StableQCat.{u}) :
+def stableKanAssemblyLeftMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableKanAssemblySourceFunctor r).obj C ⟶
       (stableKanAssemblyLeftTargetFunctor r).obj C :=
   exInfinityThenSuspensionMap (stableOneDirectionPointedComparisonMap r C)
@@ -100,7 +100,7 @@ def stableKanAssemblyLeftMap (r : ℕ) (C : StableQCat.{u}) :
 /-- 概要：同じ全族右脚の実点つき成分。
 方針：厳密豊穣変換の同じ Hom 成分を回収する。
 規約：元の実成分を固定。使われ方：有限 BF 次段の右脚。 -/
-def stableKanAssemblyRightMap (r : ℕ) (C : StableQCat.{u}) :
+def stableKanAssemblyRightMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableKanAssemblySourceFunctor r).obj C ⟶ (stableKanAssemblyTargetFunctor r).obj C :=
   exInfinitySuspensionComparison ((stableOneDirectionPointedEnrichedFunctor r).obj C) ≫
     coaugmentedPointedMap Comparison.exInfinity Comparison.exInfinityUnit

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -87,9 +89,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -157,7 +162,7 @@ theorem horn_one_one_eq_face : (horn.{u} 1 1) = stdSimplex.face {(0 : Fin 2)}ᶜ
 使われ方：Kerodon §3.1.1、Goerss–Jardine I §7。自由な path の端点評価。 -/
 theorem interval_oneFace_anodyne : anodyneExtensions (stdSimplex.δ.{u} (0 : Fin 2)) := by
   have hh : anodyneExtensions (stdSimplex.face.{u} {(0 : Fin 2)}ᶜ).ι := by
-    rw [← horn_one_one_eq_face]
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.horn_one_one_eq_face]
     exact anodyneExtensions.horn_ι 1
   rw [← stdSimplex.faceSingletonComplIso_hom_ι (0 : Fin 2)]
   exact anodyneExtensions.comp_mem _ _ (anodyneExtensions.of_isIso _) hh
@@ -168,8 +173,8 @@ theorem interval_oneFace_anodyne : anodyneExtensions (stdSimplex.δ.{u} (0 : Fin
 使われ方：Goerss–Jardine I §7。自由な端点包含の共通の界面。 -/
 theorem intervalFace_anodyne (i : Fin 2) : anodyneExtensions (stdSimplex.δ.{u} i) := by
   fin_cases i
-  · exact interval_oneFace_anodyne
-  · exact interval_zeroFace_anodyne
+  · exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.interval_oneFace_anodyne
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.interval_zeroFace_anodyne
 
 /-- 概要：自由な基点を別成分として加えた区間。
 方針：既存の基点追加の関手を使う。
@@ -182,7 +187,7 @@ def freeInterval : PointedSimplicialSet.{u} :=
 方針：零次単体の基点追加と単位の同型を面の基点追加へ前合成する。
 規約：i=1 は時刻零、i=0 は時刻一。
 使われ方：Goerss–Jardine I §7。自由な path の二つの評価。 -/
-def freeIntervalEndpoint (i : Fin 2) : 𝟙_ PointedSimplicialSet.{u} ⟶ freeInterval.{u} :=
+def freeIntervalEndpoint (i : Fin 2) : 𝟙_ PointedSimplicialSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} :=
   PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv ≫
     PointedSimplicialSet.adjoinBasepointFunctor.map (stdSimplex.δ i)
 
@@ -191,18 +196,18 @@ def freeIntervalEndpoint (i : Fin 2) : 𝟙_ PointedSimplicialSet.{u} ⟶ freeIn
 規約：両方の端点を含む。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。端点評価の全境界充填。 -/
 theorem freeIntervalEndpoint_anodyne (i : Fin 2) :
-    anodyneExtensions (freeIntervalEndpoint.{u} i).right := by
+    anodyneExtensions (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i).right := by
   change anodyneExtensions
     (PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv.right ≫
       coprod.map (stdSimplex.δ i) (𝟙 (𝟙_ SSet.{u})))
   exact anodyneExtensions.comp_mem _ _ (anodyneExtensions.of_isIso _)
-    (anodyne_coprod_map_id _ (intervalFace_anodyne i))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.anodyne_coprod_map_id _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalFace_anodyne i))
 
 /-- 概要：自由な区間を smash の単位へ潰す点つき射。
 方針：区間から終単体集合への射に基点を加える。
 規約：区間全体を単位の非基点へ送る。
 使われ方：Goerss–Jardine I §7。定数 path の射の定義。 -/
-def freeIntervalCollapse : freeInterval.{u} ⟶ 𝟙_ PointedSimplicialSet.{u} :=
+def freeIntervalCollapse : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} ⟶ 𝟙_ PointedSimplicialSet.{u} :=
   PointedSimplicialSet.adjoinBasepointFunctor.map (toUnit (Δ[1] : SSet.{u})) ≫
     PointedSimplicialSet.adjoinBasepointUnitIso.hom
 
@@ -212,10 +217,10 @@ def freeIntervalCollapse : freeInterval.{u} ⟶ 𝟙_ PointedSimplicialSet.{u} :
 使われ方：Goerss–Jardine I §7。定数 path の二つの端点の計算。 -/
 @[reassoc (attr := simp)]
 theorem freeIntervalEndpoint_collapse (i : Fin 2) :
-    freeIntervalEndpoint.{u} i ≫ freeIntervalCollapse = 𝟙 _ := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse = 𝟙 _ := by
   have h : stdSimplex.δ.{u} i ≫ toUnit (Δ[1] : SSet.{u}) =
       PointedSimplicialSet.deltaZeroUnitIso.hom := isTerminalTensorUnit.hom_ext _ _
-  unfold freeIntervalEndpoint freeIntervalCollapse
+  unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse
   rw [Category.assoc, ← Category.assoc
     (PointedSimplicialSet.adjoinBasepointFunctor.map (stdSimplex.δ i))
     (PointedSimplicialSet.adjoinBasepointFunctor.map (toUnit (Δ[1] : SSet.{u})))
@@ -224,4 +229,43 @@ theorem freeIntervalEndpoint_collapse (i : Fin 2) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.anodyne_coprod_map_id := _root_.SerrePositivity.InfinityCategories.F1.Pointed.anodyne_coprod_map_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeInterval := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalCollapse := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_collapse := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_collapse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_collapse_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_collapse_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_one_one_eq_face := _root_.SerrePositivity.InfinityCategories.F1.Pointed.horn_one_one_eq_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.intervalFace_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalFace_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.interval_oneFace_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.interval_oneFace_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mono_coprod_map_id := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mono_coprod_map_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint._proof_1

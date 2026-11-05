@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ slice 同型を、元の全境界を全時刻で固定する可逆ホモトピーとして表す。 -/
 lemma exists_coneRelativeComparison {K X : SSet.{u}} [Quasicategory X]
@@ -36,15 +41,24 @@ lemma exists_coneRelativeComparison {K X : SSet.{u}} [Quasicategory X]
     (joinInr (Δ[0] : SSet.{u}) K) p c.val d.val c.property d.property ef
 
 /-- 任意の指定有限商錐を、元の境界を全時刻で固定する同じ全比較付きで回収する。 -/
-lemma exists_verdierQuotientConeRelativeComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierQuotientConeRelativeComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} [K.Finite] (p : K ⟶ B.obj) (t : JoinCone (p ≫ q.hom)) :
     ∃ (c : JoinCone p) (H : SSet.Homotopy (c.val ≫ q.hom) t.val),
       (joinInr (Δ[0] : SSet.{u}) K ▷ (Δ[1] : SSet.{u})) ≫ H.h =
         fst K Δ[1] ≫ (p ≫ q.hom) ∧
       ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated := by
-  obtain ⟨c, ⟨e⟩⟩ := exists_verdierQuotientConeIsoRefinement h p t
-  obtain ⟨H, hH, hi⟩ := exists_coneRelativeComparison (mapJoinCone q.hom c) t e
+  obtain ⟨c, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h p t
+  obtain ⟨H, hH, hi⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_coneRelativeComparison (mapJoinCone q.hom c) t e
   exact ⟨c, H, hH, hi⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_coneRelativeComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_coneRelativeComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierQuotientConeRelativeComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeRelativeComparison

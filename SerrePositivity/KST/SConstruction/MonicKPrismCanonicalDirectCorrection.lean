@@ -27,7 +27,7 @@ def monicKPrismUnaryCorrectionData (n : ℕ) :=
 /-- 単一射の零段の元の全補正列は空で、同じ全定数円柱を保持する。 -/
 lemma monicKPrismUnaryCorrectionData_zero :
     (monicKPrismUnaryCorrectionData F f 0).homotopy.h =
-      fst (nerve (CoherentArrowString f)) (Δ[1] : SSet.{u}) ≫
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (Δ[1] : SSet.{u}) ≫
         SSet.const (familyVertex (monicKToRawLevelMap (F.map f) 0)) :=
   familyChainCompositeData_constant_of_trace_nil _ rfl
 

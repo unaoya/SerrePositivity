@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.StrictKanUnstraighteningComparison
 
 /-! # strict Kan 比較の pointed 射影を、同じ coherent 錐の第一射影で計算する -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 錐図式と頂点の等号による移送は、元の第一射影も同じ等号で移送する。 -/
 theorem coherentConeTotal_transport_fst {K X : SSet.{u}} {F G : K ⟶ X}
@@ -37,10 +42,10 @@ theorem strictKanUnstraighteningIso_fst {I : Type u} [Category.{u} I]
       pullback.fst pointedSpaceProjection (kanDiagramCoherentNerve F) =
     pullback.fst
       (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
-      (HomotopyLimits.strictCoherentDiagram F) ≫ strictKanPointedApexIso.hom := by
+      (HomotopyLimits.strictCoherentDiagram F) ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   let hd := (kanDiagramCoherentNerve_eq_strictCoherentDiagram F).symm
   let hx := (spaceInfinityVertex_eq_coherent pointKanObject).symm
-  exact coherentConeTotal_transport_fst hd hx (congrArg₂ HomotopyLimits.coherentConeTotal hd hx)
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.coherentConeTotal_transport_fst hd hx (congrArg₂ HomotopyLimits.coherentConeTotal hd hx)
 
 /-- 同じ strict Kan 実比較の pointed map は、元の weighted coslice 比較そのもの。 -/
 theorem strictKanUnstraighteningComparison_pointed {I : Type u} [Category.{u} I]
@@ -48,9 +53,27 @@ theorem strictKanUnstraighteningComparison_pointed {I : Type u} [Category.{u} I]
     strictKanUnstraighteningComparison F ≫
       pullback.fst pointedSpaceProjection (kanDiagramCoherentNerve F) =
     HomotopyLimits.weightedCosliceComparison F pointKanObject ≫
-      strictKanPointedApexIso.hom := by
-  rw [strictKanUnstraighteningComparison, Category.assoc, strictKanUnstraighteningIso_fst,
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
+  rw [strictKanUnstraighteningComparison, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningIso_fst,
     ← Category.assoc]
   rw [HomotopyLimits.weightedCoherentConeComparison, pullback.lift_fst]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coherentConeTotal_transport_fst := _root_.SerrePositivity.InfinityCategories.F1.KanModels.coherentConeTotal_transport_fst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanPointedApexIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanUnstraighteningComparison_pointed := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningComparison_pointed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanUnstraighteningIso_fst := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningIso_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanPointedApexIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso._proof_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -57,13 +59,16 @@ universe v w u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-local instance : PointedSimplicialSet.forget.{u}.IsRightAdjoint :=
+local instance instIsRightAdjointSSetPointedSimplicialSetForget : PointedSimplicialSet.forget.{u}.IsRightAdjoint :=
   PointedObject.adjoinForgetAdjunction.isRightAdjoint
 
 /-- 概要：標的を固定した点つき内部 Hom の基礎単体集合の反変関手。
@@ -79,8 +84,8 @@ def cofiberMappingFunctor (Z : PointedSimplicialSet.{u}) :
 規約：任意の添字圏 J。
 使われ方：HTT A.3.3。cofiber の pushout を Hom の pullback へ移す。 -/
 instance cofiberMappingFunctor_preservesLimitsOfShape (Z : PointedSimplicialSet.{u})
-    (J : Type v) [Category.{w} J] : PreservesLimitsOfShape J (cofiberMappingFunctor Z) := by
-  dsimp only [cofiberMappingFunctor]
+    (J : Type v) [Category.{w} J] : PreservesLimitsOfShape J (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor]
   infer_instance
 
 /-- 概要：反変写像空間関手の射の作用は既存の源の制限。
@@ -90,11 +95,32 @@ instance cofiberMappingFunctor_preservesLimitsOfShape (Z : PointedSimplicialSet.
 @[simp]
 theorem cofiberMappingFunctor_map (Z : PointedSimplicialSet.{u})
     {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y) :
-    (cofiberMappingFunctor Z).map i.op = PointedMapping.pre i Z := by
-  change ((MonoidalClosed.pre i).app Z).right = PointedMapping.pre i Z
-  rw [← PointedMapping.prePointed_eq_closedPre]
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z).map i.op = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z := by
+  change ((MonoidalClosed.pre i).app Z).right = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   rfl
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor := _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor_map := _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_preservesLimitsOfShape (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor_preservesLimitsOfShape := _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_preservesLimitsOfShape
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.instIsRightAdjointSSetPointedSimplicialSetForget := _root_.SerrePositivity.InfinityCategories.F1.Pointed.instIsRightAdjointSSetPointedSimplicialSetForget
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.cofiberMappingFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor._proof_2

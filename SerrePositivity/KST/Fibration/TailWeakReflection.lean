@@ -17,8 +17,8 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 貼り合わせ上の両 W 条件は、商の元の実図式の core への厳密因子分解と同値。 -/
-lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : StableCategory.{u}}
-    (q : ExactMap B C) (n : ℕ)
+lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
     (F : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶ B.obj) :
     (tailWeakPredicate q n).predicate (functorVertex F) ↔
       ∃ g : (tailAttachment (Δ[n] : SSet.{u}) : SSet.{u}) ⟶
@@ -41,7 +41,7 @@ lemma tailWeakPredicate_functorVertex_iff_factorCore {B C : StableCategory.{u}}
       by simpa only [Category.assoc] using he⟩
 
 /-- 元の長い W 列の全辺条件は、貼り合わせに制限した先行列と最後の辺から正確に反映される。 -/
-theorem weakStringPredicate_iff_tail {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ)
+theorem weakStringPredicate_iff_tail {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
     (v : ((ihom (Δ[n + 2] : SSet.{u})).obj B.obj) _⦋0⦌) :
     weakStringPredicate q ⦋n + 2⦌ v ↔ (tailWeakPredicate q n).predicate
       (((pre (standardTailInclusion n)).app B.obj).app (Opposite.op ⦋0⦌) v) := by

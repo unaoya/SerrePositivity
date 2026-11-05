@@ -24,17 +24,17 @@ lemma innerFibration_inverseSequence_projection_zero (F : ℕᵒᵖ ⥤ SSet.{u}
     InnerFibration (c.π.app (op 0)) := by
   let X := fun n ↦ F.obj (op n)
   let d := fun n ↦ F.map (homOfLE (Nat.le_succ n)).op
-  let p := KST.Spectra.FibrationTower.projection X d 0
+  let p := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0
   have : InnerFibration p := by
     constructor
     intro U V i hi
     have : ∀ n, HasLiftingProperty i (d n) := fun n ↦
       InnerFibration.mem (q := d n) i hi
-    exact KST.Spectra.FibrationTower.projection_zero_hasLiftingProperty X d i
-  let e := hc.conePointUniqueUpToIso (KST.Spectra.FibrationTower.sequentialConeIsLimit F)
+    exact _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_hasLiftingProperty X d i
+  let e := hc.conePointUniqueUpToIso (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit F)
   have he : e.hom ≫ p = c.π.app (op 0) :=
     hc.conePointUniqueUpToIso_hom_comp
-      (KST.Spectra.FibrationTower.sequentialConeIsLimit F) (op 0)
+      (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit F) (op 0)
   rw [← he]
   exact ⟨innerFibrations.comp_mem _ _ (MorphismProperty.rlp_of_isIso _ e.hom)
     (mem_innerFibrations p)⟩

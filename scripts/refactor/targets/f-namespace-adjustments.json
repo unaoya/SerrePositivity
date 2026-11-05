@@ -1,0 +1,3112 @@
+{
+  "reason": "new InfinityCategories.Simplicial namespace shadows Mathlib global Simplicial scope; restore original scope explicitly",
+  "changes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ContractibleKanProducts",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierPresentation",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceFiberComparison",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+      "lines": [
+        30
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement",
+      "lines": [
+        32
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRoofPastingAttachment",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCommonDenominatorFamily",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanBoundarySlice",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction",
+      "lines": [
+        47
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientTransport",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberUnit",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberValueRecovery",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientPointedComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalResolution",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueCancellation",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueEdge",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.Basic",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.Rows",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramValueIso",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDoubleEvaluation",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCoefficientPointedEvaluation",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanPointedComparison",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting",
+      "lines": [
+        72
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.AcyclicKanLifting",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization",
+      "lines": [
+        79
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+      "lines": [
+        92
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+      "lines": [
+        84
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence",
+      "lines": [
+        64
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling",
+      "lines": [
+        41
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.PathContractibility",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy",
+      "lines": [
+        55
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval",
+      "lines": [
+        75
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+      "lines": [
+        75
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping",
+      "lines": [
+        61
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor",
+      "lines": [
+        39
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CosliceEdgeComposition",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CoslicePointHomNaturality",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueComposition",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueCurry",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueInverse",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedResolutionProjection",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceHomPoint",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.PointedVertexPointHom",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.SpaceDiagramImage",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.TransportSimplexEdgeCover",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "lines": [
+        16
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTargetContraction",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.AcyclicFiber",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.BoundaryFaces",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CartesianFamilyEdgeTransport",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CartesianInterchangeDiamond",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentArrowStrings",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentPathImageEndpoints",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentStringEndpoints",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentStringPathFlags",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentStringPrismChains",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CoherentStringPrismOrders",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Commutativity",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CompositionDiamondImages",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ConeEdgeIntervalCells",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ContractibleTotalSequence",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DiscreteKanHomotopy",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DoubleCylinderPaths",
+      "lines": [
+        25
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinder",
+      "lines": [
+        29
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap",
+      "lines": [
+        27
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberComponentNaturality",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberComponents",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberInclusionComponents",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberSimplexLifting",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberTriangleConnecting",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FiberTriangleReduction",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationBoundary",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationBoundaryOverNaturality",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationComparisonPositive",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationComparisonZero",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationExactness",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationMultiplication",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationNaturality",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationNaturalityAt",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationPointwiseComparison",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationRepresentativeTransport",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationSequence",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FibrationTower",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FilteredHomotopyRepresentatives",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FilteredKanColimit",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyComponents",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyConstant",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyGroups",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyIndexing",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyInvariance",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyIso",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyIsoSquareDetection",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyProduct",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopySelfComposite",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopySquares",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.InternalUncurryEdgeEvaluation",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.IntervalSquareHomotopies",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.IntervalSquareSweeps",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.KanMappingComposition",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.LastHornContraction",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport",
+      "lines": [
+        17
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.OrdinalSimplexEdges",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.BasedIntervalSimplex",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareDifference",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronDifference",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronRelation",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ReverseBoundaryEdge",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackComponents",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackConnectingSwap",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseComponents",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseEdge",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackNaturality",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SelfPullbackSwapComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SimplexInitialContraction",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SimplexLastContraction",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SimplicialEqualityTransport",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SpecifiedComparisonRestrictionComposition",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryAlternating",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryFilling",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryMap",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalCochain",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalFiberLift",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SphericalFiberRelation",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SquareBoundaryComposition",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SquareConstantCorners",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.SwapEvaluation",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransportRelabel",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.TriangleDiamondTransport",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.VertexDiscreteFunctionSimplices",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.ZeroMapComponents",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.HornBoundaryDecomposition",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.HornBoundaryFactor",
+      "lines": [
+        18
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.HornFaceBoundary",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexComponents",
+      "lines": [
+        28
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexConeVertex",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexContraction",
+      "lines": [
+        26
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexPrepend",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexPrependRelations",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleCover",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleEmbedding",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleIntersection",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangles",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "lines": [
+        40
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality",
+      "lines": [
+        43
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence",
+      "lines": [
+        39
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberAdjunctionCounit",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers",
+      "lines": [
+        28
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams",
+      "lines": [
+        71
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom",
+      "lines": [
+        66
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle",
+      "lines": [
+        52
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRelativeRightComparison",
+      "lines": [
+        46
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointFaithful",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointTarget",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction",
+      "lines": [
+        33
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationExact",
+      "lines": [
+        43
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroSourceComparison",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness",
+      "lines": [
+        53
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRelativeComparison",
+      "lines": [
+        41
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure",
+      "lines": [
+        55
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.ZeroCategory",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone",
+      "lines": [
+        49
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation",
+      "lines": [
+        14
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewisePointHom",
+      "lines": [
+        63
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom",
+      "lines": [
+        49
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection",
+      "lines": [
+        35
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanPointSurjectivity",
+      "lines": [
+        46
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanTerminalComparison",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal",
+      "lines": [
+        38
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho",
+      "lines": [
+        44
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.PushoutCompletion",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge",
+      "lines": [
+        55
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTargetAdjunction",
+      "lines": [
+        58
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism",
+      "lines": [
+        61
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison",
+      "lines": [
+        51
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion",
+      "lines": [
+        52
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality",
+      "lines": [
+        73
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveMappingAdjunction",
+      "lines": [
+        46
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetConstants",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetHom",
+      "lines": [
+        50
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+      "lines": [
+        40
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInitialAdjunction",
+      "lines": [
+        54
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant",
+      "lines": [
+        38
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeTerminalAdjunction",
+      "lines": [
+        50
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison",
+      "lines": [
+        50
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback",
+      "lines": [
+        38
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison",
+      "lines": [
+        42
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+      "lines": [
+        53
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy",
+      "lines": [
+        57
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension",
+      "lines": [
+        44
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.StableSpanPushout",
+      "lines": [
+        23
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+      "lines": [
+        42
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeLeftEndpoints",
+      "lines": [
+        39
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction",
+      "lines": [
+        49
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+      "lines": [
+        51
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeTranspose",
+      "lines": [
+        43
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent",
+      "lines": [
+        56
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction",
+      "lines": [
+        39
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningSectionChart",
+      "lines": [
+        50
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+      "lines": [
+        38
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+      "lines": [
+        35
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint",
+      "lines": [
+        39
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "lines": [
+        58
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber",
+      "lines": [
+        41
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientPoints",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+      "lines": [
+        43
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.SmallSpaceDiagram",
+      "lines": [
+        47
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality",
+      "lines": [
+        44
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.StrictConeTransformation",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportEvaluationPrism",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation",
+      "lines": [
+        45
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportUnderEdge",
+      "lines": [
+        38
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+      "lines": [
+        34
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.TransportSectionBaseChangePoint",
+      "lines": [
+        44
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge",
+      "lines": [
+        44
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization",
+      "lines": [
+        22
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting",
+      "lines": [
+        37
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery",
+      "lines": [
+        24
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences",
+      "lines": [
+        20
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "lines": [
+        19
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition",
+      "lines": [
+        30
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap",
+      "lines": [
+        57
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality",
+      "lines": [
+        48
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact",
+      "lines": [
+        52
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed",
+      "lines": [
+        35
+      ]
+    }
+  ],
+  "previous_primary_failure": "DoubleMappingCylinder: ambiguous open scoped Simplicial, Δ[1] parsed as indexing with metavariables",
+  "tool_placement": {
+    "module": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias",
+    "reason": "Simplicial is the lowest changed layer; only the public Mathlib.Util.AliasIn API is imported; no layer exceptions added",
+    "direct_forbidden_edges": 0
+  },
+  "small_build": {
+    "command": [
+      "lake",
+      "build",
+      "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary",
+      "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc",
+      "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 7.298,
+    "log": "round-02.log",
+    "stage": "small",
+    "round": 2,
+    "targets": [
+      "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary",
+      "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc",
+      "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap"
+    ],
+    "failed_build_lines": []
+  },
+  "alias_test": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-M",
+      "40000",
+      "scripts/refactor/tests/deprecated_alias.lean"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 8.961,
+    "log": "deprecated-alias-test.log"
+  }
+}

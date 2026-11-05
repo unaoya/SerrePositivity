@@ -32,7 +32,7 @@ structure KanSpanTriangleData {E : SSet.{u}} {z x y : E _⦋0⦌}
 
 /-- 点ごとの両逆三角形付きのデータから、相対充填に必要な二つの三角形を保持する。 -/
 def kanSpanTriangleDataOfComposition {E : SSet.{u}} {z x y : E _⦋0⦌}
-    {a : E.Edge z x} {b : E.Edge z y} (t : KanMappingSpanComposition a b) :
+    {a : E.Edge z x} {b : E.Edge z y} (t : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition a b) :
     KanSpanTriangleData a b :=
   ⟨t.inverse, t.inverseLeft, t.edge, t.triangle⟩
 

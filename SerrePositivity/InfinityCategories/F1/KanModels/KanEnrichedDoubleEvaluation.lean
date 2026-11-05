@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J]
 
@@ -20,16 +25,16 @@ def kanEnrichedDoubleEvaluation (X : C) (j : J) :
     (ihom (SimplicialNerve C)).obj
       (SpaceInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J))) ⟶
         SpaceInfinity.{u} :=
-  doubleFunctorEvaluation (K := SimplicialNerve C)
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (K := SimplicialNerve C)
     (A := (SSet.uliftFunctor.{u + 1, u}).obj (nerve J)) (Y := SpaceInfinity.{u})
     (coherentNerveVertex X) (ULift.up (nerveVertex j))
 
 /-- 同じ二重評価は元の対象・添字での Kan 値を回収する。 -/
 theorem kanEnrichedDoubleEvaluation_vertex (D : KanEnrichedDiagram C J) (X : C) (j : J) :
-    (kanEnrichedDoubleEvaluation X j).app (Opposite.op ⦋0⦌) (functorVertex D.realization) =
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j).app (Opposite.op ⦋0⦌) (functorVertex D.realization) =
       spaceInfinityVertex ((D.obj j).obj X) := by
   let a : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J)) _⦋0⦌ := ULift.up (nerveVertex j)
-  have h := doubleFunctorEvaluation_vertex (A := (SSet.uliftFunctor.{u + 1, u}).obj (nerve J))
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex (A := (SSet.uliftFunctor.{u + 1, u}).obj (nerve J))
     (Y := SpaceInfinity.{u}) D.realization (coherentNerveVertex X) a
   have hv : (evaluateFunctorAt (Y := SpaceInfinity.{u}) a).app (Opposite.op ⦋0⦌)
       (D.realization.app (Opposite.op ⦋0⦌) (coherentNerveVertex X)) =
@@ -42,11 +47,11 @@ theorem kanEnrichedDoubleEvaluation_vertex (D : KanEnrichedDiagram C J) (X : C) 
 theorem kanEnrichedDoubleEvaluation_precomp_vertex
     {L : Type (u + 1)} [Category.{u} L] [SimplicialCategory L]
     (D : KanEnrichedDiagram C J) (H : EnrichedFunctor SSet.{u} L C) (X : L) (j : J) :
-    (kanEnrichedDoubleEvaluation X j).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j).app (Opposite.op ⦋0⦌)
       (functorVertex (coherentNerveMap H ≫ D.realization)) =
         spaceInfinityVertex ((D.obj j).obj (H.obj X)) := by
   let a : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve J)) _⦋0⦌ := ULift.up (nerveVertex j)
-  have h := doubleFunctorEvaluation_vertex (A := (SSet.uliftFunctor.{u + 1, u}).obj (nerve J))
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex (A := (SSet.uliftFunctor.{u + 1, u}).obj (nerve J))
     (Y := SpaceInfinity.{u}) (coherentNerveMap H ≫ D.realization) (coherentNerveVertex X) a
   have hv : (evaluateFunctorAt (Y := SpaceInfinity.{u}) a).app (Opposite.op ⦋0⦌)
       ((coherentNerveMap H ≫ D.realization).app (Opposite.op ⦋0⦌) (coherentNerveVertex X)) =
@@ -65,22 +70,37 @@ variable {D E : KanEnrichedDiagram C J} (η : KanEnrichedDiagramComparison D E)
 
 /-- 同じ実現の指定成分は、同じ二重評価による元の指定実現同型の像と HEq。 -/
 theorem kanEnrichedRealizationComponentIso_heq_doubleMap (X : C) (j : J) :
-    HEq (kanEnrichedRealizationComponentIso η hη X j)
-      (VertexIso.map (η.realizationIso hη) (kanEnrichedDoubleEvaluation X j)) := by
-  let R := kanEnrichedRealizationValueIso η hη X
+    HEq (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso η hη X j)
+      (VertexIso.map (η.realizationIso hη) (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j)) := by
+  let R := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso η hη X
   let e := η.realizationIso hη
   let a := ULift.up.{u + 1} (nerveVertex j)
   let x := coherentNerveVertex X
-  have h₁ : HEq (kanEnrichedRealizationComponentIso η hη X j) (functorIsoValue R a) :=
+  have h₁ : HEq (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso η hη X j) (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue R a) :=
     F2.iso_endpoints_heq _
       (congrArg HomotopyCategory.mk (kanDiagramCoherentNerve_vertex (D.evaluate X) j))
       (congrArg HomotopyCategory.mk (kanDiagramCoherentNerve_vertex (E.evaluate X) j))
-  have hr : HEq R (functorIsoValue e x) := F2.iso_endpoints_heq _
+  have hr : HEq R (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x) := F2.iso_endpoints_heq _
     (congrArg HomotopyCategory.mk (D.realization_vertex X))
     (congrArg HomotopyCategory.mk (E.realization_vertex X))
-  have h₂ := F2.vertexIso_map_heq_of_heq R (functorIsoValue e x)
+  have h₂ := F2.vertexIso_map_heq_of_heq R (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x)
     (D.realization_vertex X).symm (E.realization_vertex X).symm hr (evaluateFunctorAt a)
-  exact h₁.trans ((functorIsoValue_heq_map R a).trans
-    (h₂.trans (functorIsoDoubleValue_heq_map e x a)))
+  exact h₁.trans ((_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map R a).trans
+    (h₂.trans (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoDoubleValue_heq_map e x a)))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation_precomp_vertex := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation_vertex := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_heq_doubleMap

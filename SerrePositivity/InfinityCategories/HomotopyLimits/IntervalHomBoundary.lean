@@ -21,7 +21,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 noncomputable section
 
@@ -99,7 +99,7 @@ lemma intervalHomBoundaryEvaluationIso_hom_snd (Y : SSet.{u}) :
 規約：第一成分は頂点一、第二成分は頂点零。
 使われ方：任意の Kan 複体間の比較射の path 置換のホーン充填。 -/
 def intervalHomEndpoints (Y : SSet.{u}) : (ihom (Δ[1] : SSet.{u})).obj Y ⟶ Y ⨯ Y :=
-  (MonoidalClosed.pre intervalEndpoint.{u}.right).app Y ≫ (intervalHomBoundaryEvaluationIso Y).hom
+  (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right).app Y ≫ (intervalHomBoundaryEvaluationIso Y).hom
 
 /-- 概要：Kan 複体を標的とする両端点評価は Kan fibration。
 方針：単射な二端点包含への内部 Hom の制限と同型を合成する。
@@ -117,7 +117,7 @@ instance intervalHomEndpoints_fibration (Y : SSet.{u}) [KanComplex Y] :
 lemma intervalHomEndpoints_fst (Y : SSet.{u}) :
     intervalHomEndpoints Y ≫ prod.fst = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 1) := by
   rw [intervalHomEndpoints, Category.assoc, intervalHomBoundaryEvaluationIso_hom_fst,
-    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, intervalEndpoint_inl]
+    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
   exact homPre_const_unitIsoSelf _
 
 /-- 概要：両端点評価の第二射影は区間の始点零での評価。
@@ -127,7 +127,7 @@ lemma intervalHomEndpoints_fst (Y : SSet.{u}) :
 lemma intervalHomEndpoints_snd (Y : SSet.{u}) :
     intervalHomEndpoints Y ≫ prod.snd = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0) := by
   rw [intervalHomEndpoints, Category.assoc, intervalHomBoundaryEvaluationIso_hom_snd,
-    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, intervalEndpoint_inr]
+    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr]
   exact homPre_const_unitIsoSelf _
 
 end

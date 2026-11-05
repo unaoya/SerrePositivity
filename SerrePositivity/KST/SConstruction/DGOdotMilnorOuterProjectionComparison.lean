@@ -29,7 +29,7 @@ local instance outerProjection_middle_pretriangulated : IsDGPretriangulated R (B
 /-- 概要：元 LT 外周の同じ完備化後射影。
 方針：同じ構成済み列から回収する。規約：元射影を保持。
 使われ方：元実外周の商境界との照合。 -/
-def dgOdotMilnorOuterCompletedProjection : ExactMap (dgOdotMilnorLaxCategory R d)
+def dgOdotMilnorOuterCompletedProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorLaxCategory R d)
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) :=
   (dgOdotMilnorCompletedLaxQuotient R d h).sequence.projection
 local notation "r" => dgOdotMilnorOuterCompletedProjection R d h

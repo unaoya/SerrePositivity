@@ -14,7 +14,7 @@ open CategoryTheory MonoidalCategory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 同じ Cat^perf 比較正方形の bottom 辺は、元の完全関手の同じ辺。 -/
@@ -45,14 +45,14 @@ lemma universalSquare_top : squareTopEdge ≫ d.universalSquare =
 
 /-- 同じ Cat^perf 比較正方形の left 辺は、元の完全関手の同じ辺。 -/
 lemma universalSquare_left : squareLeftEdge ≫ d.universalSquare =
-    SSet.yonedaEquiv.symm (perfectStableArrow (LaxUniversalDifference.kernelMap p q d.inclusion
+    SSet.yonedaEquiv.symm (perfectStableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion
       d.sequence.projection)
       d.left_complete d.sequence.right_complete).edge := by
   apply (cancel_mono perfectStableInfinityInclusion).mp
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun s => squareLeftEdge ≫ s) d.universalSquare_inclusion).trans
       (d.universalRawSquare_edges.2.2.1.trans
-        (perfectStableArrow_inclusion (LaxUniversalDifference.kernelMap p q d.inclusion
+        (perfectStableArrow_inclusion (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion
           d.sequence.projection)
           d.left_complete d.sequence.right_complete).symm))
 
@@ -103,7 +103,7 @@ lemma universalValueSquare_top_arrow :
 /-- 同じ Sp 比較正方形の left 辺は、元の完全関手の同じ値の射の類。 -/
 lemma universalValueSquare_left_arrow :
     Arrow.mk (squareHoLeft (d.universalValueSquare F)) =
-      Arrow.mk (perfectInvariantHoArrow F (LaxUniversalDifference.kernelMap p q d.inclusion
+      Arrow.mk (perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion
         d.sequence.projection)
         d.left_complete d.sequence.right_complete) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk

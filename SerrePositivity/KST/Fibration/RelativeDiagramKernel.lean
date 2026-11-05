@@ -41,10 +41,10 @@ lemma relativeDiagram_eq_top_of_zero {B C X : SSet.{u}} [Quasicategory C]
 
 /-- 包含の本質像に全評価が属する図式では、相対条件は自動的に成立する。 -/
 lemma relativeDiagram_eq_top_of_kernel
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {X : SSet.{u}} {J : Type v}
     (ev : J → (X ⟶ B.obj))
-    (he : ∀ j x, (ev j).app (Opposite.op ⦋0⦌) x ∈ essentialImage i) :
+    (he : ∀ j x, (ev j).app (Opposite.op ⦋0⦌) x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) :
     relativeDiagram q.hom ev = ⊤ :=
   relativeDiagram_eq_top_of_zero q.hom ev (fun j x => (h.kernel _).2 (he j x))
 

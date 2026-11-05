@@ -25,7 +25,7 @@ def deloopingComparison (X : OmegaSpectrum.{u}) : X ⟶ BasedLoop.obj (tail X) :
 
 /-- delooping 比較は各段で全基点 π 同型。 -/
 lemma deloopingComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((deloopingComparison X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((deloopingComparison X).app n).right :=
   (originalLoopModelMap_levelwise X n).comp
     ((tailCotensorComparison_levelwise CirclePower.space X n).comp
       ((cotensorPre_levelwise_of_anodyne CirclePower.unit

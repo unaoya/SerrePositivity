@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation
 
 /-!
@@ -13,9 +15,14 @@ public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
+end SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：RelStruct の全ての面を計算する。
 方針：二つの指定面と外側の定数面に分ける。
@@ -36,6 +43,7 @@ theorem SimplexFaces.rel_face {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   · exact r.δ_map_of_gt j (by grind)
 
 namespace SphericalBoundaryLastFace
+open SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a : Fin (n + 4) → X.PtSimplex (n + 2) x} {b : X.PtSimplex (n + 2) x}
@@ -44,7 +52,7 @@ variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 方針：元の単体と RelStruct の間に欠ける面を置き、前の各面は退化させる。
 規約：欠ける面は n + 3。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。代表変更の充填。 -/
-def face (T : SphericalBoundary a)
+def face (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (r : PtSimplex.RelStruct (a (Fin.last (n + 3))) b (Fin.last (n + 2)))
     (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
   if j.val = n + 2 then T.map else
@@ -57,15 +65,15 @@ def face (T : SphericalBoundary a)
 方針：元の境界と RelStruct と退化の面を直接計算する。
 規約：n + 3 の面を除いた互換性。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。Kan 性の適用条件。 -/
-theorem compatible (T : SphericalBoundary a)
+theorem compatible (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (r : PtSimplex.RelStruct (a (Fin.last (n + 3))) b (Fin.last (n + 2))) :
-    horn.IsCompatible (i := (Fin.last (n + 3)).castSucc) (fun j _ ↦ face T r j) := by
+    horn.IsCompatible (i := (Fin.last (n + 3)).castSucc) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face T r j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 3 := fun he ↦ hj (Fin.ext he)
   have hk' : k.val ≠ n + 3 := fun he ↦ hk (Fin.ext he)
-  simp only [face]
-  split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.rel_face,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.rel_face,
     T.face_eq, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
@@ -82,18 +90,18 @@ theorem compatible (T : SphericalBoundary a)
 方針：二面交換で既知の面へ移し、最後以外の面と最後の新しい面を読む。
 規約：φ はホーンの実際の充填。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。最後の面だけの変更。 -/
-theorem output_face (T : SphericalBoundary a)
+theorem output_face (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (r : PtSimplex.RelStruct (a (Fin.last (n + 3))) b (Fin.last (n + 2)))
     (φ : (Δ[n + 4] : SSet.{u}) ⟶ X)
     (hφ : ∀ (j : Fin (n + 5)) (_ : j ≠ (Fin.last (n + 3)).castSucc),
-      stdSimplex.δ j ≫ φ = face T r j) (j : Fin (n + 4)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face T r j) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ φ =
       if j = Fin.last (n + 3) then b.map else (a j).map := by
   by_cases hj : j ≤ (Fin.last (n + 2)).castSucc
   · rw [show (Fin.last (n + 3)).castSucc = (Fin.last (n + 2)).castSucc.succ from rfl,
       stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.rel_face,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.rel_face,
       T.face_eq, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -114,7 +122,7 @@ theorem output_face (T : SphericalBoundary a)
     have hm : (Fin.last (n + 2)).succ ≤ (Fin.last (n + 3)) := by grind
     rw [show (Fin.last (n + 3)).castSucc = (Fin.last (n + 2)).succ.castSucc from rfl,
       ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face, Fin.val_succ, Fin.val_last]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face, Fin.val_succ, Fin.val_last]
     rw [ite_eq_right (by omega)]
     simp only [ite_true]
     exact r.δ_succ_map
@@ -123,25 +131,55 @@ theorem output_face (T : SphericalBoundary a)
 方針：互換な比較ホーンを Kan 充填し、その欠ける面を取る。
 規約：Function.update により最後以外の面は厳密に同じ。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。境界充填の代表独立性。 -/
-noncomputable def replace [KanComplex X] (T : SphericalBoundary a)
+noncomputable def replace [KanComplex X] (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (r : PtSimplex.RelStruct (a (Fin.last (n + 3))) b (Fin.last (n + 2))) :
-    SphericalBoundary (Function.update a (Fin.last (n + 3)) b) where
-  map := stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ (compatible T r).liftOfKanComplex
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (Function.update a (Fin.last (n + 3)) b) where
+  map := stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible T r).liftOfKanComplex
   face_eq j := by
-    rw [output_face T r _ (fun k hk ↦ (compatible T r).δ_liftOfKanComplex k hk)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.output_face T r _ (fun k hk ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible T r).δ_liftOfKanComplex k hk)]
     by_cases hj : j = Fin.last (n + 3) <;> simp [hj]
 
 /-- 概要：最後の面を同じホモトピー類の任意の代表へ変更できる。
 方針：商の等式から最後の添字の RelStruct を選んで比較ホーンを埋める。
 規約：存在は追加仮定ではなく Kan 性から従う。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。交代和による充填条件。 -/
-theorem exists_replace [KanComplex X] (T : SphericalBoundary a)
-    (h : KanHomotopyGroup.mk (a (Fin.last (n + 3))) = KanHomotopyGroup.mk b) :
-    Nonempty (SphericalBoundary (Function.update a (Fin.last (n + 3)) b)) := by
-  obtain ⟨r⟩ := (simplexRel_iff_relStruct (Fin.last (n + 2))).1
-    ((KanHomotopyGroup.mk_eq_iff _ _).1 h)
-  exact ⟨replace T r⟩
+theorem exists_replace [KanComplex X] (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a (Fin.last (n + 3))) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (Function.update a (Fin.last (n + 3)) b)) := by
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (Fin.last (n + 2))).1
+    ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1 h)
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace T r⟩
 
 end SphericalBoundaryLastFace
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexFaces.rel_face := _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.rel_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.compatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.exists_replace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.exists_replace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.output_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.replace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.replace._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace._proof_1

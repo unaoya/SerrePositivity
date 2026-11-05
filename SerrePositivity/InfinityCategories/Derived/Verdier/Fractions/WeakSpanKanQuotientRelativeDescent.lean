@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap
 public import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionFirstVertexLocalization
 
@@ -13,46 +15,49 @@ public import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionFirs
 noncomputable section
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
-  (f : CategoryTheory.Limits.pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+  (f : CategoryTheory.Limits.pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
     (transportSimplexFirstVertexMap B.obj) ⟶
-      smallLeftUnstraightening (weakSpanKanCoherentDiagram i x))
-  (hf : f ≫ smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x) =
-    weakSpanSimplexProjection i x)
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+  (hf : f ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSimplexProjection i x)
 
 /-- 概要：指定単体圏比較を相対関手空間内で回収する厳密な底上の実射がある。
 方針：相対前合成の本質的全射性を使い、同じ相対頂点の実射表示へ戻す。
 規約：単体圏単位と底条件に条件付き。相対初頂点同値性は F1 の公開補題を使う。
 使われ方：同じ q を保つ K-B-S 全族比較と、その fiber 内の回収同型を構成する。 -/
 theorem exists_weakSpanKanQuotientRelativeTotalMap :
-    ∃ (g : markedSpanFamily B.obj (weakEquivalences i) x ⟶
-        smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-      (hg : g ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom),
+    ∃ (g : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+        smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+      (hg : g ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom),
       Nonempty (VertexIso
         (relativeFunctorVertex
-          (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-          (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-            markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-          (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫ g)
+          (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+          (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
+          (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫ g)
           (by rw [Category.assoc, hg]))
         (relativeFunctorVertex
-          (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-          (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-            markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-          (weakSpanKanQuotientTotalSimplexMap h x f)
-          (weakSpanKanQuotientTotalSimplexMap_projection h x f hf))) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
-  let b := markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
-  let r := transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x)
-  let v := relativeFunctorVertex p (r ≫ b) (weakSpanKanQuotientTotalSimplexMap h x f)
-    (weakSpanKanQuotientTotalSimplexMap_projection h x f hf)
+          (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+          (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x f hf))) := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
+  let b := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom
+  let r := transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
+  let v := relativeFunctorVertex p (r ≫ b) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x f hf)
   have hrel := relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization p b
   obtain ⟨z, ⟨e⟩⟩ := hrel.choose.isEssentiallySurjective v
   obtain ⟨g, hg, hz⟩ := exists_relativeFunctorVertex p b z
@@ -68,19 +73,19 @@ theorem exists_weakSpanKanQuotientRelativeTotalMap :
 規約：元の単体圏単位と底条件だけを明示入力とし、単位の存在は主張しない。
 使われ方：同じ fiber 内の回収同型を持つ K-B-S 全族比較の利用側。 -/
 def weakSpanKanQuotientRelativeTotalMap :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x) :=
-  (exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose
 
 /-- 概要：相対降下で選んだ同じ実射は元の q を厳密に保持する。
 方針：同じ存在証拠から底条件を取り出す。
 規約：比較射を別に選び直さない。
 使われ方：K-B-S の元の全族の fiber への制限。 -/
 theorem weakSpanKanQuotientRelativeTotalMap_projection :
-    weakSpanKanQuotientRelativeTotalMap h x f hf ≫
-      smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom :=
-  (exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose_spec.choose
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap h x f hf ≫
+      smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose_spec.choose
 
 /-- 概要：同じ実射の初頂点制限は指定単体圏比較を相対関手空間内で回収する。
 方針：射と底条件を選んだ同じ存在証拠から比較同型を取り出す。
@@ -89,19 +94,49 @@ theorem weakSpanKanQuotientRelativeTotalMap_projection :
 def weakSpanKanQuotientRelativeTotalMapRestrictionIso :
     VertexIso
       (relativeFunctorVertex
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-        (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-          markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-        (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-          weakSpanKanQuotientRelativeTotalMap h x f hf)
-        (by rw [Category.assoc, weakSpanKanQuotientRelativeTotalMap_projection]))
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+        (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
+        (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap h x f hf)
+        (by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap_projection]))
       (relativeFunctorVertex
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-        (transportSimplexFirstVertexMap (markedSpanFamily B.obj (weakEquivalences i) x) ≫
-          markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-        (weakSpanKanQuotientTotalSimplexMap h x f)
-        (weakSpanKanQuotientTotalSimplexMap_projection h x f hf)) :=
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+        (transportSimplexFirstVertexMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
+          _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap h x f)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientTotalSimplexMap_projection h x f hf)) :=
   Classical.choice
-    (exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose_spec.choose_spec
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakSpanKanQuotientRelativeTotalMap h x f hf).choose_spec.choose_spec
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.exists_weakSpanKanQuotientRelativeTotalMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakSpanKanQuotientRelativeTotalMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMapRestrictionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMapRestrictionIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMapRestrictionIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMap_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.exists_weakSpanKanQuotientRelativeTotalMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakSpanKanQuotientRelativeTotalMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientRelativeTotalMapRestrictionIso._proof_3

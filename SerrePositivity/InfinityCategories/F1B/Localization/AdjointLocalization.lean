@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
+end SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
+namespace SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
+open SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) [IsIso a.counit]
@@ -58,7 +63,7 @@ def invertingUnitPrecompositionIso (E : SSet.{u}) [Quasicategory E] :
     change IsInvertingFunctorVertex X E (invertedEdges F) v.val at hv
     unfold IsInvertingFunctorVertex at hv
     rw [show v.val = (functorVertexEquiv X E) u from hu, Equiv.symm_apply_apply] at hv
-    have hi := hv (unitComponent_mem_invertedEdges a x)
+    have hi := hv (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.unitComponent_mem_invertedEdges a x)
     exact (isInvertibleEdge_congr (e := (edgeOfSimplex
       (simplicialHomotopyVertexEdge (functorHomHomotopy a.unitHom) x).edge).map
         ((truncation 2).map u))
@@ -83,18 +88,18 @@ def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] :
     QCatEquivalence ((ihom Y).obj E)
       (invertingFunctors X E (invertedEdges F) : SSet.{u}) where
   hom := localizationPrecomposition F (invertedEdges F) (fun _ h => h) E
-  inv := localizationRestriction a E
+  inv := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction a E
   homInvIso := by
-    simpa only [localizationRestriction, ← Category.assoc, localizationPrecomposition_ι,
-      pre_map, NatTrans.comp_app, pre_id, NatTrans.id_app] using (counitIso a).map_pre E
+    simpa only [_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction, ← Category.assoc, localizationPrecomposition_ι,
+      pre_map, NatTrans.comp_app, pre_id, NatTrans.id_app] using (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitIso a).map_pre E
   invHomIso := by
     let K := invertingFunctors X E (invertedEdges F)
     let U := localizationPrecomposition F (invertedEdges F) (fun _ h => h) E
-    let V := localizationRestriction a E
+    let V := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction a E
     have h : FunctorIso ((𝟙 (K : SSet.{u})) ≫ K.ι) ((V ≫ U) ≫ K.ι) := by
-      simpa only [V, U, K, localizationRestriction, Category.assoc, localizationPrecomposition_ι,
+      simpa only [V, U, K, _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction, Category.assoc, localizationPrecomposition_ι,
         pre_map, NatTrans.comp_app, Category.id_comp] using
-        invertingUnitPrecompositionIso a E
+        _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso a E
     let hf := fullSubcomplexFunctorInclusionHoFullyFaithful (K : SSet.{u}) ((ihom X).obj E)
       (IsInvertingFunctorVertex X E (invertedEdges F))
     exact (hf.preimageIso (X := HomotopyCategory.mk (functorVertex (𝟙 (K : SSet.{u}))))
@@ -108,6 +113,57 @@ include a
 使われ方：Kerodon §6.3.3 の左随伴的局所化の普遍性。 -/
 lemma isLocalization : IsLocalization F (invertedEdges F) := by
   refine ⟨fun _ h => h, fun E _ => ?_⟩
-  exact (localizationPrecompositionEquivalence a E).isQCatEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence a E).isQCatEquivalence
 
-end SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
+end SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.counitHomIsIso := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitHomIsIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.counitIso := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.counitIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.invertingUnitPrecompositionIso := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.isLocalization := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationRestriction := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.unitComponent_mem_invertedEdges := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.unitComponent_mem_invertedEdges
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.invertingUnitPrecompositionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.invertingUnitPrecompositionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.invertingUnitPrecompositionIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._proof_4 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._proof_5 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationPrecompositionEquivalence._simp_2 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationPrecompositionEquivalence._simp_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.AdjointLocalization.localizationRestriction.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.localizationRestriction.eq_1

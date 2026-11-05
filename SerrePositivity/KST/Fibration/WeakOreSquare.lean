@@ -12,7 +12,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B)
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
 
 def weakOreSquare (v : (weakOreDiagrams i) _⦋0⦌) :
     (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ B.obj :=
@@ -47,16 +47,16 @@ lemma weakOreSquare_cospan (v : (weakOreDiagrams i) _⦋0⦌) :
     k.app (Opposite.op ⦋0⦌) v) hc
 
 lemma weakOreSquare_top_mem (v : (weakOreDiagrams i) _⦋0⦌) :
-    (squareTopArrow (weakOreSquare i v)).edge ∈ weakEquivalences i := by
+    (squareTopArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   have hv := fullSubcomplexOnVertices_vertex ((weakOreProjection i).app (Opposite.op ⦋0⦌) v)
-  change SSet.yonedaEquiv (horn₂₂.ι₁₂ ≫ _) ∈ weakEquivalences i at hv
+  change SSet.yonedaEquiv (horn₂₂.ι₁₂ ≫ _) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i at hv
   rw [← weakOreSquare_cospan, pullbackCospan, ← Category.assoc,
     cospanSquareBoundary_topEdge] at hv
   exact (squareTopArrow_edge (weakOreSquare i v)).symm ▸ hv
 
-lemma weakOreSquare_bottom_mem {C : StableCategory.{u}} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (v : (weakOreDiagrams i) _⦋0⦌) :
-    (squareBottomArrow (weakOreSquare i v)).edge ∈ weakEquivalences i :=
+lemma weakOreSquare_bottom_mem {C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (v : (weakOreDiagrams i) _⦋0⦌) :
+    (squareBottomArrow (weakOreSquare i v)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i :=
   (weakEquivalences_pullback_bottom_top h _ (weakOreSquare_isPullback i v)).mpr
     (weakOreSquare_top_mem i v)
 

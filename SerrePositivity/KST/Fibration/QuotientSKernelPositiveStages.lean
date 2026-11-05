@@ -21,7 +21,7 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 正の各段の元の商比較に条件付きで、同じ全実現商射の Ex∞ 像は全写像空間の同値。 -/
 theorem relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages
@@ -33,7 +33,7 @@ theorem relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages
     (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
 
 /-- 正の各段の元の商比較に条件付きで、同じ全 Ex∞ coherent 核四角形が引き戻し。 -/
-theorem quotientSKernelInfinitySquare_isPullback_of_positive_stages (h : IsVerdierSequence i q)
+theorem quotientSKernelInfinitySquare_isPullback_of_positive_stages (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
     IsPullbackSquare (quotientSKernelInfinitySquare i q) :=
   quotientSKernelInfinitySquare_isPullback i q h

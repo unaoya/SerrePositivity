@@ -60,7 +60,7 @@ theorem nativeLeftTransportComparison_pointedFiber :
 
 /-- 同じ小さい実 fiber 点の native 比較像は、元の pointedMap による指定点の実像。 -/
 theorem nativeLeftTransportComparison_pointedImage (v : (vertexFiber p b) _⦋0⦌) :
-    smallUnstraighteningPointedImage (nativeLeftTransportRepresentation p).diagram b
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (nativeLeftTransportRepresentation p).diagram b
       ((vertexFiberMap p
         (smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram)
         (nativeLeftTransportComparison p) (nativeLeftTransportComparison_projection p) b).app
@@ -81,7 +81,7 @@ theorem nativeTransportPointedFiberMap_ι :
 
 /-- native 比較像の同じ pointed-space 頂点は、元の pointedMap の元の点における値。 -/
 theorem nativeLeftTransportComparison_pointedImage_val (v : (vertexFiber p b) _⦋0⦌) :
-    (smallUnstraighteningPointedImage (nativeLeftTransportRepresentation p).diagram b
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (nativeLeftTransportRepresentation p).diagram b
       ((vertexFiberMap p
         (smallLeftUnstraighteningProjection (nativeLeftTransportRepresentation p).diagram)
         (nativeLeftTransportComparison p) (nativeLeftTransportComparison_projection p) b).app

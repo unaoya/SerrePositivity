@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Core
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 可縮 Kan 複体の直積も全ての境界を充填する。 -/
 lemma contractibleKan_tensor {K L : SSet.{u}} (hK : IsContractibleKan K)
@@ -37,9 +42,18 @@ lemma contractibleKan_tensor {K L : SSet.{u}} (hK : IsContractibleKan K)
 lemma contractibleKan_tensor_relative_lifting {K L : SSet.{u}} (hK : IsContractibleKan K)
     (hL : IsContractibleKan L) {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ K ⊗ L) :
     ∃ b : T ⟶ K ⊗ L, j ≫ b = a := by
-  have hc := (isContractibleKan_iff_trivialKanFibration _).1 (contractibleKan_tensor hK hL)
+  have hc := (isContractibleKan_iff_trivialKanFibration _).1 (_root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor hK hL)
   have := hc.mem j inferInstance
   let sq : CommSq a j (terminal.from (K ⊗ L)) (terminal.from T) := ⟨terminal.hom_ext _ _⟩
   exact ⟨sq.lift, sq.fac_left⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Core
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.contractibleKan_tensor := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.contractibleKan_tensor_relative_lifting := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor_relative_lifting

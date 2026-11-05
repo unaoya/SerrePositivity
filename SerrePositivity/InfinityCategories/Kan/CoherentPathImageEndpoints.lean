@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CoherentStringPathFlags
 
 /-! # 元の Path の像と端点の移送の照合
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 元の Path の像を、指定した同じ端点の表示で取る関手。 -/
 def coherentPathImageFunctor {J K : Type u} [LinearOrder J] [LinearOrder K]
@@ -37,7 +42,7 @@ def coherentPathImageFunctor {J K : Type u} [LinearOrder J] [LinearOrder K]
 /-- 端点の表示だけを移した像の nerve は、元の豊穣再添字の Hom 作用と同じ。 -/
 lemma coherentPathImageFunctor_nerve_heq {J K : Type u} [LinearOrder J] [LinearOrder K]
     (θ : J →o K) {a b : J} {c d : K} (ha : θ a = c) (hb : θ b = d) :
-    HEq (nerveMap (coherentPathImageFunctor θ ha hb))
+    HEq (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor θ ha hb))
       ((SimplicialThickening.functor θ).map (.mk a) (.mk b)) := by
   cases ha
   cases hb
@@ -45,11 +50,44 @@ lemma coherentPathImageFunctor_nerve_heq {J K : Type u} [LinearOrder J] [LinearO
 
 /-- 合成列の精密化による元の Path の像も、同じ native な豊穣再添字である。 -/
 lemma coherentStringPathReindexFunctor_native_heq {I : Type u} [SmallCategory I]
-    {x y : I} {f : x ⟶ y} {s t : CoherentArrowString f} (a : s ⟶ t) :
-    HEq (nerveMap (coherentStringPathReindexFunctor a))
+    {x y : I} {f : x ⟶ y} {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
+    HEq (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor a))
       ((SimplicialThickening.functor a.map.toOrderHom.uliftMap).map
         (.mk (ULift.up 0)) (.mk (ULift.up (Fin.last s.length)))) :=
-  coherentPathImageFunctor_nerve_heq a.map.toOrderHom.uliftMap
+  _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor_nerve_heq a.map.toOrderHom.uliftMap
     (congrArg ULift.up a.first) (congrArg ULift.up a.last)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor_nerve_heq := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor_nerve_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor_native_heq := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor_native_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentPathImageFunctor._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.coherentPathImageFunctor._proof_7

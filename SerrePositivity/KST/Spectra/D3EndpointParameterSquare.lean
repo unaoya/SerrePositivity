@@ -26,7 +26,7 @@ local instance d3EndpointSquareOrderCategory : SmallCategory (Fin 2 × Fin 2) :=
 def d3EndpointParameterObj (p : Fin 2 × Fin 2) : PointedSimplicialSet.{u} :=
   if p.1 = 0 then
     if p.2 = 0 then endpointCircle else PointedObject.point
-  else if p.2 = 0 then pointedInterval else 𝟙_ PointedSimplicialSet.{u}
+  else if p.2 = 0 then _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval else 𝟙_ PointedSimplicialSet.{u}
 
 /-- 四角の逆向きの各辺は、元の端点包含・cofiber 商・一点の射そのもの。 -/
 def d3EndpointParameterMap (s t : Fin 2 × Fin 2) (h : t ≤ s) :
@@ -56,11 +56,11 @@ def d3EndpointParameterMap (s t : Fin 2 × Fin 2) (h : t ≤ s) :
   · exact 𝟙 _
   · exact PointedObject.fromPoint endpointCircle
   · exact 𝟙 _
-  · exact pointedCofiberProjection intervalEndpoint
+  · exact pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint
   · exact 𝟙 _
   · exact 0
   · exact PointedObject.toPoint (𝟙_ PointedSimplicialSet.{u})
-  · exact intervalEndpoint
+  · exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint
   · exact 𝟙 _
 
 lemma d3EndpointParameterMap_id (s : Fin 2 × Fin 2) :
@@ -108,7 +108,7 @@ lemma d3EndpointParameterSquare_path :
     d3EndpointParameterSquare.{u} ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
         stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-          coherentNerveMap (d3PointedKanIhom pointedInterval) :=
+          coherentNerveMap (d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval) :=
   d3PointedKanParameterSquare_corner d3EndpointParameter 1 0
 
 /-- 他の零角は元の一点からの Hom の全作用そのもの。 -/

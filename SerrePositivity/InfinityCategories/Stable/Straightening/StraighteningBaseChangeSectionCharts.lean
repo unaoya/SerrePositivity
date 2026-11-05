@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -46,9 +48,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w v' w'
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
 private lemma normalizeTriangle {C : Type v} [Category.{w} C]
@@ -97,11 +102,38 @@ def straighteningJointBaseChangeRightIso :=
 
 /-- 同じ指定制限同型を、元の左右の比較と元の逆切断比較へ厳密に分解する。 -/
 theorem straighteningJointBaseChangeRestrictionIso_factor :
-    straighteningJointBaseChangeRestrictionIso k =
-      straighteningJointBaseChangeLeftIso k ≪≫
+    _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k =
+      _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k ≪≫
         (transportSimplexSectionInfinity_baseChangeIso k).symm ≪≫
-          (straighteningJointBaseChangeRightIso k).symm := by
-  simp only [straighteningJointBaseChangeRestrictionIso, straighteningJointBaseChangeLeftIso,
-    straighteningJointBaseChangeRightIso, Iso.trans_assoc]
+          (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso k).symm := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso, _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso,
+    _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso, Iso.trans_assoc]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.mapNormalizeTriangle := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.mapNormalizeTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso_factor := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso_factor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRightIso := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeLeftIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRightIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso.eq_1

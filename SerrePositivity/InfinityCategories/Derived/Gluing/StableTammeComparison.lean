@@ -17,24 +17,24 @@ open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants KST
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
-def dgGluingStableComparisonInverse : ExactMap (dgGluingStableLaxObject R C D M hC hD)
+def dgGluingStableComparisonInverse : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableLaxObject R C D M hC hD)
     (dgGluingStableObject R C D M hC hD) :=
   ⟨(dgGluingUniverseDerivedNerveLaxEquivalence R C D M).inv,
     dgGluingUniverseDerivedNerveLaxEquivalence_inv_isExactFunctor R C D M⟩
-variable (Φ : StableInfinity.{max (u + 1) v w} ⟶ Sp.{max (u + 1) v w})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v w} ⟶ Sp.{max (u + 1) v w})
 def dgGluingStableComparisonValueIso :
     SpectrumHo.obj (value Φ (dgGluingStableObject R C D M hC hD)) ≅
       SpectrumHo.obj (value Φ (dgGluingStableLaxObject R C D M hC hD)) where
   hom := SpectrumHo.hom (valueMap Φ (dgGluingStableComparison R C D M hC hD))
   inv := SpectrumHo.hom (valueMap Φ (dgGluingStableComparisonInverse R C D M hC hD))
   hom_inv_id := by
-    let f : ExactMap (dgGluingStableObject R C D M hC hD)
+    let f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableObject R C D M hC hD)
         (dgGluingStableLaxObject R C D M hC hD) :=
       dgGluingStableComparison R C D M hC hD
-    let g : ExactMap (dgGluingStableLaxObject R C D M hC hD)
+    let g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableLaxObject R C D M hC hD)
         (dgGluingStableObject R C D M hC hD) :=
       dgGluingStableComparisonInverse R C D M hC hD
-    let fg : ExactMap (dgGluingStableObject R C D M hC hD)
+    let fg : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableObject R C D M hC hD)
         (dgGluingStableObject R C D M hC hD) := ⟨f.hom ≫ g.hom, inferInstance⟩
     have e : FunctorIso fg.hom (𝟙 (dgGluingStableObject R C D M hC hD).obj) :=
       (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).homInvIso
@@ -44,13 +44,13 @@ def dgGluingStableComparisonValueIso :
     rw [← Functor.map_comp]
     exact h.trans ((stableValueFunctor Φ).map_id _)
   inv_hom_id := by
-    let f : ExactMap (dgGluingStableObject R C D M hC hD)
+    let f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableObject R C D M hC hD)
         (dgGluingStableLaxObject R C D M hC hD) :=
       dgGluingStableComparison R C D M hC hD
-    let g : ExactMap (dgGluingStableLaxObject R C D M hC hD)
+    let g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableLaxObject R C D M hC hD)
         (dgGluingStableObject R C D M hC hD) :=
       dgGluingStableComparisonInverse R C D M hC hD
-    let gf : ExactMap (dgGluingStableLaxObject R C D M hC hD)
+    let gf : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableLaxObject R C D M hC hD)
         (dgGluingStableLaxObject R C D M hC hD) := ⟨g.hom ≫ f.hom, inferInstance⟩
     have e : FunctorIso gf.hom (𝟙 (dgGluingStableLaxObject R C D M hC hD).obj) :=
       (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).invHomIso

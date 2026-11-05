@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
 public import SerrePositivity.InfinityCategories.Core.Square
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal
+open SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 lemma upper_coordinates : SSet.yonedaEquiv (squareTriangle.{u} 0) =
     ((Δ[1] : SSet.{u}).σ 0 (SSet.yonedaEquiv (𝟙 Δ[1])),
@@ -34,16 +39,31 @@ variable {A X : SSet.{u}} (k : (Δ[1] : SSet.{u}) ⟶ A) (H : A ⊗ Δ[1] ⟶ X)
 
 lemma upper_restriction : SSet.yonedaEquiv (squareTriangle 0 ≫ (k ▷ Δ[1]) ≫ H) =
     F2.homotopyEdgeTriangleUpper H (SSet.yonedaEquiv k) := by
-  rw [SSet.yonedaEquiv_comp, upper_coordinates]
+  rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.upper_coordinates]
   exact congrArg (fun v ↦ H.app (Opposite.op ⦋2⦌)
     (v, (Δ[1] : SSet.{u}).σ 1 (SSet.yonedaEquiv (𝟙 Δ[1]))))
       (SSet.σ_naturality_apply k 0 (SSet.yonedaEquiv (𝟙 Δ[1])))
 
 lemma lower_restriction : SSet.yonedaEquiv (squareTriangle 1 ≫ (k ▷ Δ[1]) ≫ H) =
     F2.homotopyEdgeTriangleLower H (SSet.yonedaEquiv k) := by
-  rw [SSet.yonedaEquiv_comp, lower_coordinates]
+  rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.lower_coordinates]
   exact congrArg (fun v ↦ H.app (Opposite.op ⦋2⦌)
     (v, (Δ[1] : SSet.{u}).σ 0 (SSet.yonedaEquiv (𝟙 Δ[1]))))
       (SSet.σ_naturality_apply k 1 (SSet.yonedaEquiv (𝟙 Δ[1])))
 
-end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.lower_coordinates := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.lower_coordinates
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.lower_restriction := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.lower_restriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.upper_coordinates := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.upper_coordinates
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.upper_restriction := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.upper_restriction

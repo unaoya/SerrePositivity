@@ -24,39 +24,39 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の指定 coherent 上辺から回収する、同じ零角から右端への完全射。 -/
-def verdierTopExactMap (d : VerdierDiagram.{u}) :
-    ExactMap (stableObject (squareVertex d.square 0 1)) d.right :=
+def verdierTopExactMap (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) d.right :=
   exactMapTransport
     (coherentMap_simplex_obj d.square (SSet.yonedaEquiv squareTopEdge) ⟨ULift.up 0⟩)
     ((coherentMap_simplex_obj d.square (SSet.yonedaEquiv squareTopEdge)
-      ⟨ULift.up 1⟩).trans (congrArg stableObject d.right_eq))
+      ⟨ULift.up 1⟩).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.right_eq))
     (stableArrowExactMap (d.square.app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv squareTopEdge)))
 
 /-- 対象座標の移送後も元の指定上辺そのものを保持する。 -/
-theorem verdierTopExactMap_original_heq (d : VerdierDiagram.{u}) :
+theorem verdierTopExactMap_original_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     HEq (verdierTopExactMap d)
       (stableArrowExactMap (d.square.app (Opposite.op ⦋1⦌)
         (SSet.yonedaEquiv squareTopEdge))) := exactMapTransport_heq _ _ _
 
 /-- 元の上側二胞体の第一短辺は、元の四角形の指定左辺。 -/
-theorem verdierUpperTriangle_first_arrow (d : VerdierDiagram.{u}) :
-    StableInfinity.δ 2 (verdierUpperTriangle d) =
+theorem verdierUpperTriangle_first_arrow (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierUpperTriangle d) =
       d.square.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv squareLeftEdge) := by
-  change StableInfinity.δ 2 (SSet.yonedaEquiv (squareTriangle 0 ≫ d.square)) = _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (SSet.yonedaEquiv (squareTriangle 0 ≫ d.square)) = _
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, stableSquareTriangle_leftEdge]
   rfl
 
 /-- 元の上側二胞体の第二短辺は、元の四角形の指定上辺。 -/
-theorem verdierUpperTriangle_last_arrow (d : VerdierDiagram.{u}) :
-    StableInfinity.δ 0 (verdierUpperTriangle d) =
+theorem verdierUpperTriangle_last_arrow (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierUpperTriangle d) =
       d.square.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv squareTopEdge) := by
-  change StableInfinity.δ 0 (SSet.yonedaEquiv (squareTriangle 0 ≫ d.square)) = _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (SSet.yonedaEquiv (squareTriangle 0 ≫ d.square)) = _
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc, squareTriangle_topEdge]
   rfl
 
 /-- 元の上側合成 path は、指定左辺と指定上辺の同じ実合成。 -/
-theorem verdierUpperTriangleCompositeMap_heq (d : VerdierDiagram.{u}) :
+theorem verdierUpperTriangleCompositeMap_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     HEq (stableTriangleCompositeMap (verdierUpperTriangle d))
       (show d.left ⟶ d.right from (show d.left ⟶ _ from verdierLeftExactMap d) ≫
         (show _ ⟶ d.right from verdierTopExactMap d)) := by
@@ -66,12 +66,12 @@ theorem verdierUpperTriangleCompositeMap_heq (d : VerdierDiagram.{u}) :
     (verdierTopExactMap_original_heq d).symm
   exact (heq_of_eq (stableTriangleCompositeMap_eq_comp _)).trans
     (exactMap_comp_heq
-      ((verdierUpperTriangle_source d).trans (congrArg stableObject d.left_eq))
+      ((verdierUpperTriangle_source d).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.left_eq))
       (verdierUpperTriangle_middle d)
-      ((verdierUpperTriangle_target d).trans (congrArg stableObject d.right_eq)) hf hg)
+      ((verdierUpperTriangle_target d).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.right_eq)) hf hg)
 
 /-- 元の共有対角座標を指定両端へ戻しても、同じ指定上側合成を回収する。 -/
-theorem verdierNullCompositeOriginalMap_upper (d : VerdierDiagram.{u}) :
+theorem verdierNullCompositeOriginalMap_upper (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     verdierNullCompositeOriginalMap d 0 =
       (show d.left ⟶ d.right from (show d.left ⟶ _ from verdierLeftExactMap d) ≫
         (show _ ⟶ d.right from verdierTopExactMap d)) := by
@@ -80,8 +80,8 @@ theorem verdierNullCompositeOriginalMap_upper (d : VerdierDiagram.{u}) :
       (verdierUpperTriangleCompositeMap_heq d)))
 
 /-- 零値関手の元の全 S• 射の合成は、元の完全関手の同じ厳密合成を回収する。 -/
-theorem zeroFunctorFullSMap_comp {A B C : StableCategory.{u}} (F : ExactMap A B)
-    (G : ExactMap B C) (hF : IsZeroVertex (functorVertex F.hom))
+theorem zeroFunctorFullSMap_comp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
+    (G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (hF : IsZeroVertex (functorVertex F.hom))
     (hFG : IsZeroVertex (functorVertex (F.hom ≫ G.hom))) :
     zeroFunctorFullSMap F hF ≫ coreSExactMap G =
       zeroFunctorFullSMap (show A ⟶ C from (show A ⟶ B from F) ≫ (show B ⟶ C from G)) hFG := by

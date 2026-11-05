@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Fibration
 方針：同じ入力を元の上側座標へ戻し、Ind-S の実構成へ代入する。
 規約：元の全パラメータ・全ホーン・長 Hom を保持する。全対角の等号は主張しない。
 使われ方：実下側読出しからの上側二胞体族の構成。 -/
-theorem verdierUpperNativeInput_family_exists (d : VerdierDiagram.{u})
+theorem verdierUpperNativeInput_family_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (K : SSet.{u + 1})
     (q : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierNativeLongHomTarget d))
@@ -58,7 +58,7 @@ theorem verdierUpperNativeInput_family_exists (d : VerdierDiagram.{u})
 方針：実読出し・実合成端比較・上側座標輸送・同じ全族構成を順に代入する。
 規約：(9) 全体の仮定は取らず、全対角の厳密一致や指定有限端点は主張しない。
 使われ方：K-6 c4 の残る正規化対角と有限端点照合への実入力。 -/
-theorem verdierLowerReadout_upperFamily_exists (d : VerdierDiagram.{u}) :
+theorem verdierLowerReadout_upperFamily_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     let Pu := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})
     ∃ (L : (Δ[1] : SSet.{u + 1}) ⟶
         (ihom Pu).obj (verdierLowerNativeLongHomTarget d))

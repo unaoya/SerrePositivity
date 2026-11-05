@@ -60,18 +60,18 @@ def twoArrowSource : ((Δ[1] : SSet.{u}) ⨿ Δ[1]) _⦋0⦌ :=
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
 
 /-- 右分数 span 添付後の同じ元の最初の頂点。 -/
-def twoArrowAttachedSource : (fractionSpanAttachmentShape
+def twoArrowAttachedSource : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape
     twoArrowFirstTarget.{u} twoArrowSecondTarget) _⦋0⦌ :=
-  (pushout.inl (fractionDiagramTargets twoArrowFirstTarget.{u} twoArrowSecondTarget.{u})
-    fractionSpanTargets.{u}).app (Opposite.op ⦋0⦌) twoArrowSource
+  (pushout.inl (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets twoArrowFirstTarget.{u} twoArrowSecondTarget.{u})
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets.{u}).app (Opposite.op ⦋0⦌) twoArrowSource
 
 /-- 元の商四角形の同じ coslice 図式を、二本の元の矢印へ制限する。 -/
 def twoArrowCosliceDiagram {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (s : SquareCosliceSeed F) : ((Δ[1] : SSet.{u}) ⨿ Δ[1]) ⟶
-      sliceUnder (fractionSquarePoint F) := twoArrowSquareBoundary ≫ s.lift
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) : ((Δ[1] : SSet.{u}) ⨿ Δ[1]) ⟶
+      sliceUnder (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) := twoArrowSquareBoundary ≫ s.lift
 
 lemma twoArrowCoslice_first_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (s : SquareCosliceSeed F) :
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) :
     (twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowFirstTarget =
       squareVertex s.lift 1 0 := by
   change s.lift.app (Opposite.op ⦋0⦌)
@@ -80,7 +80,7 @@ lemma twoArrowCoslice_first_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{
   rfl
 
 lemma twoArrowCoslice_second_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (s : SquareCosliceSeed F) :
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) :
     (twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowSecondTarget =
       squareVertex s.lift 1 1 := by
   change s.lift.app (Opposite.op ⦋0⦌)
@@ -90,8 +90,8 @@ lemma twoArrowCoslice_second_target {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.
 
 /-- 同じ指定商四角形の後辺を、元の二頂点を持つ同じ実 coslice 辺にする。 -/
 def twoArrowCosliceEdge {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (s : SquareCosliceSeed F) :
-    Truncated.Edge (X := (truncation 2).obj (sliceUnder (fractionSquarePoint F)))
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) :
+    Truncated.Edge (X := (truncation 2).obj (sliceUnder (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)))
       ((twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
       ((twoArrowCosliceDiagram s).app (Opposite.op ⦋0⦌) twoArrowSecondTarget) :=
   ⟨(squareRightArrow s.lift).edge,
@@ -100,9 +100,9 @@ def twoArrowCosliceEdge {X : SSet.{u}} {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
 
 lemma twoArrowCoslice_projection {B C : SSet.{u}} (q : B ⟶ C)
     (D L : (Δ[1] : SSet.{u}) ⟶ B) (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C)
-    (s : SquareCosliceSeed F) (hb : squareBottomEdge ≫ F = D ≫ q)
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) (hb : squareBottomEdge ≫ F = D ≫ q)
     (ht : squareTopEdge ≫ F = L ≫ q) :
-    twoArrowCosliceDiagram s ≫ sliceUnderProjection (fractionSquarePoint F) =
+    twoArrowCosliceDiagram s ≫ sliceUnderProjection (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) =
       coprod.desc D L ≫ q := by
   rw [twoArrowCosliceDiagram, Category.assoc, s.projection]
   apply coprod.hom_ext
@@ -112,7 +112,7 @@ lemma twoArrowCoslice_projection {B C : SSet.{u}} (q : B ⟶ C)
 /-- 同じ元の左下頂点への実商錐の脚は可逆。 -/
 lemma twoArrowCoslice_initial_invertible {B C : SSet.{u}} (q : B ⟶ C)
     (D L : (Δ[1] : SSet.{u}) ⟶ B) (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C)
-    (s : SquareCosliceSeed F) (hb : squareBottomEdge ≫ F = D ≫ q)
+    (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F) (hb : squareBottomEdge ≫ F = D ≫ q)
     (ht : squareTopEdge ≫ F = L ≫ q) :
     IsInvertibleEdge (X := C) (F2.nativeConeLeg
       (⟨sliceUnderUncurry (twoArrowCosliceDiagram s),
@@ -127,58 +127,58 @@ lemma twoArrowCoslice_initial_invertible {B C : SSet.{u}} (q : B ⟶ C)
     exact (sliceUnderUncurry_precomp s.lift twoArrowSquareBoundary).symm
   have he := nativeConeLeg_restriction c d twoArrowSquareBoundary hc twoArrowSource
   have hv : twoArrowSquareBoundary.app (Opposite.op ⦋0⦌) twoArrowSource =
-      fractionSquareInitialVertex := twoArrowSquareBoundary_left_vertex 0
+      _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquareInitialVertex := twoArrowSquareBoundary_left_vertex 0
   rw [hv] at he
   exact (isInvertibleEdge_congr he).mp s.initial_isInvertible
 
 /-- 元の二本の矢印と商四角形から、同じ有限全錐・共有始点・元の始点への実分母を回収する。 -/
-lemma exists_verdierTwoArrowCosliceNormalization {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierTwoArrowCosliceNormalization {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (D L : (Δ[1] : SSet.{u}) ⟶ B.obj)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj)
     (hb : squareBottomEdge ≫ F = D ≫ q.hom) (ht : squareTopEdge ≫ F = L ≫ q.hom) :
-    ∃ s : SquareCosliceSeed F,
+    ∃ s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F,
       let p := coprod.desc D L
       let U := twoArrowCosliceDiagram s
       let hU := twoArrowCoslice_projection q.hom D L F s hb ht
-      ∃ r : VerdierCosliceFractionNormalization h (fractionSquarePoint F)
+      ∃ r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)
           (twoArrowCosliceEdge s) (p.app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
           (p.app (Opposite.op ⦋0⦌) twoArrowSecondTarget),
-        ∃ c : JoinCone (cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r),
+        ∃ c : JoinCone (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r),
           Nonempty (VertexIso (X := sliceOver
-            (cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r ≫ q.hom))
+            (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r ≫ q.hom))
             (mapJoinCone q.hom c)
-            (cosliceSpanQuotientCone p U twoArrowFirstTarget twoArrowSecondTarget r hU)) ∧
+            (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone p U twoArrowFirstTarget twoArrowSecondTarget r hU)) ∧
           ∃ s₀ : Truncated.Edge (X := (truncation 2).obj B.obj) c.vertex
               (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))),
             s₀.edge = (F2.nativeConeLeg c twoArrowAttachedSource).edge ∧
-            s₀.edge ∈ weakEquivalences i := by
-  obtain ⟨s⟩ := exists_squareCosliceSeed F
+            s₀.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
+  obtain ⟨s⟩ := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.exists_squareCosliceSeed F
   refine ⟨s, ?_⟩
   let p := coprod.desc D L
   let U := twoArrowCosliceDiagram s
   have hU := twoArrowCoslice_projection q.hom D L F s hb ht
-  obtain ⟨r, c, e, hw⟩ := exists_verdierFiniteCosliceSpanAttachment
+  obtain ⟨r, c, e, hw⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteCosliceSpanAttachment
     (h := h) p U twoArrowFirstTarget twoArrowSecondTarget (e := twoArrowCosliceEdge s) hU
   let c₀ : JoinCone (p ≫ q.hom) := ⟨sliceUnderUncurry U,
     (sliceUnderUncurry_projection U).trans hU⟩
-  let t := cosliceSpanQuotientCone p U twoArrowFirstTarget twoArrowSecondTarget r hU
+  let t := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone p U twoArrowFirstTarget twoArrowSecondTarget r hU
   let j : ((Δ[1] : SSet.{u}) ⨿ Δ[1]) ⟶
-      fractionSpanAttachmentShape twoArrowFirstTarget.{u} twoArrowSecondTarget := pushout.inl
-    (fractionDiagramTargets twoArrowFirstTarget.{u} twoArrowSecondTarget.{u})
-      fractionSpanTargets.{u}
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape twoArrowFirstTarget.{u} twoArrowSecondTarget := pushout.inl
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets twoArrowFirstTarget.{u} twoArrowSecondTarget.{u})
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets.{u}
   have he := nativeConeLeg_restriction t c₀ j
-    (cosliceSpanQuotientCone_original p U twoArrowFirstTarget twoArrowSecondTarget r hU)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone_original p U twoArrowFirstTarget twoArrowSecondTarget r hU)
     twoArrowSource
   have hi : IsInvertibleEdge (X := C.obj) (F2.nativeConeLeg t twoArrowAttachedSource) :=
     (isInvertibleEdge_congr he).mpr (twoArrowCoslice_initial_invertible q.hom D L F s hb ht)
   have hW := hw twoArrowAttachedSource hi
-  have hv : (cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r).app
+  have hv : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram p U twoArrowFirstTarget twoArrowSecondTarget r).app
       (Opposite.op ⦋0⦌) twoArrowAttachedSource =
       D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     have hp := congrArg (fun f : ((Δ[1] : SSet.{u}) ⨿ Δ[1]) ⟶ B.obj =>
       f.app (Opposite.op ⦋0⦌) twoArrowSource)
-      (cosliceSpanNativeDiagram_original p U twoArrowFirstTarget twoArrowSecondTarget r)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram_original p U twoArrowFirstTarget twoArrowSecondTarget r)
     have hp₀ : p.app (Opposite.op ⦋0⦌) twoArrowSource =
         D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
       change ((coprod.inl : (Δ[1] : SSet.{u}) ⟶ (Δ[1] : SSet.{u}) ⨿ Δ[1]) ≫ p).app

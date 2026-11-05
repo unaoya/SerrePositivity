@@ -20,10 +20,10 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeArrowQuotient : SSet.{u} :=
-  edgeLocalization (stableArrowCategory (laxCategory p q)).obj (tammeArrowLocalizingEdges p q)
+  edgeLocalization (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj (tammeArrowLocalizingEdges p q)
 
 instance tammeArrowQuotient_quasicategory : Quasicategory (tammeArrowQuotient p q) :=
   edgeLocalization_quasicategory _ _
@@ -31,7 +31,7 @@ instance tammeArrowQuotient_quasicategory : Quasicategory (tammeArrowQuotient p 
 instance tammeArrowQuotient_hasZeroVertex : HasZeroVertex (tammeArrowQuotient p q) :=
   edgeLocalization_hasZeroVertex _ _
 
-def tammeArrowQuotientMap : (stableArrowCategory (laxCategory p q)).obj ⟶
+def tammeArrowQuotientMap : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj ⟶
     tammeArrowQuotient p q := edgeLocalizationMap _ _
 
 lemma tammeArrowQuotient_isLocalization : IsLocalization (tammeArrowQuotientMap p q)
@@ -80,7 +80,7 @@ def tammeArrowQuotientCofiber : tammeArrowQuotient p q ⟶ tammeQuotient p q :=
 
 def tammeArrowQuotientCofiberIso : FunctorIso
     (tammeArrowQuotientMap p q ≫ tammeArrowQuotientCofiber p q)
-    (CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ tammeQuotientMap p q) :=
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ tammeQuotientMap p q) :=
   localizationDescendIso _ _ (tammeArrowQuotient_isLocalization p q) _
     (tammeCofiber_quotient_inverts p q)
 

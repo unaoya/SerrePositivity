@@ -16,7 +16,7 @@ public import Mathlib.CategoryTheory.Adhesive.Basic
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 
@@ -69,7 +69,7 @@ theorem triangleCellQuotient_horn : (horn.{u} 2 (1 : Fin 3)).ι ≫ triangleCell
     toUnit (horn.{u} 2 (1 : Fin 3) : SSet.{u}) ≫ triangleCell.{u}.hom := by
   change (horn.{u} 2 (1 : Fin 3)).ι ≫ pushout.inl (boundary.{u} 2).ι triangleAttachment = _
   rw [show (horn.{u} 2 (1 : Fin 3)).ι =
-      Subcomplex.homOfLE (horn_le_simplexBoundary 1 (1 : Fin 3)) ≫ (boundary.{u} 2).ι from rfl]
+      Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary 1 (1 : Fin 3)) ≫ (boundary.{u} 2).ι from rfl]
   rw [Category.assoc, pushout.condition, ← Category.assoc, boundaryFaceCollapse_horn]
   rfl
 

@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hA : IsZeroCategory (dgKInputStableValue R A))
+  (hA : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A))
 include hA
 
 /-- 同じ主導来圏は固定 ν の零性だけから全対象が零となる。 -/
@@ -43,7 +43,7 @@ omit hA in
 /-- 同じ主導来圏の全対象が零なら、元の固定 ν も零。 -/
 theorem dgKInputStableValue_isZero_of_derived
     (hD : ∀ X : DerivedModuleCategory R A, IsZero X) :
-    IsZeroCategory (dgKInputStableValue R A) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A) := by
   let := dgModulePerfectInfinityCategory_isStable R A
   have h0 (M : PerfectDGModule R A) : IsZero
       ((toHomotopy R (PerfectDGModule R A)).obj (ForgetEnrichment.of (Complex R) M)) := by

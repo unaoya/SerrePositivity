@@ -19,7 +19,7 @@ open scoped Simplicial
 private lemma recoverTransposedRight {X : SSet.{u}}
     {L N : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     {b t : (Δ[2] : SSet.{u}) ⟶ X}
-    (r : SquarePastingRectangle L ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ N) b t) :
+    (r : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle L ((β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ N) b t) :
     (β_ (Δ[1] : SSet.{u}) Δ[1]).hom ≫ pastingSquare r.diagram 0 = N := by
   rw [r.right_eq, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 
@@ -53,7 +53,7 @@ def dgOdotMilnorActualRectangleTopTriangle : SSet.Edge.CompStruct
 /-- 概要：元比較面と V の実零化面を元上下合成三角形付きで貼る。
 方針：同じ共有辺の等号を Sp 正本の全境界延長へ渡す。
 規約：三認証はここでは主張しない。使われ方：共通 S 長方形の実図式。 -/
-def dgOdotMilnorActualSPastingRectangle : SquarePastingRectangle
+def dgOdotMilnorActualSPastingRectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
     ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫ (C))
     ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫ (N))
     (SSet.yonedaEquiv.symm (dgOdotMilnorActualRectangleBottomTriangle R d).simplex)
@@ -61,16 +61,16 @@ def dgOdotMilnorActualSPastingRectangle : SquarePastingRectangle
   have hC := dgOdotMilnorKernelActualComparisonSquare_edges R d
   have hN := dgIdentityHomGluingNullDomainSquare_edges R (U)
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
-  · exact ((square_transpose_right (C)).trans hC.2.2.2).trans
-      ((square_transpose_left (N)).trans hN.1).symm
-  · exact (square_transpose_bottom (C)).trans
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
+  · exact ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right (C)).trans hC.2.2.2).trans
+      ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left (N)).trans hN.1).symm
+  · exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom (C)).trans
       (hC.2.2.1.trans (dgOdotMilnorActualRectangleBottomTriangle R d).δ_two_yonedaEquiv_symm.symm)
-  · exact (square_transpose_bottom (N)).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom (N)).trans
       (hN.2.2.1.trans (dgOdotMilnorActualRectangleBottomTriangle R d).δ_zero_yonedaEquiv_symm.symm)
-  · exact (square_transpose_top (C)).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top (C)).trans
       (hC.2.1.trans (dgOdotMilnorActualRectangleTopTriangle R d).δ_two_yonedaEquiv_symm.symm)
-  · exact (square_transpose_top (N)).trans
+  · exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top (N)).trans
       (hN.2.1.trans (dgOdotMilnorActualRectangleTopTriangle R d).δ_zero_yonedaEquiv_symm.symm)
 
 /-- 概要：同じ元四辺と上下三角形を持つ無条件の共通 S 長方形。
@@ -95,7 +95,7 @@ lemma dgOdotMilnorActualRectangleDiagram_comparison :
 方針：元貼合せの右面回収と転置の二乗を使う。
 規約：元四辺と全二胞体の等号。使われ方：右面 Verdier 認証の実側。 -/
 lemma dgOdotMilnorActualRectangleDiagram_right :
-    verdierRectangleFace 0 ≫ dgOdotMilnorActualRectangleDiagram R d = (N) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ dgOdotMilnorActualRectangleDiagram R d = (N) := by
   change (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
     pastingSquare (dgOdotMilnorActualSPastingRectangle R d).diagram 0 = _
   exact recoverTransposedRight (dgOdotMilnorActualSPastingRectangle R d)

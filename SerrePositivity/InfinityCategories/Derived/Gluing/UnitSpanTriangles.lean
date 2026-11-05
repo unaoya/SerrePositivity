@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 def dgGluingFunctorCompositionTriangleOfBoundary {K E : SSet.{u}} {f g h : K ⟶ E}
     {l : SSet.Homotopy f g} {r : SSet.Homotopy g h} {d : SSet.Homotopy f h}
     (T : (Δ[2] : SSet.{u}) ⟶ (ihom K).obj E)

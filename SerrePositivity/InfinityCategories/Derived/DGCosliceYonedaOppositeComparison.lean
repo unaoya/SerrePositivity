@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌)
 /-- 元の coslice の Yoneda 評価と同じ実射影の分類図式の比較。 -/
 def dgCosliceYonedaClassificationIso :

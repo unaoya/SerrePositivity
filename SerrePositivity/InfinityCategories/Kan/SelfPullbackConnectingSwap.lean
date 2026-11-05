@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseComponents
 public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -31,9 +36,9 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。二因子の交換と逆元の比較の写像。 -/
 def selfPullbackConnecting {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) :
-    KanHomotopyGroup B 0 (p.app _ e) → π₀ (pullback p p) :=
-  fun a => mapπ₀ (selfPullbackFiberInclusion p e)
-    (KanHomotopyZero.equivPiZero (connecting p e 0 a))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e) → π₀ (pullback p p) :=
+  fun a => mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 a))
 
 /-- 概要：自己 pullback への連結射を任意の持ち上げの代表で計算する。
 方針：連結射の代表の式と零次数の π₀ との比較を使う。
@@ -41,11 +46,11 @@ def selfPullbackConnecting {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Kerodon §3.2.5。逆元の三角形の成分の式との接続。 -/
 theorem selfPullbackConnecting_eq {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌)
-    {s : B.PtSimplex 1 (p.app _ e)} (L : BoundaryLift p e s) :
-    selfPullbackConnecting p e (KanHomotopyGroup.mk s) =
-      zeroMapComponent (L.boundary.map ≫ selfPullbackFiberInclusion p e) := by
-  dsimp only [selfPullbackConnecting]
-  rw [connecting_eq p e L]
+    {s : B.PtSimplex 1 (p.app _ e)} (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s) :
+    _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
+      _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (L.boundary.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e L]
   rfl
 
 /-- 概要：自己 pullback の二因子の交換は連結射の像上で基本群の逆元に対応する。
@@ -54,18 +59,33 @@ theorem selfPullbackConnecting_eq {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。二重 loop の交換の符号を決める一般式。 -/
 theorem selfPullbackConnecting_swap {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌)
-    (a : KanHomotopyGroup B 0 (p.app _ e)) :
-    mapπ₀ (selfPullbackSwap p) (selfPullbackConnecting p e a) =
-      selfPullbackConnecting p e a⁻¹ := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B 0 (p.app _ e)) :
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap p) (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e a⁻¹ := by
   induction a using Quotient.inductionOn with | h s => ?_
-  change mapπ₀ (selfPullbackSwap p) (selfPullbackConnecting p e (KanHomotopyGroup.mk s)) =
-    selfPullbackConnecting p e (KanHomotopyGroup.mk s)⁻¹
-  let Ls := chooseBoundaryLift p e s
-  obtain ⟨t, Lt, ht, hπ⟩ := selfPullback_swap_inverse_representative p e s Ls
-  rw [← ht, selfPullbackConnecting_eq p e Ls, selfPullbackConnecting_eq p e Lt,
-    ← zeroMapComponent_comp]
+  change mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap p) (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) =
+    _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹
+  let Ls := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e s
+  obtain ⟨t, Lt, ht, hπ⟩ := _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_swap_inverse_representative p e s Ls
+  rw [← ht, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_eq p e Ls, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_eq p e Lt,
+    ← _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent_comp]
   exact hπ.symm
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting_eq := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting_swap := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_swap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting._proof_1

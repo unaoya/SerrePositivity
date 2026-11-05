@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：基礎単体集合は指定した関数複体そのもの。
 使われ方：Goerss–Jardine I §7、VIII §2。基点付きの関数群の単体的な模型。 -/
 def SimplicialFunctionComplex.pointedObj (S : Type u) (X : PointedSimplicialSet.{u}) :
-    PointedSimplicialSet.{u} := Under.mk (lift (fun (_ : S) ↦ X.hom))
+    PointedSimplicialSet.{u} := Under.mk (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : S) ↦ X.hom))
 
 namespace FreeActionFamily
 
@@ -44,15 +44,15 @@ def pointedFunctionPre {S T : Type u}
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action PointedSimplicialSet.{u} G) :
     SimplicialFunctionComplex.pointedObj S B.V ⟶ SimplicialFunctionComplex.pointedObj T B.V :=
   Under.homMk (functionPre θ ((PointedSimplicialSet.forget.mapAction G).obj B)) (by
-    apply SimplicialFunctionComplex.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro t
     let C := (PointedSimplicialSet.forget.mapAction G).obj B
     let p : (𝟙_ SSet.{u}) ⟶ C.V := B.V.hom
-    change ((SimplicialFunctionComplex.lift (fun (_ : S) ↦ p)) ≫ functionPre θ C) ≫
-        SimplicialFunctionComplex.eval T C.V t =
-      SimplicialFunctionComplex.lift (fun (_ : T) ↦ p) ≫ SimplicialFunctionComplex.eval T C.V t
+    change ((_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : S) ↦ p)) ≫ functionPre θ C) ≫
+        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T C.V t =
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (fun (_ : T) ↦ p) ≫ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval T C.V t
     rw [Category.assoc, functionPre_eval, ← Category.assoc,
-      SimplicialFunctionComplex.lift_eval, SimplicialFunctionComplex.lift_eval]
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact Under.w (B.ρ (θ.hom ((1 : G), t)).1).asHom)
 
 /-- 概要：自由作用の点つき end は点つき関数複体と同型。

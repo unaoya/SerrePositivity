@@ -22,12 +22,12 @@ local instance ncKZeroSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} :=
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hA : IsZeroCategory (dgKInputStableValue R A))
+  (hA : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A))
 include hA
 
 /-- 元の同じ実懸垂の全反復は固定 ν の零性を保つ。 -/
 theorem dgSuspensionUnconditionalIteration_stableValue_isZero (n : ℕ) :
-    IsZeroCategory (dgKInputStableValue R (dgSuspensionUnconditionalIteration R κ hκ A n)) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgSuspensionUnconditionalIteration R κ hκ A n)) := by
   induction n with
   | zero => exact hA
   | succ n ih => exact dgKappaSuspensionStableValue_isZero R _ _ ih
@@ -64,8 +64,8 @@ theorem dgNonconnectiveK_preservesRelativeZero_of_vertex
     PreservesRelativeZeroCategories (dgKInputNu.{u, max (u + 1) v} R) E := by
   intro a ha
   obtain ⟨B, rfl⟩ := (coherentNerveVertexEquiv (PerfDGInput.{u, max (u + 1) v} R)).surjective a
-  have he := congrArg (fun z : StableInfinity.{max (u + 1) v} _⦋0⦌ =>
-    IsZeroCategory (stableObject z)) (dgKInputNu_vertex R B)
+  have he := congrArg (fun z : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} _⦋0⦌ =>
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject z)) (dgKInputNu_vertex R B)
   change IsZeroVertex (E.app (Opposite.op ⦋0⦌) (coherentNerveVertex B))
   rw [hE B]
   exact dgNonconnectiveK_vertex_isZero_of_zero R κ hκ B (he.mp ha)

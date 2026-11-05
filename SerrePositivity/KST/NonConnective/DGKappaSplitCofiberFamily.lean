@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
@@ -59,7 +59,7 @@ def dgKappaSplitCofiberFamily
     change IsCofiberDiagramVertex
       ((dgKappaSplitPerfDiagramFamily R D I Z).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
     rw [dgKappaSplitPerfDiagramFamily_vertex]
-    dsimp only [IsCofiberDiagramVertex, IsPushoutDiagramVertex]
+    dsimp only [IsCofiberDiagramVertex, _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex]
     rw [squareDiagram_functorVertex]
     exact ⟨(dgKappaSplitPerfPointwiseZeroTriangle R D I X Z).zero_corner,
       dgKappaSplitPerfPointwiseSquare_isPushout_of_input R D I X (H X) Z⟩)

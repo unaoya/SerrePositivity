@@ -44,7 +44,7 @@ lemma cofiberAxes_middle (X : StableModel.{u}) (z : ZeroVertex X.carrier) (b : B
 
 /-- 同じ零関手の一重境界商 Kan 模型への作用は正次数群上で零。 -/
 lemma singleBoundaryKanGroup_constantZero (X : StableModel.{u}) (z : ZeroVertex X.carrier)
-    (n : ℕ) (a : KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
       ((boundaryKanRealizationFunctor 0).obj X).basepoint) :
     pointedGroupMap n ((boundaryKanRealizationFunctor 0).map (stableConstantZero X z)) a = 1 := by
   change pointedGroupMap n

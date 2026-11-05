@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
 public import SerrePositivity.KST.LocalizingInvariants.RightFibrationConeTransport
 public import SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting
@@ -25,9 +27,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma corePreimage_quasicategory {B C : SSet.{u}} [Quasicategory B] (q : B ⟶ C) :
     Quasicategory ((quasicategoryCore C).preimage q : SSet.{u}) := by
@@ -39,17 +44,17 @@ lemma corePreimage_quasicategory {B C : SSet.{u}} [Quasicategory B] (q : B ⟶ C
   rw [← he]
   infer_instance
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 local notation "W" => (Subcomplex.preimage (quasicategoryCore C.obj) q.hom : SSet)
 local notation "Q" => Subcomplex.fromPreimage (quasicategoryCore C.obj) q.hom
 
 /-- 終対象付き右ファイブレーションへの同じ引き戻し内で、任意の有限図式に実錐がある。 -/
-lemma exists_verdierCorePullback_finiteCone (h : IsVerdierSequence i q)
+lemma exists_verdierCorePullback_finiteCone (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {Y : SSet.{u}} [Quasicategory Y] (r : Y ⟶ (quasicategoryCore C.obj : SSet.{u}))
     [RightFibration r] {y : Y _⦋0⦌} (hy : IsTerminalVertex y)
     {K : SSet.{u}} [K.Finite] (a : K ⟶ pullback Q r) : Nonempty (JoinCone a) := by
-  let : Quasicategory W := corePreimage_quasicategory q.hom
+  let : Quasicategory W := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory q.hom
   let coreι := (quasicategoryCore C.obj).ι
   let P := (a ≫ pullback.fst Q r) ≫ ((quasicategoryCore C.obj).preimage q.hom).ι
   let γ := a ≫ pullback.snd Q r
@@ -65,11 +70,11 @@ lemma exists_verdierCorePullback_finiteCone (h : IsVerdierSequence i q)
   let t : JoinCone (P ≫ q.hom) := ⟨cY.val ≫ R, by
     rw [← Category.assoc, cY.property]
     exact hγ.symm⟩
-  obtain ⟨c, ⟨e⟩⟩ := exists_verdierQuotientConeIsoRefinement h P t
+  obtain ⟨c, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h P t
   have hInv : InvertsEdges (c.val ≫ q.hom) Set.univ := by
     have hcIso := coneFunctorIsoOfVertexIso (mapJoinCone q.hom c) t e
     exact (invertsEdges_functorIso_iff hcIso Set.univ).mpr
-      ((invertsAllEdges_toKan (cY.val ≫ r)).comp coreι)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan (cY.val ≫ r)).comp coreι)
   let cWval := corePreimageLift q.hom c.val hInv
   have hcW : joinInr (Δ[0] : SSet.{u}) K ≫ cWval = a ≫ pullback.fst Q r := by
     apply (cancel_mono ((quasicategoryCore C.obj).preimage q.hom).ι).mp
@@ -116,4 +121,13 @@ lemma exists_verdierCorePullback_finiteCone (h : IsVerdierSequence i q)
   · rw [Category.assoc, pullback.lift_snd]
     exact dY.property
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.corePreimage_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierCorePullback_finiteCone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierCorePullback_finiteCone

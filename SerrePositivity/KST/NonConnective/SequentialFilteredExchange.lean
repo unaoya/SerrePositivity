@@ -98,17 +98,17 @@ theorem sequentialFilteredExchangeMap_projection :
 
 /-- 同じ実 BF 交換射は、零段を含む全段・全基点の π 同型。 -/
 theorem sequentialFilteredExchangeMap_levelwise (k : ℕ) :
-    KanPiIsomorphism ((sequentialFilteredExchangeMap D c hc).app k).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((sequentialFilteredExchangeMap D c hc).app k).right := by
   let i :
       ((FilteredExchange.levelColimitSpectrum
         (sequentialFilteredLevelDiagram D)).level k).space.right ≅
         ((sequentialLevelColimitSpectrum c.pt).level k).space.right :=
     (OmegaSpectrum.levelEvaluation k ⋙ PointedSimplicialSet.forget).mapIso
       (sequentialFilteredLevelExchangeIso D c hc)
-  have hr : KanPiIsomorphism ((sequentialFilteredExchangeRawMap D c hc).app k).right :=
+  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((sequentialFilteredExchangeRawMap D c hc).app k).right :=
     (OmegaSpectrum.filteredLevelComparison_piIsomorphism
-      (sequentialFilteredLevelDiagram D) k).comp (KanPiIsomorphism.of_iso i)
-  apply KanPiIsomorphism.of_comp
+      (sequentialFilteredLevelDiagram D) k).comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso i)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
     (g := ((sequentialReplacementProjection c.pt).app k).right) _
     (OmegaSpectrum.filteredLevelComparison_piIsomorphism c.pt k)
   have h : ((sequentialFilteredExchangeMap D c hc).app k).right ≫

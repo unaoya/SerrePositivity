@@ -1,0 +1,3645 @@
+{
+  "changes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/PointedModuleSimplex.lean",
+      "start": 547,
+      "end": 557,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/LaxInclusions.lean",
+      "start": 1857,
+      "end": 1865,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/LaxInclusions.lean",
+      "start": 1838,
+      "end": 1846,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/LaxInclusions.lean",
+      "start": 1813,
+      "end": 1827,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/LaxInclusions.lean",
+      "start": 1735,
+      "end": 1735,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 1259,
+      "end": 1262,
+      "old": "top",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 1167,
+      "end": 1170,
+      "old": "top",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 1087,
+      "end": 1092,
+      "old": "right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 944,
+      "end": 948,
+      "old": "left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 850,
+      "end": 854,
+      "old": "left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 769,
+      "end": 775,
+      "old": "bottom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "start": 613,
+      "end": 623,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+      "start": 11375,
+      "end": 11375,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+      "start": 10098,
+      "end": 10098,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+      "start": 652,
+      "end": 652,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
+      "start": 6490,
+      "end": 6516,
+      "old": "LastHornContraction.vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
+      "start": 3892,
+      "end": 3892,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 5405,
+      "end": 5415,
+      "old": "fiberPoint",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 5249,
+      "end": 5289,
+      "old": "KanHomotopyZero.map_bijective_iff_piZero",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_bijective_iff_piZero",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 5174,
+      "end": 5190,
+      "old": "KanPiIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 5041,
+      "end": 5049,
+      "old": "fiberMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 5023,
+      "end": 5039,
+      "old": "KanPiIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 4979,
+      "end": 4995,
+      "old": "KanPiIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 4498,
+      "end": 4504,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 4394,
+      "end": 4410,
+      "old": "mapPiZero_square",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 4366,
+      "end": 4372,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3503,
+      "end": 3528,
+      "old": "componentConnecting_exact",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3432,
+      "end": 3451,
+      "old": "componentConnecting",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3375,
+      "end": 3385,
+      "old": "fiberMap_ι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3310,
+      "end": 3337,
+      "old": "componentConnecting_natural",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.componentConnecting_natural",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3232,
+      "end": 3251,
+      "old": "componentConnecting",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3180,
+      "end": 3187,
+      "old": "base_eq",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3124,
+      "end": 3171,
+      "old": "KanHomotopyGroup.map_bijective_of_piIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 3033,
+      "end": 3058,
+      "old": "componentConnecting_exact",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2865,
+      "end": 2875,
+      "old": "fiberMap_ι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2839,
+      "end": 2855,
+      "old": "mapPiZero_square",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2802,
+      "end": 2808,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2695,
+      "end": 2701,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2651,
+      "end": 2659,
+      "old": "fiberMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2606,
+      "end": 2626,
+      "old": "componentFiber_exact",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.componentFiber_exact",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2519,
+      "end": 2535,
+      "old": "mapPiZero_square",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2365,
+      "end": 2381,
+      "old": "mapPiZero_square",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2092,
+      "end": 2100,
+      "old": "fiberMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 2021,
+      "end": 2037,
+      "old": "KanPiIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1599,
+      "end": 1610,
+      "old": "fiberLift_ι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1579,
+      "end": 1585,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1555,
+      "end": 1561,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1209,
+      "end": 1220,
+      "old": "fiberι_comp",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1139,
+      "end": 1145,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1113,
+      "end": 1122,
+      "old": "fiberLift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberLift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1084,
+      "end": 1092,
+      "old": "KanFiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanFiber",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 1069,
+      "end": 1077,
+      "old": "KanFiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanFiber",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "start": 614,
+      "end": 624,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactDiagrams.lean",
+      "start": 4351,
+      "end": 4359,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactDiagrams.lean",
+      "start": 4329,
+      "end": 4343,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactDiagrams.lean",
+      "start": 1069,
+      "end": 1069,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/CofiberFamilyRightHom.lean",
+      "start": 4810,
+      "end": 4829,
+      "old": "arrowFamilyHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/CofiberFamilyRightHom.lean",
+      "start": 4428,
+      "end": 4447,
+      "old": "arrowFamilyHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Exact/CofiberFamilyRightHom.lean",
+      "start": 3523,
+      "end": 3523,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 7864,
+      "end": 7873,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 7596,
+      "end": 7605,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 7329,
+      "end": 7338,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 7053,
+      "end": 7062,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 6797,
+      "end": 6806,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 6566,
+      "end": 6575,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 6313,
+      "end": 6322,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 6054,
+      "end": 6063,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 5000,
+      "end": 5008,
+      "old": "boundary",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 4813,
+      "end": 4821,
+      "old": "boundary",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundary",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 4138,
+      "end": 4154,
+      "old": "diagram_vertical",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_vertical",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 3122,
+      "end": 3140,
+      "old": "diagram_horizontal",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.diagram_horizontal",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 3009,
+      "end": 3018,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 2151,
+      "end": 2162,
+      "old": "SquareFrame",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 1198,
+      "end": 1209,
+      "old": "SquareFrame",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 1155,
+      "end": 1166,
+      "old": "SquareFrame",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+      "start": 1066,
+      "end": 1066,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1665,
+      "end": 1679,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1519,
+      "end": 1533,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1494,
+      "end": 1508,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1180,
+      "end": 1194,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1147,
+      "end": 1161,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 1076,
+      "end": 1090,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 895,
+      "end": 909,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 862,
+      "end": 876,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 827,
+      "end": 841,
+      "old": "arrowFamilyHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "start": 613,
+      "end": 623,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3946,
+      "end": 3957,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3850,
+      "end": 3865,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3716,
+      "end": 3730,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3703,
+      "end": 3714,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3606,
+      "end": 3621,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3489,
+      "end": 3504,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3389,
+      "end": 3408,
+      "old": "stableObject_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3144,
+      "end": 3158,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3131,
+      "end": 3142,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3027,
+      "end": 3039,
+      "old": "zeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 3014,
+      "end": 3026,
+      "old": "stableVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2925,
+      "end": 2936,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2816,
+      "end": 2828,
+      "old": "stableVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2728,
+      "end": 2739,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2621,
+      "end": 2633,
+      "old": "stableVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2533,
+      "end": 2544,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2428,
+      "end": 2440,
+      "old": "stableVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2257,
+      "end": 2271,
+      "old": "VerdierDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2234,
+      "end": 2249,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 2062,
+      "end": 2096,
+      "old": "stableArrow_homMk_eq_of_functorIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrow_homMk_eq_of_functorIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1909,
+      "end": 1923,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1876,
+      "end": 1884,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1787,
+      "end": 1795,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1714,
+      "end": 1728,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1691,
+      "end": 1701,
+      "old": "StableQCat",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1540,
+      "end": 1550,
+      "old": "StableQCat",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1405,
+      "end": 1416,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1368,
+      "end": 1382,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1355,
+      "end": 1366,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1298,
+      "end": 1309,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1256,
+      "end": 1267,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1176,
+      "end": 1187,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1094,
+      "end": 1108,
+      "old": "toZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 1081,
+      "end": 1092,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 984,
+      "end": 995,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 903,
+      "end": 914,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 831,
+      "end": 845,
+      "old": "StableInfinity",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 767,
+      "end": 782,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "start": 595,
+      "end": 605,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/IdentityLaxVerdier.lean",
+      "start": 1394,
+      "end": 1408,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Lax/IdentityLaxVerdier.lean",
+      "start": 1322,
+      "end": 1322,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 3517,
+      "end": 3545,
+      "old": "SquarePastingHorn.transposed",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed",
+      "reason": "before_resolved_unfold"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 3476,
+      "end": 3507,
+      "old": "SquarePastingHorn.diagram_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 3316,
+      "end": 3344,
+      "old": "SquarePastingHorn.transposed",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed",
+      "reason": "before_resolved_unfold"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 3276,
+      "end": 3306,
+      "old": "SquarePastingHorn.diagram_left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2712,
+      "end": 2744,
+      "old": "SquarePastingHorn.transposed_top",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_top",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2657,
+      "end": 2689,
+      "old": "SquarePastingHorn.transposed_top",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_top",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2590,
+      "end": 2625,
+      "old": "SquarePastingHorn.transposed_bottom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_bottom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2532,
+      "end": 2567,
+      "old": "SquarePastingHorn.transposed_bottom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_bottom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2321,
+      "end": 2352,
+      "old": "SquarePastingHorn.diagram_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 2221,
+      "end": 2251,
+      "old": "SquarePastingHorn.diagram_left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 1895,
+      "end": 1923,
+      "old": "SquarePastingHorn.transposed",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed",
+      "reason": "before_resolved_unfold"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 1762,
+      "end": 1790,
+      "old": "SquarePastingHorn.transposed",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed",
+      "reason": "before_resolved_unfold"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+      "start": 1666,
+      "end": 1691,
+      "old": "SquarePastingHorn.diagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 4028,
+      "end": 4054,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 3484,
+      "end": 3510,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 3301,
+      "end": 3327,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 3082,
+      "end": 3108,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 3036,
+      "end": 3062,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 2816,
+      "end": 2842,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 2705,
+      "end": 2731,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 2437,
+      "end": 2463,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 2056,
+      "end": 2072,
+      "old": "markedSpanFamily",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "start": 478,
+      "end": 488,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 6430,
+      "end": 6449,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 6325,
+      "end": 6344,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 6241,
+      "end": 6260,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 6079,
+      "end": 6098,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5776,
+      "end": 5795,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5580,
+      "end": 5599,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5522,
+      "end": 5541,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5319,
+      "end": 5338,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5204,
+      "end": 5223,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 5153,
+      "end": 5172,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 4580,
+      "end": 4607,
+      "old": "relativeFunctorCoreQuotient",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 4530,
+      "end": 4549,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 4333,
+      "end": 4360,
+      "old": "relativeFunctorCoreQuotient",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 4293,
+      "end": 4320,
+      "old": "relativeFunctorCoreQuotient",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3991,
+      "end": 4010,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3955,
+      "end": 3974,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3561,
+      "end": 3580,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3465,
+      "end": 3484,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3406,
+      "end": 3425,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3367,
+      "end": 3386,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 3001,
+      "end": 3020,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 2936,
+      "end": 2955,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 2903,
+      "end": 2922,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 2391,
+      "end": 2410,
+      "old": "relativeFunctorCore",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 1586,
+      "end": 1600,
+      "old": "comp_app_congr",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.comp_app_congr",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "start": 826,
+      "end": 836,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 3848,
+      "end": 3878,
+      "old": "arrowContractionSquares_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 3325,
+      "end": 3355,
+      "old": "arrowContractionSquares_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 2687,
+      "end": 2706,
+      "old": "contractionAtVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 2332,
+      "end": 2351,
+      "old": "contractionAtVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 2160,
+      "end": 2189,
+      "old": "arrowContractionSquares_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 1576,
+      "end": 1603,
+      "old": "arrowContractionSquares_top",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_top",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 1183,
+      "end": 1213,
+      "old": "arrowContractionSquares_bottom",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_bottom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 879,
+      "end": 902,
+      "old": "arrowContractionSquares",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "start": 543,
+      "end": 553,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      "start": 3035,
+      "end": 3054,
+      "old": "s.coherentEmbedding",
+      "new": "(coherentEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      "start": 2682,
+      "end": 2701,
+      "old": "s.coherentEmbedding",
+      "new": "(coherentEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      "start": 2309,
+      "end": 2340,
+      "old": "ScaffoldTransportComparisonSpan",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      "start": 4331,
+      "end": 4358,
+      "old": "s.coefficientEmbedding_over",
+      "new": "(coefficientEmbedding_over s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      "start": 4304,
+      "end": 4326,
+      "old": "s.coefficientEmbedding",
+      "new": "(coefficientEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      "start": 3402,
+      "end": 3424,
+      "old": "s.coefficientEmbedding",
+      "new": "(coefficientEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      "start": 2736,
+      "end": 2767,
+      "old": "ScaffoldTransportComparisonSpan",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 2340,
+      "end": 2360,
+      "old": "cosliceFiberPointHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 2291,
+      "end": 2322,
+      "old": "kanEnrichedOppositeComponentIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 2199,
+      "end": 2219,
+      "old": "cosliceFiberPointHom",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 1770,
+      "end": 1816,
+      "old": "kanEnrichedEdgewiseRightComponent_eq_doubleMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent_eq_doubleMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 1642,
+      "end": 1676,
+      "old": "kanEnrichedDoubleEvaluation_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 1530,
+      "end": 1572,
+      "old": "kanEnrichedDoubleEvaluation_precomp_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 1437,
+      "end": 1471,
+      "old": "kanEnrichedDoubleEvaluation_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 1350,
+      "end": 1384,
+      "old": "kanEnrichedDoubleEvaluation_vertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 918,
+      "end": 945,
+      "old": "kanEnrichedDoubleEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 867,
+      "end": 894,
+      "old": "kanEnrichedEdgewisePointIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 827,
+      "end": 858,
+      "old": "kanEnrichedOppositeComponentIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "start": 465,
+      "end": 475,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "start": 4231,
+      "end": 4248,
+      "old": "pushoutProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "start": 3942,
+      "end": 3964,
+      "old": "IsPushoutDiagramVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "start": 3367,
+      "end": 3389,
+      "old": "IsPushoutDiagramVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "start": 3325,
+      "end": 3340,
+      "old": "pushoutDiagrams",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "start": 737,
+      "end": 747,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 4008,
+      "end": 4030,
+      "old": "IsPushoutDiagramVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 3927,
+      "end": 3944,
+      "old": "pushoutProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 1926,
+      "end": 1948,
+      "old": "IsPushoutDiagramVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 1607,
+      "end": 1622,
+      "old": "pushoutDiagrams",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 889,
+      "end": 911,
+      "old": "IsPushoutDiagramVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "start": 624,
+      "end": 634,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 3021,
+      "end": 3052,
+      "old": "doubleMappingCylinder_right_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2940,
+      "end": 2967,
+      "old": "doubleMappingCylinder_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2869,
+      "end": 2899,
+      "old": "doubleMappingCylinder_left_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2789,
+      "end": 2815,
+      "old": "doubleMappingCylinder_left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2674,
+      "end": 2706,
+      "old": "doubleMappingCylinder_middle_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2609,
+      "end": 2633,
+      "old": "doubleMappingCylinderMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2516,
+      "end": 2533,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2444,
+      "end": 2461,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2340,
+      "end": 2357,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2270,
+      "end": 2294,
+      "old": "doubleMappingCylinderMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2205,
+      "end": 2222,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2138,
+      "end": 2166,
+      "old": "doubleMappingCylinder_middle",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2089,
+      "end": 2113,
+      "old": "doubleMappingCylinderMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 2035,
+      "end": 2063,
+      "old": "doubleMappingCylinder_middle",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 1902,
+      "end": 1919,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 1852,
+      "end": 1869,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "start": 699,
+      "end": 709,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 4728,
+      "end": 4755,
+      "old": "doubleMappingCylinder_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 2189,
+      "end": 2221,
+      "old": "doubleMappingCylinder_right_desc",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 2098,
+      "end": 2125,
+      "old": "doubleMappingCylinder_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 1849,
+      "end": 1880,
+      "old": "doubleMappingCylinder_left_desc",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 1759,
+      "end": 1785,
+      "old": "doubleMappingCylinder_left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 1509,
+      "end": 1542,
+      "old": "doubleMappingCylinder_middle_desc",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 1381,
+      "end": 1409,
+      "old": "doubleMappingCylinder_middle",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 949,
+      "end": 974,
+      "old": "doubleMappingCylinderDesc",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 904,
+      "end": 925,
+      "old": "doubleMappingCylinder",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "start": 660,
+      "end": 670,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 3365,
+      "end": 3396,
+      "old": "doubleMappingCylinder_right_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 3303,
+      "end": 3330,
+      "old": "doubleMappingCylinder_right",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 3185,
+      "end": 3215,
+      "old": "doubleMappingCylinder_left_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 3124,
+      "end": 3150,
+      "old": "doubleMappingCylinder_left",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2963,
+      "end": 2980,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2879,
+      "end": 2896,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2788,
+      "end": 2820,
+      "old": "doubleMappingCylinder_middle_map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2657,
+      "end": 2681,
+      "old": "doubleMappingCylinderMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2309,
+      "end": 2326,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2266,
+      "end": 2283,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 2009,
+      "end": 2033,
+      "old": "doubleMappingCylinderMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 1331,
+      "end": 1348,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 1215,
+      "end": 1232,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 1150,
+      "end": 1167,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 1098,
+      "end": 1115,
+      "old": "cylinderEndpoints",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "start": 885,
+      "end": 895,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2945,
+      "end": 2965,
+      "old": "exact_total_base_all",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2880,
+      "end": 2895,
+      "old": "KanHomotopy.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2795,
+      "end": 2806,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2247,
+      "end": 2267,
+      "old": "KanHomotopyGroup.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2122,
+      "end": 2137,
+      "old": "KanHomotopy.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 2038,
+      "end": 2049,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1460,
+      "end": 1477,
+      "old": "KanHomotopy.point",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1388,
+      "end": 1403,
+      "old": "KanHomotopy.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1329,
+      "end": 1346,
+      "old": "KanHomotopy.point",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1260,
+      "end": 1271,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1179,
+      "end": 1190,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1101,
+      "end": 1112,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 1030,
+      "end": 1041,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 816,
+      "end": 823,
+      "old": "Spectra",
+      "new": "SerrePositivity.KST.Spectra",
+      "reason": "legacy_parent_namespace"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+      "start": 756,
+      "end": 756,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 3304,
+      "end": 3314,
+      "old": "fiberPoint",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 3052,
+      "end": 3065,
+      "old": "fiber_hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2965,
+      "end": 2971,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2942,
+      "end": 2948,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2915,
+      "end": 2923,
+      "old": "KanFiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanFiber",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2795,
+      "end": 2806,
+      "old": "fiberLift_ι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2743,
+      "end": 2749,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 2730,
+      "end": 2736,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 1512,
+      "end": 1520,
+      "old": "KanFiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanFiber",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 1487,
+      "end": 1495,
+      "old": "KanFiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanFiber",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 886,
+      "end": 893,
+      "old": "Spectra",
+      "new": "SerrePositivity.KST.Spectra",
+      "reason": "legacy_parent_namespace"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+      "start": 826,
+      "end": 826,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+      "start": 2004,
+      "end": 2029,
+      "old": "KanHomotopy.mk_surjective",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+      "start": 1932,
+      "end": 1943,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+      "start": 867,
+      "end": 874,
+      "old": "Spectra",
+      "new": "SerrePositivity.KST.Spectra",
+      "reason": "legacy_parent_namespace"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+      "start": 807,
+      "end": 807,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 3258,
+      "end": 3277,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 3165,
+      "end": 3184,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2988,
+      "end": 3007,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2895,
+      "end": 2914,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2561,
+      "end": 2589,
+      "old": "kanIdentityEdge_isInvertible",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2198,
+      "end": 2217,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2125,
+      "end": 2138,
+      "old": "kanCommSqCone",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 2047,
+      "end": 2060,
+      "old": "kanCommSqCone",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 1766,
+      "end": 1785,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 1613,
+      "end": 1632,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 1362,
+      "end": 1381,
+      "old": "kanCommSqComparison",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "start": 803,
+      "end": 813,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/DoubleCylinderPaths.lean",
+      "start": 882,
+      "end": 892,
+      "old": "Comparison",
+      "new": "SerrePositivity.KST.Comparison",
+      "reason": "legacy_parent_namespace"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 2239,
+      "end": 2246,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 2099,
+      "end": 2106,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1982,
+      "end": 1989,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1867,
+      "end": 1874,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1809,
+      "end": 1813,
+      "old": "lift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1744,
+      "end": 1748,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1706,
+      "end": 1710,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1617,
+      "end": 1620,
+      "old": "obj",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1447,
+      "end": 1456,
+      "old": "lift_eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1370,
+      "end": 1374,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1168,
+      "end": 1175,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1120,
+      "end": 1124,
+      "old": "lift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 1082,
+      "end": 1085,
+      "old": "obj",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.obj",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+      "start": 635,
+      "end": 635,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2963,
+      "end": 2979,
+      "old": "CubeMapGenerated",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2939,
+      "end": 2949,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2924,
+      "end": 2934,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2905,
+      "end": 2915,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2890,
+      "end": 2900,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2689,
+      "end": 2699,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2674,
+      "end": 2684,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2298,
+      "end": 2312,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2265,
+      "end": 2285,
+      "old": "cubeMapGenerated_sup",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_sup",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2087,
+      "end": 2112,
+      "old": "cubeMapGenerated_monotone",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_monotone",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 2036,
+      "end": 2050,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1871,
+      "end": 1887,
+      "old": "CubeMapGenerated",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1847,
+      "end": 1857,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1832,
+      "end": 1842,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1813,
+      "end": 1823,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1798,
+      "end": 1808,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1658,
+      "end": 1679,
+      "old": "mem_cubeVertexSupport",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.mem_cubeVertexSupport",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1526,
+      "end": 1540,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1484,
+      "end": 1501,
+      "old": "cubeVertexSupport",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1405,
+      "end": 1419,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1363,
+      "end": 1380,
+      "old": "cubeVertexSupport",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexSupport",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1261,
+      "end": 1277,
+      "old": "cubeJoinMap_eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1114,
+      "end": 1124,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1055,
+      "end": 1065,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 1040,
+      "end": 1050,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 932,
+      "end": 946,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 902,
+      "end": 916,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 820,
+      "end": 834,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 770,
+      "end": 780,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 671,
+      "end": 685,
+      "old": "cubeVertexAtom",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 598,
+      "end": 608,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+      "start": 583,
+      "end": 593,
+      "old": "CubeVertex",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 2217,
+      "end": 2224,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 2077,
+      "end": 2084,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1960,
+      "end": 1967,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1845,
+      "end": 1852,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1787,
+      "end": 1791,
+      "old": "lift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1722,
+      "end": 1726,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1684,
+      "end": 1688,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1595,
+      "end": 1598,
+      "old": "obj",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1425,
+      "end": 1434,
+      "old": "lift_eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1348,
+      "end": 1352,
+      "old": "eval",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1150,
+      "end": 1157,
+      "old": "hom_ext",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext",
+      "reason": "disambiguate_before_theorem"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1102,
+      "end": 1106,
+      "old": "lift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 1064,
+      "end": 1067,
+      "old": "obj",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+      "start": 631,
+      "end": 631,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/NecklaceSimplicialSet.lean",
+      "start": 871,
+      "end": 881,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 4027,
+      "end": 4048,
+      "old": "SquareTriangles.upper",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 3844,
+      "end": 3865,
+      "old": "SquareTriangles.upper",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 3213,
+      "end": 3234,
+      "old": "SquareTriangles.lower",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 3058,
+      "end": 3079,
+      "old": "SquareTriangles.upper",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 1657,
+      "end": 1678,
+      "old": "SquareTriangles.lower",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 1474,
+      "end": 1495,
+      "old": "SquareTriangles.lower",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 1290,
+      "end": 1311,
+      "old": "SquareTriangles.upper",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 1109,
+      "end": 1130,
+      "old": "SquareTriangles.upper",
+      "new": "_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+      "start": 770,
+      "end": 770,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SequentialMittagLeffler.lean",
+      "start": 3775,
+      "end": 3775,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SequentialMittagLeffler.lean",
+      "start": 2740,
+      "end": 2740,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SequentialMittagLeffler.lean",
+      "start": 1963,
+      "end": 1963,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/SequentialMittagLeffler.lean",
+      "start": 622,
+      "end": 622,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/TowerLimOne.lean",
+      "start": 6694,
+      "end": 6694,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/TowerLimOne.lean",
+      "start": 6225,
+      "end": 6225,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/TowerLimOne.lean",
+      "start": 4244,
+      "end": 4244,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/TowerLimOne.lean",
+      "start": 544,
+      "end": 544,
+      "old": "",
+      "new": "open SerrePositivity.KST.Spectra\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/SimplexIntervalOrder.lean",
+      "start": 518,
+      "end": 528,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/SimplexSubsetOrder.lean",
+      "start": 561,
+      "end": 571,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/NecklacePreferredForm.lean",
+      "start": 5071,
+      "end": 5071,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/NecklacePreferredForm.lean",
+      "start": 4784,
+      "end": 4784,
+      "old": "",
+      "new": "noncomputable ",
+      "reason": "noncomputable_alias"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/NecklacePreferredForm.lean",
+      "start": 587,
+      "end": 587,
+      "old": "",
+      "new": "open SerrePositivity.KST.SConstruction\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/CurryIntervalNaturality.lean",
+      "start": 3927,
+      "end": 3949,
+      "old": "CurryHomotopy.sliceMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/CurryIntervalNaturality.lean",
+      "start": 3845,
+      "end": 3867,
+      "old": "CurryHomotopy.sliceMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/CurryIntervalNaturality.lean",
+      "start": 3702,
+      "end": 3702,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 5514,
+      "end": 5528,
+      "old": "IsZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 5472,
+      "end": 5483,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 5367,
+      "end": 5378,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 4859,
+      "end": 4874,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 2312,
+      "end": 2327,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 2149,
+      "end": 2164,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 1370,
+      "end": 1384,
+      "old": "IsZeroCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 1328,
+      "end": 1339,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 1238,
+      "end": 1249,
+      "old": "stableArrow",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 1114,
+      "end": 1129,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 1038,
+      "end": 1052,
+      "old": "StableInfinity",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      "start": 931,
+      "end": 931,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Verdier/Fractions/VerdierDiagramCategory.lean",
+      "start": 1085,
+      "end": 1099,
+      "old": "VerdierDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Verdier/Fractions/VerdierDiagramCategory.lean",
+      "start": 990,
+      "end": 990,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_parent_lookup"
+    }
+  ],
+  "files": [
+    "SerrePositivity/InfinityCategories/Derived/PointedModuleSimplex.lean",
+    "SerrePositivity/InfinityCategories/F1/CoreFlag/KanFibrationVanishing.lean",
+    "SerrePositivity/InfinityCategories/F1/CoreFlag/KanPullbackFibers.lean",
+    "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+    "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
+    "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquareFrameFunctoriality.lean",
+    "SerrePositivity/InfinityCategories/F1B/Quasicategory/SquarePastingRectangle.lean",
+    "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeActiveSupport.lean",
+    "SerrePositivity/InfinityCategories/Kan/DoubleCylinderPaths.lean",
+    "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+    "SerrePositivity/InfinityCategories/Kan/Pointed/DependentProductPointedSimplex.lean",
+    "SerrePositivity/InfinityCategories/Kan/Pointed/FunctionComplexPointedSimplex.lean",
+    "SerrePositivity/InfinityCategories/Kan/SequentialMittagLeffler.lean",
+    "SerrePositivity/InfinityCategories/Kan/SquareBoundaryComposition.lean",
+    "SerrePositivity/InfinityCategories/Kan/TowerLimOne.lean",
+    "SerrePositivity/InfinityCategories/Simplicial/NecklacePreferredForm.lean",
+    "SerrePositivity/InfinityCategories/Simplicial/NecklaceSimplicialSet.lean",
+    "SerrePositivity/InfinityCategories/Simplicial/SimplexIntervalOrder.lean",
+    "SerrePositivity/InfinityCategories/Simplicial/SimplexSubsetOrder.lean",
+    "SerrePositivity/InfinityCategories/Stable/Exact/CofiberFamilyRightHom.lean",
+    "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactDiagrams.lean",
+    "SerrePositivity/InfinityCategories/Stable/Lax/IdentityLaxVerdier.lean",
+    "SerrePositivity/InfinityCategories/Stable/Lax/LaxInclusions.lean",
+    "SerrePositivity/InfinityCategories/Stable/Quasicategory/CurryIntervalNaturality.lean",
+    "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+    "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+    "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+    "SerrePositivity/InfinityCategories/Stable/Verdier/Fractions/VerdierDiagramCategory.lean",
+    "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+    "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+    "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+    "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+    "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+    "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+    "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+    "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+    "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+    "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+    "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+    "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+    "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean"
+  ],
+  "skipped": [
+    [
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      58,
+      14,
+      "SerrePositivity.KST.Spectra.KanPiIsomorphism.piZero_bijective_at",
+      "piZero_bijective_at (p.app _ e)).injecti"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      123,
+      23,
+      "SerrePositivity.KST.Spectra.KanPiIsomorphism.piZero_bijective_at",
+      "piZero_bijective_at (fiberPoint p e)).in"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      125,
+      12,
+      "SerrePositivity.KST.Spectra.KanPiIsomorphism.piZero_bijective_at",
+      "piZero_bijective_at (p.app _ e)).surject"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      26,
+      66,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion).edge ∧\n      squareTopEdge ≫ "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      27,
+      81,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right)).edge ∧\n      squareLeftEdge ≫ Q "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      28,
+      80,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left)).edge ∧\n      squareRightEdge ≫ Q "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      29,
+      65,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection).edge := by\n  apply exists_st"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      30,
+      57,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion).toTruncated\n    (stableArrow "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      31,
+      37,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right)).toTruncated\n    (stableArrow (to"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      32,
+      35,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left)).toTruncated (stableArrow d.projec"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      32,
+      69,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection).toTruncated\n  have hi := SSe"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      34,
+      53,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion d.projection).toTruncated\n  ha"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      34,
+      65,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection).toTruncated\n  have hz := SSe"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      37,
+      24,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left) (fromZeroCategory d.right)).toTrun"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      37,
+      50,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right)).toTruncated\n  let F : ExactMap d"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      21,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left d.right := ⟨d.inclusion.hom ≫ d.pro"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      28,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right := ⟨d.inclusion.hom ≫ d.projection"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      40,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion.hom ≫ d.projection.hom, inferI"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      50,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom ≫ d.projection.hom, inferInstance⟩\n "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      58,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection.hom, inferInstance⟩\n  let G :"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      38,
+      69,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom, inferInstance⟩\n  let G : ExactMap d"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      39,
+      21,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left d.right :=\n    ⟨(toZeroCategory d.l"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      39,
+      28,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right :=\n    ⟨(toZeroCategory d.left).ho"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      40,
+      23,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left).hom ≫ (fromZeroCategory d.right).h"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      40,
+      29,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom ≫ (fromZeroCategory d.right).hom, in"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      40,
+      55,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right).hom, inferInstance⟩\n  have he : F"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      40,
+      62,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom, inferInstance⟩\n  have he : FunctorI"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      41,
+      25,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom G.hom := verdierZeroCompositeIso d\n "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      41,
+      31,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom := verdierZeroCompositeIso d\n  have "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      50,
+      48,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left := by\n    have h := squareBottomEdg"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      52,
+      53,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion).src_eq] at h\n    exact h.symm"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      54,
+      48,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.middle",
+      "middle := by\n    have h := squareBottomE"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      56,
+      53,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion).tgt_eq] at h\n    exact h.symm"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      58,
+      48,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right := by\n    have h := squareRightEdg"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      60,
+      57,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection).tgt_eq] at h\n    exact h.sym"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      64,
+      73,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left)).tgt_eq] at h\n    exact h.symm\n  e"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      77,
+      19,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.toVerdierSequence",
+      "toVerdierSequence = d := rfl\n\nlemma Verd"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      80,
+      36,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.square",
+      "square =\n      SSet.yonedaEquiv.symm (st"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      81,
+      59,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.left",
+      "left)).edge :=\n  (Classical.choose_spec "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      85,
+      35,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.square",
+      "square =\n      SSet.yonedaEquiv.symm (st"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      86,
+      61,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.right",
+      "right)).edge :=\n  (Classical.choose_spec"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      53,
+      39,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.embedding",
+      "embedding\n\n/-- 元の scaffold 上への source 脚の"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      57,
+      28,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan",
+      "toStrictTransportComparisonSpan.coherent"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      57,
+      60,
+      "SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentSource",
+      "coherentSource =\n      (SSet.uliftFuncto"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      64,
+      28,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan",
+      "toStrictTransportComparisonSpan.coherent"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportRestriction.lean",
+      64,
+      60,
+      "SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentTarget",
+      "coherentTarget =\n      (SSet.uliftFuncto"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      59,
+      76,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.embedding",
+      "embedding)\n\n/-- 元の係数値の底を、宇宙と始域を固定して表示する。"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      69,
+      33,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan",
+      "toStrictTransportComparisonSpan.coherent"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      69,
+      65,
+      "SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentBase",
+      "coherentBase =\n      coefficientBase (p "
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      79,
+      8,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan",
+      "toStrictTransportComparisonSpan.coherent"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      79,
+      40,
+      "SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentBase",
+      "coherentBase ⟶\n        vertexFiber (left"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      84,
+      22,
+      "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan",
+      "toStrictTransportComparisonSpan.coherent"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientFiber.lean",
+      84,
+      54,
+      "SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentBase",
+      "coherentBase)\n      (s.coefficientEmbedd"
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeVerdierPresentation.lean",
+      119,
+      44,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.toVerdierSequence",
+      "toVerdierSequence = d ∧\n      squareBott"
+    ]
+  ],
+  "helper_change": "An alias of a partial compiler implementation must be unsafe, just as a reference to that implementation requires."
+}

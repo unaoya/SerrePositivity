@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.FundamentalNerveHomotopy
 public import Mathlib.CategoryTheory.Groupoid.FreeGroupoidOfCategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet
 open SerrePositivity.InfinityCategories
 
@@ -22,18 +27,18 @@ abbrev simplicialFundamentalGroupoid (A : SSet.{u}) := FreeGroupoid (hoFunctor.o
 
 /-- 元の単体集合からその辺と二単体の基本亜群の nerve への標準射。 -/
 def fundamentalGroupoidNerveUnit (A : SSet.{u}) :
-    A ⟶ nerve (simplicialFundamentalGroupoid A) :=
-  fundamentalNerveTranspose (FreeGroupoid.of (hoFunctor.obj A))
+    A ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose (FreeGroupoid.of (hoFunctor.obj A))
 
 /-- Kan 値写像から、元の辺と二単体の基本亜群上の比較関手を作る。 -/
 def fundamentalGroupoidComparison {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B) :
-    simplicialFundamentalGroupoid A ⥤ hoFunctor.obj B := by
+    _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A ⥤ hoFunctor.obj B := by
   letI : Groupoid (hoFunctor.obj B) := Groupoid.ofIsGroupoid
   exact FreeGroupoid.lift (hoFunctor.map i).toFunctor
 
 /-- 比較関手は元のホモトピー圏の射を厳密に回収する。 -/
 lemma fundamentalGroupoidComparison_fac {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B) :
-    FreeGroupoid.of (hoFunctor.obj A) ⋙ fundamentalGroupoidComparison i =
+    FreeGroupoid.of (hoFunctor.obj A) ⋙ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i =
       (hoFunctor.map i).toFunctor := by
   let : Groupoid (hoFunctor.obj B) := Groupoid.ofIsGroupoid
   exact FreeGroupoid.lift_spec (hoFunctor.map i).toFunctor
@@ -41,47 +46,80 @@ lemma fundamentalGroupoidComparison_fac {A B : SSet.{u}} [KanComplex B] (i : A �
 /-- 基本亜群の nerve への標準射は、任意の anodyne 射に沿って延長できる。 -/
 lemma exists_fundamentalGroupoidExtension {A B : SSet.{u}} (i : A ⟶ B)
     (hi : anodyneExtensions i) :
-    ∃ f : B ⟶ nerve (simplicialFundamentalGroupoid A),
-      i ≫ f = fundamentalGroupoidNerveUnit A := by
-  have : HasLiftingProperty i (terminal.from (nerve (simplicialFundamentalGroupoid A))) :=
+    ∃ f : B ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A),
+      i ≫ f = _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit A := by
+  have : HasLiftingProperty i (terminal.from (nerve (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A))) :=
     hi _ (by rw [← HomotopicalAlgebra.fibration_iff]; infer_instance)
-  let sq : CommSq (fundamentalGroupoidNerveUnit A) i
-      (terminal.from (nerve (simplicialFundamentalGroupoid A))) (terminal.from B) :=
+  let sq : CommSq (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit A) i
+      (terminal.from (nerve (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A))) (terminal.from B) :=
     ⟨by simp⟩
   exact ⟨sq.lift, sq.fac_left⟩
 
 /-- 元の基本亜群の nerve 値写像の anodyne 延長を一つ選ぶ。 -/
 def fundamentalGroupoidExtension {A B : SSet.{u}} (i : A ⟶ B)
-    (hi : anodyneExtensions i) : B ⟶ nerve (simplicialFundamentalGroupoid A) :=
-  Classical.choose (exists_fundamentalGroupoidExtension i hi)
+    (hi : anodyneExtensions i) : B ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A) :=
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kan.exists_fundamentalGroupoidExtension i hi)
 
 /-- 選んだ延長は元の基本亜群への標準射を厳密に回収する。 -/
 lemma fundamentalGroupoidExtension_fac {A B : SSet.{u}} (i : A ⟶ B)
     (hi : anodyneExtensions i) :
-    i ≫ fundamentalGroupoidExtension i hi = fundamentalGroupoidNerveUnit A :=
-  Classical.choose_spec (exists_fundamentalGroupoidExtension i hi)
+    i ≫ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension i hi = _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit A :=
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kan.exists_fundamentalGroupoidExtension i hi)
 
 /-- anodyne 延長の転置を戻して、元の基本亜群への逆向き関手を作る。 -/
 def fundamentalGroupoidInverse {A B : SSet.{u}} (i : A ⟶ B)
-    (hi : anodyneExtensions i) : hoFunctor.obj B ⥤ simplicialFundamentalGroupoid A :=
-  fundamentalNerveUntranspose (fundamentalGroupoidExtension i hi)
+    (hi : anodyneExtensions i) : hoFunctor.obj B ⥤ _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A :=
+  _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension i hi)
 
 /-- 逆向き関手は元のホモトピー圏上で標準の亜群化を厳密に回収する。 -/
 lemma fundamentalGroupoidInverse_pre {A B : SSet.{u}} (i : A ⟶ B)
     (hi : anodyneExtensions i) :
-    (hoFunctor.map i).toFunctor ⋙ fundamentalGroupoidInverse i hi =
+    (hoFunctor.map i).toFunctor ⋙ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse i hi =
       FreeGroupoid.of (hoFunctor.obj A) := by
-  exact (fundamentalNerveUntranspose_pre i (fundamentalGroupoidExtension i hi)).symm.trans
-    ((congrArg fundamentalNerveUntranspose (fundamentalGroupoidExtension_fac i hi)).trans
-      (fundamentalNerveUntranspose_transpose (FreeGroupoid.of (hoFunctor.obj A))))
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_pre i (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension i hi)).symm.trans
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension_fac i hi)).trans
+      (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_transpose (FreeGroupoid.of (hoFunctor.obj A))))
 
 /-- Kan 値 anodyne 比較と逆向き関手の合成は、元の基本亜群上で恒等関手。 -/
 lemma fundamentalGroupoidComparison_leftInverse {A B : SSet.{u}} [KanComplex B]
     (i : A ⟶ B) (hi : anodyneExtensions i) :
-    fundamentalGroupoidComparison i ⋙ fundamentalGroupoidInverse i hi =
-      𝟭 (simplicialFundamentalGroupoid A) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i ⋙ _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse i hi =
+      𝟭 (_root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A) := by
   apply FreeGroupoid.lift_unique'
-  rw [← CategoryTheory.Functor.assoc, fundamentalGroupoidComparison_fac,
-    fundamentalGroupoidInverse_pre, CategoryTheory.Functor.comp_id]
+  rw [← CategoryTheory.Functor.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac,
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse_pre, CategoryTheory.Functor.comp_id]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_fundamentalGroupoidExtension := _root_.SerrePositivity.InfinityCategories.Kan.exists_fundamentalGroupoidExtension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fac := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_leftInverse := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_leftInverse
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension_fac := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension_fac
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse_pre := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidNerveUnit := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid := _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid

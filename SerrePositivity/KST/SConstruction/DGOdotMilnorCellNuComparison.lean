@@ -29,7 +29,7 @@ local instance : IsDGPretriangulated R (Q) := resolvedDGQuotient_isDGPretriangul
 /-- 概要：同じ実平坦核包含の固定 ν 完全射。
 方針：元の厳密 S 辺を同じ固定界面に渡す。
 規約：元の核包含を保持する。使われ方：零化面の左辺の型付き回収。 -/
-abbrev dgOdotMilnorFlatKernelExactMap : ExactMap
+abbrev dgOdotMilnorFlatKernelExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d))
     (dgKInputStableValue R (dgOdotMilnorCellInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorFlatKernelInputMap R d)

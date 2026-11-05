@@ -19,8 +19,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 関手圏の角の商像の零性から、復元した元の各角の核所属が従う。 -/
-lemma cofiberFamilyUntranspose_corner_kernel {A : SSet.{u}} {B C : StableCategory.{u}}
-    (q : ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
+lemma cofiberFamilyUntranspose_corner_kernel {A : SSet.{u}} {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
     (a : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌)
     (hz : IsZeroVertex (((ihom A).map q.hom).app (Opposite.op ⦋0⦌)
       (t.square.app (Opposite.op ⦋0⦌) a))) (v : A _⦋0⦌) :
@@ -39,8 +39,8 @@ lemma cofiberFamilyUntranspose_corner_kernel {A : SSet.{u}} {B C : StableCategor
   exact (congrArg (fun x => IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x)) he).mpr hp
 
 /-- 両端が族として核に入る cofiber 列を、元の全相対四角形へ持ち上げる。 -/
-def cofiberFamilyKernelRestriction {A : SSet.{u}} {B C : StableCategory.{u}}
-    (q : ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
+def cofiberFamilyKernelRestriction {A : SSet.{u}} {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
     (h₀ : IsZeroVertex (((ihom A).map q.hom).app (Opposite.op ⦋0⦌)
       (squareVertex t.square 0 0)))
     (h₁ : IsZeroVertex (((ihom A).map q.hom).app (Opposite.op ⦋0⦌)
@@ -51,8 +51,8 @@ def cofiberFamilyKernelRestriction {A : SSet.{u}} {B C : StableCategory.{u}}
       cofiberFamilyUntranspose_corner_kernel q t ht _ h₁ v⟩)
 
 /-- 相対制限の包含は、元の全 cofiber 図式の族を厳密に回収する。 -/
-lemma cofiberFamilyKernelRestriction_ι {A : SSet.{u}} {B C : StableCategory.{u}}
-    (q : ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
+lemma cofiberFamilyKernelRestriction_ι {A : SSet.{u}} {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (t : ZeroTriangle ((ihom A).obj B.obj)) (ht : IsCofiberSequence t)
     (h₀ : IsZeroVertex (((ihom A).map q.hom).app (Opposite.op ⦋0⦌)
       (squareVertex t.square 0 0)))
     (h₁ : IsZeroVertex (((ihom A).map q.hom).app (Opposite.op ⦋0⦌)

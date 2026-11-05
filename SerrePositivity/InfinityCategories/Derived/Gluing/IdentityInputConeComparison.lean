@@ -40,7 +40,7 @@ def dgGluingIdentityInputConeIso : FunctorIso
   let eL := identityLaxArrowBaseEquivalence eB
   let v := dgKNativePerfectValueEquivalence R C
   let f := dgNerve.map (dgHomGluingConeFunctor R C C C I I)
-  let δ₀ := CofiberFamily.cofiber (dgNerve R C)
+  let δ₀ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R C)
     (F2.laxPullbackArrow (𝟙 (dgNerve R C)) (𝟙 (dgNerve R C)))
   let δ₁ := (exactLaxDifference
     (𝟙 (dgKInputStableValue R (dgOdotMilnorIdentityBaseInput R d)))

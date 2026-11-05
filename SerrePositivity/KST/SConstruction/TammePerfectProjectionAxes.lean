@@ -15,7 +15,7 @@ open CategoryTheory Limits SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open F2.Idempotent
 open scoped Simplicial
-variable {C D B : StableCategory.{u}} (p : ExactMap C B) (q : ExactMap D B)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
   (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
   (F : perfectStableInfinity.{u} ⟶ Sp.{u})
 
@@ -64,7 +64,7 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromC :
         (perfectLaxCategory_isIdempotentComplete p q hC hD) hC = 𝟙 _ := by
     rw [← perfectInvariantSpectrumHom_comp]
     have he : (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxFst p q = 𝟙 C :=
-      ExactMap.ext (LaxInclusion.fromC_fst p q)
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (LaxInclusion.fromC_fst p q)
     rw [he, perfectInvariantSpectrumHom_id]
   have hd : perfectInvariantSpectrumHom F (LaxInclusion.exactFromC p q) hC
       (perfectLaxCategory_isIdempotentComplete p q hC hD) ≫
@@ -74,7 +74,7 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromC :
     have hz := hF.perfectSpectrum_zero_of_zero_values f hC hD (by
       intro c
       change IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
-      rw [LaxInclusion.fromC_snd, LaxInclusion.zeroD, zeroDiagram_const_vertex]
+      rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
       exact (chosenZeroVertex D.obj).isZero)
     change perfectInvariantSpectrumHom F
       (show C ⟶ D from (LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ laxSnd p q)
@@ -102,7 +102,7 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromD :
     have hz := hF.perfectSpectrum_zero_of_zero_values f hD hC (by
       intro d
       change IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
-      rw [LaxInclusion.fromD_fst, LaxInclusion.zeroC, zeroDiagram_const_vertex]
+      rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
       exact (chosenZeroVertex C.obj).isZero)
     change perfectInvariantSpectrumHom F
       (show D ⟶ C from (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxFst p q)
@@ -115,7 +115,7 @@ lemma IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromD :
         (perfectLaxCategory_isIdempotentComplete p q hC hD) hD = 𝟙 _ := by
     rw [← perfectInvariantSpectrumHom_comp]
     have he : (LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ laxSnd p q = 𝟙 D :=
-      ExactMap.ext (LaxInclusion.fromD_snd p q)
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (LaxInclusion.fromD_snd p q)
     rw [he, perfectInvariantSpectrumHom_id]
   apply Binary.ho_hom_ext
   · erw [Category.assoc, tammePerfectProjectionHom_fst, hc, Binary.ho_inr_fst]

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -50,9 +52,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {K X : SSet.{u}} {x y : X _⦋0⦌}
   (f : K ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (h₀ : f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = SSet.const x)
@@ -65,11 +70,11 @@ def spanArrowFamilyMapping : K ⟶ intervalMappingSpace x y :=
     (by rw [← curry_evaluateFunctorAt_interval, curry_uncurry]; exact h₁)
 
 /-- 区間 Hom 表示を包含しても、元の全辺族は変わらない。 -/
-lemma spanArrowFamilyMapping_inclusion : spanArrowFamilyMapping f h₀ h₁ ≫
+lemma spanArrowFamilyMapping_inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁ ≫
     vertexFiberι ((pre (boundary 1).ι).app X)
       (functorVertex (intervalMappingBoundary x y)) = f := by
   apply uncurry_injective
-  change intervalMappingUncurry (spanArrowFamilyMapping f h₀ h₁) = _
+  change intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping f h₀ h₁) = _
   exact intervalMappingUncurry_curryOfEndpoints _ _ _
 
 /-- 定値な実辺の族の始点は、元の同じ始点に厳密に定値。 -/
@@ -93,4 +98,28 @@ lemma spanConstantArrowFamily_target {Y P : SSet.{u}} {a b : Y _⦋0⦌}
       SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) := by decide
   rw [hp, ← SSet.yonedaEquiv_comp, edgeSimplex_target, Equiv.apply_symm_apply]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanArrowFamilyMapping := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanArrowFamilyMapping_inclusion := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantArrowFamily_source := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantArrowFamily_target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantArrowFamily_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanArrowFamilyMapping._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanArrowFamilyMapping._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanArrowFamilyMapping._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping._proof_3

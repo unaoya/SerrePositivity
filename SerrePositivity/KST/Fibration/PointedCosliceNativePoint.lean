@@ -24,7 +24,7 @@ def nativeCosliceIdentityPoint :
 
 /-- 元の native 比較の恒等点像は、同じ pointedMap による指定点そのもの。 -/
 theorem nativeCosliceIdentityPoint_eq_comparison :
-    smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b))).diagram b
       ((vertexFiberMap (sliceUnderProjection (yonedaEquiv.symm b))
         (smallLeftUnstraighteningProjection
@@ -36,15 +36,15 @@ theorem nativeCosliceIdentityPoint_eq_comparison :
 
 /-- 指定復元点の射は、元の native 恒等点と同じ分類成分の逆射で厳密に計算できる。 -/
 theorem pointedCosliceReconstructionPoint_native_pointHom :
-    cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (nativeCosliceIdentityPoint b) ≫
       functorHomEvaluate (leftStraighteningInfinityDiagram_representationIso
         (sliceUnderProjection (yonedaEquiv.symm b))
         (nativeLeftTransportRepresentation (sliceUnderProjection (yonedaEquiv.symm b)))).inv
           (ULift.up b) =
-      cosliceFiberPointHom (smallUnstraighteningPointedImage
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
         (leftStraighteningInfinityDiagram (sliceUnderProjection (yonedaEquiv.symm b))) b
-        (pointedCosliceReconstructionPoint b)) := by
-  have he := pointedCosliceReconstructionPoint_pointHom b
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint b)) := by
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint_pointHom b
   rw [nativeCosliceIdentityPoint_eq_comparison b] at he
   exact he
 

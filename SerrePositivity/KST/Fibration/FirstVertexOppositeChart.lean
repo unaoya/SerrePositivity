@@ -43,7 +43,7 @@ local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B
 def firstVertexOppositeChart (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningInfinityMap_firstVertexOppositeIso B)
-      (kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c))
     (congrArg HomotopyCategory.mk (firstVertexEdgewiseRestriction_source_vertex p c))
     (congrArg HomotopyCategory.mk (firstVertexOppositePre_target_vertex p c))
 
@@ -51,16 +51,16 @@ def firstVertexOppositeChart (c : TransportSimplexCategory B) :=
 theorem firstVertexOppositeChart_heq_doubleMap (c : TransportSimplexCategory B) :
     HEq (firstVertexOppositeChart p c)
       (VertexIso.map (leftStraighteningInfinityMap_firstVertexOppositeIso B)
-        (kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c)) := by
   unfold firstVertexOppositeChart F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
 
 /-- 元の指定成分全体は、元の制限成分と同じ pullback strict 切断の反転成分の合成。 -/
 theorem firstVertexOppositeChart_factor (c : TransportSimplexCategory B) :
     firstVertexOppositeChart p c = firstVertexRestrictionChart (leftFibrationObjectOf p) c ≪≫
-      strictTransportOppositeComponentIso
+      _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
         (pullback.snd p (transportSimplexFirstVertexMap B)) c := by
-  let T := kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c
+  let T := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (firstVertexComparisonObject p) c
   have h : edgewiseEnrichedInfinityMap (LeftFibrationObject B) ≫
       (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B) ≫
         leftStraighteningCoherentMap (TransportSimplexCategory B)) =
@@ -87,18 +87,18 @@ theorem firstVertexOppositeChart_factor (c : TransportSimplexCategory B) :
 theorem firstVertexOppositeChart_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (firstVertexOppositeChart p c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (kanObjectOpFunctor.obj ((leftStrictTransportFunctor
         (pullback.snd p (transportSimplexFirstVertexMap B))).obj c))).symm
           (SSet.opObjEquiv.symm ((firstVertexStrictSectionMap p c).app (Opposite.op ⦋0⦌) v))) := by
   have hp := firstVertexRestrictionChart_pointHom_strictSection (leftFibrationObjectOf p) c v
   have he := congrArg (fun m => m ≫
-    (strictTransportOppositeComponentIso
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
       (pullback.snd p (transportSimplexFirstVertexMap B)) c).hom) hp
   simp only [Category.assoc] at he
   have ho := strictTransportOppositeComponentIso_pointHom

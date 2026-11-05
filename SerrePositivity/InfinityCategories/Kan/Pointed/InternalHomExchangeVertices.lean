@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit
 
 /-!
@@ -14,6 +16,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
@@ -21,25 +26,31 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 
 /-- 単位からの射に内部 Hom の交換を施すと、元の射の転置を表す。 -/
 lemma curry'_hom {A K Y : C} (f : A ⟶ (ihom K).obj Y) :
-    curry' f ≫ (iso A K Y).hom =
+    curry' f ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom =
       curry' (curry ((β_ A K).hom ≫ uncurry f)) := by
   apply uncurry_injective
   apply uncurry_injective
-  rw [uncurry_natural_left, uncurry_natural_left, uncurry_uncurry_hom,
-    HomTensorStrength.exchange_natural_right_assoc]
+  rw [uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have he : A ◁ curry' f ≫ (ihom.ev A).app ((ihom K).obj Y) =
       (ρ_ A).hom ≫ f := by
     change uncurry (curry' f) = _
     rw [curry', uncurry_curry]
   rw [← whiskerLeft_comp_assoc, he, whiskerLeft_comp, Category.assoc]
   rw [curry', uncurry_curry, uncurry_natural_left, uncurry_curry]
-  have hu : (HomTensorStrength.exchange A K (𝟙_ C)).hom ≫ K ◁ (ρ_ A).hom =
+  have hu : (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K (𝟙_ C)).hom ≫ K ◁ (ρ_ A).hom =
       A ◁ (ρ_ K).hom ≫ (β_ A K).hom := by
-    simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
       Functor.mapIso_hom, tensorRight, Functor.flip, curriedTensor]
     monoidal
   rw [← Category.assoc, ← Category.assoc, hu, uncurry_eq]
   simp only [Category.assoc]
 
 end
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry'_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom

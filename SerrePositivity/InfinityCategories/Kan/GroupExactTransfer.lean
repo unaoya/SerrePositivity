@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Group.Equiv.Basic
 
 /-!
@@ -14,6 +16,9 @@ public import Mathlib.Algebra.Group.Equiv.Basic
 universe u
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：群同型で可換に対応する二つの射の完全性を移す。
 方針：核の元を同型で送り、像の原像を逆同型で戻す。
@@ -37,4 +42,10 @@ theorem group_exact_of_equivalences {A B C A' B' C' : Type u}
     rw [map_one, hG, ← ha, hF]
     exact (hex (f' (eA a))).2 ⟨eA a, rfl⟩
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.group_exact_of_equivalences := _root_.SerrePositivity.InfinityCategories.Kan.group_exact_of_equivalences

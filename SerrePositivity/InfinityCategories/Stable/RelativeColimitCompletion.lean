@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-! # 普遍余錐の相対的な補完
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Stable
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：図式の族の普遍余錐を、部分上の既存の選択を固定して延長できる。
 方針：図式の族上に普遍余錐の射影を引き戻し、単射に対する持ち上げを使う。
@@ -47,4 +52,13 @@ lemma colimitCoconeFamily_relative_lifting {A K C : SSet.{u}} [Quasicategory C]
     HasLiftingProperty j (pullback.snd (colimitCoconeProjection K C) d) :=
   (colimitCoconeProjection_pullback_trivialKanFibration d hd).mem j inferInstance
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Stable
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting := _root_.SerrePositivity.InfinityCategories.Stable.colimitCoconeFamily_relative_lifting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily := _root_.SerrePositivity.InfinityCategories.Stable.exists_relative_colimitCoconeFamily

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Group.Pi.Basic
 public import Mathlib.Algebra.Group.Hom.Basic
 
@@ -14,6 +16,10 @@ public import Mathlib.Algebra.Group.Hom.Basic
 universe u
 
 namespace SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.KST.Spectra.TowerLimOne
+namespace SerrePositivity.InfinityCategories.Kan.TowerLimOne
+open SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra.TowerLimOne
 
 noncomputable section
 
@@ -23,41 +29,41 @@ variable (G : ℕ → Type u) [∀ n, Group (G n)] (q : ∀ n, G (n + 1) →* G 
 def twist (a x : ∀ n, G n) (n : ℕ) : G n := a n * x n * (q n (a (n + 1)))⁻¹
 
 /-- 単位族の twisted 作用は恒等。 -/
-lemma twist_one (x : ∀ n, G n) : twist G q 1 x = x := by
+lemma twist_one (x : ∀ n, G n) : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q 1 x = x := by
   funext n
-  simp [twist]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist]
 
 /-- twisted 作用は積の群の左作用。 -/
 lemma twist_mul (a b x : ∀ n, G n) :
-    twist G q (a * b) x = twist G q a (twist G q b x) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q (a * b) x = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q a (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q b x) := by
   funext n
-  simp only [twist, Pi.mul_apply, map_mul, mul_inv_rev, mul_assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist, Pi.mul_apply, map_mul, mul_inv_rev, mul_assoc]
 
 /-- lim¹ の軌道関係。逆元と合成により同値関係になる。 -/
 def orbitSetoid : Setoid (∀ n, G n) where
-  r x y := ∃ a, twist G q a x = y
+  r x y := ∃ a, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q a x = y
   iseqv := {
-    refl x := ⟨1, twist_one G q x⟩
+    refl x := ⟨1, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_one G q x⟩
     symm := by
       rintro x y ⟨a, ha⟩
       refine ⟨a⁻¹, ?_⟩
-      rw [← ha, ← twist_mul, inv_mul_cancel, twist_one]
+      rw [← ha, ← _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_mul, inv_mul_cancel, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_one]
     trans := by
       rintro x y z ⟨a, ha⟩ ⟨b, hb⟩
-      exact ⟨b * a, (twist_mul G q b a x).trans
-        ((congrArg (twist G q b) ha).trans hb)⟩ }
+      exact ⟨b * a, (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_mul G q b a x).trans
+        ((congrArg (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q b) ha).trans hb)⟩ }
 
 /-- 非可換な群の塔の第一導来逆極限の基点付き集合。 -/
-def limOne : Type u := Quotient (orbitSetoid G q)
+def limOne : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid G q)
 
 /-- 積の群の族を lim¹ の軌道へ送る標準射。 -/
-def mk (x : ∀ n, G n) : limOne G q := Quotient.mk _ x
+def mk (x : ∀ n, G n) : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne G q := Quotient.mk _ x
 
 /-- 単位族の軌道が lim¹ の標準基点。 -/
-def point : limOne G q := mk G q 1
+def point : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne G q := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk G q 1
 
 /-- 同じ twisted 軌道の族は lim¹ で同じ元。 -/
-lemma mk_twist (a x : ∀ n, G n) : mk G q x = mk G q (twist G q a x) :=
+lemma mk_twist (a x : ∀ n, G n) : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk G q x = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk G q (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q a x) :=
   Quotient.sound ⟨a, rfl⟩
 
 /-- 全射な遷移の下で、指定した族を単位軌道へ送る作用の族を逐次選ぶ。 -/
@@ -67,29 +73,98 @@ def nullifier (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) : ∀ n, 
 
 /-- 選んだ次段の作用の射影は、前段の方程式を満たす。 -/
 lemma nullifier_projection (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) (n : ℕ) :
-    q n (nullifier G q hq x (n + 1)) = nullifier G q hq x n * x n :=
-  Classical.choose_spec (hq n (nullifier G q hq x n * x n))
+    q n (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier G q hq x (n + 1)) = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier G q hq x n * x n :=
+  Classical.choose_spec (hq n (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier G q hq x n * x n))
 
 /-- 全射な遷移では、任意の族を単位族へ送る twisted 作用がある。 -/
 lemma twist_nullifier (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) :
-    twist G q (nullifier G q hq x) x = 1 := by
+    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist G q (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier G q hq x) x = 1 := by
   funext n
-  rw [twist, nullifier_projection, mul_inv_cancel]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier_projection, mul_inv_cancel]
   rfl
 
 /-- 全射な遷移の塔の lim¹ は標準基点だけからなる。 -/
 lemma mk_eq_point (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) :
-    mk G q x = point G q :=
-  Quotient.sound ⟨nullifier G q hq x, twist_nullifier G q hq x⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk G q x = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point G q :=
+  Quotient.sound ⟨_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier G q hq x, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_nullifier G q hq x⟩
 
 /-- 全射な遷移の塔の非可換 lim¹ の消滅。 -/
 theorem subsingleton_of_surjective (hq : ∀ n, Function.Surjective (q n)) :
-    Subsingleton (limOne G q) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne G q) := by
   constructor
   intro a b
   induction a using Quotient.inductionOn with | h x => ?_
   induction b using Quotient.inductionOn with | h y => ?_
-  exact (mk_eq_point G q hq x).trans (mk_eq_point G q hq y).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_eq_point G q hq x).trans (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_eq_point G q hq y).symm
 
 end
-end SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.InfinityCategories.Kan.TowerLimOne
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.limOne := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_eq_point := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_eq_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_twist := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_twist
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier_projection := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.orbitSetoid := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.point := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.subsingleton_of_surjective := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_surjective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist_mul := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_mul
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist_nullifier := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_nullifier
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist_one := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_one
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._f := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.orbitSetoid._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.orbitSetoid._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.orbitSetoid._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.orbitSetoid._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist.eq_1

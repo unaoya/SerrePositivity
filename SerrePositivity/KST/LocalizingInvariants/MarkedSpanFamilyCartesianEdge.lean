@@ -21,13 +21,13 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma isCartesianEdge_markedSpanFamilyProjection_of_pullback
     {X : SSet.{u}} [Quasicategory X] (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
-    (e : (markedSpanFamily X W x) _⦋1⦌)
+    (e : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) _⦋1⦌)
     (he : IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
       vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
         (pre horn₂₀.ι₀₂).app X))) :
-    IsCartesianEdge (markedSpanFamilyProjection X W x) e := by
+    IsCartesianEdge (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) e := by
   intro m σ β hσ sq
-  let r : markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
+  let r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
     vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
   let σ' : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶
       (ihom (horn 2 0 : SSet.{u})).obj X := σ ≫ r

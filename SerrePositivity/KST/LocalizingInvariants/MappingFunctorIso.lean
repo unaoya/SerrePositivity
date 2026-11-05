@@ -35,7 +35,7 @@ lemma functorMap_bijective_of_natIso {C : Type*} {D : Type*} [Category C] [Categ
 
 lemma constantFunctorPostMap_bijective_iff {X Y : SSet.{u}} (F : X ⟶ Y)
     (A : SSet.{u}) (x z : X _⦋0⦌) :
-    Function.Bijective (constantFunctorPostMap F A x z) ↔
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x z) ↔
       Function.Bijective (fun α : ConstantFunctorHom A X x z =>
         (hoFunctor.map ((ihom A).map F)).toFunctor.map α) :=
   ((constantFunctorCompIso A x F).homCongr
@@ -44,10 +44,10 @@ lemma constantFunctorPostMap_bijective_iff {X Y : SSet.{u}} (F : X ⟶ Y)
 lemma constantFunctorPostMap_bijective_of_interval {X Y A : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (x z : X _⦋0⦌)
     (h : IsSimplicialHomotopyEquivalence (intervalFunctorMap F x z)) :
-    Function.Bijective (constantFunctorPostMap F A x z) := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x z) := by
   apply intervalFamilyComparison_bijective (intervalFunctorMap F x z) h
   intro f
-  exact (intervalFunctorMap_familyHom_post f F).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post f F).symm
 
 lemma pinchedHomMap_equivalence_of_functorIso {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F F' : X ⟶ Y} (e : FunctorIso F F')

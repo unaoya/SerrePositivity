@@ -1,0 +1,13 @@
+--- a/SerrePositivity/KST/SConstruction/LoopOfCylinder.lean
++++ b/SerrePositivity/KST/SConstruction/LoopOfCylinder.lean
+@@ -46,8 +46,8 @@
+ def loopOfCylinder {A : SSet.{u}} (B : PointedSimplicialSet.{u})
+     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right)
+     (h₀ : SSet.ι₀ ≫ h = toUnit A ≫ B.hom)
+-    (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) : A ⟶ (Spectra.loopSpace B).right :=
+-  Spectra.PointedMapping.paramCurry PointedSimplicialSet.circle.{u} B
++    (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) : A ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right :=
++  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry PointedSimplicialSet.circle.{u} B
+     (circleCylinderDesc B h h₀ h₁) (circleCylinderDesc_point B h h₀ h₁)
+
+ /-- loop 射の通常の uncurry は元の円への降下そのもの。 -/

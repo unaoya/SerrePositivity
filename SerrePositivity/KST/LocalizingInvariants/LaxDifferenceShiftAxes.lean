@@ -18,8 +18,8 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u})
-  {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma valueMap_fromC_difference :
     SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
@@ -33,7 +33,7 @@ lemma valueMap_fromC_difference :
   let g : C ⟶ E := p ≫ SuspensionExact.exactMap E
   have e : FunctorIso f.hom g.hom := by
     change FunctorIso (LaxInclusion.fromC p q ≫ laxDifference p q)
-      (p.hom ≫ SuspensionExact.map E.obj)
+      (p.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map E.obj)
     exact fromC_differenceIso p q
   have h := valueMap_hom_eq_of_functorIso Φ e
   change (stableValueFunctor Φ).map f = (stableValueFunctor Φ).map g at h
@@ -57,17 +57,17 @@ variable {Φ} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientProjectionDifferenceHom_cofiber_C :
     SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
-        hΦ.laxQuotientProjectionDifferenceHom p q (exactLaxDifference p q) =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q (exactLaxDifference p q) =
       SpectrumHo.hom (valueMap Φ p) ≫
         SpectrumHo.hom (valueMap Φ (SuspensionExact.exactMap E)) := by
-  rw [laxQuotientProjectionDifferenceHom_C]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_C]
   exact valueMap_fromC_difference Φ p q
 
 lemma laxQuotientProjectionDifferenceHom_cofiber_D :
     SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
-      hΦ.laxQuotientProjectionDifferenceHom p q (exactLaxDifference p q) =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q (exactLaxDifference p q) =
         SpectrumHo.hom (valueMap Φ q) := by
-  rw [laxQuotientProjectionDifferenceHom_D]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_D]
   exact valueMap_fromD_difference Φ p q
 
 end IsLocalizingInvariant
