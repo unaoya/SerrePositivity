@@ -1,6 +1,6 @@
 # 片付けの一覧（整理の完了から段階 II の開始まで）
 
-作成：2026-11-05（調整役）。状態：**下書き**（ユーザーの確認待ち）。
+作成：2026-11-05（調整役）。状態：**§1 は完了（11-05 21:45）**。§2（後回しの片付け L1〜L6）は段階 II の保守として残る。
 方針（11-05、ユーザー）：片付けはいまのレーンにさせ、新しい課題は新しいレーンで始める。片付けが済んだレーンからチャットを閉じ、worktree と枝を消す。
 前提：段 F の F-2（名前空間の付け替え）が main に入った時点で整理（段階 I）は完了とする。
 
@@ -8,9 +8,9 @@
 
 | # | レーン | 内容 | 規模 | 終わりの条件 |
 | --- | --- | --- | --- | --- |
-| C1 | ∞ 整理（段 F） | F-2 の取り込み後の後始末：停止点 4 の指摘の処理、改名表の確定版を `scripts/refactor/targets/` に置く、`InfinityCategories/README.md` の層ごとの中身の表（F1・F1B・F2 は改名しない代わり、IF-F §5） | 小 | README の表が main に入る |
-| C2 | ∞ 整理 | 台帳 R60 の小さな処置：診断・archive の候補のうち、利用者 0 で移動だけで済むもの（ビルドは小さい範囲に限る）。大きな処置（未被覆の監査登録候補 145 本、HA/Simplicial の孤立入口 121 本など）は記録のまま段階 II の保守へ | 小〜中 | 台帳の処置済みの行に印 |
-| C3 | ∞ 整理 | 既存の G8（`tensorSpaceFunctor_setWeightHom` 系）に deprecated を付け、G2 の別版 `tensorSpaceFunctor_setWeightHomNatural` を正本とする（BS が別版へ移った後。BS の確認を取ってから） | 小 | deprecated が付く |
+| C1| C1 | ∞ 整理（段 F） | **完了（05c33bfc0）**。F-2 の取り込み後の後始末：停止点 4 の指摘の処理、改名表の確定版を `scripts/refactor/targets/` に置く、`InfinityCategories/README.md` の層ごとの中身の表（F1・F1B・F2 は改名しない代わり、IF-F §5） | 小 | README の表が main に入る |
+| C2| C2 | ∞ 整理 | **完了（05c33bfc0、診断モジュール 4 本を移動）**。台帳 R60 の小さな処置：診断・archive の候補のうち、利用者 0 で移動だけで済むもの（ビルドは小さい範囲に限る）。大きな処置（未被覆の監査登録候補 145 本、HA/Simplicial の孤立入口 121 本など）は記録のまま段階 II の保守へ | 小〜中 | 台帳の処置済みの行に印 |
+| C3| C3 | ∞ 整理 | **完了（05c33bfc0、旧 G8 の 5 宣言を deprecated）**。既存の G8（`tensorSpaceFunctor_setWeightHom` 系）に deprecated を付け、G2 の別版 `tensorSpaceFunctor_setWeightHomNatural` を正本とする（BS が別版へ移った後。BS の確認を取ってから） | 小 | deprecated が付く |
 | C4 | ∞ 数学（G2） | **G2 は 11-05 に閉じた。段階 II の新しいレーンへ移す**（WIP は `math/g2` b60279c26）。G8 の四角形（篩包含の場合）と G14 を仕上げる（BS の S4 が待つ。文脈を持つ G2 が仕上げる方が速い） | 中 | main に入り、BS が S4 の生成辺を閉じる |
 | C5 | ∞ 数学（G2） | **G2 は閉じた。進捗は枝 `math/g2` の `infinity-g2-progress.md` にある（main には未反映）**。`infinity-g2-progress.md` に、IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）の引き継ぎを書く（新しいレーンへ渡すため） | 小 | 引き継ぎの節がある |
 | C6 | DG | **完了（11-05、worktree・枝とも削除、レーンを閉じた）**。worktree `SerrePositivity-dgw1` と枝 `infra/dg-w3` の削除（main に入っている）。D6〜D8 の調査結果（`targets/dg-survey-d6d7-2026-11-01.md`）は残す | 小 | worktree なし |
