@@ -28,17 +28,17 @@ lemma cubeDeletionNormalComp_embedding {n a b : ℕ} (d : _root_.SerrePositivity
     _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding (cubeDeletionNormalComp d e) =
       _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding e := by
   induction d generalizing b with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; rfl
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => cases e; rfl
+  | drop d ih =>
     funext i
     exact congrArg Fin.succ (congrFun (ih e) i)
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+    | drop e =>
       funext i
       simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
         congrArg Fin.succ (congrFun (ih e) i)
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | keep e =>
       funext i
       refine Fin.cases ?_ (fun i => ?_) i
       · rfl
@@ -59,14 +59,14 @@ lemma serreCubeDeletionNormal_comp (A : Type u) [CommRing A] {n a b : ℕ}
     serreCubeDeletionNormal A (cubeDeletionNormalComp d e) =
       serreCubeDeletionNormal A d ≫ serreCubeDeletionNormal A e := by
   induction d generalizing b with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; exact (Category.id_comp _).symm
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => cases e; exact (Category.id_comp _).symm
+  | drop d ih =>
     change serreCubeDegeneracy A _ 0 ≫ serreCubeDeletionNormal A (cubeDeletionNormalComp d e) = _
     rw [ih e]
     exact (Category.assoc _ _ _).symm
   | @_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep n a d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+    | drop e =>
       change serreCubeDegeneracy A n 0 ≫ serreCubeDeletionNormal A (cubeDeletionNormalComp d e) = _
       rw [ih e]
       let g : serreCubeComonoid A (n + 1) ⟶ serreCubeComonoid A (a + 1) :=
@@ -78,7 +78,7 @@ lemma serreCubeDeletionNormal_comp (A : Type u) [CommRing A] {n a b : ℕ}
         (serreCubeDeletionNormal A d ≫ serreCubeDeletionNormal A e) =
           g ≫ (serreCubeDegeneracy A a 0 ≫ serreCubeDeletionNormal A e)
       rw [← Category.assoc, ← hn, Category.assoc]
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | keep e =>
       change (serreCubeDeletionNormal A (cubeDeletionNormalComp d e) ⊗ₘ
           𝟙 (serreIntervalComonoid A)) =
         (serreCubeDeletionNormal A d ⊗ₘ 𝟙 (serreIntervalComonoid A)) ≫

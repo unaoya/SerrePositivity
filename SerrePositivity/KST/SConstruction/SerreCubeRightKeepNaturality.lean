@@ -21,27 +21,27 @@ lemma serreCubeRightKeep_generated {n m : ℕ} {f : _root_.SerrePositivity.Infin
       serreCubeRightTensorMap A (n := n) (m := m)
         ((serreConcreteCubeFunctor A).map ⟨f, h⟩) := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id n =>
+  | id n =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n))) =
       serreCubeRightTensorMap A (n := n) (m := n)
         ((serreConcreteCubeFunctor A).map (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n)))
     erw [concreteCubeRightKeepHom_id, (serreConcreteCubeFunctor A).map_id,
       (serreConcreteCubeFunctor A).map_id]
     exact (serreCubeRightTensorMap_id A n).symm
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i =>
+  | face b n i =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i)) =
       serreCubeRightTensorMap A (n := n) (m := n + 1)
         ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b n i))
     rw [serreConcreteCubeFunctor_face]
     exact serreRightKeepHomTensor_face A b n i
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i =>
+  | degeneracy n i =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
       (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i)) =
       serreCubeRightTensorMap A (n := n + 1) (m := n)
         ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy n i))
     rw [serreConcreteCubeFunctor_degeneracy]
     exact serreRightKeepHomTensor_degeneracy A n i
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i =>
+  | connection n i =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
       (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i)) =
       serreCubeRightTensorMap A (n := n + 2) (m := n + 1)

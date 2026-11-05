@@ -27,9 +27,9 @@ inductive CubeConnectionGenerated : {n m : ℕ} → (_root_.SerrePositivity.Infi
 lemma cubeConnectionGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.id n => exact .id n
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.connection n p => exact .connection n p
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.comp hf hg ihf ihg => exact .comp ihf ihg
+  | id n => exact .id n
+  | connection n p => exact .connection n p
+  | comp hf hg ihf ihg => exact .comp ihf ihg
 
 /-- 元の単調全射の fiber max は、隣接 connection だけの合成で実現される。 -/
 lemma cubeFiberMax_connectionGenerated {n m : ℕ} (q : Fin n → Fin m)

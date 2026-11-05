@@ -27,9 +27,9 @@ inductive CubeDeletionGenerated : {n m : ℕ} → (_root_.SerrePositivity.Infini
 lemma cubeDeletionGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.id n => exact .id n
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.degeneracy n i => exact .degeneracy n i
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.comp hf hg ihf ihg => exact .comp ihf ihg
+  | id n => exact .id n
+  | degeneracy n i => exact .degeneracy n i
+  | comp hf hg ihf ihg => exact .comp ihf ihg
 
 /-- 順序を保つ入力座標の選択は、削除だけの合成で実現される。 -/
 lemma cubeCoordinateSelect_deletionGenerated {n m : ℕ} (e : Fin m → Fin n)

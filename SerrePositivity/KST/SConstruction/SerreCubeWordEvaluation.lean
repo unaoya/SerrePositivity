@@ -22,9 +22,9 @@ def serreCubeGeneratorPrefunctor : _root_.SerrePositivity.InfinityCategories.Kan
     cases X
     cases Y
     cases f with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b n i => exact serreCubeFace A b _ i
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy n i => exact serreCubeDegeneracy A _ i
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection n i => exact serreCubeConnection A _ i
+    | face b n i => exact serreCubeFace A b _ i
+    | degeneracy n i => exact serreCubeDegeneracy A _ i
+    | connection n i => exact serreCubeConnection A _ i
 
 /-- 元の Serre 余モノイド射を合成した、自由な生成語の評価関手。 -/
 def serreCubeWordFunctor : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords ⥤ Comon (Complex A) :=

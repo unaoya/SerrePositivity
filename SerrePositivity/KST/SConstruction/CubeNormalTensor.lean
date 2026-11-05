@@ -58,9 +58,9 @@ lemma cubeDeletionNormalTensor_vertex_join {n p m q : ℕ}
     _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (cubeDeletionNormalTensor d e) (cubeVertexJoin x y) =
       cubeVertexJoin (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d x) (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex e y) := by
   induction e with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => rfl
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e ih => exact ih (fun j => y j.succ)
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e ih =>
+  | nil => rfl
+  | drop e ih => exact ih (fun j => y j.succ)
+  | keep e ih =>
     dsimp only [cubeDeletionNormalTensor]
     rw [cubeDeletionNormalVertex_keep_eval, cubeDeletionNormalVertex_keep_eval]
     exact congrArg (fun v : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex _ => Fin.cons (α := fun _ => Bool) (y 0) v)

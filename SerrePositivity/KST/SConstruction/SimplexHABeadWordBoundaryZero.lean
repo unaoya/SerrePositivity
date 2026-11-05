@@ -19,7 +19,7 @@ lemma simplexHABeadWordBoundaryValue_zero {n : ℕ} (s : DGNerve.SimplexData A D
     {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
     d = 0 → simplexHABeadWordBoundaryValue A s word = 0 := by
   induction word with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI =>
+  | bead I hI =>
     intro hd
     have hc : I.card = 2 := by omega
     exact (congrArg (fun w => serreCubeOrientationSign (I.card - 2) • w)

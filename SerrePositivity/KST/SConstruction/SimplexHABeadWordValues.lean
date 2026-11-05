@@ -29,8 +29,8 @@ lemma simplexHABeadWordValue_post {n : ℕ} (s : DGNerve.SimplexData A D n)
     simplexHABeadWordValue A (s.map F) word =
       (F.map (s.obj a) (s.obj b)).f (-(d : ℤ)) (simplexHABeadWordValue A s word) := by
   induction word with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI => rfl
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join left right ihL ihR =>
+  | bead I hI => rfl
+  | join left right ihL ihR =>
     dsimp only [simplexHABeadWordValue]
     rw [ihL, ihR]
     exact (DGNerve.map_compose F _ _ _).symm

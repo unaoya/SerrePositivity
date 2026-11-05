@@ -22,12 +22,12 @@ lemma simplexHABeadWordValue_recovery {n : ℕ}
     simplexHABeadWordValue A (cubicalLambdaNativeSimplexData A F) word =
       serreCubeTopCellImage A _ d (simplexHABeadWordCell A word ≫ F.map _ _) := by
   induction word with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI =>
+  | bead I hI =>
     dsimp only [simplexHABeadWordValue, simplexHABeadWordCell]
     have h := cubicalLambdaNativeSimplexData_hom_cell A F I _ _
       (-((I.card - 2 : ℕ) : ℤ)) hI rfl rfl (by omega)
     simpa only [eqToHom_refl, CategoryTheory.id_apply] using h
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join left right ihL ihR =>
+  | join left right ihL ihR =>
     dsimp only [simplexHABeadWordValue, simplexHABeadWordCell]
     rw [ihL, ihR]
     exact (serreCubeTopCellImage_composition_post A F _ _ _ _).symm

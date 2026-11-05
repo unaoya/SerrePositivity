@@ -50,7 +50,7 @@ lemma simplexHABeadWordRawValue_differential {n : ℕ} (s : DGNerve.Simplex A D 
     differential A (simplexHABeadWordRawValue A s.toSimplexData word) =
       simplexHABeadWordBoundaryValue A s.toSimplexData word := by
   induction word with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead I hI =>
+  | bead I hI =>
     exact (differential_units_smul A (serreCubeOrientationSign (I.card - 2)) _).trans
       (congrArg (fun w => serreCubeOrientationSign (I.card - 2) • w)
         (s.equation I _ _ (-((I.card - 2 : ℕ) : ℤ)) hI rfl rfl (by omega)))

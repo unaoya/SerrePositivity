@@ -40,9 +40,9 @@ def cubeGeneratorConcretePrefunctor : _root_.SerrePositivity.InfinityCategories.
     cases X
     cases Y
     cases f with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b _ i
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy _ i
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection _ i
+    | face b n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b _ i
+    | degeneracy n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy _ i
+    | connection n i => exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection _ i
 
 /-- 生成語を、元の合成関数を持つ具体的な立方体の射へ評価する関手。 -/
 def cubeWordConcreteFunctor : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube :=

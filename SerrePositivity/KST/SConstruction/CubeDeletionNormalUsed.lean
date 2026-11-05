@@ -19,13 +19,13 @@ def cubeDeletionNormalUsed : {n m : ℕ} → _root_.SerrePositivity.InfinityCate
 lemma cubeDeletionNormalUsed_true_iff {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) (i : Fin n) :
     cubeDeletionNormalUsed d i = true ↔ ∃ j, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d j = i := by
   induction d with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => exact Fin.elim0 i
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => exact Fin.elim0 i
+  | drop d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · simp [cubeDeletionNormalUsed, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
     · simpa only [cubeDeletionNormalUsed, Fin.cons_succ, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding,
         Fin.succ_inj] using ih i
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · exact ⟨fun _ => ⟨0, rfl⟩, fun _ => rfl⟩
     · change cubeDeletionNormalUsed d i = true ↔
@@ -45,19 +45,19 @@ lemma cubeDeletionNormal_dimension_of_used {n a b : ℕ}
     (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a) (e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n b)
     (h : cubeDeletionNormalUsed d = cubeDeletionNormalUsed e) : a = b := by
   induction d generalizing b with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; rfl
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => cases e; rfl
+  | drop d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e => exact ih e (funext fun j => congrFun h j.succ)
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | drop e => exact ih e (funext fun j => congrFun h j.succ)
+    | keep e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+    | drop e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | keep e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
 
@@ -65,21 +65,21 @@ lemma cubeDeletionNormal_dimension_of_used {n a b : ℕ}
 lemma cubeDeletionNormal_eq_of_used {n m : ℕ} (d e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m)
     (h : cubeDeletionNormalUsed d = cubeDeletionNormalUsed e) : d = e := by
   induction d with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => cases e; rfl
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => cases e; rfl
+  | drop d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+    | drop e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | keep e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     cases e with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+    | drop e =>
       have hc := congrFun h 0
       simp [cubeDeletionNormalUsed] at hc
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+    | keep e =>
       congr 1
       exact ih e (funext fun j => congrFun h j.succ)
 

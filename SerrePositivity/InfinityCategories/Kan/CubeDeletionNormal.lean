@@ -59,10 +59,10 @@ lemma cubeDeletionNormalErase_embedding {n m : ℕ} (d : _root_.SerrePositivity.
   | zero => cases d
   | succ n ih =>
     cases d with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d =>
+    | drop d =>
       funext j
       exact congrArg Fin.succ (congrFun (ih d i) j)
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d =>
+    | keep d =>
       cases m with
       | zero => funext j; exact Fin.elim0 j
       | succ m =>

@@ -25,9 +25,9 @@ inductive CubeFaceGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCa
 lemma cubeFaceGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.id n => exact .id n
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.face b n p => exact .face b n p
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.comp hf hg ihf ihg => exact .comp ihf ihg
+  | id n => exact .id n
+  | face b n p => exact .face b n p
+  | comp hf hg ihf ihg => exact .comp ihf ihg
 
 /-- 選択した座標を元の背景頂点の定数で補完する関数。 -/
 def cubeCoordinateComplete {n m : ℕ} (e : Fin m → Fin n) (b : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :

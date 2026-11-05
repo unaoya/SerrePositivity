@@ -15,14 +15,14 @@ namespace SerrePositivity.KST.SConstruction
 lemma cubeDeletionNormalVertex_generated {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d) := by
   induction d with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil =>
+  | nil =>
     change _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId 0))
     rw [cubeDeletionNormalId_vertex]
     exact .id 0
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | drop d ih =>
     change _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d ∘ _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ 0)
     exact .comp (.degeneracy _ 0) ih
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     have h : _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d.keep = cubeVertexRightKeep
         (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d) := funext (cubeDeletionNormalVertex_keep_eval d)
     rw [h]

@@ -22,23 +22,23 @@ lemma cubeDeletionNormalEmbedding_injective (n m : ℕ) :
   | succ n ih =>
     intro d e h
     cases d with
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d =>
+    | drop d =>
       cases e with
-      | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+      | drop e =>
         congr 1
         apply ih
         funext i
         simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding, Fin.succ_inj] using congrFun h i
-      | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+      | keep e =>
         have hc := congrFun h 0
         simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] at hc
-    | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d =>
+    | keep d =>
       cases e with
-      | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop e =>
+      | drop e =>
         have hc := congrFun h 0
         simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] at hc
         exact False.elim ((Fin.succ_ne_zero _) hc.symm)
-      | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep e =>
+      | keep e =>
         congr 1
         apply ih
         funext i

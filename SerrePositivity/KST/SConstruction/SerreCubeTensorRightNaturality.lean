@@ -19,10 +19,10 @@ lemma serreCubeRightBlockNatural_generated (n : ℕ) {m k : ℕ}
     {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k} (hf : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) :
     SerreCubeRightBlockNatural A n (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) := by
   induction hf with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id m => exact serreCubeRightBlockNatural_id A n m
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b m i => exact serreCubeRightBlockNatural_face A n m b i
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy m i => exact serreCubeRightBlockNatural_degeneracy A n m i
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection m i => exact serreCubeRightBlockNatural_connection A n m i
+  | id m => exact serreCubeRightBlockNatural_id A n m
+  | face b m i => exact serreCubeRightBlockNatural_face A n m b i
+  | degeneracy m i => exact serreCubeRightBlockNatural_degeneracy A n m i
+  | connection m i => exact serreCubeRightBlockNatural_connection A n m i
   | @_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp m k l f g hf hg ihf ihg =>
     exact serreCubeRightBlockNatural_comp A n
       (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k)

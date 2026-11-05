@@ -21,17 +21,17 @@ lemma cubeMapGenerated_exists_word {n m : ℕ} {f : _root_.SerrePositivity.Infin
     ∃ w : Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m),
       (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map w).val = f := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id n => exact ⟨Quiver.Path.nil, rfl⟩
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i =>
+  | id n => exact ⟨Quiver.Path.nil, rfl⟩
+  | face b n i =>
     exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) from
       _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b n i).toPath, rfl⟩
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i =>
+  | degeneracy n i =>
     exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n from
       _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy n i).toPath, rfl⟩
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i =>
+  | connection n i =>
     exact ⟨(show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (n + 1) from
       _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection n i).toPath, rfl⟩
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp hf hg ihf ihg =>
+  | comp hf hg ihf ihg =>
     obtain ⟨p, hp⟩ := ihf
     obtain ⟨q, hq⟩ := ihg
     refine ⟨p.comp q, ?_⟩

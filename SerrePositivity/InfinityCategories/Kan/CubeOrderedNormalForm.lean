@@ -19,11 +19,11 @@ open CategoryTheory
 lemma cubeMapGenerated_support_ordered {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered f := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id n => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_id n
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_face b n p
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_degeneracy n p
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_connection n p
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp hf hg ihf ihg => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_comp hg ihf ihg
+  | id n => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_id n
+  | face b n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_face b n p
+  | degeneracy n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_degeneracy n p
+  | connection n p => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_connection n p
+  | comp hf hg ihf ihg => exact _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_comp hg ihf ihg
 
 /-- 順序を保つ support では、一つの有効入力は二つの出力に現れない。 -/
 lemma cubeSupportOrdered_output_unique {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

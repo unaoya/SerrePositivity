@@ -58,11 +58,11 @@ lemma cubeVertexRightKeep_connection (n : ℕ) (i : Fin (n + 1)) :
 lemma cubeMapGenerated_rightKeep {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (cubeVertexRightKeep f) := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id n => rw [cubeVertexRightKeep_id]; exact .id _
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i => rw [cubeVertexRightKeep_face]; exact .face _ _ _
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i => rw [cubeVertexRightKeep_degeneracy]; exact .degeneracy _ _
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i => rw [cubeVertexRightKeep_connection]; exact .connection _ _
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp hf hg ihf ihg => rw [cubeVertexRightKeep_comp]; exact .comp ihf ihg
+  | id n => rw [cubeVertexRightKeep_id]; exact .id _
+  | face b n i => rw [cubeVertexRightKeep_face]; exact .face _ _ _
+  | degeneracy n i => rw [cubeVertexRightKeep_degeneracy]; exact .degeneracy _ _
+  | connection n i => rw [cubeVertexRightKeep_connection]; exact .connection _ _
+  | comp hf hg ihf ihg => rw [cubeVertexRightKeep_comp]; exact .comp ihf ihg
 
 /-- 具体的な立方体圏の元の右端入力保持関手。 -/
 def concreteCubeRightKeep : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where

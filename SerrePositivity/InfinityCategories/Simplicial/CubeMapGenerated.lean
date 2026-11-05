@@ -28,11 +28,11 @@ inductive CubeMapGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCat
 lemma cubeMapGenerated_sup {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}
     (h : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) (x y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : f (x ⊔ y) = f x ⊔ f y := by
   induction h with
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id => rfl
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face b n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace_sup b n i x y
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy_sup n i x y
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection_sup n i x y
-  | _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp hf hg ihf ihg => simp only [Function.comp_apply, ihf, ihg]
+  | id => rfl
+  | face b n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace_sup b n i x y
+  | degeneracy n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy_sup n i x y
+  | connection n i => exact _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection_sup n i x y
+  | comp hf hg ihf ihg => simp only [Function.comp_apply, ihf, ihg]
 
 /-- 元の生成射の任意の合成は、具体的な立方体の順序を保つ。 -/
 lemma cubeMapGenerated_monotone {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

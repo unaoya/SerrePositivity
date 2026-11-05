@@ -50,12 +50,12 @@ lemma cubeDeletionNormalVertex_top {n m : ℕ} (d : _root_.SerrePositivity.Infin
 lemma cubeDeletionNormalVertex_surjective {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
     Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d) := by
   induction d with
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil => intro y; exact ⟨y, Subsingleton.elim _ _⟩
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop d ih =>
+  | nil => intro y; exact ⟨y, Subsingleton.elim _ _⟩
+  | drop d ih =>
     intro y
     obtain ⟨x, hx⟩ := ih y
     exact ⟨Fin.cons false x, hx⟩
-  | _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep d ih =>
+  | keep d ih =>
     intro y
     obtain ⟨x, hx⟩ := ih (fun j => y j.succ)
     refine ⟨Fin.cons (y 0) x, ?_⟩
