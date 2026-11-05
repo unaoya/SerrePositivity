@@ -11,76 +11,48 @@ including the ramified mixed-characteristic case.
 
 ## Status
 
-The shared Euler, iterated-cone, vanishing, lower-bound and symmetric-comparison theory,
-its perfect-complex and rank-quotient realizations, the standard commutative algebra used
-(regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
-the connection to the main theorem are implemented.
+**The main theorem `SerrePositivity.main_statement` depends on exactly three unproved inputs** (checked by
+the sorry-closure audit of `scripts/refactor/verify.sh`; `main_statement` itself has no direct `sorry`):
 
-The main theorem still depends on **1 external quotation (the Bhatt–Scholze perfectoidization interface) and 2 deferred K-theory proofs**.
-`main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
-They are not proofs of the main theorem without those inputs. The complete Noetherian flat
-residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
-and Lemma 2.1 depend only on the standard axioms. Mixed-characteristic Cohen normalization
-with perfect residue field is also constructed without quotations, including the Witt coefficient
-map, parameters, finite power-series evaluation and injectivity. Equal-characteristic Cohen–Gabber
-normalization is now proved for arbitrary residue fields by changing the coefficient section,
-constructing a differential parameter basis and proving separability for the same finite injective
-power-series evaluation. Its legacy entry point and Lemma 2.2 use only the standard axioms
-(see Lemma 2.2 in [the Japanese exposition](exposition/ja/exposition-ja.tex)).
-The standard completed root tower
-is now proved integral perfectoid via finite-stage Frobenius kernels and the actual tilt and Fontaine
-kernel. Roberts' Frobenius homology vanishing is no longer used: the equal-characteristic
-construction only needs it for Koszul complexes on a system of parameters, which is proved
-elementarily in `CommutativeAlgebra/ParameterKoszulGrowth.lean` (a uniform annihilator of Tor over
-a power series ring and a fixed finite free resolution give `ℓ H_i(z^q; D) = O(q^{h-1})`;
-see the remark `rem:koszul-elementary` in [the exposition](exposition/ja/exposition-ja.tex)). Serre's equal-characteristic
-positivity is no longer used either: the residue-characteristic-zero case needed by the main
-theorem is proved by Serre's reduction to the diagonal in
-`IntersectionMultiplicity/EqualCharZeroPositivity.lean`, using a local flatness criterion
-(`HomologicalAlgebra/LocalFlatnessCriterion.lean`), the coefficient field in characteristic zero
-and a comparison of Tor over `R` and over `R[[Y]]`
-(see appendix A of [the exposition](exposition/ja/exposition-ja.tex)). By section of the preprint:
+| Input | Meaning | Plan |
+| --- | --- | --- |
+| `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` | the single Bhatt–Scholze quotation: the derived perfectoidization interface (BS *Prisms and prismatic cohomology*, Def 8.2, Lemma 8.4, Prop 8.5, Cor 8.11–8.12, 8.14, Thm 10.11) | goal A of [stage II](formalization-plans/stage-ii-plan-draft.md): build the original objects and fill every field |
+| `theorem_3_1_K0` | Theorem 3.1 of the preprint (rational K-theory descent) at the level of K₀ | goal B: K-theory via Land–Tamme in dg-enhanced form |
+| `Section4.supportedRankK0_descent` | the descent of Lemma 4.6 | goal B |
 
-- §2 (residue fields, normalized length, Theorem 2.5): proved relative to the existence of
-  the derived perfectoidization interface from Bhatt–Scholze, *Prisms and prismatic cohomology*
-  (`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`). The ring-level existence theorem
-  (Thm 1.17(1), `BhattScholze.Inputs.exists_perfectoidization_of_integral`) and excision theorem
-  (Cor 8.12, `BhattScholze.Inputs.perfectoidization_excision_isPullback`) are now derived from
-  that interface, preserving their public types. The difference map is also proved surjective.
-  The surjectivity Thm 7.4, André's flatness lemma Thm 7.14, Lemma 10.3, Prop 10.2 and
-  Remark 10.7 are proved in the repository. CLMST Proposition 2.4.7 and Corollary 4.0.4
-  retain their existing entry points and depend on the single interface quotation
-  (see appendix A of the exposition for its scope).
-- §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
-  (`theorem_3_1_K0`).
-- §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
-  (`Section4.supportedRankK0_descent`).
-- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved. The Roberts–Gillet–Soulé
-  vanishing theorem (`Inputs.intersectionVanishing`) is proved in all residue characteristics
-  using supported cyclic Adams operations (the square, and the cube after a cyclotomic local
-  extension in residue characteristic two). The residue-characteristic-zero case (Lemma 5.1)
-  is proved by Serre's diagonal argument; the former general quotation
-  `Inputs.serrePositivity_of_field` has been removed.
+Everything else used by the main theorem is proved from the standard axioms (`propext`, `Classical.choice`,
+`Quot.sound`). The off-path quotation `Inputs.Homotopy.kanQuillen_model_exists` is outside the closure.
 
-The cyclic length estimate used in CLMST Proposition 4.0.10 is proved from finite-stage
-Frobenius bounds and low-dimensional length growth, with the Bhatt–Scholze existence
-(Cor 7.3) and surjectivity (Thm 7.4), both proved here. The all-stage parameter quotient
-formula (Proposition 4.0.14) is proved from the shared Euler and cone theory, flat base change
-and finite-stage length calculations. CLMST Proposition 2.4.7 (the cone of `S → S_perfd` is a
-`J`-isogeny) and Corollary 4.0.4 (almost vanishing of local cohomology and Koszul homology of
-`C_D`) are now proved following the CLMST arguments: base change along a proved André extension,
-Zariski-local splitting of finite étale algebras over absolutely integrally closed rings, the
-ring excision theorem derived from the interface for the kernel and cokernel bounds, the elementary Claim 2.4.8, and
-descent along `p`-completely faithfully flat maps; the Tor input of Theorem 4.0.3(a) is proved for
-all modules by the Milnor sequence and Prop 10.2. The idempotence of the perfectoid ideal modulo
-`p` powers (Remark 10.7) is proved from Lemma 10.3 and Thm 7.4; neither is a quotation any more.
+By section of the preprint:
 
-The three legacy CLMST entry points in `Inputs/CLMST.lean` are proved compatibility
-wrappers around the Paper-independent CLMST layer. Current boundaries and subsequent
-review tasks are recorded in [the CLMST plan](formalization-plans/archive/clmst.md).
+- §2 (residue fields, normalized length, Theorem 2.5): proved relative to the E3 interface. The ring-level
+  existence (Thm 1.17(1)) and excision (Cor 8.12) are derived from the interface; Thm 7.4, André's flatness
+  lemma (Thm 7.14), Lemma 10.3, Prop 10.2, Remark 10.7 and the CLMST inputs (Prop 2.4.7, Cor 4.0.4) are proved.
+  Cohen and Cohen–Gabber normalization, the complete flat residue-field extension and the completed root tower
+  are constructed without quotations.
+- §3 (Lemmas 3.4–3.5): proved, except Theorem 3.1.
+- §4 (Theorem 4.7): proved, except the descent of Lemma 4.6.
+- §5 (Lemmas 5.1–5.6, the reduction and the core case): proved, including the Roberts–Gillet–Soulé vanishing
+  (supported cyclic Adams operations) and the residue-characteristic-zero case (Serre's diagonal argument).
 
-The table of quotations, the status of every proposition and the module map are kept in
-appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.
+### What is formalized (2026-11-05)
+
+About 31,000 Lean files and 2.7 million lines under `SerrePositivity/` (plus 1,800 archived files that are tracked but not built).
+
+| Area | Files / lines | Content |
+| --- | ---: | --- |
+| The paper (`Paper/`, `IntersectionMultiplicity/`, `LengthAlgebra/`, `Asymptotic/`, `KTheory/`, `PerfectComplex/`, `CategoryTheory/`) | ~210 / 62k | Euler theory, iterated cones, length algebras, perfect-complex and rank-quotient realizations, the four sections of the preprint and the main statement |
+| Commutative and homological algebra (`CommutativeAlgebra/`, `HomologicalAlgebra/`, `FieldTheory/`, …) | ~520 / 103k | regular local rings, Koszul complexes, Hilbert–Samuel multiplicity, Tor, minimal resolutions, derived completion, Cohen structure theory, perfection and perfectoid rings, universal homeomorphisms and the étale stratification of finite maps (BS Lemma 10.12) |
+| Bhatt–Scholze (`BhattScholze/`, `CLMST/`) | ~160 / 113k | δ-rings, prisms, perfectoid ideals, almost mathematics, André's lemma, perfectoidization and its ring-level consequences, the CLMST arguments |
+| ∞-categories (`InfinityCategories/`) | ~14,700 / 1.12M | quasicategories (join, slice, limits, mapping spaces, Joyal), Kan complexes, coherent nerve, straightening, Yoneda, Kan extensions, adjunctions, cofinality, localization, homotopy limits (Bousfield–Kan), stable ∞-categories and Verdier sequences, Cat∞, Ind, accessible and presentable ∞-categories, the adjoint functor theorem (HTT 5.5.2.9), Bousfield localization, the dg nerve, D(A) = N_dg(semifree A-modules) with its stability and presentability, Verdier fractions, dg gluing, the derived tensor ∞-functor |
+| dg categories (`DifferentialGraded/`) | ~470 / 150k | dg categories, modules, complexes, derived functors, perfect and compact objects, dg quotients |
+| E∞-algebras (`EInfinity/`) | ~2,600 / 201k | Barratt–Eccles operad, E∞-dg algebras, transferred model structure, CAlg as a coherent nerve, Alexander–Whitney and shuffle maps |
+| Homotopical algebra and spectra (`HomotopicalAlgebra/`, `Spectra/`) | ~1,370 / 130k | model categories (kept outside the ∞-categorical core), simplicial homotopy theory, symmetric spectra |
+| K-theory (`KST/`) | ~9,200 / 715k | localizing invariants, S• construction, fibration theorem, non-connective K, comparison, derived blow-ups, derived geometry, pro-excision, scheme lemmas (the K-specific parts; general parts were moved into `InfinityCategories/`) |
+
+The layering of the ∞-categorical core is checked mechanically (`scripts/refactor/layer_check.py`): the core layers
+`Simplicial < Core < Kan < Coherent < {F1, F1B, HomotopyLimits} < Stable < F2 < StablePresentable` import only lower
+layers, and no KST, dg or E∞ code (one remaining model-category dependency, item M16 of the plan).
 
 ## Reading order
 
@@ -97,24 +69,22 @@ appendix A of the exposition; the actual dependencies are checked by `scripts/au
    [PDF](exposition/ja/lech-ja.pdf) is generated from it), the companion preprint
    [`paper/lech.pdf`](paper/lech.pdf), which uses the same length-algebra method. It is not
    formalized yet.
-5. [`formalization-plans/`](formalization-plans/): plans for the remaining formalization
-   (external quotations, K-theory, CLMST, Frobenius homology, Lech's conjecture).
+5. [`formalization-plans/`](formalization-plans/): the [stage II plan](formalization-plans/stage-ii-plan-draft.md),
+   the [coordination rules](formalization-plans/coordination.md) and the plans of each area.
 
 ## Layout
 
-- `CategoryTheory/`: ring-independent Euler theory, iterated cones, comparison and triangulated K₀.
-- `LengthAlgebra/`: length quotients, evaluations and concrete verification of the common hypotheses.
-- `PerfectComplex/`: supported finite projective complexes and the older finite free model, with comparison APIs.
-- `Asymptotic/`: sequence categories, rank quotients, localization and completed homological evaluations.
-- `CommutativeAlgebra/`, `HomologicalAlgebra/`: proved general results, including regular parameters, resolutions, finite-generation agreement for normalized length,
-  almost module categories and principal derived completeness.
-- `Paper/`: constructions and applications to the paper, including the main statement.
-- `Inputs/`: named external quotations, deferred descent, and explicitly marked compatibility imports.
-- `paper/`: original preprint, the Lech preprint and source provenance (`paper/refs/` holds
-  local copies of cited papers and is not tracked).
-- `formalization-plans/`: plans for the remaining formalization (Markdown).
-- `research/`: independent research notes (TeX sources with generated PDFs, and Markdown).
-- `scripts/`: the axiom audit and the documentation check.
+- `Paper/`, `IntersectionMultiplicity/`: the preprint's constructions and the main statement.
+- `CategoryTheory/`, `LengthAlgebra/`, `PerfectComplex/`, `Asymptotic/`, `KTheory/`: ring-independent Euler theory, length algebras and the two realizations.
+- `CommutativeAlgebra/`, `HomologicalAlgebra/`, `FieldTheory/`, `RingTheory/`, `LinearAlgebra/`, `GroupTheory/`: proved general results.
+- `BhattScholze/`, `CLMST/`: the perfectoid side; `BhattScholze/Inputs/` holds the single quotation (E3).
+- `InfinityCategories/`: the ∞-categorical foundations (map in `InfinityCategories/README.md`).
+- `DifferentialGraded/`, `EInfinity/`, `HomotopicalAlgebra/`, `Spectra/`, `KST/`: dg categories, E∞-algebras, model categories and spectra, K-theory.
+- `Inputs/`: the two deferred K-theory statements and compatibility entries.
+- `Archive/`: tracked but not built (superseded developments).
+- `formalization-plans/`: the stage II plan, coordination rules and the plans of each area; `archive/` holds finished plans and instructions.
+- `exposition/`, `research/`, `paper/`: Japanese exposition, research notes, the preprints.
+- `scripts/`: audits (`scripts/audit/`, `scripts/audit_*.lean`) and the refactoring tools (`scripts/refactor/`).
 
 ## Conventions
 
@@ -159,17 +129,18 @@ free resolutions and the length-based Euler characteristics are built here (`Com
 
 ## Remaining work
 
-- The two deferred descent proofs: Theorem 3.1 at the level of K₀, and Lemma 4.6 together with
-  descent for general coefficients.
-- Restating the finite approximation (Lemma 5.4) over an abstract tower-compatible length, as in
-  exposition §4.5, instead of the concrete tower.
-- Extending the Koszul multiplicity formula from the ring to arbitrary finite modules (Rees
-  evaluation, boundary lifting, Samuel degree of the support).
-- The 2 Bhatt–Scholze quotations remain quotations: Thm 1.17(1) (its proof needs derived
-  prismatic cohomology and arc descent) and the ring-level consequence of Cor 8.12 (its proof needs
-  arc descent of perfectoidizations). The legacy quotations of Serre's equal-characteristic
-  positivity and of Roberts' Frobenius vanishing have been deleted; the remaining off-path
-  quotation `Inputs.Homotopy.kanQuillen_model_exists` belongs to the K-theory development.
+Stage I (reorganizing the foundations, 2026-10-31 to 11-05) is complete. Stage II removes the three inputs; its plan
+is [formalization-plans/stage-ii-plan-draft.md](formalization-plans/stage-ii-plan-draft.md) (a draft to be finalized):
+
+- **Goal A (Bhatt–Scholze):** the design A0–A9 and Lean skeletons are in `formalization-plans/bhatt-scholze/drafts/`
+  (51 files); they are moved into the library while their `sorry`s are proved, on top of ∞-sheaf theory (S1–S8) and
+  ∞-categorical inputs (presentability, tensoring with spaces, E∞-algebras). Three classical results (a crystalline
+  comparison, BS17 Thm 4.1, BM18 Thm 1.7) remain permanent quotations.
+- **Goal B (K-theory):** Verdier quotients and localization in the ∞-categorical core (M1–M11), then K-theory of
+  small stable ∞-categories (Cat^perf, S•, non-connective K, localizing invariants), Tamme's splitting and the
+  Land–Tamme theorem, the scheme-theoretic axioms and the descent of Theorem 3.1 and Lemma 4.6.
+- Smaller items: extending the Koszul multiplicity formula to finite modules; restating Lemma 5.4 over an abstract
+  tower-compatible length.
 
 ## Documents and generated files
 
@@ -181,11 +152,11 @@ OS metadata. `paper/paper.pdf` and `paper/lech.pdf` are kept as the sources of t
 
 ## Verification
 
-Run `lake build`, then `lake env lean scripts/audit_axioms.lean` and
-`python3 scripts/check_documentation.py`. The axiom audit checks the shared APIs and reports the
-remaining dependencies of the main theorem; the documentation check verifies the local links of
-the README, the research notes and the formalization plans, and every Lean name referenced in
-the two expositions.
+`zsh scripts/refactor/verify.sh` builds the root and all audit targets, runs every audit (about 100) and the
+sorry-closure audit of the main theorem; it reports `gate: true` when everything passes
+(`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40` are the defaults). The Lake artifact cache can be shared between
+worktrees (`LAKE_ARTIFACT_CACHE=true`, `LAKE_RESTORE_ARTIFACTS=true`). `python3 scripts/check_documentation.py`
+checks local links and the Lean names referenced in the expositions.
 
 ## Source and license
 
