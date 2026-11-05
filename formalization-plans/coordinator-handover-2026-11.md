@@ -20,7 +20,7 @@
 | レーン | worktree・枝 | 状態 |
 | --- | --- | --- |
 | ∞ 整理（Codex） | `SerrePositivity-ifw0-3`・`infra/if-f` | F-2 実行中 → 片付け C1〜C3 → 閉じる |
-| ∞ 数学 G2（Codex） | `SerrePositivity-ig1`・`math/g2` | F-2 待ち。G8 の四角形（篩包含）と G14 を仕上げて（C4）、IF-G2 の残りを引き継ぎ（C5）→ 閉じる。先行分 f2b665682 は main に入っている |
+| ∞ 数学 G2（Codex） | `SerrePositivity-ig1`・`math/g2` | **新しい調整役が引き取る（11-05 ユーザー決定）**。F-2 の取り込み後に main の取り込み直しを合図し、G8 の四角形（篩包含、始対象 (U, 𝟙) による直接比較）と G14 を仕上げて（C4）、IF-G2 の残りを引き継ぎ（C5）→ 閉じる。指示は `infinity-codex-g2.md` §1〜§4、進捗は `infinity-g2-progress.md`。先行分 f2b665682 は main に入っている |
 | BS 設計（Claude Code） | なし（main に記録を直接） | 新しいチャットに移る（ユーザー決定）。**引き継ぎの入口は `bhatt-scholze/design-status.md` §0（29ab2ba87）**。BS-W11 は新しいチャットで、F-2 の取り込みと改名表の後に開始 |
 | BS 実装（Codex） | なし（worktree 0 本） | 新しいチャットに移る。BS-W10 は終了（Lemma 10.12 は main） |
 | DG（Codex） | `dgw1` | 待機。worktree の削除（C6）で閉じる |
