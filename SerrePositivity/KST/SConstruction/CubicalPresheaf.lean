@@ -13,7 +13,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite
 
 /-- 元の max connection を持つ具体的な立方体圏上の前層。 -/
-abbrev CubicalSet := ConcreteCubeᵒᵖ ⥤ Type u
+abbrev CubicalSet := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⥤ Type u
 
 /-- 元の立方体を、その射全体からなる表現可能な cubical set へ送る。 -/
 def cubicalYoneda : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ CubicalSet.{u} := uliftYoneda.{u}

@@ -23,6 +23,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
   {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
@@ -32,17 +33,17 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 def tammeFiberTriangle : ZeroTriangle Sp.{u} :=
   hΦ.abstractFiberTriangle (tammeVerdierSequence p q v a hv)
 
-lemma tammeFiberTriangle_isFiber : IsFiberSequence (hΦ.tammeFiberTriangle p q v a hv) :=
+lemma tammeFiberTriangle_isFiber : IsFiberSequence ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv) :=
   hΦ.abstractFiberTriangle_isFiber (tammeVerdierSequence p q v a hv)
 
 lemma tammeFiberTriangle_bottom :
-    squareBottomEdge ≫ (hΦ.tammeFiberTriangle p q v a hv).square =
+    squareBottomEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv).square =
       SSet.yonedaEquiv.symm (Φ.app (Opposite.op ⦋1⦌)
         (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (pullbackInclusion p q)).edge) :=
   hΦ.abstractFiberTriangle_bottom (tammeVerdierSequence p q v a hv)
 
 lemma tammeFiberTriangle_right :
-    squareRightEdge ≫ (hΦ.tammeFiberTriangle p q v a hv).square =
+    squareRightEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv).square =
       SSet.yonedaEquiv.symm (Φ.app (Opposite.op ⦋1⦌)
         (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (exactLaxDifference p q)).edge) :=
   hΦ.abstractFiberTriangle_right (tammeVerdierSequence p q v a hv)
@@ -50,34 +51,34 @@ lemma tammeFiberTriangle_right :
 /-- 実 fiber 列の中項から、元の C,D の値の実 ∞ 積への比較同型。 -/
 def tammeFiberMiddleIso : SpectrumHo.obj (value Φ (laxCategory p q)) ≅
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
-  hΦ.tammeSplitEquivalence p q
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence hΦ) p q
 
 /-- fiber 四角形の実中頂点を、元の二つの値の実 ∞ 積へ同定する。 -/
-def tammeFiberSquareMiddleIso : squareHoVertex (hΦ.tammeFiberTriangle p q v a hv).square 1 0 ≅
+def tammeFiberSquareMiddleIso : squareHoVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv).square 1 0 ≅
     SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
-  hΦ.fiberMiddleIso (tammeVerdierSequence p q v a hv) ≪≫ hΦ.tammeFiberMiddleIso p q
+  hΦ.fiberMiddleIso (tammeVerdierSequence p q v a hv) ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberMiddleIso hΦ) p q
 
 /-- 二因子の積から差の項の値への射。元の差の像との比較を保持する。 -/
 def tammeDifferenceHom : SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) ⟶
     SpectrumHo.obj (value Φ E) :=
-  (hΦ.tammeSplitComparison p q).hom ≫ SpectrumHo.hom (valueMap Φ (exactLaxDifference p q))
+  ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom ≫ SpectrumHo.hom (valueMap Φ (exactLaxDifference p q))
 
 lemma tammeFiberSquareMiddleIso_right :
-    (hΦ.tammeFiberSquareMiddleIso p q v a hv).hom ≫ hΦ.tammeDifferenceHom p q =
-      squareHoRight (hΦ.tammeFiberTriangle p q v a hv).square ≫
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberSquareMiddleIso hΦ) p q v a hv).hom ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom hΦ) p q =
+      squareHoRight ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv).square ≫
         (hΦ.fiberRightIso (tammeVerdierSequence p q v a hv)).hom := by
   change ((hΦ.fiberMiddleIso (tammeVerdierSequence p q v a hv)).hom ≫
-    (hΦ.tammeSplitComparison p q).inv) ≫ ((hΦ.tammeSplitComparison p q).hom ≫ _) = _
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).inv) ≫ (((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom ≫ _) = _
   rw [Category.assoc, Iso.inv_hom_id_assoc]
   exact hΦ.fiber_right_naturality (tammeVerdierSequence p q v a hv)
 
 lemma tammeDifferenceHom_C : SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
-    hΦ.tammeDifferenceHom p q = SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom hΦ) p q = SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
       SpectrumHo.hom (valueMap Φ (exactLaxDifference p q)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C]
 
 lemma tammeDifferenceHom_D : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
-    hΦ.tammeDifferenceHom p q = SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom hΦ) p q = SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) ≫
       SpectrumHo.hom (valueMap Φ (exactLaxDifference p q)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D]
 
@@ -95,11 +96,11 @@ lemma tamme_exact_middle (j : ℤ) (x : valueHomotopyGroup Φ (laxCategory p q) 
 
 lemma tamme_exact_left (j : ℤ) (x : valueHomotopyGroup Φ (pullbackCategory p q) j) :
     valueHomotopyMap Φ (pullbackInclusion p q) j x = 1 ↔
-      ∃ z : valueHomotopyGroup Φ E (j + 1), hΦ.tammeConnecting p q v a hv j z = x :=
+      ∃ z : valueHomotopyGroup Φ E (j + 1), (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeConnecting hΦ) p q v a hv j z = x :=
   hΦ.exact_left (tammeVerdierSequence p q v a hv) j x
 
 lemma tamme_exact_right (j : ℤ) (x : valueHomotopyGroup Φ E (j + 1)) :
-    hΦ.tammeConnecting p q v a hv j x = 1 ↔
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeConnecting hΦ) p q v a hv j x = 1 ↔
       ∃ z : valueHomotopyGroup Φ (laxCategory p q) (j + 1),
         valueHomotopyMap Φ (exactLaxDifference p q) (j + 1) z = x :=
   hΦ.exact_right (tammeVerdierSequence p q v a hv) j x

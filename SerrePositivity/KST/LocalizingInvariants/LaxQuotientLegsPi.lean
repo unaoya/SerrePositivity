@@ -25,10 +25,10 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 
 include h in
 lemma laxQuotientProductInclusion_pi_zero (j : ℤ) (a : valueHomotopyGroup Φ A j) :
-    homotopyMap (hΦ.laxQuotientProductMap p q r) j
+    homotopyMap ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) j
       (homotopyMap (laxQuotientProductInclusion p q i) j a) = 1 := by
   have he : SpectrumHo.hom (laxQuotientProductInclusion p q i ≫
-      hΦ.laxQuotientProductMap p q r) = SpectrumHo.hom (0 : value Φ A ⟶ value Φ Q) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) = SpectrumHo.hom (0 : value Φ A ⟶ value Φ Q) := by
     rw [SpectrumHo.hom_comp, hΦ.laxQuotientProductInclusion_comp_map p q i r h,
       SpectrumHo.hom_zero]
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, Binary.map_zero,

@@ -22,14 +22,14 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 
 include hΦ in
 lemma laxValueProjectionHom_isIso : IsIso (laxValueProjectionHom Φ p q) := by
-  let s := hΦ.tammeSplitComparison p q
+  let s := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q
   have hi : IsIso (s.hom ≫ laxValueProjectionHom Φ p q) := by
     apply Binary.isIso_of_axes_fixed
     · rw [← Category.assoc]
-      change (SpectrumHo.hom (Binary.inl _ _) ≫ (hΦ.tammeSplitComparison p q).hom) ≫ _ = _
+      change (SpectrumHo.hom (Binary.inl _ _) ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom) ≫ _ = _
       rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C, hΦ.laxValueProjectionHom_fromC]
     · rw [← Category.assoc]
-      change (SpectrumHo.hom (Binary.inr _ _) ≫ (hΦ.tammeSplitComparison p q).hom) ≫ _ = _
+      change (SpectrumHo.hom (Binary.inr _ _) ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom) ≫ _ = _
       rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D, hΦ.laxValueProjectionHom_fromD]
   have h : IsIso (s.inv ≫ (s.hom ≫ laxValueProjectionHom Φ p q)) := inferInstance
   simpa only [Iso.inv_hom_id_assoc] using h

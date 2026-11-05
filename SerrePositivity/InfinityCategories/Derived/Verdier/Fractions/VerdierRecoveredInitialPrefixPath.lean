@@ -149,13 +149,13 @@ variable {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fraction
 def initialFamily : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj :=
   (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ U.whole
 
-lemma initialFamily_prefix : U.initialFamily ≫
+lemma initialFamily_prefix : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) ≫
     (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
     SSet.const (functorVertex (D ≫ q.hom)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily, Category.assoc, U.fixedPrefix, SSet.comp_const]
 
 /-- 同じ商円柱始端の次辺は、保存済み実 K 全族の同じ分数二胞体の上辺。 -/
-lemma initialFamily_last : U.initialFamily ≫
+lemma initialFamily_last : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) ≫
     (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
     (r.numerator ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) r.denominator ≫

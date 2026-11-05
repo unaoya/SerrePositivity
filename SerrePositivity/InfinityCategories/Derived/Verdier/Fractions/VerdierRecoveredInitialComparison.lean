@@ -50,7 +50,7 @@ structure VerdierRecoveredInitialComparison
     (squareLeftArrow (terminalRefinementSquare r.cylinder.single)).edge
   edge : Truncated.Edge (X := (truncation 2).obj ((ihom J).obj ((ihom K).obj C.obj)))
     (functorVertex (internalHomFlipHomEquiv K J C.obj (r.cylinder.whole ≫ (ihom J).map q.hom)))
-    (functorVertex (internalHomFlipHomEquiv K J C.obj U.initialFamily))
+    (functorVertex (internalHomFlipHomEquiv K J C.obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U)))
   isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom K).obj C.obj)) edge
   prefix_eq : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj)).app
     (Opposite.op ⦋1⦌) edge.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom denominator).edge
@@ -65,7 +65,7 @@ lemma exists_verdierRecoveredInitialComparison
     Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) := by
   obtain ⟨t, ht, hraw, hai, hshared⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRecoveredInitialPrefixPath r
   let F := internalHomFlipHomEquiv K J C.obj (r.cylinder.whole ≫ (ihom J).map q.hom)
-  let T := internalHomFlipHomEquiv K J C.obj U.initialFamily
+  let T := internalHomFlipHomEquiv K J C.obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U)
   let A₀ := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom t
   let B₀ := (functorEdgeOfSimplicialHomotopy r.initialFractionHomotopy).map
     ((truncation 2).map ((pre (joinStdSimplexIso 0 0).hom).app ((ihom K).obj C.obj)))
@@ -78,7 +78,7 @@ lemma exists_verdierRecoveredInitialComparison
   have hTp : joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ T =
       (D ≫ q.hom) ≫ constantFunctorMap K C.obj := by
     dsimp only [T]
-    rw [← internalHomFlipHomEquiv_pre_app, U.initialFamily_prefix, spanInternalHomFlip_const]
+    rw [← internalHomFlipHomEquiv_pre_app, (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily_prefix U), spanInternalHomFlip_const]
     rfl
   let A' := A₀.ofEq (congrArg functorVertex hFp).symm (congrArg functorVertex hTp).symm
   let V := r.numerator ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
@@ -96,7 +96,7 @@ lemma exists_verdierRecoveredInitialComparison
       (joinStdSimplexIso 0 0).hom ≫
         internalHomFlipHomEquiv K Δ[1] C.obj (V ≫ (pre squareTopEdge).app C.obj) := by
     dsimp only [T]
-    rw [← internalHomFlipHomEquiv_pre_app, U.initialFamily_last,
+    rw [← internalHomFlipHomEquiv_pre_app, (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily_last U),
       internalHomFlipHomEquiv_pre_app]
     rfl
   have hBs : functorVertex ((joinStdSimplexIso 0 0).hom ≫
@@ -152,7 +152,7 @@ def VerdierRecoveredInitialComparison.iso
     {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
     {U : VerdierRecoveredQuotientCoconeCylinder r G}
     (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
-    FunctorIso (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily := by
+    FunctorIso (r.cylinder.whole ≫ (ihom J).map q.hom) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) := by
   have := c.isInvertible
   exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoUnflip (asIso (Truncated.HomotopyCategory.homMk c.edge))
 

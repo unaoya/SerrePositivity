@@ -16,7 +16,7 @@ open scoped MonoidalCategory.ExternalProduct
 /-- 元の二つの具体的射を連結した、表現可能前層の二つの cell の作用。 -/
 def cubicalDayCubePair (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
     cubicalYoneda.obj c ⊠ cubicalYoneda.obj d ⟶
-      tensor ConcreteCubeᵒᵖ ⋙ cubicalYoneda.obj (concreteCubeTensorObj c d) where
+      tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⋙ cubicalYoneda.obj (concreteCubeTensorObj c d) where
   app P := TypeCat.ofHom fun z => ULift.up (concreteCubeTensorMap z.1.down z.2.down)
   naturality {P Q} f := by
     apply ConcreteCategory.hom_ext

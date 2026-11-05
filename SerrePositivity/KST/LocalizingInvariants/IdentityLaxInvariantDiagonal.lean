@@ -65,7 +65,7 @@ lemma valueDiagonal_difference_zero :
 
 lemma productDiagonal_difference_zero :
     SpectrumHo.hom (Binary.lift (𝟙 (value Φ A)) (𝟙 (value Φ A))) ≫
-      hΦ.laxQuotientProjectionDifferenceHom (𝟙 A) (𝟙 A)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) (𝟙 A) (𝟙 A)
         (exactLaxDifference (𝟙 A) (𝟙 A)) = 0 := by
   rw [← valueDiagonal_product A hΦ, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom,
     Category.assoc, Iso.hom_inv_id_assoc]

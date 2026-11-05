@@ -22,6 +22,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 namespace SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance productVerticesSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -52,12 +53,12 @@ def laxQuotientProductFiberLeftIso :
 def laxQuotientProductFiberMiddleIso :
     squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 0 ≅
       SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
-  eqToIso (congrArg SSet.HomotopyCategory.mk (hΦ.laxQuotientProductFiber_middle_vertex p q i r h))
+  eqToIso (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_middle_vertex hΦ) p q i r h))
 
 def laxQuotientProductFiberRightIso :
     squareHoVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square 1 1 ≅
       SpectrumHo.obj (value Φ Q) :=
-  eqToIso (congrArg SSet.HomotopyCategory.mk (hΦ.laxQuotientProductFiber_right_vertex p q i r h))
+  eqToIso (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_right_vertex hΦ) p q i r h))
 
 end SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
 

@@ -28,9 +28,9 @@ def laxQuotientProductInclusion : value Φ A ⟶ Binary.obj (value Φ C) (value 
     (valueMap Φ i ≫ valueMap Φ (laxSnd p q))
 
 lemma laxQuotientProductFiber_bottom_map :
-    (hΦ.laxQuotientProductFiberLeftIso p q i r h).inv ≫
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso hΦ) p q i r h).inv ≫
         squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
-          (hΦ.laxQuotientProductFiberMiddleIso p q i r h).hom =
+          ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom =
       SpectrumHo.hom (laxQuotientProductInclusion p q i) := by
   apply Binary.ho_hom_ext
   · rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_bottom_fst,
@@ -41,23 +41,23 @@ lemma laxQuotientProductFiber_bottom_map :
     simp only [laxQuotientProductInclusion, ← SpectrumHo.hom_comp, Binary.lift_snd]
 
 lemma laxQuotientProductFiber_right_map :
-    (hΦ.laxQuotientProductFiberMiddleIso p q i r h).hom ≫
-        SpectrumHo.hom (hΦ.laxQuotientProductMap p q r) =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom ≫
+        SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) =
       squareHoRight (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
-        (hΦ.laxQuotientProductFiberRightIso p q i r h).hom := by
+        ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberRightIso hΦ) p q i r h).hom := by
   have he : (squareRightArrow (hΦ.laxQuotientProductFiberSquare p q i r h).square).edge =
-      (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).edge := by
+      (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).edge := by
     rw [squareRightArrow_edge,
       (hΦ.laxQuotientProductFiberSquare p q i r h).right_edge]
     exact SSet.yonedaEquiv.apply_symm_apply _
   exact (FiberModel.homMk_transport _ _
-    (hΦ.laxQuotientProductFiber_middle_vertex p q i r h)
-    (hΦ.laxQuotientProductFiber_right_vertex p q i r h) he).symm
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_middle_vertex hΦ) p q i r h)
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_right_vertex hΦ) p q i r h) he).symm
 
 include h in
 lemma laxQuotientProductInclusion_comp_map :
     SpectrumHo.hom (laxQuotientProductInclusion p q i) ≫
-      SpectrumHo.hom (hΦ.laxQuotientProductMap p q r) = 0 := by
+      SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) = 0 := by
   rw [← hΦ.laxQuotientProductFiber_bottom_map p q i r h, Category.assoc,
     Category.assoc, laxQuotientProductFiber_right_map]
   rw [← Category.assoc (squareHoBottom _) (squareHoRight _),

@@ -23,7 +23,7 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
   (hΦ : IsLocalizingInvariant Φ)
 
 def difference : Binary.obj (value Φ A) (value Φ A) ⟶ value Φ A :=
-  hΦ.laxQuotientProductMap (𝟙 A) (𝟙 A) (exactLaxDifference (𝟙 A) (𝟙 A))
+  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) (𝟙 A) (𝟙 A) (exactLaxDifference (𝟙 A) (𝟙 A))
 
 lemma difference_C (j : ℤ) (a : valueHomotopyGroup Φ A j) :
     homotopyMap (difference A hΦ) j (homotopyMap (Binary.inl _ _) j a) =

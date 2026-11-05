@@ -41,12 +41,12 @@ lemma cubicalDayTensor_cell_hom_ext {K L M : CubicalSet.{u}}
 
 /-- 二つの cell に対する自然な連結作用を、元の Day tensor 全体へ延長する。 -/
 def cubicalDayTensorDesc {K L M : CubicalSet.{u}}
-    (a : K ⊠ L ⟶ tensor ConcreteCubeᵒᵖ ⋙ M) : cubicalDayTensor K L ⟶ M :=
+    (a : K ⊠ L ⟶ tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⋙ M) : cubicalDayTensor K L ⟶ M :=
   Functor.descOfIsLeftKanExtension _ (cubicalDayTensorUnit K L) _ a
 
 /-- 元の延長は、指定した全ての連結 cell の作用を厳密に回収する。 -/
 lemma cubicalDayTensorDesc_cell {K L M : CubicalSet.{u}}
-    (a : K ⊠ L ⟶ tensor ConcreteCubeᵒᵖ ⋙ M)
+    (a : K ⊠ L ⟶ tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⋙ M)
     (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalDayTensorDesc a).app (op (concreteCubeTensorObj c d))
         (cubicalDayTensorCell c d x y) = a.app (op c, op d) (x, y) :=

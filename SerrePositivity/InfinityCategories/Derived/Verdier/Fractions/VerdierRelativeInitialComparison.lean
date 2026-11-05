@@ -52,7 +52,7 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 def VerdierRecoveredInitialComparison.ambientHomotopy
     (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
-    SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily :=
+    SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) :=
   _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy c.edge
 
 lemma VerdierRecoveredInitialComparison.ambientHomotopy_h
@@ -74,14 +74,14 @@ lemma VerdierRecoveredBoundaryComparison.ambientHomotopy_h
 def VerdierRecoveredBoundaryComparison.initialAmbientHomotopy
     (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     SSet.Homotopy (S.ι ≫ (r.cylinder.whole ≫ (ihom J).map q.hom))
-      (S.ι ≫ U.initialFamily) := by
+      (S.ι ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U)) := by
   let H := functorHomotopyPrecomp b.ambientHomotopy (SSet.ι₀ : S.toSSet ⟶ P)
   have hF : (SSet.ι₀ : S.toSSet ⟶ P) ≫
       (r.cylinder.homotopy.h ≫ (ihom J).map q.hom) =
       S.ι ≫ (r.cylinder.whole ≫ (ihom J).map q.hom) := by
     rw [← Category.assoc, r.cylinder.homotopy.h₀, Category.assoc]
   have hG : (SSet.ι₀ : S.toSSet ⟶ P) ≫ ((S.ι ▷ Δ[1]) ≫ U.whole) =
-      S.ι ≫ U.initialFamily := by
+      S.ι ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) := by
     rw [SSet.ι₀_comp_assoc]
     rfl
   exact { h := H.h, h₀ := H.h₀.trans hF, h₁ := H.h₁.trans hG, rel := H.rel }
@@ -116,7 +116,7 @@ lemma initialAmbient_last : b.initialAmbientHomotopy.h ≫
     (L := join (Δ[0] : SSet.{u}) Δ[0]) (X := C.obj) e) (c.boundary_last_eq b)
 
 lemma initialTarget_inverts (_c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
-    InvertsEdges U.initialFamily Set.univ := by
+    InvertsEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) Set.univ := by
   have hc := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫
     U.coreWhole)).comp (quasicategoryCore ((ihom J).obj C.obj)).ι
   simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily,
@@ -146,7 +146,7 @@ end VerdierRecoveredInitialComparison
 /-- 同じ K 始端比較を指定 S 始端比較へ、両端と両制限を保持して実際に延長する。 -/
 private lemma exists_relativeInitialHomotopy
     (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
-    ∃ H : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily,
+    ∃ H : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U),
       (S.ι ▷ (Δ[1] : SSet.{u})) ≫ H.h = b.initialAmbientHomotopy.h ∧
       H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
         c.ambientHomotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj ∧
@@ -160,7 +160,7 @@ private lemma exists_relativeInitialHomotopy
 /-- 指定 S 比較と両制限を保持し、元の core に入る同じ K 始端全比較。 -/
 structure VerdierRelativeInitialComparison
     (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) where
-  homotopy : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily
+  homotopy : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U)
   boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h = b.initialAmbientHomotopy.h
   attachment_eq : homotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
     c.ambientHomotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj
@@ -224,7 +224,7 @@ lemma boundary_core_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ d.corePrism =
   rw [d.boundary_eq, b.initialAmbientHomotopy_h]
   rfl
 
-def iso : FunctorIso (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily :=
+def iso : FunctorIso (r.cylinder.whole ≫ (ihom J).map q.hom) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily U) :=
   VertexIso.map (functorIsoOfSimplicialHomotopy d.coreHomotopy)
     ((ihom K).map (quasicategoryCore ((ihom J).obj C.obj)).ι)
 

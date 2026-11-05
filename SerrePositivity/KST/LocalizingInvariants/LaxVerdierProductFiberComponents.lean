@@ -32,10 +32,10 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 lemma laxQuotientProductFiberComparison_middle_arrow :
     Arrow.mk (FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).hom =
-      Arrow.mk (hΦ.laxQuotientProjectionMiddleIso p q i r h).inv := by
+      Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso hΦ) p q i r h).inv := by
   have he := restrictedFunctorEdge_evaluation_arrow squareRightEdge
     (hΦ.laxQuotientProductFiberEdge p q i r h)
-    (hΦ.laxQuotientProductArrowIso p q i r h).edge
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso hΦ) p q i r h).edge
     (hΦ.laxQuotientProductFiberEdge_right p q i r h)
     (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2)))
   rw [FunctorIso.edge_homMk] at he
@@ -46,7 +46,7 @@ lemma laxQuotientProductFiberComparison_middle_arrow :
   rw [hv] at he
   exact (functorIso_toNatIso_hom_app_arrow
     (hΦ.laxQuotientProductFiberComparison p q i r h) _).trans
-      (he.trans (hΦ.laxQuotientProductArrowIso_source p q i r h))
+      (he.trans ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso_source hΦ) p q i r h))
 
 lemma laxQuotientProductFiberComparison_right_arrow :
     Arrow.mk (FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
@@ -54,7 +54,7 @@ lemma laxQuotientProductFiberComparison_right_arrow :
       Arrow.mk (hΦ.fiberRightIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).inv := by
   have he := restrictedFunctorEdge_evaluation_arrow squareRightEdge
     (hΦ.laxQuotientProductFiberEdge p q i r h)
-    (hΦ.laxQuotientProductArrowIso p q i r h).edge
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso hΦ) p q i r h).edge
     (hΦ.laxQuotientProductFiberEdge_right p q i r h)
     (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2)))
   rw [FunctorIso.edge_homMk] at he
@@ -65,26 +65,26 @@ lemma laxQuotientProductFiberComparison_right_arrow :
   rw [hv] at he
   exact (functorIso_toNatIso_hom_app_arrow
     (hΦ.laxQuotientProductFiberComparison p q i r h) _).trans
-      (he.trans (hΦ.laxQuotientProductArrowIso_target p q i r h))
+      (he.trans ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso_target hΦ) p q i r h))
 
 lemma laxQuotientProductFiberComparison_middle :
     FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      hΦ.laxQuotientProductFiberMiddleIso p q i r h ≪≫
-        (hΦ.laxQuotientProjectionMiddleIso p q i r h).symm := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h ≪≫
+        ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso hΦ) p q i r h).symm := by
   apply Iso.ext
   exact hom_eq_transport_of_arrow_eq _ _
-    (congrArg SSet.HomotopyCategory.mk (hΦ.laxQuotientProductFiber_middle_vertex p q i r h))
+    (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_middle_vertex hΦ) p q i r h))
     (hΦ.laxQuotientProductFiberComparison_middle_arrow p q i r h)
 
 lemma laxQuotientProductFiberComparison_right :
     FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      hΦ.laxQuotientProductFiberRightIso p q i r h ≪≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberRightIso hΦ) p q i r h ≪≫
         (hΦ.fiberRightIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).symm := by
   apply Iso.ext
   exact hom_eq_transport_of_arrow_eq _ _
-    (congrArg SSet.HomotopyCategory.mk (hΦ.laxQuotientProductFiber_right_vertex p q i r h))
+    (congrArg SSet.HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_right_vertex hΦ) p q i r h))
     (hΦ.laxQuotientProductFiberComparison_right_arrow p q i r h)
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

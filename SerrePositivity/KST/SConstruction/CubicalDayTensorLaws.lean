@@ -38,7 +38,7 @@ lemma cubicalDayTensorMap_cell {K K' L L' : CubicalSet.{u}}
     (cubicalDayTensorMap f g).app (op (concreteCubeTensorObj c d))
         (cubicalDayTensorCell c d x y) =
       cubicalDayTensorCell c d (f.app (op c) x) (g.app (op d) y) := by
-  have h := convolutionExtensionUnit_comp_ι_map_tensorHom_app ConcreteCubeᵒᵖ (Type u)
+  have h := convolutionExtensionUnit_comp_ι_map_tensorHom_app _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)
       (show DayFunctor.mk K ⟶ DayFunctor.mk K' from DayFunctor.Hom.mk f)
       (show DayFunctor.mk L ⟶ DayFunctor.mk L' from DayFunctor.Hom.mk g) (op c) (op d)
   exact congrArg (fun t => t (x, y)) h

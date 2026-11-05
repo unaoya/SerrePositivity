@@ -73,7 +73,7 @@ variable {Φ} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientProjectionDifferenceHom_shift_C :
     SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
-        hΦ.laxQuotientProjectionDifferenceHom p q r =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q r =
       SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)) ≫
         SpectrumHo.hom (valueMap Φ (SuspensionExact.exactMap Q)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_C]
@@ -81,7 +81,7 @@ lemma laxQuotientProjectionDifferenceHom_shift_C :
 
 lemma laxQuotientProjectionDifferenceHom_shift_D :
     SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
-      hΦ.laxQuotientProjectionDifferenceHom p q r =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q r =
         SpectrumHo.hom (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_D]
   exact _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_quotientFromD p q r Φ

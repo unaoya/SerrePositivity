@@ -46,14 +46,14 @@ def pathFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.Squ
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.upper_right
 
-lemma pathFrame_source : (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H).postcomp (equivalencePathEndpoint X 0) = f := by
+lemma pathFrame_source : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (equivalencePathEndpoint X 0) = f := by
   apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
   · exact homotopyPathFamily_source H.bottom H.bottom_invertible
   · exact homotopyPathFamily_source H.top H.top_invertible
   · exact homotopyPathFamily_source H.left H.left_invertible
   · exact homotopyPathFamily_source H.right H.right_invertible
 
-lemma pathFrame_target : (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H).postcomp (equivalencePathEndpoint X 1) = g := by
+lemma pathFrame_target : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame H)) (equivalencePathEndpoint X 1) = g := by
   apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
   · exact homotopyPathFamily_target H.bottom H.bottom_invertible
   · exact homotopyPathFamily_target H.top H.top_invertible

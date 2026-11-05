@@ -22,6 +22,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 namespace SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance homotopyFiberValueSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -34,19 +35,19 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 
 def laxQuotientProductFiberBFComparison : FunctorIso
     (hΦ.laxQuotientProductFiberSquare p q i r h).square
-    (FiberModel.homotopyFiberSquare (hΦ.laxQuotientProductMap p q r)).square :=
+    (FiberModel.homotopyFiberSquare ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).square :=
   Classical.choice (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.nonempty_functorIso (X := Sp.{u})
     (hΦ.laxQuotientProductFiberSquare p q i r h)
-    (FiberModel.homotopyFiberSquare (hΦ.laxQuotientProductMap p q r)))
+    (FiberModel.homotopyFiberSquare ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)))
 
 def laxQuotientHomotopyFiberValueIso :
-    SpectrumHo.obj (OmegaSpectrum.homotopyFiber (hΦ.laxQuotientProductMap p q r)) ≅
+    SpectrumHo.obj (OmegaSpectrum.homotopyFiber ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)) ≅
       SpectrumHo.obj (value Φ A) :=
   (eqToIso (congrArg SSet.HomotopyCategory.mk
-    (FiberModel.homotopyFiberSquare_vertex (hΦ.laxQuotientProductMap p q r)))).symm ≪≫
-      (FunctorIso.app (hΦ.laxQuotientProductFiberBFComparison p q i r h)
+    (FiberModel.homotopyFiberSquare_vertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)))).symm ≪≫
+      (FunctorIso.app ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberBFComparison hΦ) p q i r h)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm ≪≫
-          hΦ.laxQuotientProductFiberLeftIso p q i r h
+          (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso hΦ) p q i r h
 
 end SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
 

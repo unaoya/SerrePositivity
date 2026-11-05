@@ -57,7 +57,7 @@ variable {Φ} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientProjectionDifferenceHom_cofiber_C :
     SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
-        hΦ.laxQuotientProjectionDifferenceHom p q (exactLaxDifference p q) =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q (exactLaxDifference p q) =
       SpectrumHo.hom (valueMap Φ p) ≫
         SpectrumHo.hom (valueMap Φ (SuspensionExact.exactMap E)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_C]
@@ -65,7 +65,7 @@ lemma laxQuotientProjectionDifferenceHom_cofiber_C :
 
 lemma laxQuotientProjectionDifferenceHom_cofiber_D :
     SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
-      hΦ.laxQuotientProjectionDifferenceHom p q (exactLaxDifference p q) =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q (exactLaxDifference p q) =
         SpectrumHo.hom (valueMap Φ q) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_D]
   exact valueMap_fromD_difference Φ p q

@@ -17,7 +17,7 @@ def cubicalDayUnit : CubicalSet.{u} := (𝟙_ CubicalDaySet.{u}).functor
 
 /-- 元の Day 単位を生成する零次元 cell。 -/
 def cubicalDayUnitCell : cubicalDayUnit.{u}.obj (op (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)) :=
-  DayFunctor.ν ConcreteCubeᵒᵖ (Type u) PUnit.unit
+  DayFunctor.ν _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u) PUnit.unit
 
 /-- 元の Day 単位から零次元の表現可能立方体への比較。 -/
 def cubicalDayUnitProjection : cubicalDayUnit.{u} ⟶ cubicalYoneda.{u}.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) :=

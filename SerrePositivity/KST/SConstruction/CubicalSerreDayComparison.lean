@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の二つの cell の鎖比較を制限 Yoneda に値を持つ自然変換へ移す。 -/
 def cubicalSerreDayPairTransform (K L : CubicalSet.{u}) :
-    K ⊠ L ⟶ tensor ConcreteCubeᵒᵖ ⋙
+    K ⊠ L ⟶ tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⋙
       (cubicalSerreRestrictedYoneda A).obj
         ((cubicalSerreChains A).obj K ⊗ (cubicalSerreChains A).obj L) where
   app P := TypeCat.ofHom fun z => ULift.up (cubicalSerreDayPair A P.1.unop P.2.unop z.1 z.2)

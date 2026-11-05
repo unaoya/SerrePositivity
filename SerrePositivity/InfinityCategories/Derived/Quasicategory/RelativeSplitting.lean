@@ -72,23 +72,23 @@ def splitFactorComparison : SpectrumHo.obj (Binary.obj
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 0 0))
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 1 1))) ≅
       SpectrumHo.obj (NativeSplit.product (hE.fiberTriangle d.toRelativeVerdierDiagram)) :=
-  Binary.mapIso (hE.splitLeftFactorIso d) (hE.splitRightFactorIso d)
+  Binary.mapIso ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitLeftFactorIso hE) d) ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitRightFactorIso hE) d)
 
 /-- S 内の切断から、元の二因子の実 ∞ 積と元の中頂点の同値を得る。 -/
 def splitComparison : SpectrumHo.obj (Binary.obj
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 0 0))
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 1 1))) ≅
       squareHoVertex (d.square ≫ E) 1 0 :=
-  hE.splitFactorComparison d ≪≫
+  (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison hE) d ≪≫
     NativeSplit.equivalence (hE.fiberTriangle d.toRelativeVerdierDiagram)
       (hE.fiberTriangle_isFiber d.toRelativeVerdierDiagram)
       (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection (E := E) d) (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection_section (E := E) d)
 
 lemma splitComparison_inclusion : SpectrumHo.hom (Binary.inl _ _) ≫
-    (hE.splitComparison d).hom =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d).hom =
       (SpectrumHo.spectrumIso _).hom ≫ squareHoBottom (d.square ≫ E) := by
   change SpectrumHo.hom (Binary.inl _ _) ≫
-    ((hE.splitFactorComparison d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) = _
+    (((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison hE) d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) = _
   dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison, Binary.mapIso, fiberTriangle]
   rw [← Category.assoc, Binary.hoMap_inl, Category.assoc,
     NativeSplit.equivalence_inclusion]
@@ -96,20 +96,20 @@ lemma splitComparison_inclusion : SpectrumHo.hom (Binary.inl _ _) ≫
     Iso.hom_inv_id_assoc]
 
 lemma splitComparison_section : SpectrumHo.hom (Binary.inr _ _) ≫
-    (hE.splitComparison d).hom =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d).hom =
       (SpectrumHo.spectrumIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection (E := E) d := by
   change SpectrumHo.hom (Binary.inr _ _) ≫
-    ((hE.splitFactorComparison d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) = _
+    (((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison hE) d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) = _
   dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison, Binary.mapIso, fiberTriangle]
   rw [← Category.assoc, Binary.hoMap_inr, Category.assoc,
     NativeSplit.equivalence_section]
   simp only [_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitRightFactorIso, fiberTriangle, Iso.trans_hom, Category.assoc,
     Iso.hom_inv_id_assoc]
 
-lemma splitComparison_projection : (hE.splitComparison d).hom ≫
+lemma splitComparison_projection : ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d).hom ≫
     squareHoRight (d.square ≫ E) =
       SpectrumHo.hom (Binary.snd _ _) ≫ (SpectrumHo.spectrumIso _).hom := by
-  change ((hE.splitFactorComparison d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) ≫ _ = _
+  change (((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison hE) d).hom ≫ (NativeSplit.equivalence _ _ _ _).hom) ≫ _ = _
   dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison, Binary.mapIso, fiberTriangle]
   rw [Category.assoc, NativeSplit.equivalence_projection, ← Category.assoc]
   erw [Binary.hoMap_snd]
@@ -122,20 +122,20 @@ def tammeSplitComparison : SpectrumHo.obj (Binary.obj
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 1 1))
     (SpectrumHo.spectrum (squareHoVertex (d.square ≫ E) 0 0))) ≅
       squareHoVertex (d.square ≫ E) 1 0 :=
-  Binary.swapIso _ _ ≪≫ hE.splitComparison d
+  Binary.swapIso _ _ ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d
 
 lemma tammeSplitComparison_C : SpectrumHo.hom (Binary.inl _ _) ≫
-    (hE.tammeSplitComparison d).hom =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison hE) d).hom =
       (SpectrumHo.spectrumIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection (E := E) d := by
   change SpectrumHo.hom (Binary.inl _ _) ≫
-    ((Binary.swapIso _ _).hom ≫ (hE.splitComparison d).hom) = _
+    ((Binary.swapIso _ _).hom ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d).hom) = _
   rw [← Category.assoc, Binary.swapIso_inl, _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison_section]
 
 lemma tammeSplitComparison_D : SpectrumHo.hom (Binary.inr _ _) ≫
-    (hE.tammeSplitComparison d).hom =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison hE) d).hom =
       (SpectrumHo.spectrumIso _).hom ≫ squareHoBottom (d.square ≫ E) := by
   change SpectrumHo.hom (Binary.inr _ _) ≫
-    ((Binary.swapIso _ _).hom ≫ (hE.splitComparison d).hom) = _
+    ((Binary.swapIso _ _).hom ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison hE) d).hom) = _
   rw [← Category.assoc, Binary.swapIso_inr, _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison_inclusion]
 
 /-- 因子の積は実 ∞ 極限であり、群の積による代用ではない。 -/
