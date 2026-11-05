@@ -1,0 +1,2621 @@
+{
+  "status": "STOPPED_INTERNAL_ROUND_2_RECURRENCE_NOT_STOP_POINT_4",
+  "base": "640288f33e3d428c41d9cc0e5a35b85f1a63ea5c",
+  "source_head": "6caa532d968251850473541470cc6aae9c07d4c7",
+  "rule": "IF-F §4 → IF-W2c §4 → IF-W2b §16(a)",
+  "reason": "Legacy abbreviation unfold references remain in rw after the first supplement. The same tactic-unfold cause recurs in supplemented modules.",
+  "rounds": [
+    {
+      "round": 1,
+      "exit_code": 1,
+      "seconds": 363.181,
+      "failed_count": 42,
+      "failed_modules": [
+        "SerrePositivity.InfinityCategories.Derived.PointedModuleSimplex",
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing",
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers",
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy",
+        "SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization",
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality",
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FibrationTotalComponents",
+        "SerrePositivity.InfinityCategories.Kan.CubeActiveSupport",
+        "SerrePositivity.InfinityCategories.Kan.DoubleCylinderPaths",
+        "SerrePositivity.InfinityCategories.Kan.FibrationTower",
+        "SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex",
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex",
+        "SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler",
+        "SerrePositivity.InfinityCategories.Kan.SquareBoundaryComposition",
+        "SerrePositivity.InfinityCategories.Kan.TowerLimOne",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklacePreferredForm",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplicialSet",
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalOrder",
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder",
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom",
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams",
+        "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier",
+        "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory",
+        "SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse",
+        "SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence",
+        "SerrePositivity.KST.Comparison.StrictPushoutCube",
+        "SerrePositivity.KST.Fibration.KanCommSqCone",
+        "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+        "SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomNaturality",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber",
+        "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierPresentation",
+        "SerrePositivity.KST.SConstruction.CofiberCompletion",
+        "SerrePositivity.KST.SConstruction.IdentityPushoutShapes"
+      ],
+      "root_count": 103,
+      "unverified_root_count": 40,
+      "unverified_roots": [
+        "SerrePositivity.InfinityCategories.Derived.Checks",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility",
+        "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport",
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy",
+        "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy",
+        "SerrePositivity.InfinityCategories.Kan.DoubleCylinderPaths",
+        "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups",
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareDifference",
+        "SerrePositivity.InfinityCategories.Kan.TowerLimOneMittagLeffler",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanFunctor",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralNaturality",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklacePreferredCarrier",
+        "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality",
+        "SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory",
+        "SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality",
+        "SerrePositivity.KST.NonConnective.DGKInputCompactGenerationAdjoint",
+        "SerrePositivity.KST.Spectra.CommutativeHomotopyDiagram",
+        "SerrePositivity.KST.Spectra.ThreeEdgeTransportSquareProjection"
+      ],
+      "errors": {
+        "SerrePositivity.InfinityCategories.Derived.PointedModuleSimplex": [
+          {
+            "line": 28,
+            "column": 62,
+            "message": "expected token"
+          },
+          {
+            "line": 34,
+            "column": 62,
+            "message": "expected token"
+          },
+          {
+            "line": 41,
+            "column": 56,
+            "message": "expected token"
+          },
+          {
+            "line": 49,
+            "column": 76,
+            "message": "expected token"
+          },
+          {
+            "line": 60,
+            "column": 42,
+            "message": "Unknown identifier `module_yoneda_const_zero`"
+          },
+          {
+            "line": 58,
+            "column": 42,
+            "message": "unsolved goals"
+          },
+          {
+            "line": 79,
+            "column": 65,
+            "message": "expected token"
+          },
+          {
+            "line": 79,
+            "column": 28,
+            "message": "Unknown identifier `Δ`"
+          },
+          {
+            "line": 79,
+            "column": 39,
+            "message": "Function expected at"
+          },
+          {
+            "line": 79,
+            "column": 28,
+            "message": "failed to prove index is valid, possible solutions:"
+          },
+          {
+            "line": 94,
+            "column": 59,
+            "message": "expected token"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions": [
+          {
+            "line": 44,
+            "column": 18,
+            "message": "Unknown identifier `StableCategory`"
+          },
+          {
+            "line": 44,
+            "column": 18,
+            "message": "Unknown identifier `StableCategory`"
+          },
+          {
+            "line": 44,
+            "column": 18,
+            "message": "Unknown identifier `StableCategory`"
+          },
+          {
+            "line": 44,
+            "column": 43,
+            "message": "Unknown identifier `ExactMap`"
+          },
+          {
+            "line": 44,
+            "column": 62,
+            "message": "Unknown identifier `ExactMap`"
+          },
+          {
+            "line": 46,
+            "column": 12,
+            "message": "typeclass instance problem is stuck"
+          },
+          {
+            "line": 47,
+            "column": 12,
+            "message": "typeclass instance problem is stuck"
+          },
+          {
+            "line": 50,
+            "column": 19,
+            "message": "Unknown identifier `zeroC`"
+          },
+          {
+            "line": 51,
+            "column": 23,
+            "message": "Unknown identifier `p.hom.app`"
+          },
+          {
+            "line": 57,
+            "column": 19,
+            "message": "Unknown identifier `zeroD`"
+          },
+          {
+            "line": 58,
+            "column": 23,
+            "message": "Unknown identifier `q.hom.app`"
+          },
+          {
+            "line": 69,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC`"
+          },
+          {
+            "line": 72,
+            "column": 92,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC_post`"
+          },
+          {
+            "line": 75,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD`"
+          },
+          {
+            "line": 78,
+            "column": 92,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD_post`"
+          },
+          {
+            "line": 81,
+            "column": 96,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC._proof_1`"
+          },
+          {
+            "line": 84,
+            "column": 92,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC.eq_1`"
+          },
+          {
+            "line": 87,
+            "column": 92,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD.eq_1`"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams": [
+          {
+            "line": 27,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 35,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.FibrationTower": [
+          {
+            "line": 236,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f"
+          },
+          {
+            "line": 254,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization": [
+          {
+            "line": 152,
+            "column": 26,
+            "message": "Unknown identifier `LastHornContraction.vertex`"
+          },
+          {
+            "line": 150,
+            "column": 71,
+            "message": "unsolved goals"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FibrationTotalComponents": [
+          {
+            "line": 42,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `hs`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams": [
+          {
+            "line": 92,
+            "column": 25,
+            "message": "Unknown identifier `StableCategory`"
+          },
+          {
+            "line": 92,
+            "column": 47,
+            "message": "Unknown identifier `ExactMap`"
+          },
+          {
+            "line": 147,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.inverseExactMap._proof_1`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom": [
+          {
+            "line": 93,
+            "column": 8,
+            "message": "Unknown identifier `arrowFamilyHomotopy`"
+          },
+          {
+            "line": 102,
+            "column": 10,
+            "message": "Unknown identifier `arrowFamilyHomotopy`"
+          },
+          {
+            "line": 91,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy'"
+          },
+          {
+            "line": 125,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy"
+          },
+          {
+            "line": 135,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_2`"
+          },
+          {
+            "line": 138,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_3`"
+          },
+          {
+            "line": 141,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_4`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality": [
+          {
+            "line": 28,
+            "column": 31,
+            "message": "Unknown identifier `SquareFrame`"
+          },
+          {
+            "line": 30,
+            "column": 27,
+            "message": "Unknown identifier `SquareFrame`"
+          },
+          {
+            "line": 48,
+            "column": 50,
+            "message": "Unknown identifier `SquareFrame`"
+          },
+          {
+            "line": 138,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 144,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 149,
+            "column": 51,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 154,
+            "column": 51,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 197,
+            "column": 97,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp`"
+          },
+          {
+            "line": 245,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_1`"
+          },
+          {
+            "line": 248,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_2`"
+          },
+          {
+            "line": 251,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_3`"
+          },
+          {
+            "line": 254,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_4`"
+          },
+          {
+            "line": 257,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_1`"
+          },
+          {
+            "line": 260,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_2`"
+          },
+          {
+            "line": 263,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_3`"
+          },
+          {
+            "line": 266,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_4`"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomNaturality": [
+          {
+            "line": 27,
+            "column": 6,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 35,
+            "column": 6,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.VerdierPresentation": [
+          {
+            "line": 74,
+            "column": 30,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 76,
+            "column": 0,
+            "message": "Not a definitional equality: the left-hand side"
+          },
+          {
+            "line": 77,
+            "column": 44,
+            "message": "Type mismatch"
+          },
+          {
+            "line": 82,
+            "column": 2,
+            "message": "Type mismatch"
+          },
+          {
+            "line": 87,
+            "column": 2,
+            "message": "Type mismatch"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier": [
+          {
+            "line": 35,
+            "column": 14,
+            "message": "Unknown identifier `StableCategory`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle": [
+          {
+            "line": 73,
+            "column": 8,
+            "message": "Failed to rewrite using equation theorems for `SquarePastingHorn.transposed`"
+          },
+          {
+            "line": 76,
+            "column": 8,
+            "message": "Failed to rewrite using equation theorems for `SquarePastingHorn.transposed`"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber": [
+          {
+            "line": 62,
+            "column": 36,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 59,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.KST.LocalizingInvariants.fixedMarkedSpanToFamilyFiber'"
+          },
+          {
+            "line": 88,
+            "column": 24,
+            "message": "Unknown constant `_inhabitedExprDummy`"
+          },
+          {
+            "line": 92,
+            "column": 24,
+            "message": "Unknown constant `_inhabitedExprDummy`"
+          },
+          {
+            "line": 80,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.KST.LocalizingInvariants.markedSpanFamilyFiberIso'"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction": [
+          {
+            "line": 68,
+            "column": 6,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares": [
+          {
+            "line": 55,
+            "column": 51,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 62,
+            "column": 27,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 71,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 79,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction": [
+          {
+            "line": 57,
+            "column": 6,
+            "message": "Invalid field `coherentEmbedding`: The environment does not contain `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding`, so it is not possible to project the field `coherentEmbedding` from an expression"
+          },
+          {
+            "line": 59,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `coherentEmbedding`"
+          },
+          {
+            "line": 64,
+            "column": 6,
+            "message": "Invalid field `coherentEmbedding`: The environment does not contain `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding`, so it is not possible to project the field `coherentEmbedding` from an expression"
+          },
+          {
+            "line": 67,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `coherentEmbedding`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber": [
+          {
+            "line": 69,
+            "column": 6,
+            "message": "Invalid field `coefficientEmbedding`: The environment does not contain `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding`, so it is not possible to project the field `coefficientEmbedding` from an expression"
+          },
+          {
+            "line": 71,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `coefficientEmbedding`"
+          },
+          {
+            "line": 85,
+            "column": 9,
+            "message": "Invalid field `coefficientEmbedding`: The environment does not contain `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding`, so it is not possible to project the field `coefficientEmbedding` from an expression"
+          },
+          {
+            "line": 85,
+            "column": 36,
+            "message": "Invalid field `coefficientEmbedding_over`: The environment does not contain `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding_over`, so it is not possible to project the field `coefficientEmbedding_over` from an expression"
+          }
+        ],
+        "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom": [
+          {
+            "line": 35,
+            "column": 4,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.KST.SConstruction.IdentityPushoutShapes": [
+          {
+            "line": 107,
+            "column": 25,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.KST.SConstruction.CofiberCompletion": [
+          {
+            "line": 97,
+            "column": 25,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.KST.Comparison.StrictPushoutCube": [
+          {
+            "line": 67,
+            "column": 6,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 69,
+            "column": 6,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse": [
+          {
+            "line": 47,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₁`"
+          },
+          {
+            "line": 47,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₀`"
+          },
+          {
+            "line": 58,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₁`"
+          },
+          {
+            "line": 58,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₀`"
+          },
+          {
+            "line": 69,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₁`"
+          },
+          {
+            "line": 69,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `h₀`"
+          }
+        ],
+        "SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence": [
+          {
+            "line": 38,
+            "column": 2,
+            "message": "unsolved goals"
+          },
+          {
+            "line": 40,
+            "column": 2,
+            "message": "unsolved goals"
+          },
+          {
+            "line": 74,
+            "column": 8,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 77,
+            "column": 8,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing": [
+          {
+            "line": 24,
+            "column": 5,
+            "message": "unknown namespace `Spectra`"
+          },
+          {
+            "line": 29,
+            "column": 42,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 30,
+            "column": 51,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 32,
+            "column": 18,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 33,
+            "column": 18,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 34,
+            "column": 10,
+            "message": "Unknown identifier `KanHomotopy.point`"
+          },
+          {
+            "line": 36,
+            "column": 14,
+            "message": "Unknown identifier `KanHomotopy.map`"
+          },
+          {
+            "line": 37,
+            "column": 8,
+            "message": "Unknown identifier `KanHomotopy.point`"
+          },
+          {
+            "line": 48,
+            "column": 24,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 49,
+            "column": 24,
+            "message": "Unknown identifier `KanHomotopy.map`"
+          },
+          {
+            "line": 51,
+            "column": 29,
+            "message": "Unknown identifier `KanHomotopyGroup.map`"
+          },
+          {
+            "line": 64,
+            "column": 24,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 65,
+            "column": 25,
+            "message": "Unknown identifier `KanHomotopy.map`"
+          },
+          {
+            "line": 67,
+            "column": 9,
+            "message": "Unknown identifier `exact_total_base_all`"
+          },
+          {
+            "line": 78,
+            "column": 124,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_surjective_of_fiber_subsingleton`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers": [
+          {
+            "line": 25,
+            "column": 5,
+            "message": "unknown namespace `Spectra`"
+          },
+          {
+            "line": 41,
+            "column": 4,
+            "message": "Unknown identifier `KanFiber`"
+          },
+          {
+            "line": 41,
+            "column": 29,
+            "message": "Unknown identifier `KanFiber`"
+          },
+          {
+            "line": 69,
+            "column": 33,
+            "message": "Unknown identifier `fiberι`"
+          },
+          {
+            "line": 69,
+            "column": 46,
+            "message": "Unknown identifier `fiberι`"
+          },
+          {
+            "line": 69,
+            "column": 5,
+            "message": "Unknown identifier `pullbackFiberIso`"
+          },
+          {
+            "line": 70,
+            "column": 13,
+            "message": "Unknown identifier `pullbackFiberIso`"
+          },
+          {
+            "line": 70,
+            "column": 31,
+            "message": "Unknown identifier `fiberLift_ι`"
+          },
+          {
+            "line": 74,
+            "column": 12,
+            "message": "Unknown identifier `KanFiber`"
+          },
+          {
+            "line": 74,
+            "column": 12,
+            "message": "Unknown identifier `KanFiber`"
+          },
+          {
+            "line": 74,
+            "column": 39,
+            "message": "Unknown identifier `fiberι`"
+          },
+          {
+            "line": 74,
+            "column": 62,
+            "message": "Unknown identifier `fiberι`"
+          },
+          {
+            "line": 77,
+            "column": 8,
+            "message": "Unknown identifier `fiber_hom_ext`"
+          },
+          {
+            "line": 78,
+            "column": 2,
+            "message": "No goals to be solved"
+          },
+          {
+            "line": 83,
+            "column": 56,
+            "message": "Unknown identifier `fiberPoint`"
+          },
+          {
+            "line": 83,
+            "column": 5,
+            "message": "Unknown identifier `pullbackFiberIso`"
+          },
+          {
+            "line": 84,
+            "column": 8,
+            "message": "Unknown identifier `fiber_vertex_ext`"
+          },
+          {
+            "line": 85,
+            "column": 6,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 95,
+            "column": 94,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fiber_vertex_ext`"
+          },
+          {
+            "line": 98,
+            "column": 94,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso`"
+          },
+          {
+            "line": 101,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι`"
+          },
+          {
+            "line": 104,
+            "column": 106,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι_assoc`"
+          },
+          {
+            "line": 116,
+            "column": 103,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_1`"
+          },
+          {
+            "line": 119,
+            "column": 103,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_2`"
+          },
+          {
+            "line": 122,
+            "column": 103,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_3`"
+          },
+          {
+            "line": 125,
+            "column": 103,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_4`"
+          },
+          {
+            "line": 128,
+            "column": 103,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_5`"
+          },
+          {
+            "line": 131,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso.congr_simp`"
+          },
+          {
+            "line": 134,
+            "column": 99,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso.eq_1`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy": [
+          {
+            "line": 26,
+            "column": 5,
+            "message": "unknown namespace `Spectra`"
+          },
+          {
+            "line": 48,
+            "column": 18,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 51,
+            "column": 21,
+            "message": "Unknown identifier `KanHomotopy.mk_surjective`"
+          },
+          {
+            "line": 51,
+            "column": 2,
+            "message": "Tactic `generalize` failed: result is not type correct"
+          }
+        ],
+        "SerrePositivity.KST.Fibration.KanCommSqCone": [
+          {
+            "line": 37,
+            "column": 4,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 57,
+            "column": 55,
+            "message": "unsolved goals"
+          },
+          {
+            "line": 61,
+            "column": 56,
+            "message": "unsolved goals"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.DoubleCylinderPaths": [
+          {
+            "line": 24,
+            "column": 5,
+            "message": "unknown namespace `Comparison`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex": [
+          {
+            "line": 40,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialDependentProduct.hom_ext,"
+          },
+          {
+            "line": 37,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex'"
+          },
+          {
+            "line": 46,
+            "column": 6,
+            "message": "(kernel) application type mismatch"
+          },
+          {
+            "line": 60,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialDependentProduct.hom_ext,"
+          },
+          {
+            "line": 65,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialDependentProduct.hom_ext,"
+          },
+          {
+            "line": 70,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialDependentProduct.hom_ext,"
+          },
+          {
+            "line": 75,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialDependentProduct.hom_ext,"
+          },
+          {
+            "line": 55,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct'"
+          },
+          {
+            "line": 90,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct"
+          },
+          {
+            "line": 93,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex"
+          },
+          {
+            "line": 100,
+            "column": 101,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_2`"
+          },
+          {
+            "line": 103,
+            "column": 101,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_3`"
+          },
+          {
+            "line": 106,
+            "column": 101,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_4`"
+          },
+          {
+            "line": 109,
+            "column": 101,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_5`"
+          },
+          {
+            "line": 118,
+            "column": 99,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex._proof_3`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.CubeActiveSupport": [
+          {
+            "line": 29,
+            "column": 2,
+            "message": "unsolved goals"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex": [
+          {
+            "line": 40,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialFunctionComplex.hom_ext,"
+          },
+          {
+            "line": 37,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.simplex'"
+          },
+          {
+            "line": 46,
+            "column": 6,
+            "message": "(kernel) application type mismatch"
+          },
+          {
+            "line": 60,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialFunctionComplex.hom_ext,"
+          },
+          {
+            "line": 65,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialFunctionComplex.hom_ext,"
+          },
+          {
+            "line": 70,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialFunctionComplex.hom_ext,"
+          },
+          {
+            "line": 75,
+            "column": 10,
+            "message": "ambiguous term, use fully qualified name, possible interpretations [@KST.Spectra.SimplicialFunctionComplex.hom_ext,"
+          },
+          {
+            "line": 55,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct'"
+          },
+          {
+            "line": 90,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct"
+          },
+          {
+            "line": 93,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.simplex"
+          },
+          {
+            "line": 100,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct._proof_2`"
+          },
+          {
+            "line": 103,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct._proof_3`"
+          },
+          {
+            "line": 106,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct._proof_4`"
+          },
+          {
+            "line": 109,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.relStruct._proof_5`"
+          },
+          {
+            "line": 118,
+            "column": 98,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.simplex._proof_3`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplicialSet": [
+          {
+            "line": 26,
+            "column": 38,
+            "message": "tactic execution is stuck, goal contains metavariables"
+          },
+          {
+            "line": 33,
+            "column": 48,
+            "message": "Invalid field `subcomplex`: The environment does not contain `SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex`, so it is not possible to project the field `subcomplex` from an expression"
+          },
+          {
+            "line": 36,
+            "column": 52,
+            "message": "tactic execution is stuck, goal contains metavariables"
+          },
+          {
+            "line": 39,
+            "column": 53,
+            "message": "Invalid field `inclusion`: The environment does not contain `SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion`, so it is not possible to project the field `inclusion` from an expression"
+          },
+          {
+            "line": 43,
+            "column": 80,
+            "message": "expected token"
+          },
+          {
+            "line": 43,
+            "column": 65,
+            "message": "Function expected at"
+          },
+          {
+            "line": 48,
+            "column": 53,
+            "message": "expected token"
+          },
+          {
+            "line": 48,
+            "column": 38,
+            "message": "Function expected at"
+          },
+          {
+            "line": 51,
+            "column": 52,
+            "message": "expected token"
+          },
+          {
+            "line": 51,
+            "column": 37,
+            "message": "Function expected at"
+          },
+          {
+            "line": 54,
+            "column": 49,
+            "message": "Invalid field `subcomplex`: The environment does not contain `SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex`, so it is not possible to project the field `subcomplex` from an expression"
+          },
+          {
+            "line": 55,
+            "column": 2,
+            "message": "failed to synthesize"
+          },
+          {
+            "line": 75,
+            "column": 85,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion`"
+          },
+          {
+            "line": 78,
+            "column": 90,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion_mono`"
+          },
+          {
+            "line": 84,
+            "column": 97,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single_subcomplex_top`"
+          },
+          {
+            "line": 87,
+            "column": 86,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex`"
+          },
+          {
+            "line": 90,
+            "column": 95,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex._proof_1`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.SquareBoundaryComposition": [
+          {
+            "line": 31,
+            "column": 53,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 35,
+            "column": 53,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 39,
+            "column": 53,
+            "message": "Unknown identifier `SquareTriangles.lower`"
+          },
+          {
+            "line": 43,
+            "column": 53,
+            "message": "Unknown identifier `SquareTriangles.lower`"
+          },
+          {
+            "line": 53,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 53,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 53,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 53,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 63,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 63,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 63,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 63,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 73,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 73,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 73,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 73,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 83,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 83,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 83,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 83,
+            "column": 20,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          },
+          {
+            "line": 87,
+            "column": 56,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 89,
+            "column": 56,
+            "message": "Unknown identifier `SquareTriangles.lower`"
+          },
+          {
+            "line": 105,
+            "column": 58,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 108,
+            "column": 6,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 135,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.diagonal_edge`"
+          },
+          {
+            "line": 156,
+            "column": 86,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom._proof_1`"
+          },
+          {
+            "line": 159,
+            "column": 86,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom._proof_2`"
+          },
+          {
+            "line": 171,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_3`"
+          },
+          {
+            "line": 174,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_4`"
+          },
+          {
+            "line": 177,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_5`"
+          },
+          {
+            "line": 180,
+            "column": 85,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right._proof_1`"
+          },
+          {
+            "line": 183,
+            "column": 85,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right._proof_2`"
+          },
+          {
+            "line": 189,
+            "column": 83,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top._proof_2`"
+          },
+          {
+            "line": 192,
+            "column": 83,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top._proof_3`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler": [
+          {
+            "line": 55,
+            "column": 0,
+            "message": "failed to compile definition, consider marking it as 'noncomputable' because it depends on 'SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection', which is 'noncomputable'"
+          },
+          {
+            "line": 64,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f"
+          },
+          {
+            "line": 76,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold"
+          },
+          {
+            "line": 79,
+            "column": 0,
+            "message": "(kernel) invalid declaration, safe declaration must not contain partial declaration 'SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec'"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.TowerLimOne": [
+          {
+            "line": 117,
+            "column": 0,
+            "message": "failed to compile definition, consider marking it as 'noncomputable' because it depends on 'SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier', which is 'noncomputable'"
+          },
+          {
+            "line": 144,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f"
+          },
+          {
+            "line": 150,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold"
+          },
+          {
+            "line": 153,
+            "column": 0,
+            "message": "(kernel) invalid declaration, safe declaration must not contain partial declaration 'SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec'"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalOrder": [
+          {
+            "line": 55,
+            "column": 4,
+            "message": "expected token"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder": [
+          {
+            "line": 51,
+            "column": 4,
+            "message": "expected token"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.NecklacePreferredForm": [
+          {
+            "line": 100,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f"
+          },
+          {
+            "line": 103,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold"
+          },
+          {
+            "line": 106,
+            "column": 0,
+            "message": "(kernel) invalid declaration, safe declaration must not contain partial declaration 'SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec'"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality": [
+          {
+            "line": 83,
+            "column": 5,
+            "message": "Unknown identifier `CurryHomotopy.sliceMap`"
+          },
+          {
+            "line": 84,
+            "column": 5,
+            "message": "Unknown identifier `CurryHomotopy.sliceMap`"
+          },
+          {
+            "line": 123,
+            "column": 102,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_2`"
+          },
+          {
+            "line": 126,
+            "column": 102,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_3`"
+          },
+          {
+            "line": 129,
+            "column": 102,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_4`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation": [
+          {
+            "line": 28,
+            "column": 37,
+            "message": "Unknown identifier `StableInfinity`"
+          },
+          {
+            "line": 31,
+            "column": 18,
+            "message": "Unknown identifier `VerdierSequence`"
+          },
+          {
+            "line": 35,
+            "column": 10,
+            "message": "Unknown identifier `IsZeroCategory`"
+          },
+          {
+            "line": 33,
+            "column": 60,
+            "message": "Unknown identifier `stableArrow`"
+          },
+          {
+            "line": 34,
+            "column": 59,
+            "message": "Unknown identifier `stableArrow`"
+          },
+          {
+            "line": 58,
+            "column": 35,
+            "message": "Unknown identifier `VerdierSequence`"
+          },
+          {
+            "line": 60,
+            "column": 5,
+            "message": "Unknown identifier `ofSquare`"
+          },
+          {
+            "line": 62,
+            "column": 37,
+            "message": "Unknown identifier `VerdierSequence`"
+          },
+          {
+            "line": 64,
+            "column": 5,
+            "message": "Unknown identifier `ofSquare`"
+          },
+          {
+            "line": 106,
+            "column": 51,
+            "message": "Unknown identifier `VerdierSequence`"
+          },
+          {
+            "line": 118,
+            "column": 10,
+            "message": "Unknown identifier `IsZeroCategory`"
+          },
+          {
+            "line": 115,
+            "column": 29,
+            "message": "Unknown identifier `stableArrow`"
+          },
+          {
+            "line": 117,
+            "column": 29,
+            "message": "Unknown identifier `stableArrow`"
+          },
+          {
+            "line": 154,
+            "column": 113,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_of_source_comm`"
+          },
+          {
+            "line": 160,
+            "column": 100,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare`"
+          },
+          {
+            "line": 163,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_sequence`"
+          },
+          {
+            "line": 166,
+            "column": 107,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_square`"
+          },
+          {
+            "line": 169,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_1`"
+          },
+          {
+            "line": 172,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_2`"
+          },
+          {
+            "line": 175,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_3`"
+          },
+          {
+            "line": 178,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_4`"
+          },
+          {
+            "line": 181,
+            "column": 109,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_5`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory": [
+          {
+            "line": 28,
+            "column": 33,
+            "message": "Unknown identifier `VerdierDiagram`"
+          },
+          {
+            "line": 45,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_1`"
+          },
+          {
+            "line": 48,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_2`"
+          },
+          {
+            "line": 51,
+            "column": 105,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_3`"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "exit_code": 1,
+      "seconds": 653.957,
+      "failed_count": 30,
+      "failed_modules": [
+        "SerrePositivity.InfinityCategories.Derived.MappingHomotopyGroups",
+        "SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling",
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.PullbackFiberIso",
+        "SerrePositivity.InfinityCategories.Kan.CubeGeneratorSupport",
+        "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy",
+        "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups",
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceIn",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceOrderMap",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices",
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord",
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap",
+        "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction",
+        "SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition",
+        "SerrePositivity.KST.Comparison.StrictCylinderPullbacks",
+        "SerrePositivity.KST.Fibration.DoubleEvaluationTranspose",
+        "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction",
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierPresentation",
+        "SerrePositivity.KST.SConstruction.CofiberCompletion",
+        "SerrePositivity.KST.SConstruction.IdentityPushoutShapes",
+        "SerrePositivity.KST.Spectra.LoopPathFiber"
+      ],
+      "root_count": 103,
+      "unverified_root_count": 32,
+      "unverified_roots": [
+        "SerrePositivity.InfinityCategories.Derived.Checks",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue",
+        "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting",
+        "SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport",
+        "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy",
+        "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups",
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareDifference",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanFunctor",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralNaturality",
+        "SerrePositivity.InfinityCategories.Simplicial.NecklacePreferredCarrier",
+        "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality",
+        "SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection",
+        "SerrePositivity.KST.NonConnective.DGKInputCompactGenerationAdjoint",
+        "SerrePositivity.KST.Spectra.CommutativeHomotopyDiagram",
+        "SerrePositivity.KST.Spectra.ThreeEdgeTransportSquareProjection"
+      ],
+      "errors": {
+        "SerrePositivity.InfinityCategories.Derived.MappingHomotopyGroups": [
+          {
+            "line": 33,
+            "column": 32,
+            "message": "expected token"
+          },
+          {
+            "line": 84,
+            "column": 67,
+            "message": "expected token"
+          },
+          {
+            "line": 84,
+            "column": 37,
+            "message": "Function expected at"
+          },
+          {
+            "line": 93,
+            "column": 3,
+            "message": "Unknown identifier `kanHomotopyGroupIsoEquiv`"
+          },
+          {
+            "line": 102,
+            "column": 73,
+            "message": "expected token"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams": [
+          {
+            "line": 26,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `bottom`"
+          },
+          {
+            "line": 34,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `right`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling": [
+          {
+            "line": 90,
+            "column": 9,
+            "message": "Unknown identifier `KanHomotopy.mk`"
+          },
+          {
+            "line": 90,
+            "column": 51,
+            "message": "Unknown identifier `KanHomotopy.point`"
+          },
+          {
+            "line": 92,
+            "column": 14,
+            "message": "Unknown identifier `KanHomotopy.mk`"
+          },
+          {
+            "line": 93,
+            "column": 6,
+            "message": "Unknown identifier `KanHomotopy.mk`"
+          },
+          {
+            "line": 94,
+            "column": 5,
+            "message": "Unknown identifier `KanHomotopy.mk_const`"
+          },
+          {
+            "line": 91,
+            "column": 69,
+            "message": "unsolved goals"
+          },
+          {
+            "line": 121,
+            "column": 106,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_lastSimplex`"
+          }
+        ],
+        "SerrePositivity.KST.Spectra.LoopPathFiber": [
+          {
+            "line": 92,
+            "column": 2,
+            "message": "Tactic `rfl` failed: The left-hand side"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.PullbackFiberIso": [
+          {
+            "line": 49,
+            "column": 72,
+            "message": "don't know how to synthesize implicit argument `hs`"
+          },
+          {
+            "line": 59,
+            "column": 2,
+            "message": "don't know how to synthesize implicit argument `hs`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition": [
+          {
+            "line": 65,
+            "column": 14,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 71,
+            "column": 13,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality": [
+          {
+            "line": 41,
+            "column": 56,
+            "message": "Invalid field `postcomp`: The environment does not contain `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.postcomp`, so it is not possible to project the field `postcomp` from an expression"
+          },
+          {
+            "line": 78,
+            "column": 119,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          },
+          {
+            "line": 99,
+            "column": 117,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          },
+          {
+            "line": 138,
+            "column": 26,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          },
+          {
+            "line": 144,
+            "column": 26,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          },
+          {
+            "line": 150,
+            "column": 24,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          },
+          {
+            "line": 155,
+            "column": 24,
+            "message": "Failed to rewrite using equation theorems for `boundaryι`"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction": [
+          {
+            "line": 32,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction": [
+          {
+            "line": 32,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.VerdierPresentation": [
+          {
+            "line": 77,
+            "column": 6,
+            "message": "Invalid field `presentation`: The environment does not contain `SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.presentation`, so it is not possible to project the field `presentation` from an expression"
+          },
+          {
+            "line": 80,
+            "column": 23,
+            "message": "Invalid field `presentation`: The environment does not contain `SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.presentation`, so it is not possible to project the field `presentation` from an expression"
+          },
+          {
+            "line": 85,
+            "column": 22,
+            "message": "Invalid field `presentation`: The environment does not contain `SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.presentation`, so it is not possible to project the field `presentation` from an expression"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams": [
+          {
+            "line": 35,
+            "column": 24,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 41,
+            "column": 24,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          },
+          {
+            "line": 67,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber": [
+          {
+            "line": 62,
+            "column": 8,
+            "message": "Failed to rewrite using equation theorems for `markedSpanFamilyProjection`"
+          },
+          {
+            "line": 59,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.KST.LocalizingInvariants.fixedMarkedSpanToFamilyFiber'"
+          },
+          {
+            "line": 88,
+            "column": 24,
+            "message": "Unknown constant `_inhabitedExprDummy`"
+          },
+          {
+            "line": 92,
+            "column": 24,
+            "message": "Unknown constant `_inhabitedExprDummy`"
+          },
+          {
+            "line": 80,
+            "column": 4,
+            "message": "(kernel) declaration has metavariables 'SerrePositivity.KST.LocalizingInvariants.markedSpanFamilyFiberIso'"
+          }
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares": [
+          {
+            "line": 55,
+            "column": 30,
+            "message": "Failed to rewrite using equation theorems for `contractionAtVertex`"
+          },
+          {
+            "line": 62,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `contractionAtVertex`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber": [
+          {
+            "line": 71,
+            "column": 28,
+            "message": "Failed to rewrite using equation theorems for `StrictTransportComparisonSpan.coherentBase`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction": [
+          {
+            "line": 59,
+            "column": 25,
+            "message": "Failed to rewrite using equation theorems for `StrictTransportComparisonSpan.coherentSource`"
+          },
+          {
+            "line": 67,
+            "column": 25,
+            "message": "Failed to rewrite using equation theorems for `StrictTransportComparisonSpan.coherentTarget`"
+          }
+        ],
+        "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom": [
+          {
+            "line": 34,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `kanEnrichedOppositeComponentIso`"
+          }
+        ],
+        "SerrePositivity.KST.SConstruction.IdentityPushoutShapes": [
+          {
+            "line": 107,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `pushoutProjection`"
+          }
+        ],
+        "SerrePositivity.KST.SConstruction.CofiberCompletion": [
+          {
+            "line": 97,
+            "column": 6,
+            "message": "Failed to rewrite using equation theorems for `pushoutProjection`"
+          }
+        ],
+        "SerrePositivity.KST.Fibration.DoubleEvaluationTranspose": [
+          {
+            "line": 24,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.KST.Comparison.StrictCylinderPullbacks": [
+          {
+            "line": 85,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy": [
+          {
+            "line": 53,
+            "column": 28,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.CubeGeneratorSupport": [
+          {
+            "line": 21,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 28,
+            "column": 33,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 29,
+            "column": 31,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 32,
+            "column": 27,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 38,
+            "column": 2,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 54,
+            "column": 6,
+            "message": "Type mismatch: After simplification, term"
+          },
+          {
+            "line": 57,
+            "column": 4,
+            "message": "Type mismatch: After simplification, term"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups": [
+          {
+            "line": 64,
+            "column": 6,
+            "message": "Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices": [
+          {
+            "line": 24,
+            "column": 53,
+            "message": "expected token"
+          },
+          {
+            "line": 24,
+            "column": 38,
+            "message": "Function expected at"
+          },
+          {
+            "line": 43,
+            "column": 56,
+            "message": "tactic execution is stuck, goal contains metavariables"
+          },
+          {
+            "line": 74,
+            "column": 6,
+            "message": "No goals to be solved"
+          },
+          {
+            "line": 98,
+            "column": 92,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso`"
+          },
+          {
+            "line": 110,
+            "column": 96,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexEquiv._proof_2`"
+          },
+          {
+            "line": 113,
+            "column": 96,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexEquiv._proof_3`"
+          },
+          {
+            "line": 116,
+            "column": 96,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexEquiv._proof_4`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation": [
+          {
+            "line": 45,
+            "column": 57,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          },
+          {
+            "line": 49,
+            "column": 6,
+            "message": "Unknown identifier `SquareTriangles.upper`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceOrderMap": [
+          {
+            "line": 39,
+            "column": 32,
+            "message": "expected token"
+          },
+          {
+            "line": 63,
+            "column": 0,
+            "message": "(kernel) unknown constant 'SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap_vertex'"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.NecklaceIn": [
+          {
+            "line": 20,
+            "column": 46,
+            "message": "expected token"
+          },
+          {
+            "line": 27,
+            "column": 56,
+            "message": "expected token"
+          },
+          {
+            "line": 32,
+            "column": 53,
+            "message": "expected token"
+          },
+          {
+            "line": 44,
+            "column": 46,
+            "message": "expected token"
+          },
+          {
+            "line": 49,
+            "column": 60,
+            "message": "expected token"
+          },
+          {
+            "line": 54,
+            "column": 47,
+            "message": "expected token"
+          },
+          {
+            "line": 58,
+            "column": 52,
+            "message": "expected token"
+          },
+          {
+            "line": 77,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAugmentation`"
+          },
+          {
+            "line": 83,
+            "column": 79,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInDiagram`"
+          },
+          {
+            "line": 86,
+            "column": 78,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget`"
+          },
+          {
+            "line": 104,
+            "column": 76,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map`"
+          },
+          {
+            "line": 107,
+            "column": 82,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first`"
+          },
+          {
+            "line": 110,
+            "column": 81,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last`"
+          },
+          {
+            "line": 116,
+            "column": 81,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace`"
+          },
+          {
+            "line": 152,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom`"
+          },
+          {
+            "line": 167,
+            "column": 77,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w`"
+          },
+          {
+            "line": 170,
+            "column": 93,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAugmentation._proof_1`"
+          },
+          {
+            "line": 173,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_1`"
+          },
+          {
+            "line": 176,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_2`"
+          },
+          {
+            "line": 179,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_3`"
+          },
+          {
+            "line": 182,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_4`"
+          },
+          {
+            "line": 185,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_5`"
+          },
+          {
+            "line": 188,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_6`"
+          },
+          {
+            "line": 191,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_7`"
+          },
+          {
+            "line": 194,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_8`"
+          },
+          {
+            "line": 197,
+            "column": 89,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_9`"
+          },
+          {
+            "line": 200,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget._proof_1`"
+          },
+          {
+            "line": 203,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget._proof_2`"
+          },
+          {
+            "line": 209,
+            "column": 79,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.inj`"
+          },
+          {
+            "line": 212,
+            "column": 81,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.injEq`"
+          },
+          {
+            "line": 215,
+            "column": 101,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.noConfusion`"
+          },
+          {
+            "line": 224,
+            "column": 82,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.inj`"
+          },
+          {
+            "line": 227,
+            "column": 84,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.injEq`"
+          },
+          {
+            "line": 230,
+            "column": 104,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.noConfusion`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap": [
+          {
+            "line": 20,
+            "column": 73,
+            "message": "expected token"
+          },
+          {
+            "line": 20,
+            "column": 54,
+            "message": "Function expected at"
+          },
+          {
+            "line": 25,
+            "column": 4,
+            "message": "Unknown identifier `standardSimplexVertex`"
+          },
+          {
+            "line": 28,
+            "column": 66,
+            "message": "expected token"
+          },
+          {
+            "line": 37,
+            "column": 64,
+            "message": "expected token"
+          },
+          {
+            "line": 43,
+            "column": 36,
+            "message": "tactic execution is stuck, goal contains metavariables"
+          },
+          {
+            "line": 48,
+            "column": 40,
+            "message": "expected token"
+          },
+          {
+            "line": 53,
+            "column": 10,
+            "message": "Unknown identifier `simplexIntervalMap`"
+          },
+          {
+            "line": 64,
+            "column": 6,
+            "message": "Unknown identifier `standardSimplexVertex`"
+          },
+          {
+            "line": 63,
+            "column": 5,
+            "message": "Unknown identifier `simplexIntervalMap`"
+          },
+          {
+            "line": 65,
+            "column": 2,
+            "message": "Unknown identifier `standardSimplexVertex_ext`"
+          },
+          {
+            "line": 70,
+            "column": 61,
+            "message": "Unknown identifier `standardSimplexVertex`"
+          },
+          {
+            "line": 69,
+            "column": 5,
+            "message": "Unknown identifier `simplexIntervalMap`"
+          },
+          {
+            "line": 71,
+            "column": 2,
+            "message": "Unknown identifier `standardSimplexVertex_ext`"
+          },
+          {
+            "line": 79,
+            "column": 80,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap`"
+          },
+          {
+            "line": 82,
+            "column": 86,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_apply`"
+          },
+          {
+            "line": 85,
+            "column": 86,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_first`"
+          },
+          {
+            "line": 88,
+            "column": 85,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_last`"
+          },
+          {
+            "line": 91,
+            "column": 85,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_mono`"
+          },
+          {
+            "line": 94,
+            "column": 83,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex`"
+          },
+          {
+            "line": 97,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_eta`"
+          },
+          {
+            "line": 100,
+            "column": 87,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext`"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord": [
+          {
+            "line": 49,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn"
+          },
+          {
+            "line": 91,
+            "column": 0,
+            "message": "Failed to find LCNF signature for SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.brecOn.go"
+          }
+        ],
+        "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality": [
+          {
+            "line": 48,
+            "column": 5,
+            "message": "unknown namespace `Spectra`"
+          },
+          {
+            "line": 55,
+            "column": 42,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 56,
+            "column": 51,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 58,
+            "column": 18,
+            "message": "Unknown identifier `KanHomotopy`"
+          },
+          {
+            "line": 69,
+            "column": 114,
+            "message": "Unknown constant `_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton`"
+          }
+        ]
+      }
+    }
+  ],
+  "overlapping_failures": [
+    "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction",
+    "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+    "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+    "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+    "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierPresentation",
+    "SerrePositivity.KST.SConstruction.CofiberCompletion",
+    "SerrePositivity.KST.SConstruction.IdentityPushoutShapes"
+  ],
+  "confirmed_same_cause_recurrences": [
+    "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+    "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber",
+    "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+    "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+    "SerrePositivity.KST.SConstruction.IdentityPushoutShapes",
+    "SerrePositivity.KST.SConstruction.CofiberCompletion"
+  ],
+  "newly_exposed_failures": [
+    "SerrePositivity.InfinityCategories.Derived.MappingHomotopyGroups",
+    "SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.PullbackFiberIso",
+    "SerrePositivity.InfinityCategories.Kan.CubeGeneratorSupport",
+    "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy",
+    "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups",
+    "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation",
+    "SerrePositivity.InfinityCategories.Simplicial.NecklaceIn",
+    "SerrePositivity.InfinityCategories.Simplicial.NecklaceOrderMap",
+    "SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices",
+    "SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord",
+    "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap",
+    "SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality",
+    "SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition",
+    "SerrePositivity.KST.Comparison.StrictCylinderPullbacks",
+    "SerrePositivity.KST.Fibration.DoubleEvaluationTranspose",
+    "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams",
+    "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction",
+    "SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction",
+    "SerrePositivity.KST.Spectra.LoopPathFiber"
+  ],
+  "proposal": {
+    "file": "f-section7-unfold-proposal.patch",
+    "status": "NOT_APPLIED_NOT_BUILT",
+    "replacements": [
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "old": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.bottom",
+        "new": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom",
+        "line": 26
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "old": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.left",
+        "new": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left",
+        "line": 26
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "old": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.right",
+        "new": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right",
+        "line": 34
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams",
+        "old": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.top",
+        "new": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top",
+        "line": 34
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber",
+        "old": "SerrePositivity.KST.LocalizingInvariants.markedSpanFamilyProjection",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+        "line": 62
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+        "old": "SerrePositivity.KST.LocalizingInvariants.contractionAtVertex",
+        "new": "SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex",
+        "line": 55
+      },
+      {
+        "module": "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+        "old": "SerrePositivity.KST.LocalizingInvariants.contractionAtVertex",
+        "new": "SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex",
+        "line": 62
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+        "old": "SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso",
+        "new": "SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso",
+        "line": 34
+      },
+      {
+        "module": "SerrePositivity.KST.SConstruction.IdentityPushoutShapes",
+        "old": "SerrePositivity.KST.SConstruction.pushoutProjection",
+        "new": "SerrePositivity.InfinityCategories.Stable.pushoutProjection",
+        "line": 107
+      },
+      {
+        "module": "SerrePositivity.KST.SConstruction.CofiberCompletion",
+        "old": "SerrePositivity.KST.SConstruction.pushoutProjection",
+        "new": "SerrePositivity.InfinityCategories.Stable.pushoutProjection",
+        "line": 97
+      }
+    ],
+    "scope": "Only the remaining legacy identifier references in rw; no mathematical statement or proof steps changed."
+  },
+  "before": {
+    "original_modules": 745,
+    "original_status": "PASS",
+    "additional_consumer_modules": 15,
+    "additional_status": "PASS",
+    "broad_diagnostic_capture": "Interrupted after prioritizing the 15 failing current consumers; partial files preserved, not claimed PASS."
+  },
+  "implementation": {
+    "provider_modules": 730,
+    "source_declarations": 3871,
+    "private_source_declarations": 157,
+    "aliases_including_generated": 7526,
+    "consumer_modules": 28,
+    "consumer_files": [
+      "SerrePositivity/InfinityCategories/Derived/Checks.lean",
+      "SerrePositivity/InfinityCategories/Derived/PointedModuleSimplex.lean",
+      "SerrePositivity/InfinityCategories/F1/Limits/ContractibleKanTower.lean",
+      "SerrePositivity/InfinityCategories/F2/CatInfinity/TensorInitialVertices.lean",
+      "SerrePositivity/InfinityCategories/F2/CatInfinity/TensorTerminalVertices.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FibrationTotalComponents.lean",
+      "SerrePositivity/KST/Comparison/DoubleMappingCylinderCollapse.lean",
+      "SerrePositivity/KST/Comparison/DoubleMappingCylinderEquivalence.lean",
+      "SerrePositivity/KST/Comparison/StrictPushoutCube.lean",
+      "SerrePositivity/KST/Fibration/KanCommSqCone.lean",
+      "SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean",
+      "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyHomNaturality.lean",
+      "SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean",
+      "SerrePositivity/KST/LocalizingInvariants/CofiberFamilyZeroTriangle.lean",
+      "SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean",
+      "SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean",
+      "SerrePositivity/KST/LocalizingInvariants/RelativeFunctorCoreRestriction.lean",
+      "SerrePositivity/KST/LocalizingInvariants/SquareFrameHomotopy.lean",
+      "SerrePositivity/KST/LocalizingInvariants/SquareFramePathExtension.lean",
+      "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "SerrePositivity/KST/NonConnective/DGKInputCompactGenerationAdjoint.lean",
+      "SerrePositivity/KST/SConstruction/CofiberCompletion.lean",
+      "SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean",
+      "SerrePositivity/KST/SConstruction/NecklaceWedgeNumericJoin.lean",
+      "SerrePositivity/KST/Spectra/CommutativeHomotopyDiagram.lean",
+      "SerrePositivity/KST/Spectra/PointedHomotopyGroupDiagram.lean",
+      "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquare.lean",
+      "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquareProjection.lean"
+    ],
+    "helper": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias"
+  },
+  "downstream": {
+    "status": "NOT_RUN",
+    "raw_reverse_closure": 11539,
+    "archive_excluded": 1020,
+    "active_reverse_closure": 10519,
+    "helper_added": 1,
+    "active_with_helper": 10520,
+    "archive_rule": "IF-W2b §1: 追跡するがビルドしない; Archive/InfinityCategories/FilteredExchange/README.md",
+    "archive_in_root_or_audits": 0,
+    "baseline_archive_probe": {
+      "status": "FAIL_PREEXISTING_OUTSIDE_NORMAL_BUILD_SCOPE",
+      "failed_modules": [
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalFiberTransport",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitNaturality",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanMonicFiberTransport",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanRectificationBaseIsos",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackComparisonApex",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorCurryPointEvaluation",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalPullbackDoubleReplacement",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalPullbackPathIsoComparison",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalReplacementPathIsoSection",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalReplacementSectionHomotopy",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanFixedSquareDiagonal",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.LiftedIntervalCospanEquivalence",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedHomRefinementSourceMorphism",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedHomRefinementTargetMorphism",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.PrismSideTriangleYoneda",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionConstantComparison",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberWitnessPrecomp",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorCurryIsoPointComparison",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorPostIsoEvaluation",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorPostIsoOverPre",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallRelativeVertexRestriction",
+        "SerrePositivity.Archive.InfinityCategories.FilteredExchange.TetrahedronComparisonReindexLeft"
+      ],
+      "seconds": 539.599,
+      "log": ".lake/verify/if-f2/before-extra/base-build.log"
+    }
+  },
+  "preservation": {
+    "status": "NOT_RUN",
+    "reason": "internal build has not passed"
+  },
+  "layers": {
+    "enforcement": "PASS",
+    "direct_violations": 0,
+    "config_sha256": "a8eddf9505b8b7bab7547c3eb081ec84cfeb83f96988d835f2e5591452a1f5f6"
+  },
+  "audits": {
+    "status": "DEFERRED"
+  },
+  "verify": {
+    "status": "NOT_RUN",
+    "summary": null,
+    "VERIFY_JOBS": 6,
+    "VERIFY_MEMORY_GB": 40,
+    "reason": "conditional preapproval prerequisites not met"
+  },
+  "evidence": ".lake/verify/if-f2/",
+  "main_worktree": "unchanged; no main build",
+  "other_branches": "unchanged",
+  "source_builds_after_stop": "none; only the already running round 2 was allowed to finish"
+}
