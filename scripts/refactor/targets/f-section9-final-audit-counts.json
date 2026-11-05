@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "base": "640288f33",
+  "contract": "Count actual audit command lines after removing comments; the earlier lexical count included the doc-comment mention of #check/#print axioms. Target collection uses the same audit_imports function as verify_runner; all imports and project-only build targets are reported separately.",
+  "audits": [
+    {
+      "file": "scripts/audit_infinity_f1.lean",
+      "before": {
+        "check": 9100,
+        "print_axioms": 182
+      },
+      "after": {
+        "check": 9100,
+        "print_axioms": 182
+      },
+      "all_import_targets_before": 467,
+      "all_import_targets_after": 467,
+      "project_build_targets_before": 466,
+      "project_build_targets_after": 466,
+      "target_sets_identical": true
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "before": {
+        "check": 391,
+        "print_axioms": 2360
+      },
+      "after": {
+        "check": 391,
+        "print_axioms": 2360
+      },
+      "all_import_targets_before": 2170,
+      "all_import_targets_after": 2170,
+      "project_build_targets_before": 2169,
+      "project_build_targets_after": 2169,
+      "target_sets_identical": true
+    },
+    {
+      "file": "scripts/audit_kst_cofinality.lean",
+      "before": {
+        "check": 90,
+        "print_axioms": 1
+      },
+      "after": {
+        "check": 90,
+        "print_axioms": 1
+      },
+      "all_import_targets_before": 2,
+      "all_import_targets_after": 2,
+      "project_build_targets_before": 1,
+      "project_build_targets_after": 1,
+      "target_sets_identical": true
+    },
+    {
+      "file": "scripts/audit_kst_comparison.lean",
+      "before": {
+        "check": 1499,
+        "print_axioms": 1499
+      },
+      "after": {
+        "check": 1499,
+        "print_axioms": 1499
+      },
+      "all_import_targets_before": 3,
+      "all_import_targets_after": 3,
+      "project_build_targets_before": 1,
+      "project_build_targets_after": 1,
+      "target_sets_identical": true
+    },
+    {
+      "file": "scripts/audit_kst_s_construction.lean",
+      "before": {
+        "check": 14395,
+        "print_axioms": 14395
+      },
+      "after": {
+        "check": 14395,
+        "print_axioms": 14395
+      },
+      "all_import_targets_before": 3,
+      "all_import_targets_after": 3,
+      "project_build_targets_before": 3,
+      "project_build_targets_after": 3,
+      "target_sets_identical": true
+    },
+    {
+      "file": "scripts/audit_localizing_invariants.lean",
+      "before": {
+        "check": 0,
+        "print_axioms": 0
+      },
+      "after": {
+        "check": 0,
+        "print_axioms": 0
+      },
+      "all_import_targets_before": 3,
+      "all_import_targets_after": 3,
+      "project_build_targets_before": 2,
+      "project_build_targets_after": 2,
+      "target_sets_identical": true
+    }
+  ]
+}

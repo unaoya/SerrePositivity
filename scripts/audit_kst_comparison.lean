@@ -998,8 +998,8 @@ run_cmd do
 #check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
 #print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
 
-#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
-#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
 
 
 -- DoubleMappingCylinderEquivalence.lean
@@ -1025,8 +1025,8 @@ run_cmd do
 #check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
 #print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
 
-#check @SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
-#print axioms SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
 
 #check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
 #print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
