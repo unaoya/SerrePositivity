@@ -1,7 +1,7 @@
 # Codex 作業指示書 DG-W2：統合の道具（a）と、D3＋土台でない 9 ディレクトリの統合の束（b）
 
 作成：2026-10-31（DG の整理、管理は Claude）。宛先：DG の Codex（DG-W1 を実施したセッション）。
-計画：[dg-cleanup-plan.md](dg-cleanup-plan.md) §3 D3・D4・D5、§4 DG-W2、§5a（再ビルドの規則）。調査：[archive/dg-survey-2026-10-30.md](archive/dg-survey-2026-10-30.md) §5〜§6、対応表 [dg-consolidation-2026-10-30.json](archive/dg-consolidation-2026-10-30.json)、障害 [blockers](archive/dg-consolidation-blockers-2026-10-30.json)。
+計画：[dg-cleanup-plan.md](../dg-cleanup-plan.md) §3 D3・D4・D5、§4 DG-W2、§5a（再ビルドの規則）。調査：[archive/dg-survey-2026-10-30.md](dg-survey-2026-10-30.md) §5〜§6、対応表 [dg-consolidation-2026-10-30.json](dg-consolidation-2026-10-30.json)、障害 [blockers](dg-consolidation-blockers-2026-10-30.json)。
 **共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。DG-W1 の [§8〜§10](dg-codex-w1.md) の規則（監査の前のビルド、rsync の扱い、全ビルドは一回）も引き続き有効。
 
 この指示書は **(a) と (b) の二部**で、(a) はビルドを伴わない道具の作業、(b) は束の適用と一回の下流ビルド。**(b) は別途「始めてよい」と伝えるまで始めない**（∞ 側の束のビルドと機械を分け合うため。計画 §5a-5）。(a) の終わりで止めて報告する。
@@ -23,7 +23,7 @@
 
 ## 2. (a)-1 `merge_modules.py`
 
-BS の [bhatt-scholze-merge-modules.py](bhatt-scholze/bhatt-scholze-merge-modules.py)（314 行）を一般化する。BS の挙動（宣言・証明・名前空間・variable に手を加えない；元モジュールを順に、元の冒頭の section 行に元ファイル名を付けた名前付き section で包み `end` で閉じる；`public import` の和；見出し `/-! ## 見出し（旧 パス） -/` の下に元の module docstring；universe の和；元ファイルは git rm；import 行の書き換え；`private_renames`；`deletes`；`stubs`；既定 dry-run・`--apply`）は保つ。変える点：
+BS の [bhatt-scholze-merge-modules.py](../bhatt-scholze/bhatt-scholze-merge-modules.py)（314 行）を一般化する。BS の挙動（宣言・証明・名前空間・variable に手を加えない；元モジュールを順に、元の冒頭の section 行に元ファイル名を付けた名前付き section で包み `end` で閉じる；`public import` の和；見出し `/-! ## 見出し（旧 パス） -/` の下に元の module docstring；universe の和；元ファイルは git rm；import 行の書き換え；`private_renames`；`deletes`；`stubs`；既定 dry-run・`--apply`）は保つ。変える点：
 
 1. **所有範囲とモジュール名の接頭辞を引数にする**：BS の `OWNED`・`NAME` の固定を外し、`--area SerrePositivity.DifferentialGraded`（複数可）で統合する側の接頭辞を、`--rewrite-scope <regex>`（複数可、既定はリポジトリ全体の `SerrePositivity/**/*.lean` と `scripts/**/*.lean`）で import 行を書き換える範囲を与える。DG では書き換え範囲は全体（外からの 1,188 辺は IC・KST・EInfinity にある。**DG の外は import 行だけを変える**）。
 2. **計画の書式を targets の配列に合わせる**：`{"module": <統合先>, "action": "merge", "sources": [<元モジュール>…（連結順）], "docstring": <概要／方針／規約／使われ方>, "private_renames": {<元>: {<旧>: <新>}}, "deletes": [], "stubs": [], "candidate": "D4", "note": ""}` の配列。`validate_targets.py` は変更しないので、書式と整合性の検査（元の二重登録、統合先の重複、連結順が import の向きに矛盾しないこと、閉じていない section、同名 private の衝突、`set_option` の値の食い違い、`public section` のない元）は **`merge_modules.py --check` が自分で行う**。
@@ -57,7 +57,7 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 ## 5. (a)-4 D3・D4 の計画の草案（ビルドなし）
 
 0. **（10-31 追記）対応表に載っているが追跡されていないモジュールは草案から外す。** `Morita/ScalarExtensionKernelOutputComponents.lean` は D レーン停止時の未追跡の作業途中ファイル（main の作業木にだけあり、コミットされていない）。草案から除外し、報告に「対応表 981 → 980」と書く。同様の未追跡ファイルが他にあれば同じ扱い（`--check` で元モジュールが `git ls-files` にあることを確かめる）。
-1. [dg-consolidation-2026-10-30.json](archive/dg-consolidation-2026-10-30.json) の 126 の統合先のうち、**土台でない 9 ディレクトリ**（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）に属するものを `dg-w2-merge-plan.json` に写す（連結順は対応表のまま）。土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）は DG-W3 なので入れない。統合先の名前は対応表の仮名（`…1.lean` など）のままでよい。名前の確定は (b) の前に Claude が行う。
+1. [dg-consolidation-2026-10-30.json](dg-consolidation-2026-10-30.json) の 126 の統合先のうち、**土台でない 9 ディレクトリ**（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）に属するものを `dg-w2-merge-plan.json` に写す（連結順は対応表のまま）。土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）は DG-W3 なので入れない。統合先の名前は対応表の仮名（`…1.lean` など）のままでよい。名前の確定は (b) の前に Claude が行う。
 2. **D3 の項目**を同じ JSON に `move`／`split` として加える（計画 §3 D3 の表）：SConstruction の 26 本（群 A 17 本 → `DifferentialGraded/Functor/`、群 B 9 本 → `DifferentialGraded/SharedFunctoriality/`）、`Functor/ModuleExtensionConjugation`・`Module/ExtensionRepresentable*` → SharedFunctoriality、`IC/Derived/DGObjectImage` → `DifferentialGraded/Category/ObjectImage`、`Verdier/{OrderSquare, ChecksOrderSquare, ChecksU17Integration}` → `Asymptotic/DGVerdier/`、`Perfect` の `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` → HomologicalAlgebra（split）。`strictlyPerfectComplex`・`PerfectHomotopy` の定義の依存はそのまま残し、報告に書く（未決 §7-1）。
 3. `merge_modules.py --check --report dg-w2-merge-dryrun.md --max-lines 1500` を実行し、警告（同名 private・set_option・閉じていない section・外からの importer）と、統合先ごとの行数を報告に出す。既知の障害（`Derived/AssociatorMiddle` の `paste_associator`・`post_paste`）は土台側なので今回は出ないはず。
 4. 1,188 本の外からの import 辺を、書き換え範囲（IC・KST・EInfinity・Paper 等）ごとに数える。
@@ -117,8 +117,8 @@ DG-W1 は main に入った（194a65110。区切り 1-3 の後なので、`Homol
 
 ### 11.1 DG-W3 の草案（土台 5 ディレクトリ）
 
-1. [対応表](archive/dg-consolidation-2026-10-30.json) の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）の **48 統合先・611 元**を `targets/dg-w3-merge-plan.json` に写す（(a) と同じ書式）。未追跡の元は除外（§5-0）。
-2. **既知の障害**（[blockers](archive/dg-consolidation-blockers-2026-10-30.json)、調査 §5）：`Derived/AssociatorMiddle` の同名 private `paste_associator`（3 本で同一）と `post_paste`。`paste_associator` は同一なので 1 本だけ残して他を `private_renames` で退避するか、共有モジュールへ 1 本にまとめる案を書く（宣言の本文は変えないので、まずは `private_renames` で衝突を避ける案を主にし、一本化は D6 の提案に回す）。`post_paste` は片方を改名。`--check` で衝突 0 になることを確かめる。
+1. [対応表](dg-consolidation-2026-10-30.json) の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）の **48 統合先・611 元**を `targets/dg-w3-merge-plan.json` に写す（(a) と同じ書式）。未追跡の元は除外（§5-0）。
+2. **既知の障害**（[blockers](dg-consolidation-blockers-2026-10-30.json)、調査 §5）：`Derived/AssociatorMiddle` の同名 private `paste_associator`（3 本で同一）と `post_paste`。`paste_associator` は同一なので 1 本だけ残して他を `private_renames` で退避するか、共有モジュールへ 1 本にまとめる案を書く（宣言の本文は変えないので、まずは `private_renames` で衝突を避ける案を主にし、一本化は D6 の提案に回す）。`post_paste` は片方を改名。`--check` で衝突 0 になることを確かめる。
 3. `merge_modules.py --check --max-lines 1700 --report targets/dg-w3-merge-dryrun.md`。警告の一覧、外からの import 辺の内訳（土台は IC/Derived・KST・EInfinity・Paper・Asymptotic から多い）、下流の逆閉包（Paper まで）と時間の見積もり。
 4. 番号つき仮名の本名の案 `targets/dg-w3-names.md`（§9-5 の規則）。
 
@@ -142,7 +142,7 @@ DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Math
 
 ## 12. 追記（2026-11-01、Lake の成果物キャッシュ）
 
-ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](coordination.md)）。`~/.zshenv` に設定済み。(b) 以降の `lake` は、新しい shell か `source ~/.zshenv` の後に実行する（`lake env | grep LAKE_ARTIFACT_CACHE` で確認）。これにより：
+ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](../coordination.md)）。`~/.zshenv` に設定済み。(b) 以降の `lake` は、新しい shell か `source ~/.zshenv` の後に実行する（`lake env | grep LAKE_ARTIFACT_CACHE` で確認）。これにより：
 - (b) の前の「main から `.lake/build` を複製」は、main を取り込んだ後の `lake build` がキャッシュから成果物を取るので**不要になる見込み**（キャッシュに無い分だけビルドされる。最初のうちは、この設定の前に作られた成果物はキャッシュに無いので、`warm_build_dir.sh` を予備として使ってよい）。
 - (b) の下流ビルドの成果物はキャッシュに入り、取り込み後の main がそのまま使う。
 - `with_build_lock.sh`（全ビルドの排他）はそのまま使う。`warm_build_dir.sh` は予備。

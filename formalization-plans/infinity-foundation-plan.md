@@ -211,7 +211,7 @@ InfinityCategories/
 | R60 | 孤立したモジュールと休止領域の台帳を作り、各行で「主経路／診断／archive／一般論を抽出」を決める。対象は FilteredExchange、F1/Cocartesian、HA/Rectification、ClosureFunctoriality、KST/Comparison・ProExcision、Spectra など。古くなった記述も直す | 8〜16h |
 | R32・R33・R36・R42・R43 | 反例と凍結候補、未登録・監査で被覆されない・転送入口のモジュールの処置 | 16〜32h |
 | R67 | 基盤の層だけが使っているものの分類し直し（伝達文 §6）。<br>・GroupTheory/Coxeter（TypeA・FirstToLast・PermutationInduction・InvolutionRelations。利用者は CategoryTheory/Monoidal・EInfinity/Operad・IntervalCuts・Spectra/SymmetricSequence）：**動かさず**、CategoryTheory と同じく中核より下の基盤として `layers.json` に登録する。Mathlib の `Equiv.Perm.mclosure_swap_castSucc_succ` などへの置き換え（TypeA 955 行が不要になりうる）は R78 へ。<br>・Inputs/Homotopy（KanQuillen＝引用の sorry、ResolutionHom・SimplicialLevel）：主定理の閉包の外で、scripts の check 3 本しか import していない。`InfinityCategories/ModelBridge/Inputs/` へ移し（モデル圏の存在の引用なので ModelBridge が置き場）、`make_area_audits.py` の sorry の許可リストと check のパスを直す。削除するかどうかは R60 の台帳で決める。W2a（R72 と同じ窓） | 4〜8h |
-| R54 | **決定（11-04、ユーザー）：範囲は KST から移した宣言だけ、F1・F1B・F2 は改名しない、deprecated alias は段 G の最初の区切りまで残す**（[IF-F §5](infinity-codex-f.md)）。名前空間の付け替え（旧名は deprecated alias で残し、名前対応表を作る）。F1・F1B・F2 の改名もここで判断する。<br>移した宣言には KST の名前空間が残る（Fibration 747 ブロック、LocalizingInvariants 519、Spectra 333 以上）。§9-3 で、段ごとに行うか最後にまとめるかを決める | 16〜40h（再見積り） |
+| R54 | **決定（11-04、ユーザー）：範囲は KST から移した宣言だけ、F1・F1B・F2 は改名しない、deprecated alias は段 G の最初の区切りまで残す**（[IF-F §5](archive/infinity-codex-f.md)）。名前空間の付け替え（旧名は deprecated alias で残し、名前対応表を作る）。F1・F1B・F2 の改名もここで判断する。<br>移した宣言には KST の名前空間が残る（Fibration 747 ブロック、LocalizingInvariants 519、Spectra 333 以上）。§9-3 で、段ごとに行うか最後にまとめるかを決める | 16〜40h（再見積り） |
 
 ### 段 G 型が変わる作業・比較の証明・新しい数学（窓の外）
 
@@ -257,12 +257,12 @@ InfinityCategories/
 | --- | --- | --- |
 | IF-W0-1 | R41（verify.sh を関門にする） | W0（**完了** 10-28、main `88c477612`。基準実行は全 99 監査 PASS、既知の失敗なし。通しの実行は約 69 分） |
 | IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
-| IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
+| IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](archive/infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
 | IF-W0-4 | `layers.json` への CategoryTheory の一般部分・トップ階層 12 本・GroupTheory/Coxeter の基盤としての登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB）。**R75 は W1＋W2a の束へ、`merge_modules.py`・build lock・warm-up の道具は DG の Codex（DG-W2(a)）へ移管（10-31）** | W0（IF-W0-3 の後） |
 | IF-W1W2a | 一つの束：R79（2 コミット）＋ R75 ＋ w1.json ＋ w2a.json を適用 → DG-W1 後の main を取り込み、`.lake/build` を複製 → 下流の一回ビルド → 保存検査 → verify（§10.12〜10.14 の規則）。段 A・B・閉包の切断（R26・R39・R66・R71・R49b・R50）は w1.json の中身として同じ束に含まれる | W1＋W2a |
 | IF-W2a-2 | R76 → R77 → R67（Inputs/Homotopy）。`merge_modules.py` がそろってから | W1＋W2a の後半 **完了（11-02、5c909058e）** |
-| IF-W2b | R73 → R37 → R38 | W2b | **完了（11-03、3e27dda00）**。指示書 [infinity-codex-w2b.md](infinity-codex-w2b.md) §1〜§18。中核層間の順序違反 0、F1B の straightening 非依存を保持。W2c への入力：180 本と 6 根の経路（`targets/w2b-section18-stop3.json`） |
-| IF-W2c | 群 A（R27・R64・R72 の残り：直接の禁止辺 18 を切り、中核の閉包から KST・モデル圏の HA を消す）→ 群 B（段 E：R51 → R68 → R52 → R69 → R70 → R56b）→ R45 | W2c | 指示書 [infinity-codex-w2c.md](infinity-codex-w2c.md)（11-03 深夜）。草案は今すぐ、下流は 2a・2b の後 |
+| IF-W2b | R73 → R37 → R38 | W2b | **完了（11-03、3e27dda00）**。指示書 [infinity-codex-w2b.md](archive/infinity-codex-w2b.md) §1〜§18。中核層間の順序違反 0、F1B の straightening 非依存を保持。W2c への入力：180 本と 6 根の経路（`targets/w2b-section18-stop3.json`） |
+| IF-W2c | 群 A（R27・R64・R72 の残り：直接の禁止辺 18 を切り、中核の閉包から KST・モデル圏の HA を消す）→ 群 B（段 E：R51 → R68 → R52 → R69 → R70 → R56b）→ R45 | W2c | 指示書 [infinity-codex-w2c.md](archive/infinity-codex-w2c.md)（11-03 深夜）。草案は今すぐ、下流は 2a・2b の後 |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
 | IF-G1 | 段 G の最初の束：BS 発の一般論の ∞ 側（M12b・M12c・M12d・β5 の一部） | 窓の外（新規ファイルのみ、別チャット） | 依頼書 [infinity-codex-g1.md](infinity-codex-g1.md)（11-03 深夜） |
 
@@ -280,7 +280,7 @@ InfinityCategories/
 **実施の管理（10-28 ユーザー決定）**：実作業は Claude が管理し、Codex に依頼して進める。
 - Claude は、指示書 `infinity-codex-wN-k.md`（IF-WN-k）の作成と、検収（受入条件の確認）、main への取り込みを行う。
 - Codex は、使い捨ての worktree で指示書どおりに実施する。
-- 指示書の共通の前提は [IF-W0-1](infinity-codex-w0-1.md) の §0 に置く。
+- 指示書の共通の前提は [IF-W0-1](archive/infinity-codex-w0-1.md) の §0 に置く。
 
 ## 7. 範囲外
 
@@ -320,7 +320,7 @@ InfinityCategories/
   - §4：HL → DGNerve の 3 辺を加えた。R72：12 本の所在と受入条件を直した。R73：三群を重ならない 369＋1,727＋33 本に直した。
   - M7 と M9 の順序を付けた。M8 の定義域（部分圏の組と、それを保つ完全関手）を明確にした。モデル圏の数値の定義を書いた。
   - IF-W0-1：既知の失敗を「監査ファイル＋失敗の署名」で照合するようにした。監査の一覧を追跡ファイルと比べ、本数が減ったら FAIL にした。ビルドを飛ばした実行は検収に使えないようにした。一覧は Claude の承認の後に確定させ、その後で PASS を確かめる手順にした。故意の失敗の試験を増やした。
-- （10-29〜30、IF-W0-3 の実施中の判断。詳細は [指示書 §10](infinity-codex-w0-3.md)）
+- （10-29〜30、IF-W0-3 の実施中の判断。詳細は [指示書 §10](archive/infinity-codex-w0-3.md)）
   - 入口の辺の切り方を三案（下ろす／上げる／分ける）で比べる規則、pull-down 集合の上限 60 本、手作業の辺を含めた模擬、対象 JSON の拡張（`imports`・`downstream_imports`・`reimport`）。
   - R66 の移し先を Simplicial から Core に変更。R39 は roof の 15 本を `<層>.Roof` へ下ろす（残りは W2c）。R61a の残す側を決定。
   - 道具の規則：空になる側の保存検査、prune で壊れた下流への直接 import の補充、生成補題の帰属（位置 → 接頭辞 → 接尾辞 → 外部定義は transient）、attribute コマンドと無名 instance の扱い、環境の失敗の直列再試行。
@@ -349,7 +349,7 @@ InfinityCategories/
 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[archive/r2-a-layers-2026-10-27.md](archive/r2-a-layers-2026-10-27.md) | R26〜R47・R59〜R67 の詳細、層の逆辺の全件 |
 | [refactoring-infinity.md](refactoring-infinity.md) | 第 1 窓（R1〜R25）の記録、旧所在→新所在の対応表、索引 |
 | [infinity-foundation-plan-review-request.md](archive/infinity-foundation-plan-review-request.md)・[同 第 2 回](archive/infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
-| [infinity-codex-w0-1.md](infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
-| [infinity-codex-w0-2.md](infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
-| [infinity-codex-w0-3.md](infinity-codex-w0-3.md) | Codex 指示書 IF-W0-3（対象 JSON と R61b の読解） |
+| [infinity-codex-w0-1.md](archive/infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
+| [infinity-codex-w0-2.md](archive/infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
+| [infinity-codex-w0-3.md](archive/infinity-codex-w0-3.md) | Codex 指示書 IF-W0-3（対象 JSON と R61b の読解） |
 | [handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md) | 論文の層の側からの伝達：CategoryTheory の下位ディレクトリと Nerve まわりの調査結果（R75〜R78 の出典） |
