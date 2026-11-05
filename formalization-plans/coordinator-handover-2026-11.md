@@ -1,6 +1,6 @@
 # 調整役の引き継ぎ（2026-11、整理の期間から段階 II へ）
 
-作成：2026-11-05（前の調整役）。宛先：新しい調整役（Claude Code の新しいチャット）。**F-2 の取り込みの後に §2 を最新にしてから切り替える。**
+作成：2026-11-05（前の調整役）。宛先：新しい調整役（Claude Code の新しいチャット）。**11-05 09:40 に切り替え（ユーザー決定）。F-2 は実行中のまま引き継ぐ。**
 
 ## 1. 最初に読むもの（この順）
 
@@ -11,7 +11,7 @@
 5. メモリ（`~/.claude/projects/.../memory/MEMORY.md` から）：特に `elaboration-drift-lessons`（判断表の由来）、`main-worktree-shared-index`、`lake-artifact-cache`、`verify-build-costs`、`bs-session-separate`。
 6. 必要に応じて：∞ の計画 [infinity-foundation-plan.md](infinity-foundation-plan.md) 段 G（M1〜M16）、BS の [design-status.md](bhatt-scholze/design-status.md)・[foundation-entry-points.md](bhatt-scholze/foundation-entry-points.md)、K の [kst-lanes/k-theory-kst-route.md](kst-lanes/k-theory-kst-route.md)・[infinity-lanes/foundations.md](infinity-lanes/foundations.md)。整理の期間の指示書（`infinity-codex-*`・`dg-codex-*`）は**読まなくてよい**（結論は計画と一覧に移した）。
 
-## 2. 引き継ぎの時点の状態（11-05 09:30 時点。切り替え前に更新する）
+## 2. 引き継ぎの時点の状態（11-05 09:40）
 
 - **主定理の閉包の sorry**：3 つ（E3、`theorem_3_1_K0`、`Section4.supportedRankK0_descent`）。
 - **整理（段階 I）**：DG・論文の層・∞ の W0〜W2c・段 F の F-1 は完了。**F-2（KST から移した宣言の名前空間の付け替え、逆依存 11,538 本）を 11-05 09:20 に合図、実行中**。方針は決定済み（移した宣言だけ、F1・F1B・F2 は改名しない、deprecated alias は段 G の最初の区切りまで残す）。停止点 4 の報告を受けて取り込み、改名表を BS・G2・KST へ配る。
@@ -27,6 +27,15 @@
 | 論文の層（Claude Code） | なし | **閉じた（11-05）**。refactor-plan.md の状態の節を最終に（8310a7fa7） |
 
 - **main**：作業木はクリーン。直近の取り込みは F-1（9ebbe8e8a）、G2 先行分（55b419a24）、Lemma 10.12（4019014a1）。
+
+
+### 2.1 新しい調整役が最初にすること（順に）
+
+1. **F-2 の停止点 4 を待つ**（∞ 整理のチャットが報告する。下流 11,538 本＋verify、11-05 の夕方の見込み）。∞ 整理のチャットは F-2 と C1〜C3 が終わるまで閉じない。報告が来たら `IF-F §5〜§7` の条件で判断し、`infra/if-f` を main に取り込む（`git merge --no-ff`、温めは `lake build SerrePositivity` と、監査が import するモジュールを直接ビルドしてから監査）。改名表（`targets/f-namespace-map.json` の確定版）を新しい BS・G2・KST へ配る。
+2. ∞ 整理に片付け C1〜C3（`cleanup-list-2026-11.md`）を指示し、取り込んで閉じる。
+3. G2 に main の取り込み直しを合図し、C4（G8 の四角形、篩包含）・C5（引き継ぎ）を進めてもらう。C4 は main に入れ、BS に知らせる（S4 の生成辺が閉じる）。
+4. 前の調整役が残した片付け C8〜C10：枝の整理（main に入った `infra/*`・`refactor/*`・`math/g1`・`codex/bs-w10-b` など）、`SerrePositivity-dgw1` の `.lake` の取り残し（5.6 GB、worktree の登録は外れている）と枝 `infra/dg-w3`、整理の期間の指示書の archive、`coordination.md` の段階 II 化、メモリの統合。
+5. 段階 II の計画（`stage-ii-plan-draft.md`）をユーザーと確定し、新しいレーンの開始文を書く。新しい BS（設計の Claude Code は `bhatt-scholze/design-status.md` §0 から、実装の Codex は BS-W11 から、F-2 の改名表の後）。
 
 ## 3. 調整役の仕事のやり方（整理の期間に固まったもの）
 
