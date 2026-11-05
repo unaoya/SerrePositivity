@@ -29,7 +29,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：curry' による通常の射の表示。
 使われ方：BF 1978 §2。写像空間の零次単体とスペクトルの射の照合。 -/
 theorem curry'_pre {X Y Z : PointedSimplicialSet.{u}} (i : X ⟶ Y) (f : Y ⟶ Z) :
-    MonoidalClosed.curry' f ≫ prePointed i Z = MonoidalClosed.curry' (i ≫ f) := by
+    MonoidalClosed.curry' f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z = MonoidalClosed.curry' (i ≫ f) := by
   rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.curry', MonoidalClosed.curry_pre_app,
     MonoidalClosed.curry']
   congr 1

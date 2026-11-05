@@ -63,8 +63,8 @@ theorem freeStandardPrependNormalForm_δ_one {n : ℕ}
   subst e
   rw [freeDegeneraciesNormalForm_action]
   change fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋0⦌)
-    (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv x)))
-    (SimplexCategory.δ 1 ≫ simplexPrepend (𝟙 ⦋0⦌)) = freeStandardZeroNormalForm n
+    (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv x)))
+    (SimplexCategory.δ 1 ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (𝟙 ⦋0⦌)) = freeStandardZeroNormalForm n
   rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id, Category.comp_id]
   rw [fatNormalize_eq_of_factorization _ _ _ _ (𝟙 ⦋0⦌) (SimplexCategory.δ 1)
     (Category.id_comp _)]

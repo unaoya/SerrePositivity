@@ -19,7 +19,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 /- 右辺を固定したまま全境界を持ち上げる。 -/
 instance right_trivialKanFibration (X : SSet.{u})
     [Quasicategory X] [IsStable X] :
-    TrivialKanFibration (right X) := by
+    TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) := by
   apply (trivialKanFibration_iff_boundary _).2
   intro n
   constructor
@@ -35,9 +35,9 @@ instance right_trivialKanFibration (X : SSet.{u})
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply, hv]
   | succ n =>
     let ι := (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X)
-      Predicate).ι
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate).ι
     let j := (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj X) IsZeroSourceArrow).ι
-    have hBR : CommSq (a ≫ top X) (boundary (n + 1)).ι
+    have hBR : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X) (boundary (n + 1)).ι
         (zeroSourceArrowTarget X)
         (b ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
       constructor
@@ -54,14 +54,14 @@ instance right_trivialKanFibration (X : SSet.{u})
       · rw [Category.assoc, stable_cospanFamilyOfArrows_left]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
           cospanSquareBoundary_rightEdge]
-        change (boundary (n + 1)).ι ≫ b = a ≫ right X
+        change (boundary (n + 1)).ι ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X
         exact sq.w.symm
       · rw [Category.assoc, stable_cospanFamilyOfArrows_right]
         rw [← Category.assoc, hBR.fac_left, Category.assoc]
         rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top, fullSubcomplexLift_ι]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, cospanSquareBoundary_topEdge]
         rfl
-    let c := a ≫ cones X
+    let c := a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones X
     have hcd : CommSq c (boundary (n + 1)).ι
         (limitConeProjection (horn 2 2 : SSet.{u}) X) d := by
       constructor
@@ -77,14 +77,14 @@ instance right_trivialKanFibration (X : SSet.{u})
     have hFa : (boundary (n + 1)).ι ≫ F = a ≫ ι := by
       dsimp only [F]
       rw [← Category.assoc, ← Category.assoc, hcd.fac_left, Category.assoc]
-      change a ≫ (cones X ≫ k) ≫
+      change a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones X ≫ k) ≫
         (pre cospanConeSquareIso.inv).app X = _
       rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_inclusion]
       simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, Iso.inv_hom_id,
         pre_id, NatTrans.id_app, Category.comp_id]
       rfl
     have hv (v : (Δ[n + 1] : SSet.{u}) _⦋0⦌) :
-        Predicate (F.app (Opposite.op ⦋0⦌) v) := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (F.app (Opposite.op ⦋0⦌) v) := by
       let w : (boundary (n + 1) : SSet.{u}) _⦋0⦌ := ⟨v, by
         have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v)
         rw [Equiv.symm_apply_apply] at h
@@ -93,7 +93,7 @@ instance right_trivialKanFibration (X : SSet.{u})
       change F.app (Opposite.op ⦋0⦌) v = (a.app (Opposite.op ⦋0⦌) w).val at he
       rw [he]
       exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
-    let g := fullSubcomplexLift Predicate F hv
+    let g := fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate F hv
     have hg : g ≫ ι = F := fullSubcomplexLift_ι _ _ _
     refine CommSq.HasLift.mk' { l := g, fac_left := ?_, fac_right := ?_ }
     · apply (cancel_mono ι).1

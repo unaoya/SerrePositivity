@@ -30,14 +30,14 @@ lemma fibration_positive_fiber_subsingleton {E B : SSet.{u}}
     (hE : ∀ n (e : E _⦋0⦌), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e))
     (hB : ∀ n, 1 < n → ∀ b : B _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n b))
     (e : E _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e)) := by
-  have hzero (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e)) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) := by
+  have hzero (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
       a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := by
     have := hE n e
-    have hι : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (fiberι p (p.app _ e)) (fiberι_point p e) a =
+    have hι : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) a =
         _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := Subsingleton.elim _ _
-    obtain ⟨b, hb⟩ := (exact_connecting_fiber_all p e n a).mp hι
-    have : Subsingleton (KanHomotopyGroup B n (p.app _ e)) := hB (n + 1) (by omega) _
+    obtain ⟨b, hb⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber_all p e n a).mp hι
+    have : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e)) := hB (n + 1) (by omega) _
     have hb1 : b = 1 := Subsingleton.elim _ _
     exact hb.symm.trans (by rw [hb1, _root_.SerrePositivity.InfinityCategories.Kan.connecting_one])
   exact ⟨fun a b ↦ (hzero a).trans (hzero b).symm⟩
@@ -46,14 +46,14 @@ lemma fibration_positive_fiber_subsingleton {E B : SSet.{u}}
 lemma fibration_map_injective_of_fiber_subsingleton {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     (e : E _⦋0⦌) (n : ℕ) (hn : 0 < n)
-    (hf : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e))) :
+    (hf : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))) :
     Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n p (x := e) rfl) := by
   obtain ⟨k, rfl⟩ : ∃ k, n = k + 1 := ⟨n - 1, by omega⟩
   change Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := k) p (x := e) rfl)
   apply (injective_iff_map_eq_one _).mpr
   intro a ha
-  obtain ⟨b, hb⟩ := (exact_fiber_total p e k a).mp ha
-  have : Subsingleton (KanHomotopyGroup (KanFiber p (p.app _ e)) k (fiberPoint p e)) := hf
+  obtain ⟨b, hb⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total p e k a).mp ha
+  have : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) k (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) := hf
   have hb1 : b = 1 := Subsingleton.elim _ _
   rw [hb1, map_one] at hb
   exact hb.symm
@@ -62,7 +62,7 @@ lemma fibration_map_injective_of_fiber_subsingleton {E B : SSet.{u}}
 lemma fibration_map_surjective_of_fiber_subsingleton {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     (e : E _⦋0⦌) (n : ℕ)
-    (hf : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e))) :
+    (hf : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))) :
     Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (n + 1) p (x := e) rfl) := by
   intro a
   exact (_root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all p e n a).mp (by have := hf; exact Subsingleton.elim _ _)

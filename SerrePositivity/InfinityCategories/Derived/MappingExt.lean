@@ -20,7 +20,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S]
 
 /-- 概要：任意 dg 圏の右写像空間の零次 π は Hom 複体の H⁰ と全単射である。

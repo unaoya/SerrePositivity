@@ -76,9 +76,9 @@ lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
     (ha : HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) = a)
     (hb : HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) x) = b)
     (hc : HomotopyCategory.mk (H.app (Opposite.op ⦋0⦌) x) = c) :
-    F2.isoNormalizeEndpoints (functorIsoValue (e ≪≫ f) x) ha hc =
-      F2.isoNormalizeEndpoints (functorIsoValue e x) ha hb ≪≫
-        F2.isoNormalizeEndpoints (functorIsoValue f x) hb hc := by
+    F2.isoNormalizeEndpoints (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (e ≪≫ f) x) ha hc =
+      F2.isoNormalizeEndpoints (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue e x) ha hb ≪≫
+        F2.isoNormalizeEndpoints (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue f x) hb hc := by
   rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_trans]
   exact normalizeComposition _ _ ha hb hc
 

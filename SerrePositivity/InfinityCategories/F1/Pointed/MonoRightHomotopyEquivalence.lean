@@ -96,8 +96,8 @@ theorem monoRight_section_map_leftInverse {E B : PointedSimplicialSet.{u}}
     [KanComplex E.right] [KanComplex B.right] (p : E ⟶ B)
     (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right)
     (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) (n : ℕ) :
-    Function.LeftInverse (KanHomotopy.map n s.right (OmegaSpectrum.pointedMap_basepoint s))
-      (KanHomotopy.map n p.right (OmegaSpectrum.pointedMap_basepoint p)) := by
+    Function.LeftInverse (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n s.right (OmegaSpectrum.pointedMap_basepoint s))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n p.right (OmegaSpectrum.pointedMap_basepoint p)) := by
   let : Mono E.hom := PointedMapping.basepoint_mono E
   have hsp : s.right ≫ p.right = 𝟙 B.right := congrArg Under.Hom.right hs
   have hproj : (𝟙 E.right) ≫ p.right = (p ≫ s).right ≫ p.right := by
@@ -114,11 +114,11 @@ theorem monoRight_section_map_leftInverse {E B : PointedSimplicialSet.{u}}
     rfl
   let Hr := pointedRelativeHomotopy (𝟙 E) (p ≫ s) H hfixed
   intro a
-  have heq := KanHomotopy.map_eq_of_basedHomotopy n
+  have heq := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n
     (OmegaSpectrum.pointedMap_basepoint (𝟙 E))
     (OmegaSpectrum.pointedMap_basepoint (p ≫ s)) Hr a
-  change KanHomotopy.map n (𝟙 E.right) rfl a =
-    KanHomotopy.map n (p.right ≫ s.right) _ a at heq
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (𝟙 E.right) rfl a =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (p.right ≫ s.right) _ a at heq
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] at heq
   exact (KanHomotopy.map_comp n p.right (OmegaSpectrum.pointedMap_basepoint p)
     s.right (OmegaSpectrum.pointedMap_basepoint s)
@@ -130,7 +130,7 @@ theorem monoRight_section_map_leftInverse {E B : PointedSimplicialSet.{u}}
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。置換射の検証。 -/
 theorem kanPiIsomorphism_of_monoRight {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p) :
-    KanPiIsomorphism p := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p := by
   intro e n
   let Ep := PointedSimplicialSet.ofVertex E e
   let Bp := PointedSimplicialSet.ofVertex B (p.app _ e)
@@ -142,20 +142,20 @@ theorem kanPiIsomorphism_of_monoRight {E B : SSet.{u}} [KanComplex E] [KanComple
   obtain ⟨s, hs⟩ := exists_pointedSection pp hp
   have hleft := monoRight_section_map_leftInverse pp hp s hs n
   have hright : Function.RightInverse
-      (KanHomotopy.map n s.right (OmegaSpectrum.pointedMap_basepoint s))
-      (KanHomotopy.map n pp.right (OmegaSpectrum.pointedMap_basepoint pp)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n s.right (OmegaSpectrum.pointedMap_basepoint s))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n pp.right (OmegaSpectrum.pointedMap_basepoint pp)) := by
     intro a
-    have heq := KanHomotopy.map_comp n s.right (OmegaSpectrum.pointedMap_basepoint s)
+    have heq := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n s.right (OmegaSpectrum.pointedMap_basepoint s)
       pp.right (OmegaSpectrum.pointedMap_basepoint pp)
       (OmegaSpectrum.pointedMap_basepoint (s ≫ pp)) a
     have hm := congrArg (fun q : Bp ⟶ Bp ↦
-      KanHomotopy.map n q.right (OmegaSpectrum.pointedMap_basepoint q) a) hs
-    change KanHomotopy.map n (s.right ≫ pp.right) _ a =
-      KanHomotopy.map n (𝟙 Bp.right) rfl a at hm
-    exact heq.symm.trans (hm.trans (KanHomotopy.map_id n a))
-  have hb : Function.Bijective (KanHomotopy.map n pp.right
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n q.right (OmegaSpectrum.pointedMap_basepoint q) a) hs
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (s.right ≫ pp.right) _ a =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (𝟙 Bp.right) rfl a at hm
+    exact heq.symm.trans (hm.trans (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id n a))
+  have hb : Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n pp.right
       (OmegaSpectrum.pointedMap_basepoint pp)) := ⟨hleft.injective, hright.surjective⟩
-  exact KanHomotopy.map_bijective_congr n p
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n p
     (PointedSimplicialSet.basepoint_ofVertex E e)
     (PointedSimplicialSet.basepoint_ofVertex B (p.app _ e)) _ rfl hb
 

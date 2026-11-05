@@ -24,7 +24,7 @@ lemma intervalFunctorMap_equivalence_of_constantHom_bijective
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (F : X ⟶ Y) (x y : X _⦋0⦌)
     (h : ∀ (A : SSet.{u}) [Quasicategory A],
-      Function.Bijective (constantFunctorPostMap F A x y)) :
+      Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x y)) :
     IsSimplicialHomotopyEquivalence (intervalFunctorMap F x y) := by
   let K := intervalMappingSpace x y
   let L := intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y)

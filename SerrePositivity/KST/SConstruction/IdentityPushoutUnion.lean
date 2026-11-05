@@ -115,8 +115,8 @@ lemma identityUnionSquare_span (C : SSet.{u}) :
 方針：和の上の復元の頂点を各像に分け、標準四角形の押し出し性を使う。
 規約：両向きの条件を同時に満たす。使われ方：関手的な押し出しの同時正規化。 -/
 def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
-    (identitySpanSubcomplex C : SSet.{u}) ⟶ pushoutDiagrams C :=
-  fullSubcomplexLift IsPushoutDiagramVertex (identityUnionSquare C) (by
+    (identitySpanSubcomplex C : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex (identityUnionSquare C) (by
     intro v
     have hv : ∃ b g, v.val = (identitySpanFamily b C).app (Opposite.op ⦋0⦌) g := by
       rcases v.property with ⟨g, hg⟩ | ⟨g, hg⟩
@@ -134,7 +134,7 @@ def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
 方針：全部分複体の包含と和の復元の式。
 規約：全単体での厳密等号。使われ方：全 span への正規化付きの切断の延長。 -/
 lemma identityUnionPushoutFamily_projection (C : SSet.{u}) [Quasicategory C] :
-    identityUnionPushoutFamily C ≫ pushoutProjection C = (identitySpanSubcomplex C).ι := by
+    identityUnionPushoutFamily C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = (identitySpanSubcomplex C).ι := by
   rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc]
   exact identityUnionSquare_span C
 

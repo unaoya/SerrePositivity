@@ -21,7 +21,7 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
 omit [Quasicategory Q] in
 theorem identityInvertedSpan_inclusion :
     SSet.const ((invertedSpanMap F W hF).app (Opposite.op ⦋0⦌)
-      (identityMarkedSpan W x hx)) ≫ equivalenceSpanInclusion Q =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan W x hx)) ≫ equivalenceSpanInclusion Q =
       (SSet.const (functorVertex (SSet.const (F.app (Opposite.op ⦋0⦌) x) :
         (horn 2 0 : SSet.{u}) ⟶ Q)) : (Δ[0] : SSet.{u}) ⟶ _) := by
   rw [SSet.const_comp]
@@ -30,8 +30,8 @@ theorem identityInvertedSpan_inclusion :
   rw [SSet.const_comp]
 
 /-- 恒等 span の三角補完は、商内の同じ頂点に定値な実三角形を選べる。 -/
-def identityFractionTriangle : (Δ[0] : SSet.{u}) ⟶ fixedFractionTriangles F W hF x x := by
-  let b := (SSet.const (identityMarkedSpan W x hx) : (Δ[0] : SSet.{u}) ⟶ _)
+def identityFractionTriangle : (Δ[0] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangles F W hF x x := by
+  let b := (SSet.const (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan W x hx) : (Δ[0] : SSet.{u}) ⟶ _)
   let c := (SSet.const (functorVertex (SSet.const (F.app (Opposite.op ⦋0⦌) x) :
     (Δ[2] : SSet.{u}) ⟶ Q)) : (Δ[0] : SSet.{u}) ⟶ _)
   let e := b ≫ invertedSpanMap F W hF
@@ -45,20 +45,20 @@ def identityFractionTriangle : (Δ[0] : SSet.{u}) ⟶ fixedFractionTriangles F W
   let t : (Δ[0] : SSet.{u}) ⟶ equivalenceSpanTriangles Q := pullback.lift c e hc
   let s : (Δ[0] : SSet.{u}) ⟶ fractionTriangleDiagrams F W hF :=
     pullback.lift t b (pullback.lift_snd _ _ _)
-  exact pullback.lift s (SSet.const (identityFixedMarkedSpan W x hx)) (by
+  exact pullback.lift s (SSet.const (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx)) (by
     change s ≫ pullback.snd _ _ = _
     rw [pullback.lift_snd, SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan_inclusion])
 
 omit [Quasicategory Q] in
 /-- 定値三角補完は、元の指定された恒等 span の真上にある。 -/
 theorem identityFractionTriangle_projection : identityFractionTriangle F W hF x hx ≫
-    fixedFractionTriangleProjection F W hF x x =
-      SSet.const (identityFixedMarkedSpan W x hx) := pullback.lift_snd _ _ _
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleProjection F W hF x x =
+      SSet.const (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx) := pullback.lift_snd _ _ _
 
 omit [Quasicategory Q] in
 /-- 記憶した三角形そのものは、商の頂点に定値な三角形。 -/
 theorem identityFractionTriangle_family : identityFractionTriangle F W hF x hx ≫
-    fixedFractionTriangleFamily F W hF x x =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleFamily F W hF x x =
       SSet.const (functorVertex (SSet.const (F.app (Opposite.op ⦋0⦌) x) :
         (Δ[2] : SSet.{u}) ⟶ Q)) := by
   simp only [identityFractionTriangle, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleFamily, fractionTriangleFamily,
@@ -66,7 +66,7 @@ theorem identityFractionTriangle_family : identityFractionTriangle F W hF x hx �
 
 /-- 定値補完の第三辺は、実区間写像空間内の恒等射の点。 -/
 theorem identityFractionTriangle_evaluation : identityFractionTriangle F W hF x hx ≫
-    fixedFractionTriangleEvaluation F W hF x x =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionTriangleEvaluation F W hF x x =
       SSet.const (intervalMappingVertexOfEdge (SSet.Edge.id (F.app (Opposite.op ⦋0⦌) x))) := by
   apply vertexFiber_hom_ext ((pre (boundary 1).ι).app Q)
     (functorVertex (intervalMappingBoundary (F.app (Opposite.op ⦋0⦌) x)
