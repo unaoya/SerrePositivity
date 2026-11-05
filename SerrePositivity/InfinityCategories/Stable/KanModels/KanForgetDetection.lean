@@ -42,7 +42,7 @@ open SerrePositivity.KST.Fibration
 
 /-- 元の Kan 射の coherent な可逆性は、同じ射の全基点 π 同値性を与える。 -/
 theorem kanMap_piIsomorphism_of_invertible {X Y : KanObject.{u}} (f : X ⟶ Y)
-    (hf : IsInvertibleEdge (coherentNerveEdge f)) : Spectra.KanPiIsomorphism f := by
+    (hf : IsInvertibleEdge (coherentNerveEdge f)) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   have ht := edgeTransport_isQCatEquivalence_of_isInvertibleEdge
     pointedSpaceProjection (coherentNerveEdge f) hf
   have he := (pointedSpaceTransport_coherentEdge_isQCatEquivalence_iff f).mp ht

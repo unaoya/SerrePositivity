@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 元の閉零圏の対象に、同じ dg Hom を保つ閉零ラベルを一つ付ける。 -/

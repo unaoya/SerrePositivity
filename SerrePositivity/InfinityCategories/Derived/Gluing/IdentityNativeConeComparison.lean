@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet DifferentialGraded DGNerve KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants F2.Idempotent
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (u + 1)) [DGCategory R C] [Small.{u} C]
   [IsDGPretriangulated R C]
 local notation "I" => DGFunctor.id (A := R) C

@@ -18,7 +18,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 添字の一重・二重の持ち上げを、元の単体を変えず比較する。 -/
 def dgBarCompactIndexLiftIso (I : SSet.{u}) :

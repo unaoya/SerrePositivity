@@ -17,7 +17,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- native 評価関手の同じ実頂点値と、評価複体の実 pinched 模型との同値。 -/

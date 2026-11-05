@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.InfinityCategories.F2
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {L M R L' M' R' : SSet.{u}}
   [Quasicategory L] [Quasicategory M] [Quasicategory R]
   [Quasicategory L'] [Quasicategory M'] [Quasicategory R']

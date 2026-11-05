@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgBarCompactPiTransport_map {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (q : X ⟶ Y) {x y : X _⦋0⦌} (e : X.Edge x y)

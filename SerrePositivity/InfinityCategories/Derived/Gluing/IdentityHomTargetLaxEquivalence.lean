@@ -12,7 +12,7 @@ noncomputable section
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet DifferentialGraded KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
 

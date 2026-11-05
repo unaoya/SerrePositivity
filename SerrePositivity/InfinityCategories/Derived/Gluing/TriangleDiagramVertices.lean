@@ -12,7 +12,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def dgGluingTriangleVertex {Z : SSet.{u}} (T : (Δ[2] : SSet.{u}) ⟶ Z) (i : Fin 3) :
     Z _⦋0⦌ := T.app _ (stdSimplex.obj₀Equiv.symm i)

@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma roofPastingPrismIso_inl :
-    joinInl (Δ[0] : SSet.{u}) (pastingCorner : SSet.{u}).op ≫ roofPastingPrismIso.hom =
+    joinInl (Δ[0] : SSet.{u}) (pastingCorner : SSet.{u}).op ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.hom =
       SSet.yonedaEquiv.symm
         (stdSimplex.obj₀Equiv.symm (0 : Fin 3), stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   simp only [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso, Iso.trans_hom, joinIso, Iso.symm_hom]
@@ -36,16 +36,16 @@ lemma roofPastingPrismIso_inl :
   apply Prod.ext <;> decide
 
 lemma roofPastingDenominator_target : stdSimplex.δ (0 : Fin 2) ≫
-    squareLeftEdge ≫ roofPastingSquareInclusion.{u} =
+    squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion.{u} =
       stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) ≫
-        roofPastingTriangleInclusion := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion := by
   apply SSet.yonedaEquiv.injective
   apply Subtype.ext
   apply Prod.ext <;> decide
 
 lemma roofPastingNumerator_target : stdSimplex.δ (0 : Fin 2) ≫
-    stdSimplex.δ (1 : Fin 3) ≫ roofPastingTriangleInclusion.{u} =
-      stdSimplex.δ (0 : Fin 2) ≫ squareRightEdge ≫ roofPastingSquareInclusion := by
+    stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion.{u} =
+      stdSimplex.δ (0 : Fin 2) ≫ squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion := by
   apply SSet.yonedaEquiv.injective
   apply Subtype.ext
   apply Prod.ext <;> decide
@@ -53,14 +53,14 @@ lemma roofPastingNumerator_target : stdSimplex.δ (0 : Fin 2) ≫
 /-- 元の前段と同じ実分母の cospan。 -/
 def roofPastingDenominatorCospan : (horn 2 2 : SSet.{u}) ⟶
     (pastingCorner : SSet.{u}).op :=
-  conePairCospan (squareLeftEdge ≫ roofPastingSquareInclusion)
-    (stdSimplex.δ (2 : Fin 3) ≫ roofPastingTriangleInclusion) roofPastingDenominator_target
+  conePairCospan (squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion)
+    (stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion) roofPastingDenominator_target
 
 /-- 同じ実分子と元の次辺の cospan。 -/
 def roofPastingNumeratorCospan : (horn 2 2 : SSet.{u}) ⟶
     (pastingCorner : SSet.{u}).op :=
-  conePairCospan (stdSimplex.δ (1 : Fin 3) ≫ roofPastingTriangleInclusion)
-    (squareRightEdge ≫ roofPastingSquareInclusion) roofPastingNumerator_target
+  conePairCospan (stdSimplex.δ (1 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion)
+    (squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion) roofPastingNumerator_target
 
 /-- join の頂点は同じ左因子または右因子から来る。 -/
 lemma roofJoin_vertex_cases {K L : SSet.{u}} (s : (join K L) _⦋0⦌) :
@@ -113,9 +113,9 @@ lemma roofCospanSquareIso_inl :
 
 /-- 分母側の面は、同じ二辺の cospan 上の同じ錐の正方形表示。 -/
 lemma roofPastingPrismIso_denominator :
-    (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ roofPastingPrismIso.inv =
+    (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.inv =
       cospanConeSquareIso.inv ≫ joinMap (𝟙 Δ[0]) roofPastingDenominatorCospan := by
-  apply (cancel_mono roofPastingPrismIso.hom).mp
+  apply (cancel_mono _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.hom).mp
   simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   apply (cancel_epi cospanConeSquareIso.hom).mp
   simp only [← Category.assoc, Iso.hom_inv_id, Category.id_comp]
@@ -142,10 +142,10 @@ lemma roofPastingPrismIso_denominator :
 
 /-- 分子側の面も、同じ二辺の cospan 上の同じ錐の転置正方形。 -/
 lemma roofPastingPrismIso_numerator :
-    (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ roofPastingPrismIso.inv =
+    (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.inv =
       (β_ Δ[1] Δ[1]).hom ≫ cospanConeSquareIso.inv ≫
         joinMap (𝟙 Δ[0]) roofPastingNumeratorCospan := by
-  apply (cancel_mono roofPastingPrismIso.hom).mp
+  apply (cancel_mono _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.hom).mp
   simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   apply (cancel_epi (cospanConeSquareIso.hom ≫ (β_ Δ[1] Δ[1]).hom)).mp
   simp only [Category.assoc]
@@ -183,27 +183,27 @@ variable {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
   (hσ : stdSimplex.δ (0 : Fin 3) ≫ σ = squareRightEdge ≫ F)
 
 /-- 同じ五頂点の商 coslice 図式の全錐。 -/
-def roofPastingCone : JoinCone (roofPastingCosliceDiagram F σ hσ ≫ sliceUnderProjection a) :=
-  ⟨sliceUnderUncurry (roofPastingCosliceDiagram F σ hσ), sliceUnderUncurry_projection _⟩
+def roofPastingCone : JoinCone (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram F σ hσ ≫ sliceUnderProjection a) :=
+  ⟨sliceUnderUncurry (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram F σ hσ), sliceUnderUncurry_projection _⟩
 
-lemma roofPastingPrism_denominator : pastingSquare (roofPastingPrism F σ hσ) 2 =
+lemma roofPastingPrism_denominator : pastingSquare (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism F σ hσ) 2 =
     cospanConeSquareIso.inv ≫ joinMap (𝟙 Δ[0]) roofPastingDenominatorCospan ≫
       (roofPastingCone F σ hσ).val := by
   change (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫
-    (roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
+    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
   rw [← Category.assoc, roofPastingPrismIso_denominator]
   rfl
 
-lemma roofPastingPrism_numerator : pastingSquare (roofPastingPrism F σ hσ) 1 =
+lemma roofPastingPrism_numerator : pastingSquare (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism F σ hσ) 1 =
     (β_ Δ[1] Δ[1]).hom ≫ cospanConeSquareIso.inv ≫
       joinMap (𝟙 Δ[0]) roofPastingNumeratorCospan ≫ (roofPastingCone F σ hσ).val := by
   change (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫
-    (roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
+    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
   rw [← Category.assoc, roofPastingPrismIso_numerator]
   rfl
 
-lemma roofPastingCosliceDiagram_square : roofPastingSquareInclusion ≫
-    roofPastingCosliceDiagram F σ hσ = (β_ Δ[1] Δ[1]).hom ≫ F := by
+lemma roofPastingCosliceDiagram_square : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion ≫
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram F σ hσ = (β_ Δ[1] Δ[1]).hom ≫ F := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram]
   simp only [Category.assoc]
   rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),
@@ -211,8 +211,8 @@ lemma roofPastingCosliceDiagram_square : roofPastingSquareInclusion ≫
   rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofGridReverseIso_hom_map]
   exact reverseGrid_double (X := sliceUnder a) (m := 1) (n := 1) ((β_ Δ[1] Δ[1]).hom ≫ F)
 
-lemma roofPastingCosliceDiagram_triangle : roofPastingTriangleInclusion ≫
-    roofPastingCosliceDiagram F σ hσ = σ := by
+lemma roofPastingCosliceDiagram_triangle : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion ≫
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram F σ hσ = σ := by
   dsimp only [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram]
   simp only [Category.assoc]
   rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),

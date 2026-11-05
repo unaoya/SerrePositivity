@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (E : Type (max (u + 1) v)) [DGCategory R E]
 
 lemma dgGluingIdentityCommaAugmentationPrism_down :

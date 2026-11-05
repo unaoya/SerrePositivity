@@ -15,7 +15,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 lemma DGBarCompactPiChartNaturality.reparam_source
     {X Y : SSet.{u}} [KanComplex X] [KanComplex Y] {n : ℕ}
     {A A' : Type v} {B : Type w} {c : DGBarCompactPiChart X n A}

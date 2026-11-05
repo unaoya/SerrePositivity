@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet DifferentialGraded DGNerve F2.Presentable
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A]
 
 private instance smallFixedSimplex {D : Type (u + 1)} [DGCategory A D] {n : ℕ}

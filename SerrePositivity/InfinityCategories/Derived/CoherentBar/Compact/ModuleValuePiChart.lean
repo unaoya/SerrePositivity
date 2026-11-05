@@ -18,7 +18,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison SSet HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def DGBarCompactPiChart.postcompose {X : SSet.{u}} [KanComplex X] {n : ℕ}
     {A : Type v} {B : Type w} (c : DGBarCompactPiChart X n A) (e : A ≃ B) :

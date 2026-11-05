@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 def dgGluingStableModuleCategory : StableCategory.{max (u + 1) v w} where
   obj := (SSet.uliftFunctor.{max (u + 1) v w,max (u + 1) v}).obj

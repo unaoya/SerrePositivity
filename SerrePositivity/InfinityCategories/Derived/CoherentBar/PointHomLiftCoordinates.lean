@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E B : SSet.{u}} (p : E ⟶ B) (d : E _⦋0⦌) (y : B _⦋0⦌)
 
 def dgCoherentBarPointLiftSimplex {n : ℕ}

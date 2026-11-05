@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {I : SSet.{u}}
   (G : (SSet.uliftFunctor.{max (u + 1) v, u}).obj I ⟶ dgProjectiveModuleNerve R D)

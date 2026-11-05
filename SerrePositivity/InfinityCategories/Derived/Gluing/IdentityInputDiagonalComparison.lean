@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet DifferentialGraded KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "C" => DGOdotMilnorIdentityBase R d
 local notation "L" => DGOdotMilnorIdentityGluing R d

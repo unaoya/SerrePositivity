@@ -32,7 +32,7 @@ lemma exists_weakOreSpanLift
         markedSpanInclusion X W = SSet.const (functorVertex S) ∧
       G ≫ markedSpanFamilyProjection X W x = SSet.yonedaEquiv.symm s.edge ∧
       G ≫ vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
-        (pre horn₂₀.ι₀₂).app X = squareArrowFamily R := by
+        (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R := by
   dsimp only
   let f := edgeOfSimplex (SSet.yonedaEquiv (horn₂₀.ι₀₂ ≫ S))
   obtain ⟨R, hR, hr, ht, hb⟩ := weakEquivalences_rightOre_pullback h f s hs

@@ -14,7 +14,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R]
   {W V : SimplicialObject (ModuleCat.{v} R)}
   [KanComplex (moduleUnderlyingSSet W)] [KanComplex (moduleUnderlyingSSet V)]

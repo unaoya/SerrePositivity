@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D]
 
 lemma dgBarCompactNativeHomSmallPiChart_closedNaturality

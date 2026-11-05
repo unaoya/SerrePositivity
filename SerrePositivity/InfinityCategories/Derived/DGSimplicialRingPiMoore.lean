@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
 open KST.Comparison KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 instance simplicialRingIntegerModuleUnderlyingKan (A : SimplicialObject RingCat.{u}) :
     SSet.KanComplex (moduleUnderlyingSSet (simplicialRingIntegerModule A)) := by
   change SSet.KanComplex (ringSpace A)

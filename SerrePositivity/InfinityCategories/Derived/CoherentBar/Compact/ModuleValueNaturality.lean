@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison SSet HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v)
 
 /-- 同じ閉射の coherent 表示による実基礎空間作用。 -/

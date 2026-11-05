@@ -15,7 +15,7 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
 /-- 左単位子は、単位対象との tensor の全 Hom 作用に自然。 -/
 lemma closedTensorMapping_leftUnitor (X Y : C) :
-    Spectra.TensorMapping.map (𝟙_ C) X Y ≫ (ihom ((𝟙_ C) ⊗ X)).map (λ_ Y).hom =
+    _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map (𝟙_ C) X Y ≫ (ihom ((𝟙_ C) ⊗ X)).map (λ_ Y).hom =
       (pre (λ_ X).hom).app Y := by
   apply uncurry_injective
   rw [uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry, uncurry_pre]
@@ -25,7 +25,7 @@ lemma closedTensorMapping_leftUnitor (X Y : C) :
 /-- 逆左単位子も、同じ全 Hom 作用に自然。 -/
 lemma closedTensorMapping_leftUnitor_inv (X Y : C) :
     (ihom X).map (λ_ Y).inv =
-      Spectra.TensorMapping.map (𝟙_ C) X Y ≫ (pre (λ_ X).inv).app ((𝟙_ C) ⊗ Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map (𝟙_ C) X Y ≫ (pre (λ_ X).inv).app ((𝟙_ C) ⊗ Y) := by
   apply uncurry_injective
   rw [uncurry_ihom_map, uncurry_pre_app, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry]
   erw [leftUnitor_inv_naturality, leftUnitor_tensor_inv, Category.assoc]

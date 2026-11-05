@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve DGNerve.PinchedHom DGNerveOppositeIndex SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgCoherentBarReverse_univ (n : ℕ) :
     reverse (Finset.univ : Finset (Fin (n + 1))) = Finset.univ := by

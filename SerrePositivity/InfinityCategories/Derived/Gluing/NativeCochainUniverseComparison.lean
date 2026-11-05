@@ -13,7 +13,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded CochainComplex HomComplex MonoidalCategory SSet
 open DGNerve DGNerve.PinchedHom
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (M : Bimodule R C D) (X Y : DGGluingObject R C D M)
 local notation "K" => dgGluingHomComplex R C D M X Y

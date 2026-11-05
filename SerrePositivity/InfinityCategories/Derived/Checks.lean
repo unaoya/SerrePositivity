@@ -58,7 +58,7 @@ example (S : Type u) [CommRing S] :
 
 example : (derivedInfinityHomotopyEquivalence ℤ).functor.CommShift ℤ := inferInstance
 
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 example (S : Type u) [CommRing S] (x y : (derivedInfinityCategory S) _⦋0⦌) (n : ℕ) :
     Nonempty (SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup

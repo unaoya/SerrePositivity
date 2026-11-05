@@ -15,7 +15,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 球面の境界が指定した道をたどる、正次数 π の基点移送関係。 -/
 def dgBarCompactPiTransport {X : SSet.{w}} [KanComplex X]

@@ -60,7 +60,7 @@ variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
 
 /-- 元の係数値上の source 脚は、元の恒等射評価そのもの。 -/
 theorem coefficientEmbedding_source (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentSource =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s) c ≫ s.toStrictTransportComparisonSpan.coherentSource =
       (SSet.uliftFunctor.{u + 1, u}).map
         (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) := by
   rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentSource,
@@ -69,7 +69,7 @@ theorem coefficientEmbedding_source (c : I) :
 
 /-- 元の係数値上の weighted 脚は、同じ定値包含と同じ coherent 比較を通る。 -/
 theorem coefficientEmbedding_target (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentTarget =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s) c ≫ s.toStrictTransportComparisonSpan.coherentTarget =
       (SSet.uliftFunctor.{u + 1, u}).map
         (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
           leftCoherentTransportComparison p := by

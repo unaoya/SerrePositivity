@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet DifferentialGraded DoldKanComparison
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgBarCompactUnderlyingValueFunctor_eq_joint {C : SSet.{u}} [Quasicategory C]
     (x : C _⦋0⦌) :

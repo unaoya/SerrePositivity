@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}}
 
 /-- 共通 edgewise 解像の同じ元の頂点による定値頂点。 -/

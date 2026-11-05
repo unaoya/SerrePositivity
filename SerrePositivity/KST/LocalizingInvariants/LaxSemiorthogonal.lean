@@ -20,10 +20,10 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 /-- 順序 ⟨D,C⟩ で、左包含と右包含は元の全単体上の関手である。 -/
-def laxSemiorthogonal : SemiorthogonalDecomposition D C (laxCategory p q) where
+def laxSemiorthogonal : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition D C (laxCategory p q) where
   inclusion := LaxInclusion.exactFromD p q
   rightInclusion := LaxInclusion.exactFromC p q
   retraction := laxSnd p q
@@ -40,7 +40,7 @@ def laxSemiorthogonal : SemiorthogonalDecomposition D C (laxCategory p q) where
   generates_kernel x := (LaxInclusion.fst_kernel p q x).1
 
 /-- 第一射影を商とする、元の lax pullback の切断付き Verdier 列。 -/
-def laxVerdierSequence : VerdierSequence.{u} := (laxSemiorthogonal p q).verdierSequence
+def laxVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} := (laxSemiorthogonal p q).verdierSequence
 
 lemma laxVerdierSequence_inclusion : (laxVerdierSequence p q).inclusion =
     LaxInclusion.exactFromD p q := rfl

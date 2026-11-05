@@ -25,7 +25,7 @@ variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
 
 /-- d ↦ (0,d,0→q d) は全単体上で定義された実 ∞ 関手。 -/
 def fromD : D.obj ⟶ (laxCategory p q).obj :=
-  F2.laxPullbackLift p.hom q.hom zeroC (𝟙 D.obj)
+  F2.laxPullbackLift p.hom q.hom _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (𝟙 D.obj)
     (ZeroArrowFamily.ofHomotopy (ZeroArrowFamily.fromZero _ q.hom (zeroC_post p)))
     (ZeroArrowFamily.ofHomotopy_source _) (by
       simpa only [Category.id_comp] using ZeroArrowFamily.ofHomotopy_target
@@ -33,16 +33,16 @@ def fromD : D.obj ⟶ (laxCategory p q).obj :=
 
 /-- c ↦ (c,0,p c→0) は全単体上で定義された実 ∞ 関手。 -/
 def fromC : C.obj ⟶ (laxCategory p q).obj :=
-  F2.laxPullbackLift p.hom q.hom (𝟙 C.obj) zeroD
+  F2.laxPullbackLift p.hom q.hom (𝟙 C.obj) _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD
     (ZeroArrowFamily.ofHomotopy (ZeroArrowFamily.toZero p.hom _ (zeroD_post q)))
     (by
       simpa only [Category.id_comp] using ZeroArrowFamily.ofHomotopy_source
         (ZeroArrowFamily.toZero p.hom _ (zeroD_post q)))
     (ZeroArrowFamily.ofHomotopy_target _)
 
-lemma fromD_fst : fromD p q ≫ (laxFst p q).hom = zeroC := F2.laxPullbackLift_fst ..
+lemma fromD_fst : fromD p q ≫ (laxFst p q).hom = _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC := F2.laxPullbackLift_fst ..
 lemma fromD_snd : fromD p q ≫ (laxSnd p q).hom = 𝟙 D.obj := F2.laxPullbackLift_snd ..
 lemma fromC_fst : fromC p q ≫ (laxFst p q).hom = 𝟙 C.obj := F2.laxPullbackLift_fst ..
-lemma fromC_snd : fromC p q ≫ (laxSnd p q).hom = zeroD := F2.laxPullbackLift_snd ..
+lemma fromC_snd : fromC p q ≫ (laxSnd p q).hom = _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD := F2.laxPullbackLift_snd ..
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion

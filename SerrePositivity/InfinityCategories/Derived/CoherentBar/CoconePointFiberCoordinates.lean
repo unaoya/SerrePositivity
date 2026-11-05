@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgCoherentBarCastFullHom_heq {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] {m n : ℕ} (h : m = n) (s : Simplex R C (m + 1)) :

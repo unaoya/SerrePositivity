@@ -12,7 +12,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 空間の等式による実射の輸送。 -/
 def dgBarCompactSpaceMapCast {X X' Y Y' : SSet.{u}}

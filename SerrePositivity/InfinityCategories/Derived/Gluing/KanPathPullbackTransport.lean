@@ -10,7 +10,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open HomotopicalAlgebra SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {K L T : SSet.{u}} (f : K ⟶ L) (a : T ⟶ K ⊗ K)
 
 lemma dgGluingKanPathPullback_kanComplex [KanComplex K] [KanComplex T] :

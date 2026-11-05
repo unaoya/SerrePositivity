@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet HomotopyLimits
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (max (u + 1) v)) [DGCategory R C]
 /-- 元の実錐を保持する Hom 試験による極限判定。 -/
 lemma dgHomTargetConeRestriction_iff (x : C)

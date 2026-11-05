@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 open DifferentialGraded DGNerve
 variable (R : Type u) [CommRing R] (C : Type (max (u + 1) v)) [DGCategory R C] (x : C)

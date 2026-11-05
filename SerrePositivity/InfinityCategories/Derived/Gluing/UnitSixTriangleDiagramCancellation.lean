@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace DGGluingUnitSixTriangleDiagram
 variable {Z : SSet.{u}} [KanComplex Z] {a b c d e : Z _⦋0⦌}
   (P : DGGluingUnitSixTriangleDiagram Z a b c d e)

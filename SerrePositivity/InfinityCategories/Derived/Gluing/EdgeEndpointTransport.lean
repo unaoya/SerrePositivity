@@ -8,7 +8,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def dgGluingEdgeEndpointTransport {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
     (hx : x = x') (hy : y = y') (e : X.Edge x y) : X.Edge x' y' :=

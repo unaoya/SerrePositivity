@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology DifferentialGraded DoldKanComparison
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
 /-- 任意の実 pinched 頂点を基点とする、同じ Hom の負次数コホモロジー表示。 -/

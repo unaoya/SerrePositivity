@@ -16,7 +16,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite SSet HomotopyLimits
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R]
 
 /-- 係数の反転模型。 -/

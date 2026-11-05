@@ -19,7 +19,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded MonoidalCategory CartesianMonoidalCategory DGNerve SSet
 open HomotopyLimits
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (M : Bimodule R C D) (X Y : DGGluingObject R C D M)
 local notation "RM" => RightModule R C

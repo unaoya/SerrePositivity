@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (C : StableCategory.{u}) {G P : SSet.{u}}
   [Quasicategory G] [Quasicategory P] [IsStable G] [IsStable P]
 local notation "L" => StableCategory.obj (laxCategory (𝟙 C) (𝟙 C))

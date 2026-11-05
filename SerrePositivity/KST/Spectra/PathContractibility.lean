@@ -37,7 +37,7 @@ def pathContraction_basedHomotopy (Y : PointedSimplicialSet.{u}) :
       (RelativeMorphism.ofSimplex₀ (𝟙 (basedPathSpace Y).right)
         (basedPathSpace Y).basepoint (basedPathSpace Y).basepoint rfl) where
   h := pathContraction Y
-  h₀ := (pathContraction_zero Y).trans (pointedConstant_eq_const _ _)
+  h₀ := (pathContraction_zero Y).trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _)
   h₁ := pathContraction_one Y
   rel := by
     rw [Subcomplex.ofSimplex_ι, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (basedPathSpace Y),
@@ -49,13 +49,13 @@ def pathContraction_basedHomotopy (Y : PointedSimplicialSet.{u}) :
 規約：標的 Y は Kan。零次数を含む。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。loop の次数移動。 -/
 theorem basedPathSpace_homotopy_eq_point (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n : ℕ) (a : KanHomotopy (basedPathSpace Y).right n (basedPathSpace Y).basepoint) :
-    a = KanHomotopy.point n := by
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (basedPathSpace Y).right n (basedPathSpace Y).basepoint) :
+    a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n := by
   have hc : (SSet.const (X := (basedPathSpace Y).right) (basedPathSpace Y).basepoint).app _
       (basedPathSpace Y).basepoint = (basedPathSpace Y).basepoint := by
     rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (basedPathSpace Y)]
     rfl
-  have h := KanHomotopy.map_eq_of_basedHomotopy n hc rfl (pathContraction_basedHomotopy Y) a
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy n hc rfl (pathContraction_basedHomotopy Y) a
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] at h
   exact h.symm
 
@@ -65,7 +65,7 @@ theorem basedPathSpace_homotopy_eq_point (Y : PointedSimplicialSet.{u}) [KanComp
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。長完全列の全空間の項の消去。 -/
 instance basedPathSpace_homotopy_subsingleton (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ) :
-    Subsingleton (KanHomotopy (basedPathSpace Y).right n (basedPathSpace Y).basepoint) where
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (basedPathSpace Y).right n (basedPathSpace Y).basepoint) where
   allEq a b := (basedPathSpace_homotopy_eq_point Y n a).trans
     (basedPathSpace_homotopy_eq_point Y n b).symm
 

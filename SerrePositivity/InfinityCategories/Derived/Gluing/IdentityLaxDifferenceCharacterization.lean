@@ -12,7 +12,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.KST.LocalizingInvariants
 variable (C : StableCategory.{u})
 

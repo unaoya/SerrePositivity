@@ -14,7 +14,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌)
 
 def dgBarCompactPiUliftUp : KanHomotopyGroup X n x →

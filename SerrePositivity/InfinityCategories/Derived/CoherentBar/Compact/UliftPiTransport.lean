@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory SSet HomotopyLimits
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X : SSet.{u}} [KanComplex X]
 
 lemma dgBarCompactPiTransport_ulift (n : ℕ) {x y : X _⦋0⦌} (e : X.Edge x y)

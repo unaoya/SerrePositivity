@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLift
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) (D : Type w)
   [DGCategory R C] [Small.{u} C] [DGCategory R D] [Small.{u} D]
   (S : Set C) (T : Set D)

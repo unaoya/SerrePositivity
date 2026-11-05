@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 同じ閉加群同型で実導来 κ-compact 性を輸送する。 -/

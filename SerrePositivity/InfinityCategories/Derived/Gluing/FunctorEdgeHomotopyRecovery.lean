@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 lemma dgGluingFunctorEdge_homotopy_recovery {K Z : SSet.{u}} {f g : K ⟶ Z}
     (e : Truncated.Edge (X := (truncation 2).obj ((ihom K).obj Z))
       (functorVertex f) (functorVertex g)) :

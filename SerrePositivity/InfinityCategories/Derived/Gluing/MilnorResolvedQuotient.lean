@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.SConstruction KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 abbrev dgGluingMilnorResolvedQuotientNerve :=
   resolvedDGQuotientNerve R (DGOdotGluing R d)

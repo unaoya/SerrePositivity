@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
 
 /-- 概要：Moore 微分が零であることは零番目の面が零であることと同値。

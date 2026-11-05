@@ -18,7 +18,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet DifferentialGraded DGNerve KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
 local notation "I" => DGFunctor.id (A := R) C

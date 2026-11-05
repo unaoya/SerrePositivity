@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- native Hom の頂点が表す、同じ二つの dg 入力を端点とする標準辺。 -/

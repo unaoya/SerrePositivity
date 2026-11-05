@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 lemma dgGluingInputHomotopyDiagram_constant {K E B : SSet.{u}} (p : E ⟶ B)
     {f g : K ⟶ E} (H : SSet.Homotopy f g) (a : K ⟶ B)
     (hH : H.h ≫ p = fst K (Δ[1] : SSet.{u}) ≫ a) :

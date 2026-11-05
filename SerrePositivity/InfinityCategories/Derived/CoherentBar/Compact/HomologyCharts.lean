@@ -14,7 +14,7 @@ universe u w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 structure DGBarCompactHomologyCharts (R : Type u) [CommRing R]
     {I : Type u} [PartialOrder I] (X : I → KanObject.{w}) (A : KanObject.{w})

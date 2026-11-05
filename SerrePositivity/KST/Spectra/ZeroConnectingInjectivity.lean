@@ -25,7 +25,7 @@ noncomputable section
 namespace ZeroConnectingTriangle
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌}
-  {s t : B.PtSimplex 1 (p.app _ e)} (Ls : BoundaryLift p e s) (Lt : BoundaryLift p e t)
+  {s t : B.PtSimplex 1 (p.app _ e)} (Ls : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s) (Lt : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e t)
   (r : PtSimplex.RelStruct₀ Ls.boundary Lt.boundary)
 
 /-- 概要：二つの持ち上げと fiber 内の辺を三角形の面に置く。
@@ -33,23 +33,23 @@ variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌}
 規約：面零が Ls、面一が Lt。
 使われ方：Goerss–Jardine I §7。連結写像の零次数の単射性。 -/
 def face : Fin 3 → ((Δ[1] : SSet.{u}) ⟶ E) :=
-  ![Ls.map, Lt.map, r.map ≫ fiberι p (p.app _ e)]
+  ![Ls.map, Lt.map, r.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)]
 
 /-- 概要：三角形の三つの面は端点で互換。
 方針：持ち上げの基点条件と fiber 内の辺の端点条件を使う。
 規約：三組の端点を直接検査する。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。全境界充填への入力。 -/
-theorem compatible : BoundaryFaces.IsCompatible (face Ls Lt r) := by
+theorem compatible : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible (face Ls Lt r) := by
   intro j k hjk
   fin_cases j <;> fin_cases k <;> try (simp at hjk)
   · change stdSimplex.δ (0 : Fin 2) ≫ Ls.map = stdSimplex.δ (0 : Fin 2) ≫ Lt.map
     rw [Ls.face_eq 0 (by decide), Lt.face_eq 0 (by decide)]
   · change stdSimplex.δ (1 : Fin 2) ≫ Ls.map =
-      (stdSimplex.δ (0 : Fin 1).castSucc ≫ r.map) ≫ fiberι p (p.app _ e)
+      (stdSimplex.δ (0 : Fin 1).castSucc ≫ r.map) ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
     rw [r.δ_castSucc_map]
     exact Ls.boundary_ι.symm
   · change stdSimplex.δ (1 : Fin 2) ≫ Lt.map =
-      (stdSimplex.δ (0 : Fin 1).succ ≫ r.map) ≫ fiberι p (p.app _ e)
+      (stdSimplex.δ (0 : Fin 1).succ ≫ r.map) ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
     rw [r.δ_succ_map]
     exact Lt.boundary_ι.symm
 
@@ -60,9 +60,9 @@ include Ls Lt r in
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。零次数の連結射の単射性。 -/
 theorem class_eq [KanComplex B]
     (hE : (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from E)) :
-    KanHomotopyGroup.mk s = KanHomotopyGroup.mk t := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t := by
   obtain ⟨q, hq⟩ := BoundaryFaces.exists_filler hE (compatible Ls Lt r)
-  apply KanHomotopyGroup.sound (i := (0 : Fin 2))
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (i := (0 : Fin 2))
   refine ⟨q ≫ p, ?_, ?_, ?_, ?_⟩
   · change stdSimplex.δ (0 : Fin 3) ≫ (q ≫ p) = s.map
     rw [← Category.assoc, hq]
@@ -76,7 +76,7 @@ theorem class_eq [KanComplex B]
     have hj2 : j = 2 := by fin_cases j <;> simp_all
     subst j
     rw [← Category.assoc, hq]
-    change (r.map ≫ fiberι p (p.app _ e)) ≫ p = SSet.const (p.app _ e)
+    change (r.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) ≫ p = SSet.const (p.app _ e)
     simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.comp_const]
 
 end ZeroConnectingTriangle
@@ -88,14 +88,14 @@ end ZeroConnectingTriangle
 theorem connecting_zero_injective {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌)
     (hE : (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from E)) :
-    Function.Injective (connecting p e 0) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0) := by
   intro a b h
   induction a using Quotient.inductionOn with | h s => ?_
   induction b using Quotient.inductionOn with | h t => ?_
-  change connecting p e 0 (KanHomotopyGroup.mk s) =
-    connecting p e 0 (KanHomotopyGroup.mk t) at h
-  let Ls := chooseBoundaryLift p e s
-  let Lt := chooseBoundaryLift p e t
+  change _root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting p e 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) at h
+  let Ls := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e s
+  let Lt := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift p e t
   rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Ls, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Lt] at h
   change KanHomotopyZero.mk Ls.boundary = KanHomotopyZero.mk Lt.boundary at h
   obtain ⟨r⟩ := (KanHomotopyZero.mk_eq_iff Ls.boundary Lt.boundary).1 h

@@ -17,7 +17,7 @@ namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet AlgebraicTopology Opposite
 open SerrePositivity.KST.Spectra
 open F2.PiCriterion
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 全基点のチャートと、同じ指定道で比較された元の不変性。 -/
 structure DGBarCompactPiChart (X : SSet.{u}) [KanComplex X] (n : ℕ) (A : Type v) where

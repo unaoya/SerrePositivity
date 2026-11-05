@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 /-- 直積の普遍射の単体評価を、具体的な二成分へ戻す。 -/
 lemma dgHomSpace_lift_app {U V W : SSet.{v}} (f : U ⟶ V) (g : U ⟶ W)
     (n : SimplexCategoryᵒᵖ) (x : U.obj n) :

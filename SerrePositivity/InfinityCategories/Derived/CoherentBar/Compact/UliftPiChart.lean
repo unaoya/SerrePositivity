@@ -16,7 +16,7 @@ universe u v w w'
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
   {n : ℕ} {A : Type w} {B : Type w'}
 

@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {A B C A' B' C' : SSet.{u}}
   [Quasicategory A] [Quasicategory B] [Quasicategory C]
   [Quasicategory A'] [Quasicategory B'] [Quasicategory C'] [IsStable C] [IsStable C']
