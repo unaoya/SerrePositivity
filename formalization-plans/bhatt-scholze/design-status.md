@@ -1,4 +1,4 @@
-# BS 設計段階の状態と要確認の一覧（2026-11-02）
+# BS 設計段階の状態と要確認の一覧（2026-11-02 作成、2026-11-05 更新）
 
 概要：BS の設計段階（ビルドなし、`drafts/` に骨組み）の到達点と、骨組みに残した「要確認」の分類。A0〜A1 の設計書・骨組みを一度見直した結果。
 方針：要確認を五つに分ける：(A) 基盤の名前を探すだけ、(B) BS 側で決める設計の細部、(C) ∞ 側の窓に依存、(D) 論文の層の区切り 2b の後に
@@ -6,6 +6,60 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 規約：状態の表は進捗報告の書式（一段目は全項目、進行中の親の下は二段目を全項目、一項目一行）。日付は絶対表記。
 決定の一覧は各設計書（U・D・D-S・D-A1 番号）を正本とし、ここでは所在だけ示す。
 使われ方：設計段階の進捗の正本。調整役への中間報告の元。中身を書く段階に入るときの作業一覧。
+
+## 0. 新しいチャットへの引き継ぎ（2026-11-05、段階 II の開始時）
+
+ユーザー決定（11-05）：BS は段階 II から新しいチャット（設計の Claude Code）に移る。BS-W11 は新しいチャットで始める。この節が入口。
+
+### 0.1 目標と規則
+
+- **目標**：E3（`SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean` の `exists_perfectoidizationInterfaceE3`）を、Bhatt–Scholze の原典の経路 A0〜A9 で消す（stage2 の A 案）。
+- **ユーザーの規則**：「adhoc にやらないで、基本は論文通りに形式化したい。特に定義は変えないで、定理は特別な場合だけ証明する」。避けられない差は D 番号を付け、先に相談する（D 番号はユーザーが付ける）。設計判断は推奨を添えて出す。
+- **役割**：Claude は設計・drafts・Codex 指示書・検収。Lean の本体のコーディングは Codex（指示書 `bhatt-scholze-codex-wN.md`、停止点で報告、経緯を書いて自己完結にする。ユーザーは Codex のチャットを替えるので）。
+- **コミット**：main に直接、自分の範囲だけを **`git commit --only -- <paths>`**、その後 `git show --stat HEAD` で確認（11-04 に `git add && git commit` で他セッションの staged 削除を巻き込んだ。memory「main では commit --only」）。帰属行は `Co-Authored-By`。
+- **ビルド**：drafts（`formalization-plans/bhatt-scholze/drafts/`、`SerrePositivity/` の外）はビルドしない。本体の単体ビルドは coordination.md §2-4a（`ps -axo command=` で他のビルド・verify がないこと、`scripts/refactor/with_build_lock.sh --wait 0`）。全ビルドは調整役の暦。
+- **worktree**：BS の Codex の worktree は**一度に一つ**、`/Users/sugakubunka/Documents/LEAN_Projects.nosync/` の下（/tmp は再起動で消える）。こまめにブランチへコミット。CA の新規ディレクトリなど監査対象は sorry 0 になってから、調整役が取り込む。
+- **import**：drafts は移動後の名前で書き、書いたら実在を確かめる（取り込み後に書いた旧名は機械書き換えの対象外）。改名表が回ったら追従する。
+- **docstring**：日本語の 概要／方針／規約／使われ方（memory「Docstring style guide」）。
+
+### 0.2 読む順
+
+1. この節と §1 の状態表（各単位の行）。
+2. `bhatt-scholze-stage2.md` §3（A 案の全体像）と `a9-design.md`（E3 の八欄と A0〜A8 の対応、§3 の引用表、§7 の import 順）。
+3. 設計書 `a0-design.md`〜`a8-design.md`（単位ごと。段 2 で書く順は A2 → A1 → A3 → A4〜A7 → A5 の Prop 8.5 → A6 → A8）。`infinity-sheaves-design.md`（∞ 層 S1〜S8）。
+4. **入口表 `foundation-entry-points.md`**：drafts が待っている基盤の宣言、担当、∞ への依頼（§4、§4.1 に S3 の経路と G9・G10 の型）、段 2 の点検表（§5）、履歴（§6）。
+5. drafts：`drafts/README.md`（置き場所の表と「ファイル順序」の DAG）→ 各ファイルの冒頭 docstring。
+6. 指示書：`bhatt-scholze-codex-w11.md`（次に出すもの）、完了例として `bhatt-scholze-codex-w10.md` と `report-codex-w10.md`。
+7. Codex レビュー W9 の判定と扱い：§5 の表（`review-codex-w9.md` は必要なときだけ）。
+8. 調整：`../coordination.md`（暦・待ち条件）、`../infinity-codex-g1.md`・`g2.md`（∞ の段 G）。
+9. 勉強ノート：`exposition/ja/bs/`（章＝原典の節）。
+
+### 0.3 現在地（11-05）
+
+- **段 0（設計と骨組み）完了**：drafts 51 本・約 12,900 行。A0〜A9 に `True` の仮置きはない。Codex の drafts 作業 BS-D1〜D6 と S4 の篩比較（`report-codex-s4-sieve.md`）は終了、指摘 D1-01〜D5-07 は設計側で解決（§5）。
+- **段 1（基盤を待たない古典的単位）**：BS-W10 は**終了**（作業 A：CompletedTensor から E3 依存を外し有限直積を直接証明、main cc67ea88e。作業 B：Lemma 10.12、main 4019014a1）。**次は BS-W11**（`bhatt-scholze-codex-w11.md`：根添加、Lemma 8.8 の前段と試験付値環、有限エタールの perfectoid 性、arc site の 1 圏部分）。**開始は ∞ F-2（名前空間の付け替え）の取り込みと改名表の配布の後**（調整役が知らせる）。開始時に改名表で W11 と drafts の名前を追従してから出す。
+- **段 2 への橋**：IF-G1 第一区切り（G7・Core・G13・⊗ᴸ・G3・G8）は main に入り、drafts の仮名は本名にした（入口表 §6）。S4 は `drafts/Sheaves/SheafGenerators.lean` で型にし、残る穴は G14 と G8 の自然性の二つ。S3 の経路は (c) Quillen A に決定（入口表 §4.1）。論文の層の B4（Pair を Principal の反復に）は main に入り、BS は `pairCompletionH0Unit` への置き換えと heartbeat の引き上げ 2 件で対応済み。
+
+### 0.4 ∞ に頼んでいて未着の項目
+
+| 項目 | 内容 | 使う場所 | 依頼の所在 |
+| --- | --- | --- | --- |
+| G8 の自然性（四角形） | 集合値前層の射 φ について Map(Y ⋙ ⊗M, F) → Map(X ⋙ ⊗M, F) と `sectionsOf_map φ` が G8 の同値を通してホモトピー圏で可換。G1 版では言えないので**自然な別版** `tensorSpaceFunctor_setWeightHomNatural` で。先行分（指定錐版 `SetWeight.sectionsMap`、篩包含の二辺、別版）は段 F の verify の後に main へ | S4 `isLocalObject_sheafGeneratingEdges_iff`、S8-5 | IF-G2 の最初の項目 |
+| G14 | presentable な E の小さい検出族（`IsDetectingFamily`：`PinchedInterval.postcompose (M i)` の QCat 同値で検出、添字 `Type u`）。`exists_limitDetectingPresheafModel` から導く | S4 `exists_detectingFamily` | IF-G2 §3（main 401c32777） |
+| G9 の小補題 3 つ | left 側の nerve の Quillen A、`IsLeftCofinal` の ulift 保存、縮約の逆向き版（型は入口表 §4.1） | S3 `isLimitCone_iff_restrict_cech`（BS は comma の同一視と縮約を書く） | IF-G2 §4（main b715120a5） |
+| G10 | 余単体的 A 加群の D(A) での Δ 上の極限は交代余面複体（型は入口表 §4.1） | A0 CechAlexander、Shared `totEInfinity_isLimitCone`、A1、A6 Prop 8.10 | IF-G2 §4 |
+| G12 | `IsPresentable (CAlg_R A)`（HA 3.2.3.5） | `sheafification_exists_cAlg`、A2、A5 | IF-G2（最後、E2 レーンの範囲） |
+| M14 | E∞-F_p 代数の冪作用 P⁰（φ_k 半線形、D5-03） | A4 Lemma 8.4、A3 G-A3-9 | 段 G、担当は A4 の中身の段階で決める |
+| M15 | Mathew の descendability（Mod_R の thick ⊗-ideal、内部 Hom・完備テンソルを含む） | A5 Lemma 8.6・Prop 8.5 | 段 G、担当は A5 の中身の段階で決める |
+
+### 0.5 未決の点
+
+- BS-W11 の基準コミットと worktree（F-2 の後）。F-2 の改名表への追従。
+- S3 の comma の同一視と縮約（1 圏）を書く時期：G2 の G9 が入ってから（drafts で書くか段 2 の指示書に入れるか）。
+- `drafts/Sheaves/SpaceValued` の `is0Truncated_iff_pointwise`・`kanDiscretePresheafInclusion` は BS 側の証明（段 2）。
+- M14・M15 の担当（E2 レーンか BS か）は、A4・A5 の中身を書く段階で調整役と決める。
+- 中身の段階への持ち越し：A6/ArcSite の docstring の `FinitaryPreExtensive` → `FinitaryExtensive`（D5-06）、A0・A1 の旧 Mathlib 名 `CosimplicialObject.alternatingCofaceMapComplex`（D5-05）、A4 の `cAlgH0Algebra` → 基盤の `cAlgH0Ring`。
+- 監査の許可一覧（恒久の引用 3：D68 の結晶入力、G-A6-1a・1b の arc 降下の引用。暫定 2）は段 3 で。
 
 ## 1. 状態
 
@@ -57,17 +111,17 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision（BS-D3 停止点 3 済、11-03：SheafOfSetsExcision の `True` 0 件。延長は比較同値の `.functor`（D3-06）、S8 の離散入口（D3-07）） | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 済、11-03：`True` 0 件。三引用、G-A6-1、tilt（D1-03 の `tiltRing`）、G-A6-4〜7、Prop 8.10 は増大交代和複体の完全性、O は `CAlg_R (ULift ℤ)` 値、O と Hom の有限積保存、Cor 8.11 は affPerfd_κ/S 上の可逆な辺） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision（BS-D3 停止点 3 済：Excision の `True` 0 件。Cor 8.12 は界面の IsPullbackSquare、証明は S8 `sectionsOf_pushout` の引き戻し述語待ち） | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
-| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
+| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued・Sheaves/SetSections（切断、11-05 分離）・Sheaves/SheafGenerators（S4） | — | C（G13・⊗ᴸ・G8 は IF-G1 で入った。残りは G8 の自然な別版・G14（IF-G2）） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization（BS-D2 停止点 2 済、11-03：`True` 0 件。Prop 8.13 は完備 CAlg の押し出しからの指定比較射の可逆性。A2 待ちの仮置き 5） | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty（BS-D2 停止点 2 済：F(η_S) = η_P を先に置き、自己テンソルの同値と単位の合成＝乗法） | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
 | A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity（BS-D2 停止点 3 済、11-03：`True` 0 件。一般 J の核 K、D2-02 の底変換は完備テンソルの像） | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
 | A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity（BS-D2 停止点 3 済：`True` 0 件） | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
-| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification（BS-D1 停止点 3 済、11-03：`True` 0 件。普遍同相は Spec 全単射＋剰余体の純非分離、核は nil、層は `StratumRing I g = (R/√I)[1/g]`、結論 (1)(2)(3) を ∃ 文に） | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分の証明は中身の段階） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
+| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | **本体に入った**（BS-W10 作業 B、main 4019014a1、11-05）：`CommutativeAlgebra/UniversalHomeomorphism/`（6 本）・`CommutativeAlgebra/EtaleStratification/`（30 本）、sorry 0。drafts/A8/Stratification は削除 | **済**（ビルド・shared 監査 PASS） | — |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness（BS-D2 停止点 3 済：`True` 0 件。T・T̂・A_λ の型、Cor 8.12 は S → T̂、G-A8-8 は一般の整代数への帰着でだけ） | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly（BS-D4 停止点 3 済：`True` 0 件。`deRham_iso_rootAlgebra_modP` → A5 の `rootMap_modP_eq_deRham`、`prismaticCohomology_lci_universal` → A3 の特殊化） | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模（11-03、BS-D4 後）：51 本、約 12,100 行（結論が `True` の名前つき宣言 53、Codex 集計）。BS-D1（49）・BS-D2（83）・BS-D3（88）・BS-D4（64＋`Type u := sorry` 10）で A0〜A9 の仮置きを具体的な型にした（報告 `report-codex-d1/2/3/4.md`、D1-01〜03・D2-01〜02・D3-01〜07・D4-01〜06 は設計側で解決）。**A0〜A9 に結論が `True` の仮置きは残っていない。** 残り 53 は基盤側（**BS-D6 後は 4**：DerivedGeneral 0、Shared 4（× 理由つき：ホモトピー環 1・内部 Hom 2・Mod_R の完備テンソル 1）、Sheaves 0。drafts は 51 本、約 12,721 行。Shared 28：Descendable 16・CosimplicialEInfinity 5・EInfinityPowerOperation 4・Bockstein 2・DeRhamPolynomial 1；DerivedGeneral 14：CompletionFunctor 5・Truncation 5・ScalarRestriction 4；Sheaves 11：SpaceValued 6・CAlgValued 3・CechConerveLimit 1・GlobalSections 1）→ W2b 後の段 G（BS が M12a・M13、∞ が G3・G4・G6）。
+骨組みの規模（**11-05**）：drafts 51 本、約 12,900 行。結論が `True` の名前つき宣言は 4（Shared の × のみ：`totEInfinity_cohomologyRing`、Descendable の `*_two_of_rhom` 2、`isDescendableOver_complete`）。A0〜A9 には仮置きなし。本体に入ったもの：BS-W10 作業 A（`BhattScholze/Perfectoid/FiniteProduct`、cc67ea88e）・作業 B（Lemma 10.12、4019014a1）。以下は 11-03 時点の記録：51 本、約 12,100 行（結論が `True` の名前つき宣言 53、Codex 集計）。BS-D1（49）・BS-D2（83）・BS-D3（88）・BS-D4（64＋`Type u := sorry` 10）で A0〜A9 の仮置きを具体的な型にした（報告 `report-codex-d1/2/3/4.md`、D1-01〜03・D2-01〜02・D3-01〜07・D4-01〜06 は設計側で解決）。**A0〜A9 に結論が `True` の仮置きは残っていない。** 残り 53 は基盤側（**BS-D6 後は 4**：DerivedGeneral 0、Shared 4（× 理由つき：ホモトピー環 1・内部 Hom 2・Mod_R の完備テンソル 1）、Sheaves 0。drafts は 51 本、約 12,721 行。Shared 28：Descendable 16・CosimplicialEInfinity 5・EInfinityPowerOperation 4・Bockstein 2・DeRhamPolynomial 1；DerivedGeneral 14：CompletionFunctor 5・Truncation 5・ScalarRestriction 4；Sheaves 11：SpaceValued 6・CAlgValued 3・CechConerveLimit 1・GlobalSections 1）→ W2b 後の段 G（BS が M12a・M13、∞ が G3・G4・G6）。
 
 ## 2. 要確認の分類
 
