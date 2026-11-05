@@ -97,10 +97,10 @@ theorem exists_boundary_lift_of_fiber_lifting {E B : SSet.{u}}
   let q := SimplexLastContraction.map.{u} n ≫ b
   have hq₀ : SSet.ι₀ ≫ q = b := by
     dsimp only [q]
-    rw [← Category.assoc, SimplexLastContraction.zero, Category.id_comp]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero, Category.id_comp]
   have hq₁ : SSet.ι₁ ≫ q = SSet.const x := by
     dsimp only [q]
-    rw [← Category.assoc, SimplexLastContraction.one, SSet.const_comp]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one, SSet.const_comp]
   let qA := i ▷ (Δ[1] : SSet.{u}) ≫ q
   have ha : a ≫ p = SSet.ι₀ ≫ qA := by
     dsimp only [qA]
@@ -120,10 +120,10 @@ theorem exists_boundary_lift_of_fiber_lifting {E B : SSet.{u}}
   let s := sqF.lift ≫ fiberι p x
   have hs : i ≫ s = a₁ := by
     dsimp only [s]
-    rw [← Category.assoc, sqF.fac_left, fiberLift_ι]
+    rw [← Category.assoc, sqF.fac_left, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   have hsp : s ≫ p = SSet.const x := by
     dsimp only [s]
-    rw [Category.assoc, fiberι_comp, SSet.comp_const]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.comp_const]
   let H : SSet.Homotopy a (i ≫ s) := {
     h := l
     h₀ := hl₀

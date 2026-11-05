@@ -102,7 +102,7 @@ lemma initialAmbient_prefix : b.initialAmbientHomotopy.h ≫
     (S.ι ▷ (Δ[1] : SSet.{u})) ≫ c.ambientHomotopy.h ≫
       (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj := by
   rw [b.initialAmbientHomotopy_h, c.ambientHomotopy_h]
-  simp only [spanComparisonPrism_pre_diagram, spanComparisonPrism_pre_parameter]
+  simp only [spanComparisonPrism_pre_diagram, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism_pre_parameter]
   exact congrArg (fun e => spanComparisonPrism (K := S.toSSet)
     (L := (Δ[n] : SSet.{u})) (X := C.obj) e) (c.boundary_prefix_eq b)
 
@@ -111,7 +111,7 @@ lemma initialAmbient_last : b.initialAmbientHomotopy.h ≫
     (S.ι ▷ (Δ[1] : SSet.{u})) ≫ c.ambientHomotopy.h ≫
       (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj := by
   rw [b.initialAmbientHomotopy_h, c.ambientHomotopy_h]
-  simp only [spanComparisonPrism_pre_diagram, spanComparisonPrism_pre_parameter]
+  simp only [spanComparisonPrism_pre_diagram, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism_pre_parameter]
   exact congrArg (fun e => spanComparisonPrism (K := S.toSSet)
     (L := join (Δ[0] : SSet.{u}) Δ[0]) (X := C.obj) e) (c.boundary_last_eq b)
 

@@ -19,8 +19,8 @@ lemma cubeVertexDegeneracy_snoc (n : ℕ) (i : Fin (n + 1)) (b : Bool)
   · have hl : i.castSucc.succAbove (Fin.last n) = Fin.last (n + 1) := by
       rw [Fin.succAbove_castSucc_of_le i (Fin.last n) (Fin.le_last i)]
       rfl
-    simp only [cubeVertexDegeneracy, hl, Fin.snoc_last]
-  · simp only [cubeVertexDegeneracy, Fin.castSucc_succAbove_castSucc, Fin.snoc_castSucc]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, hl, Fin.snoc_last]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, Fin.castSucc_succAbove_castSucc, Fin.snoc_castSucc]
 
 /-- 内側座標への端点挿入は、元の左端の値を保持する。 -/
 lemma cubeVertexFace_snoc (b c : Bool) (n : ℕ) (i : Fin (n + 1)) (x : CubeVertex n) :
@@ -32,12 +32,12 @@ lemma cubeVertexFace_snoc (b c : Bool) (n : ℕ) (i : Fin (n + 1)) (x : CubeVert
       rw [Fin.succAbove_castSucc_of_le i (Fin.last n) (Fin.le_last i)]
       rfl
     rw [← hl]
-    simp only [cubeVertexFace, Fin.insertNth_apply_succAbove, Fin.snoc_last]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_succAbove, Fin.snoc_last]
     rw [hl, Fin.snoc_last]
   · refine Fin.succAboveCases i ?_ (fun k => ?_) j
-    · simp [cubeVertexFace]
+    · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace]
     · rw [← Fin.castSucc_succAbove_castSucc]
-      simp only [cubeVertexFace, Fin.insertNth_apply_succAbove, Fin.snoc_castSucc]
+      simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_succAbove, Fin.snoc_castSucc]
       rw [Fin.castSucc_succAbove_castSucc, Fin.snoc_castSucc, Fin.insertNth_apply_succAbove]
 
 /-- 内側の隣接 max は、元の左端の値を保持する。 -/
@@ -45,7 +45,7 @@ lemma cubeVertexConnection_snoc (n : ℕ) (i : Fin (n + 1)) (b : Bool)
     (x : CubeVertex (n + 2)) :
     cubeVertexConnection (n + 1) i.castSucc (Fin.snoc x b) =
       Fin.snoc (cubeVertexConnection n i x) b := by
-  dsimp only [cubeVertexConnection]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection]
   rw [Fin.succ_castSucc, cubeVertexDegeneracy_snoc]
   simp only [Fin.snoc_castSucc]
   exact (Fin.snoc_update _ _ _ _).symm

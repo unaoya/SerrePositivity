@@ -39,7 +39,7 @@ private theorem essentialSurjectivity_of_same_edge
     (hr : IsEssentiallySurjective r.hom) : IsEssentiallySurjective q.hom := by
   have h := congrArg (fun e : StableInfinity.{u} _⦋1⦌ =>
     IsEssentiallySurjective (coherentNerveArrowData (C := StableQCat.{u}) e).2.2.hom) he
-  simp only [stableArrow, coherentNerveEdge_edge] at h
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow, coherentNerveEdge_edge] at h
   exact h.mpr hr
 
 /-- 同じ ν 辺が本質的全射な完全関手の辺なら、復元した同じ dg 射の ν 作用も本質的全射。 -/

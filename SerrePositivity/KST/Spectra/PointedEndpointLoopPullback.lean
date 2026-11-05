@@ -35,7 +35,7 @@ lemma pointedCofiberMapping_isPullback {A B : PointedSimplicialSet.{u}} (i : A �
   change IsPullback ((MonoidalClosed.pre (pointedCofiberProjection i)).app Y)
     ((MonoidalClosed.pre (PointedObject.fromPoint (pointedCofiber i))).app Y)
     ((MonoidalClosed.pre i).app Y) ((MonoidalClosed.pre (PointedObject.toPoint A)).app Y) at h
-  simpa only [← PointedMapping.prePointed_eq_closedPre] using h
+  simpa only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] using h
 
 /-- 円の写像対象は path 終点の基点上の実際の点つき引き戻し。 -/
 lemma pointedEndpointLoop_isPullback (Y : PointedSimplicialSet.{u}) :

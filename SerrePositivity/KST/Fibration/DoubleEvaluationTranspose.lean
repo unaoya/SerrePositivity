@@ -21,7 +21,7 @@ theorem doubleFunctorEvaluation_transpose {K A Y : SSet.{u}}
       doubleFunctorEvaluation (Y := Y) x a := by
   have h := congrArg (fun m => m ≫ evaluateFunctorAt (Y := Y) a)
     (internalHomSwapIso_evaluate K A Y x)
-  simpa only [Category.assoc, evaluateFunctorAt_post, doubleFunctorEvaluation] using h
+  simpa only [Category.assoc, evaluateFunctorAt_post, _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation] using h
 
 /-- 元の同じ同型を転置後に二重評価しても、元の指定された像を保持する。 -/
 theorem functorIso_transpose_doubleMap {K A Y : SSet.{u}}

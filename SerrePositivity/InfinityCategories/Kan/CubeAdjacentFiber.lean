@@ -48,12 +48,12 @@ lemma cubeFiberMax_predAbove (n : ℕ) (p : Fin (n + 1)) :
   rw [cubeAdjacent_fiber_true_iff]
   by_cases hj : j = p
   · subst j
-    simp only [Fin.succAbove_castSucc_self, true_and, cubeVertexConnection,
+    simp only [Fin.succAbove_castSucc_self, true_and, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection,
       Function.update_self]
     cases hx : x p.castSucc <;> cases hy : x p.succ <;> simp_all
   · simp only [hj, false_and, false_or]
     rw [cubeAdjacent_succAbove_eq p j hj]
-    simp [cubeVertexConnection, hj, cubeVertexDegeneracy]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, hj, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 end SerrePositivity.InfinityCategories.Kan
 

@@ -50,7 +50,7 @@ lemma pointedCompositionFamily_condition (X Y : OmegaSpectrum.{u}) (Z : KanSeque
         PointedObject.basedHomMap (suspension (X.level n).space) (Y.sigma n)) at ha
   have hm (A B C : PointedSimplicialSet.{u}) (f : B ⟶ C) :
       PointedObject.basedHomMap A f = (ihom A).map f := rfl
-  simp only [PointedMapping.prePointed_eq_closedPre, pointedStep, hm] at ha hb
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, pointedStep, hm] at ha hb
   have h := enriched_compatible_comp PointedSimplicialSet.{u} suspensionPointedEnrichedFunctor
     (X.sigma n) (Y.sigma n) (Z.sigma n)
     (pointedEvaluation X Y.toKanSequence n) (pointedEvaluation X Y.toKanSequence (n + 1))
@@ -61,7 +61,7 @@ lemma pointedCompositionFamily_condition (X Y : OmegaSpectrum.{u}) (Z : KanSeque
     (by simpa only [enrichedOrdinaryCategorySelf_eHomWhiskerRight,
       enrichedOrdinaryCategorySelf_eHomWhiskerLeft, suspensionPointedEnrichedFunctor,
       pointedStep, hm, Category.assoc] using hb)
-  simpa only [pointedCompositionFamily, pointedStep, hm, PointedMapping.prePointed_eq_closedPre,
+  simpa only [pointedCompositionFamily, pointedStep, hm, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     enrichedOrdinaryCategorySelf_eHomWhiskerRight, enrichedOrdinaryCategorySelf_eHomWhiskerLeft,
     enrichedCategorySelf_comp, suspensionPointedEnrichedFunctor, Category.assoc] using h
 

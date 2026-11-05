@@ -43,7 +43,7 @@ lemma evaluationCylinderInfinityMap_left (A : PointedSimplicialSet.{u}) :
     ((EnrichedParameterCylinder.leftInclusion A.right).comp SSet
       (EnrichedParameterCylinder.evaluationFunctor A.right (cotensorEnriched A)
         (sourceEnriched A) (unpointedGradedEvaluation A))) = _
-  rw [EnrichedParameterCylinder.evaluationFunctor_left]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor_left]
   rfl
 
 /-- 評価の円柱の右端は、元の BF 対象への射影そのもの。 -/
@@ -55,7 +55,7 @@ lemma evaluationCylinderInfinityMap_right (A : PointedSimplicialSet.{u}) :
     ((EnrichedParameterCylinder.rightInclusion A.right).comp SSet
       (EnrichedParameterCylinder.evaluationFunctor A.right (cotensorEnriched A)
         (sourceEnriched A) (unpointedGradedEvaluation A))) = _
-  rw [EnrichedParameterCylinder.evaluationFunctor_right]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor_right]
   rfl
 
 /-- 同じ対象の二つの端の間の評価は、元の普遍評価を厳密に回収する。 -/

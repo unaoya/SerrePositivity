@@ -79,13 +79,13 @@ lemma laxQuotientDifferenceHom_C : SpectrumHo.hom (Binary.inl (value Φ C) (valu
     hΦ.laxQuotientDifferenceHom p q r =
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
         SpectrumHo.hom (valueMap Φ r) := by
-  rw [laxQuotientDifferenceHom, ← Category.assoc, tammeSplitComparison_C]
+  rw [laxQuotientDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C]
 
 lemma laxQuotientDifferenceHom_D : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
     hΦ.laxQuotientDifferenceHom p q r =
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) ≫
         SpectrumHo.hom (valueMap Φ r) := by
-  rw [laxQuotientDifferenceHom, ← Category.assoc, tammeSplitComparison_D]
+  rw [laxQuotientDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D]
 
 end IsLocalizingInvariant
 end SerrePositivity.InfinityCategories.Derived.Lax

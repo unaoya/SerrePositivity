@@ -134,7 +134,7 @@ theorem monoidNerveLoop_one (T : MonCat.{u}) : monoidNerveLoop T 1 = .const := b
 theorem monoidNerveFundamentalClass_one {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) : monoidNerveFundamentalClass T f 1 = 1 := by
   unfold monoidNerveFundamentalClass
-  rw [monoidNerveLoop_one, Spectra.mapSimplex_const]
+  rw [monoidNerveLoop_one, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const]
   rfl
 
 /--

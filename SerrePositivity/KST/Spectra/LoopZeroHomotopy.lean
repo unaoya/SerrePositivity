@@ -79,7 +79,7 @@ theorem connectingZeroEquiv_symm_point {E B : SSet.{u}} (p : E ⟶ B) [Fibration
 @[simp]
 theorem loopZeroHomotopyEquiv_point (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
     loopZeroHomotopyEquiv Y (KanHomotopy.point 0) = 1 := by
-  simp only [loopZeroHomotopyEquiv, Equiv.trans_apply, KanHomotopy.equivOfIso_point,
+  simp only [loopZeroHomotopyEquiv, Equiv.trans_apply, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso_point,
     MulEquiv.toEquiv_eq_coe]
   change (KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y))
     ((connectingZeroEquiv (pathEndpoint Y).right (basedPathSpace Y).basepoint

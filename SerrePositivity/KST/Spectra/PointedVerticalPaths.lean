@@ -33,7 +33,7 @@ lemma uncurry_const_familyVertex {T E : PointedSimplicialSet.{u}} (f : T ⟶ E)
       omega
     rw [hv, ← SSet.yonedaEquiv_comp, Category.id_comp]
     rfl
-  rw [← hk, Category.assoc, pointFamily, paramCurry_ι,
+  rw [← hk, Category.assoc, pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     uncurry_natural_left, uncurry_curry]
   rfl
 
@@ -87,7 +87,7 @@ def ofHomotopy (H : SSet.Homotopy f.right g.right)
   one := paramCurry_homotopy_one H hbase
   over := by
     apply (cancel_mono (PointedObject.basedHomι T B)).1
-    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, paramCurry_ι,
+    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
       ← curry_natural_right]
     apply uncurry_injective
     rw [uncurry_curry, uncurry_const_familyVertex]

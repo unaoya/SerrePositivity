@@ -32,17 +32,17 @@ lemma arrow_exact_of_endpoints {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u}
   let p : ExactMap C C := ⟨𝟙 X, inferInstance⟩
   have hf : IsExactFunctor ((a ≫ arrowLaxInverse X) ≫ (laxFst p p).hom) := by
     change IsExactFunctor ((a ≫ arrowLaxInverse X) ≫ F2.laxPullbackFst (𝟙 X) (𝟙 X))
-    rw [Category.assoc, arrowLaxInverse_fst]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst]
     infer_instance
   have hs : IsExactFunctor ((a ≫ arrowLaxInverse X) ≫ (laxSnd p p).hom) := by
     change IsExactFunctor ((a ≫ arrowLaxInverse X) ≫ F2.laxPullbackSnd (𝟙 X) (𝟙 X))
-    rw [Category.assoc, arrowLaxInverse_snd]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd]
     infer_instance
   have : IsExactFunctor (a ≫ arrowLaxInverse X) := LaxInclusion.exact_of_components p p _
   have he : IsExactFunctor (F2.laxPullbackArrow (𝟙 X) (𝟙 X)) :=
     inferInstanceAs (IsExactFunctor (arrowLaxIso X).hom)
   have h : IsExactFunctor ((a ≫ arrowLaxInverse X) ≫
       F2.laxPullbackArrow (𝟙 X) (𝟙 X)) := inferInstance
-  simpa only [Category.assoc, arrowLaxInverse_arrow, Category.comp_id] using h
+  simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id] using h
 
 end SerrePositivity.KST.LocalizingInvariants

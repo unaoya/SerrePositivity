@@ -29,7 +29,7 @@ variable {P E X B : SSet.{u}} {i : P ⟶ E} {j : P ⟶ X} {p : E ⟶ B} {q : X �
 def pullbackFiberToOriginal (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
     (hxb : q.app _ x = b) : KanFiber j x ⟶ KanFiber p b :=
   fiberLift p b (fiberι j x ≫ i) (by
-    rw [Category.assoc, hP.w, ← Category.assoc, fiberι_comp, const_comp, hxb])
+    rw [Category.assoc, hP.w, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, const_comp, hxb])
 
 /-- 概要：元の射の fiber を引き戻し射影の fiber へ戻す。
 方針：元の fiber 包含と x の定数写像を引き戻してから fiber へ持ち上げる。
@@ -38,7 +38,7 @@ def pullbackFiberToOriginal (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _�
 def originalFiberToPullback (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
     (hxb : q.app _ x = b) : KanFiber p b ⟶ KanFiber j x :=
   fiberLift j x (hP.lift (fiberι p b) (SSet.const x) (by
-    rw [fiberι_comp, const_comp, hxb])) (hP.lift_snd _ _ _)
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, const_comp, hxb])) (hP.lift_snd _ _ _)
 
 /-- 概要：順射は元の全空間への包含と第一射影に関して可換。
 方針：fiber への持ち上げの第一成分を計算する。
@@ -55,7 +55,7 @@ lemma pullbackFiberToOriginal_ι (hP : IsPullback i j p q) (x : X _⦋0⦌) (b :
 lemma originalFiberToPullback_ι (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
     (hxb : q.app _ x = b) :
     originalFiberToPullback hP x b hxb ≫ fiberι j x =
-      hP.lift (fiberι p b) (SSet.const x) (by rw [fiberι_comp, const_comp, hxb]) :=
+      hP.lift (fiberι p b) (SSet.const x) (by rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, const_comp, hxb]) :=
   fiberLift_ι ..
 
 /-- 概要：引き戻し射影の fiber と元の射の指定頂点上の fiber は標準同型。
@@ -72,7 +72,7 @@ def pullbackFiberIso (hP : IsPullback i j p q) (x : X _⦋0⦌) (b : B _⦋0⦌)
     · simp only [Category.assoc, originalFiberToPullback_ι, hP.lift_fst,
         pullbackFiberToOriginal_ι, Category.id_comp]
     · simp only [Category.assoc, originalFiberToPullback_ι, hP.lift_snd,
-        comp_const, Category.id_comp, fiberι_comp]
+        comp_const, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp]
   inv_hom_id := by
     apply fiber_hom_ext p b
     rw [Category.assoc, pullbackFiberToOriginal_ι, ← Category.assoc,

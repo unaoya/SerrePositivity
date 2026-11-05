@@ -54,7 +54,7 @@ lemma signedLoopParameterHom_transpose (n : ℕ) :
   have hid : PointedMapping.prePointed
       (𝟙 (PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space))
       (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space) = 𝟙 _ := by
-    rw [PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app _)
       (MonoidalClosed.pre_id
         (PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space))

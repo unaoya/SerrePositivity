@@ -74,7 +74,7 @@ theorem loopZeroHomotopyEquiv_eq_inv_component (Y : PointedSimplicialSet.{u})
       (KanHomotopy.mk 0 ((PtSimplex.equiv₀ (loopSpace Y).basepoint).symm
         (PointedMapping.familyVertex f))) = π₀.mk (PointedMapping.familyVertex f) := by
     change KanHomotopyZero.equivPiZero (KanHomotopyZero.mk _) = _
-    rw [KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
   have ha : a = KanHomotopy.mk 0 ((PtSimplex.equiv₀ (loopSpace Y).basepoint).symm
       (PointedMapping.familyVertex f)) := by
     apply KanHomotopyZero.equivPiZero.injective

@@ -62,13 +62,13 @@ lemma necklaceNumericNormalForm_eval {T U : Necklace.{u}} (f : T ⟶ U) :
   classical
   funext x j
   apply Bool.eq_iff_iff.mpr
-  rw [necklaceNumericMap_coordinate]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap_coordinate]
   change _ ↔ necklaceJointHits f j ∨ ∃ i, x i = true ∧
     necklaceVertexMap f (T.down.nonjointCoordinate i).val = (U.down.nonjointCoordinate j).val
   by_cases h : necklaceJointHits f j
-  · simp [cubeJoinNormalFormEval, necklaceNumericNormalForm, h, cubeJoinTermEval]
-  · simp only [cubeJoinNormalFormEval, necklaceNumericNormalForm,
-      h, ite_false, cubeJoinTermEval, false_or]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, necklaceNumericNormalForm, h, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, necklaceNumericNormalForm,
+      h, ite_false, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval, false_or]
     change _ = (⊤ : Bool) ↔ _
     rw [Finset.sup_eq_top_iff]
     simp only [Finset.mem_filter, Finset.mem_univ, true_and]

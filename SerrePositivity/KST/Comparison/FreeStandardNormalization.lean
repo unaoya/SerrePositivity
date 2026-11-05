@@ -33,7 +33,7 @@ theorem simplexConeZero_simplexMap {k l : SimplexCategory} {n : ℕ}
         SSet.stdSimplex.objEquiv.symm (simplexConeZero (θ ≫ x)) := by
   rw [SSet.stdSimplex.map_objEquiv_symm]
   change SSet.stdSimplex.objEquiv.{u}.symm (simplexPrepend θ ≫ simplexConeZero x) = _
-  rw [simplexConeZero_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp]
 
 /--
 概要：単体写像の正規化と標準単体の零点追加は交換する。
@@ -49,7 +49,7 @@ theorem freeStandardPrepend_normalize {n d : ℕ} {k : SimplexCategory}
       freeStandardPrependNormalForm
         (fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌) x t) := by
   have hfac : simplexPrepend (factorThruImage t) ≫ simplexPrepend (image.ι t) =
-      simplexPrepend t := by rw [← simplexPrepend_comp, image.fac]
+      simplexPrepend t := by rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp, image.fac]
   rw [fatNormalize_eq_of_factorization _ _ _ _ _ _ hfac]
   change (⟨⦋(image t).len + 1⦌, simplexPrepend (factorThruImage t), _,
     (Δ[n] : SSet.{u}).map (simplexPrepend (image.ι t)).op

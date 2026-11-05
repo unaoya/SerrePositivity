@@ -28,7 +28,7 @@ def mappingBifunctor : PointedSimplicialSet.{u}ᵒᵖ ⥤ (KanSequence.{u} ⥤ K
     apply Hom.ext_app
     intro n
     change PointedMapping.prePointed (𝟙 A.unop) (X.level n).space = 𝟙 _
-    rw [PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id, NatTrans.id_app]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id, NatTrans.id_app]
     rfl
   map_comp f g := by
     apply NatTrans.ext

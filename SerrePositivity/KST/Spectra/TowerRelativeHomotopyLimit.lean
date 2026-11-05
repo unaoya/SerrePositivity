@@ -36,17 +36,17 @@ def limitRelStruct : PtSimplex.RelStruct s t (Fin.last (r + 1)) where
   δ_castSucc_map := by
     apply FibrationTower.hom_ext (fun n ↦ (X n).right) (fun n ↦ (p n).right)
     intro n
-    rw [Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact (h n).δ_castSucc_map
   δ_succ_map := by
     apply FibrationTower.hom_ext (fun n ↦ (X n).right) (fun n ↦ (p n).right)
     intro n
-    rw [Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact (h n).δ_succ_map
   δ_map_of_lt j hj := by
     apply FibrationTower.hom_ext (fun n ↦ (X n).right) (fun n ↦ (p n).right)
     intro n
-    rw [Category.assoc, FibrationTower.lift_projection, const_comp]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection, const_comp]
     exact (h n).δ_map_of_lt j hj
   δ_map_of_gt j hj := (not_lt_of_ge (Fin.le_last j) hj).elim
 

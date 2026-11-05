@@ -40,7 +40,7 @@ theorem familyVertex_zero (X Y : PointedSimplicialSet.{u}) :
     rw [PointedObject.zero_right, comp_toUnit_assoc]
   dsimp only [familyVertex, pointFamily]
   simp only [h]
-  rw [paramCurry_constant, pointedConstant_eq_const, yonedaEquiv_const]
+  rw [paramCurry_constant, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const, yonedaEquiv_const]
 
 end PointedMapping
 
@@ -61,13 +61,13 @@ theorem classOf_zero (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
   change CirclePower.componentEquiv (PointedObject.basedHom A Y)
     (mapπ₀ e.hom.right (π₀.mk (PointedMapping.familyVertex 0))) = 1
   rw [mapπ₀_mk, PointedMapping.familyVertex_zero,
-    OmegaSpectrum.pointedMap_basepoint e.hom,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e.hom,
     ← PointedMapping.familyVertex_zero CirclePower.space (PointedObject.basedHom A Y),
     CirclePower.componentEquiv_familyVertex]
   change KanHomotopyGroup.map
     (0 : CirclePower.space.{u} ⟶ PointedObject.basedHom A Y).right
     (OmegaSpectrum.pointedMap_basepoint _) CirclePower.generator = 1
-  simp only [PointedObject.zero_right, pointedConstant_eq_const]
+  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
   exact KanHomotopy.map_const 1 _ CirclePower.generator
 
 /-- 概要：円の次数射の後合成は任意のパラメータを持つ loop の類に m 乗で作用する。
@@ -82,7 +82,7 @@ theorem post_power (A Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
   rw [map_pow, groupEquiv_apply, groupEquiv_apply]
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) A (CirclePower.powerMap.{u} m) Y
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   let e : PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y) ≅
       PointedObject.basedHom CirclePower.space (PointedObject.basedHom A Y) :=
     InternalHomExchange.iso A CirclePower.space Y

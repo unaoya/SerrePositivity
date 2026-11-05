@@ -65,7 +65,7 @@ def pre (H : VerticalPath p f g) {U : PointedSimplicialSet.{u}} (i : U ⟶ T) :
     VerticalPath p (i ≫ f) (i ≫ g) := by
   have hs : prePointed i E ≫ PointedObject.basedHomMap U p =
       PointedObject.basedHomMap T p ≫ prePointed i B := by
-    simp only [prePointed_eq_closedPre]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact ((MonoidalClosed.pre i).naturality p).symm
   exact H.map p (prePointed i E) (prePointed i B) (i ≫ f) (i ≫ g)
     (familyVertex_pre i f) (familyVertex_pre i g) hs

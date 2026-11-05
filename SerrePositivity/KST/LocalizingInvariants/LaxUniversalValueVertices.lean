@@ -29,31 +29,31 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
 
 lemma vertex00 : squareVertex (square Φ p q i r h) 0 0 = coherentNerveVertex (value Φ A) := by
   have ht := squareBottomEdge_source (LaxUniversalDifference.comparisonSquare p q i r h)
-  rw [LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
-    (stableArrow i).src_eq] at ht
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).src_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
     (value_vertex Φ A).symm
 
 lemma vertex10 : squareVertex (square Φ p q i r h) 1 0 =
     coherentNerveVertex (value Φ (laxCategory p q)) := by
   have ht := squareBottomEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
-  rw [LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
-    (stableArrow i).tgt_eq] at ht
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom, Equiv.apply_symm_apply,
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
     (value_vertex Φ (laxCategory p q)).symm
 
 lemma vertex01 : squareVertex (square Φ p q i r h) 0 1 = coherentNerveVertex (value Φ Q) := by
   have ht := squareLeftEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
-  rw [LaxUniversalDifference.comparisonSquare_left, Equiv.apply_symm_apply,
-    (stableArrow (LaxUniversalDifference.kernelMap p q i r)).tgt_eq] at ht
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left, Equiv.apply_symm_apply,
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r)).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
     (value_vertex Φ Q).symm
 
 lemma vertex11 : squareVertex (square Φ p q i r h) 1 1 =
     coherentNerveVertex (value Φ (laxCategory (𝟙 Q) (𝟙 Q))) := by
   have ht := squareRightEdge_target (LaxUniversalDifference.comparisonSquare p q i r h)
-  rw [LaxUniversalDifference.comparisonSquare_right, Equiv.apply_symm_apply,
-    (stableArrow (LaxUniversalDifference.exactLift p q r)).tgt_eq] at ht
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right, Equiv.apply_symm_apply,
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (LaxUniversalDifference.exactLift p q r)).tgt_eq] at ht
   exact (congrArg (fun v => Φ.app (Opposite.op ⦋0⦌) v) ht.symm).trans
     (value_vertex Φ (laxCategory (𝟙 Q) (𝟙 Q))).symm
 

@@ -41,7 +41,7 @@ theorem simplicialSumMap_localized_isIso {A B : ι → SSet.{max u v}}
   have he : simplicialSumMap f ≫ eB.hom = eA.hom ≫ Limits.Sigma.map f := by
     apply simplicialSum_hom_ext
     intro i
-    rw [← Category.assoc, simplicialSumInclusion_map, Category.assoc, heB,
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map, Category.assoc, heB,
       ← Category.assoc, heA, Sigma.ι_map]
   let Q := AnodyneHomotopy.anodyneQ.{max u v}
   have := KanLocalizedCoproducts.localized_isIso ι f hf

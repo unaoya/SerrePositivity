@@ -24,8 +24,8 @@ private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C
     curry ((β_ A ((ihom K).obj E)).hom ≫ uncurry (a ≫ curry (comp K E V))) := by
   apply uncurry_injective
   apply uncurry_injective
-  simp only [uncurry_natural_left, InternalHomExchange.uncurry_uncurry_hom, uncurry_curry]
-  rw [HomTensorStrength.exchange_natural_right_assoc]
+  simp only [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have hev := congrArg (fun f => A ◁ f)
     ((ihom.ev K).naturality (curry ((β_ A E).hom ≫ uncurry a)))
   change A ◁ (K ◁ (ihom K).map (curry ((β_ A E).hom ≫ uncurry a)) ≫
@@ -43,13 +43,13 @@ private lemma closedParameterAction {C : Type*} [Category C] [MonoidalCategory C
   erw [BraidedCategory.braiding_naturality_right_assoc A ((ihom.ev K).app E)]
   have hs (T : C) : (HomTensorStrength.exchange K A T).hom ≫ (β_ A (K ⊗ T)).hom =
       K ◁ (β_ A T).hom ≫ (α_ K T A).inv := by
-    simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
       tensorRight, Functor.flip, curriedTensor, BraidedCategory.braiding_tensor_right_hom,
       Category.assoc, Iso.hom_inv_id_assoc]
     rw [← comp_whiskerRight_assoc, SymmetricCategory.symmetry, id_whiskerRight,
       Category.id_comp, Iso.inv_hom_id_assoc]
   simp only [Functor.comp_obj, tensorLeft, curriedTensor]
-  rw [← Category.assoc (HomTensorStrength.exchange K A ((ihom K).obj E)).hom,
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange K A ((ihom K).obj E)).hom,
     hs, Category.assoc]
 
 /-- 元の入力族への作用は、その族の転置を mapping して同じパラメータを交換したもの。 -/

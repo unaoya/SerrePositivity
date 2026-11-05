@@ -29,7 +29,7 @@ namespace PointedMapping
 lemma prePointed_post {A B Y Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (p : Y ⟶ Z) :
     prePointed i Y ≫ PointedObject.basedHomMap A (Y := Y) (Z := Z) p =
       PointedObject.basedHomMap B (Y := Y) (Z := Z) p ≫ prePointed i Z := by
-  rw [prePointed_eq_closedPre, prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   exact ((MonoidalClosed.pre i).naturality p).symm
 
 end PointedMapping

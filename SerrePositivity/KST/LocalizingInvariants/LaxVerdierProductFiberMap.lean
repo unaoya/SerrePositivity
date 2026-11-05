@@ -33,10 +33,10 @@ lemma laxQuotientProductFiber_bottom_map :
           (hΦ.laxQuotientProductFiberMiddleIso p q i r h).hom =
       SpectrumHo.hom (laxQuotientProductInclusion p q i) := by
   apply Binary.ho_hom_ext
-  · rw [Category.assoc, Category.assoc, laxQuotientProductFiber_bottom_fst,
+  · rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_bottom_fst,
       Iso.inv_hom_id_assoc]
     simp only [laxQuotientProductInclusion, ← SpectrumHo.hom_comp, Binary.lift_fst]
-  · rw [Category.assoc, Category.assoc, laxQuotientProductFiber_bottom_snd,
+  · rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_bottom_snd,
       Iso.inv_hom_id_assoc]
     simp only [laxQuotientProductInclusion, ← SpectrumHo.hom_comp, Binary.lift_snd]
 

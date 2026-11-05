@@ -155,27 +155,27 @@ lemma originalFirst : twoArrowOriginalFirst ≫
     cosliceSpanNativeDiagram (coprod.desc D L) U twoArrowFirstTarget twoArrowSecondTarget r =
       D := by
   simp only [twoArrowOriginalFirst, Category.assoc,
-    cosliceSpanNativeDiagram_original, coprod.inl_desc]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram_original, coprod.inl_desc]
 
 lemma originalSecond : twoArrowOriginalSecond ≫
     cosliceSpanNativeDiagram (coprod.desc D L) U twoArrowFirstTarget twoArrowSecondTarget r =
       L := by
   simp only [twoArrowOriginalSecond, Category.assoc,
-    cosliceSpanNativeDiagram_original, coprod.inr_desc]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram_original, coprod.inr_desc]
 
 lemma fractionDenominator : twoArrowFractionDenominator ≫
     cosliceSpanNativeDiagram (coprod.desc D L) U twoArrowFirstTarget twoArrowSecondTarget r =
       SSet.yonedaEquiv.symm r.denominator.edge := by
-  simp only [twoArrowFractionDenominator, Category.assoc, cosliceSpanNativeDiagram,
-    pushout.inr_desc, VerdierCosliceFractionNormalization.nativeSpan,
+  simp only [twoArrowFractionDenominator, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram,
+    pushout.inr_desc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSpan,
     horn₂₀.isPushout.inl_desc]
   rfl
 
 lemma fractionNumerator : twoArrowFractionNumerator ≫
     cosliceSpanNativeDiagram (coprod.desc D L) U twoArrowFirstTarget twoArrowSecondTarget r =
       SSet.yonedaEquiv.symm r.numerator.edge := by
-  simp only [twoArrowFractionNumerator, Category.assoc, cosliceSpanNativeDiagram,
-    pushout.inr_desc, VerdierCosliceFractionNormalization.nativeSpan,
+  simp only [twoArrowFractionNumerator, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram,
+    pushout.inr_desc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSpan,
     horn₂₀.isPushout.inr_desc]
   rfl
 

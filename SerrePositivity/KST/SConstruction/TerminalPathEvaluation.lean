@@ -27,7 +27,7 @@ lemma terminalPathStart_evaluation (B : PointedSimplicialSet.{u}) :
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app B.right ≫
           (MonoidalClosed.unitIsoSelf (X := B.right)).hom) = _
-  rw [← Category.assoc, Spectra.PointedMapping.pre_ι, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc]
   have he : (MonoidalClosed.pre terminalIntervalStart.right).app B.right ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app B.right =

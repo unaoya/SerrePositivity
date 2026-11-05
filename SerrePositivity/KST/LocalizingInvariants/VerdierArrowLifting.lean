@@ -34,7 +34,7 @@ private lemma verdierHo_denominator_iff {x y : B.obj _⦋0⦌}
     (stableHoClosure (essentialImage i)).trW (Truncated.HomotopyCategory.homMk e) ↔
       e.edge ∈ weakEquivalences i := by
   have he := cofiberStableEdges_iff_trW (essentialImage i) e
-  rw [stableClosure_essentialImage h] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.stableClosure_essentialImage h] at he
   exact he.symm
 
 private lemma verdierHo_localization :

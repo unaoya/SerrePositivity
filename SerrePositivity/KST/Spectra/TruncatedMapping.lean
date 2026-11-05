@@ -112,7 +112,7 @@ theorem totalEvaluation_condition (n : ℕ) :
       totalEvaluation X Y A i step n ≫ step n := by
   dsimp only [totalEvaluation]
   rw [Category.assoc, evaluation_condition, ← Category.assoc,
-    FibrationTower.projection_comp]
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
   rfl
 
 /-- 概要：単射構造を持つ源と段ごとに Kan な標的の整合写像空間は Kan。

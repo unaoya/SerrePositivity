@@ -48,7 +48,7 @@ lemma loopOfCylinder_constant_parameter {A P : SSet.{u}} (B : PointedSimplicialS
   rw [Category.assoc]
   change a ≫ (Spectra.PointedMapping.paramCurry PointedSimplicialSet.circle.{u} B
     (circleCylinderDesc B h h₀ h₁) _ ≫ _) = _
-  rw [Spectra.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
     circleCylinderDesc_constant_parameter B h h₀ h₁ a ha, PointedObject.curry_constant,
     Category.assoc, PointedObject.basedHom_basepoint_ι]
   rfl

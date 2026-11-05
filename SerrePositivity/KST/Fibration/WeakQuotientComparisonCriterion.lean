@@ -37,7 +37,7 @@ theorem weakSpanSpaceMappingComparison_isIso_of_fractionComparison
       (weakSpanKanMappingComparisonEdge h x).toTruncated) :=
     weakSpanKanMappingComparisonEdge_isInvertible_of_fractionComparison h x hf
   have hr : IsIso (weakSpanSpaceMappingComparison_restricted h x) := by
-    unfold weakSpanSpaceMappingComparison_restricted
+    unfold _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanSpaceMappingComparison_restricted
     infer_instance
   have hm : IsIso
       ((hoFunctor.map ((pre ((SSet.uliftFunctor.{u + 1, u}).map
@@ -55,7 +55,7 @@ theorem weakQuotientMappingComparison_isIso_of_fractionComparison
     IsIso (weakQuotientMappingComparison h x) := by
   have := weakSpanSpaceMappingComparison_isIso_of_fractionComparison h x hf
   have hr : IsIso (weakQuotientMappingComparison_restricted h x) := by
-    unfold weakQuotientMappingComparison_restricted
+    unfold _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_restricted
     infer_instance
   have hm : IsIso
       ((hoFunctor.map ((pre ((SSet.uliftFunctor.{u + 1, u}).map q.hom)).app

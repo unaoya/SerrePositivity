@@ -25,11 +25,11 @@ instance arrowMap_isExact {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
     IsExactFunctor ((ihom (Δ[1] : SSet.{u})).map F) := by
   have h₀ : IsExactFunctor ((ihom (Δ[1] : SSet.{u})).map F ≫
       evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-    rw [arrowMap_evaluation]
+    rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation]
     infer_instance
   have h₁ : IsExactFunctor ((ihom (Δ[1] : SSet.{u})).map F ≫
       evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
-    rw [arrowMap_evaluation]
+    rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation]
     infer_instance
   exact arrow_exact_of_endpoints Y _
 

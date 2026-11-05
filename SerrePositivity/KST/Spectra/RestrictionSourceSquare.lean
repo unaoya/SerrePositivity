@@ -84,11 +84,11 @@ lemma restrictionFiberIso_source (Y : PointedSimplicialSet.{u}) :
     restrictionSourceFiberMap_ι, restrictionFiberIso_hom_ι_assoc]
   have hp := congrArg (fun f ↦ PointedMapping.prePointed f Y)
     (relativeSourceMap_projection i j a b h)
-  simp only [← PointedMapping.prePointed_comp] at hp
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp] at hp
   have hc := congrArg (fun f ↦ f ≫ (freeHomIso D Y).hom) hp
   simp only [Category.assoc] at hc
   have hf := freeHomIso_pre b Y
-  rw [← PointedMapping.prePointed_eq_closedPre] at hf
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hf
   exact hc.trans (congrArg (fun f ↦ PointedMapping.prePointed
     (pointedCofiberProjection (PointedObject.adjoinFunctor.map i)) Y ≫ f) hf)
 

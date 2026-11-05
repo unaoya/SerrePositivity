@@ -51,7 +51,7 @@ theorem delooped_exchange_sign {Y Z : PointedSimplicialSet.{u}}
   change q.right ≫ (InternalHomExchange.iso K K L).hom.right =
     (InternalHomExchange.iso K K Y).hom.right ≫ q.right at hs
   have ht := ((MonoidalClosed.pre (CirclePower.integerPowerMap.{u} (-1))).naturality h).symm
-  simp only [← PointedMapping.prePointed_eq_closedPre] at ht
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at ht
   change PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Y ≫
       PointedObject.basedHomMap K (Y := Y) (Z := L) h =
     PointedObject.basedHomMap K (Y := Y) (Z := L) h ≫

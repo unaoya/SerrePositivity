@@ -33,6 +33,6 @@ theorem oppositeKanUnstraighteningComparison_constant_pointed
       (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)))
     (oppositeKanUnstraighteningComparison_constant F i)
   simpa only [Category.assoc,
-    strictKanUnstraighteningComparison_constant_pointed] using h
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningComparison_constant_pointed] using h
 
 end SerrePositivity.KST.Fibration

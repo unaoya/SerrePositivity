@@ -55,9 +55,9 @@ def oppositeFunctorIso {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
   hom := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G e.hom
   inv := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G F e.inv
   hom_inv_id := by
-    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.inv_hom_id, oppositeFunctorHom_id]
+    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.inv_hom_id, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
   inv_hom_id := by
-    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.hom_inv_id, oppositeFunctorHom_id]
+    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.hom_inv_id, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id]
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}

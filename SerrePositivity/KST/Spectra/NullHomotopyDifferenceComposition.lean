@@ -55,7 +55,7 @@ lemma compositionCompatible (R S T : PtSimplex.RelStruct .const s (Fin.last (n +
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [compositionFace]
-  split_ifs <;> try simp only [filler_face, face, comp_const]
+  split_ifs <;> try simp only [filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso

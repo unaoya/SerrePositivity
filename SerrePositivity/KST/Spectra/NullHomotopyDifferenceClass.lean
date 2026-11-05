@@ -54,7 +54,7 @@ lemma difference_eq_ofFiller (R S : PtSimplex.RelStruct .const s (Fin.last (n + 
         (compatible R S).liftOfKanComplex) =
     horn.ι (Fin.last (n + 1)).castSucc.castSucc j hj ≫
       ((horn (n + 3) (Fin.last (n + 1)).castSucc.castSucc).ι ≫ φ) := by
-    rw [horn.ι_ι_assoc, horn.ι_ι_assoc, (compatible R S).δ_liftOfKanComplex j hj, hφ j hj]
+    rw [horn.ι_ι_assoc, horn.ι_ι_assoc, (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j hj, hφ j hj]
   have hv := congrArg SSet.yonedaEquiv he
   simpa only [SSet.yonedaEquiv_comp, horn.yonedaEquiv_ι] using hv
 

@@ -32,7 +32,7 @@ instance arrow_isExact : IsExactFunctor (arrow p q r) := by
 
 lemma arrow_target : arrow p q r ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.hom := by
-  rw [arrow, Category.assoc, arrowMap_evaluation, ← Category.assoc,
+  rw [arrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc,
     LaxCounit.arrow_target, Category.id_comp]
 
 def connectingArrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
@@ -57,13 +57,13 @@ def exactLift : ExactMap (laxCategory p q) (laxCategory (𝟙 Q) (𝟙 Q)) :=
 lemma lift_snd : lift p q r ≫ (laxSnd (𝟙 Q) (𝟙 Q)).hom =
     ((laxSnd p q).hom ≫ LaxInclusion.fromD p q) ≫ r.hom := by
   change lift p q r ≫ F2.laxPullbackSnd (𝟙 Q.obj) (𝟙 Q.obj) = _
-  rw [lift, Category.assoc, arrowLaxInverse_snd, connectingArrow, Category.assoc,
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd, connectingArrow, Category.assoc,
     CofiberRotation.inverseRotation_target, arrow, Category.assoc,
-    arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
+    _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
 
 lemma lift_arrow : lift p q r ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) =
     connectingArrow p q r := by
-  rw [lift, Category.assoc, arrowLaxInverse_arrow, Category.comp_id]
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
 def differenceIso : FunctorIso (lift p q r ≫ laxDifference (𝟙 Q) (𝟙 Q)) r.hom := by
   have e := CofiberFamily.precompositionIso (F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj))

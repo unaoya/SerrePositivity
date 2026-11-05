@@ -25,7 +25,7 @@ lemma difference_isVerdier :
   fullyFaithful := diagonal_fullyFaithful Q
   kernel := difference_kernel Q
   quotient := by
-    rw [← invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
       (exactLaxDifference (𝟙 Q) (𝟙 Q)) (difference_kernel Q)]
     exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (identityAdjunction Q)
       (QCatEquivalence.refl Q.obj).isFullyFaithful

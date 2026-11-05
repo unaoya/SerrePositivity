@@ -92,8 +92,8 @@ def weakSpanKanQuotientResolutionFixedFiber :
           (weakSpanKanUnstraighteningUnit_projection i x), ← Category.assoc,
           ← Category.assoc, transportSimplexFirstVertexMap_naturality,
           Category.assoc, Category.assoc,
-          ← Category.assoc (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
-            (markedSpanFamilyProjection B.obj (weakEquivalences i) x) q.hom,
+          ← Category.assoc (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+            (markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
           weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const])
 
 /-- 概要：元の固定 span の全単体上で、同じ実単位と相対降下の指定制限を比較する。
@@ -147,7 +147,7 @@ def weakSpanKanQuotientFamilyFixedFiberRestrictionIso :
   have hb : J ≫ b = SSet.const z := by
     change J ≫ r ≫ markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
     rw [← Category.assoc, ← Category.assoc, hJ, Category.assoc, Category.assoc,
-      ← Category.assoc j (markedSpanFamilyProjection B.obj (weakEquivalences i) x) q.hom,
+      ← Category.assoc j (markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) q.hom,
       weakSpanFixedFamily_projection, SSet.const_comp, SSet.comp_const]
   let jOver : Over.mk (SSet.const z : nerve (TransportSimplexCategory
       (fixedMarkedSpans B.obj (weakEquivalences i) x y)) ⟶ C.obj) ⟶ Over.mk b :=

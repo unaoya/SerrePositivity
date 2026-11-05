@@ -33,8 +33,8 @@ theorem loopPathFiberIso_hom_restriction (Y : PointedSimplicialSet.{u}) :
     Spectra.PointedMapping.prePointed
       (Spectra.pointedCofiberProjection Spectra.intervalEndpoint) Y).right =
       (Spectra.PointedMapping.prePointed intervalCircleProjection Y).right
-  rw [Spectra.PointedMapping.prePointed_eq_closedPre,
-    Spectra.PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
   rfl
 
 /--

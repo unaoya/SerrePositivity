@@ -35,10 +35,10 @@ lemma cubeJoinNormalFormRestrict_eval {n m k : ℕ} (s : CubeJoinNormalForm n m)
       cubeJoinNormalFormEval s x := by
   funext j
   cases hs : s j with
-  | none => simp [cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, cubeJoinTermEval]
+  | none => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
   | some t =>
-    simp only [cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, Option.map_some,
-      cubeJoinTermEval]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, cubeJoinNormalFormRestrict, hs, Option.map_some,
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
     apply Bool.eq_iff_iff.mpr
     change _ = ⊤ ↔ _ = ⊤
     rw [Finset.sup_eq_top_iff, Finset.sup_eq_top_iff]

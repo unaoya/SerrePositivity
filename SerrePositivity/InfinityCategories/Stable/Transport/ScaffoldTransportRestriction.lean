@@ -56,7 +56,7 @@ def coherentEmbedding :
 theorem coherentEmbedding_source :
     (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentSource =
       (SSet.uliftFunctor.{u + 1, u}).map (universalScaffold p) := by
-  rw [coherentEmbedding, StrictTransportComparisonSpan.coherentSource,
+  rw [coherentEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentSource,
     ← Functor.map_comp, s.source_restriction]
 
 /-- weighted 比較への因子分解も、元の taut scaffold 上で厳密に回収する。 -/
@@ -64,7 +64,7 @@ theorem coherentEmbedding_target :
     (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentTarget =
       (SSet.uliftFunctor.{u + 1, u}).map (tautScaffold (leftStrictTransportDiagram p)) ≫
         leftCoherentTransportComparison p := by
-  rw [coherentEmbedding, StrictTransportComparisonSpan.coherentTarget,
+  rw [coherentEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentTarget,
     ← Category.assoc, ← Functor.map_comp, s.weighted_restriction]
 
 end ScaffoldTransportComparisonSpan

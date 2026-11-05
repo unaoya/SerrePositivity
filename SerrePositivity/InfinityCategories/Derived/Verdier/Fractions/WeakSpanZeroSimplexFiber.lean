@@ -62,9 +62,9 @@ theorem weakSpanZeroSimplexFiberIso_inclusion :
     rw [show (vertexFiberPullbackIso π r b).inv ≫
       vertexFiberι (weakSpanSimplexProjection i x) b ≫ pullback.fst π r =
         vertexFiberι π (r.app (Opposite.op ⦋0⦌) b) from (by simpa only [Category.assoc] using! hs.symm)]
-    rw [show (markedSpanFamilyFiberIso B.obj (weakEquivalences i) x
+    rw [show (markedSpanFamilyFiberIso B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
       (r.app (Opposite.op ⦋0⦌) b)).hom ≫ vertexFiberι π _ =
-        fixedMarkedSpanToFamily B.obj (weakEquivalences i) x _ from vertexFiberLift_ι _ _ _
+        fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x _ from vertexFiberLift_ι _ _ _
           (weakSpanFixedFamily_projection i x (r.app (Opposite.op ⦋0⦌) b))]
     rw [weakSpanFixedZeroSimplexLift, pullback.lift_fst]
     apply (cancel_mono (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x)).1

@@ -16,10 +16,10 @@ lemma cubeFiberMax_keep {n m : ℕ} (q : Fin n → Fin m) (x : CubeVertex (n + 1
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
   · apply Bool.eq_iff_iff.mpr
-    simp [cubeFiberMax_true_iff, Fin.exists_fin_succ]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff, Fin.exists_fin_succ]
   · have hz : (0 : Fin (m + 1)) ≠ j.succ := Ne.symm (Fin.succ_ne_zero j)
     apply Bool.eq_iff_iff.mpr
-    simp [cubeFiberMax_true_iff, Fin.exists_fin_succ, hz]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff, Fin.exists_fin_succ, hz]
 
 /-- 新しい右端入力を最初の fiber へ加えると、同じ出力でだけ max が加わる。 -/
 lemma cubeFiberMax_merge {n m : ℕ} (q : Fin n → Fin (m + 1)) (x : CubeVertex (n + 1)) :
@@ -29,10 +29,10 @@ lemma cubeFiberMax_merge {n m : ℕ} (q : Fin n → Fin (m + 1)) (x : CubeVertex
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
   · apply Bool.eq_iff_iff.mpr
-    simp [cubeFiberMax_true_iff, Fin.exists_fin_succ]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff, Fin.exists_fin_succ]
   · have hz : (0 : Fin (m + 1)) ≠ j.succ := Ne.symm (Fin.succ_ne_zero j)
     apply Bool.eq_iff_iff.mpr
-    simp [cubeFiberMax_true_iff, Fin.exists_fin_succ, hz]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff, Fin.exists_fin_succ, hz]
 
 /-- 元の右端 connection は先頭二入力の max と残りの入力。 -/
 lemma cubeVertexConnection_zero (n : ℕ) (x : CubeVertex (n + 2)) :
@@ -40,8 +40,8 @@ lemma cubeVertexConnection_zero (n : ℕ) (x : CubeVertex (n + 2)) :
       Fin.cons (x 0 ⊔ x (0 : Fin (n + 1)).succ) (fun j => x j.succ.succ) := by
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
-  · simp [cubeVertexConnection]
-  · simp [cubeVertexConnection, cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 /-- ブロック開始の元の評価は、右端入力と残りのブロックの評価。 -/
 lemma cubeConnectionNormalVertex_keep {n m : ℕ} (d : CubeConnectionNormal n m)
@@ -65,7 +65,7 @@ lemma cubeVertexConnection_delete_zero (n : ℕ) (x : CubeVertex (n + 2)) :
       cubeVertexDegeneracy n 0 (cubeVertexDegeneracy (n + 1) 0 x) := by
   rw [cubeVertexConnection_zero]
   funext j
-  simp [cubeVertexDegeneracy]
+  simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 /-- 元の右端 max と離れた出力削除の交換は、同じ入力削除を回収する。 -/
 lemma cubeVertexConnection_delete_succ (n : ℕ) (i : Fin (n + 1))
@@ -75,7 +75,7 @@ lemma cubeVertexConnection_delete_succ (n : ℕ) (i : Fin (n + 1))
   rw [cubeVertexConnection_zero, cubeVertexDegeneracy_cons, cubeVertexConnection_zero]
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
-  · simp [cubeVertexDegeneracy]
-  · simp [cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 end SerrePositivity.KST.SConstruction

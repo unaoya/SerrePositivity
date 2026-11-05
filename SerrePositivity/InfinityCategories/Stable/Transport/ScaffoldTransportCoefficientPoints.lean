@@ -63,7 +63,7 @@ theorem coefficientEmbedding_source (c : I) :
     s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentSource =
       (SSet.uliftFunctor.{u + 1, u}).map
         (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentSource,
+  rw [coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentSource,
     ← Functor.map_comp, Category.assoc, s.source_restriction,
     simplicialReplacementConstantLift_universalScaffold]
 
@@ -73,7 +73,7 @@ theorem coefficientEmbedding_target (c : I) :
       (SSet.uliftFunctor.{u + 1, u}).map
         (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
           leftCoherentTransportComparison p := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentTarget,
+  rw [coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentTarget,
     ← Category.assoc, ← Functor.map_comp, Category.assoc, s.weighted_restriction,
     simplicialReplacementConstantLift_tautScaffold]
 

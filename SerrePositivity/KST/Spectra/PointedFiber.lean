@@ -114,7 +114,7 @@ def pointedFiberLiftOfZero {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (f :
   pointedFiberLift p f (by
     have h := congrArg Under.Hom.right hf
     change f.right ≫ p.right = (0 : A ⟶ B).right at h
-    rw [PointedObject.zero_right, pointedConstant_eq_const] at h
+    rw [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const] at h
     exact h.trans (congrArg (fun b ↦ (SSet.const (X := A.right) b))
       (OmegaSpectrum.pointedMap_basepoint p).symm))
 

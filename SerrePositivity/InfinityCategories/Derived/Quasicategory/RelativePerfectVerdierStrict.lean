@@ -47,9 +47,9 @@ def ofStrict (d : RelativeVerdierDiagram (ν ≫ perfectStableInfinityInclusion)
     (stableObject (squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 0)).obj at hM
   change IsIdempotentComplete
     (stableObject (squareVertex (d.square ≫ ν ≫ perfectStableInfinityInclusion) 1 1)).obj at hR
-  rw [d.image_eq, d.image.left_eq, stableObject_vertex] at hL
-  rw [d.image_eq, d.image.middle_eq, stableObject_vertex] at hM
-  rw [d.image_eq, d.image.right_eq, stableObject_vertex] at hR
+  rw [d.image_eq, d.image.left_eq, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex] at hL
+  rw [d.image_eq, d.image.middle_eq, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex] at hM
+  rw [d.image_eq, d.image.right_eq, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex] at hR
   let p : PerfectVerdierSequence.{u} := {
     verdier := d.image.toVerdierSequence
     left_complete := hL

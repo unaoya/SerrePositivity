@@ -47,7 +47,7 @@ theorem weakQuotientMappingComparison_component_restriction (y : B.obj _⦋0⦌)
         (ULift.up (q.hom.app (Opposite.op ⦋0⦌) y)) :=
     functorHomEvaluate_precomp (weakQuotientMappingComparison h x) k (ULift.up y)
   rw [hp] at he
-  simpa only [functorIso_app_hom_evaluate, functorIso_app_inv_evaluate] using he
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_inv_evaluate] using he
 
 /-- 同じ初頂点降下の比較成分を戻すと、元の strict Kan 比較辺の同じ頂点成分を回収。 -/
 theorem weakSpanSpaceMappingComparison_component_restriction
@@ -80,7 +80,7 @@ theorem weakSpanSpaceMappingComparison_component_restriction
       (ULift.up ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌)
         (nerveVertex c))) := functorHomEvaluate_precomp (weakSpanSpaceMappingComparison h x) k z
   rw [hp] at he
-  simp only [← functorIso_app_hom_evaluate, ← functorIso_app_inv_evaluate] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate, ← _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_inv_evaluate] at he
   have hc := congrArg (fun m =>
     ((weakSpanKanSpaceDiagram_restrictionIso i x).app z).inv ≫ m ≫
       ((fractionKanSpaceDiagram_restrictionIso q.hom x).app z).hom) he

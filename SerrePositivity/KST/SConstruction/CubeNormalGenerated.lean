@@ -57,7 +57,7 @@ lemma cubeFaceNormalVertex_generated {n m : ℕ} (d : CubeFaceNormal n m) :
     have h : cubeFaceNormalVertex (.point b d) = cubeVertexFace b _ 0 ∘
         cubeFaceNormalVertex d := by
       funext x
-      simp only [cubeFaceNormalVertex, Function.comp_apply, cubeVertexFace,
+      simp only [cubeFaceNormalVertex, Function.comp_apply, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
         Fin.insertNth_zero']
     rw [h]
     exact .comp ih (.face b _ 0)

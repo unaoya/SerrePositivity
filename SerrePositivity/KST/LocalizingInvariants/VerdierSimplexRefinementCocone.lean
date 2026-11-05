@@ -155,7 +155,7 @@ lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
           SSet.yonedaEquiv.symm g.edge := by
   obtain ⟨D', t, ht, hv, _⟩ := exists_verdierSimplexTerminalRefinementMap h D s hs
   have hpoint : SSet.yonedaEquiv (simplexLastPoint n ≫ D') = y := by
-    rw [SSet.yonedaEquiv_comp, simplexLastPoint, Equiv.apply_symm_apply]
+    rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint, Equiv.apply_symm_apply]
     exact hv
   let g' : Truncated.Edge (X := (truncation 2).obj B.obj)
       (SSet.yonedaEquiv (simplexLastPoint n ≫ D')) z :=

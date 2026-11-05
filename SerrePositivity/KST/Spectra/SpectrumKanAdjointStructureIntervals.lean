@@ -101,7 +101,7 @@ lemma interval_h (s : KanAdjointBoundaryCoordinate X Y φ j c n H) :
   rw [PointedMapping.VerticalPath.homotopy_h]
   change uncurry (PointedMapping.paramCurry A (kanAdjointParameterTarget X Y n)
     s.comparison.h s.comparison_base ≫ _) = _
-  rw [PointedMapping.paramCurry_ι, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
 
 /-- 段調整を構造 Hom へ後合成した区間の境界は、指定された元の H の同じ後合成。 -/
 lemma interval_post_boundary (s : KanAdjointBoundaryCoordinate X Y φ j c n H)

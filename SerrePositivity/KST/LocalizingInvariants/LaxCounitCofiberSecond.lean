@@ -64,7 +64,7 @@ lemma cofiber_snd_zero (x : (laxCategory p q).obj _⦋0⦌) :
     rw [ofHomotopy_vertex_edge]
   change IsZeroVertex ((laxSnd p q).hom.app (Opposite.op ⦋0⦌)
     ((CofiberFamily.cofiber (laxCategory p q).obj (arrow p q)).app _ x))
-  rw [CofiberFamily.cofiber_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber_vertex]
   exact (s.map_isInvertible_iff_zero (laxSnd p q).hom).mp hi
 
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit

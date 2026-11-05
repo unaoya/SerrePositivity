@@ -35,8 +35,8 @@ lemma sourcePoint :
         ((PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right.app _
           (loopSpace E).basepoint) =
       (basedPathMap p).right.app _ (basedPathSpace E).basepoint := by
-  rw [OmegaSpectrum.pointedMap_basepoint, OmegaSpectrum.pointedMap_basepoint,
-    OmegaSpectrum.pointedMap_basepoint]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
 
 /-- loop の底の単体を path の底の単体へ含める。 -/
 def pathSimplex : (basedPathSpace B).right.PtSimplex (n + 1)
@@ -60,7 +60,7 @@ def pathLift : BoundaryLift (basedPathMap p).right (basedPathSpace E).basepoint
     rw [Category.assoc, ← hn, ← Category.assoc, V.map_comp]
     rfl
   face_eq j hj := by
-    rw [← Category.assoc, V.face_eq j hj, const_comp, OmegaSpectrum.pointedMap_basepoint]
+    rw [← Category.assoc, V.face_eq j hj, const_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
 
 /-- path に含めた loop の充填の終点は全空間の基点で定数。 -/
 @[reassoc (attr := simp)]
@@ -90,7 +90,7 @@ lemma boundaryLoop_path_include :
   simp only [Under.comp_right] at hn
   change (V.pointedBoundary.map ≫ (loopPointedFiberIso p).inv.right) ≫ _ ≫ _ = _
   rw [Category.assoc, hn, ← Category.assoc, BoundaryLift.pointedBoundary_ι,
-    BoundaryLift.boundary_ι]
+    _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_ι]
   rfl
 
 /-- 概要：pathLift の境界を fiber 内の path に戻すと境界 loop の path 表示に等しい。

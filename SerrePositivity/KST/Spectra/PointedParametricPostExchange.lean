@@ -24,7 +24,7 @@ lemma parametricPost_exchange (A : PointedSimplicialSet.{u})
       (InternalHomExchange.iso A P Z').hom := by
   have hid : prePointed (𝟙 (PointedObject.basedHom A Z))
       (PointedObject.basedHom A Z') = 𝟙 _ := by
-    rw [prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact congrArg (fun m => m.app (PointedObject.basedHom A Z'))
       (MonoidalClosed.pre_id (PointedObject.basedHom A Z))
   have h := transpose_ihomParameterAction v (𝟙 (PointedObject.basedHom A Z))

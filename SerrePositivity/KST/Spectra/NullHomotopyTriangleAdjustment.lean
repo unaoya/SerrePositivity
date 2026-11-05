@@ -47,7 +47,7 @@ lemma adjustmentCompatible :
   have hlt : j.val < k.val := hjk
   simp only [adjustmentFace]
   split_ifs <;> try simp only [hφ, hψ, NullHomotopyTransport.triangleFace,
-    NullHomotopyDifference.diagonal_filler_face, NullHomotopyDifference.face, comp_const]
+    NullHomotopyDifference.diagonal_filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -64,7 +64,7 @@ lemma adjustment_output_face (j : Fin (n + 4)) :
     (adjustmentCompatible R A U V φ ψ hφ hψ).δ_liftOfKanComplex _ (Fin.castSucc_ne_last j)]
   simp only [adjustmentFace, Fin.val_castSucc]
   split_ifs <;> try simp only [hφ, hψ, NullHomotopyTransport.triangleFace,
-    NullHomotopyDifference.diagonal_filler_face, NullHomotopyDifference.face,
+    NullHomotopyDifference.diagonal_filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face,
     comp_const]
   all_goals (try split_ifs) <;> first
     | rfl

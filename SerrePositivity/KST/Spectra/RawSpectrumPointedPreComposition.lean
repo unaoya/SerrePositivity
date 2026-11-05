@@ -36,7 +36,7 @@ lemma pointedComposition_pre {W V : OmegaSpectrum.{u}} (f : W ⟶ V)
   have hc := eComp_eHomWhiskerRight PointedSimplicialSet.{u} (f.app n)
     (X.level n).space (Z.level n).space
   simp only [enrichedCategorySelf_comp, enrichedOrdinaryCategorySelf_eHomWhiskerRight,
-    ← PointedMapping.prePointed_eq_closedPre] at hc
+    ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   dsimp only [pointedCompositionFamily]
   rw [Category.assoc, hc, ← Category.assoc]
   exact congrArg (· ≫ MonoidalClosed.comp

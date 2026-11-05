@@ -78,7 +78,7 @@ lemma kanHomotopyProdMap_bijective {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
     obtain ⟨g, rfl⟩ := KanHomotopy.mk_surjective n b
     have hx := congrArg Prod.fst h
     have hy := congrArg Prod.snd h
-    simp only [kanHomotopyProdMap, KanHomotopy.map_mk] at hx hy
+    simp only [kanHomotopyProdMap, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] at hx hy
     obtain ⟨rx⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hx
     obtain ⟨ry⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hy
     exact KanHomotopy.sound (KanHomotopyGroup.prodRelStruct rx ry)
@@ -88,9 +88,9 @@ lemma kanHomotopyProdMap_bijective {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
     refine ⟨KanHomotopy.mk n (prodPointedSimplex f g), ?_⟩
     apply Prod.ext
     · change KanHomotopy.map n (fst X Y) rfl _ = _
-      rw [KanHomotopy.map_mk, prodPointedSimplex_fst]
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, prodPointedSimplex_fst]
     · change KanHomotopy.map n (snd X Y) rfl _ = _
-      rw [KanHomotopy.map_mk, prodPointedSimplex_snd]
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, prodPointedSimplex_snd]
 
 /-- 概要：積の全基点の全次数のホモトピー類の標準全単射。
 方針：実際の二つの射影から作った全単射を Equiv へ束ねる。
@@ -116,13 +116,13 @@ lemma kanHomotopyProdMap_naturality {X Y X' Y' : SSet.{u}}
   apply Prod.ext
   · change KanHomotopy.map n (fst X' Y') rfl (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
       KanHomotopy.map n f rfl (KanHomotopy.map n (fst X Y) rfl a)
-    rw [← KanHomotopy.map_comp n (f ⊗ₘ g) rfl (fst X' Y') rfl rfl,
-      ← KanHomotopy.map_comp n (fst X Y) rfl f rfl rfl]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (f ⊗ₘ g) rfl (fst X' Y') rfl rfl,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (fst X Y) rfl f rfl rfl]
     simp only [tensorHom_fst]
   · change KanHomotopy.map n (snd X' Y') rfl (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
       KanHomotopy.map n g rfl (KanHomotopy.map n (snd X Y) rfl a)
-    rw [← KanHomotopy.map_comp n (f ⊗ₘ g) rfl (snd X' Y') rfl rfl,
-      ← KanHomotopy.map_comp n (snd X Y) rfl g rfl rfl]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (f ⊗ₘ g) rfl (snd X' Y') rfl rfl,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (snd X Y) rfl g rfl rfl]
     simp only [tensorHom_snd]
 
 /-- 概要：全基点の π_* 同型の二項積も全基点の π_* 同型。

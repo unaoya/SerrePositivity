@@ -69,7 +69,7 @@ lemma simplexTerminalCospan_comm :
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
     simplexTerminalArrowFamily D ≫ evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  rw [SSet.const_comp, evaluateFunctorAt_functorVertex, simplexTerminalArrowFamily_target, hs]
+  rw [SSet.const_comp, evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_target, hs]
 
 /-- 元の全図式と指定終端辺からなる、全単体上の同じ cospan 族。 -/
 def simplexTerminalCospanFamily :
@@ -118,7 +118,7 @@ lemma simplexTerminalCospanFamily_last :
     change SSet.const ((simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (Fin.last n))) =
       SSet.const (functorVertex (horn₂₂.ι₁₂ ≫ pullbackCospan (squareColumnDiagram s)))
-    rw [simplexTerminalArrowFamily_last, columnCospan_top, hs]
+    rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_last, columnCospan_top, hs]
 
 end SerrePositivity.InfinityCategories.Stable.Quasicategory
 

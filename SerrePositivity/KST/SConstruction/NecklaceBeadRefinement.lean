@@ -35,7 +35,7 @@ lemma necklaceBeadRefinement_boolean (T : Necklace.{u}) (x : T.down.NonjointVert
     (v : (NecklaceShape.single T.down.vertexMax).NonjointVertex) :
     necklaceBooleanMap (necklaceBeadRefinement T) x v = T.down.cubeFullBits x v.val := by
   apply Bool.eq_iff_iff.mpr
-  rw [necklaceBooleanMap_true_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_true_iff]
   constructor
   · rintro ⟨w, hw, he⟩
     exact he ▸ hw

@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 lemma pullbackSourcePrefixFamily_pre {S P X : SSet.{u}} {n : ℕ} (j : S ⟶ P)
     (F : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X)) :
     pullbackSourcePrefixFamily (j ≫ F) = j ≫ pullbackSourcePrefixFamily F := by
-  simp only [pullbackSourcePrefixFamily, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily, Category.assoc]
 
 /-- 同じ実次辺円柱を、両端余錐・前段・固定頂点を厳密に保持する一つの全円柱へ貼る。 -/
 lemma exists_twoEndpoint_verdierSpanCoconeFamily

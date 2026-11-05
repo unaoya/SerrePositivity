@@ -138,7 +138,7 @@ lemma verdierCompletedSpan_finite_realization
     have e := FunctorIso.postcomp (groupoidCompletionEvaluationIso
       (F2.continuousKanReplacementUnit.app E)).symm V.inv ≪≫
       FunctorIso.precomp V.homInvIso (groupoidCompletionMap E)
-    simpa only [V, IsQCatEquivalence.choose, groupoidCompletionKanComparison,
+    simpa only [V, IsQCatEquivalence.choose, _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison,
       Category.assoc, Category.comp_id] using e
   have e₁ : FunctorIso (a ≫ F ≫ groupoidCompletionMap
       (fixedMarkedSpans B.obj (weakEquivalences i) x y))

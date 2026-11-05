@@ -38,7 +38,7 @@ instance inverseRotation_isExact : IsExactFunctor (inverseRotation X) := by
 lemma inverseRotation_target : inverseRotation X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  rw [inverseRotation, Category.assoc, CofiberDiagrams.bottomTarget_eq_rightSource,
+  rw [inverseRotation, Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottomTarget_eq_rightSource,
     ← Category.assoc, rightSection_right, Category.id_comp]
 
 def inverseRotationDiagramComparison : FunctorIso (rightSection X)

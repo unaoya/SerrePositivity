@@ -42,8 +42,8 @@ lemma zeroComparisonEndpoint_comp :
   have hn := congrArg Under.Hom.right (pathEndpoint_natural p)
   simp only [Under.comp_right] at hn
   rw [Category.assoc, ← hn, ← Category.assoc, hφ]
-  simp only [pathSimplex, mapSimplex, Category.assoc,
-    PointedMapping.loopToPath_endpoint, comp_const, OmegaSpectrum.pointedMap_basepoint]
+  simp only [pathSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc,
+    PointedMapping.loopToPath_endpoint, comp_const, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
 
 /-- 概要：比較ホーンの境界 loop は元の fiber 内の U の終点の類の逆元を表す。
 方針：逆元公式を標準 fiber 基点へ戻し、比較ホモトピーの fiber 内での類の一致を使う。
@@ -72,11 +72,11 @@ theorem boundaryLoop_zero_inverse_endpoint [Fibration p.right]
       KanHomotopyGroup.mk (KanFiber.liftSimplex p.right E.basepoint t ht) := by
     change KanHomotopyGroup.map (𝟙 _) _ (KanHomotopyGroup.map (𝟙 _) _
       (KanHomotopyGroup.mk (outputEndpointSimplex p V φ hφ U hface))) = _
-    rw [KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
     congr 1
     ext : 1
     apply fiber_hom_ext p.right (p.right.app _ E.basepoint)
-    simp only [mapSimplex, Category.comp_id, KanFiber.liftSimplex_ι]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id, _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι]
     exact outputFamily_endpoint_include p φ hφ
   have hout := congrArg (pointedFiberGroupEquiv p 0)
     (output_zero_boundary_inverse p V φ hφ U hface)

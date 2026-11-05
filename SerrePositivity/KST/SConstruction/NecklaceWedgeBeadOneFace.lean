@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded
 /-- 元の二 bead の連結の joints は、元の両端と共有頂点そのもの。 -/
 lemma necklaceWedgeBead_joints (p q : ℕ) :
     ((NecklaceShape.single p).wedge (NecklaceShape.single q)).joints = {0, p, p + q} := by
-  simp only [NecklaceShape.wedge, NecklaceShape.single, Finset.image_insert,
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.image_insert,
     Finset.image_singleton, add_zero]
   ext k
   simp only [Finset.mem_union, Finset.mem_insert, Finset.mem_singleton]

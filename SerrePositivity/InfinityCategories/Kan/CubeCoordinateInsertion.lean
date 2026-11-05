@@ -50,11 +50,11 @@ lemma cubeCoordinateInsert_lower {n m : ℕ} (e : Fin m → Fin (n + 1))
   · apply Bool.eq_iff_iff.mpr
     change cubeCoordinateInsert e x p = true ↔ cubeVertexFace false n p _ p = true
     rw [cubeCoordinateInsert_true_iff]
-    simp [cubeVertexFace, hp]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, hp]
   · apply Bool.eq_iff_iff.mpr
     change cubeCoordinateInsert e x (p.succAbove k) = true ↔
       cubeVertexFace false n p _ (p.succAbove k) = true
-    simp only [cubeVertexFace, Fin.insertNth_apply_succAbove, cubeCoordinateInsert_true_iff]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_succAbove, cubeCoordinateInsert_true_iff]
     apply exists_congr
     intro j
     rw [← cubeCoordinateLower_spec e p hp j,

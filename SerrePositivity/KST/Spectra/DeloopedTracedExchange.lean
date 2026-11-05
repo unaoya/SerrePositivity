@@ -33,7 +33,7 @@ lemma swap_doublePost {Y V : PointedSimplicialSet.{u}} (h : Y ⟶ V) :
 lemma reversal_doublePost {Y V : PointedSimplicialSet.{u}} (h : Y ⟶ V) :
     reversal Y ≫ doublePost h = doublePost h ≫ reversal V := by
   have hn := ((MonoidalClosed.pre (CirclePower.integerPowerMap.{u} (-1))).naturality h).symm
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Y ≫
       PointedObject.basedHomMap CirclePower.space.{u} h =
     PointedObject.basedHomMap CirclePower.space.{u} h ≫

@@ -135,7 +135,7 @@ def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
 規約：全単体での厳密等号。使われ方：全 span への正規化付きの切断の延長。 -/
 lemma identityUnionPushoutFamily_projection (C : SSet.{u}) [Quasicategory C] :
     identityUnionPushoutFamily C ≫ pushoutProjection C = (identitySpanSubcomplex C).ι := by
-  rw [pushoutProjection, ← Category.assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc]
   exact identityUnionSquare_span C
 
 end SerrePositivity.KST.SConstruction

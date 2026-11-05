@@ -38,7 +38,7 @@ lemma loopSwap_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
       (loopSwap B Y).hom ≫ prePointed i (loopSpace Y) := by
   have h := InternalHomExchange.natural_pre_right (C := PointedSimplicialSet.{u})
     PointedSimplicialSet.circle.{u} i Y
-  simp only [← prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)
       (prePointed i Y) ≫ (loopSwap A Y).hom =

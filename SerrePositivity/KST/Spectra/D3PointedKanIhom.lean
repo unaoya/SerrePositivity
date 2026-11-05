@@ -78,7 +78,7 @@ lemma d3PointedKanPre_component {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
 lemma d3PointedKanPre_piIsomorphism {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) [IsIso i]
     (X : PointedKanObject.{u}) : KanPiIsomorphism (PointedMapping.prePointed i X.obj).right := by
   have h : IsIso (PointedMapping.prePointed i X.obj) := by
-    rw [PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     change IsIso ((internalHom.flip.obj X.obj).map i.op)
     infer_instance
   exact kanPiIsomorphism_of_monoRight _
@@ -121,12 +121,12 @@ def d3PointedKanMixed {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
 lemma d3PointedKanMixed_id (A : PointedSimplicialSet.{u}) (X Y : PointedKanObject.{u}) :
     d3PointedKanMixed (𝟙 A) X Y = (d3PointedKanIhom A).map X Y := by
   have hi : PointedMapping.prePointed (𝟙 A) X.obj = 𝟙 _ := by
-    rw [PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact (internalHom.flip.obj X.obj).map_id (Opposite.op A)
-  dsimp only [d3PointedKanMixed, EnrichedUnitTransformation.hom, d3PointedKanPre]
+  dsimp only [d3PointedKanMixed, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom, d3PointedKanPre]
   rw [hi]
   change (λ_ _).inv ≫ (eId SSet _ ⊗ₘ (d3PointedKanIhom A).map X Y) ≫ eComp SSet _ _ _ = _
-  rw [enriched_parameter_id_comp, Iso.inv_hom_id_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_id_comp, Iso.inv_hom_id_assoc]
 
 /-- 元の二制限の因子分解は、同じ graded 成分の厳密合成。 -/
 lemma d3PointedKanPre_factorization {A B C : PointedSimplicialSet.{u}}

@@ -22,8 +22,8 @@ lemma fundamentalGroupoidComparison_right_restriction {A B : SSet.{u}} [KanCompl
     i ≫ fundamentalNerveTranspose
       (fundamentalGroupoidInverse i hi ⋙ fundamentalGroupoidComparison i) =
         i ≫ fundamentalNerveTranspose (𝟭 (hoFunctor.obj B)) := by
-  simp only [← fundamentalNerveTranspose_pre, ← CategoryTheory.Functor.assoc,
-    fundamentalGroupoidInverse_pre, fundamentalGroupoidComparison_fac,
+  simp only [← _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose_pre, ← CategoryTheory.Functor.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse_pre, _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac,
     CategoryTheory.Functor.comp_id]
 
 /-- 基本亜群比較の逆向き合成は、Kan 対象のホモトピー圏上で恒等関手と自然同型。 -/

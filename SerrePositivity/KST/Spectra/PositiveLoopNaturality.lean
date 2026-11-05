@@ -35,7 +35,7 @@ theorem loopPositiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
           (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1) p (loopPositiveHomotopyEquiv Y n a) := by
   have h := loopHomotopyEquiv_natural p (n + 1) a
-  simpa only [loopHomotopyEquiv, KanHomotopy, KanHomotopy.map,
+  simpa only [loopHomotopyEquiv, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map,
     pointedGroupMap, MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv] using h
 
 end

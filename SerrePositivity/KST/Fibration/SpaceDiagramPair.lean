@@ -61,13 +61,13 @@ theorem smallSpaceDiagramPairLeft_inclusion :
     (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairLeft F G) ≫
       smallSpaceDiagramInclusion (spaceDiagramSum F G) = F := by
   rw [smallSpaceDiagramPairLeft, Functor.map_comp, Category.assoc,
-    smallSpaceDiagram_inclusion, spaceDiagramSum_inl]
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion, spaceDiagramSum_inl]
 
 /-- 共通標的の同じ包含との合成は、第二の元の図式を厳密に回収する。 -/
 theorem smallSpaceDiagramPairRight_inclusion :
     (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairRight F G) ≫
       smallSpaceDiagramInclusion (spaceDiagramSum F G) = G := by
   rw [smallSpaceDiagramPairRight, Functor.map_comp, Category.assoc,
-    smallSpaceDiagram_inclusion, spaceDiagramSum_inr]
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion, spaceDiagramSum_inr]
 
 end SerrePositivity.KST.Fibration

@@ -41,7 +41,7 @@ theorem paramCurry_homotopy_zero :
     change (fst X.right (Δ[0] : SSet.{u}) ≫ SSet.ι₀) ≫ H.h = _
     rw [Category.assoc, h₀]
   apply (cancel_mono (PointedObject.basedHomι X Y)).1
-  rw [Category.assoc, paramCurry_ι, pointFamily, paramCurry_ι,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, hface]
 
 /-- 概要：基点固定ホモトピーの curry の終点は終点射の定数な零次パラメータ族。
@@ -57,7 +57,7 @@ theorem paramCurry_homotopy_one :
     change (fst X.right (Δ[0] : SSet.{u}) ≫ SSet.ι₁) ≫ H.h = _
     rw [Category.assoc, h₁]
   apply (cancel_mono (PointedObject.basedHomι X Y)).1
-  rw [Category.assoc, paramCurry_ι, pointFamily, paramCurry_ι,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_left, hface]
 
 /-- 概要：基点固定ホモトピーが表す点つき内部 Hom の辺。

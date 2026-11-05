@@ -40,7 +40,7 @@ lemma relativeTerminalSection_counitHom_isIso (h : G ≫ F = 𝟙 Y)
     rw [adjunctionOfRelativeInitialSection_unit]
     infer_instance
   change IsIso (adjunctionOfOpposite b).counitHom
-  rw [adjunctionOfOpposite_counit]
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite_counit]
   infer_instance
 
 lemma relativeTerminalSection_counit_isIso (h : G ≫ F = 𝟙 Y)

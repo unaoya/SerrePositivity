@@ -72,7 +72,7 @@ lemma exists_verdierFiniteSimplexCoconeFamilyLift_of_lastMapping
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z := by
     have hv := spanCoconeFamily_apex_of_lastArrow F
       (g ≫ verdierDenominatorSpanFiberArrow i x z d) hFe
-    simpa only [Category.assoc, verdierDenominatorSpanFiberArrow_target,
+    simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow_target,
       SSet.comp_const] using hv
   obtain ⟨l, hi, hp, hv, he⟩ := exists_verdierSimplexParametricComparison h D D' z t ht d hlast
     g F hF hFe G hG f hGe e'

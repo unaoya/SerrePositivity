@@ -36,7 +36,7 @@ lemma circleIntervalProjection_right : circleIntervalProjection.{u}.right =
 lemma loopToPath_eq_pre (Y : PointedSimplicialSet.{u}) :
     PointedMapping.loopToPath Y = PointedMapping.prePointed circleIntervalProjection.{u} Y := by
   dsimp only [PointedMapping.loopToPath]
-  rw [PointedMapping.prePointed_eq_closedPre, PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (MonoidalClosed.pre endpointCircleIso.{u}.hom).app Y ≫
     (MonoidalClosed.pre (pointedCofiberProjection intervalEndpoint.{u})).app Y =
       (MonoidalClosed.pre circleIntervalProjection.{u}).app Y

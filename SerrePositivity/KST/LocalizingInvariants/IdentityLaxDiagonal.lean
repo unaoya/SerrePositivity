@@ -28,11 +28,11 @@ def diagonal : A.obj ⟶ (laxCategory (𝟙 A) (𝟙 A)).obj :=
 
 lemma diagonal_fst : diagonal A ≫ (laxFst (𝟙 A) (𝟙 A)).hom = 𝟙 A.obj := by
   change diagonal A ≫ F2.laxPullbackFst (𝟙 A.obj) (𝟙 A.obj) = _
-  rw [diagonal, Category.assoc, arrowLaxInverse_fst, constant_evaluation]
+  rw [diagonal, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.constant_evaluation]
 
 lemma diagonal_snd : diagonal A ≫ (laxSnd (𝟙 A) (𝟙 A)).hom = 𝟙 A.obj := by
   change diagonal A ≫ F2.laxPullbackSnd (𝟙 A.obj) (𝟙 A.obj) = _
-  rw [diagonal, Category.assoc, arrowLaxInverse_snd, constant_evaluation]
+  rw [diagonal, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd, _root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.constant_evaluation]
 
 instance diagonal_isExact : IsExactFunctor (diagonal A) := by
   have : IsExactFunctor (diagonal A ≫ (laxFst (𝟙 A) (𝟙 A)).hom) := by
@@ -48,7 +48,7 @@ lemma difference_diagonal_zero (x : A.obj _⦋0⦌) :
   apply (laxDifference_zero_iff (𝟙 A) (𝟙 A) _).2
   change IsEquivalencePathVertex ((diagonal A ≫
     F2.laxPullbackArrow (𝟙 A.obj) (𝟙 A.obj)).app (Opposite.op ⦋0⦌) x)
-  rw [diagonal, Category.assoc, arrowLaxInverse_arrow, Category.comp_id,
+  rw [diagonal, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id,
     constantFunctorMap_vertex]
   exact isEquivalencePathVertex_const x
 

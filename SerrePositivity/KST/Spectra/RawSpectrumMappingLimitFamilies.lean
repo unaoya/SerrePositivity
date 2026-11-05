@@ -74,7 +74,7 @@ lemma limitFamily_condition (X : OmegaSpectrum.{u}) (c : Cone D)
       PointedMapping.prePointed (X.sigma n) (c.pt.level (n + 1)).space ≫
         PointedObject.basedHomMap (suspension (X.level n).space)
           ((c.π.app i).app (n + 1)) := by
-    simp only [PointedMapping.prePointed_eq_closedPre]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact (MonoidalClosed.pre (X.sigma n)).naturality ((c.π.app i).app (n + 1))
   rw [Category.assoc, ← hpre, ← Category.assoc, limitFamily_fac]
   have hs : pointedStep X c.pt n ≫

@@ -33,7 +33,7 @@ lemma cubeVertexRightKeep_face (b : Bool) (n : ℕ) (i : Fin (n + 1)) :
     cubeVertexRightKeep (cubeVertexFace b n i) = cubeVertexFace b (n + 1) i.succ := by
   funext x
   conv_rhs => rw [← Fin.cons_self_tail x]
-  simp only [cubeVertexFace, Fin.insertNth_succ_cons, cubeVertexRightKeep]
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_succ_cons, cubeVertexRightKeep]
   rfl
 
 /-- 右端入力の保持は、元の削除の同じ座標を一つずらす。 -/

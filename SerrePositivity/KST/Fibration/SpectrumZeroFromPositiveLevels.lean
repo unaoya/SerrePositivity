@@ -34,7 +34,7 @@ theorem pointKanHomotopy_subsingleton (n : ℕ) (x : (𝟙_ SSet.{u}) _⦋0⦌) 
   have : ∀ k, Subsingleton ((𝟙_ SSet.{u}).PtSimplex k x) := fun k => ⟨fun a b => by
     apply RelativeMorphism.ext
     exact isTerminalTensorUnit.hom_ext _ _⟩
-  cases n <;> dsimp only [KanHomotopy, KanHomotopyZero, KanHomotopyGroup] <;> infer_instance
+  cases n <;> dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup] <;> infer_instance
 
 /-- Kan 複体から一点への同じ射の局所化可逆性は、全基点の元の π 類を一点にする。 -/
 theorem kanHomotopy_subsingleton_of_toPoint_localized_isIso (Y : SSet.{u}) [KanComplex Y]

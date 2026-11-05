@@ -29,7 +29,7 @@ lemma simplexHABeadTail_value {n : ℕ} (s : DGNerve.SimplexData A D n)
   have hc := Finset.card_insert_of_notMem (simplexHABeadTail_not_mem T a ha)
   have _hp := Finset.card_pos.mpr hT
   have hd : T.card - 1 = (insert a T).card - 2 := by omega
-  unfold simplexHABeadTail
+  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail
   rw [simplexHABeadWordValue_mpr A s hd, simplexHABeadWordAt_value]
   exact simplexHAComponent_degree_transport A s _ _ _ _ _ _ _ _
     (by omega) (by omega) (by omega)

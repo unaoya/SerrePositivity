@@ -28,7 +28,7 @@ lemma reversal_twice_component :
   rw [componentEquiv_familyVertex, componentEquiv_familyVertex,
     evaluateGenerator_integerPower, evaluateGenerator_integerPowerMap]
   simp only [zpow_neg_one, inv_inv, evaluateGenerator, Under.id_right]
-  rw [KanHomotopyGroup.map_id]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id]
   rfl
 
 /-- 全ての標的への作用に共通に使う、円自身の同じ二重反転区間。 -/
@@ -46,7 +46,7 @@ def reversalTwicePre (Y : PointedSimplicialSet.{u}) :
   have hs := PointedMapping.prePointed_comp (integerPowerMap.{u} (-1))
     (integerPowerMap (-1)) Y
   have ht : PointedMapping.prePointed (𝟙 space.{u}) Y = 𝟙 _ := by
-    rw [PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app Y) (MonoidalClosed.pre_id space.{u})
   exact (reversalTwicePath.basedPre Y).changeEndpoints hs ht.symm
 

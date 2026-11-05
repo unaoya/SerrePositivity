@@ -39,10 +39,10 @@ theorem kernelRepresentativeObstruction_eq_of_relStruct
   have hA (n : ℕ) : (A' (n + 1)).map ≫ (p n).right = (A' n).map := by
     change (A.map ≫ FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
       A.map ≫ FibrationTower.projection _ _ n
-    rw [Category.assoc, FibrationTower.projection_comp]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
   rw [kernelRepresentativeObstruction_eq X p r s hs R,
     kernelRepresentativeObstruction_eq X p r t ht
-      (fun n ↦ NullHomotopyTransport.transport (R n) (A' n))]
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport (R n) (A' n))]
   exact nullHomotopyObstruction_transport X p r _ _ _ _ A' hA R
 
 /-- 同じ極限のホモトピー類を表す球面は、同じ lim¹ 障害を持つ。 -/

@@ -36,7 +36,7 @@ theorem positiveHomotopyEquiv_zero_loopClasses (Y : PointedSimplicialSet.{u})
       (Y := PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y)
       0 ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y)
       (LoopMappingClasses.classEquiv (sphere.{u} (n + 1)) Y a)) = _
-  rw [← PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change SphereSimplex.fundamentalHomotopyEquiv Y n
     (KanHomotopyGroup.map (PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y).right
       (OmegaSpectrum.pointedMap_basepoint _)
@@ -57,7 +57,7 @@ theorem positiveHomotopyEquiv_zero_loopClasses (Y : PointedSimplicialSet.{u})
     (SphereSimplex.componentClass (PointedObject.basedHom CirclePower.space Y) n
       (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app
         (PointedObject.basedHom CirclePower.space Y)).right a))
-  rw [← PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
 
 end
 end SerrePositivity.KST.Spectra.SimplexCell

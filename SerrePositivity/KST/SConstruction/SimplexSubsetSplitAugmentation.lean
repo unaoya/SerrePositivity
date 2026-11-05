@@ -53,11 +53,11 @@ lemma simplexSubsetSplitMap_augmentation {n : ℕ} (I : Finset (Fin (n + 1)))
   apply (NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_hom_ext
     (NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))
   · rw [← Category.assoc, simplexSubsetSplitMap_inl I hI, Category.assoc,
-      simplexSubsetInclusionMap_triangle]
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle]
     exact (necklaceInWedge_inl (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
       (necklaceInSimplexSubsetSplitRight I hI j hj hR)).symm
   · rw [← Category.assoc, simplexSubsetSplitMap_inr I hI, Category.assoc,
-      simplexSubsetInclusionMap_triangle]
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle]
     exact (necklaceInWedge_inr (necklaceInSimplexSubsetSplitLeft I hI j hj hL)
       (necklaceInSimplexSubsetSplitRight I hI j hj hR)).symm
 

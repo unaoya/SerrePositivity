@@ -46,7 +46,7 @@ def limitSimplex (r : ℕ)
   comm := by
     apply FibrationTower.hom_ext (fun n ↦ (X n).right) (fun n ↦ (p n).right)
     intro n
-    simpa only [Category.assoc, FibrationTower.lift_projection, Subcomplex.ofSimplex_ι,
+    simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection, Subcomplex.ofSimplex_ι,
       comp_const, const_comp, projection_limitBasepoint] using (s n).comm
 
 /-- 極限へ組み立てた単体の各射影は、指定した代表そのもの。 -/
@@ -81,7 +81,7 @@ theorem exists_limit_class (r : ℕ)
   refine ⟨KanHomotopyGroup.mk (limitSimplex X p r s hcomp), ?_⟩
   intro n
   change KanHomotopyGroup.map _ rfl (KanHomotopyGroup.mk _) = _
-  rw [KanHomotopyGroup.map_mk, limitSimplex_projection]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, limitSimplex_projection]
   exact hs n
 
 end

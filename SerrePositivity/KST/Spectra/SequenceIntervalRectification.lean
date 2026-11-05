@@ -36,7 +36,7 @@ lemma StrictInterval.start {X Y : KanSequence.{u}} {f g : Hom X Y}
       freeBoundaryHomStart (Y.level n).space = (freePathEvaluation Y 1).app n := by
     change PointedMapping.prePointed freeBoundaryInclusion _ ≫
       (PointedMapping.prePointed freeBoundaryStart _ ≫ _) = _
-    rw [← Category.assoc, PointedMapping.prePointed_comp, freeBoundaryStart_inclusion]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion]
     rfl
   rw [Category.assoc, he] at h
   exact h
@@ -53,7 +53,7 @@ lemma StrictInterval.finish {X Y : KanSequence.{u}} {f g : Hom X Y}
       freeBoundaryHomEnd (Y.level n).space = (freePathEvaluation Y 0).app n := by
     change PointedMapping.prePointed freeBoundaryInclusion _ ≫
       (PointedMapping.prePointed freeBoundaryEnd _ ≫ _) = _
-    rw [← Category.assoc, PointedMapping.prePointed_comp, freeBoundaryEnd_inclusion]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion]
     rfl
   rw [Category.assoc, he] at h
   exact h

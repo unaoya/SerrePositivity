@@ -55,7 +55,7 @@ theorem restrictionSourceFiberMap_componentConnecting {A B C D : SSet.{u}}
     (restrictionSourceFiberMap i j a b h Y).right
     (OmegaSpectrum.pointedMap_basepoint (restrictionSourceFiberMap i j a b h Y))
     (pointedConnectingZero (pre i Y) x)) = _ at hn
-  rw [KanHomotopyZero.equivPiZero_map] at hn
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map] at hn
   exact hn
 
 /-- 概要：零次数接続写像の相対商表示は任意の充填からの実際の射の成分。
@@ -77,7 +77,7 @@ theorem connectingZero_cofiberBoundaryMap {A B : SSet.{u}} (i : A ⟶ B)
     (KanHomotopy.mk 0 L.pointedBoundary)
   rw [← h]
   change KanHomotopyZero.equivPiZero (KanHomotopyZero.mk (cofiberBoundarySimplex i Y L)) = _
-  rw [KanHomotopyZero.equivPiZero_mk, cofiberBoundaryMap, PointedMapping.familyVertex_familyMap]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, cofiberBoundaryMap, PointedMapping.familyVertex_familyMap]
   rfl
 
 /-- 概要：任意の基本群入力の成分接続写像を相対商の射で代表できる。
@@ -98,7 +98,7 @@ theorem exists_connectingZero_boundaryRepresentative {A B : SSet.{u}}
     (OmegaSpectrum.pointedMap_basepoint (pre i Y))
   obtain ⟨s, hs⟩ := Quotient.mk_surjective (e.symm a)
   have ha : a = e (KanHomotopyGroup.mk s) := by
-    rw [show KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
+    rw [show _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
   let L := chooseBoundaryLift (pre i Y).right (obj B Y).basepoint s
   refine ⟨s, L, ha, ?_⟩
   rw [ha]

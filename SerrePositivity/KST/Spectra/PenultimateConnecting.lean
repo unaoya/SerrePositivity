@@ -41,7 +41,7 @@ theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
       face_eq j := by
         rw [hface]
         dsimp only [b]
-        split_ifs <;> simp only [RelativeMorphism.const_map, const_comp, fiberι_point] }
+        split_ifs <;> simp only [RelativeMorphism.const_map, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] }
   obtain ⟨ia, ⟨hi⟩⟩ := PtSimplex.MulStruct.exists_left_inverse a (Fin.last n)
   have hi' : PtSimplex.MulStruct ia (b (Fin.last (n + 1)).castSucc) .const (Fin.last n) := by
     simpa only [b, Fin.val_castSucc, Fin.val_last, ite_true] using hi
@@ -53,7 +53,7 @@ theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
     simp only [b, ite_eq_right (show j.val ≠ n + 1 by omega)]
   have hboundary := SphericalFiberLift.terminalLift_boundary hi' hc L hlower
   change connecting p e (n + 1) (KanHomotopyGroup.mk s) = _
-  rw [connecting_eq p e (SphericalFiberLift.terminalLift hi' hc L hlower), hboundary]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e (_root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift hi' hc L hlower), hboundary]
   exact eq_inv_of_mul_eq_one_left (KanHomotopyGroup.mul_eq hi)
 
 /-- 概要：path の最後から二番目の loop 面を高次群へ戻すと、終点単体の逆元になる。
@@ -83,15 +83,15 @@ theorem loopPositive_penultimate (Y : PointedSimplicialSet.{u}) [KanComplex Y.ri
     have hi := congrArg Inv.inv hc
     change KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom
       (loopBasedPathFiberIso_basepoint Y) (KanHomotopyGroup.mk a) = _
-    rw [KanHomotopyGroup.map_mk]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
     simpa only [inv_inv, c] using hi.symm
   have hr : b.symm (loopPositiveHomotopyEquiv Y n (KanHomotopyGroup.mk a)) =
       (KanHomotopyGroup.mk s)⁻¹ := by
     apply (connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
       (basedPathSpace Y).basepoint n).injective
     change c _ = c _
-    rw [show c (b.symm (loopPositiveHomotopyEquiv Y n (KanHomotopyGroup.mk a))) =
-      e (KanHomotopyGroup.mk a) from connecting_loopPositiveHomotopyEquiv Y n _, hc', map_inv]
+    rw [show c (b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a))) =
+      e (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a) from connecting_loopPositiveHomotopyEquiv Y n _, hc', map_inv]
   have hr' := congrArg b hr
   simpa only [MulEquiv.apply_symm_apply, map_inv] using hr'
 

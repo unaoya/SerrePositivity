@@ -36,7 +36,7 @@ lemma simplexTerminalArrowFamily_post {X Y : SSet.{u}} {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X) (f : X ⟶ Y) :
     simplexTerminalArrowFamily (D ≫ f) = simplexTerminalArrowFamily D ≫ (ihom Δ[1]).map f := by
   apply uncurry_injective
-  simp only [simplexTerminalArrowFamily, uncurry_natural_right, uncurry_curry, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily, uncurry_natural_right, uncurry_curry, Category.assoc]
 
 /-- 指定実辺を全前段に並べた同じ右辺の、パラメータ制限の公式。 -/
 lemma terminalRefinementRight_pre_parameter {P P' X : SSet.{u}} (j : P' ⟶ P)

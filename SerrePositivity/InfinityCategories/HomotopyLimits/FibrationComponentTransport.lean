@@ -40,8 +40,8 @@ lemma fibration_vertex_in_component {E B : SSet.{u}} [KanComplex E] [KanComplex 
   have heq : KanHomotopy.mk 0 t = KanHomotopy.mk 0 (mapSimplex p rfl s) := by
     change KanHomotopyZero.mk t = KanHomotopyZero.map p rfl (KanHomotopy.point 0)
     apply KanHomotopyZero.equivPiZero.injective
-    rw [KanHomotopyZero.equivPiZero_mk, KanHomotopyZero.equivPiZero_map,
-      KanHomotopyZero.equivPiZero_point, Equiv.apply_symm_apply, mapπ₀_mk]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point, Equiv.apply_symm_apply, mapπ₀_mk]
     exact hb.symm
   obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct 0 t (mapSimplex p rfl s) 0).1 heq
   have hp : J.rlp p := (fibration_iff _).1 inferInstance
@@ -83,7 +83,7 @@ lemma fibration_componentFiber_exists {E B : SSet.{u}} [KanComplex E] [KanComple
   let k : (SSet.stdSimplex.obj ⦋0⦌ : SSet.{u}) ⟶ KanFiber p b :=
     fiberLift p b (SSet.const e') (by simp only [const_comp, he'])
   refine ⟨π₀.mk (SSet.yonedaEquiv k), ?_⟩
-  rw [mapπ₀_mk, ← SSet.yonedaEquiv_comp, fiberLift_ι, SSet.yonedaEquiv_const]
+  rw [mapπ₀_mk, ← SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, SSet.yonedaEquiv_const]
   exact hc
 
 /-- 概要：任意の底の頂点上の fiber の成分の像は、その頂点に写る全空間の成分全体。
@@ -98,7 +98,7 @@ lemma fibration_componentFiber_exact {E B : SSet.{u}} [KanComplex E] [KanComplex
   · exact fibration_componentFiber_exists p b a
   · rintro ⟨c, rfl⟩
     obtain ⟨v, rfl⟩ := π₀.mk_surjective c
-    rw [mapπ₀_mk, mapπ₀_mk, fiber_vertex_base]
+    rw [mapπ₀_mk, mapπ₀_mk, _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base]
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

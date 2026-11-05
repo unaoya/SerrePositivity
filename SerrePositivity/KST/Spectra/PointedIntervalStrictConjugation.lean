@@ -44,7 +44,7 @@ lemma basedPre_ihom_conjugate_path {A : PointedSimplicialSet.{u}} {a b : A ⟶ A
         e.hom).right =
     ((R.basedPre Z).basedIhomMap K).path ≫ (prePointed e.hom V).right at h
   have hp : prePointed e.hom V ≫ prePointed e.inv V = 𝟙 _ := by
-    simpa only [InternalHomExchange.preIso, prePointed_eq_closedPre,
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
       PointedObject.ihom_obj_eq_basedHom] using (InternalHomExchange.preIso e V).hom_inv_id
   have ht := congrArg (· ≫ (prePointed e.inv V).right) h
   change ((R.basedPre (PointedObject.basedHom K Z)).path ≫

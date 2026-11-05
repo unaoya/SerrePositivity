@@ -59,7 +59,7 @@ theorem circleSmashUpper_swap :
     (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u}).right) = _
   erw [circleSmashSquareQuotient_swap, ← Category.assoc,
-    SquareTriangles.upper_swap]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap]
   exact circleSmashLower_quotient.symm
 
 /-- 概要：smash の変数交換は下側の相対三角形を上側へ移す。
@@ -76,7 +76,7 @@ theorem circleSmashLower_swap :
     (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u}).right) = _
   erw [circleSmashSquareQuotient_swap, ← Category.assoc,
-    SquareTriangles.lower_swap]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap]
   exact circleSmashUpper_quotient.symm
 
 end

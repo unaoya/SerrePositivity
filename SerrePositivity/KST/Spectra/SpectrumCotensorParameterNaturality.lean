@@ -28,7 +28,7 @@ lemma curry_parameter_square {A B R P Q E F : PointedSimplicialSet.{u}}
     curry (eA ▷ R ≫ cA) ≫ (ihom A).map p =
       curry (eB ▷ R ≫ cB) ≫ PointedMapping.prePointed i F := by
   apply uncurry_injective
-  rw [uncurry_natural_right, PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
+  rw [uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
   simp only [uncurry_curry]
   rw [Category.assoc, hc, ← comp_whiskerRight_assoc, he, comp_whiskerRight, Category.assoc]
 

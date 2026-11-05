@@ -46,7 +46,7 @@ lemma fibrationFiberMapBase_to_fiberMap {E B E' B' : SSet.{u}}
     fibrationFiberMapBase p p' f g comm (p.app _ e) ≫
         (fiberBaseIso p' _ _ (base_eq p p' f g comm e)).hom = fiberMap p p' f g comm e := by
   apply fiber_hom_ext p' (p'.app _ (f.app _ e))
-  rw [Category.assoc, fiberBaseIso_hom_ι, fibrationFiberMapBase_ι, fiberMap_ι]
+  rw [Category.assoc, fiberBaseIso_hom_ι, fibrationFiberMapBase_ι, _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_ι]
 
 /-- 概要：任意の底上の fiber 射の条件から全空間の全基点 π_* 同型性を得る。
 方針：標的の表示を移して既存の全空間比較へ渡す。

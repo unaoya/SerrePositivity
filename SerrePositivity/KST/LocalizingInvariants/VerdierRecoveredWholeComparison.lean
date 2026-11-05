@@ -81,7 +81,7 @@ lemma exists_verdierRecoveredWholeComparison
       r.numerator ≫ verdierDenominatorSpanFiberArrow i x z r.denominator ≫
         (pre (joinStdSimplexIso 0 0).hom).app B.obj := by
     have hn := r.cylinder.whole_next
-    simpa only [verdierSpanFamilyNumeratorArrow, verdierDenominatorSpanFiberArrow,
+    simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow,
       Category.assoc] using hn
   obtain ⟨l, hi, hlp, hlv, ⟨e⟩⟩ := exists_verdierSimplexParametricComparison h D
     (terminalRefinementSourceDiagram r.cylinder.single) z t ht r.denominator hlast

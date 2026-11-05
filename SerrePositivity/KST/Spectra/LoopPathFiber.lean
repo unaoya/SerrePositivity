@@ -88,7 +88,7 @@ theorem loopPathFiberIso_hom_ι (Y : PointedSimplicialSet.{u}) :
       ((loopToEndpointHomIso Y).hom ≫
         PointedMapping.prePointed (pointedCofiberProjection intervalEndpoint.{u}) Y).right := by
   simp only [loopPathFiberIso, Iso.trans_hom, Category.assoc, endpointCircleFiberIso,
-    fiberι, IsPullback.isoPullback_hom_fst]
+    _root_.SerrePositivity.InfinityCategories.Kan.fiberι, IsPullback.isoPullback_hom_fst]
   rfl
 
 /-- 概要：fiber の基点の等式による同型。
@@ -147,7 +147,7 @@ theorem loopBasedPathFiberIso_basepoint (Y : PointedSimplicialSet.{u}) :
       fiberPoint (pathEndpoint Y).right (basedPathSpace Y).basepoint := by
   apply fiber_vertex_ext (pathEndpoint Y).right
     ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint)
-  rw [fiberι_point]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
   change ((loopBasedPathFiberIso Y).hom ≫ fiberι (pathEndpoint Y).right _).app _
     (loopSpace Y).basepoint = (basedPathSpace Y).basepoint
   rw [loopBasedPathFiberIso_hom_ι]

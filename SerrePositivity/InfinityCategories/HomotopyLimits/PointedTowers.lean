@@ -67,7 +67,7 @@ def pointedTowerLift {A : PointedSimplicialSet.{u}} (X : ℕ → PointedSimplici
     (fun n ↦ (f n).right) (fun n ↦ congrArg Under.Hom.right (hf n))) (by
       apply FibrationTower.hom_ext
       intro n
-      rw [Category.assoc, FibrationTower.lift_projection, Under.w]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection, Under.w]
       rfl)
 
 /-- 概要：点つきの持ち上げの各射影は指定した成分に等しい。

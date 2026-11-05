@@ -35,7 +35,7 @@ lemma cubeFaceNormalDelete_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 1))
       refine Fin.cases ?_ (fun i => ?_) i
       · funext x j
         simp [cubeFaceNormalDelete, cubeFaceDeletionResultVertex, cubeFaceNormalVertex,
-          cubeVertexDegeneracy]
+          _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
       · funext x
         change cubeFaceDeletionResultVertex
           (cubeFaceDeletionResultPoint b (cubeFaceNormalDelete d i)) x = _
@@ -48,7 +48,7 @@ lemma cubeFaceNormalDelete_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 1))
       refine Fin.cases ?_ (fun i => ?_) i
       · funext x j
         simp [cubeFaceNormalDelete, cubeFaceDeletionResultVertex, cubeFaceNormalVertex,
-          cubeVertexDegeneracy]
+          _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
         rfl
       · funext x
         change cubeFaceDeletionResultVertex

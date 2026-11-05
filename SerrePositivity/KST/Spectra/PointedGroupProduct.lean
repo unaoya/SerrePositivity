@@ -71,7 +71,7 @@ theorem pointedGroupMap_zero (X Y : PointedSimplicialSet.{u})
     (a : KanHomotopyGroup X.right n X.basepoint) :
     pointedGroupMap n (0 : X ⟶ Y) a = 1 := by
   dsimp only [pointedGroupMap]
-  simp only [PointedObject.zero_right, pointedConstant_eq_const]
+  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
   exact KanHomotopy.map_const (n + 1) _ a
 
 /-- 概要：点つき直積の正次数の群の元は射影の像から識別できる。

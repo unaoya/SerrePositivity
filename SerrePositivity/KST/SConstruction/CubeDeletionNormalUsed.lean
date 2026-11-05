@@ -22,8 +22,8 @@ lemma cubeDeletionNormalUsed_true_iff {n m : ℕ} (d : CubeDeletionNormal n m) (
   | nil => exact Fin.elim0 i
   | drop d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
-    · simp [cubeDeletionNormalUsed, cubeDeletionNormalEmbedding]
-    · simpa only [cubeDeletionNormalUsed, Fin.cons_succ, cubeDeletionNormalEmbedding,
+    · simp [cubeDeletionNormalUsed, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding]
+    · simpa only [cubeDeletionNormalUsed, Fin.cons_succ, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding,
         Fin.succ_inj] using ih i
   | keep d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
@@ -91,14 +91,14 @@ lemma cubeDeletionConnectionNormal_atom_true_iff {n m : ℕ}
   rw [cubeDeletionNormalUsed_true_iff]
   change (∃ j, cubeFiberMax (cubeConnectionNormalBlock r.connection)
     (cubeDeletionNormalVertex r.deletion (cubeVertexAtom n i)) j = true) ↔ _
-  simp only [cubeFiberMax_true_iff]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
   constructor
   · rintro ⟨j, k, _, hk⟩
     refine ⟨k, ?_⟩
-    simpa [cubeDeletionNormalVertex, cubeCoordinateSelect, cubeVertexAtom] using hk
+    simpa [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using hk
   · rintro ⟨k, hk⟩
     refine ⟨cubeConnectionNormalBlock r.connection k, k, rfl, ?_⟩
-    simp [cubeDeletionNormalVertex, cubeCoordinateSelect, cubeVertexAtom, hk]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom, hk]
 
 /-- 元の削除・max の頂点写像は、その使用入力を検出する。 -/
 lemma cubeDeletionConnectionNormal_used_eq_of_vertex_eq {n m : ℕ}

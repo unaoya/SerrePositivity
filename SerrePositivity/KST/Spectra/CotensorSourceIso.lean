@@ -30,7 +30,7 @@ lemma cotensorPre_levelwise_of_isIso {A B : PointedSimplicialSet.{u}} (i : A ⟶
   have hi : KanPiIsomorphism (PointedMapping.prePointed i (Y.level n).space).right := by
     let e := (internalHom.flip.obj (Y.level n).space).mapIso (asIso i).op
     have he : PointedMapping.prePointed i (Y.level n).space = e.hom := by
-      rw [PointedMapping.prePointed_eq_closedPre]
+      rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
       rfl
     rw [he]
     exact KanPiIsomorphism.of_iso

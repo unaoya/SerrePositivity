@@ -31,7 +31,7 @@ lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y
         (X := PointedObject.basedHom space Y) (Y := loopSpace Y) n
           (PointedMapping.prePointed unit Y) a) := by
   simp only [positiveHomotopyEquiv, MulEquiv.trans_apply,
-    KanHomotopyGroup.equivOfPiIsomorphism_apply]
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   rfl
 
 /-- 概要：円の Kan 置換の Hom の群の次数移動は係数射と可換。
@@ -47,7 +47,7 @@ theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
           (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1) p (positiveHomotopyEquiv Y n a) := by
   have h := (MonoidalClosed.pre unit.{u}).naturality p
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) p ≫
       PointedMapping.prePointed unit Z =
     PointedMapping.prePointed unit Y ≫

@@ -20,7 +20,7 @@ lemma simplexSubsetSplitLeft_card {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 �
     simpa only [Finset.coe_image, Finset.coe_univ, Set.image_univ, Finset.coe_Iic] using
       simplexSubsetSplitLeft_range I hI j hj hL
   have hc := congrArg Finset.card he
-  rw [Finset.card_image_of_injective _ (simplexSubsetInclusionOrder_injective
+  rw [Finset.card_image_of_injective _ (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_injective
     (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _)),
     Finset.card_univ, Fintype.card_fin, Fin.card_Iic] at hc
   omega
@@ -36,7 +36,7 @@ lemma simplexSubsetSplitRight_card {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 
     simpa only [Finset.coe_image, Finset.coe_univ, Set.image_univ, Finset.coe_Ici] using
       simplexSubsetSplitRight_range I hI j hj hR
   have hc := congrArg Finset.card he
-  rw [Finset.card_image_of_injective _ (simplexSubsetInclusionOrder_injective
+  rw [Finset.card_image_of_injective _ (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_injective
     (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _)),
     Finset.card_univ, Fintype.card_fin, Fin.card_Ici] at hc
   omega

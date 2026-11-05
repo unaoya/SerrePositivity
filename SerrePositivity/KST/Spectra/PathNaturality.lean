@@ -51,7 +51,7 @@ def basedPathMap {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 theorem pathEndpoint_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     basedPathMap p ≫ pathEndpoint Z = pathEndpoint Y ≫ p := by
   unfold basedPathMap pathEndpoint
-  rw [PointedMapping.prePointed_eq_closedPre, PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (ihom pointedInterval.{u}).map p ≫ (MonoidalClosed.pre intervalEndpoint.{u}).app Z ≫
       (MonoidalClosed.unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z =
     ((MonoidalClosed.pre intervalEndpoint.{u}).app Y ≫

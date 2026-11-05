@@ -35,7 +35,7 @@ def laxSemiorthogonal : SemiorthogonalDecomposition D C (laxCategory p q) where
   counit_isIso := LaxInclusion.fromCAdjunction_counit_isIso p q
   kills_inclusion a := by
     change IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ a)
-    rw [LaxInclusion.fromD_fst, LaxInclusion.zeroC, zeroDiagram_const_vertex]
+    rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
     exact (chosenZeroVertex C.obj).isZero
   generates_kernel x := (LaxInclusion.fst_kernel p q x).1
 

@@ -17,7 +17,7 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 lemma closedTensorMapping_curry' (K : C) {X Y : C} (f : X ⟶ Y) :
     curry' f ≫ Spectra.TensorMapping.map K X Y = curry' (K ◁ f) := by
   apply uncurry_injective
-  rw [uncurry_natural_left, Spectra.TensorMapping.map, uncurry_curry]
+  rw [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry]
   conv_rhs => rw [curry', uncurry_curry]
   change (K ⊗ X) ◁ curry' f ≫
     ((α_ K X ((ihom X).obj Y)).hom ≫ K ◁ ((ihom.ev X).app Y)) =
@@ -36,8 +36,8 @@ lemma closedTensorMapping_parameter {K L : C} (a : K ⟶ L) (X Y : C) :
     Spectra.TensorMapping.map K X Y ≫ (ihom (K ⊗ X)).map (a ▷ Y) =
       Spectra.TensorMapping.map L X Y ≫ (pre (a ▷ X)).app (L ⊗ Y) := by
   apply uncurry_injective
-  rw [uncurry_natural_right, uncurry_pre_app, Spectra.TensorMapping.map, uncurry_curry]
-  rw [Spectra.TensorMapping.map, uncurry_curry]
+  rw [uncurry_natural_right, uncurry_pre_app, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map, uncurry_curry]
   erw [Category.assoc, whisker_exchange, ← Category.assoc,
     ← associator_naturality_left, Category.assoc]
 

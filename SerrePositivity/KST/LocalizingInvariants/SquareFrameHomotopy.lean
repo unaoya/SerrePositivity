@@ -67,7 +67,7 @@ def extension : SquareFrame.PathExtension H.pathFrame Q :=
 
 lemma extension_target_boundary : SquareFrame.boundaryι ≫ (H.extension Q hf).target =
     g.diagram := by
-  rw [SquareFrame.PathExtension.target_boundary, pathFrame_target]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target_boundary, pathFrame_target]
 
 end SquareFrameHomotopy
 end SerrePositivity.KST.LocalizingInvariants

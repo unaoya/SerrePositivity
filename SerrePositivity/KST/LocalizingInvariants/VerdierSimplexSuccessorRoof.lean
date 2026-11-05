@@ -48,7 +48,7 @@ lemma exists_verdierSimplexSuccessorRoof {A B C : StableCategory.{u}}
   obtain ⟨y, s, g, hs, hcomp⟩ := verdierProjection_edge_fraction h f
   obtain ⟨D', t, ht, hv, hlast⟩ := exists_verdierSimplexTerminalRefinementMap h D s hs
   have hpoint : SSet.yonedaEquiv (simplexLastPoint n ≫ D') = y := by
-    rw [SSet.yonedaEquiv_comp, simplexLastPoint, Equiv.apply_symm_apply]
+    rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint, Equiv.apply_symm_apply]
     exact hv
   let g' := (SSet.Edge.ofTruncated (X := B.obj) g).ofEq hpoint.symm rfl
   obtain ⟨c, hc, hedge⟩ := exists_simplexCocone_of_last_edge D' g'.toTruncated

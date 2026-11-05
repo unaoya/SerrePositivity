@@ -42,6 +42,6 @@ lemma pointedFamily_pre_evaluation {P : SSet.{u}} {X Y : PointedSimplicialSet.{u
     (a : P ⟶ (PointedObject.basedHom Y Z).right) :
     uncurry (a ≫ Spectra.PointedMapping.pre f Z ≫ PointedObject.basedHomι X Z) =
       (f.right ▷ P) ≫ uncurry (a ≫ PointedObject.basedHomι Y Z) := by
-  rw [Spectra.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
 
 end SerrePositivity.KST.SConstruction

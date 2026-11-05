@@ -50,7 +50,7 @@ lemma circleCompanionComparisonLeftEdge (z : Sp.{u} _⦋0⦌) :
   apply SSet.Edge.ext
   have h := congrArg SSet.yonedaEquiv
     (circleCompanionComparisonRawHomSquare_skipFirst_left z)
-  rw [← SquareBoundary.left_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h
   exact h
 
 /-- 元の右辺の差は、同じ元の基点の companion loop の基本群の像。 -/

@@ -17,7 +17,7 @@ theorem doubleFunctorEvaluation_post_pre {A K L Y : SSet.{u}}
     (H : K ⟶ L) (a : A _⦋0⦌) (x : K _⦋0⦌) :
     (ihom A).map ((pre H).app Y) ≫ doubleFunctorEvaluation (Y := Y) a x =
       doubleFunctorEvaluation (Y := Y) a (H.app (Opposite.op ⦋0⦌) x) := by
-  rw [doubleFunctorEvaluation, ← Category.assoc, evaluateFunctorAt_post, Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation, ← Category.assoc, evaluateFunctorAt_post, Category.assoc,
     evaluateFunctorAt_pre]
   rfl
 
@@ -39,7 +39,7 @@ theorem doubleFunctorEvaluation_pre {A A' K Y : SSet.{u}}
     (q : A' ⟶ A) (a : A' _⦋0⦌) (x : K _⦋0⦌) :
     (pre q).app ((ihom K).obj Y) ≫ doubleFunctorEvaluation (Y := Y) a x =
       doubleFunctorEvaluation (Y := Y) (q.app (Opposite.op ⦋0⦌) a) x := by
-  rw [doubleFunctorEvaluation, ← Category.assoc, evaluateFunctorAt_pre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation, ← Category.assoc, evaluateFunctorAt_pre]
   rfl
 
 /-- 同じ制限同型の二重評価は、元の同型を同じ像の添字で評価した成分。 -/

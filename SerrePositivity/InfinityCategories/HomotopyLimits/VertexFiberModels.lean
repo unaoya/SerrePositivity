@@ -28,10 +28,10 @@ def vertexFiberKanFiberIso {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
   inv := vertexFiberLift p b (fiberι p b) (fiberι_comp p b)
   hom_inv_id := by
     apply vertexFiber_hom_ext p b
-    rw [Category.assoc, vertexFiberLift_ι, fiberLift_ι, Category.id_comp]
+    rw [Category.assoc, vertexFiberLift_ι, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, Category.id_comp]
   inv_hom_id := by
     apply fiber_hom_ext p b
-    rw [Category.assoc, fiberLift_ι, vertexFiberLift_ι, Category.id_comp]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, vertexFiberLift_ι, Category.id_comp]
 
 /-- 概要：fiber 模型の同型の順射は全空間への包含と可換。
 方針：引き戻しへの持ち上げの射影を計算する。

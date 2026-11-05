@@ -24,7 +24,7 @@ lemma cubeSupportOutputEmbedding_zero {n m : ℕ} (s : CubeJoinNormalForm n m)
     (mem_cubeSupportNonemptyOutputs s _).mp (Finset.orderEmbOfFin_mem _ rfl a)
   cases hs : s (cubeSupportOutputEmbedding s a) with
   | none => simp [cubeJoinNormalFormSupport, hs] at ha
-  | some t => simp [cubeJoinNormalFormEval, hs, cubeJoinTermEval_bot]
+  | some t => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_bot]
 
 /-- 空の support の出力は、元の零頂点と同じ定数値。 -/
 lemma cubeJoinNormalFormEval_outside {n m : ℕ} (s : CubeJoinNormalForm n m)
@@ -35,10 +35,10 @@ lemma cubeJoinNormalFormEval_outside {n m : ℕ} (s : CubeJoinNormalForm n m)
     intro hn
     exact hj ((mem_cubeSupportNonemptyOutputs s j).mpr hn)
   cases hs : s j with
-  | none => simp [cubeJoinNormalFormEval, hs, cubeJoinTermEval]
+  | none => simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
   | some t =>
     have htempty : t = ∅ := by simpa only [cubeJoinNormalFormSupport, hs, Option.getD_some] using ht
-    simp [cubeJoinNormalFormEval, hs, htempty, cubeJoinTermEval]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, hs, htempty, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
 
 /-- 元の表示の空の support に指定した零・一を挿入する実際の面の合成。 -/
 def cubeSupportOutputCompletion {n m : ℕ} (s : CubeJoinNormalForm n m) :

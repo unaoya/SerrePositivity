@@ -77,6 +77,6 @@ lemma RelativeHomotopyReflection.homotopy_relative
     {V : SSet.Homotopy (i ≫ f) (i ≫ g)} (L : RelativeHomotopyReflection q i H V) :
     i ▷ (Δ[1] : SSet.{u}) ≫ L.homotopy.h = V.h := by
   rw [← L.retraction, ← Category.assoc, L.relative, Category.assoc,
-    ← Under.comp_right, mappingPathUnit_retraction, Under.id_right, Category.comp_id]
+    ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction, Under.id_right, Category.comp_id]
 
 end SerrePositivity.KST.Spectra

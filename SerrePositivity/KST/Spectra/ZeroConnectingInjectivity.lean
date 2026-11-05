@@ -77,7 +77,7 @@ theorem class_eq [KanComplex B]
     subst j
     rw [← Category.assoc, hq]
     change (r.map ≫ fiberι p (p.app _ e)) ≫ p = SSet.const (p.app _ e)
-    simp only [Category.assoc, fiberι_comp, SSet.comp_const]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.comp_const]
 
 end ZeroConnectingTriangle
 
@@ -96,7 +96,7 @@ theorem connecting_zero_injective {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     connecting p e 0 (KanHomotopyGroup.mk t) at h
   let Ls := chooseBoundaryLift p e s
   let Lt := chooseBoundaryLift p e t
-  rw [connecting_eq p e Ls, connecting_eq p e Lt] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Ls, _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p e Lt] at h
   change KanHomotopyZero.mk Ls.boundary = KanHomotopyZero.mk Lt.boundary at h
   obtain ⟨r⟩ := (KanHomotopyZero.mk_eq_iff Ls.boundary Lt.boundary).1 h
   exact ZeroConnectingTriangle.class_eq Ls Lt r hE

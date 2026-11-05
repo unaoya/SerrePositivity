@@ -31,7 +31,7 @@ def coherentStringNativeMap
       (.mk (ULift.up (Fin.last s.length))) ≫ eqToHom (by
     change SimplicialCategory.sHom (coherentStringVertexObject Q (s.chain.obj 0))
       (coherentStringVertexObject Q (s.chain.obj (Fin.last s.length))) = _
-    rw [coherentArrowString_first, coherentArrowString_last])
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_last])
 
 /-- 端点の表示を移しても、元の合成列の豊穣作用そのものである。 -/
 lemma coherentStringNativeMap_heq
@@ -84,7 +84,7 @@ lemma coherentStringNativeMap_naturality
     change _ = SimplicialCategory.sHom
       (coherentStringVertexObject Q (t.chain.obj (a.map.toOrderHom 0)))
       (coherentStringVertexObject Q (t.chain.obj (a.map.toOrderHom (Fin.last s.length))))
-    rw [a.first, a.last, coherentArrowString_first, coherentArrowString_last]
+    rw [a.first, a.last, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_last]
   apply eq_of_heq
   exact (heq_comp rfl hp he (coherentStringPathReindexFunctor_native_heq a) hg).trans
     (hm.trans (coherentStringNativeMap_heq Q s).symm)

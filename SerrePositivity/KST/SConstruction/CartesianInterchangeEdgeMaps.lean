@@ -34,28 +34,28 @@ lemma cartesianEdgePair_map :
 lemma cartesianInterchangeFirstLower_map :
     SSet.yonedaEquiv.symm (cartesianInterchangeFirstLower e f p).edge =
       lift (SSet.yonedaEquiv.symm e.edge) (SSet.const y₀) ≫ p := by
-  rw [cartesianInterchangeFirstLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第一経路上辺の全区間は、元の第一終点と元の第二辺の同じ合成。 -/
 lemma cartesianInterchangeFirstUpper_map :
     SSet.yonedaEquiv.symm (cartesianInterchangeFirstUpper e f p).edge =
       lift (SSet.const x₁) (SSet.yonedaEquiv.symm f.edge) ≫ p := by
-  rw [cartesianInterchangeFirstUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第二経路下辺の全区間は、元の第一始点と元の第二辺の同じ合成。 -/
 lemma cartesianInterchangeSecondLower_map :
     SSet.yonedaEquiv.symm (cartesianInterchangeSecondLower e f p).edge =
       lift (SSet.const x₀) (SSet.yonedaEquiv.symm f.edge) ≫ p := by
-  rw [cartesianInterchangeSecondLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第二経路上辺の全区間は、元の第一辺と元の第二終点の同じ合成。 -/
 lemma cartesianInterchangeSecondUpper_map :
     SSet.yonedaEquiv.symm (cartesianInterchangeSecondUpper e f p).edge =
       lift (SSet.yonedaEquiv.symm e.edge) (SSet.const y₁) ≫ p := by
-  rw [cartesianInterchangeSecondUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 end SerrePositivity.KST.SConstruction

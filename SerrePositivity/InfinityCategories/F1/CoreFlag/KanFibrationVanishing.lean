@@ -39,7 +39,7 @@ lemma fibration_positive_fiber_subsingleton {E B : SSet.{u}}
     obtain ⟨b, hb⟩ := (exact_connecting_fiber_all p e n a).mp hι
     have : Subsingleton (KanHomotopyGroup B n (p.app _ e)) := hB (n + 1) (by omega) _
     have hb1 : b = 1 := Subsingleton.elim _ _
-    exact hb.symm.trans (by rw [hb1, connecting_one])
+    exact hb.symm.trans (by rw [hb1, _root_.SerrePositivity.InfinityCategories.Kan.connecting_one])
   exact ⟨fun a b ↦ (hzero a).trans (hzero b).symm⟩
 
 /-- 指定次数の fiber の消滅は同次数の射影の単射性を与える。 -/

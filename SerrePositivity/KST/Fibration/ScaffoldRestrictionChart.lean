@@ -61,7 +61,7 @@ theorem scaffoldRestrictionNerveChart_pointHom (c : TransportSimplexCategory B)
             (pullback.snd p (transportSimplexFirstVertexMap B)) c).app
               (Opposite.op ⦋0⦌) v)))) := by
   simp only [scaffoldRestrictionNerveChart, F2.isoNormalizeEndpoints, Iso.trans_hom,
-    Iso.symm_hom, eqToIso_refl, Iso.refl_hom, Category.comp_id, functorIsoValue_hom]
+    Iso.symm_hom, eqToIso_refl, Iso.refl_hom, Category.comp_id, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom]
   exact scaffoldNerveRepresentationIso_pointHom
     (pullback.snd p (transportSimplexFirstVertexMap B))
     (R.nativeRestrict (transportSimplexFirstVertexMap B)) c v

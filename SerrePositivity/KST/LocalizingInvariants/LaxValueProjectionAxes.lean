@@ -55,7 +55,7 @@ lemma laxValueProjectionHom_fromC :
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro c
         change IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app _ c)
-        rw [LaxInclusion.fromC_snd, LaxInclusion.zeroD, zeroDiagram_const_vertex]
+        rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
         exact (chosenZeroVertex D.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromC p q : C ⟶ laxCategory p q) ≫ (laxSnd p q : laxCategory p q ⟶ D)) =
@@ -76,7 +76,7 @@ lemma laxValueProjectionHom_fromD :
     have h := hΦ.valueMap_hom_zero_of_zero_values F (by
         intro d
         change IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ d)
-        rw [LaxInclusion.fromD_fst, LaxInclusion.zeroC, zeroDiagram_const_vertex]
+        rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
         exact (chosenZeroVertex C.obj).isZero)
     change (stableValueFunctor Φ).map
       ((LaxInclusion.exactFromD p q : D ⟶ laxCategory p q) ≫ (laxFst p q : laxCategory p q ⟶ C)) =

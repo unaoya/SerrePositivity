@@ -20,7 +20,7 @@ lemma simplexSubsetNonjoint_bounds {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 
     I.min' (simplexSubsetNonempty I hI) < simplexSubsetOrder I hI v.val ∧
       simplexSubsetOrder I hI v.val < I.max' (simplexSubsetNonempty I hI) := by
   have hv : v.val.val ≠ 0 ∧ v.val.val ≠ I.card - 1 := by
-    simpa only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
+    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
       using v.property
   have hvb : v.val.val < I.card - 1 + 1 := v.val.isLt
   exact ⟨(simplexSubsetOrder_first I hI).symm.trans_lt
@@ -40,7 +40,7 @@ def simplexSubsetNonjointInclusion :
       (NecklaceShape.single (J.card - 1)).NonjointVertex where
   toFun v := ⟨simplexSubsetInclusionOrder I J hI hJ hIJ v.val, by
     intro h
-    simp only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
     rcases h with h | h
     · have he := simplexSubsetInclusionOrder_injective I J hI hJ hIJ
         ((Fin.ext h).trans (simplexSubsetInclusionOrder_first I J hI hJ hIJ hmin).symm)

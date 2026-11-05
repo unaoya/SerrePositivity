@@ -33,7 +33,7 @@ lemma limitSimplex_mem_kernel :
   apply (limitGroupComparison_eq_one_iff X p r _).2
   intro n
   change KanHomotopyGroup.map _ rfl (KanHomotopyGroup.mk (limitSimplex X p r s hs)) = 1
-  rw [KanHomotopyGroup.map_mk, limitSimplex_projection]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, limitSimplex_projection]
   exact (KanHomotopyGroup.sound (R n)).symm
 
 omit [∀ n, Fibration (p n).right] in

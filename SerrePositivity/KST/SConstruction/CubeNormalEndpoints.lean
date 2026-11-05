@@ -29,7 +29,7 @@ lemma cubeConnectionNormalVertex_bot {n m : ℕ} (d : CubeConnectionNormal n m) 
     cubeConnectionNormalVertex d ⊥ = ⊥ := by
   funext j
   apply Bool.eq_iff_iff.mpr
-  simp [cubeConnectionNormalVertex, cubeFiberMax_true_iff]
+  simp [cubeConnectionNormalVertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
 
 /-- 空でない元の各ブロックの max は一頂点を保つ。 -/
 lemma cubeConnectionNormalVertex_top {n m : ℕ} (d : CubeConnectionNormal n m) :

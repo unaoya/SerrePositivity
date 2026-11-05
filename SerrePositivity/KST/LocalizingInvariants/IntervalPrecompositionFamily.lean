@@ -33,7 +33,7 @@ lemma intervalPrecompositionFamily_edge_zero {X : SSet.{u}} (T : (Δ[2] : SSet.{
   have h : SSet.yonedaEquiv ((SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
       arrowPrecompositionFold ≫ T) =
         SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ T) := by
-    rw [← Category.assoc, arrowPrecompositionFold_zero]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_zero]
   exact h
 
 lemma intervalPrecompositionFamily_edge_one {X : SSet.{u}} (T : (Δ[2] : SSet.{u}) ⟶ X) :
@@ -46,7 +46,7 @@ lemma intervalPrecompositionFamily_edge_one {X : SSet.{u}} (T : (Δ[2] : SSet.{u
   have h : SSet.yonedaEquiv ((SSet.ι₁ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
       arrowPrecompositionFold ≫ T) =
         SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ T) := by
-    rw [← Category.assoc, arrowPrecompositionFold_one]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_one]
   exact h
 
 lemma exists_intervalPrecompositionFamily {X : SSet.{u}} [Quasicategory X]
@@ -79,9 +79,9 @@ lemma exists_intervalPrecompositionFamily {X : SSet.{u}} [Quasicategory X]
       (SSet.yonedaEquiv (curry (arrowPrecompositionFold ≫ T))) =
         PinchedHom.constant (functorVertex f) 0
     rw [pinchedConstant_zero, ← functorVertex_uncurry_one, Equiv.symm_apply_apply,
-      uncurry_curry, ← Category.assoc, arrowPrecompositionFold_one, hT₀']
+      uncurry_curry, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_one, hT₀']
   · rw [intervalPrecompositionFamily, curry_evaluateFunctorAt_interval,
-      ← Category.assoc, arrowPrecompositionFold_source, hT₂']
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_source, hT₂']
   · rw [intervalPrecompositionFamily, curry_evaluateFunctorAt_interval, hTt]
     exact congrArg SSet.const (intervalMap_target f)
 

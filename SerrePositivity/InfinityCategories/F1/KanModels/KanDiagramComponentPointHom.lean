@@ -38,14 +38,14 @@ theorem kanDiagramComponentValueIso_hom (i : I) :
           (spaceInfinityVertex_eq_coherent (F.val.obj i)).symm
           (spaceInfinityVertex_eq_coherent (G.val.obj i)).symm).toTruncated) := by
   simp only [kanDiagramComponentValueIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
-    eqToIso.hom, functorIso_app_hom_evaluate]
+    eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate]
   change eqToHom (congrArg HomotopyCategory.mk
       (kanDiagramCoherentNerve_vertex F.val i)).symm ≫
     functorHomEvaluate (kanDiagramFunctorIsoOfPointwise η hη).hom (ULift.up (nerveVertex i)) ≫
     eqToHom (congrArg HomotopyCategory.mk (kanDiagramCoherentNerve_vertex G.val i)) = _
   rw [show (kanDiagramFunctorIsoOfPointwise η hη).hom =
     Truncated.HomotopyCategory.homMk (kanDiagramNaturalTransformationEdge η).toTruncated from rfl,
-    functorHomEvaluate_edge_hom]
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
   exact homMk_transport (kanDiagramCoherentNerve_vertex F.val i)
     (kanDiagramCoherentNerve_vertex G.val i) _ _ (kanDiagramNaturalTransformationEdge_at η i)
 

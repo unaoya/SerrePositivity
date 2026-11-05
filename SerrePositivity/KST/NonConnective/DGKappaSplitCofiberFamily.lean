@@ -59,7 +59,7 @@ def dgKappaSplitCofiberFamily
     change IsCofiberDiagramVertex
       ((dgKappaSplitPerfDiagramFamily R D I Z).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
     rw [dgKappaSplitPerfDiagramFamily_vertex]
-    dsimp only [IsCofiberDiagramVertex, IsPushoutDiagramVertex]
+    dsimp only [IsCofiberDiagramVertex, _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex]
     rw [squareDiagram_functorVertex]
     exact ⟨(dgKappaSplitPerfPointwiseZeroTriangle R D I X Z).zero_corner,
       dgKappaSplitPerfPointwiseSquare_isPushout_of_input R D I X (H X) Z⟩)

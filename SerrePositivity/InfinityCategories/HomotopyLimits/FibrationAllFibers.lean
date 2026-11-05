@@ -54,8 +54,8 @@ lemma fibrationFiberMapBase_piZero_surjective {E B E' B' : SSet.{u}}
     (π₀.mk ((fiberι p' (g.app _ b)).app _ v'))
   have hp : mapπ₀ p a = π₀.mk b := by
     apply (hg.piZero_bijective_at (p.app _ e₀)).injective
-    rw [mapPiZero_square p p' f g comm a, ha]
-    simp only [mapπ₀_mk, fiber_vertex_base]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square p p' f g comm a, ha]
+    simp only [mapπ₀_mk, _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base]
   obtain ⟨c, _hc⟩ := fibration_componentFiber_exists p b a hp
   obtain ⟨v, _hv⟩ := π₀.mk_surjective c
   have hφ := fibrationFiberMapBase_piIsomorphism_of_vertex p p' f g comm hf hg b v

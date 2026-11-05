@@ -44,7 +44,7 @@ lemma exact_of_components {K : SSet.{u}} (F : K ⟶ (laxCategory p q).obj)
 instance fromD_isExact : IsExactFunctor (fromD p q) := by
   have hz : IsExactFunctor (zeroC : D.obj ⟶ C.obj) := isExact_of_zero_values _ (by
     intro x
-    rw [zeroC, zeroDiagram_const_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
     exact (chosenZeroVertex C.obj).isZero)
   have : IsExactFunctor (fromD p q ≫ (laxFst p q).hom) := (fromD_fst p q).symm ▸ hz
   have : IsExactFunctor (fromD p q ≫ (laxSnd p q).hom) :=
@@ -54,7 +54,7 @@ instance fromD_isExact : IsExactFunctor (fromD p q) := by
 instance fromC_isExact : IsExactFunctor (fromC p q) := by
   have hz : IsExactFunctor (zeroD : C.obj ⟶ D.obj) := isExact_of_zero_values _ (by
     intro x
-    rw [zeroD, zeroDiagram_const_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
     exact (chosenZeroVertex D.obj).isZero)
   have : IsExactFunctor (fromC p q ≫ (laxFst p q).hom) :=
     (fromC_fst p q).symm ▸ inferInstanceAs (IsExactFunctor (𝟙 C.obj))

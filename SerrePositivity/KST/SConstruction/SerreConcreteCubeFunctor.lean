@@ -39,7 +39,7 @@ def serreConcreteCubeFunctor : ConcreteCube ⥤ Comon (Complex A) where
     have hv : (cubeWordConcreteFunctor.map (concreteCubeWord (f ≫ g))).val =
         (cubeWordConcreteFunctor.map ((concreteCubeWord f).comp (concreteCubeWord g))).val := by
       rw [concreteCubeWord_vertex]
-      erw [cubeWordConcreteFunctor_comp]
+      erw [_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_comp]
       change g.val ∘ f.val =
         (cubeWordConcreteFunctor.map (concreteCubeWord g)).val ∘
           (cubeWordConcreteFunctor.map (concreteCubeWord f)).val

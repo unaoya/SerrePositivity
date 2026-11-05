@@ -39,7 +39,7 @@ lemma circleCompanionComparisonRightEdge_action (z : Sp.{u} _⦋0⦌)
     (circleCompanionComparisonRightEdge z k).edge := by
   have h := congrArg SSet.yonedaEquiv
     (circleCompanionComparisonRawHomSquare_includeFirst z k)
-  rw [← SquareBoundary.right_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
     circleCompanionReflectedTriangle_trace, Category.assoc, SSet.yonedaEquiv_comp,
     Equiv.apply_symm_apply] at h
   simp only [NatTrans.comp_app, types_comp_apply] at h

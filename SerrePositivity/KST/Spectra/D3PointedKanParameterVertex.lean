@@ -57,7 +57,7 @@ def d3ParameterEvaluation (X : PointedKanObject.{u}) : J ⥤ PointedKanObject.{u
   map_id i := by
     apply ObjectProperty.hom_ext
     change PointedMapping.prePointed (D.map (𝟙 (Opposite.op i))) X.obj = 𝟙 _
-    rw [D.map_id, PointedMapping.prePointed_eq_closedPre]
+    rw [D.map_id, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact (internalHom.flip.obj X.obj).map_id (Opposite.op (D.obj (Opposite.op i)))
   map_comp {i j k} f g := by
     apply ObjectProperty.hom_ext

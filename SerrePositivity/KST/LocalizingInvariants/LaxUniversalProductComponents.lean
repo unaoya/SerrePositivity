@@ -58,7 +58,7 @@ lemma component_arrow (a b : Fin 2) : Arrow.mk (component hΦ p q i r h a b) =
     (stdSimplex.obj₀Equiv.symm a, stdSimplex.obj₀Equiv.symm b)
   change Arrow.mk (component hΦ p q i r h a b) = _ at he
   refine he.trans ?_
-  simp only [vertexIsos, Iso.trans_hom, eqToIso.hom]
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.vertexIsos, Iso.trans_hom, eqToIso.hom]
   exact arrow_mk_eqToHom_comp _ _
 
 lemma bottom_naturality : squareHoBottom (LaxUniversalValue.square Φ p q i r h) ≫

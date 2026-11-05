@@ -33,7 +33,7 @@ def pointedTensorEnrichedFunctor (K : PointedSimplicialSet.{u}) :
         (Spectra.TensorMapping.map K Y.obj Z.obj).right) ≫
         PointedSimplicialSet.productToSmash _ _ ≫
         (MonoidalClosed.comp (K ⊗ X.obj) (K ⊗ Y.obj) (K ⊗ Z.obj)).right
-    erw [← Under.comp_right, Spectra.TensorMapping.comp, Under.comp_right, ← Category.assoc,
+    erw [← Under.comp_right, _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.comp, Under.comp_right, ← Category.assoc,
       ← PointedSimplicialSet.productToSmash_naturality, Category.assoc]
 
 /-- 元の全 tensor Hom の頂点作用は、元の同じ通常射の左 tensor を回収する。 -/

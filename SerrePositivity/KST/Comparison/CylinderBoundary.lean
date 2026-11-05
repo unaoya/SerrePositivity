@@ -129,9 +129,9 @@ theorem simplexZeroTensorIso_one (C : SSet.{u}) :
 theorem cylinderEndpoints_factor (C : SSet.{u}) :
     cylinderEndpoints C = (cylinderBoundaryIso C).hom ≫ C ◁ (SSet.boundary.{u} 1).ι := by
   apply coprod.hom_ext
-  · rw [cylinderEndpoints, coprod.inl_desc, cylinderBoundaryIso_inl_assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc, cylinderBoundaryIso_inl_assoc,
       ← whiskerLeft_comp, SSet.boundary.ι_ι, simplexZeroTensorIso_zero]
-  · rw [cylinderEndpoints, coprod.inr_desc, cylinderBoundaryIso_inr_assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc, cylinderBoundaryIso_inr_assoc,
       ← whiskerLeft_comp, SSet.boundary.ι_ι, simplexZeroTensorIso_one]
 
 /--

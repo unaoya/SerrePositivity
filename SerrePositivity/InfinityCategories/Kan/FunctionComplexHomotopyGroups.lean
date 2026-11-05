@@ -61,7 +61,7 @@ lemma homotopyMap_surjective : Function.Surjective (homotopyMap S X n b) := by
   refine ⟨KanHomotopyGroup.mk (simplex f), ?_⟩
   funext s
   change KanHomotopyGroup.mk (mapSimplex (eval S X s) rfl (simplex f)) = a s
-  rw [eval_simplex]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialFunctionComplex.eval_simplex]
   exact hf s
 
 /-- 概要：関数複体のホモトピー群は座標ごとのホモトピー群の関数群と同型。

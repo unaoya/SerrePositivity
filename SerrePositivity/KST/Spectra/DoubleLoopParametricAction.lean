@@ -75,9 +75,9 @@ lemma swap_doubleParametricPost :
       doubleParametricPost v ≫ PointedObject.basedHomMap P (swap Y') := by
   apply parametricSourceAction v (β_ CirclePower.space.{u} CirclePower.space.{u}).hom
     (swap Y) (swap Y')
-  · rw [PointedMapping.prePointed_eq_closedPre]
+  · rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact InternalHomTensor.natural_swap _ _ _
-  · rw [PointedMapping.prePointed_eq_closedPre]
+  · rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact InternalHomTensor.natural_swap _ _ _
 
 /-- 元の内側の反転射も標準の二重 loop 全族作用と全単体で厳密に可換。 -/
@@ -87,10 +87,10 @@ lemma reversal_doubleParametricPost :
   apply parametricSourceAction v
     ((CirclePower.integerPowerMap.{u} (-1)) ▷ CirclePower.space.{u}) (reversal Y) (reversal Y')
   · dsimp only [reversal]
-    rw [PointedMapping.prePointed_eq_closedPre, PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact InternalHomTensor.natural_pre_left _ _ _
   · dsimp only [reversal]
-    rw [PointedMapping.prePointed_eq_closedPre, PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact InternalHomTensor.natural_pre_left _ _ _
 
 end SerrePositivity.KST.Spectra.LoopExchangePaths

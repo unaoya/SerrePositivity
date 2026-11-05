@@ -29,7 +29,7 @@ lemma transpose_step (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   apply (cancel_mono
     (InternalHomExchange.iso (suspension (X.level n).space) A
       (Y.level (n + 1)).space).hom).1
-  rw [InternalHomExchange.curry'_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (PointedMapping.transpose
       (PointedMapping.transpose (a ≫ pointedStep X Y n))) = _
   rw [PointedMapping.transpose_transpose]
@@ -44,7 +44,7 @@ lemma transpose_step (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   rw [Category.assoc]
   have he := congrArg (curry' (PointedMapping.transpose a) ≫ ·) (step_exchange X Y A n)
   refine Eq.trans ?_ he.symm
-  rw [← Category.assoc, InternalHomExchange.curry'_hom]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (a ≫ pointedStep X Y n) =
     curry' (PointedMapping.transpose (PointedMapping.transpose a)) ≫
       (ihom A).map (pointedStep X Y n)
@@ -62,7 +62,7 @@ lemma transpose_restriction (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   apply (cancel_mono
     (InternalHomExchange.iso (suspension (X.level n).space) A
       (Y.level (n + 1)).space).hom).1
-  rw [InternalHomExchange.curry'_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (PointedMapping.transpose (PointedMapping.transpose
     (a ≫ PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space))) = _
   rw [PointedMapping.transpose_transpose]
@@ -71,7 +71,7 @@ lemma transpose_restriction (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   have he := congrArg (curry' (PointedMapping.transpose a) ≫ ·)
     (restriction_exchange X Y A n)
   refine Eq.trans ?_ he.symm
-  rw [← Category.assoc, InternalHomExchange.curry'_hom]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
   change curry' (a ≫ _) =
     curry' (PointedMapping.transpose (PointedMapping.transpose a)) ≫ _
   rw [PointedMapping.transpose_transpose, curry'_ihom_map]

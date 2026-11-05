@@ -69,7 +69,7 @@ lemma circleBKEdgewiseEndFamily_right (X Y : OmegaSpectrum.{u}) :
         circleBKHomEndFamily X Y := by
   dsimp only [circleBKEdgewiseEndFamily, circleBKHomEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_right, ← Category.assoc,
-    ParameterPoint.naturality, circleBKEdgewiseEndPointMap_right, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, circleBKEdgewiseEndPointMap_right, Category.assoc]
   rfl
 
 /-- 共通解像の比較族の左射影は、同じ反転切断点の比較族へ厳密に可換。 -/
@@ -80,7 +80,7 @@ lemma circleBKEdgewiseEndFamily_left (X Y : OmegaSpectrum.{u}) :
         circleBKReflectedEndFamily X Y := by
   dsimp only [circleBKEdgewiseEndFamily, circleBKReflectedEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_left, ← Category.assoc,
-    ParameterPoint.naturality, circleBKEdgewiseEndPointMap_left, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, circleBKEdgewiseEndPointMap_left, Category.assoc]
   rfl
 
 /-- 元の切断点から得た共通解像の全 Hom 比較族は、実際のホモトピー同値。 -/

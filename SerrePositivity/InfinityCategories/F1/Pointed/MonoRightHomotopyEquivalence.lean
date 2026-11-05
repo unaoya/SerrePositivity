@@ -119,7 +119,7 @@ theorem monoRight_section_map_leftInverse {E B : PointedSimplicialSet.{u}}
     (OmegaSpectrum.pointedMap_basepoint (p ≫ s)) Hr a
   change KanHomotopy.map n (𝟙 E.right) rfl a =
     KanHomotopy.map n (p.right ≫ s.right) _ a at heq
-  rw [KanHomotopy.map_id] at heq
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] at heq
   exact (KanHomotopy.map_comp n p.right (OmegaSpectrum.pointedMap_basepoint p)
     s.right (OmegaSpectrum.pointedMap_basepoint s)
     (OmegaSpectrum.pointedMap_basepoint (p ≫ s)) a).symm.trans heq.symm

@@ -47,7 +47,7 @@ lemma ofHomotopy_h {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B} {f g : T ⟶
     (ofHomotopy H hb hp).homotopy.h = H.h := by
   rw [homotopy_h]
   change uncurry (paramCurry T E H.h hb ≫ _) = _
-  rw [paramCurry_ι, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
 
 /-- 評価した全区間が一致すれば、内部 Hom の同じ区間族も一致する。 -/
 lemma path_eq_of_homotopy_h_eq {T E B C : PointedSimplicialSet.{u}}

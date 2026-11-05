@@ -37,7 +37,7 @@ lemma firstPath_pre_path (j : A ⟶ A') :
         (PointedMapping.prePointed (j ≫ input f g) (target Z)).right
   rw [firstPath_path]
   have hn := (MonoidalClosed.pre (input f g)).naturality (projection Z)
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change PointedObject.basedHomMap (doubleLoop Z) (projection Z) ≫
       PointedMapping.prePointed (input f g) (target Z) =
     PointedMapping.prePointed (input f g) (doubleLoop Z) ≫

@@ -50,7 +50,7 @@ lemma kanBasedEdgeValue_triangle (T : (Δ[2] : SSet.{u}) ⟶ E) :
     SSet.Edge.CompStruct.δ_zero_yonedaEquiv_symm,
     SSet.Edge.CompStruct.δ_two_yonedaEquiv_symm,
     kanBasedEdgeValue_edge, kanBasedEdgeValue_edge, kanBasedEdgeValue_edge,
-    ← groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
+    ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
 
 /-- 基点から始点へ到達できれば、同じ値を持つ平行辺は元の射の同じ類を表す。 -/
 lemma kanBasedEdgeValue_detects {x y : E _⦋0⦌}

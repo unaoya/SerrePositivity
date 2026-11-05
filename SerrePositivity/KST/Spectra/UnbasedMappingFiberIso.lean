@@ -41,7 +41,7 @@ def restrictionFiberIso {K L : SSet.{u}} (f : K ⟶ L) (X : PointedSimplicialSet
     PointedFiberComparison.iso
       (PointedMapping.prePointed (PointedObject.adjoinFunctor.map f) X) (pre f X)
       (freeHomIso L X) (freeHomIso K X) (by
-        rw [PointedMapping.prePointed_eq_closedPre]
+        rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
         exact freeHomIso_pre f X)
 
 end

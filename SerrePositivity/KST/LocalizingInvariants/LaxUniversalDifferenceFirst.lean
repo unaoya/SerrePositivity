@@ -29,7 +29,7 @@ lemma lift_fst : lift p q r ≫ (laxFst (𝟙 Q) (𝟙 Q)).hom =
     connectingArrow p q r ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   change lift p q r ≫ F2.laxPullbackFst (𝟙 Q.obj) (𝟙 Q.obj) = _
-  rw [lift, Category.assoc, arrowLaxInverse_fst]
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst]
 
 def first : (laxCategory p q).obj ⟶ Q.obj := lift p q r ≫ (laxFst (𝟙 Q) (𝟙 Q)).hom
 

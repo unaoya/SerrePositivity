@@ -50,7 +50,7 @@ lemma homotopyMap_bijective (n : ℕ) (b : ∀ s, (X s) _⦋0⦌) :
     refine ⟨KanHomotopy.mk n (simplex f), ?_⟩
     funext s
     change KanHomotopy.map n (eval S X s) rfl _ = a s
-    rw [KanHomotopy.map_mk, eval_simplex, hf]
+    rw [KanHomotopy.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.eval_simplex, hf]
 
 /-- 族の射を積の射へ束ねる。 -/
 def map {Y : S → SSet.{u}} (f : ∀ s, X s ⟶ Y s) : obj S X ⟶ obj S Y :=

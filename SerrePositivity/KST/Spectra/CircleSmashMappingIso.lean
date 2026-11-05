@@ -45,17 +45,17 @@ theorem circleSmashMappingPairIso_swap (Y : PointedSimplicialSet.{u}) :
         selfPullbackSwap (PointedMapping.pre triangleDiskDiagonal Y) := by
   dsimp only [circleSmashMappingPairIso]
   apply pullback.hom_ext
-  · simp only [selfPullbackSwap, Category.assoc, pullback.lift_fst]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap, Category.assoc, pullback.lift_fst]
     rw [(circleSmashMapping_isPullback Y).isoPullback_hom_fst,
       (circleSmashMapping_isPullback Y).isoPullback_hom_snd]
-    simpa only [← op_comp, cofiberMappingFunctor_map, circleSmashUpper_swap] using
+    simpa only [← op_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map, circleSmashUpper_swap] using
       ((cofiberMappingFunctor Y).map_comp
         (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u}).op circleSmashUpper.op).symm
-  · simp only [selfPullbackSwap, Category.assoc, pullback.lift_snd]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap, Category.assoc, pullback.lift_snd]
     rw [(circleSmashMapping_isPullback Y).isoPullback_hom_snd,
       (circleSmashMapping_isPullback Y).isoPullback_hom_fst]
-    simpa only [← op_comp, cofiberMappingFunctor_map, circleSmashLower_swap] using
+    simpa only [← op_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map, circleSmashLower_swap] using
       ((cofiberMappingFunctor Y).map_comp
         (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u}).op circleSmashLower.op).symm

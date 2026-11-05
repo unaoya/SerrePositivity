@@ -40,12 +40,12 @@ lemma cubeDeletionExpressionNormal_vertex {n m : ℕ} (p : CubeDeletionExpressio
   induction p with
   | id =>
     change cubeCoordinateSelect (cubeDeletionNormalEmbedding (cubeDeletionNormalId n)) = _root_.id
-    rw [cubeDeletionNormalId_embedding]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId_embedding]
     rfl
   | erase p i ih =>
     change cubeDeletionNormalVertex (cubeDeletionNormalErase (cubeDeletionExpressionNormal p) i) =
       cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
-    rw [cubeDeletionNormalVertex_erase, ih]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase, ih]
 
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]

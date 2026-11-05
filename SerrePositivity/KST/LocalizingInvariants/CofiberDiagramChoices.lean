@@ -31,7 +31,7 @@ lemma lift_inclusion {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) 
 lemma lift_bottom {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     lift X a ≫ bottom X = a := by
   change lift X a ≫ (inclusion X ≫ (pre squareBottomEdge).app X) = _
-  rw [← Category.assoc, lift_inclusion, CofiberFamily.squares_bottom]
+  rw [← Category.assoc, lift_inclusion, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom]
 
 lemma bottom_surjective : Function.Surjective ((bottom X).app (Opposite.op ⦋0⦌)) := by
   intro x
@@ -40,7 +40,7 @@ lemma bottom_surjective : Function.Surjective ((bottom X).app (Opposite.op ⦋0�
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    unfold Predicate
+    unfold _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate
     rw [squareDiagram_functorVertex]
     exact ⟨s.zero_corner, s.isPushout⟩⟩
   refine ⟨v, ?_⟩
@@ -58,7 +58,7 @@ lemma right_surjective : Function.Surjective ((right X).app (Opposite.op ⦋0⦌
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    unfold Predicate
+    unfold _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate
     rw [squareDiagram_functorVertex]
     exact ⟨s.zero_corner, IsStable.pushout_of_pullback s.toZeroTriangle s.isPullback⟩⟩
   refine ⟨v, ?_⟩

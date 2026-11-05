@@ -33,9 +33,9 @@ lemma alternatingClass_map {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
     (KanHomotopyGroup.map (n := n + 1) φ hφ).toAdditive (alternatingClass a) =
       alternatingClass (fun j ↦ mapSimplex φ hφ (a j)) := by
-  simp only [alternatingClass, map_sum, map_zsmul, additiveClass,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, map_sum, map_zsmul, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
     MonoidHom.coe_toAdditive, Function.comp_apply, toMul_ofMul,
-    KanHomotopyGroup.map_mk]
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
 
 end SphericalBoundary
 
@@ -118,7 +118,7 @@ theorem alternating_loopPositive :
           (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s)) := by
   have h := congrArg (MulEquiv.toAdditive (loopPositiveHomotopyEquiv Y (n + 1)))
     (alternatingClass Y s a T hT hface)
-  simpa only [SphericalBoundary.alternatingClass, SphericalBoundary.additiveClass,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
     map_sum, map_zsmul, MulEquiv.toAdditive_apply_apply, toMul_ofMul,
     MulEquiv.apply_symm_apply] using h
 

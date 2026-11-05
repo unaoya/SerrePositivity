@@ -55,7 +55,7 @@ lemma homotopyLimitEvaluationApp_adjoint (D : I ⥤ KanSequence.{u}) (i : I) (n 
   dsimp only [homotopyLimitAdjoint, homotopyLimitEvaluationApp]
   rw [Category.assoc, PointedWeightedEnd.cotensorIso_inv_π]
   conv_rhs => rw [← Category.assoc, PointedWeightedEnd.map_π]
-  rw [← InternalHomExchange.hom_eq_inv]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv]
   rfl
 
 /-- homotopy end から重みの内部 Hom 列への実際の厳密な射影。 -/

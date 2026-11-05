@@ -44,7 +44,7 @@ lemma toHom_mul (a b : KanHomotopyGroup X 0 x) :
   induction a using Quotient.inductionOn with | h s => ?_
   induction b using Quotient.inductionOn with | h t => ?_
   obtain ⟨r⟩ := KanHomotopyGroup.productSimplex_spec s t
-  erw [KanHomotopyGroup.mul_eq r]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq r]
   exact (SSet.HomotopyCategory.homMk_comp_homMk (compStruct r)).symm
 
 /-- 同じ元の辺のホモトピー圏の類が一致すれば、元の基本群の類も一致する。 -/

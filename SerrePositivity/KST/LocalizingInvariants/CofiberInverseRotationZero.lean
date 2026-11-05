@@ -31,13 +31,13 @@ lemma inverseRotation_source_zero (a : (arrows X) _⦋0⦌)
       (rightSection_right X)
   have he : intervalFunctorVertexEdge a =
       (squareRightArrow (squareDiagram z.val)).edge := by
-    rw [← hz, cofiber_diagram_right_vertex, intervalFunctorVertexEdge_functorVertex,
+    rw [← hz, _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_right_vertex, intervalFunctorVertexEdge_functorVertex,
       squareRightArrow_edge]
   have hi : IsInvertibleEdge (squareRightArrow (squareDiagram z.val)) :=
     (isInvertibleEdge_congr he).mp ha
   change IsZeroVertex ((CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) z)
-  rw [cofiber_diagram_bottom_source]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_bottom_source]
   exact CofiberDiagrams.zero_source_of_right_invertible X z hi
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberRotation

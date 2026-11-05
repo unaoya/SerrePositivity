@@ -26,9 +26,9 @@ lemma mul_assoc : (mul A M ▷ obj A M) ≫ mul A M =
   apply cochainBiprodTensorPairLeft_hom_ext <;> apply biprodTensorRight_hom_ext
   all_goals
     simp only [← tensorHom_def'_assoc, tensorTriple_mul_left, tensorTriple_mul_right,
-      mul_ll, mul_lr, mul_rl, mul_rr, ← whiskerRight_comp_tensorHom_assoc,
-      ← whiskerLeft_comp_tensorHom_assoc, mul_ll_assoc, mul_lr_assoc, mul_rl_assoc,
-      mul_rr_assoc, zero_tensor, tensor_zero, zero_comp, comp_zero,
+      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr, ← whiskerRight_comp_tensorHom_assoc,
+      ← whiskerLeft_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc,
+      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc, zero_tensor, tensor_zero, zero_comp, comp_zero,
       MonObj.mul_assoc_assoc, M.left_assoc_assoc, M.middle_assoc_assoc,
       M.right_assoc_assoc, Category.assoc, Iso.hom_inv_id_assoc]
 

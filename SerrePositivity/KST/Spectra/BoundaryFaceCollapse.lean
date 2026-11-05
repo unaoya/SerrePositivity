@@ -34,7 +34,7 @@ theorem boundaryFaceCollapse_compatibility (n : ℕ) (i : Fin (n + 2)) :
     Subcomplex.homOfLE (show hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right) ≫
       ((stdSimplex.faceSingletonComplIso i).inv ≫
         PointedObject.cofiberQuotient (boundary.{u} n).ι) := by
-  rw [comp_toUnit_assoc, ← Category.assoc, ← hornFaceOverlapToBoundary_ι,
+  rw [comp_toUnit_assoc, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι,
     Category.assoc, PointedObject.cofiberQuotient_condition, comp_toUnit_assoc]
   rfl
 
@@ -73,7 +73,7 @@ theorem boundaryFaceCollapse_face (n : ℕ) (i : Fin (n + 2)) :
     rw [← boundary.faceSingletonComplIso_inv_ι, ← Category.assoc,
       Iso.hom_inv_id, Category.id_comp]
   rw [hi, Category.assoc, boundaryFaceCollapse]
-  rw [(hornBoundaryPushout n i).inr_desc]
+  rw [(_root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout n i).inr_desc]
   exact Iso.hom_inv_id_assoc _ _
 
 /-- 概要：付着写像は残る面以外の各面を基点へ送る。

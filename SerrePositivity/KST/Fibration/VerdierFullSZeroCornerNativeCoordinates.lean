@@ -49,7 +49,7 @@ theorem verdierFullSZeroCornerNativeKanMap_left (d : VerdierDiagram.{u}) :
   rw [fullSNativeCoreInclusion, verdierFullSZeroCornerNativeKanMap]
   simp only [Category.assoc]
   erw [← Category.assoc (exInfinity.map (coreSFullRealizationInclusion
-      (show StableQCat from d.left))),
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))),
     verdierFullSZeroCornerKanMap_left]
   erw [coreSingleKanIso_naturality (verdierLeftExactMap d)]
   exact Iso.inv_hom_id_assoc _ _

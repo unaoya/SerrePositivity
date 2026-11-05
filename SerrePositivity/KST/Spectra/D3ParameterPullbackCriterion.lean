@@ -77,7 +77,7 @@ def d3ParameterPullbackCone_forget_isLimit :
           (d3ParameterArrow D (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)) Y.obj)
         (PointedMapping.pre
           (d3ParameterArrow D (show ((0, 1) : Fin 2 × Fin 2) ≤ (1, 1) by decide)) Y.obj)
-      simpa only [cofiberMappingFunctor_map] using h
+      simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
   exact hp.isLimit
 
 /-- 同じ実錐を元の Hom と同じ宇宙の cospan で保持する。 -/

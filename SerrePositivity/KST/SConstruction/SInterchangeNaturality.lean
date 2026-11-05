@@ -26,7 +26,7 @@ lemma sInterchangeStableIso_naturality (m n : ℕ) {X Y : StableModel.{u}} (f : 
     sInterchange m n X.carrier ≫ ((sEndofunctor n).map ((sEndofunctor m).map f)).val
   apply (cancel_mono (sDoubleInclusion n m Y.carrier)).mp
   rw [Category.assoc, sInterchange_doubleInclusion, ← Category.assoc,
-    sDoubleInclusion_postcomp, Category.assoc, internalHomSwap_postcomp,
+    sDoubleInclusion_postcomp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_postcomp,
     ← Category.assoc, ← sInterchange_doubleInclusion]
   simpa only [Category.assoc] using (congrArg
     (fun h => sInterchange m n X.carrier ≫ h) (sDoubleInclusion_postcomp n m f)).symm
@@ -43,7 +43,7 @@ lemma sInterchange_outerMap {m m' : ℕ} (n : ℕ) (X : StableModel.{u})
       sInterchange m n X.carrier ≫ ((sEndofunctor n).map ((sEndofunctorMap θ).app X)).val := by
   apply (cancel_mono (sDoubleInclusion n m' X.carrier)).mp
   rw [Category.assoc, sInterchange_doubleInclusion, ← Category.assoc,
-    sDoubleInclusion_outerMap, Category.assoc, internalHomSwap_pre_left,
+    sDoubleInclusion_outerMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_pre_left,
     ← Category.assoc, ← sInterchange_doubleInclusion]
   simpa only [Category.assoc] using (congrArg
     (fun h => sInterchange m n X.carrier ≫ h) (sDoubleInclusion_innerMap n X θ)).symm

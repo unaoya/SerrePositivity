@@ -35,7 +35,7 @@ lemma step_exchange (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
       (ihom A).map (suspensionHom (X.level n).space (Y.level n).space ≫
         (ihom (suspension (X.level n).space)).map (Y.sigma n))
   simp only [CategoryTheory.Functor.map_comp, Category.assoc]
-  rw [InternalHomExchange.natural_post, InternalHomExchange.suspension_strength_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post, InternalHomExchange.suspension_strength_assoc]
 
 /-- 源の構造射による制限も内部 Hom の交換と可換。 -/
 lemma restriction_exchange (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
@@ -45,7 +45,7 @@ lemma restriction_exchange (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
         (InternalHomExchange.iso (suspension (X.level n).space) A (Y.level (n + 1)).space).hom =
       (InternalHomExchange.iso (X.level (n + 1)).space A (Y.level (n + 1)).space).hom ≫
         (ihom A).map (PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space) := by
-  simp only [PointedMapping.prePointed_eq_closedPre]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   exact InternalHomExchange.natural_pre_left _ _ _
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

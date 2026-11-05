@@ -46,12 +46,12 @@ def groupoidCompletionKanComparison_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
           groupoidCompletionEvaluation (F2.continuousKanReplacementUnit.app Y)))
       (F2.continuousKanReplacementUnit.app X ≫ F2.continuousKanReplacement.map f) := by
     rw [← F2.continuousKanReplacementUnit.naturality f]
-    simpa only [Category.assoc, CategoryTheory.Functor.id_map, strictKanCompletion] using e
+    simpa only [Category.assoc, CategoryTheory.Functor.id_map, _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion] using e
   have t := FunctorIso.postcomp
     (groupoidCompletionEvaluationIso (F2.continuousKanReplacementUnit.app X))
     (F2.continuousKanReplacement.map f)
   exact h ≪≫ (by
-    simpa only [Category.assoc, groupoidCompletionKanComparison, strictKanCompletion,
+    simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison, _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion,
       CategoryTheory.Functor.id_obj] using t.symm)
 
 /-- 元の亜群化への任意の有限全族は、一つの有限実部分複体の元の亜群化を経由する。 -/
@@ -70,7 +70,7 @@ lemma groupoidCompletion_finite_factorization {K X : SSet.{u}} [K.Finite]
       groupoidCompletionKanComparison X) (f ≫ groupoidCompletionKanComparison X) := by
     have h := en ≪≫ (by
       simpa only [a, V, IsQCatEquivalence.choose, Category.assoc] using ev)
-    simpa only [Category.assoc, Category.comp_id, Category.id_comp, hg, strictKanCompletion]
+    simpa only [Category.assoc, Category.comp_id, Category.id_comp, hg, _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion]
       using h
   have hff := ((groupoidCompletionKanComparison_isQCatEquivalence X).postcompose K).isFullyFaithful
   exact ⟨A, a, ⟨hff.preimageVertexIso he⟩⟩

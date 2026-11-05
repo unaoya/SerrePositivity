@@ -136,7 +136,7 @@ theorem natural_pre {A B : SSet.{u}} (f : A ⟶ B) (Y : PointedSimplicialSet.{u}
   change PointedMapping.pre (PointedObject.adjoinFunctor.map f) Y ≫
     (PointedObject.basedHomι (PointedObject.adjoin A) Y ≫ (pre coprod.inl).app Y.right) = _
   rw [← Category.assoc]
-  erw [PointedMapping.pre_ι]
+  erw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι]
   rw [Category.assoc]
   change PointedObject.basedHomι (PointedObject.adjoin B) Y ≫
       ((pre (PointedObject.adjoinFunctor.map f).right).app Y.right ≫

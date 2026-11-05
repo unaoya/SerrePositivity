@@ -23,10 +23,10 @@ lemma ihomAction_pre (A : PointedSimplicialSet.{u})
     prePointed j V ≫ ihomAction A E' V =
     ihomAction A E V ≫ prePointed ((ihom A).map j) (PointedObject.basedHom A V) := by
   have hn := InternalHomTensor.natural_pre_right A ((ihom A).map j) V
-  simp only [← prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   simp only [ihomAction, Category.assoc]
   erw [← hn]
-  rw [← Category.assoc, ← Category.assoc, prePointed_comp, prePointed_comp]
+  rw [← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   have he : A ◁ (ihom A).map j ≫ (ihom.ev A).app E = (ihom.ev A).app E' ≫ j :=
     (ihom.ev A).naturality j
   exact congrArg (fun k => prePointed k V ≫
@@ -41,13 +41,13 @@ lemma ihomAction_restrict {A' A : PointedSimplicialSet.{u}} (i : A' ⟶ A)
       prePointed (prePointed i E) (PointedObject.basedHom A' V) := by
   have hl := InternalHomTensor.natural_pre_left i (PointedObject.basedHom A E) V
   have hr := InternalHomTensor.natural_pre_right A' (prePointed i E) V
-  simp only [← prePointed_eq_closedPre] at hl hr
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hl hr
   simp only [ihomAction, Category.assoc]
   erw [← hl, ← hr]
-  rw [← Category.assoc, ← Category.assoc, prePointed_comp, prePointed_comp]
+  rw [← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   have he : A' ◁ prePointed i E ≫ (ihom.ev A').app E =
       i ▷ PointedObject.basedHom A E ≫ (ihom.ev A).app E := by
-    simp only [prePointed_eq_closedPre]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact MonoidalClosed.id_tensor_pre_app_comp_ev i E
   rw [he]
 

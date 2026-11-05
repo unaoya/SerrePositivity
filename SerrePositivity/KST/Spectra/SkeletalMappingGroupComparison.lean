@@ -43,7 +43,7 @@ lemma groupComparison_apply (r n : ℕ)
   obtain ⟨s, rfl⟩ := Quotient.exists_rep a
   change KanHomotopyGroup.map _ rfl (KanHomotopyGroup.map _ _ (KanHomotopyGroup.mk s)) =
     KanHomotopyGroup.map _ _ (KanHomotopyGroup.mk s)
-  rw [KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   apply congrArg KanHomotopyGroup.mk
   apply RelativeMorphism.ext
   change (s.map ≫ (skeletalLimitIso K Y).hom) ≫

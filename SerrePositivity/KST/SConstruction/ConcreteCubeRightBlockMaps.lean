@@ -19,7 +19,7 @@ lemma concreteCubeTensorMap_face_zero (n m : ℕ) (b : Bool) :
   exact (cubeVertexTensor_eq_of_join _root_.id (cubeVertexFace b m 0)
     (cubeVertexFace b (n + m) 0) (by
       intro x y
-      simp only [cubeVertexFace, Fin.insertNth_zero', cubeVertexJoin, id_eq,
+      simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero', cubeVertexJoin, id_eq,
         Fin.cons_zero, Fin.cons_succ])).symm
 
 /-- 左を固定した連結積の右ブロックの零削除は、元の全体の零削除。 -/

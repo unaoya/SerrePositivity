@@ -56,16 +56,16 @@ lemma intervalFamily_boundary_iff {P Y : SSet.{u}}
   · intro h
     constructor
     · have hh := congrArg (fun t ↦ (coprod.inr ▷ P) ≫ t) h
-      simpa only [← comp_whiskerRight_assoc, intervalEndpoint_inr,
+      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr,
         SSet.comp_const] using hh
     · have hh := congrArg (fun t ↦ (coprod.inl ▷ P) ≫ t) h
-      simpa only [← comp_whiskerRight_assoc, intervalEndpoint_inl,
+      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl,
         SSet.comp_const] using hh
   · rintro ⟨h₀, h₁⟩
     apply PointedObject.tensorRightCoprod_hom_ext
-    · simpa only [← comp_whiskerRight_assoc, intervalEndpoint_inl,
+    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl,
         SSet.comp_const] using h₁
-    · simpa only [← comp_whiskerRight_assoc, intervalEndpoint_inr,
+    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr,
         SSet.comp_const] using h₀
 
 end SerrePositivity.KST.Spectra

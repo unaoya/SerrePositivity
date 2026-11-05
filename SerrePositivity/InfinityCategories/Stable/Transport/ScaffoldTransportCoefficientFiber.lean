@@ -68,7 +68,7 @@ def coefficientBase (c : I) :
 theorem coefficientEmbedding_over (c : I) :
     (coefficientEmbedding s) c ≫ s.toStrictTransportComparisonSpan.coherentBase =
       coefficientBase (p := p) c := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentBase,
+  rw [coefficientEmbedding, _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.coherentBase,
     ← Functor.map_comp, Category.assoc, s.embedding_over,
     simplicialReplacementConstantLift_projection]
   rfl

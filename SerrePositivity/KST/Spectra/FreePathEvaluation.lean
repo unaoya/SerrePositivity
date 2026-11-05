@@ -61,7 +61,7 @@ lemma evaluation_at_unit {K : SSet.{u}} (j : 𝟙_ SSet.{u} ⟶ K)
 lemma endpoint_eq_map (i : Fin 2) :
     freeIntervalEndpoint.{u} i = PointedObject.adjoinFunctor.map
       (PointedSimplicialSet.deltaZeroUnitIso.{u}.inv ≫ stdSimplex.δ i) := by
-  unfold freeIntervalEndpoint
+  unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint
   rw [Functor.map_comp]
   rfl
 
@@ -88,7 +88,7 @@ lemma square_face {A : SSet.{u}} {Y : PointedSimplicialSet.{u}}
       j ▷ (PointedObject.basedHom (PointedObject.adjoin (Δ[1] : SSet.{u})) Y).right ≫
         evaluation (Δ[1] : SSet.{u}) Y) = _
   rw [evaluation_at_unit]
-  rw [freePathEndpoint, endpoint_eq_map]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, endpoint_eq_map]
 
 /-- 始点評価は、通常のホモトピーの同じ零端点での評価。 -/
 lemma square_zero {A : SSet.{u}} {Y : PointedSimplicialSet.{u}}
@@ -133,7 +133,7 @@ lemma square_constant {A : SSet.{u}} {Y : PointedSimplicialSet.{u}} (a : A ⟶ Y
     rfl
   have hf : freeConstantPath Y =
       PointedWeightedEnd.constantFamily (Δ[1] : SSet.{u}) Y := by
-    rw [freeConstantPath, he, PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath, he, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     rfl
   have hc : (freeConstantPath Y).right ≫
       FreePointedHomRestriction.restrict (Δ[1] : SSet.{u}) Y =

@@ -41,7 +41,7 @@ lemma ordinaryStructureAdjoint_comm_iff (X : KanSequence.{u}) (n : ℕ) :
           (X.level (n + 2)).space).hom =
       ordinaryStructureAdjoint X n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))) := by
-  rw [← (suspensionLoopEquiv (X.level n).space
+  rw [← (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space
     ((mapping PointedSimplicialSet.circle.{u} X).level (n + 2)).space).injective.eq_iff]
   change curry (_ ≫ _) = curry (_ ≫ _) ↔ _
   rw [curry_natural_left, curry_natural_right]

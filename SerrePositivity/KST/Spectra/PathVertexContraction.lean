@@ -54,7 +54,7 @@ lemma pathVertexContraction_face_one (Y : PointedSimplicialSet.{u})
     intro s
     apply Prod.ext <;> rfl
   rw [pathVertexContraction, ← Category.assoc, h, Category.assoc, pathContraction_zero,
-    ← Category.assoc, comp_toUnit, pointedConstant_eq_const]
+    ← Category.assoc, comp_toUnit, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
 
 /-- 概要：収縮の辺の終点は指定した path 自体の区間の射。
 方針：収縮の終点評価の式に、頂点の familyMap の評価式を代入する。

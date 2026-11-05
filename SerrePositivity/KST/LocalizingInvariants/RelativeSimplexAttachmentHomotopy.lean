@@ -41,10 +41,10 @@ lemma exists_relative_simplexAttachmentHomotopy {S K X : SSet.{u}} [Quasicategor
   let p := (pre (simplexAttachmentBoundary n).ι).app X
   have hpp : p ≫ (pre (simplexAttachmentPrefix n)).app X =
       (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X := by
-    rw [← NatTrans.comp_app, ← pre_map, simplexAttachmentPrefix_ι]
+    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι]
   have hpn : p ≫ (pre (simplexAttachmentLastEdge n)).app X =
       (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X := by
-    rw [← NatTrans.comp_app, ← pre_map, simplexAttachmentLastEdge_ι]
+    rw [← NatTrans.comp_app, ← pre_map, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι]
   have ha : A.h ≫ p = (j ▷ (Δ[1] : SSet.{u})) ≫ H.h ≫ p := by
     apply (isPullback_pre_of_isPushout (simplexAttachmentBoundary_isPushout n) X).hom_ext
     · simpa only [Category.assoc, hpp] using hp

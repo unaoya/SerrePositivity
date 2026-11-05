@@ -46,7 +46,7 @@ lemma verticalFiberVertex_ι {T E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (r
     (hs : s ≫ p = r ≫ p) :
     (fiberι (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))).app _
       (verticalFiberVertex p r s hs) = familyVertex s := by
-  rw [verticalFiberVertex, ← SSet.yonedaEquiv_comp, fiberLift_ι]
+  rw [verticalFiberVertex, ← SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   rfl
 
 namespace VerticalPath
@@ -62,12 +62,12 @@ def fiberEdge (H : VerticalPath p f g) (r : T ⟶ E) (hf : f ≫ p = r ≫ p) :
       fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily f)
         (by rw [pointFamily_post, hf, pointFamily_eq_const]) := by
     apply fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
-    rw [Category.assoc, fiberLift_ι, H.zero, fiberLift_ι]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, H.zero, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   have h1 : stdSimplex.δ (0 : Fin 2) ≫ l =
       fiberLift (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p)) (pointFamily g)
         (by rw [pointFamily_post, H.endpoint_over, hf, pointFamily_eq_const]) := by
     apply fiber_hom_ext (PointedObject.basedHomMap T p).right (familyVertex (r ≫ p))
-    rw [Category.assoc, fiberLift_ι, H.one, fiberLift_ι]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, H.one, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   exact SSet.Edge.mk (SSet.yonedaEquiv l)
     (by rw [← stdSimplex.yonedaEquiv_δ_comp, h0]; rfl)
     (by rw [← stdSimplex.yonedaEquiv_δ_comp, h1]; rfl)
@@ -90,7 +90,7 @@ def ofFiberEdge (p : E ⟶ B) (r f g : T ⟶ E)
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
     exact verticalFiberVertex_ι p r g hg
   «over» := by
-    rw [Category.assoc, fiberι_comp, SSet.comp_const, hf]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.comp_const, hf]
 
 end VerticalPath
 

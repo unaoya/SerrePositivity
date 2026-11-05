@@ -66,7 +66,7 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
     simpa only [Category.assoc, corner_fst] using hf
   have hc : i.right ▷ T ≫ earlier = A.right ◁ j ≫ prescribed := by
     dsimp only [earlier, prescribed]
-    rw [← uncurry_natural_left, ← uncurry_pre_app, Category.assoc, ← pre_ι,
+    rw [← uncurry_natural_left, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
       ← Category.assoc, hs]
     rfl
   have he : earlier ≫ p.right = X.right ◁ j ≫ base := by
@@ -78,7 +78,7 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
     dsimp only [prescribed, base]
     rw [← uncurry_natural_right]
     simp only [Category.assoc]
-    rw [← PointedObject.basedHomMap_ι, ← pullback.condition_assoc, pre_ι,
+    rw [← PointedObject.basedHomMap_ι, ← pullback.condition_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
       ← Category.assoc, ← Category.assoc, uncurry_pre_app]
     rfl
   obtain ⟨f, hearlier, hprescribed, hbase⟩ := relative_product_lift p.right i.right j h
@@ -89,16 +89,16 @@ theorem corner_hasLiftingProperty {T U : SSet.{u}} (j : T ⟶ U)
   let l := paramCurry X E f hfixed
   refine ⟨⟨{ l := l, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply (cancel_mono (PointedObject.basedHomι X E)).mp
-    rw [Category.assoc, paramCurry_ι, ← curry_natural_left, hearlier, curry_uncurry]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← curry_natural_left, hearlier, curry_uncurry]
   · apply pullback.hom_ext
     · apply (cancel_mono (PointedObject.basedHomι X B)).mp
       simp only [Category.assoc, corner_fst_assoc]
       rw [PointedObject.basedHomMap_ι,
-        ← Category.assoc, paramCurry_ι, ← curry_natural_right, hbase, curry_uncurry]
+        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← curry_natural_right, hbase, curry_uncurry]
     · apply (cancel_mono (PointedObject.basedHomι A E)).mp
       simp only [Category.assoc, corner_snd_assoc]
-      rw [pre_ι,
-        ← Category.assoc, paramCurry_ι, curry_pre_app, hprescribed, curry_uncurry]
+      rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
+        ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app, hprescribed, curry_uncurry]
 
 /-- 概要：源の単射と標的の Kan fibration から corner の Kan fibration を得る。
 方針：ホーンと単射の pushout-product の anodyne 性を相対族の持ち上げに適用する。

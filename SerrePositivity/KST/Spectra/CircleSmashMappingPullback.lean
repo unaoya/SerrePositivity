@@ -34,7 +34,7 @@ theorem circleSmashMapping_isPullback (Y : PointedSimplicialSet.{u}) :
       (PointedMapping.pre circleSmashLower Y)
       (PointedMapping.pre triangleDiskDiagonal Y) (PointedMapping.pre triangleDiskDiagonal Y) := by
   have h := (circleSmashTriangles_isPushout.op.flip).map (cofiberMappingFunctor Y)
-  simpa only [cofiberMappingFunctor_map] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
 
 /-- 概要：二重円の写像を上側の相対三角形へ制限する射は Kan fibration。
 方針：対角辺への制限の fibration を pullback に沿って引き戻す。

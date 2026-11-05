@@ -63,7 +63,7 @@ def mappingCylinderToDouble {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
     mappingCylinderEndpoint f ≫ mappingCylinderToDouble f g =
       g ≫ doubleMappingCylinder_right f g := by
   rw [mappingCylinderEndpoint, Category.assoc, mappingCylinderTop_toDouble,
-    doubleMappingCylinder_one]
+    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one]
 
 /--
 概要：既存の二重写像円筒は、片端の mapping cylinder の残る端点を貼る pushout である。
@@ -93,8 +93,8 @@ theorem mappingCylinderToDouble_isPushout {C A B : SSet.{u}} (f : C ⟶ A) (g : 
     refine ⟨l, ?_, doubleMappingCylinder_right_desc ..⟩
     apply pushout.hom_ext
     · change mappingCylinderTop f ≫ (mappingCylinderToDouble f g ≫ l) = mappingCylinderTop f ≫ a
-      rw [← Category.assoc, mappingCylinderTop_toDouble, doubleMappingCylinder_middle_desc]
+      rw [← Category.assoc, mappingCylinderTop_toDouble, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc]
     · change mappingCylinderBase f ≫ (mappingCylinderToDouble f g ≫ l) = mappingCylinderBase f ≫ a
-      rw [← Category.assoc, mappingCylinderBase_toDouble, doubleMappingCylinder_left_desc]
+      rw [← Category.assoc, mappingCylinderBase_toDouble, _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc]
 
 end SerrePositivity.KST.Comparison

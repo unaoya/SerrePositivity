@@ -16,7 +16,7 @@ lemma necklaceBeadMap_joint {d e : ℕ} (f : necklaceBead.{u} d ⟶ necklaceBead
     (v : (NecklaceShape.single d).Vertex) (hv : v.val ∈ (NecklaceShape.single d).joints) :
     (necklaceVertexMap f v).val ∈ (NecklaceShape.single e).joints := by
   have h : v = (NecklaceShape.single d).first ∨ v = (NecklaceShape.single d).last := by
-    simp only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at hv
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at hv
     rcases hv with h | h
     · exact Or.inl (Fin.ext h)
     · exact Or.inr (Fin.ext h)

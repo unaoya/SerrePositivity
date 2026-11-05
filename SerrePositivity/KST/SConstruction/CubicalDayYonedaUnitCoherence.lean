@@ -35,7 +35,7 @@ lemma cubicalDayYoneda_leftUnit_retraction (c : ConcreteCube) :
     (cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c)))
     (concreteCubeLeftUnitor c).inv]
   erw [cubicalDayTensorMap_cell cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c))
-    (ConcreteCube.mk 0) c]
+    (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c]
   erw [cubicalDayUnitInclusion_identity]
   erw [cubicalNatTrans_restrict
     (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans
@@ -66,7 +66,7 @@ lemma cubicalDayYoneda_rightUnit_retraction (c : ConcreteCube) :
     (cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion)
     (concreteCubeRightUnitor c).inv]
   erw [cubicalDayTensorMap_cell (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion
-    c (ConcreteCube.mk 0)]
+    c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)]
   erw [cubicalDayUnitInclusion_identity]
   erw [cubicalNatTrans_restrict
     (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans

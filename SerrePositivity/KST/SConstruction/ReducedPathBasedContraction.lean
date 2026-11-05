@@ -28,7 +28,7 @@ def reducedPathDiagonalBasedContraction (D : SimplicialObject SSet.{u}) :
   h₀ := (reducedPathDiagonalCylinder_zero D).trans (Spectra.pointedConstant_eq_const _ _)
   h₁ := reducedPathDiagonalCylinder_one D
   rel := by
-    rw [Subcomplex.ofSimplex_ι, ← Spectra.pointedConstant_eq_const (reducedPathDiagonal D),
+    rw [Subcomplex.ofSimplex_ι, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (reducedPathDiagonal D),
       comp_whiskerRight_assoc, reducedPathDiagonalCylinder_point, comp_toUnit_assoc]
     simp only [comp_toUnit_assoc]
 

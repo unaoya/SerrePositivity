@@ -40,7 +40,7 @@ lemma kanReplacementPoint_group_subsingleton (n : ℕ) :
     apply RelativeMorphism.ext
     exact isTerminalTensorUnit.hom_ext _ _⟩
   have : Subsingleton (KanHomotopyGroup P.right n P.basepoint) := by
-    unfold KanHomotopyGroup
+    unfold _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
     infer_instance
   let i : P ⟶ PointedKanReplacement.obj P := PointedKanReplacement.unit.app P
   exact (KanHomotopyGroup.equivOfPiIsomorphism n i.right

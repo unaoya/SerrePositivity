@@ -60,9 +60,9 @@ theorem kanEnrichedJointComponentIso_hom (X : C) (j : J) :
         (spaceInfinityVertex_eq_coherent ((D.obj j).obj X)).symm
         (spaceInfinityVertex_eq_coherent ((E.obj j).obj X)).symm).toTruncated) := by
   simp only [kanEnrichedJointComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
-    eqToIso.hom, functorIsoValue_hom]
+    eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom]
   rw [show (η.jointComparisonIso hη).hom = Truncated.HomotopyCategory.homMk
-    (η.jointComparisonEdge).toTruncated from rfl, functorHomEvaluate_edge_hom]
+    (η.jointComparisonEdge).toTruncated from rfl, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
   exact homMk_transport (kanEnrichedJointEvaluation_vertex D X j)
     (kanEnrichedJointEvaluation_vertex E X j) _ _ (η.jointComparisonEdge_at j X)
 

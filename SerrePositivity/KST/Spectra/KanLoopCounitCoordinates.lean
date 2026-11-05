@@ -39,9 +39,9 @@ lemma kanLoopCounit_pre {T U : PointedSimplicialSet.{u}} (i : T ⟶ U)
   apply (cancel_mono (InternalHomTensor.iso PointedSimplicialSet.circle.{u} T V).hom).1
   rw [Category.assoc, kanLoopCounit_comparison]
   have hn := InternalHomTensor.natural_pre_right PointedSimplicialSet.circle.{u} i V
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   rw [Category.assoc, hn, ← Category.assoc, kanLoopCounit_comparison]
-  simp only [PointedMapping.prePointed_eq_closedPre]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (MonoidalClosed.pre i).app ((ihom CirclePower.space.{u}).obj V) ≫
       (ihom T).map ((MonoidalClosed.pre CirclePower.unit.{u}).app V) =
     (ihom U).map ((MonoidalClosed.pre CirclePower.unit.{u}).app V) ≫

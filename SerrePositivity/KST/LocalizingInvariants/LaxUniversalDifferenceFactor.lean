@@ -23,7 +23,7 @@ variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (r : ExactMap (laxCategory p q) Q)
 
 lemma first_inverts : InvertsEdges (first p q r) (invertedEdges (laxFst p q).hom) := by
-  rw [invertedEdges_eq_cofiber_kernel (LaxInclusion.exactFromD p q) (laxFst p q)
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (LaxInclusion.exactFromD p q) (laxFst p q)
     (laxSemiorthogonal p q).kernel]
   exact (inverts_iff_kills_inclusion (LaxInclusion.exactFromD p q)
     (⟨first p q r, inferInstance⟩ : ExactMap (laxCategory p q) Q)).mpr

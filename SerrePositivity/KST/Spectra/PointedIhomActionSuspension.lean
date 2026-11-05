@@ -36,7 +36,7 @@ private lemma closedAction_post {C : Type*} [Category C] [MonoidalCategory C]
     ((MonoidalClosed.pre ((ihom.ev A).app E)).app V ≫
       (InternalHomTensor.iso A ((ihom A).obj E) V).hom) ≫
       (ihom ((ihom A).obj E)).map ((ihom A).map f) := by
-  rw [Category.assoc, ← InternalHomTensor.natural_post A ((ihom A).obj E) f,
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post A ((ihom A).obj E) f,
     ← Category.assoc]
   simpa only [Category.assoc, Functor.id_obj, Functor.comp_obj, tensorLeft,
     curriedTensor_obj_obj] using
@@ -49,7 +49,7 @@ lemma ihomAction_post (A E : PointedSimplicialSet.{u})
     (ihom E).map f ≫ ihomAction A E W =
       ihomAction A E V ≫
         (ihom (PointedObject.basedHom A E)).map ((ihom A).map f) := by
-  rw [ihomAction, ihomAction, prePointed_eq_closedPre, prePointed_eq_closedPre]
+  rw [ihomAction, ihomAction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (ihom E).map f ≫ ((MonoidalClosed.pre ((ihom.ev A).app E)).app W ≫
     (InternalHomTensor.iso A ((ihom A).obj E) W).hom) =
     ((MonoidalClosed.pre ((ihom.ev A).app E)).app V ≫
@@ -65,7 +65,7 @@ lemma ihomParameterAction_post {A E V W T : PointedSimplicialSet.{u}}
     (ihomAction A E V ≫ prePointed e (PointedObject.basedHom A V)) ≫
       (ihom T).map ((ihom A).map f) := by
   have hn := (MonoidalClosed.pre e).naturality ((ihom A).map f)
-  simp only [← prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   rw [← Category.assoc, ihomAction_post, Category.assoc]
   erw [hn]
   exact (Category.assoc _ _ _).symm

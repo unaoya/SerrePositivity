@@ -58,7 +58,7 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
   let U := relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y
   have hbase : (relativeConeProductCurryIso K S Y).hom.app (Opposite.op ⦋0⦌)
       (functorVertex (P ≫ q)) = functorVertex (p ≫ (ihom S).map q) := by
-    rw [relativeConeProductCurryIso_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_vertex]
     apply congrArg functorVertex
     change curry ((β_ S K).hom ≫ ((β_ K S).hom ≫ uncurry p) ≫ q) = _
     rw [← Category.assoc, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp,
@@ -70,7 +70,7 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
         change vertexFiberι r (functorVertex (P ≫ q)) ≫
           ((relativeConeProductCurryIso (join (Δ[0] : SSet.{u}) K) S Y).hom ≫
             (pre j).app ((ihom S).obj Y)) = _
-        rw [← relativeConeProductCurryIso_pre j]
+        rw [← _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_pre j]
         change vertexFiberι r (functorVertex (P ≫ q)) ≫
           (r ≫ (relativeConeProductCurryIso K S Y).hom) = _
         rw [← Category.assoc, vertexFiberι_comp, SSet.const_comp, hbase])
@@ -81,7 +81,7 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
     apply Subtype.ext
     change U.hom.app (Opposite.op ⦋0⦌) (functorVertex (d.diagram ≫ q)) =
       functorVertex (c.val ≫ (ihom S).map q)
-    rw [relativeConeProductCurryIso_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_vertex]
     apply congrArg functorVertex
     change curry ((β_ S (join (Δ[0] : SSet.{u}) K)).hom ≫ d.diagram ≫ q) =
       curry ((β_ S (join (Δ[0] : SSet.{u}) K)).hom ≫ d.diagram) ≫ (ihom S).map q
@@ -91,7 +91,7 @@ lemma quotientFunctorConeIsoRecovery_of_relativeConeRecovery
     rw [sliceConeFamilyMap_app_zero]
     apply Subtype.ext
     change U.hom.app (Opposite.op ⦋0⦌) (functorVertex H) = functorVertex t.val
-    rw [relativeConeProductCurryIso_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_vertex]
     apply congrArg functorVertex
     change curry ((β_ S (join (Δ[0] : SSet.{u}) K)).hom ≫
       (β_ (join (Δ[0] : SSet.{u}) K) S).hom ≫ uncurry t.val) = t.val

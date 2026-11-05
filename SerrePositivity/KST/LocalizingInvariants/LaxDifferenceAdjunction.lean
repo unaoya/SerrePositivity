@@ -50,7 +50,7 @@ lemma laxDifference_isVerdier :
   fullyFaithful := pullbackInclusion_fullyFaithful p q
   kernel := exactLaxDifference_kernel p q
   quotient := by
-    rw [← invertedEdges_eq_cofiber_kernel (pullbackInclusion p q)
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q)
       (exactLaxDifference p q) (exactLaxDifference_kernel p q)]
     exact laxDifference_isLocalization p q v a hv
 

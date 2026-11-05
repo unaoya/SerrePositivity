@@ -30,7 +30,7 @@ lemma circleEvaluationLoop_vertex (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
   change (circleEvaluationHomSquare z).app _ (stdSimplex.obj₀Equiv.symm i,
     (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 0)).app _
       (stdSimplex.obj₀Equiv.symm i)) = _ at h
-  rw [IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
   exact h.symm.trans (circleEvaluationHomSquare_corner z i 0)
 
 /-- 元の companion の区間写像の両端も、同じ零 Hom 頂点。 -/
@@ -43,7 +43,7 @@ lemma circleEvaluationCompanion_vertex (z : Sp.{u} _⦋0⦌) (i : Fin 2) :
   change (circleEvaluationHomSquare z).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm 0)).app _
       (stdSimplex.obj₀Equiv.symm i), stdSimplex.obj₀Equiv.symm i) = _ at h
-  rw [IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
   exact h.symm.trans (circleEvaluationHomSquare_corner z 0 i)
 
 /-- 同じ対角経路の両端も、同じ零 Hom 頂点。 -/

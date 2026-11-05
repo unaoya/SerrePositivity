@@ -36,7 +36,7 @@ theorem freeStandardPrependNormalForm_δ_zero {n d : ℕ}
   change fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)
     (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))
     (SimplexCategory.δ 0 ≫ simplexPrepend p.epi) = p
-  rw [simplexPrepend_δ_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero]
   rw [fatNormalize_eq_of_factorization _ _ _ _ p.epi (SimplexCategory.δ 0) rfl]
   have hv : (Δ[n] : SSet.{u}).map (SimplexCategory.δ 0).op
       (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv p.simplex))) =
@@ -44,7 +44,7 @@ theorem freeStandardPrependNormalForm_δ_zero {n d : ℕ}
     rw [SSet.stdSimplex.map_objEquiv_symm]
     change SSet.stdSimplex.objEquiv.{u}.symm
       (SimplexCategory.δ 0 ≫ simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)) = _
-    rw [simplexConeZero_δ_zero, Equiv.symm_apply_apply]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero, Equiv.symm_apply_apply]
   change (⟨p.degree, p.epi, _, (Δ[n] : SSet.{u}).map (SimplexCategory.δ 0).op
     (SSet.stdSimplex.objEquiv.symm (simplexConeZero (SSet.stdSimplex.objEquiv p.simplex)))⟩ :
     FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)) = p

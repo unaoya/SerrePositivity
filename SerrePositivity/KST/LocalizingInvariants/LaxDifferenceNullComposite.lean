@@ -35,7 +35,7 @@ lemma laxDifferenceNullComposite : laxArrowHom p q ≫ laxDifferenceProjectionHo
     rw [squareBottomArrow_edge]
     change SSet.yonedaEquiv (squareBottomEdge ≫
       diagramFamilyTranspose (CofiberFamily.squares E.obj a)) = _
-    rw [diagramFamilyTranspose_pre, CofiberFamily.squares_bottom]
+    rw [diagramFamilyTranspose_pre, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom]
     rfl
   · apply Truncated.HomotopyCategory.congr_arrowMk_homMk
     rw [squareRightArrow_edge]
@@ -44,7 +44,7 @@ lemma laxDifferenceNullComposite : laxArrowHom p q ≫ laxDifferenceProjectionHo
     rw [diagramFamilyTranspose_pre]
     have he : CofiberFamily.squares E.obj a ≫ (pre squareRightEdge).app E.obj =
         CofiberDiagrams.lift E.obj a ≫ CofiberDiagrams.right E.obj := by
-      rw [CofiberDiagrams.right, ← Category.assoc, CofiberDiagrams.lift_inclusion]
+      rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, ← Category.assoc, CofiberDiagrams.lift_inclusion]
     rw [he]
     rfl
   · exact CofiberFamily.functorZeroTriangle_comp_zero E.obj a

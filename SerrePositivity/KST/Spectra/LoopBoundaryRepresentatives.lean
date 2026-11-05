@@ -35,7 +35,7 @@ lemma group_mk {X : SSet.{u}} [KanComplex X] {x y : X _⦋0⦌} (h : x = y) {n :
     KanHomotopyGroup.equivOfIso n (Iso.refl X) h (KanHomotopyGroup.mk s) =
       KanHomotopyGroup.mk (rebase h s) := by
   change KanHomotopyGroup.map (𝟙 X) h (KanHomotopyGroup.mk s) = _
-  rw [KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   congr 1
 
 end SimplexBasepoint
@@ -74,10 +74,10 @@ lemma loopPositive_loopSimplex [KanComplex Y.right] :
       KanHomotopyGroup.mk M.boundary := by
     change KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom _
       (KanHomotopyGroup.mk M.loopSimplex) = _
-    rw [KanHomotopyGroup.map_mk]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
     congr 1
     ext : 1
-    simp only [loopSimplex, mapSimplex, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    simp only [loopSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc, Iso.inv_hom_id, Category.comp_id]
   have he : b.symm (loopPositiveHomotopyEquiv Y n (KanHomotopyGroup.mk M.loopSimplex)) =
       KanHomotopyGroup.mk s := by
     apply (connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right

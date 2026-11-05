@@ -34,13 +34,13 @@ def vertexDiscreteSpecifiedEdge {A X : SSet.{u}} (F G : vertexDiscrete A ⟶ X)
   src_eq := by
     change ((ihom (vertexDiscrete A)).obj X).map (SimplexCategory.δ (1 : Fin 2)).op
       (vertexDiscreteFunctionSimplex (fun a => (e a).edge)) = functorVertex F
-    rw [vertexDiscreteFunctionSimplex_map]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map]
     exact (congrArg vertexDiscreteFunctionSimplex (funext (fun a => (e a).src_eq))).trans
       (vertexDiscreteFunctionSimplex_vertex F)
   tgt_eq := by
     change ((ihom (vertexDiscrete A)).obj X).map (SimplexCategory.δ (0 : Fin 2)).op
       (vertexDiscreteFunctionSimplex (fun a => (e a).edge)) = functorVertex G
-    rw [vertexDiscreteFunctionSimplex_map]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map]
     exact (congrArg vertexDiscreteFunctionSimplex (funext (fun a => (e a).tgt_eq))).trans
       (vertexDiscreteFunctionSimplex_vertex G)
 

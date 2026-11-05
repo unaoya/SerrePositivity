@@ -35,7 +35,7 @@ lemma homotopyLimitWedgeFamily_condition (n : ℕ) {i j : I} (f : i ⟶ j) :
       (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map ((D.map f).app n) =
     (s.ι j).app n ≫ PointedMapping.prePointed
       (PointedObject.adjoinFunctor.map ((bousfieldKanWeight I).map f)) _ at h
-  rw [PointedMapping.prePointed_eq_closedPre] at h
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   dsimp only [PointedWeightedEnd.diagram, Enriched.FunctorCategory.diagram,
     eHomFunctor, Functor.comp, Functor.op, Functor.whiskeringLeft, Functor.whiskeringRight]
   simp only [enrichedOrdinaryCategorySelf_eHomWhiskerLeft,
@@ -87,7 +87,7 @@ lemma homotopyLimitWedgeLiftApp_adjoint (n : ℕ) :
         ((D.obj i).level (n + 1)).space).hom) hs
   rw [mapping_adjoint] at h
   simp only [Category.assoc] at h
-  rw [InternalHomExchange.hom_eq_inv (PointedObject.adjoin (W.obj i)) A
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv (PointedObject.adjoin (W.obj i)) A
     ((D.obj i).level (n + 1)).space, Iso.inv_hom_id] at h
   simp only [Category.comp_id] at h
   exact h

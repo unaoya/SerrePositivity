@@ -60,7 +60,7 @@ def d3GradedPostcomp {F G : EnrichedFunctor SSet.{u} C D}
       (eComp SSet _ _ _).app d
         ((K.map _ _).app d ((η.app X).app d a),
           (K.map _ _).app d ((G.map X Y).app d f))
-    rw [← functor_comp_app, ← functor_comp_app, naturality_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app, ← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app]
 
 /-- 元の二つの単位パラメータ変換の、同じ指定成分による縦合成。 -/
 def d3GradedComp {F G H : EnrichedFunctor SSet.{u} C D}
@@ -81,8 +81,8 @@ def d3GradedComp {F G H : EnrichedFunctor SSet.{u} C D}
       (eComp SSet _ _ _).app d
         ((eComp SSet _ _ _).app d ((η.app X).app d PUnit.unit,
           (θ.app X).app d PUnit.unit), (H.map X Y).app d f)
-    rw [← base_assoc_app, naturality_app, base_assoc_app,
-      naturality_app, ← base_assoc_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app,
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app, ← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app]
 
 section Components
 variable {C' D' E' : Type v} [Category.{u} C'] [Category.{u} D'] [Category.{u} E']

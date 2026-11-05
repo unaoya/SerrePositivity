@@ -34,14 +34,14 @@ lemma inclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
   have h := hconst.comp (hrow.comp htranspose)
   change IsWeakHomotopyEquivalence ((diagonalConstantIso C).inv ≫
     diagonalFunctor.map (bisimplicialInclusion C) ≫ (diagonalTransposeIso C).hom) at h
-  rw [diagonal_bisimplicialInclusion] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonal_bisimplicialInclusion] at h
   exact h
 
 /-- 一般の quasicategory の core 旗の対角評価は弱ホモトピー同値。 -/
 lemma counit_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
     IsWeakHomotopyEquivalence (counit C) := by
   apply (inclusion_isWeakHomotopyEquivalence C).cancel_left
-  rw [inclusion_counit]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit]
   exact isWeakHomotopyEquivalence_id C
 
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag

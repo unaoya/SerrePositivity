@@ -52,7 +52,7 @@ theorem leftCocartesianKanComparisonValueIso_pointHom (i : I)
   have he : leftCocartesianKanComparisonValueIso p i =
       kanDiagramValueIso e i ≪≫ (kanDiagramValueIso (kanDiagramCompletionIso B) i).symm := by
     change kanDiagramValueIso (e ≪≫ (kanDiagramCompletionIso B).symm) i = _
-    rw [kanDiagramValueIso_trans, kanDiagramValueIso_symm]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso_trans, _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso_symm]
   have hw : (η.app i).app (Opposite.op ⦋0⦌) v' =
       (F2.continuousKanReplacementUnit.app (B.obj i).obj).app (Opposite.op ⦋0⦌) w := by
     have hn := congrArg (fun m => m.app (Opposite.op ⦋0⦌) v)

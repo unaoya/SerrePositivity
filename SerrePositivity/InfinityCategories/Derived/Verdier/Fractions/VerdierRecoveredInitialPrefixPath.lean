@@ -127,7 +127,7 @@ lemma VerdierFiniteMappingCoconeRecovery.initialSource_last
         verdierSpanEvaluationSquare h
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
         (pre squareBottomEdge).app C.obj) ≫ (pre (joinStdSimplexIso 0 0).hom).app C.obj := by
-  rw [Category.assoc, (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
+  rw [Category.assoc, (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
     ← Category.assoc, r.cylinder.whole_next]
   have he := congrArg (fun g => r.numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) r.denominator ≫

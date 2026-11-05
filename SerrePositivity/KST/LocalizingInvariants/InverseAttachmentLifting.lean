@@ -45,25 +45,25 @@ lemma inverseAttachmentRestriction_lifting {A B X Y : SSet.{u}} [Quasicategory Y
     dsimp only [g]
     simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
       markedEdgeEvaluation_ι, inverseIntervalAttachment_ι]
-    rw [pre_map, NatTrans.comp_app, ← Category.assoc, coproductFamilyGlue_restrict]
+    rw [pre_map, NatTrans.comp_app, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue_restrict]
     exact ht.symm
   let r := pushoutFamilyGlue (markedEdgeEvaluation X W) (inverseIntervalAttachment X W) f g hfg
   have hl : i ≫ r = u := by
     apply pushoutFamily_hom_ext (markedEdgeEvaluation X W) (inverseIntervalAttachment X W)
     · rw [Category.assoc]
       change i ≫ (pushoutFamilyGlue _ _ f g hfg ≫ (pre (pushout.inl _ _)).app Y) = _
-      rw [pushoutFamilyGlue_inl]
+      rw [_root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue_inl]
       have h := congrArg (fun m => m ≫ (invertingFunctors X Y W).ι) sq.w
       rw [Category.assoc, inverseAttachmentRestriction_ι, Category.assoc] at h
       exact h.symm
     · rw [Category.assoc]
       change i ≫ (pushoutFamilyGlue _ _ f g hfg ≫ (pre (pushout.inr _ _)).app Y) = _
-      rw [pushoutFamilyGlue_inr]
+      rw [_root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue_inr]
       apply coproductFamily_hom_ext
       intro w
       rw [Category.assoc]
       change i ≫ (coproductFamilyGlue l ≫ (pre (Sigma.ι _ w)).app Y) = _
-      rw [coproductFamilyGlue_restrict]
+      rw [_root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue_restrict]
       have h := (hs w).fac_left
       change i ≫ l w = _ at h
       rw [Category.assoc, ← NatTrans.comp_app, ← pre_map]

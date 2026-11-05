@@ -28,7 +28,7 @@ def towerMap {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) ⟶ X n}
     FibrationTower.limit X dX ⟶ FibrationTower.limit Y dY :=
   FibrationTower.lift Y dY (fun n ↦ FibrationTower.projection X dX n ≫ f n) (by
     intro n
-    rw [Category.assoc, ← hf n, ← Category.assoc, FibrationTower.projection_comp])
+    rw [Category.assoc, ← hf n, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp])
 
 /-- 概要：塔の極限の射を各段へ射影すると元の成分の射となる。
 方針：整合族の極限への持ち上げの計算式を使う。

@@ -27,7 +27,7 @@ lemma markedSpan_source_of_boundary_diagram {A X : SSet.{u}} (W : Set (X _⦋1�
   have hh := congrArg (fun k : A ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
     k ≫ evaluateFunctorAt (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 2),
       vertex_mem_boundary 0 0⟩ : (boundary 1 : SSet.{u}) _⦋0⦌)) h
-  simpa only [Category.assoc, markedSpanBoundary_source, intervalBoundaryCurry_source] using hh
+  simpa only [Category.assoc, markedSpanBoundary_source, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_source] using hh
 
 lemma markedSpan_target_of_boundary_diagram {A X : SSet.{u}} (W : Set (X _⦋1⦌))
     (F : A ⟶ markedSpans X W) (f g : A ⟶ X)
@@ -36,7 +36,7 @@ lemma markedSpan_target_of_boundary_diagram {A X : SSet.{u}} (W : Set (X _⦋1�
   have hh := congrArg (fun k : A ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
     k ≫ evaluateFunctorAt (⟨stdSimplex.obj₀Equiv.symm (1 : Fin 2),
       vertex_mem_boundary 0 1⟩ : (boundary 1 : SSet.{u}) _⦋0⦌)) h
-  simpa only [Category.assoc, markedSpanBoundary_target, intervalBoundaryCurry_target] using hh
+  simpa only [Category.assoc, markedSpanBoundary_target, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_target] using hh
 
 def markedSpanFamilyApex (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) :
     markedSpanFamily X W x ⟶ X := vertexFiberι (markedSpanSource X W) x ≫ markedSpanApex X W
@@ -56,7 +56,7 @@ lemma hasCocartesianHornLifting_markedSpanFamilyProjection_of_apex
   intro m σ β hσ hw
   let d := curry (intervalBoundaryDiagram (SSet.const x : Δ[m + 2] ⟶ X) β)
   have hd : (σ ≫ r) ≫ markedSpanBoundary X W = (horn (m + 2) 0).ι ≫ d := by
-    rw [markedSpanFamily_boundary]
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily_boundary]
     dsimp only [d]
     rw [← curry_natural_left, intervalBoundaryDiagram_naturality, SSet.comp_const, hw]
   obtain ⟨G, hG, hGb⟩ := hc m (σ ≫ r) d

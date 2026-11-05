@@ -32,7 +32,7 @@ def spanArrowFamilyEdge : SSet.Edge (functorVertex (SSet.const x : K ⟶ X))
 
 lemma spanArrowFamilyEdge_edge : (spanArrowFamilyEdge f h₀ h₁).edge =
     SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] X f) := by
-  rw [spanArrowFamilyEdge, intervalMappingFamilyEdge_edge, spanArrowFamilyMapping_inclusion]
+  rw [spanArrowFamilyEdge, intervalMappingFamilyEdge_edge, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanArrowFamilyMapping_inclusion]
 
 /-- 固定端点 Hom 内の比較は、元の二辺族から回収した同じ実辺の Hom 類を一致させる。 -/
 lemma spanArrowFamilyEdge_homMk_eq [Quasicategory X]

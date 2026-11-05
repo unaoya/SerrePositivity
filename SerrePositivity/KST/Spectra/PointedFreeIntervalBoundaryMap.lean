@@ -21,16 +21,16 @@ namespace SerrePositivity.KST.Spectra
 lemma freeBoundary_restrict_end (E : PointedSimplicialSet.{u}) :
     PointedMapping.prePointed freeBoundaryInclusion E ≫ freeBoundaryHomEnd E =
       freePathEndpoint E 0 := by
-  rw [freeBoundaryHomEnd, ← Category.assoc, PointedMapping.prePointed_comp,
-    freeBoundaryEnd_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion]
   rfl
 
 /-- 自由境界への制限後の始点評価も、元の自由区間の始点評価。 -/
 lemma freeBoundary_restrict_start (E : PointedSimplicialSet.{u}) :
     PointedMapping.prePointed freeBoundaryInclusion E ≫ freeBoundaryHomStart E =
       freePathEndpoint E 1 := by
-  rw [freeBoundaryHomStart, ← Category.assoc, PointedMapping.prePointed_comp,
-    freeBoundaryStart_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion]
   rfl
 
 /-- 自由区間へ移した実区間は、元の二つの射を束ねた同じ境界族を持つ。 -/

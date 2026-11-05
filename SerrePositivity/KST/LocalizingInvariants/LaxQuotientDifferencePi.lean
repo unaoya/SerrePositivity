@@ -30,8 +30,8 @@ lemma laxQuotientProductMap_pi_C (j : ℤ) (a : valueHomotopyGroup Φ C j) :
       hΦ.laxQuotientProductMap p q r) =
     SpectrumHo.hom (valueMap Φ (laxQuotientCLeg p q r) ≫
       valueMap Φ (SuspensionExact.exactMap Q)) := by
-    rw [SpectrumHo.hom_comp, SpectrumHo.hom_comp, laxQuotientProductMap_hom,
-      laxQuotientProjectionDifferenceHom_shift_C]
+    rw [SpectrumHo.hom_comp, SpectrumHo.hom_comp, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_C]
   have hp := DFunLike.congr_fun (SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j) a
   simp only [homotopyMap_comp, MonoidHom.comp_apply] at hp
   have hs := hΦ.suspension_pi_inv Q j (valueHomotopyMap Φ (laxQuotientCLeg p q r) j a)
@@ -46,8 +46,8 @@ lemma laxQuotientProductMap_pi_D (j : ℤ) (a : valueHomotopyGroup Φ D j) :
       valueHomotopyMap Φ (laxQuotientDLeg p q r) j a := by
   have he : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D) ≫
       hΦ.laxQuotientProductMap p q r) = SpectrumHo.hom (valueMap Φ (laxQuotientDLeg p q r)) := by
-    rw [SpectrumHo.hom_comp, laxQuotientProductMap_hom,
-      laxQuotientProjectionDifferenceHom_shift_D]
+    rw [SpectrumHo.hom_comp, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_D]
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, valueHomotopyMap] using
     DFunLike.congr_fun (SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j) a
 

@@ -46,7 +46,7 @@ def complexIso (K : SSet.{u}) (M : AddCommGrpCat.{u}) :
     (fun n ↦ AddEquiv.toAddCommGrpIso (coefficientEquiv K M n))
     (fun i j hij ↦ by
       obtain rfl : i + 1 = j := hij
-      simp only [NormalizedSimplicialCochains.complex, complex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex, complex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
       change coefficientEquiv K M (i + 1)

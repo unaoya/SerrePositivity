@@ -75,18 +75,18 @@ lemma left_eq {A Y Z : PointedSimplicialSet.{u}}
   let h := f ≫ (ihom K).map g
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) K CirclePower.unit.{u} Z
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change (ihom K).map qZ ≫ (InternalHomExchange.iso K C Z).hom =
     (InternalHomExchange.iso K K Z).hom ≫ qD at hs
   have hc := ((MonoidalClosed.pre CirclePower.unit.{u}).naturality r).symm
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hc
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   change qD ≫ (ihom C).map r = (ihom K).map r ≫ qD at hc
   have he : f ≫ (ihom K).map (g ≫ qZ) ≫
       (InternalHomExchange.iso K C Z).hom ≫ (ihom C).map r =
       ((h ≫ (InternalHomExchange.iso K K Z).hom) ≫ (ihom K).map r) ≫ qD := by
     rw [Functor.map_comp]
     simp only [Category.assoc]
-    rw [← Category.assoc ((ihom K).map qZ) (InternalHomExchange.iso K C Z).hom
+    rw [← Category.assoc ((ihom K).map qZ) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K C Z).hom
       ((ihom C).map r), hs]
     simp only [Category.assoc]
     rw [hc]
@@ -101,7 +101,7 @@ lemma right_eq {A Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     right f g = (input f g ≫ 𝟙 (LoopExchangePaths.doubleLoop Z)) ≫ projection Z := by
   have hn := ((MonoidalClosed.pre CirclePower.unit.{u}).naturality g).symm
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   have he := congrArg (f ≫ ·) hn
   dsimp only [right, input, projection]
   simp only [Category.comp_id, Category.assoc] at he ⊢

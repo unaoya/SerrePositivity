@@ -88,7 +88,7 @@ def familyMap (X Y : PointedSimplicialSet.{u})
     (v : (PointedObject.basedHom X Y).right _⦋0⦌) : X ⟶ Y :=
   Under.homMk (zeroSection X.right ≫
     MonoidalClosed.uncurry (SSet.yonedaEquiv.symm v ≫ PointedObject.basedHomι X Y)) (by
-      rw [← Category.assoc, zeroSection_natural, Category.assoc, uncurry_basepoint,
+      rw [← Category.assoc, zeroSection_natural, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint,
         comp_toUnit_assoc]
       rfl)
 
@@ -105,7 +105,7 @@ theorem familyMap_familyVertex {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
   rw [Equiv.symm_apply_apply]
   change zeroSection X.right ≫ MonoidalClosed.uncurry
     (paramCurry X Y (fst X.right (Δ[0] : SSet.{u}) ≫ f.right) _ ≫ PointedObject.basedHomι X Y) = _
-  rw [paramCurry_ι, MonoidalClosed.uncurry_curry, ← Category.assoc, zeroSection_fst,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.uncurry_curry, ← Category.assoc, zeroSection_fst,
     Category.id_comp]
 
 /-- 概要：内部 Hom の頂点を射へ戻してから頂点へ移すと元の頂点。
@@ -120,7 +120,7 @@ theorem familyVertex_familyMap (X Y : PointedSimplicialSet.{u})
   rw [Equiv.symm_apply_apply]
   apply (cancel_mono (PointedObject.basedHomι X Y)).1
   change paramCurry X Y _ _ ≫ PointedObject.basedHomι X Y = _
-  rw [paramCurry_ι]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
   change MonoidalClosed.curry (fst X.right (Δ[0] : SSet.{u}) ≫
     (zeroSection X.right ≫ MonoidalClosed.uncurry
       (SSet.yonedaEquiv.symm v ≫ PointedObject.basedHomι X Y))) = _
@@ -146,7 +146,7 @@ theorem familyVertex_post {A X Y : PointedSimplicialSet.{u}} (f : A ⟶ X) (p : 
   have hm : pointFamily f ≫ (PointedObject.basedHomMap A p).right = pointFamily (f ≫ p) := by
     apply (cancel_mono (PointedObject.basedHomι A Y)).1
     rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc]
-    simp only [pointFamily, paramCurry_ι]
+    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
     rw [← MonoidalClosed.curry_natural_right]
     rfl
   change (PointedObject.basedHomMap A p).right.app _ (SSet.yonedaEquiv (pointFamily f)) = _
@@ -163,8 +163,8 @@ theorem familyVertex_pre {A B Y : PointedSimplicialSet.{u}} (i : A ⟶ B) (f : B
     apply (cancel_mono (PointedObject.basedHomι A Y)).1
     rw [Category.assoc]
     change pointFamily f ≫ (pre i Y ≫ PointedObject.basedHomι A Y) = _
-    rw [pre_ι, ← Category.assoc]
-    simp only [pointFamily, paramCurry_ι]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
+    simp only [pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
     rw [MonoidalClosed.curry_pre_app, whiskerRight_fst_assoc]
     rfl
   change (prePointed i Y).right.app _ (SSet.yonedaEquiv (pointFamily f)) = _

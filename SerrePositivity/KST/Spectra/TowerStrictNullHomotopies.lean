@@ -60,7 +60,7 @@ lemma exists_next_nullHomotopy (n : ℕ)
   apply NullHomotopyStrictLifting.exists_adjust_to (p n).right
     (OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1)) U.val
   rw [← difference_comp U.val (R n)
-    (mapNullTo (p n).right (OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1))),
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1))),
     U.property]
   exact mul_one _ |>.trans (hr n)
 

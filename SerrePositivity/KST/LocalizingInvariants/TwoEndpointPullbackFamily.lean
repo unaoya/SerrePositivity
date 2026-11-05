@@ -105,7 +105,7 @@ lemma exists_twoEndpoint_terminalPullbackFamily {S X : SSet.{u}}
   have hbc : c ≫ (ihom (Δ[0] : SSet.{u})).map (pullbackProjection X) =
       b ≫ (pre (simplexLastPoint n)).app ((ihom (horn 2 2 : SSet.{u})).obj X) := by
     dsimp only [c, b]
-    rw [Category.assoc, Category.assoc, ← (pre (simplexLastPoint n)).naturality]
+    rw [Category.assoc, Category.assoc, ← (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).naturality]
   obtain ⟨F, hjF, hFp, hFt⟩ := exists_relative_terminalPullbackFamily n j a b c hab hac hbc
   have h₀ := congrArg (fun f => intervalBoundaryEndpoint 0 S ≫ f) hjF
   have h₁ := congrArg (fun f => intervalBoundaryEndpoint 1 S ≫ f) hjF

@@ -36,8 +36,8 @@ theorem missingFace_relativeHomotopy {X : SSet.{u}} [KanComplex X]
     h₁ := by rw [SSet.ι₁_comp_assoc, H.h₁, ht]
     rel := ?_ }⟩
   rw [← s.comm]
-  rw [← comp_whiskerRight_assoc, ← boundaryToHorn_ι, comp_whiskerRight, Category.assoc,
-    hH, whiskerRight_fst_assoc, boundaryToHorn_ι_assoc, hs]
+  rw [← comp_whiskerRight_assoc, ← _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn_ι, comp_whiskerRight, Category.assoc,
+    hH, whiskerRight_fst_assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn_ι_assoc, hs]
 
 /-- 同じホーンの二つの充填の境界定数な欠ける面は、同じホモトピー類を表す。 -/
 theorem missingFace_class_eq {X : SSet.{u}} [KanComplex X]

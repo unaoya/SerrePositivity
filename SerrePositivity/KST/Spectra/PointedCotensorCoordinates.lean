@@ -34,14 +34,14 @@ lemma natural_source (K : SSet.{u}) {T U : PointedSimplicialSet.{u}}
       (PointedObject.basedHom (PointedObject.adjoin K) E)).right ≫ (iso K T E).hom =
     (iso K U E).hom ≫ (ihom K).map (PointedMapping.prePointed i E).right := by
   have h := InternalHomExchange.natural_pre_left i (PointedObject.adjoin K) E
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   have hh := congrArg Under.Hom.right h
   simp only [Under.comp_right] at hh
   simp only [iso, Iso.trans_hom, Functor.mapIso_hom, FreePointedHomRestriction.iso]
   rw [← Category.assoc]
   erw [hh]
   rw [Category.assoc]
-  erw [FreePointedHomRestriction.natural_post K (PointedMapping.prePointed i E)]
+  erw [FreePointedHomRestriction.natural_post K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E)]
   exact (Category.assoc _ _ _).symm
 
 /-- 座標表示は標的への後合成について自然。 -/
@@ -68,7 +68,7 @@ lemma natural_parameter {K L : SSet.{u}} (j : L ⟶ K)
         (iso L T E).hom =
     (iso K T E).hom ≫ (MonoidalClosed.pre j).app (PointedObject.basedHom T E).right := by
   have h := InternalHomExchange.natural_pre_right T (PointedObject.adjoinFunctor.map j) E
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   have hh := congrArg Under.Hom.right h
   simp only [Under.comp_right] at hh
   simp only [iso, Iso.trans_hom, Functor.mapIso_hom, FreePointedHomRestriction.iso]

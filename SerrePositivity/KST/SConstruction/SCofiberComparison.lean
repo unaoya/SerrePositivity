@@ -70,7 +70,7 @@ lemma sCofiberComparison_evaluation (n : ℕ) (C : SSet.{u}) [Quasicategory C] [
   apply (cancel_mono (gappedSubcomplex n C).ι).1
   rw [Category.assoc, ← ihom_postcomp_evaluate, ← Category.assoc,
     sCofiberTransposeSquare_ι, sCofiberRawTranspose, Category.assoc, Category.assoc,
-    internalHomSwap_evaluate_right, ← Functor.map_comp,
+    _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_evaluate_right, ← Functor.map_comp,
     sPostcompCofiber_ι]
   rfl
 

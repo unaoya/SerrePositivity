@@ -65,7 +65,7 @@ lemma freeMap_endpoint {T E : PointedSimplicialSet.{u}} {f g : T ⟶ E}
     PointedCotensorCoordinates.family (stdSimplex.δ i ≫ P.path) ≫
       PointedMapping.prePointed PointedSimplicialSet.adjoinBasepointDeltaZeroIso.inv E ≫
         (unitIsoSelf (X := E)).hom := by
-  rw [freeMap, freePathEndpoint, freeIntervalEndpoint, ← PointedMapping.prePointed_comp]
+  rw [freeMap, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   rw [← Category.assoc, ← Category.assoc]
   erw [PointedCotensorCoordinates.family_parameter (stdSimplex.δ i) P.path]
   exact Category.assoc _ _ _

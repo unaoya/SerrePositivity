@@ -68,7 +68,7 @@ def familyLift : B ⟶ total X Y A i step :=
 theorem familyLift_evaluation (n : ℕ) :
     familyLift X Y A i step f hf ≫ totalEvaluation X Y A i step n = f n := by
   dsimp only [familyLift, totalEvaluation]
-  rw [← Category.assoc, FibrationTower.lift_projection]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
   exact (familyStage X Y A i step f hf n).property
 
 /-- 概要：切断写像空間への射は全ての下位段への評価で決まる。
@@ -91,7 +91,7 @@ theorem projection_eq_of_evaluations {g h : B ⟶ total X Y A i step}
     · exact he (n + 1)
     · change (g ≫ FibrationTower.projection _ _ (n + 1)) ≫ restriction X Y A i step n =
         (h ≫ FibrationTower.projection _ _ (n + 1)) ≫ restriction X Y A i step n
-      rw [Category.assoc, Category.assoc, FibrationTower.projection_comp]
+      rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
       exact ih
 
 /-- 概要：整合写像空間への射は各段への評価で決まる。

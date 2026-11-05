@@ -37,7 +37,7 @@ lemma necklaceBead_dimension (n : ℕ) : (necklaceBead.{u} n).down.dimension = n
   have h : ((Finset.range (n + 1)).filter (fun j => j ∉ (NecklaceShape.single n).joints)) =
       Finset.Ioo 0 n := by
     ext j
-    simp only [Finset.mem_filter, Finset.mem_range, NecklaceShape.single,
+    simp only [Finset.mem_filter, Finset.mem_range, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single,
       Finset.mem_insert, Finset.mem_singleton, not_or, Finset.mem_Ioo]
     omega
   change ((Finset.range (n + 1)).filter (fun j => j ∉ (NecklaceShape.single n).joints)).card = _

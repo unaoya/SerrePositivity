@@ -61,7 +61,7 @@ lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [IsStable X] :
   let a : (Δ[0] : SSet.{u}) ⟶ pullbackDiagrams X :=
     SSet.const (terminalPullbackColumnVertex s)
   have ha : a ≫ pullbackProjection X = j ≫ simplexTerminalCospanFamily D s hs := by
-    rw [simplexTerminalCospanFamily_last]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_last]
     rw [SSet.const_comp]
     rfl
   obtain ⟨F, hFa, hFd⟩ := exists_relative_stable_pullbackFamily j

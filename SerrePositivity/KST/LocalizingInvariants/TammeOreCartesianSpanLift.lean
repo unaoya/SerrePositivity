@@ -42,7 +42,7 @@ lemma exists_tammeOreCartesianSpanLift
   obtain ⟨R, G, hR, ht, hG₁, hGt, hGr⟩ := exists_tammeOreSpanLift p q S hS s hs
   refine ⟨R, G, hR, ht, hG₁, hGt, hGr, ?_⟩
   apply isCartesianEdge_markedSpanFamilyProjection_of_pullback
-  rw [SSet.yonedaEquiv.symm_apply_apply, hGr, squareArrowFamily, uncurry_curry]
+  rw [SSet.yonedaEquiv.symm_apply_apply, hGr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily, uncurry_curry]
   exact (isPullbackSquare_iff_transpose R).mp hR
 
 end SerrePositivity.KST.LocalizingInvariants

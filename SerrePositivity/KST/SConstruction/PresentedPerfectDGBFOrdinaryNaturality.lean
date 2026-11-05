@@ -62,7 +62,7 @@ lemma presentedPerfectDGBFMap_zero_app {X Y : PerfDGInput.{u, v} A} (f : X ⟶ Y
   refine h.trans ?_
   change strictSimplicialOrdinaryMap
     ((presentedPerfectDGBFBoundaryFunctor A 0).comp SSet pointedStandardLoopEnrichedFunctor) f = _
-  rw [strictSimplicialOrdinaryMap_comp, presentedPerfectDGBFBoundaryOrdinaryMap A 0 f]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_comp, presentedPerfectDGBFBoundaryOrdinaryMap A 0 f]
   exact strictSimplicialOrdinaryMap_of_hom pointedStandardLoopEnrichedFunctor _
     (pointedStandardLoopMap
       (show (presentedPerfectDGBFBoundaryFunctor A 0).obj X ⟶

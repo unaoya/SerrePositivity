@@ -34,7 +34,7 @@ theorem nonempty_edge_of_piZero_eq {Z : SSet.{u}} [KanComplex Z] {v w : Z _⦋0�
   let fw : Z.PtSimplex 0 v := (PtSimplex.equiv₀ v).symm w
   have hz : KanHomotopyZero.mk fw = KanHomotopyZero.mk fv := by
     apply KanHomotopyZero.equivPiZero.injective
-    simpa only [KanHomotopyZero.equivPiZero_mk, fv, fw, Equiv.apply_symm_apply] using h.symm
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, fv, fw, Equiv.apply_symm_apply] using h.symm
   obtain ⟨r⟩ := (KanHomotopyZero.mk_eq_iff fw fv).1 hz
   have e := PtSimplex.RelStruct₀.equiv₀ r
   exact ⟨by simpa only [fv, fw, Equiv.apply_symm_apply] using e⟩

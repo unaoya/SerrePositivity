@@ -50,7 +50,7 @@ lemma spanCoconeLastArrow_source (D : (Δ[n] : SSet.{u}) ⟶ X)
   rw [SSet.yonedaEquiv_comp, SSet.yonedaEquiv_comp,
     show SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) =
       stdSimplex.obj₀Equiv.symm (0 : Fin 2) from by decide,
-    show SSet.yonedaEquiv (simplexLastPoint n) = stdSimplex.obj₀Equiv.symm (Fin.last n) from
+    show SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) = stdSimplex.obj₀Equiv.symm (Fin.last n) from
       Equiv.apply_symm_apply _ _] at hv
   rw [spanCoconeLastArrow, Category.assoc, stable_pre_evaluateFunctorAt]
   change G ≫ evaluateFunctorAt (a.app (Opposite.op ⦋0⦌)

@@ -125,7 +125,7 @@ lemma cellRestriction_simplex_map (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) 
   change (PointedObject.cofiberQuotient (boundary.{u} d).ι ≫
     (adjoinCofiberIso (boundary.{u} d).ι).inv.right) ≫ _ = _
   rw [adjoinCofiberIso_inv_quotient, Category.assoc]
-  erw [hh, ← Category.assoc, SkeletalSphericalRealization.characteristic_eq_yoneda]
+  erw [hh, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda]
 
 end
 end SerrePositivity.KST.Spectra.SkeletalCellAttachment

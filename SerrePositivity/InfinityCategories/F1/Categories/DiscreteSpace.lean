@@ -241,8 +241,8 @@ private lemma enriched_last_injective (T U : Type u) (n : ℕ) :
   let v := (SimplexCategory.const ⦋0⦌ ⦋n⦌ (Fin.last n)).op
   change (ULift.up (((ihom (vertexDiscrete D)).obj Y).map v s.down) : ULift.{u + 1} _) =
     ULift.up (((ihom (vertexDiscrete D)).obj Y).map v t.down) at h
-  rw [← KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct (A := D) (X := Y) s.down,
-    ← KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct (A := D) (X := Y) t.down]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_reconstruct (A := D) (X := Y) s.down,
+    ← _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_reconstruct (A := D) (X := Y) t.down]
   congr 1
   funext a
   let ev := KST.SConstruction.vertexDiscreteEvaluate (A := D) (X := Y) a

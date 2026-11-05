@@ -25,7 +25,7 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 instance arrow_isExact : IsExactFunctor (arrow X) := by
   have : IsExactFunctor (arrow X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-    rw [arrow_source]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source]
     infer_instance
   have : IsExactFunctor (arrow X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=

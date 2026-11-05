@@ -54,7 +54,7 @@ theorem dgKSBoundaryStagePiEquiv_naturality {P Q : PerfDGInput.{u, v} A}
   have h := congrArg (fun g => pointedHomotopyMap n g a)
     (dgKInputSBoundaryKanComparison_naturality A 0 f)
   rw [pointedHomotopyMap_comp, pointedHomotopyMap_comp] at h
-  simp only [dgKSBoundaryStagePiEquiv, KanHomotopy.equivOfPiIsomorphism_apply]
+  simp only [dgKSBoundaryStagePiEquiv, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply]
   exact h
 
 /-- 非負次数の固定 BF K 群を、同じ元の一段 S• 境界商の π_(j+1) で表示する。 -/

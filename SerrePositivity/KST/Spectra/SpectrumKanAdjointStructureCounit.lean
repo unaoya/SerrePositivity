@@ -35,7 +35,7 @@ lemma kanAdjointStructureCounit_source (n : ℕ) :
   rw [Category.assoc, kanLoopCounit_pre, ← Category.assoc, Category.assoc φ,
     kanAdjointParameterLeft_counit]
   simp only [Category.assoc]
-  rw [PointedMapping.prePointed_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
 
 /-- 同じ実構造区間を counit へ写し、元の二段評価を始点に持つ区間として保持する。 -/
 def kanAdjointStructureCounitInterval (n : ℕ) :

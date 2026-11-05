@@ -96,7 +96,7 @@ lemma componentConnecting_inverse_family [KanComplex Y.right] :
       π₀.mk (endpointFiberVertex K Y f H hH) := by
   rw [connecting_inverse_family K Y f H hH]
   change KanHomotopyZero.equivPiZero (KanHomotopyZero.mk _) = _
-  rw [KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
 
 
 end

@@ -56,7 +56,7 @@ lemma loopOfCylinder_uncurry {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     MonoidalClosed.uncurry (loopOfCylinder B h h₀ h₁ ≫
       PointedObject.basedHomι PointedSimplicialSet.circle.{u} B) =
         circleCylinderDesc B h h₀ h₁ := by
-  rw [loopOfCylinder, Spectra.PointedMapping.paramCurry_ι, MonoidalClosed.uncurry_curry]
+  rw [loopOfCylinder, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.uncurry_curry]
 
 /-- 元の円の商射と通常の評価で loop 射を元の区間族へ厳密に戻す。 -/
 lemma loopOfCylinder_raw {A : SSet.{u}} (B : PointedSimplicialSet.{u})

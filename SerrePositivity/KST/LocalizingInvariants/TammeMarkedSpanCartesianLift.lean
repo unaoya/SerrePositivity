@@ -94,7 +94,7 @@ lemma exists_tammeMarkedSpanCartesianLift (x : (laxCategory p q).obj _⦋0⦌)
       rw [← Category.assoc, hFr]
       exact hGr
     change IsPullbackSquare (uncurry (F ≫ r ≫ (pre horn₂₀.ι₀₂).app X))
-    rw [hr, squareArrowFamily, uncurry_curry]
+    rw [hr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily, uncurry_curry]
     exact (isPullbackSquare_iff_transpose R).mp hR
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -117,7 +117,7 @@ lemma exists_verdierRecoveredBoundaryComparison
   have hFn : r.cylinder.homotopy.h ≫ (ihom J).map q.hom ≫
       (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
       (V ≫ (pre squareBottomEdge).app C.obj) ≫ (pre (joinStdSimplexIso 0 0).hom).app C.obj := by
-    rw [(pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
+    rw [(pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
       ← Category.assoc, r.cylinder.homotopy_next]
     dsimp only [V]
     simp only [Category.assoc]

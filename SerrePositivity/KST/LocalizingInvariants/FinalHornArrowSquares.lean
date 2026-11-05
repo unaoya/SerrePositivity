@@ -52,14 +52,14 @@ lemma finalHorn_contractionAtVertex_penultimate (m : ℕ) :
     _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornPenultimateVertex m) =
       SSet.yonedaEquiv.symm (finalHornEdge m) := by
   apply SSet.yonedaEquiv.injective
-  rw [Equiv.apply_symm_apply, contractionAtVertex, SSet.yonedaEquiv_comp]
+  rw [Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
   exact finalHornLastContraction_penultimate_edge m
 
 lemma finalHorn_contractionAtVertex_last (m : ℕ) :
     _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornLastVertex m) =
       SSet.const (finalHornLastVertex m) := by
   apply SSet.yonedaEquiv.injective
-  rw [contractionAtVertex, SSet.yonedaEquiv_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
   exact finalHornLastContraction_last_edge m
 
 lemma finalHornArrowSquares_penultimate {X : SSet.{u}} (m : ℕ)

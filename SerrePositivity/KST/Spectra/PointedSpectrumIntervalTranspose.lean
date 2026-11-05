@@ -26,8 +26,8 @@ lemma step_exchange_transpose (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
         (Y.level (n + 1)).space).hom =
     (InternalHomExchange.iso A (X.level n).space (Y.level n).space).hom ≫
       pointedStep X (KanSequence.mapping A Y) n := by
-  rw [InternalHomExchange.hom_eq_inv A (suspension (X.level n).space),
-    InternalHomExchange.hom_eq_inv A (X.level n).space]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space),
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A (X.level n).space]
   apply (cancel_mono
     (InternalHomExchange.iso (suspension (X.level n).space) A
       (Y.level (n + 1)).space).hom).1
@@ -65,7 +65,7 @@ lemma basedTranspose_restriction_path {A U T V : PointedSimplicialSet.{u}}
     (H.path ≫ (InternalHomExchange.iso A U V).hom.right) ≫
       (PointedMapping.prePointed i (PointedObject.basedHom A V)).right
   have h := InternalHomExchange.natural_pre_right A i V
-  simp only [← PointedMapping.prePointed_eq_closedPre,
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     PointedObject.ihom_obj_eq_basedHom] at h
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun k => H.path ≫ k.right) h

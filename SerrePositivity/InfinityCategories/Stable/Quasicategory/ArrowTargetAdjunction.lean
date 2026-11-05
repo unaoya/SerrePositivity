@@ -82,7 +82,7 @@ lemma contraction_target : contraction X ≫ target X =
 lemma identityArrow_contraction : (identityArrow X ▷ (Δ[1] : SSet.{u})) ≫ contraction X =
     fst X (Δ[1] : SSet.{u}) ≫ identityArrow X := by
   apply uncurry_injective
-  rw [uncurry_natural_left, contraction, uncurry_curry, uncurry_natural_left]
+  rw [uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction, uncurry_curry, uncurry_natural_left]
   change _ = (Δ[1] ◁ fst X (Δ[1] : SSet.{u})) ≫ uncurry (constantFunctorMap Δ[1] X)
   rw [constantFunctorMap, uncurry_curry]
   apply SSet.hom_ext

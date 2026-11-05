@@ -55,7 +55,7 @@ lemma VerticalPath.coordinate_post_path {A A' B B' : PointedSimplicialSet.{u}}
     (prePointed e.inv A').right) ≫ (PointedObject.basedHomMap A' w).right =
       (P.path ≫ (PointedObject.basedHomMap A v).right) ≫ _
   have hc := closed_coordinate_post e.inv e.hom d.hom v w h
-  simp only [← prePointed_eq_closedPre] at hc
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   change (PointedObject.basedHomMap A e.hom ≫ prePointed e.inv A') ≫
       PointedObject.basedHomMap A' w = PointedObject.basedHomMap A v ≫
         (PointedObject.basedHomMap A d.hom ≫ prePointed e.inv B') at hc
@@ -73,7 +73,7 @@ lemma VerticalPath.coordinate_pre_path {A A' B B' : PointedSimplicialSet.{u}}
     (prePointed d.inv B').right) ≫ (prePointed w B').right =
       (Q.path ≫ (prePointed v B).right) ≫ _
   have hc := closed_coordinate_pre e.inv d.hom d.inv v w h
-  simp only [← prePointed_eq_closedPre] at hc
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   change (PointedObject.basedHomMap B d.hom ≫ prePointed d.inv B') ≫
       prePointed w B' = prePointed v B ≫
         (PointedObject.basedHomMap A d.hom ≫ prePointed e.inv B') at hc

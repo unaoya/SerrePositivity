@@ -50,7 +50,7 @@ theorem groupMap_post_integer (A Y : PointedSimplicialSet.{u}) [KanComplex Y.rig
       (OmegaSpectrum.pointedMap_basepoint e.hom)).injective
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) A (CirclePower.integerPowerMap.{u} z) Y
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap A
       (Y := PointedObject.basedHom CirclePower.space Y)
       (Z := PointedObject.basedHom CirclePower.space Y)

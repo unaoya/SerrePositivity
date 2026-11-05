@@ -42,7 +42,7 @@ lemma simplexHADecodeSubsetCell_strictInterval {N : ℕ} (a b : Fin (N + 1)) (ha
   have ha := simplexClosedInterval_min a b hab.le (simplexSubsetNonempty (Finset.Icc a b) hI)
   have hb := simplexClosedInterval_max a b hab.le (simplexSubsetNonempty (Finset.Icc a b) hI)
   have hd : b.val - a.val - 1 = (Finset.Icc a b).card - 2 := by
-    rw [simplexClosedInterval_card a b hab.le]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_card a b hab.le]
     omega
   have h₀ := simplexHADecodeSubsetCell_canonical_heq A (b.val - a.val - 1)
     (simplexHAStrictIntervalOrder a b hab) {b} (Finset.singleton_nonempty b)

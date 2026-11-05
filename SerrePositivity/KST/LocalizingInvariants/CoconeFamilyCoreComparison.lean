@@ -63,7 +63,7 @@ lemma spanFunctorEdgeUnflipCoreHomotopy_ι {K L X : SSet.{u}} [Quasicategory X]
       uncurry (SSet.yonedaEquiv.symm l.edge ≫ (internalHomSwapIso L K X).hom) := by
   rw [spanFunctorEdgeUnflipCoreHomotopy, allEdgesCoreComparisonHomotopy_ι]
   change uncurry (SSet.yonedaEquiv.symm (spanFunctorEdgeUnflip l).edge) = _
-  rw [spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
   rfl
 
 end SerrePositivity.KST.LocalizingInvariants

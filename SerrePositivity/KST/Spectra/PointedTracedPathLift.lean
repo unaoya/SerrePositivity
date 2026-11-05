@@ -74,7 +74,7 @@ def TracedPathLift.choose {T E B : PointedSimplicialSet.{u}}
   have hu (a : T ⟶ E) :
       (pointFamily a ≫ (mappingPathUnit m).right) ≫ (mappingPathProjection m).right =
         pointFamily (a ≫ q) := by
-    rw [Category.assoc, ← Under.comp_right, mappingPathUnit_projection]
+    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection]
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp]
     exact familyVertex_post a q
@@ -89,7 +89,7 @@ def TracedPathLift.choose {T E B : PointedSimplicialSet.{u}}
   have hr (a : T ⟶ E) :
       (pointFamily a ≫ (mappingPathUnit m).right) ≫ (mappingPathRetraction m).right =
         pointFamily a := by
-    rw [Category.assoc, ← Under.comp_right, mappingPathUnit_retraction,
+    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction,
       Under.id_right, Category.comp_id]
   have h₀ : stdSimplex.δ (1 : Fin 2) ≫ R = pointFamily f := by
     rw [← Category.assoc, hL.1, hr]

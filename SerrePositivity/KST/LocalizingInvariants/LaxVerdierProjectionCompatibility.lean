@@ -28,25 +28,25 @@ lemma tammeProjectionCorrection_inl : SpectrumHo.hom (Binary.inl (value Φ C) (v
     (hΦ.tammeProjectionCorrection p q).hom =
       SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) := by
   rw [tammeProjectionCorrection, Iso.trans_hom, ← Category.assoc,
-    tammeSplitComparison_C, tammeProjectionEquivalence_fromC]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C, tammeProjectionEquivalence_fromC]
 
 lemma tammeProjectionCorrection_inr : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
     (hΦ.tammeProjectionCorrection p q).hom =
       SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) := by
   rw [tammeProjectionCorrection, Iso.trans_hom, ← Category.assoc,
-    tammeSplitComparison_D, tammeProjectionEquivalence_fromD]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D, tammeProjectionEquivalence_fromD]
 
 lemma tammeProjectionCorrection_fst : (hΦ.tammeProjectionCorrection p q).hom ≫
     SpectrumHo.hom (Binary.fst (value Φ C) (value Φ D)) =
       SpectrumHo.hom (Binary.fst (value Φ C) (value Φ D)) := by
   rw [tammeProjectionCorrection, Iso.trans_hom, Category.assoc,
-    tammeProjectionEquivalence_fst, tammeSplitComparison_projection]
+    tammeProjectionEquivalence_fst, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_projection]
 
 lemma laxQuotientProjectionCorrection_right (r : ExactMap (laxCategory p q) Q) :
     (hΦ.tammeProjectionCorrection p q).hom ≫ hΦ.laxQuotientProjectionDifferenceHom p q r =
       hΦ.laxQuotientDifferenceHom p q r := by
-  rw [tammeProjectionCorrection, Iso.trans_hom, laxQuotientProjectionDifferenceHom,
-    laxQuotientDifferenceHom, Category.assoc, Iso.hom_inv_id_assoc]
+  rw [tammeProjectionCorrection, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom,
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom, Category.assoc, Iso.hom_inv_id_assoc]
 
 lemma laxQuotientProjectionCorrection_middle (i : ExactMap A (laxCategory p q))
     (r : ExactMap (laxCategory p q) Q) (h : IsVerdierSequence i r) :

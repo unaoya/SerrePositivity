@@ -36,12 +36,12 @@ theorem basedPathEndpoint_evaluation (Y : PointedSimplicialSet.{u}) :
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right ≫
           (MonoidalClosed.unitIsoSelf (X := Y.right)).hom) = _
-  rw [← Category.assoc, Spectra.PointedMapping.pre_ι, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc]
   have he : (MonoidalClosed.pre Spectra.intervalEndpoint.right).app Y.right ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right =
       (MonoidalClosed.pre (Spectra.KanPath.endpoint 1)).app Y.right := by
-    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, Spectra.intervalEndpoint_inl]
+    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
     rfl
   change PointedObject.basedHomι Spectra.pointedInterval Y ≫
     (MonoidalClosed.pre Spectra.intervalEndpoint.right).app Y.right ≫

@@ -54,7 +54,7 @@ theorem weakIdentityNativeComparisonImage_scaffold_raw_pointHom :
   change weakIdentityNativeComparisonImageHom h x ≫
       (fractionKanSimplexClassificationValueIso q.hom x c).hom = _
   simp only [fractionKanSimplexClassificationValueIso, Iso.trans_hom, Iso.symm_hom,
-    functorIso_app_hom_evaluate]
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate]
   exact he
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

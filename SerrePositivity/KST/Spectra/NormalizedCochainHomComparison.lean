@@ -35,7 +35,7 @@ def homComplexComparison :
   HomologicalComplex.Hom.isoOfComponents (fun _ ↦ Iso.refl _)
     (fun i j hij ↦ by
       obtain rfl : i + 1 = j := hij
-      simp only [homComplex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
       rfl)

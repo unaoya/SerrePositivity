@@ -53,13 +53,13 @@ theorem transition_formula (X : OmegaSpectrum.{u}) (k n : ℕ) (a : levelHomotop
     change loopZeroHomotopyEquiv (X.level (k + 1)).space
       (KanHomotopy.equivOfPiIsomorphism 0 (adjointStructure X k).right
         (X.omega_condition k) _ a) = _
-    rw [KanHomotopy.equivOfPiIsomorphism_apply]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply]
     rfl
   | succ n =>
     change loopPositiveHomotopyEquiv (X.level (k + 1)).space n
       (KanHomotopyGroup.equivOfPiIsomorphism n (adjointStructure X k).right
         (X.omega_condition k) _ a) = _
-    rw [KanHomotopyGroup.equivOfPiIsomorphism_apply]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     rfl
 
 /-- 概要：隣接段の全自然数次数の群同型はスペクトルの射に関して自然。
@@ -72,12 +72,12 @@ theorem transition_natural {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (k n : ℕ)
       KanHomotopy.map (n + 1) (f.app (k + 1)).right (pointedMap_basepoint _)
         (transition X k n a) := by
   rw [transition_formula, transition_formula]
-  rw [← KanHomotopy.map_square (adjointStructure X k).right (adjointStructure Y k).right
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_square (adjointStructure X k).right (adjointStructure Y k).right
     (f.app k).right
     (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (k + 1))).right
     (congrArg Under.Hom.right (adjointStructure_comm f k)).symm
-    (pointedMap_basepoint _) (pointedMap_basepoint _) (pointedMap_basepoint _)
-    (pointedMap_basepoint _) n a]
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) n a]
   exact loopHomotopyEquiv_natural (f.app (k + 1)) n _
 
 end

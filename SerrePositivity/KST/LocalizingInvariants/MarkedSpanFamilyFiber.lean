@@ -59,7 +59,7 @@ lemma fixedMarkedSpanToFamily_inclusion : fixedMarkedSpanToFamily X W x y ≫
 def fixedMarkedSpanToFamilyFiber : fixedMarkedSpans X W x y ⟶
     vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y :=
   vertexFiberLift _ _ (fixedMarkedSpanToFamily X W x y) (by
-    rw [markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
       fixedMarkedSpan_target])
 
 def markedSpanFamilyFiberToFixed : vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ⟶

@@ -50,8 +50,8 @@ def mappingPre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) (X : KanSequence.{
         (ihom A).map (X.sigma n)) =
       (HomTensorStrength.map PointedSimplicialSet.circle.{u} B (X.level n).space ≫
         (ihom B).map (X.sigma n)) ≫ PointedMapping.prePointed i (X.level (n + 1)).space
-    simp only [PointedMapping.prePointed_eq_closedPre, Category.assoc]
-    rw [← HomTensorStrength.natural_pre_assoc, MonoidalClosed.pre_comm_ihom_map]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_pre_assoc, MonoidalClosed.pre_comm_ihom_map]
 
 /-- 概要：内部 Hom の標的の射は Kan 列の厳密な射を与える。
 方針：テンソル交換の自然性と元の構造射の可換式を使う。
@@ -66,7 +66,7 @@ def mappingPost (A : PointedSimplicialSet.{u}) {X Y : KanSequence.{u}} (f : Hom 
         (ihom A).map (Y.sigma n)) =
       (HomTensorStrength.map PointedSimplicialSet.circle.{u} A (X.level n).space ≫
         (ihom A).map (X.sigma n)) ≫ (ihom A).map (f.app (n + 1))
-    rw [← HomTensorStrength.natural_post_assoc, Category.assoc, ← Functor.map_comp,
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post_assoc, Category.assoc, ← Functor.map_comp,
       f.comm n, Functor.map_comp]
 
 /-- 概要：単位からの内部 Hom の列を元の列へ評価する厳密な射。
@@ -84,7 +84,7 @@ def mappingUnitEvaluation (X : KanSequence.{u}) :
     change _ = (HomTensorStrength.map PointedSimplicialSet.circle.{u}
       (𝟙_ PointedSimplicialSet.{u}) _ ≫
       (ihom (𝟙_ PointedSimplicialSet.{u})).map (X.sigma n)) ≫ _
-    rw [Category.assoc, h, ← Category.assoc, HomTensorStrength.map_unit]
+    rw [Category.assoc, h, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map_unit]
 
 /-- 概要：元の Kan 列から単位を源とする内部 Hom の列への逆射。
 方針：各段の単位同型の逆を取り、順方向の構造可換式を打ち消す。

@@ -33,7 +33,7 @@ theorem smallSpaceDiagram_inverts (W : Set (X _⦋1⦌))
     (hF : InvertsEdges F (ULift.up '' W)) : InvertsEdges (smallSpaceDiagram F) W := by
   apply invertsEdges_of_ulift_post (smallSpaceDiagram F) (smallSpaceDiagramInclusion F)
     (smallSpaceDiagramInclusion_isFullyFaithful F) W
-  rw [smallSpaceDiagram_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion]
   exact hF
 
 end SerrePositivity.KST.Fibration

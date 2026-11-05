@@ -57,12 +57,12 @@ theorem loopZeroComponentEquiv_unit (A Y : PointedSimplicialSet.{u}) [KanComplex
       (LoopMappingClasses.classEquiv A Y a)⁻¹ := by
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) A CirclePower.unit Y
-  simp only [← prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap A (prePointed CirclePower.unit Y) ≫
     (InternalHomExchange.iso A PointedSimplicialSet.circle.{u} Y).hom =
     (InternalHomExchange.iso A CirclePower.space.{u} Y).hom ≫
       prePointed CirclePower.unit (PointedObject.basedHom A Y) at hs
-  rw [InternalHomExchange.hom_eq_inv] at hs
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv] at hs
   have hπ := mapPiZero_square _ _
     (InternalHomExchange.iso A CirclePower.space.{u} Y).hom.right
     (loopSwap A Y).inv.right (congrArg Under.Hom.right hs) a

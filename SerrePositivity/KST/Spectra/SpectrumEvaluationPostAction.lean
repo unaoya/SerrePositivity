@@ -47,7 +47,7 @@ lemma signedEvaluationAt_action (X Y : OmegaSpectrum.{u})
     (V := (Y.level (n + 1)).space) (CirclePower.reversalIterate n)
     ((cotensorProjection CirclePower.space.{u} X).app (n + 1))]
   rw [signedLoopRawComparison_app]
-  simp only [← PointedMapping.prePointed_comp, Category.assoc]
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, Category.assoc]
   rfl
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible

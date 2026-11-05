@@ -61,12 +61,12 @@ theorem fractionKanQuotientDiagram_classificationIso_component (y : B.obj _⦋0�
     functorHomEvaluate_precomp (fractionKanQuotientDiagram_classificationIso h x).hom k
       (ULift.up y)
   rw [hp] at he
-  simp only [← functorIso_app_hom_evaluate] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] at he
   have hc := congrArg (fun m =>
     ((fractionKanQuotientDiagram_restrictionIso h x).app (ULift.up y)).inv ≫ m) he
   have hn := hc
   simp only [← Category.assoc, Iso.inv_hom_id, Category.id_comp] at hn
-  simpa only [functorIso_app_hom_evaluate] using hn
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] using hn
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

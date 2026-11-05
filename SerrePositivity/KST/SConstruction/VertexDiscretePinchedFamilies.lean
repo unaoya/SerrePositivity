@@ -28,14 +28,14 @@ def vertexDiscretePinchedSimplex {A X : SSet.{u}}
     (pinchedHom f g) _⦋n⦌ where
   val := vertexDiscreteFunctionSimplex (fun a => (s a).val)
   source := by
-    rw [vertexDiscreteFunctionSimplex_map]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map]
     have he : (fun a => X.map (PinchedHom.front n).op (s a).val) =
         (fun a => (vertexDiscreteEvaluate a).app (Opposite.op ⦋n⦌) (PinchedHom.constant f n)) := by
       funext a
       exact (s a).source.trans (pinchedConstant_map (vertexDiscreteEvaluate a) f n).symm
     exact (congrArg vertexDiscreteFunctionSimplex he).trans (vertexDiscreteFunctionSimplex_reconstruct _)
   target := by
-    rw [vertexDiscreteFunctionSimplex_map]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map]
     have he : (fun a => X.map (PinchedHom.lastVertex n).op (s a).val) =
         (fun a => (vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) g) := by
       funext a

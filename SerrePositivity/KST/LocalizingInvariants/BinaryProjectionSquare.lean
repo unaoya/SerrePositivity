@@ -34,21 +34,21 @@ lemma square_isPullback : IsPullbackSquare (square f Y) :=
 
 lemma square_bottom : squareBottomEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.fst X Y)).edge := by
-  rw [square, square_transpose_bottom, StrictCospanCone.square_left]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, StrictCospanCone.square_left]
   rfl
 
 lemma square_left : squareLeftEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f (𝟙 Y))).edge := by
-  rw [square, square_transpose_left, StrictCospanCone.square_bottom]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, StrictCospanCone.square_bottom]
   rfl
 
 lemma square_right : squareRightEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge f).edge := by
-  rw [square, square_transpose_right, StrictCospanCone.square_top]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, StrictCospanCone.square_top]
 
 lemma square_top : squareTopEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.fst Z Y)).edge := by
-  rw [square, square_transpose_top, StrictCospanCone.square_right]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, StrictCospanCone.square_right]
 
 lemma square_vertex : squareVertex (square f Y) 0 0 = coherentNerveVertex (Binary.obj X Y) := by
   change squareVertex (StrictCospanCone.square (Binary.fst Z Y) f (cone f Y)) 0 0 = _

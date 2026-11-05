@@ -66,7 +66,7 @@ lemma verdierDenominatorSpanCanonicalComparison_diagram
   rw [verdierDenominatorSpanCanonicalComparison, markedSpanSliceToFixed]
   simp only [Category.assoc]
   rw [fixedMarkedSpanConeFamilyIso_inv_ambient]
-  rw [← Category.assoc (markedSpanSliceConeComparison (weakEquivalences i) x y),
+  rw [← Category.assoc (markedSpanSliceConeComparison (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y),
     markedSpanSliceConeComparison_ι]
   rfl
 

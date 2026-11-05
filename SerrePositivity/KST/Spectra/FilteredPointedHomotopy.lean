@@ -122,11 +122,11 @@ theorem pointedHomotopyCocone_surjective (n : ℕ)
   let t' := mapSimplex (𝟙 (D.obj k).right) (OmegaSpectrum.pointedMap_basepoint (D.map v)) t
   refine ⟨k, KanHomotopy.mk n t', ?_⟩
   change KanHomotopy.map (Y := c.pt.right) n (c.ι.app k).right _ (KanHomotopy.mk n t') = _
-  rw [KanHomotopy.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   congr 1
   apply RelativeMorphism.ext
   change t.map ≫ (c.ι.app k).right = s'.map at ht
-  simpa only [s', t', mapSimplex_map, Category.id_comp, Category.comp_id] using ht
+  simpa only [s', t', _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_map, Category.id_comp, Category.comp_id] using ht
 
 include hc in
 /-- 概要：同じ段の点つきホモトピー類の像が余極限で一致すれば後続段で一致する。

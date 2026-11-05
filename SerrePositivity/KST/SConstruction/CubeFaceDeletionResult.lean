@@ -40,8 +40,8 @@ lemma cubeVertexDegeneracy_cons (n : ℕ) (i : Fin (n + 1)) (b : Bool)
       Fin.cons b (cubeVertexDegeneracy n i x) := by
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
-  · simp [cubeVertexDegeneracy]
-  · simp [cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+  · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 /-- 結果への定数の追加は、元の評価へ同じ定数を追加する。 -/
 lemma cubeFaceDeletionResultPoint_vertex {n m : ℕ} (b : Bool)
@@ -61,9 +61,9 @@ lemma cubeFaceDeletionResultKeep_vertex {n m : ℕ} (r : CubeFaceDeletionResult 
     funext j
     refine Fin.cases ?_ (fun j => ?_) j
     · simp [cubeFaceDeletionResultVertex, cubeFaceDeletionResultKeep, cubeFaceNormalVertex,
-        cubeVertexDegeneracy]
+        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
     · simp [cubeFaceDeletionResultVertex, cubeFaceDeletionResultKeep, cubeFaceNormalVertex,
-        cubeVertexDegeneracy]
+        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
       rfl
 
 end SerrePositivity.KST.SConstruction

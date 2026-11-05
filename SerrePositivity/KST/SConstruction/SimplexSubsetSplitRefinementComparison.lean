@@ -30,7 +30,7 @@ lemma simplexSubsetSplitRefinement_eq {n : ℕ} (I : Finset (Fin (n + 1)))
       eqToHom (congrArg necklaceBead (simplexSubsetSplit_length I j hj hL hR)) := by
   apply necklaceVertexMap_injective
   funext v
-  rw [simplexSubsetSplitRefinement_vertex, necklaceVertexMap_comp]
+  rw [simplexSubsetSplitRefinement_vertex, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_comp]
   exact (necklaceBead_eqToHom_vertex (simplexSubsetSplit_length I j hj hL hR) v).symm
 
 /-- 元の bead の長さ移送の cube は、同じ元の次元移送そのもの。 -/

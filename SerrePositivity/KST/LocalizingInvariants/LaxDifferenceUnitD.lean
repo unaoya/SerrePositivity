@@ -30,7 +30,7 @@ def laxDifferenceProjectionHomotopy :
     rw [← Category.assoc]
     change prismEndpoint 0 (laxCategory p q).obj ≫ uncurry _ = _
     rw [← curry_evaluateFunctorAt_interval, curry_uncurry, Category.assoc,
-      ← cofiber_bottom_target_eq_right_source, ← Category.assoc, CofiberDiagrams.lift_bottom]
+      ← _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_bottom_target_eq_right_source, ← Category.assoc, CofiberDiagrams.lift_bottom]
     exact F2.laxPullbackArrow_target p.hom q.hom
   h₁ := by
     rw [← Category.assoc]

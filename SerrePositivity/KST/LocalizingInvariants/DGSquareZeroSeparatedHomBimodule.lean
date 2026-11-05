@@ -33,10 +33,10 @@ lemma coefficient_left : M.actLeft ≫ coefficient M N r =
     (((biprod.inl : A.X ⟶ (algebra A M).X) ⊗ₘ
       (biprod.inr : M.X ⟶ (algebra A M).X)) ≫ t) ≫
         (biprod.snd : (algebra B N).X ⟶ N.X)) h
-  simp only [← Category.assoc, mul_lr] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr] at hl
   rw [tensorHom_comp_tensorHom, biprod.inl_map, biprod.inr_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, mul_lr_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 include hd in
@@ -49,10 +49,10 @@ lemma coefficient_right : M.actRight ≫ coefficient M N r =
     (((biprod.inr : M.X ⟶ (algebra A M).X) ⊗ₘ
       (biprod.inl : A.X ⟶ (algebra A M).X)) ≫ t) ≫
         (biprod.snd : (algebra B N).X ⟶ N.X)) h
-  simp only [← Category.assoc, mul_rl] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl] at hl
   rw [tensorHom_comp_tensorHom, biprod.inr_map, biprod.inl_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, mul_rl_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 def coefficientBimoduleMap : M ⟶ bimoduleRestrict (base M N r) N where

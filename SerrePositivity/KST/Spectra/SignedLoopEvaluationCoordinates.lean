@@ -61,7 +61,7 @@ lemma signedLoopEvaluationPostAt_eq (X Y : OmegaSpectrum.{u}) (n : ℕ) :
           (PointedObject.basedHom ((cotensor CirclePower.space.{u} X).level (n + 1)).space
             (Y.level (n + 1)).space) := by
   apply uncurry_injective
-  rw [PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
   simp only [signedLoopEvaluationPostAt, evaluationPostAt, uncurry_curry]
   rw [signedLoopRawComparison_evaluation, comp_whiskerRight, Category.assoc]
 
@@ -93,7 +93,7 @@ lemma evaluationPost_circle_signedLoop_evaluation (X Y : OmegaSpectrum.{u}) (n :
   have hn := (MonoidalClosed.pre (CirclePower.signedEvaluationParameter.{u} n)).naturality
     (RawSpectrumMapping.pointedEvaluation (cotensor CirclePower.space.{u} X)
       Y.toKanSequence (n + 1))
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   rw [Category.assoc, ← hn, ← Category.assoc]
   exact evaluationPost_signedLoop_evaluation X Y n
 

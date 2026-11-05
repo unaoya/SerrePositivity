@@ -29,7 +29,7 @@ lemma fromC_snd_vertex (x : C.obj _⦋0⦌) :
     (Opposite.op ⦋0⦌)) x
   change (F2.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌)
     ((fromC p q).app (Opposite.op ⦋0⦌) x) = (zeroD : C.obj ⟶ D.obj).app _ x at h
-  simpa only [zeroD, zeroDiagram_const_vertex] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex] using h
 
 lemma fromC_terminalBoundary (x : C.obj _⦋0⦌) :
     TerminalBoundaryLifting (laxFst p q).hom ((fromC p q).app (Opposite.op ⦋0⦌) x) := by

@@ -40,12 +40,12 @@ lemma mappingParameterHom_pre {K' K A : PointedSimplicialSet.{u}} (i : K' ⟶ K)
     ((ihom K).map (f.app n) ≫ (InternalHomExchange.iso K A (Y.level n).space).hom) ≫
       (ihom A).map (PointedMapping.prePointed i (Y.level n).space)
   have hn := (MonoidalClosed.pre i).naturality (f.app n)
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   rw [← Category.assoc]
   erw [← hn]
   rw [Category.assoc]
   have he := InternalHomExchange.natural_pre_left i A (Y.level n).space
-  simp only [← PointedMapping.prePointed_eq_closedPre] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at he
   erw [he]
   rw [Category.assoc]
 

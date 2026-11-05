@@ -33,8 +33,8 @@ def invertingFunctorsToKanIso (X Z : SSet.{u}) [KanComplex Z] (W : Set (X _⦋1�
 /-- 亜群化の同じ単位への前合成は、Kan 標的の全関手 ∞ 圏の同値。 -/
 theorem groupoidCompletionUnit_precompose_isQCatEquivalence (X Z : SSet.{u}) [KanComplex Z] :
     IsQCatEquivalence ((pre (groupoidCompletionMap X)).app Z) := by
-  rw [← localizationPrecomposition_ι (groupoidCompletionMap X) Set.univ
-    (groupoidCompletion_isLocalization X).choose Z]
+  rw [← localizationPrecomposition_ι (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X) Set.univ
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X).choose Z]
   exact ((groupoidCompletion_isLocalization X).choose_spec Z).comp
     (qCatEquivalenceOfIso (invertingFunctorsToKanIso X Z Set.univ)).isQCatEquivalence
 

@@ -43,25 +43,25 @@ def pullbackFiberIso (h : IsPullback q s g p) (a : P _⦋0⦌) :
   have hb := pullback_basepoint h a
   let f : KanFiber q (q.app _ a) ⟶ KanFiber p (p.app _ (s.app _ a)) :=
     fiberLift p _ (fiberι q _ ≫ s) (by
-      rw [Category.assoc, ← h.w, ← Category.assoc, fiberι_comp, const_comp, hb])
+      rw [Category.assoc, ← h.w, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, const_comp, hb])
   let t : KanFiber p (p.app _ (s.app _ a)) ⟶ P :=
-    h.lift (SSet.const (q.app _ a)) (fiberι p _) (by rw [const_comp, hb, fiberι_comp])
+    h.lift (SSet.const (q.app _ a)) (fiberι p _) (by rw [const_comp, hb, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp])
   let k : KanFiber p (p.app _ (s.app _ a)) ⟶ KanFiber q (q.app _ a) :=
     fiberLift q _ t (h.lift_fst _ _ _)
   refine ⟨f, k, ?_, ?_⟩
   · apply fiber_hom_ext q (q.app _ a)
     change f ≫ k ≫ fiberι q _ = 𝟙 _ ≫ fiberι q _
     dsimp only [k]
-    rw [fiberLift_ι, Category.id_comp]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, Category.id_comp]
     apply h.hom_ext
     · dsimp only [t]
-      rw [Category.assoc, h.lift_fst, comp_const, fiberι_comp]
+      rw [Category.assoc, h.lift_fst, comp_const, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp]
     · dsimp only [t, f]
-      rw [Category.assoc, h.lift_snd, fiberLift_ι]
+      rw [Category.assoc, h.lift_snd, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   · apply fiber_hom_ext p (p.app _ (s.app _ a))
     change k ≫ f ≫ fiberι p _ = 𝟙 _ ≫ fiberι p _
     dsimp only [f, k]
-    rw [fiberLift_ι, ← Category.assoc, fiberLift_ι]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
     dsimp only [t]
     rw [h.lift_snd, Category.id_comp]
 
@@ -85,7 +85,7 @@ lemma pullbackFiberIso_point (h : IsPullback q s g p) (a : P _⦋0⦌) :
   apply fiber_vertex_ext p _
   rw [← ConcreteCategory.comp_apply, ← NatTrans.comp_app, pullbackFiberIso_hom_ι]
   change s.app _ ((fiberι q _).app _ (fiberPoint q a)) = _
-  rw [fiberι_point, fiberι_point]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
 
 end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
 

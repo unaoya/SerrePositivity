@@ -29,7 +29,7 @@ lemma pointedTensor_parameter_whisker {K L : PointedSimplicialSet.{u}} (a : K �
           ((pointedTensorEnrichedFunctor L).obj Y) := by
   rw [pointedSSetObject_whiskerLeft, pointedSSetObject_whiskerRight]
   have h := closedTensorMapping_parameter a X.obj Y.obj
-  rw [← Spectra.PointedMapping.prePointed_eq_closedPre] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact congrArg Under.Hom.right h
 
 /-- 固定左因子の射は、同じ通常の左 smash 成分を持つ厳密豊穣自然変換。 -/
@@ -51,7 +51,7 @@ lemma pointedTensor_leftUnitor_whisker (X Y : PointedSSetObject.{u}) :
           from (λ_ X.obj).hom) Y := by
   rw [pointedSSetObject_whiskerLeft, pointedSSetObject_whiskerRight]
   have h := closedTensorMapping_leftUnitor X.obj Y.obj
-  rw [← Spectra.PointedMapping.prePointed_eq_closedPre] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact congrArg Under.Hom.right h
 
 /-- 元の逆左単位同型の全 Hom 自然性。 -/
@@ -66,7 +66,7 @@ lemma pointedTensor_leftUnitor_inv_whisker (X Y : PointedSSetObject.{u}) :
           ((pointedTensorEnrichedFunctor (𝟙_ PointedSimplicialSet.{u})).obj Y) := by
   rw [pointedSSetObject_whiskerLeft, pointedSSetObject_whiskerRight]
   have h := closedTensorMapping_leftUnitor_inv X.obj Y.obj
-  rw [← Spectra.PointedMapping.prePointed_eq_closedPre] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact congrArg Under.Hom.right h
 
 /-- 左単位子による、固定左単位 tensor から恒等関手への厳密豊穣自然変換。 -/

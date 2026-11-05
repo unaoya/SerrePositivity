@@ -104,10 +104,10 @@ lemma exists_verdierSimplexCommonDenominatorFamily
   refine ⟨D', t, F, ht, hv, hlast, ?_, ?_⟩
   · have he := congrArg (fun f => f ≫ (pre (simplexAttachmentPrefix n)).app B.obj) hF
     simpa only [p, T, Category.assoc, ← NatTrans.comp_app, ← pre_map,
-      simplexAttachmentPrefix_ι, simplexAttachmentFamilyGlue_prefix] using he
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix] using he
   · have he := congrArg (fun f => f ≫ (pre (simplexAttachmentLastEdge n)).app B.obj) hF
     simpa only [p, T, Category.assoc, ← NatTrans.comp_app, ← pre_map,
-      simplexAttachmentLastEdge_ι, simplexAttachmentFamilyGlue_lastEdge] using he
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι, _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge] using he
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

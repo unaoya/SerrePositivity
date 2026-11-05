@@ -27,15 +27,15 @@ lemma ihomParameterAction_restrict :
       PointedObject.basedHomMap T (prePointed i V) =
     prePointed j V ≫ ihomAction L E' V ≫ prePointed e (PointedObject.basedHom L V) := by
   have hn := (MonoidalClosed.pre a).naturality (prePointed i V)
-  simp only [← prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change (ihomAction K E V ≫ prePointed a (PointedObject.basedHom K V)) ≫
     (ihom T).map (prePointed i V) = _
   rw [Category.assoc]
   erw [← hn]
-  rw [← Category.assoc, ihomAction_restrict, Category.assoc, prePointed_comp, he]
+  rw [← Category.assoc, ihomAction_restrict, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, he]
   rw [← Category.assoc]
   erw [ihomAction_pre L j V]
-  rw [Category.assoc, prePointed_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   rfl
 
 /-- 実際の同じ区間を写す二つの経路も、元の同じ辺として厳密に一致する。 -/

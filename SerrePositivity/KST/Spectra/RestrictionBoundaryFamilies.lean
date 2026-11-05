@@ -39,14 +39,14 @@ lemma relativeProjection_restriction :
   change PointedMapping.pre _ Y ≫
     (PointedObject.basedHomι (PointedObject.adjoin B) Y ≫
       (MonoidalClosed.pre coprod.inl).app Y.right) = _
-  rw [← Category.assoc, PointedMapping.pre_ι, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc,
     ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
   rfl
 
 lemma uncurry_constant_basepoint (B T : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
     uncurry (SSet.const (X := T) (obj B Y).basepoint) =
       toUnit (B ⊗ T) ≫ Y.hom := by
-  rw [← pointedConstant_eq_const (obj B Y) T, uncurry_natural_left]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (obj B Y) T, uncurry_natural_left]
   change B ◁ toUnit T ≫ uncurry (curry (snd B (𝟙_ SSet.{u}) ≫ Y.hom)) = _
   rw [uncurry_curry, ← Category.assoc, whiskerLeft_snd, comp_toUnit]
 

@@ -34,13 +34,13 @@ lemma valueMap_hom_zero_of_zero_values {A B : StableCategory.{u}} (F : ExactMap 
   have e : FunctorIso F.hom G.hom := zeroDiagramFunctorIso _ _ hF hG
   have hz : IsZero ((stableValueFunctor Φ).obj zeroCategory.{u}) := by
     have h := hΦ.preservesZero zeroCategory zeroCategory_isZero
-    rw [← value_vertex Φ zeroCategory] at h
+    rw [← value_vertex Φ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory] at h
     exact h.isZeroHo
   calc
     SpectrumHo.hom (valueMap Φ F) = (stableValueFunctor Φ).map G :=
       valueMap_hom_eq_of_functorIso Φ e
     _ = (stableValueFunctor Φ).map (toZeroCategory A) ≫
         (stableValueFunctor Φ).map (fromZeroCategory B) := Functor.map_comp _ _ _
-    _ = 0 := by rw [hz.eq_zero_of_tgt ((stableValueFunctor Φ).map (toZeroCategory A)), zero_comp]
+    _ = 0 := by rw [hz.eq_zero_of_tgt ((stableValueFunctor Φ).map (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)), zero_comp]
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

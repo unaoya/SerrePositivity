@@ -30,7 +30,7 @@ lemma bottom_arrow : Arrow.mk (squareHoBottom (square Φ p q i r h)) =
   rw [squareBottomArrow_edge]
   change SSet.yonedaEquiv (squareBottomEdge ≫
     (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
-  rw [← Category.assoc, LaxUniversalDifference.comparisonSquare_bottom,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
@@ -40,7 +40,7 @@ lemma top_arrow : Arrow.mk (squareHoTop (square Φ p q i r h)) =
   rw [squareTopArrow_edge]
   change SSet.yonedaEquiv (squareTopEdge ≫
     (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
-  rw [← Category.assoc, LaxUniversalDifference.comparisonSquare_top,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_top,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
@@ -50,7 +50,7 @@ lemma left_arrow : Arrow.mk (squareHoLeft (square Φ p q i r h)) =
   rw [squareLeftArrow_edge]
   change SSet.yonedaEquiv (squareLeftEdge ≫
     (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
-  rw [← Category.assoc, LaxUniversalDifference.comparisonSquare_left,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 
@@ -60,7 +60,7 @@ lemma right_arrow : Arrow.mk (squareHoRight (square Φ p q i r h)) =
   rw [squareRightArrow_edge]
   change SSet.yonedaEquiv (squareRightEdge ≫
     (LaxUniversalDifference.comparisonSquare p q i r h ≫ Φ)) = _
-  rw [← Category.assoc, LaxUniversalDifference.comparisonSquare_right,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right,
     SSet.yonedaEquiv_symm_comp, Equiv.apply_symm_apply, ← valueMap_edge]
   rfl
 

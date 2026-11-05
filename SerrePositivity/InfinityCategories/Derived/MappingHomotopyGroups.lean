@@ -45,7 +45,7 @@ def kanHomotopyGroupIsoEquiv {X Y : SSet.{v}} [SSet.KanComplex X] [SSet.KanCompl
       (show (e.hom ≫ e.inv).app _ x = x by rw [Iso.hom_inv_id]; rfl)
     have hh : G.comp F = MonoidHom.id _ := by
       rw [← h]
-      simp only [Iso.hom_inv_id, KanHomotopyGroup.map_id]
+      simp only [Iso.hom_inv_id, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id]
     exact DFunLike.congr_fun hh a
   · intro a
     have h := KanHomotopyGroup.map_comp (n := n) (x := e.hom.app _ x) (y := x)
@@ -53,7 +53,7 @@ def kanHomotopyGroupIsoEquiv {X Y : SSet.{v}} [SSet.KanComplex X] [SSet.KanCompl
       (show (e.inv ≫ e.hom).app _ (e.hom.app _ x) = e.hom.app _ x by rw [Iso.inv_hom_id]; rfl)
     have hh : F.comp G = MonoidHom.id _ := by
       rw [← h]
-      simp only [Iso.inv_hom_id, KanHomotopyGroup.map_id]
+      simp only [Iso.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_id]
     exact DFunLike.congr_fun hh a
 
 variable {S : Type u} [CommRing S]

@@ -32,10 +32,10 @@ lemma intervalFunctorMap_equivalence_of_constantHom_bijective
   obtain ⟨α, hα⟩ := (h L).surjective (intervalFamilyHom (𝟙 L))
   obtain ⟨g, hg⟩ := intervalFamilyHom_surjective L X x y α
   have hr : intervalFamilyHom (g ≫ f) = intervalFamilyHom (𝟙 L) := by
-    rw [intervalFunctorMap_familyHom_post, hg, hα]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post, hg, hα]
   have hl : intervalFamilyHom (f ≫ g) = intervalFamilyHom (𝟙 K) := by
     apply (h K).injective
-    rw [← intervalFunctorMap_familyHom_post, ← intervalFunctorMap_familyHom_post]
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post, ← _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post]
     have hh := congrArg (intervalFamilyHomPrecomp f) hr
     change intervalFamilyHom (f ≫ (g ≫ f)) = intervalFamilyHom (f ≫ 𝟙 L) at hh
     rw [Category.comp_id] at hh

@@ -56,7 +56,7 @@ lemma pointedFiberGroupEquiv_mk {r : ℕ}
     pointedFiberGroupEquiv p r (KanHomotopyGroup.mk L.pointedBoundary) =
       KanHomotopyGroup.mk L.boundary := by
   change KanHomotopyGroup.map (𝟙 _) _ (KanHomotopyGroup.mk L.pointedBoundary) = _
-  rw [KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   congr 1
 
 end BoundaryLift
@@ -75,8 +75,8 @@ theorem pointedConnectingHom_boundaryLift {E B : PointedSimplicialSet.{u}}
       KanHomotopyGroup.mk L.pointedBoundary := by
   apply (pointedFiberGroupEquiv p r).injective
   rw [pointedConnectingHom_compute, MulEquiv.symm_apply_apply,
-    BoundaryLift.pointedFiberGroupEquiv_mk, connectingHom_apply,
-    connecting_eq p.right E.basepoint L]
+    BoundaryLift.pointedFiberGroupEquiv_mk, _root_.SerrePositivity.InfinityCategories.Kan.connectingHom_apply,
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p.right E.basepoint L]
   rfl
 
 end

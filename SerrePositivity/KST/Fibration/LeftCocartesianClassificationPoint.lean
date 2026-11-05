@@ -64,8 +64,8 @@ theorem leftCocartesianKanClassificationIso_pointHom (i : I)
         ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
   let a := x ≫ A.inv ≫ functorHomEvaluate (leftCocartesianKanComparisonIso p).hom z
   have hl := leftCocartesianKanComparisonValueIso_pointHom p i v
-  simp only [leftCocartesianKanComparisonValueIso, kanDiagramValueIso, Iso.trans_hom,
-    Iso.symm_hom, functorIso_app_hom_evaluate] at hl
+  simp only [leftCocartesianKanComparisonValueIso, _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso, Iso.trans_hom,
+    Iso.symm_hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] at hl
   have he : a ≫ C.hom =
       cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
         ((leftStrictTransportFunctor p).obj i)).symm w) := by

@@ -17,7 +17,7 @@ theorem doubleFunctorEvaluation_curry {A K Y : SSet.{u}}
     (a : A _⦋0⦌) (x : K _⦋0⦌) :
     functorSpaceCurryMap A K Y ≫ doubleFunctorEvaluation (Y := Y) x a =
       evaluateFunctorAt (a, x) := by
-  rw [doubleFunctorEvaluation, ← Category.assoc, F2.functorSpaceCurryMap_evaluate,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation, ← Category.assoc, F2.functorSpaceCurryMap_evaluate,
     evaluateFunctorAt_pre]
   apply congrArg (fun z => evaluateFunctorAt (Y := Y) z)
   change (a, PinchedHom.constant x 0) = (a, x)

@@ -15,7 +15,7 @@ def necklaceRefinementNonjoint (T : Necklace.{u}) : T.down.NonjointVertex ↪o
     (NecklaceShape.single T.down.vertexMax).NonjointVertex where
   toFun v := ⟨v.val, by
     intro h
-    simp only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
     rcases h with h | h
     · exact v.property ((congrArg (fun j => j ∈ T.down.joints) h).mpr T.down.zero_mem)
     · exact v.property ((congrArg (fun j => j ∈ T.down.joints) h).mpr T.down.last_mem)⟩

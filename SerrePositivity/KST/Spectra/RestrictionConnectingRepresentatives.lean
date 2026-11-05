@@ -99,7 +99,7 @@ theorem exists_connecting_boundaryRepresentative [Mono i] [KanComplex Y.right] (
     (OmegaSpectrum.pointedMap_basepoint (pre i Y))
   obtain ⟨s, hs⟩ := Quotient.mk_surjective (e.symm a)
   have ha : a = e (KanHomotopyGroup.mk s) := by
-    rw [show KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
+    rw [show _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = e.symm a from hs, MulEquiv.apply_symm_apply]
   let L := chooseBoundaryLift (pre i Y).right (obj B Y).basepoint s
   refine ⟨s, L, ha, ?_⟩
   rw [ha]

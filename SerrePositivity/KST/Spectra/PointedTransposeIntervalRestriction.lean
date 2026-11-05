@@ -46,7 +46,7 @@ lemma path_restriction_eq_of_homotopy {A B E : PointedSimplicialSet.{u}}
     P.path ≫ (prePointed j E).right = Q.path := by
   apply (cancel_mono (PointedObject.basedHomι B E)).1
   change P.path ≫ PointedMapping.pre j E ≫ _ = _
-  rw [pre_ι, ← Category.assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
   apply uncurry_injective
   rw [uncurry_pre_app, ← homotopy_h, ← homotopy_h]
   exact h
@@ -58,7 +58,7 @@ lemma homotopy_restriction_eq_of_path {A B E : PointedSimplicialSet.{u}}
     (Q : VerticalPath (PointedObject.toPoint E) f' g') (j : B ⟶ A)
     (h : P.path ≫ (prePointed j E).right = Q.path) :
     j.right ▷ (Δ[1] : SSet.{u}) ≫ P.homotopy.h = Q.homotopy.h := by
-  rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← pre_ι, ← Category.assoc]
+  rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
   change uncurry ((P.path ≫ (prePointed j E).right) ≫ PointedObject.basedHomι B E) = _
   rw [h, ← homotopy_h]
 
@@ -69,7 +69,7 @@ lemma basedTranspose_twice_path {A U V : PointedSimplicialSet.{u}}
     P.basedTranspose.basedTranspose.path = P.path := by
   change (P.path ≫ (InternalHomExchange.iso A U V).hom.right) ≫
     (InternalHomExchange.iso U A V).hom.right = P.path
-  rw [InternalHomExchange.hom_eq_inv U A V]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv U A V]
   have h : (InternalHomExchange.iso A U V).hom.right ≫
       (InternalHomExchange.iso A U V).inv.right = 𝟙 _ :=
     congrArg Under.Hom.right (InternalHomExchange.iso A U V).hom_inv_id
@@ -85,7 +85,7 @@ lemma basedTranspose_restriction_path {A B U V : PointedSimplicialSet.{u}}
     P.basedTranspose.path ≫ (PointedObject.basedHomMap U (prePointed j V)).right =
       Q.basedTranspose.path := by
   have hs := InternalHomExchange.natural_pre_left j U V
-  simp only [← prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   have he := congrArg Under.Hom.right hs.symm
   change (InternalHomExchange.iso A U V).hom.right ≫
       (PointedObject.basedHomMap U (prePointed j V)).right =

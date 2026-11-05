@@ -30,7 +30,7 @@ lemma cubeSupportBlockMap_eval {n m : ℕ} {s : CubeJoinNormalForm n m}
     apply Bool.eq_iff_iff.mpr
     rw [cubeFiberMax_true_iff]
     simp only [cubeSupportBlockMap_fiber, cubeJoinNormalFormSupport, hs, Option.getD_some,
-      cubeJoinNormalFormEval, cubeJoinTermEval]
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval]
     change (∃ i, i ∈ t ∧ x i = ⊤) ↔ t.sup x = ⊤
     exact Finset.sup_eq_top_iff.symm
 

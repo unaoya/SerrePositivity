@@ -86,7 +86,7 @@ theorem classEquiv_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     InternalHomExchange.iso B CirclePower.space Y
   have hs := InternalHomExchange.natural_pre_left
     (C := PointedSimplicialSet.{u}) i CirclePower.space.{u} Y
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change PointedMapping.prePointed i (PointedObject.basedHom CirclePower.space Y) ≫ eA.hom =
     eB.hom ≫ PointedObject.basedHomMap CirclePower.space
       (Y := PointedObject.basedHom B Y) (Z := PointedObject.basedHom A Y)

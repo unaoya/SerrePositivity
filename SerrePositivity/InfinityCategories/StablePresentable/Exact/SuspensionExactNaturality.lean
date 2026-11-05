@@ -66,7 +66,7 @@ omit [Quasicategory Y] [IsStable Y] [IsExactFunctor F] in
 lemma post_arrow_source :
     (arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = F := by
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_source, Category.id_comp]
+  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact
 

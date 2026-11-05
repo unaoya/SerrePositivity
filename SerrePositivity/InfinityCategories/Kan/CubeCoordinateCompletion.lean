@@ -64,9 +64,9 @@ lemma cubeCoordinateComplete_lower {n m : ℕ} (e : Fin m → Fin (n + 1))
       cubeCoordinateComplete (cubeCoordinateLower e p hp) (cubeVertexDegeneracy n p b) := by
   funext x k
   refine Fin.succAboveCases p ?_ (fun k => ?_) k
-  · simp [cubeCoordinateComplete, cubeCoordinateInsert_lower e p hp, cubeVertexFace]
-  · simp [cubeCoordinateComplete, cubeCoordinateInsert_lower e p hp, cubeVertexFace,
-      cubeVertexDegeneracy]
+  · simp [cubeCoordinateComplete, cubeCoordinateInsert_lower e p hp, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace]
+  · simp [cubeCoordinateComplete, cubeCoordinateInsert_lower e p hp, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
 /-- 厳密単調な座標挿入と使用しない座標の定数補完は、元の面から生成される。 -/
 lemma cubeCoordinateComplete_faceGenerated {n m : ℕ} (e : Fin m → Fin n)

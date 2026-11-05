@@ -31,7 +31,7 @@ lemma sequentialLatchingHom_isPullback :
       (PointedMapping.pre (X.sigma n) Y) := by
   have h := ((IsPushout.of_hasPushout (PointedSimplicialSet.circle.{u} ◁ f.app n)
     (X.sigma n)).op.flip).map (cofiberMappingFunctor Y)
-  simpa only [cofiberMappingFunctor_map] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
 
 /-- 制限を latching の左部分へ戻すと、元の標的の構造射による制限。 -/
 lemma sequentialLatchingHom_pre_inl :

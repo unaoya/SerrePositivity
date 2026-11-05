@@ -35,7 +35,7 @@ lemma preAction_post {W D C C' : PointedSimplicialSet.{u}} (v : C ⟶ C') :
         (PointedObject.basedHom W C') := by
   have he := InternalHomExchange.natural_post W (PointedObject.basedHom D C) v
   have hr := InternalHomExchange.natural_pre_right W (PointedObject.basedHomMap D v) C'
-  simp only [← prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at he hr
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at he hr
   change PointedObject.basedHomMap W
       (PointedObject.basedHomMap (PointedObject.basedHom D C) v) ≫
         (InternalHomExchange.iso W (PointedObject.basedHom D C) C').hom =

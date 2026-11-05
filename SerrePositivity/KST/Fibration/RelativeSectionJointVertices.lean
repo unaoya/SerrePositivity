@@ -20,7 +20,7 @@ theorem relativeSectionDiagramInfinity_double_vertex (A : Jᵒᵖ ⥤ Over B)
       (ULift.up (nerveVertex j)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex (relativeSectionDiagramInfinity A)) =
       spaceInfinityVertex (((relativeSectionEnrichedDiagram A).obj j).obj X) := by
-  rw [doubleFunctorEvaluation_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex]
   change (evaluateFunctorAt (X := LeftFibrationInfinity B) (Y := SpaceInfinity.{u})
     (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
       ((relativeSectionDiagramInfinity A).app (Opposite.op ⦋0⦌)
@@ -38,7 +38,7 @@ theorem relativeSectionDiagramInfinity_double_precomp_vertex (k : D ⟶ B)
       spaceInfinityVertex
         ((((relativeSectionEnrichedDiagram A).precompose
           (leftFibrationBaseChangeEnriched k)).obj j).obj X) := by
-  rw [doubleFunctorEvaluation_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex]
   change (evaluateFunctorAt (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
     (((pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}).app
       (Opposite.op ⦋0⦌) ((relativeSectionDiagramInfinity A).app (Opposite.op ⦋0⦌)

@@ -25,16 +25,16 @@ lemma one_mul : (one A M ▷ obj A M) ≫ mul A M = (λ_ (obj A M)).hom := by
   · calc
       (𝟙_ C ◁ biprod.inl) ≫ ((one A M ▷ obj A M) ≫ mul A M) =
           (η[A.X] ▷ A.X) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ mul A M := by
-        simp only [one, ← id_tensorHom, ← tensorHom_id,
+        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (λ_ A.X).hom ≫ biprod.inl := by rw [mul_ll, ← Category.assoc, MonObj.one_mul]
+      _ = (λ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, ← Category.assoc, MonObj.one_mul]
       _ = (𝟙_ C ◁ biprod.inl) ≫ (λ_ (obj A M)).hom := by rw [leftUnitor_naturality]
   · calc
       (𝟙_ C ◁ biprod.inr) ≫ ((one A M ▷ obj A M) ≫ mul A M) =
           (η[A.X] ▷ M.X) ≫ (biprod.inl ⊗ₘ biprod.inr) ≫ mul A M := by
-        simp only [one, ← id_tensorHom, ← tensorHom_id,
+        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (λ_ M.X).hom ≫ biprod.inr := by rw [mul_lr, ← Category.assoc, M.one_actLeft]
+      _ = (λ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, ← Category.assoc, M.one_actLeft]
       _ = (𝟙_ C ◁ biprod.inr) ≫ (λ_ (obj A M)).hom := by rw [leftUnitor_naturality]
 
 lemma mul_one : (obj A M ◁ one A M) ≫ mul A M = (ρ_ (obj A M)).hom := by
@@ -42,16 +42,16 @@ lemma mul_one : (obj A M ◁ one A M) ≫ mul A M = (ρ_ (obj A M)).hom := by
   · calc
       (biprod.inl ▷ 𝟙_ C) ≫ ((obj A M ◁ one A M) ≫ mul A M) =
           (A.X ◁ η[A.X]) ≫ (biprod.inl ⊗ₘ biprod.inl) ≫ mul A M := by
-        simp only [one, ← id_tensorHom, ← tensorHom_id,
+        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (ρ_ A.X).hom ≫ biprod.inl := by rw [mul_ll, ← Category.assoc, MonObj.mul_one]
+      _ = (ρ_ A.X).hom ≫ biprod.inl := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, ← Category.assoc, MonObj.mul_one]
       _ = (biprod.inl ▷ 𝟙_ C) ≫ (ρ_ (obj A M)).hom := by rw [rightUnitor_naturality]
   · calc
       (biprod.inr ▷ 𝟙_ C) ≫ ((obj A M ◁ one A M) ≫ mul A M) =
           (M.X ◁ η[A.X]) ≫ (biprod.inr ⊗ₘ biprod.inl) ≫ mul A M := by
-        simp only [one, ← id_tensorHom, ← tensorHom_id,
+        simp only [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one, ← id_tensorHom, ← tensorHom_id,
           tensorHom_comp_tensorHom_assoc, Category.id_comp, Category.comp_id]
-      _ = (ρ_ M.X).hom ≫ biprod.inr := by rw [mul_rl, ← Category.assoc, M.actRight_one]
+      _ = (ρ_ M.X).hom ≫ biprod.inr := by rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, ← Category.assoc, M.actRight_one]
       _ = (biprod.inr ▷ 𝟙_ C) ≫ (ρ_ (obj A M)).hom := by rw [rightUnitor_naturality]
 
 end SerrePositivity.KST.LocalizingInvariants.SquareZero

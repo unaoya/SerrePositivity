@@ -33,9 +33,9 @@ lemma cotensorComparison_pre_source {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   change pointedEvaluation Y (KanSequence.mapping A Z) n ≫
       (PointedMapping.prePointed (f.app n) ((ihom A).obj (Z.level n).space) ≫
         (InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom) = _
-  rw [PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   have h := InternalHomExchange.natural_pre_left (f.app n) A (Z.level n).space
-  simp only [PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   exact congrArg (pointedEvaluation Y (KanSequence.mapping A Z) n ≫ ·) h
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

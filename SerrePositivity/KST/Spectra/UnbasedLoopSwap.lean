@@ -56,7 +56,7 @@ lemma loopSwap_pre {K L : SSet.{u}} (f : K ⟶ L) (Y : PointedSimplicialSet.{u})
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (freeHomIso L Y).hom ≫
         PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (pre f Y) := by
     have h := freeHomIso_pre f Y
-    rw [← PointedMapping.prePointed_eq_closedPre] at h
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
     have hh := congrArg ((PointedObject.basedHomFunctor
       PointedSimplicialSet.circle.{u}).map) h
     simp only [Functor.map_comp] at hh
@@ -70,7 +70,7 @@ lemma loopSwap_pre {K L : SSet.{u}} (f : K ⟶ L) (Y : PointedSimplicialSet.{u})
     (PointedObject.adjoinFunctor.map f) Y
   rw [hs]
   rw [Category.assoc]
-  rw [PointedMapping.prePointed_eq_closedPre, freeHomIso_pre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, freeHomIso_pre]
   have hlast := congrArg (fun g ↦ g ≫ pre f (loopSpace Y)) (loopSwap_freeHom L Y).symm
   simp only [Category.assoc] at hlast
   exact hlast

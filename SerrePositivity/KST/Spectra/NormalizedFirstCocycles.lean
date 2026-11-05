@@ -23,7 +23,7 @@ noncomputable section
 lemma differential_zero_of_subsingleton (K : SSet.{u}) [Subsingleton (K _⦋0⦌)]
     (M : AddCommGrpCat.{u}) (a : K.nonDegenerate 0 → M) : differential K M 0 a = 0 := by
   funext s
-  rw [differential_apply, Fin.sum_univ_two]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, Fin.sum_univ_two]
   have he : K.δ (0 : Fin 2) s.val = K.δ (1 : Fin 2) s.val := Subsingleton.elim _ _
   simp [he]
 

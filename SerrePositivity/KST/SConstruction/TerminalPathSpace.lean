@@ -31,7 +31,7 @@ lemma terminalIntervalStart_right : terminalIntervalStart.{u}.right =
   change coprod.desc (SSet.const (X := 𝟙_ SSet.{u})
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
     (SSet.const (X := 𝟙_ SSet.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
-  apply coprod.hom_ext <;> simp [Spectra.intervalEndpoint_right, coprod.braiding]
+  apply coprod.hom_ext <;> simp [_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_right, coprod.braiding]
 
 /-- 終点基点の区間の始点包含は元の単体集合で単射。 -/
 instance terminalIntervalStart_mono : Mono terminalIntervalStart.{u}.right := by

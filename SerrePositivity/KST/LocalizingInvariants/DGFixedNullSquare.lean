@@ -103,7 +103,7 @@ lemma exists_dgFixedNullRelativeDiagram
   have hz' : IsZeroCategory (stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
     change IsZeroCategory (stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
     rw [hFz]
-    rw [dgKInputNu_vertex, stableObject_vertex]
+    rw [dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact hz
   have hbi : squareBottomEdge ≫ F ≫ dgKInputNu R =
       SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by

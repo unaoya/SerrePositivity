@@ -25,7 +25,7 @@ lemma coherentLowerStringFace_index (n : ℕ) :
   apply OrderHom.ext
   funext i
   change (coherentLowerStringIndex n).toOrderHom ((Fin.last (n + 1)).succAbove i) = i
-  simp [Fin.succAbove_last, coherentLowerStringIndex]
+  simp [Fin.succAbove_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex]
 
 /-- 下側の水平面の時刻は元の定数零。 -/
 lemma coherentLowerStringFace_time (n : ℕ) :
@@ -35,7 +35,7 @@ lemma coherentLowerStringFace_time (n : ℕ) :
   apply OrderHom.ext
   funext i
   change (coherentLowerStringTime n).toOrderHom ((Fin.last (n + 1)).succAbove i) = 0
-  simp [Fin.succAbove_last, coherentLowerStringTime]
+  simp [Fin.succAbove_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime]
 
 /-- 上側の水平面の入力射影は元の恒等再添字。 -/
 lemma coherentUpperStringFace_index (n : ℕ) :
@@ -44,7 +44,7 @@ lemma coherentUpperStringFace_index (n : ℕ) :
   apply OrderHom.ext
   funext i
   change (coherentUpperStringIndex n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = i
-  simp [coherentUpperStringIndex]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex]
 
 /-- 上側の水平面の時刻は元の定数一。 -/
 lemma coherentUpperStringFace_time (n : ℕ) :
@@ -54,7 +54,7 @@ lemma coherentUpperStringFace_time (n : ℕ) :
   apply OrderHom.ext
   funext i
   change (coherentUpperStringTime n).toOrderHom ((0 : Fin (n + 2)).succAbove i) = 1
-  simp [coherentUpperStringTime]
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime]
 
 /-- 下側の水平面は、時刻零に含めた元の全入力列そのもの。 -/
 lemma coherentLowerPrismString_horizontalFace {I : Type u} [SmallCategory I]
@@ -65,7 +65,7 @@ lemma coherentLowerPrismString_horizontalFace {I : Type u} [SmallCategory I]
         s.chain := by
   change (nerve (I × ULift.{u} (Fin 2))).map _
     (coherentStringPrismChain s (coherentLowerStringIndex _) (coherentLowerStringTime _)) = _
-  rw [coherentStringPrismChain_reindex, coherentLowerStringFace_index,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, coherentLowerStringFace_index,
     coherentLowerStringFace_time]
   rfl
 
@@ -78,7 +78,7 @@ lemma coherentUpperPrismString_horizontalFace {I : Type u} [SmallCategory I]
         s.chain := by
   change (nerve (I × ULift.{u} (Fin 2))).map _
     (coherentStringPrismChain s (coherentUpperStringIndex _) (coherentUpperStringTime _)) = _
-  rw [coherentStringPrismChain_reindex, coherentUpperStringFace_index,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, coherentUpperStringFace_index,
     coherentUpperStringFace_time]
   rfl
 

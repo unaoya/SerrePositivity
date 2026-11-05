@@ -34,11 +34,11 @@ noncomputable section
 lemma freePathEndpoint_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) (k : Fin 2) :
     PointedObject.basedHomMap freeInterval.{u} f ≫ freePathEndpoint Z k =
       freePathEndpoint Y k ≫ f := by
-  simp only [freePathEndpoint, PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   change (ihom freeInterval.{u}).map f ≫
       (MonoidalClosed.pre (freeIntervalEndpoint.{u} k)).app Z ≫
         (unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z = _
-  rw [← Category.assoc, (MonoidalClosed.pre (freeIntervalEndpoint.{u} k)).naturality f,
+  rw [← Category.assoc, (MonoidalClosed.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k)).naturality f,
     Category.assoc, (unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality f,
     ← Category.assoc]
   rfl
@@ -50,10 +50,10 @@ lemma freePathEndpoint_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z)
 lemma freeConstantPath_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) :
     freeConstantPath Y ≫ PointedObject.basedHomMap freeInterval.{u} f =
       f ≫ freeConstantPath Z := by
-  simp only [freeConstantPath, PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   change (unitNatIso (C := PointedSimplicialSet.{u})).hom.app Y ≫
       (MonoidalClosed.pre freeIntervalCollapse.{u}).app Y ≫ (ihom freeInterval.{u}).map f = _
-  rw [← (MonoidalClosed.pre freeIntervalCollapse.{u}).naturality f, ← Category.assoc,
+  rw [← (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u}).naturality f, ← Category.assoc,
     ← (unitNatIso (C := PointedSimplicialSet.{u})).hom.naturality f, Category.assoc]
   rfl
 
@@ -97,7 +97,7 @@ lemma mappingPathMap_source {X Y X' Y' : PointedSimplicialSet.{u}}
 lemma mappingPathMap_target {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
     mappingPathMap f f' a b h ≫ mappingPathProjection f' = mappingPathProjection f ≫ b := by
-  rw [mappingPathProjection, ← Category.assoc, mappingPathMap_path, Category.assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection, ← Category.assoc, mappingPathMap_path, Category.assoc,
     freePathEndpoint_naturality, ← Category.assoc]
   rfl
 
@@ -110,12 +110,12 @@ lemma mappingPathMap_unit {X Y X' Y' : PointedSimplicialSet.{u}}
     mappingPathUnit f ≫ mappingPathMap f f' a b h = a ≫ mappingPathUnit f' := by
   apply pullback.hom_ext
   · rw [Category.assoc, mappingPathMap_path]
-    simp only [mappingPathUnit, pullback.lift_fst_assoc, Category.assoc, pullback.lift_fst]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit, pullback.lift_fst_assoc, Category.assoc, pullback.lift_fst]
     rw [freeConstantPath_naturality, ← Category.assoc, h, Category.assoc]
   · change (mappingPathUnit f ≫ mappingPathMap f f' a b h) ≫ mappingPathRetraction f' = _
-    rw [Category.assoc, mappingPathMap_source, ← Category.assoc, mappingPathUnit_retraction,
+    rw [Category.assoc, mappingPathMap_source, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction,
       Category.id_comp]
-    simp only [mappingPathUnit, Category.assoc, pullback.lift_snd, Category.comp_id]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit, Category.assoc, pullback.lift_snd, Category.comp_id]
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

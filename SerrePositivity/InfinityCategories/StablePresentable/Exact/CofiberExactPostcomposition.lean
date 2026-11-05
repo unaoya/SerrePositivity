@@ -62,13 +62,13 @@ lemma postcomp_inclusion : postcomp F ≫ inclusion Y =
 
 lemma postcomp_bottom : postcomp F ≫ bottom Y =
     bottom X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [bottom, ← Category.assoc, postcomp_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, ← Category.assoc, postcomp_inclusion]
   rw [Category.assoc, (pre squareBottomEdge).naturality F]
   rfl
 
 lemma postcomp_right : postcomp F ≫ right Y =
     right X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [right, ← Category.assoc, postcomp_inclusion]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, ← Category.assoc, postcomp_inclusion]
   rw [Category.assoc, (pre squareRightEdge).naturality F]
   rfl
 

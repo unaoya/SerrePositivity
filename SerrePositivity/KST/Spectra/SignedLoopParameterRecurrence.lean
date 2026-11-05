@@ -39,7 +39,7 @@ lemma signedEvaluationParameter_pre_succ (V : PointedSimplicialSet.{u}) (n : ℕ
     PointedMapping.prePointed (reversalIterate n) V ≫
       PointedMapping.prePointed (unit.{u} ≫ integerPowerMap.{u} (-1)) V =
     PointedMapping.prePointed (signedEvaluationParameter (n + 1)) V := by
-  rw [PointedMapping.prePointed_comp, signedEvaluationParameter, reversalIterate,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, signedEvaluationParameter, reversalIterate,
     ← Category.assoc]
 
 end SerrePositivity.KST.Spectra.CirclePower

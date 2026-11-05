@@ -36,7 +36,7 @@ def simplexSubsetInteriorVertex {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
     (NecklaceShape.single (I.card - 1)).NonjointVertex :=
   ⟨simplexSubsetVertexIndex I hI j hj, by
     intro h
-    simp only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton] at h
     rcases h with h | h
     · have he : simplexSubsetVertexIndex I hI j hj = 0 := Fin.ext h
       have hf := (congrArg (simplexSubsetOrder I hI) he).trans (simplexSubsetOrder_first I hI)

@@ -41,7 +41,7 @@ theorem ordinaryDoubleCircleLoop_exchange (Z : PointedSimplicialSet.{u}) [KanCom
   have hs := congrArg Under.Hom.right (InternalHomTensor.natural_swap
     (C := PointedSimplicialSet.{u}) PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} L)
-  simp only [← PointedMapping.prePointed_eq_closedPre, Under.comp_right] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Under.comp_right] at hs
   change PointedMapping.pre (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
     PointedSimplicialSet.circle.{u}) L ≫ i.hom.right =
       i.hom.right ≫ (InternalHomExchange.iso PointedSimplicialSet.circle.{u}

@@ -41,7 +41,7 @@ lemma laxDifference_zero_iff (x : (laxCategory p q).obj _⦋0⦌) :
     IsZeroVertex ((laxDifference p q).app (Opposite.op ⦋0⦌) x) ↔
       F2.IsLaxEquivalenceVertex p.hom q.hom x := by
   change IsZeroVertex ((CofiberFamily.cofiber E.obj (F2.laxPullbackArrow p.hom q.hom)).app _ x) ↔ _
-  rw [CofiberFamily.cofiber_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber_vertex]
   exact (laxDifferenceFunctorSquare p q x).homMk_isIso_iff_zero.symm
 
 lemma laxDifference_preservesZero : PreservesZeroVertices (laxDifference p q) := by

@@ -89,7 +89,7 @@ lemma binaryProductSigma_adjoint {A B A' B' : PointedSimplicialSet.{u}}
   apply PointedObject.prod_hom_ext
   · rw [Category.assoc, loopProductIso_hom_fst]
     simp only [PointedObject.prodMap, PointedObject.prodLift_fst]
-    unfold suspensionLoopEquiv
+    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
     let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
     change adj.homEquiv (PointedObject.prod A B) (PointedObject.prod A' B')
         (binaryProductSigma s t) ≫
@@ -101,7 +101,7 @@ lemma binaryProductSigma_adjoint {A B A' B' : PointedSimplicialSet.{u}}
     exact adj.homEquiv_naturality_left (PointedObject.prodFst A B) s
   · rw [Category.assoc, loopProductIso_hom_snd]
     simp only [PointedObject.prodMap, PointedObject.prodLift_snd]
-    unfold suspensionLoopEquiv
+    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
     let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
     change adj.homEquiv (PointedObject.prod A B) (PointedObject.prod A' B')
         (binaryProductSigma s t) ≫

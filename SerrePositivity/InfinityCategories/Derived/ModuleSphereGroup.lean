@@ -110,7 +110,7 @@ def modulePiSphereGroupEquiv [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ
     change (modulePiSphereEquiv W n) (KanHomotopyGroup.mk f * KanHomotopyGroup.mk g) =
       (modulePiSphereEquiv W n) (KanHomotopyGroup.mk f) +
         (modulePiSphereEquiv W n) (KanHomotopyGroup.mk g)
-    rw [KanHomotopyGroup.mul_eq (moduleSphereAddMulStruct W f g)]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (moduleSphereAddMulStruct W f g)]
     change Submodule.Quotient.mk
       ((pointedModuleSimplexEquiv W n) ((pointedModuleSimplexEquiv W n).symm _)) =
         Submodule.Quotient.mk (pointedModuleSimplexEquiv W n f) +

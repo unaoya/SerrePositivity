@@ -35,16 +35,16 @@ lemma relativeFiberVertex_cellRestrictions (K : SSet.{u}) (Y : PointedSimplicial
     (n : ℕ) (g : UnbasedPointedMapping.skeletalRelativeSource K n ⟶ Y) :
     stageFiberVertex K Y n (fun s ↦ cellRestriction K Y (n + 1) g
       ((cellEquiv K (n + 1)).symm s)) = relativeFiberVertex K Y n g := by
-  rw [show (fun s ↦ cellRestriction K Y (n + 1) g ((cellEquiv K (n + 1)).symm s)) =
+  rw [show (fun s ↦ cellRestriction K Y (n + 1) g ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) =
       (fun s ↦ Limits.Sigma.ι
         (fun _ : relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1) ↦
-          SimplexCell.sphere.{u} (n + 1)) ((cellEquiv K (n + 1)).symm s) ≫
+          SimplexCell.sphere.{u} (n + 1)) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s) ≫
             (cellCoproductIso K (n + 1)).inv ≫ ((relativeCofiberIso K (n + 1)).inv ≫ g))
       from rfl, stageFiberVertex_cellMap]
   change (UnbasedPointedMapping.stageFiberIso K Y n).hom.right.app _
     (((MonoidalClosed.pre (relativeCofiberIso K (n + 1)).hom).app Y).right.app _
       (PointedMapping.familyVertex ((relativeCofiberIso K (n + 1)).inv ≫ g))) = _
-  rw [← PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   erw [PointedMapping.familyVertex_pre, Iso.hom_inv_id_assoc]
   rfl
 

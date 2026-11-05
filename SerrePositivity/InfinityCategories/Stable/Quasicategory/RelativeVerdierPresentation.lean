@@ -41,15 +41,15 @@ def ofSquare (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Verdi
     square := F ≫ ν
     left_eq := by
       have h := squareBottomEdge_source (F ≫ ν)
-      rw [hb, Equiv.apply_symm_apply, (stableArrow d.inclusion).src_eq] at h
+      rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
       exact h.symm
     middle_eq := by
       have h := squareBottomEdge_target (F ≫ ν)
-      rw [hb, Equiv.apply_symm_apply, (stableArrow d.inclusion).tgt_eq] at h
+      rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
       exact h.symm
     right_eq := by
       have h := squareRightEdge_target (F ≫ ν)
-      rw [hr, Equiv.apply_symm_apply, (stableArrow d.projection).tgt_eq] at h
+      rw [hr, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).tgt_eq] at h
       exact h.symm
     bottom_edge := hb
     right_edge := hr

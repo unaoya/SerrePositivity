@@ -31,7 +31,7 @@ lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y
         (X := PointedObject.basedHom (sphere.{u} (n + 1)) Y)
         (Y := PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y) r
           (PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y) a) := by
-  rw [PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   rfl
 
 /-- 概要：セルの球面の次数移動は点つき係数射と可換。
@@ -48,7 +48,7 @@ theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
         (PointedObject.basedHomMap (sphere.{u} (n + 1)) (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1 + r) p (positiveHomotopyEquiv Y n r a) := by
   have h := (MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).naturality p
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap (sphere.{u} (n + 1)) (Y := Y) (Z := Z) p ≫
       PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Z =
     PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y ≫

@@ -49,13 +49,13 @@ lemma nullHomotopyDifferenceFamily_transport :
   · intro j
     exact NullHomotopyTransport.filler_face (R n) (A n) j
   · intro j
-    rw [← Category.assoc, NullHomotopyTransport.filler_face]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.filler_face]
     dsimp only [triangleFace]
     split_ifs
     · exact (mapNullTo_map _ _ _ _).symm
     · exact (mapNullTo_map _ _ _ _).symm
     · exact hc n
-    · rw [const_comp, OmegaSpectrum.pointedMap_basepoint]
+    · rw [const_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
 
 include hc in
 /-- 相対ホモトピーに沿う移送は lim¹ の障害を保つ。 -/

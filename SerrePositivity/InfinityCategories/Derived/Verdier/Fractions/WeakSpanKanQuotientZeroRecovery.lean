@@ -84,7 +84,7 @@ def weakSpanKanQuotientZeroUnit_recovery :
       F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y) := by
     have hh := congrArg (fun f => s.inv ≫ f) hn.symm
     simp only [Functor.id_map, ← Category.assoc, s.inv_hom_id, Category.id_comp] at hh
-    simpa only [strictKanCompletion, Category.assoc] using! hh
+    simpa only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, Category.assoc] using! hh
   have e' := e ≪≫ eqToIso (congrArg HomotopyCategory.mk (congrArg functorVertex hr))
   change FunctorIso
     ((s.inv ≫ weakSpanKanQuotientSimplexUnitFiber h x c ≫ t.hom) ≫

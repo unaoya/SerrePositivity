@@ -55,7 +55,7 @@ theorem doubleFunctorEvaluation_precomp_vertex {K L A Y : SSet.{u}}
         (Opposite.op ⦋0⦌) (functorVertex F) =
       (doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
         (functorVertex (q ≫ F)) := by
-  rw [doubleFunctorEvaluation_vertex, doubleFunctorEvaluation_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex, _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex]
   rfl
 
 /-- 実分類写像の元の底変換同型は、同じ共同同型の転置の端点だけを変更する。 -/

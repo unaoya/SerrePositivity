@@ -1110,7 +1110,7 @@ private lemma verdierSpanQuotientTriangle_leg {A B C : StableCategory.{u}}
     rw [← NatTrans.comp_app, ← pre_map, hk]
   dsimp only [verdierSpanQuotientTriangleFamily]
   rw [hp, ← Category.assoc,
-    Category.assoc (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x),
+    Category.assoc (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x),
     fractionEvaluationTriangle_span]
   simp only [Category.assoc]
   rw [(pre k).naturality q.hom]
@@ -1685,7 +1685,7 @@ private def verdierFixedLiftedConeTotal {A B C : StableCategory.{u}}
       verdierLiftedIdentityCoslice h x p U hU) (by
     rw [Category.assoc, ← Category.assoc (verdierLiftedIdentityCoslice h x p U hU),
       verdierLiftedIdentityCoslice_projection, hU,
-      fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y])
+      fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y])
 
 private def verdierFixedLiftedConeProjection {A B C : StableCategory.{u}}
     {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
@@ -1737,7 +1737,7 @@ private def verdierFixedLiftedFamily {A B C : StableCategory.{u}}
     (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
     fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶ vertexFiber p (q.hom.app _ y) :=
   vertexFiberLift _ _ (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫ U) (by
-    rw [Category.assoc, hU, fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y])
+    rw [Category.assoc, hU, fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y])
 
 private lemma verdierFixedLiftedConeTotal_evaluation {A B C : StableCategory.{u}}
     {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
@@ -2021,9 +2021,9 @@ private def verdierLiftedCosliceSectionEvaluation_relativeIso {A B C : StableCat
   apply eqToIso
   apply congrArg HomotopyCategory.mk
   apply Subtype.ext
-  rw [coslicePointEvaluation_vertex_val p (q.hom.app _ x),
-    coslicePointEvaluation_vertex_val p (q.hom.app _ x),
-    verdierLiftedCosliceSectionEvaluation_identity, coslicePointFamilyAt_identity]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    verdierLiftedCosliceSectionEvaluation_identity, _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity]
   rfl
 
 private def verdierFixedLiftedCosliceSection {A B C : StableCategory.{u}}
@@ -2171,7 +2171,7 @@ private def verdierWeakQuotientUnitTriangle {A B C : StableCategory.{u}}
             (q.hom.app _ y)))
       (verdierFixedLiftedCompletion h x y
         (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU) := by
-  simpa only [coslicePointFamilyAt, weakQuotientCosliceUnit] using
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt, weakQuotientCosliceUnit] using
     verdierFixedLiftedSpecifiedPointTriangle h x y
       (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU
       (weakIdentityQuotientFiberPoint h x) e
@@ -2321,7 +2321,7 @@ private lemma verdierFractionComparison_of_kanUnitRecovery {A B C : StableCatego
     have ht := (groupoidCompletionEvaluationIso
       (verdierFixedLiftedFamily h x y p U hU)).postcomp v ≪≫ hrecovery ≪≫
         (groupoidCompletionEvaluationIso (F2.continuousKanReplacementUnit.app X)).symm
-    simpa only [verdierFixedLiftedCompletion, groupoidCompletionKanComparison,
+    simpa only [verdierFixedLiftedCompletion, _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison,
       Category.assoc] using! ht
   have hc := (groupoidCompletionKanComparison_isQCatEquivalence X).ofFunctorIso he.symm
   exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e (hv.cancel_right hc)

@@ -29,7 +29,7 @@ lemma fromD_fst_vertex (x : D.obj _⦋0⦌) :
     (Opposite.op ⦋0⦌)) x
   change (F2.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌)
     ((fromD p q).app (Opposite.op ⦋0⦌) x) = (zeroC : D.obj ⟶ C.obj).app _ x at h
-  simpa only [zeroC, zeroDiagram_const_vertex] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex] using h
 
 lemma fromD_initialBoundary (x : D.obj _⦋0⦌) :
     InitialBoundaryLifting (laxSnd p q).hom ((fromD p q).app (Opposite.op ⦋0⦌) x) := by

@@ -48,8 +48,8 @@ lemma stageFiberLoopIso_cell (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : 
       (UnbasedPointedMapping.stageFiberIso K Y n).hom) ≫ _ =
     (PointedMapping.loopSwap (cellCofiber K (n + 1)) Y).hom ≫
       (MonoidalClosed.pre (relativeCofiberIso K (n + 1)).hom).app (loopSpace Y) ≫ _
-  rw [← PointedMapping.prePointed_eq_closedPre,
-    ← PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
+    ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   change (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
     (PointedMapping.prePointed (relativeCofiberIso K (n + 1)).hom Y ≫
       (UnbasedPointedMapping.stageFiberIso K Y n).hom) ≫ _ = _

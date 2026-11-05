@@ -51,11 +51,11 @@ lemma cubeVertexConnection_cons (n : ℕ) (i : Fin (n + 1)) (b : Bool)
   funext j
   refine Fin.cases ?_ (fun j => ?_) j
   · have hz : (0 : Fin (n + 2)) ≠ i.succ := Ne.symm (Fin.succ_ne_zero i)
-    simp [cubeVertexConnection, cubeVertexDegeneracy, hz]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, hz]
   · by_cases hj : j = i
     · subst j
-      simp [cubeVertexConnection, Fin.castSucc_succ]
-    · simp [cubeVertexConnection, cubeVertexDegeneracy, hj, Fin.castSucc_succ]
+      simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, Fin.castSucc_succ]
+    · simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, hj, Fin.castSucc_succ]
 
 /-- 計算結果への定数の追加は、元の評価へ同じ定数を追加する。 -/
 lemma cubeFaceConnectionResultPoint_vertex {n m : ℕ} (b : Bool)

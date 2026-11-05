@@ -64,6 +64,6 @@ def loopPathRestriction (Y : PointedSimplicialSet.{u}) :
       PointedObject.basedHomι PointedSimplicialSet.circle Y ≫
         (MonoidalClosed.pre
           (PointedObject.cofiberQuotient (SSet.boundary.{u} 1).ι)).app Y.right := by
-  rw [loopPathRestriction, Spectra.PointedMapping.pre_ι, intervalCircleProjection_right]
+  rw [loopPathRestriction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, intervalCircleProjection_right]
 
 end SerrePositivity.KST.Comparison

@@ -41,11 +41,11 @@ def exchangeInterval (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
       (PointedMapping.prePointed swap.{u} Z) (PointedMapping.prePointed reversal.{u} Z) := by
   have hs : PointedMapping.prePointed swap.{u} Z = extensionSection Z ≫
       PointedMapping.prePointed (swap.{u} ≫ universalUnit.{u}) Z := by
-    rw [← PointedMapping.prePointed_comp, ← Category.assoc,
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, ← Category.assoc,
       extensionSection_condition, Category.id_comp]
   have hr : PointedMapping.prePointed reversal.{u} Z = extensionSection Z ≫
       PointedMapping.prePointed (reversal.{u} ≫ universalUnit.{u}) Z := by
-    rw [← PointedMapping.prePointed_comp, ← Category.assoc,
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, ← Category.assoc,
       extensionSection_condition, Category.id_comp]
   exact ((universalExchangePath.basedPre Z).pre (extensionSection Z)).changeEndpoints hs hr
 
@@ -60,7 +60,7 @@ lemma universalRestriction_post {Z Z' : PointedSimplicialSet.{u}} (v : Z ⟶ Z')
         PointedMapping.prePointed universalUnit.{u} Z' =
       PointedMapping.prePointed universalUnit.{u} Z ≫ PointedObject.basedHomMap source.{u} v := by
   have h := (MonoidalClosed.pre universalUnit.{u}).naturality v
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap universalTarget.{u} v ≫
       PointedMapping.prePointed universalUnit.{u} Z' =
     PointedMapping.prePointed universalUnit.{u} Z ≫ PointedObject.basedHomMap source.{u} v at h

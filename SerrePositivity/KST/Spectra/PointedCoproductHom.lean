@@ -52,7 +52,7 @@ lemma pointedCoproductHomUnderlyingIso_eval (S : Type u) (P X : PointedSimplicia
       SimplicialFunctionComplex.eval S ((cofiberMappingFunctor X).obj (op P)) s =
         (cofiberMappingFunctor X).map (Limits.Sigma.ι (fun (_ : S) ↦ P) s).op := by
     simp only [Iso.trans_hom, Functor.mapIso_hom, Category.assoc,
-      SimplicialFunctionComplex.productIso_hom_eval, PreservesProduct.iso_hom,
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso_hom_eval, PreservesProduct.iso_hom,
       piComparison_comp_π]
     rw [← CategoryTheory.Functor.map_comp, opCoproductIsoProduct_hom_comp_π]
   exact h.trans (cofiberMappingFunctor_map X _)
@@ -72,7 +72,7 @@ def pointedCoproductHomIso (S : Type u) (P X : PointedSimplicialSet.{u}) :
       SimplicialFunctionComplex.lift (fun (_ : S) ↦ (PointedObject.basedHom P X).hom) ≫
         SimplicialFunctionComplex.eval S (PointedObject.basedHom P X).right s
     rw [Category.assoc, pointedCoproductHomUnderlyingIso_eval,
-      SimplicialFunctionComplex.lift_eval]
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact Under.w (PointedMapping.prePointed (Limits.Sigma.ι (fun (_ : S) ↦ P) s) X))
 
 end

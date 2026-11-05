@@ -75,7 +75,7 @@ lemma terminalRefinementSquare_right :
   rw [← internalHomFlipHomEquiv_pre_app]
   apply congrArg (internalHomFlipHomEquiv Δ[n] Δ[1] X)
   have h := congrArg (· ≫ (pre horn₂₂.ι₀₂).app X) hF
-  rw [Category.assoc, simplexTerminalCospanFamily_right] at h
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_right] at h
   simpa only [pullbackProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     cospanSquareBoundary_rightEdge] using h
 
@@ -87,7 +87,7 @@ lemma terminalRefinementSquare_top :
   rw [← internalHomFlipHomEquiv_pre_app]
   apply congrArg (internalHomFlipHomEquiv Δ[n] Δ[1] X)
   have h := congrArg (· ≫ (pre horn₂₂.ι₁₂).app X) hF
-  rw [Category.assoc, simplexTerminalCospanFamily_top] at h
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_top] at h
   simpa only [pullbackProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     cospanSquareBoundary_topEdge] using h
 
@@ -97,7 +97,7 @@ lemma terminalRefinementSquare_original :
   change (squareTopEdge ≫ terminalRefinementSquare F).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = functorVertex D
   rw [terminalRefinementSquare_top D s hs F hF, internalHomFlipHomEquiv_app_zero,
-    simplexTerminalArrowFamily_source]
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_source]
 
 /-- 指定された元の辺を各頂点で厳密に回収する。 -/
 lemma terminalRefinementSquare_right_evaluate (k : (Δ[n] : SSet.{u}) _⦋0⦌) :

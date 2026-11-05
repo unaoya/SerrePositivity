@@ -41,7 +41,7 @@ include hE
 lemma zero_vertex (a : StableInfinity.{u} _⦋0⦌) (ha : IsZeroCategory (stableObject a)) :
     IsZeroVertex (E.app (Opposite.op ⦋0⦌) a) := by
   have h := hE.preservesZero (stableObject a) ha
-  rwa [stableVertex_object] at h
+  rwa [_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object] at h
 
 /-- Verdier 列の像の零角と四角形を、そのまま Sp の三角形として保持する。 -/
 def fiberTriangle (d : VerdierDiagram.{u}) : ZeroTriangle Spectra.Sp.{u} where

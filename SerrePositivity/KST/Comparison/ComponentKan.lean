@@ -63,7 +63,7 @@ theorem simplex_in_component_of_face (X : SSet.{u}) (P : π₀ X → Prop) {n : 
   change X.map (SimplexCategory.δ i).op (yonedaEquiv f) = (yonedaEquiv g).val at he
   have hg := (yonedaEquiv g).property
   change P (simplexClass X (yonedaEquiv g).val) at hg
-  rw [← he, simplexClass_map] at hg
+  rw [← he, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map] at hg
   exact hg
 
 /--

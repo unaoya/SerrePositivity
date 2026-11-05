@@ -72,7 +72,7 @@ theorem leftStraighteningRepresentationIso_inv_value (c : TransportSimplexCatego
       functorHomEvaluate (straighteningRepresentationRestrictionIso p R).inv
         (ULift.up (nerveVertex c)) := by
   have h := congrArg (fun e => e.inv) (leftStraighteningRepresentationIso_valueIso p R c)
-  rw [functorIsoValue_inv, functorIsoValue_inv] at h
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv] at h
   exact h
 
 end SerrePositivity.KST.Fibration

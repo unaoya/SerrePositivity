@@ -50,7 +50,7 @@ lemma paramCurry_restriction_zero :
       SSet.const (PointedSimplicialSet.basepoint (PointedObject.basedHom B E)) := by
   rw [← familyVertex_zero B E]
   apply (cancel_mono (PointedObject.basedHomι B E)).1
-  rw [Category.assoc, pre_ι, ← Category.assoc, paramCurry_ι]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
   apply uncurry_injective
   rw [uncurry_pre_app, uncurry_curry, uncurry_const_familyVertex,
     PointedObject.zero_right, comp_toUnit_assoc]
@@ -69,7 +69,7 @@ lemma cofiberInterval_restriction :
       paramCurry A E H.h hbase := by
   dsimp only [cofiberInterval]
   rw [Category.assoc, ← cofiberMappingFiberIso_hom_ι,
-    Iso.inv_hom_id_assoc, fiberLift_ι]
+    Iso.inv_hom_id_assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
 
 /-- 降ろした区間は、元の二つの降下射を同じ端点として持つ。 -/
 def cofiberEdge : (PointedObject.basedHom (pointedCofiber j) E).right.Edge

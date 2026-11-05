@@ -41,7 +41,7 @@ lemma underlyingIso_preMap {I : Type u} [SmallCategory I] {W V : I ⥤ SSet.{u}}
   intro i
   rw [Category.assoc, underlyingIso_π, ← Category.assoc]
   have hp := congrArg Under.Hom.right (preMap_π θ D i)
-  rw [← PointedMapping.prePointed_eq_closedPre] at hp
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hp
   change (preMap θ D).right ≫ (end_.π (diagram W D) i).right =
     (end_.π (diagram V D) i).right ≫
       (PointedMapping.prePointed (PointedObject.adjoinFunctor.map (θ.app i)) (D.obj i)).right

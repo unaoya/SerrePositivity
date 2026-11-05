@@ -36,8 +36,8 @@ theorem cotensorStageEquiv_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
         (cotensorStageEquiv B X j k n hk hd a) := by
   simp only [cotensorStageEquiv, MulEquiv.trans_apply]
   rw [positiveStageEquiv_natural]
-  erw [KanHomotopyGroup.equivOfPiIsomorphism_apply,
-    KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply,
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   change pointedGroupMap n ((cotensorProjection A X).app k)
     (pointedGroupMap n ((cotensorPre i X).app k) _) =
       pointedGroupMap n (PointedMapping.prePointed i (X.level k).space)

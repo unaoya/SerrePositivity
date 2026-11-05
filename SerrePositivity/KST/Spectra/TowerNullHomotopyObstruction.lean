@@ -77,11 +77,11 @@ lemma nullHomotopyDifferenceFamily_change
         (fun n ↦ pointedGroupMap (r + 1) (p n))
         (fun n ↦ difference (R' n) (R n)) (nullHomotopyDifferenceFamily X p r s hs R) := by
   funext n
-  dsimp only [nullHomotopyDifferenceFamily, TowerLimOne.twist]
+  dsimp only [nullHomotopyDifferenceFamily, _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist]
   rw [difference_change (R n)
-    (mapNullTo (p n).right (OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1)))
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R (n + 1)))
     (R' n)
-    (mapNullTo (p n).right (OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R' (n + 1))),
+    (mapNullTo (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n)) (hs n) (R' (n + 1))),
     ← difference_map_to]
   rfl
 

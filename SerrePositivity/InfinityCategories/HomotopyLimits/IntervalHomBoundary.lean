@@ -117,7 +117,7 @@ instance intervalHomEndpoints_fibration (Y : SSet.{u}) [KanComplex Y] :
 lemma intervalHomEndpoints_fst (Y : SSet.{u}) :
     intervalHomEndpoints Y ≫ prod.fst = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 1) := by
   rw [intervalHomEndpoints, Category.assoc, intervalHomBoundaryEvaluationIso_hom_fst,
-    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, intervalEndpoint_inl]
+    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
   exact homPre_const_unitIsoSelf _
 
 /-- 概要：両端点評価の第二射影は区間の始点零での評価。
@@ -127,7 +127,7 @@ lemma intervalHomEndpoints_fst (Y : SSet.{u}) :
 lemma intervalHomEndpoints_snd (Y : SSet.{u}) :
     intervalHomEndpoints Y ≫ prod.snd = evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0) := by
   rw [intervalHomEndpoints, Category.assoc, intervalHomBoundaryEvaluationIso_hom_snd,
-    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, intervalEndpoint_inr]
+    ← Category.assoc, ← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr]
   exact homPre_const_unitIsoSelf _
 
 end

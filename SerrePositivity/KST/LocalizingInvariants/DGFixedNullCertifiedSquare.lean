@@ -43,7 +43,7 @@ lemma exists_dgFixedNullCertifiedSquare
     rw [hle, Equiv.apply_symm_apply, le.tgt_eq] at he
     exact he.symm
   change IsZeroCategory (stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
-  rw [hz, dgKInputNu_vertex, stableObject_vertex]
+  rw [hz, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R A
 
 lemma exists_dgOdotCertifiedNullSquare (d : DGOdotInput R) :

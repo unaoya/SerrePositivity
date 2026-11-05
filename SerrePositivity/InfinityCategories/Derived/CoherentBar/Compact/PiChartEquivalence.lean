@@ -61,7 +61,7 @@ lemma dgBarCompactPiChart_naturality_of_comparison
         (dgBarCompactPiMap n (e.inv ≫ f) y a) := by
     dsimp only [DGBarCompactPiChart.ofEquivalence, Equiv.trans_apply,
       MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv,
-      KanHomotopyGroup.equivOfPiIsomorphism_apply]
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact (congrArg (c'.equiv ((g ≫ e'.inv).app _ y)) hright.symm).trans hi.symm
   rw [he]
   have hf' : c'.equiv ((e.inv ≫ f).app _ y)
@@ -69,7 +69,7 @@ lemma dgBarCompactPiChart_naturality_of_comparison
         φ ((c.ofEquivalence e).equiv y a) := by
     dsimp only [DGBarCompactPiChart.ofEquivalence, Equiv.trans_apply,
       MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv,
-      KanHomotopyGroup.equivOfPiIsomorphism_apply]
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact hf (e.inv.app _ y) (dgBarCompactPiMap n e.inv y a)
   exact (congrArg (c'.equiv ((e.inv ≫ f).app _ y)) hleft).trans hf'
 

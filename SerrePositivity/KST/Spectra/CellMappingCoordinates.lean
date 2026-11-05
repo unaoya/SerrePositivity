@@ -41,8 +41,8 @@ lemma cellHomFunctionIso_pointedEval (K : SSet.{u}) (Y : PointedSimplicialSet.{u
   rw [pointedCoproductHomUnderlyingIso_eval]
   change (((MonoidalClosed.pre (cellCoproductIso K d).inv).app Y) ≫
     PointedMapping.prePointed _ Y).right = _
-  rw [PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
-  rw [PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   rfl
 
 @[reassoc]

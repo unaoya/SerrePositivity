@@ -24,7 +24,7 @@ theorem fractionSimplexKanMappingDiagram_map_initial_isQCatEquivalence
       (transportSimplexFirstVertexMap X ≫ F) =
       SSet.const (F.app (Opposite.op ⦋0⦌)
         ((transportSimplexFirstVertexMap X).app (Opposite.op ⦋0⦌) (nerveVertex c))) := by
-    rw [← Category.assoc, transportSimplexFirstVertexMap_interval_constant f hf, SSet.const_comp]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Transport.transportSimplexFirstVertexMap_interval_constant f hf, SSet.const_comp]
   exact cocartesianKanDiagram_map_constantEdge_isQCatEquivalence
     (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x)))
     (transportSimplexFirstVertexMap X ≫ F) f _ rfl

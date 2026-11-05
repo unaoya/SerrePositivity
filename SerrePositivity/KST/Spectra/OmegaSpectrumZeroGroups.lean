@@ -87,7 +87,7 @@ def transition (X : OmegaSpectrum.{u}) (k n : ℕ) :
 theorem zeroTransitionEquiv_point (X : OmegaSpectrum.{u}) (k : ℕ) :
     zeroTransitionEquiv X k (KanHomotopy.point 0) = 1 := by
   dsimp only [zeroTransitionEquiv]
-  rw [Equiv.trans_apply, KanHomotopy.equivOfPiIsomorphism_point, loopZeroHomotopyEquiv_point]
+  rw [Equiv.trans_apply, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_point, loopZeroHomotopyEquiv_point]
 
 /-- 概要：各段の零次数の可換群の単位は元の基点。
 方針：移送同値の単射性と基点の像の計算を使う。

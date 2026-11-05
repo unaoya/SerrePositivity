@@ -75,7 +75,7 @@ lemma weightedComposition_π {I : Type u} [SmallCategory I] (X Y : OmegaSpectrum
     (ihom (PointedObject.adjoin (W.obj i))).map (curry (pointedComposition X Y (D.obj i))) ≫
     (InternalHomExchange.iso (pointedSpace X Y.toKanSequence)
       (PointedObject.adjoin (W.obj i)) (pointedSpace X (D.obj i))).inv) = _
-  rw [← InternalHomExchange.hom_eq_inv, ← InternalHomExchange.curry_strength,
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength,
     uncurry_natural_left, uncurry_curry, id_tensorHom]
   rfl
 

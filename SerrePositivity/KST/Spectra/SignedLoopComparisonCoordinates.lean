@@ -38,12 +38,12 @@ lemma iterateHom_tail_mappingPre_app (Y : KanSequence.{u}) (m n : ℕ) :
   induction m with
   | zero =>
     simp only [iterateHom, CirclePower.reversalIterate,
-      PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id]
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id]
     rfl
   | succ m ih =>
     change (iterateHom (tailHom (mappingPre (CirclePower.integerPowerMap.{u} (-1)) Y)) m).app n ≫
       PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) (Y.level (n + 1)).space = _
-    rw [ih, CirclePower.reversalIterate, PointedMapping.prePointed_comp]
+    rw [ih, CirclePower.reversalIterate, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
 
 end KanSequence
 namespace OmegaSpectrum
@@ -68,7 +68,7 @@ lemma signedLoopRawComparison_restriction (X : OmegaSpectrum.{u}) (n : ℕ) :
         PointedMapping.prePointed (CirclePower.signedEvaluationParameter n)
           (X.level (n + 1)).space := by
   rw [signedLoopRawComparison_app, Category.assoc, CirclePower.signedEvaluationParameter,
-    PointedMapping.prePointed_comp]
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
 
 /-- BF 持ち上げ後の同じ比較射でも、射影・通常円制限の座標は変わらない。 -/
 lemma signedLoopComparison_restriction (X : OmegaSpectrum.{u}) (n : ℕ) :

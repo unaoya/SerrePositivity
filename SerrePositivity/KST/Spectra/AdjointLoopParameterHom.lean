@@ -53,9 +53,9 @@ def adjointLoopMappingExchange (A : PointedSimplicialSet.{u}) (X : KanSequence.{
             (InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
               (X.level (n + 1)).space).hom
       simp only [CategoryTheory.Functor.map_comp, Category.assoc]
-      rw [← InternalHomExchange.natural_post_assoc PointedSimplicialSet.circle.{u} A
+      rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post_assoc PointedSimplicialSet.circle.{u} A
         (ordinaryStructureAdjoint X n)]
-      simp only [InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}]
       simp only [Iso.hom_inv_id, Category.comp_id]
       rw [← CategoryTheory.Functor.map_comp, Iso.inv_hom_id,
         CategoryTheory.Functor.map_id, Category.comp_id])
@@ -97,7 +97,7 @@ lemma adjointLoopParameterHom_pre {A B : PointedSimplicialSet.{u}} (i : B ⟶ A)
   rw [CategoryTheory.Functor.map_comp, Category.assoc]
   have h := InternalHomExchange.natural_pre_right PointedSimplicialSet.circle.{u} i
     (Y.level n).space
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   erw [h]
   rw [Category.assoc]
   rfl
@@ -126,7 +126,7 @@ lemma adjointLoopTailUnit_parameter_natural
   have hh := congrArg (· ≫
     (InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
       (Y.level (n + 1)).space).hom) h
-  rw [InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}] at hh
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}] at hh
   simpa only [ordinaryStructureAdjoint, Category.assoc, Iso.inv_hom_id,
     Iso.inv_hom_id_assoc, Category.comp_id] using hh
 

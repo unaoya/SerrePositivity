@@ -47,7 +47,7 @@ lemma BoundaryLift.pointedFiberZeroEquiv_mk {E B : PointedSimplicialSet.{u}} {p 
     (L : BoundaryLift p.right E.basepoint s) :
     pointedFiberZeroEquiv p (KanHomotopy.mk 0 L.pointedBoundary) = KanHomotopy.mk 0 L.boundary := by
   change KanHomotopy.map 0 (𝟙 _) _ (KanHomotopy.mk 0 L.pointedBoundary) = _
-  rw [KanHomotopy.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   congr 1
 
 /-- 概要：標準の零次数連結写像は任意の相対ホーン充填の最後の頂点で計算できる。
@@ -65,7 +65,7 @@ lemma pointedConnectingZero_boundaryLift {E B : PointedSimplicialSet.{u}} (p : E
   apply (pointedFiberZeroEquiv p).injective
   dsimp only [pointedConnectingZero]
   rw [Equiv.apply_symm_apply, MulEquiv.symm_apply_apply, BoundaryLift.pointedFiberZeroEquiv_mk,
-    connecting_eq p.right E.basepoint L]
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p.right E.basepoint L]
 
 end
 end SerrePositivity.KST.Spectra

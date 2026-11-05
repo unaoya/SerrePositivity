@@ -31,12 +31,12 @@ lemma diagonal_filler_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
   · have he : j = (Fin.last (n + 2)).castSucc := Fin.ext h₀
     subst j
     rw [stdSimplex.δ_comp_σ_self_assoc]
-    simp [face]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   by_cases h₁ : j.val = n + 3
   · have he : j = (Fin.last (n + 2)).succ := Fin.ext h₁
     subst j
     rw [stdSimplex.δ_comp_σ_succ_assoc]
-    simp [face]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   have hjlast : j ≠ Fin.last (n + 3) := fun he ↦ h₁ (congrArg Fin.val he)
   obtain ⟨j, rfl⟩ := j.eq_castSucc_of_ne_last hjlast
   simp only [Fin.val_castSucc] at h₀ h₁
@@ -45,9 +45,9 @@ lemma diagonal_filler_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     have hjb := j.isLt
     omega
   rw [show Fin.last (n + 2) = (Fin.last (n + 1)).succ from (Fin.succ_last _).symm,
-    stdSimplex.δ_comp_σ_of_le_assoc hj, null_face,
+    stdSimplex.δ_comp_σ_of_le_assoc hj, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face,
     ite_eq_right (show j ≠ Fin.last (n + 2) from fun he ↦ h₀ (congrArg Fin.val he)), comp_const]
-  simp only [face, Fin.val_castSucc, ite_eq_right h₀, ite_eq_right h₁]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, Fin.val_castSucc, ite_eq_right h₀, ite_eq_right h₁]
 
 /-- 同じ零ホモトピーの差を充填する最後の退化の欠ける面は定数。 -/
 lemma diagonal_missing_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
@@ -55,7 +55,7 @@ lemma diagonal_missing_face (R : PtSimplex.RelStruct .const s (Fin.last (n + 1))
       stdSimplex.σ (Fin.last (n + 2)) ≫ R.map = SSet.const x := by
   rw [show Fin.last (n + 2) = (Fin.last (n + 1)).succ from (Fin.succ_last _).symm,
     stdSimplex.δ_comp_σ_of_le_assoc (show (Fin.last (n + 1)).castSucc ≤
-      (Fin.last (n + 1)).castSucc from le_rfl), null_face]
+      (Fin.last (n + 1)).castSucc from le_rfl), _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face]
   rw [ite_eq_right (Fin.castSucc_ne_last _), comp_const]
 
 /-- 差の構成は、同じ零ホモトピー同士では単位元になる。 -/

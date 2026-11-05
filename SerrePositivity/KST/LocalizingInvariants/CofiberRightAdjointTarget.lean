@@ -24,7 +24,7 @@ lemma cofiberRightAdjoint_target (X : SSet.{u}) [Quasicategory X] [IsStable X] :
     cofiberRightAdjoint X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       𝟙 X := by
   simp only [cofiberRightAdjoint, CofiberRotation.inverseRotation, Category.assoc]
-  rw [cofiber_bottom_target_eq_right_source]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_bottom_target_eq_right_source]
   rw [← Category.assoc (CofiberRotation.rightSection X), CofiberRotation.rightSection_right,
     Category.id_comp]
   exact identityArrow_source X

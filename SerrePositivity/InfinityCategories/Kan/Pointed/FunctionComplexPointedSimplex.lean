@@ -40,7 +40,7 @@ def simplex (f : ∀ s, X.PtSimplex n (b s)) : (_root_.SerrePositivity.InfinityC
   comm := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, lift_eval]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     change (boundary n).ι ≫ (f s).map = SSet.const (b s)
     simp
 
@@ -60,22 +60,22 @@ def relStruct {f g : (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFu
   δ_castSucc_map := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, lift_eval]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact (r s).δ_castSucc_map
   δ_succ_map := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, lift_eval]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact (r s).δ_succ_map
   δ_map_of_lt j hj := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, lift_eval, SSet.const_comp]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, SSet.const_comp]
     exact (r s).δ_map_of_lt j hj
   δ_map_of_gt j hj := by
     apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
     intro s
-    rw [Category.assoc, lift_eval, SSet.const_comp]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, SSet.const_comp]
     exact (r s).δ_map_of_gt j hj
 
 end

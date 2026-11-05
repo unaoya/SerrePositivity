@@ -22,7 +22,7 @@ lemma transpose_pre_inner {T A B V : PointedSimplicialSet.{u}}
     transpose (f ≫ prePointed j V) = j ≫ transpose f := by
   apply uncurry_injective
   unfold transpose
-  conv_lhs => rw [uncurry_curry, prePointed_eq_closedPre, uncurry_pre_app]
+  conv_lhs => rw [uncurry_curry, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
   conv_rhs => rw [uncurry_natural_left, uncurry_curry]
   rw [← Category.assoc, ← BraidedCategory.braiding_naturality_right]
   simp only [Category.assoc]

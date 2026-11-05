@@ -18,7 +18,7 @@ lemma necklaceRefinement_joint_iff
     (v : (NecklaceShape.single T.down.vertexMax).NonjointVertex) :
     v.val.val ∈ T.down.joints ↔ v = j := by
   have hv : v.val.val ≠ 0 ∧ v.val.val ≠ T.down.vertexMax := by
-    simpa only [NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
+    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
       using v.property
   rw [hJ]
   simp only [Finset.mem_insert, Finset.mem_singleton, hv.1, hv.2, false_or, or_false]
@@ -73,8 +73,8 @@ lemma necklaceRefinementMissingCoordinate_codimension
   have hs : T.down.nonjointNumbers =
       (NecklaceShape.single T.down.vertexMax).nonjointNumbers.erase j.val.val := by
     ext k
-    simp only [NecklaceShape.nonjointNumbers, Finset.mem_erase, Finset.mem_filter,
-      hJ, NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumbers, Finset.mem_erase, Finset.mem_filter,
+      hJ, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single, Finset.mem_insert, Finset.mem_singleton, not_or]
     tauto
   have hj : j.val.val ∈ (NecklaceShape.single T.down.vertexMax).nonjointNumbers :=
     Finset.mem_filter.mpr ⟨Finset.mem_range.mpr j.val.isLt, j.property⟩

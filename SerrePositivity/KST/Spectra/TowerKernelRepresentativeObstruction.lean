@@ -37,7 +37,7 @@ lemma projectedSimplex_comp (n : ℕ) :
   apply RelativeMorphism.ext
   change (s.map ≫ FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
     s.map ≫ FibrationTower.projection _ _ n
-  rw [Category.assoc, FibrationTower.projection_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
 
 variable [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right]
   (hzero : limitGroupComparison X p r (KanHomotopyGroup.mk s) = 1)
@@ -48,7 +48,7 @@ lemma exists_projected_nullHomotopy (n : ℕ) :
     Nonempty (PtSimplex.RelStruct .const (projectedSimplex X p r s n) (Fin.last (r + 1))) := by
   have he := (limitGroupComparison_eq_one_iff X p r (KanHomotopyGroup.mk s)).1 hzero n
   change KanHomotopyGroup.map _ rfl (KanHomotopyGroup.mk s) = 1 at he
-  rw [KanHomotopyGroup.map_mk] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk] at he
   apply (simplexRel_iff_relStruct (Fin.last (r + 1))).1
   apply (KanHomotopyGroup.mk_eq_iff _ _).1
   exact he.symm
@@ -91,7 +91,7 @@ theorem kernelRepresentativeObstruction_eq_point_of_null
   intro n
   change (R.map ≫ FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
     R.map ≫ FibrationTower.projection _ _ n
-  rw [Category.assoc, FibrationTower.projection_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
 
 /-- 極限のホモトピー群で零となる代表は lim¹ の零障害を持つ。 -/
 theorem kernelRepresentativeObstruction_eq_point_of_mk_eq_one

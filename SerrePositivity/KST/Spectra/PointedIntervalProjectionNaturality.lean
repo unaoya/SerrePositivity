@@ -34,7 +34,7 @@ lemma pre_projection_path {U : PointedSimplicialSet.{u}} (i : U ⟶ T) :
     (P.pre i).path ≫ (PointedObject.basedHomMap U p).right = (Q.pre i).path := by
   have hs : prePointed i E ≫ PointedObject.basedHomMap U p =
       PointedObject.basedHomMap T p ≫ prePointed i F := by
-    simp only [prePointed_eq_closedPre]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact ((MonoidalClosed.pre i).naturality p).symm
   have he := congrArg Under.Hom.right hs
   change (prePointed i E).right ≫ (PointedObject.basedHomMap U p).right =

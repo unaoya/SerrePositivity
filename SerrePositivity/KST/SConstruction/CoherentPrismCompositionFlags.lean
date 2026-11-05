@@ -28,7 +28,7 @@ lemma coherentLowerPrismRefinementPath_cut {s t : CoherentArrowString f} (a : s 
   refine ⟨(Fin.last s.length).castSucc, ?_⟩
   change ULift.up ((coherentLowerStringExtend a.map).toOrderHom
     (Fin.last s.length).castSucc) = _
-  rw [coherentLowerStringExtend_castSucc, a.last]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_castSucc, a.last]
 
 /-- 上側の全精密化の Path は、元の始点の縦辺の直後の切断点を通る。 -/
 lemma coherentUpperPrismRefinementPath_cut {s t : CoherentArrowString f} (a : s ⟶ t) :
@@ -37,7 +37,7 @@ lemma coherentUpperPrismRefinementPath_cut {s t : CoherentArrowString f} (a : s 
   refine ⟨(0 : Fin (s.length + 1)).succ, ?_⟩
   change ULift.up ((coherentUpperStringExtend a.map).toOrderHom
     (0 : Fin (s.length + 1)).succ) = _
-  rw [coherentUpperStringExtend_succ, a.first]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_succ, a.first]
 
 /-- 下側の全高次精密化の単体は、元の合成面に厳密に属する。 -/
 lemma coherentLowerPrismPathFlag_through {d : ℕ}

@@ -65,7 +65,7 @@ def mappingPathComparison {X Y : KanSequence.{u}} (f : Hom X Y) :
     { app n := 𝟙 _, comm n := by simp } (fun n ↦ by
       change (f.app n ≫ freeConstantPath (Y.level n).space) ≫
         freePathEndpoint (Y.level n).space 1 = (𝟙 _) ≫ f.app n
-      simp only [Category.assoc, freeConstantPath_endpoint, Category.comp_id, Category.id_comp])
+      simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint, Category.comp_id, Category.id_comp])
 
 /-- 概要：mapping path の源射影は各段で全ての単射に RLP を持つ。
 方針：始点評価の RLP を引き戻す。

@@ -51,7 +51,7 @@ theorem omega_exchange_sign_parameterized (A : PointedSimplicialSet.{u})
     (InternalHomExchange.pairIso_swap (C := PointedSimplicialSet.{u}) A K K Y)
   have hv := InternalHomExchange.pairIso_pre_inner
     (C := PointedSimplicialSet.{u}) A K (CirclePower.integerPowerMap.{u} (-1)) Y
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hv
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hv
   have hv' := congrArg Under.Hom.right hv
   funext b
   apply hinj

@@ -43,7 +43,7 @@ lemma homotopyLimitEdgewiseEndFamily_right (D : I ⥤ OmegaSpectrum.{u}) (X : Om
       edgewiseRight (mappingSpace X (homotopyLimit D)) ≫ homotopyLimitHomEndFamily D X := by
   dsimp only [homotopyLimitEdgewiseEndFamily, homotopyLimitHomEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_right, ← Category.assoc,
-    ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_right, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_right, Category.assoc]
   rfl
 
 /-- 共通解像の比較族を左射影すると、元の反転 end の点の比較族になる。 -/
@@ -53,7 +53,7 @@ lemma homotopyLimitEdgewiseEndFamily_left (D : I ⥤ OmegaSpectrum.{u}) (X : Ome
       edgewiseLeft (mappingSpace X (homotopyLimit D)) ≫ homotopyLimitReflectedEndFamily D X := by
   dsimp only [homotopyLimitEdgewiseEndFamily, homotopyLimitReflectedEndFamily]
   rw [Category.assoc, ← edgewiseHomEndPrecomposition_left, ← Category.assoc,
-    ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_left, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality, homotopyLimitEdgewiseEndPointMap_left, Category.assoc]
   rfl
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

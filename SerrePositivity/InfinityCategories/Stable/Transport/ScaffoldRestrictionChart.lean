@@ -79,7 +79,7 @@ lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
     F2.isoNormalizeEndpoints (functorIsoValue (e ≪≫ f) x) ha hc =
       F2.isoNormalizeEndpoints (functorIsoValue e x) ha hb ≪≫
         F2.isoNormalizeEndpoints (functorIsoValue f x) hb hc := by
-  rw [functorIsoValue_trans]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_trans]
   exact normalizeComposition _ _ ha hb hc
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]

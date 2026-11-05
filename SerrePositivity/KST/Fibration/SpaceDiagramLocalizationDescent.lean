@@ -32,7 +32,7 @@ def spaceDiagramLocalizationDescendIso :
     (FunctorIso.ulift.{u, u + 1}
       (localizationDescendIso q W hq (smallSpaceDiagram F) (smallSpaceDiagram_inverts F W hF)))
     (smallSpaceDiagramInclusion F)
-  rw [Functor.map_comp, Category.assoc, smallSpaceDiagram_inclusion] at e
+  rw [Functor.map_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion] at e
   exact e
 
 end SerrePositivity.KST.Fibration

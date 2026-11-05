@@ -66,7 +66,7 @@ def circleCompanionComparisonBranchTriangle (z : Sp.{u} _⦋0⦌) (k : WalkingPa
 lemma circleCompanionComparisonTetrahedron_zero (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :
     Sp.δ 0 (circleCompanionComparisonTetrahedron z k) = circleCompanionReflectedTriangle z k := by
   rw [circleCompanionComparisonTetrahedron, ← stdSimplex.yonedaEquiv_δ_comp,
-    ConeEdgeInterval.simplexMap_zero]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_zero]
   change circleCompanionBKCoherentConeSimplex z (LoopEdgewiseSection.arrow k) = _
   exact circleCompanionBKCoherentConeSimplex_triangle z k
 
@@ -74,7 +74,7 @@ lemma circleCompanionComparisonTetrahedron_zero (z : Sp.{u} _⦋0⦌) (k : Walki
 lemma circleCompanionComparisonTetrahedron_one (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :
     Sp.δ 1 (circleCompanionComparisonTetrahedron z k) = circleNativeComparisonTriangle z k := by
   rw [circleCompanionComparisonTetrahedron, ← stdSimplex.yonedaEquiv_δ_comp,
-    ConeEdgeInterval.simplexMap_one]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_one]
   rfl
 
 /-- 二面は、二つの底の区間に共通する中央の三角形そのもの。 -/
@@ -82,7 +82,7 @@ lemma circleCompanionComparisonTetrahedron_two (z : Sp.{u} _⦋0⦌) (k : Walkin
     Sp.δ 2 (circleCompanionComparisonTetrahedron z k) =
       circleCompanionComparisonCentralTriangle z := by
   rw [circleCompanionComparisonTetrahedron, ← stdSimplex.yonedaEquiv_δ_comp,
-    ConeEdgeInterval.simplexMap_two]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_two]
   cases k
   · rfl
   · rw [← circleConeComparisonParameter_target_common]
@@ -93,7 +93,7 @@ lemma circleCompanionComparisonTetrahedron_three (z : Sp.{u} _⦋0⦌) (k : Walk
     Sp.δ 3 (circleCompanionComparisonTetrahedron z k) =
       circleCompanionComparisonBranchTriangle z k := by
   rw [circleCompanionComparisonTetrahedron, ← stdSimplex.yonedaEquiv_δ_comp,
-    ConeEdgeInterval.simplexMap_three]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_three]
   rfl
 
 /-- 同じ三単体の最初の辺は、元の比較の BF 自己射そのもの。 -/
@@ -102,7 +102,7 @@ lemma circleCompanionComparisonTetrahedron_apex (z : Sp.{u} _⦋0⦌) (k : Walki
       SSet.yonedaEquiv.symm (circleCompanionComparisonTetrahedron z k) =
     SSet.yonedaEquiv.symm (coherentNerveEdge (circleCompanionConeComparisonHom z)).edge := by
   rw [circleCompanionComparisonTetrahedron, Equiv.symm_apply_apply,
-    ConeEdgeInterval.simplexMap_apex_edge]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_apex_edge]
   exact circleCompanionConeComparisonExtension_apex z
 
 /-- 同じ三単体の最後の辺は、元の底の strict 図式の同じ区間。 -/
@@ -112,6 +112,6 @@ lemma circleCompanionComparisonTetrahedron_base (z : Sp.{u} _⦋0⦌) (k : Walki
     circleConeComparisonParameter k ≫ strictCoherentDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
   rw [circleCompanionComparisonTetrahedron, Equiv.symm_apply_apply,
-    ConeEdgeInterval.simplexMap_base_edge]
+    _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_base_edge]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

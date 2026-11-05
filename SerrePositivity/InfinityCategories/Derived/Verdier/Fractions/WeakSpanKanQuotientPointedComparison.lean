@@ -102,7 +102,7 @@ def weakSpanKanQuotientSimplexComparisonFiberTransportIso
       vertexFiberMap (leftUnstraighteningProjection F) (leftUnstraighteningProjection G)
         (unstraighteningFunctorHom a) (unstraighteningFunctorHom_projection a) (ULift.up b) ≫
           (leftUnstraighteningFiberIso G (ULift.up b)).hom := by
-    simpa only [← smallUnstraighteningFunctorHom_eq_overMap a, Category.assoc] using! hn
+    simpa only [← _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_eq_overMap a, Category.assoc] using! hn
   dsimp only
   rw [hn']
   exact ht

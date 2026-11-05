@@ -63,7 +63,7 @@ lemma loopFamilyMap_interval {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
   change _ = curry ((β_ A (Δ[1] : SSet.{u})).hom ≫
     uncurry (f ≫ PointedMapping.pre circleIntervalProjection Y ≫
       PointedObject.basedHomι pointedInterval Y))
-  erw [PointedMapping.pre_ι]
+  erw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι]
   have he := uncurry_pre_app Y.right
     (f ≫ PointedObject.basedHomι PointedSimplicialSet.circle Y)
     circleIntervalProjection.right
@@ -85,7 +85,7 @@ lemma loopSwap_inv_mapVertex {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (loopSwap A Y).inv.right.app _ (mapVertex (loopSpace Y) f) =
       PointedMapping.familyVertex (loopFamilyMap Y f) := by
   let g := (PointedObject.adjoinHomEquiv A (loopSpace Y)).symm f
-  rw [← freeHomIso_familyVertex (loopSpace Y) f]
+  rw [← freeHomIso_familyVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) f]
   change (PointedObject.basedHomMap PointedSimplicialSet.circle (freeHomIso A Y).hom).right.app _
     ((PointedMapping.loopSwap (PointedObject.adjoin A) Y).inv.right.app _
       ((freeHomIso A (loopSpace Y)).inv.right.app _
@@ -113,7 +113,7 @@ lemma loopZero_mapVertex {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
     apply KanHomotopyZero.equivPiZero.injective
     rw [Equiv.apply_symm_apply]
     change _ = KanHomotopyZero.equivPiZero (KanHomotopyZero.mk _)
-    rw [KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply,
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply,
       mapπ₀_mk, loopSwap_inv_mapVertex]
   rw [hz, loopZeroHomotopyEquiv_familyVertex, loopFamilyMap_toSimplex]
 

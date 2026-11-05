@@ -29,7 +29,7 @@ lemma FreePointedHomRestriction.restrict_familyVertex {K : SSet.{u}}
   rw [← SSet.yonedaEquiv_comp]
   apply congrArg SSet.yonedaEquiv
   rw [FreePointedHomRestriction.restrict, ← Category.assoc,
-    PointedMapping.pointFamily, PointedMapping.paramCurry_ι, curry_pre_app,
+    PointedMapping.pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app,
     whiskerRight_fst_assoc]
   rfl
 
@@ -45,7 +45,7 @@ lemma family_eq_transpose {K : SSet.{u}} {T E : PointedSimplicialSet.{u}}
   symm
   have hh : (InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
       (InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
-    rw [InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
   have h := congrArg Under.Hom.right hh
   simp only [Under.comp_right, Under.id_right] at h
   change ((InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫

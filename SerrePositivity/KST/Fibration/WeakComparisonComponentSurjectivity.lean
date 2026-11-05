@@ -42,8 +42,8 @@ theorem weakQuotientMappingComparison_point_surjective (y : C.obj _⦋0⦌) :
   let e := (fractionKanQuotientDiagram_classificationIso h x).app (ULift.up y)
   obtain ⟨f, hf⟩ := weakQuotientCosliceComparisonHom_point_surjective h x y (z ≫ e.hom)
   refine ⟨f, (cancel_mono e.hom).mp ?_⟩
-  simpa only [weakQuotientCosliceComparisonHom, functorHomEvaluate_comp,
-    e, functorIso_app_hom_evaluate, Category.assoc] using hf
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparisonHom, functorHomEvaluate_comp,
+    e, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate, Category.assoc] using hf
 
 /-- 元の同じ strict Kan 比較成分の coherent 辺も、全ての点の射の類を覆う。 -/
 theorem weakSpanKanComparisonValueEdge_point_surjective (c : TransportSimplexCategory B.obj) :

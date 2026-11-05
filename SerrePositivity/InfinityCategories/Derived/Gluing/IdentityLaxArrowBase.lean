@@ -29,7 +29,7 @@ lemma identityLaxArrowBaseEquivalence_diagonal (e : QCatEquivalence X Y) :
   change (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫
     (F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom ≫
       arrowLaxInverse Y) = _
-  rw [Category.assoc, ← Category.assoc (arrowLaxInverse X), arrowLaxInverse_arrow,
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X), _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow,
     Category.id_comp, ← Category.assoc, constantFunctorMap_postcomp, Category.assoc]
 
 lemma identityLaxArrowBaseEquivalence_arrow (e : QCatEquivalence X Y) :
@@ -37,6 +37,6 @@ lemma identityLaxArrowBaseEquivalence_arrow (e : QCatEquivalence X Y) :
       F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom := by
   change (F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e.hom ≫
     arrowLaxInverse Y) ≫ _ = _
-  rw [Category.assoc, Category.assoc, arrowLaxInverse_arrow, Category.comp_id]
+  rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
 end SerrePositivity.InfinityCategories

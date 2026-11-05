@@ -29,7 +29,7 @@ lemma CirclePower.positiveHomotopyEquiv_apply (Y : PointedSimplicialSet.{u})
     positiveHomotopyEquiv Y n a = loopPositiveHomotopyEquiv Y n
       (pointedGroupMap n (PointedMapping.prePointed unit Y) a) := by
   dsimp only [positiveHomotopyEquiv, MulEquiv.trans_apply]
-  rw [KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   rfl
 
 namespace SimplexCell
@@ -48,12 +48,12 @@ lemma componentEquiv_natural {Y Z : PointedSimplicialSet.{u}}
   change SphereSimplex.componentClass Z n
     (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Z).right
       (mapπ₀ _ a)) = _
-  rw [← PointedMapping.prePointed_eq_closedPre, hπ, SphereSimplex.componentClass_natural]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, hπ, SphereSimplex.componentClass_natural]
   change pointedGroupMap n p (SphereSimplex.componentClass Y n
       (mapπ₀ (PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y).right a)) =
     pointedGroupMap n p (SphereSimplex.componentClass Y n
       (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y).right a))
-  rw [PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
 
 /-- 概要：通常の loop の成分をセル球面の基本群表示へ移すと、loop 係数の逆元になる。
 方針：置換単位の後合成で成分を持ち上げ、二つの基本段の向きと成分係数の自然性を使う。

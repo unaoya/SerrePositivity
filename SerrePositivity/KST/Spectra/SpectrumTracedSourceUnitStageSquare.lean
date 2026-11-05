@@ -57,7 +57,7 @@ lemma tracedSourceUnitStructureAction_transpose (n : ℕ) :
       ((KanSequence.signedLoopParameterHom
         (homOfParameterFamily X Y.toKanSequence A φ)).app (n + 1)) := by
   rw [tracedSourceUnitStructureAction_post, Category.assoc,
-    InternalHomExchange.hom_eq_inv (suspension (X.level n).space) A,
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A,
     Iso.inv_hom_id, Category.comp_id]
 
 /-- 段射表示の左辺全体は、同じ源構造入力区間への実際の後合成。 -/

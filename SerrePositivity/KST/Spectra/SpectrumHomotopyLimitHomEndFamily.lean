@@ -52,7 +52,7 @@ lemma homotopyLimitHomEndFamily_eq (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpect
   have hl := congrArg (fun f ↦ f ≫ (homotopyLimitHomHolimEquivalence X D).hom)
     (mappingComposition_identity X L)
   simp only [Category.id_comp, Category.assoc] at hl
-  dsimp only [homotopyLimitHomEndFamily, ParameterPoint.family]
+  dsimp only [homotopyLimitHomEndFamily, _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family]
   rw [homotopyLimitHomEndPointMap_eq]
   exact (Category.assoc _ _ _).trans (h.symm.trans hl)
 

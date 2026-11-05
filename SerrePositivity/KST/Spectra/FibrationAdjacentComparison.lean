@@ -72,7 +72,7 @@ lemma compatible : horn.IsCompatible (i := Fin.last (n + 2)) (fun j _ ↦ face U
 lemma face_comp (hU : U.map ≫ p = s.map) (j : Fin (n + 3))
     (_hj : j ≠ Fin.last (n + 2)) :
     face U V j ≫ p = stdSimplex.δ j ≫ stdSimplex.σ (Fin.last n).castSucc ≫ s.map := by
-  rw [SimplexFaces.degenerate_face]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
   simp only [face, Fin.ext_iff, Fin.val_last, Fin.val_castSucc, Fin.val_succ]
   split_ifs <;> try (exfalso; omega)
   all_goals simp only [V.map_comp, hU, const_comp]
@@ -94,7 +94,7 @@ theorem exists_lift [Fibration p] (hU : U.map ≫ p = s.map) :
 lemma last_comp (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
     (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ≫ p = SSet.const (p.app _ e) := by
-  rw [Category.assoc, hφ, SimplexFaces.degenerate_face]
+  rw [Category.assoc, hφ, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
   exact ite_eq_right (by simp [Fin.ext_iff])
 
 /-- 概要：比較単体の最後の面を fiber へ入れる。
@@ -133,7 +133,7 @@ lemma output_face (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
   simp only [face, Fin.val_castSucc]
   split_ifs <;> try rw [PtSimplex.δ_map]
   · exact V.boundary_ι.symm
-  all_goals simp only [comp_const, const_comp, fiberι_point]
+  all_goals simp only [comp_const, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
 
 end
 end SerrePositivity.KST.Spectra.AdjacentLiftComparison

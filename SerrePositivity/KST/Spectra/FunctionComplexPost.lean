@@ -44,7 +44,7 @@ def pointedPost (S : Type u) {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     change lift (fun (_ : S) ↦ X.hom) ≫ post S f.right = lift (fun (_ : S) ↦ Y.hom)
     apply hom_ext
     intro s
-    rw [Category.assoc, post_eval, ← Category.assoc, lift_eval, lift_eval]
+    rw [Category.assoc, post_eval, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact Under.w f)
 
 /-- 概要：関数複体の各座標の評価は点つき射。

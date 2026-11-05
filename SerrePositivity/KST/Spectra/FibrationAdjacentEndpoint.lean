@@ -82,7 +82,7 @@ def endpointRel : PtSimplex.RelStruct (mapSimplex h hpoint U)
 lemma endpoint_class [KanComplex E] [KanComplex Y] :
     KanHomotopyGroup.mk (endpointSimplex U V h hpoint hV φ hface) =
       KanHomotopyGroup.map h hpoint (KanHomotopyGroup.mk U) := by
-  rw [KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   exact (KanHomotopyGroup.sound (endpointRel U V h hpoint hV φ hface)).symm
 
 end

@@ -76,6 +76,6 @@ lemma valueMap_hom_eq_of_functorIso {A B : StableCategory.{u}} {F G : ExactMap A
     SpectrumHo.hom (valueMap E F) = SpectrumHo.hom (valueMap E G) := by
   rw [valueMap_hom, valueMap_hom]
   rw [show stableHoFunctor.map F = stableHoFunctor.map G from
-    stableArrow_homMk_eq_of_functorIso e]
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrow_homMk_eq_of_functorIso e]
 
 end SerrePositivity.KST.LocalizingInvariants

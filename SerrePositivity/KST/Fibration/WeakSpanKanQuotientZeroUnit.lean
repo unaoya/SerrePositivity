@@ -47,20 +47,20 @@ theorem weakSpanKanQuotientZeroUnit_eq_fixedFiber :
     weakSpanKanQuotientZeroUnit h x y = weakSpanKanQuotientZeroSimplexFixedFiber h x y := by
   apply vertexFiber_hom_ext
   simp only [weakSpanKanQuotientZeroUnit, Category.assoc, vertexFiberTransport_ι,
-    weakSpanKanQuotientSimplexUnitFiber]
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnitFiber]
   erw [vertexFiberTransport_ι
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex y))]
-  erw [weakSpanKanQuotientSimplexFiberMap_ι h x (transportSimplexIndex (n := ⦋0⦌) y)]
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y))]
+  erw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap_ι h x (transportSimplexIndex (n := ⦋0⦌) y)]
   rw [← Category.assoc _ (vertexFiberι
-    (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
       (nerveVertex (transportSimplexIndex (n := ⦋0⦌) y)))
-    (weakSpanKanQuotientSimplexUnstraighteningMap h x), vertexFiberMap_ι]
-  rw [weakSpanKanQuotientZeroSimplexFixedFiber, vertexFiberLift_ι]
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x), vertexFiberMap_ι]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroSimplexFixedFiber, vertexFiberLift_ι]
   change _ = weakSpanFixedZeroSimplexLift i x y ≫
     weakSpanKanUnstraighteningUnit i x ≫ weakSpanKanQuotientSimplexUnstraighteningMap h x
   have hs := weakSpanZeroSimplexFiberIso_inclusion i x y
-  dsimp only [weakSpanZeroSimplexFiberIso, Iso.trans_hom, eqToIso.hom] at hs
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso, Iso.trans_hom, eqToIso.hom] at hs
   simpa only [Category.assoc] using! congrArg (fun f => f ≫
     weakSpanKanUnstraighteningUnit i x ≫ weakSpanKanQuotientSimplexUnstraighteningMap h x) hs
 

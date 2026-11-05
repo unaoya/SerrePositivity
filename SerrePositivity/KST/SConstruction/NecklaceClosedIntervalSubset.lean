@@ -37,10 +37,10 @@ lemma necklaceClosedIntervalSubset_toInterval {N : ℕ} (a b : Fin (N + 1)) (hab
       (necklaceInSimplexSubsetAt.{u} (Finset.Icc a b) a b hI ha hb)).necklaceHom =
       eqToHom (congrArg (necklaceBead.{u})
         (show (Finset.Icc a b).card - 1 = b.val - a.val by
-          rw [simplexClosedInterval_card a b hab]
+          rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_card a b hab]
           omega)) := by
   have he : (Finset.Icc a b).card - 1 = b.val - a.val := by
-    rw [simplexClosedInterval_card a b hab]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_card a b hab]
     omega
   apply necklaceVertexMap_injective
   funext v
@@ -60,7 +60,7 @@ lemma necklaceInSimplexSubsetAt_closedInterval {N : ℕ} (a b : Fin (N + 1)) (ha
       necklaceInSimplexInterval a b hab :=
   necklaceIn_eq_of_hom_eqToHom
     (congrArg (necklaceBead.{u}) (show (Finset.Icc a b).card - 1 = b.val - a.val by
-      rw [simplexClosedInterval_card a b hab]
+      rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClosedInterval_card a b hab]
       omega))
     (necklaceInToSimplexInterval a b hab
       (necklaceInSimplexSubsetAt (Finset.Icc a b) a b hI ha hb))

@@ -20,14 +20,14 @@ namespace SerrePositivity.KST.Fibration
 theorem strictTransportUnderEdge_zero {I : Type u} [Category.{u} I] {c d : I} (f : c ⟶ d) :
     (strictTransportUnderEdge f).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = nerveVertex (Under.mk (𝟙 c)) := by
-  rw [← intervalMap_source, strictTransportUnderEdge, Equiv.apply_symm_apply]
+  rw [← intervalMap_source, _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge, Equiv.apply_symm_apply]
   exact ComposableArrows.ext₀ rfl
 
 /-- 終点は元の入力射の under 頂点。 -/
 theorem strictTransportUnderEdge_one {I : Type u} [Category.{u} I] {c d : I} (f : c ⟶ d) :
     (strictTransportUnderEdge f).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = nerveVertex (Under.mk f) := by
-  rw [← intervalMap_target, strictTransportUnderEdge, Equiv.apply_symm_apply]
+  rw [← intervalMap_target, _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge, Equiv.apply_symm_apply]
   exact ComposableArrows.ext₀ rfl
 
 end SerrePositivity.KST.Fibration

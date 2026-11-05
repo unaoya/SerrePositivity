@@ -36,7 +36,7 @@ lemma exchange (A K Z : PointedSimplicialSet.{u}) :
         (HomTensorStrength.exchange A K Z).hom.right =
       (HomTensorStrength.exchange A.right K.right Z.right).hom ≫
         K.right ◁ productToSmash A Z ≫ productToSmash K (A ⊗ Z) := by
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, Under.comp_right, Category.assoc]
   rw [associator_inv_assoc]
   have hn := productToSmash_naturality (β_ A K).hom (𝟙 Z)

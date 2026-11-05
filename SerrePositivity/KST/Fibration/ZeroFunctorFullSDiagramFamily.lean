@@ -82,7 +82,7 @@ theorem zeroFunctorParameterPoint_toExact {A C : StableCategory.{u}} (F : ExactM
     (hF : IsZeroVertex (functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorLocusToExact A C = exactHomEquiv F := by
   apply (cancel_mono (exactFunctors A C).ι).1
-  rw [Category.assoc, zeroFunctorLocusToExact_inclusion, exactHomEquiv_ι]
+  rw [Category.assoc, zeroFunctorLocusToExact_inclusion, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι]
   apply (SSet.unitHomEquiv _).injective
   rfl
 

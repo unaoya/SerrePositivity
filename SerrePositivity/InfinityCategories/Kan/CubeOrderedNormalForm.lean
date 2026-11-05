@@ -44,7 +44,7 @@ lemma mem_cubeJoinNormalFormSupport {n m : ℕ} (f : CubeVertex n → CubeVertex
     (i : Fin n) (j : Fin m) :
     i ∈ cubeJoinNormalFormSupport (cubeJoinNormalFormOfMap f) j ↔ CubeActive f i j := by
   cases hz : f ⊥ j <;>
-    simp [cubeJoinNormalFormSupport, cubeJoinNormalFormOfMap, CubeActive, hz]
+    simp [cubeJoinNormalFormSupport, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap, CubeActive, hz]
 
 /-- 具体的な射の正規形の support は、元の出力順に厳密に並ぶ。 -/
 lemma concreteCubeNormalForm_support_ordered {X Y : ConcreteCube} (f : X ⟶ Y)

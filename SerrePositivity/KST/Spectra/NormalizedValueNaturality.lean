@@ -23,14 +23,14 @@ lemma zeroExtend_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
     (n : ℕ) (a : K.nonDegenerate n → M) (s : K _⦋n⦌) :
     zeroExtend K N n (fun t ↦ f (a t)) s = f (zeroExtend K M n a s) := by
   classical
-  dsimp only [zeroExtend]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend]
   split_ifs <;> simp only [map_zero]
 
 /-- 通常の正規化交代微分は任意の係数準同型と可換。 -/
 lemma differential_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
     (n : ℕ) (a : K.nonDegenerate n → M) (s : K.nonDegenerate (n + 1)) :
     differential K N n (fun t ↦ f (a t)) s = f (differential K M n a s) := by
-  rw [differential_apply, differential_apply, map_sum]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, map_sum]
   simp only [zeroExtend_map, map_zsmul]
 
 end

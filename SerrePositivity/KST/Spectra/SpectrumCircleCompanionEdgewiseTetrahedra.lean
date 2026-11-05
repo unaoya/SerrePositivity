@@ -104,8 +104,8 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
       (circleEvaluationPointedHom z).right ↦
         h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
     (circleCompanionEdgewiseTetrahedron_inner z k)
-  simp only [NatTrans.comp_app, types_comp_apply, SimplexEdges.edgeMap_vertex,
-    IntervalSquare.const_vertex, ↓reduceIte] at h1 h2
+  simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
+    _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex, ↓reduceIte] at h1 h2
   change (circleCompanionEdgewiseTetrahedron z k).app _
     (stdSimplex.obj₀Equiv.symm (1 : Fin 4)) = (circleEvaluationPointedHom z).basepoint at h1
   change (circleCompanionEdgewiseTetrahedron z k).app _
@@ -117,7 +117,7 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_outer z)
-      simp only [NatTrans.comp_app, types_comp_apply, SimplexEdges.edgeMap_vertex,
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
         ↓reduceIte] at h
       exact h.symm
   · exact h1
@@ -127,14 +127,14 @@ lemma circleCompanionEdgewiseTetrahedron_vertices (z : Sp.{u} _⦋0⦌) (k : Wal
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_right_left z)
-      simp only [NatTrans.comp_app, types_comp_apply, SimplexEdges.edgeMap_vertex] at h
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex] at h
       exact h.trans (circleEvaluationCompanion_vertex z 1)
     · have h := congrArg (fun h : (Δ[1] : SSet.{u}) ⟶
           (circleEvaluationPointedHom z).right ↦
             h.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
         (circleCompanionEdgewiseTetrahedron_right_right z)
-      simp only [NatTrans.comp_app, types_comp_apply, SimplexEdges.edgeMap_vertex,
-        IntervalSquare.const_vertex] at h
+      simp only [NatTrans.comp_app, types_comp_apply, _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex,
+        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
       exact h
 
 /-- 元の共通解像三単体の同じ辺を、指定した共通初頂点と零頂点へ表示する。 -/

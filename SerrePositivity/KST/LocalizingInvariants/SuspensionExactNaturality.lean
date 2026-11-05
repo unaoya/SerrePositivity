@@ -25,11 +25,11 @@ variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
 def exactNaturality : FunctorIso (map X ≫ F) (F ≫ map Y) := by
   let b := arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F
   have h : FunctorIso (map X ≫ F) (b ≫ CofiberFamily.cofiber Y (𝟙 _)) := by
-    simpa only [map, b, Category.assoc] using
+    simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map, b, Category.assoc] using
       FunctorIso.precomp (CofiberFamily.exactNaturality F) (arrow X)
   have e := (CofiberFamily.compositionIso Y b).symm ≪≫
     cofiberZeroTargetIso Y b (post_arrow_zero_target F)
-  rw [post_arrow_source] at e
+  rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact.post_arrow_source] at e
   exact h ≪≫ e
 
 end SerrePositivity.KST.LocalizingInvariants.SuspensionExact

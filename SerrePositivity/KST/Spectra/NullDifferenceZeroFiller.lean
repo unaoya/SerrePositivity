@@ -43,7 +43,7 @@ lemma zeroCompatible :
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [zeroFace]
-  split_ifs <;> try simp only [null_face, diagonal_filler_face, filler_face, face, comp_const]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, diagonal_filler_face, filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -65,8 +65,8 @@ lemma zero_output_face (j : Fin (n + 4)) :
         simp only [Fin.val_castSucc, Fin.val_last] at hh
         have hjv : j.val ≤ n + 2 := hj
         omega)]
-    simp only [zeroFace, face]
-    split_ifs <;> try simp only [null_face, diagonal_filler_face, face, comp_const]
+    simp only [zeroFace, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, diagonal_filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -84,8 +84,8 @@ lemma zero_output_face (j : Fin (n + 4)) :
         have hh := congrArg Fin.val he
         simp only [Fin.val_last, Fin.val_castSucc, Fin.val_succ] at hh
         omega)]
-    simp only [zeroFace, face, Fin.val_succ, Fin.val_last]
-    split_ifs <;> try simp only [filler_face, face, Fin.val_last]
+    simp only [zeroFace, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, Fin.val_succ, Fin.val_last]
+    split_ifs <;> try simp only [filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, Fin.val_last]
     all_goals (try split_ifs) <;> first | rfl | omega
 
 /-- 零である差には、定数の差の面を持つ充填がある。 -/
@@ -105,7 +105,7 @@ theorem difference_eq_one_of_zero_filler (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
     apply RelativeMorphism.ext
     change stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ = SSet.const x
     rw [hφ]
-    simp [face]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   rw [he]
   rfl
 

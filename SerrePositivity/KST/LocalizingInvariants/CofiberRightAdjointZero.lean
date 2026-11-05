@@ -28,7 +28,7 @@ def cofiberRightAdjointDiagram (x : X _⦋0⦌) : (CofiberDiagrams.space X) _⦋
 lemma cofiberRightAdjointDiagram_right (x : X _⦋0⦌) :
     squareRightEdge ≫ squareDiagram (cofiberRightAdjointDiagram X x).val = SSet.const x := by
   apply functorVertex_injective
-  rw [← cofiber_diagram_right_vertex]
+  rw [← _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_right_vertex]
   have h := congrArg (fun f : (ihom (Δ[1] : SSet.{u})).obj X ⟶ _ =>
     f.app (Opposite.op ⦋0⦌) ((ArrowTarget.identityArrow X).app (Opposite.op ⦋0⦌) x))
     (CofiberRotation.rightSection_right X)
@@ -57,7 +57,7 @@ lemma cofiberRightAdjoint_source_zero (x : X _⦋0⦌) :
   change IsZeroVertex ((CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌)
       (cofiberRightAdjointDiagram X x))
-  rw [cofiber_diagram_bottom_source]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_bottom_source]
   exact CofiberDiagrams.zero_source_of_right_invertible X (cofiberRightAdjointDiagram X x)
     (cofiberRightAdjointDiagram_right_invertible X x)
 

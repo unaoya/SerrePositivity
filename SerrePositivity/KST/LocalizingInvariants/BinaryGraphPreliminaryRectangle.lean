@@ -32,15 +32,15 @@ def rectangle : SquarePastingRectangle (square a b f g hc)
     (SSet.yonedaEquiv.symm (productComposition f g).simplex) := by
   apply Classical.choice
   apply nonempty_squarePastingRectangle
-  · rw [square_right, square_transpose_left, BinaryGraph.square_bottom]
+  · rw [square_right, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, BinaryGraph.square_bottom]
   · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₂.symm
-  · rw [square_transpose_bottom, BinaryGraph.square_left,
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, BinaryGraph.square_left,
       stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (coherentNerveCompStruct b g).d₀.symm
   · rw [square_top, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₂.symm
-  · rw [square_transpose_top, BinaryGraph.square_right,
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, BinaryGraph.square_right,
       stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (productComposition f g).d₀.symm
 
@@ -52,7 +52,7 @@ lemma rectangle_right_isPullback :
 lemma rectangle_outer_right : squareRightEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
     SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.diagonal Z)).edge := by
   rw [pastingSquare_outer_rightEdge, (rectangle a b f g hc).right_eq,
-    square_transpose_right, BinaryGraph.square_top]
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, BinaryGraph.square_top]
 
 lemma rectangle_outer_top : squareTopEdge ≫ pastingSquare (rectangle a b f g hc).diagram 1 =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f g)).edge := by

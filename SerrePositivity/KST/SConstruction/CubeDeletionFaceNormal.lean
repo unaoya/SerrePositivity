@@ -27,8 +27,8 @@ def cubeDeletionFaceNormalId (n : ℕ) : CubeDeletionFaceNormal n n :=
 /-- 元の恒等射の二段表示は、全頂点で恒等。 -/
 lemma cubeDeletionFaceNormalId_vertex (n : ℕ) :
     cubeDeletionFaceNormalVertex (cubeDeletionFaceNormalId n) = _root_.id := by
-  dsimp only [cubeDeletionFaceNormalId, cubeDeletionFaceNormalVertex, cubeDeletionNormalVertex]
-  rw [cubeFaceNormalId_vertex, cubeDeletionNormalId_embedding]
+  dsimp only [cubeDeletionFaceNormalId, cubeDeletionFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex]
+  rw [cubeFaceNormalId_vertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId_embedding]
   rfl
 
 /-- 元の二段表示へ任意座標の面を追加する。 -/
@@ -61,7 +61,7 @@ lemma cubeDeletionFaceNormalAfterResult_vertex {n a m : ℕ} (d : CubeDeletionNo
   | input i f =>
     change cubeFaceNormalVertex f ∘
       cubeDeletionNormalVertex (cubeDeletionNormalErase d i) = _
-    rw [cubeDeletionNormalVertex_erase]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase]
     rfl
 
 /-- 元の二段表示へ任意座標の一出力削除を追加して正規化する。 -/

@@ -68,7 +68,7 @@ lemma pathFamilyEdge_face_one {A : SSet.{u}} (Y : PointedSimplicialSet.{u})
   rw [uncurry_curry, uncurry_constant_basepoint]
   rw [← Category.assoc, hp]
   simp only [Category.assoc]
-  rw [PointedMapping.uncurry_basepoint]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
   simp only [comp_toUnit_assoc]
 
 /-- path の族の転置は源への制限と可換。 -/

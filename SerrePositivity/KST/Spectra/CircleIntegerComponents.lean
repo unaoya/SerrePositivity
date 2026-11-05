@@ -54,7 +54,7 @@ theorem LoopMappingClasses.post_integerPower (A Y : PointedSimplicialSet.{u})
   rw [map_zpow, LoopMappingClasses.groupEquiv_apply, LoopMappingClasses.groupEquiv_apply]
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) A (CirclePower.integerPowerMap.{u} z) Y
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   let e : PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Y) ≅
       PointedObject.basedHom CirclePower.space (PointedObject.basedHom A Y) :=
     InternalHomExchange.iso A CirclePower.space Y

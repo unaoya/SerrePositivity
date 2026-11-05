@@ -35,7 +35,7 @@ lemma loopToPath_fiber (Y : PointedSimplicialSet.{u}) :
 @[reassoc (attr := simp)]
 lemma loopToPath_endpoint (Y : PointedSimplicialSet.{u}) :
     (loopToPath Y).right ≫ (pathEndpoint Y).right = SSet.const Y.basepoint := by
-  rw [← loopToPath_fiber, Category.assoc, fiberι_comp, comp_const, pathEndpoint_basepoint]
+  rw [← loopToPath_fiber, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, comp_const, pathEndpoint_basepoint]
 
 /-- 概要：Hom と fiber の同型による包含後の射の一致で写像族を検出する。
 方針：fiber 同型で移してから、通常の fiber の包含による一意性を使う。

@@ -29,7 +29,7 @@ lemma rightHom_fst_isIso : IsIso (homPost (laxFst p q).hom (rightHom p q)) := by
     (laxCategory p q).obj (arrow p q) (laxFst p q).hom (by
       intro x
       let s := CofiberFamily.cofiberSquareAt (laxCategory p q).obj (arrow p q) x
-      rw [show CofiberFamily.squareAt (laxCategory p q).obj (arrow p q) x = s.square from rfl,
+      rw [show _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt (laxCategory p q).obj (arrow p q) x = s.square from rfl,
         s.source_vertex]
       have hs := (intervalFunctorVertexTypedEdge
         ((arrow p q).app (Opposite.op ⦋0⦌) x)).src_eq
@@ -40,7 +40,7 @@ lemma rightHom_fst_isIso : IsIso (homPost (laxFst p q).hom (rightHom p q)) := by
       change IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map
         (laxFst p q).hom) ≫ evaluateFunctorAt
           (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x) at hz
-      rw [Category.assoc, arrowMap_evaluation] at hz
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation] at hz
       exact hz)
   have := h
   unfold rightHom

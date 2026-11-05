@@ -61,7 +61,7 @@ def rawRationalSequenceMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
       intro k
       change PointedMapping.prePointed _ _ ≫ (ihom CirclePower.space.{u}).map (f.app k) =
         (ihom CirclePower.space.{u}).map (f.app k) ≫ PointedMapping.prePointed _ _
-      simp only [PointedMapping.prePointed_eq_closedPre]
+      simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
       exact MonoidalClosed.pre_comm_ihom_map _ _)
 
 /-- 概要：universe を揃えた有理化図式に射を作用させる。

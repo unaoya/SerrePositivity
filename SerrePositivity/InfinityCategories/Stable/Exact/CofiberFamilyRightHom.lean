@@ -93,11 +93,11 @@ def rightHomotopy : SSet.Homotopy
     (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) where
   h := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).h
   h₀ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₀]
+    rw [(_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).h₀]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
       (rightArrow_source X a)
   h₁ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₁]
+    rw [(_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).h₁]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
       (rightArrow_target X a)
   rel := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).rel

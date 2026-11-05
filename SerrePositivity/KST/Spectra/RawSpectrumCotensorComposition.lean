@@ -45,12 +45,12 @@ lemma cotensorComparison_composition (X Y : OmegaSpectrum.{u})
       comp (X.level n).space (Y.level n).space ((ihom A).obj (Z.level n).space)) ≫
       (InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom = _
   conv_rhs =>
-    rw [Functor.map_comp, ← HomTensorStrength.natural_assoc,
+    rw [Functor.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_assoc,
       ← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp,
       cotensorComparison_evaluation]
     dsimp only [exchangeFamily]
     rw [← tensorHom_comp_whiskerLeft, Category.assoc]
-  rw [Category.assoc, InternalHomExchange.composition]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.composition]
   simp only [id_tensorHom]
   rfl
 

@@ -56,13 +56,13 @@ def verdierTwoArrowQuotientPasting : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj :=
 lemma verdierTwoArrowQuotientPasting_original :
     pastingSquare (verdierTwoArrowQuotientPasting D L s r) 0 =
       (β_ Δ[1] Δ[1]).hom ≫ F := by
-  rw [verdierTwoArrowQuotientPasting, roofPastingPrism_original, s.projection]
+  rw [verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_original, s.projection]
 
 /-- 終端列は、同じ実分数で最初に回収した指定商合成二単体そのもの。 -/
 lemma verdierTwoArrowQuotientPasting_top :
     pastingTopTriangle (verdierTwoArrowQuotientPasting D L s r) =
       SSet.yonedaEquiv.symm r.triangle.simplex := by
-  rw [verdierTwoArrowQuotientPasting, roofPastingPrism_top]
+  rw [verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_top]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
   change (sliceUnderProjection (fractionSquarePoint F)).app (Opposite.op ⦋2⦌)

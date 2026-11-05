@@ -38,10 +38,10 @@ theorem KanSequence.kanAdjoint_natural {X Y : KanSequence.{u}} (f : Hom X Y) (n 
   rw [Category.assoc, kanAdjoint_comparison]
   change _ = kanAdjoint X n ≫ ((ihom CirclePower.space.{u}).map (f.app (n + 1)) ≫
     PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
-  rw [PointedMapping.prePointed_eq_closedPre,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     ← MonoidalClosed.pre_comm_ihom_map, ← Category.assoc]
   have hc := kanAdjoint_comparison X n
-  rw [PointedMapping.prePointed_eq_closedPre] at hc
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   rw [hc]
   exact f.adjoint_comm n
 

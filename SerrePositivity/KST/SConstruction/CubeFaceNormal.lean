@@ -56,22 +56,22 @@ lemma cubeFaceNormalInsert_vertex {n m : ℕ} (d : CubeFaceNormal n m)
     have hi : i = 0 := Fin.ext (by omega)
     subst i
     funext x
-    simp [cubeFaceNormalInsert, cubeFaceNormalVertex, cubeVertexFace, Fin.insertNth_zero']
+    simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
   | point c d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · funext x
-      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, cubeVertexFace, Fin.insertNth_zero']
+      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
     · funext x
-      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, cubeVertexFace,
+      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
         Fin.insertNth_succ_cons] using
           congrArg (fun (v : CubeVertex _) => Fin.cons (α := fun _ => Bool) c v)
             (congrFun (ih b i) x)
   | keep d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · funext x
-      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, cubeVertexFace, Fin.insertNth_zero']
+      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
     · funext x
-      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, cubeVertexFace,
+      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
         Fin.insertNth_succ_cons] using
           congrArg (fun (v : CubeVertex _) => Fin.cons (α := fun _ => Bool) (x 0) v)
             (congrFun (ih b i) (fun j => x j.succ))

@@ -60,15 +60,15 @@ def rectangle : SquarePastingRectangle
     (SSet.yonedaEquiv.symm (quotientCompositionTriangle p q r).simplex) := by
   apply Classical.choice
   apply nonempty_squarePastingRectangle
-  · rw [square_transpose_right, square_transpose_left,
-      comparisonSquare_top, identityDiagram_bottom]
-  · rw [square_transpose_bottom, comparisonSquare_left, stdSimplex.δ_comp_yonedaEquiv_symm,
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left,
+      _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_top, identityDiagram_bottom]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left, stdSimplex.δ_comp_yonedaEquiv_symm,
       (zeroCompositionTriangle p q i r).d₂]
-  · rw [square_transpose_bottom, identityDiagram_left,
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, identityDiagram_left,
       stdSimplex.δ_comp_yonedaEquiv_symm, (zeroCompositionTriangle p q i r).d₀]
-  · rw [square_transpose_top, comparisonSquare_right, stdSimplex.δ_comp_yonedaEquiv_symm,
-      (quotientCompositionTriangle p q r).d₂]
-  · rw [square_transpose_top, identityDiagram_right, stdSimplex.δ_comp_yonedaEquiv_symm,
-      (quotientCompositionTriangle p q r).d₀]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right, stdSimplex.δ_comp_yonedaEquiv_symm,
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).d₂]
+  · rw [_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, identityDiagram_right, stdSimplex.δ_comp_yonedaEquiv_symm,
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle p q r).d₀]
 
 end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference

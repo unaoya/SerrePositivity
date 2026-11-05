@@ -82,7 +82,7 @@ theorem doubleMappingCylinder_right_isPullback {C A B C' A' B' : SSet.{u}}
 -/
 theorem cylinderZero_isPullback {C C' : SSet.{u}} (c : C ⟶ C') :
     IsPullback SSet.ι₀ c (c ▷ Δ[1]) SSet.ι₀ := by
-  simpa only [cylinderEndpoints, coprod.inl_desc] using
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc] using
     (coproductInclusions_isPullback c c).1.paste_horiz (cylinderEndpoints_isPullback c)
 
 /--
@@ -98,7 +98,7 @@ theorem doubleMappingCylinder_center_isPullback {C A B C' A' B' : SSet.{u}}
     IsPullback (f ≫ doubleMappingCylinder_left f g) c
       (doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
       (f' ≫ doubleMappingCylinder_left f' g') := by
-  simpa only [doubleMappingCylinder_zero] using
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero] using
     (cylinderZero_isPullback c).paste_horiz (doubleMappingCylinderMap_isPullback hf hg).1
 
 end SerrePositivity.KST.Comparison

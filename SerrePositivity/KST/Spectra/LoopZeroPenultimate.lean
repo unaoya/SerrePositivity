@@ -70,7 +70,7 @@ theorem loopZero_penultimate (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
       (KanHomotopyGroup.mk t) =
       KanHomotopy.equivOfIso 0 (loopBasedPathFiberIso Y)
         (loopBasedPathFiberIso_basepoint Y) (KanHomotopy.mk 0 a) := by
-    rw [connecting_eq _ _ R, hR]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.connecting_eq _ _ R, hR]
     rfl
   have he : loopZeroHomotopyEquiv Y (KanHomotopy.mk 0 a) = b (KanHomotopyGroup.mk t) := by
     apply b.symm.injective

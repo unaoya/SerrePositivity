@@ -81,7 +81,7 @@ theorem intervalBoundaryMap_surjective (m : SimplexCategoryᵒᵖ) :
   · refine ⟨(coprod.inl : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u})).app m PUnit.unit, ?_⟩
     apply Subtype.ext
     change ((coprod.inl ≫ intervalBoundaryMap.{u} ≫ (boundary 1).ι).app m PUnit.unit) = s.val
-    rw [intervalBoundaryMap_ι, intervalEndpoint_inl]
+    rw [intervalBoundaryMap_ι, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
     apply stdSimplex.ext
     intro j
     change (1 : Fin 2) = (stdSimplex.asOrderHom s.val) j
@@ -93,7 +93,7 @@ theorem intervalBoundaryMap_surjective (m : SimplexCategoryᵒᵖ) :
   · refine ⟨(coprod.inr : 𝟙_ SSet.{u} ⟶ (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u})).app m PUnit.unit, ?_⟩
     apply Subtype.ext
     change ((coprod.inr ≫ intervalBoundaryMap.{u} ≫ (boundary 1).ι).app m PUnit.unit) = s.val
-    rw [intervalBoundaryMap_ι, intervalEndpoint_inr]
+    rw [intervalBoundaryMap_ι, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr]
     apply stdSimplex.ext
     intro j
     change (0 : Fin 2) = (stdSimplex.asOrderHom s.val) j

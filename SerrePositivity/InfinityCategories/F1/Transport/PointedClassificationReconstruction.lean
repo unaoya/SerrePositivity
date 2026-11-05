@@ -32,7 +32,7 @@ theorem pointedLeftStraighteningReconstruction_projection :
     pointedLeftStraighteningReconstruction p ≫
       smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p) = p := by
   rw [pointedLeftStraighteningReconstruction, Category.assoc,
-    smallUnstraighteningFunctorHom_projection, nativeLeftTransportComparison_projection]
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection, nativeLeftTransportComparison_projection]
 
 /-- 指定成分を保持する同じ復元射は前合成同値。 -/
 theorem pointedLeftStraighteningReconstruction_isPrecompositionEquivalence :

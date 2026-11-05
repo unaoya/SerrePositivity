@@ -30,7 +30,7 @@ def exactDiagramComparison : FunctorIso
     ((CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.postcomp F) ≫ CofiberDiagrams.bottom Y)
     (((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
       CofiberDiagrams.bottom Y)
-  rw [Category.assoc, CofiberDiagrams.postcomp_bottom, ← Category.assoc,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_bottom, ← Category.assoc,
     CofiberDiagrams.lift_bottom, Category.id_comp, Category.assoc,
     CofiberDiagrams.lift_bottom, Category.comp_id]
 
@@ -41,7 +41,7 @@ def exactNaturality : FunctorIso (cofiber X (𝟙 _) ≫ F)
   have hl : (CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.postcomp F) ≫
       (CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
         cofiber X (𝟙 _) ≫ F := by
-    rw [Category.assoc, CofiberDiagrams.postcomp_cofiber, ← Category.assoc,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_cofiber, ← Category.assoc,
       ← Category.assoc, CofiberDiagrams.lift_right_target]
   have hr : ((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
       (CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =

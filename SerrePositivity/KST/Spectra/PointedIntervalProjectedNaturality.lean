@@ -24,7 +24,7 @@ lemma projectedCoordinate {A D D' E E' : PointedSimplicialSet.{u}}
     (prePointed i D ≫ PointedObject.basedHomMap A q) ≫ PointedObject.basedHomMap A w =
       (PointedObject.basedHomMap D v ≫ prePointed i D') ≫ PointedObject.basedHomMap A q' := by
   have hn := (MonoidalClosed.pre i).naturality v
-  simp only [← prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change (ihom D).map v ≫ prePointed i D' = prePointed i D ≫ (ihom A).map v at hn
   change (prePointed i D ≫ (ihom A).map q) ≫ (ihom A).map w =
     ((ihom D).map v ≫ prePointed i D') ≫ (ihom A).map q'

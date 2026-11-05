@@ -35,7 +35,7 @@ lemma mapClass_post {Y Z : PointedSimplicialSet.{u}}
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ Y) (p : Y ⟶ Z) :
     pointedGroupMap n p (mapClass Y n f) = mapClass Z n (f ≫ p) := by
   dsimp only [mapClass, pointedGroupMap]
-  rw [KanHomotopyGroup.map_mk, equiv_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, equiv_comp]
 
 end SphereSimplex
 

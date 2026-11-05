@@ -44,7 +44,7 @@ def componentVertex (X : SSet.{u}) (P : π₀ X → Prop) (a : X _⦋0⦌) (ha :
     (componentSubcomplex X P : SSet) _⦋0⦌ :=
   ⟨a, by
     change P (simplexClass X a)
-    simpa only [simplexClass_zero] using ha⟩
+    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using ha⟩
 
 /--
 概要：成分を指定した部分単体集合へ、両端を含む辺を持ち上げる。
@@ -96,7 +96,7 @@ def componentClassMap (X : SSet.{u}) (P : π₀ X → Prop) :
     π₀ (componentSubcomplex X P : SSet) → {c : π₀ X // P c} :=
   π₀.lift (fun a => ⟨π₀.mk a.val, by
     have ha : P (simplexClass X a.val) := a.property
-    simpa only [simplexClass_zero] using ha⟩)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using ha⟩)
     (fun _ _ e => Subtype.ext (π₀.sound (e.map (componentSubcomplex X P).ι)))
 
 /--
@@ -112,9 +112,9 @@ noncomputable def componentClassEquiv (X : SSet.{u}) (P : π₀ X → Prop) :
     induction x using π₀.rec with | mk x => ?_
     induction y using π₀.rec with | mk y => ?_
     have hx : P (π₀.mk x.val) := by
-      simpa only [simplexClass_zero] using (show P (simplexClass X x.val) from x.property)
+      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using (show P (simplexClass X x.val) from x.property)
     have hy : P (π₀.mk y.val) := by
-      simpa only [simplexClass_zero] using (show P (simplexClass X y.val) from y.property)
+      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using (show P (simplexClass X y.val) from y.property)
     exact componentVertex_sound X P (congrArg Subtype.val h) hx hy, by
     rintro ⟨c, hc⟩
     obtain ⟨a, rfl⟩ := π₀.mk_surjective c

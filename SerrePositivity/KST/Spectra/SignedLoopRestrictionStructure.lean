@@ -30,7 +30,7 @@ lemma signedLoopTail_restriction (X : KanSequence.{u})
   change ((mapping CirclePower.space.{u} X).sigma (n + 1) ≫
     PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
       (X.level (n + 2)).space) ≫ _ = _
-  rw [Category.assoc, PointedMapping.prePointed_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   exact ((mappingPre (i ≫ CirclePower.integerPowerMap.{u} (-1)) X).comm (n + 1)).symm
 
 end KanSequence

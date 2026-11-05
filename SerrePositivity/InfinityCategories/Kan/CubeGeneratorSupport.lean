@@ -18,24 +18,24 @@ open SerrePositivity.KST.SConstruction
 /-- 恒等射の有効入力は同じ座標。 -/
 lemma cubeActive_id {n : ℕ} {i j : Fin n}
     (h : CubeActive (_root_.id : CubeVertex n → CubeVertex n) i j) : j = i := by
-  simpa [cubeVertexAtom] using h.2
+  simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using h.2
 
 /-- 面の有効入力は、挿入した座標を飛ばす元の座標。 -/
 lemma cubeActive_face {n : ℕ} {b : Bool} {p j : Fin (n + 1)} {i : Fin n}
     (h : CubeActive (cubeVertexFace b n p) i j) : j = p.succAbove i := by
   refine Fin.succAboveCases p ?_ (fun k => ?_) j h
   · intro hp
-    have hzero : b = false := by simpa [cubeVertexFace] using hp.1
-    have hone : b = true := by simpa [cubeVertexFace] using hp.2
+    have hzero : b = false := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace] using hp.1
+    have hone : b = true := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace] using hp.2
     exact Bool.noConfusion (hzero.symm.trans hone)
   · intro hk
-    have heq : k = i := by simpa [cubeVertexFace, cubeVertexAtom] using hk.2
+    have heq : k = i := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using hk.2
     exact congrArg p.succAbove heq
 
 /-- 退化の有効入力は、削除した座標を飛ばす元の座標。 -/
 lemma cubeActive_degeneracy {n : ℕ} {p i : Fin (n + 1)} {j : Fin n}
     (h : CubeActive (cubeVertexDegeneracy n p) i j) : p.succAbove j = i := by
-  simpa [cubeVertexDegeneracy, cubeVertexAtom] using h.2
+  simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using h.2
 
 /-- max の有効入力は、結合座標では二座標、他では元の一座標。 -/
 lemma cubeActive_connection {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2)}
@@ -47,15 +47,15 @@ lemma cubeActive_connection {n : ℕ} {p j : Fin (n + 1)} {i : Fin (n + 2)}
     refine ⟨hj, ?_⟩
     subst j
     have hi := h.2
-    simp only [cubeVertexConnection, Function.update_self, cubeVertexAtom] at hi
+    simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, Function.update_self, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] at hi
     by_cases hleft : p.castSucc = i
     · exact Or.inl hleft
     · right
       simpa [hleft] using hi
   · right
     refine ⟨hj, ?_⟩
-    simpa [cubeVertexConnection, Function.update_of_ne hj, cubeVertexDegeneracy,
-      cubeVertexAtom] using h.2
+    simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, Function.update_of_ne hj, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy,
+      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using h.2
 
 /-- 恒等射の有効入力は出力順に並ぶ。 -/
 lemma cubeSupportOrdered_id (n : ℕ) :

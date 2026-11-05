@@ -57,8 +57,8 @@ theorem normalizedDifferential_endpoint (K : SSet.{u})
     rw [SimplexBasepoint.group_mk]
     congr 1
   rw [hb] at h
-  rw [SkeletalSphericalCochain.differential_cochain_apply]
-  simpa only [SphericalBoundary.alternatingClass, SphericalBoundary.additiveClass,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_cochain_apply]
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
     map_sum, map_zsmul, MulEquiv.toAdditive_apply_apply, toMul_ofMul] using h
 
 /-- 概要：正規化微分は、path 延長の終点の実際の fiber 成分の係数を計算する。

@@ -27,7 +27,7 @@ lemma basedTranspose_pre_outer_path {U W A C : PointedSimplicialSet.{u}}
     ((H.pre i).basedTranspose).path =
       (H.basedTranspose.basedPost (prePointed i C)).path := by
   have hn := InternalHomExchange.natural_pre_left i A C
-  simp only [← prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
   change prePointed i (PointedObject.basedHom A C) ≫
       (InternalHomExchange.iso W A C).hom =
     (InternalHomExchange.iso U A C).hom ≫ PointedObject.basedHomMap A (prePointed i C) at hn

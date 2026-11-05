@@ -34,7 +34,7 @@ private lemma closedUnitEvaluation_natural {C : Type*} [Category C]
 lemma freeBoundaryHomEnd_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomEnd Z =
       freeBoundaryHomEnd Y ≫ p := by
-  simpa only [freeBoundaryHomEnd, ← PointedMapping.prePointed_eq_closedPre,
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     pointedIhom_map, PointedObject.ihom_obj_eq_basedHom] using
     closedUnitEvaluation_natural p freeBoundaryEnd.{u}
 
@@ -42,7 +42,7 @@ lemma freeBoundaryHomEnd_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) 
 lemma freeBoundaryHomStart_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomStart Z =
       freeBoundaryHomStart Y ≫ p := by
-  simpa only [freeBoundaryHomStart, ← PointedMapping.prePointed_eq_closedPre,
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     pointedIhom_map, PointedObject.ihom_obj_eq_basedHom] using
     closedUnitEvaluation_natural p freeBoundaryStart.{u}
 
@@ -70,7 +70,7 @@ def StrictInterval.post {X Y Z : KanSequence.{u}} {f g : Hom X Y}
         PointedMapping.prePointed freeBoundaryInclusion.{u} (Z.level n).space =
       freeBoundaryHomPair (f.app n ≫ p.app n) (g.app n ≫ p.app n)
     have hn := (MonoidalClosed.pre freeBoundaryInclusion.{u}).naturality (p.app n)
-    simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+    simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
     rw [Category.assoc]
     erw [hn]
     rw [← Category.assoc]

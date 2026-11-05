@@ -28,7 +28,7 @@ lemma projection_natural {Z Z' : PointedSimplicialSet.{u}} (v : Z ⟶ Z') :
     projection Z ≫ targetPost v = doublePost v ≫ projection Z' := by
   have h := (MonoidalClosed.pre CirclePower.unit.{u}).naturality
     (PointedObject.basedHomMap CirclePower.space.{u} v)
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact h.symm
 
 /-- 第二辺の実辺は、普遍反転辺に入力制限と射影を作用させた射そのもの。 -/
@@ -67,7 +67,7 @@ lemma secondPath_pre_path {A A' Y Z : PointedSimplicialSet.{u}} [KanComplex Z.ri
         (PointedObject.basedHomMap A (projection Z)).right
   rw [secondPath_path]
   have hn := (MonoidalClosed.pre j).naturality (projection Z)
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
   change PointedObject.basedHomMap A' (projection Z) ≫
     PointedMapping.prePointed j (target Z) =
       PointedMapping.prePointed j (doubleLoop Z) ≫

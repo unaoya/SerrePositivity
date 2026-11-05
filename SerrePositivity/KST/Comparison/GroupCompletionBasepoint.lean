@@ -102,7 +102,7 @@ theorem monoidGroupCompletionMap_unit (M : SimplicialObject MonCat.{u}) :
   have : Mono (SSet.const (X := ⊤_ SSet.{u}) Y.basepoint) := by
     exact NatTrans.mono_of_mono_app _
   have : Mono (Spectra.fiberι (Spectra.pathEndpoint Y).right Y.basepoint) := by
-    unfold Spectra.fiberι
+    unfold _root_.SerrePositivity.InfinityCategories.Kan.fiberι
     infer_instance
   have : Mono (loopPathRestriction Y) := by
     rw [← loopPathFiberIso_hom_restriction]

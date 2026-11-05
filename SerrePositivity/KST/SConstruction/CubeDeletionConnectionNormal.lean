@@ -31,8 +31,8 @@ lemma cubeDeletionConnectionNormalFrom_vertex {n m : ℕ} (d : CubeConnectionNor
     cubeDeletionConnectionNormalVertex (cubeDeletionConnectionNormalFrom d) x =
       cubeConnectionNormalVertex d x := by
   dsimp only [cubeDeletionConnectionNormalVertex, cubeDeletionConnectionNormalFrom,
-    cubeDeletionNormalVertex]
-  rw [cubeDeletionNormalId_embedding]
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId_embedding]
   rfl
 
 /-- 元の右端入力を削除して同じ残余ブロックへ渡す。 -/

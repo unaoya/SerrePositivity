@@ -50,11 +50,11 @@ theorem circleSmashMappingPairIso_post {Y Z : PointedSimplicialSet.{u}} (v : Y �
           (PointedMapping.pre_post_comm triangleDiskDiagonal v) := by
   dsimp only [circleSmashMappingPairIso]
   apply pullback.hom_ext
-  · simp only [selfPullbackMap, Category.assoc, pullback.lift_fst,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, Category.assoc, pullback.lift_fst,
       (circleSmashMapping_isPullback Z).isoPullback_hom_fst]
     rw [← Category.assoc, (circleSmashMapping_isPullback Y).isoPullback_hom_fst]
     exact (PointedMapping.pre_post_comm circleSmashUpper v).symm
-  · simp only [selfPullbackMap, Category.assoc, pullback.lift_snd,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, Category.assoc, pullback.lift_snd,
       (circleSmashMapping_isPullback Z).isoPullback_hom_snd]
     rw [← Category.assoc, (circleSmashMapping_isPullback Y).isoPullback_hom_snd]
     exact (PointedMapping.pre_post_comm circleSmashLower v).symm

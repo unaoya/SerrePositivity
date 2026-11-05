@@ -55,7 +55,7 @@ theorem straighteningBaseChangeLeftChart_heq_firstVertex
         leftStraighteningSectionJointDiagram B) := by
     rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
   have hl : HEq (straighteningJointBaseChangeLeftIso k) (e.precomp t) := by
-    unfold straighteningJointBaseChangeLeftIso
+    unfold _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso
     exact prependEq_heq _ _
   have hm := F2.vertexIso_map_heq_of_heq (straighteningJointBaseChangeLeftIso k)
     (e.precomp t) (congrArg functorVertex hleft) rfl hl

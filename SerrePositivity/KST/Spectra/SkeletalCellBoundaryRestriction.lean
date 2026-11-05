@@ -90,12 +90,12 @@ lemma stageFiberCellIso_boundaryFiber (K : SSet.{u}) (Y : PointedSimplicialSet.{
         (UnbasedPointedMapping.restrictionFiberIso (boundary (n + 1)).ι Y).hom := by
   change (((MonoidalClosed.pre (relativeCofiberIso K (n + 1)).hom).app Y) ≫
     (UnbasedPointedMapping.stageFiberIso K Y n).hom) ≫ _ = _
-  rw [← PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   change PointedMapping.prePointed (relativeCofiberIso K (n + 1)).hom Y ≫
     ((UnbasedPointedMapping.restrictionFiberIso _ Y).hom ≫
       UnbasedPointedMapping.restrictionSourceFiberMap _ _ _ _ _ Y) = _
   rw [← UnbasedPointedMapping.restrictionFiberIso_source, ← Category.assoc,
-    PointedMapping.prePointed_comp, cellSourceMap_eq_inclusion,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, cellSourceMap_eq_inclusion,
     Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 @[reassoc]

@@ -32,7 +32,7 @@ lemma tammeArrowKernel_eq_exactKernel :
   ext v
   change (∀ i : Fin 2, _ ∈ essentialImage (pullbackInclusion p q)) ↔
     IsZeroVertex (((ihom (Δ[1] : SSet.{u})).map (laxDifference p q)).app (Opposite.op ⦋0⦌) v)
-  rw [arrowVertex_isZero_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowVertex_isZero_iff]
   apply forall_congr'
   intro i
   have h := congrArg (fun a => a.app (Opposite.op ⦋0⦌) v)

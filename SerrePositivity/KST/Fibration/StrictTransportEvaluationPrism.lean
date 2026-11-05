@@ -47,7 +47,7 @@ theorem strictTransportEvaluationPrism_one {I : Type u} [Category.{u} I] {E : SS
       cocartesianSectionEvaluate p (nerveMap (Under.forget d)) (nerveVertex (Under.mk (𝟙 d))) =
     cocartesianSectionEvaluate p (nerveMap (Under.forget c))
       ((nerveUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d)))) at ht
-  rw [kanCocartesianUnderMap_identity_vertex] at ht
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Transport.kanCocartesianUnderMap_identity_vertex] at ht
   exact he.trans (ht.symm.trans (congrArg
     (fun m => SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f ≫ m)
     (strictTransportEvaluate_ambient p d).symm))
@@ -60,7 +60,7 @@ theorem strictTransportEvaluationPrism_projection
     strictTransportEvaluationPrism p f ≫ p =
       fst (Δ[1] : SSet.{u}) _ ≫ yonedaEquiv.symm (nerve.edgeMk f).edge := by
   rw [strictTransportEvaluationPrism, sectionEdgePrism_projection,
-    strictTransportUnderEdge_projection]
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportUnderEdge_projection]
   rfl
 
 end SerrePositivity.KST.Fibration

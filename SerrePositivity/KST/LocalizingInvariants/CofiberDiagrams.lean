@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X ≫ zeroTargetArrowSource X := by
-  rw [bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), left,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left,
     fullSubcomplexLift_ι]
   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
   rfl
@@ -31,7 +31,7 @@ lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.S
 lemma right_target (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X ≫ zeroSourceArrowTarget X := by
-  rw [right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), top,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top,
     fullSubcomplexLift_ι]
   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
   rfl

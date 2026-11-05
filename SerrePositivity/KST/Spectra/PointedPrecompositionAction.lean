@@ -43,7 +43,7 @@ lemma preAction_restrict {W D C A : PointedSimplicialSet.{u}}
       (transpose_pre_inner (transpose (𝟙 (PointedObject.basedHom D C))) r)
     simpa only [transpose_transpose, Category.comp_id] using h
   have hn := InternalHomExchange.natural_pre_right W r C
-  simp only [← prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
   unfold preAction
   rw [Category.assoc, ← hn, ← Category.assoc]
   change ((ihom W).map (transpose (𝟙 (PointedObject.basedHom D C))) ≫
@@ -57,7 +57,7 @@ lemma preParameterAction_id {W D C A : PointedSimplicialSet.{u}}
     preParameterAction (W := W) r (𝟙 A) =
       PointedObject.basedHomMap W (transpose r) ≫ (InternalHomExchange.iso W A C).hom := by
   have hid : prePointed (𝟙 A) (PointedObject.basedHom W C) = 𝟙 _ := by
-    rw [prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app (PointedObject.basedHom W C)) (MonoidalClosed.pre_id A)
   rw [preParameterAction, hid, Category.comp_id]
   exact preAction_restrict r
@@ -68,7 +68,7 @@ lemma preParameterAction_eq_post {W D C A T : PointedSimplicialSet.{u}}
     preParameterAction (W := W) r a =
       PointedObject.basedHomMap W (transpose (a ≫ r)) ≫
         (InternalHomExchange.iso W T C).hom := by
-  rw [preParameterAction, prePointed_comp]
+  rw [preParameterAction, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
   exact preAction_restrict (a ≫ r)
 
 namespace VerticalPath

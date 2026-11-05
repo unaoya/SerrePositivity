@@ -81,7 +81,7 @@ lemma kanAdjointBoundaryTracedStructurePath_projection (n : ℕ) :
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right := by
   have h := InternalHomExchange.natural_pre_left j (suspension (X.level n).space)
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space
-  simp only [← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   have he := congrArg Under.Hom.right h.symm
   change (InternalHomExchange.iso A (suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right ≫

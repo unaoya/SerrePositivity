@@ -40,7 +40,7 @@ lemma realizationCompatible :
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [realizationFace]
-  split_ifs <;> try simp only [PtSimplex.δ_map, null_face, comp_const]
+  split_ifs <;> try simp only [PtSimplex.δ_map, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -55,7 +55,7 @@ lemma realization_output_face (j : Fin (n + 3)) :
   rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
     (realizationCompatible R D).δ_liftOfKanComplex _ (Fin.castSucc_ne_last j)]
   simp only [realizationFace, Fin.val_castSucc]
-  split_ifs <;> try simp only [PtSimplex.δ_map, null_face, comp_const]
+  split_ifs <;> try simp only [PtSimplex.δ_map, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -80,10 +80,10 @@ theorem exists_difference_simplex :
       stdSimplex.δ j ≫ φ = face R S j := by
     by_cases hlast : j = Fin.last (n + 3)
     · subst j
-      simp [face, S]
+      simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, S]
     · rw [(realizationCompatible R D).δ_liftOfKanComplex j hlast]
       have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
-      simp only [realizationFace, face, ite_eq_right hj']
+      simp only [realizationFace, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, ite_eq_right hj']
       have hlast' : j.val ≠ n + 3 := fun he ↦ hlast (Fin.ext he)
       rw [ite_eq_right hlast']
   refine ⟨S, ?_⟩

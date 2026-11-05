@@ -34,7 +34,7 @@ lemma boundaryKanTriangulatedMap_closed_edge (X : StableModel.{u})
       (objectRawBoundaryComparison X ≫ rawBoundaryTriangulatedMap X) =
       (hoFunctor.map (objectBoundaryKanComparison X)).toFunctor ⋙
         fundamentalNerveUntranspose (boundaryKanTriangulatedMap X) := by
-    rw [← fundamentalNerveUntranspose_pre, ← objectRawBoundaryComparison_kan,
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_pre, ← objectRawBoundaryComparison_kan,
       Category.assoc, boundaryKanTriangulatedMap_unit]
   change (fundamentalNerveUntranspose
       (objectRawBoundaryComparison X ≫ rawBoundaryTriangulatedMap X) |>.map

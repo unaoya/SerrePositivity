@@ -41,13 +41,13 @@ def freeBoundaryHomPair {T Y : PointedSimplicialSet.{u}} (f g : T ⟶ Y) :
       (PointedObject.basedHom freeIntervalBoundary Y).hom ≫
         (freeBoundaryEvaluationIso Y).hom ≫ prod.fst
     simp only [Category.assoc, Iso.inv_hom_id_assoc]
-    rw [prod.lift_fst, freeBoundaryEvaluationIso_fst, Under.w, Under.w]
+    rw [prod.lift_fst, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst, Under.w, Under.w]
   · change T.hom ≫ (prod.lift g.right f.right ≫ (freeBoundaryEvaluationIso Y).inv) ≫
         (freeBoundaryEvaluationIso Y).hom ≫ prod.snd =
       (PointedObject.basedHom freeIntervalBoundary Y).hom ≫
         (freeBoundaryEvaluationIso Y).hom ≫ prod.snd
     simp only [Category.assoc, Iso.inv_hom_id_assoc]
-    rw [prod.lift_snd, freeBoundaryEvaluationIso_snd, Under.w, Under.w]
+    rw [prod.lift_snd, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd, Under.w, Under.w]
 
 /-- 境界の終点は、指定した第二の射そのもの。 -/
 @[reassoc]

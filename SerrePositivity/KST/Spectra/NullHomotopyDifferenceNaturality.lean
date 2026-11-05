@@ -39,7 +39,7 @@ def mapNull (R : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
 /-- 差のホーンの各既知面は後合成と可換。 -/
 lemma face_map (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) (j : Fin (n + 4)) :
     face R S j ≫ f = face (mapNull f hf R) (mapNull f hf S) j := by
-  simp only [face]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   split_ifs <;> try rfl
   rw [const_comp, hf]
 
@@ -51,11 +51,11 @@ theorem difference_map [KanComplex X] [KanComplex Y]
   let φ := (compatible R S).liftOfKanComplex ≫ f
   have hφ (j : Fin (n + 4)) (hj : j ≠ (Fin.last (n + 1)).castSucc.castSucc) :
       stdSimplex.δ j ≫ φ = face (mapNull f hf R) (mapNull f hf S) j := by
-    rw [show φ = (compatible R S).liftOfKanComplex ≫ f from rfl,
-      ← Category.assoc, (compatible R S).δ_liftOfKanComplex j hj, face_map]
+    rw [show φ = (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex ≫ f from rfl,
+      ← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j hj, face_map]
   have h := difference_eq_ofFiller (mapNull f hf R) (mapNull f hf S) φ hφ
   change KanHomotopyGroup.map f hf (KanHomotopyGroup.mk (simplex R S)) = _
-  rw [KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   have hs : mapSimplex f hf (simplex R S) =
       ofFiller (mapNull f hf R) (mapNull f hf S) φ hφ := by
     apply RelativeMorphism.ext

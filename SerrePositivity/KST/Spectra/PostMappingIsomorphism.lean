@@ -44,7 +44,7 @@ theorem post_piIsomorphism (A : PointedSimplicialSet.{u})
     kanPiIsomorphism_of_monoRight _
       (post_rlp_monomorphisms A p (mappingPathProjection_rlp_of_piIsomorphism f hf))
   have hur : F.map u ≫ F.map r = 𝟙 (F.obj X) := by
-    rw [← F.map_comp, mappingPathUnit_retraction, F.map_id]
+    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction, F.map_id]
   have hu : KanPiIsomorphism (F.map u).right := by
     apply KanPiIsomorphism.of_comp (g := (F.map r).right) _ hr
     have h : (F.map u).right ≫ (F.map r).right = 𝟙 (F.obj X).right :=
@@ -52,7 +52,7 @@ theorem post_piIsomorphism (A : PointedSimplicialSet.{u})
     rw [h]
     exact KanPiIsomorphism.id _
   have hup : F.map u ≫ F.map p = F.map f := by
-    rw [← F.map_comp, mappingPathUnit_projection]
+    rw [← F.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection]
   have h : (F.map u).right ≫ (F.map p).right = (F.map f).right :=
     congrArg Under.Hom.right hup
   have hc := hu.comp hp

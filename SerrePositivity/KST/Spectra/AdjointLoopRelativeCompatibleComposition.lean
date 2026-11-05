@@ -40,7 +40,7 @@ lemma homPoint_composition_pre {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     comp (X.level n).space (Y.level n).space (Z.level n).space = _
   rw [curry'_whiskerRight_comp (f.app n)]
   erw [leftUnitor_naturality_assoc (pointedEvaluation Y Z n)]
-  rw [Category.assoc, pointedPre_evaluation, PointedMapping.prePointed_eq_closedPre]
+  rw [Category.assoc, pointedPre_evaluation, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
 
 /-- 概要：元の列射の単位パラメータでの合成は、同じ射の後合成。
 方針：各段で curry' の後合成の公式と右単位子の自然性を使う。

@@ -56,9 +56,9 @@ lemma cubeFiberMax_injective (n m : ℕ) :
   funext i
   have htrue : cubeFiberMax r (cubeVertexAtom n i) (q i) = true := by
     rw [← h]
-    exact (cubeFiberMax_true_iff q _ _).mpr ⟨i, rfl, by simp [cubeVertexAtom]⟩
+    exact (cubeFiberMax_true_iff q _ _).mpr ⟨i, rfl, by simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom]⟩
   obtain ⟨j, hj, hv⟩ := (cubeFiberMax_true_iff r _ _).mp htrue
-  have hji : j = i := by simpa [cubeVertexAtom] using hv
+  have hji : j = i := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using hv
   subst j
   exact hj.symm
 
@@ -77,7 +77,7 @@ lemma cubeConnectionNormalVertex_injective (n m : ℕ) :
 lemma cubeConnectionNormalId_vertex (n : ℕ) :
     cubeConnectionNormalVertex (cubeConnectionNormalId n) = _root_.id := by
   dsimp only [cubeConnectionNormalVertex]
-  rw [cubeConnectionNormalId_block, cubeFiberMax_id]
+  rw [cubeConnectionNormalId_block, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_id]
 
 /-- 標準表示の隣接結合は、元の同じ connection との関数合成。 -/
 lemma cubeConnectionNormalVertex_connect {n m : ℕ} (d : CubeConnectionNormal n (m + 2))
@@ -85,6 +85,6 @@ lemma cubeConnectionNormalVertex_connect {n m : ℕ} (d : CubeConnectionNormal n
     cubeConnectionNormalVertex (cubeConnectionNormalConnect d i) =
       cubeVertexConnection m i ∘ cubeConnectionNormalVertex d := by
   dsimp only [cubeConnectionNormalVertex]
-  rw [cubeConnectionNormalConnect_block, cubeFiberMax_comp, cubeFiberMax_predAbove]
+  rw [cubeConnectionNormalConnect_block, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_comp, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_predAbove]
 
 end SerrePositivity.KST.SConstruction

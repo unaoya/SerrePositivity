@@ -104,7 +104,7 @@ lemma exists_verdierSimplexParametricComparison
       verdierSpanMappedNumeratorFamily i q x z d g ≫
         (pre (joinStdSimplexIso 0 0).hom).app C.obj := by
     dsimp only [FQ]
-    rw [Category.assoc, (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
+    rw [Category.assoc, (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
       ← Category.assoc, hFe]
     simp only [Category.assoc]
     rw [← (pre (joinStdSimplexIso 0 0).hom).naturality q.hom]

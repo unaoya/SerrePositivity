@@ -35,11 +35,11 @@ def zeroTargetArrowComparison : FunctorIso a
       ).isFullyFaithful.preimageVertexIso
     change FunctorIso (a₀ ≫ zeroTargetArrowSource X)
       (((a ≫ evaluateFunctorAt _) ≫ SuspensionExact.arrowSection X) ≫ zeroTargetArrowSource X)
-    rw [Category.assoc, SuspensionExact.arrowSection_source, Category.comp_id]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection_source, Category.comp_id]
     exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) (by
       rw [zeroTargetArrowSource, ← Category.assoc, fullSubcomplexLift_ι]))
   have hi := FunctorIso.postcomp h (fullSubcomplexOnVertices _ IsZeroTargetArrow).ι
-  simpa only [SuspensionExact.arrow, Category.assoc, a₀, fullSubcomplexLift_ι] using hi
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow, Category.assoc, a₀, fullSubcomplexLift_ι] using hi
 
 def cofiberZeroTargetIso : FunctorIso (CofiberFamily.cofiber X a)
     ((a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
@@ -47,6 +47,6 @@ def cofiberZeroTargetIso : FunctorIso (CofiberFamily.cofiber X a)
   have h := FunctorIso.postcomp (zeroTargetArrowComparison X a ha)
     (CofiberFamily.cofiber X (𝟙 _))
   exact CofiberFamily.compositionIso X a ≪≫ (by
-    simpa only [SuspensionExact.map, Category.assoc] using h)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map, Category.assoc] using h)
 
 end SerrePositivity.KST.LocalizingInvariants

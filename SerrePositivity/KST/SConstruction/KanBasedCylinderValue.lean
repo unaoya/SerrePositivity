@@ -25,7 +25,7 @@ variable (c : hoFunctor.obj E)
 lemma kanBasedEdgeValue_const (x : E _⦋0⦌) :
     kanBasedEdgeValue c (SSet.const x) = 1 := by
   rw [← mappingIdentityEdge_map x, kanBasedEdgeValue_edge,
-    SSet.HomotopyCategory.homMk_id, groupoidBasedArrow_id]
+    SSet.HomotopyCategory.homMk_id, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_id]
 
 /-- 元の全正方形は、その同じ四辺の二通りの積の等号を与える。 -/
 lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :

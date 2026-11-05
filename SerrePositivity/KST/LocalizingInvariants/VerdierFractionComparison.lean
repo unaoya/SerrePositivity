@@ -38,7 +38,7 @@ private lemma fraction_denominator_iff {x y : B.obj _⦋0⦌}
     (stableHoClosure (essentialImage i)).trW (Truncated.HomotopyCategory.homMk f) ↔
       f.edge ∈ weakEquivalences i := by
   have hd := cofiberStableEdges_iff_trW (essentialImage i) f
-  rw [stableClosure_essentialImage h] at hd
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.stableClosure_essentialImage h] at hd
   exact hd.symm
 
 private lemma fraction_ho_localization :
@@ -140,7 +140,7 @@ private lemma fraction_precomposition_target {X : SSet.{u}} (T : (Δ[2] : SSet.{
     intervalPrecompositionFamily T ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const b := by
   rw [intervalPrecompositionFamily, curry_evaluateFunctorAt_interval,
-    ← Category.assoc, arrowPrecompositionFold_target]
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_target]
   have hc : (SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) :
       (Δ[1] : SSet.{u}) ⟶ Δ[2]) =
       SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ stdSimplex.δ (0 : Fin 3) := by
@@ -176,7 +176,7 @@ private lemma fraction_refinement_family {X : SSet.{u}}
       intervalPrecompositionFamily U ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     simp only [intervalPrecompositionFamily, curry_evaluateFunctorAt_interval,
-      ← Category.assoc, arrowPrecompositionFold_source, hT₂, hU₂]
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_source, hT₂, hU₂]
   let G := stable_spanFamilyOfArrows (intervalPrecompositionFamily T)
     (intervalPrecompositionFamily U) hc
   have hl : G ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T :=

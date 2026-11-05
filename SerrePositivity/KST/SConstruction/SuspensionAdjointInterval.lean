@@ -19,7 +19,7 @@ open scoped Simplicial
 lemma suspensionLoopEquiv_eq_smashCurry (Q B : PointedSimplicialSet.{u})
     (F : Spectra.suspension Q ⟶ B) :
     Spectra.suspensionLoopEquiv Q B F = PointedObject.smashCurry F := by
-  dsimp only [Spectra.suspensionLoopEquiv, PointedSimplicialSet.smashHomAdjunction,
+  dsimp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv, PointedSimplicialSet.smashHomAdjunction,
     PointedObject.smashHomAdjunction]
   rw [Adjunction.mkOfHomEquiv_homEquiv]
   rfl

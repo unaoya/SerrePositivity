@@ -74,7 +74,7 @@ lemma nervePair_fiber (A : SSet.{u}) (X : C) :
       (toUnit _ ≫ eId SSet X) ≫ 𝟙 _ =
     G.map a b ≫ pairBySide A (G.obj a).side (G.obj b).side (𝟙 _)
       (toUnit _ ≫ eId SSet X)
-  rw [Category.comp_id, pairBySide_precomp]
+  rw [Category.comp_id, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_precomp]
   rfl
 
 end SerrePositivity.KST.Spectra.EnrichedParameterCylinder

@@ -52,7 +52,7 @@ theorem weakSpanKanQuotientSimplexUnstraighteningMap_projection :
         transportSimplexFirstVertexMap B.obj ≫ q.hom := by
   rw [weakSpanKanQuotientSimplexUnstraighteningMap, Category.assoc,
     smallLeftUnstraighteningMap_projection, ← Category.assoc,
-    smallUnstraighteningFunctorHom_projection]
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection]
 
 /-- 概要：元の単体圏上の全族単位を受け、同じ商図式への全空間射を作る。
 方針：供給された単位へ同じ指定降下同型の実比較を後合成する。

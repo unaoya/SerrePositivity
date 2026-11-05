@@ -47,7 +47,7 @@ lemma pre_homotopy_h (H : VerticalPath p f g) {T : PointedSimplicialSet.{u}} (i 
     (H.pre i).homotopy.h = i.right ▷ (Δ[1] : SSet.{u}) ≫ H.homotopy.h := by
   rw [homotopy_h, homotopy_h]
   change uncurry ((H.path ≫ PointedMapping.pre i E) ≫ PointedObject.basedHomι T E) = _
-  rw [Category.assoc, pre_ι, ← Category.assoc, uncurry_pre_app]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
 
 /-- 後合成で移した区間の実際のホモトピーは、元の区間全体への同じ後合成。 -/
 lemma post_homotopy_h (H : VerticalPath p f g) {E' B' : PointedSimplicialSet.{u}}

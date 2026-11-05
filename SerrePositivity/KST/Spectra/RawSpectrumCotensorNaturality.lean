@@ -49,7 +49,7 @@ lemma cotensorComparison_pre (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   intro n
   rw [Category.assoc, cotensorComparison_evaluation]
   have hn := (MonoidalClosed.pre i).naturality (pointedEvaluation X Y n)
-  rw [PointedMapping.prePointed_eq_closedPre, Category.assoc, ← hn,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc, ← hn,
     ← Category.assoc, cotensorComparison_evaluation]
   dsimp only [exchangeFamily]
   rw [← Category.assoc, pointedPost_evaluation, Category.assoc]
@@ -57,7 +57,7 @@ lemma cotensorComparison_pre (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
       (PointedObject.basedHomMap (X.level n).space
         (PointedMapping.prePointed i (Y.level n).space) ≫
         (InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom) = _
-  rw [PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   exact congrArg (pointedEvaluation X (KanSequence.mapping B Y) n ≫ ·)
     (InternalHomExchange.natural_pre_right (X.level n).space i (Y.level n).space)
 

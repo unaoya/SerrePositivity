@@ -54,12 +54,12 @@ lemma limitGroupProjection_comp (r n : ℕ)
       KanHomotopyGroup.map
         (FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n)
         rfl (KanHomotopyGroup.mk s)
-  rw [KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk, KanHomotopyGroup.map_mk]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   apply congrArg KanHomotopyGroup.mk
   apply RelativeMorphism.ext
   change (s.map ≫ FibrationTower.projection _ _ (n + 1)) ≫ (p n).right =
     s.map ≫ FibrationTower.projection _ _ n
-  rw [Category.assoc, FibrationTower.projection_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp]
 
 /-- 極限の正次数ホモトピー群から、段ごとの群の逆極限への比較準同型。 -/
 def limitGroupComparison (r : ℕ) :

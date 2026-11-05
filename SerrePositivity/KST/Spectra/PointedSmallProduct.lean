@@ -38,8 +38,8 @@ def lift {X : S → PointedSimplicialSet.{u}} {A : PointedSimplicialSet.{u}}
       SimplicialDependentProduct.lift (fun s ↦ (X s).hom)
     apply SimplicialDependentProduct.hom_ext
     intro s
-    rw [Category.assoc, SimplicialDependentProduct.lift_eval,
-      SimplicialDependentProduct.lift_eval]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval,
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.lift_eval]
     exact Under.w (f s))
 
 @[reassoc (attr := simp)]

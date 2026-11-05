@@ -34,7 +34,7 @@ lemma lift_isExact {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 lemma lift_right_target {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
     (lift X a ≫ right X) ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       CofiberFamily.cofiber X a := by
-  simp only [right, Category.assoc, stable_pre_evaluateFunctorAt]
+  simp only [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, Category.assoc, stable_pre_evaluateFunctorAt]
   change (lift X a ≫ inclusion X) ≫ evaluateFunctorAt _ = _
   rw [lift_inclusion]
   rfl

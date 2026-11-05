@@ -20,7 +20,7 @@ lemma terminalIntervalStart_swap :
     (coprod.braiding (𝟙_ SSet.{u}) (𝟙_ SSet.{u})).hom ≫ terminalIntervalStart.{u}.right =
       Spectra.intervalEndpoint.{u}.right := by
   apply coprod.hom_ext <;>
-    simp [terminalIntervalStart_right, Spectra.intervalEndpoint_right, coprod.braiding]
+    simp [terminalIntervalStart_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_right, coprod.braiding]
 
 /-- 終点を基点にした区間のもう一方の端点も潰した商。 -/
 abbrev terminalEndpointCircle : PointedSimplicialSet.{u} :=

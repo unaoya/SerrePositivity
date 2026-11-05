@@ -52,7 +52,7 @@ lemma cubeCoordinateSelect_injective (n m : ℕ) :
   funext j
   have hj := congrFun (congrFun h (cubeVertexAtom n (e j))) j
   have hf : f j = e j := by
-    simpa [cubeCoordinateSelect, cubeVertexAtom] using hj.symm
+    simpa [cubeCoordinateSelect, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using hj.symm
   exact hf.symm
 
 /-- 標準表示の元の頂点での評価。 -/

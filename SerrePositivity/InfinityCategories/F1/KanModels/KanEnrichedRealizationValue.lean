@@ -34,7 +34,7 @@ theorem kanEnrichedJointEvaluation_restrict (D : KanEnrichedDiagram C J) (X : C)
         (SSet.const (coherentNerveVertex X)) ≫ D.jointEvaluation =
       kanDiagramCoherentNerve (D.evaluate X) := by
   apply functorVertex_injective
-  rw [← curry_vertex_functorVertex, kanEnrichedJointEvaluation_curry]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Transport.curry_vertex_functorVertex, kanEnrichedJointEvaluation_curry]
   exact D.realization_vertex X
 
 variable {D E : KanEnrichedDiagram C J} (η : KanEnrichedDiagramComparison D E)

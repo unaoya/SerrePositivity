@@ -36,13 +36,13 @@ lemma cubeDeletionNormalComp_embedding {n a b : ℕ} (d : CubeDeletionNormal n a
     cases e with
     | drop e =>
       funext i
-      simpa [cubeDeletionNormalComp, cubeDeletionNormalEmbedding] using
+      simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
         congrArg Fin.succ (congrFun (ih e) i)
     | keep e =>
       funext i
       refine Fin.cases ?_ (fun i => ?_) i
       · rfl
-      · simpa [cubeDeletionNormalComp, cubeDeletionNormalEmbedding] using
+      · simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
           congrArg Fin.succ (congrFun (ih e) i)
 
 /-- 削除標準表示の合成は、元の頂点関数の合成を厳密に回収する。 -/

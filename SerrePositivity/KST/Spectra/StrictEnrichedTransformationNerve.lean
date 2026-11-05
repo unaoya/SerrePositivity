@@ -97,7 +97,7 @@ lemma homotopy_component (X : C) :
   change (G.map X X).app (Opposite.op ⦋0⦌)
       ((eId SSet X).app (Opposite.op ⦋0⦌) PUnit.unit) =
     (eId SSet (G.obj X)).app (Opposite.op ⦋0⦌) PUnit.unit at hg
-  rw [hg, EnrichedParameterCylinder.base_comp_id_app]
+  rw [hg, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app]
   rfl
 
 /-- 成分が可逆な厳密な単体的自然変換は、元の二つの ∞ 関手の同型を与える。 -/

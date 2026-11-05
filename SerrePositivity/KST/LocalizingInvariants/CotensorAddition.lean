@@ -47,7 +47,7 @@ lemma circle_basepoint (M : PointedSimplicialSet.{u}) [KanComplex M.right] :
     CirclePower.componentEquiv_familyVertex]
   change KanHomotopyGroup.map (0 : CirclePower.space.{u} ⟶ M).right
     (pointedMap_basepoint _) CirclePower.generator = 1
-  simp only [PointedObject.zero_right, pointedConstant_eq_const]
+  simp only [PointedObject.zero_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
   exact KanHomotopy.map_const 1 _ CirclePower.generator
 
 lemma equiv_zero (A Z : OmegaSpectrum.{u}) : equiv A Z (component (0 : A ⟶ target Z)) = 1 := by

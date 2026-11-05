@@ -41,8 +41,8 @@ def fatRealizationDesc (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) {Z : SSet.{u}}
         simplicialSumDesc ι =
       ((F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫
         simplicialSumInclusion (fun n => F.obj (op ⦋n⦌) ⊗ Δ[n]) θ.target) ≫ simplicialSumDesc ι
-    rw [Category.assoc, simplicialSumInclusion_desc,
-      Category.assoc, simplicialSumInclusion_desc]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc,
+      Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc]
     exact hι θ)
 
 /--
@@ -58,7 +58,7 @@ def fatRealizationDesc (F : SimplexCategoryᵒᵖ ⥤ SSet.{u}) {Z : SSet.{u}}
         (F.obj (op ⦋θ.target⦌) ◁ SSet.stdSimplex.map θ.hom) ≫ ι θ.target) (n : ℕ) :
     fatRealizationInclusion F n ≫ fatRealizationDesc F ι hι = ι n := by
   rw [fatRealizationInclusion, Category.assoc, fatRealizationDesc, coequalizer.π_desc,
-    simplicialSumInclusion_desc]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc]
 
 /--
 概要：fat realization からの二射は各行で一致すれば等しい。

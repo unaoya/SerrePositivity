@@ -60,7 +60,7 @@ lemma kanAdjointParameterLeft_source_restriction (X Y : OmegaSpectrum.{u}) (n : 
       (Y.sigma n ≫ KanSequence.kanAdjoint Y.toKanSequence (n + 1)) := by
   have he := (pre (X.sigma n)).naturality
     (KanSequence.kanAdjoint Y.toKanSequence (n + 1))
-  simp only [← PointedMapping.prePointed_eq_closedPre] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at he
   have he' := congrArg (pointedEvaluation X Y.toKanSequence (n + 1) ≫ ·) he
   have he'' : kanAdjointParameterLeft X Y (n + 1) ≫
       PointedMapping.prePointed (X.sigma n)

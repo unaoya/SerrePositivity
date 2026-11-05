@@ -54,10 +54,10 @@ lemma fst_arrow_source_zero (x : (laxCategory p q).obj _⦋0⦌) : IsZeroSourceA
       (Opposite.op ⦋0⦌) x) := by
   change IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_source,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_source,
     Category.assoc, LaxInclusion.fromD_fst]
   change IsZeroVertex ((LaxInclusion.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
-  rw [LaxInclusion.zeroC, zeroDiagram_const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
   exact (chosenZeroVertex C.obj).isZero
 
 lemma fst_arrow_target :
@@ -65,7 +65,7 @@ lemma fst_arrow_target :
       ArrowTarget.target C.obj = (laxFst p q).hom := by
   change (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
 
 def cofiber_fstIso : FunctorIso (cofiber p q ≫ (laxFst p q).hom) (laxFst p q).hom := by
   have e := cofiberZeroSourceIso C.obj

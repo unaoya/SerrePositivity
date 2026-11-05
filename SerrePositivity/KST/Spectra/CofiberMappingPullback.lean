@@ -35,7 +35,7 @@ theorem cofiberMapping_isPullback {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
       (PointedMapping.pre (PointedObject.fromPoint (pointedCofiber i)) Z)
       (PointedMapping.pre i Z) (PointedMapping.pre (PointedObject.toPoint X) Z) := by
   have h := ((pointedCofiber_isPushout i).op.flip).map (cofiberMappingFunctor Z)
-  simpa only [cofiberMappingFunctor_map] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
 
 /-- 概要：点からの点つき Hom の基礎単体集合は終対象。
 方針：点が初対象であることを極限保存の反変 Hom 関手で移す。

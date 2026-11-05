@@ -19,15 +19,15 @@ lemma necklaceBooleanMap_nonjoint_of_injective {T U : Necklace.{u}} (f : T ⟶ U
     (v : T.down.NonjointVertex) (w : U.down.NonjointVertex)
     (hw : necklaceVertexMap f v.val = w.val) : necklaceBooleanMap f x w = x v := by
   apply Bool.eq_iff_iff.mpr
-  rw [necklaceBooleanMap_true_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_true_iff]
   constructor
   · rintro ⟨j, hj, he⟩
     have hjv : j = v.val := hf (he.trans hw.symm)
     subst j
-    simpa only [NecklaceShape.cubeFullBits, dite_eq_right v.property] using hj
+    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_right v.property] using hj
   · intro hv
     exact ⟨v.val, by
-      simpa only [NecklaceShape.cubeFullBits, dite_eq_right v.property] using hv, hw⟩
+      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits, dite_eq_right v.property] using hv, hw⟩
 
 variable {n : ℕ} (I J : Finset (Fin (n + 1)))
   (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card) (hIJ : I ⊆ J)

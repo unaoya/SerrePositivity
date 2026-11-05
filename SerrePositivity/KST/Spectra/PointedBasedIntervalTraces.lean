@@ -51,7 +51,7 @@ lemma paramCurry_restrict {A B E : PointedSimplicialSet.{u}} (j : B ⟶ A)
     paramCurry A E F hb ≫ (prePointed j E).right = paramCurry B E G hg := by
   apply (cancel_mono (PointedObject.basedHomι B E)).1
   change _ ≫ pre j E ≫ _ = _
-  rw [pre_ι, ← Category.assoc, paramCurry_ι, paramCurry_ι]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
   apply uncurry_injective
   rw [uncurry_pre_app, uncurry_curry, uncurry_curry]
   exact h

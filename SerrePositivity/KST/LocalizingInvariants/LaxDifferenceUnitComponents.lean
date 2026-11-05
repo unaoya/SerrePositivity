@@ -31,7 +31,7 @@ lemma laxDifferenceUnit_target_fst_zero (x : (laxCategory p q).obj _⦋0⦌) :
   rw [laxDifferenceRho, Category.assoc, Category.assoc, LaxInclusion.fromD_fst]
   change IsZeroVertex ((LaxInclusion.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
     (v.app (Opposite.op ⦋0⦌) ((laxDifference p q).app (Opposite.op ⦋0⦌) x)))
-  rw [LaxInclusion.zeroC, zeroDiagram_const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
   exact (chosenZeroVertex C.obj).isZero
 
 /-- 元の第一射影から、同じ実終点の第一射影への自然な零枝。 -/

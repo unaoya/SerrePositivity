@@ -20,8 +20,8 @@ lemma necklaceNumericMap_wedge_join {T T' U U' : Necklace.{u}} (f : T ⟶ T') (g
     necklaceNumericMap (necklaceWedgeMap f g) (T.down.wedgeNumericJoin U.down x y) =
       T'.down.wedgeNumericJoin U'.down (necklaceNumericMap f x) (necklaceNumericMap g y) := by
   funext j
-  dsimp only [necklaceNumericMap, NecklaceShape.wedgeNumericJoin]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap, NecklaceShape.wedgeNumericJoin]
   simp only [Equiv.apply_symm_apply]
-  rw [necklaceBooleanMap_wedge_join]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_wedge_join]
 
 end SerrePositivity.KST.SConstruction

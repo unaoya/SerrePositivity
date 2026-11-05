@@ -50,7 +50,7 @@ def transposeOver {A B U V : PointedSimplicialSet.{u}} {f g : A ⟶ (ihom U).obj
   one := H.basedTranspose.one
   «over» := by
     have hs := InternalHomExchange.natural_pre_left j U V
-    simp only [← prePointed_eq_closedPre] at hs
+    simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
     have hs' := congrArg Under.Hom.right hs.symm
     change (InternalHomExchange.iso A U V).hom.right ≫
         (PointedObject.basedHomMap U (prePointed j V)).right =
@@ -77,7 +77,7 @@ lemma pre_zero_boundary {S A B E : PointedSimplicialSet.{u}} {f g : S ⟶ E}
     (H.pre e).path ≫ (prePointed j E).right = SSet.const (familyVertex (j ≫ (e ≫ f))) := by
   apply (cancel_mono (PointedObject.basedHomι B E)).1
   change (H.pre e).path ≫ PointedMapping.pre j E ≫ PointedObject.basedHomι B E = _
-  rw [pre_ι, ← Category.assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
   apply uncurry_injective
   rw [uncurry_pre_app, uncurry_const_familyVertex, ← homotopy_h, pre_homotopy_h]
   have hz := congrArg Under.Hom.right hzero

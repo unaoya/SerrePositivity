@@ -61,7 +61,7 @@ lemma naturalityInput_zero :
   change (P.path ≫ (PointedMapping.prePointed s
       (PointedObject.basedHom I.source Z)).right) ≫ _ = _
   have hs := (MonoidalClosed.pre s).naturality t
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap (PointedObject.basedHom I.target Z) t ≫
       PointedMapping.prePointed s (PointedObject.basedHom I.source Z') =
     PointedMapping.prePointed s (PointedObject.basedHom I.source Z) ≫

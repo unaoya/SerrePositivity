@@ -94,7 +94,7 @@ lemma cofiberZeroArrow_source (C : SSet.{u}) :
 lemma pushoutProjection_bottom (C : SSet.{u}) :
     _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C ≫ (pre horn₂₀.ι₀₁).app C =
       (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι ≫ (pre squareBottomEdge).app C := by
-  rw [pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     spanSquareBoundary_bottomEdge]
 
 end SerrePositivity.KST.SConstruction

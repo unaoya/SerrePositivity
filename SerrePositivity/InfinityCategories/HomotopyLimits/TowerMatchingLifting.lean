@@ -51,14 +51,14 @@ lemma towerRelative_liftFamily {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1) �
       ∃ next : LiftAt (n + 1), next.val ≫ dX n = prev.val := by
     let v : U ⟶ pullback (dY n) (f n) :=
       pullback.lift (b ≫ FibrationTower.projection Y dY (n + 1)) prev.val (by
-        rw [Category.assoc, FibrationTower.projection_comp, prev.property.2])
+        rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property.2])
     let sq : CommSq (a ≫ FibrationTower.projection X dX (n + 1)) j
         (towerMatchingMap f hf n) v := ⟨by
       apply pullback.hom_ext
       · simp only [Category.assoc, towerMatchingMap, pullback.lift_fst, v]
         exact hs (n + 1)
       · simp only [Category.assoc, towerMatchingMap, pullback.lift_snd, v]
-        rw [FibrationTower.projection_comp, prev.property.1]⟩
+        rw [_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property.1]⟩
     have hb : sq.lift ≫ f (n + 1) = b ≫ FibrationTower.projection Y dY (n + 1) := by
       have he := congrArg (fun k : U ⟶ pullback (dY n) (f n) ↦
         k ≫ pullback.fst (dY n) (f n)) sq.fac_right
@@ -89,11 +89,11 @@ lemma towerMap_hasLiftingProperty {X Y : ℕ → SSet.{u}} {dX : ∀ n, X (n + 1
   refine ⟨⟨{ l := v, fac_left := ?_, fac_right := ?_ }⟩⟩
   · apply FibrationTower.hom_ext
     intro n
-    rw [Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact ha n
   · apply FibrationTower.hom_ext
     intro n
-    rw [Category.assoc, towerMap_projection, ← Category.assoc, FibrationTower.lift_projection]
+    rw [Category.assoc, towerMap_projection, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection]
     exact hb n
 
 /-- 概要：任意の射のクラスへの RLP は初段と相対比較から塔の極限の射へ移る。

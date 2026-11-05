@@ -85,7 +85,7 @@ lemma loopSwap_inv_familyVertex {A Y : PointedSimplicialSet.{u}}
     (f : A ⟶ loopSpace Y) :
     (loopSwap A Y).inv.right.app _ (familyVertex f) = familyVertex (exchangeMap f) := by
   change (InternalHomExchange.iso PointedSimplicialSet.circle A Y).inv.right.app _ _ = _
-  rw [← InternalHomExchange.hom_eq_inv]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv]
   exact exchange_familyVertex f
 
 end

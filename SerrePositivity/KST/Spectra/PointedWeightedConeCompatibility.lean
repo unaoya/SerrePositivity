@@ -56,8 +56,8 @@ theorem constantFamily_exchange (A : PointedSimplicialSet.{u}) (B : SSet.{u})
       (InternalHomExchange.iso A (PointedObject.adjoin B) Y).hom =
         constantFamily B ((ihom A).obj Y) := by
   rw [constantFamily, constantFamily, CategoryTheory.Functor.map_comp, Category.assoc,
-    InternalHomExchange.natural_pre_right, ← Category.assoc,
-    InternalHomExchange.natural_unit_inv]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_unit_inv]
 
 /-- 概要：点つき end への標準比較は錐の頂点と係数図式に自然。
 方針：各射影で錐成分の可換式と定数族の標的自然性を使う。

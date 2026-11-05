@@ -93,7 +93,7 @@ theorem exists_adjust (p : E ⟶ B) [Fibration p] [KanComplex E] [KanComplex B]
       face R j ≫ p = stdSimplex.δ j ≫ ψ := by
     rw [hψ]
     have hj' : j.val ≠ n + 2 := fun he ↦ hj (Fin.ext he)
-    simp only [face, NullHomotopyDifference.face, ite_eq_right hj']
+    simp only [face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, ite_eq_right hj']
     split_ifs <;> first | rfl | exact const_comp _ _
   obtain ⟨φ, hφ, hp⟩ := (compatible R).exists_lift p ψ hcomm
   let U : PtSimplex.RelStruct .const s (Fin.last (n + 1)) := {
@@ -108,16 +108,16 @@ theorem exists_adjust (p : E ⟶ B) [Fibration p] [KanComplex E] [KanComplex B]
   refine ⟨U, ?_, ?_⟩
   · change (stdSimplex.δ (Fin.last (n + 2)).castSucc ≫ φ) ≫ p = T.map
     rw [Category.assoc, hp, hψ]
-    simp [NullHomotopyDifference.face]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   · apply difference_eq_one_of_zero_filler U R φ
     intro j
     by_cases hj : j.val = n + 2
     · have hj' : j = (Fin.last (n + 2)).castSucc := Fin.ext hj
       subst j
-      simp only [NullHomotopyDifference.face, Fin.val_castSucc, Fin.val_last, ite_true]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, Fin.val_castSucc, Fin.val_last, ite_true]
       rfl
     · rw [hφ _ (fun he ↦ hj (congrArg Fin.val he))]
-      simp only [face, NullHomotopyDifference.face, ite_eq_right hj]
+      simp only [face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, ite_eq_right hj]
 
 end
 end SerrePositivity.KST.Spectra.NullHomotopyStrictLifting

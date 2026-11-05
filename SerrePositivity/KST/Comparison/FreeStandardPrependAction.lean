@@ -41,7 +41,7 @@ theorem freeStandardPrependNormalForm_action {n d r : ℕ} (θ : ⦋r⦌ ⟶ ⦋
     freeStandardPrependNormalForm
       (fatNormalize (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋r⦌)
         p.simplex (θ ≫ p.epi))
-  rw [← simplexPrepend_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp]
   exact freeStandardPrepend_normalize p.simplex (θ ≫ p.epi)
 
 end SerrePositivity.KST.Comparison

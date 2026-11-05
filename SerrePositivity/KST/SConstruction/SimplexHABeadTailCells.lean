@@ -44,7 +44,7 @@ lemma simplexHABeadTail_cell {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonemp
           omega)) ≫ simplexSubsetLambdaCellAt A (insert a T) a (T.max' hT) hI hmin hmax := by
   have hc := Finset.card_insert_of_notMem (simplexHABeadTail_not_mem T a ha)
   have hd : T.card - 1 = (insert a T).card - 2 := by omega
-  unfold simplexHABeadTail
+  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail
   rw [simplexHABeadWordCell_mpr A hd, simplexHABeadWordAt_cell]
 
 end SerrePositivity.KST.SConstruction

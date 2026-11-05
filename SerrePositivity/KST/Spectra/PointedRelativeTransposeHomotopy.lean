@@ -36,7 +36,7 @@ lemma homotopy_restriction {A B E Z : PointedSimplicialSet.{u}} {p : E ⟶ Z} {f
     (hrel : H.path ≫ (prePointed j E).right = SSet.const (familyVertex (j ≫ f))) :
     j.right ▷ (Δ[1] : SSet.{u}) ≫ H.homotopy.h =
       fst B.right (Δ[1] : SSet.{u}) ≫ j.right ≫ f.right := by
-  rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← pre_ι, ← Category.assoc]
+  rw [homotopy_h, ← uncurry_pre_app, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc]
   change uncurry ((H.path ≫ (prePointed j E).right) ≫ PointedObject.basedHomι B E) = _
   rw [hrel, uncurry_const_familyVertex]
   rfl
@@ -48,7 +48,7 @@ lemma transpose_path_restriction {A B U V : PointedSimplicialSet.{u}} {j : B ⟶
       SSet.const (familyVertex (j ≫ transpose f)) := by
   have hs := InternalHomExchange.natural_pre_right
     (C := PointedSimplicialSet.{u}) U j V
-  simp only [← prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   have hs' := congrArg Under.Hom.right hs.symm
   change (InternalHomExchange.iso U A V).hom.right ≫
       (prePointed j ((ihom U).obj V)).right =

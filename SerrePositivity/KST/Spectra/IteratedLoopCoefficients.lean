@@ -82,7 +82,7 @@ theorem stageFiberCoefficientEquiv_iteratedLoopComponent (K : SSet.{u})
     change stageFiberCoefficientEquiv K Y n (r + 1)
       (stageFiberLoopPositiveEquiv K Y n r
         (stageFiberIteratedLoopComponentEquiv K (loopSpace Y) n r a)) s = _
-    rw [stageFiberCoefficientEquiv_loopPositive, ih (loopSpace Y)]
+    rw [stageFiberCoefficientEquiv_loopPositive, ih (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)]
     rfl
 
 end SkeletalCellAttachment

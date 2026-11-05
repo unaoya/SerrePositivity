@@ -37,7 +37,7 @@ def pointedCofiberMappingFiberIso {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
   refine Under.isoMk e ?_
   let : Mono (fiberι p.right (p.right.app _
       (PointedSimplicialSet.basepoint (PointedObject.basedHom Y Z)))) := by
-    dsimp only [fiberι]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.fiberι]
     infer_instance
   apply (cancel_mono (fiberι p.right (p.right.app _
     (PointedSimplicialSet.basepoint (PointedObject.basedHom Y Z))))).mp

@@ -30,8 +30,8 @@ def cubeThreeNormalVertex {n m : ℕ} (r : CubeThreeNormal n m) :
 /-- 元の恒等削除の標準表示は、全頂点で恒等。 -/
 lemma cubeDeletionNormalId_vertex (n : ℕ) :
     cubeDeletionNormalVertex (cubeDeletionNormalId n) = _root_.id := by
-  dsimp only [cubeDeletionNormalVertex]
-  rw [cubeDeletionNormalId_embedding]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId_embedding]
   rfl
 
 /-- 面の後の一 connection の計算結果を、元の三段表示へ埋め込む。 -/
@@ -55,7 +55,7 @@ lemma cubeFaceConnectionResultThree_vertex {n m : ℕ} (r : CubeFaceConnectionRe
   | input i d =>
     dsimp only [cubeFaceConnectionResultThree, cubeThreeNormalVertex,
       cubeFaceConnectionResultVertex]
-    rw [cubeDeletionNormalVertex_erase, cubeDeletionNormalId_vertex, cubeConnectionNormalId_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase, cubeDeletionNormalId_vertex, cubeConnectionNormalId_vertex]
     rfl
   | connect i d =>
     dsimp only [cubeFaceConnectionResultThree, cubeThreeNormalVertex,

@@ -52,7 +52,7 @@ def pointedFunctionPre {S T : Type u}
         SimplicialFunctionComplex.eval T C.V t =
       SimplicialFunctionComplex.lift (fun (_ : T) ↦ p) ≫ SimplicialFunctionComplex.eval T C.V t
     rw [Category.assoc, functionPre_eval, ← Category.assoc,
-      SimplicialFunctionComplex.lift_eval, SimplicialFunctionComplex.lift_eval]
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval]
     exact Under.w (B.ρ (θ.hom ((1 : G), t)).1).asHom)
 
 /-- 概要：自由作用の点つき end は点つき関数複体と同型。

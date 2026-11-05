@@ -114,9 +114,9 @@ theorem trianglePairSquare_swap :
     (β_ (Δ[1] : SSet.{u}) (Δ[1] : SSet.{u})).hom ≫ trianglePairSquare a b h =
       trianglePairSquare b a h.symm := by
   apply SquareTriangles.isPushout.hom_ext
-  · rw [← Category.assoc, SquareTriangles.upper_swap]
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_swap]
     simp
-  · rw [← Category.assoc, SquareTriangles.lower_swap]
+  · rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_swap]
     simp
 
 /-- 概要：相対三角形から貼った smash の写像を正方形へ戻すと元の貼り合わせ。

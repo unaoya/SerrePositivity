@@ -61,7 +61,7 @@ structure PathExtension where
 include hf in
 lemma pathExtension_nonempty : Nonempty (PathExtension f Q) := by
   have he : f.diagram ≫ equivalencePathEndpoint X 0 = boundaryι ≫ Q := by
-    rw [diagram_postcomp, hf, diagram_ofSquare]
+    rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp, hf, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_ofSquare]
   let sq : CommSq f.diagram boundaryι (equivalencePathEndpoint X 0) Q := ⟨he⟩
   have : HasLiftingProperty boundaryι (equivalencePathEndpoint X 0) :=
     TrivialKanFibration.mem (p := equivalencePathEndpoint X 0) boundaryι inferInstance
@@ -78,7 +78,7 @@ def target : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X := w.family ≫ equivalencePathE
 omit [Quasicategory X] in
 lemma target_boundary : boundaryι ≫ w.target =
     (f.postcomp (equivalencePathEndpoint X 1)).diagram := by
-  rw [target, ← Category.assoc, w.boundary, diagram_postcomp]
+  rw [target, ← Category.assoc, w.boundary, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp]
 
 end PathExtension
 end SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame

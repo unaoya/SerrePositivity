@@ -92,7 +92,7 @@ def weakSpanKanUnstraighteningUnit_fixedFiberRecovery (c : TransportSimplexCateg
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))) := by
     have hh := congrArg (fun f => s.hom ≫ f) hn.symm
     simp only [Functor.id_map, ← Category.assoc, s.hom_inv_id, Category.id_comp] at hh
-    simpa only [strictKanCompletion, Category.assoc] using! hh
+    simpa only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, Category.assoc] using! hh
   have e' := e ≪≫ eqToIso (congrArg HomotopyCategory.mk (congrArg functorVertex hr))
   simpa only [weakSpanKanValueComparison, cocartesianKanDiagramFiberComparison,
     s, Category.assoc] using! e'

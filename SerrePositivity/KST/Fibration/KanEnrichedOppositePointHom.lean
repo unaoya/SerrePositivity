@@ -31,9 +31,9 @@ theorem kanEnrichedOppositeComponentIso_eq_edgewise (X : EdgewiseEnrichedObject 
     (congrArg HomotopyCategory.mk
       (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
     (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex D.opposite X j)) rfl
-  rw [kanEnrichedOppositeComponentIso, kanEnrichedEdgewisePointIso,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso, _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso,
     _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent_eq_doubleMap,
-    kanEnrichedEdgewiseLeftComponent_eq_doubleMap]
+    _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent_eq_doubleMap]
   change F2.isoNormalizeEndpoints (VertexIso.map D.oppositeRealizationIso T) _ _ = _
   rw [hm]
   simpa only [eqToIso_refl, Iso.refl_trans] using hn.symm

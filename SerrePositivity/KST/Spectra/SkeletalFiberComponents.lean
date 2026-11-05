@@ -49,7 +49,7 @@ theorem SimplexCell.componentEquiv_familyVertex (Y : PointedSimplicialSet.{u})
   change SphereSimplex.componentClass Y n
     (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y).right
       (π₀.mk (PointedMapping.familyVertex f))) = _
-  rw [← PointedMapping.prePointed_eq_closedPre, mapπ₀_mk]
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, mapπ₀_mk]
   erw [PointedMapping.familyVertex_pre, SphereSimplex.componentClass_familyVertex]
 
 /-- 概要：骨格の塔の fiber の π₀ は非退化セル上の正次数係数の関数集合。

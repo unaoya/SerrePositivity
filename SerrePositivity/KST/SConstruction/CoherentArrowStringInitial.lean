@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] {x y : I}
 def coherentArrowStringDirect (f : x ⟶ y) : CoherentArrowString f where
   length := 1
   chain := (nerve.edgeMk f).edge
-  long_edge := by simp only [coherentStringEndpointMap_one, op_id,
+  long_edge := by simp only [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_one, op_id,
     CategoryTheory.Functor.map_id_apply]
 
 /-- 元の射から任意の元の合成列へ向かう、二端点を選ぶ精密化。 -/

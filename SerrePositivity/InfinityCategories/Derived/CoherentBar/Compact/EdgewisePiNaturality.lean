@@ -53,7 +53,7 @@ lemma dgBarCompactOppositePiEquiv_naturality {X Y : SSet.{u}} [KanComplex X] [Ka
         KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm (f.app _ x)) (SSet.opFunctor.map f) rfl (LX a₀) := by
     dsimp only [LY, LX, dgBarCompactEdgewiseLeftPiEquiv]
-    simp only [KanHomotopyGroup.equivOfPiIsomorphism_apply]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact hL
   have hR := KanHomotopyGroup.map_square (edgewiseSubdivisionMap f) f
     (edgewiseRight X) (edgewiseRight Y) (edgewiseRight_naturality f)
@@ -62,7 +62,7 @@ lemma dgBarCompactOppositePiEquiv_naturality {X Y : SSet.{u}} [KanComplex X] [Ka
   have hR' : RY (KanHomotopyGroup.map (edgewiseSubdivisionMap f)
       (dgBarCompactEdgewiseVertex_map f x) a₀) = KanHomotopyGroup.map f rfl (RX a₀) := by
     simpa only [RY, RX, dgBarCompactEdgewiseRightPiEquiv,
-      KanHomotopyGroup.equivOfPiIsomorphism_apply] using hR
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply] using hR
   change RY (LY.symm (KanHomotopyGroup.map (x := SSet.opObjEquiv.symm x)
         (y := SSet.opObjEquiv.symm (f.app _ x)) (SSet.opFunctor.map f) rfl (LX a₀))) =
     KanHomotopyGroup.map f rfl (RX (LX.symm (LX a₀)))

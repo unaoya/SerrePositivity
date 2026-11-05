@@ -29,7 +29,7 @@ theorem scaffoldPointedReconstruction_projection :
     scaffoldPointedReconstruction p ≫
       smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p) = p := by
   rw [scaffoldPointedReconstruction, Category.assoc,
-    smallUnstraighteningFunctorHom_projection, nativeLeftTransportComparison_projection]
+    _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection, nativeLeftTransportComparison_projection]
 
 /-- 同じ実復元射は、元の底上の前合成同値である。 -/
 theorem scaffoldPointedReconstruction_isPrecompositionEquivalence :

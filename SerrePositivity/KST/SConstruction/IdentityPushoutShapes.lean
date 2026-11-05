@@ -104,7 +104,7 @@ lemma identityPushoutFamily_ι (b : Bool) (C : SSet.{u}) [Quasicategory C] :
 規約：全単体での厳密等号。使われ方：相対切断の延長の可換条件。 -/
 lemma identityPushoutFamily_projection (b : Bool) (C : SSet.{u}) [Quasicategory C] :
     identityPushoutFamily b C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = identitySpanFamily b C := by
-  rw [pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
     ← NatTrans.comp_app, ← pre_map]
   rfl
 

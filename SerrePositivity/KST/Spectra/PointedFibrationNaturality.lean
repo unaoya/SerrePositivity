@@ -47,12 +47,12 @@ theorem pointedConnectingHom_natural {E B E' B' : PointedSimplicialSet.{u}}
   have hfpoint : φ.app _ (fiberPoint p.right E.basepoint) =
       fiberPoint q.right E'.basepoint := by
     apply fiber_vertex_ext q.right (q.right.app _ E'.basepoint)
-    rw [fiberι_point]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
     have hv := congrArg (fun k : KanFiber p.right (p.right.app _ E.basepoint) ⟶ E'.right ↦
       k.app _ (fiberPoint p.right E.basepoint)) hφ
     change (fiberι q.right _).app _ (φ.app _ (fiberPoint p.right E.basepoint)) =
       f.right.app _ ((fiberι p.right _).app _ (fiberPoint p.right E.basepoint)) at hv
-    rw [fiberι_point] at hv
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] at hv
     exact hv.trans (OmegaSpectrum.pointedMap_basepoint f)
   have hc : p.right ≫ g.right = f.right ≫ q.right := congrArg Under.Hom.right h
   have hb : g.right.app _ (p.right.app _ E.basepoint) = q.right.app _ E'.basepoint :=

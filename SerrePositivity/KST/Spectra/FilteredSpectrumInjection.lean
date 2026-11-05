@@ -70,7 +70,7 @@ theorem filteredSpectrumInjection_stage (D : J ⥤ OmegaSpectrum.{u}) (a : J)
       (positiveStageEquiv (filteredOmegaSpectrum D) j k n hk hd
         (homotopyMap (filteredSpectrumInjection D a) j x)) = _
   rw [positiveStageEquiv_natural]
-  rw [KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   let s := positiveStageEquiv (D.obj a) j k n hk hd x
   have hm := DFunLike.congr_fun (KanHomotopyGroup.map_comp (n := n)
     ((filteredSpectrumInjection D a).app k).right (pointedMap_basepoint _)

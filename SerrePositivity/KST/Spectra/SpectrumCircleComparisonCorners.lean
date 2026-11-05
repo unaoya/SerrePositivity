@@ -27,7 +27,7 @@ lemma circleCompanionComparisonRawHomSquare_left_corner (z : Sp.{u} _⦋0⦌)
   change (circleCompanionComparisonRawHomSquare z k).app _
     ((SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
       (stdSimplex.obj₀Equiv.symm i), stdSimplex.obj₀Equiv.symm i) = _ at h
-  rw [IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
   exact h
 
 /-- 元の上側の二つの隅も、同じ元の零 Hom 頂点。 -/
@@ -42,7 +42,7 @@ lemma circleCompanionComparisonRawHomSquare_top_corner (z : Sp.{u} _⦋0⦌)
     (stdSimplex.obj₀Equiv.symm i,
       (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app _
         (stdSimplex.obj₀Equiv.symm i)) = _ at h
-  rw [IntervalSquare.const_vertex, IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
   exact h
 
 /-- 元の下側の隅は、左右の正方形で同じ元の頂点。 -/
@@ -63,7 +63,7 @@ lemma circleCompanionComparisonRawHomSquare_bottom_corner_common (z : Sp.{u} _�
       (stdSimplex.obj₀Equiv.symm i,
         (SSet.const (X := (Δ[1] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app _
           (stdSimplex.obj₀Equiv.symm i)) at h
-  rw [IntervalSquare.const_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex] at h
   exact h
 
 /-- 元の二つの正方形の共通下辺の終点。 -/

@@ -25,8 +25,8 @@ lemma concreteCube_face_of_coordinate_embedding {m n : ℕ} (b : Bool)
   funext x j
   change f.val x j = cubeVertexFace b m i x j
   refine Fin.succAboveCases i ?_ (fun k => ?_) j
-  · simpa only [cubeVertexFace, Fin.insertNth_apply_same] using hz x
-  · simpa only [Fin.coe_succAboveOrderEmb, cubeVertexFace, Fin.insertNth_apply_succAbove]
+  · simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_same] using hz x
+  · simpa only [Fin.coe_succAboveOrderEmb, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_apply_succAbove]
       using he x k
 
 end SerrePositivity.KST.SConstruction

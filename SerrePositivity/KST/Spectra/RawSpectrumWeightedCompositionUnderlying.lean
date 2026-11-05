@@ -63,7 +63,7 @@ lemma unpointedWeightedComposition_underlyingIso_evaluation {I : Type u} [SmallC
             FreePointedHomRestriction.restrict (W.obj i) (pointedSpace Y (D.obj i))) ≫
             composition X Y (D.obj i) := by
   rw [id_tensorHom, uncurry_natural_left, uncurry_natural_left,
-    unpointedWeightedComposition_evaluation, HomTensorStrength.exchange_natural_right_assoc]
+    unpointedWeightedComposition_evaluation, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have h := congrArg uncurry (PointedWeightedEnd.underlyingIso_π W (D ⋙ pointedFunctor Y) i)
   rw [uncurry_natural_left] at h
   rw [← whiskerLeft_comp_assoc (space X Y.toKanSequence), h]

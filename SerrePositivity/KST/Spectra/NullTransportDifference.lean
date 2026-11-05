@@ -58,7 +58,7 @@ lemma comparisonCompatible :
   have hlt : j.val < k.val := hjk
   simp only [comparisonFace]
   split_ifs <;> try simp only [hφ, hψ, triangleFace, NullHomotopyDifference.filler_face,
-    NullHomotopyDifference.face, comp_const]
+    _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -117,7 +117,7 @@ theorem difference_eq_of_transport_fillers :
       stdSimplex.δ j ≫ θ = NullHomotopyDifference.face R S j := by
     rw [show θ = _ from rfl, comparison_output_face R S A U V φ ψ hφ hψ j]
     have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
-    simp only [ite_eq_right hj', NullHomotopyDifference.face]
+    simp only [ite_eq_right hj', _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
   rw [NullHomotopyDifference.difference_eq_ofFiller R S θ hθ]
   apply congrArg KanHomotopyGroup.mk
   apply RelativeMorphism.ext

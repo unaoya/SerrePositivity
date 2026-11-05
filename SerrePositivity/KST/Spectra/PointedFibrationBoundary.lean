@@ -69,7 +69,7 @@ lemma pointedFiberGroupEquiv_inclusion (r : ℕ)
   change KanHomotopyGroup.map (fiberι p.right (p.right.app _ E.basepoint)) _ a =
     KanHomotopyGroup.map (fiberι p.right (p.right.app _ E.basepoint)) _
       (KanHomotopyGroup.map (𝟙 _) _ a)
-  erw [← DFunLike.congr_fun (KanHomotopyGroup.map_comp _ _ _ _ _) a]
+  erw [← DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp _ _ _ _ _) a]
   rfl
 
 /-- 概要：点つき連結準同型と fiber 包含の誘導準同型の合成は自明。

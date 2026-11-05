@@ -67,15 +67,15 @@ lemma kanAdjointParameterRight_restriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
       (suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
   have ha : KanSequence.kanAdjoint X.toKanSequence n ≫
       (pre CirclePower.unit.{u}).app (X.level (n + 1)).space = curry (X.sigma n) := by
-    rw [← PointedMapping.prePointed_eq_closedPre]
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     exact KanSequence.kanAdjoint_comparison X.toKanSequence n
   have h := InternalHomTensor.adjoint_pre_restriction CirclePower.unit
     (KanSequence.kanAdjoint X.toKanSequence n) (X.sigma n) ha (Y.level (n + 1)).space
   unfold kanAdjointParameterRight kanAdjointParameterRestriction
-  simp only [PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   have h' := congrArg (pointedEvaluation X Y.toKanSequence (n + 1) ≫ ·) h
   have hc := pointedEvaluation_adjoint_condition X Y n
-  simp only [PointedMapping.prePointed_eq_closedPre] at hc
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
   exact h'.trans hc
 
 /-- 通常の円への制限は、二重 Hom の全ての単射への RLP を持つ。 -/

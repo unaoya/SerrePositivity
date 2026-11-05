@@ -48,14 +48,14 @@ theorem fractionKanSpaceDiagram_classificationIso_native_component :
     functorHomEvaluate ((fractionKanSpaceDiagram_restrictionIso F x).hom ≫
       (fractionKanSimplexClassificationIso F x).hom) z at he
   rw [functorHomEvaluate_comp (U := k ≫ S) (V := T) (W := k ≫ G)] at he
-  simp only [← functorIso_app_hom_evaluate] at he
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] at he
   have hc := congrArg (fun m => (fractionKanSpaceDiagram_initialVertexIso F x c).inv ≫ m) he
   dsimp only [z] at hc
   simp only [fractionKanSpaceDiagram_initialVertexIso, Iso.trans_inv,
     Category.assoc, Iso.inv_hom_id_assoc] at hc
   simpa only [fractionKanSimplexClassificationValueIso, fractionKanSpaceDiagram_initialVertexIso,
     Iso.trans_inv, Category.assoc, Iso.trans_hom, Iso.symm_hom,
-    functorIso_app_hom_evaluate] using hc
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate] using hc
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

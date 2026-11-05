@@ -109,7 +109,7 @@ theorem squareRestrictions_diagonal :
   simp only [Under.comp_right, ← Category.assoc, triangleDiskDiagonal_quotient]
   rw [Category.assoc, Category.assoc, squareUpperRestriction_quotient,
     squareLowerRestriction_quotient, ← Category.assoc, ← Category.assoc,
-    SquareTriangles.upper_diagonal, SquareTriangles.lower_diagonal]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal]
 
 end
 

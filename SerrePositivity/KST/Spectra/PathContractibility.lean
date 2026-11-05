@@ -40,7 +40,7 @@ def pathContraction_basedHomotopy (Y : PointedSimplicialSet.{u}) :
   h₀ := (pathContraction_zero Y).trans (pointedConstant_eq_const _ _)
   h₁ := pathContraction_one Y
   rel := by
-    rw [Subcomplex.ofSimplex_ι, ← pointedConstant_eq_const (basedPathSpace Y),
+    rw [Subcomplex.ofSimplex_ι, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (basedPathSpace Y),
       comp_whiskerRight_assoc, pathContraction_constant, comp_toUnit_assoc]
     simp only [comp_toUnit_assoc]
 
@@ -53,10 +53,10 @@ theorem basedPathSpace_homotopy_eq_point (Y : PointedSimplicialSet.{u}) [KanComp
     a = KanHomotopy.point n := by
   have hc : (SSet.const (X := (basedPathSpace Y).right) (basedPathSpace Y).basepoint).app _
       (basedPathSpace Y).basepoint = (basedPathSpace Y).basepoint := by
-    rw [← pointedConstant_eq_const (basedPathSpace Y)]
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (basedPathSpace Y)]
     rfl
   have h := KanHomotopy.map_eq_of_basedHomotopy n hc rfl (pathContraction_basedHomotopy Y) a
-  rw [KanHomotopy.map_const, KanHomotopy.map_id] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id] at h
   exact h.symm
 
 /-- 概要：基点に始まる path space の全次数のホモトピー類は一元集合。

@@ -39,10 +39,10 @@ theorem relativeSectionDomainComponentIso_hom (X : LeftFibrationObject B) (j : J
           (spaceInfinityVertex_eq_coherent
             (((relativeSectionEnrichedDiagram A).obj j).obj X)).symm).toTruncated) := by
   simp only [relativeSectionDomainComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
-    eqToIso.hom, functorIsoValue_hom]
+    eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom]
   rw [show (relativeSectionJointComparisonIso η hη).hom = Truncated.HomotopyCategory.homMk
     (relativeSectionJointComparisonEdge η).toTruncated from rfl,
-    functorHomEvaluate_edge_hom]
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
   exact homMk_transport
     (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j)
     (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j)

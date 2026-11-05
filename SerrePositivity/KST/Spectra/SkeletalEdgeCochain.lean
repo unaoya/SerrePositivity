@@ -40,7 +40,7 @@ lemma zeroExtend (s : K _⦋1⦌) :
       (cochain K Y f hf) s = Additive.ofMul
         (KanHomotopyGroup.mk (SkeletalMapSimplex.simplex K (loopSpace Y) 0 f hf s)) := by
   classical
-  unfold NormalizedValueCochains.zeroExtend
+  unfold _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend
   split_ifs with hs
   · rfl
   · have hd : s ∈ K.degenerate 1 := (K.mem_degenerate_iff_notMem_nonDegenerate s).2 hs
@@ -57,7 +57,7 @@ lemma differential (s : K.nonDegenerate 2) :
       (cochain K Y f hf) s =
     ∑ j : Fin 3, (-1 : ℤ) ^ j.val • Additive.ofMul
       (KanHomotopyGroup.mk (SkeletalMapSimplex.simplex K (loopSpace Y) 0 f hf (K.δ j s.val))) := by
-  rw [NormalizedValueCochains.differential_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply]
   simp only [zeroExtend]
 
 /-- 次数一の cochain は元の骨格射の実際の fiber 成分係数。 -/

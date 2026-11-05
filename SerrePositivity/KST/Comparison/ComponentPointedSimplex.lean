@@ -29,7 +29,7 @@ open scoped Simplicial
 -/
 theorem simplexClass_yoneda_const (X : SSet.{u}) (x : X _⦋0⦌) (n : ℕ) :
     simplexClass X (yonedaEquiv (SSet.const (X := Δ[n]) x)) = π₀.mk x := by
-  unfold simplexClass simplexVertex
+  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
   rw [yonedaEquiv_naturality, SSet.comp_const, yonedaEquiv_const]
 
 /--

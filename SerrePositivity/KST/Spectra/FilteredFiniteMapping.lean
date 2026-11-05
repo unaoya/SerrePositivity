@@ -42,7 +42,7 @@ theorem finite_basedHom_factorization {P : SSet.{u}} [P.Finite]
   let earlier := toUnit (𝟙_ SSet.{u} ⊗ P) ≫ (D.obj j).hom
   let body := MonoidalClosed.uncurry (s ≫ PointedObject.basedHomι A c.pt)
   have h : earlier ≫ (c.ι.app j).right = A.hom ▷ P ≫ body := by
-    rw [uncurry_basepoint]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
     simp only [earlier, Category.assoc, Under.w]
     rfl
   obtain ⟨k, v, q, hq, heq⟩ := finite_relative_factorization hc (A.hom ▷ P) j earlier body h
@@ -52,7 +52,7 @@ theorem finite_basedHom_factorization {P : SSet.{u}} [P.Finite]
     rw [Category.assoc, Under.w]
   refine ⟨k, paramCurry A (D.obj k) q hfixed, ?_⟩
   apply (cancel_mono (PointedObject.basedHomι A c.pt)).mp
-  rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, paramCurry_ι,
+  rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     ← MonoidalClosed.curry_natural_right]
   change q ≫ (c.ι.app k).right = body at heq
   rw [heq, MonoidalClosed.curry_uncurry]

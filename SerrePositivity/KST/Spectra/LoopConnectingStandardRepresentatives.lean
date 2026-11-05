@@ -86,7 +86,7 @@ theorem exists_standard_common [Fibration p.right] (L : BoundaryLift p.right E.b
   refine ⟨U, hp, ?_⟩
   ext : 1
   apply fiber_hom_ext p.right (p.right.app _ E.basepoint)
-  simp only [sourceFiberSimplex, KanFiber.liftSimplex_ι, mapSimplex]
+  simp only [sourceFiberSimplex, _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex]
   rw [L.boundary_ι]
   exact hend
 

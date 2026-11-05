@@ -58,14 +58,14 @@ instance right_trivialKanFibration (X : SSet.{u})
         exact sq.w.symm
       · rw [Category.assoc, stable_cospanFamilyOfArrows_right]
         rw [← Category.assoc, hBR.fac_left, Category.assoc]
-        rw [top, fullSubcomplexLift_ι]
+        rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top, fullSubcomplexLift_ι]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, cospanSquareBoundary_topEdge]
         rfl
     let c := a ≫ cones X
     have hcd : CommSq c (boundary (n + 1)).ι
         (limitConeProjection (horn 2 2 : SSet.{u}) X) d := by
       constructor
-      rw [Category.assoc, cones_projection]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_projection]
       exact hd.symm
     have : HasLiftingProperty (boundary (n + 1)).ι
         (limitConeProjection (horn 2 2 : SSet.{u}) X) :=
@@ -79,7 +79,7 @@ instance right_trivialKanFibration (X : SSet.{u})
       rw [← Category.assoc, ← Category.assoc, hcd.fac_left, Category.assoc]
       change a ≫ (cones X ≫ k) ≫
         (pre cospanConeSquareIso.inv).app X = _
-      rw [cones_inclusion]
+      rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_inclusion]
       simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, Iso.inv_hom_id,
         pre_id, NatTrans.id_app, Category.comp_id]
       rfl

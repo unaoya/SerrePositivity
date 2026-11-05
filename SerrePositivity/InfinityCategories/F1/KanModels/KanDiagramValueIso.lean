@@ -33,14 +33,14 @@ theorem kanDiagramValueIso_trans
     (f : FunctorIso (kanDiagramCoherentNerve G) (kanDiagramCoherentNerve H)) (i : I) :
     kanDiagramValueIso (e ≪≫ f) i = kanDiagramValueIso e i ≪≫ kanDiagramValueIso f i := by
   apply Iso.ext
-  simp [kanDiagramValueIso, functorIso_app_trans, Category.assoc]
+  simp [kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_trans, Category.assoc]
 
 /-- 元の標準値への正規化は、同じ指定同型の逆を保つ。 -/
 theorem kanDiagramValueIso_symm
     (e : FunctorIso (kanDiagramCoherentNerve F) (kanDiagramCoherentNerve G)) (i : I) :
     kanDiagramValueIso e.symm i = (kanDiagramValueIso e i).symm := by
   apply Iso.ext
-  simp [kanDiagramValueIso, functorIso_app_symm, Category.assoc]
+  simp [kanDiagramValueIso, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_symm, Category.assoc]
 
 /-- 元の点ごとの変換では、同じ指定成分の標準値表示そのものを回収する。 -/
 theorem kanDiagramValueIso_pointwise {F G : KanDiagramObject I}

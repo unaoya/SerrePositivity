@@ -38,7 +38,7 @@ lemma cubeConnectionNormalDelete_vertex {n m : ℕ} (d : CubeConnectionNormal n 
         · funext x j
           simp [cubeConnectionNormalDelete, cubeDeletionConnectionNormalDrop_vertex,
             cubeDeletionConnectionNormalFrom_vertex, cubeConnectionNormalVertex_keep,
-            cubeVertexDegeneracy]
+            _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
         · funext x
           change cubeDeletionConnectionNormalVertex
             (cubeDeletionConnectionNormalKeep (cubeConnectionNormalDelete d i)) x = _

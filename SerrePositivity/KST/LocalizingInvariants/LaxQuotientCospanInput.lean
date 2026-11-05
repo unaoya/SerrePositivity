@@ -46,18 +46,18 @@ lemma productSquare_isPullback : IsPullbackSquare (productSquare hΦ p q i r h) 
 lemma productSquare_top : squareTopEdge ≫ productSquare hΦ p q i r h =
     SSet.yonedaEquiv.symm
       (coherentNerveEdge (Binary.map (cLeg (Φ := Φ) p q r) (dLeg (Φ := Φ) p q r))).edge := by
-  rw [productSquare, square_transpose_top, LaxUniversalProductNormalization.square_right]
+  rw [productSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_right]
   rfl
 
 lemma productSquare_right : squareRightEdge ≫ productSquare hΦ p q i r h =
     SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.diagonal (value Φ Q))).edge := by
-  rw [productSquare, square_transpose_right, LaxUniversalProductNormalization.square_top]
+  rw [productSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_top]
   rfl
 
 lemma productSquare_left : squareLeftEdge ≫ productSquare hΦ p q i r h =
     SSet.yonedaEquiv.symm
       (coherentNerveEdge (Binary.lift (cSource (Φ := Φ) p q i) (dSource (Φ := Φ) p q i))).edge := by
-  rw [productSquare, square_transpose_left, LaxUniversalProductNormalization.square_bottom]
+  rw [productSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_bottom]
   rfl
 
 end SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback

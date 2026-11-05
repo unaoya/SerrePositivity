@@ -39,7 +39,7 @@ lemma quotientOriginalRightImage_arrow :
     Arrow.mk (quotientOriginalRightImage p q i r) =
       Arrow.mk (arrowFamilyHom (quotientOriginalDiagrams p q i r ≫
         CofiberDiagrams.right Q.obj)) := by
-  rw [quotientOriginalDiagrams_right, arrowFamilyHom_postcomp, arrowFamilyHom_precomp]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_right, arrowFamilyHom_postcomp, arrowFamilyHom_precomp]
   let F := (hoFunctor.map ((pre i.hom).app (laxCategory p q).obj)).toFunctor ⋙
     (hoFunctor.map ((ihom A.obj).map r.hom)).toFunctor
   have he := congrArg F.mapArrow.obj (rightHom_arrow p q)
