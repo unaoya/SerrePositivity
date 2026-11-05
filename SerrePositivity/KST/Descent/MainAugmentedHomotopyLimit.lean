@@ -98,7 +98,7 @@ theorem homotopyLimitComparison_naturality {A B : AugmentedLimitDiagram I} (f : 
 使われ方：主経路の一般形状の細分・添字変更。 -/
 def HasHomotopyLimitDescent (A : AugmentedLimitDiagram I) [KanComplex A.left.right]
     [∀ i, KanComplex (A.right.obj i).right] : Prop :=
-  KanPiIsomorphism (homotopyLimitComparison A).right
+  _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (homotopyLimitComparison A).right
 
 /-- 概要：元と各段の π_* 同型は指定 BK 降下を保存し反映する（補題 3.2）。
 方針：実 end の同型保存と指定比較の自然な正方形で合成を消去する。
@@ -106,8 +106,8 @@ def HasHomotopyLimitDescent (A : AugmentedLimitDiagram I) [KanComplex A.left.rig
 theorem hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism
     {A B : AugmentedLimitDiagram I} [KanComplex A.left.right] [KanComplex B.left.right]
     [∀ i, KanComplex (A.right.obj i).right] [∀ i, KanComplex (B.right.obj i).right]
-    (f : A ⟶ B) (hf : KanPiIsomorphism f.left.right)
-    (hstage : ∀ i, KanPiIsomorphism (f.right.app i).right) :
+    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.left.right)
+    (hstage : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.right.app i).right) :
     HasHomotopyLimitDescent A ↔ HasHomotopyLimitDescent B := by
   have hmap := PointedHomotopyLimit.map_piIsomorphism f.right hstage
   have hsquare := congrArg (fun g ↦ g.right) (homotopyLimitComparison_naturality f)
@@ -115,13 +115,13 @@ theorem hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism
     (homotopyLimitComparison A).right ≫ (PointedHomotopyLimit.map f.right).right at hsquare
   constructor
   · intro hA
-    have hcomp := KanPiIsomorphism.comp hA hmap
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hA hmap
     rw [← hsquare] at hcomp
     exact KanPiIsomorphism.cancel_left_atVertex hf hcomp
       (PointedSimplicialSet.basepoint A.left)
   · intro hB
-    have hcomp := KanPiIsomorphism.comp hf hB
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hf hB
     rw [hsquare] at hcomp
-    exact KanPiIsomorphism.of_comp hcomp hmap
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hmap
 
 end SerrePositivity.KST.Descent.Main

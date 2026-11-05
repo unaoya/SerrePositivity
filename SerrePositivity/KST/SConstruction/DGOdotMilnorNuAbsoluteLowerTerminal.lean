@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 方針：同じ全 Hom 像の終対象性を通常射の頂点へ回収する。
 規約：元 path の像を変更しない。使われ方：共有対角の終対象性。 -/
 lemma dgOdotMilnorNuAbsoluteUpperPathFunctor_isTerminal (P : DGOdotMilnorNuNullTrianglePath.{u}) :
-    IsTerminalVertex (exactFunctorVertexEquiv
+    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv
       (dgOdotMilnorNuAbsoluteTriangleStableObject R d h 0)
       (dgOdotMilnorNuAbsoluteTriangleStableObject R d h 2)
       ((coherentEnrichedUnderlyingFunctor
@@ -33,13 +33,13 @@ lemma dgOdotMilnorNuAbsoluteUpperPathFunctor_isTerminal (P : DGOdotMilnorNuNullT
 方針：元共有一単体の依存射データの等号で上三角形の終対象性を移す。
 規約：両端点と元通常射を同時に保持。使われ方：下三角形の全 path の零性。 -/
 lemma dgOdotMilnorNuAbsoluteLowerDiagonal_isTerminal :
-    IsTerminalVertex (exactFunctorVertexEquiv
+    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv
       ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (0 : Fin 3)⟩)
       ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (2 : Fin 3)⟩)
       ((coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuAbsoluteNullTriangle R d h 1)).map
         dgOdotMilnorNuNullDiagonalPath.{u})) := by
-  let P : (Σ X Y : StableQCat.{u + 1}, X ⟶ Y) → Prop :=
-    fun t => IsTerminalVertex (exactFunctorVertexEquiv t.1 t.2.1 t.2.2)
+  let P : (Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, X ⟶ Y) → Prop :=
+    fun t => IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv t.1 t.2.1 t.2.2)
   have he := (dgOdotMilnorNuAbsoluteTriangle_diagonal_data R d h 0).symm.trans
     ((congrArg coherentNerveArrowData (dgOdotMilnorNuAbsoluteTriangle_diagonal R d h)).trans
       (dgOdotMilnorNuAbsoluteTriangle_diagonal_data R d h 1))
@@ -55,7 +55,7 @@ lemma dgOdotMilnorNuAbsoluteLowerDiagonal_isTerminal :
 方針：元の同じ二単体の端点間 Hom 写像を使う。
 規約：端点輸送前の元写像。使われ方：同じ全零成分への制限。 -/
 def dgOdotMilnorNuAbsoluteLowerHom : nerve DGOdotMilnorNuNullTrianglePath.{u} ⟶
-    SimplicialCategory.sHom (C := StableQCat.{u + 1})
+    SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
       ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (0 : Fin 3)⟩)
       ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (2 : Fin 3)⟩) :=
   (dgOdotMilnorNuAbsoluteNullTriangle R d h 1).map ⟨ULift.up (0 : Fin 3)⟩ ⟨ULift.up (2 : Fin 3)⟩
@@ -64,12 +64,12 @@ def dgOdotMilnorNuAbsoluteLowerHom : nerve DGOdotMilnorNuNullTrianglePath.{u} �
 方針：元の両端を同じ完全関手圏へ保持する。
 規約：固定 ν への輸送前。使われ方：元全 Hom の終頂点性。 -/
 abbrev DGOdotMilnorNuAbsoluteLowerExactFunctors : SSet.{u + 1} :=
-  exactFunctors ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (0 : Fin 3)⟩)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (0 : Fin 3)⟩)
     ((dgOdotMilnorNuAbsoluteNullTriangle R d h 1).obj ⟨ULift.up (2 : Fin 3)⟩)
 
 local instance nuAbsoluteLowerExact_quasicategory :
     Quasicategory (DGOdotMilnorNuAbsoluteLowerExactFunctors R d h) :=
-  exactFunctors_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors_quasicategory _ _
 
 /-- 概要：元下三角形の任意 path の全 Hom 頂点は終関手。
 方針：同じ共有対角からの元包含辺を Kan Hom に写して終対象性を移す。

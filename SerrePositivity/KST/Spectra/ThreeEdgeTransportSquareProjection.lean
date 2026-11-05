@@ -19,21 +19,21 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
 variable {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
   {left : Z.Edge x a} {middle : Z.Edge x y} {right : Z.Edge y b}
-  (D : ThreeEdgeTransport left middle right)
+  (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right)
 
 /-- 元の二単体が同じなら、端点表示にかかわらず正方形全体が同じ。 -/
 lemma square_eq_of_simplex_eq {x' a' y' b' : Z _⦋0⦌}
     {left' : Z.Edge x' a'} {middle' : Z.Edge x' y'} {right' : Z.Edge y' b'}
-    (D' : ThreeEdgeTransport left' middle' right')
+    (D' : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left' middle' right')
     (hfirst : D.first.simplex = D'.first.simplex)
-    (hsecond : D.second.simplex = D'.second.simplex) : D.square = D'.square := by
-  apply SquareTriangles.isPushout.hom_ext
+    (hsecond : D.second.simplex = D'.second.simplex) : (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square D) = (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square D') := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
   · rw [square_upper, square_upper, hfirst]
   · rw [square_lower, square_lower, hsecond]
 
 /-- 正方形を写すと、同じ二単体を写して作った正方形そのもの。 -/
-lemma square_map {W : SSet.{u}} (p : Z ⟶ W) : D.square ≫ p = (D.map p).square := by
-  apply SquareTriangles.isPushout.hom_ext
+lemma square_map {W : SSet.{u}} (p : Z ⟶ W) : (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square D) ≫ p = (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (D.map p)) := by
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
   · rw [← Category.assoc, square_upper, square_upper]
     exact SSet.yonedaEquiv_symm_comp D.first.simplex p
   · rw [← Category.assoc, square_lower, square_lower]
@@ -44,7 +44,7 @@ lemma square_relabel {x' a' y' b' : Z _⦋0⦌}
     (left' : Z.Edge x' a') (middle' : Z.Edge x' y') (right' : Z.Edge y' b')
     (hl : left.edge = left'.edge) (hm : middle.edge = middle'.edge)
     (hr : right.edge = right'.edge) :
-    (D.relabel left' middle' right' hl hm hr).square = D.square :=
+    (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (D.relabel left' middle' right' hl hm hr)) = (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square D) :=
   square_eq_of_simplex_eq _ _ rfl rfl
 
 end SerrePositivity.KST.Spectra.ThreeEdgeTransport

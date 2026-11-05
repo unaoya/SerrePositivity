@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 任意のパラメータで一定の Hom の頂点を評価すると、元の同じ点つき射になる。 -/
@@ -33,7 +33,7 @@ lemma uncurry_const_familyVertex {T E : PointedSimplicialSet.{u}} (f : T ⟶ E)
       omega
     rw [hv, ← SSet.yonedaEquiv_comp, Category.id_comp]
     rfl
-  rw [← hk, Category.assoc, pointFamily, paramCurry_ι,
+  rw [← hk, Category.assoc, pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
     uncurry_natural_left, uncurry_curry]
   rfl
 
@@ -82,12 +82,12 @@ def ofHomotopy (H : SSet.Homotopy f.right g.right)
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom)
     (hvertical : H.h ≫ p.right = fst T.right (Δ[1] : SSet.{u}) ≫ f.right ≫ p.right) :
     VerticalPath p f g where
-  path := paramCurry T E H.h hbase
+  path := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry T E H.h hbase
   zero := paramCurry_homotopy_zero H hbase
   one := paramCurry_homotopy_one H hbase
   over := by
     apply (cancel_mono (PointedObject.basedHomι T B)).1
-    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, paramCurry_ι,
+    rw [Category.assoc, PointedObject.basedHomMap_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι,
       ← curry_natural_right]
     apply uncurry_injective
     rw [uncurry_curry, uncurry_const_familyVertex]

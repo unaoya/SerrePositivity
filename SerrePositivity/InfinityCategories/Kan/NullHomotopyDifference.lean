@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 
 /-!
@@ -12,9 +14,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.NullHomotopyDifference
+end SerrePositivity.KST.Spectra.NullHomotopyDifference
+namespace SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference
+open SerrePositivity.KST.Spectra.NullHomotopyDifference
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -45,7 +50,7 @@ def face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 
 /-- 同じ最後の面を持つ二つの零ホモトピーからのホーンは互換。 -/
 lemma compatible (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
-    horn.IsCompatible (i := (Fin.last (n + 1)).castSucc.castSucc) (fun j _ ↦ face R S j) := by
+    horn.IsCompatible (i := (Fin.last (n + 1)).castSucc.castSucc) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
@@ -53,8 +58,8 @@ lemma compatible (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
   have hjb := j.isLt
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
-  simp only [face]
-  split_ifs <;> try simp only [null_face, comp_const]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -65,7 +70,7 @@ lemma compatible (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
 lemma output_face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (φ : (Δ[n + 3] : SSet.{u}) ⟶ X)
     (hφ : ∀ j, j ≠ (Fin.last (n + 1)).castSucc.castSucc →
-      stdSimplex.δ j ≫ φ = face R S j) (j : Fin (n + 3)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j) (j : Fin (n + 3)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ φ = SSet.const x := by
   let q : Fin (n + 3) := (Fin.last n).castSucc.castSucc
   have hq : (Fin.last (n + 1)).castSucc.castSucc = q.succ := by apply Fin.ext; rfl
@@ -77,8 +82,8 @@ lemma output_face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
       have hjv := hj
       simp only [Fin.le_def, q, Fin.val_castSucc, Fin.val_last] at hjv
       omega)]
-    simp only [face]
-    split_ifs <;> try simp only [null_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -94,8 +99,8 @@ lemma output_face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
       have hjv := hm
       simp only [Fin.le_def, Fin.val_last, Fin.val_castSucc] at hjv
       omega)]
-    simp only [face]
-    split_ifs <;> try simp only [null_face, comp_const]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
       | (exfalso
@@ -105,11 +110,35 @@ lemma output_face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
 /-- 二つの零ホモトピーの差を表す境界定数単体。 -/
 def simplex [KanComplex X] (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
     X.PtSimplex (n + 2) x where
-  map := stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ (compatible R S).liftOfKanComplex
+  map := stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex
   comm := by
     ext j : 1
     simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
-    exact output_face R S _ (fun k hk ↦ (compatible R S).δ_liftOfKanComplex k hk) j
+    exact _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.output_face R S _ (fun k hk ↦ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex k hk) j
 
 end
-end SerrePositivity.KST.Spectra.NullHomotopyDifference
+end SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.compatible := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.null_face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.output_face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.simplex := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyDifference.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex._proof_1

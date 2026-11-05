@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -48,6 +50,9 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -73,9 +78,27 @@ abbrev loopSpace (X : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
 規約：通常の点つき射の同値。
 使われ方：HA §1.4.2、BF 1978 §2。構造写像の随伴。 -/
 def suspensionLoopEquiv (X Y : PointedSimplicialSet.{u}) :
-    (suspension X ⟶ Y) ≃ (X ⟶ loopSpace Y) :=
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ⟶ Y) ≃ (X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
   (PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle).homEquiv X Y
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.loopSpace := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.suspension := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.suspensionLoopEquiv := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.loopSpace._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.suspension._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension._proof_1

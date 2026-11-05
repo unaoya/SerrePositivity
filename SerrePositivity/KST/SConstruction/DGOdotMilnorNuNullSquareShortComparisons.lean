@@ -49,7 +49,7 @@ private lemma nullSquareShortFromTriangle {A B C X : SSet.{u}}
 
 private lemma nullSquareZeroCorner :
     (stdSimplex.δ (0 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) ≫ squareLeftEdge =
-      verdierZeroCorner := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
   all_goals
@@ -120,8 +120,8 @@ lemma dgOdotMilnorNuNullSquareComparison_zeroTop :
 方針：同じ元指定全辺比較を元の零角頂点へ制限する。
 規約：全四角形比較から選ばない。使われ方：Sp の指定三境界の零角入力。 -/
 def dgOdotMilnorNuNullRawSquareZeroBoundary : FunctorIso
-    (verdierZeroCorner ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (verdierZeroCorner ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
   F2.functorIsoOfEq
     ((dgOdotMilnorNuZeroLeftDiagramComparison R d h).precomp (stdSimplex.δ (0 : Fin 2)))
     (by rw [← Category.assoc, nullSquareZeroCorner])
@@ -131,11 +131,11 @@ def dgOdotMilnorNuNullRawSquareZeroBoundary : FunctorIso
 方針：元零角左辺の全比較と同じ元端点への制限を接続する。
 規約：指定全同型の厳密等号。使われ方：Sp 正本の全核面比較への零角境界。 -/
 lemma dgOdotMilnorNuNullSquareComparison_zero :
-    (dgOdotMilnorNuNullSquareComparison R d h).precomp verdierZeroCorner =
+    (dgOdotMilnorNuNullSquareComparison R d h).precomp _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner =
       dgOdotMilnorNuNullRawSquareZeroBoundary R d h := by
   apply eq_of_heq
   exact nullSquareShortFromTriangle (dgOdotMilnorNuNullSquareComparison R d h)
-    squareLeftEdge (stdSimplex.δ (0 : Fin 2)) verdierZeroCorner nullSquareZeroCorner
+    squareLeftEdge (stdSimplex.δ (0 : Fin 2)) _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner nullSquareZeroCorner
     rfl rfl (dgOdotMilnorNuZeroLeftDiagramComparison R d h)
     (dgOdotMilnorNuNullSquareComparison_zeroLeft R d h) _ _
     (dgOdotMilnorNuNullRawSquareZeroBoundary R d h) rfl

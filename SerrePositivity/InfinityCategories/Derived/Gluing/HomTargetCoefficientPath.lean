@@ -17,7 +17,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory
 open DifferentialGraded DGNerve SSet KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R]
   (C D E : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   [DGCategory R D] [DGCategory R E] [Small.{u} E]

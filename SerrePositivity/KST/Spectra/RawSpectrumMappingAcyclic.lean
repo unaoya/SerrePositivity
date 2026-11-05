@@ -51,7 +51,7 @@ lemma post_trivialKanFibration (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
 lemma post_piIsomorphism (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
     (p : KanSequence.Hom Y Z)
     (hp : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app n).right) :
-    KanPiIsomorphism (post X p) := kanPiIsomorphism_of_monoRight _ (post_rlp X p hp)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post X p) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (post_rlp X p hp)
 
 /-- BF cotensor の射影は実際の写像空間でも全単射 RLP を持つ。 -/
 lemma cotensorProjection_rlp (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :
@@ -62,8 +62,8 @@ lemma cotensorProjection_rlp (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet
 /-- BF cotensor の写像空間と、置換前の内部 Hom 列への写像空間の実際の比較は π 同型。 -/
 lemma cotensorProjection_piIsomorphism (X Y : OmegaSpectrum.{u})
     (A : PointedSimplicialSet.{u}) :
-    KanPiIsomorphism (post X (OmegaSpectrum.cotensorProjection A Y)) :=
-  kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp X Y A)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post X (OmegaSpectrum.cotensorProjection A Y)) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (cotensorProjection_rlp X Y A)
 
 /-- 元の BF cotensor の豊穣 Hom と置換前の写像空間の実際の同値。 -/
 def cotensorProjectionEquivalence (X Y : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :

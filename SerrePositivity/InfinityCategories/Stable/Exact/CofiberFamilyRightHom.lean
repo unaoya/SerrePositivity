@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -61,43 +63,80 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
 def rightArrow : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  squares X a ≫ (pre squareRightEdge).app X
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a ≫ (pre squareRightEdge).app X
 
-lemma rightArrow_source : rightArrow X a ≫
+lemma rightArrow_source : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  conv_rhs => rw [← squares_bottom X a]
-  rw [rightArrow]
+  conv_rhs => rw [← _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom X a]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow]
   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
   rfl
 
-lemma rightArrow_target : rightArrow X a ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = cofiber X a := by
-  rw [rightArrow, Category.assoc, stable_pre_evaluateFunctorAt]
+lemma rightArrow_target : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a ≫
+    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow, Category.assoc, stable_pre_evaluateFunctorAt]
   rfl
 
 def rightHomotopy : SSet.Homotopy
-    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) where
-  h := (arrowFamilyHomotopy (rightArrow X a)).h
+    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) where
+  h := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a)).h
   h₀ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₀]
+    rw [(_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a)).h₀]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
-      (rightArrow_source X a)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow_source X a)
   h₁ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₁]
+    rw [(_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a)).h₁]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
-      (rightArrow_target X a)
-  rel := (arrowFamilyHomotopy (rightArrow X a)).rel
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow_target X a)
+  rel := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow X a)).rel
 
 def rightHom : FunctorHom
-    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (rightHomotopy X a))
+    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) :=
+  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy X a))
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow_target := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightArrow.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.rightHomotopy._proof_4

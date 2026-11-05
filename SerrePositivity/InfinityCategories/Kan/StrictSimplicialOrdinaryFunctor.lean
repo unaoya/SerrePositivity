@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialOrdinaryMap
 
 /-! # 同じ厳密単体的豊穣関手の通常の関手
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialOrdinaryMap
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 variable {C : Type v} {D : Type w} [Category.{u} C] [Category.{u} D]
   [SimplicialCategory C] [SimplicialCategory D]
@@ -21,6 +26,15 @@ def strictSimplicialOrdinaryFunctor (F : EnrichedFunctor SSet.{u} C D) : C ⥤ D
 /-- 基礎圏へ取り出した通常射は、元の全 Hom 作用からの射そのもの。 -/
 lemma strictSimplicialOrdinaryFunctor_map (F : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) :
-    (strictSimplicialOrdinaryFunctor F).map f = strictSimplicialOrdinaryMap F f := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor F).map f = _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap F f := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor_map := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryFunctor_map

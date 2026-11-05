@@ -18,22 +18,22 @@ open SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 全対象商の実 Perf nerve を持つ安定圏。 -/
-def dgTotalQuotientPerfectStableCategory : StableCategory.{max (u + 1) v} where
+def dgTotalQuotientPerfectStableCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} where
   obj := dgModulePerfectInfinityCategory R (DGQuotient.QuotientObject D Set.univ)
   isQuasicategory := inferInstance
   isStable := dgModulePerfectInfinityCategory_isStable R _
 
 /-- 全対象商の実 Perf は零の安定圏。 -/
 theorem dgTotalQuotientPerfect_isZero :
-    IsZeroCategory (dgTotalQuotientPerfectStableCategory R D) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgTotalQuotientPerfectStableCategory R D) :=
   dgTotalQuotientPerfect_vertex_isZero R D
 
 /-- 元の実 Perf との同値により、小模型・ラベル付き模型の零性を回収する。 -/
 theorem dgTotalQuotientPerfect_isZero_of_equivalence
-    (A : StableCategory.{max (u + 1) v})
+    (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v})
     (e : QCatEquivalence A.obj
       (dgModulePerfectInfinityCategory R (DGQuotient.QuotientObject D Set.univ))) :
-    IsZeroCategory A := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory A := by
   let := dgModulePerfectInfinityCategory_isStable R (DGQuotient.QuotientObject D Set.univ)
   have h := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   change IsExactFunctor e.inv at h

@@ -20,9 +20,9 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 方針：元実対角の零 Hom 頂点の包含を厳密回収する。
 規約：元の実射を保持。使われ方：実比較二胞体の全 Hom の終成分判定。 -/
 lemma dgOdotMilnorNuNullDiagonalMap_isTerminal (h : DGGluingMilnorSquare R d) :
-    IsTerminalVertex (exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullDiagonalMap R d)) := by
+    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullDiagonalMap R d)) := by
   have he : (dgOdotMilnorNuNullDiagonalVertex R d).val =
-      exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullDiagonalMap R d) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullDiagonalMap R d) :=
     congrArg Subtype.val (dgOdotMilnorNuNullDiagonalComparison_source R d h)
   exact he ▸ fullSubcomplexOnVertices_vertex (dgOdotMilnorNuNullDiagonalVertex R d)
 
@@ -30,10 +30,10 @@ lemma dgOdotMilnorNuNullDiagonalMap_isTerminal (h : DGGluingMilnorSquare R d) :
 方針：元絶対対角の零 Hom 頂点の包含を厳密回収する。
 規約：同じ元絶対射を保持。使われ方：実比較二胞体の全 Hom の終成分判定。 -/
 lemma dgOdotMilnorNuAbsoluteDiagonalMap_isTerminal :
-    IsTerminalVertex (exactFunctorVertexEquiv (K) (B)
+    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B)
       (dgOdotMilnorNuAbsoluteDiagonalMap R d h)) := by
   have he : (dgOdotMilnorNuAbsoluteDiagonalVertex R d h).val =
-      exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuAbsoluteDiagonalMap R d h) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuAbsoluteDiagonalMap R d h) :=
     congrArg Subtype.val (dgOdotMilnorNuNullDiagonalComparison_target R d h)
   exact he ▸ fullSubcomplexOnVertices_vertex (dgOdotMilnorNuAbsoluteDiagonalVertex R d h)
 

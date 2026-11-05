@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorOppositeHom
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma oppositeFunctorHom_id {A D : SSet.{u}} [Quasicategory D] (F : A ⟶ D) :
     SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F (𝟙 (HomotopyCategory.mk (functorVertex F))) = 𝟙 _ := by
@@ -37,4 +42,13 @@ lemma oppositeFunctorHom_postcomp {A D E : SSet.{u}} [Quasicategory D] [Quasicat
     SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy, ← functorHomotopyPostcomp_hom]
   congr 1
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeFunctorHom_id := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeFunctorHom_postcomp := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeFunctorHom_postcomp

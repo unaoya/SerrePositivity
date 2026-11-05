@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -27,7 +27,7 @@ lemma interval_source_of_boundary_diagram {A X : SSet.{u}}
   have hh := congrArg (fun k : A ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
     k ≫ evaluateFunctorAt (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 2),
       vertex_mem_boundary 0 0⟩ : (boundary 1 : SSet.{u}) _⦋0⦌)) h
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt, intervalBoundaryCurry_source] at hh
+  simp only [Category.assoc, stable_pre_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_source] at hh
   change G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = f at hh
   exact hh
 
@@ -38,7 +38,7 @@ lemma interval_target_of_boundary_diagram {A X : SSet.{u}}
   have hh := congrArg (fun k : A ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
     k ≫ evaluateFunctorAt (⟨stdSimplex.obj₀Equiv.symm (1 : Fin 2),
       vertex_mem_boundary 0 1⟩ : (boundary 1 : SSet.{u}) _⦋0⦌)) h
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt, intervalBoundaryCurry_target] at hh
+  simp only [Category.assoc, stable_pre_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_target] at hh
   change G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g at hh
   exact hh
 

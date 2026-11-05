@@ -38,7 +38,7 @@ private theorem compStruct_eq_of_arrowData {C : Type (u + 1)} [Category.{u} C]
   cases hg'
   rfl
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大化の全二胞体は、元の実 Kan 包含と商の標準合成二胞体そのもの。 -/
 theorem verdierFullSLowerMaximalization_eq_kernelCompStruct :

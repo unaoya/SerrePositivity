@@ -20,7 +20,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory CategoryTheory.Limits MonoidalCategory DifferentialGraded HomologicalComplex
 open CochainComplex HomComplex
-open scoped Simplicial ZeroObject
+open scoped _root_.Simplicial ZeroObject
 
 abbrev NativeDiskPair := ULift.{v} Bool
 variable (R : Type u) [CommRing R]

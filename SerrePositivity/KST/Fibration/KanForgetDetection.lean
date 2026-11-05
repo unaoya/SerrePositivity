@@ -40,7 +40,7 @@ theorem pointedKan_isInvertible_of_forget {X Y : PointedKanObject.{u}} (f : X ‚ü
         ((truncation 2).map (coherentNerveMap pointedKanForgetEnriched)))
       (pointedKanForget_edge f)).mp hf
   exact pointedKanObject_edge_isInvertible_of_piIsomorphism f
-    (kanMap_piIsomorphism_of_invertible
+    (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanMap_piIsomorphism_of_invertible
       (X := pointedKanForgetEnriched.obj X) (Y := pointedKanForgetEnriched.obj Y) f.hom.right he)
 
 end SerrePositivity.KST.Fibration

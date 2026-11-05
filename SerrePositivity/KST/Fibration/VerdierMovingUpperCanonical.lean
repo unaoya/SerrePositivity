@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の動く二短辺の実合成端を全入力で固定する長 Hom 空間。
 方針：同じ F1 正本の合成端 fiber を元の実データで特殊化する。
@@ -28,8 +28,8 @@ variable (d : VerdierDiagram.{u})
 使われ方：同じ相対合成から構成する長 Hom 入力の型。 -/
 abbrev verdierMovingUpperLongSpace :=
   controlledTriangleLongHomSpace
-    (stableCoreSingleKanObject (show StableQCat from d.left))
-    (stableCoreSingleKanObject (show StableQCat from d.right)) Δ[1]
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperCompositeFamily d)
 
 /-- 概要：同じ実ホーンを全パラメータで固定する上側二胞体族の空間。
@@ -46,9 +46,9 @@ abbrev verdierMovingUpperTriangleSpace :=
 def verdierMovingUpperEncode :
     verdierMovingUpperLongSpace d ⟶ verdierMovingUpperTriangleSpace d :=
   controlledTriangleCoherentEncoder
-    (stableCoreSingleKanObject (show StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
     (fullSRealizationKanObject d.left)
-    (stableCoreSingleKanObject (show StableQCat from d.right)) Δ[1]
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperFirstFamily d) (verdierMovingUpperLastFamily d)
     (verdierMovingUpperHorn d) (verdierMovingUpperHorn_first d) (verdierMovingUpperHorn_last d)
 
@@ -81,9 +81,9 @@ theorem verdierMovingUpperFamily_diagonal :
         (controlledTriangleLongHomValue ℓ ≫ evaluateFunctorAt
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))) := by
   have h := controlledTriangleCoherentEncoder_diagonal
-    (stableCoreSingleKanObject (show StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
     (fullSRealizationKanObject d.left)
-    (stableCoreSingleKanObject (show StableQCat from d.right)) Δ[1]
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperFirstFamily d) (verdierMovingUpperLastFamily d)
     (verdierMovingUpperHorn d) (verdierMovingUpperHorn_first d) (verdierMovingUpperHorn_last d) ℓ
   have hp := (uliftTriangleNativePathIntervalIso_inv_first.{u, u + 1}).symm.trans
@@ -101,9 +101,9 @@ theorem verdierMovingUpperFamily_native (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
         ((SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ) k)).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) :=
   controlledTriangleCoherentEncoder_native
-    (stableCoreSingleKanObject (show StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
     (fullSRealizationKanObject d.left)
-    (stableCoreSingleKanObject (show StableQCat from d.right)) Δ[1]
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperFirstFamily d) (verdierMovingUpperLastFamily d)
     (verdierMovingUpperHorn d) (verdierMovingUpperHorn_first d) (verdierMovingUpperHorn_last d) ℓ k
 

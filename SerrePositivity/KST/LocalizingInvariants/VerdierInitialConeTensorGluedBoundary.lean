@@ -21,8 +21,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の二つの実図式と共有する全比較を貼り、同じ全商図式の実拡張を得る。 -/
-lemma exists_verdierInitialConeTensorGluedBoundary {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierInitialConeTensorGluedBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) [A.Finite] [L.Finite]
     (F : (A.op ⊗ join L.op (Δ[0] : SSet.{u})).op ⟶ B.obj)
     (G : (join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ⟶ B.obj)

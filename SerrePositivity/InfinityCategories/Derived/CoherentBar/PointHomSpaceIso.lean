@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgCoherentBarCosliceFiberSimplex_sourceObj (R : Type u) [CommRing R]
     (C : Type v) [DGCategory R C] (x y : (dgNerve R C) _⦋0⦌) {n : ℕ}

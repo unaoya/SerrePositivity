@@ -30,7 +30,7 @@ lemma unit_inverse_restrict (Y : PointedSimplicialSet.{u}) :
         FreePointedHomRestriction.restrict (𝟙_ SSet.{u}) Y =
       curry (snd (𝟙_ SSet.{u}) Y.right) := by
   rw [FreePointedHomRestriction.restrict, ← Category.assoc,
-    InternalHomExchange.unit_inv_eq_curry, PointedMapping.curry_eq_smashCurry]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry, PointedMapping.curry_eq_smashCurry]
   erw [PointedObject.smashCurry_ι]
   rw [curry_pre_app]
   congr 1
@@ -51,7 +51,7 @@ lemma constantFamily_restrict (A : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
   change (unitIsoSelf (X := Y)).inv.right ≫
       ((pre (PointedObject.adjoinFunctor.map (toUnit A))).app Y).right ≫
         FreePointedHomRestriction.restrict A Y = _
-  rw [← PointedMapping.prePointed_eq_closedPre,
+  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     FreePointedHomRestriction.natural_pre, ← Category.assoc,
     unit_inverse_restrict, curry_pre_app, whiskerRight_snd]
 

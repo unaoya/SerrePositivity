@@ -61,7 +61,7 @@ def dgKappaNativeBFFinitePositiveTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (dgKappaNativeBFFiniteBoundaryKanFunctor.{u, v} R D I r)
       (dgKappaNativeBFFiniteLevelKanFunctor.{u, v} R D I (r + 1)) :=
-  strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
     (fun C => ObjectProperty.homMk
       ((dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison C))
     (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).naturality

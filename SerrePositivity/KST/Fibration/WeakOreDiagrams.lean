@@ -12,12 +12,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B)
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
 
 /-- cospan の指定した上辺が元の W 辺であるという頂点条件。 -/
 def IsWeakDenominatorCospan
     (v : ((ihom (horn 2 2 : SSet.{u})).obj B.obj) _⦋0⦌) : Prop :=
-  yonedaEquiv (horn₂₂.ι₁₂ ≫ (functorVertexEquiv _ B.obj).symm v) ∈ weakEquivalences i
+  yonedaEquiv (horn₂₂.ι₁₂ ≫ (functorVertexEquiv _ B.obj).symm v) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
 
 /-- W cospan の全関手部分圏。 -/
 def weakDenominatorCospans : SSet.{u} :=

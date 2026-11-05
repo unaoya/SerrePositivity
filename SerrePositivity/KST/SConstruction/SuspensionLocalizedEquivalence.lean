@@ -31,9 +31,9 @@ lemma suspensionImage_isIso_of_inverse_components {X Y : PointedSimplicialSet.{u
 
 /-- 元の点つき Kan 射の全基点 π 同型は、suspension 後にも局所化で可逆。 -/
 lemma suspensionImage_isIso_of_piIsomorphism {X Y : PointedSimplicialSet.{u}}
-    [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (hf : KanPiIsomorphism f.right) :
+    [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) :
     IsIso (L.map (PointedSimplicialSet.circle.{u} ◁ f).right) := by
-  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := exists_pointedHomotopyInverse f hf
+  obtain ⟨g, ⟨HX, hX⟩, ⟨HY, hY⟩⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse f hf
   apply suspensionImage_isIso_of_inverse_components L hL f g
   · exact (π₀.sound (edgeOfHomotopy (f := 𝟙 X) (g := f ≫ g) HX hX)).symm
   · exact (π₀.sound (edgeOfHomotopy (f := 𝟙 Y) (g := g ≫ f) HY hY)).symm

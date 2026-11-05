@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- E(B,B,ker q) の元の中間評価を、同じ全頂点部分圏へ制限する。 -/
-def weakRelativeMiddleMap {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakRelativeMiddleMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakCofiberModel q).carrier ⟶
       closedSubcategory (ClosedStablePredicate.top (sInputModel B)) :=
   fullSubcomplexLift _
@@ -24,7 +24,7 @@ def weakRelativeMiddleMap {B C : StableCategory.{u}} (q : ExactMap B C) :
     (fun _ => trivial)
 
 /-- 中間評価の同じ制限は完全関手である。 -/
-def weakRelativeMiddle {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakRelativeMiddle {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakCofiberModel q ⟶ closedStableModel (ClosedStablePredicate.top (sInputModel B)) :=
   ⟨weakRelativeMiddleMap q, by
     apply preservesCofiberData_fullSubcomplex_of_comp
@@ -36,7 +36,7 @@ def weakRelativeMiddle {B C : StableCategory.{u}} (q : ExactMap B C) :
       (relativeCofiberInclusion _ _).property (cofiberStableMiddle (sInputModel B)).property⟩
 
 /-- 共通補完の中間評価は、元の指定実辺の終点評価そのものである。 -/
-lemma weakStringCofiberMiddle_eq {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberMiddle_eq {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
     weakStringCofiberExact q α ≫ weakRelativeMiddle q =
       weakStringVertexTopExact q n (α.toOrderHom 1) := by

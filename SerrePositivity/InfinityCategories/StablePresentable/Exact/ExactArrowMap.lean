@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
@@ -52,16 +54,19 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.StablePresentable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowMap_evaluation {X Y : SSet.{u}} (F : X ⟶ Y) (i : Fin 2) :
     (ihom (Δ[1] : SSet.{u})).map F ≫
         evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm i) =
       evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm i) ≫ F := rfl
 
-def stableArrowCategory (A : StableCategory.{u}) : StableCategory.{u} :=
+def stableArrowCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
   ⟨(ihom (Δ[1] : SSet.{u})).obj A.obj, inferInstance, inferInstance⟩
 
 lemma arrowVertex_isZero_iff {X : SSet.{u}} [Quasicategory X] [IsStable X]
@@ -89,4 +94,22 @@ lemma arrowVertex_isZero_iff {X : SSet.{u}} [Quasicategory X] [IsStable X]
     exact ⟨isInitialVertex_functorVertex_of_pointwise f (fun x => (hf x).1),
       isTerminalVertex_functorVertex_of_pointwise f (fun x => (hf x).2)⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.StablePresentable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowMap_evaluation := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowVertex_isZero_iff := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowVertex_isZero_iff
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowCategory := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory._proof_2

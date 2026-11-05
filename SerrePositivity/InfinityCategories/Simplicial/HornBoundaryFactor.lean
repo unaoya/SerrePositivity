@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
@@ -13,9 +15,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 @[expose] public section
 universe u
 open CategoryTheory SSet Opposite
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Spectra
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -38,12 +43,27 @@ lemma boundaryFace_range_le_horn (n : ℕ) (i : Fin (n + 3)) :
 /-- 欠ける面の境界をホーンへ含める標準の因子分解。 -/
 def boundaryToHorn (n : ℕ) (i : Fin (n + 3)) :
     (boundary.{u} (n + 1) : SSet.{u}) ⟶ (horn.{u} (n + 2) i : SSet.{u}) :=
-  Subcomplex.lift ((boundary (n + 1)).ι ≫ stdSimplex.δ i) (boundaryFace_range_le_horn n i)
+  Subcomplex.lift ((boundary (n + 1)).ι ≫ stdSimplex.δ i) (_root_.SerrePositivity.InfinityCategories.Simplicial.boundaryFace_range_le_horn n i)
 
 /-- ホーンの包含を合成すると、欠ける面の境界の通常の包含。 -/
 @[reassoc (attr := simp)]
 lemma boundaryToHorn_ι (n : ℕ) (i : Fin (n + 3)) :
-    boundaryToHorn.{u} n i ≫ (horn (n + 2) i).ι =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn.{u} n i ≫ (horn (n + 2) i).ι =
       (boundary (n + 1)).ι ≫ stdSimplex.δ i := rfl
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryFace_range_le_horn := _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryFace_range_le_horn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn := _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn_ι := _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryToHorn_ι_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.boundaryToHorn_ι_assoc

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -36,9 +38,13 @@ public import SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalizatio
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.KST.Spectra.BoundaryNormalization
+namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra
+open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
 
@@ -62,7 +68,7 @@ theorem last_face_exchange (n : ℕ) (j : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。境界のホモトピー類の代表。 -/
 def lastSimplex {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
     (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X)
-    (hg : inclusion n ≫ g = SSet.const x) : X.PtSimplex n x where
+    (hg : _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion n ≫ g = SSet.const x) : X.PtSimplex n x where
   map := boundary.ι (Fin.last (n + 1)) ≫ g
   comm := by
     simp only [Subcomplex.ofSimplex_ι, SSet.comp_const]
@@ -72,8 +78,8 @@ def lastSimplex {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
       apply boundary.hom_ext
       intro j
       simp only [boundary.ι_ι_assoc, SSet.comp_const]
-      rw [← Category.assoc, last_face_exchange, Category.assoc,
-        normalized_face (n + 1) x g hg j.castSucc (Fin.castSucc_ne_last j), SSet.comp_const]
+      rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.last_face_exchange, Category.assoc,
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.normalized_face (n + 1) x g hg j.castSucc (Fin.castSucc_ne_last j), SSet.comp_const]
 
 /-- 概要：正規化した境界の最後の面の類が基点なら全境界を充填できる。
 方針：定数単体と最後の面を隣接二面に持つ RelStruct を選び、各面で比較する。
@@ -81,13 +87,13 @@ def lastSimplex {X : SSet.{u}} (n : ℕ) (x : X _⦋0⦌)
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。消滅から実際の充填への変換。 -/
 theorem exists_filler_of_lastSimplex {X : SSet.{u}} [KanComplex X]
     (n : ℕ) (x : X _⦋0⦌) (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X)
-    (hg : inclusion n ≫ g = SSet.const x)
-    (h : KanHomotopy.mk n (lastSimplex n x g hg) = KanHomotopy.point n) :
+    (hg : _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion n ≫ g = SSet.const x)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex n x g hg) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n) :
     ∃ s : (Δ[n + 1] : SSet.{u}) ⟶ X, (boundary (n + 1)).ι ≫ s = g := by
-  have hrel : KanHomotopy.mk n (RelativeMorphism.const : X.PtSimplex n x) =
-      KanHomotopy.mk n (lastSimplex n x g hg) :=
-    (KanHomotopy.mk_const n).trans h.symm
-  obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 hrel
+  have hrel : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (RelativeMorphism.const : X.PtSimplex n x) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex n x g hg) :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const n).trans h.symm
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 hrel
   refine ⟨r.map, ?_⟩
   apply boundary.hom_ext
   intro j
@@ -95,7 +101,7 @@ theorem exists_filler_of_lastSimplex {X : SSet.{u}} [KanComplex X]
   by_cases hj : j = Fin.last (n + 1)
   · subst j
     exact r.δ_succ_map
-  · rw [normalized_face n x g hg j hj]
+  · rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.normalized_face n x g hg j hj]
     by_cases hj' : j = (Fin.last n).castSucc
     · subst j
       exact r.δ_castSucc_map
@@ -107,4 +113,19 @@ theorem exists_filler_of_lastSimplex {X : SSet.{u}} [KanComplex X]
 
 end
 
-end SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_lastSimplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_lastSimplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.last_face_exchange := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.last_face_exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex._proof_1

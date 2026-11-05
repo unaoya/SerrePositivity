@@ -110,4 +110,24 @@ lemma elementsComparison_isPrecompositionEquivalence :
       ((smallStraighteningReconstruction_isPrecompositionEquivalence _).comp
         (smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence _)))
 
+/- C3: compatibility declarations; use the specified Natural comparison. -/
+attribute [deprecated
+  "Use `SerrePositivity.InfinityCategories.SetWeight.\
+  elementsComparisonNatural` from \
+  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+  (since := "2026-11-05")]
+  elementsComparison
+attribute [deprecated
+  "Use `SerrePositivity.InfinityCategories.SetWeight.\
+  elementsComparisonNatural_projection` from \
+  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+  (since := "2026-11-05")]
+  elementsComparison_projection
+attribute [deprecated
+  "Use `SerrePositivity.InfinityCategories.SetWeight.\
+  elementsComparisonNatural_isPrecompositionEquivalence` from \
+  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+  (since := "2026-11-05")]
+  elementsComparison_isPrecompositionEquivalence
+
 end SerrePositivity.InfinityCategories.SetWeight

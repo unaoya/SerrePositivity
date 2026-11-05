@@ -65,12 +65,12 @@ lemma exists_relative_cofiberFamily_over_span {A B C : SSet.{u}} [Quasicategory 
       (((pre horn₂₀.ι₀₂).app C).app (Opposite.op ⦋0⦌) (d.app (Opposite.op ⦋0⦌) v)))
     (a : A ⟶ cofiberDiagrams C) (ha : a ≫ cofiberSpan C = i ≫ d) :
     ∃ F : B ⟶ cofiberDiagrams C, i ≫ F = a ∧ F ≫ cofiberSpan C = d := by
-  obtain ⟨P, hP, hPd⟩ := exists_relative_pushoutFamily i d (a ≫ cofiberForgetZero C) (by
-    change (a ≫ cofiberForgetZero C ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι) ≫
+  obtain ⟨P, hP, hPd⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily i d (a ≫ cofiberForgetZero C) (by
+    change (a ≫ cofiberForgetZero C ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι) ≫
       (pre spanSquareBoundary).app C = _
     rw [cofiberForgetZero_ι]
     exact ha) (zeroSpanFamily_hasColimits d hd)
-  let g := P ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι
+  let g := P ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι
   have hgd : g ≫ (pre spanSquareBoundary).app C = d := hPd
   have hv (v : B _⦋0⦌) : IsCofiberDiagramVertex (g.app (Opposite.op ⦋0⦌) v) := by
     have he := ConcreteCategory.congr_hom (NatTrans.congr_app hgd (Opposite.op ⦋0⦌)) v

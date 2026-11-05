@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
@@ -79,16 +81,19 @@ universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-local instance : PointedSimplicialSet.adjoinBasepointFunctor.{u}.IsLeftAdjoint :=
+local instance instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor : PointedSimplicialSet.adjoinBasepointFunctor.{u}.IsLeftAdjoint :=
   PointedSimplicialSet.adjoinBasepointAdjunction.isLeftAdjoint
 
 /-- 概要：自由な基点を加えた区間の二つの端点。
@@ -102,43 +107,43 @@ def freeIntervalBoundary : PointedSimplicialSet.{u} :=
 方針：第一の余積包含に基点を加える。
 規約：面添字零の端点に対応する。
 使われ方：Goerss–Jardine I §7。境界上の終点評価。 -/
-def freeBoundaryEnd : 𝟙_ PointedSimplicialSet.{u} ⟶ freeIntervalBoundary.{u} :=
+def freeBoundaryEnd : 𝟙_ PointedSimplicialSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} :=
   PointedSimplicialSet.adjoinBasepointFunctor.{u}.map (coprod.inl : 𝟙_ SSet.{u} ⟶ _)
 
 /-- 概要：自由な境界の始点成分。
 方針：第二の余積包含に基点を加える。
 規約：面添字一の端点に対応する。
 使われ方：Goerss–Jardine I §7。境界上の始点評価。 -/
-def freeBoundaryStart : 𝟙_ PointedSimplicialSet.{u} ⟶ freeIntervalBoundary.{u} :=
+def freeBoundaryStart : 𝟙_ PointedSimplicialSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} :=
   PointedSimplicialSet.adjoinBasepointFunctor.{u}.map (coprod.inr : 𝟙_ SSet.{u} ⟶ _)
 
 /-- 概要：自由な境界から自由な区間への包含。
 方針：二つの端点の基礎射に自由な基点を加える。
 規約：両端点を同時に含める射。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。両端点評価の fibration 性。 -/
-def freeBoundaryInclusion : freeIntervalBoundary.{u} ⟶ freeInterval.{u} :=
-  PointedSimplicialSet.adjoinBasepointFunctor.{u}.map intervalEndpoint.{u}.right
+def freeBoundaryInclusion : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} :=
+  PointedSimplicialSet.adjoinBasepointFunctor.{u}.map _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right
 
 /-- 概要：自由な境界の包含は基礎単体集合で単射。
 方針：二端点の単射性と基点追加による単射の保存を使う。
 規約：HT-KQ を使わない。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。境界への内部 Hom の制限。 -/
-instance freeBoundaryInclusion_mono : Mono freeBoundaryInclusion.{u}.right :=
-  mono_coprod_map_id intervalEndpoint.{u}.right
+instance freeBoundaryInclusion_mono : Mono _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u}.right :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.mono_coprod_map_id _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right
 
 /-- 概要：境界の終点から区間へ進むと自由な終点包含。
 方針：零次面の定数射表示を基点追加へ移す。
 規約：面添字零。
 使われ方：Goerss–Jardine I §7。終点の評価の同定。 -/
 @[reassoc (attr := simp)]
-theorem freeBoundaryEnd_inclusion : freeBoundaryEnd.{u} ≫ freeBoundaryInclusion =
-    freeIntervalEndpoint 0 := by
+theorem freeBoundaryEnd_inclusion : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u} ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 0 := by
   have h : PointedSimplicialSet.deltaZeroUnitIso.inv ≫ stdSimplex.δ.{u} (0 : Fin 2) =
       SSet.const (X := 𝟙_ SSet.{u}) (stdSimplex.obj₀Equiv.symm 1) := by
     rw [stdSimplex.δ_zero_eq_const, SSet.comp_const]
   change PointedSimplicialSet.adjoinBasepointFunctor.{u}.map coprod.inl ≫
-    PointedSimplicialSet.adjoinBasepointFunctor.{u}.map intervalEndpoint.{u}.right = _
-  rw [← Functor.map_comp, intervalEndpoint_inl]
+    PointedSimplicialSet.adjoinBasepointFunctor.{u}.map _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right = _
+  rw [← Functor.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
   change _ = PointedSimplicialSet.adjoinBasepointFunctor.{u}.map
     PointedSimplicialSet.deltaZeroUnitIso.{u}.inv ≫
       PointedSimplicialSet.adjoinBasepointFunctor.{u}.map (stdSimplex.δ.{u} (0 : Fin 2))
@@ -149,14 +154,14 @@ theorem freeBoundaryEnd_inclusion : freeBoundaryEnd.{u} ≫ freeBoundaryInclusio
 規約：面添字一。
 使われ方：Goerss–Jardine I §7。始点の評価の同定。 -/
 @[reassoc (attr := simp)]
-theorem freeBoundaryStart_inclusion : freeBoundaryStart.{u} ≫ freeBoundaryInclusion =
-    freeIntervalEndpoint 1 := by
+theorem freeBoundaryStart_inclusion : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u} ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 1 := by
   have h : PointedSimplicialSet.deltaZeroUnitIso.inv ≫ stdSimplex.δ.{u} (1 : Fin 2) =
       SSet.const (X := 𝟙_ SSet.{u}) (stdSimplex.obj₀Equiv.symm 0) := by
     rw [stdSimplex.δ_one_eq_const, SSet.comp_const]
   change PointedSimplicialSet.adjoinBasepointFunctor.{u}.map coprod.inr ≫
-    PointedSimplicialSet.adjoinBasepointFunctor.{u}.map intervalEndpoint.{u}.right = _
-  rw [← Functor.map_comp, intervalEndpoint_inr]
+    PointedSimplicialSet.adjoinBasepointFunctor.{u}.map _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right = _
+  rw [← Functor.map_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr]
   change _ = PointedSimplicialSet.adjoinBasepointFunctor.{u}.map
     PointedSimplicialSet.deltaZeroUnitIso.{u}.inv ≫
       PointedSimplicialSet.adjoinBasepointFunctor.{u}.map (stdSimplex.δ.{u} (1 : Fin 2))
@@ -167,7 +172,7 @@ theorem freeBoundaryStart_inclusion : freeBoundaryStart.{u} ≫ freeBoundaryIncl
 規約：基礎単体集合の余積ではなく点つき圏の余積。
 使われ方：HTT A.3.3、Goerss–Jardine I §7。境界からの Hom の積表示。 -/
 def freeBoundaryIsColimit :
-    IsColimit (BinaryCofan.mk freeBoundaryEnd.{u} freeBoundaryStart) :=
+    IsColimit (BinaryCofan.mk _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u} _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart) :=
   isColimitOfHasBinaryCoproductOfPreservesColimit
     PointedSimplicialSet.adjoinBasepointFunctor (𝟙_ SSet.{u}) (𝟙_ SSet.{u})
 
@@ -176,13 +181,13 @@ def freeBoundaryIsColimit :
 規約：基礎単体集合の積の普遍性を述べる。
 使われ方：HTT A.3.3、Goerss–Jardine I §7。両端点評価の相対充填。 -/
 def freeBoundaryHomIsLimit (Y : PointedSimplicialSet.{u}) :
-    IsLimit (BinaryFan.mk (PointedMapping.pre freeBoundaryEnd.{u} Y)
-      (PointedMapping.pre freeBoundaryStart.{u} Y)) := by
-  have h := mapIsLimitOfPreservesOfIsLimit (cofiberMappingFunctor Y) _ _
-    (BinaryCofan.IsColimit.op freeBoundaryIsColimit.{u})
-  change IsLimit (BinaryFan.mk ((cofiberMappingFunctor Y).map freeBoundaryEnd.{u}.op)
-    ((cofiberMappingFunctor Y).map freeBoundaryStart.{u}.op)) at h
-  rw [cofiberMappingFunctor_map, cofiberMappingFunctor_map] at h
+    IsLimit (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u} Y)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u} Y)) := by
+  have h := mapIsLimitOfPreservesOfIsLimit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y) _ _
+    (BinaryCofan.IsColimit.op _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit.{u})
+  change IsLimit (BinaryFan.mk ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y).map _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u}.op)
+    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y).map _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u}.op)) at h
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] at h
   exact h
 
 /-- 概要：点つき内部 Hom の源の制限は合成を逆順に保つ。
@@ -191,9 +196,9 @@ def freeBoundaryHomIsLimit (Y : PointedSimplicialSet.{u}) :
 使われ方：HTT A.3.3、BF 1978 §2。境界の成分評価。 -/
 theorem PointedMapping.prePointed_comp {A B C : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (j : B ⟶ C) (Y : PointedSimplicialSet.{u}) :
-    PointedMapping.prePointed j Y ≫ PointedMapping.prePointed i Y =
-      PointedMapping.prePointed (i ≫ j) Y := by
-  simp only [PointedMapping.prePointed_eq_closedPre]
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (i ≫ j) Y := by
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map]
 
 /-- 概要：自由な境界上の終点を評価する点つき射。
@@ -201,34 +206,34 @@ theorem PointedMapping.prePointed_comp {A B C : PointedSimplicialSet.{u}}
 規約：面添字零の端点。
 使われ方：Goerss–Jardine I §7。両端点写像空間の積の第一射影。 -/
 def freeBoundaryHomEnd (Y : PointedSimplicialSet.{u}) :
-    PointedObject.basedHom freeIntervalBoundary.{u} Y ⟶ Y :=
-  PointedMapping.prePointed freeBoundaryEnd.{u} Y ≫ (unitIsoSelf (X := Y)).hom
+    PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} Y ⟶ Y :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u} Y ≫ (unitIsoSelf (X := Y)).hom
 
 /-- 概要：自由な境界上の始点を評価する点つき射。
 方針：始点成分へ制限して単位の内部 Hom を評価する。
 規約：面添字一の端点。
 使われ方：Goerss–Jardine I §7。両端点写像空間の積の第二射影。 -/
 def freeBoundaryHomStart (Y : PointedSimplicialSet.{u}) :
-    PointedObject.basedHom freeIntervalBoundary.{u} Y ⟶ Y :=
-  PointedMapping.prePointed freeBoundaryStart.{u} Y ≫ (unitIsoSelf (X := Y)).hom
+    PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} Y ⟶ Y :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u} Y ≫ (unitIsoSelf (X := Y)).hom
 
 /-- 概要：自由な境界からの写像空間は標的二つの積。
 方針：単位からの内部 Hom の同型を二つの射影へ合成する。
 規約：基礎単体集合の積。
 使われ方：HTT A.3.3、Goerss–Jardine I §7。両端点の同時評価。 -/
 def freeBoundaryEvaluationIsLimit (Y : PointedSimplicialSet.{u}) :
-    IsLimit (BinaryFan.mk (freeBoundaryHomEnd Y).right (freeBoundaryHomStart Y).right) := by
+    IsLimit (BinaryFan.mk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y).right) := by
   let e := PointedSimplicialSet.forget.mapIso (unitIsoSelf (X := Y))
   exact BinaryFan.isLimitCompRightIso _ e.hom
-    (BinaryFan.isLimitCompLeftIso _ e.hom (freeBoundaryHomIsLimit Y))
+    (BinaryFan.isLimitCompLeftIso _ e.hom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit Y))
 
 /-- 概要：自由な境界からの写像空間と標的の二項積との標準同型。
 方針：二つの積の普遍性を比較する。
 規約：第一成分が終点、第二成分が始点。
 使われ方：HTT A.3.3、BF 1978 §2。境界制限の fibration を積へ移す。 -/
 def freeBoundaryEvaluationIso (Y : PointedSimplicialSet.{u}) :
-    (PointedObject.basedHom freeIntervalBoundary.{u} Y).right ≅ Y.right ⨯ Y.right :=
-  (freeBoundaryEvaluationIsLimit Y).conePointUniqueUpToIso
+    (PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} Y).right ≅ Y.right ⨯ Y.right :=
+  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit Y).conePointUniqueUpToIso
     (t := BinaryFan.mk (prod.fst : Y.right ⨯ Y.right ⟶ Y.right) prod.snd)
     (prodIsProd Y.right Y.right)
 
@@ -238,8 +243,8 @@ def freeBoundaryEvaluationIso (Y : PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine I §7。mapping path の終点射影。 -/
 @[reassoc (attr := simp)]
 theorem freeBoundaryEvaluationIso_fst (Y : PointedSimplicialSet.{u}) :
-    (freeBoundaryEvaluationIso Y).hom ≫ prod.fst = (freeBoundaryHomEnd Y).right :=
-  IsLimit.conePointUniqueUpToIso_hom_comp (freeBoundaryEvaluationIsLimit Y)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.fst = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y).right :=
+  IsLimit.conePointUniqueUpToIso_hom_comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit Y)
     (prodIsProd Y.right Y.right) ⟨WalkingPair.left⟩
 
 /-- 概要：境界評価の標準同型の第二射影は始点評価。
@@ -248,8 +253,8 @@ theorem freeBoundaryEvaluationIso_fst (Y : PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine I §7。mapping path の始点射影。 -/
 @[reassoc (attr := simp)]
 theorem freeBoundaryEvaluationIso_snd (Y : PointedSimplicialSet.{u}) :
-    (freeBoundaryEvaluationIso Y).hom ≫ prod.snd = (freeBoundaryHomStart Y).right :=
-  IsLimit.conePointUniqueUpToIso_hom_comp (freeBoundaryEvaluationIsLimit Y)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom ≫ prod.snd = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y).right :=
+  IsLimit.conePointUniqueUpToIso_hom_comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit Y)
     (prodIsProd Y.right Y.right) ⟨WalkingPair.right⟩
 
 /-- 概要：自由な path の両端点を同時に評価する射。
@@ -257,18 +262,18 @@ theorem freeBoundaryEvaluationIso_snd (Y : PointedSimplicialSet.{u}) :
 規約：第一射影が終点、第二射影が始点。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。mapping path の fibration 性。 -/
 def freePathEndpoints (Y : PointedSimplicialSet.{u}) :
-    (freePathSpace Y).right ⟶ Y.right ⨯ Y.right :=
-  PointedMapping.pre freeBoundaryInclusion.{u} Y ≫ (freeBoundaryEvaluationIso Y).hom
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right ⟶ Y.right ⨯ Y.right :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso Y).hom
 
 /-- 概要：自由な path の両端点の同時評価は Kan fibration。
 方針：単射な境界への制限の fibration と積表示の同型を合成する。
 規約：HT-KQ は不要。
 使われ方：BF 1978 §2、HTT A.3.3。任意の射の fibration 置換。 -/
 instance freePathEndpoints_fibration (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    Fibration (freePathEndpoints Y) := by
-  let : Fibration (PointedMapping.pre freeBoundaryInclusion.{u} Y) :=
-    PointedMapping.pre_fibration freeBoundaryInclusion.{u} Y
-  unfold freePathEndpoints
+    Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints Y) := by
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y) :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y
+  unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints
   infer_instance
 
 /-- 概要：両端点の同時評価の第一射影は自由な path の終点評価。
@@ -277,12 +282,12 @@ instance freePathEndpoints_fibration (Y : PointedSimplicialSet.{u}) [KanComplex 
 使われ方：BF 1978 §2。mapping path の終点写像。 -/
 @[reassoc (attr := simp)]
 theorem freePathEndpoints_fst (Y : PointedSimplicialSet.{u}) :
-    freePathEndpoints Y ≫ prod.fst = (freePathEndpoint Y 0).right := by
-  rw [freePathEndpoints, Category.assoc, freeBoundaryEvaluationIso_fst]
-  have h : PointedMapping.prePointed freeBoundaryInclusion.{u} Y ≫ freeBoundaryHomEnd Y =
-      freePathEndpoint Y 0 := by
-    unfold freeBoundaryHomEnd freePathEndpoint
-    rw [← Category.assoc, PointedMapping.prePointed_comp, freeBoundaryEnd_inclusion]
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints Y ≫ prod.fst = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0).right := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst]
+  have h : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 0 := by
+    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion]
   exact congrArg Under.Hom.right h
 
 /-- 概要：両端点の同時評価の第二射影は自由な path の始点評価。
@@ -291,14 +296,128 @@ theorem freePathEndpoints_fst (Y : PointedSimplicialSet.{u}) :
 使われ方：BF 1978 §2。mapping path の始点写像。 -/
 @[reassoc (attr := simp)]
 theorem freePathEndpoints_snd (Y : PointedSimplicialSet.{u}) :
-    freePathEndpoints Y ≫ prod.snd = (freePathEndpoint Y 1).right := by
-  rw [freePathEndpoints, Category.assoc, freeBoundaryEvaluationIso_snd]
-  have h : PointedMapping.prePointed freeBoundaryInclusion.{u} Y ≫ freeBoundaryHomStart Y =
-      freePathEndpoint Y 1 := by
-    unfold freeBoundaryHomStart freePathEndpoint
-    rw [← Category.assoc, PointedMapping.prePointed_comp, freeBoundaryStart_inclusion]
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints Y ≫ prod.snd = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1).right := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd]
+  have h : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1 := by
+    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion]
   exact congrArg Under.Hom.right h
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIsLimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_fst := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_fst_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_snd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_snd_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomEnd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomStart := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion_mono := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryIsColimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalBoundary := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fst := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fst_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fst_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_snd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_snd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_snd_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_snd_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor := _root_.SerrePositivity.InfinityCategories.F1.Pointed.instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed_comp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryIsColimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalBoundary._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints.eq_1

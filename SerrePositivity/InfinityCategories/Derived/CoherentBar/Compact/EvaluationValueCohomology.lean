@@ -17,7 +17,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- native 評価関手の同じ実頂点値と、評価複体の実 pinched 模型との同値。 -/
@@ -41,14 +41,14 @@ def dgBarCompactEvaluationValuePiCohomologyEquiv (x : D) (M : ProjectiveDGModule
     (n : ℕ)
     (z : (spaceInfinityObject ((dgBarCompactProjectiveEvaluationSpaceInfinity R D x).app
       (Opposite.op ⦋0⦌) (ULift.up (Simplex.vertex M)))).obj _⦋0⦌) :
-    KanHomotopyGroup
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
       (spaceInfinityObject ((dgBarCompactProjectiveEvaluationSpaceInfinity R D x).app
         (Opposite.op ⦋0⦌) (ULift.up (Simplex.vertex M)))).obj n z ≃*
       Multiplicative ((M.val.obj (Opposite.op x)).homology (-((n + 1 : ℕ) : ℤ))) := by
   let e := dgBarCompactEvaluationValueEquivalence R D x M
   have he := HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence e.hom
     e.isQCatEquivalence.isSimplicialHomotopyEquivalence
-  exact (KanHomotopyGroup.equivOfPiIsomorphism n e.hom he rfl).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n e.hom he rfl).trans
     (dgBarCompactComplexPinchedPiCohomologyEquiv (M.val.obj (Opposite.op x)) n
       (e.hom.app _ z))
 

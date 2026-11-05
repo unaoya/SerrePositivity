@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 
 /-!
@@ -15,22 +17,31 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
   [MonoidalClosed C]
 
 /-- 一つの射で固定した strength は、その射とのテンソルの curry。 -/
 lemma point (K A Y : C) (f : A ⟶ Y) :
-    (ρ_ K).inv ≫ K ◁ curry' f ≫ map K A Y =
+    (ρ_ K).inv ≫ K ◁ curry' f ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A Y =
       curry ((β_ A K).hom ≫ K ◁ f) := by
   apply uncurry_injective
-  rw [uncurry_natural_left, uncurry_natural_left, map, uncurry_curry, uncurry_curry,
-    exchange_natural_right_assoc, ← whiskerLeft_comp]
-  change A ◁ (ρ_ K).inv ≫ (exchange A K (𝟙_ C)).hom ≫
+  rw [uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry, uncurry_curry,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp]
+  change A ◁ (ρ_ K).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K (𝟙_ C)).hom ≫
     K ◁ uncurry (curry' f) = _
   rw [curry', uncurry_curry, whiskerLeft_comp, ← Category.assoc, ← Category.assoc]
   congr 1
-  dsimp only [exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor]
   monoidal
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.point := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.point

@@ -24,7 +24,7 @@ local notation "hQ" => dgKInputStableValue_isIdempotentComplete R (dgOdotMilnorR
 規約：元提示を保持。使われ方：実左辺比較の終端照合。 -/
 lemma dgOdotMilnorIdentityAbsoluteSquare_left :
     squareLeftEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square =
-      SSet.yonedaEquiv.symm (perfectStableArrow (toZeroCategory (Q))
+      SSet.yonedaEquiv.symm (perfectStableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q))
         (hQ) perfectZeroCategory_isIdempotentComplete).edge := by
   apply (cancel_mono perfectStableInfinityInclusion).mp
   change (squareLeftEdge ≫ perfectVerdierSquare _ ) ≫ _ = _
@@ -188,9 +188,9 @@ lemma upperRightHomotopy_path :
 /-- 概要：元実右面と絶対恒等面の全四境界比較は同じ四頂点経路を共有する。
 方針：同じ四辺証人の端点式と二端点可逆性を使う。
 規約：元両面・全四辺を保持。使われ方：上下二胞体の比較 prism の構成。 -/
-def squareFrameComparison : SquareFrameHomotopy
-    (SquareFrame.ofSquare (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R))
-    (SquareFrame.ofSquare (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) where
+def squareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R))
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) where
   bottom := v.bottomHomotopy
   right := v.rightHomotopy
   left := leftHomotopy R d

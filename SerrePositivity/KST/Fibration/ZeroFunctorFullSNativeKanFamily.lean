@@ -22,14 +22,14 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の native 標的座標を使う、同じ全 S• 零値関手族。 -/
-def zeroFunctorFullSNativeKanFamily (A C : StableQCat.{u}) :
+def zeroFunctorFullSNativeKanFamily (A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     zeroFunctorLocus A C ⟶
       (ihom (fullSRealizationKanObject A).obj).obj ((stableMultiKanEnrichedFunctor 0).obj C).obj :=
   zeroFunctorFullSKanFamily A C ≫
     (ihom (fullSRealizationKanObject A).obj).map (coreSingleKanIso C).hom
 
 /-- 同じ全族を元の native core 包含で制限すると、元の全 native Hom 作用そのもの。 -/
-theorem zeroFunctorFullSNativeKanFamily_core (A C : StableQCat.{u}) :
+theorem zeroFunctorFullSNativeKanFamily_core (A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     zeroFunctorFullSNativeKanFamily A C ≫
         (pre (C := SSet.{u}) (fullSNativeCoreInclusion A)).app
           ((stableMultiKanEnrichedFunctor 0).obj C).obj =
@@ -58,7 +58,7 @@ theorem zeroFunctorFullSNativeKanFamily_core (A C : StableQCat.{u}) :
     hA, id_whiskerRight, Category.id_comp, hC, Category.comp_id]
 
 /-- 同じ元の指定点では、元の全 S• 射の native 標的座標への実像を回収する。 -/
-theorem zeroFunctorFullSNativeKanFamily_fixed {A C : StableQCat.{u}} (F : ExactMap A C)
+theorem zeroFunctorFullSNativeKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSNativeKanFamily A C =
       curry' (exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫

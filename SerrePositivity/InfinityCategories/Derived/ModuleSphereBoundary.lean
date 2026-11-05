@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
 
 /-- 概要：球面単体の全ての面は零。

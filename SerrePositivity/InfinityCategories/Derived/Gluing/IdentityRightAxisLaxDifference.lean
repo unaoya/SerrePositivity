@@ -17,7 +17,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalClosed SSet DifferentialGraded KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (u + 1)) [DGCategory R C] [Small.{u} C]
 local notation "I" => DGFunctor.id (A := R) C
 local notation "M" => dgHomGluingBimodule R C C C I I
@@ -37,7 +37,7 @@ local notation "J" => dgGluingRightAxis R C C M z hz
 
 def dgGluingIdentityRightAxisLaxDifferenceIso : FunctorIso
     ((dgNerve.map J ≫ (dgGluingIdentityHomTargetLaxEquivalence.{u, 0} R C).hom) ≫
-      CofiberFamily.cofiber (dgNerve R C)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R C)
         (F2.laxPullbackArrow (𝟙 (dgNerve R C)) (𝟙 (dgNerve R C))))
     (𝟙 (dgNerve R C)) := by
   let j := dgNerve.map J ≫ (dgGluingIdentityHomTargetLaxEquivalence.{u, 0} R C).hom
@@ -47,7 +47,7 @@ def dgGluingIdentityRightAxisLaxDifferenceIso : FunctorIso
     simp only [a, j, Category.assoc, F2.laxPullbackArrow_source, Category.comp_id,
       dgGluingIdentityHomTargetLaxEquivalence_fst]
     rw [← dgNerve.map_comp, dgGluingRightAxis_left]
-  have h₁ : a ≫ ArrowTarget.target (dgNerve R C) = 𝟙 _ := by
+  have h₁ : a ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target (dgNerve R C) = 𝟙 _ := by
     change a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
     simp only [a, j, Category.assoc, F2.laxPullbackArrow_target, Category.comp_id,
       dgGluingIdentityHomTargetLaxEquivalence_snd]

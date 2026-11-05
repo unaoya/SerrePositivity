@@ -91,9 +91,9 @@ def sequentialRawInjectionCone (D : SpectrumSequence.{u}) :
       have hv : (RawSpectrumMapping.evaluation (D.obj j.unop)
           (OmegaSpectrum.filteredKanSequence D) k).app _ vj =
           (RawSpectrumMapping.evaluation (D.obj i.unop) (OmegaSpectrum.filteredKanSequence D) k ≫
-            PointedMapping.pre ((D.map f.unop).app k)
+            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.map f.unop).app k)
               ((OmegaSpectrum.filteredKanSequence D).level k).space).app _ vi := by
-        change _ = (PointedMapping.pre ((D.map f.unop).app k) _).app _
+        change _ = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.map f.unop).app k) _).app _
           ((RawSpectrumMapping.evaluation (D.obj i.unop)
             (OmegaSpectrum.filteredKanSequence D) k).app _ vi)
         rw [ei, ej]

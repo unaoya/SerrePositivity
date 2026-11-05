@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
 
 /-!
@@ -15,15 +17,18 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.KST.Spectra.InternalHomTensor
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+open SerrePositivity.KST.Spectra.InternalHomTensor
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
 /-- 随伴の源を制限した同じ評価による前合成は、元の反復 Hom の源制限に一致する。 -/
 lemma adjoint_pre_restriction {S K U V : C} (i : S ⟶ K) (a : U ⟶ (ihom K).obj V)
     (s : S ⊗ U ⟶ V) (ha : a ≫ (pre i).app V = curry s) (W : C) :
-    (pre (uncurry a)).app W ≫ (iso K U W).hom ≫
+    (pre (uncurry a)).app W ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K U W).hom ≫
         (ihom U).map ((pre i).app W) =
-      (pre s).app W ≫ (iso S U W).hom := by
-  rw [← natural_pre_left,
+      (pre s).app W ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S U W).hom := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left,
     ← Category.assoc, ← NatTrans.comp_app, ← pre_map]
   have h : i ▷ U ≫ uncurry a = s := by
     have h := congrArg uncurry ha
@@ -31,4 +36,10 @@ lemma adjoint_pre_restriction {S K U V : C} (i : S ⟶ K) (a : U ⟶ (ihom K).ob
     exact h
   rw [h]
 
-end SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.adjoint_pre_restriction := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.adjoint_pre_restriction

@@ -64,10 +64,10 @@ instance pointedPoint_kanComplex :
 規約：通常の smash による懸垂を使う。
 使われ方：一点スペクトルの構造射の単射性。 -/
 lemma suspensionPoint_isZero :
-    IsZero (suspension (PointedObject.point : PointedSimplicialSet.{u})) := by
-  have h : IsInitial (suspension (PointedObject.point : PointedSimplicialSet.{u})) :=
-    IsInitial.ofUniqueHom (fun Y ↦ (suspensionLoopEquiv _ Y).symm 0)
-      (fun Y f ↦ (suspensionLoopEquiv _ Y).injective (PointedObject.point_isZero.eq_of_src _ _))
+    IsZero (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.point : PointedSimplicialSet.{u})) := by
+  have h : IsInitial (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.point : PointedSimplicialSet.{u})) :=
+    IsInitial.ofUniqueHom (fun Y ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ Y).symm 0)
+      (fun Y f ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ Y).injective (PointedObject.point_isZero.eq_of_src _ _))
   exact PointedObject.point_isZero.of_iso
     (h.uniqueUpToIso PointedObject.point_isZero.isInitial)
 
@@ -76,10 +76,10 @@ lemma suspensionPoint_isZero :
 規約：円からの点つき内部 Hom を使う。
 使われ方：一点スペクトルの全基点の Ω 条件。 -/
 lemma loopPoint_isZero :
-    IsZero (loopSpace (PointedObject.point : PointedSimplicialSet.{u})) := by
-  have h : IsTerminal (loopSpace (PointedObject.point : PointedSimplicialSet.{u})) :=
-    IsTerminal.ofUniqueHom (fun Y ↦ suspensionLoopEquiv Y _ 0)
-      (fun Y f ↦ (suspensionLoopEquiv Y _).symm.injective
+    IsZero (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.point : PointedSimplicialSet.{u})) := by
+  have h : IsTerminal (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.point : PointedSimplicialSet.{u})) :=
+    IsTerminal.ofUniqueHom (fun Y ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv Y _ 0)
+      (fun Y f ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv Y _).symm.injective
         (PointedObject.point_isZero.eq_of_tgt _ _))
   exact PointedObject.point_isZero.of_iso
     (h.uniqueUpToIso PointedObject.point_isZero.isTerminal)

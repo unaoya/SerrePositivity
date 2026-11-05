@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
 public import Mathlib.CategoryTheory.Sites.LeftExact
 public import Mathlib.CategoryTheory.Elements
 -- 11-03：`F2.Presentable.Basic` は存在しない名前だった（DG-W3 の改名ではなく当初の推測）。F2 の束ねモジュール `F2.Presentable` に直した。
--- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean を import する。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,SetSections,GlobalSections}.lean を import する。
 
 /-!
 # 空間値の層と E 値の層の局所性（S8）
@@ -100,14 +100,7 @@ theorem is0Truncated_iff_pointwise (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _�
   sorry -- ⇒ は `discretePresheaf_vertex` と点ごとの評価、⇐ は各点の離散空間 `Is0TruncatedSpace` の証人から P を組み、
         -- 点ごとの頂点同型を関手 ∞ 圏の頂点同型へ（各点で可逆な辺は可逆、Core）
 
-/-- 概要：S8-1：空間値前層の J 層化 L（HTT 6.2.2.7）。
-方針：`exists_sheafGeneratingEdges` ＋ `sheafification_of_generatingEdges`。h𝒮 は `F2.Presentable.space_isPresentable` で与えられる。
-規約：S4 と同じ `IsReflectiveSubcategory` の形で、E = 𝒮。
-使われ方：以下。 -/
-theorem sheafification_exists_spaces (J : GrothendieckTopology 𝒞) (h𝒮 : IsPresentable SpaceInfinity.{u}) :
-    Sheafification J SpaceInfinity.{u} := by
-  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J h𝒮
-  exact sheafification_of_generatingEdges J h𝒮 edges hW
+-- S8-1 `sheafification_exists_spaces` は drafts/Sheaves/SheafGenerators.lean へ移した（11-05）。
 
 /-- 概要：S8-2：離散（0 切り捨て）な前層の L は離散で、1 圏の層化（Mathlib `presheafToSheaf`）に一致。
 方針：HTT 5.5.6.28、τ_{≤0} Sh(𝒞) ≃ Sh_{Set}(𝒞)。
@@ -168,39 +161,8 @@ O の極限保存延長 O^ : PSh(𝒞)^op → E（HTT 5.1.5.6）と Γ(F, O) = O
 方針：元の圏 el(F)（F の Grothendieck 構成）上の極限。
 規約：E 表示可能。
 使われ方：Cor 8.12 の引き戻し。 -/
-/-- 概要：Γ(F, O) の図式：F の元の圏 `F.Elements`（Mathlib `CategoryTheory.Functor.Elements`、射影 `Functor.Elements.π F : F.Elements ⥤ 𝒞ᵒᵖ`）の nerve を
-持ち上げて O と合成したもの。
-方針：S3 の `cechShape` と同じ持ち上げ。
-規約：F は集合値（`𝒞ᵒᵖ ⥤ Type u`）、O は S1 の `Presheaf 𝒞 E`（= `presheafShape 𝒞 ⟶ E`、`presheafShape 𝒞` は nerve 𝒞ᵒᵖ の持ち上げ）。
-使われ方：`sectionsOf`。 -/
-def sectionsOfDiagram (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
-    (SSet.uliftFunctor.{u + 1, u}).obj (nerve F.Elements) ⟶ E :=
-  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (Functor.Elements.π F)) ≫ O
-
-/-- 概要：E が表示可能なら上の図式は極限をもつ（添字は小さい）。 -/
-theorem sectionsOfDiagram_hasLimit (hE : F2.Presentable.IsPresentable E) (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
-    HasLimit (sectionsOfDiagram F O) := hE.hasLimit _
-
-/-- 概要：S8-4：切断 Γ(F, O) := lim_{el(F)} O（重み付き極限）。選んだ極限錐の頂点。
-方針：S2 の `globalSections` と同じ選び方。
-規約：E 表示可能（`HasLimit` を引数で受ける）。
-使われ方：Cor 8.12 の引き戻し。 -/
-def sectionsOfCone (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) (h : HasLimit (sectionsOfDiagram F O)) : JoinCone (sectionsOfDiagram F O) :=
-  h.choose
-def sectionsOf (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) (h : HasLimit (sectionsOfDiagram F O)) : E _⦋0⦌ :=
-  (sectionsOfCone F O h).vertex
-theorem sectionsOfCone_isLimit (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) (h : HasLimit (sectionsOfDiagram F O)) :
-    IsLimitCone (sectionsOfCone F O h) := h.choose_spec
-
-/-- 概要：Γ(−, O) の関手性：φ : P ⟶ Q に対し Γ(Q, O) → Γ(P, O)（元の圏の関手 P.Elements ⥤ Q.Elements に沿う制限と極限の普遍性）。
-方針：錐の制限。
-規約：E の辺。本体は IF-G2 の `SetWeight.sectionsMap φ O (sectionsOfCone Q O hQ) (sectionsOfCone_isLimit …) …`（Γ(Q) → Γ(P)、G2 停止点 1 で承認）
-をそのまま使う。図式 `sectionsOfDiagram` は ∞ 側の `SetWeight.diagram` と同じ式（`Functor.Elements.π` の nerve を前合成）。
-X についての自然性は `SetWeight.tensorSpaceFunctor_setWeightHom_naturality`（S4・S8-5 で使う）。
-使われ方：`sections_localEquiv_iso`、押し出しの比較。 -/
-def sectionsOf_map {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf 𝒞 E)
-    (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
-    SSet.Edge (sectionsOf Q O hQ) (sectionsOf P O hP) := sorry
+-- 集合値重みの sectionsOfDiagram・sectionsOfCone・sectionsOf・sectionsOf_map は
+-- drafts/Sheaves/SetSections.lean に移動（S4 からも使うため、S8 の前に置く）。
 
 /-- 普通の Yoneda 埋め込みの nerve（小さい始域だけを持ち上げる）。 -/
 def liftedSetYoneda (𝒞 : Type u) [SmallCategory 𝒞] :
@@ -252,12 +214,7 @@ theorem sectionsOf_pushout {P Q R : 𝒞ᵒᵖ ⥤ Type u} (f : P ⟶ Q) (g : P 
       (F1B.coconeReverseCone (pushoutCocone (discretePushoutSquare f g)))) := by
   sorry -- discretePushout_isDiscrete の余極限錐に S8-4。weightedSections_discrete が sectionsOf の脚と同定
 
-/-- 概要：Γ(h_c, O) ≃ O(c)（反変前層を 𝒞ᵒᵖ 上の関手として取った F.Elements では (c, id) は始対象）。
-方針：始対象をもつ添字圏の極限をそこで評価する。
-規約：`VertexIso`。
-使われ方：Γ(F_T, O) の計算の端。 -/
-def sectionsOf_representable (c : 𝒞) (O : Presheaf 𝒞 E) (h : HasLimit (sectionsOfDiagram (CategoryTheory.yoneda.obj c) O)) :
-    VertexIso (sectionsOf (CategoryTheory.yoneda.obj c) O h) (O.app _ (ULift.up (nerveVertex (Opposite.op c)))) := sorry
+-- sectionsOf_representable は SetSections.lean の指定錐比較を使う。
 
 /-- 概要：S8-5：O が J 層（S1 の `IsSheaf`）なら Γ(−, O) はすべての J 局所同値を同値に送る。
 方針：O^ の逆像の類は強飽和（O^ は極限を保つ）で、生成 sieve h_S ↪ h_c を含む（層条件）ので J 局所同値を含む（HTT 5.5.4.20 の筋）。

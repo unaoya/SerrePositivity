@@ -26,7 +26,7 @@ lemma PreservesCofiberData.isPushoutSquare {C D : SSet.{u}} [Quasicategory C] [I
     [Quasicategory D] {f : C ⟶ D} (hf : PreservesCofiberData f)
     (R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C) (hR : IsPushoutSquare R) :
     IsPushoutSquare (R ≫ f) := by
-  obtain ⟨F, hp, hz, hl, hr, ho⟩ := exists_stable_pushoutPresentation_of_span (pushoutSpan R)
+  obtain ⟨F, hp, hz, hl, hr, ho⟩ := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutPresentation_of_span (pushoutSpan R)
   have hzo : IsZeroVertex (squareVertex (pastingSquare F 1) 0 1) := by
     have he : squareVertex (pastingSquare F 1) 0 1 = squareVertex (pastingSquare F 2) 0 1 := rfl
     rw [he]

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Group.Nat.Defs
 public import Mathlib.Algebra.GroupWithZero.Defs
 public import Mathlib.Algebra.GroupWithZero.Nat
@@ -54,9 +56,12 @@ public import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.LastHornContraction
+end SerrePositivity.KST.Spectra.LastHornContraction
+namespace SerrePositivity.InfinityCategories.Kan.LastHornContraction
+open SerrePositivity.KST.Spectra.LastHornContraction
 
 noncomputable section
 
@@ -68,7 +73,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：次元 n+1 は正。
 使われ方：Goerss–Jardine I §7。収縮の定数値。 -/
 def vertex (n : ℕ) : (horn.{u} (n + 1) (Fin.last (n + 1))) _⦋0⦌ :=
-  ⟨SimplexLastContraction.vertex (n + 1), by
+  ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex (n + 1), by
     rw [mem_horn_iff_notMem_range]
     refine ⟨0, ?_, ?_⟩
     · intro h
@@ -87,8 +92,8 @@ def map (n : ℕ) :
     (horn.{u} (n + 1) (Fin.last (n + 1)) : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶
       (horn.{u} (n + 1) (Fin.last (n + 1)) : SSet.{u}) where
   app m := ↾(fun p : ((horn.{u} (n + 1) (Fin.last (n + 1))).obj m × (Δ[1] : SSet.{u}).obj m) ↦
-    ⟨SimplexLastContraction.simplex p.1.val p.2,
-      SimplexLastContraction.simplex_mem_horn p.1.val p.1.property p.2⟩)
+    ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex p.1.val p.2,
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_mem_horn p.1.val p.1.property p.2⟩)
   naturality m m' f := by
     apply ConcreteCategory.hom_ext
     intro p
@@ -102,29 +107,29 @@ def map (n : ℕ) :
 規約：区間との積では包含を第一成分へ作用させる。
 使われ方：Goerss–Jardine I §7。端点と基点の比較。 -/
 @[reassoc]
-theorem map_ι (n : ℕ) : map.{u} n ≫ (horn (n + 1) (Fin.last (n + 1))).ι =
+theorem map_ι (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map.{u} n ≫ (horn (n + 1) (Fin.last (n + 1))).ι =
     (horn (n + 1) (Fin.last (n + 1))).ι ▷ (Δ[1] : SSet.{u}) ≫
-      SimplexLastContraction.map (n + 1) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map (n + 1) := rfl
 
 /-- 概要：ホーンの収縮の始点は恒等射。
 方針：包含の単射性と標準単体の端点の計算で示す。
 規約：ホーン上の射の厳密な等式。
 使われ方：Goerss–Jardine I §7。境界の正規化の初期値。 -/
 @[reassoc (attr := simp)]
-theorem zero (n : ℕ) : SSet.ι₀ ≫ map.{u} n = 𝟙 _ := by
+theorem zero (n : ℕ) : SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map.{u} n = 𝟙 _ := by
   apply (cancel_mono (horn (n + 1) (Fin.last (n + 1))).ι).1
-  rw [Category.assoc, map_ι, ← Category.assoc, SSet.ι₀_comp, Category.assoc,
-    SimplexLastContraction.zero, Category.comp_id, Category.id_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι, ← Category.assoc, SSet.ι₀_comp, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero, Category.comp_id, Category.id_comp]
 
 /-- 概要：ホーンの収縮の終点は最後の頂点に定数。
 方針：包含へ合成して標準単体の終点の計算へ移す。
 規約：非空なホーンの定数射。
 使われ方：Goerss–Jardine I §7。正規化後のホーンの境界条件。 -/
 @[reassoc (attr := simp)]
-theorem one (n : ℕ) : SSet.ι₁ ≫ map.{u} n = SSet.const (vertex n) := by
+theorem one (n : ℕ) : SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map.{u} n = SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex n) := by
   apply (cancel_mono (horn (n + 1) (Fin.last (n + 1))).ι).1
-  rw [Category.assoc, map_ι, ← Category.assoc, SSet.ι₁_comp, Category.assoc,
-    SimplexLastContraction.one, SSet.comp_const, SSet.const_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι, ← Category.assoc, SSet.ι₁_comp, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one, SSet.comp_const, SSet.const_comp]
   rfl
 
 /-- 概要：最後のホーンの恒等射から最後の頂点の定数射へのホモトピー。
@@ -132,12 +137,54 @@ theorem one (n : ℕ) : SSet.ι₁ ≫ map.{u} n = SSet.const (vertex n) := by
 規約：実際の区間ホモトピー。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。境界の充填判定の幾何的入力。 -/
 def homotopy (n : ℕ) : SSet.Homotopy
-    (𝟙 (horn.{u} (n + 1) (Fin.last (n + 1)) : SSet.{u})) (SSet.const (vertex n)) where
-  h := map n
-  h₀ := zero n
-  h₁ := one n
+    (𝟙 (horn.{u} (n + 1) (Fin.last (n + 1)) : SSet.{u})) (SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex n)) where
+  h := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map n
+  h₀ := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.zero n
+  h₁ := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.one n
   rel := by ext m ⟨⟨x, hx⟩, t⟩; exact hx.elim
 
 end
 
-end SerrePositivity.KST.Spectra.LastHornContraction
+end SerrePositivity.InfinityCategories.Kan.LastHornContraction
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.homotopy := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map_ι := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.one := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.vertex := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.zero := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.homotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.vertex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex._proof_1

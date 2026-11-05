@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 lemma dgGluingUnitHexagon_cancel {E : Type u} [Category.{v} E] {a b c d e : E}
     (cf : a ≅ b) (k : c ≅ d) (dl : c ≅ e)
     (hl : b ⟶ c) (hf : b ⟶ d) (df : a ⟶ d) (cl : b ⟶ e) (bridge : a ⟶ e)

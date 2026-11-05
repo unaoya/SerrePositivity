@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E : SSet.{u}} [KanComplex E]
 local instance kanBasedCylinderValueGroupoid : Groupoid (hoFunctor.obj E) :=
   Groupoid.ofIsGroupoid
@@ -25,7 +25,7 @@ variable (c : hoFunctor.obj E)
 lemma kanBasedEdgeValue_const (x : E _⦋0⦌) :
     kanBasedEdgeValue c (SSet.const x) = 1 := by
   rw [← mappingIdentityEdge_map x, kanBasedEdgeValue_edge,
-    SSet.HomotopyCategory.homMk_id, groupoidBasedArrow_id]
+    SSet.HomotopyCategory.homMk_id, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_id]
 
 /-- 元の全正方形は、その同じ四辺の二通りの積の等号を与える。 -/
 lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :
@@ -33,12 +33,12 @@ lemma kanBasedEdgeValue_square (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E) :
         kanBasedEdgeValue c (SSet.ι₀ ≫ Q) =
       kanBasedEdgeValue c (SSet.ι₁ ≫ Q) *
         kanBasedEdgeValue c (pastingSquareVertical 0 ≫ Q) := by
-  have hl := kanBasedEdgeValue_triangle c (SquareTriangles.lower ≫ Q)
-  have hu := kanBasedEdgeValue_triangle c (SquareTriangles.upper ≫ Q)
-  simp only [← Category.assoc, SquareTriangles.lower_diagonal,
-    SquareTriangles.lower_face_zero, SquareTriangles.lower_face_last] at hl
-  simp only [← Category.assoc, SquareTriangles.upper_diagonal,
-    SquareTriangles.upper_face_zero, SquareTriangles.upper_face_last] at hu
+  have hl := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ Q)
+  have hu := kanBasedEdgeValue_triangle c (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ Q)
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal,
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last] at hu
   exact hl.symm.trans hu
 
 /-- 両縦辺が元の同じ定数辺なら、正方形の全横辺の値は等しい。 -/

@@ -45,7 +45,7 @@ def pointedSquareLift {A B E Z : PointedSimplicialSet.{u}}
 def pointedMapLift {B E Z : PointedSimplicialSet.{u}} (q : E ⟶ Z)
     (hq : (MorphismProperty.monomorphisms SSet.{u}).rlp q.right) (b : B ⟶ Z) :
     { l : B ⟶ E // l ≫ q = b } := by
-  let : Mono B.hom := PointedMapping.basepoint_mono B
+  let : Mono B.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono B
   let : HasLiftingProperty B.hom q.right := hq B.hom inferInstance
   let sq : CommSq E.hom B.hom q.right b.right := ⟨by rw [Under.w q, Under.w b]⟩
   exact ⟨Under.homMk sq.lift sq.fac_left, Under.UnderMorphism.ext sq.fac_right⟩

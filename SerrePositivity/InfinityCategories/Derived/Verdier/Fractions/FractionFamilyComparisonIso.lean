@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy
 public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma spanConstantInterval_isInvertible {Y : SSet.{u}} [Quasicategory Y] (z : Y _⦋0⦌) :
     IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv (SSet.const z : (Δ[1] : SSet.{u}) ⟶ Y))) := by
@@ -37,11 +42,11 @@ variable {X Q K : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌
 /-- 比較の終点経路は、元の同じ三角形の終点における恒等経路。 -/
 lemma fractionFamilyComparison_target :
     (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫
-      (spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF)).h =
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF)).h =
     snd Δ[0] Δ[1] ≫ SSet.const
       ((internalHomFlipHomEquiv K Δ[2] Q (r ≫ fractionEvaluationTriangle F W hF)).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (2 : Fin 3))) := by
-  rw [spanSquareFamilyHomotopy_target]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy_target]
   simp only [Category.assoc]
   rw [fractionEvaluationSquare_right, ← Category.assoc r,
     internalHomFlipHomEquiv_pre_app, SSet.const_comp]
@@ -49,7 +54,7 @@ lemma fractionFamilyComparison_target :
 /-- 分母を反転する関手の元の分数比較は、全パラメータ関手圏で可逆な比較辺。 -/
 lemma fractionFamilyComparison_isInvertible :
     IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
-      (spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF))) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF))) := by
   let l := r ≫ markedSpanInclusion X W ≫ (ihom (horn 2 0 : SSet.{u})).map F ≫
     (pre horn₂₀.ι₀₁).app Q
   let a := edgeOfSimplex (SSet.yonedaEquiv (internalHomFlipHomEquiv K Δ[1] Q l))
@@ -86,17 +91,17 @@ lemma fractionFamilyComparison_isInvertible :
   let z := (internalHomFlipHomEquiv K Δ[2] Q (r ≫ fractionEvaluationTriangle F W hF)).app
     (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (2 : Fin 3))
   let b := edgeOfSimplex (SSet.yonedaEquiv (SSet.const z : (Δ[1] : SSet.{u}) ⟶ (ihom K).obj Q))
-  have hb : IsInvertibleEdge b := spanConstantInterval_isInvertible z
+  have hb : IsInvertibleEdge b := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConstantInterval_isInvertible z
   apply arrowHomotopy_isInvertible_of_endpointPaths
-    (spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF)) a b ha hb
-  · rw [spanSquareFamilyHomotopy_source]
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF)) a b ha hb
+  · rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy_source]
     simp only [Category.assoc]
     rw [fractionEvaluationSquare_left]
     change snd Δ[0] Δ[1] ≫ internalHomFlipHomEquiv K Δ[1] Q l =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (SSet.yonedaEquiv
         (internalHomFlipHomEquiv K Δ[1] Q l))
     rw [Equiv.symm_apply_apply]
-  · rw [fractionFamilyComparison_target]
+  · rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_target]
     change snd Δ[0] Δ[1] ≫ SSet.const z = snd Δ[0] Δ[1] ≫
       SSet.yonedaEquiv.symm (SSet.yonedaEquiv (SSet.const z : (Δ[1] : SSet.{u}) ⟶ _))
     rw [Equiv.symm_apply_apply]
@@ -107,8 +112,23 @@ def fractionFamilyComparisonIso : FunctorIso
       ((r ≫ fractionEvaluationSquare F W hF) ≫ (pre squareBottomEdge).app Q))
     (internalHomFlipHomEquiv K Δ[1] Q
       ((r ≫ fractionEvaluationSquare F W hF) ≫ (pre squareTopEdge).app Q)) := by
-  have := fractionFamilyComparison_isInvertible F W hF r
+  have := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_isInvertible F W hF r
   exact asIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-    (spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF))))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF))))
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparisonIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparisonIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparisonIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparison_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_isInvertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparison_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantInterval_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConstantInterval_isInvertible

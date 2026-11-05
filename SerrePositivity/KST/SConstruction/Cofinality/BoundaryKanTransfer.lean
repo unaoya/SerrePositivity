@@ -41,13 +41,13 @@ lemma boundaryKan_groupConditions_of_exInfinity {X Y : StableModel.{u}} (f : X �
   let i := pointedSOAExInfinityComparison A
   let j := pointedSOAExInfinityComparison B
   have hi (n : ℕ) : Function.Bijective (pointedHomotopyMap n i) :=
-    KanHomotopy.map_bijective_congr n i.right rfl (OmegaSpectrum.pointedMap_basepoint i)
-      rfl (OmegaSpectrum.pointedMap_basepoint i)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n i.right rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint i)
+      rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint i)
       ((pointedSOAExInfinityComparison_piIsomorphism A)
         (PointedKanReplacement.obj A.obj).basepoint n)
   have hj (n : ℕ) : Function.Bijective (pointedHomotopyMap n j) :=
-    KanHomotopy.map_bijective_congr n j.right rfl (OmegaSpectrum.pointedMap_basepoint j)
-      rfl (OmegaSpectrum.pointedMap_basepoint j)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n j.right rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint j)
+      rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint j)
       ((pointedSOAExInfinityComparison_piIsomorphism B)
         (PointedKanReplacement.obj B.obj).basepoint n)
   have hm (n : ℕ) : (pointedHomotopyMap n β) ∘ (pointedHomotopyMap n i) =
@@ -70,10 +70,10 @@ lemma boundaryKan_groupConditions_of_exInfinity {X Y : StableModel.{u}} (f : X �
 使われ方：元の K 境界射への最後の次数移動。 -/
 lemma boundaryKan_groupConditions_of_coreS {X Y : StableModel.{u}} (f : X ⟶ Y)
     (h : ∀ a : (exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
-      Function.Injective (KanHomotopy.map 1 (exInfinity.map (coreSRealizationFunctor.map f))
+      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (exInfinity.map (coreSRealizationFunctor.map f))
         (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (KanHomotopy.map n (exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
     Function.Injective (pointedHomotopyMap 1 ((boundaryKanRealizationFunctor 0).map f)) ∧
       ∀ n : ℕ, 1 < n →
         Function.Bijective (pointedHomotopyMap n ((boundaryKanRealizationFunctor 0).map f)) :=

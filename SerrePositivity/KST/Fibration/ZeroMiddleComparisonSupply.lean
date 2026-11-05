@@ -32,7 +32,7 @@ theorem zeroMiddleControlledTriangleComparisonSupply_of_indS9 :
 規約：存在仮定は不要。読出し合成は厳密等式ではなく全族関手同型。
 使われ方：K-6 c4 の実上側正規化と共有対角の可逆移送。 -/
 theorem zeroMiddleFullSComparisonReconstruction_supplied
-    (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+    (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
     (K : SSet.{u + 1}) :
     ∃ (encode : zeroMiddleFullSReconstructionLongSpace s hZ K ⟶
         zeroMiddleFullSReconstructionTriangleSpace s hZ K)

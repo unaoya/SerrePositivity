@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded DGNerve SSet Pretriangulated
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 零への標準 cone は、主導来像で元の一回 shift と同型。 -/

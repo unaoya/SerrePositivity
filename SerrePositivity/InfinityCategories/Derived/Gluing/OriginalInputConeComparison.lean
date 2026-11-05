@@ -44,7 +44,7 @@ def dgGluingOriginalInputConeIso : FunctorIso
   let v := (dgOdotMilnorCornerEvaluation R d).hom
   let y := dgNerve.map (dgPerfectYoneda R V)
   let f := dgNerve.map (dgHomGluingConeFunctor R CL DR V P Q)
-  let δ₀ := CofiberFamily.cofiber (dgNerve R V)
+  let δ₀ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R V)
     (F2.laxPullbackArrow (dgNerve.map P) (dgNerve.map Q))
   let δ₁ := (exactLaxDifference (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)).hom
   have h₀ : FunctorIso

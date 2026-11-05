@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
-import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
+import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
 
@@ -21,7 +21,7 @@ def straighteningFirstVertexUnderChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningSectionJointDiagram_underIso B)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X))) rfl
     (congrArg HomotopyCategory.mk
       (relativeSectionDiagramInfinity_double_vertex (transportSimplexUnderDomains B) X c))
@@ -31,7 +31,7 @@ theorem straighteningFirstVertexUnderChart_heq_doubleMap
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     HEq (straighteningFirstVertexUnderChart X c)
       (VertexIso.map (leftStraighteningSectionJointDiagram_underIso B)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   unfold straighteningFirstVertexUnderChart F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
@@ -41,11 +41,11 @@ theorem straighteningFirstVertexUnderChart_factor
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     straighteningFirstVertexUnderChart X c =
       straighteningFirstVertexSectionChart X c ≪≫ transportUnderJointComponentIso X c := by
-  let T := doubleFunctorEvaluation
+  let T := _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation
     (K := (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory B)))
     (A := LeftFibrationInfinity B) (Y := SpaceInfinity.{u})
     (ULift.up (nerveVertex c)) (coherentNerveVertex X)
-  exact mapNormalizeComposition (hoFunctor.map T).toFunctor
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Straightening.mapNormalizeComposition (hoFunctor.map T).toFunctor
     (leftStraighteningSectionJointDiagram_restrictIso B) (transportSimplexUnderJointIso B)
     (leftStraighteningSectionJointDiagram_underIso B) rfl
     (congrArg HomotopyCategory.mk
@@ -58,11 +58,11 @@ theorem straighteningFirstVertexUnderChart_pointHom
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X)).symm v) ≫
       (straighteningFirstVertexSectionChart X c).inv ≫
         (straighteningFirstVertexUnderChart X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).obj c).obj X)).symm
         ((relativeFunctorOverPre X.val.hom
           ((transportSimplexUnderDomainTransformation B).app (Opposite.op c))).app

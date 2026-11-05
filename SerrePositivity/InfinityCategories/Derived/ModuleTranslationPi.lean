@@ -14,20 +14,20 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite
 open KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S]
 variable {W V : SimplicialObject (ModuleCat.{v} S)}
 lemma moduleTranslationIso_pi_naturality
     [SSet.KanComplex (moduleUnderlyingSSet W)] [SSet.KanComplex (moduleUnderlyingSSet V)]
     (f : W ⟶ V) (x : W.obj (op ⦋0⦌)) (n : ℕ)
-    (s : KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
-    KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f) rfl
-      (KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+    (s : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f) rfl
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
         (moduleTranslationIso_zero W x) s) =
-    KanHomotopyGroup.equivOfIso n
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n
       (moduleTranslationIso V ((f.app (op ⦋0⦌)).hom x))
       (moduleTranslationIso_zero V ((f.app (op ⦋0⦌)).hom x))
-      (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
         (moduleUnderlyingSSetMap_zero f) s) := by
   let y := (f.app (op ⦋0⦌)).hom x
   have h₁ : ((moduleTranslationIso W x).hom ≫ moduleUnderlyingSSetMap f).app _ 0 = y := by
@@ -37,11 +37,11 @@ lemma moduleTranslationIso_pi_naturality
   have h₂ : (moduleUnderlyingSSetMap f ≫ (moduleTranslationIso V y).hom).app _ 0 = y := by
     change (moduleTranslationIso V y).hom.app _ ((moduleUnderlyingSSetMap f).app _ 0) = y
     rw [moduleUnderlyingSSetMap_zero, moduleTranslationIso_zero]
-  have h := KanHomotopyGroup.map_comp (n := n) (x := (0 : W.obj (op ⦋0⦌)))
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n) (x := (0 : W.obj (op ⦋0⦌)))
     (moduleTranslationIso W x).hom (moduleTranslationIso_zero W x)
     (moduleUnderlyingSSetMap f) rfl h₁
   simp only [moduleTranslationIso_naturality] at h
-  have h' := KanHomotopyGroup.map_comp (n := n) (x := (0 : W.obj (op ⦋0⦌)))
+  have h' := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n) (x := (0 : W.obj (op ⦋0⦌)))
     (moduleUnderlyingSSetMap f) (moduleUnderlyingSSetMap_zero f)
     (moduleTranslationIso V y).hom (moduleTranslationIso_zero V y) h₂
   exact (DFunLike.congr_fun h s).symm.trans (DFunLike.congr_fun h' s)
@@ -49,13 +49,13 @@ lemma modulePiMap_bijective_at_iff_zero
     [SSet.KanComplex (moduleUnderlyingSSet W)] [SSet.KanComplex (moduleUnderlyingSSet V)]
     (f : W ⟶ V) (x : W.obj (op ⦋0⦌)) (n : ℕ) :
     Function.Bijective
-      (KanHomotopyGroup.map (n := n) (x := x) (moduleUnderlyingSSetMap f) rfl) ↔
-    Function.Bijective (KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (x := x) (moduleUnderlyingSSetMap f) rfl) ↔
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (moduleUnderlyingSSetMap f)
       (moduleUnderlyingSSetMap_zero f)) := by
   have h := funext (moduleTranslationIso_pi_naturality f x n)
-  let e := KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (moduleTranslationIso W x)
     (moduleTranslationIso_zero W x)
-  let e' := KanHomotopyGroup.equivOfIso n
+  let e' := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n
     (moduleTranslationIso V ((f.app (op ⦋0⦌)).hom x))
     (moduleTranslationIso_zero V ((f.app (op ⦋0⦌)).hom x))
   exact (e.toEquiv.bijective_comp _).symm.trans

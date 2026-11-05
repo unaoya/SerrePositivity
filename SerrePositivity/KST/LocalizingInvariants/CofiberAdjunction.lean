@@ -22,15 +22,15 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 /-- 恒等矢印を逆回転して得る、cofiber の実右随伴。 -/
 def cofiberRightAdjoint : X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  ArrowTarget.identityArrow X ≫ CofiberRotation.inverseRotation X
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X ≫ CofiberRotation.inverseRotation X
 
 /-- 元の全単体上の cofiber 選択は、この逆回転関手の実左随伴である。 -/
 def cofiberAdjunction :
-    QCatAdjunction (CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
+    QCatAdjunction (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 ((ihom (Δ[1] : SSet.{u})).obj X)))
       (cofiberRightAdjoint X) := by
   have a := (CofiberRotation.adjunction X).comp (ArrowTarget.adjunction X)
   change QCatAdjunction
-    ((CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.right X) ≫
+    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
     (cofiberRightAdjoint X) at a
   rw [CofiberDiagrams.lift_right_target] at a

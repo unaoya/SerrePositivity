@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated
@@ -68,15 +70,19 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CurryInterval
+end SerrePositivity.KST.LocalizingInvariants.CurryInterval
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.LocalizingInvariants.CurryInterval
 
 variable {A X : SSet.{u}}
 
 def horizontal (F : A ⊗ Δ[1] ⟶ X) : SSet.Homotopy
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ F)
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ F) where
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ F)
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ F) where
   h := F
   h₀ := rfl
   h₁ := rfl
@@ -91,7 +97,7 @@ lemma horizontal_arrow (F : A ⊗ Δ[1] ⟶ X) :
     Arrow.mk ((hoFunctor.map (curry F)).toFunctor.map
       (Truncated.HomotopyCategory.homMk homotopyIntervalEdge)) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (horizontal F))) := by
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal F))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   change (curry F).app (Opposite.op ⦋1⦌) homotopyIntervalEdge.edge = SSet.yonedaEquiv (curry F)
   have hi : homotopyIntervalEdge.edge = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) := by
@@ -100,4 +106,25 @@ lemma horizontal_arrow (F : A ⊗ Δ[1] ⟶ X) :
     fin_cases i <;> rfl
   exact congrArg (fun v ↦ (curry F).app (Opposite.op ⦋1⦌) v) hi
 
-end SerrePositivity.KST.LocalizingInvariants.CurryInterval
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal_arrow := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryInterval.horizontal._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal._proof_4

@@ -12,7 +12,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def dgGluingTriangleDiagramTransport {P K Z : SSet.{u}} (a : K ⟶ P)
     (V : (Δ[2] : SSet.{u}) ⊗ P ⟶ Z) : (Δ[2] : SSet.{u}) ⟶ (ihom K).obj Z :=

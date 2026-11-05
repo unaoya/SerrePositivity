@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded KST.SConstruction
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C D : Type v)
   [DGCategory R C] [Small.{u} C] [DGCategory R D] [Small.{u} D]
   (S : Set C) (T : Set D)

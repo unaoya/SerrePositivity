@@ -19,8 +19,8 @@ open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 
 private lemma nullTriangleShortComparison
-    {f g : (Δ[2] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1}}
-    {f' g' : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1}}
+    {f g : (Δ[2] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}}
+    {f' g' : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}}
     (H : SSet.Homotopy f g) (e : FunctorIso f g)
     (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
     (q : (Δ[1] : SSet.{u + 2}) ⟶ Δ[2]) (hf : q ≫ f = f') (hg : q ≫ g = g')
@@ -34,13 +34,13 @@ private lemma nullTriangleShortComparison
   rw [F2.functorIso_precomp_hom, he, he']
   change Truncated.HomotopyCategory.homMk
     ((functorEdgeOfSimplicialHomotopy H).map
-      ((truncation 2).map ((pre q).app StableInfinity.{u + 1}))) =
+      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))) =
         Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H')
   have hedge : (functorEdgeOfSimplicialHomotopy H).map
-      ((truncation 2).map ((pre q).app StableInfinity.{u + 1})) =
+      ((truncation 2).map ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})) =
         functorEdgeOfSimplicialHomotopy H' := by
     apply Truncated.Edge.ext
-    change ((pre q).app StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
+    change ((pre q).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (curry H.h)) = SSet.yonedaEquiv (curry H'.h)
     rw [← SSet.yonedaEquiv_comp, curry_pre_app, hh]
   exact congrArg Truncated.HomotopyCategory.homMk hedge

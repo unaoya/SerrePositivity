@@ -20,7 +20,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 関手圏に値を持つ族の完全性は、全ての頂点評価から従う。 -/
-lemma preservesCofiberData_of_evaluations {A K : SSet.{u}} {B : StableCategory.{u}}
+lemma preservesCofiberData_of_evaluations {A K : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (f : A ⟶ (ihom K).obj B.obj)
     (hf : ∀ k : K _⦋0⦌, PreservesCofiberData (f ≫ evaluateFunctorAt k)) :
     PreservesCofiberData f := by
@@ -35,7 +35,7 @@ lemma preservesCofiberData_of_evaluations {A K : SSet.{u}} {B : StableCategory.{
     simpa only [Category.assoc] using (hf k).2 t ht
 
 /-- 射の族は両端の評価が完全なら完全である。 -/
-lemma preservesCofiberData_arrow_of_endpoints {A : SSet.{u}} {B : StableCategory.{u}}
+lemma preservesCofiberData_arrow_of_endpoints {A : SSet.{u}} {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (f : A ⟶ (ihom (Δ[1] : SSet.{u})).obj B.obj)
     (h₀ : PreservesCofiberData (f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
     (h₁ : PreservesCofiberData (f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :
@@ -60,7 +60,7 @@ lemma preservesCofiberData_of_trivialProjection {A E Y : SSet.{u}}
 
 /-- 全 cofiber 四角形の族は、始点・中間頂点の二評価が完全なら完全である。 -/
 lemma cofiberFamily_preservesCofiberData_of_endpoints {A : SSet.{u}}
-    {B : StableCategory.{u}} (f : A ⟶ cofiberDiagrams B.obj)
+    {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : A ⟶ cofiberDiagrams B.obj)
     (h₀ : PreservesCofiberData (f ≫ (cofiberStableSubobject (sInputModel B)).val))
     (h₁ : PreservesCofiberData (f ≫ (cofiberStableMiddle (sInputModel B)).val)) :
     PreservesCofiberData f := by
@@ -83,7 +83,7 @@ lemma cofiberFamily_preservesCofiberData_of_endpoints {A : SSet.{u}}
 
 /-- 元の関手頂点の自然同型から、対応する族の完全性を輸送する。 -/
 lemma preservesCofiberData_of_familyVertexIso {A : SSet.{u}} [Quasicategory A]
-    {B : StableCategory.{u}} (v : ((ihom A).obj B.obj) _⦋0⦌) (f : A ⟶ B.obj)
+    {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (v : ((ihom A).obj B.obj) _⦋0⦌) (f : A ⟶ B.obj)
     (e : VertexIso v (functorVertex f)) (hf : PreservesCofiberData f) :
     PreservesCofiberData ((functorVertexEquiv A B.obj).symm v) := by
   let : IsExactFunctor f := ⟨hf.1, hf.2⟩

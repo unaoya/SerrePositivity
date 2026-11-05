@@ -13,7 +13,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology Opposite HomologicalComplex
 open KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S]
 variable (W : SimplicialObject (ModuleCat.{v} S))
 variable {V : SimplicialObject (ModuleCat.{v} S)}

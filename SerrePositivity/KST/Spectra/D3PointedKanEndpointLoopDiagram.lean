@@ -27,9 +27,9 @@ lemma d3EndpointOrdinarySquare_triangle_left (Y : PointedKanObject.{u}) :
     squareTriangle 1 ≫
       (d3ParameterOrdinarySquare d3EndpointParameter Y ≫ nerveToCoherent PointedKanObject) =
         SSet.yonedaEquiv.symm ((nerveToCoherent PointedKanObject).app (Opposite.op ⦋2⦌)
-          (ComposableArrows.mk₂ (d3PointedKanCofiberOrdinaryCone intervalEndpoint Y).fst
-            (ObjectProperty.homMk (PointedMapping.prePointed intervalEndpoint Y.obj) :
-              (d3PointedKanIhom pointedInterval).obj Y ⟶
+          (ComposableArrows.mk₂ (d3PointedKanCofiberOrdinaryCone _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y).fst
+            (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y.obj) :
+              (d3PointedKanIhom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval).obj Y ⟶
                 (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})).obj Y))) := by
   apply SSet.yonedaEquiv.injective
   rw [← Category.assoc, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
@@ -46,9 +46,9 @@ lemma d3EndpointOrdinarySquare_triangle_right (Y : PointedKanObject.{u}) :
     squareTriangle 0 ≫
       (d3ParameterOrdinarySquare d3EndpointParameter Y ≫ nerveToCoherent PointedKanObject) =
         SSet.yonedaEquiv.symm ((nerveToCoherent PointedKanObject).app (Opposite.op ⦋2⦌)
-          (ComposableArrows.mk₂ (d3PointedKanCofiberOrdinaryCone intervalEndpoint Y).snd
+          (ComposableArrows.mk₂ (d3PointedKanCofiberOrdinaryCone _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y).snd
             (ObjectProperty.homMk
-              (PointedMapping.prePointed (PointedObject.toPoint
+              (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint
                 (𝟙_ PointedSimplicialSet.{u})) Y.obj) :
               (d3PointedKanIhom PointedObject.point).obj Y ⟶
                 (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})).obj Y))) := by
@@ -65,7 +65,7 @@ lemma d3EndpointOrdinarySquare_triangle_right (Y : PointedKanObject.{u}) :
 /-- 構成済み全族の各実四角形は、元の cofiber 錐の同じ coherent 四角形そのもの。 -/
 lemma d3EndpointParameterSquare_eq_strict (Y : PointedKanObject.{u}) :
     squareDiagram (d3EndpointParameterSquare.app _ (coherentNerveVertex Y)) =
-      D3StrictPullbackSquare.square (d3PointedKanCofiberOrdinaryCone intervalEndpoint Y) := by
+      D3StrictPullbackSquare.square (d3PointedKanCofiberOrdinaryCone _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y) := by
   rw [d3EndpointParameterSquare, d3PointedKanParameterSquare_vertex]
   apply square_isPushout.hom_ext
   · rw [d3EndpointOrdinarySquare_triangle_right, D3StrictPullbackSquare.triangle_right]

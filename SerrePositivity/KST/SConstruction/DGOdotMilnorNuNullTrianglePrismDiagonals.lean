@@ -46,11 +46,11 @@ lemma dgOdotMilnorNuNullLowerDiagonalHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (K : StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (B : StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
   have hs : (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u + 2}) ⟶ Δ[1]) ≫
       stdSimplex.δ (1 : Fin 3) = stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
     apply SSet.yonedaEquiv.injective
@@ -99,11 +99,11 @@ lemma dgOdotMilnorNuNullUpperDiagonalHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (K : StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (B : StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
   have hs : (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u + 2}) ⟶ Δ[1]) ≫
       stdSimplex.δ (1 : Fin 3) = stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
     apply SSet.yonedaEquiv.injective

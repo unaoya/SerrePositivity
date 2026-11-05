@@ -30,7 +30,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。BF 比較射を介した自然性の証明。 -/
 theorem componentOf_cancel_post_piIsomorphism {A X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (p : X ⟶ Y)
-    (hp : KanPiIsomorphism p.right) (a b : A ⟶ X)
+    (hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p.right) (a b : A ⟶ X)
     (h : componentOf (a ≫ p) = componentOf (b ≫ p)) : componentOf a = componentOf b := by
   have hi := (post_piIsomorphism A p hp).piZero_bijective_at
     (PointedSimplicialSet.basepoint (PointedObject.basedHom A X))

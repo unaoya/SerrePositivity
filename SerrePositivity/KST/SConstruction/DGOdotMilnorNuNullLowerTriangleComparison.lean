@@ -33,7 +33,7 @@ lemma dgOdotMilnorNuNullLowerTriangleHomotopy_horn :
   rw [← Category.assoc, hs, Category.assoc,
     (dgOdotMilnorNuNullLowerPrism_restrictions R d h).1]
   let exchange (f : (horn 2 1 : SSet.{u + 2}) ⟶ boundary 2)
-      (H : (boundary 2 : SSet.{u + 2}) ⊗ Δ[1] ⟶ StableInfinity.{u + 1}) :
+      (H : (boundary 2 : SSet.{u + 2}) ⊗ Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) :
       (β_ (horn 2 1 : SSet.{u + 2}) Δ[1]).hom ≫ (Δ[1] ◁ f) ≫
         (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫ H = (f ▷ Δ[1]) ≫ H := rfl
   exact exchange _ _
@@ -45,7 +45,7 @@ lemma dgOdotMilnorNuNullLowerTriangleHomotopy_isInvertible :
     IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)) := by
   let q := (pre ((horn 2 1 : (Δ[2] : SSet.{u + 2}).Subcomplex).ι)).app
-    StableInfinity.{u + 1}
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}
   letI : TrivialKanFibration q := trivialKanFibration_pre_of_innerAnodyne _
     (innerAnodyneExtensions.horn_ι (show 0 < (1 : Fin 3) by decide)
       (show (1 : Fin 3) < Fin.last 2 by decide)) _
@@ -53,19 +53,19 @@ lemma dgOdotMilnorNuNullLowerTriangleHomotopy_isInvertible :
     (isQCatEquivalence_of_trivialKanFibration q).isFullyFaithful
   apply hq.reflects_isInvertibleEdge
   have hi := (dgOdotMilnorNuNullPrismBoundaryHomotopy_isInvertible R d h 1).map
-    ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1})
+    ((pre (hornBoundaryInclusion 1 1)).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})
   have he : ((functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)).map ((truncation 2).map q)).edge =
       ((functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h 1)).map ((truncation 2).map
-          ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1}))).edge := by
+          ((pre (hornBoundaryInclusion 1 1)).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))).edge := by
     change q.app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (curry (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h)) =
-        ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
+        ((pre (hornBoundaryInclusion 1 1)).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
           (SSet.yonedaEquiv (curry (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h 1).h))
     rw [← SSet.yonedaEquiv_comp, ← SSet.yonedaEquiv_comp]
     change SSet.yonedaEquiv (curry (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h ≫
-      (pre (horn 2 1).ι).app StableInfinity.{u + 1}) = _
+      (pre (horn 2 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) = _
     rw [curry_pre_app, curry_pre_app, dgOdotMilnorNuNullLowerTriangleHomotopy_horn]
   exact (isInvertibleEdge_congr he).mpr hi
 

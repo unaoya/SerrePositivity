@@ -16,12 +16,12 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
-variable (C : StableCategory.{u}) {G P : SSet.{u}}
+open scoped _root_.Simplicial
+variable (C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) {G P : SSet.{u}}
   [Quasicategory G] [Quasicategory P] [IsStable G] [IsStable P]
-local notation "L" => StableCategory.obj (laxCategory (𝟙 C) (𝟙 C))
-local notation "δ" => ExactMap.hom (exactLaxDifference (𝟙 C) (𝟙 C))
-local notation "d" => ExactMap.hom (IdentityLax.exactDiagonal C)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj (laxCategory (𝟙 C) (𝟙 C))
+local notation "δ" => _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom (exactLaxDifference (𝟙 C) (𝟙 C))
+local notation "d" => _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom (IdentityLax.exactDiagonal C)
 
 def identityConeComparisonCriterion (e : QCatEquivalence G L)
     (y : QCatEquivalence C.obj P) (f : G ⟶ P) [IsExactFunctor f]
@@ -37,7 +37,7 @@ def identityConeComparisonCriterion (e : QCatEquivalence G L)
   letI : IsExactFunctor y.inv := isExactFunctor_of_isQCatEquivalence y.symm.isQCatEquivalence
   letI : IsExactFunctor (f ≫ y.inv) := isExactFunctor_comp _ _
   letI : IsExactFunctor r := isExactFunctor_comp _ _
-  let re : ExactMap (laxCategory (𝟙 C) (𝟙 C)) C := ⟨r, inferInstance⟩
+  let re : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory (𝟙 C) (𝟙 C)) C := ⟨r, inferInstance⟩
   have hdi₁ : FunctorIso (d ≫ r) (i ≫ e.hom ≫ e.inv ≫ f ≫ y.inv) := by
     simpa only [FunctorIso, r, Category.assoc] using FunctorIso.postcomp hi.symm r
   have hdi₂ : FunctorIso (i ≫ e.hom ≫ e.inv ≫ f ≫ y.inv) (i ≫ f ≫ y.inv) := by
@@ -58,9 +58,9 @@ def identityConeComparisonCriterion (e : QCatEquivalence G L)
   have heq : IsQCatEquivalence (k ≫ δ) :=
     (QCatEquivalence.refl C.obj).isQCatEquivalence.ofFunctorIso hj.symm
   have hrd : FunctorIso r δ := localizationProjectionComparisonOfTest δ
-    (cofiberLocalizingEdges (essentialImage (IdentityLax.exactDiagonal C)))
+    (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (IdentityLax.exactDiagonal C)))
     (IdentityLax.difference_isVerdier C).quotient k heq r
-    ((inverts_iff_kills_inclusion (IdentityLax.exactDiagonal C) re).mpr hzero) htest
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.inverts_iff_kills_inclusion (IdentityLax.exactDiagonal C) re).mpr hzero) htest
   have hout : FunctorIso (e.hom ≫ r ≫ y.hom) ((e.hom ≫ δ) ≫ y.hom) := by
     simpa only [FunctorIso, Category.assoc] using (hrd.precomp e.hom).postcomp y.hom
   have hcancel₁ : FunctorIso (e.hom ≫ r ≫ y.hom) (f ≫ y.inv ≫ y.hom) := by

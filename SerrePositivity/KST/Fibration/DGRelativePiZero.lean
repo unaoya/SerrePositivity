@@ -29,7 +29,7 @@ private lemma surjective_of_iso_square {G H G' H' : CommGrpCat.{w}}
 
 /-- 元の相対四角形を固定 K で写した、その右辺自体の零次 π 作用は全射。 -/
 theorem dgRelativePiZeroMap_surjective (A : Type u) [CommRing A]
-    (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     Function.Surjective (((SpectrumHo.piFunctor 0).map
       (squareHoRight (d.square ≫ dgKInputK A))).hom) := by
   let e := coherentNerveEdge (dgRelativeRightArrowData A d).2.2

@@ -23,12 +23,12 @@ variable {I : Type u} [SmallCategory I]
 lemma weightedSectionsParameterMap_point_evaluation (W : I ⥤ SSet.{u})
     {H H' : I ⥤ SSet.{u}} {A : SSet.{u}} (η : H ⋙ tensorRight A ⟶ H')
     (p : 𝟙_ SSet.{u} ⟶ weightedSections W H) (i : I) :
-    uncurry ((ParameterPoint.family p A ≫ weightedSectionsParameterMap W η) ≫
+    uncurry ((_root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A ≫ weightedSectionsParameterMap W η) ≫
       weightedSectionsπ W H' i) =
       (((ρ_ (W.obj i)).inv ≫ uncurry (p ≫ weightedSectionsπ W H i)) ▷ A) ≫ η.app i := by
   rw [uncurry_natural_left, whiskerLeft_comp, Category.assoc,
     weightedSectionsParameterMap_evaluation, uncurry_natural_left]
-  have h : (W.obj i ◁ ParameterPoint.family p A) ≫
+  have h : (W.obj i ◁ _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A) ≫
       (α_ (W.obj i) (weightedSections W H) A).inv ≫
       (uncurry (weightedSectionsπ W H i) ▷ A) =
       (((ρ_ (W.obj i)).inv ≫ (W.obj i ◁ p) ≫

@@ -16,11 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromD_fst_vertex (x : D.obj _⦋0⦌) :
     (F2.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌)
@@ -28,8 +28,8 @@ lemma fromD_fst_vertex (x : D.obj _⦋0⦌) :
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (fromD_fst p q)
     (Opposite.op ⦋0⦌)) x
   change (F2.laxPullbackFst p.hom q.hom).app (Opposite.op ⦋0⦌)
-    ((fromD p q).app (Opposite.op ⦋0⦌) x) = (zeroC : D.obj ⟶ C.obj).app _ x at h
-  simpa only [zeroC, zeroDiagram_const_vertex] using h
+    ((fromD p q).app (Opposite.op ⦋0⦌) x) = (_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC : D.obj ⟶ C.obj).app _ x at h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex] using h
 
 lemma fromD_initialBoundary (x : D.obj _⦋0⦌) :
     InitialBoundaryLifting (laxSnd p q).hom ((fromD p q).app (Opposite.op ⦋0⦌) x) := by
@@ -49,10 +49,10 @@ lemma fromD_mapping_equivalence (x : D.obj _⦋0⦌)
 def fromDAdjunction : QCatAdjunction (fromD p q) (laxSnd p q).hom :=
   adjunctionOfRelativeInitialSection (fromD_snd p q) (fromD_initialBoundary p q)
 
-lemma fromDAdjunction_unit : (fromDAdjunction p q).unitHom = sectionUnit (fromD_snd p q) :=
+lemma fromDAdjunction_unit : (fromDAdjunction p q).unitHom = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.sectionUnit (fromD_snd p q) :=
   adjunctionOfRelativeInitialSection_unit _ _
 
 lemma fromD_fullyFaithful : IsFullyFaithful (fromD p q) :=
-  fullyFaithful_of_relativeInitialSection (fromD_snd p q) (fromD_initialBoundary p q)
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.fullyFaithful_of_relativeInitialSection (fromD_snd p q) (fromD_initialBoundary p q)
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion

@@ -48,7 +48,7 @@ def enrichedCompositionReplacement {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : 
     (e : (SimplicialCategory.sHom X Z).Edge
       (SimplicialCategory.homEquiv' X Z h) (SimplicialCategory.homEquiv' X Z (f ≫ g)))
     [Quasicategory (SimplicialNerve C)] :=
-  compositionReplacementTetrahedron (coherentNerveCompStruct f g)
+  _root_.SerrePositivity.InfinityCategories.Kan.compositionReplacementTetrahedron (coherentNerveCompStruct f g)
     (enrichedComparisonPinchedTriangle e)
 
 end SerrePositivity.KST.SConstruction

@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：零次標準単体との直積を元の対象に同定する。
@@ -127,11 +127,11 @@ theorem simplexZeroTensorIso_one (C : SSet.{u}) :
 使われ方：貼り付けの脚の単射性。
 -/
 theorem cylinderEndpoints_factor (C : SSet.{u}) :
-    cylinderEndpoints C = (cylinderBoundaryIso C).hom ≫ C ◁ (SSet.boundary.{u} 1).ι := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C = (cylinderBoundaryIso C).hom ≫ C ◁ (SSet.boundary.{u} 1).ι := by
   apply coprod.hom_ext
-  · rw [cylinderEndpoints, coprod.inl_desc, cylinderBoundaryIso_inl_assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inl_desc, cylinderBoundaryIso_inl_assoc,
       ← whiskerLeft_comp, SSet.boundary.ι_ι, simplexZeroTensorIso_zero]
-  · rw [cylinderEndpoints, coprod.inr_desc, cylinderBoundaryIso_inr_assoc,
+  · rw [_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints, coprod.inr_desc, cylinderBoundaryIso_inr_assoc,
       ← whiskerLeft_comp, SSet.boundary.ι_ι, simplexZeroTensorIso_one]
 
 /--
@@ -140,7 +140,7 @@ theorem cylinderEndpoints_factor (C : SSet.{u}) :
 規約：二重写像円筒を単射に沿った pushout として扱う。
 使われ方：貼り合わせの局所化不変性。
 -/
-instance cylinderEndpoints_mono (C : SSet.{u}) : Mono (cylinderEndpoints C) := by
+instance cylinderEndpoints_mono (C : SSet.{u}) : Mono (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) := by
   have : Mono (C ◁ (SSet.boundary.{u} 1).ι) := by
     rw [NatTrans.mono_iff_mono_app]
     intro d

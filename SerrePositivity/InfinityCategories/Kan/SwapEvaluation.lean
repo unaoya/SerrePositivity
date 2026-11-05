@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 
 /-! # 二重内部 Hom の第二添字の評価
@@ -11,9 +13,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 内部 Hom の交換の後の第二添字の評価は、交換前の内部 Hom の後合成。 -/
 lemma internalHomSwap_evaluate_right (A B C : SSet.{u}) (b : B.obj (Opposite.op ⦋0⦌)) :
@@ -46,4 +51,13 @@ lemma internalHomSwap_twice (A B C : SSet.{u}) :
   rw [← Category.assoc ((pre (β_ A B).hom).app C) ((pre (β_ B A).hom).app C)
     (ihomCurry B A C), hp, Category.id_comp, ihomUncurry_ihomCurry]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_evaluate_right := _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_evaluate_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_twice := _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice

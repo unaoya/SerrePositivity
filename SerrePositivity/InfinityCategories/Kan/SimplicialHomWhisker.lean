@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 
 /-! # 元の通常射の豊穣表示と全 Hom の前後合成
@@ -10,6 +12,9 @@ public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 variable {D : Type v} [Category.{u} D] [SimplicialCategory D]
 
@@ -35,4 +40,13 @@ lemma simplicialHom_pre {X Y Z : D} (f : X ⟶ Y) (g : Y ⟶ Z) :
     ((eHomEquiv SSet f).app n PUnit.unit, (eHomEquiv SSet g).app n PUnit.unit) = _
   exact (types_congr_hom (NatTrans.congr_app (eHomEquiv_comp SSet f g) n) PUnit.unit).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHom_post := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHom_pre := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_pre

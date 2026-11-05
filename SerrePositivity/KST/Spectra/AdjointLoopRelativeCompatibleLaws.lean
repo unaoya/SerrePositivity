@@ -39,7 +39,7 @@ lemma compatibleIdentity_condition (X : OmegaSpectrum.{u}) :
         RawSpectrumMapping.pointedPre (inclusion X) (middle X).toKanSequence =
       RawSpectrumMapping.pointedIdentity X ≫ inclusionPost X X := by
   apply (compatible_condition_iff X X _ _).mpr
-  exact enriched_parameter_square_id PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (X := X) (Y := middle X) (inclusionPoint X)
 
 /-- 概要：二つの元の恒等射の組。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
-import all SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
+import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
 public import SerrePositivity.KST.Fibration.ChosenRepresentationPointHom
 public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
 
@@ -20,15 +20,15 @@ variable {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌)
 
 /-- 元の指定 fiber における pointedMap の点は、元の全空間の点の表示変更だけで回収できる。 -/
 theorem transportRepresentationFiberPointHom_normalized (R : LeftTransportRepresentation p) :
-    cosliceFiberPointHom (transportRepresentationPointAt p v.val R) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt p v.val R) ≫
       (eqToIso (congrArg HomotopyCategory.mk
         (congrArg (R.diagram.app (Opposite.op ⦋0⦌))
           (v.property.trans (pinchedConstant_zero b))))).hom =
-      cosliceFiberPointHom ((transportRepresentationPointedFiberMap R b).app
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap R b).app
         (Opposite.op ⦋0⦌) v) := by
   let t := (transportRepresentationPointedFiberMap R b).app (Opposite.op ⦋0⦌) v
   have hv : t.val = R.pointedMap.app (Opposite.op ⦋0⦌) v.val := rfl
-  have he := pointedVertexPointHom_transport t _ hv.symm
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom_transport t _ hv.symm
     (congrArg (fun f => f.app (Opposite.op ⦋0⦌) v.val) R.pointedMap_projection)
     (congrArg (R.diagram.app (Opposite.op ⦋0⦌))
       (v.property.trans (pinchedConstant_zero b)))
@@ -36,7 +36,7 @@ theorem transportRepresentationFiberPointHom_normalized (R : LeftTransportRepres
     (eqToIso (congrArg HomotopyCategory.mk
       (congrArg (R.diagram.app (Opposite.op ⦋0⦌))
         (v.property.trans (pinchedConstant_zero b))))).hom)
-    (pointedVertexPointHom_fiber (transportRepresentationPointAt p v.val R))
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom_fiber (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt p v.val R))
   have hc := hn.symm
   simp only [Category.assoc] at hc
   exact hc.trans he
@@ -46,9 +46,9 @@ variable [Quasicategory B] (R S : LeftTransportRepresentation p)
 
 /-- 同じ表現空間の実比較は、指定した元の fiber 点と同じ diagramIso の b 成分を結ぶ。 -/
 theorem transportRepresentationFiberPointHom_diagramIso :
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap R b).app
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap R b).app
       (Opposite.op ⦋0⦌) v) ≫ functorHomEvaluate (R.diagramIso S h).hom b =
-      cosliceFiberPointHom ((transportRepresentationPointedFiberMap S b).app
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap S b).app
         (Opposite.op ⦋0⦌) v) := by
   let r := eqToIso (congrArg HomotopyCategory.mk
     (congrArg (R.diagram.app (Opposite.op ⦋0⦌))
@@ -58,16 +58,16 @@ theorem transportRepresentationFiberPointHom_diagramIso :
       (v.property.trans (pinchedConstant_zero b))))
   have hR := transportRepresentationFiberPointHom_normalized p b v R
   have hS := transportRepresentationFiberPointHom_normalized p b v S
-  have hn := component_reindex (R.diagramIso S h).hom
+  have hn := _root_.SerrePositivity.InfinityCategories.Stable.Transport.component_reindex (R.diagramIso S h).hom
     (v.property.trans (pinchedConstant_zero b))
-  have he := transportRepresentationPointHom_diagramIso p v.val R S h
+  have he := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointHom_diagramIso p v.val R S h
   calc
-    _ = (cosliceFiberPointHom (transportRepresentationPointAt p v.val R) ≫ r.hom) ≫
+    _ = (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt p v.val R) ≫ r.hom) ≫
         functorHomEvaluate (R.diagramIso S h).hom b := by rw [hR]
-    _ = cosliceFiberPointHom (transportRepresentationPointAt p v.val R) ≫
+    _ = _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt p v.val R) ≫
         (functorHomEvaluate (R.diagramIso S h).hom (p.app (Opposite.op ⦋0⦌) v.val) ≫
           s.hom) := by rw [Category.assoc, ← hn]
-    _ = cosliceFiberPointHom (transportRepresentationPointAt p v.val S) ≫ s.hom := by
+    _ = _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt p v.val S) ≫ s.hom := by
       rw [← Category.assoc, he]
     _ = _ := hS
 

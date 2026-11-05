@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
 
 /-- 概要：単体的加群の忘却単体集合。

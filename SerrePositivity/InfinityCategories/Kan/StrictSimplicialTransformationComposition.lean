@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 厳密単体的自然変換の同じ全 Hom 上の合成
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 元の豊穣合成の結合律は、全次数の元の三つの単体で成り立つ。 -/
@@ -47,8 +52,8 @@ def strictSimplicialTransformationComp
       (eComp SSet (F.obj X) (H.obj X) (H.obj Y)).app n
         ((eComp SSet (F.obj X) (G.obj X) (H.obj X)).app n
           ((η.app X).app n t.1, (θ.app X).app n t.1), (H.map X Y).app n t.2)
-    rw [← simplicialComposition_assoc_app, hη, simplicialComposition_assoc_app, hθ,
-      ← simplicialComposition_assoc_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app, hη, _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app, hθ,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app]
 
 /-- 成分が元の通常射を回収する二つの比較の合成は、同じ通常の合成射を回収する。 -/
 lemma strictSimplicialTransformationComp_hom
@@ -58,9 +63,24 @@ lemma strictSimplicialTransformationComp_hom
     (θ : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) G H)
     (X : C) (f : F.obj X ⟶ G.obj X) (g : G.obj X ⟶ H.obj X)
     (hf : η.app X = eHomEquiv SSet f) (hg : θ.app X = eHomEquiv SSet g) :
-    (strictSimplicialTransformationComp F G H η θ).app X = eHomEquiv SSet (f ≫ g) := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp F G H η θ).app X = eHomEquiv SSet (f ≫ g) := by
   change (λ_ (𝟙_ SSet.{u})).inv ≫ (η.app X ⊗ₘ θ.app X) ≫ eComp SSet _ _ _ = _
   rw [hf, hg]
   exact (eHomEquiv_comp SSet f g).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialComposition_assoc_app := _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp._proof_1

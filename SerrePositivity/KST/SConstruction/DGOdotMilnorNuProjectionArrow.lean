@@ -24,35 +24,35 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 local notation "F" => dgOdotMilnorCellProjectionExactMap R d
 local notation "G" => PerfectVerdierSequence.projection (dgOdotMilnorNuPerfectSequence R d h)
 local instance : KanComplex
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (A) (B)) :=
-  stableQCat_sHom_kanComplex (A) (B)
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex (A) (B)
 
 /-- 概要：同じ指定商比較の豊穣 Hom 内の実辺。
 方針：構成済み関手同型の core 像の順方向を実辺で表示する。
 規約：元の二つの完全射を固定する。使われ方：標準区間比較のパラメータ。 -/
 def dgOdotMilnorNuProjectionCoreEdge :
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (A) (B)).Edge
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (A) (B) (F))
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (A) (B) (G)) :=
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B)).Edge
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B) (F))
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B) (G)) :=
   Edge.ofTruncated (homotopyCategory_homMk_surjective _ _
-    (exactMapCoreVertexIso (dgOdotMilnorNuPerfectProjectionComparison R d h)).hom).choose
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso (dgOdotMilnorNuPerfectProjectionComparison R d h)).hom).choose
 
 /-- 概要：元の実商辺と完備化後射影の辺は、端点固定の関手全体として同型。
 方針：元 Hom 辺の可逆性を宇宙持ち上げ・標準区間比較・fiber 包含で保つ。
 規約：同じ辺の代表を保持し、全四角形比較はまだ結論しない。
 使われ方：Sp の指定商境界の全一単体比較。 -/
 def dgOdotMilnorNuProjectionArrowComparison : FunctorIso
-    (SSet.yonedaEquiv.symm (stableArrow (F)).edge)
-    (SSet.yonedaEquiv.symm (stableArrow (G)).edge) := by
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (F)).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (G)).edge) := by
   let e := dgOdotMilnorNuProjectionCoreEdge R d h
   have hi : IsInvertibleEdge e.toTruncated :=
     IsGroupoid.all_isIso (C := hoFunctor.obj
-      (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (A) (B))) _
-  let a := coherentHomIntervalEdgeFromParameter (C := StableQCat.{u + 1}) (F) (G) e
+      (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B))) _
+  let a := coherentHomIntervalEdgeFromParameter (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (F) (G) e
   have ha : IsInvertibleEdge a.toTruncated := by
-    have hh := hi.ulift.map (coherentHomIntervalComparison (C := StableQCat.{u + 1}) (A) (B))
+    have hh := hi.ulift.map (coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B))
     exact (isInvertibleEdge_congr (by rfl)).mp hh
-  let b := a.map (vertexFiberι ((pre (boundary 1).ι).app StableInfinity.{u + 1})
+  let b := a.map (vertexFiberι ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})
     (functorVertex (intervalMappingBoundary (coherentNerveVertex (A))
       (coherentNerveVertex (B)))))
   exact @asIso _ _ _ _ (Truncated.HomotopyCategory.homMk b.toTruncated) (ha.map _)

@@ -34,8 +34,8 @@ private lemma comp_arrow_congr {T : Type*} [Category* T] {a b c a' b' c' : T}
   rfl
 
 /-- 商の元の全余錐を、前段全体の分母精密化と全余錐図式の同型を保って持ち上げる。 -/
-lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
     (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
@@ -54,7 +54,7 @@ lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : StableCategory.{u
           (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
             curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm
               (C.obj.σ 0 (q.hom.app (Opposite.op ⦋0⦌) z))) := by
-  let k := SSet.yonedaEquiv (simplexLastPoint.{u} n)
+  let k := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint.{u} n)
   have hk : k = stdSimplex.obj₀Equiv.symm (Fin.last n) := Equiv.apply_symm_apply _ _
   let f₀ := HomotopyLimits.coconeVertexLeg d k
   have hfsource : (D ≫ q.hom).app (Opposite.op ⦋0⦌) k =
@@ -91,11 +91,11 @@ lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : StableCategory.{u
         infer_instance)
   have hsource : (HomotopyLimits.coconeVertexLeg cQ k).edge =
       (g.map ((truncation 2).map q.hom)).edge := by
-    have hh : (joinStdSimplexIso 0 0).inv ≫ joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫
+    have hh : (joinStdSimplexIso 0 0).inv ≫ joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫
         c.val ≫ q.hom = SSet.yonedaEquiv.symm g.edge ≫ q.hom := by
       simpa only [Category.assoc] using congrArg (· ≫ q.hom) hcg
     change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-      joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (simplexLastPoint n)))
+      joinMap (SSet.yonedaEquiv.symm (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)))
         (𝟙 Δ[0]) ≫ (c.val ≫ q.hom)) = _
     rw [Equiv.symm_apply_apply, hh, SSet.yonedaEquiv_comp]
     exact congrArg (fun v : B.obj _⦋1⦌ => q.hom.app (Opposite.op ⦋1⦌) v)
@@ -137,8 +137,8 @@ lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : StableCategory.{u
   exact ⟨D', t, c, ht, hcz, l, hi, hp, hv⟩
 
 /-- 元の入口も、二つの実経路を保持する右分数比較から従う。 -/
-lemma exists_verdierSimplexCoconeLift {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierSimplexCoconeLift {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
     (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)

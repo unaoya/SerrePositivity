@@ -13,7 +13,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology DifferentialGraded DoldKanComparison HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {a b : E}
 
@@ -39,7 +39,7 @@ lemma dgBarCompactPinchedHomMooreHomologyIso_naturality
 lemma dgBarCompactPinchedModulePiCohomologyEquiv_naturality
     (φ : homObject R D x y ⟶ homObject R E a b)
     (n : ℕ) (z : (pinchedHomModule (S := R) x y).obj (Opposite.op ⦋0⦌))
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (pinchedHomModule (S := R) x y)) n z) :
     dgBarCompactPinchedModulePiCohomologyEquiv a b n
         ((dgBarCompactPinchedModuleMap φ).app _ z)
         (dgBarCompactPiMap n (moduleUnderlyingSSetMap (dgBarCompactPinchedModuleMap φ)) z α) =

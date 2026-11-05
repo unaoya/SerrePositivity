@@ -13,21 +13,21 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 元の同じ商像の coslice から、商上の同じ分数図式の小さい全空間への実写像。 -/
 def weakQuotientCosliceUnit :
     sliceUnder (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)) ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x) :=
-  lift (𝟙 _) (SSet.const (weakIdentityQuotientFiberPoint h x)) ≫
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) :=
+  lift (𝟙 _) (SSet.const (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x)) ≫
     leftFibrationCoslicePointFamily
-      (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+      (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
       (q.hom.app (Opposite.op ⦋0⦌) x)
 
 /-- この比較は元の Verdier 商の底を厳密に保つ。 -/
 theorem weakQuotientCosliceUnit_projection : weakQuotientCosliceUnit h x ≫
-    smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+    smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
       sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)) := by
   rw [weakQuotientCosliceUnit, Category.assoc, leftFibrationCoslicePointFamily_projection,
     ← Category.assoc, lift_fst, Category.id_comp]
@@ -36,10 +36,10 @@ theorem weakQuotientCosliceUnit_projection : weakQuotientCosliceUnit h x ≫
 theorem weakQuotientCosliceUnit_identity :
     (weakQuotientCosliceUnit h x).app (Opposite.op ⦋0⦌)
       (cosliceIdentityCone (q.hom.app (Opposite.op ⦋0⦌) x)) =
-      (weakIdentityQuotientFiberPoint h x).val := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x).val := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
   let b := q.hom.app (Opposite.op ⦋0⦌) x
-  let v : (vertexFiber p b) _⦋0⦌ := weakIdentityQuotientFiberPoint h x
+  let v : (vertexFiber p b) _⦋0⦌ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x
   have he : (SSet.const (cosliceIdentityCone b) : (Δ[0] : SSet.{u}) ⟶ _) ≫
       lift (𝟙 _) (SSet.const v) =
       (SSet.const v : (Δ[0] : SSet.{u}) ⟶ _) ≫

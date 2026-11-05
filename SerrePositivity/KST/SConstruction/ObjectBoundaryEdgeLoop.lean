@@ -65,9 +65,9 @@ lemma objectBoundaryEdge_loop (X : StableModel.{u})
   have hh : a ≫ zeroRowLoopComparison 0 X = PointedMapping.pointFamily t := by
     apply loop_interval_hom_ext
     refine hp.trans (hs.trans (Eq.symm ?_))
-    change _ ≫ uncurry (PointedMapping.paramCurry PointedSimplicialSet.circle B
+    change _ ≫ uncurry (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry PointedSimplicialSet.circle B
       (fst PointedSimplicialSet.circle.right (Δ[0] : SSet.{u}) ≫ t.right) _ ≫ _) = _
-    rw [PointedMapping.paramCurry_ι, uncurry_curry]
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
     have hf : (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ (Δ[0] : SSet.{u})) ≫
         fst PointedSimplicialSet.circle.{u}.right (Δ[0] : SSet.{u}) =
       fst (Δ[1] : SSet.{u}) (Δ[0] : SSet.{u}) ≫

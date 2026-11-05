@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderCategory
 
 /-!
@@ -15,12 +17,15 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} D]
   (A : SSet.{u}) (F G : EnrichedFunctor SSet.{u} C D)
   (η : GradedNatTrans (Center.ofBraidedObj A) F G)
 
 /-- 空な Hom からの一意な射。 -/
-def emptyTo (Y : SSet.{u}) : empty ⟶ Y where
+def emptyTo (Y : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.empty ⟶ Y where
   app _ := ↾fun e ↦ e.elim
   naturality {d e} f := by
     apply ConcreteCategory.hom_ext
@@ -28,22 +33,22 @@ def emptyTo (Y : SSet.{u}) : empty ⟶ Y where
     exact x.elim
 
 /-- 円柱の両端には元の二つの関手の対象を置く。 -/
-def functorObject (X : Object A C) : D :=
+def functorObject (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) : D :=
   match X.side with
   | false => F.obj X.val
   | true => G.obj X.val
 
 /-- 端をまたぐ射を、指定したパラメータ付き自然変換で送る。 -/
-def functorMap : (X Y : Object A C) →
-    hom A X Y ⟶ (functorObject A F G X ⟶[SSet] functorObject A F G Y)
+def functorMap : (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) →
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y ⟶ (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G X ⟶[SSet] _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G Y)
   | ⟨false, x⟩, ⟨false, y⟩ => F.map x y
   | ⟨false, x⟩, ⟨true, y⟩ => (η.app x ⊗ₘ G.map x y) ≫ eComp SSet (F.obj x) (G.obj x) (G.obj y)
-  | ⟨true, _⟩, ⟨false, _⟩ => emptyTo _
+  | ⟨true, _⟩, ⟨false, _⟩ => _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo _
   | ⟨true, x⟩, ⟨true, y⟩ => G.map x y
 
 /-- 円柱の恒等射は元の関手の恒等射へ送られる。 -/
-lemma functorMap_id (X : Object A C) :
-    identity A X ≫ functorMap A F G η X X = eId SSet (functorObject A F G X) := by
+lemma functorMap_id (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity A X ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap A F G η X X = eId SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G X) := by
   rcases X with ⟨s, x⟩
   cases s
   · exact F.map_id x
@@ -71,11 +76,11 @@ lemma functor_comp_app (H : EnrichedFunctor SSet.{u} C D) (X Y Z : C)
   exact h
 
 /-- 円柱の合成は、自然性と元の関手の合成保存で保たれる。 -/
-lemma functorMap_comp (X Y Z : Object A C) :
-    composition A X Y Z ≫ functorMap A F G η X Z =
-      (functorMap A F G η X Y ⊗ₘ functorMap A F G η Y Z) ≫
-        eComp SSet (functorObject A F G X) (functorObject A F G Y)
-          (functorObject A F G Z) := by
+lemma functorMap_comp (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap A F G η X Z =
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap A F G η X Y ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap A F G η Y Z) ≫
+        eComp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G X) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G Y)
+          (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G Z) := by
   rcases X with ⟨s, x⟩
   rcases Y with ⟨t, y⟩
   rcases Z with ⟨r, z⟩
@@ -85,33 +90,69 @@ lemma functorMap_comp (X Y Z : Object A C) :
     intro d
     apply ConcreteCategory.hom_ext
     rintro ⟨a, b⟩
-  · exact functor_comp_app F x y z d a b
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app F x y z d a b
   · rcases b with ⟨p, b⟩
-    have hg := functor_comp_app G x y z d a b
+    have hg := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app G x y z d a b
     change (eComp SSet (F.obj x) (G.obj x) (G.obj z)).app d
       ((η.app x).app d p, (G.map x z).app d ((eComp SSet x y z).app d (a, b))) = _
-    rw [hg, ← base_assoc_app]
-    rw [← naturality_app A F G η x y d p a]
-    exact base_assoc_app (F.obj x) (F.obj y) (G.obj y) (G.obj z) d
+    rw [hg, ← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app A F G η x y d p a]
+    exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app (F.obj x) (F.obj y) (G.obj y) (G.obj z) d
       ((F.map x y).app d a) ((η.app y).app d p) ((G.map y z).app d b)
   · exact b.elim
   · rcases a with ⟨p, a⟩
-    have hg := functor_comp_app G x y z d a b
+    have hg := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app G x y z d a b
     change (eComp SSet (F.obj x) (G.obj x) (G.obj z)).app d
       ((η.app x).app d p, (G.map x z).app d ((eComp SSet x y z).app d (a, b))) = _
     rw [hg]
-    exact (base_assoc_app (F.obj x) (G.obj x) (G.obj y) (G.obj z) d
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_assoc_app (F.obj x) (G.obj x) (G.obj y) (G.obj z) d
       ((η.app x).app d p) ((G.map x y).app d a) ((G.map y z).app d b)).symm
   · exact a.elim
   · exact a.elim
   · exact b.elim
-  · exact functor_comp_app G x y z d a b
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app G x y z d a b
 
 /-- 元のパラメータ付き豊穣自然変換が定める実際の円柱の関手。 -/
-def evaluationFunctor : EnrichedFunctor SSet.{u} (Object A C) D where
-  obj := functorObject A F G
-  map := functorMap A F G η
-  map_id := functorMap_id A F G η
-  map_comp := functorMap_comp A F G η
+def evaluationFunctor : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) D where
+  obj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject A F G
+  map := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap A F G η
+  map_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_id A F G η
+  map_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_comp A F G η
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.evaluationFunctor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functor_comp_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.naturality_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap.match_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject.match_1

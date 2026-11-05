@@ -88,7 +88,7 @@ def originalMap (X Y : OmegaSpectrum.{u}) : compatibleSpace X Y ⟶
 使われ方：元の射と可換な置換射の全族回収。 -/
 lemma originalMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
     TrivialKanFibration (originalMap X Y).right :=
-  ⟨pointedPullback_snd_rlp _ _ (inclusionPre_trivialKanFibration X _).mem⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_rlp _ _ (inclusionPre_trivialKanFibration X _).mem⟩
 
 /-- 概要：可換な組の元の全空間は Kan。
 方針：実射影の自明 Kan fibration と元の Hom の Kan 性を使う。
@@ -101,7 +101,7 @@ instance compatibleSpace_kanComplex (X Y : OmegaSpectrum.{u}) :
       (RawSpectrumMapping.pointedPre (inclusion X) (middle Y).toKanSequence).right :=
     (modelCategoryQuillen.fibration_iff _).2
       (fun _ _ j hj ↦ t.mem j (modelCategoryQuillen.J_le_monomorphisms j hj))
-  exact pointedPullback_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex _ _
 
 /-- 概要：可換な組と元の BF Hom は実際に同値。
 方針：元の射への自明 Kan fibration を順射とする同値を使う。

@@ -17,7 +17,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の一点評価の同型を、零長 W 列と全頂点部分圏の同型へ制限する。 -/
-def weakStringZeroIso {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakStringZeroIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakStringCategory q ⦋0⦌ ≅
       closedSubcategory (ClosedStablePredicate.top (sInputModel B)) :=
   fullSubcomplexIso (SConstruction.pointFunctorEvaluationIso B.obj) (weakStringPredicate q ⦋0⦌)
@@ -25,11 +25,11 @@ def weakStringZeroIso {B C : StableCategory.{u}} (q : ExactMap B C) :
     (fun v => ⟨fun _ => trivial, fun _ => weakStringPredicate_zero q v⟩)
 
 /-- 同じ順射は、既存の零長の初期頂点の完全評価そのもの。 -/
-lemma weakStringZeroIso_hom {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakStringZeroIso_hom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     (weakStringZeroIso q).hom = (weakStringVertexTopExact q ⦋0⦌ 0).val := rfl
 
 /-- 零長の初期頂点評価を順射とする、元の安定な入力の厳密同型。 -/
-def weakStringZeroExactIso {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakStringZeroExactIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakStringModel q ⦋0⦌ ≅
       closedStableModel (ClosedStablePredicate.top (sInputModel B)) := by
   let e := weakStringZeroIso q

@@ -22,7 +22,7 @@ open scoped Simplicial
 
 /-- 元の loop 対象を Kan 性とともに束ねる。 -/
 def pointedKanLoopObject (X : PointedKanObject.{u}) : PointedKanObject.{u} :=
-  ⟨loopSpace X.obj, loopSpace_kanComplex X.obj⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj, loopSpace_kanComplex X.obj⟩
 
 /-- 元の基点固定写像空間の作用を持つ、Kan 対象間の loop 豊穣関手。 -/
 def pointedKanLoopEnrichedFunctor :
@@ -38,11 +38,11 @@ def pointedKanLoopFunctor : PointedKanObject.{u} ⥤ PointedKanObject.{u} :=
 
 /-- 通常の作用は、元の点つき射に元の loop を適用した射そのもの。 -/
 lemma pointedKanLoopFunctor_map_hom {X Y : PointedKanObject.{u}} (f : X ⟶ Y) :
-    ((pointedKanLoopFunctor.map f).hom : loopSpace X.obj ⟶ loopSpace Y.obj) =
+    ((pointedKanLoopFunctor.map f).hom : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) =
       (PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map f.hom := by
-  apply (pointedHomVertexEquiv (loopSpace X.obj) (loopSpace Y.obj)).injective
+  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)).injective
   have h := coherentEnrichedUnderlyingFunctor_vertex pointedKanLoopEnrichedFunctor f
-  change pointedHomVertexEquiv (loopSpace X.obj) (loopSpace Y.obj)
+  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X.obj) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)
       ((pointedKanLoopFunctor.map f).hom) =
     (pointedLoopHom X.obj Y.obj).right.app _ (pointedHomVertexEquiv X.obj Y.obj f.hom) at h
   exact h.trans (pointedLoopHom_vertex f.hom)

@@ -59,7 +59,7 @@ def dgKSBoundaryFixedKPositiveIso (r : ℕ) :
 
 /-- 元の相対 K 四角形の評価と、元の相対 S• 境界商四角形の全 coherent 比較。 -/
 def dgRelativeSBoundaryFixedKSquareIso (r : ℕ)
-    (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
       (d.square ≫ dgKInputK A ≫ coherentNerveMap (spectrumKanEvaluation (r + 1))) :=
   (dgKSBoundaryFixedKPositiveIso A r).precomp d.square

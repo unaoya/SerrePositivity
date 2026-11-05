@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} {x a b : X _⦋0⦌}
   (s : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) a) _⦋0⦌)
   (t : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) b) _⦋0⦌)
@@ -24,7 +29,7 @@ def cosliceFiberBaseEdge : SSet.Edge a b :=
 
 /-- 元の coslice 辺を点と辺の join で展開すると、同じ三辺の実合成三角形になる。 -/
 def cosliceFiberEdgeCompStruct : SSet.Edge.CompStruct (cosliceFiberVertexToEdge s)
-    (cosliceFiberBaseEdge s t l) (cosliceFiberVertexToEdge t) := by
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge s t l) (cosliceFiberVertexToEdge t) := by
   let c := SSet.yonedaEquiv.symm l.edge
   let L := sliceUnderUncurry c
   let H := (joinStdSimplexIso 0 1).inv ≫ L
@@ -60,4 +65,40 @@ def cosliceFiberEdgeCompStruct : SSet.Edge.CompStruct (cosliceFiberVertexToEdge 
       sliceUnderUncurry_yoneda]
     rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberBaseEdge := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberBaseEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberBaseEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_6 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._proof_7 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeCompStruct._simp_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeCompStruct._simp_1

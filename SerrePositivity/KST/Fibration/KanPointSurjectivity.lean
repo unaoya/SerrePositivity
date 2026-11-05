@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 /-- 座標変更後の同じ比較は、元の指定した Kan 点の標準 pointed 表示を回収。 -/
 theorem kanPointFiberComparison_vertex (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
-    (kanPointFiberComparison K).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison K).app (Opposite.op ⦋0⦌)
       (SSet.opObjEquiv.symm (ULift.up v)) = (pointedSpaceFiberVertexEquiv K).symm v := by
   apply (pointedSpaceFiberVertexEquiv K).injective
   exact (pointedReverseKanFiberComparison_point K v).trans
@@ -33,12 +33,12 @@ theorem kanPointFiberComparison_vertex (K : KanObject.{u}) (v : K.obj _⦋0⦌) 
 
 /-- 同じ Kan 値で点の射の類が一致すれば、元の二点は実際に同型。 -/
 def kanVertexIsoOfPointHomEq (K : KanObject.{u}) {v w : K.obj _⦋0⦌}
-    (h : cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) =
-      cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm w)) :
+    (h : _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm v) =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv K).symm w)) :
     VertexIso (X := K.obj) v w := by
-  let e := (kanPointFiberComparison_isFullyFaithful K).preimageVertexIso
+  let e := (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison_isFullyFaithful K).preimageVertexIso
     (eqToIso (congrArg HomotopyCategory.mk (kanPointFiberComparison_vertex K v)) ≪≫
-      cosliceFiberVertexIsoOfHomEq h ≪≫
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq h ≪≫
         (eqToIso (congrArg HomotopyCategory.mk (kanPointFiberComparison_vertex K w))).symm)
   let t := (homotopyOppositeEquivalence
     ((SSet.uliftFunctor.{u + 1, u}).obj K.obj)).functor.mapIso e
@@ -52,14 +52,14 @@ theorem kanMap_isEssentiallySurjective_of_point_surjective {K L : KanObject.{u}}
         HomotopyCategory.mk (spaceInfinityVertex K) =>
       a ≫ Truncated.HomotopyCategory.homMk e.toTruncated)) : IsEssentiallySurjective f := by
   intro y
-  obtain ⟨a, ha⟩ := hs (cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm y))
-  let w := pointedSpaceFiberPointOfHom a
+  obtain ⟨a, ha⟩ := hs (_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv L).symm y))
+  let w := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom a
   let x := pointedSpaceFiberVertexEquiv K w
   have hx : (pointedSpaceFiberVertexEquiv K).symm x = w :=
     (pointedSpaceFiberVertexEquiv K).symm_apply_apply w
   refine ⟨x, ⟨kanVertexIsoOfPointHomEq L ?_⟩⟩
-  have hp := (congrArg cosliceFiberPointHom hx).trans (pointedSpaceFiberPointOfHom_hom a)
-  exact (kanPointHom_comp_of_edge f e he x).symm.trans
+  have hp := (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom hx).trans (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom_hom a)
+  exact (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge f e he x).symm.trans
     ((congrArg (fun m => m ≫ Truncated.HomotopyCategory.homMk e.toTruncated) hp).trans ha)
 
 end SerrePositivity.KST.Fibration

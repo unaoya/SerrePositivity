@@ -10,7 +10,6 @@ public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection
-public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
 
 /-!
@@ -120,20 +119,7 @@ theorem sheafification_of_generatingEdges (J : GrothendieckTopology 𝒞) (hE : 
   rw [← h]
   exact F2.Presentable.Localization.bousfield_isReflectiveSubcategory hP edges
 
-/-- 被覆篩 S ↪ h_U と E の生成系 M から、層条件を検出する辺 S ⊗ M → h_U ⊗ M を作る。 -/
-theorem exists_sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) :
-    ∃ (I : Type u) (edges : I → (PresheafCat 𝒞 E) _⦋1⦌),
-      ∀ F, HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F := by
-  -- G8（IF-G1、F2/Tensor/SetSections の `tensorSpaceFunctor_setWeightHom`）で各重み X について
-  -- Map_PSh(X ⋙ tensorSpaceFunctor hE M, F) ≃ Map_E(M, Γ(X, F))。辺は被覆篩 S ↪ h_U に M をテンソルしたもの（M は E の小さい生成系）。
-  -- 残り：S ↪ h_U についての G8 の自然性（IF-G2 の最初の項目）で「W 局所 ⇔ 層」を移す。
-  sorry
-
-/-- S4（HTT 5.5.4.15）。安定・presentable な係数について、被覆篩の生成辺から層化を得る。 -/
-theorem sheafification_exists (J : GrothendieckTopology 𝒞) [IsStable E] (hE : IsPresentable E) :
-    Sheafification J E := by
-  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hE
-  exact sheafification_of_generatingEdges J hE edges hW
+-- `exists_sheafGeneratingEdges`・`sheafification_exists`（S4）は drafts/Sheaves/SheafGenerators.lean へ移した（11-05。切断 Γ の比較は SetSections に分離）。
 
 /-- 同じ反射の選択を層化の頂点、射、単位に使う。 -/
 def sheafificationFunctor (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) :

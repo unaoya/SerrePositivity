@@ -23,10 +23,10 @@ variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCatego
 
 /-- 指定したパラメータの辺での評価は、制限した自然変換の円柱での評価と一致。 -/
 lemma bridge_evaluation :
-    (bridge (C := C) i).comp SSet (EnrichedParameterCylinder.evaluationFunctor A F G θ) =
+    (bridge (C := C) i).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G θ) =
       (bridge (C := C) (𝟙 (𝟙_ SSet.{u}))).comp SSet
-        (EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G
-          (EnrichedParameterCylinder.gradedRestriction i F G θ)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G
+          (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction i F G θ)) := by
   refine EnrichedFunctor.ext SSet ?_ ?_
   · rintro ⟨j, x⟩
     fin_cases j <;> rfl

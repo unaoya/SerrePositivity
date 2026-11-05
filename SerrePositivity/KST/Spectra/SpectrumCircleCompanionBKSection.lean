@@ -77,7 +77,7 @@ lemma circleCompanionBKParameter_rightEdge (z : Sp.{u} _⦋0⦌) :
     simpa only [Category.assoc] using h
   rw [he, SSet.const_comp]
   exact congrArg (fun x ↦ SSet.const (X := (Δ[1] : SSet.{u})) x)
-    (pointedMap_basepoint (circleEvaluationCompanionCircleMap z))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (circleEvaluationCompanionCircleMap z))
 
 /-- companion の点を、元の固定 Hom cospan 上の全 BK 重みの切断として読む。 -/
 def circleCompanionBKSection (z : Sp.{u} _⦋0⦌) :

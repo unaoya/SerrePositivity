@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.LoopHomotopyGroups
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 
@@ -31,11 +31,11 @@ namespace SphericalBoundary
 lemma alternatingClass_map {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     {x : X _⦋0⦌} {y : Y _⦋0⦌} (φ : X ⟶ Y) (hφ : φ.app _ x = y) {n : ℕ}
     (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
-    (KanHomotopyGroup.map (n := n + 1) φ hφ).toAdditive (alternatingClass a) =
-      alternatingClass (fun j ↦ mapSimplex φ hφ (a j)) := by
-  simp only [alternatingClass, map_sum, map_zsmul, additiveClass,
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n + 1) φ hφ).toAdditive (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ (a j)) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, map_sum, map_zsmul, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
     MonoidHom.coe_toAdditive, Function.comp_apply, toMul_ofMul,
-    KanHomotopyGroup.map_mk]
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
 
 end SphericalBoundary
 
@@ -45,19 +45,19 @@ end SphericalBoundary
 使われ方：Goerss–Jardine I §7。path 境界を loop の係数表示へ移す。 -/
 lemma connecting_loopPositiveHomotopyEquiv (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (r : ℕ)
-    (a : KanHomotopyGroup (loopSpace Y).right r (loopSpace Y).basepoint) :
-    connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint r
-        ((KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right r (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
+    _root_.SerrePositivity.InfinityCategories.Kan.connectingHom (pathEndpoint Y).right (basedPathSpace Y).basepoint r
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
           (pathEndpoint_basepoint Y)).symm (loopPositiveHomotopyEquiv Y r a)) =
-      KanHomotopyGroup.equivOfIso r (loopBasedPathFiberIso Y)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r (loopBasedPathFiberIso Y)
         (loopBasedPathFiberIso_basepoint Y) a := by
-  change (connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
+  change (_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
     (basedPathSpace Y).basepoint r)
-      ((KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
         (pathEndpoint_basepoint Y)).symm
-        ((KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
+        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl Y.right)
           (pathEndpoint_basepoint Y))
-          ((connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
+          ((_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
             (basedPathSpace Y).basepoint r).symm _))) = _
   rw [MulEquiv.symm_apply_apply, MulEquiv.apply_symm_apply]
   rfl
@@ -67,11 +67,11 @@ namespace SphericalPathBoundary
 variable (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] {n : ℕ}
     (s : Y.right.PtSimplex (n + 3)
       ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint))
-    (a : Fin (n + 4) → (loopSpace Y).right.PtSimplex (n + 2) (loopSpace Y).basepoint)
+    (a : Fin (n + 4) → (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right.PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
     (T : (Δ[n + 3] : SSet.{u}) ⟶ (basedPathSpace Y).right)
     (hT : T ≫ (pathEndpoint Y).right = s.map)
     (hface : ∀ j, stdSimplex.δ j ≫ T = (a j).map ≫
-      (loopBasedPathFiberIso Y).hom ≫ fiberι (pathEndpoint Y).right
+      (loopBasedPathFiberIso Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
         ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint))
 
 include T hT hface
@@ -81,14 +81,14 @@ include T hT hface
 規約：符号は最後の面の添字 n+3。path の向きを反転しない。
 使われ方：Goerss–Jardine I §8。loop の成分代表と幾何的境界の比較。 -/
 theorem alternatingClass :
-    SphericalBoundary.alternatingClass a = (-1 : ℤ) ^ (n + 3) •
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass a = (-1 : ℤ) ^ (n + 3) •
       Additive.ofMul ((loopPositiveHomotopyEquiv Y (n + 1)).symm
-        (KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
-          (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s))) := by
-  let e := KanHomotopyGroup.equivOfIso (n + 1) (loopBasedPathFiberIso Y)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
+          (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s))) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (loopBasedPathFiberIso Y)
     (loopBasedPathFiberIso_basepoint Y)
-  let L : SphericalFiberLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s
-      (fun j ↦ mapSimplex (loopBasedPathFiberIso Y).hom
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s
+      (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom
         (loopBasedPathFiberIso_basepoint Y) (a j)) :=
     { map := T
       map_comp := hT
@@ -96,8 +96,8 @@ theorem alternatingClass :
   have h := L.alternatingClass_connecting
   have hc := connecting_loopPositiveHomotopyEquiv Y (n + 1)
     ((loopPositiveHomotopyEquiv Y (n + 1)).symm
-      (KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
-        (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s)))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
+        (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)))
   rw [MulEquiv.apply_symm_apply, MulEquiv.symm_apply_apply] at hc
   rw [hc] at h
   apply (MulEquiv.toAdditive e).injective
@@ -112,13 +112,13 @@ theorem alternatingClass :
 使われ方：Goerss–Jardine I §8、VIII §1。セルの微分と係数表示の符号の検査。 -/
 theorem alternating_loopPositive :
     (∑ j, (-1 : ℤ) ^ j.val • Additive.ofMul
-      (loopPositiveHomotopyEquiv Y (n + 1) (KanHomotopyGroup.mk (a j)))) =
+      (loopPositiveHomotopyEquiv Y (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a j)))) =
       (-1 : ℤ) ^ (n + 3) • Additive.ofMul
-        (KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
-          (pathEndpoint_basepoint Y) (KanHomotopyGroup.mk s)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 2) (Iso.refl Y.right)
+          (pathEndpoint_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) := by
   have h := congrArg (MulEquiv.toAdditive (loopPositiveHomotopyEquiv Y (n + 1)))
     (alternatingClass Y s a T hT hface)
-  simpa only [SphericalBoundary.alternatingClass, SphericalBoundary.additiveClass,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass,
     map_sum, map_zsmul, MulEquiv.toAdditive_apply_apply, toMul_ofMul,
     MulEquiv.apply_symm_apply] using h
 

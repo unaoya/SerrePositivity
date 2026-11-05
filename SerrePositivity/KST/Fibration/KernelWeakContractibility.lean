@@ -21,10 +21,10 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 核に入る全評価を持つ零対象つき図式の相対部分複体は弱可縮。 -/
 lemma relativeDiagram_kernel_isWeaklyContractible
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {X : SSet.{u}} [Quasicategory X] [HasZeroVertex X]
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) {X : SSet.{u}} [Quasicategory X] [HasZeroVertex X]
     {J : Type v} (ev : J → (X ⟶ B.obj))
-    (he : ∀ j x, (ev j).app (Opposite.op ⦋0⦌) x ∈ essentialImage i) :
+    (he : ∀ j x, (ev j).app (Opposite.op ⦋0⦌) x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) :
     IsWeaklyContractible (relativeDiagram q.hom ev : SSet.{u}) := by
   rw [relativeDiagram_eq_top_of_kernel h ev he]
   have hi : IsWeakHomotopyEquivalence (Subcomplex.topIso X).hom := by

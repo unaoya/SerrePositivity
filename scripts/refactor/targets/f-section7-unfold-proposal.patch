@@ -1,0 +1,83 @@
+--- a/SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean
++++ b/SerrePositivity/KST/LocalizingInvariants/CofiberDiagrams.lean
+@@ -23,7 +23,7 @@
+ lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
+     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+       _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X ≫ zeroTargetArrowSource X := by
+-  rw [bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), left,
++  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left,
+     fullSubcomplexLift_ι]
+   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+   rfl
+@@ -31,7 +31,7 @@
+ lemma right_target (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
+     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+       _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X ≫ zeroSourceArrowTarget X := by
+-  rw [right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), top,
++  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top,
+     fullSubcomplexLift_ι]
+   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
+   rfl
+--- a/SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean
++++ b/SerrePositivity/KST/LocalizingInvariants/MarkedSpanFamilyFiber.lean
+@@ -59,7 +59,7 @@
+ def fixedMarkedSpanToFamilyFiber : fixedMarkedSpans X W x y ⟶
+     vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y :=
+   vertexFiberLift _ _ (fixedMarkedSpanToFamily X W x y) (by
+-    rw [markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
++    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
+       fixedMarkedSpan_target])
+
+ def markedSpanFamilyFiberToFixed : vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ⟶
+--- a/SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean
++++ b/SerrePositivity/KST/LocalizingInvariants/FinalHornArrowSquares.lean
+@@ -52,14 +52,14 @@
+     _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornPenultimateVertex m) =
+       SSet.yonedaEquiv.symm (finalHornEdge m) := by
+   apply SSet.yonedaEquiv.injective
+-  rw [Equiv.apply_symm_apply, contractionAtVertex, SSet.yonedaEquiv_comp]
++  rw [Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
+   exact finalHornLastContraction_penultimate_edge m
+
+ lemma finalHorn_contractionAtVertex_last (m : ℕ) :
+     _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (finalHornLastContraction.{u} m) (finalHornLastVertex m) =
+       SSet.const (finalHornLastVertex m) := by
+   apply SSet.yonedaEquiv.injective
+-  rw [contractionAtVertex, SSet.yonedaEquiv_comp]
++  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex, SSet.yonedaEquiv_comp]
+   exact finalHornLastContraction_last_edge m
+
+ lemma finalHornArrowSquares_penultimate {X : SSet.{u}} (m : ℕ)
+--- a/SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean
++++ b/SerrePositivity/KST/Fibration/KanEnrichedOppositePointHom.lean
+@@ -31,7 +31,7 @@
+     (congrArg HomotopyCategory.mk
+       (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
+     (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex D.opposite X j)) rfl
+-  rw [kanEnrichedOppositeComponentIso, kanEnrichedEdgewisePointIso,
++  rw [_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso, kanEnrichedEdgewisePointIso,
+     _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent_eq_doubleMap,
+     kanEnrichedEdgewiseLeftComponent_eq_doubleMap]
+   change F2.isoNormalizeEndpoints (VertexIso.map D.oppositeRealizationIso T) _ _ = _
+--- a/SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean
++++ b/SerrePositivity/KST/SConstruction/IdentityPushoutShapes.lean
+@@ -104,7 +104,7 @@
+ 規約：全単体での厳密等号。使われ方：相対切断の延長の可換条件。 -/
+ lemma identityPushoutFamily_projection (b : Bool) (C : SSet.{u}) [Quasicategory C] :
+     identityPushoutFamily b C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = identitySpanFamily b C := by
+-  rw [pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
++  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
+     ← NatTrans.comp_app, ← pre_map]
+   rfl
+
+--- a/SerrePositivity/KST/SConstruction/CofiberCompletion.lean
++++ b/SerrePositivity/KST/SConstruction/CofiberCompletion.lean
+@@ -94,7 +94,7 @@
+ lemma pushoutProjection_bottom (C : SSet.{u}) :
+     _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C ≫ (pre horn₂₀.ι₀₁).app C =
+       (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι ≫ (pre squareBottomEdge).app C := by
+-  rw [pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
++  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
+     spanSquareBoundary_bottomEdge]
+
+ end SerrePositivity.KST.SConstruction

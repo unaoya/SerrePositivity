@@ -36,7 +36,7 @@ local instance : IsDGPretriangulated R (DGCategoryCellResolution.Source R (G)) :
 /-- 概要：固定 ν の cell 値から同じ native resolved 商へ向かう実完全射。
 方針：同じ native 頂点同値の逆と元の strict 商を合成する。
 規約：固定 ν の完備化後の商射影と区別する。使われ方：完備化付き実列の商。 -/
-def dgOdotMilnorNuNativeProjection : ExactMap (T) (dgGluingMilnorNativeResolvedQuotient R d) where
+def dgOdotMilnorNuNativeProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (T) (dgGluingMilnorNativeResolvedQuotient R d) where
   hom := (V).inv ≫ resolvedDGQuotientProjection R (G) (P)
   isExact := by
     letI : IsExactFunctor (V).inv :=
@@ -71,7 +71,7 @@ include h in
 規約：retract を含む同じ実核を保持する。使われ方：固定 ν の実列の核欄。 -/
 lemma dgOdotMilnorNuKernel (b : (T).obj _⦋0⦌) :
     IsZeroVertex ((dgOdotMilnorNuNativeProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
-      b ∈ essentialImage (j) := by
+      b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (j) := by
   change IsZeroVertex ((resolvedDGQuotientProjection R (G) (P)).app (Opposite.op ⦋0⦌)
     ((V).inv.app (Opposite.op ⦋0⦌) b)) ↔ _
   rw [resolvedDGQuotientProjection_zero_iff_thickEssentialImage R (G) (P)]

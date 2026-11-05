@@ -33,12 +33,12 @@ local notation "h₀" => perfectZeroCategory_isIdempotentComplete
 /-- 概要：同じ元外周零角から標準零圏への共有完全射。
 方針：元の toZeroCategory を使う。規約：元零角を保持。
 使われ方：元外周の両零側面の共有頂点経路。 -/
-def dgOdotMilnorOuterNullZeroMap : ExactMap (Z) zeroCategory.{u + 1} := toZeroCategory (Z)
+def dgOdotMilnorOuterNullZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z)
 
 /-- 概要：同じ元商終域を保持する恒等完全射。
 方針：元の完全恒等射を使う。規約：resolved 終域を置換しない。
 使われ方：元外周の商辺・零上辺の共有頂点経路。 -/
-def dgOdotMilnorOuterTargetComparison : ExactMap (Q) (Q) := 𝟙 (Q)
+def dgOdotMilnorOuterTargetComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Q) (Q) := 𝟙 (Q)
 
 /-- 概要：元外周の共有零角経路は既存指定零同型の逆として可逆。
 方針：元の全対象商の完備零同型を回収する。
@@ -73,11 +73,11 @@ def dgOdotMilnorOuterProjectionWitness : PerfectStableArrowSquareWitness
 方針：元標準零圏値の全自然比較を元四辺ホモトピーへ移す。
 規約：同じ頂点経路を保持。使われ方：外周上面の第一側面。 -/
 def dgOdotMilnorOuterZeroLeftWitness : PerfectStableArrowSquareWitness
-    (dgOdotMilnorOuterNullLeftMap R d) (toZeroCategory (A₀))
+    (dgOdotMilnorOuterNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (A₀))
     (dgOdotMilnorOuterSourceComparison R d) (dgOdotMilnorOuterNullZeroMap R d)
     (hC) (hC) (hA) (h₀) :=
   perfectStableArrowSquareWitness _ _ _ _ (hC) (hC) (hA) (h₀)
-    (zeroDiagramFunctorIso _ _ (fun _ => zeroCategory_isZero _) (fun _ => zeroCategory_isZero _))
+    (zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _) (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
 
 /-- 概要：元実外周零上辺の全比較と同じ共有零角・終域経路を保持する。
 方針：元零角の全零性と元上辺の完全性から全比較を作る。
@@ -95,6 +95,6 @@ def dgOdotMilnorOuterZeroTopWitness : PerfectStableArrowSquareWitness
       (fun z => @IsExactFunctor.preservesZero _ _ f.hom f.isExact z
         (dgFixedNullInput_isZeroCategory R (dgOdotMilnorSourceCellInput R d) z))
       (fun z => IsExactFunctor.preservesZero (F := g.hom)
-        ((dgOdotMilnorOuterNullZeroMap R d).hom.app _ z) (zeroCategory_isZero _)))
+        ((dgOdotMilnorOuterNullZeroMap R d).hom.app _ z) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)))
     (Category.comp_id _).symm rfl
 end SerrePositivity.KST.SConstruction

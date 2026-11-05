@@ -71,7 +71,7 @@ structure RelativePath where
 
 def relativePath (hc : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (c.app n).right)
     (h : ∀ n, f.app n ≫ c.app n = g.app n ≫ c.app n) : RelativePath c f g := by
-  let P := relativeMappingEdge (post X c) (post_rlp X c hc)
+  let P := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeMappingEdge (post X c) (post_rlp X c hc)
     (vertexOfHom f) (vertexOfHom g) (post_vertex_eq c f g h)
   exact ⟨P.edge, P.over⟩
 

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 public import SerrePositivity.InfinityCategories.Kan.TensorExchangeBraid
 
@@ -16,52 +18,64 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C]
 
 /-- 二つのパラメータの交換と構造の strength の交換則。 -/
 @[reassoc]
 lemma mapping_strength (S A K E : C) :
-    HomTensorStrength.map S A ((ihom K).obj E) ≫
-      (ihom A).map (HomTensorStrength.map S K E) ≫ (iso A K (S ⊗ E)).hom =
-    S ◁ (iso A K E).hom ≫ HomTensorStrength.map S K ((ihom A).obj E) ≫
-      (ihom K).map (HomTensorStrength.map S A E) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S A ((ihom K).obj E) ≫
+      (ihom A).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K E) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K (S ⊗ E)).hom =
+    S ◁ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K E).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K ((ihom A).obj E) ≫
+      (ihom K).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S A E) := by
   apply uncurry_injective
   apply uncurry_injective
-  simp only [uncurry_natural_left, uncurry_ihom_map, uncurry_uncurry_hom]
-  rw [HomTensorStrength.exchange_natural_right_assoc,
-    HomTensorStrength.exchange_natural_right_assoc]
+  simp only [uncurry_natural_left, uncurry_ihom_map, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have hev := congrArg (fun f => K ◁ f)
-    ((ihom.ev A).naturality (HomTensorStrength.map S K E))
-  change K ◁ (A ◁ (ihom A).map (HomTensorStrength.map S K E) ≫
+    ((ihom.ev A).naturality (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K E))
+  change K ◁ (A ◁ (ihom A).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K E) ≫
       (ihom.ev A).app ((ihom K).obj (S ⊗ E))) =
-    K ◁ ((ihom.ev A).app (S ⊗ (ihom K).obj E) ≫ HomTensorStrength.map S K E) at hev
+    K ◁ ((ihom.ev A).app (S ⊗ (ihom K).obj E) ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K E) at hev
   simp only [whiskerLeft_comp] at hev
-  rw [← Category.assoc (K ◁ A ◁ (ihom A).map (HomTensorStrength.map S K E)),
+  rw [← Category.assoc (K ◁ A ◁ (ihom A).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K E)),
     hev, Category.assoc]
   rw [← whiskerLeft_comp_assoc K
-    (A ◁ HomTensorStrength.map S A ((ihom K).obj E)), HomTensorStrength.evaluation,
-    HomTensorStrength.evaluation]
+    (A ◁ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S A ((ihom K).obj E)), _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation]
   simp only [whiskerLeft_comp, Category.assoc]
-  erw [HomTensorStrength.exchange_natural_right_assoc K S ((ihom.ev A).app ((ihom K).obj E))]
-  rw [← whiskerLeft_comp_assoc A (K ◁ HomTensorStrength.map S K ((ihom A).obj E)),
-    HomTensorStrength.evaluation]
-  simp only [HomTensorStrength.map, uncurry_curry, whiskerLeft_comp, Category.assoc]
-  erw [HomTensorStrength.exchange_natural_right_assoc A S ((ihom.ev K).app ((ihom A).obj E))]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc K S ((ihom.ev A).app ((ihom K).obj E))]
+  rw [← whiskerLeft_comp_assoc A (K ◁ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map S K ((ihom A).obj E)),
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry, whiskerLeft_comp, Category.assoc]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc A S ((ihom.ev K).app ((ihom A).obj E))]
   have hswap := congrArg (fun f => A ◁ f)
-    (HomTensorStrength.exchange_natural_right K S (iso A K E).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right K S (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K E).hom)
   simp only [whiskerLeft_comp] at hswap
-  rw [← Category.assoc (A ◁ K ◁ S ◁ (iso A K E).hom), hswap, Category.assoc]
-  erw [HomTensorStrength.exchange_natural_right_assoc A S (K ◁ (iso A K E).hom)]
-  have he := congrArg (fun f => S ◁ f) (uncurry_uncurry_hom A K E)
-  change S ◁ (A ◁ (K ◁ (iso A K E).hom ≫ (ihom.ev K).app ((ihom A).obj E)) ≫
+  rw [← Category.assoc (A ◁ K ◁ S ◁ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K E).hom), hswap, Category.assoc]
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc A S (K ◁ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K E).hom)]
+  have he := congrArg (fun f => S ◁ f) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom A K E)
+  change S ◁ (A ◁ (K ◁ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K E).hom ≫ (ihom.ev K).app ((ihom A).obj E)) ≫
     (ihom.ev A).app E) = _ at he
   simp only [whiskerLeft_comp, Category.assoc] at he
   rw [he]
-  have hb := HomTensorStrength.exchange_braid A K S ((ihom A).obj ((ihom K).obj E))
+  have hb := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_braid A K S ((ihom A).obj ((ihom K).obj E))
   have hc := congrArg (fun f => f ≫ S ◁ K ◁ (ihom.ev A).app ((ihom K).obj E) ≫
     S ◁ (ihom.ev K).app E) hb
   simpa only [Functor.id_obj, Functor.comp_obj, tensorLeft, curriedTensor,
     Functor.flip, Category.assoc] using hc
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.mapping_strength := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.mapping_strength
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.mapping_strength_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.mapping_strength_assoc

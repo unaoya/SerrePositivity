@@ -26,7 +26,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の前の射の適合円柱を、独立な全精密化の共通パラメータに移す。 -/
 def kKanCompositionFirstNativeCylinder :=
   constantFamilyHomotopyWhisker (nerveMap (compositionStringFirst f g))
-    ((PointedObject.basedHomMap (suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
       (kKanSequenceLevelMap (F.map g) (r + 1))).right)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F f)
 
@@ -38,7 +38,7 @@ lemma kKanCompositionFirstNativeCylinder_boundary :
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).first.edge := by
   have h := constantFamilyHomotopyWhisker_boundary
     (nerveMap (compositionStringFirst f g))
-    ((PointedObject.basedHomMap (suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
       (kKanSequenceLevelMap (F.map g) (r + 1))).right)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F f)
     (nervePoint (compositionStringDirect f g)) (nervePoint (coherentArrowStringDirect f))
@@ -51,7 +51,7 @@ lemma kKanCompositionFirstNativeCylinder_boundary :
 /-- 元の後の射の適合円柱を、独立な全精密化の共通パラメータに移す。 -/
 def kKanCompositionSecondNativeCylinder :=
   constantFamilyHomotopyWhisker (nerveMap (compositionStringSecond f g))
-    (PointedMapping.pre
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
       ((kKanSequence (F.obj z)).level (r + 1)).space)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F g)
@@ -63,7 +63,7 @@ lemma kKanCompositionSecondNativeCylinder_boundary :
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).second.edge := by
   have h := constantFamilyHomotopyWhisker_boundary
-    (nerveMap (compositionStringSecond f g)) (PointedMapping.pre
+    (nerveMap (compositionStringSecond f g)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
       ((kKanSequence (F.obj z)).level (r + 1)).space)
     (kKanOriginalPrismSpecifiedCompatibilityFamily r F g)

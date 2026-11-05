@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
 public import Mathlib.Algebra.Category.Grp.Preadditive
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+open SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
 
 noncomputable section
 
@@ -33,11 +38,11 @@ variable {C : Type u} [Category.{v} C] [Preadditive C] [HasCoproducts.{v} C]
 def homComplex : CochainComplex AddCommGrpCat.{v} ℕ :=
   CochainComplex.of
     (fun n ↦ AddCommGrpCat.of ((K.normalizedChainComplex R).X n ⟶ M))
-    (fun n ↦ AddCommGrpCat.ofHom (homDifferential K R M n))
+    (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential K R M n))
     (fun n ↦ by
       apply ConcreteCategory.hom_ext
       intro a
-      exact homDifferential_comp K R M n a)
+      exact _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential_comp K R M n a)
 
 /-- 概要：非退化単体上の係数の関数群の正規化 cochain 複体。
 方針：移された交代微分とその二乗の零性を複体へ束ねる。
@@ -46,30 +51,60 @@ def homComplex : CochainComplex AddCommGrpCat.{v} ℕ :=
 def complex : CochainComplex AddCommGrpCat.{v} ℕ :=
   CochainComplex.of
     (fun n ↦ AddCommGrpCat.of (K.nonDegenerate n → (R ⟶ M)))
-    (fun n ↦ AddCommGrpCat.ofHom (differential K R M n))
+    (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K R M n))
     (fun n ↦ by
       apply ConcreteCategory.hom_ext
       intro a
-      exact differential_comp K R M n a)
+      exact _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_comp K R M n a)
 
 /-- 概要：正規化鎖群の Hom と非退化単体上の cochain は複体として同型。
 方針：各次数の生成子の加法同型が微分の共役の定義により可換であることを使う。
 規約：任意の前加法圏の係数の Hom 群。
 使われ方：Goerss–Jardine III §2、VIII §1。通常の交代 cochain の比較。 -/
-def complexIso : homComplex K R M ≅ complex K R M :=
+def complexIso : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex K R M ≅ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K R M :=
   HomologicalComplex.Hom.isoOfComponents
-    (fun n ↦ AddEquiv.toAddCommGrpIso (coefficientEquiv K R M n))
+    (fun n ↦ AddEquiv.toAddCommGrpIso (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv K R M n))
     (fun i j hij ↦ by
       obtain rfl : i + 1 = j := hij
-      simp only [homComplex, complex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
-      change coefficientEquiv K R M (i + 1)
-        (homDifferential K R M i ((coefficientEquiv K R M i).symm
-          (coefficientEquiv K R M i a))) =
-        coefficientEquiv K R M (i + 1) (homDifferential K R M i a)
+      change _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv K R M (i + 1)
+        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential K R M i ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv K R M i).symm
+          (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv K R M i a))) =
+        _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv K R M (i + 1) (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential K R M i a)
       rw [AddEquiv.symm_apply_apply])
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex.eq_1

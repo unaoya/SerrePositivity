@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceEdges
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 
@@ -10,44 +12,47 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Opposite Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の標準単体への augmentation の、元の全頂点への作用。 -/
-def necklaceSimplexVertexMap (T : NecklaceShape) {n : ℕ} (f : T.carrier.{u} ⟶ Δ[n]) :
+def necklaceSimplexVertexMap (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ} (f : T.carrier.{u} ⟶ Δ[n]) :
     T.Vertex → Fin (n + 1) :=
   fun v => (f.app _ (T.vertexEquiv.symm v)) 0
 
 /-- 元の任意の単体の各頂点は、同じ augmentation の元の頂点作用を回収する。 -/
-lemma necklaceSimplexVertexMap_simplex (T : NecklaceShape) {n m : ℕ}
+lemma necklaceSimplexVertexMap_simplex (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n m : ℕ}
     (f : T.carrier.{u} ⟶ Δ[n]) (s : T.carrier _⦋m⦌) (i : Fin (m + 1)) :
-    (f.app _ s) i = necklaceSimplexVertexMap T f (s.val i) := by
+    (f.app _ s) i = _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap T f (s.val i) := by
   have h := f.naturality
     (show ⦋0⦌ ⟶ ⦋m⦌ from SimplexCategory.Hom.mk (OrderHom.const (Fin 1) i)).op
   have hv := congrArg (fun a => (a s) 0) h
   change (f.app _ (T.simplexVertex s i)) 0 = (f.app _ s) i at hv
-  rw [NecklaceShape.simplexVertex_eq_const] at hv
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.simplexVertex_eq_const] at hv
   exact hv.symm
 
 /-- 元の任意の標準単体への augmentation は、元の有限頂点順序を保つ。 -/
-lemma necklaceSimplexVertexMap_monotone (T : NecklaceShape) {n : ℕ}
-    (f : T.carrier.{u} ⟶ Δ[n]) : Monotone (necklaceSimplexVertexMap T f) := by
+lemma necklaceSimplexVertexMap_monotone (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
+    (f : T.carrier.{u} ⟶ Δ[n]) : Monotone (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap T f) := by
   apply Fin.monotone_iff_le_succ.mpr
   intro i
   have h := stdSimplex.monotone_apply (f.app _ (T.adjacentEdge i))
     (show (0 : Fin 2) ≤ Fin.last 1 from by decide)
   dsimp only at h
-  rw [necklaceSimplexVertexMap_simplex, necklaceSimplexVertexMap_simplex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex] at h
   exact h
 
 /-- 元の augmentation の頂点作用を、同じ有限順序の間の単調写像として読む。 -/
-def necklaceSimplexVertexOrderHom (T : NecklaceShape) {n : ℕ}
+def necklaceSimplexVertexOrderHom (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {n : ℕ}
     (f : T.carrier.{u} ⟶ Δ[n]) : T.Vertex →o Fin (n + 1) :=
-  ⟨necklaceSimplexVertexMap T f, necklaceSimplexVertexMap_monotone T f⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap T f, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_monotone T f⟩
 
 /-- 標準単体内の元の全 necklace の始端は、終端以下である。 -/
 lemma necklaceInSimplex_first_le_last {n : ℕ} {x y : (Δ[n] : SSet.{u}) _⦋0⦌}
-    (T : NecklaceIn Δ[n] x y) : x 0 ≤ y 0 := by
-  have h := necklaceSimplexVertexMap_monotone T.necklace.down T.map
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn Δ[n] x y) : x 0 ≤ y 0 := by
+  have h := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_monotone T.necklace.down T.map
     (show T.necklace.down.first ≤ T.necklace.down.last from Fin.zero_le _)
   change (T.map.app _ T.necklace.down.firstVertex) 0 ≤
     (T.map.app _ T.necklace.down.lastVertex) 0 at h
@@ -56,7 +61,31 @@ lemma necklaceInSimplex_first_le_last {n : ℕ} {x y : (Δ[n] : SSet.{u}) _⦋0�
 
 /-- 標準単体内の逆向きの二端点の間には、元の全 necklace が存在しない。 -/
 lemma necklaceInSimplex_isEmpty {n : ℕ} {x y : (Δ[n] : SSet.{u}) _⦋0⦌}
-    (h : y 0 < x 0) : IsEmpty (NecklaceIn Δ[n] x y) :=
-  ⟨fun T => (not_le_of_gt h) (necklaceInSimplex_first_le_last T)⟩
+    (h : y 0 < x 0) : IsEmpty (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn Δ[n] x y) :=
+  ⟨fun T => (not_le_of_gt h) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_first_le_last T)⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_first_le_last := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_first_le_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_isEmpty := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_isEmpty
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_monotone := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_simplex := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexOrderHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexOrderHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexOrderHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap._proof_1

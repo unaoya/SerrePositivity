@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 
@@ -15,9 +17,14 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.KanHomotopyZero
+end SerrePositivity.KST.Spectra.KanHomotopyZero
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：零次数の境界定数単体のホモトピー類。
 方針：RelStruct₀ による辺の関係を商にする。
@@ -27,6 +34,7 @@ def KanHomotopyZero (X : SSet.{u}) (x : X _⦋0⦌) : Type u :=
   Quot (fun f g : X.PtSimplex 0 x ↦ Nonempty (PtSimplex.RelStruct₀ f g))
 
 namespace KanHomotopyZero
+open _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero
 
 variable {X : SSet.{u}} {x : X _⦋0⦌}
 
@@ -34,23 +42,23 @@ variable {X : SSet.{u}} {x : X _⦋0⦌}
 方針：関係の商への標準射。
 規約：単体の境界は空。
 使われ方：Kerodon Example 3.2.2.6。零次数の代表計算。 -/
-def mk (f : X.PtSimplex 0 x) : KanHomotopyZero X x := Quot.mk _ f
+def mk (f : X.PtSimplex 0 x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x := Quot.mk _ f
 
 /-- 概要：零次数のホモトピー類と連結成分の標準的な全単射。
 方針：RelStruct₀ と辺の同値で商の間の互いに逆な写像を作る。
 規約：辺の向きが逆なので商の等式の対称性を使う。
 使われ方：Kerodon Example 3.2.2.6。fiber 長完全列の π₀。 -/
-def equivPiZero : KanHomotopyZero X x ≃ π₀ X where
+def equivPiZero : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x ≃ π₀ X where
   toFun := Quot.lift (fun f ↦ π₀.mk (PtSimplex.equiv₀ x f)) (by
     rintro f g ⟨h⟩
     exact (π₀.sound (PtSimplex.RelStruct₀.equiv₀ h)).symm)
-  invFun := π₀.lift (fun v ↦ mk ((PtSimplex.equiv₀ x).symm v)) (by
+  invFun := π₀.lift (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk ((PtSimplex.equiv₀ x).symm v)) (by
     intro v w e
     exact (Quot.sound ⟨PtSimplex.RelStruct₀.equiv₀.symm
       (by simpa only [Equiv.apply_symm_apply] using e)⟩).symm)
   left_inv a := by
     induction a using Quot.inductionOn with | h f => ?_
-    exact congrArg mk ((PtSimplex.equiv₀ x).symm_apply_apply f)
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk ((PtSimplex.equiv₀ x).symm_apply_apply f)
   right_inv a := by
     induction a using π₀.rec with | mk v => ?_
     exact congrArg π₀.mk ((PtSimplex.equiv₀ x).apply_symm_apply v)
@@ -61,15 +69,15 @@ def equivPiZero : KanHomotopyZero X x ≃ π₀ X where
 使われ方：Kerodon Example 3.2.2.6。比較写像の自然性。 -/
 @[simp]
 theorem equivPiZero_mk (f : X.PtSimplex 0 x) :
-    equivPiZero (mk f) = π₀.mk (PtSimplex.equiv₀ x f) := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk f) = π₀.mk (PtSimplex.equiv₀ x f) := rfl
 
 /-- 概要：基点を保つ射による零次数の誘導写像。
 方針：代表と RelStruct₀ を後合成して商へ降ろす。
 規約：Kan 性は不要。
 使われ方：Kerodon §3.2.2。長完全列の端の自然性。 -/
 def map {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
-    KanHomotopyZero X x → KanHomotopyZero Y y :=
-  Quot.map (mapSimplex φ hφ) (fun _ _ ⟨r⟩ ↦ ⟨mapRelStruct φ hφ r⟩)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero Y y :=
+  Quot.map (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ) (fun _ _ ⟨r⟩ ↦ ⟨_root_.SerrePositivity.InfinityCategories.Kan.mapRelStruct φ hφ r⟩)
 
 /-- 概要：零次数の誘導写像の代表上の計算。
 方針：商への写像の定義による。
@@ -78,7 +86,7 @@ def map {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
 @[simp]
 theorem map_mk {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y)
     (hφ : φ.app _ x = y) (f : X.PtSimplex 0 x) :
-    map φ hφ (mk f) = mk (mapSimplex φ hφ f) := rfl
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map φ hφ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f) := rfl
 
 /-- 概要：π₀ との比較は単体集合の射について自然。
 方針：零単体に対する後合成を Yoneda で計算する。
@@ -86,8 +94,8 @@ theorem map_mk {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y)
 使われ方：Kerodon Example 3.2.2.6。零次数の標準界面。 -/
 @[simp]
 theorem equivPiZero_map {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y)
-    (hφ : φ.app _ x = y) (a : KanHomotopyZero X x) :
-    equivPiZero (map φ hφ a) = mapπ₀ φ (equivPiZero a) := by
+    (hφ : φ.app _ x = y) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map φ hφ a) = mapπ₀ φ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a) := by
   induction a using Quot.inductionOn with | h f => rfl
 
 /-- 概要：零次数の誘導写像は恒等射を保つ。
@@ -95,9 +103,9 @@ theorem equivPiZero_map {Y : SSet.{u}} {y : Y _⦋0⦌} (φ : X ⟶ Y)
 規約：基点は同じ。
 使われ方：Kerodon §3.2.2。零次数の関手性。 -/
 @[simp]
-theorem map_id (a : KanHomotopyZero X x) : map (𝟙 X) rfl a = a := by
+theorem map_id (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (𝟙 X) rfl a = a := by
   induction a using Quot.inductionOn with | h f => ?_
-  change mk (mapSimplex (𝟙 X) rfl f) = mk f
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 X) rfl f) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk f
   congr 1
 
 /-- 概要：零次数の誘導写像は合成を保つ。
@@ -106,13 +114,61 @@ theorem map_id (a : KanHomotopyZero X x) : map (𝟙 X) rfl a = a := by
 使われ方：Kerodon §3.2.2。零次数の関手性。 -/
 theorem map_comp {Y Z : SSet.{u}} {y : Y _⦋0⦌} {z : Z _⦋0⦌}
     (φ : X ⟶ Y) (hφ : φ.app _ x = y) (ψ : Y ⟶ Z) (hψ : ψ.app _ y = z)
-    (hcomp : (φ ≫ ψ).app _ x = z) (a : KanHomotopyZero X x) :
-    map (φ ≫ ψ) hcomp a = map ψ hψ (map φ hφ a) := by
+    (hcomp : (φ ≫ ψ).app _ x = z) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (φ ≫ ψ) hcomp a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map ψ hψ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map φ hφ a) := by
   induction a using Quot.inductionOn with | h f => ?_
-  change mk (mapSimplex (φ ≫ ψ) hcomp f) =
-    mk (mapSimplex ψ hψ (mapSimplex φ hφ f))
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (φ ≫ ψ) hcomp f) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex ψ hψ (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex φ hφ f))
   congr 1
 
 end KanHomotopyZero
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero_map := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero_mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_id := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map.match_1

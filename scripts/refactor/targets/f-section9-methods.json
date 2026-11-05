@@ -1,0 +1,729 @@
+{
+  "status": "APPLIED_NOT_BUILT",
+  "authorization": "IF-F §9 main ab6b296b4",
+  "source_head": "25de10ce2276e2bfa10de50bea14d58056bd009b",
+  "files": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductNormalization.lean",
+      "edits": 4,
+      "before_sha256": "7276c84712046175ce12a3f40754f6b1b8d88fdec4de4cc89ba308d324f0400b",
+      "after_sha256": "049ac3b937f1955d24b81e9efe3ab6fa7efa7eb1a2ab66f08631263bb8239684"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierCompletedCoconeEndpoint.lean",
+      "edits": 4,
+      "before_sha256": "46192b3dc032f6cddf0ecd1c54503c66aced3ca42d637780f8e14121c99715a8",
+      "after_sha256": "3bac3e800e81796b98417197861f680c95e569838f20bb938da32d4a563eecae"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierCompletedCylinderImage.lean",
+      "edits": 8,
+      "before_sha256": "b830e6c1c65c12bd5d493b60ac8df0fcf9250c1921f20f68e99faba245b56c40",
+      "after_sha256": "dbaa0ff234603d58d8a041dabcaab98ec1155df856638347825da021d4565061"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredBoundaryComparison.lean",
+      "edits": 7,
+      "before_sha256": "10493f980948ecd4480dfc497d335e25b1cbc8eae7bafbdac3af180ea0316615",
+      "after_sha256": "3012f87334da7bb4cee762a913644f95621f961c5cb34f98a22ea124b58b9189"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCompletedCylinder.lean",
+      "edits": 6,
+      "before_sha256": "6a4d8ecf6c2d941b29be32765bc7b3e867b56227839cc22b4caf6b0df47cea84",
+      "after_sha256": "de3b1f27b0a001ef5f52d873ec663d5414ba0b0f00dc8ce39fdc8d26dd22398b"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/NativeCoefficientResolutionPointHom.lean",
+      "edits": 4,
+      "before_sha256": "08f2c906f4e0e56fc269c730c3e482f20bbdc762382e618236b3acb527875f86",
+      "after_sha256": "9d9672b6216175213cb753e2efd5b07ae538dbca025c9c3490d6394475592706"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/Relative/SuppliedRealization.lean",
+      "edits": 3,
+      "before_sha256": "8de33a8b11cbe80c568a6bbff918d440d8d8584d206a7018fbfaa6e1450d5961",
+      "after_sha256": "93d59cdee23a14d05fe23b4c518fd0c042a5bbdfcd17fc3fd450495d3c0545e1"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldCandidateClassification.lean",
+      "edits": 5,
+      "before_sha256": "b59824d2add1c80e8133cf7a7c8430a446644e94e4aa0a976814acef2afe21f3",
+      "after_sha256": "f5ea0291cfa764f53ac6f37b80014adde62724777bcc817e6fb24f34631c05bf"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldCandidateNativeComparison.lean",
+      "edits": 4,
+      "before_sha256": "d32dc48dfe33075107729aad4c3dabf605d2848a46b506e85e4b4b45527a6ee1",
+      "after_sha256": "7fc3efc7eaa655281e72cc88e64597d1e6573366cf61b1840270e6eab9f840fd"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldCandidateReconstruction.lean",
+      "edits": 5,
+      "before_sha256": "832ea7a9670c474113ff6b5c02e244996e1a6849d45744d3e756bf1d2e3e422b",
+      "after_sha256": "00029d29fbc57241445b15e59b98c1dd1f726d268fcf3a53a4217cdaa760f3ff"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldNerveRepresentationPoint.lean",
+      "edits": 3,
+      "before_sha256": "608fe1045e8ed027ed10191ee0fcebfdf4c098adc6e5f58be053aeb03b289b20",
+      "after_sha256": "6b4bbaf7fadb4bbbc8cd1ff880b7730a7599f6379f4276301474aad3c9cc47c8"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldTransportCoefficientFiber.lean",
+      "edits": 5,
+      "before_sha256": "e2b98778da419755b140a72f3b23a99e7845b78d7c040b0382e9d28142591aea",
+      "after_sha256": "9a95cfc1cf5ed3faf1f47e616dd19133b1b0be8ffef8f650d74c3b47072a4e64"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldTransportCoefficientPoints.lean",
+      "edits": 7,
+      "before_sha256": "13957aa7209f444ba290d71e919214f117ff143fe7c845277511e718ccbc1d57",
+      "after_sha256": "78325a13180b145b12abb6eea99226c5ae84dd01fe6c4cf8d0d7f1956d0d34f0"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldTransportCoefficientTriangle.lean",
+      "edits": 6,
+      "before_sha256": "fef4d479f1705c58e551997ca408d5b46a2f1fb6c63a2d675f2e00f33a29f4a2",
+      "after_sha256": "e51cd55110daf1665cb5c87cf267b4e66ea7856e2719317586f645267fa04ca6"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldTransportPointedCoefficient.lean",
+      "edits": 17,
+      "before_sha256": "f13ae6056fc1e615a9922afc49479f96cc0fae3185f74a0ce2da5a858e73ec63",
+      "after_sha256": "29994a7a09e099b86c913c6f059621e8e1711ad53b2f540eca863b558d0aa236"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldTransportRestriction.lean",
+      "edits": 2,
+      "before_sha256": "11341c75b530aa021f0a33c5ac08f67d985b1c8043f745214e7678d93547bc42",
+      "after_sha256": "1bf9dc2ab486098259235cd907fbe453afb4210467dc25cfb7a29b9604a4b0bc"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldWeightedCoherentPoint.lean",
+      "edits": 2,
+      "before_sha256": "ace3ea2aef61174203a320fee794e40973b13234bff5daa68134b6fa7de1952b",
+      "after_sha256": "24efebb08b927fa8028f3cfeba3a51035458f47cb8a2a7fa19f4a77de25c7d56"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/ScaffoldWeightedResolutionPoint.lean",
+      "edits": 3,
+      "before_sha256": "00ba1518109aa091955f11ce11d301929f0cca812508dba2010903cee082867f",
+      "after_sha256": "a1dddebdf11cea85694bdc6c2639894fcd7bcbbc41c5e6275a36761461fec9e1"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/SpanCompatibleTransportRepresentation.lean",
+      "edits": 7,
+      "before_sha256": "d5868b94ff38ea3538d8f03e4431767e90daadd1eb2e849cc5ecd10e5fadb6d0",
+      "after_sha256": "2a28ab2b3901677919e6ab60df642c70d44c6d0e4b0654dcb4d18d777cb9e390"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/SpanTransportPointedTriangle.lean",
+      "edits": 12,
+      "before_sha256": "b6557b3c73a11c98d67331353e7f6a69059f7118510177558d3e0ef14b240fff",
+      "after_sha256": "e894e2a986e6dab3d86c3cff178ae6ba9e7459be37fc845a56e072a5ee2007ec"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/AbstractFiberSequence.lean",
+      "edits": 6,
+      "before_sha256": "26252ab7db1e9900f20c5d2ac7f269f62a409ad19168fdb608dd0fad458786f8",
+      "after_sha256": "1ecb89e71862e15f3a817784381f68b554c658ed0dca52ca93c7f4ac35d3b500"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/DGOdotVerdierRectangleTransport.lean",
+      "edits": 2,
+      "before_sha256": "8fc49a7af480f143329a53eaa2699a787644a6a2df5f710bf7cf438c9760cbfa",
+      "after_sha256": "a9df61f508afad0443ac1dc3a6428d3e366d35d418d972664d17580ff03944cd"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/InvariantPiComparison.lean",
+      "edits": 6,
+      "before_sha256": "ff59c348f36dcda7cb87dacf778fc551e19235e9d8b25ae7bee3e6e7d3dddf6c",
+      "after_sha256": "d74ebecf5faf2f91096fa1b3b600bfcd9942788d32dc4043447f0333bad5bbf1"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxQuotientBFNormalization.lean",
+      "edits": 4,
+      "before_sha256": "8b99e86d25c703526478e3649f7a7d110bc9f1bb339c536bd69c180ee29b7d67",
+      "after_sha256": "ada0e1078a2caf13c1e15d8f308fdd9565aae9e6733ff2fb8a188f0aa86b7899"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxUniversalDifferenceRectangle.lean",
+      "edits": 2,
+      "before_sha256": "845f545fb2e7a805a7e8ba50a924a8a55348363421a749f6fb9031df440626b4",
+      "after_sha256": "7ce15c6bf7a8b6f6a092ae9633ea23b166b05bc7404ca00aa0710ee5cb2848d2"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeTammePullback.lean",
+      "edits": 1,
+      "before_sha256": "ab1754a7c34ef0c1d82762bd6a74c886a74730972e7fdc055aed71fb95ac761c",
+      "after_sha256": "2c7e8f1484d9e7f62aab1fc86cc55afd3c588b93b6035134236a565a4c45ca46"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeVerdierDiagramComparison.lean",
+      "edits": 1,
+      "before_sha256": "d1a45580ec8f4ad20ea86578570fbe6b92bc15641ccd7115f821aaf1952f3be3",
+      "after_sha256": "da4b6c08e909d14071ef787d7038101dbd7ab3d40f86641bfce73cf116ba0da9"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RelativeVerdierPullback.lean",
+      "edits": 2,
+      "before_sha256": "b096db841e9d52004a45a9577df8681abe3d49a5206d70d3686a9de86ddcc5e6",
+      "after_sha256": "367256b114905639be47a2823f52f9b1f0b1565ecbc1c9822c5ae879b13a0565"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SemiorthogonalInvariant.lean",
+      "edits": 1,
+      "before_sha256": "7b0157f6de609bc3ff27862eef6b5717bd0f1a6f37b3d63823672ce0a5b14eba",
+      "after_sha256": "df78c5798690be4d3321ee19e15a449b19249e2f54ea0321813b1da4a43c893f"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SquareFrameHomotopy.lean",
+      "edits": 5,
+      "before_sha256": "0d7b3469854b6b867a8bc799d82779ddb893c5a230628d85d8fbdcb2715af6a0",
+      "after_sha256": "549f08e2ede2540d78a32e71965e81cdfc7edbafcd1141142da0597f8a63630e"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SquareFramePathExtension.lean",
+      "edits": 3,
+      "before_sha256": "8a1e8650a1278a5698c2f0e6b5b044cc3b23050b610ca85e66910f6019d92e71",
+      "after_sha256": "a3530a51904a0d56991c482aa8398912a457e7f5a07982bb2d4317c495e2a3b4"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SquareLeftNormalization.lean",
+      "edits": 4,
+      "before_sha256": "856283ee4b74a4510a47309f1797737a75331fe2cbf83dafaf0eb87b47d0093d",
+      "after_sha256": "40df3411e6e6550e55cda6865a01ab89d7b5c84a455e32532ea67b3bc418e12a"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean",
+      "edits": 4,
+      "before_sha256": "d36740dfb1aadaa6ef2b012340f10474574ffe9ce12d6bd1d4e272eccdb0a029",
+      "after_sha256": "9f39f6ed907b04007b5587adba5040d6752f1bfb2925bc3c62a470cb8264fcc1"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierPresentation.lean",
+      "edits": 3,
+      "before_sha256": "c1e63628945098ff00acf5d5caae484a4d7357f1efcb301f069516af89209fc7",
+      "after_sha256": "080a14a3b36adb6653a153d1a4b0e3448065a7cf456b5502ee4bf33f9d33841e"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/VerdierRecoveredCoreCylinder.lean",
+      "edits": 7,
+      "before_sha256": "3f5c6dbe5b2148154cff3122dbf7909225ad697879764f1a87b9be7fb244aceb",
+      "after_sha256": "43c989f686c1761521d313a6f79a0042c23cb8891d972a92768cd5a467218288"
+    },
+    {
+      "file": "SerrePositivity/KST/NonConnective/DGKappaNativeVerdier.lean",
+      "edits": 1,
+      "before_sha256": "1445cd323e8a8e461e7f00477fd08b76d398245845bcc3e2b0980ad4bb131116",
+      "after_sha256": "c3d33aad05a0064604168503111bfdac563a82344115773b2c4f6f9380e89285"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "edits": 1,
+      "before_sha256": "c24c89069c6ca86ec4f29823747352dd611f5b882edaf350f6792ed4b4cc756a",
+      "after_sha256": "4fc0e540834a73dfd34e4a02be182a74f906956c54c6c24f018c35f8b76ef2df"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/DGOdotVerdierRectangle.lean",
+      "edits": 3,
+      "before_sha256": "95cbd66bed7e6755a351afc9694023908d28a6f03707f6da89647826a881010a",
+      "after_sha256": "9c54df937cc0bd540ea6ff83e173c082206f6e949f17bd03381bef18f2f81c50"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/NecklaceCubeTensorComparison.lean",
+      "edits": 2,
+      "before_sha256": "a8e55d59dd8eedeaa61972310cdfbb5016c00e71c4efe94b1df6a72673ab068c",
+      "after_sha256": "6dc6fe86c2208f5bbcb30da6112dd12d384a52d2f549b10c7896d6adb3541dad"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/NecklaceNumericCubeComparison.lean",
+      "edits": 1,
+      "before_sha256": "f7225b196401b97a37e29c81e46acb4fe4ec5a3927a14d5f62e5564be10115fa",
+      "after_sha256": "a690dde4f82f3b999739b182648229ccf65fa059e96a88a617847933d4f0176f"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/NecklaceWedgeNumericJoin.lean",
+      "edits": 5,
+      "before_sha256": "f07202ec260931df024d62ce291caf86c784080db649f04a84efb1a60c2a1c70",
+      "after_sha256": "1512c18c590cbd3b5cf5a0a469a719f1289c93fffaeb0cc7b234759182d0c9fe"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/NecklaceWedgeNumericMap.lean",
+      "edits": 2,
+      "before_sha256": "33821805d3741bde0068fab3c71c8b195cfec09f949ac71405131488388296c5",
+      "after_sha256": "311488945a08213a61798f8da6175096fd99e5947bf17754e58c89e77cc1be8e"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/PerfectLaxQuotientProductNormalization.lean",
+      "edits": 4,
+      "before_sha256": "e176fc4948f19792161f6a4168641ffec4247739ea02c95cf3cc5bc838afd335",
+      "after_sha256": "c130389a7780cd0e2101ee804a90f3c1364589a80fa7c2b2fb0c8ab767b0a6c9"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+      "edits": 1,
+      "before_sha256": "6a7a3279e741a19d2b3d8512a12920a28b4710300b5428f7e630167590447012",
+      "after_sha256": "bb01cc1765f1be40799eed380d3507cab6978ca482514e06666ba31feb0e9bb9"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+      "edits": 1,
+      "before_sha256": "e5d65eb856f8ff46da3c23e96c3c7ea3a5976b9cf36f49c0a11c0e00dec509e6",
+      "after_sha256": "5f4b8793cee5b5ed680e2649563c17c8ba45bdf6ee951cb063c668a02b528aed"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundary.lean",
+      "edits": 1,
+      "before_sha256": "119cac5d9fbe2b53e611e205ebdc3b815054bf7c4539338ecbfb9325f0888906",
+      "after_sha256": "414eaf9b4ece54ae7405993d2d6c159ca320ffbaafed5d981fbc458c11da7a52"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundaryZero.lean",
+      "edits": 1,
+      "before_sha256": "f812f31a927b85e575db8fae2b64ba5127a2854a8fbb35e13c77328be161ad45",
+      "after_sha256": "856b48a923501fe596564863cddca2cd9789c31e1cc71eed50428f9db203d623"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/CommutativeHomotopyDiagram.lean",
+      "edits": 2,
+      "before_sha256": "1cb62115a7637daff352538429b59ca23433946c7ca8e218c68089a93124116a",
+      "after_sha256": "c60059da2678db6316d1709cdf774073cb477b3a7a3534ff02bcb0d74ed6f5fc"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/CosimplicialKanMapEquivalence.lean",
+      "edits": 1,
+      "before_sha256": "1d6bc7c6dd1a975da8ef025a5766d945a674f9ff2da144a39db5dc0ebef12c0b",
+      "after_sha256": "b8c715f45d5d6e58276aa0f0c4c4122f03f6b5f611be70fc4e88e4142723aef9"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/CosimplicialProjectionEquivalence.lean",
+      "edits": 2,
+      "before_sha256": "35f2b04f72bf88e8959ec6588e86f5569483fef7c6c9755c5d2f3fd3c18e4bec",
+      "after_sha256": "9027badf2ef18f95ab25dbdb908f3aae0da68a9666fc190862fa8f7711d8ffc4"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/CosimplicialSequenceReedyReplacement.lean",
+      "edits": 1,
+      "before_sha256": "6e87f624836a60e40ca77f312850cb0827e9bfecc52ea7dfd3f35f990f2a955b",
+      "after_sha256": "31c4005963d8b74f7150aeaf7aa3525cfe17bbf6f500aa8abcf68dc009fc4385"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/D3LoopSourceComparison.lean",
+      "edits": 1,
+      "before_sha256": "5bcc6a0c3db0adee52b93605f87159c54fd917d3549f39f6f4d2b88bb8dda86b",
+      "after_sha256": "af30169c3c1921378e8b57ac89da5f007df5a8c4ee2ade8e15fc5e71b829ded9"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/D3LoopUnitExtension.lean",
+      "edits": 1,
+      "before_sha256": "601a753d5608d02d77eb32cf3cb671c4e4fa98fb950aa6c57cce1e604c09e6ed",
+      "after_sha256": "622cf55f8cfae841e136f720914641966a089eea341249607e2853f2370f7dc5"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/LastVertexKanWeightComparison.lean",
+      "edits": 1,
+      "before_sha256": "e80e17c6e45ef23bedcf633c9770aae65530902dc13031b8e7458ef5a47c7aa8",
+      "after_sha256": "61e858d4fea12580de9bbe3b1cea66adc7a9849924cb9fe31ff746934f8a5ad7"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/LoopBoundaryRepresentatives.lean",
+      "edits": 5,
+      "before_sha256": "ed5deb2ef2af0539b6335be7b8b736b6ebc00d560e7523d6b3fe4ad11b8578ee",
+      "after_sha256": "41f679769ed042ebacd0e8dca76f82425cc285e1459adc9dc9623a2532c3b75d"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/LoopConnectingPathLift.lean",
+      "edits": 2,
+      "before_sha256": "876a2606a1f5c5ac95a8350d014e60be0ac2a59d714fb522d61aff98d9ec10cf",
+      "after_sha256": "cd5b57b010a5282eab98b58caa889c0f27073534afb994c4bb19de792ed7f2d3"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/LoopConnectingStandardRepresentatives.lean",
+      "edits": 3,
+      "before_sha256": "d714b63e4c0d32c1886f02ccd7e1a7452382058e81334214330be338aa76836d",
+      "after_sha256": "991782d98f66fa0d96d70e98c1dcb6fa0ca2b1550adbc1601641a60e663d5804"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedConnectingRepresentatives.lean",
+      "edits": 4,
+      "before_sha256": "7caccec69f16e2038da889e7fd4c03a0793aa37500f8ca4555e5159532cff461",
+      "after_sha256": "0cfe44ac6ad1a230dcd0e2a78b5be023fcd9b5117bda40cfc350abffbc27573c"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedHomotopyGroupDiagram.lean",
+      "edits": 2,
+      "before_sha256": "3941022573ff3661b735c5db471c9ea32d05a56fa0cb73071a443f058576f22a",
+      "after_sha256": "1a1c0e3a761f746257d03082511f63fbf4d3a6bc4dc2881b5beb903be34c5561"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedZeroConnecting.lean",
+      "edits": 3,
+      "before_sha256": "3ebd29a4ba5c5d73d8be839afe8e9f44952b5430e77d05523290b48ef04a5599",
+      "after_sha256": "5b66931ee6a7d657fb49c8a4662279567d763490ffb443c374a0d7bbdc1784d9"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/RawSpectrumPointedTailEquivalence.lean",
+      "edits": 1,
+      "before_sha256": "8f267cbe31e331860ad9112177678dddc862eeabdbf5408cd83d6a6851f7f298",
+      "after_sha256": "f239b3a8beb603f9dffbbe9fb2971ff1521edb3d4ac678b158277718e4d1a565"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/RestrictionConnectingRepresentatives.lean",
+      "edits": 3,
+      "before_sha256": "07f3cd7c72b8b22dfe57da7c1f90128663c44e51a241966fd8b51c3d572a9788",
+      "after_sha256": "2eb503fce5e4e86f64e388e778a50d5689fe353966186e9efaf1a14d87daa916"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/RestrictionZeroConnecting.lean",
+      "edits": 1,
+      "before_sha256": "d1f28e1d17020b5a002abb7ec5a4badec0364476c07109b94a6bd36291d137fc",
+      "after_sha256": "3f79aca38c249715333ea7d93abbb2d77915874ee42bc5ed3f61c58446da52f3"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ReverseComponentConnecting.lean",
+      "edits": 1,
+      "before_sha256": "fcee00ade493c70917a159b75242d43253ae33a33e4aa47395107764222296e8",
+      "after_sha256": "82d2a6a6fca5847233af0405f4349f3571a808e7293e3c91e5fb2f50ac7554c0"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/SpectrumKanAdjointAdjustedTransport.lean",
+      "edits": 2,
+      "before_sha256": "b2738b3d75ee1b561b711eb23be98196fc7d568e6b8f02bf593bf4e893be634a",
+      "after_sha256": "04aabd5095722c14ab2c07c46cbb10e51d9cafa951a159a7d9fe224456fcb240"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/SpectrumKanAdjointTransportSquares.lean",
+      "edits": 2,
+      "before_sha256": "84756b1a412b5c1f1c879d129bbdc059c5a71d2b9d9af062788c3ec3884f8d1e",
+      "after_sha256": "7fced0c49dacb1105e2fbfb578e2d8491078602e5beb33525353e7aab4667ced"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/SpectrumSignedEvaluationDetection.lean",
+      "edits": 1,
+      "before_sha256": "365ba077e0f73920405b723f31c049cd32e663730c2b6b659fe1be7c8821fdec",
+      "after_sha256": "525ba62b48585157af5dc2f208b8f062b00923d8e670dbf4bf2dad9d3c27eefa"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquare.lean",
+      "edits": 2,
+      "before_sha256": "6ec5d89cfe6703cc48b7bd27444d9eef6f9f1d7600ba924b6686b35415c1888b",
+      "after_sha256": "15b4a42a8bd92ad1a5a3e9421a0683007ca2996272f2ba3c1e34da746ce690f5"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquareProjection.lean",
+      "edits": 8,
+      "before_sha256": "d9520afafa2baa6957909efebabbc70fd9bc7e2977c646f9e8b7aa0c3021b5f4",
+      "after_sha256": "f44bd8af6121c71c14ff6a8d359eebe83206d86958848d873a441c20b5a6879b"
+    }
+  ],
+  "namespace_restorations": [
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SquareFramePathExtension.lean",
+      "before": [
+        [
+          "def",
+          "SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.target_isPullback"
+        ]
+      ],
+      "after": [
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.PathExtension.comparison"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.PathExtension.target_isPullback"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame",
+        "namespace PathExtension",
+        "end PathExtension",
+        "end SerrePositivity.KST.LocalizingInvariants.SquareFrame"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame",
+        "namespace PathExtension",
+        "end PathExtension",
+        "end SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame"
+      ]
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/NecklaceWedgeNumericJoin.lean",
+      "before": [
+        [
+          "def",
+          "SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin_left"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin_right"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin_cubeVertexJoin"
+        ]
+      ],
+      "after": [
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNumericJoin"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNumericJoin_left"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNumericJoin_right"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeNumericJoin_cubeVertexJoin"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.SConstruction.NecklaceShape",
+        "end SerrePositivity.KST.SConstruction.NecklaceShape"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape",
+        "end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape"
+      ]
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/CommutativeHomotopyDiagram.lean",
+      "before": [
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.commDiagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.commDiagramMap"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.commDiagramIso"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.additiveDiagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.cochainComplex"
+        ]
+      ],
+      "after": [
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.commDiagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.commDiagramMap"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.commDiagramIso"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.additiveDiagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.cochainComplex"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.Spectra.KanHomotopyGroup",
+        "end SerrePositivity.KST.Spectra.KanHomotopyGroup"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup",
+        "end SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup"
+      ]
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedHomotopyGroupDiagram.lean",
+      "before": [
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.diagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.diagramMap"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.KanHomotopyGroup.diagramIso"
+        ]
+      ],
+      "after": [
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.diagram"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.diagramMap"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.diagramIso"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.Spectra.KanHomotopyGroup",
+        "end SerrePositivity.KST.Spectra.KanHomotopyGroup"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup",
+        "end SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup"
+      ]
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquare.lean",
+      "before": [
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_upper"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_lower"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_zero"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_one"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_start"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_finish"
+        ],
+        [
+          "def",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.homotopy"
+        ]
+      ],
+      "after": [
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_upper"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_lower"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_zero"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_one"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_start"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_finish"
+        ],
+        [
+          "def",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.homotopy"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport",
+        "end SerrePositivity.KST.Spectra.ThreeEdgeTransport"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport",
+        "end SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport"
+      ]
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ThreeEdgeTransportSquareProjection.lean",
+      "before": [
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_eq_of_simplex_eq"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_map"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.KST.Spectra.ThreeEdgeTransport.square_relabel"
+        ]
+      ],
+      "after": [
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_eq_of_simplex_eq"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_map"
+        ],
+        [
+          "lemma",
+          "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.square_relabel"
+        ]
+      ],
+      "namespaces_before": [
+        "namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport",
+        "end SerrePositivity.KST.Spectra.ThreeEdgeTransport"
+      ],
+      "namespaces_after": [
+        "namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport",
+        "end SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport"
+      ]
+    }
+  ],
+  "binder_verification": "55/55 first explicit binders match original carrier namespace",
+  "preservation": "before-methods9 adds one module; remaining files covered by earlier immutable before snapshots",
+  "counts": {
+    "files": 69,
+    "changes": 237,
+    "reasons": {
+      "unmoved_extension_explicit_receiver": 217,
+      "restore_unmoved_namespace": 12,
+      "unmoved_namespace_qualified_reference": 3,
+      "tactic_case_label_not_global_reference": 5
+    }
+  }
+}

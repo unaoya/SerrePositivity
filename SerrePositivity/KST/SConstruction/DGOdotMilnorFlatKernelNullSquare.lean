@@ -52,7 +52,7 @@ lemma dgOdotMilnorFlatKernel_image_eq_diagonal (h : DGGluingMilnorSquare R d) :
         Nonempty (VertexIso
           ((dgNerve.map (resolvedDGQuotientThickKernelInclusion R (DGOdotGluing R d) (P))).app
             (Opposite.op ⦋0⦌) a) b)} =
-      essentialImage (dgGluingMilnorNativeDiagonal R d) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d) := by
   ext b
   exact (resolvedDGQuotientFunctor_zero_iff_thickEssentialImage R
     (DGOdotGluing R d) (P) b).symm.trans (dgOdotMilnorNativeKernel R d h b)

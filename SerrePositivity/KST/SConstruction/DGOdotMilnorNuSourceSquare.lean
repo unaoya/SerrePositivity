@@ -75,9 +75,9 @@ lemma dgOdotMilnorSourceNullOuterSquare_zero_vertex :
 方針：元の全対象商の実 Perf 零性を適用する。
 規約：外周の指定完備化を変更しない。使われ方：Sp の外面零角条件。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_perfect_zero :
-    IsZeroCategory (perfectStableObject (squareVertex
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
-  change IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
     (squareVertex (dgOdotMilnorSourceNullOuterSquare R d) 0 1)))
   rw [dgOdotMilnorSourceNullOuterSquare_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R _
@@ -87,11 +87,11 @@ lemma dgOdotMilnorSourceNullOuterSquare_perfect_zero :
 規約：全関手の同型類でなく全一単体を保持する。使われ方：Sp の包含境界。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_nu_inclusion :
     squareBottomEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorNuSourceInclusion R d)).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuSourceInclusion R d)).edge := by
   rw [← Category.assoc, (dgOdotMilnorSourceNullOuterSquare_edges R d).1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _ (coherentNerveEdge
     (dgOdotMilnorSourceKernelInputMap R d ≫ dgOdotMilnorFlatKernelInputMap R d)).edge) = _
-  exact congrArg (fun x : StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorSourceKernelInputMap R d ≫
       dgOdotMilnorFlatKernelInputMap R d))
 
@@ -100,11 +100,11 @@ lemma dgOdotMilnorSourceNullOuterSquare_nu_inclusion :
 規約：完備化後射影へは指定全関手同型を併用する。使われ方：Sp の商境界。 -/
 lemma dgOdotMilnorSourceNullOuterSquare_nu_projection :
     squareRightEdge ≫ dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
   rw [← Category.assoc, (dgOdotMilnorSourceNullOuterSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
     (coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
-  exact congrArg (fun x : StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorCellProjectionInputMap R d))
 
 end SerrePositivity.KST.SConstruction

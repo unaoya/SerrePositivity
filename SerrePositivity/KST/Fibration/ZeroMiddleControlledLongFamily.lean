@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.Fibration
 規約：(9) の存在仮定は不要。全時刻の共有対角の厳密一致はこの定理では主張しない。
 使われ方：元の全 S• 上側の実二胞体構成を先に放電する。 -/
 theorem zeroMiddleFullSControlledFamily_exists
-    (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+    (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
     (K : SSet.{u + 1}) (ℓ : (zeroMiddleFullSReconstructionLongSpace s hZ K) _⦋0⦌) :
     let P := SimplicialThickening.Path
       (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)

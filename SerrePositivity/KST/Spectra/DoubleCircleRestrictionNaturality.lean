@@ -28,17 +28,17 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：二つの円には同じ Kan 置換の単位を使う。
 使われ方：Goerss–Jardine I §7。二重 loop の交換の成分を通常の円で判定する。 -/
 theorem doubleCircleRestriction_exchange (Y : PointedSimplicialSet.{u}) :
-    (InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
       doubleCircleRestriction Y =
       doubleCircleRestriction Y ≫
-        (InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u} Y).hom := by
-  have h := InternalHomExchange.restrictBoth_exchange
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_exchange
     (C := PointedSimplicialSet.{u}) CirclePower.unit.{u} CirclePower.unit.{u} Y
-  simp only [InternalHomExchange.restrictBoth, ← PointedMapping.prePointed_eq_closedPre] at h
-  change (InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom ≫
       doubleCircleRestriction Y = doubleCircleRestriction Y ≫
-        (InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u} Y).hom at h
   exact h
 
@@ -51,9 +51,9 @@ theorem doubleCircleRestriction_post {Y Z : PointedSimplicialSet.{u}} (v : Y ⟶
         (PointedObject.basedHomMap CirclePower.space.{u} v) ≫ doubleCircleRestriction Z =
       doubleCircleRestriction Y ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} v) := by
-  have h := InternalHomExchange.restrictBoth_post
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_post
     (C := PointedSimplicialSet.{u}) CirclePower.unit.{u} CirclePower.unit.{u} v
-  simp only [InternalHomExchange.restrictBoth, ← PointedMapping.prePointed_eq_closedPre] at h
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap CirclePower.space.{u}
       (PointedObject.basedHomMap CirclePower.space.{u} v) ≫ doubleCircleRestriction Z =
     doubleCircleRestriction Y ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u}

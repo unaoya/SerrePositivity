@@ -1,0 +1,4002 @@
+{
+  "changes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 4143,
+      "end": 4153,
+      "old": "f.postcomp",
+      "new": "(_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp f)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 3574,
+      "end": 3583,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 3468,
+      "end": 3477,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 3390,
+      "end": 3399,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 3150,
+      "end": 3159,
+      "old": "boundaryι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+      "start": 2632,
+      "end": 2642,
+      "old": "f.postcomp",
+      "new": "(_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp f)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Checks.lean",
+      "start": 2425,
+      "end": 2435,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "start": 1762,
+      "end": 1777,
+      "old": "VerdierSequence",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "start": 842,
+      "end": 869,
+      "old": "SemiorthogonalDecomposition",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "start": 763,
+      "end": 771,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "start": 744,
+      "end": 752,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "start": 719,
+      "end": 733,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3536,
+      "end": 3554,
+      "old": "chooseBoundaryLift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3499,
+      "end": 3517,
+      "old": "chooseBoundaryLift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3459,
+      "end": 3478,
+      "old": "KanHomotopyGroup.mk",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3441,
+      "end": 3451,
+      "old": "connecting",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.connecting",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3412,
+      "end": 3431,
+      "old": "KanHomotopyGroup.mk",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3394,
+      "end": 3404,
+      "old": "connecting",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.connecting",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 3231,
+      "end": 3241,
+      "old": "connecting",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.connecting",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 2637,
+      "end": 2643,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 2157,
+      "end": 2179,
+      "old": "KanHomotopyGroup.sound",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 2049,
+      "end": 2068,
+      "old": "KanHomotopyGroup.mk",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 2025,
+      "end": 2044,
+      "old": "KanHomotopyGroup.mk",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 1654,
+      "end": 1660,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 1483,
+      "end": 1489,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 1127,
+      "end": 1153,
+      "old": "BoundaryFaces.IsCompatible",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 956,
+      "end": 962,
+      "old": "fiberι",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.fiberι",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 678,
+      "end": 690,
+      "old": "BoundaryLift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      "start": 652,
+      "end": 664,
+      "old": "BoundaryLift",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+      "start": 2882,
+      "end": 2893,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+      "start": 2361,
+      "end": 2396,
+      "old": "KanHomotopy.map_eq_of_basedHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+      "start": 2043,
+      "end": 2060,
+      "old": "KanHomotopy.point",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+      "start": 1964,
+      "end": 1975,
+      "old": "KanHomotopy",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+      "start": 1390,
+      "end": 1414,
+      "old": "pointedConstant_eq_const",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 6790,
+      "end": 6800,
+      "old": "prePointed",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 6456,
+      "end": 6459,
+      "old": "pre",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 6298,
+      "end": 6308,
+      "old": "prePointed",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 6195,
+      "end": 6205,
+      "old": "prePointed",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 4301,
+      "end": 4311,
+      "old": "paramCurry",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 3517,
+      "end": 3527,
+      "old": "paramCurry",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+      "start": 2039,
+      "end": 2049,
+      "old": "paramCurry",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientPoints.lean",
+      "start": 3961,
+      "end": 3983,
+      "old": "s.coefficientEmbedding",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientPoints.lean",
+      "start": 3318,
+      "end": 3340,
+      "old": "s.coefficientEmbedding",
+      "new": "(_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s)",
+      "reason": "relocated_extension_method"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 3681,
+      "end": 3704,
+      "old": "doubleFunctorEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 3314,
+      "end": 3337,
+      "old": "doubleFunctorEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 3266,
+      "end": 3301,
+      "old": "straighteningJointBaseChangeLeftIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 3133,
+      "end": 3156,
+      "old": "doubleFunctorEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 3033,
+      "end": 3068,
+      "old": "straighteningJointBaseChangeLeftIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 2794,
+      "end": 2829,
+      "old": "straighteningJointBaseChangeLeftIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 1599,
+      "end": 1622,
+      "old": "doubleFunctorEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 1255,
+      "end": 1278,
+      "old": "doubleFunctorEvaluation",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+      "start": 1206,
+      "end": 1242,
+      "old": "straighteningJointBaseChangeRightIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 2861,
+      "end": 2879,
+      "old": "ArrowTarget.target",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 2548,
+      "end": 2566,
+      "old": "LaxInclusion.zeroC",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 1829,
+      "end": 1850,
+      "old": "CofiberFamily.cofiber",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 801,
+      "end": 809,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 782,
+      "end": 790,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      "start": 757,
+      "end": 771,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 10316,
+      "end": 10341,
+      "old": "roofPastingCosliceDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 10281,
+      "end": 10309,
+      "old": "roofPastingTriangleInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 9607,
+      "end": 9632,
+      "old": "roofPastingCosliceDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 9574,
+      "end": 9600,
+      "old": "roofPastingSquareInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 9420,
+      "end": 9439,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 9190,
+      "end": 9206,
+      "old": "roofPastingPrism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 9025,
+      "end": 9044,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 8814,
+      "end": 8830,
+      "old": "roofPastingPrism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 8694,
+      "end": 8719,
+      "old": "roofPastingCosliceDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 8610,
+      "end": 8635,
+      "old": "roofPastingCosliceDiagram",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 6566,
+      "end": 6585,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 6408,
+      "end": 6427,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 4841,
+      "end": 4860,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 4710,
+      "end": 4729,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 2631,
+      "end": 2657,
+      "old": "roofPastingSquareInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 2578,
+      "end": 2606,
+      "old": "roofPastingTriangleInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 2351,
+      "end": 2379,
+      "old": "roofPastingTriangleInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 2291,
+      "end": 2317,
+      "old": "roofPastingSquareInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 2016,
+      "end": 2042,
+      "old": "roofPastingSquareInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 1930,
+      "end": 1958,
+      "old": "roofPastingTriangleInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 1717,
+      "end": 1745,
+      "old": "roofPastingTriangleInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 1616,
+      "end": 1642,
+      "old": "roofPastingSquareInclusion",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+      "start": 863,
+      "end": 882,
+      "old": "roofPastingPrismIso",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 1843,
+      "end": 1869,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 1798,
+      "end": 1815,
+      "old": "squareArrowFamily",
+      "new": "_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 1623,
+      "end": 1649,
+      "old": "markedSpanFamilyProjection",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 1368,
+      "end": 1384,
+      "old": "markedSpanFamily",
+      "new": "_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 726,
+      "end": 734,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 707,
+      "end": 715,
+      "old": "ExactMap",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      "start": 682,
+      "end": 696,
+      "old": "StableCategory",
+      "new": "_root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/KanModels/KanForgetDetection.lean",
+      "start": 2207,
+      "end": 2231,
+      "old": "Spectra.KanPiIsomorphism",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism",
+      "reason": "before_resolved_identifier"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/LoopCylinderConstantParameter.lean",
+      "start": 2555,
+      "end": 2588,
+      "old": "Spectra.PointedMapping.paramCurry",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/LoopCylinderConstantParameter.lean",
+      "start": 2403,
+      "end": 2420,
+      "old": "Spectra.loopSpace",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+      "start": 1587,
+      "end": 1614,
+      "old": "Spectra.suspensionLoopEquiv",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+      "start": 1303,
+      "end": 1330,
+      "old": "Spectra.suspensionLoopEquiv",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+      "start": 1160,
+      "end": 1178,
+      "old": "Spectra.suspension",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+      "start": 733,
+      "end": 760,
+      "old": "Spectra.suspensionLoopEquiv",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+      "start": 701,
+      "end": 719,
+      "old": "Spectra.suspension",
+      "new": "_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/ClosedTensorMappingUnit.lean",
+      "start": 1062,
+      "end": 1087,
+      "old": "Spectra.TensorMapping.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/ClosedTensorMappingUnit.lean",
+      "start": 565,
+      "end": 590,
+      "old": "Spectra.TensorMapping.map",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean",
+      "start": 2061,
+      "end": 2071,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial",
+      "reason": "global_scope"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 2149,
+      "end": 2172,
+      "old": "cubeDeletionNormalErase",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 1659,
+      "end": 1682,
+      "old": "cubeDeletionNormalErase",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 1380,
+      "end": 1403,
+      "old": "cubeDeletionNormalErase",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 1295,
+      "end": 1313,
+      "old": "CubeDeletionNormal",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 1108,
+      "end": 1128,
+      "old": "cubeDeletionNormalId",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 981,
+      "end": 1001,
+      "old": "cubeDeletionNormalId",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId",
+      "reason": "resolved_deprecated_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 619,
+      "end": 637,
+      "old": "CubeDeletionNormal",
+      "new": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
+      "reason": "resolved_deprecated_reference"
+    }
+  ],
+  "files": [
+    "SerrePositivity/InfinityCategories/Derived/Checks.lean",
+    "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/CellZeroNativeSeparation.lean",
+    "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeDiskPair.lean",
+    "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeHom.lean",
+    "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeIntervalIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconePointFiberCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconePointFiberIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/BridgePreservation.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CoconeLegNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ConeDerivedEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ConeInput.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EdgewisePiComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationChartLegs.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationChartNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationCoconeGeometry.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationEdgeNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationGeneratorClosure.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationHomologyCharts.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationHomologyCoefficients.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationVertexPiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/FilteredSpaceBridgeInput.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/HomologyCharts.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/HomologyChartsPiData.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearHomCohomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearLiftPiCharts.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearUnderlyingValueComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleHomologyCharts.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModulePiHomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModulePiTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueEdgeEquality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValuePiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleZeroChartExtension.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationPiData.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomClosedNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomPiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomSmallPiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeMappingVertexEdge.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/OppositePiZeroComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiChartSpaceCast.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiChartTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiTransportMap.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedCohomologyNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedModuleCohomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedModuleMap.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedMooreNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedPiCohomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ProjectiveHomCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/QuotientEpsilonNative.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/SphereClosureEdgeIsoAdapter.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/SphereClosureQuotientEdge.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardClosedPostcomposition.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardMooreNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardPiCohomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiChart.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiZeroComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPointedFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPointedSimplex.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UnderlyingValueRestriction.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightHomCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightHomIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightTopCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativeColimit.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativeColimitPointHomCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativePointHomLift.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/PinchedTopCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomFamilyFiberCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomLiftCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomSpaceIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedBarDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedCoherentAugmentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/ProjectiveBarNativeCocone.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/ProjectiveBarVertexIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeBarVertexCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeHomologyColimitCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeNativeColimit.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaIsoNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaOppositeComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaPointedDisplay.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGHomConeLimitCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGHomTargetPointedFiberEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGHomTargetSpaceComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGHomTargetTransportRepresentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGKappaSpanPosetShape.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationHomTargetSpace.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationUnderlyingIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleHomSpaceInfinity.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactBasic.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactClassicalTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactCone.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactCoproduct.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactProjectiveComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactShift.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedConeSquares.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedLimitTransfer.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedSuspensionComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingCosliceTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpaceInfinity.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpacePointed.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGModuleUnitPinchedNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGPerfectYonedaIdempotentCompletion.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSemifreeBivariateHomSpaceComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomSourceSpaceComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomSpaceAugmentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomTargetPointedDisplay.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomTargetSpaceComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingPiMoore.lean",
+    "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingWeakEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CanonicalCoefficientRelativePrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputCoordinatesIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputPathForget.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputStrictForget.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputTriangleEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputTriangleExt.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedArrowRepresentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedAugmentationArrowDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientCompositionLifts.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientIntervalMap.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputDiagonals.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputFibers.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputPathTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedHomCoefficientPath.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedHomCoefficientPathLegs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedLastInputDiagonalFibration.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedModuleArrow.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedRawInputEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/EdgeEndpointTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/EdgeRepresentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/FunctorEdgeHomotopyRecovery.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/FunctorTriangleTwoFaces.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedAugmentationIntervalNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedAugmentationNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientCompositionLifts.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientDiagonalBoundary.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientFixedEdges.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientIntervalPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionDiagonalPath.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionFactorization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionInputPathPullback.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPathFactorization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPathPullback.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPrismRecovery.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedInputEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowCompositionInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCanonicalFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCoefficientInputPathLegs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCoefficientPath.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCollarTriangleEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCompositionInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCompositionTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDerivedLaxEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDiagonalBoundaryFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDiagonalRelativeNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetIdentityCommaProjections.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputDiagonalEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputDiagonals.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputHomotopies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPath.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPathEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPathPoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputStrictComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputStrictEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputTriangleEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxArrowCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxArrowTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxBaseCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxCoordinateComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxCoordinateTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxHomEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxInputCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxInputEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxIntervalTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxRawInputActions.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxVertices.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationCubes.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationInputEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationInputPaths.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationTetrahedron.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizedPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetOriginalPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetRelativeNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetStandardCapTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapCoefficientFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapInputPaths.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapIntervalTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapPastingEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapPastingTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCollarIntervalTriangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitLoopEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitLoopNullity.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSixTriangleDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSpanRelativeComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSpanTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitTriangleDiagrams.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitTriangleFamilies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityConeComparisonCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityConeDiagonalZero.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityHomTargetDiagonal.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityHomTargetLaxEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityInputDiagonalComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityLaxArrowBaseCofiber.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityLaxDifferenceCharacterization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityNativeConeComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityRightAxisLaxDifference.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/InputHomotopyClassComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/InputHomotopyTriangleComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/IntervalHomMapCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/KanPathInputTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/KanPathPullbackTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonEssentialSurjectivity.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonUniversalProperty.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonVertexImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxCospanCofiberComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxCospanIsoCofiberComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxFixedInputEssentialImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowComposition.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowCompositionTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowInterval.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowTriangleEvaluations.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomComponentEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomCompositionInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomCoordinateTargetIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomDiagonalComparisonBoundary.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputCoordinateComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputHomotopies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathHomotopyOfFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathInverseOfFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathPoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputRelativeComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputStrictComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputStrictEquivalenceOfFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalArrowCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalBaseCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalInputBaseEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalInputCoordinates.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPinchedIntervalTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPullbackEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPullbackKanComplex.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleHomotopyBoundaries.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleHomotopyFamilies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleVariableEdges.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorDiagonalStableImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorDiagonalThickImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorFlatThickTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorResolvedKernel.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorResolvedQuotient.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceTetrahedronFaceAgreement.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceUnitFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceUnitNullity.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelTargetUnitFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCapCoefficientFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCapTriangleDiagrams.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCollarTriangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitFacesAndBoundaryFilling.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopRawEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopTetrahedronFaces.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitProjectionNullity.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleBoundary.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleLoops.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeArrowComparisonPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCFactorKernel.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalCoefficientPrism.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalIntervalFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalIntervalNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalUnitCapEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCochainUniverseComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeExitUnitCollarTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationAugmentationTetrahedron.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationAugmentationTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationF2Triangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationPasting.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationProjectionFamilies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationStaircase.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationTriangleFamilies.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationUnitCaps.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativePerfectYonedaEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativePrismDerivedNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativePrismDerivedPathComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeSemiorthogonal.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapDiagonalEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapIntervalTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapPastingEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapPastingTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarDiagonalEvaluation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarDiagonalTriangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarInputs.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarIntervalTriangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCompositionInputPaths.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCompositionPaths.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputCoefficientEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputEndpoints.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputModelPaths.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackEssentialSurjectivity.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackFlatQuotient.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackFullyFaithful.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackKernelLocalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackObjects.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackQuasiIso.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackRetracts.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackStableClosure.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackThickFlatTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackThickImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/PinchedIntervalPullbackTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/StableFactorKernels.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/StableLaxStructure.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/TriangleDiagramParameterTransport.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/TriangleDiagramVertices.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCapCoefficientChoiceComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCapPastingCoefficientFace.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCollarCompositionTriangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleDiagramCancellation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleVertices.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanAlignedDiagonalTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanHexagonReduction.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanRelativeComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseCanonicalCoefficientTriangles.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseDerivedArrowOfEq.lean",
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseDerivedArrowRepresentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/CompactStage.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/Covers.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/NativeRetract.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/PresentationReduction.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/RepresentativeImage.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/StrictComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaCovers/UnconditionalCovers.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaPerfect/Closure.lean",
+    "SerrePositivity/InfinityCategories/Derived/KappaPerfect/Equivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/LeftFibrationConeUniverse.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleNormalizedPiCriterion.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleNormalizedWeakEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModulePiMooreNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModulePiZeroBoundary.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModulePiZeroMoore.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleSphereBoundary.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleSphereNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleSphereRelation.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleTranslation.lean",
+    "SerrePositivity/InfinityCategories/Derived/ModuleTranslationPi.lean",
+    "SerrePositivity/InfinityCategories/Derived/MooreCycles.lean",
+    "SerrePositivity/InfinityCategories/Derived/MooreCyclesNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/MooreHomologyNaturality.lean",
+    "SerrePositivity/InfinityCategories/Derived/MooreZeroHomology.lean",
+    "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/EpsilonSimplexLift.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeActionRequirement.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonDiskObstruction.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonRequirement.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeRepresentableRequirement.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeTarget.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeUnitRequirement.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/QuotientNative.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/StableQuotientModelComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/SuspensionAction/StableQuotientTriangle.lean",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/CospanPathLaxSpan.lean",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackCospanEquivalence.lean",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackCospanIsoEquivalence.lean",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackMapComponentEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Stable/IdempotentCompletionDensity.lean",
+    "SerrePositivity/InfinityCategories/Stable/KanModels/KanForgetDetection.lean",
+    "SerrePositivity/InfinityCategories/Stable/Quasicategory/SquareFramePathExtension.lean",
+    "SerrePositivity/InfinityCategories/Stable/Transport/ScaffoldTransportCoefficientPoints.lean",
+    "SerrePositivity/KST/Fibration/StraighteningBaseChangeChartComponents.lean",
+    "SerrePositivity/KST/Fibration/WeakOreSpanLift.lean",
+    "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+    "SerrePositivity/KST/LocalizingInvariants/LaxInclusions.lean",
+    "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+    "SerrePositivity/KST/LocalizingInvariants/RoofPastingConeFaces.lean",
+    "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+    "SerrePositivity/KST/LocalizingInvariants/TammeOreSpanLift.lean",
+    "SerrePositivity/KST/SConstruction/ClosedTensorMappingUnit.lean",
+    "SerrePositivity/KST/SConstruction/LoopCylinderConstantParameter.lean",
+    "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+    "SerrePositivity/KST/SConstruction/SuspensionAdjointInterval.lean",
+    "SerrePositivity/KST/Spectra/PathContractibility.lean",
+    "SerrePositivity/KST/Spectra/PointedMappingFamilyVertices.lean",
+    "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean"
+  ],
+  "skipped": [
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      37,
+      64,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom).app _ a)\n    rw [LaxInclusion.fromD"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      43,
+      72,
+      "SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition.verdierSequence",
+      "verdierSequence\n\nlemma laxVerdierSequenc"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      45,
+      62,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.inclusion",
+      "inclusion =\n    LaxInclusion.exactFromD "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      48,
+      63,
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSequence.projection",
+      "projection = laxFst p q := rfl\n\nend Serr"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      29,
+      31,
+      "SerrePositivity.KST.Spectra.BoundaryLift.boundary",
+      "boundary Lt.boundary)\n\n/-- 概要：二つの持ち上げと f"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      29,
+      43,
+      "SerrePositivity.KST.Spectra.BoundaryLift.boundary",
+      "boundary)\n\n/-- 概要：二つの持ち上げと fiber 内の辺を三角形"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      36,
+      7,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map, Lt.map, r.map ≫ fiberι p (p.app _ e"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      36,
+      15,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map, r.map ≫ fiberι p (p.app _ e)]\n\n/-- "
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      45,
+      41,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map = stdSimplex.δ (0 : Fin 2) ≫ Lt.map\n"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      45,
+      77,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map\n    rw [Ls.face_eq 0 (by decide), Lt"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      46,
+      11,
+      "SerrePositivity.KST.Spectra.BoundaryLift.face_eq",
+      "face_eq 0 (by decide), Lt.face_eq 0 (by "
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      46,
+      37,
+      "SerrePositivity.KST.Spectra.BoundaryLift.face_eq",
+      "face_eq 0 (by decide)]\n  · change stdSim"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      47,
+      41,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map =\n      (stdSimplex.δ (0 : Fin 1).ca"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      50,
+      13,
+      "SerrePositivity.KST.Spectra.BoundaryLift.boundary_ι",
+      "boundary_ι.symm\n  · change stdSimplex.δ "
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      51,
+      41,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map",
+      "map =\n      (stdSimplex.δ (0 : Fin 1).su"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      54,
+      13,
+      "SerrePositivity.KST.Spectra.BoundaryLift.boundary_ι",
+      "boundary_ι.symm\n\ninclude Ls Lt r in\n/-- "
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      69,
+      13,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map_comp",
+      "map_comp\n  · change stdSimplex.δ (1 : Fi"
+    ],
+    [
+      "SerrePositivity/KST/Spectra/ZeroConnectingInjectivity.lean",
+      72,
+      13,
+      "SerrePositivity.KST.Spectra.BoundaryLift.map_comp",
+      "map_comp\n  · intro j hj\n    exact (not_l"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      24,
+      30,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj ⟶ (ihom (Δ[1] : SSet.{u})).obj (laxC"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      24,
+      83,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj :=\n  ZeroArrowFamily.ofHomotopy\n    "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      30,
+      19,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom ≫ LaxInclusion.fromD p q :=\n  ZeroAr"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      34,
+      84,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj :=\n  ZeroArrowFamily.ofHomotopy_targ"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      44,
+      51,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj _\n\ndef cofiber : (laxCategory p q).o"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      46,
+      32,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj ⟶ (laxCategory p q).obj :=\n  Cofiber"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      46,
+      56,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj :=\n  CofiberFamily.cofiber (laxCateg"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      47,
+      42,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj (arrow p q)\n\ninstance cofiber_isExac"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      52,
+      51,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj _⦋0⦌) : IsZeroSourceArrow\n    ((arro"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      53,
+      60,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom).app\n      (Opposite.op ⦋0⦌) x) := b"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      55,
+      79,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom) ≫\n    evaluateFunctorAt (stdSimplex"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      59,
+      47,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj ⟶ C.obj).app _ ((laxSnd p q).hom.app"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      59,
+      55,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj).app _ ((laxSnd p q).hom.app _ x))\n "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      59,
+      80,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom.app _ x))\n  rw [_root_.SerrePositivi"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      64,
+      59,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom) ≫\n      ArrowTarget.target C.obj = "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      65,
+      27,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj = (laxFst p q).hom := by\n  change (a"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      65,
+      46,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom := by\n  change (arrow p q ≫ (ihom (Δ"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      66,
+      64,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom) ≫\n    evaluateFunctorAt (stdSimplex"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      70,
+      60,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom) (laxFst p q).hom := by\n  have e := "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      70,
+      78,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom := by\n  have e := cofiberZeroSourceI"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      71,
+      35,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj\n    (arrow p q ≫ (ihom (Δ[1] : SSet."
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      72,
+      59,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom)\n    (fst_arrow_source_zero p q)\n  r"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiber.lean",
+      75,
+      57,
+      "SerrePositivity.KST.LocalizingInvariants.ExactMap.hom",
+      "hom (arrow p q) ≪≫ e\n\nend SerrePositivit"
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      24,
+      51,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj)\n    (hS : SSet.yonedaEquiv (horn₂₀."
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      26,
+      27,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj _⦋0⦌}\n    (s : Truncated.Edge (X := "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      27,
+      67,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj) y\n      ((laxCategory p q).obj.δ 0 "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      28,
+      25,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj.δ 0 (SSet.yonedaEquiv (horn₂₀.ι₀₂ ≫ "
+    ],
+    [
+      "SerrePositivity/KST/LocalizingInvariants/TammeOreCartesianSpanLift.lean",
+      30,
+      31,
+      "SerrePositivity.KST.LocalizingInvariants.StableCategory.obj",
+      "obj\n    let W := tammeLocalizingEdges p "
+    ],
+    [
+      "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      21,
+      10,
+      "SerrePositivity.KST.SConstruction.CubeDeletionNormal.nil",
+      ".nil => 𝟙 _\n  | _, _, .drop d => serreCu"
+    ],
+    [
+      "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      22,
+      10,
+      "SerrePositivity.KST.SConstruction.CubeDeletionNormal.drop",
+      ".drop d => serreCubeDegeneracy A _ 0 ≫ s"
+    ],
+    [
+      "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      23,
+      10,
+      "SerrePositivity.KST.SConstruction.CubeDeletionNormal.keep",
+      ".keep d => serreCubeDeletionNormal d ⊗ₘ "
+    ]
+  ],
+  "status": "APPLIED_AWAITING_INTERNAL_ROUND_5",
+  "authorization": "IF-F §8",
+  "producer_qualifications": [
+    {
+      "file": "SerrePositivity/KST/Fibration/WeakOreSpanLift.lean",
+      "line": 35,
+      "old": "squareArrowFamily",
+      "new": "SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeOreSpanLift.lean",
+      "line": 39,
+      "old": "squareArrowFamily",
+      "new": "SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxInclusions.lean",
+      "line": 28,
+      "old": "zeroC",
+      "new": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxInclusions.lean",
+      "line": 43,
+      "old": "zeroC",
+      "new": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxInclusions.lean",
+      "line": 36,
+      "old": "zeroD",
+      "new": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxInclusions.lean",
+      "line": 46,
+      "old": "zeroD",
+      "new": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD",
+      "reason": "theorem producer reintroduces legacy unfold head"
+    }
+  ],
+  "nested_scope_qualifications": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/CellZeroNativeSeparation.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeDiskPair.lean",
+      "line": 23,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeHom.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/NativeIntervalIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconePointFiberCoordinates.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconePointFiberIso.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/BridgePreservation.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CoconeLegNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ConeDerivedEquivalence.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ConeInput.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EdgewisePiComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationChartLegs.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationChartNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationCoconeGeometry.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationEdgeNaturality.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationGeneratorClosure.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationHomologyCharts.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationHomologyCoefficients.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationVertexPiChart.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/FilteredSpaceBridgeInput.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/HomologyCharts.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/HomologyChartsPiData.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearHomCohomology.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearLiftPiCharts.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/LinearUnderlyingValueComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleHomologyCharts.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModulePiHomology.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModulePiTransport.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueEdgeEquality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValueNaturality.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleValuePiChart.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ModuleZeroChartExtension.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationPiData.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomClosedNaturality.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomCriterion.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomPiChart.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomSmallPiChart.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeMappingVertexEdge.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/OppositePiZeroComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiChartSpaceCast.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiChartTransport.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PiTransportMap.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedCohomologyNaturality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedModuleCohomology.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedModuleMap.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedMooreNaturality.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/PinchedPiCohomology.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ProjectiveHomCriterion.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/QuotientEpsilonNative.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/SphereClosureEdgeIsoAdapter.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/SphereClosureQuotientEdge.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardClosedPostcomposition.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardMooreNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/StandardPiCohomology.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiChart.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiTransport.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPiZeroComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPointedFilling.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UliftPointedSimplex.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/UnderlyingValueRestriction.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightHomCoordinates.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightHomIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/LeftRightTopCoordinates.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativeColimit.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativeColimitPointHomCriterion.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativePointHomLift.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/PinchedTopCoordinates.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomFamilyFiberCriterion.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomLiftCoordinates.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/PointHomSpaceIso.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedBarDiagram.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedCoherentAugmentation.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/ProjectiveBarNativeCocone.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/ProjectiveBarVertexIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeBarVertexCriterion.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeHomologyColimitCriterion.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/SemifreeNativeColimit.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaIsoNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaOppositeComparison.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaPointedDisplay.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGHomConeLimitCriterion.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGHomTargetPointedFiberEquivalence.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGHomTargetSpaceComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGHomTargetTransportRepresentation.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGKappaSpanPosetShape.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureImage.lean",
+      "line": 23,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationHomTargetSpace.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationUnderlyingIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleHomSpaceInfinity.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactBasic.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactClassicalTransport.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactCone.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactCoproduct.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactProjectiveComparison.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactShift.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactTransport.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedConeSquares.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedLimitTransfer.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedSuspensionComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingCosliceTransport.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpaceInfinity.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpacePointed.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleUnitPinchedNaturality.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGPerfectYonedaIdempotentCompletion.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSemifreeBivariateHomSpaceComparison.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomSourceSpaceComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomSpaceAugmentation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomTargetPointedDisplay.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomTargetSpaceComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingPiMoore.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingWeakEquivalence.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CanonicalCoefficientRelativePrism.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputCoordinatesIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputPathForget.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputStrictForget.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputTriangleEvaluations.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputTriangleExt.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedArrowRepresentation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedAugmentationArrowDiagram.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientCompositionLifts.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientInputs.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCoefficientIntervalMap.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputDiagonals.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputFibers.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedCompositionInputPathTransport.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedHomCoefficientPath.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedHomCoefficientPathLegs.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedLastInputDiagonalFibration.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedModuleArrow.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DerivedRawInputEvaluations.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/EdgeEndpointTransport.lean",
+      "line": 11,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/EdgeRepresentation.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/FunctorEdgeHomotopyRecovery.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/FunctorTriangleTwoFaces.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedAugmentationIntervalNormalization.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedAugmentationNormalization.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientCompositionLifts.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientDiagonalBoundary.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientFixedEdges.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientInputs.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientIntervalPrism.lean",
+      "line": 11,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientTriangles.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionDiagonalPath.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionFactorization.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionInputPathPullback.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPathFactorization.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPathPullback.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCompositionPrismRecovery.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedInputEvaluations.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowCompositionInputs.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetArrowPrism.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCanonicalFace.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCoefficientInputPathLegs.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCoefficientPath.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCollarTriangleEndpoints.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCompositionInputs.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetCompositionTriangles.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDerivedLaxEquivalence.lean",
+      "line": 27,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDiagonalBoundaryFilling.lean",
+      "line": 24,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetDiagonalRelativeNormalization.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetIdentityCommaProjections.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputCoordinates.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputDiagonalEvaluations.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputDiagonals.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputHomotopies.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPath.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPathEquivalence.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputPathPoints.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputStrictComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputStrictEquivalence.lean",
+      "line": 23,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetInputTriangleEvaluations.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxArrowCoordinates.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxArrowTransport.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxBaseCoordinates.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxCoordinateComparison.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxCoordinateTransport.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxEquivalence.lean",
+      "line": 25,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxHomEquivalence.lean",
+      "line": 24,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxInputCoordinates.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxInputEvaluations.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxIntervalTransport.lean",
+      "line": 24,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxRawInputActions.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetLaxVertices.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationCubes.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationInputEndpoints.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationInputPaths.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizationTetrahedron.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetNormalizedPrism.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetOriginalPrism.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetRelativeNormalization.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetStandardCapTriangles.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapCoefficientFace.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapInputPaths.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapIntervalTriangles.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapPastingEndpoints.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCapPastingTriangles.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitCollarIntervalTriangle.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitLoopEvaluation.lean",
+      "line": 25,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitLoopNullity.lean",
+      "line": 29,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSixTriangleDiagram.lean",
+      "line": 23,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSpanRelativeComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitSpanTriangles.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitTriangleDiagrams.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomTargetUnitTriangleFamilies.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityConeComparisonCriterion.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityConeDiagonalZero.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityHomTargetDiagonal.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityHomTargetLaxEquivalence.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityInputDiagonalComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityLaxArrowBaseCofiber.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityLaxDifferenceCharacterization.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityNativeConeComparison.lean",
+      "line": 25,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IdentityRightAxisLaxDifference.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/InputHomotopyClassComparison.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/InputHomotopyTriangleComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IntervalHomMapCriterion.lean",
+      "line": 11,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/KanPathInputTransport.lean",
+      "line": 11,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/KanPathPullbackTransport.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonEquivalence.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonEssentialSurjectivity.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonUniversalProperty.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonVertexImage.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxCospanCofiberComparison.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxCospanIsoCofiberComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxFixedInputEssentialImage.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowComposition.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowCompositionTriangles.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowInterval.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowTriangleEvaluations.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomArrowTriangles.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomComponentEvaluation.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomCompositionInputs.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomCoordinateTargetIso.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomDiagonalComparisonBoundary.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputCoordinateComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputHomotopies.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathEquivalence.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathHomotopyOfFilling.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathInverseOfFilling.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputPathPoints.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputRelativeComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputStrictComparison.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputStrictEquivalenceOfFilling.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalArrowCoordinates.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalBaseCoordinates.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesIso.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalCoordinatesTransport.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalInputBaseEvaluation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomIntervalInputCoordinates.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPinchedIntervalTransport.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPullbackEquivalence.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomPullbackKanComplex.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleHomotopyBoundaries.lean",
+      "line": 12,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleHomotopyFamilies.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomTriangleVariableEdges.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorDiagonalStableImage.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorDiagonalThickImage.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorFlatThickTransport.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorResolvedKernel.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorResolvedQuotient.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceTetrahedronFaceAgreement.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceUnitFace.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelSourceUnitNullity.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelTargetUnitFace.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCapCoefficientFace.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCapTriangleDiagrams.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitCollarTriangle.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitFacesAndBoundaryFilling.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopEvaluation.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopRawEvaluation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitLoopTetrahedronFaces.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitProjectionNullity.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleBoundary.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleDiagram.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ModelUnitSixTriangleLoops.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeArrowComparisonPrism.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCFactorKernel.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalCoefficientPrism.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalIntervalFace.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalIntervalNormalization.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCanonicalUnitCapEndpoints.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeCochainUniverseComparison.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeExitUnitCollarTriangles.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationAugmentationTetrahedron.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationAugmentationTriangles.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationF2Triangles.lean",
+      "line": 14,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationPasting.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationProjectionFamilies.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationStaircase.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationTriangleFamilies.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeNormalizationUnitCaps.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativePerfectYonedaEquivalence.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativePrismDerivedNormalization.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativePrismDerivedPathComparison.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeSemiorthogonal.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapDiagonalEvaluation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapIntervalTriangles.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapPastingEndpoints.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCapPastingTriangles.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarDiagonalEvaluation.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarDiagonalTriangle.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarInputs.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarIntervalTriangle.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCollarTriangles.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCompositionInputPaths.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitCompositionPaths.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputCoefficientEndpoints.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputEndpoints.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeUnitInputModelPaths.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackComparison.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackEquivalence.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackEssentialSurjectivity.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackFlatQuotient.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackFullyFaithful.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackKernelLocalization.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackObjects.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackQuasiIso.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackRetracts.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackStableClosure.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackThickFlatTransport.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackThickImage.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/PinchedIntervalPullbackTransport.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/StableFactorKernels.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/StableLaxStructure.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/TriangleDiagramParameterTransport.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/TriangleDiagramVertices.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCapCoefficientChoiceComparison.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCapPastingCoefficientFace.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitCollarCompositionTriangle.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleDiagram.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleDiagramCancellation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSixTriangleVertices.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanAlignedDiagonalTriangles.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanHexagonReduction.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanRelativeComparison.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UnitSpanTriangles.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseCanonicalCoefficientTriangles.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseDerivedArrowOfEq.lean",
+      "line": 13,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseDerivedArrowRepresentation.lean",
+      "line": 15,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/CompactStage.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/Covers.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/NativeRetract.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/PresentationReduction.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/RepresentativeImage.lean",
+      "line": 23,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/StrictComparison.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaCovers/UnconditionalCovers.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaPerfect/Closure.lean",
+      "line": 21,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/KappaPerfect/Equivalence.lean",
+      "line": 19,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/LeftFibrationConeUniverse.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleNormalizedPiCriterion.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleNormalizedWeakEquivalence.lean",
+      "line": 20,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModulePiMooreNaturality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModulePiZeroBoundary.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModulePiZeroMoore.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleSphereBoundary.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleSphereNaturality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleSphereRelation.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleTranslation.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/ModuleTranslationPi.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/MooreCycles.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/MooreCyclesNaturality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/MooreHomologyNaturality.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/MooreZeroHomology.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Presentable/DerivedCategory.lean",
+      "line": 24,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/EpsilonSimplexLift.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeActionRequirement.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonDiskObstruction.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonRequirement.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeRepresentableRequirement.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeTarget.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeUnitRequirement.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/QuotientNative.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/StableQuotientModelComparison.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/SuspensionAction/StableQuotientTriangle.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CospanPathLaxSpan.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackCospanEquivalence.lean",
+      "line": 17,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackCospanIsoEquivalence.lean",
+      "line": 16,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackMapComponentEquivalence.lean",
+      "line": 22,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Stable/IdempotentCompletionDensity.lean",
+      "line": 18,
+      "old": "Simplicial",
+      "new": "_root_.Simplicial"
+    }
+  ],
+  "name_lookup_optimization": {
+    "snapshot_equivalence": "indexed-probe/summary.json",
+    "comparator_equivalence": "indexed-probe/comparator-equivalence.json",
+    "hash_algorithm_unchanged": true
+  }
+}

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.SwapEvaluation
 
 /-! # 二重内部 Hom の交換の自然性
@@ -11,6 +13,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 
@@ -39,11 +44,20 @@ lemma internalHomSwap_pre_left {A A' B C : SSet.{u}} (i : A' ⟶ A) :
   apply (cancel_mono (internalHomSwapIso B A' C).hom).mp
   calc
     _ = (pre i).app ((ihom B).obj C) := by
-      rw [Category.assoc, internalHomSwap_twice, Category.comp_id]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice, Category.comp_id]
     _ = (internalHomSwapIso A B C).hom ≫
         ((internalHomSwapIso B A C).hom ≫ (pre i).app ((ihom B).obj C)) := by
-      rw [← Category.assoc, internalHomSwap_twice, Category.id_comp]
+      rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice, Category.id_comp]
     _ = _ := by
       rw [← internalHomSwapIso_pre, ← Category.assoc]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_postcomp := _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_postcomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.internalHomSwap_pre_left := _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_pre_left

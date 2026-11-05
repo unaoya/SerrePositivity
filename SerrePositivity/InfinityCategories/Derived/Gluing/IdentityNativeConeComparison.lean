@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet DifferentialGraded DGNerve KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants F2.Idempotent
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (u + 1)) [DGCategory R C] [Small.{u} C]
   [IsDGPretriangulated R C]
 local notation "I" => DGFunctor.id (A := R) C
@@ -37,11 +37,11 @@ local instance dgGluingIdentityNativePerfect_stable : IsStable (dgNerve R (Perfe
 def dgGluingIdentityNativeConeComparison (hC : IsIdempotentComplete (dgNerve R C))
     (z : C) (hz : IsZero (ForgetEnrichment.of (Complex R) z)) : FunctorIso
     (((dgGluingIdentityHomTargetLaxEquivalence.{u, 0} R C).hom ≫
-      CofiberFamily.cofiber (dgNerve R C)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R C)
         (F2.laxPullbackArrow (𝟙 (dgNerve R C)) (𝟙 (dgNerve R C)))) ≫
       (dgGluingNativePerfectYonedaEquivalence R C hC).hom)
     (dgNerve.map (dgHomGluingConeFunctor R C C C I I)) := by
-  let B : StableCategory.{u + 1} := ⟨dgNerve R C, inferInstance, inferInstance⟩
+  let B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} := ⟨dgNerve R C, inferInstance, inferInstance⟩
   let e := dgGluingIdentityHomTargetLaxEquivalence.{u, 0} R C
   let y := dgGluingNativePerfectYonedaEquivalence R C hC
   let f := dgNerve.map (dgHomGluingConeFunctor R C C C I I)

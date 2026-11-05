@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 /-- 実 left-fibration 輸送の同値性は、同じ宇宙持ち上げた実輸送でも保たれる。 -/
 lemma dgEdgeTransport_ulift_isQCatEquivalence {E B : SSet.{u}}

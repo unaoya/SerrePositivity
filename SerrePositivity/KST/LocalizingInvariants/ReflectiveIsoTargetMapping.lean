@@ -23,7 +23,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 include a hG in
 lemma reflectiveIsoTargetConstantMap_bijective (A : SSet.{u}) [Quasicategory A]
     (x z : X _⦋0⦌) (y : Y _⦋0⦌) (e : VertexIso z (G.app (Opposite.op ⦋0⦌) y)) :
-    Function.Bijective (constantFunctorPostMap F A x z) := by
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x z) := by
   let d := constantVertexIso A e ≪≫ (constantFunctorCompIso A y G).symm
   have h := functorMap_bijective_of_targetIso
     (hoFunctor.map ((ihom A).map F)).toFunctor

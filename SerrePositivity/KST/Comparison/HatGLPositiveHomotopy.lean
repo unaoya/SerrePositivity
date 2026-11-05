@@ -51,9 +51,9 @@ instance hatGLSpace_kanComplex (A : SimplicialObject RingCat.{u}) (r : ℕ)
 -/
 def hatGLPositiveHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (r : ℕ)
     [KanComplex (matrixSpace A r)] (a : (hatGLSpace A r) _⦋0⦌) (n : ℕ) :
-    Spectra.KanHomotopyGroup (hatGLSpace A r) n a ≃*
-      Spectra.KanHomotopyGroup (matrixSpace A r) n a.val :=
-  (Spectra.KanHomotopyGroup.equivOfIso n (hatGLComponentIso A r) rfl).trans
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (hatGLSpace A r) n a ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (matrixSpace A r) n a.val :=
+  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (hatGLComponentIso A r) rfl).trans
     (componentPositiveHomotopyMulEquiv (matrixSpace A r)
       (fun c => IsUnit (matrixComponentMap A r c)) ((hatGLComponentIso A r).hom.app _ a) n)
 
@@ -65,12 +65,12 @@ def hatGLPositiveHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (r : ℕ)
 -/
 theorem hatGLPositiveHomotopyMulEquiv_apply (A : SimplicialObject RingCat.{u}) (r : ℕ)
     [KanComplex (matrixSpace A r)] (a : (hatGLSpace A r) _⦋0⦌) (n : ℕ)
-    (x : Spectra.KanHomotopyGroup (hatGLSpace A r) n a) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (hatGLSpace A r) n a) :
     hatGLPositiveHomotopyMulEquiv A r a n x =
-      Spectra.KanHomotopyGroup.map (hatGLMatrixInclusion A r) rfl x := by
-  change Spectra.KanHomotopyGroup.map _ rfl
-    (Spectra.KanHomotopyGroup.map (hatGLComponentIso A r).hom rfl x) = _
-  exact (DFunLike.congr_fun (Spectra.KanHomotopyGroup.map_comp (n := n)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (hatGLMatrixInclusion A r) rfl x := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map _ rfl
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (hatGLComponentIso A r).hom rfl x) = _
+  exact (DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := n)
     (hatGLComponentIso A r).hom rfl
     (componentSubcomplex (matrixSpace A r) (fun c => IsUnit (matrixComponentMap A r c))).ι
     rfl rfl) x).symm

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
 
 /-!
@@ -15,34 +17,37 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def arrowPrecompositionFoldOrder : Fin 2 × Fin 2 →o Fin 3 where
   toFun p := if p.1 = 1 then 2 else if p.2 = 0 then 0 else 1
   monotone' := by decide
 
 def arrowPrecompositionFold : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] :=
-  stdSimplexProductMap arrowPrecompositionFoldOrder
+  stdSimplexProductMap _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder
 
 lemma arrowPrecompositionFold_one : (SSet.ι₁ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
-    arrowPrecompositionFold = stdSimplex.δ (0 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (0 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_zero : (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
-    arrowPrecompositionFold = stdSimplex.δ (1 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (1 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_source : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫
-    arrowPrecompositionFold = stdSimplex.δ (2 : Fin 3) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = stdSimplex.δ (2 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
   decide
 
 lemma arrowPrecompositionFold_target : prismEndpoint 1 (Δ[1] : SSet.{u}) ≫
-    arrowPrecompositionFold = SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold = SSet.const (stdSimplex.obj₀Equiv.symm (2 : Fin 3)) := by
   apply SSet.yonedaEquiv.injective
   decide
 
@@ -53,7 +58,7 @@ lemma exists_arrowPrecompositionSquare {X : SSet.{u}} [Quasicategory X]
     ∃ T : (Δ[2] : SSet.{u}) ⟶ X,
       stdSimplex.δ (2 : Fin 3) ≫ T = SSet.yonedaEquiv.symm f.edge ∧
       stdSimplex.δ (0 : Fin 3) ≫ T = SSet.yonedaEquiv.symm g.edge ∧
-      prismEndpoint 1 Δ[1] ≫ arrowPrecompositionFold ≫ T = SSet.const c := by
+      prismEndpoint 1 Δ[1] ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold ≫ T = SSet.const c := by
   obtain ⟨⟨k, t⟩⟩ := Truncated.Quasicategory₂.fill21 f g
   let T : (Δ[2] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm t.simplex
   have ht₂ : stdSimplex.δ (2 : Fin 3) ≫ T = SSet.yonedaEquiv.symm f.edge := by
@@ -84,7 +89,40 @@ lemma exists_arrowPrecompositionSquare {X : SSet.{u}} [Quasicategory X]
     rw [pinchedConstant_zero] at h
     exact h
   refine ⟨T, ht₂, ht₀, ?_⟩
-  rw [← Category.assoc, arrowPrecompositionFold_target, SSet.const_comp]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_target, SSet.const_comp]
   exact congrArg SSet.const hc
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFold := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFoldOrder := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFold_one := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFold_source := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFold_target := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFold_zero := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFold_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_arrowPrecompositionSquare := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.exists_arrowPrecompositionSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFoldOrder._proof_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFoldOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowPrecompositionFoldOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowPrecompositionFoldOrder._proof_3

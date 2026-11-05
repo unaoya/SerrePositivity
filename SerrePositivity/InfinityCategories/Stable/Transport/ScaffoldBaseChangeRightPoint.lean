@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.Opposite
@@ -32,17 +34,20 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-private lemma point_normalize_inv {C : Type*} [Category C] {a b a' z t : C}
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
+lemma point_normalize_inv {C : Type*} [Category C] {a b a' z t : C}
     (e : a ≅ b) (h : a = a') (v : z ⟶ b) (f : a' ⟶ t) :
     v ≫ e.inv ≫ (eqToIso h).hom ≫ f =
       v ≫ (F2.isoNormalizeEndpoints e h rfl).inv ≫ f := by
   simp only [F2.isoNormalizeEndpoints, Iso.trans_inv, Iso.symm_inv, eqToIso_refl,
     Iso.refl_inv, Category.id_comp, Category.assoc]
 
-private lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
+lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
     (v : a ⟶ b) (l : b ⟶ c) (g : c ⟶ d) (w : a ⟶ e) (r : e ⟶ d)
     (s : d ⟶ f) {t : C} (z : f ⟶ t) (h : v ≫ l ≫ g = w ≫ r) :
     v ≫ l ≫ g ≫ s ≫ z = w ≫ r ≫ s ≫ z := by
@@ -54,4 +59,16 @@ variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
 local instance instLeftFibrationSndSSet_1 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.appendPointTriangle := _root_.SerrePositivity.InfinityCategories.Stable.Transport.appendPointTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.instLeftFibrationSndSSet_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.point_normalize_inv := _root_.SerrePositivity.InfinityCategories.Stable.Transport.point_normalize_inv

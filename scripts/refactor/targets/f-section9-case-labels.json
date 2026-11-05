@@ -1,0 +1,952 @@
+{
+  "status": "APPLIED_NOT_BUILT",
+  "files": [
+    "SerrePositivity/InfinityCategories/Kan/CubeConnectionGeneration.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeCoordinateCompletion.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeDeletionGeneration.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormal.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeGeneratorWords.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+    "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+    "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+    "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+    "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+    "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+    "SerrePositivity/KST/SConstruction/CubeNormalEndpoints.lean",
+    "SerrePositivity/KST/SConstruction/CubeNormalGenerated.lean",
+    "SerrePositivity/KST/SConstruction/CubeNormalTensor.lean",
+    "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+    "SerrePositivity/KST/SConstruction/CubeWordRightKeep.lean",
+    "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+    "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+    "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+    "SerrePositivity/KST/SConstruction/SerreCubeWordEvaluation.lean",
+    "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundary.lean",
+    "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundaryZero.lean",
+    "SerrePositivity/KST/SConstruction/SimplexHABeadWordRecovery.lean",
+    "SerrePositivity/KST/SConstruction/SimplexHABeadWordValues.lean"
+  ],
+  "changes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeConnectionGeneration.lean",
+      "start": 1962,
+      "end": 2034,
+      "line": 30,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeConnectionGeneration.lean",
+      "start": 2056,
+      "end": 2136,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeConnectionGeneration.lean",
+      "start": 2170,
+      "end": 2244,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeCoordinateCompletion.lean",
+      "start": 1835,
+      "end": 1901,
+      "line": 28,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeCoordinateCompletion.lean",
+      "start": 1923,
+      "end": 1991,
+      "line": 29,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeCoordinateCompletion.lean",
+      "start": 2023,
+      "end": 2091,
+      "line": 30,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionGeneration.lean",
+      "start": 1895,
+      "end": 1965,
+      "line": 30,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionGeneration.lean",
+      "start": 1987,
+      "end": 2065,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionGeneration.lean",
+      "start": 2099,
+      "end": 2171,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormal.lean",
+      "start": 2957,
+      "end": 3026,
+      "line": 62,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormal.lean",
+      "start": 3105,
+      "end": 3174,
+      "line": 65,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 850,
+      "end": 919,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 952,
+      "end": 1021,
+      "line": 27,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 1213,
+      "end": 1282,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 1421,
+      "end": 1490,
+      "line": 35,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 1523,
+      "end": 1592,
+      "line": 37,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeDeletionNormalDetection.lean",
+      "start": 1789,
+      "end": 1858,
+      "line": 41,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeGeneratorWords.lean",
+      "start": 1595,
+      "end": 1659,
+      "line": 43,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeGeneratorWords.lean",
+      "start": 1750,
+      "end": 1820,
+      "line": 44,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeGeneratorWords.lean",
+      "start": 1913,
+      "end": 1983,
+      "line": 45,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+      "start": 966,
+      "end": 1038,
+      "line": 22,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+      "start": 1124,
+      "end": 1198,
+      "line": 23,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+      "start": 1294,
+      "end": 1374,
+      "line": 24,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+      "start": 1472,
+      "end": 1552,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeOrderedNormalForm.lean",
+      "start": 1650,
+      "end": 1724,
+      "line": 26,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+      "start": 1124,
+      "end": 1196,
+      "line": 24,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+      "start": 1235,
+      "end": 1309,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+      "start": 1576,
+      "end": 1656,
+      "line": 28,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+      "start": 1925,
+      "end": 2005,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Kan/CubeWordRealization.lean",
+      "start": 2280,
+      "end": 2354,
+      "line": 34,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+      "start": 2217,
+      "end": 2289,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+      "start": 2301,
+      "end": 2375,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+      "start": 2477,
+      "end": 2557,
+      "line": 33,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+      "start": 2661,
+      "end": 2741,
+      "line": 34,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Simplicial/CubeMapGenerated.lean",
+      "start": 2845,
+      "end": 2919,
+      "line": 35,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 1537,
+      "end": 1605,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 1626,
+      "end": 1695,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 1769,
+      "end": 1838,
+      "line": 35,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 1870,
+      "end": 1939,
+      "line": 37,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 2130,
+      "end": 2199,
+      "line": 41,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 3474,
+      "end": 3542,
+      "line": 62,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 3591,
+      "end": 3660,
+      "line": 63,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 3929,
+      "end": 3998,
+      "line": 69,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalComposition.lean",
+      "start": 4666,
+      "end": 4735,
+      "line": 81,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 953,
+      "end": 1021,
+      "line": 22,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 1047,
+      "end": 1116,
+      "line": 23,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 1445,
+      "end": 1514,
+      "line": 28,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 2457,
+      "end": 2525,
+      "line": 48,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 2546,
+      "end": 2615,
+      "line": 49,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 2647,
+      "end": 2716,
+      "line": 51,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 2775,
+      "end": 2844,
+      "line": 52,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 2926,
+      "end": 2995,
+      "line": 55,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3027,
+      "end": 3096,
+      "line": 57,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3180,
+      "end": 3249,
+      "line": 60,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3585,
+      "end": 3653,
+      "line": 68,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3674,
+      "end": 3743,
+      "line": 69,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3775,
+      "end": 3844,
+      "line": 71,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 3923,
+      "end": 3992,
+      "line": 74,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 4074,
+      "end": 4143,
+      "line": 77,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 4175,
+      "end": 4244,
+      "line": 79,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeDeletionNormalUsed.lean",
+      "start": 4328,
+      "end": 4397,
+      "line": 82,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+      "start": 3207,
+      "end": 3279,
+      "line": 62,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+      "start": 3329,
+      "end": 3403,
+      "line": 63,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+      "start": 3465,
+      "end": 3545,
+      "line": 64,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+      "start": 3615,
+      "end": 3695,
+      "line": 65,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeLeftKeep.lean",
+      "start": 3765,
+      "end": 3839,
+      "line": 66,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalEndpoints.lean",
+      "start": 2129,
+      "end": 2197,
+      "line": 53,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalEndpoints.lean",
+      "start": 2247,
+      "end": 2316,
+      "line": 54,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalEndpoints.lean",
+      "start": 2401,
+      "end": 2470,
+      "line": 58,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalGenerated.lean",
+      "start": 732,
+      "end": 800,
+      "line": 18,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalGenerated.lean",
+      "start": 1086,
+      "end": 1155,
+      "line": 22,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalGenerated.lean",
+      "start": 1441,
+      "end": 1510,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalTensor.lean",
+      "start": 3682,
+      "end": 3750,
+      "line": 61,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.nil",
+      "new": "nil",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalTensor.lean",
+      "start": 3762,
+      "end": 3831,
+      "line": 62,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeNormalTensor.lean",
+      "start": 3873,
+      "end": 3942,
+      "line": 63,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+      "start": 3221,
+      "end": 3293,
+      "line": 61,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+      "start": 3344,
+      "end": 3418,
+      "line": 62,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+      "start": 3481,
+      "end": 3561,
+      "line": 63,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+      "start": 3632,
+      "end": 3712,
+      "line": 64,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeRightKeep.lean",
+      "start": 3783,
+      "end": 3857,
+      "line": 65,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+      "new": "comp",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeWordRightKeep.lean",
+      "start": 2413,
+      "end": 2477,
+      "line": 44,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeWordRightKeep.lean",
+      "start": 2547,
+      "end": 2617,
+      "line": 45,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubeWordRightKeep.lean",
+      "start": 2689,
+      "end": 2759,
+      "line": 46,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 1803,
+      "end": 1872,
+      "line": 45,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.drop",
+      "new": "drop",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeDeletionNormal.lean",
+      "start": 2097,
+      "end": 2166,
+      "line": 50,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep",
+      "new": "keep",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+      "start": 974,
+      "end": 1046,
+      "line": 24,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+      "start": 1528,
+      "end": 1602,
+      "line": 31,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+      "start": 2014,
+      "end": 2094,
+      "line": 37,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeRightKeepNaturality.lean",
+      "start": 2528,
+      "end": 2608,
+      "line": 44,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+      "start": 943,
+      "end": 1015,
+      "line": 22,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+      "new": "id",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+      "start": 1067,
+      "end": 1141,
+      "line": 23,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+      "start": 1203,
+      "end": 1283,
+      "line": 24,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeTensorRightNaturality.lean",
+      "start": 1347,
+      "end": 1427,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeWordEvaluation.lean",
+      "start": 794,
+      "end": 858,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face",
+      "new": "face",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeWordEvaluation.lean",
+      "start": 902,
+      "end": 972,
+      "line": 26,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy",
+      "new": "degeneracy",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SerreCubeWordEvaluation.lean",
+      "start": 1018,
+      "end": 1088,
+      "line": 27,
+      "old": "_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection",
+      "new": "connection",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundary.lean",
+      "start": 2844,
+      "end": 2919,
+      "line": 53,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead",
+      "new": "bead",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordBoundaryZero.lean",
+      "start": 880,
+      "end": 955,
+      "line": 22,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead",
+      "new": "bead",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordRecovery.lean",
+      "start": 1038,
+      "end": 1113,
+      "line": 25,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead",
+      "new": "bead",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordRecovery.lean",
+      "start": 1370,
+      "end": 1445,
+      "line": 30,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join",
+      "new": "join",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordValues.lean",
+      "start": 1499,
+      "end": 1574,
+      "line": 32,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.bead",
+      "new": "bead",
+      "reason": "tactic_case_label_not_global_reference"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/SimplexHABeadWordValues.lean",
+      "start": 1591,
+      "end": 1666,
+      "line": 33,
+      "old": "_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join",
+      "new": "join",
+      "reason": "tactic_case_label_not_global_reference"
+    }
+  ],
+  "unclassified_patterns": [],
+  "exact_inverse_of_sweep": true
+}

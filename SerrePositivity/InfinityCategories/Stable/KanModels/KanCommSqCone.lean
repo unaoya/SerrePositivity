@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialNerve
@@ -44,11 +46,14 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 元の Kan 対象の恒等射は、同じ coherent nerve 内で可逆である。 -/
 theorem kanIdentityEdge_isInvertible (T : KanObject.{u}) :
@@ -68,4 +73,22 @@ def kanCommSqCone (sq : CommSq a b f g) :
 def kanCommSqComparison (sq : CommSq a b f g) : P.obj ⟶ pullback g f :=
   pullback.lift b a sq.w.symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqComparison := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqCone := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanIdentityEdge_isInvertible := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanCommSqCone._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone._proof_1

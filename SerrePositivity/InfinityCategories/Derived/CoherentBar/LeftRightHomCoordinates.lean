@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve DGNerve.PinchedHom SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] (x y : C)
 
 lemma dgCoherentBarLeftRightHomIso_linear {n : ℕ}

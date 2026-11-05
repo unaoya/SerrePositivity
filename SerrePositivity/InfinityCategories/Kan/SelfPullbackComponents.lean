@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SelfPullbackConnectingSwap
 public import SerrePositivity.InfinityCategories.Kan.FiberInclusionComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -31,7 +36,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Kerodon §3.1.1。自己 pullback の零次数の完全列。 -/
 instance selfPullback_kanComplex {E B : SSet.{u}} (p : E ⟶ B)
     [Fibration p] [KanComplex E] : KanComplex (pullback p p) := by
-  have : Fibration (pullback.snd p p) := fibration_pullback_snd p p
+  have : Fibration (pullback.snd p p) := _root_.SerrePositivity.InfinityCategories.Kan.fibration_pullback_snd p p
   change Fibration (terminal.from (pullback p p))
   rw [show terminal.from (pullback p p) = pullback.snd p p ≫ terminal.from E from
     terminal.hom_ext _ _]
@@ -43,28 +48,28 @@ instance selfPullback_kanComplex {E B : SSet.{u}} (p : E ⟶ B)
 使われ方：Goerss–Jardine I §7。二因子の交換の式を全成分へ拡張する。 -/
 theorem selfPullbackFiberInclusion_surjective {E B : SSet.{u}}
     [KanComplex E] (p : E ⟶ B) [Fibration p] [Subsingleton (π₀ E)]
-    (e : E _⦋0⦌) : Function.Surjective (mapπ₀ (selfPullbackFiberInclusion p e)) := by
+    (e : E _⦋0⦌) : Function.Surjective (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e)) := by
   let q := pullback.snd p p
-  have : Fibration q := fibration_pullback_snd p p
-  let u := (selfPullbackFiberInclusion p e).app _ (fiberPoint p e)
+  have : Fibration q := _root_.SerrePositivity.InfinityCategories.Kan.fibration_pullback_snd p p
+  let u := (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e).app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
   have hu : q.app _ u = e := by
-    have h : selfPullbackFiberInclusion p e ≫ q = SSet.const e := pullback.lift_snd _ _ _
+    have h : _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e ≫ q = SSet.const e := pullback.lift_snd _ _ _
     simpa [SSet.const, u] using
-      congrArg (fun k : KanFiber p (p.app _ e) ⟶ E => k.app _ (fiberPoint p e)) h
-  let φ : KanFiber q e ⟶ KanFiber p (p.app _ e) :=
-    fiberLift p (p.app _ e) (fiberι q e ≫ pullback.fst p p) (by
+      congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) ⟶ E => k.app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) h
+  let φ : _root_.SerrePositivity.InfinityCategories.Kan.KanFiber q e ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p (p.app _ e) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι q e ≫ pullback.fst p p) (by
       rw [Category.assoc, pullback.condition, ← Category.assoc]
-      change (fiberι q e ≫ q) ≫ p = _
-      rw [fiberι_comp, SSet.const_comp])
-  have hφ : φ ≫ selfPullbackFiberInclusion p e = fiberι q e := by
+      change (_root_.SerrePositivity.InfinityCategories.Kan.fiberι q e ≫ q) ≫ p = _
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.const_comp])
+  have hφ : φ ≫ _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e = _root_.SerrePositivity.InfinityCategories.Kan.fiberι q e := by
     apply pullback.hom_ext
-    · simp only [φ, selfPullbackFiberInclusion, Category.assoc, pullback.lift_fst,
-        fiberLift_ι]
-    · simp only [selfPullbackFiberInclusion, Category.assoc, pullback.lift_snd,
+    · simp only [φ, _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion, Category.assoc, pullback.lift_fst,
+        _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
+    · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion, Category.assoc, pullback.lift_snd,
         SSet.comp_const]
-      exact (fiberι_comp q e).symm
+      exact (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp q e).symm
   intro a
-  obtain ⟨b, hb⟩ := fiberInclusion_piZero_surjective_at q u e hu a
+  obtain ⟨b, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kan.fiberInclusion_piZero_surjective_at q u e hu a
   refine ⟨mapπ₀ φ b, ?_⟩
   rw [← mapπ₀_comp_apply, hφ]
   exact hb
@@ -76,13 +81,25 @@ theorem selfPullbackFiberInclusion_surjective {E B : SSet.{u}}
 theorem selfPullbackConnecting_surjective {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     [Subsingleton (π₀ E)] (e : E _⦋0⦌) :
-    Function.Surjective (selfPullbackConnecting p e) := by
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting p e) := by
   intro a
-  obtain ⟨b, rfl⟩ := selfPullbackFiberInclusion_surjective p e a
-  obtain ⟨c, hc⟩ := (componentConnecting_exact p e (p.app _ e) rfl b).1
+  obtain ⟨b, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion_surjective p e a
+  obtain ⟨c, hc⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact p e (p.app _ e) rfl b).1
     (Subsingleton.elim _ _)
-  exact ⟨c, congrArg (mapπ₀ (selfPullbackFiberInclusion p e)) hc⟩
+  exact ⟨c, congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion p e)) hc⟩
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting_surjective := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackFiberInclusion_surjective := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion_surjective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullback_kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_kanComplex

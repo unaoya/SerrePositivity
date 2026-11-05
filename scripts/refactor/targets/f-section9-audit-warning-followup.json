@@ -1,0 +1,29 @@
+{
+  "authorization": "IF-F §9 full audit sweep",
+  "cause": "Two unqualified audit identifiers resolved to deprecated aliases inside the old namespace. Fully qualified lexical scan and production ilean scan did not cover these audit commands.",
+  "file": "scripts/audit_kst_s_construction.lean",
+  "changes": [
+    {
+      "old": "SerrePositivity.KST.SConstruction.compositionTripleTetrahedronOfMap",
+      "new": "SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedronOfMap",
+      "check": 1,
+      "print_axioms": 1
+    },
+    {
+      "old": "SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap",
+      "new": "SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap",
+      "check": 1,
+      "print_axioms": 1
+    }
+  ],
+  "source_declarations_changed": false,
+  "commands_removed": 0,
+  "commands_added": 0,
+  "first_verify_commit": "5c72d9a56cac36857647a8495d2dbb8182428350",
+  "first_verify_status": "PASS",
+  "first_verify_deprecated_alias_warnings": 2,
+  "first_evidence": ".lake/verify/if-f2/verify-first/",
+  "before_sha256": "31e4b53ad0027716376d5fcfb1e87e9fd37b10ccce6b0d373b2cedd1363d7682",
+  "after_sha256": "197b53654cb7f054b8dfe2728c8e898674c81761b6edf63cc16fdc489dcd6fb4",
+  "followup": "Full verify rerun with existing content-keyed cache; changed audit reruns and sorry closure is always fresh."
+}

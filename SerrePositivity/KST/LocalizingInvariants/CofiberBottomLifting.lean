@@ -12,14 +12,14 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
 /- 底辺を固定したまま全境界を持ち上げる。 -/
 instance bottom_trivialKanFibration (X : SSet.{u})
     [Quasicategory X] [IsStable X] :
-    TrivialKanFibration (bottom X) := by
+    TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) := by
   apply (trivialKanFibration_iff_boundary _).2
   intro n
   constructor
@@ -35,9 +35,9 @@ instance bottom_trivialKanFibration (X : SSet.{u})
     rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply, hv]
   | succ n =>
     let ι := (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X)
-      Predicate).ι
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate).ι
     let j := (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj X) IsZeroTargetArrow).ι
-    have hBR : CommSq (a ≫ left X) (boundary (n + 1)).ι
+    have hBR : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X) (boundary (n + 1)).ι
         (zeroTargetArrowSource X)
         (b ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
       constructor
@@ -54,18 +54,18 @@ instance bottom_trivialKanFibration (X : SSet.{u})
       · rw [Category.assoc, stable_spanFamilyOfArrows_left]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map,
           spanSquareBoundary_bottomEdge]
-        change (boundary (n + 1)).ι ≫ b = a ≫ bottom X
+        change (boundary (n + 1)).ι ≫ b = a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X
         exact sq.w.symm
       · rw [Category.assoc, stable_spanFamilyOfArrows_right]
         rw [← Category.assoc, hBR.fac_left, Category.assoc]
-        rw [left, fullSubcomplexLift_ι]
+        rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left, fullSubcomplexLift_ι]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, spanSquareBoundary_leftEdge]
         rfl
-    let c := a ≫ cocones X
+    let c := a ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X
     have hcd : CommSq c (boundary (n + 1)).ι
         (colimitCoconeProjection (horn 2 0 : SSet.{u}) X) d := by
       constructor
-      rw [Category.assoc, cocones_projection]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_projection]
       exact hd.symm
     have : HasLiftingProperty (boundary (n + 1)).ι
         (colimitCoconeProjection (horn 2 0 : SSet.{u}) X) :=
@@ -77,14 +77,14 @@ instance bottom_trivialKanFibration (X : SSet.{u})
     have hFa : (boundary (n + 1)).ι ≫ F = a ≫ ι := by
       dsimp only [F]
       rw [← Category.assoc, ← Category.assoc, hcd.fac_left, Category.assoc]
-      change a ≫ (cocones X ≫ k) ≫
+      change a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones X ≫ k) ≫
         (pre spanCoconeSquareIso.inv).app X = _
-      rw [cocones_inclusion]
+      rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_inclusion]
       simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, Iso.inv_hom_id,
         pre_id, NatTrans.id_app, Category.comp_id]
       rfl
     have hv (v : (Δ[n + 1] : SSet.{u}) _⦋0⦌) :
-        Predicate (F.app (Opposite.op ⦋0⦌) v) := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (F.app (Opposite.op ⦋0⦌) v) := by
       let w : (boundary (n + 1) : SSet.{u}) _⦋0⦌ := ⟨v, by
         have h := vertex_mem_boundary.{u} n (stdSimplex.obj₀Equiv.{u} v)
         rw [Equiv.symm_apply_apply] at h
@@ -93,7 +93,7 @@ instance bottom_trivialKanFibration (X : SSet.{u})
       change F.app (Opposite.op ⦋0⦌) v = (a.app (Opposite.op ⦋0⦌) w).val at he
       rw [he]
       exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) w)
-    let g := fullSubcomplexLift Predicate F hv
+    let g := fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate F hv
     have hg : g ≫ ι = F := fullSubcomplexLift_ι _ _ _
     refine CommSq.HasLift.mk' { l := g, fac_left := ?_, fac_right := ?_ }
     · apply (cancel_mono ι).1

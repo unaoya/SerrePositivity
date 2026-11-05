@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma prismEdge_source {A B : SSet.{u}} {x y : B _⦋0⦌} (e : B.Edge x y) :
-    CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
       (A ◁ SSet.yonedaEquiv.symm e.edge) = lift (𝟙 A) (SSet.const x) := by
-  rw [CurryHomotopy.sliceMap, lift_whiskerLeft, SSet.const_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap, lift_whiskerLeft, SSet.const_comp]
   have he : (SSet.yonedaEquiv.symm e.edge).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = x := by
     have hb : stdSimplex.obj₀Equiv.symm (0 : Fin 2) =
@@ -35,9 +35,9 @@ lemma prismEdge_source {A B : SSet.{u}} {x y : B _⦋0⦌} (e : B.Edge x y) :
   rw [he]
 
 lemma prismEdge_target {A B : SSet.{u}} {x y : B _⦋0⦌} (e : B.Edge x y) :
-    CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫
       (A ◁ SSet.yonedaEquiv.symm e.edge) = lift (𝟙 A) (SSet.const y) := by
-  rw [CurryHomotopy.sliceMap, lift_whiskerLeft, SSet.const_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap, lift_whiskerLeft, SSet.const_comp]
   have he : (SSet.yonedaEquiv.symm e.edge).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = y := by
     have hb : stdSimplex.obj₀Equiv.symm (1 : Fin 2) =

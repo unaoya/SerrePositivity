@@ -27,7 +27,7 @@ lemma coherentEqToHom_value_heq {X Y : SSet.{u}} (h : X = Y) {d : ℕ} (x : X _�
 lemma coherentStringNativeMap_value_heq {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    {x y : I} {f : x ⟶ y} (s : CoherentArrowString f) {d : ℕ}
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) {d : ℕ}
     (P : (nerve (Path (ULift.up 0 : ULift.{u} (Fin (s.length + 1)))
       (ULift.up (Fin.last s.length)))) _⦋d⦌) :
     HEq ((coherentStringNativeMap Q s).app (Opposite.op ⦋d⦌) P)

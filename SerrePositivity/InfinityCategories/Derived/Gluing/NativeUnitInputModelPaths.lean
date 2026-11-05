@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 private lemma dgGluingIsoInputPath_precomp {P K E B : SSet.{u}} (e : P ≅ K) (V : P ⊗ Δ[1] ⟶ E)
     (p : E ⟶ B) (a : K ⟶ B)
     (h : V ≫ p = fst P (Δ[1] : SSet.{u}) ≫ e.hom ≫ a) :

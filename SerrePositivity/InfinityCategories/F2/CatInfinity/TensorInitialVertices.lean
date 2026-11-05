@@ -32,7 +32,7 @@ lemma isInitialVertex_tensor {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y
   apply F1B.kanIsInitialVertex_of_pinchedHom_isContractibleKan
   intro z
   exact isContractibleKan_of_iso (pinchedHomTensorIso (x, y) z).symm
-    (SerrePositivity.KST.SConstruction.contractibleKan_tensor
+    (SerrePositivity.InfinityCategories.Core.contractibleKan_tensor
       (F1B.kanInitialVertex_pinchedHom_isContractibleKan hx _)
       (F1B.kanInitialVertex_pinchedHom_isContractibleKan hy _))
 

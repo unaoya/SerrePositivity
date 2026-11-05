@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 
 /-! # 内部 uncurry の行と列の厳密な制限
@@ -12,9 +14,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 固定頂点での評価は閉構造の評価への定値頂点の挿入。 -/
 lemma evaluateFunctorAt_as_ev (A C : SSet.{u}) (a : A _⦋0⦌) :
@@ -31,7 +36,7 @@ lemma ihomUncurry_pre_row (A B C : SSet.{u}) (b : B _⦋0⦌) :
   have hs : (lift (𝟙 A) (SSet.const b) ▷ (ihom B).obj ((ihom A).obj C)) ≫
       (α_ A B ((ihom B).obj ((ihom A).obj C))).hom =
     A ◁ lift (SSet.const b) (𝟙 ((ihom B).obj ((ihom A).obj C))) := rfl
-  rw [← Category.assoc, hs, ← MonoidalCategory.whiskerLeft_comp_assoc, evaluateFunctorAt_as_ev]
+  rw [← Category.assoc, hs, ← MonoidalCategory.whiskerLeft_comp_assoc, _root_.SerrePositivity.InfinityCategories.Kan.evaluateFunctorAt_as_ev]
   rfl
 
 /-- 内部 uncurry 後の第一添字を固定する列制限は第一添字での後合成評価。 -/
@@ -50,6 +55,18 @@ lemma ihomUncurry_pre_column (A B C : SSet.{u}) (a : A _⦋0⦌) :
       (α_ A B ((ihom B).obj ((ihom A).obj C))).hom) ≫
       A ◁ (ihom.ev B).app ((ihom A).obj C) =
     (ihom.ev B).app ((ihom A).obj C) ≫ lift (SSet.const a) (𝟙 ((ihom A).obj C)) := rfl
-  rw [← Category.assoc, ← Category.assoc, hs, Category.assoc, evaluateFunctorAt_as_ev]
+  rw [← Category.assoc, ← Category.assoc, hs, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.evaluateFunctorAt_as_ev]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.evaluateFunctorAt_as_ev := _root_.SerrePositivity.InfinityCategories.Kan.evaluateFunctorAt_as_ev
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ihomUncurry_pre_column := _root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_column
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ihomUncurry_pre_row := _root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_row

@@ -23,7 +23,7 @@ universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 noncomputable section
 
@@ -37,13 +37,13 @@ lemma fibration_vertex_in_component {E B : SSet.{u}} [KanComplex E] [KanComplex 
     ∃ e' : E _⦋0⦌, p.app _ e' = b ∧ π₀.mk e' = π₀.mk e := by
   let s : E.PtSimplex 0 e := (PtSimplex.equiv₀ e).symm e
   let t : B.PtSimplex 0 (p.app _ e) := (PtSimplex.equiv₀ _).symm b
-  have heq : KanHomotopy.mk 0 t = KanHomotopy.mk 0 (mapSimplex p rfl s) := by
-    change KanHomotopyZero.mk t = KanHomotopyZero.map p rfl (KanHomotopy.point 0)
-    apply KanHomotopyZero.equivPiZero.injective
-    rw [KanHomotopyZero.equivPiZero_mk, KanHomotopyZero.equivPiZero_map,
-      KanHomotopyZero.equivPiZero_point, Equiv.apply_symm_apply, mapπ₀_mk]
+  have heq : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 t = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) := by
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk t = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map p rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0)
+    apply _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.injective
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map,
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point, Equiv.apply_symm_apply, mapπ₀_mk]
     exact hb.symm
-  obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct 0 t (mapSimplex p rfl s) 0).1 heq
+  obtain ⟨r⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct 0 t (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) 0).1 heq
   have hp : J.rlp p := (fibration_iff _).1 inferInstance
   let : HasLiftingProperty (SSet.stdSimplex.δ.{u} (1 : Fin 2)) p :=
     AnodyneHomotopy.delta_anodyne 1 0 (by decide) p hp
@@ -77,13 +77,13 @@ lemma fibration_vertex_in_component {E B : SSet.{u}} [KanComplex E] [KanComplex 
 lemma fibration_componentFiber_exists {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) (a : π₀ E)
     (ha : mapπ₀ p a = π₀.mk b) :
-    ∃ c : π₀ (KanFiber p b), mapπ₀ (fiberι p b) c = a := by
+    ∃ c : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b), mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b) c = a := by
   obtain ⟨e, rfl⟩ := π₀.mk_surjective a
   obtain ⟨e', he', hc⟩ := fibration_vertex_in_component p e b ha
-  let k : (SSet.stdSimplex.obj ⦋0⦌ : SSet.{u}) ⟶ KanFiber p b :=
-    fiberLift p b (SSet.const e') (by simp only [const_comp, he'])
+  let k : (SSet.stdSimplex.obj ⦋0⦌ : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b :=
+    _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p b (SSet.const e') (by simp only [const_comp, he'])
   refine ⟨π₀.mk (SSet.yonedaEquiv k), ?_⟩
-  rw [mapπ₀_mk, ← SSet.yonedaEquiv_comp, fiberLift_ι, SSet.yonedaEquiv_const]
+  rw [mapπ₀_mk, ← SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, SSet.yonedaEquiv_const]
   exact hc
 
 /-- 概要：任意の底の頂点上の fiber の成分の像は、その頂点に写る全空間の成分全体。
@@ -93,12 +93,12 @@ lemma fibration_componentFiber_exists {E B : SSet.{u}} [KanComplex E] [KanComple
 lemma fibration_componentFiber_exact {E B : SSet.{u}} [KanComplex E] [KanComplex B]
     (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) (a : π₀ E) :
     mapπ₀ p a = π₀.mk b ↔
-      ∃ c : π₀ (KanFiber p b), mapπ₀ (fiberι p b) c = a := by
+      ∃ c : π₀ (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b), mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b) c = a := by
   constructor
   · exact fibration_componentFiber_exists p b a
   · rintro ⟨c, rfl⟩
     obtain ⟨v, rfl⟩ := π₀.mk_surjective c
-    rw [mapπ₀_mk, mapπ₀_mk, fiber_vertex_base]
+    rw [mapπ₀_mk, mapπ₀_mk, _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base]
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 /-- 底の同型に沿う同じ coslice の分類図式の全関手比較。 -/
 def dgCosliceYonedaSpaceIsoNaturality (e : X ≅ Y) (x : X _⦋0⦌) :

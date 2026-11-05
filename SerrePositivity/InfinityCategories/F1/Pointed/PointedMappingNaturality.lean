@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -56,6 +58,9 @@ open CategoryTheory MonoidalCategory MonoidalClosed
 open CartesianMonoidalCategory
 
 namespace SerrePositivity.KST.Spectra.PointedMapping
+end SerrePositivity.KST.Spectra.PointedMapping
+namespace SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+open SerrePositivity.KST.Spectra.PointedMapping
 
 noncomputable section
 
@@ -80,11 +85,11 @@ theorem homBasepoint_pre {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 使われ方：BF 1978 §2、HTT A.3.3。閉構造の制限との比較。 -/
 def prePointed {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) : PointedObject.basedHom Y Z ⟶ PointedObject.basedHom X Z :=
-  Under.homMk (pre i Z) (by
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z) (by
     apply (cancel_mono (PointedObject.basedHomι X Z)).mp
-    rw [Category.assoc, pre_ι, ← Category.assoc, PointedObject.basedHom_basepoint_ι,
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, PointedObject.basedHom_basepoint_ι,
       PointedObject.basedHom_basepoint_ι]
-    exact homBasepoint_pre i Z)
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.homBasepoint_pre i Z)
 
 /-- 概要：smash の第一変数の制限と点つき Hom の源の制限は随伴で対応する。
 方針：smash の商へ引き戻して指数の curry の自然性を使う。
@@ -93,10 +98,10 @@ def prePointed {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 theorem smashCurry_pre {X Y W Z : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (f : PointedObject.smash Y W ⟶ Z) :
     PointedObject.smashCurry (PointedObject.smashMap i (𝟙 W) ≫ f) =
-      PointedObject.smashCurry f ≫ prePointed i Z := by
+      PointedObject.smashCurry f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z := by
   apply Under.UnderMorphism.ext
   apply (cancel_mono (PointedObject.basedHomι X Z)).mp
-  simp only [Under.comp_right, Category.assoc, prePointed, Under.homMk_right, pre_ι,
+  simp only [Under.comp_right, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed, Under.homMk_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι,
     PointedObject.smashCurry_ι, PointedObject.smashCurry_ι_assoc]
   rw [MonoidalClosed.curry_pre_app]
   congr 1
@@ -111,20 +116,44 @@ theorem smashCurry_pre {X Y W Z : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 使われ方：HTT A.3.3、BF 1978 §2。通常の射への制限の作用。 -/
 theorem prePointed_eq_closedPre {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
-    prePointed i Z = (MonoidalClosed.pre i).app Z := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z = (MonoidalClosed.pre i).app Z := by
   have hc {P Q R : PointedSimplicialSet.{u}} (f : P ⊗ Q ⟶ R) :
       MonoidalClosed.curry f = PointedObject.smashCurry f := by
     change (PointedObject.smashHomAdjunction P).homEquiv Q R f = _
     simp only [PointedObject.smashHomAdjunction, Adjunction.mkOfHomEquiv_homEquiv]
     rfl
-  have h := smashCurry_pre i ((ihom.ev Y).app Z)
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.smashCurry_pre i ((ihom.ev Y).app Z)
   simp only [← hc] at h
   change MonoidalClosed.curry (i ▷ ((ihom Y).obj Z) ≫ (ihom.ev Y).app Z) =
-    MonoidalClosed.curry ((ihom.ev Y).app Z) ≫ prePointed i Z at h
+    MonoidalClosed.curry ((ihom.ev Y).app Z) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z at h
   rw [← MonoidalClosed.uncurry_id_eq_ev, MonoidalClosed.curry_uncurry, Category.id_comp] at h
   rw [← h, MonoidalClosed.uncurry_id_eq_ev, ← MonoidalClosed.uncurry_pre,
     MonoidalClosed.curry_uncurry]
 
 end
 
-end SerrePositivity.KST.Spectra.PointedMapping
+end SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.homBasepoint_pre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.homBasepoint_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed_eq_closedPre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.smashCurry_pre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.smashCurry_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed.eq_1

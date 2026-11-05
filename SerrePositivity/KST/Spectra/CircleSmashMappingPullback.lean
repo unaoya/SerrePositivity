@@ -30,19 +30,19 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：標的の Kan 性はこの厳密な同定には不要。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。二つの三角形の交換による逆元の計算。 -/
 theorem circleSmashMapping_isPullback (Y : PointedSimplicialSet.{u}) :
-    IsPullback (PointedMapping.pre circleSmashUpper Y)
-      (PointedMapping.pre circleSmashLower Y)
-      (PointedMapping.pre triangleDiskDiagonal Y) (PointedMapping.pre triangleDiskDiagonal Y) := by
-  have h := (circleSmashTriangles_isPushout.op.flip).map (cofiberMappingFunctor Y)
-  simpa only [cofiberMappingFunctor_map] using h
+    IsPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre circleSmashUpper Y)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre circleSmashLower Y)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y) := by
+  have h := (circleSmashTriangles_isPushout.op.flip).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y)
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
 
 /-- 概要：二重円の写像を上側の相対三角形へ制限する射は Kan fibration。
 方針：対角辺への制限の fibration を pullback に沿って引き戻す。
 規約：標的 Y の Kan 性だけを使う。
 使われ方：Kerodon §3.1.3、Goerss–Jardine I §7。貼り合わせの交換を fiber の成分へ移す。 -/
 instance circleSmashUpper_restriction_fibration (Y : PointedSimplicialSet.{u})
-    [KanComplex Y.right] : Fibration (PointedMapping.pre circleSmashUpper Y) := by
-  have hf : Fibration (PointedMapping.pre triangleDiskDiagonal Y) :=
+    [KanComplex Y.right] : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre circleSmashUpper Y) := by
+  have hf : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y) :=
     triangleDisk_restriction_fibration Y
   apply (fibration_iff _).2
   exact J.rlp.of_isPullback (circleSmashMapping_isPullback Y).flip

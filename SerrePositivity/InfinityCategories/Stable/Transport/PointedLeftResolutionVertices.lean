@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -33,9 +35,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 同じ左解像係数の零単体は、反転した同じ点への標準 Hom 同型の逆で計算する。 -/
 theorem pointedSpaceLeftCoefficientIso_vertex (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
@@ -43,12 +48,24 @@ theorem pointedSpaceLeftCoefficientIso_vertex (K : KanObject.{u}) (v : K.obj _�
       SSet.opObjEquiv.symm ((pointKanObjectHomIso (kanObjectOpFunctor.obj K)).inv.app
         (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm v)) := rfl
 
-private theorem uliftMapVertex {A B : SSet.{u}} (f : A ⟶ B) (v : A _⦋0⦌) :
+theorem uliftMapVertex {A B : SSet.{u}} (f : A ⟶ B) (v : A _⦋0⦌) :
     ((SSet.uliftFunctor.{u + 1, u}).map f).app (Opposite.op ⦋0⦌) (ULift.up v) =
       ULift.up (f.app (Opposite.op ⦋0⦌) v) := rfl
 
-private theorem uliftOppositeVertex (A : SSet.{u}) (v : A.op _⦋0⦌) :
+theorem uliftOppositeVertex (A : SSet.{u}) (v : A.op _⦋0⦌) :
     (HomotopyLimits.uliftOppositeIso.{u, u + 1} A).hom.app (Opposite.op ⦋0⦌) (ULift.up v) =
       SSet.opObjEquiv.symm (ULift.up (SSet.opObjEquiv v)) := rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedSpaceLeftCoefficientIso_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointedSpaceLeftCoefficientIso_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.uliftMapVertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.uliftMapVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.uliftOppositeVertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.uliftOppositeVertex

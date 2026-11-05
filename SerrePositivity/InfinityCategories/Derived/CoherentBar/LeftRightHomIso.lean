@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def dgCoherentBarPinchedUnopIso (R : Type u) [CommRing R]
     (C : Type v) [DGCategory R C] (x y : C) :

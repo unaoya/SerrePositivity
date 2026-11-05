@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D]
 

@@ -21,8 +21,8 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定境界比較を保持した厳密化と、それを実消費した有限全図式の回収。 -/
-structure VerdierInitialConeTensorBoundary {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+structure VerdierInitialConeTensorBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) (p : initialConeTensorCorner A L ⟶ B.obj)
     (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)
     (e : FunctorIso (initialConeTensorCornerInclusion A L ≫ H) (p ≫ q.hom)) where
@@ -32,8 +32,8 @@ structure VerdierInitialConeTensorBoundary {A₀ B C : StableCategory.{u}}
     normalization.boundary
 
 namespace VerdierInitialConeTensorBoundary
-variable {A₀ B C : StableCategory.{u}} {i : ExactMap A₀ B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {A L : SSet.{u}}
+variable {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {A L : SSet.{u}}
   {p : initialConeTensorCorner A L ⟶ B.obj}
   {H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj}
   {e : FunctorIso (initialConeTensorCornerInclusion A L ≫ H) (p ≫ q.hom)}
@@ -59,8 +59,8 @@ lemma invertsEdges (W : Set
 end VerdierInitialConeTensorBoundary
 
 /-- 有限全境界の指定同型から、同じ境界辺を保持する実全図式を回収する。 -/
-lemma exists_verdierInitialConeTensorBoundary {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierInitialConeTensorBoundary {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) [A.Finite] [L.Finite]
     (p : initialConeTensorCorner A L ⟶ B.obj)
     (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)

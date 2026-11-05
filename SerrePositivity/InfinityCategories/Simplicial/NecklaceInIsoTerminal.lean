@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 
@@ -11,20 +13,23 @@ public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Limits Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory Limits _root_.Simplicial SSet
 
 /-- 元の necklace と同型な入力内の、同じ全体を覆う necklace。 -/
-def necklaceInOfIso (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :
-    NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex) where
+def necklaceInOfIso (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex) where
   necklace := U
   map := e.hom
   map_first := rfl
   map_last := rfl
 
 /-- 元の逆同型は、任意の augmentation を全体への実可換三角形へ送る。 -/
-def necklaceInToOfIso (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K)
-    (T : NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex)) :
-    T ⟶ necklaceInOfIso U e where
+def necklaceInToOfIso (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K)
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex)) :
+    T ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso U e where
   necklaceHom :=
     { map := T.map ≫ e.inv
       map_first := (congrArg (e.inv.app _) T.map_first).trans
@@ -35,15 +40,48 @@ def necklaceInToOfIso (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ 
     ((congrArg (fun f => T.map ≫ f) e.inv_hom_id).trans (Category.comp_id _))
 
 /-- 元の全体への可換三角形は、全ての高次単体で一意。 -/
-lemma necklaceInOfIso_hom_ext (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K)
-    {T : NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex)}
-    (f g : T ⟶ necklaceInOfIso U e) : f = g :=
-  NecklaceInHom.ext (NecklaceHom.ext ((cancel_mono e.hom).1 (f.w.trans g.w.symm)))
+lemma necklaceInOfIso_hom_ext (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K)
+    {T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex)}
+    (f g : T ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso U e) : f = g :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext ((cancel_mono e.hom).1 (f.w.trans g.w.symm)))
 
 /-- 元の necklace 全体は、同じ両端点を持つ元の全 necklace 図式の終対象。 -/
-def necklaceInOfIso_isTerminal (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :
-    IsTerminal (necklaceInOfIso U e) :=
-  IsTerminal.ofUniqueHom (necklaceInToOfIso U e)
-    (fun _ f => necklaceInOfIso_hom_ext U e f _)
+def necklaceInOfIso_isTerminal (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :
+    IsTerminal (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso U e) :=
+  IsTerminal.ofUniqueHom (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso U e)
+    (fun _ f => _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_hom_ext U e f _)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_hom_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_hom_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_3

@@ -54,7 +54,7 @@ def fixedBoundaryCompositionData {A T E : SSet.{u}} [KanComplex E]
     (hH : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ b)
     (hK : (j ▷ (Δ[1] : SSet.{u})) ≫ K.h = fst A Δ[1] ≫ b) :
     FixedBoundaryCompositionData j b H K := by
-  let d := kanMappingComposition (fixedBoundaryMappingEdge j b hf hg H hH)
+  let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingComposition (fixedBoundaryMappingEdge j b hf hg H hH)
     (fixedBoundaryMappingEdge j b hg hh K hK)
   let e := d.edge.map (fixedBoundaryMappingSpaceι j b)
   let V := simplicialHomotopyOfFunctorEdge e.toTruncated

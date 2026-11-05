@@ -31,7 +31,7 @@ lemma simplex_mem_core_iff_factor {C : SSet.{u}} (n : SimplexCategory)
     exact (SSet.yonedaEquiv g).property
 
 /-- 元の W 列の頂点条件は、商の同じ実図式が core を通ることと同値。 -/
-lemma weakStringPredicate_iff_factorCore {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringPredicate_iff_factorCore {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) (v : ((ihom (stdSimplex.obj n)).obj B.obj) _⦋0⦌) :
     weakStringPredicate q n v ↔
       ∃ g : stdSimplex.obj n ⟶ (quasicategoryCore C.obj : SSet.{u}),
@@ -43,8 +43,8 @@ lemma weakStringPredicate_iff_factorCore {B C : StableCategory.{u}} (q : ExactMa
       ((functorVertexEquiv (stdSimplex.obj n) B.obj).symm v ≫ q.hom)
 
 /-- 実関手の頂点における W 条件も、元の実関手を保つ同じ厳密因子分解。 -/
-lemma weakStringPredicate_functorVertex_iff_factorCore {B C : StableCategory.{u}}
-    (q : ExactMap B C) (n : SimplexCategory) (f : stdSimplex.obj n ⟶ B.obj) :
+lemma weakStringPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : SimplexCategory) (f : stdSimplex.obj n ⟶ B.obj) :
     weakStringPredicate q n (functorVertex f) ↔
       ∃ g : stdSimplex.obj n ⟶ (quasicategoryCore C.obj : SSet.{u}),
         g ≫ (quasicategoryCore C.obj).ι = f ≫ q.hom := by

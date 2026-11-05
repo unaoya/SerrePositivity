@@ -9,7 +9,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
@@ -20,7 +20,7 @@ def invertingFunctorsToKanIso (X Z : SSet.{u}) [KanComplex Z] (W : Set (X _⦋1�
   hom := (invertingFunctors X Z W).ι
   inv := fullSubcomplexLift (IsInvertingFunctorVertex X Z W) (𝟙 _) (by
     intro v s _
-    exact invertsAllEdges_toKan ((functorVertexEquiv X Z).symm v) (Set.mem_univ s))
+    exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan ((functorVertexEquiv X Z).symm v) (Set.mem_univ s))
   hom_inv_id := by
     apply NatTrans.ext
     funext n
@@ -32,15 +32,15 @@ def invertingFunctorsToKanIso (X Z : SSet.{u}) [KanComplex Z] (W : Set (X _⦋1�
 
 /-- 亜群化の同じ単位への前合成は、Kan 標的の全関手 ∞ 圏の同値。 -/
 theorem groupoidCompletionUnit_precompose_isQCatEquivalence (X Z : SSet.{u}) [KanComplex Z] :
-    IsQCatEquivalence ((pre (groupoidCompletionMap X)).app Z) := by
-  rw [← localizationPrecomposition_ι (groupoidCompletionMap X) Set.univ
-    (groupoidCompletion_isLocalization X).choose Z]
-  exact ((groupoidCompletion_isLocalization X).choose_spec Z).comp
+    IsQCatEquivalence ((pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X)).app Z) := by
+  rw [← localizationPrecomposition_ι (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X) Set.univ
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X).choose Z]
+  exact ((_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X).choose_spec Z).comp
     (qCatEquivalenceOfIso (invertingFunctorsToKanIso X Z Set.univ)).isQCatEquivalence
 
 /-- 元の亜群化単位は、全 Kan 標的への写像空間で検査する弱ホモトピー同値。 -/
 theorem groupoidCompletionUnit_isWeakHomotopyEquivalence (X : SSet.{u}) :
-    IsWeakHomotopyEquivalence (groupoidCompletionMap X) := by
+    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap X) := by
   intro Z _
   have he := groupoidCompletionUnit_precompose_isQCatEquivalence X Z
   exact he.isSimplicialHomotopyEquivalence.mapPiZero_bijective

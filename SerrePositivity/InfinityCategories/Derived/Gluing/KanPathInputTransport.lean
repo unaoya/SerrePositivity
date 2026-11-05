@@ -8,7 +8,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open HomotopicalAlgebra SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {Q T U : SSet.{u}} (a : T ⟶ Q ⊗ Q) (b : U ⟶ Q ⊗ Q)
   (s : T ⟶ U) (h : a = s ≫ b)
 

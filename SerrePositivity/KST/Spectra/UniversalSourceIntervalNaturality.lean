@@ -16,19 +16,19 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.UniversalSourceInterval
 variable (I : UniversalSourceInterval.{u})
 
 /-- 普遍区間の両端を、同じ単位への制限を経由する厳密な族で表示する。 -/
 def factoredUniversalInterval (Z : PointedSimplicialSet.{u}) :
     PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom I.source Z))
-      (PointedMapping.prePointed I.unit Z ≫ PointedMapping.prePointed I.first Z)
-      (PointedMapping.prePointed I.unit Z ≫
-        PointedMapping.prePointed I.second Z) :=
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z) :=
   (I.path.basedPre Z).changeEndpoints
-    (PointedMapping.prePointed_comp I.first I.unit Z)
-    (PointedMapping.prePointed_comp I.second I.unit Z)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp I.first I.unit Z)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp I.second I.unit Z)
 
 /-- 因子表示に直しても、元の同じ普遍区間の辺全体を保持する。 -/
 lemma factoredUniversalInterval_path (Z : PointedSimplicialSet.{u}) :
@@ -56,25 +56,25 @@ lemma naturalityInput_zero :
   change (interval I Z).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom I.source Z) t).right =
     (factoredUniversalInterval I Z').path ≫
-      (PointedMapping.prePointed (s ≫ r) (PointedObject.basedHom I.source Z')).right
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (s ≫ r) (PointedObject.basedHom I.source Z')).right
   rw [interval_path, factoredUniversalInterval_path]
-  change (P.path ≫ (PointedMapping.prePointed s
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s
       (PointedObject.basedHom I.source Z)).right) ≫ _ = _
   have hs := (MonoidalClosed.pre s).naturality t
-  simp only [← PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap (PointedObject.basedHom I.target Z) t ≫
-      PointedMapping.prePointed s (PointedObject.basedHom I.source Z') =
-    PointedMapping.prePointed s (PointedObject.basedHom I.source Z) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom I.source Z') =
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom I.source Z) ≫
       PointedObject.basedHomMap (PointedObject.basedHom I.source Z) t at hs
   have h₀ := congrArg (fun q => P.path ≫ q.right) hs.symm
   have hn := I.path.basedPre_post_path v
   change P.path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom I.target Z) t).right =
-    P'.path ≫ (PointedMapping.prePointed r (PointedObject.basedHom I.source Z')).right at hn
-  have h₁ := congrArg (· ≫ (PointedMapping.prePointed s
+    P'.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom I.source Z')).right at hn
+  have h₁ := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s
     (PointedObject.basedHom I.source Z')).right) hn
   have h₂ := congrArg (fun q => P'.path ≫ q.right)
-    (PointedMapping.prePointed_comp s r (PointedObject.basedHom I.source Z'))
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp s r (PointedObject.basedHom I.source Z'))
   simpa only [Under.comp_right, Category.assoc] using h₀.trans (h₁.trans h₂)
 
 omit [KanComplex Z.right] in
@@ -86,11 +86,11 @@ lemma naturalityInput_one :
   change (interval I Z').path ≫ _ = (factoredUniversalInterval I Z').path ≫ _
   rw [interval_path, factoredUniversalInterval_path]
   change ((I.path.basedPre Z').path ≫
-    (PointedMapping.prePointed (extensionSection I Z')
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (extensionSection I Z')
       (PointedObject.basedHom I.source Z')).right) ≫ _ = _
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun q => (I.path.basedPre Z').path ≫ q.right)
-      (PointedMapping.prePointed_comp (PointedObject.basedHomMap I.source v)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (PointedObject.basedHomMap I.source v)
         (extensionSection I Z') (PointedObject.basedHom I.source Z'))
 
 /-- 全写像族の交換区間の、同じ二次元自然性正方形。 -/
@@ -107,7 +107,7 @@ omit [KanComplex Z'.right] in
 /-- 元の切断比較の始点射影は、同じ標的後合成に厳密一致する。 -/
 lemma extensionSectionNaturality_source_projection :
     (extensionSection I Z ≫ PointedObject.basedHomMap I.target v) ≫
-      PointedMapping.prePointed I.unit Z' = PointedObject.basedHomMap I.source v := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z' = PointedObject.basedHomMap I.source v := by
   rw [Category.assoc, universalRestriction_post, ← Category.assoc,
     extensionSection_condition, Category.id_comp]
 
@@ -115,7 +115,7 @@ lemma extensionSectionNaturality_source_projection :
 lemma naturalitySquare_start :
     SquareAdjustment.leftSide ≫ (naturalitySquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap I.source v ≫
-        PointedMapping.prePointed I.first Z')) := by
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z')) := by
   change SquareAdjustment.leftSide ≫
     (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval I v)
       (factoredUniversalInterval I Z')).h = _
@@ -126,7 +126,7 @@ lemma naturalitySquare_start :
 lemma naturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (naturalitySquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap I.source v ≫
-        PointedMapping.prePointed I.second Z')) := by
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z')) := by
   change SquareAdjustment.rightSide ≫
     (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval I v)
       (factoredUniversalInterval I Z')).h = _

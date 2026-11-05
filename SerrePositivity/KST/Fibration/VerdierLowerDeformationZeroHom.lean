@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の下側三角柱の各全単体の長い Hom は全頂点で同じ零値条件を満たす。
 方針：同じ path 変形の像を元の長い Hom に代入する。

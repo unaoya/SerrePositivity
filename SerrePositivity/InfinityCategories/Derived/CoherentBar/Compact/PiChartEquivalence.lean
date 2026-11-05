@@ -15,14 +15,14 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y X' Y' : SSet.{u}} [KanComplex X] [KanComplex Y]
   [KanComplex X'] [KanComplex Y'] {n : ℕ} {A : Type v} {B : Type w}
 
 /-- 同じ実同値の逆射を通じた全基点チャート。 -/
 def DGBarCompactPiChart.ofEquivalence (c : DGBarCompactPiChart X n A)
     (e : QCatEquivalence X Y) : DGBarCompactPiChart Y n A where
-  equiv y := (KanHomotopyGroup.equivOfPiIsomorphism n e.inv
+  equiv y := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n e.inv
     (HomotopyLimits.kanPiIsomorphism_of_homotopyEquivalence e.inv
       e.symm.isQCatEquivalence.isSimplicialHomotopyEquivalence) rfl).toEquiv.trans
         (c.equiv (e.inv.app _ y))
@@ -48,28 +48,28 @@ lemma dgBarCompactPiChart_naturality_of_comparison
     (f : X ⟶ X') (g : Y ⟶ Y') (φ : A → B)
     (h : FunctorIso (f ≫ e'.hom) (e.hom ≫ g))
     (hf : ∀ x a, c'.equiv (f.app _ x) (dgBarCompactPiMap n f x a) = φ (c.equiv x a))
-    (y : Y _⦋0⦌) (a : KanHomotopyGroup Y n y) :
+    (y : Y _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y n y) :
     (c'.ofEquivalence e').equiv (g.app _ y) (dgBarCompactPiMap n g y a) =
       φ ((c.ofEquivalence e).equiv y a) := by
   have hi := c'.functorIso (dgBarCompactInverseComparisonIso e e' f g h) y a
   have hleft := DFunLike.congr_fun
-    (KanHomotopyGroup.map_comp e.inv rfl f rfl rfl) a
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp e.inv rfl f rfl rfl) a
   have hright := DFunLike.congr_fun
-    (KanHomotopyGroup.map_comp g rfl e'.inv rfl rfl) a
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp g rfl e'.inv rfl rfl) a
   have he : (c'.ofEquivalence e').equiv (g.app _ y) (dgBarCompactPiMap n g y a) =
       c'.equiv ((e.inv ≫ f).app _ y)
         (dgBarCompactPiMap n (e.inv ≫ f) y a) := by
     dsimp only [DGBarCompactPiChart.ofEquivalence, Equiv.trans_apply,
       MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv,
-      KanHomotopyGroup.equivOfPiIsomorphism_apply]
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact (congrArg (c'.equiv ((g ≫ e'.inv).app _ y)) hright.symm).trans hi.symm
   rw [he]
   have hf' : c'.equiv ((e.inv ≫ f).app _ y)
-      (((KanHomotopyGroup.map f rfl).comp (KanHomotopyGroup.map e.inv rfl)) a) =
+      (((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl).comp (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map e.inv rfl)) a) =
         φ ((c.ofEquivalence e).equiv y a) := by
     dsimp only [DGBarCompactPiChart.ofEquivalence, Equiv.trans_apply,
       MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv,
-      KanHomotopyGroup.equivOfPiIsomorphism_apply]
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
     exact hf (e.inv.app _ y) (dgBarCompactPiMap n e.inv y a)
   exact (congrArg (c'.equiv ((e.inv ≫ f).app _ y)) hleft).trans hf'
 

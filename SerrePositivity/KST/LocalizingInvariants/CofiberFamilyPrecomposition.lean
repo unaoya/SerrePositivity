@@ -20,9 +20,9 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 
 def precompositionIso {A B X : SSet.{u}} [Quasicategory X] [IsStable X]
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (i : B ⟶ A) :
-    FunctorIso (i ≫ cofiber X a) (cofiber X (i ≫ a)) := by
+    FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (i ≫ a)) := by
   have h := FunctorIso.precomp (compositionIso X a) i
-  have e : FunctorIso (i ≫ cofiber X a) ((i ≫ a) ≫ cofiber X (𝟙 _)) := by
+  have e : FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) ((i ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) := by
     simpa only [Category.assoc] using h
   exact e ≪≫ (compositionIso X (i ≫ a)).symm
 

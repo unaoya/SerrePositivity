@@ -42,10 +42,10 @@ lemma unit_isInvertible (j : AsSmall.{u} WalkingCospan) :
     IsInvertibleEdge (coherentNerveEdge ((unit f g).app j)) := by
   rcases j with ⟨_ | (_ | _)⟩
   · exact SpectrumMappingAcyclic.isInvertible_of_levelwise (𝟙 B)
-      (fun n ↦ KanPiIsomorphism.id _)
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _)
   · exact fibrationReplacementUnit_isInvertible f
   · exact SpectrumMappingAcyclic.isInvertible_of_levelwise (𝟙 X)
-      (fun n ↦ KanPiIsomorphism.id _)
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _)
 
 /-- 置換した図式には構成済みの実際の ∞ 極限錐がある。 -/
 lemma replaced_isLimit :

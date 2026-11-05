@@ -23,12 +23,12 @@ namespace SerrePositivity.KST.Fibration
 方針：元の二つの面の一単体を厳密回収する。
 規約：対角の合成やホモトピー類だけの比較に弱めない。
 使われ方：正規化再構成の二短辺条件への実代入。 -/
-theorem verdierFullSLowerHorn_composable (d : VerdierDiagram.{u}) :
+theorem verdierFullSLowerHorn_composable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     verdierFullSLowerHorn d =
       composableEdgeHorn (coherentNerveEdge (stableCoreSingleKanMap
-        (stableArrowExactMap (StableInfinity.δ 2 (verdierLowerTriangle d)))))
+        (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d)))))
         (coherentNerveEdge (stableCoreSingleKanMap
-          (stableArrowExactMap (StableInfinity.δ 0 (verdierLowerTriangle d))))) := by
+          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))) := by
   apply horn₂₁.isPushout.hom_ext
   · rw [composableEdgeHorn_first, verdierFullSLowerHorn, ← Category.assoc, horn.ι_ι]
     apply SSet.yonedaEquiv.injective
@@ -39,7 +39,7 @@ theorem verdierFullSLowerHorn_composable (d : VerdierDiagram.{u}) :
     rw [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
     exact zeroMiddleCoreSingleKanTriangle_last (verdierLowerTriangle d)
 
-variable (d : VerdierDiagram.{u}) (K : SSet.{u + 1})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
 
 /-- 概要：実下側の元の第一短辺を全パラメータで固定する。
 方針：同じ回収 Kan 射の豊穣頂点の定値族を取る。
@@ -54,7 +54,7 @@ def verdierLowerReconstructionFirstFamily :
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
     (stableCoreSingleKanMap
-      (stableArrowExactMap (StableInfinity.δ 2 (verdierLowerTriangle d))))))
+      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))))))
 
 /-- 概要：同じ固定ホーンの第一辺は指定短辺族の標準区間像。
 方針：元の coherent ホーンと豊穣頂点の比較を使う。
@@ -87,7 +87,7 @@ def verdierLowerReconstructionLastFamily :
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
     (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩))
     (stableCoreSingleKanMap
-      (stableArrowExactMap (StableInfinity.δ 0 (verdierLowerTriangle d))))))
+      (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d))))))
 
 /-- 概要：同じ固定ホーンの第二辺は指定短辺族の標準区間像。
 方針：元の coherent ホーンと豊穣頂点の比較を使う。
@@ -164,9 +164,9 @@ theorem verdierLowerReconstructionCompositeFamily_eq :
   let Z := stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)
   verdierLowerReconstructionCompositeFamily d K =
     SSet.const (ULift.up (SimplicialCategory.homEquiv' X Z
-      (stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 2 (verdierLowerTriangle d))) ≫
+      (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 (verdierLowerTriangle d))) ≫
         stableCoreSingleKanMap
-          (stableArrowExactMap (StableInfinity.δ 0 (verdierLowerTriangle d)))))) := by
+          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 (verdierLowerTriangle d)))))) := by
   dsimp only [verdierLowerReconstructionCompositeFamily]
   apply SSet.hom_ext
   intro n

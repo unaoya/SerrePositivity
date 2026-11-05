@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution
 public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.InfinityCategories.Core.CoconeTransport
@@ -20,9 +22,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の錐全体から、同じ頂点の定値族からの指定ホモトピーを得る。 -/
 def spanRecoveryConeHomotopy {K D : SSet.{u}} {p : K ⟶ D} (c : JoinCone p) :
@@ -38,16 +43,16 @@ def spanRecoveryConeHomotopy {K D : SSet.{u}} {p : K ⟶ D} (c : JoinCone p) :
 
 /-- 有限な実族の全体を、一つの実分母上の次辺族へ輸送する。 -/
 lemma verdierDenominatorSpan_finite_fiber_detection
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
-    {K : SSet.{u}} [K.Finite] (f : K ⟶ verdierDenominatorSpanFamily i x y) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {K : SSet.{u}} [K.Finite] (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         Nonempty (SSet.Homotopy
-          (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d) f) := by
-  let p := verdierDenominatorSpanProjection i x y
+          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d) f) := by
+  let p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y
   obtain ⟨c⟩ := exists_verdierDenominatorOver_finiteCone h x (f ≫ p)
-  let H := spanRecoveryConeHomotopy c
+  let H := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy c
   let b := (β_ (Δ[1] : SSet.{u}) K).hom ≫ H.h
   have hb : prismEndpoint 1 K ≫ b = f ≫ p := by
     dsimp only [b]
@@ -79,19 +84,19 @@ lemma verdierDenominatorSpan_finite_fiber_detection
 
 /-- Kan 置換後の有限族も、置換前の一つの実分母上の次辺族で表せる。 -/
 lemma verdierDenominatorSpan_continuous_finite_fiber_detection
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     {K : SSet.{u}} [K.Finite]
-    (f : K ⟶ F2.continuousKanReplacement.obj (verdierDenominatorSpanFamily i x y)) :
+    (f : K ⟶ F2.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y)) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         Nonempty (SSet.Homotopy f
-          (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-            F2.continuousKanReplacementUnit.app (verdierDenominatorSpanFamily i x y))) := by
-  let E := verdierDenominatorSpanFamily i x y
-  let p := verdierDenominatorSpanProjection i x y
+          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+            F2.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y))) := by
+  let E := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y
+  let p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y
   obtain ⟨J, a, ha⟩ := F2.continuousKanReplacement_finite_factorization f
-  obtain ⟨d, g, ⟨H⟩⟩ := verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
+  obtain ⟨d, g, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
   obtain ⟨H'⟩ := F2.continuousKanReplacement_map_homotopy H
   have h₁ := (functorVertex_piZero_eq_iff_homotopy _ _).2
     ⟨functorHomotopyPrecomp H' a⟩
@@ -111,36 +116,36 @@ lemma verdierDenominatorSpan_continuous_finite_fiber_detection
 
 /-- 元の完成分数の任意の有限族を、一つの実分母と実次辺の全族で表す。 -/
 lemma verdierCompletedSpan_finite_realization
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     {K : SSet.{u}} [K.Finite]
-    (f : K ⟶ groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y)) :
+    (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         Nonempty (FunctorIso
-          (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-            verdierDenominatorSpanCanonicalComparison i x y ≫
-            groupoidCompletionMap (fixedMarkedSpans B.obj (weakEquivalences i) x y)) f) := by
-  let E := verdierDenominatorSpanFamily i x y
-  let F := verdierDenominatorSpanCanonicalComparison i x y
-  let U := (verdierSpanCanonicalCompletionMap_isQCatEquivalence h x y).choose
-  let V := (groupoidCompletionKanComparison_isQCatEquivalence E).choose
-  obtain ⟨d, g, ⟨H⟩⟩ := verdierDenominatorSpan_continuous_finite_fiber_detection h x y
+          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
+            _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) f) := by
+  let E := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y
+  let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y
+  let U := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanCanonicalCompletionMap_isQCatEquivalence h x y).choose
+  let V := (_root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison_isQCatEquivalence E).choose
+  obtain ⟨d, g, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_continuous_finite_fiber_detection h x y
     (f ≫ U.inv ≫ V.hom)
-  let a := g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d
+  let a := g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d
   have hu : FunctorIso (F2.continuousKanReplacementUnit.app E ≫ V.inv)
-      (groupoidCompletionMap E) := by
-    have e := FunctorIso.postcomp (groupoidCompletionEvaluationIso
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E) := by
+    have e := FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso
       (F2.continuousKanReplacementUnit.app E)).symm V.inv ≪≫
-      FunctorIso.precomp V.homInvIso (groupoidCompletionMap E)
-    simpa only [V, IsQCatEquivalence.choose, groupoidCompletionKanComparison,
+      FunctorIso.precomp V.homInvIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E)
+    simpa only [V, IsQCatEquivalence.choose, _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison,
       Category.assoc, Category.comp_id] using e
-  have e₁ : FunctorIso (a ≫ F ≫ groupoidCompletionMap
-      (fixedMarkedSpans B.obj (weakEquivalences i) x y))
-      (a ≫ groupoidCompletionMap E ≫ U.hom) := by
-    change FunctorIso _ (a ≫ groupoidCompletionMap E ≫ groupoidCompletionMapOf F)
-    simpa only [Category.assoc] using FunctorIso.precomp (groupoidCompletionMapOfIso F).symm a
-  have e₂ : FunctorIso (a ≫ groupoidCompletionMap E ≫ U.hom)
+  have e₁ : FunctorIso (a ≫ F ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
+      (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))
+      (a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E ≫ U.hom) := by
+    change FunctorIso _ (a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf F)
+    simpa only [Category.assoc] using FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOfIso F).symm a
+  have e₂ : FunctorIso (a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E ≫ U.hom)
       (a ≫ F2.continuousKanReplacementUnit.app E ≫ V.inv ≫ U.hom) := by
     simpa only [Category.assoc] using
       FunctorIso.precomp (FunctorIso.postcomp hu.symm U.hom) a
@@ -156,30 +161,57 @@ lemma verdierCompletedSpan_finite_realization
 
 /-- 商の全写像空間の有限族は、一つの実分母と実次辺の族で表せる。 -/
 lemma verdierFiniteMappingFamily_realization
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     {K : SSet.{u}} [K.Finite]
     (f : K ⟶ intervalMappingSpace (q.hom.app (Opposite.op ⦋0⦌) x)
       (q.hom.app (Opposite.op ⦋0⦌) y)) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         Nonempty (FunctorIso
-          (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-            verdierDenominatorSpanCanonicalComparison i x y ≫
-            fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) f) := by
-  let M := (weakFractionMappingComparison_isQCatEquivalence h x y).choose
-  obtain ⟨d, g, ⟨e⟩⟩ := verdierCompletedSpan_finite_realization h x y (f ≫ M.inv)
-  let a := g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-    verdierDenominatorSpanCanonicalComparison i x y
+          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+            _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
+            fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) f) := by
+  let M := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakFractionMappingComparison_isQCatEquivalence h x y).choose
+  obtain ⟨d, g, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierCompletedSpan_finite_realization h x y (f ≫ M.inv)
+  let a := g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y
   have e₁ := FunctorIso.precomp
-    (fractionMappingComparisonIso q.hom (weakEquivalences i) h.inverts x y).symm a
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparisonIso q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y).symm a
   have e₂ := FunctorIso.postcomp e M.hom
   have e₃ := FunctorIso.precomp M.invHomIso f
   refine ⟨d, g, ⟨?_⟩⟩
-  have e' : FunctorIso (a ≫ fixedFractionEvaluation q.hom (weakEquivalences i)
+  have e' : FunctorIso (a ≫ fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
       h.inverts x y) f := by
     simpa only [a, M, IsQCatEquivalence.choose, Category.assoc, Category.comp_id] using
       e₁ ≪≫ e₂ ≪≫ e₃
   exact e'
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierCompletedSpan_finite_realization := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierCompletedSpan_finite_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpan_continuous_finite_fiber_detection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_continuous_finite_fiber_detection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpan_finite_fiber_detection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFiniteMappingFamily_realization := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFiniteMappingFamily_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_3

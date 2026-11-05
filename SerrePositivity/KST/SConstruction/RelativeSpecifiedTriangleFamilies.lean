@@ -28,7 +28,7 @@ variable {T U E : SSet.{u}} [KanComplex E] (j : T ⟶ U) (hj : anodyneExtensions
 /-- 三つの元の全円柱と、指定境界の元の全二単体を固定する相対三角形。 -/
 def relativeSpecifiedTriangleFamilyData :=
   trivialKanTriangleLift ((pre j).app E)
-    (anodyne_pre_rlp_monomorphisms j hj E)
+    (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms j hj E)
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b))
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy c)) t

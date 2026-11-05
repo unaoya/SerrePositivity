@@ -77,21 +77,21 @@ namespace SerrePositivity.KST.Spectra
 規約：基点の固定は不要。零次数を含む。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.1、BF 1978 §2。mapping path の比較。 -/
 theorem kanPiIsomorphism_iff_of_homotopy {A X : SSet.{u}} [KanComplex A] [KanComplex X]
-    {f g : A ⟶ X} (H : SSet.Homotopy f g) : KanPiIsomorphism f ↔ KanPiIsomorphism g := by
+    {f g : A ⟶ X} (H : SSet.Homotopy f g) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f ↔ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g := by
   constructor
   · intro hf
-    have hzero : KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 0) := by
+    have hzero : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 0) := by
       rw [KanPath.transpose_zero]
       exact hf
-    have ht := KanPiIsomorphism.of_comp hzero (KanPath.evaluation_piIsomorphism X 0)
+    have ht := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hzero (KanPath.evaluation_piIsomorphism X 0)
     have h := ht.comp (KanPath.evaluation_piIsomorphism X 1)
     rw [KanPath.transpose_one] at h
     exact h
   · intro hg
-    have hone : KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 1) := by
+    have hone : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 1) := by
       rw [KanPath.transpose_one]
       exact hg
-    have ht := KanPiIsomorphism.of_comp hone (KanPath.evaluation_piIsomorphism X 1)
+    have ht := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hone (KanPath.evaluation_piIsomorphism X 1)
     have h := ht.comp (KanPath.evaluation_piIsomorphism X 0)
     rw [KanPath.transpose_zero] at h
     exact h

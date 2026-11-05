@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 厳密単体的自然変換の全入力上の前合成
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 全 Hom に自然な厳密単体的自然変換は、元の豊穣入力関手で前合成できる。 -/
@@ -27,4 +32,13 @@ def strictSimplicialTransformationPrecompose
     exact types_congr_hom (NatTrans.congr_app (τ.naturality (H.obj X) (H.obj Y)) n)
       (t.1, (H.map X Y).app n t.2)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationPrecompose := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationPrecompose._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose._proof_1

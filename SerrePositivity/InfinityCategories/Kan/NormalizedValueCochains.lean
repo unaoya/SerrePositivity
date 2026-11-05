@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NormalizedCochainCoefficientMaps
 public import Mathlib.Algebra.Category.Grp.ForgetCorepresentable
 public import Mathlib.Algebra.Category.Grp.Colimits
@@ -16,9 +18,12 @@ public import Mathlib.Algebra.Category.Grp.Colimits
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.NormalizedValueCochains
+end SerrePositivity.KST.Spectra.NormalizedValueCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
+open SerrePositivity.KST.Spectra.NormalizedValueCochains
 
 noncomputable section
 
@@ -52,10 +57,10 @@ def zeroExtend (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ)
 lemma coefficientEquiv_zeroExtend (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ)
     (a : K.nonDegenerate n → M) (s : K _⦋n⦌) :
     AddCommGrpCat.uliftZMultiplesAddEquiv M
-      (NormalizedSimplicialCochains.zeroExtend K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
-        ((coefficientEquiv K M n).symm a) s) = zeroExtend K M n a s := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.zeroExtend K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
+        ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M n).symm a) s) = _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend K M n a s := by
   classical
-  dsimp only [NormalizedSimplicialCochains.zeroExtend, zeroExtend]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.zeroExtend, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend]
   split_ifs with hs
   · exact (AddCommGrpCat.uliftZMultiplesAddEquiv M).apply_symm_apply _
   · exact map_zero _
@@ -66,9 +71,9 @@ lemma coefficientEquiv_zeroExtend (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : �
 使われ方：Goerss–Jardine VIII §1。高次ホモトピー群係数の比較先の微分。 -/
 def differential (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ) :
     (K.nonDegenerate n → M) →+ (K.nonDegenerate (n + 1) → M) :=
-  (coefficientEquiv K M (n + 1)).toAddMonoidHom.comp
-    ((NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n).comp
-      (coefficientEquiv K M n).symm.toAddMonoidHom)
+  (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (n + 1)).toAddMonoidHom.comp
+    ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n).comp
+      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M n).symm.toAddMonoidHom)
 
 /-- 概要：正規化 cochain 微分は退化面で零に延長した係数の交代和。
 方針：Hom 係数の交代式を加法同型の有限和と整数倍の保存で移す。
@@ -76,25 +81,58 @@ def differential (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ) :
 使われ方：Goerss–Jardine III §2、VIII §1。球面の向きと照合する通常の式。 -/
 lemma differential_apply (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ)
     (a : K.nonDegenerate n → M) (s : K.nonDegenerate (n + 1)) :
-    differential K M n a s =
-      ∑ i : Fin (n + 2), (-1 : ℤ) ^ i.val • zeroExtend K M n a (K.δ i s.val) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n a s =
+      ∑ i : Fin (n + 2), (-1 : ℤ) ^ i.val • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend K M n a (K.δ i s.val) := by
   change AddCommGrpCat.uliftZMultiplesAddEquiv M
-    (NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
-      ((coefficientEquiv K M n).symm a) s) = _
-  rw [NormalizedSimplicialCochains.differential_apply]
-  simp only [map_sum, map_zsmul, coefficientEquiv_zeroExtend]
+    (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
+      ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M n).symm a) s) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_apply]
+  simp only [map_sum, map_zsmul, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv_zeroExtend]
 
 @[simp]
 lemma differential_comp (K : SSet.{u}) (M : AddCommGrpCat.{u}) (n : ℕ)
     (a : K.nonDegenerate n → M) :
-    differential K M (n + 1) (differential K M n a) = 0 := by
-  change coefficientEquiv K M (n + 2)
-    (NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M (n + 1)
-      ((coefficientEquiv K M (n + 1)).symm (coefficientEquiv K M (n + 1)
-        (NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
-          ((coefficientEquiv K M n).symm a))))) = 0
-  rw [AddEquiv.symm_apply_apply, NormalizedSimplicialCochains.differential_comp, map_zero]
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n a) = 0 := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (n + 2)
+    (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M (n + 1)
+      ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (n + 1)).symm (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (n + 1)
+        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M n
+          ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M n).symm a))))) = 0
+  rw [AddEquiv.symm_apply_apply, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_comp, map_zero]
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedValueCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.coefficientEquiv := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.coefficientEquiv_zeroExtend := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv_zeroExtend
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.differential := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.differential_apply := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.differential_comp := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.zeroExtend := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.coefficientEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.coefficientEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.coefficientEquiv._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedValueCochains.differential._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential._proof_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.Tactic.CategoryTheory.Monoidal.Basic
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 
@@ -33,9 +38,9 @@ def exchange (A K Z : C) : A ⊗ (K ⊗ Z) ≅ K ⊗ (A ⊗ Z) :=
 使われ方：HTT A.3.3、BF 1978 §2。内部 Hom の源の制限との整合性。 -/
 @[reassoc]
 theorem exchange_natural_left {A B : C} (i : A ⟶ B) (K Z : C) :
-    i ▷ (K ⊗ Z) ≫ (exchange B K Z).hom =
-      (exchange A K Z).hom ≫ K ◁ (i ▷ Z) := by
-  simp only [exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
+    i ▷ (K ⊗ Z) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange B K Z).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K Z).hom ≫ K ◁ (i ▷ Z) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
     Functor.flip, curriedTensor, Category.assoc]
   rw [associator_inv_naturality_left_assoc, ← comp_whiskerRight_assoc,
     BraidedCategory.braiding_naturality_left, comp_whiskerRight_assoc,
@@ -47,9 +52,9 @@ theorem exchange_natural_left {A B : C} (i : A ⟶ B) (K Z : C) :
 使われ方：HTT A.3.3、BF 1978 §2。内部 Hom の標的の自然性。 -/
 @[reassoc]
 theorem exchange_natural_right (A K : C) {Z W : C} (f : Z ⟶ W) :
-    A ◁ (K ◁ f) ≫ (exchange A K W).hom =
-      (exchange A K Z).hom ≫ K ◁ (A ◁ f) := by
-  simp only [exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
+    A ◁ (K ◁ f) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K W).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K Z).hom ≫ K ◁ (A ◁ f) := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
     Functor.flip, curriedTensor, Category.assoc]
   rw [associator_inv_naturality_right_assoc, whisker_exchange_assoc,
     associator_naturality_right]
@@ -61,7 +66,7 @@ variable [MonoidalClosed C]
 規約：K ⊗ Hom(A,Y) から Hom(A,K ⊗ Y) への射。
 使われ方：BF 1978 §2、HTT A.3.3。path 列の suspension 構造。 -/
 def map (K A Y : C) : K ⊗ (ihom A).obj Y ⟶ (ihom A).obj (K ⊗ Y) :=
-  curry ((exchange A K ((ihom A).obj Y)).hom ≫ K ◁ (ihom.ev A).app Y)
+  curry ((_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K ((ihom A).obj Y)).hom ≫ K ◁ (ihom.ev A).app Y)
 
 /-- 概要：テンソルと内部 Hom の交換射の評価式。
 方針：curry と uncurry の逆関係を使う。
@@ -69,8 +74,8 @@ def map (K A Y : C) : K ⊗ (ihom A).obj Y ⟶ (ihom A).obj (K ⊗ Y) :=
 使われ方：HTT A.3.3、BF 1978 §2。構造射の可換式。 -/
 @[reassoc]
 theorem evaluation (K A Y : C) :
-    A ◁ map K A Y ≫ (ihom.ev A).app (K ⊗ Y) =
-      (exchange A K ((ihom A).obj Y)).hom ≫ K ◁ (ihom.ev A).app Y :=
+    A ◁ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A Y ≫ (ihom.ev A).app (K ⊗ Y) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K ((ihom A).obj Y)).hom ≫ K ◁ (ihom.ev A).app Y :=
   uncurry_curry _
 
 /-- 概要：テンソルと内部 Hom の交換は内部 Hom の源の制限と可換。
@@ -79,12 +84,12 @@ theorem evaluation (K A Y : C) :
 使われ方：BF 1978 §2、HTT A.3.3。path の端点評価と構造射の可換性。 -/
 @[reassoc]
 theorem natural_pre (K : C) {A B : C} (i : A ⟶ B) (Y : C) :
-    map K B Y ≫ (MonoidalClosed.pre i).app (K ⊗ Y) =
-      K ◁ (MonoidalClosed.pre i).app Y ≫ map K A Y := by
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K B Y ≫ (MonoidalClosed.pre i).app (K ⊗ Y) =
+      K ◁ (MonoidalClosed.pre i).app Y ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A Y := by
   apply uncurry_injective
-  rw [uncurry_pre_app, map, uncurry_curry, uncurry_natural_left, map, uncurry_curry]
-  rw [← Category.assoc, exchange_natural_left, Category.assoc,
-    exchange_natural_right_assoc, ← whiskerLeft_comp, ← whiskerLeft_comp,
+  rw [uncurry_pre_app, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc, ← whiskerLeft_comp, ← whiskerLeft_comp,
     MonoidalClosed.id_tensor_pre_app_comp_ev]
 
 /-- 概要：テンソルと内部 Hom の交換は標的の射と可換。
@@ -93,10 +98,10 @@ theorem natural_pre (K : C) {A B : C} (i : A ⟶ B) (Y : C) :
 使われ方：BF 1978 §2、HTT A.3.3。path 列の射の構造条件。 -/
 @[reassoc]
 theorem natural_post (K A : C) {Y Z : C} (p : Y ⟶ Z) :
-    map K A Y ≫ (ihom A).map (K ◁ p) = K ◁ (ihom A).map p ≫ map K A Z := by
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A Y ≫ (ihom A).map (K ◁ p) = K ◁ (ihom A).map p ≫ _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A Z := by
   apply uncurry_injective
-  rw [uncurry_natural_right, map, uncurry_curry, uncurry_natural_left, map, uncurry_curry]
-  rw [exchange_natural_right_assoc, Category.assoc, ← whiskerLeft_comp,
+  rw [uncurry_natural_right, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map, uncurry_curry]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc, Category.assoc, ← whiskerLeft_comp,
     ← whiskerLeft_comp]
   have h : A ◁ (ihom A).map p ≫ (ihom.ev A).app Z = (ihom.ev A).app Y ≫ p :=
     (ihom.ev A).naturality p
@@ -120,11 +125,11 @@ omit [MonoidalClosed C] in
 使われ方：HTT A.3.3、BF 1978 §2。単位からの Hom の交換式。 -/
 @[reassoc]
 theorem exchange_unit (K Z : C) :
-    (exchange (𝟙_ C) K Z).hom ≫ K ◁ (λ_ Z).hom = (λ_ (K ⊗ Z)).hom := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (𝟙_ C) K Z).hom ≫ K ◁ (λ_ Z).hom = (λ_ (K ⊗ Z)).hom := by
   have h : (β_ (𝟙_ C) K).hom = (λ_ K).hom ≫ (ρ_ K).inv := by
     rw [← braiding_rightUnitor K, Category.assoc, Iso.hom_inv_id,
       Category.comp_id]
-  simp only [exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom, tensorRight,
     Functor.flip, curriedTensor, h, comp_whiskerRight, Category.assoc]
   monoidal
 
@@ -134,16 +139,76 @@ theorem exchange_unit (K Z : C) :
 使われ方：BF 1978 §2、HTT A.3.3。path の端点評価の構造条件。 -/
 @[reassoc]
 theorem map_unit (K Y : C) :
-    map K (𝟙_ C) Y ≫ (MonoidalClosed.unitIsoSelf (X := K ⊗ Y)).hom =
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K (𝟙_ C) Y ≫ (MonoidalClosed.unitIsoSelf (X := K ⊗ Y)).hom =
       K ◁ (MonoidalClosed.unitIsoSelf (X := Y)).hom := by
-  rw [unit_evaluation, unit_evaluation, leftUnitor_inv_naturality_assoc,
-    evaluation]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation, leftUnitor_inv_naturality_assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation]
   have h : (λ_ (K ⊗ (ihom (𝟙_ C)).obj Y)).inv ≫
-      (exchange (𝟙_ C) K ((ihom (𝟙_ C)).obj Y)).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (𝟙_ C) K ((ihom (𝟙_ C)).obj Y)).hom =
         K ◁ (λ_ ((ihom (𝟙_ C)).obj Y)).inv := by
     apply (cancel_mono (K ◁ (λ_ ((ihom (𝟙_ C)).obj Y)).hom)).mp
-    simp only [Category.assoc, exchange_unit, Iso.inv_hom_id]
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_unit, Iso.inv_hom_id]
     rw [← whiskerLeft_comp, Iso.inv_hom_id, whiskerLeft_id]
   rw [← Category.assoc, h, whiskerLeft_comp]
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.evaluation := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_left := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_left_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_right := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_right_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_unit := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_unit_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map_unit := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map_unit_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_post := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_post_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_pre := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_pre_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_pre_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.unit_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map.eq_1

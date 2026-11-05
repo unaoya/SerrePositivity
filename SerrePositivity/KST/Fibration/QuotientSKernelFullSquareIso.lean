@@ -20,8 +20,8 @@ open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Homot
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Comparison
 open SerrePositivity.KST.LocalizingInvariants SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 /-- 元の零角同型と同じ cospan の二脚による、実 cospan 図式の通常同型。 -/
 def quotientSKernelFullCospanIso :
@@ -45,18 +45,18 @@ set_option maxHeartbeats 800000 in
 /-- 元の商核四角形の全二胞体を、同じ全 S• 零角の四角形へ運ぶ実関手同型。 -/
 def quotientSKernelFullSquareIso :
     FunctorIso (quotientSKernelInfinitySquare i q) (quotientSKernelFullInfinitySquare h) := by
-  let c := kanCommSqCone
-    (P := stableCoreSingleKanObject (show StableQCat from A))
+  let c := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone
+    (P := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
     (X := exInfinityClosedKanEnrichedFunctor.obj ⟨simplicialDiagonalFunctor.obj
       (relativeSimplicialSConstruction (i.hom ≫ q.hom))⟩)
-    (Y := stableCoreSingleKanObject (show StableQCat from B))
-    (Z := stableCoreSingleKanObject (show StableQCat from C))
+    (Y := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))
+    (Z := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
     (exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
-  let d := kanCommSqCone
-    (P := stableCoreSingleKanObject (show StableQCat from A))
+  let d := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone
+    (P := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
     (X := fullSRealizationKanObject A)
-    (Y := stableCoreSingleKanObject (show StableQCat from B))
-    (Z := stableCoreSingleKanObject (show StableQCat from C))
+    (Y := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))
+    (Z := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
     (exInfinity.map_commSq (quotientSKernelFullRealizationSquare h))
   let α := (quotientSKernelFullCospanIso h).hom
   have hf : ∀ j, (𝟙 c.pt) ≫ d.π.app j = c.π.app j ≫ α.app j := by
@@ -66,7 +66,7 @@ def quotientSKernelFullSquareIso :
       rfl
     · simp only [Category.id_comp, Category.comp_id]
       rfl
-    · change (𝟙 _) ≫ exInfinity.map (coreSFullRealizationInclusion (show StableQCat from A)) =
+    · change (𝟙 _) ≫ exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) =
         exInfinityKanMap (simplicialDiagonalFunctor.map
           (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom))) ≫
           (quotientSKernelCornerFullSKanIso h).hom
@@ -75,14 +75,14 @@ def quotientSKernelFullSquareIso :
   have hα : ∀ j, IsInvertibleEdge (coherentNerveEdge (α.app j)) := by
     intro j
     rcases j with ⟨_ | (_ | _)⟩
-    · exact kanIdentityEdge_isInvertible _
-    · exact kanIdentityEdge_isInvertible _
+    · exact _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible _
+    · exact _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible _
     · change IsInvertibleEdge (coherentNerveEdge (quotientSKernelCornerFullSKanIso h).hom)
       apply coherentKanEdge_isInvertible_of_isQCatEquivalence
       exact (qCatEquivalenceOfIso (exInfinity.mapIso
         (simplicialDiagonalFunctor.mapIso (relativeSKernelSimplicialIso h)))).isQCatEquivalence
   have he := strictCoherentConeTransformationIso α c d (𝟙 c.pt) hf hα
-    (kanIdentityEdge_isInvertible _)
+    (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible _)
   exact he.precomp (cospanConeSquareIso.inv ≫
     joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv)
 

@@ -49,10 +49,10 @@ lemma exists_homotopy_specified_vertex_edges {A X : SSet.{u}} [Quasicategory X]
   intro a
   let l := SSet.Edge.ofTruncated (X := X)
     ((functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H (vertexDiscreteι A))).map
-      ((truncation 2).map (vertexDiscreteEvaluate (A := A) (X := X) a)))
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := A) (X := X) a)))
   let k := SSet.Edge.ofTruncated (X := X)
     ((vertexDiscreteSpecifiedEdge _ _ e').map
-      ((truncation 2).map (vertexDiscreteEvaluate (A := A) (X := X) a)))
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := A) (X := X) a)))
   change SSet.Truncated.HomotopyCategory.homMk l.toTruncated =
     SSet.Truncated.HomotopyCategory.homMk k.toTruncated
   apply (diagramEdge_homMk_ofEq_iff l k (hx a) (hy a)).mp

@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
 
 /-- 概要：同じ商関手で像が core に入る標準単体図式の全相対部分複体。
 方針：同じ後合成の下で core の厳密な逆像を取る。

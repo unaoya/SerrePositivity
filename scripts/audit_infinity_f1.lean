@@ -11437,66 +11437,66 @@ run_cmd do
     unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
   logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj_kanComplex
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.resolution_obj_kanComplex
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonal
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.map
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.diagonalMap
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit_naturality
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit_naturality
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_naturality
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_naturality
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_isQCatEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_mem_iff
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_mem_iff
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_ptSimplex_eq_const
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_ptSimplex_eq_const
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_kanHomotopy_subsingleton
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_kanHomotopy_subsingleton
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_fibration
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_fibration
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_basepoint
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_basepoint
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fiber_vertex_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fiber_vertex_ext
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_point
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_point
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_positive_fiber_subsingleton
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_positive_fiber_subsingleton
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+#check @_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+#print axioms _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
 
 #print axioms SerrePositivity.InfinityCategories.discreteKanFunctor
 #print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion

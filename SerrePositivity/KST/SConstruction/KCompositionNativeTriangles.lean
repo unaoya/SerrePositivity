@@ -22,16 +22,16 @@ local instance kCompositionNativeTrianglesPointedCategory :
 local instance kCompositionNativeTrianglesKan {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (x z : I) :
     KanComplex
-      (PointedObject.basedHom (suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
   {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 元の三円柱と指定した元の比較三角形を保つ、全精密化の実二単体族。 -/
 def kKanCompositionNativeTriangle :
     nerve (CompositionStringParameters f g) ⊗ (Δ[2] : SSet.{u}) ⟶
-      (PointedObject.basedHom (suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   relativeSpecifiedTriangleMap (nervePoint (compositionStringDirect f g))
     (kKanCompositionFirstNativeFamily r F f g) (kKanCompositionSecondNativeFamily r F f g)

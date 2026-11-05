@@ -15,7 +15,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：cube の二方向を三角形へ制限し、残りを全時間として保持する。
 方針：元の矢印 Hom 正方形と同じ座標交換を使う。

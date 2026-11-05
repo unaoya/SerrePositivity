@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Spectra
 
@@ -24,8 +24,8 @@ namespace SerrePositivity.KST.Spectra
 def loopIntervalEndToCircleMapping (Y : PointedSimplicialSet.{u}) :
     weightedSections loopIntervalWeight (loopCoefficient Y) ⟶
       (PointedObject.basedHom endpointCircle Y).right :=
-  cofiberFamilyDesc intervalEndpoint.{u}.right Y (loopIntervalEndFamily Y) (by
-    rw [pointedConstant_eq_const]
+  cofiberFamilyDesc _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right Y (loopIntervalEndFamily Y) (by
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
     exact (intervalFamily_boundary_iff _ _).mpr
       ⟨loopIntervalEndFamily_left Y, loopIntervalEndFamily_right Y⟩)
 
@@ -33,14 +33,14 @@ def loopIntervalEndToCircleMapping (Y : PointedSimplicialSet.{u}) :
 def endpointCircleMappingFamily (Y : PointedSimplicialSet.{u}) :
     (Δ[1] : SSet.{u}) ⊗ (PointedObject.basedHom endpointCircle Y).right ⟶ Y.right :=
   uncurry (PointedObject.basedHomι endpointCircle Y ≫
-    (pre (PointedObject.cofiberQuotient intervalEndpoint.{u}.right)).app Y.right)
+    (pre (PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right)).app Y.right)
 
 /-- 元の区間上の評価族は、境界全体を標的の基点へ送る。 -/
 lemma endpointCircleMappingFamily_boundary (Y : PointedSimplicialSet.{u}) :
-    (intervalEndpoint.{u}.right ▷ _) ≫ endpointCircleMappingFamily Y =
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ▷ _) ≫ endpointCircleMappingFamily Y =
       SSet.const Y.basepoint := by
-  simpa only [Category.id_comp, pointedConstant_eq_const, endpointCircleMappingFamily] using
-    cofiberFamily_restriction_boundary intervalEndpoint.{u}.right Y
+  simpa only [Category.id_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const, endpointCircleMappingFamily] using
+    cofiberFamily_restriction_boundary _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right Y
       (𝟙 (PointedObject.basedHom endpointCircle Y).right)
 
 /-- 商の評価族を、元の区間 end へ持ち上げる。 -/
@@ -57,7 +57,7 @@ lemma circleMappingToLoopIntervalEnd_central (Y : PointedSimplicialSet.{u}) :
     circleMappingToLoopIntervalEnd Y ≫
         weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) =
       PointedObject.basedHomι endpointCircle Y ≫
-        (pre (PointedObject.cofiberQuotient intervalEndpoint.{u}.right)).app Y.right := by
+        (pre (PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right)).app Y.right := by
   rw [circleMappingToLoopIntervalEnd, loopIntervalEndLift_central]
   exact curry_uncurry _
 
@@ -65,7 +65,7 @@ lemma circleMappingToLoopIntervalEnd_central (Y : PointedSimplicialSet.{u}) :
 @[reassoc]
 lemma loopIntervalEndToCircleMapping_restriction (Y : PointedSimplicialSet.{u}) :
     loopIntervalEndToCircleMapping Y ≫ PointedObject.basedHomι endpointCircle Y ≫
-        (pre (PointedObject.cofiberQuotient intervalEndpoint.{u}.right)).app Y.right =
+        (pre (PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right)).app Y.right =
       weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) := by
   rw [loopIntervalEndToCircleMapping, cofiberFamilyDesc_restriction]
   change curry (uncurry (𝟙 _ ≫ _)) = _
@@ -86,7 +86,7 @@ def loopIntervalEndEndpointCircleIso (Y : PointedSimplicialSet.{u}) :
     rw [← uncurry_natural_left, curry_uncurry]
     exact loopIntervalEndToCircleMapping_restriction Y
   inv_hom_id := by
-    apply cofiberFamily_hom_ext intervalEndpoint.{u}.right Y
+    apply cofiberFamily_hom_ext _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right Y
     rw [Category.id_comp, Category.assoc, loopIntervalEndToCircleMapping_restriction]
     change loopIntervalEndLift Y _ _ _ ≫ _ = _
     rw [loopIntervalEndLift_central]
@@ -94,7 +94,7 @@ def loopIntervalEndEndpointCircleIso (Y : PointedSimplicialSet.{u}) :
 
 /-- 区間 end は、標準の基点付き円からの写像空間と厳密に同型。 -/
 def loopIntervalEndCircleIso (Y : PointedSimplicialSet.{u}) :
-    weightedSections loopIntervalWeight (loopCoefficient Y) ≅ (loopSpace Y).right :=
+    weightedSections loopIntervalWeight (loopCoefficient Y) ≅ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right :=
   loopIntervalEndEndpointCircleIso Y ≪≫
     (PointedSimplicialSet.forget.mapIso (loopToEndpointHomIso Y)).symm
 
@@ -108,12 +108,12 @@ lemma loopIntervalEndCircleIso_inv_central (Y : PointedSimplicialSet.{u}) :
   change (loopToEndpointHomIso Y).hom.right ≫ circleMappingToLoopIntervalEnd Y ≫ _ = _
   rw [circleMappingToLoopIntervalEnd_central, ← Category.assoc]
   have hp : (loopToEndpointHomIso Y).hom.right =
-      PointedMapping.pre endpointCircleIso.{u}.hom Y := by
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre endpointCircleIso.{u}.hom Y := by
     change ((MonoidalClosed.pre endpointCircleIso.{u}.hom).app Y).right = _
-    rw [← PointedMapping.prePointed_eq_closedPre]
+    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
     rfl
-  rw [hp, PointedMapping.pre_ι, Category.assoc, ← NatTrans.comp_app, ← pre_map]
-  have hq : PointedObject.cofiberQuotient intervalEndpoint.{u}.right ≫
+  rw [hp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc, ← NatTrans.comp_app, ← pre_map]
+  have hq : PointedObject.cofiberQuotient _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ≫
       endpointCircleIso.{u}.hom.right = PointedObject.cofiberQuotient (boundary.{u} 1).ι :=
     PointedObject.cofiberQuotient_desc _ _ _ _
   rw [hq]

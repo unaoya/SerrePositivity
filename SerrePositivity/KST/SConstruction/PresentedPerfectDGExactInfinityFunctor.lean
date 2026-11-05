@@ -16,7 +16,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全 native dg 入力を持つ、安定 ∞ 圏と完全関手への実 Perf ∞ 関手。 -/
 def presentedPerfectDGExactInfinityFunctor :
-    perfDGInputInfinity.{u, v} A ⟶ LocalizingInvariants.StableInfinity.{max (u + 1) v} :=
+    perfDGInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   coherentNerveMap (presentedPerfectDGEnrichedExactFunctor A)
 
 /-- 元の各 dg 圏での ∞ 関手の値は、同じラベル付き実安定 Perf 模型。 -/

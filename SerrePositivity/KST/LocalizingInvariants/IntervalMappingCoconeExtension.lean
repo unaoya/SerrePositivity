@@ -52,11 +52,11 @@ lemma exists_relative_intervalMappingCoconeFamily {P T X : SSet.{u}} [Quasicateg
         (functorVertex (intervalMappingBoundary
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)) ≫
         (pre (joinStdSimplexIso 0 0).hom).app X =
-      G ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X) :
+      G ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X) :
     ∃ U : P ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X,
       j ≫ U = G ∧
       U ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X = SSet.const (functorVertex D) ∧
-      U ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+      U ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X =
         f ≫ vertexFiberι ((pre (boundary 1).ι).app X)
           (functorVertex (intervalMappingBoundary
             (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)) ≫
@@ -68,17 +68,17 @@ lemma exists_relative_intervalMappingCoconeFamily {P T X : SSet.{u}} [Quasicateg
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z))
   have hn₀ := intervalMappingFamilyArrow_source f
   have hn₁ := intervalMappingFamilyArrow_target f
-  have hp : (simplexLastPoint n).app (Opposite.op ⦋0⦌)
+  have hp : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = stdSimplex.obj₀Equiv.symm (Fin.last n) := by
     have h₀ : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
         SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by decide
     rw [h₀, ← SSet.yonedaEquiv_comp, Category.id_comp]
     exact Equiv.apply_symm_apply _ _
   have hl : (SSet.const (functorVertex D) : P ⟶ _) ≫
-      (pre (simplexLastPoint n)).app X ≫ (pointFunctorEvaluationIso X).hom =
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X ≫ (pointFunctorEvaluationIso X).hom =
       SSet.const (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) := by
     change (SSet.const (functorVertex D) : P ⟶ _) ≫
-      (pre (simplexLastPoint n)).app X ≫ evaluateFunctorAt
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X ≫ evaluateFunctorAt
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = _
     rw [stable_pre_evaluateFunctorAt, hp, SSet.const_comp, evaluateFunctorAt_functorVertex]
   have hr : (N ≫ (pre (joinStdSimplexIso 0 0).hom).app X) ≫
@@ -89,15 +89,15 @@ lemma exists_relative_intervalMappingCoconeFamily {P T X : SSet.{u}} [Quasicateg
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = _
     rw [Category.assoc, stable_pre_evaluateFunctorAt, stable_pre_evaluateFunctorAt]
     rfl
-  have hab : (SSet.const (functorVertex D) : P ⟶ _) ≫ (pre (simplexLastPoint n)).app X =
+  have hab : (SSet.const (functorVertex D) : P ⟶ _) ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       (N ≫ (pre (joinStdSimplexIso 0 0).hom).app X) ≫
         (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X := by
     apply (cancel_mono (pointFunctorEvaluationIso X).hom).mp
     simpa only [Category.assoc] using hl.trans (hr.trans hn₀).symm
-  obtain ⟨U, hU, hUp, hUn⟩ := exists_relative_simplexAttachmentFamily n j G
+  obtain ⟨U, hU, hUp, hUn⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_relative_simplexAttachmentFamily n j G
     (SSet.const (functorVertex D)) (N ≫ (pre (joinStdSimplexIso 0 0).hom).app X) hab
     (by rw [SSet.comp_const, hG]) hGe
   refine ⟨U, hU, hUp, hUn, ?_⟩
-  exact (spanCoconeFamily_apex_of_lastArrow U N hUn).trans hn₁
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeFamily_apex_of_lastArrow U N hUn).trans hn₁
 
 end SerrePositivity.KST.LocalizingInvariants

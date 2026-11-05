@@ -58,7 +58,7 @@ theorem dgKappaNativeBFSquare_zero_corner :
         ((coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))).app
           (Opposite.op ⦋0⦌) (coherentNerveVertex spectrumPoint)) := by
       rw [coherentNerveMap_vertex]
-      apply kanVertex_isTerminal_of_localized_toPoint
+      apply _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanVertex_isTerminal_of_localized_toPoint
       change IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (terminal.from (𝟙_ SSet.{max (u + 1) v})))
       have : IsIso (terminal.from (𝟙_ SSet.{max (u + 1) v})) :=

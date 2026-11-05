@@ -1,0 +1,251 @@
+{
+  "prior_small_result": {
+    "status": "INTERRUPTED_WITH_KNOWN_FAILURES",
+    "exit_code": -2,
+    "seconds": 1250.307,
+    "reason": "Stop a known-failing build before rebuilding long dependencies that the prepared supplement invalidates; no PASS claimed.",
+    "failed_modules": [
+      "SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy",
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting",
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath"
+    ]
+  },
+  "status": "APPLIED_NOT_BUILT",
+  "authorization": "IF-F §9 main ab6b296b4",
+  "source_head": "df1e5d2437addbc9bcc41cfd94a35280bce091e2",
+  "files": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientShiftLegs.lean",
+      "edits": 2,
+      "before_sha256": "3a1f9c87d6f73650324b11b32ef7f6e0a585851651e33d1a78743c74a574c121",
+      "after_sha256": "fbcae38d3b4807a1abfabc8aed212ddcc832be67cbb955c2d915db2a8562243e"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierHomotopyFiberValue.lean",
+      "edits": 7,
+      "before_sha256": "27a7256c4f6e9cec9ee3652fcba4c2ddd4a7a83cc54d1aaf55b3751e27f15136",
+      "after_sha256": "ffb231a2b5e16a375a5c49529e6527292bc7542ff807b18f334eef6d0579b155"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean",
+      "edits": 13,
+      "before_sha256": "b850ed1bb087d5b5d56ba1991a6485a78c71fede187f564618a07f57c3f78000",
+      "after_sha256": "5f98ec1d6858e654aa170a7e89c65ab399d7c321c698c4091f45cba243ff701f"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberLegs.lean",
+      "edits": 10,
+      "before_sha256": "3cd0d9c6f3b7c05cb22bf82e7bb356482480abf0e3bb11cca18bd50cfe3b4e7c",
+      "after_sha256": "bad3e142a4bab4d65ba7d478dcd95c4f93d6994196fd802ee2207db56c78c648"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductFiberVertices.lean",
+      "edits": 3,
+      "before_sha256": "5ef24fa4b0d0fa7e15164d8a6ab47c1a647a868c6abedae689ff2859c1493625",
+      "after_sha256": "f5dd9310d8c85b6632008f91b527f12151195d6dce9379819a08a643c4ec71bb"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProductMap.lean",
+      "edits": 28,
+      "before_sha256": "95bc34eabd7ad3495fdc1746985d80bfef769918c2535d4b1eb2ce9540d03d93",
+      "after_sha256": "e8c752e590f5b228fae07f79acfce0a49a641c2fcc0b4e4408fcb7ef87289217"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierProjectionFiber.lean",
+      "edits": 11,
+      "before_sha256": "bed30f4c87fce4a38c75e5069aa1d5a372d0043b43a8be5896b45f4453f1cca1",
+      "after_sha256": "e0dec97bc48649d51b47b13cb7f151a8b753a812eb258b5effca513d389c270b"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean",
+      "edits": 6,
+      "before_sha256": "1d936eb78f1c79d6caac1f137a7764b8249c4ae6bd02bffc934901eb6c840dd5",
+      "after_sha256": "3b0745db8cffa72f9613f74c4414f7d9df99d7711f7e7e5a505aea6148c35913"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativeSplitting.lean",
+      "edits": 14,
+      "before_sha256": "082db59cef44bc878e675fb6cc0a8bb16358ee91b6f97a134a32390ba1468f98",
+      "after_sha256": "3d01d3e4d9a1482826e146f0ec106da6eeed48ed053128885bb04a32841f2903"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeFiberSequence.lean",
+      "edits": 17,
+      "before_sha256": "ec35845cdf398a19ab90b0a69891865f4bfae4996094d5e29f7ae8af8f654632",
+      "after_sha256": "0fe07d40e0e384760f12840dffd4f947f111f18ee743626375462d8bb23b4139"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
+      "edits": 11,
+      "before_sha256": "96cd0733646509ed38530306c0a47bf1bbd31568972ebde24b0cef04bbb7b86c",
+      "after_sha256": "0ec518a50d2025403304db44884c995b2bb447c76bb4e872fd85c1123363287e"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredInitialComparison.lean",
+      "edits": 5,
+      "before_sha256": "b23f52c71e7cd9826e1ceb21a4d7a08bc0b5ae0c2497ff119e901d14e987a559",
+      "after_sha256": "1b2e098c0bf8750f1c8d71d13a0dccce5fd9bbfcd8ddb6b7a0c507ea72cc7a9d"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredInitialPrefixPath.lean",
+      "edits": 2,
+      "before_sha256": "34379ef59434b4023f05477fec34e7b42c803c867ac9b52bee45bad08f51a57c",
+      "after_sha256": "c8f3126bd2be3dde7085340938aebc3bc12ea1f4c1d161518ab0092e5cf0c93d"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRelativeInitialComparison.lean",
+      "edits": 7,
+      "before_sha256": "f6b6b231d8ad335978a0520749d27f677402d06601bb3b2cb1331dee9812d71b",
+      "after_sha256": "0ee10ec4161d474682353734c8e2d789e0e3a238f4cff6594d8b6dbeb6c170c3"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/IdentityLaxInvariantDiagonal.lean",
+      "edits": 1,
+      "before_sha256": "553bfcab360ae2868390bb44252a852f287c6578b4fd74ce7079305c3d44e120",
+      "after_sha256": "d88e6e5b5cba2650388fcc611eafc7c174d5598310b44625d4b440fd3075e96d"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/InvariantSuspensionSign.lean",
+      "edits": 1,
+      "before_sha256": "b70798ddf7cf433460a2255a993a078ec66ebf246c400f5a22e0f39c61e874e4",
+      "after_sha256": "7b2878f2add885b13ff1b67db85e7a149812a25ec0bdff74ba9944621e29b77d"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceShiftAxes.lean",
+      "edits": 2,
+      "before_sha256": "718752ed9c09db397ca61f716ed4b8df79cb75cceffd00638c3577a99b84caba",
+      "after_sha256": "d9f86d2eef4952d69e269c60a3d6d7eb0d2110db34f4de25f5563555ea46e1a3"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxQuotientDifferencePi.lean",
+      "edits": 6,
+      "before_sha256": "41fbda31a22034537e60904ba02bfd2aa5b78aea3ee8d5f17cd2302d63cbb01d",
+      "after_sha256": "dabe8bf077e578527e8d055527950e89ee313173478d7b02f6c27631d365b71e"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxQuotientLegsPi.lean",
+      "edits": 2,
+      "before_sha256": "e912853a8adf4be8f8c912a04333dcebeacbea27874acb494a50064d9492cca7",
+      "after_sha256": "b3d7984053cfda05d8e8634b51ab76214cc1978a53587a6f1a7f5ffc8774ce61"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "edits": 12,
+      "before_sha256": "124a3623290ff589e9f0c4ea658b95a722b24752cddd5c46252536af3d8542ab",
+      "after_sha256": "152f371605de2fe997f824bfec2287beae51af65bc5dc869c1ffc2525c429765"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiberComponents.lean",
+      "edits": 10,
+      "before_sha256": "0f2454f4e40ed7b15cf6cee5205594b94c32fc7a39ce6633cbda9b87b84efc84",
+      "after_sha256": "8870c9dcaac760a1ebe3379663284a059890937c7b226b73d2faac7557eede7f"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiberMap.lean",
+      "edits": 9,
+      "before_sha256": "1fbc95e26345ef3579628f2f71d6708c072bb9c11baf5971f541c093a7fc9936",
+      "after_sha256": "fe20d92be9db06a52a53df62cb8e97b4606383bd85940a9f5a509b0e59639117"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProjectionCompatibility.lean",
+      "edits": 7,
+      "before_sha256": "8222560f663b3f6205c8503735ba1096ab61d297e8cbf1040e6abc26ad567421",
+      "after_sha256": "a7bf1b629668bad3fe67e10fe304cc6a24ee545a33c965ab6621bfa7c78a3e81"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/SquareFrameHomotopy.lean",
+      "edits": 2,
+      "before_sha256": "549f08e2ede2540d78a32e71965e81cdfc7edbafcd1141142da0597f8a63630e",
+      "after_sha256": "4a8df6c54893b331703acc2c2f29313bbe5fae950a79f09e3fdcfdd1e2cb8812"
+    },
+    {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeProjectionEquivalence.lean",
+      "edits": 3,
+      "before_sha256": "04d59dd481d84e3f99e0f167072f82528981db68f64e3a1ba03f446fa4c70ea3",
+      "after_sha256": "1beaa6c1f5a36d3cea6fb5f5adbc731f9b6a15c7f82d4251e8a669ed179262df"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayCells.lean",
+      "edits": 2,
+      "before_sha256": "de142b62df0bcb98b8a6ecce9486f31ba4a68e79eafdb2b7781c23514a194f1f",
+      "after_sha256": "e99637e016447872fe95abe4afd777c7ba12e4cb1ab00c81a4f75b9ab00928ae"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayColimits.lean",
+      "edits": 4,
+      "before_sha256": "33a1935c7e2c76ffd65facb3732ed7daa036df30c8736ddd0d9549b74ba17f60",
+      "after_sha256": "22df9fa41164f3a1d681da76cf70f3c7cccfa538735a444e303140519865e0b8"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayKanComparison.lean",
+      "edits": 14,
+      "before_sha256": "d8f43b2cf82ec437aa2c2b58aa0c8dc42b62917f9db3b1de3fcad6f8a4facaf1",
+      "after_sha256": "e5203445e3c9f599a8b42f592239ef2bb18150788302e87b00ddef237ce372b2"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayRepresentable.lean",
+      "edits": 1,
+      "before_sha256": "568b1341cea4bfd290271c8a4a1b0b0f19e306d805b5661adc9c1aeb9420eda8",
+      "after_sha256": "a381f957e5eded37047cd528afe52072e6214b2b366205f0cc6dee5ccccd1e7b"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayStructuralCells.lean",
+      "edits": 3,
+      "before_sha256": "71c72491c509aa31e39f333f8fabd85d68e7958dac04519f6d82fa42bd903e2a",
+      "after_sha256": "9bdcc3ca19ca52e7aeda56b5958968fd473328f09ae7907ca595c8ace1ca7ee6"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayTensor.lean",
+      "edits": 3,
+      "before_sha256": "fa4572787d01460332676e636dc6b3e97dabe3e523c5e65dd000b05d27d58893",
+      "after_sha256": "df43f9a4c7dbcb9d51e4beae3140f72b5d2f6ac44c4127aef5523e2640478c05"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayTensorLaws.lean",
+      "edits": 1,
+      "before_sha256": "941609398b26f82b1ae6c722156fa5207f5fed8bdea8130fd6f334dcb3a0b1a3",
+      "after_sha256": "081152776347e43bde4d6e00126f3c35e0823b865e74cd678058bba702291c0d"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalDayUnit.lean",
+      "edits": 1,
+      "before_sha256": "8749b72f288c64079577af2b000584f1bd51960120ca04078ffd363b3d648132",
+      "after_sha256": "e57b72a902fcc0c6421596cedb56bbe5d6b4160b18fdd08fa82f23062e309dd1"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalExternalColimits.lean",
+      "edits": 10,
+      "before_sha256": "3170e1e135b0a751945d1569e49e512104fb785bf490e7de244a7f7c2345fd80",
+      "after_sha256": "69f66ab43adbd70df90f02472c01893a52c3113798364ee4b450cd532b76551f"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalPresheaf.lean",
+      "edits": 1,
+      "before_sha256": "952101d91b545867d30eee7ee2757a429f7bff2b1ed387031101592e0339504e",
+      "after_sha256": "b06827ab996711f5a4e81ef14123b593ec367a2caa28d5e7e25feaf7f061f1e6"
+    },
+    {
+      "file": "SerrePositivity/KST/SConstruction/CubicalSerreDayComparison.lean",
+      "edits": 1,
+      "before_sha256": "b36acb54f8338471d2d4fc6628aa9ebdbccc56005e59cebdb5a90e71868b83bc",
+      "after_sha256": "417f9cade991ab3c8d2ce8698dabf3605e3fbde1f5a1fd4765ffb1268a34d68e"
+    }
+  ],
+  "binder_verification": {
+    "status": "PASS",
+    "receiver_bindings": {
+      "first_explicit": 152,
+      "named": 32
+    }
+  },
+  "modified_span_review": "Six excluded spans are provider-local/new-name references already converted.",
+  "counts": {
+    "files": 36,
+    "changes": 232,
+    "reasons": {
+      "split_extension_explicit_receiver": 184,
+      "opposite_postfix_is_not_an_identifier_continuation": 41,
+      "restore_original_parent_namespace_lookup": 7
+    }
+  }
+}

@@ -52,7 +52,7 @@ lemma cotensorPointedMappingComparison_composition (X Y Z : OmegaSpectrum.{u})
         cotensorPointedMappingComparison X Z A =
       (𝟙 (RawSpectrumMapping.pointedSpace X Y.toKanSequence) ⊗ₘ
         cotensorPointedMappingComparison Y Z A) ≫
-      HomTensorStrength.map (RawSpectrumMapping.pointedSpace X Y.toKanSequence) A
+      _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (RawSpectrumMapping.pointedSpace X Y.toKanSequence) A
         (RawSpectrumMapping.pointedSpace Y Z.toKanSequence) ≫
       (ihom A).map (RawSpectrumMapping.pointedComposition X Y Z.toKanSequence) := by
   dsimp only [cotensorPointedMappingComparison]

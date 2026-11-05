@@ -21,7 +21,7 @@ local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B
 theorem firstVertexDiagram_source_vertex (c : TransportSimplexCategory B) :
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B) ≫
       leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up (nerveVertex c)) =
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex c)) (leftFibrationInfinityVertex p)).app (Opposite.op ⦋0⦌)
         (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (transportSimplexFirstVertexMap B) ≫ leftStraighteningSectionJointDiagram B)) := by
@@ -34,20 +34,20 @@ theorem firstVertexDiagram_source_vertex (c : TransportSimplexCategory B) :
   have hv := congrArg ((evaluateFunctorAt (Y := SpaceInfinity.{u}) a).app
     (Opposite.op ⦋0⦌)) hs
   have he := evaluateFunctorAt_functorVertex a (l ≫ leftStraighteningInfinityDiagram p)
-  have hd := doubleFunctorEvaluation_vertex F x a
+  have hd := _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex F x a
   exact he.symm.trans (hv.trans (hd.symm.trans
     (straighteningRestrict_source_vertex (leftFibrationObjectOf p) c)))
 
 /-- 同じ実図式同型の頂点成分を元の二つの表示へ揃えると、同じ制限成分を回収する。 -/
 theorem firstVertexDiagramValueIso_eq (c : TransportSimplexCategory B) :
     F2.isoNormalizeEndpoints
-      (functorIsoValue (leftStraighteningInfinityDiagram_firstVertexIso p)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_firstVertexIso p)
         (ULift.up (nerveVertex c)))
       (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c))
       (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex
         (pullback.snd p (transportSimplexFirstVertexMap B)) c)) =
     firstVertexRestrictionChart (leftFibrationObjectOf p) c :=
   F2.isoNormalizeEndpoints_eq_of_heq _ _ _ _
-    ((functorIsoValue_heq_map _ _).trans (firstVertexDiagramIso_heq_restrictionChart p c))
+    ((_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map _ _).trans (firstVertexDiagramIso_heq_restrictionChart p c))
 
 end SerrePositivity.KST.Fibration

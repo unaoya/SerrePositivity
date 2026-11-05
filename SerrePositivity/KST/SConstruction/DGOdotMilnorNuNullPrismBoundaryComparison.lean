@@ -24,7 +24,7 @@ lemma dgOdotMilnorNuNullPrismBoundaryHomotopy_component (j : Fin 2) (i : Fin 3)
     IsInvertibleEdge (simplicialHomotopyVertexEdge
       (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j)
       ((boundary.ι i).app (Opposite.op ⦋0⦌) x)).toTruncated := by
-  have component {f g : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1}}
+  have component {f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}}
       (H : SSet.Homotopy f g)
       (hh : (boundary.ι i ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h j).h = H.h)
@@ -35,7 +35,7 @@ lemma dgOdotMilnorNuNullPrismBoundaryHomotopy_component (j : Fin 2) (i : Fin 3)
     let z : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) _⦋1⦌ :=
       ((SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[1] : SSet.{u + 2})) x).edge,
         homotopyIntervalEdge.{u + 2}.edge)
-    have he := congrArg (fun q : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} =>
+    have he := congrArg (fun q : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} =>
       q.app (Opposite.op ⦋1⦌) z) hh
     have hid : (boundary.ι i).app (Opposite.op ⦋1⦌)
         (SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[1] : SSet.{u + 2})) x).edge =

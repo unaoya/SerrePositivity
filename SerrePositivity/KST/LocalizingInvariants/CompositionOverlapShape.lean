@@ -37,7 +37,7 @@ lemma overlap_first : (Δ[1] ◁ stdSimplex.δ (2 : Fin 3)) ≫ overlap.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change overlapIndex (s i, (2 : Fin 3).succAbove (t i)) =
-    (3 : Fin 4).succAbove (SquareDiagonal.preIndex (s i, t i))
+    (3 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -51,7 +51,7 @@ lemma overlap_last : (Δ[1] ◁ stdSimplex.δ (0 : Fin 3)) ≫ overlap.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change overlapIndex (s i, (0 : Fin 3).succAbove (t i)) =
-    (0 : Fin 4).succAbove (SquareDiagonal.postIndex (s i, t i))
+    (0 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron
 
 /-! # 元の三面を保持する右結合の実四面体
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 前後二射と左結合の元の三面を保持する実四面体。 -/
 structure CompositionTripleRightTetrahedron {E : SSet.{u}} {w x y z : E _⦋0⦌}
@@ -47,7 +52,7 @@ def compositionTripleRightTetrahedronOfMap {E : SSet.{u}}
     (hs₀ : stdSimplex.δ 0 ≫ s = SSet.yonedaEquiv.symm second.simplex)
     (hs₁ : stdSimplex.δ 1 ≫ s = SSet.yonedaEquiv.symm left.simplex)
     (hs₃ : stdSimplex.δ 3 ≫ s = SSet.yonedaEquiv.symm first.simplex)
-    : CompositionTripleRightTetrahedron first second left := by
+    : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left := by
   let σ := SSet.yonedaEquiv s
   have h₀ : E.δ 0 σ = second.simplex := by
     rw [← stdSimplex.yonedaEquiv_δ_comp, hs₀, Equiv.apply_symm_apply]
@@ -75,7 +80,7 @@ def compositionTripleRightTetrahedron {E : SSet.{u}} [Quasicategory E]
     (first : SSet.Edge.CompStruct a b ab)
     (second : SSet.Edge.CompStruct b c bc)
     (left : SSet.Edge.CompStruct ab c abc) :
-    CompositionTripleRightTetrahedron first second left := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left := by
   let horn := horn₃₂.exists_desc (SSet.yonedaEquiv.symm second.simplex)
     (SSet.yonedaEquiv.symm left.simplex) (SSet.yonedaEquiv.symm first.simplex)
     (by simp) (by simp) (by simp)
@@ -96,6 +101,156 @@ def compositionTripleRightTetrahedron {E : SSet.{u}} [Quasicategory E]
     exact he.trans ((Category.assoc _ _ _).trans
       ((congrArg (SSet.horn.ι (2 : Fin 4) 3 (by decide) ≫ ·) fill.choose_spec.symm).trans
         horn.choose_spec.2.2))
-  exact compositionTripleRightTetrahedronOfMap first second left s hs₀ hs₁ hs₃
+  exact _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap first second left s hs₀ hs₁ hs₃
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.first_face := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.first_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.left_face := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.left_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.rec := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.right_face := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.right_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.second_face := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.second_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.simplex := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_13 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_13
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_14 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_14
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedron._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedron._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.compositionTripleRightTetrahedronOfMap._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap._proof_9
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk.sizeOf_spec

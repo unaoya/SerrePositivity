@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport
 
@@ -25,7 +25,7 @@ theorem scaffoldBaseChangeLeftChart_pointHom (c : TransportSimplexCategory D)
     (v : (((relativeSectionEnrichedDiagram
       (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj
         (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram
         (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj
           (leftFibrationObjectOf p))).symm v) ≫
@@ -34,7 +34,7 @@ theorem scaffoldBaseChangeLeftChart_pointHom (c : TransportSimplexCategory D)
           (straighteningBaseChangeLeft_source_vertex k (leftFibrationObjectOf p) c))).hom ≫
         (eqToIso (congrArg HomotopyCategory.mk
           (firstVertexDiagram_source_vertex p ((transportSimplexFunctor k).obj c)))).inv =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p)
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
         (nerveVertex ((transportSimplexFunctor k).obj c)))
@@ -43,19 +43,19 @@ theorem scaffoldBaseChangeLeftChart_pointHom (c : TransportSimplexCategory D)
         ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
           (nerveVertex ((transportSimplexFunctor k).obj c)))).app (Opposite.op ⦋0⦌)
             (firstVertexSectionFiberPoint p ((transportSimplexFunctor k).obj c)
-              (straighteningBaseChangeImageSectionPoint p k c v)))) := by
-  have hp := pointedSpaceFiberPointHom_eq_transport
-    (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c) v
-  have hn := point_normalize_both_inv
+              (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c v)))) := by
+  have hp := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointHom_eq_transport
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c) v
+  have hn := _root_.SerrePositivity.InfinityCategories.Stable.Transport.point_normalize_both_inv
     (straighteningBaseChangeLeftChart k (leftFibrationObjectOf p) c)
     (congrArg HomotopyCategory.mk
       (straighteningBaseChangeLeft_source_vertex k (leftFibrationObjectOf p) c))
     (congrArg HomotopyCategory.mk (congrArg spaceInfinityVertex
-      (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)))
     _ _ (eqToIso (congrArg HomotopyCategory.mk
       (firstVertexDiagram_source_vertex p ((transportSimplexFunctor k).obj c)))).inv hp
   rw [straighteningBaseChangeLeftChart_eq_firstVertex] at hn
   exact hn.trans (scaffoldPointedReconstruction_coefficient_pointHom p
-    ((transportSimplexFunctor k).obj c) (straighteningBaseChangeImageSectionPoint p k c v))
+    ((transportSimplexFunctor k).obj c) (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c v))
 
 end SerrePositivity.KST.Fibration

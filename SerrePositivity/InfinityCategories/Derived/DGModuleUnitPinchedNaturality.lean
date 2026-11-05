@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v)
 /-- 同じ実 Yoneda 比較は、元の実閉射の後合成と厳密に可換する。 -/
 lemma dgHomModuleUnderlyingPinchedIso_naturality {M N : RightModule R PUnit.{1}}

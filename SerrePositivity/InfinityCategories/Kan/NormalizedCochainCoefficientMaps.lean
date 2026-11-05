@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NormalizedCochainComplex
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+open SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
 
 noncomputable section
 
@@ -36,11 +41,11 @@ def post (n : ℕ) : (K.nonDegenerate n → (R ⟶ M)) →+
   map_add' a b := by funext s; exact Preadditive.add_comp _ _ _ _ _ _
 
 lemma extend_post (n : ℕ) (a : K.nonDegenerate n → (R ⟶ M)) :
-    extend K R N n (post K R f n a) = extend K R M n a ≫ f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend K R N n (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post K R f n a) = _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend K R M n a ≫ f := by
   apply K.normalizedChainComplex_hom_ext
   intro s hs
-  rw [inclusion_extend K R N n _ ⟨s, hs⟩, ← Category.assoc,
-    inclusion_extend K R M n a ⟨s, hs⟩]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.inclusion_extend K R N n _ ⟨s, hs⟩, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.inclusion_extend K R M n a ⟨s, hs⟩]
   rfl
 
 /-- 概要：正規化 cochain 微分は係数の後合成と可換。
@@ -48,28 +53,52 @@ lemma extend_post (n : ℕ) (a : K.nonDegenerate n → (R ⟶ M)) :
 規約：交代面の和と同じ微分そのものについて証明する。
 使われ方：Goerss–Jardine III §2、VIII §1。通常の複体の自然性。 -/
 lemma differential_natural (n : ℕ) (a : K.nonDegenerate n → (R ⟶ M)) :
-    differential K R N n (post K R f n a) = post K R f (n + 1) (differential K R M n a) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K R N n (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post K R f n a) = _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post K R f (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K R M n a) := by
   funext s
   change K.ιNormalizedChainComplex s.val ≫
-      ((K.normalizedChainComplex R).d (n + 1) n ≫ extend K R N n (post K R f n a)) =
+      ((K.normalizedChainComplex R).d (n + 1) n ≫ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend K R N n (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post K R f n a)) =
     (K.ιNormalizedChainComplex s.val ≫
-      ((K.normalizedChainComplex R).d (n + 1) n ≫ extend K R M n a)) ≫ f
-  rw [extend_post]
+      ((K.normalizedChainComplex R).d (n + 1) n ≫ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend K R M n a)) ≫ f
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend_post]
   simp only [Category.assoc]
 
 /-- 概要：係数射を通常の正規化 cochain 複体の射へ束ねる。
 方針：各次数の座標ごとの後合成と微分の自然性を使う。
 規約：値は加法群の圏の cochain 複体。
 使われ方：Goerss–Jardine VIII §1。係数の群準同型による cochain の比較。 -/
-def complexMap : complex K R M ⟶ complex K R N :=
+def complexMap : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K R M ⟶ _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K R N :=
   CochainComplex.ofHom
-    (fun n ↦ AddCommGrpCat.ofHom (post K R f n))
+    (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post K R f n))
     (fun n ↦ by
-      simp only [complex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
-      exact differential_natural K R f n a)
+      exact _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_natural K R f n a)
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential_natural := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_natural
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.extend_post := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend_post
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post._proof_2

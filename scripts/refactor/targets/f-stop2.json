@@ -1,0 +1,501 @@
+{
+  "status": "PASS_STOP2",
+  "source_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+  "base": "29d9ad0e7",
+  "branch": "infra/if-f",
+  "approval": "IF-F §6 main 9f59541d3 + user approval of the two-site private rename",
+  "production_changed_modules": 31,
+  "publications": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+      "name": "SerrePositivity.KST.LocalizingInvariants.comp_app_congr",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+      "name": "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.fiberPoint_ext",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+      "name": "SerrePositivity.KST.Fibration.prependEq_heq",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+      "name": "SerrePositivity.KST.Fibration.pointNormalize",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+      "name": "SerrePositivity.KST.Fibration.component_reindex",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+      "name": "SerrePositivity.KST.Fibration.mapNormalizeComposition",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "name": "SerrePositivity.KST.Fibration.normalizeValueComposition",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+      "name": "SerrePositivity.KST.Fibration.point_normalize_both_inv",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+      "name": "SerrePositivity.KST.Fibration.mapNormalizeTriangle",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "name": "SerrePositivity.KST.Fibration.endpointSpan_heq",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "name": "SerrePositivity.KST.Fibration.pointTriangle",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "name": "SerrePositivity.KST.Fibration.appendPointTriangle",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "name": "SerrePositivity.KST.Fibration.point_normalize_inv",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+      "name": "SerrePositivity.KST.Fibration.firstVertex_zeroSimplex",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+      "name": "SerrePositivity.KST.Fibration.uliftMapVertex",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+      "name": "SerrePositivity.KST.Fibration.uliftOppositeVertex",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+      "name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "name": "SerrePositivity.KST.Fibration.appendPoint",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "name": "SerrePositivity.KST.Fibration.recoverPoint",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "different_fields": []
+    }
+  ],
+  "private_rename": [
+    {
+      "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+      "old": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+      "new": "SerrePositivity.KST.Fibration.firstVertexOppositeChart_mapNormalizeCompositionWithEq",
+      "private_before": true,
+      "private_after": true,
+      "source_edits": 2,
+      "status": "PASS",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "theorem_body": "v3b theorem body is null; exact proof-source equality additionally checked",
+      "proof_source_sha256": "7f610b9e5926918ac74bd55447896c647071b0df316f2b919bc6f6adfdcc6b77"
+    }
+  ],
+  "ordinary_import_edges": 15,
+  "R67_checks": {
+    "level": {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-M",
+        "40000",
+        "scripts/check_kan_quillen_level.lean"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 15.902,
+      "log": "check-level.log"
+    },
+    "resolution_hom": {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-M",
+        "40000",
+        "scripts/check_kan_quillen_resolution_hom.lean"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 7.376,
+      "log": "check-resolution_hom.log"
+    }
+  },
+  "Foundation_classifications": 3,
+  "builds": {
+    "small": {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.KST.Fibration.FirstVertexOppositeChart"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 11.554,
+      "log": "small-build.log"
+    },
+    "internal": {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+        "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+        "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+        "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+        "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+        "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+        "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+        "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+        "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+        "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+        "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+        "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+        "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+        "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+        "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+        "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+        "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+        "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+        "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+        "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+        "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+        "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+        "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+        "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+        "SerrePositivity.Spectra.StageTwo"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 89.831,
+      "log": "internal-build.log"
+    },
+    "downstream": {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity",
+        "SerrePositivity.KST.Fibration",
+        "SerrePositivity.KST.LocalizingInvariants"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 245.069,
+      "log": "downstream-build.log"
+    }
+  },
+  "downstream_modules": 144,
+  "downstream_roots": 3,
+  "preservation": {
+    "status": "PASS",
+    "before_count": 961,
+    "after_count": 961,
+    "raw_differences": 2,
+    "mapped_differences": 0,
+    "unexplained": 0,
+    "source_only_approved_edits": true,
+    "private_inclusive": true,
+    "helper_count": 19,
+    "private_renames": [
+      {
+        "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+        "old": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+        "new": "SerrePositivity.KST.Fibration.firstVertexOppositeChart_mapNormalizeCompositionWithEq",
+        "private_before": true,
+        "private_after": true,
+        "source_edits": 2,
+        "status": "PASS",
+        "equal_fields": [
+          "kind",
+          "type_hash",
+          "body_hash",
+          "axioms",
+          "attributes"
+        ],
+        "theorem_body": "v3b theorem body is null; exact proof-source equality additionally checked",
+        "proof_source_sha256": "7f610b9e5926918ac74bd55447896c647071b0df316f2b919bc6f6adfdcc6b77"
+      }
+    ],
+    "comparator_unchanged": true
+  },
+  "static": {
+    "status": "PASS",
+    "enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "direct_forbidden_edges": 0,
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1732
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1732
+      }
+    },
+    "F1B_straightening": [],
+    "ratchet_increases": [],
+    "ratchet_metrics_unchanged": true,
+    "config_before": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
+    "config_after": "a8eddf9505b8b7bab7547c3eb081ec84cfeb83f96988d835f2e5591452a1f5f6",
+    "configuration_change": [
+      "SerrePositivity.CategoryTheory.ArrowFactorization",
+      "SerrePositivity.CategoryTheory.ArrowFactorizationCategory",
+      "SerrePositivity.CategoryTheory.ArrowFactorizationTransport"
+    ],
+    "downstream_count": 144,
+    "exceptions_changed": false
+  },
+  "inherited_since_W2c": [
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.Space",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.Space",
+      "before": 0,
+      "after": 74
+    }
+  ],
+  "verify": {
+    "status": "PASS",
+    "gate": true,
+    "summary": "PASS build(success=2,failure=0,known=0) audit(success=102,failure=0,known=0) sorry(success=1,failure=0,known=0) preparation(success=1,failure=0,known=0) retried=0",
+    "commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+    "seconds": 2952.116,
+    "audit_count": 102,
+    "target_count": 5118,
+    "counts": {
+      "build": {
+        "success": 2,
+        "failure": 0,
+        "known": 0
+      },
+      "audit": {
+        "success": 102,
+        "failure": 0,
+        "known": 0
+      },
+      "sorry": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      },
+      "preparation": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      }
+    },
+    "retried": 0,
+    "executed_audit_count": 102
+  },
+  "F2_applied": false,
+  "other_ledger_actions_applied": false,
+  "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f-apply",
+  "commits": [
+    "45969ee0a",
+    "20b781f39",
+    "178e70671",
+    "392ddcc88"
+  ],
+  "verify_settings": {
+    "jobs": 6,
+    "memory_budget_bytes": 40000000000,
+    "audit_cache_enabled": false,
+    "max_concurrent": 6
+  }
+}

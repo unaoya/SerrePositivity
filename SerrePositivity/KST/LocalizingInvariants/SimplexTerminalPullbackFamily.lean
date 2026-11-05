@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -45,7 +45,7 @@ def terminalPullbackColumnVertex [Quasicategory X] [IsStable X] :
 終端での一致は全四角形の実単体の等号であり、同型への置き換えをしない。 -/
 lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [IsStable X] :
     ∃ F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X,
-      F ≫ pullbackProjection X = simplexTerminalCospanFamily D s hs ∧
+      F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs ∧
         F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
           terminalPullbackColumnVertex s := by
   let j : (Δ[0] : SSet.{u}) ⟶ Δ[n] :=
@@ -60,12 +60,12 @@ lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [IsStable X] :
     omega
   let a : (Δ[0] : SSet.{u}) ⟶ pullbackDiagrams X :=
     SSet.const (terminalPullbackColumnVertex s)
-  have ha : a ≫ pullbackProjection X = j ≫ simplexTerminalCospanFamily D s hs := by
-    rw [simplexTerminalCospanFamily_last]
+  have ha : a ≫ pullbackProjection X = j ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs := by
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_last]
     rw [SSet.const_comp]
     rfl
   obtain ⟨F, hFa, hFd⟩ := exists_relative_stable_pullbackFamily j
-    (simplexTerminalCospanFamily D s hs) a ha
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs) a ha
   refine ⟨F, hFd, ?_⟩
   have he := ConcreteCategory.congr_hom (NatTrans.congr_app hFa (Opposite.op ⦋0⦌))
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))

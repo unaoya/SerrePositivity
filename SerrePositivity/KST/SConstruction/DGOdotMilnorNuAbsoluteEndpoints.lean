@@ -32,13 +32,13 @@ lemma dgOdotMilnorNuAbsoluteTriangle_source (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (0 : Fin 3)⟩ =
-      stableObject (squareVertex F 0 0) := by
-    have hn' := congrArg stableObject hn
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex F 0 0) := by
+    have hn' := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
   rw [(perfectVerdierRawSquare_vertices (dgOdotMilnorNuPerfectSequence R d h)).1,
-    stableObject_vertex]
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   rfl
 
 /-- 概要：両二単体の終点は同じ元 resolved 商の固定 ν 値。
@@ -58,13 +58,13 @@ lemma dgOdotMilnorNuAbsoluteTriangle_target (j : Fin 2) :
     fin_cases j <;> apply Prod.ext <;> apply SSet.stdSimplex.ext <;>
       intro i <;> fin_cases i <;> rfl
   have he : (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (2 : Fin 3)⟩ =
-      stableObject (squareVertex F 1 1) := by
-    have hn' := congrArg stableObject hn
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex F 1 1) := by
+    have hn' := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject hn
     rw [hs] at hn'
     exact hn'.symm
   rw [he]
   rw [(perfectVerdierRawSquare_vertices (dgOdotMilnorNuPerfectSequence R d h)).2.2.1,
-    stableObject_vertex]
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   rfl
 
 /-- 概要：元の実二単体の全 Hom データを同じ核と resolved 商の Hom で読む。
@@ -73,12 +73,12 @@ lemma dgOdotMilnorNuAbsoluteTriangle_target (j : Fin 2) :
 def dgOdotMilnorNuAbsoluteTriangleHom (j : Fin 2) :
     nerve (CategoryTheory.SimplicialThickening.Path
       (ULift.up.{u + 1} (0 : Fin 3)) (ULift.up.{u + 1} (2 : Fin 3))) ⟶
-        SimplicialCategory.sHom (C := StableQCat.{u + 1})
+        SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
           (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d))
           (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) :=
   (dgOdotMilnorNuAbsoluteNullTriangle R d h j).map ⟨ULift.up (0 : Fin 3)⟩
     ⟨ULift.up (2 : Fin 3)⟩ ≫
-      eqToHom (congrArg₂ (fun X Y : StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
+      eqToHom (congrArg₂ (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
         (dgOdotMilnorNuAbsoluteTriangle_source R d h j)
         (dgOdotMilnorNuAbsoluteTriangle_target R d h j))
 

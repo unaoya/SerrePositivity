@@ -13,21 +13,21 @@ open CategoryTheory
 
 /-- 元の削除式を、元の cubical 生成語の圏の path として実現する。 -/
 def cubeDeletionExpressionPath {n : ℕ} : {m : ℕ} → CubeDeletionExpression n m →
-    Quiver.Path (CubeWordObject.mk n) (CubeWordObject.mk m)
+    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m)
   | _, .id _ => .nil
-  | _, .erase p i => (cubeDeletionExpressionPath p).cons (CubeGenerator.degeneracy _ i)
+  | _, .erase p i => (cubeDeletionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy _ i)
 termination_by structural _m p => p
 
 /-- 削除式の path の具体的評価は、同じ削除式の元の頂点関数。 -/
 lemma cubeDeletionExpressionPath_concrete {n m : ℕ} (p : CubeDeletionExpression n m) :
-    (cubeWordConcreteFunctor.map (cubeDeletionExpressionPath p)).val =
+    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeDeletionExpressionPath p)).val =
       cubeDeletionExpressionVertex p := by
   induction p with
   | id => rfl
   | erase p i ih =>
-    change cubeVertexDegeneracy _ i ∘
-      (cubeWordConcreteFunctor.map (cubeDeletionExpressionPath p)).val =
-        cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeDeletionExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeDeletionExpressionVertex p
     rw [ih]
     rfl
 

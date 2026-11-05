@@ -69,7 +69,7 @@ def zeroRowKanPreviousComparison (r : ℕ) (X : StableModel.{u})
 /-- 共通 Kan 模型から前段の既存の Kan 実現への比較は全基点 π_* 同型。 -/
 lemma zeroRowKanPreviousComparison_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    KanPiIsomorphism (zeroRowKanPreviousComparison r X b).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (zeroRowKanPreviousComparison r X b).right :=
   pointedKanStrictExtension_piIsomorphism (zeroRowPointedPreviousComparison r X b)
     (zeroRowPointedPreviousComparison_localized_isIso r X b)
 

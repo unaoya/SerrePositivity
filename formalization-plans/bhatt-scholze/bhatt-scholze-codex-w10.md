@@ -61,3 +61,9 @@
 
 各停止点で：やったこと、ビルドの実測（本数・時間）、残る `sorry` と理由、原典と違えた点（あれば）、次の停止点までの見積もり。
 報告は `formalization-plans/bhatt-scholze/report-codex-w10.md`（新規、日本語）に追記し、報告だけのコミット `docs(bs): Codex report W10 (stop N)`。
+
+## worktree の規則（11-05、調整役の提案）
+
+- worktree は一度に一つ。作業 B が main に入ったら `bs-w10` の worktree は `git worktree remove` で消す（ブランチは残す）。
+- 新しい worktree は `/private/tmp/` ではなく `/Users/sugakubunka/Documents/LEAN_Projects.nosync/` の下に作る（例：`../SerrePositivity-bs-w11`）。/tmp は再起動で消える。
+- 停止点の間もこまめにブランチへコミットする。

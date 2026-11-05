@@ -23,12 +23,12 @@ open scoped Simplicial
 方針：既存の合成則・関手同型の不変性・恒等則を合わせる。
 規約：元の両射を保持する。使われ方：同じ完全同値の可逆性。 -/
 lemma perfectStableHoArrow_comp_eq_id_of_functorIso
-    {A B : StableCategory.{u}} (F : ExactMap A B) (G : ExactMap B A)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B A)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (e : FunctorIso (F.hom ≫ G.hom) (𝟙 A.obj)) :
     perfectStableHoArrow F hA hB ≫ perfectStableHoArrow G hB hA = 𝟙 _ := by
-  let C : ExactMap A A := ⟨F.hom ≫ G.hom, isExactFunctor_comp F.hom G.hom⟩
-  let J : ExactMap A A := ⟨𝟙 A.obj, inferInstance⟩
+  let C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A A := ⟨F.hom ≫ G.hom, isExactFunctor_comp F.hom G.hom⟩
+  let J : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A A := ⟨𝟙 A.obj, inferInstance⟩
   have hc := perfectStableHoArrow_comp F G hA hB hA
   change perfectStableHoArrow C hA hA =
     perfectStableHoArrow F hA hB ≫ perfectStableHoArrow G hB hA at hc
@@ -40,11 +40,11 @@ lemma perfectStableHoArrow_comp_eq_id_of_functorIso
 方針：指定した逆関手と二つの全関手同型を射の合成則へ渡す。
 規約：同じ順方向の辺を保持する。使われ方：固定 ν 辺の可逆性。 -/
 lemma perfectStableHoArrow_isIso_of_isQCatEquivalence
-    {A B : StableCategory.{u}} (F : ExactMap A B)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
     (hF : IsQCatEquivalence F.hom) : IsIso (perfectStableHoArrow F hA hB) := by
   let E := hF.choose
-  let G : ExactMap B A := ⟨E.inv,
+  let G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B A := ⟨E.inv,
     isExactFunctor_of_isQCatEquivalence E.symm.isQCatEquivalence⟩
   refine ⟨⟨perfectStableHoArrow G hB hA, ?_, ?_⟩⟩
   · exact perfectStableHoArrow_comp_eq_id_of_functorIso F G hA hB E.homInvIso
@@ -69,7 +69,7 @@ lemma dgKInputPerfectNu_edge :
 方針：元の辺の回収式と既存の射の類の可逆性を合わせる。
 規約：S 内での同値を仮定しない。使われ方：元入力への実増大屋根。 -/
 lemma dgKInputPerfectNu_map_isIso_of_isQCatEquivalence
-    (hf : IsQCatEquivalence (show ExactMap (dgKInputStableValue R P)
+    (hf : IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R P)
       (dgKInputStableValue R Q) from dgKInputNuMap R f).hom) :
     IsIso ((hoFunctor.map (dgKInputPerfectNu R)).toFunctor.map
       (Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated)) := by

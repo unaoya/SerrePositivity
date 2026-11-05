@@ -18,25 +18,25 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 theorem pointedLeftReconstruction_restriction_pointHom (c : TransportSimplexCategory B)
     (v : (vertexFiber p ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
       (nerveVertex c))) _⦋0⦌) :
-    cosliceFiberPointHom ((nativeTransportPointedFiberMap p
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
         (Opposite.op ⦋0⦌) (ULift.up v)) ≫
       functorHomEvaluate
         (straighteningRepresentationRestrictionIso p (nativeLeftTransportRepresentation p)).inv
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (smallUnstraighteningPointedImage
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage
       (leftStraighteningInfinityDiagram p)
       ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))
       ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
-        (pointedLeftStraighteningReconstruction p)
-        (pointedLeftStraighteningReconstruction_projection p)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction p)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_projection p)
         ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
           (Opposite.op ⦋0⦌) v)) := by
   let b := (transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c)
-  have hp := pointedLeftStraighteningReconstruction_pointHom p b v
+  have hp := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedLeftStraighteningReconstruction_pointHom p b v
   rw [nativeLeftTransportComparison_pointedImage] at hp
   have hi := leftStraighteningRepresentationIso_inv_value p (nativeLeftTransportRepresentation p) c
-  have he := congrArg (fun m => cosliceFiberPointHom
+  have he := congrArg (fun m => _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
     ((nativeTransportPointedFiberMap p b).app (Opposite.op ⦋0⦌) (ULift.up v)) ≫ m) hi
   exact he.symm.trans hp
 

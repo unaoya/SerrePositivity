@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type (max (u + 1) v)) [DGCategory R C]
   (F : DGFunctor R C (RightModule R PUnit.{1}))
 /-- 同じ実 augmentation の全単体族を、R からの基礎空間関手へ送ったホモトピー。 -/

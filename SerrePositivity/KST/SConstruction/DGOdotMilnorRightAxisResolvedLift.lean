@@ -135,7 +135,7 @@ def dgOdotMilnorRightAxisInputMap :
 /-- 概要：固定 S の同じ中央辺の完全な ν 像。
 方針：固定界面に実辺を渡す。規約：native 全比較は別に構成する。
 使われ方：中央辺の ν 比較の始点。 -/
-abbrev dgOdotMilnorRightAxisExactMap : ExactMap
+abbrev dgOdotMilnorRightAxisExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotMilnorRightAxisInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d)

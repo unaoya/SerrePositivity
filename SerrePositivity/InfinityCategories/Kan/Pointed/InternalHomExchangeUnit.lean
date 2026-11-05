@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
@@ -17,6 +19,9 @@ universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -32,7 +37,7 @@ omit [BraidedCategory C] in
 使われ方：HA §1.4.2。定数族の単位の計算。 -/
 theorem curry_unit_evaluation {A Y : C} (g : (𝟙_ C) ⊗ A ⟶ Y) :
     curry g ≫ (unitIsoSelf (X := Y)).hom = (λ_ A).inv ≫ g := by
-  rw [HomTensorStrength.unit_evaluation, leftUnitor_inv_naturality_assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation, leftUnitor_inv_naturality_assoc,
     whiskerLeft_curry_ihom_ev_app]
 
 omit [BraidedCategory C] in
@@ -43,7 +48,7 @@ omit [BraidedCategory C] in
 theorem unit_inv_eq_curry (Y : C) :
     (unitIsoSelf (X := Y)).inv = curry (λ_ Y).hom := by
   apply (cancel_mono (unitIsoSelf (X := Y)).hom).mp
-  rw [Iso.inv_hom_id, curry_unit_evaluation, Iso.inv_hom_id]
+  rw [Iso.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation, Iso.inv_hom_id]
 
 omit [MonoidalClosed C] in
 /-- 概要：第二因子が単位のテンソル交換は左単位子と整合する。
@@ -52,10 +57,10 @@ omit [MonoidalClosed C] in
 使われ方：HA §1.4.2、BF 1978 §2。二重内部 Hom の単位の評価。 -/
 @[reassoc]
 theorem exchange_second_unit (A Z : C) :
-    (HomTensorStrength.exchange A (𝟙_ C) Z).hom ≫ (λ_ (A ⊗ Z)).hom = A ◁ (λ_ Z).hom := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A (𝟙_ C) Z).hom ≫ (λ_ (A ⊗ Z)).hom = A ◁ (λ_ Z).hom := by
   have hb : (β_ A (𝟙_ C)).hom = (ρ_ A).hom ≫ (λ_ A).inv := by
     rw [← braiding_leftUnitor A, Category.assoc, Iso.hom_inv_id, Category.comp_id]
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, hb, comp_whiskerRight, Category.assoc]
   monoidal
 
@@ -65,21 +70,42 @@ theorem exchange_second_unit (A Z : C) :
 使われ方：HA §1.4.2、BF 1978 §2。定数族の end と loop の可換性。 -/
 @[reassoc]
 theorem natural_unit_inv (A Y : C) :
-    (ihom A).map (unitIsoSelf (X := Y)).inv ≫ (iso A (𝟙_ C) Y).hom =
+    (ihom A).map (unitIsoSelf (X := Y)).inv ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (𝟙_ C) Y).hom =
       (unitIsoSelf (X := (ihom A).obj Y)).inv := by
   apply uncurry_injective
   apply uncurry_injective
-  rw [uncurry_natural_left, uncurry_natural_left, uncurry_uncurry_hom,
-    HomTensorStrength.exchange_natural_right_assoc]
+  rw [uncurry_natural_left, uncurry_natural_left, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom,
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have he : A ◁ (ihom A).map (unitIsoSelf (X := Y)).inv ≫
       (ihom.ev A).app ((ihom (𝟙_ C)).obj Y) =
       (ihom.ev A).app Y ≫ (unitIsoSelf (X := Y)).inv :=
     (ihom.ev A).naturality _
   rw [← whiskerLeft_comp_assoc, he, whiskerLeft_comp, Category.assoc,
-    unit_inv_eq_curry, whiskerLeft_curry_ihom_ev_app]
-  rw [leftUnitor_naturality, exchange_second_unit_assoc]
-  rw [unit_inv_eq_curry, uncurry_curry, uncurry_eq]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry, whiskerLeft_curry_ihom_ev_app]
+  rw [leftUnitor_naturality, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_second_unit_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry, uncurry_curry, uncurry_eq]
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry_unit_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_second_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_second_unit_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_unit_inv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_unit_inv_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.unit_inv_eq_curry := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry

@@ -38,7 +38,7 @@ lemma dgKappaNativeBFPointedStageSquare_forget (r : ℕ) :
     pointedKanForgetEnriched).symm
   have he := congrArg
     (fun F : EnrichedFunctor SSet.{max (u + 1) v}
-      LocalizingInvariants.StableQCat.{max (u + 1) v} KanObject.{max (u + 1) v} =>
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} KanObject.{max (u + 1) v} =>
         coherentNerveMap F)
     (stableSBoundaryKan_forget.{max (u + 1) v} r)
   exact (Category.assoc _ _ _).trans

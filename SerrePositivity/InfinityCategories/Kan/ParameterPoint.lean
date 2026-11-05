@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 
 /-!
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra.ParameterPoint
+end SerrePositivity.KST.Spectra.ParameterPoint
+namespace SerrePositivity.InfinityCategories.Kan.ParameterPoint
+open SerrePositivity.KST.Spectra.ParameterPoint
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C]
 
 /-- 単位からの点で左のパラメータを固定する射。 -/
@@ -22,8 +27,23 @@ def family {E : C} (p : 𝟙_ C ⟶ E) (A : C) : A ⟶ E ⊗ A :=
 /-- 点と自由パラメータの射による同時の移送は、点を固定した族と可換。 -/
 @[reassoc]
 lemma naturality {E E' A A' : C} (p : 𝟙_ C ⟶ E) (e : E ⟶ E') (a : A ⟶ A') :
-    family p A ≫ (e ⊗ₘ a) = a ≫ family (p ≫ e) A' := by
-  simp only [family, tensorHom_def, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family p A ≫ (e ⊗ₘ a) = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (p ≫ e) A' := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family, tensorHom_def, Category.assoc]
   rw [← comp_whiskerRight_assoc, ← whisker_exchange, leftUnitor_inv_naturality_assoc]
 
-end SerrePositivity.KST.Spectra.ParameterPoint
+end SerrePositivity.InfinityCategories.Kan.ParameterPoint
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ParameterPoint.family := _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ParameterPoint.naturality := _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ParameterPoint.naturality_assoc := _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.naturality_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ParameterPoint.family.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family.eq_1

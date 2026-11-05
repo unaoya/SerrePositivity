@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 元の成分を回収する厳密自然変換の全 Hom の前後合成
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 指定成分を持つ厳密自然変換は、全 Hom の同じ前後合成を厳密に可換にする。 -/
@@ -30,4 +35,10 @@ lemma strictSimplicialTransformation_whisker
   rw [hτ X, hτ Y] at h
   exact h
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformation_whisker := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker

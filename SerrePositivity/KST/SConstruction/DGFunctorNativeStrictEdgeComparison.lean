@@ -145,8 +145,8 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
     intro hk hk' h
     cases h
     subst a b k
-    let a₀ := I.min' (simplexSubsetNonempty I hI)
-    let b₀ := I.max' (simplexSubsetNonempty I hI)
+    let a₀ := I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)
+    let b₀ := I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)
     let k₀ : ℤ := 2 - (I.card : ℤ)
     let e := Simplex.ofEdge (HomotopyComparison.pairObj F G)
       (dgStrictNatTransEndCycle R D E η)
@@ -156,18 +156,18 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
       (simplexHAInverseFunctor R e)
     have hp := cubicalLambdaFunctorPair_edgeBaseChange R D (DGFunctor R D E)
       e l (SSet.stdSimplex.map (SimplexCategory.Hom.mk β))
-      (standardSimplexVertex a₀) (standardSimplexVertex b₀)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)
     let z := simplexSubsetLambdaGenerator R I hI
     change HEq
       ((dgFunctorTensorEvalHom R D E
-        (l.obj (standardSimplexVertex a₀), g.obj (standardSimplexVertex a₀))
-        (l.obj (standardSimplexVertex b₀), g.obj (standardSimplexVertex b₀))).f k₀
+        (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀))
+        (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀))).f k₀
         (((cubicalLambdaFunctorPair R l g).map
-          (standardSimplexVertex a₀) (standardSimplexVertex b₀)).f k₀ z))
+          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z))
       (η.transition (β a₀) (β b₀) _ (s.hom I a₀ b₀ k₀ hI rfl rfl rfl))
     have hc := congrArg (fun f => (dgFunctorTensorEvalHom R D E
-      (l.obj (standardSimplexVertex a₀), g.obj (standardSimplexVertex a₀))
-      (l.obj (standardSimplexVertex b₀), g.obj (standardSimplexVertex b₀))).f k₀ (f.f k₀ z)) hp
+      (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀))
+      (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀))).f k₀ (f.f k₀ z)) hp
     apply (heq_of_eq hc).trans
     change HEq
       ((dgFunctorTensorEvalHom R D E
@@ -175,16 +175,16 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
         (s.obj b₀, HomotopyComparison.pairObj F G (β b₀))).f k₀
         (((ρ_ (homObject R D (s.obj a₀) (s.obj b₀))).inv ≫
           (𝟙 _ ⊗ₘ simplexHAEdgeCoefficient R (DGFunctor R D E) e (β a₀) (β b₀))).f k₀
-          ((l.map (standardSimplexVertex a₀) (standardSimplexVertex b₀)).f k₀ z)))
+          ((l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z)))
       (η.transition (β a₀) (β b₀) _ (s.hom I a₀ b₀ k₀ hI rfl rfl rfl))
     have hu := dgFunctorTensorEvalHom_unitInsertion R D E
       (F := HomotopyComparison.pairObj F G (β a₀))
       (G := HomotopyComparison.pairObj F G (β b₀))
       (x := s.obj a₀) (y := s.obj b₀)
       (simplexHAEdgeCoefficient R (DGFunctor R D E) e (β a₀) (β b₀))
-      ((l.map (standardSimplexVertex a₀) (standardSimplexVertex b₀)).f k₀ z)
+      ((l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z)
     apply (heq_of_eq hu).trans
-    have hs : (l.map (standardSimplexVertex a₀) (standardSimplexVertex b₀)).f k₀ z =
+    have hs : (l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z =
         s.hom I a₀ b₀ k₀ hI rfl rfl rfl :=
       simplexHAInverseFunctor_native_hom R s I a₀ b₀ k₀ hI rfl rfl rfl
     rw [hs]

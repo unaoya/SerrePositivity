@@ -15,37 +15,37 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
 
 def exactDiagramComparison : FunctorIso
-    (CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.postcomp F)
+    (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F)
     ((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) := by
-  apply ((isQCatEquivalence_of_trivialKanFibration (CofiberDiagrams.bottom Y)).postcompose
+  apply ((isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)).postcompose
     ((ihom (Δ[1] : SSet.{u})).obj X)).isFullyFaithful.preimageVertexIso
   change FunctorIso
-    ((CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.postcomp F) ≫ CofiberDiagrams.bottom Y)
+    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)
     (((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
-      CofiberDiagrams.bottom Y)
-  rw [Category.assoc, CofiberDiagrams.postcomp_bottom, ← Category.assoc,
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_bottom, ← Category.assoc,
     CofiberDiagrams.lift_bottom, Category.id_comp, Category.assoc,
     CofiberDiagrams.lift_bottom, Category.comp_id]
 
-def exactNaturality : FunctorIso (cofiber X (𝟙 _) ≫ F)
-    ((ihom (Δ[1] : SSet.{u})).map F ≫ cofiber Y (𝟙 _)) := by
+def exactNaturality : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _) ≫ F)
+    ((ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _)) := by
   have h := FunctorIso.postcomp (exactDiagramComparison F)
-    (CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-  have hl : (CofiberDiagrams.lift X (𝟙 _) ≫ CofiberDiagrams.postcomp F) ≫
-      (CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
-        cofiber X (𝟙 _) ≫ F := by
-    rw [Category.assoc, CofiberDiagrams.postcomp_cofiber, ← Category.assoc,
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+  have hl : (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F) ≫
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _) ≫ F := by
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_cofiber, ← Category.assoc,
       ← Category.assoc, CofiberDiagrams.lift_right_target]
   have hr : ((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
-      (CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
-        (ihom (Δ[1] : SSet.{u})).map F ≫ cofiber Y (𝟙 _) := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+        (ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _) := by
     rw [Category.assoc, ← Category.assoc (CofiberDiagrams.lift Y (𝟙 _)),
       CofiberDiagrams.lift_right_target]
   rw [hl, hr] at h

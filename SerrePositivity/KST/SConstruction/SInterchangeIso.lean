@@ -29,7 +29,7 @@ lemma sInterchange_twice (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable 
     (internalHomSwapIso (arNerve n) (arNerve m) C).hom
   · exact (Category.assoc _ _ _).symm.trans (sInterchange_double_ι m n C)
   · exact (Category.assoc _ _ _).symm.trans (sInterchange_double_ι n m C)
-  · exact internalHomSwap_twice _ _ _
+  · exact _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _
 
 /-- 全 gapped 図式の二重 S 構成は二方向の転置で厳密に同型。 -/
 def sInterchangeIso (m n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :

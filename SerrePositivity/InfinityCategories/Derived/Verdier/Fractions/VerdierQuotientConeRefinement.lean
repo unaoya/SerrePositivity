@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.VerdierArrowLifting
 public import SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
@@ -21,17 +23,22 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement
+end SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ指定商錐への実 slice 可逆辺と、その頂点辺を与える元の実分母。 -/
-structure VerdierQuotientConeRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+structure VerdierQuotientConeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} (p : K ⟶ B.obj) (x : B.obj _⦋0⦌) (t : JoinCone (p ≫ q.hom)) where
   cone : JoinCone p
   denominator : Truncated.Edge (X := (truncation 2).obj B.obj) cone.vertex x
-  denominator_mem : denominator.edge ∈ weakEquivalences i
+  denominator_mem : denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   comparison : Truncated.Edge (X := (truncation 2).obj (sliceOver (p ≫ q.hom)))
     (mapJoinCone q.hom cone) t
   comparison_edge : (comparison.map ((truncation 2).map
@@ -39,11 +46,11 @@ structure VerdierQuotientConeRefinement {A B C : StableCategory.{u}}
   isInvertible : IsInvertibleEdge (X := sliceOver (p ≫ q.hom)) comparison
 
 /-- 元の有限図式上の指定商錐を、一つの元の実分母と同じ全比較辺で回収する。 -/
-lemma exists_verdierQuotientConeRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierQuotientConeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} [K.Finite] (p : K ⟶ B.obj) (x : B.obj _⦋0⦌)
     (t : JoinCone (p ≫ q.hom)) (hx : t.vertex = q.hom.app (Opposite.op ⦋0⦌) x) :
-    Nonempty (VerdierQuotientConeRefinement h p x t) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement h p x t) := by
   let : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj
   obtain ⟨c, hc⟩ := HasFiniteLimits.hasLimit p
   have hqc := exactMap_map_isLimit_finite q c hc
@@ -90,21 +97,21 @@ lemma exists_verdierQuotientConeRefinement {A B C : StableCategory.{u}}
         r.naturality_apply (SimplexCategory.δ (2 : Fin 3)).op Tv.simplex
       _ = C.obj.δ 2 Tb.simplex := congrArg (fun z => C.obj.δ 2 z) hv₂
       _ = _ := hb₂
-  have hsd : sd.edge ∈ weakEquivalences i := hs
+  have hsd : sd.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := hs
   have hb : IsInvertibleEdge b :=
     (isInvertibleEdge_congr (e := b) (f := sd.map ((truncation 2).map q.hom)) rfl).mpr
-      ((mem_weakEquivalences_iff_invertible h sd).mp hsd)
+      ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h sd).mp hsd)
   have hvInv := derived_rightFibration_reflects_invertibleEdge r v
     ((isInvertibleEdge_congr hv).mpr hb)
   exact ⟨⟨d, sd, hsd, v, hv, hvInv⟩⟩
 
 /-- 任意の商頂点を持つ同じ有限錐を、元の実錐へ slice 全体の同型を保って回収する。 -/
-lemma exists_verdierQuotientConeIsoRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierQuotientConeIsoRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} [K.Finite] (p : K ⟶ B.obj) (t : JoinCone (p ≫ q.hom)) :
     ∃ c : JoinCone p, Nonempty (VertexIso (X := sliceOver (p ≫ q.hom))
       (mapJoinCone q.hom c) t) := by
-  obtain ⟨x, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (weakEquivalences i)
+  obtain ⟨x, ⟨e⟩⟩ := localization_isEssentiallySurjective q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     h.quotient t.vertex
   obtain ⟨b, hb⟩ := homotopyCategory_homMk_surjective
     (q.hom.app (Opposite.op ⦋0⦌) x) t.vertex e.hom
@@ -130,15 +137,16 @@ lemma exists_verdierQuotientConeIsoRefinement {A B C : StableCategory.{u}}
     exact hn.trans (hg.trans b.src_eq)
   have hwi : IsIso (Truncated.HomotopyCategory.homMk w) :=
     derived_rightFibration_reflects_invertibleEdge π w ((isInvertibleEdge_congr hw).mpr hbi)
-  obtain ⟨d⟩ := exists_verdierQuotientConeRefinement h p x u hu
+  obtain ⟨d⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeRefinement h p x u hu
   have hdi : IsIso (Truncated.HomotopyCategory.homMk d.comparison) := d.isInvertible
   exact ⟨d.cone, ⟨asIso (Truncated.HomotopyCategory.homMk d.comparison) ≪≫
     asIso (Truncated.HomotopyCategory.homMk w)⟩⟩
 
 namespace VerdierQuotientConeRefinement
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {K : SSet.{u}} {p : K ⟶ B.obj} {x : B.obj _⦋0⦌}
-  {t : JoinCone (p ≫ q.hom)} (d : VerdierQuotientConeRefinement h p x t)
+open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {K : SSet.{u}} {p : K ⟶ B.obj} {x : B.obj _⦋0⦌}
+  {t : JoinCone (p ≫ q.hom)} (d : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement h p x t)
 
 /-- 同じ可逆な slice 比較辺から得る、指定した商錐全体への全関手同型。 -/
 def iso : FunctorIso (d.cone.val ≫ q.hom) t.val := by
@@ -159,4 +167,85 @@ def legTriangle (k : K _⦋0⦌) :
   coneLegComparisonTriangle d.comparison k
 
 end VerdierQuotientConeRefinement
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierQuotientConeIsoRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierQuotientConeRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeRefinement
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.casesOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.comparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.comparison_edge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison_edge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.cone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.ctorIdx := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.denominator := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.denominator_mem := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.invertsAllEdges := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.invertsAllEdges
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.iso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.iso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.legTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.legTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.legTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.noConfusionType := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.rec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.recOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk.inj := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk.injEq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.mk.sizeOf_spec

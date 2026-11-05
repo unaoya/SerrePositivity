@@ -44,7 +44,7 @@ def dgKSBoundaryPositiveTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGBoundaryKanEnrichedFunctor A r)
       (dgKPositiveKanEnrichedFunctor A r) :=
-  strictSimplicialTransformationOfWhisker _ _ (dgKSBoundaryPositiveComponent A r)
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (dgKSBoundaryPositiveComponent A r)
     (fun P Q => (presentedPerfectDGBFPositiveStage A r).naturality P Q)
 
 /-- 境界商と固定正段を結ぶ、全高次単体を保持した元の比較の区間族。 -/
@@ -76,7 +76,7 @@ def dgKSBoundaryPositiveIso (r : ℕ) :
 
 /-- 元の相対 Verdier 四角形に制限した、全 coherent 四角形どうしの同じ比較。 -/
 def dgRelativeSBoundaryPositiveSquareIso (r : ℕ)
-    (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
     FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
       (d.square ≫ coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
   (dgKSBoundaryPositiveIso A r).precomp d.square

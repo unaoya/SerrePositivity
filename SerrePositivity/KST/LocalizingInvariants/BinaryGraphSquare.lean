@@ -73,11 +73,11 @@ def topComposition (Z : OmegaSpectrum.{u}) : SSet.Edge.CompStruct
   (coherentNerveCompStruct (diagonal Z) (Binary.snd Z Z)).ofEq rfl rfl
     (by rw [diagonal, Binary.lift_snd])
 
-def rectangle : SquarePastingRectangle (square g) (BinarySecondProjection.square g Z)
+def rectangle : _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle (square g) (BinarySecondProjection.square g Z)
     (SSet.yonedaEquiv.symm (bottomComposition g).simplex)
     (SSet.yonedaEquiv.symm (topComposition Z).simplex) := by
   apply Classical.choice
-  apply nonempty_squarePastingRectangle
+  apply _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
   · rw [square_right, BinarySecondProjection.square_left]
   · rw [square_bottom, stdSimplex.δ_comp_yonedaEquiv_symm]
     exact congrArg SSet.yonedaEquiv.symm (bottomComposition g).d₂.symm

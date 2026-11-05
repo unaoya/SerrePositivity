@@ -39,14 +39,14 @@ lemma completionWideComponentHead_higher_of_input (h : GroupNerveHigherVanishing
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf)) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf)) n x) := by
   let e := F2.continuousKanReplacement.mapIso (completionWideComponentHeadBarIso r ι f hf)
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj (Multiplicative
         (cutKZeroCokernel 1 (((multiSEndofunctor r).obj ι).map f))))))) n
           (e.hom.app (Opposite.op ⦋0⦌) x)) :=
     cutCokernelBar_higher_of_input h 1 (((multiSEndofunctor r).obj ι).map f) n hn _
-  exact Function.Injective.subsingleton ((Spectra.KanPiIsomorphism.of_iso e x n).1)
+  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e x n).1)
 
 end SerrePositivity.KST.SConstruction.Cofinality

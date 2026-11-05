@@ -14,8 +14,8 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants F2.Idempotent
 open scoped Simplicial
-variable {A B C D : StableCategory.{u}}
-  (f : ExactMap A B) (g : ExactMap C D) (a : ExactMap A C) (b : ExactMap B D)
+variable {A B C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+  (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C D) (a : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C) (b : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B D)
   (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
   (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
   (e : FunctorIso (f.hom ≫ b.hom) (a.hom ≫ g.hom))
@@ -27,9 +27,9 @@ include e
 lemma perfectStableHoArrow_square_eq_of_functorIso :
     perfectStableHoArrow f hA hB ≫ perfectStableHoArrow b hB hD =
       perfectStableHoArrow a hA hC ≫ perfectStableHoArrow g hC hD := by
-  let F : ExactMap A D := ⟨f.hom ≫ b.hom,
+  let F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A D := ⟨f.hom ≫ b.hom,
     @isExactFunctor_comp _ _ _ _ _ f.isExact b.isExact⟩
-  let G : ExactMap A D := ⟨a.hom ≫ g.hom,
+  let G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A D := ⟨a.hom ≫ g.hom,
     @isExactFunctor_comp _ _ _ _ _ a.isExact g.isExact⟩
   have hf : perfectStableHoArrow F hA hD =
       perfectStableHoArrow f hA hB ≫ perfectStableHoArrow b hB hD :=

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.Opposite
@@ -34,9 +36,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
 /-- 全単体の底変換は、同じ像の単体における切断 Kan 対象を回収する。 -/
@@ -49,4 +54,10 @@ theorem straighteningBaseChangeLeft_section_eq
   (congrArg (fun A => ((relativeSectionEnrichedDiagram A).obj c).obj X)
     (transportSimplexDomainFunctor_baseChange k)).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningBaseChangeLeft_section_eq := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningBaseChangeLeft_section_eq

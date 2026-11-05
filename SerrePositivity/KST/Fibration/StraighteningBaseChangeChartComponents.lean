@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
-import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
+import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.StraighteningSectionChart
 
 /-! # 元の左右の底変換比較は、それぞれ同じ初頂点切断比較の指定成分 -/
@@ -10,7 +10,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
@@ -25,14 +25,14 @@ theorem straighteningBaseChangeRightChart_heq_firstVertex
   let x := coherentNerveVertex X
   let H := leftFibrationInfinityBaseChange k
   have hr : HEq (straighteningBaseChangeRightChart k X c)
-      (VertexIso.map (straighteningJointBaseChangeRightIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)) := by
+      (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRightIso k)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)) := by
     unfold straighteningBaseChangeRightChart F2.isoNormalizeEndpoints
     exact F2.iso_endpoints_heq _ _ _
   have hm := functorIso_post_pre_doubleMap e H a x
   have hv := leftFibrationInfinityBaseChange_vertex k X
   have he := congrArg (fun z : (LeftFibrationInfinity D) _⦋0⦌ =>
-    doubleFunctorEvaluation
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation
       (K := (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory D)))
       (Y := SpaceInfinity.{u}) a z) hv
   exact hr.trans (hm.trans ((F2.vertexIso_map_heq e he).trans
@@ -54,21 +54,21 @@ theorem straighteningBaseChangeLeftChart_heq_firstVertex
       t ≫ (U.map (transportSimplexFirstVertexMap B) ≫
         leftStraighteningSectionJointDiagram B) := by
     rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
-  have hl : HEq (straighteningJointBaseChangeLeftIso k) (e.precomp t) := by
-    unfold straighteningJointBaseChangeLeftIso
-    exact prependEq_heq _ _
-  have hm := F2.vertexIso_map_heq_of_heq (straighteningJointBaseChangeLeftIso k)
+  have hl : HEq (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k) (e.precomp t) := by
+    unfold _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso
+    exact _root_.SerrePositivity.InfinityCategories.Stable.Straightening.prependEq_heq _ _
+  have hm := F2.vertexIso_map_heq_of_heq (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k)
     (e.precomp t) (congrArg functorVertex hleft) rfl hl
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)
   have hc : HEq (straighteningBaseChangeLeftChart k X c)
-      (VertexIso.map (straighteningJointBaseChangeLeftIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)) := by
+      (VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeLeftIso k)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u}) a x)) := by
     unfold straighteningBaseChangeLeftChart F2.isoNormalizeEndpoints
     exact F2.iso_endpoints_heq _ _ _
   have hv : t.app (Opposite.op ⦋0⦌) a =
       ULift.up (nerveVertex ((transportSimplexFunctor k).obj c)) := rfl
   have he := congrArg (fun z : (U.obj (nerve (TransportSimplexCategory B))) _⦋0⦌ =>
-    doubleFunctorEvaluation (A := LeftFibrationInfinity B) (Y := SpaceInfinity.{u}) z x) hv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (A := LeftFibrationInfinity B) (Y := SpaceInfinity.{u}) z x) hv
   exact hc.trans (hm.trans ((functorIso_pre_doubleMap e t a x).trans
     ((F2.vertexIso_map_heq e he).trans
       (straighteningFirstVertexSectionChart_heq_doubleMap X

@@ -1,0 +1,506 @@
+{
+  "status": "PASS",
+  "authorization": "IF-F §9; IF-W2b §17-3 individual comparison, no unexplained data differences accepted",
+  "tool": "scripts/refactor/check_deprecated_aliases.lean",
+  "reason": "Lean 4.35.0-rc4 CollectAxioms exports shared recursive sentinel results. Full traversal confirms equal axiom sets for six constructor aliases and four canonical before/after rows.",
+  "alias_graph": {
+    "status": "PASS",
+    "pairs": 6,
+    "results": [
+      {
+        "old": {
+          "visited": 425,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 422,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "old": {
+          "visited": 425,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.comp",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 422,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.comp",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "old": {
+          "visited": 435,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.comp",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "old": {
+          "visited": 435,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "old": {
+          "visited": 436,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "old": {
+          "visited": 2722,
+          "name": "SerrePositivity.KST.SConstruction.SimplexHABeadWord.join",
+          "missing": [],
+          "axioms": [
+            "Quot.sound",
+            "Classical.choice",
+            "propext"
+          ]
+        },
+        "new": {
+          "visited": 2720,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join",
+          "missing": [],
+          "axioms": [
+            "Quot.sound",
+            "Classical.choice",
+            "propext"
+          ]
+        }
+      }
+    ]
+  },
+  "canonical_graph": {
+    "status": "PASS",
+    "rows": [
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "old": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "new": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "inductive",
+        "before": "before-final/shard-0031.json",
+        "after": "after-full/shard-0031.json",
+        "before_graph": {
+          "visited": 422,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 422,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "old": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id",
+        "new": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0031.json",
+        "after": "after-full/shard-0031.json",
+        "before_graph": {
+          "visited": 426,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 426,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+        "old": "SerrePositivity.KST.SConstruction.CubeMapGenerated.connection",
+        "new": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0047.json",
+        "after": "after-full/shard-0047.json",
+        "before_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.connection",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+        "old": "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy",
+        "new": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+        "before_axioms": [
+          "propext"
+        ],
+        "after_axioms": [],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0047.json",
+        "after": "after-full/shard-0047.json",
+        "before_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      }
+    ]
+  },
+  "regression": {
+    "status": "PASS",
+    "candidate_sha256": "e8cf2e68d8cf20a104858b2265246702bbddaea000cf56d1a5d12333728b1e27",
+    "results": {
+      "cycle_and_extra_axiom": {
+        "command": [
+          "python3",
+          "/tmp/if-f2/test_axiom_dependencies.py",
+          "--checker",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 11.165,
+        "log": "regression.log"
+      },
+      "aliases-0031.checked.json": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "-M",
+          "16000",
+          "--run",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/after-full/aliases-0031.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/alias-graph-validation/aliases-0031.checked.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/normalization-aliases.json"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 10.733,
+        "log": "aliases-0031.checked.log"
+      },
+      "aliases-0047.checked.json": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "-M",
+          "16000",
+          "--run",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/after-full/aliases-0047.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/alias-graph-validation/aliases-0047.checked.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/normalization-aliases.json"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 10.319,
+        "log": "aliases-0047.checked.log"
+      },
+      "aliases-0052.checked.json": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "-M",
+          "16000",
+          "--run",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/after-full/aliases-0052.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/alias-graph-validation/aliases-0052.checked.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/normalization-aliases.json"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 9.955,
+        "log": "aliases-0052.checked.log"
+      },
+      "positive": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "-M",
+          "9000",
+          "--run",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/section9-codegen-alias-input.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/alias-graph-validation/type-positive.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/normalization-aliases.json"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 9.199,
+        "log": "type-positive.log"
+      },
+      "negative": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "-M",
+          "9000",
+          "--run",
+          "/tmp/if-f2/CheckDeprecatedAliasesGraph.lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/section9-codegen-alias-input.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/alias-graph-validation/type-negative.json",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/if-f2/normalization-aliases-negative-test.json"
+        ],
+        "exit_code": 1,
+        "errors": [],
+        "seconds": 9.483,
+        "log": "type-negative.log"
+      }
+    },
+    "wrong_name_map_rejected": true,
+    "positive_type_aliases": 59
+  },
+  "order_regression": {
+    "status": "PASS",
+    "purpose": "Reproduce order-dependent cyclic memoization and check full dependency traversal; an extra axiom is detected.",
+    "orders": [
+      {
+        "order": [
+          "I",
+          "id",
+          "face"
+        ],
+        "cached": {
+          "I": [
+            "propext"
+          ],
+          "id": [],
+          "face": [
+            "propext"
+          ],
+          "propext": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "order": [
+          "I",
+          "face",
+          "id"
+        ],
+        "cached": {
+          "I": [
+            "propext"
+          ],
+          "id": [],
+          "face": [
+            "propext"
+          ],
+          "propext": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "order": [
+          "id",
+          "I",
+          "face"
+        ],
+        "cached": {
+          "id": [
+            "propext"
+          ],
+          "I": [
+            "propext"
+          ],
+          "face": [
+            "propext"
+          ],
+          "propext": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "order": [
+          "id",
+          "face",
+          "I"
+        ],
+        "cached": {
+          "id": [
+            "propext"
+          ],
+          "I": [
+            "propext"
+          ],
+          "face": [
+            "propext"
+          ],
+          "propext": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "order": [
+          "face",
+          "I",
+          "id"
+        ],
+        "cached": {
+          "face": [
+            "propext"
+          ],
+          "I": [],
+          "id": [],
+          "propext": [
+            "propext"
+          ]
+        }
+      },
+      {
+        "order": [
+          "face",
+          "id",
+          "I"
+        ],
+        "cached": {
+          "face": [
+            "propext"
+          ],
+          "I": [],
+          "id": [],
+          "propext": [
+            "propext"
+          ]
+        }
+      }
+    ],
+    "exact": {
+      "I": [
+        "propext"
+      ],
+      "id": [
+        "propext"
+      ],
+      "face": [
+        "propext"
+      ]
+    },
+    "negative": [
+      "extra",
+      "propext"
+    ]
+  },
+  "all_aliases": 7526,
+  "failed": 0,
+  "rechecked_shards": [
+    "aliases-0031",
+    "aliases-0047",
+    "aliases-0052"
+  ],
+  "production_source_changed": false
+}

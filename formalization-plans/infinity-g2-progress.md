@@ -1,3 +1,5 @@
+> **11-05 追記（調整役）**：本書は枝 `math/g2`（b60279c26）から写した。その枝の WIP 3 本（`F2/Tensor/SetSectionsUnstraightening`・`SetSectionsLimitNaturality`・`SetSectionsSieveNaturality`）は**ビルドが通らない**（`SetSectionsUnstraightening` の証明引数 hx・hy の推論、`cases` の失敗）ので main には入れていない。段階 II の ∞ 供給レーンが `math/g2` から再開する（main を取り込んでから）。
+
 # IF-G2 G8n：証明済みの部分と未解決の自然性
 
 作業枝：`math/g2`。先行分：`f2b665682`。main `9f59541d3` を `ef6e30e20` で取り込み済み（衝突なし）。

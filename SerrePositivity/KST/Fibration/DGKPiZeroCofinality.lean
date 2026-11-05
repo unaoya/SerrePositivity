@@ -46,9 +46,9 @@ theorem dgKPiZeroMap_surjective_iff_kZero (f : P ⟶ Q) :
 /-- ν 像が元の Verdier 列なら、同じ固定 K の商辺の実 π₀ 射は全射。局所化性は仮定しない。 -/
 theorem dgKPiZeroMap_surjective_of_verdier
     {P Q R : PerfDGInput.{u, v} A} (f : P ⟶ Q) (g : Q ⟶ R)
-    (h : IsVerdierSequence
-      (show ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
-      (show ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g)) :
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g)) :
     Function.Surjective ((SpectrumHo.piFunctor 0).map
       (Truncated.HomotopyCategory.homMk
         (((coherentNerveEdge g).map (dgKInputK A)).toTruncated))).hom :=

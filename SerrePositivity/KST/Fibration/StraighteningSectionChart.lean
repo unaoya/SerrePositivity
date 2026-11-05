@@ -20,7 +20,7 @@ def straighteningFirstVertexSectionChart (X : LeftFibrationObject B)
     (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningSectionJointDiagram_restrictIso B)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c)) (coherentNerveVertex X))) rfl
     (congrArg HomotopyCategory.mk
       (relativeSectionDiagramInfinity_double_vertex (transportSimplexDomainFunctor B) X c))
@@ -30,7 +30,7 @@ theorem straighteningFirstVertexSectionChart_heq_doubleMap
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     HEq (straighteningFirstVertexSectionChart X c)
       (VertexIso.map (leftStraighteningSectionJointDiagram_restrictIso B)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   unfold straighteningFirstVertexSectionChart F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
@@ -39,7 +39,7 @@ theorem straighteningFirstVertexSectionChart_heq_doubleMap
 theorem leftStraighteningInfinityMap_restrictIso_heq_sectionChart
     (X : LeftFibrationObject B) (c : TransportSimplexCategory B) :
     HEq (VertexIso.map (leftStraighteningInfinityMap_restrictIso B)
-      (kanEnrichedDoubleEvaluation X c))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c))
       (straighteningFirstVertexSectionChart X c) := by
   let l := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B)
   let e := leftStraighteningSectionJointDiagram_restrictIso B
@@ -47,8 +47,8 @@ theorem leftStraighteningInfinityMap_restrictIso_heq_sectionChart
     e.transpose
     (congrArg functorVertex (transposeFunctorFamily_comp l
       (leftStraighteningSectionJointDiagram B)).symm) rfl
-    (leftStraighteningInfinityMap_restrictIso_heq_transpose (B := B))
-    (kanEnrichedDoubleEvaluation X c)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityMap_restrictIso_heq_transpose (B := B))
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)
   exact hm.trans ((functorIso_transpose_doubleMap e (ULift.up (nerveVertex c))
     (coherentNerveVertex X)).trans
       (straighteningFirstVertexSectionChart_heq_doubleMap X c).symm)

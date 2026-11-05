@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet HomotopyLimits
-open scoped Simplicial
+open scoped _root_.Simplicial
 /-- 元の全錐の実切断制限の宇宙比較。 -/
 lemma leftFibrationConeRestriction_ulift_iff
     {K E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {d : K ⟶ B} (c : JoinCone d) :

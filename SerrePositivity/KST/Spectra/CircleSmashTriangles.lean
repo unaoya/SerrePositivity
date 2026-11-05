@@ -97,7 +97,7 @@ theorem circleSmashTriangles_comm :
 @[reassoc (attr := simp)]
 theorem circleSmashUpper_quotient :
     triangleDiskQuotient ≫ circleSmashUpper.{u}.right =
-      SquareTriangles.upper ≫ circleSmashSquareQuotient :=
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ circleSmashSquareQuotient :=
   squareUpperRestriction_quotient _ _ _ _
 
 /-- 概要：下側の包含は標準三角形上で正方形の商射に一致する。
@@ -107,7 +107,7 @@ theorem circleSmashUpper_quotient :
 @[reassoc (attr := simp)]
 theorem circleSmashLower_quotient :
     triangleDiskQuotient ≫ circleSmashLower.{u}.right =
-      SquareTriangles.lower ≫ circleSmashSquareQuotient :=
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ circleSmashSquareQuotient :=
   squareLowerRestriction_quotient _ _ _ _
 
 /-- 概要：相対三角形の貼り合わせは上側で第一の写像へ戻る。
@@ -120,7 +120,7 @@ theorem circleSmashUpper_pair {Y : PointedSimplicialSet.{u}}
     circleSmashUpper ≫ trianglePairSmash a b h = a := by
   apply PointedObject.cofiber_hom_ext (horn.{u} 2 (1 : Fin 3)).ι
   simp only [Under.comp_right, circleSmashUpper_quotient_assoc]
-  change SquareTriangles.upper ≫
+  change _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫
     ((PointedObject.cofiberQuotient (boundary.{u} 1).ι ⊗ₘ
       PointedObject.cofiberQuotient (boundary.{u} 1).ι) ≫
         (PointedObject.smashQuotient PointedSimplicialSet.circle.{u}
@@ -137,7 +137,7 @@ theorem circleSmashLower_pair {Y : PointedSimplicialSet.{u}}
     circleSmashLower ≫ trianglePairSmash a b h = b := by
   apply PointedObject.cofiber_hom_ext (horn.{u} 2 (1 : Fin 3)).ι
   simp only [Under.comp_right, circleSmashLower_quotient_assoc]
-  change SquareTriangles.lower ≫
+  change _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫
     ((PointedObject.cofiberQuotient (boundary.{u} 1).ι ⊗ₘ
       PointedObject.cofiberQuotient (boundary.{u} 1).ι) ≫
         (PointedObject.smashQuotient PointedSimplicialSet.circle.{u}
@@ -154,7 +154,7 @@ theorem circleSmashTriangles_hom_ext {Y : PointedSimplicialSet.{u}}
     (hl : circleSmashLower ≫ f = circleSmashLower ≫ g) : f = g := by
   apply squareSmash_hom_ext
   change circleSmashSquareQuotient ≫ f.right = circleSmashSquareQuotient ≫ g.right
-  apply SquareTriangles.isPushout.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.hom_ext
   · have h := congrArg (fun k : triangleDisk.{u} ⟶ Y => triangleDiskQuotient ≫ k.right) hu
     simpa only [Under.comp_right, circleSmashUpper_quotient_assoc,
       Category.assoc] using h

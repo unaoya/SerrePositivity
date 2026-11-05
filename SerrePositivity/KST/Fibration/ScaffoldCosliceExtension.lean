@@ -33,11 +33,11 @@ theorem scaffoldCosliceReconstructionPoint_fiberMap :
         (scaffoldPointedReconstruction (sliceUnderProjection (yonedaEquiv.symm b)))
         (scaffoldPointedReconstruction_projection _) b).app (Opposite.op ⦋0⦌)
           (edgeToCosliceFiberVertex (SSet.Edge.id b)) :=
-  coslicePointEvaluation_fiberMap_identity _ b _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_fiberMap_identity _ b _ _
 
 /-- 既存の点族を同じ復元恒等点で評価した、元の coslice 全体の延長。 -/
 def scaffoldCoslicePointExtension :=
-  coslicePointFamilyAt
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt
     (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram
       (sliceUnderProjection (yonedaEquiv.symm b)))) b (scaffoldCosliceReconstructionPoint b)
 
@@ -45,7 +45,7 @@ def scaffoldCoslicePointExtension :=
 def scaffoldCoslicePointExtension_reconstructionIso :
     FunctorIso (scaffoldCoslicePointExtension b)
       (scaffoldPointedReconstruction (sliceUnderProjection (yonedaEquiv.symm b))) :=
-  coslicePointFamilyAt_recoveryIso _ b
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_recoveryIso _ b
     (scaffoldPointedReconstruction (sliceUnderProjection (yonedaEquiv.symm b)))
     (scaffoldPointedReconstruction_projection _)
 

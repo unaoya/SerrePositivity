@@ -32,13 +32,13 @@ variable {G : Type u} [Group G]
 規約：添字集合と係数の Kan 性は仮定しない。
 使われ方：Goerss–Jardine VIII §2。非斉次 cochain の単体集合としての表示。 -/
 def functionIso (S : Type u) (B : Action SSet.{u} G) :
-    weightedSections (weight S) (coefficients B) ≅ SimplicialFunctionComplex.obj S B.V :=
-  endIso S B ≪≫ DiscreteInternalHom.iso S B.V
+    weightedSections (weight S) (coefficients B) ≅ _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S B.V :=
+  endIso S B ≪≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso S B.V
 
 lemma comp_functionIso (S : Type u) (B : Action SSet.{u} G) {A : SSet.{u}}
     (t : A ⟶ weightedSections (weight S) (coefficients B)) :
     t ≫ (functionIso S B).hom =
-      DiscreteInternalHom.toFunctions S B.V (restrict S B (weightedSectionsUncurry t)) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S B.V (restrict S B (weightedSectionsUncurry t)) := by
   rw [functionIso, Iso.trans_hom, ← Category.assoc, comp_endIso,
     homEquiv_apply, DiscreteInternalHom.comp_iso, uncurry_curry]
 
@@ -46,10 +46,10 @@ lemma functionPre_restrict {S T : Type u}
     (θ : (Action.leftRegular G ⊗ Action.trivial G T) ⟶
       (Action.leftRegular G ⊗ Action.trivial G S)) (B : Action SSet.{u} G) {A : SSet.{u}}
     (t : weight S ⊗ (Functor.const (AsSmall.{u} (SingleObj G))).obj A ⟶ coefficients B) :
-    DiscreteInternalHom.toFunctions T B.V (restrict T B
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions T B.V (restrict T B
         (((GroupActionCochains.actionWeightFunctor G).map θ ▷
           (Functor.const (AsSmall.{u} (SingleObj G))).obj A) ≫ t)) =
-      DiscreteInternalHom.toFunctions S B.V (restrict S B t) ≫ functionPre θ B := by
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions S B.V (restrict S B t) ≫ functionPre θ B := by
   conv_lhs => rw [← extend_restrict S B t]
   rfl
 

@@ -15,7 +15,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.Spectra
@@ -36,17 +36,17 @@ def dgKSBoundaryStageMap (P : PerfDGInput.{u, v} A) :
 
 /-- 同じ前向き比較は、零次数を含む全ての元の基点固定 π 集合で全単射。 -/
 def dgKSBoundaryStagePiEquiv (P : PerfDGInput.{u, v} A) (n : ℕ) :
-    KanHomotopy (dgKSBoundaryKan A P).right n (dgKSBoundaryKan A P).basepoint ≃
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (dgKSBoundaryKan A P).right n (dgKSBoundaryKan A P).basepoint ≃
       OmegaSpectrum.levelHomotopy (dgKInputSpectrum A P) 1 n :=
-  KanHomotopy.equivOfPiIsomorphism n (dgKSBoundaryStageMap A P).right
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism n (dgKSBoundaryStageMap A P).right
     (presentedPerfectDGBFStageComparison_piIsomorphism A 0
       (presentedPerfectDGBFPositiveStage A 0) P)
-    (OmegaSpectrum.pointedMap_basepoint _)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
 
 /-- 元の入力射の境界商作用と第一正段の作用は、同じ実比較で可換。 -/
 theorem dgKSBoundaryStagePiEquiv_naturality {P Q : PerfDGInput.{u, v} A}
     (f : P ⟶ Q) (n : ℕ)
-    (a : KanHomotopy (dgKSBoundaryKan A P).right n (dgKSBoundaryKan A P).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (dgKSBoundaryKan A P).right n (dgKSBoundaryKan A P).basepoint) :
     dgKSBoundaryStagePiEquiv A Q n
         (pointedHomotopyMap n (presentedPerfectDGBoundaryKanMap A 0 f).hom a) =
       OmegaSpectrum.levelMap (dgKInputSpectrumMap A f) 1 n
@@ -54,13 +54,13 @@ theorem dgKSBoundaryStagePiEquiv_naturality {P Q : PerfDGInput.{u, v} A}
   have h := congrArg (fun g => pointedHomotopyMap n g a)
     (dgKInputSBoundaryKanComparison_naturality A 0 f)
   rw [pointedHomotopyMap_comp, pointedHomotopyMap_comp] at h
-  simp only [dgKSBoundaryStagePiEquiv, KanHomotopy.equivOfPiIsomorphism_apply]
+  simp only [dgKSBoundaryStagePiEquiv, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply]
   exact h
 
 /-- 非負次数の固定 BF K 群を、同じ元の一段 S• 境界商の π_(j+1) で表示する。 -/
 def dgKBFBoundaryPiEquiv (P : PerfDGInput.{u, v} A) (j : ℤ) (hj : 0 ≤ j) :
     OmegaSpectrum.homotopyGroup (dgKInputSpectrum A P) j ≃
-      KanHomotopy (dgKSBoundaryKan A P).right (OmegaSpectrum.degree j 1)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (dgKSBoundaryKan A P).right (OmegaSpectrum.degree j 1)
         (dgKSBoundaryKan A P).basepoint :=
   (OmegaSpectrum.homotopyGroupEquivAt (dgKInputSpectrum A P) j 1 (by omega)).toEquiv.trans
     (dgKSBoundaryStagePiEquiv A P (OmegaSpectrum.degree j 1)).symm

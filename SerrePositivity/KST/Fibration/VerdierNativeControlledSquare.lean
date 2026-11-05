@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
 
 /-- 概要：同じ実制御欠面の対角は元の Verdier 四角形の指定対角。
 方針：同じ対角固定三角柱の終端を評価する。

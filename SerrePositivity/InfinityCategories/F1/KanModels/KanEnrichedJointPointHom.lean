@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDiagramJointComparison
@@ -10,9 +12,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J]
 
@@ -43,32 +48,56 @@ variable {D E : KanEnrichedDiagram C J} (η : KanEnrichedDiagramComparison D E)
 def kanEnrichedJointComponentIso (X : C) (j : J) :
     VertexIso (spaceInfinityVertex ((D.obj j).obj X))
       (spaceInfinityVertex ((E.obj j).obj X)) :=
-  (eqToIso (congrArg HomotopyCategory.mk (kanEnrichedJointEvaluation_vertex D X j))).symm ≪≫
-    functorIsoValue (η.jointComparisonIso hη) (ULift.up (nerveVertex j), coherentNerveVertex X) ≪≫
-      eqToIso (congrArg HomotopyCategory.mk (kanEnrichedJointEvaluation_vertex E X j))
+  (eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex D X j))).symm ≪≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (η.jointComparisonIso hη) (ULift.up (nerveVertex j), coherentNerveVertex X) ≪≫
+      eqToIso (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex E X j))
 
 /-- 同じ共同比較の指定成分の順方向射は、元の係数射の coherent な辺の類。 -/
 theorem kanEnrichedJointComponentIso_hom (X : C) (j : J) :
-    (kanEnrichedJointComponentIso η hη X j).hom =
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso η hη X j).hom =
     Truncated.HomotopyCategory.homMk
       (((coherentNerveEdge ((η.component j).val X)).ofEq
         (spaceInfinityVertex_eq_coherent ((D.obj j).obj X)).symm
         (spaceInfinityVertex_eq_coherent ((E.obj j).obj X)).symm).toTruncated) := by
-  simp only [kanEnrichedJointComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
-    eqToIso.hom, functorIsoValue_hom]
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso, Iso.trans_hom, Iso.symm_hom, eqToIso.inv,
+    eqToIso.hom, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_hom]
   rw [show (η.jointComparisonIso hη).hom = Truncated.HomotopyCategory.homMk
-    (η.jointComparisonEdge).toTruncated from rfl, functorHomEvaluate_edge_hom]
-  exact homMk_transport (kanEnrichedJointEvaluation_vertex D X j)
-    (kanEnrichedJointEvaluation_vertex E X j) _ _ (η.jointComparisonEdge_at j X)
+    (η.jointComparisonEdge).toTruncated from rfl, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom]
+  exact homMk_transport (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex D X j)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex E X j) _ _ (η.jointComparisonEdge_at j X)
 
 /-- 元の係数点は、同じ共同比較の指定成分で元の像の点へ移る。 -/
 theorem kanEnrichedJointComponentIso_pointHom (X : C) (j : J)
     (v : ((D.obj j).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X)).symm v) ≫
-      (kanEnrichedJointComponentIso η hη X j).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((E.obj j).obj X)).symm
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((D.obj j).obj X)).symm v) ≫
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso η hη X j).hom =
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv ((E.obj j).obj X)).symm
       (((η.component j).val X).app (Opposite.op ⦋0⦌) v)) := by
-  rw [kanEnrichedJointComponentIso_hom]
-  exact kanPointHom_comp_of_edge ((η.component j).val X) _ rfl v
+  rw [_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso_hom]
+  exact _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge ((η.component j).val X) _ rfl v
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso_hom := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso_pointHom := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso_pointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointEvaluation_vertex := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointComponentIso.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointComponentIso.eq_1

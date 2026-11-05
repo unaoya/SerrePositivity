@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E : SSet.{u}} [KanComplex E]
 local instance kanBasedEdgeValueGroupoid : Groupoid (hoFunctor.obj E) :=
   Groupoid.ofIsGroupoid
@@ -24,12 +24,12 @@ variable (c : (hoFunctor.obj E))
 
 /-- 元の全区間写像を基点の同じ群へ移した値。 -/
 def kanBasedEdgeValue (e : (Δ[1] : SSet.{u}) ⟶ E) : End c :=
-  groupoidBasedArrow c (SSet.HomotopyCategory.homMk (SSet.Edge.mk' (SSet.yonedaEquiv e)))
+  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow c (SSet.HomotopyCategory.homMk (SSet.Edge.mk' (SSet.yonedaEquiv e)))
 
 /-- 元の端点つき辺の表示では、元の同じ射の基点表示を回収する。 -/
 lemma kanBasedEdgeValue_edge {x y : E _⦋0⦌} (a : E.Edge x y) :
     kanBasedEdgeValue c (SSet.yonedaEquiv.symm a.edge) =
-      groupoidBasedArrow c (SSet.HomotopyCategory.homMk a) := by
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow c (SSet.HomotopyCategory.homMk a) := by
   obtain ⟨e, hs, ht⟩ := a
   cases hs
   cases ht
@@ -50,7 +50,7 @@ lemma kanBasedEdgeValue_triangle (T : (Δ[2] : SSet.{u}) ⟶ E) :
     SSet.Edge.CompStruct.δ_zero_yonedaEquiv_symm,
     SSet.Edge.CompStruct.δ_two_yonedaEquiv_symm,
     kanBasedEdgeValue_edge, kanBasedEdgeValue_edge, kanBasedEdgeValue_edge,
-    ← groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
+    ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
 
 /-- 基点から始点へ到達できれば、同じ値を持つ平行辺は元の射の同じ類を表す。 -/
 lemma kanBasedEdgeValue_detects {x y : E _⦋0⦌}
@@ -59,6 +59,6 @@ lemma kanBasedEdgeValue_detects {x y : E _⦋0⦌}
       kanBasedEdgeValue c (SSet.yonedaEquiv.symm b.edge)) :
     SSet.HomotopyCategory.homMk a = SSet.HomotopyCategory.homMk b := by
   rw [kanBasedEdgeValue_edge, kanBasedEdgeValue_edge] at h
-  exact groupoidBasedArrow_injective c hx _ _ h
+  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_injective c hx _ _ h
 
 end SerrePositivity.KST.SConstruction

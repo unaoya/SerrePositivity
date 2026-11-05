@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryMap
 public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalCochain
+end SerrePositivity.KST.Spectra.SphericalCochain
+namespace SerrePositivity.InfinityCategories.Kan.SphericalCochain
+open SerrePositivity.KST.Spectra.SphericalCochain
 
 noncomputable section
 
@@ -39,7 +44,7 @@ def simplexValue (s : K _⦋n + 2⦌) : X.PtSimplex (n + 2) x where
 規約：代表そのものの等式であり、商だけの等式ではない。
 使われ方：Goerss–Jardine III §2。正規化 cochain の退化での零性。 -/
 theorem simplexValue_degeneracy (s : K _⦋n + 1⦌) (i : Fin (n + 2)) :
-    simplexValue f h (K.σ i s) = .const := by
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue f h (K.σ i s) = .const := by
   apply RelativeMorphism.ext
   change yonedaEquiv.symm (K.σ i s) ≫ f = SSet.const x
   rw [← stdSimplex.σ_comp_yonedaEquiv_symm, Category.assoc, h, comp_const]
@@ -49,7 +54,7 @@ theorem simplexValue_degeneracy (s : K _⦋n + 1⦌) (i : Fin (n + 2)) :
 規約：元の単体の実際の像を使う。
 使われ方：Goerss–Jardine I §7、VIII §1。交代 cocycle 関係。 -/
 def boundary (s : K _⦋n + 3⦌) :
-    SphericalBoundary (fun j ↦ simplexValue f h (K.δ j s)) where
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue f h (K.δ j s)) where
   map := yonedaEquiv.symm s ≫ f
   face_eq j := by
     rw [← Category.assoc, stdSimplex.δ_comp_yonedaEquiv_symm]
@@ -61,39 +66,72 @@ variable [KanComplex X]
 方針：各単体の像の境界定数な代表を加法的ホモトピー類へ送る。
 規約：係数は実際の次数 n + 2 のホモトピー群。
 使われ方：Goerss–Jardine III §2、VIII §1。実際の幾何から得る正規化 cochain。 -/
-def cochain : K.nonDegenerate (n + 2) → Additive (KanHomotopyGroup X (n + 1) x) :=
-  fun s ↦ SphericalBoundary.additiveClass (simplexValue f h s.val)
+def cochain : K.nonDegenerate (n + 2) → Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x) :=
+  fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue f h s.val)
 
 /-- 概要：正規化 cochain を退化で零に延長すると全単体の像の類に一致する。
 方針：非退化なら定義、退化なら一つの退化写像からの表示と定数像を使う。
 規約：任意の単体についての式。
 使われ方：Goerss–Jardine III §2、VIII §1。正規化微分の各面の計算。 -/
 theorem zeroExtend_cochain (s : K _⦋n + 2⦌) :
-    NormalizedValueCochains.zeroExtend K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-      (cochain f h) s = SphericalBoundary.additiveClass (simplexValue f h s) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain f h) s = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass (_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue f h s) := by
   classical
-  unfold NormalizedValueCochains.zeroExtend
+  unfold _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend
   split_ifs with hs
   · rfl
   · have hd : s ∈ K.degenerate (n + 2) := (K.mem_degenerate_iff_notMem_nonDegenerate s).2 hs
     rw [K.degenerate_eq_iUnion_range_σ] at hd
     obtain ⟨i, t, rfl⟩ := Set.mem_iUnion.mp hd
-    rw [simplexValue_degeneracy, SphericalBoundary.additiveClass_const]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue_degeneracy, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass_const]
 
 /-- 概要：低次元で定数の射の高次群係数は通常の正規化 cocycle である。
 方針：正規化の交代微分を各面の像の類へ直し、球面的境界関係を適用する。
 規約：塔の連結準同型の計算を仮定せず、実際の射の像を計算する。
 使われ方：Goerss–Jardine I §7、III §2、VIII §1。幾何的な係数の cocycle 条件。 -/
 theorem differential_cochain :
-    NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-      (cochain f h) = 0 := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain f h) = 0 := by
   funext s
-  rw [NormalizedValueCochains.differential_apply]
-  simp only [zeroExtend_cochain]
-  exact SphericalBoundary.alternatingClass_eq_zero (boundary f h s.val)
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.zeroExtend_cochain]
+  exact _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass_eq_zero (_root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary f h s.val)
 
 end
 
-end SerrePositivity.KST.Spectra.SphericalCochain
+end SerrePositivity.InfinityCategories.Kan.SphericalCochain
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.differential_cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.differential_cochain
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue_degeneracy := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue_degeneracy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.zeroExtend_cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.zeroExtend_cochain
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue.congr_simp

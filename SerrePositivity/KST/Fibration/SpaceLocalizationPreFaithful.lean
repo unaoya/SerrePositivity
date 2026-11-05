@@ -22,8 +22,8 @@ theorem spaceLocalizationPre_fullyFaithful {X Q : SSet.{u}} [Quasicategory Q]
   intro a b
   obtain ⟨F, rfl⟩ := (functorVertexEquiv _ SpaceInfinity).surjective a
   obtain ⟨G, rfl⟩ := (functorVertexEquiv _ SpaceInfinity).surjective b
-  let E := smallSpaceDiagramTarget (spaceDiagramSum F G)
-  let j := smallSpaceDiagramInclusion (spaceDiagramSum F G)
+  let E := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget (spaceDiagramSum F G)
+  let j := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion (spaceDiagramSum F G)
   let f := (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairLeft F G)
   let g := (SSet.uliftFunctor.{u + 1, u}).map (smallSpaceDiagramPairRight F G)
   let k := (SSet.uliftFunctor.{u + 1, u}).map q

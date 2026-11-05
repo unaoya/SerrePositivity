@@ -23,7 +23,7 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 方針：元全比較の逆と元包含・商制限の厳密回収、零点図式比較の一意性を使う。
 規約：元両二胞体と既存指定零角比較を保持。D2 入力の存在は別工程。
 使われ方：Sp 正本の完備化付き実右面認証。 -/
-def rightSquareDiagramIso (h : DGGluingMilnorSquare R d) : VerdierSquareDiagramIso
+def rightSquareDiagramIso (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
     (squareBoundary R d v h) where
@@ -36,7 +36,7 @@ def rightSquareDiagramIso (h : DGGluingMilnorSquare R d) : VerdierSquareDiagramI
       (congrArg Iso.symm (perfectSquareComparison_right R d v))
   zero_eq := by
     apply perfectZeroPointFunctorIso_ext
-    change IsZeroCategory (perfectStableObject (squareVertex
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
       (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1))
     exact dgOdotMilnorIdentityNullSquare_perfect_zero R d
 end DGOdotMilnorIdentityLaxComparisonInput

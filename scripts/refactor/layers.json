@@ -28,7 +28,10 @@
         "SerrePositivity.CategoryTheory.Groupoid.ThinComponents",
         "SerrePositivity.CategoryTheory.LiftingProperties.Under",
         "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration",
-        "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+        "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization",
+        "SerrePositivity.CategoryTheory.ArrowFactorization",
+        "SerrePositivity.CategoryTheory.ArrowFactorizationCategory",
+        "SerrePositivity.CategoryTheory.ArrowFactorizationTransport"
       ]
     },
     {

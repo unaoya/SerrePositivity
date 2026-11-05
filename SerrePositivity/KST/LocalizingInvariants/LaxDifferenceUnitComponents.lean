@@ -14,10 +14,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 lemma laxDifferenceUnit_target_snd :
@@ -29,9 +29,9 @@ lemma laxDifferenceUnit_target_fst_zero (x : (laxCategory p q).obj _⦋0⦌) :
     IsZeroVertex (((laxDifference p q ≫ laxDifferenceRho p q v) ≫
       (laxFst p q).hom).app (Opposite.op ⦋0⦌) x) := by
   rw [laxDifferenceRho, Category.assoc, Category.assoc, LaxInclusion.fromD_fst]
-  change IsZeroVertex ((LaxInclusion.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (C := C) (D := D)).app (Opposite.op ⦋0⦌)
     (v.app (Opposite.op ⦋0⦌) ((laxDifference p q).app (Opposite.op ⦋0⦌) x)))
-  rw [LaxInclusion.zeroC, zeroDiagram_const_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
   exact (chosenZeroVertex C.obj).isZero
 
 /-- 元の第一射影から、同じ実終点の第一射影への自然な零枝。 -/

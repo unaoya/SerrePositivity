@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.CategoryTheory.Limits.MonoCoprod
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
@@ -17,6 +19,9 @@ public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 
 /--
@@ -33,4 +38,10 @@ instance simplicialMonoCoprod : MonoCoprod SSet.{u} where
     exact MonoCoprod.binaryCofan_inl (c.map F)
       ((BinaryCofan.isColimitMapConeEquiv (F := F)) (isColimitOfPreserves F hc))
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialMonoCoprod := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod

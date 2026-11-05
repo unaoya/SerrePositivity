@@ -19,19 +19,19 @@ open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
 local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
-local instance : ∀ X Y : StableQCat.{u + 1}, KanComplex (SimplicialCategory.sHom X Y) :=
-  fun X Y => stableQCat_sHom_kanComplex X Y
+local instance : ∀ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, KanComplex (SimplicialCategory.sHom X Y) :=
+  fun X Y => _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex X Y
 local instance : KanComplex ((SSet.uliftFunctor.{u + 2, u + 1}).obj
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B))) := by
-  letI : KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B)) :=
-    stableQCat_sHom_kanComplex (K) (B)
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B))) := by
+  letI : KanComplex (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex (K) (B)
   exact kanComplex_uliftFunctor_obj _
 /-- 概要：元実豊穣 Hom の零完全関手だけからなる全成分。
 方針：元の完全関手圏での終対象性を全部分複体の頂点条件とする。
 規約：元の実 Hom の全部分複体。使われ方：共有対角比較の一意性。 -/
 abbrev DGOdotMilnorNuNullIntervalComponent : SSet.{u + 2} :=
   fullSubcomplexOnVertices ((SSet.uliftFunctor.{u + 2, u + 1}).obj
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B)))
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)))
       (fun x => IsTerminalVertex x.down.val)
 /-- 概要：同じ零成分は元の可縮全比較空間の宇宙持ち上げと厳密に同型。
 方針：core の値と二つの頂点条件を同じ元完全関手へ戻す。
@@ -84,18 +84,18 @@ lemma dgOdotMilnorNuNullIntervalComponent_contractible (h : DGGluingMilnorSquare
 規約：元の指定比較射。使われ方：共有対角の全ホモトピー類の比較。 -/
 def dgOdotMilnorNuNullIntervalComponentMap :
     DGOdotMilnorNuNullIntervalComponent R d ⟶
-      intervalMappingSpace (stableVertex (K)) (stableVertex (B)) :=
+      intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (B)) :=
   (fullSubcomplexOnVertices ((SSet.uliftFunctor.{u + 2, u + 1}).obj
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B)))
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)))
       (fun x => IsTerminalVertex x.down.val)).ι ≫
-    coherentHomIntervalComparison (C := StableQCat.{u + 1}) (K) (B)
+    coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)
 /-- 概要：同じ零成分の標準実区間 Hom 比較は充満忠実。
 方針：全部分複体の充満忠実性と標準 Hom 同値を合成する。
 規約：元の全比較射。使われ方：実対角二比較の同じ類への回収。 -/
 lemma dgOdotMilnorNuNullIntervalComponentMap_isFullyFaithful :
     IsFullyFaithful (dgOdotMilnorNuNullIntervalComponentMap R d) :=
   (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).comp
-    (coherentHomIntervalComparison_isQCatEquivalence (C := StableQCat.{u + 1}) 
+    (coherentHomIntervalComparison_isQCatEquivalence (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
       (K) (B)).isFullyFaithful
 /-- 概要：同じ元零成分の二頂点の間では、実区間比較の射の類は一意。
 方針：全比較の充満忠実性で元可縮空間へ戻し、終対象の Hom の一意性を使う。

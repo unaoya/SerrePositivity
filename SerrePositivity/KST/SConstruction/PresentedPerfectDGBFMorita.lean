@@ -42,7 +42,7 @@ lemma presentedPerfectDGBFMoritaRealization_localized_isIso (r : ℕ) :
 
 /-- 同じ新 BF Morita 射は零段を含む全段で全基点 π 同型。 -/
 lemma presentedPerfectDGBFMap_morita_levelwise (n : ℕ) :
-    KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right :=
   presentedPerfectDGBFMap_levelwise_of_realization A f
     (presentedPerfectDGBFMoritaRealization_localized_isIso A f) n
 

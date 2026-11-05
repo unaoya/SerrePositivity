@@ -18,7 +18,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DoldKanComparison SSet HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 def DGBarCompactPiChart.postcompose {X : SSet.{u}} [KanComplex X] {n : ℕ}
     {A : Type v} {B : Type w} (c : DGBarCompactPiChart X n A) (e : A ≃ B) :
@@ -32,7 +32,7 @@ lemma dgBarCompactPiChart_postcompose_naturality
     (c' : DGBarCompactPiChart Y n B) (α : A ≃ A') (β : B ≃ B')
     (f : X ⟶ Y) (φ : A → B) (ψ : A' → B')
     (hf : ∀ x a, c'.equiv (f.app _ x) (dgBarCompactPiMap n f x a) = φ (c.equiv x a))
-    (hφ : ∀ a, β (φ a) = ψ (α a)) (x : X _⦋0⦌) (a : KanHomotopyGroup X n x) :
+    (hφ : ∀ a, β (φ a) = ψ (α a)) (x : X _⦋0⦌) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) :
     (c'.postcompose β).equiv (f.app _ x) (dgBarCompactPiMap n f x a) =
       ψ ((c.postcompose α).equiv x a) :=
   (congrArg β (hf x a)).trans (hφ (c.equiv x a))

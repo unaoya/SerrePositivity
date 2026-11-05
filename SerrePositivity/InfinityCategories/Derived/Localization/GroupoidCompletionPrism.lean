@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 def functorHomOfPrism {A X : SSet.{u}} {f g : A ⟶ X}
     (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
@@ -43,39 +48,69 @@ def groupoidCompletionEquivalenceOfPrismRetraction {A X : SSet.{u}}
     (i : A ⟶ X) (r : X ⟶ A) (hir : i ≫ r = 𝟙 A)
     (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ X)
     (h₀ : prismEndpoint 0 X ≫ H = 𝟙 X) (h₁ : prismEndpoint 1 X ≫ H = r ≫ i) :
-    QCatEquivalence (groupoidCompletion A) (groupoidCompletion X) where
-  hom := groupoidCompletionMapOf i
-  inv := groupoidCompletionMapOf r
-  homInvIso := groupoidCompletionMapOf_compIso i r ≪≫
-    (by rw [hir]; exact groupoidCompletionMapOf_idIso A)
-  invHomIso := groupoidCompletionMapOf_compIso r i ≪≫
-    (groupoidCompletionMapOf_functorHomIso (functorHomOfPrism H h₀ h₁)).symm ≪≫
-      groupoidCompletionMapOf_idIso X
+    QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion A) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) where
+  hom := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i
+  inv := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf r
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso i r ≪≫
+    (by rw [hir]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso A)
+  invHomIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso r i ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism H h₀ h₁)).symm ≪≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso X
 
 def groupoidCompletionEquivalenceOfReversePrismRetraction {A X : SSet.{u}}
     (i : A ⟶ X) (r : X ⟶ A) (hir : i ≫ r = 𝟙 A)
     (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ X)
     (h₀ : prismEndpoint 0 X ≫ H = r ≫ i) (h₁ : prismEndpoint 1 X ≫ H = 𝟙 X) :
-    QCatEquivalence (groupoidCompletion A) (groupoidCompletion X) where
-  hom := groupoidCompletionMapOf i
-  inv := groupoidCompletionMapOf r
-  homInvIso := groupoidCompletionMapOf_compIso i r ≪≫
-    (by rw [hir]; exact groupoidCompletionMapOf_idIso A)
-  invHomIso := groupoidCompletionMapOf_compIso r i ≪≫
-    groupoidCompletionMapOf_functorHomIso (functorHomOfPrism H h₀ h₁) ≪≫
-      groupoidCompletionMapOf_idIso X
+    QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion A) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) where
+  hom := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i
+  inv := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf r
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso i r ≪≫
+    (by rw [hir]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso A)
+  invHomIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso r i ≪≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism H h₀ h₁) ≪≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso X
 
 lemma prismComparison_groupoidCompletion_isEquivalence {A B X : SSet.{u}}
     (i : A ⟶ X) (j : B ⟶ X) (f : A ⟶ B)
     (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
     (h₀ : prismEndpoint 0 A ≫ H = i) (h₁ : prismEndpoint 1 A ≫ H = f ≫ j)
-    (hi : IsQCatEquivalence (groupoidCompletionMapOf i))
-    (hj : IsQCatEquivalence (groupoidCompletionMapOf j)) :
-    IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
-  have h : FunctorIso (groupoidCompletionMapOf f ≫ groupoidCompletionMapOf j)
-      (groupoidCompletionMapOf i) :=
-    groupoidCompletionMapOf_compIso f j ≪≫
-      (groupoidCompletionMapOf_functorHomIso (functorHomOfPrism H h₀ h₁)).symm
+    (hi : IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i))
+    (hj : IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf j)) :
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
+  have h : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf j)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i) :=
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso f j ≪≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism H h₀ h₁)).symm
   exact (hj.cancel_right (hi.ofFunctorIso h.symm)).isSimplicialHomotopyEquivalence
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism := _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfPrismRetraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfPrismRetraction := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfPrismRetraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfReversePrismRetraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfReversePrismRetraction := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfReversePrismRetraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.prismComparison_groupoidCompletion_isEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Localization.prismComparison_groupoidCompletion_isEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHomOfPrism._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfPrismRetraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfPrismRetraction._proof_1

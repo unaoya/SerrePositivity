@@ -31,7 +31,7 @@ lemma exists_corePullback_finiteCone_of_quotientConeRecovery
     (a : K ⟶ pullback ((quasicategoryCore Z).fromPreimage q) r) : Nonempty (JoinCone a) := by
   let W := ((quasicategoryCore Z).preimage q : SSet.{u})
   let Q := (quasicategoryCore Z).fromPreimage q
-  let : Quasicategory W := corePreimage_quasicategory q
+  let : Quasicategory W := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory q
   let coreι := (quasicategoryCore Z).ι
   let P := (a ≫ pullback.fst Q r) ≫ ((quasicategoryCore Z).preimage q).ι
   let γ := a ≫ pullback.snd Q r
@@ -51,7 +51,7 @@ lemma exists_corePullback_finiteCone_of_quotientConeRecovery
   have hInv : InvertsEdges (c.val ≫ q) Set.univ := by
     have hcIso := coneFunctorIsoOfVertexIso (mapJoinCone q c) t e
     exact (invertsEdges_functorIso_iff hcIso Set.univ).mpr
-      ((invertsAllEdges_toKan (cY.val ≫ r)).comp coreι)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan (cY.val ≫ r)).comp coreι)
   let cWval := corePreimageLift q c.val hInv
   have hcW : joinInr (Δ[0] : SSet.{u}) K ≫ cWval = a ≫ pullback.fst Q r := by
     apply (cancel_mono ((quasicategoryCore Z).preimage q).ι).mp
@@ -108,7 +108,7 @@ lemma corePreimageProjection_isLeftCofinal_of_quotientConeRecovery
     IsLeftCofinal ((quasicategoryCore Z).fromPreimage q) := by
   let W := ((quasicategoryCore Z).preimage q : SSet.{u})
   let Q := (quasicategoryCore Z).fromPreimage q
-  let : Quasicategory W := corePreimage_quasicategory q
+  let : Quasicategory W := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory q
   apply isLeftCofinal_of_weaklyContractible_slices Q
   intro c
   let r := sliceOverProjection (SSet.yonedaEquiv.symm c)

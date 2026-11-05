@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.NormalizedValueCochains
 
@@ -21,16 +21,16 @@ noncomputable section
 /-- 係数の加法準同型は退化単体での零延長と可換。 -/
 lemma zeroExtend_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
     (n : ℕ) (a : K.nonDegenerate n → M) (s : K _⦋n⦌) :
-    zeroExtend K N n (fun t ↦ f (a t)) s = f (zeroExtend K M n a s) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend K N n (fun t ↦ f (a t)) s = f (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend K M n a s) := by
   classical
-  dsimp only [zeroExtend]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.zeroExtend]
   split_ifs <;> simp only [map_zero]
 
 /-- 通常の正規化交代微分は任意の係数準同型と可換。 -/
 lemma differential_map (K : SSet.{u}) {M N : AddCommGrpCat.{u}} (f : M →+ N)
     (n : ℕ) (a : K.nonDegenerate n → M) (s : K.nonDegenerate (n + 1)) :
-    differential K N n (fun t ↦ f (a t)) s = f (differential K M n a s) := by
-  rw [differential_apply, differential_apply, map_sum]
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K N n (fun t ↦ f (a t)) s = f (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n a s) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_apply, map_sum]
   simp only [zeroExtend_map, map_zsmul]
 
 end

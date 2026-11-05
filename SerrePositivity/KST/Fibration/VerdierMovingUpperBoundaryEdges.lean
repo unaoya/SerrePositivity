@@ -19,7 +19,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
 
 /-- 概要：全ての有限入力で第一短辺は元の実 core 包含の coherent 辺そのもの。
 方針：同じ標準短辺族の回収を元の包含の豊穣頂点へ戻す。
@@ -27,18 +27,18 @@ variable (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0�
 theorem verdierMovingUpperFamily_firstEdge (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
     stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierMovingUpperFamily d ℓ) k =
       SSet.yonedaEquiv.symm (coherentNerveEdge
-        (show stableCoreSingleKanObject (show StableQCat from d.left) ⟶
+        (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
           fullSRealizationKanObject d.left from
-            exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))).edge := by
+            exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_first,
     coherentHomIntervalFamily_vertex, verdierMovingUpperFirstFamily_point]
   change SSet.yonedaEquiv.symm (coherentNerveEdge
-    ((SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show StableQCat from d.left))
+    ((SimplicialCategory.homEquiv' (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
       (fullSRealizationKanObject d.left)).symm
         ((SimplicialCategory.homEquiv' _ _)
-          (show stableCoreSingleKanObject (show StableQCat from d.left) ⟶
+          (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
             fullSRealizationKanObject d.left from
-              exInfinity.map (coreSFullRealizationInclusion (show StableQCat from d.left)))))).edge = _
+              exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))).edge = _
   rw [Equiv.symm_apply_apply]
 
 /-- 概要：始端の第二短辺は元の上側実完全射の全 S• 作用の coherent 辺そのもの。
@@ -49,16 +49,16 @@ theorem verdierMovingUpperFamily_first_lastEdge :
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       SSet.yonedaEquiv.symm (coherentNerveEdge
         (show fullSRealizationKanObject d.left ⟶
-          stableCoreSingleKanObject (show StableQCat from d.right) from
+          stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
             verdierOriginalFullSCompositeMap d 0)).edge := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_last,
     coherentHomIntervalFamily_vertex, verdierMovingUpperLastFamily_first]
   change SSet.yonedaEquiv.symm (coherentNerveEdge
     ((SimplicialCategory.homEquiv' (fullSRealizationKanObject d.left)
-      (stableCoreSingleKanObject (show StableQCat from d.right))).symm
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))).symm
         ((SimplicialCategory.homEquiv' _ _)
           (show fullSRealizationKanObject d.left ⟶
-            stableCoreSingleKanObject (show StableQCat from d.right) from
+            stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
               verdierOriginalFullSCompositeMap d 0)))).edge = _
   rw [Equiv.symm_apply_apply]
 
@@ -70,16 +70,16 @@ theorem verdierMovingUpperFamily_last_lastEdge :
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       SSet.yonedaEquiv.symm (coherentNerveEdge
         (show fullSRealizationKanObject d.left ⟶
-          stableCoreSingleKanObject (show StableQCat from d.right) from
+          stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
             verdierOriginalFullSCompositeMap d 1)).edge := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_last,
     coherentHomIntervalFamily_vertex, verdierMovingUpperLastFamily_last]
   change SSet.yonedaEquiv.symm (coherentNerveEdge
     ((SimplicialCategory.homEquiv' (fullSRealizationKanObject d.left)
-      (stableCoreSingleKanObject (show StableQCat from d.right))).symm
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))).symm
         ((SimplicialCategory.homEquiv' _ _)
           (show fullSRealizationKanObject d.left ⟶
-            stableCoreSingleKanObject (show StableQCat from d.right) from
+            stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
               verdierOriginalFullSCompositeMap d 1)))).edge = _
   rw [Equiv.symm_apply_apply]
 

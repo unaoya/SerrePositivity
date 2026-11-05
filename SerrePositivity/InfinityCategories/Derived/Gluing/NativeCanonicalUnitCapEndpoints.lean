@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 private lemma dgGluingUliftSimplexFamily_post {K E F : SSet.{u}} (n : ℕ)
     (h : (Δ[n] : SSet.{u}) ⊗ K ⟶ E) (q : E ⟶ F) :
     dgGluingUliftSimplexFamily.{u, v} n (h ≫ q) =

@@ -28,11 +28,11 @@ local instance kPrismEndpointComposites_pointed_simplicialCategory :
 lemma kKanOriginalPrismLowerDirect_cell {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋2⦌)
-      (ULift.up (coherentLowerPrismString (coherentArrowStringDirect f)).chain) =
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)).chain) =
       (kKanSuspensionMappingTriangles r F f).bottomRight.simplex := by
   change (kKanOriginalSuspensionHomotopy F r).h.app _
       ((coherentOrdinaryPrismIso.{u, u + 1} I).hom.app _
-        (ULift.up (coherentLowerPrismString (coherentArrowStringDirect f)).chain)) =
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)).chain)) =
     (kKanOriginalSuspensionHomotopy F r).h.app _
       ((SSet.yonedaEquiv.symm (ULift.up (nerve.edgeMk f).edge) ▷
         (Δ[1] : SSet.{u + 1})).app (Opposite.op ⦋2⦌)
@@ -46,15 +46,15 @@ lemma kKanOriginalPrismLowerEndpointVertex_raw_heq {I : Type u} [SmallCategory I
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     HEq (kKanOriginalPrismLowerEndpointVertex r F f)
       ((((kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋2⦌)
-        (ULift.up (coherentLowerPrismString (coherentArrowStringDirect f)).chain)).map
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)).chain)).map
           (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌)
-            (nerveVertex (coherentStringFullPath (coherentLowerPrismString
+            (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString
               (coherentArrowStringDirect f))))) := by
   have hv : kKanOriginalPrismLowerEndpointVertex r F f =
       (kKanOriginalPrismNativeHomIso r F x y).hom.app (Opposite.op ⦋0⦌)
         ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-          (coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
-            (nerveVertex (coherentStringFullPath (coherentLowerPrismString
+          (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
+            (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString
               (coherentArrowStringDirect f))))) := by
     change (kKanOriginalPrismNativeHomIso r F x y).hom.app _
       ((coherentPrismLowerNativeFamily (kKanOriginalPrismStringDiagram r F) f).app _
@@ -64,22 +64,22 @@ lemma kKanOriginalPrismLowerEndpointVertex_raw_heq {I : Type u} [SmallCategory I
     (congrArg₂ (fun A B : PointedSimplicialSet.{u} => (PointedObject.basedHom A B).right)
       (kKanOriginalPrismStringVertex_bottom r F x) (kKanOriginalPrismStringVertex_top r F y))
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-      (coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
-        (nerveVertex (coherentStringFullPath (coherentLowerPrismString
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
+        (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString
           (coherentArrowStringDirect f)))))
   exact hv.heq.trans (ht.trans
     (coherentStringNativeMap_value_heq (kKanOriginalPrismStringDiagram r F)
-      (coherentLowerPrismString (coherentArrowStringDirect f)) _))
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)) _))
 
 /-- 上側の元の二辺の豊穣単体は、元の square の同じ指定三角形。 -/
 lemma kKanOriginalPrismUpperDirect_cell {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋2⦌)
-      (ULift.up (coherentUpperPrismString (coherentArrowStringDirect f)).chain) =
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)).chain) =
       (kKanSuspensionMappingTriangles r F f).leftTop.simplex := by
   change (kKanOriginalSuspensionHomotopy F r).h.app _
       ((coherentOrdinaryPrismIso.{u, u + 1} I).hom.app _
-        (ULift.up (coherentUpperPrismString (coherentArrowStringDirect f)).chain)) =
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)).chain)) =
     (kKanOriginalSuspensionHomotopy F r).h.app _
       ((SSet.yonedaEquiv.symm (ULift.up (nerve.edgeMk f).edge) ▷
         (Δ[1] : SSet.{u + 1})).app (Opposite.op ⦋2⦌)
@@ -93,15 +93,15 @@ lemma kKanOriginalPrismUpperEndpointVertex_raw_heq {I : Type u} [SmallCategory I
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     HEq (kKanOriginalPrismUpperEndpointVertex r F f)
       ((((kKanOriginalPrismStringDiagram r F).app (Opposite.op ⦋2⦌)
-        (ULift.up (coherentUpperPrismString (coherentArrowStringDirect f)).chain)).map
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)).chain)).map
           (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌)
-            (nerveVertex (coherentStringFullPath (coherentUpperPrismString
+            (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString
               (coherentArrowStringDirect f))))) := by
   have hv : kKanOriginalPrismUpperEndpointVertex r F f =
       (kKanOriginalPrismNativeHomIso r F x y).hom.app (Opposite.op ⦋0⦌)
         ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-          (coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
-            (nerveVertex (coherentStringFullPath (coherentUpperPrismString
+          (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
+            (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString
               (coherentArrowStringDirect f))))) := by
     change (kKanOriginalPrismNativeHomIso r F x y).hom.app _
       ((coherentPrismUpperNativeFamily (kKanOriginalPrismStringDiagram r F) f).app _
@@ -111,12 +111,12 @@ lemma kKanOriginalPrismUpperEndpointVertex_raw_heq {I : Type u} [SmallCategory I
     (congrArg₂ (fun A B : PointedSimplicialSet.{u} => (PointedObject.basedHom A B).right)
       (kKanOriginalPrismStringVertex_bottom r F x) (kKanOriginalPrismStringVertex_top r F y))
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-      (coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
-        (nerveVertex (coherentStringFullPath (coherentUpperPrismString
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋0⦌)
+        (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString
           (coherentArrowStringDirect f)))))
   exact hv.heq.trans (ht.trans
     (coherentStringNativeMap_value_heq (kKanOriginalPrismStringDiagram r F)
-      (coherentUpperPrismString (coherentArrowStringDirect f)) _))
+      (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)) _))
 
 /-- 下側の定数終点は、元の構造射と元の段の写像の明示的な合成の頂点。 -/
 lemma kKanOriginalPrismLowerEndpointVertex_composite {I : Type u} [SmallCategory I]
@@ -124,7 +124,7 @@ lemma kKanOriginalPrismLowerEndpointVertex_composite {I : Type u} [SmallCategory
     kKanOriginalPrismLowerEndpointVertex r F f =
       PointedMapping.familyVertex (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r ≫
         (kKanSequence (F.obj y)).sigma r) := by
-  let p := coherentStringFullPath (coherentLowerPrismString (coherentArrowStringDirect f))
+  let p := coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f))
   have hp : (ULift.up 1 : ULift.{u} (Fin 3)) ∈ p.I := Set.mem_univ _
   have ht := coherentTrianglePath_value_heq (kKanOriginalPrismLowerDirect_cell r F f) p
   have hv := coherentTrianglePath_specified_composite_heq
@@ -137,7 +137,7 @@ lemma kKanOriginalPrismUpperEndpointVertex_composite {I : Type u} [SmallCategory
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     kKanOriginalPrismUpperEndpointVertex r F f =
       PointedMapping.familyVertex ((kKanSequence (F.obj x)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1)) := by
-  let p := coherentStringFullPath (coherentUpperPrismString (coherentArrowStringDirect f))
+  let p := coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f))
   have hp : (ULift.up 1 : ULift.{u} (Fin 3)) ∈ p.I := Set.mem_univ _
   have ht := coherentTrianglePath_value_heq (kKanOriginalPrismUpperDirect_cell r F f) p
   have hv := coherentTrianglePath_specified_composite_heq
@@ -152,13 +152,13 @@ lemma kKanOriginalPrismLowerSuspensionFamily_composite {I : Type u} [SmallCatego
       SSet.const (PointedMapping.familyVertex (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r ≫
         (kKanSequence (F.obj y)).sigma r)) :=
   (kKanOriginalPrismLowerSuspensionFamily_eq_const r F f).trans
-    (congrArg (SSet.const (X := nerve (CoherentArrowString f)))
+    (congrArg (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)))
       (kKanOriginalPrismLowerEndpointVertex_composite r F f))
 
 /-- 元の長辺から下側の明示的な二合成へ向かう、全精密化パラメータ上の同じ実円柱。 -/
 def kKanOriginalPrismLowerCompositeContraction {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    SSet.Homotopy (SSet.const (X := nerve (CoherentArrowString f))
+    SSet.Homotopy (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f))
       (kKanOriginalPrismSpanInitialVertex r F f))
       (SSet.const (PointedMapping.familyVertex (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r ≫
         (kKanSequence (F.obj y)).sigma r))) := by
@@ -181,13 +181,13 @@ lemma kKanOriginalPrismUpperSuspensionFamily_composite {I : Type u} [SmallCatego
     kKanOriginalPrismUpperSuspensionFamily r F f =
       SSet.const (PointedMapping.familyVertex ((kKanSequence (F.obj x)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1))) :=
   (kKanOriginalPrismUpperSuspensionFamily_eq_const r F f).trans
-    (congrArg (SSet.const (X := nerve (CoherentArrowString f)))
+    (congrArg (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)))
       (kKanOriginalPrismUpperEndpointVertex_composite r F f))
 
 /-- 元の長辺から上側の明示的な二合成へ向かう、全精密化パラメータ上の同じ実円柱。 -/
 def kKanOriginalPrismUpperCompositeContraction {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    SSet.Homotopy (SSet.const (X := nerve (CoherentArrowString f))
+    SSet.Homotopy (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f))
       (kKanOriginalPrismSpanInitialVertex r F f))
       (SSet.const (PointedMapping.familyVertex ((kKanSequence (F.obj x)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1)))) := by
   let H := kKanOriginalPrismUpperSuspensionContraction r F f
@@ -210,19 +210,19 @@ lemma kKanOriginalPrismLowerCompositeContraction_vertex_edge {I : Type u} [Small
       (nerveVertex (coherentArrowStringDirect f))).edge =
       (kKanOriginalPrismNativeHomIso r F x y).hom.app (Opposite.op ⦋1⦌)
         ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-          (coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋1⦌)
+          (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋1⦌)
             (nerve.edgeMk (coherentStringRefinementPathToFull
               (coherentArrowStringDirectTo
-                (coherentLowerPrismString (coherentArrowStringDirect f))))).edge) := by
-  have hv : (nerveMap (coherentLowerPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
+                (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f))))).edge) := by
+  have hv : (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
       (nerveVertex (coherentArrowStringDirect f)) =
-      nerveVertex (coherentLowerPrismString (coherentArrowStringDirect f)) :=
+      nerveVertex (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)) :=
     ComposableArrows.ext₀ rfl
   exact coherentArrowNativeContraction_prepost_vertex_edge
     (kKanOriginalPrismStringDiagram r F) (coherentPrismArrow f)
-    (nerveMap (coherentLowerPrismStringFunctor f)) (kKanOriginalPrismNativeHomIso r F x y).hom
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f)) (kKanOriginalPrismNativeHomIso r F x y).hom
     (nerveVertex (coherentArrowStringDirect f))
-    (coherentLowerPrismString (coherentArrowStringDirect f)) hv
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)) hv
 
 /-- 元の入力射の指定頂点で、上側の同じ実円柱は元の Path 包含辺を厳密に回収する。 -/
 lemma kKanOriginalPrismUpperCompositeContraction_vertex_edge {I : Type u} [SmallCategory I]
@@ -231,18 +231,18 @@ lemma kKanOriginalPrismUpperCompositeContraction_vertex_edge {I : Type u} [Small
       (nerveVertex (coherentArrowStringDirect f))).edge =
       (kKanOriginalPrismNativeHomIso r F x y).hom.app (Opposite.op ⦋1⦌)
         ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F)
-          (coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋1⦌)
+          (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f))).app (Opposite.op ⦋1⦌)
             (nerve.edgeMk (coherentStringRefinementPathToFull
               (coherentArrowStringDirectTo
-                (coherentUpperPrismString (coherentArrowStringDirect f))))).edge) := by
-  have hv : (nerveMap (coherentUpperPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
+                (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f))))).edge) := by
+  have hv : (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
       (nerveVertex (coherentArrowStringDirect f)) =
-      nerveVertex (coherentUpperPrismString (coherentArrowStringDirect f)) :=
+      nerveVertex (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)) :=
     ComposableArrows.ext₀ rfl
   exact coherentArrowNativeContraction_prepost_vertex_edge
     (kKanOriginalPrismStringDiagram r F) (coherentPrismArrow f)
-    (nerveMap (coherentUpperPrismStringFunctor f)) (kKanOriginalPrismNativeHomIso r F x y).hom
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f)) (kKanOriginalPrismNativeHomIso r F x y).hom
     (nerveVertex (coherentArrowStringDirect f))
-    (coherentUpperPrismString (coherentArrowStringDirect f)) hv
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)) hv
 
 end SerrePositivity.KST.SConstruction

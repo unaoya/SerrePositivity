@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 
 noncomputable section
@@ -43,7 +43,7 @@ def prodPointedSimplex {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0�
 使われ方：Kerodon §3.2.2 の積の代表の射影の計算。 -/
 lemma prodPointedSimplex_fst {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0⦌}
     (f : X.PtSimplex n x) (g : Y.PtSimplex n y) :
-    mapSimplex (fst X Y) rfl (prodPointedSimplex f g) = f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (fst X Y) rfl (prodPointedSimplex f g) = f := by
   ext : 1
   exact lift_fst _ _
 
@@ -53,7 +53,7 @@ lemma prodPointedSimplex_fst {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y 
 使われ方：Kerodon §3.2.2 の積の代表の射影の計算。 -/
 lemma prodPointedSimplex_snd {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y _⦋0⦌}
     (f : X.PtSimplex n x) (g : Y.PtSimplex n y) :
-    mapSimplex (snd X Y) rfl (prodPointedSimplex f g) = g := by
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (snd X Y) rfl (prodPointedSimplex f g) = g := by
   ext : 1
   exact lift_snd _ _
 
@@ -63,8 +63,8 @@ lemma prodPointedSimplex_snd {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌} {y : Y 
 使われ方：BF 1978 §2 の積の Ω 条件を成分ごとに検査する射。 -/
 def kanHomotopyProdMap {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) :
-    KanHomotopy (X ⊗ Y) n (x, y) → KanHomotopy X n x × KanHomotopy Y n y :=
-  fun a ↦ (KanHomotopy.map n (fst X Y) rfl a, KanHomotopy.map n (snd X Y) rfl a)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X ⊗ Y) n (x, y) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x × _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y n y :=
+  fun a ↦ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (fst X Y) rfl a, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (snd X Y) rfl a)
 
 /-- 概要：積の全基点のホモトピー類は二つの射影の像と全単射に対応する。
 方針：単射性は二つの充填関係を積へ組み、全射性は代表単体を積へ組む。
@@ -74,23 +74,23 @@ lemma kanHomotopyProdMap_bijective {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
     (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) : Function.Bijective (kanHomotopyProdMap n x y) := by
   constructor
   · intro a b h
-    obtain ⟨f, rfl⟩ := KanHomotopy.mk_surjective n a
-    obtain ⟨g, rfl⟩ := KanHomotopy.mk_surjective n b
+    obtain ⟨f, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+    obtain ⟨g, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n b
     have hx := congrArg Prod.fst h
     have hy := congrArg Prod.snd h
-    simp only [kanHomotopyProdMap, KanHomotopy.map_mk] at hx hy
-    obtain ⟨rx⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hx
-    obtain ⟨ry⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hy
-    exact KanHomotopy.sound (KanHomotopyGroup.prodRelStruct rx ry)
+    simp only [kanHomotopyProdMap, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk] at hx hy
+    obtain ⟨rx⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hx
+    obtain ⟨ry⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct n _ _ 0).mp hy
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.sound (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.prodRelStruct rx ry)
   · rintro ⟨a, b⟩
-    obtain ⟨f, rfl⟩ := KanHomotopy.mk_surjective n a
-    obtain ⟨g, rfl⟩ := KanHomotopy.mk_surjective n b
-    refine ⟨KanHomotopy.mk n (prodPointedSimplex f g), ?_⟩
+    obtain ⟨f, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
+    obtain ⟨g, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n b
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n (prodPointedSimplex f g), ?_⟩
     apply Prod.ext
-    · change KanHomotopy.map n (fst X Y) rfl _ = _
-      rw [KanHomotopy.map_mk, prodPointedSimplex_fst]
-    · change KanHomotopy.map n (snd X Y) rfl _ = _
-      rw [KanHomotopy.map_mk, prodPointedSimplex_snd]
+    · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (fst X Y) rfl _ = _
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, prodPointedSimplex_fst]
+    · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (snd X Y) rfl _ = _
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk, prodPointedSimplex_snd]
 
 /-- 概要：積の全基点の全次数のホモトピー類の標準全単射。
 方針：実際の二つの射影から作った全単射を Equiv へ束ねる。
@@ -98,7 +98,7 @@ lemma kanHomotopyProdMap_bijective {X Y : SSet.{u}} [KanComplex X] [KanComplex Y
 使われ方：Kerodon §3.2.2、Sp の積の Ω 条件の成分による検証。 -/
 def kanHomotopyProdEquiv {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌) :
-    KanHomotopy (X ⊗ Y) n (x, y) ≃ KanHomotopy X n x × KanHomotopy Y n y :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X ⊗ Y) n (x, y) ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x × _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y n y :=
   Equiv.ofBijective _ (kanHomotopyProdMap_bijective n x y)
 
 /-- 概要：積のホモトピー類の分解は二つの射の直積と可換。
@@ -108,21 +108,21 @@ def kanHomotopyProdEquiv {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 lemma kanHomotopyProdMap_naturality {X Y X' Y' : SSet.{u}}
     [KanComplex X] [KanComplex Y] [KanComplex X'] [KanComplex Y']
     (f : X ⟶ X') (g : Y ⟶ Y') (n : ℕ) (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (a : KanHomotopy (X ⊗ Y) n (x, y)) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X ⊗ Y) n (x, y)) :
     kanHomotopyProdMap n (f.app _ x) (g.app _ y)
-        (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
-      Prod.map (KanHomotopy.map n f rfl) (KanHomotopy.map n g rfl)
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ⊗ₘ g) rfl a) =
+      Prod.map (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g rfl)
         (kanHomotopyProdMap n x y a) := by
   apply Prod.ext
-  · change KanHomotopy.map n (fst X' Y') rfl (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
-      KanHomotopy.map n f rfl (KanHomotopy.map n (fst X Y) rfl a)
-    rw [← KanHomotopy.map_comp n (f ⊗ₘ g) rfl (fst X' Y') rfl rfl,
-      ← KanHomotopy.map_comp n (fst X Y) rfl f rfl rfl]
+  · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (fst X' Y') rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ⊗ₘ g) rfl a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (fst X Y) rfl a)
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (f ⊗ₘ g) rfl (fst X' Y') rfl rfl,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (fst X Y) rfl f rfl rfl]
     simp only [tensorHom_fst]
-  · change KanHomotopy.map n (snd X' Y') rfl (KanHomotopy.map n (f ⊗ₘ g) rfl a) =
-      KanHomotopy.map n g rfl (KanHomotopy.map n (snd X Y) rfl a)
-    rw [← KanHomotopy.map_comp n (f ⊗ₘ g) rfl (snd X' Y') rfl rfl,
-      ← KanHomotopy.map_comp n (snd X Y) rfl g rfl rfl]
+  · change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (snd X' Y') rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ⊗ₘ g) rfl a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (snd X Y) rfl a)
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (f ⊗ₘ g) rfl (snd X' Y') rfl rfl,
+      ← _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n (snd X Y) rfl g rfl rfl]
     simp only [tensorHom_snd]
 
 /-- 概要：全基点の π_* 同型の二項積も全基点の π_* 同型。
@@ -131,16 +131,16 @@ lemma kanHomotopyProdMap_naturality {X Y X' Y' : SSet.{u}}
 使われ方：BF 1978 §2、HTT 4.2.4.1 の Sp の二項積の Ω 条件の保存。 -/
 lemma kanPiIsomorphism_tensor {X Y X' Y' : SSet.{u}}
     [KanComplex X] [KanComplex Y] [KanComplex X'] [KanComplex Y']
-    {f : X ⟶ X'} {g : Y ⟶ Y'} (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) :
-    KanPiIsomorphism (f ⊗ₘ g) := by
+    {f : X ⟶ X'} {g : Y ⟶ Y'} (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f ⊗ₘ g) := by
   rintro ⟨x, y⟩ n
   have hp : Function.Bijective
-      (Prod.map (KanHomotopy.map n f (x := x) rfl) (KanHomotopy.map n g (x := y) rfl)) :=
+      (Prod.map (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f (x := x) rfl) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g (x := y) rfl)) :=
     (hf x n).prodMap (hg y n)
   have hc :
       kanHomotopyProdMap n (f.app _ x) (g.app _ y) ∘
-          KanHomotopy.map n (f ⊗ₘ g) (x := (x, y)) rfl =
-        Prod.map (KanHomotopy.map n f rfl) (KanHomotopy.map n g rfl) ∘
+          _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (f ⊗ₘ g) (x := (x, y)) rfl =
+        Prod.map (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n g rfl) ∘
           kanHomotopyProdMap n x y := by
     funext a
     exact kanHomotopyProdMap_naturality f g n x y a

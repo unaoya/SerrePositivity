@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
@@ -42,14 +42,14 @@ lemma dgGluingNativeCInclusion_killed (c : (dgGluingStableInput.{u, v, w} R C hC
   let q := dgGluingStableCoefficientMap R C D M hD hM
   have hz : IsZeroVertex ((LaxInclusion.fromC p q ≫ (laxSnd p q).hom).app
       (Opposite.op ⦋0⦌) c) := by
-    rw [LaxInclusion.fromC_snd, LaxInclusion.zeroD, zeroDiagram_const_vertex]
+    rw [LaxInclusion.fromC_snd, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
     exact (chosenZeroVertex _).isZero
   exact hz.of_vertexIso ((dgGluingNativeCInclusion_right_iso R C D M hC hD hY hM).app c).symm
 
 lemma dgGluingNativeCInclusion_generates_kernel
     (x : (dgGluingStableObject R C D M hC hD).obj _⦋0⦌)
     (hx : IsZeroVertex ((dgGluingUniverseRightNerve R C D M).app (Opposite.op ⦋0⦌) x)) :
-    x ∈ essentialImage (dgGluingNativeCInclusion R C D M hC hD hY hM) := by
+    x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingNativeCInclusion R C D M hC hD hY hM) := by
   let p := dgGluingStableYonedaMap R C hC hY
   let q := dgGluingStableCoefficientMap R C D M hD hM
   have hz : IsZeroVertex ((F2.laxPullbackSnd (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
@@ -66,7 +66,7 @@ lemma dgGluingNativeCInclusion_generates_kernel
 lemma dgGluingNativeCInclusion_kernel
     (x : (dgGluingStableObject R C D M hC hD).obj _⦋0⦌) :
     IsZeroVertex ((dgGluingUniverseRightNerve R C D M).app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage (dgGluingNativeCInclusion R C D M hC hD hY hM) := by
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingNativeCInclusion R C D M hC hD hY hM) := by
   constructor
   · exact dgGluingNativeCInclusion_generates_kernel R C D M hC hD hY hM x
   · rintro ⟨c, ⟨hc⟩⟩
@@ -76,7 +76,7 @@ lemma dgGluingNativeCInclusion_kernel
 lemma dgGluingCanonicalCFactor_iff_image (X : DGGluingObject R C D M) :
     dgGluingFactorIsZero R D X.right ↔
       ULift.up (Simplex.vertex X) ∈
-        essentialImage (dgGluingCanonicalNativeSemiorthogonal R C D M hC hD).rightInclusion := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingCanonicalNativeSemiorthogonal R C D M hC hD).rightInclusion := by
   rw [dgGluingCFactor_iff_stableRightKernel]
   exact dgGluingNativeCInclusion_kernel R C D M hC hD
     (dgGluingUniverseDerivedYoneda_isExactFunctor.{u, v, w} R C hC)
@@ -85,7 +85,7 @@ lemma dgGluingCanonicalCFactor_iff_image (X : DGGluingObject R C D M) :
 lemma dgGluingCanonicalDFactor_iff_image (X : DGGluingObject R C D M) :
     dgGluingFactorIsZero R C X.left ↔
       ULift.up (Simplex.vertex X) ∈
-        essentialImage (dgGluingCanonicalNativeSemiorthogonal R C D M hC hD).inclusion :=
+        _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingCanonicalNativeSemiorthogonal R C D M hC hD).inclusion :=
   dgGluingDFactor_iff_nativeSemiorthogonal_image R C D M hC hD
     (dgGluingUniverseDerivedYoneda_isExactFunctor.{u, v, w} R C hC)
     (dgGluingUniverseDerivedCoefficient_isExactFunctor R C D M hD) X

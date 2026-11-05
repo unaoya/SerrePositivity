@@ -15,7 +15,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet HomotopyLimits
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {X Y : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 
 lemma dgBarCompactUliftConst {A : SSet.{u}} (x : X _⦋0⦌) :

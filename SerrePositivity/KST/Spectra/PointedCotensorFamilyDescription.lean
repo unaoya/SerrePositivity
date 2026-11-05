@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra
 
 /-- 自由基点からの点つき族の頂点を制限すると、元の通常の族の指数頂点になる。 -/
@@ -29,7 +29,7 @@ lemma FreePointedHomRestriction.restrict_familyVertex {K : SSet.{u}}
   rw [← SSet.yonedaEquiv_comp]
   apply congrArg SSet.yonedaEquiv
   rw [FreePointedHomRestriction.restrict, ← Category.assoc,
-    PointedMapping.pointFamily, PointedMapping.paramCurry_ι, curry_pre_app,
+    PointedMapping.pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app,
     whiskerRight_fst_assoc]
   rfl
 
@@ -43,13 +43,13 @@ lemma family_eq_transpose {K : SSet.{u}} {T E : PointedSimplicialSet.{u}}
   apply ext
   rw [family_vertex, PointedMapping.familyVertex_transpose]
   symm
-  have hh : (InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
-      (InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
-    rw [InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
+  have hh : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
   have h := congrArg Under.Hom.right hh
   simp only [Under.comp_right, Under.id_right] at h
-  change ((InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
-    (InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
+  change ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
     FreePointedHomRestriction.restrict K (PointedObject.basedHom T E)).app _
       (PointedMapping.familyVertex _) = _
   rw [← Category.assoc, h, Category.id_comp]

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGOdotFixedNullSquare
 noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.LocalizingInvariants
@@ -31,7 +31,7 @@ lemma exists_dgFixedNullCertifiedSquare
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullLeft R (A := A))).edge ∧
       squareTopEdge ≫ F =
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullTop R C)).edge ∧
-      IsZeroCategory (stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
   obtain ⟨F, hb, hr, hl, ht⟩ := exists_dgFixedNullSquare R i q C hC
   refine ⟨F, hb, hr, hl, ht, ?_⟩
   have hz : squareVertex F 0 1 = coherentNerveVertex (dgFixedNullInput R A) := by
@@ -42,8 +42,8 @@ lemma exists_dgFixedNullCertifiedSquare
     have hle : squareLeftEdge ≫ F = SSet.yonedaEquiv.symm le.edge := hl
     rw [hle, Equiv.apply_symm_apply, le.tgt_eq] at he
     exact he.symm
-  change IsZeroCategory (stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
-  rw [hz, dgKInputNu_vertex, stableObject_vertex]
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
+  rw [hz, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R A
 
 lemma exists_dgOdotCertifiedNullSquare (d : DGOdotInput R) :
@@ -56,7 +56,7 @@ lemma exists_dgOdotCertifiedNullSquare (d : DGOdotInput R) :
         (coherentNerveEdge (dgFixedNullLeft R (A := dgOdotDiagonalSourceInput R d))).edge ∧
       squareTopEdge ≫ F = SSet.yonedaEquiv.symm
         (coherentNerveEdge (dgFixedNullTop R (dgOdotCompositeContracted R d))).edge ∧
-      IsZeroCategory (stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) :=
   exists_dgFixedNullCertifiedSquare R (dgOdotDiagonalInputMap R d) (dgOdotProjectionInputMap R d)
     (dgOdotCompositeContracted R d) rfl
 

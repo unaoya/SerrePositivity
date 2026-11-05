@@ -29,7 +29,7 @@ private lemma perfectMovedEdgeArrow {K : Type*} [Category K]
       i ≫ (b.inv ≫ v.hom) := by
     simp only [Category.assoc, Iso.hom_inv_id_assoc, Iso.inv_hom_id_assoc]
   have hfg := (congrArg Arrow.mk hn).symm.trans (arrow_mk_comp_congr hf hy)
-  exact arrow_mk_cancel_comp_left hx (hfg.trans (congrArg Arrow.mk he.symm))
+  exact _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_left hx (hfg.trans (congrArg Arrow.mk he.symm))
 
 private lemma perfectMovedEdgeLeftId {K : Type*} [Category K]
     {OX OY NX NY A B RA RB Q : K}
@@ -59,7 +59,7 @@ private lemma perfectCancelIsoLeft {K : Type*} [Category K]
     (h : f = e.hom ≫ g) : e.inv ≫ f = g := by
   rw [h, Iso.inv_hom_id_assoc]
 
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
@@ -83,13 +83,13 @@ lemma productSquare_bottom_arrow : Arrow.mk (squareHoBottom (d.productSquare hF)
 
 /-- 同じ全図式を移した left 辺は、元の指定された値の射の類。 -/
 lemma productSquare_left_arrow : Arrow.mk (squareHoLeft (d.productSquare hF)) =
-    Arrow.mk (perfectInvariantSpectrumHom F (LaxUniversalDifference.kernelMap p q d.inclusion
+    Arrow.mk (perfectInvariantSpectrumHom F (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion
       d.sequence.projection)
       d.left_complete d.sequence.right_complete) := by
   have h := perfectMovedEdgeBothId
     (squareHoLeft (d.universalValueSquare F)) (squareHoLeft (d.productSquare hF))
     (d.productComponent hF 0 0) (d.productComponent hF 0 1)
-    (perfectInvariantHoArrow F (LaxUniversalDifference.kernelMap p q d.inclusion
+    (perfectInvariantHoArrow F (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion
       d.sequence.projection)
       d.left_complete d.sequence.right_complete)
     (perfectInvariantSpectrumIso F (perfectStableVertex d.left d.left_complete))

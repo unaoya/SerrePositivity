@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.FunLike.Basic
@@ -38,19 +40,22 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
 /-- 二重評価は底の前合成の同じ頂点を厳密に回収する。 -/
 theorem doubleFunctorEvaluation_precomp_vertex {K L A Y : SSet.{u}}
     (F : K ⟶ (ihom A).obj Y) (q : L ⟶ K) (l : L _⦋0⦌) (a : A _⦋0⦌) :
-    (doubleFunctorEvaluation (Y := Y) (q.app (Opposite.op ⦋0⦌) l) a).app
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) (q.app (Opposite.op ⦋0⦌) l) a).app
         (Opposite.op ⦋0⦌) (functorVertex F) =
-      (doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) l a).app (Opposite.op ⦋0⦌)
         (functorVertex (q ≫ F)) := by
-  rw [doubleFunctorEvaluation_vertex, doubleFunctorEvaluation_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex, _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation_vertex]
   rfl
 
 /-- 実分類写像の元の底変換同型は、同じ共同同型の転置の端点だけを変更する。 -/
@@ -64,4 +69,13 @@ theorem leftStraighteningInfinityMap_baseChangeIso_heq :
     rfl
   exact (hcast _ _).trans (hcast _ _)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.doubleFunctorEvaluation_precomp_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.doubleFunctorEvaluation_precomp_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.leftStraighteningInfinityMap_baseChangeIso_heq := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityMap_baseChangeIso_heq

@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "audits": [
+    {
+      "file": "scripts/audit_infinity_f1.lean",
+      "build_targets_before": 466,
+      "build_targets_after": 466,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 9100,
+        "#print axioms": 182,
+        "importModules": 19
+      },
+      "checks_after": {
+        "#check": 9100,
+        "#print axioms": 182,
+        "importModules": 19
+      }
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "build_targets_before": 2169,
+      "build_targets_after": 2169,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 391,
+        "#print axioms": 2360,
+        "importModules": 0
+      },
+      "checks_after": {
+        "#check": 391,
+        "#print axioms": 2360,
+        "importModules": 0
+      }
+    },
+    {
+      "file": "scripts/audit_kst_cofinality.lean",
+      "build_targets_before": 1,
+      "build_targets_after": 1,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 90,
+        "#print axioms": 1,
+        "importModules": 0
+      },
+      "checks_after": {
+        "#check": 90,
+        "#print axioms": 1,
+        "importModules": 0
+      }
+    },
+    {
+      "file": "scripts/audit_kst_comparison.lean",
+      "build_targets_before": 1,
+      "build_targets_after": 1,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 1500,
+        "#print axioms": 1500,
+        "importModules": 0
+      },
+      "checks_after": {
+        "#check": 1500,
+        "#print axioms": 1500,
+        "importModules": 0
+      }
+    },
+    {
+      "file": "scripts/audit_kst_s_construction.lean",
+      "build_targets_before": 3,
+      "build_targets_after": 3,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 14395,
+        "#print axioms": 14395,
+        "importModules": 0
+      },
+      "checks_after": {
+        "#check": 14395,
+        "#print axioms": 14395,
+        "importModules": 0
+      }
+    },
+    {
+      "file": "scripts/audit_localizing_invariants.lean",
+      "build_targets_before": 2,
+      "build_targets_after": 2,
+      "same_targets": true,
+      "checks_before": {
+        "#check": 0,
+        "#print axioms": 0,
+        "importModules": 0
+      },
+      "checks_after": {
+        "#check": 0,
+        "#print axioms": 0,
+        "importModules": 0
+      }
+    }
+  ],
+  "correction": "SquareFrameHomotopy in audit_localizing_invariants is a module identifier, not a declaration reference. Preserve the original KST module in importModules.",
+  "excluded_name_use": "module identifier; not a deprecated declaration reference"
+}

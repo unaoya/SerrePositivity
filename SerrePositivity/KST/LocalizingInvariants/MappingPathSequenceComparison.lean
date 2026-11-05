@@ -25,7 +25,7 @@ variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
 def pathPart : KanSequence.Hom (KanSequence.mappingPathSequence (sequenceHom p))
     Y'.toKanSequence.freePath :=
   (KanSequence.pullbackFirst (Y.toKanSequence.freePathEvaluation 1) (sequenceHom p)).comp
-    (KanSequence.mappingPost freeInterval.{u} (sequenceHom b))
+    (KanSequence.mappingPost _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} (sequenceHom b))
 
 def sourcePart : KanSequence.Hom (KanSequence.mappingPathSequence (sequenceHom p))
     X'.toKanSequence := (KanSequence.mappingPathSource (sequenceHom p)).comp (sequenceHom a)
@@ -35,10 +35,10 @@ lemma condition (n : ℕ) : (pathPart p b).app n ≫ (Y'.toKanSequence.freePathE
     (sourcePart p a).app n ≫ (sequenceHom q).app n := by
   have hn : p.app n ≫ b.app n = a.app n ≫ q.app n :=
     congrArg (fun f => f.app n) h
-  change (pullback.fst (freePathEndpoint (Y.level n).space 1) (p.app n) ≫
-    PointedObject.basedHomMap freeInterval.{u} (b.app n)) ≫
-      freePathEndpoint (Y'.level n).space 1 =
-    (pullback.snd (freePathEndpoint (Y.level n).space 1) (p.app n) ≫ a.app n) ≫ q.app n
+  change (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y.level n).space 1) (p.app n) ≫
+    PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} (b.app n)) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y'.level n).space 1 =
+    (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y.level n).space 1) (p.app n) ≫ a.app n) ≫ q.app n
   rw [Category.assoc, freePathEndpoint_naturality, ← Category.assoc,
     pullback.condition, Category.assoc, hn, Category.assoc]
 
@@ -55,14 +55,14 @@ lemma map_source (n : ℕ) : (map p q a b h).app n ≫
 lemma map_path (n : ℕ) : (map p q a b h).app n ≫
     (KanSequence.pullbackFirst (Y'.toKanSequence.freePathEvaluation 1) (sequenceHom q)).app n =
       (KanSequence.pullbackFirst (Y.toKanSequence.freePathEvaluation 1) (sequenceHom p)).app n ≫
-        PointedObject.basedHomMap freeInterval.{u} (b.app n) := pullback.lift_fst _ _ _
+        PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} (b.app n) := pullback.lift_fst _ _ _
 
 lemma map_target (n : ℕ) : (map p q a b h).app n ≫
     (KanSequence.mappingPathTarget (sequenceHom q)).app n =
       (KanSequence.mappingPathTarget (sequenceHom p)).app n ≫ b.app n := by
   change (map p q a b h).app n ≫
     ((KanSequence.pullbackFirst (Y'.toKanSequence.freePathEvaluation 1) (sequenceHom q)).app n ≫
-      freePathEndpoint (Y'.level n).space 0) = _
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (Y'.level n).space 0) = _
   rw [← Category.assoc, map_path, Category.assoc, freePathEndpoint_naturality,
     ← Category.assoc]
   rfl

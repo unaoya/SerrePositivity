@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
@@ -58,6 +60,9 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -82,7 +87,7 @@ theorem pointedPullback_snd_rlp {E X B : PointedSimplicialSet.{u}}
     (hf : (MorphismProperty.monomorphisms SSet.{u}).rlp f.right) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (pullback.snd f g).right :=
   (MorphismProperty.monomorphisms SSet.{u}).rlp.of_isPullback
-    (pointedPullback_isPullback f g) hf
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback f g) hf
 
 /-- 概要：Kan fibration の点つき引き戻しの第二射影も Kan fibration。
 方針：ホーン RLP の基底変換閉性を使う。
@@ -92,7 +97,7 @@ instance pointedPullback_snd_fibration {E X B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (g : X ⟶ B) [Fibration f.right] :
     Fibration (pullback.snd f g).right := by
   apply (fibration_iff _).2
-  exact J.rlp.of_isPullback (pointedPullback_isPullback f g) ((fibration_iff _).1 inferInstance)
+  exact J.rlp.of_isPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback f g) ((fibration_iff _).1 inferInstance)
 
 /-- 概要：Kan な底への Kan fibration の引き戻しの全空間は Kan。
 方針：第二射影と底の終対象射の fibration を合成する。
@@ -108,4 +113,19 @@ instance pointedPullback_kanComplex {E X B : PointedSimplicialSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_isPullback := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_kanComplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_snd_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedPullback_snd_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_rlp

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowFunctorIso_of_homMk_comm {X : SSet.{u}} [Quasicategory X]
     {x y x' y' : X _⦋0⦌}
@@ -46,6 +51,15 @@ lemma arrowFunctorIso_of_vertexIso_comm {X : SSet.{u}} [Quasicategory X]
   obtain ⟨t, ht⟩ := homotopyCategory_homMk_surjective y y' b.hom
   have hs' : IsInvertibleEdge s := by rw [IsInvertibleEdge, hs]; infer_instance
   have ht' : IsInvertibleEdge t := by rw [IsInvertibleEdge, ht]; infer_instance
-  exact arrowFunctorIso_of_homMk_comm f g s t hs' ht' (by simpa only [hs, ht] using h)
+  exact _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm f g s t hs' ht' (by simpa only [hs, ht] using h)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFunctorIso_of_homMk_comm := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFunctorIso_of_vertexIso_comm := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_vertexIso_comm

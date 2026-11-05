@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
@@ -11,9 +13,12 @@ public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Limits Simplicial SSet
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open CategoryTheory Limits _root_.Simplicial SSet
 
-variable (T U : NecklaceShape) {K : SSet.{u}}
+variable (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) {K : SSet.{u}}
   (f : T.carrier.{u} ⟶ K) (g : U.carrier.{u} ⟶ K)
   (h : T.pointMap T.last ≫ f = U.pointMap U.first ≫ g)
 
@@ -22,9 +27,9 @@ include h in
 lemma wedge_constant_agree (n : ℕ) :
     f.app _ (T.constantSimplex T.last n) = g.app _ (U.constantSimplex U.first n) := by
   have e := ConcreteCategory.congr_hom (NatTrans.congr_app h _)
-    ((single 0).constantSimplex (single 0).first n)
+    ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0).constantSimplex (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0).first n)
   change f.app _ ((T.pointMap T.last).app _ _) = g.app _ ((U.pointMap U.first).app _ _) at e
-  simpa only [pointMap_app] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_app] using e
 
 /-- 元の各単体上で、左右の指定された射を貼った写像。 -/
 def wedgeGlue (n : ℕ) (s : (T.wedge U).carrier.{u} _⦋n⦌) : K _⦋n⦌ :=
@@ -39,7 +44,7 @@ lemma wedgeGlue_inl (n : ℕ) (s : T.carrier.{u} _⦋n⦌) :
     change (s.val i).val ≤ T.vertexMax
     have := (s.val i).isLt
     omega
-  rw [wedgeGlue, ite_eq_left hs]
+  rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue, ite_eq_left hs]
   have e := ConcreteCategory.congr_hom (NatTrans.congr_app (T.wedgeInl_fst U) _) s
   exact congrArg (f.app _) e
 
@@ -49,7 +54,7 @@ lemma wedgeGlue_inr (n : ℕ) (s : U.carrier.{u} _⦋n⦌) :
     T.wedgeGlue U f g n ((T.wedgeInr U).app _ s) = g.app _ s := by
   classical
   by_cases hs : ∀ i, (((T.wedgeInr U).app _ s).val i).val ≤ T.vertexMax
-  · rw [wedgeGlue, ite_eq_left hs]
+  · rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue, ite_eq_left hs]
     have el : (T.wedgeFst U).app _ ((T.wedgeInr U).app _ s) =
         T.constantSimplex T.last n := by
       apply Subtype.ext
@@ -69,7 +74,7 @@ lemma wedgeGlue_inr (n : ℕ) (s : U.carrier.{u} _⦋n⦌) :
       omega
     rw [el, er]
     exact T.wedge_constant_agree U f g h n
-  · rw [wedgeGlue, ite_eq_right hs]
+  · rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue, ite_eq_right hs]
     have e := ConcreteCategory.congr_hom (NatTrans.congr_app (T.wedgeInr_snd U) _) s
     exact congrArg (g.app _) e
 
@@ -90,12 +95,12 @@ def wedgeDesc : (T.wedge U).carrier.{u} ⟶ K where
     · have e := ConcreteCategory.congr_hom ((T.wedgeInl U).naturality a) t
       change (T.wedgeInl U).app _ (T.carrier.map a t) =
         (T.wedge U).carrier.map a ((T.wedgeInl U).app _ t) at e
-      rw [← e, wedgeGlue_inl, wedgeGlue_inl]
+      rw [← e, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inl, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inl]
       exact ConcreteCategory.congr_hom (f.naturality a) t
     · have e := ConcreteCategory.congr_hom ((T.wedgeInr U).naturality a) t
       change (T.wedgeInr U).app _ (U.carrier.map a t) =
         (T.wedge U).carrier.map a ((T.wedgeInr U).app _ t) at e
-      rw [← e, wedgeGlue_inr T U f g h, wedgeGlue_inr T U f g h]
+      rw [← e, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inr T U f g h, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inr T U f g h]
       exact ConcreteCategory.congr_hom (g.naturality a) t
 
 /-- 降下射は元の左射を厳密に回収する。 -/
@@ -138,4 +143,49 @@ lemma wedgeInr_pushoutIso :
     T.wedgeInr U ≫ (T.wedgePushoutIso.{u} U).hom = pushout.inr _ _ :=
   (T.wedge_isPushout.{u} U).inr_isoPushout_hom
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inr := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_pushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_pushoutIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_pushoutIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_constant_agree := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_constant_agree
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_isPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso._proof_1

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
-import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
+import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRestriction
 
 /-! # 大域底変換の任意の実頂点で、同じ零単体上の指定比較を回収する -/
@@ -20,7 +20,7 @@ theorem leftStraighteningSectionJointDiagram_baseChangeIso_vertex [Quasicategory
     (d : D _⦋0⦌) :
     HEq (functorHomEvaluate (leftStraighteningSectionJointDiagram_baseChangeIso k).hom
       (ULift.up d))
-      (functorHomEvaluate (straighteningJointBaseChangeRestrictionIso k).hom
+      (functorHomEvaluate (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k).hom
         (ULift.up (nerveVertex (transportSimplexIndex d)))) := by
   have h := leftStraighteningSectionJointDiagram_baseChangeIso_value k
     (transportSimplexIndex d)
@@ -31,6 +31,6 @@ theorem leftStraighteningSectionJointDiagram_baseChangeIso_vertex [Quasicategory
           (ULift.up y)) := by
     cases he
     rfl
-  exact (hp (firstVertex_zeroSimplex d).symm).trans (heq_of_eq h)
+  exact (hp (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.firstVertex_zeroSimplex d).symm).trans (heq_of_eq h)
 
 end SerrePositivity.KST.Fibration

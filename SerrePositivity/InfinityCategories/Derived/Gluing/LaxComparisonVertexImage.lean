@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgGluingCurryHomotopy_vertex_edge {A B : SSet.{u}} {f g : A ⟶ B}
     (H : SSet.Homotopy f g) (x : A _⦋0⦌) :

@@ -17,7 +17,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {S : Type u} [CommRing S] (W : SimplicialObject (ModuleCat.{v} S))
 
 /-- 概要：球面単体を Moore 境界で割った加群。
@@ -91,26 +91,26 @@ def moduleSphereAddMulStruct {n : ℕ}
 方針：K-L9 の関係と Moore 境界の比較で Quotient.congr を適用する。
 規約：Kan 性のみを追加仮定とする。使われ方：群同型の台。 -/
 def modulePiSphereEquiv [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ sphereHomologyQuotient W n :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃ sphereHomologyQuotient W n :=
   Quotient.congr (pointedModuleSimplexEquiv W n) (fun f g => by
-    change simplexRel f g ↔ _
+    change _root_.SerrePositivity.InfinityCategories.Kan.simplexRel f g ↔ _
     rw [Submodule.quotientRel_def]
-    exact (simplexRel_iff_relStruct 0).trans (moduleRelStruct_iff_boundary W f g))
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct 0).trans (moduleRelStruct_iff_boundary W f g))
 
 /-- 概要：正次数 π の群演算は Moore 境界商の加法に一致する。
 方針：二つの代表について明示した退化の和の積充填を使う。
 規約：次数は n+1。使われ方：π と Moore ホモロジーの群同型。 -/
 def modulePiSphereGroupEquiv [SSet.KanComplex (moduleUnderlyingSSet W)] (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet W) n 0 ≃*
       Multiplicative (sphereHomologyQuotient W n) where
   __ := modulePiSphereEquiv W n
   map_mul' a b := by
     induction a using Quotient.inductionOn with | h f =>
     induction b using Quotient.inductionOn with | h g =>
-    change (modulePiSphereEquiv W n) (KanHomotopyGroup.mk f * KanHomotopyGroup.mk g) =
-      (modulePiSphereEquiv W n) (KanHomotopyGroup.mk f) +
-        (modulePiSphereEquiv W n) (KanHomotopyGroup.mk g)
-    rw [KanHomotopyGroup.mul_eq (moduleSphereAddMulStruct W f g)]
+    change (modulePiSphereEquiv W n) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f * _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g) =
+      (modulePiSphereEquiv W n) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk f) +
+        (modulePiSphereEquiv W n) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk g)
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (moduleSphereAddMulStruct W f g)]
     change Submodule.Quotient.mk
       ((pointedModuleSimplexEquiv W n) ((pointedModuleSimplexEquiv W n).symm _)) =
         Submodule.Quotient.mk (pointedModuleSimplexEquiv W n f) +

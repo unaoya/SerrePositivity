@@ -52,7 +52,7 @@ lemma monicKPrismCompositeFirstTrace_point (n : ℕ) :
           (compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ≫ ·) =
       monicKPrismCompositePointFirstTrace F f g n := by
   have hp : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      fst (nerve (CoherentArrowString f)) (nerve (CoherentArrowString g)) =
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
       nervePoint (coherentArrowStringDirect f) := by
     rw [compositionStringPair_first, compositionStringFirst_direct]
   simp only [monicKPrismCompositeFirstTrace, monicKPrismCompositePointFirstTrace,
@@ -71,11 +71,11 @@ lemma monicKPrismCompositeSecondTrace_point (n : ℕ) :
           (compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ≫ ·) =
       monicKPrismCompositePointSecondTrace F f g n := by
   have hp : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      fst (nerve (CoherentArrowString f)) (nerve (CoherentArrowString g)) =
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
       nervePoint (coherentArrowStringDirect f) := by
     rw [compositionStringPair_first, compositionStringFirst_direct]
   have hq : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      snd (nerve (CoherentArrowString f)) (nerve (CoherentArrowString g)) =
+      snd (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
       nervePoint (coherentArrowStringDirect g) := by
     rw [compositionStringPair_second, compositionStringSecond_direct]
   have hf := (congrArg (· ≫ monicKPrismTracedBFFamily F f) hp).trans

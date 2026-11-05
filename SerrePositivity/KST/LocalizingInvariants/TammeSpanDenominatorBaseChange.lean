@@ -19,14 +19,14 @@ open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeSpanDenominatorBaseChange_cartesianFibration
     (x : (laxCategory p q).obj _⦋0⦌) {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj)
     (hW : ∀ e : B _⦋1⦌, f.app (Opposite.op ⦋1⦌) e ∈ tammeLocalizingEdges p q) :
     CartesianFibration (pullback.snd
-      (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) := by
-  let π := markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) := by
+  let π := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x
   refine ⟨innerFibrations.pullback_snd π f (InnerFibration.mem (q := π)), ?_⟩
   intro v e he
   change stdSimplex.δ (0 : Fin 2) ≫ e =
@@ -63,7 +63,7 @@ lemma tammeSpanDenominatorBaseChange_cartesianFibration
 lemma tammeSpanBaseChange_cocartesianFibration
     (x : (laxCategory p q).obj _⦋0⦌) {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj) :
     CocartesianFibration (pullback.snd
-      (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) :=
   inferInstance
 
 end SerrePositivity.KST.LocalizingInvariants

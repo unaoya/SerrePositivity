@@ -25,18 +25,18 @@ local notation "h₀" => perfectZeroCategory_isIdempotentComplete
 
 /-- 概要：元の全対象商包含の同じ固定 ν 完全射。
 方針：同じ入力辺を写す。規約：零角を置換しない。使われ方：実左辺の比較。 -/
-def dgOdotMilnorIdentityNullLeftMap : ExactMap (C) (Z) :=
+def dgOdotMilnorIdentityNullLeftMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (C) (Z) :=
   dgKInputNuMap R (dgFixedNullLeft R (A := PIn))
 
 /-- 概要：指定収縮からの元全対象商延長の同じ固定 ν 完全射。
 方針：同じ実上辺を写す。規約：収縮を変えない。使われ方：実上辺の比較。 -/
-def dgOdotMilnorIdentityNullTopMap : ExactMap (Z) (D) :=
+def dgOdotMilnorIdentityNullTopMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) (D) :=
   dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorIdentityContracted R d))
 
 /-- 概要：元実零角から標準零角への共有完全射。
 方針：元の toZeroCategory を使う。規約：両側面で同じ射。
 使われ方：指定零角の頂点経路。 -/
-def dgOdotMilnorIdentityNullZeroMap : ExactMap (Z) zeroCategory.{u + 1} := toZeroCategory (Z)
+def dgOdotMilnorIdentityNullZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z)
 
 /-- 概要：共有零角経路は元の指定 Cat^perf 頂点同型の逆そのもの。
 方針：同じ全対象商零同型の逆射を回収する。
@@ -80,15 +80,15 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 方針：標準零圏値の全関手同型を指定四辺の実ホモトピーへ運ぶ。
 規約：二経路を保持。使われ方：上二胞体の指定左側面。 -/
 def zeroLeftWitness : PerfectStableArrowSquareWitness
-    (dgOdotMilnorIdentityNullLeftMap R d) (toZeroCategory (Q))
+    (dgOdotMilnorIdentityNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q))
     (dgOdotMilnorIdentityBaseComparison R d) (dgOdotMilnorIdentityNullZeroMap R d)
     (hC) (hC) (hQ) (h₀) :=
   perfectStableArrowSquareWitness
-    (dgOdotMilnorIdentityNullLeftMap R d) (toZeroCategory (Q))
+    (dgOdotMilnorIdentityNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q))
     (dgOdotMilnorIdentityBaseComparison R d) (dgOdotMilnorIdentityNullZeroMap R d)
     (hC) (hC) (hQ) (h₀)
-    (zeroDiagramFunctorIso _ _ (fun _ => zeroCategory_isZero _)
-      (fun _ => zeroCategory_isZero _))
+    (zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
+      (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
 
 /-- 概要：元零上辺の全比較は共有零角経路と商辺と同じ終域経路を持つ。
 方針：元零角の全零性と完全性から全自然比較を作り、実ホモトピーにする。
@@ -110,7 +110,7 @@ def zeroTopWitness : PerfectStableArrowSquareWitness
       (IsExactFunctor.preservesZero (F := f.hom) z (dgFixedNullInput_isZeroCategory R (PIn) z)))
     (fun z => IsExactFunctor.preservesZero (F := g.hom)
       ((dgOdotMilnorIdentityNullZeroMap R d).hom.app (Opposite.op ⦋0⦌) z)
-      (zeroCategory_isZero _))
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
 
 /-- 概要：指定零左側面は元実ホモトピーそのものによる区間全比較。
 方針：同じ始域同値と共有零角逆射の可逆性を使う。
@@ -118,7 +118,7 @@ def zeroTopWitness : PerfectStableArrowSquareWitness
 def zeroLeftArrowComparison : FunctorIso
     (SSet.yonedaEquiv.symm (perfectStableArrow
       (dgOdotMilnorIdentityNullLeftMap R d) (hC) (hC)).edge)
-    (SSet.yonedaEquiv.symm (perfectStableArrow (toZeroCategory (Q)) (hQ) (h₀)).edge) :=
+    (SSet.yonedaEquiv.symm (perfectStableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q)) (hQ) (h₀)).edge) :=
   (zeroLeftWitness R d).comparison
     (perfectStableHoArrow_isIso_of_isQCatEquivalence (dgOdotMilnorIdentityBaseComparison R d)
       (hC) (hQ) (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence)

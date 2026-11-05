@@ -19,7 +19,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (j k : Fin 2)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2)
 
 /-- 概要：同じ実合成端間の native core Hom の大きい宇宙での実比較辺。
 方針：元の全長 Hom 比較を全 path で評価し、同じ元の core 包含で制限する。

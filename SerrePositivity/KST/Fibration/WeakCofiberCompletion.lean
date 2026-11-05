@@ -14,7 +14,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
-variable {B C : StableCategory.{u}} (q : ExactMap B C) {T : StableModel.{u}}
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {T : StableModel.{u}}
   (e : T ⟶ weakArrowModel q)
 
 /-- 指定された元の実 W 辺の、全相対 cofiber 補完を保持する引き戻し。 -/

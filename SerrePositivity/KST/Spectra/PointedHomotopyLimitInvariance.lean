@@ -32,8 +32,8 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem map_piIsomorphism {I : Type u} [SmallCategory I]
     {D E : I ⥤ PointedSimplicialSet.{u}}
     [∀ i, KanComplex (D.obj i).right] [∀ i, KanComplex (E.obj i).right]
-    (τ : D ⟶ E) (hτ : ∀ i, KanPiIsomorphism (τ.app i).right) :
-    KanPiIsomorphism (map τ).right := by
+    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (τ.app i).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map τ).right := by
   let : ∀ i, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (D.obj i).right)
   let : ∀ i, KanComplex ((E ⋙ PointedSimplicialSet.forget).obj i) :=
@@ -41,7 +41,7 @@ theorem map_piIsomorphism {I : Type u} [SmallCategory I]
   have h := bousfieldKanMap_homotopyEquivalence
     (Functor.whiskerRight τ PointedSimplicialSet.forget)
     (fun i ↦ pointed_piIsomorphism_homotopyEquivalence (τ.app i) (hτ i))
-  change KanPiIsomorphism
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
     (weightedSectionsMap (bousfieldKanWeight I) (Functor.whiskerRight τ PointedSimplicialSet.forget))
   exact kanPiIsomorphism_of_qCatEquivalence _ h.isQCatEquivalence
 

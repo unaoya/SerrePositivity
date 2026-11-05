@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v)
 /-- 同じ基礎空間関手は、同じ実 Yoneda 関手を R の頂点で評価したもの。 -/
 lemma dgHomUnderlyingSpaceInfinity_eq_yonedaEvaluation :

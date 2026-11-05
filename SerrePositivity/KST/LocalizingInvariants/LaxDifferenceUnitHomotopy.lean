@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   {v : E.obj ⟶ D.obj} (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 /-- 元の C・D ホモトピーと元の四辺を保持する lax pullback 内の円柱。 -/

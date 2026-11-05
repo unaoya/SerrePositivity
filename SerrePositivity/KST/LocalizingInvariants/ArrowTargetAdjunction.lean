@@ -23,8 +23,8 @@ namespace SerrePositivity.KST.LocalizingInvariants.ArrowTarget
 variable (X : SSet.{u})
 
 /-- 元の終点評価と恒等矢印関手の間の実随伴。 -/
-def adjunction [Quasicategory X] : QCatAdjunction (target X) (identityArrow X) :=
-  adjunctionOfRetractionHomotopy (identityArrow_target X) (unitHomotopy X)
-    (contraction_target X) (identityArrow_contraction X)
+def adjunction [Quasicategory X] : QCatAdjunction (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow X) :=
+  adjunctionOfRetractionHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow_target X) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy X)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.contraction_target X) (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.identityArrow_contraction X)
 
 end SerrePositivity.KST.LocalizingInvariants.ArrowTarget

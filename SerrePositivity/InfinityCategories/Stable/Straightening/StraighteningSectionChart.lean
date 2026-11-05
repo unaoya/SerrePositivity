@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -45,9 +47,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B : SSet.{u}}
 
 /-- 分類写像側の元の制限同型は、同じ共同制限同型の転置の端点だけを変更する。 -/
@@ -61,4 +66,10 @@ theorem leftStraighteningInfinityMap_restrictIso_heq_transpose :
     rfl
   exact hcast _ _
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.leftStraighteningInfinityMap_restrictIso_heq_transpose := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityMap_restrictIso_heq_transpose

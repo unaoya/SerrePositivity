@@ -20,25 +20,25 @@ open SerrePositivity.DifferentialGraded
 /-- 元の逆向き二端点の間の cubical Hom は、元の空な図式の余極限である始対象。 -/
 def simplexReverseCubicalMapping_isInitial {n : ℕ} (a b : Fin (n + 1)) (hba : b < a) :
     IsInitial (necklaceCubicalMapping (Δ[n] : SSet.{u})
-      (standardSimplexVertex a) (standardSimplexVertex b)) := by
-  let : IsEmpty (NecklaceIn (Δ[n] : SSet.{u})
-      (standardSimplexVertex a) (standardSimplexVertex b)) := necklaceInSimplex_isEmpty hba
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) := by
+  let : IsEmpty (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_isEmpty hba
   exact (isColimitEquivIsInitialOfIsEmpty CubicalSet.{u} (colimit.cocone
     (necklaceCubicalDiagram (Δ[n] : SSet.{u})
-      (standardSimplexVertex a) (standardSimplexVertex b)))) (colimit.isColimit _)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)))) (colimit.isColimit _)
 
 /-- 元の逆向き二端点の間の Λ の Hom は、元の Serre 鎖の始対象。 -/
 def simplexReverseLambdaHom_isInitial (A : Type u) [CommRing A]
     {n : ℕ} (a b : Fin (n + 1)) (hba : b < a) :
     IsInitial (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (standardSimplexVertex a) (standardSimplexVertex b)) :=
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :=
   IsInitial.isInitialObj (cubicalSerreChains A) _ (simplexReverseCubicalMapping_isInitial a b hba)
 
 /-- 元の逆向き二端点の間の Λ の Hom 複体は零対象。 -/
 lemma simplexReverseLambdaHom_isZero (A : Type u) [CommRing A]
     {n : ℕ} (a b : Fin (n + 1)) (hba : b < a) :
     IsZero (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (standardSimplexVertex a) (standardSimplexVertex b)) :=
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :=
   (simplexReverseLambdaHom_isInitial A a b hba).isZero
 
 end SerrePositivity.KST.SConstruction

@@ -40,31 +40,31 @@ local instance : IsDGPretriangulated R (DGOdotGluing R d) :=
 
 /-- 概要：元の左小 Perf 因子の同じ native 安定値。
 方針：D2 の宇宙共通化を使う。規約：対象を変更しない。使われ方：lax 第一因子。 -/
-abbrev dgOdotMilnorLaxLeft : StableCategory.{u + 1} :=
+abbrev dgOdotMilnorLaxLeft : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} :=
   dgGluingStableInput.{u, u + 1, u + 1} R (C) (hC)
 
 /-- 概要：元の右小 Perf 因子の同じ native 安定値。
 方針：D2 の宇宙共通化を使う。規約：対象を変更しない。使われ方：lax 第二因子。 -/
-abbrev dgOdotMilnorLaxRight : StableCategory.{u + 1} :=
+abbrev dgOdotMilnorLaxRight : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} :=
   dgGluingStableInput.{u, u + 1, u + 1} R (D) (hD)
 
 /-- 概要：同じ実 Yoneda と Hom 係数を評価する導来加群圏。
 方針：D2 正本の基底を使う。規約：元代数の角の ν 値との同一視はしない。
 使われ方：元二因子を保つ実 lax 模型。 -/
-abbrev dgOdotMilnorLaxBase : StableCategory.{u + 1} :=
+abbrev dgOdotMilnorLaxBase : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} :=
   dgGluingStableModuleCategory.{u, u + 1, u + 1} R (C)
 
 /-- 概要：元の小 Perf 第一因子の実導来 Yoneda。
 方針：D2 の完全性供給を使う。規約：二脚の完全性を追加仮定しない。
 使われ方：実 lax 模型の第一脚。 -/
-def dgOdotMilnorLaxYoneda : ExactMap (dgOdotMilnorLaxLeft R d) (dgOdotMilnorLaxBase R d) :=
+def dgOdotMilnorLaxYoneda : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorLaxLeft R d) (dgOdotMilnorLaxBase R d) :=
   ⟨dgGluingUniverseDerivedYoneda.{u, u + 1, u + 1} R (C),
     dgGluingUniverseDerivedYoneda_isExactFunctor R (C) (hC)⟩
 
 /-- 概要：元の Hom 双加群を使う第二因子の実導来係数。
 方針：D2 の完全性供給を使う。規約：元の下辺・右辺由来の双加群を保つ。
 使われ方：実 lax 模型の第二脚。 -/
-def dgOdotMilnorLaxCoefficient : ExactMap (dgOdotMilnorLaxRight R d)
+def dgOdotMilnorLaxCoefficient : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorLaxRight R d)
     (dgOdotMilnorLaxBase R d) :=
   ⟨dgGluingUniverseDerivedCoefficient R (C) (D) (M),
     dgGluingUniverseDerivedCoefficient_isExactFunctor R (C) (D) (M) (hD)⟩
@@ -72,7 +72,7 @@ def dgOdotMilnorLaxCoefficient : ExactMap (dgOdotMilnorLaxRight R d)
 /-- 概要：元の二因子・Hom 係数を持つ具体的 lax 安定圏。
 方針：Sp 正本を同じ二脚に適用する。規約：抽象的な同値先を選ばない。
 使われ方：native Verdier 列を移す実中央対象。 -/
-abbrev dgOdotMilnorLaxCategory : StableCategory.{u + 1} :=
+abbrev dgOdotMilnorLaxCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} :=
   laxCategory (dgOdotMilnorLaxYoneda R d) (dgOdotMilnorLaxCoefficient R d)
 
 /-- 概要：元 native gluing の同宇宙 ULift の厳密な表示同型。
@@ -94,7 +94,7 @@ def dgOdotMilnorNativeLaxEquivalence : QCatEquivalence
 /-- 概要：同じ native 比較を完全射へ束ねる。
 方針：同値の完全性を使う。規約：比較の全単体は不変。
 使われ方：元包含との合成と商の逆輸送。 -/
-def dgOdotMilnorNativeLaxComparison : ExactMap (dgGluingMilnorNativeMiddle R d)
+def dgOdotMilnorNativeLaxComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeMiddle R d)
     (dgOdotMilnorLaxCategory R d) :=
   ⟨(dgOdotMilnorNativeLaxEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence (dgOdotMilnorNativeLaxEquivalence R d).isQCatEquivalence⟩

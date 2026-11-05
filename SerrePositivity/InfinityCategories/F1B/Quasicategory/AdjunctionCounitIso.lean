@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance counitIsoCategory (X Y : SSet.QCat.{u}) : Category.{u} (X ⟶ Y) :=
   SSet.QCat.bicategory.homCategory X Y
@@ -34,4 +39,13 @@ lemma counit_isIso_of_counitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategor
     rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id, hβ]
     exact IsIso.inv_hom_id a.counitHom
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counitIsoCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.counitIsoCategory := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counitIsoCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.counit_isIso_of_counitHom := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counit_isIso_of_counitHom

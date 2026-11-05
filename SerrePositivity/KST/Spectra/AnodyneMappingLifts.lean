@@ -37,7 +37,7 @@ theorem basedHom_terminal_rlp_monomorphisms (X Y : PointedSimplicialSet.{u})
       (terminal.from (PointedObject.basedHom X Y).right) := by
   intro A B j hj
   let : HasLiftingProperty j (PointedObject.homRestriction X Y) :=
-    anodyne_pre_rlp_monomorphisms X.hom hx Y.right j hj
+    _root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms X.hom hx Y.right j hj
   constructor
   intro a b _
   let sq : CommSq (a ≫ PointedObject.basedHomι X Y) j (PointedObject.homRestriction X Y)

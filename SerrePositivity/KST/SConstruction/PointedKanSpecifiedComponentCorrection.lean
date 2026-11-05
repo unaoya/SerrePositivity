@@ -64,11 +64,11 @@ lemma pointedKanDiagramSpecifiedVertexEdge_hom {I : Type u} [SmallCategory I]
     SSet.Truncated.HomotopyCategory.homMk
       ((functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H
         (vertexDiscreteι ((SSet.uliftFunctor.{u+1,u}).obj (nerve I))))).map
-          ((truncation 2).map (vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
+          ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
           (X := PointedKanInfinity.{u}) a))) =
     SSet.Truncated.HomotopyCategory.homMk
       ((vertexDiscreteSpecifiedEdge _ _ (pointedKanDiagramSpecifiedVertexEdge hF hG f)).map
-        ((truncation 2).map (vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
           (X := PointedKanInfinity.{u}) a))) := by
   rcases a with ⟨s⟩
   obtain ⟨i, rfl⟩ : ∃ i, s = nerveVertex i := ⟨s.obj 0, ComposableArrows.ext₀ rfl⟩
@@ -76,11 +76,11 @@ lemma pointedKanDiagramSpecifiedVertexEdge_hom {I : Type u} [SmallCategory I]
   let e := SSet.Edge.ofTruncated (X := PointedKanInfinity.{u})
     ((functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H
       (vertexDiscreteι ((SSet.uliftFunctor.{u+1,u}).obj (nerve I))))).map
-        ((truncation 2).map (vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
+        ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
           (X := PointedKanInfinity.{u}) a)))
   let k := SSet.Edge.ofTruncated (X := PointedKanInfinity.{u})
     ((vertexDiscreteSpecifiedEdge _ _ (pointedKanDiagramSpecifiedVertexEdge hF hG f)).map
-      ((truncation 2).map (vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := (SSet.uliftFunctor.{u+1,u}).obj (nerve I))
           (X := PointedKanInfinity.{u}) a)))
   let hx := pointedKanCoherentDiagram_discrete_vertex F hF a
   let hy := pointedKanCoherentDiagram_discrete_vertex G hG a

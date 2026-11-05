@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
   [IsExactFunctor (dgNerve.map (dgOdotQuotientInput R d).diagonal)]
 theorem dgGluingMilnor_isResolvedVerdierSequence
     (h : DGGluingMilnorSquare R d) (hgen : DGGluingMilnorSmallPerfectGeneration R d) :
-    IsVerdierSequence (dgGluingMilnorNativeDiagonal R d)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingMilnorNativeDiagonal R d)
       (dgGluingMilnorResolvedProjection R d) where
   fullyFaithful := dgGluingMilnorSmallPerfectDiagonal_isFullyFaithful R d h hgen
   kernel := dgGluingMilnorResolvedQuotient_zero_iff R d h hgen

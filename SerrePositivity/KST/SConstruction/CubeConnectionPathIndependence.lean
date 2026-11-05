@@ -14,16 +14,16 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 
 /-- 元の生成語が隣接 max だけからなる条件。 -/
-inductive CubeConnectionPath : {X Y : CubeWordObject} → Quiver.Path X Y → Prop
-  | nil (X : CubeWordObject) : CubeConnectionPath (.nil : Quiver.Path X X)
-  | step {X : CubeWordObject} {m : ℕ}
-      (p : Quiver.Path X (CubeWordObject.mk (m + 2))) (hp : CubeConnectionPath p)
+inductive CubeConnectionPath : {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} → Quiver.Path X Y → Prop
+  | nil (X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject) : CubeConnectionPath (.nil : Quiver.Path X X)
+  | step {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ}
+      (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 2))) (hp : CubeConnectionPath p)
       (i : Fin (m + 1)) : CubeConnectionPath
-        (p.cons (show CubeWordObject.mk (m + 2) ⟶ CubeWordObject.mk (m + 1) from
-          CubeGenerator.connection m i))
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) from
+          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection m i))
 
 /-- 元の max の path は、その同じ構文の max の式から厳密に回収される。 -/
-lemma cubeConnectionPath_exists_expression {X Y : CubeWordObject} {p : Quiver.Path X Y}
+lemma cubeConnectionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {p : Quiver.Path X Y}
     (h : CubeConnectionPath p) : ∃ e : CubeConnectionExpression X.dimension Y.dimension,
       cubeConnectionExpressionPath e = p := by
   induction h with
@@ -36,8 +36,8 @@ lemma cubeConnectionPath_exists_expression {X Y : CubeWordObject} {p : Quiver.Pa
 
 /-- 同じ具体射を表す元の max の語は、元の Serre 余モノイド射として一致する。 -/
 lemma serreCubeWordFunctor_connection_independent (A : Type u) [CommRing A]
-    {X Y : CubeWords} (p q : X ⟶ Y) (hp : CubeConnectionPath p) (hq : CubeConnectionPath q)
-    (h : cubeWordConcreteFunctor.map p = cubeWordConcreteFunctor.map q) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p q : X ⟶ Y) (hp : CubeConnectionPath p) (hq : CubeConnectionPath q)
+    (h : _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q) :
     (serreCubeWordFunctor A).map p = (serreCubeWordFunctor A).map q := by
   obtain ⟨e, he⟩ := cubeConnectionPath_exists_expression hp
   obtain ⟨f, hf⟩ := cubeConnectionPath_exists_expression hq

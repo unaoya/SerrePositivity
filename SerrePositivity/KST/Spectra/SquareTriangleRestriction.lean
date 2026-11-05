@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.SquareBoundaryEdges
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 
@@ -37,7 +37,7 @@ include hl hr
 規約：ホーンは Λ[2,1]。
 使われ方：Goerss–Jardine I §7。上側の相対三角形への降下条件。 -/
 theorem square_upper_horn_constant :
-    (horn.{u} 2 (1 : Fin 3)).ι ≫ SquareTriangles.upper ≫ f =
+    (horn.{u} 2 (1 : Fin 3)).ι ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f =
       toUnit (horn.{u} 2 (1 : Fin 3) : SSet.{u}) ≫ Y.hom := by
   apply horn.hom_ext'
   intro j hj
@@ -52,7 +52,7 @@ theorem square_upper_horn_constant :
 規約：上側と同じホーンを潰す。
 使われ方：Goerss–Jardine I §7。下側の相対三角形への降下条件。 -/
 theorem square_lower_horn_constant :
-    (horn.{u} 2 (1 : Fin 3)).ι ≫ SquareTriangles.lower ≫ f =
+    (horn.{u} 2 (1 : Fin 3)).ι ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f =
       toUnit (horn.{u} 2 (1 : Fin 3) : SSet.{u}) ≫ Y.hom := by
   apply horn.hom_ext'
   intro j hj
@@ -68,7 +68,7 @@ theorem square_lower_horn_constant :
 使われ方：Kerodon §3.2.3。貼り合わせの逆写像。 -/
 def squareUpperRestriction : triangleDisk.{u} ⟶ Y :=
   PointedObject.cofiberDesc (horn.{u} 2 (1 : Fin 3)).ι Y
-    (SquareTriangles.upper ≫ f) (square_upper_horn_constant Y f hl hr)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f) (square_upper_horn_constant Y f hl hr)
 
 /-- 概要：四辺で定数な正方形の写像の下側の相対三角形への制限。
 方針：下側のホーンの定数性を cofiber の普遍性へ渡す。
@@ -76,7 +76,7 @@ def squareUpperRestriction : triangleDisk.{u} ⟶ Y :=
 使われ方：Kerodon §3.2.3。貼り合わせの逆写像。 -/
 def squareLowerRestriction : triangleDisk.{u} ⟶ Y :=
   PointedObject.cofiberDesc (horn.{u} 2 (1 : Fin 3)).ι Y
-    (SquareTriangles.lower ≫ f) (square_lower_horn_constant Y f hl hr)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f) (square_lower_horn_constant Y f hl hr)
 
 /-- 概要：上側の制限を標準三角形へ戻すと元の写像の制限。
 方針：cofiber の降下の標準射での式を使う。
@@ -85,7 +85,7 @@ def squareLowerRestriction : triangleDisk.{u} ⟶ Y :=
 @[reassoc (attr := simp)]
 theorem squareUpperRestriction_quotient :
     triangleDiskQuotient ≫ (squareUpperRestriction Y f hl hr).right =
-      SquareTriangles.upper ≫ f :=
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f :=
   PointedObject.cofiberQuotient_desc _ _ _ _
 
 /-- 概要：下側の制限を標準三角形へ戻すと元の写像の制限。
@@ -95,7 +95,7 @@ theorem squareUpperRestriction_quotient :
 @[reassoc (attr := simp)]
 theorem squareLowerRestriction_quotient :
     triangleDiskQuotient ≫ (squareLowerRestriction Y f hl hr).right =
-      SquareTriangles.lower ≫ f :=
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f :=
   PointedObject.cofiberQuotient_desc _ _ _ _
 
 /-- 概要：正方形からの二つの相対三角形の制限は対角辺で一致する。
@@ -109,7 +109,7 @@ theorem squareRestrictions_diagonal :
   simp only [Under.comp_right, ← Category.assoc, triangleDiskDiagonal_quotient]
   rw [Category.assoc, Category.assoc, squareUpperRestriction_quotient,
     squareLowerRestriction_quotient, ← Category.assoc, ← Category.assoc,
-    SquareTriangles.upper_diagonal, SquareTriangles.lower_diagonal]
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_diagonal, _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_diagonal]
 
 end
 

@@ -17,25 +17,25 @@ variable {B D : SSet.{u}} (k : D ⟶ B)
 theorem doubleFunctorEvaluation_post_pre_vertex {A K L Y : SSet.{u}}
     (F : A ⟶ (ihom L).obj Y) (H : K ⟶ L)
     (a : A _⦋0⦌) (x : K _⦋0⦌) :
-    (doubleFunctorEvaluation (Y := Y) a x).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a x).app (Opposite.op ⦋0⦌)
         (functorVertex (F ≫ (pre H).app Y)) =
-      (doubleFunctorEvaluation (Y := Y) a (H.app (Opposite.op ⦋0⦌) x)).app
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a (H.app (Opposite.op ⦋0⦌) x)).app
         (Opposite.op ⦋0⦌) (functorVertex F) := by
   have h := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (functorVertex F))
     (doubleFunctorEvaluation_post_pre H a x)
-  change (doubleFunctorEvaluation (Y := Y) a x).app (Opposite.op ⦋0⦌)
+  change (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a x).app (Opposite.op ⦋0⦌)
     (((ihom A).map ((pre H).app Y)).app (Opposite.op ⦋0⦌) (functorVertex F)) = _ at h
   exact h
 
 /-- 右側の元の分類値は、同じ pullback 対象での初頂点分類値。 -/
 theorem straighteningBaseChangeRight_source_vertex
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
-    (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
       (ULift.up (nerveVertex c)) (coherentNerveVertex X)).app (Opposite.op ⦋0⦌)
         (functorVertex (((SSet.uliftFunctor.{u + 1, u}).map
           (transportSimplexFirstVertexMap D) ≫ leftStraighteningSectionJointDiagram D) ≫
             (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})) =
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex c))
         (coherentNerveVertex (leftFibrationBaseChangeObject k X))).app (Opposite.op ⦋0⦌)
           (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
@@ -45,7 +45,7 @@ theorem straighteningBaseChangeRight_source_vertex
       leftStraighteningSectionJointDiagram D)
     (leftFibrationInfinityBaseChange k) (ULift.up (nerveVertex c))
     (coherentNerveVertex X)).trans
-      (congrArg (fun z => (doubleFunctorEvaluation
+      (congrArg (fun z => (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation
         (K := (SSet.uliftFunctor.{u + 1, u}).obj (nerve (TransportSimplexCategory D)))
         (Y := SpaceInfinity.{u}) (ULift.up (nerveVertex c)) z).app (Opposite.op ⦋0⦌)
           (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map

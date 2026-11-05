@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
 
 /-- 概要：正規化下側の各縦辺は元の実下側の同じ全一単体。
 方針：同じ二短辺の全族等式を三頂点に評価する。

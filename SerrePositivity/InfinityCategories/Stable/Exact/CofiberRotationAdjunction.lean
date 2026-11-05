@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.Definition
 
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
@@ -28,11 +30,20 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberRotation
+end SerrePositivity.KST.LocalizingInvariants.CofiberRotation
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation
+open SerrePositivity.KST.LocalizingInvariants.CofiberRotation
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 abbrev arrows := (ihom (Δ[1] : SSet.{u})).obj X
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberRotation
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation.arrows (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberRotation.arrows := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotation.arrows

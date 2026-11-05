@@ -41,27 +41,27 @@ private lemma identityBaseDiagonal {X Y : SSet.{u}} (e : X ⟶ Y)
     (f : F2.laxPullback (𝟙 X) (𝟙 X) ⟶ F2.laxPullback (𝟙 Y) (𝟙 Y))
     (h : f ≫ F2.laxPullbackArrow (𝟙 Y) (𝟙 Y) =
       F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫ (ihom (Δ[1] : SSet.{u})).map e) :
-    (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫ f =
-      e ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ arrowLaxInverse Y) := by
-  apply (cancel_mono (arrowLaxIso Y).hom).1
-  change ((constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫ f) ≫
+    (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫ f =
+      e ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Y) := by
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Y).hom).1
+  change ((constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫ f) ≫
     F2.laxPullbackArrow (𝟙 Y) (𝟙 Y) = _
   calc
-    _ = (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫
+    _ = (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫
         (F2.laxPullbackArrow (𝟙 X) (𝟙 X) ≫
           (ihom (Δ[1] : SSet.{u})).map e) :=
       (Category.assoc _ _ _).trans (congrArg (fun k =>
-        (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ arrowLaxInverse X) ≫ k) h)
+        (constantFunctorMap (Δ[1] : SSet.{u}) X ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) ≫ k) h)
     _ = constantFunctorMap (Δ[1] : SSet.{u}) X ≫
         (ihom (Δ[1] : SSet.{u})).map e := by
       rw [← Category.assoc, Category.assoc (constantFunctorMap _ _),
-        arrowLaxInverse_arrow, Category.comp_id]
+        _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
     _ = e ≫ constantFunctorMap (Δ[1] : SSet.{u}) Y := constantFunctorMap_postcomp _ e
     _ = _ := by
       change e ≫ constantFunctorMap (Δ[1] : SSet.{u}) Y =
-        (e ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ arrowLaxInverse Y)) ≫
+        (e ≫ (constantFunctorMap (Δ[1] : SSet.{u}) Y ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Y)) ≫
           F2.laxPullbackArrow (𝟙 Y) (𝟙 Y)
-      rw [Category.assoc, Category.assoc, arrowLaxInverse_arrow, Category.comp_id]
+      rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "C" => dgKInputStableValue R (dgOdotMilnorIdentityBaseInput R d)
@@ -73,9 +73,9 @@ local notation "e" => dgOdotMilnorIdentityBaseValueEquivalence R d
 規約：実全単体を保持。使われ方：LT 右面の中央頂点比較。 -/
 def dgOdotMilnorIdentityLaxBaseChange : QCatEquivalence
     (laxCategory (𝟙 (C)) (𝟙 (C))).obj (laxCategory (𝟙 (Q)) (𝟙 (Q))).obj :=
-  ((qCatEquivalenceOfIso (arrowLaxIso (C).obj)).trans
+  ((qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (C).obj)).trans
     ((e).postcompose (Δ[1] : SSet.{u + 1}))).trans
-    (qCatEquivalenceOfIso (arrowLaxIso (Q).obj).symm)
+    (qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (Q).obj).symm)
 
 /-- 概要：基底変更は元の矢印全族を厳密に回収する。
 方針：Sp の矢印圏表示の往復等号を使う。規約：全関手の等号。
@@ -85,9 +85,9 @@ lemma dgOdotMilnorIdentityLaxBaseChange_arrow :
         F2.laxPullbackArrow (𝟙 (Q).obj) (𝟙 (Q).obj) =
       F2.laxPullbackArrow (𝟙 (C).obj) (𝟙 (C).obj) ≫
         (ihom (Δ[1] : SSet.{u + 1})).map (e).hom := by
-  change (((arrowLaxIso (C).obj).hom ≫
+  change (((_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (C).obj).hom ≫
       (ihom (Δ[1] : SSet.{u + 1})).map (e).hom) ≫
-        (arrowLaxIso (Q).obj).inv) ≫ (arrowLaxIso (Q).obj).hom = _
+        (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (Q).obj).inv) ≫ (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (Q).obj).hom = _
   rw [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   rfl
 
@@ -144,6 +144,6 @@ def dgOdotMilnorIdentityLaxBaseChange_difference : FunctorIso
   let b := F2.laxPullbackArrow (𝟙 (Q).obj) (𝟙 (Q).obj)
   have p := CofiberFamily.precompositionIso b (dgOdotMilnorIdentityLaxBaseChange R d).hom
   have t := CofiberFamily.familyExactComparison (e).hom a
-  exact (F2.functorIsoOfEq p rfl (congrArg (CofiberFamily.cofiber (Q).obj)
+  exact (F2.functorIsoOfEq p rfl (congrArg (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (Q).obj)
     (dgOdotMilnorIdentityLaxBaseChange_arrow R d))).trans t.symm
 end SerrePositivity.KST.SConstruction

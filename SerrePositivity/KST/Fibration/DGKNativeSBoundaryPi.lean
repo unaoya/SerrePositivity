@@ -25,7 +25,7 @@ variable (A : Type u) [CommRing A]
 def dgKNativeSBoundaryPiEquiv (P : PerfDGInput.{u, v} A) (j : ℤ) (hj : 0 ≤ j) :
     ((SpectrumHo.piFunctor j).obj (HomotopyCategory.mk
       ((dgKInputK A).app (Opposite.op ⦋0⦌) (coherentNerveVertex P)))) ≃
-      KanHomotopy (dgKSBoundaryKan A P).right (OmegaSpectrum.degree j 1)
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (dgKSBoundaryKan A P).right (OmegaSpectrum.degree j 1)
         (dgKSBoundaryKan A P).basepoint :=
   (dgKPiComparison A P j).commGroupIsoToMulEquiv.toEquiv.trans
     (dgKBFBoundaryPiEquiv A P j hj)

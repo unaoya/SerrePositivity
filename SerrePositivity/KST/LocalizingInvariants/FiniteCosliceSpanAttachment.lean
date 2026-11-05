@@ -24,13 +24,13 @@ variable {J : Type u} {K : SSet.{u}}
 /-- 全ての指定端点対の、元の図式への包含。 -/
 def finiteFractionDiagramTargets (k₀ k₁ : J → K _⦋0⦌) :
     (∐ fun _ : J => ((Δ[0] : SSet.{u}) ⨿ Δ[0])) ⟶ K :=
-  Sigma.desc (fun j => fractionDiagramTargets (k₀ j) (k₁ j))
+  Sigma.desc (fun j => _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets (k₀ j) (k₁ j))
 
 /-- 全ての端点対を、同じ添字の span へ入れる。 -/
 def finiteFractionSpanTargets :
     (∐ fun _ : J => ((Δ[0] : SSet.{u}) ⨿ Δ[0])) ⟶
       (∐ fun _ : J => (horn 2 0 : SSet.{u})) :=
-  Sigma.desc (fun j => fractionSpanTargets ≫ Sigma.ι (fun _ : J => (horn 2 0 : SSet.{u})) j)
+  Sigma.desc (fun j => _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets ≫ Sigma.ι (fun _ : J => (horn 2 0 : SSet.{u})) j)
 
 /-- 元の有限図式へ全ての実右分数 span を同時に貼った台。 -/
 abbrev finiteFractionAttachmentShape (k₀ k₁ : J → K _⦋0⦌) : SSet.{u} :=
@@ -42,12 +42,12 @@ instance finiteFractionAttachmentShape_finite [Finite J] [K.Finite]
     finiteFractionSpanTargets)
   rintro (_ | (_ | _)) <;> simp only [span_left, span_right, span_zero] <;> infer_instance
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {a : (Δ[0] : SSet.{u}) ⟶ C.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {a : (Δ[0] : SSet.{u}) ⟶ C.obj}
   (p : K ⟶ B.obj) (U : K ⟶ sliceUnder a) (k₀ k₁ : J → K _⦋0⦌)
   {e : ∀ j : J, Truncated.Edge (X := (truncation 2).obj (sliceUnder a))
     (U.app (Opposite.op ⦋0⦌) (k₀ j)) (U.app (Opposite.op ⦋0⦌) (k₁ j))}
-  (r : ∀ j : J, VerdierCosliceFractionNormalization h a (e j)
+  (r : ∀ j : J, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h a (e j)
     (p.app (Opposite.op ⦋0⦌) (k₀ j)) (p.app (Opposite.op ⦋0⦌) (k₁ j)))
 
 lemma finiteCosliceSpan_native_pair : finiteFractionSpanTargets ≫
@@ -57,7 +57,7 @@ lemma finiteCosliceSpan_native_pair : finiteFractionSpanTargets ≫
   simp only [← Category.assoc, finiteFractionSpanTargets, finiteFractionDiagramTargets,
     Sigma.ι_comp_desc]
   rw [Category.assoc, Sigma.ι_comp_desc]
-  exact cosliceSpan_native_pair p U (k₀ j) (k₁ j) (r j)
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpan_native_pair p U (k₀ j) (k₁ j) (r j)
 
 lemma finiteCosliceSpan_lift_pair : finiteFractionSpanTargets ≫
     Sigma.desc (fun j => (r j).spanLift) = finiteFractionDiagramTargets k₀ k₁ ≫ U := by
@@ -66,7 +66,7 @@ lemma finiteCosliceSpan_lift_pair : finiteFractionSpanTargets ≫
   simp only [← Category.assoc, finiteFractionSpanTargets, finiteFractionDiagramTargets,
     Sigma.ι_comp_desc]
   rw [Category.assoc, Sigma.ι_comp_desc]
-  exact cosliceSpan_lift_pair p U (k₀ j) (k₁ j) (r j)
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpan_lift_pair p U (k₀ j) (k₁ j) (r j)
 
 /-- 全ての実分数と元の図式を含む、同じ一つの実有限図式。 -/
 def finiteCosliceSpanNativeDiagram : finiteFractionAttachmentShape k₀ k₁ ⟶ B.obj :=
@@ -178,20 +178,20 @@ lemma exists_finiteCosliceSpanAttachmentRefinement [Finite J] [K.Finite]
         ∀ k : (finiteFractionAttachmentShape k₀ k₁) _⦋0⦌,
           IsInvertibleEdge (X := C.obj)
             (F2.nativeConeLeg (finiteCosliceSpanQuotientCone p U k₀ k₁ r hU) k) →
-          (F2.nativeConeLeg c k).edge ∈ weakEquivalences i := by
-  obtain ⟨c, ⟨e'⟩⟩ := exists_verdierQuotientConeIsoRefinement h
+          (F2.nativeConeLeg c k).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
+  obtain ⟨c, ⟨e'⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h
     (finiteCosliceSpanNativeDiagram p U k₀ k₁ r) (finiteCosliceSpanQuotientCone p U k₀ k₁ r hU)
   refine ⟨c, e', ?_⟩
   intro k hk
-  apply (mem_weakEquivalences_iff_invertible h (F2.nativeConeLeg c k)).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (F2.nativeConeLeg c k)).mpr
   exact (isInvertibleEdge_congr (e := F2.nativeConeLeg (mapJoinCone q.hom c) k)
     (f := (F2.nativeConeLeg c k).map ((truncation 2).map q.hom)) rfl).mp
-      (nativeConeLeg_invertible_of_sliceIso e' k hk)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.nativeConeLeg_invertible_of_sliceIso e' k hk)
 
 /-- 有限個の指定商 coslice 辺から、全ての実分数・同じ有限全錐・全比較を一括回収する。 -/
 lemma exists_verdierFiniteCosliceSpanFamilyAttachment [Finite J] [K.Finite]
     (hU : U ≫ sliceUnderProjection a = p ≫ q.hom) :
-    ∃ r₀ : ∀ j : J, VerdierCosliceFractionNormalization h a (e j)
+    ∃ r₀ : ∀ j : J, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h a (e j)
         (p.app (Opposite.op ⦋0⦌) (k₀ j)) (p.app (Opposite.op ⦋0⦌) (k₁ j)),
       ∃ c : JoinCone (finiteCosliceSpanNativeDiagram p U k₀ k₁ r₀),
         ∃ _iso : VertexIso
@@ -200,14 +200,14 @@ lemma exists_verdierFiniteCosliceSpanFamilyAttachment [Finite J] [K.Finite]
           ∀ k : (finiteFractionAttachmentShape k₀ k₁) _⦋0⦌,
             IsInvertibleEdge (X := C.obj)
               (F2.nativeConeLeg (finiteCosliceSpanQuotientCone p U k₀ k₁ r₀ hU) k) →
-            (F2.nativeConeLeg c k).edge ∈ weakEquivalences i := by
+            (F2.nativeConeLeg c k).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   have hk (k : K _⦋0⦌) :
       (sliceUnderProjection a).app (Opposite.op ⦋0⦌) (U.app (Opposite.op ⦋0⦌) k) =
         q.hom.app (Opposite.op ⦋0⦌) (p.app (Opposite.op ⦋0⦌) k) :=
     congrArg (fun f : K ⟶ C.obj => f.app (Opposite.op ⦋0⦌) k) hU
-  have hr (j : J) : Nonempty (VerdierCosliceFractionNormalization h a (e j)
+  have hr (j : J) : Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h a (e j)
       (p.app (Opposite.op ⦋0⦌) (k₀ j)) (p.app (Opposite.op ⦋0⦌) (k₁ j))) :=
-    exists_verdierCosliceFractionNormalization h a (e j)
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierCosliceFractionNormalization h a (e j)
       (p.app (Opposite.op ⦋0⦌) (k₀ j)) (p.app (Opposite.op ⦋0⦌) (k₁ j)) (hk _) (hk _)
   let r₀ (j : J) := Classical.choice (hr j)
   obtain ⟨c, e', hw⟩ := exists_finiteCosliceSpanAttachmentRefinement p U k₀ k₁ r₀ hU

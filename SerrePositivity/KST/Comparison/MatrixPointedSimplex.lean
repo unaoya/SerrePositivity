@@ -76,7 +76,7 @@ def matrixPtSimplex (A : SimplicialObject RingCat.{u}) (r n : ℕ)
 theorem matrixPtSimplex_entry (A : SimplicialObject RingCat.{u}) (r n : ℕ)
     (a : (matrixSpace A r) _⦋0⦌)
     (f : ∀ i j : Fin r, (ringSpace A).PtSimplex n (a i j)) (i j : Fin r) :
-    Spectra.mapSimplex (matrixEntryMap A r i j) rfl (matrixPtSimplex A r n a f) = f i j := by
+    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl (matrixPtSimplex A r n a f) = f i j := by
   apply RelativeMorphism.ext
   rfl
 
@@ -89,8 +89,8 @@ theorem matrixPtSimplex_entry (A : SimplicialObject RingCat.{u}) (r n : ℕ)
 def matrixRelStruct (A : SimplicialObject RingCat.{u}) (r n : ℕ)
     (a : (matrixSpace A r) _⦋0⦌) {f g : (matrixSpace A r).PtSimplex n a} {k : Fin (n + 1)}
     (h : ∀ i j : Fin r, PtSimplex.RelStruct
-      (Spectra.mapSimplex (matrixEntryMap A r i j) rfl f)
-      (Spectra.mapSimplex (matrixEntryMap A r i j) rfl g) k) : PtSimplex.RelStruct f g k where
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl f)
+      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl g) k) : PtSimplex.RelStruct f g k where
   map := matrixMapOfEntries A r (fun i j => (h i j).map)
   δ_castSucc_map := by
     apply matrixMap_ext A r

@@ -116,7 +116,7 @@ def dgOdotMilnorSourceKernelInputMap :
 /-- 概要：元始域増大の同じ完全な ν 像。
 方針：固定界面の実射を型付きで回収する。規約：安定値を選び直さない。
 使われ方：元入力への屋根の脚。 -/
-abbrev dgOdotMilnorSourceAugmentationExactMap : ExactMap
+abbrev dgOdotMilnorSourceAugmentationExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d))
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorSourceAugmentationInputMap R d)
@@ -124,7 +124,7 @@ abbrev dgOdotMilnorSourceAugmentationExactMap : ExactMap
 /-- 概要：同じ平坦核比較の完全な ν 像。
 方針：固定界面の実射を型付きで回収する。規約：核と比較を保持する。
 使われ方：始域回収屋根の核側の脚。 -/
-abbrev dgOdotMilnorSourceKernelExactMap : ExactMap
+abbrev dgOdotMilnorSourceKernelExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d))
     (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorSourceKernelInputMap R d)

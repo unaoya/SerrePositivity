@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SSet.modelCategoryQuillen
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.Spectra
@@ -67,20 +67,20 @@ lemma square_isPullback : IsPullbackSquare (square f Y) :=
 
 lemma square_bottom : squareBottomEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.snd Y X)).edge := by
-  rw [square, square_transpose_bottom, StrictCospanCone.square_left]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, StrictCospanCone.square_left]
   rfl
 
 lemma square_left : squareLeftEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map (𝟙 Y) f)).edge := by
-  rw [square, square_transpose_left, StrictCospanCone.square_bottom]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, StrictCospanCone.square_bottom]
   rfl
 
 lemma square_right : squareRightEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge f).edge := by
-  rw [square, square_transpose_right, StrictCospanCone.square_top]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, StrictCospanCone.square_top]
 
 lemma square_top : squareTopEdge ≫ square f Y =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.snd Y Z)).edge := by
-  rw [square, square_transpose_top, StrictCospanCone.square_right]
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, StrictCospanCone.square_right]
 
 end SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection

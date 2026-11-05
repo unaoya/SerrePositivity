@@ -57,8 +57,8 @@ lemma fixedMarkedSpanApex_edges_mem {X Q : SSet.{u}} [Quasicategory Q] (F : X �
     (f := (edgeOfSimplex ((fixedMarkedSpanApex X W x y).app (Opposite.op ⦋1⦌) s)).map
       ((truncation 2).map F)) rfl).mp h
 
-lemma tammeFixedMarkedSpanApex_edges_mem {C D E : StableCategory.{u}}
-    (p : ExactMap C E) (q : ExactMap D E) (x y : (laxCategory p q).obj _⦋0⦌)
+lemma tammeFixedMarkedSpanApex_edges_mem {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (x y : (laxCategory p q).obj _⦋0⦌)
     (s : (fixedMarkedSpans (laxCategory p q).obj (tammeLocalizingEdges p q) x y) _⦋1⦌) :
     (fixedMarkedSpanApex (laxCategory p q).obj (tammeLocalizingEdges p q) x y).app
       (Opposite.op ⦋1⦌) s ∈ tammeLocalizingEdges p q :=

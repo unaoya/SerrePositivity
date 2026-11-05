@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMinimum
@@ -42,10 +44,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 private def denominatorSpanCollapse : (horn 2 0 : SSet.{u}) ⟶ horn 2 0 :=
   horn₂₀.isPushout.desc horn₂₀.ι₀₁
@@ -277,7 +282,7 @@ private lemma denominatorSpanLeftContraction_one :
     simpa only [SSet.comp_const] using hr
 
 /-- 全 span をパラメーターに保った実変形。時刻は第二因子。 -/
-private def verdierSpanRightExpansion (B : StableCategory.{u}) :
+private def verdierSpanRightExpansion (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     SSet.Homotopy ((pre denominatorSpanCollapse).app B.obj)
       (𝟙 ((ihom (horn 2 0 : SSet.{u})).obj B.obj)) := by
   let F := denominatorSpanRightExpansion ≫
@@ -296,7 +301,7 @@ private def verdierSpanRightExpansion (B : StableCategory.{u}) :
       pre_id, NatTrans.id_app]
 
 /-- 全 span を、元の第一終点の恒等 span へ分母に沿って変形する。 -/
-private def verdierSpanLeftContraction (B : StableCategory.{u}) :
+private def verdierSpanLeftContraction (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     SSet.Homotopy ((pre denominatorSpanCollapse).app B.obj)
       ((pre (SSet.const (horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
@@ -315,7 +320,7 @@ private def verdierSpanLeftContraction (B : StableCategory.{u}) :
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
     rw [denominatorSpanLeftContraction_one, functorPrecompositionMap_vertex]
 
-private lemma verdierSpanLeftRestriction_natural (B : StableCategory.{u}) :
+private lemma verdierSpanLeftRestriction_natural (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     functorPrecompositionMap (horn 2 0 : SSet.{u}) (horn 2 0 : SSet.{u}) B.obj ≫
       (ihom ((ihom (horn 2 0 : SSet.{u})).obj B.obj)).map
         ((pre horn₂₀.ι₀₁).app B.obj) =
@@ -331,7 +336,7 @@ private lemma denominatorSpanRightExpansion_left :
   apply uncurry_injective
   rw [uncurry_curry, uncurry_const_functorVertex]
 
-private lemma verdierSpanRightExpansion_left (B : StableCategory.{u}) :
+private lemma verdierSpanRightExpansion_left (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (verdierSpanRightExpansion B).h ≫ (pre horn₂₀.ι₀₁).app B.obj =
       fst ((ihom (horn 2 0 : SSet.{u})).obj B.obj) Δ[1] ≫
         (pre horn₂₀.ι₀₁).app B.obj := by
@@ -348,16 +353,16 @@ private lemma verdierSpanRightExpansion_left (B : StableCategory.{u}) :
       denominatorSpanRightExpansion_left, SSet.const_comp, functorPrecompositionMap_vertex]
   rw [he, uncurry_const_functorVertex]
 
-private def verdierMarkedRightExpansionRaw {A B : StableCategory.{u}} (i : ExactMap A B) :
-    markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⊗
+private def verdierMarkedRightExpansionRaw {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗
       (Δ[1] : SSet.{u}) ⟶ (ihom (horn 2 0 : SSet.{u})).obj B.obj :=
-  (markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ▷
+  (markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷
     (Δ[1] : SSet.{u})) ≫ (verdierSpanRightExpansion B).h
 
-private def verdierMarkedRightExpansion {A B : StableCategory.{u}} (i : ExactMap A B) :
-    markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⊗
+private def verdierMarkedRightExpansion {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗
       (Δ[1] : SSet.{u}) ⟶
-        markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) :=
+        markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :=
   fullSubcomplexLift _ (verdierMarkedRightExpansionRaw i) (by
     rintro ⟨v, t⟩
     have he := congrArg (fun F => F.app (Opposite.op ⦋0⦌) (v.val, t))
@@ -371,18 +376,18 @@ private def verdierMarkedRightExpansion {A B : StableCategory.{u}} (i : ExactMap
     rw [he]
     exact fullSubcomplexOnVertices_vertex v)
 
-private lemma verdierMarkedRightExpansion_inclusion {A B : StableCategory.{u}}
-    (i : ExactMap A B) :
+private lemma verdierMarkedRightExpansion_inclusion {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     verdierMarkedRightExpansion i ≫
-      markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) =
+      markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
         verdierMarkedRightExpansionRaw i := fullSubcomplexLift_ι _ _ _
 
-private lemma verdierMarkedRightExpansion_source {A B : StableCategory.{u}}
-    (i : ExactMap A B) :
+private lemma verdierMarkedRightExpansion_source {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
     verdierMarkedRightExpansion i ≫
-      markedSpanSource B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) =
-    fst (markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i)) Δ[1] ≫
-      markedSpanSource B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) := by
+      markedSpanSource B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
+    fst (markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] ≫
+      markedSpanSource B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := by
   unfold markedSpanSource
   rw [← Category.assoc, verdierMarkedRightExpansion_inclusion]
   dsimp only [verdierMarkedRightExpansionRaw]
@@ -391,68 +396,68 @@ private lemma verdierMarkedRightExpansion_source {A B : StableCategory.{u}}
     verdierSpanRightExpansion_left]
   rfl
 
-private lemma verdierMarkedRightExpansion_one {A B : StableCategory.{u}}
-    (i : ExactMap A B) :
-    (SSet.ι₁ : markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⟶ _) ≫
+private lemma verdierMarkedRightExpansion_one {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    (SSet.ι₁ : markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
       verdierMarkedRightExpansion i = 𝟙 _ := by
   have : Mono (markedSpanInclusion B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) := by
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) := by
     dsimp only [markedSpanInclusion]
     infer_instance
   apply (cancel_mono (markedSpanInclusion B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i))).mp
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))).mp
   rw [Category.assoc, verdierMarkedRightExpansion_inclusion, Category.id_comp]
   dsimp only [verdierMarkedRightExpansionRaw]
   have he : (SSet.ι₁ : markedSpans B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) ⟶ _) ≫
-      (markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ▷
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
+      (markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷
         (Δ[1] : SSet.{u})) =
-      markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ≫
+      markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
         SSet.ι₁ := rfl
   rw [← Category.assoc, he, Category.assoc, (verdierSpanRightExpansion B).h₁,
     Category.comp_id]
 
-private def verdierFixedSourceRightExpansion {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x ⊗
+private def verdierFixedSourceRightExpansion {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⊗
       (Δ[1] : SSet.{u}) ⟶
-        markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x :=
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x :=
   vertexFiberLift (markedSpanSource B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i)) x
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
       ((vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
         verdierMarkedRightExpansion i) (by
     rw [Category.assoc, verdierMarkedRightExpansion_source]
     have he : (vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
-        fst (markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i)) Δ[1] =
-      fst (markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x)
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+        fst (markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] =
+      fst (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         Δ[1] ≫ vertexFiberι (markedSpanSource B.obj
-          (SerrePositivity.KST.Fibration.weakEquivalences i)) x := rfl
+          (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x := rfl
     rw [← Category.assoc, he, Category.assoc, vertexFiberι_comp, SSet.comp_const])
 
-private lemma verdierFixedSourceRightExpansion_inclusion {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
+private lemma verdierFixedSourceRightExpansion_inclusion {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
     verdierFixedSourceRightExpansion i x ≫ vertexFiberι (markedSpanSource B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) x =
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x =
     (vertexFiberι (markedSpanSource B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
         verdierMarkedRightExpansion i := vertexFiberLift_ι _ _ _ _
 
-private lemma verdierFixedSourceRightExpansion_one {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
-    (SSet.ι₁ : markedSpanFamily B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) x ⟶ _) ≫
+private lemma verdierFixedSourceRightExpansion_one {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
+    (SSet.ι₁ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
         verdierFixedSourceRightExpansion i x = 𝟙 _ := by
   apply vertexFiber_hom_ext (markedSpanSource B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i)) x
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
   rw [Category.assoc, verdierFixedSourceRightExpansion_inclusion, Category.id_comp]
-  have he : (SSet.ι₁ : markedSpanFamily B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) x ⟶ _) ≫
+  have he : (SSet.ι₁ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
       (vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
       vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ≫ SSet.ι₁ := rfl
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫ SSet.ι₁ := rfl
   rw [← Category.assoc, he, Category.assoc, verdierMarkedRightExpansion_one,
     Category.comp_id]
 
@@ -469,19 +474,19 @@ private lemma denominatorSpanLeftContraction_source :
     curry_evaluateFunctorAt_interval, ← Category.assoc,
     F1B.intervalMaximum_first_one, SSet.const_comp]
 
-private def verdierSpanSourceEvaluation (B : StableCategory.{u}) :
+private def verdierSpanSourceEvaluation (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (horn 2 0 : SSet.{u}) ⟶
       (ihom ((ihom (horn 2 0 : SSet.{u})).obj B.obj)).obj B.obj :=
   internalHomFlipHomEquiv ((ihom (horn 2 0 : SSet.{u})).obj B.obj)
     (horn 2 0 : SSet.{u}) B.obj (𝟙 _)
 
-private lemma verdierSpanSourceEvaluation_vertex (B : StableCategory.{u})
+private lemma verdierSpanSourceEvaluation_vertex (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
     (v : (horn 2 0 : SSet.{u}) _⦋0⦌) :
     (verdierSpanSourceEvaluation B).app (Opposite.op ⦋0⦌) v =
       functorVertex (evaluateFunctorAt (Y := B.obj) v) := by
   rw [verdierSpanSourceEvaluation, internalHomFlipHomEquiv_app_zero, Category.id_comp]
 
-private lemma verdierSpanSourceRestriction_natural (B : StableCategory.{u})
+private lemma verdierSpanSourceRestriction_natural (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
     (v : (horn 2 0 : SSet.{u}) _⦋0⦌) :
     functorPrecompositionMap (horn 2 0 : SSet.{u}) (horn 2 0 : SSet.{u}) B.obj ≫
       (ihom ((ihom (horn 2 0 : SSet.{u})).obj B.obj)).map
@@ -515,7 +520,7 @@ private lemma verdierSpanSourceRestriction_natural (B : StableCategory.{u})
   rw [Category.id_comp, hc] at hh
   exact hh
 
-private lemma verdierSpanLeftContraction_source (B : StableCategory.{u}) :
+private lemma verdierSpanLeftContraction_source (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (verdierSpanLeftContraction B).h ≫
       evaluateFunctorAt (horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
@@ -538,26 +543,26 @@ private lemma verdierSpanLeftContraction_source (B : StableCategory.{u}) :
       verdierSpanSourceEvaluation_vertex]
   rw [he, uncurry_const_functorVertex]
 
-private lemma denominatorSpanCollapse_preserves_left (B : StableCategory.{u}) :
+private lemma denominatorSpanCollapse_preserves_left (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (pre denominatorSpanCollapse).app B.obj ≫ (pre horn₂₀.ι₀₁).app B.obj =
       (pre horn₂₀.ι₀₁).app B.obj := by
   rw [← NatTrans.comp_app, ← pre_map, denominatorSpanCollapse_left]
 
-private def verdierMarkedLeftContractionRaw {A B : StableCategory.{u}} (i : ExactMap A B) :
-    markedSpans B.obj (weakEquivalences i) ⊗ (Δ[1] : SSet.{u}) ⟶
+private def verdierMarkedLeftContractionRaw {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+    markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗ (Δ[1] : SSet.{u}) ⟶
       (ihom (horn 2 0 : SSet.{u})).obj B.obj :=
-  (markedSpanInclusion B.obj (weakEquivalences i) ▷ (Δ[1] : SSet.{u})) ≫
+  (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷ (Δ[1] : SSet.{u})) ≫
     (verdierSpanLeftContraction B).h
 
-private def verdierMarkedLeftContraction {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
-    markedSpans B.obj (weakEquivalences i) ⊗ (Δ[1] : SSet.{u}) ⟶
-      markedSpans B.obj (weakEquivalences i) :=
+private def verdierMarkedLeftContraction {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗ (Δ[1] : SSet.{u}) ⟶
+      markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :=
   fullSubcomplexLift _ (verdierMarkedLeftContractionRaw i) (by
     rintro ⟨v, t⟩
     obtain ⟨j, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective t
     change spanLeftEdge ((verdierSpanLeftContraction B).h.app (Opposite.op ⦋0⦌)
-      (v.val, stdSimplex.obj₀Equiv.symm j)) ∈ weakEquivalences i
+      (v.val, stdSimplex.obj₀Equiv.symm j)) ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
     fin_cases j
     · change spanLeftEdge ((verdierSpanLeftContraction B).h.app (Opposite.op ⦋0⦌)
         (v.val, stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ∈ _
@@ -590,20 +595,20 @@ private def verdierMarkedLeftContraction {A B C : StableCategory.{u}}
       rw [SSet.const_comp]
       change PinchedHom.constant (P.app (Opposite.op ⦋0⦌)
         (horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) 1 ∈ _
-      exact (mem_weakEquivalences_iff_invertible h (edgeOfSimplex _)).mpr
+      exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (edgeOfSimplex _)).mpr
         (invertedEdges_constant q.hom _))
 
-private lemma verdierMarkedLeftContraction_inclusion {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
-    verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (weakEquivalences i) =
+private lemma verdierMarkedLeftContraction_inclusion {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
       verdierMarkedLeftContractionRaw i := fullSubcomplexLift_ι _ _ _
 
-private lemma verdierMarkedLeftContraction_source {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
-    verdierMarkedLeftContraction h ≫ markedSpanSource B.obj (weakEquivalences i) =
-    fst (markedSpans B.obj (weakEquivalences i)) Δ[1] ≫
-      markedSpanSource B.obj (weakEquivalences i) := by
-  change (verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (weakEquivalences i)) ≫
+private lemma verdierMarkedLeftContraction_source {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    verdierMarkedLeftContraction h ≫ markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
+    fst (markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] ≫
+      markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := by
+  change (verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) ≫
     evaluateFunctorAt (horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
   rw [verdierMarkedLeftContraction_inclusion]
@@ -611,64 +616,64 @@ private lemma verdierMarkedLeftContraction_source {A B C : StableCategory.{u}}
   rw [Category.assoc, verdierSpanLeftContraction_source]
   rfl
 
-private lemma verdierMarkedContractions_common_zero {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
-    (SSet.ι₀ : markedSpans B.obj (weakEquivalences i) ⟶ _) ≫
+private lemma verdierMarkedContractions_common_zero {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    (SSet.ι₀ : markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
       verdierMarkedLeftContraction h = SSet.ι₀ ≫ verdierMarkedRightExpansion i := by
-  have : Mono (markedSpanInclusion B.obj (weakEquivalences i)) := by
+  have : Mono (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) := by
     dsimp only [markedSpanInclusion]
     infer_instance
-  apply (cancel_mono (markedSpanInclusion B.obj (weakEquivalences i))).mp
+  apply (cancel_mono (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))).mp
   simp only [Category.assoc, verdierMarkedLeftContraction_inclusion,
     verdierMarkedRightExpansion_inclusion]
   dsimp only [verdierMarkedLeftContractionRaw, verdierMarkedRightExpansionRaw]
-  have he : (SSet.ι₀ : markedSpans B.obj (weakEquivalences i) ⟶ _) ≫
-      (markedSpanInclusion B.obj (weakEquivalences i) ▷ (Δ[1] : SSet.{u})) =
-      markedSpanInclusion B.obj (weakEquivalences i) ≫ SSet.ι₀ := rfl
+  have he : (SSet.ι₀ : markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
+      (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷ (Δ[1] : SSet.{u})) =
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ SSet.ι₀ := rfl
   rw [← Category.assoc, he, Category.assoc, (verdierSpanLeftContraction B).h₀,
     ← Category.assoc, he, Category.assoc, (verdierSpanRightExpansion B).h₀]
 
-private def verdierFixedSourceLeftContraction {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedSourceLeftContraction {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (weakEquivalences i) x ⊗ (Δ[1] : SSet.{u}) ⟶
-      markedSpanFamily B.obj (weakEquivalences i) x :=
-  vertexFiberLift (markedSpanSource B.obj (weakEquivalences i)) x
-    ((vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⊗ (Δ[1] : SSet.{u}) ⟶
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x :=
+  vertexFiberLift (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
+    ((vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
       verdierMarkedLeftContraction h) (by
       rw [Category.assoc, verdierMarkedLeftContraction_source]
-      have he : (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ▷
-          (Δ[1] : SSet.{u})) ≫ fst (markedSpans B.obj (weakEquivalences i)) Δ[1] =
-        fst (markedSpanFamily B.obj (weakEquivalences i) x) Δ[1] ≫
-          vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x := rfl
+      have he : (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷
+          (Δ[1] : SSet.{u})) ≫ fst (markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] =
+        fst (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) Δ[1] ≫
+          vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x := rfl
       rw [← Category.assoc, he, Category.assoc, vertexFiberι_comp, SSet.comp_const])
 
-private lemma verdierFixedSourceLeftContraction_inclusion {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedSourceLeftContraction_inclusion {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     verdierFixedSourceLeftContraction h x ≫
-      vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x =
-    (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+      vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x =
+    (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
       verdierMarkedLeftContraction h := vertexFiberLift_ι _ _ _ _
 
-private lemma verdierFixedSourceContractions_common_zero {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedSourceContractions_common_zero {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    (SSet.ι₀ : markedSpanFamily B.obj (weakEquivalences i) x ⟶ _) ≫
+    (SSet.ι₀ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
       verdierFixedSourceLeftContraction h x =
     SSet.ι₀ ≫ verdierFixedSourceRightExpansion i x := by
-  apply vertexFiber_hom_ext (markedSpanSource B.obj (weakEquivalences i)) x
+  apply vertexFiber_hom_ext (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
   simp only [Category.assoc, verdierFixedSourceLeftContraction_inclusion,
     verdierFixedSourceRightExpansion_inclusion]
-  have he : (SSet.ι₀ : markedSpanFamily B.obj (weakEquivalences i) x ⟶ _) ≫
-      (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
-      vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫ SSet.ι₀ := rfl
+  have he : (SSet.ι₀ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
+      (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
+      vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫ SSet.ι₀ := rfl
   simp only [← Category.assoc]
   rw [he]
   simp only [Category.assoc]
   rw [verdierMarkedContractions_common_zero h]
 
-private lemma verdierSpanConstantAction (B : StableCategory.{u}) :
+private lemma verdierSpanConstantAction (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (pre (SSet.const (horn₂₀.ι₀₁.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
         (horn 2 0 : SSet.{u}) ⟶ _)).app B.obj =
@@ -699,57 +704,57 @@ private lemma verdierSpanConstantAction (B : StableCategory.{u}) :
   rw [Category.id_comp, hc] at hh
   exact hh
 
-private lemma verdierMarkedLeftContraction_one_raw {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
-    (SSet.ι₁ : markedSpans B.obj (weakEquivalences i) ⟶ _) ≫
-      verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (weakEquivalences i) =
-    markedSpanSource B.obj (weakEquivalences i) ≫
+private lemma verdierMarkedLeftContraction_one_raw {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    (SSet.ι₁ : markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
+      verdierMarkedLeftContraction h ≫ markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
+    markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
       constantFunctorMap (horn 2 0 : SSet.{u}) B.obj := by
   rw [verdierMarkedLeftContraction_inclusion]
   dsimp only [verdierMarkedLeftContractionRaw]
-  have he : (SSet.ι₁ : markedSpans B.obj (weakEquivalences i) ⟶ _) ≫
-      (markedSpanInclusion B.obj (weakEquivalences i) ▷ (Δ[1] : SSet.{u})) =
-      markedSpanInclusion B.obj (weakEquivalences i) ≫ SSet.ι₁ := rfl
+  have he : (SSet.ι₁ : markedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
+      (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷ (Δ[1] : SSet.{u})) =
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ SSet.ι₁ := rfl
   rw [← Category.assoc, he, Category.assoc, (verdierSpanLeftContraction B).h₁,
     verdierSpanConstantAction]
   rfl
 
-private def verdierIdentitySpanFamily {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
-    (x : B.obj _⦋0⦌) : (markedSpanFamily B.obj (weakEquivalences i) x) _⦋0⦌ :=
-  identityMarkedSpanFamily (weakEquivalences i) x
-    ((mem_weakEquivalences_iff_invertible h (edgeOfSimplex _)).mpr
+private def verdierIdentitySpanFamily {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) _⦋0⦌ :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h (edgeOfSimplex _)).mpr
       (invertedEdges_constant q.hom x))
 
-private lemma verdierFixedSourceLeftContraction_one {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedSourceLeftContraction_one {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    (SSet.ι₁ : markedSpanFamily B.obj (weakEquivalences i) x ⟶ _) ≫
+    (SSet.ι₁ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
       verdierFixedSourceLeftContraction h x = SSet.const (verdierIdentitySpanFamily h x) := by
-  apply vertexFiber_hom_ext (markedSpanSource B.obj (weakEquivalences i)) x
-  have : Mono (markedSpanInclusion B.obj (weakEquivalences i)) := by
+  apply vertexFiber_hom_ext (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
+  have : Mono (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) := by
     dsimp only [markedSpanInclusion]
     infer_instance
-  apply (cancel_mono (markedSpanInclusion B.obj (weakEquivalences i))).mp
+  apply (cancel_mono (markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))).mp
   simp only [Category.assoc, verdierFixedSourceLeftContraction_inclusion,
     SSet.const_comp]
-  have he : (SSet.ι₁ : markedSpanFamily B.obj (weakEquivalences i) x ⟶ _) ≫
-      (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
-      vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫ SSet.ι₁ := rfl
+  have he : (SSet.ι₁ : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
+      (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
+      vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫ SSet.ι₁ := rfl
   rw [← Category.assoc, ← Category.assoc, he]
   simp only [Category.assoc]
   rw [verdierMarkedLeftContraction_one_raw, ← Category.assoc, vertexFiberι_comp,
     SSet.const_comp, constantFunctorMap_vertex]
   rfl
 
-private def verdierFixedSourceDenominator {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      markedSpanFamily B.obj (weakEquivalences i) x :=
+private def verdierFixedSourceDenominator {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x :=
   SSet.ι₀ ≫ verdierFixedSourceRightExpansion i x
 
-private def verdierFixedSourceRightHomotopy {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
+private def verdierFixedSourceRightHomotopy {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
     SSet.Homotopy (verdierFixedSourceDenominator i x) (𝟙 _) where
   h := verdierFixedSourceRightExpansion i x
   h₀ := rfl
@@ -761,8 +766,8 @@ private def verdierFixedSourceRightHomotopy {A B : StableCategory.{u}}
     intro a
     exact False.elim a.1.property
 
-private def verdierFixedSourceLeftHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedSourceLeftHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     SSet.Homotopy (verdierFixedSourceDenominator i x)
       (SSet.const (verdierIdentitySpanFamily h x)) where
@@ -787,7 +792,7 @@ private lemma denominatorSpanLeftContraction_target :
     curry_evaluateFunctorAt_interval]
   rfl
 
-private lemma verdierSpanLeftContraction_target (B : StableCategory.{u}) :
+private lemma verdierSpanLeftContraction_target (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (verdierSpanLeftContraction B).h ≫
       evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
@@ -814,17 +819,17 @@ private lemma verdierSpanLeftContraction_target (B : StableCategory.{u}) :
   change uncurry (curry ((β_ _ _).hom ≫ uncurry ((pre horn₂₀.ι₀₁).app B.obj))) = _
   rw [uncurry_curry]
 
-private lemma verdierFixedSourceLeftHomotopy_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedSourceLeftHomotopy_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     (verdierFixedSourceLeftHomotopy h x).h ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x =
-    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
-      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj) := by
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x =
+    (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj) := by
   change (verdierFixedSourceLeftContraction h x ≫
-    vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x) ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫
+    vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x) ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
         evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
           (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
   rw [verdierFixedSourceLeftContraction_inclusion, Category.assoc,
@@ -836,30 +841,30 @@ private lemma verdierFixedSourceLeftHomotopy_projection {A B C : StableCategory.
   simp only [uncurry_natural_left]
   rfl
 
-private lemma verdierFixedSourceLeftHomotopy_denominator {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
-    (x : B.obj _⦋0⦌) (v : (markedSpanFamily B.obj (weakEquivalences i) x) _⦋0⦌) :
-    (markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+private lemma verdierFixedSourceLeftHomotopy_denominator {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) (v : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app (Opposite.op ⦋1⦌)
       (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge =
         spanLeftEdge v.val.val := by
   have he := congrArg (fun F => F.app (Opposite.op ⦋1⦌)
     (PinchedHom.constant v 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))))
       (verdierFixedSourceLeftHomotopy_projection h x)
-  change (markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app (Opposite.op ⦋1⦌)
     ((verdierFixedSourceLeftHomotopy h x).h.app (Opposite.op ⦋1⦌)
       (PinchedHom.constant v 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})))) =
-    (uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫
+    (uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
         (pre horn₂₀.ι₀₁).app B.obj)).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1) at he
   have ht := intervalFunctorVertexEdge_curry
-    (uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj)) v
+    (uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj)) v
   rw [curry_uncurry] at ht
-  change (markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app (Opposite.op ⦋1⦌)
     ((verdierFixedSourceLeftHomotopy h x).h.app (Opposite.op ⦋1⦌)
       ((Truncated.Edge.id (X := (truncation 2).obj
-        (markedSpanFamily B.obj (weakEquivalences i) x)) v).edge,
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)) v).edge,
           homotopyIntervalEdge.edge)) = _
   have hi : (homotopyIntervalEdge : Truncated.Edge
       (X := (truncation 2).obj (Δ[1] : SSet.{u}))
@@ -873,67 +878,67 @@ private lemma verdierFixedSourceLeftHomotopy_denominator {A B C : StableCategory
   exact he.trans ht.symm
 
 private lemma verdierFixedSourceLeftHomotopy_quotient_invertible
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
-    (v : (markedSpanFamily B.obj (weakEquivalences i) x) _⦋0⦌) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+    (v : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) _⦋0⦌) :
     IsInvertibleEdge
       ((((simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).map
-        (markedSpanFamilyProjection B.obj (weakEquivalences i) x)).toTruncated).map
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).toTruncated).map
           ((truncation 2).map q.hom)) := by
-  apply (mem_weakEquivalences_iff_invertible h _).mp
-  change (markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+  apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).mp
+  change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app (Opposite.op ⦋1⦌)
     (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge ∈ _
   rw [verdierFixedSourceLeftHomotopy_denominator]
   exact fullSubcomplexOnVertices_vertex v.val
 
-private lemma verdierIdentitySpanFamily_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierIdentitySpanFamily_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    (markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app
       (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x) = x :=
-  identityMarkedSpanFamily_projection _ _ _
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily_projection _ _ _
 
-private def verdierFixedSourceLeftQuotientHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedSourceLeftQuotientHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     SSet.Homotopy (verdierFixedSourceDenominator i x ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
         (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)) := by
   let H := functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x)
-    (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
   refine { h := H.h, h₀ := H.h₀, h₁ := ?_, rel := H.rel }
   change SSet.ι₁ ≫ H.h = SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
   rw [H.h₁, SSet.const_comp]
   change SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-    ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app
       (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = _
   rw [verdierIdentitySpanFamily_projection]
 
 /-- 選択済みの同じ実変形の底像を可逆化する。単なる頂点ごとの同型の選択ではない。 -/
-private def verdierFixedSourceDenominatorImageIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedSourceDenominatorImageIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     FunctorIso (verdierFixedSourceDenominator i x ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
         (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)) := by
   apply functorIsoOfPointwiseInvertibleHomotopy (verdierFixedSourceLeftQuotientHomotopy h x)
   intro v
   exact (isInvertibleEdge_congr
     (e := (simplicialHomotopyVertexEdge (verdierFixedSourceLeftQuotientHomotopy h x) v).toTruncated)
     (f := (((simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).map
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x)).toTruncated).map
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).toTruncated).map
         ((truncation 2).map q.hom))
     rfl).mpr
     (verdierFixedSourceLeftHomotopy_quotient_invertible h x v)
 
 /-- 元の族を分類先へ送る実写像が与えられたとき、同じ分母変形をそこで可逆化する。
 実写像自体の供給をこの私有補題の仮定から取り除いたとは主張しない。 -/
-private def verdierLiftedDenominatorIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedDenominatorIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso (verdierFixedSourceDenominator i x ≫ U)
       (SSet.const (verdierIdentitySpanFamily h x) ≫ U) := by
   let H := functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U
@@ -946,30 +951,30 @@ private def verdierLiftedDenominatorIso {A B C : StableCategory.{u}}
   change p.app (Opposite.op ⦋1⦌) (U.app (Opposite.op ⦋1⦌)
     (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge) =
     q.hom.app (Opposite.op ⦋1⦌)
-      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app (Opposite.op ⦋1⦌)
         (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge) at he
   exact (isInvertibleEdge_congr
     (e := (simplicialHomotopyVertexEdge H v).toTruncated.map ((truncation 2).map p))
     (f := (((simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).map
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x)).toTruncated).map
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).toTruncated).map
         ((truncation 2).map q.hom)) he).mpr
       (verdierFixedSourceLeftHomotopy_quotient_invertible h x v)
 
-private def verdierLiftedRightHomotopy {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) {E : SSet.{u}}
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E) :
+private def verdierLiftedRightHomotopy {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) {E : SSet.{u}}
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E) :
     SSet.Homotopy (verdierFixedSourceDenominator i x ≫ U) U := by
   let J := functorHomotopyPostcomp (verdierFixedSourceRightHomotopy i x) U
   refine { h := J.h, h₀ := J.h₀, h₁ := ?_, rel := J.rel }
   change SSet.ι₁ ≫ J.h = U
   rw [J.h₁, Category.id_comp]
 
-private def verdierLiftedIdentityCone {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityCone {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorHom (SSet.const (verdierIdentitySpanFamily h x) ≫ U) U :=
   (verdierLiftedDenominatorIso h x p U hU).inv ≫
     Truncated.HomotopyCategory.homMk
@@ -986,7 +991,7 @@ private lemma denominatorSpanRightExpansion_target :
     curry_evaluateFunctorAt_interval, ← Category.assoc,
     intervalMinimum_first_one, Category.id_comp]
 
-private lemma verdierSpanRightExpansion_target (B : StableCategory.{u}) :
+private lemma verdierSpanRightExpansion_target (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     (verdierSpanRightExpansion B).h ≫
       evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
@@ -1013,16 +1018,16 @@ private lemma verdierSpanRightExpansion_target (B : StableCategory.{u}) :
   change uncurry (curry ((β_ _ _).hom ≫ uncurry ((pre horn₂₀.ι₀₂).app B.obj))) = _
   rw [uncurry_curry]
 
-private lemma verdierFixedSourceRightHomotopy_projection {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
+private lemma verdierFixedSourceRightHomotopy_projection {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌) :
     (verdierFixedSourceRightHomotopy i x).h ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x =
-    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
-      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj) := by
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x =
+    (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj) := by
   change (verdierFixedSourceRightExpansion i x ≫
-    vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x) ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫
+    vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x) ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
         evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
           (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
   rw [verdierFixedSourceRightExpansion_inclusion, Category.assoc,
@@ -1034,46 +1039,46 @@ private lemma verdierFixedSourceRightHomotopy_projection {A B : StableCategory.{
   simp only [uncurry_natural_left]
   rfl
 
-private def verdierFixedSourceRightQuotientHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedSourceRightQuotientHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     SSet.Homotopy (verdierFixedSourceDenominator i x ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-        (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) := by
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) := by
   let H := functorHomotopyPostcomp (verdierFixedSourceRightHomotopy i x)
-    (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
   refine { h := H.h, h₀ := H.h₀, h₁ := ?_, rel := H.rel }
-  change SSet.ι₁ ≫ H.h = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+  change SSet.ι₁ ≫ H.h = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom
   rw [H.h₁, Category.id_comp]
 
-private def verdierSpanQuotientEvaluationFamily {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierSpanQuotientEvaluationFamily {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶ (ihom (Δ[1] : SSet.{u})).obj C.obj :=
-  vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-    fractionSpanEvaluation q.hom (weakEquivalences i) h.inverts
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ (ihom (Δ[1] : SSet.{u})).obj C.obj :=
+  vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+    fractionSpanEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
 
-private def verdierSpanQuotientEvaluationHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierSpanQuotientEvaluationHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     SSet.Homotopy (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x))
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) where
-  h := (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) where
+  h := (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
     uncurry (verdierSpanQuotientEvaluationFamily h x)
   h₀ := by
-    change prismEndpoint 0 (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+    change prismEndpoint 0 (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
       uncurry (verdierSpanQuotientEvaluationFamily h x) =
         SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
     rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
     dsimp only [verdierSpanQuotientEvaluationFamily]
     rw [Category.assoc, fractionSpanEvaluation_source]
-    change (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-      markedSpanSource B.obj (weakEquivalences i)) ≫ q.hom = _
+    change (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+      markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) ≫ q.hom = _
     rw [vertexFiberι_comp, SSet.const_comp]
   h₁ := by
-    change prismEndpoint 1 (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+    change prismEndpoint 1 (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
       uncurry (verdierSpanQuotientEvaluationFamily h x) =
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom
     rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
     dsimp only [verdierSpanQuotientEvaluationFamily]
     rw [Category.assoc, fractionSpanEvaluation_target]
@@ -1085,62 +1090,62 @@ private def verdierSpanQuotientEvaluationHomotopy {A B C : StableCategory.{u}}
     intro a
     exact False.elim a.1.property
 
-private def verdierSpanQuotientTriangleFamily {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierSpanQuotientTriangleFamily {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶ (ihom (Δ[2] : SSet.{u})).obj C.obj :=
-  vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-    fractionEvaluationTriangle q.hom (weakEquivalences i) h.inverts
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ (ihom (Δ[2] : SSet.{u})).obj C.obj :=
+  vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+    fractionEvaluationTriangle q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
 
-private lemma verdierSpanQuotientTriangle_leg {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierSpanQuotientTriangle_leg {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) (k : (Δ[1] : SSet.{u}) ⟶ horn 2 0) (j : Fin 3)
     (hk : k ≫ (horn 2 0).ι = stdSimplex.δ j) :
     verdierSpanQuotientTriangleFamily h x ≫ (pre (stdSimplex.δ j)).app C.obj =
-    vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-      markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre k).app B.obj ≫
+    vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+      markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre k).app B.obj ≫
         (ihom (Δ[1] : SSet.{u})).map q.hom := by
   have hp : (pre (stdSimplex.δ j)).app C.obj =
       (pre (horn 2 0).ι).app C.obj ≫ (pre k).app C.obj := by
     rw [← NatTrans.comp_app, ← pre_map, hk]
   dsimp only [verdierSpanQuotientTriangleFamily]
   rw [hp, ← Category.assoc,
-    Category.assoc (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x),
+    Category.assoc (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x),
     fractionEvaluationTriangle_span]
   simp only [Category.assoc]
   rw [(pre k).naturality q.hom]
 
-private lemma verdierLeftQuotientHomotopy_leg {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLeftQuotientHomotopy_leg {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     (verdierFixedSourceLeftQuotientHomotopy h x).h =
-    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
-      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj ≫
+    (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj ≫
           (ihom (Δ[1] : SSet.{u})).map q.hom) := by
   change (verdierFixedSourceLeftHomotopy h x).h ≫
-    markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom = _
   rw [← Category.assoc, verdierFixedSourceLeftHomotopy_projection, Category.assoc,
     ← uncurry_natural_right]
   rfl
 
-private lemma verdierRightQuotientHomotopy_leg {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierRightQuotientHomotopy_leg {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     (verdierFixedSourceRightQuotientHomotopy h x).h =
-    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
-      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj ≫
+    (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj ≫
           (ihom (Δ[1] : SSet.{u})).map q.hom) := by
   change (verdierFixedSourceRightHomotopy i x).h ≫
-    markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom = _
   rw [← Category.assoc, verdierFixedSourceRightHomotopy_projection, Category.assoc,
     ← uncurry_natural_right]
   rfl
 
 /-- 全 roof 族の二変形と元の選択済み分数評価は、同じ実関手三角形の三辺。 -/
-private def verdierSpanQuotientCompositionTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierSpanQuotientCompositionTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     FunctorCompositionTriangle (verdierFixedSourceLeftQuotientHomotopy h x)
       (verdierSpanQuotientEvaluationHomotopy h x)
@@ -1160,8 +1165,8 @@ private def verdierSpanQuotientCompositionTriangle {A B C : StableCategory.{u}}
       verdierLeftQuotientHomotopy_leg]
     rfl
 
-private lemma verdierSpanQuotientEvaluation_hom {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierSpanQuotientEvaluation_hom {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
     (verdierFixedSourceDenominatorImageIso h x).inv ≫
       Truncated.HomotopyCategory.homMk
@@ -1171,12 +1176,12 @@ private lemma verdierSpanQuotientEvaluation_hom {A B C : StableCategory.{u}}
   apply (Iso.inv_comp_eq (verdierFixedSourceDenominatorImageIso h x)).mpr
   exact (verdierSpanQuotientCompositionTriangle h x).hom_eq.symm
 
-private def verdierLiftedIdentityHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     SSet.Homotopy
       (SSet.const (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) U := by
   let H := functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)
@@ -1185,22 +1190,22 @@ private def verdierLiftedIdentityHomotopy {A B C : StableCategory.{u}}
     SSet.const (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))
   rw [H.h₀, SSet.const_comp]
 
-private def verdierLiftedIdentityConeRealization {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityConeRealization {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     HomotopyConeRealization (verdierLiftedIdentityHomotopy h x p U hU) :=
   homotopyConeRealization _
 
-private def verdierLiftedIdentityCoslice {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityCoslice {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    markedSpanFamily B.obj (weakEquivalences i) x ⟶
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
       sliceUnder (SSet.yonedaEquiv.symm
         (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) :=
   sliceUnderCurry (verdierLiftedIdentityConeRealization h x p U hU).cone.val (by
@@ -1209,24 +1214,24 @@ private def verdierLiftedIdentityCoslice {A B C : StableCategory.{u}}
     change (verdierLiftedIdentityConeRealization h x p U hU).cone.vertex = _
     exact (verdierLiftedIdentityConeRealization h x p U hU).vertex_eq)
 
-private lemma verdierLiftedIdentityCoslice_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentityCoslice_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierLiftedIdentityCoslice h x p U hU ≫
       sliceUnderProjection (SSet.yonedaEquiv.symm
         (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = U := by
   rw [verdierLiftedIdentityCoslice, sliceUnderCurry_projection]
   exact (verdierLiftedIdentityConeRealization h x p U hU).cone.property
 
-private lemma verdierLiftedIdentityCone_triangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentityCone_triangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     Nonempty (Truncated.Edge.CompStruct
       (functorEdgeOfSimplicialHomotopy
         (functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U))
@@ -1240,38 +1245,38 @@ private lemma verdierLiftedIdentityCone_triangle {A B C : StableCategory.{u}}
     ((verdierLiftedDenominatorIso h x p U hU).inv ≫ _) = _
   rw [Iso.hom_inv_id_assoc]
 
-private def verdierLiftedIdentityConeImageHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityConeImageHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     SSet.Homotopy (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x))
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) := by
   let H := functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)
   let J := functorHomotopyPostcomp H p
   refine { h := J.h, h₀ := ?_, h₁ := ?_, rel := J.rel }
   · change SSet.ι₀ ≫ J.h = SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
     rw [J.h₀, Category.assoc, hU, SSet.const_comp]
     change SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app
         (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = _
     rw [verdierIdentitySpanFamily_projection]
-  · change SSet.ι₁ ≫ J.h = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+  · change SSet.ι₁ ≫ J.h = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom
     rw [J.h₁, hU]
 
-private lemma verdierLiftedIdentityConeImage_triangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentityConeImage_triangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     Nonempty (Truncated.Edge.CompStruct
       (functorEdgeOfSimplicialHomotopy (verdierFixedSourceLeftQuotientHomotopy h x))
       (functorEdgeOfSimplicialHomotopy (verdierLiftedIdentityConeImageHomotopy h x p U hU))
       (functorEdgeOfSimplicialHomotopy (verdierFixedSourceRightQuotientHomotopy h x))) := by
   obtain ⟨τ⟩ := verdierLiftedIdentityCone_triangle h x p U hU
-  let P := (ihom (markedSpanFamily B.obj (weakEquivalences i) x)).map p
+  let P := (ihom (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)).map p
   let τ' := τ.map ((truncation 2).map P)
   have hl : (((functorEdgeOfSimplicialHomotopy
       (functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U)).map
@@ -1280,7 +1285,7 @@ private lemma verdierLiftedIdentityConeImage_triangle {A B C : StableCategory.{u
     change P.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv
       (curry ((verdierFixedSourceLeftHomotopy h x).h ≫ U))) =
       SSet.yonedaEquiv (curry ((verdierFixedSourceLeftHomotopy h x).h ≫
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom))
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom))
     rw [← SSet.yonedaEquiv_comp]
     dsimp only [P]
     rw [← curry_natural_right, Category.assoc, hU]
@@ -1290,7 +1295,7 @@ private lemma verdierLiftedIdentityConeImage_triangle {A B C : StableCategory.{u
     change P.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv
       (curry ((verdierFixedSourceRightHomotopy i x).h ≫ U))) =
       SSet.yonedaEquiv (curry ((verdierFixedSourceRightHomotopy i x).h ≫
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom))
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom))
     rw [← SSet.yonedaEquiv_comp]
     dsimp only [P]
     rw [← curry_natural_right, Category.assoc, hU]
@@ -1308,12 +1313,12 @@ private lemma verdierLiftedIdentityConeImage_triangle {A B C : StableCategory.{u
     rw [← curry_natural_right]
   exact ⟨⟨τ'.simplex, τ'.d₂.trans hl, τ'.d₀.trans hc, τ'.d₁.trans hr⟩⟩
 
-private lemma verdierLiftedIdentityConeImage_evaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentityConeImage_evaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (verdierLiftedIdentityConeImageHomotopy h x p U hU)) =
     Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
@@ -1323,14 +1328,14 @@ private lemma verdierLiftedIdentityConeImage_evaluation {A B C : StableCategory.
   exact (Truncated.HomotopyCategory.homMk_comp_homMk τ).trans
     (verdierSpanQuotientCompositionTriangle h x).hom_eq.symm
 
-private def verdierFixedRoofImageHomotopy {A B C : StableCategory.{u}}
-    (i : ExactMap A B) (q : ExactMap B C) (x y : B.obj _⦋0⦌)
+private def verdierFixedRoofImageHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (x y : B.obj _⦋0⦌)
     (H : SSet.Homotopy (SSet.const (q.hom.app _ x))
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)) :
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)) :
     SSet.Homotopy
-      (SSet.const (X := fixedMarkedSpans B.obj (weakEquivalences i) x y) (q.hom.app _ x))
+      (SSet.const (X := fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) (q.hom.app _ x))
       (SSet.const (q.hom.app _ y)) := by
-  let J := functorHomotopyPrecomp H (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
+  let J := functorHomotopyPrecomp H (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
   exact {
     h := J.h
     h₀ := by
@@ -1338,13 +1343,13 @@ private def verdierFixedRoofImageHomotopy {A B C : StableCategory.{u}}
       simpa only [SSet.comp_const] using J.h₀
     h₁ := by
       change SSet.ι₁ ≫ J.h = SSet.const (q.hom.app _ y)
-      exact J.h₁.trans (fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y)
+      exact J.h₁.trans (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
     rel := J.rel }
 
-private lemma verdierFixedRoofImageHomotopy_homEq {A B C : StableCategory.{u}}
-    (i : ExactMap A B) (q : ExactMap B C) (x y : B.obj _⦋0⦌)
+private lemma verdierFixedRoofImageHomotopy_homEq {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (x y : B.obj _⦋0⦌)
     (H H' : SSet.Homotopy (SSet.const (q.hom.app _ x))
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom))
     (he : Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
       Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H')) :
     Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
@@ -1352,13 +1357,13 @@ private lemma verdierFixedRoofImageHomotopy_homEq {A B C : StableCategory.{u}}
     Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (verdierFixedRoofImageHomotopy i q x y H')) := by
   let L := functorHomotopyRefl
-    (SSet.const (X := markedSpanFamily B.obj (weakEquivalences i) x) (q.hom.app _ x))
+    (SSet.const (X := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (q.hom.app _ x))
   obtain ⟨T⟩ := nonempty_functorCompositionTriangle_of_homEq L H H' (by
     rw [functorHomotopyRefl_hom]
     exact (Category.id_comp _).trans he)
   let L' := functorHomotopyRefl
-    (SSet.const (X := fixedMarkedSpans B.obj (weakEquivalences i) x y) (q.hom.app _ x))
-  let T' := T.precompOfRaw (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
+    (SSet.const (X := fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) (q.hom.app _ x))
+  let T' := T.precompOfRaw (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
     L' (verdierFixedRoofImageHomotopy i q x y H)
       (verdierFixedRoofImageHomotopy i q x y H') (by
         apply SSet.hom_ext
@@ -1370,64 +1375,64 @@ private lemma verdierFixedRoofImageHomotopy_homEq {A B C : StableCategory.{u}}
   rw [functorHomotopyRefl_hom] at ht
   exact (Category.id_comp _).symm.trans ht
 
-private def verdierFixedLiftedConeEvaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedConeEvaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
       intervalMappingSpace (q.hom.app _ x) (q.hom.app _ y) :=
   intervalFamilyOfEdge (functorEdgeOfSimplicialHomotopy
     (verdierFixedRoofImageHomotopy i q x y
       (verdierLiftedIdentityConeImageHomotopy h x p U hU)))
 
-private lemma verdierFixedRoofEvaluation_edge {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedRoofEvaluation_edge {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) :
     functorEdgeOfSimplicialHomotopy (verdierFixedRoofImageHomotopy i q x y
       (verdierSpanQuotientEvaluationHomotopy h x)) =
-    intervalFamilyEdge (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) := by
+    intervalFamilyEdge (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
   apply Truncated.Edge.ext
   change SSet.yonedaEquiv (curry
-    ((fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ▷ (Δ[1] : SSet.{u})) ≫
-      (β_ (markedSpanFamily B.obj (weakEquivalences i) x) Δ[1]).hom ≫
+    ((fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ▷ (Δ[1] : SSet.{u})) ≫
+      (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) Δ[1]).hom ≫
         uncurry (verdierSpanQuotientEvaluationFamily h x))) =
     SSet.yonedaEquiv (curry
-      ((β_ (fixedMarkedSpans B.obj (weakEquivalences i) x y) Δ[1]).hom ≫
+      ((β_ (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) Δ[1]).hom ≫
         intervalMappingUncurry
-          (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y)))
+          (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)))
   apply congrArg SSet.yonedaEquiv
   apply congrArg curry
-  have hn : (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ▷
+  have hn : (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ▷
       (Δ[1] : SSet.{u})) ≫
-        (β_ (markedSpanFamily B.obj (weakEquivalences i) x) Δ[1]).hom =
-      (β_ (fixedMarkedSpans B.obj (weakEquivalences i) x y) Δ[1]).hom ≫
-        (Δ[1] ◁ fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y) := by
+        (β_ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) Δ[1]).hom =
+      (β_ (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) Δ[1]).hom ≫
+        (Δ[1] ◁ fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) := by
     apply SSet.hom_ext
     intro n
     rfl
   rw [← Category.assoc, hn, Category.assoc, ← uncurry_natural_left]
-  change (β_ (fixedMarkedSpans B.obj (weakEquivalences i) x y) Δ[1]).hom ≫
-      uncurry (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫
-        (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
-          fractionSpanEvaluation q.hom (weakEquivalences i) h.inverts)) =
-    (β_ (fixedMarkedSpans B.obj (weakEquivalences i) x y) Δ[1]).hom ≫
-      uncurry (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y ≫
+  change (β_ (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) Δ[1]).hom ≫
+      uncurry (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+        (vertexFiberι (markedSpanSource B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫
+          fractionSpanEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts)) =
+    (β_ (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) Δ[1]).hom ≫
+      uncurry (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
         vertexFiberι ((pre (boundary 1).ι).app C.obj)
           (functorVertex (intervalMappingBoundary (q.hom.app _ x) (q.hom.app _ y))))
   rw [fixedFractionEvaluation_inclusion, ← Category.assoc,
     fixedMarkedSpanToFamily_inclusion]
 
-private lemma verdierFixedLiftedConeEvaluation_hom {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedConeEvaluation_hom {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     intervalFamilyHom (verdierFixedLiftedConeEvaluation h x y p U hU) =
       intervalFamilyHom
-        (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) := by
+        (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
   have he := verdierFixedRoofImageHomotopy_homEq i q x y
     (verdierLiftedIdentityConeImageHomotopy h x p U hU)
     (verdierSpanQuotientEvaluationHomotopy h x)
@@ -1440,67 +1445,67 @@ private lemma verdierFixedLiftedConeEvaluation_hom {A B C : StableCategory.{u}}
   exact he.trans (congrArg Truncated.HomotopyCategory.homMk
     (verdierFixedRoofEvaluation_edge h x y))
 
-private def verdierFixedLiftedConeEvaluationHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedConeEvaluationHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     SSet.Homotopy (verdierFixedLiftedConeEvaluation h x y p U hU)
-      (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) :=
+      (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) :=
   Classical.choice (intervalFamilyHom_eq_iff_homotopy.mp
     (verdierFixedLiftedConeEvaluation_hom h x y p U hU))
 
-private def verdierFixedLiftedConeEvaluationIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedConeEvaluationIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso (verdierFixedLiftedConeEvaluation h x y p U hU)
-      (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) := by
+      (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
   let H := verdierFixedLiftedConeEvaluationHomotopy h x y p U hU
   haveI : IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj
-      ((ihom (fixedMarkedSpans B.obj (weakEquivalences i) x y)).obj
+      ((ihom (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)).obj
         (intervalMappingSpace (q.hom.app _ x) (q.hom.app _ y)))) _
   exact asIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
 
-private lemma verdierLiftedIdentity_vertex_image {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentity_vertex_image {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     p.app _ (U.app _ (verdierIdentitySpanFamily h x)) = q.hom.app _ x := by
   have he := congrArg (fun F => F.app (Opposite.op ⦋0⦌)
     (verdierIdentitySpanFamily h x)) hU
   change _ = q.hom.app _
-    ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app _
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x).app _
       (verdierIdentitySpanFamily h x)) at he
   rw [verdierIdentitySpanFamily_projection] at he
   exact he
 
-private def verdierLiftedConeImageData {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedConeImageData {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     PointSourceCosliceData (q.hom.app _ x)
-      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
       (homotopyFatCone (verdierLiftedIdentityHomotopy h x p U hU) ≫ p) := by
   let H := verdierLiftedIdentityHomotopy h x p U hU
   let R := verdierLiftedIdentityConeRealization h x p U hU
   have hv : SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x)) ≫ p =
       SSet.yonedaEquiv.symm (q.hom.app _ x) := by
     rw [SSet.yonedaEquiv_symm_comp, verdierLiftedIdentity_vertex_image h x p U hU]
-  have hl : joinInl Δ[0] (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+  have hl : joinInl Δ[0] (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
       R.cone.val = SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x)) := by
     apply SSet.yonedaEquiv.injective
     rw [Equiv.apply_symm_apply]
     exact R.vertex_eq
-  have hF : fatJoinEndpointInclusion Δ[0] (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+  have hF : fatJoinEndpointInclusion Δ[0] (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) ≫
       homotopyFatCone H = joinEndpointDesc
         (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))) U := by
     apply SSet.hom_ext
@@ -1532,21 +1537,21 @@ private def verdierLiftedConeImageData {A B C : StableCategory.{u}}
   rw [← Category.assoc, R.boundary, Category.assoc, ← hF]
   simp only [Category.assoc]
 
-private lemma verdierLiftedConeImage_fixedPrism {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedConeImage_fixedPrism {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    leftIntervalFatPrism (fixedMarkedSpans B.obj (weakEquivalences i) x y) ≫
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    leftIntervalFatPrism (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) ≫
       (fatJoinMap (𝟙 (Δ[0] : SSet.{u}))
-        (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y) ≫
+        (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) ≫
           (homotopyFatCone (verdierLiftedIdentityHomotopy h x p U hU) ≫ p)) =
       intervalMappingUncurry (verdierFixedLiftedConeEvaluation h x y p U hU) := by
   let H := verdierLiftedIdentityHomotopy h x p U hU
-  let σ := fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y
-  let K := markedSpanFamily B.obj (weakEquivalences i) x
-  let P := fixedMarkedSpans B.obj (weakEquivalences i) x y
+  let σ := fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y
+  let K := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
+  let P := fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y
   have ha : intervalFamilyHomotopy (verdierFixedLiftedConeEvaluation h x y p U hU) =
       verdierFixedRoofImageHomotopy i q x y
         (verdierLiftedIdentityConeImageHomotopy h x p U hU) := by
@@ -1573,80 +1578,80 @@ private lemma verdierLiftedConeImage_fixedPrism {A B C : StableCategory.{u}}
     ← Category.assoc, ← Category.assoc, hb, Category.assoc, Category.assoc, ← hea,
     ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 
-private def verdierFixedLiftedCosliceEvaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCosliceEvaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
       vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
         (q.hom.app _ y) :=
   (verdierLiftedConeImageData h x p U hU).toFiber
-    (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
-    (fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y)
+    (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
 
-private def verdierFixedLiftedCosliceHomotopy {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCosliceHomotopy {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     SSet.Homotopy
       (verdierFixedLiftedCosliceEvaluation h x y p U hU ≫
         cosliceFiberToIntervalMappingSpace (q.hom.app _ x) (q.hom.app _ y))
       (verdierFixedLiftedConeEvaluation h x y p U hU) :=
   (verdierLiftedConeImageData h x p U hU).toFiberIntervalHomotopy
-    (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
-    (fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y)
+    (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
     (verdierFixedLiftedConeEvaluation h x y p U hU)
     (verdierLiftedConeImage_fixedPrism h x y p U hU)
 
-private def verdierFixedLiftedCosliceIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCosliceIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso
       (verdierFixedLiftedCosliceEvaluation h x y p U hU ≫
         cosliceFiberToIntervalMappingSpace (q.hom.app _ x) (q.hom.app _ y))
-      (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y) := by
+      (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
   let H := verdierFixedLiftedCosliceHomotopy h x y p U hU
   haveI : IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj
-      ((ihom (fixedMarkedSpans B.obj (weakEquivalences i) x y)).obj
+      ((ihom (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)).obj
         (intervalMappingSpace (q.hom.app _ x) (q.hom.app _ y)))) _
   exact asIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) ≪≫
     verdierFixedLiftedConeEvaluationIso h x y p U hU
 
-private lemma verdierLiftedIdentityPointMap_eq {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedIdentityPointMap_eq {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x)) ≫ p =
       SSet.yonedaEquiv.symm (q.hom.app _ x) := by
   rw [SSet.yonedaEquiv_symm_comp, verdierLiftedIdentity_vertex_image h x p U hU]
 
-private def verdierLiftedCosliceProjection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedCosliceProjection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     sliceUnder (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))) ⟶
       sliceUnder (SSet.yonedaEquiv.symm (q.hom.app _ x)) :=
   sliceUnderPostcomp (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))) p ≫
     eqToHom (congrArg sliceUnder (verdierLiftedIdentityPointMap_eq h x p U hU))
 
-private lemma verdierLiftedCosliceProjection_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceProjection_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierLiftedCosliceProjection h x p U hU ≫
       sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)) =
     sliceUnderProjection (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))) ≫ p := by
@@ -1654,12 +1659,12 @@ private lemma verdierLiftedCosliceProjection_projection {A B C : StableCategory.
     sliceUnder_eqToHom_projection (verdierLiftedIdentityPointMap_eq h x p U hU)]
   exact sliceUnderPostcomp_projection _ _
 
-private lemma verdierLiftedCosliceProjection_trivialKan {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceProjection_trivialKan {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     TrivialKanFibration (verdierLiftedCosliceProjection h x p U hU) := by
   constructor
   exact trivialKanFibrations.comp_mem _ _
@@ -1667,48 +1672,48 @@ private lemma verdierLiftedCosliceProjection_trivialKan {A B C : StableCategory.
       (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))) p).mem
     (MorphismProperty.rlp_of_isIso _ _)
 
-private def verdierFixedLiftedConeTotal {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedConeTotal {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
       leftFibrationInitialTotal p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y) :=
   vertexFiberLift _ _
-    (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫
+    (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
       verdierLiftedIdentityCoslice h x p U hU) (by
     rw [Category.assoc, ← Category.assoc (verdierLiftedIdentityCoslice h x p U hU),
       verdierLiftedIdentityCoslice_projection, hU,
-      fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y])
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y])
 
-private def verdierFixedLiftedConeProjection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedConeProjection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     leftFibrationInitialTotal p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y) ⟶
       vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) (q.hom.app _ y) :=
   vertexFiberMap _ _ (verdierLiftedCosliceProjection h x p U hU)
     (verdierLiftedCosliceProjection_projection h x p U hU) (q.hom.app _ y)
 
-private lemma verdierFixedLiftedConeProjection_trivialKan {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedConeProjection_trivialKan {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     TrivialKanFibration (verdierFixedLiftedConeProjection h x y p U hU) := by
   letI := verdierLiftedCosliceProjection_trivialKan h x p U hU
   exact HomotopyLimits.vertexFiberMap_trivialKanFibration _ _ _ _ _
 
-private lemma verdierFixedLiftedConeTotal_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedConeTotal_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierFixedLiftedConeTotal h x y p U hU ≫ verdierFixedLiftedConeProjection h x y p U hU =
       verdierFixedLiftedCosliceEvaluation h x y p U hU := by
   apply vertexFiber_hom_ext _ _
@@ -1724,22 +1729,22 @@ private lemma verdierFixedLiftedConeTotal_projection {A B C : StableCategory.{u}
   rw [sliceUnder_eqToHom_app_val (verdierLiftedIdentityPointMap_eq h x p U hU)]
   rfl
 
-private def verdierFixedLiftedFamily {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedFamily {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶ vertexFiber p (q.hom.app _ y) :=
-  vertexFiberLift _ _ (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫ U) (by
-    rw [Category.assoc, hU, fixedMarkedSpanToFamily_target q.hom (weakEquivalences i) x y])
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶ vertexFiber p (q.hom.app _ y) :=
+  vertexFiberLift _ _ (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫ U) (by
+    rw [Category.assoc, hU, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y])
 
-private lemma verdierFixedLiftedConeTotal_evaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedConeTotal_evaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierFixedLiftedConeTotal h x y p U hU ≫
       leftFibrationInitialEvaluation p (U.app _ (verdierIdentitySpanFamily h x))
         (q.hom.app _ y) = verdierFixedLiftedFamily h x y p U hU := by
@@ -1749,12 +1754,12 @@ private lemma verdierFixedLiftedConeTotal_evaluation {A B C : StableCategory.{u}
     verdierFixedLiftedFamily, vertexFiberLift_ι, Category.assoc,
     verdierLiftedIdentityCoslice_projection]
 
-private def verdierFixedLiftedBaseEquivalence {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedBaseEquivalence {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     QCatEquivalence
       (leftFibrationInitialTotal p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y))
       (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
@@ -1764,23 +1769,23 @@ private def verdierFixedLiftedBaseEquivalence {A B C : StableCategory.{u}}
   letI := verdierFixedLiftedConeProjection_trivialKan h x y p U hU
   exact qCatEquivalenceOfTrivialKanFibration (verdierFixedLiftedConeProjection h x y p U hU)
 
-private def verdierFixedLiftedNativeComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedNativeComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
       (q.hom.app _ y) ⟶ vertexFiber p (q.hom.app _ y) :=
   (verdierFixedLiftedBaseEquivalence h x y p U hU).inv ≫
     leftFibrationInitialEvaluation p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y)
 
-private def verdierFixedLiftedNativeTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedNativeTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso
       (verdierFixedLiftedCosliceEvaluation h x y p U hU ≫
         verdierFixedLiftedNativeComparison h x y p U hU)
@@ -1803,8 +1808,8 @@ private def verdierFixedLiftedNativeTriangle {A B C : StableCategory.{u}}
   rw [verdierFixedLiftedConeTotal_projection, verdierFixedLiftedConeTotal_evaluation] at ht'
   exact ht'
 
-private def verdierFixedIntervalBaseEquivalence {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedIntervalBaseEquivalence {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) :
     QCatEquivalence
       (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
@@ -1815,24 +1820,24 @@ private def verdierFixedIntervalBaseEquivalence {A B C : StableCategory.{u}}
   exact (cosliceFiberToIntervalMappingSpace_isQCatEquivalence
     (q.hom.app _ x) (q.hom.app _ y)).choose
 
-private def verdierFixedLiftedIntervalComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedIntervalComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     intervalMappingSpace (q.hom.app _ x) (q.hom.app _ y) ⟶ vertexFiber p (q.hom.app _ y) :=
   (verdierFixedIntervalBaseEquivalence h x y).inv ≫
     verdierFixedLiftedNativeComparison h x y p U hU
 
-private def verdierFixedLiftedIntervalTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedIntervalTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso
-      (fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts x y ≫
+      (fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
         verdierFixedLiftedIntervalComparison h x y p U hU)
       (verdierFixedLiftedFamily h x y p U hU) := by
   let d := verdierFixedLiftedCosliceEvaluation h x y p U hU
@@ -1846,42 +1851,42 @@ private def verdierFixedLiftedIntervalTriangle {A B C : StableCategory.{u}}
     simpa only [Category.assoc, Category.comp_id] using h₂
   exact h₁ ≪≫ he ≪≫ h₃
 
-private def verdierFixedLiftedCompletion {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCompletion {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
-    groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y) ⟶
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) ⟶
       vertexFiber p (q.hom.app _ y) := by
   letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
-  exact groupoidCompletionEvaluation (verdierFixedLiftedFamily h x y p U hU)
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (verdierFixedLiftedFamily h x y p U hU)
 
-private def verdierFixedLiftedCompletionTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCompletionTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso
-      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
         verdierFixedLiftedIntervalComparison h x y p U hU)
       (verdierFixedLiftedCompletion h x y p U hU) := by
   letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
-  apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization _)
+  apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization _)
   have he := FunctorIso.postcomp
-      (fractionMappingComparisonIso q.hom (weakEquivalences i) h.inverts x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparisonIso q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)
       (verdierFixedLiftedIntervalComparison h x y p U hU) ≪≫
     verdierFixedLiftedIntervalTriangle h x y p U hU ≪≫
-      (groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU)).symm
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU)).symm
   simpa only [verdierFixedLiftedCompletion, Category.assoc] using he
 
-private lemma verdierLiftedCosliceProjection_identity {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceProjection_identity {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     (verdierLiftedCosliceProjection h x p U hU).app _
       (cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x))) =
       cosliceIdentityCone (q.hom.app _ x) := by
@@ -1892,12 +1897,12 @@ private lemma verdierLiftedCosliceProjection_identity {A B C : StableCategory.{u
   change SSet.const (U.app _ (verdierIdentitySpanFamily h x)) ≫ p = SSet.const (q.hom.app _ x)
   rw [SSet.const_comp, verdierLiftedIdentity_vertex_image h x p U hU]
 
-private lemma exists_verdierLiftedCosliceSection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma exists_verdierLiftedCosliceSection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     ∃ s : sliceUnder (SSet.yonedaEquiv.symm (q.hom.app _ x)) ⟶
         sliceUnder (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))),
       s ≫ verdierLiftedCosliceProjection h x p U hU = 𝟙 _ ∧
@@ -1925,108 +1930,108 @@ private lemma exists_verdierLiftedCosliceSection {A B C : StableCategory.{u}}
   have hs := congrArg SSet.yonedaEquiv sq.fac_left
   simpa only [a, b, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] using hs
 
-private def verdierLiftedCosliceSection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedCosliceSection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :=
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :=
   (exists_verdierLiftedCosliceSection h x p U hU).choose
 
-private lemma verdierLiftedCosliceSection_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceSection_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierLiftedCosliceSection h x p U hU ≫ verdierLiftedCosliceProjection h x p U hU = 𝟙 _ :=
   (exists_verdierLiftedCosliceSection h x p U hU).choose_spec.1
 
-private lemma verdierLiftedCosliceSection_identity {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceSection_identity {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     (verdierLiftedCosliceSection h x p U hU).app _ (cosliceIdentityCone (q.hom.app _ x)) =
       cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x)) :=
   (exists_verdierLiftedCosliceSection h x p U hU).choose_spec.2
 
-private def verdierLiftedCosliceSectionEvaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedCosliceSectionEvaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     sliceUnder (SSet.yonedaEquiv.symm (q.hom.app _ x)) ⟶ E :=
   verdierLiftedCosliceSection h x p U hU ≫
     sliceUnderProjection (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x)))
 
-private lemma verdierLiftedCosliceSectionEvaluation_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceSectionEvaluation_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierLiftedCosliceSectionEvaluation h x p U hU ≫ p =
       sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)) := by
   rw [verdierLiftedCosliceSectionEvaluation, Category.assoc,
     ← verdierLiftedCosliceProjection_projection h x p U hU,
     ← Category.assoc, verdierLiftedCosliceSection_projection, Category.id_comp]
 
-private lemma verdierLiftedCosliceSectionEvaluation_identity {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierLiftedCosliceSectionEvaluation_identity {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     (verdierLiftedCosliceSectionEvaluation h x p U hU).app _
       (cosliceIdentityCone (q.hom.app _ x)) = U.app _ (verdierIdentitySpanFamily h x) := by
   change (sliceUnderProjection _).app _
     ((verdierLiftedCosliceSection h x p U hU).app _ (cosliceIdentityCone (q.hom.app _ x))) = _
   rw [verdierLiftedCosliceSection_identity, cosliceIdentityCone_projection]
 
-private def verdierLiftedIdentityFiberPoint {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedIdentityFiberPoint {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     (vertexFiber p (q.hom.app _ x)) _⦋0⦌ :=
   ⟨U.app _ (verdierIdentitySpanFamily h x), by
     rw [pinchedConstant_zero]
     exact verdierLiftedIdentity_vertex_image h x p U hU⟩
 
-private def verdierLiftedCosliceSectionEvaluation_relativeIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierLiftedCosliceSectionEvaluation_relativeIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     VertexIso
       (relativeFunctorVertex p (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
         (verdierLiftedCosliceSectionEvaluation h x p U hU)
         (verdierLiftedCosliceSectionEvaluation_projection h x p U hU))
       (relativeFunctorVertex p (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
-        (coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
-        (coslicePointFamilyAt_projection p (q.hom.app _ x) _)) := by
-  apply coslicePointEvaluation_relativeIso p (q.hom.app _ x)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) _)) := by
+  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso p (q.hom.app _ x)
     (verdierLiftedCosliceSectionEvaluation_projection h x p U hU)
-    (coslicePointFamilyAt_projection p (q.hom.app _ x) _)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) _)
   apply eqToIso
   apply congrArg HomotopyCategory.mk
   apply Subtype.ext
-  rw [coslicePointEvaluation_vertex_val p (q.hom.app _ x),
-    coslicePointEvaluation_vertex_val p (q.hom.app _ x),
-    verdierLiftedCosliceSectionEvaluation_identity, coslicePointFamilyAt_identity]
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    verdierLiftedCosliceSectionEvaluation_identity, _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity]
   rfl
 
-private def verdierFixedLiftedCosliceSection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedCosliceSection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
       (q.hom.app _ y) ⟶
     leftFibrationInitialTotal p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y) :=
@@ -2034,12 +2039,12 @@ private def verdierFixedLiftedCosliceSection {A B C : StableCategory.{u}}
     (by simpa only [verdierLiftedCosliceSectionEvaluation, Category.assoc] using
       verdierLiftedCosliceSectionEvaluation_projection h x p U hU) (q.hom.app _ y)
 
-private lemma verdierFixedLiftedCosliceSection_projection {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedCosliceSection_projection {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierFixedLiftedCosliceSection h x y p U hU ≫
       verdierFixedLiftedConeProjection h x y p U hU = 𝟙 _ := by
   apply vertexFiber_hom_ext _ _
@@ -2048,12 +2053,12 @@ private lemma verdierFixedLiftedCosliceSection_projection {A B C : StableCategor
     Category.assoc, verdierLiftedCosliceSection_projection,
     Category.comp_id, Category.id_comp]
 
-private lemma verdierFixedLiftedCosliceSection_evaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFixedLiftedCosliceSection_evaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     verdierFixedLiftedCosliceSection h x y p U hU ≫
       leftFibrationInitialEvaluation p (U.app _ (verdierIdentitySpanFamily h x))
         (q.hom.app _ y) =
@@ -2063,16 +2068,16 @@ private lemma verdierFixedLiftedCosliceSection_evaluation {A B C : StableCategor
   rw [verdierFixedLiftedCosliceSection, leftFibrationInitialEvaluation, vertexFiberMap_comp]
   rfl
 
-private def verdierFixedLiftedNativePointIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedNativePointIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom) :
     FunctorIso (verdierFixedLiftedNativeComparison h x y p U hU)
       (vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
-        (coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
-        (coslicePointFamilyAt_projection p (q.hom.app _ x) _) (q.hom.app _ y)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) _) (q.hom.app _ y)) := by
   let e := verdierFixedLiftedBaseEquivalence h x y p U hU
   let s := verdierFixedLiftedCosliceSection h x y p U hU
   let ev := leftFibrationInitialEvaluation p
@@ -2090,34 +2095,34 @@ private def verdierFixedLiftedNativePointIso {A B C : StableCategory.{u}}
   rw [relativeFunctorFiberHom_vertex, relativeFunctorFiberHom_vertex] at hr
   exact ht ≪≫ hr
 
-private def verdierFixedLiftedNativeSpecifiedPointIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedNativeSpecifiedPointIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (w : (vertexFiber p (q.hom.app _ x)) _⦋0⦌)
     (e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU) w) :
     FunctorIso (verdierFixedLiftedNativeComparison h x y p U hU)
       (vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
-        (coslicePointFamilyAt p (q.hom.app _ x) w)
-        (coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) w)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)) := by
   let v := verdierLiftedIdentityFiberPoint h x p U hU
   have hv : (leftFibrationCoslicePointEvaluate p (q.hom.app _ x)).app _
-      (relativeFunctorVertex p _ (coslicePointFamilyAt p (q.hom.app _ x) v)
-        (coslicePointFamilyAt_projection p (q.hom.app _ x) v)) = v := by
+      (relativeFunctorVertex p _ (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) v)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) v)) = v := by
     apply Subtype.ext
-    exact (coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
-      (coslicePointFamilyAt_identity p (q.hom.app _ x) v)
+    exact (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity p (q.hom.app _ x) v)
   have hw : (leftFibrationCoslicePointEvaluate p (q.hom.app _ x)).app _
-      (relativeFunctorVertex p _ (coslicePointFamilyAt p (q.hom.app _ x) w)
-        (coslicePointFamilyAt_projection p (q.hom.app _ x) w)) = w := by
+      (relativeFunctorVertex p _ (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) w)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) w)) = w := by
     apply Subtype.ext
-    exact (coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
-      (coslicePointFamilyAt_identity p (q.hom.app _ x) w)
-  have hr := coslicePointEvaluation_relativeIso p (q.hom.app _ x)
-    (coslicePointFamilyAt_projection p (q.hom.app _ x) v)
-    (coslicePointFamilyAt_projection p (q.hom.app _ x) w)
+    exact (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity p (q.hom.app _ x) w)
+  have hr := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso p (q.hom.app _ x)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) v)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) w)
     (eqToIso (congrArg HomotopyCategory.mk hv) ≪≫ e ≪≫
       eqToIso (congrArg HomotopyCategory.mk hw.symm))
   have hf := VertexIso.map hr (relativeFunctorFiberHom
@@ -2125,86 +2130,86 @@ private def verdierFixedLiftedNativeSpecifiedPointIso {A B C : StableCategory.{u
   rw [relativeFunctorFiberHom_vertex, relativeFunctorFiberHom_vertex] at hf
   exact verdierFixedLiftedNativePointIso h x y p U hU ≪≫ hf
 
-private def verdierFixedLiftedSpecifiedPointTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierFixedLiftedSpecifiedPointTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
     (p : E ⟶ C.obj) [LeftFibration p]
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
-    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (w : (vertexFiber p (q.hom.app _ x)) _⦋0⦌)
     (e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU) w) :
     FunctorIso
-      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
         ((verdierFixedIntervalBaseEquivalence h x y).inv ≫
           vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
-            (coslicePointFamilyAt p (q.hom.app _ x) w)
-            (coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)))
+            (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt p (q.hom.app _ x) w)
+            (_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)))
       (verdierFixedLiftedCompletion h x y p U hU) := by
   have he := FunctorIso.precomp
     (FunctorIso.precomp (verdierFixedLiftedNativeSpecifiedPointIso h x y p U hU w e)
       (verdierFixedIntervalBaseEquivalence h x y).inv)
-    (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)
   exact he.symm ≪≫ verdierFixedLiftedCompletionTriangle h x y p U hU
 
-private def verdierWeakQuotientUnitTriangle {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierWeakQuotientUnitTriangle {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌)
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (e : VertexIso
       (verdierLiftedIdentityFiberPoint h x
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
-      (weakIdentityQuotientFiberPoint h x)) :
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x)) :
     FunctorIso
-      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫
         ((verdierFixedIntervalBaseEquivalence h x y).inv ≫
           vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
-            (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+            (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
             (weakQuotientCosliceUnit h x) (weakQuotientCosliceUnit_projection h x)
             (q.hom.app _ y)))
       (verdierFixedLiftedCompletion h x y
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU) := by
-  simpa only [coslicePointFamilyAt, weakQuotientCosliceUnit] using
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU) := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt, weakQuotientCosliceUnit] using
     verdierFixedLiftedSpecifiedPointTriangle h x y
-      (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU
-      (weakIdentityQuotientFiberPoint h x) e
+      (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x) e
 
-private lemma verdierFractionComparison_of_wholeFamilyUnit {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFractionComparison_of_wholeFamilyUnit {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌)
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (e : VertexIso
       (verdierLiftedIdentityFiberPoint h x
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
-      (weakIdentityQuotientFiberPoint h x))
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x))
     (hunit : IsQCatEquivalence (verdierFixedLiftedCompletion h x y
-      (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)) :
-    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
+      (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU)) :
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
   let a := sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
   let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram a)
   let u := weakQuotientCosliceUnit h x
-  let c := weakQuotientCosliceComparison h x
+  let c := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison h x
   let b := q.hom.app (Opposite.op ⦋0⦌) y
   let uf := vertexFiberMap a p u (weakQuotientCosliceUnit_projection h x) b
-  let cf := vertexFiberMap p r c (weakQuotientCosliceComparison_projection h x) b
+  let cf := vertexFiberMap p r c (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComparison_projection h x) b
   let β := (verdierFixedIntervalBaseEquivalence h x y).inv ≫ uf
   letI := vertexFiber_kanComplex_of_leftFibration a b
   letI := vertexFiber_kanComplex_of_leftFibration p b
   letI := vertexFiber_kanComplex_of_leftFibration r b
   have hfg : IsQCatEquivalence
-      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫ β) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y ≫ β) :=
     hunit.ofFunctorIso (verdierWeakQuotientUnitTriangle h x y U hU e).symm
   have huc : IsQCatEquivalence (uf ≫ cf) := by
     rw [vertexFiberMap_comp]
     exact vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence a r
-      (weakQuotientCosliceComposite h x) (weakQuotientCosliceComposite_projection h x)
-      (weakCosliceComposite_isPrecompositionEquivalence h x) b
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite h x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceComposite_projection h x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_isPrecompositionEquivalence h x) b
   have hβc : IsQCatEquivalence (β ≫ cf) := by
     change IsQCatEquivalence
       (((verdierFixedIntervalBaseEquivalence h x y).inv ≫ uf) ≫ cf)
@@ -2213,22 +2218,22 @@ private lemma verdierFractionComparison_of_wholeFamilyUnit {A B C : StableCatego
   have hβ : IsQCatEquivalence β := isQCatEquivalence_of_composites hfg hβc
   exact (hβ.cancel_right hfg).isFullyFaithful
 
-private def verdierWeakFiberGroupoidEquivalence {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private def verdierWeakFiberGroupoidEquivalence {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) :
     QCatEquivalence
-      (vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+      (vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         (q.hom.app _ y))
-      (groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y)) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) := by
   let c := transportSimplexIndex (n := ⦋0⦌) y
-  let K := (weakSpanKanDiagram i x).obj c
-  let F := weakSpanKanQuotientDiagram h x
+  let K := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c
+  let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
   letI := vertexFiber_kanComplex_of_leftFibration (smallLeftUnstraighteningProjection F)
     (q.hom.app _ y)
   have hv : VertexIso (F.app (Opposite.op ⦋0⦌) (ULift.up (q.hom.app _ y)))
       (spaceInfinityVertex K) := by
-    have hi := weakSpanKanQuotientDiagram_initialVertexIso h x c
-    simpa only [c, transportSimplexFirstVertexMap_zeroIndex] using hi
+    have hi := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_initialVertexIso h x c
+    simpa only [c, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex] using hi
   let a := (homotopyCategory_homMk_surjective _ _ hv.hom).choose
   have ha : Truncated.HomotopyCategory.homMk a = hv.hom :=
     (homotopyCategory_homMk_surjective _ _ hv.hom).choose_spec
@@ -2242,39 +2247,39 @@ private def verdierWeakFiberGroupoidEquivalence {A B C : StableCategory.{u}}
     (SSet.Edge.ofTruncated a) he).choose
   let eK := qCatEquivalenceOfIso (eqToIso
     (congrArg KanObject.obj (spaceInfinityVertexEquiv.left_inv K)))
-  let eg := weakSpanKanValueGroupoidEquivalence i x c
+  let eg := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueGroupoidEquivalence i x c
   let ey := qCatEquivalenceOfIso (eqToIso
-    (congrArg (fun z => groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x z))
-      (transportSimplexFirstVertexMap_zeroIndex y)))
+    (congrArg (fun z => _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x z))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y)))
   exact ((smallLeftUnstraighteningFiberValueEquivalence F (q.hom.app _ y)).trans e).trans
     (eK.trans (eg.trans ey))
 
-private lemma verdierFractionComparison_of_wholeFamilyRecovery {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFractionComparison_of_wholeFamilyRecovery {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌)
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (e : VertexIso
       (verdierLiftedIdentityFiberPoint h x
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
-      (weakIdentityQuotientFiberPoint h x))
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x))
     (hrecovery : FunctorIso
       (verdierFixedLiftedFamily h x y
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU ≫
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU ≫
           (verdierWeakFiberGroupoidEquivalence h x y).hom)
-      (groupoidCompletionMap (fixedMarkedSpans B.obj (weakEquivalences i) x y))) :
-    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))) :
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
   letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
   have he : FunctorIso
       (verdierFixedLiftedCompletion h x y p U hU ≫
         (verdierWeakFiberGroupoidEquivalence h x y).hom)
-      (𝟙 (groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y))) := by
-    apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization _)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))) := by
+    apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization _)
     have ht := FunctorIso.postcomp
-      (groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU))
       (verdierWeakFiberGroupoidEquivalence h x y).hom ≪≫ hrecovery
     simpa only [verdierFixedLiftedCompletion, Category.assoc, Category.comp_id] using ht
   have hc : IsQCatEquivalence
@@ -2286,69 +2291,75 @@ private lemma verdierFractionComparison_of_wholeFamilyRecovery {A B C : StableCa
   exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e hu
 
 /-- 元の全族の実 Kan 単位回収を、既存の亜群化比較を介して私有判定へ渡す。 -/
-private lemma verdierFractionComparison_of_kanUnitRecovery {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+private lemma verdierFractionComparison_of_kanUnitRecovery {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌)
-    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
-      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
-    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (U : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶
+      smallLeftUnstraightening (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom)
     (e : VertexIso
       (verdierLiftedIdentityFiberPoint h x
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
-      (weakIdentityQuotientFiberPoint h x))
-    (v : vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
-      (q.hom.app _ y) ⟶ (strictKanCompletion.obj
-        (fixedMarkedSpans B.obj (weakEquivalences i) x y)).obj)
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x))
+    (v : vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
+      (q.hom.app _ y) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.obj
+        (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)).obj)
     (hv : IsQCatEquivalence v)
     (hrecovery : FunctorIso
       (verdierFixedLiftedFamily h x y
-        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU ≫ v)
-      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y))) :
-    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
-  let X := fixedMarkedSpans B.obj (weakEquivalences i) x y
+        (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)) U hU ≫ v)
+      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))) :
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
+  let X := fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y
   letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
   have he : FunctorIso
       (verdierFixedLiftedCompletion h x y p U hU ≫ v)
-      (groupoidCompletionKanComparison X) := by
-    apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization X)
-    have ht := (groupoidCompletionEvaluationIso
+      (_root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison X) := by
+    apply localizationFactorizationIso _ _ (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization X)
+    have ht := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso
       (verdierFixedLiftedFamily h x y p U hU)).postcomp v ≪≫ hrecovery ≪≫
-        (groupoidCompletionEvaluationIso (F2.continuousKanReplacementUnit.app X)).symm
-    simpa only [verdierFixedLiftedCompletion, groupoidCompletionKanComparison,
+        (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (F2.continuousKanReplacementUnit.app X)).symm
+    simpa only [verdierFixedLiftedCompletion, _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison,
       Category.assoc] using! ht
-  have hc := (groupoidCompletionKanComparison_isQCatEquivalence X).ofFunctorIso he.symm
+  have hc := (_root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison_isQCatEquivalence X).ofFunctorIso he.symm
   exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e (hv.cancel_right hc)
 
 /-- 概要：元の一般 Verdier 分数比較は全写像空間で充満忠実。
 方針：実全族写像・同じ底・全固定 fiber の Kan 単位回収・元の恒等点照合を適用する。
 規約：全族単位や fiber 同値を追加入力にしない。
 使われ方：K-B の分数比較と K-S• の再開条件。 -/
-lemma verdierFractionMappingComparison_isFullyFaithful {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma verdierFractionMappingComparison_isFullyFaithful {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) :
-    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
-  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)
   let U := weakSpanKanQuotientFamilyMap h x
-  have hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom :=
+  have hU : U ≫ p = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ≫ q.hom :=
     weakSpanKanQuotientFamilyMap_projection h x
   have hi : verdierLiftedIdentityFiberPoint h x p U hU =
-      (weakSpanKanQuotientFamilyFixedFiber h x x).app (Opposite.op ⦋0⦌)
-        (weakIdentityFixedSpan h x) := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber h x x).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan h x) := by
     apply Subtype.ext
     change U.app _ (verdierIdentitySpanFamily h x) =
-      U.app _ ((fixedMarkedSpanToFamily B.obj (weakEquivalences i) x x).app _
-        (weakIdentityFixedSpan h x))
+      U.app _ ((fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x x).app _
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan h x))
     congr 1
   let e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU)
-      (weakIdentityQuotientFiberPoint h x) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberPoint h x) :=
     eqToIso (congrArg HomotopyCategory.mk hi) ≪≫
-      weakSpanKanQuotientFamilyFixedFiber_identityIso h x
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber_identityIso h x
   apply verdierFractionComparison_of_kanUnitRecovery h x y U hU e
-    (weakSpanKanQuotientZeroValueComparison h x y)
-    (weakSpanKanQuotientZeroValueComparison_isQCatEquivalence h x y)
-  simpa only [verdierFixedLiftedFamily, weakSpanKanQuotientFamilyFixedFiber] using!
-    weakSpanKanQuotientFamilyFixedFiber_recovery h x y
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison h x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison_isQCatEquivalence h x y)
+  simpa only [verdierFixedLiftedFamily, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber] using!
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber_recovery h x y
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionMappingComparison_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionMappingComparison_isFullyFaithful

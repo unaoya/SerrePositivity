@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded KST.NonConnective SSet MonoidalClosed
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (A B : Type v)
   [DGCategory R A] [Small.{u} A] [DGCategory R B] [Small.{u} B]
   {κ : Cardinal.{u}} (IA : DGKappaConeInput R A κ) (IB : DGKappaConeInput R B κ)

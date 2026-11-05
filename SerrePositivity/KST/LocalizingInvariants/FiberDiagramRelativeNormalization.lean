@@ -48,7 +48,7 @@ lemma normalization_inv_right_arrow (D : FiberDiagram.{u}) :
     Arrow.mk (rightRestriction.map (normalization D).inv) =
       Arrow.mk (𝟙 (rightRestriction.obj D)) := by
   let e := rightRestriction.mapIso (normalization D)
-  have hi := arrow_mk_inv_congr (f := e.hom) (g := 𝟙 (rightRestriction.obj D))
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := 𝟙 (rightRestriction.obj D))
     (normalization_right_arrow D)
   simp only [IsIso.Iso.inv_hom, IsIso.inv_id] at hi
   exact hi
@@ -56,11 +56,11 @@ lemma normalization_inv_right_arrow (D : FiberDiagram.{u}) :
 lemma normalizedHom_right_arrow {D E : FiberDiagram.{u}} (f : D ⟶ E) :
     Arrow.mk (rightRestriction.map (normalizedHom f)) = Arrow.mk (rightRestriction.map f) := by
   rw [normalizedHom, Functor.map_comp, Functor.map_comp]
-  have h₀ := arrow_mk_comp_of_any_identity
+  have h₀ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity
     (rightRestriction.map (normalization D).inv)
     (rightRestriction.map f ≫ rightRestriction.map (normalization E).hom)
     (normalization_inv_right_arrow D)
-  exact h₀.trans (arrow_mk_comp_right_of_any_identity _ _ (normalization_right_arrow E))
+  exact h₀.trans (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_right_of_any_identity _ _ (normalization_right_arrow E))
 
 lemma normalizedHom_right_nativePresentation {D E : FiberDiagram.{u}} (f : D ⟶ E) :
     Arrow.mk (rightRestriction.map (normalizedHom f)) = Arrow.mk (nativeRightPresentation f) :=

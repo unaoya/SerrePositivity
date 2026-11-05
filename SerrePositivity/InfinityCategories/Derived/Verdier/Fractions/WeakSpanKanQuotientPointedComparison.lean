@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap
 public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
@@ -16,12 +18,15 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
 /-- 概要：同じ商上の全空間射の pointed-space 成分は、指定降下同型の実作用そのもの。
 方針：小さい底変換の縮小自然性と元の pointed-space 射影式を合成する。
@@ -29,26 +34,26 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 使われ方：K-B-S の全 fiber と指定恒等点の照合に使う同じ実射。 -/
 theorem weakSpanKanQuotientSimplexUnstraighteningMap_pointed :
     (SSet.uliftFunctor.{u + 1, u}).map
-        (weakSpanKanQuotientSimplexUnstraighteningMap h x) ≫
-      (smallLeftUnstraighteningIso (weakSpanKanQuotientDiagram h x)).hom ≫
-        pullback.fst pointedSpaceProjection (weakSpanKanQuotientDiagram h x) =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x) ≫
+      (smallLeftUnstraighteningIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)).hom ≫
+        pullback.fst pointedSpaceProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) =
     (SSet.uliftFunctor.{u + 1, u}).map
-        (smallUnstraighteningFunctorHom (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom) ≫
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom) ≫
       (smallLeftUnstraighteningIso
         ((SSet.uliftFunctor.{u + 1, u}).map
-          (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ weakSpanKanQuotientDiagram h x)).hom ≫
+          (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)).hom ≫
         pullback.fst pointedSpaceProjection
           ((SSet.uliftFunctor.{u + 1, u}).map
-            (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ weakSpanKanQuotientDiagram h x) := by
-  let Q := weakSpanKanQuotientDiagram h x
+            (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x) := by
+  let Q := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
   let α := transportSimplexFirstVertexMap B.obj ≫ q.hom
   let P := (SSet.uliftFunctor.{u + 1, u}).map α ≫ Q
   have hb := congrArg (fun f => f ≫ pullback.fst pointedSpaceProjection Q)
     (smallLeftUnstraighteningMap_naturality P Q α rfl)
   simp only [Category.assoc, leftUnstraighteningMap_pointed] at hb
   have he := congrArg (fun f => (SSet.uliftFunctor.{u + 1, u}).map
-    (smallUnstraighteningFunctorHom (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom) ≫ f) hb
-  simpa only [weakSpanKanQuotientSimplexUnstraighteningMap,
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom) ≫ f) hb
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap,
     CategoryTheory.Functor.map_comp, Category.assoc] using he
 
 /-- 概要：指定降下同型による同じ実比較の全 fiber 作用は、同じ代表パラメータの transport。
@@ -57,47 +62,47 @@ theorem weakSpanKanQuotientSimplexUnstraighteningMap_pointed :
 使われ方：Ind-S (5) の単位を同じ商 fiber の全単体へ送る際の指定作用。 -/
 def weakSpanKanQuotientSimplexComparisonFiberTransportIso
     (c : TransportSimplexCategory B.obj) :
-    let F := weakSpanKanCoherentDiagram i x
+    let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x
     let G := (SSet.uliftFunctor.{u + 1, u}).map
-      (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ weakSpanKanQuotientDiagram h x
-    let a := (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
+      (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
+    let a := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
     let b := nerveVertex c
     FunctorIso
       ((SSet.uliftFunctor.{u + 1, u}).map
         (vertexFiberMap (smallLeftUnstraighteningProjection F)
-          (smallLeftUnstraighteningProjection G) (smallUnstraighteningFunctorHom a)
-          (smallUnstraighteningFunctorHom_projection a) b) ≫
+          (smallLeftUnstraighteningProjection G) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+          (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b) ≫
         (smallLeftUnstraighteningFiberIso G b).hom ≫
           (leftUnstraighteningFiberIso G (ULift.up b)).hom)
       ((smallLeftUnstraighteningFiberIso F b).hom ≫
         (leftUnstraighteningFiberIso F (ULift.up b)).hom ≫
           edgeTransport pointedSpaceProjection
-            (functorEdgeAt (intervalMappingEdgeOfVertex (smallUnstraighteningHomParameter a))
+            (functorEdgeAt (intervalMappingEdgeOfVertex (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a))
               (ULift.up b))) := by
-  let F := weakSpanKanCoherentDiagram i x
+  let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x
   let G := (SSet.uliftFunctor.{u + 1, u}).map
-    (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ weakSpanKanQuotientDiagram h x
-  let a := (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
+    (transportSimplexFirstVertexMap B.obj ≫ q.hom) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
+  let a := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
   let b := nerveVertex c
   have ht := (leftUnstraighteningMappingVertex_pointedFiberTransportIso F G
-    (smallUnstraighteningHomParameter a) (ULift.up b)).precomp
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a) (ULift.up b)).precomp
       ((smallLeftUnstraighteningFiberIso F b).hom ≫
         (leftUnstraighteningFiberIso F (ULift.up b)).hom)
   simp only [leftUnstraighteningPointedFiberMap, Category.assoc, Iso.hom_inv_id_assoc] at ht
   have hn := congrArg (fun f => f ≫ (leftUnstraighteningFiberIso G (ULift.up b)).hom)
-    (smallLeftUnstraighteningOverMap_fiber_naturality F G (unstraighteningFunctorHom a)
-      (unstraighteningFunctorHom_projection a) b)
+    (smallLeftUnstraighteningOverMap_fiber_naturality F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a)
+      (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom_projection a) b)
   have hn' : (SSet.uliftFunctor.{u + 1, u}).map
       (vertexFiberMap (smallLeftUnstraighteningProjection F)
-        (smallLeftUnstraighteningProjection G) (smallUnstraighteningFunctorHom a)
-        (smallUnstraighteningFunctorHom_projection a) b) ≫
+        (smallLeftUnstraighteningProjection G) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b) ≫
       (smallLeftUnstraighteningFiberIso G b).hom ≫
         (leftUnstraighteningFiberIso G (ULift.up b)).hom =
     (smallLeftUnstraighteningFiberIso F b).hom ≫
       vertexFiberMap (leftUnstraighteningProjection F) (leftUnstraighteningProjection G)
-        (unstraighteningFunctorHom a) (unstraighteningFunctorHom_projection a) (ULift.up b) ≫
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom a) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.unstraighteningFunctorHom_projection a) (ULift.up b) ≫
           (leftUnstraighteningFiberIso G (ULift.up b)).hom := by
-    simpa only [← smallUnstraighteningFunctorHom_eq_overMap a, Category.assoc] using! hn
+    simpa only [← _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_eq_overMap a, Category.assoc] using! hn
   dsimp only
   rw [hn']
   exact ht
@@ -107,12 +112,12 @@ def weakSpanKanQuotientSimplexComparisonFiberTransportIso
 規約：底は元の初頂点写像と q の像に固定する。
 使われ方：K-B-S の指定全空間比較の全 fiber 作用。 -/
 def weakSpanKanQuotientSimplexFiberMap (c : TransportSimplexCategory B.obj) :=
-  vertexFiberLift (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+  vertexFiberLift (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
     ((transportSimplexFirstVertexMap B.obj ≫ q.hom).app (Opposite.op ⦋0⦌) (nerveVertex c))
-    (vertexFiberι (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
-      (nerveVertex c) ≫ weakSpanKanQuotientSimplexUnstraighteningMap h x)
+    (vertexFiberι (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+      (nerveVertex c) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x)
     (by
-      rw [Category.assoc, weakSpanKanQuotientSimplexUnstraighteningMap_projection,
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap_projection,
         ← Category.assoc, vertexFiberι_comp]
       simp only [SSet.const_comp])
 
@@ -121,12 +126,12 @@ def weakSpanKanQuotientSimplexFiberMap (c : TransportSimplexCategory B.obj) :=
 規約：元の fiber の全単体を保持する。
 使われ方：全族単位の回収を同じ全空間射について述べる。 -/
 theorem weakSpanKanQuotientSimplexFiberMap_ι (c : TransportSimplexCategory B.obj) :
-    weakSpanKanQuotientSimplexFiberMap h x c ≫
-      vertexFiberι (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c ≫
+      vertexFiberι (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
         ((transportSimplexFirstVertexMap B.obj ≫ q.hom).app
           (Opposite.op ⦋0⦌) (nerveVertex c)) =
-    vertexFiberι (smallLeftUnstraighteningProjection (weakSpanKanCoherentDiagram i x))
-      (nerveVertex c) ≫ weakSpanKanQuotientSimplexUnstraighteningMap h x :=
+    vertexFiberι (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x))
+      (nerveVertex c) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap h x :=
   vertexFiberLift_ι _ _ _ _
 
 /-- 概要：商上への同じ実射の全 fiber 作用は、指定降下成分の transport と関手同型。
@@ -134,35 +139,35 @@ theorem weakSpanKanQuotientSimplexFiberMap_ι (c : TransportSimplexCategory B.ob
 規約：単位の供給や元の marked span 全族への降下は主張しない。
 使われ方：K-B-S の元の全 fiber 単位と同じ商 fiber の指定比較の照合。 -/
 def weakSpanKanQuotientSimplexFiberTransportIso (c : TransportSimplexCategory B.obj) :
-    let F := weakSpanKanCoherentDiagram i x
-    let Q := weakSpanKanQuotientDiagram h x
-    let a := (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
+    let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x
+    let Q := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
+    let a := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
     let b := nerveVertex c
     let y := (transportSimplexFirstVertexMap B.obj ≫ q.hom).app (Opposite.op ⦋0⦌) b
     FunctorIso
-      ((SSet.uliftFunctor.{u + 1, u}).map (weakSpanKanQuotientSimplexFiberMap h x c) ≫
+      ((SSet.uliftFunctor.{u + 1, u}).map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c) ≫
         (smallLeftUnstraighteningFiberIso Q y).hom ≫
           (leftUnstraighteningFiberIso Q (ULift.up y)).hom)
       ((smallLeftUnstraighteningFiberIso F b).hom ≫
         (leftUnstraighteningFiberIso F (ULift.up b)).hom ≫
           edgeTransport pointedSpaceProjection
-            (functorEdgeAt (intervalMappingEdgeOfVertex (smallUnstraighteningHomParameter a))
+            (functorEdgeAt (intervalMappingEdgeOfVertex (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a))
               (ULift.up b))) := by
-  let F := weakSpanKanCoherentDiagram i x
-  let Q := weakSpanKanQuotientDiagram h x
+  let F := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x
+  let Q := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x
   let α := transportSimplexFirstVertexMap B.obj ≫ q.hom
   let G := (SSet.uliftFunctor.{u + 1, u}).map α ≫ Q
-  let a := (weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
+  let a := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram_simplexIso h x).symm.hom
   let b := nerveVertex c
   let y := α.app (Opposite.op ⦋0⦌) b
   have he : (SSet.uliftFunctor.{u + 1, u}).map
-      (weakSpanKanQuotientSimplexFiberMap h x c) ≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap h x c) ≫
       (smallLeftUnstraighteningFiberIso Q y).hom ≫
         (leftUnstraighteningFiberIso Q (ULift.up y)).hom =
     (SSet.uliftFunctor.{u + 1, u}).map
       (vertexFiberMap (smallLeftUnstraighteningProjection F)
-        (smallLeftUnstraighteningProjection G) (smallUnstraighteningFunctorHom a)
-        (smallUnstraighteningFunctorHom_projection a) b) ≫
+        (smallLeftUnstraighteningProjection G) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b) ≫
       (smallLeftUnstraighteningFiberIso G b).hom ≫
         (leftUnstraighteningFiberIso G (ULift.up b)).hom := by
     apply vertexFiber_hom_ext pointedSpaceProjection (Q.app (Opposite.op ⦋0⦌) (ULift.up y))
@@ -175,13 +180,64 @@ def weakSpanKanQuotientSimplexFiberTransportIso (c : TransportSimplexCategory B.
       smallLeftUnstraighteningFiberIso_hom_ι]
     simp only [Category.assoc]
     rw [← CategoryTheory.Functor.map_comp_assoc, ← CategoryTheory.Functor.map_comp_assoc,
-      weakSpanKanQuotientSimplexFiberMap_ι, vertexFiberMap_ι,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap_ι, vertexFiberMap_ι,
       CategoryTheory.Functor.map_comp_assoc, CategoryTheory.Functor.map_comp_assoc]
     exact congrArg (fun f => (SSet.uliftFunctor.{u + 1, u}).map
       (vertexFiberι (smallLeftUnstraighteningProjection F) b) ≫ f)
-      (weakSpanKanQuotientSimplexUnstraighteningMap_pointed h x)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap_pointed h x)
   dsimp only
   rw [he]
-  exact weakSpanKanQuotientSimplexComparisonFiberTransportIso h x c
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso h x c
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberMap_ι := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap_ι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberTransportIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberTransportIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberTransportIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexUnstraighteningMap_pointed := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnstraighteningMap_pointed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexComparisonFiberTransportIso._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberTransportIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberTransportIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientSimplexFiberTransportIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexFiberTransportIso._proof_2

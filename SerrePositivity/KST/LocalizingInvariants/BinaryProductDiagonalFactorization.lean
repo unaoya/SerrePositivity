@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.BinaryProductDiagonal
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -54,20 +54,20 @@ lemma square_bottom
       SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge) :
     squareBottomEdge ≫ square a b f g hc S hS ht hr =
       SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge := by
-  rw [square, square_transpose_bottom, ← pastingSquare_outer_leftEdge,
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_bottom, ← pastingSquare_outer_leftEdge,
     (replacement a b f g hc S hS ht hr).outer_eq]
   exact hl
 
 lemma square_top : squareTopEdge ≫ square a b f g hc S hS ht hr =
     SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.graph g)).edge := by
-  rw [square, square_transpose_top, pastingSquare_sharedEdge,
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, pastingSquare_sharedEdge,
     (replacement a b f g hc S hS ht hr).right_eq,
     (BinaryGraphPreliminary.rectangle a b f g hc).right_eq,
-    square_transpose_left, BinaryGraph.square_bottom]
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, BinaryGraph.square_bottom]
 
 lemma square_right : squareRightEdge ≫ square a b f g hc S hS ht hr =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f (𝟙 Y))).edge := by
-  rw [square, square_transpose_right, pastingSquare_topEdge,
+  rw [square, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, pastingSquare_topEdge,
     (replacement a b f g hc S hS ht hr).top_eq,
     (BinaryGraphPreliminary.rectangle a b f g hc).top_eq,
     stdSimplex.δ_comp_yonedaEquiv_symm]

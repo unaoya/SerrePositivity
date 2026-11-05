@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -49,7 +49,7 @@ lemma markedSpanBoundary_of_endpoints {A X : SSet.{u}} (W : Set (X _⦋1⦌))
 
 variable (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x y : X _⦋0⦌)
 
-def fixedMarkedSpanToFamily : fixedMarkedSpans X W x y ⟶ markedSpanFamily X W x :=
+def fixedMarkedSpanToFamily : fixedMarkedSpans X W x y ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x :=
   vertexFiberLift _ _ (fixedMarkedSpanInclusion X W x y) (fixedMarkedSpan_source X W x y)
 
 lemma fixedMarkedSpanToFamily_inclusion : fixedMarkedSpanToFamily X W x y ≫
@@ -57,28 +57,28 @@ lemma fixedMarkedSpanToFamily_inclusion : fixedMarkedSpanToFamily X W x y ≫
   vertexFiberLift_ι _ _ _ _
 
 def fixedMarkedSpanToFamilyFiber : fixedMarkedSpans X W x y ⟶
-    vertexFiber (markedSpanFamilyProjection X W x) y :=
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y :=
   vertexFiberLift _ _ (fixedMarkedSpanToFamily X W x y) (by
-    rw [markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
+    rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection, ← Category.assoc, fixedMarkedSpanToFamily_inclusion,
       fixedMarkedSpan_target])
 
-def markedSpanFamilyFiberToFixed : vertexFiber (markedSpanFamilyProjection X W x) y ⟶
+def markedSpanFamilyFiberToFixed : vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ⟶
     fixedMarkedSpans X W x y :=
   vertexFiberLift _ _
-    (vertexFiberι (markedSpanFamilyProjection X W x) y ≫ vertexFiberι (markedSpanSource X W) x)
+    (vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ≫ vertexFiberι (markedSpanSource X W) x)
     (markedSpanBoundary_of_endpoints W _ x y (by
       rw [Category.assoc, vertexFiberι_comp, SSet.comp_const]) (by
-      change vertexFiberι (markedSpanFamilyProjection X W x) y ≫
-        markedSpanFamilyProjection X W x = _
+      change vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x = _
       exact vertexFiberι_comp _ _))
 
 lemma markedSpanFamilyFiberToFixed_inclusion : markedSpanFamilyFiberToFixed X W x y ≫
     fixedMarkedSpanInclusion X W x y =
-      vertexFiberι (markedSpanFamilyProjection X W x) y ≫ vertexFiberι (markedSpanSource X W) x :=
+      vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y ≫ vertexFiberι (markedSpanSource X W) x :=
   vertexFiberLift_ι _ _ _ _
 
 def markedSpanFamilyFiberIso : fixedMarkedSpans X W x y ≅
-    vertexFiber (markedSpanFamilyProjection X W x) y where
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y where
   hom := fixedMarkedSpanToFamilyFiber X W x y
   inv := markedSpanFamilyFiberToFixed X W x y
   hom_inv_id := by
@@ -88,7 +88,7 @@ def markedSpanFamilyFiberIso : fixedMarkedSpans X W x y ≅
       ← Category.assoc, fixedMarkedSpanToFamilyFiber, vertexFiberLift_ι,
       fixedMarkedSpanToFamily_inclusion, Category.id_comp]
   inv_hom_id := by
-    apply (cancel_mono (vertexFiberι (markedSpanFamilyProjection X W x) y)).mp
+    apply (cancel_mono (vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) y)).mp
     rw [Category.assoc, fixedMarkedSpanToFamilyFiber, vertexFiberLift_ι, Category.id_comp]
     apply (cancel_mono (vertexFiberι (markedSpanSource X W) x)).mp
     rw [Category.assoc, fixedMarkedSpanToFamily_inclusion, markedSpanFamilyFiberToFixed_inclusion]

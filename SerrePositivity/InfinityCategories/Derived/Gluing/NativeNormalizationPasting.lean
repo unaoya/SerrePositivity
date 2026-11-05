@@ -13,7 +13,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：前 cube の内側零面を選ぶ。
 方針：二つの外側区間を保持する。規約：元 Hom 入力を変えない。

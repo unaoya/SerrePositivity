@@ -1,0 +1,80 @@
+{
+  "status": "STOP_BEFORE_SNAPSHOT",
+  "instruction_commit": "df0d45e69",
+  "tool_commit": "fc047fd80cc7fc76fb6dbe8da25979a25df93ce9",
+  "enforcement_tests": {
+    "command": "PYTHONPATH=scripts/refactor python3 -B -m unittest test_layer_check test_layer_w2b -q",
+    "passed": 18,
+    "seconds": 0.315
+  },
+  "accepted_draft_enforcement": "PASS",
+  "ratchet_baseline_updated": false,
+  "layers_exceptions_added": false,
+  "restore": {
+    "command": [
+      "zsh",
+      "scripts/refactor/with_build_lock.sh",
+      "--",
+      "python3",
+      ".lake/verify/ifw2b-batch/before.py"
+    ],
+    "cache": {
+      "LAKE_CACHE_DIR": "/Users/sugakubunka/.cache/lake",
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_RESTORE_ARTIFACTS": "true"
+    },
+    "step": {
+      "label": "restore",
+      "command": [
+        "zsh",
+        "scripts/refactor/warm_build_dir.sh",
+        "--from",
+        "../SerrePositivity"
+      ],
+      "exit_code": 1,
+      "seconds": 846.629
+    },
+    "runner_seconds": 850.265,
+    "rsync_exit_code": 23,
+    "warm_tool_exit_code": 1,
+    "rsync_log": "rsync(42592): error: /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/.lake/build/ir/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.c: open (2) in /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3: No such file or directory\n",
+    "all_log_errors": [
+      "rsync(42592): error: /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity/.lake/build/ir/SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantSourceRoofCornerEvaluation.c: open (2) in /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3: No such file or directory"
+    ],
+    "source_output_exists_now": true,
+    "copied_output_exists_now": true,
+    "rejection_reason": "vanished_outputs accepts paths only below .lake/build/lib/lean; the single vanished generated C output is below .lake/build/ir",
+    "tool_owner_commit": "80a44df79 (DG-W2a)",
+    "tool_modified": false
+  },
+  "snapshot_started": false,
+  "lean_sources_changed": false,
+  "application_commits": [],
+  "internal_build_started": false,
+  "downstream_build_started": false,
+  "verify_started": false,
+  "snapshot_scope": 3616,
+  "before_cache_source_check": {
+    "main_at_prepare": "fc056cae6934d4017e896e69e7a08712e08adb5b",
+    "main_now": "50e4c71f7ce3c428e7659e37805b2bbb905f0b78",
+    "selected_sources_equal_at_prepare": true,
+    "dependency_closure_size": 22627,
+    "dependency_sources_differing_from_current_main": [
+      "SerrePositivity/CommutativeAlgebra/Koszul.lean",
+      "SerrePositivity/CommutativeAlgebra/Length/Basic.lean",
+      "SerrePositivity/CommutativeAlgebra/Length/CommonResidueField.lean",
+      "SerrePositivity/DifferentialGraded/Perfect/Basic.lean",
+      "SerrePositivity/DifferentialGraded/Perfect/Ring/FiniteProjectiveComparison.lean",
+      "SerrePositivity/PerfectComplex/BiproductPerfect.lean",
+      "SerrePositivity/PerfectComplex/Free/Euler.lean",
+      "SerrePositivity/PerfectComplex/Perfect/HomotopyCategory.lean",
+      "SerrePositivity/PerfectComplex/TensorResolutionLength.lean"
+    ],
+    "note": "Before snapshots have not been taken. Copied artifacts have not yet been verified against this worktree dependency-source version."
+  },
+  "prepared_runners": [
+    ".lake/verify/ifw2b-batch/apply.py",
+    "/tmp/ifw2b-internal.py",
+    "/tmp/ifw2b-compare.py"
+  ]
+}

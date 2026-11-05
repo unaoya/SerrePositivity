@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -30,7 +30,7 @@ lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
       stdSimplex.δ (0 : Fin 3) ≫ T = horn₂₀.ι₀₁ ≫ p ∧
       stdSimplex.δ (0 : Fin 2) ≫ F = SSet.const (functorVertex p) ∧
       F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T ∧
-      F ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R ∧
+      F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ∧
       F ≫ (pre horn₂₀.ι₀₁).app X ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
           SSet.const ((horn₂₀.ι₀₁ ≫ p).app (Opposite.op ⦋0⦌)
@@ -54,21 +54,21 @@ lemma exists_spanBaseChangeFamily {X : SSet.{u}} [Quasicategory X]
     exists_intervalPrecompositionFamily (horn₂₀.ι₀₁ ≫ p) (squareBottomEdge ≫ R) hc
   have hLR : intervalPrecompositionFamily T ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-    rw [hLs, squareArrowFamily_source]
-  let F := stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (squareArrowFamily R) hLR
+      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+    rw [hLs, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_source]
+  let F := stable_spanFamilyOfArrows (intervalPrecompositionFamily T) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R) hLR
   have hFl : F ≫ (pre horn₂₀.ι₀₁).app X = intervalPrecompositionFamily T :=
     stable_spanFamilyOfArrows_left _ _ _
-  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = squareArrowFamily R :=
+  have hFr : F ≫ (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R :=
     stable_spanFamilyOfArrows_right _ _ _
   refine ⟨T, F, hT₂, hT₀, ?_, hFl, hFr, ?_, ?_⟩
   · apply stable_spanFamily_hom_ext
     · rw [Category.assoc, hFl, hL₁, SSet.const_comp]
       rfl
-    · rw [Category.assoc, hFr, squareArrowFamily_one, hR, SSet.const_comp]
+    · rw [Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_one, hR, SSet.const_comp]
       rfl
   · rw [← Category.assoc, hFl]
     exact hLt
-  · rw [← Category.assoc, hFr, squareArrowFamily_target]
+  · rw [← Category.assoc, hFr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_target]
 
 end SerrePositivity.KST.LocalizingInvariants

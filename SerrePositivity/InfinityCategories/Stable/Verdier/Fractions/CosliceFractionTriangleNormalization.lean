@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 内ファイブレーションは、指定した隣接二辺と標的二単体を厳密に保って合成を持ち上げる。 -/
 lemma innerFibration_liftCompStruct {X Y : SSet.{u}} (q : X ⟶ Y) [InnerFibration q]
@@ -116,7 +121,7 @@ lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasic
     (h : Truncated.Edge (X := (truncation 2).obj Y) b₀
       (q.app (Opposite.op ⦋0⦌) x₂))
     (t : Truncated.Edge.CompStruct f (g.map ((truncation 2).map q)) h)
-    (hf : IsInvertibleEdge (X := Y) f) : Nonempty (LeftFractionTriangleLift q g f h t) := by
+    (hf : IsInvertibleEdge (X := Y) f) : Nonempty (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift q g f h t) := by
   obtain ⟨F, hF₁, hFq⟩ := leftFibration_liftInvertibleEdge_target q x₁ f hf
   let σ := SSet.yonedaEquiv F
   let x₀ := X.δ 1 σ
@@ -137,7 +142,7 @@ lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasic
   let T : Truncated.Edge.CompStruct (u.map ((truncation 2).map q))
       (g.map ((truncation 2).map q)) v :=
     ⟨t.simplex, t.d₂.trans hu.symm, t.d₀, t.d₁⟩
-  obtain ⟨w, Tw, hw⟩ := innerFibration_liftCompStruct q u g v T
+  obtain ⟨w, Tw, hw⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.innerFibration_liftCompStruct q u g v T
   have hw₁ : (w.map ((truncation 2).map q)).edge = h.edge := by
     calc
       _ = q.app (Opposite.op ⦋1⦌) (X.δ 1 Tw.simplex) :=
@@ -149,4 +154,85 @@ lemma exists_leftFractionTriangleLift {X Y : SSet.{u}} [Quasicategory X] [Quasic
     ((isInvertibleEdge_congr hu).mpr hf)
   exact ⟨⟨x₀, hx, u, w, hu, hw₁, Tw, hw, hi⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_leftFractionTriangleLift := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.exists_leftFractionTriangleLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.innerFibration_liftCompStruct := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.innerFibration_liftCompStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.casesOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.ctorIdx := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.diagonal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.diagonal := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.diagonal_image := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.diagonal_image
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.first := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.first_image := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first_image
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.first_isInvertible := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.first_isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.noConfusionType := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.rec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.recOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.source := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.source_eq := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.source_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.triangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.triangle := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.triangle_image := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.triangle_image
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk.inj := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk.injEq := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LeftFractionTriangleLift.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift.mk.sizeOf_spec

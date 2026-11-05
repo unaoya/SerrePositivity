@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.KST.Spectra.IntervalSquare
+namespace SerrePositivity.InfinityCategories.Kan.IntervalSquare
+open SerrePositivity.KST.Spectra.IntervalSquare
 
 /-- 区間の二座標の最小値。 -/
 def meet : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] where
@@ -33,15 +38,15 @@ def meet : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] where
 
 /-- 下辺から対角への変形。 -/
 def bottomSweep : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
-  lift (fst _ _) meet
+  lift (fst _ _) _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet
 
 /-- 左辺から対角への変形。 -/
 def leftSweep : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] ⊗ Δ[1] :=
-  lift meet (fst _ _)
+  lift _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet (fst _ _)
 
 /-- 最小値の時間零での制限は零。 -/
 lemma meet_zero :
-    SSet.ι₀ ≫ meet.{u} = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet.{u} = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -52,7 +57,7 @@ lemma meet_zero :
   exact min_eq_right (Fin.zero_le _)
 
 /-- 最小値の時間一での制限は元の経路座標。 -/
-lemma meet_one : SSet.ι₁ ≫ meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
+lemma meet_one : SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -65,7 +70,7 @@ lemma meet_one : SSet.ι₁ ≫ meet.{u} = 𝟙 (Δ[1] : SSet.{u}) := by
 /-- 最小値の経路零での制限は零。 -/
 lemma meet_source :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
-        meet = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
+        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -78,7 +83,7 @@ lemma meet_source :
 /-- 最小値の経路一での制限は時間座標。 -/
 lemma meet_target :
     lift (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) ≫
-        meet = 𝟙 (Δ[1] : SSet.{u}) := by
+        _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet = 𝟙 (Δ[1] : SSet.{u}) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -90,28 +95,76 @@ lemma meet_target :
 
 /-- 下辺変形の時間零は元の下辺。 -/
 lemma bottomSweep_zero :
-    SSet.ι₀ ≫ bottomSweep.{u} =
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep.{u} =
       lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [bottomSweep, comp_lift, meet_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_zero]
   rfl
 
 /-- 下辺変形の時間一は共通の対角。 -/
 lemma bottomSweep_one :
-    SSet.ι₁ ≫ bottomSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
-  rw [bottomSweep, comp_lift, meet_one]
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_one]
   rfl
 
 /-- 左辺変形の時間零は元の左辺。 -/
 lemma leftSweep_zero :
-    SSet.ι₀ ≫ leftSweep.{u} =
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep.{u} =
       lift (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) (𝟙 (Δ[1] : SSet.{u})) := by
-  rw [leftSweep, comp_lift, meet_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_zero]
   rfl
 
 /-- 左辺変形の時間一も共通の対角。 -/
 lemma leftSweep_one :
-    SSet.ι₁ ≫ leftSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
-  rw [leftSweep, comp_lift, meet_one]
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep.{u} = lift (𝟙 (Δ[1] : SSet.{u})) (𝟙 _) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep, comp_lift, _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_one]
   rfl
 
-end SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.InfinityCategories.Kan.IntervalSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep_one := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep_zero := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep_one := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep_zero := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet_one := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet_source := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet_target := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet_zero := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.meet._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.meet._proof_2

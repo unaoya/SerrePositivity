@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeNonjoint
 public import Mathlib.Logic.Equiv.Fin.Basic
 
@@ -10,30 +12,33 @@ public import Mathlib.Logic.Equiv.Fin.Basic
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 左右の元の昇順列挙を連結した全単射。 -/
-def wedgeAscendingEquiv (T U : NecklaceShape) :
+def wedgeAscendingEquiv (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     Fin (T.dimension + U.dimension) ≃ (T.wedge U).NonjointVertex :=
   finSumFinEquiv.symm.trans
     ((Equiv.sumCongr T.nonjointAscending.toEquiv U.nonjointAscending.toEquiv).trans
       (T.wedgeNonjointEquiv U))
 
 /-- 左ブロックの列挙は元の左の昇順列挙を回収する。 -/
-lemma wedgeAscendingEquiv_left (T U : NecklaceShape) (i : Fin T.dimension) :
+lemma wedgeAscendingEquiv_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin T.dimension) :
     T.wedgeAscendingEquiv U (Fin.castAdd U.dimension i) =
       T.wedgeNonjointLeft U (T.nonjointAscending i) := by
-  simp only [wedgeAscendingEquiv, Equiv.trans_apply, finSumFinEquiv_symm_apply_castAdd]
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv, Equiv.trans_apply, finSumFinEquiv_symm_apply_castAdd]
   rfl
 
 /-- 右ブロックの列挙は元の右の昇順列挙を回収する。 -/
-lemma wedgeAscendingEquiv_right (T U : NecklaceShape) (i : Fin U.dimension) :
+lemma wedgeAscendingEquiv_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin U.dimension) :
     T.wedgeAscendingEquiv U (Fin.natAdd T.dimension i) =
       T.wedgeNonjointRight U (U.nonjointAscending i) := by
-  simp only [wedgeAscendingEquiv, Equiv.trans_apply, finSumFinEquiv_symm_apply_natAdd]
+  simp only [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv, Equiv.trans_apply, finSumFinEquiv_symm_apply_natAdd]
   rfl
 
 /-- 元の昇順列挙の連結は、共有点を跨ぐ場合も厳密に順序を保つ。 -/
-lemma wedgeAscendingEquiv_strictMono (T U : NecklaceShape) :
+lemma wedgeAscendingEquiv_strictMono (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     StrictMono (T.wedgeAscendingEquiv U) := by
   intro i j hij
   obtain ⟨a, rfl⟩ := finSumFinEquiv.surjective i
@@ -42,11 +47,11 @@ lemma wedgeAscendingEquiv_strictMono (T U : NecklaceShape) :
   · change a.val < b.val at hij
     change T.wedgeAscendingEquiv U (Fin.castAdd U.dimension a) <
       T.wedgeAscendingEquiv U (Fin.castAdd U.dimension b)
-    rw [wedgeAscendingEquiv_left, wedgeAscendingEquiv_left]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_left, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_left]
     exact T.nonjointAscending.strictMono hij
   · change T.wedgeAscendingEquiv U (Fin.castAdd U.dimension a) <
       T.wedgeAscendingEquiv U (Fin.natAdd T.dimension b)
-    rw [wedgeAscendingEquiv_left, wedgeAscendingEquiv_right]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_left, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_right]
     exact T.wedgeNonjointLeft_lt_right U _ _
   · change T.dimension + a.val < b.val at hij
     have := b.isLt
@@ -54,7 +59,7 @@ lemma wedgeAscendingEquiv_strictMono (T U : NecklaceShape) :
   · change T.dimension + a.val < T.dimension + b.val at hij
     change T.wedgeAscendingEquiv U (Fin.natAdd T.dimension a) <
       T.wedgeAscendingEquiv U (Fin.natAdd T.dimension b)
-    rw [wedgeAscendingEquiv_right, wedgeAscendingEquiv_right]
+    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_right, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_right]
     have hab := U.nonjointAscending.strictMono (show a < b by omega)
     change (U.nonjointAscending a).val.val < (U.nonjointAscending b).val.val at hab
     change T.vertexMax + (U.nonjointAscending a).val.val <
@@ -62,14 +67,41 @@ lemma wedgeAscendingEquiv_strictMono (T U : NecklaceShape) :
     omega
 
 /-- 元の非 joint 頂点順序を保つ、左右の昇順列挙の連結。 -/
-def wedgeAscendingIso (T U : NecklaceShape) :
+def wedgeAscendingIso (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     Fin (T.dimension + U.dimension) ≃o (T.wedge U).NonjointVertex where
   toEquiv := T.wedgeAscendingEquiv U
   map_rel_iff' := (T.wedgeAscendingEquiv_strictMono U).le_iff_le
 
 /-- 連結した昇順列挙は、元の necklace の昇順列挙と同じ番号を与える。 -/
-lemma wedgeAscendingIso_index (T U : NecklaceShape) (i : Fin (T.dimension + U.dimension)) :
+lemma wedgeAscendingIso_index (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (i : Fin (T.dimension + U.dimension)) :
     ((T.wedge U).nonjointAscending.symm (T.wedgeAscendingIso U i)).val = i.val :=
   Fin.coe_orderIso_apply ((T.wedgeAscendingIso U).trans (T.wedge U).nonjointAscending.symm) i
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_left := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv_strictMono := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv_strictMono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso_index := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingIso_index
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingEquiv.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingEquiv.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeAscendingIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeAscendingIso._proof_1

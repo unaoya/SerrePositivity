@@ -17,26 +17,26 @@ universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C] [SimplicialCategory C]
   {x y : I} {f : x ⟶ y}
 
 /-- 元の合成列の両端を、指定した元の射の両端に厳密に合わせた全 Path 評価。 -/
 def coherentStringNativeMap
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (s : CoherentArrowString f) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     nerve (Path (ULift.up 0 : ULift.{u} (Fin (s.length + 1))) (ULift.up (Fin.last s.length))) ⟶
       SimplicialCategory.sHom (coherentStringVertexObject Q x) (coherentStringVertexObject Q y) :=
   (coherentStringDiagramCell Q s.chain).map (.mk (ULift.up 0))
       (.mk (ULift.up (Fin.last s.length))) ≫ eqToHom (by
     change SimplicialCategory.sHom (coherentStringVertexObject Q (s.chain.obj 0))
       (coherentStringVertexObject Q (s.chain.obj (Fin.last s.length))) = _
-    rw [coherentArrowString_first, coherentArrowString_last])
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_last])
 
 /-- 端点の表示を移しても、元の合成列の豊穣作用そのものである。 -/
 lemma coherentStringNativeMap_heq
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (s : CoherentArrowString f) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     HEq (coherentStringNativeMap Q s)
       ((coherentStringDiagramCell Q s.chain).map (.mk (ULift.up 0))
         (.mk (ULift.up (Fin.last s.length)))) :=
@@ -53,8 +53,8 @@ lemma coherentString_enrichedMap_objects_heq {A : Type w} [EnrichedCategory SSet
 /-- 元の全 Path 評価は、両端固定の全精密化と厳密に可換。 -/
 lemma coherentStringNativeMap_naturality
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    {s t : CoherentArrowString f} (a : s ⟶ t) :
-    nerveMap (coherentStringPathReindexFunctor a) ≫ coherentStringNativeMap Q t =
+    {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor a) ≫ coherentStringNativeMap Q t =
       coherentStringNativeMap Q s := by
   have hc := coherentStringDiagramCell_naturality Q t.chain a.map
   rw [a.comm] at hc
@@ -84,9 +84,9 @@ lemma coherentStringNativeMap_naturality
     change _ = SimplicialCategory.sHom
       (coherentStringVertexObject Q (t.chain.obj (a.map.toOrderHom 0)))
       (coherentStringVertexObject Q (t.chain.obj (a.map.toOrderHom (Fin.last s.length))))
-    rw [a.first, a.last, coherentArrowString_first, coherentArrowString_last]
+    rw [a.first, a.last, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentArrowString_last]
   apply eq_of_heq
-  exact (heq_comp rfl hp he (coherentStringPathReindexFunctor_native_heq a) hg).trans
+  exact (heq_comp rfl hp he (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor_native_heq a) hg).trans
     (hm.trans (coherentStringNativeMap_heq Q s).symm)
 
 end SerrePositivity.KST.SConstruction

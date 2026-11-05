@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamily
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 
@@ -15,20 +17,23 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌)
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌)
 
 /-- 概要：元の両端固定 span の全族射影は同じ第二終点の定値射。
 方針：元の全族包含と、元の固定境界の第二終点計算を使う。
 規約：全単体上の実写像の等式。
 使われ方：固定 span の単体全族を同じ底 fiber 内で比較する。 -/
 theorem weakSpanFixedFamily_projection :
-    fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x = SSet.const y := by
-  rw [markedSpanFamilyProjection, ← Category.assoc,
+    fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x = SSet.const y := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection, ← Category.assoc,
     fixedMarkedSpanToFamily_inclusion, fixedMarkedSpan_target]
 
 /-- 概要：固定 span の全単体の底像へ、元の第二終点の零単体から同時に退化する。
@@ -37,14 +42,14 @@ theorem weakSpanFixedFamily_projection :
 使われ方：元の全族の初頂点降下と固定 fiber 単位との比較 prism。 -/
 def weakSpanFixedSimplexCollapse :
     (Functor.const (TransportSimplexCategory
-      (fixedMarkedSpans B.obj (weakEquivalences i) x y))).obj
+      (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))).obj
       (transportSimplexIndex (n := ⦋0⦌) y) ⟶
-    transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y) ⋙
-      transportSimplexFunctor (markedSpanFamilyProjection B.obj (weakEquivalences i) x) where
+    transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) ⋙
+      transportSimplexFunctor (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) where
   app t := ⟨{ hom := (SimplexCategory.const t.objDown.obj.unop ⦋0⦌ 0).op
               map_val := by
                 have h := congrArg (fun f => f.app t.objDown.obj t.objDown.val)
-                  (weakSpanFixedFamily_projection i x y)
+                  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection i x y)
                 exact h.symm }⟩
   naturality {s t} f := by
     apply ULift.ext
@@ -62,23 +67,23 @@ def weakSpanFixedSimplexCollapse :
 規約：辺のホモトピー類だけでなく、全 prism の実写像を固定する。
 使われ方：元の全族射影の引き戻しへの同じ prism の持ち上げ。 -/
 theorem weakSpanFixedSimplexCollapse_base :
-    ordinaryComparisonPrism (weakSpanFixedSimplexCollapse i x y) ≫
+    ordinaryComparisonPrism (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse i x y) ≫
       transportSimplexFirstVertexMap B.obj = SSet.const y := by
-  let H := Functor.uncurry.obj (ComposableArrows.mk₁ (weakSpanFixedSimplexCollapse i x y))
+  let H := Functor.uncurry.obj (ComposableArrows.mk₁ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse i x y))
   have hv (d : Fin 2)
-      (t : TransportSimplexCategory (fixedMarkedSpans B.obj (weakEquivalences i) x y)) :
+      (t : TransportSimplexCategory (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) :
       (H.obj (d, t)).objDown.val =
         PinchedHom.constant y (H.obj (d, t)).objDown.obj.unop.len := by
     fin_cases d
     · exact (pinchedConstant_zero y).symm
     · exact congrArg (fun f => f.app t.objDown.obj t.objDown.val)
-        (weakSpanFixedFamily_projection i x y)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection i x y)
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   change nerve (TransportSimplexCategory
-    (fixedMarkedSpans B.obj (weakEquivalences i) x y)) _⦋n⦌ × (Δ[1] : SSet.{u}) _⦋n⦌ at s
+    (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) _⦋n⦌ × (Δ[1] : SSet.{u}) _⦋n⦌ at s
   let τ := (s.2.down.toOrderHom.monotone.functor.prod' s.1) ⋙ H
   let α := transportSimplexFirstVertexMorphism τ
   let β := SimplexCategory.const (τ.obj 0).objDown.obj.unop ⦋0⦌ 0
@@ -96,39 +101,39 @@ theorem weakSpanFixedSimplexCollapse_base :
 規約：span の座標と底の零単体を保持する。
 使われ方：同じ実単位の固定 fiber 制限。 -/
 def weakSpanFixedZeroSimplexLift :
-    fixedMarkedSpans B.obj (weakEquivalences i) x y ⟶
-      pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y ⟶
+      pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) :=
-  pullback.lift (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
+  pullback.lift (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
     (SSet.const (nerveVertex (transportSimplexIndex (n := ⦋0⦌) y))) (by
-      rw [weakSpanFixedFamily_projection, SSet.const_comp,
-        transportSimplexFirstVertexMap_zeroIndex])
+      rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection, SSet.const_comp,
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex])
 
 /-- 概要：元の固定 span の全単体を零単体上の同じ全族へ比較する実 prism。
 方針：span 座標を全時刻固定し、底の全退化比較を引き戻しへ持ち上げる。
 規約：元の全族への射影を全パラメータで厳密に固定する。
 使われ方：相対初頂点降下後の同じ実全族写像の fiber 制限を比較する。 -/
 def weakSpanFixedSimplexFamilyPrism :
-    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (weakEquivalences i) x y)) ⊗
-      Δ[1] ⟶ pullback (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    nerve (TransportSimplexCategory (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ⊗
+      Δ[1] ⟶ pullback (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) :=
   pullback.lift
     (fst _ _ ≫ transportSimplexFirstVertexMap _ ≫
-      fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)
-    (ordinaryComparisonPrism (weakSpanFixedSimplexCollapse i x y)) (by
-      rw [Category.assoc, Category.assoc, weakSpanFixedFamily_projection,
-        SSet.comp_const, SSet.comp_const, weakSpanFixedSimplexCollapse_base])
+      fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)
+    (ordinaryComparisonPrism (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse i x y)) (by
+      rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection,
+        SSet.comp_const, SSet.comp_const, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse_base])
 
 /-- 概要：同じ比較 prism の元の span 座標は全時刻固定。
 方針：元の引き戻しの第一射影を計算する。
 規約：元の全単体上の実写像の等式。
 使われ方：全族の比較が同じ span の上にあることの確認。 -/
 theorem weakSpanFixedSimplexFamilyPrism_family :
-    weakSpanFixedSimplexFamilyPrism i x y ≫
-      pullback.fst (markedSpanFamilyProjection B.obj (weakEquivalences i) x)
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism i x y ≫
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         (transportSimplexFirstVertexMap B.obj) =
       fst _ _ ≫ transportSimplexFirstVertexMap _ ≫
-        fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y := by
+        fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y := by
   exact pullback.lift_fst _ _ _
 
 
@@ -137,14 +142,14 @@ theorem weakSpanFixedSimplexFamilyPrism_family :
 規約：全単体上の厳密な等式。
 使われ方：元の単体圏単位の固定 fiber 制限を回収する。 -/
 theorem weakSpanFixedSimplexFamilyPrism_zero :
-    SSet.ι₀ ≫ weakSpanFixedSimplexFamilyPrism i x y =
-      transportSimplexFirstVertexMap _ ≫ weakSpanFixedZeroSimplexLift i x y := by
+    SSet.ι₀ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism i x y =
+      transportSimplexFirstVertexMap _ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift i x y := by
   apply pullback.hom_ext
-  · simp only [Category.assoc, weakSpanFixedSimplexFamilyPrism,
-      weakSpanFixedZeroSimplexLift, pullback.lift_fst]
+  · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift, pullback.lift_fst]
     rw [← Category.assoc, SSet.ι₀_fst, Category.id_comp]
-  · simp only [Category.assoc, weakSpanFixedSimplexFamilyPrism,
-      weakSpanFixedZeroSimplexLift, pullback.lift_snd]
+  · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift, pullback.lift_snd]
     rw [ordinaryComparisonPrism_zero, SSet.comp_const]
     rfl
 
@@ -153,18 +158,69 @@ theorem weakSpanFixedSimplexFamilyPrism_zero :
 規約：元の marked span 全族の全単体を保持する。
 使われ方：相対降下が回収する指定制限と同じ実単位を照合する。 -/
 theorem weakSpanFixedSimplexFamilyPrism_one :
-    SSet.ι₁ ≫ weakSpanFixedSimplexFamilyPrism i x y =
-      nerveMap (transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)) ≫
-        weakSpanKanTotalSimplexLift (i := i) x := by
+    SSet.ι₁ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism i x y =
+      nerveMap (transportSimplexFunctor (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift (i := i) x := by
   apply pullback.hom_ext
-  · simp only [Category.assoc, weakSpanFixedSimplexFamilyPrism,
-      weakSpanKanTotalSimplexLift, pullback.lift_fst]
+  · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift, pullback.lift_fst]
     rw [← Category.assoc, SSet.ι₁_fst, Category.id_comp]
     exact (transportSimplexFirstVertexMap_naturality
-      (fixedMarkedSpanToFamily B.obj (weakEquivalences i) x y)).symm
-  · simp only [Category.assoc, weakSpanFixedSimplexFamilyPrism,
-      weakSpanKanTotalSimplexLift, pullback.lift_snd]
+      (fixedMarkedSpanToFamily B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)).symm
+  · simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism,
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanTotalSimplexLift, pullback.lift_snd]
     rw [ordinaryComparisonPrism_one]
     rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedFamily_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse_base := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse_base
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_family := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_family
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_one := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_zero := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift.eq_1

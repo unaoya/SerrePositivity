@@ -33,18 +33,18 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §2。自由作用の cochain のホモトピー不変性。 -/
 lemma endMap_piIsomorphism {G : Type u} [Group G] (S : Type u)
     {B C : Action SSet.{u} G} [KanComplex B.V] [KanComplex C.V]
-    (τ : B ⟶ C) (hτ : KanPiIsomorphism τ.hom) (b : B.V _⦋0⦌) :
-    KanPiIsomorphism (weightedSectionsMap (weight S) (coefficientsMap τ)) := by
+    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism τ.hom) (b : B.V _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsMap (weight S) (coefficientsMap τ)) := by
   let K := (Functor.const (SimplexCategoryᵒᵖ)).obj S
   let : KanComplex ((ihom K).obj B.V) := inferInstance
   let : KanComplex ((ihom K).obj C.V) := inferInstance
   have hpost := kanPiIsomorphism_of_qCatEquivalence ((ihom K).map τ.hom)
     ((kanPiIsomorphism_homotopyEquivalence_atVertex τ.hom hτ b).isQCatEquivalence.postcompose K)
-  have hcomp : KanPiIsomorphism
+  have hcomp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (weightedSectionsMap (weight S) (coefficientsMap τ) ≫ (endIso S C).hom) := by
     rw [endIso_natural]
-    exact (KanPiIsomorphism.of_iso (endIso S B)).comp hpost
-  exact KanPiIsomorphism.of_comp hcomp (KanPiIsomorphism.of_iso (endIso S C))
+    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (endIso S B)).comp hpost
+  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso (endIso S C))
 
 end
 

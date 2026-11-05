@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- W 辺図式の元の包含は、零対象と全 cofiber 正方形を保つ。 -/
-lemma weakArrowInclusion_preservesCofiberData {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma weakArrowInclusion_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     PreservesCofiberData (fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι := by
   have hp : PreservesCofiberData (cofiberProjection B.obj) :=
     ⟨IsExactFunctor.preservesZero, IsExactFunctor.preservesCofiber⟩
@@ -38,7 +38,7 @@ lemma weakArrowInclusion_preservesCofiberData {B C : StableCategory.{u}} (q : Ex
   rwa [he] at h
 
 /-- 元の全 W 辺図式を周囲の全矢図式へ含める完全関手。 -/
-def weakArrowAmbientInclusion {B C : StableCategory.{u}} (q : ExactMap B C) :
+def weakArrowAmbientInclusion {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     weakArrowModel q ⟶ ambientDiagramModel (Δ[1] : SSet.{u}) B :=
   ⟨(fullSubcomplexOnVertices _ (weakArrowPredicate q)).ι,
     weakArrowInclusion_preservesCofiberData q⟩

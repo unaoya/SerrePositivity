@@ -46,7 +46,7 @@ lemma rightUnitIso_canonical : Arrow.mk (rightUnitIso p).hom =
       (SpectrumTriangleNormalization.canonicalPre
         (fibrationReplacementUnit p) (fibrationReplacementProjection p)))) := by
   exact (rightUnitIso_presentation p).trans
-    ((arrow_mk_comp_of_any_identity _ _ (unitRightPost_identity p)).trans
+    ((_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity _ _ (unitRightPost_identity p)).trans
       (unitRightPre_canonical p))
 
 end SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison

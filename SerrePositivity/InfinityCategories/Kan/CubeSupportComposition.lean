@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalForm
 
 /-! # 具体的な cubical 合成の support の計算
@@ -8,37 +10,49 @@ public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalForm
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 合成の有効入力は、非定数一条件と有効な中間座標で特徴づけられる。 -/
 lemma cubeMapGenerated_active_comp_iff {n m k : ℕ}
-    {f : CubeVertex n → CubeVertex m} {g : CubeVertex m → CubeVertex k}
-    (hg : CubeMapGenerated g) (i : Fin n) (j : Fin k) :
-    CubeActive (g ∘ f) i j ↔ g (f ⊥) j = false ∧
-      ∃ a, CubeActive f i a ∧ CubeActive g a j := by
+    {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
+    (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) (i : Fin n) (j : Fin k) :
+    _root_.SerrePositivity.InfinityCategories.Kan.CubeActive (g ∘ f) i j ↔ g (f ⊥) j = false ∧
+      ∃ a, _root_.SerrePositivity.InfinityCategories.Kan.CubeActive f i a ∧ _root_.SerrePositivity.InfinityCategories.Kan.CubeActive g a j := by
   constructor
   · intro h
-    exact ⟨h.1, cubeMapGenerated_active_comp hg h⟩
+    exact ⟨h.1, _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp hg h⟩
   · rintro ⟨hzero, a, hfa, hga⟩
     refine ⟨hzero, ?_⟩
-    have hle := cubeMapGenerated_monotone hg
-      (cubeVertexAtom_le (f (cubeVertexAtom n i)) a hfa.2) j
+    have hle := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_monotone hg
+      (_root_.SerrePositivity.InfinityCategories.Kan.cubeVertexAtom_le (f (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i)) a hfa.2) j
     rw [hga.2] at hle
     exact Bool.eq_true_of_true_le hle
 
 /-- 元の合成の support は、定数一への吸収または中間 support の有限和集合。 -/
-lemma concreteCubeNormalForm_support_comp {X Y Z : ConcreteCube}
+lemma concreteCubeNormalForm_support_comp {X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
     (f : X ⟶ Y) (g : Y ⟶ Z) (j : Fin Z.dimension) :
-    cubeJoinNormalFormSupport (concreteCubeNormalForm (f ≫ g)) j =
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (f ≫ g)) j =
       if g.val (f.val ⊥) j = true then ∅ else
-        (cubeJoinNormalFormSupport (concreteCubeNormalForm g) j).biUnion
-          (fun a => cubeJoinNormalFormSupport (concreteCubeNormalForm f) a) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm g) j).biUnion
+          (fun a => _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm f) a) := by
   apply Finset.ext
   intro i
-  change i ∈ cubeJoinNormalFormSupport (cubeJoinNormalFormOfMap (g.val ∘ f.val)) j ↔ _
-  rw [mem_cubeJoinNormalFormSupport, cubeMapGenerated_active_comp_iff g.property]
+  change i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap (g.val ∘ f.val)) j ↔ _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormSupport, _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp_iff g.property]
   cases g.val (f.val ⊥) j <;>
-    simp [ Finset.mem_biUnion, concreteCubeNormalForm, mem_cubeJoinNormalFormSupport,
+    simp [ Finset.mem_biUnion, _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm, _root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormSupport,
       and_comm]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp_iff

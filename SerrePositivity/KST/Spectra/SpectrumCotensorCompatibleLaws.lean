@@ -33,7 +33,7 @@ lemma identity_condition (A : PointedSimplicialSet.{u}) (X : OmegaSpectrum.{u}) 
         cotensorEvaluationPrecomposition (cotensor A X) X A =
       RawSpectrumMapping.pointedIdentity X ≫ evaluationPost A X X := by
   apply (condition_iff A X X _ _).mpr
-  exact enriched_parameter_square_id PointedSimplicialSet.{u}
+  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id PointedSimplicialSet.{u}
     (C := OmegaSpectrum.{u}) (X := cotensor A X) (Y := X) (cotensorEvaluation A X)
 
 /-- 二つの元の恒等射の組。 -/

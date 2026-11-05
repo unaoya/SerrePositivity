@@ -54,7 +54,7 @@ lemma sRealizationToKan_anodyne (C : SSet.{u}) [Quasicategory C] [HasZeroVertex 
 方針：Kan 置換した実現に L9 の円からの点つき内部 Hom を適用する。
 規約：K(C)=Ω|ιS•C|。使われ方：連結スペクトルの零空間と π₀ の比較。 -/
 def kSpace (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C] : PointedSimplicialSet.{u} :=
-  Spectra.loopSpace (kanSRealization C)
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (kanSRealization C)
 
 /-- 概要：K 空間は Kan 複体。
 方針：置換の Kan 性と L9 の loop の Kan 性を使う。

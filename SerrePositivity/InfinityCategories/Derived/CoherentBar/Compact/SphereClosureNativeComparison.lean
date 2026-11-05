@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
 
 /-- 新模型で、固定 ν を始点とする実 Morita 比較の全 native 入力族。 -/
 def dgKappaSphereClosureNativeMoritaFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    equivalencePath StableInfinity.{max (u + 1) v} :=
+    equivalencePath _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   dgKappaNativeMoritaFamily R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ)
 
 lemma dgKappaSphereClosureNativeMoritaFamily_source :
@@ -33,7 +33,7 @@ lemma dgKappaSphereClosureNativeMoritaFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaSphereClosureNativeMoritaFamily R κ hκ).app (Opposite.op ⦋0⦌)
         (coherentNerveVertex A) =
-      equivalencePathVertex (stableArrow (dgKappaNativeMoritaExactMap R A
+      equivalencePathVertex (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A
         (dgKappaConeInput_unconditional' R A κ hκ)
         (dgKappaPerfectInput_unconditional' R A κ hκ)))
         (dgKappaNativeMoritaExactMap_isInvertible R A
@@ -43,13 +43,13 @@ lemma dgKappaSphereClosureNativeMoritaFamily_at
 
 /-- 新模型の実核の StableInfinity 値の全作用。S 内への持ち上げは別工程。 -/
 def dgKappaSphereClosureNativeKernelStableFamily :
-    dgKInputInfinity.{u, max (u + 1) v} R ⟶ StableInfinity.{max (u + 1) v} :=
+    dgKInputInfinity.{u, max (u + 1) v} R ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   dgKappaNativeKernelStableFamily R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ)
 
 lemma dgKappaSphereClosureNativeKernelStableFamily_at
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaSphereClosureNativeKernelStableFamily R κ hκ).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A) = stableVertex (dgKInputStableValue R
+        (coherentNerveVertex A) = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R
       (dgKappaResolvedKernelKInput R A (dgKappaConeInput_unconditional' R A κ hκ))) :=
   dgKappaNativeKernelStableFamily_at R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A
 
@@ -61,7 +61,7 @@ def dgKappaSphereClosureNativeMoritaIso :
 /-- 新模型の元の P/Yoneda 比較を全 native 入力で保持する全族。 -/
 def dgKappaSphereClosureNativePComparisonFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
     equivalencePath ((ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj
-      StableInfinity.{max (u + 1) v}) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) :=
   dgKappaNativePComparisonFamily R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ)
 
 lemma dgKappaSphereClosureNativePComparisonFamily_at
@@ -74,7 +74,7 @@ lemma dgKappaSphereClosureNativePComparisonFamily_at
 
 lemma dgKappaSphereClosureNativePComparisonFamily_boundary :
     dgKappaSphereClosureNativePComparisonFamily.{u, v} R κ hκ ≫
-        equivalencePathMap ((pre (boundary 1).ι).app StableInfinity.{max (u + 1) v}) =
+        equivalencePathMap ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v}) =
       (dgKappaNativeMoritaArrowFamily R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) ≫
         (pre (boundary 1).ι).app _) ≫ equivalencePathRefl _ :=
   dgKappaNativePComparisonFamily_boundary R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ)

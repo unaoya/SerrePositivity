@@ -32,7 +32,7 @@ lemma cotensorComparison_natural (X : OmegaSpectrum.{u}) (A : PointedSimplicialS
   dsimp only [exchangeFamily]
   rw [← Category.assoc, pointedPost_evaluation, Category.assoc]
   exact congrArg (pointedEvaluation X (KanSequence.mapping A Y) n ≫ ·)
-    (InternalHomExchange.natural_post (X.level n).space A (p.app n))
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post (X.level n).space A (p.app n))
 
 /-- 任意の固定した点つき源に対する、全 Kan 列上の実際の自然な cotensor 交換同型。 -/
 def cotensorNatIso (X : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :
@@ -44,21 +44,21 @@ def cotensorNatIso (X : OmegaSpectrum.{u}) (A : PointedSimplicialSet.{u}) :
 lemma cotensorComparison_pre (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) :
     pointedPost X (KanSequence.mappingPre i Y) ≫ cotensorComparison X Y A =
-      cotensorComparison X Y B ≫ PointedMapping.prePointed i (pointedSpace X Y) := by
+      cotensorComparison X Y B ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (pointedSpace X Y) := by
   apply ihom_pointed_hom_ext X Y A
   intro n
   rw [Category.assoc, cotensorComparison_evaluation]
   have hn := (MonoidalClosed.pre i).naturality (pointedEvaluation X Y n)
-  rw [PointedMapping.prePointed_eq_closedPre, Category.assoc, ← hn,
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc, ← hn,
     ← Category.assoc, cotensorComparison_evaluation]
   dsimp only [exchangeFamily]
   rw [← Category.assoc, pointedPost_evaluation, Category.assoc]
   change pointedEvaluation X (KanSequence.mapping B Y) n ≫
       (PointedObject.basedHomMap (X.level n).space
-        (PointedMapping.prePointed i (Y.level n).space) ≫
-        (InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom) = _
-  rw [PointedMapping.prePointed_eq_closedPre]
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Y.level n).space).hom) = _
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
   exact congrArg (pointedEvaluation X (KanSequence.mapping B Y) n ≫ ·)
-    (InternalHomExchange.natural_pre_right (X.level n).space i (Y.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right (X.level n).space i (Y.level n).space)
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

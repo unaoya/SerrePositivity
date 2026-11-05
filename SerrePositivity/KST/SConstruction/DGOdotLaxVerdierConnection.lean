@@ -28,40 +28,40 @@ def dgOdotLowerInputMap : dgOdotLeftInput R d ⟶ dgOdotCornerInput R d :=
 
 /-- 概要：同じ元の二脚の完全な ν 像。方針：固定界面を使う。
 規約：別の脚を選ばない。使われ方：D2 比較の標的。 -/
-abbrev dgOdotLowerExactMap : ExactMap
+abbrev dgOdotLowerExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotLeftInput R d))
     (dgKInputStableValue R (dgOdotCornerInput R d)) :=
   dgKInputNuMap R (dgOdotLowerInputMap R d)
 
 /-- 概要：元の右脚の完全な ν 像。方針：既存の上辺入力を使う。
 規約：元の右代数射を保つ。使われ方：D2 比較の第二脚。 -/
-abbrev dgOdotUpperExactMap : ExactMap
+abbrev dgOdotUpperExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotRightInput R d))
     (dgKInputStableValue R (dgOdotCornerInput R d)) :=
   dgKInputNuMap R (dgOdotUpperInputMap R d)
 
 /-- 概要：元の二脚に対する実 Perf lax pullback。方針：Sp 正本を特殊化する。
 規約：dg gluing との同定は入力に残す。使われ方：d8 の中央圏。 -/
-abbrev dgOdotPerfLaxCategory : StableCategory.{u + 1} :=
+abbrev dgOdotPerfLaxCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} :=
   laxCategory (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
 
 /-- 概要：D2 と β3 の未供給比較を隔離する。方針：同じ二射と整合式を保持する。
 規約：核一致・局所化の輸送も明示入力。使われ方：具体的供給後の差し替え口。 -/
 structure DGOdotLaxVerdierInput where
   source : DGOdotVerdierInput R d
-  comparison : ExactMap (dgKInputStableValue R (dgOdotGluingInput R d))
+  comparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgOdotPerfLaxCategory R d)
   isEquivalence : IsQCatEquivalence comparison.hom
-  projection : ExactMap (dgOdotPerfLaxCategory R d)
+  projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotPerfLaxCategory R d)
     (dgKInputStableValue R (dgOdotQuotientInputVertex R d))
   projection_iso : FunctorIso (comparison.hom ≫ projection.hom)
     (dgOdotProjectionExactMap R d).hom
   kernel (b : (dgOdotPerfLaxCategory R d).obj _⦋0⦌) :
     IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) b) ↔
-      b ∈ essentialImage (show ExactMap _ _ from
+      b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from
         ⟨(dgOdotDiagonalExactMap R d).hom ≫ comparison.hom, isExactFunctor_comp _ _⟩)
   localization : IsLocalization projection.hom
-    (cofiberLocalizingEdges (essentialImage (show ExactMap _ _ from
+    (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from
         ⟨(dgOdotDiagonalExactMap R d).hom ≫ comparison.hom, isExactFunctor_comp _ _⟩)))
 
 namespace DGOdotLaxVerdierInput
@@ -69,7 +69,7 @@ variable {R d} (h : DGOdotLaxVerdierInput R d)
 
 /-- 概要：元の対角と D2 比較の合成。方針：同じ完全射を合成する。
 規約：包含を選び直さない。使われ方：d8 の左射。 -/
-def inclusion : ExactMap (dgKInputStableValue R (dgOdotDiagonalSourceInput R d))
+def inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgOdotDiagonalSourceInput R d))
     (dgOdotPerfLaxCategory R d) :=
   ⟨(dgOdotDiagonalExactMap R d).hom ≫ h.comparison.hom, isExactFunctor_comp _ _⟩
 
@@ -81,7 +81,7 @@ lemma inclusion_fullyFaithful : IsFullyFaithful h.inclusion.hom :=
 /-- 概要：明示された具体的証拠から d8 の列条件を満たす。
 方針：導いた充満忠実性と未供給の二条件を Sp 正本へ渡す。
 規約：D2・β3 の無条件完成ではない。使われ方：既存の K-8 d8。 -/
-theorem isVerdier : IsVerdierSequence h.inclusion h.projection :=
+theorem isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence h.inclusion h.projection :=
   ⟨h.inclusion_fullyFaithful, h.kernel, h.localization⟩
 
 /-- 概要：元の商射は D2 比較と同じ射の合成で回収される。

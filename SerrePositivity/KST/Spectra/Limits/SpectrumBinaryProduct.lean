@@ -25,7 +25,7 @@ noncomputable section
 規約：点つき射の厳密な等式。
 使われ方：構造射の単射性を比較射と二構造射へ分解する。 -/
 lemma binaryProductSigma_factor {A B A' B' : PointedSimplicialSet.{u}}
-    (s : suspension A ⟶ A') (t : suspension B ⟶ B') :
+    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') :
     binaryProductSigma s t =
       smashProductComparison PointedSimplicialSet.circle.{u} A B ≫ PointedObject.prodMap s t := by
   apply PointedObject.prod_hom_ext <;>
@@ -36,7 +36,7 @@ lemma binaryProductSigma_factor {A B A' B' : PointedSimplicialSet.{u}}
 規約：二構造射の基礎単体写像のモノ射性だけを要求する。
 使われ方：L9 の OmegaSpectrum の sigma_mono 条件の検証。 -/
 instance binaryProductSigma_mono {A B A' B' : PointedSimplicialSet.{u}}
-    (s : suspension A ⟶ A') (t : suspension B ⟶ B') [Mono s.right] [Mono t.right] :
+    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') [Mono s.right] [Mono t.right] :
     Mono (binaryProductSigma s t).right := by
   rw [binaryProductSigma_factor, Under.comp_right, PointedObject.prodMap_right]
   have : Mono (s.right ⊗ₘ t.right) := ⟨by

@@ -42,14 +42,14 @@ def dgOdotProjectionInputMap : dgOdotGluingInput R d ⟶ dgOdotQuotientInputVert
 
 /-- 概要：同じ包含の完全な ν 像。方針：固定界面の元の射を使う。
 規約：一般の安定圏上の K は不要。使われ方：Sp の Verdier 条件。 -/
-abbrev dgOdotDiagonalExactMap : ExactMap
+abbrev dgOdotDiagonalExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d))
     (dgKInputStableValue R (dgOdotGluingInput R d)) :=
   dgKInputNuMap R (dgOdotDiagonalInputMap R d)
 
 /-- 概要：同じ実商射の完全な ν 像。方針：固定界面の元の射を使う。
 規約：商の局所化性はまだ入力。使われ方：Sp の Verdier 条件。 -/
-abbrev dgOdotProjectionExactMap : ExactMap
+abbrev dgOdotProjectionExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotQuotientInputVertex R d)) :=
   dgKInputNuMap R (dgOdotProjectionInputMap R d)
@@ -61,9 +61,9 @@ structure DGOdotVerdierInput : Prop where
   fullyFaithful : IsFullyFaithful (dgOdotDiagonalExactMap R d).hom
   kernel (b : (dgKInputStableValue R (dgOdotGluingInput R d)).obj _⦋0⦌) :
     IsZeroVertex ((dgOdotProjectionExactMap R d).hom.app (Opposite.op ⦋0⦌) b) ↔
-      b ∈ essentialImage (dgOdotDiagonalExactMap R d)
+      b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotDiagonalExactMap R d)
   localization : IsLocalization (dgOdotProjectionExactMap R d).hom
-    (cofiberLocalizingEdges (essentialImage (dgOdotDiagonalExactMap R d)))
+    (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotDiagonalExactMap R d)))
 
 namespace DGOdotVerdierInput
 variable {R d} (h : DGOdotVerdierInput R d)
@@ -72,13 +72,13 @@ include h
 /-- 概要：具体的な β3 証拠を Sp 正本の列条件へ接続する。
 方針：同じ二射について三欄を渡す。規約：局所化 API を新設しない。
 使われ方：K-8 d8 に渡す前の実商列。 -/
-theorem isVerdier : IsVerdierSequence (dgOdotDiagonalExactMap R d)
+theorem isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgOdotDiagonalExactMap R d)
     (dgOdotProjectionExactMap R d) :=
   ⟨h.fullyFaithful, h.kernel, h.localization⟩
 
 /-- 概要：元の三頂点と二射を持つ実列。方針：上の条件を束ねる。
 規約：商を冪等完備化に置換しない。使われ方：ν 像の Verdier 提示。 -/
-def sequence : VerdierSequence.{u + 1} where
+def sequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
   left := dgKInputStableValue R (dgOdotDiagonalSourceInput R d)
   middle := dgKInputStableValue R (dgOdotGluingInput R d)
   right := dgKInputStableValue R (dgOdotQuotientInputVertex R d)

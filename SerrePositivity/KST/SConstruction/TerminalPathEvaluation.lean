@@ -15,19 +15,19 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 終点固定 path の始点評価は通常の指数の頂点零での評価。 -/
 lemma terminalPathStart_evaluation (B : PointedSimplicialSet.{u}) :
     (terminalPathStart B).right = PointedObject.basedHomι terminalPointedInterval B ≫
       Spectra.KanPath.evaluation B.right 0 := by
   rw [terminalPathStart, Under.comp_right, Comparison.pointedUnitIso_evaluation]
-  change Spectra.PointedMapping.pre terminalIntervalStart B ≫
+  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre terminalIntervalStart B ≫
     (PointedObject.basedHomι (𝟙_ PointedSimplicialSet.{u}) B ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app B.right ≫
           (MonoidalClosed.unitIsoSelf (X := B.right)).hom) = _
-  rw [← Category.assoc, Spectra.PointedMapping.pre_ι, Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc]
   have he : (MonoidalClosed.pre terminalIntervalStart.right).app B.right ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app B.right =
@@ -58,7 +58,7 @@ lemma terminalPathFamily_basepoint {A : SSet.{u}} (B : PointedSimplicialSet.{u})
 def terminalPathFamily {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right)
     (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) : A ⟶ (terminalPathSpace B).right :=
-  Spectra.PointedMapping.paramCurry terminalPointedInterval B
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry terminalPointedInterval B
     ((β_ (Δ[1] : SSet.{u}) A).hom ≫ h) (terminalPathFamily_basepoint B h h₁)
 
 /-- 終点固定 path の族の通常の指数への包含。 -/
@@ -66,7 +66,7 @@ lemma terminalPathFamily_ι {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right) (h₁) :
     terminalPathFamily B h h₁ ≫ PointedObject.basedHomι terminalPointedInterval B =
       curry ((β_ (Δ[1] : SSet.{u}) A).hom ≫ h) :=
-  Spectra.PointedMapping.paramCurry_ι ..
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι ..
 
 /-- 終点固定 path の族を始点で評価すると元の区間族の始点を回収する。 -/
 lemma terminalPathFamily_start {A : SSet.{u}} (B : PointedSimplicialSet.{u})

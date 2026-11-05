@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable {C D : StableQCat.{u}} (f : C ⟶ D)
+variable {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : C ⟶ D)
 
 /-- 元の完全射の core S 実現の同じ Ex∞ 射を、正規化した Kan 値間の射として読む。 -/
 def stableCoreSingleKanMap :
@@ -59,13 +59,13 @@ theorem stableCoreSingleKan_hom :
 /-- 元の core S の同じ射を、同じ coherent な一単体として回収する。 -/
 theorem stableCoreSingleKan_edge :
     (coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋1⦌)
-      (stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge :=
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge :=
   coherentNerveMap_edge_of_homEquiv _ _ _ (stableCoreSingleKan_hom f)
 
 /-- 一回の反復実現の全 ∞ 関手でも、元の core S の Ex∞ 射の同じ辺を回収する。 -/
 theorem stableMultiSingleKan_edge :
     (coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋1⦌)
-      (stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge := by
   rw [← stableCoreSingleKanInfinity_eq]
   exact stableCoreSingleKan_edge f
 

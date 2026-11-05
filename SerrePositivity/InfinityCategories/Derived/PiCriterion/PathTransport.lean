@@ -20,26 +20,26 @@ variable {X : SSet.{u}} [KanComplex X]
 
 /-- 指定 path の両端における正次数ホモトピー群の同値。 -/
 def pathPiEquiv (z : (KanPath.object X) _⦋0⦌) (n : ℕ) :
-    KanHomotopyGroup X n ((KanPath.evaluation X 0).app _ z) ≃
-      KanHomotopyGroup X n ((KanPath.evaluation X 1).app _ z) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n ((KanPath.evaluation X 0).app _ z) ≃
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n ((KanPath.evaluation X 1).app _ z) :=
   (Equiv.ofBijective
-    (KanHomotopyGroup.map (n := n) (KanPath.evaluation X 0) (x := z) rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (KanPath.evaluation X 0) (x := z) rfl)
     (KanPath.evaluation_piIsomorphism X 0 z (n + 1))).symm.trans
   (Equiv.ofBijective
-    (KanHomotopyGroup.map (n := n) (KanPath.evaluation X 1) (x := z) rfl)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (KanPath.evaluation X 1) (x := z) rfl)
     (KanPath.evaluation_piIsomorphism X 1 z (n + 1)))
 
 /-- 同じ path 上のホモトピー類の二端点は、この基点移送で対応する。 -/
 lemma pathPiEquiv_map_zero (z : (KanPath.object X) _⦋0⦌) (n : ℕ)
-    (a : KanHomotopyGroup (KanPath.object X) n z) :
-    pathPiEquiv z n (KanHomotopyGroup.map (KanPath.evaluation X 0) rfl a) =
-      KanHomotopyGroup.map (KanPath.evaluation X 1) rfl a := by
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n z) :
+    pathPiEquiv z n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) rfl a) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) rfl a := by
   exact congrArg
     (Equiv.ofBijective
-      (KanHomotopyGroup.map (n := n) (KanPath.evaluation X 1) (x := z) rfl)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (KanPath.evaluation X 1) (x := z) rfl)
       (KanPath.evaluation_piIsomorphism X 1 z (n + 1)))
     ((Equiv.ofBijective
-      (KanHomotopyGroup.map (n := n) (KanPath.evaluation X 0) (x := z) rfl)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := n) (KanPath.evaluation X 0) (x := z) rfl)
       (KanPath.evaluation_piIsomorphism X 0 z (n + 1))).symm_apply_apply a)
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion

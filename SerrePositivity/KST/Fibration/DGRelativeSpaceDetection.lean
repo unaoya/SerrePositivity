@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.Fibration
 local instance relativeSpaceSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} :=
   OmegaSpectrum.simplicialCategory
 
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 同じ cospan の canonical fiber 錐は、各実段評価後にも極限錐となる。 -/
 theorem dgRelativeKLimitCone_spaceEvaluation_isLimit (n : ℕ) :

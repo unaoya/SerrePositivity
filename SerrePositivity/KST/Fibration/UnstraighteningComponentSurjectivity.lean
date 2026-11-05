@@ -40,19 +40,19 @@ variable {B : SSet.{u}}
 /-- 同じ小さい実 fiber の点表示は、指定した一点空間からの全ての射の類を回収する。 -/
 theorem smallUnstraighteningPointHom_surjective :
     Function.Surjective (fun v : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌ =>
-      cosliceFiberPointHom (smallUnstraighteningPointedImage F b v)) := by
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b v)) := by
   intro a
-  refine ⟨smallUnstraighteningFiberPoint F b (pointedSpaceFiberPointOfHom a), ?_⟩
-  have h := smallUnstraighteningFiberPoint_recover F b (pointedSpaceFiberPointOfHom a)
-  exact (congrArg cosliceFiberPointHom h).trans (pointedSpaceFiberPointOfHom_hom a)
+  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint F b (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom a), ?_⟩
+  have h := _root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint_recover F b (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom a)
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom h).trans (_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom_hom a)
 
 /-- 同じ実 fiber 内の頂点同型は、その点表示の射の類の一致を与える。 -/
 theorem smallUnstraighteningPointHom_eq_of_vertexIso
     {v w : (vertexFiber (smallLeftUnstraighteningProjection F) b) _⦋0⦌}
     (e : VertexIso v w) :
-    cosliceFiberPointHom (smallUnstraighteningPointedImage F b v) =
-      cosliceFiberPointHom (smallUnstraighteningPointedImage F b w) :=
-  cosliceFiberPointHom_eq_of_vertexIso
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b v) =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b w) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_vertexIso
     (VertexIso.map (uliftVertexIso e)
       ((smallLeftUnstraighteningFiberIso F b).hom ≫
         (leftUnstraighteningFiberIso F (ULift.up b)).hom))
@@ -61,16 +61,16 @@ theorem smallUnstraighteningPointHom_eq_of_vertexIso
 theorem functorHomEvaluate_point_surjective_of_fiber (a : FunctorHom F G)
     (hs : IsEssentiallySurjective
       (vertexFiberMap (smallLeftUnstraighteningProjection F)
-        (smallLeftUnstraighteningProjection G) (smallUnstraighteningFunctorHom a)
-        (smallUnstraighteningFunctorHom_projection a) b)) :
+        (smallLeftUnstraighteningProjection G) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom a)
+        (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection a) b)) :
     Function.Surjective (fun f : HomotopyCategory.mk pointSpaceVertex ⟶
         HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) (ULift.up b)) =>
       f ≫ functorHomEvaluate a (ULift.up b)) := by
   intro z
   obtain ⟨w, hw⟩ := smallUnstraighteningPointHom_surjective G b z
   obtain ⟨v, ⟨e⟩⟩ := hs w
-  refine ⟨cosliceFiberPointHom (smallUnstraighteningPointedImage F b v), ?_⟩
-  exact (smallUnstraighteningFunctorHom_pointHom a b v).trans
+  refine ⟨_root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage F b v), ?_⟩
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_pointHom a b v).trans
     ((smallUnstraighteningPointHom_eq_of_vertexIso G b e).trans hw)
 
 end SerrePositivity.KST.Fibration

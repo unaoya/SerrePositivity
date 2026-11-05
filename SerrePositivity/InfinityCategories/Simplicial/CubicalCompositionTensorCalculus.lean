@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Monoidal.Category
 
 /-! # Cubical 合成の三生成射の tensor 計算
@@ -9,6 +11,9 @@ public import Mathlib.CategoryTheory.Monoidal.Category
 @[expose] public section
 universe v u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory
 variable {D : Type u} [Category.{v} D] [MonoidalCategory D]
 
@@ -41,4 +46,16 @@ lemma cubicalComposeTensor_postcompose_eq {A B C X E F G : D}
     a ≫ b ≫ c ≫ g = d ≫ e ≫ f ≫ g := by
   simpa only [Category.assoc] using congrArg (fun k => k ≫ g) h
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_left := _root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_postcompose_eq := _root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_postcompose_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubicalComposeTensor_right := _root_.SerrePositivity.InfinityCategories.Simplicial.cubicalComposeTensor_right

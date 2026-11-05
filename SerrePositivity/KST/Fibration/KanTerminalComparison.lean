@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 theorem exInfinityVertex_isTerminal_of_localized_toPoint (V : SSet.{u})
     (hV : IsIso (AnodyneHomotopy.anodyneQ.map (terminal.from V))) :
     IsTerminalVertex (coherentNerveVertex (exInfinityClosedKanEnrichedFunctor.obj ⟨V⟩)) := by
-  apply kanVertex_isTerminal_of_localized_toPoint
+  apply _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanVertex_isTerminal_of_localized_toPoint
   let Q := AnodyneHomotopy.anodyneQ.{u}
   have hu : IsIso (Q.map (exInfinityUnit.app V)) := inferInstance
   have he : exInfinityUnit.app V ≫ terminal.from (exInfinity.obj V) =

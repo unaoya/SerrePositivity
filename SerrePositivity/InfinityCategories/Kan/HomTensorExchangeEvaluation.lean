@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 
 /-!
@@ -14,23 +16,35 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
 
 /-- 左の二因子の交換を、右側へ動かす二つの braiding と結合子で表す。 -/
 lemma exchange_left_form (W K E : C) :
     W ◁ (β_ K E).hom ≫ (α_ W E K).inv ≫ (β_ (W ⊗ E) K).hom =
-      (HomTensorStrength.exchange W K E).hom := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange W K E).hom := by
   rw [BraidedCategory.braiding_tensor_left_hom]
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, Iso.inv_hom_id_assoc]
   rw [← whiskerLeft_comp_assoc, SymmetricCategory.symmetry, whiskerLeft_id, Category.id_comp]
 
 /-- 右パラメータの評価を左へ交換した式は、三因子の交換による評価。 -/
 lemma exchange_evaluation (W K E B : C) (g : W ⊗ E ⟶ B) :
     W ◁ (β_ K E).hom ≫ (α_ W E K).inv ≫ g ▷ K ≫ (β_ B K).hom =
-      (HomTensorStrength.exchange W K E).hom ≫ K ◁ g := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange W K E).hom ≫ K ◁ g := by
   rw [BraidedCategory.braiding_naturality_left]
   simpa only [Category.assoc] using
-    congrArg (fun f ↦ f ≫ K ◁ g) (exchange_left_form W K E)
+    congrArg (fun f ↦ f ≫ K ◁ g) (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_left_form W K E)
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_left_form := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_left_form

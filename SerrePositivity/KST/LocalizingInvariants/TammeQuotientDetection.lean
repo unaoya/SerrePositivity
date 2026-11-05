@@ -18,7 +18,7 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeQuotientMap_invertedEdges :
     invertedEdges (tammeQuotientMap p q) = tammeLocalizingEdges p q := by
@@ -73,7 +73,7 @@ lemma tammeQuotient_zeroImageIso_iff_essentialImage (x : (laxCategory p q).obj _
     Nonempty (VertexIso ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌)
       (chosenZeroVertex (laxCategory p q).obj).vertex)
       ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x)) ↔
-        x ∈ essentialImage (pullbackInclusion p q) :=
+        x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q) :=
   (tammeQuotient_zeroImageIso_iff p q x).trans (laxDifference_kernel p q x)
 
 end SerrePositivity.KST.LocalizingInvariants

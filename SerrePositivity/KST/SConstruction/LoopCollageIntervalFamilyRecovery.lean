@@ -20,7 +20,7 @@ open Spectra SerrePositivity.InfinityCategories
 /-- 元の suspension 写像空間から、collage 内の下段・上段間の区間模型への比較。 -/
 def loopCollageSuspensionIntervalComparison (X Y : PointedKanObject.{u}) :
     (SSet.uliftFunctor.{u + 1, u}).obj
-        (PointedObject.basedHom (suspension X.obj) Y.obj).right ⟶
+        (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).right ⟶
       intervalMappingSpace
         (coherentNerveVertex ((enrichedFunctorCollageBottom
           pointedKanLoopEnrichedFunctor).obj X))
@@ -43,7 +43,7 @@ lemma loopCollageSuspensionIntervalComparison_isQCatEquivalence
 def relativeLoopCollageSuspensionFamilyRecovery (X Y : PointedKanObject.{u})
     {T U : SSet.{u + 1}} (j : T ⟶ U) [Mono j]
     (a : T ⟶ (SSet.uliftFunctor.{u + 1, u}).obj
-      (PointedObject.basedHom (suspension X.obj) Y.obj).right)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).right)
     (b : U ⟶ intervalMappingSpace
       (coherentNerveVertex ((enrichedFunctorCollageBottom
         pointedKanLoopEnrichedFunctor).obj X))

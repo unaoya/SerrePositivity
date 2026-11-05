@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
@@ -41,9 +43,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 /-- 標準の一点 Hom 同型で座標を揃えた、実 pointed fiber への既存比較。 -/
 def kanPointFiberComparison (K : KanObject.{u}) :
@@ -55,9 +60,18 @@ def kanPointFiberComparison (K : KanObject.{u}) :
 
 /-- 座標変更後も、同じ比較は全写像空間で充満忠実。 -/
 theorem kanPointFiberComparison_isFullyFaithful (K : KanObject.{u}) :
-    IsFullyFaithful (kanPointFiberComparison K) :=
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison K) :=
   ((qCatEquivalenceOfIso (SSet.opFunctor.mapIso
     ((SSet.uliftFunctor.{u + 1, u}).mapIso (pointKanObjectHomIso K))).symm).isQCatEquivalence.comp
       (pointedReverseKanFiberComparison_isQCatEquivalence K)).isFullyFaithful
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanPointFiberComparison := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanPointFiberComparison_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanPointFiberComparison_isFullyFaithful

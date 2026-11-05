@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -28,45 +33,51 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §8。零次数の path の逆向きと底の群の逆元の対応。 -/
 theorem exists_reverse_boundary_edge {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (e : E _⦋0⦌) {s t : B.PtSimplex 1 (p.app _ e)}
-    (a : (KanFiber p (p.app _ e)).PtSimplex 0 (fiberPoint p e))
+    (a : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex 0 (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e))
     (T : (Δ[1] : SSet.{u}) ⟶ E) (hT : T ≫ p = s.map)
-    (h₀ : stdSimplex.δ (0 : Fin 2) ≫ T = a.map ≫ fiberι p (p.app _ e))
+    (h₀ : stdSimplex.δ (0 : Fin 2) ≫ T = a.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e))
     (h₁ : stdSimplex.δ (1 : Fin 2) ≫ T = SSet.const e)
     (m : PtSimplex.MulStruct t s .const (0 : Fin 1)) :
-    ∃ L : BoundaryLift p e t, L.boundary = a := by
-  let av := (fiberι p (p.app _ e)).app _ (PtSimplex.equiv₀ (fiberPoint p e) a)
-  have ha : a.map ≫ fiberι p (p.app _ e) = SSet.const av := by
+    ∃ L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e t, L.boundary = a := by
+  let av := (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)).app _ (PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) a)
+  have ha : a.map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) = SSet.const av := by
     rw [a.map_eq_const_equiv₀, const_comp]
   have hpav : p.app _ av = p.app _ e := by
-    have h := congrArg (fun f ↦ f.app _ (PtSimplex.equiv₀ (fiberPoint p e) a))
-      (fiberι_comp p (p.app _ e))
-    have hc : (SSet.const (X := KanFiber p (p.app _ e)) (p.app _ e)).app _
-        (PtSimplex.equiv₀ (fiberPoint p e) a) = p.app _ e := by simp
+    have h := congrArg (fun f ↦ f.app _ (PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) a))
+      (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp p (p.app _ e))
+    have hc : (SSet.const (X := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) (p.app _ e)).app _
+        (PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) a) = p.app _ e := by simp
     simpa only [NatTrans.comp_app, types_comp_apply, av] using h.trans hc
   have hb : (𝟙 B : B ⟶ B).app _ (p.app _ e) = p.app _ av := hpav.symm
-  let L : BoundaryLift p av (mapSimplex (𝟙 B) hb s) :=
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p av (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 B) hb s) :=
     { map := T
-      map_comp := by simpa only [mapSimplex, Category.comp_id] using hT
+      map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hT
       face_eq j hj := by
         fin_cases j
         · exact h₀.trans ha
         · exact (hj rfl).elim }
-  have m' : PtSimplex.MulStruct (mapSimplex (𝟙 B) hb t) (mapSimplex (𝟙 B) hb s)
+  have m' : PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 B) hb t) (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 B) hb s)
       .const (0 : Fin 1) := by
-    simpa only [mapSimplex_const] using mapMulStruct (𝟙 B) hb m
-  obtain ⟨K, hK, hK₀, hK₁⟩ := exists_inverse_edge p av L m'
-  let R : BoundaryLift p e t :=
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const] using _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct (𝟙 B) hb m
+  obtain ⟨K, hK, hK₀, hK₁⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_inverse_edge p av L m'
+  let R : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e t :=
     { map := K
-      map_comp := by simpa only [mapSimplex, Category.comp_id] using hK
+      map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hK
       face_eq j hj := by
         fin_cases j
         · exact hK₀.trans h₁
         · exact (hj rfl).elim }
   refine ⟨R, ?_⟩
   ext : 1
-  apply fiber_hom_ext p (p.app _ e)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
   rw [R.boundary_ι, ha]
   exact hK₁
 
 end
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_reverse_boundary_edge := _root_.SerrePositivity.InfinityCategories.Kan.exists_reverse_boundary_edge

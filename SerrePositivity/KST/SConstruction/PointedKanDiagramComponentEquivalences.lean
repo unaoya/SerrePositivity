@@ -23,7 +23,7 @@ def pointedKanDiagramHomotopyFunctorIso {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
     (H : SSet.Homotopy (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG))
-    (hH : ∀ i, KanPiIsomorphism (pointedKanDiagramHomotopyMapAt hF hG H i).right) :
+    (hH : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedKanDiagramHomotopyMapAt hF hG H i).right) :
     FunctorIso (pointedKanCoherentDiagram F hF) (pointedKanCoherentDiagram G hG) := by
   apply functorIsoOfPointwiseInvertibleHomotopy H
   rintro ⟨s⟩

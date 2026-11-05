@@ -39,7 +39,7 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       (∀ n, j ≫ l n = a ≫ OmegaSpectrum.evaluation X Y n) ∧
       (∀ n, l n ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
         b ≫ OmegaSpectrum.evaluation X Z n) ∧
-      (∀ n, l (n + 1) ≫ PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         l n ≫ OmegaSpectrum.mappingStep X Y n) := by
   let q : KanSequence.Hom Y.toKanSequence Z.toKanSequence := ⟨p.app, p.comm⟩
   have hq : a ≫ RawSpectrumMapping.post X q = j ≫ b := by

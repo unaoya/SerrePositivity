@@ -31,7 +31,7 @@ variable {X Y : CosimplicialObject SSet.{u}} (f : X ⟶ Y)
 使われ方：Goerss–Jardine VII §4。二射影の同型性の消去。 -/
 lemma inclusion_levelwise [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex ((obj f).obj j)]
     (j : SimplexCategory) :
-    KanPiIsomorphism (X := X.obj j) (Y := (obj f).obj j) ((inclusion f).app j) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := X.obj j) (Y := (obj f).obj j) ((inclusion f).app j) :=
   kanPiIsomorphism_of_anodyne _ (inclusion_anodyne f j)
 
 /-- 概要：元の始域への射影は各段の全基点 π_* 同型。
@@ -41,13 +41,13 @@ lemma inclusion_levelwise [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex ((obj
 lemma sourceProjection_levelwise
     [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex ((obj f).obj j)]
     (e₀ : ∀ j, X.obj j _⦋0⦌) (j : SimplexCategory) :
-    KanPiIsomorphism (X := (obj f).obj j) (Y := X.obj j) ((sourceProjection f).app j) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (obj f).obj j) (Y := X.obj j) ((sourceProjection f).app j) := by
   have he := congr_app (inclusion_sourceProjection f) j
   change (inclusion f).app j ≫ (sourceProjection f).app j = 𝟙 (X.obj j) at he
-  have h : KanPiIsomorphism ((inclusion f).app j ≫ (sourceProjection f).app j) := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inclusion f).app j ≫ (sourceProjection f).app j) := by
     rw [he]
-    exact KanPiIsomorphism.id _
-  exact (inclusion_levelwise f j).cancel_left_atVertex h (e₀ j)
+    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (inclusion_levelwise f j)) h (e₀ j)
 
 /-- 概要：元の射が各段の π_* 同型なら終域への射影も各段の π_* 同型。
 方針：anodyne な比較との合成が元の射であることから消去する。
@@ -56,15 +56,15 @@ lemma sourceProjection_levelwise
 lemma targetProjection_levelwise
     [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex (Y.obj j)]
     [∀ j, KanComplex ((obj f).obj j)]
-    (hf : ∀ j, KanPiIsomorphism (f.app j))
+    (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j))
     (e₀ : ∀ j, X.obj j _⦋0⦌) (j : SimplexCategory) :
-    KanPiIsomorphism (X := (obj f).obj j) (Y := Y.obj j) ((targetProjection f).app j) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (obj f).obj j) (Y := Y.obj j) ((targetProjection f).app j) := by
   have he := congr_app (inclusion_targetProjection f) j
   change (inclusion f).app j ≫ (targetProjection f).app j = f.app j at he
-  have h : KanPiIsomorphism ((inclusion f).app j ≫ (targetProjection f).app j) := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inclusion f).app j ≫ (targetProjection f).app j) := by
     rw [he]
     exact hf j
-  exact (inclusion_levelwise f j).cancel_left_atVertex h (e₀ j)
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (inclusion_levelwise f j)) h (e₀ j)
 
 end
 

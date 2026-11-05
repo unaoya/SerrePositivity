@@ -27,16 +27,16 @@ private lemma nullMaximumCompositePath :
   fin_cases x <;> simp [coherentEndpointPathComposite, coherentEndpointPath,
     dgOdotMilnorNuNullUpperMaximalPath, coherentMaximalPath]
 
-private lemma nullMaximalVertexOfEdges (s : StableInfinity.{u + 1} _⦋2⦌)
-    (X Y Z : StableQCat.{u + 1}) (f : X ⟶ Y) (g : Y ⟶ Z)
-    (h₂ : StableInfinity.{u + 1}.δ (2 : Fin 3) s = (coherentNerveEdge f).edge)
-    (h₀ : StableInfinity.{u + 1}.δ (0 : Fin 3) s = (coherentNerveEdge g).edge)
+private lemma nullMaximalVertexOfEdges (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋2⦌)
+    (X Y Z : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (f : X ⟶ Y) (g : Y ⟶ Z)
+    (h₂ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (2 : Fin 3) s = (coherentNerveEdge f).edge)
+    (h₀ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (0 : Fin 3) s = (coherentNerveEdge g).edge)
     (hs : s.obj ⟨ULift.up (0 : Fin 3)⟩ = X)
     (ht : s.obj ⟨ULift.up (2 : Fin 3)⟩ = Z) :
     (s.map ⟨ULift.up (0 : Fin 3)⟩ ⟨ULift.up (2 : Fin 3)⟩ ≫
-      eqToHom (congrArg₂ (fun A B : StableQCat.{u + 1} => SimplicialCategory.sHom A B)
+      eqToHom (congrArg₂ (fun A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} => SimplicialCategory.sHom A B)
         hs ht)).app (Opposite.op ⦋0⦌) (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) X Z (f ≫ g) := by
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) X Z (f ≫ g) := by
   have hx : s.obj ⟨ULift.up (0 : Fin 3)⟩ = X :=
     congrArg (fun e => (coherentNerveArrowData e).1) h₂
   have hy : s.obj ⟨ULift.up (1 : Fin 3)⟩ = Y :=
@@ -69,7 +69,7 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 lemma dgOdotMilnorNuNullLowerHom_maximal :
     (dgOdotMilnorNuNullTriangleHom R d 1).app (Opposite.op ⦋0⦌)
       (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)
         (dgOdotMilnorNuNullComposite R d) :=
   nullMaximalVertexOfEdges (dgOdotMilnorNuNullTriangle R d 1) (K) (A) (B)
     (dgOdotMilnorFlatKernelExactMap R d) (dgOdotMilnorCellProjectionExactMap R d)
@@ -83,7 +83,7 @@ lemma dgOdotMilnorNuNullLowerHom_maximal :
 lemma dgOdotMilnorNuAbsoluteLowerHom_maximal (h : DGGluingMilnorSquare R d) :
     (dgOdotMilnorNuAbsoluteTriangleHom R d h 1).app (Opposite.op ⦋0⦌)
       (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)
         (dgOdotMilnorNuProjectionNullTargetComposite R d h) :=
   nullMaximalVertexOfEdges (dgOdotMilnorNuAbsoluteNullTriangle R d h 1) (K) (A) (B)
     (dgOdotMilnorFlatKernelExactMap R d) (dgOdotMilnorNuPerfectSequence R d h).projection
@@ -98,7 +98,7 @@ lemma dgOdotMilnorNuAbsoluteLowerHom_maximal (h : DGGluingMilnorSquare R d) :
 lemma dgOdotMilnorNuNullUpperHom_maximal :
     (dgOdotMilnorNuNullTriangleHom R d 0).app (Opposite.op ⦋0⦌)
       (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)
         (dgOdotMilnorNuNullTopComposite R d) :=
   nullMaximalVertexOfEdges (dgOdotMilnorNuNullTriangle R d 0) (K)
     (dgKInputStableValue R (dgFixedNullInput R (dgOdotMilnorFlatKernelInput R d))) (B)
@@ -112,10 +112,10 @@ lemma dgOdotMilnorNuNullUpperHom_maximal :
 lemma dgOdotMilnorNuAbsoluteUpperHom_maximal (h : DGGluingMilnorSquare R d) :
     (dgOdotMilnorNuAbsoluteTriangleHom R d h 0).app (Opposite.op ⦋0⦌)
       (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)
         (dgOdotMilnorNuStandardZeroComposite R d (fromZeroCategory (B))) :=
   nullMaximalVertexOfEdges (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) (K)
-    zeroCategory.{u + 1} (B) (toZeroCategory (K)) (fromZeroCategory (B))
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)) (fromZeroCategory (B))
     (dgOdotMilnorNuAbsoluteUpperTriangle_left R d h)
     (dgOdotMilnorNuAbsoluteUpperTriangle_top R d h)
     (dgOdotMilnorNuAbsoluteTriangle_source R d h 0)

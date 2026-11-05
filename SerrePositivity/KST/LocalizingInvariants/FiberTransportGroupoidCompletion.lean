@@ -30,7 +30,7 @@ lemma fiberTransport_groupoidCompletion_isEquivalence {E B : SSet.{u}}
     (h₁ : prismEndpoint 1 _ ≫ H = f ≫
       vertexFiberι p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))
     (hb : H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ b) :
-    IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
   let J := pullback.lift H (fst (Δ[1] : SSet.{u}) _) hb
   have hJ₀ : prismEndpoint 0 _ ≫ J = intervalPullbackFiberInclusion p b 0 := by
     apply pullback.hom_ext
@@ -45,7 +45,7 @@ lemma fiberTransport_groupoidCompletion_isEquivalence {E B : SSet.{u}}
     · simp only [Category.assoc, J, pullback.lift_snd, intervalPullbackFiberInclusion_snd,
         SSet.comp_const]
       rfl
-  exact prismComparison_groupoidCompletion_isEquivalence _ _ f J hJ₀ hJ₁
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.prismComparison_groupoidCompletion_isEquivalence _ _ f J hJ₀ hJ₁
     (intervalPullbackFiberInclusion_zero_groupoidCompletion_isEquivalence p b)
     (intervalPullbackFiberInclusion_one_groupoidCompletion_isEquivalence p b)
 

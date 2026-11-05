@@ -30,8 +30,8 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Kerodon §3.2.3。三角形の交換の一般的な自己 pullback 模型への移送。 -/
 def circleSmashMappingPairIso (Y : PointedSimplicialSet.{u}) :
     (PointedObject.basedHom circleSmashSquare.{u} Y).right ≅
-      pullback (PointedMapping.pre triangleDiskDiagonal Y)
-        (PointedMapping.pre triangleDiskDiagonal Y) :=
+      pullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y) :=
   (circleSmashMapping_isPullback Y).isoPullback
 
 /-- 概要：二重円の写像空間の交換は同型の下で自己 pullback の両因子の交換となる。
@@ -39,24 +39,24 @@ def circleSmashMappingPairIso (Y : PointedSimplicialSet.{u}) :
 規約：実際の単体集合の射の等式。
 使われ方：Goerss–Jardine I §7。変数交換の成分での符号の計算。 -/
 theorem circleSmashMappingPairIso_swap (Y : PointedSimplicialSet.{u}) :
-    PointedMapping.pre (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u}) Y ≫ (circleSmashMappingPairIso Y).hom =
       (circleSmashMappingPairIso Y).hom ≫
-        selfPullbackSwap (PointedMapping.pre triangleDiskDiagonal Y) := by
+        _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y) := by
   dsimp only [circleSmashMappingPairIso]
   apply pullback.hom_ext
-  · simp only [selfPullbackSwap, Category.assoc, pullback.lift_fst]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap, Category.assoc, pullback.lift_fst]
     rw [(circleSmashMapping_isPullback Y).isoPullback_hom_fst,
       (circleSmashMapping_isPullback Y).isoPullback_hom_snd]
-    simpa only [← op_comp, cofiberMappingFunctor_map, circleSmashUpper_swap] using
-      ((cofiberMappingFunctor Y).map_comp
+    simpa only [← op_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map, circleSmashUpper_swap] using
+      ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y).map_comp
         (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u}).op circleSmashUpper.op).symm
-  · simp only [selfPullbackSwap, Category.assoc, pullback.lift_snd]
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap, Category.assoc, pullback.lift_snd]
     rw [(circleSmashMapping_isPullback Y).isoPullback_hom_snd,
       (circleSmashMapping_isPullback Y).isoPullback_hom_fst]
-    simpa only [← op_comp, cofiberMappingFunctor_map, circleSmashLower_swap] using
-      ((cofiberMappingFunctor Y).map_comp
+    simpa only [← op_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map, circleSmashLower_swap] using
+      ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y).map_comp
         (PointedObject.smashSwap PointedSimplicialSet.circle.{u}
           PointedSimplicialSet.circle.{u}).op circleSmashLower.op).symm
 

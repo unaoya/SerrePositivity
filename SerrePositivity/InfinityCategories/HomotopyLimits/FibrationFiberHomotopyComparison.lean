@@ -16,7 +16,7 @@ universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.FibrationSquare
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 noncomputable section
 
@@ -33,18 +33,18 @@ lemma fibrationFiberMapBase_homotopyEquivalence {E B E' B' : SSet.{u}}
     IsSimplicialHomotopyEquivalence (fibrationFiberMapBase p p' f g comm b) := by
   have hfπ := kanPiIsomorphism_of_homotopyEquivalence f hf
   have hgπ := kanPiIsomorphism_of_homotopyEquivalence g hg
-  have hπ : KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b) := by
+  have hπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b) := by
     intro v n
     exact (fibrationFiberMapBase_piIsomorphism_of_vertex p p' f g comm hfπ hgπ b v) v n
   have h₀ : Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b)) := by
     intro c'
     obtain ⟨v', rfl⟩ := π₀.mk_surjective c'
     obtain ⟨a, ha⟩ := hf.mapPiZero_bijective.surjective
-      (π₀.mk ((fiberι p' (g.app _ b)).app _ v'))
+      (π₀.mk ((_root_.SerrePositivity.InfinityCategories.Kan.fiberι p' (g.app _ b)).app _ v'))
     have hp : mapπ₀ p a = π₀.mk b := by
       apply hg.mapPiZero_bijective.injective
-      rw [mapPiZero_square p p' f g comm a, ha]
-      simp only [mapπ₀_mk, fiber_vertex_base]
+      rw [_root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square p p' f g comm a, ha]
+      simp only [mapπ₀_mk, _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base]
     obtain ⟨c, _hc⟩ := fibration_componentFiber_exists p b a hp
     obtain ⟨v, _hv⟩ := π₀.mk_surjective c
     have hv := fibrationFiberMapBase_piIsomorphism_of_vertex p p' f g comm hfπ hgπ b v

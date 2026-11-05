@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V] [BraidedCategory V]
   {C : Type w} [Category C] [EnrichedOrdinaryCategory V C]
 
@@ -53,11 +58,11 @@ lemma enriched_whiskered_square_comp {P Q : V} {X Y Z X' Y' Z' : C}
     (a ⊗ₘ c) ≫ eComp V X Y Z ≫ eHomWhiskerRight V ex Z =
       (b ⊗ₘ d) ≫ eComp V X' Y' Z' ≫ eHomWhiskerLeft V X' ez := by
   rw [← Category.assoc, ← Category.assoc]
-  apply (enriched_whiskered_square_iff V ex ez _ _).mpr
-  exact enriched_parameter_square_comp V (eHomEquiv V ex) (eHomEquiv V ey)
+  apply (_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff V ex ez _ _).mpr
+  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp V (eHomEquiv V ex) (eHomEquiv V ey)
     (eHomEquiv V ez) a b c d
-    ((enriched_whiskered_square_iff V ex ey a b).mp ha)
-    ((enriched_whiskered_square_iff V ey ez c d).mp hb)
+    ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff V ex ey a b).mp ha)
+    ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff V ey ez c d).mp hb)
 
 /-- 概要：同じ通常の指定境界に対して二つの豊穣恒等射は厳密可換。
 方針：単位パラメータの恒等正方形を元の whiskering へ戻す。
@@ -65,7 +70,19 @@ lemma enriched_whiskered_square_comp {P Q : V} {X Y Z X' Y' Z' : C}
 使われ方：両境界を保つ全 Hom の組の恒等射。 -/
 lemma enriched_whiskered_square_id {X Y : C} (f : X ⟶ Y) :
     eId V Y ≫ eHomWhiskerRight V f Y = eId V X ≫ eHomWhiskerLeft V X f := by
-  apply (enriched_whiskered_square_iff V f f _ _).mpr
-  exact enriched_parameter_square_id V (eHomEquiv V f)
+  apply (_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff V f f _ _).mpr
+  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_id V (eHomEquiv V f)
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_id := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_iff := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff

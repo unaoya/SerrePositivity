@@ -58,18 +58,18 @@ lemma dgOdotMilnorPerfectNullSquare_zero_vertex :
 方針：Sp 正本の全対象商 Perf 零性を使う。規約：対象別収縮だけで代用しない。
 使われ方：相対提示の零角条件を充足する。 -/
 lemma dgOdotMilnorPerfectNullSquare_zero :
-    IsZeroCategory (stableObject
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject
       (squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R) 0 1)) := by
-  change IsZeroCategory (stableObject ((dgKInputNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _
     (squareVertex (dgOdotMilnorPerfectNullSquare R d) 0 1)))
-  rw [dgOdotMilnorPerfectNullSquare_zero_vertex, dgKInputNu_vertex, stableObject_vertex]
+  rw [dgOdotMilnorPerfectNullSquare_zero_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 
 /-- 概要：同じ零角条件を全単体が同じ Cat^perf 持ち上げで保持する。
 方針：元の ν との厳密一致を使う。規約：実商の完備化証拠とは区別する。
 使われ方：Sp の完備化付き ofSquare の零角。 -/
 lemma dgOdotMilnorPerfectNullSquare_perfect_zero :
-    IsZeroCategory (perfectStableObject
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject
       (squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
   have h := dgOdotMilnorPerfectNullSquare_zero R d
   rw [← dgKInputPerfectNu_inclusion R] at h
@@ -80,11 +80,11 @@ lemma dgOdotMilnorPerfectNullSquare_perfect_zero :
 使われ方：resolved 屋根と相対提示の右境界。 -/
 lemma dgOdotMilnorPerfectNullSquare_projection :
     squareRightEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorCellProjectionExactMap R d)).edge := by
   rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
     (coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
-  exact congrArg (fun x : StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorCellProjectionInputMap R d))
 
 end SerrePositivity.KST.SConstruction

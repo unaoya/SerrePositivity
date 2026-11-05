@@ -32,10 +32,10 @@ theorem scaffoldStraighteningRepresentationIso_value (c : TransportSimplexCatego
 
 /-- 同じ指定同型の成分同型そのものを回収する。 -/
 theorem scaffoldStraighteningRepresentationIso_valueIso (c : TransportSimplexCategory B) :
-    functorIsoValue (scaffoldStraighteningRepresentationIso p R)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldStraighteningRepresentationIso p R)
       (ULift.up ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
         (nerveVertex c))) =
-      functorIsoValue (scaffoldStraighteningRestrictionIso p R)
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldStraighteningRestrictionIso p R)
         (ULift.up (nerveVertex c)) := by
   apply Iso.ext
   exact scaffoldStraighteningRepresentationIso_value p R c
@@ -43,7 +43,7 @@ theorem scaffoldStraighteningRepresentationIso_valueIso (c : TransportSimplexCat
 /-- 元の降下同型の同じ成分を、元の共同分類値で表示する。 -/
 def scaffoldStraighteningGlobalChart (c : TransportSimplexCategory B) :=
   F2.isoNormalizeEndpoints
-    (functorIsoValue (scaffoldStraighteningRepresentationIso p R)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldStraighteningRepresentationIso p R)
       (ULift.up ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))))
     (congrArg HomotopyCategory.mk (firstVertexDiagram_source_vertex p c)) rfl
 
@@ -51,7 +51,7 @@ def scaffoldStraighteningGlobalChart (c : TransportSimplexCategory B) :=
 theorem scaffoldStraighteningGlobalChart_eq (c : TransportSimplexCategory B) :
     scaffoldStraighteningGlobalChart p R c = scaffoldStraighteningRestrictionChart p R c := by
   have hr : HEq (scaffoldStraighteningRestrictionChart p R c)
-      (functorIsoValue (scaffoldStraighteningRestrictionIso p R)
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (scaffoldStraighteningRestrictionIso p R)
         (ULift.up (nerveVertex c))) := by
     unfold scaffoldStraighteningRestrictionChart F2.isoNormalizeEndpoints
     exact F2.iso_endpoints_heq _ _ _
@@ -62,12 +62,12 @@ theorem scaffoldStraighteningGlobalChart_eq (c : TransportSimplexCategory B) :
 theorem scaffoldStraighteningGlobalChart_pointHom (c : TransportSimplexCategory B)
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
       (leftFibrationObjectOf p)).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj
         (leftFibrationObjectOf p))).symm v) ≫
       (straighteningFirstVertexSectionChart (leftFibrationObjectOf p) c).inv ≫
         (scaffoldStraighteningGlobalChart p R c).hom =
-    cosliceFiberPointHom ((transportRepresentationPointedFiberMap
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((transportRepresentationPointedFiberMap
       (R.nativeRestrict (transportSimplexFirstVertexMap B)) (ULift.up (nerveVertex c))).app
       (Opposite.op ⦋0⦌) ((uliftVertexFiberIso
         (pullback.snd p (transportSimplexFirstVertexMap B)) (nerveVertex c)).hom.app

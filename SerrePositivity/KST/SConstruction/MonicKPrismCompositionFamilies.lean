@@ -90,8 +90,8 @@ def monicKPrismTracedCompositeCorrectionChain (n : ℕ) :
       (SSet.const (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) n)))
       (monicKPrismTracedRawComposition F f g ≫
         RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) := by
-  let P := nerve (CoherentArrowString f)
-  let Q := nerve (CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
   let a := fst P Q ≫ monicKPrismTracedBFFamily F f ≫
     OmegaSpectrum.evaluation (kOmegaSpectrum (F.obj x)) (kOmegaSpectrum (F.obj y)) n
   let b := snd P Q ≫ monicKPrismTracedRawFamily F g ≫

@@ -33,10 +33,10 @@ local notation "hZK" => dgKInputStableValue_isIdempotentComplete R (dgFixedNullI
 /-- 概要：元 V 零角から元厚核零角への共有完全射。
 方針：両元全対象商の指定零比較の合成を使う。
 規約：零角を別頂点に置換しない。使われ方：両零側面の共有経路。 -/
-def dgOdotMilnorActualOuterKernelZeroMap : ExactMap (ZV) (ZK) where
-  hom := (toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
+def dgOdotMilnorActualOuterKernelZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (ZV) (ZK) where
+  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
   isExact := @isExactFunctor_comp _ _ _ _ _
-    (toZeroCategory (ZV)).isExact (fromZeroCategory (ZK)).isExact
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).isExact (fromZeroCategory (ZK)).isExact
 
 /-- 概要：両元零角間の共有辺は Cat^perf 内で可逆。
 方針：同じ元二零同型の逆と順射の合成を元完全合成則で回収する。
@@ -48,7 +48,7 @@ lemma dgOdotMilnorActualOuterKernelZeroMap_isInvertible :
   have h : perfectStableHoArrow (dgOdotMilnorActualOuterKernelZeroMap R d) (hZV) (hZK) =
       ((dgKFixedNullPerfectZeroIso R (VIn)).symm ≪≫
         dgKFixedNullPerfectZeroIso R (KIn)).hom :=
-    perfectStableHoArrow_comp (toZeroCategory (ZV)) (fromZeroCategory (ZK))
+    perfectStableHoArrow_comp (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)) (fromZeroCategory (ZK))
       (hZV) perfectZeroCategory_isIdempotentComplete (hZK)
   exact (congrArg (fun fm => IsIso fm) h).mpr
     (((dgKFixedNullPerfectZeroIso R (VIn)).symm ≪≫

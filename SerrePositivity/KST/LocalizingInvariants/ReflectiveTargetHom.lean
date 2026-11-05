@@ -25,9 +25,9 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
 lemma reflectiveTargetHomEquiv_apply {A : SSet.{u}} [Quasicategory A]
     (U : A ⟶ X) (V : A ⟶ Y) (α : FunctorHom U (V ≫ G)) :
-    reflectiveTargetHomEquiv a hG U V α =
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv a hG U V α =
       (hoFunctor.map ((ihom A).map F)).toFunctor.map α := by
-  have := reflectiveCounitHom_isIso a hG
+  have := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveCounitHom_isIso a hG
   change 𝟙 _ ≫ (a.homEquiv U V).symm α ≫
     inv ((hoFunctor.map ((pre V).app Y)).toFunctor.map a.counitHom) = _
   rw [Category.id_comp, adjunctInverseHomFormula, Category.assoc,
@@ -40,10 +40,10 @@ lemma reflectiveTargetHom_bijective {A : SSet.{u}} [Quasicategory A]
       (hoFunctor.map ((ihom A).map F)).toFunctor.map α) := by
   have he : (fun α : FunctorHom U (V ≫ G) =>
       (hoFunctor.map ((ihom A).map F)).toFunctor.map α) =
-        ⇑(reflectiveTargetHomEquiv a hG U V) := by
+        ⇑(_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv a hG U V) := by
     funext α
     exact (reflectiveTargetHomEquiv_apply a hG U V α).symm
   rw [he]
-  exact (reflectiveTargetHomEquiv a hG U V).bijective
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv a hG U V).bijective
 
 end SerrePositivity.KST.LocalizingInvariants

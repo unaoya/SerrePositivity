@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 元の同じ下側二胞体の最大 path による実通常図式。 -/
 def verdierFullSLowerStrictDiagram : ULift.{u} (Fin 3) ⥤ KanObject.{u} :=

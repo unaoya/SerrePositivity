@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion
 public import SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
@@ -9,11 +11,14 @@ public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B) (x : B.obj _⦋0⦌)
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x : B.obj _⦋0⦌)
 
 /-- 元の単体圏上の全分数図式を、宇宙を揃えた元の底上の空間値図式へ降下する。 -/
 def weakSpanKanSpaceDiagram : (SSet.uliftFunctor.{u + 1, u}).obj B.obj ⟶ SpaceInfinity.{u} :=
@@ -21,29 +26,56 @@ def weakSpanKanSpaceDiagram : (SSet.uliftFunctor.{u + 1, u}).obj B.obj ⟶ Space
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj))
     (transportSimplexInitialEdgesLifted B.obj)
     (transportSimplexFirstVertexMap_ulift_isLocalization B.obj)
-    (weakSpanKanCoherentDiagram i x) (weakSpanKanCoherentDiagram_inverts_initial i x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) (weakSpanKanCoherentDiagram_inverts_initial i x)
 
 /-- 初頂点写像による制限は、元の全 coherent 分数図式と全関手圏内で自然同型。
 各値だけの選択から降下を推論せず、同じ局所化普遍性の実因子化同型を保持する。 -/
 def weakSpanKanSpaceDiagram_restrictionIso :
     FunctorIso
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj) ≫
-        weakSpanKanSpaceDiagram i x) (weakSpanKanCoherentDiagram i x) :=
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram i x) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) :=
   localizationDescendIso
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj))
     (transportSimplexInitialEdgesLifted B.obj)
     (transportSimplexFirstVertexMap_ulift_isLocalization B.obj)
-    (weakSpanKanCoherentDiagram i x) (weakSpanKanCoherentDiagram_inverts_initial i x)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x) (weakSpanKanCoherentDiagram_inverts_initial i x)
 
 /-- 降下した図式の初頂点での値は、元の同じ厳密 Kan 分数模型の空間を表す。 -/
 def weakSpanKanSpaceDiagram_initialVertexIso (c : TransportSimplexCategory B.obj) :
-    VertexIso ((weakSpanKanSpaceDiagram i x).app (Opposite.op ⦋0⦌)
+    VertexIso ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram i x).app (Opposite.op ⦋0⦌)
       (ULift.up ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))))
-      (spaceInfinityVertex ((weakSpanKanDiagram i x).obj c)) := by
-  have e := (weakSpanKanSpaceDiagram_restrictionIso i x).app (ULift.up (nerveVertex c))
-  have hv : (weakSpanKanCoherentDiagram i x).app (Opposite.op ⦋0⦌)
-      (ULift.up (nerveVertex c)) = spaceInfinityVertex ((weakSpanKanDiagram i x).obj c) :=
-    kanDiagramCoherentNerve_vertex (weakSpanKanDiagram i x) c
+      (spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c)) := by
+  have e := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_restrictionIso i x).app (ULift.up (nerveVertex c))
+  have hv : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram i x).app (Opposite.op ⦋0⦌)
+      (ULift.up (nerveVertex c)) = spaceInfinityVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c) :=
+    kanDiagramCoherentNerve_vertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x) c
   exact e ≪≫ eqToIso (congrArg SSet.HomotopyCategory.mk hv)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram_initialVertexIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_restrictionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram_restrictionIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_restrictionIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram_initialVertexIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram_initialVertexIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanSpaceDiagram_initialVertexIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_initialVertexIso._proof_3

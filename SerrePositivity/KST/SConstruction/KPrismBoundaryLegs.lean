@@ -39,7 +39,7 @@ lemma kKanOriginalPrismLowerCompositeContraction_boundary_leg {I : Type u} [Smal
       (nerveVertex (coherentArrowStringDirect f))).edge =
       (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F f)).edge := by
   have hc := kKanOriginalPrismLowerCompositeContraction_vertex_edge r F f
-  let s := coherentLowerPrismString (coherentArrowStringDirect f)
+  let s := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)
   let P := (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge
   have ht := kKanOriginalPrismNativeHomIso_value_heq r F x y
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F) s).app (Opposite.op ⦋1⦌) P)
@@ -63,7 +63,7 @@ lemma kKanOriginalPrismUpperCompositeContraction_boundary_leg {I : Type u} [Smal
       (nerveVertex (coherentArrowStringDirect f))).edge =
       (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f)).edge := by
   have hc := kKanOriginalPrismUpperCompositeContraction_vertex_edge r F f
-  let s := coherentUpperPrismString (coherentArrowStringDirect f)
+  let s := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)
   let P := (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge
   have ht := kKanOriginalPrismNativeHomIso_value_heq r F x y
     ((coherentStringNativeMap (kKanOriginalPrismStringDiagram r F) s).app (Opposite.op ⦋1⦌) P)

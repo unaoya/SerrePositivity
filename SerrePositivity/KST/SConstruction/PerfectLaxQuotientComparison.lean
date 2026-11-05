@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 完備化後も、元の二脚の比較は全関手同型として存在する。 -/
@@ -22,7 +22,7 @@ def legsIso : FunctorIso (d.cSource.hom ≫ d.cLeg.hom)
     (d.dSource.hom ≫ d.dLeg.hom) := by
   simpa only [cSource, dSource, cLeg, dLeg, Category.assoc] using
     FunctorIso.postcomp
-      (laxQuotientLegsIso p q d.inclusion d.rawProjection d.isVerdier) d.completion.hom
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientLegsIso p q d.inclusion d.rawProjection d.isVerdier) d.completion.hom
 
 /-- Cat^perf 内で、元の射影と完備化後の二脚の類が可換する。 -/
 lemma legs_comm :

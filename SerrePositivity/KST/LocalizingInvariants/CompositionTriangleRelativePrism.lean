@@ -24,9 +24,9 @@ variable {X : SSet.{u}} [Quasicategory X] {x y z : X _⦋0⦌}
   (hs₂ : X.δ 2 s = e.edge) (hs₀ : X.δ 0 s = f.edge)
   (ht₂ : X.δ 2 t = e.edge) (ht₀ : X.δ 0 t = f.edge)
 
-def comparison : RelativeMappingEdge (compositionCorrespondenceFirst x f)
+def comparison : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge (compositionCorrespondenceFirst x f)
     (TriangleVertex.vertex e f s hs₂ hs₀) (TriangleVertex.vertex e f t ht₂ ht₀) :=
-  relativeMappingEdge _ (compositionCorrespondenceFirst_trivialKanFibration x f).mem _ _
+  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeMappingEdge _ (compositionCorrespondenceFirst_trivialKanFibration x f).mem _ _
     ((TriangleVertex.vertex_first e f s hs₂ hs₀).trans
       (TriangleVertex.vertex_first e f t ht₂ ht₀).symm)
 

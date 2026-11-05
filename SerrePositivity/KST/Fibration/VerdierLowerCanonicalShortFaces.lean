@@ -42,7 +42,7 @@ private theorem lowerNativeCoordinateReflection
       Coherent.simplex_map_obj, SimplexCategory.δ] using ht
   exact verdierNativeReadout_vertex_heq hs' ht' _ _ hn
 
-variable (d : VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
 
 /-- 概要：正規化下側の第一短辺は元の下側の全第一短辺。
 方針：同じ実ホーンの第一包含へ制限する。

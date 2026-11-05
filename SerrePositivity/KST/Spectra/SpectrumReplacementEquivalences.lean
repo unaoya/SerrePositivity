@@ -26,10 +26,10 @@ lemma fibrationReplacementUnit_isInvertible {X Y : OmegaSpectrum.{u}} (f : X ⟶
 
 /-- 段ごとの π 同型の fibration 置換の射影も実際の Sp の同値。 -/
 lemma fibrationReplacementProjection_isInvertible {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, KanPiIsomorphism (f.app n).right) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
     IsInvertibleEdge (coherentNerveEdge (fibrationReplacementProjection f)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (fun n ↦
-    kanPiIsomorphism_of_monoRight _ (SpectrumMappingAcyclic.projection_rlp f hf n))
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (SpectrumMappingAcyclic.projection_rlp f hf n))
 
 /-- Reedy 条件下の通常 Tot の比較射は実際の Sp の同値。 -/
 lemma ordinaryTotalizationComparison_isInvertible (X : CosimplicialObject OmegaSpectrum.{u})

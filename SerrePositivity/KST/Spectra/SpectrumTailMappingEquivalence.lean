@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 lemma mappingStep_isQCatEquivalence (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     IsQCatEquivalence (mappingStep X Y n) := by
   let s : PointedObject.basedHom (X.level n).space (Y.level n).space ⟶
-      PointedObject.basedHom (suspension (X.level n).space) (Y.level (n + 1)).space :=
+      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space :=
     suspensionHom _ _ ≫ PointedObject.basedHomMap _ (Y.sigma n)
   have h := pointed_piIsomorphism_homotopyEquivalence s (mappingStep_piIsomorphism X Y n)
   exact h.isQCatEquivalence

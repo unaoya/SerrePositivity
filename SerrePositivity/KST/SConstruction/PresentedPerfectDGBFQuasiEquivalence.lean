@@ -20,7 +20,7 @@ include hf
 
 /-- 元の厳密 dg 準同値による同じ新 BF 射は全段で全基点 π 同型。 -/
 lemma presentedPerfectDGBFMap_levelwise_of_quasiEquivalence (n : ℕ) :
-    KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
   let : (quasiEquivalencePerfectExtension A X Y f.down).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence A X Y f.down hf).isEquivalence_functor
   exact presentedPerfectDGBFMap_morita_levelwise A f n

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 
 /-!
@@ -13,9 +15,14 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+end SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：全ての面が境界定数単体である単体。
 方針：実際の単体とその全ての面の等式を記録する。
@@ -35,6 +42,7 @@ structure SphericalBoundary {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = (a j).map
 
 namespace SphericalBoundaryReduction
+open SerrePositivity.KST.Spectra.SphericalBoundaryReduction
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a : Fin (n + 4) → X.PtSimplex (n + 2) x} {p : Fin (n + 2)}
@@ -45,7 +53,7 @@ variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 規約：欠ける面は p + 2。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。球面的境界の逐次簡約。 -/
 def face (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const p)
-    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : SphericalBoundary a)
+    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
   if j.val = p.val then hi.map else
   if j.val = p.val + 1 then T.map else
@@ -61,17 +69,17 @@ set_option maxHeartbeats 1200000 in
 規約：p より前の面は全て定数。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。Kan 充填の適用条件。 -/
 theorem compatible (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const p)
-    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : SphericalBoundary a)
+    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (hlower : ∀ j, j.val < p.val → a j = .const) :
-    horn.IsCompatible (i := p.castSucc.succ.succ) (fun j _ ↦ face (a := a) (p := p) hi hb T j) := by
+    horn.IsCompatible (i := p.castSucc.succ.succ) (fun j _ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face (a := a) (p := p) hi hb T j) := by
   rw [horn.isCompatible_iff]
   intro j k hj hk hjk
   have hj' : j.val ≠ p.val + 2 := by
     intro he; apply hj; apply Fin.ext; simpa using he
   have hk' : k.val ≠ p.val + 2 := by
     intro he; apply hk; apply Fin.ext; simpa using he
-  simp only [face]
-  split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face,
     T.face_eq, RelativeMorphism.const_map, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
@@ -101,16 +109,16 @@ def reduced (a : Fin (n + 4) → X.PtSimplex (n + 2) x) (p : Fin (n + 2))
 規約：φ は指定したホーンの実際の充填。
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。簡約の幾何的実現。 -/
 theorem output_face (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const p)
-    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : SphericalBoundary a)
+    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (φ : (Δ[n + 4] : SSet.{u}) ⟶ X)
     (hφ : ∀ (j : Fin (n + 5)) (_ : j ≠ p.castSucc.succ.succ),
-      stdSimplex.δ j ≫ φ = face hi hb T j) (j : Fin (n + 4)) :
+      stdSimplex.δ j ≫ φ = _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face hi hb T j) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ p.castSucc.succ.succ ≫ φ =
-      (reduced a p b j).map := by
+      (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced a p b j).map := by
   by_cases hj : j ≤ p.castSucc.succ
   · rw [stdSimplex.δ_comp_δ_assoc hj, hφ _ (by grind)]
-    simp only [face, reduced]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face,
       T.face_eq, RelativeMorphism.const_map, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -123,8 +131,8 @@ theorem output_face (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const 
   · have hm : p.succ.succ ≤ j := by grind
     have he : p.castSucc.succ.succ = p.succ.succ.castSucc := by apply Fin.ext; rfl
     rw [he, ← stdSimplex.δ_comp_δ_assoc hm, hφ _ (by grind)]
-    simp only [face, reduced]
-    split_ifs <;> try simp only [SimplexFaces.degenerate_face, SimplexFaces.mul_face,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced]
+    split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face,
       T.face_eq, RelativeMorphism.const_map, comp_const]
     all_goals (try split_ifs) <;> first
       | rfl
@@ -142,13 +150,94 @@ theorem output_face (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const 
 使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。境界の反復簡約。 -/
 noncomputable def reduce [KanComplex X]
     (hi : PtSimplex.MulStruct ia (a p.castSucc.castSucc) .const p)
-    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : SphericalBoundary a)
+    (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (hlower : ∀ j, j.val < p.val → a j = .const) :
-    SphericalBoundary (reduced a p b) where
-  map := stdSimplex.δ p.castSucc.succ.succ ≫ (compatible hi hb T hlower).liftOfKanComplex
-  face_eq j := output_face hi hb T _
-    (fun k hk ↦ (compatible hi hb T hlower).δ_liftOfKanComplex k hk) j
+    _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced a p b) where
+  map := stdSimplex.δ p.castSucc.succ.succ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible hi hb T hlower).liftOfKanComplex
+  face_eq j := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face hi hb T _
+    (fun k hk ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible hi hb T hlower).δ_liftOfKanComplex k hk) j
 
 end SphericalBoundaryReduction
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_eq := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.map := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.rec := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.recOn := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.compatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.output_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduce := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduced := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduce._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduced.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced.eq_1

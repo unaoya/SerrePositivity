@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -51,12 +53,15 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
 
-local instance : LeftFibration (pullback.snd p k) :=
+local instance instLeftFibrationSndSSet : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 /-- 実対象図式の元の同型は、同じ分類写像の同型の指定対象成分。 -/
@@ -73,4 +78,13 @@ theorem leftStraighteningInfinityDiagram_baseChangeIso_heq_app :
   exact F2.iso_endpoints_heq _ (congrArg HomotopyCategory.mk hs).symm
     (congrArg HomotopyCategory.mk ht)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.instLeftFibrationSndSSet
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.leftStraighteningInfinityDiagram_baseChangeIso_heq_app := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityDiagram_baseChangeIso_heq_app

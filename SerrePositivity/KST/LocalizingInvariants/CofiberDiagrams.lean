@@ -16,22 +16,22 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
-lemma bottom_source (X : SSet.{u}) : bottom X ≫
+lemma bottom_source (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      left X ≫ zeroTargetArrowSource X := by
-  rw [bottom, zeroTargetArrowSource, ← Category.assoc (left X), left,
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X ≫ zeroTargetArrowSource X := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, zeroTargetArrowSource, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left,
     fullSubcomplexLift_ι]
   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
   rfl
 
-lemma right_target (X : SSet.{u}) : right X ≫
+lemma right_target (X : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      top X ≫ zeroSourceArrowTarget X := by
-  rw [right, zeroSourceArrowTarget, ← Category.assoc (top X), top,
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X ≫ zeroSourceArrowTarget X := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, zeroSourceArrowTarget, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top X), _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top,
     fullSubcomplexLift_ι]
   simp only [Category.assoc, stable_pre_evaluateFunctorAt]
   rfl

@@ -20,19 +20,19 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
-variable {X : SSet.{u}} [Quasicategory X] (f : SquareFrame (equivalencePath X))
+variable {X : SSet.{u}} [Quasicategory X] (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame (equivalencePath X))
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-  (hf : f.postcomp (equivalencePathEndpoint X 0) = ofSquare Q)
+  (hf : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp f) (equivalencePathEndpoint X 0) = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare Q)
 
 namespace PathExtension
-variable {f Q} (w : PathExtension f Q)
+variable {f Q} (w : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension f Q)
 
 def comparison : FunctorIso Q w.target :=
   (eqToIso (congrArg (fun g => HomotopyCategory.mk (functorVertex g)) w.source)).symm ≪≫
     equivalencePathFamilyIso w.family
 
 lemma target_isPullback (hQ : IsPullbackSquare Q) : IsPullbackSquare w.target :=
-  IsPullbackSquare.of_functorIso hQ w.comparison
+  IsPullbackSquare.of_functorIso hQ (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison w)
 
 end PathExtension
 end SerrePositivity.KST.LocalizingInvariants.SquareFrame

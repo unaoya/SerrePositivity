@@ -15,27 +15,27 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (c : TransportSimplexCategory B.obj)
 
 /-- 全自然変換の指定成分の同値性は、既存の同じ分数写像空間比較の同値性と同値。 -/
 theorem weakSpanKanMappingComparison_value_equivalence_iff :
     IsQCatEquivalence
-      (X := ((weakSpanKanDiagram i x).obj c).obj)
-      (Y := ((fractionSimplexKanMappingDiagram q.hom x).obj c).obj)
+      (X := ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram i x).obj c).obj)
+      (Y := ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram q.hom x).obj c).obj)
       ((weakSpanKanMappingComparison h x).app c) ↔
-      IsQCatEquivalence (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x
+      IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x
         ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))) := by
-  let hq : InvertsEdges q.hom (weakEquivalences i) := h.inverts
+  let hq : InvertsEdges q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := h.inverts
   let y := (transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c)
-  let f := fixedFractionCosliceEvaluation q.hom (weakEquivalences i) hq x y
-  have hs := weakSpanKanValueComparison_isQCatEquivalence i x c
-  have ht := fractionSimplexKanValueComparison_isQCatEquivalence (q := q) x c
+  let f := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) hq x y
+  have hs := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison_isQCatEquivalence i x c
+  have ht := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanValueComparison_isQCatEquivalence (q := q) x c
   have he := congrArg (fun m => IsQCatEquivalence m)
-    (weakSpanKanMappingComparison_value h x c)
-  have hR := strictKanCompletion_map_equivalence_iff_evaluation f
-  have hG := fixedFractionCosliceGroupoidComparison_isQCatEquivalence_iff
-    q.hom (weakEquivalences i) hq x y
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanMappingComparison_value h x c)
+  have hR := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanCompletion_map_equivalence_iff_evaluation f
+  have hG := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparison_isQCatEquivalence_iff
+    q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) hq x y
   constructor
   · intro ha
     have hc := hs.cancel_left (he.mp (ha.comp ht))

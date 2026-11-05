@@ -31,12 +31,12 @@ def freeStandardPrependNormalForm {n d : ℕ}
     (p : FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d⦌)) :
     FatNormalForm (discreteRowsFunctor.obj (Δ[n] : SSet.{u})) (op ⦋d + 1⦌) where
   degree := ⦋p.degree.len + 1⦌
-  epi := simplexPrepend p.epi
+  epi := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend p.epi
   epi_property := by
     let : Epi p.epi := p.epi_property
     infer_instance
   simplex := SSet.stdSimplex.objEquiv.symm
-    (simplexConeZero (SSet.stdSimplex.objEquiv p.simplex))
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (SSet.stdSimplex.objEquiv p.simplex))
 
 /--
 概要：標準単体の自由な退化に零点を追加する次数ごとの写像。

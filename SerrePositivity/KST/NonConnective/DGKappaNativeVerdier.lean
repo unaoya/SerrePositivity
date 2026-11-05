@@ -39,7 +39,7 @@ local instance nativeVerdierSuspensionStable : IsStable (dgKappaSuspensionInfini
 方針：元の実包含の始域と D 正本の安定性を束ねる。
 規約：Perf 完備化へ置換しない。
 使われ方：完備化前の連結 fibration の左項。 -/
-def dgKappaNativeKernelCategory : StableCategory.{max (u + 1) v} :=
+def dgKappaNativeKernelCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
   ⟨dgNerve R (dgKappaResolvedKernelKInput R D I), inferInstance,
     resolvedDGQuotientFlatKernel_isStable R (DGKappaCone R D I)
       (dgKappaConePerfectObjects R D I)⟩
@@ -48,7 +48,7 @@ def dgKappaNativeKernelCategory : StableCategory.{max (u + 1) v} :=
 方針：構成済みの同じ native 安定模型を束ね直す。
 規約：元の増大・商射を変更しない。
 使われ方：完備化前の連結 fibration の中央項。 -/
-def dgKappaNativeConeCategory : StableCategory.{max (u + 1) v} :=
+def dgKappaNativeConeCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
   ⟨(dgKappaNativeResolvedCone R D I).carrier, inferInstance,
     (dgKappaNativeResolvedCone R D I).stable⟩
 
@@ -56,7 +56,7 @@ def dgKappaNativeConeCategory : StableCategory.{max (u + 1) v} :=
 方針：D 正本の元の実商とその安定性を保持する。
 規約：元の固定 ν の Perf 値との同一視はしない。
 使われ方：完備化前の連結 fibration の右項。 -/
-def dgKappaNativeSuspensionCategory : StableCategory.{max (u + 1) v} :=
+def dgKappaNativeSuspensionCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
   ⟨dgKappaSuspensionInfinity R D I, inferInstance, dgKappaSuspensionInfinity_isStable R D I⟩
 
 /-- 概要：同じ実小核の元の厳密 dg 包含を完全射として保持する。
@@ -64,7 +64,7 @@ def dgKappaNativeSuspensionCategory : StableCategory.{max (u + 1) v} :=
 規約：元の全単体写像を保持する。
 使われ方：完備化前の Sp Verdier 認証への代入。 -/
 def dgKappaNativeKernelInclusion :
-    ExactMap (dgKappaNativeKernelCategory R D I) (dgKappaNativeConeCategory R D I) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKappaNativeKernelCategory R D I) (dgKappaNativeConeCategory R D I) where
   hom := dgNerve.map (dgKappaResolvedKernelInputMap R D I).down
   isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
     (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)).inclusionExact
@@ -74,7 +74,7 @@ def dgKappaNativeKernelInclusion :
 規約：元の全一単体を別の選択へ置換しない。
 使われ方：完備化前の Sp Verdier 認証への代入。 -/
 def dgKappaNativeQuotient :
-    ExactMap (dgKappaNativeConeCategory R D I) (dgKappaNativeSuspensionCategory R D I) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKappaNativeConeCategory R D I) (dgKappaNativeSuspensionCategory R D I) where
   hom := dgNerve.map (dgKappaResolvedSuspensionInputMap R D I).down
   isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
     (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)).quotientExact
@@ -84,7 +84,7 @@ def dgKappaNativeQuotient :
 規約：局所化の同種 API は新設せず、元の二つの辺集合を照合するだけ。
 使われ方：完備化前の Sp 認証へ D 正本の局所化を渡す。 -/
 theorem dgKappaNativeVerdierEdges_eq :
-    cofiberLocalizingEdges (essentialImage (dgKappaNativeKernelInclusion R D I)) =
+    cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgKappaNativeKernelInclusion R D I)) =
       dgVerdierEdges R (B) (P) := by
   unfold dgVerdierEdges
   congr 1
@@ -96,7 +96,7 @@ theorem dgKappaNativeVerdierEdges_eq :
 規約：同じ I に条件付き。固定 ν の完備化後の Verdier 列は結論しない。
 使われ方：K-6 c5 の完備化前の連結 fibration。 -/
 theorem dgKappaNative_isVerdierSequence :
-    IsVerdierSequence (dgKappaNativeKernelInclusion R D I) (dgKappaNativeQuotient R D I) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgKappaNativeKernelInclusion R D I) (dgKappaNativeQuotient R D I) := by
   let := dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
   refine ⟨?_, ?_, ?_⟩
   · exact dgFullSubcategoryInclusionNerve_isFullyFaithful R (B)
@@ -111,7 +111,7 @@ theorem dgKappaNative_isVerdierSequence :
 方針：構成済みの同じ三値・完全射・Verdier 認証を保持する。
 規約：固定 ν の Perf 完備化後の列へ置換しない。
 使われ方：完備化前の連結 fibration の指定四角形への受け渡し。 -/
-def dgKappaNativeVerdierSequence : VerdierSequence.{max (u + 1) v} where
+def dgKappaNativeVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{max (u + 1) v} where
   left := dgKappaNativeKernelCategory R D I
   middle := dgKappaNativeConeCategory R D I
   right := dgKappaNativeSuspensionCategory R D I
@@ -123,8 +123,8 @@ def dgKappaNativeVerdierSequence : VerdierSequence.{max (u + 1) v} where
 方針：Sp 正本の同じ列の提示構成を利用する。
 規約：零角付き提示の選択は保持する。固定 S 内の既存の条件付き屋根を変更しない。
 使われ方：K-6 c4・c5 の同じ native 全四角形比較の利用側。 -/
-def dgKappaNativeVerdierDiagram : VerdierDiagram.{max (u + 1) v} :=
-  (dgKappaNativeVerdierSequence R D I).presentation
+def dgKappaNativeVerdierDiagram : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{max (u + 1) v} :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation (dgKappaNativeVerdierSequence R D I))
 
 /-- 概要：同じ native 四角形の包含辺は、D-9 の同じ実包含の全一単体。
 方針：元の Sp 提示の包含辺回収を使う。
@@ -132,7 +132,7 @@ def dgKappaNativeVerdierDiagram : VerdierDiagram.{max (u + 1) v} :=
 使われ方：K-6 c4 の同じ native 境界照合。 -/
 theorem dgKappaNativeVerdierDiagram_inclusion :
     squareBottomEdge ≫ (dgKappaNativeVerdierDiagram R D I).square =
-      SSet.yonedaEquiv.symm (stableArrow (dgKappaNativeKernelInclusion R D I)).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeKernelInclusion R D I)).edge :=
   (dgKappaNativeVerdierDiagram R D I).bottom_edge
 
 /-- 概要：同じ native 四角形の商辺は、元の実平坦商包含の全一単体。
@@ -141,7 +141,7 @@ theorem dgKappaNativeVerdierDiagram_inclusion :
 使われ方：K-6 c4・c5 の同じ元の商射影の照合。 -/
 theorem dgKappaNativeVerdierDiagram_quotient :
     squareRightEdge ≫ (dgKappaNativeVerdierDiagram R D I).square =
-      SSet.yonedaEquiv.symm (stableArrow (dgKappaNativeQuotient R D I)).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeQuotient R D I)).edge :=
   (dgKappaNativeVerdierDiagram R D I).right_edge
 
 end SerrePositivity.KST.NonConnective

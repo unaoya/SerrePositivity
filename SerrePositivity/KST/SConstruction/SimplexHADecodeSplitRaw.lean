@@ -24,7 +24,7 @@ lemma simplexHASplitRawValue_zero_right {N : ℕ} (s : DGNerve.SimplexData A D N
       (forward A (n := -((serreCubeGeneratorFreeDimension n i + (T.card - 1) : ℕ) : ℤ))
         (simplexHABeadWordRawValue A s (simplexHAGeneratorWord n i
           (Fin.castSuccOrderEmb.trans v) (v (Fin.last (n + 1))) (simplexHADecodePrefix_last n v)))
-        (simplexHABeadWordRawValue A s (simplexHABeadTail T hT (v (Fin.last (n + 1))) hb))
+        (simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (n + 1))) hb))
         (by omega)) := by
   have hp := Finset.card_pos.mpr hT
   have hR := simplexHABeadWordDecode_zero_rawTail A s j (simplexHASplitRight n 0 v) T hT
@@ -65,7 +65,7 @@ lemma simplexHABeadWordDecode_split_one_rawValue {N : ℕ} (s : DGNerve.SimplexD
       exact (heq_of_eq h₀).trans (h₁.trans
         (heq_of_eq (simplexHASplitRawValue_zero A s n i m j v T hT hb)).symm)
     · let r := v (Fin.last (n + 1 + (m + 1)))
-      let Q := simplexHABeadWordRawValue A s (simplexHABeadTail T hT r hb)
+      let Q := simplexHABeadWordRawValue A s (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT r hb)
       have h₀ := simplexHABeadWordDecode_one_rawValue A s (n + 1 + m) g v T hT hb
       have h₁ := ih j vp {r} (Finset.singleton_nonempty r)
         (simplexHADecodePrefix_cut (n + 1 + m) v)

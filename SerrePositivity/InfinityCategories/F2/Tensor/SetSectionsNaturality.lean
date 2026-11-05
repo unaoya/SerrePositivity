@@ -9,7 +9,8 @@ public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplaceme
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedObjectNaturality
 
 /-!
-概要：集合値重みの制限射と、指定した weighted 比較による G8 の写像空間同値。
+概要：集合値重みの制限射と、指定した weighted 比較による G8 の写像空間同値（正本）。
+C3：新しい利用者は Natural 版を使う。旧比較は互換用の deprecated 宣言として保持する。
 方針：要素の圏の比較に実射を用い、極限への制限は錐の普遍性から作る。
 規約：指定極限錐を受け取る。G8 の自然性全体の四角形は、このファイルでは未証明。
 -/

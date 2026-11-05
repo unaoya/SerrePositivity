@@ -17,7 +17,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory DifferentialGraded DGNerve SSet
 open SerrePositivity.KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 def dgBarRightModuleRelabel : DGFunctor R (RightModule R D) (ModuleCategory R D) where

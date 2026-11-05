@@ -16,8 +16,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の全共通 cofiber 補完の二つの後合成は、同じ実底辺を厳密に持つ。 -/
-lemma weakStringCofiberPostcomparison_bottom {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
+lemma weakStringCofiberPostcomparison_bottom {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
     (weakStringPostExact f q n ≫ weakStringCofiberExact q α).val ≫
       weakCofiberRawProjection q =
         (weakStringCofiberExact (f ≫ q : A ⟶ C) α ≫ weakCofiberPostExact f q).val ≫
@@ -42,8 +42,8 @@ lemma weakStringCofiberPostcomparison_bottom {A B C : StableCategory.{u}}
       ((pre (stdSimplex.map α)).naturality f.hom)).trans h₂.symm)
 
 /-- 元の二つの共通補完の後合成は、全入力を保つ実関手圏内の自然同型を持つ。 -/
-def weakStringCofiberPostcomparison {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
+def weakStringCofiberPostcomparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
     FunctorIso (weakStringPostExact f q n ≫ weakStringCofiberExact q α).val
       (weakStringCofiberExact (f ≫ q : A ⟶ C) α ≫ weakCofiberPostExact f q).val := by
   apply (weakCofiberRawProjection_fullyFaithful q).preimageFunctorIso
@@ -51,8 +51,8 @@ def weakStringCofiberPostcomparison {A B C : StableCategory.{u}}
     (weakStringCofiberPostcomparison_bottom f q α))
 
 /-- 元の全共通核値 cofiber も、元の完全関手と核への後合成に関して自然同型になる。 -/
-def weakStringKernelCofiber_postcomp {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
+def weakStringKernelCofiber_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) :
     FunctorIso (weakStringPostExact f q n ≫ weakStringKernelCofiber q α).val
       (weakStringKernelCofiber (f ≫ q : A ⟶ C) α ≫ kernelPostExact f q).val := by
   have e : FunctorIso

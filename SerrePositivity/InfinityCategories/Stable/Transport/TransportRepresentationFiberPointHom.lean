@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -29,11 +31,14 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
-private theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
+theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
     (α : FunctorHom F G) {a b : D _⦋0⦌} (hab : a = b) :
     functorHomEvaluate α a ≫
       (eqToIso (congrArg HomotopyCategory.mk
@@ -43,4 +48,10 @@ private theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
   cases hab
   simp only [eqToIso_refl, Iso.refl_hom, Category.id_comp, Category.comp_id]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.component_reindex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.component_reindex

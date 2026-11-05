@@ -43,9 +43,9 @@ def PerfectVerdierSequence.presentation (d : PerfectVerdierSequence.{u}) :
   right_edge := (congrArg (fun Q => squareRightEdge ≫ Q)
     (perfectVerdierSquare_inclusion d)).trans (perfectVerdierRawSquare_edges d).2.2.2
   zero_corner := by
-    change IsZeroCategory (stableObject (squareVertex (perfectVerdierRawSquare d) 0 1))
-    rw [(perfectVerdierRawSquare_vertices d).2.2.2, stableObject_vertex]
-    exact zeroCategory_isZero
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (perfectVerdierRawSquare d) 0 1))
+    rw [(perfectVerdierRawSquare_vertices d).2.2.2, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
+    exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero
 
 /-- 同じ coherent 提示は、元の実商と冪等完備化を持つ列そのものを保持する。 -/
 lemma PerfectVerdierSequence.presentation_sequence (d : PerfectVerdierSequence.{u}) :

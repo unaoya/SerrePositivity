@@ -60,7 +60,7 @@ theorem cocartesianKanDiagram_map_constantEdge_isQCatEquivalence
     (hd : k.app (Opposite.op ⦋0⦌) (nerveVertex d) = b)
     (hf : yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k = SSet.const b) :
     IsQCatEquivalence ((cocartesianKanDiagram (pullback.snd q k)).map f) :=
-  strictKanCompletion_map_isQCatEquivalence _
+  _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence _
     (pullbackStrictTransportMap_constantEdge_localized_isIso q k f b hc hd hf)
 
 end SerrePositivity.KST.Fibration

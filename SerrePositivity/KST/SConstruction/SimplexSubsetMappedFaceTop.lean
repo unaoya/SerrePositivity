@@ -20,15 +20,15 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 def simplexSubsetMappedFaceTopImage {n : ℕ} (b : Bool)
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hjm : I.min' (simplexSubsetNonempty I hI) < j)
-    (hjM : j < I.max' (simplexSubsetNonempty I hI)) :
+    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
+    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
     (homObject A D
-      (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-      (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X
         ((2 - (I.card : ℤ)) + 1) :=
   eqToHom (congrArg (fun k => (homObject A D
-    (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-    (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X k)
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+    (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
       (show -(((I.erase j).card - 2 : ℕ) : ℤ) = (2 - (I.card : ℤ)) + 1 by
         have he := simplexSubsetErase_two I hI j hjm hjM
         have hc := Finset.card_erase_add_one hj
@@ -38,21 +38,21 @@ def simplexSubsetMappedFaceTopImage {n : ℕ} (b : Bool)
           (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)
             (simplexSubsetEraseNormalizedCoordinate I hI j hj hjm hjM))).hom ≫
         (serreConcreteCubeComplexFunctor A).map
-          (concreteCubeDimensionIso (X := ConcreteCube.mk (I.card - 2))
-            (Y := ConcreteCube.mk ((I.erase j).card - 2 + 1))
+          (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
+            (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
             (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).inv ≫
           simplexSubsetLambdaCell A I hI) ≫
-        F.map (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-          (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI)))))
+        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))))
 
 /-- 元の native 削除成分は、元の標準零面の同じ HA 出力次数の最高生成元像。 -/
 lemma cubicalLambdaNativeSimplexData_erase_zero_face {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hjm : I.min' (simplexSubsetNonempty I hI) < j)
-    (hjM : j < I.max' (simplexSubsetNonempty I hI)) :
+    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
+    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
     (cubicalLambdaNativeSimplexData A F).homOrZero (I.erase j)
-        (I.min' (simplexSubsetNonempty I hI)) (I.max' (simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
         ((2 - (I.card : ℤ)) + 1) =
       simplexSubsetMappedFaceTopImage A false F I hI j hj hjm hjM := by
   have he := simplexSubsetErase_two I hI j hjm hjM
@@ -62,12 +62,12 @@ lemma cubicalLambdaNativeSimplexData_erase_zero_face {n : ℕ}
     (simplexSubsetErase_max I hI j hjm hjM).symm (by omega)]
   rw [cubicalLambdaNativeSimplexData_hom_normalized]
   exact (congrArg (fun f => eqToHom (congrArg (fun k => (homObject A D
-      (F.obj (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI))))
-      (F.obj (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))).X k)
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X k)
       (show -(((I.erase j).card - 2 : ℕ) : ℤ) = (2 - (I.card : ℤ)) + 1 by omega))
     (serreCubeTopCellImage A _ ((I.erase j).card - 2)
-      (f ≫ F.map (standardSimplexVertex (I.min' (simplexSubsetNonempty I hI)))
-        (standardSimplexVertex (I.max' (simplexSubsetNonempty I hI))))))
+      (f ≫ F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))))
     (simplexSubsetLambdaErase_zero_face I hI j hj hjm hjM A)).symm
 
 end SerrePositivity.KST.SConstruction

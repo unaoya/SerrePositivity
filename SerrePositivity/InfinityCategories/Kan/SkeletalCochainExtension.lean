@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+end SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
+open SerrePositivity.KST.Spectra.SkeletalSphericalCochain
 
 noncomputable section
 
@@ -36,12 +41,12 @@ variable {K X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 theorem cell_attaching_face
     (c : relativeCellComplexOfMono.Cell (K.skeleton (n + 3)).ι (n + 3))
     (j : Fin (n + 4)) :
-    boundary.ι j ≫ c.ιSigmaBoundary ≫ SkeletalCellAttachment.attachingMap K (n + 3) =
+    boundary.ι j ≫ c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K (n + 3) =
       SSet.yonedaEquiv.symm
         (⟨K.δ j c.simplex, K.mem_skeleton _⟩ :
           (K.skeleton (n + 3) : SSet.{u}) _⦋n + 2⦌) := by
   apply (cancel_mono (K.skeleton (n + 3)).ι).1
-  simp only [Category.assoc, SkeletalCellAttachment.cell_attachingMap_ι,
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_attachingMap_ι,
     boundary.ι_ι_assoc]
   rw [stdSimplex.δ_comp_yonedaEquiv_symm, yonedaEquiv_symm_comp]
   rfl
@@ -52,11 +57,11 @@ theorem cell_attaching_face
 使われ方：Goerss–Jardine VIII §1。セルごとの充填判定を付着 pushout へ渡す。 -/
 theorem cell_attaching_boundary
     (c : relativeCellComplexOfMono.Cell (K.skeleton (n + 3)).ι (n + 3)) :
-    c.ιSigmaBoundary ≫ SkeletalCellAttachment.attachingMap K (n + 3) ≫ f =
-      SphericalBoundary.boundaryMap (fun j ↦ simplexValue f h (K.δ j c.simplex)) := by
+    c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K (n + 3) ≫ f =
+      _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.boundaryMap (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f h (K.δ j c.simplex)) := by
   apply boundary.hom_ext
   intro j
-  rw [SphericalBoundary.face_boundaryMap, cell_attaching_face_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_boundaryMap, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face_assoc]
   rfl
 
 variable [KanComplex X]
@@ -66,27 +71,27 @@ variable [KanComplex X]
 規約：通常の n+2 骨格から n+3 骨格への一段の延長。
 使われ方：Goerss–Jardine I §7、VIII §1。障害消滅から実際の延長への変換。 -/
 theorem exists_extension_of_differential_eq_zero
-    (hz : NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-      (cochain f h) = 0) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h) = 0) :
     ∃ g : (K.skeleton (n + 4) : SSet.{u}) ⟶ X,
       Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ (n + 3))) ≫ g = f := by
   have hc (c : relativeCellComplexOfMono.Cell (K.skeleton (n + 3)).ι (n + 3)) :
       ∃ φ : (Δ[n + 3] : SSet.{u}) ⟶ X,
         (boundary (n + 3)).ι ≫ φ =
-          c.ιSigmaBoundary ≫ SkeletalCellAttachment.attachingMap K (n + 3) ≫ f := by
-    rw [cell_attaching_boundary f h c]
-    apply (cell_filler_iff f h (SkeletalCellAttachment.cellEquiv K (n + 3) c)).2
+          c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K (n + 3) ≫ f := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_boundary f h c]
+    apply (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_filler_iff f h (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 3) c)).2
     exact congrFun hz _
   let φ := fun c ↦ (hc c).choose
   have hφ (c) := (hc c).choose_spec
-  have hw : SkeletalCellAttachment.attachingMap K (n + 3) ≫ f =
+  have hw : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K (n + 3) ≫ f =
       relativeCellComplexOfMono.l (K.skeleton (n + 3)).ι (n + 3) ≫ Sigma.desc φ := by
     ext c : 1
     simp only [relativeCellComplexOfMono.l, Sigma.ι_map_assoc, Sigma.ι_comp_desc]
     exact (hφ c).symm
-  refine ⟨(SkeletalCellAttachment.isPushout K (n + 3)).desc f (Sigma.desc φ) hw, ?_⟩
-  exact (SkeletalCellAttachment.isPushout K (n + 3)).inl_desc _ _ _
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K (n + 3)).desc f (Sigma.desc φ) hw, ?_⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K (n + 3)).inl_desc _ _ _
 
 /-- 概要：次の骨格への延長があれば、その係数 cochain の微分は零。
 方針：延長を各セルの特徴射へ制限し、付着 pushout と充填判定を使う。
@@ -95,20 +100,20 @@ theorem exists_extension_of_differential_eq_zero
 theorem differential_eq_zero_of_extension
     (g : (K.skeleton (n + 4) : SSet.{u}) ⟶ X)
     (hg : Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ (n + 3))) ≫ g = f) :
-    NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-      (cochain f h) = 0 := by
+    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+      (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h) = 0 := by
   funext s
-  let c := (SkeletalCellAttachment.cellEquiv K (n + 3)).symm s
-  have hc : SkeletalCellAttachment.cellEquiv K (n + 3) c = s :=
-    (SkeletalCellAttachment.cellEquiv K (n + 3)).apply_symm_apply s
-  apply (cell_filler_iff f h s).1
-  refine ⟨c.ιSigmaStdSimplex ≫ SkeletalCellAttachment.characteristicMap K (n + 3) ≫ g, ?_⟩
-  have hw := (SkeletalCellAttachment.isPushout K (n + 3)).w_assoc g
+  let c := (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 3)).symm s
+  have hc : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 3) c = s :=
+    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 3)).apply_symm_apply s
+  apply (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_filler_iff f h s).1
+  refine ⟨c.ιSigmaStdSimplex ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K (n + 3) ≫ g, ?_⟩
+  have hw := (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K (n + 3)).w_assoc g
   rw [hg] at hw
   have he := congrArg (fun k ↦ c.ιSigmaBoundary ≫ k) hw
   simp only [relativeCellComplexOfMono.l, Sigma.ι_map_assoc] at he
-  rw [← he, cell_attaching_boundary f h c]
+  rw [← he, _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_boundary f h c]
   have hs : c.simplex = s.val := congrArg Subtype.val hc
   rw [hs]
 
@@ -119,12 +124,36 @@ theorem differential_eq_zero_of_extension
 theorem extension_iff_differential_eq_zero :
     (∃ g : (K.skeleton (n + 4) : SSet.{u}) ⟶ X,
       Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ (n + 3))) ≫ g = f) ↔
-      NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (KanHomotopyGroup X (n + 1) x))) (n + 2)
-        (cochain f h) = 0 :=
-  ⟨fun ⟨g, hg⟩ ↦ differential_eq_zero_of_extension f h g hg,
-    exists_extension_of_differential_eq_zero f h⟩
+      _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X (n + 1) x))) (n + 2)
+        (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h) = 0 :=
+  ⟨fun ⟨g, hg⟩ ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_eq_zero_of_extension f h g hg,
+    _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero f h⟩
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+end SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_boundary := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.differential_eq_zero_of_extension := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_eq_zero_of_extension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.extension_iff_differential_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.extension_iff_differential_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face._proof_2

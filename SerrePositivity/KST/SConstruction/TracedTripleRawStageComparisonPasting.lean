@@ -80,7 +80,7 @@ lemma monicKTracedTripleRawStageComparisonPasting_cell (n : ℕ) :
 
 /-- 同じ円柱は、その構成に用いた同じ実比較三角形を厳密に保持する。 -/
 lemma monicKTracedTripleRawStageComparisonPasting_triangle (n : ℕ) :
-    SquareTriangles.lower ≫ tripleRawStageComparisonPastingCell ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ tripleRawStageComparisonPastingCell ≫
         monicKTracedTripleRawStageComparisonPasting F f g h n =
       SSet.yonedaEquiv.symm
         (monicKTracedTripleRawStageComparisonTriangle F f g h n).simplex := by

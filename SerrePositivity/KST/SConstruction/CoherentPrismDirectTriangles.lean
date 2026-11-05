@@ -22,7 +22,7 @@ open scoped Simplicial
 /-- 元の下側の二辺の列は、元の square の下辺・右辺の標準三角形そのもの。 -/
 lemma coherentLowerPrismDirect_forward {I : Type u} [SmallCategory I] {x y : I} (f : x ⟶ y) :
     (coherentOrdinaryPrismIso.{u, v} I).hom.app (Opposite.op ⦋2⦌)
-      (ULift.up (coherentLowerPrismString (coherentArrowStringDirect f)).chain) =
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (coherentArrowStringDirect f)).chain) =
       (SSet.yonedaEquiv.symm (ULift.up (nerve.edgeMk f).edge) ▷
         (Δ[1] : SSet.{max u v})).app (Opposite.op ⦋2⦌)
         (((SSet.Truncated.Edge.CompStruct.compId homotopyIntervalEdge).tensor
@@ -42,7 +42,7 @@ lemma coherentLowerPrismDirect_forward {I : Type u} [SmallCategory I] {x y : I} 
 /-- 元の上側の二辺の列は、元の square の左辺・上辺の標準三角形そのもの。 -/
 lemma coherentUpperPrismDirect_forward {I : Type u} [SmallCategory I] {x y : I} (f : x ⟶ y) :
     (coherentOrdinaryPrismIso.{u, v} I).hom.app (Opposite.op ⦋2⦌)
-      (ULift.up (coherentUpperPrismString (coherentArrowStringDirect f)).chain) =
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (coherentArrowStringDirect f)).chain) =
       (SSet.yonedaEquiv.symm (ULift.up (nerve.edgeMk f).edge) ▷
         (Δ[1] : SSet.{max u v})).app (Opposite.op ⦋2⦌)
         (((SSet.Truncated.Edge.CompStruct.idComp homotopyIntervalEdge).tensor

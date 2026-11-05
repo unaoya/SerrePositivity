@@ -32,7 +32,7 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
     (stableCategoryModel (dgKInputStableValue R (dgSuspensionIteration R s A n)))
     (stableCategoryModel (dgKInputStableValue R (dgKappaResolvedKernelKInput R
       (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone))))
-  (hz : ∀ n, LocalizingInvariants.IsZeroCategory (dgKInputStableValue R
+  (hz : ∀ n, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R
     (LocalizingInvariants.dgFixedNullInput R (dgKappaResolvedKernelKInput R
       (dgSuspensionIteration R s A n) (dgSuspensionIterationStage R s A n).cone))))
 

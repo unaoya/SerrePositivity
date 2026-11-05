@@ -20,7 +20,7 @@ variable {J : Type w} {K : Type w'} [Preorder J] [Preorder K]
   {C : Type v} [EnrichedCategory SSet.{u} C]
 
 /-- 段を単調写像で選び直し、元の Hom を保つ豊穣関手。 -/
-def reindex (f : J →o K) : EnrichedFunctor SSet.{u} (Object J C) (Object K C) where
+def reindex (f : J →o K) : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object K C) where
   obj X := ⟨f X.position, X.val⟩
   map X Y := {
     app _ := ↾fun ⟨p, a⟩ ↦ (⟨⟨f.monotone p.down.down⟩⟩, a)

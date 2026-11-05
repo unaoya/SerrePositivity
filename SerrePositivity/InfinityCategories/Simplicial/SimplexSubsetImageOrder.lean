@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder
 public import Mathlib.Order.Hom.Set
 
@@ -9,49 +11,58 @@ public import Mathlib.Order.Hom.Set
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 元の単調写像が部分集合上単射なら、元の全列挙の像は同じ濃度の昇順像列挙。 -/
 lemma simplexSubsetOrder_image_inj {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card)
     (hi : Set.InjOn α (I : Set (Fin (M + 1)))) (hJ : 2 ≤ (I.image α).card)
     (v : Fin (I.card - 1 + 1)) :
-    simplexSubsetOrder (I.image α) hJ
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (I.image α) hJ
       (Fin.cast (congrArg (fun d => d - 1 + 1) (Finset.card_image_of_injOn hi).symm) v) =
-      α (simplexSubsetOrder I hI v) := by
+      α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI v) := by
   let hlen := congrArg (fun d => d - 1 + 1) (Finset.card_image_of_injOn hi).symm
   let f : Fin (I.card - 1 + 1) → Fin (N + 1) :=
-    fun i => simplexSubsetOrder (I.image α) hJ (Fin.cast hlen i)
-  let g : Fin (I.card - 1 + 1) → Fin (N + 1) := fun i => α (simplexSubsetOrder I hI i)
+    fun i => _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (I.image α) hJ (Fin.cast hlen i)
+  let g : Fin (I.card - 1 + 1) → Fin (N + 1) := fun i => α (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI i)
   have hf : StrictMono f :=
     ((I.image α).orderEmbOfFin (show (I.image α).card =
       (I.image α).card - 1 + 1 by omega)).strictMono.comp (Fin.castOrderIso hlen).strictMono
   have hg : StrictMono g := by
     intro i j hij
     exact (α.monotone.monotoneOn (I : Set (Fin (M + 1)))).strictMonoOn_of_injOn hi
-      (simplexSubsetOrder_mem I hI i) (simplexSubsetOrder_mem I hI j)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI i) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI j)
       ((I.orderEmbOfFin (show I.card = I.card - 1 + 1 by omega)).strictMono hij)
   have hr : Set.range g = (I.image α : Set (Fin (N + 1))) := by
     ext x
     constructor
     · rintro ⟨i, rfl⟩
-      exact Finset.mem_image.mpr ⟨_, simplexSubsetOrder_mem I hI i, rfl⟩
+      exact Finset.mem_image.mpr ⟨_, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI i, rfl⟩
     · intro hx
       obtain ⟨y, hy, hxy⟩ := Finset.mem_image.mp hx
-      have hy' : y ∈ Set.range (simplexSubsetOrder I hI) :=
-        (Set.ext_iff.mp (simplexSubsetOrder_range I hI) y).mpr hy
+      have hy' : y ∈ Set.range (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI) :=
+        (Set.ext_iff.mp (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_range I hI) y).mpr hy
       obtain ⟨i, rfl⟩ := hy'
       exact ⟨i, hxy⟩
   have hl : Set.range f = (I.image α : Set (Fin (N + 1))) := by
     ext x
     constructor
     · rintro ⟨i, rfl⟩
-      exact simplexSubsetOrder_mem (I.image α) hJ _
+      exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem (I.image α) hJ _
     · intro hx
-      have hx' : x ∈ Set.range (simplexSubsetOrder (I.image α) hJ) :=
-        (Set.ext_iff.mp (simplexSubsetOrder_range (I.image α) hJ) x).mpr hx
+      have hx' : x ∈ Set.range (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (I.image α) hJ) :=
+        (Set.ext_iff.mp (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_range (I.image α) hJ) x).mpr hx
       obtain ⟨i, hi⟩ := hx'
       refine ⟨Fin.cast hlen.symm i, ?_⟩
-      exact (congrArg (simplexSubsetOrder (I.image α) hJ) (Fin.ext rfl)).trans hi
+      exact (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (I.image α) hJ) (Fin.ext rfl)).trans hi
   exact congrFun (hf.eq_of_range_eq hg (hl.trans hr.symm)) v
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_image_inj := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_image_inj

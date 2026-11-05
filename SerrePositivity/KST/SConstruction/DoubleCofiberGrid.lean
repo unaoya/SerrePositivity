@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- cofiber 四角形の下辺の指定端点での評価。 -/
 def cofiberBottomEvaluationMap (C : SSet.{u}) (j : Fin 2) : cofiberDiagrams C ⟶ C :=
@@ -61,7 +61,7 @@ lemma doubleCofiberGrid_row {E C : SSet.{u}}
         (SSet.const (stdSimplex.obj₀Equiv.symm j)))).app C =
       doubleCofiberRow J j ≫ cofiberProjection C := by
   simp only [doubleCofiberGrid, Category.assoc]
-  rw [ihomUncurry_pre_row, ihom_postcomp_evaluate]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_row, ihom_postcomp_evaluate]
   simpa only [doubleCofiberRow, Category.assoc] using
     congrArg (fun f => J ≫ f ≫ cofiberProjection C)
       (cofiberProjection_evaluation (cofiberDiagrams C) j)
@@ -73,7 +73,7 @@ lemma doubleCofiberGrid_column {E C : SSet.{u}} [Quasicategory C] [IsStable C]
         (𝟙 (Δ[1] : SSet.{u})))).app C =
       doubleCofiberColumn J j ≫ cofiberProjection C := by
   simp only [doubleCofiberGrid, Category.assoc]
-  rw [ihomUncurry_pre_column, ← CategoryTheory.Functor.map_comp, cofiberProjection_evaluation]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.ihomUncurry_pre_column, ← CategoryTheory.Functor.map_comp, cofiberProjection_evaluation]
   simpa only [doubleCofiberColumn, Category.assoc] using
     congrArg (fun f => J ≫ f)
       (cofiberPostcomp_projection (cofiberBottomEvaluationMap C j)

@@ -26,11 +26,11 @@ variable {R : Type u} [CommRing R] {d : DGOdotInput R}
 /-- 元の源長方形の実認証と、指定した包含・商・零角・合成三角形の全比較。
 各欄の存在は未供給であり、この入力型の定義を完成には数えない。 -/
 structure DGOdotVerdierRectangleComparisonInput (h : DGOdotLaxVerdierInput R d) where
-  rectangle : RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R)
-  boundary : VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputNu R)
+  rectangle : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R)
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputNu R)
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  image : VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputNu R)
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputNu R)
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram boundary
   source_vertex : squareVertex rectangle.comparisonSquare 0 0 =
@@ -43,8 +43,8 @@ structure DGOdotVerdierRectangleStrictTransport {h : DGOdotLaxVerdierInput R d}
   image_eq : diagram ≫ dgKInputNu R =
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  boundary : VerdierRectangleBoundaryIso v.rectangle.diagram diagram
-  source : VerdierRectangleDiagramIso v.rectangle.diagram diagram boundary
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso v.rectangle.diagram diagram
+  source : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso v.rectangle.diagram diagram boundary
   image_comparison : F2.functorIsoOfEq (source.comparison.postcomp (dgKInputNu R))
     rfl image_eq = v.image.comparison
   source_vertex_eq : squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
@@ -57,7 +57,7 @@ variable {h : DGOdotLaxVerdierInput R d} (v : DGOdotVerdierRectangleComparisonIn
 theorem comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Spectra.Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
     IsPullbackSquare (v.rectangle.comparisonSquare ≫ E) :=
-  v.rectangle.comparisonSquare_isPullback hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback v.rectangle) hE
 
 /-- 指定した実厳密代表を、従来どおりの型・名前の入力へ輸送する。 -/
 def toStrict (t : DGOdotVerdierRectangleStrictTransport v) :
@@ -74,7 +74,7 @@ theorem toStrict_comparison_isPullback (t : DGOdotVerdierRectangleStrictTranspor
     {E : dgKInputInfinity.{u, u + 1} R ⟶ Spectra.Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
     IsPullbackSquare ((v.toStrict t).comparisonSquare ≫ E) :=
-  v.rectangle.comparison_isPullback_of_sourceIso t.boundary t.source hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparison_isPullback_of_sourceIso v.rectangle) t.boundary t.source hE
 
 /-- 輸送後も左端は元の dg 対角始域そのもの。 -/
 theorem toStrict_source (t : DGOdotVerdierRectangleStrictTransport v) :

@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FullSubcomplex
 
 variable {X : SSet.{u}} [Quasicategory X] [IsStable X]
-  (P : X _⦋0⦌ → Prop) (hP : StableVertexCondition P)
+  (P : X _⦋0⦌ → Prop) (hP : _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition P)
 
 include hP in
 lemma inclusion_isExact : IsExactFunctor (fullSubcomplexOnVertices X P).ι where
@@ -32,10 +32,10 @@ lemma inclusion_isExact : IsExactFunctor (fullSubcomplexOnVertices X P).ι where
       bottom_edge := (SSet.yonedaEquiv.symm_apply_apply _).symm
       isPushout := ht }
     let s := chosenCofiberSquare (f.map ((truncation 2).map (fullSubcomplexOnVertices X P).ι))
-    let r := cofiberLift P f s (cofiber_vertices P hP f s)
+    let r := cofiberLift P f s (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s)
     obtain ⟨e⟩ := nonempty_cofiberSquareFunctorIso r d
     have hr : IsPushoutSquare (r.square ≫ (fullSubcomplexOnVertices X P).ι) := by
-      change IsPushoutSquare (squareLift P s.square (cofiber_vertices P hP f s) ≫ _)
+      change IsPushoutSquare (squareLift P s.square (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices P hP f s) ≫ _)
       rw [squareLift_ι]
       exact s.isPushout
     exact hr.of_functorIso (FunctorIso.postcomp e (fullSubcomplexOnVertices X P).ι)

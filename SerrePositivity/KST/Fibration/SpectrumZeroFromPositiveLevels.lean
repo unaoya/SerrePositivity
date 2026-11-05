@@ -15,7 +15,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.SConstruction
@@ -30,16 +30,16 @@ local instance zeroPositiveSpectrumCategory : SimplicialCategory OmegaSpectrum.{
 
 /-- 一点単体集合の、零次を含む全ての元の Kan ホモトピー類は一点。 -/
 theorem pointKanHomotopy_subsingleton (n : ℕ) (x : (𝟙_ SSet.{u}) _⦋0⦌) :
-    Subsingleton (KanHomotopy (𝟙_ SSet.{u}) n x) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (𝟙_ SSet.{u}) n x) := by
   have : ∀ k, Subsingleton ((𝟙_ SSet.{u}).PtSimplex k x) := fun k => ⟨fun a b => by
     apply RelativeMorphism.ext
     exact isTerminalTensorUnit.hom_ext _ _⟩
-  cases n <;> dsimp only [KanHomotopy, KanHomotopyZero, KanHomotopyGroup] <;> infer_instance
+  cases n <;> dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup] <;> infer_instance
 
 /-- Kan 複体から一点への同じ射の局所化可逆性は、全基点の元の π 類を一点にする。 -/
 theorem kanHomotopy_subsingleton_of_toPoint_localized_isIso (Y : SSet.{u}) [KanComplex Y]
     (hY : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit Y))) (n : ℕ) (y : Y _⦋0⦌) :
-    Subsingleton (KanHomotopy Y n y) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy Y n y) := by
   have := pointKanHomotopy_subsingleton n ((toUnit Y).app (Opposite.op ⦋0⦌) y)
   exact ((kanPiIsomorphism_of_localized_isIso (toUnit Y) hY) y n).injective.subsingleton
 

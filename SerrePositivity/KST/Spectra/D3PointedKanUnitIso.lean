@@ -25,7 +25,7 @@ variable {C : Type v} [Category.{w} C] [MonoidalCategory C] [MonoidalClosed C]
 /-- 元の標準単位同型は、単位パラメータでの同じ評価射。 -/
 lemma d3Closed_curry_unit {T Y : C} (f : (𝟙_ C) ⊗ T ⟶ Y) :
     curry f ≫ (unitIsoSelf (X := Y)).hom = (λ_ T).inv ≫ f := by
-  rw [HomTensorStrength.unit_evaluation, leftUnitor_inv_naturality_assoc,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation, leftUnitor_inv_naturality_assoc,
     whiskerLeft_curry_ihom_ev_app]
 
 /-- 単位内部 Hom の全作用と標準単位同型の、抽象閉圏上の厳密自然性。 -/
@@ -36,7 +36,7 @@ lemma d3Closed_unit_action (X Y : C) :
   apply uncurry_injective
   rw [uncurry_natural_right, uncurry_curry, uncurry_eq, id_tensor_pre_app_comp_ev]
   rw [MonoidalClosed.comp_eq, d3Closed_curry_unit, compTranspose_eq,
-    HomTensorStrength.unit_evaluation, comp_whiskerRight]
+    _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation, comp_whiskerRight]
   rw [← Category.assoc, ← leftUnitor_inv_tensor_id, tensorHom_id]
   simp only [Category.assoc]
 end
@@ -62,7 +62,7 @@ lemma d3PointedKanUnit_whiskered (X Y : PointedKanObject.{u}) :
   rw [PointedEnrichment.whiskerLeft_eq, PointedEnrichment.whiskerRight_eq]
   have h := d3Closed_unit_action X.obj Y.obj
   rw [← PointedMapping.ihomAction_eq_curry_comp,
-    ← PointedMapping.prePointed_eq_closedPre] at h
+    ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact congrArg Under.Hom.right h
 
 /-- 同じ元の単位同型を成分とする実豊穣自然変換。 -/
@@ -71,7 +71,7 @@ def d3PointedKanUnitTransformation :
       (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u}))
       (EnrichedFunctor.id SSet PointedKanObject.{u}) where
   app X := eHomEquiv SSet (ObjectProperty.homMk (unitIsoSelf (X := X.obj)).hom)
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     (unitIsoSelf (X := X.obj)).hom (unitIsoSelf (X := Y.obj)).hom
     ((EnrichedFunctor.id SSet PointedKanObject.{u}).map X Y)
     ((d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})).map X Y)).mp
@@ -105,7 +105,7 @@ def d3PointedKanUnitFunctorIso :
             have : IsIso f.hom.right := by
               change IsIso (unitIsoSelf (X := X.obj)).hom.right
               infer_instance
-            exact kanPiIsomorphism_of_monoRight f.hom.right
+            exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight f.hom.right
               ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso _)))
   change FunctorIso (coherentNerveMap (d3PointedKanIhom (𝟙_ PointedSimplicialSet.{u})))
     (𝟙 (SimplicialNerve PointedKanObject.{u}))

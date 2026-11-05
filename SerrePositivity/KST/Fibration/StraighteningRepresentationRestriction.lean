@@ -12,7 +12,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
@@ -56,10 +56,10 @@ theorem leftStraighteningRepresentationIso_value (c : TransportSimplexCategory B
 
 /-- 順方向成分だけでなく、同じ指定した成分同型そのものを回収する。 -/
 theorem leftStraighteningRepresentationIso_valueIso (c : TransportSimplexCategory B) :
-    functorIsoValue (leftStraighteningInfinityDiagram_representationIso p R)
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_representationIso p R)
       (ULift.up ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)
         (nerveVertex c))) =
-      functorIsoValue (straighteningRepresentationRestrictionIso p R)
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (straighteningRepresentationRestrictionIso p R)
         (ULift.up (nerveVertex c)) := by
   apply Iso.ext
   exact leftStraighteningRepresentationIso_value p R c
@@ -72,7 +72,7 @@ theorem leftStraighteningRepresentationIso_inv_value (c : TransportSimplexCatego
       functorHomEvaluate (straighteningRepresentationRestrictionIso p R).inv
         (ULift.up (nerveVertex c)) := by
   have h := congrArg (fun e => e.inv) (leftStraighteningRepresentationIso_valueIso p R c)
-  rw [functorIsoValue_inv, functorIsoValue_inv] at h
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv, _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv] at h
   exact h
 
 end SerrePositivity.KST.Fibration

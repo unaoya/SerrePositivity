@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
   (hQ : squareTriangle 1 ≫ Q = SSet.yonedaEquiv.symm
     (coherentSimplexMaximalization (verdierFullSLowerSimplex d)))

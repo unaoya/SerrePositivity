@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -46,9 +48,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 転置した全族の指定比較辺を、一次単体を選び直さず元の全族へ戻す。 -/
 def spanFunctorEdgeUnflip {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
@@ -72,7 +77,7 @@ lemma spanFunctorEdgeUnflip_edge {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
       (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
       (functorVertex (internalHomFlipHomEquiv K L X F))
       (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflip l).edge =
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).edge =
       (internalHomSwapIso L K X).hom.app (Opposite.op ⦋1⦌) l.edge := rfl
 
 lemma spanFunctorEdgeUnflip_isInvertible {K L X : SSet.{u}} [Quasicategory X]
@@ -83,10 +88,25 @@ lemma spanFunctorEdgeUnflip_isInvertible {K L X : SSet.{u}} [Quasicategory X]
       (functorVertex (internalHomFlipHomEquiv K L X G)))
     (hl : IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj X)) l) :
     IsInvertibleEdge (X := (ihom K).obj ((ihom L).obj X))
-      (spanFunctorEdgeUnflip l).toTruncated := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated := by
   exact (isInvertibleEdge_congr
     (e := l.map ((truncation 2).map (internalHomSwapIso L K X).hom))
-    (f := (spanFunctorEdgeUnflip l).toTruncated) rfl).mp
+    (f := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip l).toTruncated) rfl).mp
       (hl.map (internalHomSwapIso L K X).hom)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflip := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflip_edge := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflip_isInvertible := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip_isInvertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorEdgeUnflip._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflip._proof_1

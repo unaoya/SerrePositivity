@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
@@ -47,9 +49,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.StablePresentable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable (X : SSet.{u})
 
@@ -59,44 +64,86 @@ def arrowLaxInverse : (ihom (Δ[1] : SSet.{u})).obj X ⟶ F2.laxPullback (𝟙 X
     (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 1)) (𝟙 _)
     (by simp) (by simp)
 
-lemma arrowLaxInverse_fst : arrowLaxInverse X ≫ F2.laxPullbackFst (𝟙 X) (𝟙 X) =
+lemma arrowLaxInverse_fst : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X ≫ F2.laxPullbackFst (𝟙 X) (𝟙 X) =
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := F2.laxPullbackLift_fst ..
 
-lemma arrowLaxInverse_snd : arrowLaxInverse X ≫ F2.laxPullbackSnd (𝟙 X) (𝟙 X) =
+lemma arrowLaxInverse_snd : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X ≫ F2.laxPullbackSnd (𝟙 X) (𝟙 X) =
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := F2.laxPullbackLift_snd ..
 
-lemma arrowLaxInverse_arrow : arrowLaxInverse X ≫ F2.laxPullbackArrow (𝟙 X) (𝟙 X) =
+lemma arrowLaxInverse_arrow : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X ≫ F2.laxPullbackArrow (𝟙 X) (𝟙 X) =
     𝟙 ((ihom (Δ[1] : SSet.{u})).obj X) := F2.laxPullbackLift_arrow ..
 
 def arrowLaxIso : F2.laxPullback (𝟙 X) (𝟙 X) ≅ (ihom (Δ[1] : SSet.{u})).obj X where
   hom := F2.laxPullbackArrow (𝟙 X) (𝟙 X)
-  inv := arrowLaxInverse X
+  inv := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X
   hom_inv_id := by
     apply F2.laxPullback_hom_ext
-    · rw [Category.assoc, arrowLaxInverse_arrow, Category.comp_id, Category.id_comp]
-    · rw [Category.assoc, arrowLaxInverse_fst, F2.laxPullbackArrow_source,
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id, Category.id_comp]
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst, F2.laxPullbackArrow_source,
         Category.comp_id, Category.id_comp]
-    · rw [Category.assoc, arrowLaxInverse_snd, F2.laxPullbackArrow_target,
+    · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd, F2.laxPullbackArrow_target,
         Category.comp_id, Category.id_comp]
   inv_hom_id := F2.laxPullbackLift_arrow ..
 
 variable [Quasicategory X] [IsStable X]
 
 instance arrow_isStable : IsStable ((ihom (Δ[1] : SSet.{u})).obj X) :=
-  isStable_of_trivialKanFibration (arrowLaxIso X).inv
+  isStable_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso X).inv
 
 instance arrow_source_isExact : IsExactFunctor
     (evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [← arrowLaxInverse_fst]
-  have : IsExactFunctor (arrowLaxInverse X) :=
-    inferInstanceAs (IsExactFunctor (arrowLaxIso X).inv)
+  rw [← _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst]
+  have : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) :=
+    inferInstanceAs (IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso X).inv)
   infer_instance
 
 instance arrow_target_isExact : IsExactFunctor
     (evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
-  rw [← arrowLaxInverse_snd]
-  have : IsExactFunctor (arrowLaxInverse X) :=
-    inferInstanceAs (IsExactFunctor (arrowLaxIso X).inv)
+  rw [← _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd]
+  have : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse X) :=
+    inferInstanceAs (IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso X).inv)
   infer_instance
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.StablePresentable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse_arrow := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse_fst := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse_snd := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxIso := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_isStable (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_isStable := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_isStable
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_source_isExact (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_source_isExact := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_source_isExact
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_target_isExact (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_target_isExact := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrow_target_isExact
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse._proof_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse._proof_2 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxInverse._proof_3 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxIso._proof_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowLaxIso._proof_2 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso._proof_2

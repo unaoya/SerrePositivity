@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Fibration
 方針：元の下側全変形を固定ホーン fiber の指定点として同じ再構成へ渡す。
 規約：Ind-S (9) に条件付き。切断・読出し合成の比較条項には依存しない。
 使われ方：上側の正規化族との共有対角の照合に渡す実下側の長 Hom 族。 -/
-theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
+theorem verdierLowerNormalizedReconstruction_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     {comparison : ∀ (A : SSet.{u + 1}), (A ⟶ A) → Prop}
     (h9 : zeroMiddleControlledTriangleSupplyWith comparison) :
     let P := SimplicialThickening.Path

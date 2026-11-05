@@ -11,7 +11,7 @@ universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits MonoidalCategory DifferentialGraded SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 lemma dgGluingLastFixedInputDiagonal_fibration {X A : SSet.{u}} [Quasicategory X]
     [KanComplex A] (x : X _⦋0⦌) {y z : X _⦋0⦌} (g : X.Edge y z)

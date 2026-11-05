@@ -29,10 +29,10 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。対角辺への制限の可換四角形。 -/
 theorem PointedMapping.pre_post_comm {A B Y Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (v : Y ⟶ Z) :
-    pre i Y ≫ (PointedObject.basedHomMap A v).right =
-      (PointedObject.basedHomMap B v).right ≫ pre i Z := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y ≫ (PointedObject.basedHomMap A v).right =
+      (PointedObject.basedHomMap B v).right ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z := by
   have h := ((MonoidalClosed.pre i).naturality v).symm
-  simp only [← prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
   exact congrArg Under.Hom.right h
 
 /-- 概要：三角形の写像空間による自己 pullback 同型は標的の写像と可換。
@@ -43,18 +43,18 @@ theorem circleSmashMappingPairIso_post {Y Z : PointedSimplicialSet.{u}} (v : Y �
     (PointedObject.basedHomMap circleSmashSquare v).right ≫
         (circleSmashMappingPairIso Z).hom =
       (circleSmashMappingPairIso Y).hom ≫
-        selfPullbackMap (PointedMapping.pre triangleDiskDiagonal Y)
-          (PointedMapping.pre triangleDiskDiagonal Z)
+        _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Y)
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre triangleDiskDiagonal Z)
           (PointedObject.basedHomMap triangleDisk v).right
           (PointedObject.basedHomMap PointedSimplicialSet.circle v).right
           (PointedMapping.pre_post_comm triangleDiskDiagonal v) := by
   dsimp only [circleSmashMappingPairIso]
   apply pullback.hom_ext
-  · simp only [selfPullbackMap, Category.assoc, pullback.lift_fst,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, Category.assoc, pullback.lift_fst,
       (circleSmashMapping_isPullback Z).isoPullback_hom_fst]
     rw [← Category.assoc, (circleSmashMapping_isPullback Y).isoPullback_hom_fst]
     exact (PointedMapping.pre_post_comm circleSmashUpper v).symm
-  · simp only [selfPullbackMap, Category.assoc, pullback.lift_snd,
+  · simp only [_root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap, Category.assoc, pullback.lift_snd,
       (circleSmashMapping_isPullback Z).isoPullback_hom_snd]
     rw [← Category.assoc, (circleSmashMapping_isPullback Y).isoPullback_hom_snd]
     exact (PointedMapping.pre_post_comm circleSmashLower v).symm

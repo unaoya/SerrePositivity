@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
 
 /-- 完全な冪等完備化射の本質像は、任意の d ⊕ Σd を含む。 -/

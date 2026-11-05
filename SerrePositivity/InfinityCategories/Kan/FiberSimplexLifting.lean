@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.KanFiber
+end SerrePositivity.KST.Spectra.KanFiber
+namespace SerrePositivity.InfinityCategories.Kan.KanFiber
+open _root_.SerrePositivity.InfinityCategories.Kan.KanFiber
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -29,18 +34,18 @@ variable {E B : SSet.{u}} (p : E ⟶ B) (e : E _⦋0⦌)
 使われ方：Goerss–Jardine I §8。fiber の群の代表の比較。 -/
 def liftSimplex {n : ℕ} (s : E.PtSimplex n e)
     (hs : s.map ≫ p = SSet.const (p.app _ e)) :
-    (KanFiber p (p.app _ e)).PtSimplex n (fiberPoint p e) where
-  map := fiberLift p _ s.map hs
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) where
+  map := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p _ s.map hs
   comm := by
-    apply fiber_hom_ext p (p.app _ e)
-    simpa only [Category.assoc, fiberLift_ι, Subcomplex.ofSimplex_ι, comp_const,
-      const_comp, SSet.const_app, fiberι_point] using s.comm
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+    simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, Subcomplex.ofSimplex_ι, comp_const,
+      const_comp, SSet.const_app, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] using s.comm
 
 /-- fiber の単体の持ち上げを包含すると元の単体に戻る。 -/
 @[reassoc (attr := simp)]
 lemma liftSimplex_ι {n : ℕ} (s : E.PtSimplex n e)
     (hs : s.map ≫ p = SSet.const (p.app _ e)) :
-    (liftSimplex p e s hs).map ≫ fiberι p (p.app _ e) = s.map := fiberLift_ι p (p.app _ e) s.map hs
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex p e s hs).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) = s.map := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι p (p.app _ e) s.map hs
 
 /-- 概要：fiber に入る RelStruct は fiber 内の RelStruct へ持ち上がる。
 方針：ホモトピーの射を pullback へ持ち上げ、指定二面と定数面を包含で照合する。
@@ -50,20 +55,56 @@ def liftRelStruct {n : ℕ} {s t : E.PtSimplex n e} {i : Fin (n + 1)}
     (hs : s.map ≫ p = SSet.const (p.app _ e))
     (ht : t.map ≫ p = SSet.const (p.app _ e)) (r : PtSimplex.RelStruct s t i)
     (hr : r.map ≫ p = SSet.const (p.app _ e)) :
-    PtSimplex.RelStruct (liftSimplex p e s hs) (liftSimplex p e t ht) i where
-  map := fiberLift p _ r.map hr
+    PtSimplex.RelStruct (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex p e s hs) (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex p e t ht) i where
+  map := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p _ r.map hr
   δ_castSucc_map := by
-    apply fiber_hom_ext p (p.app _ e)
-    simp only [Category.assoc, fiberLift_ι, liftSimplex_ι, r.δ_castSucc_map]
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι, r.δ_castSucc_map]
   δ_succ_map := by
-    apply fiber_hom_ext p (p.app _ e)
-    simp only [Category.assoc, fiberLift_ι, liftSimplex_ι, r.δ_succ_map]
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι, r.δ_succ_map]
   δ_map_of_lt j hj := by
-    apply fiber_hom_ext p (p.app _ e)
-    simp only [Category.assoc, fiberLift_ι, r.δ_map_of_lt j hj, const_comp, fiberι_point]
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, r.δ_map_of_lt j hj, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
   δ_map_of_gt j hj := by
-    apply fiber_hom_ext p (p.app _ e)
-    simp only [Category.assoc, fiberLift_ι, r.δ_map_of_gt j hj, const_comp, fiberι_point]
+    apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+    simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι, r.δ_map_of_gt j hj, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
 
 end
-end SerrePositivity.KST.Spectra.KanFiber
+end SerrePositivity.InfinityCategories.Kan.KanFiber
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex.congr_simp

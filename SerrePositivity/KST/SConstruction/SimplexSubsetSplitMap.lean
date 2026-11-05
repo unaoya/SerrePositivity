@@ -35,20 +35,20 @@ def simplexSubsetSplitOrder {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (n + 1
 def simplexSubsetSplitMap {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (n + 1))
     (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    ((NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
-      (NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).carrier.{u} ⟶ Δ[I.card - 1] :=
-  NecklaceShape.inclusion _ ≫ SSet.stdSimplex.map
+    ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).carrier.{u} ⟶ Δ[I.card - 1] :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion _ ≫ SSet.stdSimplex.map
     (SimplexCategory.Hom.mk (simplexSubsetSplitOrder I j hj hL hR))
 
 /-- 元の分割射の左制限は、元の左部分集合の昇順包含そのもの。 -/
 lemma simplexSubsetSplitMap_inl {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    (NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInl
-        (NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInl
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
       simplexSubsetSplitMap.{u} I j hj hL hR =
-    (NecklaceShape.singleSimplexIso _).hom ≫
-      simplexSubsetInclusionMap (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _) := by
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap (I.filter (· ≤ j)) I hL hI (Finset.filter_subset _ _) := by
   apply SSet.hom_ext
   intro d
   obtain ⟨⟨m⟩⟩ := d
@@ -63,11 +63,11 @@ lemma simplexSubsetSplitMap_inl {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
 lemma simplexSubsetSplitMap_inr {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    (NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInr
-        (NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedgeInr
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)) ≫
       simplexSubsetSplitMap.{u} I j hj hL hR =
-    (NecklaceShape.singleSimplexIso _).hom ≫
-      simplexSubsetInclusionMap (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _) := by
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap (I.filter (j ≤ ·)) I hR hI (Finset.filter_subset _ _) := by
   apply SSet.hom_ext
   intro d
   obtain ⟨⟨m⟩⟩ := d
@@ -77,7 +77,7 @@ lemma simplexSubsetSplitMap_inr {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
   intro i
   apply Fin.ext
   change (I.filter (· ≤ j)).card - 1 + (s.val i).val =
-    (simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
       (Finset.filter_subset _ _) (s.val i)).val
   have hc := simplexSubsetSplitLeft_card I hI j hj hL
   have hb := simplexSubsetSplitRight_block I hI j hj hR (s.val i)

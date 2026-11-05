@@ -46,7 +46,7 @@ lemma dgOdotMilnorNuNullLowerTriangleHomotopy_face (i : Fin 3) (hi : i ≠ 1) :
   change (stdSimplex.δ i ▷ (Δ[1] : SSet.{u + 2})) ≫ (β_ Δ[2] Δ[1]).hom ≫
     dgOdotMilnorNuNullLowerPrism R d h = _
   rw [← Category.assoc, hs, Category.assoc, dgOdotMilnorNuNullLowerPrism_face R d h i hi]
-  let cancel (H : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1}) :
+  let cancel (H : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) :
       (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫
         (β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫ H = H := rfl
   exact cancel _

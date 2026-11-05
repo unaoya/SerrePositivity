@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -24,7 +24,7 @@ lemma intervalFunctorMap_equivalence_of_constantHom_bijective
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (F : X ⟶ Y) (x y : X _⦋0⦌)
     (h : ∀ (A : SSet.{u}) [Quasicategory A],
-      Function.Bijective (constantFunctorPostMap F A x y)) :
+      Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x y)) :
     IsSimplicialHomotopyEquivalence (intervalFunctorMap F x y) := by
   let K := intervalMappingSpace x y
   let L := intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y)
@@ -32,10 +32,10 @@ lemma intervalFunctorMap_equivalence_of_constantHom_bijective
   obtain ⟨α, hα⟩ := (h L).surjective (intervalFamilyHom (𝟙 L))
   obtain ⟨g, hg⟩ := intervalFamilyHom_surjective L X x y α
   have hr : intervalFamilyHom (g ≫ f) = intervalFamilyHom (𝟙 L) := by
-    rw [intervalFunctorMap_familyHom_post, hg, hα]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post, hg, hα]
   have hl : intervalFamilyHom (f ≫ g) = intervalFamilyHom (𝟙 K) := by
     apply (h K).injective
-    rw [← intervalFunctorMap_familyHom_post, ← intervalFunctorMap_familyHom_post]
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post, ← _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post]
     have hh := congrArg (intervalFamilyHomPrecomp f) hr
     change intervalFamilyHom (f ≫ (g ≫ f)) = intervalFamilyHom (f ≫ 𝟙 L) at hh
     rw [Category.comp_id] at hh

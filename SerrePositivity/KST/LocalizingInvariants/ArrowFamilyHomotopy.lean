@@ -21,18 +21,18 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowFamilyHomotopy_roundTrip {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    ZeroArrowFamily.ofHomotopy (arrowFamilyHomotopy a) = a :=
+    ZeroArrowFamily.ofHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a) = a :=
   ZeroArrowFamily.ofHomotopy_eq_of_h _ a rfl
 
 lemma arrowFamilyHomotopy_vertex_edge {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (x : A _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (arrowFamilyHomotopy a) x).edge =
+    (simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a) x).edge =
       intervalFunctorVertexEdge (a.app (Opposite.op ⦋0⦌) x) := by
   conv_rhs => rw [← arrowFamilyHomotopy_roundTrip a]
   rw [ZeroArrowFamily.ofHomotopy, intervalFunctorVertexEdge_curry]
-  change (arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
     ((Truncated.Edge.id (X := (truncation 2).obj A) x).edge, homotopyIntervalEdge.edge) =
-      (arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy a).h.app (Opposite.op ⦋1⦌)
         (PinchedHom.constant x 1, SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})))
   have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
     apply SSet.stdSimplex.ext

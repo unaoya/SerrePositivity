@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 
 /-!
@@ -15,21 +17,24 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def relativeConeProductCurryIso (T S X : SSet.{u}) :
     (ihom (T ⊗ S)).obj X ≅ (ihom T).obj ((ihom S).obj X) :=
   (internalHom.mapIso (β_ S T).op).app X ≪≫ ihomCurryIso S T X
 
 lemma relativeConeProductCurryIso_vertex (T S X : SSet.{u}) (F : T ⊗ S ⟶ X) :
-    (relativeConeProductCurryIso T S X).hom.app (Opposite.op ⦋0⦌) (functorVertex F) =
+    (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso T S X).hom.app (Opposite.op ⦋0⦌) (functorVertex F) =
       functorVertex (curry ((β_ S T).hom ≫ F)) := rfl
 
 lemma relativeConeProductCurryIso_pre {K T S X : SSet.{u}} (j : K ⟶ T) :
-    (pre (j ▷ S)).app X ≫ (relativeConeProductCurryIso K S X).hom =
-      (relativeConeProductCurryIso T S X).hom ≫ (pre j).app ((ihom S).obj X) := by
+    (pre (j ▷ S)).app X ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso K S X).hom =
+      (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso T S X).hom ≫ (pre j).app ((ihom S).obj X) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -47,4 +52,16 @@ lemma relativeConeProductCurryIso_pre {K T S X : SSet.{u}} (j : K ⟶ T) :
   exact congrArg (fun z : T.obj d => F.app d (α ≫ β) (z, s))
     (ConcreteCategory.congr_hom (j.naturality β) k)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeConeProductCurryIso := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeConeProductCurryIso_pre := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeConeProductCurryIso_vertex := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.relativeConeProductCurryIso_vertex

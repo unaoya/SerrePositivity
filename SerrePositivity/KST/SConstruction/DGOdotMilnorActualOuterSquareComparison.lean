@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open F2.Idempotent
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "O" => verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "O" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 local notation "F" => (O) ≫ dgKInputPerfectNu R
 local notation "G" => dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R
 local notation "KIn" => dgOdotMilnorFlatKernelInput R d
@@ -27,7 +27,7 @@ local notation "PIn" => dgOdotMilnorCellInput R d
 方針：元包含・商・二零辺の指定端点付き証人を一つの frame に束ねる。
 規約：元両面と元全ホモトピーを保持。使われ方：零対角での全四角形比較。 -/
 def dgOdotMilnorActualOuterKernelFrameComparison :
-    SquareFrameHomotopy (SquareFrame.ofSquare (F)) (SquareFrame.ofSquare (G)) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (F)) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (G)) := by
   let wI := dgOdotMilnorActualOuterKernelInclusionWitness R d
   let wP := dgOdotMilnorActualOuterKernelProjectionWitness R d
   let wL := dgOdotMilnorActualOuterKernelZeroLeftWitness R d
@@ -90,9 +90,9 @@ def dgOdotMilnorActualOuterKernelFrameComparison :
 def dgOdotMilnorActualOuterKernelPerfectComparison : FunctorIso (F) (G) := by
   let H := squareFrameHomotopyPostcomp
     (dgOdotMilnorActualOuterKernelFrameComparison R d) perfectStableInfinityInclusion
-  have hz : IsZeroCategory (stableObject
+  have hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject
       (squareVertex ((F) ≫ perfectStableInfinityInclusion) 0 1)) := by
-    change IsZeroCategory (perfectStableObject (squareVertex (F) 0 1))
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (F) 0 1))
     exact dgOdotMilnorActualOuter_perfect_zero R d
   exact perfectStableInfinityInclusion_isFullyFaithful.preimageFunctorIso
     (stableZeroSquareComparison H hz)
@@ -101,20 +101,20 @@ def dgOdotMilnorActualOuterKernelPerfectComparison : FunctorIso (F) (G) := by
 方針：既存指定三比較に同じ新全比較の三制限を合成する。
 規約：既存の元指定境界を保持。使われ方：実外周認証の境界引数。 -/
 def dgOdotMilnorActualOuterBoundary (h : DGGluingMilnorSquare R d) :
-    VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square (F) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square (F) where
   inclusion := (dgOdotMilnorKernelOuterSquareBoundary R d h).inclusion ≪≫
     FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm squareBottomEdge
   quotient := (dgOdotMilnorKernelOuterSquareBoundary R d h).quotient ≪≫
     FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm squareRightEdge
   zero := (dgOdotMilnorKernelOuterSquareBoundary R d h).zero ≪≫
-    FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm verdierZeroCorner
+    FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
 
 /-- 概要：共通実長方形の外周の指定三境界付き全図式認証。
 方針：元厚核零化面への新全比較を保存済み絶対外周認証へ合成する。
 規約：Milnor 条件以外の入力なし。元実外周を保持する。
 使われ方：ActualRectangleInput.outerComparison への供給。 -/
 def dgOdotMilnorActualOuterSquareDiagramIso (h : DGGluingMilnorSquare R d) :
-    VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square (F)
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square (F)
       (dgOdotMilnorActualOuterBoundary R d h) where
   comparison := (dgOdotMilnorKernelOuterSquareDiagramIso R d h).comparison ≪≫
     (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm

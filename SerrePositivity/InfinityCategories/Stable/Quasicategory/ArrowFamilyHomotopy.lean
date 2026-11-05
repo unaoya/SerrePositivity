@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -54,9 +56,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def arrowFamilyHomotopy {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
@@ -78,4 +83,22 @@ def arrowFamilyHomotopy {A X : SSet.{u}}
     intro x
     exact False.elim x.1.property
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFamilyHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFamilyHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFamilyHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFamilyHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowFamilyHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy._proof_4

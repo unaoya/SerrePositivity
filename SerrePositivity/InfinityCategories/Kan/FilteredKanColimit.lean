@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
@@ -16,9 +18,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -57,7 +62,7 @@ theorem finite_equations_factorization {A B : SSet.{u}} [A.Finite] [B.Finite]
     apply Sigma.hom_ext
     intro t
     simpa only [Sigma.ι_comp_desc_assoc] using h t
-  obtain ⟨k, v, q, hq, hb⟩ := finite_relative_factorization hc (Sigma.desc i) j
+  obtain ⟨k, v, q, hq, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization hc (Sigma.desc i) j
     (Sigma.desc a) b hc'
   refine ⟨k, v, q, ?_, hb⟩
   intro t
@@ -85,8 +90,23 @@ theorem kanComplex_of_filtered_isColimit [∀ j, KanComplex (F.obj j)] : KanComp
 規約：通常の圏論的余極限の Kan 性。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。telescope の比較対象。 -/
 instance filteredColimit_kanComplex (D : J ⥤ SSet.{u}) [∀ j, KanComplex (D.obj j)] :
-    KanComplex (colimit D) := kanComplex_of_filtered_isColimit (colimit.isColimit D)
+    KanComplex (colimit D) := _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit (colimit.isColimit D)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.filteredColimit_kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.finite_equations_factorization := _root_.SerrePositivity.InfinityCategories.Kan.finite_equations_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.finite_relative_factorization := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.kanComplex_of_filtered_isColimit := _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit

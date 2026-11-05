@@ -20,12 +20,12 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeLocalizingEdges_iff_trW {x y : (laxCategory p q).obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) x y) :
     f.edge ∈ tammeLocalizingEdges p q ↔
-      (stableHoClosure (essentialImage (pullbackInclusion p q))).trW
+      (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))).trW
         (SSet.Truncated.HomotopyCategory.homMk f) := by
   rw [← tammeLocalizingEdges_stableClosure]
   exact cofiberStableEdges_iff_trW _ f
@@ -41,10 +41,10 @@ lemma tammeLocalizingEdges_commonDenominator {n : ℕ} {x : (laxCategory p q).ob
         ∀ i, (r i).edge ∈ tammeLocalizingEdges p q ∧
           Nonempty (Truncated.Edge.CompStruct (r i) (s i) t) := by
   have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges
-      {z | StableVertexClosure (essentialImage (pullbackInclusion p q)) z} := by
+      {z | StableVertexClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) z} := by
     simpa only [tammeLocalizingEdges_stableClosure] using hs
   simpa only [tammeLocalizingEdges_stableClosure] using
-    cofiberStableEdges_commonDenominator (essentialImage (pullbackInclusion p q)) y s hs'
+    cofiberStableEdges_commonDenominator (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) y s hs'
 
 lemma tammeLocalizingEdges_equalizeFinite {n : ℕ} {x : (laxCategory p q).obj _⦋0⦌}
     {y z : Fin n → (laxCategory p q).obj _⦋0⦌}
@@ -62,9 +62,9 @@ lemma tammeLocalizingEdges_equalizeFinite {n : ℕ} {x : (laxCategory p q).obj _
         ∀ i, Nonempty (Truncated.Edge.CompStruct t (f i) (k i)) ∧
           Nonempty (Truncated.Edge.CompStruct t (g i) (k i)) := by
   have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges
-      {a | StableVertexClosure (essentialImage (pullbackInclusion p q)) a} := by
+      {a | StableVertexClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) a} := by
     simpa only [tammeLocalizingEdges_stableClosure] using hs
   simpa only [tammeLocalizingEdges_stableClosure] using
-    cofiberStableEdges_equalizeFinite (essentialImage (pullbackInclusion p q)) f g s hs' h
+    cofiberStableEdges_equalizeFinite (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)) f g s hs' h
 
 end SerrePositivity.KST.LocalizingInvariants

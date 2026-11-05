@@ -14,7 +14,7 @@ open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 元の長方形の六頂点は、左右の同じ完備正方形の頂点である。 -/

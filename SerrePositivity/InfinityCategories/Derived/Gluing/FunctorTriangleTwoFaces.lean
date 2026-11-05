@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {K E : SSet.{u}} {f g h : K ⟶ E}
 def dgGluingFunctorTriangleThirdEdge (l : SSet.Homotopy f g) (r : SSet.Homotopy g h)
     (T : (Δ[2] : SSet.{u}) ⟶ (ihom K).obj E)

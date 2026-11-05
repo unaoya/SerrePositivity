@@ -16,11 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma fromC_snd_vertex (x : C.obj _⦋0⦌) :
     (F2.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌)
@@ -28,8 +28,8 @@ lemma fromC_snd_vertex (x : C.obj _⦋0⦌) :
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app (fromC_snd p q)
     (Opposite.op ⦋0⦌)) x
   change (F2.laxPullbackSnd p.hom q.hom).app (Opposite.op ⦋0⦌)
-    ((fromC p q).app (Opposite.op ⦋0⦌) x) = (zeroD : C.obj ⟶ D.obj).app _ x at h
-  simpa only [zeroD, zeroDiagram_const_vertex] using h
+    ((fromC p q).app (Opposite.op ⦋0⦌) x) = (_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD : C.obj ⟶ D.obj).app _ x at h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex] using h
 
 lemma fromC_terminalBoundary (x : C.obj _⦋0⦌) :
     TerminalBoundaryLifting (laxFst p q).hom ((fromC p q).app (Opposite.op ⦋0⦌) x) := by
@@ -43,7 +43,7 @@ def fromCAdjunction : QCatAdjunction (laxFst p q).hom (fromC p q) :=
   adjunctionOfRelativeTerminalSection (fromC_fst p q) (fromC_terminalBoundary p q)
 
 lemma fromC_fullyFaithful : IsFullyFaithful (fromC p q) :=
-  fullyFaithful_of_relativeTerminalSection (fromC_fst p q) (fromC_terminalBoundary p q)
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.fullyFaithful_of_relativeTerminalSection (fromC_fst p q) (fromC_terminalBoundary p q)
 
 instance fromCAdjunction_counit_isIso : IsIso (fromCAdjunction p q).counit :=
   relativeTerminalSection_counit_isIso (fromC_fst p q) (fromC_terminalBoundary p q)

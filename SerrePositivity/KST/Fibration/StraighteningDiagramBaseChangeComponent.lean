@@ -19,7 +19,7 @@ theorem leftStraighteningInfinityDiagram_baseChangeIso_heq_jointMap (d : D _⦋0
     HEq (VertexIso.map (leftStraighteningInfinityDiagram_baseChangeIso p k)
       (evaluateFunctorAt (ULift.up d)))
       (VertexIso.map (leftStraighteningSectionJointDiagram_baseChangeIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up d) (leftFibrationInfinityVertex p))) := by
   let U := SSet.uliftFunctor.{u + 1, u}
   let P := (pre (U.map k)).app SpaceInfinity.{u}
@@ -36,7 +36,7 @@ theorem leftStraighteningInfinityDiagram_baseChangeIso_heq_jointMap (d : D _⦋0
         (leftStraighteningInfinityDiagram_vertex (pullback.snd p k)).symm).symm
   have hm := F2.vertexIso_map_heq_of_heq
     (leftStraighteningInfinityDiagram_baseChangeIso p k) (e.app x) hs ht
-    (leftStraighteningInfinityDiagram_baseChangeIso_heq_app p k)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityDiagram_baseChangeIso_heq_app p k)
     (evaluateFunctorAt (ULift.up d))
   have ha := F2.vertexIso_map_heq_of_heq (e.app x)
     (VertexIso.map e (evaluateFunctorAt x))

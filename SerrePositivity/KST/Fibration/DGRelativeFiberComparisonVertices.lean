@@ -18,7 +18,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 比較元の錐頂点は、元の相対 K 四角形の K(D) 頂点そのもの。 -/
 theorem dgRelativeFiberComparison_source :

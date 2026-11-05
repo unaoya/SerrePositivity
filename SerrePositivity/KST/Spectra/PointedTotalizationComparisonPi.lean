@@ -48,7 +48,7 @@ lemma bousfieldKanComparison_piIsomorphism
     letI := kanComplex X
       ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI := bousfieldKan_kanComplex X hX
-    KanPiIsomorphism (bousfieldKanComparison X).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (bousfieldKanComparison X).right := by
   exact CosimplicialTotalization.bousfieldKanComparison_piIsomorphism
     (X ⋙ PointedSimplicialSet.forget) hX
 
@@ -60,17 +60,17 @@ lemma weightedEndComparison_piIsomorphism
     letI := kanComplex X
       ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI := weightedEnd_kanComplex X hX
-    KanPiIsomorphism (weightedEndComparison X).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedEndComparison X).right := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let : KanComplex (weightedSections (bousfieldKanWeight _)
       ((AsSmall.down ⋙ X) ⋙ PointedSimplicialSet.forget)) :=
     bousfieldKan_kanComplex X hX
   let := weightedEnd_kanComplex X hX
   let := bousfieldKan_kanComplex X hX
-  change KanPiIsomorphism ((bousfieldKanComparison X).right ≫
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((bousfieldKanComparison X).right ≫
     (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).inv)
   exact (bousfieldKanComparison_piIsomorphism X hX).comp
-    (KanPiIsomorphism.of_iso
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
       (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).symm)
 
 end

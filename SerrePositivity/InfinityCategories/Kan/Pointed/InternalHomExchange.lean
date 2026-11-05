@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 public import Mathlib.CategoryTheory.Monoidal.Closed.InternalCurrying
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -47,7 +52,7 @@ def preIso {A B : C} (e : A ≅ B) (Y : C) : (ihom B).obj Y ≅ (ihom A).obj Y w
 規約：Hom(A,Hom(K,Y)) から Hom(K,Hom(A,Y)) への向き。
 使われ方：BF 1978 §2、HA §1.4.2。loop と内部 Hom の交換。 -/
 def iso (A K Y : C) : (ihom A).obj ((ihom K).obj Y) ≅ (ihom K).obj ((ihom A).obj Y) :=
-  (MonoidalClosed.ihomCurryIso K A Y).symm ≪≫ preIso (β_ A K) Y ≪≫
+  (MonoidalClosed.ihomCurryIso K A Y).symm ≪≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso (β_ A K) Y ≪≫
     MonoidalClosed.ihomCurryIso A K Y
 
 /-- 概要：内部 Hom の交換同型を二重に評価した式。
@@ -55,16 +60,16 @@ def iso (A K Y : C) : (ihom A).obj ((ihom K).obj Y) ≅ (ihom K).obj ((ihom A).o
 規約：テンソル交換は既存の HomTensorStrength.exchange。
 使われ方：BF 1978 §2、HA §1.4.2。内部 Hom の列の随伴構造射の計算。 -/
 theorem uncurry_uncurry_hom (A K Y : C) :
-    MonoidalClosed.uncurry (MonoidalClosed.uncurry (iso A K Y).hom) =
-      (HomTensorStrength.exchange A K ((ihom A).obj ((ihom K).obj Y))).hom ≫
+    MonoidalClosed.uncurry (MonoidalClosed.uncurry (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom) =
+      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange A K ((ihom A).obj ((ihom K).obj Y))).hom ≫
         K ◁ (ihom.ev A).app ((ihom K).obj Y) ≫ (ihom.ev K).app Y := by
-  simp only [iso, Iso.trans_hom, Iso.symm_hom, preIso,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso, Iso.trans_hom, Iso.symm_hom, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso,
     MonoidalClosed.ihomCurryIso_hom, MonoidalClosed.ihomCurryIso_inv]
   simp only [MonoidalClosed.uncurry_natural_left, MonoidalClosed.uncurry_uncurry_ihomCurry]
   rw [associator_inv_naturality_right_assoc, associator_inv_naturality_right_assoc,
     MonoidalClosed.id_tensor_pre_app_comp_ev, whisker_exchange_assoc]
   rw [← MonoidalClosed.uncurry_eq, MonoidalClosed.uncurry_ihomUncurry]
-  simp only [HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom,
     Functor.mapIso_hom, tensorRight, Functor.flip, curriedTensor, Category.assoc]
 
 /-- 概要：テンソル交換による内部 Hom の構造射の随伴は、元の随伴を Hom へ移した射。
@@ -72,14 +77,14 @@ theorem uncurry_uncurry_hom (A K Y : C) :
 規約：σ は任意の K⊗X から Y への射。
 使われ方：BF 1978 §2、HA §1.4.2。Kan 列の内部 Hom の Ω 条件の厳密な比較。 -/
 theorem curry_strength (K A X Y : C) (σ : K ⊗ X ⟶ Y) :
-    MonoidalClosed.curry (HomTensorStrength.map K A X ≫ (ihom A).map σ) =
-      (ihom A).map (MonoidalClosed.curry σ) ≫ (iso A K Y).hom := by
+    MonoidalClosed.curry (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map K A X ≫ (ihom A).map σ) =
+      (ihom A).map (MonoidalClosed.curry σ) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom := by
   apply MonoidalClosed.uncurry_injective
   apply MonoidalClosed.uncurry_injective
   rw [MonoidalClosed.uncurry_curry, MonoidalClosed.uncurry_natural_left,
-    MonoidalClosed.uncurry_ihom_map, ← Category.assoc, HomTensorStrength.evaluation]
+    MonoidalClosed.uncurry_ihom_map, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation]
   rw [MonoidalClosed.uncurry_natural_left, MonoidalClosed.uncurry_natural_left,
-    uncurry_uncurry_hom, HomTensorStrength.exchange_natural_right_assoc]
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
   have hev : A ◁ (ihom A).map (MonoidalClosed.curry σ) ≫ (ihom.ev A).app ((ihom K).obj Y) =
       (ihom.ev A).app X ≫ MonoidalClosed.curry σ := (ihom.ev A).naturality _
   rw [← whiskerLeft_comp_assoc, hev, whiskerLeft_comp]
@@ -87,4 +92,31 @@ theorem curry_strength (K A X Y : C) (σ : K ⊗ X ⟶ Y) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry_strength := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_strength
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.iso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.uncurry_uncurry_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.iso.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.preIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.preIso.eq_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Category.Basic
 public import Mathlib.CategoryTheory.EqToHom
 public import Mathlib.CategoryTheory.Functor.Basic
@@ -15,12 +17,15 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w v' w'
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B : SSet.{u}}
 
-private lemma normalizeComposition {C : Type v} [Category.{w} C]
+private lemma _root_.SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart.normalizeComposition {C : Type v} [Category.{w} C]
     {a b c b' c' : C} (l : a ≅ b) (e : b ≅ c) (hb : b = b') (hc : c = c') :
     F2.isoNormalizeEndpoints (l ≪≫ e) rfl hc =
       F2.isoNormalizeEndpoints l rfl hb ≪≫ F2.isoNormalizeEndpoints e hb hc := by
@@ -28,7 +33,7 @@ private lemma normalizeComposition {C : Type v} [Category.{w} C]
   simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
     Iso.trans_refl]
 
-private lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
+lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
     {Z : Type v'} [Category.{w'} Z] (F : C ⥤ Z) {a b c : C} {b' c' : Z}
     (l : a ≅ b) (e : b ≅ c) (d : a ≅ c) (hd : d = l ≪≫ e)
     (hb : F.obj b = b') (hc : F.obj c = c') :
@@ -37,6 +42,12 @@ private lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
         F2.isoNormalizeEndpoints (F.mapIso e) hb hc := by
   subst d
   rw [Functor.mapIso_trans]
-  exact normalizeComposition _ _ hb hc
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart.normalizeComposition _ _ hb hc
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.mapNormalizeComposition := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.mapNormalizeComposition

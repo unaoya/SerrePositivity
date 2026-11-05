@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
 
 /-- 概要：同じ実指定欠面から元の Verdier 上側へ戻る実三角柱。
 方針：実供給三単体族の同じ可逆三角柱を元の指定時刻で読む。

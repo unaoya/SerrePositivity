@@ -18,11 +18,11 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 instance tammeQuotientHo_isLocalization :
     (hoFunctor.map (tammeQuotientMap p q)).toFunctor.IsLocalization
-      (stableHoClosure (essentialImage (pullbackInclusion p q))).trW :=
+      (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))).trW :=
   localizationHo_isLocalization _ _ (tammeQuotient_isLocalization p q) _
     (fun e => (tammeLocalizingEdges_iff_trW p q e).symm)
 
@@ -39,7 +39,7 @@ lemma tammeQuotient_edge_fraction {x y : (laxCategory p q).obj _⦋0⦌}
         (s.map ((truncation 2).map (tammeQuotientMap p q))) f
         (g.map ((truncation 2).map (tammeQuotientMap p q)))) := by
   let L := (hoFunctor.map (tammeQuotientMap p q)).toFunctor
-  let V := (stableHoClosure (essentialImage (pullbackInclusion p q))).trW
+  let V := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))).trW
   obtain ⟨φ, hφ⟩ := Localization.exists_rightFraction L V
     (X := HomotopyCategory.mk x) (Y := HomotopyCategory.mk y)
     (SSet.Truncated.HomotopyCategory.homMk f)

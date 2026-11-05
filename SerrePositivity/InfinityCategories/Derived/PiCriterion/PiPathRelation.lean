@@ -22,27 +22,27 @@ variable {X : SSet.{u}} [KanComplex X]
 
 /-- 二端点の類が、同じ実際の path 空間の一つの類から得られる条件。 -/
 def PiPathRelated (n : ℕ) {x y : X _⦋0⦌}
-    (a : KanHomotopyGroup X n x) (b : KanHomotopyGroup X n y) : Prop :=
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y) : Prop :=
   ∃ z : (KanPath.object X) _⦋0⦌,
     ∃ h₀ : (KanPath.evaluation X 0).app _ z = x,
     ∃ h₁ : (KanPath.evaluation X 1).app _ z = y,
-    ∃ γ : KanHomotopyGroup (KanPath.object X) n z,
-      KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
-      KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b
+    ∃ γ : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n z,
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ γ = a ∧
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ γ = b
 
 /-- 基点の表示を等号で変えても、同じ実際の path とその類を使って比較できる。 -/
 lemma PiPathRelated.rebase {n : ℕ} {x y x' y' : X _⦋0⦌}
-    {a : KanHomotopyGroup X n x} {b : KanHomotopyGroup X n y}
+    {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : PiPathRelated n a b) (hx : x = x') (hy : y = y') :
-    PiPathRelated n (KanHomotopyGroup.map (𝟙 X) hx a)
-      (KanHomotopyGroup.map (𝟙 X) hy b) := by
+    PiPathRelated n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) hx a)
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 X) hy b) := by
   obtain ⟨z, h₀, h₁, γ, ha, hb⟩ := h
   refine ⟨z, h₀.trans hx, h₁.trans hy, γ, ?_, ?_⟩
   · have hm := DFunLike.congr_fun
-      (KanHomotopyGroup.map_comp (KanPath.evaluation X 0) h₀ (𝟙 X) hx (h₀.trans hx)) γ
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (KanPath.evaluation X 0) h₀ (𝟙 X) hx (h₀.trans hx)) γ
     simpa only [Category.comp_id, MonoidHom.comp_apply, ha] using hm
   · have hm := DFunLike.congr_fun
-      (KanHomotopyGroup.map_comp (KanPath.evaluation X 1) h₁ (𝟙 X) hy (h₁.trans hy)) γ
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (KanPath.evaluation X 1) h₁ (𝟙 X) hy (h₁.trans hy)) γ
     simpa only [Category.comp_id, MonoidHom.comp_apply, hb] using hm
 
 omit [KanComplex X] in
@@ -58,9 +58,9 @@ lemma path_evaluation_natural {Y : SSet.{u}} (f : X ⟶ Y) (t : Fin 2) :
 
 /-- 元の射を後合成すると、同じ path の像と同じ群の類の像で比較できる。 -/
 lemma PiPathRelated.map {Y : SSet.{u}} [KanComplex Y] {n : ℕ}
-    {x y : X _⦋0⦌} {a : KanHomotopyGroup X n x} {b : KanHomotopyGroup X n y}
+    {x y : X _⦋0⦌} {a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x} {b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n y}
     (h : PiPathRelated n a b) (f : X ⟶ Y) :
-    PiPathRelated n (KanHomotopyGroup.map f rfl a) (KanHomotopyGroup.map f rfl b) := by
+    PiPathRelated n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl a) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f rfl b) := by
   obtain ⟨z, h₀, h₁, γ, ha, hb⟩ := h
   let p := (ihom (Δ[1] : SSet.{u})).map f
   let w := p.app (Opposite.op ⦋0⦌) z
@@ -72,11 +72,11 @@ lemma PiPathRelated.map {Y : SSet.{u}} [KanComplex Y] {n : ℕ}
     have h := congrArg (fun q ↦ q.app (Opposite.op ⦋0⦌) z) (path_evaluation_natural f 1)
     change (KanPath.evaluation Y 1).app _ w = f.app _ ((KanPath.evaluation X 1).app _ z) at h
     simpa only [h₁] using h
-  refine ⟨w, hw₀, hw₁, KanHomotopyGroup.map p rfl γ, ?_, ?_⟩
-  · simpa only [ha] using KanHomotopyGroup.map_square p f
+  refine ⟨w, hw₀, hw₁, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl γ, ?_, ?_⟩
+  · simpa only [ha] using _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p f
       (KanPath.evaluation X 0) (KanPath.evaluation Y 0) (path_evaluation_natural f 0)
       rfl rfl h₀ hw₀ n γ
-  · simpa only [hb] using KanHomotopyGroup.map_square p f
+  · simpa only [hb] using _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square p f
       (KanPath.evaluation X 1) (KanPath.evaluation Y 1) (path_evaluation_natural f 1)
       rfl rfl h₁ hw₁ n γ
 

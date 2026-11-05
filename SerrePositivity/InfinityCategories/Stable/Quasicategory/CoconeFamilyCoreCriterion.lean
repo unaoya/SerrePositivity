@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -47,9 +49,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma functorFamily_invertsEdges_of_evaluations {P L X : SSet.{u}} [Quasicategory X]
     (F : P ⟶ (ihom L).obj X) (W : Set (P _⦋1⦌))
@@ -72,4 +77,10 @@ lemma functorFamily_invertsEdges_of_evaluations {P L X : SSet.{u}} [Quasicategor
     (f := (edgeOfSimplex s).map ((truncation 2).map (F ≫ evaluateFunctorAt l))) rfl).mpr
       (hF l hs)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorFamily_invertsEdges_of_evaluations := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.functorFamily_invertsEdges_of_evaluations

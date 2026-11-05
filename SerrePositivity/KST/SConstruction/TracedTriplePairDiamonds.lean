@@ -35,7 +35,7 @@ def monicKTracedTripleFirstBinaryEdgeData (n : ℕ) :=
 
 /-- 前二射の元の同じ全段面と全二部分面を持つ、型の揃った実 diamond。 -/
 def monicKTracedTripleFirstPairDiamond (n : ℕ) :=
-  CompositionDiamond.mk (monicKTracedTripleFirstStageEdgeData F f g h n).direct
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (monicKTracedTripleFirstStageEdgeData F f g h n).direct
     (monicKTracedTripleFirstStageEdgeData F f g h n).triangle
     (monicKTracedTripleFirstBinaryEdgeData F f g h n).triangle
 
@@ -57,7 +57,7 @@ def monicKTracedTripleLastStageEdgeData (n : ℕ) :=
 
 /-- 後二射の元の同じ全段面と全二部分面を持つ、型の揃った実 diamond。 -/
 def monicKTracedTripleLastPairDiamond (n : ℕ) :=
-  CompositionDiamond.mk (monicKTracedTripleLastBinaryEdgeData F f g h n).direct
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (monicKTracedTripleLastBinaryEdgeData F f g h n).direct
     (monicKTracedTripleLastStageEdgeData F f g h n).triangle
     (monicKTracedTripleLastBinaryEdgeData F f g h n).triangle
 

@@ -41,7 +41,7 @@ local notation "U" => DGOdotMilnorRightAxisBase R d
 local notation "VInput" => dgIdentityHomGluingNullInput R (U)
 local notation "i" => dgIdentityHomGluingNullInputMap R (U)
 local notation "q" => dgIdentityHomGluingDifferenceInputMap R (U)
-local notation "N" => verdierRectangleFace 0 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ dgOdotMilnorActualRectangleDiagram R d
 
 /-- 概要：共通長方形の実右面の零角は元 V の全対象商。
 方針：同じ実零化面の左辺の終点を回収する。
@@ -57,9 +57,9 @@ lemma dgOdotMilnorActualRight_zero_vertex :
 方針：元全対象商に Sp 正本の Perf 零性を適用する。
 規約：各対象の収縮だけで代用しない。使われ方：実右面の零角認証。 -/
 lemma dgOdotMilnorActualRight_perfect_zero :
-    IsZeroCategory (perfectStableObject
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject
       (squareVertex ((N) ≫ dgKInputPerfectNu R) 0 1)) := by
-  change IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject ((dgKInputPerfectNu R).app _
     (squareVertex (N) 0 1)))
   rw [dgOdotMilnorActualRight_zero_vertex, dgKInputPerfectNu_vertex]
   exact dgFixedNullInput_isZeroCategory R (VInput)

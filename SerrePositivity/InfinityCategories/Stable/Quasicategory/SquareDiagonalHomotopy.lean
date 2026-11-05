@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -43,12 +45,21 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal
+open SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 variable {X : SSet.{u}} {F G : (Δ[1] : SSet.{u}) ⟶ X} (H : SSet.Homotopy F G)
 
 def diagonal : (Δ[1] : SSet.{u}) ⟶ X := squareDiagonal ≫ H.h
 
-end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.diagonal := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal

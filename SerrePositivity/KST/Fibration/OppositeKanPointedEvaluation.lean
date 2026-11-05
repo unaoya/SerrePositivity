@@ -9,7 +9,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
@@ -27,12 +27,12 @@ theorem oppositeKanUnstraighteningComparison_constant_pointed
         vertexFiberι (sliceUnderProjection
           (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
             (coherentNerveVertex ((F ⋙ kanObjectOpFunctor).obj i)) ≫
-              strictKanPointedApexIso.hom := by
+              _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom := by
   have h := congrArg
     (fun m => m ≫ pullback.fst pointedSpaceProjection
       (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)))
     (oppositeKanUnstraighteningComparison_constant F i)
   simpa only [Category.assoc,
-    strictKanUnstraighteningComparison_constant_pointed] using h
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanUnstraighteningComparison_constant_pointed] using h
 
 end SerrePositivity.KST.Fibration

@@ -23,7 +23,7 @@ def transportUnderJointComponentIso :=
 theorem transportUnderJointComponentIso_heq_doubleMap :
     HEq (transportUnderJointComponentIso X c)
       (VertexIso.map (transportSimplexUnderJointIso B)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   unfold transportUnderJointComponentIso relativeSectionDomainValueIso F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
@@ -32,7 +32,7 @@ theorem transportUnderJointComponentIso_heq_doubleMap :
 theorem transportUnderJointComponentIso_heq_realizationMap :
     HEq (transportUnderJointComponentIso X c)
       (VertexIso.map (transportSimplexUnderRealizationIso B)
-        (kanEnrichedDoubleEvaluation X c)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X c)) := by
   let η := transportSimplexUnderDomainTransformation B
   have hη : ∀ s (p : LeftFibrationObject B),
       IsQCatEquivalence (relativeFunctorOverPre p.val.hom (η.app (Opposite.op s))) :=
@@ -45,10 +45,10 @@ theorem transportUnderJointComponentIso_heq_realizationMap :
 theorem transportUnderJointComponentIso_pointHom
     (v : (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X).obj
       _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj c).obj X)).symm v) ≫
       (transportUnderJointComponentIso X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram (transportSimplexUnderDomains B)).obj c).obj X)).symm
         ((relativeFunctorOverPre X.val.hom
           ((transportSimplexUnderDomainTransformation B).app (Opposite.op c))).app

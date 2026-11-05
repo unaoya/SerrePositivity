@@ -32,7 +32,7 @@ open SerrePositivity.SimplicialModel
 -/
 theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) :
-    Spectra.KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
   let F := AnodyneKanReplacement.factorization
   let i : A ⟶ F.Z.obj (Arrow.mk f) := F.i.app (Arrow.mk f)
   let p : F.Z.obj (Arrow.mk f) ⟶ B := F.p.app (Arrow.mk f)
@@ -56,7 +56,7 @@ theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [Kan
     ((SSet.modelCategoryQuillen.fibration_iff _).1
       (inferInstance : Fibration (terminal.from B))) hQp
   exact fac ▸ (Spectra.kanPiIsomorphism_of_anodyne i hi).comp
-    (Spectra.kanPiIsomorphism_of_monoRight p hr)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p hr)
 
 /--
 概要：局所化可逆な Kan 複体間の射のホモトピー類の具体的な全単射。
@@ -67,8 +67,8 @@ theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [Kan
 def kanHomotopyEquivOfLocalizedIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f))
     (a : A _⦋0⦌) (n : ℕ) :
-    Spectra.KanHomotopy A n a ≃ Spectra.KanHomotopy B n (f.app _ a) :=
-  Equiv.ofBijective (Spectra.KanHomotopy.map n f rfl)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy A n a ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n (f.app _ a) :=
+  Equiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl)
     (kanPiIsomorphism_of_localized_isIso f hf a n)
 
 end SerrePositivity.KST.Comparison

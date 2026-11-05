@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrependRelations
 
 /-!
@@ -13,8 +15,11 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrependRelati
 
 @[expose] public section
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：標準単体の頂点写像の先頭に零点を追加する。
@@ -44,7 +49,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 使われ方：収縮先の頂点の計算。
 -/
 @[simp] theorem simplexConeZero_zero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) :
-    (simplexConeZero x).toOrderHom 0 = 0 := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x).toOrderHom 0 = 0 := rfl
 
 /--
 概要：既存の後続点は元の頂点写像の値に写る。
@@ -54,7 +59,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 -/
 @[simp] theorem simplexConeZero_succ {k : SimplexCategory} {n : ℕ}
     (x : k ⟶ ⦋n⦌) (i : Fin (k.len + 1)) :
-    (simplexConeZero x).toOrderHom i.succ = x.toOrderHom i := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x).toOrderHom i.succ = x.toOrderHom i := rfl
 
 /--
 概要：拡張した射の前合成は、元の前合成への零点の追加と一致する。
@@ -64,7 +69,7 @@ def simplexConeZero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) : ⦋k.l
 -/
 theorem simplexConeZero_comp {k l : SimplexCategory} {n : ℕ}
     (θ : k ⟶ l) (x : l ⟶ ⦋n⦌) :
-    simplexPrepend θ ≫ simplexConeZero x = simplexConeZero (θ ≫ x) := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend θ ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (θ ≫ x) := by
   ext i : 3
   cases i using Fin.cases <;> rfl
 
@@ -75,8 +80,32 @@ theorem simplexConeZero_comp {k l : SimplexCategory} {n : ℕ}
 使われ方：余分な退化の最初の面の恒等式。
 -/
 theorem simplexConeZero_δ_zero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n⦌) :
-    SimplexCategory.δ (0 : Fin (k.len + 2)) ≫ simplexConeZero x = x := by
+    SimplexCategory.δ (0 : Fin (k.len + 2)) ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero x = x := by
   ext i : 3
   rfl
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_succ := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_δ_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero._proof_2

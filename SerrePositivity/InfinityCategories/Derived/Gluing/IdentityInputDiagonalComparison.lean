@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalClosed SSet DifferentialGraded KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "C" => DGOdotMilnorIdentityBase R d
 local notation "L" => DGOdotMilnorIdentityGluing R d
@@ -47,11 +47,11 @@ def dgGluingIdentityInputDiagonalIso : FunctorIso
       (eG.homInvIso.precomp i).postcomp (eN.hom ≫ eL.hom)
   have h₃ : FunctorIso (i ≫ eN.hom ≫ eL.hom)
       ((constantFunctorMap (Δ[1] : SSet.{u + 1}) (dgNerve R C) ≫
-        arrowLaxInverse (dgNerve R C)) ≫ eL.hom) := by
+        _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C)) ≫ eL.hom) := by
     exact F2.functorIsoOfEq ((dgGluingIdentityNativeDiagonalIso.{u, 0} R C).postcomp eL.hom)
       (Category.assoc _ _ _) rfl
   have h₄ : (constantFunctorMap (Δ[1] : SSet.{u + 1}) (dgNerve R C) ≫
-      arrowLaxInverse (dgNerve R C)) ≫ eL.hom = eB.hom ≫ z :=
+      _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C)) ≫ eL.hom = eB.hom ≫ z :=
     identityLaxArrowBaseEquivalence_diagonal eB
   have h : FunctorIso (eB.hom ≫ (j ≫ (dgGluingIdentityInputLaxEquivalence R d).hom))
       (eB.hom ≫ z) :=

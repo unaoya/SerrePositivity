@@ -18,8 +18,8 @@ open SerrePositivity.InfinityCategories LocalizingInvariants SerrePositivity.Sim
 def multiRealizationHomotopyOfFunctorIso (r : ℕ) {X Y : StableModel.{u}} {f g : X ⟶ Y}
     (e : FunctorIso f.val g.val) :
     SSet.Homotopy ((multiRealizationFunctor r).map f) ((multiRealizationFunctor r).map g) := by
-  let C : StableQCat.{u} := ⟨X.carrier, inferInstance, inferInstance⟩
-  let D : StableQCat.{u} := ⟨Y.carrier, inferInstance, inferInstance⟩
+  let C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} := ⟨X.carrier, inferInstance, inferInstance⟩
+  let D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} := ⟨Y.carrier, inferInstance, inferInstance⟩
   let F : C ⟶ D := ⟨f.val, ⟨f.property.1, f.property.2⟩⟩
   let G : C ⟶ D := ⟨g.val, ⟨g.property.1, g.property.2⟩⟩
   exact stableMultiRealizationHomotopyOfFunctorIso r (C := C) (D := D) (F := F) (G := G) e

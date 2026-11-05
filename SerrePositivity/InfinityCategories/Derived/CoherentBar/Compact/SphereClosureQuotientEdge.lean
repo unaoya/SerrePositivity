@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded KST.SConstruction KST.NonConnective
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ)
 variable {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B)

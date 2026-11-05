@@ -24,10 +24,10 @@ set_option backward.isDefEq.respectTransparency.types false
 lemma pre_piIsomorphism_of_commonAnodyne {P A B : SSet.{u}}
     (i : P ⟶ A) (j : P ⟶ B) (hi : anodyneExtensions i) (hj : anodyneExtensions j)
     (f : A ⟶ B) (h : i ≫ f = j) (Y : SSet.{u}) [KanComplex Y] :
-    KanPiIsomorphism ((pre f).app Y) := by
-  have hiπ := kanPiIsomorphism_of_monoRight _ (anodyne_pre_rlp_monomorphisms i hi Y)
-  have hjπ := kanPiIsomorphism_of_monoRight _ (anodyne_pre_rlp_monomorphisms j hj Y)
-  apply KanPiIsomorphism.of_comp (g := (pre i).app Y) _ hiπ
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pre f).app Y) := by
+  have hiπ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms i hi Y)
+  have hjπ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms j hj Y)
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (pre i).app Y) _ hiπ
   have hh : (pre f).app Y ≫ (pre i).app Y = (pre j).app Y := by
     rw [← NatTrans.comp_app, ← pre_map, h]
   rw [hh]

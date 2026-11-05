@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-attribute [local instance] cofiberCounitZeroSourceQuasicategory
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiberCounitZeroSourceQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 lemma cofiberRightAdjointZeroSource_isQCatEquivalence :
@@ -44,6 +44,6 @@ lemma cofiberAdjunction_counitHom_isIso : IsIso (cofiberAdjunction X).counitHom 
 
 lemma cofiberAdjunction_counit_isIso : IsIso (cofiberAdjunction X).counit := by
   have := cofiberAdjunction_counitHom_isIso X
-  exact counit_isIso_of_counitHom _
+  exact _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.counit_isIso_of_counitHom _
 
 end SerrePositivity.KST.LocalizingInvariants

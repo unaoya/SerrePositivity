@@ -21,7 +21,7 @@ local instance dgGluingHomTargetNativeConeBase_stable : IsStable (dgNerve R E) :
 def dgGluingHomTargetNativeConeComparison (hE : IsIdempotentComplete (dgNerve R E))
     (z : E) (hz : IsZero (ForgetEnrichment.of (Complex R) z)) : FunctorIso
     ((dgGluingHomTargetNerveLaxComparison.{u, 0} R C D E p q ≫
-      CofiberFamily.cofiber (dgNerve R E)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E)
         (F2.laxPullbackArrow (dgNerve.map p) (dgNerve.map q))) ≫
       dgNerve.map (dgPerfectYoneda R E))
     (dgNerve.map (dgHomGluingConeFunctor R C D E p q)) := by
@@ -30,15 +30,15 @@ def dgGluingHomTargetNativeConeComparison (hE : IsIdempotentComplete (dgNerve R 
   let a := dgGluingHomTargetAugmentationArrowFamily.{u, 0} R C D E p q
   let y := dgNerve.map (dgPerfectYoneda R E)
   let arrow := F2.laxPullbackArrow (𝟙 (dgNerve R E)) (𝟙 (dgNerve R E))
-  let δ := CofiberFamily.cofiber (dgNerve R E) arrow
+  let δ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) arrow
   have ha : (f ≫ e.hom) ≫ arrow = a := by
     rw [Category.assoc, dgGluingIdentityHomTargetLaxEquivalence_arrow]
     exact dgGluingHomTargetToIdentity_arrow.{u, 0} R C D E p q
   have h₁ : FunctorIso (((f ≫ e.hom) ≫ δ) ≫ y)
-      (CofiberFamily.cofiber (dgNerve R E) a ≫ y) := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) a ≫ y) := by
     have h := (CofiberFamily.precompositionIso arrow (f ≫ e.hom)).postcomp y
     exact F2.functorIsoOfEq h rfl (congrArg (fun t =>
-      CofiberFamily.cofiber (dgNerve R E) t ≫ y) ha)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) t ≫ y) ha)
   have h₂ : FunctorIso (((f ≫ e.hom) ≫ δ) ≫ y)
       (f ≫ dgNerve.map (dgHomGluingConeFunctor R E E E
         (DGFunctor.id E) (DGFunctor.id E))) := by
@@ -50,7 +50,7 @@ def dgGluingHomTargetNativeConeComparison (hE : IsIdempotentComplete (dgNerve R 
         (DGFunctor.id E) (DGFunctor.id E)) =
       dgNerve.map (dgHomGluingConeFunctor R C D E p q) := by
     rw [← dgNerve.map_comp, dgGluingHomTargetToIdentity_cone]
-  have h₃ : FunctorIso (CofiberFamily.cofiber (dgNerve R E) a ≫ y)
+  have h₃ : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) a ≫ y)
       (dgNerve.map (dgHomGluingConeFunctor R C D E p q)) :=
     F2.functorIsoOfEq (h₁.symm.trans h₂) rfl hf
   have h₀ := (CofiberFamily.precompositionIso
@@ -58,11 +58,11 @@ def dgGluingHomTargetNativeConeComparison (hE : IsIdempotentComplete (dgNerve R 
     (dgGluingHomTargetNerveLaxComparison.{u, 0} R C D E p q)).postcomp y
   have h₀' : FunctorIso
       ((dgGluingHomTargetNerveLaxComparison.{u, 0} R C D E p q ≫
-        CofiberFamily.cofiber (dgNerve R E)
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E)
           (F2.laxPullbackArrow (dgNerve.map p) (dgNerve.map q))) ≫ y)
-      (CofiberFamily.cofiber (dgNerve R E) a ≫ y) :=
+      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) a ≫ y) :=
     F2.functorIsoOfEq h₀ rfl (congrArg (fun t =>
-      CofiberFamily.cofiber (dgNerve R E) t ≫ y)
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (dgNerve R E) t ≫ y)
         (dgGluingHomTargetNerveLaxComparison_arrow.{u, 0} R C D E p q))
   exact h₀'.trans h₃
 

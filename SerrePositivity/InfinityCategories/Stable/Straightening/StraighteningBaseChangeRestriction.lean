@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -44,9 +46,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
 /-- 元の大域底変換の定義で選んだ、同じ全単体上の制限比較を明示する。 -/
@@ -70,4 +75,16 @@ def straighteningJointBaseChangeRestrictionIso :
     (transportSimplexSectionInfinity_baseChangeIso k).symm ≪≫
     ((leftStraighteningSectionJointDiagram_restrictIso D).postcomp P).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningJointBaseChangeRestrictionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso._proof_2

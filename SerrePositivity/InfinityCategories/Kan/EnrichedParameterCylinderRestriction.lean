@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderEndpoints
 
 /-!
@@ -15,30 +17,33 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {A B : SSet.{u}} {C : Type v} [EnrichedCategory SSet.{u} C] (i : A ⟶ B)
 
 /-- パラメータの変更は端と元の対象を保つ。 -/
-def restrictionObject (X : Object A C) : Object B C := ⟨X.side, X.val⟩
+def restrictionObject (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object B C := ⟨X.side, X.val⟩
 
 /-- 端をまたぐ Hom のパラメータだけを変更する射。 -/
-def restrictionMap : (X Y : Object A C) →
-    hom A X Y ⟶ hom B (restrictionObject X) (restrictionObject Y)
+def restrictionMap : (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) →
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom A X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.hom B (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject X) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject Y)
   | ⟨false, _⟩, ⟨false, _⟩ => 𝟙 _
   | ⟨false, _⟩, ⟨true, _⟩ => i ⊗ₘ 𝟙 _
   | ⟨true, _⟩, ⟨false, _⟩ => 𝟙 _
   | ⟨true, _⟩, ⟨true, _⟩ => 𝟙 _
 
 /-- パラメータの変更は円柱の豊穣恒等射を保つ。 -/
-lemma restrictionMap_id (X : Object A C) :
-    identity A X ≫ restrictionMap i X X = identity B (restrictionObject X) := by
+lemma restrictionMap_id (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity A X ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap i X X = _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.identity B (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject X) := by
   rcases X with ⟨s, x⟩
   cases s <;> exact Category.comp_id _
 
 /-- パラメータの変更は円柱の豊穣合成を保つ。 -/
-lemma restrictionMap_comp (X Y Z : Object A C) :
-    composition A X Y Z ≫ restrictionMap i X Z =
-      (restrictionMap i X Y ⊗ₘ restrictionMap i Y Z) ≫
-        composition B (restrictionObject X) (restrictionObject Y) (restrictionObject Z) := by
+lemma restrictionMap_comp (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) :
+    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition A X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap i X Z =
+      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap i X Y ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap i Y Z) ≫
+        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.composition B (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject X) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject Y) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject Z) := by
   rcases X with ⟨s, x⟩
   rcases Y with ⟨t, y⟩
   rcases Z with ⟨r, z⟩
@@ -58,11 +63,11 @@ lemma restrictionMap_comp (X Y Z : Object A C) :
   · rfl
 
 /-- パラメータの射が誘導する、実際の豊穣円柱の関手。 -/
-def restriction : EnrichedFunctor SSet.{u} (Object A C) (Object B C) where
-  obj := restrictionObject
-  map := restrictionMap i
-  map_id := restrictionMap_id i
-  map_comp := restrictionMap_comp i
+def restriction : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A C) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object B C) where
+  obj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject
+  map := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap i
+  map_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_id i
+  map_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_comp i
 
 variable {D : Type w} [EnrichedCategory SSet.{u} D]
   (F G : EnrichedFunctor SSet.{u} C D)
@@ -83,11 +88,11 @@ def gradedRestriction : GradedNatTrans (Center.ofBraidedObj A) F G where
 
 /-- 評価のパラメータ制限は、円柱の関手の前合成と厳密に可換。 -/
 lemma restriction_evaluation (h : ∀ X, i ≫ θ.app X = η.app X) :
-    (restriction (C := C) i).comp SSet (evaluationFunctor B F G θ) =
-      evaluationFunctor A F G η := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := C) i).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor B F G θ) =
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G η := by
   apply EnrichedFunctor.ext SSet
-    (F := (restriction (C := C) i).comp SSet (evaluationFunctor B F G θ))
-    (G := evaluationFunctor A F G η)
+    (F := (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := C) i).comp SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor B F G θ))
+    (G := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor A F G η)
     (fun X ↦ by rcases X with ⟨s, x⟩; cases s <;> rfl)
   rintro ⟨s, x⟩ ⟨t, y⟩
   cases s <;> cases t
@@ -96,9 +101,39 @@ lemma restriction_evaluation (h : ∀ X, i ≫ θ.app X = η.app X) :
   · change ((i ⊗ₘ 𝟙 _) ≫ (θ.app x ⊗ₘ G.map x y) ≫ eComp SSet _ _ _) ≫ 𝟙 _ = _
     rw [Category.comp_id, tensorHom_comp_tensorHom_assoc, h, Category.id_comp]
     rfl
-  · change ((𝟙 _ ≫ emptyTo _) ≫ 𝟙 _) = emptyTo _
+  · change ((𝟙 _ ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo _) ≫ 𝟙 _) = _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo _
     simp
   · change ((𝟙 _ ≫ G.map x y) ≫ 𝟙 _) = G.map x y
     simp
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionObject := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap.match_1

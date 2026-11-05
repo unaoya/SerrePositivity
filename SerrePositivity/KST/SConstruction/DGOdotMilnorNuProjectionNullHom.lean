@@ -35,11 +35,11 @@ private lemma projectionNullEdgeTarget {X : SSet.{u}} {x y : X _⦋0⦌} (e : X.
   rw [SSet.yonedaEquiv_symm_app, hz]
   exact e.tgt_eq
 
-private lemma projectionNullWhiskerVertex {X Y Z : StableQCat.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    (quasicategoryCore (exactFunctors X Z : SSet.{u})).ι.app (Opposite.op ⦋0⦌)
-      ((eHomWhiskerRight (C := StableQCat.{u}) SSet f Z).app (Opposite.op ⦋0⦌)
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) Y Z g)) =
-      exactFunctorVertexEquiv X Z (f ≫ g) := by
+private lemma projectionNullWhiskerVertex {X Y Z : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Z : SSet.{u})).ι.app (Opposite.op ⦋0⦌)
+      ((eHomWhiskerRight (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) SSet f Z).app (Opposite.op ⦋0⦌)
+        (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) Y Z g)) =
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv X Z (f ≫ g) := by
   rfl
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
@@ -53,24 +53,24 @@ local notation "e" => dgOdotMilnorNuProjectionCoreEdge R d h
 方針：豊穣 Hom の通常の前合成作用を使う。
 規約：元比較辺をそのまま使う。使われ方：混合面の零合成パラメータ。 -/
 def dgOdotMilnorNuProjectionNullHom : (Δ[1] : SSet.{u + 1}) ⟶
-    SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (B) :=
-  SSet.yonedaEquiv.symm (e).edge ≫ eHomWhiskerRight (C := StableQCat.{u + 1}) SSet (i) (B)
+    SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B) :=
+  SSet.yonedaEquiv.symm (e).edge ≫ eHomWhiskerRight (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) SSet (i) (B)
 
 /-- 概要：指定商比較の元零端点は同じ実包含・商合成の関手頂点。
 方針：元辺の始点式と豊穣前合成の単位評価を使う。
 規約：固定 ν の元実合成。使われ方：全比較像の零成分判定。 -/
 lemma dgOdotMilnorNuProjectionNullHom_source :
     (dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullComposite R d) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullComposite R d) := by
   have hs : (SSet.yonedaEquiv.symm (e).edge).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (A) (B)
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A) (B)
         (dgOdotMilnorCellProjectionExactMap R d) := projectionNullEdgeSource (e)
   have hv := congrArg (fun x =>
-    (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌)
-      ((eHomWhiskerRight (C := StableQCat.{u + 1}) SSet (i) (B)).app
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌)
+      ((eHomWhiskerRight (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) SSet (i) (B)).app
         (Opposite.op ⦋0⦌) x)) hs
   exact hv.trans (projectionNullWhiskerVertex
     (i) (dgOdotMilnorCellProjectionExactMap R d))
@@ -78,7 +78,7 @@ lemma dgOdotMilnorNuProjectionNullHom_source :
 /-- 概要：同じ核包含と同じ完備化後射影の実完全合成。
 方針：元の二射の基礎写像を合成する。
 規約：固定 ν の両端点。使われ方：指定商比較の終点。 -/
-def dgOdotMilnorNuProjectionNullTargetComposite : ExactMap (K) (B) where
+def dgOdotMilnorNuProjectionNullTargetComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (B) where
   hom := (i).hom ≫ (dgOdotMilnorNuPerfectSequence R d h).projection.hom
   isExact := @isExactFunctor_comp _ _ _ _ _ (i).isExact
     (dgOdotMilnorNuPerfectSequence R d h).projection.isExact
@@ -88,14 +88,14 @@ def dgOdotMilnorNuProjectionNullTargetComposite : ExactMap (K) (B) where
 規約：同じ指定商比較。使われ方：全パラメータの零成分への制限。 -/
 lemma dgOdotMilnorNuProjectionNullHom_target :
     (dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      exactFunctorVertexEquiv (K) (B)
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B)
         (dgOdotMilnorNuProjectionNullTargetComposite R d h) := by
   have hs := projectionNullEdgeTarget (e)
   have hv := congrArg (fun x =>
-    (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌)
-      ((eHomWhiskerRight (C := StableQCat.{u + 1}) SSet (i) (B)).app
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌)
+      ((eHomWhiskerRight (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) SSet (i) (B)).app
         (Opposite.op ⦋0⦌) x)) hs
   exact hv.trans (projectionNullWhiskerVertex
     (i) (dgOdotMilnorNuPerfectSequence R d h).projection)
@@ -106,15 +106,15 @@ lemma dgOdotMilnorNuProjectionNullHom_target :
 lemma dgOdotMilnorNuProjectionNullHom_vertex_isTerminal
     (a : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
     IsTerminalVertex ((dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) a) := by
   have h₀ : IsTerminalVertex
-      (exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullComposite R d)) := by
+      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullComposite R d)) := by
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isTerminalVertex
     change IsTerminalVertex (functorVertex (dgOdotMilnorNuNullComposite R d).hom)
     exact isTerminalVertex_functorVertex_of_pointwise _
       (fun x => (dgOdotMilnorNuNullComposite_zero R d h x).2)
-  have h₁ : IsTerminalVertex (exactFunctorVertexEquiv (K) (B)
+  have h₁ : IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B)
       (dgOdotMilnorNuProjectionNullTargetComposite R d h)) := by
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isTerminalVertex
     change IsTerminalVertex (functorVertex
@@ -122,15 +122,15 @@ lemma dgOdotMilnorNuProjectionNullHom_vertex_isTerminal
     exact isTerminalVertex_functorVertex_of_pointwise _
       (fun x => ((dgOdotMilnorNuPerfectSequence R d h).projection_kills_inclusion x).2)
   have hp₀ : IsTerminalVertex ((dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) :=
     (dgOdotMilnorNuProjectionNullHom_source R d h).symm ▸ h₀
   have hp₁ : IsTerminalVertex ((dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
     (dgOdotMilnorNuProjectionNullHom_target R d h).symm ▸ h₁
   have hx (k : Fin 2) : IsTerminalVertex ((dgOdotMilnorNuProjectionNullHom R d h ≫
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm k)) := by
     fin_cases k
     · exact hp₀
@@ -143,7 +143,7 @@ lemma dgOdotMilnorNuProjectionNullHom_vertex_isTerminal
 def dgOdotMilnorNuProjectionNullFactor :
     (Δ[1] : SSet.{u + 1}) ⟶ DGOdotMilnorNuNullCoherenceSpace R d :=
   fullSubcomplexLift IsTerminalVertex (dgOdotMilnorNuProjectionNullHom R d h ≫
-    (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι)
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι)
     (dgOdotMilnorNuProjectionNullHom_vertex_isTerminal R d h)
 
 /-- 概要：混合面の零因子分解は同じ指定商比較の前合成を厳密に回収する。
@@ -152,7 +152,7 @@ def dgOdotMilnorNuProjectionNullFactor :
 lemma dgOdotMilnorNuProjectionNullFactor_hom :
     dgOdotMilnorNuProjectionNullFactor R d h ≫ dgOdotMilnorNuNullCoherenceHom R d h =
       dgOdotMilnorNuProjectionNullHom R d h := by
-  apply (cancel_mono (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι).mp
+  apply (cancel_mono (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι).mp
   exact (Category.assoc _ _ _).trans
     (congrArg (fun f => dgOdotMilnorNuProjectionNullFactor R d h ≫ f)
       (dgOdotMilnorNuNullCoherenceHom_inclusion R d h))

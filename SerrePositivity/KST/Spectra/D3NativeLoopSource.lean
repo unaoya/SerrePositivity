@@ -55,11 +55,11 @@ lemma loopSourceToBasedLoop_rlp (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 同じ左因子は零次数を含む各段の全基点 π 同型。 -/
 lemma loopSourceInclusion_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((loopSourceInclusion X).app n).right := by
-  apply KanPiIsomorphism.of_comp (g := ((loopSourceToBasedLoop X).app n).right) _
-    (kanPiIsomorphism_of_monoRight _ (loopSourceToBasedLoop_rlp X n))
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceInclusion X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((loopSourceToBasedLoop X).app n).right) _
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (loopSourceToBasedLoop_rlp X n))
   rw [← Under.comp_right]
-  change KanPiIsomorphism ((loopSourceInclusion X ≫ loopSourceToBasedLoop X).app n).right
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceInclusion X ≫ loopSourceToBasedLoop X).app n).right
   rw [loopSource_fac]
   exact deloopingComparison_levelwise X n
 
@@ -67,7 +67,7 @@ lemma loopSourceInclusion_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
 lemma loopSourceToBasedLoop_isInvertible (X : OmegaSpectrum.{u}) :
     IsInvertibleEdge (coherentNerveEdge (loopSourceToBasedLoop X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _
-    (fun n ↦ kanPiIsomorphism_of_monoRight _ (loopSourceToBasedLoop_rlp X n))
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (loopSourceToBasedLoop_rlp X n))
 
 /-- 同じ BF 始点と厳密 tail 終点の実 loop 四角形の始点との指定同型。 -/
 def loopSourceBasedLoopVertexIso (X : OmegaSpectrum.{u}) :

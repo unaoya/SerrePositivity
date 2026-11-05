@@ -19,29 +19,29 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 include h
 
 private lemma verdierHo_denominator_iff {x y : B.obj _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj B.obj) x y) :
-    (stableHoClosure (essentialImage i)).trW (Truncated.HomotopyCategory.homMk e) ↔
-      e.edge ∈ weakEquivalences i := by
-  have he := cofiberStableEdges_iff_trW (essentialImage i) e
-  rw [stableClosure_essentialImage h] at he
+    (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW (Truncated.HomotopyCategory.homMk e) ↔
+      e.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
+  have he := cofiberStableEdges_iff_trW (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i) e
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.stableClosure_essentialImage h] at he
   exact he.symm
 
 private lemma verdierHo_localization :
     (hoFunctor.map q.hom).toFunctor.IsLocalization
-      (stableHoClosure (essentialImage i)).trW :=
-  localizationHo_isLocalization q.hom (weakEquivalences i) h.quotient
-    (stableHoClosure (essentialImage i)).trW (verdierHo_denominator_iff h)
+      (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW :=
+  localizationHo_isLocalization q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.quotient
+    (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW (verdierHo_denominator_iff h)
 
 /-- 元の商の実辺は、元の実分母との合成を一つの指定二単体で回収する。 -/
 lemma verdierProjection_edge_fraction {x y : B.obj _⦋0⦌}
@@ -50,11 +50,11 @@ lemma verdierProjection_edge_fraction {x y : B.obj _⦋0⦌}
     ∃ (a : B.obj _⦋0⦌)
       (s : Truncated.Edge (X := (truncation 2).obj B.obj) a x)
       (g : Truncated.Edge (X := (truncation 2).obj B.obj) a y),
-      s.edge ∈ weakEquivalences i ∧
+      s.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i ∧
       Nonempty (Truncated.Edge.CompStruct
         (s.map ((truncation 2).map q.hom)) f (g.map ((truncation 2).map q.hom))) := by
   let L := (hoFunctor.map q.hom).toFunctor
-  let V := (stableHoClosure (essentialImage i)).trW
+  let V := (stableHoClosure (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)).trW
   have : L.IsLocalization V := verdierHo_localization h
   obtain ⟨φ, hφ⟩ := Localization.exists_rightFraction L V
     (X := HomotopyCategory.mk x) (Y := HomotopyCategory.mk y)
@@ -80,7 +80,7 @@ lemma verdierProjection_arrow_lift {x y : B.obj _⦋0⦌}
   let gm := g.map ((truncation 2).map q.hom)
   let j := Truncated.Edge.id (X := (truncation 2).obj C.obj)
     (q.hom.app (Opposite.op ⦋0⦌) y)
-  have hsm : IsInvertibleEdge sm := (mem_weakEquivalences_iff_invertible h s).mp hs
+  have hsm : IsInvertibleEdge sm := (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h s).mp hs
   have hj : IsInvertibleEdge j := by
     change IsIso (Truncated.HomotopyCategory.homMk (Truncated.Edge.id _))
     rw [Truncated.HomotopyCategory.homMk_id]
@@ -92,7 +92,7 @@ lemma verdierProjection_arrow_lift {x y : B.obj _⦋0⦌}
       Truncated.HomotopyCategory.homMk_id _]
     exact (Category.comp_id (obj := hoFunctor.obj C.obj) _).trans
       (Truncated.HomotopyCategory.homMk_comp_homMk c).symm
-  obtain ⟨e⟩ := arrowFunctorIso_of_homMk_comm gm f sm j hsm hj he
+  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm gm f sm j hsm hj he
   refine ⟨SSet.yonedaEquiv.symm g.edge, ⟨?_⟩⟩
   have hg : SSet.yonedaEquiv.symm gm.edge = SSet.yonedaEquiv.symm g.edge ≫ q.hom := by
     apply SSet.yonedaEquiv.injective
@@ -104,8 +104,8 @@ lemma verdierProjection_arrow_lift {x y : B.obj _⦋0⦌}
 /-- 元の商の後合成は、実区間を始域とする関手圏の頂点で本質的に全射。 -/
 lemma verdierProjectionArrow_isEssentiallySurjective :
     IsEssentiallySurjective ((ihom (Δ[1] : SSet.{u})).map q.hom) :=
-  arrowMap_isEssentiallySurjective q.hom
-    (localization_isEssentiallySurjective q.hom (weakEquivalences i) h.quotient)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowMap_isEssentiallySurjective q.hom
+    (localization_isEssentiallySurjective q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.quotient)
     (fun f => verdierProjection_arrow_lift h f)
 
 end SerrePositivity.KST.LocalizingInvariants

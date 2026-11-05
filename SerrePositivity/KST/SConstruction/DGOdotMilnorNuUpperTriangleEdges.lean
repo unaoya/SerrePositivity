@@ -27,10 +27,10 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：元正方形の左辺と元三角形の二番面を照合する。
 規約：元一単体の等号。使われ方：混合面の実零角への境界。 -/
 lemma dgOdotMilnorNuNullUpperTriangle_left :
-    StableInfinity.{u + 1}.δ (2 : Fin 3) (dgOdotMilnorNuNullTriangle R d 0) =
-      (stableArrow (dgOdotMilnorNuZeroActualLeft R d)).edge := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (2 : Fin 3) (dgOdotMilnorNuNullTriangle R d 0) =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuZeroActualLeft R d)).edge := by
   have hn : squareLeftEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorNuZeroActualLeft R d)).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuZeroActualLeft R d)).edge := by
     rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).2.2.1]
     change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
       (coherentNerveEdge (dgFixedNullLeft R (A := dgOdotMilnorFlatKernelInput R d))).edge) = _
@@ -44,10 +44,10 @@ lemma dgOdotMilnorNuNullUpperTriangle_left :
 方針：元正方形の上辺と元三角形の零番面を照合する。
 規約：元一単体の等号。使われ方：混合面の元上辺の境界。 -/
 lemma dgOdotMilnorNuNullUpperTriangle_top :
-    StableInfinity.{u + 1}.δ (0 : Fin 3) (dgOdotMilnorNuNullTriangle R d 0) =
-      (stableArrow (dgOdotMilnorNuZeroActualTop R d)).edge := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (0 : Fin 3) (dgOdotMilnorNuNullTriangle R d 0) =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuZeroActualTop R d)).edge := by
   have hn : squareTopEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorNuZeroActualTop R d)).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuZeroActualTop R d)).edge := by
     rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).2.2.2]
     change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
       (coherentNerveEdge (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).edge) = _
@@ -63,8 +63,8 @@ variable (h : DGGluingMilnorSquare R d)
 方針：選択した元絶対四角形の左辺回収を使う。
 規約：元一単体の等号。使われ方：混合面の絶対側の実零角への境界。 -/
 lemma dgOdotMilnorNuAbsoluteUpperTriangle_left :
-    StableInfinity.{u + 1}.δ (2 : Fin 3) (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) =
-      (stableArrow (toZeroCategory (dgOdotMilnorNuPerfectSequence R d h).verdier.left)).edge :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (2 : Fin 3) (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgOdotMilnorNuPerfectSequence R d h).verdier.left)).edge :=
   (nullUpperTriangleFace (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h))
     2 squareLeftEdge stableSquareTriangle_leftEdge).trans
       ((congrArg SSet.yonedaEquiv
@@ -75,8 +75,8 @@ lemma dgOdotMilnorNuAbsoluteUpperTriangle_left :
 方針：選択した元絶対四角形の上辺回収を使う。
 規約：元一単体の等号。使われ方：混合面の絶対側の商境界。 -/
 lemma dgOdotMilnorNuAbsoluteUpperTriangle_top :
-    StableInfinity.{u + 1}.δ (0 : Fin 3) (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) =
-      (stableArrow (fromZeroCategory (dgOdotMilnorNuPerfectSequence R d h).right)).edge :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}.δ (0 : Fin 3) (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) =
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (fromZeroCategory (dgOdotMilnorNuPerfectSequence R d h).right)).edge :=
   (nullUpperTriangleFace (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h))
     0 squareTopEdge squareTriangle_topEdge).trans
       ((congrArg SSet.yonedaEquiv

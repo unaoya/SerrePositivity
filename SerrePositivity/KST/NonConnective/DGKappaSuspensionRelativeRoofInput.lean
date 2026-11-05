@@ -33,7 +33,7 @@ structure DGKappaSuspensionRelativeRoofInput where
   /-- D-9：同じ平坦商の実小 dg 核。 -/
   kernel : PerfDGInput.{u, max (u + 1) v} R
   /-- Sp-6：固定 ν の実相対 Verdier 四角形。平坦屋根の供給は D-9。 -/
-  diagram : RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
+  diagram : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
   /-- D-9・Sp-6：同じ実核への始点照合。元の Perf・P との照合は別途 K-B。 -/
   left_eq : squareVertex diagram.square 0 0 = coherentNerveVertex kernel
   /-- D-9・Sp-6：同じ平坦 cone の指定入力頂点への照合。 -/

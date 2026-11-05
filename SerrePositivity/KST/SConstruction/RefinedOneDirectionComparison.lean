@@ -68,14 +68,14 @@ instance refinedOneDirectionRight_trivialKanFibration (r : ℕ) (X : StableModel
 方針：一般の Kan 標的への右因子の比較を使う。
 規約：零次数も含む。使われ方：元の Kan 模型との同値比較。 -/
 lemma refinedOneDirectionRight_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism ((refinedOneDirectionRightNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((refinedOneDirectionRightNat r).app X).right :=
   pointedTransformationRight_piIsomorphism (oneDirectionKanComparisonNat r) X
 
 /-- 概要：単射な左比較も全基点・全次数で π_* 同型。
 方針：既存の S₁ 比較の π_* 同型性と右因子を打ち消す。
 規約：同値性を追加仮定しない。使われ方：自然な単射模型の比較。 -/
 lemma refinedOneDirectionLeft_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism ((refinedOneDirectionLeftNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((refinedOneDirectionLeftNat r).app X).right :=
   pointedTransformationLeft_piIsomorphism (oneDirectionKanComparisonNat r) X
     (oneDirectionReducedComparison_kan_piIsomorphism r X)
 

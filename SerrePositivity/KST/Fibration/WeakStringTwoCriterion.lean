@@ -38,7 +38,7 @@ lemma coreTriangle_iff_shortEdges {X : SSet.{u}} (s : X _⦋2⦌) :
     · exact h₂
 
 /-- W 列の二単体の頂点条件は、元の二つの短辺への制限の W 条件と同値。 -/
-lemma weakStringTwoPredicate_iff_shortEdges {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringTwoPredicate_iff_shortEdges {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (v : ((ihom (Δ[2] : SSet.{u})).obj B.obj) _⦋0⦌) :
     weakStringPredicate q ⦋2⦌ v ↔
       weakArrowPredicate q (((pre (stdSimplex.δ (2 : Fin 3))).app B.obj).app (Opposite.op ⦋0⦌) v) ∧

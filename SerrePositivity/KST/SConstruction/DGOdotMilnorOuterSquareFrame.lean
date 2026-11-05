@@ -142,9 +142,9 @@ lemma dgOdotMilnorOuterUpperRightHomotopy_path :
 /-- 概要：元実外周と元絶対 LT 外周の四境界全比較は同じ四頂点経路を共有する。
 方針：元包含・商の自然性と元零側面の全比較を同時に束ねる。
 規約：元始域の増大屋根・実 resolved 商を保持。使われ方：外周全図式の接合。 -/
-def dgOdotMilnorOuterSquareFrameComparison : SquareFrameHomotopy
-    (SquareFrame.ofSquare (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R))
-    (SquareFrame.ofSquare (dgOdotMilnorActualOuterDiagram R d h).square) where
+def dgOdotMilnorOuterSquareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R))
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorActualOuterDiagram R d h).square) where
   bottom := dgOdotMilnorOuterBottomHomotopy R d h
   right := dgOdotMilnorOuterRightHomotopy R d h
   left := dgOdotMilnorOuterLeftHomotopy R d h

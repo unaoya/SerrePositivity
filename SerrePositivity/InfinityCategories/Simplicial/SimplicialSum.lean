@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 
@@ -15,6 +17,9 @@ public import Mathlib.CategoryTheory.Limits.Shapes.Products
 @[expose] public section
 universe u v
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 open scoped ConcreteCategory
 variable {ι : Type v}
@@ -46,7 +51,7 @@ def simplicialSum (A : ι → SSet.{max u v}) : SSet.{max u v} where
 規約：添字を固定した自然変換。
 使われ方：余積の普遍性と telescope の各段階の写像。
 -/
-def simplicialSumInclusion (A : ι → SSet.{max u v}) (i : ι) : A i ⟶ simplicialSum A where
+def simplicialSumInclusion (A : ι → SSet.{max u v}) (i : ι) : A i ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A where
   app _ := ↾fun x => ⟨i, x⟩
 
 /--
@@ -56,7 +61,7 @@ def simplicialSumInclusion (A : ι → SSet.{max u v}) (i : ι) : A i ⟶ simpli
 使われ方：余積の普遍性と telescope の脚。
 -/
 def simplicialSumDesc {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
-    (f : ∀ i, A i ⟶ B) : simplicialSum A ⟶ B where
+    (f : ∀ i, A i ⟶ B) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A ⟶ B where
   app d := ↾fun x => (f x.1).app d x.2
   naturality _ _ θ := by
     ext x
@@ -70,7 +75,7 @@ def simplicialSumDesc {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
 -/
 @[simp] theorem simplicialSumInclusion_desc {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
     (f : ∀ i, A i ⟶ B) (i : ι) :
-    simplicialSumInclusion A i ≫ simplicialSumDesc f = f i := rfl
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc f = f i := rfl
 
 /--
 概要：添字付き余積からの射は各成分への制限で決まる。
@@ -79,8 +84,8 @@ def simplicialSumDesc {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
 使われ方：余積の写像の恒等・合成と自然性。
 -/
 theorem simplicialSum_hom_ext {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
-    {f g : simplicialSum A ⟶ B}
-    (h : ∀ i, simplicialSumInclusion A i ≫ f = simplicialSumInclusion A i ≫ g) : f = g := by
+    {f g : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A ⟶ B}
+    (h : ∀ i, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ f = _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ g) : f = g := by
   apply NatTrans.ext
   funext d
   ext x
@@ -93,9 +98,9 @@ theorem simplicialSum_hom_ext {A : ι → SSet.{max u v}} {B : SSet.{max u v}}
 使われ方：局所化同型の余積保存をこの模型へ移す。
 -/
 def simplicialSumIsCoproduct (A : ι → SSet.{max u v}) :
-    IsColimit (Cofan.mk (simplicialSum A) (simplicialSumInclusion A)) :=
-  Cofan.IsColimit.mk _ (fun s => simplicialSumDesc s.inj)
-    (fun _ _ => rfl) (fun _ _ h => simplicialSum_hom_ext (fun i => h i))
+    IsColimit (Cofan.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A)) :=
+  Cofan.IsColimit.mk _ (fun s => _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc s.inj)
+    (fun _ _ => rfl) (fun _ _ h => _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext (fun i => h i))
 
 /--
 概要：成分ごとの射から添字を保つ余積の射を作る。
@@ -104,8 +109,8 @@ def simplicialSumIsCoproduct (A : ι → SSet.{max u v}) :
 使われ方：自然変換の各段階を余積にまとめる。
 -/
 def simplicialSumMap {A B : ι → SSet.{max u v}} (f : ∀ i, A i ⟶ B i) :
-    simplicialSum A ⟶ simplicialSum B :=
-  simplicialSumDesc (fun i => f i ≫ simplicialSumInclusion B i)
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum B :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (fun i => f i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B i)
 
 /--
 概要：余積の射は各包含と可換である。
@@ -115,7 +120,52 @@ def simplicialSumMap {A B : ι → SSet.{max u v}} (f : ∀ i, A i ⟶ B i) :
 -/
 @[simp] theorem simplicialSumInclusion_map {A B : ι → SSet.{max u v}}
     (f : ∀ i, A i ⟶ B i) (i : ι) :
-    simplicialSumInclusion A i ≫ simplicialSumMap f =
-      f i ≫ simplicialSumInclusion B i := rfl
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f =
+      f i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B i := rfl
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumDesc := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_map := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum_hom_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumDesc._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct._proof_2

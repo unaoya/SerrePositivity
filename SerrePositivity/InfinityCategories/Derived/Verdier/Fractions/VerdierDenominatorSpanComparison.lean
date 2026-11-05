@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
@@ -17,70 +19,109 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定実分母上の全次辺 fiber を、元の右 pinched Hom と厳密に同定する。 -/
-def verdierDenominatorSpanPinchedFiberIso {A B : StableCategory.{u}} (i : ExactMap A B)
+def verdierDenominatorSpanPinchedFiberIso {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x y : B.obj _⦋0⦌) (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) :
-    vertexFiber (verdierDenominatorSpanProjection i x y) d ≅
-      pinchedHom ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d) y :=
-  verdierDenominatorSpanFiberIso i x y d ≪≫ (pinchedHomSliceFiberIso _ _).symm
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≅
+      pinchedHom ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d) y :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberIso i x y d ≪≫ (pinchedHomSliceFiberIso _ _).symm
 
 /-- 同じ実次辺 fiber から、同じ実始域・終点の区間写像空間への比較。 -/
-def verdierDenominatorSpanFiberComparison {A B : StableCategory.{u}} (i : ExactMap A B)
+def verdierDenominatorSpanFiberComparison {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (x y : B.obj _⦋0⦌) (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) :
-    vertexFiber (verdierDenominatorSpanProjection i x y) d ⟶
-      intervalMappingSpace ((verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d) y :=
-  (verdierDenominatorSpanPinchedFiberIso i x y d).hom ≫ pinchedHomToIntervalMappingSpace _ _
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ⟶
+      intervalMappingSpace ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorOverSource i x).app (Opposite.op ⦋0⦌) d) y :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanPinchedFiberIso i x y d).hom ≫ pinchedHomToIntervalMappingSpace _ _
 
 /-- 各実分母上の比較は、元の全 Kan 写像空間の同値。 -/
 lemma verdierDenominatorSpanFiberComparison_isQCatEquivalence
-    {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌)
+    {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌)
     (d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌) :
-    IsQCatEquivalence (verdierDenominatorSpanFiberComparison i x y d) :=
-  (qCatEquivalenceOfIso (verdierDenominatorSpanPinchedFiberIso i x y d)).isQCatEquivalence.comp
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberComparison i x y d) :=
+  (qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanPinchedFiberIso i x y d)).isQCatEquivalence.comp
     (pinchedHomToIntervalMappingSpace_isQCatEquivalence _ _)
 
 /-- 同じ元の分数評価を、実分母・次辺の全空間へ制限する。 -/
-def verdierDenominatorSpanEvaluation {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
-    (x y : B.obj _⦋0⦌) : verdierDenominatorSpanFamily i x y ⟶
+def verdierDenominatorSpanEvaluation {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y ⟶
       intervalMappingSpace (q.hom.app (Opposite.op ⦋0⦌) x)
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
-  verdierDenominatorSpanToFixed i x y ≫ fixedFractionEvaluation q.hom
-    (weakEquivalences i) h.inverts x y
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanToFixed i x y ≫ fixedFractionEvaluation q.hom
+    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y
 
 /-- 実族を元の固定端点分数と同じ完成分数へ送る射。 -/
-def verdierDenominatorSpanCompletionMap {A B : StableCategory.{u}}
-    (i : ExactMap A B) (x y : B.obj _⦋0⦌) :
-    groupoidCompletion (verdierDenominatorSpanFamily i x y) ⟶
-      groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y) :=
-  groupoidCompletionMapOf (verdierDenominatorSpanToFixed i x y)
+def verdierDenominatorSpanCompletionMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (x y : B.obj _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) ⟶
+      _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanToFixed i x y)
 
 /-- 亜群化後も Sp-6 s4 の元の分数比較をそのまま使う。 -/
-def verdierDenominatorSpanCompletionComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
-    (x y : B.obj _⦋0⦌) : groupoidCompletion (verdierDenominatorSpanFamily i x y) ⟶
+def verdierDenominatorSpanCompletionComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) ⟶
       intervalMappingSpace (q.hom.app (Opposite.op ⦋0⦌) x)
         (q.hom.app (Opposite.op ⦋0⦌) y) :=
-  verdierDenominatorSpanCompletionMap i x y ≫
-    fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionMap i x y ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y
 
 /-- 元の実分母・次辺の全族と商族を、同じ全比較経路で結ぶ。 -/
-def verdierDenominatorSpanCompletionComparison_unitIso {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+def verdierDenominatorSpanCompletionComparison_unitIso {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x y : B.obj _⦋0⦌) :
-    FunctorIso (groupoidCompletionMap (verdierDenominatorSpanFamily i x y) ≫
-      verdierDenominatorSpanCompletionComparison h x y)
-      (verdierDenominatorSpanEvaluation h x y) := by
-  have e := FunctorIso.postcomp (groupoidCompletionMapOfIso (verdierDenominatorSpanToFixed i x y))
-    (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y)
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) ≫
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanEvaluation h x y) := by
+  have e := FunctorIso.postcomp (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOfIso (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanToFixed i x y))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparison q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)
   have f := FunctorIso.precomp
-    (fractionMappingComparisonIso q.hom (weakEquivalences i) h.inverts x y)
-    (verdierDenominatorSpanToFixed i x y)
-  simpa only [verdierDenominatorSpanCompletionComparison, verdierDenominatorSpanCompletionMap,
-    verdierDenominatorSpanEvaluation, Category.assoc] using e ≪≫ f
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionMappingComparisonIso q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts x y)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanToFixed i x y)
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionMap,
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanEvaluation, Category.assoc] using e ≪≫ f
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison_unitIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionComparison_unitIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison_unitIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanEvaluation := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanEvaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberComparison_isQCatEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanPinchedFiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanPinchedFiberIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanPinchedFiberIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionComparison.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionComparison_unitIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionComparison_unitIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCompletionMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCompletionMap.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanEvaluation.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanEvaluation.eq_1

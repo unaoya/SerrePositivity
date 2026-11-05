@@ -25,7 +25,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の完全関手は、任意の有限図式の同じ全極限錐を保存する。 -/
-lemma exactMap_map_isLimit_finite {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma exactMap_map_isLimit_finite {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {K : SSet.{u}} [K.Finite] {p : K ⟶ B.obj}
     (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone q.hom c) := by
   let : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj

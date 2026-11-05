@@ -27,7 +27,7 @@ namespace SerrePositivity.KST.Fibration
 規約：別の core 比較を選ばず、実一単体を保持する。
 使われ方：元の上下全長 Hom の合成の直接端側の単位。 -/
 theorem verdierOriginalFullSCoreHomotopy_direct_edge
-    (d : VerdierDiagram.{u}) (j k : Fin 2) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     (simplicialHomotopyVertexEdge (verdierOriginalFullSCoreHomotopy d j k)
       (ComposableArrows.mk₀ coherentTriangleDirectPath)).edge =
       (Truncated.Edge.id (X := (truncation 2).obj (verdierOriginalNativeHomTarget d))
@@ -35,8 +35,8 @@ theorem verdierOriginalFullSCoreHomotopy_direct_edge
           (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge := by
   let E := verdierOriginalFullSHomComparison d j k
   let p := (pre (exInfinity.map (coreSFullRealizationInclusion
-    (show StableQCat from d.left)))).app
-      (stableCoreSingleKanObject (show StableQCat from d.right)).obj
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj
   have hv : coherentTriangleDirectVertexMap.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
         ComposableArrows.mk₀ coherentTriangleDirectPath.{u} := by
@@ -64,7 +64,7 @@ theorem verdierOriginalFullSCoreHomotopy_direct_edge
   change p.app (Opposite.op ⦋1⦌)
     (Truncated.Edge.id (X := (truncation 2).obj (SimplicialCategory.sHom
       (fullSRealizationKanObject d.left)
-      (stableCoreSingleKanObject (show StableQCat from d.right))))
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))))
       ((verdierOriginalFullSHomFamily d j).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge = _
   change _ = (Truncated.Edge.id (X := (truncation 2).obj (verdierOriginalNativeHomTarget d))
@@ -80,7 +80,7 @@ theorem verdierOriginalFullSCoreHomotopy_direct_edge
 規約：同じ元の比較と同じ指定点を保持する。
 使われ方：K-6 c4 の大きい宇宙での指定境界単位二単体。 -/
 theorem verdierOriginalFullSCoreHomotopy_up_direct_edge
-    (d : VerdierDiagram.{u}) (j k : Fin 2) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     (simplicialHomotopyVertexEdge
       (uliftSimplicialHomotopy.{u, u + 1} (verdierOriginalFullSCoreHomotopy d j k))
       (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge =
@@ -97,7 +97,7 @@ theorem verdierOriginalFullSCoreHomotopy_up_direct_edge
 方針：全時刻定値性を元の実区間一単体で評価する。
 規約：終端一点だけでなく元の全時刻条件を消費する。
 使われ方：指定境界合成の合成端側の単位二単体。 -/
-theorem verdierLowerNativeReadoutHomotopy_full_edge (d : VerdierDiagram.{u})
+theorem verdierLowerNativeReadoutHomotopy_full_edge (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : VerdierLowerNativeReadoutRecovery d L)

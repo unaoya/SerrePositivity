@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeInclusions
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInPoint
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
@@ -12,62 +14,86 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 左の一点を貼る元の右包含は、全単体を保つ同型。 -/
-instance necklacePointInr_isIso (T : Necklace.{u}) :
-    IsIso (necklacePoint.down.wedgeInr.{u} T.down) := by
-  let e : (necklacePoint.down.wedge T.down).carrier.{u} ≅ T.down.carrier.{u} :=
-    necklaceSimplicialSet.mapIso (necklaceLeftUnitor T)
-  have h : necklacePoint.down.wedgeInr T.down = e.inv := by
+instance necklacePointInr_isIso (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+    IsIso (_root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedgeInr.{u} T.down) := by
+  let e : (_root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedge T.down).carrier.{u} ≅ T.down.carrier.{u} :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet.mapIso (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor T)
+  have h : _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedgeInr T.down = e.inv := by
     apply (cancel_mono e.hom).mp
-    exact (necklaceLeftUnitor_inr T).trans e.inv_hom_id.symm
+    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr T).trans e.inv_hom_id.symm
   rw [h]
   infer_instance
 
 /-- 右の一点を貼る元の左包含は、全単体を保つ同型。 -/
-instance necklacePointInl_isIso (T : Necklace.{u}) :
-    IsIso (T.down.wedgeInl.{u} necklacePoint.down) := by
-  let e : (T.down.wedge necklacePoint.down).carrier.{u} ≅ T.down.carrier.{u} :=
-    necklaceSimplicialSet.mapIso (necklaceRightUnitor T)
-  have h : T.down.wedgeInl necklacePoint.down = e.inv := by
+instance necklacePointInl_isIso (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+    IsIso (T.down.wedgeInl.{u} _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down) := by
+  let e : (T.down.wedge _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down).carrier.{u} ≅ T.down.carrier.{u} :=
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet.mapIso (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor T)
+  have h : T.down.wedgeInl _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down = e.inv := by
     apply (cancel_mono e.hom).mp
-    exact (necklaceRightUnitor_inl T).trans e.inv_hom_id.symm
+    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl T).trans e.inv_hom_id.symm
   rw [h]
   infer_instance
 
 /-- 元の右包含で回収できる augmentation は、元の左単位による合成そのもの。 -/
-lemma necklaceLeftUnitor_desc (T : Necklace.{u}) {K : SSet.{u}} (f : T.down.carrier ⟶ K)
-    (l : (necklacePoint.down.wedge T.down).carrier ⟶ K)
-    (h : necklacePoint.down.wedgeInr T.down ≫ l = f) :
-    (necklaceLeftUnitor T).hom.map ≫ f = l := by
-  apply (cancel_epi (necklacePoint.down.wedgeInr T.down)).mp
+lemma necklaceLeftUnitor_desc (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (f : T.down.carrier ⟶ K)
+    (l : (_root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedge T.down).carrier ⟶ K)
+    (h : _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedgeInr T.down ≫ l = f) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor T).hom.map ≫ f = l := by
+  apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down.wedgeInr T.down)).mp
   exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun a => a ≫ f) (necklaceLeftUnitor_inr T)).trans
+    ((congrArg (fun a => a ≫ f) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr T)).trans
       ((Category.id_comp f).trans h.symm))
 
 /-- 元の左包含で回収できる augmentation は、元の右単位による合成そのもの。 -/
-lemma necklaceRightUnitor_desc (T : Necklace.{u}) {K : SSet.{u}} (f : T.down.carrier ⟶ K)
-    (l : (T.down.wedge necklacePoint.down).carrier ⟶ K)
-    (h : T.down.wedgeInl necklacePoint.down ≫ l = f) :
-    (necklaceRightUnitor T).hom.map ≫ f = l := by
-  apply (cancel_epi (T.down.wedgeInl necklacePoint.down)).mp
+lemma necklaceRightUnitor_desc (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (f : T.down.carrier ⟶ K)
+    (l : (T.down.wedge _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down).carrier ⟶ K)
+    (h : T.down.wedgeInl _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down ≫ l = f) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor T).hom.map ≫ f = l := by
+  apply (cancel_epi (T.down.wedgeInl _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint.down)).mp
   exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun a => a ≫ f) (necklaceRightUnitor_inl T)).trans
+    ((congrArg (fun a => a ≫ f) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl T)).trans
       ((Category.id_comp f).trans h.symm))
 
 /-- 左の元の一点 necklace と貼った augmentation は、元の左単位と厳密に可換。 -/
 lemma necklaceInLeftUnitor_augmentation {K : SSet.{u}} {x y : K _⦋0⦌}
-    (T : NecklaceIn K x y) :
-    (necklaceLeftUnitor T.necklace).hom.map ≫ T.map =
-      (necklaceInWedge (necklaceInPoint K x) T).map :=
-  necklaceLeftUnitor_desc T.necklace T.map _ (necklaceInWedge_inr (necklaceInPoint K x) T)
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor T.necklace).hom.map ≫ T.map =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) T).map :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_desc T.necklace T.map _ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_inr (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) T)
 
 /-- 右の元の一点 necklace と貼った augmentation は、元の右単位と厳密に可換。 -/
 lemma necklaceInRightUnitor_augmentation {K : SSet.{u}} {x y : K _⦋0⦌}
-    (T : NecklaceIn K x y) :
-    (necklaceRightUnitor T.necklace).hom.map ≫ T.map =
-      (necklaceInWedge T (necklaceInPoint K y)).map :=
-  necklaceRightUnitor_desc T.necklace T.map _ (necklaceInWedge_inl T (necklaceInPoint K y))
+    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor T.necklace).hom.map ≫ T.map =
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y)).map :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_desc T.necklace T.map _ (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_inl T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y))
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_augmentation := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor_augmentation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInRightUnitor_augmentation := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor_augmentation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_desc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePointInl_isIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklacePointInl_isIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePointInl_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePointInr_isIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklacePointInr_isIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePointInr_isIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_desc

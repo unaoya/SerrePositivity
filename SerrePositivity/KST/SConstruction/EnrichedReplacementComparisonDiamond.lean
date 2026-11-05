@@ -21,7 +21,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y Z : C}
   (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
   (e : (SimplicialCategory.sHom X Z).Edge (SimplicialCategory.homEquiv' _ _ h)
     (SimplicialCategory.homEquiv' _ _ (f ≫ g)))
-  (T : CompositionReplacementTetrahedron (coherentNerveCompStruct f g)
+  (T : _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron (coherentNerveCompStruct f g)
     (enrichedComparisonPinchedTriangle e))
 include f g h e T
 
@@ -54,7 +54,7 @@ lemma enrichedReplacementPathTriangles_diagonal :
 
 /-- 元の Hom 内の全二単体と全四辺・共通対角辺、および元の全単体の像の保存データ。 -/
 def enrichedReplacementRawDiamondData :=
-  triangleDiamondTransportData (enrichedReplacementMappingSpace_eq f g h e T)
+  _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondTransportData (enrichedReplacementMappingSpace_eq f g h e T)
     (coherentSimplexFirstInsertionTriangle T.simplex 0 1 2 3
       (by decide) (by decide) (by decide)).simplex
     (coherentSimplexSecondInsertionTriangle T.simplex 0 1 2 3
@@ -67,7 +67,7 @@ def enrichedReplacementRawDiamondData :=
 
 /-- 元の比較辺と全復号辺を同じ対角辺へ結ぶ実三角形対。元の全二単体も保存する。 -/
 def enrichedReplacementComparisonData :=
-  triangleDiamondCompositionData e
+  _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData e
     (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g)))
     (coherentTriangleMappingEdge f g h T.triangle)
     (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g)))

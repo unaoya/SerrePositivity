@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Data.Fintype.Basic
 public import Mathlib.Data.Fintype.Defs
 public import Mathlib.Data.Fintype.Prod
@@ -20,6 +22,9 @@ public import Mathlib.Order.Monotone.Defs
 set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal
+open SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 def postIndex : Fin 2 × Fin 2 →o Fin 3 where
   toFun p := if p.1 = 0 then 0 else if p.2 = 0 then 1 else 2
@@ -33,4 +38,31 @@ def factorIndex : Fin 2 × Fin 3 →o Fin 2 where
   toFun p := if p.2 = 0 then 0 else if p.2 = 1 then p.1 else 1
   monotone' := by decide
 
-end SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.factorIndex := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.preIndex := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.factorIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.postIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareDiagonal.preIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex._proof_1

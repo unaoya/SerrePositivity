@@ -21,7 +21,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 instance markedSpanFamilyProjection_cocartesianFibration (X : SSet.{u}) [Quasicategory X]
-    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : CocartesianFibration (markedSpanFamilyProjection X W x) where
+    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : CocartesianFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) where
   mem := by
     refine ⟨InnerFibration.mem, ?_⟩
     intro v b hb
@@ -49,7 +49,7 @@ instance markedSpanFamilyProjection_cocartesianFibration (X : SSet.{u}) [Quasica
       apply SSet.yonedaEquiv.injective
       calc
         SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ F) =
-            (markedSpanFamily X W x).δ 1 (SSet.yonedaEquiv F) :=
+            (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x).δ 1 (SSet.yonedaEquiv F) :=
           (SSet.yonedaEquiv_naturality (SimplexCategory.δ (1 : Fin 2)) F).symm
         _ = F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := intervalMap_source F
         _ = v := hf₀

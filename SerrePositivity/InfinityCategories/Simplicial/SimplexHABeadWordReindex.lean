@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 
 /-! # 元の bead 連結語の右端点と自由次元の移送
@@ -8,21 +10,45 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 元の語を、右端点と自由次元の等号だけで同じ語へ移送する。 -/
 def simplexHABeadWordReindex {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
-    (hb : b = c) (hd : p = q) (word : SimplexHABeadWord n a b p) :
-    SimplexHABeadWord n a c q := by
+    (hb : b = c) (hd : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a c q := by
   cases hb
   cases hd
   exact word
 
 /-- 元の右端点・自由次元の移送前後で、語そのものは異種等号で一致する。 -/
 lemma simplexHABeadWordReindex_heq {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
-    (hb : b = c) (hd : p = q) (word : SimplexHABeadWord n a b p) :
-    HEq (simplexHABeadWordReindex hb hd word) word := by
+    (hb : b = c) (hd : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex hb hd word) word := by
   cases hb
   cases hd
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex_heq := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_4

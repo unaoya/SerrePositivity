@@ -20,13 +20,13 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeLocalizingEdges : Set ((laxCategory p q).obj _⦋1⦌) :=
-  cofiberLocalizingEdges (essentialImage (pullbackInclusion p q))
+  cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))
 
 lemma tammeLocalizingEdges_eq : tammeLocalizingEdges p q = invertedEdges (laxDifference p q) :=
-  (invertedEdges_eq_cofiber_kernel (pullbackInclusion p q) (exactLaxDifference p q)
+  (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q) (exactLaxDifference p q)
     (exactLaxDifference_kernel p q)).symm
 
 def tammeQuotient : SSet.{u} := edgeLocalization (laxCategory p q).obj (tammeLocalizingEdges p q)

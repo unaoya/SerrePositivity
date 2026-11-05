@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
@@ -38,7 +38,7 @@ lemma parametricPullbackSquares_vertex {P L X : SSet.{u}}
     ← spanInternalHomFlip_post (evaluateFunctorAt v)
       (internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) L ((ihom P).obj X) Q ≫
         (internalHomSwapIso ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X).hom),
-    Category.assoc, internalHomSwapIso_evaluate, spanTransposeFamily_evaluate]
+    Category.assoc, internalHomSwapIso_evaluate, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTransposeFamily_evaluate]
 
 /-- 転置は同じ二つの評価で得られる元の全四角形を厳密に回収する。 -/
 lemma parametricPullbackSquares_evaluate {P L X : SSet.{u}}
@@ -68,7 +68,7 @@ lemma parametricPullbackSquares_evaluate_family {P L X : SSet.{u}}
     parametricPullbackSquares Q ≫ evaluateFunctorAt l =
       internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X
         (Q ≫ evaluateFunctorAt l) := by
-  rw [parametricPullbackSquares, spanDiagramFamilyTranspose, spanTransposeFamily_evaluate]
+  rw [parametricPullbackSquares, spanDiagramFamilyTranspose, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTransposeFamily_evaluate]
   change (functorVertexEquiv P ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)).symm
     ((internalHomSwapIso ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X).hom.app (Opposite.op ⦋0⦌)
       ((internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) L ((ihom P).obj X) Q).app
@@ -207,23 +207,23 @@ lemma exists_relative_parametricPullbackDiagramFamily
     (hab : a ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
       j ≫ parametricPullbackDiagramFamily Q hQ ≫
         (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
-    (hac : a ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+    (hac : a ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
       j ≫ parametricPullbackDiagramFamily Q hQ ≫
-        (pre (simplexLastPoint n)).app (pullbackDiagrams X)) :
+        (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) :
     ∃ F : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X),
       j ≫ F = a ∧
       F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
         parametricPullbackDiagramFamily Q hQ ≫
           (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) ∧
-      F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+      F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
         parametricPullbackDiagramFamily Q hQ ≫
-          (pre (simplexLastPoint n)).app (pullbackDiagrams X) := by
+          (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) := by
   apply exists_relative_terminalPullbackFamily n j a
     (parametricPullbackDiagramFamily Q hQ ≫
       (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
     (parametricPullbackDiagramFamily Q hQ ≫
-      (pre (simplexLastPoint n)).app (pullbackDiagrams X))
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))
     hab hac
-  rw [Category.assoc, Category.assoc, ← (pre (simplexLastPoint n)).naturality]
+  rw [Category.assoc, Category.assoc, ← (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).naturality]
 
 end SerrePositivity.KST.LocalizingInvariants

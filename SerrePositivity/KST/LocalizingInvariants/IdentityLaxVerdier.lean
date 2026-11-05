@@ -18,19 +18,19 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 lemma difference_isVerdier :
-    IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where
   fullyFaithful := diagonal_fullyFaithful Q
   kernel := difference_kernel Q
   quotient := by
-    rw [← invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
+    rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (exactDiagonal Q)
       (exactLaxDifference (𝟙 Q) (𝟙 Q)) (difference_kernel Q)]
-    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (identityAdjunction Q)
+    exact laxDifference_isLocalization (𝟙 Q) (𝟙 Q) (𝟙 Q.obj) (_root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.identityAdjunction Q)
       (QCatEquivalence.refl Q.obj).isFullyFaithful
 
-def verdierSequence : VerdierSequence.{u} where
+def verdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
   left := Q
   middle := laxCategory (𝟙 Q) (𝟙 Q)
   right := Q

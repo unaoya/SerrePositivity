@@ -28,11 +28,11 @@ theorem cosliceIdentityFiber_interval {Q : SSet.{u}} (y : Q _⦋0⦌) :
 
 /-- 元の全 span 族の恒等点の評価は、同じ実 coslice fiber 内で恒等点と同値。 -/
 def identityFixedFractionCosliceEvaluationIso : VertexIso
-    ((fixedFractionCosliceEvaluation F W hF x x).app (Opposite.op ⦋0⦌)
-      (identityFixedMarkedSpan W x hx))
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation F W hF x x).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx))
     (edgeToCosliceFiberVertex (SSet.Edge.id (F.app (Opposite.op ⦋0⦌) x))) := by
-  have e := VertexIso.map (fixedFractionCosliceComparisonIso F W hF x x)
-    (evaluateFunctorAt (identityFixedMarkedSpan W x hx))
+  have e := VertexIso.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceComparisonIso F W hF x x)
+    (evaluateFunctorAt (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx))
   simp only [evaluateFunctorAt_functorVertex] at e
   have he := e ≪≫ identityFixedFractionEvaluationIso F W hF x hx
   have hc := cosliceFiberToIntervalMappingSpace_isQCatEquivalence
@@ -47,13 +47,13 @@ def identityFixedFractionCosliceEvaluationIso : VertexIso
 
 /-- 同じ亜群化後の coslice 比較でも、元の恒等 span の像を恒等点へ正規化できる。 -/
 def identityFractionCosliceGroupoidComparisonIso : VertexIso
-    ((fixedFractionCosliceGroupoidComparison F W hF x x).app (Opposite.op ⦋0⦌)
-      ((groupoidCompletionMap (fixedMarkedSpans X W x x)).app (Opposite.op ⦋0⦌)
-        (identityFixedMarkedSpan W x hx)))
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparison F W hF x x).app (Opposite.op ⦋0⦌)
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (fixedMarkedSpans X W x x)).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx)))
     (edgeToCosliceFiberVertex (SSet.Edge.id (F.app (Opposite.op ⦋0⦌) x))) := by
-  have e := VertexIso.map (fixedFractionCosliceGroupoidComparisonIso F W hF x x)
-    (evaluateFunctorAt ((groupoidCompletionMap (fixedMarkedSpans X W x x)).app
-      (Opposite.op ⦋0⦌) (identityFixedMarkedSpan W x hx)))
+  have e := VertexIso.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceGroupoidComparisonIso F W hF x x)
+    (evaluateFunctorAt ((_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (fixedMarkedSpans X W x x)).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan W x hx)))
   simp only [evaluateFunctorAt_functorVertex] at e
   have he := e ≪≫ identityFractionMappingComparisonIso F W hF x hx
   have hc := cosliceFiberToIntervalMappingSpace_isQCatEquivalence

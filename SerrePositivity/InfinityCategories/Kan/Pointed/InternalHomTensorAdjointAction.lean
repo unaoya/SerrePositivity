@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAction
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 
@@ -16,13 +18,16 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
 /-- テンソルした射を構造射と合成し curry すると、その随伴への後合成になる。 -/
 lemma tensorHom_adjoint (S A B Z : C) (s : S ⊗ B ⟶ Z) :
-    tensorHom S A B ≫ (ihom (S ⊗ A)).map s ≫ (InternalHomTensor.iso S A Z).hom =
+    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom S A B ≫ (ihom (S ⊗ A)).map s ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S A Z).hom =
       (ihom A).map (curry s) := by
-  rw [InternalHomTensor.hom_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq]
   apply uncurry_injective
   apply uncurry_injective
   simp only [uncurry_natural_left, uncurry_curry, uncurry_ihom_map]
@@ -30,7 +35,13 @@ lemma tensorHom_adjoint (S A B Z : C) (s : S ⊗ B ⟶ Z) :
   rw [← MonoidalCategory.whiskerLeft_comp, ← MonoidalCategory.whiskerLeft_comp]
   rw [associator_inv_naturality_right, MonoidalCategory.whiskerLeft_comp]
   simp only [Category.assoc]
-  rw [← uncurry_eq, uncurry_ihom_map, tensorHom_evaluation_assoc,
+  rw [← uncurry_eq, uncurry_ihom_map, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_evaluation_assoc,
     Iso.inv_hom_id_assoc]
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_adjoint := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_adjoint

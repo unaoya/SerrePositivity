@@ -126,19 +126,19 @@ theorem underlyingIso_natural (W : I ⥤ SSet.{u}) {D E : I ⥤ PointedSimplicia
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の Ω 条件の保存。 -/
 theorem map_piIsomorphism {D E : I ⥤ PointedSimplicialSet.{u}}
     [∀ i, KanComplex (D.obj i).right] [∀ i, KanComplex (E.obj i).right]
-    (τ : D ⟶ E) (hτ : ∀ i, KanPiIsomorphism (τ.app i).right) :
-    KanPiIsomorphism (map (bousfieldKanWeight I) τ).right := by
+    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (τ.app i).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map (bousfieldKanWeight I) τ).right := by
   let : ∀ i, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (D.obj i).right)
   let : ∀ i, KanComplex ((E ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (E.obj i).right)
   let eD := underlyingIso (bousfieldKanWeight I) D
   let eE := underlyingIso (bousfieldKanWeight I) E
-  have heD : KanPiIsomorphism eD.hom := KanPiIsomorphism.of_iso eD
-  have heE : KanPiIsomorphism eE.hom := KanPiIsomorphism.of_iso eE
+  have heD : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism eD.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eD
+  have heE : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism eE.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eE
   have hN := PointedHomotopyLimit.map_piIsomorphism τ hτ
   have hc := heD.comp hN
-  apply KanPiIsomorphism.of_comp (g := eE.hom) _ heE
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := eE.hom) _ heE
   have h := underlyingIso_natural (bousfieldKanWeight I) τ
   change (map (bousfieldKanWeight I) τ).right ≫ eE.hom =
     eD.hom ≫ (PointedHomotopyLimit.map τ).right at h

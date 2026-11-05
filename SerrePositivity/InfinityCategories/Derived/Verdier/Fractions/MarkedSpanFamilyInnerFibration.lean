@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 
 /-!
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma intervalBoundaryCurry_source {A X : SSet.{u}} (f g : A ⟶ X) :
     curry (intervalBoundaryDiagram f g) ≫ evaluateFunctorAt
@@ -42,15 +47,15 @@ lemma intervalBoundaryCurry_target {A X : SSet.{u}} (f g : A ⟶ X) :
   rw [CategoryTheory.Functor.map_id_apply]
 
 lemma markedSpanFamily_boundary {A X : SSet.{u}} (W : Set (X _⦋1⦌))
-    (x : X _⦋0⦌) (f : A ⟶ markedSpanFamily X W x) :
+    (x : X _⦋0⦌) (f : A ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) :
     (f ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanBoundary X W =
-      curry (intervalBoundaryDiagram (SSet.const x) (f ≫ markedSpanFamilyProjection X W x)) := by
+      curry (intervalBoundaryDiagram (SSet.const x) (f ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x)) := by
   rw [markedSpanBoundary, ← curry_natural_left, intervalBoundaryDiagram_naturality,
     Category.assoc, vertexFiberι_comp, SSet.comp_const]
   rfl
 
 instance markedSpanFamilyProjection_innerFibration (X : SSet.{u}) [Quasicategory X]
-    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : InnerFibration (markedSpanFamilyProjection X W x) where
+    (W : Set (X _⦋1⦌)) (x : X _⦋0⦌) : InnerFibration (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) where
   mem := by
     intro A B i hi
     have := InnerFibration.mem (q := markedSpanBoundary X W) i hi
@@ -58,7 +63,7 @@ instance markedSpanFamilyProjection_innerFibration (X : SSet.{u}) [Quasicategory
     intro a b sq
     let d := curry (intervalBoundaryDiagram (SSet.const x : B ⟶ X) b)
     have hd : (a ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanBoundary X W = i ≫ d := by
-      rw [markedSpanFamily_boundary]
+      rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily_boundary]
       dsimp only [d]
       rw [← curry_natural_left, intervalBoundaryDiagram_naturality, SSet.comp_const, sq.w]
     let t : CommSq (a ≫ vertexFiberι (markedSpanSource X W) x) i (markedSpanBoundary X W) d := ⟨hd⟩
@@ -72,7 +77,7 @@ instance markedSpanFamilyProjection_innerFibration (X : SSet.{u}) [Quasicategory
               vertex_mem_boundary 0 0⟩ : (boundary 1 : SSet.{u}) _⦋0⦌) :=
           congrArg (fun f : B ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
             f ≫ evaluateFunctorAt _) t.fac_right
-        _ = SSet.const x := intervalBoundaryCurry_source _ _
+        _ = SSet.const x := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_source _ _
     let G := vertexFiberLift (markedSpanSource X W) x t.lift hs
     refine CommSq.HasLift.mk' { l := G, fac_left := ?_, fac_right := ?_ }
     · apply (cancel_mono (vertexFiberι (markedSpanSource X W) x)).mp
@@ -89,6 +94,21 @@ instance markedSpanFamilyProjection_innerFibration (X : SSet.{u}) [Quasicategory
               vertex_mem_boundary 0 1⟩ : (boundary 1 : SSet.{u}) _⦋0⦌) :=
           congrArg (fun f : B ⟶ (ihom (boundary 1 : SSet.{u})).obj X =>
             f ≫ evaluateFunctorAt _) t.fac_right
-        _ = b := intervalBoundaryCurry_target _ _
+        _ = b := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_target _ _
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.intervalBoundaryCurry_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.intervalBoundaryCurry_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.intervalBoundaryCurry_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection_innerFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.markedSpanFamilyProjection_innerFibration := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection_innerFibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.markedSpanFamily_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily_boundary

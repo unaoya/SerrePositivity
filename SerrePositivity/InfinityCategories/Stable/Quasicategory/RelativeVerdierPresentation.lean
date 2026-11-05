@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant
 
@@ -16,47 +18,51 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+open SerrePositivity.KST.LocalizingInvariants
+open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
 
-variable {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u})
+variable {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
 
 /-- 実際の像の二辺と零角から、同じ源四角形の相対証明書を作る。 -/
-def ofSquare (d : VerdierSequence.{u})
+def ofSquare (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (hb : squareBottomEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge)
-    (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (stableArrow d.projection).edge)
-    (hz : IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1))) :
-    RelativeVerdierDiagram ν where
+    (hb : squareBottomEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
+    (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ ν) 0 1))) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν where
   square := F
   image := {
     toVerdierSequence := d
     square := F ≫ ν
     left_eq := by
       have h := squareBottomEdge_source (F ≫ ν)
-      rw [hb, Equiv.apply_symm_apply, (stableArrow d.inclusion).src_eq] at h
+      rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
       exact h.symm
     middle_eq := by
       have h := squareBottomEdge_target (F ≫ ν)
-      rw [hb, Equiv.apply_symm_apply, (stableArrow d.inclusion).tgt_eq] at h
+      rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
       exact h.symm
     right_eq := by
       have h := squareRightEdge_target (F ≫ ν)
-      rw [hr, Equiv.apply_symm_apply, (stableArrow d.projection).tgt_eq] at h
+      rw [hr, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).tgt_eq] at h
       exact h.symm
     bottom_edge := hb
     right_edge := hr
     zero_corner := hz }
   image_eq := rfl
 
-@[simp] lemma ofSquare_square (d : VerdierSequence.{u})
+@[simp] lemma ofSquare_square (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
-    (ofSquare ν d F hb hr hz).square = F := rfl
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hb hr hz).square = F := rfl
 
-@[simp] lemma ofSquare_sequence (d : VerdierSequence.{u})
+@[simp] lemma ofSquare_sequence (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
-    (ofSquare ν d F hb hr hz).image.toVerdierSequence = d := rfl
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hb hr hz).image.toVerdierSequence = d := rfl
 
 /-- 源内の可換性から、指定四辺を保つ零化四角形を実現する。
 ν の像だけで可換性を仮定することはしない。 -/
@@ -98,7 +104,7 @@ lemma exists_coherentSquare_of_comm {C : Type v} [Category.{u} C] [SimplicialCat
   exact ⟨F, hb, hr, hl, ht⟩
 
 /-- 源内の零化と ν の元の二射を、同じ四辺の相対 Verdier 提示へ接続する。 -/
-lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
+lemma exists_of_source_comm [Quasicategory S] (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     {a b z c : S _⦋0⦌}
     (i : Truncated.Edge (X := (truncation 2).obj S) a b)
     (q : Truncated.Edge (X := (truncation 2).obj S) b c)
@@ -107,21 +113,21 @@ lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
     (h : Truncated.HomotopyCategory.homMk i ≫ Truncated.HomotopyCategory.homMk q =
       Truncated.HomotopyCategory.homMk l ≫ Truncated.HomotopyCategory.homMk r)
     (hi : SSet.yonedaEquiv.symm i.edge ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
     (hq : SSet.yonedaEquiv.symm q.edge ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge)
-    (hz : IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
-    ∃ t : RelativeVerdierDiagram ν, t.image.toVerdierSequence = d ∧
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
+    ∃ t : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν, t.image.toVerdierSequence = d ∧
       squareBottomEdge ≫ t.square = SSet.yonedaEquiv.symm i.edge ∧
       squareRightEdge ≫ t.square = SSet.yonedaEquiv.symm q.edge ∧
       squareLeftEdge ≫ t.square = SSet.yonedaEquiv.symm l.edge ∧
       squareTopEdge ≫ t.square = SSet.yonedaEquiv.symm r.edge := by
-  obtain ⟨F, hb, hr, hl, ht⟩ := exists_square_of_source_comm i q l r h
+  obtain ⟨F, hb, hr, hl, ht⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_square_of_source_comm i q l r h
   have hbi : squareBottomEdge ≫ F ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     rw [← Category.assoc, hb, hi]
   have hqr : squareRightEdge ≫ F ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
     rw [← Category.assoc, hr, hq]
   have hFz : squareVertex F 0 1 = z := by
     have he := squareLeftEdge_target F
@@ -131,10 +137,46 @@ lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
       rw [hle, Equiv.apply_symm_apply]
       exact le.tgt_eq
     exact he.symm.trans hez
-  have hz' : IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1)) := by
-    change IsZeroCategory (stableObject (ν.app _ (squareVertex F 0 1)))
+  have hz' : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ ν) 0 1)) := by
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (ν.app _ (squareVertex F 0 1)))
     rw [hFz]
     exact hz
-  exact ⟨ofSquare ν d F hbi hqr hz', rfl, hb, hr, hl, ht⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare ν d F hbi hqr hz', rfl, hb, hr, hl, ht⟩
 
-end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_coherentSquare_of_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_coherentSquare_of_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_of_source_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_of_source_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_square_of_source_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_square_of_source_comm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare_sequence := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_sequence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare_square := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_5

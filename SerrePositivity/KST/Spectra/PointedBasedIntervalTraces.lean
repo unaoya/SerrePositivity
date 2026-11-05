@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 元の辺そのものを区間族として持つ、基点固定区間。 -/
@@ -48,10 +48,10 @@ lemma paramCurry_restrict {A B E : PointedSimplicialSet.{u}} (j : B ⟶ A)
     (hg : B.hom ▷ (Δ[1] : SSet.{u}) ≫ G =
       toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom)
     (h : j.right ▷ (Δ[1] : SSet.{u}) ≫ F = G) :
-    paramCurry A E F hb ≫ (prePointed j E).right = paramCurry B E G hg := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry A E F hb ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j E).right = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry B E G hg := by
   apply (cancel_mono (PointedObject.basedHomι B E)).1
-  change _ ≫ pre j E ≫ _ = _
-  rw [pre_ι, ← Category.assoc, paramCurry_ι, paramCurry_ι]
+  change _ ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre j E ≫ _ = _
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι]
   apply uncurry_injective
   rw [uncurry_pre_app, uncurry_curry, uncurry_curry]
   exact h

@@ -45,7 +45,7 @@ lemma replacedHom_base : Arrow.mk (homPre (joinInr Δ[0] _) (replacedHom p q a b
 lemma cubeHom_base : Arrow.mk (homPre (joinInr Δ[0] _) (cubeHom p q a b h)) =
     Arrow.mk (diagramHom p q a b h) := by
   let e := (FiberModel.homotopyFiberConeTransportIso q).precomp (joinInr Δ[0] _)
-  have hi := arrow_mk_inv_congr (f := e.hom)
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom)
     (g := (FiberModel.replacementUnitDiagramIso q).hom)
     (FiberModel.homotopyFiberConeTransportIso_base q)
   simp only [IsIso.Iso.inv_hom] at hi

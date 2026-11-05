@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 lemma dgGluingPrismIntervalSquare_swap {K L Z : SSet.{u}}
     (h : (Δ[1] : SSet.{u}) ⊗ K ⟶ L) (e : (Δ[1] : SSet.{u}) ⊗ L ⟶ Z) :
     dgGluingPrismParameterReindex (β_ (Δ[1] : SSet.{u}) Δ[1]).hom K ≫

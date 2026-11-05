@@ -40,7 +40,7 @@ lemma unitCondition_of_iso_localMapping (η : FunctorHom (𝟙 X) (F ≫ G)) [Is
 lemma reflectiveOppositeUnit_condition (e : FunctorIso (G ≫ F) (𝟙 Y))
     (h : ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence
       (pinchedHomMap F x (G.app (Opposite.op ⦋0⦌) y))) :
-    UnitMappingSpaceCondition (reflectiveOppositeUnit e).hom := by
+    UnitMappingSpaceCondition (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveOppositeUnit e).hom := by
   apply unitCondition_of_iso_localMapping
   intro y x
   have hp := h (SSet.opObjEquiv x) (SSet.opObjEquiv y)
@@ -56,7 +56,7 @@ lemma reflectiveOppositeUnit_condition (e : FunctorIso (G ≫ F) (𝟙 Y))
 def adjunctionOfReflectiveMapping (e : FunctorIso (G ≫ F) (𝟙 Y))
     (h : ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence
       (pinchedHomMap F x (G.app (Opposite.op ⦋0⦌) y))) : QCatAdjunction F G :=
-  adjunctionOfOpposite (qcatAdjunctionOfUnitMappingSpaceCondition
-    (reflectiveOppositeUnit e).hom (reflectiveOppositeUnit_condition e h))
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite (qcatAdjunctionOfUnitMappingSpaceCondition
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveOppositeUnit e).hom (reflectiveOppositeUnit_condition e h))
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -42,7 +42,7 @@ theorem closedKernelPulledCoordinates_localized_eq (n r : ℕ) :
   unfold closedKernelPulledCoordinates closedKernelFiniteComparison weakStringFiniteComparison
   rw [lift_map]
   simp only [closedKernelInitialExact, Functor.map_comp]
-  apply pair_eq_of_anodyneQ_eq rfl
+  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq rfl
   apply finProduct_eq_of_anodyneQ_eq
   intro j
   simpa only [closedFlagConsecutiveCofibers, weakStringConsecutiveCofibers,

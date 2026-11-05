@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration
 方針：同じ path 変形の再添字付けを全部分複体の包含後に適用する。
 規約：時刻単体と三角形単体を同じ写像で引き戻す。
 使われ方：全三角柱の面・退化と整合する零値 Hom の族。 -/
-theorem verdierLowerDeformationZeroHomLift_reindex (d : VerdierDiagram.{u})
+theorem verdierLowerDeformationZeroHomLift_reindex (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     {m n : ℕ} (g : ULift.{u} (Fin (m + 1)) →o ULift.{u} (Fin (n + 1)))
     (a : ULift.{u} (Fin (n + 1)) →o ULift.{u} (Fin 3))
     (t : ULift.{u} (Fin (n + 1)) →o Fin 2)

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CoherentStringEndpoints
 
 /-! # 上下の因子分解列の端点再添字
@@ -12,8 +14,11 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 終点を一回繰り返す元の入力列への射影。 -/
 def coherentLowerStringIndex (n : ℕ) : ⦋n + 1⦌ ⟶ ⦋n⦌ :=
@@ -91,159 +96,291 @@ def coherentUpperStringExtend {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) : ⦋m + 1�
 
 /-- 下側への延長は元の各入力頂点を厳密に保つ。 -/
 lemma coherentLowerStringExtend_castSucc {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
-    (coherentLowerStringExtend θ).toOrderHom i.castSucc = (θ.toOrderHom i).castSucc := by
-  simp [coherentLowerStringExtend]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ).toOrderHom i.castSucc = (θ.toOrderHom i).castSucc := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend]
 
 /-- 下側への延長は新しい終点を保持する。 -/
 lemma coherentLowerStringExtend_last {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (coherentLowerStringExtend θ).toOrderHom (Fin.last (m + 1)) = Fin.last (n + 1) := by
-  simp [coherentLowerStringExtend]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ).toOrderHom (Fin.last (m + 1)) = Fin.last (n + 1) := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend]
 
 /-- 上側への延長は新しい始点を保持する。 -/
 lemma coherentUpperStringExtend_zero {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (coherentUpperStringExtend θ).toOrderHom 0 = 0 := by
-  simp [coherentUpperStringExtend]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ).toOrderHom 0 = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend]
 
 /-- 上側への延長は元の各入力頂点を厳密に保つ。 -/
 lemma coherentUpperStringExtend_succ {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
-    (coherentUpperStringExtend θ).toOrderHom i.succ = (θ.toOrderHom i).succ := by
-  simp [coherentUpperStringExtend]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ).toOrderHom i.succ = (θ.toOrderHom i).succ := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend]
 
 /-- 終点を保つ再添字では、下側の入力列への射影も厳密に可換。 -/
 lemma coherentLowerStringExtend_index {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (hθ : θ.toOrderHom (Fin.last m) = Fin.last n) :
-    coherentLowerStringExtend θ ≫ coherentLowerStringIndex n =
-      coherentLowerStringIndex m ≫ θ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex n =
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex m ≫ θ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
   cases i using Fin.lastCases <;>
-    simp [coherentLowerStringExtend, coherentLowerStringIndex, hθ]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex, hθ]
 
 /-- 始点を保つ再添字では、上側の入力列への射影も厳密に可換。 -/
 lemma coherentUpperStringExtend_index {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (hθ : θ.toOrderHom 0 = 0) :
-    coherentUpperStringExtend θ ≫ coherentUpperStringIndex n =
-      coherentUpperStringIndex m ≫ θ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex n =
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex m ≫ θ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
   cases i using Fin.cases <;>
-    simp [coherentUpperStringExtend, coherentUpperStringIndex, hθ]
+    simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend, _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex, hθ]
 
 /-- 下側への延長は元の時刻を全頂点で保つ。 -/
 lemma coherentLowerStringExtend_time {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    coherentLowerStringExtend θ ≫ coherentLowerStringTime n = coherentLowerStringTime m := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime n = _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime m := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.lastCases <;> simp [coherentLowerStringExtend, coherentLowerStringTime]
+  cases i using Fin.lastCases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime]
 
 /-- 上側への延長も元の時刻を全頂点で保つ。 -/
 lemma coherentUpperStringExtend_time {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    coherentUpperStringExtend θ ≫ coherentUpperStringTime n = coherentUpperStringTime m := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime n = _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime m := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.cases <;> simp [coherentUpperStringExtend, coherentUpperStringTime]
+  cases i using Fin.cases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend, _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime]
 
 
 /-- 下側の入力への射影は元の始点を厳密に保つ。 -/
 lemma coherentLowerStringIndex_first (n : ℕ) :
-    (coherentLowerStringIndex n).toOrderHom 0 = 0 := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex n).toOrderHom 0 = 0 := by
   change Fin.lastCases (motive := fun _ => Fin (n + 1)) (Fin.last n)
     (fun i : Fin (n + 1) => i) (0 : Fin (n + 1)).castSucc = _
   rw [Fin.lastCases_castSucc]
 
 /-- 下側の入力への射影は元の終点を厳密に保つ。 -/
 lemma coherentLowerStringIndex_last (n : ℕ) :
-    (coherentLowerStringIndex n).toOrderHom (Fin.last (n + 1)) = Fin.last n := by
-  simp [coherentLowerStringIndex]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex n).toOrderHom (Fin.last (n + 1)) = Fin.last n := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex]
 
 /-- 下側の時刻は元の始点を厳密に保つ。 -/
 lemma coherentLowerStringTime_first (n : ℕ) :
-    (coherentLowerStringTime n).toOrderHom 0 = 0 := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime n).toOrderHom 0 = 0 := by
   change Fin.lastCases (motive := fun _ => Fin 2) 1
     (fun _ : Fin (n + 1) => (0 : Fin 2)) (0 : Fin (n + 1)).castSucc = _
   rw [Fin.lastCases_castSucc]
 
 /-- 下側の時刻は元の終点を厳密に保つ。 -/
 lemma coherentLowerStringTime_last (n : ℕ) :
-    (coherentLowerStringTime n).toOrderHom (Fin.last (n + 1)) = 1 := by
-  simp [coherentLowerStringTime]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime n).toOrderHom (Fin.last (n + 1)) = 1 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime]
 
 /-- 下側への延長は恒等再添字を厳密に保つ。 -/
 lemma coherentLowerStringExtend_id (n : ℕ) :
-    coherentLowerStringExtend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.lastCases <;> simp [coherentLowerStringExtend]
+  cases i using Fin.lastCases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend]
 
 /-- 下側への延長は再添字の合成を厳密に保つ。 -/
 lemma coherentLowerStringExtend_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (φ : ⦋m⦌ ⟶ ⦋n⦌) :
-    coherentLowerStringExtend (θ ≫ φ) =
-      coherentLowerStringExtend θ ≫ coherentLowerStringExtend φ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend (θ ≫ φ) =
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend φ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.lastCases <;> simp [coherentLowerStringExtend]
+  cases i using Fin.lastCases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend]
 
 /-- 上側の入力への射影は元の始点を厳密に保つ。 -/
 lemma coherentUpperStringIndex_first (n : ℕ) :
-    (coherentUpperStringIndex n).toOrderHom 0 = 0 := by
-  simp [coherentUpperStringIndex]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex n).toOrderHom 0 = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex]
 
 /-- 上側の入力への射影は元の終点を厳密に保つ。 -/
 lemma coherentUpperStringIndex_last (n : ℕ) :
-    (coherentUpperStringIndex n).toOrderHom (Fin.last (n + 1)) = Fin.last n := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex n).toOrderHom (Fin.last (n + 1)) = Fin.last n := by
   change Fin.cases (motive := fun _ => Fin (n + 1)) 0
     (fun i : Fin (n + 1) => i) (Fin.last n).succ = _
   rw [Fin.cases_succ]
 
 /-- 上側の時刻は元の始点を厳密に保つ。 -/
 lemma coherentUpperStringTime_first (n : ℕ) :
-    (coherentUpperStringTime n).toOrderHom 0 = 0 := by
-  simp [coherentUpperStringTime]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime n).toOrderHom 0 = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime]
 
 /-- 上側の時刻は元の終点を厳密に保つ。 -/
 lemma coherentUpperStringTime_last (n : ℕ) :
-    (coherentUpperStringTime n).toOrderHom (Fin.last (n + 1)) = 1 := by
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime n).toOrderHom (Fin.last (n + 1)) = 1 := by
   change Fin.cases (motive := fun _ => Fin 2) 0
     (fun _ : Fin (n + 1) => (1 : Fin 2)) (Fin.last n).succ = _
   rw [Fin.cases_succ]
 
 /-- 上側への延長は恒等再添字を厳密に保つ。 -/
 lemma coherentUpperStringExtend_id (n : ℕ) :
-    coherentUpperStringExtend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend (𝟙 ⦋n⦌) = 𝟙 ⦋n + 1⦌ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.cases <;> simp [coherentUpperStringExtend]
+  cases i using Fin.cases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend]
 
 /-- 上側への延長は再添字の合成を厳密に保つ。 -/
 lemma coherentUpperStringExtend_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (φ : ⦋m⦌ ⟶ ⦋n⦌) :
-    coherentUpperStringExtend (θ ≫ φ) =
-      coherentUpperStringExtend θ ≫ coherentUpperStringExtend φ := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend (θ ≫ φ) =
+      _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ ≫ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend φ := by
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
   funext i
-  cases i using Fin.cases <;> simp [coherentUpperStringExtend]
+  cases i using Fin.cases <;> simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend]
 
 /-- 下側への延長は元の始点固定を保持する。 -/
 lemma coherentLowerStringExtend_first {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (hθ : θ.toOrderHom 0 = 0) :
-    (coherentLowerStringExtend θ).toOrderHom 0 = 0 := by
-  change (coherentLowerStringExtend θ).toOrderHom (0 : Fin (m + 1)).castSucc = _
-  rw [coherentLowerStringExtend_castSucc, hθ]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ).toOrderHom 0 = 0 := by
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend θ).toOrderHom (0 : Fin (m + 1)).castSucc = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_castSucc, hθ]
   rfl
 
 /-- 上側への延長は元の終点固定を保持する。 -/
 lemma coherentUpperStringExtend_last {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (hθ : θ.toOrderHom (Fin.last m) = Fin.last n) :
-    (coherentUpperStringExtend θ).toOrderHom (Fin.last (m + 1)) = Fin.last (n + 1) := by
-  change (coherentUpperStringExtend θ).toOrderHom (Fin.last m).succ = _
-  rw [coherentUpperStringExtend_succ, hθ]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ).toOrderHom (Fin.last (m + 1)) = Fin.last (n + 1) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend θ).toOrderHom (Fin.last m).succ = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_succ, hθ]
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_castSucc := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_castSucc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_id := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_index := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_index
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_time := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_time
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_id := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_index := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_index
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_succ := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_succ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_time := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_time
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_zero := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime.eq_1

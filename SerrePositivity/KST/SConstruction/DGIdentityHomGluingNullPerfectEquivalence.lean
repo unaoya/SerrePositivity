@@ -49,7 +49,7 @@ def dgIdentityHomGluingDiagonalNullFactorInputMap :
 規約：同じ ν 辺の底関手を保持。使われ方：実右面の始域比較。 -/
 lemma dgIdentityHomGluingDiagonalNullFactorInputMap_nu_equivalence
     [IsDGPretriangulated R C] : IsQCatEquivalence
-    (show ExactMap (dgKInputStableValue R (dgIdentityHomGluingBaseInput R C))
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R (dgIdentityHomGluingBaseInput R C))
       (dgKInputStableValue R (dgIdentityHomGluingNullInput R C)) from
       dgKInputNuMap R (dgIdentityHomGluingDiagonalNullFactorInputMap R C)).hom := by
   letI : (quasiEquivalencePerfectExtension R C (V) (f)).IsEquivalence :=

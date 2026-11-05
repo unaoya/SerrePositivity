@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma arrowMap_isEssentiallySurjective {X Q : SSet.{u}} [Quasicategory Q]
     (F : X ⟶ Q) (hF : IsEssentiallySurjective F)
@@ -40,7 +45,7 @@ lemma arrowMap_isEssentiallySurjective {X Q : SSet.{u}} [Quasicategory Q]
       a.hom ≫ SSet.Truncated.HomotopyCategory.homMk e := by
     rw [ht]
     simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  obtain ⟨c⟩ := arrowFunctorIso_of_vertexIso_comm t e a b hc
+  obtain ⟨c⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_vertexIso_comm t e a b hc
   obtain ⟨g, ⟨d⟩⟩ := hA t
   refine ⟨functorVertex g, ⟨?_⟩⟩
   change FunctorIso (g ≫ F) f
@@ -49,4 +54,10 @@ lemma arrowMap_isEssentiallySurjective {X Q : SSet.{u}} [Quasicategory Q]
   rw [he] at h
   exact h
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowMap_isEssentiallySurjective := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowMap_isEssentiallySurjective

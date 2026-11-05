@@ -25,10 +25,10 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の全三角形族を、単射源からの同じ suspension Hom に表示する。 -/
 def monicKPrismCompositionNativeTriangle :
     nerve (CompositionStringParameters f g) ⊗ (Δ[2] : SSet.{u}) ⟶
-      (PointedObject.basedHom (suspension ((kOmegaSpectrum (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   kKanCompositionNativeTriangle r F f g ≫
-    PointedMapping.pre
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
       ((kKanSequence (F.obj z)).level (r + 1)).space
 
@@ -47,7 +47,7 @@ lemma monicKPrismCompositionNativeTriangle_first :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 2) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionFirstNativeCylinder r F f g).h ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc, kKanCompositionNativeTriangle_first]
@@ -57,7 +57,7 @@ lemma monicKPrismCompositionNativeTriangle_second :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 0) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionSecondNativeCylinder r F f g).h ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc, kKanCompositionNativeTriangle_second]
@@ -67,7 +67,7 @@ lemma monicKPrismCompositionNativeTriangle_composite :
     (nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 1) ≫
         monicKPrismCompositionNativeTriangle r F f g =
       (kKanCompositionCompositeNativeCylinder r F f g).h ≫
-        PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   rw [monicKPrismCompositionNativeTriangle, ← Category.assoc,

@@ -16,10 +16,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def arrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj (laxCategory p q).obj :=
   ZeroArrowFamily.ofHomotopy
@@ -44,7 +44,7 @@ instance arrow_isExact : IsExactFunctor (arrow p q) := by
   exact arrow_exact_of_endpoints (laxCategory p q).obj _
 
 def cofiber : (laxCategory p q).obj ⟶ (laxCategory p q).obj :=
-  CofiberFamily.cofiber (laxCategory p q).obj (arrow p q)
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (arrow p q)
 
 instance cofiber_isExact : IsExactFunctor (cofiber p q) :=
   CofiberFamily.cofiber_isExact _ _
@@ -54,18 +54,18 @@ lemma fst_arrow_source_zero (x : (laxCategory p q).obj _⦋0⦌) : IsZeroSourceA
       (Opposite.op ⦋0⦌) x) := by
   change IsZeroVertex (((arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_source,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_source,
     Category.assoc, LaxInclusion.fromD_fst]
-  change IsZeroVertex ((LaxInclusion.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
-  rw [LaxInclusion.zeroC, zeroDiagram_const_vertex]
+  change IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC : D.obj ⟶ C.obj).app _ ((laxSnd p q).hom.app _ x))
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
   exact (chosenZeroVertex C.obj).isZero
 
 lemma fst_arrow_target :
     (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
-      ArrowTarget.target C.obj = (laxFst p q).hom := by
+      _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target C.obj = (laxFst p q).hom := by
   change (arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map (laxFst p q).hom) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, arrow_target, Category.id_comp]
 
 def cofiber_fstIso : FunctorIso (cofiber p q ≫ (laxFst p q).hom) (laxFst p q).hom := by
   have e := cofiberZeroSourceIso C.obj

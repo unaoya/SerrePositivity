@@ -34,8 +34,8 @@ def dgKappaNativeBFStageSquare (r : ℕ) :
 /-- 概要：同じ native 四角形の四頂点の元の安定圏。
 方針：元四角形の頂点から回収する。
 規約：冪等完備化しない。使われ方：元 BF 頂点と元境界商の照合。 -/
-def dgKappaNativeBFVertexCategory (a b : Fin 2) : StableCategory.{max (u + 1) v} :=
-  stableObject (squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
+def dgKappaNativeBFVertexCategory (a b : Fin 2) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (dgKappaNativeVerdierDiagram.{u, v} R D I).square a b)
 
 /-- 概要：同じ未完備四頂点の元の BF スペクトル。
 方針：既存の同じ kOmegaSpectrum を使用する。
@@ -81,7 +81,7 @@ def dgKappaNativeBFPositiveProjection (a b : Fin 2) (r : ℕ) :
 方針：元の二つの比較の全基点 π 同型を合成する。
 規約：指定された同じ比較。使われ方：四頂点成分の可逆性。 -/
 lemma dgKappaNativeBFPositiveProjection_piIsomorphism (a b : Fin 2) (r : ℕ) :
-    KanPiIsomorphism (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFPositiveProjection.{u, v} R D I a b r) :=
   (monicKKanSequenceProjection_piIsomorphism
     (sInputModel (dgKappaNativeBFVertexCategory.{u, v} R D I a b)) (r + 1)).comp
       (pointedSOAExInfinityComparison_piIsomorphism

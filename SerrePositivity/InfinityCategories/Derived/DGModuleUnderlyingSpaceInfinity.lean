@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory DifferentialGraded DGNerve SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (D : Type v)
 /-- 全 dg R 加群から R を始域とする写像空間への、全単体を保持する ∞ 関手。 -/
 def dgHomUnderlyingSpaceInfinity :

@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 同じ全四角柱は、元の指定上側三角柱を全パラメーターで厳密回収する。 -/
 theorem verdierFullSSquarePrism_upper :

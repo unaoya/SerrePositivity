@@ -41,7 +41,7 @@ def basedPathToPoint (Y : OmegaSpectrum.{u}) : basedPath Y ⟶ spectrumPoint :=
 
 /-- 各段は元の path の BF 射影の後に一点へ進む。 -/
 lemma basedPathToPoint_app (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    (basedPathToPoint Y).app n = (cotensorProjection pointedInterval Y).app n ≫
+    (basedPathToPoint Y).app n = (cotensorProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y).app n ≫
       PointedObject.toPoint (basedPathSpace (Y.level n).space) :=
   PointedObject.point_isZero.eq_of_tgt _ _
 
@@ -51,12 +51,12 @@ lemma basedPathToPoint_rlp (Y : OmegaSpectrum.{u}) (n : ℕ) :
   rw [basedPathToPoint_app, Under.comp_right]
   exact (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
     (KanSequence.replacementStage
-      (KanSequence.mapping pointedInterval.{u} Y.toKanSequence) n).projection_rlp
+      (KanSequence.mapping _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u} Y.toKanSequence) n).projection_rlp
     (basedPathSpace_toPoint_rlp (Y.level n).space)
 
 lemma basedPathToPoint_levelwise (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    KanPiIsomorphism ((basedPathToPoint Y).app n).right :=
-  kanPiIsomorphism_of_monoRight _ (basedPathToPoint_rlp Y n)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((basedPathToPoint Y).app n).right :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (basedPathToPoint_rlp Y n)
 
 local instance pathZeroSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory

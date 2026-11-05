@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplexCategory.Truncated
@@ -54,18 +56,21 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+open SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
 
 include ha in
 lemma squareAt_isSuspension (x : A _⦋0⦌) :
-    IsSuspensionDiagramVertex ((squares X a).app (Opposite.op ⦋0⦌) x) := by
-  refine ⟨squareAt_zero X a x, ?_, squareAt_isPushout X a x⟩
-  let s := cofiberSquareAt X a x
+    IsSuspensionDiagramVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a).app (Opposite.op ⦋0⦌) x) := by
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_zero X a x, ?_, _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isPushout X a x⟩
+  let s := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt X a x
   change IsZeroVertex (squareVertex s.square 1 0)
   rw [s.target_vertex]
   have ht := (intervalFunctorVertexTypedEdge (a.app (Opposite.op ⦋0⦌) x)).tgt_eq
@@ -75,16 +80,37 @@ lemma squareAt_isSuspension (x : A _⦋0⦌) :
   exact ha x
 
 def zeroTargetDiagrams : A ⟶ suspensionDiagrams X :=
-  fullSubcomplexLift IsSuspensionDiagramVertex (squares X a) (squareAt_isSuspension X a ha)
+  fullSubcomplexLift IsSuspensionDiagramVertex (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares X a) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isSuspension X a ha)
 
 def suspensionDiagramsAtSource : A ⟶ suspensionDiagrams X :=
   (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-    SuspensionExact.diagrams X
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams X
 
 lemma suspensionDiagramsAtSource_source :
-    suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 =
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 =
       a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  rw [suspensionDiagramsAtSource, Category.assoc, SuspensionExact.diagrams_source,
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource, Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_source,
     Category.comp_id]
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt_isSuspension := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isSuspension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource_source
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroTargetDiagrams := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroTargetDiagrams
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.suspensionDiagramsAtSource.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.suspensionDiagramsAtSource.eq_1

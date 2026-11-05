@@ -17,7 +17,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の関手頂点の実単体表示は、元の完全関手による後合成を保つ。 -/
-lemma simplexVertexValue_postcomp {A B : StableCategory.{u}} (f : ExactMap A B)
+lemma simplexVertexValue_postcomp {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (n : SimplexCategory) (v : ((ihom (stdSimplex.obj n)).obj A.obj) _⦋0⦌) :
     simplexVertexValue n (((ihom (stdSimplex.obj n)).map f.hom).app (Opposite.op ⦋0⦌) v) =
       f.hom.app (Opposite.op n) (simplexVertexValue n v) := by
@@ -28,8 +28,8 @@ lemma simplexVertexValue_postcomp {A B : StableCategory.{u}} (f : ExactMap A B)
   rfl
 
 /-- 元の後合成は、合成した商の W 条件を元の商の W 条件へ送る。 -/
-lemma weakStringPredicate_postcomp {A B C : StableCategory.{u}}
-    (f : ExactMap A B) (q : ExactMap B C) (n : SimplexCategory)
+lemma weakStringPredicate_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : SimplexCategory)
     (v : ((ihom (stdSimplex.obj n)).obj A.obj) _⦋0⦌)
     (hv : weakStringPredicate (f ≫ q : A ⟶ C) n v) :
     weakStringPredicate q n
@@ -39,7 +39,7 @@ lemma weakStringPredicate_postcomp {A B C : StableCategory.{u}}
   exact hv
 
 /-- 元の全 W 列の図式圏の、元の完全関手による後合成。 -/
-def weakStringPostMap {A B C : StableCategory.{u}} (f : ExactMap A B) (q : ExactMap B C)
+def weakStringPostMap {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) : weakStringCategory (f ≫ q : A ⟶ C) n ⟶ weakStringCategory q n :=
   fullPredicateMap ((ihom (stdSimplex.obj n)).map f.hom)
     (weakStringPredicate (f ≫ q : A ⟶ C) n) (weakStringPredicate q n)
@@ -47,14 +47,14 @@ def weakStringPostMap {A B C : StableCategory.{u}} (f : ExactMap A B) (q : Exact
 
 /-- 後合成の元の包含後は、全関手圏での後合成そのもの。 -/
 @[reassoc]
-lemma weakStringPostMap_ι {A B C : StableCategory.{u}} (f : ExactMap A B) (q : ExactMap B C)
+lemma weakStringPostMap_ι {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) :
     weakStringPostMap f q n ≫ (fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι =
       (fullSubcomplexOnVertices _ (weakStringPredicate (f ≫ q : A ⟶ C) n)).ι ≫
         (ihom (stdSimplex.obj n)).map f.hom := rfl
 
 /-- 同じ元の後合成は、W 列の安定な入力の完全関手である。 -/
-def weakStringPostExact {A B C : StableCategory.{u}} (f : ExactMap A B) (q : ExactMap B C)
+def weakStringPostExact {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (n : SimplexCategory) : weakStringModel (f ≫ q : A ⟶ C) n ⟶ weakStringModel q n :=
   ⟨weakStringPostMap f q n, by
     apply preservesCofiberData_fullSubcomplex_of_comp (weakStringPredicate q n)

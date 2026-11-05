@@ -136,7 +136,7 @@ theorem actionFamily_simplex_localized_isIso (A : SimplicialMonoidAction G H)
     (a.app (op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm 0))
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)
-    (actionFamilyHomotopy A (simplexMapContraction a))
+    (actionFamilyHomotopy A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction a))
   rw [← he]
   exact hc
 

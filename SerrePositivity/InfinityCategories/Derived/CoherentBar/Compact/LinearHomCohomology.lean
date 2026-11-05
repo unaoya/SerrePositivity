@@ -16,7 +16,7 @@ universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory AlgebraicTopology DifferentialGraded DoldKanComparison HomologicalComplex
 open SerrePositivity.KST.Spectra
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {a b : E}
 
@@ -46,7 +46,7 @@ def dgBarCompactLinearHomCohomologyMap
 
 /-- 零基点のコホモロジーチャート。 -/
 def dgBarCompactLinearHomZeroBaseCohomologyEquiv (x y : D) (n : ℕ) :
-    KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n 0 ≃*
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n 0 ≃*
       Multiplicative ((homObject R D x y).homology (-((n + 1 : ℕ) : ℤ))) :=
   (dgBarCompactLiftModulePiZeroBaseEquiv _ n).trans
     ((dgBarCompactLiftModulePiZeroBaseEquiv _ n).trans
@@ -57,9 +57,9 @@ def dgBarCompactLinearHomZeroBaseCohomologyEquiv (x y : D) (n : ℕ) :
 
 lemma dgBarCompactLinearHomZeroBaseCohomologyEquiv_naturality
     (φ : homObject R D x y ⟶ homObject R E a b) (n : ℕ)
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n 0) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n 0) :
     dgBarCompactLinearHomZeroBaseCohomologyEquiv a b n
-      (KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLinearHomCohomologyMap φ))
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (moduleUnderlyingSSetMap (dgBarCompactLinearHomCohomologyMap φ))
         (moduleUnderlyingSSetMap_zero (dgBarCompactLinearHomCohomologyMap φ)) α) =
       homologyMap φ (-((n + 1 : ℕ) : ℤ))
         (dgBarCompactLinearHomZeroBaseCohomologyEquiv x y n α) := by
@@ -75,7 +75,7 @@ lemma dgBarCompactLinearHomZeroBaseCohomologyEquiv_naturality
 /-- 指定した任意の基点の正次数チャート。 -/
 def dgBarCompactLinearHomPiCohomologyEquiv (x y : D) (n : ℕ)
     (z : (dgBarCompactLinearHomModule (R := R) x y).obj (Opposite.op ⦋0⦌)) :
-    KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z ≃
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z ≃
       (homObject R D x y).homology (-((n + 1 : ℕ) : ℤ)) :=
   dgBarCompactModuleZeroChartExtension n
     (dgBarCompactLinearHomZeroBaseCohomologyEquiv x y n).toEquiv z
@@ -83,7 +83,7 @@ def dgBarCompactLinearHomPiCohomologyEquiv (x y : D) (n : ℕ)
 lemma dgBarCompactLinearHomPiCohomologyEquiv_naturality
     (φ : homObject R D x y ⟶ homObject R E a b) (n : ℕ)
     (z : (dgBarCompactLinearHomModule (R := R) x y).obj (Opposite.op ⦋0⦌))
-    (α : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z) :
+    (α : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z) :
     dgBarCompactLinearHomPiCohomologyEquiv a b n
       ((dgBarCompactLinearHomCohomologyMap φ).app _ z)
       (dgBarCompactPiMap n (moduleUnderlyingSSetMap (dgBarCompactLinearHomCohomologyMap φ)) z α) =
@@ -97,8 +97,8 @@ lemma dgBarCompactLinearHomPiCohomologyEquiv_naturality
 lemma dgBarCompactLinearHomPiCohomologyEquiv_transport (x y : D) (n : ℕ)
     {z z' : (dgBarCompactLinearHomModule (R := R) x y).obj (Opposite.op ⦋0⦌)}
     (e : (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)).Edge z z')
-    (a : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z)
-    (b : KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z')
+    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z)
+    (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (moduleUnderlyingSSet (dgBarCompactLinearHomModule (R := R) x y)) n z')
     (h : dgBarCompactLinearHomPiCohomologyEquiv x y n z a =
       dgBarCompactLinearHomPiCohomologyEquiv x y n z' b) :
     dgBarCompactPiTransport n e a b :=

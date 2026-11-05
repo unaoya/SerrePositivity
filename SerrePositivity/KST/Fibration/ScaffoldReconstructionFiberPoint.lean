@@ -16,7 +16,7 @@ variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
 
 /-- 元の実 fiber 点の、同じ scaffold 復元射による pointed-space fiber 像。 -/
 def scaffoldReconstructionFiberPoint (b : B _⦋0⦌) (w : (vertexFiber p b) _⦋0⦌) :=
-  smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b
+  _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p) b
     ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
       (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p) b).app
         (Opposite.op ⦋0⦌) w)
@@ -25,10 +25,10 @@ def scaffoldReconstructionFiberPoint (b : B _⦋0⦌) (w : (vertexFiber p b) _�
 theorem scaffoldReconstructionFiberPoint_eq_transport {b b' : B _⦋0⦌} (h : b = b')
     (w : (vertexFiber p b) _⦋0⦌) (w' : (vertexFiber p b') _⦋0⦌)
     (hw : Eq.mp (congrArg (fun z => (vertexFiber p z) _⦋0⦌) h) w = w') :
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b w) ≫
       (eqToIso (congrArg (fun z => HomotopyCategory.mk
         ((leftStraighteningInfinityDiagram p).app (Opposite.op ⦋0⦌) (ULift.up z))) h)).hom =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b' w') := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p b' w') := by
   cases h
   change w = w' at hw
   subst w'

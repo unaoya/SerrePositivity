@@ -28,8 +28,8 @@ instance ofVertex_right_kanComplex (X : SSet.{u}) [KanComplex X] (x : X _⦋0⦌
 /-- 点つき球面射が表す正次数の類。 -/
 def sphereClass {X : PointedSimplicialSet.{u}} [KanComplex X.right] (n : ℕ)
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ X) :
-    KanHomotopyGroup X.right n X.basepoint :=
-  KanHomotopyGroup.mk (SphereSimplex.equiv X (n + 1) f)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right n X.basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv X (n + 1) f)
 
 /-- 任意の正次数の類は実際の有限球面の点つき射で表せる。 -/
 lemma sphereClass_surjective (X : PointedSimplicialSet.{u}) [KanComplex X.right] (n : ℕ) :
@@ -37,7 +37,7 @@ lemma sphereClass_surjective (X : PointedSimplicialSet.{u}) [KanComplex X.right]
   intro a
   obtain ⟨s, rfl⟩ := Quotient.mk_surjective a
   refine ⟨(SphereSimplex.equiv X (n + 1)).symm s, ?_⟩
-  simp only [sphereClass, Equiv.apply_symm_apply, KanHomotopyGroup.mk]
+  simp only [sphereClass, Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk]
 
 /-- 元の射を保持し、その基点の像を標的の基点に指定する。 -/
 def pointedImageMap {A : PointedSimplicialSet.{u}} {Y : SSet.{u}} (f : A.right ⟶ Y) :
@@ -52,10 +52,10 @@ def pointedImageMap {A : PointedSimplicialSet.{u}} {Y : SSet.{u}} (f : A.right �
 lemma sphereClass_post {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (n : ℕ)
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ X) (p : X ⟶ Y) :
-    KanHomotopyGroup.map p.right (OmegaSpectrum.pointedMap_basepoint p) (sphereClass n f) =
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (sphereClass n f) =
       sphereClass n (f ≫ p) := by
   dsimp only [sphereClass]
-  rw [KanHomotopyGroup.map_mk, SphereSimplex.equiv_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, SphereSimplex.equiv_comp]
 
 /-- 球面上の実際のホモトピーは、両端の群の類を同じ path 対象の類から得る。 -/
 lemma sphereClass_path_witness {X : SSet.{u}} [KanComplex X]
@@ -68,9 +68,9 @@ lemma sphereClass_path_witness {X : SSet.{u}} [KanComplex X]
         (PointedSimplicialSet.ofVertex X x).basepoint,
       ∃ h₁ : (KanPath.evaluation X 1).app _ z =
         (PointedSimplicialSet.ofVertex X y).basepoint,
-      ∃ a : KanHomotopyGroup (KanPath.object X) n z,
-        KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ a = sphereClass n f ∧
-        KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ a = sphereClass n g := by
+      ∃ a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (KanPath.object X) n z,
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 0) h₀ a = sphereClass n f ∧
+        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (KanPath.evaluation X 1) h₁ a = sphereClass n g := by
   let S := PointedSimplicialSet.sphere.{u} (n + 1)
   let P : PointedSimplicialSet.{u} := Under.mk (S.hom ≫ KanPath.transpose H)
   have : KanComplex P.right := inferInstanceAs (KanComplex (KanPath.object X))
@@ -87,10 +87,10 @@ lemma sphereClass_path_witness {X : SSet.{u}} [KanComplex X]
       exact Under.w g)
   have h₀ : (KanPath.evaluation X 0).app _ P.basepoint =
       (PointedSimplicialSet.ofVertex X x).basepoint :=
-    OmegaSpectrum.pointedMap_basepoint e₀
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₀
   have h₁ : (KanPath.evaluation X 1).app _ P.basepoint =
       (PointedSimplicialSet.ofVertex X y).basepoint :=
-    OmegaSpectrum.pointedMap_basepoint e₁
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e₁
   have ht₀ : t ≫ e₀ = f := Under.UnderMorphism.ext (KanPath.transpose_zero H)
   have ht₁ : t ≫ e₁ = g := Under.UnderMorphism.ext (KanPath.transpose_one H)
   refine ⟨P.basepoint, h₀, h₁, sphereClass n t, ?_, ?_⟩

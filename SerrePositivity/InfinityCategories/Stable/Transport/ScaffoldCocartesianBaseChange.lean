@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -31,17 +33,20 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
-private lemma recoverPoint {C : Type*} [Category C] {a b z : C}
+lemma recoverPoint {C : Type*} [Category C] {a b z : C}
     (e : a ≅ b) (x : z ⟶ a) (y : z ⟶ b) (h : x ≫ e.hom = y) :
     y ≫ e.inv = x := by
   rw [← h]
   simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
-private lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
+lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
     (x : a ⟶ b) (y : b ⟶ c) (f : c ⟶ d) (z : a ⟶ d) (g : d ⟶ e)
     (h : x ≫ y ≫ f = z) : x ≫ y ≫ f ≫ g = z ≫ g := by
   simpa only [Category.assoc] using congrArg (fun m => m ≫ g) h
@@ -52,4 +57,16 @@ variable {I : Type u} [Category.{u} I] {E B : SSet.{u}} [Quasicategory B]
 local instance instLeftFibrationSndSSet_4 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.appendPoint := _root_.SerrePositivity.InfinityCategories.Stable.Transport.appendPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.instLeftFibrationSndSSet_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.recoverPoint := _root_.SerrePositivity.InfinityCategories.Stable.Transport.recoverPoint

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 
 /-! # 元の部分集合 bead の未処理の右側頂点
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 元の右側頂点集合より厳密に左の点は、同じ集合に属さない。 -/
 lemma simplexHABeadTail_not_mem {n : ℕ} (T : Finset (Fin (n + 1)))
@@ -31,15 +36,15 @@ lemma simplexHABeadTail_max {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempt
 def simplexHABeadWordAt {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (a b : Fin (n + 1)) (ha : a = I.min' (Finset.card_pos.mp (by omega)))
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) :
-    SimplexHABeadWord n a b (I.card - 2) := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b (I.card - 2) := by
   subst a b
   exact .bead I hI
 
 /-- 元の非空な右側頂点集合に、元の左端点を加えた同じ部分集合 bead の語。 -/
 def simplexHABeadTail {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (a : Fin (n + 1)) (ha : ∀ t ∈ T, a < t) :
-    SimplexHABeadWord n a (T.max' hT) (T.card - 1) := by
-  have hn := simplexHABeadTail_not_mem T a ha
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a (T.max' hT) (T.card - 1) := by
+  have hn := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha
   have hc : (insert a T).card = T.card + 1 := Finset.card_insert_of_notMem hn
   have hp : 0 < T.card := Finset.card_pos.mpr hT
   have hI : 2 ≤ (insert a T).card := by omega
@@ -54,7 +59,76 @@ def simplexHABeadTail {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
       · exact (ha b hb).le
   have hd : (insert a T).card - 2 = T.card - 1 := by omega
   rw [← hd]
-  exact simplexHABeadWordAt (insert a T) hI a (T.max' hT) hmin
-    (simplexHABeadTail_max T hT a ha).symm
+  exact _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt (insert a T) hI a (T.max' hT) hmin
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT a ha).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail_max := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail_not_mem := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_10 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_11 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_12 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_13 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_13
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_5 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_7 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_8 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadTail._proof_9 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_5 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_7 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordAt._proof_8 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt._proof_8

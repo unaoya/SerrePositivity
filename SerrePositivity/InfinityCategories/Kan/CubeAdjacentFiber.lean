@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeFiberMax
 
 /-! # 隣接二座標を同一視する fiber max と元の connection
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeFiberMax
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 隣接する二点を飛ばす埋め込みは、その二点の間の出力以外で一致する。 -/
 lemma cubeAdjacent_succAbove_eq {n : ℕ} (p j : Fin (n + 1)) (hj : j ≠ p) :
@@ -19,10 +24,10 @@ lemma cubeAdjacent_succAbove_eq {n : ℕ} (p j : Fin (n + 1)) (hj : j ≠ p) :
 
 /-- 同一視した座標の fiber は元の隣接二点、他の fiber は元の一座標。 -/
 lemma cubeAdjacent_fiber_true_iff {n : ℕ} (p : Fin (n + 1))
-    (x : CubeVertex (n + 2)) (j : Fin (n + 1)) :
-    cubeFiberMax p.predAbove x j = true ↔
+    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (n + 2)) (j : Fin (n + 1)) :
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax p.predAbove x j = true ↔
       (j = p ∧ x p.castSucc = true) ∨ x (p.castSucc.succAbove j) = true := by
-  rw [cubeFiberMax_true_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
   constructor
   · rintro ⟨i, hi, hx⟩
     by_cases hp : i = p.castSucc
@@ -37,17 +42,29 @@ lemma cubeAdjacent_fiber_true_iff {n : ℕ} (p : Fin (n + 1))
 
 /-- 隣接座標の同一視の fiber max は、元の具体的な max connection。 -/
 lemma cubeFiberMax_predAbove (n : ℕ) (p : Fin (n + 1)) :
-    cubeFiberMax p.predAbove = cubeVertexConnection n p := by
+    _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax p.predAbove = _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p := by
   funext x j
   apply Bool.eq_iff_iff.mpr
-  rw [cubeAdjacent_fiber_true_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeAdjacent_fiber_true_iff]
   by_cases hj : j = p
   · subst j
-    simp only [Fin.succAbove_castSucc_self, true_and, cubeVertexConnection,
+    simp only [Fin.succAbove_castSucc_self, true_and, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection,
       Function.update_self]
     cases hx : x p.castSucc <;> cases hy : x p.succ <;> simp_all
   · simp only [hj, false_and, false_or]
-    rw [cubeAdjacent_succAbove_eq p j hj]
-    simp [cubeVertexConnection, hj, cubeVertexDegeneracy]
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.cubeAdjacent_succAbove_eq p j hj]
+    simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection, hj, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeAdjacent_fiber_true_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeAdjacent_fiber_true_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeAdjacent_succAbove_eq := _root_.SerrePositivity.InfinityCategories.Kan.cubeAdjacent_succAbove_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_predAbove := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_predAbove

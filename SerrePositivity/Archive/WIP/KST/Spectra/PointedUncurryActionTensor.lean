@@ -19,13 +19,13 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 元の区間と三角形に使う uncurryAction は、同じテンソル curry 同型の逆射。 -/
 lemma uncurryAction_eq_tensor_inv (A V : PointedSimplicialSet.{u}) :
-    uncurryAction A V = (InternalHomTensor.iso PointedSimplicialSet.circle.{u} A V).inv := by
-  rw [InternalHomTensor.iso_eq_ihomCurryIso]
+    uncurryAction A V = (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} A V).inv := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso]
   change curry ((α_ PointedSimplicialSet.circle.{u} A
       ((ihom A).obj ((ihom PointedSimplicialSet.circle.{u}).obj V))).hom ≫
         PointedSimplicialSet.circle.{u} ◁ (ihom.ev A).app
           ((ihom PointedSimplicialSet.circle.{u}).obj V)) ≫
-      (ihom (suspension A)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app V) =
+      (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A)).map ((ihom.ev PointedSimplicialSet.circle.{u}).app V) =
     ihomUncurry PointedSimplicialSet.circle.{u} A V
   rw [← curry_natural_right]
   rfl
@@ -35,14 +35,14 @@ lemma uncurryAction_post (A : PointedSimplicialSet.{u})
     {V W : PointedSimplicialSet.{u}} (b : V ⟶ W) :
     PointedObject.basedHomMap A (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} b) ≫
         uncurryAction A W =
-      uncurryAction A V ≫ PointedObject.basedHomMap (suspension A) b := by
+      uncurryAction A V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) b := by
   rw [uncurryAction_eq_tensor_inv, uncurryAction_eq_tensor_inv]
   change (ihom A).map ((ihom PointedSimplicialSet.circle.{u}).map b) ≫
-      (InternalHomTensor.iso PointedSimplicialSet.circle.{u} A W).inv =
-    (InternalHomTensor.iso PointedSimplicialSet.circle.{u} A V).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} A W).inv =
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} A V).inv ≫
       (ihom (PointedSimplicialSet.circle.{u} ⊗ A)).map b
-  have h := InternalHomTensor.natural_post PointedSimplicialSet.circle.{u} A b
-  apply (cancel_mono (InternalHomTensor.iso PointedSimplicialSet.circle.{u} A W).hom).mp
+  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post PointedSimplicialSet.circle.{u} A b
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso PointedSimplicialSet.circle.{u} A W).hom).mp
   simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
   rw [h, Iso.inv_hom_id_assoc]
 

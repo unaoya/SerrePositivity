@@ -23,35 +23,35 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
 local instance pointedStageFibration (n : ℕ) : Fibration (p.app n).right := hp n
 
 def projectionPointedEquiv (k n : ℕ) :
-    KanHomotopyGroup ((fiber p hp).level k).space.right n ((fiber p hp).level k).space.basepoint ≃*
-      KanHomotopyGroup (pointedFiber (p.app k)).right n (pointedFiber (p.app k)).basepoint :=
-  KanHomotopyGroup.equivOfPiIsomorphism n (fiberLevelProjection p hp k).right
-    (fiberLevelProjection_piIsomorphism p hp k) (pointedMap_basepoint _)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((fiber p hp).level k).space.right n ((fiber p hp).level k).space.basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p.app k)).right n (pointedFiber (p.app k)).basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (fiberLevelProjection p hp k).right
+    (fiberLevelProjection_piIsomorphism p hp k) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
 
 lemma projectionPointedEquiv_apply (k n : ℕ)
-    (x : KanHomotopyGroup ((fiber p hp).level k).space.right n
+    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((fiber p hp).level k).space.right n
       ((fiber p hp).level k).space.basepoint) :
     projectionPointedEquiv p k n x = pointedGroupMap n (fiberLevelProjection p hp k) x :=
-  KanHomotopyGroup.equivOfPiIsomorphism_apply _ _ _ _ x
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply _ _ _ _ x
 
 lemma projectionPointedEquiv_transport (k n : ℕ)
-    (x : KanHomotopyGroup ((fiber p hp).level k).space.right n
+    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((fiber p hp).level k).space.right n
       ((fiber p hp).level k).space.basepoint) :
     pointedFiberGroupEquiv (p.app k) n (projectionPointedEquiv p k n x) =
       fiberProjectionGroupEquiv p k n x := by
   rw [projectionPointedEquiv_apply, fiberProjectionGroupEquiv_apply]
-  change KanHomotopyGroup.map (𝟙 _) _
-    (KanHomotopyGroup.map (fiberLevelProjection p hp k).right _ x) = _
-  have hc := DFunLike.congr_fun (KanHomotopyGroup.map_comp
-    (fiberLevelProjection p hp k).right (pointedMap_basepoint _)
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (fiberLevelProjection p hp k).right _ x) = _
+  have hc := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp
+    (fiberLevelProjection p hp k).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
     (𝟙 (pointedFiber (p.app k)).right) (PointedSimplicialSet.basepoint_ofVertex _ _)
     (fiberLevelProjection_basepoint p k)) x
   exact hc.symm.trans (DFunLike.congr_fun
-    (KanHomotopyGroup.map_congr n (Category.comp_id (fiberLevelProjection p hp k).right) _ _) x)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_congr n (Category.comp_id (fiberLevelProjection p hp k).right) _ _) x)
 
 def pointedStageEquiv (j : ℤ) (k n : ℕ) (hk : -j ≤ (k : ℤ)) (hd : degree j k = n + 1) :
     homotopyGroup (fiber p hp) j ≃*
-      KanHomotopyGroup (pointedFiber (p.app k)).right n (pointedFiber (p.app k)).basepoint :=
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p.app k)).right n (pointedFiber (p.app k)).basepoint :=
   (positiveStageEquiv (fiber p hp) j k n hk hd).trans (projectionPointedEquiv p k n)
 
 lemma pointedStageEquiv_transport (j : ℤ) (k n : ℕ) (hk : -j ≤ (k : ℤ))

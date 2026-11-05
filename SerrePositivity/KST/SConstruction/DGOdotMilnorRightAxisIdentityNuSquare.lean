@@ -37,18 +37,18 @@ lemma dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex :
 方針：Sp 正本の全対象商 Perf 零性を使用する。
 規約：対象別収縮の存在だけでは代用しない。使われ方：実面の零角条件。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_zero :
-    IsZeroCategory (stableObject
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject
       (squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputNu R) 0 1)) := by
-  change IsZeroCategory (stableObject ((dgKInputNu R).app _
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _
     (squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d) 0 1)))
-  rw [dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex, dgKInputNu_vertex, stableObject_vertex]
+  rw [dgOdotMilnorRightAxisIdentityNullSquare_zero_vertex, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R _
 
 /-- 概要：同じ全単体の Cat^perf 像も同じ零角を持つ。
 方針：固定 ν との厳密一致を使用する。
 規約：完備化後射影の認証とは別。使われ方：完備化付き実面の零角。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_perfect_zero :
-    IsZeroCategory (perfectStableObject
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject
       (squareVertex (dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1)) := by
   have h := dgOdotMilnorRightAxisIdentityNullSquare_zero R d
   rw [← dgKInputPerfectNu_inclusion R] at h
@@ -59,12 +59,12 @@ lemma dgOdotMilnorRightAxisIdentityNullSquare_perfect_zero :
 規約：元の strict 対角を保持する。使われ方：恒等 lax 対角との全比較。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_nu_diagonal :
     squareBottomEdge ≫ dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow
         (dgKInputNuMap R (dgOdotMilnorRightAxisIdentityDiagonalInputMap R d))).edge := by
   rw [← Category.assoc, (dgOdotMilnorRightAxisIdentityNullSquare_edges R d).1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
     (coherentNerveEdge (dgOdotMilnorRightAxisIdentityDiagonalInputMap R d)).edge) = _
-  exact congrArg (fun x : StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorRightAxisIdentityDiagonalInputMap R d))
 
 /-- 概要：同じ実面の右辺の固定 ν 像は元の実 cone 差の完全射。
@@ -72,12 +72,12 @@ lemma dgOdotMilnorRightAxisIdentityNullSquare_nu_diagonal :
 規約：普遍差との全比較は別途必要。使われ方：同じ差の指定境界。 -/
 lemma dgOdotMilnorRightAxisIdentityNullSquare_nu_difference :
     squareRightEdge ≫ dgOdotMilnorRightAxisIdentityNullSquare R d ≫ dgKInputNu R =
-      SSet.yonedaEquiv.symm (stableArrow
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow
         (dgKInputNuMap R (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d))).edge := by
   rw [← Category.assoc, (dgOdotMilnorRightAxisIdentityNullSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputNu R).app _
     (coherentNerveEdge (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d)).edge) = _
-  exact congrArg (fun x : StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
+  exact congrArg (fun x : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputNu_edge R (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d))
 
 end SerrePositivity.KST.SConstruction

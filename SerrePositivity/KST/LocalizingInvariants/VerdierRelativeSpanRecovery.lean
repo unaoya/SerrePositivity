@@ -24,27 +24,27 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定実境界の輸送円柱を、完成族の比較円柱への厳密な制限として回収する。 -/
 lemma verdierDenominatorSpan_relative_finite_recovery
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     {S K : SSet.{u}} [S.Finite] [K.Finite] (j : S ⟶ K)
-    (a : S ⟶ verdierDenominatorSpanFamily i x y)
-    (f : K ⟶ F2.continuousKanReplacement.obj (verdierDenominatorSpanFamily i x y))
+    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y)
+    (f : K ⟶ F2.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y))
     (ha : a ≫ F2.continuousKanReplacementUnit.app
-      (verdierDenominatorSpanFamily i x y) = j ≫ f) :
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) = j ≫ f) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         ∃ L : SSet.Homotopy
-          (j ≫ g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d) a,
+          (j ≫ g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d) a,
         ∃ G : SSet.Homotopy
-          (g ≫ vertexFiberι (verdierDenominatorSpanProjection i x y) d ≫
-            F2.continuousKanReplacementUnit.app (verdierDenominatorSpanFamily i x y)) f,
+          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+            F2.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y)) f,
           (j ▷ (Δ[1] : SSet.{u})) ≫ G.h = L.h ≫
-            F2.continuousKanReplacementUnit.app (verdierDenominatorSpanFamily i x y) := by
-  let E := verdierDenominatorSpanFamily i x y
-  let p := verdierDenominatorSpanProjection i x y
+            F2.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) := by
+  let E := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y
+  let p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y
   obtain ⟨J, a', r, ha', hjr, hrf⟩ :=
     F2.continuousKanReplacement_anchored_finite_factorization j a f ha
-  obtain ⟨d, g₀, ⟨H⟩⟩ := verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
+  obtain ⟨d, g₀, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
   let V := vertexFiber p d
   have : KanComplex V := vertexFiber_kanComplex p d
   have hη := F2.continuousKanReplacementUnit_anodyne (J.val : SSet.{u})

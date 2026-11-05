@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.Comparison
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 同じ商核四角形の右辺は、元の商の core S 実現射の Ex∞ 像そのもの。 -/
 theorem quotientSKernelInfinitySquare_right :

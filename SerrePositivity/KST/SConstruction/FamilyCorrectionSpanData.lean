@@ -56,7 +56,7 @@ lemma FamilyCorrectionSpanData.realization_composite {U E : SSet.{u}} {s a b : U
 /-- 元の二円柱から、指定した全二辺を保つ実比較円柱と三角形を構成する。 -/
 def familySpanComparisonData {U E : SSet.{u}} [KanComplex E] {s a b : U ⟶ E}
     (H : SSet.Homotopy s a) (K : SSet.Homotopy s b) : FamilyCorrectionSpanData H K := by
-  let d := kanMappingSpanComposition
+  let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingSpanComposition
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K))
   let V := simplicialHomotopyOfFunctorEdge d.edge.toTruncated

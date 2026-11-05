@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction
 private lemma tail_start_heq {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     {a a' : Fin (n + 1)} (ha : a = a') (hb : ∀ r ∈ T, a < r)
     (hb' : ∀ r ∈ T, a' < r) :
-    HEq (simplexHABeadTail T hT a hb) (simplexHABeadTail T hT a' hb') := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a hb) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a' hb') := by
   cases ha
   rfl
 
@@ -83,7 +83,7 @@ lemma simplexHABeadWordDecode_insert_zero {n : ℕ} (m : ℕ) (q : Fin (m + 1))
         (simplexHADeleteVertexOrder_bound m q (Fin.castSuccOrderEmb.trans v) {r}
           (simplexHADecodePrefix_cut (m + 1) v)) (simplexHADecodePrefix_cut m u)
       have htail := tail_start_heq T hT hr.symm hb hu
-      have hj := simplexHABeadWordJoin_heq hf.symm hr.symm rfl
+      have hj := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordJoin_heq hf.symm hr.symm rfl
         (serreCubeInsertGeneratorIndex_freeDimension false m q i) rfl _ _ _ _
         (h₁.trans h₂) htail
       have h₃ := simplexHABeadWordDecode_one m i u T hT hu

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientZeroUnit
 
 /-!
@@ -14,77 +16,80 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
 
 /-- 概要：元の商 fiber から、元の固定終点の span の同じ Kan 値へ戻す指定比較。
 方針：既存指定値比較と元の Kan fiber 比較の両端を、元の終点等式で輸送する。
 規約：比較辺を選び直さず、元の同じ Kan 置換を使う。
 使われ方：実全族の各元の固定 fiber の単位回収の正規化。 -/
 def weakSpanKanQuotientZeroValueComparison :
-    vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+    vertexFiber (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x))
       (q.hom.app (Opposite.op ⦋0⦌) y) ⟶
-      F2.continuousKanReplacement.obj (fixedMarkedSpans B.obj (weakEquivalences i) x y) :=
+      F2.continuousKanReplacement.obj (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) :=
   eqToHom (congrArg (vertexFiber
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)))
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex y)).symm) ≫
-    (weakSpanKanQuotientFiberValueEquivalence h x (transportSimplexIndex (n := ⦋0⦌) y)).hom ≫
-    weakSpanKanValueComparison i x (transportSimplexIndex (n := ⦋0⦌) y) ≫
-    strictKanCompletion.map (eqToHom (congrArg
-      (fun z => fixedMarkedSpans B.obj (weakEquivalences i) x z)
-      (transportSimplexFirstVertexMap_zeroIndex y)))
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)))
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y)).symm) ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFiberValueEquivalence h x (transportSimplexIndex (n := ⦋0⦌) y)).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison i x (transportSimplexIndex (n := ⦋0⦌) y) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map (eqToHom (congrArg
+      (fun z => fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x z)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y)))
 
 /-- 概要：元の終点へ戻した同じ指定値比較は、実 Kan 複体間の同値。
 方針：元の fiber 座標同型・既存値同値・元の Kan 値比較の同値性を合成する。
 規約：同じ実比較射自体の同値性を示す。
 使われ方：元の実 fiber 内の比較を値側から反映する。 -/
 theorem weakSpanKanQuotientZeroValueComparison_isQCatEquivalence :
-    IsQCatEquivalence (weakSpanKanQuotientZeroValueComparison h x y) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison h x y) := by
   let c := transportSimplexIndex (n := ⦋0⦌) y
   let t := eqToIso (congrArg (vertexFiber
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)))
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex y)).symm)
-  let s := eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (weakEquivalences i) x z)
-    (transportSimplexFirstVertexMap_zeroIndex y))
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)))
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y)).symm)
+  let s := eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x z)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y))
   exact (((qCatEquivalenceOfIso t).isQCatEquivalence.comp
-    (weakSpanKanQuotientFiberValueEquivalence h x c).isQCatEquivalence).comp
-    (weakSpanKanValueComparison_isQCatEquivalence i x c)).comp
-    (strictKanCompletion_map_isQCatEquivalence s.hom (by infer_instance))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFiberValueEquivalence h x c).isQCatEquivalence).comp
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison_isQCatEquivalence i x c)).comp
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence s.hom (by infer_instance))
 
 /-- 概要：元の終点へ戻した同じ実零単体単位は、元の全 Kan 置換単位を回収する。
 方針：元の全 fiber 回収を両端輸送し、元の置換単位の自然性で正規化する。
 規約：同じ元の固定 span 全体の関手同型。追加の比較入力は不要。
 使われ方：元の実全族の固定 fiber 比較への後合成。 -/
 def weakSpanKanQuotientZeroUnit_recovery :
-    FunctorIso (weakSpanKanQuotientZeroUnit h x y ≫ weakSpanKanQuotientZeroValueComparison h x y)
-      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y)) := by
+    FunctorIso (weakSpanKanQuotientZeroUnit h x y ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison h x y)
+      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) := by
   let c := transportSimplexIndex (n := ⦋0⦌) y
-  let s := eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (weakEquivalences i) x z)
-    (transportSimplexFirstVertexMap_zeroIndex y))
+  let s := eqToIso (congrArg (fun z => fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x z)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y))
   let t := eqToIso (congrArg (vertexFiber
-    (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)))
-    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex y)))
-  have e := (FunctorIso.precomp (weakSpanKanQuotientSimplexUnitFiber_recovery h x c) s.inv).postcomp
-    (strictKanCompletion.map s.hom)
+    (smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientDiagram h x)))
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex y)))
+  have e := (FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnitFiber_recovery h x c) s.inv).postcomp
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map s.hom)
   have hn := F2.continuousKanReplacementUnit.naturality s.hom
   have hr : s.inv ≫ F2.continuousKanReplacementUnit.app
-        (fixedMarkedSpans B.obj (weakEquivalences i) x
+        (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c))) ≫
-      strictKanCompletion.map s.hom =
-      F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y) := by
+      _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map s.hom =
+      F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y) := by
     have hh := congrArg (fun f => s.inv ≫ f) hn.symm
     simp only [Functor.id_map, ← Category.assoc, s.inv_hom_id, Category.id_comp] at hh
-    simpa only [strictKanCompletion, Category.assoc] using! hh
+    simpa only [_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion, Category.assoc] using! hh
   have e' := e ≪≫ eqToIso (congrArg HomotopyCategory.mk (congrArg functorVertex hr))
   change FunctorIso
-    ((s.inv ≫ weakSpanKanQuotientSimplexUnitFiber h x c ≫ t.hom) ≫
-      (t.inv ≫ (weakSpanKanQuotientFiberValueEquivalence h x c).hom ≫
-        weakSpanKanValueComparison i x c ≫ strictKanCompletion.map s.hom)) _
+    ((s.inv ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientSimplexUnitFiber h x c ≫ t.hom) ≫
+      (t.inv ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFiberValueEquivalence h x c).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanValueComparison i x c ≫ _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map s.hom)) _
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
   simpa only [Category.assoc] using! e'
 
@@ -94,11 +99,80 @@ def weakSpanKanQuotientZeroUnit_recovery :
 使われ方：K-B-S の全 fiber 単位条件。指定恒等点との比較は別に確認する。 -/
 def weakSpanKanQuotientFamilyFixedFiber_recovery :
     FunctorIso
-      (weakSpanKanQuotientFamilyFixedFiber h x y ≫ weakSpanKanQuotientZeroValueComparison h x y)
-      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y)) := by
-  have e := (weakSpanKanQuotientFamilyFixedFiberIso h x y).postcomp
-    (weakSpanKanQuotientZeroValueComparison h x y)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber h x y ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison h x y)
+      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y)) := by
+  have e := (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiberIso h x y).postcomp
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison h x y)
   rw [← weakSpanKanQuotientZeroUnit_eq_fixedFiber h x y] at e
-  exact e ≪≫ weakSpanKanQuotientZeroUnit_recovery h x y
+  exact e ≪≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery h x y
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber_recovery (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientFamilyFixedFiber_recovery := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber_recovery
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientFamilyFixedFiber_recovery._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientFamilyFixedFiber_recovery._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_10 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_11 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_12 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._proof_9 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroUnit_recovery._simp_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroUnit_recovery._simp_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanQuotientZeroValueComparison._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanQuotientZeroValueComparison._proof_4

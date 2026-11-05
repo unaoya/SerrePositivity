@@ -8560,39 +8560,39 @@ run_cmd do
     unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
   logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
-#check @SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
-#print axioms SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
-#check @SerrePositivity.KST.SConstruction.pushoutDiagrams
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagrams
-#check @SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
-#print axioms SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
-#check @SerrePositivity.KST.SConstruction.pushoutProjection
-#print axioms SerrePositivity.KST.SConstruction.pushoutProjection
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
-#check @SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
-#print axioms SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
-#check @SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
-#print axioms SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
-#check @SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
-#print axioms SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
-#check @SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
-#print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
-#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
-#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
-#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
-#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
-#check @SerrePositivity.KST.SConstruction.stable_hasColimit_span
-#print axioms SerrePositivity.KST.SConstruction.stable_hasColimit_span
+#check @_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso
+#check @_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex
+#check @_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton
+#check @_root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams
+#check @_root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_inv_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_inv_projection
+#check @_root_.SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily
+#check @_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection_hasLiftingProperty_boundary
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection_hasLiftingProperty_boundary
+#check @_root_.SerrePositivity.InfinityCategories.Stable.exists_relative_colimitCoconeFamily
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.exists_relative_colimitCoconeFamily
+#check @_root_.SerrePositivity.InfinityCategories.Stable.colimitCoconeFamily_relative_lifting
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.colimitCoconeFamily_relative_lifting
+#check @_root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutPresentation_of_span
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutPresentation_of_span
+#check @_root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span
+#check @_root_.SerrePositivity.InfinityCategories.Stable.stable_hasColimit_span
+#print axioms _root_.SerrePositivity.InfinityCategories.Stable.stable_hasColimit_span
 
 #print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_adjunction

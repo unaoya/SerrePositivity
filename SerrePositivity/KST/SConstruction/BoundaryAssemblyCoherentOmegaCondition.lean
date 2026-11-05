@@ -41,7 +41,7 @@ lemma boundaryAssemblyCoherentDiagramMapAt_original_homotopy {I : Type u} [Small
 /-- 全体変換から回収した元の境界 Kan 模型間の成分は全基点 π_* 同型。 -/
 lemma boundaryAssemblyCoherentDiagramMapAt_piIsomorphism {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
-    KanPiIsomorphism (boundaryAssemblyCoherentDiagramMapAt r F i).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryAssemblyCoherentDiagramMapAt r F i).right := by
   obtain ⟨H, _⟩ := boundaryAssemblyCoherentDiagramMapAt_original_homotopy r F i
   exact (kanPiIsomorphism_iff_of_homotopy H).mp (boundaryKanAssemblyAdjoint_piIsomorphism r (F.obj i))
 

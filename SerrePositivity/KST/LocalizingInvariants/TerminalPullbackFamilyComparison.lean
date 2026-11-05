@@ -34,11 +34,11 @@ structure TerminalPullbackFamilyComparison {P X : SSet.{u}} (n : ℕ)
           (Truncated.Edge.id (X := (truncation 2).obj ((ihom P).obj
             ((ihom (Δ[n] : SSet.{u})).obj ((ihom (horn 2 2 : SSet.{u})).obj X))))
             (functorVertex (F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X)))).edge
-  terminal : ((ihom P).map ((pre (simplexLastPoint n)).app (pullbackDiagrams X))).app
+  terminal : ((ihom P).map ((pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))).app
         (Opposite.op ⦋1⦌) edge.edge =
           (Truncated.Edge.id (X := (truncation 2).obj ((ihom P).obj
             ((ihom (Δ[0] : SSet.{u})).obj (pullbackDiagrams X))))
-            (functorVertex (F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X)))).edge
+            (functorVertex (F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)))).edge
 
 /-- 元の実辺の類を順方向の射とする、同じ二つの全族の関手同型。 -/
 def TerminalPullbackFamilyComparison.iso {P X : SSet.{u}} {n : ℕ}
@@ -85,9 +85,9 @@ lemma TerminalPullbackFamilyComparison.homotopy_projection {P X : SSet.{u}} {n :
 lemma TerminalPullbackFamilyComparison.homotopy_terminal {P X : SSet.{u}} {n : ℕ}
     {F G : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X)}
     (c : TerminalPullbackFamilyComparison n F G) :
-    c.homotopy.h ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
+    c.homotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
       fst P (Δ[1] : SSet.{u}) ≫ F ≫
-        (pre (simplexLastPoint n)).app (pullbackDiagrams X) :=
+        (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) :=
   familyComparison_post_eq_constant _ c.edge c.terminal
 
 /-- 同じ二脚を持つ二つの実全族は、その二脚を恒等に保つ可逆な同じ実比較辺で結べる。 -/
@@ -96,8 +96,8 @@ lemma exists_terminalPullbackFamilyComparison {P X : SSet.{u}}
     (F G : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X))
     (hp : F ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X) =
       G ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection X))
-    (ht : F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
-      G ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X)) :
+    (ht : F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
+      G ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) :
     Nonempty (TerminalPullbackFamilyComparison n F G) := by
   let sq := terminalPullbackFamilyCorner X n
   let p := (ihom P).map sq.π
@@ -137,10 +137,10 @@ lemma exists_terminalPullbackFamilyComparison {P X : SSet.{u}}
     rw [Category.assoc, sq.π_snd]
     rfl
   have htr : vertexFiberι p z ≫
-      (ihom P).map ((pre (simplexLastPoint n)).app (pullbackDiagrams X)) =
-      SSet.const (functorVertex (F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X))) := by
+      (ihom P).map ((pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) =
+      SSet.const (functorVertex (F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))) := by
     change vertexFiberι p z ≫ (internalHom.obj (Opposite.op P)).map
-      ((internalHom.map (simplexLastPoint n).op).app (pullbackDiagrams X)) = _
+      ((internalHom.map (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n).op).app (pullbackDiagrams X)) = _
     rw [← sq.π_fst, Functor.map_comp, ← Category.assoc, hι, SSet.const_comp]
     congr 1
     change functorVertex ((F ≫ sq.π) ≫ sq.fst) = _
@@ -153,7 +153,7 @@ lemma exists_terminalPullbackFamilyComparison {P X : SSet.{u}}
     rw [hpr]
     rfl
   · change (vertexFiberι p z ≫
-      (ihom P).map ((pre (simplexLastPoint n)).app (pullbackDiagrams X))).app
+      (ihom P).map ((pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X))).app
         (Opposite.op ⦋1⦌) k.edge = _
     rw [htr]
     rfl

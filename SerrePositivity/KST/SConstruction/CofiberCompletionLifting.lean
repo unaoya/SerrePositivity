@@ -79,16 +79,16 @@ instance cofiberProjection_trivialKanFibration (C : SSet.{u}) [Quasicategory C] 
         rw [← Category.assoc, sqL.fac_left, Category.assoc, cofiberZeroArrow_ι]
         simp only [Category.assoc, ← NatTrans.comp_app, ← pre_map, spanSquareBoundary_leftEdge]
         rfl
-    have sqP : CommSq (a ≫ cofiberForgetZero C) (boundary (n + 1)).ι (pushoutProjection C) d := by
+    have sqP : CommSq (a ≫ cofiberForgetZero C) (boundary (n + 1)).ι (_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C) d := by
       constructor
       change (a ≫ cofiberForgetZero C ≫
-        (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι) ≫ (pre spanSquareBoundary).app C = _
+        (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι) ≫ (pre spanSquareBoundary).app C = _
       rw [Category.assoc, cofiberForgetZero_ι]
       exact hd.symm
-    have : HasLiftingProperty (boundary (n + 1)).ι (pushoutProjection C) :=
-      pushoutProjection_hasLiftingProperty_boundary C n
+    have : HasLiftingProperty (boundary (n + 1)).ι (_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection_hasLiftingProperty_boundary C n
     let U := sqP.lift
-    let F := U ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι
+    let F := U ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι
     have hc : (boundary (n + 1)).ι ≫ F = a ≫ ι := by
       rw [← Category.assoc, sqP.fac_left, Category.assoc, cofiberForgetZero_ι]
     have hv (v : (Δ[n + 1] : SSet.{u}) _⦋0⦌) :
@@ -108,7 +108,7 @@ instance cofiberProjection_trivialKanFibration (C : SSet.{u}) [Quasicategory C] 
       rw [Category.assoc, hg, hc]
     · change g ≫ ι ≫ (pre squareBottomEdge).app C = b
       rw [← Category.assoc, hg]
-      change (U ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι) ≫
+      change (U ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι) ≫
         (pre squareBottomEdge).app C = b
       rw [Category.assoc, ← pushoutProjection_bottom, ← Category.assoc, sqP.fac_right,
         stable_spanFamilyOfArrows_left]

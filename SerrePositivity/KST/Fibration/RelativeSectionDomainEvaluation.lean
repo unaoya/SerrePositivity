@@ -33,18 +33,18 @@ theorem relativeSectionRealizationComparisonIso_heq_curry :
 theorem relativeSectionRealizationComparisonIso_doubleMap
     (X : LeftFibrationObject B) (j : J) :
     HEq (VertexIso.map (relativeSectionRealizationComparisonIso η hη)
-      (kanEnrichedDoubleEvaluation X j))
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j))
       (VertexIso.map (relativeSectionJointComparisonIso η hη)
         (evaluateFunctorAt (ULift.up (nerveVertex j), coherentNerveVertex X))) := by
   have hm := F2.vertexIso_map_heq_of_heq
     (relativeSectionRealizationComparisonIso η hη)
     (relativeSectionJointComparisonIso η hη).curry
     (congrArg functorVertex
-      (kanEnrichedJointEvaluation_curry (relativeSectionEnrichedDiagram D)).symm)
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry (relativeSectionEnrichedDiagram D)).symm)
     (congrArg functorVertex
-      (kanEnrichedJointEvaluation_curry (relativeSectionEnrichedDiagram A)).symm)
+      (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry (relativeSectionEnrichedDiagram A)).symm)
     (relativeSectionRealizationComparisonIso_heq_curry η hη)
-    (kanEnrichedDoubleEvaluation X j)
+    (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation X j)
   exact hm.trans (functorIso_curry_doubleMap (relativeSectionJointComparisonIso η hη)
     (ULift.up (nerveVertex j)) (coherentNerveVertex X))
 
@@ -52,7 +52,7 @@ theorem relativeSectionRealizationComparisonIso_doubleMap
 theorem relativeSectionDiagramComparisonIso_doubleMap
     (X : LeftFibrationObject B) (j : J) :
     HEq (VertexIso.map (relativeSectionDiagramInfinityComparisonIso η hη)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex j)) (coherentNerveVertex X)))
       (VertexIso.map (relativeSectionJointComparisonIso η hη)
         (evaluateFunctorAt (ULift.up (nerveVertex j), coherentNerveVertex X))) := by
@@ -64,7 +64,7 @@ theorem relativeSectionDiagramComparisonIso_doubleMap
 def relativeSectionDomainValueIso (X : LeftFibrationObject B) (j : J) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (relativeSectionDiagramInfinityComparisonIso η hη)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up (nerveVertex j)) (coherentNerveVertex X)))
     (congrArg HomotopyCategory.mk (relativeSectionDiagramInfinity_double_vertex D X j))
     (congrArg HomotopyCategory.mk (relativeSectionDiagramInfinity_double_vertex A X j))
@@ -77,10 +77,10 @@ theorem relativeSectionDomainValueIso_eq (X : LeftFibrationObject B) (j : J) :
         (evaluateFunctorAt (ULift.up (nerveVertex j), coherentNerveVertex X))) :=
     (F2.iso_endpoints_heq _
       (congrArg HomotopyCategory.mk
-        (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j))
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram D) X j))
       (congrArg HomotopyCategory.mk
-        (kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j))).trans
-      (functorIsoValue_heq_map _ _)
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_vertex (relativeSectionEnrichedDiagram A) X j))).trans
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map _ _)
   exact F2.isoNormalizeEndpoints_eq_of_heq _ _ _ _
     ((relativeSectionDiagramComparisonIso_doubleMap η hη X j).trans hc.symm)
 

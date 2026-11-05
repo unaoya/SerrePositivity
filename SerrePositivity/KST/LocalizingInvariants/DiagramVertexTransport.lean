@@ -30,16 +30,16 @@ namespace Extension
 variable {d : DiagramVertexPaths F} (w : d.Extension)
 
 def homotopy : SSet.Homotopy F w.target where
-  h := (arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h
-  h₀ := (arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h₀.trans w.source
-  h₁ := (arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h₁
-  rel := (arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).rel
+  h := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h
+  h₀ := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h₀.trans w.source
+  h₁ := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).h₁
+  rel := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (w.family ≫ equivalencePathι X)).rel
 
 lemma homotopy_vertex_edge (v : K _⦋0⦌) :
     (simplicialHomotopyVertexEdge w.homotopy v).edge =
       intervalFunctorVertexEdge ((equivalencePathι X).app (Opposite.op ⦋0⦌) (d.path v)) := by
   change (simplicialHomotopyVertexEdge
-    (arrowFamilyHomotopy (w.family ≫ equivalencePathι X)) v).edge = _
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (w.family ≫ equivalencePathι X)) v).edge = _
   rw [arrowFamilyHomotopy_vertex_edge]
   change intervalFunctorVertexEdge ((equivalencePathι X).app _ (w.family.app _ v)) = _
   rw [w.family_vertex]

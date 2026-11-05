@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.PointedFibrationBoundary
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
 
@@ -30,18 +30,18 @@ variable {E B : PointedSimplicialSet.{u}} {p : E ⟶ B} {n : ℕ}
 方針：基礎の単体の射を保ち、ofVertex の基点の等式で境界条件だけを移す。
 規約：選んだ充填の最後の面そのものを使用する。
 使われ方：Kerodon §3.2.5、Goerss–Jardine I §8。公開連結射の代表。 -/
-def pointedBoundary (L : BoundaryLift p.right E.basepoint s) :
+def pointedBoundary (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
     (pointedFiber p).right.PtSimplex n (pointedFiber p).basepoint where
   map := L.boundary.map
   comm := by
-    have h : (pointedFiber p).basepoint = fiberPoint p.right E.basepoint :=
+    have h : (pointedFiber p).basepoint = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p.right E.basepoint :=
       PointedSimplicialSet.basepoint_ofVertex _ _
     rw [h]
     exact L.boundary.comm
 
 @[reassoc (attr := simp)]
-lemma pointedBoundary_ι (L : BoundaryLift p.right E.basepoint s) :
-    L.pointedBoundary.map ≫ (pointedFiberι p).right =
+lemma pointedBoundary_ι (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
+    (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L).map ≫ (pointedFiberι p).right =
       stdSimplex.δ (Fin.last (n + 1)) ≫ L.map := L.boundary_ι
 
 variable [Fibration p.right]
@@ -52,11 +52,11 @@ variable [Fibration p.right]
 使われ方：Goerss–Jardine I §8。連結準同型の基点正規化。 -/
 lemma pointedFiberGroupEquiv_mk {r : ℕ}
     {t : B.right.PtSimplex (r + 2) (p.right.app _ E.basepoint)}
-    (L : BoundaryLift p.right E.basepoint t) :
-    pointedFiberGroupEquiv p r (KanHomotopyGroup.mk L.pointedBoundary) =
-      KanHomotopyGroup.mk L.boundary := by
-  change KanHomotopyGroup.map (𝟙 _) _ (KanHomotopyGroup.mk L.pointedBoundary) = _
-  rw [KanHomotopyGroup.map_mk]
+    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint t) :
+    pointedFiberGroupEquiv p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.boundary := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   congr 1
 
 end BoundaryLift
@@ -68,15 +68,15 @@ end BoundaryLift
 theorem pointedConnectingHom_boundaryLift {E B : PointedSimplicialSet.{u}}
     (p : E ⟶ B) [Fibration p.right] [KanComplex E.right] [KanComplex B.right]
     (r : ℕ) {s : B.right.PtSimplex (r + 2) (p.right.app _ E.basepoint)}
-    (L : BoundaryLift p.right E.basepoint s) :
+    (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
     pointedConnectingHom p r
-        (KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
-          (OmegaSpectrum.pointedMap_basepoint p) (KanHomotopyGroup.mk s)) =
-      KanHomotopyGroup.mk L.pointedBoundary := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
+          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) =
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L) := by
   apply (pointedFiberGroupEquiv p r).injective
   rw [pointedConnectingHom_compute, MulEquiv.symm_apply_apply,
-    BoundaryLift.pointedFiberGroupEquiv_mk, connectingHom_apply,
-    connecting_eq p.right E.basepoint L]
+    BoundaryLift.pointedFiberGroupEquiv_mk, _root_.SerrePositivity.InfinityCategories.Kan.connectingHom_apply,
+    _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq p.right E.basepoint L]
   rfl
 
 end

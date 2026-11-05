@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {K L M : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
   (e : K.Edge x₀ x₁) (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M)
 
 /-- 元の直積辺の全区間写像は、元の同じ両区間写像の射対。 -/
 lemma cartesianEdgePair_map :
-    SSet.yonedaEquiv.symm (cartesianEdgePair e f).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f).edge =
       lift (SSet.yonedaEquiv.symm e.edge) (SSet.yonedaEquiv.symm f.edge) := by
   apply SSet.yonedaEquiv.injective
   rw [Equiv.apply_symm_apply]
@@ -32,30 +32,30 @@ lemma cartesianEdgePair_map :
 
 /-- 第一経路下辺の全区間は、元の第一辺と元の第二始点の同じ合成。 -/
 lemma cartesianInterchangeFirstLower_map :
-    SSet.yonedaEquiv.symm (cartesianInterchangeFirstLower e f p).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower e f p).edge =
       lift (SSet.yonedaEquiv.symm e.edge) (SSet.const y₀) ≫ p := by
-  rw [cartesianInterchangeFirstLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第一経路上辺の全区間は、元の第一終点と元の第二辺の同じ合成。 -/
 lemma cartesianInterchangeFirstUpper_map :
-    SSet.yonedaEquiv.symm (cartesianInterchangeFirstUpper e f p).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper e f p).edge =
       lift (SSet.const x₁) (SSet.yonedaEquiv.symm f.edge) ≫ p := by
-  rw [cartesianInterchangeFirstUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第二経路下辺の全区間は、元の第一始点と元の第二辺の同じ合成。 -/
 lemma cartesianInterchangeSecondLower_map :
-    SSet.yonedaEquiv.symm (cartesianInterchangeSecondLower e f p).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower e f p).edge =
       lift (SSet.const x₀) (SSet.yonedaEquiv.symm f.edge) ≫ p := by
-  rw [cartesianInterchangeSecondLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 /-- 第二経路上辺の全区間は、元の第一辺と元の第二終点の同じ合成。 -/
 lemma cartesianInterchangeSecondUpper_map :
-    SSet.yonedaEquiv.symm (cartesianInterchangeSecondUpper e f p).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper e f p).edge =
       lift (SSet.yonedaEquiv.symm e.edge) (SSet.const y₁) ≫ p := by
-  rw [cartesianInterchangeSecondUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper, SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp,
     cartesianEdgePair_map, mappingIdentityEdge_map]
 
 end SerrePositivity.KST.SConstruction

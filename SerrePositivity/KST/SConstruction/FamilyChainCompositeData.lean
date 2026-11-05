@@ -31,7 +31,7 @@ def familyChainCompositeData {U E : SSet.{u}} [KanComplex E] {f g : U ⟶ E}
   induction c with
   | nil f => exact ⟨functorHomotopyRefl f, .nil f⟩
   | cons a tail T =>
-      let d := kanMappingComposition
+      let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingComposition
         (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
         (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy T.homotopy))
       let H := simplicialHomotopyOfFunctorEdge d.edge.toTruncated

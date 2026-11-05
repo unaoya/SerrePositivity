@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -63,6 +65,9 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgeb
 open SSet.modelCategoryQuillen
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -76,32 +81,32 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem PointedMapping.anodyne_prePointed_rlp {A B : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] : (MorphismProperty.monomorphisms SSet.{u}).rlp
-      (PointedMapping.prePointed i Y).right := by
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right := by
   intro S T j hj
   let : HasLiftingProperty j ((MonoidalClosed.pre i.right).app Y.right) :=
-    anodyne_pre_rlp_monomorphisms i.right hi Y.right j hj
-  exact PointedMapping.pre_hasLiftingProperty i Y j
+    _root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms i.right hi Y.right j hj
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_hasLiftingProperty i Y j
 
 /-- 概要：自由な区間を源とする点つき path space。
 方針：点つき内部 Hom を使う。
 規約：基点以外の path の両端点は自由。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。mapping path の全空間。 -/
 abbrev freePathSpace (Y : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
-  PointedObject.basedHom freeInterval.{u} Y
+  PointedObject.basedHom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} Y
 
 /-- 概要：Kan 標的の自由な path space は Kan。
 方針：点つき内部 Hom の Kan 性を適用する。
 規約：区間の Kan 性は不要。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。mapping path の各段。 -/
 instance freePathSpace_kanComplex (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    KanComplex (freePathSpace Y).right := PointedMapping.basedHom_kanComplex _ _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 概要：自由な path の端点の評価。
 方針：端点包含による制限を単位からの内部 Hom の同型へ合成する。
 規約：面添字一が始点、零が終点。
 使われ方：Goerss–Jardine I §7。mapping path の二つの射影。 -/
-def freePathEndpoint (Y : PointedSimplicialSet.{u}) (i : Fin 2) : freePathSpace Y ⟶ Y :=
-  PointedMapping.prePointed (freeIntervalEndpoint.{u} i) Y ≫
+def freePathEndpoint (Y : PointedSimplicialSet.{u}) (i : Fin 2) : _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y ⟶ Y :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i) Y ≫
     (MonoidalClosed.unitIsoSelf (X := Y)).hom
 
 /-- 概要：各端点への評価は全ての単射に対して RLP を持つ。
@@ -110,10 +115,10 @@ def freePathEndpoint (Y : PointedSimplicialSet.{u}) (i : Fin 2) : freePathSpace 
 使われ方：Goerss–Jardine I §7、HTT A.3.3。mapping path の射影の π_* 同型。 -/
 theorem freePathEndpoint_rlp (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (i : Fin 2) : (MorphismProperty.monomorphisms SSet.{u}).rlp
-      (freePathEndpoint Y i).right := by
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y i).right := by
   let e := PointedSimplicialSet.forget.mapIso (MonoidalClosed.unitIsoSelf (X := Y))
   exact (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
-    (PointedMapping.anodyne_prePointed_rlp _ (freeIntervalEndpoint_anodyne i) Y)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne i) Y)
     ((MorphismProperty.monomorphisms SSet.{u}).rlp_of_isIso e.hom)
 
 /-- 概要：自由な path の端点への評価は Kan fibration。
@@ -121,16 +126,16 @@ theorem freePathEndpoint_rlp (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
 規約：両端点に共通。
 使われ方：Goerss–Jardine I §7、HTT A.3.3。mapping path の Kan 性。 -/
 instance freePathEndpoint_fibration (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (i : Fin 2) : Fibration (freePathEndpoint Y i).right :=
-  (fibration_iff _).2 (fun _ _ j hj ↦ freePathEndpoint_rlp Y i j (J_le_monomorphisms _ hj))
+    (i : Fin 2) : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y i).right :=
+  (fibration_iff _).2 (fun _ _ j hj ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_rlp Y i j (J_le_monomorphisms _ hj))
 
 /-- 概要：自由な path space への定数 path の射。
 方針：区間の潰す射で内部 Hom の源を制限する。
 規約：点つき射として定義する。
 使われ方：Goerss–Jardine I §7。mapping path の比較射。 -/
-def freeConstantPath (Y : PointedSimplicialSet.{u}) : Y ⟶ freePathSpace Y :=
+def freeConstantPath (Y : PointedSimplicialSet.{u}) : Y ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace Y :=
   (MonoidalClosed.unitIsoSelf (X := Y)).inv ≫
-    PointedMapping.prePointed freeIntervalCollapse.{u} Y
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u} Y
 
 /-- 概要：定数 path のどちらの端点も元の点。
 方針：制限の反変関手性と端点を潰した恒等式を使う。
@@ -138,20 +143,62 @@ def freeConstantPath (Y : PointedSimplicialSet.{u}) : Y ⟶ freePathSpace Y :=
 使われ方：Goerss–Jardine I §7。mapping path の厳密な因子分解。 -/
 @[reassoc (attr := simp)]
 theorem freeConstantPath_endpoint (Y : PointedSimplicialSet.{u}) (i : Fin 2) :
-    freeConstantPath Y ≫ freePathEndpoint Y i = 𝟙 Y := by
-  simp only [freeConstantPath, freePathEndpoint, PointedMapping.prePointed_eq_closedPre,
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath Y ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y i = 𝟙 Y := by
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     Category.assoc]
-  have h : (MonoidalClosed.pre freeIntervalCollapse.{u}).app Y ≫
-      (MonoidalClosed.pre (freeIntervalEndpoint.{u} i)).app Y = 𝟙 _ := by
-    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, freeIntervalEndpoint_collapse,
+  have h : (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u}).app Y ≫
+      (MonoidalClosed.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i)).app Y = 𝟙 _ := by
+    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_collapse,
       MonoidalClosed.pre_id]
     rfl
   change (MonoidalClosed.unitIsoSelf (X := Y)).inv ≫
-    ((MonoidalClosed.pre freeIntervalCollapse.{u}).app Y ≫
-      (MonoidalClosed.pre (freeIntervalEndpoint.{u} i)).app Y) ≫
+    ((MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u}).app Y ≫
+      (MonoidalClosed.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i)).app Y) ≫
         (MonoidalClosed.unitIsoSelf (X := Y)).hom = _
   rw [h, Category.id_comp, Iso.inv_hom_id]
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath_endpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath_endpoint_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_rlp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace_kanComplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.anodyne_prePointed_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace._proof_1

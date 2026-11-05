@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 
 /-!
@@ -16,14 +18,29 @@ universe u
 open CategoryTheory
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 def groupoidCompletionEquivalenceOfIso {X Y : SSet.{u}} (e : X ≅ Y) :
-    QCatEquivalence (groupoidCompletion X) (groupoidCompletion Y) where
-  hom := groupoidCompletionMapOf e.hom
-  inv := groupoidCompletionMapOf e.inv
-  homInvIso := groupoidCompletionMapOf_compIso e.hom e.inv ≪≫
-    (by rw [e.hom_inv_id]; exact groupoidCompletionMapOf_idIso X)
-  invHomIso := groupoidCompletionMapOf_compIso e.inv e.hom ≪≫
-    (by rw [e.inv_hom_id]; exact groupoidCompletionMapOf_idIso Y)
+    QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X) (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion Y) where
+  hom := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf e.hom
+  inv := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf e.inv
+  homInvIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso e.hom e.inv ≪≫
+    (by rw [e.hom_inv_id]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso X)
+  invHomIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso e.inv e.hom ≪≫
+    (by rw [e.inv_hom_id]; exact _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_idIso Y)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfIso._proof_2

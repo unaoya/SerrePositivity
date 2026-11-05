@@ -53,7 +53,7 @@ def commonGradedInclusion :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       commonOriginalEnriched commonRefinedEnriched where
   app X := eHomEquiv SSet (commonInclusion X.val)
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     (commonInclusion X.val) (commonInclusion Y.val)
     (commonRefinedMap X.val Y.val) (commonOriginalMap X.val Y.val)).mp
       (common_left_whiskered X.val Y.val)).symm
@@ -63,7 +63,7 @@ def commonGradedComparison :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       commonRefinedEnriched commonMiddleEnriched where
   app X := eHomEquiv SSet (commonComparison X.val)
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     (commonComparison X.val) (commonComparison Y.val)
     (commonMiddleMap X.val Y.val) (commonRefinedMap X.val Y.val)).mp
       (common_right_whiskered X.val Y.val).symm).symm

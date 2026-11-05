@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Category.Basic
 public import Mathlib.CategoryTheory.EqToHom
 public import Mathlib.CategoryTheory.Iso
@@ -14,11 +16,20 @@ set_option backward.isDefEq.respectTransparency false
 universe u v w
 open CategoryTheory
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 
-private lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
+lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
     (h : a = a') (e : a' ≅ b) : HEq (eqToIso h ≪≫ e) e := by
   subst a'
   simp only [eqToIso_refl, Iso.refl_trans]
   rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.prependEq_heq := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.prependEq_heq

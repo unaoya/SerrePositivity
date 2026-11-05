@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FiberComponents
 
 /-!
@@ -15,9 +17,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -31,18 +36,18 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem fiberInclusion_piZero_surjective {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     [Subsingleton (π₀ B)] (e : E _⦋0⦌) :
-    Function.Surjective (mapπ₀ (fiberι p (p.app _ e))) := by
-  let eE := KanHomotopyZero.equivPiZero (X := E) (x := e)
-  let eF := KanHomotopyZero.equivPiZero (X := KanFiber p (p.app _ e)) (x := fiberPoint p e)
-  let eB := KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
-  have : Subsingleton (KanHomotopy B 0 (p.app _ e)) :=
+    Function.Surjective (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e))) := by
+  let eE := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := E) (x := e)
+  let eF := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) (x := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
+  let eB := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
+  have : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B 0 (p.app _ e)) :=
     ⟨fun a b => eB.injective (Subsingleton.elim _ _)⟩
   intro a
-  obtain ⟨b, hb⟩ := (exact_fiber_total_zero p e (eE.symm a)).1 (Subsingleton.elim _ _)
+  obtain ⟨b, hb⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_zero p e (eE.symm a)).1 (Subsingleton.elim _ _)
   refine ⟨eF b, ?_⟩
   have h := congrArg eE hb
   rw [eE.apply_symm_apply] at h
-  exact (KanHomotopyZero.equivPiZero_map (fiberι p (p.app _ e)) (fiberι_point p e) b).symm.trans h
+  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b).symm.trans h
 
 /-- 概要：底の指定点の等式を明示した fiber の包含も成分で全射。
 方針：指定点の等式で移送して標準の全射性へ戻す。
@@ -51,10 +56,19 @@ theorem fiberInclusion_piZero_surjective {E B : SSet.{u}}
 theorem fiberInclusion_piZero_surjective_at {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p]
     [Subsingleton (π₀ B)] (e : E _⦋0⦌) (b : B _⦋0⦌) (he : p.app _ e = b) :
-    Function.Surjective (mapπ₀ (fiberι p b)) := by
+    Function.Surjective (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b)) := by
   subst b
-  exact fiberInclusion_piZero_surjective p e
+  exact _root_.SerrePositivity.InfinityCategories.Kan.fiberInclusion_piZero_surjective p e
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberInclusion_piZero_surjective := _root_.SerrePositivity.InfinityCategories.Kan.fiberInclusion_piZero_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberInclusion_piZero_surjective_at := _root_.SerrePositivity.InfinityCategories.Kan.fiberInclusion_piZero_surjective_at

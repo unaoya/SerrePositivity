@@ -28,9 +28,9 @@ open InfinityCategories Spectra
 
 /-- 元の Kan 複体で全基点に成り立つ消滅は、連続 Kan 置換の任意の基点にも成り立つ。 -/
 lemma continuousKanReplacement_kanHomotopy_subsingleton (X : SSet.{u}) [KanComplex X]
-    (n : ℕ) (hX : ∀ x : X _⦋0⦌, Subsingleton (KanHomotopy X n x))
+    (n : ℕ) (hX : ∀ x : X _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x))
     (y : (F2.continuousKanReplacement.obj X) _⦋0⦌) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj X) n y) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj X) n y) := by
   have : KanComplex ((𝟭 SSet.{u}).obj X) := inferInstanceAs (KanComplex X)
   have : Quasicategory ((𝟭 SSet.{u}).obj X) := inferInstanceAs (Quasicategory X)
   have hu : IsQCatEquivalence (F2.continuousKanReplacementUnit.app X) := by
@@ -39,19 +39,19 @@ lemma continuousKanReplacement_kanHomotopy_subsingleton (X : SSet.{u}) [KanCompl
   obtain ⟨r, hr, hs⟩ := hu
   have he : IsQCatEquivalence r := ⟨F2.continuousKanReplacementUnit.app X, hs, hr⟩
   have hπ := kanPiIsomorphism_of_qCatEquivalence r he
-  have : Subsingleton (KanHomotopy ((𝟭 SSet.{u}).obj X) n (r.app _ y)) := hX (r.app _ y)
+  have : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((𝟭 SSet.{u}).obj X) n (r.app _ y)) := hX (r.app _ y)
   exact Function.Injective.subsingleton (hπ y n).injective
 
 /-- 群の一対象圏の nerve の連続 Kan 置換では、実次数 n > 1 の全ホモトピー類が一意。 -/
 lemma groupNerve_continuousKanReplacement_kanHomotopy_subsingleton
     (G : Type u) [Group G] (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj G)))) _⦋0⦌) :
-    Subsingleton (KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj G)))) n x) := by
   have : IsGroupoid (AsSmall.{u} (SingleObj G)) :=
     isGroupoid_of_reflects_iso (AsSmall.equiv (C := SingleObj G)).inverse
-  have := groupoidNerve_kanComplex (AsSmall.{u} (SingleObj G))
+  have := _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex (AsSmall.{u} (SingleObj G))
   exact continuousKanReplacement_kanHomotopy_subsingleton _ n
-    (strictSegal_kanHomotopy_subsingleton _ n hn) x
+    (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_kanHomotopy_subsingleton _ n hn) x
 
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag

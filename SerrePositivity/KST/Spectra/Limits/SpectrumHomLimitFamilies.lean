@@ -82,17 +82,17 @@ lemma spectrumHomLimitFamily_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLeve
 lemma spectrumHomLimitFamily_condition (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
     (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
     spectrumHomLimitFamily c hc X s (n + 1) ≫
-        PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space =
       spectrumHomLimitFamily c hc X s n ≫ OmegaSpectrum.mappingStep X c.pt n := by
-  have hb := isLimitOfPreserves (pointedMappingFunctor (suspension (X.level n).space))
+  have hb := isLimitOfPreserves (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space))
     (hc (n + 1))
   apply hb.hom_ext
   intro i
   change (spectrumHomLimitFamily c hc X s (n + 1) ≫
-      PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space) ≫
-      (pointedMappingFunctor (suspension (X.level n).space)).map ((c.π.app i).app (n + 1)) =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space) ≫
+      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map ((c.π.app i).app (n + 1)) =
     (spectrumHomLimitFamily c hc X s n ≫ OmegaSpectrum.mappingStep X c.pt n) ≫
-      (pointedMappingFunctor (suspension (X.level n).space)).map ((c.π.app i).app (n + 1))
+      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map ((c.π.app i).app (n + 1))
   rw [Category.assoc, pointedMapping_pre_post, ← Category.assoc,
     spectrumHomLimitFamily_fac]
   rw [Category.assoc (spectrumHomLimitFamily c hc X s n)
@@ -110,7 +110,7 @@ def spectrumHomConeLift (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n
     (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) :
     s.pt ⟶ OmegaSpectrum.mappingSpace X c.pt :=
   TruncatedMapping.familyLift (fun n ↦ (X.level n).space) (fun n ↦ (c.pt.level n).space)
-    (fun n ↦ suspension (X.level n).space) X.sigma (OmegaSpectrum.mappingStep X c.pt)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (OmegaSpectrum.mappingStep X c.pt)
     (spectrumHomLimitFamily c hc X s) (spectrumHomLimitFamily_condition c hc X s)
 
 /-- 概要：全写像空間への普遍射を各段で評価すると各段の普遍族になる。

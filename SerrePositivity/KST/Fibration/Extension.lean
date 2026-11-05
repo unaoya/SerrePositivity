@@ -37,16 +37,16 @@ lemma componentEdge_isInvertible_iff {J X : SSet.{u}} {F G : J ⟶ X}
 
 /-- cofiber 列の間の実ホモトピーでは、両端の W 所属から中間の W 所属が従う。 -/
 theorem weakEquivalences_extension
-    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) (t d : ZeroTriangle B.obj)
+    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (t d : ZeroTriangle B.obj)
     (ht : IsCofiberSequence t) (hd : IsCofiberSequence d)
     (H : SSet.Homotopy t.square d.square)
     (h₀ : (componentEdge H
-      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈ weakEquivalences i)
+      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
     (h₂ : (componentEdge H
-      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈ weakEquivalences i) :
+      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
     (componentEdge H
-      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈ weakEquivalences i := by
+      (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   let T := t.map q.hom (IsExactFunctor.preservesZero (F := q.hom))
   let D := d.map q.hom (IsExactFunctor.preservesZero (F := q.hom))
   have hT : IsCofiberSequence T := IsExactFunctor.preservesCofiber (F := q.hom) t ht
@@ -62,12 +62,12 @@ theorem weakEquivalences_extension
     componentEdge_isInvertible_iff Q a
   let m := cofiberTriangleMapOfHomotopy T D hT hD Q
   have h₁ : IsIso m.hom₁ :=
-    (hc _).1 ((mem_weakEquivalences_iff_invertible h _).1 h₀)
+    (hc _).1 ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).1 h₀)
   have h₃ : IsIso m.hom₃ :=
-    (hc _).1 ((mem_weakEquivalences_iff_invertible h _).1 h₂)
+    (hc _).1 ((_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).1 h₂)
   have hm : IsIso m.hom₂ := Pretriangulated.isIso₂_of_isIso₁₃ m
     (cofiberTriangle_mem_cofiberDistinguishedTriangles T hT)
     (cofiberTriangle_mem_cofiberDistinguishedTriangles D hD) h₁ h₃
-  exact (mem_weakEquivalences_iff_invertible h _).2 ((hc _).2 hm)
+  exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible h _).2 ((hc _).2 hm)
 
 end SerrePositivity.KST.Fibration

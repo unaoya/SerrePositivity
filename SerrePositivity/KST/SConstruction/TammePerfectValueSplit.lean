@@ -43,7 +43,7 @@ private lemma tammeTransportedSplitAxis {K : Type*} [Category K]
     _ = n.hom ≫ e.hom ≫ (e.inv ≫ i) ≫ t := by rw [hs]
     _ = n.hom ≫ i ≫ t := by simp only [Category.assoc, Iso.hom_inv_id_assoc]
 
-variable {C D B : StableCategory.{u}} (p : ExactMap C B) (q : ExactMap D B)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
   (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 

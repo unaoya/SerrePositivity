@@ -21,28 +21,28 @@ local notation "Z" => dgKInputStableValue R
 /-- 概要：同じ実零化面の元左辺の固定 ν 完全射。
 方針：同じ全対象商への射を固定 ν で写す。
 規約：元の左辺。使われ方：零角の指定比較の実側。 -/
-abbrev dgOdotMilnorNuZeroActualLeft : ExactMap (K) (Z) :=
+abbrev dgOdotMilnorNuZeroActualLeft : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (Z) :=
   dgKInputNuMap R (dgFixedNullLeft R (A := dgOdotMilnorFlatKernelInput R d))
 
 /-- 概要：同じ実零化面の元上辺の固定 ν 完全射。
 方針：元の全対象商延長を固定 ν で写す。
 規約：元の上辺。使われ方：零角の指定比較の実側。 -/
-abbrev dgOdotMilnorNuZeroActualTop : ExactMap (Z) (B) :=
+abbrev dgOdotMilnorNuZeroActualTop : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) (B) :=
   dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))
 local notation "t" => dgOdotMilnorNuZeroActualTop R d
 
 /-- 概要：同じ標準零角から実零角への成分を経由する左辺。
 方針：元核の toZeroCategory と同じ実零角への fromZeroCategory を合成する。
 規約：零角成分は既指定のもの。使われ方：混合左面の終点。 -/
-def dgOdotMilnorNuZeroComparisonLeft : ExactMap (K) (Z) where
-  hom := (toZeroCategory (K)).hom ≫ (fromZeroCategory (Z)).hom
-  isExact := @isExactFunctor_comp _ _ _ _ _ (toZeroCategory (K)).isExact
+def dgOdotMilnorNuZeroComparisonLeft : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (Z) where
+  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom ≫ (fromZeroCategory (Z)).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).isExact
     (fromZeroCategory (Z)).isExact
 
 /-- 概要：同じ零角成分と元実上辺の合成。
 方針：指定 fromZeroCategory と元上辺を合成する。
 規約：元の実上辺。使われ方：混合上面の始点。 -/
-def dgOdotMilnorNuZeroComparisonTop : ExactMap zeroCategory.{u + 1} (B) where
+def dgOdotMilnorNuZeroComparisonTop : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B) where
   hom := (fromZeroCategory (Z)).hom ≫ (t).hom
   isExact := @isExactFunctor_comp _ _ _ _ _ (fromZeroCategory (Z)).isExact (t).isExact
 
@@ -63,40 +63,40 @@ def dgOdotMilnorNuZeroComparisonTopIso : FunctorIso
     (fun _ => @IsExactFunctor.preservesZero _ _ (t).hom (t).isExact _
       (dgFixedNullInput_isZeroCategory R _ _))
     (fun x => @IsExactFunctor.preservesZero _ _ (fromZeroCategory (B)).hom
-      (fromZeroCategory (B)).isExact x (zeroCategory_isZero x))
+      (fromZeroCategory (B)).isExact x (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero x))
 
 local instance nuZeroComparisonLeftHom_kanComplex :
-    KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)) :=
-  stableQCat_sHom_kanComplex (K) (Z)
+    KanComplex (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex (K) (Z)
 
 local instance nuZeroComparisonTopHom_kanComplex :
-    KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)) :=
-  stableQCat_sHom_kanComplex zeroCategory.{u + 1} (B)
+    KanComplex (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)
 
 /-- 概要：元実左辺から同じ指定零角成分を経由する左辺への実 Hom 辺。
 方針：同じ全関手同型の core 像を実辺で表示する。
 規約：元の両完全射を固定。使われ方：元上面の混合零 Hom 合成。 -/
 def dgOdotMilnorNuZeroComparisonLeftEdge :
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)).Edge
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (Z)
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)).Edge
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)
         (dgOdotMilnorNuZeroActualLeft R d))
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (Z)
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)
         (dgOdotMilnorNuZeroComparisonLeft R d)) :=
   Edge.ofTruncated (homotopyCategory_homMk_surjective
-    (X := SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)) _ _
-    (exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonLeftIso R d)).hom).choose
+    (X := SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)) _ _
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonLeftIso R d)).hom).choose
 
 /-- 概要：指定零角成分後の元上辺から同じ絶対上辺への実 Hom 辺。
 方針：同じ全関手同型の core 像の実辺を取る。
 規約：元の両完全射を固定。使われ方：元上面の混合零 Hom 合成。 -/
 def dgOdotMilnorNuZeroComparisonTopEdge :
-    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)).Edge
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)).Edge
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)
         (dgOdotMilnorNuZeroComparisonTop R d))
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)
         (fromZeroCategory (B))) :=
   Edge.ofTruncated (homotopyCategory_homMk_surjective
-    (X := SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)) _ _
-    (exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonTopIso R d)).hom).choose
+    (X := SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)) _ _
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonTopIso R d)).hom).choose
 
 end SerrePositivity.KST.SConstruction

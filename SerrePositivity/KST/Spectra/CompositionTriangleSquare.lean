@@ -23,7 +23,7 @@ variable {E : SSet.{u}} {x y z : E _⦋0⦌}
 
 /-- 元の三角形と対角辺の退化三角形を貼った、同じ実正方形。 -/
 def compositionTriangleSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E :=
-  SquareTriangles.isPushout.desc (SSet.yonedaEquiv.symm t.simplex)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.desc (SSet.yonedaEquiv.symm t.simplex)
     (SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId c).simplex) (by
       rw [SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm,
         SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm])
@@ -31,15 +31,15 @@ def compositionTriangleSquare : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E 
 /-- 上側の二単体は、入力した元の三角形単体そのもの。 -/
 @[reassoc (attr := simp)]
 lemma compositionTriangleSquare_upper :
-    SquareTriangles.upper ≫ compositionTriangleSquare t = SSet.yonedaEquiv.symm t.simplex :=
-  SquareTriangles.isPushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ compositionTriangleSquare t = SSet.yonedaEquiv.symm t.simplex :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inl_desc _ _ _
 
 /-- 下側の二単体は、同じ対角辺の退化三角形。 -/
 @[reassoc (attr := simp)]
 lemma compositionTriangleSquare_lower :
-    SquareTriangles.lower ≫ compositionTriangleSquare t =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ compositionTriangleSquare t =
       SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId c).simplex :=
-  SquareTriangles.isPushout.inr_desc _ _ _
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inr_desc _ _ _
 
 /-- 正方形の始辺は、元の対角辺そのもの。 -/
 lemma compositionTriangleSquare_zero :

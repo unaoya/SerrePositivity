@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 structure DGGluingUnitSixTriangleDiagram (Z : SSet.{u}) (a b c d e : Z _⦋0⦌) where
   diagram : Fin 6 → ((Δ[2] : SSet.{u}) ⟶ Z)

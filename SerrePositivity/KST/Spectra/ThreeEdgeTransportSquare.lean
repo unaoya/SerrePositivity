@@ -21,11 +21,11 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
 variable {E : SSet.{u}} {x a y b : E _⦋0⦌}
   {left : E.Edge x a} {middle : E.Edge x y} {right : E.Edge y b}
-  (D : ThreeEdgeTransport left middle right)
+  (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right)
 
 /-- 保存した二つの実三角形を、同じ対角辺で貼った実正方形。 -/
 def square : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E :=
-  SquareTriangles.isPushout.desc (SSet.yonedaEquiv.symm D.first.simplex)
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.desc (SSet.yonedaEquiv.symm D.first.simplex)
     (SSet.yonedaEquiv.symm D.second.simplex) (by
       rw [SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm,
         SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm])
@@ -33,15 +33,15 @@ def square : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E :=
 /-- 上側の二単体は、元の第一の輸送三角形単体そのもの。 -/
 @[reassoc (attr := simp)]
 lemma square_upper :
-    SquareTriangles.upper ≫ square D = SSet.yonedaEquiv.symm D.first.simplex :=
-  SquareTriangles.isPushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ square D = SSet.yonedaEquiv.symm D.first.simplex :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inl_desc _ _ _
 
 /-- 下側の二単体は、元の第二の輸送三角形単体そのもの。 -/
 @[reassoc (attr := simp)]
 lemma square_lower :
-    SquareTriangles.lower ≫ square D =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ square D =
       SSet.yonedaEquiv.symm D.second.simplex :=
-  SquareTriangles.isPushout.inr_desc _ _ _
+  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inr_desc _ _ _
 
 /-- 正方形の始辺は、元の左辺そのもの。 -/
 lemma square_zero :

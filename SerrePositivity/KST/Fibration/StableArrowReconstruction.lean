@@ -22,12 +22,12 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 任意の元の安定 coherent 辺は、回収した同じ実完全射から厳密に復元される。 -/
-theorem stableArrowExactMap_reconstruct (a : StableInfinity.{u} _⦋1⦌) :
-    (stableArrow (stableArrowExactMap a)).edge = a := by
+theorem stableArrowExactMap_reconstruct (a : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋1⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (stableArrowExactMap a)).edge = a := by
   have he : stableArrowExactMap a = (coherentNerveArrowData a).2.2 := by
     change stableHomExactMap (coherentArrowHomVertex a) =
       (SimplicialCategory.homEquiv' _ _).symm (coherentArrowHomVertex a)
-    apply (SimplicialCategory.homEquiv' (C := StableQCat.{u})
+    apply (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
       (a.obj ⟨ULift.up 0⟩) (a.obj ⟨ULift.up 1⟩)).injective
     rw [stableHom_homEquiv'_ExactMap, Equiv.apply_symm_apply]
   change (coherentNerveEdge (stableArrowExactMap a)).edge = a
@@ -35,7 +35,7 @@ theorem stableArrowExactMap_reconstruct (a : StableInfinity.{u} _⦋1⦌) :
   exact coherentNerveArrowData_reconstruct a
 
 /-- 任意の指定安定辺の core S Kan 像も、同じ回収完全射の元の実射の辺に厳密一致する。 -/
-theorem stableCoreSingleKan_edge_reconstruct (a : StableInfinity.{u} _⦋1⦌) :
+theorem stableCoreSingleKan_edge_reconstruct (a : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋1⦌) :
     (coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋1⦌) a =
       (coherentNerveEdge (stableCoreSingleKanMap (stableArrowExactMap a))).edge := by
   rw [← stableArrowExactMap_reconstruct a]

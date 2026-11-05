@@ -26,7 +26,7 @@ lemma dgKappaNativeBFFiniteFirstComparison_whisker
       (dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).map C E ≫
         eHomWhiskerRight SSet (dgKappaNativeBFFiniteFirstComparison.{u, v} R D I C)
           ((dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).obj E) :=
-  strictSimplicialTransformation_whisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
     (pointedEnrichedMonicReplacementTargetTransformation
       (dgKappaNativeBFFiniteZeroSuspensionFunctor.{u, v} R D I)
       (dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I 0)
@@ -53,8 +53,8 @@ local instance nativeFiniteFirstOmegaLoopKan (C : DGKappaNativeBFFiniteInput.{u,
 規約：零段は同じ ΩB₀。使われ方：有限 BF Ω 列の帰納基底。 -/
 lemma dgKappaNativeBFFiniteFirstStructureAdjoint_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    KanPiIsomorphism (curry
-      (show suspension (((dgKappaNativeBFFiniteZeroFunctor.{u, v} R D I).obj C).obj) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry
+      (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((dgKappaNativeBFFiniteZeroFunctor.{u, v} R D I).obj C).obj) ⟶
         ((dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).obj C).obj from
           dgKappaNativeBFFiniteFirstStructureMap.{u, v} R D I C)).right := by
   apply evaluationCylinderAdjoint_piIsomorphism

@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.PointedMapping
 
 /-- 元の二つの区間と、その対角区間を持つ実際の合成三角形。 -/
@@ -30,7 +30,7 @@ structure BasedPathComposite {T E : PointedSimplicialSet.{u}} {f g h : T ⟶ E}
 def BasedPathComposite.choose {T E : PointedSimplicialSet.{u}} [KanComplex E.right]
     {f g h : T ⟶ E} (P : VerticalPath (PointedObject.toPoint E) f g)
     (Q : VerticalPath (PointedObject.toPoint E) g h) : BasedPathComposite P Q := by
-  let homKan : KanComplex (PointedObject.basedHom T E).right := basedHom_kanComplex _ _
+  let homKan : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
   let d := P.edge.toTruncated.comp Q.edge.toTruncated
   refine ⟨basedPathOfEdge (SSet.Edge.ofTruncated d), ?_⟩
   rw [basedPathOfEdge_edge]
@@ -46,8 +46,8 @@ lemma ofHomotopy_h {T E B : PointedSimplicialSet.{u}} {p : E ⟶ B} {f g : T ⟶
     (hp : H.h ≫ p.right = fst T.right (Δ[1] : SSet.{u}) ≫ f.right ≫ p.right) :
     (ofHomotopy H hb hp).homotopy.h = H.h := by
   rw [homotopy_h]
-  change uncurry (paramCurry T E H.h hb ≫ _) = _
-  rw [paramCurry_ι, uncurry_curry]
+  change uncurry (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry T E H.h hb ≫ _) = _
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, uncurry_curry]
 
 /-- 評価した全区間が一致すれば、内部 Hom の同じ区間族も一致する。 -/
 lemma path_eq_of_homotopy_h_eq {T E B C : PointedSimplicialSet.{u}}

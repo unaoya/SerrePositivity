@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V]
   {C : Type w} [EnrichedCategory V C]
 
@@ -34,7 +39,7 @@ lemma enriched_parameter_assoc_hom {P Q R : V} {W X Y Z : C}
     (a : P ⟶ (W ⟶[V] X)) (b : Q ⟶ (X ⟶[V] Y)) (c : R ⟶ (Y ⟶[V] Z)) :
     (((a ⊗ₘ b) ≫ eComp V W X Y) ⊗ₘ c) ≫ eComp V W Y Z =
       (α_ P Q R).hom ≫ (a ⊗ₘ ((b ⊗ₘ c) ≫ eComp V X Y Z)) ≫ eComp V W X Z := by
-  have h := congrArg (fun f ↦ (α_ P Q R).hom ≫ f) (enriched_parameter_assoc V a b c)
+  have h := congrArg (fun f ↦ (α_ P Q R).hom ≫ f) (_root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc V a b c)
   simpa only [← Category.assoc, Iso.hom_inv_id, Category.id_comp] using h
 
 variable [BraidedCategory V]
@@ -50,10 +55,28 @@ lemma enriched_parameter_square_comp {A P Q : V} {X Y Z X' Y' Z' : C}
     (ex ⊗ₘ ((a ⊗ₘ b) ≫ eComp V X Y Z)) ≫ eComp V X' X Z =
       (β_ A (P ⊗ Q)).hom ≫
         (((a' ⊗ₘ b') ≫ eComp V X' Y' Z') ⊗ₘ ez) ≫ eComp V X' Z' Z := by
-  rw [← enriched_parameter_assoc V ex a b, ha,
-    ← whiskerRight_comp_tensorHom_assoc, enriched_parameter_assoc_hom V a' ey b,
-    hb, ← whiskerLeft_comp_tensorHom_assoc, ← enriched_parameter_assoc V a' b' ez]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc V ex a b, ha,
+    ← whiskerRight_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_hom V a' ey b,
+    hb, ← whiskerLeft_comp_tensorHom_assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc V a' b' ez]
   rw [BraidedCategory.braiding_tensor_right_hom]
   simp only [Category.assoc]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_hom_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_square_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp

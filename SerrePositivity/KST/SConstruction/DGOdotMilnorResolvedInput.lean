@@ -51,14 +51,14 @@ def dgOdotMilnorCellProjectionInputMap :
 
 /-- 概要：同じ増大の完全な ν 像。方針：固定界面を使用する。
 規約：安定値の型を明示する。使われ方：同じ屋根の左辺。 -/
-abbrev dgOdotMilnorAugmentationExactMap : ExactMap
+abbrev dgOdotMilnorAugmentationExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotGluingInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorAugmentationInputMap R d)
 
 /-- 概要：同じ商包含の完全な ν 像。方針：固定界面を使用する。
 規約：安定値の型を明示する。使われ方：同じ屋根の右辺。 -/
-abbrev dgOdotMilnorCellProjectionExactMap : ExactMap
+abbrev dgOdotMilnorCellProjectionExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorCellProjectionInputMap R d)
@@ -67,7 +67,7 @@ abbrev dgOdotMilnorCellProjectionExactMap : ExactMap
 方針：実準同値を Perf へ延長し、宇宙持ち上げの Morita 保存を使う。
 規約：Milnor 仮定は不要。使われ方：ν 上での同じ屋根の構成。 -/
 lemma dgOdotMilnorAugmentationNu_isQCatEquivalence :
-    IsQCatEquivalence (show ExactMap
+    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (dgKInputStableValue R (dgOdotMilnorCellInput R d))
       (dgKInputStableValue R (dgOdotGluingInput R d)) from
       dgKInputNuMap R (dgOdotMilnorAugmentationInputMap R d)).hom := by
@@ -98,7 +98,7 @@ def dgOdotMilnorAugmentationNuEquivalence : QCatEquivalence
 /-- 概要：元 ν(gluing) から resolved 商の ν 値への同じ二辺の屋根。
 方針：ν 増大の逆と ν 商包含を合成する。規約：native 商性はまだ転送しない。
 使われ方：固定 ν の新しい商経路の具体的な完全射。 -/
-def dgOdotMilnorResolvedProjectionNu : ExactMap
+def dgOdotMilnorResolvedProjectionNu : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) where
   hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫

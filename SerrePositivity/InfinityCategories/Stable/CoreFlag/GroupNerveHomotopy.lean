@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -35,8 +37,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 小さな亜群の nerve はホモトピー圏の亜群性から Kan となる。 -/
@@ -46,4 +51,10 @@ lemma groupoidNerve_kanComplex (D : Type u) [SmallCategory D] [IsGroupoid D] : K
   have : IsGroupoid (hoFunctor.obj (nerve D)) := isGroupoid_of_reflects_iso e.functor
   exact kanComplex_of_isGroupoid _
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex := _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex

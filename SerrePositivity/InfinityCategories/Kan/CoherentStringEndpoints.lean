@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialNerve
 
 /-! # 合成列の二端点の標準再添字
@@ -11,8 +13,11 @@ public import Mathlib.AlgebraicTopology.SimplicialNerve
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 合成列の二端点だけを選ぶ標準単体射。長さ零も許す。 -/
 def coherentStringEndpointMap (n : ℕ) : ⦋1⦌ ⟶ ⦋n⦌ :=
@@ -23,29 +28,59 @@ def coherentStringEndpointMap (n : ℕ) : ⦋1⦌ ⟶ ⦋n⦌ :=
 
 /-- 標準射の始点は元の合成列の始点。 -/
 lemma coherentStringEndpointMap_first (n : ℕ) :
-    (coherentStringEndpointMap n).toOrderHom 0 = 0 := by
-  simp [coherentStringEndpointMap]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n).toOrderHom 0 = 0 := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap]
 
 /-- 標準射の終点は元の合成列の終点。 -/
 lemma coherentStringEndpointMap_last (n : ℕ) :
-    (coherentStringEndpointMap n).toOrderHom 1 = Fin.last n := by
-  simp [coherentStringEndpointMap]
+    (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n).toOrderHom 1 = Fin.last n := by
+  simp [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap]
 
 /-- 長さ一では、元の射の二端点を選ぶ射は恒等。 -/
-lemma coherentStringEndpointMap_one : coherentStringEndpointMap 1 = 𝟙 ⦋1⦌ := by
+lemma coherentStringEndpointMap_one : _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap 1 = 𝟙 ⦋1⦌ := by
   ext i
   fin_cases i <;> rfl
 
 /-- 両端を保つ全再添字は、元の長辺を厳密に保つ。 -/
 lemma coherentStringEndpointMap_comp {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (h₀ : θ.toOrderHom 0 = 0) (h₁ : θ.toOrderHom (Fin.last m) = Fin.last n) :
-    coherentStringEndpointMap m ≫ θ = coherentStringEndpointMap n := by
+    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m ≫ θ = _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap n := by
   apply SimplexCategory.Hom.ext_one_left
-  · change θ.toOrderHom ((coherentStringEndpointMap m).toOrderHom 0) = _
-    rw [coherentStringEndpointMap_first, coherentStringEndpointMap_first]
+  · change θ.toOrderHom ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m).toOrderHom 0) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first, _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first]
     exact h₀
-  · change θ.toOrderHom ((coherentStringEndpointMap m).toOrderHom 1) = _
-    rw [coherentStringEndpointMap_last, coherentStringEndpointMap_last]
+  · change θ.toOrderHom ((_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap m).toOrderHom 1) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last, _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last]
     exact h₁
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap_one := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringEndpointMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap.eq_1

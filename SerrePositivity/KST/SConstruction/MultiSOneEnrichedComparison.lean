@@ -22,8 +22,8 @@ def sOneQuasicategoryEnrichedComparison :
       stableQuasicategoryEnrichedInclusion := by
   refine ⟨fun C => sOneComparison C.obj, ?_⟩
   intro C D
-  change (sOneComparison C.obj ▷ (exactFunctors C D : SSet.{u})) ≫
-    uncurry (exactFunctors C D).ι =
+  change (sOneComparison C.obj ▷ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{u})) ≫
+    uncurry (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι =
       uncurry (sExactFamilyMap 1 C D) ≫ sOneComparison D.obj
   rw [sExactFamilyMap, uncurry_curry]
   exact sOneComparison_family_action C D

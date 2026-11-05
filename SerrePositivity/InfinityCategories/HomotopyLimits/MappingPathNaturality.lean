@@ -32,13 +32,13 @@ noncomputable section
 規約：両端点と任意の点つき射に対する厳密な等式。
 使われ方：mapping path に誘導される射と二つの射影の自然性。 -/
 lemma freePathEndpoint_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) (k : Fin 2) :
-    PointedObject.basedHomMap freeInterval.{u} f ≫ freePathEndpoint Z k =
-      freePathEndpoint Y k ≫ f := by
-  simp only [freePathEndpoint, PointedMapping.prePointed_eq_closedPre, Category.assoc]
-  change (ihom freeInterval.{u}).map f ≫
-      (MonoidalClosed.pre (freeIntervalEndpoint.{u} k)).app Z ≫
+    PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Z k =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y k ≫ f := by
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  change (ihom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u}).map f ≫
+      (MonoidalClosed.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k)).app Z ≫
         (unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z = _
-  rw [← Category.assoc, (MonoidalClosed.pre (freeIntervalEndpoint.{u} k)).naturality f,
+  rw [← Category.assoc, (MonoidalClosed.pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} k)).naturality f,
     Category.assoc, (unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality f,
     ← Category.assoc]
   rfl
@@ -48,12 +48,12 @@ lemma freePathEndpoint_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z)
 規約：ホモトピーではなく点つき射の等式。
 使われ方：mapping path の塔への定数 path の比較射。 -/
 lemma freeConstantPath_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z) :
-    freeConstantPath Y ≫ PointedObject.basedHomMap freeInterval.{u} f =
-      f ≫ freeConstantPath Z := by
-  simp only [freeConstantPath, PointedMapping.prePointed_eq_closedPre, Category.assoc]
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath Y ≫ PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} f =
+      f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath Z := by
+  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
   change (unitNatIso (C := PointedSimplicialSet.{u})).hom.app Y ≫
-      (MonoidalClosed.pre freeIntervalCollapse.{u}).app Y ≫ (ihom freeInterval.{u}).map f = _
-  rw [← (MonoidalClosed.pre freeIntervalCollapse.{u}).naturality f, ← Category.assoc,
+      (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u}).app Y ≫ (ihom _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u}).map f = _
+  rw [← (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse.{u}).naturality f, ← Category.assoc,
     ← (unitNatIso (C := PointedSimplicialSet.{u})).hom.naturality f, Category.assoc]
   rfl
 
@@ -63,10 +63,10 @@ lemma freeConstantPath_naturality {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ Z)
 使われ方：段ごとの mapping path を逆向きの塔へまとめる。 -/
 def mappingPathMap {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y')
-    (h : f ≫ b = a ≫ f') : mappingPath f ⟶ mappingPath f' :=
+    (h : f ≫ b = a ≫ f') : _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath f' :=
   pullback.lift
-    (pullback.fst (freePathEndpoint Y 1) f ≫ PointedObject.basedHomMap freeInterval.{u} b)
-    (mappingPathRetraction f ≫ a) (by
+    (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f ≫ PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} b)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f ≫ a) (by
       rw [Category.assoc, freePathEndpoint_naturality, ← Category.assoc, pullback.condition,
         Category.assoc, h, ← Category.assoc]
       rfl)
@@ -77,8 +77,8 @@ def mappingPathMap {X Y X' Y' : PointedSimplicialSet.{u}}
 使われ方：端点評価と相対比較の検証。 -/
 lemma mappingPathMap_path {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
-    mappingPathMap f f' a b h ≫ pullback.fst (freePathEndpoint Y' 1) f' =
-      pullback.fst (freePathEndpoint Y 1) f ≫ PointedObject.basedHomMap freeInterval.{u} b :=
+    mappingPathMap f f' a b h ≫ pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y' 1) f' =
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint Y 1) f ≫ PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} b :=
   pullback.lift_fst ..
 
 /-- 概要：mapping path の比較射は元の源への射影と可換。
@@ -87,7 +87,7 @@ lemma mappingPathMap_path {X Y X' Y' : PointedSimplicialSet.{u}}
 使われ方：mapping path の塔から元の源の塔への射。 -/
 lemma mappingPathMap_source {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
-    mappingPathMap f f' a b h ≫ mappingPathRetraction f' = mappingPathRetraction f ≫ a :=
+    mappingPathMap f f' a b h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f' = _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f ≫ a :=
   pullback.lift_snd ..
 
 /-- 概要：mapping path の比較射は元の標的への終点射と可換。
@@ -96,8 +96,8 @@ lemma mappingPathMap_source {X Y X' Y' : PointedSimplicialSet.{u}}
 使われ方：mapping path の塔から元の標的の塔への射。 -/
 lemma mappingPathMap_target {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
-    mappingPathMap f f' a b h ≫ mappingPathProjection f' = mappingPathProjection f ≫ b := by
-  rw [mappingPathProjection, ← Category.assoc, mappingPathMap_path, Category.assoc,
+    mappingPathMap f f' a b h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f' = _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection f ≫ b := by
+  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection, ← Category.assoc, mappingPathMap_path, Category.assoc,
     freePathEndpoint_naturality, ← Category.assoc]
   rfl
 
@@ -107,15 +107,15 @@ lemma mappingPathMap_target {X Y X' Y' : PointedSimplicialSet.{u}}
 使われ方：元の源の塔から mapping path の塔への射。 -/
 lemma mappingPathMap_unit {X Y X' Y' : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (f' : X' ⟶ Y') (a : X ⟶ X') (b : Y ⟶ Y') (h : f ≫ b = a ≫ f') :
-    mappingPathUnit f ≫ mappingPathMap f f' a b h = a ≫ mappingPathUnit f' := by
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit f ≫ mappingPathMap f f' a b h = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit f' := by
   apply pullback.hom_ext
   · rw [Category.assoc, mappingPathMap_path]
-    simp only [mappingPathUnit, pullback.lift_fst_assoc, Category.assoc, pullback.lift_fst]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit, pullback.lift_fst_assoc, Category.assoc, pullback.lift_fst]
     rw [freeConstantPath_naturality, ← Category.assoc, h, Category.assoc]
-  · change (mappingPathUnit f ≫ mappingPathMap f f' a b h) ≫ mappingPathRetraction f' = _
-    rw [Category.assoc, mappingPathMap_source, ← Category.assoc, mappingPathUnit_retraction,
+  · change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit f ≫ mappingPathMap f f' a b h) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction f' = _
+    rw [Category.assoc, mappingPathMap_source, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction,
       Category.id_comp]
-    simp only [mappingPathUnit, Category.assoc, pullback.lift_snd, Category.comp_id]
+    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit, Category.assoc, pullback.lift_snd, Category.comp_id]
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

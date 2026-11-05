@@ -33,7 +33,7 @@ lemma diagramFunctorEdge_homotopy_roundtrip {A X : SSet.{u}} {f g : A ⟶ X}
 lemma pointedKanDiagramFunctorIso_hom {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     (pointedKanDiagramFunctorIso hF hG η hη).hom =
       SSet.Truncated.HomotopyCategory.homMk
         (functorEdgeOfSimplicialHomotopy (pointedKanDiagramHomotopy hF hG η)) := rfl
@@ -42,7 +42,7 @@ lemma pointedKanDiagramFunctorIso_hom {I : Type u} [SmallCategory I]
 lemma pointedKanDiagramInverseHomotopy_hom {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     SSet.Truncated.HomotopyCategory.homMk
       (functorEdgeOfSimplicialHomotopy (pointedKanDiagramInverseHomotopy hF hG η hη)) =
       (pointedKanDiagramFunctorIso hF hG η hη).inv := by
@@ -54,7 +54,7 @@ lemma pointedKanDiagramInverseHomotopy_hom {I : Type u} [SmallCategory I]
 lemma pointedKanDiagramInverse_leftTriangle_nonempty {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     Nonempty (FunctorCompositionTriangle (pointedKanDiagramHomotopy hF hG η)
       (pointedKanDiagramInverseHomotopy hF hG η hη)
       (functorHomotopyRefl (pointedKanCoherentDiagram F hF))) := by
@@ -67,7 +67,7 @@ lemma pointedKanDiagramInverse_leftTriangle_nonempty {I : Type u} [SmallCategory
 lemma pointedKanDiagramInverse_rightTriangle_nonempty {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) :
     Nonempty (FunctorCompositionTriangle (pointedKanDiagramInverseHomotopy hF hG η hη)
       (pointedKanDiagramHomotopy hF hG η)
       (functorHomotopyRefl (pointedKanCoherentDiagram G hG))) := by
@@ -100,7 +100,7 @@ lemma pointedKanDiagramHomotopyMapAt_refl {I : Type u} [SmallCategory I]
 lemma pointedKanDiagramInverse_left_component {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) (i : I) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) (i : I) :
     componentOf (η.app i ≫ pointedKanDiagramHomotopyMapAt hG hF
       (pointedKanDiagramInverseHomotopy hF hG η hη) i) = componentOf (𝟙 (F.obj i)) := by
   obtain ⟨T⟩ := pointedKanDiagramInverse_leftTriangle_nonempty hF hG η hη
@@ -112,7 +112,7 @@ lemma pointedKanDiagramInverse_left_component {I : Type u} [SmallCategory I]
 lemma pointedKanDiagramInverse_right_component {I : Type u} [SmallCategory I]
     {F G : I ⥤ PointedSimplicialSet.{u}}
     (hF : ∀ i, KanComplex (F.obj i).right) (hG : ∀ i, KanComplex (G.obj i).right)
-    (η : F ⟶ G) (hη : ∀ i, KanPiIsomorphism (η.app i).right) (i : I) :
+    (η : F ⟶ G) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (η.app i).right) (i : I) :
     componentOf (pointedKanDiagramHomotopyMapAt hG hF
       (pointedKanDiagramInverseHomotopy hF hG η hη) i ≫ η.app i) = componentOf (𝟙 (G.obj i)) := by
   obtain ⟨T⟩ := pointedKanDiagramInverse_rightTriangle_nonempty hF hG η hη

@@ -14,7 +14,7 @@ open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open F2.Idempotent
 open scoped Simplicial
-variable {C D B : StableCategory.{u}} (p : ExactMap C B) (q : ExactMap D B)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
   (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 

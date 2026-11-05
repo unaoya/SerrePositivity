@@ -28,10 +28,10 @@ def coherentPrismArrow {x y : I} (f : x ⟶ y) :
 def coherentPrismLowerNativeFamily
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
     {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
       SimplicialCategory.sHom (coherentStringVertexObject Q (x, ULift.up 0))
         (coherentStringVertexObject Q (y, ULift.up 1)) :=
-  nerveMap (coherentLowerPrismStringFunctor f) ≫ coherentArrowNativeFamily Q (coherentPrismArrow f)
+  nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f) ≫ coherentArrowNativeFamily Q (coherentPrismArrow f)
 
 /-- 同じ長辺の値から下側の全合成列の評価へ向かう、共通パラメータ上の実円柱。 -/
 def coherentPrismLowerNativeContraction
@@ -41,40 +41,40 @@ def coherentPrismLowerNativeContraction
       (SSet.const (coherentArrowNativeInitialVertex Q (coherentPrismArrow f)))
       (coherentPrismLowerNativeFamily Q f) :=
   functorHomotopyPrecomp (coherentArrowNativeContraction Q (coherentPrismArrow f))
-    (nerveMap (coherentLowerPrismStringFunctor f))
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f))
 
 /-- 下側の円柱は、同じ元の全合成列の円柱の厳密な制限である。 -/
 lemma coherentPrismLowerNativeContraction_h
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
     {x y : I} (f : x ⟶ y) :
     (coherentPrismLowerNativeContraction Q f).h =
-      (nerveMap (coherentLowerPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
         (coherentArrowNativeContraction Q (coherentPrismArrow f)).h := rfl
 
 /-- 共通パラメータの元の頂点では、下側の同じ全頂点 Path の評価を回収する。 -/
 lemma coherentPrismLowerNativeFamily_vertex
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {x y : I} (f : x ⟶ y) (s : CoherentArrowString f) :
+    {x y : I} (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (coherentPrismLowerNativeFamily Q f).app (Opposite.op ⦋0⦌) (nerveVertex s) =
-      (coherentStringNativeMap Q (coherentLowerPrismString s)).app (Opposite.op ⦋0⦌)
-        (nerveVertex (coherentStringFullPath (coherentLowerPrismString s))) := by
-  have hv : (nerveMap (coherentLowerPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
-      (nerveVertex s) = nerveVertex (coherentLowerPrismString s) := by
+      (coherentStringNativeMap Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s)).app (Opposite.op ⦋0⦌)
+        (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s))) := by
+  have hv : (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
+      (nerveVertex s) = nerveVertex (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s) := by
     refine ComposableArrows.ext₀ ?_
     rfl
   change (coherentArrowNativeFamily Q (coherentPrismArrow f)).app _
-    ((nerveMap (coherentLowerPrismStringFunctor f)).app _ (nerveVertex s)) = _
+    ((nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f)).app _ (nerveVertex s)) = _
   rw [hv]
-  exact coherentArrowNativeFamily_vertex Q (coherentPrismArrow f) (coherentLowerPrismString s)
+  exact coherentArrowNativeFamily_vertex Q (coherentPrismArrow f) (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s)
 
 /-- 元の射の全合成列を共通パラメータとする、上側の元の native Hom 評価。 -/
 def coherentPrismUpperNativeFamily
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
     {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
       SimplicialCategory.sHom (coherentStringVertexObject Q (x, ULift.up 0))
         (coherentStringVertexObject Q (y, ULift.up 1)) :=
-  nerveMap (coherentUpperPrismStringFunctor f) ≫ coherentArrowNativeFamily Q (coherentPrismArrow f)
+  nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f) ≫ coherentArrowNativeFamily Q (coherentPrismArrow f)
 
 /-- 同じ長辺の値から上側の全合成列の評価へ向かう、共通パラメータ上の実円柱。 -/
 def coherentPrismUpperNativeContraction
@@ -84,30 +84,30 @@ def coherentPrismUpperNativeContraction
       (SSet.const (coherentArrowNativeInitialVertex Q (coherentPrismArrow f)))
       (coherentPrismUpperNativeFamily Q f) :=
   functorHomotopyPrecomp (coherentArrowNativeContraction Q (coherentPrismArrow f))
-    (nerveMap (coherentUpperPrismStringFunctor f))
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f))
 
 /-- 上側の円柱は、同じ元の全合成列の円柱の厳密な制限である。 -/
 lemma coherentPrismUpperNativeContraction_h
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
     {x y : I} (f : x ⟶ y) :
     (coherentPrismUpperNativeContraction Q f).h =
-      (nerveMap (coherentUpperPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
         (coherentArrowNativeContraction Q (coherentPrismArrow f)).h := rfl
 
 /-- 共通パラメータの元の頂点では、上側の同じ全頂点 Path の評価を回収する。 -/
 lemma coherentPrismUpperNativeFamily_vertex
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve (I × ULift.{u} (Fin 2))) ⟶ SimplicialNerve C)
-    {x y : I} (f : x ⟶ y) (s : CoherentArrowString f) :
+    {x y : I} (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     (coherentPrismUpperNativeFamily Q f).app (Opposite.op ⦋0⦌) (nerveVertex s) =
-      (coherentStringNativeMap Q (coherentUpperPrismString s)).app (Opposite.op ⦋0⦌)
-        (nerveVertex (coherentStringFullPath (coherentUpperPrismString s))) := by
-  have hv : (nerveMap (coherentUpperPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
-      (nerveVertex s) = nerveVertex (coherentUpperPrismString s) := by
+      (coherentStringNativeMap Q (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s)).app (Opposite.op ⦋0⦌)
+        (nerveVertex (coherentStringFullPath (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s))) := by
+  have hv : (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f)).app (Opposite.op ⦋0⦌)
+      (nerveVertex s) = nerveVertex (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s) := by
     refine ComposableArrows.ext₀ ?_
     rfl
   change (coherentArrowNativeFamily Q (coherentPrismArrow f)).app _
-    ((nerveMap (coherentUpperPrismStringFunctor f)).app _ (nerveVertex s)) = _
+    ((nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f)).app _ (nerveVertex s)) = _
   rw [hv]
-  exact coherentArrowNativeFamily_vertex Q (coherentPrismArrow f) (coherentUpperPrismString s)
+  exact coherentArrowNativeFamily_vertex Q (coherentPrismArrow f) (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s)
 
 end SerrePositivity.KST.SConstruction

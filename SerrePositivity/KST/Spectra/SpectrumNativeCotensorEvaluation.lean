@@ -20,8 +20,8 @@ local instance nativeCotensorEvaluationSpectrumSimplicialCategory :
 
 /-- 元の Sp 上の二変数の coherent な普遍評価の族。 -/
 def nativeCotensorEvaluationFamily (A : PointedSimplicialSet.{u}) :
-    Sp.{u} ⊗ SimplicialNerve (EnrichedParameterCylinder.Object A.right
-      EnrichedParameterCylinder.Point.{u + 1}) ⟶ Sp.{u} :=
+    Sp.{u} ⊗ SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object A.right
+      _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) ⟶ Sp.{u} :=
   ((CotensorCompatible.sourceInfinityEquivalence A).inv ⊗ₘ 𝟙 _) ≫
     CotensorCompatible.evaluationNerveFamily A
 

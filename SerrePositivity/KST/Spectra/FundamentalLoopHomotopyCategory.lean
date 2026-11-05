@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.FundamentalLoop
 variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
 
 /-- 元の境界定数一単体の基本群の類を、同じ loop 辺のホモトピー圏の類へ送る。 -/
-def toHom : KanHomotopyGroup X 0 x →
+def toHom : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x →
     (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk x) :=
   Quotient.lift (fun s ↦ SSet.HomotopyCategory.homMk (edge s)) (by
     rintro s t ⟨r⟩
@@ -31,20 +31,20 @@ def toHom : KanHomotopyGroup X 0 x →
 
 /-- 基本群の元の代表は、同じ元の辺の類に移る。 -/
 lemma toHom_mk (s : X.PtSimplex 1 x) :
-    toHom (KanHomotopyGroup.mk s) = SSet.HomotopyCategory.homMk (edge s) := rfl
+    toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = SSet.HomotopyCategory.homMk (edge s) := rfl
 
 /-- 元の基本群の単位元は、元の基点の恒等射に移る。 -/
-lemma toHom_one : toHom (1 : KanHomotopyGroup X 0 x) = 𝟙 (SSet.HomotopyCategory.mk x) := by
+lemma toHom_one : toHom (1 : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x) = 𝟙 (SSet.HomotopyCategory.mk x) := by
   change SSet.HomotopyCategory.homMk (edge (.const : X.PtSimplex 1 x)) = _
   rw [edge_const, SSet.HomotopyCategory.homMk_id]
 
 /-- 元の基本群の積は、元の辺の左から右の合成に移る。 -/
-lemma toHom_mul (a b : KanHomotopyGroup X 0 x) :
+lemma toHom_mul (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x) :
     toHom (a * b) = toHom a ≫ toHom b := by
   induction a using Quotient.inductionOn with | h s => ?_
   induction b using Quotient.inductionOn with | h t => ?_
-  obtain ⟨r⟩ := KanHomotopyGroup.productSimplex_spec s t
-  erw [KanHomotopyGroup.mul_eq r]
+  obtain ⟨r⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.productSimplex_spec s t
+  erw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq r]
   exact (SSet.HomotopyCategory.homMk_comp_homMk (compStruct r)).symm
 
 /-- 同じ元の辺のホモトピー圏の類が一致すれば、元の基本群の類も一致する。 -/
@@ -61,12 +61,12 @@ lemma toHom_injective : Function.Injective (toHom (X := X) (x := x)) := by
 lemma toHom_surjective : Function.Surjective (toHom (X := X) (x := x)) := by
   intro f
   obtain ⟨e, he⟩ := homotopyCategory_homMk_surjective x x f
-  refine ⟨KanHomotopyGroup.mk (simplex (SSet.Edge.ofTruncated e)), ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (simplex (SSet.Edge.ofTruncated e)), ?_⟩
   rw [toHom_mk, edge_simplex]
   exact he
 
 /-- 元の基本群の類と、ホモトピー圏の同じ元の基点の自己射との全単射。 -/
-def homEquiv : KanHomotopyGroup X 0 x ≃
+def homEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x ≃
     (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk x) :=
   Equiv.ofBijective toHom ⟨toHom_injective, toHom_surjective⟩
 
@@ -75,7 +75,7 @@ local instance fundamentalLoopHomIsIso (f : SSet.HomotopyCategory.mk x ⟶
   IsGroupoid.all_isIso (C := hoFunctor.obj X) f
 
 /-- 元の基本群の逆元は、元のホモトピー圏の逆射に移る。 -/
-lemma toHom_inv (a : KanHomotopyGroup X 0 x) : toHom a⁻¹ = inv (toHom a) := by
+lemma toHom_inv (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 x) : toHom a⁻¹ = inv (toHom a) := by
   apply (cancel_mono (toHom a)).mp
   rw [← toHom_mul, inv_mul_cancel, toHom_one, IsIso.inv_hom_id]
 

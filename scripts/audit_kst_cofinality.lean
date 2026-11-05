@@ -443,7 +443,7 @@ run_cmd do
     pending := pending.tail!
     if seen.contains name then continue
     seen := seen.insert name
-    if name == `SerrePositivity.KST.LocalizingInvariants.IsVerdierSequence ||
+    if name == `SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence ||
         name == `HomotopicalAlgebra.ModelCategory then
       throwError "K-cof: forbidden proof dependency: {name}"
     if let some idx := env.getModuleIdxFor? name then

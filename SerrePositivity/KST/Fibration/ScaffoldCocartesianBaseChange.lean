@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification
 public import SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange
 
@@ -28,7 +28,7 @@ def scaffoldCocartesianBaseChangeClassificationIso :
 /-- 元の section 包含・恒等射評価・実 fiber 底変換の同じ点を保持する分類比較。 -/
 theorem scaffoldCocartesianBaseChangeClassificationIso_pointHom (c : I)
     (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (pullback.snd p k)).obj c) _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((cocartesianKanDiagram (pullback.snd p k)).obj c)).symm
         ((F2.continuousKanReplacementUnit.app
           ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (pullback.snd p k)).obj c)).app
@@ -37,7 +37,7 @@ theorem scaffoldCocartesianBaseChangeClassificationIso_pointHom (c : I)
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram (pullback.snd p k)) c))).inv ≫
       functorHomEvaluate (scaffoldCocartesianBaseChangeClassificationIso p k).hom
         (ULift.up (nerveVertex c)) =
-    cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionFiberPoint p
       (k.app (Opposite.op ⦋0⦌) (nerveVertex c))
       ((cofinalVertexFiberBaseChangeIso p k (nerveVertex c)).hom.app (Opposite.op ⦋0⦌)
         ((leftStrictTransportEvaluate (pullback.snd p k) c).app (Opposite.op ⦋0⦌)
@@ -46,13 +46,13 @@ theorem scaffoldCocartesianBaseChangeClassificationIso_pointHom (c : I)
   let z := ULift.up.{u + 1} (nerveVertex c)
   let w := (leftStrictTransportEvaluate (pullback.snd p k) c).app (Opposite.op ⦋0⦌)
     (((cocartesianStrictTransportInclusion (pullback.snd p k)).app c).app (Opposite.op ⦋0⦌) v)
-  let e := functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) z
+  let e := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningInfinityDiagram_baseChangeIso p k) z
   have hc := scaffoldCocartesianKanClassificationIso_pointHom (pullback.snd p k) c v
   have hb := scaffoldPointedReconstruction_baseChange_pointHom p k (nerveVertex c) w
-  have hi := recoverPoint e _ _ hb
-  have hinv := functorIsoValue_inv (leftStraighteningInfinityDiagram_baseChangeIso p k) z
+  have hi := _root_.SerrePositivity.InfinityCategories.Stable.Transport.recoverPoint e _ _ hb
+  have hinv := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_inv (leftStraighteningInfinityDiagram_baseChangeIso p k) z
   rw [hinv] at hi
-  have hs := appendPoint _ _ _ _
+  have hs := _root_.SerrePositivity.InfinityCategories.Stable.Transport.appendPoint _ _ _ _
     (functorHomEvaluate (leftStraighteningInfinityDiagram_baseChangeIso p k).inv z) hc
   have he := hs.trans hi
   change _ ≫ _ ≫ functorHomEvaluate

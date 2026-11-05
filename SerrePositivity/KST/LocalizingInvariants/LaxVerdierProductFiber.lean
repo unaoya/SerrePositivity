@@ -22,26 +22,26 @@ local instance productFiberSimplicialCategory : SimplicialCategory OmegaSpectrum
   OmegaSpectrum.simplicialCategory
 local instance productFiberNerveQuasicategory : Quasicategory (SimplicialNerve OmegaSpectrum.{u}) :=
   sp_quasicategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma exists_laxQuotientProductFiber :
     ∃ s : FiberSquare (X := Sp.{u})
-        (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).toTruncated,
+        (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).toTruncated,
       ∃ l : Truncated.Edge
         (X := (truncation 2).obj ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u + 1})).obj Sp.{u}))
-        (functorVertex s.square) (functorVertex (hΦ.laxQuotientFiberTriangle p q i r h).square),
+        (functorVertex s.square) (functorVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square),
         IsInvertibleEdge l ∧ ((pre squareRightEdge).app Sp.{u}).app (Opposite.op ⦋1⦌) l.edge =
-          (hΦ.laxQuotientProductArrowIso p q i r h).edge.edge := by
+          ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso hΦ) p q i r h).edge.edge := by
   let g : (Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
-    SSet.yonedaEquiv.symm (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).edge
-  obtain ⟨s, l, hi, hl⟩ := exists_fiberSquare_right_transport (X := Sp.{u})
-    (hΦ.laxQuotientFiberTriangle p q i r h) (hΦ.laxQuotientFiberTriangle_isFiber p q i r h)
-    g (hΦ.laxQuotientProductArrowIso p q i r h)
+    SSet.yonedaEquiv.symm (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).edge
+  obtain ⟨s, l, hi, hl⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exists_fiberSquare_right_transport (X := Sp.{u})
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)) ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber p q i r h hΦ))
+    g ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso hΦ) p q i r h)
   let s' : FiberSquare (X := Sp.{u})
-      (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).toTruncated := {
+      (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).toTruncated := {
     square := s.square
     zero_corner := s.zero_corner
     right_edge := s.right_edge.trans (SSet.yonedaEquiv.symm_apply_apply g)
@@ -49,13 +49,13 @@ lemma exists_laxQuotientProductFiber :
   exact ⟨s', l, hi, hl⟩
 
 def laxQuotientProductFiberSquare : FiberSquare (X := Sp.{u})
-    (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).toTruncated :=
+    (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).toTruncated :=
   Classical.choose (hΦ.exists_laxQuotientProductFiber p q i r h)
 
 def laxQuotientProductFiberEdge : Truncated.Edge
     (X := (truncation 2).obj ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u + 1})).obj Sp.{u}))
     (functorVertex (hΦ.laxQuotientProductFiberSquare p q i r h).square)
-    (functorVertex (hΦ.laxQuotientFiberTriangle p q i r h).square) :=
+    (functorVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square) :=
   Classical.choose (Classical.choose_spec (hΦ.exists_laxQuotientProductFiber p q i r h))
 
 lemma laxQuotientProductFiberEdge_isInvertible :
@@ -66,13 +66,13 @@ lemma laxQuotientProductFiberEdge_isInvertible :
 lemma laxQuotientProductFiberEdge_right :
     ((pre squareRightEdge).app Sp.{u}).app (Opposite.op ⦋1⦌)
         (hΦ.laxQuotientProductFiberEdge p q i r h).edge =
-      (hΦ.laxQuotientProductArrowIso p q i r h).edge.edge :=
+      ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductArrowIso hΦ) p q i r h).edge.edge :=
   (Classical.choose_spec
     (Classical.choose_spec (hΦ.exists_laxQuotientProductFiber p q i r h))).2
 
 def laxQuotientProductFiberComparison : FunctorIso
     (hΦ.laxQuotientProductFiberSquare p q i r h).square
-    (hΦ.laxQuotientFiberTriangle p q i r h).square := by
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square := by
   have : IsIso (SSet.Truncated.HomotopyCategory.homMk
       (hΦ.laxQuotientProductFiberEdge p q i r h)) :=
     hΦ.laxQuotientProductFiberEdge_isInvertible p q i r h

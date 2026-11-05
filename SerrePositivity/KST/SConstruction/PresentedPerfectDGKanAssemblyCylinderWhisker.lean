@@ -24,7 +24,7 @@ lemma presentedPerfectDGKanAssemblyCylinderSource_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderSourceMap A r C)
           ((presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).obj D) :=
-  strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblySourceFunctor A r)
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderSourceTransformation A r)
@@ -40,7 +40,7 @@ lemma presentedPerfectDGKanAssemblyCylinderTarget_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderTargetMap A r C)
           ((presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).obj D) :=
-  strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderTargetTransformation A r)
@@ -56,7 +56,7 @@ lemma presentedPerfectDGKanAssemblyCylinderProjection_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderProjectionMap A r C)
           ((presentedPerfectDGKanAssemblyLeftTargetFunctor A r).obj D) :=
-  strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderProjectionTransformation A r)

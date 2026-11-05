@@ -21,26 +21,26 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
-  {A : SSet.{u}} [Quasicategory A] (f g : A ⟶ space X)
-  (h : f ≫ bottom X = g ≫ bottom X)
+  {A : SSet.{u}} [Quasicategory A] (f g : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X)
+  (h : f ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X = g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X)
 
 lemma relativeComparison_right_naturality :
-    homPost (right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-        (relativeComparison X f g h).hom ≫ arrowFamilyHom (g ≫ right X) =
-      arrowFamilyHom (f ≫ right X) ≫
-        homPost (right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+        (relativeComparison X f g h).hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) =
+      _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) ≫
+        homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
           (relativeComparison X f g h).hom := by
-  have he := arrowFamilyHom_naturality (f ≫ right X) (g ≫ right X)
-    (homPost (right X) (relativeComparison X f g h).hom)
+  have he := arrowFamilyHom_naturality (f ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) (g ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X)
+    (homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X) (relativeComparison X f g h).hom)
   rw [← homPost_comp, ← homPost_comp] at he
   exact he
 
 omit [Quasicategory A] in
 lemma relativeComparison_rightSource_arrow :
-    Arrow.mk (homPost (right X ≫
+    Arrow.mk (homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
         (relativeComparison X f g h).hom) =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ (right X ≫
+      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))) :
           hoFunctor.obj ((ihom A).obj X))) := by
   let F := (hoFunctor.map ((ihom A).map
@@ -48,18 +48,18 @@ lemma relativeComparison_rightSource_arrow :
   have he := congrArg F.mapArrow.obj (relativeComparison_bottom_arrow X f g h)
   rw [HomotopyLimits.functorIso_postcomp_hom] at he
   change Arrow.mk (homPost (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-    (homPost (bottom X) (relativeComparison X f g h).hom)) = Arrow.mk (F.map (𝟙 _)) at he
+    (homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X) (relativeComparison X f g h).hom)) = Arrow.mk (F.map (𝟙 _)) at he
   rw [CategoryTheory.Functor.map_id, ← homPost_comp] at he
-  change Arrow.mk (homPost (bottom X ≫ evaluateFunctorAt
+  change Arrow.mk (homPost (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫ evaluateFunctorAt
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (relativeComparison X f g h).hom) =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ (bottom X ≫
+      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))))) :
           hoFunctor.obj ((ihom A).obj X))) at he
-  have hl := congrArg (fun k : space X ⟶ X =>
-    Arrow.mk (homPost k (relativeComparison X f g h).hom)) (bottomTarget_eq_rightSource X)
-  let I (k : space X ⟶ X) : Arrow (hoFunctor.obj ((ihom A).obj X)) :=
+  have hl := congrArg (fun k : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ X =>
+    Arrow.mk (homPost k (relativeComparison X f g h).hom)) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottomTarget_eq_rightSource X)
+  let I (k : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ X) : Arrow (hoFunctor.obj ((ihom A).obj X)) :=
     Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex (g ≫ k))))
-  have hr := congrArg I (bottomTarget_eq_rightSource X)
+  have hr := congrArg I (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottomTarget_eq_rightSource X)
   exact hl.symm.trans (he.trans hr)
 
 end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams

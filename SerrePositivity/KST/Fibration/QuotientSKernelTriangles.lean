@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Comparison
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 /-- 元の商核の下側全二胞体は、同じ包含と商の Ex∞ 射の標準合成二胞体。 -/
 theorem quotientSKernelInfinitySquare_lower :

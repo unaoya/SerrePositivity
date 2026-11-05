@@ -19,35 +19,35 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet InfinityCategories LocalizingInvariants
 open scoped Simplicial
-local instance zeroIntervalStableHomKan : ∀ X Y : StableQCat.{u}, KanComplex (SimplicialCategory.sHom X Y) :=
-  fun X Y => stableQCat_sHom_kanComplex X Y
-variable (A B : StableCategory.{u})
+local instance zeroIntervalStableHomKan : ∀ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}, KanComplex (SimplicialCategory.sHom X Y) :=
+  fun X Y => _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex X Y
+variable (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 local instance zeroIntervalLiftedStableHomKan : KanComplex ((SSet.uliftFunctor.{u + 1, u}).obj
-    (SimplicialCategory.sHom (C := StableQCat.{u}) A B)) := by
-  letI : KanComplex (SimplicialCategory.sHom (C := StableQCat.{u}) A B) :=
-    stableQCat_sHom_kanComplex A B
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B)) := by
+  letI : KanComplex (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex A B
   exact kanComplex_uliftFunctor_obj _
 
 private abbrev zeroIntervalComponent : SSet.{u + 1} :=
   fullSubcomplexOnVertices ((SSet.uliftFunctor.{u + 1, u}).obj
-    (SimplicialCategory.sHom (C := StableQCat.{u}) A B))
+    (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B))
     (fun x => IsTerminalVertex x.down.val)
 
 private def zeroIntervalComponentIso
-    (h : ∃ x : (exactFunctors A B : SSet.{u}) _⦋0⦌, IsTerminalVertex x) :
+    (h : ∃ x : (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) _⦋0⦌, IsTerminalVertex x) :
     (SSet.uliftFunctor.{u + 1, u}).obj
-        (terminalVertices (exactFunctors A B : SSet.{u}) : SSet.{u}) ≅
+        (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) : SSet.{u}) ≅
       zeroIntervalComponent A B := by
-  let X := (terminalVertices (exactFunctors A B : SSet.{u}) : SSet.{u})
+  let X := (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) : SSet.{u})
   have hc : IsContractibleKan X := terminalVertices_isContractibleKan h
   letI : KanComplex X := hc.kanComplex
-  let j : X ⟶ SimplicialCategory.sHom (C := StableQCat.{u}) A B :=
-    quasicategoryCoreLift (terminalVertices (exactFunctors A B : SSet.{u})).ι
+  let j : X ⟶ SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B :=
+    quasicategoryCoreLift (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι
       (fun s => by
         have hs : IsInvertibleEdge (edgeOfSimplex s) :=
           IsGroupoid.all_isIso (C := hoFunctor.obj X) _
         exact (isInvertibleEdge_congr (by rfl)).mp
-          (hs.map (terminalVertices (exactFunctors A B : SSet.{u})).ι))
+          (hs.map (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι))
   refine {
     hom := fullSubcomplexLift _ ((SSet.uliftFunctor.{u + 1, u}).map j)
       (fun x => fullSubcomplexOnVertices_vertex x.down)
@@ -78,7 +78,7 @@ private def zeroIntervalComponentIso
     rfl
 
 private lemma zeroIntervalComponent_contractible
-    (h : ∃ x : (exactFunctors A B : SSet.{u}) _⦋0⦌, IsTerminalVertex x) :
+    (h : ∃ x : (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u}) _⦋0⦌, IsTerminalVertex x) :
     IsContractibleKan (zeroIntervalComponent A B) := by
   apply isContractibleKan_of_iso (zeroIntervalComponentIso A B h)
   have hc := terminalVertices_isContractibleKan h
@@ -90,35 +90,35 @@ private lemma zeroIntervalComponent_contractible
 /-- 概要：元全零完全関手の同じ固定端点区間 Hom の自己射の類は一意。
 方針：元終対象成分の可縮性と全 Hom 比較の充満忠実性を使う。
 規約：両端固定の全自己比較。使われ方：上下比較の対角の類の一致への還元。 -/
-lemma stableZeroInterval_hom_ext (F : ExactMap A B)
+lemma stableZeroInterval_hom_ext (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
     (hF : ∀ x, IsZeroVertex (F.hom.app (Opposite.op ⦋0⦌) x))
-    (f g : SSet.HomotopyCategory.mk (intervalMappingVertexOfEdge (stableArrow F)) ⟶
-      SSet.HomotopyCategory.mk (intervalMappingVertexOfEdge (stableArrow F))) : f = g := by
-  have ht : IsTerminalVertex (exactFunctorVertexEquiv A B F) := by
+    (f g : SSet.HomotopyCategory.mk (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F)) ⟶
+      SSet.HomotopyCategory.mk (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F))) : f = g := by
+  have ht : IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv A B F) := by
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isTerminalVertex
     change IsTerminalVertex (functorVertex F.hom)
     exact isTerminalVertex_functorVertex_of_pointwise _ (fun x => (hF x).2)
   let z : (zeroIntervalComponent A B) _⦋0⦌ := fullSubcomplexVertexEquiv _
-    ⟨ULift.up (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F), ht⟩
-  let M : zeroIntervalComponent A B ⟶ intervalMappingSpace (stableVertex A) (stableVertex B) :=
+    ⟨ULift.up (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F), ht⟩
+  let M : zeroIntervalComponent A B ⟶ intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex B) :=
     (fullSubcomplexOnVertices ((SSet.uliftFunctor.{u + 1, u}).obj
-      (SimplicialCategory.sHom (C := StableQCat.{u}) A B))
+      (SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B))
       (fun x => IsTerminalVertex x.down.val)).ι ≫
-        coherentHomIntervalComparison (C := StableQCat.{u}) A B
+        coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B
   have hc := zeroIntervalComponent_contractible A B ⟨_, ht⟩
   letI : KanComplex (zeroIntervalComponent A B) := hc.kanComplex
   have hM : IsFullyFaithful M := (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).comp
-    (coherentHomIntervalComparison_isQCatEquivalence (C := StableQCat.{u}) A B).isFullyFaithful
-  have hz : M.app (Opposite.op ⦋0⦌) z = intervalMappingVertexOfEdge (stableArrow F) := by
-    change (coherentHomIntervalComparison (C := StableQCat.{u}) A B).app _
-      (ULift.up (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F)) = _
-    have he := coherentHomIntervalComparison_vertex (C := StableQCat.{u})
-      (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F)
+    (coherentHomIntervalComparison_isQCatEquivalence (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B).isFullyFaithful
+  have hz : M.app (Opposite.op ⦋0⦌) z = intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow F) := by
+    change (coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B).app _
+      (ULift.up (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F)) = _
+    have he := coherentHomIntervalComparison_vertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B F)
     exact he.trans (congrArg
-      (fun K : (A : StableQCat.{u}) ⟶ (B : StableQCat.{u}) =>
-        intervalMappingVertexOfEdge (coherentNerveEdge (C := StableQCat.{u}) K))
+      (fun K : (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) ⟶ (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) =>
+        intervalMappingVertexOfEdge (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) K))
       (Equiv.symm_apply_apply
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B) F))
+        (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) A B) F))
   have hs : Subsingleton (SSet.HomotopyCategory.mk (M.app (Opposite.op ⦋0⦌) z) ⟶
       SSet.HomotopyCategory.mk (M.app (Opposite.op ⦋0⦌) z)) := by
     constructor

@@ -18,14 +18,14 @@ def straighteningGlobalBaseChangeValueIso (X : LeftFibrationObject B)
     (c : TransportSimplexCategory D) :=
   F2.isoNormalizeEndpoints
     (VertexIso.map (leftStraighteningSectionJointDiagram_baseChangeIso k)
-      (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
         (ULift.up ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
           (nerveVertex c))) (coherentNerveVertex X)))
-    (congrArg HomotopyCategory.mk (doubleFunctorEvaluation_precomp_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.doubleFunctorEvaluation_precomp_vertex
       ((SSet.uliftFunctor.{u + 1, u}).map k ≫ leftStraighteningSectionJointDiagram B)
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D))
       (ULift.up (nerveVertex c)) (coherentNerveVertex X)))
-    (congrArg HomotopyCategory.mk (doubleFunctorEvaluation_precomp_vertex
+    (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.doubleFunctorEvaluation_precomp_vertex
       (leftStraighteningSectionJointDiagram D ≫
         (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D))
@@ -35,8 +35,8 @@ def straighteningGlobalBaseChangeValueIso (X : LeftFibrationObject B)
 theorem straighteningGlobalBaseChangeValueIso_eq [Quasicategory D]
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
     straighteningGlobalBaseChangeValueIso k X c =
-      VertexIso.map (straighteningJointBaseChangeRestrictionIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+      VertexIso.map (_root_.SerrePositivity.InfinityCategories.Stable.Straightening.straighteningJointBaseChangeRestrictionIso k)
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up (nerveVertex c)) (coherentNerveVertex X)) :=
   F2.isoNormalizeEndpoints_eq_of_heq _ _ _ _
     (leftStraighteningJointBaseChangeDoubleMap k X c)
@@ -50,7 +50,7 @@ theorem leftStraighteningDiagramBaseChange_heq_globalValue {E : SSet.{u}}
       (straighteningGlobalBaseChangeValueIso k (leftFibrationObjectOf p) c) := by
   have hn : HEq (straighteningGlobalBaseChangeValueIso k (leftFibrationObjectOf p) c)
       (VertexIso.map (leftStraighteningSectionJointDiagram_baseChangeIso k)
-        (doubleFunctorEvaluation (Y := SpaceInfinity.{u})
+        (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := SpaceInfinity.{u})
           (ULift.up ((transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
             (nerveVertex c))) (leftFibrationInfinityVertex p))) := by
     unfold straighteningGlobalBaseChangeValueIso F2.isoNormalizeEndpoints
@@ -63,7 +63,7 @@ theorem straighteningGlobalBaseChangeValueIso_pointHom [Quasicategory D]
     (X : LeftFibrationObject B) (c : TransportSimplexCategory D)
     (v : ((((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).precompose
       (leftFibrationBaseChangeEnriched k)).obj c).obj X).obj _⦋0⦌) :
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       (((relativeSectionEnrichedDiagram
         (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj X)).symm
           ((relativeFunctorBaseChangeForward X.val.hom k
@@ -71,7 +71,7 @@ theorem straighteningGlobalBaseChangeValueIso_pointHom [Quasicategory D]
               (Opposite.op ⦋0⦌) v)) ≫
       (straighteningBaseChangeLeftChart k X c).inv ≫
         (straighteningGlobalBaseChangeValueIso k X c).hom =
-    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor D)).precompose
         (leftFibrationBaseChangeEnriched k)).obj c).obj X)).symm v) ≫
       (straighteningBaseChangeRightChart k X c).inv := by

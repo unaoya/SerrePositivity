@@ -43,7 +43,7 @@ def boundarySRealizationComparison (X : StableModel.{u}) :
 方針：商写像の局所化可逆性と L9 への接続を使う。
 規約：旧実現の Kan 性は仮定しない。使われ方：K 空間の比較。 -/
 lemma boundarySRealizationComparison_kan_piIsomorphism (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism (Spectra.PointedKanReplacement.map (boundarySRealizationComparison X)).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (Spectra.PointedKanReplacement.map (boundarySRealizationComparison X)).right := by
   apply pointedKanReplacement_map_piIsomorphism_of_localized_isIso
   exact boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) 0 X
@@ -60,7 +60,7 @@ def kSpaceBoundaryComparison (X : StableModel.{u}) :
 方針：Kan な実現の比較の π_* 同型を L9 の点つき写像空間へ移す。
 規約：全自然数次数と全基点を含む。使われ方：K の零対象の選択によらない自然性。 -/
 lemma kSpaceBoundaryComparison_piIsomorphism (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism (kSpaceBoundaryComparison X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kSpaceBoundaryComparison X).right :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     (Spectra.PointedKanReplacement.map (boundarySRealizationComparison X))
     (boundarySRealizationComparison_kan_piIsomorphism X)

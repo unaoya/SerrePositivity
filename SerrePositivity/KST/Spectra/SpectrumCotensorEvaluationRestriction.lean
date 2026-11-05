@@ -23,28 +23,28 @@ local instance evaluationRestrictionSpectrumSimplicialCategory :
 /-- 任意の単体集合のパラメータによる、元の普遍評価の制限。 -/
 def parameterEvaluation (A : PointedSimplicialSet.{u}) {K : SSet.{u}} (i : K ⟶ A.right) :
     GradedNatTrans (Center.ofBraidedObj K) (cotensorEnriched A) (sourceEnriched A) :=
-  EnrichedParameterCylinder.gradedRestriction i (cotensorEnriched A) (sourceEnriched A)
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction i (cotensorEnriched A) (sourceEnriched A)
     (unpointedGradedEvaluation A)
 
 /-- 任意のパラメータ制限を保持する円柱の豊穣評価。 -/
 def restrictedCylinderEnriched (A : PointedSimplicialSet.{u}) {K : SSet.{u}}
-    (i : K ⟶ A.right) : EnrichedFunctor SSet.{u} (EnrichedParameterCylinder.Object K (Object A))
+    (i : K ⟶ A.right) : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object K (Object A))
       OmegaSpectrum.{u} :=
-  EnrichedParameterCylinder.evaluationFunctor K (cotensorEnriched A) (sourceEnriched A)
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor K (cotensorEnriched A) (sourceEnriched A)
     (parameterEvaluation A i)
 
 /-- 円柱のパラメータ制限後の評価は元の制限された評価と厳密に一致。 -/
 lemma evaluationCylinderEnriched_restriction (A : PointedSimplicialSet.{u})
     {K : SSet.{u}} (i : K ⟶ A.right) :
-    (EnrichedParameterCylinder.restriction (C := Object A) i).comp SSet
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := Object A) i).comp SSet
         (evaluationCylinderEnriched A) = restrictedCylinderEnriched A i :=
-  EnrichedParameterCylinder.restriction_evaluation i (cotensorEnriched A) (sourceEnriched A)
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction_evaluation i (cotensorEnriched A) (sourceEnriched A)
     (parameterEvaluation A i) (unpointedGradedEvaluation A) (fun _ ↦ rfl)
 
 /-- パラメータ制限は coherent nerve 上でも元の評価図式と厳密に可換。 -/
 lemma evaluationCylinderInfinityMap_restriction (A : PointedSimplicialSet.{u})
     {K : SSet.{u}} (i : K ⟶ A.right) :
-    coherentNerveMap (EnrichedParameterCylinder.restriction (C := Object A) i) ≫
+    coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := Object A) i) ≫
         evaluationCylinderInfinityMap A = coherentNerveMap (restrictedCylinderEnriched A i) := by
   rw [evaluationCylinderInfinityMap, ← coherentNerveMap_comp,
     evaluationCylinderEnriched_restriction]

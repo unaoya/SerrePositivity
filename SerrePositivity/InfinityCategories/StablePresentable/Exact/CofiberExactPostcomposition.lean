@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
@@ -25,9 +27,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+namespace SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
 
@@ -41,36 +47,60 @@ lemma squareDiagram_postcomp
   exact ((functorVertexEquiv _ _).symm_apply_apply (R ≫ F)).trans
     (congrArg (· ≫ F) ((functorVertexEquiv _ _).symm_apply_apply R).symm)
 
-def postcomp : space X ⟶ space Y :=
-  fullSubcomplexLift Predicate (inclusion X ≫ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F) (by
+def postcomp : _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space X ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space Y :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F) (by
     intro v
     have hv := fullSubcomplexOnVertices_vertex v
     change IsZeroVertex (squareVertex (squareDiagram
       (((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) v.val)) 0 1) ∧ _
-    rw [squareDiagram_postcomp]
+    rw [_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.squareDiagram_postcomp]
     exact ⟨IsExactFunctor.preservesZero (F := F) _ hv.1,
       IsExactFunctor.preservesPushoutSquare F _ hv.2⟩)
 
-lemma postcomp_inclusion : postcomp F ≫ inclusion Y =
-    inclusion X ≫ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F :=
+lemma postcomp_inclusion : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion Y =
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion X ≫ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map F :=
   fullSubcomplexLift_ι _ _ _
 
-lemma postcomp_bottom : postcomp F ≫ bottom Y =
-    bottom X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [bottom, ← Category.assoc, postcomp_inclusion]
+lemma postcomp_bottom : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y =
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion]
   rw [Category.assoc, (pre squareBottomEdge).naturality F]
   rfl
 
-lemma postcomp_right : postcomp F ≫ right Y =
-    right X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
-  rw [right, ← Category.assoc, postcomp_inclusion]
+lemma postcomp_right : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y =
+    _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ (ihom (Δ[1] : SSet.{u})).map F := by
+  rw [_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion]
   rw [Category.assoc, (pre squareRightEdge).naturality F]
   rfl
 
-lemma postcomp_cofiber : postcomp F ≫ right Y ≫
+lemma postcomp_cofiber : _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫
       evaluateFunctorAt (Y := Y) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-    (right X ≫ evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ F := by
-  rw [← Category.assoc, postcomp_right, Category.assoc, arrowMap_evaluation]
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right X ≫ evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ F := by
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_right, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation]
   exact (Category.assoc _ _ _).symm
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+end SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp_bottom := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp_cofiber := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp_inclusion := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp_right := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.squareDiagram_postcomp := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.squareDiagram_postcomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.postcomp._proof_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp._proof_1

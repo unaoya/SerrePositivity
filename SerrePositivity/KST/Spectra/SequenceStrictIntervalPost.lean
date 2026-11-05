@@ -32,24 +32,24 @@ private lemma closedUnitEvaluation_natural {C : Type*} [Category C]
 
 /-- 境界の終点評価は、標的の後合成について自然。 -/
 lemma freeBoundaryHomEnd_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomEnd Z =
-      freeBoundaryHomEnd Y ≫ p := by
-  simpa only [freeBoundaryHomEnd, ← PointedMapping.prePointed_eq_closedPre,
+    PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Z =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd Y ≫ p := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     pointedIhom_map, PointedObject.ihom_obj_eq_basedHom] using
-    closedUnitEvaluation_natural p freeBoundaryEnd.{u}
+    closedUnitEvaluation_natural p _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u}
 
 /-- 境界の始点評価も、標的の後合成について自然。 -/
 lemma freeBoundaryHomStart_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    PointedObject.basedHomMap freeIntervalBoundary.{u} p ≫ freeBoundaryHomStart Z =
-      freeBoundaryHomStart Y ≫ p := by
-  simpa only [freeBoundaryHomStart, ← PointedMapping.prePointed_eq_closedPre,
+    PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Z =
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart Y ≫ p := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart, ← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre,
     pointedIhom_map, PointedObject.ihom_obj_eq_basedHom] using
-    closedUnitEvaluation_natural p freeBoundaryStart.{u}
+    closedUnitEvaluation_natural p _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u}
 
 /-- 自由境界の元の両端族は、同じ後合成の両端族へ厳密に移る。 -/
 lemma freeBoundaryHomPair_post {T Y Z : PointedSimplicialSet.{u}}
     (f g : T ⟶ Y) (p : Y ⟶ Z) :
-    freeBoundaryHomPair f g ≫ PointedObject.basedHomMap freeIntervalBoundary.{u} p =
+    freeBoundaryHomPair f g ≫ PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} p =
       freeBoundaryHomPair (f ≫ p) (g ≫ p) := by
   apply freeBoundaryHom_hom_ext
   · rw [Category.assoc]
@@ -64,18 +64,18 @@ namespace KanSequence
 /-- 同じ全列区間へ列射を後合成し、元の両端を後合成した全列区間を得る。 -/
 def StrictInterval.post {X Y Z : KanSequence.{u}} {f g : Hom X Y}
     (H : StrictInterval f g) (p : Hom Y Z) : StrictInterval (f.comp p) (g.comp p) where
-  hom := H.hom.comp (mappingPost freeInterval.{u} p)
+  hom := H.hom.comp (mappingPost _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} p)
   boundary n := by
-    change (H.hom.app n ≫ PointedObject.basedHomMap freeInterval.{u} (p.app n)) ≫
-        PointedMapping.prePointed freeBoundaryInclusion.{u} (Z.level n).space =
+    change (H.hom.app n ≫ PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval.{u} (p.app n)) ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} (Z.level n).space =
       freeBoundaryHomPair (f.app n ≫ p.app n) (g.app n ≫ p.app n)
-    have hn := (MonoidalClosed.pre freeBoundaryInclusion.{u}).naturality (p.app n)
-    simp only [← PointedMapping.prePointed_eq_closedPre] at hn
+    have hn := (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u}).naturality (p.app n)
+    simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
     rw [Category.assoc]
     erw [hn]
     rw [← Category.assoc]
     have hb := H.boundary n
-    change H.hom.app n ≫ PointedMapping.prePointed freeBoundaryInclusion.{u} (Y.level n).space =
+    change H.hom.app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion.{u} (Y.level n).space =
       freeBoundaryHomPair (f.app n) (g.app n) at hb
     rw [hb, pointedIhom_map, freeBoundaryHomPair_post]
 

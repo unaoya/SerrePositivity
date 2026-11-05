@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 全次段補正の射影は、元の適合円柱と全前段補正の構造射像そのもの。 -/
 lemma monicKPrismNativeDirectCorrectionChain_projection_trace (n : ℕ) :
     (familyHomotopyChainTrace (monicKPrismNativeDirectCorrectionChain F f g (n + 1))).map
-      (· ≫ PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space) =
       ((nerveMap (compositionStringComposite f g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismRawSequenceCompatibility n F (f ≫ g)).h) ::
@@ -33,7 +33,7 @@ lemma monicKPrismNativeDirectCorrectionChain_projection_trace (n : ℕ) :
   rw [monicKPrismNativeDirectCorrectionChain_trace]
   calc
     _ = ((familyHomotopyChainTrace (monicKPrismTracedStage F (f ≫ g) (n + 1)).chain).map
-        (· ≫ PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space)).map
         ((nerveMap (compositionStringComposite f g) ▷ (Δ[1] : SSet.{u})) ≫ ·) := by
       simp only [List.map_map, Function.comp_def, Category.assoc]

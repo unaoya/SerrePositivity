@@ -37,7 +37,7 @@ private lemma restrictionVertexInvertible {A B X : SSet.{u}} [Quasicategory X]
 
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
 
 private lemma firstVertexInvertible (j : Fin 2) (x : (Δ[1] : SSet.{u}) _⦋0⦌) :
     IsInvertibleEdge (simplicialHomotopyVertexEdge (squareFrameTriangleFirst H j) x).toTruncated := by

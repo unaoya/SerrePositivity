@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -67,9 +69,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -83,42 +88,42 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem exists_boundary_lift_of_fiber_lifting {E B : SSet.{u}}
     (p : E ⟶ B) [Fibration p]
     (hF : ∀ b : B _⦋0⦌,
-      (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (KanFiber p b)))
+      (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b)))
     (n : ℕ) (a : (boundary.{u} n : SSet.{u}) ⟶ E) (b : (Δ[n] : SSet.{u}) ⟶ B)
     (hab : a ≫ p = (boundary n).ι ≫ b) :
     ∃ t : (Δ[n] : SSet.{u}) ⟶ E, (boundary n).ι ≫ t = a ∧ t ≫ p = b := by
   let i := (boundary.{u} n).ι
-  let x := b.app _ (SimplexLastContraction.vertex n)
-  let q := SimplexLastContraction.map.{u} n ≫ b
+  let x := b.app _ (_root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex n)
+  let q := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map.{u} n ≫ b
   have hq₀ : SSet.ι₀ ≫ q = b := by
     dsimp only [q]
-    rw [← Category.assoc, SimplexLastContraction.zero, Category.id_comp]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero, Category.id_comp]
   have hq₁ : SSet.ι₁ ≫ q = SSet.const x := by
     dsimp only [q]
-    rw [← Category.assoc, SimplexLastContraction.one, SSet.const_comp]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one, SSet.const_comp]
   let qA := i ▷ (Δ[1] : SSet.{u}) ≫ q
   have ha : a ≫ p = SSet.ι₀ ≫ qA := by
     dsimp only [qA]
     rw [← Category.assoc, SSet.ι₀_comp, Category.assoc, hq₀]
     exact hab
-  obtain ⟨l, hl₀, hlp⟩ := exists_fibration_interval_lift p a qA ha
+  obtain ⟨l, hl₀, hlp⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_fibration_interval_lift p a qA ha
   let a₁ := SSet.ι₁ ≫ l
   have ha₁ : a₁ ≫ p = SSet.const x := by
     dsimp only [a₁]
     rw [Category.assoc, hlp]
     dsimp only [qA]
     rw [← Category.assoc, SSet.ι₁_comp, Category.assoc, hq₁, SSet.comp_const]
-  let aF := fiberLift p x a₁ ha₁
-  let : HasLiftingProperty i (terminal.from (KanFiber p x)) := hF x i inferInstance
-  let sqF : CommSq aF i (terminal.from (KanFiber p x)) (terminal.from (Δ[n] : SSet.{u})) :=
+  let aF := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p x a₁ ha₁
+  let : HasLiftingProperty i (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p x)) := hF x i inferInstance
+  let sqF : CommSq aF i (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p x)) (terminal.from (Δ[n] : SSet.{u})) :=
     ⟨Subsingleton.elim _ _⟩
-  let s := sqF.lift ≫ fiberι p x
+  let s := sqF.lift ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p x
   have hs : i ≫ s = a₁ := by
     dsimp only [s]
-    rw [← Category.assoc, sqF.fac_left, fiberLift_ι]
+    rw [← Category.assoc, sqF.fac_left, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
   have hsp : s ≫ p = SSet.const x := by
     dsimp only [s]
-    rw [Category.assoc, fiberι_comp, SSet.comp_const]
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, SSet.comp_const]
   let H : SSet.Homotopy a (i ≫ s) := {
     h := l
     h₀ := hl₀
@@ -139,14 +144,14 @@ theorem exists_boundary_lift_of_fiber_lifting {E B : SSet.{u}}
 使われ方：Goerss–Jardine I §§7–8、BF 1978 §2。実際の持ち上げによる弱同値の検出。 -/
 theorem fibration_rlp_of_fiber_lifting {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (hF : ∀ b : B _⦋0⦌,
-      (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (KanFiber p b))) :
+      (MorphismProperty.monomorphisms SSet.{u}).rlp (terminal.from (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b))) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp p := by
   rw [SSet.rlp_monomorphisms]
   intro A B i hi
   rcases hi with ⟨n⟩
   constructor
   intro a b sq
-  obtain ⟨t, ht, htp⟩ := exists_boundary_lift_of_fiber_lifting p hF n a b sq.w
+  obtain ⟨t, ht, htp⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_lift_of_fiber_lifting p hF n a b sq.w
   exact CommSq.HasLift.mk' { l := t, fac_left := ht, fac_right := htp }
 
 /-- 概要：非空な Kan 複体間の π_* 同型である Kan fibration は全単射 RLP を持つ。
@@ -154,14 +159,26 @@ theorem fibration_rlp_of_fiber_lifting {E B : SSet.{u}} (p : E ⟶ B) [Fibration
 規約：全空間の参照頂点 e₀ を明示する。
 使われ方：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2。Whitehead の相対版。 -/
 theorem fibration_rlp_of_piIsomorphism {E B : SSet.{u}} [KanComplex E] [KanComplex B]
-    (p : E ⟶ B) [Fibration p] (hp : KanPiIsomorphism p) (e₀ : E _⦋0⦌) :
+    (p : E ⟶ B) [Fibration p] (hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism p) (e₀ : E _⦋0⦌) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp p := by
-  apply fibration_rlp_of_fiber_lifting p
+  apply _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_fiber_lifting p
   intro b
-  obtain ⟨e, he⟩ := fibration_surjective_vertices_of_piIsomorphism p hp e₀ b
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_piIsomorphism p hp e₀ b
   subst b
-  exact fiber_terminal_rlp_of_piIsomorphism p hp (p.app _ e) (fiberPoint p e)
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.fiber_terminal_rlp_of_piIsomorphism p hp (p.app _ e) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_boundary_lift_of_fiber_lifting := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_lift_of_fiber_lifting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_rlp_of_fiber_lifting := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_fiber_lifting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_rlp_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism

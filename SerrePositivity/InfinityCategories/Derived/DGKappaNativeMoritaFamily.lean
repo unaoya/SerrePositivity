@@ -25,22 +25,22 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 /-- 同じ実評価 Morita 辺を全入力で延長し、始点 ν と各対象の全実辺を厳密に保つ。 -/
 lemma dgKappaNativeMoritaFamily_exists :
     ∃ L : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-        equivalencePath StableInfinity.{max (u + 1) v},
+        equivalencePath _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v},
       L ≫ equivalencePathEndpoint _ 0 = dgKInputNu R ∧
       ∀ A : PerfDGInput.{u, max (u + 1) v} R,
         L.app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
           equivalencePathVertex
-            (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
+            (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
             (dgKappaNativeMoritaExactMap_isInvertible R A (s A).cone (s A).perfect) := by
   let a := fun k : (dgKInputInfinity.{u, max (u + 1) v} R) _⦋0⦌ =>
     equivalencePathVertex
-      (stableArrow (dgKappaNativeMoritaExactMap R (coherentNerveObject k)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R (coherentNerveObject k)
         (s (coherentNerveObject k)).cone (s (coherentNerveObject k)).perfect))
       (dgKappaNativeMoritaExactMap_isInvertible R (coherentNerveObject k)
         (s (coherentNerveObject k)).cone (s (coherentNerveObject k)).perfect)
   have hav (A : PerfDGInput.{u, max (u + 1) v} R) :
       a (coherentNerveVertex A) = equivalencePathVertex
-        (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
         (dgKappaNativeMoritaExactMap_isInvertible R A (s A).cone (s A).perfect) := by
     dsimp only [a]
     rw [coherentNerveObject_vertex]
@@ -54,7 +54,7 @@ lemma dgKappaNativeMoritaFamily_exists :
         (dgKInputNu R).app (Opposite.op ⦋0⦌) (coherentNerveVertex A)
     rw [hav, equivalencePathVertex_zero, dgKInputNu_vertex]
   have : HasLiftingProperty (vertexDiscreteι (dgKInputInfinity.{u, max (u + 1) v} R))
-      (equivalencePathEndpoint StableInfinity.{max (u + 1) v} 0) :=
+      (equivalencePathEndpoint _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} 0) :=
     TrivialKanFibration.mem _ inferInstance
   let sq : CommSq (vertexDiscreteMap a) (vertexDiscreteι _)
       (equivalencePathEndpoint _ 0) (dgKInputNu R) :=
@@ -69,7 +69,7 @@ lemma dgKappaNativeMoritaFamily_exists :
 
 /-- 実構成した全 Morita 比較。終点の S 内核作用への持ち上げは別工程。 -/
 def dgKappaNativeMoritaFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    equivalencePath StableInfinity.{max (u + 1) v} :=
+    equivalencePath _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   (dgKappaNativeMoritaFamily_exists R s).choose
 
 lemma dgKappaNativeMoritaFamily_source :
@@ -79,19 +79,19 @@ lemma dgKappaNativeMoritaFamily_source :
 lemma dgKappaNativeMoritaFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
       equivalencePathVertex
-        (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect))
         (dgKappaNativeMoritaExactMap_isInvertible R A (s A).cone (s A).perfect) :=
   (dgKappaNativeMoritaFamily_exists R s).choose_spec.2 A
 
 /-- 元の実辺を各対象で厳密回収する、全 native 入力の arrow 値比較族。 -/
 def dgKappaNativeMoritaArrowFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj StableInfinity.{max (u + 1) v} :=
+    (ihom (Δ[1] : SSet.{max (u + 1) v + 1})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   dgKappaNativeMoritaFamily R s ≫ equivalencePathι _
 
 lemma dgKappaNativeMoritaArrowFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaNativeMoritaArrowFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
       functorVertex (SSet.yonedaEquiv.symm
-        (stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge) := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R A (s A).cone (s A).perfect)).edge) := by
   change (equivalencePathι _).app (Opposite.op ⦋0⦌)
     ((dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A)) = _
   rw [dgKappaNativeMoritaFamily_at]
@@ -99,12 +99,12 @@ lemma dgKappaNativeMoritaArrowFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
 
 /-- 全入力で構成した実核の StableInfinity 値。S 内の核作用はまだ構成しない。 -/
 def dgKappaNativeKernelStableFamily : dgKInputInfinity.{u, max (u + 1) v} R ⟶
-    StableInfinity.{max (u + 1) v} :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   dgKappaNativeMoritaFamily R s ≫ equivalencePathEndpoint _ 1
 
 lemma dgKappaNativeKernelStableFamily_at (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaNativeKernelStableFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-      stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R A (s A).cone)) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgKappaResolvedKernelKInput R A (s A).cone)) := by
   change (equivalencePathEndpoint _ 1).app (Opposite.op ⦋0⦌)
     ((dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌) (coherentNerveVertex A)) = _
   rw [dgKappaNativeMoritaFamily_at, equivalencePathVertex_one]

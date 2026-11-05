@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleComparisonActionHomKan (z : Sp.{u} _⦋0⦌) :
     KanComplex (circleEvaluationPointedHom z).right := by
@@ -39,7 +39,7 @@ lemma circleCompanionComparisonRightEdge_action (z : Sp.{u} _⦋0⦌)
     (circleCompanionComparisonRightEdge z k).edge := by
   have h := congrArg SSet.yonedaEquiv
     (circleCompanionComparisonRawHomSquare_includeFirst z k)
-  rw [← SquareBoundary.right_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
+  rw [← _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right_yoneda, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
     circleCompanionReflectedTriangle_trace, Category.assoc, SSet.yonedaEquiv_comp,
     Equiv.apply_symm_apply] at h
   simp only [NatTrans.comp_app, types_comp_apply] at h
@@ -52,7 +52,7 @@ lemma circleCompanionComparisonDifference_action (z : Sp.{u} _⦋0⦌) :
       (circleCompanionConeComparisonHom z)
       (nativeCotensorInput PointedSimplicialSet.circle z).val.toKanSequence)
         (circleCompanionEdgewiseDifferenceHom z) =
-    FundamentalLoop.toHom (KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
+    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) := by
   let sourceReferenceIso : IsIso (SSet.HomotopyCategory.homMk
       (circleCompanionEdgewiseFramedEdge z .right 0 1 (of_decide_eq_true rfl))) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj (circleEvaluationPointedHom z).right) _

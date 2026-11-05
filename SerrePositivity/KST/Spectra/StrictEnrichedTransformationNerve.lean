@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.StrictEnrichedTransformation
 
@@ -27,9 +27,9 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
   (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
 
 /-- 厳密な豊穣自然変換の二段の円柱上の関手。 -/
-def cylinder : EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin 2) C) D :=
+def cylinder : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2) C) D :=
   (EnrichedOrderedCylinder.bridge (𝟙 (𝟙_ SSet.{u}))).comp SSet
-    (EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G η)
+    (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F G η)
 
 /-- 円柱の左端は元の関手。 -/
 lemma cylinder_source :
@@ -97,7 +97,7 @@ lemma homotopy_component (X : C) :
   change (G.map X X).app (Opposite.op ⦋0⦌)
       ((eId SSet X).app (Opposite.op ⦋0⦌) PUnit.unit) =
     (eId SSet (G.obj X)).app (Opposite.op ⦋0⦌) PUnit.unit at hg
-  rw [hg, EnrichedParameterCylinder.base_comp_id_app]
+  rw [hg, _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.base_comp_id_app]
   rfl
 
 /-- 成分が可逆な厳密な単体的自然変換は、元の二つの ∞ 関手の同型を与える。 -/

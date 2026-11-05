@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.Fibration
 方針：実供給の既存回収式を同じ型で保持する。
 規約：新たな存在仮定は加えない。
 使われ方：実読出し・正規化読出しの両方を同じ全ホモトピーへ渡す。 -/
-abbrev VerdierLowerNativeReadoutRecovery (d : VerdierDiagram.{u})
+abbrev VerdierLowerNativeReadoutRecovery (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d)) : Prop :=
   ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
@@ -35,7 +35,7 @@ abbrev VerdierLowerNativeReadoutRecovery (d : VerdierDiagram.{u})
 方針：実読出しの存在定理を同じ型で消費する。
 規約：(9) 全体の存在は使わない。
 使われ方：指定両端を持つ実下側ホモトピーの無条件入力。 -/
-theorem verdierLowerNativeReadoutRecovery_exists (d : VerdierDiagram.{u}) :
+theorem verdierLowerNativeReadoutRecovery_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ∃ L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d),
       L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
@@ -47,7 +47,7 @@ theorem verdierLowerNativeReadoutRecovery_exists (d : VerdierDiagram.{u}) :
 方針：curry の頂点と元の族の同じパラメータ制限を照合する。
 規約：同じ L を保持し、別の読出し族を選ばない。
 使われ方：(9) の normalize(t) と元の実下側との比較を接続する。 -/
-theorem verdierLowerNormalizedReadout_recovery (d : VerdierDiagram.{u})
+theorem verdierLowerNormalizedReadout_recovery (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
@@ -68,7 +68,7 @@ theorem verdierLowerNormalizedReadout_recovery (d : VerdierDiagram.{u})
   rw [hk] at h
   exact h
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)

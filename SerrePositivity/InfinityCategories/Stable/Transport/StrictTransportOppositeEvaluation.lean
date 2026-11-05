@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.Core.Equivalence
@@ -40,9 +42,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   (p : E ⟶ nerve I) [LeftFibration p]
 
@@ -54,22 +59,22 @@ def strictTransportComparisonObject : EdgewiseEnrichedObject (LeftFibrationObjec
 theorem strictTransportOppositeSource_vertex :
     (edgewiseEnrichedInfinityMap (LeftFibrationObject (nerve I)) ≫
       leftStraighteningCoherentMap I).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (strictTransportComparisonObject p)) =
+        (coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p)) =
       functorVertex (leftStraighteningCandidate p) :=
   (congrArg ((leftStraighteningCoherentMap I).app (Opposite.op ⦋0⦌))
     (coherentNerveMap_vertex (edgewiseEnrichedRight (LeftFibrationObject (nerve I)))
-      (strictTransportComparisonObject p))).trans (leftStraighteningCoherentMap_vertex p)
+      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p))).trans (leftStraighteningCoherentMap_vertex p)
 
 /-- 既存の対象ごとの反転比較は、同じ大域比較の同じ頂点評価と HEq。 -/
 theorem strictTransportOppositeVertexIso_heq_map :
     HEq (leftStraighteningCoherentMap_oppositeVertexIso p)
       (VertexIso.map (leftStraighteningCoherentMap_oppositeIso I)
-        (evaluateFunctorAt (coherentNerveVertex (strictTransportComparisonObject p)))) := by
+        (evaluateFunctorAt (coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p)))) := by
   let e := leftStraighteningCoherentMap_oppositeIso I
-  let x := coherentNerveVertex (strictTransportComparisonObject p)
+  let x := coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p)
   have h : HEq (leftStraighteningCoherentMap_oppositeVertexIso p) (e.app x) :=
     F2.iso_endpoints_heq _
-      (congrArg HomotopyCategory.mk (strictTransportOppositeSource_vertex p))
+      (congrArg HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeSource_vertex p))
       (congrArg HomotopyCategory.mk (leftStraighteningOppositeCoherentMap_vertex p))
   exact h.trans (F2.functorIso_app_heq_evaluate e x)
 
@@ -89,34 +94,61 @@ def strictTransportOppositeComponentIso (i : I) :
     VertexIso (spaceInfinityVertex ((leftStrictTransportFunctor p).obj i))
       (spaceInfinityVertex (kanObjectOpFunctor.obj ((leftStrictTransportFunctor p).obj i))) :=
   (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p i))).symm ≪≫
-    functorIsoValue (leftStraighteningCoherentMap_oppositeVertexIso p) (ULift.up (nerveVertex i)) ≪≫
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue (leftStraighteningCoherentMap_oppositeVertexIso p) (ULift.up (nerveVertex i)) ≪≫
       eqToIso (congrArg HomotopyCategory.mk
-        (ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) i))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) i))
 
 /-- 同じ指定成分は、同じ大域比較の同じ二重評価による像と HEq。 -/
 theorem strictTransportOppositeComponentIso_heq_doubleMap (i : I) :
-    HEq (strictTransportOppositeComponentIso p i)
+    HEq (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso p i)
       (VertexIso.map (leftStraighteningCoherentMap_oppositeIso I)
-        (kanEnrichedDoubleEvaluation (strictTransportComparisonObject p) i)) := by
+        (_root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p) i)) := by
   let e := leftStraighteningCoherentMap_oppositeIso I
-  let x := coherentNerveVertex (strictTransportComparisonObject p)
+  let x := coherentNerveVertex (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject p)
   let a := ULift.up.{u + 1} (nerveVertex i)
   let R := leftStraighteningCoherentMap_oppositeVertexIso p
   let F := edgewiseEnrichedInfinityMap (LeftFibrationObject (nerve I)) ≫
     leftStraighteningCoherentMap I
   let G := leftStraighteningOppositeCoherentMap I
-  have h₁ : HEq (strictTransportOppositeComponentIso p i) (functorIsoValue R a) :=
+  have h₁ : HEq (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso p i) (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue R a) :=
     F2.iso_endpoints_heq _
       (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p i))
       (congrArg HomotopyCategory.mk
-        (ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) i))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) i))
   have h₂ := F2.vertexIso_map_heq_of_heq R (VertexIso.map e (evaluateFunctorAt x))
-    ((strictTransportOppositeSource_vertex p).symm.trans
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeSource_vertex p).symm.trans
       (evaluateFunctorAt_functorVertex x F).symm)
     ((leftStraighteningOppositeCoherentMap_vertex p).symm.trans
       (evaluateFunctorAt_functorVertex x G).symm)
-    (strictTransportOppositeVertexIso_heq_map p) (evaluateFunctorAt a)
-  exact h₁.trans ((functorIsoValue_heq_map R a).trans
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeVertexIso_heq_map p) (evaluateFunctorAt a)
+  exact h₁.trans ((_root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map R a).trans
     (h₂.trans (heq_of_eq (F2.vertexIso_map_comp e (evaluateFunctorAt x) (evaluateFunctorAt a)))))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportComparisonObject := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso_heq_doubleMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeIso_heq := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeIso_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeSource_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeSource_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeVertexIso_heq_map := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeVertexIso_heq_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso._proof_2

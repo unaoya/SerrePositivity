@@ -15,11 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma preservesZero_of_components {K : SSet.{u}} (F : K ⟶ (laxCategory p q).obj)
     [IsExactFunctor (F ≫ (laxFst p q).hom)] [IsExactFunctor (F ≫ (laxSnd p q).hom)] :
@@ -42,9 +42,9 @@ lemma exact_of_components {K : SSet.{u}} (F : K ⟶ (laxCategory p q).obj)
       IsExactFunctor.preservesCofiber (F := F ≫ (laxSnd p q).hom) t ht⟩
 
 instance fromD_isExact : IsExactFunctor (fromD p q) := by
-  have hz : IsExactFunctor (zeroC : D.obj ⟶ C.obj) := isExact_of_zero_values _ (by
+  have hz : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC : D.obj ⟶ C.obj) := isExact_of_zero_values _ (by
     intro x
-    rw [zeroC, zeroDiagram_const_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
     exact (chosenZeroVertex C.obj).isZero)
   have : IsExactFunctor (fromD p q ≫ (laxFst p q).hom) := (fromD_fst p q).symm ▸ hz
   have : IsExactFunctor (fromD p q ≫ (laxSnd p q).hom) :=
@@ -52,9 +52,9 @@ instance fromD_isExact : IsExactFunctor (fromD p q) := by
   exact exact_of_components p q _
 
 instance fromC_isExact : IsExactFunctor (fromC p q) := by
-  have hz : IsExactFunctor (zeroD : C.obj ⟶ D.obj) := isExact_of_zero_values _ (by
+  have hz : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD : C.obj ⟶ D.obj) := isExact_of_zero_values _ (by
     intro x
-    rw [zeroD, zeroDiagram_const_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD, zeroDiagram_const_vertex]
     exact (chosenZeroVertex D.obj).isZero)
   have : IsExactFunctor (fromC p q ≫ (laxFst p q).hom) :=
     (fromC_fst p q).symm ▸ inferInstanceAs (IsExactFunctor (𝟙 C.obj))
@@ -62,9 +62,9 @@ instance fromC_isExact : IsExactFunctor (fromC p q) := by
   exact exact_of_components p q _
 
 /-- 元の D 包含を完全関手に束ねる。 -/
-def exactFromD : ExactMap D (laxCategory p q) := ⟨fromD p q, inferInstance⟩
+def exactFromD : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D (laxCategory p q) := ⟨fromD p q, inferInstance⟩
 
 /-- 元の C 包含を完全関手に束ねる。 -/
-def exactFromC : ExactMap C (laxCategory p q) := ⟨fromC p q, inferInstance⟩
+def exactFromC : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C (laxCategory p q) := ⟨fromC p q, inferInstance⟩
 
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion

@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.Fibration
 方針：元の下側読出しを固定境界付きで合成し、その同じ実長 Hom を再構成する。
 規約：上側第二短辺を定値へ置き換えず、全一単体の比較と同じ両端の全 native Hom を保持する。
 使われ方：残る指定有限端点・同じ三面内比較を行うための実上下族。 -/
-theorem verdierMovingSharedDiagonal_nativeEndpoints_exists (d : VerdierDiagram.{u}) :
+theorem verdierMovingSharedDiagonal_nativeEndpoints_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
       ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N =
@@ -84,7 +84,7 @@ theorem verdierMovingSharedDiagonal_nativeEndpoints_exists (d : VerdierDiagram.{
 /-- 概要：同じ実下側と動く上側全族を、全共有対角で接続する既存の公開形。
 方針：同じ実両端の全 native Hom も持つ強化存在定理を特殊化する。
 規約：既存の公開型を保持。使われ方：元の全四角形比較への利用側。 -/
-theorem verdierMovingSharedDiagonal_exists (d : VerdierDiagram.{u}) :
+theorem verdierMovingSharedDiagonal_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
       ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N =

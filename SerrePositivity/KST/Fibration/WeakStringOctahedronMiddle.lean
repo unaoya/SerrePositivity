@@ -21,13 +21,13 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の八面体の中間評価を、核に値を持つ完全関手として保持する。 -/
-def weakStringOctahedronMiddleExact {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronMiddleExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     weakStringModel q n ⟶ closedStableModel (kernelClosedPredicate q) :=
   weakStringOctahedronRelativeExact q β ≫ kernelRelativeMiddle q
 
 /-- 中間評価は、包含後に元の実比較列の同じ頂点を回収する。 -/
-lemma weakStringOctahedronMiddleExact_ambient {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringOctahedronMiddleExact_ambient {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     (weakStringOctahedronMiddleExact q β).val ≫
       (closedStableInclusion (kernelClosedPredicate q)).val =
@@ -40,7 +40,7 @@ lemma weakStringOctahedronMiddleExact_ambient {B C : StableCategory.{u}} (q : Ex
     (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 0)
 
 /-- 元の長辺の共通 cofiber と中間評価は、核の実関手圏で自然同型である。 -/
-def weakStringOctahedronMiddleExact_comparison {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronMiddleExact_comparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     FunctorIso (weakStringOctahedronMiddleExact q β).val
       (weakStringKernelCofiber q (SimplexCategory.δ (1 : Fin 3) ≫ β)).val := by
@@ -64,7 +64,7 @@ def weakStringOctahedronMiddleExact_comparison {B C : StableCategory.{u}} (q : E
   exact he
 
 /-- 同じ実八面体比較関手に対する K-1 の全正有限反復加法性。 -/
-lemma weakStringOctahedronMultiAddition {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringOctahedronMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map
       (weakStringOctahedronMiddleExact q β)) =

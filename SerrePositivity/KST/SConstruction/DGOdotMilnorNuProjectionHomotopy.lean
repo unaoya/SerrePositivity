@@ -22,12 +22,12 @@ private lemma projectionIdentityParameter {X : SSet.{u}} (x : X _⦋0⦌) :
   change (SSet.Truncated.Edge.id (X := (truncation 2).obj X) x).edge = PinchedHom.constant x 1
   exact (pinchedConstant_one x).symm
 
-private lemma projectionIdentityVertexPath (A : StableQCat.{u}) :
-    fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (stableVertex A) =
-      snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (stableArrow (𝟙 A)).edge := by
-  have hi : SSet.yonedaEquiv.symm (stableArrow (𝟙 A)).edge =
-      (SSet.const (stableVertex A) : (Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}) := by
-    change SSet.yonedaEquiv.symm (coherentNerveEdge (C := StableQCat.{u}) (𝟙 A)).edge = _
+private lemma projectionIdentityVertexPath (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) =
+      snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 A)).edge := by
+  have hi : SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 A)).edge =
+      (SSet.const (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex A) : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) := by
+    change SSet.yonedaEquiv.symm (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (𝟙 A)).edge = _
     rw [coherentNerveEdge_id]
     exact projectionIdentityParameter _
   simp only [SSet.yonedaEquiv_symm_zero, hi, SSet.comp_const]
@@ -42,31 +42,31 @@ local notation "G" => PerfectVerdierSequence.projection (dgOdotMilnorNuPerfectSe
 方針：元の同じパラメータ辺を標準 coherent 区間比較へ写す。
 規約：元辺を選び直さない。使われ方：端点固定の実商比較。 -/
 def dgOdotMilnorNuProjectionIntervalEdge :
-    (intervalMappingSpace (coherentNerveVertex (C := StableQCat.{u + 1}) (A))
-      (coherentNerveVertex (C := StableQCat.{u + 1}) (B))).Edge
-        (intervalMappingVertexOfEdge (coherentNerveEdge (C := StableQCat.{u + 1}) (F)))
-        (intervalMappingVertexOfEdge (coherentNerveEdge (C := StableQCat.{u + 1}) (G))) :=
-  coherentHomIntervalEdgeFromParameter (C := StableQCat.{u + 1}) (F) (G)
+    (intervalMappingSpace (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A))
+      (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (B))).Edge
+        (intervalMappingVertexOfEdge (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (F)))
+        (intervalMappingVertexOfEdge (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (G))) :=
+  coherentHomIntervalEdgeFromParameter (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (F) (G)
     (dgOdotMilnorNuProjectionCoreEdge R d h)
 
 /-- 概要：元指定商比較を元二辺の関手空間の同じ実辺として保持する。
 方針：同じ固定端点 fiber の包含で元区間辺を写す。
 規約：既公開商比較と同じ元辺。使われ方：同じ実ホモトピーの読み出し。 -/
 def dgOdotMilnorNuProjectionArrowFunctorEdge : SSet.Truncated.Edge
-    (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 2})).obj StableInfinity.{u + 1}))
-      (functorVertex (SSet.yonedaEquiv.symm (stableArrow (F)).edge))
-      (functorVertex (SSet.yonedaEquiv.symm (stableArrow (G)).edge)) :=
+    (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u + 2})).obj _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}))
+      (functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (F)).edge))
+      (functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (G)).edge)) :=
   ((dgOdotMilnorNuProjectionIntervalEdge R d h).map
-    (vertexFiberι ((pre (boundary 1).ι).app StableInfinity.{u + 1})
-      (functorVertex (intervalMappingBoundary (coherentNerveVertex (C := StableQCat.{u + 1}) (A))
-        (coherentNerveVertex (C := StableQCat.{u + 1}) (B)))))).toTruncated
+    (vertexFiberι ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})
+      (functorVertex (intervalMappingBoundary (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A))
+        (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (B)))))).toTruncated
 
 /-- 概要：元指定商比較の同じ固定端点の実ホモトピー。
 方針：同じ元関手辺を uncurry する。
 規約：元二辺と元パラメータを保持。使われ方：元下比較 prism の右面。 -/
 def dgOdotMilnorNuProjectionArrowHomotopy : SSet.Homotopy
-    (SSet.yonedaEquiv.symm (stableArrow (F)).edge)
-    (SSet.yonedaEquiv.symm (stableArrow (G)).edge) :=
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (F)).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (G)).edge) :=
   simplicialHomotopyOfFunctorEdge (dgOdotMilnorNuProjectionArrowFunctorEdge R d h)
 
 /-- 概要：元商ホモトピーは同じ固定端点区間の全 uncurry。
@@ -78,9 +78,9 @@ lemma dgOdotMilnorNuProjectionArrowHomotopy_uncurry :
         (dgOdotMilnorNuProjectionIntervalEdge R d h).edge) :=
   congrArg (fun f => uncurry f)
     (SSet.yonedaEquiv_symm_comp (dgOdotMilnorNuProjectionIntervalEdge R d h).edge
-      (vertexFiberι ((pre (boundary 1).ι).app StableInfinity.{u + 1})
-        (functorVertex (intervalMappingBoundary (coherentNerveVertex (C := StableQCat.{u + 1}) (A))
-          (coherentNerveVertex (C := StableQCat.{u + 1}) (B)))))).symm
+      (vertexFiberι ((pre (boundary 1).ι).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1})
+        (functorVertex (intervalMappingBoundary (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (A))
+          (coherentNerveVertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (B)))))).symm
 
 /-- 概要：元商ホモトピーの関手辺は同じ元指定比較辺そのもの。
 方針：同じ辺の curry／uncurry と Yoneda の順逆式を使う。
@@ -109,11 +109,11 @@ lemma dgOdotMilnorNuProjectionArrowHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuProjectionArrowHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (A : StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuProjectionArrowHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (B : StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
   constructor
   · exact (congrArg (fun f => (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫ f)
       (dgOdotMilnorNuProjectionArrowHomotopy_uncurry R d h)).trans

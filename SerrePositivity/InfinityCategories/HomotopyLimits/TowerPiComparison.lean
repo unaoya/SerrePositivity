@@ -29,10 +29,10 @@ lemma mappingPathTowerLimitTarget_rlp (X Y : ℕ → PointedSimplicialSet.{u})
     (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
     [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
     [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
-    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
+    (hπ : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (mappingPathTowerLimitTarget X Y dX dY f hf) := by
   apply towerMap_rlp
-  · exact mappingPathProjection_rlp_of_piIsomorphism (f 0) (hπ 0)
+  · exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism (f 0) (hπ 0)
   · intro n
     change (MorphismProperty.monomorphisms SSet.{u}).rlp
       (mappingPathTargetMatchingMap (f (n + 1)) (f n) (dX n) (dY n) (hf n).symm)
@@ -47,9 +47,9 @@ lemma mappingPathTowerLimitTarget_piIsomorphism (X Y : ℕ → PointedSimplicial
     (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
     [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
     [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
-    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
-    KanPiIsomorphism (mappingPathTowerLimitTarget X Y dX dY f hf) :=
-  kanPiIsomorphism_of_monoRight _ (mappingPathTowerLimitTarget_rlp X Y dX dY f hf hπ)
+    (hπ : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (mappingPathTowerLimitTarget X Y dX dY f hf) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (mappingPathTowerLimitTarget_rlp X Y dX dY f hf hπ)
 
 /-- 概要：点つき Kan fibration の二塔の段ごとの全基点 π_* 同型は極限でも π_* 同型。
 方針：定数 path と標的射影の極限の比較の合成を元の塔の射に同定する。
@@ -60,8 +60,8 @@ lemma pointedTowerMap_piIsomorphism (X Y : ℕ → PointedSimplicialSet.{u})
     (f : ∀ n, X n ⟶ Y n) (hf : ∀ n, dX n ≫ f n = f (n + 1) ≫ dY n)
     [∀ n, KanComplex (X n).right] [∀ n, KanComplex (Y n).right]
     [∀ n, Fibration (dX n).right] [∀ n, Fibration (dY n).right]
-    (hπ : ∀ n, KanPiIsomorphism (f n).right) :
-    KanPiIsomorphism (towerMap (fun n ↦ (f n).right)
+    (hπ : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (towerMap (fun n ↦ (f n).right)
       (fun n ↦ congrArg Under.Hom.right (hf n))) := by
   have h := (mappingPathTowerLimitUnit_piIsomorphism X Y dX dY f hf).comp
     (mappingPathTowerLimitTarget_piIsomorphism X Y dX dY f hf hπ)

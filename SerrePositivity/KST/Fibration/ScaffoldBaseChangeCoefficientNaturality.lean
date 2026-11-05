@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint
 
@@ -20,7 +20,7 @@ def scaffoldReconstructionSectionPoint {E B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [LeftFibration p] (c : TransportSimplexCategory B)
     (v : (relativeFunctorSpace p
       ((transportSimplexDomainFunctor B).obj (Opposite.op c)).hom) _⦋0⦌) :=
-  smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p)
+  _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p)
     ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))
     ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
       (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p)
@@ -52,7 +52,7 @@ theorem scaffoldBaseChangeCoefficientIso_heq_diagramValue
           (Opposite.op ⦋0⦌) (nerveVertex c))))) := by
   have h : HEq (scaffoldBaseChangeCoefficientIso p k c)
       (straighteningGlobalBaseChangeValueIso k (leftFibrationObjectOf p) c) :=
-    endpointSpan_heq _ _ _ _ _
+    _root_.SerrePositivity.InfinityCategories.Stable.Transport.endpointSpan_heq _ _ _ _ _
   exact h.trans (leftStraighteningDiagramBaseChange_heq_globalValue k p c).symm
 
 /-- 同じ pullback 切断の第一射影から得る元の底の復元点は、
@@ -60,18 +60,18 @@ theorem scaffoldBaseChangeCoefficientIso_heq_diagramValue
 theorem scaffoldBaseChangeCoefficientIso_pointHom (c : TransportSimplexCategory D)
     (v : (relativeFunctorSpace (pullback.snd p k)
       ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom) _⦋0⦌) :
-    cosliceFiberPointHom (scaffoldReconstructionSectionPoint p
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint p
       ((transportSimplexFunctor k).obj c)
-      (straighteningBaseChangeImageSectionPoint p k c
+      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c
         ((relativeFunctorBaseChangeForward p k
           ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
             (Opposite.op ⦋0⦌) v))) ≫
       (scaffoldBaseChangeCoefficientIso p k c).hom =
-    cosliceFiberPointHom (scaffoldReconstructionSectionPoint (pullback.snd p k) c v) := by
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint (pullback.snd p k) c v) := by
   have hl := scaffoldBaseChangeLeftChart_pointHom p k c
     ((relativeFunctorBaseChangeForward p k
       ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app (Opposite.op ⦋0⦌) v)
   have hr := scaffoldGlobalBaseChange_pullback_pointHom p k c v
-  exact pointTriangle _ _ _ _ _ _ _ _ _ hl hr
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointTriangle _ _ _ _ _ _ _ _ _ hl hr
 
 end SerrePositivity.KST.Fibration

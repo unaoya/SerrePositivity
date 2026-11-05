@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -39,10 +44,10 @@ def restrictBoth {A' A K' K : C} (i : A' ⟶ A) (j : K' ⟶ K) (Y : C) :
 規約：交換後は制限の二つの射の順序も交換する。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。通常の円と Kan 円の交換の比較。 -/
 theorem restrictBoth_exchange {A' A K' K : C} (i : A' ⟶ A) (j : K' ⟶ K) (Y : C) :
-    (iso A K Y).hom ≫ restrictBoth j i Y =
-      restrictBoth i j Y ≫ (iso A' K' Y).hom := by
-  dsimp only [restrictBoth]
-  rw [← Category.assoc, ← natural_pre_right, Category.assoc, ← natural_pre_left]
+    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A K Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth j i Y =
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth i j Y ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A' K' Y).hom := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth]
+  rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left]
   rw [← Category.assoc, (MonoidalClosed.pre i).naturality ((MonoidalClosed.pre j).app Y),
     Category.assoc]
 
@@ -52,11 +57,23 @@ omit [BraidedCategory C] in
 規約：二つの内部 Hom の後合成を比較する。
 使われ方：HA §1.4.2。円の Kan 置換と標的の loop の符号反転の可換性。 -/
 theorem restrictBoth_post {A' A K' K Y Z : C} (i : A' ⟶ A) (j : K' ⟶ K) (f : Y ⟶ Z) :
-    (ihom A).map ((ihom K).map f) ≫ restrictBoth i j Z =
-      restrictBoth i j Y ≫ (ihom A').map ((ihom K').map f) :=
+    (ihom A).map ((ihom K).map f) ≫ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth i j Z =
+      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth i j Y ≫ (ihom A').map ((ihom K').map f) :=
   (Functor.whiskerLeft (ihom K) (MonoidalClosed.pre i) ≫
     Functor.whiskerRight (MonoidalClosed.pre j) (ihom A')).naturality f
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_exchange := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_post := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_post

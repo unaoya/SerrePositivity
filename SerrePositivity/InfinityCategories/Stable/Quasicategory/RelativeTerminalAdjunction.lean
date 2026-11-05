@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -45,9 +47,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
@@ -76,4 +81,16 @@ lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y)
   rw [pinchedHomMap_comp] at hc
   exact (hg.cancel_right hc).isSimplicialHomotopyEquivalence
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fullyFaithful_of_relativeTerminalSection := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.fullyFaithful_of_relativeTerminalSection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeSectionEquality := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSectionEquality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeSection_initialBoundary := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeSection_initialBoundary

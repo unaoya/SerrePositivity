@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
@@ -49,9 +51,12 @@ public import Mathlib.Order.SetNotation
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -78,11 +83,20 @@ theorem horn_one_zero_eq_face : (horn.{u} 1 0) = stdSimplex.face {(1 : Fin 2)}�
 使われ方：Goerss–Jardine I §7、Kerodon §3.1.1。path space の充填。 -/
 theorem interval_zeroFace_anodyne : anodyneExtensions (stdSimplex.δ.{u} (1 : Fin 2)) := by
   have hh : anodyneExtensions (stdSimplex.face.{u} {(1 : Fin 2)}ᶜ).ι := by
-    rw [← horn_one_zero_eq_face]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.horn_one_zero_eq_face]
     exact anodyneExtensions.horn_ι 0
   rw [← stdSimplex.faceSingletonComplIso_hom_ι (1 : Fin 2)]
   exact anodyneExtensions.comp_mem _ _ (anodyneExtensions.of_isIso _) hh
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_one_zero_eq_face := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.horn_one_zero_eq_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.interval_zeroFace_anodyne := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.interval_zeroFace_anodyne

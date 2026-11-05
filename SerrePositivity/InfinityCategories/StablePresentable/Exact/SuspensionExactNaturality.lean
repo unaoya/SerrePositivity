@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -43,24 +45,36 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+namespace SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact
+open SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
 
 omit [Quasicategory Y] [IsStable Y] in
 lemma post_arrow_zero_target (x : X _⦋0⦌) : IsZeroTargetArrow
-    ((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) x) := by
+  change IsZeroVertex (((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
     evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc]
-  exact IsExactFunctor.preservesZero (F := F) _ (arrow_zero_target X x)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc]
+  exact IsExactFunctor.preservesZero (F := F) _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_zero_target X x)
 
 omit [Quasicategory Y] [IsStable Y] [IsExactFunctor F] in
 lemma post_arrow_source :
-    (arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = F := by
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_source, Category.id_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source, Category.id_comp]
 
-end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.post_arrow_source := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact.post_arrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.post_arrow_zero_target := _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExact.post_arrow_zero_target

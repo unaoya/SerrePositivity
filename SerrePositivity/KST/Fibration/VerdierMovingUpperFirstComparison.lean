@@ -39,7 +39,7 @@ theorem verdierNativeReadout_vertex_heq {A B A' B' : KanObject.{u}}
 方針：元の全一単体として回収した第一短辺を同じ二胞体面の単体へ戻す。
 規約：元の有限二胞体を保持。使われ方：F1 外延性の第一短辺条件。 -/
 theorem verdierMovingUpperFamily_first_controlled_delta_two
-    (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
     SpaceInfinity.δ (2 : Fin 3)
       (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))) =
@@ -56,7 +56,7 @@ theorem verdierMovingUpperFamily_first_controlled_delta_two
 方針：元の全一単体として回収した第二短辺を同じ二胞体面の単体へ戻す。
 規約：元の有限二胞体を保持。使われ方：F1 外延性の第二短辺条件。 -/
 theorem verdierMovingUpperFamily_first_controlled_delta_zero
-    (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
     SpaceInfinity.δ (0 : Fin 3)
       (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))) =
@@ -69,7 +69,7 @@ theorem verdierMovingUpperFamily_first_controlled_delta_zero
   simpa only [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply] using
     verdierMovingUpperFamily_first_controlled_lastFace d ℓ
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
@@ -106,16 +106,16 @@ theorem verdierMovingUpperFamily_first_original_native :
         (verdierUpperTriangle d)).obj ⟨ULift.up 0⟩) := by
     change _ = stableCoreSingleKanObject ((verdierUpperTriangle d).obj ⟨ULift.up 0⟩)
     exact (verdierMovingUpperFamily_source d ℓ _).trans
-      (congrArg (fun A : StableCategory.{u} => stableCoreSingleKanObject (show StableQCat from A))
-        ((verdierUpperTriangle_source d).trans (congrArg stableObject d.left_eq))).symm
+      (congrArg (fun A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} => stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
+        ((verdierUpperTriangle_source d).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.left_eq))).symm
   have ht : (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))).obj ⟨ULift.up 2⟩ =
       (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌)
         (verdierUpperTriangle d)).obj ⟨ULift.up 2⟩) := by
     change _ = stableCoreSingleKanObject ((verdierUpperTriangle d).obj ⟨ULift.up 2⟩)
     exact (verdierMovingUpperFamily_target d ℓ _).trans
-      (congrArg (fun C : StableCategory.{u} => stableCoreSingleKanObject (show StableQCat from C))
-        ((verdierUpperTriangle_target d).trans (congrArg stableObject d.right_eq))).symm
+      (congrArg (fun C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} => stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
+        ((verdierUpperTriangle_target d).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.right_eq))).symm
   exact verdierNativeReadout_vertex_heq hs ht _ _
     ((verdierMovingUpperFamily_first_native d L hL hfull H T hT).symm.trans
       (verdierOriginalNativeHomFamily_upper_heq d).symm)

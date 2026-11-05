@@ -26,7 +26,7 @@ local instance circleHomFamilySimplicialCategory : SimplicialCategory OmegaSpect
 def circleBKHomEndFamily (X Y : OmegaSpectrum.{u}) :
     mappingSpace X (cotensor PointedSimplicialSet.circle Y) ⟶
       bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X) :=
-  ParameterPoint.family (circleBKEndPointMap Y)
+  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKEndPointMap Y)
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ≫
       homEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 

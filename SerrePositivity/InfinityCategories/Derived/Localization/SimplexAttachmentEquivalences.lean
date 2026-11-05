@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma join_vertex_cases {A B : SSet.{u}} (v : (join A B) _⦋0⦌) :
     (∃ a, (joinInl A B).app (Opposite.op ⦋0⦌) a = v) ∨
@@ -56,23 +61,23 @@ lemma simplexAttachmentComparison_isInvertible {X : SSet.{u}} [Quasicategory X]
       (l.map ((truncation 2).map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X))))
     (hb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
       (l.map ((truncation 2).map
-        ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X)))) :
+        ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X)))) :
     IsInvertibleEdge (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X) l := by
   apply (isInvertibleEdge_iff_evaluateFunctorAt l).mpr
   intro v
   rcases join_vertex_cases v with ⟨k, rfl⟩ | ⟨k, rfl⟩
   · exact invertible_at_pre (joinInl Δ[n] Δ[0]) l ha k
   · let u := (joinInr (Δ[0] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌) k
-    have hu : (joinMap (simplexLastPoint n) (𝟙 Δ[0])).app (Opposite.op ⦋0⦌) u =
+    have hu : (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0])).app (Opposite.op ⦋0⦌) u =
         (joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌) k := by
       have hh : joinInr (Δ[0] : SSet.{u}) Δ[0] ≫
-          joinMap (simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
+          joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
         simpa only [Category.id_comp] using
-          joinInr_joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
+          joinInr_joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
       exact ConcreteCategory.congr_hom (C := Type u)
         (NatTrans.congr_app hh (Opposite.op ⦋0⦌)) k
     rw [← hu]
-    exact invertible_at_pre (joinMap (simplexLastPoint n) (𝟙 Δ[0])) l hb u
+    exact invertible_at_pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0])) l hb u
 
 /-- 指定された二つの可逆比較を、元の両制限の順方向の射を保つ全 FunctorIso へ貼る。 -/
 lemma exists_simplexAttachmentFunctorIso {X : SSet.{u}} [Quasicategory X] (n : ℕ)
@@ -81,9 +86,9 @@ lemma exists_simplexAttachmentFunctorIso {X : SSet.{u}} [Quasicategory X] (n : �
       (functorVertex (joinInl Δ[n] Δ[0] ≫ F)) (functorVertex (joinInl Δ[n] Δ[0] ≫ G)))
     (b : Truncated.Edge
       (X := (truncation 2).obj ((ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X))
-      (functorVertex (joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ F))
-      (functorVertex (joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ G)))
-    (hab : SSet.yonedaEquiv.symm a.edge ≫ (pre (simplexLastPoint n)).app X =
+      (functorVertex (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ F))
+      (functorVertex (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ G)))
+    (hab : SSet.yonedaEquiv.symm a.edge ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app X =
       SSet.yonedaEquiv.symm b.edge ≫ (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app X)
     (ha : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X) a)
     (hb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X) b) :
@@ -91,19 +96,28 @@ lemma exists_simplexAttachmentFunctorIso {X : SSet.{u}} [Quasicategory X] (n : �
       Arrow.mk ((hoFunctor.map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
         e.hom) = Arrow.mk (Truncated.HomotopyCategory.homMk a) ∧
       Arrow.mk ((hoFunctor.map
-        ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X)).toFunctor.map e.hom) =
+        ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X)).toFunctor.map e.hom) =
           Arrow.mk (Truncated.HomotopyCategory.homMk b) := by
-  obtain ⟨l, hl, hr⟩ := exists_simplexAttachmentComparison n F G a b hab
+  obtain ⟨l, hl, hr⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentComparison n F G a b hab
   have hla : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X)
       (l.map ((truncation 2).map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X))) :=
     (isInvertibleEdge_congr hl).mpr ha
   have hlb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
       (l.map ((truncation 2).map
-        ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
+        ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
     (isInvertibleEdge_congr hr).mpr hb
-  have := simplexAttachmentComparison_isInvertible n l hla hlb
+  have := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible n l hla hlb
   refine ⟨asIso (Truncated.HomotopyCategory.homMk l), ?_, ?_⟩
   · exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ a hl
   · exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ b hr
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexAttachmentFunctorIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentFunctorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentComparison_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible

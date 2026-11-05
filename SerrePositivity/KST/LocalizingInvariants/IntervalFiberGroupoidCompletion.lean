@@ -23,8 +23,8 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def intervalFiberGroupoidCompletionEquivalence {E : SSet.{u}}
     (p : E ⟶ (Δ[1] : SSet.{u})) [CartesianFibration p] [CocartesianFibration p] :
     QCatEquivalence
-      (groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
-      (groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :=
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2))))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :=
   (initialFiberGroupoidCompletionEquivalence 1 p).trans
     (finalFiberGroupoidCompletionEquivalence 1 p).symm
 
@@ -35,16 +35,16 @@ lemma intervalFiberTransport_groupoidCompletion_isEquivalence {E : SSet.{u}}
     (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ⟶ E)
     (h₀ : prismEndpoint 0 _ ≫ H = vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
     (h₁ : prismEndpoint 1 _ ≫ H = f ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :
-    IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf f) := by
+    IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f) := by
   let i₀ := vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
   let i₁ := vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
-  have h : FunctorIso (groupoidCompletionMapOf f ≫ groupoidCompletionMapOf i₁)
-      (groupoidCompletionMapOf i₀) :=
-    groupoidCompletionMapOf_compIso f i₁ ≪≫
-      (groupoidCompletionMapOf_functorHomIso (functorHomOfPrism H h₀ h₁)).symm
-  have h₀e : IsQCatEquivalence (groupoidCompletionMapOf i₀) :=
+  have h : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf f ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i₁)
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i₀) :=
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_compIso f i₁ ≪≫
+      (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.functorHomOfPrism H h₀ h₁)).symm
+  have h₀e : IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i₀) :=
     (initialFiberGroupoidCompletionEquivalence 1 p).isQCatEquivalence
-  have h₁e : IsQCatEquivalence (groupoidCompletionMapOf i₁) :=
+  have h₁e : IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf i₁) :=
     (finalFiberGroupoidCompletionEquivalence 1 p).isQCatEquivalence
   exact (h₁e.cancel_right (h₀e.ofFunctorIso h.symm)).isSimplicialHomotopyEquivalence
 

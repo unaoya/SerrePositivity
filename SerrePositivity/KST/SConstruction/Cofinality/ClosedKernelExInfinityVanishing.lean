@@ -54,7 +54,7 @@ lemma completionClosedKernelExInfinity_homotopy_subsingleton (r : ℕ)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
     (x : (exInfinity.obj (Fibration.Relative.closedKernelRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (exInfinity.obj (Fibration.Relative.closedKernelRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
   let : KanComplex (exInfinity.obj (Fibration.Relative.closedKernelRealization

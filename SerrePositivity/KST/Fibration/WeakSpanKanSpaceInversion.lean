@@ -15,22 +15,22 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 元の降下図式自身が、宇宙を揃えた W の全辺を反転する。
 全関手圏内の制限同型と全辺の厳密な被覆で反映し、各値の同値だけには頼らない。 -/
-theorem weakSpanKanSpaceDiagram_inverts_weak (h : IsVerdierSequence i q)
+theorem weakSpanKanSpaceDiagram_inverts_weak (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (x : B.obj _⦋0⦌) :
-    InvertsEdges (weakSpanKanSpaceDiagram i x) (ULift.up '' weakEquivalences i) := by
+    InvertsEdges (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram i x) (ULift.up '' _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := by
   have hp : InvertsEdges
       ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj) ≫
-        weakSpanKanSpaceDiagram i x) (ULift.up '' weakSpanTransportEdges i) :=
-    ((weakSpanKanSpaceDiagram_restrictionIso i x).invertsEdges_iff _).mpr
-      (weakSpanKanCoherentDiagram_inverts_weak h x)
+        _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram i x) (ULift.up '' _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanTransportEdges i) :=
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram_restrictionIso i x).invertsEdges_iff _).mpr
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram_inverts_weak h x)
   exact (invertsEdges_precomp_iff_of_image
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj))
-    (ULift.up '' weakSpanTransportEdges i) (ULift.up '' weakEquivalences i)
-    (transportSimplexFirstVertexMap_ulift_edge_image B.obj (weakEquivalences i))
-    (weakSpanKanSpaceDiagram i x)).mp hp
+    (ULift.up '' _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanTransportEdges i) (ULift.up '' _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)
+    (_root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_ulift_edge_image B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanSpaceDiagram i x)).mp hp
 
 end SerrePositivity.KST.Fibration

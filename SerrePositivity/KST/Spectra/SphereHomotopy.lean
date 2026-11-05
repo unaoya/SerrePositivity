@@ -53,7 +53,7 @@ def descendHomotopy (X : PointedSimplicialSet.{u}) (n : ℕ)
   refine (quotient_product_isPushout n (Δ[1] : SSet.{u})).desc H.h
     (toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ X.hom) ?_
   simp only [H.rel, Subcomplex.ofSimplex_ι, SSet.comp_const, comp_toUnit_assoc]
-  exact (pointedConstant_eq_const X _).symm
+  exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const X _).symm
 
 /-- 概要：降ろしたホモトピーを標準単体へ戻すと元の区間族。
 方針：pushout の降下の第一成分の計算を使う。
@@ -127,7 +127,7 @@ def pullHomotopy (X : PointedSimplicialSet.{u}) (n : ℕ)
     rw [← comp_whiskerRight_assoc, PointedObject.cofiberQuotient_condition,
       comp_whiskerRight_assoc, hH']
     simp only [comp_toUnit_assoc, Subcomplex.ofSimplex_ι, SSet.comp_const]
-    exact pointedConstant_eq_const X _
+    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const X _
 
 end
 

@@ -47,15 +47,15 @@ lemma pre_constant_evaluation {K C : SSet.{u}} (k : K _⦋0⦌) :
 def simplexInitialHomotopy (n : ℕ) :
     SSet.Homotopy (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
       (𝟙 (Δ[n] : SSet.{u})) where
-  h := (β_ (Δ[n] : SSet.{u}) Δ[1]).hom ≫ simplexInitialContraction n
+  h := (β_ (Δ[n] : SSet.{u}) Δ[1]).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n
   h₀ := by
     rw [← Category.assoc]
-    change prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n = _
-    exact simplexInitialContraction_zero n
+    change prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = _
+    exact _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_zero n
   h₁ := by
     rw [← Category.assoc]
-    change prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ simplexInitialContraction n = _
-    exact simplexInitialContraction_one n
+    change prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction n = _
+    exact _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_one n
   rel := by
     apply SSet.hom_ext
     intro d

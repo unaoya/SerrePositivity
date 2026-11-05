@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
@@ -11,6 +13,9 @@ public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 全 Hom の前後合成で可換な通常成分を、厳密な単体的自然変換へ束ねる。 -/
@@ -47,4 +52,19 @@ def strictSimplicialTransformationPostcompose
       ((τ.app X).app n t.1, (G.map X Y).app n t.2)
     exact hf.symm.trans ((congrArg (fun x => (H.map (F.obj X) (G.obj Y)).app n x) h).trans hg)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationOfWhisker := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationPostcompose := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationOfWhisker._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationPostcompose._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose._proof_1

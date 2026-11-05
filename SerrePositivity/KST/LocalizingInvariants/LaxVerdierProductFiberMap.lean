@@ -18,46 +18,46 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance productFiberMapSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def laxQuotientProductInclusion : value Φ A ⟶ Binary.obj (value Φ C) (value Φ D) :=
   Binary.lift (valueMap Φ i ≫ valueMap Φ (laxFst p q))
     (valueMap Φ i ≫ valueMap Φ (laxSnd p q))
 
 lemma laxQuotientProductFiber_bottom_map :
-    (hΦ.laxQuotientProductFiberLeftIso p q i r h).inv ≫
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso hΦ) p q i r h).inv ≫
         squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
-          (hΦ.laxQuotientProductFiberMiddleIso p q i r h).hom =
+          ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom =
       SpectrumHo.hom (laxQuotientProductInclusion p q i) := by
   apply Binary.ho_hom_ext
-  · rw [Category.assoc, Category.assoc, laxQuotientProductFiber_bottom_fst,
+  · rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_bottom_fst,
       Iso.inv_hom_id_assoc]
     simp only [laxQuotientProductInclusion, ← SpectrumHo.hom_comp, Binary.lift_fst]
-  · rw [Category.assoc, Category.assoc, laxQuotientProductFiber_bottom_snd,
+  · rw [Category.assoc, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_bottom_snd,
       Iso.inv_hom_id_assoc]
     simp only [laxQuotientProductInclusion, ← SpectrumHo.hom_comp, Binary.lift_snd]
 
 lemma laxQuotientProductFiber_right_map :
-    (hΦ.laxQuotientProductFiberMiddleIso p q i r h).hom ≫
-        SpectrumHo.hom (hΦ.laxQuotientProductMap p q r) =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom ≫
+        SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) =
       squareHoRight (hΦ.laxQuotientProductFiberSquare p q i r h).square ≫
-        (hΦ.laxQuotientProductFiberRightIso p q i r h).hom := by
+        ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberRightIso hΦ) p q i r h).hom := by
   have he : (squareRightArrow (hΦ.laxQuotientProductFiberSquare p q i r h).square).edge =
-      (coherentNerveEdge (hΦ.laxQuotientProductMap p q r)).edge := by
+      (coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r)).edge := by
     rw [squareRightArrow_edge,
       (hΦ.laxQuotientProductFiberSquare p q i r h).right_edge]
     exact SSet.yonedaEquiv.apply_symm_apply _
   exact (FiberModel.homMk_transport _ _
-    (hΦ.laxQuotientProductFiber_middle_vertex p q i r h)
-    (hΦ.laxQuotientProductFiber_right_vertex p q i r h) he).symm
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_middle_vertex hΦ) p q i r h)
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiber_right_vertex hΦ) p q i r h) he).symm
 
 include h in
 lemma laxQuotientProductInclusion_comp_map :
     SpectrumHo.hom (laxQuotientProductInclusion p q i) ≫
-      SpectrumHo.hom (hΦ.laxQuotientProductMap p q r) = 0 := by
+      SpectrumHo.hom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) p q r) = 0 := by
   rw [← hΦ.laxQuotientProductFiber_bottom_map p q i r h, Category.assoc,
     Category.assoc, laxQuotientProductFiber_right_map]
   rw [← Category.assoc (squareHoBottom _) (squareHoRight _),

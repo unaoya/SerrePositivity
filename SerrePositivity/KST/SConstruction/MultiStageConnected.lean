@@ -67,13 +67,13 @@ instance boundaryKanRealization_isConnected (r : ℕ) (X : StableModel.{u}) :
 規約：非空性は源の基点から得る。使われ方：単射置換した段の連結性。 -/
 lemma pointedIsConnected_of_piIsomorphism {A B : PointedSimplicialSet.{u}}
     [KanComplex A.right] [KanComplex B.right] [SSet.IsConnected B.right]
-    (f : A ⟶ B) (hf : Spectra.KanPiIsomorphism f.right) : SSet.IsConnected A.right := by
-  let e := Spectra.KanHomotopy.equivOfPiIsomorphism 0 f.right hf
-    (Spectra.OmegaSpectrum.pointedMap_basepoint f)
-  let eA : Spectra.KanHomotopy A.right 0 A.basepoint ≃ SSet.π₀ A.right :=
-    Spectra.KanHomotopyZero.equivPiZero
-  let eB : Spectra.KanHomotopy B.right 0 B.basepoint ≃ SSet.π₀ B.right :=
-    Spectra.KanHomotopyZero.equivPiZero
+    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) : SSet.IsConnected A.right := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism 0 f.right hf
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
+  let eA : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy A.right 0 A.basepoint ≃ SSet.π₀ A.right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  let eB : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B.right 0 B.basepoint ≃ SSet.π₀ B.right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
   let : SSet.IsPreconnected A.right := ⟨by
     intro a b
     apply eA.symm.injective

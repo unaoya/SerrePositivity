@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
 public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 
 /-- 関手辺の実頂点評価の類は、同じ関手辺の二胞体を評価した成分。 -/
@@ -47,9 +52,9 @@ theorem pointedTransformationPointHom {D : SSet.{u + 1}}
     (F G : D ⟶ SpaceInfinity.{u})
     (s : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) (b : D _⦋0⦌)
     (v : (vertexFiber pointedSpaceProjection (F.app (Opposite.op ⦋0⦌) b)) _⦋0⦌) :
-    cosliceFiberPointHom v ≫ Truncated.HomotopyCategory.homMk
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom v ≫ Truncated.HomotopyCategory.homMk
       (functorEdgeAt (intervalMappingEdgeOfVertex s) b).toTruncated =
-      cosliceFiberPointHom
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
         ((leftUnstraighteningMappingFiberHom F G b ≫ evaluateFunctorAt v).app
           (Opposite.op ⦋0⦌) s) := by
   let T := leftUnstraighteningPointedFiberMap F G
@@ -59,15 +64,15 @@ theorem pointedTransformationPointHom {D : SSet.{u + 1}}
   have hi := VertexIso.map
     (leftUnstraighteningMappingVertex_pointedFiberTransportIso F G s b) (evaluateFunctorAt v)
   simp only [evaluateFunctorAt_functorVertex] at hi
-  have hp := cosliceFiberPointHom_eq_of_vertexIso hi
-  have hc := cosliceTransportPointHom e (edgeTransport pointedSpaceProjection e)
+  have hp := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_vertexIso hi
+  have hc := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceTransportPointHom e (edgeTransport pointedSpaceProjection e)
     (edgeTransport_isTransport pointedSpaceProjection e) v
   have hv : (leftUnstraighteningMappingFiberHom F G b ≫ evaluateFunctorAt v).app
       (Opposite.op ⦋0⦌) s = T.app (Opposite.op ⦋0⦌) v := by
     change (evaluateFunctorAt v).app (Opposite.op ⦋0⦌)
       ((leftUnstraighteningMappingFiberHom F G b).app (Opposite.op ⦋0⦌) s) = _
-    rw [pointedTransformationFiberHom_vertex, evaluateFunctorAt_functorVertex]
-  exact hc.trans (hp.symm.trans (congrArg cosliceFiberPointHom hv.symm))
+    rw [_root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationFiberHom_vertex, evaluateFunctorAt_functorVertex]
+  exact hc.trans (hp.symm.trans (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom hv.symm))
 
 /-- 指定した元の二胞体を実作用で評価しても、同じ点の射との合成の類を保持する。 -/
 theorem pointedFunctorHomPointHom {B : SSet.{u}}
@@ -75,20 +80,35 @@ theorem pointedFunctorHomPointHom {B : SSet.{u}}
     (a : FunctorHom F G) (b : B _⦋0⦌)
     (v : (vertexFiber pointedSpaceProjection
       (F.app (Opposite.op ⦋0⦌) (ULift.up b))) _⦋0⦌) :
-    cosliceFiberPointHom v ≫ functorHomEvaluate a (ULift.up b) =
-      cosliceFiberPointHom
+    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom v ≫ functorHomEvaluate a (ULift.up b) =
+      _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
         ((leftUnstraighteningMappingFiberHom F G (ULift.up b) ≫ evaluateFunctorAt v).app
-          (Opposite.op ⦋0⦌) (smallUnstraighteningHomParameter a)) := by
-  have hc := pointedTransformationPointHom F G (smallUnstraighteningHomParameter a)
+          (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a)) := by
+  have hc := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationPointHom F G (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a)
     (ULift.up b) v
-  have hs : intervalMappingEdgeOfVertex (smallUnstraighteningHomParameter a) =
-      smallUnstraighteningHomEdge a :=
+  have hs : intervalMappingEdgeOfVertex (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter a) =
+      _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge a :=
     (intervalMappingEdgeVertexEquiv (functorVertex F) (functorVertex G)).symm_apply_apply _
-  have he := (functorHomEvaluate_edge_hom (smallUnstraighteningHomEdge a) (ULift.up b)).symm
+  have he := (_root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge a) (ULift.up b)).symm
   have hclass := congrArg (fun m => functorHomEvaluate m (ULift.up b))
-    (smallUnstraighteningHomEdge_hom a)
+    (_root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge_hom a)
   rw [hs] at hc
   rw [he.trans hclass] at hc
   exact hc
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorHomEvaluate_edge_hom := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFunctorHomPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFunctorHomPointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedTransformationFiberHom_vertex := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationFiberHom_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedTransformationPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationPointHom

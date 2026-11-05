@@ -48,7 +48,7 @@ def dgOdotMilnorSuppliedOriginalConeComparison :
 規約：共通 LT 長方形への接続認証とは区別する。
 使われ方：Sp 正本の VerdierSquareDiagramIso による無条件の個別実右面認証。 -/
 def dgOdotMilnorSuppliedIdentityRightSquareDiagramIso (h : DGGluingMilnorSquare R d) :
-    VerdierSquareDiagramIso
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso
       (dgOdotMilnorActualRightDiagram R d h).square
       (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
       (DGOdotMilnorIdentityLaxComparisonInput.squareBoundary R d

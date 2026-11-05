@@ -15,52 +15,52 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 open F2.Idempotent
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 元の比較正方形の四角は、元の左端・lax 圏・完備化先・恒等 lax 圏。 -/
 lemma universalRawSquare_vertices :
-    squareVertex d.universalRawSquare 0 0 = stableVertex d.left ∧
-      squareVertex d.universalRawSquare 1 0 = stableVertex (laxCategory p q) ∧
+    squareVertex d.universalRawSquare 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.left ∧
+      squareVertex d.universalRawSquare 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (laxCategory p q) ∧
       squareVertex d.universalRawSquare 1 1 =
-        stableVertex (laxCategory (𝟙 d.sequence.right) (𝟙 d.sequence.right)) ∧
-      squareVertex d.universalRawSquare 0 1 = stableVertex d.sequence.right := by
+        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (laxCategory (𝟙 d.sequence.right) (𝟙 d.sequence.right)) ∧
+      squareVertex d.universalRawSquare 0 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.sequence.right := by
   have hQ := d.universalRawSquare_edges
   constructor
   · have h := squareBottomEdge_source d.universalRawSquare
-    rw [hQ.1, Equiv.apply_symm_apply, (stableArrow d.inclusion).src_eq] at h
+    rw [hQ.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
     exact h.symm
   constructor
   · have h := squareBottomEdge_target d.universalRawSquare
-    rw [hQ.1, Equiv.apply_symm_apply, (stableArrow d.inclusion).tgt_eq] at h
+    rw [hQ.1, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
     exact h.symm
   constructor
   · have h := squareRightEdge_target d.universalRawSquare
     rw [hQ.2.2.2, Equiv.apply_symm_apply,
-      (stableArrow (LaxUniversalDifference.exactLift p q d.sequence.projection)).tgt_eq] at h
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (LaxUniversalDifference.exactLift p q d.sequence.projection)).tgt_eq] at h
     exact h.symm
   · have h := squareTopEdge_source d.universalRawSquare
     rw [hQ.2.1, Equiv.apply_symm_apply,
-      (stableArrow (IdentityLax.exactDiagonal d.sequence.right)).src_eq] at h
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (IdentityLax.exactDiagonal d.sequence.right)).src_eq] at h
     exact h.symm
 
 /-- 同じ比較正方形の四角は、全 coherent 冪等図式について完備。 -/
 lemma universalRawSquare_corner_complete (i j : Fin 2) :
     perfectStableVertexPredicate (squareVertex d.universalRawSquare i j) := by
   have h := d.universalRawSquare_vertices
-  change IsIdempotentComplete (stableObject _).obj
+  change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject _).obj
   fin_cases i <;> fin_cases j
-  · change IsIdempotentComplete (stableObject (squareVertex d.universalRawSquare 0 0)).obj
-    rw [h.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.universalRawSquare 0 0)).obj
+    rw [h.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.left_complete
-  · change IsIdempotentComplete (stableObject (squareVertex d.universalRawSquare 0 1)).obj
-    rw [h.2.2.2, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.universalRawSquare 0 1)).obj
+    rw [h.2.2.2, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.sequence.right_complete
-  · change IsIdempotentComplete (stableObject (squareVertex d.universalRawSquare 1 0)).obj
-    rw [h.2.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.universalRawSquare 1 0)).obj
+    rw [h.2.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact d.middle_complete
-  · change IsIdempotentComplete (stableObject (squareVertex d.universalRawSquare 1 1)).obj
-    rw [h.2.2.1, stableObject_vertex]
+  · change IsIdempotentComplete (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.universalRawSquare 1 1)).obj
+    rw [h.2.2.1, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
     exact perfectLaxCategory_isIdempotentComplete (𝟙 d.sequence.right) (𝟙 d.sequence.right)
       d.sequence.right_complete d.sequence.right_complete
 

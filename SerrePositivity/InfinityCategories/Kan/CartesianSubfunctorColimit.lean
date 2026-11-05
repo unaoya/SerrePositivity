@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 public import Mathlib.CategoryTheory.Subfunctor.Basic
 public import Mathlib.CategoryTheory.Types.Monomorphisms
@@ -15,6 +17,9 @@ public import Mathlib.CategoryTheory.Types.Monomorphisms
 universe u v
 open CategoryTheory CategoryTheory.Limits ConcreteCategory
 namespace SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+end SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+namespace SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
+open SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -46,13 +51,13 @@ def splitCocone : Cocone F := by
 
 /-- 代表を分離する余錐の余極限への降下。 -/
 def split : colimit F ⟶ Option (colimit A.toFunctor) :=
-  colimit.desc F (splitCocone A hA)
+  colimit.desc F (_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone A hA)
 
 /-- 部分図式の代表には、元の余極限の類を some として返す。 -/
 lemma split_ι (i : J) (x : A.toFunctor.obj i) :
-    split A hA (colimit.ι F i x.val) = some (colimit.ι A.toFunctor i x) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA (colimit.ι F i x.val) = some (colimit.ι A.toFunctor i x) := by
   classical
-  dsimp only [split]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split]
   erw [colimit.ι_desc_apply]
   change (if hx : x.val ∈ A.obj i then
     some (colimit.ι A.toFunctor i ⟨x.val, hx⟩) else none) = _
@@ -61,19 +66,43 @@ lemma split_ι (i : J) (x : A.toFunctor.obj i) :
 
 /-- 部分図式の余極限の包含の後では、分離射は some そのもの。 -/
 lemma split_map (x : colimit A.toFunctor) :
-    split A hA (colim.map A.ι x) = some x := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA (colim.map A.ι x) = some x := by
   obtain ⟨i, y, rfl⟩ := Types.jointly_surjective_of_isColimit (colimit.isColimit A.toFunctor) x
   erw [colimit.ι_map_apply]
-  exact split_ι A hA i y
+  exact _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_ι A hA i y
 
 include hA in
 /-- 全ての射で所属を反映する部分図式では、余極限の包含は単射。 -/
 lemma mono : Mono (colim.map A.ι) := by
   apply (mono_iff_injective _).mpr
   intro x y h
-  have he := congrArg (split A hA) h
-  rw [split_map, split_map] at he
+  have he := congrArg (_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split A hA) h
+  rw [_root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map, _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map] at he
   exact Option.some.inj he
 
 end
-end SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+end SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.mono := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_map := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_ι := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone._proof_2

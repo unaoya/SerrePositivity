@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.HornFaceBoundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -40,7 +45,7 @@ theorem horn_le_simplexBoundary (n : ℕ) (i : Fin (n + 2)) :
 theorem horn_sup_missing_face (n : ℕ) (i : Fin (n + 2)) :
     horn.{u} (n + 1) i ⊔ stdSimplex.face {i}ᶜ = boundary.{u} (n + 1) := by
   apply le_antisymm
-  · exact sup_le (horn_le_simplexBoundary n i) (face_singleton_compl_le_boundary i)
+  · exact sup_le (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary n i) (face_singleton_compl_le_boundary i)
   · rw [boundary_eq_iSup]
     apply iSup_le
     intro j
@@ -62,21 +67,21 @@ abbrev hornFaceOverlap (n : ℕ) (i : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7、Kerodon §3.1。相対三角形の対角辺の包含の検査。 -/
 theorem hornBoundaryPushout (n : ℕ) (i : Fin (n + 2)) :
     IsPushout
-      (Subcomplex.homOfLE (show hornFaceOverlap.{u} n i ≤ horn (n + 1) i from inf_le_left))
-      (Subcomplex.homOfLE (show hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right))
-      (Subcomplex.homOfLE (horn_le_simplexBoundary n i))
+      (Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i ≤ horn (n + 1) i from inf_le_left))
+      (Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right))
+      (Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary n i))
       (Subcomplex.homOfLE (face_singleton_compl_le_boundary i)) :=
-  Subcomplex.BicartSq.isPushout { sup_eq := horn_sup_missing_face n i, inf_eq := rfl }
+  Subcomplex.BicartSq.isPushout { sup_eq := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_sup_missing_face n i, inf_eq := rfl }
 
 /-- 概要：共通部分を標準面の境界へ戻す射。
 方針：面の標準単体との同型の逆を使い、ホーンの逆像の計算で境界への因子分解を得る。
 規約：共通部分からの実際の単体的な射。
 使われ方：Goerss–Jardine I §7。円の辺とホーンの貼り合わせの両立。 -/
 def hornFaceOverlapToBoundary (n : ℕ) (i : Fin (n + 2)) :
-    (hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (boundary.{u} n : SSet.{u}) := by
-  let q : (hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (Δ[n] : SSet.{u}) :=
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (boundary.{u} n : SSet.{u}) := by
+  let q : (_root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (Δ[n] : SSet.{u}) :=
     Subcomplex.homOfLE inf_le_right ≫ (stdSimplex.faceSingletonComplIso i).inv
-  have he : q ≫ stdSimplex.δ i = (hornFaceOverlap.{u} n i).ι := by
+  have he : q ≫ stdSimplex.δ i = (_root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i).ι := by
     dsimp only [q]
     rw [Category.assoc, ← stdSimplex.faceSingletonComplIso_hom_ι,
       Iso.inv_hom_id_assoc]
@@ -84,10 +89,10 @@ def hornFaceOverlapToBoundary (n : ℕ) (i : Fin (n + 2)) :
   refine Subcomplex.lift q ?_
   intro m v hv
   obtain ⟨s, rfl⟩ := hv
-  rw [← preimage_horn_face n i]
+  rw [← _root_.SerrePositivity.InfinityCategories.Simplicial.preimage_horn_face n i]
   change (stdSimplex.δ i).app m (q.app m s) ∈ (horn.{u} (n + 1) i).obj m
   have hs := ConcreteCategory.congr_hom
-    (congrArg (fun f : (hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (Δ[n + 1] : SSet.{u}) =>
+    (congrArg (fun f : (_root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i : SSet.{u}) ⟶ (Δ[n + 1] : SSet.{u}) =>
       f.app m) he) s
   change (stdSimplex.δ i).app m (q.app m s) = s.val at hs
   rw [hs]
@@ -99,12 +104,45 @@ def hornFaceOverlapToBoundary (n : ℕ) (i : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7。境界上の写像をホーンと面から貼り合わせる。 -/
 @[reassoc (attr := simp)]
 theorem hornFaceOverlapToBoundary_ι (n : ℕ) (i : Fin (n + 2)) :
-    hornFaceOverlapToBoundary.{u} n i ≫ (boundary.{u} n).ι =
-      Subcomplex.homOfLE (show hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right) ≫
+    _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary.{u} n i ≫ (boundary.{u} n).ι =
+      Subcomplex.homOfLE (show _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap.{u} n i ≤ stdSimplex.face {i}ᶜ from inf_le_right) ≫
         (stdSimplex.faceSingletonComplIso i).inv := by
-  dsimp only [hornFaceOverlapToBoundary]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary]
   exact Subcomplex.lift_ι _ _
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornBoundaryPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlap := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary_ι := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary_ι_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_le_simplexBoundary := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_sup_missing_face := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_sup_missing_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_3

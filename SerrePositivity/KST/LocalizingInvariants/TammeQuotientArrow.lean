@@ -20,7 +20,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj (tammeQuotient p q))
@@ -50,7 +50,7 @@ lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
     exact (Category.comp_id (obj := hoFunctor.obj (tammeQuotient p q))
       (SSet.Truncated.HomotopyCategory.homMk gm)).trans
         (SSet.Truncated.HomotopyCategory.homMk_comp_homMk c).symm
-  obtain ⟨e⟩ := arrowFunctorIso_of_homMk_comm gm f sm i hsm hi h
+  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm gm f sm i hsm hi h
   refine ⟨SSet.yonedaEquiv.symm g.edge, ⟨?_⟩⟩
   have hg : SSet.yonedaEquiv.symm gm.edge = SSet.yonedaEquiv.symm g.edge ≫ F := by
     apply SSet.yonedaEquiv.injective
@@ -61,7 +61,7 @@ lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
 
 lemma tammeQuotientArrow_isEssentiallySurjective :
     IsEssentiallySurjective ((ihom (Δ[1] : SSet.{u})).map (tammeQuotientMap p q)) :=
-  arrowMap_isEssentiallySurjective _
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowMap_isEssentiallySurjective _
     (localization_isEssentiallySurjective _ _ (tammeQuotient_isLocalization p q))
     (fun f => tammeQuotient_arrow_lift p q f)
 

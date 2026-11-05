@@ -23,7 +23,7 @@ def presentedPerfectDGOneDirectionSuspensionComparison (r : ℕ) :
         (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit))
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).comp SSet
         (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit)) :=
-  strictSimplicialTransformationPrecompose
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose
     (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r) _ _
     exInfinitySuspensionTransformation
 
