@@ -7464,6 +7464,7 @@
     "closure/W1/SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightLeftKan": 0,
     "closure/W1/SerrePositivity.InfinityCategories.F2.Tensor.SetElements": 0,
     "closure/W1/SerrePositivity.InfinityCategories.F2.Tensor.SetSections": 0,
+    "closure/W1/SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality": 0,
     "closure/W1/SerrePositivity.InfinityCategories.F2.Tensor.Space": 0,
     "closure/W1/SerrePositivity.InfinityCategories.HomotopyLimits": 0,
     "closure/W1/SerrePositivity.InfinityCategories.HomotopyLimits.AdjointRightDerived": 0,
@@ -8918,6 +8919,7 @@
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps": 0,
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport": 0,
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.CubicalCompositionTensorCalculus": 0,
+    "closure/W1/SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias": 0,
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift": 0,
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain": 0,
     "closure/W1/SerrePositivity.InfinityCategories.Simplicial.FinitePosetLowerSet": 0,
@@ -17232,6 +17234,7 @@
     "closure/W2a/SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightLeftKan": 74,
     "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetElements": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetSections": 74,
+    "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality": 74,
     "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.Space": 74,
     "closure/W2a/SerrePositivity.InfinityCategories.HomotopyLimits": 74,
     "closure/W2a/SerrePositivity.InfinityCategories.HomotopyLimits.AdjointRightDerived": 0,
@@ -18686,6 +18689,7 @@
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.CubicalCompositionTensorCalculus": 0,
+    "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain": 0,
     "closure/W2a/SerrePositivity.InfinityCategories.Simplicial.FinitePosetLowerSet": 0,
@@ -27000,6 +27004,7 @@
     "closure/W2b/SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightLeftKan": 74,
     "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetElements": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetSections": 74,
+    "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality": 74,
     "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.Space": 74,
     "closure/W2b/SerrePositivity.InfinityCategories.HomotopyLimits": 74,
     "closure/W2b/SerrePositivity.InfinityCategories.HomotopyLimits.AdjointRightDerived": 0,
@@ -28454,6 +28459,7 @@
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.CubicalCompositionTensorCalculus": 0,
+    "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain": 0,
     "closure/W2b/SerrePositivity.InfinityCategories.Simplicial.FinitePosetLowerSet": 0,
@@ -29313,7 +29319,7 @@
     "entry_edges/W2a": 0,
     "entry_edges/W2b": 0
   },
-  "description": "IF-F §6: current baseline; all numeric ratchet metrics equal before F-1; M16 74 retained.",
-  "source_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
-  "verification": "f-stop2.json"
+  "description": "IF-F F-2 final layer remeasurement after downstream and preservation PASS. No exceptions added.",
+  "source_commit": "eadc9f5c532b01a305e0c58c708eee5e9c11383f",
+  "verification": "section9-final-enforcement.json and section9-final-ratchet.json PASS"
 }

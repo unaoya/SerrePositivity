@@ -1,0 +1,1030 @@
+{
+  "status": "PASS",
+  "modules": 4034,
+  "batches": 345,
+  "aliases_excluded": 7526,
+  "raw_changes": 21,
+  "explained": 21,
+  "unexplained": 0,
+  "normalization": "Original v3b rows/hashes and raw comparison retained. Individual equality proofs cover own parser node identity and complete axiom dependencies.",
+  "comparisons": [
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "1074acaf6e627cb1b21b2e8b530be2e6d1615742cc4a18eb2ce820ed734584e7",
+        "after_sha256": "f251fe72986f19f9eace809d39d3c92bc350ccd80a2a961398a55fe74a125384"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "72ff1c15a7ea704fb73d4e936a19377b594a98477d684602d7e05b6fe06fed15",
+        "after_sha256": "e0dd8e541b166aa2ba965defdd8f247feb2255a17aee7cbdf0712f32300f13b2"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "d5e6d3b137fda3ce8db69180817d39489eb3e944c3c3862540b8d87f522b0886",
+        "after_sha256": "0fa40f11c2187488bd2428bf7397ee87709c7d826d01c9ac934a9ecc7c313879"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "9312292eb9713fad44036a2ffdab635733aba9d4152e3374a92b6858a9826c0d",
+        "after_sha256": "35b11855bbc95ef9a6dd22fcc0f43bb9227c6349b6b7591a2017f8bdba52fb9e"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "139a6f8e2413193d03dd1f74b01f59cf29ef657f37392333e1c7e203f9873eba",
+        "after_sha256": "7bd1310ab029e2b9292fc65d1cd6e4505e6c45d5d520a61507c355dcec998a6b"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "829a69476cb205cba950788514f2cfec8fb7a6d1b62376b30880d12c2d55cada",
+        "after_sha256": "9163a0da20ece359dbd45217d187d14bc40123b19b9c6139d9e4af943365ab03"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "cfe54fc17abfddcb5f9a3a5892617a6beabc19d8dfa2511e4f993cf1ef71d91e",
+        "after_sha256": "69ebbf8692dcee71e9947e7dd31985deae6d6ba04edaa95190c3e6e076deb727"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termQ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termQ",
+        "change": "body",
+        "before_sha256": "421241341bec0772fac485257512261623b3b61816b92ecd40d79b4d172349bf",
+        "after_sha256": "e5af09ab750ab86f02c4f167a3cea5bedbb4196dee4ea5b51f13c18784875989"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termQ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termQ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termW",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termW",
+        "change": "body",
+        "before_sha256": "753a18da2652a00ff0501c544ad4f79b943b1bfc196f1bf644faae85be904a18",
+        "after_sha256": "9fced53a088a94c05d310f089146eb2f2a19151fca43a1384affea0a9ee20927"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termW",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termW"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "015c68dcbede9650836963617ed0846eb720de3e7f8baba08097d4c885a37a18",
+        "after_sha256": "b16988e1d2d5c8b6ab78e681698e2d7dd663df060b9ec8317968478e87836ca6"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "5d4fcbd47f4d00df6b6378a150192268ff1a40f1f1bc6faae0adc40479b5582b",
+        "after_sha256": "a8141b2277995b730130da2fc242b9f2173808a91ba1746ede3bd9d7270d6e06"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "a182a963dee298c06d692cfe0468c19a4e967a238114561f0a5543fa1060fc20",
+        "after_sha256": "5413402ad19b33721ad6d80317d6b27d070e1745d886186fdc310aedb549d1a3"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "379845c9a93bee65a969b10cd280164b14c5c75dcd0d67c99775ba788e6ca863",
+        "after_sha256": "81706f7d916268e10935bcea6fe8b21270460906f336a81751555a5bc936448d"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "07d2fd693fbc512c567f1a5cbfca9cb6fe87e5fb4d56241969394a246c8a04b2",
+        "after_sha256": "f481c99139f1d31415fef05286c729eec405ae4a6edde603e0eee23ed461d602"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "fbf594f3f2854fc7e847bd2b9e99bb90140fcc343ac783d29919408a6112530d",
+        "after_sha256": "52524ae21e3b072999a6c38c99cb38aa14b88e86edf3834d0f76185eb876eea1"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "42c3eec84c38014dda8bdfc51f46cedb8d70cfa9d9cf6373dd252bd97b2608fd",
+        "after_sha256": "e84b95fd37cea27df82f9122ee82bf7e3c180484cf0102c41a405a047953ebbd"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "change": "body",
+        "before_sha256": "4d8f3d9f6f708d312214208c034a62b41386a1fe4b440488e3b6111aac09bff1",
+        "after_sha256": "aef59941d1f6c5cc213047ec18ca3d232a9faa9c0177162f6a8e655d88ca3e5f"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "change": "body",
+        "before_sha256": "007094fb3958420cc534df71f5bc774515ec5c6da362fc8d0b9e6a1ff8e45253",
+        "after_sha256": "34a328fd215e890147483356de3626b8b553b0cb05c1464f72b669ee207214f9"
+      },
+      "explanation": {
+        "kind": "notation_node_rename",
+        "evidence": "notation-comparison.json",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ"
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "parent": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "change": "auxiliaries",
+        "before_sha256": "615fad0482e4365cb5a4af55c06fd3b63cb006e774c45731b1d691d006873014",
+        "after_sha256": "e28738343842cbe2012120657db5ca759cfbc2164933c1458daac7805ea822ab"
+      },
+      "explanation": {
+        "kind": "auxiliary_axioms_only",
+        "evidence": "axiom-graph-preservation.json",
+        "declarations": [
+          "SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id"
+        ],
+        "all_other_auxiliary_fields_equal": true
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "parent": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "change": "axioms",
+        "before_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "after_sha256": "81657e02572e4cc2b5ba3b117b03dd405fea9e270a1dee0c62fd634d81ff744c"
+      },
+      "explanation": {
+        "kind": "complete_axiom_dependency_graph",
+        "evidence": "axiom-graph-preservation.json",
+        "actual_axioms": [
+          "propext"
+        ]
+      }
+    },
+    {
+      "change": {
+        "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated",
+        "module": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+        "parent": "SerrePositivity.KST.SConstruction.CubeMapGenerated",
+        "change": "auxiliaries",
+        "before_sha256": "9842d60d149b45ff8bed54da25215ee239c34ca049c604824bb0c5fbd6a5fc3e",
+        "after_sha256": "c37be38863da97c0d75181cb48ef4952cd7dd6b8a666f85e47dc42ecfa130f0d"
+      },
+      "explanation": {
+        "kind": "auxiliary_axioms_only",
+        "evidence": "axiom-graph-preservation.json",
+        "declarations": [
+          "SerrePositivity.KST.SConstruction.CubeMapGenerated.connection",
+          "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy"
+        ],
+        "all_other_auxiliary_fields_equal": true
+      }
+    }
+  ],
+  "notation": {
+    "status": "PASS",
+    "count": 18,
+    "contract": "Exact ParserDescr root node: only its own private node name follows the approved namespace map; head, precedence, parser, type and universe parameters match literally. All original v3b rows and hashes retained.",
+    "rows": [
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "3921936716573572318",
+        "after_body_hash": "15507219915818469498",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "11181492819610163271",
+        "after_body_hash": "15702896386505545863",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "13744320826096503746",
+        "after_body_hash": "14089064784298667485",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "9945485893806099126",
+        "after_body_hash": "6708048295953302114",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "15539643551902331301",
+        "after_body_hash": "13000726150745331206",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "7195527751356556507",
+        "after_body_hash": "1147263696180275375",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "11054485923264154860",
+        "after_body_hash": "16551880372640656481",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termQ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termQ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termQ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termQ",
+        "before_body_hash": "6186108359554384148",
+        "after_body_hash": "5692701419830350830",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termQ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"Q\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termQ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termQ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"Q\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termQ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termW",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termW",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termW",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termW",
+        "before_body_hash": "1077312467511143514",
+        "after_body_hash": "8895388944491732133",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termW",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"W\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.KST.LocalizingInvariants.termW",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termW",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"W\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termW",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "1605992530614362096",
+        "after_body_hash": "497941389440084519",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "7879784877123546853",
+        "after_body_hash": "10438291451782567125",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "1299947260109109881",
+        "after_body_hash": "1115169660793494070",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "9998409205834862839",
+        "after_body_hash": "14265286493815158317",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "14084884550713863847",
+        "after_body_hash": "12026186583648857750",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "2447437180254524188",
+        "after_body_hash": "11406714291165581094",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "15301325775950875980",
+        "after_body_hash": "8784981328449778013",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termP",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+        "before_body_hash": "13810793228849197828",
+        "after_body_hash": "5724372685654639127",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.KST.LocalizingInvariants.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"P\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termP",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+        "old": "SerrePositivity.KST.LocalizingInvariants.termJ",
+        "new": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+        "after_raw": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+        "before_body_hash": "18144120126091240240",
+        "after_body_hash": "14043082812880704409",
+        "before": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.KST.LocalizingInvariants.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "after": {
+          "type": "Lean.Expr.const `Lean.ParserDescr []",
+          "raw_name": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "precedence": "Lean.Expr.app\n  (Lean.Expr.app\n    (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n    (Lean.Expr.lit (Lean.Literal.natVal 1024)))\n  (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 1024)))",
+          "parser": "Lean.Expr.app (Lean.Expr.const `Lean.ParserDescr.symbol []) (Lean.Expr.lit (Lean.Literal.strVal \"J\"))",
+          "node_is_decl": true,
+          "node": "_private.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison.0.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.termJ",
+          "level_params": [],
+          "head": "Lean.Expr.const `Lean.ParserDescr.node []"
+        },
+        "equal": true
+      }
+    ]
+  },
+  "axiom_graph": {
+    "status": "PASS",
+    "rows": [
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "old": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+        "new": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "inductive",
+        "before": "before-final/shard-0031.json",
+        "after": "after-full/shard-0031.json",
+        "before_graph": {
+          "visited": 422,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 422,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
+        "old": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id",
+        "new": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0031.json",
+        "after": "after-full/shard-0031.json",
+        "before_graph": {
+          "visited": 426,
+          "name": "SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 426,
+          "name": "SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+        "old": "SerrePositivity.KST.SConstruction.CubeMapGenerated.connection",
+        "new": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+        "before_axioms": [],
+        "after_axioms": [
+          "propext"
+        ],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0047.json",
+        "after": "after-full/shard-0047.json",
+        "before_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.connection",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.connection",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated",
+        "old": "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy",
+        "new": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+        "before_axioms": [
+          "propext"
+        ],
+        "after_axioms": [],
+        "same_type": true,
+        "same_body": true,
+        "kind": "constructor",
+        "before": "before-final/shard-0047.json",
+        "after": "after-full/shard-0047.json",
+        "before_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.KST.SConstruction.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "after_graph": {
+          "visited": 432,
+          "name": "SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.degeneracy",
+          "missing": [],
+          "axioms": [
+            "propext"
+          ]
+        },
+        "equal": true
+      }
+    ]
+  }
+}
