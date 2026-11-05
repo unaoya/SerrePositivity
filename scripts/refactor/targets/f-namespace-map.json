@@ -1,5 +1,5 @@
 {
-  "status": "APPLIED_INTERNAL_ROUND_2_STOPPED",
+  "status": "APPLIED_INTERNAL_ROUND_5_STOPPED",
   "base": "640288f33e3d428c41d9cc0e5a35b85f1a63ea5c",
   "instruction": "IF-F §5 main 65c321e1f; user: KST から移した宣言だけ",
   "scope": "InfinityCategories 配下にある KST 名前空間の明示ソース宣言。∞ 全体の名前空間は変更しない。由来が W2c と先行の W1/W2a のものを区別して列挙。",
@@ -119014,7 +119014,7 @@
   "directory_renames": [],
   "alias_retention": "段 G の最初の区切りまで（目安1か月）。BS・G2・KST の移行確認後、別束で一括削除。",
   "README_plan": "Updated with F1/F1B/F2 contents and compatibility lifetime",
-  "lean_builds": "before 745 + extra 15 PASS; small round2 PASS; internal round2 FAIL; downstream/after/verify NOT_RUN",
+  "lean_builds": "internal round5 FAIL; before snapshots retained; downstream/full preservation/verify NOT_RUN",
   "provenance_counts": {
     "w1.json": 54,
     "w2c-combined-plan.json": 2187,
@@ -239453,8 +239453,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
@@ -240722,8 +240722,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeGeneratorWords",
@@ -240936,8 +240936,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
@@ -241061,8 +241061,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal",
@@ -241150,8 +241150,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateSelection",
@@ -241921,8 +241921,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeCoordinateCompletion",
@@ -241974,8 +241974,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeGeneratorWords",
@@ -242635,8 +242635,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalFormGenerated",
@@ -293708,8 +293708,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalOrder",
@@ -295102,8 +295102,8 @@
         "instance_priority": null,
         "expose": true
       },
-      "alias_noncomputable": false,
-      "alias_explicit_noncomputable": false
+      "alias_noncomputable": true,
+      "alias_explicit_noncomputable": true
     },
     {
       "module": "SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap",
@@ -315278,7 +315278,7 @@
     "environment_private": 1157,
     "environment_source": 3871,
     "tool_modules_added": 1,
-    "changed_production_consumers": 28,
+    "changed_production_consumers": 931,
     "downstream_with_helper": 11540,
     "active_downstream_without_archive": 10519,
     "active_downstream_with_helper": 10520
@@ -315421,13 +315421,17 @@
   "preservation_inverse_map": "f-namespace-inverse-map.json",
   "alias_lifecycle": "Keep until the first stage-G checkpoint; removal is a separate task after BS/G2/KST migration.",
   "implementation_tool": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias",
-  "verification_status": "STOPPED_INTERNAL_ROUND_2_RECURRENCE_NOT_STOP_POINT_4",
-  "verification_record": "f-section7-stop.json",
+  "verification_status": "STOPPED_INTERNAL_ROUND_5_NON_UNFOLD_RECURRENCE_NOT_STOP_POINT_4",
+  "verification_record": "f-section8-stop.json",
   "finalized": false,
   "archive_build_policy": "IF-W2b §1: 追跡するがビルドしない; Archive/InfinityCategories/FilteredExchange/README.md",
-  "supplement_record": "f-namespace-round02-supplement.json",
+  "supplement_record": "f-section8-round05.json",
   "source_implementation_commits": [
     "c1779328e",
-    "6caa532d9"
+    "6caa532d9",
+    "0b4ac3145",
+    "86d2c12c7",
+    "74fd12350",
+    "f908c70db"
   ]
 }
