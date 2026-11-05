@@ -53,6 +53,8 @@
 | B-5 | 八公理と降下の本体（KST Thm 3.7、スキーム補題、有限平坦 transfer など） | B-4。**公理 (3)（冪零不変性）の供給経路を先に再確認**（計画 v2 の未決） |
 | B-6 | Thm 3.1・Lemma 4.6 の証明 → 2 つの sorry を置き換える。PC の K₀ のモデルの一本化（論文の層の段階 3 の残り）もここで判断 | B-5 |
 
+**外部の資産（11-05 調査）**：別プロジェクト `../arxiv_formalization`（Lean v4.32.0）に、B-5 のスキーム側で移植を検討できるものがある：Grothendieck アーベル圏の複体の K-injective 解消の存在（Stacks 079P、`Algebra/DerivedCategory/Grothendieck/`、sorry 0）、三角圏の recollement（BBD 1.4.10、`Algebra/Triangulated/`、sorry 0）、スキーム上の加群層の基盤（`AlgebraicGeometry/VecBundle/`、大きく版差の影響が大きい）。Koszul 複体は SerrePositivity 側に既にある。prismatic などは axiom のスタブで使えない。版差（v4.32 → v4.35）の手直しが要るので、L4（Perf(X)・Thomason の局所化）を始めるときに改めて判断する。
+
 ## 3. 保守（急がない）
 
 `cleanup-list-2026-11.md` §2 の L1〜L6（alias の一括削除、旧 G8 の削除、M16、分数の一般版、台帳の大きな処置、DG の D6〜D8）。L3・L4 は B-2 に含める。
