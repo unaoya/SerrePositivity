@@ -36,9 +36,24 @@
 | A-4 | A0（prismatic site、Čech–Alexander）、A1（Hodge–Tate 比較）、A2（Construction 7.6、CAlg 値の Δ） | A-1・A-2、G10、G12 |
 | A-5 | A3〜A8（Lemma 8.4、Prop 8.5、Cor 8.12、Thm 10.11 ほか） | A-4、M14（P⁰）、M15（descendability）、⊗ᴸ（済） |
 | A-6 | A9：E3 の組み立て → `Inputs` の証明の置き換え | A-5 |
-| A-7 | 3 件の証明：D68（結晶側の de Rham 形）、BS17 Thm 4.1 (i)（完全スキームの v 降下）、BM18 Thm 1.7（arc 層の判定）。まず各原典の証明が何に依存するかを紙で調べ、規模と経路を決める（11-05 夜に追加、未着手） | 古典的な部分は A-6 と独立に先行できる見込み（調査で確かめる） |
+| A-7 | 恒久の引用としていた 3 件の証明（11-05 夜、ユーザー決定。調査 `bhatt-scholze/citations-survey-2026-11-05.md`）：D68 は対象ごとの HT の命題に置き換えて直接（0.8〜1.5 万行、∞ 不要）、BM18 は G-A6-1 を O の場合に 1 圏で直接（0.3〜0.6 万行、∞ 不要、入力に BS17）、BS17 Thm 4.1 (i) は原典どおり（§1.5 のスキーム論の土台の上） | D68・BM18 は A-3 と並行に先行できる。BS17 は §1.5 |
 
 ∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G8 の四角形（篩包含）の残り：IF-G2-finish の段 2 の②の完成（切断の制限と G8 の選択された比較を結ぶ錐の族の同型）、続いて①と四角形（`infinity-codex-g2-finish.md`、`infinity-g2-progress.md` の末尾。段 1 と段 2 の途中は main にある）。G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
+
+### 1.5 共通の段：スキーム論の土台（A と B の両方が使う、11-05 夜）
+
+BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに要る代数幾何の多くは、K の B-5（Perf(X)、Thomason の局所化、ブローアップ、平坦化）と共通なので、一つの段として独立させる（ユーザー：「どうせ K でもスキーム論は要る」）。担当は⑥（§5.1）。
+
+| 部品 | K | BS17 |
+| --- | --- | --- |
+| 準連接層・準連接コホモロジー（affine での消滅、Čech） | 要る（L4） | 要る |
+| ブローアップ（L7a 済）、Raynaud–Gruson 型の平坦化、Noether 近似、generic flatness | 要る（L7b・L7c） | 要る（BS17 Lemma 2.6） |
+| 射影束の公式 | 要る（L5f） | — |
+| 固有射のコホモロジーの有限性、コホモロジー版 Artin–Rees（Stacks 02O7）、Stein 分解 | 要確認 | 要る（BST13 Lemma 3.9） |
+| Rydh の v 被覆の構造定理（Ryd10 Thm 3.12）、h 層・v 層の判定法（BS17 Thm 2.9・Cor 2.14、Lemma 2.12） | — | 要る |
+| 完全環の弱正規性（または Kollár の商）、完全化と平坦性（BS17 Lemma 3.4） | — | 要る |
+
+置き場所：共通の新しい部品は新設の `SerrePositivity/AlgebraicGeometry/`（BS と KST の両方から import できる、KST に依存しない層）。既存の `KST/SchemeLemmas/` は動かさない（移動は保守の束で）。BS17 の定理そのものも一般の主張として `AlgebraicGeometry/` に置き、⑤が drafts の `cech_exact_of_vCover_perfect` をそれで閉じる。
 
 ## 2. 目標 B：K 理論の 2 つを消す
 
@@ -76,7 +91,7 @@
 
 ユーザーの決定（11-05）：
 1. 調整役は新しいチャット（段階 II の調整役）。BS の二つ（設計の Claude Code、実装の Codex）も新しいチャット。
-2. 最初に開く Codex レーンは 4 本：**① ∞ 中核（Verdier）、③ ∞ 供給（層の一般論）、⑤ BS 実装、⑥ K の古典的な準備**。
+2. 最初に開く Codex レーンは 4 本：**① ∞ 中核（Verdier）、③ ∞ 供給（層の一般論）、⑤ BS 実装、⑥ スキーム論（A と B の共通の土台、§1.5。当初の「K の古典的な準備」を 11-05 夜に広げた）**。
 3. ⑥は Codex だけで、調整役が検収する（公理 (3) の再確認の設計判断も調整役が受け、ユーザーと決める）。
 4. ∞ の Codex レーン（①③、のちの②④）の検収は調整役。
 5. **BS 設計のチャットは置かない（11-05 夜、ユーザー）**。目標 A の設計・drafts の追従・BS 実装の指示書と検収・design-status の記録も調整役が行う。管理はすべて調整役のチャットに集める。
@@ -87,7 +102,7 @@
 | ① ∞ 中核 | Codex | B-1 の Verdier 部分（M1・M2・M7・M8）、L4（分数の一般版） | M1・M2・M7（Verdier 商、K 基盤の入口） | 調整役 | `SerrePositivity-inf-core`・`math/inf-core` |
 | ③ ∞ 供給 | Codex | 目標 A の基盤：G8 の四角形、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形、G10 | G8 の四角形（IF-G2-finish の②の完成 → ① → 四角形、`infinity-g2-progress.md` の末尾） | 調整役（使う側の drafts の型と照らす） | `SerrePositivity-inf-supply`・`math/inf-supply` |
 | ⑤ BS 実装 | Codex | A-1〜A-6 の Lean（drafts を本体へ移しながら sorry を証明に置き換える、§1.0） | BS-W11（A-3）→ A-1 の S1・S2・S6、A-2 | 調整役 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） |
-| ⑥ K の準備 | Codex | B-5 の古典的な部分：KST §5 のスキーム補題、可換環論 | **公理 (3)（冪零不変性、経路の D9）の供給経路の再確認の報告**（Lean は書かない）→ 結論が出てから補題へ | 調整役 | `SerrePositivity-k-prep`・`math/k-prep` |
+| ⑥ スキーム論 | Codex | §1.5 のスキーム論の土台（A と B の共通）と B-5 の古典的な部分（KST §5 のスキーム補題）。BS17 Thm 4.1 (i) まで | **公理 (3)（冪零不変性、経路の D9）の供給経路の再確認の報告**（Lean は書かない）→ 平坦化（L7 の残り）→ §1.5 の部品 | 調整役 | `SerrePositivity-scheme`・`math/scheme` |
 
 後から足すレーン：
 
@@ -111,7 +126,7 @@
 | ③ ∞ 供給：層の一般論 | G9 の小補題 3 つ、G8 の一般形、G10 | `F2/`・`HomotopyLimits`・`Derived` |
 | ④ ∞ 供給：E∞ | M14、M15、G12 | `EInfinity/`・`ModelBridge` |
 | ⑤ BS 実装 | BS-W11、A-2、A-1 の S1・S2・S6 | `BhattScholze/`・`CA/`・`Sheaves/`・`Derived/` |
-| ⑥ K の古典的な準備 | KST §5 のスキーム補題、可換環論、公理 (3) の再確認 | `CommutativeAlgebra/`・`KST/` |
+| ⑥ K の古典的な準備（11-05 夜に⑥ スキーム論へ広げた、§1.5） | KST §5 のスキーム補題、可換環論、公理 (3) の再確認 | `CommutativeAlgebra/`・`KST/` |
 | ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り（11-05 の調査：β4・β5 は完了済み、残りは K-10 d と β6 f・h。§5.1 で直した） | `DifferentialGraded/`・`Derived/` |
 
 上限は 7 本。律速は検収（前の調整役の想定は BS 設計一本・調整役一本。11-05 夜に調整役一本に集めた）。前の調整役の推奨は 5 本（①③④⑤⑥）だったが、④は A-4・A-5 まで要らないので、③の最初の区切りの後に回した（§5.1）。

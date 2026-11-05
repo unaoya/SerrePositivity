@@ -33,11 +33,11 @@ SerrePositivity の段階 II、∞ 中核レーンの Codex として作業し�
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
 ```
 
-## ⑥ K の準備（Codex、新しいチャット）
+## ⑥ スキーム論（Codex、新しいチャット）
 
 ```
-SerrePositivity の段階 II、K の準備レーンの Codex として作業してください。
-指示書は formalization-plans/stage-ii/k-prep-w1.md です。§1 の準備（main f3fcefe8e 以降から worktree ../SerrePositivity-k-prep と枝 math/k-prep を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
-最初の仕事は段 1（公理 (3) の供給経路の再確認。報告だけで Lean は書かない）です。報告の後は段 2（KST §5 のスキーム補題）へ進んでかまいません。
+SerrePositivity の段階 II、スキーム論レーンの Codex として作業してください（BS と K の両方が使う代数幾何の土台）。
+指示書は formalization-plans/stage-ii/scheme-w1.md です。§1 の準備（main f3fcefe8e 以降から worktree ../SerrePositivity-scheme と枝 math/scheme を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
+最初の仕事は段 1（公理 (3) の供給経路の再確認。報告だけで Lean は書かない）です。報告の後は段 2（平坦化などスキーム論の土台、最後に BS17 Thm 4.1 (i)）へ進んでかまいません。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
 ```

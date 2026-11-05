@@ -13,7 +13,7 @@
 | ① ∞ 中核 | Codex | M1・M2・M7・M8、L4 | `SerrePositivity-inf-core`・`math/inf-core` | [stage-ii/inf-core-w1.md](stage-ii/inf-core-w1.md) | 調整役 |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10・G8 の一般形 | `SerrePositivity-inf-supply`・`math/inf-supply` | [stage-ii/inf-supply-w1.md](stage-ii/inf-supply-w1.md) | 調整役 |
 | ⑤ BS 実装 | Codex | BS-W11 → drafts の移植 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） | `bhatt-scholze/bhatt-scholze-codex-w11.md` | 調整役 |
-| ⑥ K の準備 | Codex | 公理 (3) の再確認 → KST §5 のスキーム補題 | `SerrePositivity-k-prep`・`math/k-prep` | [stage-ii/k-prep-w1.md](stage-ii/k-prep-w1.md) | 調整役 |
+| ⑥ スキーム論 | Codex | 公理 (3) の再確認 → スキーム論の土台（A・B 共通、計画 §1.5）、BS17 Thm 4.1 (i) まで | `SerrePositivity-scheme`・`math/scheme` | [stage-ii/scheme-w1.md](stage-ii/scheme-w1.md) | 調整役 |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
 
@@ -55,7 +55,7 @@
 | ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
 | BS 設計・BS 実装（段階 I） | 閉じた。段階 II では BS 実装は新しい Codex チャット、設計は調整役が持つ（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
-| 段階 II の新しいレーン（①③⑤⑥） | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥KP-W1）。⑤は W11（§6 の追記）|
+| 段階 II の新しいレーン（①③⑤⑥） | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥SC-W1）。⑤は W11（§6 の追記）|
 
 ## 5. 段階 I から引き継ぐ要点
 

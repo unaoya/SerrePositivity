@@ -15,7 +15,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 
 - **目標**：E3（`SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean` の `exists_perfectoidizationInterfaceE3`）を、Bhatt–Scholze の原典の経路 A0〜A9 で消す（stage2 の A 案）。
 - **ユーザーの規則**：「adhoc にやらないで、基本は論文通りに形式化したい。特に定義は変えないで、定理は特別な場合だけ証明する」。避けられない差は D 番号を付け、先に相談する（D 番号はユーザーが付ける）。設計判断は推奨を添えて出す。
-- **終わりの条件（11-05 夜、ユーザー）**：sorry 0。a9-design §3 の「恒久的な引用」3 件（D68・G-A6-1a・G-A6-1b）も証明する（計画 A-7）。許可一覧に sorry は入れない。
+- **終わりの条件（11-05 夜、ユーザー）**：sorry 0。a9-design §3 の「恒久的な引用」3 件（D68・G-A6-1a・G-A6-1b）も証明する（計画 A-7、経路は §2 の決定の表「改訂（11-05 夜）」）。許可一覧に sorry は入れない。**drafts の追従（A1/CrystallineInput・A1/HodgeTateComparison・A6/ArcSheafProperty）は調整役が行う（未）**。
 - **役割**：Claude は設計・drafts・Codex 指示書・検収。**段階 II では BS 設計のチャットを置かず、段階 II の調整役のチャットがこの役を持つ（11-05 夜、ユーザー）**。Lean の本体のコーディングは Codex（指示書 `bhatt-scholze-codex-wN.md`、停止点で報告、経緯を書いて自己完結にする。ユーザーは Codex のチャットを替えるので）。
 - **コミット**：main に直接、自分の範囲だけを **`git commit --only -- <paths>`**、その後 `git show --stat HEAD` で確認（11-04 に `git add && git commit` で他セッションの staged 削除を巻き込んだ。memory「main では commit --only」）。帰属行は `Co-Authored-By`。
 - **ビルド**：drafts（`formalization-plans/bhatt-scholze/drafts/`、`SerrePositivity/` の外）はビルドしない。本体の単体ビルドは coordination.md §2-4a（`ps -axo command=` で他のビルド・verify がないこと、`scripts/refactor/with_build_lock.sh --wait 0`）。全ビルドは調整役の暦。
@@ -192,6 +192,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D60〜D62、D15 | Def 8.2 の定義域を原典（animated）に戻す、基底 R 固定、Cor 8.14 は離散 S、環版 Prop 8.13 は後で系に（BR31） | a7-design §4・§6 |
 | D20 訂正 | Def 2.42 の平坦性はホモロジーの底変換同型（高次の消滅ではない。Codex W9-I-01 の反例 (Z_p,(p))） | a0-design §2.5・§4 |
 | D53〜D59 | arc site は affine（affCompl_κ ⊃ affPerfd_κ）、有限族、Cor 8.11 は affine 版を記録、三つの引用は別々に `sorry`、S8、S′ × S/I は有限積の保存で戻す、BM18 は affine 版 | a6-design §5・§7・§9・§10 |
+| **改訂（11-05 夜、ユーザー）** D68・D56・D59、BS17 | 終わりの条件は sorry 0。(1) D68 改訂：結晶の黒箱を関手同型から外し、使う側が要る対象ごとの HT の命題 `HodgeTateIsoStatement` を Čech–Alexander 模型の mod p で直接証明（Lemma 5.4・pd Poincaré・BdJ・Cartier）。未使用の `deRham_iso_polynomial_crystalline` は外す。D69 側の `deRham_iso_polynomial_universal` の貼り合わせの高次整合性を確かめる。(2) D56・D59 改訂：一般形の `arcSheaf_of_vSheaf_of_valuationSquares` は主経路から外し、G-A6-1 `cech_exact_of_arcCover_perfect` を F = O の場合の BM18 Prop 4.8 として 1 圏で直接（Rydh・hypercomplete 性は使わない。置き換えの二点は紙で確認）。(3) BS17 Thm 4.1 (i) `cech_exact_of_vCover_perfect` は原典どおり（Cor 2.14・Thm 2.9・Lemma 2.6・Rydh Thm 3.12・BST13 Lemma 3.9）。土台は K と共有の「スキーム論の土台」（計画 §1.5）。E3 の型は変えない | [citations-survey-2026-11-05.md](citations-survey-2026-11-05.md)、a9-design §3 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
 

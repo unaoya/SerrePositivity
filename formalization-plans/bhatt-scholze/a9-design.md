@@ -36,7 +36,8 @@ D(R) 版 `PerfectoidizationInterfaceE3` の存在を得て、唯一の引用 `Bh
 - ∞ 側の一般論：S1〜S8（層・RΓ・脚注 10・層化・CAlg 値・κ・D(A) への適用・空間値の層、M12 系。S8 の前提に G13（𝒮 の presentable 性）と S4 の非安定版、W9-III-12）、G3・G4・G6〜G10、DerivedGeneral（M13）、P⁰（M14）、
   descendability（M15）、F2 の P_Σ・Kan 延長。
 - 論文の層の整理 2b の後：HA/DerivedCompletion の名前（完備化、Tot、Koszul）、Shared（cup 積・Bockstein・de Rham）。
-- **恒久的な引用**（`sorry`、監査の許可一覧へ。W9-III-12 で D68 後の形に更新）：
+- **11-05 夜の改訂（ユーザー決定、段階 II の終わりの条件は sorry 0）**：下の表の三件は**引用ではなく証明する**。D68 改訂（結晶側は対象ごとの HT の命題に置き換えて直接証明）、D56・D59 改訂（一般形の BM18 判定は主経路から外し、G-A6-1 を O の場合に 1 圏で直接）、BS17 Thm 4.1 (i) は原典どおりの経路（スキーム論の土台の上で）。調査は [citations-survey-2026-11-05.md](citations-survey-2026-11-05.md)。監査の許可一覧に sorry は入れない（暫定の二件も証明する）。以下の表は改訂前の記録。
+- **恒久的な引用**（改訂前。`sorry`、監査の許可一覧へ。W9-III-12 で D68 後の形に更新）：
 
   | 引用 | 宣言 | 出典 | 備考 |
   | --- | --- | --- | --- |
