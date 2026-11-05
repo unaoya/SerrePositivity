@@ -44,3 +44,10 @@
 
 - **F-1 承認**（20b781f39・45969ee0a）：`import all` の 15 辺は、補助定理 19 個を定義元に置いたまま公開にして解除（公開名の衝突 0）。R67 の check 2 本の追従、ArrowFactorization 3 本の分類も適用してよい。台帳のその他の処置（archive 候補、未被覆 145 本の監査登録候補など）は今回は記録だけ。適用 → 内部検証 → 下流（144 本）→ verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）→ 停止点 2。条件付き事前承認は W2c と同じ。
 - **F-2 の旧名の重複 1 組**（`KST.Comparison.doubleMappingCylinder_hom_ext`）：旧名の alias は利用者の多い方に付け、もう一方は alias なしで、その利用者をこの束の中で新名へ書き換える。適用は G2・BS の区切りの後に合図する。
+
+## 7. 追記（2026-11-05 09:20、F-2 の適用の合図）
+
+前提がそろった：F-1・G2 の先行分・Lemma 10.12 が main に入り（9ebbe8e8a・55b419a24・4019014a1）、G2 は b60279c26 までコミット済みで待機、BS の worktree は 0 本、論文の層・DG は待機、SerrePositivity のビルドはなし。
+
+**適用してよい**：`infra/if-f` に main（60be92efe 以降）を merge → §5 の範囲（KST から移した宣言の名前空間をディレクトリに合わせる、旧名は deprecated alias、F1・F1B・F2 は改名しない）と §6 の重複 1 組の処置 → 静的検査 → before snapshot v3b → 名前の付け替えと alias → 内部ビルド → 下流（逆依存 11,538 本、鍵）→ 保存比較 v3b（名前の対応表を入れて型・本体の一致）→ 層検査 → 監査の追従 → verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）→ **停止点 4**。条件付き事前承認は W2c と同じ（下流が通り、保存比較の未説明 0、処置が判断表の範囲なら verify まで進む）。
+報告に含める：改名表（`targets/f-namespace-map.json` の確定版、旧名 → 新名、alias の種類）、利用者側の書き換えの件数（BS・KST・G2 の枝は対象外、main の中だけ）、verify の summary。
