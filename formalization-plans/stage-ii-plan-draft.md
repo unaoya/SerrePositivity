@@ -18,6 +18,16 @@
 
 設計は揃っている：`bhatt-scholze/design-status.md`、設計書 A0〜A9、`foundation-entry-points.md`（基盤の入口表）、drafts（`bhatt-scholze/drafts/`）。
 
+### 1.0 出発点：BS の形式化の下書き（drafts）
+
+`formalization-plans/bhatt-scholze/drafts/` に、設計 A0〜A9 に沿って主張の型と骨組みを書いた Lean が **51 本・約 12,900 行**ある（11-05 時点。sorry 893 か所）。`SerrePositivity/` の外なのでルートからも監査からも届かず、ビルドされない。内訳：Sheaves 7（S1〜S8）、DerivedGeneral 3（M13）、Shared 6（cup 積・Bockstein・de Rham・P⁰・descendability など）、A0〜A9 35。置き場所の表とファイルの順序（DAG）は `drafts/README.md`。
+
+**目標 A は drafts を本体へ移しながら sorry を証明に置き換える作業である**：
+1. BS 実装（Codex）が、drafts のファイルを決まった置き場所（`InfinityCategories/Sheaves/`・`Derived/`・`EInfinity/`・`BhattScholze/`・`CommutativeAlgebra/` など、`drafts/README.md` と計画の M12〜M15）へ**新規ファイルとして**移し、sorry を証明に置き換える。sorry が 0 になったものから main に入れる（調整役が取り込む）。移したら drafts 側のファイルは消す。
+2. 順序は `drafts/README.md` の DAG と下の A-1〜A-6。∞ に頼んでいる一般論（G8 の四角形、G14、G9、G10、G12、M14、M15）が main に入ったところから、それを待つ drafts の sorry が閉じられる。
+3. drafts の型は基盤の実際の名前で書かれている（F-2 の改名表の旧名の使用は 0、11-05 確認）。基盤の名前が変わったら BS 設計が drafts を追従する。
+4. 進み具合は「drafts の残り本数と sorry の数」で測る（BS 設計が design-status.md に記録）。
+
 | 段 | 内容 | 前提 |
 | --- | --- | --- |
 | A-1 | ∞ 層の一般論 S1〜S8（`InfinityCategories/Sheaves/`）：層条件、Γ・RΓ、脚注 10（Quillen A による余終性）、層化の存在 S4・完全性 S5、空間値の層 S8 | ∞ 供給：G8 の四角形（C4）、G14、G9 の小補題 3 つ、G8 の一般の φ・一般形。G7・G3・G4・G6 は済 |

@@ -37,6 +37,10 @@
 4. 前の調整役が残した片付け C8〜C10：枝の整理（main に入った `infra/*`・`refactor/*`・`math/g1`・`codex/bs-w10-b` など）、整理の期間の指示書の archive、`coordination.md` の段階 II 化、メモリの統合。
 5. 段階 II の計画（`stage-ii-plan-draft.md`）をユーザーと確定し、新しいレーンの開始文を書く。新しい BS（設計の Claude Code は `bhatt-scholze/design-status.md` §0 から、実装の Codex は BS-W11 から、F-2 の改名表の後）。
 
+### 2.2 段階 II の目標 A の出発点（BS の drafts）
+
+BS の形式化の下書きが `formalization-plans/bhatt-scholze/drafts/` に 51 本・約 12,900 行（sorry 893）ある。ビルドされない設計段階の Lean で、**目標 A は、これを BS 実装（Codex）が本体の決まった置き場所へ新規ファイルとして移しながら sorry を証明に置き換え、sorry 0 のものから main に入れる作業**である（計画 §1.0）。新しい BS のチャットの開始文と、BS 実装の最初の指示書（BS-W11 以降）には、この進め方と `drafts/README.md`（置き場所と DAG）を明記する。∞ の供給（G8 の四角形など）が main に入るたびに BS に知らせる。
+
 ## 3. 調整役の仕事のやり方（整理の期間に固まったもの）
 
 - **合図と取り込み**：全ビルド（下流・verify）の開始は調整役が合図する。取り込みは調整役が main で `git merge --no-ff`、衝突は main 側を正に、その後に温め（`lake build SerrePositivity` と、verify の監査対象の一覧のモジュール。監査が import するモジュールは直接ビルドしてから監査を流す）。
