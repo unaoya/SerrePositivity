@@ -15,14 +15,15 @@
 
 - **主定理の閉包の sorry**：3 つ（E3、`theorem_3_1_K0`、`Section4.supportedRankK0_descent`）。
 - **整理（段階 I）**：**完了**。DG・論文の層・∞ の W0〜W2c・段 F（F-1、F-2：d0845720b）と片付け C1〜C3（05c33bfc0）・C8〜C10 まで main に入った。改名表は `scripts/refactor/targets/f-namespace-map.json`（旧名は deprecated alias で残る）。README は段階 I の終わりの状態に更新済み（7e7fb944a）。
-- **レーン**：整理の期間のレーンはすべて閉じた（∞ 整理・G2・DG・論文の層・BS 設計・BS 実装）。worktree は main だけ。枝は `main` と `math/g2`（G2 の WIP：篩包含の G8 比較の補助、`infinity-g2-progress.md`。**消さない**）。古い枝は `archive/*` のタグ。
+- **G2-finish（11-05 夜）**：段 1 と段 2 の途中を main に取り込んだ（6f35a986f。ルートのビルド・F2 の監査とも通過、sorry なし）。ここで区切り、②の完成（錐の族の同型）・①・四角形は ∞ 供給レーンの最初の仕事にする。残りの接続は `infinity-g2-progress.md` の末尾。
+- **レーン**：整理の期間のレーンはすべて閉じた（∞ 整理・G2・DG・論文の層・BS 設計・BS 実装）。worktree は main だけ。枝は `main` だけ（`math/g2` は取り込み後に削除）。古い枝は `archive/*` のタグ。
 - **main**：作業木はクリーン。最後の verify は F-2（gate:true）。その後の C1〜C3 は対象のビルドと F2・Derived の監査で確認。
 
 
 ### 2.1 新しい調整役が最初にすること（順に）
 
 1. **段階 II の計画（`stage-ii-plan-draft.md`）をユーザーと確定する**。レーンの構成は §5.1 の並列の検討（7 本が上限、5 本から推奨）を叩き台にする。計画書の状態の表（`infinity-lanes/foundations.md` §2 は 10-19 のまま）も今の状態に直す。
-2. 各レーンの開始文を書く。どれにも「F-2 の改名表の場所」「main を取り込んでから始める」「coordination.md §2 の規則」を入れる。∞ 供給は `math/g2` の WIP（G8 の四角形、篩包含、始対象 (U, 𝟙) による直接比較を推奨）と `infinity-codex-g2.md` から、BS 設計は `bhatt-scholze/design-status.md` §0 から、BS 実装は BS-W11 から（旧 G8 ではなく `tensorSpaceFunctor_setWeightHomNatural` を使う）。
+2. 各レーンの開始文を書く。どれにも「F-2 の改名表の場所」「main を取り込んでから始める」「coordination.md §2 の規則」を入れる。∞ 供給は `infinity-codex-g2-finish.md` と `infinity-g2-progress.md` の末尾（G8 の四角形の残り）と `infinity-codex-g2.md` から、BS 設計は `bhatt-scholze/design-status.md` §0 から、BS 実装は BS-W11 から（旧 G8 ではなく `tensorSpaceFunctor_setWeightHomNatural` を使う）。
 3. coordination.md §1・§3 にレーンと暦を書く。
 4. 後回しの片付け（`cleanup-list-2026-11.md` §2 の L1〜L6）を段階 II の保守として暦に入れる。
 

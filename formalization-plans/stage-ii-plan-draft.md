@@ -38,7 +38,7 @@
 | A-6 | A9：E3 の組み立て → `Inputs` の証明の置き換え | A-5 |
 | A-7 | 恒久の引用 3 件を監査の許可一覧へ | A-6 |
 
-∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
+∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G8 の四角形（篩包含）の残り：IF-G2-finish の段 2 の②の完成（切断の制限と G8 の選択された比較を結ぶ錐の族の同型）、続いて①と四角形（`infinity-codex-g2-finish.md`、`infinity-g2-progress.md` の末尾。段 1 と段 2 の途中は main にある）。G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
 
 ## 2. 目標 B：K 理論の 2 つを消す
 

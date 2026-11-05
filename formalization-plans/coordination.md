@@ -30,8 +30,8 @@
 
 | レーン | 状態 |
 | --- | --- |
-| ∞ 整理（Codex） | 片付け C1〜C3 を `codex/if-cleanup-c1-c3` で実施中 → 取り込んだら閉じる |
-| ∞ 数学 G2 | 閉じた。WIP は枝 `math/g2`（b60279c26）と、その枝の `infinity-g2-progress.md`。段階 II の ∞ 供給レーンが再開する |
+| ∞ 整理（Codex） | 閉じた（C1〜C3 は 05c33bfc0） |
+| ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
 | BS 設計・BS 実装 | 閉じた。新しいチャットで始める（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
 
