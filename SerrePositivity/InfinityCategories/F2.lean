@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveHomotopy
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsUnstraightening
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsLimitNaturality
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality

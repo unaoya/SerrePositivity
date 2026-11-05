@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveHomotopy
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsUnstraightening
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsLimitNaturality
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality
@@ -2108,7 +2109,8 @@ run_cmd do
   let targets : Array Name := #[
     `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsUnstraightening,
     `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsLimitNaturality,
-    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality]
+    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality,
+    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveHomotopy]
   for target in targets do
     unless env.header.modules.any (fun entry => entry.module == target) do
       throwError "IF-G2-finish: module not imported: {target}"
@@ -2124,3 +2126,5 @@ run_cmd do
       count := count + 1
     unless count > 0 do throwError "IF-G2-finish: no declarations audited: {target}"
     logInfo m!"IF-G2-finish: {target}: {count} declarations; no new axioms, standard axioms only."
+
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluation_postcompose_homMk_eq

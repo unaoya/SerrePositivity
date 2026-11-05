@@ -220,3 +220,36 @@ F-2 前の作業保存用に先行分と分けて WIP コミットとする。
 段 3 は、篩包含に沿う `elementsComparisonNatural` の自然性を底を固定した相対写像空間内で示し、
 `relativePreIso` と段 2 の比較を合わせて G8 の四角形を閉じる。
 頂点ごとの一致だけで完成と扱わない。
+
+
+## IF-G2-finish 段 2 の途中：評価側の Ho 等式（2026-11-05）
+
+**②は未完。停止点 2 の完成報告ではなく、証明済み補助の途中保存。main は動かさず、取り込みは Claude が行う。**
+
+追加：`SetSectionsSieveHomotopy.lean` の
+`SetWeight.sieveEvaluation_postcompose_homMk_eq`。
+任意の篩・前層・M・指定極限錐について、全写像空間の射として
+`[post(representableEvaluationMap) ≫ post(sieveSectionsMap)] = [post(sieveEvaluationMap)]`
+を `Ho(SpaceInfinity)` で示す。始域は `Map(M,F(U))`、終域は `Map(M,cS.vertex)`。
+証明は段 1 の `sieveEvaluation_postcomposeIso` を
+`coherentKanEdge_homMk_eq_of_functorIso` に渡す。
+頂点ごとの等式ではないが、段 1 の全族同型の直接の帰結であり、G8 との新しい照合を証明したものではない。
+
+検証：新規モジュールと直接の入口 F2 の小さなビルド PASS、F2 単独監査 PASS。
+入口と監査の通常 import に登録し、明示宣言とモジュールの全生成宣言を監査。
+新規モジュールの監査は 1 宣言、sorry・新規公理 0、標準 3 公理のみ。全ビルドなし。
+
+残る接続をソース上で確認した：
+
+- `sectionsConeFamilyRestriction_fromSections` は切断の制限と共通の固定端点模型の比較の等式。
+- `limitConeMap_homMk_eq_of_coneFamilyIso` は、その模型内の**全族の同型を入力に要求**する。
+- `limitConeEndpointComparison` は `fixedApexConeHomComparison` を経由し、
+  `rightFibrationMappingSection` で選択した切断を使う。
+  `RightFibrationHomComparison.lean` の仕様はこの選択の終点に関する自然性を主張していない。
+- `representableEvaluationConeMap` と段 1 の評価三角形だけでは、上記の選択された比較射と
+  G8 の `coherentDiagramSectionsCone`・値の比較を結ぶ全族の同型はまだ得られていない。
+
+次に必要なのは、錐の辺に沿う `rightFibrationHomComparison` の全族の比較を
+共通の自明 Kan fibration の span 上で構成し、固定端点模型へ移すこと。
+それを切断制限の厳密な自然性と合成し、さらに G8 の既存の値の比較との一致を示す。
+必要な同型を仮定として追加した「②」は置いていない。未完の Lean 宣言も置いていない。
