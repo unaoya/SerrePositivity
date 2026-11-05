@@ -1,5 +1,5 @@
 {
-  "status": "APPLIED_VALIDATION_PENDING",
+  "status": "PASS",
   "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
   "branch": "codex/if-cleanup-c1-c3",
   "C1": {
@@ -1531,7 +1531,8 @@
     "all_lean_files": 31447,
     "formal_audits": 102,
     "map_sha256": "0dace9141adf5f24ee010042271f159dd37b335a45f05e25348b26efcc41571a",
-    "audit_manifest_sha256": "2302e34cdf8f57cdca7ed3b765ead9f77842cfd82c03009b43eebed58ef4f022"
+    "audit_manifest_sha256": "2302e34cdf8f57cdca7ed3b765ead9f77842cfd82c03009b43eebed58ef4f022",
+    "status": "APPLIED_VALIDATED"
   },
   "C3": {
     "replacements": [
@@ -1565,9 +1566,70 @@
       "formalization-plans/bhatt-scholze/drafts/Sheaves/SetSections.lean",
       "formalization-plans/bhatt-scholze/drafts/Sheaves/SheafGenerators.lean"
     ],
-    "note": "Message-style deprecated attributes avoid a cyclic import from the old provider to its Natural consumer. Existing declaration types and bodies are unchanged."
+    "note": "Message-style deprecated attributes avoid a cyclic import from the old provider to its Natural consumer. Existing declaration types and bodies are unchanged.",
+    "status": "APPLIED_VALIDATED"
   },
-  "validation": {},
+  "validation": {
+    "status": "PASS",
+    "started": "2026-11-05T21:33:29.816460",
+    "commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579",
+    "modules": [
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetElements",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+      "SerrePositivity.InfinityCategories.F2"
+    ],
+    "stages": [
+      {
+        "name": "small-build",
+        "command": [
+          "lake",
+          "build",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetElements",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+          "SerrePositivity.InfinityCategories.F2"
+        ],
+        "exit_code": 0,
+        "seconds": 10.78,
+        "log": ".lake/verify/if-cleanup-c1-c3/small-build.log"
+      },
+      {
+        "name": "audit-f2",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "scripts/audit_infinity_f2.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 17.039,
+        "log": ".lake/verify/if-cleanup-c1-c3/audit-f2.log"
+      },
+      {
+        "name": "check-c2",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "scripts/refactor/check_cleanup_c2.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 10.749,
+        "log": ".lake/verify/if-cleanup-c1-c3/check-c2.log"
+      }
+    ],
+    "running": null,
+    "finished": "2026-11-05T21:34:08.330227"
+  },
   "validation_round1": {
     "status": "FAIL",
     "started": "2026-11-05T21:30:06.707489",
@@ -1628,5 +1690,46 @@
     ],
     "running": "check-c2"
   },
-  "validation_round1_note": "Small build and F2 audit PASS. The new C2 checker needed an explicit Nat annotation for its counter; no library proof failed. New deprecation strings were line-wrapped without changing the message."
+  "validation_round1_note": "Small build and F2 audit PASS. The new C2 checker needed an explicit Nat annotation for its counter; no library proof failed. New deprecation strings were line-wrapped without changing the message.",
+  "static_validation": {
+    "move_source_bytes_equal": true,
+    "deprecated_provider_declarations_unchanged": true,
+    "final_namespace_map_unchanged": true,
+    "audit_manifest_unchanged": true,
+    "readme_links_valid": true,
+    "old_module_references": [],
+    "f2_command_counts_before": {
+      "check": 584,
+      "print_axioms": 77
+    },
+    "f2_command_counts_after": {
+      "check": 584,
+      "print_axioms": 77
+    },
+    "f2_project_import_targets": 618,
+    "f2_project_imports_unchanged": true,
+    "c2_environment_declarations": 24,
+    "c2_source_declarations": 12
+  },
+  "warnings": {
+    "small-build": {
+      "total": 3121,
+      "long_line": 2697,
+      "deprecated": 36,
+      "log_sha256": "a854b7d3e03eee2f727d41b464adc9e45ea9fcc461c4bf48cf3f2998cec0208c"
+    },
+    "audit-f2": {
+      "total": 0,
+      "long_line": 0,
+      "deprecated": 0,
+      "log_sha256": "8eb491a5879d6c059f029a5c319cb02044b381b34cb086edc9a67750e3858804"
+    },
+    "check-c2": {
+      "total": 0,
+      "long_line": 0,
+      "deprecated": 0,
+      "log_sha256": "888c8fad1999b8138de7b5ef18381f7b63d267b253d1a56f42a50232f1c32220"
+    },
+    "changed_lean_long_line_warnings": []
+  }
 }

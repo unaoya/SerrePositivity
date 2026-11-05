@@ -73429,7 +73429,7 @@
       "stage_G": [],
       "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
       "cleanup_c2": {
-        "status": "APPLIED_VALIDATION_PENDING",
+        "status": "PASS",
         "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
         "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
         "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
@@ -73437,7 +73437,8 @@
         "source_sha256": "0b727a9fc377f8e5d066994edae6e299f8722004d380037221917d5dfa190f5a",
         "content_unchanged": true,
         "users_before": 0,
-        "formal_audit_registration": false
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
       }
     },
     {
@@ -73563,7 +73564,7 @@
       "stage_G": [],
       "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
       "cleanup_c2": {
-        "status": "APPLIED_VALIDATION_PENDING",
+        "status": "PASS",
         "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
         "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
         "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
@@ -73571,7 +73572,8 @@
         "source_sha256": "8bff6cb12143ba4104db2b28737fa43f40bfc4515792fc0633354d2bbfd3bb38",
         "content_unchanged": true,
         "users_before": 0,
-        "formal_audit_registration": false
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
       }
     },
     {
@@ -73595,7 +73597,7 @@
       "stage_G": [],
       "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
       "cleanup_c2": {
-        "status": "APPLIED_VALIDATION_PENDING",
+        "status": "PASS",
         "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
         "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
         "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
@@ -73603,7 +73605,8 @@
         "source_sha256": "6ea6794956f08db7a356e8077d01b8f708c0b08d6649eece48a054b4975fea3b",
         "content_unchanged": true,
         "users_before": 0,
-        "formal_audit_registration": false
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
       }
     },
     {
@@ -73647,7 +73650,7 @@
       "stage_G": [],
       "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
       "cleanup_c2": {
-        "status": "APPLIED_VALIDATION_PENDING",
+        "status": "PASS",
         "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
         "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
         "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
@@ -73655,7 +73658,8 @@
         "source_sha256": "3305d80c1388630c38eb3fe909cba011dfe613b22ad59c429dfa918e96f8c6b9",
         "content_unchanged": true,
         "users_before": 0,
-        "formal_audit_registration": false
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
       }
     },
     {
@@ -203934,7 +203938,7 @@
     "builds_executed": 0
   },
   "cleanup_c2": {
-    "status": "APPLIED_VALIDATION_PENDING",
+    "status": "PASS",
     "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
     "authorization": "cleanup-list-2026-11.md §1 C2; user authorized small zero-user moves",
     "moved": 4,
@@ -203943,6 +203947,8 @@
     "formal_uncovered_count_retained": 145,
     "deferred_HA_Simplicial": 121,
     "record": "cleanup-c1-c3.json",
-    "historical_note": "The original draft metadata and the remaining action proposals are retained; this section and marked rows describe the C2 application."
+    "historical_note": "The original draft metadata and the remaining action proposals are retained; this section and marked rows describe the C2 application.",
+    "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579",
+    "validation": "cleanup-c1-c3.json"
   }
 }
