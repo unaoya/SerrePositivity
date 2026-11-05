@@ -41,11 +41,11 @@ lemma simplexBeadIso_inv_last (d : ℕ) :
 /-- 元の標準単体の区間 [a,b] 全体を、同じ両端を持つ一 bead として読む。 -/
 def necklaceInSimplexInterval {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := necklaceBead (b.val - a.val)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab).app _)
+  necklace := necklaceBead (b.val - a.val)
+  map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab
+  map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab).app _)
     (simplexBeadFirstVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_first a b hab)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab).app _)
+  map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab).app _)
     (simplexBeadLastVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_last a b hab)
 
 /-- 元の区間 bead の augmentation は単射。 -/
@@ -57,13 +57,13 @@ instance necklaceInSimplexInterval_map_mono {n : ℕ} (a b : Fin (n + 1)) (hab :
 def necklaceInToSimplexInterval {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
     (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :
     T ⟶ necklaceInSimplexInterval a b hab where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+  necklaceHom :=
+    { map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
+      map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor_first T)).trans (simplexBeadIso_inv_first _)
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+      map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor_last T)).trans (simplexBeadIso_inv_last _) }
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+  w := by
     change (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalFactor T ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv) ≫
       ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap a b hab) = T.map
     simp only [Category.assoc, Iso.inv_hom_id_assoc]

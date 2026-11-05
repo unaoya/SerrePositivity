@@ -34,8 +34,8 @@ local notation "hZK" => dgKInputStableValue_isIdempotentComplete R (dgFixedNullI
 方針：両元全対象商の指定零比較の合成を使う。
 規約：零角を別頂点に置換しない。使われ方：両零側面の共有経路。 -/
 def dgOdotMilnorActualOuterKernelZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (ZV) (ZK) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _
+  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _
     (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).isExact (fromZeroCategory (ZK)).isExact
 
 /-- 概要：両元零角間の共有辺は Cat^perf 内で可逆。

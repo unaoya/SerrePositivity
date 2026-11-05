@@ -49,8 +49,8 @@ structure RelativeVerdierRectangle {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePo
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
   right : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν
   outer : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν
-  right_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram 0 = (β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right.square
-  outer_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram 1 = (β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer.square
+  right_eq : pastingSquare diagram 0 = (β_ _ _).hom ≫ right.square
+  outer_eq : pastingSquare diagram 1 = (β_ _ _).hom ≫ outer.square
 
 namespace RelativeVerdierRectangle
 open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle
@@ -63,19 +63,19 @@ def ofImage (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (hR : pastingSquare (F ≫ ν) 0 = (β_ _ _).hom ≫ r.square)
     (hO : pastingSquare (F ≫ ν) 1 = (β_ _ _).hom ≫ o.square) :
     _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.diagram := F
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right := ⟨(β_ _ _).hom ≫ pastingSquare F 0, r, by
+  diagram := F
+  right := ⟨(β_ _ _).hom ≫ pastingSquare F 0, r, by
     rw [Category.assoc]
     change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 0 = r.square
     rw [hR, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer := ⟨(β_ _ _).hom ≫ pastingSquare F 1, o, by
+  outer := ⟨(β_ _ _).hom ≫ pastingSquare F 1, o, by
     rw [Category.assoc]
     change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 1 = o.square
     rw [hO, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.right_eq := by
+  right_eq := by
     change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
     rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle.outer_eq := by
+  outer_eq := by
     change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
     rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 

@@ -26,15 +26,15 @@ open SerrePositivity.KST.LocalizingInvariants
 /-- 小さい安定 quasicategory。冪等完備性は別条件であり、ここには含めない。 -/
 structure StableCategory where
   obj : SSet.{u}
-  isQuasicategory : Quasicategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj
-  isStable : @IsStable _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory
+  isQuasicategory : Quasicategory obj
+  isStable : @IsStable obj isQuasicategory
 
 attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable
 
 /-- 完全関手は F3 の零対象・cofiber 保存条件を満たす実際の単体的射。 -/
 structure ExactMap (A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) where
   hom : A.obj ⟶ B.obj
-  isExact : IsExactFunctor _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
+  isExact : IsExactFunctor hom
 
 attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact
 

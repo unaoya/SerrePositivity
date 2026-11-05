@@ -34,16 +34,16 @@ open SerrePositivity.KST.LocalizingInvariants
 structure RelativePerfectVerdierSourceRoof {S : SSet.{u + 1}}
     (ν : S ⟶ perfectStableInfinity.{u}) (original actual : S _⦋0⦌) where
   common : S _⦋0⦌
-  augmentation : Truncated.Edge (X := (truncation 2).obj S) _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common original
-  comparison : Truncated.Edge (X := (truncation 2).obj S) _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common actual
+  augmentation : Truncated.Edge (X := (truncation 2).obj S) common original
+  comparison : Truncated.Edge (X := (truncation 2).obj S) common actual
   augmentation_invertible : IsIso ((hoFunctor.map ν).toFunctor.map
-    (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation))
+    (Truncated.HomotopyCategory.homMk augmentation))
   comparison_invertible : IsIso ((hoFunctor.map ν).toFunctor.map
-    (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison))
+    (Truncated.HomotopyCategory.homMk comparison))
   image : VertexIso (ν.app _ original) (ν.app _ actual)
   triangle : (hoFunctor.map ν).toFunctor.map
-      (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.image.hom =
-    (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison)
+      (Truncated.HomotopyCategory.homMk augmentation) ≫ image.hom =
+    (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk comparison)
 
 namespace RelativePerfectVerdierSourceRoof
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof

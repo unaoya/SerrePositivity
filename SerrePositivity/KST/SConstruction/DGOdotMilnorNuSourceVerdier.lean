@@ -65,14 +65,14 @@ lemma dgOdotMilnorNuSourceInclusion_image (h : DGGluingMilnorSquare R d) :
 規約：商射影も局所化辺族も変更しない。使われ方：外周列の具体的認証。 -/
 lemma dgOdotMilnorNuSource_isVerdier (h : DGGluingMilnorSquare R d) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgOdotMilnorNuSourceInclusion R d) (q) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := by
+  fullyFaithful := by
     rw [dgOdotMilnorNuSourceInclusion_hom]
     exact (dgOdotMilnorSourceKernelNu_isQCatEquivalence R d h).isFullyFaithful.comp
       (dgOdotMilnorNuKernelInclusion_fullyFaithful R d h)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel y := by
+  kernel y := by
     rw [dgOdotMilnorNuSourceInclusion_image R d h]
     exact dgOdotMilnorNuKernel R d h y
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
+  quotient := by
     rw [dgOdotMilnorNuSourceInclusion_image R d h]
     exact dgOdotMilnorNuKernelLocalization R d h
 
@@ -81,12 +81,12 @@ lemma dgOdotMilnorNuSource_isVerdier (h : DGGluingMilnorSquare R d) :
 規約：完備化後の射を strict 局所化と扱わない。使われ方：外周の strict 商欄。 -/
 def dgOdotMilnorNuSourceNativeSequence (h : DGGluingMilnorSquare R d) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := A
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := T
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgOdotMilnorNuSourceInclusion R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := dgOdotMilnorNuSource_isVerdier R d h
+  left := A
+  middle := T
+  right := dgGluingMilnorNativeResolvedQuotient R d
+  inclusion := dgOdotMilnorNuSourceInclusion R d
+  projection := q
+  isVerdier := dgOdotMilnorNuSource_isVerdier R d h
 
 /-- 概要：同じ外周列に D-21 の同じ指定完備化を接続する。
 方針：実固定 ν 頂点の完備性と構成済み c・hc を使用する。

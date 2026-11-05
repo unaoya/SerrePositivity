@@ -42,8 +42,8 @@ structure VerdierSquareRefinement {A B C : _root_.SerrePositivity.InfinityCatego
     (hT : cospanSquareBoundary ≫ T = R ≫ q.hom) where
   cone : JoinCone R
   comparison : Truncated.Edge (X := (truncation 2).obj (sliceOver (R ≫ q.hom)))
-    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.cone) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT)
-  isInvertible : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.comparison
+    (mapJoinCone q.hom cone) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone q.hom R T hT)
+  isInvertible : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) comparison
 
 namespace VerdierSquareRefinement
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement

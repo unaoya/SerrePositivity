@@ -35,26 +35,26 @@ def ofSquare (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Verdi
     (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
     (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ ν) 0 1))) :
     _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.square := F
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image := {
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.toVerdierSequence := d
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square := F ≫ ν
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.left_eq := by
+  square := F
+  image := {
+    toVerdierSequence := d
+    square := F ≫ ν
+    left_eq := by
       have h := squareBottomEdge_source (F ≫ ν)
       rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).src_eq] at h
       exact h.symm
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.middle_eq := by
+    middle_eq := by
       have h := squareBottomEdge_target (F ≫ ν)
       rw [hb, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).tgt_eq] at h
       exact h.symm
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_eq := by
+    right_eq := by
       have h := squareRightEdge_target (F ≫ ν)
       rw [hr, Equiv.apply_symm_apply, (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).tgt_eq] at h
       exact h.symm
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.bottom_edge := hb
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_edge := hr
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.zero_corner := hz }
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image_eq := rfl
+    bottom_edge := hb
+    right_edge := hr
+    zero_corner := hz }
+  image_eq := rfl
 
 @[simp] lemma ofSquare_square (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :

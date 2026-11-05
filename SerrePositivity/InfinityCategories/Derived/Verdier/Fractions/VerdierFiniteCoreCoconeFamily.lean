@@ -38,25 +38,25 @@ structure VerdierFiniteCoreCoconeFamilyLift {B C : _root_.SerrePositivity.Infini
   source : (Δ[n] : SSet.{u}) ⟶ B.obj
   denominator : Truncated.Edge
     (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-    (functorVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.source) (functorVertex D)
-  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
+    (functorVertex source) (functorVertex D)
+  denominator_mem : denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
   family : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj B.obj
-  prefix_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
-    SSet.const (functorVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.source)
-  apex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ evaluateFunctorAt
+  prefix_eq : family ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
+    SSet.const (functorVertex source)
+  apex : family ≫ evaluateFunctorAt
     ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z
   comparison : Truncated.Edge
     (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)))
     (functorVertex (internalHomFlipHomEquiv K (join (Δ[n] : SSet.{u}) Δ[0]) C.obj
-      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)))
+      (family ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv K (join (Δ[n] : SSet.{u}) Δ[0]) C.obj
       (G ≫ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)).ι)))
   comparison_invertible : IsInvertibleEdge
-    (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison
+    (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)) comparison
   comparison_prefix : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj)).app
-    (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.denominator).edge
-  comparison_apex : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison.edge ≫
+    (Opposite.op ⦋1⦌) comparison.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom denominator).edge
+  comparison_apex : SSet.yonedaEquiv.symm comparison.edge ≫
     (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj) =
     curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫
       SSet.const (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌) z) : K ⟶ C.obj)))

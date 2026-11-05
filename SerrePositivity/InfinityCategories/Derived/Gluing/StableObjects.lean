@@ -19,24 +19,24 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 方針：前三角性から安定性を得る。規約：全単体を保持する。使われ方：二つの入力圏。 -/
 def dgGluingStableInput (hC : IsDGPretriangulated R C) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := (SSet.uliftFunctor.{max (u + 1) v w,max u v}).obj (dgNerve R C)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := by
+  obj := (SSet.uliftFunctor.{max (u + 1) v w,max u v}).obj (dgNerve R C)
+  isQuasicategory := inferInstance
+  isStable := by
     let := hC
     let := dgNerve_isStable_of_pretriangulated R C
     exact F2.Idempotent.isStable_ulift
 variable (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
 def dgGluingStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := (SSet.uliftFunctor.{max (u + 1) v w,max u v w}).obj
+  obj := (SSet.uliftFunctor.{max (u + 1) v w,max u v w}).obj
     (dgNerve R (DGGluingObject R C D M))
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgGluingUniverseNerve_isStable R C D M hC hD
+  isQuasicategory := inferInstance
+  isStable := dgGluingUniverseNerve_isStable R C D M hC hD
 def dgGluingStableLaxObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := F2.laxPullback (dgGluingUniverseDerivedYoneda.{u,v,w} R C)
+  obj := F2.laxPullback (dgGluingUniverseDerivedYoneda.{u,v,w} R C)
     (dgGluingUniverseDerivedCoefficient R C D M)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgGluingUniverseDerivedLaxPullback_isStable R C D M hC hD
+  isQuasicategory := inferInstance
+  isStable := dgGluingUniverseDerivedLaxPullback_isStable R C D M hC hD
 def dgGluingStableLeftProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingStableObject R C D M hC hD)
     (dgGluingStableInput.{u,v,w} R C hC) :=
   ⟨dgGluingUniverseLeftNerve R C D M,

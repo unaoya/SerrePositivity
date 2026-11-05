@@ -27,15 +27,15 @@ structure TriangleDiamondData (E : SSet.{u})
   /-- 第二経路の全二単体。 -/
   second : E _⦋2⦌
   /-- 第一経路の元の下辺。 -/
-  first_lower : E.δ 2 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first = firstLower
+  first_lower : E.δ 2 first = firstLower
   /-- 第二経路の元の下辺。 -/
-  second_lower : E.δ 2 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second = secondLower
+  second_lower : E.δ 2 second = secondLower
   /-- 第一経路の元の上辺。 -/
-  first_upper : E.δ 0 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first = firstUpper
+  first_upper : E.δ 0 first = firstUpper
   /-- 第二経路の元の上辺。 -/
-  second_upper : E.δ 0 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second = secondUpper
+  second_upper : E.δ 0 second = secondUpper
   /-- 全二単体が共有する同じ実対角辺。 -/
-  diagonal : E.δ 1 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first = E.δ 1 _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second
+  diagonal : E.δ 1 first = E.δ 1 second
 
 /-- 元の二単体の全像を証拠として保存し、全四辺と共通対角辺を同時に回収する。 -/
 def triangleDiamondTransportData {E D : SSet.{u}} (e : E = D) (s t : E _⦋2⦌)
@@ -46,13 +46,13 @@ def triangleDiamondTransportData {E D : SSet.{u}} (e : E = D) (s t : E _⦋2⦌)
     {T : _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData D firstLower secondLower firstUpper secondUpper //
       T.first = (eqToHom e).app (Opposite.op ⦋2⦌) s ∧
       T.second = (eqToHom e).app (Opposite.op ⦋2⦌) t} :=
-  ⟨{ _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first := (eqToHom e).app (Opposite.op ⦋2⦌) s
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second := (eqToHom e).app (Opposite.op ⦋2⦌) t
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first_lower := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 2 s firstLower hfl
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second_lower := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 2 t secondLower hsl
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.first_upper := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 0 s firstUpper hfu
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.second_upper := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 0 t secondUpper hsu
-     _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.diagonal := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_common_face e 1 s t hd }, rfl, rfl⟩
+  ⟨{ first := (eqToHom e).app (Opposite.op ⦋2⦌) s
+     second := (eqToHom e).app (Opposite.op ⦋2⦌) t
+     first_lower := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 2 s firstLower hfl
+     second_lower := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 2 t secondLower hsl
+     first_upper := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 0 s firstUpper hfu
+     second_upper := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq e 0 t secondUpper hsu
+     diagonal := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_common_face e 1 s t hd }, rfl, rfl⟩
 
 end SerrePositivity.InfinityCategories.Kan
 

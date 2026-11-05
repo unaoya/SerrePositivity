@@ -50,10 +50,10 @@ def fractionSquarePoint {X : SSet.{u}} (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) 
 /-- 元の四角形を全体として保持し、元の左下点の可逆な錐の脚を持つ coslice 図式。 -/
 structure SquareCosliceSeed {X : SSet.{u}} (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) where
   lift : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)
-  projection : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.lift ≫ sliceUnderProjection (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) = F
+  projection : lift ≫ sliceUnderProjection (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) = F
   initial_isInvertible : IsInvertibleEdge (X := X)
-    (F2.nativeConeLeg (⟨sliceUnderUncurry _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.lift,
-      (sliceUnderUncurry_projection _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.lift).trans _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.projection⟩ : JoinCone F)
+    (F2.nativeConeLeg (⟨sliceUnderUncurry lift,
+      (sliceUnderUncurry_projection lift).trans projection⟩ : JoinCone F)
       _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquareInitialVertex)
 
 /-- 元の四角形から、同じ全図式・左下点・可逆な左下錐脚を持つ coslice 図式を構成する。 -/

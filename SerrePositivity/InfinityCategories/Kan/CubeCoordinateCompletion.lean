@@ -16,10 +16,10 @@ open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が二端点の面だけから生成される条件。 -/
 inductive CubeFaceGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) → Prop
-  | id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
-  | face (b : Bool) (n : ℕ) (p : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n p)
+  | id (n : ℕ) : CubeFaceGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
+  | face (b : Bool) (n : ℕ) (p : Fin (n + 1)) : CubeFaceGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n p)
   | comp {n m k : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
-      (hf : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated g) : _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated (g ∘ f)
+      (hf : CubeFaceGenerated f) (hg : CubeFaceGenerated g) : CubeFaceGenerated (g ∘ f)
 
 /-- 面だけで生成された元の関数は、具体的な立方体圏の射。 -/
 lemma cubeFaceGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

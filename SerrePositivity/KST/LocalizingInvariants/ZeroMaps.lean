@@ -44,8 +44,8 @@ lemma isExact_of_zero_values {K X : SSet.{u}} [Quasicategory X] [HasZeroVertex X
 
 /-- 零安定圏から指定安定圏への、選ばれた零対象を値とする完全関手。 -/
 def fromZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} A where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := SSet.const (chosenZeroVertex A.obj).vertex
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := isExact_of_zero_values _ (fun k ↦ by
+  hom := SSet.const (chosenZeroVertex A.obj).vertex
+  isExact := isExact_of_zero_values _ (fun k ↦ by
     rw [zeroDiagram_const_vertex]
     exact (chosenZeroVertex A.obj).isZero)
 

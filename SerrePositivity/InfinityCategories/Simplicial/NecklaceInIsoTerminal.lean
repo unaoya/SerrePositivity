@@ -21,22 +21,22 @@ open CategoryTheory Limits _root_.Simplicial SSet
 /-- 元の necklace と同型な入力内の、同じ全体を覆う necklace。 -/
 def necklaceInOfIso (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := U
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := e.hom
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := rfl
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := rfl
+  necklace := U
+  map := e.hom
+  map_first := rfl
+  map_last := rfl
 
 /-- 元の逆同型は、任意の augmentation を全体への実可換三角形へ送る。 -/
 def necklaceInToOfIso (U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) {K : SSet.{u}} (e : U.down.carrier ≅ K)
     (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K (e.hom.app _ U.down.firstVertex) (e.hom.app _ U.down.lastVertex)) :
     T ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso U e where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := T.map ≫ e.inv
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg (e.inv.app _) T.map_first).trans
+  necklaceHom :=
+    { map := T.map ≫ e.inv
+      map_first := (congrArg (e.inv.app _) T.map_first).trans
         (congrArg (fun f => f U.down.firstVertex) (congr_app e.hom_inv_id _))
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg (e.inv.app _) T.map_last).trans
+      map_last := (congrArg (e.inv.app _) T.map_last).trans
         (congrArg (fun f => f U.down.lastVertex) (congr_app e.hom_inv_id _)) }
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := (Category.assoc _ _ _).trans
+  w := (Category.assoc _ _ _).trans
     ((congrArg (fun f => T.map ≫ f) e.inv_hom_id).trans (Category.comp_id _))
 
 /-- 元の全体への可換三角形は、全ての高次単体で一意。 -/

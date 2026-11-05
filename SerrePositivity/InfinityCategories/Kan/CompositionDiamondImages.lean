@@ -24,9 +24,9 @@ variable {E B : SSet.{u}} {x m n z : E _⦋0⦌}
 
 /-- 元の同じ全写像による、両実三角形と共通対角辺の全像。 -/
 def CompositionDiamond.map : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond (a.map p) (b.map p) (c.map p) (d.map p) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal := D.diagonal.map p
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first := D.first.map p
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second := D.second.map p
+  diagonal := D.diagonal.map p
+  first := D.first.map p
+  second := D.second.map p
 
 /-- 第一全三角形は、元の同じ全二単体の像そのもの。 -/
 lemma CompositionDiamond.map_first_simplex :

@@ -46,12 +46,12 @@ def IsZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier
 /-- A → B → C の零合成を保持した coherent 四角形の提示。 -/
 structure VerdierDiagram extends _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}
-  left_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex left
-  middle_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex middle
-  right_eq : squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex right
-  bottom_edge : squareBottomEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow inclusion).edge
-  right_edge : squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow projection).edge
-  zero_corner : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square 0 1))
+  left_eq : squareVertex square 0 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex left
+  middle_eq : squareVertex square 1 0 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex middle
+  right_eq : squareVertex square 1 1 = _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex right
+  bottom_edge : squareBottomEdge ≫ square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow inclusion).edge
+  right_edge : squareRightEdge ≫ square = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow projection).edge
+  zero_corner : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex square 0 1))
 
 end SerrePositivity.InfinityCategories.Stable.Infinity
 

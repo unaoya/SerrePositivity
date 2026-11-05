@@ -34,19 +34,19 @@ structure VerdierTwoArrowRoofComparison {A B C : _root_.SerrePositivity.Infinity
     (hb : squareBottomEdge ≫ F = D ≫ q.hom) (ht : squareTopEdge ≫ F = L ≫ q.hom) where
   seed : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F
   fraction : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)
-    (twoArrowCosliceEdge _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
+    (twoArrowCosliceEdge seed)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowSecondTarget)
-  cone : JoinCone (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
-    twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction)
+  cone : JoinCone (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram seed)
+    twoArrowFirstTarget twoArrowSecondTarget fraction)
   comparison : VertexIso
-    (X := sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
-      twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction ≫ q.hom))
-    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.cone)
-    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
-      twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction
-      (twoArrowCoslice_projection q.hom D L F _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed hb ht))
-  sourceDenominator_mem : (squareBottomArrow (twoArrowDenominatorSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.cone)).edge ∈
+    (X := sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram seed)
+      twoArrowFirstTarget twoArrowSecondTarget fraction ≫ q.hom))
+    (mapJoinCone q.hom cone)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram seed)
+      twoArrowFirstTarget twoArrowSecondTarget fraction
+      (twoArrowCoslice_projection q.hom D L F seed hb ht))
+  sourceDenominator_mem : (squareBottomArrow (twoArrowDenominatorSquare cone)).edge ∈
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
 
 namespace VerdierTwoArrowRoofComparison

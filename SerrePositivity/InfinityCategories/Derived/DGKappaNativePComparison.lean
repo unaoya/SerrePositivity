@@ -27,11 +27,11 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 /-- 元の P と元の Yoneda の全合成を、同じ固定 ν 値間の完全関手として保持する。 -/
 def dgKappaNativePExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R D)
     (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (presentedPerfectDGQCatEvaluationEquivalence R D).hom ≫
+  hom := (presentedPerfectDGQCatEvaluationEquivalence R D).hom ≫
     dgKappaPerfectResolvedComparison R D I P ≫
     dgNerve.map (dgPerfectYoneda R (dgKappaResolvedKernelKInput R D I)) ≫
     (presentedPerfectDGQCatEvaluationEquivalence R (dgKappaResolvedKernelKInput R D I)).inv
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  isExact := by
     let : IsExactFunctor (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val :=
       isExactFunctor_of_isQCatEquivalence
         (dgKappaResolvedKernelPerfQCatEquivalence R D I P).isQCatEquivalence
@@ -41,8 +41,8 @@ def dgKappaNativePExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Ve
 /-- 元の同じ実評価 Morita 逆作用の完全関手。 -/
 def dgKappaNativeMoritaExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R D)
     (dgKInputStableValue R (dgKappaResolvedKernelKInput R D I)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := isExactFunctor_of_isQCatEquivalence
+  hom := (dgKappaResolvedKernelPerfEquivalence R D I P).hom.val
+  isExact := isExactFunctor_of_isQCatEquivalence
     (dgKappaResolvedKernelPerfQCatEquivalence R D I P).isQCatEquivalence
 
 /-- 元の実評価 Morita 比較の辺は、固定 ν の源内でも可逆。 -/

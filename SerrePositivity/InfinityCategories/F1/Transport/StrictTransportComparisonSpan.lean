@@ -23,14 +23,14 @@ open SerrePositivity.KST.Fibration
 structure StrictTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] where
   total : SSet.{u}
-  projection : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ nerve I
-  source : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ E
-  weighted : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.total ⟶ leftStrictTransportWeightedNerve p
-  inner : InnerFibration _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
-  source_over : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.source ≫ p = _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
-  weighted_over : _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.weighted ≫ leftStrictTransportWeightedProjection p = _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.projection
-  source_equivalence : IsPrecompositionEquivalence _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.source
-  weighted_equivalence : IsPrecompositionEquivalence _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan.weighted
+  projection : total ⟶ nerve I
+  source : total ⟶ E
+  weighted : total ⟶ leftStrictTransportWeightedNerve p
+  inner : InnerFibration projection
+  source_over : source ≫ p = projection
+  weighted_over : weighted ≫ leftStrictTransportWeightedProjection p = projection
+  source_equivalence : IsPrecompositionEquivalence source
+  weighted_equivalence : IsPrecompositionEquivalence weighted
 
 /-- 構成済みの strict 復元 span を、元の二脚を保持するデータとして受け取る。 -/
 theorem nonempty_strictTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}

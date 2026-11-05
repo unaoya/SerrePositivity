@@ -22,19 +22,19 @@ abbrev Necklace := ULift.{u} _root_.SerrePositivity.InfinityCategories.Simplicia
 /-- 元の両端点を保つ実単体的写像。 -/
 @[ext] structure NecklaceHom (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) where
   map : T.down.carrier.{u} ⟶ U.down.carrier.{u}
-  map_first : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map.app _ T.down.firstVertex = U.down.firstVertex
-  map_last : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map.app _ T.down.lastVertex = U.down.lastVertex
+  map_first : map.app _ T.down.firstVertex = U.down.firstVertex
+  map_last : map.app _ T.down.lastVertex = U.down.lastVertex
 
 /-- 元のすべての端点保存写像を持つ necklace 圏。 -/
 instance necklaceCategory : Category.{u} _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u} where
   Hom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom
   id T := ⟨𝟙 _, rfl, rfl⟩
   comp f g :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := f.map ≫ g.map
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := by
+    { map := f.map ≫ g.map
+      map_first := by
         change g.map.app _ (f.map.app _ _) = _
         rw [f.map_first, g.map_first]
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := by
+      map_last := by
         change g.map.app _ (f.map.app _ _) = _
         rw [f.map_last, g.map_last] }
   id_comp f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext (Category.id_comp f.map)

@@ -24,9 +24,9 @@ local notation "Q" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 方針：構成済みの二つの完全射をそのまま合成する。
 規約：完備化後の指定射影へ置換しない。使われ方：実零化の対角合成。 -/
 def dgOdotMilnorNuNullComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Src) (Q) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorFlatKernelExactMap R d).hom ≫
+  hom := (dgOdotMilnorFlatKernelExactMap R d).hom ≫
     (dgOdotMilnorCellProjectionExactMap R d).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := isExactFunctor_comp _ _
+  isExact := isExactFunctor_comp _ _
 
 /-- 概要：同じ実商合成は全対象を零対象へ送る。
 方針：指定商比較で同じ完備化付き列の実零化を戻す。
@@ -77,10 +77,10 @@ def dgOdotMilnorNuNullCompositeVertex (h : DGGluingMilnorSquare R d) :
 方針：元の全対象商への射と指定延長の完全射を合成する。
 規約：標準零圏への因子分解に置換しない。使われ方：実零化面のもう一方の経路。 -/
 def dgOdotMilnorNuNullTopComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Src) (Q) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgKInputNuMap R (dgFixedNullLeft R
+  hom := (dgKInputNuMap R (dgFixedNullLeft R
     (A := dgOdotMilnorFlatKernelInput R d))).hom ≫
     (dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _
+  isExact := @isExactFunctor_comp _ _ _ _ _
     (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from dgKInputNuMap R
       (dgFixedNullLeft R (A := dgOdotMilnorFlatKernelInput R d))).isExact
     (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from dgKInputNuMap R

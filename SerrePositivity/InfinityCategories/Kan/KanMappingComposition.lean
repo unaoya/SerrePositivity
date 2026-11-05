@@ -28,7 +28,7 @@ structure KanMappingComposition {E : SSet.{u}} {x y z : E _⦋0⦌}
   /-- 元の二辺の実合成辺。 -/
   edge : E.Edge x z
   /-- 元の二辺と合成辺の全二単体。 -/
-  triangle : SSet.Edge.CompStruct a b _root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition.edge
+  triangle : SSet.Edge.CompStruct a b edge
 
 /-- 二辺の合成を、全三辺と実二単体を伴って構成する。 -/
 def kanMappingComposition {E : SSet.{u}} [Quasicategory E] {x y z : E _⦋0⦌}

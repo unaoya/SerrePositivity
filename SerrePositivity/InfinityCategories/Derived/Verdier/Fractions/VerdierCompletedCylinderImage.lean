@@ -50,17 +50,17 @@ structure VerdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityCate
   whole : K ⊗ (Δ[1] : SSet.{u}) ⟶
     (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj) : SSet.{u})
   homotopy : SSet.Homotopy
-    (X.homotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole
-  start_eq : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole =
+    (X.homotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1)) whole
+  start_eq : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ whole =
     c.simplexFamily ≫ relativeFirstRowSimplexQuotient q (n + 1)
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole =
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ whole =
     r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1)
   start_unit_eq : ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ▷
-      (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy.h =
+      (Δ[1] : SSet.{u})) ≫ homotopy.h =
     (c.simplexFamily ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
-  boundary_unit_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy.h =
+  boundary_unit_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
     (r.simplexCylinder ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h

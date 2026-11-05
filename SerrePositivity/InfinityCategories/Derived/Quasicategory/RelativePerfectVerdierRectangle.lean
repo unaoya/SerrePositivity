@@ -31,8 +31,8 @@ structure RelativePerfectVerdierRectangle {S : SSet.{u + 1}}
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
   right : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν
   outer : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν
-  right_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.right.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.diagram
-  outer_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.outer.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.diagram
+  right_eq : right.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram
+  outer_eq : outer.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram
 
 namespace RelativePerfectVerdierRectangle
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle

@@ -35,16 +35,16 @@ def squareFrameHomotopyPostcomp {X Y : SSet.{u}}
     {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
     (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g)) (k : X ⟶ Y) :
     _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (f ≫ k)) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (g ≫ k)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom := specifiedHomotopyPostcomp H.bottom k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right := specifiedHomotopyPostcomp H.right k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left := specifiedHomotopyPostcomp H.left k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top := specifiedHomotopyPostcomp H.top k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_left := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.lower_left
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_right := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.lower_right
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_left := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.upper_left
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_right := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.upper_right
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom_invertible := fun x => (H.bottom_invertible x).map k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right_invertible := fun x => (H.right_invertible x).map k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left_invertible := fun x => (H.left_invertible x).map k
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top_invertible := fun x => (H.top_invertible x).map k
+  bottom := specifiedHomotopyPostcomp H.bottom k
+  right := specifiedHomotopyPostcomp H.right k
+  left := specifiedHomotopyPostcomp H.left k
+  top := specifiedHomotopyPostcomp H.top k
+  lower_left := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.lower_left
+  lower_right := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.lower_right
+  upper_left := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.upper_left
+  upper_right := by simpa only [specifiedHomotopyPostcomp, Category.assoc] using congrArg (fun p => p ≫ k) H.upper_right
+  bottom_invertible := fun x => (H.bottom_invertible x).map k
+  right_invertible := fun x => (H.right_invertible x).map k
+  left_invertible := fun x => (H.left_invertible x).map k
+  top_invertible := fun x => (H.top_invertible x).map k
 end SerrePositivity.KST.SConstruction

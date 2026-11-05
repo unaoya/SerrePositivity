@@ -37,9 +37,9 @@ structure VerdierCompletedSpanBoundaryRecovery (h : _root_.SerrePositivity.Infin
     (H : SSet.Homotopy a (j ≫ f)) where
   denominator : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌
   whole : finiteMappingCylinder j ⟶
-    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery.denominator
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) denominator
   comparison : SSet.Homotopy
-    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery.whole ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery.denominator ≫
+    (whole ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) denominator ≫
       _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i x y ≫
       _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (fixedMarkedSpans B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x y))
     (_root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H)

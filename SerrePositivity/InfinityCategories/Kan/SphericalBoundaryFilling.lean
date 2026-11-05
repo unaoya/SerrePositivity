@@ -45,7 +45,7 @@ theorem exists_horn_boundary (a : Fin (n + 4) → X.PtSimplex (n + 2) x) :
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
           hα.δ_liftOfKanComplex _ (Fin.castSucc_ne_last j)]
         exact PtSimplex.δ_map _ _ }
-  refine ⟨b, ⟨{_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := hα.liftOfKanComplex, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq := ?_}⟩⟩
+  refine ⟨b, ⟨{map := hα.liftOfKanComplex, face_eq := ?_}⟩⟩
   intro j
   by_cases hj : j = Fin.last (n + 3)
   · subst j; simp only [Function.update_self]; rfl

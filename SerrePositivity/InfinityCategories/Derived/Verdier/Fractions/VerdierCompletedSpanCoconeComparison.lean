@@ -56,15 +56,15 @@ structure VerdierCompletedSpanCoconeComparison where
       (join (Δ[n] : SSet.{u}) Δ[0]) C.obj
       (c.whole ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv (finiteMappingCylinder j)
-      (join (Δ[n] : SSet.{u}) Δ[0]) C.obj _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison.image.initialFamily))
+      (join (Δ[n] : SSet.{u}) Δ[0]) C.obj image.initialFamily))
   isInvertible : IsInvertibleEdge
     (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj
-      ((ihom (finiteMappingCylinder j)).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison.edge
+      ((ihom (finiteMappingCylinder j)).obj C.obj)) edge
   prefix_eq : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app
-      ((ihom (finiteMappingCylinder j)).obj C.obj)).app (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison.edge.edge =
+      ((ihom (finiteMappingCylinder j)).obj C.obj)).app (Opposite.op ⦋1⦌) edge.edge =
     (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge (finiteMappingCylinder j) q.hom c.prefixDenominator).edge
   last_eq : ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app
-      ((ihom (finiteMappingCylinder j)).obj C.obj)).app (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison.edge.edge =
+      ((ihom (finiteMappingCylinder j)).obj C.obj)).app (Opposite.op ⦋1⦌) edge.edge =
     (((functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformSpanFractionHomotopy h
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z
       d.denominator d.whole)).map ((truncation 2).map

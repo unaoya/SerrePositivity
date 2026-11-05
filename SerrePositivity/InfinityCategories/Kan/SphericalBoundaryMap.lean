@@ -63,7 +63,7 @@ theorem nonempty_iff_boundary_filler (a : Fin (n + 4) → X.PtSimplex (n + 2) x)
     intro j
     rw [boundary.ι_ι_assoc, T.face_eq, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_boundaryMap]
   · rintro ⟨f, hf⟩
-    refine ⟨{_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := f, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq := ?_}⟩
+    refine ⟨{map := f, face_eq := ?_}⟩
     intro j
     rw [← boundary.ι_ι_assoc, hf, _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_boundaryMap]
 

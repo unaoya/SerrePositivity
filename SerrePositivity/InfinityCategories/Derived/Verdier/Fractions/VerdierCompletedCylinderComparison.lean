@@ -132,14 +132,14 @@ lemma exists_verdierCompletedCylinderComparison
 /-- 元の実有限境界から選択した比較を、完成円柱上まで保持した全回収。 -/
 structure VerdierCompletedCoconeComparison (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) where
   initial : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U
-  relativeInitial : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.initial b
-  cylinder : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.initial
-  image : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.cylinder
-  homotopy : SSet.Homotopy _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.image.whole
+  relativeInitial : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison initial b
+  cylinder : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder initial
+  image : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage cylinder
+  homotopy : SSet.Homotopy image.whole
     (U.coreWhole ≫ quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj))
   start_eq : ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.homotopy.h = _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.relativeInitial.simplexQuotientHomotopy.h
-  boundary_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.homotopy.h =
+    homotopy.h = relativeInitial.simplexQuotientHomotopy.h
+  boundary_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
     b.simplexQuotientHomotopy.h
 
 /-- 指定された同じ実 S 全比較を保ち、元の亜群化まで全データを回収する。 -/

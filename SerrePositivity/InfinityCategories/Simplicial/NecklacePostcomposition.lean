@@ -20,17 +20,17 @@ open CategoryTheory _root_.Simplicial SSet
 def necklaceInPostcompose {K L : SSet.{u}} (f : K ⟶ L) (x y : K _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y ⥤ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn L (f.app _ x) (f.app _ y) where
   obj T :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := T.necklace
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := T.map ≫ f
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := by
+    { necklace := T.necklace
+      map := T.map ≫ f
+      map_first := by
         change f.app _ (T.map.app _ T.necklace.down.firstVertex) = _
         rw [T.map_first]
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := by
+      map_last := by
         change f.app _ (T.map.app _ T.necklace.down.lastVertex) = _
         rw [T.map_last] }
   map g :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := g.necklaceHom
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+    { necklaceHom := g.necklaceHom
+      w := by
         change g.necklaceHom.map ≫ _ ≫ f = _ ≫ f
         rw [← Category.assoc, g.w] }
   map_id _ := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext rfl

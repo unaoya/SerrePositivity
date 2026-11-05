@@ -19,22 +19,22 @@ open CategoryTheory _root_.Simplicial SSet
 /-- K 内の x から y への元の全単体的 necklace。 -/
 structure NecklaceIn (K : SSet.{u}) (x y : K _⦋0⦌) where
   necklace : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}
-  map : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.carrier ⟶ K
-  map_first : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map.app _ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.firstVertex = x
-  map_last : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map.app _ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace.down.lastVertex = y
+  map : necklace.down.carrier ⟶ K
+  map_first : map.app _ necklace.down.firstVertex = x
+  map_last : map.app _ necklace.down.lastVertex = y
 
 /-- 元の necklace 射による、K 内での実可換三角形。 -/
 @[ext] structure NecklaceInHom {K : SSet.{u}} {x y : K _⦋0⦌} (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) where
   necklaceHom : T.necklace ⟶ U.necklace
-  w : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom.map ≫ U.map = T.map
+  w : necklaceHom.map ≫ U.map = T.map
 
 /-- 固定した両端点を持つ K 内の全 necklace の圏。 -/
 instance necklaceInCategory (K : SSet.{u}) (x y : K _⦋0⦌) : Category (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) where
   Hom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom
   id T := ⟨𝟙 _, Category.id_comp _⟩
   comp f g :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := f.necklaceHom ≫ g.necklaceHom
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+    { necklaceHom := f.necklaceHom ≫ g.necklaceHom
+      w := by
         rw [_root_.SerrePositivity.InfinityCategories.Simplicial.necklace_comp_map, Category.assoc, g.w, f.w] }
   id_comp f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (Category.id_comp f.necklaceHom)
   comp_id f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext (Category.comp_id f.necklaceHom)

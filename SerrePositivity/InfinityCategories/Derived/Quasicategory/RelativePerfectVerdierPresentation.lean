@@ -33,7 +33,7 @@ structure RelativePerfectVerdierDiagram {S : SSet.{u + 1}}
     (ν : S ⟶ perfectStableInfinity.{u}) where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
   image : PerfectVerdierDiagram.{u}
-  image_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.square ≫ ν = _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image.square
+  image_eq : square ≫ ν = image.square
 
 namespace RelativePerfectVerdierDiagram
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram
@@ -48,8 +48,8 @@ def ofSquare (d : PerfectVerdierSequence.{u})
       (perfectStableArrow d.projection d.middle_complete d.right_complete).edge)
     (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (F ≫ ν) 0 1))) :
     _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν where
-  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.square := F
-  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image := {
+  square := F
+  image := {
     toPerfectVerdierSequence := d
     square := F ≫ ν
     left_eq := by
@@ -74,7 +74,7 @@ def ofSquare (d : PerfectVerdierSequence.{u})
       rw [← Category.assoc, hr]
       exact perfectStableArrow_inclusion _ _ _
     zero_corner := hz }
-  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image_eq := rfl
+  image_eq := rfl
 
 @[simp] lemma ofSquare_square (d : PerfectVerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :

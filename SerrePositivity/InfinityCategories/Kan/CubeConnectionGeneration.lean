@@ -16,12 +16,12 @@ open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が隣接 connection だけから生成される条件。 -/
 inductive CubeConnectionGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) → Prop
-  | id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
+  | id (n : ℕ) : CubeConnectionGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
   | connection (n : ℕ) (p : Fin (n + 1)) :
-      _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p)
+      CubeConnectionGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n p)
   | comp {n m k : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
-      (hf : _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated g) :
-      _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated (g ∘ f)
+      (hf : CubeConnectionGenerated f) (hg : CubeConnectionGenerated g) :
+      CubeConnectionGenerated (g ∘ f)
 
 /-- connection だけで生成された元の関数は、具体的な立方体圏の射。 -/
 lemma cubeConnectionGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

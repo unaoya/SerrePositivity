@@ -112,7 +112,7 @@ variable {A B : SSet.{u}} (j : A ⟶ B) [∀ n, HasLiftingProperty j (d n)]
 noncomputable def stages : ∀ n, {f : B ⟶ X n // j ≫ f = a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d n}
   | 0 => ⟨b, sq.w.symm⟩
   | n + 1 =>
-    let prev := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages n
+    let prev := stages n
     let s : CommSq (a ≫ _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d (n + 1)) j (d n) prev.val :=
       ⟨by rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp, prev.property]⟩
     ⟨s.lift, s.fac_left⟩

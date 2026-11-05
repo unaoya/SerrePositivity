@@ -90,10 +90,10 @@ structure VerdierRecoveredCompletedCylinder (c : _root_.SerrePositivity.Infinity
   endpoint : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u})
   homotopy : SSet.Homotopy
     (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u}))
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.endpoint
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.homotopy.h =
+    endpoint
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
     r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
-  endpoint_boundary : S.ι ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.endpoint =
+  endpoint_boundary : S.ι ≫ endpoint =
     (SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})
 

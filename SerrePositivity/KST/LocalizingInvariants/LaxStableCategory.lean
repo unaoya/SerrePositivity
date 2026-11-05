@@ -22,18 +22,18 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Stabl
 
 /-- F2 の lax pullback そのものを対象とする小さい安定 ∞ 圏。 -/
 def laxCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := F2.laxPullback p.hom q.hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := inferInstance
+  obj := F2.laxPullback p.hom q.hom
+  isQuasicategory := inferInstance
+  isStable := inferInstance
 
 /-- 元の第一射影。完全性の証明は F2 から読み取り専用で使う。 -/
 def laxFst : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) C where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := F2.laxPullbackFst p.hom q.hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := F2.laxPullbackFst_isExactFunctor p.hom q.hom
+  hom := F2.laxPullbackFst p.hom q.hom
+  isExact := F2.laxPullbackFst_isExactFunctor p.hom q.hom
 
 /-- 元の第二射影。 -/
 def laxSnd : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) D where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := F2.laxPullbackSnd p.hom q.hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := F2.laxPullbackSnd_isExactFunctor p.hom q.hom
+  hom := F2.laxPullbackSnd p.hom q.hom
+  isExact := F2.laxPullbackSnd_isExactFunctor p.hom q.hom
 
 end SerrePositivity.KST.LocalizingInvariants

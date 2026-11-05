@@ -128,9 +128,9 @@ theorem exists_product_lift [KanComplex E]
         rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face Lf Lg h φ hφ]
         split_ifs <;> simp }
   let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := rfl
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+    { map := stdSimplex.δ (Fin.last n).castSucc.castSucc.succ ≫ φ
+      map_comp := rfl
+      face_eq j hj := by
         rw [_root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face Lf Lg h φ hφ]
         apply ite_eq_right
         exact fun he ↦ hj (Fin.ext he) }

@@ -33,8 +33,8 @@ structure SphericalFiberLift {E B : SSet.{u}} (p : E ⟶ B) (e : E _⦋0⦌) {n 
     (s : B.PtSimplex (n + 2) (p.app _ e))
     (a : Fin (n + 3) → (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) where
   map : (Δ[n + 2] : SSet.{u}) ⟶ E
-  map_comp : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map ≫ p = s.map
-  face_eq (j : Fin (n + 3)) : stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map = (a j).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
+  map_comp : map ≫ p = s.map
+  face_eq (j : Fin (n + 3)) : stdSimplex.δ j ≫ map = (a j).map ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)
 
 namespace SphericalFiberLift
 open _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
@@ -65,8 +65,8 @@ def totalMulStruct {f g h : (_root_.SerrePositivity.InfinityCategories.Kan.KanFi
 /-- 相対的な境界を全空間での球面的境界として読む。 -/
 def totalBoundary (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s a) : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.totalSimplex (a j))
     where
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := T.map
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq := T.face_eq
+  map := T.map
+  face_eq := T.face_eq
 
 variable {i : Fin (n + 2)}
   {ia b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)}

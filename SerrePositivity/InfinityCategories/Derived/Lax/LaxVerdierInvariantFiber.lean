@@ -30,12 +30,12 @@ variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.S
   (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def laxQuotientVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := A
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := laxCategory p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := Q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := i
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := r
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := h
+  left := A
+  middle := laxCategory p q
+  right := Q
+  inclusion := i
+  projection := r
+  isVerdier := h
 
 namespace IsLocalizingInvariant
 open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

@@ -41,9 +41,9 @@ theorem alternating_loopPositive (Y : PointedSimplicialSet.{u}) [KanComplex Y.ri
   let L : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift (pathEndpoint Y).right (basedPathSpace Y).basepoint s
       (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom
         (loopBasedPathFiberIso_basepoint Y) (a j)) :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map := T
-      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map_comp := hT
-      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.face_eq j := hface j }
+    { map := T
+      map_comp := hT
+      face_eq j := hface j }
   have h := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.alternating_connecting L φ
   have hm (j : Fin 3) : φ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
       (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopBasedPathFiberIso Y).hom (loopBasedPathFiberIso_basepoint Y) (a j))) =

@@ -29,13 +29,13 @@ structure KanMappingSpanComposition {E : SSet.{u}} {z x y : E _⦋0⦌}
   /-- 第一辺の選んだ逆辺。 -/
   inverse : E.Edge x z
   /-- 第一辺と逆辺を合成する元の左逆三角形。 -/
-  inverseLeft : SSet.Edge.CompStruct a _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.inverse (SSet.Edge.id z)
+  inverseLeft : SSet.Edge.CompStruct a inverse (SSet.Edge.id z)
   /-- 逆辺と第一辺を合成する元の右逆三角形。 -/
-  inverseRight : SSet.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.inverse a (SSet.Edge.id x)
+  inverseRight : SSet.Edge.CompStruct inverse a (SSet.Edge.id x)
   /-- span から得た実際の合成辺。 -/
   edge : E.Edge x y
   /-- 元の逆辺・元の第二辺・合成辺を保持する実三角形。 -/
-  triangle : SSet.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.inverse b _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.edge
+  triangle : SSet.Edge.CompStruct inverse b edge
 
 /-- 元の二辺を保持し、全ての証人を実三角形として伴う span の合成。 -/
 def kanMappingSpanComposition {E : SSet.{u}} [KanComplex E] {z x y : E _⦋0⦌}

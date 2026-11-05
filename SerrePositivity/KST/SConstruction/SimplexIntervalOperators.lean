@@ -23,12 +23,12 @@ def simplexIntervalImageNecklace {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) (hab : a ≤ b) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
       (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom b)) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := necklaceBead.{u} (b.val - a.val)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := (necklaceInSimplexInterval a b hab).map ≫ stdSimplex.map θ
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := (congrArg ((stdSimplex.{u}.map θ).app _)
+  necklace := necklaceBead.{u} (b.val - a.val)
+  map := (necklaceInSimplexInterval a b hab).map ≫ stdSimplex.map θ
+  map_first := (congrArg ((stdSimplex.{u}.map θ).app _)
     (necklaceInSimplexInterval.{u} a b hab).map_first).trans
       (standardSimplexVertex_map θ a)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := (congrArg ((stdSimplex.{u}.map θ).app _)
+  map_last := (congrArg ((stdSimplex.{u}.map θ).app _)
     (necklaceInSimplexInterval.{u} a b hab).map_last).trans
       (standardSimplexVertex_map θ b)
 

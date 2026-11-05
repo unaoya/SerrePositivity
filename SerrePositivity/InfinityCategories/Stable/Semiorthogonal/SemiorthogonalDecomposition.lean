@@ -33,15 +33,15 @@ structure SemiorthogonalDecomposition (A B T : _root_.SerrePositivity.InfinityCa
   rightInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B T
   retraction : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T A
   projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap T B
-  leftAdjunction : QCatAdjunction _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.retraction.hom
-  rightAdjunction : QCatAdjunction _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion.hom
-  inclusion_fullyFaithful : IsFullyFaithful _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom
-  rightInclusion_fullyFaithful : IsFullyFaithful _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion.hom
-  counit_isIso : IsIso _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightAdjunction.counit
+  leftAdjunction : QCatAdjunction inclusion.hom retraction.hom
+  rightAdjunction : QCatAdjunction projection.hom rightInclusion.hom
+  inclusion_fullyFaithful : IsFullyFaithful inclusion.hom
+  rightInclusion_fullyFaithful : IsFullyFaithful rightInclusion.hom
+  counit_isIso : IsIso rightAdjunction.counit
   kills_inclusion (a : A.obj _⦋0⦌) :
-    IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion.hom ≫ _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom).app (Opposite.op ⦋0⦌) a)
+    IsZeroVertex ((inclusion.hom ≫ projection.hom).app (Opposite.op ⦋0⦌) a)
   generates_kernel (x : T.obj _⦋0⦌) :
-    IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion
+    IsZeroVertex (projection.hom.app (Opposite.op ⦋0⦌) x) → x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage inclusion
 
 attribute [instance] _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso
 
@@ -69,12 +69,12 @@ lemma isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVer
 
 /-- 半直交分解が誘導する、元の包含・射影を持つ抽象 Verdier 列。 -/
 def verdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := A
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := T
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := B
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := d.inclusion
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := d.projection
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := d.isVerdier
+  left := A
+  middle := T
+  right := B
+  inclusion := d.inclusion
+  projection := d.projection
+  isVerdier := d.isVerdier
 
 /-- 左因子から右因子への写像空間は可縮。 -/
 lemma semiorthogonal (a : A.obj _⦋0⦌) (b : B.obj _⦋0⦌) :

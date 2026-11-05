@@ -55,13 +55,13 @@ structure VerdierRecoveredBoundaryComparison
     (functorVertex (internalHomFlipHomEquiv P J C.obj
       (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv P J C.obj ((S.ι ▷ Δ[1]) ≫ U.whole)))
-  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom P).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge
+  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom P).obj C.obj)) edge
   prefix_eq : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom P).obj C.obj)).app
-      (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge.edge =
+      (Opposite.op ⦋1⦌) edge.edge =
     (((squareLeftArrow r.cylinderSquare).map ((truncation 2).map
       ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))).edge)
   last_eq : ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app ((ihom P).obj C.obj)).app
-      (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge.edge =
+      (Opposite.op ⦋1⦌) edge.edge =
     (((functorEdgeOfSimplicialHomotopy r.boundaryFractionHomotopy).map ((truncation 2).map
       ((pre (joinStdSimplexIso 0 0).hom).app ((ihom P).obj C.obj)))).edge)
 

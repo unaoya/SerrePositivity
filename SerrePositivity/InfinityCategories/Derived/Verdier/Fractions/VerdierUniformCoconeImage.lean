@@ -50,17 +50,17 @@ structure VerdierUniformCoconeImage
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) f)
     (G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) where
   whole : K ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj
-  endpoint : (SSet.ι₁ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage.whole = G
-  fixedPrefix : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage.whole ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
+  endpoint : (SSet.ι₁ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ whole = G
+  fixedPrefix : whole ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
     SSet.const (functorVertex (D ≫ q.hom))
-  lastArrow : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage.whole ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+  lastArrow : whole ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
     L.h ≫ vertexFiberι ((pre (boundary 1).ι).app C.obj)
       (functorVertex (intervalMappingBoundary
         (q.hom.app (Opposite.op ⦋0⦌)
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
         (q.hom.app (Opposite.op ⦋0⦌) z))) ≫
       (pre (joinStdSimplexIso 0 0).hom).app C.obj
-  fixedApex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage.whole ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
+  fixedApex : whole ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const (q.hom.app (Opposite.op ⦋0⦌) z)
 
 lemma exists_verdierUniformCoconeImage

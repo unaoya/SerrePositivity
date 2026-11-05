@@ -86,11 +86,11 @@ private instance unitSimplexUnique (n : SimplexCategoryᵒᵖ) :
 
 /-- 一点の単体集合は零安定 ∞ 圏を与える。 -/
 def zeroCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := 𝟙_ SSet.{u}
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := by
+  obj := 𝟙_ SSet.{u}
+  isQuasicategory := by
     let : KanComplex (𝟙_ SSet.{u}) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.kanComplex
     infer_instance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := by
+  isStable := by
     let : KanComplex (𝟙_ SSet.{u}) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible.kanComplex
     let : HasZeroVertex (𝟙_ SSet.{u}) :=
       ⟨⟨PUnit.unit, _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero _⟩⟩
@@ -111,8 +111,8 @@ def toZeroCategory (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier
   let : ∀ n : SimplexCategoryᵒᵖ, Unique ((𝟙_ SSet.{u}).obj n) :=
     fun _ ↦ inferInstanceAs (Unique PUnit)
   exact {
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map (X := (𝟙_ SSet.{u})) A.obj
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := {
+    hom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map (X := (𝟙_ SSet.{u})) A.obj
+    isExact := {
       preservesZero := fun _x _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero (X := (𝟙_ SSet.{u})) _
       preservesCofiber := fun _t _ ↦ _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pushout (X := (𝟙_ SSet.{u})) _ } }
 

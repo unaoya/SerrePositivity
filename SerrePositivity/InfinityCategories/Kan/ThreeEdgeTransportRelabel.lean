@@ -34,16 +34,16 @@ def relabel (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTranspor
   have ha : a = a' := left.tgt_eq.symm.trans ((congrArg (Z.δ 0) hl).trans left'.tgt_eq)
   have hb : b = b' := right.tgt_eq.symm.trans ((congrArg (Z.δ 0) hr).trans right'.tgt_eq)
   exact {
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal := SSet.Edge.mk D.diagonal.edge
+    diagonal := SSet.Edge.mk D.diagonal.edge
       (D.diagonal.src_eq.trans hx) (D.diagonal.tgt_eq.trans hb)
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported := SSet.Edge.mk D.transported.edge
+    transported := SSet.Edge.mk D.transported.edge
       (D.transported.src_eq.trans ha) (D.transported.tgt_eq.trans hb)
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.first := {
+    first := {
       simplex := D.first.simplex
       d₀ := D.first.d₀.trans hr
       d₁ := D.first.d₁
       d₂ := D.first.d₂.trans hm }
-    _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.second := {
+    second := {
       simplex := D.second.simplex
       d₀ := D.second.d₀
       d₁ := D.second.d₁

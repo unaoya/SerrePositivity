@@ -75,8 +75,8 @@ def dgOdotMilnorNuNullSquareZeroBoundary : FunctorIso
 def dgOdotMilnorNuNullSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := dgOdotMilnorNuNullSquareInclusionBoundary R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := dgOdotMilnorNuNullSquareProjectionBoundary R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorNuNullSquareZeroBoundary R d h
+  inclusion := dgOdotMilnorNuNullSquareInclusionBoundary R d h
+  quotient := dgOdotMilnorNuNullSquareProjectionBoundary R d h
+  zero := dgOdotMilnorNuNullSquareZeroBoundary R d h
 
 end SerrePositivity.KST.SConstruction

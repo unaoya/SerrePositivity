@@ -67,12 +67,12 @@ lemma dgOdotMilnorNuKernelLocalization : IsLocalization (q).hom
 方針：充満忠実性・thick 核・同じ実局所化を束ねる。
 規約：完備化前の native 商を保つ。使われ方：実零化面の同じ二辺の認証。 -/
 def dgOdotMilnorNuNativeSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := K
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := T
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := i
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := ⟨dgOdotMilnorNuKernelInclusion_fullyFaithful R d h,
+  left := K
+  middle := T
+  right := dgGluingMilnorNativeResolvedQuotient R d
+  inclusion := i
+  projection := q
+  isVerdier := ⟨dgOdotMilnorNuKernelInclusion_fullyFaithful R d h,
     dgOdotMilnorNuKernel R d h, dgOdotMilnorNuKernelLocalization R d h⟩
 
 /-- 概要：同じ固定 ν 核列は D-21 の同じ c・hc で Cat^perf 列になる。

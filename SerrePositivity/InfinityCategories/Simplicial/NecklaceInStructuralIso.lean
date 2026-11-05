@@ -23,8 +23,8 @@ def necklaceInIso {K : SSet.{u}} {x y : K _⦋0⦌} {T U : _root_.SerrePositivit
     (e : T.necklace ≅ U.necklace) (h : e.hom.map ≫ U.map = T.map) : T ≅ U where
   hom := ⟨e.hom, h⟩
   inv :=
-    { _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := e.inv
-      _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet.mapIso e).eq_inv_comp.mpr h).symm }
+    { necklaceHom := e.inv
+      w := ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplicialSet.mapIso e).eq_inv_comp.mpr h).symm }
   hom_inv_id := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext e.hom_inv_id
   inv_hom_id := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext e.inv_hom_id
 

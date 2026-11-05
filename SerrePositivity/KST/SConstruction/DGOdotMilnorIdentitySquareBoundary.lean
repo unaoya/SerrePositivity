@@ -131,14 +131,14 @@ def differenceArrowComparison : FunctorIso
 def squareBoundary (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
+  inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_diagonal R d).symm
     (PerfectVerdierSequence.presentation_bottom (perfectIdentityLaxSequence (Q) (hQ))).symm).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
+  quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_difference R d).symm (by
       change _ = squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square
       rw [PerfectVerdierSequence.presentation_right, perfectIdentityLaxSequence_projection]
       rfl)).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h
+  zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h
 end DGOdotMilnorIdentityLaxComparisonInput
 end SerrePositivity.KST.SConstruction

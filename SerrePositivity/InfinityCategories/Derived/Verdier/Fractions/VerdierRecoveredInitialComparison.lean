@@ -45,17 +45,17 @@ structure VerdierRecoveredInitialComparison
     (U : VerdierRecoveredQuotientCoconeCylinder r G) where
   denominator : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
     (functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram r.cylinder.single)) (functorVertex D)
-  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
-  denominator_edge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.denominator.edge =
+  denominator_mem : denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
+  denominator_edge : denominator.edge =
     (squareLeftArrow (terminalRefinementSquare r.cylinder.single)).edge
   edge : Truncated.Edge (X := (truncation 2).obj ((ihom J).obj ((ihom K).obj C.obj)))
     (functorVertex (internalHomFlipHomEquiv K J C.obj (r.cylinder.whole ≫ (ihom J).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv K J C.obj U.initialFamily))
-  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom K).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.edge
+  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom K).obj C.obj)) edge
   prefix_eq : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj)).app
-    (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.edge.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.denominator).edge
+    (Opposite.op ⦋1⦌) edge.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom denominator).edge
   last_eq : ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app ((ihom K).obj C.obj)).app
-      (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.edge.edge =
+      (Opposite.op ⦋1⦌) edge.edge =
     (((functorEdgeOfSimplicialHomotopy r.initialFractionHomotopy).map ((truncation 2).map
       ((pre (joinStdSimplexIso 0 0).hom).app ((ihom K).obj C.obj)))).edge)
 

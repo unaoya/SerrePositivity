@@ -191,17 +191,17 @@ lemma upperRightHomotopy_path :
 def squareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
     (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R))
     (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom := v.bottomHomotopy
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right := v.rightHomotopy
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left := leftHomotopy R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top := v.topHomotopy
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_left := v.lowerLeftHomotopy_path
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_right := v.lowerRightHomotopy_path
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_left := v.upperLeftHomotopy_path
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_right := v.upperRightHomotopy_path
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.bottomHomotopy_isInvertible
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.rightHomotopy_isInvertible
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left_invertible := homotopyVertex_isInvertible_of_functorEdge _ (leftHomotopy_isInvertible R d)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.topHomotopy_isInvertible
+  bottom := v.bottomHomotopy
+  right := v.rightHomotopy
+  left := leftHomotopy R d
+  top := v.topHomotopy
+  lower_left := v.lowerLeftHomotopy_path
+  lower_right := v.lowerRightHomotopy_path
+  upper_left := v.upperLeftHomotopy_path
+  upper_right := v.upperRightHomotopy_path
+  bottom_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.bottomHomotopy_isInvertible
+  right_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.rightHomotopy_isInvertible
+  left_invertible := homotopyVertex_isInvertible_of_functorEdge _ (leftHomotopy_isInvertible R d)
+  top_invertible := homotopyVertex_isInvertible_of_functorEdge _ v.topHomotopy_isInvertible
 end DGOdotMilnorIdentityLaxComparisonInput
 end SerrePositivity.KST.SConstruction

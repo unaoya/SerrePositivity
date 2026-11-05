@@ -24,20 +24,20 @@ variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Stabl
 
 /-- 順序 ⟨D,C⟩ で、左包含と右包含は元の全単体上の関手である。 -/
 def laxSemiorthogonal : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition D C (laxCategory p q) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion := LaxInclusion.exactFromD p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion := LaxInclusion.exactFromC p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.retraction := laxSnd p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection := laxFst p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.leftAdjunction := LaxInclusion.fromDAdjunction p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightAdjunction := LaxInclusion.fromCAdjunction p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion_fullyFaithful := LaxInclusion.fromD_fullyFaithful p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion_fullyFaithful := LaxInclusion.fromC_fullyFaithful p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso := LaxInclusion.fromCAdjunction_counit_isIso p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.kills_inclusion a := by
+  inclusion := LaxInclusion.exactFromD p q
+  rightInclusion := LaxInclusion.exactFromC p q
+  retraction := laxSnd p q
+  projection := laxFst p q
+  leftAdjunction := LaxInclusion.fromDAdjunction p q
+  rightAdjunction := LaxInclusion.fromCAdjunction p q
+  inclusion_fullyFaithful := LaxInclusion.fromD_fullyFaithful p q
+  rightInclusion_fullyFaithful := LaxInclusion.fromC_fullyFaithful p q
+  counit_isIso := LaxInclusion.fromCAdjunction_counit_isIso p q
+  kills_inclusion a := by
     change IsZeroVertex ((LaxInclusion.fromD p q ≫ (laxFst p q).hom).app _ a)
     rw [LaxInclusion.fromD_fst, _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC, zeroDiagram_const_vertex]
     exact (chosenZeroVertex C.obj).isZero
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.generates_kernel x := (LaxInclusion.fst_kernel p q x).1
+  generates_kernel x := (LaxInclusion.fst_kernel p q x).1
 
 /-- 第一射影を商とする、元の lax pullback の切断付き Verdier 列。 -/
 def laxVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} := (laxSemiorthogonal p q).verdierSequence

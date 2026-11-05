@@ -27,13 +27,13 @@ local instance dgValueSimplicialCategory : SimplicialCategory OmegaSpectrum.{u +
   OmegaSpectrum.simplicialCategory
 
 def perfect (B : Mon (Complex R)) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgAlgebraPerfectInfinityCategory R B
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgAlgebraPerfectInfinityCategory_isStable R B
+  obj := dgAlgebraPerfectInfinityCategory R B
+  isQuasicategory := inferInstance
+  isStable := dgAlgebraPerfectInfinityCategory_isStable R B
 
 def perfectMap {B C : Mon (Complex R)} (f : B ⟶ C) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (perfect R B) (perfect R C) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgAlgebraPerfectExtensionInfinity R f
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := dgAlgebraPerfectExtensionInfinity_isExactFunctor R f
+  hom := dgAlgebraPerfectExtensionInfinity R f
+  isExact := dgAlgebraPerfectExtensionInfinity_isExactFunctor R f
 
 variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 

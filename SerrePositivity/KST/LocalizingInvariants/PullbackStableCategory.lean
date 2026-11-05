@@ -56,12 +56,12 @@ lemma pullbackInclusion_fullyFaithful : IsFullyFaithful (pullbackInclusion p q).
   pullbackComparison_fullyFaithful p q
 
 def pullbackFst : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (pullbackCategory p q) C where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (pullbackInclusion p q).hom ≫ (laxFst p q).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := inferInstance
+  hom := (pullbackInclusion p q).hom ≫ (laxFst p q).hom
+  isExact := inferInstance
 
 def pullbackSnd : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (pullbackCategory p q) D where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (pullbackInclusion p q).hom ≫ (laxSnd p q).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := inferInstance
+  hom := (pullbackInclusion p q).hom ≫ (laxSnd p q).hom
+  isExact := inferInstance
 
 lemma pullbackFst_hom : (pullbackFst p q).hom = F2.catPullbackFst p.hom q.hom :=
   F2.catPullbackToLax_fst p.hom q.hom

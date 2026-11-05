@@ -218,7 +218,7 @@ structure FourStruct {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   方針：四つの面以外を定数にする。
   規約：面添字は零から n + 3。
   使われ方：Kerodon Notation 3.2.3.1。充填の照合。 -/
-  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map = _root_.SerrePositivity.InfinityCategories.Kan.fourFaces a b c d j
+  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = _root_.SerrePositivity.InfinityCategories.Kan.fourFaces a b c d j
 
 namespace FourStruct
 open _root_.SerrePositivity.InfinityCategories.Kan.FourStruct
@@ -245,7 +245,7 @@ theorem exists_fill [KanComplex X] (a c : X.PtSimplex (n + 2) x) :
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
           hα.δ_liftOfKanComplex _ (by simp)]
         exact hαface _ (Fin.castSucc_ne_last j) _ }
-  refine ⟨d, ⟨{ _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map := hα.liftOfKanComplex, _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.face_eq := ?_ }⟩⟩
+  refine ⟨d, ⟨{ map := hα.liftOfKanComplex, face_eq := ?_ }⟩⟩
   intro j
   induction j using Fin.lastCases with
   | last =>
@@ -426,8 +426,8 @@ theorem compatible (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct
 noncomputable def compare [KanComplex X]
     (T : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct a .const c d) (T' : _root_.SerrePositivity.InfinityCategories.Kan.FourStruct c .const a d') :
     _root_.SerrePositivity.InfinityCategories.Kan.FourStruct d .const .const d' where
-  _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map := stdSimplex.δ (Fin.last (n + 4)) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible T T').liftOfKanComplex
-  _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.face_eq j := by
+  map := stdSimplex.δ (Fin.last (n + 4)) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible T T').liftOfKanComplex
+  face_eq j := by
     rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
       (_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible T T').δ_liftOfKanComplex _ (by simp)]
     simp only [_root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face, _root_.SerrePositivity.InfinityCategories.Kan.fourFaces]

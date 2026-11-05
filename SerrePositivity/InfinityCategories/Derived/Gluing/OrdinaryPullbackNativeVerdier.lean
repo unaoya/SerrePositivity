@@ -19,24 +19,24 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
 def dgGluingNativeStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgNerve R (DGGluingObject R C D M)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := by
+  obj := dgNerve R (DGGluingObject R C D M)
+  isQuasicategory := inferInstance
+  isStable := by
     let := dgGluing_isDGPretriangulated R C D M hC hD
     exact dgNerve_isStable_of_pretriangulated R _
 def dgGluingPullbackNativeStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgNerve R (DGGluingPullbackObject R C D M)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgGluingPullbackNerve_isStable R C D M hC hD
+  obj := dgNerve R (DGGluingPullbackObject R C D M)
+  isQuasicategory := inferInstance
+  isStable := dgGluingPullbackNerve_isStable R C D M hC hD
 def dgGluingPullbackNativeStableQuotient : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max u v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgGluingPullbackFlatQuotientNerve R C D M
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgGluingPullbackFlatQuotient_isStable R C D M hC hD
+  obj := dgGluingPullbackFlatQuotientNerve R C D M
+  isQuasicategory := inferInstance
+  isStable := dgGluingPullbackFlatQuotient_isStable R C D M hC hD
 def dgGluingPullbackNativeStableInclusion :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackNativeStableObject R C D M hC hD)
       (dgGluingNativeStableObject R C D M hC hD) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgNerve.map (dgGluingPullbackInclusion R C D M)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  hom := dgNerve.map (dgGluingPullbackInclusion R C D M)
+  isExact := by
     let := dgGluing_isDGPretriangulated R C D M hC hD
     let : IsStable (dgNerve R (DGGluingPullbackObject R C D M)) :=
       dgGluingPullbackNerve_isStable R C D M hC hD
@@ -48,8 +48,8 @@ def dgGluingPullbackNativeStableInclusion :
 def dgGluingPullbackNativeStableProjection :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingNativeStableObject R C D M hC hD)
       (dgGluingPullbackNativeStableQuotient R C D M hC hD) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgGluingPullbackFlatQuotientFunctor R C D M
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  hom := dgGluingPullbackFlatQuotientFunctor R C D M
+  isExact := by
     let := dgGluing_isDGPretriangulated R C D M hC hD
     let : IsStable (dgNerve R (DGGluingPullbackObject R C D M)) :=
       dgGluingPullbackNerve_isStable R C D M hC hD
@@ -61,7 +61,7 @@ def dgGluingPullbackNativeStableProjection :
 theorem dgGluingPullback_isNativeVerdierSequence :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingPullbackNativeStableInclusion R C D M hC hD)
       (dgGluingPullbackNativeStableProjection R C D M hC hD) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := by
+  fullyFaithful := by
     let := dgGluing_isDGPretriangulated R C D M hC hD
     let : IsStable (dgNerve R (DGGluingPullbackObject R C D M)) :=
       dgGluingPullbackNerve_isStable R C D M hC hD
@@ -70,6 +70,6 @@ theorem dgGluingPullback_isNativeVerdierSequence :
     let : IsStable (dgGluingPullbackFlatQuotientNerve R C D M) :=
       dgGluingPullbackFlatQuotient_isStable R C D M hC hD
     exact (dgGluingPullback_isStableVerdierSequence R C D M hC hD).fullyFaithful
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := dgGluingPullbackFlatQuotient_zero_iff R C D M hC hD
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := dgGluingPullbackFlatQuotient_isLocalization R C D M hC hD
+  kernel := dgGluingPullbackFlatQuotient_zero_iff R C D M hC hD
+  quotient := dgGluingPullbackFlatQuotient_isLocalization R C D M hC hD
 end SerrePositivity.InfinityCategories

@@ -14,9 +14,9 @@ open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の necklace を、全頂点を共有する元の一 bead に含める実端点保存射。 -/
 def necklaceBeadRefinement (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) : T ⟶ necklaceBead T.down.vertexMax where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := T.down.inclusion ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := simplexBeadIso_inv_first _
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := simplexBeadIso_inv_last _
+  map := T.down.inclusion ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
+  map_first := simplexBeadIso_inv_first _
+  map_last := simplexBeadIso_inv_last _
 
 /-- 元の refinement 射の全頂点作用は、元の同じ局所番号そのもの。 -/
 lemma necklaceBeadRefinement_vertex (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) (v : T.down.Vertex) :

@@ -66,8 +66,8 @@ def necklaceInSimplexSubsetSplitInclusion {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     necklaceInSimplexSubsetSplit.{u} I hI j hj hL hR ⟶ necklaceInSimplexSubset I hI where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := simplexSubsetSplitRefinement I j hj hL hR
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := (Category.assoc _ _ _).symm.trans
+  necklaceHom := simplexSubsetSplitRefinement I j hj hL hR
+  w := (Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI)
       (simplexSubsetSplitRefinement_triangle I j hj hL hR)).trans
       (simplexSubsetSplitMap_augmentation I hI j hj hL hR))

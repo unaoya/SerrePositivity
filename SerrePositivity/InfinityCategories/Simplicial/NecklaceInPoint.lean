@@ -33,10 +33,10 @@ lemma simplicialConst_zero_apply {K L : SSet.{u}} (x : L _⦋0⦌) (s : K _⦋0�
 
 /-- 元の点 x における、元の高次単体を持つ一点 necklace。 -/
 def necklaceInPoint (K : SSet.{u}) (x : K _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x x where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := SSet.const x
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialConst_zero_apply x _
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialConst_zero_apply x _
+  necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint
+  map := SSet.const x
+  map_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialConst_zero_apply x _
+  map_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialConst_zero_apply x _
 
 /-- 元の一点 necklace の形は元の零長 necklace。 -/
 lemma necklaceInPoint_necklace (K : SSet.{u}) (x : K _⦋0⦌) :
@@ -55,8 +55,8 @@ lemma necklaceInPoint_postcompose_map {K L : SSet.{u}} (f : K ⟶ L) (x : K _⦋
 def necklaceInPointPostcomposeHom {K L : SSet.{u}} (f : K ⟶ L) (x : K _⦋0⦌) :
     (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose f x x).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) ⟶
       _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint L (f.app _ x) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := 𝟙 _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+  necklaceHom := 𝟙 _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint
+  w := by
     change 𝟙 _ ≫ SSet.const (f.app _ x) = SSet.const x ≫ f
     exact (Category.id_comp _).trans (SSet.const_comp x f).symm
 

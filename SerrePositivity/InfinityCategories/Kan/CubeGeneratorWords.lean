@@ -18,9 +18,9 @@ open CategoryTheory
 
 /-- 次元を指定した三種の cubical 生成射。 -/
 inductive CubeGenerator : ℕ → ℕ → Type
-  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator n (n + 1)
-  | degeneracy (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (n + 1) n
-  | connection (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (n + 2) (n + 1)
+  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : CubeGenerator n (n + 1)
+  | degeneracy (n : ℕ) (i : Fin (n + 1)) : CubeGenerator (n + 1) n
+  | connection (n : ℕ) (i : Fin (n + 1)) : CubeGenerator (n + 2) (n + 1)
 
 /-- 自由な生成語の端点。具体的な立方体圏の quiver と区別する。 -/
 structure CubeWordObject where

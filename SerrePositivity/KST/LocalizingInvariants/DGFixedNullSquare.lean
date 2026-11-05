@@ -75,12 +75,12 @@ lemma exists_dgFixedNullRelativeDiagram
       squareTopEdge ≫ t.square =
         SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullTop R C)).edge := by
   let d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{max (u + 1) v} := {
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgKInputStableValue R A
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgKInputStableValue R B
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgKInputStableValue R Q
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgKInputNuMap R i
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgKInputNuMap R q
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := hV }
+    left := dgKInputStableValue R A
+    middle := dgKInputStableValue R B
+    right := dgKInputStableValue R Q
+    inclusion := dgKInputNuMap R i
+    projection := dgKInputNuMap R q
+    isVerdier := hV }
   have hi : SSet.yonedaEquiv.symm (coherentNerveEdge i).edge ≫ dgKInputNu R =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     rw [SSet.yonedaEquiv_symm_comp]

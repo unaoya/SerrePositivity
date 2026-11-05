@@ -23,9 +23,9 @@ open SerrePositivity.KST.SConstruction
 structure NecklaceShape where
   vertexMax : ℕ
   joints : Finset ℕ
-  zero_mem : 0 ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints
-  last_mem : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints
-  mem_le : ∀ j ∈ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints, j ≤ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax
+  zero_mem : 0 ∈ joints
+  last_mem : vertexMax ∈ joints
+  mem_le : ∀ j ∈ joints, j ≤ vertexMax
 
 namespace NecklaceShape
 open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
@@ -39,11 +39,11 @@ def dimension (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace
 
 /-- 元の標準 n 単体一つからなる necklace。n=0 は点。 -/
 def single (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax := n
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints := {0, n}
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.zero_mem := by simp
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.last_mem := by simp
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mem_le j hj := by
+  vertexMax := n
+  joints := {0, n}
+  zero_mem := by simp
+  last_mem := by simp
+  mem_le j hj := by
     simp only [Finset.mem_insert, Finset.mem_singleton] at hj
     rcases hj with rfl | rfl <;> omega
 

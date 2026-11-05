@@ -44,12 +44,12 @@ lemma firstPositiveJoint_le (T : _root_.SerrePositivity.InfinityCategories.Simpl
 
 /-- 元の joint から後ろを、同じ joint を新しい始点として番号付けした形。 -/
 def tail (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (p : ℕ) (hp : p ∈ T.joints) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax := T.vertexMax - p
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints := (T.joints.filter (p ≤ ·)).image (· - p)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.zero_mem := Finset.mem_image.mpr ⟨p, Finset.mem_filter.mpr ⟨hp, le_rfl⟩, Nat.sub_self p⟩
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.last_mem := Finset.mem_image.mpr ⟨T.vertexMax,
+  vertexMax := T.vertexMax - p
+  joints := (T.joints.filter (p ≤ ·)).image (· - p)
+  zero_mem := Finset.mem_image.mpr ⟨p, Finset.mem_filter.mpr ⟨hp, le_rfl⟩, Nat.sub_self p⟩
+  last_mem := Finset.mem_image.mpr ⟨T.vertexMax,
     Finset.mem_filter.mpr ⟨T.last_mem, T.mem_le p hp⟩, rfl⟩
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mem_le j hj := by
+  mem_le j hj := by
     obtain ⟨k, hk, rfl⟩ := Finset.mem_image.mp hj
     exact Nat.sub_le_sub_right (T.mem_le k (Finset.mem_filter.mp hk).1) p
 

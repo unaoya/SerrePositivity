@@ -37,8 +37,8 @@ local instance : IsDGPretriangulated R (DGCategoryCellResolution.Source R (G)) :
 方針：同じ native 頂点同値の逆と元の strict 商を合成する。
 規約：固定 ν の完備化後の商射影と区別する。使われ方：完備化付き実列の商。 -/
 def dgOdotMilnorNuNativeProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (T) (dgGluingMilnorNativeResolvedQuotient R d) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (V).inv ≫ resolvedDGQuotientProjection R (G) (P)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  hom := (V).inv ≫ resolvedDGQuotientProjection R (G) (P)
+  isExact := by
     letI : IsExactFunctor (V).inv :=
       isExactFunctor_of_isQCatEquivalence (V).symm.isQCatEquivalence
     letI : IsExactFunctor (resolvedDGQuotientProjection R (G) (P)) :=

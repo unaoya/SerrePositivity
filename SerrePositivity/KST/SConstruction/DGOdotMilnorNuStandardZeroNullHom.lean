@@ -21,8 +21,8 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 規約：元核と元終域を固定。使われ方：混合上辺の元完全合成。 -/
 def dgOdotMilnorNuStandardZeroComposite (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (B) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom ≫ f.hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).isExact f.isExact
+  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom ≫ f.hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).isExact f.isExact
 
 /-- 概要：標準零角からの全完全 Hom の元核による前合成。
 方針：同じ豊穣前合成作用を使う。

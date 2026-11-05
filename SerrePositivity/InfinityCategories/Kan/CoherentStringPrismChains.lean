@@ -72,9 +72,9 @@ lemma coherentStringPrismChain_refinement {f : x ⟶ y} {s t : _root_.SerrePosit
 def coherentLowerPrismString {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (I := I × ULift.{u} (Fin 2)) ((f, homOfLE (by change (0 : Fin 2) ≤ 1; decide)) :
       (x, ULift.up (0 : Fin 2)) ⟶ (y, ULift.up (1 : Fin 2))) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.length := s.length + 1
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.chain := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime _)
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.long_edge := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge s _ _
+  length := s.length + 1
+  chain := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime _)
+  long_edge := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge s _ _
     (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_comp _ (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_first _)
       (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_last _)) (by
       refine SimplexCategory.Hom.ext_one_left _ _ ?_ ?_
@@ -88,10 +88,10 @@ def coherentLowerPrismString {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityC
 /-- 下側の列への精密化は、元の列と時刻を全射で保持する。 -/
 def coherentLowerPrismStringMap {f : x ⟶ y} {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f}
     (a : s ⟶ t) : _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString s ⟶ _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString t where
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend a.map
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_first a.map a.first
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_last a.map
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.comm := by
+  map := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend a.map
+  first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_first a.map a.first
+  last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_last a.map
+  comm := by
     change (nerve (I × ULift.{u} (Fin 2))).map (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend a.map).op
       (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain t (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime _)) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_index _ a.last,
@@ -111,9 +111,9 @@ def coherentLowerPrismStringFunctor (f : x ⟶ y) :
 def coherentUpperPrismString {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
     _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (I := I × ULift.{u} (Fin 2)) ((f, homOfLE (by change (0 : Fin 2) ≤ 1; decide)) :
       (x, ULift.up (0 : Fin 2)) ⟶ (y, ULift.up (1 : Fin 2))) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.length := s.length + 1
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.chain := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime _)
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.long_edge := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge s _ _
+  length := s.length + 1
+  chain := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain s (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime _)
+  long_edge := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge s _ _
     (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringEndpointMap_comp _ (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_first _)
       (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_last _)) (by
       refine SimplexCategory.Hom.ext_one_left _ _ ?_ ?_
@@ -127,10 +127,10 @@ def coherentUpperPrismString {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityC
 /-- 上側の列への精密化は、元の列と時刻を全射で保持する。 -/
 def coherentUpperPrismStringMap {f : x ⟶ y} {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f}
     (a : s ⟶ t) : _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString s ⟶ _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString t where
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.map := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend a.map
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_zero a.map
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_last a.map a.last
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.comm := by
+  map := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend a.map
+  first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_zero a.map
+  last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_last a.map a.last
+  comm := by
     change (nerve (I × ULift.{u} (Fin 2))).map (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend a.map).op
       (_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain t (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex _) (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime _)) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex, _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_index _ a.first,

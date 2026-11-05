@@ -28,9 +28,9 @@ lemma necklaceInWedge_seam {K : SSet.{u}} {x y z : K _⦋0⦌}
 /-- 元の K 内の二つの necklace を、共有する元の頂点で貼る。 -/
 def necklaceInWedge {K : SSet.{u}} {x y z : K _⦋0⦌}
     (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x z where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := T.necklace.down.wedgeDesc U.necklace.down T.map U.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := by
+  necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace
+  map := T.necklace.down.wedgeDesc U.necklace.down T.map U.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U)
+  map_first := by
     have e := ConcreteCategory.congr_hom (NatTrans.congr_app
       (T.necklace.down.wedgeInl_desc U.necklace.down T.map U.map
         (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U)) _) T.necklace.down.firstVertex
@@ -40,7 +40,7 @@ def necklaceInWedge {K : SSet.{u}} {x y z : K _⦋0⦌}
           T.map.app _ T.necklace.down.firstVertex at e
     rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_first, T.map_first] at e
     exact e
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := by
+  map_last := by
     have e := ConcreteCategory.congr_hom (NatTrans.congr_app
       (T.necklace.down.wedgeInr_desc U.necklace.down T.map U.map
         (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U)) _) U.necklace.down.lastVertex
@@ -67,8 +67,8 @@ lemma necklaceInWedge_inr {K : SSet.{u}} {x y z : K _⦋0⦌}
 def necklaceInWedgeMap {K : SSet.{u}} {x y z : K _⦋0⦌}
     {T T' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} {U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z} (f : T ⟶ T') (g : U ⟶ U') :
     _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T' U' where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f.necklaceHom g.necklaceHom
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := by
+  necklaceHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f.necklaceHom g.necklaceHom
+  w := by
     change (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f.necklaceHom g.necklaceHom).map ≫
       T'.necklace.down.wedgeDesc U'.necklace.down T'.map U'.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T' U') =
         T.necklace.down.wedgeDesc U.necklace.down T.map U.map (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_seam T U)

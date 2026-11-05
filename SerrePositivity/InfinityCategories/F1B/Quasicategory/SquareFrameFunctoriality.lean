@@ -29,14 +29,14 @@ open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
 variable {X Y : SSet.{u}} (f : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X)
 
 def postcomp (F : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Y where
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := f.bottom ≫ F
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := f.top ≫ F
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := f.left ≫ F
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := f.right ≫ F
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_left
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_right
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_left
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_right
+  bottom := f.bottom ≫ F
+  top := f.top ≫ F
+  left := f.left ≫ F
+  right := f.right ≫ F
+  lower_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_left
+  lower_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.lower_right
+  upper_left := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_left
+  upper_right := by simpa only [Category.assoc] using congrArg (· ≫ F) f.upper_right
 
 lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = ((postcomp f) F).diagram := by
   apply (Subcomplex.unionProd.isPushout (SSet.boundary 1) (SSet.boundary 1)).hom_ext
@@ -47,26 +47,26 @@ lemma diagram_postcomp (F : X ⟶ Y) : f.diagram ≫ F = ((postcomp f) F).diagra
     exact F2.intervalBoundaryDiagram_postcomp f.left f.right F
 
 def ofSquare (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X where
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := squareBottomEdge ≫ Q
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := squareTopEdge ≫ Q
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := squareLeftEdge ≫ Q
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := squareRightEdge ≫ Q
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by
+  bottom := squareBottomEdge ≫ Q
+  top := squareTopEdge ≫ Q
+  left := squareLeftEdge ≫ Q
+  right := squareRightEdge ≫ Q
+  lower_left := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by
+  lower_right := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by
+  upper_left := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by
+  upper_right := by
     rw [← Category.assoc, ← Category.assoc]
     apply congrArg (· ≫ Q)
     apply SSet.yonedaEquiv.injective

@@ -79,12 +79,12 @@ theorem isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsV
 /-- 概要：元の三頂点と二射を持つ実列。方針：上の条件を束ねる。
 規約：商を冪等完備化に置換しない。使われ方：ν 像の Verdier 提示。 -/
 def sequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgKInputStableValue R (dgOdotDiagonalSourceInput R d)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgKInputStableValue R (dgOdotGluingInput R d)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgKInputStableValue R (dgOdotQuotientInputVertex R d)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgOdotDiagonalExactMap R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgOdotProjectionExactMap R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := h.isVerdier
+  left := dgKInputStableValue R (dgOdotDiagonalSourceInput R d)
+  middle := dgKInputStableValue R (dgOdotGluingInput R d)
+  right := dgKInputStableValue R (dgOdotQuotientInputVertex R d)
+  inclusion := dgOdotDiagonalExactMap R d
+  projection := dgOdotProjectionExactMap R d
+  isVerdier := h.isVerdier
 
 end DGOdotVerdierInput
 end SerrePositivity.KST.SConstruction

@@ -21,9 +21,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 def dgOdotMilnorNuNullRawSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := dgOdotMilnorNuInclusionDiagramComparison R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := dgOdotMilnorNuProjectionDiagramComparison R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorNuNullRawSquareZeroBoundary R d h
+  inclusion := dgOdotMilnorNuInclusionDiagramComparison R d h
+  quotient := dgOdotMilnorNuProjectionDiagramComparison R d h
+  zero := dgOdotMilnorNuNullRawSquareZeroBoundary R d h
 
 /-- 概要：元実 ν 核面全体の同型は元の指定三境界を同時に保持する。
 方針：元上下二胞体の比較を貼った同じ全同型と、三つの厳密回収を束ねる。
@@ -32,10 +32,10 @@ def dgOdotMilnorNuNullRawSquareDiagramIso : _root_.SerrePositivity.InfinityCateg
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h))
     (dgOdotMilnorNuNullRawSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := dgOdotMilnorNuNullSquareComparison R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := dgOdotMilnorNuNullSquareComparison_inclusion R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := dgOdotMilnorNuNullSquareComparison_projection R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := dgOdotMilnorNuNullSquareComparison_zero R d h
+  comparison := dgOdotMilnorNuNullSquareComparison R d h
+  inclusion_eq := dgOdotMilnorNuNullSquareComparison_inclusion R d h
+  quotient_eq := dgOdotMilnorNuNullSquareComparison_projection R d h
+  zero_eq := dgOdotMilnorNuNullSquareComparison_zero R d h
 
 /-- 概要：元絶対核提示から元実 ν 核面へ向かう同じ指定三境界。
 方針：元の指定包含・商・零角比較をそれぞれ逆向きに保持する。
@@ -43,9 +43,9 @@ def dgOdotMilnorNuNullRawSquareDiagramIso : _root_.SerrePositivity.InfinityCateg
 def dgOdotMilnorNuAbsoluteRawSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h))
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (dgOdotMilnorNuInclusionDiagramComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (dgOdotMilnorNuProjectionDiagramComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := (dgOdotMilnorNuNullRawSquareZeroBoundary R d h).symm
+  inclusion := (dgOdotMilnorNuInclusionDiagramComparison R d h).symm
+  quotient := (dgOdotMilnorNuProjectionDiagramComparison R d h).symm
+  zero := (dgOdotMilnorNuNullRawSquareZeroBoundary R d h).symm
 
 /-- 概要：元絶対核提示から実 ν 核面への同じ指定三境界付き全比較。
 方針：元両二胞体を保つ全比較を反転し、三制限の逆向き回収を使う。
@@ -54,12 +54,12 @@ def dgOdotMilnorNuAbsoluteRawSquareDiagramIso : _root_.SerrePositivity.InfinityC
     (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h))
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (dgOdotMilnorNuAbsoluteRawSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (dgOdotMilnorNuNullSquareComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := (F2.functorIso_precomp_symm _ _).trans
+  comparison := (dgOdotMilnorNuNullSquareComparison R d h).symm
+  inclusion_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullSquareComparison_inclusion R d h))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := (F2.functorIso_precomp_symm _ _).trans
+  quotient_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullSquareComparison_projection R d h))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := (F2.functorIso_precomp_symm _ _).trans
+  zero_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullSquareComparison_zero R d h))
 
 end SerrePositivity.KST.SConstruction

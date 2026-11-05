@@ -48,7 +48,7 @@ open SerrePositivity.KST.LocalizingInvariants
 structure RelativeVerdierDiagram {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
   image : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}
-  image_eq : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.square ≫ ν = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.image.square
+  image_eq : square ≫ ν = image.square
 
 namespace RelativeVerdierDiagram
 open _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram

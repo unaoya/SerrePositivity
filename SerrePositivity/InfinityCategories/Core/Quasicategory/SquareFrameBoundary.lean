@@ -31,10 +31,10 @@ open SerrePositivity.KST.LocalizingInvariants
   top : (Δ[1] : SSet.{u}) ⟶ X
   left : (Δ[1] : SSet.{u}) ⟶ X
   right : (Δ[1] : SSet.{u}) ⟶ X
-  lower_left : stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom = stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left
-  lower_right : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom = stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right
-  upper_left : stdSimplex.δ (1 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top = stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left
-  upper_right : stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top = stdSimplex.δ (0 : Fin 2) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right
+  lower_left : stdSimplex.δ (1 : Fin 2) ≫ bottom = stdSimplex.δ (1 : Fin 2) ≫ left
+  lower_right : stdSimplex.δ (0 : Fin 2) ≫ bottom = stdSimplex.δ (1 : Fin 2) ≫ right
+  upper_left : stdSimplex.δ (1 : Fin 2) ≫ top = stdSimplex.δ (0 : Fin 2) ≫ left
+  upper_right : stdSimplex.δ (0 : Fin 2) ≫ top = stdSimplex.δ (0 : Fin 2) ≫ right
 
 namespace SquareFrame
 open _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame

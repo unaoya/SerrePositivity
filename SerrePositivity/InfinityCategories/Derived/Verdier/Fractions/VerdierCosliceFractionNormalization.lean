@@ -35,20 +35,20 @@ structure VerdierCosliceFractionNormalization {A B C : _root_.SerrePositivity.In
     (e : Truncated.Edge (X := (truncation 2).obj (sliceUnder a)) u v)
     (x y : B.obj _⦋0⦌) where
   nativeSource : B.obj _⦋0⦌
-  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource x
-  numerator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource y
-  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
+  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) nativeSource x
+  numerator : Truncated.Edge (X := (truncation 2).obj B.obj) nativeSource y
+  denominator_mem : denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   firstBase : Truncated.Edge (X := (truncation 2).obj C.obj)
-    (q.hom.app (Opposite.op ⦋0⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource)
+    (q.hom.app (Opposite.op ⦋0⦌) nativeSource)
     ((sliceUnderProjection a).app (Opposite.op ⦋0⦌) u)
   diagonalBase : Truncated.Edge (X := (truncation 2).obj C.obj)
-    (q.hom.app (Opposite.op ⦋0⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.nativeSource)
+    (q.hom.app (Opposite.op ⦋0⦌) nativeSource)
     ((sliceUnderProjection a).app (Opposite.op ⦋0⦌) v)
-  firstBase_edge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase.edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.denominator.map ((truncation 2).map q.hom)).edge
-  diagonalBase_edge : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase.edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.numerator.map ((truncation 2).map q.hom)).edge
-  triangle : Truncated.Edge.CompStruct _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase
-    (e.map ((truncation 2).map (sliceUnderProjection a))) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase
-  lift : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift (sliceUnderProjection a) e _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.firstBase _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.diagonalBase _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization.triangle
+  firstBase_edge : firstBase.edge = (denominator.map ((truncation 2).map q.hom)).edge
+  diagonalBase_edge : diagonalBase.edge = (numerator.map ((truncation 2).map q.hom)).edge
+  triangle : Truncated.Edge.CompStruct firstBase
+    (e.map ((truncation 2).map (sliceUnderProjection a))) diagonalBase
+  lift : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.LeftFractionTriangleLift (sliceUnderProjection a) e firstBase diagonalBase triangle
 
 /-- 指定商 coslice 辺から、実右分数と同じ指定二単体の coslice 持ち上げを一括構成する。 -/
 lemma exists_verdierCosliceFractionNormalization {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}

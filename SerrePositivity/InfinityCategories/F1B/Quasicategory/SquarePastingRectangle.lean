@@ -26,10 +26,10 @@ open SerrePositivity.KST.LocalizingInvariants
 structure SquarePastingRectangle {X : SSet.{u}}
     (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b t : (Δ[2] : SSet.{u}) ⟶ X) where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X
-  left_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram 2 = L
-  right_eq : pastingSquare _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram 0 = R
-  bottom_eq : pastingBottomTriangle _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram = b
-  top_eq : pastingTopTriangle _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram = t
+  left_eq : pastingSquare diagram 2 = L
+  right_eq : pastingSquare diagram 0 = R
+  bottom_eq : pastingBottomTriangle diagram = b
+  top_eq : pastingTopTriangle diagram = t
 
 lemma nonempty_squarePastingRectangle {X : SSet.{u}} [Quasicategory X]
     (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)

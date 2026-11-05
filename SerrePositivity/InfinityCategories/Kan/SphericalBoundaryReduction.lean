@@ -39,7 +39,7 @@ structure SphericalBoundary {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   方針：全ての面について等式を要求する。
   規約：添字は零から n + 3。
   使われ方：Goerss–Jardine I §7。ホーンの互換性。 -/
-  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map = (a j).map
+  face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = (a j).map
 
 namespace SphericalBoundaryReduction
 open SerrePositivity.KST.Spectra.SphericalBoundaryReduction
@@ -153,8 +153,8 @@ noncomputable def reduce [KanComplex X]
     (hb : PtSimplex.MulStruct b ia (a p.succ.succ) p) (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (hlower : ∀ j, j.val < p.val → a j = .const) :
     _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced a p b) where
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := stdSimplex.δ p.castSucc.succ.succ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible hi hb T hlower).liftOfKanComplex
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq j := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face hi hb T _
+  map := stdSimplex.δ p.castSucc.succ.succ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible hi hb T hlower).liftOfKanComplex
+  face_eq j := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face hi hb T _
     (fun k hk ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible hi hb T hlower).δ_liftOfKanComplex k hk) j
 
 end SphericalBoundaryReduction

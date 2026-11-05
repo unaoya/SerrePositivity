@@ -17,11 +17,11 @@ def necklaceInSimplexSubset {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.c
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
       (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
       (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := necklaceBead.{u} (I.card - 1)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
+  necklace := necklaceBead.{u} (I.card - 1)
+  map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap I hI
+  map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
     (simplexBeadFirstVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_first I hI)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
+  map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap.{u} I hI).app _)
     (simplexBeadLastVertex_eq_standard _)).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_last I hI)
 
 /-- 元の部分集合 bead の augmentation は全高次単体で単射。 -/

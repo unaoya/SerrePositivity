@@ -20,11 +20,11 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 def dgOdotMilnorNuNullPerfectSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := dgOdotMilnorNuNullPerfectBoundaryComponent R d h squareBottomEdge
+  inclusion := dgOdotMilnorNuNullPerfectBoundaryComponent R d h squareBottomEdge
     (dgOdotMilnorNuInclusionDiagramComparison R d h)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := dgOdotMilnorNuNullPerfectBoundaryComponent R d h squareRightEdge
+  quotient := dgOdotMilnorNuNullPerfectBoundaryComponent R d h squareRightEdge
     (dgOdotMilnorNuProjectionDiagramComparison R d h)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorNuNullPerfectBoundaryComponent R d h _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
+  zero := dgOdotMilnorNuNullPerfectBoundaryComponent R d h _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
     (dgOdotMilnorNuNullRawSquareZeroBoundary R d h)
 /-- 概要：元実核面と元絶対核提示の Cat^perf 全比較は同じ元指定三境界を保持する。
 方針：元全比較の完備包含からの回収と元三境界の厳密制限を接続する。
@@ -33,14 +33,14 @@ def dgOdotMilnorNuNullPerfectSquareDiagramIso : _root_.SerrePositivity.InfinityC
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square
     (dgOdotMilnorNuNullPerfectSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := dgOdotMilnorNuNullPerfectSquareComparison R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h squareBottomEdge
+  comparison := dgOdotMilnorNuNullPerfectSquareComparison R d h
+  inclusion_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h squareBottomEdge
     (dgOdotMilnorNuInclusionDiagramComparison R d h)
     (dgOdotMilnorNuNullSquareComparison_inclusion R d h)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h squareRightEdge
+  quotient_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h squareRightEdge
     (dgOdotMilnorNuProjectionDiagramComparison R d h)
     (dgOdotMilnorNuNullSquareComparison_projection R d h)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
+  zero_eq := dgOdotMilnorNuNullPerfectBoundaryComponent_eq_precomp R d h _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
     (dgOdotMilnorNuNullRawSquareZeroBoundary R d h)
     (dgOdotMilnorNuNullSquareComparison_zero R d h)
 /-- 概要：絶対完備化付き核提示から元実 ν 核面へ向かう同じ Cat^perf 三境界。
@@ -49,9 +49,9 @@ def dgOdotMilnorNuNullPerfectSquareDiagramIso : _root_.SerrePositivity.InfinityC
 def dgOdotMilnorNuAbsolutePerfectSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).inclusion.symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).quotient.symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).zero.symm
+  inclusion := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).inclusion.symm
+  quotient := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).quotient.symm
+  zero := (dgOdotMilnorNuNullPerfectSquareBoundary R d h).zero.symm
 /-- 概要：絶対完備化付き核提示から元実 ν 核面への同じ指定三境界付き全 Cat^perf 比較。
 方針：元両二胞体を保つ全比較と三境界回収を同時に反転する。
 規約：Sp 正本の型・向きと元指定比較。使われ方：元実長方形への核面接続。 -/
@@ -59,11 +59,11 @@ def dgOdotMilnorNuAbsolutePerfectSquareDiagramIso : _root_.SerrePositivity.Infin
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorNuAbsolutePerfectSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (dgOdotMilnorNuNullPerfectSquareComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := (F2.functorIso_precomp_symm _ _).trans
+  comparison := (dgOdotMilnorNuNullPerfectSquareComparison R d h).symm
+  inclusion_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullPerfectSquareDiagramIso R d h).inclusion_eq)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := (F2.functorIso_precomp_symm _ _).trans
+  quotient_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullPerfectSquareDiagramIso R d h).quotient_eq)
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := (F2.functorIso_precomp_symm _ _).trans
+  zero_eq := (F2.functorIso_precomp_symm _ _).trans
     (congrArg Iso.symm (dgOdotMilnorNuNullPerfectSquareDiagramIso R d h).zero_eq)
 end SerrePositivity.KST.SConstruction

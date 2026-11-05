@@ -50,9 +50,9 @@ theorem exists_reverse_boundary_edge {E B : SSet.{u}} (p : E ⟶ B) [Fibration p
     simpa only [NatTrans.comp_app, types_comp_apply, av] using h.trans hc
   have hb : (𝟙 B : B ⟶ B).app _ (p.app _ e) = p.app _ av := hpav.symm
   let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p av (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 B) hb s) :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := T
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hT
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+    { map := T
+      map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hT
+      face_eq j hj := by
         fin_cases j
         · exact h₀.trans ha
         · exact (hj rfl).elim }
@@ -61,9 +61,9 @@ theorem exists_reverse_boundary_edge {E B : SSet.{u}} (p : E ⟶ B) [Fibration p
     simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const] using _root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct (𝟙 B) hb m
   obtain ⟨K, hK, hK₀, hK₁⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_inverse_edge p av L m'
   let R : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e t :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := K
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hK
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+    { map := K
+      map_comp := by simpa only [_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.comp_id] using hK
+      face_eq j hj := by
         fin_cases j
         · exact hK₀.trans h₁
         · exact (hj rfl).elim }

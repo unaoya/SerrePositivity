@@ -32,11 +32,11 @@ structure VerdierRelativeConeRecovery {X Y : SSet.{u}} (q : X ⟶ Y)
     (K S : SSet.{u}) (p : K ⊗ S ⟶ X)
     (H : join (Δ[0] : SSet.{u}) K ⊗ S ⟶ Y) where
   diagram : join (Δ[0] : SSet.{u}) K ⊗ S ⟶ X
-  boundary : (joinInr (Δ[0] : SSet.{u}) K ▷ S) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery.diagram = p
-  comparison : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery.diagram ≫ q) H
-  fixed : ((joinInr (Δ[0] : SSet.{u}) K ▷ S) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery.comparison.h =
+  boundary : (joinInr (Δ[0] : SSet.{u}) K ▷ S) ≫ diagram = p
+  comparison : SSet.Homotopy (diagram ≫ q) H
+  fixed : ((joinInr (Δ[0] : SSet.{u}) K ▷ S) ▷ (Δ[1] : SSet.{u})) ≫ comparison.h =
     fst (K ⊗ S) Δ[1] ≫ (p ≫ q)
-  invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery.comparison x).toTruncated
+  invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge comparison x).toTruncated
 
 def HasVerdierRelativeConeRecovery {X Y : SSet.{u}} (q : X ⟶ Y) (S : SSet.{u}) : Prop :=
   ∀ (K : SSet.{u}) [K.Finite] (p : K ⊗ S ⟶ X)

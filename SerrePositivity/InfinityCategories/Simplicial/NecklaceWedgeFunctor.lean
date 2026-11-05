@@ -35,9 +35,9 @@ lemma necklaceWedgeMap_seam {T T' U U' : _root_.SerrePositivity.InfinityCategori
 /-- 元の全端点保存射を、同じ実押し出し上で連結する。 -/
 def necklaceWedgeMap {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U') :
     _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T U ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T' U' where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := T.down.wedgeDesc U.down (f.map ≫ T'.down.wedgeInl U'.down)
+  map := T.down.wedgeDesc U.down (f.map ≫ T'.down.wedgeInl U'.down)
     (g.map ≫ T'.down.wedgeInr U'.down) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_seam f g)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := by
+  map_first := by
     have e := ConcreteCategory.congr_hom (NatTrans.congr_app
       (T.down.wedgeInl_desc U.down (f.map ≫ T'.down.wedgeInl U'.down)
         (g.map ≫ T'.down.wedgeInr U'.down) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_seam f g)) _) T.down.firstVertex
@@ -47,7 +47,7 @@ def necklaceWedgeMap {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simp
         (T'.down.wedgeInl U'.down).app _ (f.map.app _ T.down.firstVertex) at e
     rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_first, f.map_first, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_first] at e
     exact e
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := by
+  map_last := by
     have e := ConcreteCategory.congr_hom (NatTrans.congr_app
       (T.down.wedgeInr_desc U.down (f.map ≫ T'.down.wedgeInl U'.down)
         (g.map ≫ T'.down.wedgeInr U'.down) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_seam f g)) _) U.down.lastVertex

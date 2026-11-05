@@ -43,9 +43,9 @@ theorem isVerdierSequence_of_adjoint {A T B : _root_.SerrePositivity.InfinityCat
     (hi : IsFullyFaithful i.hom)
     (hk : ∀ x, IsZeroVertex (q.hom.app (Opposite.op ⦋0⦌) x) ↔ x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage i)
     (a : QCatAdjunction q.hom j.hom) [IsIso a.counit] : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := hi
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := hk
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
+  fullyFaithful := hi
+  kernel := hk
+  quotient := by
     rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel i q hk]
     exact _root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization a
 

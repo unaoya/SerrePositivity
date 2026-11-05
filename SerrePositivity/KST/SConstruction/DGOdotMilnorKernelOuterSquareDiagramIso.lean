@@ -22,11 +22,11 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 def dgOdotMilnorKernelOuterSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (dgOdotMilnorOuterSquareBoundary R d h).inclusion ≪≫
+  inclusion := (dgOdotMilnorOuterSquareBoundary R d h).inclusion ≪≫
     (dgOdotMilnorSourceOuterToKernelPerfectComparison R d h).precomp squareBottomEdge
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (dgOdotMilnorOuterSquareBoundary R d h).quotient ≪≫
+  quotient := (dgOdotMilnorOuterSquareBoundary R d h).quotient ≪≫
     (dgOdotMilnorSourceOuterToKernelPerfectComparison R d h).precomp squareRightEdge
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := (dgOdotMilnorOuterSquareBoundary R d h).zero ≪≫
+  zero := (dgOdotMilnorOuterSquareBoundary R d h).zero ≪≫
     (dgOdotMilnorSourceOuterToKernelPerfectComparison R d h).precomp _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
 
 /-- 概要：元 LT 絶対外周から元厚核実零化面への指定三境界付き全比較。
@@ -36,15 +36,15 @@ def dgOdotMilnorKernelOuterSquareDiagramIso : _root_.SerrePositivity.InfinityCat
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorKernelOuterSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (dgOdotMilnorOuterSquareDiagramIso R d h).comparison ≪≫
+  comparison := (dgOdotMilnorOuterSquareDiagramIso R d h).comparison ≪≫
     dgOdotMilnorSourceOuterToKernelPerfectComparison R d h
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := by
+  inclusion_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorOuterSquareDiagramIso R d h).inclusion_eq]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := by
+  quotient_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorOuterSquareDiagramIso R d h).quotient_eq]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := by
+  zero_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorOuterSquareDiagramIso R d h).zero_eq]
     rfl
 end SerrePositivity.KST.SConstruction

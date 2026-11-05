@@ -79,8 +79,8 @@ lemma dgOdotMilnorNuProjectionNullHom_source :
 方針：元の二射の基礎写像を合成する。
 規約：固定 ν の両端点。使われ方：指定商比較の終点。 -/
 def dgOdotMilnorNuProjectionNullTargetComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (B) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (i).hom ≫ (dgOdotMilnorNuPerfectSequence R d h).projection.hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _ (i).isExact
+  hom := (i).hom ≫ (dgOdotMilnorNuPerfectSequence R d h).projection.hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (i).isExact
     (dgOdotMilnorNuPerfectSequence R d h).projection.isExact
 
 /-- 概要：指定商比較の元一端点は同じ完備化後射影との実合成。

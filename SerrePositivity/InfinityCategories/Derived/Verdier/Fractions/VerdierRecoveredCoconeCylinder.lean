@@ -73,56 +73,56 @@ structure VerdierRecoveredCoconeCylinder {A B : _root_.SerrePositivity.InfinityC
       (ihom (Δ[n] : SSet.{u})).obj ((ihom (S ⊗ (Δ[1] : SSet.{u}))).obj B.obj))
     (hQ : IsPullbackSquare Q) where
   single : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj
-  single_projection : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single ≫ pullbackProjection B.obj = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D
+  single_projection : single ≫ pullbackProjection B.obj = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D
     ((joinStdSimplexIso 0 0).inv ≫ d.val.val) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorDiagram_target i _ d)
-  single_terminal : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
+  single_terminal : single.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
     terminalPullbackColumnVertex ((joinStdSimplexIso 0 0).inv ≫ d.val.val)
   whole : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj B.obj
-  whole_prefix : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
-    SSet.const (functorVertex (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι ≫
+  whole_prefix : whole ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
+    SSet.const (functorVertex (single ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι ≫
       evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (0 : Fin 2)),
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))))
-  whole_next : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
+  whole_next : whole ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
     _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z
       (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) d) ≫
         (pre (joinStdSimplexIso 0 0).hom).app B.obj
-  whole_apex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
+  whole_apex : whole ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z
   endSquare : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj ((ihom S).obj B.obj)
-  endSquare_pullback : IsPullbackSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare
-  endSquare_original : squareVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare 0 1 =
+  endSquare_pullback : IsPullbackSquare endSquare
+  endSquare_original : squareVertex endSquare 0 1 =
     functorVertex (D ≫ constantFunctorMap S B.obj)
   endSquare_denominators : ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : S _⦋0⦌),
-    (squareLeftArrow (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
+    (squareLeftArrow (endSquare ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
       _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   endCone : S ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj B.obj
-  end_prefix : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endCone ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare_pullback)
-  end_next : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endCone ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
+  end_prefix : endCone ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily (parametricPullbackDiagramFamily endSquare endSquare_pullback)
+  end_next : endCone ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
     _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z a ≫
       (pre (joinStdSimplexIso 0 0).hom).app B.obj
-  end_apex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endCone ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
+  end_apex : endCone ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z
   pullbacks : S ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams B.obj)
-  pullbacks_start : (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks =
-    SSet.const (functorVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single)
-  pullbacks_end : (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks =
-    parametricPullbackDiagramFamily _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare_pullback
-  pullbacks_projection : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection B.obj) =
+  pullbacks_start : (SSet.ι₀ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ pullbacks =
+    SSet.const (functorVertex single)
+  pullbacks_end : (SSet.ι₁ : S ⟶ S ⊗ (Δ[1] : SSet.{u})) ≫ pullbacks =
+    parametricPullbackDiagramFamily endSquare endSquare_pullback
+  pullbacks_projection : pullbacks ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection B.obj) =
     parametricPullbackDiagramFamily Q hQ ≫ (ihom (Δ[n] : SSet.{u})).map (pullbackProjection B.obj)
-  pullbacks_terminal : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams B.obj) =
+  pullbacks_terminal : pullbacks ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams B.obj) =
     parametricPullbackDiagramFamily Q hQ ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams B.obj)
-  homotopy : SSet.Homotopy (j ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endCone
-  homotopy_prefix : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks
-  homotopy_next : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
+  homotopy : SSet.Homotopy (j ≫ whole) endCone
+  homotopy_prefix : homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily pullbacks
+  homotopy_next : homotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app B.obj =
     _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow i
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z L.h ≫
       (pre (joinStdSimplexIso 0 0).hom).app B.obj
-  homotopy_apex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy.h ≫ evaluateFunctorAt
+  homotopy_apex : homotopy.h ≫ evaluateFunctorAt
     ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z
 
@@ -197,14 +197,14 @@ lemma exists_verdierRecoveredCoconeCylinder
       intro v
       exact False.elim v.1.property }
   refine ⟨{
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single := F₀, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single_projection := hF₀p, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.single_terminal := hF₀l, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole := W,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole_prefix := hWp.trans (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_prefix K F₀),
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole_next := hWn, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.whole_apex := hWz, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare := R, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare_pullback := hR,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare_original := hRD, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endSquare_denominators := hRW,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.endCone := E, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.end_prefix := hEp, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.end_next := ?_, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.end_apex := hEz,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks := F, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks_start := ?_, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks_end := hf₁,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks_projection := hFp, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.pullbacks_terminal := hFt, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy := H,
-    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy_prefix := hUp, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy_next := hUn, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder.homotopy_apex := hUz }⟩
+    single := F₀, single_projection := hF₀p, single_terminal := hF₀l, whole := W,
+    whole_prefix := hWp.trans (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_prefix K F₀),
+    whole_next := hWn, whole_apex := hWz, endSquare := R, endSquare_pullback := hR,
+    endSquare_original := hRD, endSquare_denominators := hRW,
+    endCone := E, end_prefix := hEp, end_next := ?_, end_apex := hEz,
+    pullbacks := F, pullbacks_start := ?_, pullbacks_end := hf₁,
+    pullbacks_projection := hFp, pullbacks_terminal := hFt, homotopy := H,
+    homotopy_prefix := hUp, homotopy_next := hUn, homotopy_apex := hUz }⟩
   · rw [hEn, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRecoveredBoundaryNumerator_end]
   · rw [hf₀]
     dsimp only [FS]

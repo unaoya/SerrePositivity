@@ -90,11 +90,11 @@ theorem fiberMap_point (e : E _⦋0⦌) :
 def mappedLift (e : E _⦋0⦌) {n : ℕ} {s : B.PtSimplex (n + 1) (p.app _ e)}
     (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s) :
     _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p' (f.app _ e) (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex g (_root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eq p p' f g comm e) s) where
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := L.map ≫ f
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by
+  map := L.map ≫ f
+  map_comp := by
     rw [Category.assoc, ← comm, ← Category.assoc, L.map_comp]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by rw [← Category.assoc, L.face_eq j hj, const_comp]
+  face_eq j hj := by rw [← Category.assoc, L.face_eq j hj, const_comp]
 
 /-- 概要：持ち上げの境界を後合成する操作は fiber 間の射と可換。
 方針：標的 fiber の包含で比較し、最後の面と後合成の結合則を使う。

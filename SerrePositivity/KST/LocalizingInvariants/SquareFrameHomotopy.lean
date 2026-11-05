@@ -25,23 +25,23 @@ attribute [local instance] SerrePositivity.InfinityCategories.Stable.Quasicatego
 variable {X : SSet.{u}} {f g : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X} (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy f g)
 
 def pathFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame (equivalencePath X) where
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := homotopyPathFamily H.bottom H.bottom_invertible
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := homotopyPathFamily H.top H.top_invertible
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := homotopyPathFamily H.left H.left_invertible
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := homotopyPathFamily H.right H.right_invertible
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by
+  bottom := homotopyPathFamily H.bottom H.bottom_invertible
+  top := homotopyPathFamily H.top H.top_invertible
+  left := homotopyPathFamily H.left H.left_invertible
+  right := homotopyPathFamily H.right H.right_invertible
+  lower_left := by
     apply (cancel_mono (equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.lower_left
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by
+  lower_right := by
     apply (cancel_mono (equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.lower_right
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by
+  upper_left := by
     apply (cancel_mono (equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.upper_left
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by
+  upper_right := by
     apply (cancel_mono (equivalencePathι X)).1
     simp only [Category.assoc, homotopyPathFamily_inclusion]
     exact ofHomotopy_restriction_eq _ _ _ _ H.upper_right

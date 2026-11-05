@@ -49,8 +49,8 @@ def pathSimplex : (basedPathSpace B).right.PtSimplex (n + 1)
 使われ方：Goerss–Jardine I §8。比較ホーンの一方の入力。 -/
 def pathLift : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (basedPathMap p).right (basedPathSpace E).basepoint
     (pathSimplex p (v := v)) where
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := V.map ≫ (PointedMapping.loopToPath E).right
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by
+  map := V.map ≫ (PointedMapping.loopToPath E).right
+  map_comp := by
     have hn := congrArg Under.Hom.right (loopToPath_natural p)
     simp only [Under.comp_right] at hn
     change (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right ≫
@@ -59,7 +59,7 @@ def pathLift : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (based
     change (V.map ≫ (PointedMapping.loopToPath E).right) ≫ (basedPathMap p).right = _
     rw [Category.assoc, ← hn, ← Category.assoc, V.map_comp]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+  face_eq j hj := by
     rw [← Category.assoc, V.face_eq j hj, const_comp, _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint]
 
 /-- path に含めた loop の充填の終点は全空間の基点で定数。 -/

@@ -19,9 +19,9 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 全対象商の実 Perf nerve を持つ安定圏。 -/
 def dgTotalQuotientPerfectStableCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgModulePerfectInfinityCategory R (DGQuotient.QuotientObject D Set.univ)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgModulePerfectInfinityCategory_isStable R _
+  obj := dgModulePerfectInfinityCategory R (DGQuotient.QuotientObject D Set.univ)
+  isQuasicategory := inferInstance
+  isStable := dgModulePerfectInfinityCategory_isStable R _
 
 /-- 全対象商の実 Perf は零の安定圏。 -/
 theorem dgTotalQuotientPerfect_isZero :

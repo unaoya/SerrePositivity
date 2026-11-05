@@ -36,9 +36,9 @@ theorem connectingHom_penultimate {E B : SSet.{u}} (p : E ⟶ B)
     _root_.SerrePositivity.InfinityCategories.Kan.connectingHom p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a)⁻¹ := by
   let b (j : Fin (n + 3)) := if j.val = n + 1 then a else RelativeMorphism.const
   let L : _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift p e s b :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map := T
-      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.map_comp := hT
-      _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.face_eq j := by
+    { map := T
+      map_comp := hT
+      face_eq j := by
         rw [hface]
         dsimp only [b]
         split_ifs <;> simp only [RelativeMorphism.const_map, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point] }

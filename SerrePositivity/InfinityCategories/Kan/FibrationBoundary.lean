@@ -132,13 +132,13 @@ structure BoundaryLift (p : E ⟶ B) (e : E _⦋0⦌) {n : ℕ}
   方針：相対充填の可換条件を記録する。
   規約：厳密な等式。
   使われ方：Kerodon §3.2.5。 -/
-  map_comp : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map ≫ p = s.map
+  map_comp : map ≫ p = s.map
   /-- 概要：最後の面以外は e に定数。
   方針：充填のホーン境界を記録する。
   規約：最後の面の条件は課さない。
   使われ方：Kerodon §3.2.5。 -/
   face_eq (j : Fin (n + 2)) (_ : j ≠ Fin.last (n + 1)) :
-    stdSimplex.δ j ≫ _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map = SSet.const e
+    stdSimplex.δ j ≫ map = SSet.const e
 
 /-- 概要：Kan fibration では、底の全ての境界定数単体に BoundaryLift がある。
 方針：全ての既知の面が e に定数のホーンを p に沿って持ち上げる。
@@ -385,11 +385,11 @@ theorem transport [Fibration p] (L : _root_.SerrePositivity.InfinityCategories.K
       rw [ite_eq_right hj₀, const_comp, r.δ_map_of_lt j hlt]
   obtain ⟨φ, hφ, hp⟩ := hα.exists_lift p r.map hcomm
   let L' : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e t :=
-    { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := stdSimplex.δ (Fin.last (n + 2)) ≫ φ
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by
+    { map := stdSimplex.δ (Fin.last (n + 2)) ≫ φ
+      map_comp := by
         rw [Category.assoc, hp]
         simpa only [Fin.succ_last] using r.δ_succ_map
-      _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j hj := by
+      face_eq j hj := by
         rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
           hφ _ (Fin.castSucc_ne_last j)]
         dsimp [α]
@@ -438,9 +438,9 @@ open _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift
 使われ方：Kerodon §3.2.5。連結写像の基点保存。 -/
 def constant (p : E ⟶ B) (e : E _⦋0⦌) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e (RelativeMorphism.const : B.PtSimplex (n + 1) (p.app _ e)) where
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := SSet.const e
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := by simp
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq _ _ := by simp
+  map := SSet.const e
+  map_comp := by simp
+  face_eq _ _ := by simp
 
 /-- 概要：定数持ち上げの境界は fiber の定数単体。
 方針：全空間への包含で比較し、基点の像を計算する。
@@ -493,9 +493,9 @@ def nullRel (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e 
 使われ方：Kerodon Theorem 3.2.6.1。底の位置での複体条件。 -/
 def ofPointed (p : E ⟶ B) (e : E _⦋0⦌) {n : ℕ} (s : E.PtSimplex (n + 1) e) :
     _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p rfl s) where
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := s.map
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := rfl
-  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq j _ := s.δ_map j
+  map := s.map
+  map_comp := rfl
+  face_eq j _ := s.δ_map j
 
 /-- 概要：全空間の境界定数単体から作った持ち上げの境界は fiber で定数。
 方針：最後の面も基点に定数であることを使う。

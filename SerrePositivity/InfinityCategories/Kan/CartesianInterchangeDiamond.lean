@@ -42,9 +42,9 @@ def cartesianInterchangeSecondUpper (e : K.Edge x₀ x₁)
 def cartesianInterchangeDiamond : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond
     (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower e f p) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper e f p)
     (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower e f p) (_root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper e f p) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f).map p
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle e f).map p
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle e f).map p
+  diagonal := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair e f).map p
+  first := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle e f).map p
+  second := (_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle e f).map p
 
 /-- 第一全二単体は、元の二辺の同じ退化三角形の積の像そのもの。 -/
 lemma cartesianInterchangeDiamond_first :

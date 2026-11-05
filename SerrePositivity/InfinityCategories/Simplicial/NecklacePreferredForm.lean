@@ -19,7 +19,7 @@ open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 /-- 標準 bead の有限列を、元の有限 joints の反復 wedge として読む。 -/
 def ofBeads : List ℕ → _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
   | [] => _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0
-  | n :: ns => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedge (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns)
+  | n :: ns => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedge (ofBeads ns)
 
 /-- 空の bead 列は元の一点。 -/
 lemma ofBeads_nil : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads [] = _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0 := rfl

@@ -64,9 +64,9 @@ def dgOdotMilnorResolvedPerfectValueEquivalence : QCatEquivalence
 規約：完備化の存在を追加仮定にしない。使われ方：Cat^perf Milnor 列の c。 -/
 def dgOdotMilnorCompletion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeResolvedQuotient R d)
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorResolvedLiftEquivalence R d).hom ≫
+  hom := (dgOdotMilnorResolvedLiftEquivalence R d).hom ≫
     (dgPerfectYonedaInfinity R (Q) ≫ (dgOdotMilnorResolvedPerfectValueEquivalence R d).hom)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  isExact := by
     letI := isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorResolvedLiftEquivalence R d).isQCatEquivalence
     letI := dgPerfectYonedaInfinity_isExactFunctor R (Q)

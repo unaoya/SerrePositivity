@@ -17,13 +17,13 @@ open CategoryTheory Simplicial SSet
 def necklaceSimplexSubsetImageFactor {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
     (I : Finset (Fin (M + 1))) (hI : 2 ≤ I.card) (hJ : 2 ≤ (I.image α).card) :
     necklaceBead.{u} (I.card - 1) ⟶ necklaceBead ((I.image α).card - 1) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+  map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
     simplexSubsetImageFactorMap α I hI hJ ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg ((simplexSubsetImageFactorMap.{u} α I hI hJ ≫
+  map_first := (congrArg ((simplexSubsetImageFactorMap.{u} α I hI hJ ≫
     (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadFirstVertex_eq_standard _)).trans
       ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (simplexSubsetImageFactorMap_first α I hI hJ)).trans (simplexBeadIso_inv_first _))
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg ((simplexSubsetImageFactorMap.{u} α I hI hJ ≫
+  map_last := (congrArg ((simplexSubsetImageFactorMap.{u} α I hI hJ ≫
     (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadLastVertex_eq_standard _)).trans
       ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (simplexSubsetImageFactorMap_last α I hI hJ)).trans (simplexBeadIso_inv_last _))
@@ -54,7 +54,7 @@ def necklaceInSimplexSubsetImageFactor {M N : ℕ} (α : Fin (M + 1) →o Fin (N
       (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex.{u} a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).obj
         (necklaceInSimplexSubsetAt I a b hI ha hb) ⟶
       necklaceInSimplexSubsetAt (I.image α) (α a) (α b) hJ haJ hbJ where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := necklaceSimplexSubsetImageFactor α I hI hJ
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := necklaceSimplexSubsetImageFactor_triangle α I hI hJ
+  necklaceHom := necklaceSimplexSubsetImageFactor α I hI hJ
+  w := necklaceSimplexSubsetImageFactor_triangle α I hI hJ
 
 end SerrePositivity.KST.SConstruction

@@ -69,7 +69,7 @@ lemma mk_twist (a x : ∀ n, G n) : _root_.SerrePositivity.InfinityCategories.Ka
 /-- 全射な遷移の下で、指定した族を単位軌道へ送る作用の族を逐次選ぶ。 -/
 def nullifier (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) : ∀ n, G n
   | 0 => 1
-  | n + 1 => Classical.choose (hq n (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier hq x n * x n))
+  | n + 1 => Classical.choose (hq n (nullifier hq x n * x n))
 
 /-- 選んだ次段の作用の射影は、前段の方程式を満たす。 -/
 lemma nullifier_projection (hq : ∀ n, Function.Surjective (q n)) (x : ∀ n, G n) (n : ℕ) :

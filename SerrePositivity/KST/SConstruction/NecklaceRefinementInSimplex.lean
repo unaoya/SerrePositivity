@@ -17,17 +17,17 @@ open CategoryTheory Simplicial SSet
 def necklaceInStandardSimplex (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[T.down.vertexMax] : SSet.{u}) (simplexBeadFirstVertex T.down.vertexMax)
       (simplexBeadLastVertex T.down.vertexMax) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := T
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := T.down.inclusion
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := rfl
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := rfl
+  necklace := T
+  map := T.down.inclusion
+  map_first := rfl
+  map_last := rfl
 
 /-- 元の一 bead への refinement は、同じ標準単体内の元の可換三角形。 -/
 def necklaceInBeadRefinement (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
     necklaceInStandardSimplex T ⟶
       _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso (necklaceBead T.down.vertexMax) (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := necklaceBeadRefinement T
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := necklaceBeadRefinement_triangle T
+  necklaceHom := necklaceBeadRefinement T
+  w := necklaceBeadRefinement_triangle T
 
 /-- 元の実 refinement の可換三角形は、元の同じ cubical 生成射の表示関係を回収する。 -/
 lemma necklaceInBeadRefinement_cell (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :

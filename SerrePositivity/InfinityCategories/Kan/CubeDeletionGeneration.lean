@@ -16,12 +16,12 @@ open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が、座標削除だけから生成される条件。 -/
 inductive CubeDeletionGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) → Prop
-  | id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
+  | id (n : ℕ) : CubeDeletionGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
   | degeneracy (n : ℕ) (i : Fin (n + 1)) :
-      _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i)
+      CubeDeletionGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i)
   | comp {n m k : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
-      (hf : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated g) :
-      _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionGenerated (g ∘ f)
+      (hf : CubeDeletionGenerated f) (hg : CubeDeletionGenerated g) :
+      CubeDeletionGenerated (g ∘ f)
 
 /-- 削除だけで生成された元の関数は、元の具体的立方体圏の射。 -/
 lemma cubeDeletionGenerated_generated {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

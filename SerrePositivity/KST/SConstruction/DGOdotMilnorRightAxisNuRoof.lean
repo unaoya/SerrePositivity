@@ -20,9 +20,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 def dgOdotMilnorRightAxisNuRoof : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotMilnorRightAxisInput R d)) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
+  hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
     (dgOdotMilnorRightAxisExactMap R d).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  isExact := by
     letI : IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
       isExactFunctor_of_isQCatEquivalence
         (dgOdotMilnorAugmentationNuEquivalence R d).symm.isQCatEquivalence

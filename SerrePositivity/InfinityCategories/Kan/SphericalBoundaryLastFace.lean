@@ -134,8 +134,8 @@ theorem output_face (T : _root_.SerrePositivity.InfinityCategories.Kan.Spherical
 noncomputable def replace [KanComplex X] (T : _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary a)
     (r : PtSimplex.RelStruct (a (Fin.last (n + 3))) b (Fin.last (n + 2))) :
     _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (Function.update a (Fin.last (n + 3)) b) where
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible T r).liftOfKanComplex
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq j := by
+  map := stdSimplex.δ (Fin.last (n + 3)).castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible T r).liftOfKanComplex
+  face_eq j := by
     rw [_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.output_face T r _ (fun k hk ↦ (_root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible T r).δ_liftOfKanComplex k hk)]
     by_cases hj : j = Fin.last (n + 3) <;> simp [hj]
 

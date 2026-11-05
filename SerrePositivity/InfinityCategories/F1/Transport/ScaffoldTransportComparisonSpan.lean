@@ -21,11 +21,11 @@ open SerrePositivity.KST.Fibration
 structure ScaffoldTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) [LeftFibration p] extends _root_.SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan p where
   embedding : simplicialReplacement (leftStrictTransportDiagram p) ⟶ total
-  innerAnodyne : innerAnodyneExtensions _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding
-  embedding_over : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding ≫ projection =
+  innerAnodyne : innerAnodyneExtensions embedding
+  embedding_over : embedding ≫ projection =
     simplicialReplacementProjection (leftStrictTransportDiagram p)
-  source_restriction : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding ≫ source = universalScaffold p
-  weighted_restriction : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding ≫ weighted = tautScaffold (leftStrictTransportDiagram p)
+  source_restriction : embedding ≫ source = universalScaffold p
+  weighted_restriction : embedding ≫ weighted = tautScaffold (leftStrictTransportDiagram p)
 
 /-- 一般の共通 inner 置換から、元の scaffold の制限も捨てずに受け取る。 -/
 theorem nonempty_scaffoldTransportComparisonSpan {I : Type u} [Category.{u} I]
@@ -39,12 +39,12 @@ theorem nonempty_scaffoldTransportComparisonSpan {I : Type u} [Category.{u} I]
       (universalScaffold_projection p) (tautScaffold_projection (leftStrictTransportDiagram p))
       (universalScaffold_isPrecompositionEquivalence p)
       (tautScaffold_isPrecompositionEquivalence (leftStrictTransportDiagram p))
-  exact ⟨{ _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.toStrictTransportComparisonSpan := ⟨Z, t, a, b, ht, ha, hb, ea, eb⟩
-           _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding := i
-           _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.innerAnodyne := hi
-           _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.embedding_over := hit
-           _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.source_restriction := hia
-           _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan.weighted_restriction := hib }⟩
+  exact ⟨{ toStrictTransportComparisonSpan := ⟨Z, t, a, b, ht, ha, hb, ea, eb⟩
+           embedding := i
+           innerAnodyne := hi
+           embedding_over := hit
+           source_restriction := hia
+           weighted_restriction := hib }⟩
 
 /-- 元の scaffold の対応も含むデータ全体を一度に選ぶ。 -/
 def scaffoldTransportComparisonSpan {I : Type u} [Category.{u} I] {E : SSet.{u}}

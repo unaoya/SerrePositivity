@@ -24,9 +24,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 def dgOdotMilnorOuterSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (dgOdotMilnorOuterBottomComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (dgOdotMilnorOuterRightComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorOuterZeroBoundary R d h
+  inclusion := (dgOdotMilnorOuterBottomComparison R d h).symm
+  quotient := (dgOdotMilnorOuterRightComparison R d h).symm
+  zero := dgOdotMilnorOuterZeroBoundary R d h
 
 /-- 概要：元 LT 絶対外周の実始域外面への全比較は指定三境界を厳密に保持する。
 方針：元全比較の逆と包含・商の回収、零終点の一意性で指定零角を照合する。
@@ -36,16 +36,16 @@ def dgOdotMilnorOuterSquareDiagramIso : _root_.SerrePositivity.InfinityCategorie
     (dgOdotMilnorActualOuterDiagram R d h).square
     (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R)
     (dgOdotMilnorOuterSquareBoundary R d h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (dgOdotMilnorOuterPerfectSquareComparison R d h).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := by
+  comparison := (dgOdotMilnorOuterPerfectSquareComparison R d h).symm
+  inclusion_eq := by
     exact (F2.functorIso_precomp_symm
       (dgOdotMilnorOuterPerfectSquareComparison R d h) squareBottomEdge).trans
       (congrArg Iso.symm (dgOdotMilnorOuterPerfectSquareComparison_bottom R d h))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := by
+  quotient_eq := by
     exact (F2.functorIso_precomp_symm
       (dgOdotMilnorOuterPerfectSquareComparison R d h) squareRightEdge).trans
       (congrArg Iso.symm (dgOdotMilnorOuterPerfectSquareComparison_right R d h))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := by
+  zero_eq := by
     apply perfectZeroPointFunctorIso_ext
     change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
       (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) 0 1))

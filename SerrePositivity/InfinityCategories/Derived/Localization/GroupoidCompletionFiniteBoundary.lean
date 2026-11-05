@@ -56,8 +56,8 @@ lemma completedBoundaryCylinderMap_prism :
 /-- 有限な元の境界円柱全体を、一つの元の有限部分複体の完成へ移したデータ。 -/
 structure GroupoidCompletionFiniteBoundary where
   support : FiniteSubcomplex X
-  whole : finiteMappingCylinder j ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.support.val
-  comparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.whole ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.support.val.ι)
+  whole : finiteMappingCylinder j ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion support.val
+  comparison : FunctorIso (whole ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf support.val.ι)
     (_root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H)
 
 /-- 任意の有限境界・全族・境界比較を、同じ一つの有限台と全同型で同時に回収する。 -/

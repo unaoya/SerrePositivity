@@ -16,11 +16,11 @@ open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 両端を一つの joint で貼った、元の有限 necklace の形。 -/
 def wedge (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexMax := T.vertexMax + U.vertexMax
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.joints := T.joints ∪ U.joints.image (fun j => T.vertexMax + j)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.zero_mem := Finset.mem_union_left _ T.zero_mem
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.last_mem := Finset.mem_union_right _ (Finset.mem_image.mpr ⟨_, U.last_mem, rfl⟩)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mem_le j hj := by
+  vertexMax := T.vertexMax + U.vertexMax
+  joints := T.joints ∪ U.joints.image (fun j => T.vertexMax + j)
+  zero_mem := Finset.mem_union_left _ T.zero_mem
+  last_mem := Finset.mem_union_right _ (Finset.mem_image.mpr ⟨_, U.last_mem, rfl⟩)
+  mem_le j hj := by
     rcases Finset.mem_union.mp hj with hj | hj
     · have := T.mem_le j hj; omega
     · obtain ⟨k, hk, rfl⟩ := Finset.mem_image.mp hj

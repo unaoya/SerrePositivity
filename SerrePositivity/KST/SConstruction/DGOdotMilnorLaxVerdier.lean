@@ -28,8 +28,8 @@ local notation "E" => dgOdotMilnorNativeLaxEquivalence R d
 使われ方：Tamme と Milnor 列の左射。 -/
 def dgOdotMilnorLaxInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeDiagonalSource R d)
     (dgOdotMilnorLaxCategory R d) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgGluingMilnorNativeDiagonal R d).hom ≫ (E).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  hom := (dgGluingMilnorNativeDiagonal R d).hom ≫ (E).hom
+  isExact := by
     letI : IsExactFunctor (E).hom := (dgOdotMilnorNativeLaxComparison R d).isExact
     letI := (dgGluingMilnorNativeDiagonal R d).isExact
     exact isExactFunctor_comp _ _
@@ -39,8 +39,8 @@ def dgOdotMilnorLaxInclusion : _root_.SerrePositivity.InfinityCategories.Stable.
 使われ方：Tamme と Milnor 列の右射。 -/
 def dgOdotMilnorLaxProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorLaxCategory R d)
     (dgGluingMilnorNativeResolvedQuotient R d) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (E).inv ≫ (dgGluingMilnorResolvedProjection R d).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
+  hom := (E).inv ≫ (dgGluingMilnorResolvedProjection R d).hom
+  isExact := by
     letI : IsExactFunctor (E).inv := isExactFunctor_of_isQCatEquivalence (E).symm.isQCatEquivalence
     letI := (dgGluingMilnorResolvedProjection R d).isExact
     exact isExactFunctor_comp _ _

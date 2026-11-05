@@ -19,13 +19,13 @@ variable {n : ℕ} (I J : Finset (Fin (n + 1)))
 /-- 元の同じ両端を持つ部分集合の包含が定める、元の全単体的 necklace 射。 -/
 def necklaceSimplexSubsetInclusion : necklaceBead.{u} (I.card - 1) ⟶
     necklaceBead (J.card - 1) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
+  map := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).hom ≫
     _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap I J hI hJ hIJ ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
+  map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
     (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadFirstVertex_eq_standard _)).trans
       ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_first I J hI hJ hIJ hmin)).trans (simplexBeadIso_inv_first _))
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
+  map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap.{u} I J hI hJ hIJ ≫
     (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv).app _) (simplexBeadLastVertex_eq_standard _)).trans
       ((congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
         (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_last I J hI hJ hIJ hmax)).trans (simplexBeadIso_inv_last _))

@@ -45,8 +45,8 @@ lemma closedKernelFlag_all {B : StableModel.{u}} (P : ClosedStablePredicate B)
 規約：底の射は元の包含。使われ方：全図式の後合成。 -/
 def closedKernelInclusion {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (flagAmbient (closedStableModel P)) (flagAmbient B) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (closedStableInclusion P).val
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := (closedStableInclusion P).property.isExactFunctor
+  hom := (closedStableInclusion P).val
+  isExact := (closedStableInclusion P).property.isExactFunctor
 
 /-- 概要：P 内の全ての辺は B の元の W 辺へ写る。
 方針：P 内の実 cofiber を完全包含で写す。

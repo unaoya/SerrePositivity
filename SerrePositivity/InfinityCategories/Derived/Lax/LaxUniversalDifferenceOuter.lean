@@ -67,14 +67,14 @@ def outerDiagram : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.Ver
       (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory A)).tgt_eq] at ht
     exact ht.symm
   exact {
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.toVerdierSequence := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.square := S
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.left_eq := ha
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.middle_eq := hp
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_eq := hq
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.bottom_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom p q i r h
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.right_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_right p q i r h
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
+    toVerdierSequence := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h
+    square := S
+    left_eq := ha
+    middle_eq := hp
+    right_eq := hq
+    bottom_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom p q i r h
+    right_edge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_right p q i r h
+    zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
 

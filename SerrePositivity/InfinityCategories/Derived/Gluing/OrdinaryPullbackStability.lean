@@ -58,10 +58,10 @@ lemma dgGluingPullbackUniverseInclusion_isExactFunctor :
     Category.comp_id] at hi
   exact isExactFunctor_of_functorIso hi
 def dgGluingPullbackStableObject : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := (SSet.uliftFunctor.{max (u + 1) v w, max u v w}).obj
+  obj := (SSet.uliftFunctor.{max (u + 1) v w, max u v w}).obj
     (dgNerve R (DGGluingPullbackObject R C D M))
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgGluingPullbackUniverseNerve_isStable R C D M hC hD
+  isQuasicategory := inferInstance
+  isStable := dgGluingPullbackUniverseNerve_isStable R C D M hC hD
 def dgGluingPullbackStableInclusion :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackStableObject R C D M hC hD)
       (dgGluingStableObject R C D M hC hD) :=

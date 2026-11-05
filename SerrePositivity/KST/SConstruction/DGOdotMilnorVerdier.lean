@@ -38,12 +38,12 @@ lemma dgOdotMilnorDiagonal_fullyFaithful (h : DGGluingMilnorSquare R d) :
 方針：D2 の Milnor 列をそのまま束ねる。規約：旧未分解商へ戻さない。
 使われ方：具体的 thick 核と局所化を備えた d③ の入力。 -/
 def dgOdotMilnorNativeSequence (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgGluingMilnorNativeDiagonalSource R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgGluingMilnorNativeMiddle R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgGluingMilnorNativeDiagonal R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgGluingMilnorResolvedProjection R d
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := dgGluingMilnor_isResolvedVerdierSequence_of_milnor R d h
+  left := dgGluingMilnorNativeDiagonalSource R d
+  middle := dgGluingMilnorNativeMiddle R d
+  right := dgGluingMilnorNativeResolvedQuotient R d
+  inclusion := dgGluingMilnorNativeDiagonal R d
+  projection := dgGluingMilnorResolvedProjection R d
+  isVerdier := dgGluingMilnor_isResolvedVerdierSequence_of_milnor R d h
 
 /-- 概要：resolved 射影の零対象核は元対角の本質像そのもの。
 方針：D-16 の retract を含む thick 核を使った D2 の列条件を回収する。

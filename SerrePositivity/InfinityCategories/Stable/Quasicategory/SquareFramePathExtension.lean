@@ -56,8 +56,8 @@ variable {X : SSet.{u}} [Quasicategory X] (f : _root_.SerrePositivity.InfinityCa
 
 structure PathExtension where
   family : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ equivalencePath X
-  source : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family ≫ equivalencePathEndpoint X 0 = Q
-  boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family = f.diagram
+  source : family ≫ equivalencePathEndpoint X 0 = Q
+  boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ family = f.diagram
 
 include hf in
 lemma pathExtension_nonempty : Nonempty (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension f Q) := by

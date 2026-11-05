@@ -21,7 +21,7 @@ theorem dgGluingMilnor_isResolvedVerdierSequence
     (h : DGGluingMilnorSquare R d) (hgen : DGGluingMilnorSmallPerfectGeneration R d) :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgGluingMilnorNativeDiagonal R d)
       (dgGluingMilnorResolvedProjection R d) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := dgGluingMilnorSmallPerfectDiagonal_isFullyFaithful R d h hgen
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := dgGluingMilnorResolvedQuotient_zero_iff R d h hgen
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := dgGluingMilnorResolvedQuotient_isLocalization R d h hgen
+  fullyFaithful := dgGluingMilnorSmallPerfectDiagonal_isFullyFaithful R d h hgen
+  kernel := dgGluingMilnorResolvedQuotient_zero_iff R d h hgen
+  quotient := dgGluingMilnorResolvedQuotient_isLocalization R d h hgen
 end SerrePositivity.InfinityCategories

@@ -55,8 +55,8 @@ theorem simplexValue_degeneracy (s : K _⦋n + 1⦌) (i : Fin (n + 2)) :
 使われ方：Goerss–Jardine I §7、VIII §1。交代 cocycle 関係。 -/
 def boundary (s : K _⦋n + 3⦌) :
     _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue f h (K.δ j s)) where
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map := yonedaEquiv.symm s ≫ f
-  _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq j := by
+  map := yonedaEquiv.symm s ≫ f
+  face_eq j := by
     rw [← Category.assoc, stdSimplex.δ_comp_yonedaEquiv_symm]
     rfl
 

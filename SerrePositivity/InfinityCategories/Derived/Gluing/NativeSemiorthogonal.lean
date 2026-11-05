@@ -100,17 +100,17 @@ def dgGluingNativeSemiorthogonal :
   let : IsExactFunctor e.hom :=
     dgGluingUniverseDerivedNerveLaxComparison_isExactFunctor R C D M
   refine {
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion := dgGluingNativeDInclusion R C D M hC hD hY hM
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion := dgGluingNativeCInclusion R C D M hC hD hY hM
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.retraction := ⟨e.hom ≫ s.retraction.hom, inferInstance⟩
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.projection := ⟨e.hom ≫ s.projection.hom, inferInstance⟩
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.leftAdjunction := s.leftAdjunction.comp e.symm.toAdjunction
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightAdjunction := e.toAdjunction.comp s.rightAdjunction
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.inclusion_fullyFaithful := dgGluingNativeDInclusion_isFullyFaithful R C D M hC hD hY hM
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.rightInclusion_fullyFaithful := dgGluingNativeCInclusion_isFullyFaithful R C D M hC hD hY hM
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.counit_isIso := ?_
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.kills_inclusion := ?_
-    _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition.generates_kernel := ?_ }
+    inclusion := dgGluingNativeDInclusion R C D M hC hD hY hM
+    rightInclusion := dgGluingNativeCInclusion R C D M hC hD hY hM
+    retraction := ⟨e.hom ≫ s.retraction.hom, inferInstance⟩
+    projection := ⟨e.hom ≫ s.projection.hom, inferInstance⟩
+    leftAdjunction := s.leftAdjunction.comp e.symm.toAdjunction
+    rightAdjunction := e.toAdjunction.comp s.rightAdjunction
+    inclusion_fullyFaithful := dgGluingNativeDInclusion_isFullyFaithful R C D M hC hD hY hM
+    rightInclusion_fullyFaithful := dgGluingNativeCInclusion_isFullyFaithful R C D M hC hD hY hM
+    counit_isIso := ?_
+    kills_inclusion := ?_
+    generates_kernel := ?_ }
   · have : IsIso e.toAdjunction.counit := by
       change IsIso e.adjointEquivalence.counit.hom
       infer_instance

@@ -20,8 +20,8 @@ def necklaceInWedgePostcomposeHom {K L : SSet.{u}} (a : K ⟶ L)
     (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x z).obj (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) ⟶
       _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T)
         ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a y z).obj U) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := 𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := (Category.id_comp _).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_map a T U)
+  necklaceHom := 𝟙 (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge T.necklace U.necklace)
+  w := (Category.id_comp _).trans (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_map a T U)
 
 /-- 元の生成射上で、入力の写像は同じ wedge 合成を保つ。 -/
 lemma necklaceCubicalComposeCell_naturality {K L : SSet.{u}} (a : K ⟶ L)

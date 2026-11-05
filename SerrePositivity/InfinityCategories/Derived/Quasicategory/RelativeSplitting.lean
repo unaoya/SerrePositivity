@@ -33,7 +33,7 @@ open SerrePositivity.KST.LocalizingInvariants
 structure RelativeSplitVerdierDiagram {S : SSet.{u + 1}} [Quasicategory S]
     (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) extends _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν where
   sectionHom : squareHoVertex square 1 1 ⟶ squareHoVertex square 1 0
-  section_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.sectionHom ≫ squareHoRight square = 𝟙 _
+  section_eq : sectionHom ≫ squareHoRight square = 𝟙 _
 
 namespace IsRelativeLocalizingInvariant
 open SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant

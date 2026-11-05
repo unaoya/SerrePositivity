@@ -30,7 +30,7 @@ variable (F : ℕᵒᵖ ⥤ Type u) [∀ j, Nonempty (F.obj j)] (hF : F.IsMittag
 def eventualSection : ∀ n, F.toEventualRanges.obj (op n)
   | 0 => Classical.choice (F.toEventualRanges_nonempty hF (op 0))
   | n + 1 => Classical.choose (F.surjective_toEventualRanges hF
-      (homOfLE (Nat.le_succ n)).op (_root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection n))
+      (homOfLE (Nat.le_succ n)).op (eventualSection n))
 
 /-- 選んだ次段の像は前段そのもの。 -/
 lemma eventualSection_comp (n : ℕ) :

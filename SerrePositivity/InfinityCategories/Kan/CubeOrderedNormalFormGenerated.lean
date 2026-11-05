@@ -21,12 +21,12 @@ theorem cubeOrderedNormalFormCompressedPartition {n m : ℕ} (s : _root_.SerrePo
     (h : ∀ ⦃j k : Fin m⦄, j < k → ∀ ⦃i l : Fin n⦄,
       i ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s j → l ∈ _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport s k → i < l) :
     _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed s) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.ordered := by
+  ordered := by
     intro j k hjk i l hi hl
     apply (_root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding s).strictMono.lt_iff_lt.mp
     exact h hjk ((_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormRestrict_support s _ i j).mp hi)
       ((_root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormRestrict_support s _ l k).mp hl)
-  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.covers := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_no_unused s
+  covers := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_no_unused s
 
 /-- 任意の順序分離した有限 max 表示を持つ元の具体的な cubical 射。 -/
 def cubeOrderedNormalFormHom {n m : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm n m)

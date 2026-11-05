@@ -37,13 +37,13 @@ structure VerdierQuotientConeRefinement {A B C : _root_.SerrePositivity.Infinity
     {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {K : SSet.{u}} (p : K ⟶ B.obj) (x : B.obj _⦋0⦌) (t : JoinCone (p ≫ q.hom)) where
   cone : JoinCone p
-  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone.vertex x
-  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
+  denominator : Truncated.Edge (X := (truncation 2).obj B.obj) cone.vertex x
+  denominator_mem : denominator.edge ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
   comparison : Truncated.Edge (X := (truncation 2).obj (sliceOver (p ≫ q.hom)))
-    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.cone) t
-  comparison_edge : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison.map ((truncation 2).map
-    (sliceOverProjection (p ≫ q.hom)))).edge = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.denominator.map ((truncation 2).map q.hom)).edge
-  isInvertible : IsInvertibleEdge (X := sliceOver (p ≫ q.hom)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement.comparison
+    (mapJoinCone q.hom cone) t
+  comparison_edge : (comparison.map ((truncation 2).map
+    (sliceOverProjection (p ≫ q.hom)))).edge = (denominator.map ((truncation 2).map q.hom)).edge
+  isInvertible : IsInvertibleEdge (X := sliceOver (p ≫ q.hom)) comparison
 
 /-- 元の有限図式上の指定商錐を、一つの元の実分母と同じ全比較辺で回収する。 -/
 lemma exists_verdierQuotientConeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}

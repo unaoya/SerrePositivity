@@ -78,8 +78,8 @@ lemma laxEquivalenceVertex_stable :
   let h := _root_.SerrePositivity.InfinityCategories.Stable.Exact.transformationIsoVertex_stable (laxArrowHomotopy p q)
   let e := laxEquivalenceVertex_iff_transformationIso p q
   exact {
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.zero := fun x hx ↦ (e x).2 (h.zero x hx)
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.cofiber := fun t ht ha hb ↦ (e _).2 (h.cofiber t ht ((e _).1 ha) ((e _).1 hb))
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.fiber := fun t ht hb hc ↦ (e _).2 (h.fiber t ht ((e _).1 hb) ((e _).1 hc)) }
+    zero := fun x hx ↦ (e x).2 (h.zero x hx)
+    cofiber := fun t ht ha hb ↦ (e _).2 (h.cofiber t ht ((e _).1 ha) ((e _).1 hb))
+    fiber := fun t ht hb hc ↦ (e _).2 (h.fiber t ht ((e _).1 hb) ((e _).1 hc)) }
 
 end SerrePositivity.KST.LocalizingInvariants

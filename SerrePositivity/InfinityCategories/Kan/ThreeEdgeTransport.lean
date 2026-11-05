@@ -30,8 +30,8 @@ structure ThreeEdgeTransport {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
     (left : Z.Edge x a) (middle : Z.Edge x y) (right : Z.Edge y b) where
   diagonal : Z.Edge x b
   transported : Z.Edge a b
-  first : SSet.Edge.CompStruct middle right _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal
-  second : SSet.Edge.CompStruct left _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal
+  first : SSet.Edge.CompStruct middle right diagonal
+  second : SSet.Edge.CompStruct left transported diagonal
 
 namespace ThreeEdgeTransport
 open _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
@@ -69,10 +69,10 @@ lemma trace (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTranspor
 /-- 輸送後の辺だけを選び直さず、二つの三角形全体を同じ射で写す。 -/
 def map {W : SSet.{u}} (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) (p : Z ⟶ W) :
     _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport (left.map p) (middle.map p) (right.map p) where
-  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.diagonal := D.diagonal.map p
-  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported := D.transported.map p
-  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.first := D.first.map p
-  _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.second := D.second.map p
+  diagonal := D.diagonal.map p
+  transported := D.transported.map p
+  first := D.first.map p
+  second := D.second.map p
 
 /-- 射影後のトレースも、元の三つの区間と同じ二つの三角形で計算する。 -/
 lemma map_trace {W : SSet.{u}} (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right) (p : Z ⟶ W) :

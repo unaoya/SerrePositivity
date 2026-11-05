@@ -42,10 +42,10 @@ def simplexSubsetSplitRefinement {n : ℕ} (I : Finset (Fin (n + 1))) (j : Fin (
     (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
     _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} ((I.filter (· ≤ j)).card - 1))
       (necklaceBead ((I.filter (j ≤ ·)).card - 1)) ⟶ necklaceBead (I.card - 1) where
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map := simplexSubsetSplitMap I j hj hL hR ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+  map := simplexSubsetSplitMap I j hj hL hR ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv
+  map_first := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
     (simplexSubsetSplitMap_first I j hj hL hR)).trans (simplexBeadIso_inv_first _)
-  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
+  map_last := (congrArg ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _).inv.app _)
     (simplexSubsetSplitMap_last I j hj hL hR)).trans (simplexBeadIso_inv_last _)
 
 /-- 元の分割 refinement の全頂点番号は、元の同じ番号の等号移送。 -/

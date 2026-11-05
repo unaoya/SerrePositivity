@@ -18,10 +18,10 @@ open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
 open scoped _root_.Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 def dgGluingStableModuleCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v w} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := (SSet.uliftFunctor.{max (u + 1) v w,max (u + 1) v}).obj
+  obj := (SSet.uliftFunctor.{max (u + 1) v w,max (u + 1) v}).obj
     (dgModuleDerivedInfinityCategory R C)
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := by
+  isQuasicategory := inferInstance
+  isStable := by
     let := dgModuleDerivedInfinityCategory_isStable R C
     exact F2.Idempotent.isStable_ulift
 variable (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)

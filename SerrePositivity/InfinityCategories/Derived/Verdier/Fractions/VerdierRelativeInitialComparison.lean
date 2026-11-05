@@ -161,14 +161,14 @@ private lemma exists_relativeInitialHomotopy
 structure VerdierRelativeInitialComparison
     (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) where
   homotopy : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h = b.initialAmbientHomotopy.h
-  attachment_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h = b.initialAmbientHomotopy.h
+  attachment_eq : homotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
     c.ambientHomotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj
-  prefix_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
+  prefix_eq : homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
     c.ambientHomotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj
-  last_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+  last_eq : homotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
     c.ambientHomotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj
-  invertsAllEdges : InvertsEdges _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h Set.univ
+  invertsAllEdges : InvertsEdges homotopy.h Set.univ
 
 /-- 一致を新仮定にせず証明し、元の attachment RLP で指定 S 始端比較へ実際に合わせる。 -/
 lemma exists_verdierRelativeInitialComparison

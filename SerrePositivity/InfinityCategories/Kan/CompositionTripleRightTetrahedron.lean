@@ -31,15 +31,15 @@ structure CompositionTripleRightTetrahedron {E : SSet.{u}} {w x y z : E _⦋0⦌
   /-- 元の全三面を持つ同じ実三単体。 -/
   simplex : E _⦋3⦌
   /-- 後の二射の元の全合成面。 -/
-  second_face : E.δ 0 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = second.simplex
+  second_face : E.δ 0 simplex = second.simplex
   /-- 左結合の元の全合成面。 -/
-  left_face : E.δ 1 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = left.simplex
+  left_face : E.δ 1 simplex = left.simplex
   /-- 前の二射の元の全合成面。 -/
-  first_face : E.δ 3 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = first.simplex
+  first_face : E.δ 3 simplex = first.simplex
   /-- 同じ四面体の右結合の実合成面。 -/
   right : SSet.Edge.CompStruct a bc abc
   /-- 新しい面も同じ実四面体の面そのもの。 -/
-  right_face : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.right.simplex = E.δ 2 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex
+  right_face : right.simplex = E.δ 2 simplex
 
 /-- 元の全三面を持つ指定済みの全三単体を、同じ実結合替えデータとして回収する。 -/
 def compositionTripleRightTetrahedronOfMap {E : SSet.{u}}

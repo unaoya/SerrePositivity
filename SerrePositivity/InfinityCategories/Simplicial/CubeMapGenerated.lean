@@ -17,12 +17,12 @@ open SerrePositivity.KST.SConstruction
 
 /-- 元の頂点関数が正の connection を持つ cubical 生成射の合成である条件。 -/
 inductive CubeMapGenerated : {n m : ℕ} → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) → Prop
-  | id (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
-  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i)
-  | degeneracy (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i)
-  | connection (n : ℕ) (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i)
+  | id (n : ℕ) : CubeMapGenerated (_root_.id : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n)
+  | face (b : Bool) (n : ℕ) (i : Fin (n + 1)) : CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b n i)
+  | degeneracy (n : ℕ) (i : Fin (n + 1)) : CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy n i)
+  | connection (n : ℕ) (i : Fin (n + 1)) : CubeMapGenerated (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection n i)
   | comp {n m k : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m} {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k}
-      (hf : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (g ∘ f)
+      (hf : CubeMapGenerated f) (hg : CubeMapGenerated g) : CubeMapGenerated (g ∘ f)
 
 /-- 元の生成射の任意の合成は、全頂点の pointwise join を保つ。 -/
 lemma cubeMapGenerated_sup {n m : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m}

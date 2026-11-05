@@ -33,32 +33,32 @@ open SerrePositivity.KST.LocalizingInvariants
 
 def squareFrameOfEdges {X : SSet.{u}} {x y x' z : X _⦋0⦌}
     (b : X.Edge x y) (t : X.Edge x' z) (l : X.Edge x x') (r : X.Edge y z) : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame X where
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.bottom := SSet.yonedaEquiv.symm b.edge
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.top := SSet.yonedaEquiv.symm t.edge
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.left := SSet.yonedaEquiv.symm l.edge
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.right := SSet.yonedaEquiv.symm r.edge
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_left := by
+  bottom := SSet.yonedaEquiv.symm b.edge
+  top := SSet.yonedaEquiv.symm t.edge
+  left := SSet.yonedaEquiv.symm l.edge
+  right := SSet.yonedaEquiv.symm r.edge
+  lower_left := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, b.src_eq, l.src_eq]
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.lower_right := by
+  lower_right := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, b.tgt_eq, r.src_eq]
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_left := by
+  upper_left := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, t.src_eq, l.tgt_eq]
-  _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.upper_right := by
+  upper_right := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_δ_comp, stdSimplex.yonedaEquiv_δ_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply, t.tgt_eq, r.tgt_eq]
 
 structure FixedEndpointHomotopy {X : SSet.{u}} {x y : X _⦋0⦌} (f g : X.Edge x y) where
   homotopy : SSet.Homotopy (SSet.yonedaEquiv.symm f.edge) (SSet.yonedaEquiv.symm g.edge)
-  source : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy.homotopy.h =
+  source : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
     snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (SSet.Edge.id x).edge
-  target : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.FixedEndpointHomotopy.homotopy.h =
+  target : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
     snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm (SSet.Edge.id y).edge
 
 lemma fixedEndpointHomotopy_nonempty {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}

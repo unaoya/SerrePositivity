@@ -58,10 +58,10 @@ lemma cubeSupportMax_eq_projection {X Y : _root_.SerrePositivity.InfinityCategor
 /-- 入力削除後の元の残余射の support は、順序つきで全入力を尽くす。 -/
 lemma concreteCubeInputCompressedSupportPartition {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ Y) :
     _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f)) where
-  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.ordered := by
+  ordered := by
     intro j k hjk i l hi hl
     exact _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_ordered (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed f) hjk hi hl
-  _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.covers := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_no_unused f
+  covers := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_no_unused f
 
 /-- 入力削除後の残余射の空でない出力は、隣接 connection のみで実現される。 -/
 lemma concreteCubeInputCompressed_projection_connectionGenerated {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}

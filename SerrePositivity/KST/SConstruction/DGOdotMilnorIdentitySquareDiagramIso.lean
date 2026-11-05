@@ -27,14 +27,14 @@ def rightSquareDiagramIso (h : DGGluingMilnorSquare R d) : _root_.SerrePositivit
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
     (squareBoundary R d v h) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (perfectSquareComparison R d v).symm
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := by
+  comparison := (perfectSquareComparison R d v).symm
+  inclusion_eq := by
     exact (F2.functorIso_precomp_symm (perfectSquareComparison R d v) squareBottomEdge).trans
       (congrArg Iso.symm (perfectSquareComparison_bottom R d v))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := by
+  quotient_eq := by
     exact (F2.functorIso_precomp_symm (perfectSquareComparison R d v) squareRightEdge).trans
       (congrArg Iso.symm (perfectSquareComparison_right R d v))
-  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := by
+  zero_eq := by
     apply perfectZeroPointFunctorIso_ext
     change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex
       (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) 0 1))

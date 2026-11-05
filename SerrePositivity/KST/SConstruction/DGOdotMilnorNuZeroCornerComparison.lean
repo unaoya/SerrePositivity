@@ -35,16 +35,16 @@ local notation "t" => dgOdotMilnorNuZeroActualTop R d
 方針：元核の toZeroCategory と同じ実零角への fromZeroCategory を合成する。
 規約：零角成分は既指定のもの。使われ方：混合左面の終点。 -/
 def dgOdotMilnorNuZeroComparisonLeft : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (Z) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom ≫ (fromZeroCategory (Z)).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).isExact
+  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom ≫ (fromZeroCategory (Z)).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).isExact
     (fromZeroCategory (Z)).isExact
 
 /-- 概要：同じ零角成分と元実上辺の合成。
 方針：指定 fromZeroCategory と元上辺を合成する。
 規約：元の実上辺。使われ方：混合上面の始点。 -/
 def dgOdotMilnorNuZeroComparisonTop : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (fromZeroCategory (Z)).hom ≫ (t).hom
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _ (fromZeroCategory (Z)).isExact (t).isExact
+  hom := (fromZeroCategory (Z)).hom ≫ (t).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (fromZeroCategory (Z)).isExact (t).isExact
 
 /-- 概要：元実左辺と零角の指定成分を経由する左辺の全関手同型。
 方針：同じ実零角の全零性を両関手へ適用する。

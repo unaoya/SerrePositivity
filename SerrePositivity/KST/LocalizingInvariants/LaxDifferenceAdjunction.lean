@@ -47,20 +47,20 @@ include a hv in
 /-- 通常 pullback から元の lax pullback、差の項 E への実 Verdier 列。 -/
 lemma laxDifference_isVerdier :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (pullbackInclusion p q) (exactLaxDifference p q) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := pullbackInclusion_fullyFaithful p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := exactLaxDifference_kernel p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
+  fullyFaithful := pullbackInclusion_fullyFaithful p q
+  kernel := exactLaxDifference_kernel p q
+  quotient := by
     rw [← _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q)
       (exactLaxDifference p q) (exactLaxDifference_kernel p q)]
     exact laxDifference_isLocalization p q v a hv
 
 def tammeVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := pullbackCategory p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := laxCategory p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := E
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := pullbackInclusion p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := exactLaxDifference p q
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := laxDifference_isVerdier p q v a hv
+  left := pullbackCategory p q
+  middle := laxCategory p q
+  right := E
+  inclusion := pullbackInclusion p q
+  projection := exactLaxDifference p q
+  isVerdier := laxDifference_isVerdier p q v a hv
 
 include a hv in
 /-- 任意の標的の実関手 ∞ 圏での商の普遍性。 -/

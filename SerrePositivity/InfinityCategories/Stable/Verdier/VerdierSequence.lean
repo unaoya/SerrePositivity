@@ -46,9 +46,9 @@ structure VerdierSequence where
   left : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
   middle : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
   right : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
-  inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle
-  projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right
-  isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection
+  inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap left middle
+  projection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap middle right
+  isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence inclusion projection
 
 namespace IsVerdierSequence
 open _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence

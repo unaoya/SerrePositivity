@@ -25,9 +25,9 @@ variable {E : SSet.{u}} [KanComplex E] {x m n z : E _⦋0⦌}
 
 /-- 元の共通対角辺を持ち、四辺だけを指定円柱で移した実三角形対。 -/
 def compositionDiamondEdgeTransport : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a₀ b₀ c₀ d₀ where
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal := D.diagonal
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first := triangleEdgeTransport Ha Hb (endpointFixedEdgeCylinderRefl D.diagonal) D.first
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second := triangleEdgeTransport Hc Hd (endpointFixedEdgeCylinderRefl D.diagonal) D.second
+  diagonal := D.diagonal
+  first := triangleEdgeTransport Ha Hb (endpointFixedEdgeCylinderRefl D.diagonal) D.first
+  second := triangleEdgeTransport Hc Hd (endpointFixedEdgeCylinderRefl D.diagonal) D.second
 
 /-- 第一の全三角形を元の同じ全三角形へ戻す実比較円柱。 -/
 def compositionDiamondEdgeTransportFirstComparison : Homotopy

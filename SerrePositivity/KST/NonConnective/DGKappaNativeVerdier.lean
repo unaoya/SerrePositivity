@@ -65,8 +65,8 @@ def dgKappaNativeSuspensionCategory : _root_.SerrePositivity.InfinityCategories.
 使われ方：完備化前の Sp Verdier 認証への代入。 -/
 def dgKappaNativeKernelInclusion :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKappaNativeKernelCategory R D I) (dgKappaNativeConeCategory R D I) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgNerve.map (dgKappaResolvedKernelInputMap R D I).down
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
+  hom := dgNerve.map (dgKappaResolvedKernelInputMap R D I).down
+  isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
     (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)).inclusionExact
 
 /-- 概要：同じ実平坦源から同じ実商への元の商包含を完全射として保持する。
@@ -75,8 +75,8 @@ def dgKappaNativeKernelInclusion :
 使われ方：完備化前の Sp Verdier 認証への代入。 -/
 def dgKappaNativeQuotient :
     _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKappaNativeConeCategory R D I) (dgKappaNativeSuspensionCategory R D I) where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgNerve.map (dgKappaResolvedSuspensionInputMap R D I).down
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
+  hom := dgNerve.map (dgKappaResolvedSuspensionInputMap R D I).down
+  isExact := (resolvedDGQuotientFlatKernel_isStableVerdierSequence R
     (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)).quotientExact
 
 /-- 概要：同じ元の実核の cofiber 辺は、D 正本の元の実 Verdier 辺と一致する。
@@ -112,12 +112,12 @@ theorem dgKappaNative_isVerdierSequence :
 規約：固定 ν の Perf 完備化後の列へ置換しない。
 使われ方：完備化前の連結 fibration の指定四角形への受け渡し。 -/
 def dgKappaNativeVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{max (u + 1) v} where
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgKappaNativeKernelCategory R D I
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgKappaNativeConeCategory R D I
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgKappaNativeSuspensionCategory R D I
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgKappaNativeKernelInclusion R D I
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgKappaNativeQuotient R D I
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := dgKappaNative_isVerdierSequence R D I
+  left := dgKappaNativeKernelCategory R D I
+  middle := dgKappaNativeConeCategory R D I
+  right := dgKappaNativeSuspensionCategory R D I
+  inclusion := dgKappaNativeKernelInclusion R D I
+  projection := dgKappaNativeQuotient R D I
+  isVerdier := dgKappaNative_isVerdierSequence R D I
 
 /-- 概要：同じ元の二射を全一単体として保つ、完備化前の native Verdier 四角形。
 方針：Sp 正本の同じ列の提示構成を利用する。

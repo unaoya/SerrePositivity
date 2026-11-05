@@ -67,7 +67,7 @@ theorem exists_connecting_of_nullRel_all
         · subst j
           rw [← Category.assoc, hlast, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp, comp_const]
         · rw [← Category.assoc, hr j hj, const_comp] }
-  let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s := { _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map := r.map, _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp := rfl, _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq := hr }
+  let L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s := { map := r.map, map_comp := rfl, face_eq := hr }
   have hb : L.boundary = b := by
     ext : 1
     apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
