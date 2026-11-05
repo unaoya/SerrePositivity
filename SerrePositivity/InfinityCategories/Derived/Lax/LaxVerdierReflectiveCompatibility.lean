@@ -36,15 +36,13 @@ open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientFiberTriangle_reflective :
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q (pullbackInclusion p q) (exactLaxDifference p q)
-      (laxDifference_isVerdier p q v a hv) = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv := rfl
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q (pullbackInclusion p q) (exactLaxDifference p q) (laxDifference_isVerdier p q v a hv) hΦ) = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ) p q v a hv := rfl
 
 lemma laxQuotientFiberMiddleIso_reflective :
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q (pullbackInclusion p q) (exactLaxDifference p q)
-      (laxDifference_isVerdier p q v a hv) = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberSquareMiddleIso hΦ) p q v a hv := rfl
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q (pullbackInclusion p q) (exactLaxDifference p q) (laxDifference_isVerdier p q v a hv) hΦ) = (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberSquareMiddleIso hΦ) p q v a hv := rfl
 
 lemma laxQuotientDifferenceHom_reflective :
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q (exactLaxDifference p q) =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q (exactLaxDifference p q) hΦ) =
       (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeDifferenceHom hΦ) p q := rfl
 
 end IsLocalizingInvariant

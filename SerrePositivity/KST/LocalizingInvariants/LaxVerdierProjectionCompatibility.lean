@@ -44,13 +44,13 @@ lemma tammeProjectionCorrection_fst : (hΦ.tammeProjectionCorrection p q).hom �
 
 lemma laxQuotientProjectionCorrection_right (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q) :
     (hΦ.tammeProjectionCorrection p q).hom ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom hΦ) p q r =
-      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r := by
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ) := by
   rw [tammeProjectionCorrection, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom,
     _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom, Category.assoc, Iso.hom_inv_id_assoc]
 
 lemma laxQuotientProjectionCorrection_middle (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q))
     (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q) (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r) :
-    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q i r h).hom ≫ (hΦ.tammeProjectionCorrection p q).hom =
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q i r h hΦ)).hom ≫ (hΦ.tammeProjectionCorrection p q).hom =
       ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso hΦ) p q i r h).hom := by
   change ((hΦ.fiberMiddleIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).hom ≫
     ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).inv) ≫

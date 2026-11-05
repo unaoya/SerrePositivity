@@ -44,21 +44,21 @@ variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableI
 def laxQuotientFiberTriangle : ZeroTriangle Sp.{u} :=
   hΦ.abstractFiberTriangle (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
-lemma laxQuotientFiberTriangle_isFiber : IsFiberSequence ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h) :=
+lemma laxQuotientFiberTriangle_isFiber : IsFiberSequence ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)) :=
   hΦ.abstractFiberTriangle_isFiber (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
 lemma laxQuotientFiberTriangle_bottom :
-    squareBottomEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square =
+    squareBottomEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square =
       SSet.yonedaEquiv.symm (Φ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow i).edge) :=
   hΦ.abstractFiberTriangle_bottom (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
 lemma laxQuotientFiberTriangle_right :
-    squareRightEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square =
+    squareRightEdge ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square =
       SSet.yonedaEquiv.symm (Φ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow r).edge) :=
   hΦ.abstractFiberTriangle_right (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
 def laxQuotientFiberMiddleIso :
-    squareHoVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square 1 0 ≅
+    squareHoVertex ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square 1 0 ≅
       SpectrumHo.obj (Binary.obj (value Φ C) (value Φ D)) :=
   hΦ.fiberMiddleIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h) ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence hΦ) p q
 
@@ -67,8 +67,8 @@ def laxQuotientDifferenceHom : SpectrumHo.obj (Binary.obj (value Φ C) (value Φ
   ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom ≫ SpectrumHo.hom (valueMap Φ r)
 
 lemma laxQuotientFiberMiddleIso_right :
-    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso (hΦ := hΦ)) p q i r h).hom ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r =
-      squareHoRight ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square ≫
+    ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso p q i r h hΦ)).hom ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ) =
+      squareHoRight ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square ≫
         (hΦ.fiberRightIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).hom := by
   change ((hΦ.fiberMiddleIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)).hom ≫
     ((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).inv) ≫ (((_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ) p q).hom ≫ _) = _
@@ -76,13 +76,13 @@ lemma laxQuotientFiberMiddleIso_right :
   exact hΦ.fiber_right_naturality (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence p q i r h)
 
 lemma laxQuotientDifferenceHom_C : SpectrumHo.hom (Binary.inl (value Φ C) (value Φ D)) ≫
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ) =
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromC p q)) ≫
         SpectrumHo.hom (valueMap Φ r) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C]
 
 lemma laxQuotientDifferenceHom_D : SpectrumHo.hom (Binary.inr (value Φ C) (value Φ D)) ≫
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom (hΦ := hΦ)) p q r =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom p q r hΦ) =
       SpectrumHo.hom (valueMap Φ (LaxInclusion.exactFromD p q)) ≫
         SpectrumHo.hom (valueMap Φ r) := by
   rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D]

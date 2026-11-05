@@ -37,7 +37,7 @@ lemma laxQuotientProductFiberComparison_bottom :
         ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ) p q i r h).hom =
       (FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).hom ≫
-          squareHoBottom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square ≫
+          squareHoBottom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square ≫
             ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso hΦ) p q i r h).hom := by
   have hn := (hΦ.laxQuotientProductFiberComparison p q i r h).toNatIso.hom.naturality
     (Truncated.HomotopyCategory.homMk
@@ -47,7 +47,7 @@ lemma laxQuotientProductFiberComparison_bottom :
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).hom =
     (FunctorIso.app (hΦ.laxQuotientProductFiberComparison p q i r h)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).hom ≫
-        squareHoBottom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle (hΦ := hΦ)) p q i r h).square at hn
+        squareHoBottom ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle p q i r h hΦ)).square at hn
   rw [hΦ.laxQuotientProductFiberComparison_middle p q i r h] at hn
   have ht := congrArg (fun k => k ≫ ((_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionMiddleIso hΦ) p q i r h).hom) hn
   simpa only [Iso.trans_hom, Iso.symm_hom, Category.assoc, Iso.inv_hom_id,
