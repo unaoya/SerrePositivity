@@ -15,9 +15,9 @@
 | C5 | ∞ 数学（G2） | **G2 は閉じた。進捗は枝 `math/g2` の `infinity-g2-progress.md` にある（main には未反映）**。`infinity-g2-progress.md` に、IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）の引き継ぎを書く（新しいレーンへ渡すため） | 小 | 引き継ぎの節がある |
 | C6 | DG | **完了（11-05、worktree・枝とも削除、レーンを閉じた）**。worktree `SerrePositivity-dgw1` と枝 `infra/dg-w3` の削除（main に入っている）。D6〜D8 の調査結果（`targets/dg-survey-d6d7-2026-11-01.md`）は残す | 小 | worktree なし |
 | C7 | 論文の層 | **完了（11-05、8310a7fa7。レーンを閉じた）**。worktree `SerrePositivity-refactor-2b` の削除。段階 3 の残り 3 項目（テンソル冪、Asymptotic の商、PC の K₀）を、段階 II の計画の保守・K 理論の節へ移す | 小 | worktree なし |
-| C8 | 調整役 | 終わった枝の整理（main に入った `refactor/*`・`infra/*`・`math/g1`・`codex/bs-w10-b` などを消すか残すかの一覧）、`/private/tmp` に worktree がないことの確認、Lake キャッシュの状態（`~/.cache/lake` の大きさと空き） | 小 | 一覧を本書に追記 |
-| C9 | 調整役 | 文書の整理：整理用の指示書（`infinity-codex-w*`・`infinity-codex-f`・`dg-codex-w*`・`infinity-codex-g1/g2`）、`refactor-plan.md`・`dg-cleanup-plan.md` の「状態」節を最終にし、`formalization-plans/archive/` へ移すものを決める。`coordination.md` を段階 II 用に書き直す（規則だけ残す） | 中 | 段階 II の計画が正本になる |
-| C10 | 調整役 | メモリの整理：整理の期間の記憶（三レーンの調整、各窓の教訓）を、段階 II で効くものだけ残して統合 | 小 | MEMORY.md が短くなる |
+| C8 | 調整役 | **完了（11-05）**：main に入った枝 16 本を削除、入っていない古い枝 6 本は `archive/<枝名>` のタグにして削除、残る枝は main・`math/g2`（WIP）・`codex/if-cleanup-c1-c3`（∞ 整理が使用中）。`/private/tmp/SerrePositivity-if-f2-baseline`（∞ の F-2 の比較用）は ∞ 整理が閉じるときに消す。Lake キャッシュ 29 GB、空き 321 GB。終わった枝の整理（main に入った `refactor/*`・`infra/*`・`math/g1`・`codex/bs-w10-b` などを消すか残すかの一覧）、`/private/tmp` に worktree がないことの確認、Lake キャッシュの状態（`~/.cache/lake` の大きさと空き） | 小 | 一覧を本書に追記 |
+| C9 | 調整役 | **完了（11-05、2a66260bb）**：整理の期間の指示書 12 本と段階 I の coordination.md を archive へ、新しい coordination.md は規則（§2）と各レーンの現状だけ。リンクは修復（以前からのリンク切れ 55 件は `kst-lanes/` などにあり、段階 II の保守へ）。文書の整理：整理用の指示書（`infinity-codex-w*`・`infinity-codex-f`・`dg-codex-w*`・`infinity-codex-g1/g2`）、`refactor-plan.md`・`dg-cleanup-plan.md` の「状態」節を最終にし、`formalization-plans/archive/` へ移すものを決める。`coordination.md` を段階 II 用に書き直す（規則だけ残す） | 中 | 段階 II の計画が正本になる |
+| C10 | 調整役 | **完了（11-05）**：重複していた記憶（main の作業木の 3 件、調整のやり方の 3 件）をそれぞれ一つに統合、段階 I の目標の記憶に完了を記入、方向の記憶に段階 II の正本を記入。メモリの整理：整理の期間の記憶（三レーンの調整、各窓の教訓）を、段階 II で効くものだけ残して統合 | 小 | MEMORY.md が短くなる |
 
 ## 2. 後でしかできない片付け（段階 II の中で一つの束として出す）
 
