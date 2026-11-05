@@ -31,3 +31,9 @@
 ## 3. 終わったら
 
 調整役が `math/g2` を main に取り込み、worktree `SerrePositivity-ig1` を外す。未完の部分は `math/g2-wip`（または進捗の記録）として段階 II の ∞ 供給レーンへ引き継ぐ。
+
+## 4. 追記（2026-11-05 夜、停止点 1 の承認と段 2 の開始）
+
+**承認**：段 1（408d87457）。調整役が main でルートと F2 監査対象のビルド、F2 監査を確認（エラー 0、3 本とも sorry 0）。
+**段 2 に進む**（ユーザー決定）：② を篩包含の場合に独立の補題として示す。切断の制限 ＝ 指定極限錐への普遍射を、写像空間のホモトピー圏の等式として（段 1 の `limitConeMap_homMk_eq_of_coneFamilyIso`・`sectionsConeFamilyRestriction_fromSections`・`representableEvaluationConeMap` を組み合わせる）。
+**取り込みの手順の確認**：段 1 では Codex が main を `math/g2` の先端まで fast-forward したが、以後は `math/g2` にコミットして停止点で報告し、main への取り込みは調整役が行う（main を直接動かさない）。
