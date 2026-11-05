@@ -20,10 +20,10 @@ variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
 /-- 同じ実比較を元の universal・taut scaffold に制限した三角。 -/
 def scaffoldTriangle : FunctorIso
     ((SSet.uliftFunctor.{u + 1, u}).map (universalScaffold p) ≫
-      s.toStrictTransportComparisonSpan.coherentComparison.hom)
+      (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom)
     ((SSet.uliftFunctor.{u + 1, u}).map (tautScaffold (leftStrictTransportDiagram p)) ≫
       leftCoherentTransportComparison p) := by
-  have h := s.toStrictTransportComparisonSpan.representationTriangle.precomp (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding s)
+  have h := (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representationTriangle s.toStrictTransportComparisonSpan).precomp (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding s)
   rw [← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_source s), (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coherentEmbedding_target s)] at h
   exact h
 

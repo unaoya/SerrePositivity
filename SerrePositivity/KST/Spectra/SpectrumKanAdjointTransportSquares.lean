@@ -22,7 +22,7 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 
 /-- 元の二つの輸送三角形から、同じ段調整区間の間の実正方形を構成する。 -/
 def kanAdjointCanonicalTransportSquare (n : ℕ) :=
-  (kanAdjointCanonicalStageTransport X Y φ j n).square
+  (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalStageTransport X Y φ j n))
 
 /-- 保存した第一の二単体は、正方形の上側の同じ二単体。 -/
 lemma kanAdjointCanonicalTransportSquare_upper (n : ℕ) :
@@ -59,7 +59,7 @@ lemma kanAdjointCanonicalTransportSquare_projection (n : ℕ) :
       (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
-      (kanAdjointCanonicalBoundaryTransport X Y φ j n).square := by
+      (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalBoundaryTransport X Y φ j n)) := by
   rw [kanAdjointCanonicalTransportSquare, ThreeEdgeTransport.square_map]
   exact ThreeEdgeTransport.square_eq_of_simplex_eq _ _ rfl rfl
 

@@ -74,7 +74,7 @@ theorem connectingZero_cofiberBoundaryMap {A B : SSet.{u}} (i : A ⟶ B)
   erw [pointedConnectingZero_boundaryLift (pre i Y) L]
   have h := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map (restrictionFiberIso i Y).inv.right
     (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionFiberIso i Y).inv)
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary)
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L))
   rw [← h]
   change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (cofiberBoundarySimplex i Y L)) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, cofiberBoundaryMap, PointedMapping.familyVertex_familyMap]

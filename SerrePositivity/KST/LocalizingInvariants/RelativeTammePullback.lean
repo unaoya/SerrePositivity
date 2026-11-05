@@ -54,7 +54,7 @@ def ofSourceIso (P : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
 
 include hE in
 lemma productSquare_isPullback : IsPullbackSquare v.square :=
-  (d.comparisonSquare_isPullback hE).of_functorIso v.comparison
+  ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE).of_functorIso v.comparison
 
 /-- 元の四辺 a,b,f,g を保つ相対 d8 の実 pullback。 -/
 def normalizedSquare := BinaryProductCospanNormalized.square a b f g hc v.square

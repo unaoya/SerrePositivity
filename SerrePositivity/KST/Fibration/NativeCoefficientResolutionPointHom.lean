@@ -31,7 +31,7 @@ theorem ScaffoldTransportComparisonSpan.nativeCoefficientPointHom_resolution
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) ≫
       functorHomEvaluate (nativeRepresentationComparisonIso p
         (nativeLeftTransportRepresentation p)
-        s.toStrictTransportComparisonSpan.representation).hom (ULift.up (nerveVertex c)) ≫
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s.toStrictTransportComparisonSpan)).hom (ULift.up (nerveVertex c)) ≫
       (eqToIso (congrArg HomotopyCategory.mk
         (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c))).hom =
     _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
@@ -40,11 +40,11 @@ theorem ScaffoldTransportComparisonSpan.nativeCoefficientPointHom_resolution
   have h := congrArg
     (fun m => m ≫ (eqToIso (congrArg HomotopyCategory.mk
       (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c))).hom)
-    (s.nativeCoefficientPointHom c v)
+    ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.nativeCoefficientPointHom s) c v)
   have he := pointedFiberPointHom_endpointTransport
     (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c)
-    (s.coefficientWeightedPointedFiberPoint c v)
-  have hn := (s.coefficientWeightedResolutionPoint_eq c v)
+    ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedPointedFiberPoint s) c v)
+  have hn := ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedResolutionPoint_eq s) c v)
   have hr := he.trans (congrArg _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom hn)
   simpa only [Category.assoc] using h.trans hr
 

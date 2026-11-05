@@ -45,8 +45,8 @@ def pointedConnectingZero {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
 lemma BoundaryLift.pointedFiberZeroEquiv_mk {E B : PointedSimplicialSet.{u}} {p : E ⟶ B}
     [Fibration p.right] {s : B.right.PtSimplex 1 (p.right.app _ E.basepoint)}
     (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
-    pointedFiberZeroEquiv p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.boundary := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary) = _
+    pointedFiberZeroEquiv p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.boundary := by
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 0 (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
   congr 1
 
@@ -61,7 +61,7 @@ lemma pointedConnectingZero_boundaryLift {E B : PointedSimplicialSet.{u}} (p : E
     pointedConnectingZero p
         (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl B.right)
           (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 L.pointedBoundary := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L) := by
   apply (pointedFiberZeroEquiv p).injective
   dsimp only [pointedConnectingZero]
   rw [Equiv.apply_symm_apply, MulEquiv.symm_apply_apply, BoundaryLift.pointedFiberZeroEquiv_mk,

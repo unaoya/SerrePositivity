@@ -64,7 +64,7 @@ lemma serreCubeDeletionNormal_comp (A : Type u) [CommRing A] {n a b : ℕ}
     change serreCubeDegeneracy A _ 0 ≫ serreCubeDeletionNormal A (cubeDeletionNormalComp d e) = _
     rw [ih e]
     exact (Category.assoc _ _ _).symm
-  | @_root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal.keep n a d ih =>
+  | @keep n a d ih =>
     cases e with
     | drop e =>
       change serreCubeDegeneracy A n 0 ≫ serreCubeDeletionNormal A (cubeDeletionNormalComp d e) = _

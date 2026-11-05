@@ -31,7 +31,7 @@ lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCat
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
-  exact (d.comparisonSquare_isPullback hE).of_functorIso
+  exact ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE).of_functorIso
     ((e.comparison.precomp c).postcomp E)
 
 end RelativeVerdierRectangle

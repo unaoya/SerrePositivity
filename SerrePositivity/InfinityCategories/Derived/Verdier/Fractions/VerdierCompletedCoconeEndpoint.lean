@@ -91,13 +91,13 @@ def endpointIso : FunctorIso
 
 /-- 実 S 正規化終端は、同じ完成 K 終端の厳密な制限。 -/
 lemma endpoint_boundary : S.ι ≫ w.endpoint =
-    (SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫
+    (SSet.ι₁ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫
       _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u}) :=
   w.cylinder.endpoint_boundary
 
 /-- K 終端の単位比較の S 制限は、同じ実 S 終端への元の全単位の制限。 -/
 lemma endpointUnit_boundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ w.endpointUnitHomotopy.h =
-    (((SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder) ▷ (Δ[1] : SSet.{u})) ≫
+    (((SSet.ι₁ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r)) ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h := by
   change (S.ι ▷ (Δ[1] : SSet.{u})) ≫
@@ -116,10 +116,10 @@ lemma endpointComparison_boundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫
 
 /-- 正規化 S 実終端の包含後は、保存済みの同じ元の実終端余錐。 -/
 lemma endpoint_boundary_ι :
-    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder) ≫
+    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r)) ≫
       (relativeFirstRowSimplex q (n + 1)).ι =
       r.cylinder.endCone ≫ (pre (joinStdSimplexIso n 0).inv).app B.obj := by
-  rw [Category.assoc, r.simplexCylinder_ι, ← Category.assoc, r.cylinder.homotopy.h₁]
+  rw [Category.assoc, (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder_ι r), ← Category.assoc, r.cylinder.homotopy.h₁]
 
 end VerdierCompletedCoconeComparison
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

@@ -52,18 +52,18 @@ def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicat
     (coherentNerveEdge b) (NativeSquareRows.right a g S hb ht) (coherentNerveEdge f)
     rfl rfl hl (NativeSquareRows.right_class a g S hb ht f hr)
 
-def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (boundaryHomotopy a b f g S hb ht hr hl).pathFrame S :=
-  (boundaryHomotopy a b f g S hb ht hr hl).extension S (oldFrame_eq a g S hb ht)
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (boundaryHomotopy a b f g S hb ht hr hl)) S :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (boundaryHomotopy a b f g S hb ht hr hl)) S (oldFrame_eq a g S hb ht)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
   (extension a b f g S hb ht hr hl).target
 
 def comparison : FunctorIso S (square a b f g S hb ht hr hl) :=
-  (extension a b f g S hb ht hr hl).comparison
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (extension a b f g S hb ht hr hl))
 
 lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ square a b f g S hb ht hr hl =
     (newFrame a b f g).diagram :=
-  (boundaryHomotopy a b f g S hb ht hr hl).extension_target_boundary S (oldFrame_eq a g S hb ht)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (boundaryHomotopy a b f g S hb ht hr hl)) S (oldFrame_eq a g S hb ht)
 
 lemma square_isPullback (hS : IsPullbackSquare S) :
     IsPullbackSquare (square a b f g S hb ht hr hl) :=

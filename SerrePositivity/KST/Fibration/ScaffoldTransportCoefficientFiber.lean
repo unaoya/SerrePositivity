@@ -24,8 +24,8 @@ def coefficientSourceFiberPoint (c : I) (v : (leftStrictTransport p c) _⦋0⦌)
   ((_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientRelativeEvaluation s) c v).app (Opposite.op ⦋0⦌)
     (relativeFunctorVertex _ _
       (s.toStrictTransportComparisonSpan.coherentSource ≫
-        s.toStrictTransportComparisonSpan.coherentComparison.hom)
-      (by rw [Category.assoc, s.toStrictTransportComparisonSpan.coherentComparison.over,
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom)
+      (by rw [Category.assoc, (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).over,
         s.toStrictTransportComparisonSpan.coherentSource_over]))
 
 /-- 同じ係数点の weighted 脚による、同じ底の実 fiber 点。 -/
@@ -38,8 +38,8 @@ def coefficientWeightedFiberPoint (c : I) (v : (leftStrictTransport p c) _⦋0�
 
 /-- 元の係数点の source と weighted 像は、底を固定した同じ fiber 内で同型。 -/
 def coefficientFiberPointIso (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    VertexIso (s.coefficientSourceFiberPoint c v) (s.coefficientWeightedFiberPoint c v) :=
-  VertexIso.map s.toStrictTransportComparisonSpan.coherentComparison.triangle
+    VertexIso ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientSourceFiberPoint s) c v) ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedFiberPoint s) c v) :=
+  VertexIso.map (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).triangle
     ((_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientRelativeEvaluation s) c v)
 
 end ScaffoldTransportComparisonSpan

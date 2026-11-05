@@ -48,7 +48,7 @@ lemma serreCubeRightKeep_generated {n m : ℕ} {f : _root_.SerrePositivity.Infin
         ((serreConcreteCubeFunctor A).map (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection n i))
     rw [serreConcreteCubeFunctor_connection]
     exact serreRightKeepHomTensor_connection A n i
-  | @_root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated.comp n m l f g hf hg ihf ihg =>
+  | @comp n m l f g hf hg ihf ihg =>
     change (serreConcreteCubeFunctor A).map (concreteCubeRightKeepHom
       ((⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m) ≫
         (⟨g, hg⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk l))) =

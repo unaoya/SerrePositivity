@@ -31,24 +31,24 @@ def coherentComparison : SpanCompatibleComparison
 def representation :
     LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p) where
   diagram := leftCoherentTransport p
-  comparison := s.coherentComparison.hom
-  over_base := s.coherentComparison.over
+  comparison := (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).hom
+  over_base := (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).over
   fiber_equivalence b :=
     vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence _ _ _
-      s.coherentComparison.over s.coherentComparison.equivalence b
+      (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).over (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).equivalence b
 
 /-- 元の共通全空間の指定点において、同じ相対三角を実 fiber 内で評価する。 -/
 def representationPointIso (z : s.total _⦋0⦌) : VertexIso
     ((relativeFunctorEvaluate
       (leftUnstraighteningProjection (leftCoherentTransport p)) s.coherentBase
       (ULift.up z)).app (Opposite.op ⦋0⦌)
-        (relativeFunctorVertex _ _ (s.coherentSource ≫ s.coherentComparison.hom)
-          (by rw [Category.assoc, s.coherentComparison.over, s.coherentSource_over])))
+        (relativeFunctorVertex _ _ (s.coherentSource ≫ (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).hom)
+          (by rw [Category.assoc, (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).over, s.coherentSource_over])))
     ((relativeFunctorEvaluate
       (leftUnstraighteningProjection (leftCoherentTransport p)) s.coherentBase
       (ULift.up z)).app (Opposite.op ⦋0⦌)
         (relativeFunctorVertex _ _ s.coherentTarget s.coherentTarget_over)) :=
-  s.coherentComparison.pointIso (ULift.up z)
+  (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s).pointIso (ULift.up z)
 
 end StrictTransportComparisonSpan
 end SerrePositivity.KST.Fibration

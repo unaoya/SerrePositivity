@@ -37,6 +37,6 @@ lemma pointedTail_piIsomorphism (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedPost X q).right ≫ (pointedTail X Y).right) := by
     rw [← Under.comp_right, pointedTail_post, Under.comp_right]
     exact ht.comp hr
-  exact hp.cancel_left_atVertex hc (pointedSpace X W.toKanSequence).basepoint
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex hp) hc (pointedSpace X W.toKanSequence).basepoint
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

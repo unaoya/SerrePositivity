@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.Fibration.Relative
 使われ方：元の単回相対実現を無条件で消費する公開入口。 -/
 def SingleRelativeComparison.supplied (h : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) : SingleRelativeComparison h :=
   SingleRelativeComparison.ofCanonicalFirstRowSimplices h
-    h.toVerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso h.toVerdierSequence)
 
 /-- 概要：元の指定全 S• 四角形は無条件に引き戻し。
 方針：同じ実供給二比較を相対核実現の判定へ渡す。
@@ -42,7 +42,7 @@ def suppliedQuotientRealizationFiberIso (h : _root_.SerrePositivity.InfinityCate
     AnodyneHomotopy.anodyneQ.obj (coreSRealizationFunctor.obj (sInputModel h.left)) ≅
       AnodyneHomotopy.anodyneQ.obj (quotientSFibrationFiber h.isVerdier) :=
   canonicalQuotientRealizationFiberIso h
-    h.toVerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso h.toVerdierSequence)
 
 /-- 概要：同じ無条件 fiber 同型の射影は元の核包含の実現射を回収する。
 方針：実 c5 を同じ元の射影公式に代入する。
@@ -54,6 +54,6 @@ theorem suppliedQuotientRealizationFiberIso_projection (h : _root_.SerrePositivi
       AnodyneHomotopy.anodyneQ.map
         (simplicialDiagonalFunctor.map (coreSExactMap h.inclusion)) :=
   canonicalQuotientRealizationFiberIso_projection h
-    h.toVerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso h.toVerdierSequence)
 
 end SerrePositivity.KST.Fibration.Relative

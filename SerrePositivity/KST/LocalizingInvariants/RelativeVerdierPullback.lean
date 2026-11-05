@@ -44,8 +44,8 @@ lemma comparisonSquare_isPullback {E : S ⟶ Spectra.Sp.{u}}
 def comparisonCone (E : S ⟶ Spectra.Sp.{u}) := pullbackCone (d.comparisonSquare ≫ E)
 
 lemma comparisonCone_isLimit {E : S ⟶ Spectra.Sp.{u}}
-    (hE : IsRelativeLocalizingInvariant ν E) : IsLimitCone (d.comparisonCone E) :=
-  d.comparisonSquare_isPullback hE
+    (hE : IsRelativeLocalizingInvariant ν E) : IsLimitCone ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone d) E) :=
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE
 
 end RelativeVerdierRectangle
 end SerrePositivity.KST.LocalizingInvariants

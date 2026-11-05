@@ -42,7 +42,7 @@ def concreteCubeOrderedVertices : _root_.SerrePositivity.InfinityCategories.Kan.
 /-- 元の necklace の Bool 座標作用と、同じ具体的 cube 射の全頂点作用との自然同型。 -/
 def necklaceBooleanNumericNatIso : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset.{u} ≅
     necklaceConcreteCube ⋙ concreteCubeOrderedVertices :=
-  NatIso.ofComponents (fun T => PartOrd.Iso.mk T.down.numericCubeIso) (by
+  NatIso.ofComponents (fun T => PartOrd.Iso.mk (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.numericCubeIso T.down)) (by
     intro T U f
     apply PartOrd.Hom.ext
     apply DFunLike.ext

@@ -45,7 +45,7 @@ theorem pointedConnectingZero_inverse_edge {E B : PointedSimplicialSet.{u}}
   obtain ⟨R, hR⟩ := _root_.SerrePositivity.InfinityCategories.Kan.exists_reverse_boundary_edge p.right E.basepoint af T hT h₀ h₁ m
   have ht : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t = (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)⁻¹ :=
     eq_inv_of_mul_eq_one_left (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq m)
-  have hr : R.pointedBoundary = a := by
+  have hr : (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary R) = a := by
     ext : 1
     change R.boundary.map = af.map
     rw [hR]

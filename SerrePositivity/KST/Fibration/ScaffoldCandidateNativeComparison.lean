@@ -22,21 +22,21 @@ def candidateNativeIso :
     FunctorIso (leftStraighteningCandidate p) (nativeLeftTransportRepresentation p).diagram :=
   leftStraighteningCoherentMap_oppositeVertexIso p ≪≫
     (nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p)
-      s.toStrictTransportComparisonSpan.representation).symm
+      (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s.toStrictTransportComparisonSpan)).symm
 
 /-- 元の係数点は、同じ指定比較で元の恒等射評価の native 実像へ送られる。 -/
 theorem candidateNativeIso_pointHom (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
     _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj c)).symm v) ≫
       (eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))).inv ≫
-      functorHomEvaluate s.candidateNativeIso.hom (ULift.up (nerveVertex c)) =
+      functorHomEvaluate (_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.candidateNativeIso s).hom (ULift.up (nerveVertex c)) =
     _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom ((nativeTransportPointedFiberMap p (nerveVertex c)).app
       (Opposite.op ⦋0⦌)
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v))) := by
   let z := ULift.up.{u + 1} (nerveVertex c)
   let μ := leftStraighteningCoherentMap_oppositeVertexIso p
   let φ := nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p)
-    s.toStrictTransportComparisonSpan.representation
+    (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.representation s.toStrictTransportComparisonSpan)
   let C := eqToIso (congrArg HomotopyCategory.mk (leftStraighteningCandidate_vertex p c))
   let O := eqToIso (congrArg HomotopyCategory.mk
     (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c))
@@ -46,7 +46,7 @@ theorem candidateNativeIso_pointHom (c : I) (v : (leftStrictTransport p c) _⦋0
     (Opposite.op ⦋0⦌) (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)))
   have hs := strictTransportOppositeComponentIso_pointHom p c v
   change x ≫ C.inv ≫ functorHomEvaluate μ.hom z ≫ O.hom = _ at hs
-  have hn := s.nativeCoefficientPointHom_resolution c v
+  have hn := (_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.nativeCoefficientPointHom_resolution s) c v
   rw [pointedSpaceLeftResolutionComparison_vertex_eq] at hn
   change n ≫ functorHomEvaluate φ.hom z ≫ O.hom = _ at hn
   have hc : x ≫ C.inv ≫ functorHomEvaluate μ.hom z = n ≫ functorHomEvaluate φ.hom z := by

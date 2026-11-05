@@ -210,10 +210,10 @@ lemma target_inverts (_c : _root_.SerrePositivity.InfinityCategories.Derived.Ver
 
 /-- 同じ全比較辺を、元の実 core 円柱と商 core 円柱の間の同じ全 prism に戻す。 -/
 def coreHomotopy : SSet.Homotopy
-    (r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J)
+    ((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J)
     ((S.ι ▷ Δ[1]) ≫ U.coreWhole) := by
   let H := spanFunctorEdgeUnflipCoreHomotopy c.edge c.isInvertible c.target_inverts
-  have hF : r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J =
+  have hF : (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J =
       allEdgesCoreLift (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)
         (spanFunctorEdgeUnflip_invertsAllEdges c.edge c.isInvertible c.target_inverts) := rfl
   have hG : allEdgesCoreLift ((S.ι ▷ Δ[1]) ≫ U.whole) c.target_inverts =
@@ -228,14 +228,14 @@ lemma coreHomotopy_ι : c.coreHomotopy.h ≫ (quasicategoryCore ((ihom J).obj C.
 
 /-- 元の第一行商を始端とする全境界比較。円柱の二胞体と指定比較辺を選び直さない。 -/
 def simplexQuotientHomotopy : SSet.Homotopy
-    (r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1))
+    ((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ relativeFirstRowSimplexQuotient q (n + 1))
     (((S.ι ▷ Δ[1]) ≫ U.coreWhole) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   let H := functorHomotopyPostcomp c.coreHomotopy
     (quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj))
-  have hs : (r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J) ≫
+  have hs : ((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj) =
-      r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1) := by
+      (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ relativeFirstRowSimplexQuotient q (n + 1) := by
     apply (cancel_mono (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj)).ι).mp
     rw [Category.assoc, quasicategoryCoreMap_ι]
     rfl
@@ -251,13 +251,13 @@ lemma simplexQuotientHomotopy_ι : c.simplexQuotientHomotopy.h ≫
 
 /-- 元の亜群化比較上の、構成済み境界二胞体から得られる同じ全関手同型。 -/
 def completionComparisonIso : FunctorIso
-    ((r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
+    (((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})) ≫
       _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1))
     (((S.ι ▷ Δ[1]) ≫ U.coreWhole) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   have e := FunctorIso.precomp
-    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) r.simplexCylinder
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r)
   exact e ≪≫ functorIsoOfSimplicialHomotopy c.simplexQuotientHomotopy
 
 end VerdierRecoveredBoundaryComparison

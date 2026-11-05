@@ -57,7 +57,7 @@ variable {h : DGOdotLaxVerdierInput R d} (v : DGOdotVerdierRectangleComparisonIn
 theorem comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Spectra.Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
     IsPullbackSquare (v.rectangle.comparisonSquare ≫ E) :=
-  v.rectangle.comparisonSquare_isPullback hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback v.rectangle) hE
 
 /-- 指定した実厳密代表を、従来どおりの型・名前の入力へ輸送する。 -/
 def toStrict (t : DGOdotVerdierRectangleStrictTransport v) :
@@ -74,7 +74,7 @@ theorem toStrict_comparison_isPullback (t : DGOdotVerdierRectangleStrictTranspor
     {E : dgKInputInfinity.{u, u + 1} R ⟶ Spectra.Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
     IsPullbackSquare ((v.toStrict t).comparisonSquare ≫ E) :=
-  v.rectangle.comparison_isPullback_of_sourceIso t.boundary t.source hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparison_isPullback_of_sourceIso v.rectangle) t.boundary t.source hE
 
 /-- 輸送後も左端は元の dg 対角始域そのもの。 -/
 theorem toStrict_source (t : DGOdotVerdierRectangleStrictTransport v) :

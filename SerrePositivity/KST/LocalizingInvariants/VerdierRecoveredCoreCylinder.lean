@@ -53,22 +53,22 @@ def VerdierFiniteMappingCoconeRecovery.relativeCylinder
     S.toSSet ⊗ (Δ[1] : SSet.{u}) ⟶
       (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0]) : SSet.{u}) :=
   corePreimageLift ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)
-    r.cylinder.homotopy.h r.cylinderQuotient_invertsAllEdges
+    r.cylinder.homotopy.h (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.cylinderQuotient_invertsAllEdges r)
 
 lemma VerdierFiniteMappingCoconeRecovery.relativeCylinder_ι
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    r.relativeCylinder ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι =
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι =
       r.cylinder.homotopy.h := rfl
 
 lemma VerdierFiniteMappingCoconeRecovery.relativeCylinder_start_ι
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u})) ≫ r.relativeCylinder ≫
+    (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u})) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫
       (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι =
         S.ι ≫ r.cylinder.whole := r.cylinder.homotopy.h₀
 
 lemma VerdierFiniteMappingCoconeRecovery.relativeCylinder_end_ι
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    (SSet.ι₁ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u})) ≫ r.relativeCylinder ≫
+    (SSet.ι₁ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u})) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.relativeCylinder r) ≫
       (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι =
         r.cylinder.endCone := r.cylinder.homotopy.h₁
 
@@ -80,18 +80,18 @@ def VerdierFiniteMappingCoconeRecovery.simplexCylinder
     (r.cylinder.homotopy.h ≫ (pre (joinStdSimplexIso n 0).inv).app B.obj) (by
       rw [Category.assoc, ← (pre (joinStdSimplexIso n 0).inv).naturality q.hom,
         ← Category.assoc]
-      exact r.cylinderQuotient_invertsAllEdges.comp
+      exact (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.cylinderQuotient_invertsAllEdges r).comp
         ((pre (joinStdSimplexIso n 0).inv).app C.obj))
 
 lemma VerdierFiniteMappingCoconeRecovery.simplexCylinder_ι
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    r.simplexCylinder ≫ (relativeFirstRowSimplex q (n + 1)).ι =
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ (relativeFirstRowSimplex q (n + 1)).ι =
       r.cylinder.homotopy.h ≫ (pre (joinStdSimplexIso n 0).inv).app B.obj := rfl
 
 /-- 元の第一行商を通る同じ円柱は、元の実円柱の商像の座標変換と厳密に一致する。 -/
 lemma VerdierFiniteMappingCoconeRecovery.simplexCylinderQuotient_ι
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1) ≫
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ relativeFirstRowSimplexQuotient q (n + 1) ≫
       (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj)).ι =
       r.cylinder.homotopy.h ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom ≫
         (pre (joinStdSimplexIso n 0).inv).app C.obj := by

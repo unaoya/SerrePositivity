@@ -29,20 +29,20 @@ variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 
 lemma fiber_left_vertex : squareVertex (hE.abstractFiberTriangle d).square 0 0 =
     coherentNerveVertex (value E d.left) := by
-  change E.app (Opposite.op ⦋0⦌) (squareVertex d.presentation.square 0 0) = _
-  exact (congrArg (E.app (Opposite.op ⦋0⦌)) d.presentation.left_eq).trans
+  change E.app (Opposite.op ⦋0⦌) (squareVertex (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).square 0 0) = _
+  exact (congrArg (E.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).left_eq).trans
     (value_vertex E d.left).symm
 
 lemma fiber_middle_vertex : squareVertex (hE.abstractFiberTriangle d).square 1 0 =
     coherentNerveVertex (value E d.middle) := by
-  change E.app (Opposite.op ⦋0⦌) (squareVertex d.presentation.square 1 0) = _
-  exact (congrArg (E.app (Opposite.op ⦋0⦌)) d.presentation.middle_eq).trans
+  change E.app (Opposite.op ⦋0⦌) (squareVertex (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).square 1 0) = _
+  exact (congrArg (E.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).middle_eq).trans
     (value_vertex E d.middle).symm
 
 lemma fiber_right_vertex : squareVertex (hE.abstractFiberTriangle d).square 1 1 =
     coherentNerveVertex (value E d.right) := by
-  change E.app (Opposite.op ⦋0⦌) (squareVertex d.presentation.square 1 1) = _
-  exact (congrArg (E.app (Opposite.op ⦋0⦌)) d.presentation.right_eq).trans
+  change E.app (Opposite.op ⦋0⦌) (squareVertex (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).square 1 1) = _
+  exact (congrArg (E.app (Opposite.op ⦋0⦌)) (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).right_eq).trans
     (value_vertex E d.right).symm
 
 def fiberLeftIso : squareHoVertex (hE.abstractFiberTriangle d).square 0 0 ≅

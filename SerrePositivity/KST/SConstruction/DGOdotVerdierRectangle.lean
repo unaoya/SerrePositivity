@@ -70,7 +70,7 @@ lemma comparison_bottom_image : squareBottomEdge ≫ t.comparisonSquare ≫ dgKI
 lemma comparison_isPullback {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) :
     IsPullbackSquare (t.comparisonSquare ≫ E) :=
-  t.relativeRectangle.comparisonSquare_isPullback hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback t.relativeRectangle) hE
 
 /-- 概要：同じ E 値の右面を fiber 三角形にする。
 方針：Sp 正本の相対列を適用する。規約：元の全零化面を保持する。
@@ -83,14 +83,14 @@ lemma right_isFiber {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
 /-- 概要：同じ比較四角形の実極限錐。方針：Sp 正本の pullback 錐を使う。
 規約：候補錐を無条件な極限としない。使われ方：元の値の錐への接続。 -/
 def comparisonCone (E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}) :=
-  t.relativeRectangle.comparisonCone E
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone t.relativeRectangle) E
 
 /-- 概要：指定された同じ比較錐は実際に極限。
 方針：相対局所化条件を既存定理へ渡す。規約：未供給入力を省略しない。
 使われ方：Cat^perf 版の次工程への形式的出力。 -/
 lemma comparisonCone_isLimit {E : dgKInputInfinity.{u, u + 1} R ⟶ Sp.{u + 1}}
     (hE : IsDGKRelativeLocalizingInvariant R E) : IsLimitCone (t.comparisonCone E) :=
-  t.relativeRectangle.comparisonCone_isLimit hE
+  (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone_isLimit t.relativeRectangle) hE
 
 end DGOdotVerdierRectangleInput
 end SerrePositivity.KST.SConstruction

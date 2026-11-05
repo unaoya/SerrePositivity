@@ -38,18 +38,18 @@ def coefficientWeightedResolutionPoint (c : I) (v : (leftStrictTransport p c) _�
       (spaceInfinityVertex (kanObjectOpFunctor.obj ((leftStrictTransportFunctor p).obj c))))
         _⦋0⦌ :=
   _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex pointedSpaceProjection
-    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c) (s.coefficientWeightedPointedFiberPoint c v)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq (p := p) c) ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedPointedFiberPoint s) c v)
 
 /-- 同じ weighted 点は、頂点の表示を揃えると左解像比較の元の係数点の実像と一致。 -/
 theorem coefficientWeightedResolutionPoint_eq (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    s.coefficientWeightedResolutionPoint c v =
+    (_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedResolutionPoint s) c v =
       (pointedSpaceLeftResolutionComparison ((leftStrictTransportFunctor p).obj c)).app
         (Opposite.op ⦋0⦌) (ULift.up v) := by
   apply _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.fiberPoint_ext pointedSpaceProjection
     (spaceInfinityVertex (kanObjectOpFunctor.obj ((leftStrictTransportFunctor p).obj c)))
   have h := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (ULift.up v))
     (coherentComparison_constant_resolution (p := p) c)
-  exact (s.coefficientWeightedPointedFiberPoint_val c v).trans h
+  exact ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedPointedFiberPoint_val s) c v).trans h
 
 end ScaffoldTransportComparisonSpan
 end SerrePositivity.KST.Fibration

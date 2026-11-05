@@ -25,7 +25,7 @@ variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.S
   (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def identityDiagram (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} :=
-  (IdentityLax.verdierSequence Q).presentation
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation (IdentityLax.verdierSequence Q))
 
 lemma identityDiagram_bottom (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     squareBottomEdge ≫ (identityDiagram Q).square =
@@ -40,7 +40,7 @@ lemma identityDiagram_right (Q : _root_.SerrePositivity.InfinityCategories.Stabl
 lemma identityDiagram_left (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
     squareLeftEdge ≫ (identityDiagram Q).square =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q)).edge :=
-  (IdentityLax.verdierSequence Q).presentation_left
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation_left (IdentityLax.verdierSequence Q))
 
 def zeroComposite : A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q i r ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory Q
 

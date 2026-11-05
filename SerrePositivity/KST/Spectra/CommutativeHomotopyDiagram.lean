@@ -18,7 +18,7 @@ universe u v w
 
 open CategoryTheory SSet
 
-namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+namespace SerrePositivity.KST.Spectra.KanHomotopyGroup
 
 noncomputable section
 
@@ -87,4 +87,4 @@ def cochainComplex (D : CosimplicialObject PointedSimplicialSet.{u})
 
 end
 
-end SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+end SerrePositivity.KST.Spectra.KanHomotopyGroup

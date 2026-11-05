@@ -138,9 +138,9 @@ def productBoundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Q
     (d.productLeftEdge_class hF) (d.productRightEdge_class hF)
 
 /-- 同じ境界 homotopy の、元の全正方形への実延長。 -/
-def productBoundaryExtension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (d.productBoundaryHomotopy hF).pathFrame
+def productBoundaryExtension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (d.productBoundaryHomotopy hF))
     (d.productSquare hF) :=
-  (d.productBoundaryHomotopy hF).extension _ (d.productOldFrame_eq hF)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (d.productBoundaryHomotopy hF)) _ (d.productOldFrame_eq hF)
 
 /-- 指定した四つの実 BF 射を辺に持つ、同じ元の全正方形の移送先。 -/
 def normalizedProductSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
@@ -148,12 +148,12 @@ def normalizedProductSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
 
 /-- 元の正方形と境界を移した全正方形との実関手同型。 -/
 def normalizedProductComparison : FunctorIso (d.productSquare hF) (d.normalizedProductSquare hF) :=
-  (d.productBoundaryExtension hF).comparison
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (d.productBoundaryExtension hF))
 
 /-- 移送後の境界は、元の四つの指定 BF 射の境界そのもの。 -/
 lemma normalizedProductSquare_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ d.normalizedProductSquare hF =
     (d.productNewFrame (F := F)).diagram :=
-  (d.productBoundaryHomotopy hF).extension_target_boundary _ (d.productOldFrame_eq hF)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (d.productBoundaryHomotopy hF)) _ (d.productOldFrame_eq hF)
 
 /-- 同じ全正方形の関手同型は、実 Sp の引き戻し性を保つ。 -/
 lemma normalizedProductSquare_isPullback : IsPullbackSquare (d.normalizedProductSquare hF) :=

@@ -47,7 +47,7 @@ lemma sourceProjection_levelwise
   have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inclusion f).app j ≫ (sourceProjection f).app j) := by
     rw [he]
     exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
-  exact (inclusion_levelwise f j).cancel_left_atVertex h (e₀ j)
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (inclusion_levelwise f j)) h (e₀ j)
 
 /-- 概要：元の射が各段の π_* 同型なら終域への射影も各段の π_* 同型。
 方針：anodyne な比較との合成が元の射であることから消去する。
@@ -64,7 +64,7 @@ lemma targetProjection_levelwise
   have h : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((inclusion f).app j ≫ (targetProjection f).app j) := by
     rw [he]
     exact hf j
-  exact (inclusion_levelwise f j).cancel_left_atVertex h (e₀ j)
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (inclusion_levelwise f j)) h (e₀ j)
 
 end
 

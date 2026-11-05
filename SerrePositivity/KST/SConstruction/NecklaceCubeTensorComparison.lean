@@ -25,12 +25,12 @@ def necklaceCubeTensorIso (T U : _root_.SerrePositivity.InfinityCategories.Simpl
 lemma necklaceCubeTensorIso_hom_join (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u})
     (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.down.dimension) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.down.dimension) :
     (necklaceCubeTensorIso T U).hom.val (cubeVertexJoin x y) =
-      T.down.wedgeNumericJoin U.down x y := by
+      (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T.down) U.down x y := by
   exact (concreteCubeDimensionIso_hom_val
     (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + U.down.dimension))
     (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.wedge U.down).dimension)
     (T.down.wedge_dimension U.down).symm (cubeVertexJoin x y)).trans
-      (T.down.wedgeNumericJoin_cubeVertexJoin U.down x y).symm
+      ((_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin_cubeVertexJoin T.down) U.down x y).symm
 
 /-- 元の全端点保存射で、同じ具体的 cube tensor の比較が厳密に可換。 -/
 lemma necklaceCubeTensorIso_naturality {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}}

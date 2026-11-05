@@ -57,7 +57,7 @@ def simplexFamily : K ⟶ (relativeFirstRowSimplex q (n + 1) : SSet.{u}) :=
         ((pre (joinStdSimplexIso n 0).inv).app C.obj))
 
 lemma simplexFamily_boundary : S.ι ≫ c.simplexFamily =
-    (SSet.ι₀ : S.toSSet ⟶ P) ≫ r.simplexCylinder := by
+    (SSet.ι₀ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) := by
   apply (cancel_mono (relativeFirstRowSimplex q (n + 1)).ι).mp
   change S.ι ≫ (r.cylinder.whole ≫ (pre (joinStdSimplexIso n 0).inv).app B.obj) =
     (SSet.ι₀ : S.toSSet ⟶ P) ≫
@@ -69,11 +69,11 @@ lemma simplexFamily_boundary : S.ι ≫ c.simplexFamily =
 def completedBoundaryHomotopy : SSet.Homotopy
     (S.ι ≫ (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})))
-    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
+    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})) where
-  h := r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap _
+  h := (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap _
   h₀ := by
-    change (SSet.ι₀ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _ = S.ι ≫ c.simplexFamily ≫ _
+    change (SSet.ι₀ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _ = S.ι ≫ c.simplexFamily ≫ _
     rw [← Category.assoc, ← c.simplexFamily_boundary, Category.assoc]
   h₁ := rfl
   rel := by
@@ -92,9 +92,9 @@ structure VerdierRecoveredCompletedCylinder (c : _root_.SerrePositivity.Infinity
     (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u}))
     endpoint
   boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
-    r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
   endpoint_boundary : S.ι ≫ endpoint =
-    (SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
+    (SSet.ι₁ : S.toSSet ⟶ P) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})
 
 /-- 実円柱の始端と境界を保った延長。有限性や新しい比較仮定は不要。 -/

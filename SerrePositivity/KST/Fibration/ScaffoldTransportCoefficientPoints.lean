@@ -19,31 +19,31 @@ variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
 
 /-- 同じ相対三角の source fiber 点の全空間の値を回収する。 -/
 theorem coefficientSourceFiberPoint_val (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    (s.coefficientSourceFiberPoint c v).val =
+    ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientSourceFiberPoint s) c v).val =
       (((SSet.uliftFunctor.{u + 1, u}).map
         (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) ≫
-          s.toStrictTransportComparisonSpan.coherentComparison.hom).app
+          (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom).app
             (Opposite.op ⦋0⦌) (ULift.up v)) := by
   have hv := relativeFunctorOverPre_evaluate_val
     (leftUnstraighteningProjection (leftCoherentTransport p))
     s.toStrictTransportComparisonSpan.coherentBase (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientBase (p := p) c)
     ((_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s) c) ((_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding_over s) c)
     (s.toStrictTransportComparisonSpan.coherentSource ≫
-      s.toStrictTransportComparisonSpan.coherentComparison.hom)
-    (by rw [Category.assoc, s.toStrictTransportComparisonSpan.coherentComparison.over,
+      (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom)
+    (by rw [Category.assoc, (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).over,
       s.toStrictTransportComparisonSpan.coherentSource_over]) (ULift.up v)
   have hm : (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding s) c ≫
       (s.toStrictTransportComparisonSpan.coherentSource ≫
-        s.toStrictTransportComparisonSpan.coherentComparison.hom) =
+        (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom) =
       (SSet.uliftFunctor.{u + 1, u}).map
         (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) ≫
-          s.toStrictTransportComparisonSpan.coherentComparison.hom := by
+          (_root_.SerrePositivity.KST.Fibration.StrictTransportComparisonSpan.coherentComparison s.toStrictTransportComparisonSpan).hom := by
     rw [← Category.assoc, (_root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding_source s)]
   exact hv.trans (congrArg (fun f => f.app (Opposite.op ⦋0⦌) (ULift.up v)) hm)
 
 /-- 同じ相対三角の weighted fiber 点の全空間の値を回収する。 -/
 theorem coefficientWeightedFiberPoint_val (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    (s.coefficientWeightedFiberPoint c v).val =
+    ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedFiberPoint s) c v).val =
       (((SSet.uliftFunctor.{u + 1, u}).map
         (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
           leftCoherentTransportComparison p).app (Opposite.op ⦋0⦌) (ULift.up v)) := by

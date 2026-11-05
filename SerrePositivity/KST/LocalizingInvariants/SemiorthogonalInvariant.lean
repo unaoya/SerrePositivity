@@ -47,7 +47,7 @@ def semiorthogonalSplitEquivalence : SpectrumHo.obj
     (NativeSplit.product (hE.abstractFiberTriangle d.verdierSequence)) ≅
       SpectrumHo.obj (value E T) :=
   hE.splitEquivalence d.verdierSequence (SpectrumHo.hom (valueMap E d.rightInclusion))
-    (d.value_section E)
+    ((_root_.SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition.value_section d) E)
 
 lemma semiorthogonalSplitEquivalence_inclusion : SpectrumHo.hom (Binary.inl _ _) ≫
     (hE.semiorthogonalSplitEquivalence d).hom =

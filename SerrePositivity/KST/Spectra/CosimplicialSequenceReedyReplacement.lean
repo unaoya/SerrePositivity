@@ -91,7 +91,7 @@ lemma sequence_omegaCondition (D : CosimplicialObject KanSequence.{u})
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         ((levelUnit D (n + 1)).app j)).right at he
   rw [← he] at h
-  exact (unit_piIsomorphism D j n).cancel_left_atVertex h
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (unit_piIsomorphism D j n)) h
     ((D.obj j).level n).space.basepoint
 
 end

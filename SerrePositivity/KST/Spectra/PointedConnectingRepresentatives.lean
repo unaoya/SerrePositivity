@@ -41,7 +41,7 @@ def pointedBoundary (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryL
 
 @[reassoc (attr := simp)]
 lemma pointedBoundary_ι (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint s) :
-    L.pointedBoundary.map ≫ (pointedFiberι p).right =
+    (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L).map ≫ (pointedFiberι p).right =
       stdSimplex.δ (Fin.last (n + 1)) ≫ L.map := L.boundary_ι
 
 variable [Fibration p.right]
@@ -53,9 +53,9 @@ variable [Fibration p.right]
 lemma pointedFiberGroupEquiv_mk {r : ℕ}
     {t : B.right.PtSimplex (r + 2) (p.right.app _ E.basepoint)}
     (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p.right E.basepoint t) :
-    pointedFiberGroupEquiv p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.pointedBoundary) =
+    pointedFiberGroupEquiv p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) =
       _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.boundary := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.pointedBoundary) = _
+  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (𝟙 _) _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)) = _
   rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
   congr 1
 
@@ -72,7 +72,7 @@ theorem pointedConnectingHom_boundaryLift {E B : PointedSimplicialSet.{u}}
     pointedConnectingHom p r
         (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) (Iso.refl B.right)
           (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk L.pointedBoundary := by
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L) := by
   apply (pointedFiberGroupEquiv p r).injective
   rw [pointedConnectingHom_compute, MulEquiv.symm_apply_apply,
     BoundaryLift.pointedFiberGroupEquiv_mk, _root_.SerrePositivity.InfinityCategories.Kan.connectingHom_apply,

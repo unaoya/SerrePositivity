@@ -74,15 +74,15 @@ def VerdierSequence.presentation (d : _root_.SerrePositivity.InfinityCategories.
     zero_corner := by rw [hz, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]; exact _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero }
 
 lemma VerdierSequence.presentation_sequence (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}) :
-    (VerdierSequence.presentation d).toVerdierSequence = d := rfl
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).toVerdierSequence = d := rfl
 
 lemma VerdierSequence.presentation_left (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}) :
-    squareLeftEdge ≫ (VerdierSequence.presentation d).square =
+    squareLeftEdge ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).square =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory d.left)).edge :=
   (Classical.choose_spec (exists_verdierSquare d)).2.2.1
 
 lemma VerdierSequence.presentation_top (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u}) :
-    squareTopEdge ≫ (VerdierSequence.presentation d).square =
+    squareTopEdge ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation d).square =
       SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (fromZeroCategory d.right)).edge :=
   (Classical.choose_spec (exists_verdierSquare d)).2.1
 

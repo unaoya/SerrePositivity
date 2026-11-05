@@ -54,7 +54,7 @@ lemma signedEvaluationCompatibleSource_piIsomorphism_iff (X Y : OmegaSpectrum.{u
     rw [Under.comp_right, Under.comp_right] at hc
     rw [hc] at hcomp
     exact (signedEvaluationSource_piIsomorphism_iff X Y).mp
-      (hs.cancel_left_atVertex hcomp (pointedSpace CirclePower.space.{u} X Y).basepoint)
+      ((_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex hs) hcomp (pointedSpace CirclePower.space.{u} X Y).basepoint)
   · intro h
     have hcomp := hs.comp ((signedEvaluationSource_piIsomorphism_iff X Y).mpr h)
     rw [Under.comp_right, Under.comp_right] at hc

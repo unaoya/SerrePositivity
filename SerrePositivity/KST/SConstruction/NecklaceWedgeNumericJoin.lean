@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.CubeVertexBlockCoordinates
 -/
 @[expose] public section
 noncomputable section
-namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の非 joint 頂点で貼った Bool 関数を、元の右端数値座標で読む。 -/
 def wedgeNumericJoin (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension)
@@ -21,21 +21,21 @@ def wedgeNumericJoin (T U : _root_.SerrePositivity.InfinityCategories.Simplicial
 /-- 元の連結の左数値座標で、元の左の入力を回収する。 -/
 lemma wedgeNumericJoin_left (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension)
     (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.dimension) (i : Fin T.dimension) :
-    T.wedgeNumericJoin U x y (T.wedgeCoordinateLeft U i) = x i := by
+    (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T) U x y (T.wedgeCoordinateLeft U i) = x i := by
   rw [wedgeNumericJoin, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate_wedge_left, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin_left]
   exact congrArg x (T.nonjointCoordinate.symm_apply_apply i)
 
 /-- 元の連結の右数値座標で、元の右の入力を回収する。 -/
 lemma wedgeNumericJoin_right (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension)
     (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.dimension) (i : Fin U.dimension) :
-    T.wedgeNumericJoin U x y (T.wedgeCoordinateRight U i) = y i := by
+    (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T) U x y (T.wedgeCoordinateRight U i) = y i := by
   rw [wedgeNumericJoin, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate_wedge_right, _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin_right]
   exact congrArg y (U.nonjointCoordinate.symm_apply_apply i)
 
 /-- 元の全数値頂点で、necklace の連結は元の cubeVertexJoin の次元移送と一致する。 -/
 lemma wedgeNumericJoin_cubeVertexJoin (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension)
     (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.dimension) :
-    T.wedgeNumericJoin U x y =
+    (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T) U x y =
       fun i => cubeVertexJoin x y (Fin.cast (T.wedge_dimension U) i) := by
   funext j
   rcases T.wedgeCoordinate_cases U j with ⟨i, rfl⟩ | ⟨i, rfl⟩
@@ -44,4 +44,4 @@ lemma wedgeNumericJoin_cubeVertexJoin (T U : _root_.SerrePositivity.InfinityCate
   · rw [wedgeNumericJoin_right]
     exact (cubeVertexJoin_right_coordinate x y i).symm
 
-end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape

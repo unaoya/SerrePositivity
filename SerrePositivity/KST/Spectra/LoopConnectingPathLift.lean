@@ -75,7 +75,7 @@ lemma pathLift_endpoint : (pathLift p V).map ≫ (pathEndpoint E).right = SSet.c
 def boundaryLoop : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber p)).right.PtSimplex (n)
     (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber p)).basepoint :=
   _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (loopPointedFiberIso p).inv.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso p).inv) V.pointedBoundary
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (loopPointedFiberIso p).inv) (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary V)
 
 /-- 概要：fiber の loop の代表を全空間の path へ含めると、pathLift の最後の面。
 方針：loop–fiber の逆同型の包含公式を使い、二つの最後の面の等式を比較する。
@@ -88,7 +88,7 @@ lemma boundaryLoop_path_include :
         ((basedPathMap p).right.app _ (basedPathSpace E).basepoint) := by
   have hn := congrArg Under.Hom.right (PointedMapping.loopFiber_toPath p)
   simp only [Under.comp_right] at hn
-  change (V.pointedBoundary.map ≫ (loopPointedFiberIso p).inv.right) ≫ _ ≫ _ = _
+  change ((_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary V).map ≫ (loopPointedFiberIso p).inv.right) ≫ _ ≫ _ = _
   rw [Category.assoc, hn, ← Category.assoc, BoundaryLift.pointedBoundary_ι,
     _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_ι]
   rfl

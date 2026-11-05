@@ -54,7 +54,7 @@ def loopSimplex : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpac
 
 /-- loop の代表を path に含めると元の充填の最後の面へ戻る。 -/
 @[reassoc]
-lemma loopSimplex_toPath : M.loopSimplex.map ≫ (PointedMapping.loopToPath Y).right =
+lemma loopSimplex_toPath : (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M).map ≫ (PointedMapping.loopToPath Y).right =
     stdSimplex.δ (Fin.last (n + 2)) ≫ M.map := by
   change (M.boundary.map ≫ (loopBasedPathFiberIso Y).inv) ≫ _ = _
   rw [← PointedMapping.loopToPath_fiber, Category.assoc, Iso.inv_hom_id_assoc]
@@ -65,20 +65,20 @@ lemma loopSimplex_toPath : M.loopSimplex.map ≫ (PointedMapping.loopToPath Y).r
 規約：標準基点への移送を式に保持する。
 使われ方：Goerss–Jardine I §7–8。標準の loop 同型への代表の接続。 -/
 lemma loopPositive_loopSimplex [KanComplex Y.right] :
-    loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.loopSimplex) =
+    loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
       _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
         (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) := by
   let b := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n + 1) (Iso.refl Y.right) (pathEndpoint_basepoint Y)
   have hf : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (loopBasedPathFiberIso Y)
-      (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.loopSimplex) =
+      (loopBasedPathFiberIso_basepoint Y) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) =
       _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.boundary := by
     change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (loopBasedPathFiberIso Y).hom _
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.loopSimplex) = _
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)) = _
     rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk]
     congr 1
     ext : 1
     simp only [loopSimplex, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex, Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  have he : b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.loopSimplex)) =
+  have he : b.symm (loopPositiveHomotopyEquiv Y n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M))) =
       _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s := by
     apply (_root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (pathEndpoint Y).right
       (basedPathSpace Y).basepoint n).injective

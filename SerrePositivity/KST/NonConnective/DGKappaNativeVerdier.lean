@@ -124,7 +124,7 @@ def dgKappaNativeVerdierSequence : _root_.SerrePositivity.InfinityCategories.Sta
 規約：零角付き提示の選択は保持する。固定 S 内の既存の条件付き屋根を変更しない。
 使われ方：K-6 c4・c5 の同じ native 全四角形比較の利用側。 -/
 def dgKappaNativeVerdierDiagram : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{max (u + 1) v} :=
-  (dgKappaNativeVerdierSequence R D I).presentation
+  (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierSequence.presentation (dgKappaNativeVerdierSequence R D I))
 
 /-- 概要：同じ native 四角形の包含辺は、D-9 の同じ実包含の全一単体。
 方針：元の Sp 提示の包含辺回収を使う。

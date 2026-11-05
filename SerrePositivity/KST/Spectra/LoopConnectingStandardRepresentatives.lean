@@ -40,14 +40,14 @@ def sourceLoop : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
   SimplexBasepoint.rebase
     (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p)).symm
-    M.loopSimplex
+    (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M)
 
 /-- loop の標準基点へ戻すと、path の最後の面の元の代表の類になる。 -/
 lemma sourceLoop_class [KanComplex B.right] :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (n) (Iso.refl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right)
         (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
           (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p))
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (sourceLoop p s M)) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk M.loopSimplex := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (sourceLoop p s M)) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex M) := by
   rw [SimplexBasepoint.group_mk]
   congr 1
 
@@ -69,7 +69,7 @@ lemma sourceLoop_positive [KanComplex B.right] :
 
 /-- path に含めた源の loop の単体は、元の path 充填の最後の面そのもの。 -/
 lemma sourceLoop_toPath : (pathSimplex p (v := sourceLoop p s M)).map =
-    stdSimplex.δ (Fin.last (n + 2)) ≫ M.map := M.loopSimplex_toPath
+    stdSimplex.δ (Fin.last (n + 2)) ≫ M.map := (_root_.SerrePositivity.KST.Spectra.BoundaryLift.loopSimplex_toPath M)
 
 /-- 概要：標準の二つの連結射の充填から共通の path の単体を構成する。
 方針：二つの充填の共通持ち上げの最後の面を取り、fiber 内の終点が元の境界に等しいと示す。

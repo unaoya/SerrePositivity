@@ -16,7 +16,7 @@ variable {I : Type u} [Category.{u} I] {E : SSet.{u}} (p : E ⟶ nerve I) [LeftF
 
 /-- 元の scaffold の係数点を保持する比較を、同じ相対表現への指定比較と合成する。 -/
 def scaffoldNerveRepresentationIso : FunctorIso (leftStraighteningCandidate p) R.diagram :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso ≪≫
+  (_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.candidateNativeIso (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p)) ≪≫
     nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p) R
 
 /-- 元の係数点は、同じ恒等射評価の実 fiber 点を表現の pointedMap へ送った点に移る。 -/
@@ -33,14 +33,14 @@ theorem scaffoldNerveRepresentationIso_pointHom (c : I)
         (ULift.up ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)))) := by
   let a := ULift.up.{u + 1} (nerveVertex c)
   let φ := nativeRepresentationComparisonIso p (nativeLeftTransportRepresentation p) R
-  have hs := (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso_pointHom c v
+  have hs := (_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.candidateNativeIso_pointHom (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p)) c v
   have he := congrArg (fun m => m ≫ functorHomEvaluate φ.hom a) hs
   have hr := nativeRepresentationComparisonIso_pointHom p R (nerveVertex c)
     ((leftStrictTransportEvaluate p c).app (Opposite.op ⦋0⦌) v)
   have h := he.trans hr
   simp only [Category.assoc] at h
   change _ ≫ _ ≫ functorHomEvaluate
-    ((_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p).candidateNativeIso.hom ≫ φ.hom) a = _
+    ((_root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.candidateNativeIso (_root_.SerrePositivity.InfinityCategories.F1.Transport.scaffoldTransportComparisonSpan p)).hom ≫ φ.hom) a = _
   rw [functorHomEvaluate_comp]
   exact h
 

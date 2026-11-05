@@ -64,7 +64,7 @@ lemma kanWeightMap_piIsomorphism (j : SimplexCategory) :
     rfl
   have hiπ := kanPiIsomorphism_of_anodyne i hi
   have hkπ := kanPiIsomorphism_of_anodyne k hk
-  apply hiπ.cancel_left_atVertex (x := stdSimplex.obj₀Equiv.symm (0 : Fin 1))
+  apply (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex hiπ) (x := stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   rw [he]
   exact hkπ
 

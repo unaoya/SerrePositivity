@@ -24,7 +24,7 @@ lemma simplexHABeadWordBoundaryValue_zero {n : ℕ} (s : DGNerve.SimplexData A D
     have hc : I.card = 2 := by omega
     exact (congrArg (fun w => serreCubeOrientationSign (I.card - 2) • w)
       (DGNerve.SimplexData.rhs_of_card_two s I _ _ _ hI rfl rfl (by omega) hc)).trans (smul_zero _)
-  | @_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join a b c p q left right ihL ihR =>
+  | @join a b c p q left right ihL ihR =>
     intro hd
     have hl := ihL (by omega)
     have hr := ihR (by omega)

@@ -51,14 +51,14 @@ def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicat
   _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.squareFrameEdgesHomotopy _ _ _ _ _ _ _ _ rfl
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientDLeg_cofiber p q Φ) rfl (_root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientCLeg_cofiber p q Φ)
 
-def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (boundaryHomotopy (Φ := Φ) p q).pathFrame
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (boundaryHomotopy (Φ := Φ) p q))
     (original hΦ p q v adj hv) :=
-  (boundaryHomotopy (Φ := Φ) p q).extension _ (oldFrame_eq hΦ p q v adj hv)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (boundaryHomotopy (Φ := Φ) p q)) _ (oldFrame_eq hΦ p q v adj hv)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (extension hΦ p q v adj hv).target
 
 def comparison : FunctorIso (original hΦ p q v adj hv) (square hΦ p q v adj hv) :=
-  (extension hΦ p q v adj hv).comparison
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (extension hΦ p q v adj hv))
 
 lemma square_isPullback : IsPullbackSquare (square hΦ p q v adj hv) :=
   (LaxQuotientPullback.square_isPullback hΦ p q _ _ _).of_functorIso
@@ -66,7 +66,7 @@ lemma square_isPullback : IsPullbackSquare (square hΦ p q v adj hv) :=
 
 lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ square hΦ p q v adj hv =
     (newFrame (Φ := Φ) p q).diagram :=
-  (boundaryHomotopy (Φ := Φ) p q).extension_target_boundary _ (oldFrame_eq hΦ p q v adj hv)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (boundaryHomotopy (Φ := Φ) p q)) _ (oldFrame_eq hΦ p q v adj hv)
 
 lemma square_bottom : squareBottomEdge ≫ square hΦ p q v adj hv = SSet.yonedaEquiv.symm
     (coherentNerveEdge (LaxQuotientPullback.cSource (Φ := Φ) p q (pullbackInclusion p q))).edge :=

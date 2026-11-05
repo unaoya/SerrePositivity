@@ -55,7 +55,7 @@ lemma map_piIsomorphism {X Y : CosimplicialObject SSet.{u}}
     (unit.app X).app j ≫ (functor.map f).app j at hn
   have hc := (hf j).comp (unit_piIsomorphism Y j)
   rw [hn] at hc
-  exact (unit_piIsomorphism X j).cancel_left_atVertex hc (e₀ j)
+  exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (unit_piIsomorphism X j)) hc (e₀ j)
 
 end
 

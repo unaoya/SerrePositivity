@@ -44,7 +44,7 @@ def cofiberBoundarySimplex {n : ℕ}
     (PointedObject.basedHom (relativeSource i) Y).right.PtSimplex n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom (relativeSource i) Y)) :=
   _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (restrictionFiberIso i Y).inv.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionFiberIso i Y).inv) L.pointedBoundary
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (restrictionFiberIso i Y).inv) (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L)
 
 /-- 概要：相対商の代表を元の写像空間へ戻すと指定した充填の最後の面。
 方針：fiber 表示の逆射の射影式と最後の面の包含公式を合成する。
@@ -63,9 +63,9 @@ lemma cofiberBoundarySimplex_projection {n : ℕ}
     (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
       (pointedCofiberProjection (PointedObject.adjoinFunctor.map i)) Y).right ≫
       (freeHomIso B Y).hom.right = (pointedFiberι (pre i Y)).right at h
-  change (L.pointedBoundary.map ≫ (restrictionFiberIso i Y).inv.right) ≫ _ ≫ _ = _
+  change ((_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary L).map ≫ (restrictionFiberIso i Y).inv.right) ≫ _ ≫ _ = _
   rw [Category.assoc, h]
-  exact L.pointedBoundary_ι
+  exact (_root_.SerrePositivity.KST.Spectra.BoundaryLift.pointedBoundary_ι L)
 
 /-- 概要：連結準同型の相対商表示は任意の充填から作った単体の類。
 方針：標準基点での連結射の代表公式を相対商の写像空間へ送る。

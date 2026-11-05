@@ -64,18 +64,18 @@ def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicat
     (coherentNerveEdge (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r)))
     (valueMap_comp_hom Φ i (laxFst p q)) rfl (valueMap_comp_hom Φ i (laxSnd p q)) rfl
 
-def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (boundaryHomotopy Φ p q i r).pathFrame
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (boundaryHomotopy Φ p q i r))
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare p q i r h Φ) :=
-  (boundaryHomotopy Φ p q i r).extension _ (oldFrame_eq Φ p q i r h)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (boundaryHomotopy Φ p q i r)) _ (oldFrame_eq Φ p q i r h)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (extension Φ p q i r h).target
 
 def comparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare p q i r h Φ)
-    (square Φ p q i r h) := (extension Φ p q i r h).comparison
+    (square Φ p q i r h) := (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (extension Φ p q i r h))
 
 lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ square Φ p q i r h =
     (newFrame Φ p q i r).diagram :=
-  (boundaryHomotopy Φ p q i r).extension_target_boundary _ (oldFrame_eq Φ p q i r h)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (boundaryHomotopy Φ p q i r)) _ (oldFrame_eq Φ p q i r h)
 
 lemma square_bottom : squareBottomEdge ≫ square Φ p q i r h =
     SSet.yonedaEquiv.symm (coherentNerveEdge (valueMap Φ i ≫ valueMap Φ (laxFst p q))).edge :=

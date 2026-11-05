@@ -120,18 +120,18 @@ def boundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicat
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.bottom_class hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.top_class hΦ p q i r h)
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.left_class hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.right_class hΦ p q i r h)
 
-def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h).pathFrame
+def extension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.pathFrame (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h))
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) :=
-  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h).extension _ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame_eq hΦ p q i r h)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h)) _ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame_eq hΦ p q i r h)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.extension hΦ p q i r h).target
 
 def comparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square hΦ p q i r h) :=
-  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.extension hΦ p q i r h).comparison
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.comparison (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.extension hΦ p q i r h))
 
 lemma square_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square hΦ p q i r h =
     (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.newFrame (Φ := Φ) p q i r).diagram :=
-  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h).extension_target_boundary _ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame_eq hΦ p q i r h)
+  (_root_.SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.extension_target_boundary (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy hΦ p q i r h)) _ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame_eq hΦ p q i r h)
 
 lemma square_isPullback : IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square hΦ p q i r h) :=
   (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProduct.square_isPullback hΦ p q i r h).of_functorIso

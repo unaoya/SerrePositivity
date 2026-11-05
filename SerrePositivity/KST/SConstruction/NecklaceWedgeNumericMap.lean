@@ -17,8 +17,8 @@ open CategoryTheory
 /-- 元の全 necklace 射の数値作用は、元の左右の頂点の連結を厳密に保つ。 -/
 lemma necklaceNumericMap_wedge_join {T T' U U' : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}} (f : T ⟶ T') (g : U ⟶ U')
     (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.down.dimension) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex U.down.dimension) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f g) (T.down.wedgeNumericJoin U.down x y) =
-      T'.down.wedgeNumericJoin U'.down (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f x) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap g y) := by
+    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f g) ((_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T.down) U.down x y) =
+      (_root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeNumericJoin T'.down) U'.down (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap f x) (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap g y) := by
   funext j
   dsimp only [_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap, NecklaceShape.wedgeNumericJoin]
   simp only [Equiv.apply_symm_apply]

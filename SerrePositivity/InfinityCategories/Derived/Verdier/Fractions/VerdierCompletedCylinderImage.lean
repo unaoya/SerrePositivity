@@ -54,14 +54,14 @@ structure VerdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityCate
   start_eq : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ whole =
     c.simplexFamily ≫ relativeFirstRowSimplexQuotient q (n + 1)
   boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ whole =
-    r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1)
+    (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ relativeFirstRowSimplexQuotient q (n + 1)
   start_unit_eq : ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ▷
       (Δ[1] : SSet.{u})) ≫ homotopy.h =
     (c.simplexFamily ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
   boundary_unit_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
-    (r.simplexCylinder ▷ (Δ[1] : SSet.{u})) ≫
+    ((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
         (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
 
@@ -89,13 +89,13 @@ lemma exists_verdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityC
     rfl
   have hc : (S.ι ▷ (Δ[0] : SSet.{u})) ≫
       (fst K (Δ[0] : SSet.{u}) ≫ c.simplexFamily) =
-      (S.toSSet ◁ stdSimplex.δ (1 : Fin 2)) ≫ r.simplexCylinder := by
+      (S.toSSet ◁ stdSimplex.δ (1 : Fin 2)) ≫ (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) := by
     rw [whiskerRight_fst_assoc, c.simplexFamily_boundary, hface, Category.assoc]
   let R : pp.pt ⟶ E := pp.isPushout.desc
-    (fst K (Δ[0] : SSet.{u}) ≫ c.simplexFamily) r.simplexCylinder hc
+    (fst K (Δ[0] : SSet.{u}) ≫ c.simplexFamily) (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) hc
   have hRl : pp.inl ≫ R = fst K (Δ[0] : SSet.{u}) ≫ c.simplexFamily :=
     pp.isPushout.inl_desc _ _ _
-  have hRr : pp.inr ≫ R = r.simplexCylinder := pp.isPushout.inr_desc _ _ _
+  have hRr : pp.inr ≫ R = (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) := pp.isPushout.inr_desc _ _ _
   have hXraw : pp.ι ≫ X.homotopy.h = R ≫ e := by
     apply pp.isPushout.hom_ext
     · calc
@@ -108,7 +108,7 @@ lemma exists_verdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityC
     · calc
         _ = (S.ι ▷ (Δ[1] : SSet.{u})) ≫ X.homotopy.h := by
           rw [← Category.assoc, hR]
-        _ = r.simplexCylinder ≫ e := X.boundary_eq
+        _ = (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ e := X.boundary_eq
         _ = _ := by rw [← Category.assoc, hRr]
   have hX : pp.ι ≫ (X.homotopy.h ≫ p) = R ≫ (e ≫ p) := by
     simpa only [Category.assoc] using congrArg (fun t => t ≫ p) hXraw
@@ -129,7 +129,7 @@ lemma exists_verdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityC
   have hstart' : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ V = c.simplexFamily ≫ Q := by
     rw [← LargeParameterHomotopy.section_zero K, Category.assoc, hstart]
     rfl
-  have hboundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ V = r.simplexCylinder ≫ Q := by
+  have hboundary : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ V = (_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ≫ Q := by
     calc
       _ = (pp.inr ≫ pp.ι) ≫ V := congrArg (fun t => t ≫ V) hR.symm
       _ = _ := by rw [Category.assoc, hV, ← Category.assoc, hRr]
@@ -150,7 +150,7 @@ lemma exists_verdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityC
       rfl
     simpa only [hl, hr] using hz
   have hbUnit : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ HV.h =
-      (r.simplexCylinder ▷ (Δ[1] : SSet.{u})) ≫ Hunit.h := by
+      ((_root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.simplexCylinder r) ▷ (Δ[1] : SSet.{u})) ≫ Hunit.h := by
     simpa only [hR, hRr] using hunit P pp.inr
   exact ⟨⟨V, HV, hstart', hboundary, hsUnit, hbUnit⟩⟩
 

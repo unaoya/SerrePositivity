@@ -54,7 +54,7 @@ lemma simplexHABeadWordRawValue_differential {n : ℕ} (s : DGNerve.Simplex A D 
     exact (differential_units_smul A (serreCubeOrientationSign (I.card - 2)) _).trans
       (congrArg (fun w => serreCubeOrientationSign (I.card - 2) • w)
         (s.equation I _ _ (-((I.card - 2 : ℕ) : ℤ)) hI rfl rfl (by omega)))
-  | @_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord.join a b c p q left right ihL ihR =>
+  | @join a b c p q left right ihL ihR =>
     exact (simplexHABeadWordRawValue_join_differential A s.toSimplexData left right).trans
       (congrArg₂ (fun x y => forward A x (simplexHABeadWordRawValue A s.toSimplexData right)
         (show (-(p : ℤ) + 1) + -(q : ℤ) = -((p + q : ℕ) : ℤ) + 1 by omega) +
