@@ -17,31 +17,31 @@ open scoped Simplicial
 namespace PerfectLaxQuotient
 local instance productBoundarySimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 同じ境界変形の bottom 辺は、元の同じ実 BF 射そのもの。 -/
 lemma normalizedProductSquare_bottom : squareBottomEdge ≫ d.normalizedProductSquare hF =
     SSet.yonedaEquiv.symm (coherentNerveEdge (d.valueProductInclusion F)).edge :=
-  SquareFrame.square_bottom_of_boundary _ (d.normalizedProductSquare_boundary hF)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_bottom_of_boundary _ (d.normalizedProductSquare_boundary hF)
 
 /-- 同じ境界変形の top 辺は、元の同じ実 BF 射そのもの。 -/
 lemma normalizedProductSquare_top : squareTopEdge ≫ d.normalizedProductSquare hF =
     SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift
       (𝟙 (perfectInvariantSpectrum F d.sequence.rightVertex))
       (𝟙 (perfectInvariantSpectrum F d.sequence.rightVertex)))).edge :=
-  SquareFrame.square_top_of_boundary _ (d.normalizedProductSquare_boundary hF)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_top_of_boundary _ (d.normalizedProductSquare_boundary hF)
 
 /-- 同じ境界変形の left 辺は、元の同じ実 BF 射そのもの。 -/
 lemma normalizedProductSquare_left : squareLeftEdge ≫ d.normalizedProductSquare hF =
     SSet.yonedaEquiv.symm (coherentNerveEdge (d.valueKernelMap F)).edge :=
-  SquareFrame.square_left_of_boundary _ (d.normalizedProductSquare_boundary hF)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_left_of_boundary _ (d.normalizedProductSquare_boundary hF)
 
 /-- 同じ境界変形の right 辺は、元の同じ実 BF 射そのもの。 -/
 lemma normalizedProductSquare_right : squareRightEdge ≫ d.normalizedProductSquare hF =
     SSet.yonedaEquiv.symm (coherentNerveEdge (d.productLegMap F)).edge :=
-  SquareFrame.square_right_of_boundary _ (d.normalizedProductSquare_boundary hF)
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_right_of_boundary _ (d.normalizedProductSquare_boundary hF)
 
 /-- 同じ全引き戻し正方形を、積射・対角の cospan 入力の向きへ転置する。 -/
 def productCospanInputSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
@@ -55,21 +55,21 @@ lemma productCospanInputSquare_isPullback : IsPullbackSquare (d.productCospanInp
 lemma productCospanInputSquare_top : squareTopEdge ≫ d.productCospanInputSquare hF =
     SSet.yonedaEquiv.symm
       (coherentNerveEdge (Binary.map (d.valueCLeg F) (d.valueDLeg F))).edge := by
-  rw [productCospanInputSquare, square_transpose_top, d.normalizedProductSquare_right]
+  rw [productCospanInputSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_top, d.normalizedProductSquare_right]
   rfl
 
 /-- 同じ入力正方形の右辺は、元の完備化先の値の実対角。 -/
 lemma productCospanInputSquare_right : squareRightEdge ≫ d.productCospanInputSquare hF =
     SSet.yonedaEquiv.symm (coherentNerveEdge
       (BinaryGraph.diagonal (perfectInvariantSpectrum F d.sequence.rightVertex))).edge := by
-  rw [productCospanInputSquare, square_transpose_right, d.normalizedProductSquare_top]
+  rw [productCospanInputSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_right, d.normalizedProductSquare_top]
   rfl
 
 /-- 同じ入力正方形の左辺は、元の C・D への同じ実射対。 -/
 lemma productCospanInputSquare_left : squareLeftEdge ≫ d.productCospanInputSquare hF =
     SSet.yonedaEquiv.symm
       (coherentNerveEdge (Binary.lift (d.valueCSource F) (d.valueDSource F))).edge := by
-  rw [productCospanInputSquare, square_transpose_left, d.normalizedProductSquare_bottom]
+  rw [productCospanInputSquare, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.square_transpose_left, d.normalizedProductSquare_bottom]
   rfl
 
 end PerfectLaxQuotient

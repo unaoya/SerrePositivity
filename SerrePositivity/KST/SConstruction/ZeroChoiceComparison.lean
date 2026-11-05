@@ -55,7 +55,7 @@ def realizationZeroEdge (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
 規約：Kan 置換の基礎単体集合は変更しない。使われ方：零対象の選択の比較。 -/
 def kSpaceAtZero (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
     (z : C _⦋0⦌) (hz : IsZeroVertex z) : PointedSimplicialSet.{u} :=
-  Spectra.loopSpace (PointedSimplicialSet.ofVertex (kanSRealization C).right
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSimplicialSet.ofVertex (kanSRealization C).right
     (realizationZeroPoint C z hz))
 
 /-- 概要：任意の零対象を使った K 空間も Kan。
@@ -72,7 +72,7 @@ lemma kSpaceAtZero_comparison (C : SSet.{u}) [Quasicategory C] [HasZeroVertex C]
     (z z' : C _⦋0⦌) (hz : IsZeroVertex z) (hz' : IsZeroVertex z') :
     ∃ P : Spectra.PointedKanComplex.{u},
       ∃ (f : P.space ⟶ kSpaceAtZero C z hz) (g : P.space ⟶ kSpaceAtZero C z' hz'),
-        Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right :=
+        _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right :=
   exists_loopBasepointComparison (realizationZeroEdge C z z' hz hz')
 
 /-- 概要：任意の点つき単体集合は自身の基点による ofVertex 表示と等しい。
@@ -112,7 +112,7 @@ lemma kSpace_zeroChoice_comparison (C : SSet.{u}) [Quasicategory C] [HasZeroVert
     (z : C _⦋0⦌) (hz : IsZeroVertex z) :
     ∃ P : Spectra.PointedKanComplex.{u},
       ∃ (f : P.space ⟶ kSpace C) (g : P.space ⟶ kSpaceAtZero C z hz),
-        Spectra.KanPiIsomorphism f.right ∧ Spectra.KanPiIsomorphism g.right := by
+        _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right := by
   exact kanComparison_congr_left (kSpaceAtZero_chosen C)
     (kSpaceAtZero_comparison C _ z (chosenZeroVertex C).isZero hz)
 

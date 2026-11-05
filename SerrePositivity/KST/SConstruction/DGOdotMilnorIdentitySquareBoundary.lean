@@ -55,7 +55,7 @@ lemma dgOdotMilnorIdentityNullSquare_perfect_difference :
 /-- 概要：同じ元基底値同値を右面始域の指定完全射にする。
 方針：元の順方向とその同値完全性を束ねる。規約：同じ比較を保持。
 使われ方：四辺比較で共通に使う始域成分。 -/
-def dgOdotMilnorIdentityBaseComparison : ExactMap (C) (Q) :=
+def dgOdotMilnorIdentityBaseComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (C) (Q) :=
   ⟨(dgOdotMilnorIdentityBaseValueEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence⟩
@@ -66,14 +66,14 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 /-- 概要：同じ供給中央同値を指定完全射にする。
 方針：元の順方向の完全性を束ねる。規約：二境界で同じ成分を使う。
 使われ方：実右面の共有中央頂点成分。 -/
-def completedMiddleMap : ExactMap (L) (Λ) :=
+def completedMiddleMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (L) (Λ) :=
   ⟨v.completedGluing.hom,
     isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
 
 /-- 概要：同じ供給終域同値を元商への指定完全射にする。
 方針：元基底値同値を後合成する。規約：差と零上辺で同じ成分を使う。
 使われ方：実右面の共有終域頂点成分。 -/
-def completedTargetMap : ExactMap (D) (Q) :=
+def completedTargetMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (D) (Q) :=
   ⟨(v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).hom,
     isExactFunctor_of_isQCatEquivalence
       (v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).isQCatEquivalence⟩
@@ -128,17 +128,17 @@ def differenceArrowComparison : FunctorIso
 /-- 概要：絶対恒等提示から同じ実右零化面への三つの指定全境界比較。
 方針：元四辺回収と構成した包含・商・零角比較を同じ向きで束ねる。
 規約：全四角形比較の存在は別工程。使われ方：Sp 正本の右面全比較の境界引数。 -/
-def squareBoundary (h : DGGluingMilnorSquare R d) : VerdierSquareBoundaryIso
+def squareBoundary (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) where
-  inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_diagonal R d).symm
     (PerfectVerdierSequence.presentation_bottom (perfectIdentityLaxSequence (Q) (hQ))).symm).symm
-  quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_difference R d).symm (by
       change _ = squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square
       rw [PerfectVerdierSequence.presentation_right, perfectIdentityLaxSequence_projection]
       rfl)).symm
-  zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h
 end DGOdotMilnorIdentityLaxComparisonInput
 end SerrePositivity.KST.SConstruction

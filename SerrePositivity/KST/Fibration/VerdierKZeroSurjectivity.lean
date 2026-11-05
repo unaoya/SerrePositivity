@@ -20,13 +20,13 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 完全関手の元の三角圏 Grothendieck 群への作用。 -/
-def stableKZeroMap {X Y : StableCategory.{u}} (F : ExactMap X Y) :
+def stableKZeroMap {X Y : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap X Y) :
     TriangulatedK0 (hoFunctor.obj X.obj) →+ TriangulatedK0 (hoFunctor.obj Y.obj) :=
   TriangulatedK0.map (hoFunctor.map F.hom).toFunctor
 
 /-- 各対象が像と同型なら、同じ元の完全関手の三角圏 K₀ への作用は全射。 -/
 theorem stableKZeroMap_surjective_of_essentiallySurjective
-    {X Y : StableCategory.{u}} (F : ExactMap X Y) (hF : IsEssentiallySurjective F.hom) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap X Y) (hF : IsEssentiallySurjective F.hom) :
     Function.Surjective (stableKZeroMap F) := by
   let M := stableKZeroMap F
   have hg : ∀ a : hoFunctor.obj Y.obj, TriangulatedK0.mk a ∈ M.range := by
@@ -53,8 +53,8 @@ theorem stableKZeroMap_surjective_of_essentiallySurjective
       simpa only [QuotientAddGroup.mk_add] using M.range.add_mem hb hc
 
 /-- 元の Verdier 商射は、同じ三角圏 K₀ の実準同型で全射。 -/
-theorem verdierKZeroMap_surjective {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q) :
+theorem verdierKZeroMap_surjective {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     Function.Surjective (stableKZeroMap q) :=
   stableKZeroMap_surjective_of_essentiallySurjective q
     (localization_isEssentiallySurjective q.hom _ h.quotient)

@@ -31,15 +31,15 @@ structure CompositionTripleRightTetrahedron {E : SSet.{u}} {w x y z : E _⦋0⦌
   /-- 元の全三面を持つ同じ実三単体。 -/
   simplex : E _⦋3⦌
   /-- 後の二射の元の全合成面。 -/
-  second_face : E.δ 0 simplex = second.simplex
+  second_face : E.δ 0 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = second.simplex
   /-- 左結合の元の全合成面。 -/
-  left_face : E.δ 1 simplex = left.simplex
+  left_face : E.δ 1 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = left.simplex
   /-- 前の二射の元の全合成面。 -/
-  first_face : E.δ 3 simplex = first.simplex
+  first_face : E.δ 3 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex = first.simplex
   /-- 同じ四面体の右結合の実合成面。 -/
   right : SSet.Edge.CompStruct a bc abc
   /-- 新しい面も同じ実四面体の面そのもの。 -/
-  right_face : right.simplex = E.δ 2 simplex
+  right_face : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.right.simplex = E.δ 2 _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.simplex
 
 /-- 元の全三面を持つ指定済みの全三単体を、同じ実結合替えデータとして回収する。 -/
 def compositionTripleRightTetrahedronOfMap {E : SSet.{u}}
@@ -52,7 +52,7 @@ def compositionTripleRightTetrahedronOfMap {E : SSet.{u}}
     (hs₀ : stdSimplex.δ 0 ≫ s = SSet.yonedaEquiv.symm second.simplex)
     (hs₁ : stdSimplex.δ 1 ≫ s = SSet.yonedaEquiv.symm left.simplex)
     (hs₃ : stdSimplex.δ 3 ≫ s = SSet.yonedaEquiv.symm first.simplex)
-    : CompositionTripleRightTetrahedron first second left := by
+    : _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left := by
   let σ := SSet.yonedaEquiv s
   have h₀ : E.δ 0 σ = second.simplex := by
     rw [← stdSimplex.yonedaEquiv_δ_comp, hs₀, Equiv.apply_symm_apply]
@@ -80,7 +80,7 @@ def compositionTripleRightTetrahedron {E : SSet.{u}} [Quasicategory E]
     (first : SSet.Edge.CompStruct a b ab)
     (second : SSet.Edge.CompStruct b c bc)
     (left : SSet.Edge.CompStruct ab c abc) :
-    CompositionTripleRightTetrahedron first second left := by
+    _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron first second left := by
   let horn := horn₃₂.exists_desc (SSet.yonedaEquiv.symm second.simplex)
     (SSet.yonedaEquiv.symm left.simplex) (SSet.yonedaEquiv.symm first.simplex)
     (by simp) (by simp) (by simp)
@@ -101,7 +101,7 @@ def compositionTripleRightTetrahedron {E : SSet.{u}} [Quasicategory E]
     exact he.trans ((Category.assoc _ _ _).trans
       ((congrArg (SSet.horn.ι (2 : Fin 4) 3 (by decide) ≫ ·) fill.choose_spec.symm).trans
         horn.choose_spec.2.2))
-  exact compositionTripleRightTetrahedronOfMap first second left s hs₀ hs₁ hs₃
+  exact _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap first second left s hs₀ hs₁ hs₃
 
 end SerrePositivity.InfinityCategories.Kan
 

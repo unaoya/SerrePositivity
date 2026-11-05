@@ -47,7 +47,7 @@ def dgKappaNativeBFBoundarySOAComparison (r : ℕ) (C : DGKappaNativeBFFiniteInp
 規約：同じ有限 native 入力に限定。使われ方：二頂点の実スペクトル比較。 -/
 lemma dgKappaNativeBFBoundarySOAComparison_piIsomorphism
     (r : ℕ) (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    KanPiIsomorphism (dgKappaNativeBFBoundarySOAComparison.{u, v} R D I r C).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFBoundarySOAComparison.{u, v} R D I r C).right :=
   pointedSOAExInfinityComparison_piIsomorphism _
 
 /-- 概要：同じ有限 native 入力の元の K 候補列から実再帰 BF 列への全段の前向き比較。
@@ -66,14 +66,14 @@ def dgKappaNativeBFRawSOAComparison (C : DGKappaNativeBFFiniteInput.{u, v} R D I
 規約：同じ有限 native 入力に限定。使われ方：二頂点の実スペクトル比較。 -/
 lemma dgKappaNativeBFRawSOAComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) (n : ℕ) :
-    KanPiIsomorphism (dgKappaNativeBFRawSOAComparison.{u, v} R D I C n).right := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFRawSOAComparison.{u, v} R D I C n).right := by
   cases n with
   | zero => exact pointedSOAExInfinityComparison_loop_piIsomorphism _
   | succ r =>
       let : KanComplex
           (((dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).functor.obj C).obj).right :=
         (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).kan C
-      have hp : KanPiIsomorphism
+      have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
           (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
             (((dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).functor).obj C).obj from
               (dgKappaNativeBFFinitePositiveStage.{u, v} R D I r).comparison C).right :=
@@ -96,7 +96,7 @@ def dgKappaNativeBFSOAComparison (C : DGKappaNativeBFFiniteInput.{u, v} R D I) (
 規約：同じ有限 native 入力に限定。使われ方：二頂点の実スペクトル比較。 -/
 lemma dgKappaNativeBFSOAComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) (n : ℕ) :
-    KanPiIsomorphism (dgKappaNativeBFSOAComparison.{u, v} R D I C n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (dgKappaNativeBFSOAComparison.{u, v} R D I C n).right :=
   (monicKKanSequenceProjection_piIsomorphism
     (sInputModel C.obj) n).comp
     (dgKappaNativeBFRawSOAComparison_piIsomorphism.{u, v} R D I C n)

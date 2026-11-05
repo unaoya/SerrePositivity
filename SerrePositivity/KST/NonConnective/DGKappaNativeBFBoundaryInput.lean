@@ -81,7 +81,7 @@ structure DGKappaNativeBFBoundaryInput where
   規約：旧 kSpectrumMap との厳密等式は要求しない。
   使われ方：同じ coherent 四角形の実境界。 -/
   left : kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I)) ⟶
-    kOmegaSpectrum (stableCategoryModel zeroCategory.{max (u + 1) v})
+    kOmegaSpectrum (stableCategoryModel _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{max (u + 1) v})
   /-- 概要：新しい left 射と旧 BF 射の全正段の指定比較。
   方針：同じ正段空間値の全辺図式を比較する。
   規約：Sp 全写像空間の同型を仮定しない。
@@ -91,7 +91,7 @@ structure DGKappaNativeBFBoundaryInput where
       coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1)))
     (SSet.yonedaEquiv.symm (coherentNerveEdge
       (kSpectrumMap (sInputExactMap
-        (toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))).edge ≫
+        (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))).edge ≫
         coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))))
   /-- 概要：同じ left BF 射の全整数 π 作用は旧射と一致する。
   方針：元の同じ BF 群間の準同型の等式を受け取る。
@@ -99,12 +99,12 @@ structure DGKappaNativeBFBoundaryInput where
   使われ方：旧 BF 群作用で述べた共終性との接続。 -/
   left_pi : ∀ j : ℤ, OmegaSpectrum.homotopyMap left j =
     OmegaSpectrum.homotopyMap (kSpectrumMap
-      (sInputExactMap (toZeroCategory (dgKappaNativeVerdierDiagram R D I).left))) j
+      (sInputExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram R D I).left))) j
   /-- 概要：同じ四角形の新しい top BF 射。
   方針：同じ二つの元の BF 頂点間の射として受け取る。
   規約：旧 kSpectrumMap との厳密等式は要求しない。
   使われ方：同じ coherent 四角形の実境界。 -/
-  top : kOmegaSpectrum (stableCategoryModel zeroCategory.{max (u + 1) v}) ⟶
+  top : kOmegaSpectrum (stableCategoryModel _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{max (u + 1) v}) ⟶
     kOmegaSpectrum (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))
   /-- 概要：新しい top 射と旧 BF 射の全正段の指定比較。
   方針：同じ正段空間値の全辺図式を比較する。

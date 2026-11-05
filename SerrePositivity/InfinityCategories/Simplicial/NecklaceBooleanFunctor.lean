@@ -17,23 +17,23 @@ open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の非 joint 頂点を座標とする、全 necklace 上の Bool 立方体関手。 -/
-def necklaceBooleanPoset : Necklace.{u} ⥤ PartOrd where
+def necklaceBooleanPoset : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u} ⥤ PartOrd where
   obj T := PartOrd.of (T.down.NonjointVertex → Bool)
-  map f := PartOrd.ofHom (necklaceBooleanMap f)
-  map_id T := PartOrd.Hom.ext (necklaceBooleanMap_id T)
-  map_comp f g := PartOrd.Hom.ext (necklaceBooleanMap_comp f g)
+  map f := PartOrd.ofHom (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap f)
+  map_id T := PartOrd.Hom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_id T)
+  map_comp f g := PartOrd.Hom.ext (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_comp f g)
 
 /-- 元の全頂点部分集合と、同じ非 joint 座標の Bool 立方体との自然な順序同型。 -/
-def necklaceSubsetBooleanNatIso : necklaceSubsetPoset.{u} ≅ necklaceBooleanPoset.{u} :=
+def necklaceSubsetBooleanNatIso : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset.{u} ≅ _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset.{u} :=
   NatIso.ofComponents (fun T => PartOrd.Iso.mk T.down.cubeSubsetBoolIso) (by
     intro T U f
     apply PartOrd.Hom.ext
     apply DFunLike.ext
     intro s
-    change U.down.cubeSubsetBits (necklaceSubsetMap f s) =
-      U.down.cubeSubsetBits (necklaceSubsetMap f (T.down.cubeSubsetFromBits
+    change U.down.cubeSubsetBits (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap f s) =
+      U.down.cubeSubsetBits (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap f (T.down.cubeSubsetFromBits
         (T.down.cubeSubsetBits s)))
-    erw [NecklaceShape.cubeSubsetFromBits_bits])
+    erw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits_bits])
 
 end SerrePositivity.InfinityCategories.Simplicial
 

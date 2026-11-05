@@ -31,7 +31,7 @@ def completionCoreFlagEvaluationInput (r : ℕ) (ι : Fin r → SimplexCategory�
     LocalizingInvariants.completionCofiberWide_quasicategory F.val
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf)
   exact {
-    evaluation := LocalizingInvariants.CoreFlag.counit _
+    evaluation := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit _
     diagonal_eq := by intro n v; rfl
     isWeak := LocalizingInvariants.CoreFlag.counit_isWeakHomotopyEquivalence _ }
 
@@ -63,7 +63,7 @@ theorem completionRelativeFlagWideEvaluation_isWeak (r : ℕ)
 theorem cutCokernel_higher_subsingleton {X Y : StableModel.{u}} (f : X ⟶ Y)
     (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) :=
   cutCokernel_higher_of_input groupNerveHigherVanishingInput f n hn x
 
@@ -75,7 +75,7 @@ theorem completionRelativeHead_higher_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) :=
   completionRelativeHead_higher_of_input groupNerveHigherVanishingInput r ι f hf
     (fun m => completionCoreFlagEvaluationInput (r + 1)

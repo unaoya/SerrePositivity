@@ -27,13 +27,13 @@ lemma completionCanonicalWide_positive_subsingleton (r : ℕ)
     (x : (F2.continuousKanReplacement.obj (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) _⦋0⦌)
     (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) n x) := by
   have he := completionMultiWide_eq r ι f hf
   have h : ∀ (z : (F2.continuousKanReplacement.obj
       ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) _⦋0⦌),
-      Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
         ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) n z) :=
     fun z => completionMultiWide_positive_subsingleton r ι f hf z n hn
   rw [he] at h
@@ -49,14 +49,14 @@ theorem completionRelativeFlag_positive_subsingleton_of_input (r : ℕ)
     (input : CompletionCoreFlagEvaluationInput r ι f)
     (x : (F2.continuousKanReplacement.obj
       (completionRelativeFlagRealization r ι f hf)) _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       (completionRelativeFlagRealization r ι f hf)) n x) := by
   let e := completionRelativeFlagWideEvaluation r ι f hf
   have hw := completionRelativeFlagWideEvaluation_isWeak_of_input r ι f hf input
   have hR := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence e hw
   have hπ := kanPiIsomorphism_of_qCatEquivalence _
     hR.isSimplicialHomotopyEquivalence.isQCatEquivalence
-  let : Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) n
           ((F2.continuousKanReplacement.map e).app (Opposite.op ⦋0⦌) x)) :=

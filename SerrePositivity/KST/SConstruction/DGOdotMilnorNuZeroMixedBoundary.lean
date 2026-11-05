@@ -26,10 +26,10 @@ lemma dgOdotMilnorNuZeroMixedStart_eq :
         (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) := by
   apply Subtype.ext
   have hs : (dgOdotMilnorNuZeroMixedStart R d).val =
-      exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullTopComposite R d) := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) (dgOdotMilnorNuNullTopComposite R d) := by
     rfl
   exact hs.trans (congrArg (fun x =>
-    (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
       (dgOdotMilnorNuNullUpperHom_maximal R d)).symm
 
 variable (h : DGGluingMilnorSquare R d)
@@ -44,7 +44,7 @@ lemma dgOdotMilnorNuZeroMixedTarget_eq :
   apply Subtype.ext
   exact (dgOdotMilnorNuStandardZeroNullHom_vertex R d (fromZeroCategory (B))).trans
     (congrArg (fun x =>
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
         (dgOdotMilnorNuAbsoluteUpperHom_maximal R d h)).symm
 
 /-- 概要：指定零角の元混合合成辺を元実／絶対上三角形の合成端に置く。

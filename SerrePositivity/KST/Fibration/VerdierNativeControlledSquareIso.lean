@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (t : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (t : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
 
 /-- 概要：同じ全四角柱は、元の指定上側三角柱を全パラメーターで厳密回収する。
 方針：同じ実制御三角柱と元の下側の貼り合わせを使う。

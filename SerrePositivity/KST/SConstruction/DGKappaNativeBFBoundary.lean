@@ -23,14 +23,14 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 /-- 概要：元の未完備実列の四つの kSpectrumMap を持つ同じ BF 境界。
 方針：包含・商・元左零射・元右零射を同じ coherent 辺にする。
 規約：四頂点の整合性も含む境界。使われ方：有限 BF 四角形で固定する全四辺。 -/
-def dgKappaNativeBFBoundary : SquareFrame Sp.{max (u + 1) v} :=
-  squareFrameOfEdges
+def dgKappaNativeBFBoundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges
     (coherentNerveEdge (kSpectrumMap
       (sInputExactMap (dgKappaNativeKernelInclusion.{u, v} R D I))))
     (coherentNerveEdge (kSpectrumMap
       (sInputExactMap (fromZeroCategory (dgKappaNativeSuspensionCategory.{u, v} R D I)))))
     (coherentNerveEdge (kSpectrumMap
-      (sInputExactMap (toZeroCategory (dgKappaNativeKernelCategory.{u, v} R D I)))))
+      (sInputExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeKernelCategory.{u, v} R D I)))))
     (coherentNerveEdge (kSpectrumMap
       (sInputExactMap (dgKappaNativeQuotient.{u, v} R D I))))
 
@@ -56,7 +56,7 @@ lemma dgKappaNativeBFBoundary_right :
 lemma dgKappaNativeBFBoundary_left :
     (dgKappaNativeBFBoundary.{u, v} R D I).left = SSet.yonedaEquiv.symm
       (coherentNerveEdge (kSpectrumMap (sInputExactMap
-        (toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)))).edge := rfl
+        (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)))).edge := rfl
 
 /-- 概要：指定境界の上辺は同じ元の未完備終域の零射の BF 辺。
 方針：境界の定義から回収する。

@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeLocalizingEdges_rightOre {x y z : (laxCategory p q).obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj (laxCategory p q).obj) x z)
@@ -31,7 +31,7 @@ lemma tammeLocalizingEdges_rightOre {x y z : (laxCategory p q).obj _⦋0⦌}
       t.edge ∈ tammeLocalizingEdges p q ∧
       SSet.Truncated.HomotopyCategory.homMk t ≫ SSet.Truncated.HomotopyCategory.homMk f =
         SSet.Truncated.HomotopyCategory.homMk g ≫ SSet.Truncated.HomotopyCategory.homMk s := by
-  let P := essentialImage (pullbackInclusion p q)
+  let P := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q)
   let φ : (stableHoClosure P).trW.LeftFraction
       (HomotopyCategory.mk x) (HomotopyCategory.mk y) :=
     ⟨SSet.Truncated.HomotopyCategory.homMk f, SSet.Truncated.HomotopyCategory.homMk s,

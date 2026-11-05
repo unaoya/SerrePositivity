@@ -78,7 +78,7 @@ lemma monicKTracedTripleRawStageComparison_relative (n : ℕ) :
 
 /-- 円柱は、その構成に用いた同じ全比較三角形を指定面に厳密に保持する。 -/
 lemma monicKTracedTripleRawStageComparison_triangle (n : ℕ) :
-    SquareTriangles.lower ≫ (monicKTracedTripleRawStageComparison F f g h n).homotopy.h =
+    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ (monicKTracedTripleRawStageComparison F f g h n).homotopy.h =
       SSet.yonedaEquiv.symm
         (monicKTracedTripleRawStageComparisonTriangle F f g h n).simplex :=
   endpointFixedTriangleHomotopy_triangle _

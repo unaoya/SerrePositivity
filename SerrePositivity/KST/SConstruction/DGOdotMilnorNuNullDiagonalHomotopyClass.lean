@@ -24,21 +24,21 @@ lemma dgOdotMilnorNuNullDiagonalHomotopy_homMk_eq :
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h)) := by
   let p := vertexFiberι ((pre (boundary 1 : (Δ[1] : SSet.{u + 2}).Subcomplex).ι).app
-      StableInfinity.{u + 1}) (functorVertex (intervalMappingBoundary
-        (stableVertex (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)))
-        (stableVertex (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)))))
+      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) (functorVertex (intervalMappingBoundary
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)))))
   have hx : p.app (Opposite.op ⦋0⦌)
-      (intervalMappingVertexOfEdge (stableArrow (dgOdotMilnorNuNullDiagonalMap R d))) =
+      (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d))) =
       functorVertex (squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R) := by
     change functorVertex (SSet.yonedaEquiv.symm
-      (stableArrow (dgOdotMilnorNuNullDiagonalMap R d)).edge) = _
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)).edge) = _
     exact congrArg functorVertex (dgOdotMilnorNuNullDiagonalMap_diagram R d)
   have hy : p.app (Opposite.op ⦋0⦌)
-      (intervalMappingVertexOfEdge (stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) =
+      (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) =
       functorVertex (squareDiagonal ≫
         perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) := by
     change functorVertex (SSet.yonedaEquiv.symm
-      (stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)).edge) = _
+      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)).edge) = _
     exact congrArg functorVertex (dgOdotMilnorNuAbsoluteDiagonalMap_diagram R d h)
   have hl : ((dgOdotMilnorNuNullLowerDiagonalIntervalEdge R d h).toTruncated.map
       ((truncation 2).map p)).edge = (functorEdgeOfSimplicialHomotopy

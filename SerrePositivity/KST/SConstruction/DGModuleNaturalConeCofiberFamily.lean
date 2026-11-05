@@ -33,8 +33,8 @@ local notation "H" => dgModuleNaturalConeSquareFamily R D P F G η
 /-- 概要：元 dg cone の同じ全四角形族を Sp 正本の cofiber 空間へ入れる。
 方針：交換した全族の各頂点で元実 cone の零角・押し出しを厳密回収する。
 規約：元両二胞体を変更しない。使われ方：同じ底辺の選択 cofiber との全比較。 -/
-def dgModuleNaturalConeCofiberFamily : dgNerve R P ⟶ CofiberDiagrams.space (X) :=
-  fullSubcomplexLift CofiberDiagrams.Predicate (H) (by
+def dgModuleNaturalConeCofiberFamily : dgNerve R P ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space (X) :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (H) (by
     intro k
     obtain ⟨x, rfl⟩ := Simplex.vertexEquiv.symm.surjective k
     have hf := internalHomFlipHomEquiv_app_zero (dgModuleNaturalConeFullSquare R D P F G η)
@@ -51,7 +51,7 @@ def dgModuleNaturalConeCofiberFamily : dgNerve R P ⟶ CofiberDiagrams.space (X)
 方針：同じ full subcomplex 持ち上げの包含則を使う。
 規約：全単体の等号。使われ方：元指定二胞体の回収。 -/
 lemma dgModuleNaturalConeCofiberFamily_inclusion :
-    dgModuleNaturalConeCofiberFamily R D P F G η ≫ CofiberDiagrams.inclusion (X) = (H) :=
+    dgModuleNaturalConeCofiberFamily R D P F G η ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X) = (H) :=
   fullSubcomplexLift_ι _ _ _
 
 /-- 概要：同じ元 cofiber 全族の底辺を全矢印族として保持する。
@@ -59,7 +59,7 @@ lemma dgModuleNaturalConeCofiberFamily_inclusion :
 規約：元底辺を選び直さない。使われ方：同じ底辺を持つ選択 cofiber の入力。 -/
 def dgModuleNaturalConeCofiberBottom :
     dgNerve R P ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj (X) :=
-  dgModuleNaturalConeCofiberFamily R D P F G η ≫ CofiberDiagrams.bottom (X)
+  dgModuleNaturalConeCofiberFamily R D P F G η ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom (X)
 
 /-- 概要：元 cofiber 全族と同じ底辺の選択全族との比較を図式空間内に保持する。
 方針：Sp 正本の同じ底辺の相対比較を使う。
@@ -77,10 +77,10 @@ def dgModuleNaturalConeCofiberLiftComparison : FunctorIso
 規約：点ごとの恒等性へ弱めない。使われ方：元底辺の指定境界の保存。 -/
 lemma dgModuleNaturalConeCofiberLiftComparison_bottom :
     Arrow.mk (FunctorIso.postcomp
-      (dgModuleNaturalConeCofiberLiftComparison R D P F G η) (CofiberDiagrams.bottom (X))).hom =
+      (dgModuleNaturalConeCofiberLiftComparison R D P F G η) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom (X))).hom =
     Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
       (CofiberDiagrams.lift (X) (dgModuleNaturalConeCofiberBottom R D P F G η) ≫
-        CofiberDiagrams.bottom (X))) :
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom (X))) :
       hoFunctor.obj ((ihom (dgNerve R P)).obj ((ihom (Δ[1] : SSet.{u + 1})).obj (X))))) :=
   CofiberDiagrams.relativeComparison_bottom_arrow (X)
     (dgModuleNaturalConeCofiberFamily R D P F G η)
@@ -92,10 +92,10 @@ lemma dgModuleNaturalConeCofiberLiftComparison_bottom :
 規約：元底辺を厳密保持し、終点同型だけで代用しない。
 使われ方：元実逆回転の全 cofiber 図式比較。 -/
 def dgModuleNaturalConeCofiberFamilyComparison : FunctorIso
-    (dgModuleNaturalConeCofiberFamily R D P F G η ≫ CofiberDiagrams.inclusion (X))
+    (dgModuleNaturalConeCofiberFamily R D P F G η ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X))
     (CofiberDiagrams.lift (X) (dgModuleNaturalConeCofiberBottom R D P F G η) ≫
-      CofiberDiagrams.inclusion (X)) :=
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X)) :=
   FunctorIso.postcomp (dgModuleNaturalConeCofiberLiftComparison R D P F G η)
-    (CofiberDiagrams.inclusion (X))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X))
 
 end SerrePositivity.KST.SConstruction

@@ -37,14 +37,14 @@ lemma dgGluingOrdinaryPullbackComparison_snd :
       (dgGluingUniverseDerivedNerveLaxComparison_snd R C D M))
 variable [Small.{u} D] (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
 def dgGluingPullbackStableLeftProjection :
-    ExactMap (dgGluingPullbackStableObject R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackStableObject R C D M hC hD)
       (dgGluingStableInput.{u, v, w} R C hC) :=
   ⟨dgGluingPullbackUniverseInclusion R C D M ≫ dgGluingUniverseLeftNerve R C D M, by
     let := dgGluingPullbackUniverseInclusion_isExactFunctor R C D M hC hD
     let := dgGluingUniverseLeftNerve_isExactFunctor R C D M hC hD
     exact isExactFunctor_comp _ _⟩
 def dgGluingPullbackStableRightProjection :
-    ExactMap (dgGluingPullbackStableObject R C D M hC hD)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingPullbackStableObject R C D M hC hD)
       (dgGluingStableInput.{u, w, v} R D hD) :=
   ⟨dgGluingPullbackUniverseInclusion R C D M ≫ dgGluingUniverseRightNerve R C D M, by
     let := dgGluingPullbackUniverseInclusion_isExactFunctor R C D M hC hD

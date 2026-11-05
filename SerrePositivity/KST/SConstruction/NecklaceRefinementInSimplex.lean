@@ -14,26 +14,26 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の necklace の包含を、同じ標準単体の元の両端の間の necklace として読む。 -/
-def necklaceInStandardSimplex (T : Necklace.{u}) :
-    NecklaceIn (Δ[T.down.vertexMax] : SSet.{u}) (simplexBeadFirstVertex T.down.vertexMax)
+def necklaceInStandardSimplex (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[T.down.vertexMax] : SSet.{u}) (simplexBeadFirstVertex T.down.vertexMax)
       (simplexBeadLastVertex T.down.vertexMax) where
-  necklace := T
-  map := T.down.inclusion
-  map_first := rfl
-  map_last := rfl
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace := T
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map := T.down.inclusion
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first := rfl
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last := rfl
 
 /-- 元の一 bead への refinement は、同じ標準単体内の元の可換三角形。 -/
-def necklaceInBeadRefinement (T : Necklace.{u}) :
+def necklaceInBeadRefinement (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
     necklaceInStandardSimplex T ⟶
-      necklaceInOfIso (necklaceBead T.down.vertexMax) (NecklaceShape.singleSimplexIso _) where
-  necklaceHom := necklaceBeadRefinement T
-  w := necklaceBeadRefinement_triangle T
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso (necklaceBead T.down.vertexMax) (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _) where
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom := necklaceBeadRefinement T
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w := necklaceBeadRefinement_triangle T
 
 /-- 元の実 refinement の可換三角形は、元の同じ cubical 生成射の表示関係を回収する。 -/
-lemma necklaceInBeadRefinement_cell (T : Necklace.{u}) :
+lemma necklaceInBeadRefinement_cell (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
     necklaceCubicalSet.map (necklaceBeadRefinement T) ≫
         necklaceCubicalCell
-          (necklaceInOfIso (necklaceBead T.down.vertexMax) (NecklaceShape.singleSimplexIso _)) =
+          (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso (necklaceBead T.down.vertexMax) (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso _)) =
       necklaceCubicalCell (necklaceInStandardSimplex T) :=
   necklaceCubicalCell_relation (necklaceInBeadRefinement T)
 

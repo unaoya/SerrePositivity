@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {B C : StableCategory.{u}} (q : ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
 
 /-- 標準単体図式の pullback 射影は、全パラメータの境界を持ち上げる。
 関手圏の安定性を新たに仮定せず、元の B の有限極限だけを使う。 -/
@@ -134,8 +134,8 @@ lemma simplexOreSquare_right_mem (v : (simplexOreDiagrams q n) _⦋0⦌) :
   exact hv
 
 /-- 全境界充填で得た同じ四角形の左辺も、元の strict core 逆像の分母。 -/
-lemma simplexOreSquare_left_mem {A : StableCategory.{u}} {i : ExactMap A B}
-    (h : IsVerdierSequence i q) (v : (simplexOreDiagrams q n) _⦋0⦌) :
+lemma simplexOreSquare_left_mem {A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (v : (simplexOreDiagrams q n) _⦋0⦌) :
     (squareLeftArrow (simplexOreSquare q n v)).edge ∈
       (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) :=
   (relativeFirstRowSimplex_pullback_iff h n _ (simplexOreSquare_isPullback q n v)).mpr

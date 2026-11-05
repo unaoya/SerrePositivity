@@ -67,7 +67,7 @@ private theorem shortPath_deformationEnriched (n r : ℕ)
   intro P
   apply CategoryTheory.Functor.ext (fun k => shortPath_deformation n r A t hlo hhi (P.obj k))
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 下側の第一短辺は、同じ全一単体として全時刻固定される。 -/
 theorem verdierFullSLowerDeformation_first :

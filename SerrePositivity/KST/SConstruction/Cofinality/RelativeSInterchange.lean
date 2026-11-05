@@ -68,7 +68,7 @@ def completionRelativeSInterchangeIso (r : ℕ) (ι : Fin r → SimplexCategory�
             ((completionRelativeSInverseDiagram_inclusion r ι f hf m n).trans
               (Category.assoc _ _ _).symm))
   exact ⟨F, G,
-    inverse_comp_of_commuting_mono a b F G s t hF hG (internalHomSwap_twice _ _ _),
-    inverse_comp_of_commuting_mono b a G F t s hG hF (internalHomSwap_twice _ _ _)⟩
+    inverse_comp_of_commuting_mono a b F G s t hF hG (_root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _),
+    inverse_comp_of_commuting_mono b a G F t s hG hF (_root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _)⟩
 
 end SerrePositivity.KST.SConstruction.Cofinality

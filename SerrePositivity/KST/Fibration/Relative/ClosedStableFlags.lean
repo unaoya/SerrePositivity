@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：同じ B の K-B 図式 API 用の包装。方針：既存構造を使う。
 規約：底は厳密に同じ。使われ方：完全な cofiber 評価。 -/
-def flagAmbient (B : StableModel.{u}) : StableCategory.{u} :=
+def flagAmbient (B : StableModel.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
   ⟨B.carrier, inferInstance, inferInstance⟩
 
 /-- 概要：P は指定安定閉包と一致する。方針：閉包の生成子で帰納する。

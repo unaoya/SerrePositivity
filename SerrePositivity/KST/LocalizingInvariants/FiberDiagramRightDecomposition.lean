@@ -44,12 +44,12 @@ lemma domainRight_edge : SSet.yonedaEquiv (squareRightEdge : (Δ[1] : SSet.{u + 
 
 lemma rightUpper_triangle : SSet.yonedaEquiv
     (squareTriangle 0 ≫ (rightComparisonHomotopy f).h) = rightUpper f := by
-  exact (SquareDiagonal.upper_restriction squareRightEdge (comparisonHomotopy f).h).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.upper_restriction squareRightEdge (comparisonHomotopy f).h).trans
     (congrArg (F2.homotopyEdgeTriangleUpper (comparisonHomotopy f).h) domainRight_edge)
 
 lemma rightLower_triangle : SSet.yonedaEquiv
     (squareTriangle 1 ≫ (rightComparisonHomotopy f).h) = rightLower f := by
-  exact (SquareDiagonal.lower_restriction squareRightEdge (comparisonHomotopy f).h).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.lower_restriction squareRightEdge (comparisonHomotopy f).h).trans
     (congrArg (F2.homotopyEdgeTriangleLower (comparisonHomotopy f).h) domainRight_edge)
 
 end SerrePositivity.KST.LocalizingInvariants.FiberDiagram

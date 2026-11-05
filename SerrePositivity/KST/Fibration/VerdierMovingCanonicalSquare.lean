@@ -19,7 +19,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 section Input
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
@@ -73,7 +73,7 @@ end Input
 方針：同じ実読出しと相対合成を一度だけ選び、同じ上下族を貼る。
 規約：供給命題の追加仮定なし。元の下側との可逆比較も同時に保持する。
 使われ方：残る有限端点の外延性と全四角形比較への実入力。 -/
-theorem verdierMovingCanonicalSquareFamily_exists (d : VerdierDiagram.{u}) :
+theorem verdierMovingCanonicalSquareFamily_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
       (Q : ((Δ[1] ⊗ Δ[1]) ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧

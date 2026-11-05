@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の Stable∞ 下側二胞体の全変形の像は、既存の全 S• Kan 下側変形そのもの。
 方針：各単体で同じ path 変形の豊穣後合成を照合する。

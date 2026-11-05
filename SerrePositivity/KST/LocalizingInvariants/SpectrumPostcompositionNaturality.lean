@@ -31,12 +31,12 @@ local instance postNaturalityNerve : Quasicategory (SimplicialNerve OmegaSpectru
 variable {X Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z) {f g : X ⟶ Y}
   (e : (mappingSpace X Y).Edge (vertexOfHom f) (vertexOfHom g))
 
-def prismHomotopy := CurryInterval.horizontal (SpectrumMappingPath.postTrianglePrism p e)
+def prismHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal (SpectrumMappingPath.postTrianglePrism p e)
 
-def sourceTriangle := CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
+def sourceTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
   (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ SpectrumMappingPath.postTrianglePrism p e
 
-def targetTriangle := CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
+def targetTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := (Δ[2] : SSet.{u + 1}))
   (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ SpectrumMappingPath.postTrianglePrism p e
 
 lemma first_map : (TrianglePrism.firstFace (prismHomotopy p e)).h =

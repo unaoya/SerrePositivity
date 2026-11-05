@@ -32,7 +32,7 @@ structure WideStageData {X Y : StableModel.{u}} (f : X ⟶ Y) where
   quasicategory : Quasicategory (subcomplex : SSet.{u})
   discrete : ∀ (x : (F2.continuousKanReplacement.obj (subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ), 0 < n →
-      Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj (subcomplex : SSet.{u})) n x)
+      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj (subcomplex : SSet.{u})) n x)
 
 /-- 概要：Sp-7 の供給を標準模型の指定完備化射で消費する仮定型。
 方針：一般 API の安定単体集合の引数へ各標準模型の carrier を渡せる形にする。
@@ -56,7 +56,7 @@ theorem stableWideCofinalitySupply_of_api
             {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
         Quasicategory (M : SSet.{u}) ∧
         ∀ (x : (F2.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
-          0 < n → Subsingleton (KanHomotopy
+          0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
             (F2.continuousKanReplacement.obj (M : SSet.{u})) n x)) :
     StableWideCofinalitySupply.{u} := by
   intro X Y f hf
@@ -104,7 +104,7 @@ theorem multiWideStageData_discrete (supply : StableWideCofinalitySupply.{u})
     (x : (F2.continuousKanReplacement.obj
       ((multiWideStageData supply r ι f hf).subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       ((multiWideStageData supply r ι f hf).subcomplex : SSet.{u})) n x) :=
   (multiWideStageData supply r ι f hf).discrete x n hn
 

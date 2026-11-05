@@ -27,17 +27,17 @@ end SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
     (q.hom.app (Opposite.op ⦋0⦌) z)}
   {G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj}
-  {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+  {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
 
 local notation "P" => S.toSSet ⊗ (Δ[1] : SSet)
@@ -45,7 +45,7 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 namespace VerdierRecoveredInitialComparison
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
-variable (c : VerdierRecoveredInitialComparison r U)
+variable (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U)
 
 /-- 同じ保存済み K 実全族を元の第一行単体へ移す。 -/
 def simplexFamily : K ⟶ (relativeFirstRowSimplex q (n + 1) : SSet.{u}) :=
@@ -67,11 +67,11 @@ lemma simplexFamily_boundary : S.ι ≫ c.simplexFamily =
 
 /-- 元の単位へ送った実 S 円柱。始端は同じ K 実全族の制限。 -/
 def completedBoundaryHomotopy : SSet.Homotopy
-    (S.ι ≫ (c.simplexFamily ≫ groupoidCompletionMap
+    (S.ι ≫ (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})))
-    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ groupoidCompletionMap
+    ((SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})) where
-  h := r.simplexCylinder ≫ groupoidCompletionMap _
+  h := r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap _
   h₀ := by
     change (SSet.ι₀ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _ = S.ι ≫ c.simplexFamily ≫ _
     rw [← Category.assoc, ← c.simplexFamily_boundary, Category.assoc]
@@ -86,27 +86,27 @@ def completedBoundaryHomotopy : SSet.Homotopy
 end VerdierRecoveredInitialComparison
 
 /-- 元の亜群化上の K 全円柱。元の実 S 円柱を全時刻で厳密に保持する。 -/
-structure VerdierRecoveredCompletedCylinder (c : VerdierRecoveredInitialComparison r U) where
-  endpoint : K ⟶ groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u})
+structure VerdierRecoveredCompletedCylinder (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) where
+  endpoint : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u})
   homotopy : SSet.Homotopy
-    (c.simplexFamily ≫ groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u}))
-    endpoint
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
-    r.simplexCylinder ≫ groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
-  endpoint_boundary : S.ι ≫ endpoint =
-    (SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ groupoidCompletionMap
+    (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u}))
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.endpoint
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.homotopy.h =
+    r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
+  endpoint_boundary : S.ι ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder.endpoint =
+    (SSet.ι₁ : S.toSSet ⟶ P) ≫ r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})
 
 /-- 実円柱の始端と境界を保った延長。有限性や新しい比較仮定は不要。 -/
-lemma exists_verdierRecoveredCompletedCylinder (c : VerdierRecoveredInitialComparison r U) :
-    Nonempty (VerdierRecoveredCompletedCylinder c) := by
+lemma exists_verdierRecoveredCompletedCylinder (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder c) := by
   have hKan : SSet.modelCategoryQuillen.J.rlp
       (CategoryTheory.Limits.terminal.from
-        (groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u}))) :=
+        (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u}))) :=
     (SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance
   obtain ⟨g, hg, H, hH⟩ :=
     SerrePositivity.SimplicialModel.KanMonoEndpointExtension.exists_from_zero S.ι hKan
-      (c.simplexFamily ≫ groupoidCompletionMap _) _ c.completedBoundaryHomotopy
+      (c.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap _) _ c.completedBoundaryHomotopy
   exact ⟨⟨g, H, hH, hg⟩⟩
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions

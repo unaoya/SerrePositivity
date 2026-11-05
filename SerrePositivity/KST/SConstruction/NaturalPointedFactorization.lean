@@ -125,7 +125,7 @@ instance pointedTransformationMiddle_kanComplex {T : Type v} [Category.{w} T]
 規約：各入力での主張。使われ方：中間 Kan 模型との同値比較。 -/
 lemma pointedTransformationRight_piIsomorphism {T : Type v} [Category.{w} T]
     {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) [KanComplex (G.obj X).right] :
-    Spectra.KanPiIsomorphism ((pointedTransformationRight α).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedTransformationRight α).app X).right :=
   Spectra.PointedFactorization.right_piIsomorphism (α.app X)
 
 /-- 概要：元の比較が π_* 同型なら単射な左因子も π_* 同型。
@@ -134,9 +134,9 @@ lemma pointedTransformationRight_piIsomorphism {T : Type v} [Category.{w} T]
 lemma pointedTransformationLeft_piIsomorphism {T : Type v} [Category.{w} T]
     {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T)
     [KanComplex (F.obj X).right] [KanComplex (G.obj X).right]
-    (hα : Spectra.KanPiIsomorphism (α.app X).right) :
-    Spectra.KanPiIsomorphism ((pointedTransformationLeft α).app X).right := by
-  apply Spectra.KanPiIsomorphism.of_comp (g := ((pointedTransformationRight α).app X).right) _
+    (hα : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (α.app X).right) :
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedTransformationLeft α).app X).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((pointedTransformationRight α).app X).right) _
     (pointedTransformationRight_piIsomorphism α X)
   have h := congrArg Under.Hom.right (Spectra.PointedFactorization.fac (α.app X))
   change ((pointedTransformationLeft α).app X).right ≫

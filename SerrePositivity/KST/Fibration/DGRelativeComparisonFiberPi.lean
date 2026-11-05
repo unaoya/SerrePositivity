@@ -20,7 +20,7 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 local instance comparisonPiSpectrumCategory :
     SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory

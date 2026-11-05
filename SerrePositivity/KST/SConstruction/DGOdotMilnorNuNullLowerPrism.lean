@@ -22,7 +22,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 方針：元側境界の全端点回収を同じ内ホーンの両端固定延長へ渡す。
 規約：元両二胞体を固定。使われ方：元下二胞体の全比較の実構成。 -/
 lemma exists_dgOdotMilnorNuNullLowerPrism :
-    ∃ F : (Δ[1] ⊗ Δ[2] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1},
+    ∃ F : (Δ[1] ⊗ Δ[2] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1},
       ((Δ[1] : SSet.{u + 2}) ◁ (horn 2 1).ι) ≫ F =
         ((Δ[1] : SSet.{u + 2}) ◁ hornBoundaryInclusion 1 1) ≫
           dgOdotMilnorNuNullPrismTimeBoundary R d h 1 ∧
@@ -56,7 +56,7 @@ lemma exists_dgOdotMilnorNuNullLowerPrism :
 方針：同じ全境界を指定した元存在証明から一つを取る。
 規約：元両二胞体を固定。使われ方：下全比較と共有対角側面の回収。 -/
 def dgOdotMilnorNuNullLowerPrism :
-    (Δ[1] ⊗ Δ[2] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} :=
+    (Δ[1] ⊗ Δ[2] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} :=
   (exists_dgOdotMilnorNuNullLowerPrism R d h).choose
 
 /-- 概要：元下比較 prism は同じ内ホーン側面と元両二胞体を厳密回収する。

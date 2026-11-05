@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
@@ -55,8 +55,8 @@ theorem verdierReadoutComposition_movingComposite :
 使われ方：元の実上側 canonical encoder への入力。 -/
 def verdierReadoutMovingLongInput : (verdierMovingUpperLongSpace d) _⦋0⦌ :=
   controlledTriangleLongHomVertex
-    (stableCoreSingleKanObject (show StableQCat from d.left))
-    (stableCoreSingleKanObject (show StableQCat from d.right)) Δ[1]
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
+    (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)) Δ[1]
     (verdierMovingUpperCompositeFamily d) (curry H.h)
     (verdierReadoutComposition_movingComposite d L hL hfull H T hT)
 

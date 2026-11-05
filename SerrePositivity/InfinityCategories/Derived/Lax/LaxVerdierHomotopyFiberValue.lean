@@ -27,15 +27,15 @@ local instance homotopyFiberValueSimplicialCategory : SimplicialCategory OmegaSp
   OmegaSpectrum.simplicialCategory
 local instance homotopyFiberValueSquareQuasicategory :
     Quasicategory (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) := F2.quasicategory_tensor _ _
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def laxQuotientProductFiberBFComparison : FunctorIso
     (hΦ.laxQuotientProductFiberSquare p q i r h).square
     (FiberModel.homotopyFiberSquare (hΦ.laxQuotientProductMap p q r)).square :=
-  Classical.choice (FiberComparison.nonempty_functorIso (X := Sp.{u})
+  Classical.choice (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.nonempty_functorIso (X := Sp.{u})
     (hΦ.laxQuotientProductFiberSquare p q i r h)
     (FiberModel.homotopyFiberSquare (hΦ.laxQuotientProductMap p q r)))
 

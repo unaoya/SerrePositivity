@@ -26,15 +26,15 @@ local notation "M" => dgHomGluingBimodule R C D E p q
 
 /-- 元の native nerve をそのまま安定圏に束ねる。 -/
 def dgGluingHomTargetStableInput (U : Type (max (u + 1) v)) [DGCategory R U]
-    [Small.{u} U] [IsDGPretriangulated R U] : StableCategory.{max (u + 1) v} :=
+    [Small.{u} U] [IsDGPretriangulated R U] : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
   ⟨dgNerve R U, inferInstance, dgNerve_isStable_of_pretriangulated R U⟩
 
 def dgGluingHomTargetLeftMap :
-    ExactMap (dgGluingHomTargetStableInput R C) (dgGluingHomTargetStableInput R E) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingHomTargetStableInput R C) (dgGluingHomTargetStableInput R E) :=
   ⟨dgNerve.map p, dgPretriangulatedFunctor_isExactFunctor R C E p⟩
 
 def dgGluingHomTargetRightMap :
-    ExactMap (dgGluingHomTargetStableInput R D) (dgGluingHomTargetStableInput R E) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingHomTargetStableInput R D) (dgGluingHomTargetStableInput R E) :=
   ⟨dgNerve.map q, dgPretriangulatedFunctor_isExactFunctor R D E q⟩
 
 /-- 元 gluing から元終域上の lax pullback への指定比較は完全。 -/
@@ -56,9 +56,9 @@ lemma dgGluingHomTargetNerveLaxComparison_isExactFunctor :
 
 /-- 元二脚と元比較辺全族を持つ、同じ完全比較。 -/
 def dgGluingHomTargetStableComparison :
-    ExactMap
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (⟨dgNerve R (DGGluingObject R C D M), inferInstance,
-        dgGluingNerve_isStable R C D M inferInstance inferInstance⟩ : StableCategory)
+        dgGluingNerve_isStable R C D M inferInstance inferInstance⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory)
       (laxCategory (dgGluingHomTargetLeftMap R C E p)
         (dgGluingHomTargetRightMap R D E q)) :=
   ⟨dgGluingHomTargetNerveLaxComparison R C D E p q,

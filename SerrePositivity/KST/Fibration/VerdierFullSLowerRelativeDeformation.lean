@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 元の下側二胞体の二短辺を、そのまま同じ内ホーンへ制限する。 -/
 def verdierFullSLowerHorn : (horn 2 1 : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=

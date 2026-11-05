@@ -27,8 +27,8 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
 
 /-- 指定二変換と同じ厳密縦合成を三辺とする、元の三段豊穣円柱の関手。 -/
 def d3GradedCompositionTriangleEnriched :
-    EnrichedFunctor SSet.{u} (EnrichedOrderedCylinder.Object (Fin 3) C) D :=
-  EnrichedTransformationTriangle.functor F G H η θ (d3GradedComp η θ) (fun _ ↦ rfl)
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 3) C) D :=
+  _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ (d3GradedComp η θ) (fun _ ↦ rfl)
 
 /-- 同じ合成三角形の、全対象・全高次単体を持つ実族。 -/
 def d3GradedCompositionTriangleFamily :

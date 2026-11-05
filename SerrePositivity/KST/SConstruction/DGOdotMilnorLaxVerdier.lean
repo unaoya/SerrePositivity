@@ -26,10 +26,10 @@ local notation "E" => dgOdotMilnorNativeLaxEquivalence R d
 /-- 概要：元の小 Perf 対角を同じ実 lax 模型へ送る包含。
 方針：元の native 対角と指定同値を合成する。規約：元の対角作用を保つ。
 使われ方：Tamme と Milnor 列の左射。 -/
-def dgOdotMilnorLaxInclusion : ExactMap (dgGluingMilnorNativeDiagonalSource R d)
+def dgOdotMilnorLaxInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeDiagonalSource R d)
     (dgOdotMilnorLaxCategory R d) where
-  hom := (dgGluingMilnorNativeDiagonal R d).hom ≫ (E).hom
-  isExact := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgGluingMilnorNativeDiagonal R d).hom ≫ (E).hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
     letI : IsExactFunctor (E).hom := (dgOdotMilnorNativeLaxComparison R d).isExact
     letI := (dgGluingMilnorNativeDiagonal R d).isExact
     exact isExactFunctor_comp _ _
@@ -37,10 +37,10 @@ def dgOdotMilnorLaxInclusion : ExactMap (dgGluingMilnorNativeDiagonalSource R d)
 /-- 概要：同じ resolved 商へ、実 lax 比較の逆を通って射影する。
 方針：native の実商射影を保持する。規約：未分解商へ戻さない。
 使われ方：Tamme と Milnor 列の右射。 -/
-def dgOdotMilnorLaxProjection : ExactMap (dgOdotMilnorLaxCategory R d)
+def dgOdotMilnorLaxProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorLaxCategory R d)
     (dgGluingMilnorNativeResolvedQuotient R d) where
-  hom := (E).inv ≫ (dgGluingMilnorResolvedProjection R d).hom
-  isExact := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (E).inv ≫ (dgGluingMilnorResolvedProjection R d).hom
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
     letI : IsExactFunctor (E).inv := isExactFunctor_of_isQCatEquivalence (E).symm.isQCatEquivalence
     letI := (dgGluingMilnorResolvedProjection R d).isExact
     exact isExactFunctor_comp _ _
@@ -70,7 +70,7 @@ lemma dgOdotMilnorLaxInclusion_fullyFaithful (h : DGGluingMilnorSquare R d) :
 lemma dgOdotMilnorLaxKernel (h : DGGluingMilnorSquare R d)
     (b : (dgOdotMilnorLaxCategory R d).obj _⦋0⦌) :
     IsZeroVertex ((dgOdotMilnorLaxProjection R d).hom.app (Opposite.op ⦋0⦌) b) ↔
-      b ∈ essentialImage (dgOdotMilnorLaxInclusion R d) := by
+      b ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotMilnorLaxInclusion R d) := by
   change IsZeroVertex ((dgGluingMilnorResolvedProjection R d).hom.app (Opposite.op ⦋0⦌)
     ((E).inv.app (Opposite.op ⦋0⦌) b)) ↔ _
   rw [dgOdotMilnorNativeKernel R d h]
@@ -91,7 +91,7 @@ lemma dgOdotMilnorLaxKernel (h : DGGluingMilnorSquare R d)
 規約：任意標的の ∞ 関手圏を保持する。使われ方：Sp の商欄を実証拠で満たす。 -/
 lemma dgOdotMilnorLaxLocalization (h : DGGluingMilnorSquare R d) :
     IsLocalization (dgOdotMilnorLaxProjection R d).hom
-      (cofiberLocalizingEdges (essentialImage (dgOdotMilnorLaxInclusion R d))) := by
+      (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotMilnorLaxInclusion R d))) := by
   letI := (dgOdotMilnorLaxProjection R d).isExact
   letI : IsExactFunctor (E).hom := (dgOdotMilnorNativeLaxComparison R d).isExact
   have hq := dgOdotMilnorNativeLocalization R d h
@@ -103,11 +103,11 @@ lemma dgOdotMilnorLaxLocalization (h : DGGluingMilnorSquare R d) :
       (dgGluingMilnorResolvedProjection R d).hom (hq.precomposition_isFullyFaithful Y)
   · intro Y hY F hF
     have hi : InvertsEdges ((E).hom ≫ F)
-        (cofiberLocalizingEdges (essentialImage (dgGluingMilnorNativeDiagonal R d))) := by
+        (cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgGluingMilnorNativeDiagonal R d))) := by
       intro a ha
       obtain ⟨s, z, hz, ⟨v⟩⟩ := ha
       have hm : (E).hom.app (Opposite.op ⦋1⦌) a ∈
-          cofiberLocalizingEdges (essentialImage (dgOdotMilnorLaxInclusion R d)) := by
+          cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotMilnorLaxInclusion R d)) := by
         let t : CofiberSquare (edgeOfSimplex ((E).hom.app (Opposite.op ⦋1⦌) a)) := {
           toZeroTriangle := (s.map (E).hom).toZeroTriangle
           bottom_edge := (s.map (E).hom).bottom_edge
@@ -126,7 +126,7 @@ lemma dgOdotMilnorLaxLocalization (h : DGGluingMilnorSquare R d) :
 方針：具体的に輸送した三欄を Sp 正本へ渡す。
 規約：追加の核・局所化入力なし。使われ方：Cat^perf の LT 接続。 -/
 theorem dgOdotMilnorLax_isVerdier (h : DGGluingMilnorSquare R d) :
-    IsVerdierSequence (dgOdotMilnorLaxInclusion R d) (dgOdotMilnorLaxProjection R d) :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgOdotMilnorLaxInclusion R d) (dgOdotMilnorLaxProjection R d) :=
   ⟨dgOdotMilnorLaxInclusion_fullyFaithful R d h,
     dgOdotMilnorLaxKernel R d h, dgOdotMilnorLaxLocalization R d h⟩
 

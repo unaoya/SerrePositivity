@@ -14,7 +14,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の係数点の同じ weighted 像は、逆係数成分と標準 coherent Hom 比較の実像。 -/
 theorem coefficientWeightedPointedFiberPoint_val_coherent
@@ -27,7 +27,7 @@ theorem coefficientWeightedPointedFiberPoint_val_coherent
           vertexFiberι (sliceUnderProjection
             (yonedaEquiv.symm (coherentNerveVertex pointKanObject)))
               (coherentNerveVertex ((leftStrictTransportFunctor p ⋙ kanObjectOpFunctor).obj c)) ≫
-          strictKanPointedApexIso.hom).app (Opposite.op ⦋0⦌) (ULift.up v)) := by
+          _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanPointedApexIso.hom).app (Opposite.op ⦋0⦌) (ULift.up v)) := by
   have h := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (ULift.up v))
     (oppositeKanUnstraighteningComparison_constant_pointed (leftStrictTransportFunctor p) c)
   exact (s.coefficientWeightedPointedFiberPoint_val c v).trans h

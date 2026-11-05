@@ -21,8 +21,8 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ全余錐と分母 prism を、元の core 逆像内でも保持する精密化。 -/
-structure VerdierCoreCoconeRefinement {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+structure VerdierCoreCoconeRefinement {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (z : B.obj _⦋0⦌) (d : JoinCocone (D ≫ q.hom)) where
   source : (Δ[n] : SSet.{u}) ⟶ B.obj
   denominator : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
@@ -60,8 +60,8 @@ structure VerdierCoreCoconeRefinement {B C : StableCategory.{u}}
     (simplicialHomotopyOfFunctorEdge comparison).h
 
 /-- 元の Verdier 商の可逆余錐は、全次数で元の core 逆像内に実精密化を持つ。 -/
-lemma exists_verdierCoreCoconeRefinement {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierCoreCoconeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
     (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z)
     (hd : InvertsEdges d.val Set.univ) : Nonempty (VerdierCoreCoconeRefinement q D z d) := by

@@ -23,10 +23,10 @@ local notation "Q" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 /-- 概要：元の実核包含と元 cell 商辺の同じ固定 ν 合成。
 方針：構成済みの二つの完全射をそのまま合成する。
 規約：完備化後の指定射影へ置換しない。使われ方：実零化の対角合成。 -/
-def dgOdotMilnorNuNullComposite : ExactMap (Src) (Q) where
-  hom := (dgOdotMilnorFlatKernelExactMap R d).hom ≫
+def dgOdotMilnorNuNullComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Src) (Q) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorFlatKernelExactMap R d).hom ≫
     (dgOdotMilnorCellProjectionExactMap R d).hom
-  isExact := isExactFunctor_comp _ _
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := isExactFunctor_comp _ _
 
 /-- 概要：同じ実商合成は全対象を零対象へ送る。
 方針：指定商比較で同じ完備化付き列の実零化を戻す。
@@ -43,7 +43,7 @@ lemma dgOdotMilnorNuNullComposite_zero (h : DGGluingMilnorSquare R d)
 方針：既存の終対象全部分複体を使用する。
 規約：ホモトピー圏の同型集合へ切り詰めない。使われ方：高次零合成充填。 -/
 abbrev DGOdotMilnorNuNullCoherenceSpace :=
-  (terminalVertices (exactFunctors (Src) (Q) : SSet.{u + 1}) : SSet.{u + 1})
+  (terminalVertices (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Q) : SSet.{u + 1}) : SSet.{u + 1})
 
 /-- 概要：同じ実零合成を含む比較空間は全境界を充填する可縮 Kan 複体。
 方針：全零性による点ごとの終対象性を充満部分関手圏へ反映する。
@@ -52,7 +52,7 @@ abbrev DGOdotMilnorNuNullCoherenceSpace :=
 lemma dgOdotMilnorNuNullCoherenceSpace_contractible (h : DGGluingMilnorSquare R d) :
     IsContractibleKan (DGOdotMilnorNuNullCoherenceSpace R d) := by
   apply terminalVertices_isContractibleKan
-  refine ⟨exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullComposite R d), ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullComposite R d), ?_⟩
   apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isTerminalVertex
   change IsTerminalVertex (functorVertex (dgOdotMilnorNuNullComposite R d).hom)
   exact isTerminalVertex_functorVertex_of_pointwise _
@@ -63,7 +63,7 @@ lemma dgOdotMilnorNuNullCoherenceSpace_contractible (h : DGGluingMilnorSquare R 
 規約：頂点の実関手を変更しない。使われ方：相対充填の固定端点。 -/
 def dgOdotMilnorNuNullCompositeVertex (h : DGGluingMilnorSquare R d) :
     DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ := by
-  refine ⟨exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullComposite R d), ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullComposite R d), ?_⟩
   intro v
   have hv : v = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
   subst v
@@ -76,14 +76,14 @@ def dgOdotMilnorNuNullCompositeVertex (h : DGGluingMilnorSquare R d) :
 /-- 概要：同じ実零角を経由する二辺の固定 ν 合成。
 方針：元の全対象商への射と指定延長の完全射を合成する。
 規約：標準零圏への因子分解に置換しない。使われ方：実零化面のもう一方の経路。 -/
-def dgOdotMilnorNuNullTopComposite : ExactMap (Src) (Q) where
-  hom := (dgKInputNuMap R (dgFixedNullLeft R
+def dgOdotMilnorNuNullTopComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Src) (Q) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgKInputNuMap R (dgFixedNullLeft R
     (A := dgOdotMilnorFlatKernelInput R d))).hom ≫
     (dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).hom
-  isExact := @isExactFunctor_comp _ _ _ _ _
-    (show ExactMap _ _ from dgKInputNuMap R
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := @isExactFunctor_comp _ _ _ _ _
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from dgKInputNuMap R
       (dgFixedNullLeft R (A := dgOdotMilnorFlatKernelInput R d))).isExact
-    (show ExactMap _ _ from dgKInputNuMap R
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from dgKInputNuMap R
       (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).isExact
 
 /-- 概要：実零角経由の同じ合成は全対象を零対象へ送る。
@@ -91,7 +91,7 @@ def dgOdotMilnorNuNullTopComposite : ExactMap (Src) (Q) where
 規約：元の商延長を保持する。使われ方：二経路を同じ比較空間へ置く。 -/
 lemma dgOdotMilnorNuNullTopComposite_zero (x : (Src).obj _⦋0⦌) :
     IsZeroVertex ((dgOdotMilnorNuNullTopComposite R d).hom.app (Opposite.op ⦋0⦌) x) := by
-  haveI := (show ExactMap _ _ from dgKInputNuMap R
+  haveI := (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap _ _ from dgKInputNuMap R
     (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))).isExact
   exact IsExactFunctor.preservesZero
     (F := (dgKInputNuMap R
@@ -103,7 +103,7 @@ lemma dgOdotMilnorNuNullTopComposite_zero (x : (Src).obj _⦋0⦌) :
 規約：元の零角経由の二辺を変更しない。使われ方：実面の第二の固定端点。 -/
 def dgOdotMilnorNuNullTopCompositeVertex :
     DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ := by
-  refine ⟨exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullTopComposite R d), ?_⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (Src) (Q) (dgOdotMilnorNuNullTopComposite R d), ?_⟩
   intro v
   have hv : v = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
   subst v

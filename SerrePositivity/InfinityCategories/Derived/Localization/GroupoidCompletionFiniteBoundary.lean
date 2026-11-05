@@ -28,53 +28,53 @@ end SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary
 namespace SerrePositivity.InfinityCategories.Derived.Localization
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {L K X : SSet.{u}} (j : L ⟶ K) (f : K ⟶ groupoidCompletion X)
-  {a : L ⟶ groupoidCompletion X} (H : SSet.Homotopy a (j ≫ f))
+variable {L K X : SSet.{u}} (j : L ⟶ K) (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X)
+  {a : L ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X} (H : SSet.Homotopy a (j ≫ f))
 
 /-- 指定された元の境界 Homotopy と全族を貼った一つの全写像。 -/
-def completedBoundaryCylinderMap : finiteMappingCylinder j ⟶ groupoidCompletion X :=
+def completedBoundaryCylinderMap : finiteMappingCylinder j ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion X :=
   pushout.desc ((β_ (Δ[1] : SSet.{u}) L).hom ≫ H.h) f (by
     rw [← Category.assoc, prismEndpoint_one_braiding]
     exact H.h₁)
 
 lemma completedBoundaryCylinderMap_family :
-    pushout.inr (prismEndpoint 1 L) j ≫ completedBoundaryCylinderMap j f H = f :=
+    pushout.inr (prismEndpoint 1 L) j ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H = f :=
   pushout.inr_desc _ _ _
 
 lemma completedBoundaryCylinderMap_boundary :
-    finiteMappingCylinderSource j ≫ completedBoundaryCylinderMap j f H = a := by
-  rw [finiteMappingCylinderSource, Category.assoc, completedBoundaryCylinderMap,
+    finiteMappingCylinderSource j ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H = a := by
+  rw [finiteMappingCylinderSource, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap,
     pushout.inl_desc, ← Category.assoc, prismEndpoint_zero_braiding]
   exact H.h₀
 
 lemma completedBoundaryCylinderMap_prism :
-    (finiteMappingCylinderHomotopy j).h ≫ completedBoundaryCylinderMap j f H = H.h := by
+    (finiteMappingCylinderHomotopy j).h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H = H.h := by
   change ((β_ L (Δ[1] : SSet.{u})).hom ≫ pushout.inl _ _) ≫ _ = _
-  rw [Category.assoc, completedBoundaryCylinderMap, pushout.inl_desc,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap, pushout.inl_desc,
     ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
 
 /-- 有限な元の境界円柱全体を、一つの元の有限部分複体の完成へ移したデータ。 -/
 structure GroupoidCompletionFiniteBoundary where
   support : FiniteSubcomplex X
-  whole : finiteMappingCylinder j ⟶ groupoidCompletion support.val
-  comparison : FunctorIso (whole ≫ groupoidCompletionMapOf support.val.ι)
-    (completedBoundaryCylinderMap j f H)
+  whole : finiteMappingCylinder j ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.support.val
+  comparison : FunctorIso (_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.whole ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.support.val.ι)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H)
 
 /-- 任意の有限境界・全族・境界比較を、同じ一つの有限台と全同型で同時に回収する。 -/
 lemma exists_groupoidCompletionFiniteBoundary [L.Finite] [K.Finite] :
-    Nonempty (GroupoidCompletionFiniteBoundary j f H) := by
-  obtain ⟨A, b, ⟨e⟩⟩ := groupoidCompletion_finite_factorization
-    (completedBoundaryCylinderMap j f H)
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary j f H) := by
+  obtain ⟨A, b, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_finite_factorization
+    (_root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap j f H)
   exact ⟨⟨A, b, e⟩⟩
 
 namespace GroupoidCompletionFiniteBoundary
 open _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary
-variable {j f H} (d : GroupoidCompletionFiniteBoundary j f H)
+variable {j f H} (d : _root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary j f H)
 
-def family : K ⟶ groupoidCompletion d.support.val :=
+def family : K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion d.support.val :=
   pushout.inr (prismEndpoint 1 L) j ≫ d.whole
 
-def boundary : L ⟶ groupoidCompletion d.support.val :=
+def boundary : L ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion d.support.val :=
   finiteMappingCylinderSource j ≫ d.whole
 
 /-- 同じ有限台上の、指定境界から全族の制限への実 Homotopy。 -/
@@ -83,21 +83,21 @@ def boundaryHomotopy : SSet.Homotopy d.boundary (j ≫ d.family) := by
   exact { h := V.h, h₀ := V.h₀, h₁ := V.h₁.trans (Category.assoc _ _ _), rel := V.rel }
 
 /-- 同じ一つの全比較の K 制限。 -/
-def familyIso : FunctorIso (d.family ≫ groupoidCompletionMapOf d.support.val.ι) f := by
+def familyIso : FunctorIso (d.family ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf d.support.val.ι) f := by
   have e := FunctorIso.precomp d.comparison (pushout.inr (prismEndpoint 1 L) j)
-  simpa only [family, Category.assoc, completedBoundaryCylinderMap_family] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.family, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap_family] using e
 
 /-- 同じ一つの全比較の L 始端制限。 -/
-def boundaryIso : FunctorIso (d.boundary ≫ groupoidCompletionMapOf d.support.val.ι) a := by
+def boundaryIso : FunctorIso (d.boundary ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf d.support.val.ι) a := by
   have e := FunctorIso.precomp d.comparison (finiteMappingCylinderSource j)
-  simpa only [boundary, Category.assoc, completedBoundaryCylinderMap_boundary] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.boundary, Category.assoc, _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap_boundary] using e
 
 /-- 同じ一つの全比較の全境界円柱制限。 -/
 def boundaryPrismIso : FunctorIso
-    (d.boundaryHomotopy.h ≫ groupoidCompletionMapOf d.support.val.ι) H.h := by
+    (d.boundaryHomotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf d.support.val.ι) H.h := by
   have e := FunctorIso.precomp d.comparison (finiteMappingCylinderHomotopy j).h
-  simpa only [boundaryHomotopy, functorHomotopyPostcomp, Category.assoc,
-    completedBoundaryCylinderMap_prism] using e
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary.boundaryHomotopy, functorHomotopyPostcomp, Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Derived.Localization.completedBoundaryCylinderMap_prism] using e
 
 end GroupoidCompletionFiniteBoundary
 end SerrePositivity.InfinityCategories.Derived.Localization

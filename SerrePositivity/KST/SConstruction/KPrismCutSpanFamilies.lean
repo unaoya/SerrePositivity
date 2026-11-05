@@ -86,7 +86,7 @@ lemma kKanPrism_top_hom_kanComplex {I : Type u} [SmallCategory I]
       ((((kKanOriginalSuspensionPrism r F s).app _ p).obj (.mk (ULift.up k))).right) := by
     rw [kKanPrism_top_simplex_object r F s p k hp]
     infer_instance
-  exact PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 上段で終わる元の高次 prism の二切断円柱を、元の共通合成面を固定して合成する。 -/
 def kKanPrismCutSpanComposite {I : Type u} [SmallCategory I]

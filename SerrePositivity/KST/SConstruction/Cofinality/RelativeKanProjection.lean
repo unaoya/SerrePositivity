@@ -66,9 +66,9 @@ lemma completionRelativeKanProjection_groupConditions_of_input
     (hf : F2.Idempotent.IsIdempotentCompletion f.val)
     (a : (completionRelativeKanPullback r ι f hf) _⦋0⦌) :
     Function.Injective
-      (Spectra.KanHomotopy.map 1 (completionRelativeKanProjection r ι f hf) (x := a) rfl) ∧
+      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (completionRelativeKanProjection r ι f hf) (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (Spectra.KanHomotopy.map n (completionRelativeKanProjection r ι f hf) (x := a) rfl) := by
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (completionRelativeKanProjection r ι f hf) (x := a) rfl) := by
   let P := completionImageClosedPredicate r ι f hf
   let c := exInfinity.map (Fibration.Relative.closedRelativeConstant P)
   let b := Arrow.mk (exInfinity.map (Fibration.Relative.closedKernelRealizationPost P))

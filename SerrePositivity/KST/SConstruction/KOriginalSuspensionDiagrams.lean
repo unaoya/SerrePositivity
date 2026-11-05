@@ -35,7 +35,7 @@ def kKanZeroSuspensionTransformation {I : Type u} [SmallCategory I]
     (F ⋙ kKanSequenceLevelFunctor 0) ⋙
       MonoidalCategory.tensorLeft PointedSimplicialSet.circle.{u} ⟶
         F ⋙ kKanSequenceLevelFunctor 1 where
-  app i := (suspensionLoopEquiv _ _).symm (𝟙 (boundaryKSpaceFunctor.obj (F.obj i)))
+  app i := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).symm (𝟙 (boundaryKSpaceFunctor.obj (F.obj i)))
   naturality _ _ f :=
     pointedLoopCounit_naturality ((boundaryKanRealizationFunctor 0).map (F.map f))
 

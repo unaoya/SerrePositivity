@@ -25,29 +25,29 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- 元の core 逆像射影の各 slice は、全有限図式に実錐を持つ。 -/
-lemma verdierCoreQuotient_isLeftCofinal (h : IsVerdierSequence i q) :
+lemma verdierCoreQuotient_isLeftCofinal (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     IsLeftCofinal ((quasicategoryCore C.obj).fromPreimage q.hom) := by
   let W := ((quasicategoryCore C.obj).preimage q.hom : SSet.{u})
   let Q := (quasicategoryCore C.obj).fromPreimage q.hom
-  let : Quasicategory W := corePreimage_quasicategory q.hom
+  let : Quasicategory W := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory q.hom
   apply isLeftCofinal_of_weaklyContractible_slices Q
   intro c
   let r := sliceOverProjection (SSet.yonedaEquiv.symm c)
   let T := pullback Q r
   have hcones : ∀ {K : SSet.{u}} [K.Finite] (a : K ⟶ T), Nonempty (JoinCone a) := by
     intro K _ a
-    exact exists_verdierCorePullback_finiteCone h r (F1B.sliceIdentityCone_isTerminalVertex c) a
+    exact _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierCorePullback_finiteCone h r (F1B.sliceIdentityCone_isTerminalVertex c) a
   have : F2.IsFilteredInfinity T.op := isFilteredInfinity_op_of_finiteCones T hcones
   exact isWeaklyContractible_of_op (F2.isWeaklyContractible_of_isFilteredInfinity T.op)
 
-lemma verdierCoreQuotient_isWeakHomotopyEquivalence (h : IsVerdierSequence i q) :
+lemma verdierCoreQuotient_isWeakHomotopyEquivalence (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     IsWeakHomotopyEquivalence ((quasicategoryCore C.obj).fromPreimage q.hom) :=
   (verdierCoreQuotient_isLeftCofinal h).isWeakHomotopyEquivalence
 
-lemma verdierCoreQuotient_localized_isIso (h : IsVerdierSequence i q) :
+lemma verdierCoreQuotient_localized_isIso (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((quasicategoryCore C.obj).fromPreimage q.hom)) :=
   weakHomotopyEquivalence_anodyneQ_isIso _ (verdierCoreQuotient_isWeakHomotopyEquivalence h)
 

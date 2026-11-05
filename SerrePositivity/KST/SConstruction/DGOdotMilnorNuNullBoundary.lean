@@ -30,7 +30,7 @@ local notation "hZ" => dgKInputStableValue_isIdempotentComplete R
 方針：元の零圏を往復する実完全射と全零図式の同型を使う。
 規約：元の全対象商の頂点を保つ。使われ方：実零角の指定比較。 -/
 def dgOdotMilnorNuNullZeroVertexIso :
-    VertexIso (perfectStableVertex zeroCategory.{u + 1}
+    VertexIso (perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1}
       perfectZeroCategory_isIdempotentComplete) (perfectStableVertex (Z) (hZ)) :=
   dgKFixedNullPerfectZeroIso R (dgOdotMilnorFlatKernelInput R d)
 
@@ -43,7 +43,7 @@ def dgOdotMilnorNuNullSquareZeroVertexIso :
     VertexIso (squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1)
       (squareVertex (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) 0 1) := by
   have hs : squareVertex (dgOdotMilnorNuPerfectSequence R d h).presentation.square 0 1 =
-      perfectStableVertex zeroCategory.{u + 1} perfectZeroCategory_isIdempotentComplete := by
+      perfectStableVertex _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} perfectZeroCategory_isIdempotentComplete := by
     apply Subtype.ext
     change squareVertex (perfectVerdierSquare _ ≫ perfectStableInfinityInclusion) 0 1 = _
     rw [perfectVerdierSquare_inclusion]
@@ -60,8 +60,8 @@ def dgOdotMilnorNuNullSquareZeroVertexIso :
 方針：指定頂点同型を定値図式関手で写し、同じ Yoneda 射へ戻す。
 規約：端点の同型類だけで代用しない。使われ方：Sp の零角境界。 -/
 def dgOdotMilnorNuNullSquareZeroBoundary : FunctorIso
-    (verdierZeroCorner ≫ (dgOdotMilnorNuPerfectSequence R d h).presentation.square)
-    (verdierZeroCorner ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) := by
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ (dgOdotMilnorNuPerfectSequence R d h).presentation.square)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) := by
   apply (qCatEquivalenceOfIso (pointFunctorEvaluationIso
     perfectStableInfinity.{u + 1})).isQCatEquivalence.isFullyFaithful.preimageVertexIso
   change VertexIso
@@ -72,11 +72,11 @@ def dgOdotMilnorNuNullSquareZeroBoundary : FunctorIso
 /-- 概要：同じ実 ν 核面に対する包含・商・零角の指定三境界。
 方針：構成した同じ三つの全比較を束ねる。
 規約：全四角形同型の相対延長は未完。使われ方：Sp 正本の全比較型の境界引数。 -/
-def dgOdotMilnorNuNullSquareBoundary : VerdierSquareBoundaryIso
+def dgOdotMilnorNuNullSquareBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorNuPerfectSequence R d h).presentation.square
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) where
-  inclusion := dgOdotMilnorNuNullSquareInclusionBoundary R d h
-  quotient := dgOdotMilnorNuNullSquareProjectionBoundary R d h
-  zero := dgOdotMilnorNuNullSquareZeroBoundary R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := dgOdotMilnorNuNullSquareInclusionBoundary R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := dgOdotMilnorNuNullSquareProjectionBoundary R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := dgOdotMilnorNuNullSquareZeroBoundary R d h
 
 end SerrePositivity.KST.SConstruction

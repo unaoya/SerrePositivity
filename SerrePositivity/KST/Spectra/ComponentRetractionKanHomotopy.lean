@@ -33,7 +33,7 @@ lemma continuousKanReplacement_positive_subsingleton_of_componentRetraction
     (s : (Functor.const SimplexCategoryᵒᵖ).obj T ⟶ X)
     (hs : s ≫ p = 𝟙 _) (H : SSet.Homotopy (p ≫ s) (𝟙 X))
     (x : (F2.continuousKanReplacement.obj X) _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj X) n x) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj X) n x) := by
   let Y : SSet.{u} := (Functor.const SimplexCategoryᵒᵖ).obj T
   let : KanComplex Y := constantKanComplex T
   let : KanComplex ((𝟭 SSet.{u}).obj Y) := constantKanComplex T
@@ -53,8 +53,8 @@ lemma continuousKanReplacement_positive_subsingleton_of_componentRetraction
   have hπ := (kanPiIsomorphism_of_qCatEquivalence _ hp.isQCatEquivalence).comp
     (kanPiIsomorphism_of_qCatEquivalence _ hi)
   let g := F2.continuousKanReplacement.map p ≫ r
-  let : Subsingleton (KanHomotopy ((𝟭 SSet.{u}).obj Y) n (g.app _ x)) :=
-    constant_kanHomotopy_subsingleton T n hn (g.app _ x)
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((𝟭 SSet.{u}).obj Y) n (g.app _ x)) :=
+    _root_.SerrePositivity.InfinityCategories.Kan.constant_kanHomotopy_subsingleton T n hn (g.app _ x)
   exact Function.Injective.subsingleton ((hπ x n).1)
 
 end SerrePositivity.KST.Spectra

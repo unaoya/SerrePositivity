@@ -55,7 +55,7 @@ theorem completionMultiWide_positive_subsingleton (r : ℕ)
     (x : (F2.continuousKanReplacement.obj
       ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
       ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) n x) :=
   multiWideStageData_discrete stableWideCofinalitySupply r ι f hf x n hn
 

@@ -31,7 +31,7 @@ def monicKPrismNativePreviousComparison (n : ℕ) :=
 /-- 次段の元の実比較円柱全体を、同じ源構造射へ制限する。 -/
 def monicKPrismNativeProjectedComparison (n : ℕ) :=
   functorHomotopyPostcomp (monicKPrismNativeLevelComparison F f g (n + 1))
-    (PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
 
 /-- 端点の表示変更でも前段円柱の全実構造射像そのものを保つ。 -/
@@ -63,7 +63,7 @@ def monicKPrismNativeProjectedComparisonTriangle (n : ℕ) : SSet.Edge.CompStruc
     (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
       (monicKPrismNativeProjectedStructureCylinder F f g n))) :=
   familyCompStructImage (monicKPrismNativeLevelComparisonData F f g (n + 1)).triangle
-    (PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space) _ _ _ rfl rfl rfl
 
 /-- 前段の実三角形全体も、元の同じ span 三角形の全構造射像。 -/
@@ -77,7 +77,7 @@ lemma monicKPrismNativePreviousComparisonTriangle_map (n : ℕ) :
 lemma monicKPrismNativeProjectedComparisonTriangle_map (n : ℕ) :
     familyCompStructRealization (monicKPrismNativeProjectedComparisonTriangle F f g n) =
       monicKPrismNativeLevelComparisonMap F f g (n + 1) ≫
-        PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyCompStructImage_map _ _ _ _ _ _ _ _
 

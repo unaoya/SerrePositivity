@@ -22,7 +22,7 @@ local notation "KIn" => dgOdotMilnorFlatKernelInput R d
 local notation "PIn" => dgOdotMilnorCellInput R d
 local notation "VIn" => dgIdentityHomGluingNullInput R (U)
 local notation "DIn" => dgOdotMilnorRightAxisIdentityDifferenceInput R d
-local notation "O" => verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "O" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 
 /-- 概要：実外周の元厳密合成辺の同じ固定 ν 完全射。
 方針：元 S 合成辺を直接評価する。
@@ -48,7 +48,7 @@ def dgOdotMilnorActualOuterProjectionComparison : FunctorIso
   have nu_comp {A₀ A₁ A₂ : PerfDGInput.{u, u + 1} R} (f : A₀ ⟶ A₁) (g : A₁ ⟶ A₂) :
       (dgKInputNuMap R (f ≫ g)).hom = (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg ExactMap.hom ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   have h := nu_comp (dgOdotMilnorRightAxisInputMap R d)
     (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d)
   exact F2.functorIsoOfEq (dgOdotMilnorRightAxisCompositeNuComparison R d)

@@ -20,7 +20,7 @@ local notation "σ" => dgOdotMilnorNuNullTriangle R d 0
 /-- 概要：元の実零化二単体の各対象を豊穣安定圏の対象として保持する。
 方針：元の同じ二単体の対象写像を読む。
 規約：安定圏と core 豊穣圏の instance を区別する。使われ方：実 Hom の型照合。 -/
-abbrev dgOdotMilnorNuNullTriangleStableObject (i : Fin 3) : StableQCat.{u + 1} :=
+abbrev dgOdotMilnorNuNullTriangleStableObject (i : Fin 3) : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} :=
   (dgOdotMilnorNuNullTriangle R d 0).obj ⟨ULift.up i⟩
 local notation "X₀" => dgOdotMilnorNuNullTriangleStableObject R d 0
 local notation "X₁" => dgOdotMilnorNuNullTriangleStableObject R d 1
@@ -29,7 +29,7 @@ local notation "X₂" => dgOdotMilnorNuNullTriangleStableObject R d 2
 /-- 概要：実零化二単体の最大 path に沿う元の合成完全射。
 方針：同じ豊穣関手の通常射への作用を使用する。
 規約：指定二単体の Hom 作用を保持する。使われ方：全零 Hom 成分の基準頂点。 -/
-def dgOdotMilnorNuNullTriangleMaximalComposite : ExactMap (X₀) (X₂) :=
+def dgOdotMilnorNuNullTriangleMaximalComposite : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (X₀) (X₂) :=
   (coherentEnrichedUnderlyingFunctor (σ)).map
     (coherentMaximalPath
       (show (ULift.up (0 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))
@@ -47,14 +47,14 @@ lemma dgOdotMilnorNuNullTriangleMaximalComposite_zero (x : (X₀).obj _⦋0⦌) 
   let q : (⟨ULift.up (1 : Fin 3)⟩ :
       SimplicialThickening (ULift.{u + 1} (Fin 3))) ⟶ ⟨ULift.up (2 : Fin 3)⟩ :=
     coherentMaximalPath (show (ULift.up (1 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide)
-  let f : ExactMap (X₀) (X₁) := F.map p
-  let g : ExactMap (X₁) (X₂) := F.map q
+  let f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (X₀) (X₁) := F.map p
+  let g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (X₁) (X₂) := F.map q
   have hpq : coherentMaximalPath
       (show (ULift.up (0 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide) = p ≫ q :=
     (coherentMaximalPathFunctor (ULift.{u + 1} (Fin 3))).map_comp
       (homOfLE (show (ULift.up (0 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 1 by decide))
       (homOfLE (show (ULift.up (1 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))
-  have he := congrArg ExactMap.hom (F.map_comp p q)
+  have he := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom (F.map_comp p q)
   change (F.map (p ≫ q)).hom = f.hom ≫ g.hom at he
   change IsZeroVertex ((F.map (coherentMaximalPath
     (show (ULift.up (0 : Fin 3) : ULift.{u + 1} (Fin 3)) ≤ ULift.up 2 by decide))).hom.app

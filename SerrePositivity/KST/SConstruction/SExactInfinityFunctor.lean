@@ -17,11 +17,11 @@ open scoped Simplicial
 
 /-- 元の全パラメータ S_n の、安定 ∞ 圏と完全関手への実 ∞ 自己関手。 -/
 def sExactInfinityEndofunctor (n : ℕ) :
-    LocalizingInvariants.StableInfinity.{u} ⟶ LocalizingInvariants.StableInfinity.{u} :=
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
   coherentNerveMap (sExactCoreEnrichedEndofunctor n)
 
 /-- 元の安定 ∞ 圏での値は、同じ全 gapped S_n の実安定模型。 -/
-lemma sExactInfinityEndofunctor_vertex (n : ℕ) (C : LocalizingInvariants.StableQCat.{u}) :
+lemma sExactInfinityEndofunctor_vertex (n : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (sExactInfinityEndofunctor n).app (Opposite.op ⦋0⦌) (coherentNerveVertex C) =
       coherentNerveVertex ((sExactCoreEnrichedEndofunctor n).obj C) := coherentNerveMap_vertex _ C
 
@@ -29,7 +29,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全 native dg 入力族から、同じ実 S_n Perf を与える安定 ∞ 圏値関手。 -/
 def presentedPerfectDGSInfinityFunctor (n : ℕ) :
-    perfDGInputInfinity.{u, v} A ⟶ LocalizingInvariants.StableInfinity.{max (u + 1) v} :=
+    perfDGInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{max (u + 1) v} :=
   coherentNerveMap (presentedPerfectDGSEnrichedFunctor A n)
 
 /-- 元の実 Perf ∞ 関手と同じ実 S_n ∞ 自己関手の合成を回収する。 -/

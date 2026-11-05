@@ -29,7 +29,7 @@ lemma coconeFamily_invertsAllEdges_of_prefix_apex {P L X : SSet.{u}} [Quasicateg
     (hz : F ≫ evaluateFunctorAt ((joinInr L (Δ[0] : SSet.{u})).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z) :
     InvertsEdges F Set.univ := by
-  apply functorFamily_invertsEdges_of_evaluations
+  apply _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.functorFamily_invertsEdges_of_evaluations
   intro v
   rcases F1B.join_vertex_cases L Δ[0] v with ⟨l, rfl⟩ | ⟨b, rfl⟩
   · rw [← stable_pre_evaluateFunctorAt (X := X) (joinInl L Δ[0]) l, ← Category.assoc]

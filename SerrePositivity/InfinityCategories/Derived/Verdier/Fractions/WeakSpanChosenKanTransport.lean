@@ -18,31 +18,31 @@ namespace SerrePositivity.KST.Fibration
 end SerrePositivity.KST.Fibration
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
 
 /-- cocartesian prism とともに選択された、同じ元の span 族の実輸送。 -/
 def weakSpanChosenTransport (x : B.obj _⦋0⦌) (s : B.obj _⦋1⦌) :
-    vertexFiber (markedSpanFamilyProjection B.obj (weakEquivalences i) x) (B.obj.δ 1 s) ⟶
-      vertexFiber (markedSpanFamilyProjection B.obj (weakEquivalences i) x) (B.obj.δ 0 s) :=
-  cocartesianTransport (markedSpanFamilyProjection B.obj (weakEquivalences i) x) s
+    vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (B.obj.δ 1 s) ⟶
+      vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) (B.obj.δ 0 s) :=
+  cocartesianTransport (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) s
 
 /-- 追加の輸送や prism を入力せず、選択した元の W 輸送そのものの亜群化は実際の同値。 -/
 theorem weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (s : B.obj _⦋1⦌)
-    (hs : s ∈ weakEquivalences i) :
-    IsQCatEquivalence (groupoidCompletionMapOf (weakSpanChosenTransport (i := i) x s)) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (s : B.obj _⦋1⦌)
+    (hs : s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport (i := i) x s)) := by
   obtain ⟨H, h₀, h₁, hb, _hc⟩ := cocartesianTransport_isTransport
-    (markedSpanFamilyProjection B.obj (weakEquivalences i) x) s
-  exact (weakDenominatorSpanTransport_groupoidCompletion_isEquivalence h x s hs
-    (weakSpanChosenTransport (i := i) x s) H h₀ h₁ hb).isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection B.obj (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x) s
+  exact (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakDenominatorSpanTransport_groupoidCompletion_isEquivalence h x s hs
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport (i := i) x s) H h₀ h₁ hb).isQCatEquivalence
 
 /-- 厳密 Kan 模型でも、元の各 W 辺の選択した同じ輸送は実際の同値。 -/
 theorem weakSpanChosenKanTransport_isQCatEquivalence
-    (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (s : B.obj _⦋1⦌)
-    (hs : s ∈ weakEquivalences i) :
-    IsQCatEquivalence (strictKanCompletion.map (weakSpanChosenTransport (i := i) x s)) :=
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x : B.obj _⦋0⦌) (s : B.obj _⦋1⦌)
+    (hs : s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport (i := i) x s)) :=
   strictKanCompletion_map_isQCatEquivalence_of_groupoidCompletion _
-    (weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence h x s hs)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence h x s hs)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

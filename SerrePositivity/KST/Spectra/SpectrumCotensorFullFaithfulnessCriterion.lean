@@ -25,7 +25,7 @@ local instance cotensorFaithfulnessEvaluationKan (A : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
     KanComplex ((CategoryTheory.ihom A).obj
       (RawSpectrumMapping.pointedSpace (cotensor A X) Y.toKanSequence)).right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 namespace CotensorCompatible
 
 /-- 元の cotensor の Hom 射影が同値であることを、同じ全 Hom の評価後合成で検出する。 -/

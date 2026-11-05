@@ -18,7 +18,7 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeQuotientMap_preservesZero : PreservesZeroVertices (tammeQuotientMap p q) :=
   localization_preservesZero _ _ (tammeQuotient_isLocalization p q)
@@ -34,7 +34,7 @@ instance tammeQuotient_hasZeroVertex : HasZeroVertex (tammeQuotient p q) :=
 /-- 商内の真の零対象性と、元の通常 pullback の本質像の一致。 -/
 lemma tammeQuotientMap_kernel (x : (laxCategory p q).obj _⦋0⦌) :
     IsZeroVertex ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ essentialImage (pullbackInclusion p q) := by
+      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q) := by
   rw [← tammeQuotient_zeroImageIso_iff_essentialImage]
   constructor
   · intro hx

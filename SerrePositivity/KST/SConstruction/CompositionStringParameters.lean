@@ -22,7 +22,7 @@ variable {I : Type u} [SmallCategory I] {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 合成射・前の射・後の射の全合成列を独立に含む積圏。 -/
 abbrev CompositionStringParameters :=
-  CoherentArrowString (f ≫ g) × CoherentArrowString f × CoherentArrowString g
+  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (f ≫ g) × _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f × _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g
 
 /-- 三つの元の直通列からなる指定頂点。 -/
 def compositionStringDirect : CompositionStringParameters f g :=
@@ -40,15 +40,15 @@ def compositionStringDirect_isInitial : IsInitial (compositionStringDirect f g) 
       · exact (coherentArrowStringDirect_isInitial g).hom_ext _ _)
 
 /-- 合成射の全精密化への射影。 -/
-def compositionStringComposite : CompositionStringParameters f g ⥤ CoherentArrowString (f ≫ g) :=
+def compositionStringComposite : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (f ≫ g) :=
   CategoryTheory.Prod.fst _ _
 
 /-- 前の射の全精密化への射影。 -/
-def compositionStringFirst : CompositionStringParameters f g ⥤ CoherentArrowString f :=
+def compositionStringFirst : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f :=
   CategoryTheory.Prod.snd _ _ ⋙ CategoryTheory.Prod.fst _ _
 
 /-- 後の射の全精密化への射影。 -/
-def compositionStringSecond : CompositionStringParameters f g ⥤ CoherentArrowString g :=
+def compositionStringSecond : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g :=
   CategoryTheory.Prod.snd _ _ ⋙ CategoryTheory.Prod.snd _ _
 
 /-- Composite 射影は、指定直通列点を同じ元の直通列点へ送る。 -/

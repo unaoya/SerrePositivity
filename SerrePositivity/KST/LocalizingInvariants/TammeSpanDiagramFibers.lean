@@ -18,27 +18,27 @@ open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeSpanDiagramFiberIso (x : (laxCategory p q).obj _⦋0⦌)
     {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj) (b : B _⦋0⦌) :
     fixedMarkedSpans (laxCategory p q).obj (tammeLocalizingEdges p q) x
         (f.app (Opposite.op ⦋0⦌) b) ≅
       vertexFiber (pullback.snd
-        (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) b :=
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) b :=
   markedSpanFamilyFiberIso _ _ _ _ ≪≫ (SerrePositivity.InfinityCategories.vertexFiberPullbackIso _ _ _).symm
 
 lemma tammeSpanDiagramFiberIso_hom_inclusion (x : (laxCategory p q).obj _⦋0⦌)
     {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj) (b : B _⦋0⦌) :
     (tammeSpanDiagramFiberIso p q x f b).hom ≫
       vertexFiberι (pullback.snd
-        (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) b ≫
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) b ≫
       pullback.fst
-        (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f =
       (markedSpanFamilyFiberIso (laxCategory p q).obj (tammeLocalizingEdges p q) x
         (f.app (Opposite.op ⦋0⦌) b)).hom ≫
         vertexFiberι
-          (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x)
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x)
           (f.app (Opposite.op ⦋0⦌) b) := by
   dsimp only [tammeSpanDiagramFiberIso, Iso.trans_hom, Iso.symm_hom]
   rw [← SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι]

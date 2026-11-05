@@ -25,15 +25,15 @@ theorem completionClosedRelative_higher_subsingleton (r : ℕ)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (Fibration.Relative.closedRelativeRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (Fibration.Relative.closedRelativeRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
   let e := F2.continuousKanReplacement.mapIso
     (completionClosedRelativeRealizationIso r ι f hf)
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n
         (e.hom.app (Opposite.op ⦋0⦌) x)) :=
     completionRelativeHead_higher_subsingleton r ι f hf n hn _
-  exact Function.Injective.subsingleton ((Spectra.KanPiIsomorphism.of_iso e x n).1)
+  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e x n).1)
 
 end SerrePositivity.KST.SConstruction.Cofinality

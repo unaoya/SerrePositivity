@@ -73,7 +73,7 @@ def dgOdotMilnorNullDiagonalNuComparison : FunctorIso
 方針：元逆回転基底の前三角性を実因子化の準同値へ代入する。
 規約：同じ元入力辺。使われ方：絶対恒等面から V 実面への始域比較。 -/
 lemma dgOdotMilnorNullDiagonalNu_isQCatEquivalence : IsQCatEquivalence
-    (show ExactMap
+    (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
       (dgKInputStableValue R (dgIdentityHomGluingBaseInput R (U)))
       (dgKInputStableValue R (dgIdentityHomGluingNullInput R (U))) from
       dgKInputNuMap R (dgIdentityHomGluingDiagonalNullFactorInputMap R (U))).hom := by

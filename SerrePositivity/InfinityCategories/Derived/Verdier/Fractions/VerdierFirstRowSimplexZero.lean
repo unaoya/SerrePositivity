@@ -26,7 +26,7 @@ end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {B C : StableCategory.{u}} (q : ExactMap B C)
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
 
 lemma pointFunctorEvaluation_inv_post {X Y : SSet.{u}} (f : X ⟶ Y) :
     (pointFunctorEvaluationIso X).inv ≫ (ihom (Δ[0] : SSet.{u})).map f =
@@ -52,7 +52,7 @@ def relativeFirstRowSimplexZeroFromCorePreimage :
     rintro n _ ⟨s, rfl⟩
     have hi := ((quasicategoryCoreMap (pointFunctorEvaluationIso C.obj).inv).app n
       ⟨q.hom.app n s.val, s.property⟩).property
-    have hn := congrArg (fun k => k.app n s.val) (pointFunctorEvaluation_inv_post q.hom)
+    have hn := congrArg (fun k => k.app n s.val) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pointFunctorEvaluation_inv_post q.hom)
     change ((ihom (Δ[0] : SSet.{u})).map q.hom).app n
       ((pointFunctorEvaluationIso B.obj).inv.app n s.val) =
       (pointFunctorEvaluationIso C.obj).inv.app n (q.hom.app n s.val) at hn
@@ -65,11 +65,11 @@ def relativeFirstRowSimplexZeroFromCorePreimage :
 /-- 元の一点評価を同じ相対 core 逆像へ制限した、全単体での厳密な両側逆。 -/
 def relativeFirstRowSimplexZeroCorePreimageIso : (relativeFirstRowSimplex q 0 : SSet.{u}) ≅
     ((quasicategoryCore C.obj).preimage q.hom : SSet.{u}) where
-  hom := relativeFirstRowSimplexZeroToCorePreimage q
-  inv := relativeFirstRowSimplexZeroFromCorePreimage q
+  hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroToCorePreimage q
+  inv := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroFromCorePreimage q
   hom_inv_id := by
     apply (cancel_mono (relativeFirstRowSimplex q 0).ι).mp
-    change (relativeFirstRowSimplexZeroToCorePreimage q ≫
+    change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroToCorePreimage q ≫
       (((quasicategoryCore C.obj).preimage q.hom).ι ≫ (pointFunctorEvaluationIso B.obj).inv)) = _
     rw [← Category.assoc]
     change ((relativeFirstRowSimplex q 0).ι ≫ (pointFunctorEvaluationIso B.obj).hom) ≫
@@ -77,7 +77,7 @@ def relativeFirstRowSimplexZeroCorePreimageIso : (relativeFirstRowSimplex q 0 : 
     rw [Category.assoc, Iso.hom_inv_id, Category.comp_id, Category.id_comp]
   inv_hom_id := by
     apply (cancel_mono ((quasicategoryCore C.obj).preimage q.hom).ι).mp
-    change (relativeFirstRowSimplexZeroFromCorePreimage q ≫
+    change (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroFromCorePreimage q ≫
       ((relativeFirstRowSimplex q 0).ι ≫ (pointFunctorEvaluationIso B.obj).hom)) = _
     rw [← Category.assoc]
     change ((((quasicategoryCore C.obj).preimage q.hom).ι ≫ (pointFunctorEvaluationIso B.obj).inv) ≫
@@ -85,7 +85,7 @@ def relativeFirstRowSimplexZeroCorePreimageIso : (relativeFirstRowSimplex q 0 : 
     rw [Category.assoc, Iso.inv_hom_id, Category.comp_id, Category.id_comp]
 
 lemma relativeFirstRowSimplexZeroCorePreimage_square :
-    (relativeFirstRowSimplexZeroCorePreimageIso q).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso q).hom ≫
       (quasicategoryCore C.obj).fromPreimage q.hom =
       relativeFirstRowSimplexQuotient q 0 ≫
         quasicategoryCoreMap (pointFunctorEvaluationIso C.obj).hom := by
@@ -95,15 +95,15 @@ lemma relativeFirstRowSimplexZeroCorePreimage_square :
 
 /-- 元の第一行零単体商射そのものは anodyne 局所化で可逆。 -/
 lemma relativeFirstRowSimplexQuotient_zero_localized_isIso
-    {A : StableCategory.{u}} {i : ExactMap A B} (h : IsVerdierSequence i q) :
+    {A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
     IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowSimplexQuotient q 0)) := by
   let L := AnodyneHomotopy.anodyneQ.{u}
   have := verdierCoreQuotient_localized_isIso h
-  have hi : IsIso (L.map (relativeFirstRowSimplexZeroCorePreimageIso q).hom) := inferInstance
+  have hi : IsIso (L.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso q).hom) := inferInstance
   have hc : IsIso (L.map (quasicategoryCoreMap (pointFunctorEvaluationIso C.obj).hom)) := by
     change IsIso (L.map (quasicategoryCoreFunctor.mapIso (pointFunctorEvaluationIso C.obj)).hom)
     infer_instance
-  have hs := congrArg L.map (relativeFirstRowSimplexZeroCorePreimage_square q)
+  have hs := congrArg L.map (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimage_square q)
   rw [L.map_comp, L.map_comp] at hs
   have hm : IsIso (L.map (relativeFirstRowSimplexQuotient q 0) ≫
       L.map (quasicategoryCoreMap (pointFunctorEvaluationIso C.obj).hom)) := by
@@ -113,10 +113,10 @@ lemma relativeFirstRowSimplexQuotient_zero_localized_isIso
 
 /-- 同じ零次完成比較の全写像空間も充満忠実。 -/
 lemma relativeFirstRowSimplexCompletionComparison_zero_isFullyFaithful
-    {A : StableCategory.{u}} {i : ExactMap A B} (h : IsVerdierSequence i q) :
-    IsFullyFaithful (relativeFirstRowSimplexCompletionComparison q 0) :=
-  (relativeFirstRowSimplexQuotient_localized_isIso_iff_fullyFaithful h 0).mp
-    (relativeFirstRowSimplexQuotient_zero_localized_isIso q h)
+    {A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q 0) :=
+  (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexQuotient_localized_isIso_iff_fullyFaithful h 0).mp
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexQuotient_zero_localized_isIso q h)
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 

@@ -142,23 +142,23 @@ lemma dgOdotMilnorOuterUpperRightHomotopy_path :
 /-- 概要：元実外周と元絶対 LT 外周の四境界全比較は同じ四頂点経路を共有する。
 方針：元包含・商の自然性と元零側面の全比較を同時に束ねる。
 規約：元始域の増大屋根・実 resolved 商を保持。使われ方：外周全図式の接合。 -/
-def dgOdotMilnorOuterSquareFrameComparison : SquareFrameHomotopy
-    (SquareFrame.ofSquare (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R))
-    (SquareFrame.ofSquare (dgOdotMilnorActualOuterDiagram R d h).square) where
-  bottom := dgOdotMilnorOuterBottomHomotopy R d h
-  right := dgOdotMilnorOuterRightHomotopy R d h
-  left := dgOdotMilnorOuterLeftHomotopy R d h
-  top := dgOdotMilnorOuterTopHomotopy R d h
-  lower_left := dgOdotMilnorOuterLowerLeftHomotopy_path R d h
-  lower_right := dgOdotMilnorOuterLowerRightHomotopy_path R d h
-  upper_left := dgOdotMilnorOuterUpperLeftHomotopy_path R d h
-  upper_right := dgOdotMilnorOuterUpperRightHomotopy_path R d h
-  bottom_invertible := homotopyVertex_isInvertible_of_functorEdge _
+def dgOdotMilnorOuterSquareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R))
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (dgOdotMilnorActualOuterDiagram R d h).square) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom := dgOdotMilnorOuterBottomHomotopy R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right := dgOdotMilnorOuterRightHomotopy R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left := dgOdotMilnorOuterLeftHomotopy R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top := dgOdotMilnorOuterTopHomotopy R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_left := dgOdotMilnorOuterLowerLeftHomotopy_path R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_right := dgOdotMilnorOuterLowerRightHomotopy_path R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_left := dgOdotMilnorOuterUpperLeftHomotopy_path R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_right := dgOdotMilnorOuterUpperRightHomotopy_path R d h
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom_invertible := homotopyVertex_isInvertible_of_functorEdge _
     (dgOdotMilnorOuterBottomHomotopy_isInvertible R d h)
-  right_invertible := homotopyVertex_isInvertible_of_functorEdge _
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right_invertible := homotopyVertex_isInvertible_of_functorEdge _
     (dgOdotMilnorOuterRightHomotopy_isInvertible R d h)
-  left_invertible := homotopyVertex_isInvertible_of_functorEdge _
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left_invertible := homotopyVertex_isInvertible_of_functorEdge _
     (dgOdotMilnorOuterLeftHomotopy_isInvertible R d h)
-  top_invertible := homotopyVertex_isInvertible_of_functorEdge _
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top_invertible := homotopyVertex_isInvertible_of_functorEdge _
     (dgOdotMilnorOuterTopHomotopy_isInvertible R d h)
 end SerrePositivity.KST.SConstruction

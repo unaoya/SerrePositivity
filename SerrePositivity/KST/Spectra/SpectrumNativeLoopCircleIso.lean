@@ -44,7 +44,7 @@ def nativeLoopCircleFunctorIso :
 local instance nativeLoopCircleEvaluationKan (X Y : OmegaSpectrum.{u}) :
     KanComplex ((CategoryTheory.ihom PointedSimplicialSet.circle.{u}).obj
       (RawSpectrumMapping.pointedSpace (cotensor PointedSimplicialSet.circle X)
-        Y.toKanSequence)).right := PointedMapping.basedHom_kanComplex _ _
+        Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の native loop の完全忠実性は、元の円の普遍評価の全 Hom の同値性と同値。 -/
 lemma nativeLoop_isFullyFaithful_iff_evaluationPost :

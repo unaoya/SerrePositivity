@@ -19,10 +19,10 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 /-- 概要：元実外周の四境界全比較を同じ StableInfinity 内に保持する。
 方針：元全比較を同じ完備包含で後合成する。
 規約：元四側面・四頂点経路を保持。使われ方：元共有零対角の接合。 -/
-def dgOdotMilnorOuterRawSquareFrameComparison : SquareFrameHomotopy
-    (SquareFrame.ofSquare ((dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) ≫
+def dgOdotMilnorOuterRawSquareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare ((dgOdotMilnorSourceNullOuterSquare R d ≫ dgKInputPerfectNu R) ≫
       perfectStableInfinityInclusion))
-    (SquareFrame.ofSquare ((dgOdotMilnorActualOuterDiagram R d h).square ≫ perfectStableInfinityInclusion)) :=
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare ((dgOdotMilnorActualOuterDiagram R d h).square ≫ perfectStableInfinityInclusion)) :=
   squareFrameHomotopyPostcomp (dgOdotMilnorOuterSquareFrameComparison R d h) perfectStableInfinityInclusion
 
 /-- 概要：元始域外面の StableInfinity 全比較は元 LT 絶対外周の同じ全二胞体を保持する。

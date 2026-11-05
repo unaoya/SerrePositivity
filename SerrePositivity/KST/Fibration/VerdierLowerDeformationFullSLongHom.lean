@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) {n : ℕ}
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) {n : ℕ}
   (a : ULift.{u} (Fin (n + 1)) →o ULift.{u} (Fin 3))
   (t : ULift.{u} (Fin (n + 1)) →o Fin 2)
   (j k : ULift.{u} (Fin (n + 1))) (hj : a j = ULift.up 0) (hk : a k = ULift.up 2)

@@ -66,14 +66,14 @@ lemma completionRelativeHead_higher_of_input (h : GroupNerveHigherVanishingInput
       CompletionCoreFlagEvaluationInput (r + 1) ((completionCokernelHeadIndex r ι).obj m) f)
     (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) := by
   let p := completionRelativeHeadWideEvaluation r ι f hf
   have hw := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence p
     (completionRelativeHeadWideEvaluation_isWeak_of_input r ι f hf input)
   have hπ := Spectra.kanPiIsomorphism_of_qCatEquivalence _
     hw.isSimplicialHomotopyEquivalence.isQCatEquivalence
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) n
         ((F2.continuousKanReplacement.map p).app (Opposite.op ⦋0⦌) x)) :=
     completionWideHead_higher_of_input h r ι f hf n hn _

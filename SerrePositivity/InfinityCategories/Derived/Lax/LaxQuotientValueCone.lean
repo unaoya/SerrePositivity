@@ -25,10 +25,10 @@ namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare
 open SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare
 local instance coneSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable (Φ : StableInfinity.{u} ⟶ Sp.{u})
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 lemma square_source_vertex : squareVertex (square Φ p q i r h) 0 0 =
     coherentNerveVertex (value Φ A) := by
@@ -41,23 +41,23 @@ lemma square_source_vertex : squareVertex (square Φ p q i r h) 0 0 =
 def cospan : (horn 2 2 : SSet.{u + 1}) ⟶ Sp.{u} :=
   pullbackCospan (square Φ p q i r h)
 
-def cone : JoinCone (cospan Φ p q i r h) := pullbackCone (square Φ p q i r h)
+def cone : JoinCone (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cospan Φ p q i r h) := pullbackCone (square Φ p q i r h)
 
-lemma cospan_C : horn₂₂.ι₀₂ ≫ cospan Φ p q i r h = SSet.yonedaEquiv.symm
-    (coherentNerveEdge (valueMap Φ (laxQuotientCLeg p q r))).edge := by
-  rw [cospan, pullbackCospan, ← Category.assoc, cospanSquareBoundary_rightEdge, square_right]
+lemma cospan_C : horn₂₂.ι₀₂ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cospan Φ p q i r h = SSet.yonedaEquiv.symm
+    (coherentNerveEdge (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r))).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cospan, pullbackCospan, ← Category.assoc, cospanSquareBoundary_rightEdge, square_right]
 
-lemma cospan_D : horn₂₂.ι₁₂ ≫ cospan Φ p q i r h = SSet.yonedaEquiv.symm
-    (coherentNerveEdge (valueMap Φ (laxQuotientDLeg p q r))).edge := by
-  rw [cospan, pullbackCospan, ← Category.assoc, cospanSquareBoundary_topEdge, square_top]
+lemma cospan_D : horn₂₂.ι₁₂ ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cospan Φ p q i r h = SSet.yonedaEquiv.symm
+    (coherentNerveEdge (valueMap Φ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r))).edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cospan, pullbackCospan, ← Category.assoc, cospanSquareBoundary_topEdge, square_top]
 
-lemma cone_square : coneSquare (cone Φ p q i r h) = square Φ p q i r h := by
-  simp only [cone, pullbackCone, coneSquare, Iso.inv_hom_id_assoc]
+lemma cone_square : coneSquare (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cone Φ p q i r h) = square Φ p q i r h := by
+  simp only [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cone, pullbackCone, coneSquare, Iso.inv_hom_id_assoc]
 
-lemma cone_vertex : (cone Φ p q i r h).vertex = coherentNerveVertex (value Φ A) := by
-  have he := FiberModel.coneSquare_apex (cone Φ p q i r h)
-  rw [cone_square] at he
-  exact he.symm.trans (square_source_vertex Φ p q i r h)
+lemma cone_vertex : (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cone Φ p q i r h).vertex = coherentNerveVertex (value Φ A) := by
+  have he := FiberModel.coneSquare_apex (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cone Φ p q i r h)
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.cone_square] at he
+  exact he.symm.trans (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare.square_source_vertex Φ p q i r h)
 
 end SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientSquare
 

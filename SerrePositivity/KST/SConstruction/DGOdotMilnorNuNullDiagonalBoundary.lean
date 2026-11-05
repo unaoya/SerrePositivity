@@ -25,7 +25,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：元共有面と元完全射の一単体回収を使う。
 規約：元全一単体の等号。使われ方：元実共有辺への厳密復元。 -/
 lemma dgOdotMilnorNuNullDiagonalMap_diagram :
-    SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorNuNullDiagonalMap R d)).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)).edge =
       squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R := by
   apply SSet.yonedaEquiv.injective
   exact (Equiv.apply_symm_apply _ _).trans
@@ -38,7 +38,7 @@ variable (h : DGGluingMilnorSquare R d)
 方針：同じ元共有面と元一単体回収を使う。
 規約：元全一単体の等号。使われ方：元絶対共有辺への厳密復元。 -/
 lemma dgOdotMilnorNuAbsoluteDiagonalMap_diagram :
-    SSet.yonedaEquiv.symm (stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)).edge =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)).edge =
       squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h) := by
   apply SSet.yonedaEquiv.injective
   exact (Equiv.apply_symm_apply _ _).trans
@@ -51,7 +51,7 @@ lemma dgOdotMilnorNuAbsoluteDiagonalMap_diagram :
 def dgOdotMilnorNuNullDiagonalDiagramComparison : FunctorIso
     (squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} => FunctorIso f g)
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} => FunctorIso f g)
     (dgOdotMilnorNuNullDiagonalMap_diagram R d) (dgOdotMilnorNuAbsoluteDiagonalMap_diagram R d h))
       (dgOdotMilnorNuNullDiagonalArrowComparison R d h)
 

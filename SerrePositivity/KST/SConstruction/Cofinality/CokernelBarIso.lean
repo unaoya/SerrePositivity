@@ -37,13 +37,13 @@ def cutCokernelBarIso {X Y : StableModel.{u}} (f : X ⟶ Y) :
 lemma cutCokernel_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     {X Y : StableModel.{u}} (f : X ⟶ Y) (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) := by
   let e := F2.continuousKanReplacement.mapIso (cutCokernelBarIso f)
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj
         (nerve (AsSmall.{u} (SingleObj (Multiplicative (cutKZeroCokernel 1 f)))))) n
           (e.hom.app (Opposite.op ⦋0⦌) x)) := cutCokernelBar_higher_of_input h 1 f n hn _
-  exact Function.Injective.subsingleton ((Spectra.KanPiIsomorphism.of_iso e x n).1)
+  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e x n).1)
 
 end SerrePositivity.KST.SConstruction.Cofinality

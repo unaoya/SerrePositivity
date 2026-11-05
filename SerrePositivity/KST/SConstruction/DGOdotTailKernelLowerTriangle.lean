@@ -72,8 +72,8 @@ lemma dgOdotTailKernelAbsoluteLowerTriangle_whole :
 使われ方：③ の長方形構成中にも循環せず使える厚核下二単体接続。 -/
 def dgOdotTailActualKernelLowerTriangleComparison
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ perfectStableInfinity.{u + 1}}
-    {b : VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square F}
-    (e : VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square F b) :
+    {b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square F}
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square F b) :
     FunctorIso (squareTriangle 1 ≫ F)
       (squareTriangle 1 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R) :=
   FunctorIso.precomp e.comparison.symm (squareTriangle 1) ≪≫
@@ -84,8 +84,8 @@ def dgOdotTailActualKernelLowerTriangleComparison
 規約：指定元二単体・元完備化先を保持。使われ方：実構成到着時の厚核側代入。 -/
 def dgOdotTailActualKernelAbsoluteLowerTriangleComparison
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ perfectStableInfinity.{u + 1}}
-    {b : VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square F}
-    (e : VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square F b) :
+    {b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square F}
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square F b) :
     FunctorIso (squareTriangle 1 ≫ F)
       (squareTriangle 1 ≫ (dgOdotMilnorNuPerfectSequence R d h).presentation.square) :=
   dgOdotTailActualKernelLowerTriangleComparison R d h e ≪≫

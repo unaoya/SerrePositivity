@@ -23,7 +23,7 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ指定完全関手の実点は、全 S• Kan 族でも同じ元の実現射を表す。 -/
-theorem zeroFunctorFullSKanFamily_vertex {A C : StableQCat.{u}} (F : ExactMap A C)
+theorem zeroFunctorFullSKanFamily_vertex {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     (zeroFunctorFullSKanFamily A C).app (Opposite.op ⦋0⦌)
         (fullSubcategoryVertex IsZeroVertex (functorVertex F.hom) hF) =
@@ -31,7 +31,7 @@ theorem zeroFunctorFullSKanFamily_vertex {A C : StableQCat.{u}} (F : ExactMap A 
   have h := congrArg (SSet.unitHomEquiv _) (zeroFunctorFullSKanFamily_fixed F hF)
   exact h
 
-variable (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 include hZ in
 /-- 元の二胞体の合成 path は、同じ実零値完全関手を表す。 -/
 theorem zeroMiddleTriangle_composite_zero :
@@ -48,14 +48,14 @@ def zeroMiddleFullSKanComposite :
 /-- 同じ中間対象比較と元の第二短辺の合成は、元の合成 path の実射に厳密一致する。 -/
 theorem zeroMiddleFullSKanComparison_last :
     zeroMiddleFullSKanComparison s hZ ≫
-        stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 0 s)) =
+        stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s)) =
       zeroMiddleFullSKanComposite s hZ := by
   have hFG := zeroMiddleTriangle_composite_zero s hZ
   rw [stableTriangleCompositeMap_eq_comp s] at hFG
   change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
   rw [← Functor.map_comp, ← Functor.map_comp]
   apply congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
-  have hc : ∀ (F G : ExactMap (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩)) (h : F = G)
+  have hc : ∀ (F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩)) (h : F = G)
       (hf : IsZeroVertex (functorVertex F.hom)) (hg : IsZeroVertex (functorVertex G.hom)),
       zeroFunctorFullSMap F hf = zeroFunctorFullSMap G hg := by
     intro F G h hf hg
@@ -73,7 +73,7 @@ theorem zeroMiddleFullSKanLongHom_composite :
       functorVertex (show (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)).obj from
           zeroMiddleFullSKanComparison s hZ ≫
-            stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 0 s))) := by
+            stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s))) := by
   have he : (stableTriangleZeroHomLift s hZ).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ coherentTriangleFullPath) =
         fullSubcategoryVertex IsZeroVertex (functorVertex (stableTriangleCompositeMap s).hom)

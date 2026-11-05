@@ -31,7 +31,7 @@ lemma dgKappaNativeBFFiniteStepLeftMap_localized_isIso
     Comparison.exInfinity_kanComplex _
   let c : ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
       (S.functor.obj C).obj := S.comparison C
-  have hp : KanPiIsomorphism c.right := kanPiIsomorphism_of_localized_isIso _ (S.weak C)
+  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right := kanPiIsomorphism_of_localized_isIso _ (S.weak C)
   have hσ : IsIso (AnodyneHomotopy.anodyneQ.map
       (PointedSimplicialSet.circle.{max (u + 1) v} ◁ c).right) :=
     suspensionImage_isIso_of_piIsomorphism AnodyneHomotopy.anodyneQ

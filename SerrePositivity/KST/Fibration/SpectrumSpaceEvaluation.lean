@@ -54,8 +54,8 @@ theorem spectrumSpaceEvaluation_edge {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n 
 /-- 元の通常の段評価は、同じ app n の基礎射そのもの。 -/
 theorem spectrumSpaceEvaluationOrdinary_map {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
     (spectrumSpaceEvaluationOrdinary n).map f = (f.app n).right := by
-  change strictSimplicialOrdinaryMap (spectrumSpaceEvaluation n) f = (f.app n).right
-  apply strictSimplicialOrdinaryMap_of_hom
+  change _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (spectrumSpaceEvaluation n) f = (f.app n).right
+  apply _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom
   exact spectrumSpaceEvaluation_hom f n
 
 /-- Kan 性だけを忘れると、同じ元の段評価の基点忘却と一致する。 -/
@@ -85,7 +85,7 @@ theorem spectrumSpaceEvaluation_reflects_pointed {X Y : OmegaSpectrum.{u}}
       (spectrumSpaceEvaluation_edge f n)).mp hf
   have hg : IsInvertibleEdge (coherentNerveEdge g) :=
     pointedKanObject_edge_isInvertible_of_piIsomorphism g
-      (kanMap_piIsomorphism_of_invertible
+      (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanMap_piIsomorphism_of_invertible
         (X := (spectrumSpaceEvaluation n).obj X) (Y := (spectrumSpaceEvaluation n).obj Y)
         (f.app n).right hi)
   exact (isInvertibleEdge_congr (X := PointedKanInfinity.{u})

@@ -22,12 +22,12 @@ open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
-variable (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 
 include hZ in
 /-- 元の上側二胞体の第一短辺は、同じ指定零中間頂点への零値完全関手。 -/
 theorem zeroMiddleTriangle_first_zero :
-    IsZeroVertex (functorVertex (stableArrowExactMap (StableInfinity.δ 2 s)).hom) :=
+    IsZeroVertex (functorVertex (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)).hom) :=
   isZeroVertex_functorVertex_of_pointwise _ (fun _ => hZ _)
 
 /-- 全 S• への中間対象変更は、同じ第一短辺の元の全 S• 実作用である。 -/
@@ -35,7 +35,7 @@ def zeroMiddleFullSKanComparison :
     fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       stableCoreSingleKanObject (s.obj ⟨ULift.up 1⟩) :=
   exInfinity.map (simplicialDiagonalFunctor.map
-    (zeroFunctorFullSMap (stableArrowExactMap (StableInfinity.δ 2 s))
+    (zeroFunctorFullSMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s))
       (zeroMiddleTriangle_first_zero s hZ)))
 
 /-- 同じ元の第一短辺から作った中間対象比較の辺自体が可逆。 -/
@@ -50,20 +50,20 @@ theorem zeroMiddleFullSKanComparison_isInvertible :
 theorem zeroMiddleFullSKanComparison_first :
     exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)) ≫
         zeroMiddleFullSKanComparison s hZ =
-      stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 2 s)) := by
+      stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)) := by
   change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
   rw [← Functor.map_comp, coreSFullRealizationInclusion, ← Functor.map_comp]
   exact congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
     (by
       simpa only [Category.assoc] using
         (zeroFunctorFullSMap_core (𝟙 (s.obj ⟨ULift.up 0⟩).obj)
-          (stableArrowExactMap (StableInfinity.δ 2 s)) (zeroMiddleTriangle_first_zero s hZ)))
+          (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)) (zeroMiddleTriangle_first_zero s hZ)))
 
 /-- 元の native 第一短辺は、同じ回収完全射の元の実 core S Kan 射そのもの。 -/
 theorem zeroMiddleCoreSingleKanTriangle_first :
     SpaceInfinity.δ 2 ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
       (Opposite.op ⦋2⦌) s) =
-        (coherentNerveEdge (stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 2 s)))).edge := by
+        (coherentNerveEdge (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)))).edge := by
   have h := ConcreteCategory.congr_hom
     ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).naturality
       (SimplexCategory.δ (2 : Fin 3)).op) s
@@ -73,7 +73,7 @@ theorem zeroMiddleCoreSingleKanTriangle_first :
 theorem zeroMiddleCoreSingleKanTriangle_last :
     SpaceInfinity.δ 0 ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
       (Opposite.op ⦋2⦌) s) =
-        (coherentNerveEdge (stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 0 s)))).edge := by
+        (coherentNerveEdge (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s)))).edge := by
   have h := ConcreteCategory.congr_hom
     ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).naturality
       (SimplexCategory.δ (0 : Fin 3)).op) s

@@ -67,7 +67,7 @@ def spaceLocalizationPrecomposition :
     (ihom ((SSet.uliftFunctor.{u + 1, u}).obj Q)).obj SpaceInfinity.{u} ⟶
       invertingFunctors ((SSet.uliftFunctor.{u + 1, u}).obj X) SpaceInfinity.{u} (ULift.up '' W) :=
   localizationPrecomposition ((SSet.uliftFunctor.{u + 1, u}).map q) (ULift.up '' W)
-    (invertsEdges_ulift q W hq.choose) SpaceInfinity
+    (_root_.SerrePositivity.InfinityCategories.Stable.Transport.invertsEdges_ulift q W hq.choose) SpaceInfinity
 
 end SerrePositivity.InfinityCategories.Stable.Transport
 

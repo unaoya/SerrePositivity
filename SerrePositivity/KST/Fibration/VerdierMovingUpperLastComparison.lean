@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.Fibration
 方針：元の実 core 包含の同じ coherent な辺を両側で回収する。
 規約：元の有限二胞体を保持。使われ方：F1 外延性の第一短辺条件。 -/
 theorem verdierMovingUpperFamily_last_standard_delta_two
-    (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
     SpaceInfinity.δ (2 : Fin 3)
       (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
@@ -49,7 +49,7 @@ theorem verdierMovingUpperFamily_last_standard_delta_two
 方針：元の実包含・商の全 S• 合成作用を両側で同じ coherent 辺へ戻す。
 規約：元の実完全射を保持。使われ方：F1 外延性の第二短辺条件。 -/
 theorem verdierMovingUpperFamily_last_standard_delta_zero
-    (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
     SpaceInfinity.δ (0 : Fin 3)
       (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
@@ -71,7 +71,7 @@ theorem verdierMovingUpperFamily_last_standard_delta_zero
   apply SSet.yonedaEquiv.symm.injective
   exact hs.symm.trans ((congrArg (fun f => stdSimplex.δ (0 : Fin 3) ≫ f) hr).trans (hm.trans ht))
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)

@@ -79,13 +79,13 @@ lemma dgOdotTailKernelLiftPerfectTriangle_inclusion :
 lemma dgOdotTailKernelLiftTriangle_nu_edges :
     stdSimplex.δ (2 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (stableArrow (dgKInputNuMap R (dgOdotMilnorFlatKernelInputMap R d))).edge ∧
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorFlatKernelInputMap R d))).edge ∧
       stdSimplex.δ (0 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (stableArrow (dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d))).edge ∧
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d))).edge ∧
       stdSimplex.δ (1 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (stableArrow (dgKInputNuMap R (dgOdotTailKernelLiftComposite R d))).edge := by
+          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotTailKernelLiftComposite R d))).edge := by
   have he := dgOdotTailKernelLiftTriangle_edges R d
   refine ⟨?_, ?_, ?_⟩
   · exact (congrArg (fun f => f ≫ dgKInputNu R) he.1).trans

@@ -27,50 +27,50 @@ namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ実屋根と、その指定商合成三角柱へ向かう一つの全錐同型。 -/
-structure VerdierTwoArrowRoofComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+structure VerdierTwoArrowRoofComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (D L : (Δ[1] : SSet.{u}) ⟶ B.obj)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj)
     (hb : squareBottomEdge ≫ F = D ≫ q.hom) (ht : squareTopEdge ≫ F = L ≫ q.hom) where
-  seed : SquareCosliceSeed F
-  fraction : VerdierCosliceFractionNormalization h (fractionSquarePoint F)
-    (twoArrowCosliceEdge seed)
+  seed : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F
+  fraction : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)
+    (twoArrowCosliceEdge _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowSecondTarget)
-  cone : JoinCone (cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram seed)
-    twoArrowFirstTarget twoArrowSecondTarget fraction)
+  cone : JoinCone (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
+    twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction)
   comparison : VertexIso
-    (X := sliceOver (cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram seed)
-      twoArrowFirstTarget twoArrowSecondTarget fraction ≫ q.hom))
-    (mapJoinCone q.hom cone)
-    (cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram seed)
-      twoArrowFirstTarget twoArrowSecondTarget fraction
-      (twoArrowCoslice_projection q.hom D L F seed hb ht))
-  sourceDenominator_mem : (squareBottomArrow (twoArrowDenominatorSquare cone)).edge ∈
-    weakEquivalences i
+    (X := sliceOver (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
+      twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction ≫ q.hom))
+    (mapJoinCone q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.cone)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed)
+      twoArrowFirstTarget twoArrowSecondTarget _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.fraction
+      (twoArrowCoslice_projection q.hom D L F _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.seed hb ht))
+  sourceDenominator_mem : (squareBottomArrow (twoArrowDenominatorSquare _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison.cone)).edge ∈
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i
 
 namespace VerdierTwoArrowRoofComparison
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {D L : (Δ[1] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {D L : (Δ[1] : SSet.{u}) ⟶ B.obj}
   {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj}
   {hb : squareBottomEdge ≫ F = D ≫ q.hom} {ht : squareTopEdge ≫ F = L ≫ q.hom}
-  (d : VerdierTwoArrowRoofComparison h D L F hb ht)
+  (d : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison h D L F hb ht)
 
 /-- 同じ元の商四角形・同じ実分数を含む指定合成三角柱。 -/
 def prism : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj :=
-  verdierTwoArrowQuotientPasting D L d.seed d.fraction
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting D L d.seed d.fraction
 
 /-- 両屋根四角形の比較に共通な、同じ全錐の関手同型。 -/
 def globalIso : FunctorIso ((mapJoinCone q.hom d.cone).val)
-    (cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram d.seed)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram d.seed)
       twoArrowFirstTarget twoArrowSecondTarget d.fraction
       (twoArrowCoslice_projection q.hom D L F d.seed hb ht)).val :=
   coneFunctorIsoOfVertexIso _ _ d.comparison
 
 /-- 元の全商四角形を厳密に保持する。 -/
 lemma original : pastingSquare d.prism 0 = (β_ Δ[1] Δ[1]).hom ≫ F :=
-  verdierTwoArrowQuotientPasting_original D L d.seed d.fraction
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting_original D L d.seed d.fraction
 
 /-- 実分母四角形の商像を、同じ指定合成三角柱の分母面へ比較する。 -/
 def denominatorIso : FunctorIso (twoArrowDenominatorSquare d.cone ≫ q.hom)
@@ -78,11 +78,11 @@ def denominatorIso : FunctorIso (twoArrowDenominatorSquare d.cone ≫ q.hom)
   have e := d.globalIso.precomp (cospanConeSquareIso.inv ≫ joinMap (𝟙 Δ[0])
     (conePairCospan twoArrowOriginalFirst twoArrowFractionDenominator twoArrow_first_target))
   have e' : FunctorIso (twoArrowDenominatorSquare d.cone ≫ q.hom)
-      (twoArrowDenominatorSquare (cosliceSpanQuotientCone (coprod.desc D L)
+      (twoArrowDenominatorSquare (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L)
         (twoArrowCosliceDiagram d.seed) twoArrowFirstTarget twoArrowSecondTarget d.fraction
         (twoArrowCoslice_projection q.hom D L F d.seed hb ht))) := by
     simpa only [twoArrowDenominatorSquare, conePairSquare, mapJoinCone, Category.assoc] using e
-  rw [verdierRoofPasting_denominator D L d.seed d.fraction hb ht] at e'
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRoofPasting_denominator D L d.seed d.fraction hb ht] at e'
   exact e'
 
 /-- 実分子四角形の商像を、同じ指定合成三角柱の分子面へ比較する。 -/
@@ -93,18 +93,18 @@ def numeratorIso : FunctorIso ((β_ Δ[1] Δ[1]).hom ≫ twoArrowNumeratorSquare
       twoArrow_second_target))
   have e' : FunctorIso ((β_ Δ[1] Δ[1]).hom ≫ twoArrowNumeratorSquare d.cone ≫ q.hom)
       ((β_ Δ[1] Δ[1]).hom ≫ twoArrowNumeratorSquare
-        (cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram d.seed)
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (coprod.desc D L) (twoArrowCosliceDiagram d.seed)
           twoArrowFirstTarget twoArrowSecondTarget d.fraction
           (twoArrowCoslice_projection q.hom D L F d.seed hb ht))) := by
     simpa only [twoArrowNumeratorSquare, conePairSquare, mapJoinCone, Category.assoc] using e
-  rw [verdierRoofPasting_numerator D L d.seed d.fraction hb ht] at e'
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierRoofPasting_numerator D L d.seed d.fraction hb ht] at e'
   exact e'
 
 lemma shared : squareLeftEdge ≫ twoArrowDenominatorSquare d.cone =
     squareBottomEdge ≫ twoArrowNumeratorSquare d.cone := twoArrowConeSquares_shared d.cone
 
 lemma terminalDenominator_mem : (squareTopArrow (twoArrowDenominatorSquare d.cone)).edge ∈
-    weakEquivalences i := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   have he := TwoArrowNativeSquares.denominator_top D L (twoArrowCosliceDiagram d.seed)
     d.fraction d.cone
   have he' := congrArg SSet.yonedaEquiv he
@@ -116,12 +116,12 @@ lemma terminalDenominator_mem : (squareTopArrow (twoArrowDenominatorSquare d.con
 end VerdierTwoArrowRoofComparison
 
 /-- 元の二辺と指定商四角形から、全比較付きの実屋根を新仮定なしに構成する。 -/
-lemma exists_verdierTwoArrowRoofComparison {A B C : StableCategory.{u}}
-    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierTwoArrowRoofComparison {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (D L : (Δ[1] : SSet.{u}) ⟶ B.obj)
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj)
     (hb : squareBottomEdge ≫ F = D ≫ q.hom) (ht : squareTopEdge ≫ F = L ≫ q.hom) :
-    Nonempty (VerdierTwoArrowRoofComparison h D L F hb ht) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison h D L F hb ht) := by
   obtain ⟨s, r, c, ⟨e⟩, s₀, hs₀, hw⟩ :=
     exists_verdierTwoArrowCosliceNormalization h D L F hb ht
   refine ⟨⟨s, r, c, e, ?_⟩⟩

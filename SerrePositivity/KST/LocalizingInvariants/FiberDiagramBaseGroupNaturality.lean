@@ -51,7 +51,7 @@ lemma baseIso_hom_canonical (D : FiberDiagram.{u}) :
       (congrArg HomotopyCategory.mk (FiberModel.homotopyFiberSquare_target_vertex
         (NativeFiber.rightMap D.triangle)))).trans (normalization_base_arrow D)
   simp only [SpectrumHo.spectrumIso, eqToIso.inv]
-  exact hom_eq_eqToHom_of_arrow_identity _ _ ha
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.hom_eq_eqToHom_of_arrow_identity _ _ ha
 
 def baseGroupIso (D : FiberDiagram.{u}) (j : ℤ) :
     (SpectrumHo.piFunctor j).obj ((vertex 1 1).obj D) ≅

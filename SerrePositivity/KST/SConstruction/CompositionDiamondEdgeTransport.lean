@@ -21,13 +21,13 @@ variable {E : SSet.{u}} [KanComplex E] {x m n z : E _⦋0⦌}
   {c₀ c₁ : E.Edge x n} {d₀ d₁ : E.Edge n z}
   (Ha : EndpointFixedEdgeCylinder a₀ a₁) (Hb : EndpointFixedEdgeCylinder b₀ b₁)
   (Hc : EndpointFixedEdgeCylinder c₀ c₁) (Hd : EndpointFixedEdgeCylinder d₀ d₁)
-  (D : CompositionDiamond a₁ b₁ c₁ d₁)
+  (D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a₁ b₁ c₁ d₁)
 
 /-- 元の共通対角辺を持ち、四辺だけを指定円柱で移した実三角形対。 -/
-def compositionDiamondEdgeTransport : CompositionDiamond a₀ b₀ c₀ d₀ where
-  diagonal := D.diagonal
-  first := triangleEdgeTransport Ha Hb (endpointFixedEdgeCylinderRefl D.diagonal) D.first
-  second := triangleEdgeTransport Hc Hd (endpointFixedEdgeCylinderRefl D.diagonal) D.second
+def compositionDiamondEdgeTransport : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a₀ b₀ c₀ d₀ where
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal := D.diagonal
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first := triangleEdgeTransport Ha Hb (endpointFixedEdgeCylinderRefl D.diagonal) D.first
+  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second := triangleEdgeTransport Hc Hd (endpointFixedEdgeCylinderRefl D.diagonal) D.second
 
 /-- 第一の全三角形を元の同じ全三角形へ戻す実比較円柱。 -/
 def compositionDiamondEdgeTransportFirstComparison : Homotopy

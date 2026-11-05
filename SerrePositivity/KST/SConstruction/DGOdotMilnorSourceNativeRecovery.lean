@@ -34,7 +34,7 @@ def dgOdotMilnorSourceNativeValueEquivalence : QCatEquivalence
 /-- 概要：同じ元 native 始域比較を完全射として保持する。
 方針：指定同値の完全性を使用する。規約：同じ順方向を保つ。
 使われ方：Cat^perf 内の元始域回収。 -/
-def dgOdotMilnorSourceNativeComparison : ExactMap (dgGluingMilnorNativeDiagonalSource R d)
+def dgOdotMilnorSourceNativeComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgGluingMilnorNativeDiagonalSource R d)
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)) :=
   ⟨(dgOdotMilnorSourceNativeValueEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence

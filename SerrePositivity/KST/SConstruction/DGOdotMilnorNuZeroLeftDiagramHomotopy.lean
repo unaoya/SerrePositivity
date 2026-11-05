@@ -44,7 +44,7 @@ variable (h : DGGluingMilnorSquare R d)
 def dgOdotMilnorNuZeroLeftDiagramHomotopy : SSet.Homotopy
     (squareLeftEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (squareLeftEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1} =>
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} =>
     SSet.Homotopy f g) (dgOdotMilnorNuZeroLeftMap_diagram R d)
       (dgOdotMilnorNuZeroAbsoluteLeftMap_diagram R d h))
         (dgOdotMilnorNuZeroLeftArrowHomotopy R d)
@@ -93,11 +93,11 @@ lemma dgOdotMilnorNuZeroLeftDiagramHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuZeroLeftDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (𝟙 (A : StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuZeroLeftDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (stableArrow (toZeroCategory (Z))).edge :=
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z))).edge :=
   ⟨(congrArg (fun f => (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫ f)
       (dgOdotMilnorNuZeroLeftDiagramHomotopy_h R d h)).trans
         (dgOdotMilnorNuZeroLeftArrowHomotopy_paths R d).1,

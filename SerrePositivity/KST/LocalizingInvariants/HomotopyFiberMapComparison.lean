@@ -39,7 +39,7 @@ lemma inclusion_natural (j : ℤ) (x : homotopyGroup (homotopyFiber p) j) :
 lemma map_piIsomorphism (ha : PiIsomorphism a) (hb : PiIsomorphism b) :
     PiIsomorphism (map p q a b h) := by
   intro j
-  exact group_five_lemma
+  exact _root_.SerrePositivity.InfinityCategories.Kan.group_five_lemma
     (homotopyMap p (j + 1)) (homotopyFiberBoundary p j)
     (homotopyMap (homotopyFiberInclusion p) j) (homotopyMap p j)
     (homotopyMap q (j + 1)) (homotopyFiberBoundary q j)

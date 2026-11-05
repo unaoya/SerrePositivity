@@ -25,25 +25,25 @@ namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback
 open SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 local instance pullbackComparisonSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 def chosenCone : JoinCone (cospan hΦ p q i r h) :=
   OmegaSpectrum.CoherentPullback.infinityCone (cospan hΦ p q i r h)
 
-lemma chosenCone_isLimit : IsLimitCone (chosenCone hΦ p q i r h) :=
+lemma chosenCone_isLimit : IsLimitCone (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone hΦ p q i r h) :=
   OmegaSpectrum.CoherentPullback.infinityCone_isLimit (cospan hΦ p q i r h)
 
 def coneComparison : VertexIso (X := sliceOver (cospan hΦ p q i r h))
-    (cone hΦ p q i r h) (chosenCone hΦ p q i r h) :=
-  limitConeIso _ _ (cone_isLimit hΦ p q i r h) (chosenCone_isLimit hΦ p q i r h)
+    (cone hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone hΦ p q i r h) :=
+  limitConeIso _ _ (cone_isLimit hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone_isLimit hΦ p q i r h)
 
 def valueIso : VertexIso (X := Sp.{u}) (coherentNerveVertex (value Φ A))
-    (chosenCone hΦ p q i r h).vertex := by
-  let e := limitVertexIso (cone hΦ p q i r h) (chosenCone hΦ p q i r h)
-    (cone_isLimit hΦ p q i r h) (chosenCone_isLimit hΦ p q i r h)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone hΦ p q i r h).vertex := by
+  let e := limitVertexIso (cone hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone hΦ p q i r h)
+    (cone_isLimit hΦ p q i r h) (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone_isLimit hΦ p q i r h)
   have hv : (HomotopyCategory.mk (cone hΦ p q i r h).vertex : hoFunctor.obj Sp.{u}) =
       SpectrumHo.obj (value Φ A) := congrArg HomotopyCategory.mk (cone_vertex hΦ p q i r h)
   exact eqToIso hv.symm ≪≫ e

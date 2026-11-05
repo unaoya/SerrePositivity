@@ -133,13 +133,13 @@ def tammeProjectionEquivalence :=
 方針：一般商の脚と完備化後の脚の既存比較を使う。
 規約：元の suspension 自然性を保持する。使われ方：d の射影との接続。 -/
 def landTammeCLeg_comparison : FunctorIso (Q).cLeg.hom
-    (laxQuotientCLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       (Q).sequence.projection).hom := (Q).cLeg_projectionIso
 
 /-- 概要：D 側の脚も元の完備化後の射影の脚を保持する。
 方針：元の定義の厳密回収を使う。規約：符号・向きを変えない。
 使われ方：同じ右射の二脚への整合。 -/
-lemma landTammeDLeg_comparison : (Q).dLeg = laxQuotientDLeg
+lemma landTammeDLeg_comparison : (Q).dLeg = _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg
     (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d) (Q).sequence.projection :=
   (Q).dLeg_projection_eq
 
@@ -159,14 +159,14 @@ lemma landTamme_dSource_original : (Q).dSource.hom =
 方針：完備化の指定を展開する。規約：元の商射を保つ。
 使われ方：実 ⊙ への C 脚の照合。 -/
 lemma landTamme_cLeg_original : (Q).cLeg.hom =
-    (laxQuotientCLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.projection).hom ≫ (dgOdotQuotientCompletion R d).hom := rfl
 
 /-- 概要：D 脚も元の商射の脚と同じ Morita 逆の合成。
 方針：実完備化射の指定を保持する。規約：逆射を選び直さない。
 使われ方：実 ⊙ への D 脚の照合。 -/
 lemma landTamme_dLeg_original : (Q).dLeg.hom =
-    (laxQuotientDLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.projection).hom ≫ (dgOdotQuotientCompletion R d).hom := rfl
 
 /-- 概要：実 cospan の C 側は同じ C 脚の BF 値。

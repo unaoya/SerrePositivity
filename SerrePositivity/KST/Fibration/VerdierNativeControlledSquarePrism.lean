@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (t : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (t : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
 
 /-- 概要：同じ始端全四角形の上側を、元の指定上側二胞体へ送る同じ実三角柱。
 方針：同じ実制御三角柱と元の下側の貼り合わせを使う。

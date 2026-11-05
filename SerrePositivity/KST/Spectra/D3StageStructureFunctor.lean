@@ -45,7 +45,7 @@ def d3StageStructureGraded (n : ℕ) :
       (d3StageKanEnriched n) (d3StageLoopKanEnriched n) where
   app X := eHomEquiv SSet
     (ObjectProperty.homMk ((KanSequence.adjointLoopTailUnit X.toKanSequence).app n))
-  naturality X Y := ((enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
     ((KanSequence.adjointLoopTailUnit X.toKanSequence).app n)
     ((KanSequence.adjointLoopTailUnit Y.toKanSequence).app n)
     ((d3StageLoopKanEnriched n).map X Y) ((d3StageKanEnriched n).map X Y)).mp

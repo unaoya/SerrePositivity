@@ -31,7 +31,7 @@ def kKanOriginalSuspensionMappingTarget {I : Type u} [SmallCategory I]
 instance kKanOriginalSuspensionMappingTarget_kanComplex {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (x y : I) :
     KanComplex (kKanOriginalSuspensionMappingTarget r F x y) :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の prism の native Hom を、元の suspension 写像空間へ対象の等式だけで同定する。 -/
 def kKanOriginalPrismNativeHomIso {I : Type u} [SmallCategory I]
@@ -54,7 +54,7 @@ def kKanOriginalPrismSpanInitialVertex {I : Type u} [SmallCategory I]
 /-- 下側の元の全合成列族を、元の suspension 写像空間内に表示する。 -/
 def kKanOriginalPrismLowerSuspensionFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶ kKanOriginalSuspensionMappingTarget r F x y :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶ kKanOriginalSuspensionMappingTarget r F x y :=
   kKanOriginalPrismLowerNativeFamily r F f ≫ (kKanOriginalPrismNativeHomIso r F x y).hom
 
 /-- 元の suspension 写像空間内の、同じ長辺から下側の全合成列への実円柱。 -/
@@ -90,7 +90,7 @@ lemma kKanOriginalPrismLowerSuspensionContraction_recover {I : Type u} [SmallCat
 /-- 上側の元の全合成列族を、元の suspension 写像空間内に表示する。 -/
 def kKanOriginalPrismUpperSuspensionFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    nerve (CoherentArrowString f) ⟶ kKanOriginalSuspensionMappingTarget r F x y :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶ kKanOriginalSuspensionMappingTarget r F x y :=
   kKanOriginalPrismUpperNativeFamily r F f ≫ (kKanOriginalPrismNativeHomIso r F x y).hom
 
 /-- 元の suspension 写像空間内の、同じ長辺から上側の全合成列への実円柱。 -/

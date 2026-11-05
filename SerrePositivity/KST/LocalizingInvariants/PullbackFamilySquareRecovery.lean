@@ -121,15 +121,15 @@ lemma pullbackFamilySquare_last_eq {P X : SSet.{u}} [Quasicategory X] [IsStable 
     {n : ℕ} (F : P ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams X))
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj X))
     (hQ : IsPullbackSquare Q)
-    (hF : F ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X) =
-      parametricPullbackDiagramFamily Q hQ ≫ (pre (simplexLastPoint n)).app (pullbackDiagrams X)) :
+    (hF : F ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X) =
+      parametricPullbackDiagramFamily Q hQ ≫ (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app (pullbackDiagrams X)) :
     pullbackFamilySquare F ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) := by
   have he := congrArg (fun f => f ≫
     evaluateFunctorAt (Y := (ihom P).obj X) (stdSimplex.obj₀Equiv.symm (0 : Fin 1)))
-    (pullbackFamilySquare_restriction_eq (simplexLastPoint n) F Q hQ hF)
+    (pullbackFamilySquare_restriction_eq (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) F Q hQ hF)
   rw [Category.assoc, Category.assoc, stable_pre_evaluateFunctorAt] at he
-  have hp : (simplexLastPoint n).app (Opposite.op ⦋0⦌)
+  have hp : (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) = stdSimplex.obj₀Equiv.symm (Fin.last n) := by
     have h₀ : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
         SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by decide

@@ -29,44 +29,44 @@ namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
 end SerrePositivity.KST.LocalizingInvariants.LaxCounit
 namespace SerrePositivity.InfinityCategories.Derived.Lax
 open SerrePositivity.KST.LocalizingInvariants
-variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-  (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
-  (h : IsVerdierSequence i r)
+variable {C D E A Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+  (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A (laxCategory p q)) (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r)
 
 namespace LaxCounit
 open SerrePositivity.KST.LocalizingInvariants.LaxCounit
 
 def quotientSuspensionDiagramComparison :=
-  CofiberFamily.zeroTargetDiagramComparison Q.obj (quotientArrow p q i r)
-    (quotientArrow_zero_target p q i r h)
+  CofiberFamily.zeroTargetDiagramComparison Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_zero_target p q i r h)
 
 def quotientCofiber_DSuspRelativeIso :
-    FunctorIso (CofiberFamily.cofiber Q.obj (quotientArrow p q i r))
-      (((i.hom ≫ (laxSnd p q).hom) ≫ (laxQuotientDLeg p q r).hom) ≫
-        SuspensionExact.map Q.obj) := by
-  have e := CofiberFamily.zeroTargetRelativeIso Q.obj (quotientArrow p q i r)
-    (quotientArrow_zero_target p q i r h)
-  rw [quotientArrow_source] at e
+    FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r))
+      (((i.hom ≫ (laxSnd p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r).hom) ≫
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj) := by
+  have e := CofiberFamily.zeroTargetRelativeIso Q.obj (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow p q i r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_zero_target p q i r h)
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientArrow_source] at e
   exact e
 
 end LaxCounit
 
 def laxQuotientRelativeLegsIso : FunctorIso
-    ((i.hom ≫ (laxFst p q).hom) ≫ (laxQuotientCLeg p q r).hom)
-    ((i.hom ≫ (laxSnd p q).hom) ≫ (laxQuotientDLeg p q r).hom) := by
-  apply ((SuspensionExact.equivalence Q.obj).isQCatEquivalence.postcompose A.obj
+    ((i.hom ≫ (laxFst p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom)
+    ((i.hom ≫ (laxSnd p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r).hom) := by
+  apply ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence Q.obj).isQCatEquivalence.postcompose A.obj
     ).isFullyFaithful.preimageVertexIso
   change FunctorIso
-    (((i.hom ≫ (laxFst p q).hom) ≫ (laxQuotientCLeg p q r).hom) ≫ SuspensionExact.map Q.obj)
-    (((i.hom ≫ (laxSnd p q).hom) ≫ (laxQuotientDLeg p q r).hom) ≫ SuspensionExact.map Q.obj)
+    (((i.hom ≫ (laxFst p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj)
+    (((i.hom ≫ (laxSnd p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q r).hom) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj)
   have ec : FunctorIso
-      (((i.hom ≫ (laxFst p q).hom) ≫ (laxQuotientCLeg p q r).hom) ≫ SuspensionExact.map Q.obj)
+      (((i.hom ≫ (laxFst p q).hom) ≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q r).hom) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map Q.obj)
       ((i.hom ≫ ((laxFst p q).hom ≫ LaxInclusion.fromC p q)) ≫ r.hom) := by
-    have e := FunctorIso.precomp (laxQuotientCLeg_suspensionIso p q r)
+    have e := FunctorIso.precomp (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso p q r)
       (i.hom ≫ (laxFst p q).hom)
     simpa only [Category.assoc] using e
-  exact ec ≪≫ (LaxCounit.quotientSelectedCIso p q i r).symm ≪≫
-    LaxCounit.quotientCofiber_DSuspRelativeIso p q i r h
+  exact ec ≪≫ (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedCIso p q i r).symm ≪≫
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiber_DSuspRelativeIso p q i r h
 
 end SerrePositivity.InfinityCategories.Derived.Lax
 

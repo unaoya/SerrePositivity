@@ -20,27 +20,27 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 private theorem nativeReadout_triangle_transport
-    (s : StableInfinity.{u} _⦋2⦌) (a : StableInfinity.{u} _⦋1⦌)
-    (h : StableInfinity.δ 1 s = a) (A C : StableCategory.{u})
-    (hA : (s.obj ⟨ULift.up 0⟩ : StableCategory.{u}) = A)
-    (hC : (s.obj ⟨ULift.up 2⟩ : StableCategory.{u}) = C)
-    (hAa : (a.obj ⟨ULift.up 0⟩ : StableCategory.{u}) = A)
-    (hCa : (a.obj ⟨ULift.up 1⟩ : StableCategory.{u}) = C) :
+    (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (a : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋1⦌)
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 1 s = a) (A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+    (hA : (s.obj ⟨ULift.up 0⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) = A)
+    (hC : (s.obj ⟨ULift.up 2⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) = C)
+    (hAa : (a.obj ⟨ULift.up 0⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) = A)
+    (hCa : (a.obj ⟨ULift.up 1⟩ : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) = C) :
     ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))).map
-      (eqToHom (congrArg₂ (fun (X Y : StableCategory.{u}) =>
+      (eqToHom (congrArg₂ (fun (X Y : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) =>
         (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom
-          (stableCoreSingleKanObject (show StableQCat from X))
-          (stableCoreSingleKanObject (show StableQCat from Y)))) hA hC))).app
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from X))
+          (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from Y)))) hA hC))).app
         (Opposite.op ⦋0⦌)
       (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) =
       functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (stableTriangleHomOverDiagonal a s h ≫
-          eqToHom (congrArg₂ (fun (X Y : StableCategory.{u}) =>
-            SimplicialCategory.sHom (C := StableQCat.{u}) X Y) hAa hCa) ≫
+          eqToHom (congrArg₂ (fun (X Y : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) =>
+            SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) X Y) hAa hCa) ≫
           stableCoreSingleKanEnrichedFunctor.map
-            (show StableQCat from A) (show StableQCat from C))) := by
+            (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))) := by
   subst a
   cases hA
   cases hC
@@ -51,7 +51,7 @@ private theorem nativeReadout_triangle_transport
 方針：実始端の全二胞体回収と同じ共有対角の対象輸送を順に代入する。
 規約：全長 Hom の射の等号を保持する。入力は実読出しの既存回収式。
 使われ方：K-6 c4 の元の上下長 Hom 比較へ渡す始端条件。 -/
-theorem verdierLowerNativeReadoutCoordinates_first (d : VerdierDiagram.{u})
+theorem verdierLowerNativeReadoutCoordinates_first (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : HEq (L.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
@@ -81,7 +81,7 @@ private theorem nativeReadout_point_transport {P X Y : SSet.{u + 1}}
 方針：元の終端二胞体の全長 Hom の回収を同じ対象等号で輸送する。
 規約：元の実読出しと実合成端を保持する。
 使われ方：K-6 c4 の指定終端を持つ全長 Hom の合成への入力。 -/
-theorem verdierLowerNativeReadoutCoordinates_last (d : VerdierDiagram.{u})
+theorem verdierLowerNativeReadoutCoordinates_last (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
       (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : HEq (L.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))

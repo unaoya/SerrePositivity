@@ -20,24 +20,24 @@ local notation "X₂" => dgOdotMilnorNuNullTriangleStableObject R d 2
 local notation "Src" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "Tgt" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 
-private lemma nullExactHomTransport {A B C D : StableQCat.{u}}
+private lemma nullExactHomTransport {A B C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (h : A = C) (k : B = D) :
-    eqToHom (congrArg₂ (fun X Y : StableQCat.{u} => SimplicialCategory.sHom X Y) h k) ≫
-        (quasicategoryCore (exactFunctors C D : SSet.{u})).ι =
-      (quasicategoryCore (exactFunctors A B : SSet.{u})).ι ≫
-        eqToHom (congrArg₂ (fun X Y : StableQCat.{u} =>
-          (exactFunctors X Y : SSet.{u})) h k) := by
+    eqToHom (congrArg₂ (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} => SimplicialCategory.sHom X Y) h k) ≫
+        (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{u})).ι =
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι ≫
+        eqToHom (congrArg₂ (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} =>
+          (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{u})) h k) := by
   subst C
   subst D
-  exact (Category.id_comp (quasicategoryCore (exactFunctors A B : SSet.{u})).ι).trans
-    (Category.comp_id (quasicategoryCore (exactFunctors A B : SSet.{u})).ι).symm
+  exact (Category.id_comp (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι).trans
+    (Category.comp_id (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors A B : SSet.{u})).ι).symm
 
 /-- 概要：元両端の完全関手圏を同じ固定 ν の完全関手圏へ輸送する。
 方針：元二単体の端点等号を同じ完全関手圏に適用する。
 規約：等号による同型。使われ方：元全 Hom の終対象性の輸送。 -/
 def dgOdotMilnorNuNullUpperExactTransport :
-    DGOdotMilnorNuNullUpperExactFunctors R d ⟶ (exactFunctors (Src) (Tgt) : SSet.{u + 1}) :=
-  eqToHom (congrArg₂ (fun X Y : StableQCat.{u + 1} => (exactFunctors X Y : SSet.{u + 1}))
+    DGOdotMilnorNuNullUpperExactFunctors R d ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1}) :=
+  eqToHom (congrArg₂ (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} => (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{u + 1}))
     (dgOdotMilnorNuNullTriangle_source R d 0) (dgOdotMilnorNuNullTriangle_target R d 0))
 
 instance nuNullUpperExactTransport_isIso : IsIso (dgOdotMilnorNuNullUpperExactTransport R d) :=
@@ -48,7 +48,7 @@ instance nuNullUpperExactTransport_isIso : IsIso (dgOdotMilnorNuNullUpperExactTr
 規約：全単体の等号。使われ方：零成分の固定 ν 内での判定。 -/
 lemma dgOdotMilnorNuNullUpperHom_transport :
     dgOdotMilnorNuNullTriangleHom R d 0 ≫
-        (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι =
+        (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι =
       dgOdotMilnorNuNullUpperHom R d ≫ dgOdotMilnorNuNullUpperHomInclusion R d ≫
         dgOdotMilnorNuNullUpperExactTransport R d :=
   (Category.assoc _ _ _).trans (congrArg (fun f => dgOdotMilnorNuNullUpperHom R d ≫ f)
@@ -61,7 +61,7 @@ lemma dgOdotMilnorNuNullUpperHom_transport :
 lemma dgOdotMilnorNuNullUpperFixedHom_vertex_isTerminal
     (a : (nerve DGOdotMilnorNuNullTrianglePath.{u}) _⦋0⦌) :
     IsTerminalVertex ((dgOdotMilnorNuNullTriangleHom R d 0 ≫
-      (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι).app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι).app
         (Opposite.op ⦋0⦌) a) := by
   have ht := (dgOdotMilnorNuNullUpperHom_vertex_isTerminal R d a).map_of_isIso
     (dgOdotMilnorNuNullUpperExactTransport R d)
@@ -75,7 +75,7 @@ lemma dgOdotMilnorNuNullUpperFixedHom_vertex_isTerminal
 def dgOdotMilnorNuNullUpperFactor :
     nerve DGOdotMilnorNuNullTrianglePath.{u} ⟶ DGOdotMilnorNuNullCoherenceSpace R d :=
   fullSubcomplexLift IsTerminalVertex (dgOdotMilnorNuNullTriangleHom R d 0 ≫
-    (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι)
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι)
     (dgOdotMilnorNuNullUpperFixedHom_vertex_isTerminal R d)
 
 /-- 概要：同じ零成分への全因子分解は元の実 Hom 作用を全単体で回収する。
@@ -84,7 +84,7 @@ def dgOdotMilnorNuNullUpperFactor :
 lemma dgOdotMilnorNuNullUpperFactor_hom (h : DGGluingMilnorSquare R d) :
     dgOdotMilnorNuNullUpperFactor R d ≫ dgOdotMilnorNuNullCoherenceHom R d h =
       dgOdotMilnorNuNullTriangleHom R d 0 := by
-  apply (cancel_mono (quasicategoryCore (exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι).mp
+  apply (cancel_mono (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι).mp
   exact (Category.assoc _ _ _).trans
     (congrArg (fun f => dgOdotMilnorNuNullUpperFactor R d ≫ f)
       (dgOdotMilnorNuNullCoherenceHom_inclusion R d h))

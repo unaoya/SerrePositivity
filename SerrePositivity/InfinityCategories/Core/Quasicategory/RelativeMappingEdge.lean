@@ -25,13 +25,13 @@ open SerrePositivity.KST.LocalizingInvariants
 
 structure RelativeMappingEdge {E B : SSet.{u}} (p : E ⟶ B) (x y : E _⦋0⦌) where
   edge : E.Edge x y
-  over : p.app (Opposite.op ⦋1⦌) edge.edge =
+  over : p.app (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge.edge.edge =
     PinchedHom.constant (p.app (Opposite.op ⦋0⦌) x) 1
 
 def relativeMappingEdge {E B : SSet.{u}} (p : E ⟶ B)
     (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p) (x y : E _⦋0⦌)
     (h : p.app (Opposite.op ⦋0⦌) x = p.app (Opposite.op ⦋0⦌) y) :
-    RelativeMappingEdge p x y := by
+    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge p x y := by
   apply Classical.choice
   let : HasLiftingProperty (boundary 1).ι p := hp _ inferInstance
   let e := ((SSet.Edge.id (p.app (Opposite.op ⦋0⦌) x)).ofEq rfl h).toTruncated

@@ -34,45 +34,45 @@ end SerrePositivity.KST.LocalizingInvariants.VerdierRelativeInitialComparison
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
     (q.hom.app (Opposite.op ⦋0⦌) z)}
   {G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj}
-  {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+  {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
 
 local notation "P" => S.toSSet ⊗ (Δ[1] : SSet)
 local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 def VerdierRecoveredInitialComparison.ambientHomotopy
-    (c : VerdierRecoveredInitialComparison r U) :
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
     SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily :=
-  spanFunctorEdgeUnflipHomotopy c.edge
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy c.edge
 
 lemma VerdierRecoveredInitialComparison.ambientHomotopy_h
-    (c : VerdierRecoveredInitialComparison r U) :
-    c.ambientHomotopy.h = spanComparisonPrism c.edge.edge :=
-  spanFunctorEdgeUnflipHomotopy_h c.edge
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
+    c.ambientHomotopy.h = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism c.edge.edge :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy_h c.edge
 
 def VerdierRecoveredBoundaryComparison.ambientHomotopy
-    (b : VerdierRecoveredBoundaryComparison r U) :
+    (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     SSet.Homotopy (r.cylinder.homotopy.h ≫ (ihom J).map q.hom) ((S.ι ▷ Δ[1]) ≫ U.whole) :=
-  spanFunctorEdgeUnflipHomotopy b.edge
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy b.edge
 
 lemma VerdierRecoveredBoundaryComparison.ambientHomotopy_h
-    (b : VerdierRecoveredBoundaryComparison r U) :
-    b.ambientHomotopy.h = spanComparisonPrism b.edge.edge :=
-  spanFunctorEdgeUnflipHomotopy_h b.edge
+    (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
+    b.ambientHomotopy.h = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism b.edge.edge :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorEdgeUnflipHomotopy_h b.edge
 
 /-- 指定された全 S 境界比較の始端。二つの実円柱の始端を保持して取り出す。 -/
 def VerdierRecoveredBoundaryComparison.initialAmbientHomotopy
-    (b : VerdierRecoveredBoundaryComparison r U) :
+    (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     SSet.Homotopy (S.ι ≫ (r.cylinder.whole ≫ (ihom J).map q.hom))
       (S.ι ≫ U.initialFamily) := by
   let H := functorHomotopyPrecomp b.ambientHomotopy (SSet.ι₀ : S.toSSet ⟶ P)
@@ -87,15 +87,15 @@ def VerdierRecoveredBoundaryComparison.initialAmbientHomotopy
   exact { h := H.h, h₀ := H.h₀.trans hF, h₁ := H.h₁.trans hG, rel := H.rel }
 
 lemma VerdierRecoveredBoundaryComparison.initialAmbientHomotopy_h
-    (b : VerdierRecoveredBoundaryComparison r U) :
+    (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     b.initialAmbientHomotopy.h =
-      ((SSet.ι₀ : S.toSSet ⟶ P) ▷ (Δ[1] : SSet.{u})) ≫ spanComparisonPrism b.edge.edge := by
+      ((SSet.ι₀ : S.toSSet ⟶ P) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism b.edge.edge := by
   change ((SSet.ι₀ : S.toSSet ⟶ P) ▷ (Δ[1] : SSet.{u})) ≫ b.ambientHomotopy.h = _
   rw [b.ambientHomotopy_h]
 
 namespace VerdierRecoveredInitialComparison
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
-variable (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U)
+variable (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U)
 
 lemma initialAmbient_prefix : b.initialAmbientHomotopy.h ≫
     (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
@@ -103,23 +103,23 @@ lemma initialAmbient_prefix : b.initialAmbientHomotopy.h ≫
       (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj := by
   rw [b.initialAmbientHomotopy_h, c.ambientHomotopy_h]
   simp only [spanComparisonPrism_pre_diagram, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism_pre_parameter]
-  exact congrArg (fun e => spanComparisonPrism (K := S.toSSet)
+  exact congrArg (fun e => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (K := S.toSSet)
     (L := (Δ[n] : SSet.{u})) (X := C.obj) e) (c.boundary_prefix_eq b)
 
 lemma initialAmbient_last : b.initialAmbientHomotopy.h ≫
-    (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+    (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
     (S.ι ▷ (Δ[1] : SSet.{u})) ≫ c.ambientHomotopy.h ≫
-      (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj := by
+      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj := by
   rw [b.initialAmbientHomotopy_h, c.ambientHomotopy_h]
   simp only [spanComparisonPrism_pre_diagram, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism_pre_parameter]
-  exact congrArg (fun e => spanComparisonPrism (K := S.toSSet)
+  exact congrArg (fun e => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism (K := S.toSSet)
     (L := join (Δ[0] : SSet.{u}) Δ[0]) (X := C.obj) e) (c.boundary_last_eq b)
 
-lemma initialTarget_inverts (_c : VerdierRecoveredInitialComparison r U) :
+lemma initialTarget_inverts (_c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
     InvertsEdges U.initialFamily Set.univ := by
-  have hc := (invertsAllEdges_toKan ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫
+  have hc := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫
     U.coreWhole)).comp (quasicategoryCore ((ihom J).obj C.obj)).ι
-  simpa only [VerdierRecoveredQuotientCoconeCylinder.initialFamily,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily,
     Category.assoc, U.coreWhole_ι] using hc
 
 include c in
@@ -129,53 +129,53 @@ lemma initialSource_inverts :
 
 lemma ambientHomotopy_invertsAllEdges : InvertsEdges c.ambientHomotopy.h Set.univ := by
   let H := spanFunctorEdgeUnflipCoreHomotopy c.edge c.isInvertible c.initialTarget_inverts
-  have hc := (invertsAllEdges_toKan H.h).comp (quasicategoryCore ((ihom J).obj C.obj)).ι
-  have hh : H.h ≫ (quasicategoryCore ((ihom J).obj C.obj)).ι = spanComparisonPrism c.edge.edge :=
+  have hc := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan H.h).comp (quasicategoryCore ((ihom J).obj C.obj)).ι
+  have hh : H.h ≫ (quasicategoryCore ((ihom J).obj C.obj)).ι = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanComparisonPrism c.edge.edge :=
     spanFunctorEdgeUnflipCoreHomotopy_ι c.edge c.isInvertible c.initialTarget_inverts
   rw [hh] at hc
   rw [c.ambientHomotopy_h]
   exact hc
 
 /-- 同じ保存済み K 実全族を、元の strict core 逆像へ戻す。 -/
-def relativeFamily (c : VerdierRecoveredInitialComparison r U) :
-    K ⟶ (relativeFunctorCore q.hom J : SSet.{u}) :=
+def relativeFamily (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) :
+    K ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom J : SSet.{u}) :=
   corePreimageLift ((ihom J).map q.hom) r.cylinder.whole c.initialSource_inverts
 
 end VerdierRecoveredInitialComparison
 
 /-- 同じ K 始端比較を指定 S 始端比較へ、両端と両制限を保持して実際に延長する。 -/
 private lemma exists_relativeInitialHomotopy
-    (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U) :
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     ∃ H : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily,
       (S.ι ▷ (Δ[1] : SSet.{u})) ≫ H.h = b.initialAmbientHomotopy.h ∧
-      H.h ≫ (pre (simplexAttachmentBoundary n).ι).app C.obj =
-        c.ambientHomotopy.h ≫ (pre (simplexAttachmentBoundary n).ι).app C.obj ∧
+      H.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
+        c.ambientHomotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj ∧
       H.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
         c.ambientHomotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj ∧
-      H.h ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
-        c.ambientHomotopy.h ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj :=
+      H.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+        c.ambientHomotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj :=
   exists_relative_simplexAttachmentHomotopy n S.ι c.ambientHomotopy b.initialAmbientHomotopy
     (c.initialAmbient_prefix b) (c.initialAmbient_last b)
 
 /-- 指定 S 比較と両制限を保持し、元の core に入る同じ K 始端全比較。 -/
 structure VerdierRelativeInitialComparison
-    (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U) where
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) where
   homotopy : SSet.Homotopy (r.cylinder.whole ≫ (ihom J).map q.hom) U.initialFamily
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h = b.initialAmbientHomotopy.h
-  attachment_eq : homotopy.h ≫ (pre (simplexAttachmentBoundary n).ι).app C.obj =
-    c.ambientHomotopy.h ≫ (pre (simplexAttachmentBoundary n).ι).app C.obj
-  prefix_eq : homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h = b.initialAmbientHomotopy.h
+  attachment_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj =
+    c.ambientHomotopy.h ≫ (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj
+  prefix_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
     c.ambientHomotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj
-  last_eq : homotopy.h ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
-    c.ambientHomotopy.h ≫ (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj
-  invertsAllEdges : InvertsEdges homotopy.h Set.univ
+  last_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+    c.ambientHomotopy.h ≫ (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj
+  invertsAllEdges : InvertsEdges _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison.homotopy.h Set.univ
 
 /-- 一致を新仮定にせず証明し、元の attachment RLP で指定 S 始端比較へ実際に合わせる。 -/
 lemma exists_verdierRelativeInitialComparison
-    (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U) :
-    Nonempty (VerdierRelativeInitialComparison c b) := by
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U) (b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison c b) := by
   obtain ⟨H, hS, hA, hP, hN⟩ := exists_relativeInitialHomotopy c b
-  let p := (pre (simplexAttachmentBoundary n).ι).app C.obj
+  let p := (pre (_root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary n).ι).app C.obj
   have hff := (isQCatEquivalence_of_trivialKanFibration p).isFullyFaithful
   have hp : InvertsEdges (H.h ≫ p) Set.univ := by
     rw [hA]
@@ -187,8 +187,8 @@ lemma exists_verdierRelativeInitialComparison
 
 namespace VerdierRelativeInitialComparison
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison
-variable {c : VerdierRecoveredInitialComparison r U} {b : VerdierRecoveredBoundaryComparison r U}
-  (d : VerdierRelativeInitialComparison c b)
+variable {c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U} {b : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U}
+  (d : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison c b)
 
 def corePrism : K ⊗ (Δ[1] : SSet.{u}) ⟶
     (quasicategoryCore ((ihom J).obj C.obj) : SSet.{u}) :=
@@ -198,7 +198,7 @@ lemma corePrism_ι : d.corePrism ≫ (quasicategoryCore ((ihom J).obj C.obj)).ι
   allEdgesCoreLift_ι _ _
 
 /-- 同じ調整済み実比較を、元の core 内の両端固定 Homotopy として回収する。 -/
-def coreHomotopy : SSet.Homotopy (c.relativeFamily ≫ relativeFunctorCoreQuotient q.hom J)
+def coreHomotopy : SSet.Homotopy (c.relativeFamily ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J)
     ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ U.coreWhole) where
   h := d.corePrism
   h₀ := by

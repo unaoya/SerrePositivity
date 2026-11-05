@@ -17,12 +17,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
-def postShape : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] := gridMap postIndex
+def postShape : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] := gridMap _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex
 
-def preShape : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] := gridMap preIndex
+def preShape : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] := gridMap _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex
 
 def factor : (Δ[1] : SSet.{u}) ⊗ Δ[2] ⟶ Δ[1] ⊗ Δ[1] :=
-  lift (fst _ _) (gridMap factorIndex)
+  lift (fst _ _) (gridMap _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex)
 
 lemma postShape_zero : SSet.ι₀ ≫ postShape.{u} = stdSimplex.δ (2 : Fin 3) := by
   apply SSet.yonedaEquiv.injective
@@ -57,7 +57,7 @@ lemma factor_long : (Δ[1] ◁ stdSimplex.δ (1 : Fin 3)) ≫ factor.{u} = 𝟙 
   · rfl
   · apply SSet.stdSimplex.ext
     intro i
-    change factorIndex (s i, (1 : Fin 3).succAbove (t i)) = t i
+    change _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex (s i, (1 : Fin 3).succAbove (t i)) = t i
     generalize ht : t i = b
     fin_cases b <;> rfl
 
@@ -68,12 +68,12 @@ lemma factor_first : (Δ[1] ◁ stdSimplex.δ (2 : Fin 3)) ≫ factor.{u} =
   apply ConcreteCategory.hom_ext
   rintro ⟨s, t⟩
   apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i
-  · change s i = (squareTriangleSimplex.{u} (1 : Fin 2)).val.1 (postIndex (s i, t i))
+  · change s i = (squareTriangleSimplex.{u} (1 : Fin 2)).val.1 (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (s i, t i))
     generalize hs : s i = a
     generalize ht : t i = b
     fin_cases a <;> fin_cases b <;> rfl
-  · change factorIndex (s i, (2 : Fin 3).succAbove (t i)) =
-      (squareTriangleSimplex.{u} (1 : Fin 2)).val.2 (postIndex (s i, t i))
+  · change _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex (s i, (2 : Fin 3).succAbove (t i)) =
+      (squareTriangleSimplex.{u} (1 : Fin 2)).val.2 (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (s i, t i))
     generalize hs : s i = a
     generalize ht : t i = b
     fin_cases a <;> fin_cases b <;> rfl
@@ -85,12 +85,12 @@ lemma factor_last : (Δ[1] ◁ stdSimplex.δ (0 : Fin 3)) ≫ factor.{u} =
   apply ConcreteCategory.hom_ext
   rintro ⟨s, t⟩
   apply Prod.ext <;> apply SSet.stdSimplex.ext <;> intro i
-  · change s i = (squareTriangleSimplex.{u} (0 : Fin 2)).val.1 (preIndex (s i, t i))
+  · change s i = (squareTriangleSimplex.{u} (0 : Fin 2)).val.1 (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
     generalize hs : s i = a
     generalize ht : t i = b
     fin_cases a <;> fin_cases b <;> rfl
-  · change factorIndex (s i, (t i).succ) =
-      (squareTriangleSimplex.{u} (0 : Fin 2)).val.2 (preIndex (s i, t i))
+  · change _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.factorIndex (s i, (t i).succ) =
+      (squareTriangleSimplex.{u} (0 : Fin 2)).val.2 (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
     generalize hs : s i = a
     generalize ht : t i = b
     fin_cases a <;> fin_cases b <;> rfl

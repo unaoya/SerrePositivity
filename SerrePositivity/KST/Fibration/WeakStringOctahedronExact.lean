@@ -20,8 +20,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 八面体の最後の列の始点が表す関手は完全である。 -/
-lemma weakStringOctahedron_source_preservesCofiberData {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedron_source_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     PreservesCofiberData ((functorVertexEquiv (weakStringCategory q n) B.obj).symm
       (squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 0 0)) := by
   apply preservesCofiberData_of_familyVertexIso _
@@ -32,8 +32,8 @@ lemma weakStringOctahedron_source_preservesCofiberData {B C : StableCategory.{u}
       (closedStableInclusion (kernelClosedPredicate q)).property
 
 /-- 中間頂点の族も、長辺の共通 cofiber 完全関手との自然同型で完全である。 -/
-lemma weakStringOctahedron_middle_preservesCofiberData {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedron_middle_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     PreservesCofiberData ((functorVertexEquiv (weakStringCategory q n) B.obj).symm
       (squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) := by
   apply preservesCofiberData_of_familyVertexIso _
@@ -47,14 +47,14 @@ lemma weakStringOctahedron_middle_preservesCofiberData {B C : StableCategory.{u}
       (closedStableInclusion (kernelClosedPredicate q)).property
 
 /-- 八面体の最後の実 cofiber 列の全四角形を、元の列図式圏上の族へ戻す。 -/
-def weakStringOctahedronCofiberFamily {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronCofiberFamily {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) : weakStringCategory q n ⟶ cofiberDiagrams B.obj :=
   cofiberFamilyUntranspose (weakStringOctahedronFamily q β).second.rightZeroTriangle
     (weakStringOctahedronFamily q β).second.right_isCofiber
 
 /-- 比較列の全四角形の族は完全関手である。 -/
-lemma weakStringOctahedronCofiberFamily_preservesCofiberData {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedronCofiberFamily_preservesCofiberData {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     PreservesCofiberData (weakStringOctahedronCofiberFamily q β) := by
   apply cofiberFamily_preservesCofiberData_of_endpoints
   · change PreservesCofiberData (cofiberFamilyUntranspose _ _ ≫
@@ -69,7 +69,7 @@ lemma weakStringOctahedronCofiberFamily_preservesCofiberData {B C : StableCatego
     exact weakStringOctahedron_middle_preservesCofiberData q β
 
 /-- 全パラメーターを保った八面体の比較列を、K-1 の完全関手として保持する。 -/
-def weakStringOctahedronCofiberExact {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronCofiberExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     weakStringModel q n ⟶ cofiberStableModel (sInputModel B) :=
   ⟨weakStringOctahedronCofiberFamily q β,

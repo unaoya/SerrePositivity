@@ -27,14 +27,14 @@ local notation "q" => dgOdotMilnorNuNativeProjection R d
 /-- 概要：外周の同じ実 S 合成辺を固定 ν の包含射にする。
 方針：元 cell 始域から核を経る厳密合成を使用する。
 規約：ν の下で逆増大を選択しない。使われ方：外周列の実左射。 -/
-abbrev dgOdotMilnorNuSourceInclusion : ExactMap (A) (T) := dgKInputNuMap R ((a) ≫ (b))
+abbrev dgOdotMilnorNuSourceInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (A) (T) := dgKInputNuMap R ((a) ≫ (b))
 
 /-- 概要：元 S 合成辺の ν 像は同じ二つの完全射の合成そのもの。
 方針：固定界面と実ラベル付き Perf 関手の合成保存を使用する。
 規約：全関手の厳密等号。使われ方：外周の本質像と充満忠実性の照合。 -/
 lemma dgOdotMilnorNuSourceInclusion_hom : (dgOdotMilnorNuSourceInclusion R d).hom =
     (dgOdotMilnorSourceKernelExactMap R d).hom ≫ (i).hom := by
-  have h := congrArg ExactMap.hom
+  have h := congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
     ((presentedPerfectDGStableCategoryFunctor R).map_comp (a) (b))
   change (presentedPerfectDGExactMap R ((a) ≫ (b))).hom =
     (presentedPerfectDGExactMap R (a)).hom ≫ (presentedPerfectDGExactMap R (b)).hom at h
@@ -45,7 +45,7 @@ lemma dgOdotMilnorNuSourceInclusion_hom : (dgOdotMilnorNuSourceInclusion R d).ho
 方針：同じ核比較同値の逆と指定二胞体を使用する。
 規約：retract 閉包を縮めない。使われ方：元の核・局所化証拠の再利用。 -/
 lemma dgOdotMilnorNuSourceInclusion_image (h : DGGluingMilnorSquare R d) :
-    essentialImage (dgOdotMilnorNuSourceInclusion R d) = essentialImage (i) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (dgOdotMilnorNuSourceInclusion R d) = _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (i) := by
   ext y
   let e := dgOdotMilnorSourceKernelNuEquivalence R d h
   constructor
@@ -64,15 +64,15 @@ lemma dgOdotMilnorNuSourceInclusion_image (h : DGGluingMilnorSquare R d) :
 方針：核比較の同値・同じ本質像と検証済み核列の三欄を使用する。
 規約：商射影も局所化辺族も変更しない。使われ方：外周列の具体的認証。 -/
 lemma dgOdotMilnorNuSource_isVerdier (h : DGGluingMilnorSquare R d) :
-    IsVerdierSequence (dgOdotMilnorNuSourceInclusion R d) (q) where
-  fullyFaithful := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (dgOdotMilnorNuSourceInclusion R d) (q) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := by
     rw [dgOdotMilnorNuSourceInclusion_hom]
     exact (dgOdotMilnorSourceKernelNu_isQCatEquivalence R d h).isFullyFaithful.comp
       (dgOdotMilnorNuKernelInclusion_fullyFaithful R d h)
-  kernel y := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel y := by
     rw [dgOdotMilnorNuSourceInclusion_image R d h]
     exact dgOdotMilnorNuKernel R d h y
-  quotient := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := by
     rw [dgOdotMilnorNuSourceInclusion_image R d h]
     exact dgOdotMilnorNuKernelLocalization R d h
 
@@ -80,13 +80,13 @@ lemma dgOdotMilnorNuSource_isVerdier (h : DGGluingMilnorSquare R d) :
 方針：元 S 合成辺と検証済み native 商射影を保持する。
 規約：完備化後の射を strict 局所化と扱わない。使われ方：外周の strict 商欄。 -/
 def dgOdotMilnorNuSourceNativeSequence (h : DGGluingMilnorSquare R d) :
-    VerdierSequence.{u + 1} where
-  left := A
-  middle := T
-  right := dgGluingMilnorNativeResolvedQuotient R d
-  inclusion := dgOdotMilnorNuSourceInclusion R d
-  projection := q
-  isVerdier := dgOdotMilnorNuSource_isVerdier R d h
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := A
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := T
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgOdotMilnorNuSourceInclusion R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := q
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := dgOdotMilnorNuSource_isVerdier R d h
 
 /-- 概要：同じ外周列に D-21 の同じ指定完備化を接続する。
 方針：実固定 ν 頂点の完備性と構成済み c・hc を使用する。

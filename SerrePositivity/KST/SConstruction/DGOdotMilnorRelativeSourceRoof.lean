@@ -21,7 +21,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 方針：同じ二辺の可逆な ν 像から指定同型と三角形を取る。
 規約：各辺の可逆性は Milnor 条件と実準同値から証明する。
 使われ方：Sp の相対長方形の元始域回収。 -/
-def dgOdotMilnorRelativeSourceRoof : RelativePerfectVerdierSourceRoof
+def dgOdotMilnorRelativeSourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
     (dgKInputPerfectNu.{u, u + 1} R)
     (coherentNerveVertex (dgOdotDiagonalSourceInput R d))
     (coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) := by

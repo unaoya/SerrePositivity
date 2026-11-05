@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
 
 /-- 概要：同じ上側全族の始点列は元の実核の core Kan 対象に定値。
 方針：元の第一短辺を区間 Hom の始点面へ制限する。
@@ -27,7 +27,7 @@ theorem verdierMovingUpperFamily_source_column :
     ((stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3)) ▷
       (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
     fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm
-      (coherentNerveVertex (stableCoreSingleKanObject (show StableQCat from d.left))) := by
+      (coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))) := by
   rw [comp_whiskerRight, Category.assoc, verdierMovingUpperFamily_first,
     ← intervalMappingUncurry_precomp, intervalMappingUncurry_face_source]
   rfl
@@ -51,7 +51,7 @@ theorem verdierMovingUpperFamily_target_column :
     ((stdSimplex.δ (0 : Fin 2) ≫ stdSimplex.δ (0 : Fin 3)) ▷
       (Δ[1] : SSet.{u + 1})) ≫ verdierMovingUpperFamily d ℓ =
     fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm
-      (coherentNerveVertex (stableCoreSingleKanObject (show StableQCat from d.right))) := by
+      (coherentNerveVertex (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))) := by
   rw [comp_whiskerRight, Category.assoc, verdierMovingUpperFamily_last,
     ← intervalMappingUncurry_precomp, intervalMappingUncurry_face_target]
   rfl

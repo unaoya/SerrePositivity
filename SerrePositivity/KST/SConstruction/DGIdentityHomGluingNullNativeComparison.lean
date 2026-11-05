@@ -60,13 +60,13 @@ lemma dgIdentityHomGluingNull_arrow_vertices :
 def dgIdentityHomGluingNull_laxComparison : FunctorIso
     (dgNerve.map (j) ≫ (E).hom)
     ((dgNerve.map (j) ≫ dgNerve.map (dgGluingLeft R C C (M))) ≫
-      constantFunctorMap (Δ[1] : SSet) (dgNerve R C) ≫ arrowLaxInverse (dgNerve R C)) := by
+      constantFunctorMap (Δ[1] : SSet) (dgNerve R C) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C)) := by
   let e := FunctorIso.postcomp
     (EquivalenceArrowFamily.comparison (a) (dgIdentityHomGluingNull_arrow_vertices R C))
-    (arrowLaxInverse (dgNerve R C))
-  have hs : (a) ≫ arrowLaxInverse (dgNerve R C) = dgNerve.map (j) ≫ (E).hom := by
-    change ((dgNerve.map (j) ≫ (E).hom) ≫ (arrowLaxIso (dgNerve R C)).hom) ≫
-      (arrowLaxIso (dgNerve R C)).inv = _
+    (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C))
+  have hs : (a) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C) = dgNerve.map (j) ≫ (E).hom := by
+    change ((dgNerve.map (j) ≫ (E).hom) ≫ (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (dgNerve R C)).hom) ≫
+      (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso (dgNerve R C)).inv = _
     rw [Category.assoc, Iso.hom_inv_id, Category.comp_id]
   have ht : (a) ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       dgNerve.map (j) ≫ dgNerve.map (dgGluingLeft R C C (M)) := by
@@ -83,7 +83,7 @@ def dgIdentityHomGluingNullNativeComparison : FunctorIso
       dgNerve.map (dgIdentityHomGluingDiagonal R C)) := by
   let p := dgNerve.map (dgIdentityHomGluingNullProjection R C)
   let c := constantFunctorMap (Δ[1] : SSet) (dgNerve R C)
-  let b := arrowLaxInverse (dgNerve R C)
+  let b := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse (dgNerve R C)
   have hp : dgNerve.map (j) ≫ dgNerve.map (dgGluingLeft R C C (M)) = p :=
     (dgNerve.map_comp _ _).symm
   have e₀ : FunctorIso (dgNerve.map (j) ≫ (E).hom) (p ≫ c ≫ b) := by

@@ -21,7 +21,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の全二単体の第一短辺は、共通 cofiber 族の元の底辺である。 -/
-lemma weakStringCofiberFamily_triangle_bottom {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringCofiberFamily_triangle_bottom {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     squareBottomEdge ≫ (weakStringCofiberFamily q (SimplexCategory.δ (2 : Fin 3) ≫ β)).square =
       stdSimplex.δ (2 : Fin 3) ≫ (stdSimplex.map β ≫ weakStringUniversalFamily q n) := by
@@ -29,7 +29,7 @@ lemma weakStringCofiberFamily_triangle_bottom {B C : StableCategory.{u}} (q : Ex
   rfl
 
 /-- 全高次自然変換を保持した、指定二単体の実八面体の族。 -/
-def weakStringOctahedronFamily {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronFamily {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     CofiberOctahedronDiagram
       (weakStringCofiberFamily q (SimplexCategory.δ (2 : Fin 3) ≫ β))
@@ -38,8 +38,8 @@ def weakStringOctahedronFamily {B C : StableCategory.{u}} (q : ExactMap B C)
     (weakStringCofiberFamily_isCofiber q _) _ (weakStringCofiberFamily_triangle_bottom q β))
 
 /-- 八面体の長辺の補完と既存の共通補完は、全図式として自然同型である。 -/
-def weakStringOctahedronFamily_compositeComparison {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+def weakStringOctahedronFamily_compositeComparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     FunctorIso (weakStringOctahedronFamily q β).first.outerZeroTriangle.square
       (weakStringCofiberFamily q (SimplexCategory.δ (1 : Fin 3) ≫ β)).square := by
   let d := weakStringOctahedronFamily q β
@@ -54,8 +54,8 @@ def weakStringOctahedronFamily_compositeComparison {B C : StableCategory.{u}}
   exact hb
 
 /-- 八面体の第二短辺の補完も、全パラメーターを保って既存の共通補完と比較する。 -/
-def weakStringOctahedronFamily_nextComparison {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+def weakStringOctahedronFamily_nextComparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     FunctorIso (weakStringOctahedronFamily q β).second.outerZeroTriangle.square
       (weakStringCofiberFamily q (SimplexCategory.δ (0 : Fin 3) ≫ β)).square := by
   let d := weakStringOctahedronFamily q β

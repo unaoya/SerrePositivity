@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 両端が商で零になる元の cofiber 四角形の中間頂点も商で零である。 -/
-lemma kernelRelativeCofiber_middle_mem {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma kernelRelativeCofiber_middle_mem {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     (w : (cofiberDiagrams B.obj) _⦋0⦌)
     (hw : (relativeCofiberPredicate (kernelClosedPredicate q)
       (kernelClosedPredicate q)).predicate w) :
@@ -42,7 +42,7 @@ lemma kernelRelativeCofiber_middle_mem {B C : StableCategory.{u}} (q : ExactMap 
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 0))).mpr hm
 
 /-- E(ker q,B,ker q) の元の中間評価を核部分圏へ制限する。 -/
-def kernelRelativeMiddleMap {B C : StableCategory.{u}} (q : ExactMap B C) :
+def kernelRelativeMiddleMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     relativeCofiberDiagrams (kernelClosedPredicate q) (kernelClosedPredicate q) ⟶
       closedSubcategory (kernelClosedPredicate q) :=
   fullSubcomplexLift (kernelClosedPredicate q).predicate
@@ -51,13 +51,13 @@ def kernelRelativeMiddleMap {B C : StableCategory.{u}} (q : ExactMap B C) :
     (fun w => kernelRelativeCofiber_middle_mem q w.val (fullSubcomplexOnVertices_vertex w))
 
 /-- 核への制限を含めると元の中間評価を厳密に回収する。 -/
-lemma kernelRelativeMiddleMap_ι {B C : StableCategory.{u}} (q : ExactMap B C) :
+lemma kernelRelativeMiddleMap_ι {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     kernelRelativeMiddleMap q ≫ (closedStableInclusion (kernelClosedPredicate q)).val =
       (relativeCofiberInclusion (kernelClosedPredicate q) (kernelClosedPredicate q)).val ≫
         (cofiberStableMiddle (sInputModel B)).val := rfl
 
 /-- 同じ中間評価は核に値を持つ完全関手である。 -/
-def kernelRelativeMiddle {B C : StableCategory.{u}} (q : ExactMap B C) :
+def kernelRelativeMiddle {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
     relativeCofiberStableModel (kernelClosedPredicate q) (kernelClosedPredicate q) ⟶
       closedStableModel (kernelClosedPredicate q) :=
   ⟨kernelRelativeMiddleMap q, by

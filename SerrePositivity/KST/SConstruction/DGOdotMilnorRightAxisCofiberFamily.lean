@@ -29,14 +29,14 @@ local notation "X" => dgNerve R (RightModule R (Q))
 /-- 概要：元実商上の同じ cone 全族の Sp 正本 cofiber 空間への持ち上げ。
 方針：同じ全図式・同じ全自然性を特殊化する。
 規約：追加主仮定なし。使われ方：元全逆回転の普遍比較。 -/
-def dgOdotMilnorRightAxisCofiberFamily : dgNerve R (P) ⟶ CofiberDiagrams.space (X) :=
+def dgOdotMilnorRightAxisCofiberFamily : dgNerve R (P) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space (X) :=
   dgModuleNaturalConeCofiberFamily R (Q) (P) (F) (G) (η)
 
 /-- 概要：同じ元 cofiber 全族を含めると元全四角形の交換族を回収する。
 方針：同じ full subcomplex の厳密回収則を使用する。
 規約：元両二胞体を保持。使われ方：元指定面の全接続。 -/
 lemma dgOdotMilnorRightAxisCofiberFamily_inclusion :
-    dgOdotMilnorRightAxisCofiberFamily R d ≫ CofiberDiagrams.inclusion (X) =
+    dgOdotMilnorRightAxisCofiberFamily R d ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X) =
       dgModuleNaturalConeSquareFamily R (Q) (P) (F) (G) (η) :=
   dgModuleNaturalConeCofiberFamily_inclusion R (Q) (P) (F) (G) (η)
 
@@ -45,10 +45,10 @@ lemma dgOdotMilnorRightAxisCofiberFamily_inclusion :
 規約：元両二胞体を保持。Cat^perf の第三認証は別工程。
 使われ方：元実逆回転と固定 ν の中央比較。 -/
 def dgOdotMilnorRightAxisCofiberFamilyComparison : FunctorIso
-    (dgOdotMilnorRightAxisCofiberFamily R d ≫ CofiberDiagrams.inclusion (X))
+    (dgOdotMilnorRightAxisCofiberFamily R d ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X))
     (CofiberDiagrams.lift (X)
-      (dgOdotMilnorRightAxisCofiberFamily R d ≫ CofiberDiagrams.bottom (X)) ≫
-      CofiberDiagrams.inclusion (X)) :=
+      (dgOdotMilnorRightAxisCofiberFamily R d ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom (X)) ≫
+      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (X)) :=
   dgModuleNaturalConeCofiberFamilyComparison R (Q) (P) (F) (G) (η)
 
 end SerrePositivity.KST.SConstruction

@@ -24,10 +24,10 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 /-- 概要：元 Cat^perf 四境界比較を同じ StableInfinity 内へ写す。
 方針：同じ包含で四ホモトピーと共有四頂点経路を同時に写す。
 規約：元比較を保持。使われ方：共有零対角の一意性への接続。 -/
-def rawSquareFrameComparison : SquareFrameHomotopy
-    (SquareFrame.ofSquare ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫
+def rawSquareFrameComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫
       perfectStableInfinityInclusion))
-    (SquareFrame.ofSquare ((perfectIdentityLaxSequence (Q) (hQ)).presentation.square ≫
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare ((perfectIdentityLaxSequence (Q) (hQ)).presentation.square ≫
       perfectStableInfinityInclusion)) :=
   squareFrameHomotopyPostcomp (squareFrameComparison R d v) perfectStableInfinityInclusion
 
@@ -38,7 +38,7 @@ def rawSquareComparison : FunctorIso
     ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫ perfectStableInfinityInclusion)
     ((perfectIdentityLaxSequence (Q) (hQ)).presentation.square ≫ perfectStableInfinityInclusion) :=
   stableZeroSquareComparison (rawSquareFrameComparison R d v) (by
-    change IsZeroCategory (stableObject (squareVertex
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex
       ((dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) ≫ perfectStableInfinityInclusion) 0 1))
     rw [Category.assoc, dgKInputPerfectNu_inclusion]
     exact dgOdotMilnorIdentityNullSquare_zero R d)

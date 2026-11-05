@@ -26,11 +26,11 @@ variable {R : Type u} [CommRing R] {d : DGOdotInput R}
 /-- 元の源長方形の実認証と、指定した包含・商・零角・合成三角形の全比較。
 各欄の存在は未供給であり、この入力型の定義を完成には数えない。 -/
 structure DGOdotVerdierRectangleComparisonInput (h : DGOdotLaxVerdierInput R d) where
-  rectangle : RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R)
-  boundary : VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputNu R)
+  rectangle : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R)
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputNu R)
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  image : VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputNu R)
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputNu R)
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram boundary
   source_vertex : squareVertex rectangle.comparisonSquare 0 0 =
@@ -43,8 +43,8 @@ structure DGOdotVerdierRectangleStrictTransport {h : DGOdotLaxVerdierInput R d}
   image_eq : diagram ≫ dgKInputNu R =
     (LaxUniversalDifference.rectangle (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
       h.inclusion h.projection h.isVerdier).diagram
-  boundary : VerdierRectangleBoundaryIso v.rectangle.diagram diagram
-  source : VerdierRectangleDiagramIso v.rectangle.diagram diagram boundary
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso v.rectangle.diagram diagram
+  source : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso v.rectangle.diagram diagram boundary
   image_comparison : F2.functorIsoOfEq (source.comparison.postcomp (dgKInputNu R))
     rfl image_eq = v.image.comparison
   source_vertex_eq : squareVertex ((β_ (Δ[1] : SSet.{u + 2}) Δ[1]).hom ≫

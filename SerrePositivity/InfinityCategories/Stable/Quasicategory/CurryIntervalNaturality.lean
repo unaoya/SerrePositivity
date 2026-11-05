@@ -97,7 +97,7 @@ lemma horizontal_arrow (F : A ⊗ Δ[1] ⟶ X) :
     Arrow.mk ((hoFunctor.map (curry F)).toFunctor.map
       (Truncated.HomotopyCategory.homMk homotopyIntervalEdge)) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (horizontal F))) := by
+      (functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval.horizontal F))) := by
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   change (curry F).app (Opposite.op ⦋1⦌) homotopyIntervalEdge.edge = SSet.yonedaEquiv (curry F)
   have hi : homotopyIntervalEdge.edge = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) := by

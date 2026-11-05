@@ -13,13 +13,13 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}}
-  (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
-  (hz : IsZeroCategory (stableObject (squareVertex f 0 1)))
+variable {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
+  (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex f 0 1)))
 
 private lemma shortFaceEq (j : Fin 2) (i : Fin 3)
     (a : (Δ[1] : SSet.{u + 1}) ⟶ Δ[1] ⊗ Δ[1]) (ha : stdSimplex.δ i ≫ squareTriangle j = a)
-    (p : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}) :
+    (p : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) :
     stdSimplex.δ i ≫ squareTriangle j ≫ p = a ≫ p :=
   (Category.assoc _ _ _).symm.trans (congrArg (fun q => q ≫ p) ha)
 
@@ -30,7 +30,7 @@ lemma stableZeroSquareComparison_bottom (e : FunctorIso (squareBottomEdge ≫ f)
     (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H.bottom)) :
     (stableZeroSquareComparison H hz).precomp squareBottomEdge = e := by
   apply eq_of_heq
-  exact specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
     (squareTriangle 1) (stdSimplex.δ (2 : Fin 3)) squareBottomEdge
     stableSquareTriangle_bottomEdge rfl rfl (squareFrameTriangleComparison H 1)
     (stableZeroSquareComparison_lower H hz)
@@ -47,7 +47,7 @@ lemma stableZeroSquareComparison_right (e : FunctorIso (squareRightEdge ≫ f) (
     (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H.right)) :
     (stableZeroSquareComparison H hz).precomp squareRightEdge = e := by
   apply eq_of_heq
-  exact specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
     (squareTriangle 1) (stdSimplex.δ (0 : Fin 3)) squareRightEdge
     squareTriangle_rightEdge rfl rfl (squareFrameTriangleComparison H 1)
     (stableZeroSquareComparison_lower H hz)
@@ -64,7 +64,7 @@ lemma stableZeroSquareComparison_left (e : FunctorIso (squareLeftEdge ≫ f) (sq
     (he : e.hom = Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H.left)) :
     (stableZeroSquareComparison H hz).precomp squareLeftEdge = e := by
   apply eq_of_heq
-  exact specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
+  exact _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionFromTriangle (stableZeroSquareComparison H hz)
     (squareTriangle 0) (stdSimplex.δ (2 : Fin 3)) squareLeftEdge
     stableSquareTriangle_leftEdge rfl rfl (squareFrameTriangleComparison H 0)
     (stableZeroSquareComparison_upper H hz)

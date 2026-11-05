@@ -17,7 +17,7 @@ open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariant
 open scoped Simplicial
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
 
 /-- 概要：元上面の左辺・下面の下辺の全比較を元二単体の前辺に表示する。
 方針：標準二三角形の元前辺の式を使う。

@@ -82,7 +82,7 @@ lemma kKanOriginalCompositionMappingSquare_first_upper_post :
       kKanOriginalCompositionMappingSquare r F f g 0 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f)).edge ≫
-        (PointedObject.basedHomMap (suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   have h := tetrahedronTrace_include_second_specified _ _ _
     (kKanSequenceLevelMap (F.map g) (r + 1)) (kKanSuspensionMappingTriangles r F f).leftTop
@@ -92,7 +92,7 @@ lemma kKanOriginalCompositionMappingSquare_first_upper_post :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 0).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingLeftTop] using h
 
@@ -102,7 +102,7 @@ lemma kKanOriginalCompositionMappingSquare_first_lower_post :
       kKanOriginalCompositionMappingSquare r F f g 1 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F f)).edge ≫
-        (PointedObject.basedHomMap (suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   have h := tetrahedronTrace_include_second_specified _ _ _
     (kKanSequenceLevelMap (F.map g) (r + 1)) (kKanSuspensionMappingTriangles r F f).bottomRight
@@ -112,7 +112,7 @@ lemma kKanOriginalCompositionMappingSquare_first_lower_post :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 1).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingBottomRight] using h
 
@@ -122,7 +122,7 @@ lemma kKanOriginalCompositionMappingSquare_second_upper_pre :
       kKanOriginalCompositionMappingSquare r F f g 1 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F g)).edge ≫
-        PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   have h := tetrahedronTrace_include_first_specified
     (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r) _ _ _
@@ -132,7 +132,7 @@ lemma kKanOriginalCompositionMappingSquare_second_upper_pre :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 1).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingLeftTop] using h
 
@@ -142,7 +142,7 @@ lemma kKanOriginalCompositionMappingSquare_second_lower_pre :
       kKanOriginalCompositionMappingSquare r F f g 2 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F g)).edge ≫
-        PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   have h := tetrahedronTrace_include_first_specified
     (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r) _ _ _
@@ -152,7 +152,7 @@ lemma kKanOriginalCompositionMappingSquare_second_lower_pre :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 2).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingBottomRight] using h
 

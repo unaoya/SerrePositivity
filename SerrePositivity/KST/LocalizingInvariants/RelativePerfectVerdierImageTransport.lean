@@ -24,8 +24,8 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 lemma RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso
     (d : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierSquareBoundaryIso d.square (F ≫ ν))
-    (e : VerdierSquareDiagramIso d.square (F ≫ ν) b) :
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso d.square (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso d.square (F ≫ ν) b) :
     IsPullbackSquare (F ≫ ν ≫ E) :=
   (hE.preservesVerdier d).of_functorIso (e.comparison.postcomp E)
 
@@ -34,10 +34,10 @@ lemma RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (r o : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
-    (br : VerdierSquareBoundaryIso r.square (verdierRectangleFace 0 ≫ F ≫ ν))
-    (er : VerdierSquareDiagramIso r.square (verdierRectangleFace 0 ≫ F ≫ ν) br)
-    (bo : VerdierSquareBoundaryIso o.square (verdierRectangleFace 1 ≫ F ≫ ν))
-    (eo : VerdierSquareDiagramIso o.square (verdierRectangleFace 1 ≫ F ≫ ν) bo) :
+    (br : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν))
+    (er : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν) br)
+    (bo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν))
+    (eo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν) bo) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by
   have hR : IsPullbackSquare (pastingSquare (F ≫ ν ≫ E) 0) :=
     (isPullbackSquare_iff_transpose _).mpr
@@ -52,13 +52,13 @@ lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces_imageIso
     (G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (r o : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
-    (br : VerdierSquareBoundaryIso r.square (verdierRectangleFace 0 ≫ G ≫ ν))
-    (er : VerdierSquareDiagramIso r.square (verdierRectangleFace 0 ≫ G ≫ ν) br)
-    (bo : VerdierSquareBoundaryIso o.square (verdierRectangleFace 1 ≫ G ≫ ν))
-    (eo : VerdierSquareDiagramIso o.square (verdierRectangleFace 1 ≫ G ≫ ν) bo)
+    (br : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν))
+    (er : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν) br)
+    (bo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν))
+    (eo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν) bo)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
-    (b : VerdierRectangleBoundaryIso (G ≫ ν) F)
-    (e : VerdierRectangleDiagramIso (G ≫ ν) F b) :
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
@@ -67,20 +67,20 @@ lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces_image
 
 /-- 元の源四角形は固定し、その実 ν 像の全境界付き比較を値へ運ぶ。 -/
 lemma RelativePerfectVerdierDiagram.isPullback_of_imageIso
-    (d : RelativePerfectVerdierDiagram ν) (hE : IsPerfectLocalizingInvariant E)
+    (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierSquareBoundaryIso (d.square ≫ ν) (F ≫ ν))
-    (e : VerdierSquareDiagramIso (d.square ≫ ν) (F ≫ ν) b) :
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (d.square ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (d.square ≫ ν) (F ≫ ν) b) :
     IsPullbackSquare (F ≫ ν ≫ E) := by
   have h : IsPullbackSquare ((d.square ≫ ν) ≫ E) := d.isPullback ν hE
   exact h.of_functorIso (e.comparison.postcomp E)
 
 /-- 実 ν 長方形の全比較を使い、二面・上下の合成三角形を保って第三面を輸送する。 -/
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_imageIso
-    (d : RelativePerfectVerdierRectangle ν) (hE : IsPerfectLocalizingInvariant E)
+    (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
-    (e : VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b) :
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))

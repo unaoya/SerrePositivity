@@ -100,9 +100,9 @@ theorem ringTranslationIso_basepoint (A : SimplicialObject RingCat.{u})
 -/
 def ringPositiveHomotopyBasepointEquiv (A : SimplicialObject RingCat.{u})
     [KanComplex (ringSpace A)] (a : A.obj (op ⦋0⦌)) (n : ℕ) :
-    Spectra.KanHomotopyGroup (ringSpace A) n a ≃*
-      Spectra.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)) :=
-  Spectra.KanHomotopyGroup.equivOfIso n (ringTranslationIso A a)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n a ≃*
+      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (0 : A.obj (op ⦋0⦌)) :=
+  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso n (ringTranslationIso A a)
     (ringTranslationIso_basepoint A a)
 
 end SerrePositivity.KST.Comparison

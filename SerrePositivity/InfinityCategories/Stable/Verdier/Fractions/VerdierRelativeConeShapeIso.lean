@@ -26,8 +26,8 @@ open SerrePositivity.KST.LocalizingInvariants
 
 /-- パラメータの同型は、元の有限境界を全時刻固定する商錐回収を保つ。 -/
 lemma hasVerdierRelativeConeRecovery_of_iso {X Y S T : SSet.{u}} (q : X ⟶ Y)
-    (e : S ≅ T) (hs : HasVerdierRelativeConeRecovery q S) :
-    HasVerdierRelativeConeRecovery q T := by
+    (e : S ≅ T) (hs : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q S) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.HasVerdierRelativeConeRecovery q T := by
   intro K _ p H hb
   let j := joinInr (Δ[0] : SSet.{u}) K
   let pS := (K ◁ e.hom) ≫ p

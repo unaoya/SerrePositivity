@@ -32,8 +32,8 @@ variable {h : DGOdotLaxVerdierInput R d} (t : DGOdotVerdierRectangleInput h)
 /-- 概要：同じ長方形の右面と外周を相対 Verdier 提示にする。
 方針：Sp 正本の構成を適用する。規約：長方形を選び直さない。
 使われ方：二つの fiber 四角形の消去。 -/
-def relativeRectangle : RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R) :=
-  LaxUniversalDifference.relativeRectangle (dgKInputNu R)
+def relativeRectangle : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle (dgKInputNu.{u, u + 1} R) :=
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle (dgKInputNu R)
     (dgOdotLowerExactMap R d) (dgOdotUpperExactMap R d)
     h.inclusion h.projection h.isVerdier t.diagram t.image_eq
 
@@ -46,7 +46,7 @@ def comparisonSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u,
 /-- 概要：同じ全比較四角形の ν 像。方針：既存の相対 Tamme 照合を使う。
 規約：四辺だけの照合で代用しない。使われ方：元の d8 の回収。 -/
 lemma comparison_image : t.comparisonSquare ≫ dgKInputNu R =
-    LaxUniversalDifference.comparisonSquare (dgOdotLowerExactMap R d)
+    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare (dgOdotLowerExactMap R d)
       (dgOdotUpperExactMap R d) h.inclusion h.projection h.isVerdier :=
   dgKRelativeTammeComparison_image R _ _ h.inclusion h.projection h.isVerdier
     t.diagram t.image_eq
@@ -60,9 +60,9 @@ lemma comparison_source : squareVertex t.comparisonSquare 0 0 =
 /-- 概要：同じ包含辺の ν 像を保持する。方針：全四角形の像から制限する。
 規約：S 内で未供給の包含 lift は主張しない。使われ方：元の左射の照合。 -/
 lemma comparison_bottom_image : squareBottomEdge ≫ t.comparisonSquare ≫ dgKInputNu R =
-    SSet.yonedaEquiv.symm (stableArrow h.inclusion).edge := by
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow h.inclusion).edge := by
   rw [t.comparison_image]
-  exact LaxUniversalDifference.comparisonSquare_bottom _ _ _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom _ _ _ _ _
 
 /-- 概要：相対不変量は同じ四角形を pullback に送る。
 方針：二つの相対 Verdier 面を Sp 正本で消去する。

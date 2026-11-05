@@ -33,10 +33,10 @@ local instance cylinderSquareParameterFiniteLimits {X P : SSet.{u}}
     [Quasicategory X] [IsStable X] : HasFiniteLimits ((ihom P).obj X) :=
   hasFiniteLimits_functorCategory _ _
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
@@ -45,31 +45,31 @@ variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 
 /-- 同じ実余錐円柱の補完済み pullback 全族から厳密に戻した全正方形。 -/
 def VerdierFiniteMappingCoconeRecovery.cylinderSquare
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
       (ihom (Δ[n] : SSet.{u})).obj ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj) :=
   pullbackFamilySquare r.cylinder.pullbacks
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_isPullback
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     IsPullbackSquare r.cylinderSquare := pullbackFamilySquare_isPullback _
 
 /-- 元の実円柱の始端正方形は、保存済みの同じ一つの pullback 補完の一様正方形。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_start
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     r.cylinderSquare ≫ (ihom (Δ[n] : SSet.{u})).map
         ((pre (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))).app B.obj) =
-      uniformTerminalRefinementSquare S.toSSet r.cylinder.single := by
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare S.toSSet r.cylinder.single := by
   change pullbackFamilySquare r.cylinder.pullbacks ≫ _ = _
   rw [← pullbackFamilySquare_pre_parameter, r.cylinder.pullbacks_start]
   have he := congrArg (fun F : S.toSSet ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams B.obj) =>
-    pullbackFamilySquare F) (uniformTerminalRefinementSquare_family S.toSSet r.cylinder.single)
+    pullbackFamilySquare F) (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.uniformTerminalRefinementSquare_family S.toSSet r.cylinder.single)
   rw [pullbackFamilySquare_parametric] at he
   exact he.symm
 
 /-- 元の実円柱の終端正方形も、保存済みの同じ正規化終端正方形に厳密一致する。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_end
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     r.cylinderSquare ≫ (ihom (Δ[n] : SSet.{u})).map
         ((pre (SSet.ι₁ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))).app B.obj) =
       r.cylinder.endSquare := by
@@ -78,17 +78,17 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_end
     pullbackFamilySquare_parametric]
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_right
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareRightEdge ≫ r.cylinderSquare = squareRightEdge ≫ r.square :=
   pullbackFamilySquare_right_eq _ _ _ r.cylinder.pullbacks_projection
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_top
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareTopEdge ≫ r.cylinderSquare = squareTopEdge ≫ r.square :=
   pullbackFamilySquare_top_eq _ _ _ r.cylinder.pullbacks_projection
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_original
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareVertex r.cylinderSquare 0 1 =
       functorVertex (D ≫ constantFunctorMap (S.toSSet ⊗ (Δ[1] : SSet.{u})) B.obj) := by
   change (squareTopEdge ≫ r.cylinderSquare).app (Opposite.op ⦋0⦌)
@@ -97,27 +97,27 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_original
   exact r.square_original
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_terminal
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     r.cylinderSquare ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       squareColumnDiagram (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-        (verdierSpanFamilyDenominatorArrow i
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z r.boundary.h)) :=
   (pullbackFamilySquare_last_eq _ _ _ r.cylinder.pullbacks_terminal).trans r.square_terminal
 
 /-- 同じ実前段の左辺は、終端で元の実分母経路そのものに厳密に一致する。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_terminal_left
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareLeftEdge ≫ r.cylinderSquare ≫
         evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
       internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-        (verdierSpanFamilyDenominatorArrow i
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z r.boundary.h) := by
   rw [r.cylinderSquare_terminal]
   simp only [squareColumnDiagram, ← Category.assoc, squareLeftEdge, lift_snd,
     Category.id_comp]
 
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_family
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     parametricPullbackDiagramFamily r.cylinderSquare r.cylinderSquare_isPullback =
       r.cylinder.pullbacks := by
   have : Mono ((ihom (Δ[n] : SSet.{u})).map
@@ -131,8 +131,8 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_family
 
 /-- 戻した同じ正方形の始域全族は、回収済み実余錐円柱の全前段そのもの。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_prefix
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
-    pullbackSourcePrefixFamily
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily
       (parametricPullbackDiagramFamily r.cylinderSquare r.cylinderSquare_isPullback) =
       r.cylinder.homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj := by
   rw [r.cylinderSquare_family]
@@ -140,16 +140,16 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_prefix
 
 /-- 別の補完を選ばず、同じ実円柱前段の全左辺が元の分母であることを証明する。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_denominators
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f)
     (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : (S.toSSet ⊗ (Δ[1] : SSet.{u})) _⦋0⦌) :
     (squareLeftArrow (r.cylinderSquare ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
-      weakEquivalences i := by
+      _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i := by
   have hK := (isPullbackSquare_functor_iff r.cylinderSquare).mp r.cylinderSquare_isPullback k
   have hP := (isPullbackSquare_functor_iff (r.cylinderSquare ≫ evaluateFunctorAt k)).mp hK p
   have hK' := (isPullbackSquare_functor_iff r.square).mp r.square_pullback k
   have hP' := (isPullbackSquare_functor_iff (r.square ≫ evaluateFunctorAt k)).mp hK' p
-  apply (weakEquivalences_pullback_iff h _ hP).mpr
-  have hw := (weakEquivalences_pullback_iff h _ hP').mp (r.square_denominators k p)
+  apply (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h _ hP).mpr
+  have hw := (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h _ hP').mp (r.square_denominators k p)
   have hr : squareRightEdge ≫ (r.cylinderSquare ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p) =
       squareRightEdge ≫ (r.square ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p) := by
     simpa only [Category.assoc] using
@@ -158,11 +158,11 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_denominators
 
 /-- 元の同じ実円柱前段の転置は、復元した正方形の始域頂点に厳密に一致する。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_source
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareVertex r.cylinderSquare 0 0 = functorVertex
       (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[n] B.obj
         (r.cylinder.homotopy.h ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj)) := by
-  have hs := pullbackSourcePrefixFamily_parametric r.cylinderSquare r.cylinderSquare_isPullback
+  have hs := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily_parametric r.cylinderSquare r.cylinderSquare_isPullback
   rw [r.cylinderSquare_prefix] at hs
   have ht := congrArg (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[n] B.obj) hs
   have hh := (internalHomFlipHomEquiv Δ[n] (S.toSSet ⊗ (Δ[1] : SSet.{u})) B.obj).symm_apply_apply
@@ -178,18 +178,18 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_source
 
 /-- 同じ実左辺の商像自身が可逆であり、別の比較辺の存在で代用しない。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_left_quotient_isInvertible
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     IsInvertibleEdge
       (X := (ihom (Δ[n] : SSet.{u})).obj
         ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj C.obj))
       ((squareLeftArrow r.cylinderSquare).map ((truncation 2).map
         ((ihom (Δ[n] : SSet.{u})).map
           ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).map q.hom)))) :=
-  verdierParametricSourceEdge_isInvertible h r.cylinderSquare r.cylinderSquare_denominators
+  _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceEdge_isInvertible h r.cylinderSquare r.cylinderSquare_denominators
 
 /-- 可逆と証明した同じ実左辺の終端成分は、元の全分母経路の同じ商像。 -/
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_left_quotient_terminal
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f) :
     (evaluateFunctorAt (Y := (ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj C.obj)
       (stdSimplex.obj₀Equiv.symm (Fin.last n))).app (Opposite.op ⦋1⦌)
       (((squareLeftArrow r.cylinderSquare).map ((truncation 2).map
@@ -197,7 +197,7 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_left_quotient_terminal
           ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).map q.hom)))).edge) =
       SSet.yonedaEquiv
         (internalHomFlipHomEquiv (S.toSSet ⊗ (Δ[1] : SSet.{u})) Δ[1] B.obj
-          (verdierSpanFamilyDenominatorArrow i
+          (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow i
             (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z r.boundary.h) ≫
           (ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).map q.hom) := by
   have hn : (ihom (Δ[n] : SSet.{u})).map

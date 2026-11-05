@@ -28,49 +28,49 @@ local instance : IsDGPretriangulated R (T) := dgCellResolutionSource_isDGPretria
 /-- 概要：同じ thick 平坦核の native 安定圏。
 方針：D の実核の安定性を使用する。規約：対象集合は不変。
 使われ方：零化面用の実列の左端。 -/
-def dgOdotMilnorCellKernelCategory : StableCategory.{u + 1} where
-  obj := dgNerve R (K)
-  isQuasicategory := inferInstance
-  isStable := resolvedDGQuotientThickFlatKernel_isStable R (B) (P)
+def dgOdotMilnorCellKernelCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgNerve R (K)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := resolvedDGQuotientThickFlatKernel_isStable R (B) (P)
 
 /-- 概要：同じ cell gluing の native 安定圏。
 方針：実 cell 分解の前三角性を使用する。規約：元の商射影の始域を保つ。
 使われ方：零化面用の実列の中央。 -/
-def dgOdotMilnorCellMiddleCategory : StableCategory.{u + 1} where
-  obj := dgNerve R (T)
-  isQuasicategory := inferInstance
-  isStable := dgNerve_isStable_of_pretriangulated R (T)
+def dgOdotMilnorCellMiddleCategory : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj := dgNerve R (T)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory := inferInstance
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable := dgNerve_isStable_of_pretriangulated R (T)
 
 /-- 概要：同じ平坦核包含の完全射。
 方針：D の full 核包含の完全性を使用する。規約：元の包含そのもの。
 使われ方：零化面用の実列の左辺。 -/
-def dgOdotMilnorCellKernelInclusion : ExactMap (dgOdotMilnorCellKernelCategory R d)
+def dgOdotMilnorCellKernelInclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorCellKernelCategory R d)
     (dgOdotMilnorCellMiddleCategory R d) where
-  hom := dgNerve.map (resolvedDGQuotientThickFlatKernelInclusion R (B) (P))
-  isExact := resolvedDGQuotientThickFlatKernelInclusion_isExactFunctor R (B) (P)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := dgNerve.map (resolvedDGQuotientThickFlatKernelInclusion R (B) (P))
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := resolvedDGQuotientThickFlatKernelInclusion_isExactFunctor R (B) (P)
 
 /-- 概要：同じ cell 商包含の完全射。
 方針：同じ local K 平坦分解の射影を使用する。規約：native 商は変更しない。
 使われ方：零化面用の実列の右辺。 -/
-def dgOdotMilnorCellNativeProjection : ExactMap (dgOdotMilnorCellMiddleCategory R d)
+def dgOdotMilnorCellNativeProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgOdotMilnorCellMiddleCategory R d)
     (dgGluingMilnorNativeResolvedQuotient R d) where
-  hom := resolvedDGQuotientProjection R (B) (P)
-  isExact := dgQuotientNerveProjection_isExactFunctor R _ _
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := resolvedDGQuotientProjection R (B) (P)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := dgQuotientNerveProjection_isExactFunctor R _ _
     (resolvedDGQuotient_localKFlat R (B) (P))
 
 /-- 概要：実零化面と同じ二辺を持つ native Verdier 列。
 方針：D の thick 核の零対象反映と同じ実局所化を使用する。
 規約：Milnor 条件はこの核列には不要。使われ方：同じ実面の完備化認証。 -/
-def dgOdotMilnorCellNativeSequence : VerdierSequence.{u + 1} where
-  left := dgOdotMilnorCellKernelCategory R d
-  middle := dgOdotMilnorCellMiddleCategory R d
-  right := dgGluingMilnorNativeResolvedQuotient R d
-  inclusion := dgOdotMilnorCellKernelInclusion R d
-  projection := dgOdotMilnorCellNativeProjection R d
-  isVerdier := {
-    fullyFaithful := resolvedDGQuotientThickFlatKernelInclusion_isFullyFaithful R (B) (P)
-    kernel := resolvedDGQuotientProjection_zero_iff_thickEssentialImage R (B) (P)
-    quotient := resolvedDGQuotientProjection_isThickLocalization R (B) (P) }
+def dgOdotMilnorCellNativeSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u + 1} where
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.left := dgOdotMilnorCellKernelCategory R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.middle := dgOdotMilnorCellMiddleCategory R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.right := dgGluingMilnorNativeResolvedQuotient R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.inclusion := dgOdotMilnorCellKernelInclusion R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.projection := dgOdotMilnorCellNativeProjection R d
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.isVerdier := {
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.fullyFaithful := resolvedDGQuotientThickFlatKernelInclusion_isFullyFaithful R (B) (P)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.kernel := resolvedDGQuotientProjection_zero_iff_thickEssentialImage R (B) (P)
+    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence.quotient := resolvedDGQuotientProjection_isThickLocalization R (B) (P) }
 
 /-- 概要：同じ核列と実 c・hc の完備化付き Cat^perf 列。
 方針：構成済みの native 完備性と D-21 の特殊化を使用する。

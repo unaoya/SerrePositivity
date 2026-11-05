@@ -25,7 +25,7 @@ open scoped Simplicial
 def GroupNerveHigherVanishingInput : Prop :=
   ∀ (G : Type u) (_ : Group G) (n : ℕ), 1 < n →
     ∀ x : (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj G)))) _⦋0⦌,
-      Subsingleton (Spectra.KanHomotopy
+      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
         (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj G)))) n x)
 
 /-- 概要：元の指定 S 射の K₀ 余核の bar の二次以上のホモトピー消滅。
@@ -36,7 +36,7 @@ lemma cutCokernelBar_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     (m : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) (n : ℕ) (hn : 1 < n)
     (x : (F2.continuousKanReplacement.obj
       (nerve (AsSmall.{u} (SingleObj (Multiplicative (cutKZeroCokernel m f)))))) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj
         (nerve (AsSmall.{u} (SingleObj (Multiplicative (cutKZeroCokernel m f)))))) n x) :=
   h (Multiplicative (cutKZeroCokernel m f)) inferInstance n hn x

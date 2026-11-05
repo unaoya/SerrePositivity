@@ -22,7 +22,7 @@ private theorem lowerFiniteNative_heq_of_eq (s t : SpaceInfinity.{u} _⦋2⦌) (
   cases h
   rfl
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の下側全変形の始端は指定下側二胞体そのもの。
 方針：同じ実三角柱の始端を回収する。

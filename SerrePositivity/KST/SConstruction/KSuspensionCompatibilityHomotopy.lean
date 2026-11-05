@@ -26,19 +26,19 @@ local instance kSuspensionCompatibility_pointed_simplicialCategory :
 /-- 元の二つの三角形の復号と、両逆三角形・合成三角形を保持する適合辺の選択。 -/
 def kKanSuspensionCompatibilityComposition {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    KanMappingSpanComposition
+    _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition
       (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f))
       (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F f)) := by
   letI : KanComplex (SimplicialCategory.sHom
-      (suspension ((kKanSequence (F.obj i)).level r).space)
+      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space) :=
-    PointedMapping.basedHom_kanComplex _ _
-  exact kanMappingSpanComposition _ _
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kan.kanMappingSpanComposition _ _
 
 /-- 元の square の復号から作る、固定構造射との適合条件の実際の写像空間の辺。 -/
 def kKanSuspensionCompatibilityEdge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    (PointedObject.basedHom (suspension ((kKanSequence (F.obj i)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space)
       ((kKanSequence (F.obj j)).level (r + 1)).space).right.Edge
       (familyVertex ((kKanSequence (F.obj i)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1)))
       (familyVertex (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r ≫
@@ -58,7 +58,7 @@ def kKanSuspensionCompatibilityHomotopy {I : Type u} [SmallCategory I]
 /-- 復号した実適合ホモトピーは全時刻で元の基点を固定する。 -/
 lemma kKanSuspensionCompatibilityHomotopy_base {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {i j : I} (f : i ⟶ j) :
-    (suspension ((kKanSequence (F.obj i)).level r).space).hom ▷ (Δ[1] : SSet.{u}) ≫
+    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj i)).level r).space).hom ▷ (Δ[1] : SSet.{u}) ≫
       (kKanSuspensionCompatibilityHomotopy r F f).h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
           ((kKanSequence (F.obj j)).level (r + 1)).space.hom :=

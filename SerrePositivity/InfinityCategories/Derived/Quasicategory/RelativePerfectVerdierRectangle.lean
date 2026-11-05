@@ -29,10 +29,10 @@ open SerrePositivity.KST.LocalizingInvariants
 structure RelativePerfectVerdierRectangle {S : SSet.{u + 1}}
     (ν : S ⟶ perfectStableInfinity.{u}) where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
-  right : RelativePerfectVerdierDiagram ν
-  outer : RelativePerfectVerdierDiagram ν
-  right_eq : right.square = verdierRectangleFace 0 ≫ diagram
-  outer_eq : outer.square = verdierRectangleFace 1 ≫ diagram
+  right : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν
+  outer : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν
+  right_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.right.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.diagram
+  outer_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.outer.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.diagram
 
 namespace RelativePerfectVerdierRectangle
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
@@ -40,13 +40,13 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 
 /-- 同じ ν 像の ofSquare 認証を、元の源長方形へ貼る。 -/
 def ofActualFaces (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (r o : RelativePerfectVerdierDiagram ν)
-    (hr : r.square = verdierRectangleFace 0 ≫ F)
-    (ho : o.square = verdierRectangleFace 1 ≫ F) :
-    RelativePerfectVerdierRectangle ν := ⟨F, r, o, hr, ho⟩
+    (r o : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν)
+    (hr : r.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F)
+    (ho : o.square = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν := ⟨F, r, o, hr, ho⟩
 
 /-- Cat^perf 不変量の同じ制限で、元の第三面が pullback になる。 -/
-lemma comparisonSquare_isPullback (d : RelativePerfectVerdierRectangle ν)
+lemma comparisonSquare_isPullback (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν)
     {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare d.diagram 2) ≫ ν ≫ E) := by
@@ -62,10 +62,10 @@ lemma comparisonSquare_isPullback (d : RelativePerfectVerdierRectangle ν)
     (isPullbackSquare_pasting_cancel_right (d.diagram ≫ ν ≫ E) hR hO)
 
 /-- 指定包含辺・商辺・零角を保つ全源同型に沿って、同じ値の pullback を運ぶ。 -/
-lemma comparison_isPullback_of_sourceIso (d : RelativePerfectVerdierRectangle ν)
+lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierRectangleBoundaryIso d.diagram F)
-    (e : VerdierRectangleDiagramIso d.diagram F b)
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso d.diagram F)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso d.diagram F b)
     {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by

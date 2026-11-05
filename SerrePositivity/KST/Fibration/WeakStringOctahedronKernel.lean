@@ -18,16 +18,16 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 八面体の最後の列の始点は、元の第一短辺の核値 cofiber である。 -/
-lemma weakStringOctahedronFamily_source_kernel {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedronFamily_source_kernel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     IsZeroVertex (((ihom (weakStringCategory q n)).map q.hom).app (Opposite.op ⦋0⦌)
       (squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 0 0)) := by
   rw [(weakStringOctahedronFamily q β).last_source]
   exact weakStringCofiberFamily_kernel q _
 
 /-- 八面体の最後の列の中間頂点も、長辺の共通 cofiber との族の同型により核に入る。 -/
-lemma weakStringOctahedronFamily_middle_kernel {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedronFamily_middle_kernel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     IsZeroVertex (((ihom (weakStringCategory q n)).map q.hom).app (Opposite.op ⦋0⦌)
       (squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 0)) := by
   rw [(weakStringOctahedronFamily q β).last_middle]
@@ -36,8 +36,8 @@ lemma weakStringOctahedronFamily_middle_kernel {B C : StableCategory.{u}}
       ((ihom (weakStringCategory q n)).map q.hom)).symm
 
 /-- 八面体の最後の列の終点も、第二短辺の共通 cofiber との族の同型により核に入る。 -/
-lemma weakStringOctahedronFamily_target_kernel {B C : StableCategory.{u}}
-    (q : ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
+lemma weakStringOctahedronFamily_target_kernel {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     IsZeroVertex (((ihom (weakStringCategory q n)).map q.hom).app (Opposite.op ⦋0⦌)
       (squareVertex (weakStringOctahedronFamily q β).second.rightZeroTriangle.square 1 1)) := by
   rw [(weakStringOctahedronFamily q β).last_target]

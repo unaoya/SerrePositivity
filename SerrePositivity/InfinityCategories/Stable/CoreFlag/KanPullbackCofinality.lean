@@ -56,10 +56,10 @@ lemma pullback_positive_fiber_subsingleton
     (hE : ∀ n (e : E _⦋0⦌), Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e))
     (hB : ∀ n, 1 < n → ∀ b : B _⦋0⦌, Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n b))
     (a : P _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (KanFiber q (q.app _ a)) n (fiberPoint q a)) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber q (q.app _ a)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint q a)) := by
   have := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_positive_fiber_subsingleton p hE hB (s.app _ a) n hn
   exact Function.Injective.subsingleton
-    (KanHomotopy.equivOfIso n (pullbackFiberIso h a) (pullbackFiberIso_point h a)).injective
+    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso n (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso h a) (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_point h a)).injective
 
 end SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
 

@@ -19,13 +19,13 @@ namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 /-- 二対象の円柱のパラメータ制限は、一般の円柱の nerve の制限と可換。 -/
 lemma nervePair_restriction {A B : SSet.{u}} {C : Type v}
     [Category.{u} C] [SimplicialCategory C] (i : A ⟶ B) :
-    (𝟙 (SimplicialNerve C) ⊗ₘ coherentNerveMap (restriction (C := Point.{v}) i)) ≫
+    (𝟙 (SimplicialNerve C) ⊗ₘ coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) i)) ≫
         nervePair (C := C) B =
-      nervePair A ≫ coherentNerveMap (restriction (C := C) i) := by
+      nervePair A ≫ coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (C := C) i) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
   rintro ⟨F, G⟩
-  exact pairFunctor_restriction i F G
+  exact _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor_restriction i F G
 
 end SerrePositivity.KST.Spectra.EnrichedParameterCylinder

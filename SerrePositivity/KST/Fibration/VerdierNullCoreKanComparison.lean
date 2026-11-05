@@ -49,23 +49,23 @@ def FixedRestrictionFunctorEdge.uncurryCoreKan {K A B X : SSet.{u}} [Quasicatego
     rw [E.restriction] at hn
     exact hn
 
-private theorem coreKanEvaluation_heq {A C A' C' : StableCategory.{u}}
+private theorem coreKanEvaluation_heq {A C A' C' : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     (hA : A = A') (hC : C = C')
-    (f : (Δ[1] : SSet.{u}) ⟶ ((show StableQCat from A) ⟶[SSet.{u}]
-      (show StableQCat from C)))
-    (g : (Δ[1] : SSet.{u}) ⟶ ((show StableQCat from A') ⟶[SSet.{u}]
-      (show StableQCat from C'))) (hfg : HEq f g) :
+    (f : (Δ[1] : SSet.{u}) ⟶ ((show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) ⟶[SSet.{u}]
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)))
+    (g : (Δ[1] : SSet.{u}) ⟶ ((show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A') ⟶[SSet.{u}]
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C'))) (hfg : HEq f g) :
     HEq (uncurry (f ≫ stableCoreSingleKanEnrichedFunctor.map
-        (show StableQCat from A) (show StableQCat from C)))
+        (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)))
       (uncurry (g ≫ stableCoreSingleKanEnrichedFunctor.map
-        (show StableQCat from A') (show StableQCat from C'))) := by
+        (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A') (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C'))) := by
   cases hA
   cases hC
   have he := eq_of_heq hfg
   rw [he]
 
 /-- 指定二胞体との比較は、元の core S の全 Kan Hom で実合成端を固定する。 -/
-def verdierNullContractionCoreKanComparison (d : VerdierDiagram.{u}) :
+def verdierNullContractionCoreKanComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge (stdSimplex.δ (0 : Fin 2))
       (verdierNullContractionFamily d ≫ stableCoreSingleKanEnrichedFunctor.map
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)
@@ -76,11 +76,11 @@ def verdierNullContractionCoreKanComparison (d : VerdierDiagram.{u}) :
   (verdierNullContractionComparison d).postcomp _
 
 /-- 同じ比較の二重パラメータを、元の core S 実現の Kan 値で全評価する。 -/
-def verdierNullContractionCoreKanEvaluation (d : VerdierDiagram.{u}) :=
+def verdierNullContractionCoreKanEvaluation (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
   uncurry (verdierNullContractionCoreKanComparison d).prism
 
 /-- 同じ実比較辺を内部 uncurry し、全円柱の同じ端点間の実可逆辺を得る。 -/
-def verdierNullContractionCoreKanCylinderEdge (d : VerdierDiagram.{u}) :
+def verdierNullContractionCoreKanCylinderEdge (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     Truncated.Edge
       (X := (truncation 2).obj ((ihom
         ((stableCoreSingleKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ⊗
@@ -97,12 +97,12 @@ def verdierNullContractionCoreKanCylinderEdge (d : VerdierDiagram.{u}) :
       (stableCoreSingleKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)).obj).inv)
 
 /-- 全円柱の同じ実比較辺は、全関手空間で可逆である。 -/
-theorem verdierNullContractionCoreKanCylinderEdge_isInvertible (d : VerdierDiagram.{u}) :
+theorem verdierNullContractionCoreKanCylinderEdge_isInvertible (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     IsInvertibleEdge (verdierNullContractionCoreKanCylinderEdge d) :=
   (verdierNullContractionCoreKanComparison d).invertible.map _
 
 /-- 内部 uncurry 後も、全円柱の実合成端上で比較辺は同じ恒等辺に制限される。 -/
-def verdierNullContractionCoreKanCylinderComparison (d : VerdierDiagram.{u}) :
+def verdierNullContractionCoreKanCylinderComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge
       ((stableCoreSingleKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ◁
         stdSimplex.δ (0 : Fin 2))
@@ -115,7 +115,7 @@ def verdierNullContractionCoreKanCylinderComparison (d : VerdierDiagram.{u}) :
   (verdierNullContractionCoreKanComparison d).uncurryCoreKan
 
 /-- 全円柱の同型は、点ごとの比較を選び直さず同じ実比較辺から得られる。 -/
-def verdierNullContractionCoreKanCylinderIso (d : VerdierDiagram.{u}) :
+def verdierNullContractionCoreKanCylinderIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     FunctorIso
       (uncurry (verdierNullContractionFamily d ≫ stableCoreSingleKanEnrichedFunctor.map
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)
@@ -129,7 +129,7 @@ def verdierNullContractionCoreKanCylinderIso (d : VerdierDiagram.{u}) :
   exact asIso (Truncated.HomotopyCategory.homMk (verdierNullContractionCoreKanCylinderEdge d))
 
 /-- 全評価の始点は、元の core S 零化円柱の同じ Kan 評価。 -/
-theorem verdierNullContractionCoreKanEvaluation_zero (d : VerdierDiagram.{u}) :
+theorem verdierNullContractionCoreKanEvaluation_zero (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ((stableCoreSingleKanObject
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ◁
       prismEndpoint 0 (Δ[1] : SSet.{u})) ≫ verdierNullContractionCoreKanEvaluation d =
@@ -140,7 +140,7 @@ theorem verdierNullContractionCoreKanEvaluation_zero (d : VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge.prism_zero]
 
 /-- 全評価の終点は、指定下側二胞体の元の path 族の同じ Kan 評価。 -/
-theorem verdierNullContractionCoreKanEvaluation_one (d : VerdierDiagram.{u}) :
+theorem verdierNullContractionCoreKanEvaluation_one (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ((stableCoreSingleKanObject
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ◁
       prismEndpoint 1 (Δ[1] : SSet.{u})) ≫ verdierNullContractionCoreKanEvaluation d =
@@ -151,7 +151,7 @@ theorem verdierNullContractionCoreKanEvaluation_one (d : VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge.prism_one]
 
 /-- 元の実合成端は、同じ全評価の全比較時刻にわたり厳密に固定される。 -/
-theorem verdierNullContractionCoreKanEvaluation_fixed (d : VerdierDiagram.{u}) :
+theorem verdierNullContractionCoreKanEvaluation_fixed (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     ((stableCoreSingleKanObject
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ◁
       ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ (0 : Fin 2))) ≫
@@ -165,10 +165,10 @@ theorem verdierNullContractionCoreKanEvaluation_fixed (d : VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge.prism_restriction]
 
 /-- 同じ比較の始点は、元の指定包含・商に対する商核零化円柱の Ex∞ 像。 -/
-theorem verdierNullContractionCoreKanEvaluation_original_heq (d : VerdierDiagram.{u})
-    (h : IsVerdierSequence d.inclusion d.projection) :
+theorem verdierNullContractionCoreKanEvaluation_original_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence d.inclusion d.projection) :
     HEq (coaugmentedTensorRightStrength Comparison.exInfinity Comparison.exInfinityUnit
-        (coreSingleRealizationObject (show StableQCat from d.left)).obj (Δ[1] : SSet.{u}) ≫
+        (coreSingleRealizationObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)).obj (Δ[1] : SSet.{u}) ≫
       Comparison.exInfinity.map (quotientSKernelNullCylinder h))
       (uncurry (verdierNullContractionFamily d ≫
         stableCoreSingleKanEnrichedFunctor.map
@@ -179,7 +179,7 @@ theorem verdierNullContractionCoreKanEvaluation_original_heq (d : VerdierDiagram
   exact (heq_of_eq (quotientSKernelNullCylinder_coreKan h)).trans he
 
 /-- 指定上下二胞体の全長 Hom 比較を、元の core S の Kan 値へ送る。 -/
-def verdierNullHomCoreKanComparison (d : VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierNullHomCoreKanComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     FixedRestrictionFunctorEdge coherentTriangleDirectVertexMap
       (verdierNullHomFamily d j ≫ stableCoreSingleKanEnrichedFunctor.map
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)
@@ -190,7 +190,7 @@ def verdierNullHomCoreKanComparison (d : VerdierDiagram.{u}) (j k : Fin 2) :
   (verdierNullHomRelativeComparison d j k).postcomp _
 
 /-- 同じ上下二胞体の全評価の比較は、共有対角上で同じ恒等辺を保つ。 -/
-def verdierNullHomCoreKanEvaluationComparison (d : VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierNullHomCoreKanEvaluationComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     FixedRestrictionFunctorEdge
       ((stableCoreSingleKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj ◁
         coherentTriangleDirectVertexMap)

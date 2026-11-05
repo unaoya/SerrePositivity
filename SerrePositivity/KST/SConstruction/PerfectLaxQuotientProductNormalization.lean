@@ -19,7 +19,7 @@ open scoped Simplicial
 namespace PerfectLaxQuotient
 local instance normalizedProductSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
@@ -56,13 +56,13 @@ def productRightEdge : Sp.{u}.Edge (coherentNerveVertex (Binary.obj (perfectInva
     (d.productSquare_vertex10 hF) (d.productSquare_vertex11 hF)
 
 /-- 元の同じ四辺を持つ実境界。 -/
-def productOldFrame : SquareFrame Sp.{u} := squareFrameOfEdges (d.productBottomEdge hF)
+def productOldFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges (d.productBottomEdge hF)
   (d.productTopEdge hF) (d.productLeftEdge hF) (d.productRightEdge hF)
 
 /-- 同じ四辺の境界は、元の正方形の境界そのもの。 -/
 lemma productOldFrame_eq : d.productOldFrame hF =
-    SquareFrame.ofSquare (d.productSquare hF) := by
-  apply SquareFrame.ext
+    _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (d.productSquare hF) := by
+  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.ext
   · change SSet.yonedaEquiv.symm (squareBottomArrow _).edge = _
     rw [squareBottomArrow_edge]
     exact SSet.yonedaEquiv.symm_apply_apply _
@@ -116,7 +116,7 @@ lemma productRightEdge_class : Truncated.HomotopyCategory.homMk (d.productRightE
       (d.productSquare_right_arrow hF)
 
 /-- 元の四つの指定した実 BF 射を持つ実境界。 -/
-def productNewFrame : SquareFrame Sp.{u} := squareFrameOfEdges
+def productNewFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges
   (coherentNerveEdge (d.valueProductInclusion F))
   (coherentNerveEdge (Binary.lift (𝟙 (perfectInvariantSpectrum F d.sequence.rightVertex)) (𝟙
     (perfectInvariantSpectrum F d.sequence.rightVertex))))
@@ -124,9 +124,9 @@ def productNewFrame : SquareFrame Sp.{u} := squareFrameOfEdges
   (coherentNerveEdge (d.productLegMap F))
 
 /-- 元の四辺を指定した実 BF 射へ移す、同じ端点固定の境界 homotopy。 -/
-def productBoundaryHomotopy : SquareFrameHomotopy (d.productOldFrame hF) (d.productNewFrame (F
+def productBoundaryHomotopy : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (d.productOldFrame hF) (d.productNewFrame (F
   := F)) :=
-  squareFrameEdgesHomotopy (X := Sp.{u})
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.squareFrameEdgesHomotopy (X := Sp.{u})
     (d.productBottomEdge hF)
     (coherentNerveEdge (d.valueProductInclusion F))
     (d.productTopEdge hF) (coherentNerveEdge (Binary.lift (𝟙 (perfectInvariantSpectrum F
@@ -138,7 +138,7 @@ def productBoundaryHomotopy : SquareFrameHomotopy (d.productOldFrame hF) (d.prod
     (d.productLeftEdge_class hF) (d.productRightEdge_class hF)
 
 /-- 同じ境界 homotopy の、元の全正方形への実延長。 -/
-def productBoundaryExtension : SquareFrame.PathExtension (d.productBoundaryHomotopy hF).pathFrame
+def productBoundaryExtension : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (d.productBoundaryHomotopy hF).pathFrame
     (d.productSquare hF) :=
   (d.productBoundaryHomotopy hF).extension _ (d.productOldFrame_eq hF)
 
@@ -151,7 +151,7 @@ def normalizedProductComparison : FunctorIso (d.productSquare hF) (d.normalizedP
   (d.productBoundaryExtension hF).comparison
 
 /-- 移送後の境界は、元の四つの指定 BF 射の境界そのもの。 -/
-lemma normalizedProductSquare_boundary : SquareFrame.boundaryι ≫ d.normalizedProductSquare hF =
+lemma normalizedProductSquare_boundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι ≫ d.normalizedProductSquare hF =
     (d.productNewFrame (F := F)).diagram :=
   (d.productBoundaryHomotopy hF).extension_target_boundary _ (d.productOldFrame_eq hF)
 

@@ -70,8 +70,8 @@ lemma map_piIsomorphism_of_matching_monoRight
     {X Y : CosimplicialObject SSet.{u}} [KanComplex (obj X)] [KanComplex (obj Y)]
     (f : X ⟶ Y)
     (hf : reedyRight simplex (MorphismProperty.monomorphisms SSet.{u}).rlp f) :
-    KanPiIsomorphism (map f) :=
-  kanPiIsomorphism_of_monoRight _ (map_rlp_monomorphisms f hf)
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map f) :=
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (map_rlp_monomorphisms f hf)
 
 end
 

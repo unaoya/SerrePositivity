@@ -76,7 +76,7 @@ lemma completionRelativeKanFactor_homotopy_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
     (x : (completionRelativeKanFactor r ι f hf) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy (completionRelativeKanFactor r ι f hf) n x) :=
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (completionRelativeKanFactor r ι f hf) n x) :=
   Fibration.kanHomotopy_subsingleton_of_toPoint_localized_isIso _
     (completionRelativeKanFactor_toPoint_isIso r ι f hf) n x
 

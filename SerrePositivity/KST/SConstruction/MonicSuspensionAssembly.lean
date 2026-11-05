@@ -78,7 +78,7 @@ instance monicSuspensionComparison_trivialKanFibration (r : ℕ) (X : StableMode
 方針：Kan 標的への右因子の比較。
 規約：零次数も含む。使われ方：単射な構造射の標的模型の同値性。 -/
 lemma monicSuspensionComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    Spectra.KanPiIsomorphism ((monicSuspensionComparisonNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((monicSuspensionComparisonNat r).app X).right :=
   pointedTransformationRight_piIsomorphism (kanTargetSuspensionAssemblyNat r) X
 
 end SerrePositivity.KST.SConstruction

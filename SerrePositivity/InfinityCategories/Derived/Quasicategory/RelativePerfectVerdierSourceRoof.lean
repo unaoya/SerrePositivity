@@ -34,16 +34,16 @@ open SerrePositivity.KST.LocalizingInvariants
 structure RelativePerfectVerdierSourceRoof {S : SSet.{u + 1}}
     (ν : S ⟶ perfectStableInfinity.{u}) (original actual : S _⦋0⦌) where
   common : S _⦋0⦌
-  augmentation : Truncated.Edge (X := (truncation 2).obj S) common original
-  comparison : Truncated.Edge (X := (truncation 2).obj S) common actual
+  augmentation : Truncated.Edge (X := (truncation 2).obj S) _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common original
+  comparison : Truncated.Edge (X := (truncation 2).obj S) _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common actual
   augmentation_invertible : IsIso ((hoFunctor.map ν).toFunctor.map
-    (Truncated.HomotopyCategory.homMk augmentation))
+    (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation))
   comparison_invertible : IsIso ((hoFunctor.map ν).toFunctor.map
-    (Truncated.HomotopyCategory.homMk comparison))
+    (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison))
   image : VertexIso (ν.app _ original) (ν.app _ actual)
   triangle : (hoFunctor.map ν).toFunctor.map
-      (Truncated.HomotopyCategory.homMk augmentation) ≫ image.hom =
-    (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk comparison)
+      (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.image.hom =
+    (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison)
 
 namespace RelativePerfectVerdierSourceRoof
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
@@ -51,7 +51,7 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
   {original actual : S _⦋0⦌}
 
 /-- 旧頂点等号は、同じ頂点での恒等屋根による特殊化。 -/
-def ofEq (h : original = actual) : RelativePerfectVerdierSourceRoof ν original actual := by
+def ofEq (h : original = actual) : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original actual := by
   subst actual
   refine ⟨original, Truncated.Edge.id (X := (truncation 2).obj S) original,
     Truncated.Edge.id (X := (truncation 2).obj S) original, ?_, ?_,
@@ -63,12 +63,12 @@ def ofEq (h : original = actual) : RelativePerfectVerdierSourceRoof ν original 
   · exact Category.comp_id _
 
 /-- 指定した ν 同値を、同じ Cat^perf 不変量で写した始域同値。 -/
-def valueIso (r : RelativePerfectVerdierSourceRoof ν original actual)
+def valueIso (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original actual)
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original) ((ν ≫ E).app _ actual) := r.image.map E
 
 /-- 元の増大・核比較との可換式は値へ写しても同じもの。 -/
-lemma valueIso_triangle (r : RelativePerfectVerdierSourceRoof ν original actual)
+lemma valueIso_triangle (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original actual)
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫ (r.valueIso E).hom =
@@ -80,19 +80,19 @@ lemma valueIso_triangle (r : RelativePerfectVerdierSourceRoof ν original actual
 /-- 旧頂点等号を入れた値の比較は、元の等号輸送そのもの。 -/
 @[simp] lemma valueIso_ofEq (h : original = actual)
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
-    (ofEq (ν := ν) h).valueIso E =
+    (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq (ν := ν) h).valueIso E =
       eqToIso (congrArg (fun x => HomotopyCategory.mk ((ν ≫ E).app _ x)) h) := by
   subst actual
   apply Iso.ext
-  simp [valueIso, ofEq, VertexIso.map]
+  simp [_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso, _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq, VertexIso.map]
 
 /-- 認証に使う別の S 代表を要求せず、実長方形の始域屋根と全 ν 比較を接続する。 -/
 def rectangleValueIso_of_imageIso
     {G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
-    (b : VerdierRectangleBoundaryIso (G ≫ ν) F)
-    (e : VerdierRectangleDiagramIso (G ≫ ν) F b)
-    (r : RelativePerfectVerdierSourceRoof ν original
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
@@ -107,14 +107,14 @@ def rectangleValueIso_of_imageIso
 lemma rectangleValueIso_of_imageIso_triangle
     {G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
-    (b : VerdierRectangleBoundaryIso (G ≫ ν) F)
-    (e : VerdierRectangleDiagramIso (G ≫ ν) F b)
-    (r : RelativePerfectVerdierSourceRoof ν original
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
-        (rectangleValueIso_of_imageIso b e r E).hom =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso b e r E).hom =
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.comparison)) ≫
         (((e.comparison.precomp ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
@@ -130,18 +130,18 @@ end RelativePerfectVerdierSourceRoof
 namespace RelativePerfectVerdierRectangle
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
-  (d : RelativePerfectVerdierRectangle ν)
+  (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν)
 
 /-- 旧厳密版の始域頂点等号を、同じ長方形の恒等屋根として受ける。 -/
 def sourceRoofOfEq {original : S _⦋0⦌}
     (h : squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0 = original) :
-    RelativePerfectVerdierSourceRoof ν original
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0) :=
-  RelativePerfectVerdierSourceRoof.ofEq h.symm
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq h.symm
 
 /-- 実長方形を変えず、左上の値を元入力の値へ指定屋根で照合する。 -/
 def sourceValueIso {original : S _⦋0⦌}
-    (r : RelativePerfectVerdierSourceRoof ν original
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
@@ -151,10 +151,10 @@ def sourceValueIso {original : S _⦋0⦌}
 /-- 指定三境界・上下二単体を保つ全 ν 比較と、元入力の指定屋根を同時に使う。
 同型は全長方形の比較の同じ左上成分を用い、始域で別の比較を選び直さない。 -/
 def sourceValueIso_of_imageIso {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
-    (e : VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
     {original : S _⦋0⦌}
-    (r : RelativePerfectVerdierSourceRoof ν original
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
@@ -169,10 +169,10 @@ def sourceValueIso_of_imageIso {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
 四辺・上下二単体は e に指定され、ここではその同じ左上成分を合成する。 -/
 lemma sourceValueIso_of_imageIso_triangle
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
-    (e : VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b)
     {original : S _⦋0⦌}
-    (r : RelativePerfectVerdierSourceRoof ν original
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
     (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map

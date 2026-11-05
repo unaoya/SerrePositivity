@@ -18,8 +18,8 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q) (n : ℕ)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
 include h
 
 /-- 元の実二単体における、相対 S_n 辺の二対三性。 -/
@@ -34,18 +34,18 @@ theorem relativeSConstruction_twoOfThree (τ : Δ[2] ⟶ sConstruction n B.obj) 
   · intro h₂ h₀
     apply (ht 1).mpr
     intro a
-    exact (weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).1
+    exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).1
       ((ht 2).mp h₂ a) ((ht 0).mp h₀ a)
   · constructor
     · intro h₂ h₁
       apply (ht 0).mpr
       intro a
-      exact (weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.1
+      exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.1
         ((ht 2).mp h₂ a) ((ht 1).mp h₁ a)
     · intro h₀ h₁
       apply (ht 2).mpr
       intro a
-      exact (weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.2
+      exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.2
         ((ht 0).mp h₀ a) ((ht 1).mp h₁ a)
 
 /-- 元の S_n の実押し出しに沿う、相対辺条件の保存・反映。 -/
@@ -56,7 +56,7 @@ theorem relativeSConstruction_pushout_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
-  exact weakEquivalences_pushout_iff h (L ≫ sComponentEvaluation B.obj n a)
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pushout_iff h (L ≫ sComponentEvaluation B.obj n a)
     (IsExactFunctor.preservesPushoutSquare (sComponentEvaluation B.obj n a) L hL)
 
 /-- 元の S_n の実引き戻しに沿う、相対辺条件の保存・反映。 -/
@@ -67,7 +67,7 @@ theorem relativeSConstruction_pullback_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstructio
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
-  exact weakEquivalences_pullback_iff h (L ≫ sComponentEvaluation B.obj n a)
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h (L ≫ sComponentEvaluation B.obj n a)
     (IsExactFunctor.preservesPullbackSquare (sComponentEvaluation B.obj n a) L hL)
 
 /-- 元の二つの cofiber 図式間の同じホモトピーに対する、相対 S_n 辺の拡大安定性。 -/

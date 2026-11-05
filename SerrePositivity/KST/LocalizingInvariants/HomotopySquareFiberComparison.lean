@@ -48,7 +48,7 @@ lemma unitSquareIso_inv_apex : Arrow.mk (functorHomEvaluate (unitSquareIso q).in
       Arrow.mk (unitFiberIso q).inv := by
   let e := functorHomEvaluateIso (unitSquareIso q)
     (squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0)
-  have hi := arrow_mk_inv_congr (f := e.hom) (g := (unitFiberIso q).hom) (unitSquareIso_apex q)
+  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (unitFiberIso q).hom) (unitSquareIso_apex q)
   simp only [IsIso.Iso.inv_hom] at hi
   exact hi
 

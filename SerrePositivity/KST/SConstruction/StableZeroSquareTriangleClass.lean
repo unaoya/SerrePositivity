@@ -18,9 +18,9 @@ open scoped Simplicial
 方針：元対角完全射の全零性・二比較の可逆性・同じ両端経路を使う。
 規約：元四角形と元二比較を保持。使われ方：元全比較の類を保つ共有対角整列。 -/
 lemma squareFrameTriangleDiagonalHomotopy_homMk_eq_of_zero
-    {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}}
-    (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
-    (hz : IsZeroCategory (stableObject (squareVertex f 0 1))) :
+    {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+    (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex f 0 1))) :
     SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
         (squareFrameTriangleDiagonalHomotopy H 0)) =
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy

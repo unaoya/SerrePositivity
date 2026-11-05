@@ -21,7 +21,7 @@ def presentedPerfectDGKanAssemblyCylinderPushoutLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r) :=
-  strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderPushoutLeftMap A r)
     (presentedPerfectDGKanAssemblyCylinderPushoutLeft_whisker A r)
 
@@ -36,7 +36,7 @@ def presentedPerfectDGKanAssemblyCylinderPushoutRightTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r) :=
-  strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderPushoutRightMap A r)
     (presentedPerfectDGKanAssemblyCylinderPushoutRight_whisker A r)
 

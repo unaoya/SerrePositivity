@@ -48,7 +48,7 @@ lemma dgOdotMilnorNuNullPrismFullBoundary_face (j : Fin 2) (i : Fin 3) :
 lemma dgOdotMilnorNuNullPrismSideFamily_diagonal (j : Fin 2) :
     dgOdotMilnorNuNullPrismSideFamily R d h j (1 : Fin 3) =
       (dgOdotMilnorNuNullDiagonalDiagramHomotopy R d h).h := by
-  let middle (f g k : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ StableInfinity.{u + 1}) :
+  let middle (f g k : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1}) :
       ![f, g, k] (1 : Fin 3) = g := rfl
   exact middle _ _ _
 

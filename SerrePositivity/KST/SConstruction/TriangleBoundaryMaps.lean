@@ -27,7 +27,7 @@ def triangleBoundaryFaces : Fin 3 → ((Δ[1] : SSet.{u}) ⟶ E) :=
 
 /-- 三辺の共通端点が、全境界面族の互換性を与える。 -/
 lemma triangleBoundaryFaces_compatible :
-    BoundaryFaces.IsCompatible (triangleBoundaryFaces f g h) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible (triangleBoundaryFaces f g h) := by
   intro j k hjk
   fin_cases j
   · fin_cases k
@@ -54,11 +54,11 @@ lemma triangleBoundaryFaces_compatible :
 
 /-- 三つの元の辺を全体として含む、全三角形境界からの実写像。 -/
 def triangleBoundaryMap : (∂Δ[2] : SSet.{u}) ⟶ E :=
-  BoundaryFaces.desc (triangleBoundaryFaces_compatible f g h)
+  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc (triangleBoundaryFaces_compatible f g h)
 
 /-- 全境界の各面は、元の同じ区間。 -/
 lemma triangleBoundaryMap_face (i : Fin 3) :
     boundary.ι i ≫ triangleBoundaryMap f g h = triangleBoundaryFaces f g h i :=
-  BoundaryFaces.ι_desc _ i
+  _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.ι_desc _ i
 
 end SerrePositivity.KST.SConstruction

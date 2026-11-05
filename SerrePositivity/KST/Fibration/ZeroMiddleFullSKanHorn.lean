@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
-variable (s : StableInfinity.{u} _⦋2⦌) (hZ : IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 
 /-- 元の第一短辺を、同じ実 core 包含と全 S• 比較に厳密因子分解する実二胞体。 -/
 def zeroMiddleFullSKanFirstTriangle :=
@@ -33,7 +33,7 @@ def zeroMiddleFullSKanFirstTriangle :=
 /-- 元の第二短辺と同じ全 S• 比較の厳密合成を保持する実二胞体。 -/
 def zeroMiddleFullSKanLastTriangle :=
   coherentNerveCompStruct (C := KanObject.{u}) (zeroMiddleFullSKanComparison s hZ)
-    (stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 0 s)))
+    (stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s)))
 
 set_option maxHeartbeats 800000 in
 -- 同じ core S と全 S• の対象座標を内角の三面で照合する。
@@ -50,7 +50,7 @@ def zeroMiddleFullSKanHorn : (Λ[3, 2] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} := 
         fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
         exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))) ≫
           zeroMiddleFullSKanComparison s hZ =
-            stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 2 s)) :=
+            stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)) :=
       zeroMiddleFullSKanComparison_first s hZ
     have he' := congrArg (fun f : stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
         stableCoreSingleKanObject (s.obj ⟨ULift.up 1⟩) => (coherentNerveEdge f).edge) he

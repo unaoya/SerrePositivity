@@ -32,7 +32,7 @@ def dgKappaNativeBFOldArrow : Fin 4 → Arrow (StableModel.{max (u + 1) v}) :=
   Fin.cases (Arrow.mk (sInputExactMap (dgKappaNativeVerdierDiagram R D I).inclusion))
     (Fin.cases (Arrow.mk (sInputExactMap (dgKappaNativeVerdierDiagram R D I).projection))
       (Fin.cases (Arrow.mk (sInputExactMap
-        (toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))
+        (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))
         (Fin.cases (Arrow.mk (sInputExactMap
           (fromZeroCategory (dgKappaNativeVerdierDiagram R D I).right))) Fin.elim0)))
 

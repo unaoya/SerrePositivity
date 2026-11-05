@@ -27,7 +27,7 @@ def dgKInputCompactNativeMap_idIso (A : PerfDGInput.{u, v} R) :
     FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   unfold dgKInputCompactNativeMap
   rw [hν, CategoryTheory.Functor.map_id, Category.id_comp]
@@ -43,7 +43,7 @@ def dgKInputCompactNativeMap_compIso (f : A ⟶ B) (g : B ⟶ C) :
   have hν : (dgKInputNuMap R (f ≫ g)).hom =
       (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg (fun f : ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   let F := (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map (dgKInputNuMap R f).hom
   let G := (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map (dgKInputNuMap R g).hom

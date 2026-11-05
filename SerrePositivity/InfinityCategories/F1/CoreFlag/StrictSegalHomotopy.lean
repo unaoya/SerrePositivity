@@ -50,9 +50,9 @@ lemma strictSegal_kanHomotopy_subsingleton (X : SSet.{u}) [KanComplex X]
   constructor
   intro a b
   obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
-  obtain ⟨t, rfl⟩ := KanHomotopy.mk_surjective n b
-  rw [strictSegal_ptSimplex_eq_const X n hn x s,
-    strictSegal_ptSimplex_eq_const X n hn x t]
+  obtain ⟨t, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n b
+  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_ptSimplex_eq_const X n hn x s,
+    _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_ptSimplex_eq_const X n hn x t]
 
 end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
 

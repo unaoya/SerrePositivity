@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 元の指定 Verdier 下側二胞体の、同じ全 S• Kan 像の全単体。 -/
 def verdierFullSLowerSimplex : SpaceInfinity.{u} _⦋2⦌ :=

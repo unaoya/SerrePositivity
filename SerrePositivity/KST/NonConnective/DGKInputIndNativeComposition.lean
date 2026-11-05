@@ -34,7 +34,7 @@ def dgKInputIndNativeMap_idIso (A : PerfDGInput.{u, v} R) :
     FunctorIso (dgKInputIndNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   apply dgKInputIndFunctorIso_of_restriction R A A _ _
     (dgKInputIndNativeMap_preservesFilteredColimits R A A (𝟙 A))
@@ -50,7 +50,7 @@ def dgKInputIndNativeMap_compIso (f : A ⟶ B) (g : B ⟶ C) :
   have hν : (dgKInputNuMap R (f ≫ g)).hom =
       (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg (fun f : ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   let F := dgKInputIndNativeMap R A B f
   let G := dgKInputIndNativeMap R B C g

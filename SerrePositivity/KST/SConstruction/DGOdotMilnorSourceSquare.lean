@@ -58,7 +58,7 @@ theorem exists_dgOdotMilnorSourceSquare :
         (coherentNerveEdge (dgOdotMilnorSourceAugmentationInputMap R d)).edge ∧
       squareRightEdge ≫ F = SSet.yonedaEquiv.symm
         (coherentNerveEdge (dgOdotMilnorAugmentationInputMap R d)).edge := by
-  obtain ⟨F, hb, hr, hl, ht⟩ := RelativeVerdierDiagram.exists_coherentSquare_of_comm
+  obtain ⟨F, hb, hr, hl, ht⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_coherentSquare_of_comm
     (dgOdotMilnorSourceKernelInputMap R d ≫ dgOdotMilnorFlatKernelInputMap R d)
     (dgOdotMilnorAugmentationInputMap R d)
     (dgOdotMilnorSourceAugmentationInputMap R d) (dgOdotDiagonalInputMap R d)

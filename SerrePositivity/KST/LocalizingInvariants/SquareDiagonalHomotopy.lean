@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 variable {X : SSet.{u}} {F G : (Δ[1] : SSet.{u}) ⟶ X} (H : SSet.Homotopy F G)
 
-def afterBottom : SSet.Homotopy F (diagonal H) where
+def afterBottom : SSet.Homotopy F (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal H) where
   h := postShape ≫ squareTriangle 1 ≫ H.h
   h₀ := by
     rw [← Category.assoc, postShape_zero, ← Category.assoc, triangleSquare_lower_bottom, H.h₀]
@@ -38,7 +38,7 @@ def afterBottom : SSet.Homotopy F (diagonal H) where
     intro s
     exact False.elim s.1.property
 
-def beforeTop : SSet.Homotopy (diagonal H) G where
+def beforeTop : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.diagonal H) G where
   h := preShape ≫ squareTriangle 0 ≫ H.h
   h₀ := by
     rw [← Category.assoc, preShape_zero, ← Category.assoc, squareTriangle_diagonal]

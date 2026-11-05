@@ -17,25 +17,25 @@ open SerrePositivity.KST.SConstruction
 open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 標準 bead の有限列を、元の有限 joints の反復 wedge として読む。 -/
-def ofBeads : List ℕ → NecklaceShape
-  | [] => single 0
-  | n :: ns => (single n).wedge (ofBeads ns)
+def ofBeads : List ℕ → _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+  | [] => _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0
+  | n :: ns => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedge (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns)
 
 /-- 空の bead 列は元の一点。 -/
-lemma ofBeads_nil : ofBeads [] = single 0 := rfl
+lemma ofBeads_nil : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads [] = _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single 0 := rfl
 
 /-- bead を一つ先頭に加える作用は元の wedge。 -/
 lemma ofBeads_cons (n : ℕ) (ns : List ℕ) :
-    ofBeads (n :: ns) = (single n).wedge (ofBeads ns) := rfl
+    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads (n :: ns) = (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedge (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns) := rfl
 
 /-- bead 一つの preferred form は元の標準単体一つの形。 -/
-lemma ofBeads_singleton (n : ℕ) : ofBeads [n] = single n := wedge_single_zero _
+lemma ofBeads_singleton (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads [n] = _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_single_zero _
 
 /-- 元の全 necklace は、正の長さの bead の反復連結と厳密に等しい。 -/
-theorem exists_positive_beads (T : NecklaceShape) :
-    ∃ ns : List ℕ, (∀ n ∈ ns, 0 < n) ∧ ofBeads ns = T := by
-  suffices h : ∀ k, ∀ T : NecklaceShape, T.vertexMax = k →
-      ∃ ns : List ℕ, (∀ n ∈ ns, 0 < n) ∧ ofBeads ns = T by
+theorem exists_positive_beads (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
+    ∃ ns : List ℕ, (∀ n ∈ ns, 0 < n) ∧ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns = T := by
+  suffices h : ∀ k, ∀ T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape, T.vertexMax = k →
+      ∃ ns : List ℕ, (∀ n ∈ ns, 0 < n) ∧ _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns = T by
     exact h T.vertexMax T rfl
   intro k
   induction k using Nat.strong_induction_on with
@@ -55,18 +55,18 @@ theorem exists_positive_beads (T : NecklaceShape) :
         rcases List.mem_cons.mp hmem with rfl | hmem
         · exact T.firstPositiveJoint_pos hn
         · exact hns n hmem
-      · rw [ofBeads_cons, he]
+      · rw [_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_cons, he]
         exact T.single_wedge_tail p hp (T.firstPositiveJoint_le hn)
 
 /-- 元の全 necklace の preferred bead 列。存在証明から選ぶが元の形を変えない。 -/
-noncomputable def beads (T : NecklaceShape) : List ℕ := (T.exists_positive_beads).choose
+noncomputable def beads (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : List ℕ := (T.exists_positive_beads).choose
 
 /-- 選んだ元の preferred 列の各 bead は正の長さを持つ。 -/
-lemma beads_positive (T : NecklaceShape) : ∀ n ∈ T.beads, 0 < n :=
+lemma beads_positive (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : ∀ n ∈ T.beads, 0 < n :=
   (T.exists_positive_beads).choose_spec.1
 
 /-- 選んだ preferred bead 列の反復 wedge は元の長さと全 joints を厳密に回収する。 -/
-lemma ofBeads_beads (T : NecklaceShape) : ofBeads T.beads = T :=
+lemma ofBeads_beads (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads T.beads = T :=
   (T.exists_positive_beads).choose_spec.2
 
 end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape

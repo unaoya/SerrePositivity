@@ -29,8 +29,8 @@ def initialConeTensorQuotientCone {B C : SSet.{u}} (q : B ⟶ C) (A L : SSet.{u}
     rw [← Category.assoc, initialConeTensorIso_inr, hH]⟩
 
 /-- 全境界を保つ実錐と、指定商全図式に向かう同じ全 slice 同型。 -/
-structure VerdierInitialConeTensorRefinement {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (_h : IsVerdierSequence i q)
+structure VerdierInitialConeTensorRefinement {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (_h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) (p : initialConeTensorCorner A L ⟶ B.obj)
     (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)
     (hH : initialConeTensorCornerInclusion A L ≫ H = p ≫ q.hom) where
@@ -39,8 +39,8 @@ structure VerdierInitialConeTensorRefinement {A₀ B C : StableCategory.{u}}
     (initialConeTensorQuotientCone q.hom A L p H hH)
 
 namespace VerdierInitialConeTensorRefinement
-variable {A₀ B C : StableCategory.{u}} {i : ExactMap A₀ B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {A L : SSet.{u}}
+variable {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {A L : SSet.{u}}
   {p : initialConeTensorCorner A L ⟶ B.obj}
   {H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj}
   {hH : initialConeTensorCornerInclusion A L ≫ H = p ≫ q.hom}
@@ -71,14 +71,14 @@ lemma restriction {S : SSet.{u}} (f : S ⟶ initialConeTensorCorner A L) :
 end VerdierInitialConeTensorRefinement
 
 /-- 有限な元の全境界と指定商全図式から、全比較付きの実拡張を新仮定なしに回収する。 -/
-lemma exists_verdierInitialConeTensorRefinement {A₀ B C : StableCategory.{u}}
-    {i : ExactMap A₀ B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+lemma exists_verdierInitialConeTensorRefinement {A₀ B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A₀ B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (A L : SSet.{u}) [A.Finite] [L.Finite]
     (p : initialConeTensorCorner A L ⟶ B.obj)
     (H : join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L ⟶ C.obj)
     (hH : initialConeTensorCornerInclusion A L ≫ H = p ≫ q.hom) :
     Nonempty (VerdierInitialConeTensorRefinement h A L p H hH) := by
-  obtain ⟨c, ⟨e⟩⟩ := exists_verdierQuotientConeIsoRefinement h p
+  obtain ⟨c, ⟨e⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierQuotientConeIsoRefinement h p
     (initialConeTensorQuotientCone q.hom A L p H hH)
   exact ⟨⟨c, e⟩⟩
 

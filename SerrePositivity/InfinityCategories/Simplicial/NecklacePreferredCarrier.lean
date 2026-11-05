@@ -20,49 +20,49 @@ open _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 open CategoryTheory Limits _root_.Simplicial SSet
 
 /-- 同じ形の元の実単体集合の、全単体を保つ移送同型。 -/
-def carrierCongr {T U : NecklaceShape} (h : T = U) : T.carrier.{u} ≅ U.carrier.{u} :=
-  eqToIso (congrArg (carrier.{u}) h)
+def carrierCongr {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} (h : T = U) : T.carrier.{u} ≅ U.carrier.{u} :=
+  eqToIso (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrier.{u}) h)
 
 /-- 形の移送同型は元の始零単体を厳密に回収する。 -/
-lemma carrierCongr_first {T U : NecklaceShape} (h : T = U) :
-    (carrierCongr.{u} h).hom.app _ T.firstVertex = U.firstVertex := by
+lemma carrierCongr_first {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} (h : T = U) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrierCongr.{u} h).hom.app _ T.firstVertex = U.firstVertex := by
   cases h
   rfl
 
 /-- 形の移送同型は元の終零単体を厳密に回収する。 -/
-lemma carrierCongr_last {T U : NecklaceShape} (h : T = U) :
-    (carrierCongr.{u} h).hom.app _ T.lastVertex = U.lastVertex := by
+lemma carrierCongr_last {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape} (h : T = U) :
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrierCongr.{u} h).hom.app _ T.lastVertex = U.lastVertex := by
   cases h
   rfl
 
 /-- 元の全 necklace の実単体集合と、選んだ preferred bead wedge との同型。 -/
-def preferredCarrierIso (T : NecklaceShape) : T.carrier.{u} ≅ (ofBeads T.beads).carrier.{u} :=
-  carrierCongr T.ofBeads_beads.symm
+def preferredCarrierIso (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : T.carrier.{u} ≅ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads T.beads).carrier.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrierCongr T.ofBeads_beads.symm
 
 /-- preferred form への同型は元の始頂点を保つ。 -/
-lemma preferredCarrierIso_first (T : NecklaceShape) :
-    T.preferredCarrierIso.{u}.hom.app _ T.firstVertex = (ofBeads T.beads).firstVertex :=
-  carrierCongr_first _
+lemma preferredCarrierIso_first (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
+    T.preferredCarrierIso.{u}.hom.app _ T.firstVertex = (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads T.beads).firstVertex :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrierCongr_first _
 
 /-- preferred form への同型は元の終頂点を保つ。 -/
-lemma preferredCarrierIso_last (T : NecklaceShape) :
-    T.preferredCarrierIso.{u}.hom.app _ T.lastVertex = (ofBeads T.beads).lastVertex :=
-  carrierCongr_last _
+lemma preferredCarrierIso_last (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
+    T.preferredCarrierIso.{u}.hom.app _ T.lastVertex = (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads T.beads).lastVertex :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrierCongr_last _
 
 /-- 一つの bead の標準単体同型は、元の部分複体の包含そのもの。 -/
 lemma singleSimplexIso_hom_eq_inclusion (n : ℕ) :
-    (singleSimplexIso.{u} n).hom = (single n).inclusion := rfl
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso.{u} n).hom = (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).inclusion := rfl
 
 /-- 各 bead の連結は、元の標準零単体と標準 n 単体を使う実押し出し。 -/
-theorem singleWedgeStandard_isPushout (n : ℕ) (U : NecklaceShape) :
+theorem singleWedgeStandard_isPushout (n : ℕ) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) :
     IsPushout
-      ((singleSimplexIso.{u} 0).inv ≫ (single n).pointMap (single n).last ≫
-        (singleSimplexIso n).hom)
-      ((singleSimplexIso 0).inv ≫ U.pointMap U.first)
-      ((singleSimplexIso n).inv ≫ (single n).wedgeInl U)
-      ((single n).wedgeInr U) := by
-  apply ((single n).wedge_isPushout.{u} U).of_iso (singleSimplexIso 0)
-    (singleSimplexIso n) (Iso.refl _) (Iso.refl _)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso.{u} 0).inv ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).pointMap (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).last ≫
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso n).hom)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso 0).inv ≫ U.pointMap U.first)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso n).inv ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedgeInl U)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedgeInr U) := by
+  apply ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedge_isPushout.{u} U).of_iso (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso 0)
+    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso n) (Iso.refl _) (Iso.refl _)
   · simp only [Iso.hom_inv_id_assoc]
   · simp only [Iso.refl_hom, Category.comp_id, Iso.hom_inv_id_assoc]
   · simp only [Iso.refl_hom, Category.comp_id, Iso.hom_inv_id_assoc]
@@ -71,12 +71,12 @@ theorem singleWedgeStandard_isPushout (n : ℕ) (U : NecklaceShape) :
 /-- preferred form の各非空段は、元の標準 bead を終始点で貼る実押し出し。 -/
 theorem ofBeads_cons_isPushout (n : ℕ) (ns : List ℕ) :
     IsPushout
-      ((singleSimplexIso.{u} 0).inv ≫ (single n).pointMap (single n).last ≫
-        (singleSimplexIso n).hom)
-      ((singleSimplexIso 0).inv ≫ (ofBeads ns).pointMap (ofBeads ns).first)
-      ((singleSimplexIso n).inv ≫ (single n).wedgeInl (ofBeads ns))
-      ((single n).wedgeInr (ofBeads ns)) :=
-  singleWedgeStandard_isPushout n (ofBeads ns)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso.{u} 0).inv ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).pointMap (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).last ≫
+        (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso n).hom)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso 0).inv ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns).pointMap (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns).first)
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleSimplexIso n).inv ≫ (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedgeInl (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns))
+      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single n).wedgeInr (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns)) :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.singleWedgeStandard_isPushout n (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads ns)
 
 end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 

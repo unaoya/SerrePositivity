@@ -12,7 +12,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B : StableCategory.{u}} (i : ExactMap A B)
+variable {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B)
 
 /-- 元の W cospan と指定済みの任意の部分族を固定し、普遍 Ore 四角形を全体へ延長する。 -/
 theorem exists_relative_weakOreFamily {S T : SSet.{u}} (j : S ⟶ T) [Mono j]

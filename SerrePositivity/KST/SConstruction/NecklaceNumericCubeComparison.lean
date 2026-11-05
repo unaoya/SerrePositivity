@@ -15,7 +15,7 @@ open CategoryTheory
 namespace NecklaceShape
 
 /-- 元の非 joint Bool 座標と、同じ次元の右端からの数値立方体の順序同型。 -/
-def numericCubeIso (T : NecklaceShape) : (T.NonjointVertex → Bool) ≃o CubeVertex T.dimension where
+def numericCubeIso (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape) : (T.NonjointVertex → Bool) ≃o _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension where
   toFun b := fun i => b (T.nonjointCoordinate i)
   invFun x := fun v => x (T.nonjointCoordinate.symm v)
   left_inv b := funext (fun v => congrArg b (T.nonjointCoordinate.apply_symm_apply v))
@@ -33,14 +33,14 @@ def numericCubeIso (T : NecklaceShape) : (T.NonjointVertex → Bool) ≃o CubeVe
 end NecklaceShape
 
 /-- 既存の具体的 cube と同じ全頂点・同じ生成関数を持つ順序集合値関手。 -/
-def concreteCubeOrderedVertices : ConcreteCube ⥤ PartOrd where
-  obj T := PartOrd.of (CubeVertex T.dimension)
-  map f := PartOrd.ofHom (cubeMapGeneratedOrderHom f.property)
+def concreteCubeOrderedVertices : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ PartOrd where
+  obj T := PartOrd.of (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex T.dimension)
+  map f := PartOrd.ofHom (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGeneratedOrderHom f.property)
   map_id _ := PartOrd.Hom.ext rfl
   map_comp _ _ := PartOrd.Hom.ext rfl
 
 /-- 元の necklace の Bool 座標作用と、同じ具体的 cube 射の全頂点作用との自然同型。 -/
-def necklaceBooleanNumericNatIso : necklaceBooleanPoset.{u} ≅
+def necklaceBooleanNumericNatIso : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset.{u} ≅
     necklaceConcreteCube ⋙ concreteCubeOrderedVertices :=
   NatIso.ofComponents (fun T => PartOrd.Iso.mk T.down.numericCubeIso) (by
     intro T U f
@@ -48,15 +48,15 @@ def necklaceBooleanNumericNatIso : necklaceBooleanPoset.{u} ≅
     apply DFunLike.ext
     intro b
     funext j
-    change necklaceBooleanMap f b (U.down.nonjointCoordinate j) =
-      necklaceBooleanMap f
+    change _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap f b (U.down.nonjointCoordinate j) =
+      _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap f
         (fun v => b (T.down.nonjointCoordinate (T.down.nonjointCoordinate.symm v)))
         (U.down.nonjointCoordinate j)
     simp only [Equiv.apply_symm_apply])
 
 /-- 原典の全 joints を含む部分集合像は、元の具体的 cube 関手の全頂点作用と一致する。 -/
-def necklaceSubsetNumericNatIso : necklaceSubsetPoset.{u} ≅
+def necklaceSubsetNumericNatIso : _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset.{u} ≅
     necklaceConcreteCube ⋙ concreteCubeOrderedVertices :=
-  necklaceSubsetBooleanNatIso ≪≫ necklaceBooleanNumericNatIso
+  _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetBooleanNatIso ≪≫ necklaceBooleanNumericNatIso
 
 end SerrePositivity.KST.SConstruction

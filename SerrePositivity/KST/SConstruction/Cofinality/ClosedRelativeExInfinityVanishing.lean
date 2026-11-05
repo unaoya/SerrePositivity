@@ -28,7 +28,7 @@ theorem completionClosedRelativeExInfinity_higher_subsingleton (r : ℕ)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
     (x : (exInfinity.obj (Fibration.Relative.closedRelativeRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (Spectra.KanHomotopy
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (exInfinity.obj (Fibration.Relative.closedRelativeRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
   let R := Fibration.Relative.closedRelativeRealization (completionImageClosedPredicate r ι f hf)
@@ -39,20 +39,20 @@ theorem completionClosedRelativeExInfinity_higher_subsingleton (r : ℕ)
   have hw := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence _ hu
   obtain ⟨g, hg, hk⟩ := hw.isSimplicialHomotopyEquivalence
   have hgi : IsSimplicialHomotopyEquivalence g := ⟨_, hk, hg⟩
-  have hπg : Spectra.KanPiIsomorphism
+  have hπg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (g : F2.continuousKanReplacement.obj (exInfinity.obj R) ⟶
         F2.continuousKanReplacement.obj R) :=
     Spectra.kanPiIsomorphism_of_qCatEquivalence g hgi.isQCatEquivalence
   let z := (F2.continuousKanReplacementUnit.app (exInfinity.obj R)).app (Opposite.op ⦋0⦌) x
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj ((𝟭 SSet.{u}).obj R)) n
       (g.app (Opposite.op ⦋0⦌) z)) :=
     completionClosedRelative_higher_subsingleton r ι f hf n hn _
-  let : Subsingleton (Spectra.KanHomotopy
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
       (F2.continuousKanReplacement.obj (exInfinity.obj R)) n z) :=
     Function.Injective.subsingleton ((hπg z n).1)
   have hv := F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence (exInfinity.obj R)
-  have hπu : Spectra.KanPiIsomorphism
+  have hπu : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (F2.continuousKanReplacementUnit.app (exInfinity.obj R) :
         exInfinity.obj R ⟶ F2.continuousKanReplacement.obj (exInfinity.obj R)) :=
     Spectra.kanPiIsomorphism_of_qCatEquivalence _

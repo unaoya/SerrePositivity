@@ -20,8 +20,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 零の安定入力の元の正反復実現の Ex∞ Kan 値は、空間の ∞ 圏の終対象である。 -/
-theorem stableMultiKanVertex_isTerminal_of_zero (r : ℕ) (C : StableQCat.{u})
-    (hC : IsZeroCategory C) :
+theorem stableMultiKanVertex_isTerminal_of_zero (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
+    (hC : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory C) :
     IsTerminalVertex (coherentNerveVertex ((stableMultiKanEnrichedFunctor r).obj C)) := by
   let V := (multiRealizationFunctor (r + 1)).obj (stableCategoryModel C)
   have hV : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit V)) :=
@@ -35,7 +35,7 @@ theorem stableMultiKanVertex_isTerminal_of_zero (r : ℕ) (C : StableQCat.{u})
   infer_instance
 
 /-- 元の指定 Verdier 四角形の零角は、同じ全正反復実現でも終対象に写る。 -/
-theorem verdierMultiKanSquare_corner_isTerminal (r : ℕ) (d : VerdierDiagram.{u}) :
+theorem verdierMultiKanSquare_corner_isTerminal (r : ℕ) (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     IsTerminalVertex (squareVertex
       (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor r)) 0 1) := by
   let z := squareVertex d.square 0 1
@@ -43,14 +43,14 @@ theorem verdierMultiKanSquare_corner_isTerminal (r : ℕ) (d : VerdierDiagram.{u
     ((coherentNerveMap (stableMultiKanEnrichedFunctor r)).app (Opposite.op ⦋0⦌) z)
   have he : (coherentNerveMap (stableMultiKanEnrichedFunctor r)).app
       (Opposite.op ⦋0⦌) z =
-      coherentNerveVertex ((stableMultiKanEnrichedFunctor r).obj (stableObject z)) :=
-    (congrArg (fun t : StableInfinity.{u} _⦋0⦌ =>
+      coherentNerveVertex ((stableMultiKanEnrichedFunctor r).obj (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject z)) :=
+    (congrArg (fun t : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋0⦌ =>
       (coherentNerveMap (stableMultiKanEnrichedFunctor r)).app (Opposite.op ⦋0⦌) t)
-        (stableVertex_object z).symm).trans (coherentNerveMap_vertex _ _)
-  exact he.symm ▸ stableMultiKanVertex_isTerminal_of_zero r (stableObject z) d.zero_corner
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object z).symm).trans (coherentNerveMap_vertex _ _)
+  exact he.symm ▸ stableMultiKanVertex_isTerminal_of_zero r (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject z) d.zero_corner
 
 /-- 元の一回の実現の両四角形の同じ角は、実際の終対象間の同型で比較される。 -/
-def quotientSKernelCornerIso_verdierSingle (d : VerdierDiagram.{u}) :
+def quotientSKernelCornerIso_verdierSingle (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     VertexIso (squareVertex (quotientSKernelInfinitySquare d.inclusion d.projection) 0 1)
       (squareVertex (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) 0 1) :=
   terminalVertexIso (quotientSKernelInfinitySquare_corner_isTerminal d.isVerdier)

@@ -67,7 +67,7 @@ end
 
 /-- 元の端点パラメータ四角形は、構成済みの同じ cofiber pushout。 -/
 lemma d3EndpointParameter_isPushout : D3ParameterIsPushout d3EndpointParameter.{u} := by
-  exact pointedCofiber_isPushout intervalEndpoint.{u}
+  exact pointedCofiber_isPushout _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}
 
 /-- 元の端点 pushout を右テンソルで保存した、第一方向の実パラメータ面。 -/
 lemma d3DoubleEndpointLeftParameter_isPushout (k l : Fin 2) :
@@ -89,7 +89,7 @@ lemma d3DoubleEndpointLeftParameter_mono (k l : Fin 2) :
       ((d3BiParameterLeftOrder k l).toFunctor.op ⋙ d3DoubleEndpointParameter.{u})
       (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)).right := by
   rw [d3DoubleEndpointParameter, d3BiParameterLeft_arrow]
-  change Mono (PointedObject.smashMap intervalEndpoint.{u}
+  change Mono (PointedObject.smashMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}
     (𝟙 (d3EndpointParameterObj (k, l)))).right
   infer_instance
 
@@ -99,7 +99,7 @@ lemma d3DoubleEndpointRightParameter_mono (i j : Fin 2) :
       ((d3BiParameterRightOrder i j).toFunctor.op ⋙ d3DoubleEndpointParameter.{u})
       (show ((1, 0) : Fin 2 × Fin 2) ≤ (1, 1) by decide)).right := by
   rw [d3DoubleEndpointParameter, d3BiParameterRight_arrow]
-  change Mono (d3EndpointParameterObj (i, j) ◁ intervalEndpoint.{u}).right
+  change Mono (d3EndpointParameterObj (i, j) ◁ _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}).right
   infer_instance
 
 /-- 実四次元全図式の第一方向の各面は、同じ元の作用を持つ ∞ pullback。 -/

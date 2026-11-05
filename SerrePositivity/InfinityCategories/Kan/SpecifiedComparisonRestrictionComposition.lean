@@ -51,7 +51,7 @@ lemma specifiedFunctorIsoRestrictionFromTriangle {A B C X : SSet.{u}}
   subst f' g'
   change e.precomp p = e' at htri
   subst e'
-  have ht := specifiedFunctorIsoRestrictionTwice e p q
+  have ht := _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionTwice e p q
   rw [hp] at ht
   exact ht.symm.trans ((F2.functorIsoOfEq_heq _ hfs hgs).symm.trans (heq_of_eq hshort))
 

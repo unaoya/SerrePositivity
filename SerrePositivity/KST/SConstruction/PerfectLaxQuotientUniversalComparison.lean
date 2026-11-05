@@ -15,7 +15,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 open scoped Simplicial
 namespace PerfectLaxQuotient
-variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 /-- 元の完備化後の商に対する普遍差も、同じ包含の全対象を零に送る。 -/
@@ -59,44 +59,44 @@ def universalDiagonalIso : FunctorIso
     (d.inclusion.hom ≫ LaxUniversalDifference.lift p q d.sequence.projection)
     ((d.inclusion.hom ≫ LaxUniversalDifference.first p q d.sequence.projection) ≫
       IdentityLax.diagonal d.sequence.right) := by
-  have e := FunctorIso.postcomp d.universalArrowComparison (arrowLaxInverse d.sequence.right.obj)
+  have e := FunctorIso.postcomp d.universalArrowComparison (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse d.sequence.right.obj)
   change FunctorIso
     (d.inclusion.hom ≫ (LaxUniversalDifference.connectingArrow p q d.sequence.projection ≫
-      arrowLaxInverse d.sequence.right.obj))
+      _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse d.sequence.right.obj))
     ((d.inclusion.hom ≫ LaxUniversalDifference.first p q d.sequence.projection) ≫
       (constantFunctorMap (Δ[1] : SSet.{u}) d.sequence.right.obj ≫
-        arrowLaxInverse d.sequence.right.obj))
+        _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse d.sequence.right.obj))
   simpa only [Category.assoc] using e
 
 /-- 元の全比較道を持つ、二つの合成を比較する実三角形。 -/
 def universalDiagonalTriangle : SSet.Edge.CompStruct
-    (SSet.Edge.id (stableVertex d.left))
-    (stableArrow (LaxUniversalDifference.inclusionComposite p q d.inclusion d.sequence.projection))
-    (stableArrow
-      (LaxUniversalDifference.diagonalComposite p q d.inclusion d.sequence.projection)) :=
-  exactMapComparisonTriangle
-    (F := LaxUniversalDifference.diagonalComposite p q d.inclusion d.sequence.projection)
-    (G := LaxUniversalDifference.inclusionComposite p q d.inclusion d.sequence.projection)
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex d.left))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite p q d.inclusion d.sequence.projection))
+    (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow
+      (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite p q d.inclusion d.sequence.projection)) :=
+  _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle
+    (F := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite p q d.inclusion d.sequence.projection)
+    (G := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite p q d.inclusion d.sequence.projection)
     d.universalDiagonalIso.symm
 
 /-- 元の比較三角形を保持する、実 StableInfinity 値の普遍差の比較正方形。 -/
-def universalRawSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u} :=
+def universalRawSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} :=
   PathComparisonSquare.square
-    (LaxUniversalDifference.lower p q d.inclusion d.sequence.projection)
-    (LaxUniversalDifference.upper p q d.inclusion d.sequence.projection)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.lower p q d.inclusion d.sequence.projection)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.upper p q d.inclusion d.sequence.projection)
     d.universalDiagonalTriangle
 
 /-- 元の比較正方形の四辺を、その元の完全関手として回収する。 -/
 lemma universalRawSquare_edges :
     squareBottomEdge ≫ d.universalRawSquare =
-        SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge ∧
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge ∧
       squareTopEdge ≫ d.universalRawSquare = SSet.yonedaEquiv.symm
-        (stableArrow (IdentityLax.exactDiagonal d.sequence.right)).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (IdentityLax.exactDiagonal d.sequence.right)).edge ∧
       squareLeftEdge ≫ d.universalRawSquare = SSet.yonedaEquiv.symm
-        (stableArrow
-          (LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow
+          (_root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap p q d.inclusion d.sequence.projection)).edge ∧
       squareRightEdge ≫ d.universalRawSquare = SSet.yonedaEquiv.symm
-        (stableArrow
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow
           (LaxUniversalDifference.exactLift p q d.sequence.projection)).edge :=
   ⟨PathComparisonSquare.square_bottom _ _ _, PathComparisonSquare.square_top _ _ _,
     PathComparisonSquare.square_left _ _ _, PathComparisonSquare.square_right _ _ _⟩

@@ -33,7 +33,7 @@ structure RelativePerfectVerdierDiagram {S : SSet.{u + 1}}
     (ν : S ⟶ perfectStableInfinity.{u}) where
   square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
   image : PerfectVerdierDiagram.{u}
-  image_eq : square ≫ ν = image.square
+  image_eq : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.square ≫ ν = _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image.square
 
 namespace RelativePerfectVerdierDiagram
 open _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram
@@ -46,10 +46,10 @@ def ofSquare (d : PerfectVerdierSequence.{u})
       (perfectStableArrow d.verdier.inclusion d.left_complete d.middle_complete).edge)
     (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm
       (perfectStableArrow d.projection d.middle_complete d.right_complete).edge)
-    (hz : IsZeroCategory (perfectStableObject (squareVertex (F ≫ ν) 0 1))) :
-    RelativePerfectVerdierDiagram ν where
-  square := F
-  image := {
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (F ≫ ν) 0 1))) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν where
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.square := F
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image := {
     toPerfectVerdierSequence := d
     square := F ≫ ν
     left_eq := by
@@ -74,22 +74,22 @@ def ofSquare (d : PerfectVerdierSequence.{u})
       rw [← Category.assoc, hr]
       exact perfectStableArrow_inclusion _ _ _
     zero_corner := hz }
-  image_eq := rfl
+  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.image_eq := rfl
 
 @[simp] lemma ofSquare_square (d : PerfectVerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
-    (ofSquare ν d F hb hr hz).square = F := rfl
+    (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.ofSquare ν d F hb hr hz).square = F := rfl
 
 /-- 固定 ν の StableInfinity 像で照合された元の二辺も、同じ完備化付き証明書になる。 -/
 def ofStableSquare (d : PerfectVerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (hb : squareBottomEdge ≫ F ≫ ν ≫ perfectStableInfinityInclusion =
-      SSet.yonedaEquiv.symm (stableArrow d.verdier.inclusion).edge)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.verdier.inclusion).edge)
     (hr : squareRightEdge ≫ F ≫ ν ≫ perfectStableInfinityInclusion =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge)
-    (hz : IsZeroCategory (perfectStableObject (squareVertex (F ≫ ν) 0 1))) :
-    RelativePerfectVerdierDiagram ν := by
-  apply ofSquare ν d F
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (F ≫ ν) 0 1))) :
+    _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν := by
+  apply _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.ofSquare ν d F
   · apply (cancel_mono perfectStableInfinityInclusion).mp
     exact (Category.assoc _ _ _).trans
       (hb.trans (perfectStableArrow_inclusion _ _ _).symm)
@@ -99,36 +99,36 @@ def ofStableSquare (d : PerfectVerdierSequence.{u})
   · exact hz
 
 /-- 元の源四角形の同じ零角は、固定した完備提示でも零安定圏を表す。 -/
-lemma zero_corner (d : RelativePerfectVerdierDiagram ν) :
-    IsZeroCategory (perfectStableObject
+lemma zero_corner (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
+    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject
       (ν.app (Opposite.op ⦋0⦌) (squareVertex d.square 0 1))) := by
-  change IsZeroCategory (perfectStableObject (squareVertex (d.square ≫ ν) 0 1))
+  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (d.square ≫ ν) 0 1))
   rw [d.image_eq]
   exact d.image.zero_corner
 
 /-- Cat^perf 不変量の元の制限値と同じ零角を持つ相対三角形。 -/
 def fiberTriangle {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
-    (hE : IsPerfectLocalizingInvariant E) (d : RelativePerfectVerdierDiagram ν) :
+    (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
     ZeroTriangle Spectra.Sp.{u} where
   square := d.square ≫ ν ≫ E
   zero_corner := hE.preservesZero _ (d.zero_corner ν)
 
 /-- 相対値は同じ Cat^perf 不変量の制限であり、新たな局所化条件は入力しない。 -/
 lemma isPullback {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
-    (hE : IsPerfectLocalizingInvariant E) (d : RelativePerfectVerdierDiagram ν) :
+    (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
     IsPullbackSquare (d.square ≫ ν ≫ E) := by
   rw [← Category.assoc, d.image_eq]
   exact hE.preservesVerdier d.image
 
 lemma fiberTriangle_isFiber {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
-    (hE : IsPerfectLocalizingInvariant E) (d : RelativePerfectVerdierDiagram ν) :
+    (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
     IsFiberSequence (d.fiberTriangle ν hE) := d.isPullback ν hE
 
 /-- 元の三指定境界を保つ全源四角形同型で、同じ不変量値の pullback を運ぶ。 -/
 lemma isPullback_of_sourceIso {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
-    (hE : IsPerfectLocalizingInvariant E) (d : RelativePerfectVerdierDiagram ν)
+    (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : VerdierSquareBoundaryIso d.square F) (e : VerdierSquareDiagramIso d.square F b) :
+    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso d.square F) (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso d.square F b) :
     IsPullbackSquare (F ≫ ν ≫ E) :=
   (d.isPullback ν hE).of_functorIso (e.comparison.postcomp (ν ≫ E))
 

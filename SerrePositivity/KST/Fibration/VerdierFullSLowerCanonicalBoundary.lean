@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
 
 /-- 同じ最大化の第一辺は、元の実 Kan 包含の同じ全一単体。 -/
 theorem verdierFullSLowerCanonical_first_edge :
@@ -28,7 +28,7 @@ theorem verdierFullSLowerCanonical_first_edge :
   have h := congrArg SSet.yonedaEquiv (verdierFullSLowerMaximalization_inclusion d)
   have h' : SpaceInfinity.δ 2 (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
       (coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋1⦌)
-        (stableArrow d.inclusion).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge := by
     simpa only [stdSimplex.yonedaEquiv_δ_comp, SSet.yonedaEquiv_symm_comp,
       Equiv.apply_symm_apply] using! h
   exact h'.trans (stableMultiSingleKan_edge d.inclusion)
@@ -40,7 +40,7 @@ theorem verdierFullSLowerCanonical_last_edge :
   have h := congrArg SSet.yonedaEquiv (verdierFullSLowerMaximalization_projection d)
   have h' : SpaceInfinity.δ 0 (coherentSimplexMaximalization (verdierFullSLowerSimplex d)) =
       (coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋1⦌)
-        (stableArrow d.projection).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge := by
     simpa only [stdSimplex.yonedaEquiv_δ_comp, SSet.yonedaEquiv_symm_comp,
       Equiv.apply_symm_apply] using! h
   exact h'.trans (stableMultiSingleKan_edge d.projection)
@@ -49,8 +49,8 @@ theorem verdierFullSLowerCanonical_last_edge :
 theorem verdierFullSLowerCanonical_first_data :
     coherentNerveArrowData
       (SpaceInfinity.δ 2 (coherentSimplexMaximalization (verdierFullSLowerSimplex d))) =
-    ⟨stableCoreSingleKanEnrichedFunctor.obj (show StableQCat from d.left),
-      stableCoreSingleKanEnrichedFunctor.obj (show StableQCat from d.middle),
+    ⟨stableCoreSingleKanEnrichedFunctor.obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left),
+      stableCoreSingleKanEnrichedFunctor.obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.middle),
       stableCoreSingleKanMap d.inclusion⟩ :=
   (congrArg coherentNerveArrowData (verdierFullSLowerCanonical_first_edge d)).trans
     (coherentNerveArrowData_of_arrow (stableCoreSingleKanMap d.inclusion))
@@ -59,8 +59,8 @@ theorem verdierFullSLowerCanonical_first_data :
 theorem verdierFullSLowerCanonical_last_data :
     coherentNerveArrowData
       (SpaceInfinity.δ 0 (coherentSimplexMaximalization (verdierFullSLowerSimplex d))) =
-    ⟨stableCoreSingleKanEnrichedFunctor.obj (show StableQCat from d.middle),
-      stableCoreSingleKanEnrichedFunctor.obj (show StableQCat from d.right),
+    ⟨stableCoreSingleKanEnrichedFunctor.obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.middle),
+      stableCoreSingleKanEnrichedFunctor.obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right),
       stableCoreSingleKanMap d.projection⟩ :=
   (congrArg coherentNerveArrowData (verdierFullSLowerCanonical_last_edge d)).trans
     (coherentNerveArrowData_of_arrow (stableCoreSingleKanMap d.projection))

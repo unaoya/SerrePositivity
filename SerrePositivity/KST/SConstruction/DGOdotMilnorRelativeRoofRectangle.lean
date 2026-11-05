@@ -22,10 +22,10 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare
 規約：元入力への屋根は構成済みであり追加入力にしない。
 使われ方：Sp-6 の未供給の実長方形と主経路の接続。 -/
 structure DGOdotMilnorRelativeRoofRectangleInput where
-  rectangle : RelativePerfectVerdierRectangle (dgKInputPerfectNu.{u, u + 1} R)
-  boundary : VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputPerfectNu R)
+  rectangle : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle (dgKInputPerfectNu.{u, u + 1} R)
+  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram
-  image : VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
+  image : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (rectangle.diagram ≫ dgKInputPerfectNu R)
     (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary
   kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare rectangle.diagram 2) 0 0 =
     coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)
@@ -36,7 +36,7 @@ variable {R d h} (v : DGOdotMilnorRelativeRoofRectangleInput R d h)
 /-- 概要：実長方形の始域から元入力を回収する同じ実屋根。
 方針：既構成の二辺を元の平坦核頂点の等号で照合する。
 規約：S 内の元始域頂点等号を要求しない。使われ方：元入力の値の回収。 -/
-def sourceRoof : RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
+def sourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
     (coherentNerveVertex (dgOdotDiagonalSourceInput R d))
     (squareVertex ((β_ _ _).hom ≫ pastingSquare v.rectangle.diagram 2) 0 0) := by
   rw [v.kernel_vertex]

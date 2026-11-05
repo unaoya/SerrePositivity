@@ -19,12 +19,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 local instance unitSquareFunctorZero (A X : SSet.{u}) [Quasicategory X] [HasZeroVertex X] :
-    HasZeroVertex ((ihom A).obj X) := functorHasZeroVertex A X
+    HasZeroVertex ((ihom A).obj X) := _root_.SerrePositivity.InfinityCategories.Stable.Exact.functorHasZeroVertex A X
 local instance unitSquareFunctorZeroMorphisms (A X : SSet.{u})
     [Quasicategory X] [HasZeroVertex X] : HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
   hasZeroMorphisms_ho
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
   {v : E.obj ⟶ D.obj} (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
 include hv in
@@ -45,7 +45,7 @@ lemma laxDifferenceUnitSquare_comm :
     rw [functorHomHomotopy_hom] at h
     exact (congrArg Arrow.mk h).symm.trans
       (Truncated.HomotopyCategory.congr_arrowMk_homMk _ _ rfl)
-  have hz := comp_zero_of_arrowMk_eq (laxArrowHom p q) _
+  have hz := _root_.SerrePositivity.InfinityCategories.Stable.Lax.comp_zero_of_arrowMk_eq (laxArrowHom p q) _
     (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (laxArrowHomotopy p q))) _ rfl hr (laxDifferenceUnitD_nullComposite p q a hv)
   have ht : IsZeroVertex (functorVertex

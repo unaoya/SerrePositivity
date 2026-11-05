@@ -21,16 +21,16 @@ variable {X Q : SSet.{u}} [Quasicategory Q] (q : X ⟶ Q)
 
 /-- 空間値関手 ∞ 圏での元の局所化普遍性。全写像空間の充満忠実性と実因子化から証明する。 -/
 theorem spaceLocalizationPrecomposition_isQCatEquivalence :
-    IsQCatEquivalence (spaceLocalizationPrecomposition q W hq) := by
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Stable.Transport.spaceLocalizationPrecomposition q W hq) := by
   let k := (SSet.uliftFunctor.{u + 1, u}).map q
   let V : Set (((SSet.uliftFunctor.{u + 1, u}).obj X) _⦋1⦌) := ULift.up '' W
   have hi := isFullyFaithful_fullSubcomplexOnVertices_ι
     ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj X)).obj SpaceInfinity)
     (IsInvertingFunctorVertex ((SSet.uliftFunctor.{u + 1, u}).obj X) SpaceInfinity V)
-  have hc : spaceLocalizationPrecomposition q W hq ≫
+  have hc : _root_.SerrePositivity.InfinityCategories.Stable.Transport.spaceLocalizationPrecomposition q W hq ≫
       (invertingFunctors ((SSet.uliftFunctor.{u + 1, u}).obj X) SpaceInfinity V).ι =
         (pre k).app SpaceInfinity :=
-    localizationPrecomposition_ι k V (invertsEdges_ulift q W hq.choose) SpaceInfinity
+    localizationPrecomposition_ι k V (_root_.SerrePositivity.InfinityCategories.Stable.Transport.invertsEdges_ulift q W hq.choose) SpaceInfinity
   apply isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective
   · apply hi.cancel_right
     exact Eq.mpr (congrArg (fun m => IsFullyFaithful m) hc)

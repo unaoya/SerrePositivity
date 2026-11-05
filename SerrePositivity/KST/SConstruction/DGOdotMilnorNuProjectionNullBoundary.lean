@@ -27,7 +27,7 @@ lemma dgOdotMilnorNuProjectionNullFactor_source :
   apply Subtype.ext
   exact (dgOdotMilnorNuProjectionNullHom_source R d h).trans
     (congrArg (fun x =>
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
         (Opposite.op ⦋0⦌) x) (dgOdotMilnorNuNullLowerHom_maximal R d)).symm
 
 /-- 概要：指定商比較の一端点は同じ絶対下三角形の元最大合成頂点。
@@ -41,7 +41,7 @@ lemma dgOdotMilnorNuProjectionNullFactor_target :
   apply Subtype.ext
   exact (dgOdotMilnorNuProjectionNullHom_target R d h).trans
     (congrArg (fun x =>
-      (quasicategoryCore (exactFunctors (K) (B) : SSet.{u + 1})).ι.app
+      (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (K) (B) : SSet.{u + 1})).ι.app
         (Opposite.op ⦋0⦌) x) (dgOdotMilnorNuAbsoluteLowerHom_maximal R d h)).symm
 
 end SerrePositivity.KST.SConstruction

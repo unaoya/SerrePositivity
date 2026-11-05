@@ -75,7 +75,7 @@ lemma unitPost_naturality :
   have ht := HomotopyArrow.rebase_arrow (SpectrumPostcomposition.targetPost P e) rfl
     (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge)
       (unitSecond_projection p q a b h))
-  have hl := (arrow_mk_comp_right_of_any_identity
+  have hl := (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_right_of_any_identity
     (Truncated.HomotopyCategory.homMk
       (functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.sourcePost P e)))
     (SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge P e))
@@ -98,7 +98,7 @@ lemma unitPre_naturality :
   have ht := HomotopyArrow.rebase_arrow (SpectrumPostcomposition.targetPre P e)
     (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge)
       (unitSecond_projection p q a b h)) rfl
-  have hr := (arrow_mk_comp_of_any_identity
+  have hr := (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity
     (SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge P e))
     (Truncated.HomotopyCategory.homMk
       (functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.targetPre P e)))

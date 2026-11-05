@@ -17,12 +17,12 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 /-- 概要：元 gluing の固定 ν 値から同じ実中央辺への増大屋根。
 方針：保存済み増大同値の逆を実中央辺へ合成する。
 規約：厳密 dg 逆増大を仮定しない。使われ方：中央辺の元始域回収。 -/
-def dgOdotMilnorRightAxisNuRoof : ExactMap
+def dgOdotMilnorRightAxisNuRoof : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotMilnorRightAxisInput R d)) where
-  hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
     (dgOdotMilnorRightAxisExactMap R d).hom
-  isExact := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact := by
     letI : IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
       isExactFunctor_of_isQCatEquivalence
         (dgOdotMilnorAugmentationNuEquivalence R d).symm.isQCatEquivalence

@@ -31,7 +31,7 @@ theorem idempotentCompletion_cofiberWide_discrete
           {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
       Quasicategory (M : SSet.{u}) ∧
       ∀ (x : (F2.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
-        0 < n → Subsingleton (Spectra.KanHomotopy
+        0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
           (F2.continuousKanReplacement.obj (M : SSet.{u})) n x) := by
   refine ⟨completionCofiberWide f, ?_, completionCofiberWide_quasicategory f h, ?_⟩
   · intro n s

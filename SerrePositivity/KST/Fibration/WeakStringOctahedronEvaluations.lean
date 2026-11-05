@@ -20,7 +20,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 核内の比較関手の始点は、元の第一短辺の共通 cofiber 完全関手そのもの。 -/
-lemma weakStringOctahedronSourceExact_eq {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringOctahedronSourceExact_eq {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     weakStringOctahedronSourceExact q β =
       weakStringKernelCofiber q (SimplexCategory.δ (2 : Fin 3) ≫ β) := by
@@ -43,7 +43,7 @@ lemma weakStringOctahedronSourceExact_eq {B C : StableCategory.{u}} (q : ExactMa
   exact (functorVertexEquiv (weakStringCategory q n) B.obj).symm_apply_apply _
 
 /-- 核値の cofiber 評価を含めると、元の比較列の同じ頂点が表す関手を回収する。 -/
-lemma weakStringOctahedronTargetExact_ambient {B C : StableCategory.{u}} (q : ExactMap B C)
+lemma weakStringOctahedronTargetExact_ambient {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     (weakStringOctahedronTargetExact q β).val ≫
       (closedStableInclusion (kernelClosedPredicate q)).val =
@@ -57,7 +57,7 @@ lemma weakStringOctahedronTargetExact_ambient {B C : StableCategory.{u}} (q : Ex
     (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1)
 
 /-- 核内の cofiber 評価は、第二短辺の元の共通 cofiber と全族で自然同型。 -/
-def weakStringOctahedronTargetExact_comparison {B C : StableCategory.{u}} (q : ExactMap B C)
+def weakStringOctahedronTargetExact_comparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) :
     FunctorIso (weakStringOctahedronTargetExact q β).val
       (weakStringKernelCofiber q (SimplexCategory.δ (0 : Fin 3) ≫ β)).val := by

@@ -57,7 +57,7 @@ abbrev DGNonconnectiveSuspensionComparisonTarget [Fact κ.IsRegular]
 FunctorIso は全単体を持つ図式間の可逆二胞体で、構造辺の整合を含む。 -/
 abbrev DGNonconnectiveSequenceComparisonTarget [Fact κ.IsRegular]
     (hκ : Cardinal.aleph0 < κ)
-    (Dinf : StableCategory.{max (u + 1) v} →
+    (Dinf : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} →
       ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
         (nerve SequentialIndex.{max (u + 1) v}) ⟶ Sp.{max (u + 1) v})) :=
   FunctorIso (dgNonconnectiveKFixedInputDiagram R κ hκ A)

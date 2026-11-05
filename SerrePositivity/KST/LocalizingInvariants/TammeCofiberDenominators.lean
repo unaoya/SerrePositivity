@@ -19,15 +19,15 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeCofiber_difference_inverts : InvertsEdges
-    (CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ laxDifference p q)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ laxDifference p q)
     (tammeArrowLocalizingEdges p q) := by
   have h : InvertsEdges
       ((ihom (Δ[1] : SSet.{u})).map (laxDifference p q) ≫
-        CofiberFamily.cofiber E.obj (𝟙 _)) (tammeArrowLocalizingEdges p q) := by
-    apply InvertsEdges.comp (H := CofiberFamily.cofiber E.obj (𝟙 _))
+        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj (𝟙 _)) (tammeArrowLocalizingEdges p q) := by
+    apply InvertsEdges.comp (H := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj (𝟙 _))
     rw [tammeArrowLocalizingEdges_eq_invertedDifference]
     exact Set.Subset.refl _
   unfold InvertsEdges at h ⊢
@@ -35,10 +35,10 @@ lemma tammeCofiber_difference_inverts : InvertsEdges
   exact h
 
 lemma tammeCofiber_quotient_inverts : InvertsEdges
-    (CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ tammeQuotientMap p q)
+    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _) ≫ tammeQuotientMap p q)
     (tammeArrowLocalizingEdges p q) := by
   intro s hs
-  have hd : (CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _)).app (Opposite.op ⦋1⦌) s ∈
+  have hd : (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (laxCategory p q).obj (𝟙 _)).app (Opposite.op ⦋1⦌) s ∈
       invertedEdges (laxDifference p q) :=
     (invertedEdges_comp_iff _ _ s).mp (tammeCofiber_difference_inverts p q hs)
   rw [← tammeLocalizingEdges_eq, ← tammeQuotientMap_invertedEdges] at hd

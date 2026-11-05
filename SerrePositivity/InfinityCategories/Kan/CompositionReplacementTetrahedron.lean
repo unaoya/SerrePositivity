@@ -29,23 +29,23 @@ structure CompositionReplacementTetrahedron {E : SSet.{u}} {x y z : E _⦋0⦌}
   /-- 元の全三面を保持する実三単体。 -/
   simplex : E _⦋3⦌
   /-- 元の二射の合成三角形。 -/
-  original_face : E.δ 0 simplex = original.simplex
+  original_face : E.δ 0 _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.simplex = original.simplex
   /-- 元の指定比較三角形。 -/
-  replacement_face : E.δ 2 simplex = replacement.simplex
+  replacement_face : E.δ 2 _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.simplex = replacement.simplex
   /-- 共通の恒等辺を持つ同じ退化三角形。 -/
-  unit_face : E.δ 3 simplex = (SSet.Edge.CompStruct.idComp a).simplex
+  unit_face : E.δ 3 _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.simplex = (SSet.Edge.CompStruct.idComp a).simplex
   /-- 元の二辺と指定された長辺を持つ実合成面。 -/
   triangle : SSet.Edge.CompStruct a b h
   /-- 新しい面も同じ実四面体の面そのもの。 -/
-  triangle_face : triangle.simplex = E.δ 1 simplex
+  triangle_face : _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.triangle.simplex = E.δ 1 _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.simplex
 
 /-- 元の全合成面・全指定比較面を保持して、同じ四面体の実合成面を構成する。 -/
 def compositionReplacementTetrahedron {E : SSet.{u}} [Quasicategory E]
     {x y z : E _⦋0⦌} {a : E.Edge x y} {b : E.Edge y z} {c h : E.Edge x z}
     (original : SSet.Edge.CompStruct a b c)
     (replacement : SSet.Edge.CompStruct (SSet.Edge.id x) c h) :
-    CompositionReplacementTetrahedron original replacement := by
-  let T := compositionTripleTetrahedron (SSet.Edge.CompStruct.idComp a) original replacement
+    _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron original replacement := by
+  let T := _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedron (SSet.Edge.CompStruct.idComp a) original replacement
   exact ⟨T.simplex, T.second_face, T.right_face, T.first_face, T.left, T.left_face⟩
 
 end SerrePositivity.InfinityCategories.Kan

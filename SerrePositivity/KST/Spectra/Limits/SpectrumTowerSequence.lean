@@ -26,7 +26,7 @@ noncomputable section
 使われ方：実際の塔の極限の構造射。 -/
 def towerSequenceSigma (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
-    suspension (pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k)) ⟶
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k)) ⟶
       pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space) (fun n ↦ (d n).app (k + 1)) :=
   pointedTowerLift _ _
     (fun n ↦ PointedSimplicialSet.circle.{u} ◁ pointedTowerProjection _ _ n ≫ (X n).sigma k)
@@ -42,7 +42,7 @@ def towerKanSequence (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
     [∀ n k, Fibration ((d n).app k).right] : KanSequence.{u} where
   level k := ⟨pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k),
-    FibrationTower.limit_kanComplex _ _⟩
+    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex _ _⟩
   sigma := towerSequenceSigma X d
 
 /-- 概要：Kan 列の塔の極限から指定段への厳密な射影。
@@ -65,10 +65,10 @@ def towerKanSequenceProjection (X : ℕ → KanSequence.{u})
 def towerSequenceAdjointMap (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
     pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) ⟶
-      pointedTowerLimit (fun n ↦ loopSpace ((X n).level (k + 1)).space)
+      pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((X n).level (k + 1)).space)
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} ((d n).app (k + 1))) :=
   pointedTowerLift _ _
-    (fun n ↦ pointedTowerProjection _ _ n ≫ suspensionLoopEquiv _ _ ((X n).sigma k))
+    (fun n ↦ pointedTowerProjection _ _ n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((X n).sigma k))
     (fun n ↦ by
       rw [Category.assoc, ← (d n).adjoint_comm k, ← Category.assoc,
         pointedTowerProjection_comp])
@@ -79,7 +79,7 @@ def towerSequenceAdjointMap (X : ℕ → KanSequence.{u})
 使われ方：Sp の塔の Ω 条件を塔の π_* 比較へ帰着する。 -/
 lemma towerSequenceSigma_adjoint (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n)) (k : ℕ) :
-    suspensionLoopEquiv _ _ (towerSequenceSigma X d k) ≫
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (towerSequenceSigma X d k) ≫
         (loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
           (fun n ↦ (d n).app (k + 1))).hom = towerSequenceAdjointMap X d k := by
   apply pointedTowerLimit_hom_ext

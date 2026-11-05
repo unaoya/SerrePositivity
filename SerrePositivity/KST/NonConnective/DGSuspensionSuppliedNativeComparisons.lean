@@ -69,7 +69,7 @@ theorem dgSuspensionCoherentIterationMorita_at
     (p.action.iteration R s n ≫ dgKappaNativeMoritaFamily R s).app (Opposite.op ⦋0⦌)
         (coherentNerveVertex A) =
       equivalencePathVertex
-        (stableArrow (dgKappaNativeMoritaExactMap R (dgSuspensionIteration R s A n)
+        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKappaNativeMoritaExactMap R (dgSuspensionIteration R s A n)
           (s (dgSuspensionIteration R s A n)).cone
           (s (dgSuspensionIteration R s A n)).perfect))
         (dgKappaNativeMoritaExactMap_isInvertible R (dgSuspensionIteration R s A n)

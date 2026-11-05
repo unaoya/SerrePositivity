@@ -22,15 +22,15 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
   (φ : A ⟶ RawSpectrumMapping.pointedSpace X Y.toKanSequence)
 
 local instance rightDifferenceSquareTargetKan (n : ℕ) : KanComplex
-    (PointedObject.basedHom A (PointedObject.basedHom (suspension (X.level n).space)
+    (PointedObject.basedHom A (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).right :=
-  PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
 
 /-- 全 Hom 由来の同じ実評価区間は、構造方向に一定な正方形を持つ。 -/
 def tracedActualEvaluationStructureSquare (n : ℕ) :
     SSet.Homotopy
       (((tracedActualStageEvaluationInterval X Y φ (n + 1)).basedPost
-        (PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path)
       (((tracedActualStageEvaluationInterval X Y φ n).basedPost
         (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)).path) where
@@ -98,7 +98,7 @@ def tracedActualRightDifferenceSquareData (n : ℕ) :=
 def tracedActualRightDifferenceSquare (n : ℕ) :
     SSet.Homotopy
       ((((tracedActualStageRightDifference X Y φ (n + 1)).path).basedPost
-        (PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path)
       ((((tracedActualStageRightDifference X Y φ n).path).basedPost
         (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)).path) where

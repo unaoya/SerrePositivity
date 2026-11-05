@@ -17,7 +17,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open F2.Idempotent
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "O" => verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "O" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 local notation "F" => (O) ≫ dgKInputPerfectNu R
 local notation "G" => dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R
 local notation "KIn" => dgOdotMilnorFlatKernelInput R d
@@ -27,7 +27,7 @@ local notation "PIn" => dgOdotMilnorCellInput R d
 方針：元包含・商・二零辺の指定端点付き証人を一つの frame に束ねる。
 規約：元両面と元全ホモトピーを保持。使われ方：零対角での全四角形比較。 -/
 def dgOdotMilnorActualOuterKernelFrameComparison :
-    SquareFrameHomotopy (SquareFrame.ofSquare (F)) (SquareFrame.ofSquare (G)) := by
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (F)) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (G)) := by
   let wI := dgOdotMilnorActualOuterKernelInclusionWitness R d
   let wP := dgOdotMilnorActualOuterKernelProjectionWitness R d
   let wL := dgOdotMilnorActualOuterKernelZeroLeftWitness R d
@@ -63,24 +63,24 @@ def dgOdotMilnorActualOuterKernelFrameComparison :
   have hL := wL.isInvertible hKI hZero
   have hT := wT.isInvertible hZero hTarget
   exact {
-    bottom := bH
-    right := rH
-    left := lH
-    top := tH
-    lower_left := wI.source_path.trans wL.source_path.symm
-    lower_right := wI.target_path.trans wP.source_path.symm
-    upper_left := wT.source_path.trans wL.target_path.symm
-    upper_right := wT.target_path.trans wP.target_path.symm
-    bottom_invertible := homotopyVertex_isInvertible_of_functorEdge bH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom := bH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right := rH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left := lH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top := tH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_left := wI.source_path.trans wL.source_path.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.lower_right := wI.target_path.trans wP.source_path.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_left := wT.source_path.trans wL.target_path.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.upper_right := wT.target_path.trans wP.target_path.symm
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.bottom_invertible := homotopyVertex_isInvertible_of_functorEdge bH
       ((isInvertibleEdge_congr (e := functorEdgeOfSimplicialHomotopy bH)
         (f := functorEdgeOfSimplicialHomotopy wI.homotopy) rfl).mpr hI)
-    right_invertible := homotopyVertex_isInvertible_of_functorEdge rH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.right_invertible := homotopyVertex_isInvertible_of_functorEdge rH
       ((isInvertibleEdge_congr (e := functorEdgeOfSimplicialHomotopy rH)
         (f := functorEdgeOfSimplicialHomotopy wP.homotopy) rfl).mpr hP)
-    left_invertible := homotopyVertex_isInvertible_of_functorEdge lH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.left_invertible := homotopyVertex_isInvertible_of_functorEdge lH
       ((isInvertibleEdge_congr (e := functorEdgeOfSimplicialHomotopy lH)
         (f := functorEdgeOfSimplicialHomotopy wL.homotopy) rfl).mpr hL)
-    top_invertible := homotopyVertex_isInvertible_of_functorEdge tH
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy.top_invertible := homotopyVertex_isInvertible_of_functorEdge tH
       ((isInvertibleEdge_congr (e := functorEdgeOfSimplicialHomotopy tH)
         (f := functorEdgeOfSimplicialHomotopy wT.homotopy) rfl).mpr hT) }
 
@@ -90,9 +90,9 @@ def dgOdotMilnorActualOuterKernelFrameComparison :
 def dgOdotMilnorActualOuterKernelPerfectComparison : FunctorIso (F) (G) := by
   let H := squareFrameHomotopyPostcomp
     (dgOdotMilnorActualOuterKernelFrameComparison R d) perfectStableInfinityInclusion
-  have hz : IsZeroCategory (stableObject
+  have hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject
       (squareVertex ((F) ≫ perfectStableInfinityInclusion) 0 1)) := by
-    change IsZeroCategory (perfectStableObject (squareVertex (F) 0 1))
+    change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject (squareVertex (F) 0 1))
     exact dgOdotMilnorActualOuter_perfect_zero R d
   exact perfectStableInfinityInclusion_isFullyFaithful.preimageFunctorIso
     (stableZeroSquareComparison H hz)
@@ -101,30 +101,30 @@ def dgOdotMilnorActualOuterKernelPerfectComparison : FunctorIso (F) (G) := by
 方針：既存指定三比較に同じ新全比較の三制限を合成する。
 規約：既存の元指定境界を保持。使われ方：実外周認証の境界引数。 -/
 def dgOdotMilnorActualOuterBoundary (h : DGGluingMilnorSquare R d) :
-    VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square (F) where
-  inclusion := (dgOdotMilnorKernelOuterSquareBoundary R d h).inclusion ≪≫
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square (F) where
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.inclusion := (dgOdotMilnorKernelOuterSquareBoundary R d h).inclusion ≪≫
     FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm squareBottomEdge
-  quotient := (dgOdotMilnorKernelOuterSquareBoundary R d h).quotient ≪≫
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.quotient := (dgOdotMilnorKernelOuterSquareBoundary R d h).quotient ≪≫
     FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm squareRightEdge
-  zero := (dgOdotMilnorKernelOuterSquareBoundary R d h).zero ≪≫
-    FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm verdierZeroCorner
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso.zero := (dgOdotMilnorKernelOuterSquareBoundary R d h).zero ≪≫
+    FunctorIso.precomp (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierZeroCorner
 
 /-- 概要：共通実長方形の外周の指定三境界付き全図式認証。
 方針：元厚核零化面への新全比較を保存済み絶対外周認証へ合成する。
 規約：Milnor 条件以外の入力なし。元実外周を保持する。
 使われ方：ActualRectangleInput.outerComparison への供給。 -/
 def dgOdotMilnorActualOuterSquareDiagramIso (h : DGGluingMilnorSquare R d) :
-    VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square (F)
+    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square (F)
       (dgOdotMilnorActualOuterBoundary R d h) where
-  comparison := (dgOdotMilnorKernelOuterSquareDiagramIso R d h).comparison ≪≫
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.comparison := (dgOdotMilnorKernelOuterSquareDiagramIso R d h).comparison ≪≫
     (dgOdotMilnorActualOuterKernelPerfectComparison R d).symm
-  inclusion_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.inclusion_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorKernelOuterSquareDiagramIso R d h).inclusion_eq]
     rfl
-  quotient_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.quotient_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorKernelOuterSquareDiagramIso R d h).quotient_eq]
     rfl
-  zero_eq := by
+  _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso.zero_eq := by
     rw [F2.functorIso_precomp_trans, (dgOdotMilnorKernelOuterSquareDiagramIso R d h).zero_eq]
     rfl
 

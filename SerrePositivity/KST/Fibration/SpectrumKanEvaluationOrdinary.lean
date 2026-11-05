@@ -28,8 +28,8 @@ abbrev spectrumKanEvaluationOrdinary (n : ℕ) : OmegaSpectrum.{u} ⥤ PointedKa
 /-- 元の BF 射を評価すると、同じ元の段射 app n そのものが得られる。 -/
 theorem spectrumKanEvaluationOrdinary_map (n : ℕ) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
     (spectrumKanEvaluationOrdinary n).map f = ObjectProperty.homMk (f.app n) := by
-  change strictSimplicialOrdinaryMap (spectrumKanEvaluation n) f = _
-  apply strictSimplicialOrdinaryMap_of_hom
+  change _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (spectrumKanEvaluation n) f = _
+  apply _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom
   have hf : eHomEquiv SSet f = OmegaSpectrum.vertexOfHomMap f := by
     change (SSet.unitHomEquiv _).symm
       ((SSet.unitHomEquiv _) (OmegaSpectrum.vertexOfHomMap f)) = _

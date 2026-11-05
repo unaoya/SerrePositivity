@@ -22,13 +22,13 @@ namespace SerrePositivity.KST.Fibration
 方針：元の全ホモトピーを同じ宇宙持ち上げへ送る。
 規約：元の二つの全 path 族を保持する。
 使われ方：実下側読出しへ続ける全長 Hom 比較。 -/
-def verdierReadoutUpperComparison (d : VerdierDiagram.{u}) :
+def verdierReadoutUpperComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     SSet.Homotopy
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
       ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 1)) :=
   uliftSimplicialHomotopy.{u, u + 1} (verdierOriginalFullSCoreHomotopy d 0 1)
 
-variable (d : VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)

@@ -20,20 +20,20 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 lemma tammeArrowLocalizingEdges_commonDenominator {n : ℕ}
-    {x : (stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
-    (y : Fin n → (stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
+    {x : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
+    (y : Fin n → (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
     (s : ∀ i, Truncated.Edge
-      (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) (y i) x)
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) (y i) x)
     (hs : ∀ i, (s i).edge ∈ tammeArrowLocalizingEdges p q) :
-    ∃ (a : (stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
+    ∃ (a : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
       (t : Truncated.Edge
-        (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) a x),
+        (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) a x),
       t.edge ∈ tammeArrowLocalizingEdges p q ∧
       ∃ r : ∀ i, Truncated.Edge
-        (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) a (y i),
+        (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) a (y i),
         ∀ i, (r i).edge ∈ tammeArrowLocalizingEdges p q ∧
           Nonempty (Truncated.Edge.CompStruct (r i) (s i) t) := by
   have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges
@@ -43,23 +43,23 @@ lemma tammeArrowLocalizingEdges_commonDenominator {n : ℕ}
     cofiberStableEdges_commonDenominator (tammeArrowKernel p q) y s hs'
 
 lemma tammeArrowLocalizingEdges_equalizeFinite {n : ℕ}
-    {x : (stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
-    {y z : Fin n → (stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
+    {x : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
+    {y z : Fin n → (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌}
     (f g : ∀ i, Truncated.Edge
-      (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) x (y i))
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) x (y i))
     (s : ∀ i, Truncated.Edge
-      (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) (y i) (z i))
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) (y i) (z i))
     (hs : ∀ i, (s i).edge ∈ tammeArrowLocalizingEdges p q)
     (h : ∀ i, SSet.Truncated.HomotopyCategory.homMk (f i) ≫
       SSet.Truncated.HomotopyCategory.homMk (s i) =
         SSet.Truncated.HomotopyCategory.homMk (g i) ≫
           SSet.Truncated.HomotopyCategory.homMk (s i)) :
-    ∃ (a : (stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
+    ∃ (a : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj _⦋0⦌)
       (t : Truncated.Edge
-        (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) a x),
+        (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) a x),
       t.edge ∈ tammeArrowLocalizingEdges p q ∧
       ∃ k : ∀ i, Truncated.Edge
-        (X := (truncation 2).obj (stableArrowCategory (laxCategory p q)).obj) a (y i),
+        (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj) a (y i),
         ∀ i, Nonempty (Truncated.Edge.CompStruct t (f i) (k i)) ∧
           Nonempty (Truncated.Edge.CompStruct t (g i) (k i)) := by
   have hs' : ∀ i, (s i).edge ∈ cofiberLocalizingEdges

@@ -21,12 +21,12 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Comparison
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  (h : IsVerdierSequence i q)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
 
 /-- 同じ元の core 包含・商と全 S• 零値作用を四辺に持つ、実現後の厳密四角形。 -/
 theorem quotientSKernelFullRealizationSquare :
-    CommSq (coreSFullRealizationInclusion (show StableQCat from A))
+    CommSq (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
       (simplicialDiagonalFunctor.map (coreSExactMap i))
       (simplicialDiagonalFunctor.map (zeroFunctorFullSMap
         (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
@@ -65,7 +65,7 @@ theorem quotientSKernelCornerFullSKanIso_left :
     exInfinityKanMap (simplicialDiagonalFunctor.map
       (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom))) ≫
         (quotientSKernelCornerFullSKanIso h).hom =
-      exInfinity.map (coreSFullRealizationInclusion (show StableQCat from A)) := by
+      exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) := by
   change exInfinity.map _ ≫ exInfinity.map _ = _
   rw [← Functor.map_comp, relativeSKernelSimplicialIso_realization_core]
 

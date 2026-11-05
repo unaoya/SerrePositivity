@@ -27,47 +27,47 @@ end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q}
   (D L : (Δ[1] : SSet.{u}) ⟶ B.obj)
-  {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj} (s : SquareCosliceSeed F)
-  (r : VerdierCosliceFractionNormalization h (fractionSquarePoint F) (twoArrowCosliceEdge s)
+  {F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj} (s : _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed F)
+  (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization h (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) (twoArrowCosliceEdge s)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowFirstTarget)
     ((coprod.desc D L).app (Opposite.op ⦋0⦌) twoArrowSecondTarget))
 
 /-- 同じ実分数の指定 coslice 持ち上げ二単体。 -/
 def twoArrowLiftedFractionTriangle : (Δ[2] : SSet.{u}) ⟶
-    sliceUnder (fractionSquarePoint F) := SSet.yonedaEquiv.symm r.lift.triangle.simplex
+    sliceUnder (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F) := SSet.yonedaEquiv.symm r.lift.triangle.simplex
 
 lemma twoArrowLiftedFractionTriangle_last : stdSimplex.δ (0 : Fin 3) ≫
-    twoArrowLiftedFractionTriangle D L s r = squareRightEdge ≫ s.lift := by
-  rw [twoArrowLiftedFractionTriangle, stdSimplex.δ_comp_yonedaEquiv_symm]
-  have h₀ : (sliceUnder (fractionSquarePoint F)).δ (0 : Fin 3) r.lift.triangle.simplex =
+    _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle D L s r = squareRightEdge ≫ s.lift := by
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle, stdSimplex.δ_comp_yonedaEquiv_symm]
+  have h₀ : (sliceUnder (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)).δ (0 : Fin 3) r.lift.triangle.simplex =
       (squareRightArrow s.lift).edge := r.lift.triangle.d₀
   rw [h₀, squareRightArrow_edge]
   exact SSet.yonedaEquiv.symm_apply_apply (squareRightEdge ≫ s.lift)
 
 /-- 元の全商四角形と同じ実右分数三角形を含む、指定合成三角柱。 -/
 def verdierTwoArrowQuotientPasting : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj :=
-  roofPastingPrism s.lift (twoArrowLiftedFractionTriangle D L s r)
-    (twoArrowLiftedFractionTriangle_last D L s r)
+  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism s.lift (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle D L s r)
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle_last D L s r)
 
 /-- 元の全商四角形は、同じ指定合成三角柱の元の面そのもの。 -/
 lemma verdierTwoArrowQuotientPasting_original :
-    pastingSquare (verdierTwoArrowQuotientPasting D L s r) 0 =
+    pastingSquare (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting D L s r) 0 =
       (β_ Δ[1] Δ[1]).hom ≫ F := by
-  rw [verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_original, s.projection]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_original, s.projection]
 
 /-- 終端列は、同じ実分数で最初に回収した指定商合成二単体そのもの。 -/
 lemma verdierTwoArrowQuotientPasting_top :
-    pastingTopTriangle (verdierTwoArrowQuotientPasting D L s r) =
+    pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting D L s r) =
       SSet.yonedaEquiv.symm r.triangle.simplex := by
-  rw [verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_top]
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting, _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_top]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
-  change (sliceUnderProjection (fractionSquarePoint F)).app (Opposite.op ⦋2⦌)
-    (SSet.yonedaEquiv (twoArrowLiftedFractionTriangle D L s r)) = _
-  rw [twoArrowLiftedFractionTriangle]
+  change (sliceUnderProjection (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint F)).app (Opposite.op ⦋2⦌)
+    (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle D L s r)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle]
   rw [SSet.yonedaEquiv.apply_symm_apply]
   exact r.lift.triangle_image.trans
     (SSet.yonedaEquiv.apply_symm_apply r.triangle.simplex).symm

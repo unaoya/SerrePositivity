@@ -42,17 +42,17 @@ lemma constant_kanHomotopy_subsingleton (T : Type u)
     [KanComplex ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u})]
     (n : ℕ) (hn : 0 < n)
     (x : ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u}) _⦋0⦌) :
-    Subsingleton (KanHomotopy ((Functor.const SimplexCategoryᵒᵖ).obj T) n x) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy ((Functor.const SimplexCategoryᵒᵖ).obj T) n x) := by
   cases n with
   | zero => omega
   | succ n =>
-    change Subsingleton (KanHomotopyGroup _ n x)
+    change Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup _ n x)
     constructor
     intro a b
     induction a using Quotient.inductionOn with | h a => ?_
     induction b using Quotient.inductionOn with | h b => ?_
-    change KanHomotopyGroup.mk a = KanHomotopyGroup.mk b
-    rw [constant_ptSimplex_eq T n x a, constant_ptSimplex_eq T n x b]
+    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b
+    rw [_root_.SerrePositivity.InfinityCategories.Kan.constant_ptSimplex_eq T n x a, _root_.SerrePositivity.InfinityCategories.Kan.constant_ptSimplex_eq T n x b]
 
 end SerrePositivity.InfinityCategories.Kan
 

@@ -83,11 +83,11 @@ lemma monicKPrismCompositePart_target (n : ℕ) :
       SSet.const (monicKTracedRawStageVertex F g n) ≫
         monicKTracedTripleLastPairStageMap F f z n := by
   have hp : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      fst (nerve (CoherentArrowString f)) (nerve (CoherentArrowString g)) =
+      fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
       nervePoint (coherentArrowStringDirect f) := by
     rw [compositionStringPair_first, compositionStringFirst_direct]
   have hq : nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g ≫
-      snd (nerve (CoherentArrowString f)) (nerve (CoherentArrowString g)) =
+      snd (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) =
       nervePoint (coherentArrowStringDirect g) := by
     rw [compositionStringPair_second, compositionStringSecond_direct]
   rw [monicKPrismTracedRawComposition_evaluation,

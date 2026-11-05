@@ -66,7 +66,7 @@ def dgOdotMilnorOuterMiddleValueEquivalence_native : FunctorIso
 /-- 概要：元始域屋根の指定同値を同じ完全射にする。
 方針：元全同値の完全性を束ねる。規約：同じ順方向を保持。
 使われ方：外周包含辺の全比較の始域成分。 -/
-def dgOdotMilnorOuterSourceComparison : ExactMap
+def dgOdotMilnorOuterSourceComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorSourceCellInput R d))
     (dgGluingMilnorNativeDiagonalSource R d) :=
   ⟨(dgOdotMilnorOuterSourceValueEquivalence R d).hom,
@@ -76,7 +76,7 @@ def dgOdotMilnorOuterSourceComparison : ExactMap
 /-- 概要：元中央の指定同値を同じ完全射にする。
 方針：元全同値の完全性を束ねる。規約：同じ順方向を保持。
 使われ方：外周包含・商辺で共有する中央成分。 -/
-def dgOdotMilnorOuterMiddleComparison : ExactMap
+def dgOdotMilnorOuterMiddleComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d)) (dgOdotMilnorLaxCategory R d) :=
   ⟨(dgOdotMilnorOuterMiddleValueEquivalence R d).hom,
     isExactFunctor_of_isQCatEquivalence

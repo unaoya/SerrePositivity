@@ -52,9 +52,9 @@ theorem dgKBFHomotopyFiber_negative_subsingleton_of_kZero_surjective
 /-- ν 像が Verdier 列なら、同じ固定 K 商射の実 BF fiber の全負整数群は消える。 -/
 theorem dgKBFHomotopyFiber_negative_subsingleton_of_verdier
     {P Q R : PerfDGInput.{u, v} A} (f : P ⟶ Q) (g : Q ⟶ R)
-    (h : IsVerdierSequence
-      (show ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
-      (show ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
     (j : ℤ) (hj : j < 0) :
     Subsingleton (OmegaSpectrum.homotopyGroup (dgKBFHomotopyFiber A g) j) :=
   dgKBFHomotopyFiber_negative_subsingleton_of_kZero_surjective A g

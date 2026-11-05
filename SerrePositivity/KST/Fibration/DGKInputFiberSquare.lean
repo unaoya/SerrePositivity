@@ -38,9 +38,9 @@ def dgKInputFiberPiComparison {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) (j : �
 /-- ν 像が Verdier 列なら、元の固定 K 商辺の実 Sp fiber 頂点は全負整数群が消える。 -/
 theorem dgKInputFiberSquare_negative_subsingleton_of_verdier
     {P Q R : PerfDGInput.{u, v} A} (f : P ⟶ Q) (g : Q ⟶ R)
-    (h : IsVerdierSequence
-      (show ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
-      (show ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
+    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
+      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
     (j : ℤ) (hj : j < 0) :
     Subsingleton ((SpectrumHo.piFunctor j).obj
       (squareHoVertex (dgKInputFiberSquare A g).square 0 0)) := by

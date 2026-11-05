@@ -34,8 +34,8 @@ variable {ι κ : Type v}
 使われ方：telescope の辺から偶数・奇数の頂点への射。
 -/
 def simplicialSumReindex {A : ι → SSet.{max u v}} {B : κ → SSet.{max u v}}
-    (σ : ι → κ) (f : ∀ i, A i ⟶ B (σ i)) : simplicialSum A ⟶ simplicialSum B :=
-  simplicialSumDesc (fun i => f i ≫ simplicialSumInclusion B (σ i))
+    (σ : ι → κ) (f : ∀ i, A i ⟶ B (σ i)) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum A ⟶ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum B :=
+  _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (fun i => f i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B (σ i))
 
 /--
 概要：添字を写す余積の射の成分への制限。
@@ -45,8 +45,8 @@ def simplicialSumReindex {A : ι → SSet.{max u v}} {B : κ → SSet.{max u v}}
 -/
 @[simp] theorem simplicialSumInclusion_reindex {A : ι → SSet.{max u v}}
     {B : κ → SSet.{max u v}} (σ : ι → κ) (f : ∀ i, A i ⟶ B (σ i)) (i : ι) :
-    simplicialSumInclusion A i ≫ simplicialSumReindex σ f =
-      f i ≫ simplicialSumInclusion B (σ i) := rfl
+    _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex σ f =
+      f i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B (σ i) := rfl
 
 /--
 概要：成分ごとの可換な四角形から余積の可換な四角形を得る。
@@ -59,13 +59,13 @@ theorem simplicialSumReindex_commSq {A C : ι → SSet.{max u v}}
     (a : ∀ i, A i ⟶ B (σ i)) (w : ∀ i, A i ⟶ C i)
     (v : ∀ j, B j ⟶ D j) (c : ∀ i, C i ⟶ D (σ i))
     (h : ∀ i, CommSq (a i) (w i) (v (σ i)) (c i)) :
-    CommSq (simplicialSumReindex σ a) (simplicialSumMap w)
-      (simplicialSumMap v) (simplicialSumReindex σ c) := by
+    CommSq (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex σ a) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap w)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap v) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex σ c) := by
   constructor
-  apply simplicialSum_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
   intro i
-  simp only [← Category.assoc, simplicialSumInclusion_reindex, simplicialSumInclusion_map]
-  simp only [Category.assoc, simplicialSumInclusion_reindex, simplicialSumInclusion_map]
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map]
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map]
   rw [← Category.assoc, (h i).w, Category.assoc]
 
 /--
@@ -79,8 +79,8 @@ theorem simplicialSumReindex_isPullback {A C : ι → SSet.{max u v}}
     (a : ∀ i, A i ⟶ B (σ i)) (w : ∀ i, A i ⟶ C i)
     (v : ∀ j, B j ⟶ D j) (c : ∀ i, C i ⟶ D (σ i))
     (h : ∀ i, IsPullback (a i) (w i) (v (σ i)) (c i)) :
-    IsPullback (simplicialSumReindex σ a) (simplicialSumMap w)
-      (simplicialSumMap v) (simplicialSumReindex σ c) := by
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex σ a) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap w)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap v) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex σ c) := by
   apply IsPullback.of_forall_isPullback_app
   intro d
   let ev := (evaluation SimplexCategoryᵒᵖ (Type (max u v))).obj d
@@ -115,8 +115,8 @@ theorem simplicialSumReindex_isPullback {A C : ι → SSet.{max u v}}
 -/
 theorem simplicialSumInclusion_isPullback {A B : ι → SSet.{max u v}}
     (f : ∀ i, A i ⟶ B i) (i : ι) :
-    IsPullback (simplicialSumInclusion A i) (f i)
-      (simplicialSumMap f) (simplicialSumInclusion B i) := by
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i) (f i)
+      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f) (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B i) := by
   apply IsPullback.of_forall_isPullback_app
   intro d
   apply (Types.isPullback_iff _ _ _ _).mpr

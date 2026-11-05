@@ -31,45 +31,45 @@ namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の core 商族の、指定比較一次単体と両制限を保持する実精密化。 -/
-structure VerdierFiniteCoreCoconeFamilyLift {B C : StableCategory.{u}}
-    (q : ExactMap B C) {K : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+structure VerdierFiniteCoreCoconeFamilyLift {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {K : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
     (z : B.obj _⦋0⦌)
     (G : K ⟶ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) : SSet.{u})) where
   source : (Δ[n] : SSet.{u}) ⟶ B.obj
   denominator : Truncated.Edge
     (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-    (functorVertex source) (functorVertex D)
-  denominator_mem : denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
+    (functorVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.source) (functorVertex D)
+  denominator_mem : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.denominator.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
   family : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj B.obj
-  prefix_eq : family ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
-    SSet.const (functorVertex source)
-  apex : family ≫ evaluateFunctorAt
+  prefix_eq : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app B.obj =
+    SSet.const (functorVertex _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.source)
+  apex : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ evaluateFunctorAt
     ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z
   comparison : Truncated.Edge
     (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)))
     (functorVertex (internalHomFlipHomEquiv K (join (Δ[n] : SSet.{u}) Δ[0]) C.obj
-      (family ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)))
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.family ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv K (join (Δ[n] : SSet.{u}) Δ[0]) C.obj
       (G ≫ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)).ι)))
   comparison_invertible : IsInvertibleEdge
-    (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)) comparison
+    (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj ((ihom K).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison
   comparison_prefix : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj)).app
-    (Opposite.op ⦋1⦌) comparison.edge = (spanConstantPrefixEdge K q.hom denominator).edge
-  comparison_apex : SSet.yonedaEquiv.symm comparison.edge ≫
+    (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison.edge = (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge K q.hom _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.denominator).edge
+  comparison_apex : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift.comparison.edge ≫
     (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app ((ihom K).obj C.obj) =
     curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫
       SSet.const (functorVertex (SSet.const (q.hom.app (Opposite.op ⦋0⦌) z) : K ⟶ C.obj)))
 
-variable {B C : StableCategory.{u}} {q : ExactMap B C} {K : SSet.{u}} {n : ℕ}
+variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} {K : SSet.{u}} {n : ℕ}
   {D : (Δ[n] : SSet.{u}) ⟶ B.obj} {z : B.obj _⦋0⦌}
   {G : K ⟶ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) : SSet.{u})}
 
 namespace VerdierFiniteCoreCoconeFamilyLift
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift
-variable (r : VerdierFiniteCoreCoconeFamilyLift q D z G)
+variable (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift q D z G)
 
-lemma target_inverts (_r : VerdierFiniteCoreCoconeFamilyLift q D z G) : InvertsEdges
+lemma target_inverts (_r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift q D z G) : InvertsEdges
     (G ≫ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)).ι) Set.univ := by
   intro e _
   exact (isInvertibleEdge_congr (e := (edgeOfSimplex e).map ((truncation 2).map
@@ -82,17 +82,17 @@ lemma family_inverts : InvertsEdges
   spanFunctorEdgeUnflip_invertsAllEdges r.comparison r.comparison_invertible r.target_inverts
 
 /-- 元の実全族を、同じ商後合成の strict core 逆像内で回収する。 -/
-def relativeFamily : K ⟶ (relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0]) : SSet.{u}) :=
+def relativeFamily : K ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0]) : SSet.{u}) :=
   corePreimageLift ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom) r.family r.family_inverts
 
 lemma relativeFamily_ι : r.relativeFamily ≫
-    (relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι = r.family := rfl
+    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCore q.hom (join (Δ[n] : SSet.{u}) Δ[0])).ι = r.family := rfl
 
 /-- 元の strict core 逆像の商射を始端とし、指定商族を終端とする同じ比較 prism。 -/
 def quotientHomotopy : SSet.Homotopy
-    (r.relativeFamily ≫ relativeFunctorCoreQuotient q.hom (join (Δ[n] : SSet.{u}) Δ[0])) G := by
+    (r.relativeFamily ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom (join (Δ[n] : SSet.{u}) Δ[0])) G := by
   let H := spanFunctorEdgeUnflipCoreHomotopy r.comparison r.comparison_invertible r.target_inverts
-  have hF : r.relativeFamily ≫ relativeFunctorCoreQuotient q.hom
+  have hF : r.relativeFamily ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom
       (join (Δ[n] : SSet.{u}) Δ[0]) =
       allEdgesCoreLift (r.family ≫ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).map q.hom)
         r.family_inverts := rfl
@@ -127,7 +127,7 @@ def simplexQuotientHomotopy : SSet.Homotopy
     (G ≫ quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   let H := functorHomotopyPostcomp r.quotientHomotopy
     (quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj))
-  have hs : (r.relativeFamily ≫ relativeFunctorCoreQuotient q.hom
+  have hs : (r.relativeFamily ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom
       (join (Δ[n] : SSet.{u}) Δ[0])) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj) =
       r.simplexFamily ≫ relativeFirstRowSimplexQuotient q (n + 1) := by
@@ -152,22 +152,22 @@ lemma simplexQuotientHomotopy_ι : r.simplexQuotientHomotopy.h ≫
 
 /-- 元の同じ実全族を、第一行の亜群化単位で完成する。 -/
 def completedSimplexFamily :
-    K ⟶ groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u}) :=
-  r.simplexFamily ≫ groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
+    K ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (relativeFirstRowSimplex q (n + 1) : SSet.{u}) :=
+  r.simplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (relativeFirstRowSimplex q (n + 1) : SSet.{u})
 
 /-- 元の亜群化比較の有限余錐族回収。全 Hom の充満忠実性は別の証明義務。 -/
 def completionComparisonIso : FunctorIso
-    (r.completedSimplexFamily ≫ relativeFirstRowSimplexCompletionComparison q (n + 1))
+    (r.completedSimplexFamily ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1))
     (G ≫ quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   have e := FunctorIso.precomp
-    (relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) r.simplexFamily
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) r.simplexFamily
   exact e ≪≫ functorIsoOfSimplicialHomotopy r.simplexQuotientHomotopy
 
 end VerdierFiniteCoreCoconeFamilyLift
 
 /-- 有限商余錐族を、元の strict core 逆像と同じ商射の全族比較まで実回収する。 -/
 lemma exists_verdierFiniteCoreCoconeFamilyLift
-    {A : StableCategory.{u}} {i : ExactMap A B} (h : IsVerdierSequence i q) [K.Finite]
+    {A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) [K.Finite]
     (hG : (G ≫ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)).ι) ≫
       (pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
       SSet.const (functorVertex (D ≫ q.hom)))
@@ -175,7 +175,7 @@ lemma exists_verdierFiniteCoreCoconeFamilyLift
       evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) =
       SSet.const (q.hom.app (Opposite.op ⦋0⦌) z)) :
-    Nonempty (VerdierFiniteCoreCoconeFamilyLift q D z G) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamilyLift q D z G) := by
   obtain ⟨D', t, F, l, ht, hF, hA, hi, hp, hv, _⟩ :=
     exists_verdierFiniteSimplexCoconeFamilyLift h D z
       (G ≫ (quasicategoryCore ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj)).ι) hG hz

@@ -14,10 +14,10 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}}
-  (H : SquareFrameHomotopy (SquareFrame.ofSquare f) (SquareFrame.ofSquare g))
+variable {f g : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
 
-private lemma lowerDiagonalMapEq (p : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u}) :
+private lemma lowerDiagonalMapEq (p : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) :
     stdSimplex.δ (1 : Fin 3) ≫ squareTriangle 1 ≫ p = squareDiagonal ≫ p := by
   rw [← Category.assoc, squareTriangle_diagonal]
 
@@ -41,23 +41,23 @@ def squareFrameLowerAlignedDiagonalHomotopy : SSet.Homotopy
 方針：同じ零対角上の一意性を元端点等号で輸送する。
 規約：元両二胞体と全下比較の類を保持。使われ方：同じ類を保つ代表修正。 -/
 lemma squareFrameLowerAlignedDiagonalHomotopy_class
-    (hz : IsZeroCategory (stableObject (squareVertex f 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex f 0 1))) :
     SSet.Truncated.HomotopyCategory.homMk
         ((functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H 1)).map
-          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u}))) =
+          ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))) =
       SSet.Truncated.HomotopyCategory.homMk
         (functorEdgeOfSimplicialHomotopy (squareFrameLowerAlignedDiagonalHomotopy H)) := by
   let e := (functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H 1)).map
-    ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u}))
+    ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))
   have hx := congrArg functorVertex (lowerDiagonalMapEq f)
   have hy := congrArg functorVertex (lowerDiagonalMapEq g)
   have he : e.edge = (functorEdgeOfSimplicialHomotopy
       (squareFrameTriangleDiagonalHomotopy H 1)).edge := by
-    change ((pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u}).app
+    change ((pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}).app
       (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry (squareFrameTriangleHomotopy H 1).h)) = _
     rw [← SSet.yonedaEquiv_comp]
     change SSet.yonedaEquiv (curry (squareFrameTriangleHomotopy H 1).h ≫
-      (pre (stdSimplex.δ (1 : Fin 3))).app StableInfinity.{u}) = _
+      (pre (stdSimplex.δ (1 : Fin 3))).app _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) = _
     rw [curry_pre_app]
     rfl
   have hl := InfinityCategories.homMk_transport hx hy e
@@ -75,7 +75,7 @@ lemma squareFrameLowerAlignedDiagonalHomotopy_class
 方針：元の対角制限を同じ類の指定代表へ厳密に修正する。
 規約：元両二単体・元下全比較の類を同時保持。使われ方：元全四角形比較。 -/
 lemma exists_squareFrameAlignedLowerTriangle
-    (hz : IsZeroCategory (stableObject (squareVertex f 0 1))) :
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex f 0 1))) :
     ∃ J : SSet.Homotopy (squareTriangle 1 ≫ f) (squareTriangle 1 ≫ g),
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ J.h =
           (squareFrameTriangleDiagonalHomotopy H 0).h ∧

@@ -27,52 +27,52 @@ end SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
     (q.hom.app (Opposite.op ⦋0⦌) z)}
   {G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj}
-  {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+  {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
 
 local notation "P" => S.toSSet ⊗ (Δ[1] : SSet)
 local notation "J" => join (Δ[n] : SSet) Δ[0]
 
-variable {c : VerdierRecoveredInitialComparison r U}
+variable {c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison r U}
 
 /-- 同じ元の評価像と単位 Homotopy で結ばれ、実境界では元の商射と厳密一致する全族。 -/
-structure VerdierCompletedCylinderImage (X : VerdierRecoveredCompletedCylinder c) where
+structure VerdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder c) where
   whole : K ⊗ (Δ[1] : SSet.{u}) ⟶
     (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj) : SSet.{u})
   homotopy : SSet.Homotopy
-    (X.homotopy.h ≫ relativeFirstRowSimplexCompletionComparison q (n + 1)) whole
-  start_eq : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ whole =
+    (X.homotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole
+  start_eq : (SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole =
     c.simplexFamily ≫ relativeFirstRowSimplexQuotient q (n + 1)
-  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ whole =
+  boundary_eq : (S.ι ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole =
     r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1)
   start_unit_eq : ((SSet.ι₀ : K ⟶ K ⊗ (Δ[1] : SSet.{u})) ▷
-      (Δ[1] : SSet.{u})) ≫ homotopy.h =
+      (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy.h =
     (c.simplexFamily ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
-        (relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
-  boundary_unit_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h =
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
+  boundary_unit_eq : ((S.ι ▷ (Δ[1] : SSet.{u})) ▷ (Δ[1] : SSet.{u})) ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy.h =
     (r.simplexCylinder ▷ (Δ[1] : SSet.{u})) ≫
       (FunctorIso.simplicialHomotopy
-        (relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
+        (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))).h
 
 /-- 元の全単位の前合成を使い、完成像を元の実商境界へ同時に合わせる。 -/
-lemma exists_verdierCompletedCylinderImage (X : VerdierRecoveredCompletedCylinder c) :
-    Nonempty (VerdierCompletedCylinderImage X) := by
+lemma exists_verdierCompletedCylinderImage (X : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder c) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage X) := by
   let E := (relativeFirstRowSimplex q (n + 1) : SSet.{u})
   let Z := (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj) : SSet.{u})
   let Q := relativeFirstRowSimplexQuotient q (n + 1)
-  let e := groupoidCompletionMap E
-  let p := relativeFirstRowSimplexCompletionComparison q (n + 1)
+  let e := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap E
+  let p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1)
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) S.ι
     (stdSimplex.δ (1 : Fin 2))
   have hL : pp.inl ≫ pp.ι = K ◁ stdSimplex.δ (1 : Fin 2) := pp.inl_ι
@@ -113,7 +113,7 @@ lemma exists_verdierCompletedCylinderImage (X : VerdierRecoveredCompletedCylinde
   have hX : pp.ι ≫ (X.homotopy.h ≫ p) = R ≫ (e ≫ p) := by
     simpa only [Category.assoc] using congrArg (fun t => t ≫ p) hXraw
   let Hunit := FunctorIso.simplicialHomotopy
-    (relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1))
   let Hraw := functorHomotopyPrecomp Hunit R
   let H : SSet.Homotopy (pp.ι ≫ (X.homotopy.h ≫ p)) (R ≫ Q) :=
     { h := Hraw.h, h₀ := Hraw.h₀.trans hX.symm, h₁ := Hraw.h₁, rel := Hraw.rel }

@@ -39,14 +39,14 @@ variable {A X : SSet.{u}} (k : (Δ[1] : SSet.{u}) ⟶ A) (H : A ⊗ Δ[1] ⟶ X)
 
 lemma upper_restriction : SSet.yonedaEquiv (squareTriangle 0 ≫ (k ▷ Δ[1]) ≫ H) =
     F2.homotopyEdgeTriangleUpper H (SSet.yonedaEquiv k) := by
-  rw [SSet.yonedaEquiv_comp, upper_coordinates]
+  rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.upper_coordinates]
   exact congrArg (fun v ↦ H.app (Opposite.op ⦋2⦌)
     (v, (Δ[1] : SSet.{u}).σ 1 (SSet.yonedaEquiv (𝟙 Δ[1]))))
       (SSet.σ_naturality_apply k 0 (SSet.yonedaEquiv (𝟙 Δ[1])))
 
 lemma lower_restriction : SSet.yonedaEquiv (squareTriangle 1 ≫ (k ▷ Δ[1]) ≫ H) =
     F2.homotopyEdgeTriangleLower H (SSet.yonedaEquiv k) := by
-  rw [SSet.yonedaEquiv_comp, lower_coordinates]
+  rw [SSet.yonedaEquiv_comp, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonal.lower_coordinates]
   exact congrArg (fun v ↦ H.app (Opposite.op ⦋2⦌)
     (v, (Δ[1] : SSet.{u}).σ 0 (SSet.yonedaEquiv (𝟙 Δ[1]))))
       (SSet.σ_naturality_apply k 1 (SSet.yonedaEquiv (𝟙 Δ[1])))

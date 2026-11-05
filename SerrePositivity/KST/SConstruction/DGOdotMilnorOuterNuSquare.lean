@@ -23,13 +23,13 @@ local notation "hC" => dgKInputStableValue_isIdempotentComplete R _
 /-- 概要：元実外周の零左辺の同じ固定 ν 完全射。
 方針：元全対象商包含を同じ ν で写す。規約：元零角を保持。
 使われ方：元外周の指定零左側面。 -/
-def dgOdotMilnorOuterNullLeftMap : ExactMap (Src) (Z) :=
+def dgOdotMilnorOuterNullLeftMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Src) (Z) :=
   dgKInputNuMap R (dgFixedNullLeft R (A := dgOdotMilnorSourceCellInput R d))
 
 /-- 概要：元実外周の零上辺の同じ固定 ν 完全射。
 方針：元二つの実零化延長の同じ合成を写す。規約：元合成を保持。
 使われ方：元外周の指定零上側面。 -/
-def dgOdotMilnorOuterNullTopMap : ExactMap (Z) (Q) :=
+def dgOdotMilnorOuterNullTopMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) (Q) :=
   dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorSourceKernelNullContracted R d) ≫
     dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))
 

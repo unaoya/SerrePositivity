@@ -33,10 +33,10 @@ end SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryComparison
 namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 open SerrePositivity.KST.LocalizingInvariants
 
-variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-  {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+  {h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}} {S : K.Subcomplex}
-  {a : S.toSSet ⟶ verdierDenominatorSpanFamily i
+  {a : S.toSSet ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z}
   {f : K ⟶ intervalMappingSpace
     (q.hom.app (Opposite.op ⦋0⦌)
@@ -49,27 +49,27 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 /-- 同じ実前段辺と同じ分数比較辺を制限に持つ、実境界円柱の全図式比較。 -/
 structure VerdierRecoveredBoundaryComparison
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f)
     (U : VerdierRecoveredQuotientCoconeCylinder r G) where
   edge : Truncated.Edge (X := (truncation 2).obj ((ihom J).obj ((ihom P).obj C.obj)))
     (functorVertex (internalHomFlipHomEquiv P J C.obj
       (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)))
     (functorVertex (internalHomFlipHomEquiv P J C.obj ((S.ι ▷ Δ[1]) ≫ U.whole)))
-  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom P).obj C.obj)) edge
+  isInvertible : IsInvertibleEdge (X := (ihom J).obj ((ihom P).obj C.obj)) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge
   prefix_eq : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app ((ihom P).obj C.obj)).app
-      (Opposite.op ⦋1⦌) edge.edge =
+      (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge.edge =
     (((squareLeftArrow r.cylinderSquare).map ((truncation 2).map
       ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))).edge)
-  last_eq : ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app ((ihom P).obj C.obj)).app
-      (Opposite.op ⦋1⦌) edge.edge =
+  last_eq : ((pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app ((ihom P).obj C.obj)).app
+      (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison.edge.edge =
     (((functorEdgeOfSimplicialHomotopy r.boundaryFractionHomotopy).map ((truncation 2).map
       ((pre (joinStdSimplexIso 0 0).hom).app ((ihom P).obj C.obj)))).edge)
 
 /-- 回収済みの同じ二つの全円柱へ共有全経路を実代入し、指定二胞体を保持して貼る。 -/
 lemma exists_verdierRecoveredBoundaryComparison
-    (r : VerdierFiniteMappingCoconeRecovery h D z S a f)
+    (r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f)
     (U : VerdierRecoveredQuotientCoconeCylinder r G) :
-    Nonempty (VerdierRecoveredBoundaryComparison r U) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) := by
   let F := internalHomFlipHomEquiv P J C.obj (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)
   let T := internalHomFlipHomEquiv P J C.obj ((S.ι ▷ Δ[1]) ≫ U.whole)
   let A₀ := (squareLeftArrow r.cylinderSquare).map ((truncation 2).map
@@ -112,10 +112,10 @@ lemma exists_verdierRecoveredBoundaryComparison
     rw [hTp]
     exact congrArg functorVertex hc.symm
   let A' := (SSet.Edge.ofTruncated A₀).ofEq hAs hAt
-  let V := r.boundary.h ≫ verdierSpanEvaluationSquare h
+  let V := r.boundary.h ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare h
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z
   have hFn : r.cylinder.homotopy.h ≫ (ihom J).map q.hom ≫
-      (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
       (V ≫ (pre squareBottomEdge).app C.obj) ≫ (pre (joinStdSimplexIso 0 0).hom).app C.obj := by
     rw [(pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).naturality q.hom,
       ← Category.assoc, r.cylinder.homotopy_next]
@@ -123,57 +123,57 @@ lemma exists_verdierRecoveredBoundaryComparison
     simp only [Category.assoc]
     have he := congrArg (fun g => r.boundary.h ≫ g ≫
       (pre (joinStdSimplexIso 0 0).hom).app C.obj)
-      (verdierSpanEvaluationSquare_bottom h
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_bottom h
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
     simp only [Category.assoc] at he
     rw [he]
-    simp only [verdierSpanFamilyNumeratorArrow, Category.assoc]
+    simp only [_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow, Category.assoc]
     rw [(pre (joinStdSimplexIso 0 0).hom).naturality q.hom]
   have hTn : ((S.ι ▷ Δ[1]) ≫ U.whole) ≫
-      (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
+      (pre (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]))).app C.obj =
       (V ≫ (pre squareTopEdge).app C.obj) ≫ (pre (joinStdSimplexIso 0 0).hom).app C.obj := by
     dsimp only [V]
     simp only [Category.assoc]
     have he := congrArg (fun g => r.boundary.h ≫ g ≫
       (pre (joinStdSimplexIso 0 0).hom).app C.obj)
-      (verdierSpanEvaluationSquare_top h
+      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_top h
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
     simp only [Category.assoc] at he
     rw [he]
     simpa only [Category.assoc] using U.boundary_next
-  have hFB : joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ F =
+  have hFB : joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ F =
       (joinStdSimplexIso 0 0).hom ≫
         internalHomFlipHomEquiv P Δ[1] C.obj (V ≫ (pre squareBottomEdge).app C.obj) := by
     dsimp only [F]
     rw [← internalHomFlipHomEquiv_pre_app, Category.assoc, hFn,
       internalHomFlipHomEquiv_pre_app]
-  have hTB : joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ T =
+  have hTB : joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ T =
       (joinStdSimplexIso 0 0).hom ≫
         internalHomFlipHomEquiv P Δ[1] C.obj (V ≫ (pre squareTopEdge).app C.obj) := by
     dsimp only [T]
     rw [← internalHomFlipHomEquiv_pre_app, hTn, internalHomFlipHomEquiv_pre_app]
   have hBs : functorVertex ((joinStdSimplexIso 0 0).hom ≫
       internalHomFlipHomEquiv P Δ[1] C.obj (V ≫ (pre squareBottomEdge).app C.obj)) =
-      functorVertex (joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ F) := by
+      functorVertex (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ F) := by
     rw [hFB]
   have hBt : functorVertex ((joinStdSimplexIso 0 0).hom ≫
       internalHomFlipHomEquiv P Δ[1] C.obj (V ≫ (pre squareTopEdge).app C.obj)) =
-      functorVertex (joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ T) := by
+      functorVertex (joinMap (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n) (𝟙 Δ[0]) ≫ T) := by
     rw [hTB]
   let B' := (SSet.Edge.ofTruncated B₀).ofEq hBs hBt
   have hab : SSet.yonedaEquiv.symm A'.edge ≫
-      (pre (simplexLastPoint n)).app ((ihom P).obj C.obj) =
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app ((ihom P).obj C.obj) =
       SSet.yonedaEquiv.symm B'.edge ≫
         (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app ((ihom P).obj C.obj) := by
     change SSet.yonedaEquiv.symm A₀.edge ≫
-      (pre (simplexLastPoint n)).app ((ihom P).obj C.obj) =
+      (pre (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint n)).app ((ihom P).obj C.obj) =
       SSet.yonedaEquiv.symm (((pre (joinStdSimplexIso 0 0).hom).app ((ihom P).obj C.obj)).app
         (Opposite.op ⦋1⦌) (functorEdgeOfSimplicialHomotopy r.boundaryFractionHomotopy).edge) ≫
         (pre (joinInl (Δ[0] : SSet.{u}) Δ[0])).app ((ihom P).obj C.obj)
     rw [← SSet.yonedaEquiv_symm_comp, Category.assoc, ← NatTrans.comp_app,
       ← pre_map, joinStdSimplexIso_zero_inl]
     exact r.boundaryFractionComparison_sharedSource.symm
-  obtain ⟨l, hlp, hln⟩ := exists_simplexAttachmentComparison n F T A'.toTruncated
+  obtain ⟨l, hlp, hln⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentComparison n F T A'.toTruncated
     B'.toTruncated hab
   have hai : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj C.obj))
       A'.toTruncated :=
@@ -184,36 +184,36 @@ lemma exists_verdierRecoveredBoundaryComparison
     (isInvertibleEdge_congr (e := B₀) (f := B'.toTruncated) rfl).mp
       (r.boundaryFractionComparison_isInvertible.map
         ((pre (joinStdSimplexIso 0 0).hom).app ((ihom P).obj C.obj)))
-  have hli := simplexAttachmentComparison_isInvertible n l
+  have hli := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible n l
     ((isInvertibleEdge_congr hlp).mpr hai) ((isInvertibleEdge_congr hln).mpr hbi)
   exact ⟨⟨l, hli, hlp, hln⟩⟩
 
 def VerdierRecoveredBoundaryComparison.iso
-    {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+    {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
     {U : VerdierRecoveredQuotientCoconeCylinder r G}
-    (c : VerdierRecoveredBoundaryComparison r U) :
+    (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     FunctorIso (r.cylinder.homotopy.h ≫ (ihom J).map q.hom) ((S.ι ▷ Δ[1]) ≫ U.whole) := by
   have := c.isInvertible
-  exact spanFunctorIsoUnflip (asIso (Truncated.HomotopyCategory.homMk c.edge))
+  exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoUnflip (asIso (Truncated.HomotopyCategory.homMk c.edge))
 
 namespace VerdierRecoveredBoundaryComparison
 open _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison
-variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
+variable {r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
-  (c : VerdierRecoveredBoundaryComparison r U)
+  (c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U)
 
-lemma target_inverts (_c : VerdierRecoveredBoundaryComparison r U) :
+lemma target_inverts (_c : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) :
     InvertsEdges ((S.ι ▷ Δ[1]) ≫ U.whole) Set.univ := by
-  have hc := (invertsAllEdges_toKan ((S.ι ▷ Δ[1]) ≫ U.coreWhole)).comp
+  have hc := (_root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan ((S.ι ▷ Δ[1]) ≫ U.coreWhole)).comp
     (quasicategoryCore ((ihom J).obj C.obj)).ι
   simpa only [Category.assoc, U.coreWhole_ι] using hc
 
 /-- 同じ全比較辺を、元の実 core 円柱と商 core 円柱の間の同じ全 prism に戻す。 -/
 def coreHomotopy : SSet.Homotopy
-    (r.relativeCylinder ≫ relativeFunctorCoreQuotient q.hom J)
+    (r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J)
     ((S.ι ▷ Δ[1]) ≫ U.coreWhole) := by
   let H := spanFunctorEdgeUnflipCoreHomotopy c.edge c.isInvertible c.target_inverts
-  have hF : r.relativeCylinder ≫ relativeFunctorCoreQuotient q.hom J =
+  have hF : r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J =
       allEdgesCoreLift (r.cylinder.homotopy.h ≫ (ihom J).map q.hom)
         (spanFunctorEdgeUnflip_invertsAllEdges c.edge c.isInvertible c.target_inverts) := rfl
   have hG : allEdgesCoreLift ((S.ι ▷ Δ[1]) ≫ U.whole) c.target_inverts =
@@ -233,7 +233,7 @@ def simplexQuotientHomotopy : SSet.Homotopy
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   let H := functorHomotopyPostcomp c.coreHomotopy
     (quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj))
-  have hs : (r.relativeCylinder ≫ relativeFunctorCoreQuotient q.hom J) ≫
+  have hs : (r.relativeCylinder ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.relativeFunctorCoreQuotient q.hom J) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj) =
       r.simplexCylinder ≫ relativeFirstRowSimplexQuotient q (n + 1) := by
     apply (cancel_mono (quasicategoryCore ((ihom (Δ[n + 1] : SSet.{u})).obj C.obj)).ι).mp
@@ -251,13 +251,13 @@ lemma simplexQuotientHomotopy_ι : c.simplexQuotientHomotopy.h ≫
 
 /-- 元の亜群化比較上の、構成済み境界二胞体から得られる同じ全関手同型。 -/
 def completionComparisonIso : FunctorIso
-    ((r.simplexCylinder ≫ groupoidCompletionMap
+    ((r.simplexCylinder ≫ _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
       (relativeFirstRowSimplex q (n + 1) : SSet.{u})) ≫
-      relativeFirstRowSimplexCompletionComparison q (n + 1))
+      _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison q (n + 1))
     (((S.ι ▷ Δ[1]) ≫ U.coreWhole) ≫
       quasicategoryCoreMap ((pre (joinStdSimplexIso n 0).inv).app C.obj)) := by
   have e := FunctorIso.precomp
-    (relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) r.simplexCylinder
+    (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_unitIso q (n + 1)) r.simplexCylinder
   exact e ≪≫ functorIsoOfSimplicialHomotopy c.simplexQuotientHomotopy
 
 end VerdierRecoveredBoundaryComparison
@@ -269,20 +269,20 @@ lemma exists_verdierFiniteCoconeBoundaryRecovery [K.Finite] [S.toSSet.Finite]
       SSet.const (functorVertex (D ≫ q.hom)))
     (hz : G ≫ evaluateFunctorAt ((joinInr (Δ[n] : SSet.{u}) Δ[0]).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const (q.hom.app (Opposite.op ⦋0⦌) z))
-    (ha : a ≫ verdierDenominatorSpanCanonicalComparison i
+    (ha : a ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison i
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z ≫
-      fixedFractionEvaluation q.hom (weakEquivalences i) h.inverts
+      fixedFractionEvaluation q.hom (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) h.inverts
         (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z =
-      S.ι ≫ spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz) :
-    ∃ r : VerdierFiniteMappingCoconeRecovery h D z S a
-        (spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz),
+      S.ι ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz) :
+    ∃ r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery h D z S a
+        (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz),
       ∃ U : VerdierRecoveredQuotientCoconeCylinder r G,
-        Nonempty (VerdierRecoveredBoundaryComparison r U) := by
-  let fG := spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz
-  obtain ⟨r⟩ := exists_verdierFiniteMappingCoconeRecovery h D z S a fG ha
-  have hGe := spanCoconeLastMapping_edge (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison r U) := by
+  let fG := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz
+  obtain ⟨r⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteMappingCoconeRecovery h D z S a fG ha
+  have hGe := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping_edge (D ≫ q.hom) (q.hom.app (Opposite.op ⦋0⦌) z) G hG hz
   obtain ⟨U⟩ := exists_verdierRecoveredQuotientCoconeCylinder r G hG hGe
-  exact ⟨r, U, exists_verdierRecoveredBoundaryComparison r U⟩
+  exact ⟨r, U, _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRecoveredBoundaryComparison r U⟩
 
 end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
 
