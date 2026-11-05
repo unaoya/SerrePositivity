@@ -1,11 +1,22 @@
 # 調整（段階 II）
 
 作成：2026-11-05（整理の期間の調整役が書き直した）。整理の期間（段階 I、10-31〜11-05）の暦・待ち条件・経過は [archive/coordination-stage-i.md](archive/coordination-stage-i.md)。
-**段階 II の正本は [段階 II の計画](stage-ii-plan-draft.md)**（いまは下書き。新しい調整役がユーザーと確定する）。本書はその運用の規則と、各レーンの現状だけを持つ。
+**段階 II の正本は [段階 II の計画](stage-ii-plan-draft.md)**（11-05 夜に確定）。本書はその運用の規則と、各レーンの現状だけを持つ。
 
 ## 1. レーン
 
-段階 II のレーンの構成は計画の §5 で決める（未確定）。整理の期間のレーンはすべて閉じた（∞ 整理は片付け C1〜C3 の後に閉じる）。決まったら、ここにレーンごとの担当・worktree・枝・入口を表にする。
+段階 II のレーンは計画の §5.1 で確定した（11-05 夜）。開始文は調整役が書き、どれにも「F-2 の改名表 `scripts/refactor/targets/f-namespace-map.json`」「main を取り込んでから始める」「本書 §2 の規則」を入れる。
+
+| レーン | 道具 | 担当 | worktree・枝 | 入口 | 検収 |
+| --- | --- | --- | --- | --- | --- |
+| 調整役 | Claude Code | 暦・合図・取り込み、∞ と K の検収 | main | 計画・本書 | — |
+| BS 設計 | Claude Code | 目標 A の設計・drafts・BS 実装の指示書 | main に直接（`--only`） | `bhatt-scholze/design-status.md` §0 | ユーザー |
+| ① ∞ 中核 | Codex | M1・M2・M7・M8、L4 | `SerrePositivity-inf-core`・`math/inf-core` | 調整役の指示書（未作成） | 調整役 |
+| ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10・G8 の一般形 | `SerrePositivity-inf-supply`・`math/inf-supply` | `infinity-g2-progress.md` の末尾、`infinity-codex-g2-finish.md` | 調整役 |
+| ⑤ BS 実装 | Codex | BS-W11 → drafts の移植 | 一度に一つ（BS 設計が決める） | `bhatt-scholze/bhatt-scholze-codex-w11.md` | BS 設計 |
+| ⑥ K の準備 | Codex | 公理 (3) の再確認 → KST §5 のスキーム補題 | `SerrePositivity-k-prep`・`math/k-prep` | 調整役の指示書（未作成） | 調整役 |
+
+後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
 
 ## 2. ビルドの規則
 
@@ -24,9 +35,20 @@
 
 ## 3. 暦
 
-段階 II の全ビルドの予定はまだない。新しい調整役が、レーンが決まった後に書く。
+全ビルド（下流・verify）の予定はまだない。各レーンの最初の束が見えたところで書く。
+
+| 時期 | 内容 |
+| --- | --- |
+| 11-06〜 | ①③⑤⑥と BS 設計の開始。小さなビルドは §2-4a |
+| ③の G8 の四角形の取り込み | BS に知らせる（S4 の生成辺）。④を開く |
+| 段 G の最初の区切り（目安 12 月上旬） | 保守の束：L1（F-2 の deprecated alias の一括削除）・L2（旧 G8 の削除）。BS・③・KST が新しい名前へ移ったのを確かめてから。担当は①か② |
+| ①の M1・M2・M7 の取り込み | L4（分数の一般版）を①の中で。K 理論レーン（B-3〜）を開く |
+| ②を開くとき | L3（M16） |
+| 余裕のあるとき・該当部分を触るとき | L5（台帳 R60 の大きな処置、R78）、L6（DG の D6〜D8、Asymptotic の商） |
 
 ## 4. 各レーンの現状
+
+段階 I のレーン（すべて閉じた）と段階 II のレーン：
 
 | レーン | 状態 |
 | --- | --- |
@@ -34,6 +56,7 @@
 | ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
 | BS 設計・BS 実装 | 閉じた。新しいチャットで始める（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
+| 段階 II の新しいレーン（①③⑤⑥・BS 設計） | 11-05 夜：計画の確定。開始文は調整役が作成中 |
 
 ## 5. 段階 I から引き継ぐ要点
 
