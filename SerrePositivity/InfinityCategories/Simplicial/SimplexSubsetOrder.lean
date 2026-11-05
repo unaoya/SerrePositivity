@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial
+open CategoryTheory _root_.Simplicial
 
 /-- 元の有限部分集合の全頂点を、同じ昇順の標準単体から列挙する単調写像。 -/
 def simplexSubsetOrder {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :

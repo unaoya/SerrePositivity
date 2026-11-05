@@ -24,6 +24,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 namespace SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
@@ -89,7 +90,7 @@ def equivalence : QCatEquivalence X X where
   invHomIso := (FunctorIso.precomp (canonicalIso X) (suspensionQCatEquivalence X).inv) ≪≫
     (suspensionQCatEquivalence X).invHomIso
 
-def inverseExactMap (A : StableCategory.{u}) : ExactMap A A :=
+def inverseExactMap (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A A :=
   ⟨(equivalence A.obj).inv,
     isExactFunctor_of_isQCatEquivalence (equivalence A.obj).symm.isQCatEquivalence⟩
 

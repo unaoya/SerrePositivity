@@ -19,6 +19,7 @@ open CategoryTheory Opposite
 namespace SerrePositivity.KST.Spectra.SequentialMittagLeffler
 end SerrePositivity.KST.Spectra.SequentialMittagLeffler
 namespace SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.SequentialMittagLeffler
 
 noncomputable section
@@ -53,7 +54,7 @@ end SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler
 public section
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection_comp := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection_comp
@@ -62,7 +63,7 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.even
 deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.exists_compatible_family := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.exists_compatible_family
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._f := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._f := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._f
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._proof_1
@@ -74,7 +75,7 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.even
 deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._proof_3
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._sunfold
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.SequentialMittagLeffler.eventualSection._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler.eventualSection._unsafe_rec

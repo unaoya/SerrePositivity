@@ -23,9 +23,10 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 end SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 
-instance instCategory : Category VerdierDiagram.{u} where
+instance instCategory : Category _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} where
   Hom D E := FunctorHom D.square E.square
   id D := 𝟙 (HomotopyCategory.mk (functorVertex D.square))
   comp f g := f ≫ g

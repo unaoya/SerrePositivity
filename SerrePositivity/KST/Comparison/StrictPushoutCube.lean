@@ -21,7 +21,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：単射な脚を持つ単体集合の pushout の可換な立方体では、後ろ二面の引き戻しが前二面へ移る。
@@ -49,24 +49,24 @@ theorem doubleMappingCylinderMap_strictCube {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')
     (hf : c ≫ f' = f ≫ a) (hg : c ≫ g' = g ≫ b)
-    (h₁ : IsPullback (cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (cylinderEndpoints C'))
+    (h₁ : IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map c c) (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C'))
     (h₂ : IsPullback (coprod.map f g) (coprod.map c c) (coprod.map a b) (coprod.map f' g')) :
-    IsPullback (doubleMappingCylinder_middle f g) (c ▷ Δ[1])
-        (doubleMappingCylinderMap f g f' g' c a b hf hg) (doubleMappingCylinder_middle f' g') ∧
-    IsPullback (pushout.inr (cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
-        (doubleMappingCylinderMap f g f' g' c a b hf hg)
-        (pushout.inr (cylinderEndpoints C') (coprod.map f' g')) := by
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g) (c ▷ Δ[1])
+        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg) (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f' g') ∧
+    IsPullback (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)) (coprod.map a b)
+        (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg)
+        (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g')) := by
   apply strictPushoutCube
-    (IsPushout.of_hasPushout (cylinderEndpoints C') (coprod.map f' g'))
-    (IsPushout.of_hasPushout (cylinderEndpoints C) (coprod.map f g))
+    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g'))
+    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g))
     (coprod.map c c) (c ▷ Δ[1]) (coprod.map a b)
-    (doubleMappingCylinderMap f g f' g' c a b hf hg) h₁ h₂
-  · exact ⟨doubleMappingCylinder_middle_map f g f' g' c a b hf hg⟩
+    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf hg) h₁ h₂
+  · exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map f g f' g' c a b hf hg⟩
   · refine ⟨?_⟩
     apply coprod.hom_ext
-    · simpa only [doubleMappingCylinder_left, Category.assoc, coprod.inl_map_assoc] using
-        doubleMappingCylinder_left_map f g f' g' c a b hf hg
-    · simpa only [doubleMappingCylinder_right, Category.assoc, coprod.inr_map_assoc] using
-        doubleMappingCylinder_right_map f g f' g' c a b hf hg
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left, Category.assoc, coprod.inl_map_assoc] using
+        _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map f g f' g' c a b hf hg
+    · simpa only [_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right, Category.assoc, coprod.inr_map_assoc] using
+        _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map f g f' g' c a b hf hg
 
 end SerrePositivity.KST.Comparison

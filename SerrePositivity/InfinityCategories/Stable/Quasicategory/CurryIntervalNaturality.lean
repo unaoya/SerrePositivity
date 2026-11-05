@@ -75,13 +75,14 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CurryInterval
 end SerrePositivity.KST.LocalizingInvariants.CurryInterval
 namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryInterval
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.CurryInterval
 
 variable {A X : SSet.{u}}
 
 def horizontal (F : A ⊗ Δ[1] ⟶ X) : SSet.Homotopy
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ F)
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ F) where
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ F)
+    (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ F) where
   h := F
   h₀ := rfl
   h₁ := rfl

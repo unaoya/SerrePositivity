@@ -13,7 +13,7 @@ namespace SerrePositivity.KST.SConstruction
 end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
-open CategoryTheory Simplicial SSet
+open CategoryTheory _root_.Simplicial SSet
 
 /-- 元の区間 [a,b] の局所番号を、元の標準単体の頂点番号へ戻す順序包含。 -/
 def simplexIntervalOrder {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :

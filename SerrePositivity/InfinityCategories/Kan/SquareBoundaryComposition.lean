@@ -20,6 +20,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SquareBoundary
 end SerrePositivity.KST.Spectra.SquareBoundary
 namespace SerrePositivity.InfinityCategories.Kan.SquareBoundary
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.SquareBoundary
 
 /-- 正方形の指定した隅。 -/
@@ -28,19 +29,19 @@ abbrev corner (i j : Fin 2) : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌ :=
 
 /-- 上側の三角形の元の左辺。 -/
 def left : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 0) (corner 0 1) :=
-  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map SquareTriangles.upper).ofEq rfl rfl
+  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
 
 /-- 上側の三角形の元の上辺。 -/
 def top : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 1) (corner 1 1) :=
-  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map SquareTriangles.upper).ofEq rfl rfl
+  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl
 
 /-- 下側の三角形の元の下辺。 -/
 def bottom : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 0 0) (corner 1 0) :=
-  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map SquareTriangles.lower).ofEq rfl rfl
+  ((SimplexEdges.edge (0 : Fin 3) 1 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
 
 /-- 下側の三角形の元の右辺。 -/
 def right : ((Δ[1] : SSet.{u}) ⊗ Δ[1]).Edge (corner 1 0) (corner 1 1) :=
-  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map SquareTriangles.lower).ofEq rfl rfl
+  ((SimplexEdges.edge (1 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq rfl rfl
 
 /-- 元の left 辺の Yoneda 射は、同じ座標辺の包含。 -/
 lemma left_yoneda : SSet.yonedaEquiv.symm left.edge =
@@ -84,9 +85,9 @@ lemma top_yoneda : SSet.yonedaEquiv.symm top.edge =
 
 /-- 二つの三角形の対角辺は、同じ元の一単体。 -/
 lemma diagonal_edge :
-    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.upper).ofEq
+    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
       (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) =
-    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.lower).ofEq
+    (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower).ofEq
       (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) := by
   apply SSet.Edge.ext
   apply Prod.ext
@@ -102,10 +103,10 @@ lemma composition {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
     SSet.HomotopyCategory.homMk (left.map q) ≫
       SSet.HomotopyCategory.homMk (top.map q) := by
   have hu : SSet.Edge.CompStruct left top
-      (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.upper).ofEq
+      (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq
         (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) :=
     ((SimplexEdges.compStruct (0 : Fin 3) 1 2 (by decide) (by decide)).map
-      SquareTriangles.upper).ofEq rfl rfl rfl
+      _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper).ofEq rfl rfl rfl
   have hl : SSet.Edge.CompStruct bottom right
       (((SimplexEdges.edge (0 : Fin 3) 2 (by decide)).map SquareTriangles.upper).ofEq
         (show _ = corner 0 0 from rfl) (show _ = corner 1 1 from rfl)) :=

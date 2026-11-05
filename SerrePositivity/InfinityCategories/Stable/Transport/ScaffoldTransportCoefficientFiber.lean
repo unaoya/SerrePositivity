@@ -49,7 +49,7 @@ open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の係数値から、同じ scaffold の埋め込みを通って共通全空間に入る。 -/
 def coefficientEmbedding (c : I) :
@@ -66,7 +66,7 @@ def coefficientBase (c : I) :
 
 /-- 同じ係数値上では共通底は元の指定頂点に厳密に定値。 -/
 theorem coefficientEmbedding_over (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentBase =
+    (coefficientEmbedding s) c ≫ s.toStrictTransportComparisonSpan.coherentBase =
       coefficientBase (p := p) c := by
   rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentBase,
     ← Functor.map_comp, Category.assoc, s.embedding_over,
@@ -82,7 +82,7 @@ def coefficientRelativeEvaluation (c : I) (v : (leftStrictTransport p c) _⦋0�
   relativeFunctorOverPre (leftUnstraighteningProjection (leftCoherentTransport p))
     (Over.homMk (U := Over.mk (coefficientBase (p := p) c))
       (V := Over.mk s.toStrictTransportComparisonSpan.coherentBase)
-      (s.coefficientEmbedding c) (s.coefficientEmbedding_over c)) ≫
+      ((coefficientEmbedding s) c) ((coefficientEmbedding_over s) c)) ≫
     relativeFunctorEvaluate (leftUnstraighteningProjection (leftCoherentTransport p))
       (coefficientBase (p := p) c) (ULift.up v)
 

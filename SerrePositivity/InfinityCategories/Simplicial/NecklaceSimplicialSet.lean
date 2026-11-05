@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories.Simplicial
 open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
 open SerrePositivity.KST.SConstruction.NecklaceShape
-open CategoryTheory Opposite Simplicial SSet
+open CategoryTheory Opposite _root_.Simplicial SSet
 
 /-- 元の necklace を、同じ全頂点の標準単体内の部分複体として作る。 -/
 def subcomplex (T : NecklaceShape) : (Δ[T.vertexMax] : SSet.{u}).Subcomplex where

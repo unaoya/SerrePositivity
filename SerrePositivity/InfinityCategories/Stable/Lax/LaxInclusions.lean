@@ -39,9 +39,10 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 end SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 namespace SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
-variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def zeroC : D.obj ⟶ C.obj := SSet.const (chosenZeroVertex C.obj).vertex
 def zeroD : C.obj ⟶ D.obj := SSet.const (chosenZeroVertex D.obj).vertex

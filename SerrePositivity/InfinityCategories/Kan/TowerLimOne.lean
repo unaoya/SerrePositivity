@@ -18,6 +18,7 @@ universe u
 namespace SerrePositivity.KST.Spectra.TowerLimOne
 end SerrePositivity.KST.Spectra.TowerLimOne
 namespace SerrePositivity.InfinityCategories.Kan.TowerLimOne
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.TowerLimOne
 
 noncomputable section
@@ -115,7 +116,7 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_eq_point := _
 deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_twist := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_twist
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier_projection := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier_projection
@@ -142,13 +143,13 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist_nullifier 
 deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.twist_one := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.twist_one
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._f := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._f := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._f
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._proof_1
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._sunfold
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.nullifier._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.nullifier._unsafe_rec

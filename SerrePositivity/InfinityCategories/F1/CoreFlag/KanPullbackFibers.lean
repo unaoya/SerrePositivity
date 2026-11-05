@@ -21,8 +21,9 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag
 namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.CoreFlag
-open Spectra
+open SerrePositivity.KST.Spectra
 
 variable {P X E B : SSet.{u}} {q : P ⟶ X} {s : P ⟶ E} {g : X ⟶ B} {p : E ⟶ B}
 
@@ -38,7 +39,7 @@ lemma pullback_basepoint (h : IsPullback q s g p) (a : P _⦋0⦌) :
 
 /-- 厳密引き戻しの二つの fiber は、元の基点において同型。 -/
 def pullbackFiberIso (h : IsPullback q s g p) (a : P _⦋0⦌) :
-    KanFiber q (q.app _ a) ≅ KanFiber p (p.app _ (s.app _ a)) := by
+    _root_.SerrePositivity.InfinityCategories.Kan.KanFiber q (q.app _ a) ≅ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ (s.app _ a)) := by
   have hb := pullback_basepoint h a
   let f : KanFiber q (q.app _ a) ⟶ KanFiber p (p.app _ (s.app _ a)) :=
     fiberLift p _ (fiberι q _ ≫ s) (by
@@ -66,21 +67,21 @@ def pullbackFiberIso (h : IsPullback q s g p) (a : P _⦋0⦌) :
 
 @[reassoc (attr := simp)]
 lemma pullbackFiberIso_hom_ι (h : IsPullback q s g p) (a : P _⦋0⦌) :
-    (pullbackFiberIso h a).hom ≫ fiberι p _ = fiberι q _ ≫ s := by
-  simp only [pullbackFiberIso, fiberLift_ι]
+    (pullbackFiberIso h a).hom ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p _ = _root_.SerrePositivity.InfinityCategories.Kan.fiberι q _ ≫ s := by
+  simp only [pullbackFiberIso, _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι]
 
 /-- 元の fiber の包含の零次成分は単射。 -/
 lemma fiber_vertex_ext {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
-    {v w : (KanFiber p b) _⦋0⦌} (hv : (fiberι p b).app _ v = (fiberι p b).app _ w) :
+    {v w : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p b) _⦋0⦌} (hv : (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ v = (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p b).app _ w) :
     v = w := by
   apply SSet.yonedaEquiv.symm.injective
-  apply fiber_hom_ext p b
+  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p b
   apply SSet.yonedaEquiv.injective
   simpa only [yonedaEquiv_comp, Equiv.apply_symm_apply] using hv
 
 @[simp]
 lemma pullbackFiberIso_point (h : IsPullback q s g p) (a : P _⦋0⦌) :
-    (pullbackFiberIso h a).hom.app _ (fiberPoint q a) = fiberPoint p (s.app _ a) := by
+    (pullbackFiberIso h a).hom.app _ (fiberPoint q a) = _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p (s.app _ a) := by
   apply fiber_vertex_ext p _
   rw [← ConcreteCategory.comp_apply, ← NatTrans.comp_app, pullbackFiberIso_hom_ι]
   change s.app _ ((fiberι q _).app _ (fiberPoint q a)) = _

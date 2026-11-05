@@ -31,8 +31,9 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
 end SerrePositivity.KST.LocalizingInvariants.IdentityLax
 namespace SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable (Q : StableCategory.{u})
+variable (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
 
 def identityAdjunction : QCatAdjunction (𝟙 Q.obj) (𝟙 Q.obj) :=
   Bicategory.Adjunction.id (qcatOf Q.obj)

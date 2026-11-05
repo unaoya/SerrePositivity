@@ -22,8 +22,9 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag
 namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.CoreFlag
-open Spectra
+open SerrePositivity.KST.Spectra
 
 /-- StrictSegal な単体集合の二以上の境界定数単体は定数単体そのもの。 -/
 lemma strictSegal_ptSimplex_eq_const (X : SSet.{u}) [X.IsStrictSegal]
@@ -45,10 +46,10 @@ lemma strictSegal_ptSimplex_eq_const (X : SSet.{u}) [X.IsStrictSegal]
 /-- StrictSegal な Kan 複体の二以上の実次数のホモトピー類は一意。 -/
 lemma strictSegal_kanHomotopy_subsingleton (X : SSet.{u}) [KanComplex X]
     [X.IsStrictSegal] (n : ℕ) (hn : 1 < n) (x : X _⦋0⦌) :
-    Subsingleton (KanHomotopy X n x) := by
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x) := by
   constructor
   intro a b
-  obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective n a
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
   obtain ⟨t, rfl⟩ := KanHomotopy.mk_surjective n b
   rw [strictSegal_ptSimplex_eq_const X n hn x s,
     strictSegal_ptSimplex_eq_const X n hn x t]

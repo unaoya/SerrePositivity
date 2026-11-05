@@ -22,6 +22,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FibrationTower
 end SerrePositivity.KST.Spectra.FibrationTower
 namespace SerrePositivity.InfinityCategories.Kan.FibrationTower
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.FibrationTower
 
 variable (X : ℕ → SSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
@@ -234,7 +235,7 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit._proof_
 deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection._proof_1
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._f := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._f := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f
 
 @[deprecated (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_1
@@ -252,7 +253,7 @@ deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof
 deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_5
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages.match_1 (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages.match_1

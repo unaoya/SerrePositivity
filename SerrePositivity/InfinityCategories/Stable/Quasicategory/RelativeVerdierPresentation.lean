@@ -23,16 +23,17 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 
-variable {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u})
+variable {S : SSet.{u + 1}} (ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})
 
 /-- 実際の像の二辺と零角から、同じ源四角形の相対証明書を作る。 -/
-def ofSquare (d : VerdierSequence.{u})
+def ofSquare (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (hb : squareBottomEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge)
-    (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (stableArrow d.projection).edge)
-    (hz : IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1))) :
+    (hb : squareBottomEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
+    (hr : squareRightEdge ≫ F ≫ ν = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (stableObject (squareVertex (F ≫ ν) 0 1))) :
     RelativeVerdierDiagram ν where
   square := F
   image := {
@@ -55,11 +56,11 @@ def ofSquare (d : VerdierSequence.{u})
     zero_corner := hz }
   image_eq := rfl
 
-@[simp] lemma ofSquare_square (d : VerdierSequence.{u})
+@[simp] lemma ofSquare_square (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
     (ofSquare ν d F hb hr hz).square = F := rfl
 
-@[simp] lemma ofSquare_sequence (d : VerdierSequence.{u})
+@[simp] lemma ofSquare_sequence (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S) (hb hr hz) :
     (ofSquare ν d F hb hr hz).image.toVerdierSequence = d := rfl
 
@@ -103,7 +104,7 @@ lemma exists_coherentSquare_of_comm {C : Type v} [Category.{u} C] [SimplicialCat
   exact ⟨F, hb, hr, hl, ht⟩
 
 /-- 源内の零化と ν の元の二射を、同じ四辺の相対 Verdier 提示へ接続する。 -/
-lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
+lemma exists_of_source_comm [Quasicategory S] (d : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u})
     {a b z c : S _⦋0⦌}
     (i : Truncated.Edge (X := (truncation 2).obj S) a b)
     (q : Truncated.Edge (X := (truncation 2).obj S) b c)
@@ -112,10 +113,10 @@ lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
     (h : Truncated.HomotopyCategory.homMk i ≫ Truncated.HomotopyCategory.homMk q =
       Truncated.HomotopyCategory.homMk l ≫ Truncated.HomotopyCategory.homMk r)
     (hi : SSet.yonedaEquiv.symm i.edge ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.inclusion).edge)
     (hq : SSet.yonedaEquiv.symm q.edge ≫ ν =
-      SSet.yonedaEquiv.symm (stableArrow d.projection).edge)
-    (hz : IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.projection).edge)
+    (hz : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) z))) :
     ∃ t : RelativeVerdierDiagram ν, t.image.toVerdierSequence = d ∧
       squareBottomEdge ≫ t.square = SSet.yonedaEquiv.symm i.edge ∧
       squareRightEdge ≫ t.square = SSet.yonedaEquiv.symm q.edge ∧

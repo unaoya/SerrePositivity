@@ -21,7 +21,7 @@ end SerrePositivity.KST.SConstruction
 namespace SerrePositivity.InfinityCategories.Kan
 open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open Comparison SerrePositivity.InfinityCategories
+open SerrePositivity.KST.Comparison SerrePositivity.InfinityCategories
 open scoped _root_.Simplicial
 
 /-- 中間の指定頂点を通って左から右へ横断する円筒の辺。 -/

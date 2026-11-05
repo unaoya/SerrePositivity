@@ -13,6 +13,7 @@ public import Mathlib.Data.List.Basic
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
 end SerrePositivity.KST.SConstruction.NecklaceShape
 namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 標準 bead の有限列を、元の有限 joints の反復 wedge として読む。 -/
@@ -98,10 +99,10 @@ deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_singleton := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_singleton
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold (since := "2026-11-05")]
-deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._sunfold := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._sunfold := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold
 
 @[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec (since := "2026-11-05")]
 deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec

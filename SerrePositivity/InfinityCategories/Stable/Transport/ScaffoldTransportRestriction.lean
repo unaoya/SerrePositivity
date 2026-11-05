@@ -44,7 +44,7 @@ open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
-  {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
+  {p : E ⟶ nerve I} [LeftFibration p] (s : _root_.SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan p)
 
 /-- 元の scaffold の同じ埋め込みを宇宙持ち上げする。 -/
 def coherentEmbedding :
@@ -54,14 +54,14 @@ def coherentEmbedding :
 
 /-- 元の scaffold 上への source 脚の厳密な制限。 -/
 theorem coherentEmbedding_source :
-    s.coherentEmbedding ≫ s.toStrictTransportComparisonSpan.coherentSource =
+    (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentSource =
       (SSet.uliftFunctor.{u + 1, u}).map (universalScaffold p) := by
   rw [coherentEmbedding, StrictTransportComparisonSpan.coherentSource,
     ← Functor.map_comp, s.source_restriction]
 
 /-- weighted 比較への因子分解も、元の taut scaffold 上で厳密に回収する。 -/
 theorem coherentEmbedding_target :
-    s.coherentEmbedding ≫ s.toStrictTransportComparisonSpan.coherentTarget =
+    (coherentEmbedding s) ≫ s.toStrictTransportComparisonSpan.coherentTarget =
       (SSet.uliftFunctor.{u + 1, u}).map (tautScaffold (leftStrictTransportDiagram p)) ≫
         leftCoherentTransportComparison p := by
   rw [coherentEmbedding, StrictTransportComparisonSpan.coherentTarget,

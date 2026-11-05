@@ -81,6 +81,7 @@ open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
 end SerrePositivity.KST.Spectra.BoundaryNormalization
 namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
@@ -149,7 +150,7 @@ theorem exists_normalization {X : SSet.{u}} [KanComplex X] (n : ℕ)
     ∃ (x : X _⦋0⦌) (g : (boundary.{u} (n + 1) : SSet.{u}) ⟶ X),
       inclusion n ≫ g = SSet.const x ∧ Nonempty (SSet.Homotopy f g) := by
   let i := inclusion.{u} n
-  let x := (i ≫ f).app _ (LastHornContraction.vertex n)
+  let x := (i ≫ f).app _ (_root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex n)
   let H : SSet.Homotopy (i ≫ f) (SSet.const x) := by
     simpa only [Category.id_comp, SSet.const_comp] using
       HomotopyClasses.postHomotopy (i ≫ f) (LastHornContraction.homotopy n)

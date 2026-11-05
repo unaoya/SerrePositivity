@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：恒等な枝を持つ標準四角形を作る座標射影。
 方針：false は縦座標、true は横座標を使う。
@@ -83,8 +83,8 @@ instance identitySpanFamily_mono (b : Bool) (C : SSet.{u}) : Mono (identitySpanF
 方針：座標射影による辺の族を押し出し図式の全部分複体へ持ち上げる。
 規約：個々の対象での選択を使わない。使われ方：指定した正規化の境界データ。 -/
 def identityPushoutFamily (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    (ihom (Δ[1] : SSet.{u})).obj C ⟶ pushoutDiagrams C :=
-  fullSubcomplexLift IsPushoutDiagramVertex ((pre (identityPushoutShape b)).app C) (by
+    (ihom (Δ[1] : SSet.{u})).obj C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
+  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex ((pre (identityPushoutShape b)).app C) (by
     intro v
     obtain ⟨g, rfl⟩ := (functorVertexEquiv (Δ[1] : SSet.{u}) C).surjective v
     change IsPushoutSquare ((functorVertexEquiv _ C).symm
@@ -96,14 +96,14 @@ def identityPushoutFamily (b : Bool) (C : SSet.{u}) [Quasicategory C] :
 方針：全部分複体への持ち上げの包含の式。
 規約：全単体での厳密等号。使われ方：正規化した四角形の回収。 -/
 lemma identityPushoutFamily_ι (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    identityPushoutFamily b C ≫ (fullSubcomplexOnVertices _ IsPushoutDiagramVertex).ι =
+    identityPushoutFamily b C ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι =
       (pre (identityPushoutShape b)).app C := rfl
 
 /-- 概要：標準押し出しの族は恒等な枝を持つ入力 span を回収する。
 方針：内部 Hom の前合成の合成則。
 規約：全単体での厳密等号。使われ方：相対切断の延長の可換条件。 -/
 lemma identityPushoutFamily_projection (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    identityPushoutFamily b C ≫ pushoutProjection C = identitySpanFamily b C := by
+    identityPushoutFamily b C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = identitySpanFamily b C := by
   rw [pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
     ← NatTrans.comp_app, ← pre_map]
   rfl

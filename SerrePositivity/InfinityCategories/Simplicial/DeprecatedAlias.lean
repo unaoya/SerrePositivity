@@ -47,7 +47,7 @@ elab mods:declModifiers "deprecated_alias " oldStx:ident " := " newStx:ident : c
         if noncomp then .noncomputable
         else if isMarkedMeta env name then .meta
         else dm.computeKind
-      isUnsafe := dm.isUnsafe || ci.isUnsafe }
+      isUnsafe := dm.isUnsafe || ci.isUnsafe || ci.isPartial }
     unless dm.isInferredPublic env do throwError "deprecated_alias requires public visibility"
     let currentNamespace ← getCurrNamespace
     let written := oldStx.getId

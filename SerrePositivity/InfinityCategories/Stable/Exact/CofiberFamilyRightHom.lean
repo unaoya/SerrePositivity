@@ -68,6 +68,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
@@ -90,7 +91,7 @@ lemma rightArrow_target : rightArrow X a ≫
 
 def rightHomotopy : SSet.Homotopy
     (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) where
-  h := (arrowFamilyHomotopy (rightArrow X a)).h
+  h := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).h
   h₀ := by
     rw [(arrowFamilyHomotopy (rightArrow X a)).h₀]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
@@ -99,7 +100,7 @@ def rightHomotopy : SSet.Homotopy
     rw [(arrowFamilyHomotopy (rightArrow X a)).h₁]
     exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
       (rightArrow_target X a)
-  rel := (arrowFamilyHomotopy (rightArrow X a)).rel
+  rel := (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.arrowFamilyHomotopy (rightArrow X a)).rel
 
 def rightHom : FunctorHom
     (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) :=
