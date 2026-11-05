@@ -153,7 +153,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 - 区切り 2b（HA の DerivedCompletion）：HA の第二層（DerivedCompletion の BS 向けファイル、Pair の置き換え、PD の d = 0 の整理、導来テンソルの一本化、§3.7）。
   中身の書き換えが大きいので、先に worktree で準備し、作業時間には取り込みと全依存ビルドだけを行う。
 
-**段階 3：大きな一般化**（段階 1・2 の後に費用対効果を見て判断）
+**段階 3：大きな一般化**（段階 1・2 の後に費用対効果を見て判断）。B4（Pair の Principal の反復への置き換え）は完了（2026-11-04）。下の残り 3 項目は段階 II の計画（[stage-ii-plan-draft.md](stage-ii-plan-draft.md)）の保守と K 理論の節で扱う（2026-11-05）
 有限位数の作用とテンソル冪（§6.5・§4.4.5、HA の CochainTensor の Mathlib 化）、Asymptotic の商の二本立ての一本化（§7.5）、PC の K₀ のモデルの
 一本化（§4.2.3）。
 
@@ -165,17 +165,18 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 
 | 範囲 | 状態 |
 | --- | --- |
+| **全体** | **区切りはすべて完了**（2026-11-04：2a 590c4eff7・2b 08a2997fd・段階 3 の B4 3de4d3ba9 を main に取り込み済み）。段階 3 の残り（有限位数の作用とテンソル冪・Asymptotic の商の二本立ての一本化・PC の K₀ のモデルの一本化）は段階 II の計画（[stage-ii-plan-draft.md](stage-ii-plan-draft.md)）の保守と K 理論の節へ移した。このレーンは閉じた（2026-11-05） |
 | LinearAlgebra・FieldTheory・RingTheory | 見直し完了（2026-10-29） |
 | CommutativeAlgebra の G・A・F・C1〜C3・B1・B2 | 完了（§2.1） |
 | 段階 0 の区切り 0 | 完了（65f178a5b・7820689c7、追加分 8 本も完了） |
 | 区切り 1-1（CT トップ階層・CA の E・D・X・H の BS に依存しない部分・Inputs の包み・Paper の一般論の一部） | 完了（2026-10-30、記録は下の表と「区切り 1-1 で見送った項目」） |
-| CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
+| CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 完了（区切り 2a） |
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
-| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で完了。全ビルドと verify は 11-04 未明に PASS（gate:true、監査 99/99、f3daa70ad。記録は下の「区切り 2a の記録」）。取り込み待ち |
-| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドと verify は 11-04 に PASS（gate:true、監査 99/99、48ec4a1b7）。取り込み待ち |
-| HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
+| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | 完了（2026-11-04、verify PASS gate:true 99/99、main 590c4eff7。記録は下の「区切り 2a の記録」） |
+| 区切り 2b（HA の DerivedCompletion の第二層） | 完了（2026-11-04、A・B1〜B3・B4a、verify PASS gate:true 99/99、main 08a2997fd。B4 の本体は段階 3 として 2026-11-04 に完了、main 3de4d3ba9。記録は下の「区切り 2b の記録」） |
+| HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 区切り 1-2〜2b で完了。残る大きな一般化は段階 II へ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
 区切りごとの記録（ファイル数・行数の前後）：
