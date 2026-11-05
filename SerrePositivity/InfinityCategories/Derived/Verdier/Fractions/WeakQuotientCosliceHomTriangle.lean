@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass
 public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 
 /-- 同じ小さい fiber 点を pointed-space で表示した射の類の等式は、元の実 fiber 点の同型へ戻る。 -/
@@ -57,4 +62,28 @@ def weakQuotientCosliceTriangle_of_identity_hom
     (smallUnstraighteningFiberIsoOfPointHomEq _ _
       ((weakQuotientCosliceCompositePoint_normalized_hom h x).symm.trans he))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberIsoOfPointHomEq._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.smallUnstraighteningFiberIsoOfPointHomEq._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceTriangle_of_identity_hom._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceTriangle_of_identity_hom._proof_2

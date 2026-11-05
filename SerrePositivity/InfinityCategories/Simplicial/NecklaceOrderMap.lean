@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplicialSet
 
 /-! # bead 条件を保つ単調写像の単体的作用
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplicialSe
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 open CategoryTheory Simplicial SSet
 
 /-- 全単体の bead 条件を保つ順序写像の、元の実単体集合への作用。 -/
@@ -44,4 +49,22 @@ lemma orderMap_constant {T U : NecklaceShape} (f : T.Vertex →o U.Vertex)
   intro i
   rfl
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_constant := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap_constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_vertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.orderMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.orderMap._proof_2

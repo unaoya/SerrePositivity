@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- core による豊穣移送の頂点は元の完全関手の頂点を保つ。 -/
 lemma stableHomVertex_val {A B : StableCategory.{u}} (F : ExactMap A B) :
@@ -69,4 +74,43 @@ lemma stableArrow_homMk_eq_of_functorIso {A B : StableCategory.{u}}
   coherentNerveEdge_homMk_eq_of_enrichedVertexIso (C := StableQCat.{u})
     (exactMapCoreVertexIso h)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrow_homMk_eq_of_functorIso := _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrow_homMk_eq_of_functorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableHomVertex_val := _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableHomVertex_val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_6 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_7 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_8 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreVertexIso._proof_9 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreVertexIso._proof_9

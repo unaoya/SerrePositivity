@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation
 
 /-!
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FramedSquare
+end SerrePositivity.KST.Spectra.FramedSquare
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
+open SerrePositivity.KST.Spectra.FramedSquare
 
 /-- 元の左辺が定値なら、その一単体は元の基点で退化する。 -/
 lemma left_constant_edge {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
@@ -80,4 +85,16 @@ lemma difference
   rw [← hi, ← bottom_eq q r x y q00 q10 r00 r10 hb]
   exact hq
 
-end SerrePositivity.KST.Spectra.FramedSquare
+end SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom_eq := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.difference := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.difference
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.left_constant_edge := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left_constant_edge

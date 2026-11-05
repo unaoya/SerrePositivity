@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {K X : SSet.{u}} {n : ℕ}
 
 /-- 元の全余錐族の終端脚を、その全一次単体のまま回収する。 -/
@@ -119,4 +124,37 @@ lemma spanCoconeLastMapping_edge (D : (Δ[n] : SSet.{u}) ⟶ X) (z : X _⦋0⦌)
     spanCoconeLastArrow, Category.assoc, ← NatTrans.comp_app, ← pre_map,
     ← Category.assoc, Iso.hom_inv_id, Category.id_comp]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeFamily_apex_of_lastArrow := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeFamily_apex_of_lastArrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_source := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow_target_eq := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow_target_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping_edge := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastArrow.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanCoconeLastMapping.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanCoconeLastMapping.eq_1

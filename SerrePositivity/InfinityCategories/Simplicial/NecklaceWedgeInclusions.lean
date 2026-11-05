@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructure
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 対象等号による necklace 射は、全単体の元の全頂点番号を保つ。 -/
@@ -104,4 +109,40 @@ lemma necklaceEqToHom_simplex_val {T U : Necklace.{u}} (h : T = U) {n : ℕ}
   exact necklaceEqToHom_simplex_val
     (necklace_eq_of_shape T.down.wedge_single_zero) _ i
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inl_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inl_inl_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inr := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inr_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_inl_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceEqToHom_simplex_val := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceEqToHom_simplex_val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl_assoc

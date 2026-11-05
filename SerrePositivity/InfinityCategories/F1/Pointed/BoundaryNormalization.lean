@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -74,9 +76,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.KST.Spectra.BoundaryNormalization
+namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
 
@@ -173,4 +178,40 @@ theorem exists_filler_of_homotopy {X : SSet.{u}} [KanComplex X] (n : ℕ)
 
 end
 
-end SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_homotopy := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_homotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_normalization := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_normalization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.hornFace_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.hornFace_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.hornFace_inclusion_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.horn_le_boundary := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.horn_le_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_mono := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion_ι_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.normalized_face := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.normalized_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.inclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.inclusion._proof_1

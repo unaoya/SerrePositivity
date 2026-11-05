@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FiberTriangle
+end SerrePositivity.KST.Spectra.FiberTriangle
+namespace SerrePositivity.InfinityCategories.Kan.FiberTriangle
+open SerrePositivity.KST.Spectra.FiberTriangle
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -91,4 +96,61 @@ def reduce [Fibration p] (hi : PtSimplex.MulStruct ia (a 0) .const 0)
   · exact output_face hi hb T φ hφ
 
 end
-end SerrePositivity.KST.Spectra.FiberTriangle
+end SerrePositivity.InfinityCategories.Kan.FiberTriangle
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.compatible := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face_comp := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.output_face := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduced := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduce._simp_1 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduce._simp_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.reduced.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.reduced.eq_1

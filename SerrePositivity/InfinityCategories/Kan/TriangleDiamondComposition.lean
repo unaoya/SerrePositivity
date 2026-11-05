@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondTransport
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 
@@ -12,8 +14,11 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 指定した四辺を持ち、同じ実対角辺に合成する二つの実三角形。 -/
 structure CompositionDiamond {E : SSet.{u}} {x m n z : E _⦋0⦌}
@@ -55,4 +60,115 @@ def TriangleDiamondData.ofEq {E : SSet.{u}} {a b c d a' b' c' d' : E _⦋1⦌}
   second_upper := T.second_upper.trans hd
   diagonal := T.diagonal
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.diagonal := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.diagonal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.first := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.first
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.rec := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.second := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.second
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq := _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.triangleDiamondCompositionData._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData._proof_9
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.TriangleDiamondData.ofEq._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.ofEq._proof_4

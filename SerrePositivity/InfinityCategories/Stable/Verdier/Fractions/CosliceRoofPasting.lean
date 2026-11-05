@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Coslice
 public import SerrePositivity.InfinityCategories.Core.GridOpposite
 public import SerrePositivity.InfinityCategories.Core.Join
@@ -32,9 +34,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 両座標の反転をまとめた標準格子の同型。 -/
 def roofGridReverseIso (m n : ℕ) :
@@ -246,4 +251,76 @@ lemma roofPastingPrism_top {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
     ← SSet.opFunctor.map_comp, pastingCornerGlue_bottom]
   exact roofReverseSimplex_double (X := sliceUnder a) σ
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofGridReverseIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofGridReverseIso := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofGridReverseIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofGridReverseIso_hom_map := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofGridReverseIso_hom_map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCornerInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingCornerInclusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCornerInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingCosliceDiagram := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrism := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrismIso := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrismIso_inr := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrism_original := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_original
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrism_top := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrism_top
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingSquareInclusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingSquareInclusion_corner := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion_corner
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingTriangleInclusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingTriangleInclusion_corner := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion_corner
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofReverseSimplex := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofReverseSimplex_double := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseSimplex_double
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofReverseSquare_bottom := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseSquare_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofReverseTriangle_last := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofReverseTriangle_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingCornerInclusion.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCornerInclusion.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingCosliceDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingCosliceDiagram._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingCosliceDiagram._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingPrismIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingPrismIso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingSquareInclusion.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingSquareInclusion.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.roofPastingTriangleInclusion.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.roofPastingTriangleInclusion.eq_1

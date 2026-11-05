@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
 public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Verdier
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma invertedEdges_eq_cofiber_kernel {A T B : StableCategory.{u}}
     (i : ExactMap A T) (q : ExactMap T B)
@@ -44,4 +49,13 @@ theorem isVerdierSequence_of_adjoint {A T B : StableCategory.{u}}
     rw [← invertedEdges_eq_cofiber_kernel i q hk]
     exact AdjointLocalization.isLocalization a
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Verdier
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.invertedEdges_eq_cofiber_kernel := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.isVerdierSequence_of_adjoint := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.isVerdierSequence_of_adjoint

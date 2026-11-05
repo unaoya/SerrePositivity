@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
@@ -10,9 +12,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 端点の関手表示と指定同型の HEq は、同じ頂点評価でも保たれる。 -/
 theorem functorIsoValue_heq_of_heq {K Y : SSet.{u}} {F G F' G' : K ⟶ Y}
@@ -74,4 +79,25 @@ theorem functorIsoValue_precomp {A B Y : SSet.{u}} {F G : B ⟶ Y}
   exact eq_of_heq (h.trans ((heq_of_eq hc).trans
     (hp.trans (functorIsoValue_heq_map e (q.app (Opposite.op ⦋0⦌) a)).symm)))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.curry_vertex_functorVertex := _root_.SerrePositivity.InfinityCategories.F1.Transport.curry_vertex_functorVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIsoValue_curry_heq_precomp := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_curry_heq_precomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIsoValue_heq_map := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIsoValue_heq_of_heq := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_heq_of_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIsoValue_point_heq := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_point_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIsoValue_precomp := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIsoValue_precomp

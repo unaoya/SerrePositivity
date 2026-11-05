@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+open SerrePositivity.KST.Spectra.SkeletalCellAttachment
 
 noncomputable section
 
@@ -46,4 +51,19 @@ theorem cell_characteristicMap_ι (K : SSet.{u}) (d : ℕ)
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_attachingMap_ι := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_attachingMap_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_attachingMap_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_attachingMap_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_characteristicMap_ι := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_characteristicMap_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cell_characteristicMap_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cell_characteristicMap_ι_assoc

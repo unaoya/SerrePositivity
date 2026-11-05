@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom
 public import SerrePositivity.InfinityCategories.F1.Transport.WitnessDiagram
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 variable {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (e : E _⦋0⦌)
 
@@ -64,4 +69,25 @@ theorem transportWitnessPointHom_naturality {v w : (transportWitnessSpace p) _�
   pointedFamilyPointHom_naturality_over (transportWitnessPointedEvaluation p e)
     (transportWitnessDiagramEvaluation p e) (transportWitnessPointedEvaluation_projection p e) m
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramEvaluation := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramEvaluation_vertex := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramEvaluation_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessPointHom_naturality := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointHom_naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessPointedEvaluation := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessPointedEvaluation_projection := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessPointedEvaluation_vertex := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessPointedEvaluation_vertex

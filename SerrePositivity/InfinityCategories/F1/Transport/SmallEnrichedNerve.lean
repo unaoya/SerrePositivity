@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentFullSubcategoryRestriction
 
@@ -10,6 +12,9 @@ universe u v w
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 小さい対象間の豊穣関手は、対象作用とそれを固定した Hom 作用の組へ単射で入る。 -/
 theorem small_enrichedFunctor {D : Type v} {E : Type w}
@@ -28,4 +33,13 @@ theorem small_simplicialNerve_obj {D : Type v} [Category.{u} D] [SimplicialCateg
     [Small.{u} D] (n : SimplexCategoryᵒᵖ) : Small.{u} ((SimplicialNerve D).obj n) :=
   small_enrichedFunctor
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.small_enrichedFunctor := _root_.SerrePositivity.InfinityCategories.F1.Transport.small_enrichedFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.small_simplicialNerve_obj := _root_.SerrePositivity.InfinityCategories.F1.Transport.small_simplicialNerve_obj

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
 /-!
@@ -16,6 +18,9 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 
 /--
@@ -89,4 +94,25 @@ theorem simplexFactorThruImage_of_epi {X Y : SimplexCategory} (f : X ⟶ Y) [Epi
   apply SimplexCategory.factorThruImage_eq (i := eqToHom (simplexImage_of_epi f))
   simp
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexFactorThruImage_comp_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_comp_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexFactorThruImage_of_epi := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_of_epi
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_comp_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_comp_mono_ι := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_of_epi := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexImage_ι_of_epi := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_ι_of_epi

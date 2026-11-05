@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder
 public import Mathlib.Order.Hom.Set
 
@@ -9,6 +11,9 @@ public import Mathlib.Order.Hom.Set
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 元の単調写像が部分集合上単射なら、元の全列挙の像は同じ濃度の昇順像列挙。 -/
 lemma simplexSubsetOrder_image_inj {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1))
@@ -54,4 +59,10 @@ lemma simplexSubsetOrder_image_inj {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1
       exact (congrArg (simplexSubsetOrder (I.image α) hJ) (Fin.ext rfl)).trans hi
   exact congrFun (hf.eq_of_range_eq hg (hl.trans hr.symm)) v
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_image_inj := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_image_inj

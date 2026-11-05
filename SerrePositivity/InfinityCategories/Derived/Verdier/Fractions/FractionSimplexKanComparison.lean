@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange
 public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertex
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
   (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (x : X _⦋0⦌)
 
@@ -48,4 +53,31 @@ def fractionSimplexKanComparisonEdge :
     (fractionCosliceBaseChange F W hF x (transportSimplexFirstVertexMap X))
     (fractionCosliceBaseChange_snd F W hF x (transportSimplexFirstVertexMap X))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexCosliceProjection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection_leftFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexCosliceProjection_leftFibration := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection_leftFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexKanComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparisonEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexKanComparisonEdge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparisonEdge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexKanMappingDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanMappingDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexCosliceProjection._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexCosliceProjection._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexKanComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSimplexKanComparison._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSimplexKanComparison._proof_2

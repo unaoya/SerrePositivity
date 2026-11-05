@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams
 public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
 public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams
@@ -19,14 +21,20 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
+end SerrePositivity.KST.LocalizingInvariants.LaxCounit
+namespace SerrePositivity.InfinityCategories.Derived.Lax
+open SerrePositivity.KST.LocalizingInvariants
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
   (h : IsVerdierSequence i r)
 
 namespace LaxCounit
+open SerrePositivity.KST.LocalizingInvariants.LaxCounit
 
 def quotientSuspensionDiagramComparison :=
   CofiberFamily.zeroTargetDiagramComparison Q.obj (quotientArrow p q i r)
@@ -60,4 +68,34 @@ def laxQuotientRelativeLegsIso : FunctorIso
   exact ec ≪≫ (LaxCounit.quotientSelectedCIso p q i r).symm ≪≫
     LaxCounit.quotientCofiber_DSuspRelativeIso p q i r h
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Lax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientRelativeLegsIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiber_DSuspRelativeIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiber_DSuspRelativeIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiber_DSuspRelativeIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSuspensionDiagramComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSuspensionDiagramComparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSuspensionDiagramComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientRelativeLegsIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientRelativeLegsIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientRelativeLegsIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientRelativeLegsIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientRelativeLegsIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiber_DSuspRelativeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiber_DSuspRelativeIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiber_DSuspRelativeIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiber_DSuspRelativeIso._proof_2

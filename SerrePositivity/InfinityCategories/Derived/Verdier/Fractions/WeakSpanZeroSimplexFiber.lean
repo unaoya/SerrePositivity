@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
@@ -15,10 +17,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌)
 
 /-- 概要：同じ元の終点を持つ span は、その零単体上の元の引き戻し fiber と実同型。
@@ -73,4 +78,19 @@ theorem weakSpanZeroSimplexFiberIso_inclusion :
       vertexFiberι (weakSpanSimplexProjection i x) b ≫ weakSpanSimplexProjection i x = _
     rw [vertexFiberι_comp, SSet.comp_const]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanZeroSimplexFiberIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanZeroSimplexFiberIso_inclusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanZeroSimplexFiberIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanZeroSimplexFiberIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanZeroSimplexFiberIso._proof_2

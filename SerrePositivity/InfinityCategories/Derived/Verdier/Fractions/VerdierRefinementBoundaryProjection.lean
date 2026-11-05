@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment
 
 /-!
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance boundaryStableFiniteLimits {X : SSet.{u}} [Quasicategory X] [IsStable X] :
     HasFiniteLimits X := hasFiniteLimits_of_isStable _
@@ -187,4 +192,34 @@ lemma exists_relative_verdierCanonicalBoundaryCoconeFamily
   exact exists_relative_verdierSpanPullbackCoconeFamily i x z j g Q hQ hQl
     (parametricPullbackDiagramFamily R hR) hab hac a ha hb
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.boundaryStableFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.boundaryStableFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.boundaryStableParameterFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.boundaryStableParameterFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_verdierCanonicalBoundaryCoconeFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_relative_verdierCanonicalBoundaryCoconeFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily_post := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.simplexTerminalArrowFamily_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackColumnFamily_pre_parameter := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily_pre_parameter
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackFamily_restriction_of_evaluate := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackFamily_restriction_of_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementBoundary_projections := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementBoundary_projections
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementRight_pre_parameter := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementRight_pre_parameter
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementTop_pre_parameter := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementTop_pre_parameter

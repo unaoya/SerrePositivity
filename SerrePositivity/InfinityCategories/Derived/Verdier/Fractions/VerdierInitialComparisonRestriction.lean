@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
@@ -17,9 +19,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
+end SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
@@ -46,6 +53,7 @@ lemma VerdierFiniteMappingCoconeRecovery.initialPrefixSquareRestriction
     constantFunctorMap_postcomp]
 
 namespace VerdierRecoveredInitialComparison
+open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison
 variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
   {U : VerdierRecoveredQuotientCoconeCylinder r G}
   (c : VerdierRecoveredInitialComparison r U) (b : VerdierRecoveredBoundaryComparison r U)
@@ -97,4 +105,16 @@ lemma boundary_last_eq :
       (Opposite.op ⦋1⦌) e) r.boundaryFractionComparison_start
 
 end VerdierRecoveredInitialComparison
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.initialPrefixSquareRestriction := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.initialPrefixSquareRestriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison.boundary_last_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.boundary_last_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison.boundary_prefix_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison.boundary_prefix_eq

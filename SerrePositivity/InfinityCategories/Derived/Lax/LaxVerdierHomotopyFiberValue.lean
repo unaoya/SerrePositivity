@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquare
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+namespace SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 local instance homotopyFiberValueSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 local instance homotopyFiberValueSquareQuasicategory :
@@ -43,4 +48,28 @@ def laxQuotientHomotopyFiberValueIso :
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm ≪≫
           hΦ.laxQuotientProductFiberLeftIso p q i r h
 
-end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.homotopyFiberValueSimplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.homotopyFiberValueSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.homotopyFiberValueSimplicialCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.homotopyFiberValueSquareQuasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.homotopyFiberValueSquareQuasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberBFComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberBFComparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberBFComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientHomotopyFiberValueIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiberBFComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberBFComparison._proof_1

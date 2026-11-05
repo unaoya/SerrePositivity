@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage
 public import SerrePositivity.KST.Fibration.VertexFiberBaseChangeHom
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -71,4 +76,31 @@ def weakIdentityScaffoldFiberImage_identityIso :
     identityFixedFractionCosliceEvaluationIso q.hom (weakEquivalences i) h.inverts x
       (weakIdentitySpan_mem h x)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage_eq_evaluation := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_eq_evaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_identityIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage_identityIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_identityIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityScaffoldFiberImage_identityIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityScaffoldFiberImage_identityIso._proof_1

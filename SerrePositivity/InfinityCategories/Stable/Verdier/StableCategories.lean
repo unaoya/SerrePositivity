@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 
@@ -14,9 +16,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Verdier
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 小さい安定 quasicategory。冪等完備性は別条件であり、ここには含めない。 -/
 structure StableCategory where
@@ -88,4 +93,184 @@ lemma isExact_of_functorIso {A B : StableCategory.{u}} (F : ExactMap A B)
     {G : A.obj ⟶ B.obj} (e : FunctorIso F.hom G) : IsExactFunctor G :=
   isExactFunctor_of_functorIso e
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Verdier
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsExactVertex := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsExactVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv_val := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv_val
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctors := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctors_quasicategory := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors_quasicategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.isExact_of_functorIso := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.isExact_of_functorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.casesOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.ctorIdx := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.ext := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.ext_iff := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext_iff
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.hom := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.isExact := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.isExact
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.noConfusionType := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.rec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.recOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.casesOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.ctorIdx := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.isQuasicategory := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isQuasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.isStable := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.isStable
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.noConfusionType := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.obj := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.obj
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.rec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.recOn := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactFunctorVertexEquiv._proof_6 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_6 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_7 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_8 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_category._proof_9 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.stableCategory_category._proof_9
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk.inj := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk.injEq := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ExactMap.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.mk.sizeOf_spec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk.inj := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk.injEq := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableCategory.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.mk.sizeOf_spec

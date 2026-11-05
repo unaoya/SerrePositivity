@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
 public import SerrePositivity.KST.Fibration.GroupoidCompletionWeakUnit
 public import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion
@@ -15,6 +17,9 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 元の全辺局所化への単位そのものは anodyne 局所化同型。 -/
 theorem groupoidCompletionUnit_anodyneQ_isIso (X : SSet.{u}) :
@@ -43,4 +48,19 @@ theorem groupoidCompletionKanComparison_isQCatEquivalence (X : SSet.{u}) :
       Q.map (groupoidCompletionKanComparison X)) := he.symm ▸ hu
   exact isQCatEquivalence_of_anodyneQ_isIso _ ((isIso_comp_left_iff _ _).mp hc)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.groupoidCompletionKanComparison := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.groupoidCompletionKanComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.groupoidCompletionUnit_anodyneQ_isIso := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionUnit_anodyneQ_isIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.groupoidCompletionKanComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.groupoidCompletionKanComparison._proof_1

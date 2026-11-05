@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryPostcomposition
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame
+open SerrePositivity.KST.LocalizingInvariants.SquareFrame
 variable {X Y : SSet.{u}} (f : SquareFrame X)
 
 def postcomp (F : X ⟶ Y) : SquareFrame Y where
@@ -174,4 +179,91 @@ lemma square_right_of_boundary {Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
   rw [← Category.assoc, verticalEndpoint_one_ι, diagram_right] at he
   exact he
 
-end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_bottom := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_left := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_ofSquare := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_ofSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_postcomp := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_postcomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_right := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.diagram_top := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.diagram_top
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.horizontalEndpoint := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.horizontalEndpoint_one_ι := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint_one_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.horizontalEndpoint_zero_ι := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint_zero_ι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ofSquare := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.postcomp := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.square_bottom_of_boundary := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_bottom_of_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.square_left_of_boundary := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_left_of_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.square_right_of_boundary := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_right_of_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.square_top_of_boundary := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.square_top_of_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.verticalEndpoint := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.verticalEndpoint_one_ι := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint_one_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.verticalEndpoint_zero_ι := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint_zero_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.horizontalEndpoint.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.horizontalEndpoint.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ofSquare._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ofSquare._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ofSquare._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.ofSquare._proof_4 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.postcomp._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.postcomp._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.postcomp._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.postcomp._proof_4 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.postcomp._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.verticalEndpoint.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.verticalEndpoint.eq_1

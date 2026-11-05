@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference
 
 /-!
@@ -12,9 +14,12 @@ public import SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.NullHomotopyTransport
+end SerrePositivity.KST.Spectra.NullHomotopyTransport
+namespace SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport
+open SerrePositivity.KST.Spectra.NullHomotopyTransport
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -143,4 +148,43 @@ lemma filler_face [KanComplex X] (R : PtSimplex.RelStruct .const s (Fin.last (n 
     split_ifs <;> rfl
 
 end
-end SerrePositivity.KST.Spectra.NullHomotopyTransport
+end SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.compatible := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.filler_face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.filler_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.output_face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.output_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.relation_face := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.relation_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NullHomotopyTransport.transport.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport.transport.congr_simp

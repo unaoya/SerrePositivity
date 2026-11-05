@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport
 public import SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- join 射の有限 join での値は、零頂点の像と各一座標頂点の像の join。 -/
 lemma cubeJoinMap_sup_atoms {n m : ℕ} {f : CubeVertex n → CubeVertex m}
@@ -44,4 +49,19 @@ lemma cubeMapGenerated_ext {n m : ℕ} {f g : CubeVertex n → CubeVertex m}
     f = g :=
   cubeJoinMap_ext (cubeMapGenerated_sup hf) (cubeMapGenerated_sup hg) hzero hatom
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_eval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_sup_atoms := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinMap_sup_atoms
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeMapGenerated_ext

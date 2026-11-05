@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 全成分を保つ厳密豊穣自然変換の始域の括弧付け
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w x y
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 三重合成の始域の括弧を変えても、同じ全成分の厳密自然変換を保つ。 -/
@@ -27,4 +32,13 @@ def strictSimplicialTransformationReassociateSource
     ext n t
     exact types_congr_hom (NatTrans.congr_app (η.naturality X Y) n) t
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationReassociateSource := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationReassociateSource._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationReassociateSource._proof_1

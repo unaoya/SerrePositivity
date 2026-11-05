@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p]
   (e : E _⦋0⦌) (R S : LeftTransportRepresentation p)
   (h : VertexIso (transportWitnessVertex R) (transportWitnessVertex S))
@@ -62,4 +67,19 @@ theorem transportWitnessDiagramValueIso_hom :
       functorHomEvaluate (R.diagramIso S h).hom (p.app (Opposite.op ⦋0⦌) e) := by
   rw [← transportWitnessDiagramValueIso_eq, functorIso_app_hom_evaluate]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramValueIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramValueIso_eq := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramValueIso_hom := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportWitnessDiagramValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportWitnessDiagramValueIso._proof_1

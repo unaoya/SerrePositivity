@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeGeneratorWords
 
 /-! # 全ての具体的な cubical 射の生成語による実現
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeGeneratorWords
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の生成関数を同じ頂点関数として実現する語が存在する。 -/
@@ -61,4 +66,22 @@ lemma cubeWordConcreteFunctor_map_eq_iff_normalForm {X Y : CubeWords} (p q : X �
         concreteCubeNormalForm (cubeWordConcreteFunctor.map q) :=
   (concreteCubeNormalForm_eq_iff _ _).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_exists_word := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_exists_word
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_full (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_full := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_full
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_normalForm := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_map_eq_iff_normalForm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_map_eq_iff_signature := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_map_eq_iff_signature
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_obj_surjective := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_obj_surjective

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
@@ -11,7 +13,13 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 元の necklace を、同じ全頂点の標準単体内の部分複体として作る。 -/
@@ -49,4 +57,34 @@ lemma single_subcomplex_top (n : ℕ) : (single n).subcomplex.{u} = ⊤ := by
   exact single_allows n d.unop.len _
 
 end NecklaceShape
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrier (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.carrier := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.carrier
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.constantSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.constantSimplex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.constantSimplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.inclusion := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.inclusion_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.inclusion_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.lastVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.lastVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.lastVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.single_subcomplex_top := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single_subcomplex_top
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.subcomplex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.subcomplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.subcomplex._proof_1

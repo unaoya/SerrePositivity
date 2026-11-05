@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport
 
 /-! # 立方体の出力一座標の有限 max 表示
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 出力一座標の定数一、または有限 max の表示。 -/
 abbrev CubeJoinTerm (n : ℕ) := Option (Finset (Fin n))
@@ -62,4 +67,31 @@ lemma cubeJoinTermEval_injective (n : ℕ) :
         simpa using (Iff.of_eq (congrArg (fun b : Bool => b = true) hi))
       exact congrArg Option.some hst
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeJoinTerm := _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval_bot := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_bot
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexAtom_sup_finset := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom_sup_finset
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval.eq_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval.eq_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinTermEval.match_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinTermEval.match_1

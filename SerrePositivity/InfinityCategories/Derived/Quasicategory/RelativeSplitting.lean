@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant
 public import SerrePositivity.KST.LocalizingInvariants.FiberProductDecomposition
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
@@ -21,6 +23,11 @@ open SerrePositivity.KST.Spectra.OmegaSpectrum
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant
+end SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant
+namespace SerrePositivity.InfinityCategories.Derived.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 切断そのものを提示源内で指定した Verdier 四角形。 -/
 structure RelativeSplitVerdierDiagram {S : SSet.{u + 1}} [Quasicategory S]
@@ -29,6 +36,7 @@ structure RelativeSplitVerdierDiagram {S : SSet.{u + 1}} [Quasicategory S]
   section_eq : sectionHom ≫ squareHoRight square = 𝟙 _
 
 namespace IsRelativeLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant
 variable {S : SSet.{u + 1}} [Quasicategory S]
   {ν : S ⟶ StableInfinity.{u}} {E : S ⟶ Sp.{u}}
   (hE : IsRelativeLocalizingInvariant ν E) (d : RelativeSplitVerdierDiagram ν)
@@ -139,4 +147,115 @@ lemma tammeProductCone_isLimit : IsLimitCone (tammeProductCone (E := E) d) :=
   spectrumBinaryProductInfinityCone_isLimit _ _
 
 end IsRelativeLocalizingInvariant
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitComparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitComparison_inclusion := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitComparison_projection := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitComparison_section := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitComparison_section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitFactorComparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitFactorComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitLeftFactorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitLeftFactorIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitLeftFactorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitRightFactorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitRightFactorIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitRightFactorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitSection := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitSection_section := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection_section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeProductCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.tammeProductCone := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeProductCone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.tammeProductCone_isLimit := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeProductCone_isLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.tammeSplitComparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.tammeSplitComparison_C := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison_C
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.tammeSplitComparison_D := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.tammeSplitComparison_D
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.casesOn := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.ctorIdx := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.noConfusionType := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.rec := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.recOn := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.sectionHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.sectionHom := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.sectionHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.section_eq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.section_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.toRelativeVerdierDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.toRelativeVerdierDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.toRelativeVerdierDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitLeftFactorIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitLeftFactorIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitLeftFactorIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitLeftFactorIso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitRightFactorIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitRightFactorIso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant.splitSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.IsRelativeLocalizingInvariant.splitSection._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk.inj := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk.injEq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeSplitVerdierDiagram.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitVerdierDiagram.mk.sizeOf_spec

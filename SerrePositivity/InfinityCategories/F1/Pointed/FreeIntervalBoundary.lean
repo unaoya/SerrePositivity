@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
@@ -79,16 +81,19 @@ universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-local instance : PointedSimplicialSet.adjoinBasepointFunctor.{u}.IsLeftAdjoint :=
+local instance instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor : PointedSimplicialSet.adjoinBasepointFunctor.{u}.IsLeftAdjoint :=
   PointedSimplicialSet.adjoinBasepointAdjunction.isLeftAdjoint
 
 /-- 概要：自由な基点を加えた区間の二つの端点。
@@ -301,4 +306,118 @@ theorem freePathEndpoints_snd (Y : PointedSimplicialSet.{u}) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEnd_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIsLimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_fst := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_fst_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_fst_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_snd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso_snd_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso_snd_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomEnd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomEnd
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomStart := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomStart
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion_mono := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryIsColimit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryStart_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalBoundary := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fst := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_fst_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_fst_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_snd := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_snd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints_snd_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints_snd_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor := _root_.SerrePositivity.InfinityCategories.F1.Pointed.instIsLeftAdjointSSetPointedSimplicialSetAdjoinBasepointFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed_comp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryEvaluationIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEvaluationIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryHomIsLimit._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryHomIsLimit._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeBoundaryIsColimit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryIsColimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalBoundary._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoints.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoints.eq_1

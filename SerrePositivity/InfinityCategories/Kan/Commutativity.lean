@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 /-!
@@ -13,11 +15,25 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.SimplexFaces
+end SerrePositivity.KST.Spectra.SimplexFaces
+namespace SerrePositivity.KST.Spectra.AdjacentProduct
+end SerrePositivity.KST.Spectra.AdjacentProduct
+namespace SerrePositivity.KST.Spectra.FourStruct
+end SerrePositivity.KST.Spectra.FourStruct
+namespace SerrePositivity.KST.Spectra.FourReduction
+end SerrePositivity.KST.Spectra.FourReduction
+namespace SerrePositivity.KST.Spectra.FourComparison
+end SerrePositivity.KST.Spectra.FourComparison
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 namespace SimplexFaces
+open SerrePositivity.KST.Spectra.SimplexFaces
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 
@@ -65,6 +81,7 @@ theorem mul_face {f g fg : X.PtSimplex n x} {i : Fin n}
 end SimplexFaces
 
 namespace AdjacentProduct
+open SerrePositivity.KST.Spectra.AdjacentProduct
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {f g fg : X.PtSimplex (n + 2) x} {i : Fin (n + 1)}
@@ -204,6 +221,7 @@ structure FourStruct {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = fourFaces a b c d j
 
 namespace FourStruct
+open SerrePositivity.KST.Spectra.FourStruct
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
 
@@ -241,6 +259,7 @@ theorem exists_fill [KanComplex X] (a c : X.PtSimplex (n + 2) x) :
 end FourStruct
 
 namespace FourReduction
+open SerrePositivity.KST.Spectra.FourReduction
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a ia c d : X.PtSimplex (n + 2) x}
@@ -362,6 +381,7 @@ theorem class_eq [KanComplex X] (T : FourStruct a .const c d) :
 end FourReduction
 
 namespace FourComparison
+open SerrePositivity.KST.Spectra.FourComparison
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a c d d' : X.PtSimplex (n + 2) x}
@@ -443,9 +463,162 @@ theorem KanHomotopyGroup.mul_comm {X : SSet.{u}} [KanComplex X]
 方針：既存の群構造にホーンで証明した可換性を加える。
 規約：正次数群の添字 n + 1 に対応する実際の次数は n + 2。
 使われ方：Kerodon Theorem 3.2.2.10。スペクトルの π_* のアーベル群。 -/
-noncomputable instance {X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌} :
+noncomputable instance instCommGroupKanHomotopyGroupHAddNatOfNat {X : SSet.{u}} [KanComplex X] {n : ℕ} {x : X _⦋0⦌} :
     CommGroup (KanHomotopyGroup X (n + 1) x) where
   __ := (inferInstance : Group (KanHomotopyGroup X (n + 1) x))
   mul_comm := KanHomotopyGroup.mul_comm
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fourFaces (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fourFaces := _root_.SerrePositivity.InfinityCategories.Kan.fourFaces
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.instCommGroupKanHomotopyGroupHAddNatOfNat (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.instCommGroupKanHomotopyGroupHAddNatOfNat := _root_.SerrePositivity.InfinityCategories.Kan.instCommGroupKanHomotopyGroupHAddNatOfNat
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.compatible := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.face := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.output_face := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourComparison.compare := _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourComparison.compatible := _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourComparison.face := _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.class_eq := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.class_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.compatible := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.face := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.output_face := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.exists_fill := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.exists_fill
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.face_eq := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.face_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.map := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.rec := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.recOn := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.mul_comm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexFaces.degenerate_face := _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexFaces.mul_face := _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.mul_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fourFaces.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.fourFaces.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip._proof_16 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip._proof_16
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.AdjacentProduct.flip._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.AdjacentProduct.flip._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourComparison.compare._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.compare._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourComparison.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.FourComparison.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourReduction.mulStruct._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.FourReduction.mulStruct._proof_9
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FourStruct.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.FourStruct.mk.sizeOf_spec

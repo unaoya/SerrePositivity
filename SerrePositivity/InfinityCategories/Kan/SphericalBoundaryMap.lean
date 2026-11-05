@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryFilling
 public import SerrePositivity.InfinityCategories.Kan.BoundaryFaces
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.BoundaryFaces
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalBoundary
+end SerrePositivity.KST.Spectra.SphericalBoundary
+namespace SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+open SerrePositivity.KST.Spectra.SphericalBoundary
 
 noncomputable section
 
@@ -74,4 +79,25 @@ theorem boundary_filler_iff [KanComplex X]
 
 end
 
-end SerrePositivity.KST.Spectra.SphericalBoundary
+end SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.boundaryMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.boundaryMap := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.boundaryMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.boundary_filler_iff := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.boundary_filler_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_boundaryMap := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_boundaryMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_boundaryMap_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_boundaryMap_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.facesCompatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.facesCompatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.nonempty_iff_boundary_filler := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.nonempty_iff_boundary_filler

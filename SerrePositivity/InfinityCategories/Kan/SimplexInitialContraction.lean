@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
 
 /-! # 標準単体の最初の頂点からの収縮
@@ -11,9 +13,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：二点鎖と有限鎖から最小元と恒等射をつなぐ順序写像。
 方針：時刻零で最小元、時刻一で第二成分。
@@ -91,4 +96,34 @@ lemma simplexInitialContraction_firstVertex (n : ℕ) :
   change (if _ = 0 then 0 else 0) = 0
   split_ifs <;> rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_firstVertex := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_firstVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_one := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction_zero := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialContraction._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexInitialOrder._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.simplexInitialOrder._proof_5

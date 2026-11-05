@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -41,9 +43,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def oppositeFunctorIso {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
     (e : FunctorIso F G) : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.map F) where
@@ -62,4 +67,22 @@ def reflectiveOppositeUnit (e : FunctorIso (G ≫ F) (𝟙 Y)) :
   simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using
     oppositeFunctorIso e
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeFunctorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeFunctorIso := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeFunctorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveOppositeUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveOppositeUnit := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveOppositeUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeFunctorIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeFunctorIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeFunctorIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.oppositeFunctorIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveOppositeUnit._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveOppositeUnit._proof_1

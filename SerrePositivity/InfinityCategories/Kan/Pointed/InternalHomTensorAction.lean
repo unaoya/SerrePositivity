@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.TensorExchangeCoherence
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C]
 
@@ -80,4 +85,22 @@ lemma tensorHom_strength (S X A Y : C) :
   simp only [Category.assoc] at hc
   exact hc
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_evaluation_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorHom_strength := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_strength
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorSuspend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensorSuspend := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorSuspend

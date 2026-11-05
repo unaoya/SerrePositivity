@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.OrdinalSimplexEdges
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SquareBoundary
+end SerrePositivity.KST.Spectra.SquareBoundary
+namespace SerrePositivity.InfinityCategories.Kan.SquareBoundary
+open SerrePositivity.KST.Spectra.SquareBoundary
 
 /-- 正方形の指定した隅。 -/
 abbrev corner (i j : Fin 2) : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌ :=
@@ -109,4 +114,79 @@ lemma composition {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
   rw [SSet.HomotopyCategory.homMk_comp_homMk (hl.map q),
     SSet.HomotopyCategory.homMk_comp_homMk (hu.map q)]
 
-end SerrePositivity.KST.Spectra.SquareBoundary
+end SerrePositivity.InfinityCategories.Kan.SquareBoundary
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.bottom := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.bottom_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom_yoneda
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.composition := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.composition
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.corner := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.corner
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.diagonal_edge := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.diagonal_edge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left_yoneda
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.right := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.right_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right_yoneda
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.top := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.top_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top_yoneda
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.bottom._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.bottom._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.bottom._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.diagonal_edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.diagonal_edge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.left._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.left._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.right._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.right._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.right._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.top._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.top._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareBoundary.top._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SquareBoundary.top._proof_3

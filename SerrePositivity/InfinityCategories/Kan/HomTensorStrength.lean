@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.Tactic.CategoryTheory.Monoidal.Basic
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 
@@ -146,4 +151,64 @@ theorem map_unit (K Y : C) :
     rw [← whiskerLeft_comp, Iso.inv_hom_id, whiskerLeft_id]
   rw [← Category.assoc, h, whiskerLeft_comp]
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.evaluation := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.evaluation_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_left := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_left_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_left_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_right := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_right_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_unit := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_unit_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map_unit := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map_unit_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_post := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_post_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_post_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_pre := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_pre_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_pre_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.unit_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.unit_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map.eq_1

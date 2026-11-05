@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.ParametricPullbackFamilyTranspose
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance attachmentStableFiniteLimits {X : SSet.{u}} [Quasicategory X] [IsStable X] :
     HasFiniteLimits X := hasFiniteLimits_of_isStable _
@@ -280,4 +285,67 @@ lemma exists_relative_verdierSpanPullbackCoconeFamily
     exists_relative_verdierSpanCoconeFamily i x z j g F hF a (hj.trans ha) hb
   exact ⟨F, L, hjF, hFp, hFt, hjL, hLp, hLn, hLa⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.attachmentStableFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.attachmentStableFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.attachmentStableParameterFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.attachmentStableParameterFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_verdierSpanCoconeFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_relative_verdierSpanCoconeFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_verdierSpanPullbackCoconeFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_relative_verdierSpanPullbackCoconeFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.parametricPullbackDiagramFamily_terminal_column := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.parametricPullbackDiagramFamily_terminal_column
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily_last := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackColumnFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackColumnFamily_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackColumnFamily_ι := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackFamily_evaluate_of_restriction := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackFamily_evaluate_of_restriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyArrows_sharedSource := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyArrows_sharedSource
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyDenominatorArrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyNumeratorArrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyNumeratorArrow_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalPullbackColumnFamily._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalPullbackColumnFamily._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyDenominatorArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyDenominatorArrow.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanFamilyNumeratorArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanFamilyNumeratorArrow.eq_1

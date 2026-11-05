@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.ConcreteCubeSignature
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の具体的な cubical 射から回収した有限 max 表示。 -/
@@ -46,4 +51,22 @@ lemma concreteCubeNormalForm_comp {X Y Z : ConcreteCube} (f : X ⟶ Y) (g : Y �
   rw [concreteCubeNormalForm_eval, concreteCubeNormalForm_eval]
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_comp := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eq_iff := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eq_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_eval := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_injective := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_injective

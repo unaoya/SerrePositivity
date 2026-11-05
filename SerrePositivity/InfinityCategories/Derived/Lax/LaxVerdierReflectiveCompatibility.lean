@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence
 
@@ -17,6 +19,11 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+namespace SerrePositivity.InfinityCategories.Derived.Lax
+open SerrePositivity.KST.LocalizingInvariants
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (v : E.obj ⟶ D.obj) (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v)
 
@@ -25,6 +32,7 @@ lemma laxQuotientVerdierSequence_reflective :
       (laxDifference_isVerdier p q v a hv) = tammeVerdierSequence p q v a hv := rfl
 
 namespace IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientFiberTriangle_reflective :
@@ -40,4 +48,19 @@ lemma laxQuotientDifferenceHom_reflective :
       hΦ.tammeDifferenceHom p q := rfl
 
 end IsLocalizingInvariant
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Lax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientVerdierSequence_reflective := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence_reflective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientDifferenceHom_reflective := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientDifferenceHom_reflective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberMiddleIso_reflective := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberMiddleIso_reflective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientFiberTriangle_reflective := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientFiberTriangle_reflective

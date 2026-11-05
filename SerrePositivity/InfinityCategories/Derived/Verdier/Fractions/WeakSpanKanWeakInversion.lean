@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion
 public import SerrePositivity.KST.Fibration.PullbackStrictBilateralEdge
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 
 /-- 初頂点写像で W 辺へ写る射は、元の全 strict section の Kan 図式で同値になる。 -/
@@ -60,4 +65,16 @@ theorem weakSpanKanCoherentDiagram_inverts_weak (h : IsVerdierSequence i q)
   exact coherentKanEdge_isInvertible_of_isQCatEquivalence
     (weakSpanKanDiagram_map_weak_isQCatEquivalence h x f ht)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanCoherentDiagram_inverts_weak := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanCoherentDiagram_inverts_weak
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanDiagram_map_weak_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanDiagram_map_weak_isQCatEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanTransportEdges (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanTransportEdges := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanTransportEdges

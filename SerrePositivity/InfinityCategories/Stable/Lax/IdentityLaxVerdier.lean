@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -27,9 +29,18 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
+end SerrePositivity.KST.LocalizingInvariants.IdentityLax
+namespace SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax
+open SerrePositivity.KST.LocalizingInvariants.IdentityLax
 variable (Q : StableCategory.{u})
 
 def identityAdjunction : QCatAdjunction (𝟙 Q.obj) (𝟙 Q.obj) :=
   Bicategory.Adjunction.id (qcatOf Q.obj)
 
-end SerrePositivity.KST.LocalizingInvariants.IdentityLax
+end SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.identityAdjunction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IdentityLax.identityAdjunction := _root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.identityAdjunction

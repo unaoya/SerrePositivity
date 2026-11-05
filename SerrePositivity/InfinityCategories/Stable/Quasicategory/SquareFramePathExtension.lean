@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -39,9 +41,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
+end SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame
+open SerrePositivity.KST.LocalizingInvariants.SquareFrame
 variable {X : SSet.{u}} [Quasicategory X] (f : SquareFrame (equivalencePath X))
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
   (hf : f.postcomp (equivalencePathEndpoint X 0) = ofSquare Q)
@@ -63,6 +70,7 @@ lemma pathExtension_nonempty : Nonempty (PathExtension f Q) := by
 def pathExtension : PathExtension f Q := (pathExtension_nonempty f Q hf).some
 
 namespace PathExtension
+open SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension
 variable {f Q} (w : PathExtension f Q)
 
 def target : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X := w.family ≫ equivalencePathEndpoint X 1
@@ -73,4 +81,79 @@ lemma target_boundary : boundaryι ≫ w.target =
   rw [target, ← Category.assoc, w.boundary, diagram_postcomp]
 
 end PathExtension
-end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.pathExtension := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.pathExtension_nonempty := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension_nonempty
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension._sizeOf_inst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.boundary := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.casesOn := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.ctorIdx := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.family := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.family
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.noConfusionType := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.rec := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.recOn := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.source := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.source
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.target_boundary := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.pathExtension._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.pathExtension._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk.inj := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk.injEq := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareFrame.PathExtension.target.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrame.PathExtension.target.eq_1

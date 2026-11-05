@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDiagramFibers
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
 
 lemma tammeDenominatorInterval_edges_mem (s : (laxCategory p q).obj _⦋1⦌)
@@ -62,4 +67,64 @@ def tammeDenominatorFixedSpanGroupoidEquivalence (x : (laxCategory p q).obj _⦋
   exact h₀.symm ▸ h₁.symm ▸ tammeSpanIntervalGroupoidEquivalence p q x
     (SSet.yonedaEquiv.symm s) (tammeDenominatorInterval_edges_mem p q s hs)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorInterval_edges_mem := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorInterval_edges_mem
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeDenominatorFixedSpanGroupoidEquivalence._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeDenominatorFixedSpanGroupoidEquivalence._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.tammeSpanIntervalGroupoidEquivalence._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.tammeSpanIntervalGroupoidEquivalence._proof_8

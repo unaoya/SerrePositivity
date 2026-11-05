@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -50,9 +52,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.FullSubcomplex
+end SerrePositivity.KST.LocalizingInvariants.FullSubcomplex
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 周囲の実零三角形の cofiber と fiber に閉じる条件。 -/
 structure StableVertexCondition {X : SSet.{u}} (P : X _⦋0⦌ → Prop) : Prop where
@@ -65,6 +72,7 @@ structure StableVertexCondition {X : SSet.{u}} (P : X _⦋0⦌ → Prop) : Prop 
       P (squareVertex t.square 0 0)
 
 namespace FullSubcomplex
+open SerrePositivity.KST.LocalizingInvariants.FullSubcomplex
 variable {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 
 /-- 頂点条件を部分複体の零単体にする。 -/
@@ -121,4 +129,46 @@ lemma fiber_vertices
   · exact hq
 
 end FullSubcomplex
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.cofiber_vertices := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.cofiber_vertices
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.fiber_vertices := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.fiber_vertices
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.casesOn := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.casesOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.cofiber := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.fiber := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.fiber
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.mk := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.rec := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.recOn := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.zero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FullSubcomplex.vertex._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FullSubcomplex.vertex._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableVertexCondition.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition.mk._flat_ctor

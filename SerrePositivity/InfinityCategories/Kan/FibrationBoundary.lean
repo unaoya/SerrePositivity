@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
@@ -16,9 +18,16 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.BoundaryLift
+end SerrePositivity.KST.Spectra.BoundaryLift
+namespace SerrePositivity.KST.Spectra.BoundaryLiftComparison
+end SerrePositivity.KST.Spectra.BoundaryLiftComparison
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 variable {E B A : SSet.{u}}
 
@@ -84,7 +93,7 @@ theorem fiber_hom_ext (p : E ⟶ B) (b : B _⦋0⦌) {s t : A ⟶ KanFiber p b}
 方針：終対象上への引き戻し射影の fibration 性を使う。
 規約：全空間と底の Kan 性はこの結論に不要。
 使われ方：Kerodon §3.2.5。fiber のホモトピー群。 -/
-instance (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) : KanComplex (KanFiber p b) := by
+instance instKanComplexKanFiberOfFibrationSSet (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) : KanComplex (KanFiber p b) := by
   change Fibration (terminal.from (pullback p (SSet.const (X := ⊤_ SSet.{u}) b)))
   rw [show terminal.from (pullback p (SSet.const (X := ⊤_ SSet.{u}) b)) =
     pullback.snd p (SSet.const (X := ⊤_ SSet.{u}) b) from Subsingleton.elim _ _]
@@ -157,6 +166,7 @@ noncomputable def chooseBoundaryLift (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌
   Classical.choice (boundaryLift_nonempty p e s)
 
 namespace BoundaryLift
+open SerrePositivity.KST.Spectra.BoundaryLift
 
 variable {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
@@ -210,6 +220,7 @@ theorem face_formula (L : BoundaryLift p e s) (j : Fin (n + 2)) :
 end BoundaryLift
 
 namespace BoundaryLiftComparison
+open SerrePositivity.KST.Spectra.BoundaryLiftComparison
 
 variable {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
@@ -326,6 +337,7 @@ noncomputable def rel [Fibration p] (L L' : BoundaryLift p e s) :
 end BoundaryLiftComparison
 
 namespace BoundaryLift
+open SerrePositivity.KST.Spectra.BoundaryLift
 
 variable {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s t : B.PtSimplex (n + 1) (p.app _ e)}
@@ -418,6 +430,7 @@ theorem connecting_eq (p : E ⟶ B) [Fibration p] [KanComplex B] (e : E _⦋0⦌
   (chooseBoundaryLift p e s).boundary_class_eq L
 
 namespace BoundaryLift
+open SerrePositivity.KST.Spectra.BoundaryLift
 
 /-- 概要：底の定数単体の定数持ち上げ。
 方針：全空間の基点に定数の単体を取る。
@@ -454,6 +467,7 @@ theorem connecting_one (p : E ⟶ B) [Fibration p] [KanComplex B] (e : E _⦋0�
     KanHomotopy.mk_const]
 
 namespace BoundaryLift
+open SerrePositivity.KST.Spectra.BoundaryLift
 
 variable {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
@@ -524,4 +538,271 @@ theorem connecting_map (p : E ⟶ B) [Fibration p] [KanComplex E] [KanComplex B]
   rw [KanHomotopyGroup.map_mk, connecting_eq p e (BoundaryLift.ofPointed p e s),
     BoundaryLift.ofPointed_boundary, KanHomotopy.mk_const]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanFiber (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.boundaryLift_nonempty := _root_.SerrePositivity.InfinityCategories.Kan.boundaryLift_nonempty
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.chooseBoundaryLift := _root_.SerrePositivity.InfinityCategories.Kan.chooseBoundaryLift
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.connecting (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting := _root_.SerrePositivity.InfinityCategories.Kan.connecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting_eq := _root_.SerrePositivity.InfinityCategories.Kan.connecting_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting_map := _root_.SerrePositivity.InfinityCategories.Kan.connecting_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting_one := _root_.SerrePositivity.InfinityCategories.Kan.connecting_one
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fiberLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLift := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLift_ι := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLift_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberPoint := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_hom_ext := _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_map_connecting := _root_.SerrePositivity.InfinityCategories.Kan.fiber_map_connecting
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fiberι (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberι := _root_.SerrePositivity.InfinityCategories.Kan.fiberι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberι_comp := _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberι_comp_assoc := _root_.SerrePositivity.InfinityCategories.Kan.fiberι_comp_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberι_point := _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_pullback_snd := _root_.SerrePositivity.InfinityCategories.Kan.fibration_pullback_snd
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.instKanComplexKanFiberOfFibrationSSet (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.instKanComplexKanFiberOfFibrationSSet := _root_.SerrePositivity.InfinityCategories.Kan.instKanComplexKanFiberOfFibrationSSet
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary_class_eq := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_class_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary_ι := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.constant := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.constant_boundary := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.face_eq := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.face_formula := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.face_formula
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.last_comp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.last_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.map := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.map_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.nullRel := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ofPointed := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ofPointed_boundary := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.rec := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.recOn := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.transport := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.transport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.compatible := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.face := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.face_comp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.face_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.last_comp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.last_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.output_face := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.connecting._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.connecting._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLift.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.fiberLift.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberPoint.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.boundary._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.boundary._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.constant._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.constant._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.constant.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.constant.eq_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.nullRel._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.nullRel._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.nullRel._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.nullRel._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.nullRel._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ofPointed._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ofPointed._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLift.ofPointed.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift.ofPointed.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryLiftComparison.rel._simp_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLiftComparison.rel._simp_1

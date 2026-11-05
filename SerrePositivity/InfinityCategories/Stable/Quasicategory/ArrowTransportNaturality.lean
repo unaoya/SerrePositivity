@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Category.Basic
 public import Mathlib.CategoryTheory.Comma.Arrow
 public import Mathlib.CategoryTheory.EqToHom
@@ -18,6 +20,9 @@ set_option backward.isDefEq.respectTransparency false
 universe u v w z
 open CategoryTheory
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma hom_eq_eqToHom_of_arrow_identity {C : Type u} [Category.{v} C] {a b c : C}
     (f : a ⟶ b) (hab : a = b) (h : Arrow.mk f = Arrow.mk (𝟙 c)) :
@@ -27,4 +32,10 @@ lemma hom_eq_eqToHom_of_arrow_identity {C : Type u} [Category.{v} C] {a b c : C}
   subst c
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.hom_eq_eqToHom_of_arrow_identity := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.hom_eq_eqToHom_of_arrow_identity

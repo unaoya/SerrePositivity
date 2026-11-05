@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 
 /-!
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open Spectra
 
 /-- 全空間の消滅と底の二以上の消滅から、fiber の正次数が消滅する。 -/
@@ -61,4 +66,16 @@ lemma fibration_map_surjective_of_fiber_subsingleton {E B : SSet.{u}}
   intro a
   exact (exact_total_base_all p e n a).mp (by have := hf; exact Subsingleton.elim _ _)
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fibration_positive_fiber_subsingleton

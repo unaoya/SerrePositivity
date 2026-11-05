@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.ConcreteCubicalCategory
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の射の零頂点と全ての一座標頂点での値。 -/
@@ -41,4 +46,22 @@ lemma concreteCubeSignature_comp {X Y Z : ConcreteCube} (f : X ⟶ Y) (g : Y ⟶
       (g.val (concreteCubeSignature f).1, fun i => g.val ((concreteCubeSignature f).2 i)) :=
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeMap_eval := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeMap_eval
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_comp := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_eq_iff := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature_eq_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeSignature_injective := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeSignature_injective

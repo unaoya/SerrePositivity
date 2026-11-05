@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceEdges
 
 /-! # 全 necklace 射の元の頂点順序の保存
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceEdges
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の全 necklace 射は、元の有限頂点順序を保つ。 -/
@@ -43,4 +48,19 @@ lemma necklaceVertexOrderHom_comp {T U V : Necklace.{u}} (f : T ⟶ U) (g : U �
   intro v
   exact congrFun (necklaceVertexMap_comp f g) v
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_monotone := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_monotone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexOrderHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexOrderHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexOrderHom_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexOrderHom_id := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexOrderHom_id

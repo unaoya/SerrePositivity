@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -67,9 +69,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -164,4 +169,16 @@ theorem fibration_rlp_of_piIsomorphism {E B : SSet.{u}} [KanComplex E] [KanCompl
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_boundary_lift_of_fiber_lifting := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_lift_of_fiber_lifting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_rlp_of_fiber_lifting := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_fiber_lifting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_rlp_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_rlp_of_piIsomorphism

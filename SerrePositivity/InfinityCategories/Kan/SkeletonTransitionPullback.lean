@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltrationMono
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
@@ -14,6 +16,9 @@ public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 namespace SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.KST.Spectra.SkeletonFiltration
+namespace SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+open SerrePositivity.KST.Spectra.SkeletonFiltration
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
@@ -43,4 +48,10 @@ lemma transition_app_isPullback {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f]
     · exact Subtype.ext rfl
     · exact Subtype.ext he
 
-end SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition_app_isPullback := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition_app_isPullback

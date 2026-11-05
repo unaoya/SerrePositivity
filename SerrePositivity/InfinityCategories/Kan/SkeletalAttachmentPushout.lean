@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+open SerrePositivity.KST.Spectra.SkeletalCellAttachment
 
 noncomputable section
 
@@ -58,4 +63,22 @@ theorem isPushout (K : SSet.{u}) (d : ℕ) :
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.attachingMap := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.characteristicMap := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.isPushout := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.attachingMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.characteristicMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap.eq_1

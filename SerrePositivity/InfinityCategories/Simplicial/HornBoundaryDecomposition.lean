@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.HornFaceBoundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -107,4 +112,37 @@ theorem hornFaceOverlapToBoundary_ι (n : ℕ) (i : Fin (n + 2)) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornBoundaryPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.hornBoundaryPushout
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlap := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary_ι := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary_ι_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_le_simplexBoundary := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_sup_missing_face := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_sup_missing_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.hornFaceOverlapToBoundary._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.hornFaceOverlapToBoundary._proof_3

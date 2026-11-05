@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -49,9 +51,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -102,4 +107,16 @@ theorem fiber_terminal_rlp_of_piIsomorphism {E B : SSet.{u}} [KanComplex E] [Kan
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_boundary_filler_of_homotopySubsingleton := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_boundary_filler_of_homotopySubsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_terminal_rlp_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fiber_terminal_rlp_of_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.terminal_rlp_of_homotopySubsingleton := _root_.SerrePositivity.InfinityCategories.F1.Pointed.terminal_rlp_of_homotopySubsingleton

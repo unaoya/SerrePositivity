@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Comma.Arrow
 
 
@@ -12,6 +14,9 @@ public import Mathlib.CategoryTheory.Comma.Arrow
 universe u v
 open CategoryTheory
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {B : Type u} [Category.{v} B]
 
 lemma arrow_mk_comp_of_any_identity {a b c d : B} (f : a ⟶ b) (g : b ⟶ c)
@@ -36,4 +41,13 @@ lemma arrow_mk_cancel_comp_left {a b c a' b' c' : B}
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id] at hfg
   exact congrArg Arrow.mk ((cancel_epi f).mp hfg)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_left := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_of_any_identity := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity

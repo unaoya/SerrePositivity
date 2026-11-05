@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
@@ -22,9 +24,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def squareArrowFamily {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
     (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
@@ -64,4 +69,25 @@ lemma squareArrowFamily_zero {X : SSet.{u}} (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] �
   rw [pinchedConstant_zero, ← functorVertex_uncurry_zero, Equiv.symm_apply_apply, uncurry_curry]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily_one := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily_source := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily_target := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily_zero := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.squareArrowFamily.eq_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily.eq_1

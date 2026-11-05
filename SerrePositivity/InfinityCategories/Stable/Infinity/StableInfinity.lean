@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment
 public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Infinity
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma unitVertex_comp {X Y : SSet.{u}} (f : (𝟙_ SSet.{u}) ⟶ X) (g : X ⟶ Y) :
     SSet.unitHomEquiv Y (f ≫ g) =
@@ -94,4 +99,70 @@ lemma stableObject_vertex (A : StableCategory.{u}) : stableObject (stableVertex 
 lemma stableVertex_object (a : StableInfinity.{u} _⦋0⦌) : stableVertex (stableObject a) = a :=
   coherentNerveVertex_object (C := StableQCat.{u}) a
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Infinity
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableInfinity := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.StableQCat := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactHomEquiv := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactHomEquiv_ι := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_simplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_simplicialCategory := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_simplicialCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableInfinity_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableInfinity_quasicategory := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableInfinity_quasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableObject := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableObject_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_sHom_kanComplex := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_sHom_kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_simplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_simplicialCategory := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_simplicialCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableVertex := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableVertex_object := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex_object
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactHomEquiv.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_simplicialCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_simplicialCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_simplicialCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_simplicialCategory._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._aux_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category._aux_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._aux_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._aux_3 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category._aux_3 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._aux_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category._proof_6 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableQCat_category._proof_7 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableQCat_category._proof_7

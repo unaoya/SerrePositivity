@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
 public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.KST.Spectra.SphericalFiberLift
+namespace SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+open SerrePositivity.KST.Spectra.SphericalFiberLift
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -204,4 +209,55 @@ lemma terminalLift_boundary [Fibration p]
       (terminalFace_comp hi hc T))).1 (Fin.last (n + 2))).trans (ite_eq_left rfl)
 
 end
-end SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.lowerMap := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.lowerMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalCompatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalCompatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace_comp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift_boundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalOutput_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalOutput_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalFace.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalFace.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.terminalLift._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.terminalLift._proof_7

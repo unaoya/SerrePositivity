@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -42,9 +44,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj X ⟶ SpaceInfinity.{u})
 
 /-- 元の全充満像の全単体を同じ小さい宇宙へ縮小した標的。 -/
@@ -92,4 +97,22 @@ theorem invertsEdges_of_ulift_post {Y Z : SSet.{u}} [Quasicategory Z]
       (Opposite.op ⦋1⦌) (ULift.up s)))).edge =
       ((edgeOfSimplex s).map ((truncation 2).map f)).edge from rfl)).mp hr.down
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.invertsEdges_of_ulift_post := _root_.SerrePositivity.InfinityCategories.Stable.Transport.invertsEdges_of_ulift_post
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagram := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagramInclusion := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagramTarget := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagramTarget
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallSpaceDiagram_inclusion := _root_.SerrePositivity.InfinityCategories.Stable.Transport.smallSpaceDiagram_inclusion

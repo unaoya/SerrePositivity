@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.ProdComparison
@@ -20,8 +22,11 @@ set_option backward.isDefEq.respectTransparency.types false
 
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：円筒の両端の包含を一つの射へまとめる。
@@ -97,4 +102,55 @@ def doubleMappingCylinder_right {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) :
   simpa only [cylinderEndpoints, coprod.inr_desc_assoc, coprod.inr_map_assoc,
     doubleMappingCylinder_middle, doubleMappingCylinder_right, Category.assoc] using h
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_one := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_zero := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.cylinderEndpoints.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right.eq_1

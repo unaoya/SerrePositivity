@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
@@ -18,6 +20,9 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 def groupoidCompletionMapOf_functorHomIso {X Y : SSet.{u}} {f g : X ⟶ Y}
     (α : FunctorHom f g) : FunctorIso (groupoidCompletionMapOf f) (groupoidCompletionMapOf g) := by
@@ -45,4 +50,22 @@ lemma groupoidCompletionMapOf_adjunction_isEquivalence {X Y : SSet.{u}}
   (groupoidCompletionEquivalenceOfAdjunction a).isQCatEquivalence
     |>.isSimplicialHomotopyEquivalence
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfAdjunction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEquivalenceOfAdjunction := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEquivalenceOfAdjunction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionMapOf_adjunction_isEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_adjunction_isEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionMapOf_functorHomIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionMapOf_functorHomIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionMapOf_functorHomIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMapOf_functorHomIso._proof_2

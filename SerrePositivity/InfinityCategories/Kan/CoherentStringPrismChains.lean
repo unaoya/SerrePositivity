@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CoherentArrowStrings
 public import SerrePositivity.InfinityCategories.Kan.CoherentStringPrismOrders
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I}
 
 /-- 入力と時刻の二つの再添字で指定した、元の積圏の列。 -/
@@ -141,4 +146,97 @@ def coherentUpperPrismStringFunctor (f : x ⟶ y) :
   map_id _ := CoherentArrowStringHom.ext (coherentUpperStringExtend_id _)
   map_comp _ _ := CoherentArrowStringHom.ext (coherentUpperStringExtend_comp _ _)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismString := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringFunctor := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain_longEdge := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain_refinement := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_refinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain_reindex := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_reindex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismString := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringFunctor := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismString._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismString._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismString._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismString._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerPrismStringMap._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringMap._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPrismChain_longEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPrismChain_longEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismString._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismString._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismString._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperPrismStringMap._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringMap._proof_3

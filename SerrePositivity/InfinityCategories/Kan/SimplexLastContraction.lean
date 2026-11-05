@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
@@ -43,9 +45,12 @@ public import Mathlib.Tactic.CategoryTheory.Reassoc
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SimplexLastContraction
+end SerrePositivity.KST.Spectra.SimplexLastContraction
+namespace SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+open SerrePositivity.KST.Spectra.SimplexLastContraction
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -154,4 +159,43 @@ theorem simplex_mem_horn {n d : ℕ} (s : (Δ[n] : SSet.{u}) _⦋d⦌)
   · rw [ite_eq_right ht] at hi
     exact hj hi.symm
 
-end SerrePositivity.KST.Spectra.SimplexLastContraction
+end SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.map := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.one := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex_apply := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex_mem_horn := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex_mem_horn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.vertex := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.zero := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.map._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexLastContraction.simplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexLastContraction.simplex._proof_2

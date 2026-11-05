@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 
@@ -17,6 +19,9 @@ universe u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+namespace SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+open SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -50,4 +55,31 @@ lemma productIso_hom_eval (S : Type u) (X : SSet.{u}) (s : S) :
     (productIso S X).hom ≫ eval S X s = Pi.π (fun (_ : S) ↦ X) s :=
   (productIsProduct _).conePointUniqueUpToIso_hom_comp (fanIsLimit S X) (Discrete.mk s)
 
-end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fan (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fan := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fan
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fanIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fanIsLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso_hom_eval := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso_hom_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso_hom_eval_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso_hom_eval_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fanIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.fanIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.fanIsLimit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.productIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.productIso._proof_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
@@ -15,8 +17,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 二つの指定した辺を同時に辿る直積の辺。 -/
 def cartesianEdgePair {K L : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
@@ -105,4 +110,67 @@ lemma cartesianRightParameterEdge_evaluation {K A B L M N Q : SSet.{u}}
   ConcreteCategory.congr_hom (NatTrans.congr_app h (Opposite.op ⦋1⦌))
     (cartesianEdgePair e (.id w.2)).edge
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeCompStruct := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeInterchange := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeInterchange
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeLowerTriangle := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeLowerTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgePair := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeUpperTriangle := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeUpperTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftParameterEdge := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftParameterEdge_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge_evaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightParameterEdge := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightParameterEdge_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeCompStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeCompStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeCompStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgeCompStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeCompStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgePair._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgePair._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianEdgePair._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftParameterEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftParameterEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftParameterEdge._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightParameterEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightParameterEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightParameterEdge._proof_2

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
@@ -11,6 +13,9 @@ public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 open CategoryTheory Limits Simplicial SSet
 
 variable (T U : NecklaceShape) {K : SSet.{u}}
@@ -138,4 +143,49 @@ lemma wedgeInr_pushoutIso :
     T.wedgeInr U ≫ (T.wedgePushoutIso.{u} U).hom = pushout.inr _ _ :=
   (T.wedge_isPushout.{u} U).inr_isoPushout_hom
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inr := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_pushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_pushoutIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_pushoutIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_constant_agree := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_constant_agree
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedge_isPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedge_isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeDesc._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeGlue.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgePushoutIso._proof_1

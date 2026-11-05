@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
 public import SerrePositivity.KST.LocalizingInvariants.LaxInclusions
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber
@@ -20,6 +22,11 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+namespace SerrePositivity.InfinityCategories.Derived.Lax
+open SerrePositivity.KST.LocalizingInvariants
 variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (r : ExactMap (laxCategory p q) Q)
 
@@ -61,6 +68,7 @@ lemma valueMap_quotientFromD :
   exact ((stableValueFunctor Φ).map_comp (LaxInclusion.exactFromD p q) r).symm
 
 namespace IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 variable {Φ} (hΦ : IsLocalizingInvariant Φ)
 
 lemma laxQuotientProjectionDifferenceHom_shift_C :
@@ -79,4 +87,34 @@ lemma laxQuotientProjectionDifferenceHom_shift_D :
   exact valueMap_quotientFromD p q r Φ
 
 end IsLocalizingInvariant
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Lax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_suspensionIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientDLeg := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.valueMap_quotientFromC_shift := _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_quotientFromC_shift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.valueMap_quotientFromD := _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_quotientFromD
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_C := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_C
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_D := _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_shift_D
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_suspensionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_suspensionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_suspensionIso._proof_2

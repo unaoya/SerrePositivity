@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -52,4 +57,19 @@ theorem weakQuotientCosliceCompositePoint_native_image_hom :
     simpa only [weakIdentityQuotientPointHom, Category.assoc] using
       weakQuotientCosliceCompositePoint_normalized_hom h x)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationHom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceCompositePoint_native_image_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceCompositePoint_native_image_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationHom._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationHom.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationHom.eq_1

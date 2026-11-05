@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
 
@@ -16,10 +18,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 open SerrePositivity.InfinityCategories.F2
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ元の全辺局所化の実写像と Kan 比較は、同じ単位自然性による全同型で可換。 -/
 def groupoidCompletionKanComparison_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
@@ -70,4 +75,25 @@ lemma groupoidCompletion_finite_factorization {K X : SSet.{u}} [K.Finite]
   have hff := ((groupoidCompletionKanComparison_isQCatEquivalence X).postcompose K).isFullyFaithful
   exact ⟨A, a, ⟨hff.preimageVertexIso he⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionKanComparison_naturality := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletion_finite_factorization := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_finite_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionKanComparison_naturality._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionKanComparison_naturality._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionKanComparison_naturality._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionKanComparison_naturality._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionKanComparison_naturality._proof_4

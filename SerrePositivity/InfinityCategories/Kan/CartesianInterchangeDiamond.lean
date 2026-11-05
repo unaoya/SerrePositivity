@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
 public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
 
@@ -12,8 +14,11 @@ public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {K L M : SSet.{u}} {x₀ x₁ : K _⦋0⦌} {y₀ y₁ : L _⦋0⦌}
   (e : K.Edge x₀ x₁) (f : L.Edge y₀ y₁) (p : K ⊗ L ⟶ M)
 
@@ -65,4 +70,34 @@ lemma cartesianInterchangeDiamond_comp :
   (SSet.HomotopyCategory.homMk_comp_homMk (cartesianInterchangeDiamond e f p).first).trans
     (SSet.HomotopyCategory.homMk_comp_homMk (cartesianInterchangeDiamond e f p).second).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_comp := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_diagonal := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond_diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_first := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeDiamond_second := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeDiamond_second
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeFirstLower := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstLower
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeFirstUpper := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeFirstUpper
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeSecondLower := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondLower
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianInterchangeSecondUpper := _root_.SerrePositivity.InfinityCategories.Kan.cartesianInterchangeSecondUpper

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSurjectionReduction
 
 /-! # 単調全射の fiber max の connection のみによる実現
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSurjectionReduction
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が隣接 connection だけから生成される条件。 -/
 inductive CubeConnectionGenerated : {n m : ℕ} → (CubeVertex n → CubeVertex m) → Prop
@@ -63,4 +68,58 @@ lemma cubeFiberMax_generated {n m : ℕ} (q : Fin n → Fin m)
     (hq : Monotone q) (hs : Function.Surjective q) : CubeMapGenerated (cubeFiberMax q) :=
   cubeConnectionGenerated_generated (cubeFiberMax_connectionGenerated q hq hs)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeConnectionGenerated_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeConnectionGenerated_generated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_connectionGenerated := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_connectionGenerated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_generated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.brecOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.brecOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.comp (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.comp := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.connection (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.connection := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.connection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.id (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.id := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.comp (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below.comp := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.connection (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below.connection := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.connection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.id (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below.id := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeConnectionGenerated.below.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeConnectionGenerated.below.rec

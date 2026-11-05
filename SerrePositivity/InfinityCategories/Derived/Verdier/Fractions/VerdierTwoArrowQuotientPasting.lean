@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization
 public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q}
@@ -67,4 +72,31 @@ lemma verdierTwoArrowQuotientPasting_top :
   exact r.lift.triangle_image.trans
     (SSet.yonedaEquiv.apply_symm_apply r.triangle.simplex).symm
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.twoArrowLiftedFractionTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.twoArrowLiftedFractionTriangle_last := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierTwoArrowQuotientPasting := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierTwoArrowQuotientPasting_original := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting_original
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierTwoArrowQuotientPasting_top := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.twoArrowLiftedFractionTriangle._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.twoArrowLiftedFractionTriangle.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.twoArrowLiftedFractionTriangle.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierTwoArrowQuotientPasting.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierTwoArrowQuotientPasting.eq_1

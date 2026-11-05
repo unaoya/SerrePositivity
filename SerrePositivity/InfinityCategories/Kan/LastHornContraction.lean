@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Group.Nat.Defs
 public import Mathlib.Algebra.GroupWithZero.Defs
 public import Mathlib.Algebra.GroupWithZero.Nat
@@ -54,9 +56,12 @@ public import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.LastHornContraction
+end SerrePositivity.KST.Spectra.LastHornContraction
+namespace SerrePositivity.InfinityCategories.Kan.LastHornContraction
+open SerrePositivity.KST.Spectra.LastHornContraction
 
 noncomputable section
 
@@ -140,4 +145,46 @@ def homotopy (n : ℕ) : SSet.Homotopy
 
 end
 
-end SerrePositivity.KST.Spectra.LastHornContraction
+end SerrePositivity.InfinityCategories.Kan.LastHornContraction
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.homotopy := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map_ι := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.one := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.one_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.one_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.vertex := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.zero := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.zero_assoc := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.homotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.homotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.map._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.map._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.LastHornContraction.vertex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.LastHornContraction.vertex._proof_1

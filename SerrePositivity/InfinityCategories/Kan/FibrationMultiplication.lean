@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 
 /-!
@@ -14,9 +16,14 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.ConnectingProduct
+end SerrePositivity.KST.Spectra.ConnectingProduct
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：任意の面添字による二つの積の充填は、同じ積の類を持つ。
 方針：単位元と結合則で RelStruct を作り、面添字独立性を使う。
@@ -30,6 +37,7 @@ theorem KanHomotopyGroup.mul_unique_at {X : SSet.{u}} [KanComplex X]
     (PtSimplex.MulStruct.assoc' (.oneMul f i) h h'))
 
 namespace ConnectingProduct
+open SerrePositivity.KST.Spectra.ConnectingProduct
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {f g : B.PtSimplex (n + 2) (p.app _ e)}
@@ -203,4 +211,37 @@ noncomputable def connectingHom {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
   map_one' := connecting_one p e (n + 1)
   map_mul' := connecting_mul p e n
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.connectingHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connecting_mul := _root_.SerrePositivity.InfinityCategories.Kan.connecting_mul
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.compatible := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.compatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.exists_product_lift := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.exists_product_lift
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.face := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.output_face := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.output_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.mul_unique_at := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_unique_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConnectingProduct.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.ConnectingProduct.face.eq_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
 public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 
 /-- 関手辺の実頂点評価の類は、同じ関手辺の二胞体を評価した成分。 -/
@@ -91,4 +96,19 @@ theorem pointedFunctorHomPointHom {B : SSet.{u}}
   rw [he.trans hclass] at hc
   exact hc
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorHomEvaluate_edge_hom := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorHomEvaluate_edge_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFunctorHomPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFunctorHomPointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedTransformationFiberHom_vertex := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationFiberHom_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedTransformationPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedTransformationPointHom

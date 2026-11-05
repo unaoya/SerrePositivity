@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
@@ -36,9 +38,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FiberComparison
+end SerrePositivity.KST.LocalizingInvariants.FiberComparison
+namespace SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison
+open SerrePositivity.KST.LocalizingInvariants.FiberComparison
 
 lemma cospan_right_map {X : SSet.{u}} (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
     horn₂₂.ι₀₂ ≫ pullbackCospan F = squareRightEdge ≫ F := by
@@ -50,4 +55,13 @@ lemma cospanConeSquareIso_inv_rightEdge :
   rw [← cospanSquareBoundary_rightEdge, cospanSquareBoundary]
   simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
-end SerrePositivity.KST.LocalizingInvariants.FiberComparison
+end SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.cospanConeSquareIso_inv_rightEdge := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.cospanConeSquareIso_inv_rightEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.FiberComparison.cospan_right_map := _root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberComparison.cospan_right_map

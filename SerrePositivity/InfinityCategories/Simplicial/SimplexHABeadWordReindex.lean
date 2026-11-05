@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 
 /-! # 元の bead 連結語の右端点と自由次元の移送
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 元の語を、右端点と自由次元の等号だけで同じ語へ移送する。 -/
 def simplexHABeadWordReindex {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
@@ -25,4 +30,25 @@ lemma simplexHABeadWordReindex_heq {n : ℕ} {a b c : Fin (n + 1)} {p q : ℕ}
   cases hd
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex_heq := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexHABeadWordReindex._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordReindex._proof_4

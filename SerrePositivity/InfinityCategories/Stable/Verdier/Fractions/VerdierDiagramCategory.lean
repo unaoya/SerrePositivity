@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
@@ -19,8 +21,11 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
+end SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
+namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram
+open SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
 
-instance : Category VerdierDiagram.{u} where
+instance instCategory : Category VerdierDiagram.{u} where
   Hom D E := FunctorHom D.square E.square
   id D := 𝟙 (HomotopyCategory.mk (functorVertex D.square))
   comp f g := f ≫ g
@@ -28,4 +33,19 @@ instance : Category VerdierDiagram.{u} where
   comp_id f := Category.comp_id f
   assoc f g h := Category.assoc f g h
 
-end SerrePositivity.KST.LocalizingInvariants.VerdierDiagram
+end SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.instCategory := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.instCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.instCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierDiagram.instCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagram.instCategory._proof_3

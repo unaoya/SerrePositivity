@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder
 public import SerrePositivity.KST.LocalizingInvariants.KanCylinderComparisonExtension
 
@@ -17,10 +19,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed SSet
 open CategoryTheory.CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
@@ -149,4 +154,73 @@ lemma exists_verdierCompletedCylinderImage (X : VerdierRecoveredCompletedCylinde
     simpa only [hR, hRr] using hunit P pp.inr
   exact ⟨⟨V, HV, hstart', hboundary, hsUnit, hbUnit⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierCompletedCylinderImage := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierCompletedCylinderImage
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage._sizeOf_inst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.boundary_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.boundary_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.boundary_unit_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.boundary_unit_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.casesOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.ctorIdx := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.homotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.homotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.noConfusionType := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.rec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.recOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.start_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.start_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.start_unit_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.start_unit_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.whole := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.whole
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk.inj := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk.injEq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage.mk.sizeOf_spec

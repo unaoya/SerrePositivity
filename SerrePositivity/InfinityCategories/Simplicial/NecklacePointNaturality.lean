@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 
 /-! # 元の一点からの necklace 写像の自然性
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 全高次の定値単体への作用は、同じ零単体の像の退化である。 -/
@@ -59,4 +64,22 @@ lemma wedgeInr_last (T U : NecklaceShape) :
   intro i
   rfl
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.map_constantSimplex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.map_constantSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_comp_eq := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_comp_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.pointMap_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_first := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInl_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_last := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeInr_last

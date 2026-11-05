@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedVertexPointHom
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (e : E _⦋0⦌)
 
 /-- 元の表現の pointedMap の同じ点を、元の分類図式の指定値上の実 fiber 点として読む。 -/
@@ -80,4 +85,19 @@ theorem transportRepresentationPointHom_diagramIso :
       simp only [Category.assoc, Iso.hom_inv_id_assoc]
     _ = _ := hc.trans hS
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportRepresentationPointAt := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportRepresentationPointAt_normalized := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt_normalized
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportRepresentationPointHom_diagramIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointHom_diagramIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportRepresentationPointAt._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportRepresentationPointAt._proof_1

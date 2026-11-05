@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamily
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 
@@ -15,10 +17,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B : StableCategory.{u}} (i : ExactMap A B) (x y : B.obj _⦋0⦌)
 
 /-- 概要：元の両端固定 span の全族射影は同じ第二終点の定値射。
@@ -167,4 +172,55 @@ theorem weakSpanFixedSimplexFamilyPrism_one :
     rw [ordinaryComparisonPrism_one]
     rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedFamily_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedFamily_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse_base := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse_base
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_family := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_family
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_one := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism_zero := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexCollapse._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexCollapse._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedSimplexFamilyPrism.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedSimplexFamilyPrism.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanFixedZeroSimplexLift.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanFixedZeroSimplexLift.eq_1

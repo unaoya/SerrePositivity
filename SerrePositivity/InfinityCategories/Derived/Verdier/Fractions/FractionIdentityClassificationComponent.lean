@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
 private theorem component_reindex_target {D X : SSet.{u}} {F G : D ⟶ X}
     (α : FunctorHom F G) {p q : D _⦋0⦌} (hp : p = q)
@@ -81,4 +86,25 @@ theorem weakQuotientCosliceCompositePoint_section_image_hom :
   rw [← fractionIdentityNativeClassificationHom_eq h x]
   exact weakQuotientCosliceCompositePoint_native_image_hom h x
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationHom_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationHom_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanQuotientDiagram_classificationIso_native_component := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_classificationIso_native_component
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientCosliceCompositePoint_section_image_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientCosliceCompositePoint_section_image_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityNativeClassificationIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityNativeClassificationIso._proof_2

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass
@@ -22,10 +24,13 @@ set_option backward.isDefEq.respectTransparency.types false
 set_option maxRecDepth 4096
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -219,4 +224,136 @@ def weakIdentityQuotientFiberUnit_pointIso : VertexIso
   have hr := e.isQCatEquivalence.isFullyFaithful.preimageVertexIso hi
   exact eqToIso (congrArg HomotopyCategory.mk (weakIdentityQuotientFiberUnit_identity h x)) ≪≫ hr
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_identity := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_identity
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_pointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_pointIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_pointIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValue_pointIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientTransportPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientTransportPoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientTransportPoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientTransportPointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientTransportPointIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientTransportPointIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientTransportPoint_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientTransportPoint_hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValueEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValueEdge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValueEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValueEdge_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValueEdge_hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValue_normalizedIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValue_normalizedIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValue_normalizedIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_pointIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_pointIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_pointIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_pointIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberUnit_recovery._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberUnit_recovery._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValueEquivalence._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValueEquivalence._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValue_pointIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValue_pointIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValue_pointIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientFiberValue_pointIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientFiberValue_pointIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValueEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValueEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValue_normalizedIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValue_normalizedIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientValue_normalizedIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientValue_normalizedIso._proof_2

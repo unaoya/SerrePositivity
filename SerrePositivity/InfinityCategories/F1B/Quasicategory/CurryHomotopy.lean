@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalObjects
 public import Mathlib.CategoryTheory.Comma.Arrow
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+end SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
+open SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
 
 variable {A B X : SSet.{u}} {F G : A ⊗ B ⟶ X} (H : SSet.Homotopy F G)
 
@@ -85,4 +90,37 @@ lemma naturality [Quasicategory X] {b₀ b₁ : B _⦋0⦌} (e : B.Edge b₀ b�
           (Truncated.HomotopyCategory.homMk e.toTruncated) :=
   functorHomEvaluate_naturality _ _
 
-end SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+end SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.component_arrow := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.component_arrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.hom := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.homotopy := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.naturality := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.slice := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.slice
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.sliceMap := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.sliceMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.hom.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.hom.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.homotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.homotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CurryHomotopy.homotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy.homotopy._proof_3

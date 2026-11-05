@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.FunLike.Basic
@@ -32,9 +34,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
+end SerrePositivity.KST.LocalizingInvariants.LaxInclusion
+namespace SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion
+open SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
 
@@ -55,4 +60,28 @@ lemma zeroD_post (x : C.obj _⦋0⦌) :
   rw [zeroD, zeroDiagram_const_vertex]
   exact (chosenZeroVertex D.obj).isZero
 
-end SerrePositivity.KST.LocalizingInvariants.LaxInclusion
+end SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC_post := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC_post
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD_post := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroD.eq_1

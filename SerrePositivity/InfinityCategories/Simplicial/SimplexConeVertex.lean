@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrependRelations
 
 /-!
@@ -13,8 +15,11 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrependRelati
 
 @[expose] public section
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：標準単体の頂点写像の先頭に零点を追加する。
@@ -79,4 +84,28 @@ theorem simplexConeZero_δ_zero {k : SimplexCategory} {n : ℕ} (x : k ⟶ ⦋n�
   ext i : 3
   rfl
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_succ := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero_δ_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexConeZero._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero._proof_2

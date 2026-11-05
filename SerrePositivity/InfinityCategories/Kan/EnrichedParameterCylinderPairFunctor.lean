@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairHom
 
 /-!
@@ -15,6 +17,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w z
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable (A : SSet.{u}) {C : Type v} {T : Type w}
   [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} T]
   (F : EnrichedFunctor SSet.{u} T C)
@@ -67,4 +72,25 @@ lemma pairFunctor_precomp {R : Type z} [EnrichedCategory SSet.{u} R]
       (G.map (I.obj X) (I.obj Y)) (F.map (I.obj X) (I.obj Y))
   rw [Category.comp_id, pairBySide_precomp]
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairFunctor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairFunctor_precomp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor_precomp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairMap := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairMap_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairMap_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairObject := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairObject

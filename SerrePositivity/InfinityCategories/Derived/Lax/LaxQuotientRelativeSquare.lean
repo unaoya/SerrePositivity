@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison
 public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 public import SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare
@@ -17,10 +19,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare
-local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+end SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare
+open SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare
+local instance instSimplicialCategoryOmegaSpectrum : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
   (h : IsVerdierSequence i r)
@@ -118,4 +123,79 @@ lemma valueSquare_lower (Φ : StableInfinity.{u} ⟶ Sp.{u}) :
         (lower p q i r) (comparisonTriangle p q i r h)).triangle.simplex ≫ Φ := by
   rw [valueSquare, ← Category.assoc, square_lower]
 
-end SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.cComposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.cComposite := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.cComposite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.cSource (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.cSource := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.cSource
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.comparisonTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.comparisonTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.comparisonTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.dComposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.dComposite := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.dComposite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.dSource (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.dSource := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.dSource
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.instSimplicialCategoryOmegaSpectrum (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.instSimplicialCategoryOmegaSpectrum := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.instSimplicialCategoryOmegaSpectrum
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.legsIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.legsIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.legsIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.lower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.lower := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.lower
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_left := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_lower := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_top := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.square_upper := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.square_upper
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.upper (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.upper := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.upper
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_left := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_lower := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_top := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare_upper := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare_upper
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare.valueSquare.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare.valueSquare.eq_1

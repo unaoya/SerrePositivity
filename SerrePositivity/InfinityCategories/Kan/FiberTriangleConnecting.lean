@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FiberTriangleReduction
 public import Mathlib.Tactic.Abel
 public import Mathlib.Algebra.BigOperators.Fin
@@ -15,9 +17,12 @@ public import Mathlib.Algebra.BigOperators.Fin
 universe u v
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FiberTriangle
+end SerrePositivity.KST.Spectra.FiberTriangle
+namespace SerrePositivity.InfinityCategories.Kan.FiberTriangle
+open SerrePositivity.KST.Spectra.FiberTriangle
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -78,4 +83,13 @@ theorem alternating_connecting {E B : SSet.{u}} {p : E ⟶ B}
   abel
 
 end
-end SerrePositivity.KST.Spectra.FiberTriangle
+end SerrePositivity.InfinityCategories.Kan.FiberTriangle
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.alternating_connecting := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.alternating_connecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberTriangle.connecting_product := _root_.SerrePositivity.InfinityCategories.Kan.FiberTriangle.connecting_product

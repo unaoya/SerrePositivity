@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -63,6 +65,9 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet HomotopicalAlgeb
 open SSet.modelCategoryQuillen
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -154,4 +159,46 @@ theorem freeConstantPath_endpoint (Y : PointedSimplicialSet.{u}) (i : Fin 2) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath_endpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath_endpoint_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath_endpoint_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint_rlp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace_kanComplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.anodyne_prePointed_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeConstantPath.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathEndpoint.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freePathSpace._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace._proof_1

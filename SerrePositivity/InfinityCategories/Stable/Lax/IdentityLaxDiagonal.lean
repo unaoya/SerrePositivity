@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.FunLike.Basic
@@ -33,9 +35,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
+end SerrePositivity.KST.LocalizingInvariants.IdentityLax
+namespace SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax
+open SerrePositivity.KST.LocalizingInvariants.IdentityLax
 
 lemma constant_evaluation {K X : SSet.{u}} (k : K _⦋0⦌) :
     constantFunctorMap K X ≫ evaluateFunctorAt (Y := X) k = 𝟙 X := by
@@ -46,4 +51,10 @@ lemma constant_evaluation {K X : SSet.{u}} (k : K _⦋0⦌) :
   change X.map (𝟙 n) x = x
   exact CategoryTheory.Functor.map_id_apply X n x
 
-end SerrePositivity.KST.LocalizingInvariants.IdentityLax
+end SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IdentityLax.constant_evaluation := _root_.SerrePositivity.InfinityCategories.Stable.Lax.IdentityLax.constant_evaluation

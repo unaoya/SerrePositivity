@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberVertices
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 元の Kan 点の pointed-space 表示は、同じ点の Yoneda 射の coherent 辺そのもの。 -/
 theorem pointedKanPointEdge_eq (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
@@ -59,4 +64,13 @@ theorem kanPointHom_comp_of_edge {K L : KanObject.{u}} (f : K ⟶ L)
       exact t.d₁.trans (ht.trans (pointedKanPointEdge_eq L _))
   exact Truncated.HomotopyCategory.homMk_comp_homMk T.toTruncated
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanPointHom_comp_of_edge := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanPointHom_comp_of_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedKanPointEdge_eq := _root_.SerrePositivity.InfinityCategories.F1.KanModels.pointedKanPointEdge_eq

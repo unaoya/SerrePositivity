@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -170,4 +175,28 @@ theorem componentFiber_exact (e : E _⦋0⦌) (a : π₀ E) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_exact := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_exact
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_kernel := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_kernel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_one_at := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_one_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentConnecting_rfl := _root_.SerrePositivity.InfinityCategories.Kan.componentConnecting_rfl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.componentFiber_exact := _root_.SerrePositivity.InfinityCategories.Kan.componentFiber_exact
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiber_vertex_base := _root_.SerrePositivity.InfinityCategories.Kan.fiber_vertex_base

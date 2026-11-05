@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 
@@ -15,6 +17,9 @@ public import Mathlib.CategoryTheory.Limits.Shapes.Products
 @[expose] public section
 universe u v
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 open scoped ConcreteCategory
 variable {ι : Type v}
@@ -118,4 +123,49 @@ def simplicialSumMap {A B : ι → SSet.{max u v}} (f : ∀ i, A i ⟶ B i) :
     simplicialSumInclusion A i ≫ simplicialSumMap f =
       f i ≫ simplicialSumInclusion B i := rfl
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumDesc := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_map := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum_hom_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSum._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumDesc._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumIsCoproduct._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct._proof_2

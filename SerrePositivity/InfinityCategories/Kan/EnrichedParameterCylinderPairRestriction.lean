@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairFunctor
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderRestriction
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {A B : SSet.{u}} (i : A ⟶ B)
 
 /-- 端ごとの Hom でパラメータだけを変える射。 -/
@@ -61,4 +66,22 @@ lemma pairFunctor_restriction {C : Type v} {T : Type w}
   rw [Category.comp_id, restrictionMap_eq_change, restrictionMap_eq_change]
   exact pairBySide_change i (G.obj X).side (G.obj Y).side (G.map X Y) (F.map X Y)
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.changeBySide (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.changeBySide := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.changeBySide
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_change := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_change
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairFunctor_restriction := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairFunctor_restriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_eq_change := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_eq_change
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.changeBySide.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.changeBySide.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.changeBySide.match_1

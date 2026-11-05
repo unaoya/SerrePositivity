@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices
 
 /-! # 元の necklace 単体と全頂点作用の回収
@@ -9,8 +11,14 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite Simplicial SSet
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の単体の i 番目の頂点を、同じ necklace の零単体として取り出す。 -/
 def simplexVertex (T : NecklaceShape) {n : ℕ} (s : T.carrier.{u} _⦋n⦌)
@@ -59,4 +67,22 @@ lemma necklaceVertexMap_injective (T U : Necklace.{u}) :
   rw [necklaceVertexMap_simplex, necklaceVertexMap_simplex]
   exact congrFun h (s.val i)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_simplex := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_simplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.simplexVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.simplexVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.simplexVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.simplexVertex_eq_const := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.simplexVertex_eq_const
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.vertexEquiv_simplexVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.vertexEquiv_simplexVertex

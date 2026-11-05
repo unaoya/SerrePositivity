@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
@@ -15,8 +17,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open Spectra
 
 variable {P X E B : SSet.{u}} {q : P ⟶ X} {s : P ⟶ E} {g : X ⟶ B} {p : E ⟶ B}
@@ -81,4 +86,49 @@ lemma pullbackFiberIso_point (h : IsPullback q s g p) (a : P _⦋0⦌) :
   change s.app _ ((fiberι q _).app _ (fiberPoint q a)) = _
   rw [fiberι_point, fiberι_point]
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.fiber_vertex_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_hom_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_basepoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullback_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso.congr_simp := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.pullbackFiberIso.eq_1

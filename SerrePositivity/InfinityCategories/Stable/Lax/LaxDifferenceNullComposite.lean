@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
@@ -40,9 +42,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Lax
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 端点も含む二辺の表示変更は、合成の零性を保つ。 -/
 lemma comp_zero_of_arrowMk_eq {T : Type*} [Category T] [HasZeroMorphisms T]
@@ -65,4 +70,16 @@ local instance laxDifferenceFunctorZeroMorphisms (A X : SSet.{u})
     HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
   hasZeroMorphisms_ho
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Lax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.comp_zero_of_arrowMk_eq := _root_.SerrePositivity.InfinityCategories.Stable.Lax.comp_zero_of_arrowMk_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZero := _root_.SerrePositivity.InfinityCategories.Stable.Lax.laxDifferenceFunctorZero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Lax.laxDifferenceFunctorZeroMorphisms (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZeroMorphisms := _root_.SerrePositivity.InfinityCategories.Stable.Lax.laxDifferenceFunctorZeroMorphisms

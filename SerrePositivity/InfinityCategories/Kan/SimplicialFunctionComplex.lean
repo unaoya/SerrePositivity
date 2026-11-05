@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyProduct
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory SSet
 
 namespace SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+namespace SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+open SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 
 noncomputable section
 
@@ -88,4 +93,40 @@ instance kanComplex (S : Type u) (X : SSet.{u}) [KanComplex X] : KanComplex (obj
 
 end
 
-end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.eval := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.hom_ext := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.lift := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.lift_eval := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.lift_eval_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift_eval_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.obj := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.eval._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.lift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.lift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.obj._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.obj._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj._proof_2

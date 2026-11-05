@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
 public import SerrePositivity.InfinityCategories.Core.PastingShapes
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn
+end SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn
+open SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn
 variable {X : SSet.{u}} (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
   (h : squareRightEdge ≫ L = squareLeftEdge ≫ R)
 
@@ -68,4 +73,37 @@ lemma transposed_top (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
   rw [transposed, curry_evaluateFunctorAt_interval]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn
+end SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.compatible := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.diagram := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.diagram_left := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.diagram_right := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.transposed := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.transposed_bottom := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.transposed_top := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.diagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.diagram._proof_2 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.diagram._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn.transposed.eq_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn.transposed.eq_1

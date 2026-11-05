@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -56,4 +61,31 @@ theorem weakCosliceComposite_isPrecompositionEquivalence :
     (sliceUnderProjection (yonedaEquiv.symm (q.hom.app (Opposite.op ⦋0⦌) x)))).isQCatEquivalence
   exact he.ofFunctorIso (weakCosliceComposite_scaffold_functorIso h x).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_isPrecompositionEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_isPrecompositionEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_functorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_functorIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_functorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_pointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_pointIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_pointIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_relativeIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_pointIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_pointIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_pointIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_pointIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_relativeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComposite_scaffold_relativeIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComposite_scaffold_relativeIso._proof_2

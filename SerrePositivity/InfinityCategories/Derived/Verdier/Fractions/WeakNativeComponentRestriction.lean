@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
 private theorem normalize_two_isos {D : Type v} [Category.{w} D]
     {a b c d e f : D} (s : a ≅ b) (t : b ≅ c) (s' : d ≅ e) (t' : e ≅ f)
@@ -94,4 +99,28 @@ theorem weakQuotientMappingComparison_native_component :
   exact normalize_two_isos s (t ≪≫ v) s' (t' ≪≫ v') α β δ h₀
     (normalize_two_isos t v t' v' β γ δ h₁ h₂)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_initialVertexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanQuotientDiagram_initialVertexIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_initialVertexIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_native_component := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_native_component
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanComparisonValueEdge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanComparisonValueEdge_edge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanQuotientDiagram_initialVertexIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanQuotientDiagram_initialVertexIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanComparisonValueEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanKanComparisonValueEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanKanComparisonValueEdge._proof_2

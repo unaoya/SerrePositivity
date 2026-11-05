@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
 public import SerrePositivity.InfinityCategories.Stable.ZeroCornerPasting
 
@@ -13,9 +15,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Stable
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：指定 span を零角の左四角形の右側として押し出し長方形に配置できる。
 方針：第二枝の fiber 四角形に第一枝の合成二単体を貼る。
@@ -93,4 +98,16 @@ lemma stable_hasColimit_span {X : SSet.{u}} [Quasicategory X] [IsStable X]
   rw [← hp]
   exact ⟨pushoutCocone R, hR⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Stable
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutPresentation_of_span
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span := _root_.SerrePositivity.InfinityCategories.Stable.exists_stable_pushoutSquare_of_span
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.stable_hasColimit_span := _root_.SerrePositivity.InfinityCategories.Stable.stable_hasColimit_span

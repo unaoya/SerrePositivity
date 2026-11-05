@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom
@@ -9,10 +11,13 @@ public import SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom
 noncomputable section
 universe u v w
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 private theorem cancelIsoConjugation {D : Type v} [Category.{w} D]
     {a b c d : D} (e : a ≅ b) (f : c ≅ d) (α : b ⟶ d) :
     e.inv ≫ (e.hom ≫ α ≫ f.inv) ≫ f.hom = α := by
@@ -69,4 +74,25 @@ theorem weakQuotientMappingComparisonHomotopy_hom :
       (functorEdgeOfSimplicialHomotopy (weakQuotientMappingComparisonHomotopy h x)) =
         weakQuotientMappingComparison h x := functorHomHomotopy_hom _
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparisonHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparisonHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparisonHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparisonHomotopy_hom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparisonHomotopy_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_pre := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_pre_normalized := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_pre_normalized
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_restricted (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_restricted := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_restricted

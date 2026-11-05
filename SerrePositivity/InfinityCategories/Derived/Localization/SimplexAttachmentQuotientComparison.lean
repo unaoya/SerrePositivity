@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 variable {B C : SSet.{u}} [Quasicategory B] [Quasicategory C] (q : B ⟶ C) (n : ℕ)
 
 instance simplexAttachmentCoreRestriction_trivialKanFibration :
@@ -112,4 +117,58 @@ lemma exists_relative_simplexAttachmentQuotientFamily {P Q : SSet.{u}}
   have sq : CommSq a i (simplexAttachmentQuotientResolutionMap q n) b := ⟨ha⟩
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_simplexAttachmentQuotientFamily := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_relative_simplexAttachmentQuotientFamily
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentCoreRestriction_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentCoreRestriction_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentCoreRestriction_trivialKanFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientComparison := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientComparison_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientComparison_quotient := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison_quotient
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullback (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientPullback := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullback
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullbackProjection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientPullbackProjection := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullbackProjection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullbackProjection_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientPullbackProjection_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullbackProjection_trivialKanFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullback_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientPullback_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullback_quasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolution (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientResolution := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolution
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientResolutionIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientResolutionMap := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionMap_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientResolutionMap_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionMap_trivialKanFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionSource (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientResolutionSource := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientResolutionSource
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentQuotientPullback._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentQuotientPullback._proof_1

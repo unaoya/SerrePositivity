@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeBooleanJoin
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeVertices
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
@@ -12,6 +14,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の全連結射の左出力は、元の左射の Bool 座標作用そのもの。 -/
@@ -84,4 +89,16 @@ lemma necklaceBooleanMap_wedge_join {T T' U U' : Necklace.{u}} (f : T ⟶ T') (g
   · exact (necklaceBooleanMap_wedge_right f g b c a).trans
       (T'.down.wedgeBooleanJoin_right U'.down _ _ a).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_wedge_join := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_wedge_join
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_wedge_left := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_wedge_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_wedge_right := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_wedge_right

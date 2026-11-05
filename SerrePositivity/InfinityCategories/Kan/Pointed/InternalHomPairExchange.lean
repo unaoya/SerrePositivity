@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
@@ -18,6 +20,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -118,4 +123,28 @@ theorem pairIso_pre_outer (A : C) {K' K : C} (j : K' ⟶ K) (L Y : C) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_post := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_pre_inner := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso_pre_inner
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_pre_outer := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso_pre_outer
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairIso_swap := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairIso_swap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairNatIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.pairNatIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.pairNatIso

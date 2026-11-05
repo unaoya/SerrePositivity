@@ -32,7 +32,7 @@ lemma isTerminalVertex_tensor {X Y : SSet.{u}} [Quasicategory X] [Quasicategory 
   apply isTerminalVertex_of_pinchedHom_isContractibleKan
   intro z
   exact isContractibleKan_of_iso (pinchedHomTensorIso z (x, y)).symm
-    (SerrePositivity.KST.SConstruction.contractibleKan_tensor
+    (SerrePositivity.InfinityCategories.Core.contractibleKan_tensor
       (hx.pinchedHom_isContractibleKan _) (hy.pinchedHom_isContractibleKan _))
 
 end SerrePositivity.InfinityCategories.F2

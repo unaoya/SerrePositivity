@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushou
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -69,4 +74,31 @@ theorem lower_face_last : stdSimplex.δ (2 : Fin 3) ≫ lower.{u} =
   rw [← upper_swap, ← Category.assoc, upper_face_last]
   rfl
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_last := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_last_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_last_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_face_zero_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_face_zero_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_last := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_last_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_last_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_face_zero_assoc := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_face_zero_assoc

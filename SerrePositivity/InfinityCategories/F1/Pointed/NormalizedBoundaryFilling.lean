@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -36,9 +38,12 @@ public import SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalizatio
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.KST.Spectra.BoundaryNormalization
+namespace SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+open SerrePositivity.KST.Spectra.BoundaryNormalization
 
 noncomputable section
 
@@ -107,4 +112,19 @@ theorem exists_filler_of_lastSimplex {X : SSet.{u}} [KanComplex X]
 
 end
 
-end SerrePositivity.KST.Spectra.BoundaryNormalization
+end SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.exists_filler_of_lastSimplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.exists_filler_of_lastSimplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.last_face_exchange := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.last_face_exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryNormalization.lastSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization.lastSimplex._proof_1

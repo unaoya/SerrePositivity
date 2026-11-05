@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow
 public import SerrePositivity.KST.Fibration.PointSourceCosliceFiber
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
   (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (x : X _⦋0⦌)
 
@@ -61,4 +66,28 @@ theorem fixedFractionCosliceEvaluation_inclusion (y : X _⦋0⦌) :
   rw [fixedFractionCosliceEvaluation, PointSourceCosliceData.toFiber, vertexFiberLift_ι]
   rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation_inclusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedMarkedSpanToFamily_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedMarkedSpanToFamily_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceData := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceData
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceEvaluation := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionFamilyCosliceEvaluation_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyCosliceEvaluation_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fixedFractionCosliceEvaluation.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fixedFractionCosliceEvaluation.eq_1

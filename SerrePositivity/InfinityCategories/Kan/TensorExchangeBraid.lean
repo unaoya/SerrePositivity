@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.TensorExchangeCoherence
 
 /-!
@@ -13,6 +15,9 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
 
 /-- 最初の三因子の交換は Yang–Baxter 等式を満たし、右側の因子は同じまま保つ。 -/
@@ -28,4 +33,10 @@ lemma exchange_braid (A K S T : C) :
     Functor.flip, curriedTensor] at ⊢
   convert h using 1 <;> monoidal
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_braid := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_braid

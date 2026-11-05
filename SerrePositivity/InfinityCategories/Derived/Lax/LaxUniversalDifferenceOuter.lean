@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceRectangle
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
   (h : IsVerdierSequence i r)
@@ -71,4 +76,46 @@ def outerDiagram : VerdierDiagram.{u} := by
     right_edge := outerSquare_right p q i r h
     zero_corner := by rw [hz, stableObject_vertex]; exact zeroCategory_isZero }
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare_left := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerDiagram._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerDiagram._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.outerSquare.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.outerSquare.eq_1

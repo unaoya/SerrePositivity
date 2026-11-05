@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportOutputCompletion
 
 /-! # 順序つき有限 max 表示からの実際の cubical 射の構成
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSupportOutputCompletion
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 任意の順序分離した表示を圧縮すると、全入力を尽くす support 分割となる。 -/
@@ -52,4 +57,19 @@ lemma cubeOrderedNormalForm_generated {n m : ℕ} (s : CubeJoinNormalForm n m)
   rw [← he]
   exact (cubeOrderedNormalFormHom s h).property
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormCompressedPartition := _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormCompressedPartition
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormHom := _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalFormHom_eval := _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalFormHom_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeOrderedNormalForm_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeOrderedNormalForm_generated

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposition
 
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposit
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 入力の後合成と連結は、元の全単体的写像について厳密に一致する。 -/
@@ -35,4 +40,13 @@ lemma necklaceInWedge_postcompose_hom {K L : SSet.{u}} (a : K ⟶ L)
       ((necklaceInPostcompose a y z).map g)).necklaceHom =
         (necklaceInWedgeMap f g).necklaceHom := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_hom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInWedge_postcompose_map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge_postcompose_map

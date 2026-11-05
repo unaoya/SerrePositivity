@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex
 public import SerrePositivity.InfinityCategories.F1.CoreFlag.Rows
 
@@ -16,8 +18,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- パラメーター次数を外側にした core 旗。 -/
@@ -134,4 +139,55 @@ lemma rowInclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C]
   rw [rowInclusion_rowIso]
   exact simplexConstant_isWeakHomotopyEquivalence C m.unop.len
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constantDiagram := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constantDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_rowIso := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_rowIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeResolution (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeResolution := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeResolution
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_6 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso._proof_7 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowIso._proof_7

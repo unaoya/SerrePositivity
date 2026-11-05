@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.FractionClassificationSimplexRestriction
 
 /-! # 指定分類成分を元の strict Kan 値で読むと、同じ section 比較の実成分を回収する -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
   (F : X ⟶ Q) (x : X _⦋0⦌) (c : TransportSimplexCategory X)
 
@@ -52,4 +57,25 @@ theorem fractionKanSpaceDiagram_classificationIso_native_component :
     Iso.trans_inv, Category.assoc, Iso.trans_hom, Iso.symm_hom,
     functorIso_app_hom_evaluate] using hc
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSimplexClassificationValueIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSpaceDiagram_classificationIso_native_component := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSpaceDiagram_classificationIso_native_component
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSimplexClassificationValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSimplexClassificationValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSimplexClassificationValueIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionKanSimplexClassificationValueIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionKanSimplexClassificationValueIso.eq_1

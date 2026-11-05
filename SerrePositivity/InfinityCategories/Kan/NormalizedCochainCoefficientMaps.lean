@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NormalizedCochainComplex
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+open SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
 
 noncomputable section
 
@@ -72,4 +77,28 @@ def complexMap : complex K R M ⟶ complex K R N :=
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential_natural := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_natural
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.extend_post := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend_post
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.post._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.post._proof_2

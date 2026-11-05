@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -38,8 +40,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open Spectra
 
 /-- 厳密引き戻しの fiber の正次数は、右列の消滅から一意となる。 -/
@@ -55,4 +60,10 @@ lemma pullback_positive_fiber_subsingleton
   exact Function.Injective.subsingleton
     (KanHomotopy.equivOfIso n (pullbackFiberIso h a) (pullbackFiberIso_point h a)).injective
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton := _root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.pullback_positive_fiber_subsingleton

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory
 public import SerrePositivity.InfinityCategories.Core.KanCharacterization
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma ho_inverts_all_of_inverts_all {X Q : SSet.{u}} (F : X ⟶ Q)
     (hF : InvertsEdges F Set.univ) :
@@ -61,4 +66,31 @@ lemma invertsAllEdges_toKan {X Y : SSet.{u}} [KanComplex Y] (F : X ⟶ Y) :
   exact @IsGroupoid.all_isIso (hoFunctor.obj Y) _ (kanComplex_ho_isGroupoid Y) _ _
     (SSet.Truncated.HomotopyCategory.homMk ((edgeOfSimplex s).map ((truncation 2).map F)))
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletion := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionMap := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletion_isLocalization := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletion_kanComplex := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletion_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_quasicategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ho_inverts_all_of_inverts_all := _root_.SerrePositivity.InfinityCategories.Derived.Localization.ho_inverts_all_of_inverts_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.invertsAllEdges_toKan := _root_.SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.localization_all_isKan := _root_.SerrePositivity.InfinityCategories.Derived.Localization.localization_all_isKan

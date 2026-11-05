@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -59,4 +64,16 @@ theorem restrictBoth_post {A' A K' K Y Z : C} (i : A' ⟶ A) (j : K' ⟶ K) (f :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_exchange := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_exchange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.restrictBoth_post := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.restrictBoth_post

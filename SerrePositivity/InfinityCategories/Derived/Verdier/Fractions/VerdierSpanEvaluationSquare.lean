@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.FractionEvaluationSquare
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
 
@@ -77,4 +82,25 @@ lemma verdierSpanEvaluationSquare_fiber_left
       (ihom (Δ[1] : SSet.{u})).map q.hom).app (Opposite.op ⦋0⦌) d) := by
   rw [verdierSpanEvaluationSquare_left, ← Category.assoc, vertexFiberι_comp, SSet.const_comp]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare_fiber_left := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_fiber_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare_left := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare_top := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluationSquare.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluationSquare.eq_1

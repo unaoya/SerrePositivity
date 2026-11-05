@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison
@@ -20,6 +22,9 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Lax
+open SerrePositivity.KST.LocalizingInvariants
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
 
 def laxQuotientCLeg_cofiberIso :
@@ -53,4 +58,28 @@ lemma valueMap_laxQuotientDLeg_cofiber :
       SpectrumHo.hom (valueMap Φ q) :=
   valueMap_hom_eq_of_functorIso Φ (laxQuotientDLeg_cofiberIso p q)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Lax
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_cofiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_cofiberIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_cofiberIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg_cofiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientDLeg_cofiberIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg_cofiberIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.valueMap_laxQuotientCLeg_cofiber := _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientCLeg_cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.valueMap_laxQuotientDLeg_cofiber := _root_.SerrePositivity.InfinityCategories.Derived.Lax.valueMap_laxQuotientDLeg_cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_cofiberIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_cofiberIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_cofiberIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_cofiberIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.laxQuotientCLeg_cofiberIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg_cofiberIso._proof_3

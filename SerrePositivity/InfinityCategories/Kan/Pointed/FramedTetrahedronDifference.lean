@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronRelation
 
 /-!
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FramedTetrahedron
+end SerrePositivity.KST.Spectra.FramedTetrahedron
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
+open SerrePositivity.KST.Spectra.FramedTetrahedron
 variable {X : SSet.{u}} (f g : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _⦋0⦌)
     (hf : ∀ i : Fin 4, f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
     (hg : ∀ i : Fin 4, g.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i) = vertex p x i)
@@ -51,4 +56,13 @@ lemma difference_inverse
   apply (cancel_mono (SSet.HomotopyCategory.homMk (edge f p x hf 2 3 (of_decide_eq_true rfl)))).mp
   simp only [Category.assoc, comparison f g p x hf hg hiF hiG hrG ho, IsIso.inv_hom_id]
 
-end SerrePositivity.KST.Spectra.FramedTetrahedron
+end SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.comparison := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.difference_inverse := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.difference_inverse

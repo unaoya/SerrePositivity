@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
@@ -49,9 +51,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma cofiber_diagram_right_vertex (X : SSet.{u}) (z : (CofiberDiagrams.space X) _⦋0⦌) :
     (CofiberDiagrams.right X).app (Opposite.op ⦋0⦌) z =
@@ -90,4 +95,19 @@ lemma identityArrow_source (X : SSet.{u}) :
   change X.map (𝟙 n) x = x
   exact CategoryTheory.Functor.map_id_apply X n x
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_bottom_target_eq_right_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_bottom_target_eq_right_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_diagram_bottom_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_bottom_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cofiber_diagram_right_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.cofiber_diagram_right_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.identityArrow_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.identityArrow_source

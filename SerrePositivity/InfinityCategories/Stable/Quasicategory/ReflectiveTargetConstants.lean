@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
@@ -43,9 +45,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 関手による後合成を、元の像の頂点での定値関手へ正規化する。 -/
 def constantFunctorPostMap {X Y : SSet.{u}} (F : X ⟶ Y) (A : SSet.{u})
@@ -63,4 +68,13 @@ lemma intervalFunctorMap_familyHom_post {A X Y : SSet.{u}} {x y : X _⦋0⦌}
       constantFunctorPostMap F A x y (intervalFamilyHom f) :=
   intervalFunctorMap_familyHom f F
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.constantFunctorPostMap := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.intervalFunctorMap_familyHom_post := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post

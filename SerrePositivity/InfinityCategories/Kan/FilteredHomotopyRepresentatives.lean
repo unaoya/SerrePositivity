@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FilteredKanColimit
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
@@ -15,9 +17,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -153,4 +158,22 @@ theorem homotopy_filtered_eq_eventually (j : J) {x : (F.obj j) _⦋0⦌} (n : �
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_eq_eventually := _root_.SerrePositivity.InfinityCategories.Kan.homotopy_filtered_eq_eventually
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.homotopy_filtered_surjective := _root_.SerrePositivity.InfinityCategories.Kan.homotopy_filtered_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_eq := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ptSimplex_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.relStruct_filtered_factorization := _root_.SerrePositivity.InfinityCategories.Kan.relStruct_filtered_factorization

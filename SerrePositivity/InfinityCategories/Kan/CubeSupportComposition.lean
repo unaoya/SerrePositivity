@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalForm
 
 /-! # 具体的な cubical 合成の support の計算
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalForm
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 合成の有効入力は、非定数一条件と有効な中間座標で特徴づけられる。 -/
@@ -41,4 +46,13 @@ lemma concreteCubeNormalForm_support_comp {X Y Z : ConcreteCube}
     simp [ Finset.mem_biUnion, concreteCubeNormalForm, mem_cubeJoinNormalFormSupport,
       and_comm]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_comp := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp_iff

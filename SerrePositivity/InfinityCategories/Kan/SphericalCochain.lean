@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryMap
 public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalCochain
+end SerrePositivity.KST.Spectra.SphericalCochain
+namespace SerrePositivity.InfinityCategories.Kan.SphericalCochain
+open SerrePositivity.KST.Spectra.SphericalCochain
 
 noncomputable section
 
@@ -96,4 +101,37 @@ theorem differential_cochain :
 
 end
 
-end SerrePositivity.KST.Spectra.SphericalCochain
+end SerrePositivity.InfinityCategories.Kan.SphericalCochain
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.differential_cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.differential_cochain
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue_degeneracy := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue_degeneracy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.zeroExtend_cochain := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.zeroExtend_cochain
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.boundary._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.boundary._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.cochain.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.cochain.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalCochain.simplexValue.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.SphericalCochain.simplexValue.congr_simp

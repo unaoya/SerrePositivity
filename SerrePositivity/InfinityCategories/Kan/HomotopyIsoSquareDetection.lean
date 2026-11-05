@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 
 /-!
@@ -12,8 +14,11 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopy
+open SerrePositivity.KST.Spectra.KanHomotopy
 
 /-- 二つの同型で結ばれる射の全単射性は、対応する任意基点で一致する。 -/
 lemma map_bijective_iff_of_iso_square {A B C D : SSet.{u}}
@@ -37,4 +42,10 @@ lemma map_bijective_iff_of_iso_square {A B C D : SSet.{u}}
     _ ↔ Function.Bijective (map n g (x := eA.hom.app _ a) rfl) :=
       Function.Bijective.of_comp_iff _ iA.bijective
 
-end SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.InfinityCategories.Kan.KanHomotopy
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_bijective_iff_of_iso_square := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_iff_of_iso_square

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSum
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
@@ -19,6 +21,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 variable {ι κ : Type v}
 
@@ -126,4 +131,22 @@ theorem simplicialSumInclusion_isPullback {A B : ι → SSet.{max u v}}
     refine ⟨x, rfl, ?_⟩
     simpa using h
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_isPullback := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumInclusion_reindex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex_commSq := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplicialSumReindex_isPullback := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback

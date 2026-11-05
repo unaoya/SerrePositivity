@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeInclusions
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInWedge
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 三つの元のブロックで一致する augmentation は、元の結合同型で一致する。 -/
@@ -49,4 +54,13 @@ lemma necklaceInAssociator_augmentation {K : SSet.{u}} {w x y z : K _⦋0⦌}
   · exact (congrArg (fun e => U.necklace.down.wedgeInr V.necklace.down ≫ e)
       (necklaceInWedge_inr T (necklaceInWedge U V))).trans (necklaceInWedge_inr U V)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_desc := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_augmentation := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_augmentation

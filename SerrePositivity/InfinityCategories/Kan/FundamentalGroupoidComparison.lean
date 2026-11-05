@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.FundamentalNerveHomotopy
 public import Mathlib.CategoryTheory.Groupoid.FreeGroupoidOfCategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet
 open SerrePositivity.InfinityCategories
 
@@ -84,4 +89,37 @@ lemma fundamentalGroupoidComparison_leftInverse {A B : SSet.{u}} [KanComplex B]
   rw [← CategoryTheory.Functor.assoc, fundamentalGroupoidComparison_fac,
     fundamentalGroupoidInverse_pre, CategoryTheory.Functor.comp_id]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_fundamentalGroupoidExtension := _root_.SerrePositivity.InfinityCategories.Kan.exists_fundamentalGroupoidExtension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_fac := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidComparison_leftInverse := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_leftInverse
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidExtension_fac := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidExtension_fac
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidInverse_pre := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidInverse_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidNerveUnit := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerveUnit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialFundamentalGroupoid := _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid

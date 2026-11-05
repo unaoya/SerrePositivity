@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 次辺の可逆比較を構成し、前段の指定点上の全経路と厳密に一致させる。 -/
 lemma exists_arrowComparison_preservingEndpointPaths {K X : SSet.{u}} [Quasicategory X]
@@ -97,4 +102,13 @@ lemma exists_arrowComparison_preservingPrefixPath {K X : SSet.{u}} [Quasicategor
   obtain ⟨b, hi, hp, _⟩ := exists_arrowComparison_preservingEndpointPaths a j f g w ha hw hc
   exact ⟨b, hi, hp⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_arrowComparison_preservingEndpointPaths := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowComparison_preservingEndpointPaths
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_arrowComparison_preservingPrefixPath := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_arrowComparison_preservingPrefixPath

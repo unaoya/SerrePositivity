@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
 
 /-!
@@ -15,9 +17,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.KST.Spectra.FibrationSquare
+namespace SerrePositivity.InfinityCategories.Kan.FibrationSquare
+open SerrePositivity.KST.Spectra.FibrationSquare
 
 variable {E B E' B' : SSet.{u}} (p : E ⟶ B) (p' : E' ⟶ B')
   (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
@@ -71,4 +76,28 @@ theorem connecting_natural_at [Fibration p] [Fibration p'] [KanComplex B] [KanCo
   subst e'
   exact connecting_natural p p' f g comm e n a
 
-end SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.InfinityCategories.Kan.FibrationSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.base_eqAt := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eqAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.connecting_natural_at := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural_at
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_point := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_ι := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapAt.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt.congr_simp

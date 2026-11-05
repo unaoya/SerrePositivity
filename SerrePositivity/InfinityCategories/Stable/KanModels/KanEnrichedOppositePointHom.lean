@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 public import Mathlib.AlgebraicTopology.SimplicialNerve
@@ -44,9 +46,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
 
@@ -60,4 +65,16 @@ def kanEnrichedOppositeComponentIso (X : EdgewiseEnrichedObject C) (j : J) :
       (kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
     (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex D.opposite X j))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedOppositeComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedOppositeComponentIso._proof_2

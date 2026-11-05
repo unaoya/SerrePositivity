@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.KanFiber
+end SerrePositivity.KST.Spectra.KanFiber
+namespace SerrePositivity.InfinityCategories.Kan.KanFiber
+open SerrePositivity.KST.Spectra.KanFiber
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -66,4 +71,40 @@ def liftRelStruct {n : ℕ} {s t : E.PtSimplex n e} {i : Fin (n + 1)}
     simp only [Category.assoc, fiberLift_ι, r.δ_map_of_gt j hj, const_comp, fiberι_point]
 
 end
-end SerrePositivity.KST.Spectra.KanFiber
+end SerrePositivity.InfinityCategories.Kan.KanFiber
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftRelStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftRelStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanFiber.liftSimplex.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.KanFiber.liftSimplex.congr_simp

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleInitialIso
 
 /-!
@@ -15,8 +17,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 全ての辺を可逆な辺に送る関手という頂点条件。 -/
@@ -108,4 +113,67 @@ lemma constant_isQCatEquivalence {A C : SSet.{u}} [Quasicategory C]
   refine ⟨evaluation A C a, ⟨?_⟩, ⟨evaluation_constant_iso a H⟩⟩
   rw [constant_evaluation]
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.IsEquivalenceDiagramVertex := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_evaluation := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_evaluation_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_evaluation_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_vertex_mem := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_vertex_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_ι := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_ι_assoc := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.constant_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams_quasicategory := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagrams_quasicategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagramsι := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.equivalenceDiagramsι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.IsEquivalenceDiagramVertex._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.IsEquivalenceDiagramVertex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.evaluation_constant_iso._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.evaluation_constant_iso._proof_5

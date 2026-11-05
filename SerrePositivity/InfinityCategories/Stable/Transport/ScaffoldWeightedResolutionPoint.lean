@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -38,9 +40,14 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+end SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 /-- fiber 点の値を変えず、底の頂点の表示だけを等号で変える。 -/
 def vertexFiberPointReindex {E B : SSet.{u}} (q : E ⟶ B)
     {b b' : B _⦋0⦌} (h : b = b') (v : (vertexFiber q b) _⦋0⦌) :
@@ -56,6 +63,7 @@ theorem vertexFiberPointReindex_eq_transport {E B : SSet.{u}} (q : E ⟶ B)
   rfl
 
 namespace ScaffoldTransportComparisonSpan
+open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
 
@@ -80,4 +88,25 @@ theorem strictTransportForget_eq :
   rfl
 
 end ScaffoldTransportComparisonSpan
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex_eq_transport := _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex_eq_transport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientResolutionVertexEq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.fiberPoint_ext := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.fiberPoint_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.strictTransportForget_eq := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.strictTransportForget_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.vertexFiberPointReindex._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.vertexFiberPointReindex._proof_1

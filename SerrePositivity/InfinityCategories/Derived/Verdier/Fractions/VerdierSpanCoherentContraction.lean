@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMinimum
@@ -42,10 +44,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 private def denominatorSpanCollapse : (horn 2 0 : SSet.{u}) ⟶ horn 2 0 :=
   horn₂₀.isPushout.desc horn₂₀.ι₀₁
@@ -349,15 +354,15 @@ private lemma verdierSpanRightExpansion_left (B : StableCategory.{u}) :
   rw [he, uncurry_const_functorVertex]
 
 private def verdierMarkedRightExpansionRaw {A B : StableCategory.{u}} (i : ExactMap A B) :
-    markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⊗
+    markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗
       (Δ[1] : SSet.{u}) ⟶ (ihom (horn 2 0 : SSet.{u})).obj B.obj :=
-  (markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ▷
+  (markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷
     (Δ[1] : SSet.{u})) ≫ (verdierSpanRightExpansion B).h
 
 private def verdierMarkedRightExpansion {A B : StableCategory.{u}} (i : ExactMap A B) :
-    markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⊗
+    markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⊗
       (Δ[1] : SSet.{u}) ⟶
-        markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) :=
+        markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :=
   fullSubcomplexLift _ (verdierMarkedRightExpansionRaw i) (by
     rintro ⟨v, t⟩
     have he := congrArg (fun F => F.app (Opposite.op ⦋0⦌) (v.val, t))
@@ -374,15 +379,15 @@ private def verdierMarkedRightExpansion {A B : StableCategory.{u}} (i : ExactMap
 private lemma verdierMarkedRightExpansion_inclusion {A B : StableCategory.{u}}
     (i : ExactMap A B) :
     verdierMarkedRightExpansion i ≫
-      markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) =
+      markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
         verdierMarkedRightExpansionRaw i := fullSubcomplexLift_ι _ _ _
 
 private lemma verdierMarkedRightExpansion_source {A B : StableCategory.{u}}
     (i : ExactMap A B) :
     verdierMarkedRightExpansion i ≫
-      markedSpanSource B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) =
-    fst (markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i)) Δ[1] ≫
-      markedSpanSource B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) := by
+      markedSpanSource B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) =
+    fst (markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] ≫
+      markedSpanSource B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) := by
   unfold markedSpanSource
   rw [← Category.assoc, verdierMarkedRightExpansion_inclusion]
   dsimp only [verdierMarkedRightExpansionRaw]
@@ -393,66 +398,66 @@ private lemma verdierMarkedRightExpansion_source {A B : StableCategory.{u}}
 
 private lemma verdierMarkedRightExpansion_one {A B : StableCategory.{u}}
     (i : ExactMap A B) :
-    (SSet.ι₁ : markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ⟶ _) ≫
+    (SSet.ι₁ : markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
       verdierMarkedRightExpansion i = 𝟙 _ := by
   have : Mono (markedSpanInclusion B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) := by
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) := by
     dsimp only [markedSpanInclusion]
     infer_instance
   apply (cancel_mono (markedSpanInclusion B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i))).mp
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i))).mp
   rw [Category.assoc, verdierMarkedRightExpansion_inclusion, Category.id_comp]
   dsimp only [verdierMarkedRightExpansionRaw]
   have he : (SSet.ι₁ : markedSpans B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) ⟶ _) ≫
-      (markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ▷
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ⟶ _) ≫
+      (markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ▷
         (Δ[1] : SSet.{u})) =
-      markedSpanInclusion B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) ≫
+      markedSpanInclusion B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) ≫
         SSet.ι₁ := rfl
   rw [← Category.assoc, he, Category.assoc, (verdierSpanRightExpansion B).h₁,
     Category.comp_id]
 
 private def verdierFixedSourceRightExpansion {A B : StableCategory.{u}}
     (i : ExactMap A B) (x : B.obj _⦋0⦌) :
-    markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x ⊗
+    markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⊗
       (Δ[1] : SSet.{u}) ⟶
-        markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x :=
+        markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x :=
   vertexFiberLift (markedSpanSource B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i)) x
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
       ((vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
         verdierMarkedRightExpansion i) (by
     rw [Category.assoc, verdierMarkedRightExpansion_source]
     have he : (vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
-        fst (markedSpans B.obj (SerrePositivity.KST.Fibration.weakEquivalences i)) Δ[1] =
-      fst (markedSpanFamily B.obj (SerrePositivity.KST.Fibration.weakEquivalences i) x)
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+        fst (markedSpans B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) Δ[1] =
+      fst (markedSpanFamily B.obj (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x)
         Δ[1] ≫ vertexFiberι (markedSpanSource B.obj
-          (SerrePositivity.KST.Fibration.weakEquivalences i)) x := rfl
+          (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x := rfl
     rw [← Category.assoc, he, Category.assoc, vertexFiberι_comp, SSet.comp_const])
 
 private lemma verdierFixedSourceRightExpansion_inclusion {A B : StableCategory.{u}}
     (i : ExactMap A B) (x : B.obj _⦋0⦌) :
     verdierFixedSourceRightExpansion i x ≫ vertexFiberι (markedSpanSource B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) x =
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x =
     (vertexFiberι (markedSpanSource B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) ≫
         verdierMarkedRightExpansion i := vertexFiberLift_ι _ _ _ _
 
 private lemma verdierFixedSourceRightExpansion_one {A B : StableCategory.{u}}
     (i : ExactMap A B) (x : B.obj _⦋0⦌) :
     (SSet.ι₁ : markedSpanFamily B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) x ⟶ _) ≫
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
         verdierFixedSourceRightExpansion i x = 𝟙 _ := by
   apply vertexFiber_hom_ext (markedSpanSource B.obj
-    (SerrePositivity.KST.Fibration.weakEquivalences i)) x
+    (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x
   rw [Category.assoc, verdierFixedSourceRightExpansion_inclusion, Category.id_comp]
   have he : (SSet.ι₁ : markedSpanFamily B.obj
-      (SerrePositivity.KST.Fibration.weakEquivalences i) x ⟶ _) ≫
+      (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) x ⟶ _) ≫
       (vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ▷ (Δ[1] : SSet.{u})) =
       vertexFiberι (markedSpanSource B.obj
-        (SerrePositivity.KST.Fibration.weakEquivalences i)) x ≫ SSet.ι₁ := rfl
+        (SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i)) x ≫ SSet.ι₁ := rfl
   rw [← Category.assoc, he, Category.assoc, verdierMarkedRightExpansion_one,
     Category.comp_id]
 
@@ -2351,4 +2356,10 @@ lemma verdierFractionMappingComparison_isFullyFaithful {A B C : StableCategory.{
   simpa only [verdierFixedLiftedFamily, weakSpanKanQuotientFamilyFixedFiber] using!
     weakSpanKanQuotientFamilyFixedFiber_recovery h x y
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionMappingComparison_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionMappingComparison_isFullyFaithful

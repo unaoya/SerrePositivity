@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
 
@@ -80,4 +85,34 @@ lemma verdierFractionComparisonFamily_isContractibleKan {T : SSet.{u}}
       (verdierFractionComparisonResolutionMap h x y)) (functorVertex b)) :=
   vertexFiber_isContractibleKan _ _
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_verdierFractionComparisonFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_relative_verdierFractionComparisonFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonFamily_isContractibleKan := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonFamily_isContractibleKan
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolution (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolution := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolution
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionMap_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionMap_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionMap_trivialKanFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionRoof (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionRoof := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionRoof
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionRoof_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionRoof_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionRoof_trivialKanFibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFractionComparisonResolutionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFractionComparisonResolutionIso._proof_1

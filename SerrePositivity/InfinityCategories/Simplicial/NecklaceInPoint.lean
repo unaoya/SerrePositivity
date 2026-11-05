@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructure
 public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposition
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposit
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 元の定値単体的写像は、零次数で指定した点を回収する。 -/
@@ -55,4 +60,34 @@ def necklaceInPointPostcomposeHom {K L : SSet.{u}} (f : K ⟶ L) (x : K _⦋0⦌
     change 𝟙 _ ≫ SSet.const (f.app _ x) = SSet.const x ≫ f
     exact (Category.id_comp _).trans (SSet.const_comp x f).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPointPostcomposeHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPointPostcomposeHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint_necklace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint_postcompose_map := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint_postcompose_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialConst_zero_apply := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialConst_zero_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPoint._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPointPostcomposeHom._proof_1

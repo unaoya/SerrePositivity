@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion
@@ -19,10 +21,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
-local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+local instance instSimplicialCategoryOmegaSpectrum : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
 variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
   {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
@@ -132,4 +137,64 @@ lemma square_isPullback : IsPullbackSquare (square hΦ p q i r h) :=
   (LaxUniversalProduct.square_isPullback hΦ p q i r h).of_functorIso
     (comparison hΦ p q i r h)
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.bottomEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.bottomEdge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.bottomEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.bottom_class := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.bottom_class
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.boundaryHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.boundaryHomotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.comparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.comparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.comparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.extension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.extension := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.extension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.leftEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.leftEdge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.leftEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.left_class := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.left_class
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.newFrame (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.newFrame := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.newFrame
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.oldFrame := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.oldFrame_eq := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.oldFrame_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.rightEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.rightEdge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.rightEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.right_class := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.right_class
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_isPullback := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_isPullback
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.topEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.topEdge := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.topEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.top_class := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.top_class
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.bottomEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.bottomEdge._proof_1

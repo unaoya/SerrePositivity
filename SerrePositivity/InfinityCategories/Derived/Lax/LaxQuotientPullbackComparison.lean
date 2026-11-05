@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullbackSquare
 public import SerrePositivity.KST.Spectra.CoherentCospanLimits
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
+end SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback
+open SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 local instance pullbackComparisonSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
@@ -43,4 +48,31 @@ def valueIso : VertexIso (X := Sp.{u}) (coherentNerveVertex (value Φ A))
       SpectrumHo.obj (value Φ A) := congrArg HomotopyCategory.mk (cone_vertex hΦ p q i r h)
   exact eqToIso hv.symm ≪≫ e
 
-end SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.chosenCone := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.chosenCone_isLimit := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.chosenCone_isLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.coneComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.coneComparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.coneComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.pullbackComparisonSimplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.pullbackComparisonSimplicialCategory := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.pullbackComparisonSimplicialCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.valueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.valueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.coneComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.coneComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.valueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback.valueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback.valueIso._proof_2

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.KST.Spectra.InternalHomTensor
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+open SerrePositivity.KST.Spectra.InternalHomTensor
 
 noncomputable section
 
@@ -95,4 +100,37 @@ theorem natural_swap [BraidedCategory C] (A B Y : C) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.hom_eq := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.hom_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.iso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.iso_eq_ihomCurryIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso_eq_ihomCurryIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_post := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_post_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_swap := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_swap_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.tensorAdjunction := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.tensorAdjunction.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.tensorAdjunction.eq_1

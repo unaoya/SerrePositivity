@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanCube
 
 /-! # 元の necklace 写像の Bool 座標作用
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanCube
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の非 joint 座標の Bool 立方体間の、同じ部分集合像による作用。 -/
@@ -73,4 +78,28 @@ lemma necklaceVertexMap_orderedFibers {T U : Necklace.{u}} (f : T ⟶ U)
   have hba : b ≤ a := le_of_not_gt hab
   exact (not_le_of_gt h) (necklaceVertexMap_monotone f hba)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_coordinate := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_coordinate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_id := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap_true_iff := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap_true_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_orderedFibers := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_orderedFibers
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanMap._proof_1

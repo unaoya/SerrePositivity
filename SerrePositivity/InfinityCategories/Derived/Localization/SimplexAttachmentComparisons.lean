@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
 public import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.FiniteShapes
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 前段と次辺の指定比較は、共有経路を変えず元の全図式間の一つの実比較辺へ貼れる。 -/
 lemma exists_simplexAttachmentComparison {X : SSet.{u}} [Quasicategory X] (n : ℕ)
@@ -121,4 +126,10 @@ lemma exists_simplexAttachmentComparison {X : SSet.{u}} [Quasicategory X] (n : �
           (SSet.yonedaEquiv T) at he
     exact hc.symm.trans (he.trans hT)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexAttachmentComparison := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentComparison

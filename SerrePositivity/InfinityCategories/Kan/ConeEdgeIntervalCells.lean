@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.JoinSimplexFaces
 public import SerrePositivity.InfinityCategories.Core.Limit
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.DGNerve
 namespace SerrePositivity.KST.Spectra.ConeEdgeInterval
+end SerrePositivity.KST.Spectra.ConeEdgeInterval
+namespace SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval
+open SerrePositivity.KST.Spectra.ConeEdgeInterval
 
 /-- 可変区間の二つの面を、同じ標準三単体の最初の二面へ戻す式。 -/
 lemma leftFace (j : Fin 2) :
@@ -162,4 +167,55 @@ lemma simplexMap_base_edge (e : (sliceOver p).Edge c d) (a : (Δ[1] : SSet.{u}) 
   rw [← h, simplexMap, Category.assoc, Iso.hom_inv_id_assoc,
     ← Category.assoc, joinInr_joinMap, Category.assoc, e.edge.property]
 
-end SerrePositivity.KST.Spectra.ConeEdgeInterval
+end SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.leftFace := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.leftFace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_apex_edge := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_apex_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_base_edge := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_base_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_one := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_three := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_three
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_two := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_two
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_zero := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.sourceFace := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.sourceFace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.sourceFace_hom := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.sourceFace_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.targetFace := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.targetFace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.triangleMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.triangleMap := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.triangleMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.vertexFaceMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.vertexFaceMap := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.vertexFaceMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_apex_edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_apex_edge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ConeEdgeInterval.simplexMap_base_edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.ConeEdgeInterval.simplexMap_base_edge._proof_1

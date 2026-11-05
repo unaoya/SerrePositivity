@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
 private theorem component_reindex_normalize {D X : SSet.{u}} {F G : D ⟶ X}
     (α : FunctorHom F G) {p q : D _⦋0⦌} (hp : p = q)
@@ -78,4 +83,22 @@ theorem weakIdentityQuotientPointHom_native_comparison :
     (weakQuotientMappingComparison_identity_native h x)
   simpa only [weakIdentityQuotientPointHom, Category.assoc] using he
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityQuotientPointHom_native_comparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityQuotientPointHom_native_comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakQuotientMappingComparison_identity_native := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakQuotientMappingComparison_identity_native
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionIdentityQuotientValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionIdentityQuotientValueIso._proof_2

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertexNaturality
 
 /-! # 初頂点写像による元の全辺の厳密な被覆 -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 元の辺からその終点への制限は、初頂点写像で元の同じ辺を回収する。 -/
 theorem transportSimplexFirstVertexMap_lastFace_edge {B : SSet.{u}} (s : B _⦋1⦌) :
@@ -59,4 +64,19 @@ theorem transportSimplexFirstVertexMap_ulift_edge_image (B : SSet.{u})
     rw [ht]
     exact hs
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_edge_preimage_image := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_edge_preimage_image
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_edge_surjective := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_edge_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_lastFace_edge := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_lastFace_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_ulift_edge_image := _root_.SerrePositivity.InfinityCategories.F1.Transport.transportSimplexFirstVertexMap_ulift_edge_image

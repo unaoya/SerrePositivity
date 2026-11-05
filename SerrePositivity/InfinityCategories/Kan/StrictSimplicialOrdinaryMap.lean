@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
 
 /-! # 全 Hom の作用から通常射と厳密自然性を回収する
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 variable {C : Type v} {D : Type w} [Category.{u} C] [Category.{u} D]
   [SimplicialCategory C] [SimplicialCategory D]
@@ -71,4 +76,28 @@ lemma strictSimplicialOrdinaryMap_naturality
     strictSimplicialOrdinaryMap_hom, strictSimplicialOrdinaryMap_hom,
     Category.assoc, Category.assoc, hτ]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_post := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_pre := _root_.SerrePositivity.InfinityCategories.Kan.simplicialHomEquiv_comp_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_naturality := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_of_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap_of_hom

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.LaxSemiorthogonal
 public import SerrePositivity.KST.LocalizingInvariants.SemiorthogonalInvariant
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumProductAxes
@@ -20,6 +22,9 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant
+open SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
 
 variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
   {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
@@ -94,4 +99,40 @@ lemma tammeSplitComparison_projection : (hΦ.tammeSplitComparison p q).hom ≫
   erw [Iso.hom_inv_id]
   exact Category.comp_id _
 
-end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFactorComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFactorComparison_inl := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFactorComparison_inr := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison_inr
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeProductCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProductCone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeProductCone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProductCone_isLimit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeProductCone_isLimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeSplitComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeSplitComparison_C := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeSplitComparison_D := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeSplitComparison_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeSplitEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeFactorComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFactorComparison._proof_1

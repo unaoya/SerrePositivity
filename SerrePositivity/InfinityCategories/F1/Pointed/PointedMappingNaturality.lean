@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -56,6 +58,9 @@ open CategoryTheory MonoidalCategory MonoidalClosed
 open CartesianMonoidalCategory
 
 namespace SerrePositivity.KST.Spectra.PointedMapping
+end SerrePositivity.KST.Spectra.PointedMapping
+namespace SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+open SerrePositivity.KST.Spectra.PointedMapping
 
 noncomputable section
 
@@ -127,4 +132,28 @@ theorem prePointed_eq_closedPre {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 
 end
 
-end SerrePositivity.KST.Spectra.PointedMapping
+end SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.homBasepoint_pre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.homBasepoint_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed_eq_closedPre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.smashCurry_pre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.smashCurry_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.prePointed.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed.eq_1

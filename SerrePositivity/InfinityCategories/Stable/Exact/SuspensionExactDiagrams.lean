@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+namespace SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
+open SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 def squares : X ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
@@ -88,4 +93,58 @@ def inverseExactMap (A : StableCategory.{u}) : ExactMap A A :=
   ⟨(equivalence A.obj).inv,
     isExactFunctor_of_isQCatEquivalence (equivalence A.obj).symm.isQCatEquivalence⟩
 
-end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.canonicalIso := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.diagrams := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.diagrams_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.diagrams_target := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.equivalence := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.equivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.inverseExactMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.inverseExactMap := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.inverseExactMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.squares := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.squares_bottom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.squares_corner := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_corner
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.squares_isSuspension := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares_isSuspension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.canonicalIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.canonicalIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.canonicalIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.canonicalIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.canonicalIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.diagrams.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.diagrams.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.inverseExactMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.inverseExactMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.squares.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.squares.eq_1

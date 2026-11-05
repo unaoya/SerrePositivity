@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructureVertices
 
 /-! # 元の全 necklace 射に関する構造同型の自然性
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructu
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の結合同型は、元の任意の三つの necklace 射について自然。 -/
@@ -60,4 +65,16 @@ lemma necklaceRightUnitor_naturality {T U : Necklace.{u}} (f : T ⟶ U) :
   rw [necklaceVertexMap_wedge_left, necklaceRightUnitor_vertex_left,
     necklaceRightUnitor_vertex_left]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_naturality

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHom
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
@@ -41,4 +46,28 @@ def relativeInitialVertexIso (p : X ⟶ Y) (x y : X _⦋0⦌)
     rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id]
     exact (congrArg₂ (fun u v => u ≫ v) hb ha).trans e.inv_hom_id
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_4 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_5 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeInitialVertexIso._proof_6 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso._proof_6

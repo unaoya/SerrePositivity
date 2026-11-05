@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subdivision
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
@@ -20,6 +22,9 @@ set_option backward.isDefEq.respectTransparency.types false
 
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits
 
 /--
@@ -37,4 +42,10 @@ theorem subdivisionSimplexCover (X : SSet.{u}) (d : SimplexCategoryᵒᵖ)
   obtain ⟨a, t, ht⟩ := Types.jointly_surjective_of_isColimit hc s
   exact ⟨a.left, a.hom, t, ht⟩
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.subdivisionSimplexCover := _root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover

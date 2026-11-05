@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation
 
 /-!
@@ -13,9 +15,14 @@ public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
+end SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：RelStruct の全ての面を計算する。
 方針：二つの指定面と外側の定数面に分ける。
@@ -36,6 +43,7 @@ theorem SimplexFaces.rel_face {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   · exact r.δ_map_of_gt j (by grind)
 
 namespace SphericalBoundaryLastFace
+open SerrePositivity.KST.Spectra.SphericalBoundaryLastFace
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a : Fin (n + 4) → X.PtSimplex (n + 2) x} {b : X.PtSimplex (n + 2) x}
@@ -144,4 +152,34 @@ theorem exists_replace [KanComplex X] (T : SphericalBoundary a)
 
 end SphericalBoundaryLastFace
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexFaces.rel_face := _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.rel_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.compatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.compatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.exists_replace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.exists_replace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.output_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.replace := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryLastFace.replace._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace.replace._proof_1

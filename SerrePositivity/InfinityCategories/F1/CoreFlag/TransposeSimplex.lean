@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
 public import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
 
@@ -16,8 +18,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 二つの標準単体の変数を交換した内部 Hom の単体。 -/
@@ -114,4 +119,28 @@ lemma transpose_mem_iff {C : SSet.{u}} [Quasicategory C] {n m : SimplexCategory�
     rw [ha, hf] at h
     exact h
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.functorSimplex_isInvertible_iff := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorSimplex_isInvertible_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.functorVertexEquiv_symm_app := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.functorVertexEquiv_symm_app
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex_transposeSimplex := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex_transposeSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_mem_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_vertex_edge := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transpose_vertex_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.transposeSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.transposeSimplex._proof_1

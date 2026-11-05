@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionOrder
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetMap
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetMap
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の始端が一致する部分集合包含は、元の局所始頂点を保つ。 -/
@@ -79,4 +84,37 @@ lemma simplexSubsetInclusionMap_last {n : ℕ} (I J : Finset (Fin (n + 1)))
       standardSimplexVertex (Fin.last (J.card - 1)) :=
   standardSimplexVertex_ext (simplexSubsetInclusionOrder_last I J hI hJ hIJ hmax)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionHom_triangle := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionHom_triangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionMap_triangle := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionMap_triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_first._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_first._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetInclusionOrder_first._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_first._proof_4

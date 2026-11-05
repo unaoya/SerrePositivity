@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 
 /-!
@@ -13,11 +15,17 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.ZeroRelations
+end SerrePositivity.KST.Spectra.ZeroRelations
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 namespace ZeroRelations
+open SerrePositivity.KST.Spectra.ZeroRelations
 
 variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
   {f g h : X.PtSimplex 0 x}
@@ -147,4 +155,106 @@ theorem KanHomotopy.mk_surjective {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
   | zero => exact Quot.mk_surjective
   | succ n => exact Quotient.mk_surjective
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.mk_eq_iff_relStruct := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_eq_iff_relStruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.mk_surjective := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.mk_eq_iff := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk_eq_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.equivalence := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.equivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_13 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_13
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_14 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_14
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_15 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_15
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.symm._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.symm._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ZeroRelations.trans._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.ZeroRelations.trans._proof_9

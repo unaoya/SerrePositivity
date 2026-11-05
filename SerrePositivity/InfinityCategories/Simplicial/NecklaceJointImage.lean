@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceVertexOrder
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceJointBounds
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceJointBounds
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の bead 内の二頂点の像は、標的の内部 joint を跨がない。 -/
@@ -77,4 +82,13 @@ lemma necklaceVertexMap_joint_covered {T U : Necklace.{u}} (f : T ⟶ U)
     omega
   exact necklaceVertexMap_noInterior f a b hab.le hno v.val hv ⟨hfa, hgt⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_joint_covered := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_joint_covered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceVertexMap_noInterior := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_noInterior

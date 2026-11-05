@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
@@ -17,9 +19,12 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：Kan fibration のホモトピー長完全列は全次数で完全である。
 方針：fiber、全空間、底の各位置で、基点の逆像と直前の射の像の一致を証明済みの補題で示す。
@@ -51,4 +56,13 @@ theorem connectingHom_apply {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (a : KanHomotopyGroup B (n + 1) (p.app _ e)) :
     connectingHom p e n a = connecting p e (n + 1) a := rfl
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom_apply := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberLongExact := _root_.SerrePositivity.InfinityCategories.Kan.fiberLongExact

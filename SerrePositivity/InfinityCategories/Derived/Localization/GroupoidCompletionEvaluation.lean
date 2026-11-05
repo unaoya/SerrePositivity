@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 
 /-!
@@ -17,6 +19,9 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 variable {X A Y : SSet.{u}} [KanComplex Y]
 
 def groupoidCompletionEvaluation (f : X ⟶ Y) : groupoidCompletion X ⟶ Y :=
@@ -56,4 +61,28 @@ lemma groupoidCompletionEvaluation_trivialKanFibration_iff (p : A ⟶ X)
     exact ((hp.comp h.isQCatEquivalence).ofFunctorIso
       (groupoidCompletionEvaluation_precompIso p f)).isSimplicialHomotopyEquivalence
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluationIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluationIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_functorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation_functorIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_functorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_precompIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation_precompIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_precompIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation_trivialKanFibration_iff := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_trivialKanFibration_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.groupoidCompletionEvaluation_precompIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionEvaluation_precompIso._proof_1

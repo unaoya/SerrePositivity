@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.ConcreteCubeJoinNormalForm
 
 /-! # 具体的な立方体の有効入力座標
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.ConcreteCubeJoinNormalForm
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 定数一の出力を除いた、元の射の有効入力座標。 -/
 def CubeActive {n m : ℕ} (f : CubeVertex n → CubeVertex m) (i : Fin n) (j : Fin m) :
@@ -75,4 +80,25 @@ lemma cubeSupportOrdered_comp {n m k : ℕ}
   obtain ⟨b, hlb, hbk⟩ := cubeMapGenerated_active_comp hg hl
   exact hfOrder (hgOrder hjk haj hbk) hia hlb
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeActive (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeActive := _root_.SerrePositivity.InfinityCategories.Kan.CubeActive
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportOrdered := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportOrdered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinMap_exists_active := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinMap_exists_active
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_active_comp := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_active_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_comp := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexAtom_le := _root_.SerrePositivity.InfinityCategories.Kan.cubeVertexAtom_le

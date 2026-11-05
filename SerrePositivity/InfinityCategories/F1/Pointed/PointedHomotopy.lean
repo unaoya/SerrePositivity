@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -50,9 +52,12 @@ public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -82,4 +87,22 @@ def pointedRelativeHomotopy {X Y : PointedSimplicialSet.{u}} (f g : X ⟶ Y)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.pointedRelativeHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy._proof_4

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanCube
 public import Mathlib.Data.Finset.Sort
 
@@ -10,7 +12,13 @@ public import Mathlib.Data.Finset.Sort
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の非 joint 頂点の番号全体。 -/
 def nonjointNumbers (T : NecklaceShape) : Finset ℕ :=
@@ -47,4 +55,46 @@ lemma nonjointVertex_card (T : NecklaceShape) : Fintype.card T.NonjointVertex = 
   (Fintype.card_congr T.nonjointCoordinate).symm.trans (Fintype.card_fin _)
 
 end NecklaceShape
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointAscending (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointAscending := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointAscending
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate_lt := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate_lt
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumbers (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumbers := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumbers
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumbers_card := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumbers_card
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointVertex_card := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointVertex_card
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointNumberIso._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointNumberIso._proof_6

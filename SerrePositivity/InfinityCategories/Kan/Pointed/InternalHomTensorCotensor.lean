@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeComposition
 
 /-!
@@ -15,6 +17,9 @@ noncomputable section
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan.Pointed
+open SerrePositivity.KST.Spectra
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C]
 
@@ -70,4 +75,19 @@ lemma InternalHomExchange.tensor_curry (A B P Z : C) :
     (ihom.ev P).app Z) h
   simpa only [Category.assoc] using hc
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_tensor_block := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.HomTensorStrength.exchange_tensor_block
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.tensor_curry := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensor_curry
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.uncurry_uncurry_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.uncurry_uncurry_hom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.uncurry_uncurry_hom

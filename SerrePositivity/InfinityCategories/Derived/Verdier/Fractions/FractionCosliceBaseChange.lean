@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice
 public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
   (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (x : X _⦋0⦌)
 
@@ -37,4 +42,25 @@ theorem fractionCosliceBaseChange_snd {A : SSet.{u}} (k : A ⟶ X) :
     fractionCosliceBaseChange F W hF x k ≫ pullback.snd _ (k ≫ F) =
       pullback.snd (markedSpanFamilyProjection X W x) k := pullback.lift_snd _ _ _
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange_fst := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange_snd := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange_snd
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceBaseChange._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceBaseChange._proof_3

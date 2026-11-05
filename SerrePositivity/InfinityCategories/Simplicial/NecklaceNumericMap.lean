@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceNonjointCoordinates
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の necklace 射が同じ数値立方体の全頂点に作用する関数。 -/
@@ -60,4 +65,22 @@ lemma necklaceNumericMap_coordinate {T U : Necklace.{u}} (f : T ⟶ U)
     refine ⟨T.down.nonjointCoordinate i, ?_, hfi⟩
     simpa only [Equiv.symm_apply_apply] using hi
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_coordinate := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap_coordinate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_id := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceNumericMap.eq_1

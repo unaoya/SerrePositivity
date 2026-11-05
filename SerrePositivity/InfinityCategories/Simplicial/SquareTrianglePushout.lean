@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleIntersection
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 
@@ -15,9 +17,12 @@ public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -65,4 +70,16 @@ theorem isPushout : IsPushout (stdSimplex.δ (1 : Fin 3)) (stdSimplex.δ (1 : Fi
   isColimit' := ⟨evaluationJointlyReflectsColimits _ (fun ⟨⟨d⟩⟩ =>
     (PushoutCocone.isColimitMapCoconeEquiv _ _).2 (app_isPushout.{u} d).isColimit)⟩
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.app_isPullback := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.app_isPullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.app_isPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.app_isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.isPushout := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout

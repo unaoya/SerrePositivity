@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
 
 /-!
@@ -15,8 +17,11 @@ noncomputable section
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.KST.Spectra.FibrationSquare
+namespace SerrePositivity.InfinityCategories.Kan.FibrationSquare
+open SerrePositivity.KST.Spectra.FibrationSquare
 
 /-- 指定した全空間の基点とその像での正次数の全単射性から fiber を比較する。 -/
 theorem fiberMap_positive_bijective_at {E B E' B' : SSet.{u}}
@@ -84,4 +89,13 @@ theorem fiberMapOver_positive_bijective_at {E B E' B' : SSet.{u}}
     rfl (fiberMap_point p p' f g comm e).symm (fiberMap_point p p' f g comm e) rfl
       (fiberMap_positive_bijective_at p p' f g comm e hf hg n)
 
-end SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.InfinityCategories.Kan.FibrationSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMapOver_positive_bijective_at := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapOver_positive_bijective_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMap_positive_bijective_at := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_positive_bijective_at

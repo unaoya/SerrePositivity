@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary
 
 /-!
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 前段と次辺の全族を、元の共有点に沿って一つの境界族へ貼る。 -/
 def simplexAttachmentFamilyGlue {P X : SSet.{u}} (n : ℕ)
@@ -79,4 +84,31 @@ lemma exists_relative_simplexAttachmentFamily {P Q X : SSet.{u}} [Quasicategory 
     rw [Category.assoc, simplexAttachmentFamilyGlue_lastEdge] at he
     simpa only [← NatTrans.comp_app, ← pre_map, simplexAttachmentLastEdge_ι] using he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_simplexAttachmentFamily := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_relative_simplexAttachmentFamily
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_lastEdge := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_lastEdge_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_lastEdge_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue_prefix_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue_prefix_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentFamilyGlue.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentFamilyGlue.congr_simp

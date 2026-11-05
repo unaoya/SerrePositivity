@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.TowerAffineMaps
 public import SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler
 
@@ -15,6 +17,9 @@ universe u
 open CategoryTheory Opposite
 
 namespace SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.KST.Spectra.TowerLimOne
+namespace SerrePositivity.InfinityCategories.Kan.TowerLimOne
+open SerrePositivity.KST.Spectra.TowerLimOne
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -104,4 +109,28 @@ theorem subsingleton_of_mittagLeffler (hG : IsMittagLeffler G q) :
     (mk_eq_point_of_mittagLeffler G q hG y).symm
 
 end
-end SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.InfinityCategories.Kan.TowerLimOne
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.IsMittagLeffler := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_isMittagLeffler := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower_isMittagLeffler
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_map_arrow := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower_map_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.exists_nullifier_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.exists_nullifier_of_mittagLeffler
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.mk_eq_point_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk_eq_point_of_mittagLeffler
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.subsingleton_of_mittagLeffler := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_mittagLeffler
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.translated_range_reverse := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.translated_range_reverse

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreQuotientCofinality
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison
 
@@ -16,10 +18,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {B C : StableCategory.{u}} (q : ExactMap B C)
 
@@ -113,4 +118,40 @@ lemma relativeFirstRowSimplexCompletionComparison_zero_isFullyFaithful
   (relativeFirstRowSimplexQuotient_localized_isIso_iff_fullyFaithful h 0).mp
     (relativeFirstRowSimplexQuotient_zero_localized_isIso q h)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pointFunctorEvaluation_inv_post := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pointFunctorEvaluation_inv_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexCompletionComparison_zero_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexCompletionComparison_zero_isFullyFaithful
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexQuotient_zero_localized_isIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexQuotient_zero_localized_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroCorePreimageIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroCorePreimage_square := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimage_square
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroFromCorePreimage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroFromCorePreimage := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroFromCorePreimage
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroToCorePreimage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroToCorePreimage := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroToCorePreimage
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroCorePreimageIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroCorePreimageIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroCorePreimageIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroFromCorePreimage._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroFromCorePreimage._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.relativeFirstRowSimplexZeroToCorePreimage._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.relativeFirstRowSimplexZeroToCorePreimage._proof_1

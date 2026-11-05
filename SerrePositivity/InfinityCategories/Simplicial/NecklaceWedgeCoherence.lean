@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructureNaturality
 
 /-! # 元の necklace の wedge の五角と三角
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructu
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の結合同型は、全四つの necklace について五角を満たす。 -/
@@ -29,4 +34,13 @@ lemma necklaceAssociator_triangle (X Y : Necklace.{u}) :
   simp only [necklaceAssociator, necklaceLeftUnitor, necklaceRightUnitor, eqToIso.hom,
     ← eqToHom_refl, necklaceWedgeMap_eqToHom, eqToHom_trans]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_pentagon := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_pentagon
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_triangle := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_triangle

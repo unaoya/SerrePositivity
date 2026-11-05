@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import SerrePositivity.InfinityCategories.Core.KanCharacterization
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 
@@ -76,4 +81,34 @@ instance fundamentalGroupoidNerve_kanComplex (C : Type u) [Category.{u} C] [IsGr
   have : IsGroupoid (hoFunctor.obj (nerve C)) := isGroupoid_of_reflects_iso e.functor
   exact kanComplex_of_isGroupoid _
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerve_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalGroupoidNerve_kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidNerve_kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveTranspose := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_post := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_pre := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveTranspose_untranspose := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveTranspose_untranspose
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_post := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_pre := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_transpose := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_transpose

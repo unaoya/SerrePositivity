@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle
 public import SerrePositivity.KST.Fibration.RelativeComparisonRightSection
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -62,4 +67,37 @@ def weakCosliceComparisonRightSection_relativeCounit :
       (relativeFunctorVertex pF pF (𝟙 _) (Category.id_comp _)) :=
   (exists_weakCosliceComparison_rightSection h x).choose_spec.choose_spec.some
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.exists_weakCosliceComparison_rightSection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakCosliceComparison_rightSection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection_relativeCounit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.exists_weakCosliceComparison_rightSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_weakCosliceComparison_rightSection._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection_relativeCounit._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection_relativeCounit._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonRightSection_relativeCounit._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonRightSection_relativeCounit._proof_3

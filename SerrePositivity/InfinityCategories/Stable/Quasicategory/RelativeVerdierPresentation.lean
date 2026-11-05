@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+open SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
 
 variable {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u})
 
@@ -137,4 +142,40 @@ lemma exists_of_source_comm [Quasicategory S] (d : VerdierSequence.{u})
     exact hz
   exact ⟨ofSquare ν d F hbi hqr hz', rfl, hb, hr, hl, ht⟩
 
-end SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_coherentSquare_of_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_coherentSquare_of_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_of_source_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_of_source_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.exists_square_of_source_comm := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_square_of_source_comm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare_sequence := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_sequence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare_square := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_4 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagram.ofSquare._proof_5 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.ofSquare._proof_5

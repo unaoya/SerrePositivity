@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -70,9 +72,12 @@ universe u
 
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -176,4 +181,19 @@ theorem exists_pointedHomotopyInverse {X Y : PointedSimplicialSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_pointedHomotopyInverse := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopyInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_pointedHomotopy_of_comp_eq := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_pointedHomotopy_of_comp_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathProjection_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathProjection_rlp_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism

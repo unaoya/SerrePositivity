@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 
 /-! # 元の necklace の部分集合関手と Bool 立方体関手の自然な比較
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceBooleanMap
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の非 joint 頂点を座標とする、全 necklace 上の Bool 立方体関手。 -/
@@ -30,4 +35,22 @@ def necklaceSubsetBooleanNatIso : necklaceSubsetPoset.{u} ≅ necklaceBooleanPos
         (T.down.cubeSubsetBits s)))
     erw [NecklaceShape.cubeSubsetFromBits_bits])
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanPoset := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetBooleanNatIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetBooleanNatIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetBooleanNatIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanPoset._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceBooleanPoset._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceBooleanPoset._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetBooleanNatIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetBooleanNatIso._proof_1

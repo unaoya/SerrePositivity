@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 public import Mathlib.CategoryTheory.Subfunctor.Basic
 public import Mathlib.CategoryTheory.Types.Monomorphisms
@@ -15,6 +17,9 @@ public import Mathlib.CategoryTheory.Types.Monomorphisms
 universe u v
 open CategoryTheory CategoryTheory.Limits ConcreteCategory
 namespace SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+end SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+namespace SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
+open SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -76,4 +81,28 @@ lemma mono : Mono (colim.map A.ι) := by
   exact Option.some.inj he
 
 end
-end SerrePositivity.KST.Spectra.CartesianSubfunctorColimit
+end SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.mono := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_map := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.split_ι := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.split_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.CartesianSubfunctorColimit.splitCocone._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit.splitCocone._proof_2

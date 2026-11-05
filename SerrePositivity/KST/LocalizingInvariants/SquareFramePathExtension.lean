@@ -19,7 +19,7 @@ universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants.SquareFrame
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame
 variable {X : SSet.{u}} [Quasicategory X] (f : SquareFrame (equivalencePath X))
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
   (hf : f.postcomp (equivalencePathEndpoint X 0) = ofSquare Q)
@@ -35,4 +35,4 @@ lemma target_isPullback (hQ : IsPullbackSquare Q) : IsPullbackSquare w.target :=
   IsPullbackSquare.of_functorIso hQ w.comparison
 
 end PathExtension
-end SerrePositivity.KST.LocalizingInvariants.SquareFrame
+end SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame

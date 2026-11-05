@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceEdges
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 元の標準単体への augmentation の、元の全頂点への作用。 -/
@@ -59,4 +64,28 @@ lemma necklaceInSimplex_isEmpty {n : ℕ} {x y : (Δ[n] : SSet.{u}) _⦋0⦌}
     (h : y 0 < x 0) : IsEmpty (NecklaceIn Δ[n] x y) :=
   ⟨fun T => (not_le_of_gt h) (necklaceInSimplex_first_le_last T)⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_first_le_last := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_first_le_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_isEmpty := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_isEmpty
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_monotone := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_simplex := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap_simplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexOrderHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexOrderHom := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexOrderHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexVertexMap._proof_1

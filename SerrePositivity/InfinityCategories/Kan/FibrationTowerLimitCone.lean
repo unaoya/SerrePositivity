@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationTower
 public import Mathlib.CategoryTheory.Functor.OfSequence
 
@@ -15,6 +17,9 @@ universe u
 open CategoryTheory Limits SSet Opposite
 
 namespace SerrePositivity.KST.Spectra.FibrationTower
+end SerrePositivity.KST.Spectra.FibrationTower
+namespace SerrePositivity.InfinityCategories.Kan.FibrationTower
+open SerrePositivity.KST.Spectra.FibrationTower
 
 variable (D : ℕᵒᵖ ⥤ SSet.{u})
 
@@ -43,4 +48,28 @@ def sequentialConeIsLimit : IsLimit (sequentialCone D) where
     rw [lift_projection]
     exact hm (op n)
 
-end SerrePositivity.KST.Spectra.FibrationTower
+end SerrePositivity.InfinityCategories.Kan.FibrationTower
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone_π := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone_π
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialCone._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialCone._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.sequentialConeIsLimit._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit._proof_3

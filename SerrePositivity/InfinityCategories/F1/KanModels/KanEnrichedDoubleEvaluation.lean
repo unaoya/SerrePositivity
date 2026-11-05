@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J]
 
@@ -83,4 +88,19 @@ theorem kanEnrichedRealizationComponentIso_heq_doubleMap (X : C) (j : J) :
   exact h₁.trans ((functorIsoValue_heq_map R a).trans
     (h₂.trans (functorIsoDoubleValue_heq_map e x a)))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation_precomp_vertex := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_precomp_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedDoubleEvaluation_vertex := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedDoubleEvaluation_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_heq_doubleMap

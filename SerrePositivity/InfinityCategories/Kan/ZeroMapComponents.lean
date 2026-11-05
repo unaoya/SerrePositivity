@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：零単体からの射をその頂点の連結成分へ送る。
 方針：Yoneda の同値を通じて頂点を取り出す。
@@ -46,4 +51,19 @@ theorem zeroMapComponent_comp {X Y : SSet.{u}}
   simp only [zeroMapComponent, mapπ₀_mk]
   rfl
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_comp := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent_edge := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.zeroMapComponent.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.zeroMapComponent.eq_1

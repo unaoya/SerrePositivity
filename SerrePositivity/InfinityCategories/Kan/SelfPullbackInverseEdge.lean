@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge
 
 /-!
@@ -15,9 +17,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -72,4 +77,31 @@ theorem selfPullback_exists_inverse_edge {E B : SSet.{u}} (p : E ⟶ B) [Fibrati
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackFiberInclusion := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackSwap := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullback_exists_inverse_edge := _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_exists_inverse_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackFiberInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackFiberInclusion._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackFiberInclusion.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackFiberInclusion.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackSwap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackSwap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackSwap.eq_1

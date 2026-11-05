@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 一点への制限の元の全辺表示は、全錐比較の同じ辺への制限。 -/
 lemma spanPointSliceRestrictionArrow {J X : SSet.{u}} (p : J ⟶ X)
@@ -194,4 +199,61 @@ lemma verdierDenominatorSpanFiberArrow_target {A B : StableCategory.{u}}
       SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by decide
   rw [hp, ← SSet.yonedaEquiv_comp, Category.id_comp, Equiv.apply_symm_apply]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceLeft_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceLeft_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceRight_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceRight_arrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConeNumeratorInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConeNumeratorInclusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConeNumeratorInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConeNumeratorInclusion_shape := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConeNumeratorInclusion_shape
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanPointSliceArrowMap_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanPointSliceArrowMap_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanPointSliceArrowMap_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanPointSliceArrowMap_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanPointSliceRestrictionArrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanPointSliceRestrictionArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanBoundaryIso_left := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundaryIso_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanBoundaryIso_right := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundaryIso_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCanonicalComparison_denominator := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_denominator
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCanonicalComparison_fiber_denominator := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_fiber_denominator
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCanonicalComparison_numerator := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_numerator
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberArrow := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberArrow_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberArrow_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConeNumeratorInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConeNumeratorInclusion._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConeNumeratorInclusion.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConeNumeratorInclusion.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanFiberArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFiberArrow.eq_1

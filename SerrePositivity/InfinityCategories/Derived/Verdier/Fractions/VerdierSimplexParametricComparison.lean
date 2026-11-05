@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison
 
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
@@ -19,9 +21,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma spanParametricCompArrowCongr {T : Type*} [Category* T] {a b c a' b' c' : T}
     {f : a ⟶ b} {g : b ⟶ c} {f' : a' ⟶ b'} {g' : b' ⟶ c'}
@@ -179,4 +184,10 @@ lemma exists_verdierSimplexParametricComparison
   rw [hwdiag] at hv
   exact ⟨l, hi, hp, hv, ⟨spanFunctorIsoUnflip ei⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierSimplexParametricComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierSimplexParametricComparison

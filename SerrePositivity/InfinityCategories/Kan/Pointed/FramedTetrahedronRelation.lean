@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.OrdinalSimplexEdges
 
 /-!
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FramedTetrahedron
+end SerrePositivity.KST.Spectra.FramedTetrahedron
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
+open SerrePositivity.KST.Spectra.FramedTetrahedron
 
 /-- 初点と、後ろ三頂点の共通点からなる元の頂点表示。 -/
 abbrev vertex {X : SSet.{u}} (p x : X _⦋0⦌) (i : Fin 4) : X _⦋0⦌ := if i = 0 then p else x
@@ -45,4 +50,31 @@ lemma left_comp_right {X : SSet.{u}} (f : (Δ[3] : SSet.{u}) ⟶ X) (p x : X _�
   rw [hl]
   exact SSet.HomotopyCategory.homMk_comp_homMk h₀₂₃
 
-end SerrePositivity.KST.Spectra.FramedTetrahedron
+end SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.edge := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.vertex := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.left_comp_right._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.left_comp_right._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedTetrahedron.vertex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedron.vertex._proof_1

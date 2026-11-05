@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueCurry
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDiagramOppositeComparison
@@ -10,9 +12,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J]
 
@@ -71,4 +76,28 @@ theorem kanEnrichedRealizationValueIso_heq_precomp (X : C) :
   exact h₁.trans (h₂.trans
     (functorIsoValue_curry_heq_precomp (η.jointComparisonIso hη) (coherentNerveVertex X)))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointEvaluation_curry := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_curry
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedJointEvaluation_restrict := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedJointEvaluation_restrict
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationIso_heq_curry := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationIso_heq_curry
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationValueIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationValueIso_heq_precomp := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso_heq_precomp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationValueIso._proof_2

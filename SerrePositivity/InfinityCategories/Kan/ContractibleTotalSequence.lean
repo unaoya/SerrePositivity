@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 
 /-!
@@ -15,9 +17,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex E] [KanComplex B]
   (e : E _⦋0⦌) (n : ℕ)
@@ -48,4 +53,19 @@ noncomputable def connectingHomEquivOfTotalSubsingleton :
       KanHomotopyGroup (KanFiber p (p.app _ e)) n (fiberPoint p e) :=
   MulEquiv.ofBijective (connectingHom p e n) (connectingHom_bijective_of_total_subsingleton p e n)
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHomEquivOfTotalSubsingleton := _root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHom_bijective_of_total_subsingleton := _root_.SerrePositivity.InfinityCategories.Kan.connectingHom_bijective_of_total_subsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHomEquivOfTotalSubsingleton._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.connectingHomEquivOfTotalSubsingleton._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.connectingHomEquivOfTotalSubsingleton._proof_2

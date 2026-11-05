@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -43,10 +45,16 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+end SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
+open SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
 
@@ -70,4 +78,13 @@ theorem coefficientEmbedding_target (c : I) :
     simplicialReplacementConstantLift_tautScaffold]
 
 end ScaffoldTransportComparisonSpan
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientEmbedding_source := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientEmbedding_target := _root_.SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportComparisonSpan.coefficientEmbedding_target

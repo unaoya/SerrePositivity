@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ実次辺族の商比較四角形を転置した全 Homotopy。 -/
 def verdierUniformSpanFractionHomotopy
@@ -94,4 +99,13 @@ lemma verdierUniformSpanPrefixPath
       (SSet.yonedaEquiv (simplexLastPoint n))).app (Opposite.op ⦋1⦌) A₀.edge)
   rw [he, Equiv.symm_apply_apply]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformSpanFractionHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierUniformSpanFractionHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformSpanFractionHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierUniformSpanPrefixPath := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformSpanPrefixPath

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinder
 
 /-!
@@ -17,8 +19,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Comparison
 open CategoryTheory Limits MonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：整合する三射から二重写像円筒からの射を作る。
@@ -83,7 +88,7 @@ def doubleMappingCylinderDesc {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
 規約：境界の整合の証明の選択は不要。
 使われ方：二段階の pushout の普遍性の一意性。
 -/
-theorem doubleMappingCylinder_hom_ext {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
+theorem _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext {C A B T : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B)
     {u v : doubleMappingCylinder f g ⟶ T}
     (hm : doubleMappingCylinder_middle f g ≫ u = doubleMappingCylinder_middle f g ≫ v)
     (hl : doubleMappingCylinder_left f g ≫ u = doubleMappingCylinder_left f g ≫ v)
@@ -94,4 +99,37 @@ theorem doubleMappingCylinder_hom_ext {C A B T : SSet.{u}} (f : C ⟶ A) (g : C 
     · exact hl
     · exact hr
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinderDesc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext := _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left_desc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_left_desc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_desc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_middle_desc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right_desc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinder_right_desc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinderDesc._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.doubleMappingCylinderDesc.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc.congr_simp

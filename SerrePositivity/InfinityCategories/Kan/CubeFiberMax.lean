@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.ConcreteCubeInputFactorization
 
 /-! # 有限座標写像の fiber ごとの max
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.ConcreteCubeInputFactorizat
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 元の座標写像の各 fiber にわたる入力の有限 max。 -/
 def cubeFiberMax {n m : ℕ} (q : Fin n → Fin m) : CubeVertex n → CubeVertex m :=
@@ -38,4 +43,19 @@ lemma cubeFiberMax_comp {n m k : ℕ} (q : Fin n → Fin m) (r : Fin m → Fin k
   · rintro ⟨a, ha, i, hi, hx⟩
     exact ⟨i, hi ▸ ha, hx⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_comp := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_id := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_true_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff

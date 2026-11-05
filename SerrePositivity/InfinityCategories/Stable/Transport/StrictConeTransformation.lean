@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -32,10 +34,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
   [SimplicialCategory C] {F G : I ⥤ C}
 
@@ -66,4 +71,19 @@ def strictConeShapeMap :
   joinMap (𝟙 Δ[0]) ((nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl) ≫
     nerveInitialCone (WithInitial.starInitial (C := AsSmall.{v} I))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeShapeMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeShapeMap := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeShapeMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictConeTransformation.match_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictConeTransformation.match_1

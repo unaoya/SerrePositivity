@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHom
 public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma isInvertibleEdge_of_initialBoundaries {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) {x y : X _⦋0⦌}
@@ -51,4 +56,13 @@ lemma isInvertibleEdge_of_terminalBoundaries {X Y : SSet.{u}}
   exact (isInvertibleEdge_congr (X := Y.op) (e := (edgeOp e).map ((truncation 2).map
     (SSet.opFunctor.map p))) (f := edgeOp (e.map ((truncation 2).map p))) rfl).mpr he.op
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.isInvertibleEdge_of_initialBoundaries := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.isInvertibleEdge_of_initialBoundaries
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.isInvertibleEdge_of_terminalBoundaries := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.isInvertibleEdge_of_terminalBoundaries

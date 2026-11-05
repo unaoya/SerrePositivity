@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Groupoid.Basic
 public import Mathlib.CategoryTheory.Endomorphism
 
@@ -12,6 +14,9 @@ public import Mathlib.CategoryTheory.Endomorphism
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan.Pointed
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 variable {C : Type u} [Groupoid.{v} C] (c : C)
 
@@ -73,4 +78,46 @@ lemma groupoidBasedArrow_id (x : C) : groupoidBasedArrow c (𝟙 x) = 1 := by
       IsIso.hom_inv_id]
   · simp only [groupoidBasedArrow, dite_eq_right hx]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrowAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrowAt := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrowAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow_comp := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow_eq := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow_id := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow_injective := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_injective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedPath := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedPath
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrow.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrowAt._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrowAt._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrowAt.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrowAt.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedArrowAt.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrowAt.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.groupoidBasedPath.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedPath.congr_simp

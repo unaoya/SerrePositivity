@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct
+open SerrePositivity.KST.Spectra.SimplicialDependentProduct
 
 noncomputable section
 
@@ -74,4 +79,40 @@ def relStruct {f g : (obj S X).PtSimplex n b} {i : Fin (n + 1)}
 
 end
 
-end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.eval_simplex := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.eval_simplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.simplex := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.relStruct._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.relStruct._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.simplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.simplex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.SimplicialDependentProduct.simplex._proof_3

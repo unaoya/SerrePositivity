@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {F G H : I ⥤ KanObject.{u}}
 
 /-- 任意の指定 coherent 同型を、同じ元の標準 Kan 値の成分へ正規化する。 -/
@@ -45,4 +50,28 @@ theorem kanDiagramValueIso_pointwise {F G : KanDiagramObject I}
     kanDiagramValueIso (kanDiagramFunctorIsoOfPointwise η hη) i =
       kanDiagramComponentValueIso η hη i := rfl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso_pointwise := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso_pointwise
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso_symm := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso_symm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso_trans := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso_trans
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramValueIso.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramValueIso.eq_1

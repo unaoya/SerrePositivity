@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderFunctor
 
 /-!
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedUnitTransformation
+end SerrePositivity.KST.Spectra.EnrichedUnitTransformation
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation
+open SerrePositivity.KST.Spectra.EnrichedUnitTransformation
 open EnrichedParameterCylinder
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} D]
   {F G : EnrichedFunctor SSet.{u} C D}
@@ -89,4 +94,19 @@ lemma hom_comp_factorization {H : EnrichedFunctor SSet.{u} C D}
   exact congrArg (fun k ↦ (eComp SSet (F.obj X) (G.obj X) (H.obj Z)).app d
     ((η.app X).app d PUnit.unit, k)) hn.symm
 
-end SerrePositivity.KST.Spectra.EnrichedUnitTransformation
+end SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedUnitTransformation.hom := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedUnitTransformation.hom_comp_factorization := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedUnitTransformation.hom_comp_left := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedUnitTransformation.hom_comp_right := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom_comp_right

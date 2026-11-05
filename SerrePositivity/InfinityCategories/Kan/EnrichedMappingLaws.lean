@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
 /-!
@@ -16,6 +18,9 @@ universe v w u z
 open CategoryTheory MonoidalCategory
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V]
   {C : Type z} [Category.{w} C] [EnrichedOrdinaryCategory V C]
@@ -55,4 +60,16 @@ theorem enriched_compatible_comp (F : EnrichedFunctor V C C)
     (eHomWhiskerLeft V (F.obj Y) sz), Category.assoc, ← eComp_eHomWhiskerLeft]
   rw [← tensorHom_comp_tensorHom, Category.assoc, ← EnrichedFunctor.map_comp_assoc]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_comp_middle := _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_comp_middle_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_compatible_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_compatible_comp

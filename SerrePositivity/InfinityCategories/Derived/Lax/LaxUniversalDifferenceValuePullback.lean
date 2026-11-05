@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
 public import SerrePositivity.InfinityCategories.F1.SquareDuality
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
   (h : IsVerdierSequence i r) {Φ : StableInfinity.{u} ⟶ Sp.{u}}
@@ -46,4 +51,10 @@ theorem comparisonSquare_value_isPullback :
   apply (isPullbackSquare_iff_transpose (comparisonSquare p q i r h ≫ Φ)).mpr
   simpa only [Category.assoc] using hL
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare_value_isPullback := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_value_isPullback

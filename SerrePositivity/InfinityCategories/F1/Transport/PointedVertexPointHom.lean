@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom
 
 /-! # 元の pointed-space 頂点の点の射を、同じ指定 fiber の端点で読む -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- pointed-space 頂点を元の指定 fiber の表示へ戻しても、同じ点の辺の類を保持する。 -/
 theorem pointedVertexPointHom_fiber {b : SpaceInfinity.{u} _⦋0⦌}
@@ -41,4 +46,13 @@ theorem pointedVertexPointHom_transport {b c : SpaceInfinity.{u} _⦋0⦌}
   exact (congrArg (fun m => pointedVertexPointHom t.val ≫ m) hc').trans
     (pointedVertexPointHom_fiber t)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedVertexPointHom_fiber := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom_fiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedVertexPointHom_transport := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom_transport

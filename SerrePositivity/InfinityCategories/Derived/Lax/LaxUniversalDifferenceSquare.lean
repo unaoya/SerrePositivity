@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
   (h : IsVerdierSequence i r)
@@ -79,4 +84,49 @@ def quotientCompositionTriangle : SSet.Edge.CompStruct (stableArrow (exactLift p
   exact (compositionDiagonalTransport s (exactMapComparisonTriangle (F := r)
     (G := quotientComposite p q r) e.symm)).triangle
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare_left := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.comparisonSquare_top := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.comparisonSquare_top
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComparisonTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.diagonalComparisonTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComparisonTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.diagonalComposite := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.diagonalComposite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.inclusionComposite := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.inclusionComposite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.kernelMap := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.lower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.lower := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.lower
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientComposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.quotientComposite := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientComposite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.quotientCompositionTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.quotientCompositionTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.upper (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.upper := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.upper
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.kernelMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.kernelMap._proof_1

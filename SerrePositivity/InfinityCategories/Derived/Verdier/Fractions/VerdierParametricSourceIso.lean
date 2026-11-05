@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance parametricSourceFiniteLimits {X : SSet.{u}} [Quasicategory X]
     [IsStable X] : HasFiniteLimits X := hasFiniteLimits_of_isStable _
@@ -132,4 +137,61 @@ def verdierParametricSourceIso
   rw [pullbackSourcePrefixFamily_parametric Q hQ]
   exact he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.parametricSourceFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.parametricSourceFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.parametricSourceParameterFiniteLimits := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.parametricSourceParameterFiniteLimits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pullbackSourcePrefixFamily_parametric := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.pullbackSourcePrefixFamily_parametric
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceEdge_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceEdge_isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_10 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_11 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_12 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_13 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_13
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierParametricSourceIso._proof_9 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierParametricSourceIso._proof_9

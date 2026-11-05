@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
@@ -14,9 +16,14 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.KanHomotopyGroup
+end SerrePositivity.KST.Spectra.KanHomotopyGroup
+namespace SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+open SerrePositivity.KST.Spectra.KanHomotopyGroup
 
 /-- 概要：等しい射と基点保存式は同じ誘導準同型を与える。
 方針：射の等式で帰納する。
@@ -47,9 +54,10 @@ theorem map_square {A B C D : SSet.{u}}
     _ = map (f ≫ j) h₂ x := DFunLike.congr_fun (map_congr n comm h₁ h₂) x
     _ = map j hj (map f hf x) := DFunLike.congr_fun (map_comp f hf j hj h₂) x
 
-end SerrePositivity.KST.Spectra.KanHomotopyGroup
+end SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
 
-namespace SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopy
+open SerrePositivity.KST.Spectra.KanHomotopy
 
 /-- 概要：全自然数次数の誘導写像は射の等式で一致する。
 方針：射の等式で帰納する。
@@ -79,4 +87,19 @@ theorem map_square {A B C D : SSet.{u}}
     _ = map n (f ≫ j) h₂ x := congrFun (map_congr n comm h₁ h₂) x
     _ = map n j hj (map n f hf x) := map_comp n f hf j hj h₂ x
 
-end SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.InfinityCategories.Kan.KanHomotopy
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_congr := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_congr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_square := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.map_congr := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_congr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.map_square := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_square

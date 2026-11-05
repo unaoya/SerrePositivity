@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.FiniteCosliceSpanAttachment
 
 /-!
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {K X : SSet.{u}} {b : K ⟶ X}
 
@@ -81,4 +86,31 @@ lemma finiteQuotientConeSpan_original {A B C : StableCategory.{u}}
         (quotientConeCosliceDiagram_projection t)).val = t.val := by
   rw [finiteCosliceSpanQuotientCone_original, quotientConeCosliceDiagram_uncurry]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierFiniteQuotientConeSpanFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteQuotientConeSpanFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.finiteQuotientConeSpan_original := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.finiteQuotientConeSpan_original
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram_uncurry := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram_uncurry
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCoslicePoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCoslicePoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCoslicePoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.quotientConeCosliceDiagram.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.quotientConeCosliceDiagram.eq_1

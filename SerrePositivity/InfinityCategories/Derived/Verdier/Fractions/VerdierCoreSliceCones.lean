@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
 public import SerrePositivity.KST.LocalizingInvariants.RightFibrationConeTransport
 public import SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting
@@ -25,9 +27,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma corePreimage_quasicategory {B C : SSet.{u}} [Quasicategory B] (q : B ⟶ C) :
     Quasicategory ((quasicategoryCore C).preimage q : SSet.{u}) := by
@@ -116,4 +121,13 @@ lemma exists_verdierCorePullback_finiteCone (h : IsVerdierSequence i q)
   · rw [Category.assoc, pullback.lift_snd]
     exact dY.property
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.corePreimage_quasicategory := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.corePreimage_quasicategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierCorePullback_finiteCone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierCorePullback_finiteCone

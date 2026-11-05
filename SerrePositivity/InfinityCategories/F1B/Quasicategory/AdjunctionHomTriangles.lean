@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory Bicategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 local instance homTrianglesCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) :=
   SSet.QCat.bicategory.homCategory A B
@@ -49,4 +54,22 @@ lemma adjunctionOfFunctorHomTriangles_counit (η : FunctorHom (𝟙 X) (F ≫ G)
     (adjunctionOfFunctorHomTriangles η ε hL hR).counitHom = ε :=
   (qcatCellEquiv (G ≫ F) (𝟙 Y)).apply_symm_apply ε
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfFunctorHomTriangles := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfFunctorHomTriangles_counit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles_counit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.homTrianglesCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.homTrianglesCategory := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.homTrianglesCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfFunctorHomTriangles._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfFunctorHomTriangles._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles._proof_2

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport
 public import SerrePositivity.InfinityCategories.F1.Transport.Ho
@@ -9,10 +11,13 @@ public import SerrePositivity.InfinityCategories.F1.Transport.Ho
 noncomputable section
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
 
 /-- cocartesian prism とともに選択された、同じ元の span 族の実輸送。 -/
@@ -39,4 +44,19 @@ theorem weakSpanChosenKanTransport_isQCatEquivalence
   strictKanCompletion_map_isQCatEquivalence_of_groupoidCompletion _
     (weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence h x s hs)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenKanTransport_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenKanTransport_isQCatEquivalence
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport_groupoidCompletion_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakSpanChosenTransport._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakSpanChosenTransport._proof_1

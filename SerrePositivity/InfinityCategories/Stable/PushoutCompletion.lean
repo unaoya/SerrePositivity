@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
@@ -13,9 +15,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Stable
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 概要：関手頂点の表す四角形が押し出しである条件。
 方針：内部 Hom の頂点同値から実際の正方形を取り出す。
@@ -126,4 +131,46 @@ lemma pushoutProjection_hasLiftingProperty_boundary (C : SSet.{u}) [Quasicategor
   · rw [Category.assoc, pushoutDiagramsCoconesIso_inv_projection]
     exact sq'.fac_right
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Stable
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex := _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily := _root_.SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutDiagrams := _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso := _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection := _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_inv_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection := _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutProjection := _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary := _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection_hasLiftingProperty_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.squareCoconeDiagramIso := _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.squareCoconeDiagramIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.squareCoconeDiagramIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.squareCoconeDiagramIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.squareCoconeDiagramIso._proof_3

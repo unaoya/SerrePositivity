@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeGeneratorSupport
 
 /-! # 具体的な cubical 射の順序つき非交差 support
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeGeneratorSupport
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の具体的な cubical 生成関数の有効入力は出力順に並ぶ。 -/
@@ -69,4 +74,31 @@ lemma concreteCubeNormalForm_support_pairwise_disjoint {X Y : ConcreteCube} (f :
   intro i hi hk
   exact hjk (concreteCubeNormalForm_support_output_unique f hi hk)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_ordered := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_ordered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_output_unique := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_output_unique
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_support_pairwise_disjoint := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_support_pairwise_disjoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormSupport := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMapGenerated_support_ordered := _root_.SerrePositivity.InfinityCategories.Kan.cubeMapGenerated_support_ordered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_output_unique := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_output_unique
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormSupport := _root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormSupport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormSupport.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormSupport.eq_1

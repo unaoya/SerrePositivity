@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SquareConstantCorners
 public import SerrePositivity.InfinityCategories.Kan.HomotopyInvariance
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.BasedInterval
+end SerrePositivity.KST.Spectra.BasedInterval
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval
+open SerrePositivity.KST.Spectra.BasedInterval
 variable {Y : SSet.{u}} {x : Y _⦋0⦌}
 
 /-- 両端を同じ基点に写す元の区間写像を、そのまま境界定数一単体にする。 -/
@@ -71,4 +76,31 @@ def relativeHomotopy {f g : (Δ[1] : SSet.{u}) ⟶ Y}
       k.app (Opposite.op ⦋d⦌) (stdSimplex.objEquiv.{u}.symm v, t))
         (homotopy_face H hs ht j)
 
-end SerrePositivity.KST.Spectra.BasedInterval
+end SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.homotopy_face := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.homotopy_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.simplex := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.relativeHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.relativeHomotopy._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BasedInterval.simplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.BasedInterval.simplex._proof_1

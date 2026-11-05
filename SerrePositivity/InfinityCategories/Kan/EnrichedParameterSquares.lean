@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V]
   {C : Type w} [EnrichedCategory V C]
 
@@ -56,4 +61,22 @@ lemma enriched_parameter_square_comp {A P Q : V} {X Y Z X' Y' Z' : C}
   rw [BraidedCategory.braiding_tensor_right_hom]
   simp only [Category.assoc]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_assoc_hom_assoc := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_assoc_hom_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_parameter_square_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_parameter_square_comp

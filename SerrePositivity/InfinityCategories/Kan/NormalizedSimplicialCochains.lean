@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate
 
 /-!
@@ -14,9 +16,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate
 universe w v u
 
 open CategoryTheory CategoryTheory.Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+open SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
 
 noncomputable section
 
@@ -124,4 +129,58 @@ lemma differential_comp (n : ℕ) (a : K.nonDegenerate n → (R ⟶ M)) :
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.coefficientEquiv := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential_apply := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.differential_comp := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.extend := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.extend
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homDifferential := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homDifferential_comp := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.inclusion_extend := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.inclusion_extend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.inclusion_extend_all := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.inclusion_extend_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.inclusion_extend_assoc := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.inclusion_extend_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.zeroExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.zeroExtend := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.zeroExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.coefficientEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.coefficientEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.coefficientEquiv._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.coefficientEquiv._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.coefficientEquiv._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homDifferential._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homDifferential._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homDifferential._proof_2

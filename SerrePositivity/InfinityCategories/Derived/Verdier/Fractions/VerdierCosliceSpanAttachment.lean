@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 二頂点を、実 span の二つの終点へ含める固定射。 -/
 def fractionSpanTargets : ((Δ[0] : SSet.{u}) ⨿ Δ[0]) ⟶ (horn 2 0 : SSet.{u}) :=
@@ -186,4 +191,94 @@ lemma exists_verdierFiniteCosliceSpanAttachment [K.Finite]
   obtain ⟨c, e', hw⟩ := exists_cosliceSpanAttachmentRefinement_with_weakLegs p U k₀ k₁ r₀ hU
   exact ⟨r₀, c, e', hw⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanLiftDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanLiftDiagram_original := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram_original
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanLiftDiagram_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanNativeDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanNativeDiagram_original := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram_original
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanQuotientCone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanQuotientCone_original := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone_original
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpan_lift_pair := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpan_lift_pair
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpan_native_pair := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpan_native_pair
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_cosliceSpanAttachmentRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_cosliceSpanAttachmentRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_cosliceSpanAttachmentRefinement_with_weakLegs := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_cosliceSpanAttachmentRefinement_with_weakLegs
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierFiniteCosliceSpanAttachment := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteCosliceSpanAttachment
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionDiagramTargets := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanAttachmentShape := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape_finite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanAttachmentShape_finite := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape_finite
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanTargets := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.nativeConeLeg_invertible_of_sliceIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.nativeConeLeg_invertible_of_sliceIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanLiftDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanLiftDiagram.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanLiftDiagram.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanNativeDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanNativeDiagram.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanNativeDiagram.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanQuotientCone._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.cosliceSpanQuotientCone.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.cosliceSpanQuotientCone.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionDiagramTargets.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionDiagramTargets.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanAttachmentShape._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanAttachmentShape._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanTargets._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanTargets._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanTargets._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSpanTargets.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSpanTargets.eq_1

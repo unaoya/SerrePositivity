@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 structure SquarePastingRectangle {X : SSet.{u}}
     (L R : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (b t : (Δ[2] : SSet.{u}) ⟶ X) where
@@ -73,4 +78,70 @@ lemma nonempty_squarePastingRectangle {X : SSet.{u}} [Quasicategory X]
   · exact h₀
   · exact h₁
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.nonempty_squarePastingRectangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.nonempty_squarePastingRectangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle._sizeOf_inst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.bottom_eq := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.bottom_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.casesOn := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.ctorIdx := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.diagram := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.diagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.left_eq := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.left_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.noConfusion := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.noConfusionType := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.rec := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.recOn := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.right_eq := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.right_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.top_eq := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.top_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk.inj := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk.injEq := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle.mk.sizeOf_spec

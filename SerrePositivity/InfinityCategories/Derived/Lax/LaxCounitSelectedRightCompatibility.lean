@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
+end SerrePositivity.KST.LocalizingInvariants.LaxCounit
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
+open SerrePositivity.KST.LocalizingInvariants.LaxCounit
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
 
@@ -76,4 +81,28 @@ lemma quotientSelectedCIso_right :
       _ = _ := quotientOriginalRightImage_unit p q i r
   exact hom_eq_of_arrow_mk_eq (he.trans (congrArg Arrow.mk hc))
 
-end SerrePositivity.KST.LocalizingInvariants.LaxCounit
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedCIso_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedCIso_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedDiagrams_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedDiagrams_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedRight := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedRight_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedRight_relative_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight_relative_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedRight._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedRight._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedRight._proof_2

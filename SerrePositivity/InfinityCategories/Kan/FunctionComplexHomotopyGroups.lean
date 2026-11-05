@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPoin
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+namespace SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+open SerrePositivity.KST.Spectra.SimplicialFunctionComplex
 
 noncomputable section
 
@@ -70,4 +75,34 @@ def homotopyEquiv : KanHomotopyGroup (obj S X) n b ≃*
 
 end
 
-end SerrePositivity.KST.Spectra.SimplicialFunctionComplex
+end SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyEquiv := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap_injective := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap_surjective := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialFunctionComplex.homotopyMap._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap._proof_3

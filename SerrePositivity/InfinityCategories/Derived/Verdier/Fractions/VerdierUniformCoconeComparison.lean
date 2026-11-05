@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
   {z : B.obj _⦋0⦌} {K : SSet.{u}}
@@ -215,4 +220,16 @@ lemma exists_verdierUniformCoconeInitialComparison
     ((isInvertibleEdge_congr hlp).mpr hai') ((isInvertibleEdge_congr hln).mpr hbi)
   exact ⟨l, hli, hlp, hln⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierUniformCoconeInitialComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierUniformCoconeInitialComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierUniformCocone_source_last := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformCocone_source_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierUniformCocone_source_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierUniformCocone_source_prefix

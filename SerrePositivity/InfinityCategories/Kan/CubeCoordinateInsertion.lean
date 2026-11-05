@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeNormalFormRestriction
 
 /-! # 選択した入力を元の座標へ戻す零面挿入
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeNormalFormRestriction
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 指定された入力座標だけを戻し、他の座標を零で埋める元の頂点関数。 -/
 def cubeCoordinateInsert {n m : ℕ} (e : Fin m → Fin n) : CubeVertex m → CubeVertex n :=
@@ -85,4 +90,22 @@ lemma cubeCoordinateInsert_generated {n m : ℕ} (e : Fin m → Fin n) (he : Str
       rw [cubeCoordinateInsert_lower e p hp]
       exact .comp (ih _ (cubeCoordinateLower_strictMono e p hp he)) (.face false n p)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateInsert := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateInsert_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert_generated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateInsert_lower := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateInsert_true_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateInsert_true_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateSelect_insert := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_insert

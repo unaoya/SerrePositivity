@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralIso
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeCoherence
 
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeCoheren
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- K 内の元の三重連結の結合同型は、全ての元の可換三角形について自然。 -/
@@ -54,4 +59,22 @@ lemma necklaceInAssociator_triangle {K : SSet.{u}} {x y z : K _⦋0⦌}
       necklaceInWedgeMap (necklaceInRightUnitor T).hom (𝟙 U) :=
   NecklaceInHom.ext (necklaceAssociator_triangle T.necklace U.necklace)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_pentagon := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_pentagon
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAssociator_triangle := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAssociator_triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInRightUnitor_naturality := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor_naturality

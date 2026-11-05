@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 
@@ -15,11 +17,17 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.UniqueTarget
+end SerrePositivity.KST.LocalizingInvariants.UniqueTarget
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 namespace UniqueTarget
+open SerrePositivity.KST.LocalizingInvariants.UniqueTarget
 variable {X : SSet.{u}} [∀ n, Unique (X.obj n)]
 
 /-- 次数ごとの唯一の単体による標準射。 -/
@@ -108,4 +116,76 @@ def toZeroCategory (A : StableCategory.{u}) : ExactMap A zeroCategory.{u} := by
       preservesZero := fun _x _ ↦ UniqueTarget.zero (X := (𝟙_ SSet.{u})) _
       preservesCofiber := fun _t _ ↦ UniqueTarget.pushout (X := (𝟙_ SSet.{u})) _ } }
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory := _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory_isZero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.colimit := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.colimit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.contractible := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.contractible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.cosliceUnique (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.cosliceUnique
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.hom_ext := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.limit := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.limit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.map := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.pullback := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.pushout := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.pushout
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.sliceUnique (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.sliceUnique
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.zero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory._aux_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._aux_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory._aux_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.toZeroCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.zeroCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.cosliceUnique._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.cosliceUnique._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.cosliceUnique._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.map._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.sliceUnique._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.UniqueTarget.sliceUnique._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.UniqueTarget.sliceUnique._proof_2

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorIso
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
@@ -62,4 +67,34 @@ lemma adjunctionOfOpposite_counit : (adjunctionOfOpposite a).counitHom = restore
 instance restoredCounit_isIso [IsIso a.unitHom] : IsIso (restoredCounit a) :=
   inferInstanceAs (IsIso (restoredFunctorIso (F := G ≫ F) (G := 𝟙 Y) (asIso a.unitHom)).hom)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfOpposite := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.adjunctionOfOpposite_counit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfOpposite_counit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit_isIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit_isIso := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredUnit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restored_leftTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_leftTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restored_rightTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restored_rightTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredCounit.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredCounit.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredUnit.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredUnit.eq_1

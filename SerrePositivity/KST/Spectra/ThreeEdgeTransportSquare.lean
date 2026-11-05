@@ -18,7 +18,7 @@ noncomputable section
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
+namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 variable {E : SSet.{u}} {x a y b : E _⦋0⦌}
   {left : E.Edge x a} {middle : E.Edge x y} {right : E.Edge y b}
   (D : ThreeEdgeTransport left middle right)
@@ -90,4 +90,4 @@ def homotopy : SSet.Homotopy (SSet.yonedaEquiv.symm left.edge)
   h₁ := square_one D
   rel := by ext m ⟨⟨s, hs⟩, r⟩; exact hs.elim
 
-end SerrePositivity.KST.Spectra.ThreeEdgeTransport
+end SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport

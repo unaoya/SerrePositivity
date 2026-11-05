@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -43,9 +45,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+namespace SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
+open SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 def arrowSection : X ⟶ zeroTargetArrows X :=
@@ -67,4 +72,28 @@ lemma arrow_zero_target (x : X _⦋0⦌) :
 
 def map : X ⟶ X := arrow X ≫ CofiberFamily.cofiber X (𝟙 _)
 
-end SerrePositivity.KST.LocalizingInvariants.SuspensionExact
+end SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow_source := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrow_zero_target := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrow_zero_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.map := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SuspensionExact.arrowSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExact.arrowSection._proof_1

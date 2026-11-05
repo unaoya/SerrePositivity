@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace
 public import Mathlib.Algebra.Group.Action.Basic
 
@@ -14,9 +16,12 @@ public import Mathlib.Algebra.Group.Action.Basic
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalBoundary
+end SerrePositivity.KST.Spectra.SphericalBoundary
+namespace SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+open SerrePositivity.KST.Spectra.SphericalBoundary
 
 noncomputable section
 
@@ -97,4 +102,19 @@ theorem nonempty_iff_alternatingClass_eq_zero
 
 end
 
-end SerrePositivity.KST.Spectra.SphericalBoundary
+end SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.additiveClass_last_of_update := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass_last_of_update
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.exists_horn_boundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.exists_horn_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.exists_of_alternatingClass_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.exists_of_alternatingClass_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.nonempty_iff_alternatingClass_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.nonempty_iff_alternatingClass_eq_zero

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality
 
 /-! # anodyne 局所化での元の Cartesian 射対の二成分の比較 -/
@@ -9,6 +11,9 @@ universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 局所化射の等号は、任意の固定対象との右直積でも保たれる。 -/
 lemma whiskerRight_eq_of_anodyneQ_eq {X Y : SSet.{u}} {f g : X ⟶ Y}
@@ -37,4 +42,16 @@ lemma pair_eq_of_anodyneQ_eq {X Y Z : SSet.{u}} {f f' : X ⟶ Y} {g g' : X ⟶ Z
     AnodyneHomotopy.anodyneQ.map (lift f g) = AnodyneHomotopy.anodyneQ.map (lift f' g') :=
   (pair_left_eq_of_anodyneQ_eq g hf).trans (pair_right_eq_of_anodyneQ_eq f' hg)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pair_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pair_left_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_left_eq_of_anodyneQ_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.whiskerRight_eq_of_anodyneQ_eq := _root_.SerrePositivity.InfinityCategories.F1.Transport.whiskerRight_eq_of_anodyneQ_eq

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
 public import SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformationHom
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+end SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+open SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} D]
   (F G H : EnrichedFunctor SSet.{u} C D)
   (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
@@ -114,4 +119,43 @@ def functor
   map_id := map_id F G H η θ ζ
   map_comp := map_comp F G H η θ ζ hc
 
-end SerrePositivity.KST.Spectra.EnrichedTransformationTriangle
+end SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.functor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.obj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.obj
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.stage := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map._proof_8
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.map.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.map.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedTransformationTriangle.stage._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.stage._proof_1

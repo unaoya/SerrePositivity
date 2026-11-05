@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeActiveSupport
 public import Mathlib.Order.Fin.Basic
 
@@ -9,6 +11,9 @@ public import Mathlib.Order.Fin.Basic
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 恒等射の有効入力は同じ座標。 -/
 lemma cubeActive_id {n : ℕ} {i j : Fin n}
@@ -98,4 +103,34 @@ lemma cubeSupportOrdered_connection (n : ℕ) (p : Fin (n + 1)) :
   change i.val < l.val
   split_ifs at hi hl <;> omega
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_connection := _root_.SerrePositivity.InfinityCategories.Kan.cubeActive_connection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_connection_bounds := _root_.SerrePositivity.InfinityCategories.Kan.cubeActive_connection_bounds
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_degeneracy := _root_.SerrePositivity.InfinityCategories.Kan.cubeActive_degeneracy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_face := _root_.SerrePositivity.InfinityCategories.Kan.cubeActive_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeActive_id := _root_.SerrePositivity.InfinityCategories.Kan.cubeActive_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_connection := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_connection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_degeneracy := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_degeneracy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_face := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOrdered_id := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOrdered_id

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 variable {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
 
@@ -151,4 +156,64 @@ theorem KanPiIsomorphism.of_iso (e : X ≅ Y) : KanPiIsomorphism e.hom := by
   intro x n
   exact (KanHomotopy.equivOfIso n e rfl).bijective
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.iso_inverse_basepoint := _root_.SerrePositivity.InfinityCategories.Kan.iso_inverse_basepoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfIso := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfIso_point := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso_point
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfPiIsomorphism := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfPiIsomorphism_apply := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfPiIsomorphism_point := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_bijective_congr := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfIso := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfPiIsomorphism := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfPiIsomorphism_apply := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.map_bijective_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.of_iso := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.equivOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfPiIsomorphism._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfPiIsomorphism._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfPiIsomorphism._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism._proof_3

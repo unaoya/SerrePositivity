@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrepend
 
 /-!
@@ -13,8 +15,11 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexPrepend
 
 @[expose] public section
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：最初の面を除いてから先頭追加した射を使うと、元の射と最初の面の合成になる。
@@ -54,4 +59,16 @@ theorem simplexPrepend_δ_zero {m n : SimplexCategory} (θ : m ⟶ n) :
   | zero => simp [simplexPrepend, SimplexCategory.σ]
   | succ j => simp [simplexPrepend, SimplexCategory.σ]
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_δ := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_δ_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_σ := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ

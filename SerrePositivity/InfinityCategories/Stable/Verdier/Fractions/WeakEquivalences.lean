@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionEdges
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange
@@ -15,10 +17,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 
 /-- 選択に依存しない、包含の本質像に cofiber を持つ実辺。 -/
 def weakEquivalences {A B : StableCategory.{u}} (i : ExactMap A B) :
@@ -80,4 +85,31 @@ theorem weakEquivalences_pullback_iff (h : IsVerdierSequence i q)
   simpa only [weakEquivalences, stableClosure_essentialImage h] using
     cofiberStableEdges_pullback_iff (essentialImage i) L hL
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.mem_weakEquivalences_iff := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.mem_weakEquivalences_iff_invertible := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.mem_weakEquivalences_iff_invertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.stableClosure_essentialImage := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.stableClosure_essentialImage
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences_pullback_iff := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences_pushout_iff := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pushout_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences_twoOfThree := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakEquivalences.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences.eq_1

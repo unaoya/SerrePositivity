@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution
 public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.InfinityCategories.Core.CoconeTransport
@@ -20,9 +22,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の錐全体から、同じ頂点の定値族からの指定ホモトピーを得る。 -/
 def spanRecoveryConeHomotopy {K D : SSet.{u}} {p : K ⟶ D} (c : JoinCone p) :
@@ -182,4 +187,31 @@ lemma verdierFiniteMappingFamily_realization
       e₁ ≪≫ e₂ ≪≫ e₃
   exact e'
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierCompletedSpan_finite_realization := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierCompletedSpan_finite_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpan_continuous_finite_fiber_detection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_continuous_finite_fiber_detection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpan_finite_fiber_detection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFiniteMappingFamily_realization := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFiniteMappingFamily_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryConeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryConeHomotopy._proof_3

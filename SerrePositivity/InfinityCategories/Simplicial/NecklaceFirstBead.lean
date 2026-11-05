@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceShapeEquality
 public import Mathlib.Data.Finset.Max
 
@@ -9,6 +11,9 @@ public import Mathlib.Data.Finset.Max
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の正の joints の有限集合。 -/
 def positiveJoints (T : NecklaceShape) : Finset ℕ := T.joints.filter (0 < ·)
@@ -78,4 +83,43 @@ lemma firstPositive_tail_lt (T : NecklaceShape) (h : 0 < T.vertexMax) :
   change T.vertexMax - T.firstPositiveJoint h < T.vertexMax
   omega
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositiveJoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositiveJoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_le := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositiveJoint_le
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_mem := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositiveJoint_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositiveJoint_pos := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositiveJoint_pos
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.firstPositive_tail_lt := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.firstPositive_tail_lt
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.positiveJoints (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.positiveJoints := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.positiveJoints
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.positiveJoints_nonempty := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.positiveJoints_nonempty
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.single_wedge_tail := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single_wedge_tail
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.tail (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.tail
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.tail._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.tail._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.tail._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.tail._proof_3

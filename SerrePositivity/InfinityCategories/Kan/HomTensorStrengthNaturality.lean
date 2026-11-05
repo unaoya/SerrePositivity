@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 
 /-!
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.KST.Spectra.HomTensorStrength
+namespace SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+open SerrePositivity.KST.Spectra.HomTensorStrength
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [BraidedCategory C]
 
 /-- 三因子の最初の二因子の交換は、中央の因子の射について自然。 -/
@@ -47,4 +52,25 @@ lemma natural {P Q Y Z : C} (f : P ⟶ Q) (g : Y ⟶ Z) (A : C) :
     ← Category.assoc, natural_parameter, Category.assoc,
     ← Functor.map_comp, ← tensorHom_def]
 
-end SerrePositivity.KST.Spectra.HomTensorStrength
+end SerrePositivity.InfinityCategories.Kan.HomTensorStrength
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_middle := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_middle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.exchange_natural_middle_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_middle_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_parameter := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_parameter
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.HomTensorStrength.natural_parameter_assoc := _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_parameter_assoc

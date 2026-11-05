@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction
 public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
 public import SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap
@@ -22,9 +24,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 variable {C D E Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (r : ExactMap (laxCategory p q) Q)
 
@@ -86,4 +91,46 @@ def firstCLegIso : FunctorIso (first p q r)
     simpa only [Category.assoc] using firstFactorIso p q r
   exact ef ≪≫ e
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.arrow_source := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.arrow_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.connectingArrow_target := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.connectingArrow_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.firstCLegIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstSuspensionIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromC_connectingArrow_zeroTarget := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromC_connectingArrow_zeroTarget
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.firstCLegIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstSuspensionIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstSuspensionIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstSuspensionIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.fromCFirstSuspensionIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.fromCFirstSuspensionIso._proof_4

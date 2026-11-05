@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPoint
 
 /-!
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 
 /-- 小さい円柱の Hom のパラメータを、指定した Hom の族と組み合わせる。 -/
 def pairBySide (A : SSet.{u}) : (s t : Bool) → {U H : SSet.{u}} →
@@ -74,4 +79,22 @@ lemma pairBySide_comp (A : SSet.{u}) (s t r : Bool) {U V W H K L : SSet.{u}}
   · exact (b.app d y).elim
   · exact ConcreteCategory.congr_hom (NatTrans.congr_app hh d) xy
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_identity := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_identity
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide_precomp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide_precomp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.pairBySide.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.pairBySide.match_1

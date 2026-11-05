@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.BoundaryFaces
+end SerrePositivity.KST.Spectra.BoundaryFaces
+namespace SerrePositivity.InfinityCategories.Kan.BoundaryFaces
+open SerrePositivity.KST.Spectra.BoundaryFaces
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -87,4 +92,43 @@ theorem ι_desc (hf : IsCompatible f) (j : Fin (n + 3)) : boundary.ι j ≫ desc
   simpa only [boundary.faceSingletonComplIso_inv_ι_assoc] using!
     (isColimit.{u} n).fac (multicofork hf) (.right j)
 
-end SerrePositivity.KST.Spectra.BoundaryFaces
+end SerrePositivity.InfinityCategories.Kan.BoundaryFaces
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.desc := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.diagram := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.diagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.isColimit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.isColimit := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.isColimit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.multicofork (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.multicofork := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.multicofork
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.ι_desc := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.ι_desc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.ι_desc_assoc := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.ι_desc_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.IsCompatible._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.IsCompatible._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.desc.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.desc.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BoundaryFaces.multicofork._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BoundaryFaces.multicofork._proof_1

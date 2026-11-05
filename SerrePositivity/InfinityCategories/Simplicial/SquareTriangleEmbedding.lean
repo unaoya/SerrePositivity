@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -67,4 +72,19 @@ instance lower_mono : Mono lower.{u} := by
   rw [← upper_swap]
   infer_instance
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_values_sum := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_values_sum
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_app_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_app_injective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_mono

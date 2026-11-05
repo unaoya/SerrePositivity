@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.FunLike.Basic
@@ -38,9 +40,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Straightening
+open SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
 /-- 二重評価は底の前合成の同じ頂点を厳密に回収する。 -/
@@ -64,4 +69,13 @@ theorem leftStraighteningInfinityMap_baseChangeIso_heq :
     rfl
   exact (hcast _ _).trans (hcast _ _)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.doubleFunctorEvaluation_precomp_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.doubleFunctorEvaluation_precomp_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.leftStraighteningInfinityMap_baseChangeIso_heq := _root_.SerrePositivity.InfinityCategories.Stable.Straightening.leftStraighteningInfinityMap_baseChangeIso_heq

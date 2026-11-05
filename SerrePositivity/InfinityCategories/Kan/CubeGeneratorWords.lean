@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportComposition
 public import Mathlib.CategoryTheory.PathCategory.Basic
 
@@ -9,6 +11,9 @@ public import Mathlib.CategoryTheory.PathCategory.Basic
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 次元を指定した三種の cubical 生成射。 -/
@@ -59,4 +64,181 @@ lemma cubeWordConcreteFunctor_comp {X Y Z : CubeWords} (f : X ⟶ Y) (g : Y ⟶ 
       cubeWordConcreteFunctor.map f ≫ cubeWordConcreteFunctor.map g :=
   cubeWordConcreteFunctor.map_comp f g
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWords (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWords := _root_.SerrePositivity.InfinityCategories.Kan.CubeWords
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorQuiver (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorQuiver := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorQuiver
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_comp := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_generator := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_generator
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeWordConcreteFunctor_id := _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorElim (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.ctorElim := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorElim
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorElimType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.ctorElimType := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorElimType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.dimension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.dimension := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.dimension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeGeneratorConcretePrefunctor._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor._proof_6
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.elim (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection.elim := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.elim
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection.inj := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.connection.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection.sizeOf_spec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.elim (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy.elim := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.elim
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy.inj := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.degeneracy.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy.sizeOf_spec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.elim (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face.elim := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.elim
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face.inj := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeGenerator.face.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face.sizeOf_spec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeWordObject.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk.sizeOf_spec

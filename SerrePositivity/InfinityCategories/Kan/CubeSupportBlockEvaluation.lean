@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportBlockMap
 
 /-! # support ブロックの max と元の具体射の非定数出力
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSupportBlockMap
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 各ブロックの fiber max は、元の同じ空でない出力の評価。 -/
@@ -67,4 +72,31 @@ lemma concreteCubeInputCompressed_projection_connectionGenerated {X Y : Concrete
     (concreteCubeInputCompressedSupportPartition f)]
   exact cubeSupportBlockMap_connectionGenerated _
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeInputCompressedSupportPartition := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressedSupportPartition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeInputCompressed_projection_connectionGenerated := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeInputCompressed_projection_connectionGenerated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_eval := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_eval
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax_eq_projection := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax_eq_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSelection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSelection := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSelection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportMax._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportMax._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSelection._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSelection._proof_1

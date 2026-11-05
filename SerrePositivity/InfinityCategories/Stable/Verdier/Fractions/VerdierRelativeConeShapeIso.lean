@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery
 
 /-!
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- パラメータの同型は、元の有限境界を全時刻固定する商錐回収を保つ。 -/
 lemma hasVerdierRelativeConeRecovery_of_iso {X Y S T : SSet.{u}} (q : X ⟶ Y)
@@ -66,4 +71,10 @@ lemma hasVerdierRelativeConeRecovery_of_iso {X Y S T : SSet.{u}} (q : X ⟶ Y)
     exact (isInvertibleEdge_congr (simplicialHomotopyVertexEdge_precomp_edge d.comparison
       (join (Δ[0] : SSet.{u}) K ◁ e.inv) x)).mpr (d.invertible _)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.hasVerdierRelativeConeRecovery_of_iso := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.hasVerdierRelativeConeRecovery_of_iso

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+end SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+open SerrePositivity.KST.Spectra.SkeletalSphericalRealization
 
 noncomputable section
 
@@ -128,4 +133,25 @@ theorem exists_extended_realization {K X : SSet.{u}} [KanComplex X] {n : ℕ} {x
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+end SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.characteristic_eq_yoneda := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_extended_realization := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_extended_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_map := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.exists_realization := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_realization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.lower_constant := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalRealization.characteristic_eq_yoneda._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.characteristic_eq_yoneda._proof_2

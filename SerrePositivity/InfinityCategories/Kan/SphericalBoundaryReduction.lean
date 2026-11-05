@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 
 /-!
@@ -13,9 +15,14 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+end SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：全ての面が境界定数単体である単体。
 方針：実際の単体とその全ての面の等式を記録する。
@@ -35,6 +42,7 @@ structure SphericalBoundary {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   face_eq (j : Fin (n + 4)) : stdSimplex.δ j ≫ map = (a j).map
 
 namespace SphericalBoundaryReduction
+open SerrePositivity.KST.Spectra.SphericalBoundaryReduction
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {a : Fin (n + 4) → X.PtSimplex (n + 2) x} {p : Fin (n + 2)}
@@ -151,4 +159,85 @@ noncomputable def reduce [KanComplex X]
 
 end SphericalBoundaryReduction
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.face_eq := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.face_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.map := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.rec := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.recOn := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.compatible := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.compatible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.output_face := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.output_face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduce := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduced := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundary.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.face.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduce._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduce._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalBoundaryReduction.reduced.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction.reduced.eq_1

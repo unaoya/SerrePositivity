@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderEndpoints
 
 /-!
@@ -15,6 +17,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {A B : SSet.{u}} {C : Type v} [EnrichedCategory SSet.{u} C] (i : A ⟶ B)
 
 /-- パラメータの変更は端と元の対象を保つ。 -/
@@ -101,4 +106,34 @@ lemma restriction_evaluation (h : ∀ X, i ≫ θ.app X = η.app X) :
   · change ((𝟙 _ ≫ G.map x y) ≫ 𝟙 _) = G.map x y
     simp
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionObject := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionObject
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restriction_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.gradedRestriction._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.gradedRestriction._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.restrictionMap.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restrictionMap.match_1

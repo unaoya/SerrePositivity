@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal
 
 /-! # 削除標準表示の元の頂点関数による判定
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 保持する元の添字は、保持・削除の標準表示を一意に決める。 -/
 lemma cubeDeletionNormalEmbedding_injective (n m : ℕ) :
@@ -69,4 +74,22 @@ lemma cubeDeletionNormalVertex_erase {n m : ℕ} (d : CubeDeletionNormal n (m + 
   funext x j
   exact congrArg x (congrFun (cubeDeletionNormalErase_embedding d i) j)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateSelect_injective := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeDeletionNormalEmbedding_injective := _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding_injective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex := _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_erase := _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_erase
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeDeletionNormalVertex_injective := _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex_injective

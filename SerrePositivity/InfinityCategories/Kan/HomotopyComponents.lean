@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：単体集合の可換正方形は連結成分上で可換。
 方針：二つの合成の関手性を使う。
@@ -71,4 +76,19 @@ theorem KanPiIsomorphism.piZero_bijective_at {X Y : SSet.{u}} [KanComplex X] [Ka
     exact eY.bijective.comp (hf x 0)
   exact (Function.Bijective.of_comp_iff _ eX.bijective).1 hb
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mapPiZero_square := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero_point := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_bijective_iff_piZero := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_bijective_iff_piZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.piZero_bijective_at := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.piZero_bijective_at

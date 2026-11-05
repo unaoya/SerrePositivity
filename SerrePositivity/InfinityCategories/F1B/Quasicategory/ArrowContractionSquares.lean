@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
@@ -21,9 +23,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 def arrowContractionSquares {A X : SSet.{u}} (c : (Δ[1] : SSet.{u}) ⊗ A ⟶ A)
     (f : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
@@ -101,4 +106,31 @@ lemma arrowContractionSquares_vertex {A X : SSet.{u}} (c : (Δ[1] : SSet.{u}) �
   intro s
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares_bottom := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares_left := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares_right := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares_top := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares_vertex := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.contractionAtVertex := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.contractionAtVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.arrowContractionSquares.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowContractionSquares.eq_1

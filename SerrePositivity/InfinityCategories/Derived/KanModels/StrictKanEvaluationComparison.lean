@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 
@@ -12,6 +14,9 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.KanModels
+open SerrePositivity.KST.Fibration
 variable {X Y : SSet.{u}} [KanComplex Y] (f : X ⟶ Y)
 
 /-- Kan 標的の同じ置換単位は、実際の ∞ 圏同値。 -/
@@ -51,4 +56,25 @@ theorem strictKanCompletion_map_equivalence_iff_evaluation :
   · intro h
     exact hs.cancel_left ((h.comp ht).ofFunctorIso e.symm)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletionUnit_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanCompletionUnit_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanCompletion_map_equivalence_iff_evaluation := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanCompletion_map_equivalence_iff_evaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanEvaluationComparisonIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanEvaluationComparisonIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanEvaluationComparisonIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanEvaluationComparisonIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictKanEvaluationComparisonIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.KanModels.strictKanEvaluationComparisonIso._proof_3

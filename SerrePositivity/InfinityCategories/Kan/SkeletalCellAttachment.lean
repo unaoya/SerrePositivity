@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory SSet
 
 namespace SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+open SerrePositivity.KST.Spectra.SkeletalCellAttachment
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -49,4 +54,34 @@ def cellEquiv (K : SSet.{u}) (d : ℕ) :
   left_inv c := by cases c; rfl
   right_inv x := rfl
 
-end SerrePositivity.KST.Spectra.SkeletalCellAttachment
+end SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.lower_eq := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.lower_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.upper_eq := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.upper_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalCellAttachment.cellEquiv._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv._proof_6

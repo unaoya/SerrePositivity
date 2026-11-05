@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
 
 /-!
@@ -14,6 +16,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
@@ -26,4 +31,10 @@ lemma hom_eq_inv (A K Y : C) : (iso A K Y).hom = (iso K A Y).inv := by
   simp only [Category.assoc]
 
 end
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.hom_eq_inv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv

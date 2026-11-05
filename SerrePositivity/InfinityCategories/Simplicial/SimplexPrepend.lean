@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
 /-!
@@ -13,8 +15,11 @@ public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
 @[expose] public section
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：単体圏の射の先頭に新しい頂点を追加する。
@@ -112,4 +117,34 @@ instance simplexPrepend_mono {m n : SimplexCategory} (θ : m ⟶ n) [Mono θ] :
     apply SimplexCategory.mono_iff_injective.mp (inferInstance : Mono θ)
     exact Fin.succ_injective _ h
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_epi := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_id := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_succ := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_succ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexPrepend._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend._proof_2

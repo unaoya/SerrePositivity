@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison
 public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierImageTransport
 public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict
@@ -17,9 +19,16 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
+end SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
+namespace SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+end SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+namespace SerrePositivity.InfinityCategories.Derived.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元入力と長方形の始域への実屋根。指定同値は同じ二本の ν 像を照合する。 -/
 structure RelativePerfectVerdierSourceRoof {S : SSet.{u + 1}}
@@ -37,6 +46,7 @@ structure RelativePerfectVerdierSourceRoof {S : SSet.{u + 1}}
     (hoFunctor.map ν).toFunctor.map (Truncated.HomotopyCategory.homMk comparison)
 
 namespace RelativePerfectVerdierSourceRoof
+open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
   {original actual : S _⦋0⦌}
 
@@ -118,6 +128,7 @@ lemma rectangleValueIso_of_imageIso_triangle
 end RelativePerfectVerdierSourceRoof
 
 namespace RelativePerfectVerdierRectangle
+open SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
   (d : RelativePerfectVerdierRectangle ν)
 
@@ -178,4 +189,127 @@ lemma sourceValueIso_of_imageIso_triangle
     (congrArg (fun f => f ≫ _) (r.valueIso_triangle E))
 
 end RelativePerfectVerdierRectangle
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceRoofOfEq (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle.sourceRoofOfEq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceRoofOfEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle.sourceValueIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceValueIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceValueIso_of_imageIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle.sourceValueIso_of_imageIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceValueIso_of_imageIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle.sourceValueIso_of_imageIso_triangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceValueIso_of_imageIso_triangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.augmentation := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.augmentation_invertible := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.augmentation_invertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.casesOn := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.common := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.common
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.comparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.comparison_invertible := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.comparison_invertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.ctorIdx := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.image (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.image := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.image
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.noConfusionType := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.ofEq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.rec := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.recOn := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso_triangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso_triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.triangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.triangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.valueIso := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.valueIso_ofEq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso_ofEq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.valueIso_triangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso_triangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle.sourceRoofOfEq._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle.sourceRoofOfEq._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk.inj := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk.injEq := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.ofEq._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.ofEq._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.ofEq.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof.valueIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.valueIso.eq_1

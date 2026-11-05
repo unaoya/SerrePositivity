@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointFamily
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
@@ -10,9 +12,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌)
 
@@ -75,4 +80,28 @@ theorem coslicePointEvaluation_vertex_val
     (relativeFunctorVertex p _ f hf)) ht
   exact hh.trans (evaluateFunctorAt_functorVertex (cosliceIdentityCone b) f)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_fullyFaithful := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_fullyFaithful
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_functorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_functorIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_functorIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_relativeIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_vertex_val := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_vertex_val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointExtension_isContractibleKan := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointExtension_isContractibleKan
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_relativeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_relativeIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_relativeIso._proof_2

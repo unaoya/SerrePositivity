@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 public import SerrePositivity.InfinityCategories.Kan.GroupFiveLemma
@@ -17,9 +19,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.KST.Spectra.FibrationSquare
+namespace SerrePositivity.InfinityCategories.Kan.FibrationSquare
+open SerrePositivity.KST.Spectra.FibrationSquare
 
 noncomputable section
 
@@ -64,4 +69,10 @@ theorem fiberMap_positive_bijective {E B E' B' : SSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra.FibrationSquare
+end SerrePositivity.InfinityCategories.Kan.FibrationSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationSquare.fiberMap_positive_bijective := _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMap_positive_bijective

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue
 
 /-! # 同じ豊穣実現同型の指定成分は、元の共同比較の係数点の作用を保持する -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J] {D E : KanEnrichedDiagram C J}
   (η : KanEnrichedDiagramComparison D E)
@@ -66,4 +71,25 @@ theorem kanEnrichedRealizationComponentIso_pointHom (X : C) (j : J)
   rw [kanEnrichedRealizationComponentIso_eq_joint]
   exact kanEnrichedJointComponentIso_pointHom η hη X j v
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso_eq_joint := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_eq_joint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso_pointHom := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso_pointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedRealizationComponentIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanEnrichedRealizationComponentIso._proof_3

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality
@@ -20,9 +22,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxCounit
+end SerrePositivity.KST.LocalizingInvariants.LaxCounit
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
+open SerrePositivity.KST.LocalizingInvariants.LaxCounit
 variable {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
 
@@ -103,4 +108,43 @@ lemma quotientCofiberRelativeIso_arrow :
     HomotopyLimits.functorIso_postcomp_hom]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants.LaxCounit
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiberRelativeIso := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiberRelativeIso_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso_arrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams_cofiber := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientOriginalDiagrams_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientOriginalDiagrams_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientRightComparison_naturality := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightComparison_naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientRightSourceComparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientRightSourceComparison_arrow := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison_arrow
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightTargetComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientRightTargetComparison := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightTargetComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientSelectedDiagrams_cofiber := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientSelectedDiagrams_cofiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiberRelativeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientCofiberRelativeIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientCofiberRelativeIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxCounit.quotientRightSourceComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxCounit.quotientRightSourceComparison._proof_1

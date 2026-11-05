@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison
 
 /-!
@@ -15,9 +17,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison
+end SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
@@ -37,6 +44,7 @@ local notation "J" => join (Δ[n] : SSet) Δ[0]
 
 variable {b : VerdierRecoveredBoundaryComparison r U}
 namespace VerdierCompletedCoconeComparison
+open SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison
 variable (w : VerdierCompletedCoconeComparison b)
 
 /-- 同じ完成 K 円柱の実終端。 -/
@@ -114,4 +122,52 @@ lemma endpoint_boundary_ι :
   rw [Category.assoc, r.simplexCylinder_ι, ← Category.assoc, r.cylinder.homotopy.h₁]
 
 end VerdierCompletedCoconeComparison
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointComparisonHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointComparisonHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointComparisonHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointComparison_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointComparison_boundary
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnitHomotopy := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnit_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnit_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpoint_boundary := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpoint_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpoint_boundary_ι := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpoint_boundary_ι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.target (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.target_ι := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.target_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeComparison.endpointUnitHomotopy._proof_4

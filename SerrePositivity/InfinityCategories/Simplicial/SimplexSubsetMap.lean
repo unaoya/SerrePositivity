@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の有限部分集合の標準単体から、同じ頂点の像を持つ標準単体への包含。 -/
@@ -41,4 +46,25 @@ lemma simplexSubsetMap_last {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.c
       standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega))) :=
   standardSimplexVertex_ext (simplexSubsetOrder_last I hI)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_apply := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_mono
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetMap_first._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetMap_first._proof_2

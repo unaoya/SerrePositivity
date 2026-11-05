@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanSliceComparison
 public import SerrePositivity.InfinityCategories.F1B.Cones.SliceDiagramConeMap
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma spanEndpointCoproductDiagram_eq {X : SSet.{u}} (x y : X _⦋0⦌) :
     spanTwoPointDiagram x y ≫ (Iso.refl X).hom =
@@ -106,4 +111,40 @@ lemma verdierDenominatorSpanCanonicalComparison_isQCatEquivalence
   (qCatEquivalenceOfIso (verdierDenominatorSpanBoundaryIso i x y)).isQCatEquivalence.comp
     (markedSpanSliceToFixed_isQCatEquivalence h x y)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceIso_denominator_edge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso_denominator_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceIso_val := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso_val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanEndpointCoproductDiagram_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanEndpointCoproductDiagram_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundaryIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanBoundaryIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundaryIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundarySliceIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanBoundarySliceIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundarySliceIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCanonicalComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanCanonicalComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanCanonicalComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanBoundarySliceIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanBoundarySliceIso.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorSpanBoundarySliceIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanBoundarySliceIso._proof_1

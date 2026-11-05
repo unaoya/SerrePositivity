@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.SmallEnrichedNerve
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} (F : (SSet.uliftFunctor.{u + 1, u}).obj X ⟶ SpaceInfinity.{u})
 
 /-- 元の図式の全頂点の値そのものを許す。対象の同型類による置換はしない。 -/
@@ -68,4 +73,37 @@ theorem spaceDiagramImageLift_inclusion :
     spaceDiagramImageLift F ≫ spaceDiagramImageInclusion F = F :=
   coherentFullSubcategoryLift_inclusion _ _ _
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageInclusion := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageInclusion_isFullyFaithful := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageInclusion_isFullyFaithful
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift_inclusion := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift_inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageObjects (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageObjects := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageObjects
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageObjects_small (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageObjects_small := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageObjects_small
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage_obj_small (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage_obj_small := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage_obj_small
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage_quasicategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImage_quasicategory := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImage_quasicategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceDiagramImageLift._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.spaceDiagramImageLift._proof_1

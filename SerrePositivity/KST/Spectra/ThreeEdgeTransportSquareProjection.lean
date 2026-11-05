@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory SSet
 open scoped Simplicial
-namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
+namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 variable {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
   {left : Z.Edge x a} {middle : Z.Edge x y} {right : Z.Edge y b}
   (D : ThreeEdgeTransport left middle right)
@@ -47,4 +47,4 @@ lemma square_relabel {x' a' y' b' : Z _⦋0⦌}
     (D.relabel left' middle' right' hl hm hr).square = D.square :=
   square_eq_of_simplex_eq _ _ rfl rfl
 
-end SerrePositivity.KST.Spectra.ThreeEdgeTransport
+end SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport

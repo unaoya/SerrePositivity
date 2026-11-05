@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialNerve
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
@@ -49,11 +51,14 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 
 /-- 元の Kan 値の一点射が可逆なら、同じ元の空間の頂点は終対象である。 -/
 theorem kanVertex_isTerminal_of_localized_toPoint (K : KanObject.{u})
@@ -81,4 +86,10 @@ theorem kanVertex_isTerminal_of_localized_toPoint (K : KanObject.{u})
   exact ht.of_vertexIso (asIso
     (Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated)).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanVertex_isTerminal_of_localized_toPoint := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanVertex_isTerminal_of_localized_toPoint

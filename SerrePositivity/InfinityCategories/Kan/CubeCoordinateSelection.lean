@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeWordRealization
 public import Mathlib.Order.Preorder.Finite
 
@@ -10,6 +12,9 @@ public import Mathlib.Order.Preorder.Finite
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 元の指定した入力座標を元の順で選択する頂点関数。 -/
 def cubeCoordinateSelect {n m : ℕ} (e : Fin m → Fin n) : CubeVertex n → CubeVertex m :=
@@ -43,4 +48,25 @@ lemma cubeCoordinateSelect_lower {n m : ℕ} (e : Fin m → Fin (n + 1))
   funext x j
   exact congrArg x (cubeCoordinateLower_spec e p hp j).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateLower := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateLower_spec := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateLower_strictMono := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower_strictMono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateSelect := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateSelect_lower := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateSelect_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateLower._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateLower._proof_1

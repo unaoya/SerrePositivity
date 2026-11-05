@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
@@ -16,11 +18,21 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.FiberExactness
+end SerrePositivity.KST.Spectra.FiberExactness
+namespace SerrePositivity.KST.Spectra.TotalExactness
+end SerrePositivity.KST.Spectra.TotalExactness
+namespace SerrePositivity.KST.Spectra.BaseExactness
+end SerrePositivity.KST.Spectra.BaseExactness
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 namespace FiberExactness
+open SerrePositivity.KST.Spectra.FiberExactness
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
   (e : E _⦋0⦌) {n : ℕ}
@@ -79,6 +91,7 @@ theorem exists_connecting_of_nullRel
 end FiberExactness
 
 namespace TotalExactness
+open SerrePositivity.KST.Spectra.TotalExactness
 
 variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌) {n : ℕ}
 
@@ -181,6 +194,7 @@ theorem exists_fiber_of_baseNullRel_zero (a : E.PtSimplex 0 e)
 end TotalExactness
 
 namespace BaseExactness
+open SerrePositivity.KST.Spectra.BaseExactness
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
@@ -494,4 +508,61 @@ theorem exact_fiber_total_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
   | zero => exact exact_fiber_total_zero p e a
   | succ n => exact exact_fiber_total p e n a
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_connecting_fiber := _root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_connecting_fiber_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_connecting_fiber_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_fiber_total_zero := _root_.SerrePositivity.InfinityCategories.Kan.exact_fiber_total_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_total_base := _root_.SerrePositivity.InfinityCategories.Kan.exact_total_base
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exact_total_base_all := _root_.SerrePositivity.InfinityCategories.Kan.exact_total_base_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.compatible := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.compatible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.exists_total_of_boundaryNullRel := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.exists_total_of_boundaryNullRel
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.output_face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.output_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.rel_face := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.rel_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberExactness.exists_connecting_of_nullRel := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FiberExactness.exists_connecting_of_nullRel_all := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TotalExactness.exists_fiber_of_baseNullRel := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TotalExactness.exists_fiber_of_baseNullRel_zero := _root_.SerrePositivity.InfinityCategories.Kan.TotalExactness.exists_fiber_of_baseNullRel_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.BaseExactness.face.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.BaseExactness.face.eq_1

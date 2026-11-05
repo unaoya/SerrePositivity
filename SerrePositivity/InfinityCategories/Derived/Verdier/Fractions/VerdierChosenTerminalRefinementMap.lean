@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
 public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 def terminalRefinementSourceDiagram {X : SSet.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) : (Δ[n] : SSet.{u}) ⟶ X :=
@@ -109,4 +114,22 @@ lemma exists_verdierChosenTerminalRefinementMap
   obtain ⟨t, ht, hlast, _⟩ := exists_verdierChosenTerminalRefinementMap_with_edge h D d F hF hlast
   exact ⟨t, ht, hlast⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierChosenTerminalRefinementMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierChosenTerminalRefinementMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierChosenTerminalRefinementMap_with_edge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierChosenTerminalRefinementMap_with_edge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementSourceDiagram := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementSourceDiagram_vertex := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.terminalRefinementSourceDiagram._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.terminalRefinementSourceDiagram._proof_1

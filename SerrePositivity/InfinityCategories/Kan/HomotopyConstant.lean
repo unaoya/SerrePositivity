@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopy
+open SerrePositivity.KST.Spectra.KanHomotopy
 
 /-- 概要：定数射は全てのホモトピー類を基点へ送る。
 方針：代表単体を取り、定数射との合成を計算する。
@@ -33,4 +38,10 @@ theorem map_const {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     exact SSet.comp_const _ _
   rw [hs, mk_const]
 
-end SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.InfinityCategories.Kan.KanHomotopy
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_const := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_const

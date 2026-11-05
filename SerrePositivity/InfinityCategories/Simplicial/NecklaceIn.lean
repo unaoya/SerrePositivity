@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceCategory
 
 /-! # 固定した両端点を持つ単体集合内の necklaces
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceCategory
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- K 内の x から y への元の全単体的 necklace。 -/
@@ -57,4 +62,172 @@ def necklaceInAugmentation (K : SSet.{u}) (x y : K _⦋0⦌) :
     change f.necklaceHom.map ≫ U.map = T.map ≫ 𝟙 K
     rw [f.w, Category.comp_id]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAugmentation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAugmentation := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAugmentation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInDiagram (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInDiagram := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInDiagram
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInForget := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget_faithful (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInForget_faithful := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget_faithful
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.casesOn := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.ctorIdx := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.map := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.map_first := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.map_last := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.map_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.necklace := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.necklace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.noConfusion := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.noConfusionType := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.rec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.recOn := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.casesOn := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.ctorIdx := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.ext := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.ext_iff := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.ext_iff
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.necklaceHom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.necklaceHom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.noConfusion := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.noConfusionType := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.rec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.recOn := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.w := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.w
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInAugmentation._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInAugmentation._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_5 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_6 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_7 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_8 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInCategory._proof_9 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInCategory._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInForget._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInForget._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInForget._proof_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk.inj := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk.injEq := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceIn.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk.sizeOf_spec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk.inj := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk.injEq := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceInHom.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk.sizeOf_spec

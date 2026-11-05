@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory SSet
 
 namespace SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.KST.Spectra.SkeletonFiltration
+namespace SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+open SerrePositivity.KST.Spectra.SkeletonFiltration
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -81,4 +86,52 @@ def transition {n m : ℕ} (h : n ≤ m) : functor.{u} n ⟶ functor.{u} m where
 lemma transition_inclusion {n m : ℕ} (h : n ≤ m) :
     transition.{u} h ≫ inclusion m = inclusion n := rfl
 
-end SerrePositivity.KST.Spectra.SkeletonFiltration
+end SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.functor := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.image_le := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.image_le
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.inclusion := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.map := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.map_ι := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.map_ι_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition_inclusion := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition_inclusion_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition_inclusion_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.functor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.functor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.map.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonFiltration.transition.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition.congr_simp

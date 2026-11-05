@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
@@ -15,8 +17,11 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 @[expose] public section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+namespace SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
+open SerrePositivity.KST.Spectra.SimplicialDependentProduct
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -92,4 +97,34 @@ lemma map_piIsomorphism {Y : S → SSet.{u}} [∀ s, KanComplex (Y s)]
   exact hc.of_comp_left (homotopyMap_bijective Y n _).injective
 
 end
-end SerrePositivity.KST.Spectra.SimplicialDependentProduct
+end SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap_bijective := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_bijective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap_naturality := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap_naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_eval := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_eval_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_eval_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.map_piIsomorphism := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.map_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplicialDependentProduct.homotopyMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct.homotopyMap.eq_1

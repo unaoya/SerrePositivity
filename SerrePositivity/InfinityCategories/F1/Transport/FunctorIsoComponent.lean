@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F G : X ⟶ Y} (e : FunctorIso F G) (x : X _⦋0⦌)
 
@@ -34,4 +39,13 @@ theorem functorIso_app_inv_evaluate : (e.app x).inv = functorHomEvaluate e.inv x
   rw [Iso.hom_inv_id, functorIso_app_hom_evaluate,
     ← functorHomEvaluate_comp, e.hom_inv_id, functorHomEvaluate_id]
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIso_app_hom_evaluate := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_hom_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.functorIso_app_inv_evaluate := _root_.SerrePositivity.InfinityCategories.F1.Transport.functorIso_app_inv_evaluate

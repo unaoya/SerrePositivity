@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SquareBoundaryComposition
 
 /-!
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.FramedSquare
+end SerrePositivity.KST.Spectra.FramedSquare
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
+open SerrePositivity.KST.Spectra.FramedSquare
 variable {X : SSet.{u}} (q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (x y : X _⦋0⦌)
     (h00 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 0 0) = x)
     (h10 : q.app (Opposite.op ⦋0⦌) (SquareBoundary.corner 1 0) = y)
@@ -62,4 +67,25 @@ lemma top_constant_edge
   rw [SSet.comp_const, SSet.yonedaEquiv_const] at hc
   exact h.trans hc
 
-end SerrePositivity.KST.Spectra.FramedSquare
+end SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom_comp_right := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom_comp_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.left := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.left
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.right := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.top_constant_edge := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.top_constant_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FramedSquare.bottom._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquare.bottom._proof_1

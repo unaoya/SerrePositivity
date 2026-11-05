@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.Data.Finset.Sort
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
@@ -9,6 +11,9 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial
 
 /-- 元の有限部分集合の全頂点を、同じ昇順の標準単体から列挙する単調写像。 -/
@@ -45,4 +50,34 @@ lemma simplexSubsetOrder_range {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ 
 def simplexSubsetHom {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     ⦋I.card - 1⦌ ⟶ ⦋n⦌ := SimplexCategory.Hom.mk (simplexSubsetOrder I hI)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetHom := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetHom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_mem := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_range := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_range
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexSubsetOrder_first._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_first._proof_2

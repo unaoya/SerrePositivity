@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
@@ -16,6 +18,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 variable (V : Type u) [Category.{v} V] [MonoidalCategory V] [BraidedCategory V]
   {C : Type w} [Category C] [EnrichedOrdinaryCategory V C]
 
@@ -68,4 +73,16 @@ lemma enriched_whiskered_square_id {X Y : C} (f : X ⟶ Y) :
   apply (enriched_whiskered_square_iff V f f _ _).mpr
   exact enriched_parameter_square_id V (eHomEquiv V f)
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_comp := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_id := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.enriched_whiskered_square_iff := _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff

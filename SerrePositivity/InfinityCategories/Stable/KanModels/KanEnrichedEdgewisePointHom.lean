@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
@@ -58,9 +60,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
 
@@ -118,4 +123,34 @@ theorem kanEnrichedEdgewisePointIso_endpoints (X : EdgewiseEnrichedObject C) (j 
   rw [← hr, Category.assoc, Iso.hom_inv_id_assoc]
   exact hl
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseLeftComponent := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewisePointIso := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewisePointIso_endpoints := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewisePointIso_endpoints
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseLeftComponent._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseLeftComponent._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent._proof_3

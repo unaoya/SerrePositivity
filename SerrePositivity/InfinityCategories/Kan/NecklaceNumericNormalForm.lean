@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceNumericMap
 public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalFormGenerated
 
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeOrderedNormalFormGenera
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の出力座標が始域の joint の像に入るという条件。 -/
@@ -78,4 +83,28 @@ lemma necklaceNumericMap_generated {T U : Necklace.{u}} (f : T ⟶ U) :
       intro j k hjk i l hi hl
       exact necklaceNumericNormalForm_ordered f hjk hi hl)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_necklaceNumericNormalForm_support := _root_.SerrePositivity.InfinityCategories.Kan.mem_necklaceNumericNormalForm_support
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceJointHits := _root_.SerrePositivity.InfinityCategories.Kan.necklaceJointHits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericMap_generated := _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericMap_generated
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm := _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm_eval := _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm_ordered := _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm_ordered
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceNumericNormalForm.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.necklaceNumericNormalForm.eq_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexMaps
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexVertices
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexVerti
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の形の等号移送で全頂点作用が一致する augmentation は、元の同じ対象。 -/
@@ -37,4 +42,10 @@ lemma necklaceInSimplex_eq_of_vertices {N : ℕ} {x y : (Δ[N] : SSet.{u}) _⦋0
   cases hmap
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_eq_of_vertices := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_eq_of_vertices

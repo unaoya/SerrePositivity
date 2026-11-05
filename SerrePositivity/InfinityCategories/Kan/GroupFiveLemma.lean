@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.Algebra.Group.Hom.Basic
 
 /-!
@@ -14,6 +16,9 @@ public import Mathlib.Algebra.Group.Hom.Basic
 universe u
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：完全な群の五項列の可換図式では外側の四射の全単射性から中央も全単射。
 方針：単射性は核を左へ戻し、全射性は右への像を持ち上げた差を連結射で補う。
@@ -62,4 +67,10 @@ theorem group_five_lemma
     refine ⟨d₂ b * c, ?_⟩
     rw [map_mul, h₂, hb, hb', inv_mul_cancel_right]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.group_five_lemma := _root_.SerrePositivity.InfinityCategories.Kan.group_five_lemma

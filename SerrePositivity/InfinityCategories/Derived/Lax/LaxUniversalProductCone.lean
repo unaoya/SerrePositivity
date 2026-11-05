@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquare
 
@@ -15,10 +17,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
-local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+local instance instSimplicialCategoryOmegaSpectrum_1 : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
 variable {Φ : StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
   {C D E A Q : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
@@ -72,4 +77,49 @@ lemma cone_vertex : (cone hΦ p q i r h).vertex = coherentNerveVertex (value Φ 
   rw [hs] at he
   exact he.symm.trans (square_source_vertex hΦ p q i r h)
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization
+end SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cone := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cone_isLimit := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cone_isLimit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cone_vertex := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cone_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cospan (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cospan := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cospan
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cospan_diagonal := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cospan_diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cospan_product := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cospan_product
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.instSimplicialCategoryOmegaSpectrum_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_bottom := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_left := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_right := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_source_vertex := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_source_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.square_top := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.square_top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cone.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cone.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization.cospan.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization.cospan.eq_1

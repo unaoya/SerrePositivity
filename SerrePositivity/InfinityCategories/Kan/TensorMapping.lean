@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.CategoryTheory.Monoidal.Closed.Enrichment
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.TensorMapping
+end SerrePositivity.KST.Spectra.TensorMapping
+namespace SerrePositivity.InfinityCategories.Kan.TensorMapping
+open SerrePositivity.KST.Spectra.TensorMapping
 
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [MonoidalClosed C]
 
@@ -57,4 +62,22 @@ theorem comp (K X Y Z : C) :
   rw [evaluation]
   simp
 
-end SerrePositivity.KST.Spectra.TensorMapping
+end SerrePositivity.InfinityCategories.Kan.TensorMapping
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.comp := _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.evaluation := _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.evaluation_assoc := _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.evaluation_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.map := _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TensorMapping.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.TensorMapping.map.eq_1

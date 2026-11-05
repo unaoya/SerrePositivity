@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.FundamentalNerveTranspose
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -14,6 +16,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 
@@ -31,4 +36,22 @@ def fundamentalNerveUntransposeHomotopy {A : SSet.{u}} {C : Type u}
   have : IsIso α := (NatTrans.isIso_iff_isIso_app α).mpr (fun _ => inferInstance)
   exact Functor.isoWhiskerRight (asIso α) (nerveAdjunction.counit.app (Cat.of C)).toFunctor
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntranspose_eq := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntranspose_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.fundamentalNerveUntransposeHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.fundamentalNerveUntransposeHomotopy._proof_3

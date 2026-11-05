@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -49,9 +51,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 二変数の同じ内部 Hom の交換による全関手同型の転置。 -/
 def spanFunctorIsoFlip {K L X : SSet.{u}} [Quasicategory X]
@@ -112,4 +117,28 @@ lemma spanConstantPrefixEdge_isInvertible {L X Y : SSet.{u}} [Quasicategory Y]
       ((truncation 2).map ((ihom L).map (curry (snd K Y)))))
     (f := (spanConstantPrefixEdge K q t).toTruncated) rfl).mp hi
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantPrefixEdge := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantPrefixEdge_component := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge_component
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantPrefixEdge_isInvertible := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanConstantPrefixEdge_isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoFlip (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorIsoFlip := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoFlip
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoUnflip (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorIsoUnflip := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoUnflip
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorIsoFlip._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoFlip._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanFunctorIsoUnflip._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.spanFunctorIsoUnflip._proof_1

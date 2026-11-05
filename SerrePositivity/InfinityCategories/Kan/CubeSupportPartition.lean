@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeConnectionGeneration
 
 /-! # 使用入力を尽くす順序つき support と出力の割当
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeConnectionGeneration
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 全入力を尽くし、元の出力順に厳密に並ぶ support の条件。 -/
 structure CubeSupportPartition {n m : ℕ} (s : CubeJoinNormalForm n m) : Prop where
@@ -85,4 +90,67 @@ lemma cubeSupportOutputSubtype_surjective {n m : ℕ} {s : CubeJoinNormalForm n 
   refine ⟨i, Subtype.ext ?_⟩
   exact (cubeSupportOutput_eq_iff h i j.val).mpr hi
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportNonemptyOutputs := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutput (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutput := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutput
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSubtype (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSubtype
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_monotone := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSubtype_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype_surjective := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSubtype_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutput_eq_iff := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutput_eq_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutput_mem := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutput_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutput_monotone := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutput_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportPartition_unique := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportPartition_unique
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_cubeSupportNonemptyOutputs := _root_.SerrePositivity.InfinityCategories.Kan.mem_cubeSupportNonemptyOutputs
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.casesOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.covers := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.covers
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.mk := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.ordered := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.ordered
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportNonemptyOutputs.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportNonemptyOutputs.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputSubtype._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputSubtype._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeSupportPartition.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.CubeSupportPartition.mk._flat_ctor

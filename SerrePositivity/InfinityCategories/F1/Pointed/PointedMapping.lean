@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -56,11 +58,17 @@ universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open MonoidalCategory MonoidalClosed CartesianMonoidalCategory
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.PointedMapping
+end SerrePositivity.KST.Spectra.PointedMapping
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 namespace PointedMapping
+open SerrePositivity.KST.Spectra.PointedMapping
 
 noncomputable section
 
@@ -213,4 +221,46 @@ end
 
 end PointedMapping
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.basedHom_kanComplex := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.basepoint_mono := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_hasLiftingProperty := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_hasLiftingProperty
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_restriction := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_restriction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_restriction_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_restriction_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_ι := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre_ι_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.restriction_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.restriction_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.PointedMapping.pre._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre._proof_3

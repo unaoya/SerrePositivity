@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 public import SerrePositivity.InfinityCategories.PinchedHom.Paths
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 variable {A B : StableCategory.{u}} {F G : ExactMap A B} (h : FunctorIso F.hom G.hom)
 
 def exactMapCoreEdge : SSet.Edge
@@ -63,4 +68,37 @@ def exactMapComparisonTriangle :
   have t := PinchedHom.pathCompStruct (exactMapPinchedPath h)
   simpa only [stableArrowPinchedVertex, Equiv.apply_symm_apply] using t
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapComparisonTriangle := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge_hom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreEdge_hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapPinchedPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapPinchedPath
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrowPinchedVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowPinchedVertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrowPinchedVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapComparisonTriangle._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapComparisonTriangle._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapCoreEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapCoreEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapPinchedPath._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactMapPinchedPath._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exactMapPinchedPath._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableArrowPinchedVertex.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.stableArrowPinchedVertex.eq_1

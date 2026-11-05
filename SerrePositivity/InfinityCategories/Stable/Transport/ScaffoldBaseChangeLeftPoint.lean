@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Basic.Opposite
@@ -40,9 +42,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 lemma point_normalize_both_inv {C : Type*} [Category C] {a b a' b' z t : C}
     (e : a ≅ b) (hs : a = a') (ht : b = b') (v : z ⟶ b) (w : z ⟶ b')
@@ -64,4 +69,16 @@ def straighteningBaseChangeImageSectionPoint (c : TransportSimplexCategory D)
   Eq.mp (congrArg (fun T : KanObject.{u} => T.obj _⦋0⦌)
     (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)) v
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.point_normalize_both_inv := _root_.SerrePositivity.InfinityCategories.Stable.Transport.point_normalize_both_inv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningBaseChangeImageSectionPoint := _root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.straighteningBaseChangeImageSectionPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint._proof_1

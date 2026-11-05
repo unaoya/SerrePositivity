@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceIn
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 
@@ -11,6 +13,9 @@ public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Limits Simplicial SSet
 
 /-- 元の necklace と同型な入力内の、同じ全体を覆う necklace。 -/
@@ -46,4 +51,37 @@ def necklaceInOfIso_isTerminal (U : Necklace.{u}) {K : SSet.{u}} (e : U.down.car
   IsTerminal.ofUniqueHom (necklaceInToOfIso U e)
     (fun _ f => necklaceInOfIso_hom_ext U e f _)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_hom_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_hom_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInOfIso_isTerminal._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInToOfIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInToOfIso._proof_3

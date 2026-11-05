@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramCylinderIso
 public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の全境界上で定値な実可逆比較は、同じ固定図式の fiber 内の同型を与える。 -/
 lemma fixedDiagramVertexIso_of_relativeHomotopy
@@ -69,4 +74,13 @@ lemma exists_relativeComparisonInverse
   obtain ⟨e⟩ := fixedDiagramVertexIso_of_relativeHomotopy j p f g hf hg H hfixed hi
   exact exists_relative_homotopy_of_fixedDiagram_vertexIso j p g f hg hf e.symm
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relativeComparisonInverse := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_relativeComparisonInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fixedDiagramVertexIso_of_relativeHomotopy := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.fixedDiagramVertexIso_of_relativeHomotopy

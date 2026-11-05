@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Infinity
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 内部 Hom の合成は、頂点では元の関手の合成。 -/
 lemma internalComp_vertex {A B C : SSet.{u}} (F : A ⟶ B) (G : B ⟶ C) :
@@ -96,4 +101,40 @@ instance stableCategory_enrichedCategory : EnrichedCategory SSet.{u} StableCateg
     apply Subtype.ext
     rfl
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Infinity
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition_ι := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition_ι
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity_ι := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.internalComp_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.internalComp_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_enrichedCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_enrichedCategory
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactComposition._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactComposition._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exactIdentity._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactIdentity._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_enrichedCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_enrichedCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.stableCategory_enrichedCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableCategory_enrichedCategory._proof_3

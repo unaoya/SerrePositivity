@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeStructure
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeVertices
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeBooleanJoin
@@ -11,6 +13,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeBoolean
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の結合同型は、元のすべての頂点番号を保つ。 -/
@@ -80,4 +85,31 @@ lemma necklaceWedgePoint_vertex_surjective (T : Necklace.{u}) :
   change v.val < T.down.vertexMax + 0 + 1 at h
   exact ⟨⟨v.val, by omega⟩, Fin.ext rfl⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_left := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_vertex_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_middle := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_vertex_middle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_right := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_vertex_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_val := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_vertex_val
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceLeftUnitor_vertex_right := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_vertex_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklacePointWedge_vertex_surjective := _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePointWedge_vertex_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceRightUnitor_vertex_left := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_vertex_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgePoint_vertex_surjective := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgePoint_vertex_surjective

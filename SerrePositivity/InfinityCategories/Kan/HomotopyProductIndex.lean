@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：高次の積の充填は任意の面添字で商上の積を計算する。
 方針：最後の添字から逆向きに帰納し、隣接面で因子を交換して可換性を使う。
@@ -61,4 +66,13 @@ theorem exists_left_factor {X : SSet.{u}} [KanComplex X]
         hα.δ_liftOfKanComplex .., δ_α _ (by grind)]
   all_goals grind [horn.IsCompatible.δ_liftOfKanComplex]
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_left_factor := _root_.SerrePositivity.InfinityCategories.Kan.exists_left_factor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.mul_eq_at := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq_at

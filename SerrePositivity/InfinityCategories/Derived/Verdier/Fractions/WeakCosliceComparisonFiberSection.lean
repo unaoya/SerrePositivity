@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
@@ -10,10 +12,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌) (y : C.obj _⦋0⦌)
 
@@ -58,4 +63,49 @@ theorem weakCosliceComparisonFiber_isEssentiallySurjective :
   refine ⟨(weakCosliceComparisonFiberRightSection h x y).app (Opposite.op ⦋0⦌) z, ⟨?_⟩⟩
   exact functorIsoValue (weakCosliceComparisonFiberRightSection_counit h x y) z
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiber := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiber_isEssentiallySurjective := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber_isEssentiallySurjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiber._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiber._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_8 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakCosliceComparisonFiberRightSection_counit._proof_9 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakCosliceComparisonFiberRightSection_counit._proof_9

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportPartition
 
 /-! # 順序つき support ブロックを表す単調全射
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSupportPartition
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 空でない support を持つ元の出力の昇順列挙。 -/
 def cubeSupportOutputEmbedding {n m : ℕ} (s : CubeJoinNormalForm n m) :
@@ -77,4 +82,37 @@ lemma cubeSupportBlockMap_connectionGenerated {n m : ℕ} {s : CubeJoinNormalFor
   cubeFiberMax_connectionGenerated _ (cubeSupportBlockMap_monotone h)
     (cubeSupportBlockMap_surjective h)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_connectionGenerated := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_connectionGenerated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_fiber := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_fiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_interval := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_interval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_monotone := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_output := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_output
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap_surjective := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap_surjective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportBlockMap.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportBlockMap.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputEmbedding._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputEmbedding._proof_1

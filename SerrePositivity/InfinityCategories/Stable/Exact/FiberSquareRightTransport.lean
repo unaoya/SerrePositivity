@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison
 public import SerrePositivity.InfinityCategories.F1B.SpecifiedFunctorEdgeLift
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma fiberSquare_source_vertex {X : SSet.{u}} {x y : X _⦋0⦌}
     {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s : FiberSquare f) :
@@ -70,4 +75,16 @@ lemma exists_fiberSquare_right_transport {X : SSet.{u}} [Quasicategory X]
     isPullback := IsPullbackSquare.of_functorIso ht d.symm }
   exact ⟨s, l, hi, hl⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_fiberSquare_right_transport := _root_.SerrePositivity.InfinityCategories.Stable.Exact.exists_fiberSquare_right_transport
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fiberSquare_source_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.fiberSquare_source_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fiberSquare_target_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.fiberSquare_target_vertex

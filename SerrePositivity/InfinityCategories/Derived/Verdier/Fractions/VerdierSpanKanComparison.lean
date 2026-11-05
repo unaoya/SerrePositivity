@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeSpanRecovery
 
 /-!
@@ -16,10 +18,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
 open HomotopicalAlgebra SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の射を単位上で厳密に回収する Kan 延長のデータ。 -/
 def spanRecoveryKanExtensionData {E Y : SSet.{u}} [KanComplex Y] (f : E ⟶ Y) :
@@ -137,4 +142,64 @@ lemma verdierSpanKanMappingComparison_isQCatEquivalence
   rw [AnodyneHomotopy.anodyneQ.map_comp]
   infer_instance
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtension := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtension_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtension_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtension_unit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtension_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFixedFractionEvaluation_localized_isIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFixedFractionEvaluation_localized_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanComparison_unit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanComparison_unit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanMappingComparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanMappingComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanMappingComparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanMappingComparison_isQCatEquivalence := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanMappingComparison_isQCatEquivalence
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanMappingComparison_unit := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanMappingComparison_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanExtensionData._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanExtensionData._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanComparison._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanKanMappingComparison._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanKanMappingComparison._proof_1

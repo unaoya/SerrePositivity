@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexVertices
 
 /-! # 元の necklace の bead 内の辺と全隣接辺
@@ -9,7 +11,13 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexVerti
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 open CategoryTheory Simplicial SSet
 
 /-- 元の二頂点 a≤b を結ぶ標準一単体の頂点列。 -/
@@ -57,4 +65,40 @@ lemma adjacentEdge_one (T : NecklaceShape) (i : Fin T.vertexMax) :
     (T.adjacentEdge.{u} i).val (Fin.last 1) = i.succ := rfl
 
 end NecklaceShape
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_one := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edgeOrderHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edgeOrderHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge_one := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edge_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edge_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.adjacentEdge._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.adjacentEdge._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.edgeOrderHom._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.edgeOrderHom._proof_2

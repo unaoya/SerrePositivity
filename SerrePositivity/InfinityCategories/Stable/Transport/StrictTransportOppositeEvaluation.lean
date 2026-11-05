@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.Core.Equivalence
@@ -40,9 +42,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   (p : E ⟶ nerve I) [LeftFibration p]
 
@@ -119,4 +124,31 @@ theorem strictTransportOppositeComponentIso_heq_doubleMap (i : I) :
   exact h₁.trans ((functorIsoValue_heq_map R a).trans
     (h₂.trans (heq_of_eq (F2.vertexIso_map_comp e (evaluateFunctorAt x) (evaluateFunctorAt a)))))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportComparisonObject := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportComparisonObject
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso_heq_doubleMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeIso_heq := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeIso_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeSource_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeSource_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeVertexIso_heq_map := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeVertexIso_heq_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.strictTransportOppositeComponentIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.strictTransportOppositeComponentIso._proof_2

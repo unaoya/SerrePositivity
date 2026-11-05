@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
@@ -45,9 +47,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (hG : IsFullyFaithful G)
 
@@ -64,4 +69,16 @@ def reflectiveTargetHomEquiv {A : SSet.{u}} [Quasicategory A]
   have : IsIso ε := inferInstance
   exact (a.homEquiv U V).symm.trans ((Iso.refl _).homCongr (asIso ε).symm)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveCounitHom_isIso := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveCounitHom_isIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveTargetHomEquiv := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.reflectiveTargetHomEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.reflectiveTargetHomEquiv._proof_1

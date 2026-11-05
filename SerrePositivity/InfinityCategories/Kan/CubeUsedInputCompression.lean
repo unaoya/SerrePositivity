@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeNormalFormRestriction
 public import Mathlib.Data.Finset.Sort
 
@@ -10,6 +12,9 @@ public import Mathlib.Data.Finset.Sort
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 全ての出力の有限 max 表示が実際に使う入力座標の集合。 -/
@@ -81,4 +86,46 @@ lemma concreteCubeNormalForm_compressed_ordered {X Y : ConcreteCube} (f : X ⟶ 
     ((mem_cubeJoinNormalFormRestrict_support _ _ i j).mp hi)
     ((mem_cubeJoinNormalFormRestrict_support _ _ l k).mp hl)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_eval := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_compressed_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeNormalForm_compressed_ordered := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeNormalForm_compressed_ordered
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormCompressed := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_eval := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormCompressed_no_unused := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormCompressed_no_unused
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_covers := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding_covers
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding_deletionGenerated := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding_deletionGenerated
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormUsedInputs := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_cubeNormalFormUsedInputs := _root_.SerrePositivity.InfinityCategories.Kan.mem_cubeNormalFormUsedInputs
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormInputEmbedding.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormInputEmbedding.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeNormalFormUsedInputs.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeNormalFormUsedInputs.eq_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy
 public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 lemma spanConstantInterval_isInvertible {Y : SSet.{u}} [Quasicategory Y] (z : Y _⦋0⦌) :
     IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv (SSet.const z : (Δ[1] : SSet.{u}) ⟶ Y))) := by
@@ -111,4 +116,19 @@ def fractionFamilyComparisonIso : FunctorIso
   exact asIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
     (spanSquareFamilyHomotopy (r ≫ fractionEvaluationSquare F W hF))))
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparisonIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparisonIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparisonIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparison_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_isInvertible
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionFamilyComparison_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionFamilyComparison_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanConstantInterval_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanConstantInterval_isInvertible

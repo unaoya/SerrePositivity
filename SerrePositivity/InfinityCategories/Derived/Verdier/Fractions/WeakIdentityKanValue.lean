@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison
 public import SerrePositivity.KST.Fibration.FixedFractionCosliceTransport
@@ -11,10 +13,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -123,4 +128,52 @@ def weakIdentityKanMappingComparisonUnitIso : VertexIso
       (F2.continuousKanReplacementUnit.app _)
   exact eqToIso (congrArg HomotopyCategory.mk (weakIdentityKanTargetEvaluation_recover h x)) ≪≫ e
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpanAtZeroIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityFixedSpanAtZeroIndex := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpanAtZeroIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparison_evaluate := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparison_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_valueComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_valueComparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanTargetEvaluation (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanTargetEvaluation := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanTargetEvaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanTargetEvaluation_recover := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanTargetEvaluation_recover
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityFixedSpanAtZeroIndex._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpanAtZeroIndex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_3 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_5 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_6 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanMappingComparisonUnitIso._proof_7 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanMappingComparisonUnitIso._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanTargetEvaluation._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanTargetEvaluation._proof_1

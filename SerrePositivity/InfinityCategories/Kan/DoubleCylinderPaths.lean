@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc
 public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open Comparison SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 中間の指定頂点を通って左から右へ横断する円筒の辺。 -/
 def doubleCylinderMiddleEdge {C A B : SSet.{u}} (f : C ⟶ A) (g : C ⟶ B) (c : C _⦋0⦌) :
@@ -60,4 +65,34 @@ lemma doubleCylinderMiddleMappedEdge_constant_evaluation {C A B N K : SSet.{u}}
       (SSet.Edge.id (k.app _ c)).edge :=
   doubleCylinderMiddleEdge_constant_evaluation f g (G ≫ F) k h c
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleEdge := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleEdge_constant_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge_constant_evaluation
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleMappedEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleMappedEdge := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleMappedEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleMappedEdge_constant_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleMappedEdge_constant_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleEdge._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleEdge._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleMappedEdge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleMappedEdge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.doubleCylinderMiddleMappedEdge._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.doubleCylinderMiddleMappedEdge._proof_2

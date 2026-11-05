@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -39,9 +41,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 同じ指定辺の反転は、実際の可逆辺とその逆データの宇宙持ち上げで保たれる。 -/
 theorem invertsEdges_ulift {X Q : SSet.{u}} [Quasicategory Q] (q : X ⟶ Q)
@@ -64,4 +69,16 @@ def spaceLocalizationPrecomposition :
   localizationPrecomposition ((SSet.uliftFunctor.{u + 1, u}).map q) (ULift.up '' W)
     (invertsEdges_ulift q W hq.choose) SpaceInfinity
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.invertsEdges_ulift := _root_.SerrePositivity.InfinityCategories.Stable.Transport.invertsEdges_ulift
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Transport.spaceLocalizationPrecomposition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceLocalizationPrecomposition := _root_.SerrePositivity.InfinityCategories.Stable.Transport.spaceLocalizationPrecomposition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.spaceLocalizationPrecomposition._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Transport.spaceLocalizationPrecomposition._proof_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
 
 /-! # 元の矢印の類の等式を、同じ実 coslice fiber 内の道へ戻す -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} {x a : X _⦋0⦌}
   {v w : (vertexFiber (sliceUnderProjection (yonedaEquiv.symm x)) a) _⦋0⦌}
 
@@ -81,4 +86,55 @@ def cosliceFiberVertexIsoOfHomEq [Quasicategory X]
       (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) a)) _
   exact asIso (Truncated.HomotopyCategory.homMk e.toTruncated)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_6 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_7 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberEdgeOfHomotopy._proof_8 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberEdgeOfHomotopy._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_4 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_5 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberVertexIsoOfHomEq._proof_6 := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberVertexIsoOfHomEq._proof_6

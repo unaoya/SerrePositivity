@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportBlockEvaluation
 
 /-! # 指定した定数を保つ出力座標の補完
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSupportBlockEvaluation
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 元の具体的な関数が二端点の面だけから生成される条件。 -/
 inductive CubeFaceGenerated : {n m : ℕ} → (CubeVertex n → CubeVertex m) → Prop
@@ -105,4 +110,73 @@ lemma cubeCoordinateComplete_generated {n m : ℕ} (e : Fin m → Fin n)
     CubeMapGenerated (cubeCoordinateComplete e b) :=
   cubeFaceGenerated_generated (cubeCoordinateComplete_faceGenerated e he b hb)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete_faceGenerated := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_faceGenerated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_generated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete_image := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_image
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete_lower := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete_outside := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete_outside
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFaceGenerated_generated := _root_.SerrePositivity.InfinityCategories.Kan.cubeFaceGenerated_generated
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.brecOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.brecOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.comp (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.comp := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.face (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.face := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.id (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.id := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.recOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeCoordinateComplete.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeCoordinateComplete.eq_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.comp (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.comp := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.comp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.face (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.face := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.face
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.id := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeFaceGenerated.below.rec := _root_.SerrePositivity.InfinityCategories.Kan.CubeFaceGenerated.below.rec

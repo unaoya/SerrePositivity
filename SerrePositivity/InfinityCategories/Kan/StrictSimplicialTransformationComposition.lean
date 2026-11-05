@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 厳密単体的自然変換の同じ全 Hom 上の合成
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformat
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
 
 /-- 元の豊穣合成の結合律は、全次数の元の三つの単体で成り立つ。 -/
@@ -63,4 +68,19 @@ lemma strictSimplicialTransformationComp_hom
   rw [hf, hg]
   exact (eHomEquiv_comp SSet f g).symm
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialComposition_assoc_app := _root_.SerrePositivity.InfinityCategories.Kan.simplicialComposition_assoc_app
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp_hom := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp._proof_1

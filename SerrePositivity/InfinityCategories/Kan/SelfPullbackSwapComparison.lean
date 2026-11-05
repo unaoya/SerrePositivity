@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SelfPullbackNaturality
 public import SerrePositivity.InfinityCategories.Kan.SelfPullbackComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -74,4 +79,16 @@ theorem selfPullbackMap_eq_swap_on_components {E B : SSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting_map_point_eq := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_map_point_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackConnecting_natural_fixed := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackConnecting_natural_fixed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullbackMap_eq_swap_on_components := _root_.SerrePositivity.InfinityCategories.Kan.selfPullbackMap_eq_swap_on_components

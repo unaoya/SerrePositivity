@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinTerm
 public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeJoinDetection
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- 全ての出力座標に有限 max 表示を指定したデータ。 -/
 abbrev CubeJoinNormalForm (n m : ℕ) := Fin m → CubeJoinTerm n
@@ -65,4 +70,28 @@ lemma cubeJoinNormalFormEval_injective (n m : ℕ) :
   funext x
   exact congrFun (congrFun h x) j
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeJoinNormalForm := _root_.SerrePositivity.InfinityCategories.Simplicial.CubeJoinNormalForm
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval_injective
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap_eval := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormEval.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormEval.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormOfMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeJoinNormalFormOfMap.eq_1

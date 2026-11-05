@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexMaps
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap
 
@@ -10,6 +12,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 元の全 augmentation は、全頂点の単調写像の標準単体への拡張を回収する。 -/
@@ -88,4 +93,37 @@ lemma necklaceSimplexIntervalOrder_comp (hab : a ≤ b) :
     (necklaceInSimplex_vertex_bounds T v).1
   omega
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_vertex_bounds := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_vertex_bounds
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_vertex_first := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_vertex_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceInSimplex_vertex_last := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInSimplex_vertex_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder_first := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder_last := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexMap_eq_extension := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexMap_eq_extension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSimplexIntervalOrder._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSimplexIntervalOrder._proof_3

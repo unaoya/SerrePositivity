@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
 public import Mathlib.Algebra.Category.Grp.Preadditive
 
@@ -17,6 +19,9 @@ universe v u
 open CategoryTheory CategoryTheory.Limits SSet
 
 namespace SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+namespace SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+open SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
 
 noncomputable section
 
@@ -72,4 +77,34 @@ def complexIso : homComplex K R M ≅ complex K R M :=
 
 end
 
-end SerrePositivity.KST.Spectra.NormalizedSimplicialCochains
+end SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.complexIso._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complexIso._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.NormalizedSimplicialCochains.homComplex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.homComplex.eq_1

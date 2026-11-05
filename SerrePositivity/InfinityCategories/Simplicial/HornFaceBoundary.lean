@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
@@ -15,9 +17,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Spectra
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -52,4 +57,13 @@ theorem preimage_horn_face (n : ℕ) (i : Fin (n + 2)) :
   ext ⟨⟨d⟩⟩ s
   exact horn_face_mem_iff i s
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_face_mem_iff := _root_.SerrePositivity.InfinityCategories.Simplicial.horn_face_mem_iff
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.preimage_horn_face := _root_.SerrePositivity.InfinityCategories.Simplicial.preimage_horn_face

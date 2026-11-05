@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
@@ -16,9 +18,12 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 universe u
 
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -89,4 +94,19 @@ instance filteredColimit_kanComplex (D : J ⥤ SSet.{u}) [∀ j, KanComplex (D.o
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.filteredColimit_kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.finite_equations_factorization := _root_.SerrePositivity.InfinityCategories.Kan.finite_equations_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.finite_relative_factorization := _root_.SerrePositivity.InfinityCategories.Kan.finite_relative_factorization
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.kanComplex_of_filtered_isColimit := _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit

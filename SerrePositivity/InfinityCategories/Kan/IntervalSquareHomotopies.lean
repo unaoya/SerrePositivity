@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.IntervalSquareSweeps
 
 /-!
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.KST.Spectra.IntervalSquare
+namespace SerrePositivity.InfinityCategories.Kan.IntervalSquare
+open SerrePositivity.KST.Spectra.IntervalSquare
 
 /-- 下辺変形の経路始点は、正方形の元の左下頂点に固定される。 -/
 lemma bottomSweep_source :
@@ -126,4 +131,58 @@ lemma leftHomotopy_target (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Y) :
   change _ ≫ (leftSweep ≫ Q) = _
   rw [← Category.assoc, leftSweep_target]
 
-end SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.InfinityCategories.Kan.IntervalSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy_source := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy_target := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep_source := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomSweep_target := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomSweep_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy_source := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy_target := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep_source := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftSweep_target := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftSweep_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.bottomHomotopy._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.bottomHomotopy._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.leftHomotopy._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.leftHomotopy._proof_3

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 
 /-!
@@ -13,9 +15,12 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FibrationRepresentatives
+end SerrePositivity.KST.Spectra.FibrationRepresentatives
+namespace SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives
+open SerrePositivity.KST.Spectra.FibrationRepresentatives
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -101,4 +106,16 @@ theorem exists_representative_at {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
   exact exists_representative p e a s h
 
 end
-end SerrePositivity.KST.Spectra.FibrationRepresentatives
+end SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationRepresentatives.exists_representative := _root_.SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives.exists_representative
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationRepresentatives.exists_representative_at := _root_.SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives.exists_representative_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationRepresentatives.exists_transport := _root_.SerrePositivity.InfinityCategories.Kan.FibrationRepresentatives.exists_transport

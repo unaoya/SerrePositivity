@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeCoherence
 public import Mathlib.CategoryTheory.Monoidal.Category
 
@@ -10,6 +12,9 @@ public import Mathlib.CategoryTheory.Monoidal.Category
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の全 necklace 射と元の wedge のモノイダルな構造データ。 -/
@@ -40,4 +45,25 @@ instance necklaceMonoidal : MonoidalCategory Necklace.{u} :=
 lemma necklaceMonoidal_tensor :
     MonoidalCategory.tensor Necklace.{u} = necklaceWedgeFunctor := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidal := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidalStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidalStruct := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidalStruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidal_tensor := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal_tensor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidal._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidal._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceMonoidal._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceMonoidal._proof_3

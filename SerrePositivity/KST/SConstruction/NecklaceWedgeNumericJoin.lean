@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.CubeVertexBlockCoordinates
 -/
 @[expose] public section
 noncomputable section
-namespace SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
 
 /-- 元の非 joint 頂点で貼った Bool 関数を、元の右端数値座標で読む。 -/
 def wedgeNumericJoin (T U : NecklaceShape) (x : CubeVertex T.dimension)
@@ -44,4 +44,4 @@ lemma wedgeNumericJoin_cubeVertexJoin (T U : NecklaceShape) (x : CubeVertex T.di
   · rw [wedgeNumericJoin_right]
     exact (cubeVertexJoin_right_coordinate x y i).symm
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape

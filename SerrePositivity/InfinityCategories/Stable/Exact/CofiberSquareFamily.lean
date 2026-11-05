@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+open SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
@@ -133,4 +138,73 @@ lemma cofiber_vertex (x : A _⦋0⦌) :
   rw [← hs, evaluateFunctorAt_functorVertex]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cocones := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cocones_projection := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiber := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberSquareAt := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiber_vertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt_bottom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt_isPushout := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_isPushout
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squareAt_zero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squareAt_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares_bottom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_bottom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares_cocones := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_cocones
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares_left := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares_span := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares_span
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cocones._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cocones._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cocones.congr_simp := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cocones.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiber._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberSquareAt._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberSquareAt._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberSquareAt._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares.congr_simp := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.squares.eq_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.squares.eq_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantComposition
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- Kan 同値の相対持ち上げは、境界を固定し比較円柱も境界上で定値にできる。 -/
 lemma spanRecoveryKanEquivalence_relative {X Y S K : SSet.{u}}
@@ -175,4 +180,19 @@ lemma verdierFiniteMappingFamily_relative_recovery
       (verdierSpanKanMappingComparison_isQCatEquivalence h x y)
       (verdierSpanKanMappingComparison_unit h x y) S a f ha
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanRecoveryKanEquivalence_relative := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanRecoveryKanEquivalence_relative
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierCompletedSpan_relative_finite_recovery := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierCompletedSpan_relative_finite_recovery
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierFiniteMappingFamily_relative_recovery := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierFiniteMappingFamily_relative_recovery
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpan_relative_finite_recovery_of_kanComparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpan_relative_finite_recovery_of_kanComparison

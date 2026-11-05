@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleCover
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleCover
 universe u
 
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -75,4 +80,16 @@ theorem upper_lower_intersection (d : ℕ) (s t : (Δ[2] : SSet.{u}) _⦋d⦌)
   refine ⟨v, upper_app_injective d (hu.trans hdiag),
     lower_app_injective d (hl.trans (hdiag.trans h))⟩
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_app_injective := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_app_injective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_zero_le_one := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_zero_le_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_lower_intersection := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_lower_intersection

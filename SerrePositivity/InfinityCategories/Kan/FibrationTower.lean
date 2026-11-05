@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 
 /-!
@@ -15,9 +17,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.FibrationTower
+end SerrePositivity.KST.Spectra.FibrationTower
+namespace SerrePositivity.InfinityCategories.Kan.FibrationTower
+open SerrePositivity.KST.Spectra.FibrationTower
 
 variable (X : ℕ → SSet.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
 
@@ -163,4 +168,91 @@ instance limit_kanComplex [∀ n, Fibration (d n)] [KanComplex (X 0)] :
     Subsingleton.elim _ _]
   infer_instance
 
-end SerrePositivity.KST.Spectra.FibrationTower
+end SerrePositivity.InfinityCategories.Kan.FibrationTower
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.hom_ext := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.hom_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift_projection := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift_projection_assoc := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift_projection_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit_kanComplex := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection_comp := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection_comp_assoc := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_comp_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection_zero_fibration := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection_zero_hasLiftingProperty := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_hasLiftingProperty
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages_comp := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.lift.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.lift.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.limit._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.projection._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._f := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._f
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._proof_5
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages._sunfold := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages._sunfold
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.FibrationTower.stages.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.stages.match_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.Core.Coslice
 public import SerrePositivity.InfinityCategories.Core.InitialHomotopy
@@ -30,9 +32,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.StablePresentable.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の正方形の左下頂点。 -/
 def fractionSquareInitialVertex : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌ :=
@@ -89,4 +94,73 @@ lemma exists_squareCosliceSeed {X : SSet.{u}} [Quasicategory X]
     rfl
   exact ⟨⟨U, hU, (isInvertibleEdge_congr he).mpr (hv.map F)⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.StablePresentable.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_squareCosliceSeed := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.exists_squareCosliceSeed
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquareInitialVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSquareInitialVertex := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquareInitialVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSquarePoint := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquarePoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.casesOn := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.ctorIdx := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.initial_isInvertible := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.initial_isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.lift (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.lift := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.lift
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.noConfusion := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.noConfusionType := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.noConfusionType
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.projection := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.rec := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.recOn := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.fractionSquareInitialVertex._proof_1 := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.fractionSquareInitialVertex._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk.inj := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk.injEq := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed.mk.sizeOf_spec

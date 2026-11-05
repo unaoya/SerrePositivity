@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget
+open SerrePositivity.KST.LocalizingInvariants.ArrowTarget
 
 def intervalMax : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] := stdSimplexProductMap {
   toFun p := max p.1 p.2
@@ -99,4 +104,49 @@ lemma contraction_one : SSet.ι₁ ≫ contraction X = target X ≫ identityArro
       f.app _ (𝟙 _) (PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) n)
   rw [h]
 
-end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.arrows (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.arrows := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.arrows
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction_one := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction_zero := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.identityArrow := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.identityArrow_target := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.identityArrow_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.intervalMax := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.intervalMax_left_one := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax_left_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.intervalMax_one := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax_one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.intervalMax_zero := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.target := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.contraction.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.intervalMax._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.intervalMax._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.target._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target._proof_1

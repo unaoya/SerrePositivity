@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklacePointNaturality
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgePushout
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceCategory
@@ -13,6 +15,9 @@ public import Mathlib.CategoryTheory.Products.Basic
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 二つの元の necklace を、終始点で連結する。 -/
@@ -95,4 +100,43 @@ def necklaceWedgeFunctor : Necklace.{u} × Necklace.{u} ⥤ Necklace.{u} where
   map_id p := necklaceWedgeMap_id p.1 p.2
   map_comp f g := necklaceWedgeMap_comp f.1 g.1 f.2 g.2
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedge := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeFunctor := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap_id := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap_inl := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap_inr := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap_seam := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap_seam
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeFunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceWedgeMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap._proof_2

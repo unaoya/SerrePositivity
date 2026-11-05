@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeNonjoint
 
 /-! # 元の非 joint Bool 座標の連結
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeNonjoin
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 左右の元の Bool 座標を、元の全非 joint 頂点の上で連結する。 -/
 def wedgeBooleanJoin (T U : NecklaceShape) (b : T.NonjointVertex → Bool)
@@ -71,4 +76,25 @@ lemma wedgeVertex_cases (T U : NecklaceShape) (v : (T.wedge U).Vertex) :
       change T.vertexMax + (v.val - T.vertexMax) = v.val
       omega)⟩
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits_wedge_left := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits_wedge_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits_wedge_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits_wedge_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeBooleanJoin := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeBooleanJoin_left := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeBooleanJoin_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeBooleanJoin_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeVertex_cases := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeVertex_cases

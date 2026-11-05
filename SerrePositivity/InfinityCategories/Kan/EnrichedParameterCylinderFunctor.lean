@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderCategory
 
 /-!
@@ -15,6 +17,9 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+open SerrePositivity.KST.Spectra.EnrichedParameterCylinder
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCategory SSet.{u} D]
   (A : SSet.{u}) (F G : EnrichedFunctor SSet.{u} C D)
   (η : GradedNatTrans (Center.ofBraidedObj A) F G)
@@ -114,4 +119,40 @@ def evaluationFunctor : EnrichedFunctor SSet.{u} (Object A C) D where
   map_id := functorMap_id A F G η
   map_comp := functorMap_comp A F G η
 
-end SerrePositivity.KST.Spectra.EnrichedParameterCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.evaluationFunctor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_comp := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap_id := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functor_comp_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.naturality_app := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.naturality_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.emptyTo._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.emptyTo._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorMap.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorMap.match_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedParameterCylinder.functorObject.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functorObject.match_1

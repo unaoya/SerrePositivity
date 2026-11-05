@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSubsets
 public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps
 
@@ -9,7 +11,13 @@ public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexMaps
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の非 joint 頂点そのものを座標とする添字型。 -/
 abbrev NonjointVertex (T : NecklaceShape) := {v : T.Vertex // v.val ∉ T.joints}
@@ -82,4 +90,49 @@ def cubeSubsetBoolIso (T : NecklaceShape) : T.CubeSubset ≃o (T.NonjointVertex 
       exact T.cubeSubsetBits_monotone h
 
 end NecklaceShape
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.NonjointVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.NonjointVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.NonjointVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBits (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_fromBits := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBits_fromBits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits_monotone := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBits_monotone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBoolIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBoolIso := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBoolIso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_bits := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits_bits
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits_monotone := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeFullBits.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeFullBits.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBits.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBits.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBoolIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBoolIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetFromBits.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetFromBits.eq_1

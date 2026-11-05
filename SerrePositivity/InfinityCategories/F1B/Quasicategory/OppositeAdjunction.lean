@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G)
@@ -57,4 +62,28 @@ def oppositeAdjunction : QCatAdjunction (SSet.opFunctor.map G) (SSet.opFunctor.m
   adjunctionOfFunctorHomTriangles (oppositeUnit a) (oppositeCounit a)
     (opposite_leftTriangle a) (opposite_rightTriangle a)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeAdjunction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeAdjunction := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeAdjunction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeCounit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeCounit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeCounit
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeUnit := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.opposite_leftTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.opposite_leftTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.opposite_rightTriangle := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.opposite_rightTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeCounit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeCounit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.oppositeUnit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.oppositeUnit._proof_1

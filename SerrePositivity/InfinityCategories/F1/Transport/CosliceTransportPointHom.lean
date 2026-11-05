@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CosliceEdgeComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeTransportPointLift
 
@@ -9,10 +11,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 元の coslice fiber 点の、指定した始点から終点への実際の矢印の類。 -/
 def cosliceFiberPointHom {X : SSet.{u}} {x a : X _⦋0⦌}
@@ -62,4 +67,19 @@ theorem cosliceFiberPointHom_eq_of_vertexIso {X : SSet.{u}} [Quasicategory X]
   obtain ⟨l, _⟩ := homotopyCategory_homMk_surjective v w e.hom
   exact cosliceFiberPointHom_eq_of_edge (SSet.Edge.ofTruncated l)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberPointHom_eq_of_edge := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceFiberPointHom_eq_of_vertexIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom_eq_of_vertexIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.cosliceTransportPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceTransportPointHom

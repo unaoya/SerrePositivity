@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
@@ -17,6 +19,9 @@ universe u v
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -82,4 +87,25 @@ theorem natural_unit_inv (A Y : C) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.curry_unit_evaluation := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry_unit_evaluation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_second_unit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.exchange_second_unit_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.exchange_second_unit_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_unit_inv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_unit_inv_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_unit_inv_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.unit_inv_eq_curry := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.unit_inv_eq_curry

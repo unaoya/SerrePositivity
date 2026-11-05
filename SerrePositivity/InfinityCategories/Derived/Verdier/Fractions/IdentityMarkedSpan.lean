@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 
 /-! # 元の恒等 span を、両端固定の実分数空間の点として保持する -/
@@ -8,10 +10,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X : SSet.{u}} (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
   (hx : PinchedHom.constant x 1 ∈ W)
 
@@ -67,4 +72,43 @@ theorem identityFixedMarkedSpan_inclusion :
   exact congrArg (fun m => m.app (Opposite.op ⦋0⦌) (identityMarkedSpanFamilyFiber W x hx))
     (markedSpanFamilyFiberToFixed_inclusion X W x x)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityFixedMarkedSpan := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityFixedMarkedSpan_inclusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityFixedMarkedSpan_inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamilyFiber (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamilyFiber := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamilyFiber
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily_projection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan_source := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpan._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpan._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamily._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamily._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.identityMarkedSpanFamilyFiber._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.identityMarkedSpanFamilyFiber._proof_1

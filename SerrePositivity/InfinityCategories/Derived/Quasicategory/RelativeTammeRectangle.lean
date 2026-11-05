@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
@@ -15,9 +17,12 @@ public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
 noncomputable section
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+namespace SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference
+open SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 variable {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u})
   {C D B A Q : StableCategory.{u}} (p : ExactMap C B) (q : ExactMap D B)
   (i : ExactMap A (laxCategory p q)) (r : ExactMap (laxCategory p q) Q)
@@ -59,4 +64,28 @@ lemma relative_id_comparison :
     relative_comparison_image (𝟙 StableInfinity.{u}) p q i r h
       (rectangle p q i r h).diagram (Category.comp_id _)
 
-end SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
+end SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_image := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_image
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_comparison_isPullback := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_comparison_isPullback
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relative_id_comparison := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relative_id_comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference.relativeRectangle.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.LaxUniversalDifference.relativeRectangle.congr_simp

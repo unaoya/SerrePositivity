@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CoherentArrowStrings
 
 /-! # 合成列の精密化から元の Path の高次族を構成する
@@ -13,8 +15,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 精密化の再添字の像を、元の合成列内の端点を保つ native な Path とする。 -/
@@ -109,4 +114,88 @@ lemma coherentStringPathFlag_naturality {m n : ℕ}
     apply InducedCategory.hom_ext
     exact Subsingleton.elim _ _
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag_naturality := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag_naturality
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindex := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPathInclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPathInclusion := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPathInclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathFlag._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindex._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindex._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringPathReindexFunctor._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathReindexFunctor._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPath._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentStringRefinementPathInclusion._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPathInclusion._proof_1

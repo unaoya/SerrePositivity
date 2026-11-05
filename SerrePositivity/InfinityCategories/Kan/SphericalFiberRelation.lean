@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization
 public import Mathlib.Algebra.BigOperators.Fin
 
@@ -14,9 +16,12 @@ public import Mathlib.Algebra.BigOperators.Fin
 universe u
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.KST.Spectra.SphericalFiberLift
+namespace SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+open SerrePositivity.KST.Spectra.SphericalFiberLift
 
 noncomputable section
 open SphericalBoundary
@@ -104,4 +109,16 @@ theorem alternatingClass_connecting (T : SphericalFiberLift p e s a) :
     (fun j hj ↦ (Nat.not_lt_zero j.val hj).elim)
 
 end
-end SerrePositivity.KST.Spectra.SphericalFiberLift
+end SerrePositivity.InfinityCategories.Kan.SphericalFiberLift
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.alternatingClass_connecting
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting_last := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.alternatingClass_connecting_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SphericalFiberLift.alternatingClass_connecting_of_lower := _root_.SerrePositivity.InfinityCategories.Kan.SphericalFiberLift.alternatingClass_connecting_of_lower

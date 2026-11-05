@@ -16,7 +16,7 @@ universe u v w
 
 open CategoryTheory SSet
 
-namespace SerrePositivity.KST.Spectra.KanHomotopyGroup
+namespace SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
 
 noncomputable section
 
@@ -75,4 +75,4 @@ def diagramIso {D E : J ⥤ PointedSimplicialSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra.KanHomotopyGroup
+end SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup

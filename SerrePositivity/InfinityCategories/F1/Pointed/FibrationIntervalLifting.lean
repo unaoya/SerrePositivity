@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -54,9 +56,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -117,4 +122,16 @@ theorem fibration_surjective_vertices_of_piIsomorphism {E B : SSet.{u}}
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.exists_fibration_interval_lift := _root_.SerrePositivity.InfinityCategories.F1.Pointed.exists_fibration_interval_lift
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_surjective_vertices_of_piIsomorphism := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_piIsomorphism
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fibration_surjective_vertices_of_zero := _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_zero

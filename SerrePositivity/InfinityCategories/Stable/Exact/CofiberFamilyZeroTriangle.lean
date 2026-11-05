@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -47,9 +49,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+end SerrePositivity.KST.LocalizingInvariants.CofiberFamily
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 零頂点の存在は、任意のパラメータの関手圏へ移る。 -/
 lemma functorHasZeroVertex (A X : SSet.{u}) [Quasicategory X] [HasZeroVertex X] :
@@ -63,6 +70,7 @@ lemma functorHasZeroVertex (A X : SSet.{u}) [Quasicategory X] [HasZeroVertex X] 
     isTerminalVertex_functorVertex_of_pointwise z (fun a => (hz a).2)⟩⟩
 
 namespace CofiberFamily
+open SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 
@@ -81,4 +89,22 @@ local instance cofiberFamilyFunctorZero : HasZeroVertex ((ihom A).obj X) :=
   functorHasZeroVertex A X
 
 end CofiberFamily
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.functorHasZeroVertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.functorHasZeroVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberFamilyFunctorZero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiberFamilyFunctorZero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner_zero := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroCorner._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.zeroCorner._proof_1

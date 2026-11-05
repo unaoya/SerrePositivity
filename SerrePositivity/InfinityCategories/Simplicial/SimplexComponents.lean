@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
 
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 
 open CategoryTheory Opposite SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：単体の i 番目の頂点を取り出す。
@@ -88,4 +93,31 @@ theorem simplexClass_map (X : SSet.{u}) {m n : ℕ} (f : ⦋m⦌ ⟶ ⦋n⦌)
     simplexClass X s = π₀.mk s := by
   simp [simplexClass, simplexVertex, SimplexCategory.const_eq_id]
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_map := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass_zero := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex_class_eq := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexClass.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexVertex.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex.eq_1

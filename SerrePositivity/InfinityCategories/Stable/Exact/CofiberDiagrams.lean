@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
@@ -66,9 +68,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+namespace SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+open SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 
 def Predicate {X : SSet.{u}} (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Prop :=
   IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧ IsPushoutSquare (squareDiagram v)
@@ -76,7 +81,7 @@ def Predicate {X : SSet.{u}} (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _�
 def space (X : SSet.{u}) : SSet.{u} :=
   (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) Predicate : SSet.{u})
 
-instance (X : SSet.{u}) [Quasicategory X] : Quasicategory (space X) :=
+instance instQuasicategorySpace (X : SSet.{u}) [Quasicategory X] : Quasicategory (space X) :=
   fullSubcomplexOnVertices_quasicategory _ _
 
 def inclusion (X : SSet.{u}) : space X ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X :=
@@ -163,4 +168,67 @@ lemma cones_projection (X : SSet.{u}) [Quasicategory X] [IsStable X] : cones X �
   rw [cones_inclusion, Category.assoc, ← NatTrans.comp_app, ← pre_map]
   rfl
 
-end SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
+end SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.Predicate := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.bottom := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cocones := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cocones_inclusion := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cocones_projection := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cones := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cones_inclusion := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cones_projection := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.inclusion := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.inclusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.instQuasicategorySpace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.instQuasicategorySpace := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.instQuasicategorySpace
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.left := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.right := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.space := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.space
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.top := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.Predicate._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.Predicate._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cocones._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cocones._proof_2 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cocones._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.cones._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.cones._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.left._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.left._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.top._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.top._proof_1

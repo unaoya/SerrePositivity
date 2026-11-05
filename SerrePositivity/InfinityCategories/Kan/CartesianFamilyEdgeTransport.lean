@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
 
 /-! # 直積族の指定辺の評価と移送
@@ -11,8 +13,11 @@ public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 任意の族の可換式は、指定辺の実際の一単体で可換する。 -/
 lemma mappedEdge_square {A B C D : SSet.{u}}
@@ -96,4 +101,37 @@ lemma cartesianRightFamilyEdge_congr {K L M : SSet.{u}} (F : L ⊗ K ⟶ M)
       ((cartesianEdgePair f (.id k)).map F).edge :=
   congrArg (fun z => F.app (Opposite.op ⦋1⦌) (z, (SSet.Edge.id k).edge)) h
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_congr := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_congr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_moving := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_moving
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_parameter := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_parameter
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianLeftFamilyEdge_square := _root_.SerrePositivity.InfinityCategories.Kan.cartesianLeftFamilyEdge_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_congr := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_congr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_moving := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_moving
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_parameter := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_parameter
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cartesianRightFamilyEdge_square := _root_.SerrePositivity.InfinityCategories.Kan.cartesianRightFamilyEdge_square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mappedEdge_family_congr := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_family_congr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mappedEdge_square := _root_.SerrePositivity.InfinityCategories.Kan.mappedEdge_square

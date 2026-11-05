@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 
 /-!
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
+end SerrePositivity.KST.Spectra.ThreeEdgeTransport
+namespace SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
+open SerrePositivity.KST.Spectra.ThreeEdgeTransport
 variable {Z : SSet.{u}} {x a y b : Z _⦋0⦌}
   {left : Z.Edge x a} {middle : Z.Edge x y} {right : Z.Edge y b}
 
@@ -73,4 +78,61 @@ lemma loop_identity_congr {x y : Z _⦋0⦌} {e : Z.Edge x x} {f : Z.Edge y y}
   rw [he]
   exact hf
 
-end SerrePositivity.KST.Spectra.ThreeEdgeTransport
+end SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.loop_identity_congr := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.loop_identity_congr
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel_transported_edge := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel_transported_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.transported_homMk_eq_id := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.transported_homMk_eq_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_12 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_12
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_13 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_13
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_14 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_14
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.relabel._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.relabel._proof_9

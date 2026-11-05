@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma spanCancelPointPrism {Y : SSet.{u}} {f g : (Δ[1] : SSet.{u}) ⟶ Y}
     (h : snd (Δ[0] : SSet.{u}) Δ[1] ≫ f = snd Δ[0] Δ[1] ≫ g) : f = g := by
@@ -140,4 +145,22 @@ lemma verdierSpanRecoveredArrows_comp_of_comparison
         Truncated.HomotopyCategory.homMk (intervalMappingFamilyEdge f).toTruncated := by
   rw [verdierSpanRecoveredArrows_comp h x y d g, intervalMappingFamilyEdge_homMk_eq e]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluatedMapping (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluatedMapping := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluatedMapping
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanRecoveredArrows_comp := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanRecoveredArrows_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanRecoveredArrows_comp_of_comparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanRecoveredArrows_comp_of_comparison
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluatedMapping.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluatedMapping.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSpanEvaluatedMapping.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSpanEvaluatedMapping.eq_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 共通実分母の次辺族を、精密化した同じ前段へ全パラメータで厳密に貼る。 -/
 lemma exists_verdierSimplexCommonDenominatorFamily
@@ -104,4 +109,10 @@ lemma exists_verdierSimplexCommonDenominatorFamily
     simpa only [p, T, Category.assoc, ← NatTrans.comp_app, ← pre_map,
       simplexAttachmentLastEdge_ι, simplexAttachmentFamilyGlue_lastEdge] using he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierSimplexCommonDenominatorFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierSimplexCommonDenominatorFamily

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 
 /-! # 単体集合の表示等号に沿う全単体と面の移送
@@ -11,8 +13,11 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 単体集合の表示を移した全単体は、元の単体と依存等号で一致する。 -/
 lemma simplicialEqualityTransport_app_heq {E D : SSet.{u}} (e : E = D) (n : ℕ)
@@ -47,4 +52,22 @@ lemma simplicialEqualityTransport_common_face {E D : SSet.{u}} (e : E = D) {n : 
       D.δ i ((eqToHom e).app (Opposite.op ⦋n + 1⦌) y) := by
   rw [simplicialEqualityTransport_face, simplicialEqualityTransport_face, h]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_heq := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_app_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_app_of_heq := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_app_of_heq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_common_face := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_common_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplicialEqualityTransport_face_of_heq := _root_.SerrePositivity.InfinityCategories.Kan.simplicialEqualityTransport_face_of_heq

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
@@ -18,6 +20,9 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.DiscreteInternalHom
+end SerrePositivity.KST.Spectra.DiscreteInternalHom
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+open SerrePositivity.KST.Spectra.DiscreteInternalHom
 
 noncomputable section
 
@@ -110,4 +115,43 @@ def iso : (ihom ((Functor.const (SimplexCategoryᵒᵖ)).obj S)).obj X ≅
 
 end
 
-end SerrePositivity.KST.Spectra.DiscreteInternalHom
+end SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.homEquiv_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.homEquiv_pre
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions_pre := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions_pre
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.familyEquiv._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.familyEquiv._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.fromFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.fromFunctions._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.iso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.DiscreteInternalHom.toFunctions._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom.toFunctions._proof_1

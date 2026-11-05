@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
@@ -59,6 +61,9 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -163,4 +168,52 @@ theorem mappingPathUnit_projection {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPath := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathProjection := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_fibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathProjection_fibration := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_fibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathRetraction := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathRetraction_rlp := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction_rlp
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit_projection := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit_projection_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit_retraction := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit_retraction_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPath._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPath._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathProjection.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mappingPathUnit.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit.eq_1

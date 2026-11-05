@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Straightening
+open SerrePositivity.KST.Fibration
 variable {B : SSet.{u}}
   {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}} (a : FunctorHom F G)
 
@@ -69,4 +74,31 @@ theorem smallUnstraighteningFunctorHom_recover :
   exact congrArg (fun m => m.app (Opposite.op ⦋0⦌) (smallUnstraighteningHomParameter a))
     (liftedSmallLeftUnstraighteningMappingSpaceMap_comparison F G)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFunctorHom := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFunctorHom_projection := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_projection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFunctorHom_recover := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_recover
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFunctorHom_vertex := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_vertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningHomEdge := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningHomEdge_hom := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomEdge_hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningHomParameter := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomParameter
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningHomVertex := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningHomVertex

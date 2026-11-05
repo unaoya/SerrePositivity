@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleEmbedding
 
 /-!
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleEmbedd
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.KST.Spectra.SquareTriangles
+namespace SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+open SerrePositivity.KST.Spectra.SquareTriangles
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
@@ -123,4 +128,37 @@ theorem upper_lower_cover (d : ℕ) :
   · exact Or.inl ⟨sumSimplex p.1 p.2, upper_sumSimplex _ _ h⟩
   · exact Or.inr ⟨sumSimplex p.1 p.2, lower_sumSimplex _ _ h⟩
 
-end SerrePositivity.KST.Spectra.SquareTriangles
+end SerrePositivity.InfinityCategories.Simplicial.SquareTriangles
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.interval_simplices_comparable := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.interval_simplices_comparable
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.lower_sumSimplex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower_sumSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_one_sumIndex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_one_sumIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sigma_zero_sumIndex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sigma_zero_sumIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumIndex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumSimplex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_lower_cover := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_lower_cover
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.upper_sumSimplex := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper_sumSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumIndex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SquareTriangles.sumSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.sumSimplex._proof_1

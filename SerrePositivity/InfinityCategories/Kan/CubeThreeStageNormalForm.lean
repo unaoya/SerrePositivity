@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeSupportOutputCompletion
 
 /-! # 具体的な cubical 射の削除・max・面の三段正規形
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeSupportOutputCompletion
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の空の support の出力補完は、面だけの合成で生成される。 -/
@@ -32,4 +37,13 @@ lemma concreteCube_exists_deletion_max_face {X Y : ConcreteCube} (f : X ⟶ Y) :
   · exact cubeSupportOutputCompletion_faceGenerated _
   · exact congrArg Subtype.val (concreteCube_deletion_max_face_factorization f)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCube_exists_deletion_max_face := _root_.SerrePositivity.InfinityCategories.Kan.concreteCube_exists_deletion_max_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSupportOutputCompletion_faceGenerated := _root_.SerrePositivity.InfinityCategories.Kan.cubeSupportOutputCompletion_faceGenerated

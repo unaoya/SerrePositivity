@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom
 
 /-!
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
 
@@ -34,4 +39,16 @@ def restoredFunctorIso (e : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.ma
     simp only [Equiv.apply_symm_apply]
     exact e.hom_inv_id
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredFunctorIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredFunctorIso := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredFunctorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredFunctorIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredFunctorIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.restoredFunctorIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.restoredFunctorIso._proof_3

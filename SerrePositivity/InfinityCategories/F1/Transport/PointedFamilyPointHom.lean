@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointHomNaturality
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceFiberVertices
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 元の pointed-space 頂点を、その同じ射影先の実 fiber 点として読む。 -/
 def pointedVertexFiberPoint (s : PointedSpaceInfinity.{u} _⦋0⦌) :
@@ -90,4 +95,31 @@ theorem pointedFamilyPointHom_naturality_over {K : SSet.{u + 1}}
   (congrArg (fun n => pointedVertexPointHom (H.app (Opposite.op ⦋0⦌) v) ≫ n)
     (pointedFamilyProjectionValueIso_map H J h m)).trans (pointedFamilyPointHom_naturality H m)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFamilyPointHom_naturality := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyPointHom_naturality
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFamilyPointHom_naturality_over := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyPointHom_naturality_over
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFamilyProjectionValueIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFamilyProjectionValueIso_map := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso_map
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedVertexFiberPoint := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedVertexPointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexPointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedFamilyProjectionValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedFamilyProjectionValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedVertexFiberPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedVertexFiberPoint._proof_1

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
 public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
@@ -16,9 +18,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
+end SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定された商四角形を、同じ元の cospan 上の実錐として読む。 -/
 def verdierSquareQuotientCone {B C : SSet.{u}} (q : B ⟶ C)
@@ -39,6 +46,7 @@ structure VerdierSquareRefinement {A B C : StableCategory.{u}}
   isInvertible : IsInvertibleEdge (X := sliceOver (R ≫ q.hom)) comparison
 
 namespace VerdierSquareRefinement
+open SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {R : (horn 2 2 : SSet.{u}) ⟶ B.obj}
   {T : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C.obj}
@@ -119,4 +127,106 @@ lemma exists_verdierSquareRefinement {A B C : StableCategory.{u}}
     infer_instance
   exact ⟨⟨c, v, hi⟩⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierSquareRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierSquareRefinement
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSquareQuotientCone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement._sizeOf_inst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.bottom_mem := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.bottom_mem
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.casesOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.comparison (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.comparison := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.comparison
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.cone (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.cone := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.cone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.cospan_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.cospan_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.ctorIdx := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.ctorIdx
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.isInvertible
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.iso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.iso
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.legTriangle (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.legTriangle := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.legTriangle
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.noConfusionType := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.rec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.recOn := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.right_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.right_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.square (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.square := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.square
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.top_eq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.top_eq
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSquareQuotientCone._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSquareQuotientCone._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierSquareQuotientCone.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierSquareQuotientCone.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.iso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.iso._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.iso._proof_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk.inj := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk.injEq := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.mk.sizeOf_spec
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement.square.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement.square.eq_1

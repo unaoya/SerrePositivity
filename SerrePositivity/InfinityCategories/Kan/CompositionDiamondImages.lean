@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
 
 /-! # 元の実三角形対を同じ全写像で写す
@@ -11,8 +13,11 @@ public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable {E B : SSet.{u}} {x m n z : E _⦋0⦌}
   {a : E.Edge x m} {b : E.Edge m z} {c : E.Edge x n} {d : E.Edge n z}
   (D : CompositionDiamond a b c d) (p : E ⟶ B)
@@ -34,4 +39,19 @@ lemma CompositionDiamond.map_second_simplex :
 /-- 共通対角辺も、元の同じ全辺の像そのもの。 -/
 lemma CompositionDiamond.map_diagonal : (D.map p).diagonal = D.diagonal.map p := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.map := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.map_diagonal := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.map_diagonal
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.map_first_simplex := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.map_first_simplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CompositionDiamond.map_second_simplex := _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.map_second_simplex

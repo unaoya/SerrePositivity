@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
@@ -11,10 +13,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {X Q T : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
   (hF : InvertsEdges F W) (x : X _⦋0⦌) (k : T ⟶ X) (b : T _⦋0⦌)
 
@@ -82,4 +87,37 @@ theorem fractionCosliceFiberMap_unfixed :
     (fractionCosliceFiberMap_fixed F W hF x k b)
   simpa only [Category.assoc, Iso.inv_hom_id_assoc] using he
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap_fixed := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap_fixed
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap_unfixed := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap_unfixed
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSourceFiberIso := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSourceFiberIso_ambient := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso_ambient
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap.congr_simp := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionCosliceFiberMap.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionCosliceFiberMap.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSourceFiberIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.fractionSourceFiberIso.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.fractionSourceFiberIso.eq_1

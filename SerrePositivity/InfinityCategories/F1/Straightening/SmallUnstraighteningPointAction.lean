@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberFamily
@@ -10,9 +12,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Straightening
+open SerrePositivity.KST.Fibration
 variable {B : SSet.{u}}
   (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (b : B _⦋0⦌)
 
@@ -95,4 +100,16 @@ theorem smallUnstraighteningFunctorHom_pointAction (a : FunctorHom F G)
     (leftUnstraighteningFiberIso G (ULift.up b)).hom.app (Opposite.op ⦋0⦌)
       ((smallLeftUnstraighteningFiberIso G b).hom.app (Opposite.op ⦋0⦌) (ULift.up s))) hv)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Straightening
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFunctorHom_pointAction := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningFunctorHom_pointAction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningPointAction_eq := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointAction_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningPointedImage := _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage

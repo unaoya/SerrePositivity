@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceJointImage
 public import Mathlib.Order.Category.PartOrd
 
@@ -10,8 +12,14 @@ public import Mathlib.Order.Category.PartOrd
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 namespace NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 元の全 joints を含む頂点部分集合。 -/
 abbrev CubeSubset (T : NecklaceShape) := {s : Finset T.Vertex // T.jointVertices ⊆ s}
@@ -72,4 +80,52 @@ def necklaceSubsetPoset : Necklace.{u} ⥤ PartOrd where
   map_id T := PartOrd.Hom.ext (necklaceSubsetMap_id T)
   map_comp f g := PartOrd.Hom.ext (necklaceSubsetMap_comp f g)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap_comp := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap_id := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap_join := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap_join
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetPoset := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.CubeSubset (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.CubeSubset := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.CubeSubset
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBottom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetBottom := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetBottom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetJoin (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetJoin := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetJoin
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetTop (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetTop := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetTop
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetMap._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetMap._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetPoset._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.necklaceSubsetPoset._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceSubsetPoset._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetJoin._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetJoin._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.cubeSubsetTop._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.cubeSubsetTop._proof_1

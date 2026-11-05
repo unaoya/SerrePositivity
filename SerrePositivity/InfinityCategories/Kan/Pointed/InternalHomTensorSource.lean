@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.KST.Spectra.InternalHomTensor
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+open SerrePositivity.KST.Spectra.InternalHomTensor
 
 noncomputable section
 
@@ -62,4 +67,19 @@ theorem natural_pre_right (A : C) {B' B : C} (j : B' ⟶ B) (Y : C) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomTensor
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_left := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_left_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_right := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomTensor.natural_pre_right_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right_assoc

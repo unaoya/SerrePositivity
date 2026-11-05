@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison
 
 /-! # 既存の coslice 点族を指定点で評価し、同じ恒等点から元の全写像を回収する -/
@@ -8,9 +10,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
   (b : B _⦋0⦌)
 
@@ -58,4 +63,31 @@ def coslicePointFamilyAt_recoveryIso
   exact (coslicePointEvaluation_vertex_val p b (coslicePointFamilyAt_projection p b _)).trans
     (coslicePointFamilyAt_identity p b _)
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt_identity := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_identity
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt_projection := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_projection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_recoveryIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt_recoveryIso := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_recoveryIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt.congr_simp := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt_recoveryIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_recoveryIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointFamilyAt_recoveryIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointFamilyAt_recoveryIso._proof_2

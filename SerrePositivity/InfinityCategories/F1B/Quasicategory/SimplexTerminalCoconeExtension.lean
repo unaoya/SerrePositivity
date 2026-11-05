@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
@@ -19,9 +21,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet SSet.Truncated
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 有限単体の最後の頂点を選ぶ、元の点包含。 -/
 def simplexLastPoint (n : ℕ) : (Δ[0] : SSet.{u}) ⟶ Δ[n] :=
@@ -84,4 +89,25 @@ lemma exists_simplexCocone_of_last_edge {X : SSet.{u}} [Quasicategory X] {n : �
     simp only [Iso.inv_hom_id_assoc]
     rfl
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_relative_simplexTerminalCoconeFamily := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_relative_simplexTerminalCoconeFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexCocone_of_last_edge := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_simplexCocone_of_last_edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexTerminalCocone := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.exists_simplexTerminalCocone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPoint := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPoint_mono := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexLastPoint_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexTerminalCoconeRestriction_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalCoconeRestriction_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.simplexTerminalCoconeRestriction_trivialKanFibration

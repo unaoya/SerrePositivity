@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltrationMono
 public import SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
 
@@ -14,6 +16,9 @@ public import SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit
 universe u v
 open CategoryTheory CategoryTheory.Limits SSet
 namespace SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor
+end SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor
+namespace SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor
+open SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
@@ -58,4 +63,28 @@ lemma colimit_mono [HasColimitsOfShape J (Type u)]
     CartesianSubfunctorColimit.mono (subfunctor D n k) (membership_iff D n k hD)
   infer_instance
 
-end SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor
+end SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.colimit_mono := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.colimit_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso_inclusion := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso_inclusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.membership_iff := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.membership_iff
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.subfunctor := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.iso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.iso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor.subfunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor.subfunctor._proof_1

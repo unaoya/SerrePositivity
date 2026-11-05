@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 
@@ -16,9 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 恒等から終頂点へ動かし、終頂点自身は固定する単調な変形。 -/
 def simplexTerminalContractionOrder (n : ℕ) : Fin (n + 1) × Fin 2 →o Fin (n + 1) where
@@ -113,4 +118,43 @@ lemma simplexTerminalArrowFamily_last {X : SSet.{u}} {n : ℕ}
       (D.naturality (SimplexCategory.const ⦋m⦌ ⦋0⦌ 0).op)
       (stdSimplex.obj₀Equiv.symm (Fin.last n))
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Core.Quasicategory
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily_last := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily_source := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_source
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily_target := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_target
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContraction := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContractionOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContractionOrder := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContractionOrder
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalArrowFamily.eq_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContraction._proof_2 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContraction._proof_3 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContraction._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContractionOrder._proof_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContractionOrder._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexTerminalContractionOrder._proof_2 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalContractionOrder._proof_2

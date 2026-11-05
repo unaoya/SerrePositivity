@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated
 public import Mathlib.CategoryTheory.Types.Basic
 
@@ -9,6 +11,9 @@ public import Mathlib.CategoryTheory.Types.Basic
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 具体的な立方体圏の対象は、その有限次元。 -/
@@ -53,4 +58,109 @@ lemma concreteCubeMap_monotone {X Y : ConcreteCube} (f : X ⟶ Y) :
     Monotone f.val :=
   cubeMapGenerated_monotone f.property
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeConnection := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeDegeneracy := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeFace := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeMap_monotone := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeMap_monotone
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor_faithful (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor_faithful := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor_faithful
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.dimension (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.dimension := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.dimension
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.rec := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.recOn := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.recOn
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeCategory._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeCategory._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.concreteCubeVertexFunctor._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeVertexFunctor._proof_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.ConcreteCube.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk.sizeOf_spec

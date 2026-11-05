@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport
@@ -11,10 +13,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.Fibration
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   (h : IsVerdierSequence i q) (x : B.obj _⦋0⦌)
 
@@ -99,4 +104,43 @@ theorem weakIdentityKanPoint_evaluate :
     ((F2.continuousKanReplacementUnit.app _).app (Opposite.op ⦋0⦌))
     (weakIdentityStrictSectionPoint_evaluate h x))
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.transportSimplexFirstVertexMap_zeroIndex := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.transportSimplexFirstVertexMap_zeroIndex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityFixedSpan := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityFixedSpan
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityKanPoint_evaluate := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityKanPoint_evaluate
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentitySimplexFiberPoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentitySpan_mem := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySpan_mem
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictEvaluationSection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityStrictEvaluationSection := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictEvaluationSection
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictSectionPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityStrictSectionPoint := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictSectionPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityStrictSectionPoint_evaluate := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictSectionPoint_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentitySimplexFiberPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentitySimplexFiberPoint._proof_2 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentitySimplexFiberPoint._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.weakIdentityStrictEvaluationSection._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.weakIdentityStrictEvaluationSection._proof_1

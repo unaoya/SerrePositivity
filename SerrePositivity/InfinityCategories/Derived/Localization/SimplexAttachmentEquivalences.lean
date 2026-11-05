@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
@@ -17,9 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma join_vertex_cases {A B : SSet.{u}} (v : (join A B) _⦋0⦌) :
     (∃ a, (joinInl A B).app (Opposite.op ⦋0⦌) a = v) ∨
@@ -106,4 +111,13 @@ lemma exists_simplexAttachmentFunctorIso {X : SSet.{u}} [Quasicategory X] (n : �
   · exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ a hl
   · exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ b hr
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexAttachmentFunctorIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.exists_simplexAttachmentFunctorIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentComparison_isInvertible := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentComparison_isInvertible

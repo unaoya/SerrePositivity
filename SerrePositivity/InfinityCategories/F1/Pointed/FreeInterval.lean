@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -87,9 +89,12 @@ universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SSet.modelCategoryQuillen
 open SerrePositivity.SimplicialModel
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.F1.Pointed
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -224,4 +229,43 @@ theorem freeIntervalEndpoint_collapse (i : Fin 2) :
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.F1.Pointed
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.anodyne_coprod_map_id := _root_.SerrePositivity.InfinityCategories.F1.Pointed.anodyne_coprod_map_id
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeInterval := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeInterval
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalCollapse := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalCollapse
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_collapse := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_collapse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint_collapse_assoc := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_collapse_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.horn_one_one_eq_face := _root_.SerrePositivity.InfinityCategories.F1.Pointed.horn_one_one_eq_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.intervalFace_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalFace_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.interval_oneFace_anodyne := _root_.SerrePositivity.InfinityCategories.F1.Pointed.interval_oneFace_anodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mono_coprod_map_id := _root_.SerrePositivity.InfinityCategories.F1.Pointed.mono_coprod_map_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.freeIntervalEndpoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint._proof_1

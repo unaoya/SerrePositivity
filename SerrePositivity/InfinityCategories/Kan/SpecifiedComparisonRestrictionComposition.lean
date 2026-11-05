@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
@@ -11,8 +13,11 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCompositi
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 /-- 概要：指定全比較の二回の制限は合成包含への制限と一致する。
 方針：前合成とホモトピー圏の関手性を使う。規約：元同型の値を保持。
 使われ方：元二胞体を経由した短辺比較の回収。 -/
@@ -50,4 +55,13 @@ lemma specifiedFunctorIsoRestrictionFromTriangle {A B C X : SSet.{u}}
   rw [hp] at ht
   exact ht.symm.trans ((F2.functorIsoOfEq_heq _ hfs hgs).symm.trans (heq_of_eq hshort))
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.specifiedFunctorIsoRestrictionFromTriangle := _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionFromTriangle
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.specifiedFunctorIsoRestrictionTwice := _root_.SerrePositivity.InfinityCategories.Kan.specifiedFunctorIsoRestrictionTwice

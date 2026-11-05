@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.SimplexEdges
+end SerrePositivity.KST.Spectra.SimplexEdges
+namespace SerrePositivity.InfinityCategories.Kan.SimplexEdges
+open SerrePositivity.KST.Spectra.SimplexEdges
 
 /-- 標準単体内の、指定した順序付き二頂点を結ぶ元の辺。 -/
 def edge {n : ℕ} (i j : Fin (n + 1)) (h : i ≤ j) :
@@ -54,4 +59,49 @@ lemma tetrahedron_relation {X : SSet.{u}} (a : X _⦋3⦌) :
   exact SSet.HomotopyCategory.homMk_comp_homMk
     ((compStruct (0 : Fin 4) 2 3 (by decide) (by decide)).map (SSet.yonedaEquiv.symm a))
 
-end SerrePositivity.KST.Spectra.SimplexEdges
+end SerrePositivity.InfinityCategories.Kan.SimplexEdges
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.compStruct := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.edge := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.edgeMap_vertex := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edgeMap_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.tetrahedron_relation := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.tetrahedron_relation
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.compStruct._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.compStruct._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.compStruct._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.compStruct._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.compStruct._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.edge._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.edge._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.edge._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.tetrahedron_relation._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.tetrahedron_relation._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.tetrahedron_relation._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.tetrahedron_relation._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.tetrahedron_relation._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.tetrahedron_relation._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SimplexEdges.tetrahedron_relation._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.SimplexEdges.tetrahedron_relation._proof_4

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeAscending
 
 /-! # 連結の右端からの元の数値座標
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeAscendi
 @[expose] public section
 noncomputable section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 左の元の数値座標を、右ブロックの後へ置く。 -/
 def wedgeCoordinateLeft (T U : NecklaceShape) (i : Fin T.dimension) :
@@ -67,4 +72,34 @@ lemma wedgeCoordinate_cases (T U : NecklaceShape) (i : Fin (T.wedge U).dimension
       change U.dimension + (i.val - U.dimension) = i.val
       omega)⟩
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate_wedge_left := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate_wedge_left
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.nonjointCoordinate_wedge_right := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.nonjointCoordinate_wedge_right
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateLeft (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateLeft
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateRight (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateRight
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinate_cases := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinate_cases
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateLeft._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateLeft.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateLeft.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateRight._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.wedgeCoordinateRight.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.wedgeCoordinateRight.eq_1

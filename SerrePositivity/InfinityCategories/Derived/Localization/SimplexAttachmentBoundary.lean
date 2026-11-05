@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
@@ -18,9 +20,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet MorphismProperty
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 元の最後の点包含の像。 -/
 def simplexLastVertex (n : ℕ) : (Δ[n] : SSet.{u}).Subcomplex :=
@@ -113,4 +118,58 @@ instance simplexAttachmentRestriction_trivialKanFibration (n : ℕ)
     TrivialKanFibration ((pre (simplexAttachmentBoundary n).ι).app X) :=
   trivialKanFibration_pre_of_innerAnodyne _ (simplexAttachmentBoundary_innerAnodyne n) X
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentBoundary := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentBoundary_comm := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_comm
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentBoundary_innerAnodyne := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_innerAnodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentBoundary_isPushout := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentBoundary_isPushout
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentLastEdge := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentLastEdge_ι := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentLastEdge_ι_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentLastEdge_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentPrefix := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentPrefix_ι := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentPrefix_ι_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentPrefix_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentRestriction_trivialKanFibration (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexAttachmentRestriction_trivialKanFibration := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexAttachmentRestriction_trivialKanFibration
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastPointRangeIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPointRangeIso := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastPointRangeIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPointRangeIso_hom_ι := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastPointRangeIso_hom_ι
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPointRangeIso_hom_ι_assoc := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastPointRangeIso_hom_ι_assoc
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastVertex := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastVertex_rightAnodyne := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastVertex_rightAnodyne
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.simplexLastPointRangeIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Derived.Localization.simplexLastPointRangeIso._proof_1

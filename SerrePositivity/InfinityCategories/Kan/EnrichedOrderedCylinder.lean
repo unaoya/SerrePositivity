@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderCategory
 
 /-!
@@ -13,6 +15,9 @@ noncomputable section
 universe u v w
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
+end SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
+namespace SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
+open SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
 variable (J : Type w) [Preorder J]
 
 /-- 段の順序の証明を保持する定数単体集合。 -/
@@ -120,4 +125,145 @@ instance simplicialCategory : SimplicialCategory (Object J C) where
   homEquiv_id X := ForgetEnrichment.homTo_id (W := SSet.{u}) (C := Object J C) X
   homEquiv_comp f g := ForgetEnrichment.homTo_comp (W := SSet.{u}) (C := Object J C) f g
 
-end SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
+end SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition_assoc := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition_identity := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition_identity
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.eliminateHom := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.enrichedCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.enrichedCategory := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.enrichedCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.hom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.hom := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.homByOrder (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.homByOrder := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.homByOrder
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.identity := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.identity_composition := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity_composition
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.orderWitness := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness_subsingleton (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.orderWitness_subsingleton := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness_subsingleton
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.simplicialCategory (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.simplicialCategory := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.simplicialCategory
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object._sizeOf_1 (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object._sizeOf_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object._sizeOf_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object._sizeOf_inst (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object._sizeOf_inst := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object._sizeOf_inst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.casesOn (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.casesOn := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.casesOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.ctorIdx (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.ctorIdx := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.ctorIdx
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk (since := "2026-11-05"), match_pattern]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.noConfusion
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.noConfusionType (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.noConfusionType := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.noConfusionType
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.position (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.position := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.position
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.rec (since := "2026-11-05"), elab_as_elim]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.rec := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.recOn (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.recOn := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.recOn
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.val (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.val := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.val
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._aux_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_3 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._aux_3 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_5 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._aux_5 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._aux_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._proof_8 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._proof_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.category._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.category._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.composition.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.eliminateHom._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.eliminateHom._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom._proof_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.eliminateHom.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.identity._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.identity._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.simplicialCategory._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.simplicialCategory._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.simplicialCategory._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.simplicialCategory._proof_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk._flat_ctor (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk._flat_ctor := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk._flat_ctor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk.inj := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk.inj
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk.injEq := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk.injEq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk.noConfusion (since := "2026-11-05")]
+noncomputable deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk.noConfusion := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk.noConfusion
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.EnrichedOrderedCylinder.Object.mk.sizeOf_spec := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object.mk.sizeOf_spec

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.Data.Fin.Tuple.Basic
 public import Mathlib.Data.Finset.Lattice.Fold
 
@@ -9,6 +11,9 @@ public import Mathlib.Data.Finset.Lattice.Fold
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 
 /-- n 次元の具体的な立方体の頂点。 -/
 abbrev CubeVertex (n : ℕ) := Fin n → Bool
@@ -50,4 +55,37 @@ lemma cubeVertexConnection_sup (n : ℕ) (i : Fin (n + 1)) (x y : CubeVertex (n 
     exact sup_sup_sup_comm _ _ _ _
   · simp [cubeVertexConnection, h, cubeVertexDegeneracy]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.CubeVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection_sup := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection_sup
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_sup := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy_sup
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace_sup := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace_sup
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexConnection.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexDegeneracy.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeVertexFace.eq_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace.eq_1

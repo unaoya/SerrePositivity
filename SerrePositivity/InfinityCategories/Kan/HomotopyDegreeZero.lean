@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 
@@ -15,9 +17,14 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 universe u
 
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.KanHomotopyZero
+end SerrePositivity.KST.Spectra.KanHomotopyZero
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：零次数の境界定数単体のホモトピー類。
 方針：RelStruct₀ による辺の関係を商にする。
@@ -27,6 +34,7 @@ def KanHomotopyZero (X : SSet.{u}) (x : X _⦋0⦌) : Type u :=
   Quot (fun f g : X.PtSimplex 0 x ↦ Nonempty (PtSimplex.RelStruct₀ f g))
 
 namespace KanHomotopyZero
+open SerrePositivity.KST.Spectra.KanHomotopyZero
 
 variable {X : SSet.{u}} {x : X _⦋0⦌}
 
@@ -115,4 +123,52 @@ theorem map_comp {Y Z : SSet.{u}} {y : Y _⦋0⦌} {z : Z _⦋0⦌}
 
 end KanHomotopyZero
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero_map := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero_mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_id := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_mk
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.equivPiZero._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map.match_1

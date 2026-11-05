@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.NecklaceFirstBead
 public import Mathlib.Data.List.Basic
 
@@ -9,6 +11,9 @@ public import Mathlib.Data.List.Basic
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.KST.SConstruction.NecklaceShape
+namespace SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+open SerrePositivity.KST.SConstruction.NecklaceShape
 
 /-- 標準 bead の有限列を、元の有限 joints の反復 wedge として読む。 -/
 def ofBeads : List ℕ → NecklaceShape
@@ -63,4 +68,43 @@ lemma beads_positive (T : NecklaceShape) : ∀ n ∈ T.beads, 0 < n :=
 lemma ofBeads_beads (T : NecklaceShape) : ofBeads T.beads = T :=
   (T.exists_positive_beads).choose_spec.2
 
-end SerrePositivity.KST.SConstruction.NecklaceShape
+end SerrePositivity.InfinityCategories.Simplicial.NecklaceShape
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.beads (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.beads := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.beads
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.beads_positive := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.beads_positive
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.exists_positive_beads := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.exists_positive_beads
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_beads := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_beads
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_cons := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_cons
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_nil := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_nil
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads_singleton := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads_singleton
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._f := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._f
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._sunfold := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._sunfold
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads._unsafe_rec := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads._unsafe_rec
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.NecklaceShape.ofBeads.match_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.ofBeads.match_1

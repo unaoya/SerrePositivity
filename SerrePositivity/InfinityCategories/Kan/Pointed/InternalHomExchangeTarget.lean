@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 
 /-!
@@ -16,6 +18,9 @@ universe v u
 open CategoryTheory MonoidalCategory MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.KST.Spectra.InternalHomExchange
+namespace SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+open SerrePositivity.KST.Spectra.InternalHomExchange
 
 noncomputable section
 
@@ -62,4 +67,22 @@ theorem natural_post (A K : C) {Y Z : C} (f : Y ⟶ Z) :
 
 end
 
-end SerrePositivity.KST.Spectra.InternalHomExchange
+end SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.naturalIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.naturalIso := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.naturalIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.naturalIso_app := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.naturalIso_app
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_post := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.natural_post_assoc := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.InternalHomExchange.naturalIso._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.naturalIso._proof_1

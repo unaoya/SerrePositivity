@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeAdjacentFiber
 
 /-! # 単調全射の隣接同値座標による縮約
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeAdjacentFiber
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 隣接二座標の先の一方を除いた元の座標写像。 -/
 def cubeSurjectionLower {n m : ℕ} (q : Fin (n + 2) → Fin m)
@@ -53,4 +58,28 @@ lemma cubeFiberMax_lower {n m : ℕ} (q : Fin (n + 2) → Fin m)
   conv_lhs => rw [cubeSurjectionLower_factor q p hp]
   rw [cubeFiberMax_comp, cubeFiberMax_predAbove]
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeFiberMax_lower := _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_lower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeMonotone_exists_adjacent_eq := _root_.SerrePositivity.InfinityCategories.Kan.cubeMonotone_exists_adjacent_eq
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower := _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_factor := _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower_factor
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_monotone := _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower_monotone
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower_surjective := _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower_surjective
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeSurjectionLower.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeSurjectionLower.eq_1

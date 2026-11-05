@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseEdge
 public import SerrePositivity.InfinityCategories.Kan.ZeroMapComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -55,4 +60,13 @@ theorem selfPullback_swap_inverse_representative {E B : SSet.{u}} (p : E ⟶ B)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullback_inverse_components := _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_inverse_components
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.selfPullback_swap_inverse_representative := _root_.SerrePositivity.InfinityCategories.Kan.selfPullback_swap_inverse_representative

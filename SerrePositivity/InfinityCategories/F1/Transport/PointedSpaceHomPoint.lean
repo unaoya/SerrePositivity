@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceFiberVertices
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 指定した一点空間からの射の一本の実辺を、同じ pointed-space fiber の点にする。 -/
 def pointedSpaceFiberPointOfHom {s : SpaceInfinity.{u} _⦋0⦌}
@@ -55,4 +60,19 @@ theorem smallUnstraighteningFiberPoint_recover {B : SSet.{u}}
   exact (congrArg ((leftUnstraighteningFiberIso F (ULift.up b)).hom.app
     (Opposite.op ⦋0⦌)) hsmall).trans hlarge
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedSpaceFiberPointOfHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedSpaceFiberPointOfHom_hom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedSpaceFiberPointOfHom_hom
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberPoint := _root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.smallUnstraighteningFiberPoint_recover := _root_.SerrePositivity.InfinityCategories.F1.Transport.smallUnstraighteningFiberPoint_recover

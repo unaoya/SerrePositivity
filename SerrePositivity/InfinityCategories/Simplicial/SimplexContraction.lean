@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 /-!
@@ -17,8 +19,11 @@ set_option backward.isDefEq.respectTransparency.types false
 
 universe u
 namespace SerrePositivity.KST.Comparison
+end SerrePositivity.KST.Comparison
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.Comparison
 open CategoryTheory Opposite MonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /--
 概要：標準単体と区間の単体から収縮の単体を作る。
@@ -118,4 +123,52 @@ noncomputable def simplexMapContraction {n : ℕ} {X : SSet.{u}} (f : (Δ[n] : S
     exact False.elim x.1.property
 
 
-end SerrePositivity.KST.Comparison
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContraction := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionAt := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexMapContraction := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContraction._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContraction._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContraction._proof_4 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionAt._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionAt._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionAt._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexContractionMap._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexMapContraction._proof_1 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexMapContraction._proof_2 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Comparison.simplexMapContraction._proof_3 := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction._proof_3

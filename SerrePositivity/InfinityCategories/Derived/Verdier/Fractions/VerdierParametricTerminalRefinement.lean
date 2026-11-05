@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily
@@ -21,10 +23,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 /-- 終端の列四角形を固定した精密化。分母条件を使う前の実普遍図式。 -/
 lemma exists_simplexTerminalRefinementSquare {X : SSet.{u}}
@@ -236,4 +241,34 @@ lemma exists_verdierRelativeMappingBoundaryRefinement
       (L.h ≫ verdierDenominatorSpanProjection i x z)
   exact ⟨d, g, L, G, hG, Q, hQ, hD, hlast, hright, hrightAll, htop, hW⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_simplexTerminalRefinementSquare := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_simplexTerminalRefinementSquare
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierDenominatorFamilyTerminalRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierDenominatorFamilyTerminalRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierParametricTerminalRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierParametricTerminalRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierRelativeMappingBoundaryRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRelativeMappingBoundaryRefinement
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.spanTransposeFamily_evaluate := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.spanTransposeFamily_evaluate
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorFamilyEdge := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorFamilyEdge_mem := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge_mem
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorFamilyEdge_target := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.verdierDenominatorFamilyEdge.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorFamilyEdge.eq_1

@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewisePointHom
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDoubleEvaluation
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.Stable.KanModels
+open SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
 
@@ -68,4 +73,19 @@ theorem kanEnrichedEdgewiseLeftComponent_eq_doubleMap
       (edgewiseLeft ((D.obj k).obj Y.val).obj)) X j
   exact (F2.isoNormalizeEndpoints_eq_of_heq _ _ _ _ h.symm).symm
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.Stable.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseLeftComponent_eq_doubleMap := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseLeftComponent_eq_doubleMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent_eq_doubleMap := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent_eq_doubleMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightComponent_heq_doubleMap := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightComponent_heq_doubleMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanEnrichedEdgewiseRightRealizationIso_heq := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanEnrichedEdgewiseRightRealizationIso_heq

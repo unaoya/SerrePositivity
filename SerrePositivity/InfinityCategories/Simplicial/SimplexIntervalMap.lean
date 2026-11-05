@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalOrder
 
 /-! # 元の標準単体の頂点と区間の単体的包含
@@ -9,6 +11,9 @@ public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalOrder
 @[expose] public section
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Simplicial
+open SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite Simplicial SSet
 
 /-- 元の番号 a の頂点を標準単体の零単体として読む。 -/
@@ -65,4 +70,34 @@ lemma simplexIntervalMap_last {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
         (standardSimplexVertex (Fin.last (b.val - a.val))) = standardSimplexVertex b :=
   standardSimplexVertex_ext (simplexIntervalOrder_last a b hab)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Simplicial
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_apply := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_apply
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_first := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_last := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_mono (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.simplexIntervalMap_mono := _root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalMap_mono
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_eta := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_eta
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_ext := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.standardSimplexVertex_val := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_val

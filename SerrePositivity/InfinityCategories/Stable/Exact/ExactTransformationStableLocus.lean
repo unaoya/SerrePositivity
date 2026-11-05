@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorNaturalTransformation
 
@@ -15,9 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Stable.Exact
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X] [Quasicategory Y] [IsStable Y]
   {F G : X ⟶ Y} [IsExactFunctor F] [IsExactFunctor G]
@@ -47,4 +52,13 @@ lemma transformationIsoVertex_stable : StableVertexCondition (TransformationIsoV
       ((hoFunctor.map F).toFunctor.map_distinguished T hT)
       ((hoFunctor.map G).toFunctor.map_distinguished T hT) h₁ h₂
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Stable.Exact
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Exact.TransformationIsoVertex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.TransformationIsoVertex := _root_.SerrePositivity.InfinityCategories.Stable.Exact.TransformationIsoVertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.transformationIsoVertex_stable := _root_.SerrePositivity.InfinityCategories.Stable.Exact.transformationIsoVertex_stable

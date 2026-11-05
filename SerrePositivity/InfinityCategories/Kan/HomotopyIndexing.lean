@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyInvariance
 public import SerrePositivity.InfinityCategories.Kan.Commutativity
 
@@ -14,9 +16,14 @@ public import SerrePositivity.InfinityCategories.Kan.Commutativity
 
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.KanHomotopy
+end SerrePositivity.KST.Spectra.KanHomotopy
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 /-- 概要：Kan 複体の自然数次数のホモトピー類。
 方針：零次数は RelStruct₀ の商、正次数は充填関係による群とする。
@@ -28,6 +35,7 @@ def KanHomotopy (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type 
   | n + 1 => KanHomotopyGroup X n x
 
 namespace KanHomotopy
+open SerrePositivity.KST.Spectra.KanHomotopy
 
 variable {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
   {x : X _⦋0⦌} {y : Y _⦋0⦌} {z : Z _⦋0⦌}
@@ -58,14 +66,14 @@ theorem sound {n : ℕ} {s t : X.PtSimplex n x} {i : Fin (n + 1)}
 方針：充填で構成済みの正次数の群構造を使う。
 規約：実際の次数 n + 1。
 使われ方：Kerodon Theorem 3.2.2.10。長完全列の群の部分。 -/
-noncomputable instance {n : ℕ} : Group (KanHomotopy X (n + 1) x) :=
+noncomputable instance instGroupHAddNatOfNat {n : ℕ} : Group (KanHomotopy X (n + 1) x) :=
   inferInstanceAs (Group (KanHomotopyGroup X n x))
 
 /-- 概要：二以上の自然数次数のホモトピー類には可換群構造がある。
 方針：四面の比較で構成済みの可換群構造を使う。
 規約：実際の次数 n + 2。
 使われ方：Kerodon Theorem 3.2.2.10。スペクトルへの安定化。 -/
-noncomputable instance {n : ℕ} : CommGroup (KanHomotopy X (n + 2) x) :=
+noncomputable instance instCommGroupHAddNatOfNat {n : ℕ} : CommGroup (KanHomotopy X (n + 2) x) :=
   inferInstanceAs (CommGroup (KanHomotopyGroup X (n + 1) x))
 
 /-- 概要：全ての自然数次数のホモトピー類の基点。
@@ -165,4 +173,118 @@ theorem map_eq_of_basedHomotopy (n : ℕ) {φ ψ : X ⟶ Y}
 
 end KanHomotopy
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instCommGroupHAddNatOfNat (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instCommGroupHAddNatOfNat := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instCommGroupHAddNatOfNat
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_comp := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_eq_of_basedHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_id := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map_point := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_point
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.match_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.mk := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.mk_const := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_const
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.point := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.sound := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.sound
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instCommGroupHAddNatOfNat._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instCommGroupHAddNatOfNat._proof_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_1
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_12 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_12 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_12
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_14 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_14 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_14
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_16 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_16 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_16
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_3 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_3
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_8 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._aux_8 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._aux_8
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_10 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_10
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_11 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_11
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_18 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_18
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_19 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_19
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_20 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_20
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_21 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_21
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_22 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_22
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.instGroupHAddNatOfNat._proof_7 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.instGroupHAddNatOfNat._proof_7
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map.congr_simp := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map.congr_simp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.map.eq_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map.eq_2
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk.match_1 (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.mk.match_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk.match_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.point.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopy.point.eq_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point.eq_2

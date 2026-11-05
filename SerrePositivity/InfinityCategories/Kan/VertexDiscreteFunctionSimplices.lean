@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Core.VertexDiscrete
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 
@@ -14,9 +16,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 離散頂点ごとの単体を、離散頂点上の内部 Hom の一つの単体にする。 -/
 def vertexDiscreteFunctionSimplex {A X : SSet.{u}} {n : ℕ} (s : A _⦋0⦌ → X _⦋n⦌) :
@@ -75,4 +80,31 @@ lemma vertexDiscreteEvaluate_functorVertex {A X : SSet.{u}} (F : vertexDiscrete 
     (a : A _⦋0⦌) :
     (vertexDiscreteEvaluate a).app (Opposite.op ⦋0⦌) (functorVertex F) = F.app (Opposite.op ⦋0⦌) a := rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate_functorVertex := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate_functorVertex
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_evaluate := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_evaluate
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_map := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex_reconstruct := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex_reconstruct
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteEvaluate._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.vertexDiscreteFunctionSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteFunctionSimplex._proof_1

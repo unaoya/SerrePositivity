@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom
 public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent
@@ -11,9 +13,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.KanModels
+open SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {F G : KanDiagramObject I}
   (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
   (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj) (Y := (G.val.obj c).obj) (η.app c))
@@ -53,4 +58,28 @@ theorem kanDiagramComponentValueIso_pointHom (i : I) (v : (F.val.obj i).obj _⦋
   rw [kanDiagramComponentValueIso_hom]
   exact kanPointHom_comp_of_edge (show F.val.obj i ⟶ G.val.obj i from η.app i) _ rfl v
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.KanModels
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso_hom := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso_hom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso_pointHom := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso_pointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso._proof_3 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.kanDiagramComponentValueIso.eq_1 := _root_.SerrePositivity.InfinityCategories.F1.KanModels.kanDiagramComponentValueIso.eq_1

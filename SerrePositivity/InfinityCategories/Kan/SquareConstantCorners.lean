@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
@@ -14,8 +16,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.KST.Spectra.IntervalSquare
+namespace SerrePositivity.InfinityCategories.Kan.IntervalSquare
+open SerrePositivity.KST.Spectra.IntervalSquare
 
 /-- 定値区間写像の頂点での値は、指定した元の零単体。 -/
 lemma const_vertex {Y : SSet.{u}} (y : Y _⦋0⦌) (i : Fin 2) :
@@ -98,4 +103,16 @@ lemma corners_of_bottom_loop {Y : SSet.{u}} {x : Y _⦋0⦌} (e : Y.Edge x x)
   · exact h10
   · exact h11
 
-end SerrePositivity.KST.Spectra.IntervalSquare
+end SerrePositivity.InfinityCategories.Kan.IntervalSquare
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.const_vertex := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.const_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.constant_of_vertex := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.constant_of_vertex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.IntervalSquare.corners_of_bottom_loop := _root_.SerrePositivity.InfinityCategories.Kan.IntervalSquare.corners_of_bottom_loop

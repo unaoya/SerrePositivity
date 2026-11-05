@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CubeDeletionGeneration
 
 /-! # 有限 max 表示の入力座標への制限
@@ -8,6 +10,9 @@ public import SerrePositivity.InfinityCategories.Kan.CubeDeletionGeneration
 -/
 @[expose] public section
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 
 /-- 元の有限 max 表示を指定した入力座標へ制限したデータ。 -/
 def cubeJoinNormalFormRestrict {n m k : ℕ} (s : CubeJoinNormalForm n m)
@@ -47,4 +52,19 @@ lemma cubeJoinNormalFormRestrict_eval {n m k : ℕ} (s : CubeJoinNormalForm n m)
       obtain ⟨a, ha⟩ := he j i himem
       exact ⟨a, ha ▸ hi, ha ▸ hx⟩
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict_eval := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict_eval
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.mem_cubeJoinNormalFormRestrict_support := _root_.SerrePositivity.InfinityCategories.Kan.mem_cubeJoinNormalFormRestrict_support
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.cubeJoinNormalFormRestrict.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.cubeJoinNormalFormRestrict.eq_1

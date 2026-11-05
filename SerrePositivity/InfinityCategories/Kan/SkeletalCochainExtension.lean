@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
 public import SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic
 
@@ -14,9 +16,12 @@ public import SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic
 
 universe u
 open CategoryTheory Limits SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+end SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+namespace SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
+open SerrePositivity.KST.Spectra.SkeletalSphericalCochain
 
 noncomputable section
 
@@ -127,4 +132,28 @@ theorem extension_iff_differential_eq_zero :
 
 end
 
-end SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+end SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_boundary := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_boundary
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face_assoc := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.differential_eq_zero_of_extension := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_eq_zero_of_extension
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.exists_extension_of_differential_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.extension_iff_differential_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.extension_iff_differential_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.SkeletalSphericalCochain.cell_attaching_face._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cell_attaching_face._proof_2

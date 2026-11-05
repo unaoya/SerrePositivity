@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import Mathlib.CategoryTheory.Preadditive.Biproducts
 public import Mathlib.CategoryTheory.Monoidal.Preadditive
 public import Mathlib.CategoryTheory.Monoidal.Mon
@@ -18,6 +20,9 @@ universe u v
 open CategoryTheory Limits MonoidalCategory MonoidalPreadditive Preadditive
 open scoped MonObj
 namespace SerrePositivity.KST.LocalizingInvariants.SquareZero
+end SerrePositivity.KST.LocalizingInvariants.SquareZero
+namespace SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero
+open SerrePositivity.KST.LocalizingInvariants.SquareZero
 
 variable {C : Type u} [Category.{v} C] [Preadditive C] [MonoidalCategory C]
   [MonoidalPreadditive C] (A : Mon C) (M : Bimod A A) [HasBinaryBiproduct A.X M.X]
@@ -55,4 +60,49 @@ lemma mul_snd : mul A M ≫ biprod.snd =
       (biprod.snd ⊗ₘ biprod.fst) ≫ M.actRight := by
   simp [mul]
 
-end SerrePositivity.KST.LocalizingInvariants.SquareZero
+end SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_fst := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_ll := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_ll_assoc := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_lr := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_lr_assoc := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rl := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rl_assoc := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rr := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_rr_assoc := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul_snd := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_snd
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.obj := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.one := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.SquareZero.mul.eq_1 := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul.eq_1

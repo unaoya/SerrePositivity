@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipAdjunction
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
@@ -17,6 +19,9 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.F1B.Localization
+open SerrePositivity.KST.LocalizingInvariants
 
 def coproductFamilyGlue {I : Type u} {K : I → SSet.{u}} {B X : SSet.{u}}
     (f : ∀ i, B ⟶ (ihom (K i)).obj X) : B ⟶ (ihom (∐ K)).obj X :=
@@ -75,4 +80,43 @@ lemma pushoutFamily_hom_ext {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D)
   · simpa only [internalHomFlipHomEquiv_pre_app] using
       congrArg (internalHomFlipHomEquiv B D X) k
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.F1B.Localization
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue := _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue_restrict := _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue_restrict
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamily_hom_ext := _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamily_hom_ext
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue_inl := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue_inl
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue_inr := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue_inr
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamily_hom_ext := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamily_hom_ext
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.coproductFamilyGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.coproductFamilyGlue.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue._proof_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue._proof_2 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.pushoutFamilyGlue.eq_1 := _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue.eq_1

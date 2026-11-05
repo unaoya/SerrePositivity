@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
@@ -53,9 +55,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+namespace SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget
+open SerrePositivity.KST.LocalizingInvariants.ArrowTarget
 
 variable (X : SSet.{u})
 
@@ -93,4 +98,19 @@ def unitHomotopy : SSet.Homotopy (𝟙 (arrows X)) (target X ≫ identityArrow X
   h₁ := contraction_one X
   rel := by ext n ⟨x, y⟩; exact x.property.elim
 
-end SerrePositivity.KST.LocalizingInvariants.ArrowTarget
+end SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.contraction_target := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.contraction_target
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.identityArrow_contraction := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.identityArrow_contraction
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.ArrowTarget.unitHomotopy._proof_1 := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTarget.unitHomotopy._proof_1

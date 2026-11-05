@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath
@@ -19,9 +21,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder
+end SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 variable {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
   {h : IsVerdierSequence i q} {n : ℕ} {D : (Δ[n] : SSet.{u}) ⟶ B.obj}
@@ -133,6 +140,7 @@ lemma VerdierFiniteMappingCoconeRecovery.initialSource_last
   rw [(pre (joinStdSimplexIso 0 0).hom).naturality q.hom]
 
 namespace VerdierRecoveredQuotientCoconeCylinder
+open SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder
 variable {r : VerdierFiniteMappingCoconeRecovery h D z S a f}
   {G : K ⟶ (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj}
   (U : VerdierRecoveredQuotientCoconeCylinder r G)
@@ -167,4 +175,28 @@ lemma initialFamily_last : U.initialFamily ≫
 
 end VerdierRecoveredQuotientCoconeCylinder
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierRecoveredInitialPrefixPath := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierRecoveredInitialPrefixPath
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.initialSource_last := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.initialSource_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery.initialSource_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.initialSource_prefix
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder.initialFamily := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder.initialFamily_last := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder.initialFamily_prefix := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily_prefix
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder.initialFamily.eq_1 := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredQuotientCoconeCylinder.initialFamily.eq_1

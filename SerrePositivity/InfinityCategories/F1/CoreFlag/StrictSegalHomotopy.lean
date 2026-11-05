@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
@@ -16,8 +18,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+namespace SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open Spectra
 
 /-- StrictSegal な単体集合の二以上の境界定数単体は定数単体そのもの。 -/
@@ -48,4 +53,13 @@ lemma strictSegal_kanHomotopy_subsingleton (X : SSet.{u}) [KanComplex X]
   rw [strictSegal_ptSimplex_eq_const X n hn x s,
     strictSegal_ptSimplex_eq_const X n hn x t]
 
-end SerrePositivity.KST.LocalizingInvariants.CoreFlag
+end SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_kanHomotopy_subsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.strictSegal_ptSimplex_eq_const

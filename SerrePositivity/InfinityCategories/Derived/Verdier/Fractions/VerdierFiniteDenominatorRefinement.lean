@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.KST.LocalizingInvariants.ExactFiniteLimitPreservation
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexDenominators
 public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeShapeAdjunction
@@ -27,10 +29,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+open SerrePositivity.KST.LocalizingInvariants
 
 private lemma coconeShapeContraction_left (K : SSet.{u}) :
     (joinInl K (Δ[0] : SSet.{u}) ▷ (Δ[1] : SSet.{u})) ≫
@@ -190,4 +195,10 @@ lemma exists_verdierFiniteDenominatorRefinement
       ((truncation 2).map (mapJoinCone q.hom c).val)) rfl).mpr
         (functorIso_const_map_isInvertible tq.vertex e (F2.coneDomainLeg k))
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Derived.Verdier.Fractions
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.LocalizingInvariants.exists_verdierFiniteDenominatorRefinement := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.exists_verdierFiniteDenominatorRefinement

@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
@@ -15,11 +17,17 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 universe u
 
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.KST.Spectra.RelativePrism
+end SerrePositivity.KST.Spectra.RelativePrism
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 namespace RelativePrism
+open SerrePositivity.KST.Spectra.RelativePrism
 
 variable {X : SSet.{u}} {n : ℕ} {x : X _⦋0⦌}
   {f g : X.PtSimplex (n + 1) x} (H : f.Homotopy g)
@@ -226,4 +234,79 @@ theorem KanHomotopyZero.map_eq_of_homotopy {X Y : SSet.{u}}
   apply KanHomotopyZero.equivPiZero.injective
   simpa only [KanHomotopyZero.equivPiZero_map] using mapPiZero_eq_of_homotopy H _
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.mapPiZero_eq_of_homotopy := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_eq_of_homotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.eq_of_relativeHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.map_eq_of_basedHomotopy := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_eq_of_basedHomotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyZero.map_eq_of_homotopy := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.map_eq_of_homotopy
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.boundary_constant := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.boundary_constant
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.codim_fst := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.codim_fst
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.codim_fst_assoc := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.codim_fst_assoc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.prism_fst := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.prism_fst
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionRel := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionSimplex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionSimplex := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionSimplex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionSimplex_last := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionSimplex_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionSimplex_zero := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionSimplex_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.section_class_eq_zero := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.section_class_eq_zero
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_4 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_4
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_5 := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfBasedHomotopyInverse._proof_5
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionRel._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionRel._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionRel._proof_6 := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel._proof_6
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionRel._proof_9 := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionRel._proof_9
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.RelativePrism.sectionSimplex._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.RelativePrism.sectionSimplex._proof_1

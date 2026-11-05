@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.TowerLimOne
 public import Mathlib.Algebra.Category.Grp.Basic
 public import Mathlib.CategoryTheory.Functor.OfSequence
@@ -16,6 +18,9 @@ universe u
 open CategoryTheory Opposite
 
 namespace SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.KST.Spectra.TowerLimOne
+namespace SerrePositivity.InfinityCategories.Kan.TowerLimOne
+open SerrePositivity.KST.Spectra.TowerLimOne
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -82,4 +87,31 @@ lemma affineTower_map (x : ∀ n, G n) (i j : ℕ) (hij : i ≤ j) :
     rw [hg]
 
 end
-end SerrePositivity.KST.Spectra.TowerLimOne
+end SerrePositivity.InfinityCategories.Kan.TowerLimOne
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_map := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower_map
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.affineTower_step := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.affineTower_step
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.groupTower := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.groupTower_step := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.groupTower_step
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition_comp := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.TowerLimOne.transition.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.transition.eq_1

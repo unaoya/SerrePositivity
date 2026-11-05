@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.CoherentStringEndpoints
 
 /-! # 上下の因子分解列の端点再添字
@@ -12,8 +14,11 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.KST.SConstruction
+end SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 /-- 終点を一回繰り返す元の入力列への射影。 -/
 def coherentLowerStringIndex (n : ℕ) : ⦋n + 1⦌ ⟶ ⦋n⦌ :=
@@ -246,4 +251,136 @@ lemma coherentUpperStringExtend_last {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
   rw [coherentUpperStringExtend_succ, hθ]
   rfl
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_castSucc := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_castSucc
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_id := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_index := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_index
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend_time := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend_time
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_comp := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_comp
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_id := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_id
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_index := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_index
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_succ := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_succ
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_time := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_time
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend_zero := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend_zero
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex_last
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime_first := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime_first
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime_last := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime_last
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringExtend.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringExtend.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringIndex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringIndex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentLowerStringTime.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentLowerStringTime.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringExtend.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringExtend.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex._proof_2 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex._proof_2
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex._proof_3 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex._proof_3
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringIndex.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringIndex.eq_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime._proof_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.SConstruction.coherentUpperStringTime.eq_1 := _root_.SerrePositivity.InfinityCategories.Kan.coherentUpperStringTime.eq_1

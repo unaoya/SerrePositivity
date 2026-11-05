@@ -1,4 +1,6 @@
 module
+
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction
 public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison
 
@@ -9,9 +11,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
+end SerrePositivity.KST.Fibration
+namespace SerrePositivity.InfinityCategories.F1.Transport
+open SerrePositivity.KST.Fibration
 
 /-- 恒等錐での正規化済み評価は、同じ実 coslice fiber の恒等点の像そのもの。 -/
 theorem coslicePointEvaluation_fiberMap_identity {E B : SSet.{u}}
@@ -76,4 +81,25 @@ theorem pointedCosliceReconstructionPoint_pointHom :
   rw [pointedCosliceReconstructionPoint_fiberMap]
   exact pointedLeftStraighteningReconstruction_pointHom _ b _
 
-end SerrePositivity.KST.Fibration
+end SerrePositivity.InfinityCategories.F1.Transport
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.coslicePointEvaluation_fiberMap_identity := _root_.SerrePositivity.InfinityCategories.F1.Transport.coslicePointEvaluation_fiberMap_identity
+
+@[deprecated _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedCosliceReconstructionPoint := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedCosliceReconstructionPoint_fiberMap := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint_fiberMap
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedCosliceReconstructionPoint_pointHom := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint_pointHom
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedCosliceReconstructionPoint._proof_1 := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint._proof_1
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Fibration.pointedCosliceReconstructionPoint._proof_2 := _root_.SerrePositivity.InfinityCategories.F1.Transport.pointedCosliceReconstructionPoint._proof_2

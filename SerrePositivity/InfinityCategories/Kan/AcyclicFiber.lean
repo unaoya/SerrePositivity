@@ -1,5 +1,7 @@
 module
 
+public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.InfinityCategories.Kan.FiberComponents
 
@@ -16,9 +18,12 @@ universe u
 
 open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open scoped Simplicial
+open scoped _root_.Simplicial
 
 namespace SerrePositivity.KST.Spectra
+end SerrePositivity.KST.Spectra
+namespace SerrePositivity.InfinityCategories.Kan
+open SerrePositivity.KST.Spectra
 
 noncomputable section
 
@@ -88,4 +93,19 @@ theorem fiberRelStruct_nonempty (hp : KanPiIsomorphism p) (b : B _⦋0⦌)
 
 end
 
-end SerrePositivity.KST.Spectra
+end SerrePositivity.InfinityCategories.Kan
+
+/-! F-2 compatibility names. Retain until the first stage-G checkpoint (IF-F §5). -/
+public section
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberHomotopySubsingleton := _root_.SerrePositivity.InfinityCategories.Kan.fiberHomotopySubsingleton
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberHomotopySubsingleton_at := _root_.SerrePositivity.InfinityCategories.Kan.fiberHomotopySubsingleton_at
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberHomotopy_eq_point := _root_.SerrePositivity.InfinityCategories.Kan.fiberHomotopy_eq_point
+
+@[deprecated (since := "2026-11-05")]
+deprecated_alias _root_.SerrePositivity.KST.Spectra.fiberRelStruct_nonempty := _root_.SerrePositivity.InfinityCategories.Kan.fiberRelStruct_nonempty
