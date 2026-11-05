@@ -41,7 +41,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction
   ]
   let mut seen : Array Name := #[]
-  let mut count := 0
+  let mut count : Nat := 0
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let owner := env.header.modules[idx.toNat]!.module

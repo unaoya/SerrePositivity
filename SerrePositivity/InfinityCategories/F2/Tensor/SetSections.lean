@@ -110,9 +110,17 @@ def tensorSpaceFunctor_setWeightHom (c : JoinCone (diagram P F)) (hc : IsLimitCo
           (covariantRepresentableValueEquivalence M c.vertex)))))
 
 /- C3: compatibility declarations; use the specified Natural comparison. -/
-attribute [deprecated "Use `SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`." (since := "2026-11-05")]
+attribute [deprecated
+  "Use `SerrePositivity.InfinityCategories.SetWeight.\
+  sectionsEquivalenceNatural` from \
+  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+  (since := "2026-11-05")]
   sectionsEquivalence
-attribute [deprecated "Use `SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`." (since := "2026-11-05")]
+attribute [deprecated
+  "Use `SerrePositivity.InfinityCategories.SetWeight.\
+  tensorSpaceFunctor_setWeightHomNatural` from \
+  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+  (since := "2026-11-05")]
   tensorSpaceFunctor_setWeightHom
 
 end SetWeight

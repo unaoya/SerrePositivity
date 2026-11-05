@@ -20,18 +20,18 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | Core | join・slice、終対象、極限、同値、写像空間、fibration の基礎 | [Core.lean](Core.lean) | audit_infinity_core.lean |
 | Kan | Core を使う空間の理論：Kan 充填、ホモトピー、置換、基本亜群と整合性の道具 | [Kan.lean](Kan.lean)、[LastHornContraction](Kan/LastHornContraction.lean) | audit_infinity_kan.lean、audit_kst_comparison.lean |
 | Kan/Pointed | 基点付き空間、区間・ループ・懸垂の道具 | [PointedIntervalAnodyne](Kan/Pointed/PointedIntervalAnodyne.lean) | audit_infinity_kan.lean、audit_kst_spectra.lean |
+| Coherent | coherent nerve の quasicategory 性（γ1） | [Coherent.lean](Coherent.lean) | audit_coherent_nerve.lean |
 | F1 | cocartesian fibration、straightening、Yoneda・前層、Ind・compact・冪等完備化、FilteredExchange | [F1.lean](F1.lean)、[fibration の基本](F1/Fibrations.lean) | audit_infinity_f1.lean |
 | F1/Cocartesian | 休止中の Cat∞ 値 straightening（独立入口） | [F1/Cocartesian.lean](F1/Cocartesian.lean) | audit_infinity_f1.lean、audit_infinity_f1_f1b.lean |
 | F1B | Kan 拡張、随伴、cofinality、局所化（straightening に依存しない基盤） | [F1B.lean](F1B.lean)、[役割別の地図](F1B/README.md) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
-| Coherent | coherent nerve の quasicategory 性（γ1） | [Coherent.lean](Coherent.lean) | audit_coherent_nerve.lean |
-| DoldKanComparison | coherent nerve と dg nerve の比較（γ1.5） | [DoldKanComparison.lean](DoldKanComparison.lean) | audit_dold_kan_comparison.lean |
 | HomotopyLimits | ホモトピー極限・Quillen 随伴の ∞ 圏比較（γ3・γ4） | [HomotopyLimits.lean](HomotopyLimits.lean) | audit_homotopy_limits.lean |
+| Stable | 安定 ∞ 圏、cofiber、三角構造、完全関手 | [Stable.lean](Stable.lean) | audit_infinity_stable.lean |
 | F2 | Cat∞、sifted・PΣ、accessible・presentable、空間とのテンソルと集合値重み | [F2.lean](F2.lean) | audit_infinity_f2.lean |
 | Presentable | accessible・presentable、局所化 | [F2/Presentable.lean](F2/Presentable.lean) | audit_infinity_presentable.lean |
-| Stable | 安定 ∞ 圏、cofiber、三角構造、完全関手 | [Stable.lean](Stable.lean) | audit_infinity_stable.lean |
 | StablePresentable | 安定性と F2 の構成を併用する、完全関手・cofiber・矢圏の構造 | [StablePresentable.lean](StablePresentable.lean) | audit_infinity_stable_presentable.lean |
 | ModelBridge | モデル圏との比較：Quillen 随伴、置換、frame、Reedy・bisimplicial、入力境界 | [ModelBridge.lean](ModelBridge.lean)、[Inputs](ModelBridge/Inputs/) | audit_infinity_model_bridge.lean、audit_homotopy_limits.lean |
 | DGNerve | dg nerve、線形写像空間、h と H⁰ の比較 | [DGNerve.lean](DGNerve.lean) | audit_dg_nerve.lean |
+| DoldKanComparison | coherent nerve と dg nerve の比較（γ1.5） | [DoldKanComparison.lean](DoldKanComparison.lean) | audit_dold_kan_comparison.lean |
 | Derived | D(S)・Perf(S)、Verdier 商、dg 加群・Morita、gluing | [Derived.lean](Derived.lean) | audit_derived_infinity.lean |
 
 中核の層順序は Simplicial → Core → Kan → Coherent →

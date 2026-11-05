@@ -1557,8 +1557,8 @@
       }
     ],
     "attribute_blocks": {
-      "SerrePositivity/InfinityCategories/F2/Tensor/SetElements.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison_projection\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison_isPrecompositionEquivalence\n\n",
-      "SerrePositivity/InfinityCategories/F2/Tensor/SetSections.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  sectionsEquivalence\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  tensorSpaceFunctor_setWeightHom\n\n"
+      "SerrePositivity/InfinityCategories/F2/Tensor/SetElements.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated\n  \"Use `SerrePositivity.InfinityCategories.SetWeight.\\\n  elementsComparisonNatural` from \\\n  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\"\n  (since := \"2026-11-05\")]\n  elementsComparison\nattribute [deprecated\n  \"Use `SerrePositivity.InfinityCategories.SetWeight.\\\n  elementsComparisonNatural_projection` from \\\n  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\"\n  (since := \"2026-11-05\")]\n  elementsComparison_projection\nattribute [deprecated\n  \"Use `SerrePositivity.InfinityCategories.SetWeight.\\\n  elementsComparisonNatural_isPrecompositionEquivalence` from \\\n  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\"\n  (since := \"2026-11-05\")]\n  elementsComparison_isPrecompositionEquivalence\n\n",
+      "SerrePositivity/InfinityCategories/F2/Tensor/SetSections.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated\n  \"Use `SerrePositivity.InfinityCategories.SetWeight.\\\n  sectionsEquivalenceNatural` from \\\n  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\"\n  (since := \"2026-11-05\")]\n  sectionsEquivalence\nattribute [deprecated\n  \"Use `SerrePositivity.InfinityCategories.SetWeight.\\\n  tensorSpaceFunctor_setWeightHomNatural` from \\\n  `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\"\n  (since := \"2026-11-05\")]\n  tensorSpaceFunctor_setWeightHom\n\n"
     },
     "bs_evidence": [
       "formalization-plans/bhatt-scholze/report-codex-s4-sieve.md",
@@ -1567,5 +1567,66 @@
     ],
     "note": "Message-style deprecated attributes avoid a cyclic import from the old provider to its Natural consumer. Existing declaration types and bodies are unchanged."
   },
-  "validation": {}
+  "validation": {},
+  "validation_round1": {
+    "status": "FAIL",
+    "started": "2026-11-05T21:30:06.707489",
+    "commit": "4d4fcebf2dca364108baff3f6f08369edd1c1f44",
+    "modules": [
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetElements",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+      "SerrePositivity.InfinityCategories.F2"
+    ],
+    "stages": [
+      {
+        "name": "small-build",
+        "command": [
+          "lake",
+          "build",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+          "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetElements",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+          "SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality",
+          "SerrePositivity.InfinityCategories.F2"
+        ],
+        "exit_code": 0,
+        "seconds": 20.671,
+        "log": ".lake/verify/if-cleanup-c1-c3/small-build.log"
+      },
+      {
+        "name": "audit-f2",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "scripts/audit_infinity_f2.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 27.955,
+        "log": ".lake/verify/if-cleanup-c1-c3/audit-f2.log"
+      },
+      {
+        "name": "check-c2",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "scripts/refactor/check_cleanup_c2.lean"
+        ],
+        "exit_code": 1,
+        "seconds": 13.631,
+        "log": ".lake/verify/if-cleanup-c1-c3/check-c2.log"
+      }
+    ],
+    "running": "check-c2"
+  },
+  "validation_round1_note": "Small build and F2 audit PASS. The new C2 checker needed an explicit Nat annotation for its counter; no library proof failed. New deprecation strings were line-wrapped without changing the message."
 }
