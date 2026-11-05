@@ -95,7 +95,7 @@
 | --- | --- | --- |
 | ④ ∞ 供給：E∞ | M14（P⁰）、M15（descendability）、G12 | ③の G8 の四角形が main に入った後（使うのは A-4・A-5） |
 | ② ∞ 中核：その他 | M3〜M6、M11、M16（L3） | ①が軌道に乗ってから（③と同じ `F2/`・`HomotopyLimits` を触るので、③の区切りと暦を合わせる） |
-| ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り | ①⑤が軌道に乗ってから |
+| ⑦ K の dg 側 | K-10 d（gluing 商から Verdier 列の供給。β4 本体は 10-25 に完了）、β6 f・h | ①⑤が軌道に乗ってから |
 | K 理論（B-3〜B-6） | K 基盤 1・2、八公理と降下、Thm 3.1・Lemma 4.6 | B-1 の目処（M1・M2・M7 が main に入る）。⑥の結論を引き継ぐ |
 
 触る場所の重なり：⑤と⑥はどちらも `CommutativeAlgebra/` に新規ファイルを置きうる。ディレクトリを分け（⑥は KST §5 用の新しい下位ディレクトリ）、入口ファイル・監査の登録の衝突は取り込みのときに調整役が main 側を正にして解く。
@@ -112,7 +112,7 @@
 | ④ ∞ 供給：E∞ | M14、M15、G12 | `EInfinity/`・`ModelBridge` |
 | ⑤ BS 実装 | BS-W11、A-2、A-1 の S1・S2・S6 | `BhattScholze/`・`CA/`・`Sheaves/`・`Derived/` |
 | ⑥ K の古典的な準備 | KST §5 のスキーム補題、可換環論、公理 (3) の再確認 | `CommutativeAlgebra/`・`KST/` |
-| ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り | `DifferentialGraded/`・`Derived/` |
+| ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り（11-05 の調査：β4・β5 は完了済み、残りは K-10 d と β6 f・h。§5.1 で直した） | `DifferentialGraded/`・`Derived/` |
 
 上限は 7 本。律速は検収（BS 設計一本、調整役一本）。前の調整役の推奨は 5 本（①③④⑤⑥）だったが、④は A-4・A-5 まで要らないので、③の最初の区切りの後に回した（§5.1）。
 

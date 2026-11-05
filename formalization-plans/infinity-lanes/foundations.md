@@ -29,29 +29,29 @@ Cat^perf 上の形式的な議論（Tamme の lax pullback の分裂と Verdier 
 
 ## 2. 基盤の項目表（今回必要な範囲）
 
-状態は 2026-10-19 10:30。規模は Lean 行数の目安。
+状態は 2026-11-05（段階 II の開始時。調整役の調査、正本は `foundations-progress.md` の小項目の印）。M 番号・A／B 番号は [段階 II の計画](../stage-ii-plan-draft.md) と [infinity-foundation-plan.md](../infinity-foundation-plan.md) 段 G。規模は Lean 行数の目安。
 
 | 層 | 項目 | 原典 | 使う側 | 状態 | 規模 |
 | --- | --- | --- | --- | --- | --- |
 | F0 | quasicategory、h、join・slice、極限・余極限、写像空間、Joyal、同値、関手 ∞ 圏の極限 | Kerodon 1〜4・7.1 | 全部 | 完了 | — |
-| F3 | 安定 ∞ 圏、h の三角構造、長完全列、完全関手（S1〜S6）。D7：D(S) の安定性 | HA 1.1 | K、BS | S1〜S6 完了、D7 残り 3〜6 時間 | — |
+| F3 | 安定 ∞ 圏、h の三角構造、長完全列、完全関手（S1〜S6）。D7：D(S) の安定性 | HA 1.1 | K、BS | 完了（S1〜S6、D7、一般の安定性判定 D-7 d） | — |
 | β | dg nerve、D(S)、Perf(S)、h D(S) ≅ 導来圏（β1・β2） | HA 1.3 | BS、K | 完了 | — |
-| **β3** | Drinfeld 商の dg nerve = ∞ 圏的 Verdier 商（局所化の普遍性、安定性、Verdier 列） | HA 1.1.4、Drinfeld 2004、Kerodon 6.3 | K（Verdier 列、T2、(3.6)） | 未着手。前提は F1b の局所化 | 1〜2 万 |
-| **β4** | dg の gluing（双加群に沿う貼り合わせ）の dg nerve = 安定 ∞ 圏の lax pullback | Tamme 2018 §1、Kuznetsov–Lunts | K（Tamme・LT） | 未着手。前提は F2-lite の Cat_∞ の極限 | 1〜2 万 |
-| **β5** | 非可換 dg 代数 A の D(A)・Perf(A)、dg 関手 ⊗_A B・Hom の ∞ 関手化、Morita 不変性、単体環の DK による dg 代数化 | HA 7.1.2（比較の目標のみ） | K（LT の対象供給、L5 の導来環） | 一部（L4 §26 の半自由分解、Perfect）。整理が必要 | 1〜3 万 |
-| **β6** | dg 代数のホモトピー論：Postnikov 塔と遷移・連結度、平方零拡大と derivation、Postnikov 層の双加群、cell 分解と持ち上げ、path 対象と homotopy pullback（LT §2.4 の k-connective 条件の dg 模型。10-22 09:40 追加、Sp が所有、配置は `KST/LocalizingInvariants/`） | Land–Tamme 2019 §2.4、Lemma 2.30・Cor. 2.31・Thm. 2.32 | K（pro 切除の連結度条件）、D（β4 の ⊙ の Tor 条件）、K-7 | 進行中（10-22 06:12 着手、約 130 モジュール） | 1〜2 万 |
-| **P** | presentable ∞ 圏：accessible・presentable の定義、前層と Ind の presentable 性、極限・余極限、随伴関手定理、Pr^L／Pr^R、Bousfield 局所化の存在、P_Σ の普遍性（10-23 追加、新レーン P） | HTT 5.4〜5.5 | 第 II 段（BS-7 の animated 環、降下）。N-4 e〜g を引き取る | 未着手 | 150〜300 時間 |
-| **K-7（dg 形）** | 非連結 K：Sp の逐次余極限、dg 懸垂 Σ(Perf A) = D(A)^κ／Perf(A)（Drinfeld 商）、反復 Ω^n K(Σ^n) の余極限、連結 K との比較、Verdier 列と Morita（10-23 追加、新レーン K-7） | BGT 2013 §9、Schlichting 2006 | K-基盤 1（局所化不変量としての K） | 未着手 | 80〜160 時間 |
-| γ | γ1 coherent nerve、γ1.5 DK 比較、γ3 homotopy 極限 = ∞ 極限 | HTT 1.1.5、2.2、4.2.4 | 𝒮、Sp、E2b | γ1・γ1.5 完了、γ3 残り僅か | — |
-| **γ4** | Quillen 随伴 = ∞ 随伴、右 Quillen 関手の極限保存 | HTT 5.2.4.6 | E2b（U : CAlg_R → D(R)）、Sp | 未着手 | 0.5〜1 万 |
-| F1 | cocartesian fibration、transport、straightening、Yoneda・前層（α2）。随伴、局所化、cofinality、Kan 拡張（α2b） | Kerodon 5〜8 | F2-lite、β3、K | straightening 最終段、B4 進行中 | 残り 2〜4 万 |
-| **F2-lite** | Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限（引き戻し、Fun(Δ¹,−) による lax pullback）、filtered 余極限と Ind、compact 対象、冪等完備化、Ind(C) の安定性と compact 生成。presentable の一般論と随伴関手定理は K 第 II 段・BS §7 まで後回し | Kerodon 5.5・9、HTT 5.1.4・5.3 | K（Cat^perf、非連結 K、lax pullback）、β4 | 未着手。𝒮 の余極限は γ3 で済み | 3〜5 万 |
-| E | E2a-3〜5（転送モデル構造、右 Quillen な U、Map^h）、E2b（CAlg_R := N^hc、U の ∞ 関手化、離散対象） | Berger–Moerdijk、Berger–Fresse、HTT 1.1.5 | BS（G1′） | E2a-2 完了、E2a-3 着手 | 残り 2〜4 万 |
-| Sp | Kan 複体の Ω スペクトル（BF 模型）、π_*、fiber 列、有理化、Tot・hG（L9）。γ3 後に Sp の ∞ 極限、安定 ∞ 圏としての Sp | BF 1978、HA 1.4 | K（局所化不変量の値域）、L8 | L9e 進行中 | 残り 1〜3 万 |
-| **K-基盤 1** | Cat^perf（冪等完備な小安定 ∞ 圏）、Verdier 列、半直交分解、∞-S• 構成と加法性（L1）、fibration・局所化定理、非連結 K（BGT、Ind の κ-compact 版）、局所化不変量の定義 | BGT 2013、Waldhausen 1985、Barwick 2016 | K | L1 進行中、L3 未着手 | 4〜7 万 |
-| **K-基盤 2** | Tamme の lax pullback の分裂定理、Land–Tamme の ⊙ 構成と主定理、pro 版（Tor の pro 消滅から pro 切除） | Tamme 2018、Land–Tamme 2019 §1〜3 | K（公理 (2) の pro 切除部分） | 未着手 | 2〜4 万 |
-| F2（後半） | presentable ∞ 圏、随伴関手定理、Bousfield 局所化、P_Σ と sifted 余極限、𝒮 の普遍性 | HTT 5.5、Kerodon 9 | BS §7（animated 環）、K-1c、将来の数論幾何 | 未着手。F2-lite の後（I-b） | 4〜8 万 |
-| F4・F5（任意） | 対称モノイダル ∞ 圏・∞ オペラッド、E₁ 環スペクトルと Mod、相対テンソル | HA 2〜4、7.1 | HA 流の Land–Tamme、BS §7 以降 | 後段（I-c）。モデル構造を使わない証明への書き直しが要る | 10〜20 万 |
+| **β3** | Drinfeld 商の dg nerve = ∞ 圏的 Verdier 商（局所化の普遍性、安定性、Verdier 列） | HA 1.1.4、Drinfeld 2004、Kerodon 6.3 | K（Verdier 列、T2、(3.6)） | dg 側は完了（D-4・D-9・D-16）。∞ 圏一般の商 M7・関手性 M8 は未着手（B-1） | 1〜2 万 |
+| **β4** | dg の gluing（双加群に沿う貼り合わせ）の dg nerve = 安定 ∞ 圏の lax pullback | Tamme 2018 §1、Kuznetsov–Lunts | K（Tamme・LT） | 完了（G-1 a〜f、10-25）。K 側の残りは K-10 d（gluing 商から Verdier 列の供給） | 1〜2 万 |
+| **β5** | 非可換 dg 代数 A の D(A)・Perf(A)、dg 関手 ⊗_A B・Hom の ∞ 関手化、Morita 不変性、単体環の DK による dg 代数化 | HA 7.1.2（比較の目標のみ） | K（LT の対象供給、L5 の導来環） | 完了（D-5）。⊗ᴸ の固定テンソルと対称性は IF-G1（7bda72c3c） | 1〜3 万 |
+| **β6** | dg 代数のホモトピー論：Postnikov 塔と遷移・連結度、平方零拡大と derivation、Postnikov 層の双加群、cell 分解と持ち上げ、path 対象と homotopy pullback（LT §2.4 の k-connective 条件の dg 模型。10-22 09:40 追加、Sp が所有、配置は `KST/LocalizingInvariants/`） | Land–Tamme 2019 §2.4、Lemma 2.30・Cor. 2.31・Thm. 2.32 | K（pro 切除の連結度条件）、D（β4 の ⊙ の Tor 条件）、K-7 | 一部：a〜e・g 完了、f（平方零摂動の homotopy pullback）・h 未完 | 1〜2 万 |
+| **P** | presentable ∞ 圏：accessible・presentable の定義、前層と Ind の presentable 性、極限・余極限、随伴関手定理、Pr^L／Pr^R、Bousfield 局所化の存在、P_Σ の普遍性（10-23 追加、新レーン P） | HTT 5.4〜5.5 | 第 II 段（BS-7 の animated 環、降下）。N-4 e〜g を引き取る | ほぼ完了：P-1 a〜d・f・g、e1〜e5・e8。e6 の全体同値・e7・P-12 は未完 | 150〜300 時間 |
+| **K-7（dg 形）** | 非連結 K：Sp の逐次余極限、dg 懸垂 Σ(Perf A) = D(A)^κ／Perf(A)（Drinfeld 商）、反復 Ω^n K(Σ^n) の余極限、連結 K との比較、Verdier 列と Morita（10-23 追加、新レーン K-7） | BGT 2013 §9、Schlichting 2006 | K-基盤 1（局所化不変量としての K） | 一部：a・b・c1〜c3・d1・d2 完了。c4・c5 は凍結、d3〜f は M8(b) の再設計の後 | 80〜160 時間 |
+| γ | γ1 coherent nerve、γ1.5 DK 比較、γ3 homotopy 極限 = ∞ 極限 | HTT 1.1.5、2.2、4.2.4 | 𝒮、Sp、E2b | 完了（γ3 は 10-20） | — |
+| **γ4** | Quillen 随伴 = ∞ 随伴、右 Quillen 関手の極限保存 | HTT 5.2.4.6 | E2b（U : CAlg_R → D(R)）、Sp | 完了（N-2、10-21） | 0.5〜1 万 |
+| F1 | cocartesian fibration、transport、straightening、Yoneda・前層（α2）。随伴、局所化、cofinality、Kan 拡張（α2b） | Kerodon 5〜8 | F2-lite、β3、K | 完了（Ind レーン 10-25）。Cat_∞ 値 straightening の一般の底は休止。M11・M16 が残る | 残り 2〜4 万 |
+| **F2-lite** | Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限（引き戻し、Fun(Δ¹,−) による lax pullback）、filtered 余極限と Ind、compact 対象、冪等完備化、Ind(C) の安定性と compact 生成。presentable の一般論と随伴関手定理は K 第 II 段・BS §7 まで後回し | Kerodon 5.5・9、HTT 5.1.4・5.3 | K（Cat^perf、非連結 K、lax pullback）、β4 | 完了（Cat_∞ の極限・lax pullback、冪等完備化、κ-compact、Ind の安定性と compact 生成） | 3〜5 万 |
+| E | E2a-3〜5（転送モデル構造、右 Quillen な U、Map^h）、E2b（CAlg_R := N^hc、U の ∞ 関手化、離散対象） | Berger–Moerdijk、Berger–Fresse、HTT 1.1.5 | BS（G1′） | E2-1〜E2-8（G1′）完了。E2c・G12・M14・M15 は未着手 | 残り 2〜4 万 |
+| Sp | Kan 複体の Ω スペクトル（BF 模型）、π_*、fiber 列、有理化、Tot・hG（L9）。γ3 後に Sp の ∞ 極限、安定 ∞ 圏としての Sp | BF 1978、HA 1.4 | K（局所化不変量の値域）、L8 | 一部：BF 模型・π_*・L9 系は完了。`sp_isStable` は仮定 `NativeLoopComparison` つき。Sp-2 の B、Sp-6 s2〜s5、I-5 は未完 | 残り 1〜3 万 |
+| **K-基盤 1** | Cat^perf（冪等完備な小安定 ∞ 圏）、Verdier 列、半直交分解、∞-S• 構成と加法性（L1）、fibration・局所化定理、非連結 K（BGT、Ind の κ-compact 版）、局所化不変量の定義 | BGT 2013、Waldhausen 1985、Barwick 2016 | K | 一部：∞-S•・加法性・Cat^perf・連結版 fibration（K-6）・半直交分解は完了。非連結 K と局所化不変量への登録は未完（B-3） | 4〜7 万 |
+| **K-基盤 2** | Tamme の lax pullback の分裂定理、Land–Tamme の ⊙ 構成と主定理、pro 版（Tor の pro 消滅から pro 切除） | Tamme 2018、Land–Tamme 2019 §1〜3 | K（公理 (2) の pro 切除部分） | 一部：K-8 a〜c・d1〜d6・d8・f′、K-10 a〜c は完了。K-8 d7・e、K-10 d・e は未完（B-4） | 2〜4 万 |
+| F2（後半） | presentable ∞ 圏、随伴関手定理、Bousfield 局所化、P_Σ と sifted 余極限、𝒮 の普遍性 | HTT 5.5、Kerodon 9 | BS §7（animated 環）、K-1c、将来の数論幾何 | ほぼ完了（I-8、IF-G1 の G3・G7・G8・G13）。e6・e7、G8 の四角形、G4・G6・G9・G10 が残る（③） | 4〜8 万 |
+| F4・F5（任意） | 対称モノイダル ∞ 圏・∞ オペラッド、E₁ 環スペクトルと Mod、相対テンソル | HA 2〜4、7.1 | HA 流の Land–Tamme、BS §7 以降 | 未着手（段階 II の範囲外） | 10〜20 万 |
 
 太字が v1 から追加・前倒しした項目。F4（対称モノイダル ∞ 圏）、F2 の presentable 以降、E2c、β の dg 商以外の
 比較は後回しのまま。
