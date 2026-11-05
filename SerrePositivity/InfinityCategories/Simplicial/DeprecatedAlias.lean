@@ -5,6 +5,7 @@ Original authors: Mario Carneiro, David Renshaw, François G. Dorais.
 module
 
 public meta import Mathlib.Util.AliasIn
+public meta import Lean.Compiler.LCNF.PhaseExt
 
 /-!
 # 名前空間移動後の互換 alias
@@ -78,9 +79,19 @@ elab mods:declModifiers "deprecated_alias " oldStx:ident " := " newStx:ident : c
         safety := if dm.isUnsafe then .unsafe else .safe }
     addDecl decl
     unless wasOriginallyTheorem env name do setReducibilityStatus old .reducible
+    -- LCNF compiles a `_unsafe_rec` declaration under its parent's name. A plain
+    -- parent alias has already emitted that code, so compiling its auxiliary alias
+    -- again would register the same impure declarations twice. Keep both kernel
+    -- declarations and their computability while reusing the emitted parent code.
+    let reusesParentCode : Bool ← match Compiler.isUnsafeRecName? old, Compiler.isUnsafeRecName? name with
+      | some oldParent, some newParent => do
+        if aliases.find? newParent == some oldParent then
+          pure (← Compiler.LCNF.getBaseDecl? oldParent).isSome
+        else pure false
+      | _, _ => pure false
     if !dm.isNoncomputable then
       if dm.isMeta then modifyEnv (markMeta · old)
-      compileDecl decl
+      unless reusesParentCode do compileDecl decl
     else modifyEnv (addNoncomputable · old)
     addDeclarationRangesFromSyntax old (← getRef) oldStx
     Term.addTermInfo' oldStx (← mkConstWithLevelParams old) (isBinder := true)

@@ -1,5 +1,6 @@
 module
 public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+public meta import Lean.Compiler.LCNF.PhaseExt
 public import Mathlib.Tactic
 @[expose] public section
 set_option linter.deprecated false
@@ -87,3 +88,30 @@ run_meta do
     throwError "canonical instance missing"
   let simp ← getSimpTheorems
   if simp.isLemma (.decl `IFDeprecatedAliasTests.Old.ident_eq) then throwError "simp registered twice"
+
+-- Recursive implementation aliases must not compile their parent a second time.
+namespace IFDeprecatedAliasTests.New
+def choiceDepth {α : Type u} : Choice α → Nat
+  | .one _ => 0
+  | .two x => choiceDepth x + 1
+end IFDeprecatedAliasTests.New
+
+@[deprecated IFDeprecatedAliasTests.New.choiceDepth (since := "2026-11-05")]
+deprecated_alias IFDeprecatedAliasTests.Old.choiceDepth := IFDeprecatedAliasTests.New.choiceDepth
+@[deprecated IFDeprecatedAliasTests.New.choiceDepth._unsafe_rec (since := "2026-11-05")]
+deprecated_alias IFDeprecatedAliasTests.Old.choiceDepth._unsafe_rec :=
+  IFDeprecatedAliasTests.New.choiceDepth._unsafe_rec
+
+#guard IFDeprecatedAliasTests.Old.choiceDepth
+  (IFDeprecatedAliasTests.Old.Choice.two (IFDeprecatedAliasTests.Old.Choice.one 7)) == 1
+#guard IFDeprecatedAliasTests.New.choiceDepth
+  (IFDeprecatedAliasTests.New.Choice.two (IFDeprecatedAliasTests.New.Choice.one 7)) == 1
+
+open Lean Meta in
+run_meta do
+  let env ← getEnv
+  for n in [`IFDeprecatedAliasTests.Old.choiceDepth,
+      `IFDeprecatedAliasTests.Old.choiceDepth._unsafe_rec] do
+    if isNoncomputable env n then throwError "computable alias became noncomputable: {n}"
+  let (decls, names) := Compiler.LCNF.declOrderExt.getState env
+  unless decls.length == names.size do throwError "duplicate native declarations for recursive alias"
