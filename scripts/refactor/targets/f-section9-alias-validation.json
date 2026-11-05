@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "authorization": "IF-F §9: alias expansion is equivalent to the canonical name",
+  "checker": "scripts/refactor/check_deprecated_aliases.lean",
+  "checker_sha256": "a583407a0e66a7ef94114cfaba5901266220a8afd3760071ab061c6538230592",
+  "criteria": "Keep the existing reducible type check. Additionally accept exact structural equality after literal alias expansion, only after validating each expanded constant body against the map. Universe, binder, exact alias body, safety, attribute and axiom checks remain.",
+  "regression": {
+    "status": "PASS",
+    "positive_checked": 59,
+    "positive_failed": 0,
+    "raw_reducible_false": 13,
+    "expanded_exact": 59,
+    "wrong_map_rejected": true
+  },
+  "normalization_map_sha256": "d16220ea4e17d0a562ade8bbf8efd934da7080dc1f8c54cdcfa415e66e69483e"
+}
