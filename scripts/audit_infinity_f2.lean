@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsUnstraightening
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsLimitNaturality
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
@@ -2063,3 +2066,61 @@ run_cmd do
     if (Linter.deprecatedAttr.getParam? env newName).isSome then
       throwError "C3: canonical declaration is deprecated: {newName}"
   logInfo "C3: 5 compatibility declarations deprecated; Natural versions canonical."
+
+-- IF-G2-finish stage 1: all helpers, including generated declarations.
+#check @SerrePositivity.InfinityCategories.SetWeight.kanEnrichedDiagramHomInterval_ordinary
+#check @SerrePositivity.InfinityCategories.SetWeight.relativePreHom
+#check @SerrePositivity.InfinityCategories.SetWeight.relativePreHom_vertex
+#check @SerrePositivity.InfinityCategories.SetWeight.relativePreIso
+#check @SerrePositivity.InfinityCategories.SetWeight.parameterizedDiagram_face
+#check @SerrePositivity.InfinityCategories.SetWeight.unstraighteningPrecompositionIso
+#check @SerrePositivity.InfinityCategories.SetWeight.unstraighteningPinchedPrecompositionIso
+#check @SerrePositivity.InfinityCategories.SetWeight.limitVertexIso_hom_eq_coneEdge
+#check @SerrePositivity.InfinityCategories.SetWeight.limitConeEndpointComparison
+#check @SerrePositivity.InfinityCategories.SetWeight.limitConeEndpointComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.SetWeight.limitConeMapIsoOfConeFamilyIso
+#check @SerrePositivity.InfinityCategories.SetWeight.limitConeMap_homMk_eq_of_coneFamilyIso
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsConeFamilyRestriction
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsConeFamilyRestriction_fromSections
+#check @SerrePositivity.InfinityCategories.SetWeight.representableProjectionCone
+#check @SerrePositivity.InfinityCategories.SetWeight.representableProjectionCone_vertex
+#check @SerrePositivity.InfinityCategories.SetWeight.representableEvaluationCone
+#check @SerrePositivity.InfinityCategories.SetWeight.representableEvaluationCone_vertex
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationCone
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationCone_vertex
+#check @SerrePositivity.InfinityCategories.SetWeight.representableEvaluationConeMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationConeMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveConeRestriction
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveConeRestriction_cone
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveConeRestriction_projection
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveRestrictConeEdge
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationConeMap_factor
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationConeMap_postcomposeIso
+#check @SerrePositivity.InfinityCategories.SetWeight.representableEvaluationMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveSectionsMap_edge
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluationTriangle
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveEvaluation_postcomposeIso
+
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let targets : Array Name := #[
+    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsUnstraightening,
+    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsLimitNaturality,
+    `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsSieveNaturality]
+  for target in targets do
+    unless env.header.modules.any (fun entry => entry.module == target) do
+      throwError "IF-G2-finish: module not imported: {target}"
+    let mut count : Nat := 0
+    for (name, info) in env.constants.toList do
+      let some idx := env.getModuleIdxFor? name | continue
+      unless env.header.modules[idx.toNat]!.module == target do continue
+      if let .axiomInfo _ := info then
+        throwError "IF-G2-finish: axiom declaration: {name}"
+      let axioms ← collectAxioms name
+      unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+        throwError "IF-G2-finish: unexpected axioms in {name}: {axioms}"
+      count := count + 1
+    unless count > 0 do throwError "IF-G2-finish: no declarations audited: {target}"
+    logInfo m!"IF-G2-finish: {target}: {count} declarations; no new axioms, standard axioms only."

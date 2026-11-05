@@ -32,7 +32,8 @@ lemma kanEnrichedDiagramHomInterval_ordinary
         (ULift.up (SimplicialCategory.homEquiv' X Y f)) =
       intervalMappingVertexOfEdge (((coherentNerveEdge f).map D.realization).ofEq
         (D.realization_vertex X) (D.realization_vertex Y)) := by
-  change (intervalMappingPostOfEq D.realization _ _ _ _).app _
+  change (intervalMappingPostOfEq D.realization _ _
+    (D.realization_vertex X) (D.realization_vertex Y)).app _
     ((coherentHomIntervalComparison X Y).app _
       (ULift.up (SimplicialCategory.homEquiv' X Y f))) = _
   rw [coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
@@ -99,26 +100,29 @@ def unstraighteningPrecompositionIso {B : SSet.{u + 1}}
         relativeFunctorComposition (Over.mk (leftUnstraighteningProjection F))
           (Over.mk (leftUnstraighteningProjection G))
           (Over.mk (leftUnstraighteningProjection J))) := by
-  obtain ⟨H, h₀₁, h₁₂, h₀₂⟩ :=
-    intervalPrecompose_triangleFamily_exists e (functorVertex J)
+  let h := intervalPrecompose_triangleFamily_exists e (functorVertex J)
+  let H := Classical.choose h
+  have h₀₁ := (Classical.choose_spec h).1
+  have h₁₂ := (Classical.choose_spec h).2.1
+  have h₀₂ := (Classical.choose_spec h).2.2
   let K := leftUnstraighteningTransformationSpace G J
   let W : (Δ[2] : SSet.{u + 1}) ⊗ (B ⊗ K) ⟶ SpaceInfinity.{u} :=
     (α_ Δ[2] B K).inv ≫ functorParameterizedPrism H
   have hw₀₁ : (stdSimplex.δ (2 : Fin 3) ▷ (B ⊗ K)) ≫ W =
       coherentTransformationFamilyDiagram
         (SSet.const (intervalMappingVertexOfEdge e) : K ⟶ _) := by
-    rw [W, parameterizedDiagram_face, h₀₁]
-    rfl
+    exact (parameterizedDiagram_face H 2).trans
+      (congrArg (fun T => (α_ Δ[1] B K).inv ≫ functorParameterizedPrism T) h₀₁)
   have hw₁₂ : (stdSimplex.δ (0 : Fin 3) ▷ (B ⊗ K)) ≫ W =
       coherentTransformationFamilyDiagram (𝟙 K) := by
-    rw [W, parameterizedDiagram_face, h₁₂]
-    rfl
+    exact (parameterizedDiagram_face H 0).trans
+      (congrArg (fun T => (α_ Δ[1] B K).inv ≫ functorParameterizedPrism T) h₁₂)
   have hw₀₂ : (stdSimplex.δ (1 : Fin 3) ▷ (B ⊗ K)) ≫ W =
       coherentTransformationFamilyDiagram
         (intervalPrecompose (functorVertex J)
           (Truncated.HomotopyCategory.homMk e.toTruncated)) := by
-    rw [W, parameterizedDiagram_face, h₀₂]
-    rfl
+    exact (parameterizedDiagram_face H 1).trans
+      (congrArg (fun T => (α_ Δ[1] B K).inv ≫ functorParameterizedPrism T) h₀₂)
   simpa only [Category.id_comp] using F2.unstraighteningMappingTriangleIso F G J
     (SSet.const (intervalMappingVertexOfEdge e)) (𝟙 K)
     (intervalPrecompose (functorVertex J)

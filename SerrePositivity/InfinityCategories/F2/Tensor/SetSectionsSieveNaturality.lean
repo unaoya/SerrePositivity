@@ -188,8 +188,8 @@ def sieveEvaluationTriangle [Quasicategory E]
     (cU : JoinCone (diagram (yoneda.obj U) F)) (hcU : IsLimitCone cU) :
     SSet.Edge.CompStruct (representableEvaluationMap F cU hcU)
       (sieveSectionsMap S F cS hcS cU hcU) (sieveEvaluationMap F S cS hcS) := by
-  obtain ⟨t⟩ := compStruct_nonempty_of_homMk_fac
-    (sieveEvaluationConeMap_factor F S cS hcS cU hcU)
+  let t := Classical.choice (compStruct_nonempty_of_homMk_fac
+    (sieveEvaluationConeMap_factor F S cS hcS cU hcU))
   let t' := (SSet.Edge.CompStruct.ofTruncated t).map
     (sliceOverProjection (diagram S.functor F))
   apply t'.ofEq

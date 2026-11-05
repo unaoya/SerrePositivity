@@ -145,3 +145,78 @@ BS は別版に差し替える方針。既存版の deprecated 化は後の区�
 プローブ内の universe 重複が出たためテキストを修正した。その後の追加を含む再検証は
 他レーンのビルドと verify のため未実行。`sorry`・`admit`・新規公理は置いていない。
 F-2 前の作業保存用に先行分と分けて WIP コミットとする。
+
+
+## IF-G2-finish 段 1：WIP 3 本の検証と登録（2026-11-05）
+
+**停止点 1。段 2・3 には進んでいない。G8 の篩包含の四角形は引き続き未証明。**
+上記の「未検証、取り込み対象外」は過去の checkpoint の記録であり、以下の検証で更新する。
+
+- `math/g2` に main `5a1cea068` を `23552b71d` で取り込み（衝突なし）。
+- `SetSectionsUnstraightening`：`intervalMappingPostOfEq` の端点等式を明示し、
+  存在する三角形の族を `Classical.choose` で取り出し、面の等式を `congrArg` で直接移す。
+- `SetSectionsSieveNaturality`：`Nonempty` な合成構造の取り出しを `Classical.choice` に修正。
+- `SetSectionsLimitNaturality`：ソース無変更でビルド成功。
+- F-2 改名表と照合し、3 本に旧完全修飾名の参照なし。3 本のビルドで deprecated 警告なし。
+- 3 本を `F2.lean` と `scripts/audit_infinity_f2.lean` の通常の import に登録。
+  全 33 個の明示宣言を `#check` に登録し、生成宣言を含むモジュール別監査を追加。
+- 検証：対象 3 本および直接の入口 F2 の小さなビルド PASS。F2 監査を単独実行して PASS。
+  新規 3 本の監査件数は `SetSectionsUnstraightening` 23・`SetSectionsLimitNaturality` 13・`SetSectionsSieveNaturality` 33（計 69 宣言）。`sorryAx`・新規公理宣言・標準 3 公理以外の依存は 0。
+  許す標準公理は `propext`・`Classical.choice`・`Quot.sound`。
+- ビルド開始前のプロセス確認と共有鍵取得を実施。全ビルド・verify・下流全ビルドは実施していない。
+  依存グラフの数千ジョブの表示は既存成果物の利用を含み、実際に再コンパイルしたのは対象モジュールと入口だけ。
+- G1・既存 G2 宣言の本文・型・名前は無変更。新しい引用・`sorry`・`admit`・公理宣言なし。
+
+### 今回登録した宣言（すべて `SerrePositivity.InfinityCategories.SetWeight`）
+
+`SetSectionsUnstraightening.lean`：
+
+- `kanEnrichedDiagramHomInterval_ordinary`：全豊穣 Hom の区間比較を通常の射で評価すると、その同じ射の実現を得る。
+- `relativePreHom`：底上の射を、相対写像空間の前合成へ写す全パラメータの作用。
+- `relativePreHom_vertex`：全パラメータの前合成は、指定した底上の射で元の前合成を回収する。
+- `relativePreIso`：相対写像空間内の比較同型から、前合成の全写像空間上の同型を得る。
+- `parameterizedDiagram_face`：関手の三角形の族の評価は、三角形の面への制限と厳密に可換。
+- `unstraighteningPrecompositionIso`：指定辺による前合成を unstraightening へ写すと、その辺の像との相対合成になる。
+- `unstraighteningPinchedPrecompositionIso`：同じ比較を G8 が使う pinched 写像空間へ戻す。
+
+`SetSectionsLimitNaturality.lean`：
+
+- `limitVertexIso_hom_eq_coneEdge`：極限頂点の標準同型の順射は、錐の圏で指定した任意の普遍辺の射影の類。
+- `limitConeEndpointComparison`：極限への写像の族を、両端固定の錐の族へ写す比較。
+- `limitConeEndpointComparison_isQCatEquivalence`：指定錐の極限性により、錐の族への比較は全写像空間の同値となる。
+- `limitConeMapIsoOfConeFamilyIso`：錐の族として同型な二つの写像の族は、極限への写像の族として同型。
+- `limitConeMap_homMk_eq_of_coneFamilyIso`：錐の族の同型から、空間のホモトピー圏での写像の等式を得る。
+- `sectionsConeFamilyRestriction`：要素の圏に沿う制限を、頂点と図式を固定した錐の族へ移す。
+- `sectionsConeFamilyRestriction_fromSections`：切断の制限と錐の族への比較は、全パラメータで厳密に可換。
+
+`SetSectionsSieveNaturality.lean`：
+
+- `representableProjectionCone`：表現可能前層の要素の圏の始対象から射影への明示的な錐。
+- `representableProjectionCone_vertex`：この錐の頂点は底の U そのもの。
+- `representableEvaluationCone`：任意の前層 F の U での値から、表現可能前層の要素の図式へ向かう錐。
+- `representableEvaluationCone_vertex`：評価錐の頂点は F(U)。
+- `sieveEvaluationCone`：F(U) の評価錐を篩の要素へ制限する。
+- `sieveEvaluationCone_vertex`：篩への制限後も頂点は F(U)。
+- `representableEvaluationConeMap`：明示的な評価錐から、指定された表現可能側の極限錐への普遍辺。
+- `sieveEvaluationConeMap`：篩へ制限した評価錐から、指定された篩側の極限錐への普遍辺。
+- `sieveConeRestriction`：篩の要素への制限を、錐の圏全体の射として使う。
+- `sieveConeRestriction_cone`：錐の圏の制限は、先行 API の指定錐の制限に一致する。
+- `sieveConeRestriction_projection`：錐の圏での制限は頂点への射影を厳密に保つ。
+- `sieveRestrictConeEdge`：錐の比較辺を、同じ篩の要素へ制限する。
+- `sieveEvaluationConeMap_factor`：評価錐から篩側の極限への普遍辺は、表現可能側の極限を経由しても同じ類。
+- `sieveEvaluationConeMap_postcomposeIso`：上の錐の普遍辺の一意性を、任意の M からの全写像空間へ移す。
+- `representableEvaluationMap`：表現可能側の評価 F(U) から指定極限への普遍射。
+- `sieveEvaluationMap`：篩へ制限した評価 F(U) から指定極限への普遍射。
+- `sieveSectionsMap_edge`：始点の頂点表示を正規化しても、切断制限の元の一次単体は変わらない。
+- `sieveEvaluationTriangle`：F(U) からの二つの普遍射と、指定された sieveSectionsMap の可換三角形。
+- `sieveEvaluation_postcomposeIso`：評価からの二経路は、指定された切断制限の後合成を含む全写像空間で同型。
+
+### 残る数学的な一歩
+
+段 2 は、切断制限と G8 別版の後段（`coherentDiagramSectionsCone` から指定極限錐への比較、
+`spaceUniverseValueEquivalence`、`covariantRepresentableValueEquivalence`）との照合。
+今回の `sieveEvaluation_postcomposeIso` は評価錐側の全写像空間の比較であり、この照合そのものではない。
+`limitConeMapIsoOfConeFamilyIso` に渡す明示的な錐の族の同型を構成する必要がある。
+段 3 は、篩包含に沿う `elementsComparisonNatural` の自然性を底を固定した相対写像空間内で示し、
+`relativePreIso` と段 2 の比較を合わせて G8 の四角形を閉じる。
+頂点ごとの一致だけで完成と扱わない。
