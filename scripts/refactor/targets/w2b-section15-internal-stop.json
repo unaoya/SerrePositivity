@@ -1,0 +1,1209 @@
+{
+  "status": "STOP-5-6",
+  "branch": "infra/if-w2b",
+  "before_commit": "408b0f05a8b43a36d27f478a020f7057128928ea",
+  "merged_main": "dbd3cb09053f280fb1d2ebe0b37d93ff65800fc5",
+  "checked_head": "9a1723f2ce6e8bacb3c890e1857693404c4b1baf",
+  "commits_since_before": [
+    "4d02ee532 refactor(infinity): archive old exchange path and place retained foundations",
+    "d12e85d0e refactor(infinity): lower stable general lemmas",
+    "9c38c984e refactor(infinity): resolve F2 layer order by declaration dependencies",
+    "32cd95abc refactor(infinity): 配置の修正",
+    "8c0548f02 refactor(infinity): 補充の import",
+    "d135a715f Merge branch 'main' into infra/if-w2b",
+    "11e7c8644 ratchet 基準の設定ハッシュ",
+    "df6790351 refactor(snapshot): accept proof-irrelevant v3b batch snapshots",
+    "e1d2b7183 配置の修正",
+    "2b01641ef 補充",
+    "9a1723f2c 補充（内部ビルド round 3）"
+  ],
+  "configuration_hash_update": {
+    "commit": "11e7c8644",
+    "only_field": "config_sha256",
+    "approved_direct_edges": 21,
+    "aggregate_limits": {
+      "W1": {
+        "forbidden_module_count": 1,
+        "affected_core_module_count": 11
+      },
+      "W2a": {
+        "forbidden_module_count": 166,
+        "affected_core_module_count": 3379
+      }
+    }
+  },
+  "counts": {
+    "A": 368,
+    "B": 1726,
+    "C": 33,
+    "PiCriterion_only_support_in_A": 3,
+    "R73_audited_result_modules": 405,
+    "audit_coverage_missing": 0,
+    "archive_users": {}
+  },
+  "actions": {
+    "R73": {
+      "move": 401,
+      "split": 4,
+      "archive": 1726,
+      "reimport": 9
+    },
+    "R37": {
+      "move": 115,
+      "reimport": 1,
+      "split": 1
+    },
+    "R38": {
+      "move": 218,
+      "split": 6,
+      "reimport": 66
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "status": "STOP §13",
+      "planned_roots": 1899,
+      "attempted_roots": 1128,
+      "blocked_roots": 0,
+      "successful_group_roots": 108,
+      "failed_modules": 57,
+      "first_errors_by_module": {
+        "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace": [
+          "error: SerrePositivity/InfinityCategories/F1B/Cofinality/InitialMappingSpace.lean:29:25: Unknown identifier `reverseBoundaryMap`",
+          "error: SerrePositivity/InfinityCategories/F1B/Cofinality/InitialMappingSpace.lean:30:8: Unknown identifier `boundaryFiller_of_reverseBoundaryFiller`",
+          "error: SerrePositivity/InfinityCategories/F1B/Cofinality/InitialMappingSpace.lean:40:25: Unknown identifier `reverseBoundaryMap`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.ZeroHomotopy": [
+          "error: SerrePositivity/InfinityCategories/Core/ZeroHomotopy.lean:27:25: Invalid field `isInitialHo`: The environment does not contain `Function.isInitialHo`, so it is not possible to project the field `isInitialHo` from an expression",
+          "error: SerrePositivity/InfinityCategories/Core/ZeroHomotopy.lean:27:58: Invalid field `isInitialHo`: The environment does not contain `Function.isInitialHo`, so it is not possible to project the field `isInitialHo` from an expression",
+          "error: SerrePositivity/InfinityCategories/Core/ZeroHomotopy.lean:28:27: Invalid field `isTerminalHo`: The environment does not contain `Function.isTerminalHo`, so it is not possible to project the field `isTerminalHo` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.StableOpposite": [
+          "error: SerrePositivity/InfinityCategories/Stable/StableOpposite.lean:34:38: Invalid field `op`: The environment does not contain `And.op`, so it is not possible to project the field `op` from an expression",
+          "error: SerrePositivity/InfinityCategories/Stable/StableOpposite.lean:75:26: Invalid field `op`: The environment does not contain `And.op`, so it is not possible to project the field `op` from an expression",
+          "error: SerrePositivity/InfinityCategories/Stable/StableOpposite.lean:86:26: Invalid field `op`: The environment does not contain `And.op`, so it is not possible to project the field `op` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary": [
+          "error: SerrePositivity/InfinityCategories/F1/ColimitRelativeBoundary.lean:29:8: Unknown identifier `initialBoundaryLifting_of_isInitialVertex_fiber_op`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.TerminalArrowComparison": [
+          "error: SerrePositivity/InfinityCategories/Core/TerminalArrowComparison.lean:77:10: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/TerminalArrowComparison.lean:106:10: Unknown constant `SSet.Homotopy`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer": [
+          "error: SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean:28:10: Unknown identifier `sliceUnderRestrict_trivialKanFibration`",
+          "error: SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean:27:84: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy": [
+          "error: SerrePositivity/InfinityCategories/Stable/PastingComparisonHomotopy.lean:44:10: Unknown identifier `stdSimplex_hom_ext_vertices`",
+          "error: SerrePositivity/InfinityCategories/Stable/PastingComparisonHomotopy.lean:45:4: No goals to be solved",
+          "error: SerrePositivity/InfinityCategories/Stable/PastingComparisonHomotopy.lean:57:10: Unknown identifier `stdSimplex_hom_ext_vertices`"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare": [
+          "error: SerrePositivity/InfinityCategories/Derived/StandardCofiberSquare.lean:139:4: Unknown identifier `squareRightEdge`",
+          "error: SerrePositivity/InfinityCategories/Derived/StandardCofiberSquare.lean:141:8: Unknown identifier `squareTriangle_rightEdge`",
+          "error: SerrePositivity/InfinityCategories/Derived/StandardCofiberSquare.lean:140:74: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges": [
+          "error: SerrePositivity/InfinityCategories/Stable/BinaryCoconeEdges.lean:42:10: Unknown identifier `edgeSimplex_target`",
+          "error: SerrePositivity/InfinityCategories/Stable/BinaryCoconeEdges.lean:45:10: Unknown identifier `edgeSimplex_target`",
+          "error: SerrePositivity/InfinityCategories/Stable/BinaryCoconeEdges.lean:53:54: Unknown identifier `edgeSimplex_source`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent": [
+          "error: SerrePositivity/InfinityCategories/Stable/UniverseStabilityDescent.lean:45:11: Unknown identifier `isPullbackSquare_iff_ulift`",
+          "error: SerrePositivity/InfinityCategories/Stable/UniverseStabilityDescent.lean:46:8: No goals to be solved",
+          "error: SerrePositivity/InfinityCategories/Stable/UniverseStabilityDescent.lean:64:11: Unknown identifier `isPushoutSquare_iff_ulift`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZeroNaturality": [
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialPiZeroNaturality.lean:29:9: Unknown identifier `stablePiZeroEquivOfTrivialKanFibration`",
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialPiZeroNaturality.lean:43:4: Unknown identifier `stablePiZeroEquivOfTrivialKanFibration`",
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialPiZeroNaturality.lean:52:4: Unknown identifier `leftFibrationInitialFiberPiZeroEquiv`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle": [
+          "error: SerrePositivity/InfinityCategories/Core/UniverseZeroTriangle.lean:48:9: Unknown identifier `isPushoutSquare_iff_ulift`",
+          "error: SerrePositivity/InfinityCategories/Core/UniverseZeroTriangle.lean:49:6: No goals to be solved",
+          "error: SerrePositivity/InfinityCategories/Core/UniverseZeroTriangle.lean:55:9: Unknown identifier `isPullbackSquare_iff_ulift`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentShapeCoconeGluing": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentShapeCoconeGluing.lean:51:8: Unknown constant `SerrePositivity.InfinityCategories.JoinCocone.vertex_restrict`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentShapeCoconeGluing.lean:50:68: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachedCocone": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/ColimitAttachedCocone.lean:29:24: Unknown identifier `exists_cocone_extension_of_trivialRestriction`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/ColimitAttachedCocone.lean:29:9: Tactic `rcases` failed: `x✝ : ?m.81` is not an inductive datatype"
+        ],
+        "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport": [
+          "error: SerrePositivity/InfinityCategories/Core/InitialBoundaryTransport.lean:57:38: Unknown identifier `InitialBoundaryLifting`",
+          "error: SerrePositivity/InfinityCategories/Core/InitialBoundaryTransport.lean:60:32: Unknown identifier `InitialBoundaryLifting`",
+          "error: SerrePositivity/InfinityCategories/Core/InitialBoundaryTransport.lean:61:8: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+        ],
+        "SerrePositivity.InfinityCategories.Core.VertexFiberOpposite": [
+          "error: SerrePositivity/InfinityCategories/Core/VertexFiberOpposite.lean:71:5: Invalid field `op_isTerminalVertex`: The environment does not contain `Function.op_isTerminalVertex`, so it is not possible to project the field `op_isTerminalVertex` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport": [
+          "error: SerrePositivity/InfinityCategories/Core/TerminalBoundaryTransport.lean:55:15: Invalid field `map_iso`: The environment does not contain `Function.map_iso`, so it is not possible to project the field `map_iso` from an expression",
+          "error: SerrePositivity/InfinityCategories/Core/TerminalBoundaryTransport.lean:53:78: unsolved goals",
+          "error: SerrePositivity/InfinityCategories/Core/TerminalBoundaryTransport.lean:82:8: Unknown constant `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_invertibleEdge`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary": [
+          "error: SerrePositivity/InfinityCategories/Core/FinalHornProductBoundary.lean:29:41: Unknown identifier `boundaryReverseIso`",
+          "error: SerrePositivity/InfinityCategories/Core/FinalHornProductBoundary.lean:43:33: Unknown identifier `boundaryReverseIso`",
+          "error: SerrePositivity/InfinityCategories/Core/FinalHornProductBoundary.lean:52:21: Tactic `rfl` failed: The left-hand side"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CosliceRestrictionOpposite": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CosliceRestrictionOpposite.lean:65:24: Unknown identifier `cosliceRestrictionFiberMap`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CosliceRestrictionOpposite.lean:74:6: Unknown identifier `cosliceRestrictionFiberMap`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CosliceRestrictionOpposite.lean:69:36: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:17:27: unknown namespace `MonoidalCategory`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:37:42: tactic execution is stuck, goal contains metavariables",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:47:31: Unknown identifier `Mono`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ConstantDiagram.lean:15:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ConstantDiagram.lean:21:41: expected token",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/ConstantDiagram.lean:21:27: Unknown identifier `SSet`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/EdgeSquareTransport.lean:16:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/EdgeSquareTransport.lean:17:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/EdgeSquareTransport.lean:23:32: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/FunctorEqIsoAlgebra.lean:16:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/FunctorEqIsoAlgebra.lean:17:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/FunctorEqIsoAlgebra.lean:23:28: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/TrianglePrismTetrahedra.lean:17:20: unknown namespace `MonoidalCategory`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/TrianglePrismTetrahedra.lean:25:37: tactic execution is stuck, goal contains metavariables",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/TrianglePrismTetrahedra.lean:41:56: expected token"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/FunctorEqIsoTransport.lean:38:55: Unknown identifier `IsFunctorEqIso`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/FunctorEqIsoTransport.lean:39:49: Unknown identifier `IsFunctorEqIso`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:17:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:18:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:23:36: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightSimplexLift": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/BousfieldKanWeightSimplexLift.lean:15:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/BousfieldKanWeightSimplexLift.lean:17:23: Unknown identifier `SmallCategory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/BousfieldKanWeightSimplexLift.lean:22:39: Unknown identifier `ComposableArrows`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductInternalHom.lean:16:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductInternalHom.lean:21:36: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductInternalHom.lean:31:36: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.ComposableHomotopyHorn": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ComposableHomotopyHorn.lean:22:7: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ComposableHomotopyHorn.lean:22:33: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ComposableHomotopyHorn.lean:31:45: Unknown identifier `U.h`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentHomotopyHorn": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ConvergentHomotopyHorn.lean:22:7: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ConvergentHomotopyHorn.lean:22:33: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ConvergentHomotopyHorn.lean:31:2: No goals to be solved"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FiberProductCofinality.lean:17:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FiberProductCofinality.lean:22:45: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.DegenerateHomotopyTriangles": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/DegenerateHomotopyTriangles.lean:21:45: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/DegenerateHomotopyTriangles.lean:33:6: Failed to rewrite using equation theorems for `degenerateHomotopyTriangle`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/DegenerateHomotopyTriangles.lean:44:6: Failed to rewrite using equation theorems for `degenerateHomotopyTriangle`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanFibrations": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredKanFibrations.lean:17:27: unknown namespace `HomotopicalAlgebra`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredKanFibrations.lean:18:5: unknown namespace `SSet.modelCategoryQuillen`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredKanFibrations.lean:25:18: Unknown identifier `SmallCategory`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FiniteInternalHomContinuity.lean:25:4: failed to synthesize instance of type class",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FiniteInternalHomContinuity.lean:28:35: failed to synthesize instance of type class",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FiniteInternalHomContinuity.lean:32:13: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkHomotopyHorn": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ForkHomotopyHorn.lean:22:7: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ForkHomotopyHorn.lean:22:33: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/ForkHomotopyHorn.lean:31:2: No goals to be solved"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconePostcompose": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconePostcompose.lean:28:34: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconePostcompose.lean:29:14: Unknown identifier `IsColimitCone`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconePostcompose.lean:30:4: Unknown identifier `IsPointwiseColimitCone`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconeReindex.lean:54:54: Unknown identifier `IsPointwiseColimitCone`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconeReindex.lean:55:18: Unknown identifier `IsPointwiseColimitCone`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/FunctorCoconeReindex.lean:56:8: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareEndHomotopy": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/PathSquareEndHomotopy.lean:16:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/PathSquareEndHomotopy.lean:17:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/PathSquareEndHomotopy.lean:23:54: expected token"
+        ],
+        "SerrePositivity.InfinityCategories.Core.UniverseHorns": [
+          "error: SerrePositivity/InfinityCategories/Core/UniverseHorns.lean:20:10: Unknown identifier `horn`",
+          "error: SerrePositivity/InfinityCategories/Core/UniverseHorns.lean:20:41: Unknown identifier `horn`",
+          "error: SerrePositivity/InfinityCategories/Core/UniverseHorns.lean:28:10: Unknown identifier `horn`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/SpecifiedApexConeRestrictions.lean:16:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/SpecifiedApexConeRestrictions.lean:17:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/SpecifiedApexConeRestrictions.lean:23:26: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_cbv_simproc_decl', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'cbv_simproc', 'cbv_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recall', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'register_try?_tactic', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet": [
+          "error: SerrePositivity/InfinityCategories/Core/FiniteOppositeSSet.lean:12:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Core/FiniteOppositeSSet.lean:13:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/FiniteOppositeSSet.lean:17:35: Unknown identifier `SSet`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting": [
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean:29:9: Unknown identifier `walkingSplit_object_cases`",
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean:29:42: Tactic `rcases` failed: `x✝ : ?m.57` is not an inductive datatype"
+        ],
+        "SerrePositivity.InfinityCategories.Core.Idempotent.ScalarUniverse": [
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/ScalarUniverse.lean:18:28: failed to synthesize instance of type class",
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/ScalarUniverse.lean:19:20: failed to synthesize instance of type class",
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/ScalarUniverse.lean:19:2: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape": [
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:15:27: unknown namespace `SSet`",
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:16:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:21:45: expected token"
+        ],
+        "SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift": [
+          "error: SerrePositivity/InfinityCategories/Core/Ind/NerveSublevelLift.lean:17:27: unknown namespace `SSet`",
+          "error: SerrePositivity/InfinityCategories/Core/Ind/NerveSublevelLift.lean:18:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Core/Ind/NerveSublevelLift.lean:20:40: Unknown identifier `SSet`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.Presentable.ThinNerveExt": [
+          "error: SerrePositivity/InfinityCategories/Core/Presentable/ThinNerveExt.lean:37:19: Unknown identifier `WithInitial`",
+          "error: SerrePositivity/InfinityCategories/Core/Presentable/ThinNerveExt.lean:38:2: Tactic `cases` failed: major premise type is not an inductive type"
+        ],
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization": [
+          "error: SerrePositivity/InfinityCategories/F1/FilteredExchange/ContinuousKanFiniteFactorization.lean:38:10: Unknown identifier `boundary`",
+          "error: SerrePositivity/InfinityCategories/F1/FilteredExchange/ContinuousKanFiniteFactorization.lean:40:13: Unknown identifier `boundary`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminalValues.lean:57:13: Unknown identifier `isTerminalVertex_iff_ulift`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit": [
+          "error: SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:26:6: Unknown identifier `splittingDiagramCocone`",
+          "error: SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:27:40: Unknown identifier `walkingFullJoinCocone.val`",
+          "error: SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:36:13: Unknown identifier `idemCocone_isColimit_iff_restrict`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/UniverseCoconeRestriction.lean:36:41: Application type mismatch: The argument"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Transport.PointJoinReverseCoordinates": [
+          "error: SerrePositivity/InfinityCategories/F1/Transport/PointJoinReverseCoordinates.lean:40:7: Unknown identifier `stableJoinReverseIso`",
+          "error: SerrePositivity/InfinityCategories/F1/Transport/PointJoinReverseCoordinates.lean:44:4: Unknown identifier `stableJoinReverseIso`",
+          "error: SerrePositivity/InfinityCategories/F1/Transport/PointJoinReverseCoordinates.lean:45:4: Unknown identifier `joinIso`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection": [
+          "error: SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorIsoPrecompositionProjection.lean:28:13: Unknown identifier `F2.functorIso_precomp_precomp`",
+          "error: SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorIsoPrecompositionProjection.lean:27:46: unsolved goals",
+          "error: SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorIsoPrecompositionProjection.lean:38:16: Unknown identifier `F2.functorIso_precomp_precomp`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTrianglePrecomposition": [
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:33:43: Unknown identifier `F2.functorIso_precomp_precomp`",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:34:6: Unknown identifier `F2.functorIso_precomp_postcomp`",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:33:2: Type mismatch: After simplification, term"
+        ],
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.KanCospanPathEndpoints": [
+          "error: SerrePositivity/InfinityCategories/F1/FilteredExchange/KanCospanPathEndpoints.lean:26:9: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/F1/FilteredExchange/KanCospanPathEndpoints.lean:28:4: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/F1/FilteredExchange/KanCospanPathEndpoints.lean:55:9: Unknown constant `SSet.Homotopy`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeOfHomotopyConstant": [
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/CoconeOfHomotopyConstant.lean:24:11: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/CoconeOfHomotopyConstant.lean:48:10: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/CoconeOfHomotopyConstant.lean:50:8: Unknown identifier `JoinCocone.vertex_eq`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Joins.ConeSpanColimitTransfer": [
+          "error: SerrePositivity/InfinityCategories/F1/Joins/ConeSpanColimitTransfer.lean:57:10: Unknown identifier `sliceUnderRestrict_trivialKanFibration`",
+          "error: SerrePositivity/InfinityCategories/F1/Joins/ConeSpanColimitTransfer.lean:54:44: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackReplacementCone.lean:67:46: Unknown identifier `coherentVertex`"
+        ]
+      },
+      "wall_seconds": 2382.286,
+      "lake_seconds": null,
+      "built_log_events": 1156,
+      "lock_timeouts": null
+    },
+    {
+      "round": 2,
+      "status": "FAIL",
+      "planned_roots": 857,
+      "attempted_roots": 857,
+      "blocked_roots": 0,
+      "successful_group_roots": 60,
+      "failed_modules": 51,
+      "first_errors_by_module": {
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:20:27: unknown namespace `MonoidalCategory`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:28:31: Unknown identifier `pushout`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean:29:34: Unknown identifier `pushoutIsPushout`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductCylinderMap": [
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductCylinderMap.lean:26:15: tactic execution is stuck, goal contains metavariables",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductCylinderMap.lean:33:53: Unknown identifier `coprodCylinderMap`",
+          "error: SerrePositivity/InfinityCategories/Core/FilteredExchange/CoproductCylinderMap.lean:33:33: tactic execution is stuck, goal contains metavariables"
+        ],
+        "SerrePositivity.InfinityCategories.F1.SquareFunctorTransport": [
+          "error: SerrePositivity/InfinityCategories/F1/SquareFunctorTransport.lean:31:8: Unknown constant `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_vertexIso`",
+          "error: SerrePositivity/InfinityCategories/F1/SquareFunctorTransport.lean:38:8: Unknown constant `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.of_vertexIso`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackReplacementCone.lean:68:62: Unknown identifier `catPullbackObject`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTrianglePrecomposition": [
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:35:6: Unknown identifier `F2.functorIso_precomp_postcomp`",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:34:2: Type mismatch: After simplification, term",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportTrianglePrecomposition.lean:74:37: Unknown identifier `F2.functorIso_precomp_postcomp`"
+        ],
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces": [
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/TrianglePrismFaces.lean:66:9: Unknown constant `SSet.Homotopy`",
+          "error: SerrePositivity/InfinityCategories/Core/CatInfinity/TrianglePrismFaces.lean:78:9: Unknown constant `SSet.Homotopy`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronArrows": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronArrows.lean:25:37: Unknown identifier `CatInfinity`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronArrows.lean:27:2: Unknown identifier `coherentEdgeHom`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronArrows.lean:32:37: Unknown identifier `CatInfinity`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.EquivalenceHomotopyFixedPrecomposition": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/EquivalenceHomotopyFixedPrecomposition.lean:41:13: Invalid field `symm`: The environment does not contain `Exists.symm`, so it is not possible to project the field `symm` from an expression",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/EquivalenceHomotopyFixedPrecomposition.lean:42:16: Invalid field `postcomp`: The environment does not contain `Exists.postcomp`, so it is not possible to project the field `postcomp` from an expression",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/EquivalenceHomotopyFixedPrecomposition.lean:36:73: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatHomotopyClasses": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatHomotopyClasses.lean:26:48: Unknown identifier `coherentNerveEdge`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatHomotopyClasses.lean:27:45: Unknown identifier `coherentNerveEdge`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatHomotopyClasses.lean:32:8: Unknown identifier `coherentHomComparison`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationLifting": [
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionEvaluationLifting.lean:24:23: Unknown identifier `IsStable`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSquare": [
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSquare.lean:85:61: Unknown identifier `IsStable`",
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSquare.lean:105:55: Unknown identifier `IsStable`",
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSquare.lean:125:68: Unknown identifier `IsStable`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLimit": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackLimit.lean:57:35: Unknown identifier `coherentVertex`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackFunctorCore": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackFunctorCore.lean:27:38: Unknown identifier `catPullback`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackFunctorCore.lean:28:38: Unknown identifier `equivalencePathReplacementMap`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackFunctorCore.lean:30:35: Unknown identifier `catPullbackFunctorIso`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeStructure": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CoherentEdgeStructure.lean:36:3: Unknown identifier `coherentNerveEdgeEquiv`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CoherentEdgeStructure.lean:52:46: Type mismatch"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Compact.Definition": [
+          "error: SerrePositivity/InfinityCategories/F2/Compact/Definition.lean:27:37: Unknown identifier `mapJoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F2/Compact/Definition.lean:44:8: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce",
+          "error: SerrePositivity/InfinityCategories/F2/Compact/Definition.lean:60:11: Unknown identifier `mapJoinCocone`"
+        ],
+        "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberLift": [
+          "error: SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFiberLift.lean:79:49: Application type mismatch: The argument"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity": [
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/CanonicalYonedaUnstraighteningIdentity.lean:115:35: Invalid field `map_isInitialVertex`: The environment does not contain `SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex`, so it is not possible to project the field `map_isInitialVertex` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/PrecompositionCoconeRestriction.lean:64:14: Unknown identifier `F2.coconeTransformationMap_isQCatEquivalence`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/PrecompositionCoconeRestriction.lean:63:60: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftComparisonComponent": [
+          "error: SerrePositivity/InfinityCategories/F1B/KanExtension/LeftComparisonComponent.lean:67:7: Invalid field `initialBoundaryLifting`: The environment does not contain `Function.initialBoundaryLifting`, so it is not possible to project the field `initialBoundaryLifting` from an expression",
+          "error: SerrePositivity/InfinityCategories/F1B/KanExtension/LeftComparisonComponent.lean:67:33: Invalid field `initialBoundaryLifting`: The environment does not contain `Function.initialBoundaryLifting`, so it is not possible to project the field `initialBoundaryLifting` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.ConeEdgeRebase": [
+          "error: SerrePositivity/InfinityCategories/Stable/ConeEdgeRebase.lean:12:5: unknown namespace `CategoryTheory`",
+          "error: SerrePositivity/InfinityCategories/Stable/ConeEdgeRebase.lean:13:12: unknown namespace `Simplicial`",
+          "error: SerrePositivity/InfinityCategories/Stable/ConeEdgeRebase.lean:16:0: unexpected identifier; expected command"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Compact.LimitComparisonApex": [
+          "error: SerrePositivity/InfinityCategories/F2/Compact/LimitComparisonApex.lean:33:23: Unknown identifier `mapJoinCone`",
+          "error: SerrePositivity/InfinityCategories/F2/Compact/LimitComparisonApex.lean:33:60: Unknown identifier `mapJoinCone`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc": [
+          "error: SerrePositivity/InfinityCategories/Stable/BinaryColimitDesc.lean:32:20: Unknown identifier `homotopyCategory_homMk_surjective`",
+          "error: SerrePositivity/InfinityCategories/Stable/BinaryColimitDesc.lean:32:9: Tactic `rcases` failed: `x✝ : ?m.104` is not an inductive datatype"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.CoconeOfPrism": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/CoconeOfPrism.lean:23:9: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/CoconeOfPrism.lean:23:35: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/CoconeOfPrism.lean:26:6: No goals to be solved"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.ConeTensorExtension": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/ConeTensorExtension.lean:27:9: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/ConeTensorExtension.lean:36:9: Unknown identifier `JoinCocone`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationExtension": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/ArrowInterpolationExtension.lean:25:9: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/ArrowInterpolationExtension.lean:33:9: Unknown identifier `JoinCocone`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeComparison": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/RelativeCommaCoconeComparison.lean:69:8: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.SourceColimitMapping": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SourceColimitMapping.lean:28:26: Unknown identifier `mapJoinCocone`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotalCofinal": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredTotalCofinal.lean:75:5: Unknown identifier `isFilteredInfinity_iff_of_iso`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSliceUncurry": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSliceUncurry.lean:25:7: Unknown identifier `uliftJoinIso`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSliceUncurry.lean:26:5: Unknown identifier `uliftConeShapeIso`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSliceUncurry.lean:24:35: Application type mismatch: The argument"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPointTotalProjection": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentPointTotalProjection.lean:49:13: Invalid field `isWeaklyContractible`: The environment does not contain `Function.isWeaklyContractible`, so it is not possible to project the field `isWeaklyContractible` from an expression",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentPointTotalProjection.lean:50:12: Invalid field `isWeaklyContractible`: The environment does not contain `Function.isWeaklyContractible`, so it is not possible to project the field `isWeaklyContractible` from an expression",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentPointTotalProjection.lean:59:6: Invalid field `isSimplicialHomotopyEquivalence`: The environment does not contain `Function.isSimplicialHomotopyEquivalence`, so it is not possible to project the field `isSimplicialHomotopyEquivalence` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductSmallFiber": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentProductSmallFiber.lean:68:2: Unknown identifier `nonemptyFiniteSSetProduct_kanComplex`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransformationPoint": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTransformationPoint.lean:24:15: Unknown identifier `SpaceInfinity`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTransformationPoint.lean:25:10: Unknown identifier `leftUnstraighteningTransformationSpace`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTransformationPoint.lean:26:4: Unknown identifier `coherentTransformationFamilyDiagram`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteConeFromEdges": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/DiscreteConeFromEdges.lean:27:54: Unknown identifier `edgeSimplex_source`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/DiscreteConeFromEdges.lean:26:63: unsolved goals",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/DiscreteConeFromEdges.lean:66:54: Unknown identifier `edgeSimplex_target`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductIndexTransport.lean:28:28: Unknown identifier `F2.coherentDiagramTotalKanObject`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductIndexTransport.lean:33:31: Unknown identifier `finiteKanProductDiagram`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductIndexTransport.lean:35:35: Function expected at"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoconeWholeEdgeSquare": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoconeWholeEdgeSquare.lean:46:8: Unknown identifier `F2.homMk_square_transport`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.CoconeRestrictionMappingCriterion": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/CoconeRestrictionMappingCriterion.lean:53:14: Unknown identifier `coconeTransformationMap_isQCatEquivalence`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/CoconeRestrictionMappingCriterion.lean:47:50: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoconeShapePrecomposition.lean:25:21: Unknown identifier `JoinCocone`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoconeShapePrecomposition.lean:26:4: Unknown identifier `IsColimitCone`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoconeShapePrecomposition.lean:26:22: Unknown identifier `IsColimitCone`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementUniversal": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementUniversal.lean:25:29: Unknown identifier `IsLocalObject`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementUniversal.lean:26:44: Unknown identifier `localObjectsSubcomplex`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementUniversal.lean:27:26: Unknown identifier `localTargetCoconeRestriction`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanBaseCoordinates": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/Localization/PushoutSpanBaseCoordinates.lean:74:37: Unknown identifier `squareLeftEdge_target`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/Localization/PushoutSpanBaseCoordinates.lean:71:30: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanCoherentCocone": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/BousfieldKanCoherentCocone.lean:89:65: Unknown constant `SerrePositivity.InfinityCategories.JoinCocone.vertex_restrict`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/BousfieldKanCoherentCocone.lean:87:71: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.InitialEvaluationHomotopyTriangle": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/InitialEvaluationHomotopyTriangle.lean:71:32: Unknown identifier `leftFibrationInitialSection`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/InitialEvaluationHomotopyTriangle.lean:81:50: Unknown identifier `leftFibrationInitialSection`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/InitialEvaluationHomotopyTriangle.lean:82:30: Unknown identifier `leftFibrationInitialSection_evaluation`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges": [
+          "error: SerrePositivity/InfinityCategories/Stable/CoconeRestrictionEdges.lean:24:51: Unknown identifier `coconeRestriction`",
+          "error: SerrePositivity/InfinityCategories/Stable/CoconeRestrictionEdges.lean:28:12: Unknown identifier `functorVertexEquiv`",
+          "error: SerrePositivity/InfinityCategories/Stable/CoconeRestrictionEdges.lean:24:77: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits": [
+          "error: SerrePositivity/InfinityCategories/Stable/FiniteOppositeColimits.lean:19:55: Unknown identifier `HasFiniteLimits`",
+          "error: SerrePositivity/InfinityCategories/Stable/FiniteOppositeColimits.lean:33:65: Unknown identifier `HasFiniteLimits`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.FunctorLoopSquareCriterion": [
+          "error: SerrePositivity/InfinityCategories/Stable/FunctorLoopSquareCriterion.lean:78:8: Unknown identifier `F2.isLimitCone_map_pullbackCone_iff`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula": [
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialVertexFormula.lean:34:36: Unknown identifier `leftFibrationInitialTotal`",
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialVertexFormula.lean:47:10: Unknown identifier `leftFibrationInitialTotal`",
+          "error: SerrePositivity/InfinityCategories/Stable/LeftFibrationInitialVertexFormula.lean:48:4: Unknown identifier `leftFibrationInitialFiberPiZeroEquiv`"
+        ],
+        "SerrePositivity.KST.Spectra.SpectrumZeroObject": [
+          "error: SerrePositivity/KST/Spectra/SpectrumZeroObject.lean:90:22: Unknown identifier `ZeroVertex`",
+          "error: SerrePositivity/KST/Spectra/SpectrumZeroObject.lean:96:28: Unknown identifier `HasZeroVertex`"
+        ],
+        "SerrePositivity.KST.SConstruction.ColimitDiagramTransport": [
+          "error: SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean:45:10: Unknown identifier `IsPushoutSquare`",
+          "error: SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean:45:52: Unknown identifier `IsPushoutSquare`",
+          "error: SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean:46:50: Unknown identifier `spanCoconeSquareIso.hom`"
+        ],
+        "SerrePositivity.KST.SConstruction.CofiberCompletionLifting": [
+          "error: SerrePositivity/KST/SConstruction/CofiberCompletionLifting.lean:42:12: Unknown identifier `squareDiagram_functorVertex`",
+          "error: SerrePositivity/KST/SConstruction/CofiberCompletionLifting.lean:68:13: Unknown identifier `stable_spanFamilyOfArrows`"
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyClass": [
+          "error: SerrePositivity/KST/LocalizingInvariants/SpectrumHomotopyClass.lean:40:29: Unknown identifier `coherentHomComparison_ordinary`",
+          "error: SerrePositivity/KST/LocalizingInvariants/SpectrumHomotopyClass.lean:44:29: Unknown identifier `coherentHomComparison_ordinary`"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison": [
+          "error: SerrePositivity/InfinityCategories/Derived/PiCriterion/TotalLegFiberComparison.lean:127:44: Unknown identifier `coherentDiagramValueToTotalKan`",
+          "error: SerrePositivity/InfinityCategories/Derived/PiCriterion/TotalLegFiberComparison.lean:135:14: Unknown identifier `coherentDiagramValueToTotalKan`",
+          "error: SerrePositivity/InfinityCategories/Derived/PiCriterion/TotalLegFiberComparison.lean:138:51: Unknown identifier `IsFilteredInfinity`"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.Gluing.StrictIntervalPullbackComparison": [
+          "error: SerrePositivity/InfinityCategories/Derived/Gluing/StrictIntervalPullbackComparison.lean:28:8: failed to synthesize instance of type class",
+          "error: SerrePositivity/InfinityCategories/Derived/Gluing/StrictIntervalPullbackComparison.lean:32:2: No goals to be solved"
+        ]
+      },
+      "wall_seconds": 7723.893,
+      "lake_seconds": 3728.541,
+      "built_log_events": 2131,
+      "lock_timeouts": 50
+    },
+    {
+      "round": 3,
+      "status": "FAIL",
+      "planned_roots": 207,
+      "attempted_roots": 152,
+      "blocked_roots": 55,
+      "successful_group_roots": 96,
+      "failed_modules": 12,
+      "first_errors_by_module": {
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison": [
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSpanComparison.lean:24:5: Unknown identifier `squareLeftArrow`",
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSpanComparison.lean:33:14: Unknown identifier `squareBottomArrow`",
+          "error: SerrePositivity/InfinityCategories/Stable/SuspensionSpanComparison.lean:33:36: Unknown identifier `squareLeftArrow`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath": [
+          "error: SerrePositivity/InfinityCategories/Stable/KanKernelPairSwapPath.lean:72:72: Unknown identifier `edgeSimplex_source`",
+          "error: SerrePositivity/InfinityCategories/Stable/KanKernelPairSwapPath.lean:74:6: Tactic `rfl` failed: The left-hand side",
+          "error: SerrePositivity/InfinityCategories/Stable/KanKernelPairSwapPath.lean:84:12: Unknown identifier `edgeSimplex_target`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaEvaluatedTransportEquivalence": [
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/YonedaEvaluatedTransportEquivalence.lean:47:3: Unknown identifier `isInitialVertex_iff_ulift`"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.Stability": [
+          "error: SerrePositivity/InfinityCategories/Derived/Stability.lean:60:4: Unknown identifier `IsStable`"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection": [
+          "error: SerrePositivity/InfinityCategories/Derived/PiCriterion/ConstantBoundaryDetection.lean:25:45: Unknown identifier `IsFilteredInfinity`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFactorCoherence": [
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomSpanSectionFactorCoherence.lean:46:30: Unknown identifier `F2.functorIso_precomp_precomp`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningIdentity": [
+          "error: SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableUnstraighteningIdentity.lean:49:17: Invalid field `map_isInitialVertex`: The environment does not contain `SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex`, so it is not possible to project the field `map_isInitialVertex` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatEquivalence": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatEquivalence.lean:26:22: Unknown identifier `catInfinityEdgeEquiv`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatEquivalence.lean:36:28: Unknown identifier `catInfinityEdgeEquiv`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatEquivalence.lean:71:22: Unknown identifier `catInfinityEdgeEquiv`"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback": [
+          "error: SerrePositivity/InfinityCategories/Stable/ConeComparisonValReadback.lean:28:47: Invalid field `isTerminalHo`: The environment does not contain `Function.isTerminalHo`, so it is not possible to project the field `isTerminalHo` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension": [
+          "error: SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSuspension.lean:68:53: Unknown identifier `SuspensionSquare`"
+        ],
+        "SerrePositivity.KST.Spectra.D3StageLoopedCanonicalProjection": [
+          "error: SerrePositivity/KST/Spectra/D3StageLoopedCanonicalProjection.lean:107:16: Invalid field `postcomp`: The environment does not contain `Exists.postcomp`, so it is not possible to project the field `postcomp` from an expression",
+          "error: SerrePositivity/KST/Spectra/D3StageLoopedCanonicalProjection.lean:103:57: unsolved goals"
+        ],
+        "SerrePositivity.KST.Spectra.D3CurryEvaluationProjection": [
+          "error: SerrePositivity/KST/Spectra/D3CurryEvaluationProjection.lean:50:6: Unknown identifier `F2.vertexIso_map_comp`",
+          "error: SerrePositivity/KST/Spectra/D3CurryEvaluationProjection.lean:43:49: unsolved goals"
+        ]
+      },
+      "wall_seconds": 1007.588,
+      "lake_seconds": 899.963,
+      "built_log_events": 520,
+      "lock_timeouts": 0
+    },
+    {
+      "round": 4,
+      "status": "STOP",
+      "planned_roots": 83,
+      "attempted_roots": 60,
+      "blocked_roots": 14,
+      "successful_group_roots": 30,
+      "failed_modules": 13,
+      "first_errors_by_module": {
+        "SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure": [
+          "error: SerrePositivity/InfinityCategories/Stable/UniverseVertexClosure.lean:31:42: Unknown constant `SerrePositivity.InfinityCategories.ZeroTriangle.ulift`",
+          "error: SerrePositivity/InfinityCategories/Stable/UniverseVertexClosure.lean:34:40: Unknown constant `SerrePositivity.InfinityCategories.ZeroTriangle.ulift`"
+        ],
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquarePrecomposition": [
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportSquarePrecomposition.lean:37:6: Unknown identifier `F2.functorIso_precomp_postcomp`",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomTransportSquarePrecomposition.lean:36:2: Type mismatch: After simplification, term"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronTriangles": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronTriangles.lean:30:30: Unknown identifier `catInfinityTriangleEdge`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronTriangles.lean:32:5: Unknown identifier `catInfinityTetrahedron_face_two`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatTetrahedronTriangles.lean:34:7: Unknown identifier `coherentTetrahedronBoundary13`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.StrictDiagramTriangleConstant": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/StrictDiagramTriangleConstant.lean:53:32: Unknown identifier `homotopyEdgeTriangleUpper`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/StrictDiagramTriangleConstant.lean:57:9: Unknown identifier `homotopyEdgeTriangleUpper`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Compact.ExchangeCoconeCompletion": [
+          "error: SerrePositivity/InfinityCategories/F2/Compact/ExchangeCoconeCompletion.lean:53:4: Unknown identifier `isColimitCone_functor_of_pointwise`",
+          "error: SerrePositivity/InfinityCategories/F2/Compact/ExchangeCoconeCompletion.lean:55:4: Unknown identifier `isColimitCone_functor_of_pointwise`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact": [
+          "error: SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean:39:66: Invalid field `of_functorIso`: The environment does not contain `Function.of_functorIso`, so it is not possible to project the field `of_functorIso` from an expression"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.KanCanonicalCoconeRestriction": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/KanCanonicalCoconeRestriction.lean:51:13: Unknown identifier `F2.coconeTransformationMap_isQCatEquivalence`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/KanCanonicalCoconeRestriction.lean:50:60: unsolved goals"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/FiniteColimitCoconeFamily.lean:28:53: Unknown identifier `HasFiniteColimits`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTriangleFromFunctorSimplex": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTriangleFromFunctorSimplex.lean:48:4: Unknown identifier `F2.CoherentTransformationVertexTriangle`"
+        ],
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTrianglePointEvaluation": [
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTrianglePointEvaluation.lean:34:7: Unknown identifier `F2.CoherentTransformationVertexTriangle`",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTrianglePointEvaluation.lean:39:16: Application type mismatch: The argument",
+          "error: SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTrianglePointEvaluation.lean:43:23: Function expected at"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentEmptyProductNative": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SiftedCoherentEmptyProductNative.lean:29:6: Unknown identifier `siftedTerminalKanMap`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SiftedCoherentEmptyProductNative.lean:27:2: Application type mismatch: The argument",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SiftedCoherentEmptyProductNative.lean:39:73: Unknown identifier `IsSiftedInfinity`"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Presentable.SiftedOppositeProducts": [
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SiftedOppositeProducts.lean:61:7: Unknown identifier `oppositeDiagram_double_return`",
+          "error: SerrePositivity/InfinityCategories/F2/Presentable/SiftedOppositeProducts.lean:42:29: unsolved goals"
+        ],
+        "SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows": [
+          "error: SerrePositivity/KST/LocalizingInvariants/BFFiberSquareArrows.lean:44:8: Unknown identifier `squareRightEdge_source`",
+          "error: SerrePositivity/KST/LocalizingInvariants/BFFiberSquareArrows.lean:43:79: unsolved goals",
+          "error: SerrePositivity/KST/LocalizingInvariants/BFFiberSquareArrows.lean:51:8: Unknown identifier `squareRightEdge_target`"
+        ]
+      },
+      "wall_seconds": 2134.9,
+      "lake_seconds": 2100.235,
+      "built_log_events": 2103,
+      "lock_timeouts": 0
+    }
+  ],
+  "layers": {
+    "before_direct": 294,
+    "before_core_order": 266,
+    "before_tiers": {
+      "W1": {
+        "forbidden_module_count": 1,
+        "affected_core_module_count": 11
+      },
+      "W2a": {
+        "forbidden_module_count": 166,
+        "affected_core_module_count": 3379
+      },
+      "W2b": {
+        "forbidden_module_count": 166,
+        "affected_core_module_count": 3379
+      }
+    },
+    "after": {
+      "status": "PASS",
+      "enforcement": {
+        "status": "PASS",
+        "core_order_violations": [],
+        "new_direct_edges": [],
+        "aggregate_increases": [],
+        "accepted_direct_edge_limit": 21,
+        "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+      },
+      "archive_users": {},
+      "direct": 18,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 0,
+          "affected_core_module_count": 0
+        },
+        "W2a": {
+          "forbidden_module_count": 150,
+          "affected_core_module_count": 2532
+        },
+        "W2b": {
+          "forbidden_module_count": 150,
+          "affected_core_module_count": 2532
+        }
+      }
+    }
+  },
+  "accepted_twelve_metrics": [
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction",
+      "before": 0,
+      "approved_draft": 127,
+      "current": 127,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaEvaluatedTransportEquivalence",
+        "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.F1B",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1B",
+        "SerrePositivity.InfinityCategories.F1B.FilteredExchange.FiniteRelativeWeakCriterion",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanComparisonFibers",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.IntervalHomBoundary",
+        "SerrePositivity.KST.Spectra.PointedInterval"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.Compact.WeakUniverse",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.F2",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+      ],
+      "draft_path_still_exists": false
+    },
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.F2.Filtered",
+      "before": 0,
+      "approved_draft": 51,
+      "current": 51,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F2.Filtered",
+        "SerrePositivity.InfinityCategories.Stable.Filtered.TotalKanProductEquivalence",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+      ],
+      "draft_path_still_exists": false
+    },
+    {
+      "tier": "W2a",
+      "root": "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights",
+        "SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison",
+        "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction",
+      "before": 0,
+      "approved_draft": 127,
+      "current": 127,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaEvaluatedTransportEquivalence",
+        "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.F1B",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1B",
+        "SerrePositivity.InfinityCategories.F1B.FilteredExchange.FiniteRelativeWeakCriterion",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanComparisonFibers",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.IntervalHomBoundary",
+        "SerrePositivity.KST.Spectra.PointedInterval"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.Compact.WeakUniverse",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ],
+      "draft_path_still_exists": true
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.F2",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+      ],
+      "draft_path_still_exists": false
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.F2.Filtered",
+      "before": 0,
+      "approved_draft": 51,
+      "current": 51,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.F2.Filtered",
+        "SerrePositivity.InfinityCategories.Stable.Filtered.TotalKanProductEquivalence",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+      ],
+      "draft_path_still_exists": false
+    },
+    {
+      "tier": "W2b",
+      "root": "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction",
+      "before": 0,
+      "approved_draft": 137,
+      "current": 137,
+      "actual_path": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights",
+        "SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison",
+        "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ],
+      "draft_path_still_exists": true
+    }
+  ],
+  "root_closure": {
+    "before_revision": "dbd3cb09053f280fb1d2ebe0b37d93ff65800fc5",
+    "before_production_modules_in_root": 24253,
+    "B_in_root_before": 0,
+    "missing_source": [],
+    "seconds": 54.383,
+    "method": "Traverse direct project imports in blobs from the DG-W3 main parent of the merge. Exclude root itself, external libraries and scripts.",
+    "after_production_modules_in_root": 24231,
+    "archived_in_root_after": 0,
+    "change": -22
+  },
+  "before_snapshots": {
+    "initial_modules": 3616,
+    "initial_snapshot_seconds": 1687.627,
+    "restore_seconds": 14.216,
+    "additional_modules": 23,
+    "additional_capture_batches": [
+      {
+        "status": "PASS",
+        "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone",
+        "seconds": 29.832,
+        "count": 8
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLimit",
+          "SerrePositivity.InfinityCategories.F2.Compact.LimitComparisonApex",
+          "SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationExtension",
+          "SerrePositivity.InfinityCategories.F2.Ind.ConeTensorExtension",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductSmallFiber"
+        ],
+        "count": 19,
+        "seconds": 32.115
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeLegTriangles",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeUnitComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalKanComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalLegCocones"
+        ],
+        "count": 44,
+        "seconds": 22.41
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalProjectionUnit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductLegReadback",
+          "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+        ],
+        "count": 86,
+        "seconds": 25.199
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanBaseCoordinates"
+        ],
+        "count": 5,
+        "seconds": 26.737
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.KST.SConstruction.CofiberCompletionLifting"
+        ],
+        "count": 2,
+        "seconds": 22.499
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath",
+          "SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison"
+        ],
+        "count": 4,
+        "seconds": 24.096
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.InfinityCategories.F2.CatInfinity.CatEquivalence",
+          "SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension"
+        ],
+        "count": 13,
+        "seconds": 18.122
+      },
+      {
+        "status": "PASS",
+        "modules": [
+          "SerrePositivity.KST.Spectra.D3StageLoopedCanonicalProjection"
+        ],
+        "count": 7,
+        "seconds": 23.774
+      }
+    ]
+  },
+  "archive_source_check": {
+    "status": "PASS",
+    "modules": 1726,
+    "mismatches": [],
+    "seconds": 3.111
+  },
+  "coverage_correction": {
+    "original_subset_roots": 857,
+    "uncovered_prior_failed_group_targets": 86,
+    "internal_snapshot_modules_revalidated": 90,
+    "cause": "The earlier resume list included named errors and omitted targets blocked by failed dependencies. Build coverage now uses current forward dependency closure; blocked roots are counted separately."
+  },
+  "runner_corrections": [
+    "Additional before capture first checked the lock owner against a nested helper. It stopped before Lake was invoked; the outer process now checks ownership.",
+    "git mv had staged the removed paths. Add only existing paths, then use the complete scoped pathspec with git commit --only."
+  ],
+  "extra_placement": {
+    "moves": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs"
+    },
+    "split": {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+      "dest": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+      "moved": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex"
+      ],
+      "keep": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+      ]
+    },
+    "R38_upward_moves_total": 14,
+    "limit": 30
+  },
+  "import_supplements": [
+    {
+      "record": "scripts/refactor/targets/w2b-imports-section14.json",
+      "modules": 57,
+      "imports": 92
+    },
+    {
+      "record": "scripts/refactor/targets/w2b-imports-round2.json",
+      "modules": 50,
+      "imports": 56
+    },
+    {
+      "record": "scripts/refactor/targets/w2b-imports-round3.json",
+      "modules": 12,
+      "imports": 13
+    }
+  ],
+  "downstream": "WAIT FOR SIGNAL",
+  "verify": "WAIT FOR SIGNAL",
+  "diagnostic_change_since_hash_update": {
+    "after_hash_update_affected_W2a": 2528,
+    "current_affected_W2a": 2532,
+    "newly_affected_roots": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone": {
+        "count": 12,
+        "path": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+        ]
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs": {
+        "count": 51,
+        "path": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs",
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones",
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+        ]
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport": {
+        "count": 12,
+        "path": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+          "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+        ]
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone": {
+        "count": 12,
+        "path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProductTotalMap",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProductProjection",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProduct",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorEnriched",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+        ]
+      }
+    },
+    "removed_affected_roots": [],
+    "approved_limit": 3379
+  },
+  "preservation": {
+    "status": "NOT RUN",
+    "after_snapshot": "NOT RUN",
+    "reason": "internal build stop condition"
+  },
+  "stop_condition": {
+    "instruction": "IF-W2b §5-6",
+    "previous_round": 3,
+    "previous_failed_modules": 12,
+    "current_round": 4,
+    "completed_group_failures_at_detection": 13,
+    "completed_groups_at_detection": 9,
+    "in_flight_group_at_detection": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2b-post-dgw3/internal-round4/group-009.log",
+    "time_epoch": 1793681213.185819,
+    "behavior": "Finish already running Lake group and release its lock. Later groups exit before invoking Lake.",
+    "rule": "§5-6 補充だけの round で失敗モジュール数が減らない。",
+    "final_observed_failed_modules": 13,
+    "prior_round_failures_observed_again": [],
+    "previous_failures_with_positive_build_log": [
+      "SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection",
+      "SerrePositivity.InfinityCategories.Derived.Stability",
+      "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFactorCoherence",
+      "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningIdentity",
+      "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaEvaluatedTransportEquivalence",
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.CatEquivalence",
+      "SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback",
+      "SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension",
+      "SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath",
+      "SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison"
+    ],
+    "previous_failures_without_positive_build_log": [
+      "SerrePositivity.KST.Spectra.D3CurryEvaluationProjection",
+      "SerrePositivity.KST.Spectra.D3StageLoopedCanonicalProjection"
+    ],
+    "not_attempted_after_cutoff": 9,
+    "raw_runner_guard": "The next group, if scheduled, exits 76 before Lake. It is excluded from attempted roots."
+  },
+  "candidate_providers_for_first_diagnostic_only": {
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquarePrecomposition": "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronTriangles": "SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleIso",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.StrictDiagramTriangleConstant": "SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides",
+    "SerrePositivity.InfinityCategories.F2.Compact.ExchangeCoconeCompletion": "SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion",
+    "SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact": "SerrePositivity.InfinityCategories.F2.Compact.Preservation",
+    "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily": "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+    "SerrePositivity.InfinityCategories.F2.Ind.KanCanonicalCoconeRestriction": "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentEmptyProductNative": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedEmptyProductNative",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SiftedOppositeProducts": "SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTriangleFromFunctorSimplex": "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationVertexTriangle",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTrianglePointEvaluation": "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationVertexTriangle",
+    "SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure": "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent",
+    "SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows": "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+  },
+  "candidate_status": "Source lookup only; no import applied or tested for this round."
+}

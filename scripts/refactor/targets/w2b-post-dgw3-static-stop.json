@@ -1,0 +1,105 @@
+{
+  "status": "STOP_BEFORE_INTERNAL_BUILD",
+  "reason": "Existing --enforce W2b rejects the post-DG-W3 layers.json config hash. Numeric conditions are unchanged; no baseline update performed.",
+  "merge_commit": "d135a715f4039cec7ef890a3f1f9046dc8d3f3df",
+  "merged_main": "dbd3cb09053f280fb1d2ebe0b37d93ff65800fc5",
+  "merge_resolution": {
+    "conflicts": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Derived.lean",
+        "non_import_nonblank_body_identical": true,
+        "main_DG_imports_retained": [
+          "SerrePositivity.DifferentialGraded.Category.Basic",
+          "SerrePositivity.DifferentialGraded.Category.ObjectImage",
+          "SerrePositivity.DifferentialGraded.Category.Tensor",
+          "SerrePositivity.DifferentialGraded.Complexes.HomComplex",
+          "SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying",
+          "SerrePositivity.DifferentialGraded.Complexes.TensorShift",
+          "SerrePositivity.DifferentialGraded.Derived.Basic",
+          "SerrePositivity.DifferentialGraded.Functor.Closed",
+          "SerrePositivity.DifferentialGraded.Functor.ModuleValued",
+          "SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence",
+          "SerrePositivity.DifferentialGraded.Module.FreeSphere",
+          "SerrePositivity.DifferentialGraded.Module.Functor",
+          "SerrePositivity.DifferentialGraded.Module.Graded",
+          "SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison",
+          "SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated",
+          "SerrePositivity.DifferentialGraded.Module.ShiftResolution",
+          "SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction",
+          "SerrePositivity.DifferentialGraded.Morita.Perfect",
+          "SerrePositivity.DifferentialGraded.Presentation.Category",
+          "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure",
+          "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts",
+          "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration",
+          "SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableClosedNaturality",
+          "SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableComposition",
+          "SerrePositivity.DifferentialGraded.Tensor.Compose"
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedReflectsQuasiIso.lean",
+        "non_import_nonblank_body_identical": true,
+        "main_DG_imports_retained": [
+          "SerrePositivity.DifferentialGraded.Derived.Basic"
+        ]
+      }
+    ],
+    "import_followups": []
+  },
+  "commands": [
+    {
+      "command": "python3 scripts/refactor/layer_check.py --report --output .lake/verify/ifw2b-post-dgw3/layers-report.json",
+      "exit_code": 0,
+      "status": "REPORT",
+      "seconds": 31.622
+    },
+    {
+      "command": "python3 scripts/refactor/layer_check.py --enforce W2b --output .lake/verify/ifw2b-post-dgw3/layers-enforce.json",
+      "exit_code": 2,
+      "error": "layer_check: error: W2b baseline config differs; coordinator review required"
+    }
+  ],
+  "baseline_config_sha256": "e542239dc143a34d44dd34458d7d35fddbcb4761db2ca9aeba0df6f8718480bd",
+  "current_config_sha256": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
+  "config_change_commit": "721e00752",
+  "config_changes": {
+    "allowed_until_move_removed": [
+      "SerrePositivity.PerfectComplex.KoszulLength",
+      "SerrePositivity.PerfectComplex.BiproductPerfect",
+      "SerrePositivity.PerfectComplex.Perfect.HomotopyCategory"
+    ],
+    "resolved_DG_exceptions_removed": 3
+  },
+  "diagnostics_not_enforcement_pass": {
+    "direct_violations": 18,
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 150,
+        "affected_core_module_count": 2528
+      },
+      "W2b": {
+        "forbidden_module_count": 150,
+        "affected_core_module_count": 2528
+      }
+    }
+  },
+  "proposed_next_action": "After coordinator review, update only config_sha256 and provenance in w2b-enforcement-baseline.json; keep the approved 21 direct edges and aggregate limits unchanged. Rerun enforce, then resume 857 internal targets.",
+  "baseline_changed": false,
+  "layers_changed_outside_merge": false,
+  "lock_acquired": false,
+  "lake_invocations": 0,
+  "internal_build": "NOT_STARTED",
+  "additional_before_snapshot": "NOT_STARTED",
+  "after_snapshot": "NOT_STARTED",
+  "preservation_comparison": "NOT_STARTED",
+  "downstream_build": "NOT_STARTED",
+  "verify": "NOT_STARTED",
+  "evidence_directory": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2b-post-dgw3"
+}
