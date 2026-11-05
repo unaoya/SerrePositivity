@@ -32,36 +32,36 @@ private lemma compositionParameter_map {D : Type*} [Category D] [MonoidalCategor
 /-- 同じ入力の全族に、元の懸垂の豊穣作用を施す標準入力。 -/
 def suspensionParameter {A B P : PointedSimplicialSet.{u}}
     (j : A ⟶ PointedObject.basedHom P B) :
-    suspension A ⟶ PointedObject.basedHom P (suspension B) :=
+    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ PointedObject.basedHom P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) :=
   transpose (transpose j ≫ suspensionHom A B)
 
 /-- 同じ全族入力制限と uncurry 座標は、入力の標準懸垂と厳密に可換。 -/
 lemma parametricUncurryAction_pre {A B P W : PointedSimplicialSet.{u}}
     (j : A ⟶ PointedObject.basedHom P B) :
-    (ihomAction P B (loopSpace W) ≫ prePointed j (PointedObject.basedHom P (loopSpace W))) ≫
+    (ihomAction P B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W))) ≫
         parametricUncurryAction A P W =
-      uncurryAction B W ≫ (ihomAction P (suspension B) W ≫
-        prePointed (suspensionParameter j) (PointedObject.basedHom P W)) := by
-  have hx : ihomAction P B (loopSpace W) ≫
-      prePointed j (PointedObject.basedHom P (loopSpace W)) =
-    curry (transpose j ▷ PointedObject.basedHom B (loopSpace W) ≫
-      MonoidalClosed.comp A B (loopSpace W)) ≫
-        (InternalHomExchange.iso A P (loopSpace W)).inv :=
+      uncurryAction B W ≫ (ihomAction P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W ≫
+        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (suspensionParameter j) (PointedObject.basedHom P W)) := by
+  have hx : ihomAction P B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W) ≫
+      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W)) =
+    curry (transpose j ▷ PointedObject.basedHom B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W) ≫
+      MonoidalClosed.comp A B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W)).inv :=
     (evaluationPost_exchange j).symm
   have hm : uncurryAction B W ≫
       curry ((transpose j ≫ suspensionHom A B) ▷
-        PointedObject.basedHom (suspension B) W ≫
-          MonoidalClosed.comp (suspension A) (suspension B) W) =
-    curry (transpose j ▷ PointedObject.basedHom B (loopSpace W) ≫
-      MonoidalClosed.comp A B (loopSpace W)) ≫
+        PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W ≫
+          MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W) =
+    curry (transpose j ▷ PointedObject.basedHom B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W) ≫
+      MonoidalClosed.comp A B (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace W)) ≫
         PointedObject.basedHomMap P (uncurryAction A W) :=
     compositionParameter_map (transpose j) (suspensionHom A B)
       (uncurryAction B W) (uncurryAction A W) _ _ (uncurryAction_comp A B W)
   have hy := evaluationPost_exchange (V := W) (suspensionParameter j)
   change curry (transpose (transpose (transpose j ≫ suspensionHom A B)) ▷
-      PointedObject.basedHom (suspension B) W ≫
-        MonoidalClosed.comp (suspension A) (suspension B) W) ≫
-      (InternalHomExchange.iso (suspension A) P W).inv = _ at hy
+      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W ≫
+        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) W) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A) P W).inv = _ at hy
   rw [transpose_transpose] at hy
   rw [hx, parametricUncurryAction_exchange]
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
