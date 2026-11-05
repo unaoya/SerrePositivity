@@ -16077,10 +16077,10 @@ namespace SerrePositivity.KST.SConstruction
 #print axioms monicKTracedTripleGeometricReassociationLiftData_sixth
 #check @monicKTracedTripleGeometricReassociationLiftData_residual
 #print axioms monicKTracedTripleGeometricReassociationLiftData_residual
-#check @compositionTripleTetrahedronOfMap
-#print axioms compositionTripleTetrahedronOfMap
-#check @compositionTripleRightTetrahedronOfMap
-#print axioms compositionTripleRightTetrahedronOfMap
+#check @SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedronOfMap
+#print axioms SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedronOfMap
+#check @SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap
+#print axioms SerrePositivity.InfinityCategories.Kan.compositionTripleRightTetrahedronOfMap
 
 end SerrePositivity.KST.SConstruction
 
