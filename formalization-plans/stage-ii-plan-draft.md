@@ -12,7 +12,7 @@
 | `theorem_3_1_K0` | 論文 Thm 3.1（台つき有理 K 理論の降下） | 目標 B：計画 v2（基盤優先、Land–Tamme の dg 増強形） |
 | `Section4.supportedRankK0_descent` | 論文 Lemma 4.6 | 目標 B（同上） |
 
-段階 II の終わりの条件：主定理の閉包の sorry が、BS の恒久の引用 3 件（結晶の de Rham D68、BS17 Thm 4.1、BM18 Thm 1.7）だけになり、それらが監査の許可一覧に入っていること。K 理論側は引用なし。
+段階 II の終わりの条件：**主定理の閉包の sorry が 0**（11-05 夜、ユーザー決定）。BS の設計で「恒久の引用」とした 3 件（結晶の de Rham D68 `crystalline_deRham_polynomial_Zp`、BS17 Thm 4.1 (i) `cech_exact_of_vCover_perfect`、BM18 Thm 1.7 `arcSheaf_of_vSheaf_of_valuationSquares`）も証明する。K 理論側も引用なし（公理 (3) の経路も引用を使わない）。監査の許可一覧に sorry は入れない。
 
 ## 1. 目標 A：E3 を消す
 
@@ -36,7 +36,7 @@
 | A-4 | A0（prismatic site、Čech–Alexander）、A1（Hodge–Tate 比較）、A2（Construction 7.6、CAlg 値の Δ） | A-1・A-2、G10、G12 |
 | A-5 | A3〜A8（Lemma 8.4、Prop 8.5、Cor 8.12、Thm 10.11 ほか） | A-4、M14（P⁰）、M15（descendability）、⊗ᴸ（済） |
 | A-6 | A9：E3 の組み立て → `Inputs` の証明の置き換え | A-5 |
-| A-7 | 恒久の引用 3 件を監査の許可一覧へ | A-6 |
+| A-7 | 3 件の証明：D68（結晶側の de Rham 形）、BS17 Thm 4.1 (i)（完全スキームの v 降下）、BM18 Thm 1.7（arc 層の判定）。まず各原典の証明が何に依存するかを紙で調べ、規模と経路を決める（11-05 夜に追加、未着手） | 古典的な部分は A-6 と独立に先行できる見込み（調査で確かめる） |
 
 ∞ 側から供給するもの（新しい「∞ 供給」レーンの最初の仕事）：G8 の四角形（篩包含）の残り：IF-G2-finish の段 2 の②の完成（切断の制限と G8 の選択された比較を結ぶ錐の族の同型）、続いて①と四角形（`infinity-codex-g2-finish.md`、`infinity-g2-progress.md` の末尾。段 1 と段 2 の途中は main にある）。G2 から引き継ぐ IF-G2 の残り（G9 の小補題 3 つ、G8 の一般の φ、G10、G8 の一般形、G12 とその前提 2 つ）、M14（P⁰、`EInfinity/PowerOperation/`）、M15（descendability、`EInfinity/Descendable/`）。
 
