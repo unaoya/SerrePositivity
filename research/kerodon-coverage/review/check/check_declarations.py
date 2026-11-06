@@ -10,6 +10,8 @@ import json
 import re
 import subprocess
 import sys
+import time
+import shlex
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -204,19 +206,38 @@ def call(root, command, stdout_path, stderr_path):
     return process.returncode
 
 
+def blocking_build(command, cwd):
+    if "SerrePositivity" not in cwd:
+        return False
+    words = shlex.split(command)
+    if any(Path(w).name == "verify.sh" for w in words):
+        return True
+    for i, word in enumerate(words[:-1]):
+        if Path(word).name == "lake" and words[i + 1] == "build":
+            targets = [w for w in words[i + 2:] if not w.startswith("-")]
+            return not targets or any(w in {"SerrePositivity", "SerrePositivity:leanArts"} for w in targets)
+    return False
+
+
 def inspect_builds(root, jobdir):
-    result = subprocess.run(["ps", "-axo", "command="], cwd=root, capture_output=True, text=True)
-    builds = [line for line in result.stdout.splitlines()
-              if re.search(r"(?:^|[/\s])lake\s+build(?:\s|$)", line)]
-    # 無関係なアプリのコマンドラインは成果物に保存しない。
-    (jobdir / "ps.stdout.txt").write_text("\n".join(builds) + ("\n" if builds else ""))
+    result = subprocess.run(["ps", "-axo", "pid=,command="], cwd=root, capture_output=True, text=True)
+    records, blocked = [], False
+    for line in result.stdout.splitlines():
+        if not re.search(r"(?:^|[/\s])lake\s+build(?:\s|$)|verify\.sh", line):
+            continue
+        parts = line.strip().split(None, 1)
+        if len(parts) != 2:
+            continue
+        pid, command = parts
+        location = subprocess.run(["/usr/sbin/lsof", "-a", "-p", pid, "-d", "cwd", "-Fn"], capture_output=True, text=True)
+        cwd = next((x[1:] for x in location.stdout.splitlines() if x.startswith("n")), "")
+        records.append(dict(pid=pid, command=command, cwd=cwd))
+        blocked = blocked or blocking_build(command, cwd)
+    dump(jobdir / "build-processes.json", records)
     (jobdir / "ps.stderr.txt").write_text(result.stderr)
     if result.returncode:
         return "preflight_failed"
-    # wrapper 行でも既存ビルドとして停止（--wait 0 の前に待機しない）。
-    if builds:
-        return "build_busy"
-    return "ready"
+    return "build_busy" if blocked else "ready"
 
 
 def run(root, directory, plan, only_modules, limit, resume):
@@ -261,6 +282,11 @@ def run(root, directory, plan, only_modules, limit, resume):
             metadata["state"] = "source_missing"
         else:
             metadata["state"] = inspect_builds(root, jobdir)
+            while metadata["state"] == "build_busy":
+                dump(metadata_path, metadata)
+                print(f"{job['module']}: waiting for SerrePositivity full build", flush=True)
+                time.sleep(10)
+                metadata["state"] = inspect_builds(root, jobdir)
         if metadata["state"] != "ready":
             dump(metadata_path, metadata)
             print(f"{job['module']}: {metadata['state']}", flush=True)
@@ -271,6 +297,16 @@ def run(root, directory, plan, only_modules, limit, resume):
         build = ["zsh", "scripts/refactor/with_build_lock.sh", "--wait", "0", "--", "lake", "build", job["module"]]
         metadata["build_command"] = build
         metadata["build_returncode"] = call(root, build, jobdir / "build.stdout.txt", jobdir / "build.stderr.txt")
+        attempt = 0
+        while metadata["build_returncode"] == 75:
+            attempt += 1
+            for stream in ("stdout", "stderr"):
+                (jobdir / f"build.{stream}.txt").rename(jobdir / f"build.wait-{attempt}.{stream}.txt")
+            print(f"{job['module']}: waiting for build lock", flush=True)
+            time.sleep(10)
+            while inspect_builds(root, jobdir) == "build_busy":
+                time.sleep(10)
+            metadata["build_returncode"] = call(root, build, jobdir / "build.stdout.txt", jobdir / "build.stderr.txt")
         if metadata["build_returncode"]:
             metadata["state"] = "build_busy" if metadata["build_returncode"] == 75 else "build_failed"
         else:
