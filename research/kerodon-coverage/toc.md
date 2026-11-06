@@ -1,0 +1,530 @@
+# Kerodon table of contents
+
+取得日：2026-11-06。出典：https://kerodon.net/ （トップページの Part 一覧）と各 Chapter ページ https://kerodon.net/tag/<tag> の "Structure" 欄。
+範囲：Part 1–2、Chapter 1–10 の全 Section・Subsection（トップページに載る全体）。Part ページ（0000・02GZ）の一覧とも照合し一致。
+取れなかった部分：なし。Subsection より下の見出し単位はない（x.y.z.w は定理などの環境の番号）。Subsection を持たない Section もない。
+補足：Chapter 11「Retired Tags」（00FN）はトップページには載らないが Part 1 ページの一覧に出る、廃止タグの置き場。末尾に別掲。
+件数（本文 Ch 1–10）：Section 57、Subsection 418。
+見出しの数式は原文の TeX のまま（例 $\infty $）。形式：番号 [Tag] 見出し。
+
+## Part 1 [0000] Foundations
+
+- Chapter 1 [0001] The Language of $\infty $-Categories
+  - 1.1 [0004] Simplicial Sets
+    - 1.1.1 [04ZB] Face Operators
+    - 1.1.2 [04ZJ] Degeneracy Operators
+    - 1.1.3 [04ZS] Dimensions of Simplicial Sets
+    - 1.1.4 [0010] The Skeletal Filtration
+    - 1.1.5 [00FQ] Discrete Simplicial Sets
+    - 1.1.6 [001D] Directed Graphs as Simplicial Sets
+  - 1.2 [0508] From Topological Spaces to Simplicial Sets
+    - 1.2.1 [00G5] Connected Components of Simplicial Sets
+    - 1.2.2 [001Q] The Singular Simplicial Set of a Topological Space
+    - 1.2.3 [001X] The Geometric Realization of a Simplicial Set
+    - 1.2.4 [000K] Horns
+    - 1.2.5 [002G] Kan Complexes
+  - 1.3 [002L] From Categories to Simplicial Sets
+    - 1.3.1 [002M] The Nerve of a Category
+    - 1.3.2 [04FY] Example: Monoids as Simplicial Sets
+    - 1.3.3 [002Y] Recovering a Category from its Nerve
+    - 1.3.4 [0030] Characterization of Nerves
+    - 1.3.5 [0035] The Nerve of a Groupoid
+    - 1.3.6 [00HE] The Homotopy Category of a Simplicial Set
+    - 1.3.7 [00HJ] Example: The Path Category of a Directed Graph
+  - 1.4 [0039] $\infty $-Categories
+    - 1.4.1 [003F] Objects and Morphisms
+    - 1.4.2 [003L] The Opposite of an $\infty $-Category
+    - 1.4.3 [003U] Homotopies of Morphisms
+    - 1.4.4 [0041] Composition of Morphisms
+    - 1.4.5 [0049] The Homotopy Category of an $\infty $-Category
+    - 1.4.6 [004Q] Isomorphisms
+  - 1.5 [0055] Functors of $\infty $-Categories
+    - 1.5.1 [0057] Examples of Functors
+    - 1.5.2 [005H] Commutative Diagrams
+    - 1.5.3 [005Z] The $\infty $-Category of Functors
+    - 1.5.4 [006B] Digression: Lifting Properties
+    - 1.5.5 [006V] Trivial Kan Fibrations
+    - 1.5.6 [0078] Uniqueness of Composition
+    - 1.5.7 [00J3] Universality of Path Categories
+- Chapter 2 [007J] Examples of $\infty $-Categories
+  - 2.1 [00BL] Monoidal Categories
+    - 2.1.1 [00BT] Nonunital Monoidal Categories
+    - 2.1.2 [00C2] Monoidal Categories
+    - 2.1.3 [00CP] Examples of Monoidal Categories
+    - 2.1.4 [00CV] Nonunital Monoidal Functors
+    - 2.1.5 [00DD] Lax Monoidal Functors
+    - 2.1.6 [00DX] Monoidal Functors
+    - 2.1.7 [00ED] Enriched Category Theory
+  - 2.2 [007K] The Theory of Bicategories
+    - 2.2.1 [007P] Bicategories
+    - 2.2.2 [0083] Examples of Bicategories
+    - 2.2.3 [008A] Opposite and Conjugate Bicategories
+    - 2.2.4 [008G] Functors of Bicategories
+    - 2.2.5 [008V] The Category of Bicategories
+    - 2.2.6 [0097] Isomorphisms of Bicategories
+    - 2.2.7 [00FC] Strictly Unital Bicategories
+    - 2.2.8 [02GD] The Homotopy Category of a Bicategory
+  - 2.3 [009P] The Duskin Nerve of a Bicategory
+    - 2.3.1 [009T] The Duskin Nerve
+    - 2.3.2 [00AB] From Bicategories to $\infty $-Categories
+    - 2.3.3 [00AQ] Thin $2$-Simplices of a Duskin Nerve
+    - 2.3.4 [00AT] Recovering a Bicategory from its Duskin Nerve
+    - 2.3.5 [00B9] The Duskin Nerve of a Strict Bicategory
+  - 2.4 [00JN] Simplicial Categories
+    - 2.4.1 [00JQ] Simplicial Enrichment
+    - 2.4.2 [00K4] Examples of Simplicial Categories
+    - 2.4.3 [00KM] The Homotopy Coherent Nerve
+    - 2.4.4 [00L0] The Path Category of a Simplicial Set
+    - 2.4.5 [00LH] From Simplicial Categories to $\infty $-Categories
+    - 2.4.6 [00LW] The Homotopy Category of a Simplicial Category
+    - 2.4.7 [00MZ] Example: Braid Monoids
+  - 2.5 [00ND] Differential Graded Categories
+    - 2.5.1 [00NQ] Generalities on Chain Complexes
+    - 2.5.2 [00P9] Differential Graded Categories
+    - 2.5.3 [00PK] The Differential Graded Nerve
+    - 2.5.4 [00SW] The Homotopy Category of a Differential Graded Category
+    - 2.5.5 [00Q9] Digression: The Homology of Simplicial Sets
+    - 2.5.6 [00QQ] The Dold-Kan Correspondence
+    - 2.5.7 [00RF] The Shuffle Product
+    - 2.5.8 [00S0] The Alexander-Whitney Construction
+    - 2.5.9 [00SC] Comparison with the Homotopy Coherent Nerve
+- Chapter 3 [00SY] Kan Complexes
+  - 3.1 [00SZ] The Homotopy Theory of Kan Complexes
+    - 3.1.1 [00T0] Kan Fibrations
+    - 3.1.2 [00UG] Anodyne Morphisms
+    - 3.1.3 [00TJ] Exponentiation for Kan Fibrations
+    - 3.1.4 [0219] Covering Maps
+    - 3.1.5 [00TR] The Homotopy Category of Kan Complexes
+    - 3.1.6 [01YX] The $\infty $-Category of Spaces
+    - 3.1.7 [00U1] Homotopy Equivalences and Weak Homotopy Equivalences
+    - 3.1.8 [00UU] Fibrant Replacement
+  - 3.2 [00V2] Homotopy Groups
+    - 3.2.1 [00V4] Pointed Kan Complexes
+    - 3.2.2 [00VJ] The Homotopy Groups of a Kan Complex
+    - 3.2.3 [00W3] The Group Structure on $\pi _{n}(X,x)$
+    - 3.2.4 [02L4] Contractibility
+    - 3.2.5 [00WD] The Connecting Homomorphism
+    - 3.2.6 [00WL] The Long Exact Sequence of a Fibration
+    - 3.2.7 [00WU] Whitehead's Theorem for Kan Complexes
+    - 3.2.8 [00XB] Closure Properties of Homotopy Equivalences
+  - 3.3 [00XF] The $\operatorname{Ex}^{\infty }$ Functor
+    - 3.3.1 [00XT] Digression: Braced Simplicial Sets
+    - 3.3.2 [00XH] The Subdivision of a Simplex
+    - 3.3.3 [00Y5] The Subdivision of a Simplicial Set
+    - 3.3.4 [00YR] The Last Vertex Map
+    - 3.3.5 [00Z1] Comparison of $X$ with $\operatorname{Ex}(X)$
+    - 3.3.6 [00ZA] The $\operatorname{Ex}^{\infty }$ Functor
+    - 3.3.7 [00ZM] Application: Characterizations of Weak Homotopy Equivalences
+    - 3.3.8 [00ZR] Application: Extending Kan Fibrations
+  - 3.4 [0106] Homotopy Pullback and Homotopy Pushout Squares
+    - 3.4.1 [010K] Homotopy Pullback Squares
+    - 3.4.2 [0112] Homotopy Pushout Squares
+    - 3.4.3 [011H] Mather's Second Cube Theorem
+    - 3.4.4 [011Q] Mather's First Cube Theorem
+    - 3.4.5 [0120] Digression: Weak Homotopy Equivalences of Semisimplicial Sets
+    - 3.4.6 [012B] Excision
+    - 3.4.7 [012K] The Seifert van-Kampen Theorem
+  - 3.5 [0513] Truncations and Postnikov Towers
+    - 3.5.1 [0517] Connectivity
+    - 3.5.2 [051J] Connectivity as a Lifting Property
+    - 3.5.3 [051Z] Coskeletal Simplicial Sets
+    - 3.5.4 [052Q] Weakly Coskeletal Simplicial Sets
+    - 3.5.5 [053L] Higher Groupoids
+    - 3.5.6 [0543] Higher Fundamental Groupoids
+    - 3.5.7 [054N] Truncated Kan Complexes
+    - 3.5.8 [055K] The Postnikov Tower of a Kan Complex
+    - 3.5.9 [055Y] Truncated Morphisms
+  - 3.6 [012Y] Comparison with Topological Spaces
+    - 3.6.1 [0130] Digression: Finite Simplicial Sets
+    - 3.6.2 [013C] Exactness of Geometric Realization
+    - 3.6.3 [013P] Weak Homotopy Equivalences in Topology
+    - 3.6.4 [0141] The Unit Map $u: X \rightarrow \operatorname{Sing}_{\bullet }(|X|)$
+    - 3.6.5 [0147] Comparison of Homotopy Categories
+    - 3.6.6 [021Q] Serre Fibrations
+- Chapter 4 [01GP] The Homotopy Theory of $\infty $-Categories
+  - 4.1 [01B8] Inner Fibrations
+    - 4.1.1 [01B9] Inner Fibrations of Simplicial Sets
+    - 4.1.2 [01CD] Subcategories of $\infty $-Categories
+    - 4.1.3 [01BM] Inner Anodyne Morphisms
+    - 4.1.4 [01BS] Exponentiation for Inner Fibrations
+    - 4.1.5 [0226] Inner Covering Maps
+  - 4.2 [014H] Left and Right Fibrations
+    - 4.2.1 [01GT] Left and Right Fibrations of Simplicial Sets
+    - 4.2.2 [0156] Fibrations in Groupoids
+    - 4.2.3 [022K] Left and Right Covering Maps
+    - 4.2.4 [014S] Left Anodyne and Right Anodyne Morphisms
+    - 4.2.5 [0152] Exponentiation for Left and Right Fibrations
+    - 4.2.6 [00T8] The Homotopy Extension Lifting Property
+  - 4.3 [015M] The Slice and Join Constructions
+    - 4.3.1 [015N] Slices of Categories
+    - 4.3.2 [0160] Joins of Categories
+    - 4.3.3 [016K] Joins of Simplicial Sets
+    - 4.3.4 [017E] Joins of Topological Spaces
+    - 4.3.5 [017V] Slices of Simplicial Sets
+    - 4.3.6 [018E] Slices of $\infty $-Categories
+    - 4.3.7 [018P] Slices of Left and Right Fibrations
+  - 4.4 [01EM] Isomorphisms and Isofibrations
+    - 4.4.1 [01ER] Isofibrations of $\infty $-Categories
+    - 4.4.2 [019C] Isomorphisms and Lifting Properties
+    - 4.4.3 [01CZ] The Core of an $\infty $-Category
+    - 4.4.4 [01DF] Natural Isomorphisms
+    - 4.4.5 [01F0] Exponentiation for Isofibrations
+  - 4.5 [01DE] Equivalence
+    - 4.5.1 [01DQ] Equivalences of $\infty $-Categories
+    - 4.5.2 [03T1] Minimal $\infty $-Categories
+    - 4.5.3 [032Y] Categorical Pullback Squares
+    - 4.5.4 [01E7] Categorical Equivalence
+    - 4.5.5 [01F6] Categorical Pushout Squares
+    - 4.5.6 [01FU] Isofibrations of Simplicial Sets
+    - 4.5.7 [0346] Isofibrant Diagrams
+    - 4.5.8 [02TM] Relative Exponentiation
+  - 4.6 [01J3] Morphism Spaces
+    - 4.6.1 [01J4] Morphism Spaces
+    - 4.6.2 [01HM] Digression: Universal Property of the Join
+    - 4.6.3 [01K2] Digression: Categorical Mapping Cylinders
+    - 4.6.4 [01KE] Oriented Fiber Products
+    - 4.6.5 [01KW] Pinched Morphism Spaces
+    - 4.6.6 [04HY] Digression: Diagrams in Slice $\infty $-Categories
+    - 4.6.7 [01LA] Morphism Spaces in the Homotopy Coherent Nerve
+    - 4.6.8 [01PF] Composition of Morphisms
+  - 4.7 [05EA] Truncated Objects and Higher Homotopy Categories
+    - 4.7.1 [05EB] Truncated Objects
+    - 4.7.2 [05F8] Truncated Morphisms
+    - 4.7.3 [02H6] Initial and Final Objects
+    - 4.7.4 [04UX] Discrete and Subterminal Objects
+    - 4.7.5 [04VD] Monomorphisms
+    - 4.7.6 [0583] Locally Truncated $\infty $-Categories
+    - 4.7.7 [057D] $n$-Categories
+    - 4.7.8 [058P] Minimality Conditions
+    - 4.7.9 [0596] Higher Homotopy Categories
+  - 4.8 [0578] Full, Faithful, and Essentially Surjective Functors
+    - 4.8.1 [01JG] Essentially Surjective Functors
+    - 4.8.2 [059U] Full Functors
+    - 4.8.3 [05AW] Faithful Functors
+    - 4.8.4 [06SQ] Detecting Equivalences of $\infty $-Categories
+    - 4.8.5 [05BY] Categorically Connective Functors
+    - 4.8.6 [06SY] Digression: $n$-Categorical Fibrations
+    - 4.8.7 [05CP] Canonical Factorizations
+    - 4.8.8 [05DG] Categorically Connective Morphisms of Simplicial Sets
+  - 4.9 [03PP] Size Conditions on $\infty $-Categories
+    - 4.9.1 [03PV] Ordinals and Well-Orderings
+    - 4.9.2 [03QW] Cardinals and Cardinality
+    - 4.9.3 [03RB] Small Sets
+    - 4.9.4 [03S1] Small Simplicial Sets
+    - 4.9.5 [03SH] Essential Smallness
+    - 4.9.6 [03TJ] Small Kan Complexes
+    - 4.9.7 [03TN] Local Smallness
+    - 4.9.8 [047A] Small Fibrations
+- Chapter 5 [01J2] Fibrations of $\infty $-Categories
+  - 5.1 [01T1] Cartesian Fibrations
+    - 5.1.1 [01T4] Cartesian Edges of Simplicial Sets
+    - 5.1.2 [01TK] Cartesian Morphisms of $\infty $-Categories
+    - 5.1.3 [01TW] Locally Cartesian Edges
+    - 5.1.4 [01U9] Cartesian Fibrations
+    - 5.1.5 [01UW] Locally Cartesian Fibrations
+    - 5.1.6 [023L] Fiberwise Equivalence
+    - 5.1.7 [0280] Equivalence of Inner Fibrations
+  - 5.2 [019A] Covariant Transport
+    - 5.2.1 [01VF] Exponentiation for Cartesian Fibrations
+    - 5.2.2 [019M] Covariant Transport Functors
+    - 5.2.3 [0241] Example: The Relative Join
+    - 5.2.4 [024M] Fibrations over the $1$-Simplex
+    - 5.2.5 [01VT] The Homotopy Transport Representation
+    - 5.2.6 [01Q7] Elements of Set-Valued Functors
+    - 5.2.7 [01QG] Covering Space Theory
+    - 5.2.8 [02RL] Parametrized Covariant Transport
+  - 5.3 [035A] Fibrations over Ordinary Categories
+    - 5.3.1 [035D] The Strict Transport Representation
+    - 5.3.2 [035U] Homotopy Colimits of Simplicial Sets
+    - 5.3.3 [025W] The Weighted Nerve
+    - 5.3.4 [036V] Scaffolds of Cocartesian Fibrations
+    - 5.3.5 [037H] Application: Classification of Cocartesian Fibrations
+    - 5.3.6 [037W] Application: Relative Exponentials
+    - 5.3.7 [01US] Application: Path Fibrations
+    - 5.3.8 [05PM] Digression: Minimal Fibrations
+  - 5.4 [01W4] $\infty $-Bicategories
+    - 5.4.1 [01W6] Definitions
+    - 5.4.2 [01WF] Interior Fibrations
+    - 5.4.3 [01WT] Slices of $\infty $-Bicategories
+    - 5.4.4 [01X7] The Local Thinness Criterion
+    - 5.4.5 [01XA] The Pith of an $\infty $-Bicategory
+    - 5.4.6 [01XQ] The Four-out-of-Five Property
+    - 5.4.7 [01Y4] Functors of $\infty $-Bicategories
+    - 5.4.8 [01YK] Strict $\infty $-Bicategories
+    - 5.4.9 [02RX] Comparison of Homotopy Transport Representations
+  - 5.5 [01YV] The $\infty $-Category $\operatorname{\mathcal{QC}}$
+    - 5.5.1 [01Z5] Digression: Slicing and the Homotopy Coherent Nerve
+    - 5.5.2 [01ZV] The $\infty $-Category of Pointed Spaces
+    - 5.5.3 [0208] The $\infty $-Category of $\infty $-Categories
+    - 5.5.4 [020J] The $\infty $-Bicategory of $\infty $-Categories
+    - 5.5.5 [020S] $\infty $-Categories with a Distinguished Object
+  - 5.6 [027M] Classification of Cocartesian Fibrations
+    - 5.6.1 [01R1] Elements of Category-Valued Functors
+    - 5.6.2 [026H] Elements of $\operatorname{\mathcal{QC}}$-Valued Functors
+    - 5.6.3 [0273] Comparison with the Category of Elements
+    - 5.6.4 [0279] Comparison with the Weighted Nerve
+    - 5.6.5 [028U] The Universality Theorem
+    - 5.6.6 [02HU] Application: Corepresentable Functors
+    - 5.6.7 [029B] Application: Extending Cocartesian Fibrations
+    - 5.6.8 [02S9] Transport Witnesses
+    - 5.6.9 [02SM] Proof of the Universality Theorem
+
+## Part 2 [02GZ] Higher Category Theory
+
+- Chapter 6 [02C9] Adjoint Functors
+  - 6.1 [02CA] Adjunctions in $2$-Categories
+    - 6.1.1 [02CF] Adjunctions
+    - 6.1.2 [02CP] Adjuncts
+    - 6.1.3 [02D4] Uniqueness of Adjoints
+    - 6.1.4 [02DD] Adjoints of Isomorphisms
+    - 6.1.5 [02DM] Composition of Adjunctions
+    - 6.1.6 [02DY] Duality in Monoidal Categories
+  - 6.2 [02EH] Adjoint Functors Between $\infty $-Categories
+    - 6.2.1 [02EJ] Adjunctions of $\infty $-Categories
+    - 6.2.2 [02F5] Reflective Subcategories
+    - 6.2.3 [04KG] Local Objects
+    - 6.2.4 [05Z3] Stability Properties of Reflective Subcategories
+    - 6.2.5 [02FJ] Correspondences
+    - 6.2.6 [02FQ] Local Existence Criterion
+    - 6.2.7 [03XB] Digression: $\infty $-Categories with Short Morphisms
+  - 6.3 [01M4] Localization
+    - 6.3.1 [01ME] Localizations of $\infty $-Categories
+    - 6.3.2 [01MZ] Existence of Localizations
+    - 6.3.3 [02FY] Reflective Localizations
+    - 6.3.4 [02LU] Fiberwise Localization
+    - 6.3.5 [02LZ] Universal Localizations
+    - 6.3.6 [02MC] Subdivision and Localization
+- Chapter 7 [02H0] Limits and Colimits
+  - 7.1 [02H1] Limits and Colimits
+    - 7.1.1 [02VY] Limits and Colimits in $\infty $-Categories
+    - 7.1.2 [03EX] Constant Diagrams
+    - 7.1.3 [02JA] Limit and Colimit Diagrams
+    - 7.1.4 [02JV] Preservation of Limits and Colimits
+    - 7.1.5 [02WE] Relative Initial and Final Objects
+    - 7.1.6 [02KF] Relative Limits and Colimits
+    - 7.1.7 [069P] Colimits Relative to a Fibration
+    - 7.1.8 [02X8] Limits and Colimits in Diagram $\infty $-Categories
+    - 7.1.9 [06A8] Colimits and Categorical Pullback Squares
+    - 7.1.10 [06AN] Colimits in $\infty $-Categories of Sections
+  - 7.2 [02MZ] Cofinality
+    - 7.2.1 [02N0] Cofinal Morphisms of Simplicial Sets
+    - 7.2.2 [02NQ] Cofinality and Limits
+    - 7.2.3 [02NX] Quillen's Theorem A for $\infty $-Categories
+  - 7.3 [02Y1] Kan Extensions
+    - 7.3.1 [02Y7] Kan Extensions along General Functors
+    - 7.3.2 [02YP] Kan Extensions along Inclusions
+    - 7.3.3 [02Z2] Relative Kan Extensions
+    - 7.3.4 [02ZL] Kan Extensions along Fibrations
+    - 7.3.5 [02ZZ] Existence of Kan Extensions
+    - 7.3.6 [0308] The Universal Property of Kan Extensions
+    - 7.3.7 [047V] Kan Extensions in Functor $\infty $-Categories
+    - 7.3.8 [030U] Transitivity of Kan Extensions
+    - 7.3.9 [031Q] Relative Colimits for Cocartesian Fibrations
+  - 7.4 [02SX] Limits and Colimits of Spaces
+    - 7.4.1 [05QM] Limits of Spaces
+    - 7.4.2 [05R5] Digression: Functoriality of Covariant Transport
+    - 7.4.3 [05RN] Colimits of Spaces
+    - 7.4.4 [02T0] Limits of $\infty $-Categories
+    - 7.4.5 [02UN] Colimits of $\infty $-Categories
+    - 7.4.6 [02V2] Proof of the Refraction Criterion
+  - 7.5 [039Y] Homotopy Limits and Colimits
+    - 7.5.1 [039Z] Homotopy Limits of Kan Complexes
+    - 7.5.2 [03A7] Homotopy Limits of $\infty $-Categories
+    - 7.5.3 [03AP] The Homotopy Limit as a Derived Functor
+    - 7.5.4 [03B5] Homotopy Limit Diagrams
+    - 7.5.5 [03BL] Categorical Limit Diagrams
+    - 7.5.6 [03C3] The Homotopy Colimit as a Derived Functor
+    - 7.5.7 [03CM] Homotopy Colimit Diagrams
+    - 7.5.8 [03CY] Categorical Colimit Diagrams
+  - 7.6 [03E8] Examples of Limits and Colimits
+    - 7.6.1 [03E9] Products and Coproducts
+    - 7.6.2 [03FE] Pullback and Pushout Squares
+    - 7.6.3 [03G3] Examples of Pullback and Pushout Squares
+    - 7.6.4 [03GL] Equalizers and Coequalizers
+    - 7.6.5 [03HG] Sequential Limits and Colimits
+    - 7.6.6 [03UC] Completeness and Cocompleteness
+  - 7.7 [05SB] Universality of Colimits
+    - 7.7.1 [05SL] Cartesian Natural Transformations
+    - 7.7.2 [05TC] Descent Diagrams
+    - 7.7.3 [05UE] Cartesian Closed $\infty $-Categories
+    - 7.7.4 [05V6] Disjoint Coproducts
+    - 7.7.5 [05VM] The Mather Cube Theorem Revisted
+    - 7.7.6 [05VZ] Descent in the $\infty $-Category of Spaces
+    - 7.7.7 [05XG] Digression: Commutation of Limits and Colimits
+- Chapter 8 [03JA] The Yoneda Embedding
+  - 8.1 [03JB] Twisted Arrows and Cospans
+    - 8.1.1 [03JF] The Twisted Arrow Construction
+    - 8.1.2 [03JV] Homotopy Transport for Twisted Arrows
+    - 8.1.3 [00AY] The Cospan Construction
+    - 8.1.4 [03L4] Cospans in $\infty $-Categories
+    - 8.1.5 [03LE] Thin $2$-Simplices of $\operatorname{Cospan}(\operatorname{\mathcal{C}})$
+    - 8.1.6 [048Z] Restricted Cospans
+    - 8.1.7 [049E] Comparing $\operatorname{\mathcal{C}}$ with $\operatorname{Cospan}(\operatorname{\mathcal{C}})$
+    - 8.1.8 [03KZ] Morphisms in the Duskin Nerve
+    - 8.1.9 [049W] Cospan Fibrations
+    - 8.1.10 [04AB] Beck-Chevalley Fibrations
+  - 8.2 [043P] Couplings of $\infty $-Categories
+    - 8.2.1 [043X] Representable Couplings
+    - 8.2.2 [0448] Morphisms of Couplings
+    - 8.2.3 [044Q] Representations of Couplings
+    - 8.2.4 [0455] Presentations of Representable Couplings
+    - 8.2.5 [045R] Adjunctions as Couplings
+    - 8.2.6 [045W] Balanced Couplings
+  - 8.3 [03LZ] The Yoneda Embedding
+    - 8.3.1 [03M2] Yoneda's Lemma
+    - 8.3.2 [03MA] Profunctors of $\infty $-Categories
+    - 8.3.3 [03MR] Hom-Functors for $\infty $-Categories
+    - 8.3.4 [03NQ] Representable Profunctors
+    - 8.3.5 [046H] Recognition of Hom-Functors
+    - 8.3.6 [03N5] Strict Models for Hom-Functors
+    - 8.3.7 [06BY] Hom-Functors for Oriented Fiber Products
+  - 8.4 [03V7] Cocompletion
+    - 8.4.1 [03V8] Dense Functors
+    - 8.4.2 [03W1] Density of Yoneda Embeddings
+    - 8.4.3 [03W8] Cocompletion via the Yoneda Embedding
+    - 8.4.4 [06YD] Example: The Universal Property of $\operatorname{\mathcal{S}}$
+    - 8.4.5 [03WM] Cocontinuous Extensions
+    - 8.4.6 [04BH] Adjoining Colimits to $\infty $-Categories
+    - 8.4.7 [060N] Functoriality of Cocompletion
+    - 8.4.8 [03WR] Recognition of Cocompletions
+    - 8.4.9 [04BU] Cocompletion and Right Fibrations
+  - 8.5 [03Y9] Retracts and Idempotents
+    - 8.5.1 [03YH] Retracts in $\infty $-Categories
+    - 8.5.2 [03ZE] Idempotents in Ordinary Categories
+    - 8.5.3 [03ZS] Idempotents in $\infty $-Categories
+    - 8.5.4 [0405] Idempotent-Completeness
+    - 8.5.5 [040T] Idempotent-Completion
+    - 8.5.6 [05M8] Morita Equivalence
+    - 8.5.7 [0418] Idempotent Endomorphisms
+    - 8.5.8 [041V] Homotopy Idempotent Endomorphisms
+    - 8.5.9 [042C] Partial Idempotents
+    - 8.5.10 [042T] The Thompson Groupoid
+  - 8.6 [04C0] Conjugate and Dual Fibrations
+    - 8.6.1 [04C6] Conjugate Fibrations
+    - 8.6.2 [04CM] Existence of Conjugate Fibrations
+    - 8.6.3 [04EC] Uniqueness of Conjugate Fibrations
+    - 8.6.4 [04D0] Dual Fibrations
+    - 8.6.5 [04DS] Existence of Dual Fibrations
+    - 8.6.6 [04ET] Comparison of Dual and Conjugate Fibrations
+    - 8.6.7 [04F8] The Opposition Functor
+    - 8.6.8 [05WD] Contravariant Transport Representations
+    - 8.6.9 [06TV] Coends of $\infty $-Categories
+  - 8.7 [05K8] Fiberwise Cocompletions
+    - 8.7.1 [05KB] Uniqueness of Fiberwise Cocompletions
+    - 8.7.2 [05LC] Fiberwise Cocompletions of Cocartesian Fibrations
+    - 8.7.3 [05LR] Fiberwise Cocompletion of Cartesian Fibrations
+    - 8.7.4 [05M1] Existence of Fiberwise Cocompletions
+    - 8.7.5 [05ML] Application: Flat Inner Fibrations
+    - 8.7.6 [05NH] Flatness and Morphism Spaces
+    - 8.7.7 [05NN] Fiberwise Cocompletion via the Yoneda Embedding
+- Chapter 9 [04KE] Large $\infty $-Categories
+  - 9.1 [05WY] Filtered $\infty $-Categories
+    - 9.1.1 [02P8] Filtered $\infty $-Categories
+    - 9.1.2 [02PM] Local Characterization of Filtered $\infty $-Categories
+    - 9.1.3 [02Q4] Fibrations over Filtered $\infty $-Categories
+    - 9.1.4 [06CJ] Cofinal Functors of Filtered $\infty $-Categories
+    - 9.1.5 [05XR] Filtered Colimits of Spaces
+    - 9.1.6 [03DD] Filtered Colimits of Simplicial Sets
+    - 9.1.7 [061E] Approximation by Simplicial Subsets
+    - 9.1.8 [02Q8] Approximation by Partially Ordered Sets
+    - 9.1.9 [062Y] Filtered Colimits of $\infty $-Categories
+  - 9.2 [0639] Finitary Functors and Compact Objects
+    - 9.2.1 [06DA] Filtered Cocompleteness
+    - 9.2.2 [062B] Finitary Functors
+    - 9.2.3 [06E3] Example: Sequential Cocompleteness
+    - 9.2.4 [06EG] Fiber Products of Filtered $\infty $-Categories
+    - 9.2.5 [0649] Compact Objects
+    - 9.2.6 [067N] Finiteness Conditions on Kan Complexes
+    - 9.2.7 [0685] Finiteness Conditions on $\infty $-Categories
+    - 9.2.8 [06EU] Closure Properties of Compact Objects
+    - 9.2.9 [06F5] Compactness in $\infty $-Categories of Sections
+  - 9.3 [06FR] Ind-Completions of $\infty $-Categories
+    - 9.3.1 [063J] Ind-Completion
+    - 9.3.2 [0650] Recognition of Ind-Completions
+    - 9.3.3 [06FX] Functoriality of Ind-Completion
+    - 9.3.4 [065H] Flat Functors
+    - 9.3.5 [0669] Exact Functors
+    - 9.3.6 [068U] Transitivity of Ind-Completion
+    - 9.3.7 [06GD] Final Objects of Ind-Completions
+  - 9.4 [06GT] Compact Generation and Accessibility
+    - 9.4.1 [0673] Compactly Generated $\infty $-Categories
+    - 9.4.2 [06H3] Compact Functors
+    - 9.4.3 [06YM] Compact Generation of Reflective Localizations
+    - 9.4.4 [06HP] Compact Generation of Oriented Fiber Products
+    - 9.4.5 [06J5] Compact Generation of Homotopy Fiber Products
+    - 9.4.6 [06JJ] Compactly Generated Fibrations
+    - 9.4.7 [06K5] Accessible $\infty $-Categories
+    - 9.4.8 [06KX] Accessible Functors
+    - 9.4.9 [06LD] Stability Properties of Accessible $\infty $-Categories
+  - 9.5 [06NC] Presentable $\infty $-Categories
+    - 9.5.1 [06NE] Presentable $\infty $-Categories
+    - 9.5.2 [06Q4] The Adjoint Functor Theorem
+    - 9.5.3 [06UF] The $\infty $-Category of Presentable $\infty $-Categories
+    - 9.5.4 [06P5] Closure Properties of Presentable $\infty $-Categories
+    - 9.5.5 [06US] Cocontinuous Functors
+    - 9.5.6 [06UU] Bousfield Localization
+    - 9.5.7 [06VG] Existence of Bousfield Localizations
+  - 9.6 [04KF] Factorization Systems
+    - 9.6.1 [04KZ] Digression: Transfinite Composition
+    - 9.6.2 [04LG] Weakly Local Objects
+    - 9.6.3 [04M7] The Small Object Argument
+    - 9.6.4 [04MH] Lifting Problems in $\infty $-Categories
+    - 9.6.5 [04N9] Weak Factorization Systems
+    - 9.6.6 [04NJ] Orthogonality
+    - 9.6.7 [04PQ] Uniqueness of Factorizations
+    - 9.6.8 [04PC] Factorization Systems
+    - 9.6.9 [06X2] Accessible Factorization Systems
+  - 9.7 [06ZD] Tensor Products of $\infty $-Categories
+    - 9.7.1 [06ZF] Relative Cocompletion
+    - 9.7.2 [02QD] Digression: Sifted $\infty $-Categories
+    - 9.7.3 [0707] Tensor Products of $\infty $-Categories
+    - 9.7.4 [070Q] Unitality
+    - 9.7.5 [0713] Tensor Products of Presentable $\infty $-Categories
+    - 9.7.6 [071H] Locally Truncated $\infty $-Categories
+    - 9.7.7 [071U] Associativity
+    - 9.7.8 [072B] Idempotent $\infty $-Categories
+- Chapter 10 [04QH] Exactness and Animation
+  - 10.1 [04QJ] Simplicial Objects of $\infty $-Categories
+    - 10.1.1 [04QQ] Geometric Realization
+    - 10.1.2 [04R8] Semisimplicial Objects
+    - 10.1.3 [05G3] Skeletal Simplicial Objects
+    - 10.1.4 [05GU] Coskeletal Simplicial Objects
+    - 10.1.5 [04SV] The Nerve of a Morphism
+    - 10.1.6 [04S6] Split Simplicial Objects
+  - 10.2 [04TM] Regular $\infty $-Categories
+    - 10.2.1 [04TZ] Sieves
+    - 10.2.2 [04WG] Quotient Morphisms
+    - 10.2.3 [04X1] Images
+    - 10.2.4 [04XV] Universal Quotient Morphisms
+    - 10.2.5 [04YE] Regular $\infty $-Categories
+
+## 別掲：Chapter 11 [00FN] Retired Tags（廃止タグ、本文ではない）
+
+- Chapter 11 [00FN] Retired Tags
+  - 11.1 [00MB] Expanded Tags
+  - 11.2 [03DT] Discarded Diagrams
+  - 11.3 [00MC] Tags without Context
+  - 11.4 [00MD] Obsolete Constructions
+  - 11.5 [01NH] Tags Lost in Reorganization
+  - 11.6 [00ME] Reclassified Tags
+  - 11.7 [00MF] Retired Sections
+  - 11.8 [01W2] Temporarily Removed Tags
+  - 11.9 [02QR] Retired Subsections
+    - 11.9.1 [01HF] Detecting Equivalences of $\infty $-Categories
+    - 11.9.3 [05NY] Obsolete Discussion of Balanced Couplings
+    - 11.9.4 [04GY] Connectivity of Morphisms
+    - 11.9.5 [03KC] The Universal Property of Twisted Arrows
+    - 11.9.6 [03P9] Adjunctions as Profunctors
+    - 11.9.7 [0194] Towers of Kan Fibrations
+    - 11.9.8 [024T] Classification of Fibrations
+    - 11.9.9 [029L] Proof of the Universality Theorem
+    - 11.9.10 [01N5] Stability Properties of Localizations
+    - 11.9.11 [01N8] The Category of Simplices
+  - 11.10 [01W3] Temporarily Retired Subsections
+    - 11.10.1 [02GE] Notational Junk
+    - 11.10.2 [01S6] The Transport Representation
+    - 11.10.3 [02AJ] Classical Stuff
+    - 11.10.4 [02AK] Classical Grothendieck Construction for Lax Functors
+    - 11.10.5 [02AN] Explicit Transport for Set-Valued Functors
+    - 11.10.6 [01AA] Relative Homotopy Equivalences
+    - 11.10.7 [01AP] Covariant and Contravariant Equivalences
