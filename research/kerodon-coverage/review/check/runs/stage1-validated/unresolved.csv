@@ -1,0 +1,112 @@
+id,raw,source,source_line,module,preparation
+c86708fe8194d59101f2,SimplexCategory.mk (⦋n⦌) @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50,Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean,50,Mathlib.AlgebraicTopology.SimplexCategory.Defs,unresolved_reference
+cd0719c2cfa22aac15f3,記法 X _⦋n⦌ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean,Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean,,Mathlib.AlgebraicTopology.SimplicialObject.Basic,unresolved_reference
+d63380fe8be27c0e1599,"X _⦋n⦌（単体）, X _⦋0⦌（頂点） @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:33",Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean,33,Mathlib.AlgebraicTopology.SimplicialSet.Basic,unresolved_reference
+c947d0170f0aed3c01ea,instance (Functor.const J).Full [IsConnected J] @ Mathlib/CategoryTheory/IsConnected.lean:488,Mathlib/CategoryTheory/IsConnected.lean,488,Mathlib.CategoryTheory.IsConnected,unresolved_reference
+5043477421f8fa6a53bf,記法 |X| @ Mathlib/AlgebraicTopology/SingularSet.lean:68,Mathlib/AlgebraicTopology/SingularSet.lean,68,Mathlib.AlgebraicTopology.SingularSet,unresolved_reference
+a46b409ed73bd293c40d,instance SSet.toTop.IsLeftAdjoint @ Mathlib/AlgebraicTopology/SingularSet.lean:78,Mathlib/AlgebraicTopology/SingularSet.lean,78,Mathlib.AlgebraicTopology.SingularSet,unresolved_reference
+bfabc31153a491324d1e,"MonCat.toCat (toCat_full, toCat_faithful) @ Mathlib/CategoryTheory/SingleObj.lean:233",Mathlib/CategoryTheory/SingleObj.lean,233,Mathlib.CategoryTheory.SingleObj,unresolved_reference
+3b06ef6d461b4a8ba78c,SerrePositivity.KST.Comparison.monoidWordSimplex / monoidWordLabels @ SerrePositivity/KST/Comparison/BarSegal.lean:40,SerrePositivity/KST/Comparison/BarSegal.lean,40,SerrePositivity.KST.Comparison.BarSegal,unresolved_reference
+81f63860ff9b4b733ddd,instance KanComplex X.op @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:103,Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean,103,Mathlib.AlgebraicTopology.SimplicialSet.KanComplex,unresolved_reference
+4155dc3d979a2cb179b3,HomotopicL.refl/symm/trans @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:94,Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean,94,Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated,unresolved_reference
+1eb42bad1d963d1ca5a2,instance Quasicategory₂ (truncation 2 X) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean:27,Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean,27,Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory,unresolved_reference
+c328069dba17672017be,SSet.Truncated.Quasicategory₂ (fill21) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:53,Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean,53,Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated,unresolved_reference
+ea11ceca3ec55bc0c984,instance Quasicategory₂ (truncation 2) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean:27,Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean,27,Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory,unresolved_reference
+3bb93f452314578e433a,instance Category (HomotopyCategory₂ A) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:299,Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean,299,Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated,unresolved_reference
+c1fbdc4670a2df2e3bea,SSet（射 X ⟶ Y） @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean,Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean,,Mathlib.AlgebraicTopology.SimplicialSet.Basic,unresolved_reference
+1409902993ac7e5174b0,instance Quasicategory ((ihom A).obj X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:157,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean,157,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct,unresolved_reference
+5dde6f287438a217bad8,instance InnerFibration (terminal.from X) @ Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:101,Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean,101,Mathlib.AlgebraicTopology.Quasicategory.InnerFibration,unresolved_reference
+6cae6a0dbe458c671f63,"CategoryTheory.MonoidalCategoryStruct (tensorUnit, 𝟙_) @ Mathlib/CategoryTheory/Monoidal/Category.lean:86",Mathlib/CategoryTheory/Monoidal/Category.lean,86,Mathlib.CategoryTheory.Monoidal.Category,unresolved_reference
+b04b96454a87accb1e7f,CategoryTheory.Functor.LaxMonoidal（comp のインスタンス） @ Mathlib/CategoryTheory/Monoidal/Functor.lean,Mathlib/CategoryTheory/Monoidal/Functor.lean,,Mathlib.CategoryTheory.Monoidal.Functor,unresolved_reference
+2f62f220c4ba37659747,CategoryTheory.Bicategory.Opposites（instance bicategory Bᵒᵖ） @ Mathlib/CategoryTheory/Bicategory/Opposites.lean:157,Mathlib/CategoryTheory/Bicategory/Opposites.lean,157,Mathlib.CategoryTheory.Bicategory.Opposites,unresolved_reference
+6da5f63566dca9c9884e,"CategoryTheory.LaxFunctor.comp / LaxFunctor.id @ Mathlib/CategoryTheory/Bicategory/Functor/Lax.lean:178,145",,,,unresolved_reference
+0d55394ac8bb583127bf,"CategoryTheory.Pseudofunctor.comp / Pseudofunctor.id @ Mathlib/CategoryTheory/Bicategory/Functor/Pseudofunctor.lean:158,146",,,,unresolved_reference
+41d67b1a62cc3d474d14,"CategoryTheory.StrictPseudofunctor.comp / StrictPseudofunctor.id @ Mathlib/CategoryTheory/Bicategory/Functor/StrictPseudofunctor.lean:134,128",,,,unresolved_reference
+e142d6da3a522df4818d,"SSet.Edge (Mathlib, AlgebraicTopology/SimplicialSet/CompStruct*)",,,,unresolved_reference
+e484baca21e3281a2ff7,SimplicialCategory.homEquiv' (Mathlib),,,,unresolved_reference
+e37e3a58877ed5684e01,cubeFaceMap / cubeFlag_boundary_sum @ SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean:84,SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean,84,SerrePositivity.InfinityCategories.DoldKanComparison.CubeBoundary,unresolved_reference
+c4698cf0d71808687eca,Fibration / fibration_iff @ Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean:91,Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean,91,Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations,unresolved_reference
+257b8589473d70728894,instance Fibration ((ihom X).map p) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:143,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean,143,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct,unresolved_reference
+10954a7a0334deb75fe8,instance Fibration ((MonoidalClosed.pre i).app X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:148,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean,148,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct,unresolved_reference
+145567c18ca72212f8f3,instance KanComplex ((ihom A).obj X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:159,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean,159,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct,unresolved_reference
+cd0e25817ce812dab3d0,HomotopyClasses.obj / pre / post @ SerrePositivity/HomotopicalAlgebra/Simplicial/HomotopyClasses.lean:45,SerrePositivity/HomotopicalAlgebra/Simplicial/HomotopyClasses.lean,45,SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses,unresolved_reference
+e4a92207825516272ca0,HasSmallObjectArgument modelCategoryQuillen.J @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Basic.lean:111,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Basic.lean,111,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic,unresolved_reference
+4c639c4e1c698565a756,weakFiniteSubsetColimitMap / finiteSubsetColimit_isWeaklyContractible @ SerrePositivity/EInfinity/Hammock/WeakFiniteSubsetColimit.lean:49,SerrePositivity/EInfinity/Hammock/WeakFiniteSubsetColimit.lean,49,SerrePositivity.EInfinity.Hammock.WeakFiniteSubsetColimit,unresolved_reference
+a46d0524fdb4136d0824,SSet.Finite instance IsFinitelyPresentable @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean:53,Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean,53,Mathlib.AlgebraicTopology.SimplicialSet.Presentable,unresolved_reference
+4c1614f03c988413b981,SerrePositivity.InfinityCategories.fullSubcomplexOnVertices (InfinityCategories/Core/TerminalVertices.lean),,,,unresolved_reference
+d271f49b15734e15bc96,SerrePositivity.InfinityCategories.quasicategoryCore (InfinityCategories/F1/Categories/QuasicategoryCore.lean),,,,unresolved_reference
+54802f832bef2fd7c0a6,SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex (InfinityCategories/F1/Categories/CoreKan.lean),,,,unresolved_reference
+5692b84e89330c64613f,HasSmallObjectArgument innerHornInclusions @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:88,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean,88,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic,unresolved_reference
+bd924236362d2ed0bd62,instance InnerFibration ((pre i).app X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:146,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean,146,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct,unresolved_reference
+6716cb094759e7541cc7,instance InnerFibration ((ihom X).map p) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:141,Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean,141,Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct,unresolved_reference
+d04bdd5688dc36d85abe,IsLowerSet @ Mathlib/Order（UpperLower）,,,,unresolved_reference
+2f862c0521d1cefe3cb7,WellFoundedLT (class),,,,unresolved_reference
+dabb94d58cc7ed59cfa8,Ordinal.linearOrder (instance) @ Mathlib/SetTheory/Ordinal/Basic.lean:283,Mathlib/SetTheory/Ordinal/Basic.lean,283,Mathlib.SetTheory.Ordinal.Basic,unresolved_reference
+83c7009f44ee4ac3c981,instance EssentiallySmall P.FullSubcategory @ Mathlib/CategoryTheory/ObjectProperty/Small.lean:215,Mathlib/CategoryTheory/ObjectProperty/Small.lean,215,Mathlib.CategoryTheory.ObjectProperty.Small,unresolved_reference
+599a210f043ed5fb2eb1,instance ObjectProperty.EssentiallySmall ⊤ @ Mathlib/CategoryTheory/ObjectProperty/Small.lean:223,Mathlib/CategoryTheory/ObjectProperty/Small.lean,223,Mathlib.CategoryTheory.ObjectProperty.Small,unresolved_reference
+a247a48be91db462b826,instance IsFibered (CoGrothendieck.forget F) @ Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean:78,Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean,78,Mathlib.CategoryTheory.FiberedCategory.Grothendieck,unresolved_reference
+879a0be5b2df83621056,nerve の Nonsingular インスタンス @ Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean:74,Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean,74,Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular,unresolved_reference
+a4ba7e12ef32c3466284,instance Bicategory (SpanBicat C Wₗ Wᵣ) @ .lake/packages/mathlib/Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,Mathlib/CategoryTheory/Bicategory/Span/Basic.lean,364,Mathlib.CategoryTheory.Bicategory.Span.Basic,unresolved_reference
+448c35f8d0d2d2c2c731,SSet.Finite (instance IsFinitelyPresentable) @ Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean:53,Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean,53,Mathlib.AlgebraicTopology.SimplicialSet.Presentable,unresolved_reference
+2f568dad4abbe85bc920,SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components (InfinityCategories/F2/Presentable/PullbackCompactObjects.lean:32),,,,unresolved_reference
+e06d24387233e2659b91,instance LocallySmall (FullSubcategory IsIndObject) @ Mathlib/CategoryTheory/Limits/Indization/LocallySmall.lean:78,Mathlib/CategoryTheory/Limits/Indization/LocallySmall.lean,78,Mathlib.CategoryTheory.Limits.Indization.LocallySmall,unresolved_reference
+9e4a4a8f709b72d25335,CategoryTheory.RepresentablyFlat (Mathlib/CategoryTheory/Functor/Flat.lean:67),,,,unresolved_reference
+247dfbbe4f324ad7e9be,instance (G : D ⥤ Type) [RepresentablyFlat F] [IsCofiltered G.Elements] @ Mathlib/CategoryTheory/Functor/Flat.lean:411,Mathlib/CategoryTheory/Functor/Flat.lean,411,Mathlib.CategoryTheory.Functor.Flat,unresolved_reference
+d8f60fb3bc77e3a3713e,instance RepresentablyCoflat Ind.yoneda @ Mathlib/CategoryTheory/Limits/Indization/Category.lean:198,Mathlib/CategoryTheory/Limits/Indization/Category.lean,198,Mathlib.CategoryTheory.Limits.Indization.Category,unresolved_reference
+7a28608b2d787b1eede7,instance PreservesFiniteColimits Ind.yoneda @ Mathlib/CategoryTheory/Limits/Indization/Category.lean:206,Mathlib/CategoryTheory/Limits/Indization/Category.lean,206,Mathlib.CategoryTheory.Limits.Indization.Category,unresolved_reference
+4aedf9b7fecbc423c760,SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible (InfinityCategories/F2/Presentable/IndAccessible.lean:55),,,,unresolved_reference
+24aed5901284be9baf4d,SerrePositivity.InfinityCategories.F2.Presentable.indYoneda_isKappaCompactGenerating (同 :48),,,,unresolved_reference
+33f731696412bf2610dd,reflectiveSubcategory_isKappaAccessible @ IC/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean:29,,,,unresolved_reference
+e8de4fa87179ebc9d8a6,LocalObjects.isPresentable_of_reflection @ IC/F2/Presentable/Localization/LocalObjects/Presentable.lean:62,,,,unresolved_reference
+00e474788da7c1bfeb87,tensor_isPresentable @ IC/F2/Presentable/TensorPresentable.lean:75,,,,unresolved_reference
+8efb630cf1dd0626f5fa,tensorHom_isKappaAccessible @ IC/F2/Presentable/TensorAccessibility.lean:48,,,,unresolved_reference
+9725c515b8e748cf92e4,piSSet_isPresentable @ IC/F2/Presentable/PiPresentable.lean:57,,,,unresolved_reference
+b16b54b277167e1d22a4,piSSetMap_isKappaAccessible @ IC/F2/Presentable/PiAccessibility.lean:47,,,,unresolved_reference
+8ef055c07dc4fb7603c6,AccessiblePullback.pullback_isKappaAccessible_of_relativeCardinals @ IC/F2/Presentable/AccessiblePullback/RelativeCardinalAccessibility.lean:26,,,,unresolved_reference
+03e7ecebc0cce000e16e,isKappaCompact_pullback_of_components @ IC/F2/Presentable/PullbackCompactObjects.lean:32,,,,unresolved_reference
+fb18283828e301c5f183,componentCompactObjects_isPullback @ IC/F2/Presentable/ComponentCompactPullback.lean:69,,,,unresolved_reference
+279c23d630d8a365816c,AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25,,,,unresolved_reference
+246fe2f0e2b9dd63f25f,pullback_fst_isKappaAccessibleFunctor @ IC/F2/Presentable/PullbackFilteredColimits.lean:74,,,,unresolved_reference
+66dce20d50f6e7dd4d9d,IsKappaAccessible @ IC/F2/Presentable/Accessible.lean:41,,,,unresolved_reference
+94dacea56a87dbf9d478,isKappaAccessible_iff_indEquivalence @ IC/F2/Presentable/AccessibleEquivalence.lean:45,,,,unresolved_reference
+eb6815880e0524915639,IsKappaCompactGenerating @ IC/F2/Presentable/Accessible.lean:32,,,,unresolved_reference
+139889070da17c4e4f78,indInfinity_isKappaAccessible @ IC/F2/Presentable/IndAccessible.lean:55,,,,unresolved_reference
+368285581c334c1e3d56,compactIndYoneda_isIdempotentCompletion @ IC/F2/Compact/CompactIndCompletion.lean:30,,,,unresolved_reference
+079c0b35e210c6d8f1fa,ind_isIdempotentComplete @ IC/F2/Compact/IndComplete.lean:33,,,,unresolved_reference
+b5e1e6c6a3e674532f32,IsKappaAccessible.of_cardinalChangeBound @ IC/F2/Presentable/IndCardinalChange.lean:46,,,,unresolved_reference
+cd280b6ee0fff2e9fa9c,indInfinity_isMuAccessible @ IC/F2/Presentable/IndCardinalChange.lean:24,,,,unresolved_reference
+4be406c3c88826d405d8,IsKappaAccessible.exists_compactCardinal @ IC/F2/Presentable/ObjectCompactCardinals.lean:28,,,,unresolved_reference
+fcbe40d8df2688b498d6,IsAccessible @ IC/F2/Presentable/Accessible.lean:48,,,,unresolved_reference
+353b69b7c51296df4fe8,IsAccessible.exists_larger @ IC/F2/Presentable/IndCardinalChange.lean:64,,,,unresolved_reference
+3158522ab8892227786e,exists_common_accessibilityCardinal @ IC/F2/Presentable/IndCardinalChange.lean:71,,,,unresolved_reference
+740ed6b0a4e2d5859c55,IsAccessibleFunctor @ IC/F2/Presentable/AccessibleFunctor.lean:25,,,,unresolved_reference
+bf305c3b60e0c814b03a,IsKappaAccessibleFunctor @ IC/F2/Presentable/AccessibleFunctor.lean:21,,,,unresolved_reference
+3c504254a5d1085eb511,reflectiveImage_isKappaAccessible @ IC/F2/Presentable/AccessibleReflectiveImage.lean:42,,,,unresolved_reference
+c93b1db9feab61c81018,IsAccessible.exists_common_compactCardinal @ IC/F2/Presentable/ObjectCompactCardinals.lean:69,,,,unresolved_reference
+109f218abe12359f9bbb,isKappaAccessibleFunctor_of_indHomTests_native @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:28,,,,unresolved_reference
+9cbcca43070c2d7543a0,functor_isPresentable @ IC/F2/Presentable/FunctorPresentable.lean:67,,,,unresolved_reference
+d9fbc45e58499b7dc719,functorPostcomp_isKappaAccessible @ IC/F2/Presentable/FunctorPresentable.lean:30,,,,unresolved_reference
+551e9801506e952aae9b,arrow_isPresentable @ IC/F2/Presentable/Localization/ArrowCardinals.lean:39,,,,unresolved_reference
+2db9c94b7198830e9cc0,IsPresentable.hasSmallLimits @ IC/F2/Presentable/PresentableSmallLimits.lean:25,,,,unresolved_reference
+abbfba47e09262b0335c,IsPresentable @ IC/F2/Presentable/Definition.lean:34,,,,unresolved_reference
+c489a78823c44b04cb54,presentableContinuous_isRepresentable @ IC/F2/Presentable/AdjointFunctorTheorem.lean:34,,,,unresolved_reference
+5a8ce94fed45671682bd,accessible_preservesLimits_isCorepresentable @ IC/F2/Presentable/AccessibleCorepresentability.lean:28,,,,unresolved_reference
+9cd3e79712513884580c,exists_rightAdjoint_iff_preservesSmallColimits @ IC/F2/Presentable/AdjointFunctorTheorem.lean:45,,,,unresolved_reference
+4038d32e943db2bdd868,exists_leftAdjoint_iff_accessible_preservesLimits @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:96,,,,unresolved_reference
+31bb35716e2a05804660,exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:136,,,,unresolved_reference
+3aa073bba72fa55770ad,rightAdjoint_isAccessible @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:55,,,,unresolved_reference
+ba47f6e2db86a5ddb1c7,PrL @ IC/F2/Presentable/PrInfinity.lean:49,,,,unresolved_reference
+5169938b609464198190,PrR @ IC/F2/Presentable/PrInfinity.lean:55,,,,unresolved_reference
+cf4b0463e54aa6d3deb2,presentableAdjointFunctorEquivalence @ IC/F2/Presentable/Duality/PairDuality.lean:53,,,,unresolved_reference
+0191e6cbb794932ad650,Localization.generatedSource_isPresentable @ IC/F2/Presentable/Localization/GeneratedSourcePresentable.lean:35,,,,unresolved_reference
+910dc39df79926afe228,Over/Under の IsAccessibleCategory instance @ Mathlib/CategoryTheory/Presentable/Comma.lean:567,Mathlib/CategoryTheory/Presentable/Comma.lean,567,Mathlib.CategoryTheory.Presentable.Comma,unresolved_reference
+4e8290671199343529e6,Smith.arrow_locallyPresentable @ HomotopicalAlgebra/Smith/WeakEquivalencesAccessible.lean:21,,,,unresolved_reference
+86d710dadf6a9717b928,pullback_isPresentable_of_accessiblePullback @ IC/F2/Presentable/PresentablePullback.lean:22,,,,unresolved_reference
+87d62d6648a42e47a666,isPresentable_of_isAccessible @ IC/F2/Presentable/AccessiblePullback/PresentationAssembly.lean:93,,,,unresolved_reference
+3d32f1cd8446d0ae5c70,evaluateFunctorAt_preservesSmallColimits @ IC/F2/Presentable/FunctorSmallColimits.lean:45,,,,unresolved_reference
+10c0ddd36c863d543020,IsSifted → IsConnected (instance) @ .lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Sifted.lean:88,Mathlib/CategoryTheory/Limits/Sifted.lean,88,Mathlib.CategoryTheory.Limits.Sifted,unresolved_reference
+2cfe79d296a8009f43e9,HasSmallGeometricRealizations（nerve Δ^op ⟶ X を直接使う） @ SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean:31,SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean,31,SerrePositivity.InfinityCategories.F2.Presentable.CoproductRealizationConditions,unresolved_reference
+48d173fe2cbda3aafdd8,AlgebraicTopology.normalizedMooreComplex / PInftyToNormalizedMooreComplex @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/DoldKan/Normalized.lean:68,Mathlib/AlgebraicTopology/DoldKan/Normalized.lean,68,Mathlib.AlgebraicTopology.DoldKan.Normalized,unresolved_reference
+1b512a59fd62c369fba8,SimplicialObject.δ_comp_δ ほか @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:111,Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean,111,Mathlib.AlgebraicTopology.SimplicialObject.Basic,unresolved_reference
+2dcca944123fe1db35d5,SimplicialObject.sk / skAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297,Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean,297,Mathlib.AlgebraicTopology.SimplicialObject.Basic,unresolved_reference
+38f2181407f69070108b,SimplicialObject.cosk / coskAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302,Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean,302,Mathlib.AlgebraicTopology.SimplicialObject.Basic,unresolved_reference

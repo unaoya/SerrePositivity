@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+  "state": "checked",
+  "started": "2026-11-06T19:06:05.253922+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "23ad7a8bb4a86f12beab3691036137bf4ff208a2011462223cc2706067a0a2b2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialObject.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/stage1-smoke/modules/Mathlib.AlgebraicTopology.SimplicialObject.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:06:16.746991+00:00"
+}

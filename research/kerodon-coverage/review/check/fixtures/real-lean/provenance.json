@@ -1,0 +1,9 @@
+{
+  "commit": "cd1339097901d18ccef25fcbf40dee05be770d2b",
+  "lean_source_changes": "",
+  "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+  "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "script_sha256": "8b0325158c4d124b698d5c6338d2c986d4c4a61672d2555089ad4c6f3f5f1ec3"
+}

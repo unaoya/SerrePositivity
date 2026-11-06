@@ -1,0 +1,15 @@
+{
+  "references": {
+    "unresolved_reference": 111,
+    "not_run": 1980,
+    "not_found": 8,
+    "build_busy": 7,
+    "found": 2
+  },
+  "items": {
+    "needs_review": 1671,
+    "no_declarations": 1881,
+    "found": 1
+  },
+  "nonstandard_axiom_references": 0
+}

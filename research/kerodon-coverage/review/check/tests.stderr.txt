@@ -1,0 +1,18 @@
+test_axiom_universe_arguments_from_real_lean_output (test_check_declarations.AuditTests.test_axiom_universe_arguments_from_real_lean_output) ... ok
+test_axioms_output_required (test_check_declarations.AuditTests.test_axioms_output_required) ... ok
+test_command_positions (test_check_declarations.AuditTests.test_command_positions) ... ok
+test_import_error_invalidates_all (test_check_declarations.AuditTests.test_import_error_invalidates_all) ... ok
+test_inference_error_is_not_missing (test_check_declarations.AuditTests.test_inference_error_is_not_missing) ... ok
+test_malformed_json_and_stderr (test_check_declarations.AuditTests.test_malformed_json_and_stderr) ... ok
+test_no_output_is_not_success (test_check_declarations.AuditTests.test_no_output_is_not_success) ... ok
+test_recorded_lean_435_output (test_check_declarations.AuditTests.test_recorded_lean_435_output) ... ok
+test_reference_paths_and_unicode (test_check_declarations.AuditTests.test_reference_paths_and_unicode) ... ok
+test_sorry_and_other_axioms (test_check_declarations.AuditTests.test_sorry_and_other_axioms) ... ok
+test_standard_and_multiline (test_check_declarations.AuditTests.test_standard_and_multiline) ... ok
+test_unknown_does_not_hide_other_success (test_check_declarations.AuditTests.test_unknown_does_not_hide_other_success) ... ok
+test_unresolved_not_silently_truncated (test_check_declarations.AuditTests.test_unresolved_not_silently_truncated) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.002s
+
+OK
