@@ -42,6 +42,21 @@
   - ほか、§4.5.5・Prop 4.8.4.5・7.2.1.15・7.2.3.1 の用法、見出し語だけの違い（Proposition/Corollary など）が数件。各章のファイルの注記を参照。
 - 古い docstring：`InfinityCategories/DoldKanComparison.lean` の「∞ 圏の同値の証明は残る」は古い（`coherentComparison_isQCatEquivalence` がある）。
 
+## 項目ごとの対応表（2026-11-07）
+
+Subsection 単位の調査の後に、項目（a.b.c.d）ごとの対応表を作った。対象は 3,553 項目で、Definition・Theorem・Proposition・Lemma・Corollary・Construction・Variant・Notation の全部と、Lean が番号で引いている Example・Remark など。ワークフローで 29 の塊に分け、各項目を判定した。「なし」とした Definition・Theorem・Proposition は、別のエージェントが探し直した（58 エージェント）。探した範囲は SerrePositivity 全体（KST・HomotopicalAlgebra・DifferentialGraded・EInfinity・Archive を含む）と Mathlib。**Lean を動かしての確認はまだ**で、Codex の確認を依頼する（`codex-review.md`）。
+
+| | 項目 | 自前 | 両方 | Mathlib | 一部 | なし |
+| --- | --- | --- | --- | --- | --- | --- |
+| 計 | 3,553 | 499 | 21 | 255 | 831 | 1,947 |
+
+- 確度：high 1,080、med 2,126、low 347。
+- 章・種類・節ごとの集計は `items-summary.md`、各塊の所見（InfinityCategories の外で見つかったもの、定義の違い、番号のずれ、本文の抜き出しの欠け）は `items-remarks.md`。
+- 表 `items.csv` の `subsection_tag` は Subsection の Tag。抜き出しのときに取った項目ごとの Tag は不正確だったので載せていない。
+- 注意：項目の本文の抜き出し（先頭 500 字）は、参照だけの項目で最初の言及を取っていたものがある。各エージェントが元のページを見直して判定したが、確度を low・med にしたものが多い。
+
+ファイル（追加）：`items.csv`、`items-summary.md`、`items-remarks.md`、`codex-review.md`（Codex への依頼）、`review-targets.csv`（確認の対象 417 項目）。
+
 ## ファイル
 
 - `toc.md`：Kerodon の目次（番号・Tag・見出し）。

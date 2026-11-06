@@ -1,0 +1,418 @@
+number,kind,status,declarations,confidence,reason
+1.1.0.1,Notation,mathlib,SimplexCategory.mk (⦋n⦌) @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50,high,D
+1.1.4.1,Construction,mathlib,SSet.skeleton @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:49 | SSet.sk @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:132,high,D
+1.1.4.9,Corollary,partial,SSet.sk @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:132 | SSet.skAdj @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:142,low,A
+1.2.1.1,Definition,none,,med,C
+1.2.3.5,Corollary,mathlib,sSetTopAdj @ Mathlib/AlgebraicTopology/SingularSet.lean:73 | instance SSet.toTop.IsLeftAdjoint @ Mathlib/AlgebraicTopology/SingularSet.lean:78,high,D
+1.3.1.6,Variant,mathlib,SSet.skeleton @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:49 | CategoryTheory.nerve @ Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean:37,low,A
+1.3.7.8,Definition,none,,med,C
+1.4.0.1,Definition,mathlib,SSet.Quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Basic.lean:41,high,D
+1.4.1.5,Definition,mathlib,SSet.Edge @ Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean:47,low,A
+1.4.5.6,Construction,partial,SSet.Truncated.Edge.CompStruct.nonempty_iff @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:294 | SSet.stdSimplex.isoNerve @ Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean:440,low,A
+1.4.5.7,Proposition,own,SerrePositivity.InfinityCategories.homotopyCategoryBridge @ SerrePositivity/InfinityCategories/Core/HomotopyCategoryBridge.lean:88 | SerrePositivity.InfinityCategories.HomotopyCategory.bridge_naturality @ SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean:64,low,A
+1.4.6.12,Definition,own,SerrePositivity.InfinityCategories.kanComplex_ho_isGroupoid @ SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean:206 | SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid @ SerrePositivity/InfinityCategories/Kan/FundamentalGroupoidComparison.lean:26,med,D
+1.5.2.5,Definition,none,,med,C
+1.5.3.7,Theorem,mathlib,instance Quasicategory ((ihom A).obj X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:157,high,B
+1.5.5.1,Definition,own,SerrePositivity.InfinityCategories.trivialKanFibrations @ SerrePositivity/InfinityCategories/Core/Terminal.lean:27 | SerrePositivity.InfinityCategories.TrivialKanFibration @ SerrePositivity/InfinityCategories/Core/Terminal.lean:34 | SerrePositivity.InfinityCategories.trivialKanFibration_iff_boundary @ SerrePositivity/InfinityCategories/Core/Terminal.lean:41,high,D
+1.5.6.1,Theorem,partial,SerrePositivity.InfinityCategories.trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Core/InnerAnodyneEquivalence.lean:23 | SSet.innerAnodyneExtensions.horn_ι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:58,med,B
+1.5.7.1,Theorem,partial,SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialSpineInnerAnodyne.lean:114,med,B
+2.1.1.1,Definition,none,,high,C
+2.1.1.5,Definition,none,,high,C
+2.1.2.1,Definition,none,,med,C
+2.1.2.5,Definition,none,,high,C
+2.1.4.1,Definition,none,,high,C
+2.1.5.2,Definition,none,,med,C
+2.1.5.11,Variant,mathlib,CategoryTheory.Functor.OplaxMonoidal @ Mathlib/CategoryTheory/Monoidal/Functor.lean:251,high,D
+2.2.1.7,Notation,mathlib,CategoryTheory.Bicategory @ Mathlib/CategoryTheory/Bicategory/Basic.lean:61,low,A
+2.2.4.15,Notation,mathlib,CategoryTheory.LaxFunctor @ Mathlib/CategoryTheory/Bicategory/Functor/Lax.lean:59,low,A
+2.2.6.1,Definition,none,,med,C
+2.2.8.1,Definition,none,,med,C
+2.2.8.9,Construction,partial,CategoryTheory.Bicategory.Pith @ Mathlib/CategoryTheory/Bicategory/LocallyGroupoid.lean:44,low,A
+2.3.2.1,Theorem,none,,high,C
+2.3.2.3,Definition,none,,high,C
+2.3.2.5,Theorem,none,,high,C
+2.3.4.1,Theorem,none,,high,C
+2.3.5.6,Theorem,none,,high,C
+2.4.1.1,Definition,mathlib,CategoryTheory.SimplicialCategory @ Mathlib/AlgebraicTopology/SimplicialCategory/Basic.lean:53 | CategoryTheory.SimplicialCategory.sHom @ Mathlib/AlgebraicTopology/SimplicialCategory/Basic.lean:62,high,D
+2.4.4.1,Definition,none,,high,C
+2.4.4.10,Theorem,none,,high,C
+2.4.5.1,Theorem,own,SerrePositivity.InfinityCategories.Coherent.simplicialNerve_quasicategory @ SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean:28,high,B
+2.4.5.11,Theorem,partial,hollowCylinder_extension @ SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean:44,med,B
+2.4.6.10,Proposition,partial,coherentNerveCompStruct @ SerrePositivity/InfinityCategories/F1/Coherent/Edges.lean:52,low,A
+2.4.7.9,Theorem,none,,high,C
+2.5.1.5,Definition,mathlib,QuasiIso @ Mathlib/Algebra/Homology/QuasiIso.lean:138 | QuasiIsoAt @ Mathlib/Algebra/Homology/QuasiIso.lean:34,high,D
+2.5.1.13,Notation,mathlib,HomologicalComplex.tensorObj @ Mathlib/Algebra/Homology/Monoidal.lean:48,low,A
+2.5.3.10,Theorem,own,instQuasicategory @ SerrePositivity/InfinityCategories/DGNerve/Quasicategory.lean:54 | hornFilling @ SerrePositivity/InfinityCategories/DGNerve/Quasicategory.lean:45,high,B
+2.5.6.1,Theorem,mathlib,AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167 | AlgebraicTopology.DoldKan.N @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:141,high,BD
+2.5.6.16,Lemma,partial,SimplicialObject.Splitting @ Mathlib/AlgebraicTopology/SimplicialObject/Split.lean | AlgebraicTopology.DoldKan.Γ₀.splitting @ Mathlib/AlgebraicTopology/DoldKan/FunctorGamma.lean:226,low,A
+2.5.6.17,Proposition,mathlib,AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167,low,A
+2.5.6.23,Proposition,partial,AlgebraicTopology.DoldKan.equivalence @ Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean:167,low,A
+2.5.7.14,Theorem,partial,normalizedEZHomotopy @ SerrePositivity/KST/ProExcision/NormalizedEZHomotopy.lean:64 | ezHomotopy @ SerrePositivity/KST/ProExcision/EZHomotopy.lean:62,med,B
+2.5.9.12,Notation,partial,cubeFaceMap / cubeFlag_boundary_sum @ SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean:84,low,A
+2.5.9.18,Theorem,own,coherentComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/DoldKanComparison/ComparisonEquivalence.lean:74 | coherentComparisonEquivalence @ SerrePositivity/InfinityCategories/DoldKanComparison/ComparisonEquivalence.lean:57 | coherentComparison_fullyFaithful @ SerrePositivity/InfinityCategories/DoldKanComparison/ComparisonEquivalence.lean:48,high,B
+3.1.2.9,Proposition,mathlib,anodyneExtensions_pushoutObjObjι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:99 | anodyneExtensions_pushoutObjObjι' @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:109 | anodyneExtensions_unionProd_ι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:119,high,D
+3.1.2.10,Lemma,partial,prodStdSimplex.anodyneExtensions_unionProd_ι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:63,low,A
+3.1.3.1,Theorem,mathlib,fibration_pullbackObjObjπ @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean:74,high,B
+3.1.3.5,Theorem,partial,trivialKanFibration_pre_of_anodyne @ SerrePositivity/InfinityCategories/HomotopyLimits/KanSourceReplacement.lean:25 | trivialKanFibration_pullbackObjObjπ @ SerrePositivity/InfinityCategories/Core/RelativeInternalHomTrivialFibration.lean:23,med,B
+3.1.4.1,Definition,none,,med,C
+3.1.7.23,Proposition,own,FiniteProduct.map_weak @ SerrePositivity/EInfinity/Hammock/FiniteProduct.lean:83 | tensor_isSimplicialHomotopyEquivalence @ SerrePositivity/InfinityCategories/HomotopyLimits/TensorHomotopyEquivalence.lean:45,med,D
+3.1.8.2,Corollary,own,AnodyneKanReplacement.unit_anodyne @ SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean:83 | AnodyneKanReplacement.terminal_rlp @ SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean:92,low,A
+3.1.8.7,Corollary,partial,KanLocalizedRepresentatives.homEquiv @ SerrePositivity/HomotopicalAlgebra/Simplicial/KanLocalizedRepresentatives.lean:117,low,A
+3.1.8.8,Variant,partial,KanLocalizedRepresentatives.homEquiv @ SerrePositivity/HomotopicalAlgebra/Simplicial/KanLocalizedRepresentatives.lean:117 | map_isIso_of_trivialKanFibration @ SerrePositivity/KST/SConstruction/LocalizedTrivialFibrations.lean:22,low,A
+3.2.1.10,Notation,partial,RelativeMorphism.HomotopyClass @ Mathlib/AlgebraicTopology/SimplicialSet/RelativeMorphism.lean:114,low,A
+3.2.2.10,Theorem,own,KanHomotopyGroup @ SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean:101 | instGroup @ SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean:243 | KanHomotopyGroup.mul_comm @ SerrePositivity/InfinityCategories/Kan/Commutativity.lean:449 | instCommGroupKanHomotopyGroupHAddNatOfNat @ SerrePositivity/InfinityCategories/Kan/Commutativity.lean:466,high,B
+3.2.3.4,Lemma,partial,PtSimplex.MulStruct.nonempty @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex/MulStruct.lean:514 | FourStruct.exists_fill @ SerrePositivity/InfinityCategories/Kan/Commutativity.lean:232,low,A
+3.2.4.3,Theorem,own,isContractibleKan_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Core/ContractibleKan.lean:32 | terminal_rlp_of_homotopySubsingleton @ SerrePositivity/InfinityCategories/F1/Pointed/AcyclicKanLifting.lean:87 | isWeaklyContractible_iff_isContractibleKan @ SerrePositivity/InfinityCategories/F1B/Homotopy/WeakContractibleKan.lean:33,med,B
+3.2.4.13,Lemma,partial,exists_boundary_filler_of_homotopySubsingleton @ SerrePositivity/InfinityCategories/F1/Pointed/AcyclicKanLifting.lean:70,low,A
+3.2.5.4,Proposition,own,connecting_mul @ SerrePositivity/InfinityCategories/Kan/FibrationMultiplication.lean:181 | connectingHom @ SerrePositivity/InfinityCategories/Kan/FibrationMultiplication.lean:206,low,A
+3.2.6.1,Theorem,own,fiberLongExact @ SerrePositivity/InfinityCategories/Kan/FibrationSequence.lean:33 | exact_connecting_fiber @ SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean:340 | exact_total_base @ SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean:405,high,B
+3.2.6.3,Corollary,own,exact_fiber_total_zero @ SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean:473 | componentFiber_exact @ SerrePositivity/InfinityCategories/Kan/FiberComponents.lean:137,med,D
+3.2.7.1,Theorem,own,homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective @ SerrePositivity/InfinityCategories/HomotopyLimits/KanWhiteheadComparison.lean:93 | kanPiIsomorphism_of_homotopyEquivalence @ SerrePositivity/InfinityCategories/HomotopyLimits/KanWhiteheadComparison.lean:51,high,B
+3.2.8.5,Corollary,partial,isWeaklyContractible_of_isFilteredInfinity @ SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean:59 | nerve_isWeaklyContractible_of_contractionSpan @ SerrePositivity/InfinityCategories/F2/Presentable/WeakContractibleContractionSpan.lean:46,low,A
+3.3.0.1,Theorem,partial,exInfinity_map_rlp @ SerrePositivity/KST/Comparison/ExInfinityFibrations.lean:45 | exInfinity_kanComplex @ SerrePositivity/KST/Comparison/ExInfinityKan.lean:55 | exInfinityUnit_anodyne @ SerrePositivity/KST/Comparison/ExInfinityAnodyne.lean:47 | isHomotopyPullback_exInfinity_iff @ SerrePositivity/KST/Comparison/ExInfinityHomotopyPullback.lean:29,med,B
+3.3.1.5,Proposition,partial,SSet.isColimitCoconeN' @ Mathlib/AlgebraicTopology/SimplicialSet/NonsingularColimit.lean:73,low,A
+3.3.1.7,Proposition,partial,freeDegeneracies @ SerrePositivity/KST/Comparison/FreeDegeneracies.lean:53 | freeDegeneraciesAugmentation @ SerrePositivity/KST/Comparison/FreeDegeneracies.lean:61,low,A
+3.3.5.1,Theorem,own,exUnitAt_anodyne @ SerrePositivity/KST/Comparison/ExUnitAnodyne.lean:40 | exUnitAt @ SerrePositivity/KST/Comparison/ExUnit.lean:29,high,B
+3.3.5.7,Proposition,partial,exUnitAt_anodyne @ SerrePositivity/KST/Comparison/ExUnitAnodyne.lean:40 | kanHomotopyEquivOfLocalizedIso @ SerrePositivity/KST/Comparison/LocalizedHomotopyComparison.lean:67,low,A
+3.3.6.5,Corollary,partial,exInfinity_preservesFiniteLimits @ SerrePositivity/KST/Comparison/ExInfinity.lean:84,low,A
+3.3.6.8,Corollary,own,exInfinity_map_localized_isIso_iff @ SerrePositivity/KST/Comparison/ExInfinityLocalization.lean:66,high,D
+3.3.6.9,Proposition,own,exInfinityUnit_anodyne @ SerrePositivity/KST/Comparison/ExInfinityAnodyne.lean:47 | exInfinityUnit_localized_isIso @ SerrePositivity/KST/Comparison/ExInfinityLocalization.lean:42,low,A
+3.3.6.10,Corollary,partial,exInfinityUnit_localized_isIso @ SerrePositivity/KST/Comparison/ExInfinityLocalization.lean:42 | kanHomotopyEquivOfLocalizedIso @ SerrePositivity/KST/Comparison/LocalizedHomotopyComparison.lean:67,low,A
+3.3.7.1,Proposition,partial,leftFibration_isQCatEquivalence_iff_fibers @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean:63 | pullback_localized_isIso @ SerrePositivity/KST/Comparison/ArbitraryBasePullback.lean:32,low,A
+3.3.8.1,Theorem,none,,med,C
+3.4.2.1,Definition,none,,high,C
+3.4.2.16,Proposition,partial,fiberResolutionAugmentation_localized_isIso @ SerrePositivity/KST/SConstruction/FiberResolutionAugmentation.lean:87 | simplicialProductQuillenA @ SerrePositivity/KST/SConstruction/SimplicialProductQuillenA.lean:66,low,A
+3.4.3.2,Proposition,partial,sliceFiberFunctor_isPushout @ SerrePositivity/KST/Comparison/SliceFiberPushouts.lean:40,low,A
+3.4.3.3,Theorem,none,,med,C
+3.4.4.4,Theorem,partial,spanCylinder_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanGluing.lean:53 | spanPushout_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanPushoutGluing.lean:30,med,B
+3.4.5.1,Definition,none,,high,C
+3.4.6.1,Theorem,none,,high,C
+3.4.6.4,Definition,none,,high,C
+3.4.6.6,Theorem,none,,high,C
+3.4.7.1,Theorem,none,,high,C
+3.4.7.2,Theorem,none,,high,C
+3.4.7.3,Theorem,none,,med,C
+3.5.1.13,Definition,none,,high,C
+3.5.2.8,Definition,none,,high,C
+3.5.3.10,Proposition,mathlib,SSet.StrictSegal.isCoskeletal @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean:232 | Nerve.cosk₂Iso @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean:267,low,A
+3.5.4.1,Definition,none,,med,C
+3.5.4.14,Definition,none,,med,C
+3.5.5.1,Definition,none,,med,C
+3.5.6.1,Definition,none,,med,C
+3.5.6.17,Theorem,none,,low,C
+3.5.7.20,Definition,none,,med,C
+3.5.8.1,Definition,none,,med,C
+3.5.9.1,Definition,none,,med,C
+3.6.0.1,Theorem,none,,med,C
+3.6.1.1,Definition,mathlib,SSet.Finite @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Finite.lean:32 | SSet.hasDimensionLT_of_finite @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialSet/Finite.lean:57,high,D
+3.6.2.1,Theorem,none,,med,C
+3.6.4.1,Theorem,none,,med,C
+3.6.6.1,Definition,none,,med,C
+4.1.4.7,Corollary,partial,innerFibration_vertexFiber_quasicategory @ SerrePositivity/InfinityCategories/Core/InnerFiber.lean:24 | trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Core/InnerAnodyneEquivalence.lean:23,low,A
+4.1.5.1,Definition,none,,high,C
+4.2.2.1,Definition,none,,med,C
+4.2.3.8,Definition,none,,high,C
+4.2.5.3,Proposition,own,leftAnodyneExtensions_pushoutObjObj_left @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean:60 | leftAnodyneExtensions_pushoutObjObj_right @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean:46 | cofinalRightAnodyne_pushoutObjObj_right @ SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean:147,high,D
+4.3.2.9,Lemma,mathlib,Join.inclLeftFullyFaithful @ Mathlib/CategoryTheory/Join/Basic.lean:172 | Join.inclRightFullyFaithful @ Mathlib/CategoryTheory/Join/Basic.lean:176,low,A
+4.3.3.9,Notation,partial,augObj @ SerrePositivity/InfinityCategories/Core/Join.lean:28,low,A
+4.3.6.5,Example,own,joinRightBoundaryMap_innerAnodyne_of_leftAnodyne @ SerrePositivity/InfinityCategories/F1/Joins/JoinRightBoundaryAnodyne.lean:54 | joinLeftBoundaryMap_innerAnodyne_of_rightAnodyne @ SerrePositivity/InfinityCategories/F1/Joins/JoinLeftBoundaryAnodyne.lean:42,med,D
+4.3.7.2,Proposition,partial,relativePointSliceUnderMap_fibration @ SerrePositivity/InfinityCategories/HomotopyLimits/RelativeConeAnodyne.lean:40,low,A
+4.4.1.1,Definition,none,,med,C
+4.4.2.6,Theorem,own,isInvertibleEdge_iff_hasFinalHornFillers @ SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean:197 | hasFinalHornFillers_of_isInvertibleEdge @ SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean:481 | IsInvertibleEdge @ SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean:28,high,B
+4.4.3.14,Corollary,partial,kanSource_edge_isInvertible @ SerrePositivity/KST/SConstruction/KanSourceCoreMap.lean:19 | isInvertibleEdge_of_hasFinalHornFillers @ SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean:120,low,A
+4.4.3.19,Corollary,partial,EquivalenceLifting.innerFibration @ SerrePositivity/InfinityCategories/F1B/Fibrations/EquivalenceLifting.lean:44,low,A
+4.4.3.21,Corollary,own,sliceOverPostcomp_equivalenceLifting @ SerrePositivity/InfinityCategories/F2/Presentable/SlicePostcompEquivalenceLifting.lean:27 | sliceUnderPostcomp_equivalenceLifting @ SerrePositivity/InfinityCategories/F2/Presentable/SlicePostcompEquivalenceLifting.lean:56,high,D
+4.4.4.4,Theorem,own,isInvertibleEdge_iff_evaluateFunctorAt @ SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:170 | isInvertibleEdge_iff_evaluateFunctorAt_any @ SerrePositivity/InfinityCategories/Core/EquivalencePathInternalHom.lean:25 | functorIsoOfPointwiseInvertibleHomotopy @ SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:193,high,B
+4.5.1.8,Proposition,partial,continuousKanReplacement @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/ContinuousKanSequence.lean:44 | continuousKanReplacementUnit_anodyne @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/ContinuousKanAnodyne.lean:46 | strictKanCompletion @ SerrePositivity/InfinityCategories/F1/KanModels/StrictKanCompletion.lean:26,low,A
+4.5.2.1,Definition,none,,med,C
+4.5.2.4,Definition,none,,med,C
+4.5.4.13,Corollary,own,trivialKanFibration_equivalencePathEndpoint_zero @ SerrePositivity/InfinityCategories/Core/EquivalencePathLifting.lean:24 | isQCatEquivalence_of_trivialKanFibration @ SerrePositivity/InfinityCategories/Core/TrivialFibrationEquivalence.lean:87,low,A
+4.5.5.1,Definition,none,,high,C
+4.5.5.14,Corollary,own,isPrecompositionEquivalence_of_pushout_gluing @ SerrePositivity/InfinityCategories/Core/PrecompositionPushoutGluing.lean:22,high,D
+4.5.7.1,Definition,none,,med,C
+4.5.7.3,Definition,none,,med,C
+4.5.8.10,Definition,none,,med,C
+4.6.2.8,Theorem,own,isPrecompositionEquivalence_fatJoinComparison @ SerrePositivity/InfinityCategories/Core/FatJoinGeneralComparison.lean:41 | fatJoinComparison @ SerrePositivity/InfinityCategories/Core/FatJoinComparison.lean:133,high,B
+4.6.2.12,Proposition,own,isPrecompositionEquivalence_fatJoinComparison @ SerrePositivity/InfinityCategories/Core/FatJoinGeneralComparison.lean:41,med,D
+4.6.3.3,Definition,none,,med,C
+4.6.3.8,Theorem,partial,exists_relativeCylinder_extension @ SerrePositivity/InfinityCategories/Core/RelativeCylinderExtension.lean:23 | exists_equivalenceCylinder_extension_of_functorIso @ SerrePositivity/InfinityCategories/Core/EquivalenceCylinderFunctorIso.lean:40 | nonempty_functorIso_of_equivalenceCylinder_extension @ SerrePositivity/InfinityCategories/Core/EquivalenceCylinderFunctorIso.lean:58,med,B
+4.6.3.9,Corollary,partial,relativeEquivalenceCylinder @ SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:36 | exists_relativeCylinder_extension @ SerrePositivity/InfinityCategories/Core/RelativeCylinderExtension.lean:23,low,A
+4.6.3.11,Corollary,partial,exists_relativeCylinder_extension @ SerrePositivity/InfinityCategories/Core/RelativeCylinderExtension.lean:23,low,A
+4.6.4.19,Theorem,own,isQCatEquivalence_sliceLaxMap @ SerrePositivity/InfinityCategories/Core/SliceLaxEquivalence.lean:51 | isQCatEquivalence_cosliceLaxMap @ SerrePositivity/InfinityCategories/Core/CosliceLaxEquivalence.lean:142 | laxSlice @ SerrePositivity/InfinityCategories/Core/LaxSlice.lean:25,high,B
+4.6.6.4,Construction,partial,sliceConeFamilyMap @ SerrePositivity/InfinityCategories/Core/ConeFamily.lean:145,low,A
+4.6.6.5,Theorem,partial,isQCatEquivalence_sliceConeFamilyMap @ SerrePositivity/InfinityCategories/Core/SliceConeFamilyEquivalence.lean:50 | isQCatEquivalence_cosliceCoconeFamilyMap @ SerrePositivity/InfinityCategories/Core/CosliceCoconeFamilyEquivalence.lean:56 | isQCatEquivalence_fatJoinComparison_fixedDiagram @ SerrePositivity/InfinityCategories/Core/FatJoinFixedDiagramComparison.lean:33,med,B
+4.6.7.5,Theorem,own,coherentHomComparison_isSimplicialHomotopyEquivalence @ SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean:37 | coherentHomComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean:23,high,B
+4.6.7.8,Theorem,partial,coherentResolutionComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Coherent/ResolutionRetraction.lean:72 | coherentResolutionRightAdjoint_quasicategory @ SerrePositivity/InfinityCategories/F1/Coherent/ResolutionRightQuasicategory.lean:48,med,B
+4.6.7.9,Remark,partial,coherentHomComparison @ SerrePositivity/InfinityCategories/F1/Coherent/HomNaturality.lean:193 | coherentHomComparison_enriched_naturality @ SerrePositivity/InfinityCategories/F1/Coherent/HomEnrichedNaturality.lean:124,low,A
+4.6.7.18,Corollary,partial,coherentResolutionAdjunction @ SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean:39,low,A
+4.6.7.25,Corollary,own,coherentResolutionRightAdjoint_quasicategory @ SerrePositivity/InfinityCategories/F1/Coherent/ResolutionRightQuasicategory.lean:48 | coherentPinchedFlagIso @ SerrePositivity/InfinityCategories/F1/Coherent/FlagIso.lean:24,med,D
+4.6.8.11,Proposition,partial,pinchedHomComposition_unit_left @ SerrePositivity/InfinityCategories/Derived/PinchedHomComposition.lean:87 | pinchedHomComposition_unit_right @ SerrePositivity/InfinityCategories/Derived/PinchedHomComposition.lean:95,low,A
+4.6.8.12,Proposition,partial,pinchedHomComposition_assoc @ SerrePositivity/InfinityCategories/Derived/PinchedHomComposition.lean:65 | pinchedHomCompositionFamily_assoc @ SerrePositivity/InfinityCategories/Derived/PinchedHomComposition.lean:117,low,A
+4.6.8.15,Notation,partial,compositionCorrespondence @ SerrePositivity/InfinityCategories/F1/MappingSpaces/CompositionCorrespondence.lean:27,low,A
+4.6.8.19,Proposition,partial,coherentCompositionCorrespondence @ SerrePositivity/InfinityCategories/F1/Coherent/CompositionCorrespondence.lean:25,low,A
+4.6.8.21,Proposition,partial,pinchedHomCompositionHomotopy @ SerrePositivity/InfinityCategories/Derived/PinchedHomCompositionHomotopy.lean:21,low,A
+4.7.1.1,Definition,none,,med,C
+4.7.2.1,Definition,none,,med,C
+4.7.3.19,Corollary,partial,IsTerminalVertex.exists_sliceLift @ SerrePositivity/InfinityCategories/Core/TerminalTransport.lean:25 | IsTerminalVertex.exists_pointJoinBoundary_extension @ SerrePositivity/InfinityCategories/Core/LeftFibrationTerminalFiber.lean:61,low,A
+4.7.4.1,Definition,none,,med,C
+4.7.4.13,Definition,none,,med,C
+4.7.5.1,Definition,none,,med,C
+4.7.5.19,Definition,none,,med,C
+4.7.6.1,Definition,none,,med,C
+4.7.6.13,Definition,none,,med,C
+4.7.7.1,Definition,none,,med,C
+4.7.7.9,Definition,none,,med,C
+4.7.9.1,Definition,none,,med,C
+4.8.0.1,Theorem,mathlib,CategoryTheory.Functor.IsEquivalence @ Mathlib/CategoryTheory/Equivalence.lean:590 | CategoryTheory.Functor.essImage @ Mathlib/CategoryTheory/EssentialImage.lean:45,high,B
+4.8.0.4,Definition,none,,med,C
+4.8.2.1,Definition,none,,med,C
+4.8.3.8,Definition,none,,med,C
+4.8.3.32,Variant,partial,pinchedHomPullbackBaseMap @ SerrePositivity/InfinityCategories/Core/FullyFaithfulBaseChange.lean:24 | IsFullyFaithful.pinchedHomMap_pullback_snd_trivialKanFibration @ SerrePositivity/InfinityCategories/Core/FullyFaithfulBaseChange.lean:67,low,A
+4.8.3.38,Variant,partial,isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing @ SerrePositivity/InfinityCategories/F1/MappingSpaces/IntervalFullyFaithfulCriterion.lean:70,low,A
+4.8.4.1,Theorem,partial,isQCatEquivalence_iff_fullyFaithful_essentiallySurjective @ SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean:48 | qCatEquivalenceOfFullyFaithfulEssentiallySurjective @ SerrePositivity/InfinityCategories/Core/FullyFaithfulEquivalence.lean:47 | IsFullyFaithful.isQCatEquivalence_of_surjective @ SerrePositivity/InfinityCategories/Core/FullyFaithfulBoundary.lean:82,high,B
+4.8.4.6,Theorem,none,,med,C
+4.8.5.1,Definition,none,,med,C
+4.8.6.1,Definition,none,,med,C
+4.8.7.3,Theorem,none,,med,C
+4.8.8.2,Definition,none,,med,C
+4.9.1.6,Definition,mathlib,IsWellOrder @ Mathlib/Order/RelClasses.lean:316,high,D
+4.9.1.14,Proposition,partial,InitialSeg.le_apply_iff @ Mathlib/Order/InitialSeg.lean:621,low,A
+4.9.1.16,Corollary,mathlib,InitialSeg.total @ Mathlib/Order/InitialSeg.lean:546,low,A
+4.9.1.27,Proposition,mathlib,Order.exists_cof_eq @ Mathlib/SetTheory/Cardinal/Cofinality/Basic.lean:51 | Ordinal.ord_cof_eq_type_lt @ Mathlib/SetTheory/Cardinal/Cofinality/Enum.lean:75,low,A
+4.9.1.33,Proposition,partial,Order.cof_le @ Mathlib/SetTheory/Cardinal/Cofinality/Basic.lean:38 | Order.le_cof_iff @ Mathlib/SetTheory/Cardinal/Cofinality/Basic.lean:46,low,A
+4.9.1.34,Theorem,mathlib,WellOrderingRel.isWellOrder @ Mathlib/SetTheory/Cardinal/Order.lean:538 | exists_wellFoundedLT @ Mathlib/SetTheory/Cardinal/Order.lean:546,high,B
+4.9.2.15,Proposition,mathlib,Ordinal.isRegular_cof @ Mathlib/SetTheory/Cardinal/Regular.lean:64,low,A
+4.9.3.5,Proposition,mathlib,Cardinal.mul_lt_of_lt @ Mathlib/SetTheory/Cardinal/Arithmetic.lean:110,med,D
+4.9.3.7,Proposition,partial,Cardinal.iSup_lt_of_isRegular @ Mathlib/SetTheory/Cardinal/Regular.lean:193 | Cardinal.sum_lt_of_isRegular @ Mathlib/SetTheory/Cardinal/Regular.lean:203,low,A
+4.9.3.8,Corollary,partial,Cardinal.sum_lt_of_isRegular @ Mathlib/SetTheory/Cardinal/Regular.lean:203,low,A
+4.9.3.16,Definition,none,,med,C
+5.1.1.16,Corollary,partial,relativeCosliceRestriction_source_of_isCocartesianEdge @ SerrePositivity/InfinityCategories/F1/Cocartesian/SourceRestriction.lean:42 | isCocartesianEdge_of_relativeCosliceRestriction_source @ SerrePositivity/InfinityCategories/F1/Cocartesian/SourceRestriction.lean:56,low,A
+5.1.3.11,Proposition,partial,coslicePostcompFiberMap_source_equivalence_of_target @ SerrePositivity/InfinityCategories/F1/MappingSpaces/CosliceFiberPostcomposition.lean:66,low,A
+5.1.4.12,Proposition,partial,hasCocartesianHornLifting_iff_isInvertibleEdge_of_map @ SerrePositivity/InfinityCategories/Core/CocartesianEdge.lean:65,low,A
+5.1.6.1,Theorem,partial,isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts @ SerrePositivity/InfinityCategories/F1/Cocartesian/CrossingComparison.lean:78 | isQCatEquivalence_of_leftFibration_fibers @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberComparison.lean:79 | isEssentiallySurjective_of_vertexFiberMap @ SerrePositivity/InfinityCategories/F1/Fibrations/FiberwiseEssentialSurjectivity.lean:28,high,B
+5.2.0.4,Definition,none,,med,C
+5.2.1.1,Theorem,partial,ihom_map_leftFibration @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInternalHom.lean:55 | ihom_pre_innerFibration @ SerrePositivity/KST/SConstruction/DoubleCoconeUniversality.lean:22,high,B
+5.2.2.2,Construction,partial,CategoryTheory.Functor.IsCocartesian @ Mathlib/CategoryTheory/FiberedCategory/Cocartesian.lean:55,low,A
+5.2.2.9,Notation,own,edgeTransport @ SerrePositivity/InfinityCategories/F1/Transport/EdgeTransport.lean:38,med,D
+5.2.2.15,Definition,none,,med,C
+5.2.2.20,Theorem,none,,med,C
+5.2.3.13,Lemma,partial,relativeJoin_fst_innerFibration @ SerrePositivity/InfinityCategories/F1/Joins/JoinDiagonalInnerFibration.lean:131,low,A
+5.2.4.1,Theorem,partial,relativeJoin_extension_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinExtensionEquivalence.lean:65 | isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts @ SerrePositivity/InfinityCategories/F1/Cocartesian/CrossingComparison.lean:78 | isPrecompositionEquivalence_relativeJoinCylinderComparison @ SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderEquivalence.lean:48,med,B
+5.2.7.1,Theorem,partial,IsCoveringMap.monodromyFunctor @ Mathlib/Topology/Homotopy/Lifting.lean:462 | IsCoveringMap.monodromy_bijective @ Mathlib/Topology/Homotopy/Lifting.lean:467,high,B
+5.3.1.23,Corollary,partial,cocartesianSectionsEvaluate_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean:100,low,A
+5.3.2.1,Construction,own,simplicialReplacement @ SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacement.lean:41 | simplicialReplacementProjection @ SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacement.lean:69 | simplicialReplacementFunctor @ SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementFunctor.lean:77,high,D
+5.3.2.11,Notation,own,simplicialReplacement @ SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacement.lean:41,low,A
+5.3.2.17,Proposition,partial,simplicialReplacementMap_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementEquivalence.lean:23,low,A
+5.3.2.20,Proposition,own,strictDiagramMappingScaffoldIso @ SerrePositivity/InfinityCategories/F1/Diagrams/StrictDiagramScaffoldIdentities.lean:121,low,A
+5.3.3.19,Corollary,own,weightedNerveProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/Weighted/NerveLeftFibration.lean:54,low,A
+5.3.4.1,Definition,own,cocartesianScaffoldHorizontalEdge @ SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Definition.lean:27,low,A
+5.3.5.1,Definition,none,,med,C
+5.3.5.6,Theorem,partial,cocartesianStrictTransportInfinityMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Cocartesian/StrictTransportInfinityEquivalence.lean:45 | cocartesianUniversalScaffold_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Comparison.lean:38 | leftStrictTransportTotalEquivalence @ SerrePositivity/InfinityCategories/F1/Transport/LeftStrictTransportReconstruction.lean:61 | weightedNerveCocartesianTransportUnit_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Weighted/NerveCocartesianUnit.lean:113,med,B
+5.3.5.7,Theorem,partial,CocartesianScaffold.isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Comparison.lean:23 | cocartesianUniversalScaffold_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Comparison.lean:38 | tautScaffold_isPrecompositionEquivalence_of_quasicategory @ SerrePositivity/InfinityCategories/F1/Weighted/NerveCocartesianScaffold.lean:43 | CocartesianScaffold @ SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Definition.lean:43,med,B
+5.3.5.11,Corollary,partial,cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Cocartesian/StrictTransportMappingEquivalence.lean:48 | cocartesianStrictTransportInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F1/Cocartesian/StrictTransportEnriched.lean:52,low,A
+5.3.7.8,Theorem,none,,med,C
+5.3.8.1,Definition,none,,high,C
+5.4.1.1,Definition,none,,high,C
+5.4.2.1,Definition,none,,high,C
+5.4.4.1,Theorem,none,,high,C
+5.4.5.7,Definition,none,,high,C
+5.4.5.12,Definition,none,,high,C
+5.4.6.1,Definition,none,,high,C
+5.4.6.8,Definition,none,,high,C
+5.4.7.1,Definition,none,,high,C
+5.4.8.1,Theorem,none,Coherent.simplicialNerve_quasicategory @ SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean:28,high,C
+5.4.9.2,Theorem,none,,high,C
+5.5.1.21,Theorem,none,,med,C
+5.5.2.2,Proposition,own,pointedSpaceInfinity_quasicategory @ SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:81 | pointedSpaceProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:74,high,D
+5.5.5.10,Definition,none,,high,C
+5.6.0.2,Theorem,partial,cocartesianStraighteningCoherentMap_finite_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Cocartesian/FiniteSimplexEquivalence.lean:57,high,B
+5.6.2.21,Proposition,partial,leftUnstraighteningMap @ SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraightening.lean:53,low,A
+5.6.2.22,Proposition,partial,leftStraighteningInfinityCounit @ SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningEssentialSurjectivity.lean:22,low,A
+5.6.2.23,Corollary,partial,leftStraighteningInfinityCounit @ SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningEssentialSurjectivity.lean:22 | LeftTransportRepresentation @ SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean:66,low,A
+5.6.5.12,Theorem,partial,exists_coherentUnstraighteningRepresentation_extension @ SerrePositivity/InfinityCategories/F1/Coherent/RepresentationExtension.lean:39 | exists_smallFiber_leftTransportRepresentation_extension @ SerrePositivity/InfinityCategories/F1/Universe/SmallFiberWitnessContractible.lean:87 | coherentUnstraighteningWitnessRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/Coherent/RepresentationExtension.lean:62,high,B
+5.6.5.15,Corollary,partial,smallTransportWitnessSpace_isContractibleKan @ SerrePositivity/InfinityCategories/F1/Universe/SmallWitnessContractible.lean:24,low,A
+5.6.6.10,Definition,none,,low,C
+5.6.6.13,Theorem,own,covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean:24 | covariantCosliceClassificationIso @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantCosliceClassification.lean:25 | covariantHomIsoOfCosliceEquivalence @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantCosliceClassification.lean:38,med,B
+5.6.6.19,Proposition,partial,IsInitialVertex.exists_cosliceLift @ SerrePositivity/InfinityCategories/Core/LeftFibrationTerminalFiber.lean:24,low,A
+5.6.8.3,Theorem,partial,smallTransportWitnessSpace_isContractibleKan @ SerrePositivity/InfinityCategories/F1/Universe/SmallWitnessContractible.lean:24,high,B
+6.1.2.8,Corollary,partial,Bicategory.rightZigzag_idempotent_of_left_triangle @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:73 | bicategory_leftZigzag_idempotent_of_right_triangle @ SerrePositivity/InfinityCategories/F1B/FunctorCategories/TriangleIdempotence.lean:38,low,A
+6.1.2.11,Variant,partial,CategoryTheory.Adjunction.leftAdjointOfStructuredArrowInitials @ Mathlib/CategoryTheory/Adjunction/Comma.lean:65 | bicategory_exists_adjunction_unit_iff @ SerrePositivity/InfinityCategories/F1B/Adjunction/UnitHomCriterion.lean:114,low,A
+6.1.3.2,Variant,mathlib,Bicategory.Adjunction.homEquiv₁ @ Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:64,med,D
+6.1.4.1,Proposition,partial,Bicategory.Equivalence.adj @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:285 | Bicategory.adjointifyCounit @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:220,low,A
+6.1.6.13,Definition,none,,med,C
+6.1.6.15,Proposition,partial,CategoryTheory.rightDualIso @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:661,low,A
+6.2.1.14,Proposition,partial,qcat_exists_adjunction_unitHom_iff @ SerrePositivity/InfinityCategories/F1B/Adjunction/QCatUnitHomCriterion.lean:86 | qcatAdjunctionOfUnitHomBijective @ SerrePositivity/InfinityCategories/F1B/Adjunction/QCatUnitHomCriterion.lean:58,low,A
+6.2.2.23,Lemma,partial,ReflectiveSubcategory @ SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean:26,low,A
+6.2.3.1,Definition,own,HomotopyLimits.IsLocalForHom @ SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:42 | HomotopyLimits.IsLocalObject @ SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:103,high,D
+6.2.3.11,Definition,none,,med,C
+6.2.3.14,Proposition,partial,HomotopyLimits.isReflectiveSubcategory_of_localReplacements @ SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean:24 | HomotopyLimits.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124,low,A
+6.2.5.4,Proposition,partial,quillenCfDerivedAdjunction_exists @ SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean:101 | quillenCfCollageProjection_cartesianFibration @ SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean:70 | unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage @ SerrePositivity/InfinityCategories/HomotopyLimits/IntervalUnitCollageComparison.lean:99 | intervalPrecompose_equivalence_of_cocartesianHomotopy @ SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyMappingEquivalence.lean:65,low,A
+6.2.5.7,Proposition,partial,quillenCfDerivedAdjunction_exists @ SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean:101 | quillenCfCollageProjection_cartesianFibration @ SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean:70 | unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage @ SerrePositivity/InfinityCategories/HomotopyLimits/IntervalUnitCollageComparison.lean:99 | intervalPrecompose_equivalence_of_cocartesianHomotopy @ SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyMappingEquivalence.lean:65,low,A
+6.2.7.1,Definition,none,,high,C
+6.2.7.4,Definition,none,,med,C
+6.2.7.10,Theorem,none,,med,C
+6.3.4.1,Theorem,none,,med,C
+6.3.5.1,Definition,none,,high,C
+6.3.6.1,Theorem,none,,med,C
+7.1.2.1,Definition,none,,med,C
+7.1.2.11,Variant,partial,tensorSpaceFunctor @ SerrePositivity/InfinityCategories/F2/Tensor/Space.lean:48,low,A
+7.1.3.2,Corollary,partial,isLimitCone_iff_covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableLimitCharacterization.lean:22,low,A
+7.1.4.12,Proposition,own,IsQCatEquivalence.isLimitCone_iff @ SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean:60 | QCatEquivalence.isLimitCone_iff @ SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean:82,high,D
+7.1.4.18,Corollary,partial,IsQCatEquivalence.isLimitCone_iff @ SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean:60 | hasLimit_iff_restrict_of_precompositionEquivalence @ SerrePositivity/InfinityCategories/Core/LimitDiagramIso.lean:17,low,A
+7.1.4.23,Definition,none,,med,C
+7.1.4.29,Corollary,partial,hasSmallColimits_of_reflection @ SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointAllColimitPreservation.lean:94 | reflectiveSubcategory_hasSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallColimits.lean:26,low,A
+7.1.6.17,Corollary,partial,kanRelativeJoinColimitRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinUniversalRestriction.lean:112,low,A
+7.1.6.20,Corollary,partial,pinchedHomMap_equivalence_of_initialBoundary @ SerrePositivity/InfinityCategories/F1B/Cofinality/InitialBoundaryMappingSpace.lean:42 | isLimitCone_iff_terminalBoundaryLifting_coneRestriction @ SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitCriterion.lean:35,low,A
+7.1.7.8,Corollary,partial,InitialBoundaryLifting.isInitialVertex_fiber @ SerrePositivity/InfinityCategories/Core/RelativeInitialBoundary.lean:68 | kanRelativeCoconeRestriction_fiber_comparison @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeTargetFiber.lean:74,low,A
+7.1.7.9,Definition,none,,med,C
+7.1.8.8,Corollary,own,exists_lift_of_initial_first_vertices @ SerrePositivity/KST/SConstruction/RelativeInitialExtension.lean:24 | kanRelativeCoconeLifting_functor_of_pointwise @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean:27,low,A
+7.1.8.10,Proposition,own,kanRelativeCoconeLifting_relativeFunctor_of_first_vertices @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean:36 | initialBoundaryLifting_ihom_of_pointwise @ SerrePositivity/KST/SConstruction/FunctorInitialBoundary.lean:39 | terminalBoundaryLifting_coneRestriction_of_pointwise @ SerrePositivity/InfinityCategories/Core/FunctorConeTerminalBoundary.lean:27,med,D
+7.1.8.11,Corollary,own,kanRelativeCoconeLifting_relativeFunctor_of_first_vertices @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean:36 | initialBoundaryLifting_coconeRestriction_of_pointwise @ SerrePositivity/KST/SConstruction/FunctorPointwiseColimits.lean:40,low,A
+7.2.3.1,Theorem,own,isLeftCofinal_iff_weaklyContractible_slices @ SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean:23 | isRightCofinal_iff_weaklyContractible_coslices @ SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean:48,high,B
+7.2.3.6,Corollary,partial,kanIsRelativeColimitCone_iff_restrict_terminal @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitTerminalIndex.lean:51,low,A
+7.3.1.5,Variant,own,IsLeftKanExtension @ SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean:152 | LeftKanCoconeTransport @ SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean:68 | leftKanDiagram @ SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean:62,high,D
+7.3.2.13,Corollary,partial,IsLeftKanExtension.exists_relativeJoin_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean:58,low,A
+7.3.3.18,Proposition,partial,kanIsRelativeColimitCone_iff_restrict_of_precompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitReindex.lean:26,low,A
+7.3.3.22,Corollary,partial,KanRelativeInitialVertex.pullback_snd @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeInitialBaseChange.lean:68,low,A
+7.3.3.23,Corollary,partial,KanRelativeInitialVertex.pullback_snd @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeInitialBaseChange.lean:68,low,A
+7.3.4.1,Proposition,partial,kanRelativeJoinFiberCocone_isColimit_of_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFiberCocone.lean:56 | kanRelativeJoinColimitProjection_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinColimitProjection.lean:92,low,A
+7.3.4.3,Proposition,partial,kanRelativeJoinFiberCocone_relative_of_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFiberRelativeCocone.lean:26 | kanRelativeJoinRelative_initialBoundary_of_relativeColimit @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLiftingCartesian.lean:61,low,A
+7.3.4.6,Lemma,own,exists_kanRelativeJoin_family_extension_of_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFamilyAssembly.lean:26 | kanRelativeJoinRelativeColimitRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRelativeUniversalExistence.lean:82,low,A
+7.3.4.8,Corollary,partial,exists_kanRelativeJoin_diagram_of_pointwise_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinPointwiseExistence.lean:60,low,A
+7.3.6.14,Theorem,own,kanRelativeLeftKanRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean:55 | kanRelativeLeftKanRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean:27 | kanRelativeRightKanRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean:90,high,B
+7.3.7.1,Theorem,partial,F1B.kanIsRelativeLeftKanExtendedFrom_constantFamily @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean:35,med,B
+7.3.8.24,Proposition,partial,F2.Ind.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean:104 | F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean:41,low,A
+7.4.1.1,Proposition,partial,coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:36,low,A
+7.4.1.3,Corollary,own,space_hasSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:77 | hasLimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:42,high,D
+7.4.1.9,Proposition,partial,LeftTransportRepresentation @ SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean:66,low,A
+7.4.1.13,Construction,partial,HomotopyLimits.simplicialSections @ SerrePositivity/InfinityCategories/HomotopyLimits/SimplicialSections.lean:25,low,A
+7.4.1.14,Proposition,partial,coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:36 | LeftTransportRepresentation.coneRestriction_iff @ SerrePositivity/InfinityCategories/Derived/LeftTransportConeRestriction.lean:52,low,A
+7.4.1.18,Corollary,own,LeftTransportRepresentation.coneRestriction_iff @ SerrePositivity/InfinityCategories/Derived/LeftTransportConeRestriction.lean:52 | leftFibrationConeRestriction @ SerrePositivity/InfinityCategories/HomotopyLimits/LeftFibrationConeRestriction.lean:23,low,A
+7.4.1.19,Corollary,partial,LeftTransportRepresentation.coneRestriction_iff @ SerrePositivity/InfinityCategories/Derived/LeftTransportConeRestriction.lean:52,low,A
+7.4.2.1,Notation,partial,leftStraighteningInfinityMap @ SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningAllBases.lean:38,low,A
+7.4.2.4,Theorem,partial,leftStraighteningInfinityMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean:49,low,AB
+7.4.4.6,Theorem,none,,high,C
+7.4.5.8,Definition,none,,high,C
+7.4.5.13,Theorem,none,,high,C
+7.5.4.8,Definition,none,,med,C
+7.5.5.1,Definition,none,,med,C
+7.5.5.11,Definition,none,,med,C
+7.5.6.9,Proposition,partial,DiagramModel.HomotopyColimit.replacement_isCofibrant @ SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean:45,low,A
+7.5.7.3,Definition,none,,med,C
+7.5.7.6,Proposition,partial,strictNativeCocone_isColimit_iff_reflectedRepresentableComparison @ SerrePositivity/InfinityCategories/HomotopyLimits/GeneralReflectedCriterion.lean:38 | strictCoherentCocone_isColimit_iff @ SerrePositivity/InfinityCategories/HomotopyLimits/StrictCocones.lean:77,low,A
+7.5.8.2,Definition,none,,med,C
+7.6.1.1,Definition,none,,med,C
+7.6.1.7,Notation,partial,F2.Presentable.HasSmallCoproducts @ SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean:23 | binaryColimit_isColimit @ SerrePositivity/InfinityCategories/Stable/HomotopyBinaryCoproduct.lean:23,low,A
+7.6.2.13,Notation,partial,catPullbackDiagram_hasLimit @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackCone.lean:61,low,A
+7.6.2.16,Proposition,partial,terminalTargetPullback_isBinaryProduct @ SerrePositivity/InfinityCategories/Stable/ZeroTargetProduct.lean:24,low,A
+7.6.2.33,Definition,none,,med,C
+7.6.5.11,Variant,own,spaceTowerCone_isLimitCone @ SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTowers.lean:90 | FibrationTower.projection_zero_fibration @ SerrePositivity/InfinityCategories/Kan/FibrationTower.lean:152,high,D
+7.6.6.6,Definition,none,,high,C
+7.6.6.24,Proposition,partial,pullback_hasSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackSmallColimits.lean:33,low,A
+7.6.6.28,Definition,none,,high,C
+7.6.6.41,Proposition,partial,isColimitCone_of_pointwise @ SerrePositivity/InfinityCategories/F1B/FilteredExchange/FunctorPointwiseColimitCriterion.lean:67,low,A
+7.7.0.4,Theorem,partial,spanCylinder_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanGluing.lean:53 | sequential_homotopyPullback @ SerrePositivity/KST/Comparison/SequentialHomotopyPullback.lean:32,low,AB
+7.7.2.5,Definition,none,,high,C
+7.7.2.8,Theorem,none,,med,C
+7.7.2.24,Definition,none,,high,C
+7.7.5.1,Definition,none,,high,C
+7.7.6.1,Theorem,partial,spanCylinder_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanGluing.lean:53 | spanPushout_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanPushoutGluing.lean:30 | sequential_homotopyPullback @ SerrePositivity/KST/Comparison/SequentialHomotopyPullback.lean:32 | fatRealizationInclusion_homotopyPullback @ SerrePositivity/KST/Comparison/FatRealizationHomotopyPullback.lean:32,med,B
+7.7.7.2,Definition,none,,high,C
+8.1.2.11,Corollary,own,twistedArrowIdentityHomTransport_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean:116 | twistedArrowHomSpace @ SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSpace.lean:23,low,A
+8.1.6.5,Definition,partial,SpanBicat @ .lake/packages/mathlib/Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151,low,A
+8.1.7.8,Definition,partial,MorphismProperty.HasOfPostcompProperty @ .lake/packages/mathlib/Mathlib/CategoryTheory/MorphismProperty/Composition.lean:370,low,A
+8.2.5.1,Theorem,partial,adjunctionCovariantHomIso @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean:73,med,B
+8.3.1.6,Corollary,partial,leftFibration_exists_initial_of_covariantRepresentation @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:32 | covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean:24,low,A
+8.3.3.5,Variant,partial,SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,low,A
+8.3.3.12,Variant,partial,SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,low,A
+8.3.3.13,Theorem,own,yonedaInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean:72 | coyonedaInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean:74 | yonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:39 | coyonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/MappingSpaces/HomInfinityBifunctor.lean:77,high,B
+8.3.3.14,Proposition,own,isLimitCone_iff_covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableLimitCharacterization.lean:22 | yonedaInfinityMap_isLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaLimits.lean:22 | coyonedaInfinityMap_reflects_isLimit @ SerrePositivity/InfinityCategories/HomotopyLimits/CoYonedaLimitReflection.lean:28,med,D
+8.3.3.15,Variant,partial,isLimitCone_iff_covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableLimitCharacterization.lean:22 | yonedaInfinityMap_isLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaLimits.lean:22,low,A
+8.3.4.4,Variant,partial,exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69 | exists_rightAdjoint_of_contravariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/OppositeAdjointExistence.lean:74,low,A
+8.4.0.3,Theorem,partial,presheafInfinity_hasColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafPointwiseColimits.lean:34 | presheaf_exists_yonedaLeftKan @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:44 | presheafYonedaLeftKan_canonicalColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:71,med,B
+8.4.2.1,Theorem,own,presheafDensityCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:23 | presheafDensityPresentation @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:28,med,B
+8.4.2.4,Variant,partial,presheafDensityCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:23,low,A
+8.4.2.7,Corollary,partial,presheafElementsYonedaSliceComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Ind/ElementsYonedaSliceEquivalence.lean:43,low,A
+8.4.3.2,Theorem,partial,presheaf_exists_yonedaLeftKan @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:44,low,AB
+8.4.3.5,Theorem,partial,presheafYonedaLeftKan_canonicalColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:71 | sigmaLeftKanExtension_preservesSmallColimits_iff @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean:26,low,AB
+8.4.5.2,Corollary,partial,sigmaLeftKanExtension_preservesSmallColimits_iff @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean:26,low,A
+8.4.9.1,Theorem,partial,presheafElementsYonedaSliceComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Ind/ElementsYonedaSliceEquivalence.lean:43,med,B
+8.5.2.4,Proposition,mathlib,isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent @ Mathlib/CategoryTheory/Idempotents/Basic.lean:64,low,A
+8.5.2.6,Corollary,mathlib,isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent @ Mathlib/CategoryTheory/Idempotents/Basic.lean:64,low,A
+8.5.3.12,Corollary,own,StrongSplitting.postcomposeCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:57 | StrongSplitting.postcomposeCone_isLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean:53,med,D
+8.5.5.6,Proposition,partial,idemPresheaf_isKappaCompact @ SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean:25 | idemToCompactPresheaves_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean:54,low,A
+8.5.7.19,Proposition,partial,weakComparisonRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:22,low,A
+8.5.8.4,Proposition,partial,weakDiagram_strongSplitting_exists @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:46,low,A
+9.1.3.2,Theorem,partial,isWeaklyContractible_of_isFilteredInfinity @ SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean:58,high,B
+9.1.5.1,Theorem,partial,coherentFilteredLimitExchangeShape_finite @ SerrePositivity/InfinityCategories/F2/Ind/CoherentFiniteLimitExchange.lean:24 | CoherentFilteredLimitExchangeShape @ SerrePositivity/InfinityCategories/F1/Filtered/CoherentFilteredLimitExchange.lean:27,high,B
+9.1.5.6,Lemma,partial,fiberProductToProduct_isRightCofinal @ SerrePositivity/InfinityCategories/Stable/Filtered/FiberProductCofinality.lean:31 | totalKanProductComparison_isWeakHomotopyEquivalence @ SerrePositivity/InfinityCategories/Stable/Filtered/TotalKanProductEquivalence.lean:47,low,A
+9.1.5.9,Theorem,partial,cardinalFilteredLimitExchangeShape_poset @ SerrePositivity/InfinityCategories/F2/Presentable/CardinalExchangeShape.lean:49 | coherentCardinalFilteredLimitExchange_poset @ SerrePositivity/InfinityCategories/F2/Presentable/CoherentFilteredPosetExchange.lean:35,med,B
+9.1.7.5,Definition,mathlib,Cardinal.SharplyLT @ Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean:53 | Cardinal.SharplyLT.tfae @ Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean:536 | Cardinal.SharplyLT.exists_cofinal @ Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean:556,high,D
+9.1.7.18,Lemma,partial,Cardinal.SharplyLT.exists_cofinal @ Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean:556,low,A
+9.1.8.1,Theorem,partial,Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean:31 | Ind.isKappaFiltered_of_isTerminalVertex @ SerrePositivity/InfinityCategories/F2/Ind/TerminalFiltered.lean:32,med,B
+9.1.8.4,Lemma,own,Ind.terminalSubcomplexCarrierBase_isRightCofinal @ SerrePositivity/InfinityCategories/F2/Ind/TerminalCarrierCofinal.lean:36 | Ind.terminalSubcomplexFamily_isCardinalFiltered @ SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean:30,low,A
+9.1.8.7,Theorem,own,Ind.exists_cofinal_cardinalFiltered_poset @ SerrePositivity/InfinityCategories/F2/Ind/CofinalFilteredPoset.lean:20 | Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean:31,low,AB
+9.1.9.6,Lemma,partial,Ind.isKappaFiltered_of_strict_isColimit @ SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean:32 | Ind.kappaSmall_factorization_of_isColimit @ SerrePositivity/InfinityCategories/F2/Ind/KappaRelativeFactorization.lean:24,low,A
+9.2.1.12,Corollary,partial,Ind.HasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean:28 | Ind.exists_cofinal_kappaFiltered_poset @ SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean:31 | Presentable.hasColimit_of_rightCofinalRestriction @ SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean:35,low,A
+9.2.4.3,Theorem,partial,Presentable.pullback_hasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean:33 | Presentable.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean:74,med,B
+9.2.5.24,Proposition,partial,Presentable.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/F2/Presentable/SmallQuasicategoryColimitCompact.lean:38 | Presentable.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/F2/Presentable/SmallPosetColimitCompactUniverse.lean:73,low,A
+9.2.5.25,Corollary,partial,Presentable.isKappaCompact_smallQuasicategoryColimit_universe @ SerrePositivity/InfinityCategories/F2/Presentable/SmallQuasicategoryColimitCompact.lean:38 | Presentable.isKappaCompact_smallPosetColimit_universe @ SerrePositivity/InfinityCategories/F2/Presentable/SmallPosetColimitCompactUniverse.lean:73 | Compact.isKappaCompact_finiteColimit @ SerrePositivity/InfinityCategories/F2/Compact/FiniteColimitClosureUnconditional.lean:21,low,A
+9.2.8.5,Corollary,partial,Presentable.componentCompactObjects_vertex_isKappaCompact @ SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactPullback.lean:86,low,A
+9.2.8.9,Proposition,partial,Presentable.smallConstantPointDiagram_isKappaCompact @ SerrePositivity/InfinityCategories/F2/Presentable/SmallConstantDiagramCompact.lean:77,low,A
+9.2.9.16,Proposition,partial,isKappaCompact_functorVertex_of_endFamily @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean:26,low,A
+9.2.9.19,Corollary,partial,isKappaCompact_functorVertex_of_endFamily @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean:26,low,A
+9.3.1.13,Notation,partial,exists_indComparison @ SerrePositivity/InfinityCategories/F2/Presentable/IndComparison.lean:20 | ind_exists_leftKanExtension @ SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanUnitRecovery.lean:40,low,A
+9.3.2.2,Corollary,partial,indComparison_isFullyFaithful_of_compact @ SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonFullyFaithful.lean:58 | indYoneda_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean:56,low,A
+9.3.4.14,Theorem,partial,isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:40,low,AB
+9.3.4.20,Lemma,partial,hasKappaFilteredElements_kappaColimitClosed @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:26,low,A
+9.3.4.21,Lemma,partial,isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:40,low,A
+9.3.4.23,Corollary,partial,isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:40,low,A
+9.3.4.25,Proposition,partial,isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:40,low,A
+9.3.4.26,Corollary,partial,isIndVertex_iff_hasKappaFilteredElements @ SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean:40,low,A
+9.3.5.8,Theorem,partial,CategoryTheory.preservesFiniteColimits_iff_coflat @ Mathlib/CategoryTheory/Functor/Flat.lean:280 | CategoryTheory.preservesFiniteLimits_iff_flat @ Mathlib/CategoryTheory/Functor/Flat.lean:274,low,AB
+9.3.5.15,Theorem,partial,CategoryTheory.RepresentablyFlat @ Mathlib/CategoryTheory/Functor/Flat.lean:67 | instance (G : D ⥤ Type) [RepresentablyFlat F] [IsCofiltered G.Elements] @ Mathlib/CategoryTheory/Functor/Flat.lean:411,low,AB
+9.3.5.23,Theorem,partial,CategoryTheory.preservesFiniteLimits_of_flat @ Mathlib/CategoryTheory/Functor/Flat.lean:250 | CategoryTheory.flat_of_preservesFiniteLimits @ Mathlib/CategoryTheory/Functor/Flat.lean:159,med,B
+9.3.6.4,Theorem,partial,indInfinity_isMuAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:24 | isKappaAccessible_iff_indEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean:45,low,AB
+9.4.0.1,Definition,both,CategoryTheory.IsCardinalAccessibleCategory @ Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean:50 | CategoryTheory.IsAccessibleCategory @ Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean:87 | IsKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean:41,med,D
+9.4.1.7,Variant,partial,IsKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean:41,low,A
+9.4.1.22,Corollary,partial,indInfinity_isMuAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:24 | IsKappaAccessible.of_cardinalChangeBound @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:46,low,A
+9.4.4.4,Theorem,partial,Comma.isCardinalAccessibleCategory @ Mathlib/CategoryTheory/Presentable/Comma.lean:435 | Comma.isCardinalPresentable_iff @ Mathlib/CategoryTheory/Presentable/Comma.lean:447,med,B
+9.4.5.4,Theorem,partial,AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25,med,B
+9.4.5.9,Theorem,partial,AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25,low,AB
+9.4.5.10,Corollary,partial,AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25,low,A
+9.4.5.11,Proposition,partial,AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25 | pullback_fst_isKappaAccessibleFunctor @ IC/F2/Presentable/PullbackFilteredColimits.lean:74,low,A
+9.4.7.6,Corollary,partial,IsKappaAccessible.of_cardinalChangeBound @ IC/F2/Presentable/IndCardinalChange.lean:46,low,A
+9.4.7.7,Corollary,partial,IsKappaAccessible @ IC/F2/Presentable/Accessible.lean:41 | IsKappaAccessible.exists_compactCardinal @ IC/F2/Presentable/ObjectCompactCardinals.lean:28,low,A
+9.4.7.20,Proposition,partial,compactIndYoneda_isIdempotentCompletion @ IC/F2/Compact/CompactIndCompletion.lean:30 | ind_isIdempotentComplete @ IC/F2/Compact/IndComplete.lean:33 | indInfinity_isKappaAccessible @ IC/F2/Presentable/IndAccessible.lean:55,low,A
+9.4.8.12,Proposition,partial,IsAccessible.exists_common_compactCardinal @ IC/F2/Presentable/ObjectCompactCardinals.lean:69 | exists_common_accessibilityCardinal @ IC/F2/Presentable/IndCardinalChange.lean:71,low,A
+9.4.8.17,Proposition,partial,isKappaAccessibleFunctor_of_indHomTests_native @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:28,low,A
+9.4.9.11,Corollary,partial,pullback_fst_isKappaAccessibleFunctor @ IC/F2/Presentable/PullbackFilteredColimits.lean:74 | AccessiblePullback.pullback_isAccessible @ IC/F2/Presentable/AccessiblePullback/Accessibility.lean:25,low,A
+9.5.1.1,Theorem,partial,IsPresentable.hasSmallLimits @ IC/F2/Presentable/PresentableSmallLimits.lean:25,high,B
+9.5.1.8,Theorem,own,presentableContinuous_isRepresentable @ IC/F2/Presentable/AdjointFunctorTheorem.lean:34,high,B
+9.5.1.9,Theorem,own,accessible_preservesLimits_isCorepresentable @ IC/F2/Presentable/AccessibleCorepresentability.lean:28,high,B
+9.5.2.1,Theorem,own,exists_rightAdjoint_iff_preservesSmallColimits @ IC/F2/Presentable/AdjointFunctorTheorem.lean:45 | exists_leftAdjoint_iff_accessible_preservesLimits @ IC/F2/Presentable/NativeAdjointFunctorCriterion.lean:96,high,B
+9.5.4.1,Proposition,partial,Localization.generatedSource_isPresentable @ IC/F2/Presentable/Localization/GeneratedSourcePresentable.lean:35 | Over/Under の IsAccessibleCategory instance @ Mathlib/CategoryTheory/Presentable/Comma.lean:567,low,A
+9.5.4.17,Proposition,partial,functor_isPresentable @ IC/F2/Presentable/FunctorPresentable.lean:67 | evaluateFunctorAt_preservesSmallColimits @ IC/F2/Presentable/FunctorSmallColimits.lean:45,low,A
+9.5.7.1,Theorem,own,bousfield_isReflectiveSubcategory @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean:36 | bousfieldLocalObjects_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean:57 | IsLocalObject @ SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:103,high,B
+9.7.1.4,Theorem,partial,indKappaContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean:52 | sigmaSiftedContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean:62,med,B
+9.7.1.16,Definition,partial,sigma_preservesSmallColimits_iff_yoneda_of_cocomplete @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean:47,low,A
+9.7.1.20,Proposition,partial,sigma_preservesSmallColimits_iff_yoneda_of_cocomplete @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean:47 | sigmaSiftedContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean:62,low,A
+9.7.2.8,Proposition,own,nonemptyFiniteDiagonal_isRightCofinal @ SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean:26 | isWeaklyContractible_of_sifted @ SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean:71 | IsSiftedInfinity @ SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean:20,med,D
+9.7.2.13,Variant,partial,totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted @ SerrePositivity/InfinityCategories/F2/Presentable/SiftedProductComparison.lean:34,low,A
+10.1.0.2,Notation,partial,CategoryTheory.SimplicialObject @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48,low,A
+10.1.1.13,Notation,partial,SimplicialObject.Augmented @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:391,low,A
+10.1.2.22,Variant,partial,AlgebraicTopology.normalizedMooreComplex / PInftyToNormalizedMooreComplex @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/DoldKan/Normalized.lean:68,low,A
+10.1.2.28,Variant,partial,SimplicialObject.δ_comp_δ ほか @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:111 | AugmentedSimplexCategory @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33,low,A
+10.1.3.1,Definition,partial,SimplicialObject.Augmented.const @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:481,low,A
+10.1.3.18,Definition,partial,SimplicialObject.sk / skAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297,low,A
+10.1.3.23,Proposition,partial,SimplicialObject.sk / skAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297,low,A
+10.1.4.4,Notation,partial,cechNerveTerminalFrom @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:327,low,A
+10.1.4.8,Corollary,partial,cechNerveAdjunction @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:162,low,A
+10.1.4.15,Proposition,partial,isCoskeletal_iff_isIso @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean:74,low,A
+10.1.4.17,Definition,partial,SimplicialObject.cosk / coskAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302,low,A
+10.1.4.21,Proposition,partial,SimplicialObject.cosk / coskAdj @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302,low,A
+10.1.5.5,Notation,partial,Arrow.augmentedCechNerve @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/CechNerve.lean:72,low,A
+10.1.5.9,Notation,partial,AugmentedSimplexCategory @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33,low,A
+10.1.6.7,Variant,partial,SimplicialObject.Augmented.ExtraDegeneracy @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,low,A
+10.1.6.9,Proposition,partial,ExtraDegeneracy.homotopyEquiv @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:413,low,A
+10.1.6.11,Variant,partial,SimplicialObject.Augmented.ExtraDegeneracy @ .lake/packages/mathlib/Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,low,A
