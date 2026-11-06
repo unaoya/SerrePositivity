@@ -62,3 +62,12 @@
 - worktree は main から切った作業用のものを使う（例 `../SerrePositivity-kerodon-review`、枝 `research/kerodon-review`）。main の作業木では作業しない。
 - ビルドは小さなものだけ。`lake env lean` の前に、import するモジュールを `lake build <module>` で用意する（Lake のキャッシュが効く。`source ~/.zshenv`）。全体のビルドや verify はしない。始める前に `ps -axo command= | grep '[l]ake build'` で他の大きなビルドがないことを確かめ、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` を通す。
 - 終わったら枝にコミットして報告する。main への取り込みは調整役が行う。
+
+## 4. 追記（2026-11-07、調整役）：ビルドの待ち合わせを緩める
+
+段 1 の初回は、別プロジェクトの `lake build ArxivFormalization` を検出して止まった。§3 のビルドの待ち合わせを次のとおり緩める（ユーザー承認）。
+
+- **止まるのは二つの場合だけ**：SerrePositivity の全ビルド（ルート・下流ビルド・verify、`verify.sh`）が走っているとき、または `scripts/refactor/with_build_lock.sh --wait 0` で鍵が取れないとき。鍵が取れなければ少し待って取り直す。
+- **待たないもの**：別プロジェクト（`arxiv_formalization` など）のビルドと、SerrePositivity の他の worktree の小さなビルド（`lake build <module>`・`lake env lean`）。CPU は取り合うが、正しさには影響しない。
+- 段 1 のスクリプトは main に入った（538f3a835）。HEAD が変わったので、README の手順どおり新しい run-dir を prepare してから全件を流す。
+- 古い worktree `SerrePositivity-kerodon-review`（枝 `research/kerodon-review`）は使われていなかったので消した。以後は `-a`（と、並行にするときの `-b`・`-c`）を使う。
