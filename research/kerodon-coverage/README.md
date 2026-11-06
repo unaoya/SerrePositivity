@@ -55,7 +55,7 @@ Subsection 単位の調査の後に、項目（a.b.c.d）ごとの対応表を�
 - 表 `items.csv` の `subsection_tag` は Subsection の Tag。抜き出しのときに取った項目ごとの Tag は不正確だったので載せていない。
 - 注意：項目の本文の抜き出し（先頭 500 字）は、参照だけの項目で最初の言及を取っていたものがある。各エージェントが元のページを見直して判定したが、確度を low・med にしたものが多い。
 
-ファイル（追加）：`items.csv`、`items-summary.md`、`items-remarks.md`、`codex-review.md`（Codex への依頼）、`review-targets.csv`（確認の対象 417 項目）。
+ファイル（追加）：`items.csv`、`items-summary.md`、`items-remarks.md`、`codex-review.md`（Codex への依頼。全項目を確認し、結果は `review/ch<N>.csv`）、`review-targets.csv`（誤りが多そうな 417 項目の印。先に見る）。
 
 ## ファイル
 
