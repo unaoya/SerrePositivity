@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.HasLimits",
+  "state": "checked",
+  "started": "2026-11-06T19:41:36.766438+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d7569196794f7d0b1e46f4eba32a8dff818aed73226da0516725c06b3a7b1368",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.HasLimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.Limits.HasLimits/Check.lean"
+  ],
+  "finished": "2026-11-06T19:41:46.984894+00:00"
+}

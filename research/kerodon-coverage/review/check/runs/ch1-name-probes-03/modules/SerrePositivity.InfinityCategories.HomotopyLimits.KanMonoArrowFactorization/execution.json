@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+  "state": "checked",
+  "started": "2026-11-06T20:06:08.581146+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d2bc5930acc7de98b1a3845bf2d89c49404d2aebb47b54707ff4f633e2e9787a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-03/modules/SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization/Check.lean"
+  ],
+  "finished": "2026-11-06T20:06:30.561821+00:00"
+}

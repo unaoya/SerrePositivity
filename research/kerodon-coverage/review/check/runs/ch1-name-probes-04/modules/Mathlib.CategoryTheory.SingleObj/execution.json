@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.SingleObj",
+  "state": "checked",
+  "started": "2026-11-06T20:10:52.109000+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "4241433d3dbb2745077d18f4b43bb8c1d7e75afdf81041e52fbefdc81da5d0d7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.SingleObj"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-04/modules/Mathlib.CategoryTheory.SingleObj/Check.lean"
+  ],
+  "finished": "2026-11-06T20:11:43.019937+00:00"
+}

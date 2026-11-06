@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "references": [
+    {
+      "id": "c2136afb5905f388e8df",
+      "raw": "SSet.unique_nonDegenerate_dim @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:218",
+      "declaration": "SSet.unique_nonDegenerate_dim",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "218",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    }
+  ],
+  "items": [
+    {
+      "number": "1.1.3.8",
+      "status": "probe",
+      "references": [
+        "c2136afb5905f388e8df"
+      ],
+      "priority": ""
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "references": [
+        "c2136afb5905f388e8df"
+      ]
+    }
+  ],
+  "purpose": "Eilenberg-Zilber因子化の次元の一意性の追加出典"
+}

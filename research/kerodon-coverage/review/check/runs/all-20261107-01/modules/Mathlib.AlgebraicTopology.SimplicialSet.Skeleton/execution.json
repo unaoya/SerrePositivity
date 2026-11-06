@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+  "state": "checked",
+  "started": "2026-11-06T19:26:58.687893+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6fdb99af3b6262eba07d00df7fa606a7c0b016d960c2c65ddc7dd4baf53750d3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Skeleton/Check.lean"
+  ],
+  "finished": "2026-11-06T19:27:08.568379+00:00"
+}

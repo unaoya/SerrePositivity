@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Fibration.CoreFactorization",
+  "state": "checked",
+  "started": "2026-11-06T19:55:05.298281+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "6b51fee5b5357bf45a3804b4310679c0f5e96b64956c4032b27953a0561bf87e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Fibration.CoreFactorization"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.KST.Fibration.CoreFactorization/Check.lean"
+  ],
+  "finished": "2026-11-06T19:55:18.417178+00:00"
+}

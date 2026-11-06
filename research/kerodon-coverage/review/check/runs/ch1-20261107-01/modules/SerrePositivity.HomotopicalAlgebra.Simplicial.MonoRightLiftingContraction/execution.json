@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction",
+  "state": "checked",
+  "started": "2026-11-06T19:49:47.148943+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "0b5810f4c919d08e77708904d06a570d59e7c958e1e09aeb3d40f064fb98b8f0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction/Check.lean"
+  ],
+  "finished": "2026-11-06T19:49:58.098068+00:00"
+}

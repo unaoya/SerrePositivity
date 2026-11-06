@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+  "state": "checked",
+  "started": "2026-11-06T19:35:09.331132+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "dc0a7cb5b96ca695496cdf5dfde049e3eddeea5e7d9ea8a715fc8546b2623f6f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization/Check.lean"
+  ],
+  "finished": "2026-11-06T19:35:20.906572+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge",
+  "state": "checked",
+  "started": "2026-11-06T19:27:47.060689+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "5a45285cd6522e6459b2842adf8a860d99d52b1541d0787a57eec73ff1e277e9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge/Check.lean"
+  ],
+  "finished": "2026-11-06T19:28:37.011914+00:00"
+}

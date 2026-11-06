@@ -1,0 +1,17 @@
+[
+  {
+    "pid": "21378",
+    "command": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a"
+  },
+  {
+    "pid": "21385",
+    "command": "/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a"
+  },
+  {
+    "pid": "21433",
+    "command": "/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main",
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/arxiv_formalization"
+  }
+]

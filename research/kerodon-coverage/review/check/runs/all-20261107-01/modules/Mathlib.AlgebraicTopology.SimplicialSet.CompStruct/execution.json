@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+  "state": "checked",
+  "started": "2026-11-06T19:25:50.614264+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "2ba62042846591618f72765c902be2898a1d4d80f3efc3ad248784d1a2d25e5a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.CompStruct/Check.lean"
+  ],
+  "finished": "2026-11-06T19:26:00.385310+00:00"
+}

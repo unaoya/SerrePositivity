@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Combinatorics.Quiver.ReflQuiver",
+  "state": "checked",
+  "started": "2026-11-06T20:04:57.710678+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "80eddcf47bd5203ccd0fe912e667aacef132a19ddfb8ab8388115cee407004bf",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Combinatorics.Quiver.ReflQuiver"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-03/modules/Mathlib.Combinatorics.Quiver.ReflQuiver/Check.lean"
+  ],
+  "finished": "2026-11-06T20:05:06.326884+00:00"
+}

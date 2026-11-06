@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.IsConnected",
+  "state": "checked",
+  "started": "2026-11-06T20:06:30.562906+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "fd7e0338e7e4fff5878da1e889e9d796e89f4076e5f040876ea5c00594c97488",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.IsConnected"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-03/modules/Mathlib.CategoryTheory.IsConnected/Check.lean"
+  ],
+  "finished": "2026-11-06T20:06:39.623944+00:00"
+}

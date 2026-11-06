@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T19:36:29.676200+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ebf5c713e77451256641f1cd2d0cabc31c4ff63ec5afa0ff4e880de77696a5e2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T19:37:02.507626+00:00"
+}

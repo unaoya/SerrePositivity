@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace",
+  "state": "checked",
+  "started": "2026-11-06T19:37:56.720742+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "883c49450d37656496d621813d566e989963ad266421b4a4ad1a81637ef24e21",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-01/modules/SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T19:38:07.643681+00:00"
+}

@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition
+waiting for build lock: {"pid": 29273, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:44:08.896671+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion"], "token": "98eab64e93ca48d98b6ef4e8e19c5ce8"}

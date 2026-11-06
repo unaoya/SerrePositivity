@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T19:30:01.164260+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "75eb9f91706db96bf81b848d94505b0312df6992a230d7f4e490eec63f518744",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T19:30:37.771523+00:00"
+}

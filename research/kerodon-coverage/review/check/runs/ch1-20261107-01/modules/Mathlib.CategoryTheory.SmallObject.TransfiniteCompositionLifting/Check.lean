@@ -1,0 +1,8 @@
+import Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 1213a7918f8f46ef2aa9
+#check @CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp
+#print axioms CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp

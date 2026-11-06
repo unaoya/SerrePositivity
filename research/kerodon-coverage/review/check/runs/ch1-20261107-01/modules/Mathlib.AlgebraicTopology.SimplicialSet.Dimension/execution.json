@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+  "state": "checked",
+  "started": "2026-11-06T19:35:59.168964+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "5addf43c4ed0fea76c188ddfddb493fdd5038ab0e4fddc623cfad9c418abcad3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Dimension"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Dimension/Check.lean"
+  ],
+  "finished": "2026-11-06T19:36:10.146690+00:00"
+}

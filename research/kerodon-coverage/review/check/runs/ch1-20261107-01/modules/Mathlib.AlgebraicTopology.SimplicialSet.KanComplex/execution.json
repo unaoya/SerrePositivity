@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+  "state": "checked",
+  "started": "2026-11-06T19:38:39.171991+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "0e362cd2bcac72fdc1868c694d91cfd0345139a1bd436408022213af90398a97",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.KanComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T19:38:49.912082+00:00"
+}

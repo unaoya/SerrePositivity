@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.MorphismProperty.Composition
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.CategoryTheory.MorphismProperty.Composition
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.Algebra.Category.MonCat.Basic
+waiting for build lock: {"pid": 17557, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:31:44.469293+00:00", "command": ["lake", "build", "Mathlib.CategoryTheory.MorphismProperty.Composition"], "token": "d3d0f45a421848d4a3b3ea059d3bf378"}

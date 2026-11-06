@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+  "state": "checked",
+  "started": "2026-11-06T19:37:02.525242+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "6d551ab86e6f251c6dbfd1406b574fc1b55f785a310eacf2951d66d98adf9061",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.KanCharacterization"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-01/modules/SerrePositivity.InfinityCategories.Core.KanCharacterization/Check.lean"
+  ],
+  "finished": "2026-11-06T19:37:13.633872+00:00"
+}

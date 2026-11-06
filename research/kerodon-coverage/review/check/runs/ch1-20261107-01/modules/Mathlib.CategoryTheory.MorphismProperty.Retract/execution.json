@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.MorphismProperty.Retract",
+  "state": "checked",
+  "started": "2026-11-06T19:43:41.245275+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "7eb6be2eb54e2eb32884ea5f68519cbf16821a72ca6ef8f332bf321457b3723a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.MorphismProperty.Retract"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.MorphismProperty.Retract/Check.lean"
+  ],
+  "finished": "2026-11-06T19:43:51.258411+00:00"
+}

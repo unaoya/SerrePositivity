@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+  "state": "checked",
+  "started": "2026-11-06T20:05:06.327639+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "2e9be875e43d7a1e44797f17fe80829db6ea32b9c7cc166144a2e2b057bf1e10",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-03/modules/Mathlib.AlgebraicTopology.SimplicialSet.HornColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T20:06:08.580137+00:00"
+}

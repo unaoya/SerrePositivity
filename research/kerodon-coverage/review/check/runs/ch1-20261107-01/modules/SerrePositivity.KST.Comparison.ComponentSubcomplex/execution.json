@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.ComponentSubcomplex",
+  "state": "checked",
+  "started": "2026-11-06T19:54:46.503178+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "605e0fdbd11ce3cbc7d60ff51d0b1580f661e0b4d5234106e0bfc81d7c5e9974",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.ComponentSubcomplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.KST.Comparison.ComponentSubcomplex/Check.lean"
+  ],
+  "finished": "2026-11-06T19:54:55.845698+00:00"
+}

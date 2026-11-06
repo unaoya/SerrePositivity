@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.BarSegal",
+  "state": "checked",
+  "started": "2026-11-06T19:35:44.016562+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "618ec8e78dba32e1a8ec09c3d26b8b80f1cb12d53cf410655ef846527c3a3d71",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.BarSegal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-01/modules/SerrePositivity.KST.Comparison.BarSegal/Check.lean"
+  ],
+  "finished": "2026-11-06T19:36:29.674589+00:00"
+}

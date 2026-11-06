@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+  "state": "checked",
+  "started": "2026-11-06T19:43:51.259303+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "ae2fdc5072b1b3f727e0fb59925a94ce3491d05428fdf194d87f015b67039a42",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition/Check.lean"
+  ],
+  "finished": "2026-11-06T19:44:42.862726+00:00"
+}

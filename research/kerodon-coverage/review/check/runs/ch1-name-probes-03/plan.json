@@ -1,0 +1,283 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "references": [
+    {
+      "id": "d4a3be75f44b0d68bf03",
+      "raw": "SSet.instQuasicategoryObjIhom @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:157",
+      "declaration": "SSet.instQuasicategoryObjIhom",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "source_line": "157",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "preparation": "ready"
+    },
+    {
+      "id": "8d0a78749617766a8eda",
+      "raw": "SSet.instKanComplexOp @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:103",
+      "declaration": "SSet.instKanComplexOp",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "source_line": "103",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "399c26e87f15c9796b0f",
+      "raw": "SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean:27",
+      "declaration": "SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+      "source_line": "27",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory",
+      "preparation": "ready"
+    },
+    {
+      "id": "73467b08e223b321d22e",
+      "raw": "SSet.instInnerFibrationFromOfQuasicategory @ Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:101",
+      "declaration": "SSet.instInnerFibrationFromOfQuasicategory",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+      "source_line": "101",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+      "preparation": "ready"
+    },
+    {
+      "id": "5918d25a080c9c54f699",
+      "raw": "SSet.Truncated.instCategoryHomotopyCategory₂ @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:299",
+      "declaration": "SSet.Truncated.instCategoryHomotopyCategory₂",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "299",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "38f9badf6d988218ee3d",
+      "raw": "CategoryTheory.ReflQuiver @ Mathlib/Combinatorics/Quiver/ReflQuiver.lean:31",
+      "declaration": "CategoryTheory.ReflQuiver",
+      "source": "Mathlib/Combinatorics/Quiver/ReflQuiver.lean",
+      "source_line": "31",
+      "module": "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "preparation": "ready"
+    },
+    {
+      "id": "20eebd5f7e7bbb40386f",
+      "raw": "SSet.horn.IsCompatible.desc @ Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean:242",
+      "declaration": "SSet.horn.IsCompatible.desc",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean",
+      "source_line": "242",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+      "preparation": "ready"
+    },
+    {
+      "id": "524f2eb5a4741ad9cfaa",
+      "raw": "SerrePositivity.InfinityCategories.HomotopyLimits.kanComplex_of_trivialKanFibration_target @ SerrePositivity/InfinityCategories/HomotopyLimits/KanMonoArrowFactorization.lean:25",
+      "declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.kanComplex_of_trivialKanFibration_target",
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/KanMonoArrowFactorization.lean",
+      "source_line": "25",
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+      "preparation": "ready"
+    },
+    {
+      "id": "e64bb14b87a2711941ce",
+      "raw": "CategoryTheory.instFullFunctorConstOfIsConnected @ Mathlib/CategoryTheory/IsConnected.lean:488",
+      "declaration": "CategoryTheory.instFullFunctorConstOfIsConnected",
+      "source": "Mathlib/CategoryTheory/IsConnected.lean",
+      "source_line": "488",
+      "module": "Mathlib.CategoryTheory.IsConnected",
+      "preparation": "ready"
+    },
+    {
+      "id": "c33266fdaf8cc9f0466d",
+      "raw": "SSet.Truncated.HomotopicL.refl @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:94",
+      "declaration": "SSet.Truncated.HomotopicL.refl",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "94",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "11addb2093dd89518aa4",
+      "raw": "SSet.Truncated.HomotopicL.symm @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:94",
+      "declaration": "SSet.Truncated.HomotopicL.symm",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "94",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "46ce24213149f35e95d3",
+      "raw": "SSet.Truncated.HomotopicL.trans @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:94",
+      "declaration": "SSet.Truncated.HomotopicL.trans",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "94",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    }
+  ],
+  "items": [
+    {
+      "number": "d4a3be75f44b0d68bf03",
+      "status": "probe",
+      "references": [
+        "d4a3be75f44b0d68bf03"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "8d0a78749617766a8eda",
+      "status": "probe",
+      "references": [
+        "8d0a78749617766a8eda"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "399c26e87f15c9796b0f",
+      "status": "probe",
+      "references": [
+        "399c26e87f15c9796b0f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "73467b08e223b321d22e",
+      "status": "probe",
+      "references": [
+        "73467b08e223b321d22e"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "5918d25a080c9c54f699",
+      "status": "probe",
+      "references": [
+        "5918d25a080c9c54f699"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "38f9badf6d988218ee3d",
+      "status": "probe",
+      "references": [
+        "38f9badf6d988218ee3d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "20eebd5f7e7bbb40386f",
+      "status": "probe",
+      "references": [
+        "20eebd5f7e7bbb40386f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "524f2eb5a4741ad9cfaa",
+      "status": "probe",
+      "references": [
+        "524f2eb5a4741ad9cfaa"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "e64bb14b87a2711941ce",
+      "status": "probe",
+      "references": [
+        "e64bb14b87a2711941ce"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "c33266fdaf8cc9f0466d",
+      "status": "probe",
+      "references": [
+        "c33266fdaf8cc9f0466d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "11addb2093dd89518aa4",
+      "status": "probe",
+      "references": [
+        "11addb2093dd89518aa4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "46ce24213149f35e95d3",
+      "status": "probe",
+      "references": [
+        "46ce24213149f35e95d3"
+      ],
+      "priority": ""
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "references": [
+        "d4a3be75f44b0d68bf03"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "references": [
+        "8d0a78749617766a8eda"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory",
+      "references": [
+        "399c26e87f15c9796b0f"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+      "references": [
+        "73467b08e223b321d22e"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "references": [
+        "5918d25a080c9c54f699",
+        "c33266fdaf8cc9f0466d",
+        "11addb2093dd89518aa4",
+        "46ce24213149f35e95d3"
+      ]
+    },
+    {
+      "module": "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "references": [
+        "38f9badf6d988218ee3d"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+      "references": [
+        "20eebd5f7e7bbb40386f"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+      "references": [
+        "524f2eb5a4741ad9cfaa"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.IsConnected",
+      "references": [
+        "e64bb14b87a2711941ce"
+      ]
+    }
+  ],
+  "purpose": "匿名インスタンスの環境一覧とソースから得た名前の検査"
+}

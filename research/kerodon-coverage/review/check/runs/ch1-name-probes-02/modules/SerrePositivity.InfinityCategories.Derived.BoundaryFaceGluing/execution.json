@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+  "state": "checked",
+  "started": "2026-11-06T19:47:41.370819+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "a0eee1e55a5ce32fa2da4768b276f3897e90351271e39157e85fb8544823e5aa",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-02/modules/SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing/Check.lean"
+  ],
+  "finished": "2026-11-06T19:48:44.323028+00:00"
+}

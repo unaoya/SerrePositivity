@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit",
+  "state": "checked",
+  "started": "2026-11-06T19:39:00.745780+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "f9bdf292f3ca0d1fcc3dcd20e77348239af04cb8d0d00eccd3e0e11aaa79460b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit/Check.lean"
+  ],
+  "finished": "2026-11-06T19:39:11.377268+00:00"
+}

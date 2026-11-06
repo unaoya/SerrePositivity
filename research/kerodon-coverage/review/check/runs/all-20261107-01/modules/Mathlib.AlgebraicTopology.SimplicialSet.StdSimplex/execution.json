@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+  "state": "checked",
+  "started": "2026-11-06T19:27:08.569165+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8f9e48cd647e0be12d059657345b0f69cfa87960c71535a09aa5a0c44ddb1242",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex/Check.lean"
+  ],
+  "finished": "2026-11-06T19:27:18.746796+00:00"
+}

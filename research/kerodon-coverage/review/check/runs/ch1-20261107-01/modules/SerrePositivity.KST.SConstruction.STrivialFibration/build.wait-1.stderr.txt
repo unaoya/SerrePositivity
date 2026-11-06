@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldIdentities
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldIdentities
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.KST.SConstruction.STrivialFibration
+waiting for build lock: {"pid": 37959, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:55:18.388144+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldIdentities"], "token": "41cbd8beb6cd4c4c9aca43ec8ecb97aa"}

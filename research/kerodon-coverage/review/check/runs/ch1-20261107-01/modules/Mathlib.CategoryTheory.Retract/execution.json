@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Retract",
+  "state": "checked",
+  "started": "2026-11-06T19:45:13.620072+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "695182ce090b08507c8a876613e88b5b0ffff8bf86a43d56e1e67097d41d9e38",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Retract"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.Retract/Check.lean"
+  ],
+  "finished": "2026-11-06T19:45:45.109008+00:00"
+}

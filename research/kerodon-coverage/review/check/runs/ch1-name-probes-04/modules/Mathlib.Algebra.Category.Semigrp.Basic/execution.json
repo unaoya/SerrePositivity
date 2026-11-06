@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Category.Semigrp.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:08:28.534327+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "989f9f9443b060d1fd45551a06445f5a01067abb60bc8cbcbe876d7022db5d65",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Category.Semigrp.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-04/modules/Mathlib.Algebra.Category.Semigrp.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:37.674901+00:00"
+}

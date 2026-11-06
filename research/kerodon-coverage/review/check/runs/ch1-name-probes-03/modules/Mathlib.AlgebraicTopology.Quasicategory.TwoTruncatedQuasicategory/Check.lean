@@ -1,0 +1,8 @@
+import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 399c26e87f15c9796b0f
+#check @SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory
+#print axioms SSet.instQuasicategory₂ObjTruncatedOfNatNatTruncationOfQuasicategory

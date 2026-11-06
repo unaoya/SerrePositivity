@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+  "state": "checked",
+  "started": "2026-11-06T19:33:57.469014+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "00dc75a50cc37f6aa33e4492b224b2325381eaf935cdb0578f51be38dd7d28e8",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplexCategory.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.SimplexCategory.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:34:41.666323+00:00"
+}

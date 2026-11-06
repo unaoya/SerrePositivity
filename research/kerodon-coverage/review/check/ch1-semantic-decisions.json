@@ -1,0 +1,906 @@
+{
+  "state": "complete_with_explicit_unsure",
+  "note": "個別に照合した判定。章CSVは未完成。axiomsとcheckは全runの証拠を統合してから確定する。",
+  "items": {
+    "1.1.1.4": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "単体対象の面作用素はある。引用先には半単体対象の面作用素の構成がない。名前空間もCategoryTheory.SimplicialObjectへ補正する。"
+    },
+    "1.1.2.10": {
+      "verdict": "unsure",
+      "status_new": "partial",
+      "reason": "原文は5条件。退化作用素の像・低次元への全射・低次元への任意射の対応は確認。任意次元への非単射写像による因子化まで含む全5条件の同値は未確認。"
+    },
+    "1.1.3.1": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "HasDimensionLT/LEは次元の上界。原文に含まれる次元ちょうどk・有限次元の述語までは引用されていない。負の上界はLT 0に対応。"
+    },
+    "1.1.3.9": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "原文の単体圏に対応するのはX.Elementsの反対圏。X.Elementsそのものは射の向きが逆。SSet.Sは前順序であり単体圏ではない。"
+    },
+    "1.1.4.13": {
+      "verdict": "unsure",
+      "status_new": "partial",
+      "reason": "Mathlibのhom_extは単射性、自前のboundaryFaceGluingは次元n+2の全射性。原文が含む1次元の貼合せまで引用先だけで網羅するか未確認。引用の名前空間も補正が必要。"
+    },
+    "1.2.5.10": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "mk_eq_iffとRelStruct₀の辺との対応に加え、KanHomotopyZero.equivPiZeroがSSet.π₀との比較を既に与える。元注記の未確認を訂正。名前空間を補正する。"
+    },
+    "1.4.4.7": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "comp_uniqueはfとf′、gとg′のホモトピーを仮定して合成辺のホモトピーを結論する。2切断quasicategoryの仮定は通常のquasicategoryから満たされる。"
+    },
+    "1.4.5.7": {
+      "verdict": "unsure",
+      "status_new": "own",
+      "reason": "原文は指定uによるHom全単射。引用された比較同値と自然性の型を確認したが、原文のuとの整合まで未確認。正しい名前空間はHomotopyCategoryMap。"
+    },
+    "1.4.6.12": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "KanのhoFunctor.obj XにIsGroupoidを与える宣言が対応する。一般のSSetにFreeGroupoidを適用するsimplicialFundamentalGroupoidは定義が異なるので対応宣言から除く。"
+    },
+    "1.5.3.6": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "有限積保存の型は原文と一致。正しい名前はCategoryTheory.hoFunctor.preservesFiniteProductsおよびCategoryTheory.hoFunctor.isIso_prodComparison。追加7候補のkernel検査でfound、追加公理なし。"
+    },
+    "1.5.5.5": {
+      "verdict": "unsure",
+      "status_new": "partial",
+      "reason": "切断の存在は一致。引用するホモトピーの型はid→s∘pで、原文の指定するs∘p→idとは端点順序が逆。そのまま同じ主張とは判定しない。"
+    },
+    "1.5.7.1": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "引用先のIsPrecompositionEquivalenceだけではtrivial Kan fibrationの型ではない。可算spineのinnerAnodyne性とtrivialKanFibration_pre_of_innerAnodyneを併記すれば、その特例に対応。一般グラフ版は未確認。"
+    },
+    "1.5.7.6": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "引用する補題は任意のinner anodyne iとQuasicategory Yを仮定して制限射のTrivialKanFibrationを結論する。ModelCategory SSetの仮定はない。"
+    },
+    "1.1.0.1": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "⦋n⦌はSimplexCategory.mk nの記法。説明付きの記載を実在する定数SimplexCategory.mkに直す。"
+    },
+    "1.1.0.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "対象は自然数、射はFin(m+1)からFin(n+1)への順序写像で、原文の単体圏に一致。"
+    },
+    "1.1.0.4": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "関手Δᵒᵖ→CとΔ→Cの定義は一致。名前空間CategoryTheoryを補う。"
+    },
+    "1.1.0.5": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "次数nの値という記法は関手のobjへの適用。説明文は宣言名ではないためSimplicialObjectの定義を引用する。"
+    },
+    "1.1.0.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "SSetはSimplexCategoryᵒᵖからTypeへの関手圏。SetをTypeで表す対応。"
+    },
+    "1.1.0.7": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "SSetの関手圏としての圏構造が原文の単体的集合の圏に対応。"
+    },
+    "1.1.0.11": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "単体・頂点・辺はそれぞれX.obj(op[n])、n=0、n=1の要素。説明文を定数SSetの引用と次数評価の説明へ直す。"
+    },
+    "1.1.0.12": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "yonedaEquivの型はHom(Δ[n],X)とX[n]の全単射で原文と一致。"
+    },
+    "1.1.0.13": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "逆写像はyonedaEquivのEquiv.symmによる射の表現。SSet.yonedaEquiv.symmは独立定数ではないのでyonedaEquivを引用する。"
+    },
+    "1.1.1.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "SemiSimplexCategoryの射はFinの順序埋め込み。厳密単調写像の圏に対応。"
+    },
+    "1.1.1.2": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "半単体圏はあるが、そこからの反変関手を名付けた半単体対象の定義は引用先にない。"
+    },
+    "1.1.2.1": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "σの順序写像と反変関手上の退化作用素が対応。SimplicialObject.σのCategoryTheory名前空間を補う。"
+    },
+    "1.1.2.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Edge.idは頂点の0番退化で得る自己辺。"
+    },
+    "1.1.2.3": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "低次元への因子化による退化の定義は退化作用素像との一致を伴う。degenerate_zeroも原文の0単体の扱いに一致。"
+    },
+    "1.1.2.14": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "面・退化の関係式による商圏と単体圏の同値があり、生成元上の作用を指定する表示を与える。任意圏への関手としての言い換えは同値から読む。"
+    },
+    "1.1.3.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "hasDimensionLE_prodは次元上界d₁+d₂を与える。追加の有限性やKan性は要求しない。"
+    },
+    "1.1.3.8": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "exists_nonDegenerateとunique_nonDegenerate_dim/simplex/mapが全射と非退化単体への因子化の存在・一意性を分担する。"
+    },
+    "1.1.3.11": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "次元上界の全射像と部分複体の和での保存。標準単体を用いる全4条件の同値までは引用されていない。"
+    },
+    "1.1.4.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "skeleton(n+1)が原文のsk_n。関手版skとの同型はソースのTODOなので同一視しない。"
+    },
+    "1.1.4.6": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "非退化単体の所属次元と低次元での全体との一致は確認。原文の次元上界とHom全単射そのものの型ではない。"
+    },
+    "1.1.4.7": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "非退化単体による包含の判定と生成単体のskeletonへの包含。最大の次元上界部分複体という一括の主張は引用されていない。"
+    },
+    "1.1.4.8": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "isColimitCoconeNはX全体の非退化単体表示。次数制限した単体圏から骨格への余極限の型ではない。"
+    },
+    "1.1.4.9": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "skAdjは切断からの左随伴。原文の部分複体skeletonとの比較同型がTODOなので、その版の余極限保存は未対応。"
+    },
+    "1.1.4.10": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "boundaryは全ての真の面の和としての境界部分複体。原文の構成と同じ部分集合を表す。"
+    },
+    "1.1.4.12": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "単射の相対骨格に対する押し出し・セル分解が対応。初期対象からの単射で絶対版を得る。isPushoutの実名前空間はrelativeCellComplexOfMono。"
+    },
+    "1.1.5.2": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "Functor.constは任意圏の定数対象、自前discreteはType値の同じ構成。両宣言の完全な名前空間を補う。"
+    },
+    "1.1.5.5": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "一般の評価の左随伴はあるが、引用する宣言はCのHom添字の余積を仮定する。原文の任意圏の定数対象からのHom全単射そのものではない。"
+    },
+    "1.1.5.8": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "評価の一般随伴と定数-極限の随伴は材料。任意圏でconst⊣ev₀を指定した宣言としては引用されていない。"
+    },
+    "1.1.5.9": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "定数関手のFullとFaithfulの実名と型をkernelで確認。Δの終対象[0]を反対にしてIsConnectedの仮定を満たす一般形。匿名記載を実名に補正。"
+    },
+    "1.1.5.10": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "discreteは定数単体集合の構成で、定数対象と同型であるという述語ではない。自前宣言の名前空間を補う。"
+    },
+    "1.1.5.11": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "定数関手のFull/Faithfulは確認したが、離散対象という本質的像の述語は引用されていない。匿名記載を実名に補正。"
+    },
+    "1.1.5.12": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "集合を定数単体集合として扱う記法に対応。一般定数関手と自前discreteの名前空間を補う。"
+    },
+    "1.1.6.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "頂点型と各頂点対の辺型を持つQuiverが、多重辺・ループを許す原文の有向グラフに対応。"
+    },
+    "1.1.6.5": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "Prefunctorは辺を辺に写す。原文が許す頂点への潰しを扱うには反射的quiverの射が必要で、原文のGraphそのものの定義ではない。"
+    },
+    "1.1.6.7": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "OneTruncation₂.mapは辺を写して恒等辺を保つ反射的quiverの射。原文の退化辺を頂点とする表現に対応。"
+    },
+    "1.2.1.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "π₀が非空かつ高々1点というIsConnectedの定義。原文の連結性の標準的なπ₀による表現。"
+    },
+    "1.2.1.8": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "π₀は辺の関係で頂点を商にした集合。連結な直和成分そのものとしての部分複体の定義ではない。"
+    },
+    "1.2.1.12": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "homEquivとπ₀のUniqueによる連結性の特徴づけは材料。任意のIについて原文の標準写像が全単射であるという一括の同値は引用されていない。homEquivの名前空間を補正。"
+    },
+    "1.2.1.13": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "成分の集合で指定した部分複体とそのπ₀との全単射はある。S全体の余積分解の宣言ではない。PiZeroConstant.homEquivの名前空間を補正。"
+    },
+    "1.2.1.14": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "π₀.nonempty_iffはπ₀の非空性と頂点の非空性の同値。原文の空性の同値を否定で表す。"
+    },
+    "1.2.1.15": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "isConnected_iff_nonempty_uniqueはπ₀がちょうど1点であることとの同値。"
+    },
+    "1.2.1.18": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "componentが各単体の成分を返し、fromComponentsで恒等関数を使うと成分写像になる。完全な名前空間を補正。"
+    },
+    "1.2.1.19": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "homEquivはHom(X,discrete T)とπ₀X→Tの全単射。向きを逆に読めば成分写像の普遍性に一致。完全な名前空間を補正。"
+    },
+    "1.2.1.21": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "Homの全単射はあるが、π₀Functorと定数関手のAdjunctionとして組み立てた宣言は引用されていない。homEquivの名前空間を補正。"
+    },
+    "1.2.1.22": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "isColimitCoforkπ₀は全ての辺の両端写像の余等化子を与える。"
+    },
+    "1.2.2.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "非負実座標の和が1となる標準単体をTopCatの余単体対象として定める。"
+    },
+    "1.2.2.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "toSSetは標準位相単体からの連続写像の単体集合。toSSetObjEquivで宇宙調整のULiftを除いた連続写像型との全単射を確認。"
+    },
+    "1.2.2.8": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "restrictedULiftYonedaはQ[n]からXへのHomを各次数に割り当てる一般構成。ULiftは宇宙調整。"
+    },
+    "1.2.3.1": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "toTopと随伴は実現の構成。任意の指定uがYを実現として示すという述語は引用されていない。"
+    },
+    "1.2.3.3": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "実際にscoped[Simplicial]の絶対値記法がSSet.toTop.obj Xとして定義されている。説明文に代えて定数SSet.toTopを引用する。"
+    },
+    "1.2.3.4": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "sSetTopAdjの単位とHom全単射が各単体集合の実現の存在を与える。"
+    },
+    "1.2.3.5": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "sSetTopAdjは実現と特異単体集合の随伴そのもの。匿名インスタンスの説明を、検査済みの名前付き随伴に置き換える。"
+    },
+    "1.2.3.6": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "左随伴sSetTopAdjによる余極限保存の一般論が対応。宣言欄を名前付きの随伴で明示する。"
+    },
+    "1.2.3.15": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "uliftYonedaAdjunctionはQの左Kan拡張と制限Yonedaの随伴。左Kan拡張の存在仮定は原文の余完備性で供給する一般形。"
+    },
+    "1.2.4.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "hornは標準単体の指定面以外の面の和で、原文の像による条件と同じホーン。"
+    },
+    "1.2.4.7": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "IsCompatibleによる面の整合性とdesc、hom_extが像と単射性を分担する。descの実名はSSet.horn.IsCompatible.desc。"
+    },
+    "1.2.5.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "KanComplexの境界ではなく全ホーン充填による特徴づけをhornFillingとiffで確認。"
+    },
+    "1.2.5.9": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "ringSpace_kanComplexは単体的環の台単体集合に限定した特例。一般の単体群の定理としては扱わない。"
+    },
+    "1.3.1.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "nerveは各次数で[n]の可合成射列を取り、順序写像で前合成する。原文の関手[n]→Cによる構成と同じ。"
+    },
+    "1.3.1.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "(nerve C).skeleton(n+1)という既存の構成の適用で原文のn-skeletonを表せる。専用の名前を要求する定義ではない。"
+    },
+    "1.3.2.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Monoidは結合的な乗法と両側単位を持つ構造。"
+    },
+    "1.3.2.3": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "MonoidHomとMonCatの射は乗法と単位を保存する写像。"
+    },
+    "1.3.2.5": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "SingleObjのnerveがBM。自前のmonoidWordSimplexは語から単体への座標表示を与える。完全な名前空間を補正。"
+    },
+    "1.3.2.7": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "MonCat.toCatとnerveFunctorの充満忠実性はある。原文の本質的像の全次数Segal条件との同値は未対応。複数名の略記と名前空間を展開する。"
+    },
+    "1.3.2.8": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "非単位的モノイドはSemigroup、射はMulHom。圏Semigrpも実在しkernel検査済みなので引用に補足する。"
+    },
+    "1.3.3.1": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "nerveFunctorのFull・Faithful・FullyFaithfulの型は原文に一致。CategoryTheory名前空間を補正。"
+    },
+    "1.3.4.1": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "nerveのstrict Segal性と、それによるquasicategory性はある。strict Segalからnerveを復元する逆向きはMathlibのTODO。原文の一意内ホーン充填との同値全体ではない。"
+    },
+    "1.3.4.2": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "一般のnerveの内ホーン充填存在はある。一意性の引用はQuiver.IsThin Cを追加仮定する特例。thinNerveの名前空間を補正。"
+    },
+    "1.3.5.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "IsGroupoidは各射のIsIsoを要求し、Groupoidは逆を含む構造を与える。原文の亜群に対応。"
+    },
+    "1.3.5.2": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "亜群のnerveがKanである補題と、quasicategoryのhoが亜群であることとの同値、hN(C)≅Cが両方向の材料。実在する完全な宣言名へ補正。"
+    },
+    "1.3.5.4": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Coreの射は元の圏の同型。原文の最大亜群に対応。"
+    },
+    "1.3.6.1": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "hoFunctorとnerveAdjunctionは標準のホモトピー圏を構成する。任意の指定uが普遍性を満たすという述語はない。随伴の名前空間を補正。"
+    },
+    "1.3.6.3": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "HomotopyCategoryとhoFunctorが一般の単体集合のホモトピー圏とその関手性を与える。"
+    },
+    "1.3.6.4": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "nerveAdjunctionの単位とHom全単射が存在を与える。CategoryTheory名前空間を補正。"
+    },
+    "1.3.6.5": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "hoFunctor⊣nerveFunctorが原文の随伴。CategoryTheory.nerveAdjunctionへ補正。"
+    },
+    "1.3.7.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Pathsの対象は頂点、射はquiverの有限道、恒等射は空の道、合成は連結。"
+    },
+    "1.3.7.5": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "Paths.liftはquiverからの前関手を道の圏からの関手へ延長する。グラフに付随する1次元単体集合のホモトピー圏との比較はない。"
+    },
+    "1.3.7.7": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "Pathsはあるが、圏があるPathsと同型であるという自由性の述語は引用されていない。"
+    },
+    "1.4.0.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Quasicategoryは全ての内ホーンの充填可能性。原文の∞圏の条件に一致。"
+    },
+    "1.4.1.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "対象は0単体、辺は始点と終点を指定したEdge。恒等辺は退化で与えられる。"
+    },
+    "1.4.1.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Edge x yは端点を指定した射という記法に対応。"
+    },
+    "1.4.1.5": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Edge x xが自己射を表す。独立した自己射という述語は原文でも要求されない。"
+    },
+    "1.4.2.1": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "NonemptyFinLinOrdの双対は非空な有限線形順序だけ。原文のLinは空の順序も含む。"
+    },
+    "1.4.2.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "opFunctorは単体圏の順序反転による前合成。原文の反対単体集合と一致。"
+    },
+    "1.4.2.6": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "quasicategory_opはQuasicategory XからX.opのquasicategory性を結論する。両宣言の完全名を補正。"
+    },
+    "1.4.2.8": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "KanComplex XからKanComplex X.opを得る匿名インスタンスを実名へ置き換える。"
+    },
+    "1.4.3.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "HomotopicLは2単体のd₂=f、d₀=id、d₁=gによる関係。2切断上で原文のデータを保持する。"
+    },
+    "1.4.3.5": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "HomotopicLの反射・対称・推移と2切断へのQuasicategory₂インスタンスが対応。スラッシュ略記を完全な3宣言名に展開。"
+    },
+    "1.4.3.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "homotopicL_iff_homotopicRは原文の二種類の2単体によるホモトピー関係の同値。"
+    },
+    "1.4.3.7": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "引用先はホモトピー圏での四辺の可換性から指定辺を保つ正方形ホモトピーを得る方向。原文の両方向の同値としての宣言ではない。完全名を補正。"
+    },
+    "1.4.4.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "CompStructはd₂=f、d₀=g、d₁=hとなる2単体の証人。非切断版と2切断版がある。"
+    },
+    "1.4.4.2": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "fill21は合成の存在、comp_uniqueはホモトピーを除く一意性。原文(2)の逆方向には同ファイルのCompStruct.nonempty_iffも用いる。略記を宣言名に展開。"
+    },
+    "1.4.4.3": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Edge.compは合成辺の選択、compStructはその2単体の証人。原文の選択付きの合成記法に対応。"
+    },
+    "1.4.5.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "HomotopyCategory₂.Homは辺のHomotopicLによる商で、instSetoidEdgeが同値関係を与える。"
+    },
+    "1.4.5.2": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "圏インスタンスが単位律と結合律を証明する。匿名インスタンスの説明を環境一覧から得た実名に置き換える。"
+    },
+    "1.4.5.3": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "辺の商によるHomotopyCategory₂と一般の道によるhoFunctorがbridgeで比較される。hoFunctorの名前空間を補正。"
+    },
+    "1.4.5.4": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "hN(C)とCの比較は自前同値およびMathlibの随伴余単位の同型で対応。Mathlibの完全名を補正。"
+    },
+    "1.4.5.6": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "2単体の合成関係はnonempty_iffが表す。原文の全n単体に対する標準写像u:C→N(hC)そのものの構成は引用されていない。"
+    },
+    "1.4.6.1": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "IsInvertibleEdgeは辺のhoFunctorにおける像のIsIso。定義自体にはquasicategory性は不要で、原文より強い仮定はない。"
+    },
+    "1.4.6.4": {
+      "verdict": "ok",
+      "status_new": "both",
+      "reason": "CompStructによる左右の逆の証人とInvStructによるその組が対応。自前補題は可逆辺から同じ逆辺を持つ両側の証人を取り出す。"
+    },
+    "1.4.6.10": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "Kan複体のhoがIsGroupoidであることにより全辺が可逆。逆向きも別のiff宣言で備わる。"
+    },
+    "1.5.0.1": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "関手はquasicategory間の単体的集合の射という用語。説明付き記載をSSetとQuasicategoryの名前付き宣言へ整理する。"
+    },
+    "1.5.2.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "K上の図式はK⟶Cという単体的集合の射。通常圏では標的をnerveに取る。"
+    },
+    "1.5.3.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "SSetのcartesian monoidal closed構造の内部Homが原文のFun(S,T)。次数別表示と積の順序は対称性で対応。"
+    },
+    "1.5.3.2": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "ihom.adjunctionのHom全単射とcurryが指数対象の普遍性。MathlibのS×Uと原文のU×Sは積の交換で対応。"
+    },
+    "1.5.3.3": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "nerveFunctorCategoryIsoはN(C⥤D)と内部Homの同型。uncurry補題が評価との整合を示す。"
+    },
+    "1.5.3.4": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "関手圏のnerveの比較同型に、hN(C)≅CのMathlib余単位を組み合わせる対応。引用の比較同型だけでなく余単位の宣言も明記する。"
+    },
+    "1.5.3.5": {
+      "verdict": "fix",
+      "status_new": "partial",
+      "reason": "nerveAdjunctionは0単体のHom全単射。原文の全次数の単体的集合の同型は引用先の型ではない。完全名を補正。"
+    },
+    "1.5.3.7": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "匿名インスタンスは任意のAとQuasicategory Xに対し内部HomのQuasicategory性を与える。環境で特定した実名SSet.instQuasicategoryObjIhomに置き換える。"
+    },
+    "1.5.3.8": {
+      "verdict": "fix",
+      "status_new": "mathlib",
+      "reason": "関手∞圏は同じ内部Homの構成。Quasicategory性のインスタンスを実名に直す。"
+    },
+    "1.5.4.1": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "CommSqが持ち上げ問題、LiftStructが可換な対角射のデータ。"
+    },
+    "1.5.4.3": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "HasLiftingPropertyは全ての可換正方形が持ち上げを持つという原文の弱直交。クラスの版はMorphismProperty.llp。"
+    },
+    "1.5.4.4": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "IsStableUnderCobaseChangeは指定射の押し出しによる閉性。"
+    },
+    "1.5.4.5": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "llp_isStableUnderCobaseChangeは任意の射クラスに対する左持ち上げ性の押し出し安定性。"
+    },
+    "1.5.4.6": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "Retractは埋め込みiと射影rがi≫r=idを満たすデータ。"
+    },
+    "1.5.4.7": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "RetractArrowが矢圏でのレトラクト。IsStableUnderRetractsは射クラスの閉性。"
+    },
+    "1.5.4.9": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "任意クラスのllpがレトラクトで閉じるインスタンス。"
+    },
+    "1.5.4.10": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "整礎線形順序と連続な図式による超限合成。原文の順序数の区間も添字として取れる。"
+    },
+    "1.5.4.12": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "任意クラスのllpは各整礎線形順序のshapeで超限合成に安定。対象にモデル圏の仮定はない。"
+    },
+    "1.5.4.13": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "押し出し・レトラクト・超限合成の各安定性クラスはある。三つをまとめたweakly saturatedの命名された定義は引用されていない。"
+    },
+    "1.5.4.14": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "三つのllp安定性インスタンスが弱飽和の三条件を個別に与える。まとめた命題の宣言ではないが全条件を覆う。"
+    },
+    "1.5.5.1": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "trivialKanFibration_iff_boundaryで全次数の境界に対する持ち上げ性と同値。定義にModelCategory SSetを使わない。"
+    },
+    "1.5.5.4": {
+      "verdict": "ok",
+      "status_new": "both",
+      "reason": "全単射ではなく全モノ射のrlpと全境界のrlpとの同値。原文の一般のモノ射に対する持ち上げ条件に一致。"
+    },
+    "1.5.5.6": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "ihomMap_trivialKanFibrationはAが空の場合だけ。一般の制限と後合成のpullback-power射に対する宣言ではない。"
+    },
+    "1.5.5.7": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "任意Kと自明Kan射pについて(ihom K).map pの自明Kan性。始域・終域のKan性は不要。"
+    },
+    "1.5.5.8": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "IsContractibleKanは0次元を含めた全境界の充填条件。終対象への射が自明Kanであることとiffで結ばれる。"
+    },
+    "1.5.5.11": {
+      "verdict": "unsure",
+      "status_new": "partial",
+      "reason": "引用先の型は終域のKan性・可縮性から始域への遷移で、原文の始域から終域への三つの遷移と逆。対応する方向の別宣言は未確認。KanMonoArrowFactorization側の名前空間も補正が必要。"
+    },
+    "1.5.5.12": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "終対象への自明Kan射の同値とtrivialKanFibrations=(monomorphisms SSet).rlpの定義が、全モノ射からの延長という条件を表す。"
+    },
+    "1.5.5.13": {
+      "verdict": "ok",
+      "status_new": "own",
+      "reason": "IsContractibleKan.kanComplexは任意の可縮Kan条件からKanComplexを結論し、MathlibのKanComplexからQuasicategoryのインスタンスがある。"
+    },
+    "1.5.5.14": {
+      "verdict": "ok",
+      "status_new": "both",
+      "reason": "boundaryGenerators_leftClassは境界のrlp.llp=モノ射を証明し、その証明は小対象論法と押し出し・余積・超限合成を使う。Mathlibの相対セル分解と併せて境界による生成に対応。"
+    },
+    "1.5.6.1": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "quasicategoryならΛ²₁の包含に沿う制限が自明Kanである方向。単一の制限射の自明Kan性からquasicategory性を得る逆向きは未対応。"
+    },
+    "1.5.6.2": {
+      "verdict": "fix",
+      "status_new": "own",
+      "reason": "指定2辺の延長空間を制限内部Homの頂点fiberで定義し、IsContractibleKanを証明する。正しい名前空間はF1を含まない。"
+    },
+    "1.5.6.4": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "内ホーンの余積・押し出し・超限合成・レトラクトによるクラスとinnerAnodyneExtensionsの一致が明示されている。"
+    },
+    "1.5.6.7": {
+      "verdict": "fix",
+      "status_new": "both",
+      "reason": "点へのinner fibrationの特徴づけと自前の任意inner anodyneに沿う延長が対応。匿名インスタンスを実在する名前に置き換える。"
+    },
+    "1.5.6.9": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "pushout-productのinner anodyne性は(a)を覆う。(b)のΛ²₁だけを用いる生成系の等式は引用されていない。"
+    },
+    "1.5.7.3": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "sequentialSpineの包含のinner anodyne性。一般の有向グラフの道の圏への包含には限定を外せない。"
+    },
+    "1.5.7.5": {
+      "verdict": "ok",
+      "status_new": "mathlib",
+      "reason": "単射とのpushout-productは、一方がinner anodyneならinner anodyne。積の順序の二つの補題を持つ。"
+    },
+    "1.5.7.9": {
+      "verdict": "ok",
+      "status_new": "partial",
+      "reason": "nerveの全次数spine写像の全単射性は確認。strict Segalからnerveの同型への逆方向はMathlibのTODO。"
+    },
+    "1.1.1.9": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。半単体対象・面作用素の表示を検索。SemiSimplexCategoryの定義とΔ全体の表示はあるが、面だけの関係式からの半単体対象構成は見つからない。"
+    },
+    "1.1.2.12": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。全射単体圏の名称・順序写像の全射部分圏を検索。全射の補題は多数あるが、Δ_surjそのものの対応宣言は見つからない。"
+    },
+    "1.1.2.13": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。退化作用素のみの表示を検索。生成元・関係式によるΔ全体の圏はあるが、Δ_surjの表示と関手の存在一意性は見つからない。"
+    },
+    "1.1.3.14": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。Dimensionと次数切断・全単射・同型を検索。次元上界の保存補題はあるが、低次数の全単射から全体の同型を得る定理は見つからない。"
+    },
+    "1.1.5.1": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。次元0・定数対象・離散性と圏同値を検索。定数対象の構成とHom全単射はあるが、次元0の充満部分圏とTypeの同値は見つからない。"
+    },
+    "1.1.5.14": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。離散性・定数対象・作用素の全単射・次元条件を検索。特定の離散基底上の比較は別の主張で、原文の4条件の同値は見つからない。"
+    },
+    "1.1.6.8": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。1切断quiver・グラフとHom全単射を検索。OneTruncation₂の射の構成はあるが、次元1の単体集合からのHomの全単射は見つからない。"
+    },
+    "1.1.6.9": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。グラフと1次元単体集合の圏同値を検索。nerveの基礎quiverの同値は個々の圏への比較で、原文の圏同値ではない。"
+    },
+    "1.2.1.1": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。summandと直和成分の命名・定義を検索。一般の余積のsummandに関する記載は別物で、部分単体集合が直和成分であるという述語は見つからない。"
+    },
+    "1.2.1.11": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。連結な源の像・成分への因子化を検索。componentSubcomplexと局所化後のcomponentsFactorizationはあるが、像の入る一意な連結成分の定理は見つからない。"
+    },
+    "1.2.1.24": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。非退化辺・余等化子・coforkを検索。PiZeroの全ての辺によるcoforkはあるが、非退化辺だけの版は見つからない。"
+    },
+    "1.2.1.25": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。境界と連結性を検索。KSTのboundaryReducedRealizationはS構成の対象であり、標準単体の境界∂Δⁿの連結性の定理ではない。"
+    },
+    "1.2.1.26": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。連結性の積とπ₀の積を検索。通常圏の連結性の積、Kanの積の充填性、特殊なloop積の成分公式はあるが、一般SSetの連結性の有限積閉性は見つからない。"
+    },
+    "1.2.1.27": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。π₀Functorの有限積保存、piZero/product/connectedを検索。Kan置換の有限積比較のπ₀全単射は、π₀(X×Y)とπ₀X×π₀Yの比較ではない。対応する一般定理は見つからない。"
+    },
+    "1.2.3.7": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。下方閉集合・標準単体の部分複体・台による位相部分空間を検索。一般のfaceや部分複体の構成はあるが、原文の組み合わされた構成は見つからない。"
+    },
+    "1.2.3.10": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。前項の下方閉集合と位相的実現を検索。標準単体全体の実現同型はあるが、任意の下方閉な面集合への制限版は見つからない。"
+    },
+    "1.2.3.13": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。SSetの押し出し・列余極限・単体の余積による帰納原理を検索。相対セル分解と有限posetのlower-set帰納法は材料・別の限定された主張で、原文の一般帰納原理は見つからない。"
+    },
+    "1.2.3.18": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。toTop・実現と連結性・弧状連結性を検索。標準単体の弧状連結性とKSTの特殊な実現のSSet連結性はあるが、任意SSetについての3条件の同値は見つからない。"
+    },
+    "1.2.3.19": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。toTopとπ₀・連結成分を検索。任意SSetのπ₀と位相的実現のπ₀の自然な全単射は見つからない。"
+    },
+    "1.2.5.8": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。toSSet・singularとKanComplexを検索。MathlibのKanComplexおよびSingularSetにTODOとして残り、自前の該当定理も見つからない。"
+    },
+    "1.2.5.11": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。Kanの積とπ₀の比較を検索。高次ホモトピー群の二項積の単射とloop積の公式はあるが、任意集合添字のKan積のπ₀の全単射は見つからない。"
+    },
+    "1.3.2.12": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。半単体集合と非単位的モノイドのbarを検索。Semigrpや単位的モノイドのnerveはあるが、非単位的モノイドの半単体barは見つからない。"
+    },
+    "1.3.2.14": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。半単体bar・非単位的モノイドの圏の埋め込みを検索。一般の非単位的モノイドの埋め込みと本質的像の特徴づけは見つからない。"
+    },
+    "1.3.4.3": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。一意内ホーン充填と頂点・辺の全単射からの同型を検索。StrictSegalのspineの全単射は個々の対象内の性質であり、原文の射に対する定理は見つからない。"
+    },
+    "1.3.7.8": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。indecomposable morphism/arrowと圏の自由性を検索。対象の直和非分解性とは異なる、原文の射の分解に関する述語は見つからない。"
+    },
+    "1.3.7.11": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。free category・自由圏・既約射の表示を検索。Pathsの普遍性と道の帰納法はあるが、原文の自由性の5条件の同値は見つからない。"
+    },
+    "1.5.2.5": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。commutative diagram・acyclic graphおよびFreeQuiverCoverを検索。自由圏上の図式や鎖複体のacyclicityは別物で、原文の次元1の図式の可換性の述語は見つからない。"
+    },
+    "1.5.2.6": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。前項の可換性・acyclic graphからのposet・nerveへの一意延長を検索。指定されたグラフについて3条件を述べる定理は見つからない。"
+    },
+    "1.5.6.8": {
+      "verdict": "ok",
+      "status_new": "none",
+      "reason": "確認済み・なし（対象ソースの探索範囲内）。inner anodyne・一意延長・nerveを検索。特殊なscaffoldやspineのinner anodyne性はあるが、全inner anodyneに沿う一意延長とnerveの同値は見つからない。"
+    }
+  }
+}

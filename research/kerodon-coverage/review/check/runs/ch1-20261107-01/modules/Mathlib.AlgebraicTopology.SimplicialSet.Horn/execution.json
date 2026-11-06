@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+  "state": "checked",
+  "started": "2026-11-06T19:38:18.925726+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "be21b8f0049078187aeff5e9cc645cdd18447455f2839d1900ea761a6de1191d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Horn"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Horn/Check.lean"
+  ],
+  "finished": "2026-11-06T19:38:29.020716+00:00"
+}

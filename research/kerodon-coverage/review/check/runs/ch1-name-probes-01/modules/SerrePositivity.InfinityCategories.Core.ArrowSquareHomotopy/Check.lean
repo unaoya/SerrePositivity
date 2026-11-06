@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9e589c7106ca8476804c
+#check @SerrePositivity.InfinityCategories.exists_arrowHomotopy_of_homMk_comm
+#print axioms SerrePositivity.InfinityCategories.exists_arrowHomotopy_of_homMk_comm

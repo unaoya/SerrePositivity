@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal",
+  "state": "checked",
+  "started": "2026-11-06T19:33:18.303722+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "36f765c1b12508f88a5955136edf4c433e72f2f30acab9ac5d168a4f9a9cc25e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.AlgebraicTopology.Quasicategory.StrictSegal/Check.lean"
+  ],
+  "finished": "2026-11-06T19:33:57.467983+00:00"
+}

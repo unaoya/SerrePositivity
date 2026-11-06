@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Combinatorics.Quiver.Prefunctor",
+  "state": "checked",
+  "started": "2026-11-06T19:48:29.623614+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "898e728292408f11a78e9545e062d2adc4e1165942e33dbe9ceff3fced3b7a04",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Combinatorics.Quiver.Prefunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.Combinatorics.Quiver.Prefunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T19:48:37.704771+00:00"
+}

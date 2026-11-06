@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "references": [
+    {
+      "id": "564d8b233efd9b4d2499",
+      "raw": "Semigrp @ Mathlib/Algebra/Category/Semigrp/Basic.lean:216",
+      "declaration": "Semigrp",
+      "source": "Mathlib/Algebra/Category/Semigrp/Basic.lean",
+      "source_line": "216",
+      "module": "Mathlib.Algebra.Category.Semigrp.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "2d3bbdedd610aebf3998",
+      "raw": "MulHom @ Mathlib/Algebra/Group/Hom/Defs.lean:55",
+      "declaration": "MulHom",
+      "source": "Mathlib/Algebra/Group/Hom/Defs.lean",
+      "source_line": "55",
+      "module": "Mathlib.Algebra.Group.Hom.Defs",
+      "preparation": "ready"
+    },
+    {
+      "id": "e9ae7028624be3765fb8",
+      "raw": "SSet.Truncated.Quasicategory₂.fill21 @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:53",
+      "declaration": "SSet.Truncated.Quasicategory₂.fill21",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "53",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "2a3a2a4e1561e65a4c68",
+      "raw": "MonCat.toCat_full @ Mathlib/CategoryTheory/SingleObj.lean:237",
+      "declaration": "MonCat.toCat_full",
+      "source": "Mathlib/CategoryTheory/SingleObj.lean",
+      "source_line": "237",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "preparation": "ready"
+    },
+    {
+      "id": "cdca2d6c1336a693ec09",
+      "raw": "MonCat.toCat_faithful @ Mathlib/CategoryTheory/SingleObj.lean:242",
+      "declaration": "MonCat.toCat_faithful",
+      "source": "Mathlib/CategoryTheory/SingleObj.lean",
+      "source_line": "242",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "preparation": "ready"
+    },
+    {
+      "id": "7357f12a626e67c00fdc",
+      "raw": "SerrePositivity.KST.Comparison.monoidWordLabels @ SerrePositivity/KST/Comparison/BarSegal.lean:51",
+      "declaration": "SerrePositivity.KST.Comparison.monoidWordLabels",
+      "source": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "source_line": "51",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "d5b1e02e6d20a98e8804",
+      "raw": "SerrePositivity.KST.Comparison.monoidWordEquiv @ SerrePositivity/KST/Comparison/BarSegal.lean:93",
+      "declaration": "SerrePositivity.KST.Comparison.monoidWordEquiv",
+      "source": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "source_line": "93",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "d88ebd8fa5b57eab360c",
+      "raw": "CategoryTheory.Functor.instFaithfulConstOfNonempty @ Mathlib/CategoryTheory/Functor/Const.lean:99",
+      "declaration": "CategoryTheory.Functor.instFaithfulConstOfNonempty",
+      "source": "Mathlib/CategoryTheory/Functor/Const.lean",
+      "source_line": "99",
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "preparation": "ready"
+    }
+  ],
+  "items": [
+    {
+      "number": "564d8b233efd9b4d2499",
+      "status": "probe",
+      "references": [
+        "564d8b233efd9b4d2499"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "2d3bbdedd610aebf3998",
+      "status": "probe",
+      "references": [
+        "2d3bbdedd610aebf3998"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "e9ae7028624be3765fb8",
+      "status": "probe",
+      "references": [
+        "e9ae7028624be3765fb8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "2a3a2a4e1561e65a4c68",
+      "status": "probe",
+      "references": [
+        "2a3a2a4e1561e65a4c68"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "cdca2d6c1336a693ec09",
+      "status": "probe",
+      "references": [
+        "cdca2d6c1336a693ec09"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "7357f12a626e67c00fdc",
+      "status": "probe",
+      "references": [
+        "7357f12a626e67c00fdc"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "d5b1e02e6d20a98e8804",
+      "status": "probe",
+      "references": [
+        "d5b1e02e6d20a98e8804"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "d88ebd8fa5b57eab360c",
+      "status": "probe",
+      "references": [
+        "d88ebd8fa5b57eab360c"
+      ],
+      "priority": ""
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.Algebra.Category.Semigrp.Basic",
+      "references": [
+        "564d8b233efd9b4d2499"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Hom.Defs",
+      "references": [
+        "2d3bbdedd610aebf3998"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "references": [
+        "e9ae7028624be3765fb8"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "references": [
+        "2a3a2a4e1561e65a4c68",
+        "cdca2d6c1336a693ec09"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "references": [
+        "7357f12a626e67c00fdc",
+        "d5b1e02e6d20a98e8804"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "references": [
+        "d88ebd8fa5b57eab360c"
+      ]
+    }
+  ],
+  "purpose": "半群の圏・合成充填・定数関手の忠実性などの追加出典"
+}

@@ -1,0 +1,2 @@
+# Preserve raw Lake diagnostic output, including its trailing spaces.
+runs/**/build.stdout.txt -whitespace

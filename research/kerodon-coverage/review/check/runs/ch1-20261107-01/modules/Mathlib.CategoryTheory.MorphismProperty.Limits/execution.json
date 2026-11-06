@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.MorphismProperty.Limits",
+  "state": "checked",
+  "started": "2026-11-06T19:43:30.904500+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "98d415475c8f39ee8e29414aa613bdd0083e55d75feca30184916dc6cef1f736",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.MorphismProperty.Limits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.MorphismProperty.Limits/Check.lean"
+  ],
+  "finished": "2026-11-06T19:43:41.244374+00:00"
+}

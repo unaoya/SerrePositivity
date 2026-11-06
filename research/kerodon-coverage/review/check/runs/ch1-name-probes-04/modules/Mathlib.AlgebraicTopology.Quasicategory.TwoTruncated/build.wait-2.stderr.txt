@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinPointwiseExistence
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinPointwiseExistence
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated
+waiting for build lock: {"pid": 47047, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T20:08:53.724387+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinPointwiseExistence"], "token": "81a466ec41d74dc59dc0e5693ee8480d"}

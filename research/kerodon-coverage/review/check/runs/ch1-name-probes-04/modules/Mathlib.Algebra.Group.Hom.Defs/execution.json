@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Group.Hom.Defs",
+  "state": "checked",
+  "started": "2026-11-06T20:08:37.675996+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "cc70646ff011fac66c14ba2a52ebc1b191ac5aa98ace18ef25841d04f7ea8edc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Group.Hom.Defs"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-04/modules/Mathlib.Algebra.Group.Hom.Defs/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:45.616741+00:00"
+}

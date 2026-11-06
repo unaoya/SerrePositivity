@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+  "state": "checked",
+  "started": "2026-11-06T20:04:48.518973+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "aeea356f0893f40802620147740bbadb295fcf26e5afc115832fff96d6ed769c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-name-probes-03/modules/Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated/Check.lean"
+  ],
+  "finished": "2026-11-06T20:04:57.709956+00:00"
+}

@@ -1,0 +1,12 @@
+import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference c7a84e9b70f483204be6
+#check @SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section
+#print axioms SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section
+
+-- reference aea7c3583b285d9fb858
+#check @SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction
+#print axioms SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction

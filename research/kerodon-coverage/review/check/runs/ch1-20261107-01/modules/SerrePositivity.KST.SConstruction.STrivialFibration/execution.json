@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.STrivialFibration",
+  "state": "checked",
+  "started": "2026-11-06T19:55:18.418074+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "c8377ed2c0e7885903b43dcd432b9c9ac2a4f0d5e279286a54abb03918f3621d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.STrivialFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/SerrePositivity.KST.SConstruction.STrivialFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T19:57:05.503825+00:00"
+}

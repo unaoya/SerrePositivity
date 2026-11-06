@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.LiftingProperties.Basic",
+  "state": "checked",
+  "started": "2026-11-06T19:41:26.942404+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "add263215ce17dfd5d21d0f9ca44137389c8114fd83a133671a3de2dbd933f43",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.LiftingProperties.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/ch1-20261107-01/modules/Mathlib.CategoryTheory.LiftingProperties.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:41:36.765565+00:00"
+}
