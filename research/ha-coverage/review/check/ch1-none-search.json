@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "bef0f18387bbb5aa2c51a2c8a9a7d72d1619f96f",
+  "worktree_commit": "b31cce8c2d200c3bd3bd104ca96782ce9fb50879",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
   "items": {
@@ -42,9 +42,9 @@
             "SerrePositivity/Spectra/Stable/LocalizingHom.lean",
             "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
             "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
             "SerrePositivity/KST/SConstruction/StableModels.lean",
-            "SerrePositivity/KST/SConstruction/RelativeStableModels.lean",
-            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean"
+            "SerrePositivity/KST/SConstruction/RelativeStableModels.lean"
           ]
         },
         "Mathlib": {
@@ -114,18 +114,18 @@
           "files_with_matches": 122,
           "total_matching_lines": 355,
           "sample_paths": [
+            "SerrePositivity/CategoryTheory/IteratedCone.lean",
+            "SerrePositivity/CategoryTheory/Triangulated/Padding.lean",
+            "SerrePositivity/CategoryTheory/Triangulated/Idempotent.lean",
+            "SerrePositivity/CategoryTheory/HomotopyProperty.lean",
+            "SerrePositivity/CategoryTheory/Euler.lean",
             "SerrePositivity/InfinityCategories/Stable/StableHoTriangulated.lean",
-            "SerrePositivity/InfinityCategories/Stable/IdentityCofiber.lean",
+            "SerrePositivity/CategoryTheory/TriangulatedK0.lean",
             "SerrePositivity/InfinityCategories/Stable/DistinguishedCoconeTriangle.lean",
-            "SerrePositivity/InfinityCategories/Stable/TriangleMorphismExtension.lean",
-            "SerrePositivity/InfinityCategories/Stable/IdempotentCompletionDensity.lean",
-            "SerrePositivity/InfinityCategories/Stable/ExactFunctorTriangulated.lean",
-            "SerrePositivity/InfinityCategories/Stable/ExactFunctorNaturalTransformation.lean",
-            "SerrePositivity/InfinityCategories/Stable/LongExactSequence.lean",
-            "SerrePositivity/InfinityCategories/Stable/OctahedronFromComparisons.lean",
-            "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
-            "SerrePositivity/InfinityCategories/Stable/Exact/ExactTransformationStableLocus.lean",
-            "SerrePositivity/InfinityCategories/Stable/CofiberOctahedronModel.lean"
+            "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Basic.lean"
           ]
         },
         "Mathlib": {
@@ -137,14 +137,14 @@
             "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
             "Mathlib/Algebra/Homology/HomotopyCategory/Triangulated.lean",
             "Mathlib/Algebra/Homology/Factorizations/CM5a.lean",
+            "Mathlib/CategoryTheory/Localization/Triangulated.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/ShortExact.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExtClass.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/SingleTriangle.lean",
-            "Mathlib/CategoryTheory/Localization/Triangulated.lean",
-            "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean",
-            "Mathlib/CategoryTheory/Triangulated/WeakKernels.lean"
+            "Mathlib/CategoryTheory/Functor/Derived/RightDerivedTriangulated.lean",
+            "Mathlib/CategoryTheory/Functor/Derived/LeftDerivedTriangulated.lean"
           ]
         }
       },
@@ -198,16 +198,16 @@
           "sample_paths": [
             "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInitialEvaluation.lean",
             "SerrePositivity/InfinityCategories/F1/Cocartesian.lean",
-            "SerrePositivity/KST/Fibration/LeftCocartesianKanPointHom.lean",
-            "SerrePositivity/KST/Fibration/ComposableWeakMultiStepEquivalence.lean",
-            "SerrePositivity/KST/Fibration/StrictTransportEvaluationPrism.lean",
             "SerrePositivity/InfinityCategories/F1/Categories/CoreEnrichedFunctor.lean",
             "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
             "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeInitialAdjunction.lean",
             "SerrePositivity/InfinityCategories/Stable/Semiorthogonal/SemiorthogonalDecomposition.lean",
-            "SerrePositivity/KST/Fibration/SectionPostToLeftFibration.lean",
-            "SerrePositivity/KST/Fibration/LeftCocartesianClassificationPoint.lean",
-            "SerrePositivity/KST/Fibration/StrictTransportPostToLeftFibration.lean"
+            "SerrePositivity/InfinityCategories/Stable/Straightening/StraighteningBaseChangeLeftEndpoints.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/CofiberInputFamily.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactFunctor.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsReindex.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsConstant.lean"
           ]
         },
         "Mathlib": {
@@ -215,12 +215,12 @@
           "files_with_matches": 6,
           "total_matching_lines": 7,
           "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Cover/Directed.lean",
+            "Mathlib/AlgebraicGeometry/Sites/Representability.lean",
             "Mathlib/Algebra/Polynomial/AlgebraMap.lean",
             "Mathlib/AlgebraicTopology/ModelCategory/Instances.lean",
-            "Mathlib/RingTheory/Spectrum/Prime/Topology.lean",
             "Mathlib/RingTheory/RingHomProperties.lean",
-            "Mathlib/AlgebraicGeometry/Cover/Directed.lean",
-            "Mathlib/AlgebraicGeometry/Sites/Representability.lean"
+            "Mathlib/RingTheory/Spectrum/Prime/Topology.lean"
           ]
         }
       },
@@ -272,8 +272,8 @@
           "files_with_matches": 2,
           "total_matching_lines": 2,
           "sample_paths": [
-            "SerrePositivity/KST/NonConnective/DGKInputIndNativeFamily.lean",
-            "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean"
+            "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean",
+            "SerrePositivity/KST/NonConnective/DGKInputIndNativeFamily.lean"
           ]
         },
         "Mathlib": {
@@ -328,18 +328,18 @@
           "files_with_matches": 14,
           "total_matching_lines": 28,
           "sample_paths": [
+            "SerrePositivity/KST/DerivedGeometry/RingedForgetExact.lean",
+            "SerrePositivity/KST/DerivedGeometry/CoefficientExact.lean",
+            "SerrePositivity/BhattScholze/Delta/Basic/DeltaColimit.lean",
             "SerrePositivity/HomologicalAlgebra/FiniteCohomologyBaseChange.lean",
             "SerrePositivity/HomologicalAlgebra/BoundedAboveDerivedTruncation.lean",
             "SerrePositivity/HomologicalAlgebra/CochainTensor/ShortExact.lean",
             "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean",
             "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectionColimits.lean",
             "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveModelLimitDetection.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePresheafReflection.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
             "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallColimits.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallLimits.lean",
-            "SerrePositivity/KST/DerivedGeometry/CoefficientExact.lean",
-            "SerrePositivity/KST/DerivedGeometry/RingedForgetExact.lean"
+            "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean"
           ]
         },
         "Mathlib": {
@@ -347,13 +347,13 @@
           "files_with_matches": 7,
           "total_matching_lines": 24,
           "sample_paths": [
-            "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
-            "Mathlib/CategoryTheory/Monad/Limits.lean",
-            "Mathlib/CategoryTheory/Limits/VanKampen.lean",
-            "Mathlib/CategoryTheory/Monoidal/Closed/Ideal.lean",
             "Mathlib/Topology/Category/UniformSpace.lean",
+            "Mathlib/ModelTheory/DirectLimit.lean",
             "Mathlib/Topology/LocallyFinsupp.lean",
-            "Mathlib/ModelTheory/DirectLimit.lean"
+            "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+            "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+            "Mathlib/CategoryTheory/Monad/Limits.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Ideal.lean"
           ]
         }
       },
@@ -451,11 +451,11 @@
           "total_matching_lines": 9,
           "sample_paths": [
             "SerrePositivity/Asymptotic/UniformLift.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean",
             "SerrePositivity/KST/Spectra/SpectrumTracedSourceUnitStep.lean",
             "SerrePositivity/KST/Spectra/SpectrumKanAdjointStructureCounit.lean",
-            "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean"
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean"
           ]
         },
         "Mathlib": {
@@ -463,18 +463,18 @@
           "files_with_matches": 13,
           "total_matching_lines": 38,
           "sample_paths": [
-            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/AbelianSubcategory.lean",
-            "Mathlib/RingTheory/WittVector/MulP.lean",
             "Mathlib/Order/Bounds/Basic.lean",
+            "Mathlib/Order/ConditionallyCompleteLattice/Indexed.lean",
+            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
+            "Mathlib/RingTheory/WittVector/MulP.lean",
             "Mathlib/RingTheory/WittVector/Frobenius.lean",
             "Mathlib/RingTheory/WittVector/Basic.lean",
             "Mathlib/RingTheory/WittVector/MulCoeff.lean",
-            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean"
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean"
           ]
         }
       },
@@ -522,16 +522,16 @@
           "sample_paths": [
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/RankOneDP.lean",
             "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightBaseGlue.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraHomotopyPullbackConeEquiv.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSourceImageLayerFunctor.lean",
-            "SerrePositivity/KST/LocalizingInvariants/CochainTensorTruncationDesc.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightZeroDiagram.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorCandidateHomologyTriangles.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoSourceModelProjections.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightClass.lean"
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
           ]
         },
         "Mathlib": {
@@ -584,18 +584,18 @@
           "files_with_matches": 829,
           "total_matching_lines": 22174,
           "sample_paths": [
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
             "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
-            "SerrePositivity/Asymptotic/UniformLift.lean",
-            "SerrePositivity/Asymptotic/LengthSequence.lean",
-            "SerrePositivity/BhattScholze/Andre/TorDescent.lean",
             "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Source.lean",
             "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
             "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/RawRegular.lean",
-            "SerrePositivity/BhattScholze/Andre/Variants/ArbitraryFamily.lean",
-            "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/Source.lean",
             "SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean",
-            "SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean"
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilyRaw.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilySource.lean"
           ]
         },
         "Mathlib": {
@@ -652,7 +652,6 @@
             "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
-            "SerrePositivity/BhattScholze/Delta/DividedPower/RankOneDP.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
@@ -660,7 +659,8 @@
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
-            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
+            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightRestored.lean"
           ]
         },
         "Mathlib": {
@@ -716,14 +716,14 @@
             "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
-            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCellFactorizationImagePath.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightGlueNaturality.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectRelativeInput.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonClassRightCoefficientZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean"
           ]
         },
         "Mathlib": {
@@ -731,14 +731,14 @@
           "files_with_matches": 8,
           "total_matching_lines": 24,
           "sample_paths": [
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
             "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
             "Mathlib/RingTheory/WittVector/MulP.lean",
             "Mathlib/RingTheory/WittVector/Frobenius.lean",
             "Mathlib/RingTheory/WittVector/Basic.lean",
             "Mathlib/RingTheory/WittVector/MulCoeff.lean",
-            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean"
           ]
         }
       },
@@ -835,11 +835,11 @@
           "total_matching_lines": 37,
           "sample_paths": [
             "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Formula.lean",
-            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Rees.lean",
             "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/AdicEuler.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Rees.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimitLegs.lean",
             "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/StrictHomologyColimit.lean",
             "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimit.lean",
-            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimitLegs.lean",
             "SerrePositivity/HomologicalAlgebra/AdicFilteredComplex.lean"
           ]
         },
@@ -892,18 +892,18 @@
           "files_with_matches": 29,
           "total_matching_lines": 61,
           "sample_paths": [
-            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
-            "SerrePositivity/HomologicalAlgebra/TorSequentialColimits.lean",
-            "SerrePositivity/HomologicalAlgebra/SequentialChainHomologyColimits.lean",
-            "SerrePositivity/HomologicalAlgebra/SequentialComplexColimits.lean",
-            "SerrePositivity/HomologicalAlgebra/TorExactColimits.lean",
-            "SerrePositivity/HomologicalAlgebra/ComplexColimits.lean",
             "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Graded.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Enriched.lean",
             "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
             "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean",
             "SerrePositivity/DifferentialGraded/Checks/KFlatColimits.lean",
             "SerrePositivity/DifferentialGraded/Resolution/Basic.lean",
-            "SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean"
+            "SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Cells/Boundary.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Cells/Length.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean"
           ]
         },
         "Mathlib": {
@@ -913,16 +913,16 @@
           "sample_paths": [
             "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
             "Mathlib/Algebra/Category/ModuleCat/AB.lean",
-            "Mathlib/CategoryTheory/ObjectProperty/FunctorCategory/PreservesLimits.lean",
-            "Mathlib/CategoryTheory/Sites/Point/Basic.lean",
-            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/SheafOfModules.lean",
+            "Mathlib/Condensed/AB.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Colim.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/FunctorCategory.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Connected.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Sheaf.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
-            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
-            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Indization.lean"
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Indization.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/SheafOfModules.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/FunctorCategory/PreservesLimits.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean"
           ]
         }
       },
@@ -1021,18 +1021,18 @@
           "files_with_matches": 15,
           "total_matching_lines": 19,
           "sample_paths": [
+            "SerrePositivity/KST/SConstruction/StableZeroArrowLoop.lean",
+            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberGroups.lean",
+            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberMap.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWDifferential.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/AWErasure.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/StandardTopBoundary.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeLowDimensional.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeDifferential.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryReindex.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/CoherentCubeDifferential.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryMatch.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWDifferential.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
-            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberGroups.lean",
-            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberMap.lean"
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryReindex.lean"
           ]
         },
         "Mathlib": {
@@ -1089,15 +1089,15 @@
             "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
             "SerrePositivity/CategoryTheory/TStructure/Family.lean",
             "SerrePositivity/CommutativeAlgebra/Localization/Lattice.lean",
-            "SerrePositivity/HomologicalAlgebra/TorCoefficientIdeal.lean",
-            "SerrePositivity/KST/SConstruction/TriangulatedKZeroEquiv.lean",
-            "SerrePositivity/KST/SConstruction/Cofinality/ZeroComparison.lean",
             "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
-            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
             "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
             "SerrePositivity/DifferentialGraded/Morita/Kernel.lean",
             "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean",
-            "SerrePositivity/DifferentialGraded/Category/Basic.lean"
+            "SerrePositivity/KST/Spectra/RationalInitialDetection.lean",
+            "SerrePositivity/KST/SConstruction/TriangulatedKZeroEquiv.lean",
+            "SerrePositivity/KST/Spectra/SkeletalMappingDetection.lean",
+            "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean"
           ]
         },
         "Mathlib": {
@@ -1105,18 +1105,18 @@
           "files_with_matches": 58,
           "total_matching_lines": 87,
           "sample_paths": [
-            "Mathlib/Algebra/Category/MonCat/Limits.lean",
-            "Mathlib/Algebra/MonoidAlgebra/PointwiseSMul.lean",
-            "Mathlib/NumberTheory/NumberField/Units/Regulator.lean",
-            "Mathlib/Algebra/Homology/HomotopyCategory/ShortExact.lean",
-            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
             "Mathlib/Algebra/Group/AddChar.lean",
-            "Mathlib/Algebra/Category/Grp/Limits.lean",
-            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-            "Mathlib/Algebra/Module/LinearMap/FiniteRange.lean",
-            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
             "Mathlib/Algebra/Group/Subsemigroup/Defs.lean",
-            "Mathlib/Data/Set/Pointwise/Support.lean"
+            "Mathlib/Algebra/Homology/HomotopyCategory/ShortExact.lean",
+            "Mathlib/Algebra/MonoidAlgebra/PointwiseSMul.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
+            "Mathlib/Combinatorics/Additive/CovBySMul.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
+            "Mathlib/Algebra/Category/MonCat/Limits.lean",
+            "Mathlib/Algebra/Group/Basic.lean",
+            "Mathlib/Algebra/Homology/HomologicalComplex.lean",
+            "Mathlib/Algebra/Module/Submodule/Order.lean"
           ]
         }
       },
@@ -1227,15 +1227,15 @@
             "SerrePositivity/InfinityCategories/Kan/SkeletalSphericalRealization.lean",
             "SerrePositivity/InfinityCategories/F1/Transport/CellAttachment.lean",
             "SerrePositivity/KST/Spectra.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
+            "SerrePositivity/KST/Spectra/SkeletalEdgeDoubleLoop.lean",
+            "SerrePositivity/KST/Spectra/CellCofiberProjections.lean",
+            "SerrePositivity/KST/Spectra/FixedPoints.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonRowRelations.lean",
             "SerrePositivity/KST/Comparison/FatSkeleton.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonMaps.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonAttachment.lean",
-            "SerrePositivity/KST/Comparison/FatRealizationInvariance.lean",
-            "SerrePositivity/KST/Comparison/FatBoundaryCriterion.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
-            "SerrePositivity/KST/Spectra/SkeletalEdgeDoubleLoop.lean",
-            "SerrePositivity/KST/Spectra/CellCofiberProjections.lean"
+            "SerrePositivity/KST/Comparison/FatRealizationInvariance.lean"
           ]
         },
         "Mathlib": {
@@ -1301,10 +1301,10 @@
             "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/BoundaryTensor.lean",
             "SerrePositivity/HomotopicalAlgebra/Diagram/EvaluatedFrame.lean",
             "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexReedy.lean",
-            "SerrePositivity/KST/Spectra/OriginalWeightEndComparison.lean",
-            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean",
             "SerrePositivity/KST/Spectra/TotalizationComparisonPi.lean",
-            "SerrePositivity/KST/Spectra/PartialTotalizationKan.lean"
+            "SerrePositivity/KST/Spectra/OriginalWeightEndComparison.lean",
+            "SerrePositivity/KST/Spectra/PartialTotalizationKan.lean",
+            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean"
           ]
         },
         "Mathlib": {
@@ -1372,8 +1372,8 @@
             "Mathlib/Algebra/Homology/SpectralSequence/ComplexShape.lean",
             "Mathlib/Algebra/Homology/SpectralObject/HasSpectralSequence.lean",
             "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
-            "Mathlib/Analysis/Complex/PhragmenLindelof.lean",
-            "Mathlib/CategoryTheory/Triangulated/SpectralObject.lean"
+            "Mathlib/CategoryTheory/Triangulated/SpectralObject.lean",
+            "Mathlib/Analysis/Complex/PhragmenLindelof.lean"
           ]
         }
       },
@@ -1486,18 +1486,18 @@
           "files_with_matches": 25,
           "total_matching_lines": 41,
           "sample_paths": [
+            "SerrePositivity/CommutativeAlgebra/HenselianFinite.lean",
+            "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+            "SerrePositivity/InfinityCategories/Stable/UniverseKernelEdges.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/NativeStability.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/EssentialImageDiagram.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/RightFibrationRetracts.lean",
-            "SerrePositivity/InfinityCategories/F2/Compact/FilteredRetraction.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCofibers.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/CartesianWeakRetraction.lean",
-            "SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialComplete.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessUniverse.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/PieceSequenceKanValues.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/ComparisonPrefixFactor.lean",
-            "SerrePositivity/InfinityCategories/F2/Idempotent.lean",
-            "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean"
+            "SerrePositivity/InfinityCategories/Derived/Gluing/StableLaxStructure.lean"
           ]
         },
         "Mathlib": {
@@ -1728,17 +1728,17 @@
           "total_matching_lines": 286,
           "sample_paths": [
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightRestored.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWCompletedPath.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCellPath.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectSourceWitness.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightGammaEndpoints.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoRightWSource.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightFollowing.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWSource.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWInitialPath.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedModel.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightZeroSquare.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectValue.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightImageRestore.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageRestore.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedOriginalModel.lean"
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedModel.lean"
           ]
         },
         "Mathlib": {
@@ -1852,18 +1852,18 @@
           "files_with_matches": 33,
           "total_matching_lines": 53,
           "sample_paths": [
-            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCompletedCylinder.lean",
             "SerrePositivity/InfinityCategories/F1/Pointed/AcyclicFibrationLifting.lean",
             "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
+            "SerrePositivity/KST/Comparison/FibrantTargetLifting.lean",
             "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/KanLocalizedComparisonResolution.lean",
-            "SerrePositivity/HomotopicalAlgebra/GeneralTools.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanPullbackDeformation.lean",
             "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryKanBarMappingClasses.lean",
+            "SerrePositivity/HomotopicalAlgebra/GeneralTools.lean",
+            "SerrePositivity/KST/LocalizingInvariants/KanCylinderComparisonExtension.lean",
+            "SerrePositivity/KST/SConstruction/RelativeFamilyRectification.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanPullbackDeformation.lean",
             "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoPushoutEquivalence.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoStrictExtension.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanLocalizedMonoLifting.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanHomotopyExtension.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanFibrationEndpointExtension.lean"
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoEndpointExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/DiscreteKanExtension.lean"
           ]
         },
         "Mathlib": {
