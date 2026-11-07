@@ -6,7 +6,9 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
-public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
+import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
 import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
@@ -126,9 +128,8 @@ abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
 /-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・
 `insertPdFactor` を使う。 -/
 
-/-- 第 0 copy の座標と残りの copy との差の自由 pd 代数。 -/
-abbrev pdRaw (k : Type u) [CommRing k] (r n : ℕ) :=
-  MvPolynomial (Fin r) k ⊗[k] DividedPowerAlgebra k ((Fin r × Fin n) →₀ k)
+-- 未完備 pd 模型は本体の PDPolynomialCech に置く。
+
 abbrev pdTerm (k : Type u) [CommRing k] (r n : ℕ) := completionRing p (CommRingCat.of (pdRaw k r n))
 
 instance pdTermAlgebra (k : Type u) [CommRing k] (r n : ℕ) : Algebra k (pdTerm p k r n) :=
@@ -437,25 +438,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 -- 結晶の橋とその mod p は本体の CrystallineBridge に置く。
 
-/-- 概要：D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p（項ごと、余単体的に）で、C^•/p からの脚が橋の mod p。
-方針：D^n ≅ C^n ⊗̂_{B^n, φ} B^n（a1-design §2.3、§8 の 2：C^n = Z_p{X^{(0)}, Y}^∧、z = pY の φ 底変換は z ↦ φ(z)）、p 完備化は mod p で消える
-（有限生成イデアルの完備化 M^∧/p ≅ M/p）。D^n は p ねじれなしなので素朴な商で導来 mod p。
-規約：B^n/p の φ は絶対 Frobenius ＝ `relativeFrobeniusCech`（k = F_p）。
-使われ方：段 2。 -/
-theorem pdDelta_modP_frobeniusPushout (r : ℕ) :
-    ∃ e : pushout (deltaCoordinatesModP.{u} p r) (relativeFrobeniusCech p (cartierBase.{u} p) (Fin r × ℕ)) ≅
-        modPrimeCosimplicial p (pdDeltaRings p r),
-      pushout.inl _ _ ≫ e.hom = crystallineBridgeModP p r := by
-  sorry -- 紙の確認 §8 の 2。項ごとの完備テンソルの mod p と押し出しの普遍性
-
-/-- 概要：段 2：C^•/p → D^•/p は cohomology 同型（原典 Thm 5.2 の証明の mod p の部分。導来 Nakayama は不要）。
-方針：`pdDelta_modP_frobeniusPushout` と Lemma 5.4（N = C^•/p、G-A1-15）。
-規約：—
-使われ方：段 6 の `crystallineChain`。 -/
-theorem crystallineBridgeModP_isCohomologyIso (r : ℕ) : IsCohomologyIso (crystallineBridgeModP.{u} p r) := by
-  obtain ⟨e, he⟩ := pdDelta_modP_frobeniusPushout.{u} p r
-  have h := frobeniusTwist_cech_quasiIso_infinite.{u} p (cartierBase p) (by sorry) (Fin r × ℕ) _ (deltaCoordinatesModP p r)
-  sorry -- he で h と同型 e.hom（isCohomologyIso_of_isIso）を合成。F_p では p=0
+-- Frobenius 押し出しと橋の同型は本体の CrystallineBridgePushout に置く。
 
 /-! ### 段 3：D_0^•/p → D^•/p（G-A1-16） -/
 

@@ -154,7 +154,7 @@ SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 - `crystallineTensor_isSMulRegular` は p 完全平坦な底変換での p 正則性を示す。`crystallineCompletelyFlat_frobenius` は剰余が多項式環の場合の Frobenius の p 完全平坦性を与える。`crystallineCompletedFreeDelta_primeRegular` と `crystallineCompletedFreeDeltaResidue` は完備自由 δ 環の正則性と剰余の多項式表示を与える。
 - `crystallineCechSource` は完備自由 δ Čech 余脈体。`deltaCoordinatesModP` は多項式 Čech 余脈体の変数を affine 模型の剰余の反復 δ 座標に送る。`crystallineDivision_isPrismaticEnvelope` は生成元 p の基底上の古典的完備 δ 除算の普遍性を示す。`pdDeltaTerm`、`pdDeltaModel`、`pdDeltaRings` は結晶側の完備 p 除算模型を与える。これらの型を保ち、実装には古典的 p 完備化を用いた。
 - 二つの束の鍵付き対象ビルドは成功。一時監査はそれぞれ 22 宣言、49 宣言で、標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
-- 残りは、結晶の橋の mod p を Frobenius に沿う押し出しの脚として同定し、Lemma 5.4 を適用することと、余分な δ 座標の Čech 因子を収縮すること。
+
 
 ### 橋の自然変換と剰余
 
@@ -162,22 +162,38 @@ SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 - `crystallineCechResidueIso` は、完備自由 δ Čech 余脈体の剰余を多項式 Čech 余脈体と同一視する。`crystallineDivisionCompletionModPrimeEquiv` は、p 正則なときに完備 p 除算と未完備の関係式の商の剰余を同一視する。`deltaAdjoinDivisionBaseChange_isDeltaHom` は、係数の底変換が δ 構造を保つことを示す。
 - 鍵付き対象ビルドは成功。一時監査の 11 宣言は標準三公理のみ。そのうち 3 宣言は前回監査済み。
 
+### Frobenius の押し出しと分冪模型
+
+- `crystallineAffineDivision_primeRegular` と `crystallineAffineFrobeniusDivision_primeRegular` は、差とその Frobenius 像の p 除算で p 正則性を保つ。`crystallineCompletedDivision_modPrime_isPushout` は、これらの正則性の下で完備模型の剰余に押し出しを移す。
+- `crystallineAffineUnitModP` と `crystallineCechResidueIso_hom_deltaCoordinates` は affine への標準射を剰余の多項式座標と照合する。`crystallineCechResidueIso_frobenius_app` は剰余 Frobenius を相対 Frobenius と照合する。
+- `pdDelta_modP_frobeniusPushout` は結晶の橋の mod p を Frobenius 押し出しの左脚と同定する。`crystallineBridgeModP_isCohomologyIso` は無限変数の Lemma 5.4 から橋がコホモロジー同型であることを示す。
+- `pdRawModel` は頂点差の線形写像から未完備の pd Čech 模型を構成する。`crystallineAddSplitCech_equiv` は任意の余単体的代数に切断付き Čech 因子を加える余鎖ホモトピー同値を与える。
+- 鍵付き対象ビルドが成功。一時監査の 20 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
+- 残りは、結晶模型を pd 模型と正の反復 δ 座標の多項式 Čech 因子に分離し、`pdInclusionModP_isCohomologyIso` に収縮を適用すること。
+
 ### 今回の登録対象
 
 ```text
 SerrePositivity.BhattScholze.Delta.Division.BaseChange
+SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision
+SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope
 SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineCechResidue
 SerrePositivity.BhattScholze.Prismatic.CrystallineCechSource
 SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedFreeDelta
+SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedPushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
 SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion
 SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
 SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
 SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
 ```
