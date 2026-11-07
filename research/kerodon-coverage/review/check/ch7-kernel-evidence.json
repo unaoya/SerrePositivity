@@ -613,7 +613,18 @@
       ]
     },
     "7.1.1.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.limitVertexIso",
+          "source": "SerrePositivity/InfinityCategories/Core/Limit.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.colimitVertexIso",
+          "source": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.1.1.15": {
       "adopted": [
@@ -1254,7 +1265,13 @@
       ]
     },
     "7.1.8.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim",
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.1.8.7": {
       "adopted": [
@@ -1520,7 +1537,13 @@
       ]
     },
     "7.2.1.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.nervePoint_isLeftCofinal",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.1.10": {
       "adopted": []
@@ -1529,7 +1552,13 @@
       "adopted": []
     },
     "7.2.1.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.1.13": {
       "adopted": [
@@ -1609,7 +1638,18 @@
       ]
     },
     "7.2.1.22": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Functor.initial_iff_comp_equivalence",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Functor.initial_iff_equivalence_comp",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.1.23": {
       "adopted": [
@@ -1676,7 +1716,18 @@
       ]
     },
     "7.2.2.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.isLimitCone_iff_restrict_of_leftCofinal",
+          "source": "SerrePositivity/InfinityCategories/Derived/CofinalLimitTransfer.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Functor.Initial.isLimitWhiskerEquiv",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.2.8": {
       "adopted": [
@@ -1727,13 +1778,30 @@
       ]
     },
     "7.2.2.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Functor.Initial.createsLimitsOfShapeOfInitial",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Functor.Final.createsColimitsOfShapeOfFinal",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.2.14": {
       "adopted": []
     },
     "7.2.3.4": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "Monotone.final_functor_iff",
+          "source": "Mathlib/CategoryTheory/Filtered/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.3.5": {
       "adopted": []
@@ -1795,7 +1863,18 @@
       ]
     },
     "7.2.3.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationCofinalPullback.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.2.3.14": {
       "adopted": []
@@ -3816,6 +3895,16 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.IsColimitCone' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 38
+      },
+      "SerrePositivity.InfinityCategories.colimitVertexIso": {
+        "type": "@SerrePositivity.InfinityCategories.colimitVertexIso : {K X : SSet} →\n  [X.Quasicategory] →\n    {p : K ⟶ X} →\n      (c d : SerrePositivity.InfinityCategories.JoinCocone p) →\n        SerrePositivity.InfinityCategories.IsColimitCone c →\n          SerrePositivity.InfinityCategories.IsColimitCone d →\n            (SSet.HomotopyCategory.mk c.vertex ≅ SSet.HomotopyCategory.mk d.vertex)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.colimitVertexIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 67
       }
     },
     "SerrePositivity/InfinityCategories/HomotopyLimits/CoconePointHomInitiality.lean": {
@@ -3852,6 +3941,16 @@
         ],
         "axioms_output": "'CategoryTheory.Limits.colimitIsoColimitCurryCompColim' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 636
+      },
+      "CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim": {
+        "type": "@CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim : {J : Type u_2} →\n  {K : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} J] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} K] →\n        {C : Type u_6} →\n          [inst_2 : CategoryTheory.Category.{u_5, u_6} C] →\n            (G : CategoryTheory.Functor (J × K) C) →\n              [inst_3 : CategoryTheory.Limits.HasColimitsOfShape K C] →\n                [inst_4 :\n                    CategoryTheory.Limits.HasColimit\n                      ((CategoryTheory.Functor.curry.obj G).comp CategoryTheory.Limits.colim)] →\n                  CategoryTheory.Limits.IsColimit (CategoryTheory.Limits.coconeOfHasColimitCurryCompColim G)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 478
       }
     },
     "SerrePositivity/InfinityCategories/Kan/FilteredKanColimit.lean": {
@@ -3864,6 +3963,142 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 92
+      }
+    },
+    "SerrePositivity/InfinityCategories/Core/Limit.lean": {
+      "SerrePositivity.InfinityCategories.limitVertexIso": {
+        "type": "@SerrePositivity.InfinityCategories.limitVertexIso : {K X : SSet} →\n  [X.Quasicategory] →\n    {p : K ⟶ X} →\n      (c d : SerrePositivity.InfinityCategories.JoinCone p) →\n        SerrePositivity.InfinityCategories.IsLimitCone c →\n          SerrePositivity.InfinityCategories.IsLimitCone d →\n            (SSet.HomotopyCategory.mk c.vertex ≅ SSet.HomotopyCategory.mk d.vertex)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.limitVertexIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 77
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": {
+      "SerrePositivity.InfinityCategories.nervePoint_isLeftCofinal": {
+        "type": "@SerrePositivity.InfinityCategories.nervePoint_isLeftCofinal : ∀ {I : Type u_1}\n  [inst : CategoryTheory.Category.{u_2, u_1} I] {c : I} (hc : CategoryTheory.Limits.IsInitial c),\n  SerrePositivity.InfinityCategories.IsLeftCofinal (SerrePositivity.InfinityCategories.nervePoint c)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.nervePoint_isLeftCofinal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 80
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] (C : SSet) [inst_1 : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C],\n  ∃ I o f,\n    CategoryTheory.IsCardinalFiltered I κ ∧\n      SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (CategoryTheory.nerve I) ∧\n        SerrePositivity.InfinityCategories.IsRightCofinal f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 31
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Final.lean": {
+      "CategoryTheory.Functor.initial_iff_comp_equivalence": {
+        "type": "@CategoryTheory.Functor.initial_iff_comp_equivalence : ∀ {C : Type u_4} [inst : CategoryTheory.Category.{u_1, u_4} C]\n  {D : Type u_5} [inst_1 : CategoryTheory.Category.{u_2, u_5} D] {E : Type u_6}\n  [inst_2 : CategoryTheory.Category.{u_3, u_6} E] (F : CategoryTheory.Functor C D) (G : CategoryTheory.Functor D E)\n  [G.IsEquivalence], F.Initial ↔ (F.comp G).Initial",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.initial_iff_comp_equivalence' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 843
+      },
+      "CategoryTheory.Functor.initial_iff_equivalence_comp": {
+        "type": "@CategoryTheory.Functor.initial_iff_equivalence_comp : ∀ {C : Type u_4} [inst : CategoryTheory.Category.{u_1, u_4} C]\n  {D : Type u_5} [inst_1 : CategoryTheory.Category.{u_2, u_5} D] {E : Type u_6}\n  [inst_2 : CategoryTheory.Category.{u_3, u_6} E] (F : CategoryTheory.Functor C D) (G : CategoryTheory.Functor D E)\n  [F.IsEquivalence], G.Initial ↔ (F.comp G).Initial",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.initial_iff_equivalence_comp' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 847
+      },
+      "CategoryTheory.Functor.Initial.isLimitWhiskerEquiv": {
+        "type": "@CategoryTheory.Functor.Initial.isLimitWhiskerEquiv : {C : Type u_4} →\n  [inst : CategoryTheory.Category.{u_1, u_4} C] →\n    {D : Type u_5} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_5} D] →\n        (F : CategoryTheory.Functor C D) →\n          [F.Initial] →\n            {E : Type u_6} →\n              [inst_3 : CategoryTheory.Category.{u_3, u_6} E] →\n                {G : CategoryTheory.Functor D E} →\n                  (t : CategoryTheory.Limits.Cone G) →\n                    CategoryTheory.Limits.IsLimit (CategoryTheory.Limits.Cone.whisker F t) ≃\n                      CategoryTheory.Limits.IsLimit t",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.Initial.isLimitWhiskerEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 646
+      },
+      "CategoryTheory.Functor.Initial.createsLimitsOfShapeOfInitial": {
+        "type": "@CategoryTheory.Functor.Initial.createsLimitsOfShapeOfInitial : {C : Type u_5} →\n  [inst : CategoryTheory.Category.{u_1, u_5} C] →\n    {D : Type u_6} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_6} D] →\n        (F : CategoryTheory.Functor C D) →\n          [F.Initial] →\n            {E : Type u_7} →\n              [inst_3 : CategoryTheory.Category.{u_3, u_7} E] →\n                {B : Type u_8} →\n                  [inst_4 : CategoryTheory.Category.{u_4, u_8} B] →\n                    (H : CategoryTheory.Functor E B) →\n                      [CategoryTheory.CreatesLimitsOfShape C H] → CategoryTheory.CreatesLimitsOfShape D H",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.Initial.createsLimitsOfShapeOfInitial' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 787
+      },
+      "CategoryTheory.Functor.Final.createsColimitsOfShapeOfFinal": {
+        "type": "@CategoryTheory.Functor.Final.createsColimitsOfShapeOfFinal : {C : Type u_5} →\n  [inst : CategoryTheory.Category.{u_1, u_5} C] →\n    {D : Type u_6} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_6} D] →\n        (F : CategoryTheory.Functor C D) →\n          [F.Final] →\n            {E : Type u_7} →\n              [inst_3 : CategoryTheory.Category.{u_3, u_7} E] →\n                {B : Type u_8} →\n                  [inst_4 : CategoryTheory.Category.{u_4, u_8} B] →\n                    (H : CategoryTheory.Functor E B) →\n                      [CategoryTheory.CreatesColimitsOfShape C H] → CategoryTheory.CreatesColimitsOfShape D H",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.Final.createsColimitsOfShapeOfFinal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 439
+      }
+    },
+    "SerrePositivity/InfinityCategories/Derived/CofinalLimitTransfer.lean": {
+      "SerrePositivity.InfinityCategories.isLimitCone_iff_restrict_of_leftCofinal": {
+        "type": "@SerrePositivity.InfinityCategories.isLimitCone_iff_restrict_of_leftCofinal : ∀ {A B X : SSet} [B.Quasicategory]\n  [X.Quasicategory] (u : A ⟶ B),\n  SerrePositivity.InfinityCategories.IsLeftCofinal u →\n    ∀ (F : B ⟶ X) (c : SerrePositivity.InfinityCategories.JoinCone F),\n      SerrePositivity.InfinityCategories.IsLimitCone c ↔\n        SerrePositivity.InfinityCategories.IsLimitCone (SerrePositivity.InfinityCategories.restrictJoinCone c u)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.isLimitCone_iff_restrict_of_leftCofinal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 15
+      }
+    },
+    "Mathlib/CategoryTheory/Filtered/Final.lean": {
+      "Monotone.final_functor_iff": {
+        "type": "@Monotone.final_functor_iff : ∀ {J₁ : Type u_1} {J₂ : Type u_2} [inst : Preorder J₁] [inst_1 : Preorder J₂]\n  [IsDirectedOrder J₁] {f : J₁ → J₂} (hf : Monotone f), hf.functor.Final ↔ ∀ (j₂ : J₂), ∃ j₁, j₂ ≤ f j₁",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'Monotone.final_functor_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 476
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationCofinalPullback.lean": {
+      "SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal": {
+        "type": "@SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal : ∀ {E A B : SSet} (p : E ⟶ B)\n  [SerrePositivity.InfinityCategories.LeftFibration p] (f : A ⟶ B),\n  SerrePositivity.InfinityCategories.IsRightCofinal f →\n    SerrePositivity.InfinityCategories.IsRightCofinal (CategoryTheory.Limits.pullback.fst p f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 25
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence : ∀ {A B : SSet} {i : A ⟶ B},\n  SerrePositivity.InfinityCategories.IsRightCofinal i → SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence i",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 52
       }
     }
   },
@@ -3920,5 +4155,6 @@
         "assumption": "ModelCategory C"
       }
     ]
-  }
+  },
+  "depth_review_base": "81e593fb9"
 }
