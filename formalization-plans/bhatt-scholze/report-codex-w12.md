@@ -121,3 +121,13 @@ B1 の合成からの消去には、合成自身の完全性と、二重複体�
 - `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct`
 
 共有ロック付きの対象ビルド成功（5 本、Lake の依存込み集計 3,499 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `AbsolutelyIntegrallyClosed/Basic.lean` と `ArcValuationMilnor.lean` の警告が再掲された。新規モジュールの `import all` による監査は 61 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存 Lean 宣言の変更はない。`git diff --cached --check` を通過した。
+
+## 停止点 4（B6 の型、2026-11-07）
+
+[drafts/A6/ArcRouteB.lean](drafts/A6/ArcRouteB.lean) に G-A6-1 の結論 `ArcRouteBGoal` と ⑥ の入力 `BS17VCechInput` を置いた。元の [ArcSheafProperty.lean](drafts/A6/ArcSheafProperty.lean) から被覆・余脈体・完全性の定義と二つの定理の型を取り出し、両方について `Iff.rfl` で一致を検査した。⑥の本体が取り込まれる前なので、接続の型検査では BS17 を明示的な仮定として受け取った。
+
+- `cechExact_of_affineVCover_from_BS17` は一射を一要素の有限族にし、積と元の環の同型に沿って完全性を移す。完全標数 p の入口 `cechExact_of_perfectAffineVCover_from_BS17` は、零基底では切断、非零基底では剰余体での v 被覆の試験により型を揃える。
+- `isAffineVCover_tensor` と `cechExact_valuationProbeProduct_tensor_from_BS17` で、B5 の積射を完全係数に底変換して ⑥ に渡せる。通常のテンソル積の完全性は零環も含めた。
+- `cechExact_of_valuationProbeTests` は ⑥ の入力から積射自身と、B の正次数の各 Čech 項上での積射の完全性を得て、B1 の比較に渡す。残る仮定は、積射の正次数の各項上での B の底変換の完全性。ここは B4 で超積へ帰着し、B2・B3 と有限表示模型、階数 ≤ 1 の切断から閉じる。有限族の積への縮約も、最終の `ArcRouteBGoal` の証明に残る。[BM18 Proposition 4.8](https://arxiv.org/pdf/1807.04725#page=28)・[BS 著者版 Proposition 8.10](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=67)
+
+drafts の新規ファイルと型比較の両方が、共有ロック付きの `lake env lean` で警告なしに通った。新規の本体モジュールや登録対象はない。G-A6-1 の証明を本体へ移すのは、⑥の BS17 Theorem 4.1 (i) の取り込み後とする。
