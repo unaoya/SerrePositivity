@@ -47,6 +47,13 @@ import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
 import SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
+import SerrePositivity.HomologicalAlgebra.Cech.Basic
+import SerrePositivity.HomologicalAlgebra.Cech.BaseChange
+import SerrePositivity.HomologicalAlgebra.Cech.Split
+import SerrePositivity.HomologicalAlgebra.Cech.Filtered
+import SerrePositivity.HomologicalAlgebra.Cech.Diagonal
+import SerrePositivity.HomologicalAlgebra.Cech.Double
+import SerrePositivity.HomologicalAlgebra.Cech.Composition
 import Lean.Util.CollectAxioms
 
 /-!
@@ -59,6 +66,13 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.HomologicalAlgebra.Cech.Basic,
+    `SerrePositivity.HomologicalAlgebra.Cech.BaseChange,
+    `SerrePositivity.HomologicalAlgebra.Cech.Split,
+    `SerrePositivity.HomologicalAlgebra.Cech.Filtered,
+    `SerrePositivity.HomologicalAlgebra.Cech.Diagonal,
+    `SerrePositivity.HomologicalAlgebra.Cech.Double,
+    `SerrePositivity.HomologicalAlgebra.Cech.Composition,
     `SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech,
     `SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid,
