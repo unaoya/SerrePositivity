@@ -42,6 +42,114 @@
       "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness.{u_1} : ∀ {E B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [inst : SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p]\n  {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} a b),\n  ∃ H,\n    Eq.{u_1 + 1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n          H)\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport.{u_1} p e)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p a)) ∧\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1\n              (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n            H)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))) ∧\n          ∀\n            (v :\n              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n                (Opposite.op.{1} { len := 0 })),\n            SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 1 })))\n                (Prod.mk.{u_1, u_1}\n                  (SSet.yonedaEquiv.{u_1}\n                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n                      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))\n                  (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1} v 1)))",
       "axioms": [],
       "evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.CartesianEdgeTransport"
+    },
+    "SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianCancellation.lean:25",
+      "type": "@SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B]\n  (t : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n      (SSet.yonedaEquiv.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) t)) →\n    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) t)) →\n      SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) t))",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianCancellation"
+    },
+    "SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence": {
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/FiberwiseEssentialSurjectivity.lean:43",
+      "type": "@SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence.{u_1} : ∀ {E F B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} F B) [inst : SSet.InnerFibration.{u_1} p]\n  [inst_1 : SSet.InnerFibration.{u_1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E F)\n  (hf : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q) p),\n  (∀ (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.vertexFiberMap.{u_1} p q f hf b)) →\n    SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1} f",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Fibrations.FiberwiseEssentialSurjectivity"
+    },
+    "SerrePositivity.InfinityCategories.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective": {
+      "source": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean:48",
+      "type": "@SerrePositivity.InfinityCategories.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (f : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f ↔\n    SerrePositivity.InfinityCategories.IsFullyFaithful.{u_1} f ∧\n      SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1} f",
+      "evidence": "ccb9794b416c028a742a",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransportEquivalence.lean:46",
+      "type": "@SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {E : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [inst_1 : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p] (c : C),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate.{u_1} p c)",
+      "evidence": "4fd277c10246179f4219",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.QuasicategoryObject": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:24",
+      "type": "SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1} : Type (u_1 + 1)",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+    },
+    "SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:48",
+      "type": "SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory.{u_1} : CategoryTheory.EnrichedCategory.{u_1,\n    u_1 + 1, u_1 + 1}\n  SSet.{u_1} SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1}",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+    },
+    "SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:60",
+      "type": "SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory.{u_1} : CategoryTheory.SimplicialCategory.{u_1,\n    u_1 + 1}\n  SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1}",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+    },
+    "CategoryTheory.SimplicialNerve": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialNerve.lean:190",
+      "type": "CategoryTheory.SimplicialNerve.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → [CategoryTheory.SimplicialCategory.{u_1, u_2} C] → SSet.{max u_2 u_1}",
+      "axioms": [],
+      "evidence": "depth:Mathlib.AlgebraicTopology.SimplicialNerve"
+    },
+    "SerrePositivity.InfinityCategories.CatInfinity": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:24",
+      "type": "SerrePositivity.InfinityCategories.CatInfinity.{u_1} : SSet.{u_1 + 1}",
+      "evidence": "93d95f2e3d6aee2d5d79",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.pointKanObject": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:43",
+      "type": "SerrePositivity.InfinityCategories.pointKanObject.{u_1} : SerrePositivity.InfinityCategories.KanObject.{u_1}",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces"
+    },
+    "SerrePositivity.InfinityCategories.sliceUnder": {
+      "source": "SerrePositivity/InfinityCategories/Core/Slice.lean:55",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnder.{u_1} : {K X : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} K X → SSet.{u_1}",
+      "evidence": "b77402fea1bd7839973a",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.coherentNerveVertex": {
+      "source": "SerrePositivity/InfinityCategories/F1/Coherent/Vertices.lean:23",
+      "type": "@SerrePositivity.InfinityCategories.coherentNerveVertex.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : CategoryTheory.SimplicialCategory.{u_1, u_2} C] →\n      C →\n        CategoryTheory.Functor.obj.{0, max u_1 u_2, 0, max (u_1 + 1) (u_2 + 1)}\n          (CategoryTheory.SimplicialNerve.{u_1, u_2} C) (Opposite.op.{1} { len := 0 })",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Coherent.Vertices"
+    },
+    "SerrePositivity.InfinityCategories.catInfinity_quasicategory": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:30",
+      "type": "SerrePositivity.InfinityCategories.catInfinity_quasicategory.{u_1} : SSet.Quasicategory.{u_1 + 1}\n  SerrePositivity.InfinityCategories.CatInfinity.{u_1}",
+      "evidence": "9ae373300f405fa7a2b8",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration": {
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean:318",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration.{u_1} : ∀ {K X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)",
+      "evidence": "f9f73604dd4eabf4717a",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.sliceUnder_quasicategory": {
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean:330",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnder_quasicategory.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X), SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RightFibration"
+    },
+    "SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex": {
+      "source": "SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean:20",
+      "type": "@SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (e : SerrePositivity.InfinityCategories.QCatEquivalence.{u_1} X Y)\n  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},\n  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x →\n    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}\n            (SerrePositivity.InfinityCategories.QCatEquivalence.hom.{u_1} e) (Opposite.op.{1} { len := 0 })))\n        x)",
+      "evidence": "a92a4b1e4e69db0c3ff8",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence": {
+      "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorInverse.lean:23",
+      "type": "@SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence.{u_1} : ∀\n  {E F B : SSet.{u_1}} [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  (q : Quiver.Hom.{u_1, u_1 + 1} F B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E F)\n  (hf : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q) p),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f →\n    ∃ g,\n      ∃ (hg : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p) q),\n        Nonempty.{u_1 + 1}\n            (SerrePositivity.InfinityCategories.VertexIso.{u_1}\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} p p\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g) ⋯)\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} p p\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} E) ⋯)) ∧\n          Nonempty.{u_1 + 1}\n            (SerrePositivity.InfinityCategories.VertexIso.{u_1}\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} q q\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g f) ⋯)\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} q q\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} F) ⋯))",
+      "evidence": "9bfbc829ce3c6c29957d",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence": {
+      "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean:136",
+      "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence.{u_1} : ∀ {A B : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} A] [inst_1 : SSet.Quasicategory.{u_1} B] (f : Quiver.Hom.{u_1, u_1 + 1} A B),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f ↔\n    SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f",
+      "evidence": "e74968297d51cb34b980",
+      "axioms": []
     }
   },
   "probes": [
@@ -338,5 +446,1457 @@
       ],
       "stderr": ""
     }
-  ]
+  ],
+  "depth_review": {
+    "review_base": "81e593fb9a34a26921706f38c47cf7eeb07c06d1",
+    "method": "段 1・段 1′ と本章の追加 #check / #print axioms の出力。該当モジュールの既存 olean を読む。",
+    "items": {
+      "5.1.1.1": {
+        "tag": "01T5",
+        "statement_sha256": "26613f91382617d1d2a1e8ce49efff6ebed0c745ea126c1424d5f116e39e9ac5",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsCartesianEdge",
+          "SerrePositivity.InfinityCategories.IsCocartesianEdge",
+          "SerrePositivity.InfinityCategories.HasCocartesianHornLifting"
+        ]
+      },
+      "5.1.1.4": {
+        "tag": "01T8",
+        "statement_sha256": "6e235852d8fd44606ceb6a2d05e4583881b1edc72da71509adf1f238c0c72dd3",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map",
+          "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCartesianEdge"
+        ]
+      },
+      "5.1.1.9": {
+        "tag": "01TB",
+        "statement_sha256": "4a99c716b5eda974a010e837b882e8cd0155a304919284155e7a38471b78a2c4",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCartesianEdge",
+          "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCocartesianEdge",
+          "SerrePositivity.InfinityCategories.isCartesianEdge_of_isInvertibleEdge"
+        ]
+      },
+      "5.1.1.10": {
+        "tag": "01TC",
+        "statement_sha256": "978ed449c7db64cf8c7e7bef36142c10f8ae3a3393142f0312a98df8e0db0729",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isCocartesianEdge_constant",
+          "SerrePositivity.InfinityCategories.isCartesianEdge_of_isInvertibleEdge"
+        ]
+      },
+      "5.1.2.4": {
+        "tag": "01TS",
+        "statement_sha256": "80acda82a65d6f9a7ba4aa31ef0aec7a6f5d891515cc90770d5471bee80909f8",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_longEdge",
+          "SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long",
+          "SerrePositivity.InfinityCategories.isCartesianEdge_triangle_longEdge",
+          "SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long"
+        ]
+      },
+      "5.1.4.1": {
+        "tag": "01UA",
+        "statement_sha256": "8a2508bc7d9ad5c38d2702d4af1de826cb3a89d4a76c0c2da570c9d77ee527ac",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.CartesianFibration",
+          "SerrePositivity.InfinityCategories.cartesianFibrations",
+          "SerrePositivity.InfinityCategories.CocartesianFibration",
+          "SerrePositivity.InfinityCategories.CocartesianHornFibration"
+        ]
+      },
+      "5.1.4.15": {
+        "tag": "01UM",
+        "statement_sha256": "7369bcab7e05fd2d5df4c03ac7070f03b8b9f91489cad8d3dac83a78cdc6efa2",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges",
+          "SerrePositivity.InfinityCategories.leftFibration_iff_cocartesianFibration_all_edges"
+        ]
+      },
+      "5.1.7.10": {
+        "tag": "05J4",
+        "statement_sha256": "e6a8aefd7cd9cd6e22735217b8c76bc69cd169a7aa5fb7e2bfb916416eed00b3",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence",
+          "SerrePositivity.InfinityCategories.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective"
+        ]
+      },
+      "5.2.2.4": {
+        "tag": "019N",
+        "statement_sha256": "7fa30562527414ab27b0b5ff070f1856941d6779139564ee99e425e89e72f2f7",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsEdgeTransport",
+          "SerrePositivity.InfinityCategories.IsCocartesianTransport"
+        ]
+      },
+      "5.2.2.5": {
+        "tag": "019P",
+        "statement_sha256": "ee4d2c9241fda32ea23aee3e3af63dd89abb6e91fd7a4e9620a36f5bfb053247",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isEdgeTransport_identity"
+        ]
+      },
+      "5.2.2.8": {
+        "tag": "01VS",
+        "statement_sha256": "9874657f9c604204d71f7f2ff501b60d7483d136533340eccd4f87e7baf76823",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.edgeTransport_isTransport",
+          "SerrePositivity.InfinityCategories.IsEdgeTransport.functorIso",
+          "SerrePositivity.InfinityCategories.transportChoiceSpace_isContractibleKan"
+        ]
+      },
+      "5.2.2.9": {
+        "tag": "023Y",
+        "statement_sha256": "12b70a322edc1db4e29cb03005740e5111f5094f70c9f88c5cd8b9599e4e254e",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.edgeTransport"
+        ]
+      },
+      "5.2.2.10": {
+        "tag": "02R8",
+        "statement_sha256": "fbd964fdd3019b1da2f0902c698b81552b70abd343faaf6675031caa343d1ed9",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianLiftSpace"
+        ]
+      },
+      "5.2.2.13": {
+        "tag": "02RB",
+        "statement_sha256": "480056bae0c9440a05ee2989ca28ffe606cf38296b3cae64dbed4b995fdd6bba",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianLiftSpace_isContractibleKan",
+          "SerrePositivity.InfinityCategories.cocartesian_prism_extend_boundary"
+        ]
+      },
+      "5.2.3.1": {
+        "tag": "0242",
+        "statement_sha256": "1119c74ebf4edf74c01cc1a781e5c5d9b39e798d77e138a970858f0532a72f1a",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoin",
+          "SerrePositivity.InfinityCategories.joinDiagonal",
+          "SerrePositivity.InfinityCategories.relativeJoinProjection"
+        ]
+      },
+      "5.2.3.4": {
+        "tag": "0245",
+        "statement_sha256": "490627c5f6d4f65f04e3e688ffe36436f5c0bb9dc52ff6ff862ae448550f4dea",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoinInr_emptySource_isIso",
+          "SerrePositivity.InfinityCategories.relativeJoin_joinInr_emptySource_isIso"
+        ]
+      },
+      "5.2.3.5": {
+        "tag": "0246",
+        "statement_sha256": "1e2800f2b6f2541dd2a00c92bf7d1f86f7ef349b2ff513c15a128f7829d14de4",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoin_point_fst_isIso",
+          "SerrePositivity.InfinityCategories.joinDiagonal_point_isIso"
+        ]
+      },
+      "5.2.3.6": {
+        "tag": "0247",
+        "statement_sha256": "9407a248b26c2237013044aa391d5517e7908db3532335f7ed41aee550c3623f",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoinSelfIso"
+        ]
+      },
+      "5.2.3.11": {
+        "tag": "024C",
+        "statement_sha256": "2f6156160d8476f30496dc338f4b65bc0d00c895456fc9f97988457d0b185d3e",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoin_quasicategory",
+          "SerrePositivity.InfinityCategories.relativeJoinProjection_innerFibration"
+        ]
+      },
+      "5.2.3.15": {
+        "tag": "024J",
+        "statement_sha256": "c05988d0b328842102b6e75cdbe70620e4cf6bfcb0f81dc080882a28c0603029",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoinProjection_cocartesianFibration",
+          "SerrePositivity.InfinityCategories.cocartesianFibration_interval_of_lift"
+        ]
+      },
+      "5.2.3.18": {
+        "tag": "02RJ",
+        "statement_sha256": "7f673bb76b532ba0d385a9fa82eff79712712ecff83a3697871621b9cb756028",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeJoin_crossing_isCocartesian",
+          "SerrePositivity.InfinityCategories.relativeJoinProjection_cocartesianFibration"
+        ]
+      },
+      "5.2.4.2": {
+        "tag": "024P",
+        "statement_sha256": "08a2591861ce427b8e0a0822f0dedd34b6b4f3d41ee3549e6acdf22ae34484d7",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence"
+        ]
+      },
+      "5.2.4.5": {
+        "tag": "024R",
+        "statement_sha256": "fafd5cd0b7ceb0f8b1582e8effcac531653ecb3ca9b2af8d9e28777d16f21b6e",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeJoinCylinderComparison",
+          "SerrePositivity.InfinityCategories.relativeJoinCylinderComparison"
+        ]
+      },
+      "5.2.4.6": {
+        "tag": "024S",
+        "statement_sha256": "0fb6e7f2715c984e3c81c9078ef3a596ef739b37ce75ad952578e070ec3d5f55",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.fatJoinPoint_isPushout",
+          "SerrePositivity.InfinityCategories.fatJoinPointPrism_isPushout"
+        ]
+      },
+      "5.2.5.1": {
+        "tag": "01VU",
+        "statement_sha256": "2d749dc2d4f35d3070d508d96426ee775bc2ba584a5e54018991d6825e37d321",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsEdgeTransport.comp",
+          "SerrePositivity.InfinityCategories.edgeTransport_composition_iso"
+        ]
+      },
+      "5.2.6.1": {
+        "tag": "01Q8",
+        "statement_sha256": "78499fc3bf7420f4f11506d0a00db4ef9ad1e64d599428f44ce152e3691a24e1",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Functor.Elements",
+          "CategoryTheory.Functor.Elements.π"
+        ]
+      },
+      "5.2.6.2": {
+        "tag": "01Q9",
+        "statement_sha256": "d0f44b2bd8058961aaa5b715eeb104e17038f82df4acd76b70d171ce1fcbcf80",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence"
+        ]
+      },
+      "5.3.1.1": {
+        "tag": "035E",
+        "statement_sha256": "bc55e007935de98ffbc7b3cb66e9ee657ea65787a6defeb2ab90abef996e0af0",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.leftStrictTransportDiagram"
+        ]
+      },
+      "5.3.1.5": {
+        "tag": "035J",
+        "statement_sha256": "ec718e4f7097742f06d317678593d1fa29e7f927c9a4ff4df6e2bf0821453cbd",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianStrictTransport",
+          "SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram",
+          "SerrePositivity.InfinityCategories.nerveUnderMap"
+        ]
+      },
+      "5.3.1.8": {
+        "tag": "035M",
+        "statement_sha256": "2f2495cf9e530efd3868d29d0074d21b100693445ff07b6a580dd6b7a078ffc2",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence"
+        ]
+      },
+      "5.3.1.10": {
+        "tag": "02T1",
+        "statement_sha256": "d82c20826382038a02dee61a7faf356dcc884959ce230d6b08eef24542885880",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace",
+          "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate"
+        ]
+      },
+      "5.3.1.22": {
+        "tag": "035T",
+        "statement_sha256": "00b9e6808c8ee595593a748dd16863e4d0c0f73b376680551ab9666a1c34b365",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration",
+          "SerrePositivity.InfinityCategories.relativeFunctorEvaluate_initial_trivialKanFibration"
+        ]
+      },
+      "5.3.2.1": {
+        "tag": "035V",
+        "statement_sha256": "5fc7ae0ba2bde564423e3394a8a1131f320ee49ce56db155c14fff202d44aa78",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacement",
+          "SerrePositivity.InfinityCategories.simplicialReplacementProjection",
+          "SerrePositivity.InfinityCategories.simplicialReplacementFunctor"
+        ]
+      },
+      "5.3.2.3": {
+        "tag": "035X",
+        "statement_sha256": "2d05c0119747dd7f88dcac97190ed16f043923193a629f063683c9c5715f2a7b",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacementBaseMap",
+          "SerrePositivity.InfinityCategories.simplicialReplacementBaseMap_isPullback"
+        ]
+      },
+      "5.3.2.11": {
+        "tag": "0365",
+        "statement_sha256": "dc9f54c2c967e572f611db745d019e1f137e174e8fdbacbeeb603df35b46d1df",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacement"
+        ]
+      },
+      "5.3.2.12": {
+        "tag": "0252",
+        "statement_sha256": "21119ae9767666a4a94ce70c65dd2e802ca60c1e60689977425f8380211e9dd3",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacementAssembly",
+          "SerrePositivity.InfinityCategories.simplicialReplacementAssembly_baseMap_isPullback"
+        ]
+      },
+      "5.3.2.13": {
+        "tag": "0366",
+        "statement_sha256": "a29b1eebe303872ea4e77cfa480fd2d6fc6258fdeb1463b2d57c82c671f27251",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacementIntervalIso",
+          "SerrePositivity.InfinityCategories.scaffoldInterval_isPushout"
+        ]
+      },
+      "5.3.2.19": {
+        "tag": "036D",
+        "statement_sha256": "021bb07791a3a6a19160500bddb04ee08c8f8489a2591f77d072be05c0276d01",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.simplicialReplacementUnderEvaluation"
+        ]
+      },
+      "5.3.2.22": {
+        "tag": "036G",
+        "statement_sha256": "e6c0c35ceb4bae1d6bf67d3a9c1460866ccfa3cdb64a232c1c6e7c27e1a9c85b",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.strictDiagramScaffoldHomEquiv",
+          "SerrePositivity.InfinityCategories.strictDiagramMappingScaffoldIso"
+        ]
+      },
+      "5.3.3.1": {
+        "tag": "025X",
+        "statement_sha256": "763f1e1be0881f59d26cec2495ff4b5c17d2cd5617d0765deb3cd580547a4264",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.weightedNerve",
+          "SerrePositivity.InfinityCategories.weightedNerveProjection"
+        ]
+      },
+      "5.3.3.16": {
+        "tag": "046Y",
+        "statement_sha256": "3fe2909248b4086e76d6ed865b2f3a99cce77b24c5c2f88d3aa95b29120b9b6a",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.weightedNerveProjection_cocartesianFibration",
+          "SerrePositivity.InfinityCategories.weightedNerveFiberMap_isIso"
+        ]
+      },
+      "5.3.3.19": {
+        "tag": "036N",
+        "statement_sha256": "3b0797223455333f65fbfc85f3ee8905162fc46b58300fca616769129bef412d",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.weightedNerveProjection_leftFibration"
+        ]
+      },
+      "5.3.4.7": {
+        "tag": "026D",
+        "statement_sha256": "bc95d984bf48666187dc024fa71a34da803505d85ffdbebe481dfd8fd6d5cb62",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold"
+        ]
+      },
+      "5.3.4.8": {
+        "tag": "0370",
+        "statement_sha256": "f86fba1b629ebc0b1b31674cc9d789898972a81472e5e335a79938063ca66497",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_isCocartesianScaffold",
+          "SerrePositivity.InfinityCategories.universalScaffold_isLeftScaffold"
+        ]
+      },
+      "5.3.4.9": {
+        "tag": "0371",
+        "statement_sha256": "e187f6741ba1a67a892c2108ee3091e6901af370046e594e7acddb8677361221",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_isCocartesianScaffold"
+        ]
+      },
+      "5.3.4.11": {
+        "tag": "0373",
+        "statement_sha256": "2ad6d1d81e28088906119bb04374bc5924788c7da9a57f5568ea5891f4df0fdc",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.tautScaffold",
+          "SerrePositivity.InfinityCategories.tautScaffoldDiagram"
+        ]
+      },
+      "5.3.4.12": {
+        "tag": "0374",
+        "statement_sha256": "da175024a7fb0466954ea699ca892069e7d4fdb1003f9f412247689a234bc216",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.tautScaffold_projection"
+        ]
+      },
+      "5.3.4.14": {
+        "tag": "0376",
+        "statement_sha256": "e251db2c84a40bec004bd2686ba30a8338111df32d6b2c2ded6775e8f5940ad8",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.tautScaffold_map",
+          "SerrePositivity.InfinityCategories.tautScaffold_baseMap_isPullback"
+        ]
+      },
+      "5.3.4.15": {
+        "tag": "026E",
+        "statement_sha256": "727d8c63ff83dddbf27952981756fe9364a6307e9403dc445d3b0805686de548",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.tautScaffoldFiberMap_isIso"
+        ]
+      },
+      "5.3.4.17": {
+        "tag": "0379",
+        "statement_sha256": "3ab0f77226a04d6f76b2d1d6b873568469f6794fa2d6c88a25a728bf985d71e0",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.tautScaffold_isCocartesianScaffold",
+          "SerrePositivity.InfinityCategories.tautScaffold_isLeftScaffold"
+        ]
+      },
+      "5.3.5.12": {
+        "tag": "037V",
+        "statement_sha256": "249c9b9ab9688a5c3c7e73a2ca0fa31d74ae8e045597e4a331d673a8d8dec617",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence",
+          "SerrePositivity.InfinityCategories.cocartesianStrictTransportInfinityMap_isFullyFaithful"
+        ]
+      },
+      "5.3.6.5": {
+        "tag": "037X",
+        "statement_sha256": "f52102f846a904fe2cbdfe4c96c2b62a40b868ad4f179cfe70d5edf4e9001be3",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.CocartesianScaffold.overPullback_isPrecompositionEquivalence",
+          "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence"
+        ]
+      },
+      "5.5.2.1": {
+        "tag": "01ZW",
+        "statement_sha256": "3dd5582587566b4ace8e21e3d4e0b3e550b61269b11b4dac13e3732c6ea9a953",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.PointedSpaceInfinity",
+          "SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv",
+          "SerrePositivity.InfinityCategories.SpaceInfinity"
+        ]
+      },
+      "5.5.2.2": {
+        "tag": "01ZX",
+        "statement_sha256": "add329179a74765fc0c818ece9350a27dddd9815320f5b02efb83debe04363d7",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.pointedSpaceInfinity_quasicategory",
+          "SerrePositivity.InfinityCategories.pointedSpaceProjection_leftFibration"
+        ]
+      },
+      "5.5.3.1": {
+        "tag": "0209",
+        "statement_sha256": "5b8d242849b9f4fd84275fb5beb56b3438774ec8b993e4a7fc341b4d6f4d7fee",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.CatInfinity",
+          "SerrePositivity.InfinityCategories.qCat_sHom_kanComplex",
+          "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex"
+        ]
+      },
+      "5.5.3.3": {
+        "tag": "020B",
+        "statement_sha256": "9b96ce5d2a03a2e6d0b2685f59990259bf994e268f07de16497af91a2b454a20",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.catInfinity_quasicategory",
+          "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex",
+          "SerrePositivity.InfinityCategories.qCat_sHom_kanComplex"
+        ]
+      },
+      "5.5.3.9": {
+        "tag": "05Q1",
+        "statement_sha256": "88097a4085dd3182b0ddec8035493d8b8e3525459edf4b355985dffc2534c22f",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.quasicategoryCoreFunctor",
+          "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex"
+        ]
+      },
+      "5.5.4.1": {
+        "tag": "020K",
+        "statement_sha256": "199333fb744988377801cad82fa27de3bd69979d899eeda7f5488c443a6f8f57",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QuasicategoryObject",
+          "SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory",
+          "SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory",
+          "CategoryTheory.SimplicialNerve"
+        ]
+      },
+      "5.5.5.1": {
+        "tag": "020T",
+        "statement_sha256": "20366eca5ef675efac52c8de63303fba72d95e87df80768995e41d9051be2b7f",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.CatInfinity",
+          "SerrePositivity.InfinityCategories.pointKanObject",
+          "SerrePositivity.InfinityCategories.sliceUnder",
+          "SerrePositivity.InfinityCategories.coherentNerveVertex"
+        ]
+      },
+      "5.5.5.2": {
+        "tag": "020U",
+        "statement_sha256": "5be5529282868e4342de70206a14c32b7600d74a6d076e666f321bdcd264d9b0",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.CatInfinity",
+          "SerrePositivity.InfinityCategories.catInfinity_quasicategory",
+          "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration",
+          "SerrePositivity.InfinityCategories.sliceUnder_quasicategory"
+        ]
+      },
+      "5.6.1.1": {
+        "tag": "025N",
+        "statement_sha256": "afbf93179145e5f1321ed2cc0aca911e321dbcf49d642f60473193c7b855687d",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Pseudofunctor.Grothendieck",
+          "CategoryTheory.Pseudofunctor.Grothendieck.category",
+          "CategoryTheory.Grothendieck"
+        ]
+      },
+      "5.6.1.3": {
+        "tag": "01R3",
+        "statement_sha256": "a05187da680350c503812d51d3c37e8a615721a01322c1f33b5426824cb8d0c4",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Pseudofunctor.Grothendieck.category"
+        ]
+      },
+      "5.6.1.5": {
+        "tag": "025P",
+        "statement_sha256": "294a88bc7947d2344a44338fedbdd87b46f58818a5133643cbad2d75cf93cc86",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Pseudofunctor.CoGrothendieck",
+          "CategoryTheory.Pseudofunctor.CoGrothendieck.category"
+        ]
+      },
+      "5.6.1.12": {
+        "tag": "01RA",
+        "statement_sha256": "b25b40f1091949993dd01194c2eaff02c7cbf9132cbc5e05e3a28ed5e878a5b0",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Pseudofunctor.Grothendieck.forget",
+          "CategoryTheory.Pseudofunctor.CoGrothendieck.forget"
+        ]
+      },
+      "5.6.2.9": {
+        "tag": "026S",
+        "statement_sha256": "a7755132deb162afcc27560144fcb6e2006954545a173dffcce8692c7a196dac",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.leftUnstraightening",
+          "SerrePositivity.InfinityCategories.leftUnstraighteningProjection_leftFibration",
+          "SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso"
+        ]
+      },
+      "5.6.6.13": {
+        "tag": "038J",
+        "statement_sha256": "505e0226aff5c15ef1b2901ef55b6902a14527d117b6c74344ea1223eb8fe3cf",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.covariantRepresentableInfinity",
+          "SerrePositivity.InfinityCategories.covariantCosliceClassificationIso",
+          "SerrePositivity.InfinityCategories.covariantHomIsoOfCosliceEquivalence"
+        ]
+      },
+      "5.6.6.14": {
+        "tag": "038L",
+        "statement_sha256": "830ea03bfcd7724417d2055da0358fb22239a9c6369ec6f841c774d1684a1530",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.homInfinityCovariant",
+          "SerrePositivity.InfinityCategories.covariantRepresentableInfinity"
+        ]
+      },
+      "5.6.6.20": {
+        "tag": "03J6",
+        "statement_sha256": "70c9d7eac569b1fa3df70a6ff9f8a14f7c7b1852e5d5715bf8aea4c1d9a28864",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex"
+        ]
+      },
+      "5.6.7.8": {
+        "tag": "029K",
+        "statement_sha256": "7aa0e4c42a9f4f575beb1f32c2856facbdb7087d9804e027513d3952a6b8f320",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence",
+          "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence"
+        ]
+      }
+    },
+    "declarations": {
+      "SerrePositivity.InfinityCategories.IsCartesianEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} : {X B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X B →\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }) → Prop",
+        "evidence": "6b02c9272d7493703a62",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsCocartesianEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean:34",
+        "type": "@SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} : {X B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X B →\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }) → Prop",
+        "evidence": "cbf559838320a3c52212",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HasCocartesianHornLifting": {
+        "source": "SerrePositivity/InfinityCategories/Core/CocartesianEdge.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.HasCocartesianHornLifting.{u_1} : {E B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B →\n    {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })} →\n      SSet.Truncated.Edge.{u_1} x y → Prop",
+        "evidence": "92686495cf1bdd7cc9bd",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map": {
+        "source": "SerrePositivity/InfinityCategories/Core/CocartesianEdge.lean:65",
+        "type": "@SerrePositivity.InfinityCategories.hasCocartesianHornLifting_iff_isInvertibleEdge_of_map.{u_1} : ∀ {E B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} E] [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SSet.InnerFibration.{u_1} p] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}\n      (SSet.Truncated.Edge.map.{u_1} e\n        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) p)) →\n    (SerrePositivity.InfinityCategories.HasCocartesianHornLifting.{u_1} p e ↔\n      SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e)",
+        "evidence": "6f4aec39a55f12dcb5a6",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCartesianEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/InvertibleCartesian.lean:89",
+        "type": "@SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCartesianEdge.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} X B)\n  [SSet.InnerFibration.{u_1} p] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e ↔\n    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p (SSet.Truncated.Edge.edge.{u_1} e) ∧\n      SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}\n        (SSet.Truncated.Edge.map.{u_1} e\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) p))",
+        "evidence": "dfd87a26c159f64b880f",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCocartesianEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/InvertibleCartesian.lean:123",
+        "type": "@SerrePositivity.InfinityCategories.isInvertibleEdge_iff_isCocartesianEdge.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} X B)\n  [SSet.InnerFibration.{u_1} p] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e ↔\n    SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p (SSet.Truncated.Edge.edge.{u_1} e) ∧\n      SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}\n        (SSet.Truncated.Edge.map.{u_1} e\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) p))",
+        "evidence": "ba196331d2f4ffc29ea5",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isCartesianEdge_of_isInvertibleEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/InvertibleCartesian.lean:25",
+        "type": "@SerrePositivity.InfinityCategories.isCartesianEdge_of_isInvertibleEdge.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} X B)\n  [SSet.InnerFibration.{u_1} p] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e →\n    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p (SSet.Truncated.Edge.edge.{u_1} e)",
+        "evidence": "77270a4b72bad7029220",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isCocartesianEdge_constant": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/InvertibleCartesian.lean:53",
+        "type": "@SerrePositivity.InfinityCategories.isCocartesianEdge_constant.{u_1} : ∀ {X B : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p]\n  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p\n    (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1} x 1)",
+        "evidence": "397af2fe6e532fdf1b31",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_longEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/Composition.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_longEdge.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y]\n  (t : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)\n  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [SSet.InnerFibration.{u_1} q],\n  SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n      (SSet.yonedaEquiv.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) t)) →\n    SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) t)) →\n      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) t))",
+        "evidence": "596112feb355a3ba9217",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianCancellation.lean:75",
+        "type": "@SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y]\n  (t : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)\n  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [SSet.InnerFibration.{u_1} q],\n  SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n      (SSet.yonedaEquiv.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) t)) →\n    SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) t)) →\n      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) t))",
+        "evidence": "bb2896f86fbc095ae8df",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isCartesianEdge_triangle_longEdge": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianOpposite.lean:112",
+        "type": "@SerrePositivity.InfinityCategories.isCartesianEdge_triangle_longEdge.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B]\n  (t : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n      (SSet.yonedaEquiv.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) t)) →\n    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) t)) →\n      SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) t))",
+        "evidence": "410ec1158677da9da25a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianCancellation.lean:25",
+        "type": "@SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B]\n  (t : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 }) X)\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n      (SSet.yonedaEquiv.{u_1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) t)) →\n    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) t)) →\n      SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n        (SSet.yonedaEquiv.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) t))",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianCancellation"
+      },
+      "SerrePositivity.InfinityCategories.CartesianFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean:46",
+        "type": "@SerrePositivity.InfinityCategories.CartesianFibration.{u_1} : {X B : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} X B → Prop",
+        "evidence": "84cee584ac98819c8515",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cartesianFibrations": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean:24",
+        "type": "SerrePositivity.InfinityCategories.cartesianFibrations.{u_1} : CategoryTheory.MorphismProperty.{u_1, u_1 + 1} SSet.{u_1}",
+        "evidence": "63c7f8bf689b5e6dee3a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.CocartesianFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean:53",
+        "type": "@SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} : {X B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X B → Prop",
+        "evidence": "4ada942fd6bbcce58766",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.CocartesianHornFibration": {
+        "source": "SerrePositivity/InfinityCategories/Core/CocartesianFibration.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.CocartesianHornFibration.{u_1} : {E B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B → Prop",
+        "evidence": "0c95727706a7fa352f42",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/AllEdges.lean:67",
+        "type": "@SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B),\n  SerrePositivity.InfinityCategories.RightFibration.{u_1} p ↔\n    SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p ∧\n      ∀ (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })),\n        SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p e",
+        "evidence": "e5a29105b4fd9a0f1953",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.leftFibration_iff_cocartesianFibration_all_edges": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/AllEdges.lean:125",
+        "type": "@SerrePositivity.InfinityCategories.leftFibration_iff_cocartesianFibration_all_edges.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1} p ↔\n    SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p ∧\n      ∀ (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })),\n        SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p e",
+        "evidence": "0d5ee5a212b941c9cfb1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/FiberwiseEssentialSurjectivity.lean:43",
+        "type": "@SerrePositivity.InfinityCategories.isEssentiallySurjective_of_vertexFiberMap_equivalence.{u_1} : ∀ {E F B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (q : Quiver.Hom.{u_1, u_1 + 1} F B) [inst : SSet.InnerFibration.{u_1} p]\n  [inst_1 : SSet.InnerFibration.{u_1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E F)\n  (hf : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q) p),\n  (∀ (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.vertexFiberMap.{u_1} p q f hf b)) →\n    SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1} f",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Fibrations.FiberwiseEssentialSurjectivity"
+      },
+      "SerrePositivity.InfinityCategories.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective": {
+        "source": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean:48",
+        "type": "@SerrePositivity.InfinityCategories.isQCatEquivalence_iff_fullyFaithful_essentiallySurjective.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (f : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f ↔\n    SerrePositivity.InfinityCategories.IsFullyFaithful.{u_1} f ∧\n      SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1} f",
+        "evidence": "ccb9794b416c028a742a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsEdgeTransport": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/EdgeTransport.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} : {X B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) →\n    {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} →\n      SSet.Truncated.Edge.{u_1} a b →\n        Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b) →\n          Prop",
+        "evidence": "384700399c718845734e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsCocartesianTransport": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/Witness.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.IsCocartesianTransport.{u_1} : {X B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) →\n    (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 1 })) →\n      Quiver.Hom.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                (CategoryTheory.SimplicialObject.δ.{u_1, u_1 + 1} B 1))\n              e))\n          (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                (CategoryTheory.SimplicialObject.δ.{u_1, u_1 + 1} B 0))\n              e)) →\n        Prop",
+        "evidence": "09f6b05e50ca769dc969",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isEdgeTransport_identity": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/Identity.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.isEdgeTransport_identity.{u_1} : ∀ {X B : SSet.{u_1}} [SSet.Quasicategory.{u_1} B]\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p (SSet.Truncated.Edge.id.{u_1} b)\n    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))",
+        "evidence": "f1b3beff06724ee43734",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.edgeTransport_isTransport": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/EdgeTransport.lean:50",
+        "type": "@SerrePositivity.InfinityCategories.edgeTransport_isTransport.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [inst : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} a b),\n  SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p e\n    (SerrePositivity.InfinityCategories.edgeTransport.{u_1} p e)",
+        "evidence": "ae371b0a206158004ed2",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsEdgeTransport.functorIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/EdgeTransport.lean:62",
+        "type": "@SerrePositivity.InfinityCategories.IsEdgeTransport.functorIso.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} a b)\n  {F G :\n    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)\n      (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)},\n  SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p e F →\n    SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p e G →\n      Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.FunctorIso.{u_1} F G)",
+        "evidence": "a1645458a3c9d077c3f4",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.transportChoiceSpace_isContractibleKan": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/Choices.lean:52",
+        "type": "@SerrePositivity.InfinityCategories.transportChoiceSpace_isContractibleKan.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  (e : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 1 })),\n  SerrePositivity.InfinityCategories.IsContractibleKan.{u_1}\n    (SerrePositivity.InfinityCategories.transportChoiceSpace.{u_1} p e)",
+        "evidence": "f3d6bce74bdcc9838fa1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.edgeTransport": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/EdgeTransport.lean:38",
+        "type": "@SerrePositivity.InfinityCategories.edgeTransport.{u_1} : {X B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) →\n    [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p] →\n      {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} →\n        SSet.Truncated.Edge.{u_1} a b →\n          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)",
+        "evidence": "7bc40ed1c5bd8735f75e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianLiftSpace": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/LiftSpace.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianLiftSpace.{u_1} : {A X B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) →\n    Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.relativeEdgeSourceTarget.{u_1} p) → SSet.{u_1}",
+        "evidence": "533b28140b81c62a9757",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianLiftSpace_isContractibleKan": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/LiftSpace.lean:32",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianLiftSpace_isContractibleKan.{u_1} : ∀ {A X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  (c : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.relativeEdgeSourceTarget.{u_1} p)),\n  SerrePositivity.InfinityCategories.IsContractibleKan.{u_1}\n    (SerrePositivity.InfinityCategories.cocartesianLiftSpace.{u_1} p c)",
+        "evidence": "1a8f7de2b260f27b4c00",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesian_prism_extend_boundary": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/BoundaryPrism.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.cocartesian_prism_extend_boundary.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p] (n : ℕ)\n  (H :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n        (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))\n      X)\n  (F₀ :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }) X)\n  (b :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} n 1 }))\n      B),\n  Eq.{u_1 + 1}\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n        (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))) F₀)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n        (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))\n        H) →\n    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}\n            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n            (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))\n          b) →\n      Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F₀ p)\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}\n                { len := HAdd.hAdd.{0, 0, 0} n 1 }))\n            b) →\n        SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p\n            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 1 })))\n              (SerrePositivity.InfinityCategories.prismBoundaryFirstVerticalEdge.{u_1} n)) →\n          ∃ F,\n            Eq.{u_1 + 1}\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n                  (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}\n                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n                    (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1))))\n                  F)\n                H ∧\n              Eq.{u_1 + 1}\n                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n                    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n                      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}\n                        { len := HAdd.hAdd.{0, 0, 0} n 1 }))\n                    F)\n                  F₀ ∧\n                Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F p) b",
+        "evidence": "aafbd5c153ade43ab104",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoin": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoin.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoin.{u_1} : {X Y S : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X S → Quiver.Hom.{u_1, u_1 + 1} Y S → SSet.{u_1}",
+        "evidence": "cefdc7facc330c9ccae7",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.joinDiagonal": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/JoinDiagonal.lean:32",
+        "type": "SerrePositivity.InfinityCategories.joinDiagonal.{u_1} : (K : SSet.{u_1}) →\n  Quiver.Hom.{u_1, u_1 + 1}\n    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) K)\n    (SerrePositivity.InfinityCategories.join.{u_1} K K)",
+        "evidence": "652ca9f7bd025ad2ea2d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinProjection": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoin.lean:30",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoinProjection.{u_1} : {X Y S : SSet.{u_1}} →\n  (f : Quiver.Hom.{u_1, u_1 + 1} X S) →\n    (g : Quiver.Hom.{u_1, u_1 + 1} Y S) →\n      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.relativeJoin.{u_1} f g)\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })",
+        "evidence": "75c73894ee7f4628a711",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinInr_emptySource_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinEmpty.lean:44",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoinInr_emptySource_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (f : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [∀ (n : Opposite.{1} SimplexCategory), IsEmpty.{u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X n)],\n  CategoryTheory.IsIso.{u_1, u_1 + 1}\n    (SerrePositivity.InfinityCategories.relativeJoinInr.{u_1} f (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))",
+        "evidence": "f5ed0baffc779bd5c6c8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoin_joinInr_emptySource_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinEmpty.lean:25",
+        "type": "SerrePositivity.InfinityCategories.relativeJoin_joinInr_emptySource_isIso.{u_1} : ∀ (X Y : SSet.{u_1})\n  [∀ (n : Opposite.{1} SimplexCategory), IsEmpty.{u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X n)],\n  CategoryTheory.IsIso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} X Y)",
+        "evidence": "9ad659bab3e0ad945d9e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoin_point_fst_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinPoint.lean:43",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoin_point_fst_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (f : Quiver.Hom.{u_1, u_1 + 1} X (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))\n  (g :\n    Quiver.Hom.{u_1, u_1 + 1} Y (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })),\n  CategoryTheory.IsIso.{u_1, u_1 + 1}\n    (CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinMap.{u_1} f g)\n      (SerrePositivity.InfinityCategories.joinDiagonal.{u_1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))",
+        "evidence": "17e971e05432435669ef",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.joinDiagonal_point_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinPoint.lean:35",
+        "type": "SerrePositivity.InfinityCategories.joinDiagonal_point_isIso.{u_1} : CategoryTheory.IsIso.{u_1, u_1 + 1}\n  (SerrePositivity.InfinityCategories.joinDiagonal.{u_1}\n    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))",
+        "evidence": "3118329ed367e824f5e1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinSelfIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinIdentity.lean:33",
+        "type": "SerrePositivity.InfinityCategories.relativeJoinSelfIso.{u_1} : (S : SSet.{u_1}) →\n  CategoryTheory.Iso.{u_1, u_1 + 1}\n    (SerrePositivity.InfinityCategories.relativeJoin.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} S)\n      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} S))\n    (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) S)",
+        "evidence": "00b85d07b4ec6150b450",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoin_quasicategory": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean:58",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoin_quasicategory.{u_1} : ∀ {X Y S : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] [SSet.Quasicategory.{u_1} S]\n  (f : Quiver.Hom.{u_1, u_1 + 1} X S) (g : Quiver.Hom.{u_1, u_1 + 1} Y S),\n  SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.relativeJoin.{u_1} f g)",
+        "evidence": "0d4f85f5916278b20a6b",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinProjection_innerFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/JoinQuasicategory.lean:67",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoinProjection_innerFibration.{u_1} : ∀ {X Y S : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] [SSet.Quasicategory.{u_1} S]\n  (f : Quiver.Hom.{u_1, u_1 + 1} X S) (g : Quiver.Hom.{u_1, u_1 + 1} Y S),\n  SSet.InnerFibration.{u_1} (SerrePositivity.InfinityCategories.relativeJoinProjection.{u_1} f g)",
+        "evidence": "9cac96fc16b29456a1d1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinProjection_cocartesianFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCocartesianFibration.lean:48",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoinProjection_cocartesianFibration.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] (f : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.CocartesianFibration.{u_1}\n    (SerrePositivity.InfinityCategories.relativeJoinProjection.{u_1} f\n      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))",
+        "evidence": "8db2798b3a1cdc7149e8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianFibration_interval_of_lift": {
+        "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/IntervalCocartesianCriterion.lean:55",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianFibration_interval_of_lift.{u_1} : ∀ {E : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))\n  [SSet.Quasicategory.{u_1} E] [SSet.InnerFibration.{u_1} p],\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),\n      Eq.{u_1 + 1}\n          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))\n            x)\n          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0) →\n        ∃ l,\n          Eq.{u_1 + 1}\n              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n                (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1) l)\n              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x) ∧\n            Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l p)\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })) ∧\n              SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p (SSet.yonedaEquiv.{u_1} l)) →\n    SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p",
+        "evidence": "6471165c08281afdc140",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoin_crossing_isCocartesian": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCrossingCocartesian.lean:28",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoin_crossing_isCocartesian.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y] (f : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  (e :\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}\n      (SerrePositivity.InfinityCategories.relativeJoin.{u_1} f (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))\n      (Opposite.op.{1} { len := 1 })),\n  Eq.{u_1 + 1}\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}\n            (SerrePositivity.InfinityCategories.relativeJoinProjection.{u_1} f\n              (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))\n            (Opposite.op.{1} { len := 1 })))\n        e)\n      ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.objEquiv.{u_1})\n        (CategoryTheory.CategoryStruct.id.{0, 0} { len := 1 })) →\n    SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}\n        (SerrePositivity.InfinityCategories.edgeOfSimplex.{u_1}\n          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}\n                (SerrePositivity.InfinityCategories.relativeJoinBaseProjection.{u_1} f\n                  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))\n                (Opposite.op.{1} { len := 1 })))\n            e)) →\n      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1}\n        (SerrePositivity.InfinityCategories.relativeJoinProjection.{u_1} f\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))\n        e",
+        "evidence": "dc2fb9fa114f315a9d3f",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingCylinderGeneralComparison.lean:27",
+        "type": "@SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence.{u_1} : ∀ {X Y E : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} E] (f : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))\n  (H :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)\n      E)\n  (g : Quiver.Hom.{u_1, u_1 + 1} Y E)\n  (w :\n    Eq.{u_1 + 1}\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 X) H)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g)),\n  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X) →\n    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)\n        (SSet.const.{u_1} ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →\n      ∀\n        (z0 :\n          Quiver.Hom.{u_1, u_1 + 1} X\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n              ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))),\n        Eq.{u_1 + 1}\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z0\n              (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0 X) H) →\n          ∀\n            (z1 :\n              Quiver.Hom.{u_1, u_1 + 1} Y\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n                  ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))),\n            Eq.{u_1 + 1}\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z1\n                  (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                    ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)))\n                g →\n              SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z0 →\n                SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z1 →\n                  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n                      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p\n                        (SerrePositivity.InfinityCategories.prismVerticalSimplex.{u_1} H x)) →\n                    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n                      (CategoryTheory.Limits.pushout.desc.{u_1, u_1 + 1} H g w)",
+        "axioms": [],
+        "evidence": "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderGeneralComparison"
+      },
+      "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeJoinCylinderComparison": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderEquivalence.lean:48",
+        "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeJoinCylinderComparison.{u_1} : ∀\n  {X Y : SSet.{u_1}} (f : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.relativeJoinCylinderComparison.{u_1} f)",
+        "evidence": "a0f5da2153ea70c8a97a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeJoinCylinderComparison": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinder.lean:72",
+        "type": "@SerrePositivity.InfinityCategories.relativeJoinCylinderComparison.{u_1} : {X Y : SSet.{u_1}} →\n  (f : Quiver.Hom.{u_1, u_1 + 1} X Y) →\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.Limits.pushout.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 X) f)\n      (SerrePositivity.InfinityCategories.relativeJoin.{u_1} f (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} Y))",
+        "evidence": "3c8093e6f144bfcf31d3",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.fatJoinPoint_isPushout": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/FatJoinPointCylinder.lean:25",
+        "type": "SerrePositivity.InfinityCategories.fatJoinPoint_isPushout.{u_1} : ∀ (X : SSet.{u_1}),\n  CategoryTheory.IsPushout.{u_1, u_1 + 1}\n    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} SSet.ι₁.{u_1}\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))\n    (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u_1, u_1 + 1} X\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))\n    (SerrePositivity.InfinityCategories.fatJoinCylinder.{u_1} X\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))\n    (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} X\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))",
+        "evidence": "34c33a465c064933febc",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.fatJoinPointPrism_isPushout": {
+        "source": "SerrePositivity/InfinityCategories/F1/Joins/FatJoinPointCylinder.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.fatJoinPointPrism_isPushout.{u_1} : ∀ {X : SSet.{u_1}}\n  (f :\n    Quiver.Hom.{u_1, u_1 + 1} X (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })),\n  CategoryTheory.IsPushout.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 X) f\n    (SerrePositivity.InfinityCategories.fatJoinPointPrism.{u_1} X)\n    (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} X\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))",
+        "evidence": "faa8a820b9bdddcc1e50",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsEdgeTransport.comp": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/Composition.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.IsEdgeTransport.comp.{u_1} : ∀ {X B : SSet.{u_1}} [SSet.Quasicategory.{u_1} B]\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SSet.InnerFibration.{u_1} p]\n  {a b c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} {e : SSet.Edge.{u_1} a b}\n  {f : SSet.Edge.{u_1} b c} {g : SSet.Edge.{u_1} a c} (σ : SSet.Edge.CompStruct.{u_1} e f g)\n  {F :\n    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)\n      (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)}\n  {G :\n    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n      (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p c)},\n  SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p e F →\n    SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p f G →\n      SerrePositivity.InfinityCategories.IsEdgeTransport.{u_1} p g\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F G)",
+        "evidence": "3a01e81797f3a66037be",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.edgeTransport_composition_iso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/Composition.lean:88",
+        "type": "@SerrePositivity.InfinityCategories.edgeTransport_composition_iso.{u_1} : ∀ {X B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} X B)\n  [inst : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  {a b c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} {e : SSet.Edge.{u_1} a b}\n  {f : SSet.Edge.{u_1} b c} {g : SSet.Edge.{u_1} a c} (σ : SSet.Edge.CompStruct.{u_1} e f g),\n  Nonempty.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.FunctorIso.{u_1} (SerrePositivity.InfinityCategories.edgeTransport.{u_1} p g)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.edgeTransport.{u_1} p e)\n        (SerrePositivity.InfinityCategories.edgeTransport.{u_1} p f)))",
+        "evidence": "6b0d5c54f1a98928a2f0",
+        "axioms": []
+      },
+      "CategoryTheory.Functor.Elements": {
+        "source": "Mathlib/CategoryTheory/Elements.lean:48",
+        "type": "@CategoryTheory.Functor.Elements.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1} → Type (max u_3 u_1)",
+        "evidence": "1350f41704202aaddb5f",
+        "axioms": []
+      },
+      "CategoryTheory.Functor.Elements.π": {
+        "source": "Mathlib/CategoryTheory/Elements.lean:93",
+        "type": "@CategoryTheory.Functor.Elements.π.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    (F : @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1}) →\n      @CategoryTheory.Functor.{u_2, u_2, max u_3 u_1, u_3} (@CategoryTheory.Functor.Elements.{u_1, u_2, u_3} C inst F)\n        (@CategoryTheory.Functor.Elements.instCategory.{u_1, u_2, u_3} C inst F) C inst",
+        "evidence": "9b141cc340f1b2e022b4",
+        "axioms": []
+      },
+      "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence": {
+        "source": "Mathlib/CategoryTheory/Elements.lean:208",
+        "type": "@CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (F :\n        @CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1}) →\n      @CategoryTheory.Equivalence.{u_1, u_1, max u_2 u_1, max u_2 u_1}\n        (Opposite.{max (u_2 + 1) (u_1 + 1)}\n          (@CategoryTheory.Functor.Elements.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F))\n        (@CategoryTheory.CostructuredArrow.{u_1, max u_2 u_1, u_2, max u_2 (u_1 + 1)} C inst\n          (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.yoneda.{u_1, u_2} C inst) F)\n        (@CategoryTheory.Category.opposite.{u_1, max u_2 u_1}\n          (@CategoryTheory.Functor.Elements.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F)\n          (@CategoryTheory.Functor.Elements.instCategory.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F))\n        (@CategoryTheory.instCategoryCostructuredArrow.{u_1, max u_2 u_1, u_2, max u_2 (u_1 + 1)} C inst\n          (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.yoneda.{u_1, u_2} C inst) F)",
+        "evidence": "ae77f316360e7a032255",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.leftStrictTransportDiagram": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/LeftStrictTransportWeightedNerve.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} →\n      Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C) →\n        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}",
+        "axioms": [],
+        "evidence": "SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportWeightedNerve"
+      },
+      "SerrePositivity.InfinityCategories.cocartesianStrictTransport": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean:30",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianStrictTransport.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C) → C → SSet.{u_1}",
+        "evidence": "02d4bee283f00d55cc69",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean:85",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} →\n      Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C) →\n        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}",
+        "evidence": "707c8c93124f55f6a0b7",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.nerveUnderMap": {
+        "source": "SerrePositivity/InfinityCategories/Core/NerveUnderMap.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.nerveUnderMap.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {c d : C} →\n      Quiver.Hom.{u_1, u_1} c d →\n        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Under.{u_1, u_1} d))\n          (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Under.{u_1, u_1} c))",
+        "evidence": "c725babbc8cafdd84fb3",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransportEquivalence.lean:46",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {E : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [inst_1 : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p] (c : C),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate.{u_1} p c)",
+        "evidence": "4fd277c10246179f4219",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean:40",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace.{u_1} : {E F B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B → Quiver.Hom.{u_1, u_1 + 1} F B → SSet.{u_1}",
+        "axioms": [],
+        "evidence": "SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor"
+      },
+      "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean:26",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate.{u_1} : {E F B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →\n    (q : Quiver.Hom.{u_1, u_1 + 1} F B) →\n      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}\n          (SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} q p) (Opposite.op.{1} { len := 0 }) →\n        Prop",
+        "axioms": [],
+        "evidence": "SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor"
+      },
+      "SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean:100",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration.{u_1} : ∀ {A E B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p] (a : Quiver.Hom.{u_1, u_1 + 1} A B)\n  (v : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} v →\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n      (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate.{u_1} p a v)",
+        "evidence": "e8869d50d3665e38514e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeFunctorEvaluate_initial_trivialKanFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInitialEvaluation.lean:40",
+        "type": "@SerrePositivity.InfinityCategories.relativeFunctorEvaluate_initial_trivialKanFibration.{u_1} : ∀ {A E B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p] (a : Quiver.Hom.{u_1, u_1 + 1} A B)\n  (v : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} v →\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n      (SerrePositivity.InfinityCategories.relativeFunctorEvaluate.{u_1} p a v)",
+        "evidence": "efc622cc332db9f2210f",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacement": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacement.lean:41",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1} → SSet.{u_1}",
+        "evidence": "5a4873d5d671baf92c8d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementProjection": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacement.lean:69",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)\n        (CategoryTheory.nerve.{u_1, u_1} C)",
+        "evidence": "2ae83446d29398adaf31",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementFunctor": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementFunctor.lean:77",
+        "type": "SerrePositivity.InfinityCategories.simplicialReplacementFunctor.{u_1} : (C : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n      (CategoryTheory.Over.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} C))",
+        "evidence": "3ee3ffc9bf85741291fd",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementBaseMap": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementBaseChange.lean:26",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementBaseMap.{u_1} : {C D : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    [inst_1 : CategoryTheory.Category.{u_1, u_1} D] →\n      (H : CategoryTheory.Functor.{u_1, u_1, u_1, u_1} D C) →\n        (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n          Quiver.Hom.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1}\n              (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1 + 1} H F))\n            (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)",
+        "evidence": "6ad5e82b6b19d29fd268",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementBaseMap_isPullback": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementBaseChange.lean:45",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementBaseMap_isPullback.{u_1} : ∀ {C D : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] [inst_1 : CategoryTheory.Category.{u_1, u_1} D]\n  (H : CategoryTheory.Functor.{u_1, u_1, u_1, u_1} D C)\n  (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}),\n  CategoryTheory.IsPullback.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplicialReplacementBaseMap.{u_1} H F)\n    (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1}\n      (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1 + 1} H F))\n    (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} F) (CategoryTheory.nerveMap.{u_1, u_1} H)",
+        "evidence": "bbedcb47c0ff2165631d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementAssembly": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementAssembly.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementAssembly.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {K : SSet.{u_1}} →\n      {F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}} →\n        Quiver.Hom.{u_1, u_1 + 1}\n            (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n              (CategoryTheory.Functor.const.{u_1, u_1, u_1, u_1 + 1} C) K)\n            F →\n          Quiver.Hom.{u_1, u_1 + 1}\n            (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} C) K)\n            (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)",
+        "evidence": "7d9012ae86034f512e7e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementAssembly_baseMap_isPullback": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementAssembly.lean:45",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementAssembly_baseMap_isPullback.{u_1} : ∀ {C D : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] [inst_1 : CategoryTheory.Category.{u_1, u_1} D]\n  (H : CategoryTheory.Functor.{u_1, u_1, u_1, u_1} D C) {K : SSet.{u_1}}\n  {F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}}\n  (η :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.Functor.const.{u_1, u_1, u_1, u_1 + 1} C)\n        K)\n      F),\n  CategoryTheory.IsPullback.{u_1, u_1 + 1}\n    (SerrePositivity.InfinityCategories.simplicialReplacementAssembly.{u_1}\n      (CategoryTheory.Functor.whiskerLeft.{u_1, u_1, u_1, u_1, u_1 + 1, u_1} H η))\n    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} (CategoryTheory.nerveMap.{u_1, u_1} H) K)\n    (SerrePositivity.InfinityCategories.simplicialReplacementBaseMap.{u_1} H F)\n    (SerrePositivity.InfinityCategories.simplicialReplacementAssembly.{u_1} η)",
+        "evidence": "63bf64765e8c2e848d28",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementIntervalIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldIntervalPushout.lean:57",
+        "type": "SerrePositivity.InfinityCategories.simplicialReplacementIntervalIso.{u_1} : (F :\n    CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} (ULift.{u_1, 0} (Fin 2)) SSet.{u_1}) →\n  CategoryTheory.Iso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)\n    (CategoryTheory.Limits.pushout.{u_1, u_1 + 1}\n      (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1\n        (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F (ULift.up.{u_1, 0} 0)))\n      (SerrePositivity.InfinityCategories.scaffoldIntervalMap.{u_1} F))",
+        "evidence": "7b359e6d83690edb6115",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.scaffoldInterval_isPushout": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldIntervalPushout.lean:23",
+        "type": "SerrePositivity.InfinityCategories.scaffoldInterval_isPushout.{u_1} : ∀\n  (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} (ULift.{u_1, 0} (Fin 2)) SSet.{u_1}),\n  CategoryTheory.IsPushout.{u_1, u_1 + 1}\n    (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1\n      (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F (ULift.up.{u_1, 0} 0)))\n    (SerrePositivity.InfinityCategories.scaffoldIntervalMap.{u_1} F)\n    (SerrePositivity.InfinityCategories.scaffoldIntervalPrism.{u_1} F)\n    (SerrePositivity.InfinityCategories.simplicialReplacementConstantLift.{u_1} F (ULift.up.{u_1, 0} 1))",
+        "evidence": "76273500f83efef8366d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.simplicialReplacementUnderEvaluation": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementUnderEvaluation.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.simplicialReplacementUnderEvaluation.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      (c : C) →\n        Quiver.Hom.{u_1, u_1 + 1}\n          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n            (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Under.{u_1, u_1} c))\n            (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c))\n          (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)",
+        "evidence": "67ba891160e95466a601",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.strictDiagramScaffoldHomEquiv": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/StrictDiagramScaffoldAdjunction.lean:35",
+        "type": "@SerrePositivity.InfinityCategories.strictDiagramScaffoldHomEquiv.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      {E : SSet.{u_1}} →\n        (q : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C)) →\n          Equiv.{u_1 + 1, u_1 + 1}\n            (Quiver.Hom.{u_1, u_1 + 1} F (SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} q))\n            (Subtype.{u_1 + 1} fun f =>\n              Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q)\n                (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} F))",
+        "evidence": "3f840009cf17334cf572",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.strictDiagramMappingScaffoldIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/StrictDiagramScaffoldIdentities.lean:121",
+        "type": "@SerrePositivity.InfinityCategories.strictDiagramMappingScaffoldIso.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      {E : SSet.{u_1}} →\n        (q : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C)) →\n          CategoryTheory.Iso.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.strictDiagramMappingSpace.{u_1} F\n              (SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} q))\n            (SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} q\n              (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} F))",
+        "evidence": "fefaadfbbd595de41248",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.weightedNerve": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/Nerve.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.weightedNerve.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1} → SSet.{u_1}",
+        "evidence": "7d96169ae662b23556bd",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.weightedNerveProjection": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/Nerve.lean:95",
+        "type": "@SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.weightedNerve.{u_1} F)\n        (CategoryTheory.nerve.{u_1, u_1} C)",
+        "evidence": "65c838bd73cbf7247966",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.weightedNerveProjection_cocartesianFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/NerveCocartesianFibration.lean:84",
+        "type": "@SerrePositivity.InfinityCategories.weightedNerveProjection_cocartesianFibration.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  [∀ (c : C), SSet.Quasicategory.{u_1} (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c)],\n  SerrePositivity.InfinityCategories.CocartesianFibration.{u_1}\n    (SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} F)",
+        "evidence": "1796bd6c76baafe4c05f",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.weightedNerveFiberMap_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/NerveFiber.lean:87",
+        "type": "@SerrePositivity.InfinityCategories.weightedNerveFiberMap_isIso.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  (c : C), CategoryTheory.IsIso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.weightedNerveFiberMap.{u_1} F c)",
+        "evidence": "48657f18be7f91596109",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.weightedNerveProjection_leftFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/NerveLeftFibration.lean:54",
+        "type": "@SerrePositivity.InfinityCategories.weightedNerveProjection_leftFibration.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  [∀ (c : C), SSet.KanComplex.{u_1} (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c)],\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} F)",
+        "evidence": "084936042761f4a60eef",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/UniversalScaffold.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianUniversalScaffold.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} →\n      (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C)) →\n        Quiver.Hom.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1}\n            (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram.{u_1} p))\n          E",
+        "evidence": "a3d1edb5932faaf1ef89",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_isCocartesianScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/Definition.lean:72",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_isCocartesianScaffold.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {E : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [inst_1 : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.CocartesianScaffold.{u_1} p\n    (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram.{u_1} p)\n    (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold.{u_1} p)",
+        "evidence": "1991c7b9f721d4ddc381",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.universalScaffold_isLeftScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffold.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.universalScaffold_isLeftScaffold.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {E : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.IsLeftScaffold.{u_1} p\n    (SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} p)\n    (SerrePositivity.InfinityCategories.universalScaffold.{u_1} p)",
+        "evidence": "ec14ea425cf455e46702",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/TautScaffold.lean:44",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F)\n        (SerrePositivity.InfinityCategories.weightedNerve.{u_1} F)",
+        "evidence": "db3dbb2625ecf1b8a607",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffoldDiagram": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/TautScaffold.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffoldDiagram.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}) →\n      {n : ℕ} →\n        (s : SerrePositivity.InfinityCategories.simplicialReplacementSimplex.{u_1} F n) →\n          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplexPrefixWeight.{u_1} n)\n            (CategoryTheory.Functor.comp.{0, u_1, u_1, 0, u_1, u_1 + 1} (Sigma.fst.{u_1, u_1} s) F)",
+        "evidence": "1925661a4947f6b191b7",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold_projection": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/TautScaffold.lean:72",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold_projection.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.tautScaffold.{u_1} F)\n      (SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} F))\n    (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} F)",
+        "evidence": "bcfa2d1d495f0954efe7",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold_map": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementFunctor.lean:92",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold_map.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {F G : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}}\n  (η : Quiver.Hom.{u_1, u_1 + 1} F G),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n      (SerrePositivity.InfinityCategories.simplicialReplacementMap.{u_1} η)\n      (SerrePositivity.InfinityCategories.tautScaffold.{u_1} G))\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.tautScaffold.{u_1} F)\n      (SerrePositivity.InfinityCategories.weightedNerveMap.{u_1} η))",
+        "evidence": "66203306add613d9a8b8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold_baseMap_isPullback": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementBaseChange.lean:77",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold_baseMap_isPullback.{u_1} : ∀ {C D : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] [inst_1 : CategoryTheory.Category.{u_1, u_1} D]\n  (H : CategoryTheory.Functor.{u_1, u_1, u_1, u_1} D C)\n  (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}),\n  CategoryTheory.IsPullback.{u_1, u_1 + 1}\n    (SerrePositivity.InfinityCategories.tautScaffold.{u_1}\n      (CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_1, u_1, u_1 + 1} H F))\n    (SerrePositivity.InfinityCategories.simplicialReplacementBaseMap.{u_1} H F)\n    (SerrePositivity.InfinityCategories.weightedNerveBaseMap.{u_1} H F)\n    (SerrePositivity.InfinityCategories.tautScaffold.{u_1} F)",
+        "evidence": "9ec3b274175bc162c012",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffoldFiberMap_isIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementFiber.lean:124",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffoldFiberMap_isIso.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  (c : C), CategoryTheory.IsIso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.tautScaffoldFiberMap.{u_1} F c)",
+        "evidence": "d3bfe88a7b8cf84ddbf8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold_isCocartesianScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1/Weighted/NerveCocartesianScaffold.lean:33",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold_isCocartesianScaffold.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  [inst_1 : ∀ (c : C), SSet.Quasicategory.{u_1} (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c)],\n  SerrePositivity.InfinityCategories.CocartesianScaffold.{u_1}\n    (SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} F) F\n    (SerrePositivity.InfinityCategories.tautScaffold.{u_1} F)",
+        "evidence": "35b6b95558dd57851dc0",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.tautScaffold_isLeftScaffold": {
+        "source": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffold.lean:35",
+        "type": "@SerrePositivity.InfinityCategories.tautScaffold_isLeftScaffold.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  [inst_1 : ∀ (c : C), SSet.KanComplex.{u_1} (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c)],\n  SerrePositivity.InfinityCategories.IsLeftScaffold.{u_1}\n    (SerrePositivity.InfinityCategories.weightedNerveProjection.{u_1} F) F\n    (SerrePositivity.InfinityCategories.tautScaffold.{u_1} F)",
+        "evidence": "b42621ee090af2f1bba1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/StrictTransportMappingEquivalence.lean:48",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence.{u_1} : ∀ {C : Type u_1}\n  [inst : CategoryTheory.Category.{u_1, u_1} C] {E D : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  (q : Quiver.Hom.{u_1, u_1 + 1} D (CategoryTheory.nerve.{u_1, u_1} C))\n  [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  [inst_2 : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} q],\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.cocartesianStrictTransportMappingSpaceMap.{u_1} p q)",
+        "evidence": "a43067306e3b767e0367",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianStrictTransportInfinityMap_isFullyFaithful": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/StrictTransportEnriched.lean:52",
+        "type": "SerrePositivity.InfinityCategories.cocartesianStrictTransportInfinityMap_isFullyFaithful.{u_1} : ∀ (C : Type u_1)\n  [inst : CategoryTheory.Category.{u_1, u_1} C],\n  SerrePositivity.InfinityCategories.IsFullyFaithful.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.cocartesianStrictTransportInfinityMap.{u_1} C)",
+        "evidence": "8a567b1e4b347ace57e3",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.CocartesianScaffold.overPullback_isPrecompositionEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/ArbitraryBaseChange.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.CocartesianScaffold.overPullback_isPrecompositionEquivalence.{u_1} : ∀\n  {C : Type u_1} [inst : CategoryTheory.Category.{u_1, u_1} C] {E D : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [inst_1 : SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  (F : CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1})\n  [inst_2 : ∀ (c : C), SSet.Quasicategory.{u_1} (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1 + 1} F c)]\n  (l : Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.simplicialReplacement.{u_1} F) E),\n  SerrePositivity.InfinityCategories.CocartesianScaffold.{u_1} p F l →\n    ∀\n      (h :\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} l p)\n          (SerrePositivity.InfinityCategories.simplicialReplacementProjection.{u_1} F))\n      (g : Quiver.Hom.{u_1, u_1 + 1} D (CategoryTheory.nerve.{u_1, u_1} C)),\n      SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.overPullbackMap.{u_1} (CategoryTheory.Over.homMk.{u_1, u_1 + 1} l h)\n          (CategoryTheory.Over.mk.{u_1, u_1 + 1} g))",
+        "evidence": "2651d60022e27185dab0",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/ArbitraryBaseChange.lean:54",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence.{u_1} : ∀\n  {C : Type u_1} [inst : CategoryTheory.Category.{u_1, u_1} C] {E D : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C))\n  [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p]\n  (g : Quiver.Hom.{u_1, u_1 + 1} D (CategoryTheory.nerve.{u_1, u_1} C)),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.overPullbackMap.{u_1}\n      (CategoryTheory.Over.homMk.{u_1, u_1 + 1}\n        (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold.{u_1} p) ⋯)\n      (CategoryTheory.Over.mk.{u_1, u_1 + 1} g))",
+        "evidence": "4ce404572851acd18de2",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.PointedSpaceInfinity": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:60",
+        "type": "SerrePositivity.InfinityCategories.PointedSpaceInfinity.{u_1} : SSet.{u_1 + 1}",
+        "evidence": "0da020f801c2cf19a153",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv": {
+        "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/PointedSpaceFiberVertices.lean:25",
+        "type": "SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv.{u_1} : (K :\n    SerrePositivity.InfinityCategories.KanObject.{u_1}) →\n  Equiv.{u_1 + 2, u_1 + 1}\n    (CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2}\n      (SerrePositivity.InfinityCategories.vertexFiber.{u_1 + 1}\n        SerrePositivity.InfinityCategories.pointedSpaceProjection.{u_1}\n        (SerrePositivity.InfinityCategories.spaceInfinityVertex.{u_1} K))\n      (Opposite.op.{1} { len := 0 }))\n    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.KanObject.obj.{u_1} K)\n      (Opposite.op.{1} { len := 0 }))",
+        "evidence": "248d15dc26b9012c6eed",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.SpaceInfinity": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103",
+        "type": "SerrePositivity.InfinityCategories.SpaceInfinity.{u_1} : SSet.{u_1 + 1}",
+        "evidence": "e9b12d5c35adfbbf59ab",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.pointedSpaceInfinity_quasicategory": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:81",
+        "type": "SerrePositivity.InfinityCategories.pointedSpaceInfinity_quasicategory.{u_1} : SSet.Quasicategory.{u_1 + 1}\n  SerrePositivity.InfinityCategories.PointedSpaceInfinity.{u_1}",
+        "evidence": "e57b4ffb7587d82ce3d0",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.pointedSpaceProjection_leftFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:74",
+        "type": "SerrePositivity.InfinityCategories.pointedSpaceProjection_leftFibration.{u_1} : SerrePositivity.InfinityCategories.LeftFibration.{u_1 +\n      1}\n  SerrePositivity.InfinityCategories.pointedSpaceProjection.{u_1}",
+        "evidence": "3d7b0c3a2c46359ac59e",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.CatInfinity": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:24",
+        "type": "SerrePositivity.InfinityCategories.CatInfinity.{u_1} : SSet.{u_1 + 1}",
+        "evidence": "93d95f2e3d6aee2d5d79",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.qCat_sHom_kanComplex": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:99",
+        "type": "SerrePositivity.InfinityCategories.qCat_sHom_kanComplex.{u_1} : ∀ (X Y : SerrePositivity.InfinityCategories.QCat.{u_1}),\n  SSet.KanComplex.{u_1} (CategoryTheory.SimplicialCategory.sHom.{u_1, u_1 + 1} X Y)",
+        "evidence": "6a807045e2a47985d4cc",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/CoreKan.lean:61",
+        "type": "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex.{u_1} : ∀ (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],\n  SSet.KanComplex.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.quasicategoryCore.{u_1} X))",
+        "evidence": "483d3cf0cd5f0d2f9cff",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.catInfinity_quasicategory": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:30",
+        "type": "SerrePositivity.InfinityCategories.catInfinity_quasicategory.{u_1} : SSet.Quasicategory.{u_1 + 1}\n  SerrePositivity.InfinityCategories.CatInfinity.{u_1}",
+        "evidence": "9ae373300f405fa7a2b8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.quasicategoryCoreFunctor": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryCore.lean:86",
+        "type": "SerrePositivity.InfinityCategories.quasicategoryCoreFunctor.{u_1} : CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1}\n  SSet.{u_1} SSet.{u_1}",
+        "evidence": "55a73505de1cf4e50ea1",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QuasicategoryObject": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:24",
+        "type": "SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1} : Type (u_1 + 1)",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+      },
+      "SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:48",
+        "type": "SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory.{u_1} : CategoryTheory.EnrichedCategory.{u_1,\n    u_1 + 1, u_1 + 1}\n  SSet.{u_1} SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1}",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+      },
+      "SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:60",
+        "type": "SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory.{u_1} : CategoryTheory.SimplicialCategory.{u_1,\n    u_1 + 1}\n  SerrePositivity.InfinityCategories.QuasicategoryObject.{u_1}",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial"
+      },
+      "CategoryTheory.SimplicialNerve": {
+        "source": "Mathlib/AlgebraicTopology/SimplicialNerve.lean:190",
+        "type": "CategoryTheory.SimplicialNerve.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → [CategoryTheory.SimplicialCategory.{u_1, u_2} C] → SSet.{max u_2 u_1}",
+        "axioms": [],
+        "evidence": "depth:Mathlib.AlgebraicTopology.SimplicialNerve"
+      },
+      "SerrePositivity.InfinityCategories.pointKanObject": {
+        "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean:43",
+        "type": "SerrePositivity.InfinityCategories.pointKanObject.{u_1} : SerrePositivity.InfinityCategories.KanObject.{u_1}",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces"
+      },
+      "SerrePositivity.InfinityCategories.sliceUnder": {
+        "source": "SerrePositivity/InfinityCategories/Core/Slice.lean:55",
+        "type": "@SerrePositivity.InfinityCategories.sliceUnder.{u_1} : {K X : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} K X → SSet.{u_1}",
+        "evidence": "b77402fea1bd7839973a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.coherentNerveVertex": {
+        "source": "SerrePositivity/InfinityCategories/F1/Coherent/Vertices.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.coherentNerveVertex.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : CategoryTheory.SimplicialCategory.{u_1, u_2} C] →\n      C →\n        CategoryTheory.Functor.obj.{0, max u_1 u_2, 0, max (u_1 + 1) (u_2 + 1)}\n          (CategoryTheory.SimplicialNerve.{u_1, u_2} C) (Opposite.op.{1} { len := 0 })",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Coherent.Vertices"
+      },
+      "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration": {
+        "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean:318",
+        "type": "@SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration.{u_1} : ∀ {K X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)",
+        "evidence": "f9f73604dd4eabf4717a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.sliceUnder_quasicategory": {
+        "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean:330",
+        "type": "@SerrePositivity.InfinityCategories.sliceUnder_quasicategory.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X), SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RightFibration"
+      },
+      "CategoryTheory.Pseudofunctor.Grothendieck": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:77",
+        "type": "@CategoryTheory.Pseudofunctor.Grothendieck.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n        (CategoryTheory.LocallyDiscrete.{u_3} 𝒮) (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} 𝒮 inst)\n        CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4} →\n      Type (max u_3 u_4)",
+        "evidence": "5469a9fd282dc2c0b53e",
+        "axioms": []
+      },
+      "CategoryTheory.Pseudofunctor.Grothendieck.category": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:139",
+        "type": "@CategoryTheory.Pseudofunctor.Grothendieck.category.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    {F :\n        @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n          (CategoryTheory.LocallyDiscrete.{u_3} 𝒮) (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} 𝒮 inst)\n          CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4}} →\n      CategoryTheory.Category.{max u_1 u_2, max u_4 u_3}\n        (@CategoryTheory.Pseudofunctor.Grothendieck.{u_1, u_2, u_3, u_4} 𝒮 inst F)",
+        "evidence": "4294e7dff332f376aacb",
+        "axioms": []
+      },
+      "CategoryTheory.Grothendieck": {
+        "source": "Mathlib/CategoryTheory/Grothendieck.lean:73",
+        "type": "@CategoryTheory.Grothendieck.{u_1, u_2, u_3,\n    u_4} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_2, u_1} C] →\n    @CategoryTheory.Functor.{u_2, max u_3 u_4, u_1, max (u_3 + 1) (u_4 + 1)} C inst CategoryTheory.Cat.{u_4, u_3}\n        CategoryTheory.Cat.category.{u_4, u_3} →\n      Type (max u_1 u_3)",
+        "evidence": "e585688e3dc47daa9a0e",
+        "axioms": []
+      },
+      "CategoryTheory.Pseudofunctor.CoGrothendieck": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:238",
+        "type": "@CategoryTheory.Pseudofunctor.CoGrothendieck.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n        (CategoryTheory.LocallyDiscrete.{u_3} (Opposite.{u_3 + 1} 𝒮))\n        (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} (Opposite.{u_3 + 1} 𝒮)\n          (@CategoryTheory.Category.opposite.{u_1, u_3} 𝒮 inst))\n        CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4} →\n      Type (max u_3 u_4)",
+        "evidence": "d32460fc77b383efb305",
+        "axioms": []
+      },
+      "CategoryTheory.Pseudofunctor.CoGrothendieck.category": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:298",
+        "type": "@CategoryTheory.Pseudofunctor.CoGrothendieck.category.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    {F :\n        @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n          (CategoryTheory.LocallyDiscrete.{u_3} (Opposite.{u_3 + 1} 𝒮))\n          (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} (Opposite.{u_3 + 1} 𝒮)\n            (@CategoryTheory.Category.opposite.{u_1, u_3} 𝒮 inst))\n          CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4}} →\n      CategoryTheory.Category.{max u_1 u_2, max u_4 u_3}\n        (@CategoryTheory.Pseudofunctor.CoGrothendieck.{u_1, u_2, u_3, u_4} 𝒮 inst F)",
+        "evidence": "468fc21b8110a0a8f9bd",
+        "axioms": []
+      },
+      "CategoryTheory.Pseudofunctor.Grothendieck.forget": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:159",
+        "type": "@CategoryTheory.Pseudofunctor.Grothendieck.forget.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    (F :\n        @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n          (CategoryTheory.LocallyDiscrete.{u_3} 𝒮) (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} 𝒮 inst)\n          CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4}) →\n      @CategoryTheory.Functor.{max u_1 u_2, u_1, max u_4 u_3, u_3}\n        (@CategoryTheory.Pseudofunctor.Grothendieck.{u_1, u_2, u_3, u_4} 𝒮 inst F)\n        (@CategoryTheory.Pseudofunctor.Grothendieck.category.{u_1, u_2, u_3, u_4} 𝒮 inst F) 𝒮 inst",
+        "evidence": "0370905068539c5022e2",
+        "axioms": []
+      },
+      "CategoryTheory.Pseudofunctor.CoGrothendieck.forget": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Grothendieck.lean:319",
+        "type": "@CategoryTheory.Pseudofunctor.CoGrothendieck.forget.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n    (F :\n        @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)}\n          (CategoryTheory.LocallyDiscrete.{u_3} (Opposite.{u_3 + 1} 𝒮))\n          (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} (Opposite.{u_3 + 1} 𝒮)\n            (@CategoryTheory.Category.opposite.{u_1, u_3} 𝒮 inst))\n          CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4}) →\n      @CategoryTheory.Functor.{max u_1 u_2, u_1, max u_4 u_3, u_3}\n        (@CategoryTheory.Pseudofunctor.CoGrothendieck.{u_1, u_2, u_3, u_4} 𝒮 inst F)\n        (@CategoryTheory.Pseudofunctor.CoGrothendieck.category.{u_1, u_2, u_3, u_4} 𝒮 inst F) 𝒮 inst",
+        "evidence": "f5fe1c34af37c1fd1426",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.leftUnstraightening": {
+        "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraightening.lean:22",
+        "type": "@SerrePositivity.InfinityCategories.leftUnstraightening.{u_1} : {C : SSet.{u_1 + 1}} →\n  Quiver.Hom.{u_1 + 1, u_1 + 2} C SerrePositivity.InfinityCategories.SpaceInfinity.{u_1} → SSet.{u_1 + 1}",
+        "evidence": "9199077164c96176aaa4",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.leftUnstraighteningProjection_leftFibration": {
+        "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraightening.lean:37",
+        "type": "@SerrePositivity.InfinityCategories.leftUnstraighteningProjection_leftFibration.{u_1} : ∀ {C : SSet.{u_1 + 1}}\n  (F : Quiver.Hom.{u_1 + 1, u_1 + 2} C SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.leftUnstraighteningProjection.{u_1} F)",
+        "evidence": "d31a99f961846e7def6b",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraighteningFiberIso.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso.{u_1} : {C : SSet.{u_1 + 1}} →\n  (F : Quiver.Hom.{u_1 + 1, u_1 + 2} C SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}) →\n    (c : CategoryTheory.Functor.obj.{0, u_1 + 1, 0, u_1 + 2} C (Opposite.op.{1} { len := 0 })) →\n      CategoryTheory.Iso.{u_1 + 1, u_1 + 2}\n        (SerrePositivity.InfinityCategories.vertexFiber.{u_1 + 1}\n          (SerrePositivity.InfinityCategories.leftUnstraighteningProjection.{u_1} F) c)\n        (SerrePositivity.InfinityCategories.vertexFiber.{u_1 + 1}\n          SerrePositivity.InfinityCategories.pointedSpaceProjection.{u_1}\n          ((CategoryTheory.ConcreteCategory.hom.{u_1 + 1, u_1 + 1, u_1 + 2, u_1 + 1}\n              (CategoryTheory.NatTrans.app.{0, u_1 + 1, 0, u_1 + 2} F (Opposite.op.{1} { len := 0 })))\n            c))",
+        "evidence": "368d389a03137c98eb8b",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.covariantRepresentableInfinity": {
+        "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.covariantRepresentableInfinity.{u_1} : {C : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} C] →\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 }) →\n      Quiver.Hom.{u_1 + 1, u_1 + 2}\n        (CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1} C)\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}",
+        "evidence": "80bd62de2a93568bb484",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.covariantCosliceClassificationIso": {
+        "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantCosliceClassification.lean:25",
+        "type": "@SerrePositivity.InfinityCategories.covariantCosliceClassificationIso.{u_1} : {B : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} B] →\n    (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →\n      SerrePositivity.InfinityCategories.FunctorIso.{u_1 + 1}\n        (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram.{u_1}\n          (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}\n            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x)))\n        (SerrePositivity.InfinityCategories.homInfinityCovariant.{u_1} x)",
+        "evidence": "316baf7c247373bdf7ee",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.covariantHomIsoOfCosliceEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantCosliceClassification.lean:38",
+        "type": "@SerrePositivity.InfinityCategories.covariantHomIsoOfCosliceEquivalence.{u_1} : {B : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} B] →\n    (F :\n        Quiver.Hom.{u_1 + 1, u_1 + 2}\n          (CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1} B)\n          SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}) →\n      (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →\n        (f :\n            Quiver.Hom.{u_1 + 1, u_1 + 2}\n              (CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1}\n                (SerrePositivity.InfinityCategories.sliceUnder.{u_1}\n                  ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x)))\n              (SerrePositivity.InfinityCategories.leftUnstraightening.{u_1} F)) →\n          Eq.{u_1 + 2}\n              (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} f\n                (SerrePositivity.InfinityCategories.leftUnstraighteningProjection.{u_1} F))\n              (CategoryTheory.Functor.map.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1}\n                (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}\n                  ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x))) →\n            SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1 + 1} f →\n              SerrePositivity.InfinityCategories.FunctorIso.{u_1 + 1} F\n                (SerrePositivity.InfinityCategories.homInfinityCovariant.{u_1} x)",
+        "evidence": "5cfb8e7d3e1e4eed9884",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.homInfinityCovariant": {
+        "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/HomInfinityBifunctor.lean:48",
+        "type": "@SerrePositivity.InfinityCategories.homInfinityCovariant.{u_1} : {C : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} C] →\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 }) →\n      Quiver.Hom.{u_1 + 1, u_1 + 2}\n        (CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1} C)\n        SerrePositivity.InfinityCategories.SpaceInfinity.{u_1}",
+        "evidence": "8913fa26a2ec1e278a04",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex": {
+        "source": "SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean:20",
+        "type": "@SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (e : SerrePositivity.InfinityCategories.QCatEquivalence.{u_1} X Y)\n  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},\n  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x →\n    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}\n            (SerrePositivity.InfinityCategories.QCatEquivalence.hom.{u_1} e) (Opposite.op.{1} { len := 0 })))\n        x)",
+        "evidence": "a92a4b1e4e69db0c3ff8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorInverse.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.exists_relativeFunctorInverse_of_precompositionEquivalence.{u_1} : ∀\n  {E F B : SSet.{u_1}} [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  (q : Quiver.Hom.{u_1, u_1 + 1} F B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q] (f : Quiver.Hom.{u_1, u_1 + 1} E F)\n  (hf : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f q) p),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f →\n    ∃ g,\n      ∃ (hg : Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p) q),\n        Nonempty.{u_1 + 1}\n            (SerrePositivity.InfinityCategories.VertexIso.{u_1}\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} p p\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g) ⋯)\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} p p\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} E) ⋯)) ∧\n          Nonempty.{u_1 + 1}\n            (SerrePositivity.InfinityCategories.VertexIso.{u_1}\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} q q\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g f) ⋯)\n              (SerrePositivity.InfinityCategories.relativeFunctorVertex.{u_1} q q\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} F) ⋯))",
+        "evidence": "9bfbc829ce3c6c29957d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean:136",
+        "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence.{u_1} : ∀ {A B : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} A] [inst_1 : SSet.Quasicategory.{u_1} B] (f : Quiver.Hom.{u_1, u_1 + 1} A B),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f ↔\n    SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f",
+        "evidence": "e74968297d51cb34b980",
+        "axioms": []
+      }
+    },
+    "specialization_checks": {
+      "import_and_commands": "import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces\nimport SerrePositivity.InfinityCategories.F1.Coherent.Vertices\nopen CategoryTheory SSet SerrePositivity.InfinityCategories\nopen scoped Simplicial\nuniverse u\nset_option pp.fullNames true\nset_option pp.universes true\n#check (SimplicialNerve QuasicategoryObject.{u})\n#check (show CatInfinity.{u} _⦋0⦌ from\n  coherentNerveVertex (C := SerrePositivity.InfinityCategories.QCat.{u}) ⟨pointKanObject.{u}.obj, inferInstance⟩)\n#check (sliceUnder (X := CatInfinity.{u}) (SSet.yonedaEquiv.symm\n  (coherentNerveVertex (C := SerrePositivity.InfinityCategories.QCat.{u}) ⟨pointKanObject.{u}.obj, inferInstance⟩)))\n#synth LeftFibration (sliceUnderProjection (X := CatInfinity.{u}) (SSet.yonedaEquiv.symm\n  (coherentNerveVertex (C := SerrePositivity.InfinityCategories.QCat.{u}) ⟨pointKanObject.{u}.obj, inferInstance⟩)))\n",
+      "exit": 0,
+      "messages": [
+        {
+          "pos": {
+            "column": 0,
+            "line": 8
+          },
+          "data": "CategoryTheory.SimplicialNerve.{u, u + 1} SerrePositivity.InfinityCategories.QuasicategoryObject.{u} : SSet.{u + 1}",
+          "severity": "information"
+        },
+        {
+          "pos": {
+            "column": 0,
+            "line": 9
+          },
+          "data": "have this :=\n  SerrePositivity.InfinityCategories.coherentNerveVertex.{u, u + 1}\n    (SerrePositivity.InfinityCategories.QuasicategoryObject.mk.{u}\n      (SerrePositivity.InfinityCategories.KanObject.obj.{u} SerrePositivity.InfinityCategories.pointKanObject.{u}) ⋯);\nthis : SerrePositivity.InfinityCategories.CatInfinity.{u} _⦋0⦌",
+          "severity": "information"
+        },
+        {
+          "pos": {
+            "column": 0,
+            "line": 11
+          },
+          "data": "SerrePositivity.InfinityCategories.sliceUnder.{u + 1}\n  ((Equiv.symm.{u + 2, u + 2} SSet.yonedaEquiv.{u + 1})\n    (SerrePositivity.InfinityCategories.coherentNerveVertex.{u, u + 1}\n      (SerrePositivity.InfinityCategories.QuasicategoryObject.mk.{u}\n        (SerrePositivity.InfinityCategories.KanObject.obj.{u} SerrePositivity.InfinityCategories.pointKanObject.{u})\n        ⋯))) : SSet.{u + 1}",
+          "severity": "information"
+        },
+        {
+          "pos": {
+            "column": 0,
+            "line": 13
+          },
+          "data": "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration.{u + 1}\n  ((Equiv.symm.{u + 2, u + 2} SSet.yonedaEquiv.{u + 1})\n    (SerrePositivity.InfinityCategories.coherentNerveVertex.{u, u + 1}\n      (SerrePositivity.InfinityCategories.QuasicategoryObject.mk.{u}\n        (SerrePositivity.InfinityCategories.KanObject.obj.{u} SerrePositivity.InfinityCategories.pointKanObject.{u})\n        inferInstance.{0})))",
+          "severity": "information"
+        }
+      ]
+    }
+  }
 }
