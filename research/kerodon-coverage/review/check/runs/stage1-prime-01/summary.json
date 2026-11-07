@@ -1,0 +1,23 @@
+{
+  "before": {
+    "unresolved_reference": 111,
+    "found": 394,
+    "not_found": 1602,
+    "check_failed": 1
+  },
+  "after": {
+    "manual": 66,
+    "found": 394,
+    "renamed": 1577,
+    "ambiguous": 71
+  },
+  "batches": {
+    "checked": 1013
+  },
+  "candidate_checks": 41048,
+  "nonstandard_axiom_candidates": 0,
+  "selected_nonstandard_axiom_references": 0,
+  "resolved_total": 1971,
+  "manual_total": 137,
+  "incomplete_total": 0
+}
